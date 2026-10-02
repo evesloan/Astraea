@@ -33,12 +33,23 @@ def main():
                 manifest = json.loads(z.read(names[0]))
                 history = z.read(prefix + "source-history.bundle")
                 assert sha(history) == manifest["source_history"]["sha256"]
+                assert len(history) == manifest["source_history"]["bytes"]
+                assert manifest["source_history"]["path"] == "source-history.bundle"
                 bundle = temp / ("history_%02d.bundle" % index)
                 bundle.write_bytes(history)
                 if index == 0:
-                    assert manifest["source_history"]["kind"] == "complete"
+                    # Recognize the exact legacy Batch01 schema, rather than
+                    # treating arbitrary missing/unknown metadata as complete.
+                    meta = manifest["source_history"]
+                    if "kind" not in meta:
+                        assert set(meta) == {"path", "bytes", "sha256"}
+                    else:
+                        assert meta["kind"] == "complete"
+                        assert not meta.get("requires_base_commit")
                     subprocess.run(["git", "clone", str(bundle), str(repo)], check=True, capture_output=True)
                 else:
+                    assert manifest["source_history"]["kind"] == "incremental"
+                    assert manifest["source_history"]["requires_base_commit"] == restored[-1]["commit"]
                     subprocess.run(["git", "-C", str(repo), "bundle", "verify", str(bundle)], check=True, capture_output=True)
                     subprocess.run(["git", "-C", str(repo), "fetch", str(bundle), "HEAD"], check=True, capture_output=True)
                 subprocess.run(["git", "-C", str(repo), "checkout", "--detach", manifest["git_commit"]], check=True, capture_output=True)
