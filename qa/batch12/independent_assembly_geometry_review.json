@@ -1,0 +1,426 @@
+{
+  "passed": true,
+  "executed_script_sha256": "9c4493713db2a890be7bcce92abb748b3086f2ce64106ab9a50773ea61ddd29b",
+  "plan": {
+    "path": "qa/batch12/assembly/plan.json",
+    "sha256": "17588e4bc365e1984a1095efc2606984ec435f125aad7b91d705ad69512a8222"
+  },
+  "states": [
+    {
+      "state": "closed",
+      "items": [
+        {
+          "key": "privacy",
+          "catalogue_id": "AST-MED-001",
+          "export": {
+            "path": "assets/clinical_architecture/exports/AST-MED-001.glb",
+            "sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a"
+          },
+          "source_origin_m": [
+            0,
+            0,
+            0
+          ],
+          "source_z_rotation_deg": 0,
+          "actual_bounds_source_m": [
+            [
+              -1.3700000047683716,
+              -0.3499999940395355,
+              0.0
+            ],
+            [
+              1.3700000047683716,
+              0.44999998807907104,
+              2.359999895095825
+            ]
+          ],
+          "floor_datum_error_m": 0.0
+        },
+        {
+          "key": "wash",
+          "catalogue_id": "AST-MED-002",
+          "export": {
+            "path": "assets/clinical_architecture/exports/AST-MED-002.glb",
+            "sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e"
+          },
+          "source_origin_m": [
+            -1.95,
+            2.0,
+            0
+          ],
+          "source_z_rotation_deg": 90,
+          "actual_bounds_source_m": [
+            [
+              -2.3299999952316286,
+              1.199999988079071,
+              0.0
+            ],
+            [
+              -1.5700000047683715,
+              2.800000011920929,
+              1.6399999856948853
+            ]
+          ],
+          "floor_datum_error_m": 0.0
+        },
+        {
+          "key": "support",
+          "catalogue_id": "AST-MED-003",
+          "export": {
+            "path": "assets/clinical_support/exports/AST-MED-003.glb",
+            "sha256": "ee5cafd00320b06bb3cb38a1026bd36dd0be11a2bcb538fd3014fb806aba43dc"
+          },
+          "source_origin_m": [
+            0.56,
+            2.6,
+            0
+          ],
+          "source_z_rotation_deg": 0,
+          "actual_bounds_source_m": [
+            [
+              -0.029999973773956246,
+              1.4999999761581422,
+              0.0
+            ],
+            [
+              1.1499999737739564,
+              3.700000023841858,
+              0.75
+            ]
+          ],
+          "floor_datum_error_m": 0.0
+        },
+        {
+          "key": "trolley",
+          "catalogue_id": "AST-MED-004",
+          "export": {
+            "path": "assets/clinical_support/exports/AST-MED-004.glb",
+            "sha256": "f6f7ff53f120a5a415bc24261d3723ff72b77bfce003ffe9a2f1fdfa7abaa6e2"
+          },
+          "source_origin_m": [
+            2.85,
+            2.3,
+            0
+          ],
+          "source_z_rotation_deg": -90,
+          "actual_bounds_source_m": [
+            [
+              2.430000013113022,
+              1.9500000059604643,
+              0.0
+            ],
+            [
+              3.35,
+              2.6499999940395353,
+              1.0699999332427979
+            ]
+          ],
+          "floor_datum_error_m": 0.0
+        }
+      ],
+      "whole_empty_approach_box": [
+        {
+          "key": "privacy",
+          "intruding_triangles": 0,
+          "midpoint_inside_asset": false,
+          "pass": true
+        },
+        {
+          "key": "wash",
+          "intruding_triangles": 0,
+          "midpoint_inside_asset": false,
+          "pass": true
+        },
+        {
+          "key": "support",
+          "intruding_triangles": 0,
+          "midpoint_inside_asset": false,
+          "pass": true
+        },
+        {
+          "key": "trolley",
+          "intruding_triangles": 0,
+          "midpoint_inside_asset": false,
+          "pass": true
+        }
+      ],
+      "disjoint_component_aabb_pairs": [
+        {
+          "parts": [
+            "privacy",
+            "wash"
+          ],
+          "separating_axis_gap_m": 0.75,
+          "pass": true
+        },
+        {
+          "parts": [
+            "privacy",
+            "support"
+          ],
+          "separating_axis_gap_m": 1.0499999880790711,
+          "pass": true
+        },
+        {
+          "parts": [
+            "privacy",
+            "trolley"
+          ],
+          "separating_axis_gap_m": 1.5000000178813933,
+          "pass": true
+        },
+        {
+          "parts": [
+            "wash",
+            "support"
+          ],
+          "separating_axis_gap_m": 1.5400000309944153,
+          "pass": true
+        },
+        {
+          "parts": [
+            "wash",
+            "trolley"
+          ],
+          "separating_axis_gap_m": 4.000000017881393,
+          "pass": true
+        },
+        {
+          "parts": [
+            "support",
+            "trolley"
+          ],
+          "separating_axis_gap_m": 1.2800000393390656,
+          "pass": true
+        }
+      ],
+      "actual_middle_pad_privacy_witness": {
+        "source_eye_m": [
+          0.56,
+          -4.8,
+          1.65
+        ],
+        "actual_middle_pad_contact_source_m": [
+          0.56,
+          2.6,
+          0.75
+        ],
+        "blocked_by_screen": true,
+        "expected_blocked": true,
+        "pass": true
+      },
+      "pass": true
+    },
+    {
+      "state": "open",
+      "items": [
+        {
+          "key": "privacy",
+          "catalogue_id": "AST-MED-001",
+          "export": {
+            "path": "assets/clinical_architecture/exports/AST-MED-001__open.glb",
+            "sha256": "c0425cd6042f522a95646188600ba72932e89f5f547ab79a88ee4cc650945864"
+          },
+          "source_origin_m": [
+            0,
+            0,
+            0
+          ],
+          "source_z_rotation_deg": 0,
+          "actual_bounds_source_m": [
+            [
+              -1.3700000047683716,
+              -0.3499999940395355,
+              0.0
+            ],
+            [
+              1.3700000047683716,
+              0.44999998807907104,
+              2.359999895095825
+            ]
+          ],
+          "floor_datum_error_m": 0.0
+        },
+        {
+          "key": "wash",
+          "catalogue_id": "AST-MED-002",
+          "export": {
+            "path": "assets/clinical_architecture/exports/AST-MED-002.glb",
+            "sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e"
+          },
+          "source_origin_m": [
+            -1.95,
+            2.0,
+            0
+          ],
+          "source_z_rotation_deg": 90,
+          "actual_bounds_source_m": [
+            [
+              -2.3299999952316286,
+              1.199999988079071,
+              0.0
+            ],
+            [
+              -1.5700000047683715,
+              2.800000011920929,
+              1.6399999856948853
+            ]
+          ],
+          "floor_datum_error_m": 0.0
+        },
+        {
+          "key": "support",
+          "catalogue_id": "AST-MED-003",
+          "export": {
+            "path": "assets/clinical_support/exports/AST-MED-003.glb",
+            "sha256": "ee5cafd00320b06bb3cb38a1026bd36dd0be11a2bcb538fd3014fb806aba43dc"
+          },
+          "source_origin_m": [
+            0.56,
+            2.6,
+            0
+          ],
+          "source_z_rotation_deg": 0,
+          "actual_bounds_source_m": [
+            [
+              -0.029999973773956246,
+              1.4999999761581422,
+              0.0
+            ],
+            [
+              1.1499999737739564,
+              3.700000023841858,
+              0.75
+            ]
+          ],
+          "floor_datum_error_m": 0.0
+        },
+        {
+          "key": "trolley",
+          "catalogue_id": "AST-MED-004",
+          "export": {
+            "path": "assets/clinical_support/exports/AST-MED-004.glb",
+            "sha256": "f6f7ff53f120a5a415bc24261d3723ff72b77bfce003ffe9a2f1fdfa7abaa6e2"
+          },
+          "source_origin_m": [
+            2.85,
+            2.3,
+            0
+          ],
+          "source_z_rotation_deg": -90,
+          "actual_bounds_source_m": [
+            [
+              2.430000013113022,
+              1.9500000059604643,
+              0.0
+            ],
+            [
+              3.35,
+              2.6499999940395353,
+              1.0699999332427979
+            ]
+          ],
+          "floor_datum_error_m": 0.0
+        }
+      ],
+      "whole_empty_approach_box": [
+        {
+          "key": "privacy",
+          "intruding_triangles": 0,
+          "midpoint_inside_asset": false,
+          "pass": true
+        },
+        {
+          "key": "wash",
+          "intruding_triangles": 0,
+          "midpoint_inside_asset": false,
+          "pass": true
+        },
+        {
+          "key": "support",
+          "intruding_triangles": 0,
+          "midpoint_inside_asset": false,
+          "pass": true
+        },
+        {
+          "key": "trolley",
+          "intruding_triangles": 0,
+          "midpoint_inside_asset": false,
+          "pass": true
+        }
+      ],
+      "disjoint_component_aabb_pairs": [
+        {
+          "parts": [
+            "privacy",
+            "wash"
+          ],
+          "separating_axis_gap_m": 0.75,
+          "pass": true
+        },
+        {
+          "parts": [
+            "privacy",
+            "support"
+          ],
+          "separating_axis_gap_m": 1.0499999880790711,
+          "pass": true
+        },
+        {
+          "parts": [
+            "privacy",
+            "trolley"
+          ],
+          "separating_axis_gap_m": 1.5000000178813933,
+          "pass": true
+        },
+        {
+          "parts": [
+            "wash",
+            "support"
+          ],
+          "separating_axis_gap_m": 1.5400000309944153,
+          "pass": true
+        },
+        {
+          "parts": [
+            "wash",
+            "trolley"
+          ],
+          "separating_axis_gap_m": 4.000000017881393,
+          "pass": true
+        },
+        {
+          "parts": [
+            "support",
+            "trolley"
+          ],
+          "separating_axis_gap_m": 1.2800000393390656,
+          "pass": true
+        }
+      ],
+      "actual_middle_pad_privacy_witness": {
+        "source_eye_m": [
+          0.56,
+          -4.8,
+          1.65
+        ],
+        "actual_middle_pad_contact_source_m": [
+          0.56,
+          2.6,
+          0.75
+        ],
+        "blocked_by_screen": false,
+        "expected_blocked": false,
+        "pass": true
+      },
+      "pass": true
+    }
+  ],
+  "scope": "Proposed source-frame component inspection arrangement only. Native meshes transformed by explicit source positions and Z-rotations; approach tested as whole box and all separate component pairs proven disjoint by their actual transformed bounds.",
+  "limits": [
+    "No host room, usable ceiling, moving door, floor support, clinical capacity or species/body/cart route approval.",
+    "One real pad-surface ray in each state is a bounded arrangement witness, not privacy for every platform point or patient/body silhouette.",
+    "Static source floor datum and proposed clear volume do not establish installed support or navigability."
+  ]
+}

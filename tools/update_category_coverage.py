@@ -33,6 +33,10 @@ if landing_ids.intersection(by_id):
  groups[0][2][F]+=['AST-LND-002']
  groups[2][2][A]+=['AST-LND-003']
  groups[2][2][F]+=['AST-LND-004']
+clinical_ids={f'AST-MED-{i:03d}' for i in range(1,5)}
+if clinical_ids.intersection(by_id):
+ assert clinical_ids.issubset(by_id), 'Partial clinical kit in catalogue'
+ groups.append(('clinical_care','Clinical care support',{A:['AST-MED-001'],F:['AST-MED-003','AST-MED-004'],E:['AST-MED-002']},'Species-specific body/support and host privacy/access reconciliation; no new clinical capacity'))
 count=len(by_id)
 rows=[];seen=[];totals={k:0 for k in (A,F,L,E,P)}
 for key,title,entries,gap in groups:

@@ -1,7 +1,7 @@
 {
-  "revision": "astraea-catalogue-interfaces-04",
+  "revision": "astraea-catalogue-interfaces-05",
   "status": "current_component_consumer_index_not_engine_acceptance",
-  "unique_assets": 61,
+  "unique_assets": 65,
   "semantic_rules": [
     "Exact existing source/export/manifest hashes bind every row.",
     "Metadata records map existing points and behavior only. No nonexistent point/trajectory is invented.",
@@ -16009,18 +16009,1011 @@
       "findings": [],
       "exact_record_inventory_pointer": "qa/batch11/independent_interface_coverage_map.json#/assets/3",
       "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-MED-001",
+      "family": "clinical_architecture",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/clinical_architecture/source/AST-MED-001.blend",
+          "sha256": "9433d668e5671cdf0c29f57c90be5e631106c2ce6482f25396f49afe07cbc240",
+          "bytes": 316760
+        },
+        "export": {
+          "path": "assets/clinical_architecture/exports/AST-MED-001.glb",
+          "sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a",
+          "bytes": 266944
+        },
+        "manifest": {
+          "path": "assets/clinical_architecture/AST-MED-001.manifest.json",
+          "sha256": "77be7cf619dacd1f7f12910f66458a1d2be1b6d65b8bd2576a0b658ff1abda53",
+          "bytes": 19046
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/clinical_architecture/AST-MED-001.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor/contact datum at source origin; it can lie in intentional empty space. Host floor/support remains unknown.",
+        "actual_native_root_nodes": [
+          {
+            "index": 38,
+            "name": "AST-MED-001",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/clinical_architecture/AST-MED-001.manifest.json",
+          "qa/batch12/independent_clinical_architecture_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender Z-up, +X right, front -Y",
+        "exchange": "Native GLB Y-up, front +Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native parent hierarchy before placement; do not convert native geometry a second time.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch12/independent_clinical_architecture_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_physical_interfaces_and_proposed_placements",
+        "meaning": "Actual named source surfaces and native geometry carry physical contacts and supported joins. Proposed eye/approach/interaction positions are separate; capped ports are unimplemented.",
+        "evidence": [
+          "assets/clinical_architecture/AST-MED-001.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_architecture_interfaces.json",
+          "qa/batch12/independent_privacy_motion_review.json"
+        ],
+        "omission_assessment": "Original host absent. Room polygons, doors, pockets, ceilings, floor/support and service reservations remain unknown."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Supported original opaque privacy/arrival return with rigid screen on exposed sleeves/rod, true physical grip and declared finite privacy field. Source retains an editable linear prismatic action; closed/open GLBs are static state derivatives of one design. No host door or whole-room confidentiality.",
+        "evidence": [
+          "assets/clinical_architecture/AST-MED-001.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_architecture_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 7,
+        "physical_surface_normals_independently_checked": true,
+        "limit": "Component geometric witnesses only; no structural load, universal species fit or installed room acceptance."
+      },
+      "motion_and_hierarchy": {
+        "status": "source_linear_prismatic_action_and_native_static_state_derivatives",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Source SCREEN_TRANSLATION action moves left1.16m; actual closed/open native states and continuous own-support clearance independently checked. Both derivatives are one design; no game action, locking, damping or external-body sweep.",
+        "evidence": [
+          "assets/clinical_architecture/AST-MED-001.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_architecture_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "actual_generator_read_closure_and_native_roles_inspected",
+        "actual_material_roles": [
+          "care_bluegreen_resin",
+          "care_brushed_metal",
+          "clinical_ink",
+          "dark_rubber",
+          "ivory_enamel",
+          "privacy_sage"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/clinical_architecture/source/build_clinical_architecture.py",
+            "sha256": "a047cfbc818b1d8cf2376fea44787b713bc7e18a2345ffcc8cdec074dbd02283",
+            "bytes": 30684
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/clinical_architecture/material_manifest.json",
+            "sha256": "a29eb4e7e87eb0623a881c651bb5e799397ffbaecf1f4d43c1cbbff7fb3d77ca",
+            "bytes": 1217
+          },
+          {
+            "path": "assets/clinical_architecture/source/build_clinical_architecture.py",
+            "sha256": "a047cfbc818b1d8cf2376fea44787b713bc7e18a2345ffcc8cdec074dbd02283",
+            "bytes": 30684
+          },
+          {
+            "path": "assets/clinical_architecture/source/make_clinical_textures.py",
+            "sha256": "96d8ee78a530b9ab549d23804e2a3597b228922e250902b273ed413cd1f6ab11",
+            "bytes": 1429
+          },
+          {
+            "path": "assets/clinical_architecture/textures/clinical_ink.png",
+            "sha256": "2c3e414c1b6ecd2ca8d04acdb8b871ffa12f0dd137abefc79a3a61f9f7634390",
+            "bytes": 41099
+          },
+          {
+            "path": "assets/clinical_architecture/textures/privacy_sage.png",
+            "sha256": "1c030dccc4238fb63a826a9d944d70a8b797de344ea6adcaf56a90d40a9af0e7",
+            "bytes": 42554
+          },
+          {
+            "path": "materials/care/care_bluegreen_resin.png",
+            "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+            "bytes": 4480
+          },
+          {
+            "path": "materials/care/care_brushed_metal.png",
+            "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+            "bytes": 3750
+          },
+          {
+            "path": "materials/care/care_soft_pad.png",
+            "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+            "bytes": 5664
+          },
+          {
+            "path": "materials/care/manifest.json",
+            "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+            "bytes": 1905
+          },
+          {
+            "path": "materials/care/source/generate_care_materials.py",
+            "sha256": "b85cb7bae7911f1f05c1b88776c482009c2c3759e37ce9f64143abd3ca63907c",
+            "bytes": 2192
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/care_materials.py",
+            "sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+            "bytes": 1308
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          }
+        ],
+        "evidence": [
+          "qa/batch12/independent_rebuild_receipts.json"
+        ],
+        "limit": "Every helper-loaded image role is included even when unused. State derivatives and QA arrangements are not new designs or host placements."
+      },
+      "collision_proposal_screen": {
+        "status": "component_geometry_not_runtime_adoption",
+        "shape_count": 15,
+        "finite_clear_and_blocked_controls": 152,
+        "empty_box_volume_checks": 2,
+        "sampled_max_external_inflation_m": 0.029699999701976777,
+        "evidence": [
+          "qa/batch12/independent_clinical_architecture_interfaces.json",
+          "qa/batch12/independent_collision_profile_review.json"
+        ],
+        "limits": "Empty boxes use triangle/box and convex feasibility with0.2mm surface inset. Profile inflation is sampled, not a certified continuous upper bound. No actor/cart sweep or runtime physics."
+      },
+      "existing_independent_evidence": [
+        "qa/batch12/independent_clinical_architecture_interfaces.json",
+        "qa/batch12/independent_source_AST-MED-001.json",
+        "qa/batch12/independent_export_AST-MED-001.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch12/independent_interface_coverage_map.json#/assets/0",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-MED-002",
+      "family": "clinical_architecture",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/clinical_architecture/source/AST-MED-002.blend",
+          "sha256": "39ab4098c5185348f3a578b690a0da3ac9f0c61265f6621bf935f189421dca23",
+          "bytes": 319985
+        },
+        "export": {
+          "path": "assets/clinical_architecture/exports/AST-MED-002.glb",
+          "sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e",
+          "bytes": 334440
+        },
+        "manifest": {
+          "path": "assets/clinical_architecture/AST-MED-002.manifest.json",
+          "sha256": "8f1343e58935df79dff51b41f0c535448dae563b7fe6f3ae4ccd07c35da0e87d",
+          "bytes": 25226
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/clinical_architecture/AST-MED-002.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor/contact datum at source origin; it can lie in intentional empty space. Host floor/support remains unknown.",
+        "actual_native_root_nodes": [
+          {
+            "index": 58,
+            "name": "AST-MED-002",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/clinical_architecture/AST-MED-002.manifest.json",
+          "qa/batch12/independent_clinical_architecture_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender Z-up, +X right, front -Y",
+        "exchange": "Native GLB Y-up, front +Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native parent hierarchy before placement; do not convert native geometry a second time.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch12/independent_clinical_architecture_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_physical_interfaces_and_proposed_placements",
+        "meaning": "Actual named source surfaces and native geometry carry physical contacts and supported joins. Proposed eye/approach/interaction positions are separate; capped ports are unimplemented.",
+        "evidence": [
+          "assets/clinical_architecture/AST-MED-002.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_architecture_interfaces.json"
+        ],
+        "omission_assessment": "Original host absent. Room polygons, doors, pockets, ceilings, floor/support and service reservations remain unknown."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Shaped wash basin and dry work surface with separate clean-supply shelves and front service cover. Real capped water/drain/control contacts remain unimplemented; no fluid, chemistry or treatment behavior.",
+        "evidence": [
+          "assets/clinical_architecture/AST-MED-002.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_architecture_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 14,
+        "physical_surface_normals_independently_checked": true,
+        "limit": "Component geometric witnesses only; no structural load, universal species fit or installed room acceptance."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Fixed component with no lift, shelf travel, fluid, wheel dynamics or operational behavior.",
+        "evidence": [
+          "assets/clinical_architecture/AST-MED-002.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_architecture_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "actual_generator_read_closure_and_native_roles_inspected",
+        "actual_material_roles": [
+          "care_bluegreen_resin",
+          "care_brushed_metal",
+          "clinical_ink",
+          "dark_rubber",
+          "ivory_enamel",
+          "privacy_sage"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/clinical_architecture/source/build_clinical_architecture.py",
+            "sha256": "a047cfbc818b1d8cf2376fea44787b713bc7e18a2345ffcc8cdec074dbd02283",
+            "bytes": 30684
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/clinical_architecture/material_manifest.json",
+            "sha256": "a29eb4e7e87eb0623a881c651bb5e799397ffbaecf1f4d43c1cbbff7fb3d77ca",
+            "bytes": 1217
+          },
+          {
+            "path": "assets/clinical_architecture/source/build_clinical_architecture.py",
+            "sha256": "a047cfbc818b1d8cf2376fea44787b713bc7e18a2345ffcc8cdec074dbd02283",
+            "bytes": 30684
+          },
+          {
+            "path": "assets/clinical_architecture/source/make_clinical_textures.py",
+            "sha256": "96d8ee78a530b9ab549d23804e2a3597b228922e250902b273ed413cd1f6ab11",
+            "bytes": 1429
+          },
+          {
+            "path": "assets/clinical_architecture/textures/clinical_ink.png",
+            "sha256": "2c3e414c1b6ecd2ca8d04acdb8b871ffa12f0dd137abefc79a3a61f9f7634390",
+            "bytes": 41099
+          },
+          {
+            "path": "assets/clinical_architecture/textures/privacy_sage.png",
+            "sha256": "1c030dccc4238fb63a826a9d944d70a8b797de344ea6adcaf56a90d40a9af0e7",
+            "bytes": 42554
+          },
+          {
+            "path": "materials/care/care_bluegreen_resin.png",
+            "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+            "bytes": 4480
+          },
+          {
+            "path": "materials/care/care_brushed_metal.png",
+            "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+            "bytes": 3750
+          },
+          {
+            "path": "materials/care/care_soft_pad.png",
+            "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+            "bytes": 5664
+          },
+          {
+            "path": "materials/care/manifest.json",
+            "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+            "bytes": 1905
+          },
+          {
+            "path": "materials/care/source/generate_care_materials.py",
+            "sha256": "b85cb7bae7911f1f05c1b88776c482009c2c3759e37ce9f64143abd3ca63907c",
+            "bytes": 2192
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/care_materials.py",
+            "sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+            "bytes": 1308
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          }
+        ],
+        "evidence": [
+          "qa/batch12/independent_rebuild_receipts.json"
+        ],
+        "limit": "Every helper-loaded image role is included even when unused. State derivatives and QA arrangements are not new designs or host placements."
+      },
+      "collision_proposal_screen": {
+        "status": "component_geometry_not_runtime_adoption",
+        "shape_count": 37,
+        "finite_clear_and_blocked_controls": 377,
+        "empty_box_volume_checks": 5,
+        "sampled_max_external_inflation_m": 0.06286647820847162,
+        "evidence": [
+          "qa/batch12/independent_clinical_architecture_interfaces.json",
+          "qa/batch12/independent_collision_profile_review.json"
+        ],
+        "limits": "Empty boxes use triangle/box and convex feasibility with0.2mm surface inset. Profile inflation is sampled, not a certified continuous upper bound. No actor/cart sweep or runtime physics."
+      },
+      "existing_independent_evidence": [
+        "qa/batch12/independent_clinical_architecture_interfaces.json",
+        "qa/batch12/independent_source_AST-MED-002.json",
+        "qa/batch12/independent_export_AST-MED-002.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch12/independent_interface_coverage_map.json#/assets/1",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-MED-003",
+      "family": "clinical_support",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/clinical_support/source/AST-MED-003.blend",
+          "sha256": "dfc34a0be9d1810eaf80a61061da5fad01bbc43c01ced3bb9b17a9a4fc288509",
+          "bytes": 204302
+        },
+        "export": {
+          "path": "assets/clinical_support/exports/AST-MED-003.glb",
+          "sha256": "ee5cafd00320b06bb3cb38a1026bd36dd0be11a2bcb538fd3014fb806aba43dc",
+          "bytes": 143912
+        },
+        "manifest": {
+          "path": "assets/clinical_support/AST-MED-003.manifest.json",
+          "sha256": "0c11b003abf088c0bad66b832d79ac504763b23e46237803b37bef293802f2c4",
+          "bytes": 23637
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/clinical_support/AST-MED-003.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor/contact datum at source origin; it can lie in intentional empty space. Host floor/support remains unknown.",
+        "actual_native_root_nodes": [
+          {
+            "index": 17,
+            "name": "AST-MED-003",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/clinical_support/AST-MED-003.manifest.json",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender Z-up, +X right, front -Y",
+        "exchange": "Native GLB Y-up, front +Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native parent hierarchy before placement; do not convert native geometry a second time.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_physical_interfaces_and_proposed_placements",
+        "meaning": "Actual named source surfaces and native geometry carry physical contacts and supported joins. Proposed eye/approach/interaction positions are separate; capped ports are unimplemented.",
+        "evidence": [
+          "assets/clinical_support/AST-MED-003.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ],
+        "omission_assessment": "Original host absent. Room polygons, doors, pockets, ceilings, floor/support and service reservations remain unknown."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Fixed neutral modular support platform with three equal removable pad forms, actual contact plateaux and optional under-edge attachment faces. No species posture, body/load/transfer suitability, powered lift/tilt or bed allocation.",
+        "evidence": [
+          "assets/clinical_support/AST-MED-003.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 10,
+        "physical_surface_normals_independently_checked": true,
+        "limit": "Component geometric witnesses only; no structural load, universal species fit or installed room acceptance."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Fixed component with no lift, shelf travel, fluid, wheel dynamics or operational behavior.",
+        "evidence": [
+          "assets/clinical_support/AST-MED-003.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "actual_generator_read_closure_and_native_roles_inspected",
+        "actual_material_roles": [
+          "care_brushed_metal",
+          "care_soft_pad",
+          "dark_rubber",
+          "ivory_enamel"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/clinical_support/source/build_clinical_support.py",
+            "sha256": "188da30d21908e1a3186381af6db4b91ebe7d3dd980b4bbeec56271bc329d2bd",
+            "bytes": 23661
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/clinical_support/source/build_clinical_support.py",
+            "sha256": "188da30d21908e1a3186381af6db4b91ebe7d3dd980b4bbeec56271bc329d2bd",
+            "bytes": 23661
+          },
+          {
+            "path": "materials/care/care_bluegreen_resin.png",
+            "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+            "bytes": 4480
+          },
+          {
+            "path": "materials/care/care_brushed_metal.png",
+            "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+            "bytes": 3750
+          },
+          {
+            "path": "materials/care/care_soft_pad.png",
+            "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+            "bytes": 5664
+          },
+          {
+            "path": "materials/care/manifest.json",
+            "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+            "bytes": 1905
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/care_materials.py",
+            "sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+            "bytes": 1308
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          }
+        ],
+        "evidence": [
+          "qa/batch12/independent_rebuild_receipts.json"
+        ],
+        "limit": "Every helper-loaded image role is included even when unused. State derivatives and QA arrangements are not new designs or host placements."
+      },
+      "collision_proposal_screen": {
+        "status": "component_geometry_not_runtime_adoption",
+        "shape_count": 13,
+        "finite_clear_and_blocked_controls": 154,
+        "empty_box_volume_checks": 2,
+        "sampled_max_external_inflation_m": 0.023529445841857902,
+        "evidence": [
+          "qa/batch12/independent_clinical_support_interfaces.json",
+          "qa/batch12/independent_collision_profile_review.json"
+        ],
+        "limits": "Empty boxes use triangle/box and convex feasibility with0.2mm surface inset. Profile inflation is sampled, not a certified continuous upper bound. No actor/cart sweep or runtime physics."
+      },
+      "existing_independent_evidence": [
+        "qa/batch12/independent_clinical_support_interfaces.json",
+        "qa/batch12/independent_source_AST-MED-003.json",
+        "qa/batch12/independent_export_AST-MED-003.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch12/independent_interface_coverage_map.json#/assets/2",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-MED-004",
+      "family": "clinical_support",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/clinical_support/source/AST-MED-004.blend",
+          "sha256": "ea20126de6f166fa2e1d5413285e298cab5933c351db532a5778f4de083e126d",
+          "bytes": 220836
+        },
+        "export": {
+          "path": "assets/clinical_support/exports/AST-MED-004.glb",
+          "sha256": "f6f7ff53f120a5a415bc24261d3723ff72b77bfce003ffe9a2f1fdfa7abaa6e2",
+          "bytes": 358832
+        },
+        "manifest": {
+          "path": "assets/clinical_support/AST-MED-004.manifest.json",
+          "sha256": "643d00b4b77040463541fe0b140b3bf32fa30ff74c41ed093764a03f2b87ab06",
+          "bytes": 45213
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/clinical_support/AST-MED-004.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor/contact datum at source origin; it can lie in intentional empty space. Host floor/support remains unknown.",
+        "actual_native_root_nodes": [
+          {
+            "index": 22,
+            "name": "AST-MED-004",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/clinical_support/AST-MED-004.manifest.json",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender Z-up, +X right, front -Y",
+        "exchange": "Native GLB Y-up, front +Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native parent hierarchy before placement; do not convert native geometry a second time.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_physical_interfaces_and_proposed_placements",
+        "meaning": "Actual named source surfaces and native geometry carry physical contacts and supported joins. Proposed eye/approach/interaction positions are separate; capped ports are unimplemented.",
+        "evidence": [
+          "assets/clinical_support/AST-MED-004.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ],
+        "omission_assessment": "Original host absent. Room polygons, doors, pockets, ceilings, floor/support and service reservations remain unknown."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Dedicated clinical supply trolley with protected staging surface, two closed original cases, open lower retrieval region and supported fixed wheel/fork/axle assemblies. Contents unspecified; no cleaning-cart, dynamics or medicine claim.",
+        "evidence": [
+          "assets/clinical_support/AST-MED-004.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 9,
+        "physical_surface_normals_independently_checked": true,
+        "limit": "Component geometric witnesses only; no structural load, universal species fit or installed room acceptance."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Fixed component with no lift, shelf travel, fluid, wheel dynamics or operational behavior.",
+        "evidence": [
+          "assets/clinical_support/AST-MED-004.manifest.json#/physical_and_proposal_markers",
+          "qa/batch12/independent_clinical_support_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "actual_generator_read_closure_and_native_roles_inspected",
+        "actual_material_roles": [
+          "care_bluegreen_resin",
+          "care_brushed_metal",
+          "care_soft_pad",
+          "dark_rubber",
+          "ivory_enamel",
+          "warm_stone"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/clinical_support/source/build_clinical_support.py",
+            "sha256": "188da30d21908e1a3186381af6db4b91ebe7d3dd980b4bbeec56271bc329d2bd",
+            "bytes": 23661
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/clinical_support/source/build_clinical_support.py",
+            "sha256": "188da30d21908e1a3186381af6db4b91ebe7d3dd980b4bbeec56271bc329d2bd",
+            "bytes": 23661
+          },
+          {
+            "path": "materials/care/care_bluegreen_resin.png",
+            "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+            "bytes": 4480
+          },
+          {
+            "path": "materials/care/care_brushed_metal.png",
+            "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+            "bytes": 3750
+          },
+          {
+            "path": "materials/care/care_soft_pad.png",
+            "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+            "bytes": 5664
+          },
+          {
+            "path": "materials/care/manifest.json",
+            "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+            "bytes": 1905
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/care_materials.py",
+            "sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+            "bytes": 1308
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          }
+        ],
+        "evidence": [
+          "qa/batch12/independent_rebuild_receipts.json"
+        ],
+        "limit": "Every helper-loaded image role is included even when unused. State derivatives and QA arrangements are not new designs or host placements."
+      },
+      "collision_proposal_screen": {
+        "status": "component_geometry_not_runtime_adoption",
+        "shape_count": 30,
+        "finite_clear_and_blocked_controls": 379,
+        "empty_box_volume_checks": 5,
+        "sampled_max_external_inflation_m": 0.020000003152557372,
+        "evidence": [
+          "qa/batch12/independent_clinical_support_interfaces.json",
+          "qa/batch12/independent_collision_profile_review.json"
+        ],
+        "limits": "Empty boxes use triangle/box and convex feasibility with0.2mm surface inset. Profile inflation is sampled, not a certified continuous upper bound. No actor/cart sweep or runtime physics."
+      },
+      "existing_independent_evidence": [
+        "qa/batch12/independent_clinical_support_interfaces.json",
+        "qa/batch12/independent_source_AST-MED-004.json",
+        "qa/batch12/independent_export_AST-MED-004.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch12/independent_interface_coverage_map.json#/assets/3",
+      "engine_adopted_instances": 0
     }
   ],
   "scope": "Explicit existing component declarations and bounded offline interface evidence. Actual native hierarchy governs geometry; no engine, installed-room, actor, controller or operating behavior is implemented by this index.",
   "audit_source": {
-    "path": "qa/batch11/independent_interface_normalized_index_proposed.json",
-    "sha256": "f5aa2c04fc03e49b20fd710f7612e6799617395836e1bf46db34d84447d277ce",
-    "report": "qa/batch11/independent_final_review.json",
-    "correction_map": "qa/batch11/independent_interface_coverage_map.json"
+    "path": "qa/batch12/independent_interface_normalized_index_proposed.json",
+    "sha256": "478d46bff1035423f507a72e9ebdd201422c98487e11c7a81a4012efcfe41c06",
+    "report": "qa/batch12/independent_final_review.json",
+    "correction_map": "qa/batch12/independent_interface_coverage_map.json"
   },
   "binding_validation": {
     "exact_asset_id_set": true,
-    "current_bound_files_checked": 183,
+    "current_bound_files_checked": 195,
     "all_files_current": true
   }
 }

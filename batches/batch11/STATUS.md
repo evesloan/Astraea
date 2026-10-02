@@ -31,6 +31,6 @@ Earlier collision, surface, native-datum and camera/source snapshots are preserv
 
 ## Backup gate
 
-Complete archive, compact-source restoration and durable Library delivery remain the final gate before expansion. The previous Batch10 commit 62ad3577716127bfc419cddbb90fe5abf85b487e is preserved in Library libfile_788c020fb58c819189f534c008483be7, delivered in accepted message Sentinel_151cd27b3d80819199d972e822e2ae72. All 2,121 prior file hashes and ten history checkpoints were verified there.
+The durable gate passed. Full archive Library libfile_cdb2eef2801081919af030fd3e0d3177 and all eight complete source ZIPs plus preview were delivered in accepted message Sentinel_d0f178ab70fc8191a62dc29cc02eb056. Parent independently verified all 2,494 archive hashes, CRC and compact source hashes; eleven portable history checkpoints and all 61 source/export pairs restored successfully. The previous Batch10 commit 62ad3577716127bfc419cddbb90fe5abf85b487e is preserved in Library libfile_788c020fb58c819189f534c008483be7, delivered in accepted message Sentinel_151cd27b3d80819199d972e822e2ae72. All 2,121 prior file hashes and ten history checkpoints were verified there.
 
 Generated author package ZIPs are retained in the full archive as package/QA evidence. Compact source families include the actual editable source, exports, textures and dependencies directly; they do not need nested copies of those packages.

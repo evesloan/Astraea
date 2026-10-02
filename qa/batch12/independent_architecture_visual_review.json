@@ -1,0 +1,385 @@
+{
+  "media_execution_receipt": {
+    "path": "assets/clinical_architecture/qa/media_execution_receipt.json",
+    "sha256": "e366f152ef555e6baea15cb723e82b53cf654f2cf2211fda0a0db2a17422a001"
+  },
+  "passed": true,
+  "executed_script_sha256": "4fbf37b85e57ef6e26939efe0be832f54241afd1767975b32bb757bd02f3bc28",
+  "render_evidence": {
+    "path": "assets/clinical_architecture/qa/render_evidence.json",
+    "sha256": "ddbbd0f9394dbaf967904f54c9b1af9e8e27edc2f3446725c4a80216ae8033cf"
+  },
+  "actual_images_reviewed": 6,
+  "views": [
+    {
+      "image": {
+        "path": "assets/clinical_architecture/qa/001_closed_standing_640.png",
+        "sha256": "6d7f6e79f4c7d15fd5aea68acaef1d245e4132ce2bbd07464d0d36296bca726b"
+      },
+      "source": {
+        "path": "assets/clinical_architecture/source/AST-MED-001.blend",
+        "sha256": "9433d668e5671cdf0c29f57c90be5e631106c2ce6482f25396f49afe07cbc240"
+      },
+      "export": {
+        "path": "assets/clinical_architecture/exports/AST-MED-001.glb",
+        "sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a"
+      },
+      "executed_render_script": {
+        "path": "assets/clinical_architecture/qa/executed_render_scripts/45c6e46d629091493044478f80b5efcc1b4155670581216738e92edc47c0bd3d.py",
+        "sha256": "45c6e46d629091493044478f80b5efcc1b4155670581216738e92edc47c0bd3d"
+      },
+      "successful_capture_log": {
+        "path": "assets/clinical_architecture/qa/render_final.log",
+        "sha256": "dec8be0ba9397d1495ddfdc4b8ce5bc5cbc1a700bd6dd71828bddd0a935baad7"
+      },
+      "original_executed_view_key": "001_closed_standing_640",
+      "published_view_key": "001_closed_standing_640",
+      "camera_source_frame": {
+        "eye": [
+          4.3,
+          -6.0,
+          1.62
+        ],
+        "target": [
+          0.0,
+          0.1,
+          1.17
+        ],
+        "lens_mm": 48,
+        "resolution": [
+          640,
+          360
+        ]
+      },
+      "actual_pixels_inspected": true,
+      "review": "Full feet and supported posts/rod frame the opaque field; CARE/QUIET and PRIVACY identify the arrival and screening functions. The restrained tactile field remains readable with no visible striping.",
+      "pass": true,
+      "confirmed_execution_argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "4",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "assets/clinical_architecture/qa/render_imported.py",
+        "--",
+        "001_closed_standing_640",
+        "001_open_standing_640",
+        "002_standing_640",
+        "001_track_and_grip_detail_1280",
+        "002_basin_supply_detail_1280",
+        "002_rear_service_detail_1280"
+      ],
+      "confirmed_exit_code": 0
+    },
+    {
+      "image": {
+        "path": "assets/clinical_architecture/qa/001_open_standing_640.png",
+        "sha256": "71dbe1d370f6020fa4615ebf1bb2a2cb2915e3258058a71cf6f283a091c87a7d"
+      },
+      "source": {
+        "path": "assets/clinical_architecture/source/AST-MED-001.blend",
+        "sha256": "9433d668e5671cdf0c29f57c90be5e631106c2ce6482f25396f49afe07cbc240"
+      },
+      "export": {
+        "path": "assets/clinical_architecture/exports/AST-MED-001__open.glb",
+        "sha256": "c0425cd6042f522a95646188600ba72932e89f5f547ab79a88ee4cc650945864"
+      },
+      "executed_render_script": {
+        "path": "assets/clinical_architecture/qa/executed_render_scripts/45c6e46d629091493044478f80b5efcc1b4155670581216738e92edc47c0bd3d.py",
+        "sha256": "45c6e46d629091493044478f80b5efcc1b4155670581216738e92edc47c0bd3d"
+      },
+      "successful_capture_log": {
+        "path": "assets/clinical_architecture/qa/render_final.log",
+        "sha256": "dec8be0ba9397d1495ddfdc4b8ce5bc5cbc1a700bd6dd71828bddd0a935baad7"
+      },
+      "original_executed_view_key": "001_open_standing_640",
+      "published_view_key": "001_open_standing_640",
+      "camera_source_frame": {
+        "eye": [
+          4.3,
+          -6.0,
+          1.62
+        ],
+        "target": [
+          0.0,
+          0.1,
+          1.17
+        ],
+        "lens_mm": 48,
+        "resolution": [
+          640,
+          360
+        ]
+      },
+      "actual_pixels_inspected": true,
+      "review": "The matched camera shows the rigid field nested in front of the fixed return, with the right field visibly open and both feet retained. This is a state comparison, not a host doorway or confidentiality guarantee.",
+      "pass": true,
+      "confirmed_execution_argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "4",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "assets/clinical_architecture/qa/render_imported.py",
+        "--",
+        "001_closed_standing_640",
+        "001_open_standing_640",
+        "002_standing_640",
+        "001_track_and_grip_detail_1280",
+        "002_basin_supply_detail_1280",
+        "002_rear_service_detail_1280"
+      ],
+      "confirmed_exit_code": 0
+    },
+    {
+      "image": {
+        "path": "assets/clinical_architecture/qa/002_standing_640.png",
+        "sha256": "79a42b16158dd9e77027369ffe618125c421fc4564076146afe46edaaf36d44d"
+      },
+      "source": {
+        "path": "assets/clinical_architecture/source/AST-MED-002.blend",
+        "sha256": "39ab4098c5185348f3a578b690a0da3ac9f0c61265f6621bf935f189421dca23"
+      },
+      "export": {
+        "path": "assets/clinical_architecture/exports/AST-MED-002.glb",
+        "sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e"
+      },
+      "executed_render_script": {
+        "path": "assets/clinical_architecture/qa/executed_render_scripts/25cd66b13a34a443d956f254bd478a85cedf24dea03e8629463faaf2cd793ac5.py",
+        "sha256": "25cd66b13a34a443d956f254bd478a85cedf24dea03e8629463faaf2cd793ac5"
+      },
+      "successful_capture_log": {
+        "path": "assets/clinical_architecture/qa/render_supported_wash_final.log",
+        "sha256": "1825017bd5d61a0bd7547368dc44fd5f9ebdec2b53c2d055151f32f7841172f8"
+      },
+      "original_executed_view_key": "002_standing_640",
+      "published_view_key": "002_standing_640",
+      "camera_source_frame": {
+        "eye": [
+          3.55,
+          -4.7,
+          1.62
+        ],
+        "target": [
+          0,
+          0.02,
+          0.8
+        ],
+        "lens_mm": 52,
+        "resolution": [
+          640,
+          360
+        ]
+      },
+      "actual_pixels_inspected": true,
+      "review": "Corrected ordinary1.62m view includes the complete base and feet; separate bowl, tap/controls, clean shelves and service-cover region communicate the clinical-support purpose without a lounge recolor or medicine imagery.",
+      "pass": true,
+      "confirmed_execution_argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "4",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "assets/clinical_architecture/qa/render_imported.py",
+        "--",
+        "002_standing_640",
+        "002_basin_supply_detail_1280",
+        "002_rear_service_detail_1280"
+      ],
+      "confirmed_exit_code": 0
+    },
+    {
+      "image": {
+        "path": "assets/clinical_architecture/qa/002_basin_supply_detail_1280.png",
+        "sha256": "36233fb0961e1bbc1aeb9efca638b1cb29e4aea4df9e338a3b14823a07a06a56"
+      },
+      "source": {
+        "path": "assets/clinical_architecture/source/AST-MED-002.blend",
+        "sha256": "39ab4098c5185348f3a578b690a0da3ac9f0c61265f6621bf935f189421dca23"
+      },
+      "export": {
+        "path": "assets/clinical_architecture/exports/AST-MED-002.glb",
+        "sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e"
+      },
+      "executed_render_script": {
+        "path": "assets/clinical_architecture/qa/executed_render_scripts/25cd66b13a34a443d956f254bd478a85cedf24dea03e8629463faaf2cd793ac5.py",
+        "sha256": "25cd66b13a34a443d956f254bd478a85cedf24dea03e8629463faaf2cd793ac5"
+      },
+      "successful_capture_log": {
+        "path": "assets/clinical_architecture/qa/render_supported_wash_final.log",
+        "sha256": "1825017bd5d61a0bd7547368dc44fd5f9ebdec2b53c2d055151f32f7841172f8"
+      },
+      "original_executed_view_key": "002_basin_supply_detail_1280",
+      "published_view_key": "002_basin_supply_detail_1280",
+      "camera_source_frame": {
+        "eye": [
+          1.45,
+          -2.0,
+          2.2
+        ],
+        "target": [
+          -0.05,
+          0.03,
+          1.06
+        ],
+        "lens_mm": 57,
+        "resolution": [
+          1280,
+          720
+        ]
+      },
+      "actual_pixels_inspected": true,
+      "review": "Higher explicit detail shows a real sloped bowl and floor, supported tap/nozzle, control bases and separated open supply shelves. No visible duplicate canted cap or material face conflict remains. The receiver-bar support was verified in actual geometry as a separate all-part check.",
+      "pass": true,
+      "confirmed_execution_argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "4",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "assets/clinical_architecture/qa/render_imported.py",
+        "--",
+        "002_standing_640",
+        "002_basin_supply_detail_1280",
+        "002_rear_service_detail_1280"
+      ],
+      "confirmed_exit_code": 0
+    },
+    {
+      "image": {
+        "path": "assets/clinical_architecture/qa/002_rear_service_detail_1280.png",
+        "sha256": "f8324c287bc16e00439a9c7798913a2447f83f0d528be71f8dc39730b7d29808"
+      },
+      "source": {
+        "path": "assets/clinical_architecture/source/AST-MED-002.blend",
+        "sha256": "39ab4098c5185348f3a578b690a0da3ac9f0c61265f6621bf935f189421dca23"
+      },
+      "export": {
+        "path": "assets/clinical_architecture/exports/AST-MED-002.glb",
+        "sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e"
+      },
+      "executed_render_script": {
+        "path": "assets/clinical_architecture/qa/executed_render_scripts/25cd66b13a34a443d956f254bd478a85cedf24dea03e8629463faaf2cd793ac5.py",
+        "sha256": "25cd66b13a34a443d956f254bd478a85cedf24dea03e8629463faaf2cd793ac5"
+      },
+      "successful_capture_log": {
+        "path": "assets/clinical_architecture/qa/render_supported_wash_final.log",
+        "sha256": "1825017bd5d61a0bd7547368dc44fd5f9ebdec2b53c2d055151f32f7841172f8"
+      },
+      "original_executed_view_key": "002_rear_service_detail_1280",
+      "published_view_key": "002_rear_service_detail_1280",
+      "camera_source_frame": {
+        "eye": [
+          -1.8,
+          2.7,
+          1.15
+        ],
+        "target": [
+          -0.12,
+          0.21,
+          0.69
+        ],
+        "lens_mm": 55,
+        "resolution": [
+          1280,
+          720
+        ]
+      },
+      "actual_pixels_inspected": true,
+      "review": "Rear detail shows three distinct blank capped supply/drain/control interfaces and actual collars against the rear wall; these remain unimplemented. Counter, support and tap joins are visually coherent.",
+      "pass": true,
+      "confirmed_execution_argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "4",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "assets/clinical_architecture/qa/render_imported.py",
+        "--",
+        "002_standing_640",
+        "002_basin_supply_detail_1280",
+        "002_rear_service_detail_1280"
+      ],
+      "confirmed_exit_code": 0
+    },
+    {
+      "image": {
+        "path": "assets/clinical_architecture/qa/001_track_detail_1280.png",
+        "sha256": "ca70169cf2d61218042f66f3f71e19360aee1809d4a8690823460ee4194be233"
+      },
+      "source": {
+        "path": "assets/clinical_architecture/source/AST-MED-001.blend",
+        "sha256": "9433d668e5671cdf0c29f57c90be5e631106c2ce6482f25396f49afe07cbc240"
+      },
+      "export": {
+        "path": "assets/clinical_architecture/exports/AST-MED-001.glb",
+        "sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a"
+      },
+      "executed_render_script": {
+        "path": "assets/clinical_architecture/qa/executed_render_scripts/45c6e46d629091493044478f80b5efcc1b4155670581216738e92edc47c0bd3d.py",
+        "sha256": "45c6e46d629091493044478f80b5efcc1b4155670581216738e92edc47c0bd3d"
+      },
+      "successful_capture_log": {
+        "path": "assets/clinical_architecture/qa/render_final.log",
+        "sha256": "dec8be0ba9397d1495ddfdc4b8ce5bc5cbc1a700bd6dd71828bddd0a935baad7"
+      },
+      "original_executed_view_key": "001_track_and_grip_detail_1280",
+      "published_view_key": "001_track_detail_1280",
+      "camera_source_frame": {
+        "eye": [
+          2.4,
+          -2.8,
+          2.48
+        ],
+        "target": [
+          0.65,
+          0.09,
+          1.94
+        ],
+        "lens_mm": 65,
+        "resolution": [
+          1280,
+          720
+        ]
+      },
+      "actual_pixels_inspected": true,
+      "review": "Intentional upper detail shows actual sleeves, hangers, continuous rod, stopped end and attached semantic plate. The grip is outside this crop and appears in both standing views.",
+      "pass": true,
+      "confirmed_execution_argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "4",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "assets/clinical_architecture/qa/render_imported.py",
+        "--",
+        "001_closed_standing_640",
+        "001_open_standing_640",
+        "002_standing_640",
+        "001_track_and_grip_detail_1280",
+        "002_basin_supply_detail_1280",
+        "002_rear_service_detail_1280"
+      ],
+      "confirmed_exit_code": 0
+    }
+  ],
+  "retained_unchanged001_views": 3,
+  "recaptured_supported002_views": 3,
+  "limits": [
+    "Component GLB inspection in Blender, not game/CRT, photometric, clinical, actor/species, structural-load or original-host acceptance.",
+    "Three deliberately cropped higher/rear details supplement the full ordinary standing frames. No detail crop is represented as an ordinary-height whole-object view.",
+    "All exact renderer snapshots are retained by hash. The upper screen detail was accurately renamed from the original track-and-grip execution label because the grip is outside its crop; image bytes and camera are unchanged."
+  ]
+}

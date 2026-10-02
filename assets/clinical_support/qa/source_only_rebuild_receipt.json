@@ -1,0 +1,69 @@
+{
+  "timestamp_utc": "2026-10-02T20:43:09.689064+00:00",
+  "runner_sha256": "201ec6e9c1df67f7521b162e06a13c718680521b7924c395092061f9b74519f7",
+  "dependency_manifest_sha256": "f312b06ab6703f6ce3272fda44c9965194804ce41c14ec74ac4b8ce16f997e1f",
+  "stage_relative": "qa/source_only_stage/catalogue",
+  "initial_input_paths": [
+    "assets/clinical_support/source/build_clinical_support.py",
+    "materials/care/care_bluegreen_resin.png",
+    "materials/care/care_brushed_metal.png",
+    "materials/care/care_soft_pad.png",
+    "materials/care/manifest.json",
+    "materials/champagne_metal.png",
+    "materials/clay_weave.png",
+    "materials/dark_rubber.png",
+    "materials/ivory_enamel.png",
+    "materials/material_manifest.json",
+    "materials/oatmeal_weave.png",
+    "materials/teal_weave.png",
+    "materials/warm_stone.png",
+    "materials/warm_walnut.png",
+    "standards/care_materials.py",
+    "standards/materials.py"
+  ],
+  "no_prior_outputs_or_qa_inputs": true,
+  "command": [
+    "blender",
+    "--background",
+    "--threads",
+    "2",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/clinical_support/qa/source_only_stage/catalogue/assets/clinical_support/source/build_clinical_support.py"
+  ],
+  "build_returncode": 0,
+  "build_log_sha256": "4919c48c537d508036c6d4a7d2659099ebd44e86f717cc7bd9e5d28e4d6bbe49",
+  "comparisons": [
+    {
+      "id": "AST-MED-003",
+      "glb_byte_equal": true,
+      "geometry_interface_record_equal": true,
+      "staged_glb_sha256": "ee5cafd00320b06bb3cb38a1026bd36dd0be11a2bcb538fd3014fb806aba43dc",
+      "staged_source_sha256": "140bc046520fb5826029ad5fdbf2d6e740f0e6b8569d0bc260dee76c58bd7e6d",
+      "packed_source_hash_note": "Editable blend bytes may differ due to saved staging pathname; compared via staged reload and semantic/export signatures"
+    },
+    {
+      "id": "AST-MED-004",
+      "glb_byte_equal": true,
+      "geometry_interface_record_equal": true,
+      "staged_glb_sha256": "f6f7ff53f120a5a415bc24261d3723ff72b77bfce003ffe9a2f1fdfa7abaa6e2",
+      "staged_source_sha256": "e5b88ca163fcd546288bfa1bbdf0bcb752e20497f84b582eb0a535e13f633a18",
+      "packed_source_hash_note": "Editable blend bytes may differ due to saved staging pathname; compared via staged reload and semantic/export signatures"
+    }
+  ],
+  "post_build_checkers": [
+    {
+      "script": "check_sources.py",
+      "sha256": "9445a87dc2d7bdacf9a706d7de1e5c038c0e5a7a11b65550a0c4273b800886e5",
+      "returncode": 0
+    },
+    {
+      "script": "validate_glb.py",
+      "sha256": "f5746b13d4d5b7f11c6b5da76c2ee1f0d7ded27919b0e40c4c4773c4faf87566",
+      "returncode": 0
+    }
+  ],
+  "post_build_validation": true,
+  "passes": true
+}
