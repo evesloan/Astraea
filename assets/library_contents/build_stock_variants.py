@@ -5,6 +5,7 @@ from pathlib import Path
 import bpy,json,math,sys,hashlib,copy
 from mathutils import Matrix
 ROOT=Path(__file__).resolve().parent
+(ROOT/'qa').mkdir(parents=True,exist_ok=True)
 sys.path.insert(0,str(ROOT));import build_library_contents as lib
 BASE=ROOT/'AST-LIB-006_upright_book_group.blend'
 BASE_INFO=json.loads(BASE.with_suffix('.manifest.json').read_text())

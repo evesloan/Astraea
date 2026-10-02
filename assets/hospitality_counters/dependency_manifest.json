@@ -45,5 +45,32 @@
       "catalogue_relative_path": "materials/warm_walnut.png",
       "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe"
     }
-  ]
+  ],
+  "collision_only_reproduction": {
+    "revision": "hospitality-static-compound-03",
+    "command": "blender --background --threads 2 --python-exit-code 1 --python assets/hospitality_counters/source/build_hospitality_counters.py -- --collision-only",
+    "required_existing_inputs": [
+      {
+        "catalogue_relative_path": "assets/hospitality_counters/source/build_hospitality_counters.py",
+        "sha256": "967acd9c8c7da058a754aec8af3365dba7c5c32fbd11c7e6a592ca792c07850b"
+      },
+      {
+        "catalogue_relative_path": "assets/hospitality_counters/source/AST-HSP-001.blend",
+        "sha256": "fa5deefeae8aa20e596b4f76606c733c1345e7bdc728e820bdf696191ecacad3"
+      },
+      {
+        "catalogue_relative_path": "assets/hospitality_counters/source/AST-HSP-002.blend",
+        "sha256": "cf6a0497eb577623314ceb5438da56dd6bb5383a7989905c2b127496a69cc195"
+      }
+    ],
+    "output": {
+      "catalogue_relative_path": "assets/hospitality_counters/collision_proposals.json",
+      "sha256": "b37c063ac25d0c926d278c5ba2085833ab2f94c632b3b0f1018be7ddb1ec953c"
+    },
+    "does_not_write": [
+      "existing Blender source files",
+      "visual GLB exports"
+    ],
+    "validation_catalogue_relative_path": "qa/batch08/counter_collision_revision/validation_report.json"
+  }
 }

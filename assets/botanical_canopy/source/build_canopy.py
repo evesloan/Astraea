@@ -6,6 +6,7 @@ import bpy, bmesh, math, json, hashlib, importlib.util
 from pathlib import Path
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]; CAT=ROOT.parents[1]
+(ROOT/'qa').mkdir(parents=True,exist_ok=True)
 spec=importlib.util.spec_from_file_location('botanical_materials',CAT/'standards/botanical_materials.py')
 mm=importlib.util.module_from_spec(spec);spec.loader.exec_module(mm)
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)

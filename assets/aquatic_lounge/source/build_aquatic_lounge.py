@@ -11,6 +11,7 @@ from mathutils import Vector
 from mathutils.bvhtree import BVHTree
 
 ROOT=Path(__file__).resolve().parents[1]
+for output_folder in ('source','exports','qa'):(ROOT/output_folder).mkdir(parents=True,exist_ok=True)
 CAT=ROOT.parents[1]
 sys.path.insert(0,str(CAT/'standards'))
 from materials import materials

@@ -1,0 +1,68 @@
+{
+  "decision": "PASS for bounded final source-backed compound proposals",
+  "input_sha256": "b37c063ac25d0c926d278c5ba2085833ab2f94c632b3b0f1018be7ddb1ec953c",
+  "current_revision": "hospitality-static-compound-03",
+  "counts": {
+    "original_straight": 26,
+    "original_curved": 263,
+    "final_straight": 34,
+    "final_curved": 121,
+    "other_four_hospitality_assets_unchanged": 110,
+    "original_hospitality_total": 399,
+    "final_hospitality_total": 265,
+    "reduction": 134
+  },
+  "per_asset": [
+    {
+      "id": "AST-HSP-001",
+      "shape_count": 34,
+      "represented_source_triangles": 1116,
+      "source_coverage_pass": true,
+      "path_checks": 5575,
+      "path_mismatches": 0,
+      "sampled_maximum_outside_actual_source_solid_m": 0.008371663484558334,
+      "fascia_sampled_maximum_m": 0.003764834857503948,
+      "terminal_sampled_maximum_m": 0.0027506769028979145
+    },
+    {
+      "id": "AST-HSP-002",
+      "shape_count": 121,
+      "represented_source_triangles": 4830,
+      "source_coverage_pass": true,
+      "path_checks": 14304,
+      "path_mismatches": 0,
+      "sampled_maximum_outside_actual_source_solid_m": 0.009648628966440208,
+      "fascia_sampled_maximum_m": 0.007813008136309566,
+      "terminal_sampled_maximum_m": 0.003189894025879799
+    }
+  ],
+  "source_generator_geometry_save_export_AST_prefix_unchanged": true,
+  "generator_sha256": "967acd9c8c7da058a754aec8af3365dba7c5c32fbd11c7e6a592ca792c07850b",
+  "corrections_required_by_review": [
+    "The60- and79-piece curved arc-only prototypes retained a whole-profile fascia hull. Deep tests to actual shelf rear depth found genuine9\u201323mm storage-depth losses despite broad central opening rays passing. They were rejected.",
+    "Five source-derived fascia height bands retain the real concave backing profile. Exact polygon subtraction handles source cap triangles spanning the convex bands without treating finite vertex probes as complete coverage.",
+    "Terminal toe/full-height hulls initially filled a real end/plinth recess. Height splits remove that invisible obstruction; additional source-fitted guest-profile splits reduce terminal surface overreach to\u22643.19mm at sampled points.",
+    "The upper ivory rail uses a tighter arc parameter to preserve the actual deep upper-shelf endpoint. Final source/export geometry is unchanged."
+  ],
+  "residual_approximation": [
+    "The largest independent sampled outside-solid error is9.649mm at the small shelf/front-lip convexification. This affects the region immediately above the shelf near its rolled lip; specified usable service height intervals and deep rear paths remain clear.",
+    "Fascia measured error is\u22647.814mm curved and\u22643.765mm straight; combined radial/profile approximation is not universally5mm accurate.",
+    "Terminal measured error is\u22643.190mm after source-fitted splits. Floor support, seam endpoints, top support and accessible toe recess witnesses remain valid.",
+    "Drawer front bevel envelope retains about5.774mm sampled error; moving pan/walls/front remain separate from static supports. Decorative ribs/reveal/grip remain omitted as in the original numerical proposal."
+  ],
+  "evidence_limits": [
+    "Independent surface maxima are finite-sample results, not global Hausdorff guarantees. Author report additionally records complete face-net covering-radius bounds.",
+    "All5,946 represented source surface triangles are continuously covered by matching functional-group hull unions; decoration omissions are explicit.",
+    "The19,879 source/compound paths, continuum corridor rectangles, prescribed drawer sweep and negative controls establish only their geometric scopes. No engine solver/contact response/controller/actor certification follows."
+  ],
+  "receipts": [
+    {
+      "path": "qa/batch08/independent_collision_report.json",
+      "sha256": "3fd301a4985eac5106c66101fc934cbf43c5bb56c4e4131bf460da3ef5883bac"
+    },
+    {
+      "path": "qa/batch08/independent_collision_30_117_accepted_checkpoint.json",
+      "sha256": "573f023d2906c0d4d7d709bfc8b12639198b275f62edb401b1b45b140979726c"
+    }
+  ]
+}

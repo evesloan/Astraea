@@ -74,4 +74,4 @@ for role,is_chart in [('folio_text_page',False),('folio_chart_page',True)]:
  records[role]['original_pixel_recipe']='Original hand-designed typography, research page marks and orbital diagram; all generated from code'
  records[role]['mapping']='Single semantic page layout with physical .176 by .219 metre UV rectangle, not a mixed-role atlas'
 for r in records.values():r['sha256']=hashlib.sha256((TEX/r['base_color_file']).read_bytes()).hexdigest()
-(ROOT/'texture_manifest.json').write_text(json.dumps({'resolution_px':[256,256],'provenance':'Original procedural colour pixels and hand-authored glyphs. No copied image pixels, external models, or font files.','materials':records},indent=2))
+(ROOT/'texture_manifest.json').write_text(json.dumps({'interface_revision':'library-texture-paths-02','texture_root':'textures','path_base':'directory_containing_this_manifest','base_color_file_resolution':'texture_root/base_color_file','resolution_px':[256,256],'provenance':'Original procedural colour pixels and hand-authored glyphs. No copied image pixels, external models, or font files.','materials':records},indent=2))

@@ -14,10 +14,12 @@ def reset():
  bpy.ops.wm.read_factory_settings(use_empty=True)
  bpy.context.scene.unit_settings.system='METRIC';bpy.context.scene.unit_settings.scale_length=1
  M=materials();PARTS=[];BOOKS=[]
- for role,r in json.loads((ROOT/'texture_manifest.json').read_text())['materials'].items():
+ texture_info=json.loads((ROOT/'texture_manifest.json').read_text())
+ texture_root=ROOT/texture_info.get('texture_root','textures')
+ for role,r in texture_info['materials'].items():
   m=bpy.data.materials.new('ASTRAEA_'+role);m.use_nodes=True;m['astraea_material_role']=role;m['meters_per_tile_uv']=r['meters_per_tile_uv'];m['texture_revision']='Original book details 01'
   bs=m.node_tree.nodes.get('Principled BSDF');bs.inputs['Roughness'].default_value=r['roughness'];bs.inputs['Metallic'].default_value=0
-  im=bpy.data.images.load(str(ROOT/'textures'/r['base_color_file']),check_existing=True);im.pack()
+  im=bpy.data.images.load(str(texture_root/r['base_color_file']),check_existing=True);im.pack()
   tex=m.node_tree.nodes.new('ShaderNodeTexImage');tex.image=im;tex.interpolation='Linear';tex.extension='REPEAT';m.node_tree.links.new(tex.outputs['Color'],bs.inputs['Base Color']);M[role]=m
 
 def metric_uv(ob):
@@ -150,7 +152,7 @@ def finish(info,slug):
  'source_generator':'build_library_contents.py','texture_generator':'make_book_textures.py','qa_scope':'Blender component evidence only; original game, Godot integration, actor acceptance, collision behavior and runtime performance are untested',
  'materials':sorted(set(ob['semantic_role'] for ob in PARTS)),'export':{'format':'GLB','Y_up':True,'geometry':'One static visual mesh consolidated into semantic material primitives','active_uv_name':'UV_Metric_Metres','embedded_textures':True,'collision_exported':False},
  'shared_material_source_sha256':hashlib.sha256((BASE/'standards/materials.py').read_bytes()).hexdigest(),'shared_material_manifest_sha256':hashlib.sha256((BASE/'materials/material_manifest.json').read_bytes()).hexdigest(),
- 'source_generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'texture_generator_sha256':hashlib.sha256((ROOT/'make_book_textures.py').read_bytes()).hexdigest()})
+ 'source_generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'texture_generator_sha256':hashlib.sha256((ROOT/'make_book_textures.py').read_bytes()).hexdigest(),'texture_manifest_interface_revision':json.loads((ROOT/'texture_manifest.json').read_text()).get('interface_revision','legacy-implicit-paths'),'texture_manifest_sha256':hashlib.sha256((ROOT/'texture_manifest.json').read_bytes()).hexdigest()})
  lo=info['bounds_min_m'];hi=info['bounds_max_m']
  col={'catalogue_id':info['catalogue_id'],'status':'Proposal only, not exported or engine tested. Static grouping; interaction breakup must generate new per-volume collisions.','coordinates':'Blender metres Z up, front -Y','proposed_static_shapes':[]}
  if info['catalogue_id']=='AST-LIB-006':

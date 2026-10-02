@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "scope": "Actual isolated generator rebuild and four exported byte comparisons; no render, no current master overwrite, no network",
+  "commands": [
+    {
+      "script": "build_library_contents.py",
+      "exit_code": 0,
+      "render": false
+    },
+    {
+      "script": "build_stock_variants.py",
+      "exit_code": 0,
+      "render": false
+    }
+  ],
+  "inputs": [
+    {
+      "path": "assets/library_contents/build_library_contents.py",
+      "sha256": "a878c2f61173db874615de18b203ce2fd6550a90df86bb81ee48c3a72361481f"
+    },
+    {
+      "path": "assets/library_contents/build_stock_variants.py",
+      "sha256": "375963140fa74c1006d72c1c270533d7a5b8b1047a80fa42f8c2b2f4e688c7a6"
+    },
+    {
+      "path": "assets/library_contents/make_book_textures.py",
+      "sha256": "88140a1e3521b73df9c33313bb488313f7490dcd955a3c92fd7be51939004e3a"
+    },
+    {
+      "path": "assets/library_contents/texture_manifest.json",
+      "sha256": "60e73b95cbb0c1bb8d87553c92f2b52f85a4e89b5d6dc9d17c4b1964518d6cdc"
+    },
+    {
+      "path": "standards/materials.py",
+      "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78"
+    }
+  ],
+  "byte_identical_glb_rebuilds": [
+    {
+      "export": "assets/library_contents/AST-LIB-006_upright_book_group.glb",
+      "sha256": "738354f196511820457230760f86237d6ce82d333326a8343ef8553663e31b84",
+      "isolated_generated_bytes_identical": true
+    },
+    {
+      "export": "assets/library_contents/AST-LIB-006_upright_book_group_reordered.glb",
+      "sha256": "c9392c1ea3e594ceb0ef1d20872e985f9f38ed9154bc6ac5340f69257aac2ab0",
+      "isolated_generated_bytes_identical": true
+    },
+    {
+      "export": "assets/library_contents/AST-LIB-006_upright_book_group_short_flat.glb",
+      "sha256": "4be5a7da2a0db6728182fa0d6ad3ab6a2843e3c401979c28443c47b5faa27419",
+      "isolated_generated_bytes_identical": true
+    },
+    {
+      "export": "assets/library_contents/AST-LIB-007_open_folio_stack.glb",
+      "sha256": "be04e9ab7dbe3b555d272f1d72acfdee477cc274a4f64d6f5a6a57510bec5c54",
+      "isolated_generated_bytes_identical": true
+    }
+  ],
+  "unchanged_current_master_files": {
+    "assets/library_contents/AST-LIB-007_open_folio_stack.glb": "be04e9ab7dbe3b555d272f1d72acfdee477cc274a4f64d6f5a6a57510bec5c54",
+    "assets/library_contents/AST-LIB-006_upright_book_group_reordered.glb": "c9392c1ea3e594ceb0ef1d20872e985f9f38ed9154bc6ac5340f69257aac2ab0",
+    "assets/library_contents/AST-LIB-007_open_folio_stack.blend": "c10dbd29c712b34c749eacb618b4b18c418dca6e56dfc3076ba4b006295cf0de",
+    "assets/library_contents/AST-LIB-006_upright_book_group.blend": "e99e041fd51efb9a818a7cbef5cc27a4480dbd07d6e7ab84c312a25ff1da9f22",
+    "assets/library_contents/AST-LIB-006_upright_book_group.glb": "738354f196511820457230760f86237d6ce82d333326a8343ef8553663e31b84",
+    "assets/library_contents/AST-LIB-006_upright_book_group_short_flat.glb": "4be5a7da2a0db6728182fa0d6ad3ab6a2843e3c401979c28443c47b5faa27419",
+    "assets/library_contents/textures/book_print_ink.png": "1f52f03ffd3d88a5e6b422e8fb38b08bc71da91b54805f175908994b893f0aab",
+    "assets/library_contents/textures/book_paper_edges.png": "191efc92a5c8f573c195c9f148dfaf44c64c51c3e38974f83420692368bd0be0",
+    "assets/library_contents/textures/folio_chart_page.png": "d887af792d4412c77eb16c914ec79f82ffb49b7c806532de98fa591012782419",
+    "assets/library_contents/textures/book_label_paper.png": "c6fada7750dcd515625ed6d9c6a9ac4f99ffdf306abcfb14dc5cb9ae8fb21d28",
+    "assets/library_contents/textures/book_cover_clay.png": "f29731b102fbf2e1ac861e7c703070e4ab4b6ac2c5763211096c4725b7925fea",
+    "assets/library_contents/textures/book_cover_teal.png": "0b50f02d95f7cd49aaf450106dae35e4253ae71ed6087b3c688596622376d269",
+    "assets/library_contents/textures/folio_text_page.png": "f667d073936a6ed23e08c639aebdc8a2bacb4c58fd6bb0bbbf2de1b21b955226",
+    "assets/library_contents/textures/book_cover_ochre.png": "4c1debde36cf59a09a5a30babf31460058a9288f4e32c27851911a394bc0faf2"
+  },
+  "temporary_staging_removed": true
+}

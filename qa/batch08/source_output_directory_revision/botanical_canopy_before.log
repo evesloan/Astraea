@@ -1,0 +1,32 @@
+Info: Saved "AST-BOT-001.blend"
+ERROR Draco mesh compression is not available because library could not be found at /usr/bin/4.3/python/lib/python3.13/site-packages/libextern_draco.so
+09:05:14 | INFO: Starting glTF 2.0 export
+09:05:14 | INFO: Extracting primitive: 01_primary_S_trunk_editable_path
+09:05:14 | INFO: Primitives created: 1
+09:05:14 | INFO: Extracting primitive: 40_leaves_tier_01_spray_1_jade_folded_leaf_mesh.001
+09:05:14 | INFO: Primitives created: 1
+09:05:14 | INFO: Extracting primitive: 40_leaves_tier_01_spray_1_sage_folded_leaf_mesh.001
+09:05:14 | INFO: Primitives created: 1
+09:05:14 | INFO: Extracting primitive: 40_leaves_tier_01_spray_1_olive_folded_leaf_mesh.001
+09:05:14 | INFO: Primitives created: 1
+09:05:14 | INFO: Finished glTF 2.0 export in 0.03540658950805664 s
+Traceback (most recent call last):
+  File "/tmp/astraea-output-dir-before-x6israz4/assets/botanical_canopy/source/build_canopy.py", line 180, in <module>
+    (ROOT/'qa/support_contacts.json').write_text(json.dumps({'scope':'Actual authored path geometry; analytical capped-support overlap and exact leaf-base contact','soil_contact_z_m':0.0,'branch_contacts':CONTACTS,'leaf_contacts':LEAF_RECORDS,'all_child_starts_inside_parent_radius':all(c['parent_centerline_distance_m']<c['parent_radius_m'] for c in CONTACTS),'all_branch_contacts_positive':all(c['radial_overlap_m']>0 for c in CONTACTS),'all_leaf_base_gaps_zero':all(r['petiole_to_leaf_base_gap_m']==0 for r in LEAF_RECORDS)},indent=2))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 557, in write_text
+    return PathBase.write_text(self, data, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 651, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/astraea-output-dir-before-x6israz4/assets/botanical_canopy/qa/support_contacts.json'
+
+Error: script failed, file: '/tmp/astraea-output-dir-before-x6israz4/assets/botanical_canopy/source/build_canopy.py', exiting.
+
+Blender 4.3.2
+
+Blender quit

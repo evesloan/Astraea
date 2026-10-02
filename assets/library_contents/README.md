@@ -31,3 +31,9 @@ Collision JSON files contain numeric static-group proposals only. Individual pic
 ## Evidence
 
 `qa/glb_independent_validation.json` independently parses every binary GLB and checks geometry, dimensions, triangle counts, material/image references, exact embedded PNG bytes, winding, transforms and nonzero UV triangle area. `qa/source_reload_import_audit.json` reloads both `.blend` sources and imports their actual GLBs. `qa/variant_source_import_audit.json` compares both derived recipes with actual GLB imports. Review images show actual imported GLBs on neutral QA support surfaces at ordinary standing/seated camera heights, with separate detail views. They are Blender component evidence, not game output.
+
+## Explicit texture path revision
+
+Batch08 adds `library-texture-paths-02`: each `base_color_file` resolves under `texture_root` (`textures/`) relative to the texture manifest directory. The loader honors that declared root, with the former folder as a backward-compatible default. All eight regenerated PNGs are byte-identical; editable masters and exported GLBs are unchanged. Current generator/manifest dependencies are versioned, while original export generator hashes remain separate provenance records.
+
+The variant generator also creates its own QA output directory before writing its verification record, so it runs from the compact source-only package without requiring an omitted review-media folder.

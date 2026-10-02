@@ -1,0 +1,79 @@
+{
+  "metadata_and_AST_scope_pass": true,
+  "source_changes": [
+    {
+      "path": "assets/botanical_canopy/source/build_canopy.py",
+      "baseline_sha256": "1ffd9a8071f8eb9d8f5ff8aa2e6da93bfe7a8a6b28ad859d2cf41adb1cf815c9",
+      "current_sha256": "8f25dd670481663f884d8f7795bb3688ae5f12bc4c54cef3b293917596c6e4b8",
+      "only_added_AST_statement": "(ROOT / 'qa').mkdir(parents=True, exist_ok=True)",
+      "all_existing_AST_nodes_identical": true
+    },
+    {
+      "path": "assets/aquatic_lounge/source/build_aquatic_lounge.py",
+      "baseline_sha256": "a73f32d2a14b131a8a1777d9ec4c9056469a9ddab13cc38e6cbc41fbb5a61e79",
+      "current_sha256": "5db2a1b1e75386d1eef3561bf65df188d936769a44aee38c3dabcd49c71fe093",
+      "only_added_AST_statement": "for output_folder in ('source', 'exports', 'qa'):\n    (ROOT / output_folder).mkdir(parents=True, exist_ok=True)",
+      "all_existing_AST_nodes_identical": true
+    }
+  ],
+  "metadata_changes": [
+    {
+      "path": "assets/aquatic_lounge/AST-AQU-001.manifest.json",
+      "changed_json_pointers": [
+        "/generator_sha256",
+        "/generator_sha256_at_original_export"
+      ],
+      "all_geometry_contacts_materials_motion_and_dimensions_preserved": true
+    },
+    {
+      "path": "assets/aquatic_lounge/AST-AQU-002.manifest.json",
+      "changed_json_pointers": [
+        "/generator_sha256",
+        "/generator_sha256_at_original_export"
+      ],
+      "all_geometry_contacts_materials_motion_and_dimensions_preserved": true
+    },
+    {
+      "path": "assets/aquatic_lounge/manifest.json",
+      "changed_json_pointers": [
+        "/assets/0/generator_sha256",
+        "/assets/0/generator_sha256_at_original_export",
+        "/assets/1/generator_sha256",
+        "/assets/1/generator_sha256_at_original_export"
+      ],
+      "all_geometry_contacts_materials_motion_and_dimensions_preserved": true
+    }
+  ],
+  "six_original_source_export_binaries_frozen": true,
+  "lead_revision_receipt": {
+    "path": "qa/batch08/source_output_directory_revision/revision_report.json",
+    "sha256": "7089aeab11e072763ae471fb760dfe77a83be84779fe7797fcf5b04c9b07959f"
+  },
+  "isolated_rebuild_evidence": {
+    "path": "qa/batch08/source_output_directory_revision/isolated_rebuild_report.json",
+    "sha256": "6b34220997c0014b5bdadfd82f1867a222049f57779055a737d09deabcee4f9c",
+    "cases": [
+      {
+        "family": "botanical_canopy",
+        "before_expected_failure": true,
+        "after_current_input_bound_and_complete": true,
+        "exports": [
+          "assets/botanical_canopy/AST-BOT-001.glb"
+        ],
+        "log_sha256": "50785b1c4414dcef63b72329ad0e2e23c88525a0ce64fd1b068e2d3e4c362fda"
+      },
+      {
+        "family": "aquatic_lounge",
+        "before_expected_failure": true,
+        "after_current_input_bound_and_complete": true,
+        "exports": [
+          "assets/aquatic_lounge/exports/AST-AQU-001.glb",
+          "assets/aquatic_lounge/exports/AST-AQU-002.glb"
+        ],
+        "log_sha256": "5002512a942fb0bf7b4488e30deebc33ea3ddc47d760c04fb82a6ed83fa1004d"
+      }
+    ],
+    "scope": "Lead execution inspected; exact current input/output bindings, completion and preserved binaries independently verified. Reviewer did not redundantly execute Blender."
+  },
+  "pass": true
+}

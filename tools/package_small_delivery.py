@@ -61,7 +61,12 @@ def main():
    write_zip('Source_Assets',sources,'CURRENT EDITABLE CATALOGUE SOURCE/ASSETS. Extract normally. Materials and generator dependencies are included. Review media and optional history are separate. This is not the missing original game.')
   buckets=[[]];size=0
   for item in reviews:
-   if len(item[1])>PAYLOAD:raise ValueError('One review file needs a separate bounded delivery strategy: '+item[0])
+   # Large structured evidence may compress to a small ordinary ZIP. Keep it
+   # whole in a dedicated bucket; write_zip still enforces the actual 8MB cap.
+   # No file is truncated, rewritten, split internally, or silently omitted.
+   if len(item[1])>PAYLOAD:
+    if buckets[-1]:buckets.append([])
+    buckets[-1].append(item);buckets.append([]);size=0;continue
    if buckets[-1] and size+len(item[1])>PAYLOAD:buckets.append([]);size=0
    buckets[-1].append(item);size+=len(item[1])
   for i,items in enumerate(buckets,1):

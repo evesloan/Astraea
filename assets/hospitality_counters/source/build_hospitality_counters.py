@@ -1,7 +1,7 @@
 """Original script-assisted editable hospitality counters, Blender 4.3.2.
 No game geometry or external mesh assets. Frozen shared material helpers reused.
 """
-import bpy,bmesh,math,json,hashlib,importlib.util
+import bpy,bmesh,math,json,hashlib,importlib.util,sys
 from pathlib import Path
 from mathutils import Vector
 BASE=Path(__file__).resolve().parents[1];CAT=BASE.parents[1]
@@ -133,8 +133,9 @@ def build(kind,ident):
  for p in physical:p['glb_m']=conv(p['source_m'])
  rec={'catalogue_id':ident,'name':'Fitted hospitality pantry counter' if kind=='straight' else'Compatible curved hospitality return','dimensions_blender_xyz_m':[hi[k]-lo[k] for k in range(3)],'title':'Fitted hospitality pantry counter' if kind=='straight' else'Compatible curved hospitality return','unique_design':True,'units':'metres','source':str(sources.relative_to(BASE)),'export':str(dest.relative_to(BASE)),'generator':'source/build_hospitality_counters.py','script_assisted_original_design':True,'provenance':'Original intentionally shaped geometry and script; actual hospitality reference pixels inspected. Frozen shared original material helpers reused. No imported game meshes or recovered-source claim.','source_frame':'Blender +Z up, guest front -Y at entry, staff +Y, entry floor seam datum','glb_frame':'Native glTF +Y up, source (x,y,z)->(x,z,-y); actual node hierarchy authoritative','pivot_source_m':[0,0,0],'pivot_glb_m':[0,0,0],'bounds_blender_z_up':{'min_m':lo,'max_m':hi,'dimensions_m':[hi[k]-lo[k] for k in range(3)]},'evaluated_triangles':tri,'editable_semantic_parts':len(obs),'semantic_parts':[o.name for o in obs],'material_roles':sorted(set(o['material_role'] for o in obs)),'runtime_consolidation':'By semantic material role within functional group; removable shelves and proposed drawer remain distinct','joints':joints,'mating_section_file':'counter_interface.json','physical_contacts':physical,'nominal_worktop_z_m':.90,'nominal_depth_m':.78,'closed_terminal_treatment':'Entry and exit shaped ivory end bulkheads are fully closed meshes and support the stone slab. They remain in adjoining modules; no missing terminal cap is required.','staff_use':'Rear-open service shelving with raised retaining lip. Pan drawer translates +Y as proposal only.' if kind=='straight' else'Inside-curve open shelving with radial supports; countertop return surface; no door or appliance function.','drawer_proposal':{'source_axis':[0,1,0],'glb_axis':[0,0,-1],'travel_m':.32,'grip_source_m':grip,'grip_glb_m':conv(grip),'internal_clear_envelope_source_m':{'min':[.848,-.244,.664],'max':[1.552,.339,.798]},'external_proposed_sweep_source_m':{'min':[.827,-.260,.645],'max':[1.573,.739,.817]},'status':'named geometry and proposed linear slide only; no animation, physics or load claim'} if grip else None,'limitations':['Independent component catalogue only','No original game, room, physics, food hygiene, electrical, structural, species/accessibility or target-PC certification'],'source_sha256':hashlib.sha256(sources.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(dest.read_bytes()).hexdigest()}
  if kind=='turn':rec['staff_shelf_access']=CURVED_SERVICE_ACCESS
- (BASE/f'{ident}.manifest.json').write_text(json.dumps(rec,indent=2)+'\n');RECORDS.append(rec)
  COLLISIONS[ident]=collisions(kind,obs)
+ rec['collision_proposal']=collision_manifest_record(ident,COLLISIONS[ident])
+ (BASE/f'{ident}.manifest.json').write_text(json.dumps(rec,indent=2)+'\n');RECORDS.append(rec)
 
 def worldpoint(kind,s,d,z):
  x,y,tx,ty,_=st(kind,s);return(x-ty*d,y+tx*d,z)
@@ -165,28 +166,178 @@ def export(obs,path,ident):
  bpy.context.view_layer.objects.active=out[0];bpy.ops.export_scene.gltf(filepath=str(path),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_materials='EXPORT',export_texcoords=True,export_normals=True,export_cameras=False,export_lights=False)
  for ob in out:bpy.data.objects.remove(ob,do_unlink=True)
 
-def collisions(kind,obs):
+# Batch08 collision revision: consolidate actual source rows, never rebuild visuals
+# in --collision-only mode. Profile bands retain the real bowed fascia instead
+# of the prior whole-profile infill. A radial chord bound chooses the arc span.
+COLLISION_REVISION='hospitality-static-compound-03'
+COLLISION_CHORD_LIMIT_M=.005
+
+def profile_overreach_bound(profile):
+ """Exact depth-axis bound of a 2D convex profile at every input height.
+ Piecewise-linear source/envelope differences attain maxima at these knots.
+ """
+ outer=profile;pts=sorted(set(tuple(p) for p in outer+[(d+.024,z) for d,z in outer]))
+ def cross(o,a,b):return(a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0])
+ lower=[]
+ for p in pts:
+  while len(lower)>=2 and cross(lower[-2],lower[-1],p)<=0:lower.pop()
+  lower.append(p)
+ upper=[]
+ for p in reversed(pts):
+  while len(upper)>=2 and cross(upper[-2],upper[-1],p)<=0:upper.pop()
+  upper.append(p)
+ hull=lower[:-1]+upper[:-1];error=0.
+ for d,z in outer:
+  depths=[]
+  for a,b in zip(hull,hull[1:]+hull[:1]):
+   if min(a[1],b[1])-1e-10<=z<=max(a[1],b[1])+1e-10:
+    if abs(a[1]-b[1])<1e-10:depths.extend([a[0],b[0]])
+    else:depths.append(a[0]+(b[0]-a[0])*(z-a[1])/(b[1]-a[1]))
+  error=max(error,d-min(depths),max(depths)-d-.024)
+ return max(0.,error)
+
+def collision_sections(kind,parts):
+ """Pure data operation, shared by normal builds and read-only source reloads.
+
+ Each part supplies source-frame raw vertices in profile-row order plus its
+ 2D profile. Bounds are
+ derived from those actual points, including the special planar seam rows.
+ """
+ parts={p['name']:p.copy() for p in parts}
+ # The old whole-fascia hull filled genuine lower-shelf depth. Split its bowed
+ # profile first. Only adjacent spans with <=5mm exact depth infill can combine.
+ fascia=parts.pop('bowed_guest_walnut_shell');profile=fascia['profile'];half=len(profile)//2
+ outer=profile[:half];first=0;band=0
+ while first<half-1:
+  last=first+1
+  while last+1<half and profile_overreach_bound(outer[first:last+2])<=.005+1e-12:last+=1
+  inds=list(range(first,last+1))+[len(profile)-1-j for j in reversed(range(first,last+1))]
+  pts=fascia['points'];sub=fascia.copy();sub['points']=[pts[k+j] for k in range(0,len(pts),len(profile)) for j in inds]
+  sub['profile_size']=len(inds);sub['semantic_parts']=['bowed_guest_walnut_shell'];sub['semantic_name']='bowed_guest_walnut_shell'
+  sub['profile_vertex_interval']=[first,last];sub['profile_depth_overreach_bound_m']=profile_overreach_bound(outer[first:last+1])
+  parts[f'bowed_guest_walnut_shell__profile_band_{band}']=sub;first=last;band+=1
+ # Follow the actual toe step and changes in guest-facing terminal curvature.
+ # Four height pieces remove both the toe void fill and old guest-side bulges.
+ def clip_height(poly,z,above):
+  out=[]
+  for a,b in zip(poly,poly[1:]+poly[:1]):
+   ia=a[2]>=z if above else a[2]<=z;ib=b[2]>=z if above else b[2]<=z
+   if ia:out.append(a)
+   if ia!=ib:
+    t=(z-a[2])/(b[2]-a[2]);out.append([a[k]+t*(b[k]-a[k]) for k in range(3)])
+  return out
+ for terminal in ['entry_closed_shaped_terminal_bulkhead','exit_closed_shaped_terminal_bulkhead']:
+  part=parts.pop(terminal);n=part['profile_size'];points=part['points']
+  for label,lo,hi in [('foot',0.,.124),('lower_return',.124,.164),
+                      ('middle_body',.164,.58),('upper_return',.58,.852)]:
+   rows=[clip_height(clip_height(points[k:k+n],lo,True),hi,False) for k in range(0,len(points),n)]
+   assert all(len(row)==len(rows[0]) for row in rows)
+   sub=part.copy();sub['points']=[v for row in rows for v in row];sub['profile_size']=len(rows[0])
+   sub['semantic_parts']=[terminal];sub['semantic_name']=terminal
+   sub['profile_source_z_interval_m']=[lo,hi];parts[terminal+'__'+label]=sub
+ # The small rolled front lip shares its shelf's row stations and lower face.
+ # Keep the higher rear upstand separate, avoiding a wedge across shelf access.
+ pairs=([('left_open_service_shelf','left_shelf_front_rolled_lip'),
+         ('right_open_service_shelf','right_shelf_front_rolled_lip')]
+        if kind=='straight' else
+        [('curved_open_service_shelf','curved_shelf_inner_rolled_lip')])
+ for shelf,lip in pairs:
+  a=parts[shelf];b=parts.pop(lip);na=a['profile_size'];nb=b['profile_size']
+  assert len(a['points'])//na==len(b['points'])//nb
+  aa=a['points'];bb=b['points'];a['points']=[]
+  for i in range(len(aa)//na):a['points']+=aa[i*na:(i+1)*na]+bb[i*nb:(i+1)*nb]
+  a['profile_size']=na+nb;a['semantic_parts']=[shelf,lip]
  proposals=[]
- # Small per-part boxes for straight joinery; actual mesh vertices in segmented
- # convex profiles for curved shell/top preserve the concave staff-side opening.
+ for name,p in sorted(parts.items()):
+  points=p['points'];n=p['profile_size'];nrows=len(points)//n if n else 1
+  # Upper rear rail has only 4mm source clearance to the deep shelf endpoint.
+  # Limit its chord to2.5mm, preserving that real thin clearance.
+  chord_limit=min(COLLISION_CHORD_LIMIT_M,.0025) if name=='upper_ivory_bullnose_rail' else COLLISION_CHORD_LIMIT_M
+  start=0
+  while start < (nrows-1 if kind=='turn' and nrows>2 else 1):
+   stop=start+1
+   if kind=='turn' and nrows>2:
+    while stop+1<nrows:
+     trial=points[start*n:(stop+2)*n]
+     radii=[math.hypot(x,R-y) for x,y,z in trial]
+     angles=[math.atan2(x,R-y) for x,y,z in trial]
+     bound=max(radii)*(1-math.cos((max(angles)-min(angles))/2))
+     if bound>chord_limit+1e-12:break
+     stop+=1
+    chosen=points[start*n:(stop+1)*n]
+   else:chosen=points
+   angles=[math.atan2(x,R-y) for x,y,z in chosen] if kind=='turn' else []
+   chord=max(math.hypot(x,R-y) for x,y,z in chosen)*(1-math.cos((max(angles)-min(angles))/2)) if angles else 0.
+   semantic_name=p.get('semantic_name',name)
+   rec={'semantic_part':semantic_name,'semantic_parts':p.get('semantic_parts',[name]),
+        'section':sum(q['semantic_part']==semantic_name for q in proposals),
+        'type':'convex_hull_points','source_points_m':chosen,
+        'glb_points_m':[conv(x) for x in chosen],
+        'functional_group':p['functional_group'],
+        'source_row_interval':[start,stop] if nrows>2 and kind=='turn' else [0,max(0,nrows-1)],
+        'maximum_radial_chord_bound_m':chord,'radial_chord_limit_m':chord_limit}
+   if 'profile_vertex_interval' in p:rec['profile_vertex_interval']=p['profile_vertex_interval'];rec['profile_depth_overreach_bound_m']=p['profile_depth_overreach_bound_m']
+   if 'profile_source_z_interval_m' in p:rec['profile_source_z_interval_m']=p['profile_source_z_interval_m']
+   proposals.append(rec)
+   start=stop if kind=='turn' and nrows>2 else 1
+ return {'source_frame':'Blender source metres +Z up',
+         'glb_frame':'Native glTF metres +Y up, source (x,y,z) converted once to (x,z,-y)',
+         'revision':COLLISION_REVISION,'maximum_radial_chord_limit_m':COLLISION_CHORD_LIMIT_M,
+         'status':f'Offline static compound proposal. Continuous source profile rows consolidated within a {COLLISION_CHORD_LIMIT_M*1000:g} mm radial chord bound. Bowed fascia split into source-backed vertical bands with at most 5 mm profile-depth infill; rails, slab, floor plinths, base shelf, higher shelf upstands, end bulkheads and radial supports remain distinct. Front rolled lips join their own shelf; drawer stays separate. Thin decorative ribs, reveal and drawer grip remain omitted. No engine physics or performance certification.',
+         'approximation_note':'All represented source triangles remain covered. Prior whole-fascia convexification is intentionally removed because it blocked real lower shelf depth. Arc consolidation and shelf/lip convexification can occupy nearby empty space; measured two-sided source-surface error and bounded access evidence are in qa/batch08/counter_collision_revision/validation_report.json.',
+         'proposals':proposals}
+
+def collisions(kind,obs):
+ parts=[]
  for ob in obs:
   if ob.name.startswith('vertical_walnut_rib') or 'champagne_shadow' in ob.name or 'grip' in ob.name:continue
   profile=json.loads(ob['profile_depth_height_m']) if 'profile_depth_height_m' in ob else None
-  points=[list(v.co) for v in ob.data.vertices]
-  if profile and kind=='turn' and len(points)>2*len(profile):
-   n=len(profile)
-   for k in range(len(points)//n-1):
-    p=points[k*n:(k+2)*n];proposals.append({'semantic_part':ob.name,'segment':k,'type':'convex_hull_points','source_points_m':p,'glb_points_m':[conv(x) for x in p],'functional_group':ob['functional_group']})
-  else:
-   proposals.append({'semantic_part':ob.name,'type':'convex_hull_points','source_points_m':points,'glb_points_m':[conv(x) for x in points],'functional_group':ob['functional_group']})
- return{'source_frame':'Blender source metres +Z up','glb_frame':'Native glTF metres +Y up, converted from source point once','status':'Conservative offline convex piece proposals. Not assigned to any engine. Excludes thin ornament; retains shelf and drawer solids without filling open rear compartments. Concave curved pieces split by arc station.','proposals':proposals}
+  parts.append({'name':ob.name,'profile_size':len(profile) if profile else 0,'profile':profile,
+                'points':[list(ob.matrix_world@v.co) for v in ob.data.vertices],
+                'functional_group':ob['functional_group']})
+ return collision_sections(kind,parts)
+
+def collision_manifest_record(ident,data):
+ return {'path':'collision_proposals.json','revision':data['revision'],
+         'shape_count':len(data['proposals']),
+         'baseline_batch07_shape_count':26 if ident=='AST-HSP-001' else 263,
+         'maximum_radial_chord_limit_m':data['maximum_radial_chord_limit_m'],
+         'maximum_fascia_profile_depth_limit_m':.005,
+         'maximum_upper_rail_radial_chord_limit_m':min(data['maximum_radial_chord_limit_m'],.0025),
+         'terminal_profile_height_cuts_source_z_m':[.124,.164,.58],
+         'drawer_separate_convex_piece_count':sum(p['functional_group']=='proposed_linen_drawer' for p in data['proposals']),
+         'source_frame':data['source_frame'],'glb_frame':data['glb_frame'],
+         'validation_catalogue_relative_path':'qa/batch08/counter_collision_revision/validation_report.json',
+         'status':'Offline compound proposal only; no engine setup or performance certification'}
+
+def collision_only(output_path=None):
+ """Read existing masters; write only collision_proposals.json. Never save/export."""
+ protected=[BASE/'source'/f'{ident}.blend' for ident in ['AST-HSP-001','AST-HSP-002']]
+ protected += [BASE/'exports'/f'{ident}.glb' for ident in ['AST-HSP-001','AST-HSP-002']]
+ before={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in protected}
+ result={}
+ for kind,ident in [('straight','AST-HSP-001'),('turn','AST-HSP-002')]:
+  bpy.ops.wm.open_mainfile(filepath=str(BASE/'source'/f'{ident}.blend'))
+  obs=[o for o in bpy.context.scene.objects if o.type=='MESH']
+  result[ident]=collisions(kind,obs)
+ after={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in protected}
+ assert before==after,'Read-only collision generation changed a protected visual/source'
+ output_path=BASE/'collision_proposals.json' if output_path is None else Path(output_path)
+ if output_path.suffix!='.json':raise ValueError('Collision output must be a JSON file')
+ output_path.write_text(json.dumps(result,indent=2)+'\n')
+ print('COLLISION_ONLY_COMPLETE',[(k,len(v['proposals'])) for k,v in result.items()])
 
 if __name__=='__main__':
+ if '--collision-chord-limit-m' in sys.argv:
+  COLLISION_CHORD_LIMIT_M=float(sys.argv[sys.argv.index('--collision-chord-limit-m')+1])
+  if not 0<COLLISION_CHORD_LIMIT_M<=.010:raise ValueError('Chord limit must be positive and at most 0.010 m')
+ if '--collision-only' in sys.argv:
+  collision_only(sys.argv[sys.argv.index('--collision-output')+1] if '--collision-output' in sys.argv else None);sys.exit(0)
  build('straight','AST-HSP-001');build('turn','AST-HSP-002')
  interface={'version':'hospitality-counter-interface-01','units':'metres','source_frame':'Blender +Z up, local seam travel +X, depth d toward staff +Y','glb_frame':'(x,y,z)->(x,z,-y), native glTF +Y up','profile_coordinates':'Pairs [d,z] in local travel frame; identical at both ends and both designs','profiles':{'stone_top':TOP,'walnut_shell':FACIA,'ivory_upper_rail':UPPER,'ivory_lower_rail':LOWER,'closed_terminal_bulkhead':END},'seam':'Nominal planes at each entry/exit, all main mesh inset 0.001 m. 0.002 m physical joint between adjacent matching modules. Each module remains closed.','AST-HSP-001':{'entry_source_m':[0,0,0],'exit_source_m':[P,0,0],'exit_tangent_source':[1,0,0],'usable_host_worktop_source_m':{'min':[.06,-.34,.90],'max':[2.34,.34,.90]},'proposed_beverage_origin_source_m':[.70,0,.90],'host_plane_normal_source':[0,0,1],'host_plane_normal_glb':[0,1,0]},'AST-HSP-002':{'entry_source_m':[0,0,0],'exit_source_m':[R,R,0],'exit_tangent_source':[0,1,0],'centerline_radius_m':R,'turn_degrees':90},'inspection_pair_placement_source':[{'id':'AST-HSP-001','translation_m':[0,0,0],'yaw_degrees':0},{'id':'AST-HSP-002','translation_m':[P,0,0],'yaw_degrees':0}],'closure':'Built-in closed shaped terminal bulkheads at both ends; no optional missing closure derivative','scope':'Component-only placement proposal, no approved room fit or installation'}
  for ident in['AST-HSP-001','AST-HSP-002']:
   for key,val in list(interface[ident].items()):
    if key.endswith('_source_m') and isinstance(val,list):interface[ident][key.replace('_source_m','_glb_m')]=conv(val)
  interface['AST-HSP-002']['staff_shelf_access']=CURVED_SERVICE_ACCESS
- (BASE/'counter_interface.json').write_text(json.dumps(interface,indent=2)+'\n');(BASE/'collision_proposals.json').write_text(json.dumps(COLLISIONS,indent=2)+'\n');(BASE/'manifest.json').write_text(json.dumps({'family':'Hospitality counters','unique_design_count':2,'assets':RECORDS},indent=2)+'\n')
+ (BASE/'counter_interface.json').write_text(json.dumps(interface,indent=2)+'\n');(BASE/'collision_proposals.json').write_text(json.dumps(COLLISIONS,indent=2)+'\n');(BASE/'manifest.json').write_text(json.dumps({'family':'Hospitality counters','unique_design_count':2,'collision_revision':COLLISION_REVISION,'collision_piece_count':sum(len(a['proposals']) for a in COLLISIONS.values()),'assets':RECORDS},indent=2)+'\n')
  print('BUILD_COMPLETE',[(r['catalogue_id'],r['evaluated_triangles'],r['editable_semantic_parts']) for r in RECORDS])

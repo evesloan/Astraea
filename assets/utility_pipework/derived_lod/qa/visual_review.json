@@ -1,0 +1,109 @@
+{
+  "scope": "Bounded visual review of14 actual re-imported GLB640x360 stills plus their lossless labelled comparisons; no source-render substitution",
+  "input_glb_hashes": {
+    "utility_flange_near_comparison.glb": "7f907bfe5becab1fd1ce4605b1c2b4d9eeaf5ef18691d44c2ffe00766c93684d",
+    "utility_flange_repeated_context.glb": "1ea43dc4ae5d891c2863341120527c0262136939b9118f7d270ccefc4af02f18",
+    "utility_flange_exact_profile_baseline.glb": "3378f9b18585dd95a227738ac1865dcda47074d47f170d90fd08f9c7c829adc5",
+    "utility_flange_economical.glb": "7ecfc537507f7e32614ff1f722ff9f62d93eaaf385ef7bbddca6cc0e857ab240"
+  },
+  "all_rendered_inputs_still_current": true,
+  "resolution": [
+    640,
+    360
+  ],
+  "near_camera_target_distance_m": 0.9445765917475318,
+  "repeated_camera_target_distance_m": 5.614267431182239,
+  "repeated_actual_projected_geometry": [
+    {
+      "seam": 1,
+      "camera_distance_to_seam_m": 4.595650067426407,
+      "actual_projected_outer_rim_span_pixels": [
+        22.879119064699807,
+        51.0974387506416
+      ]
+    },
+    {
+      "seam": 2,
+      "camera_distance_to_seam_m": 4.931531140492621,
+      "actual_projected_outer_rim_span_pixels": [
+        25.377678328928823,
+        45.86117263029311
+      ]
+    },
+    {
+      "seam": 3,
+      "camera_distance_to_seam_m": 5.366563074916809,
+      "actual_projected_outer_rim_span_pixels": [
+        26.745164741657106,
+        41.59746509389592
+      ]
+    },
+    {
+      "seam": 4,
+      "camera_distance_to_seam_m": 5.8787753048124465,
+      "actual_projected_outer_rim_span_pixels": [
+        27.338530303823916,
+        38.08221801273655
+      ]
+    },
+    {
+      "seam": 5,
+      "camera_distance_to_seam_m": 6.449806115836722,
+      "actual_projected_outer_rim_span_pixels": [
+        27.403264130404438,
+        35.13266036532664
+      ]
+    },
+    {
+      "seam": 6,
+      "camera_distance_to_seam_m": 7.065408606676396,
+      "actual_projected_outer_rim_span_pixels": [
+        27.179917685156795,
+        32.614634851859094
+      ]
+    }
+  ],
+  "pixel_review": {
+    "original_references_inspected": [
+      "references/engineering/technical_reference.png",
+      "original utility_pipework/renders/004_standing640.png",
+      "original staff corridor01 and corridor02 source images listed in Batch06 reference manifest"
+    ],
+    "reference_guidance": "Preserve organized exposed-service purpose, cool practical finishes and original flange silhouette. No reference pixels copied.",
+    "near": "The economical twelve-sided hole edges/highlights are visibly more angular at roughly0.95m. Outer rim and bore retain their original48-sided silhouettes and existing faceted shading. This is a clear reason to retain the detailed original for close inspection.",
+    "exact_profile_baseline": "The1608-triangle baseline closely tracks the original hole appearance in the matched static near view; it documents what retaining24-sided holes costs.",
+    "repeated": "Across the six-pair repeated fixture, seam positions, open end bores, zinc/paint identity and useful flange/bolt silhouette remain legible. The economical hole changes become small highlights and do not create an obvious new large-scale shape error at these roughly31\u201350pixel rim heights. The original48-sided rim faceting remains shared.",
+    "controlled_angles": "Matched -4/0/+4degree camera poses retain the same silhouette and continuous placement. Small bolt/hole highlights change with view in both representations; economical near holes have visibly coarser shading. No gross additional break or large silhouette pop was observed across these three poses. This does not certify continuous temporal aliasing, game filtering or an LOD transition."
+  },
+  "decision": "Economical1320-triangle derivative is a bounded repeated/distant candidate for the shown scale; retain immutable detailed near mesh. Exact-profile1608 baseline remains an optional comparison.",
+  "claims_excluded": [
+    "No universal switch distance or accepted ship-wide LOD system",
+    "No native renderer/collision pass",
+    "No draw-call/frame-rate/GPU memory claim",
+    "No pressure/load/operating certification"
+  ],
+  "passed_for_bounded_component_comparison": true,
+  "media": [
+    "renders/static_three_way_comparison.png",
+    "renders/near_controlled_angle_comparison.png",
+    "renders/repeated_controlled_angle_comparison.png",
+    "renders/near_controlled_angle_comparison.apng",
+    "renders/repeated_controlled_angle_comparison.apng"
+  ],
+  "all_native640_images": [
+    "renders/near_near_-04deg_640.png",
+    "renders/near_near_+00deg_640.png",
+    "renders/near_near_+04deg_640.png",
+    "renders/near_baseline_+00deg_640.png",
+    "renders/near_economical_-04deg_640.png",
+    "renders/near_economical_+00deg_640.png",
+    "renders/near_economical_+04deg_640.png",
+    "renders/repeated_near_-04deg_640.png",
+    "renders/repeated_near_+00deg_640.png",
+    "renders/repeated_near_+04deg_640.png",
+    "renders/repeated_baseline_+00deg_640.png",
+    "renders/repeated_economical_-04deg_640.png",
+    "renders/repeated_economical_+00deg_640.png",
+    "renders/repeated_economical_+04deg_640.png"
+  ]
+}

@@ -43,3 +43,7 @@ Render only after reserving the shared heavy-render slot. qa/render_imported.py 
 Numerical compound collision proposals are separate JSON data. They preserve the open underside and side approaches; segmental contact boxes intentionally bridge narrow drainage slots. They are not instantiated or tested in an engine. The top table proposal is conservative around its curved corners. No LOD has been supplied; per-part triangle costs are retained for later profiling. Original-engine integration, water simulation, species rigs, actual ship fit and target-PC performance remain pending recovery of the original project.
 
 Existing shared materials were not changed. dependency_manifest.json records all used texture dependencies, which are also packed in the sources and embedded in the GLBs. SHA256SUMS.txt records this family package. The lead owns independent review, whole-batch assembly and restored durable backup before further expansion.
+
+## Compact-source rebuild readiness
+
+Batch08 makes the generator create its own output directories before writing completion evidence. It can complete from source-only staging without a pre-existing review folder. Existing editable masters, exported geometry and texture bytes are unchanged; original generator provenance is retained in the checkpoint evidence.

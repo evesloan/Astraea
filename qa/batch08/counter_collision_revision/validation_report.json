@@ -1,0 +1,4972 @@
+{
+  "revision": "hospitality-static-compound-03",
+  "method": "Actual source profile convex hull consolidation; triangle containment; finite Euclidean surface samples; source/native-frame identity; conservative continuous capsule corridors with exact convex-distance refinement; exact convex linear translation tests.",
+  "inputs": [
+    {
+      "path": "assets/hospitality_counters/exports/AST-HSP-001.glb",
+      "sha256": "17a1e1f5ba70ab43b7dc49c8001cd3124d8b48971913978f4156fd0397a52100"
+    },
+    {
+      "path": "qa/batch07/independent_source_geometry_AST-HSP-001.npz",
+      "sha256": "ffba46bf48f387ae9b93ce20682b085a71577d0c6c227c9bdfc6efb722716da6"
+    },
+    {
+      "path": "assets/hospitality_counters/exports/AST-HSP-002.glb",
+      "sha256": "8b444000c1b53aae183c52e86001bb2532e8fb4bc554dcd5ceb0a9924971f49a"
+    },
+    {
+      "path": "qa/batch07/independent_source_geometry_AST-HSP-002.npz",
+      "sha256": "3d6d05de97295991f0ca0742069d380930b15a3c21807b344cda0db92d5b2e42"
+    }
+  ],
+  "assets": [
+    {
+      "id": "AST-HSP-001",
+      "baseline_shape_count": 26,
+      "reduced_shape_count": 34,
+      "source_triangles_covered": 1116,
+      "approximations": [
+        {
+          "label": "baseline",
+          "parts": [
+            {
+              "semantic_part": "bowed_guest_walnut_shell",
+              "source_parts": [
+                "bowed_guest_walnut_shell"
+              ],
+              "surface_sample_count": 72917,
+              "maximum_sampled_boundary_to_source_distance_m": 0.047431098918478694,
+              "sampling_cover_radius_bound_m": 0.02478603700515083,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.07221713592362952,
+              "worst_sample_source_m": [
+                0.0197343745,
+                -0.28736719023,
+                0.27953906287
+              ]
+            },
+            {
+              "semantic_part": "centre_lower_service_shelf",
+              "source_parts": [
+                "centre_lower_service_shelf"
+              ],
+              "surface_sample_count": 15326,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760732062109,
+              "sampling_cover_radius_bound_m": 0.024431047784321158,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025354823857527367,
+              "worst_sample_source_m": [
+                0.81199997663,
+                0.34000000358,
+                0.4469999969
+              ]
+            },
+            {
+              "semantic_part": "continuous_eased_stone_worktop",
+              "source_parts": [
+                "continuous_eased_stone_worktop"
+              ],
+              "surface_sample_count": 100382,
+              "maximum_sampled_boundary_to_source_distance_m": 6.855337693105099e-12,
+              "sampling_cover_radius_bound_m": 0.024786902741973448,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024786902748828787,
+              "worst_sample_source_m": [
+                0.35695311456,
+                -0.38240623916,
+                0.89559373911
+              ]
+            },
+            {
+              "semantic_part": "drawer_ivory_front",
+              "source_parts": [
+                "drawer_ivory_front"
+              ],
+              "surface_sample_count": 5126,
+              "maximum_sampled_boundary_to_source_distance_m": 0.005773497190956485,
+              "sampling_cover_radius_bound_m": 0.024044232129976566,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.029817729320933052,
+              "worst_sample_source_m": [
+                0.82700002193,
+                0.36899998784,
+                0.81300002337
+              ]
+            },
+            {
+              "semantic_part": "drawer_left_side",
+              "source_parts": [
+                "drawer_left_side"
+              ],
+              "surface_sample_count": 4070,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011546856788630317,
+              "sampling_cover_radius_bound_m": 0.023104385475455524,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024259071154318555,
+              "worst_sample_source_m": [
+                0.84799998999,
+                0.34000000358,
+                0.7990000248
+              ]
+            },
+            {
+              "semantic_part": "drawer_open_pan_bottom",
+              "source_parts": [
+                "drawer_open_pan_bottom"
+              ],
+              "surface_sample_count": 15218,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011547086162726273,
+              "sampling_cover_radius_bound_m": 0.023455822475773904,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.02461053109204653,
+              "worst_sample_source_m": [
+                1.56200003624,
+                0.34000000358,
+                0.66399997473
+              ]
+            },
+            {
+              "semantic_part": "drawer_rear_wall",
+              "source_parts": [
+                "drawer_rear_wall"
+              ],
+              "surface_sample_count": 4982,
+              "maximum_sampled_boundary_to_source_distance_m": 0.001154714353979063,
+              "sampling_cover_radius_bound_m": 0.02437724158918282,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025531955943161884,
+              "worst_sample_source_m": [
+                1.55200004578,
+                -0.24400000274,
+                0.7990000248
+              ]
+            },
+            {
+              "semantic_part": "drawer_right_side",
+              "source_parts": [
+                "drawer_right_side"
+              ],
+              "surface_sample_count": 4070,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011547086170260762,
+              "sampling_cover_radius_bound_m": 0.023104385475455524,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.0242590940924816,
+              "worst_sample_source_m": [
+                1.56400001049,
+                0.34000000358,
+                0.7990000248
+              ]
+            },
+            {
+              "semantic_part": "entry_closed_shaped_terminal_bulkhead",
+              "source_parts": [
+                "entry_closed_shaped_terminal_bulkhead"
+              ],
+              "surface_sample_count": 22088,
+              "maximum_sampled_boundary_to_source_distance_m": 0.04374999552790709,
+              "sampling_cover_radius_bound_m": 0.024486125340412147,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.06823612086831923,
+              "worst_sample_source_m": [
+                0.00100000005,
+                0.32374999672,
+                0.09062499739
+              ]
+            },
+            {
+              "semantic_part": "exit_closed_shaped_terminal_bulkhead",
+              "source_parts": [
+                "exit_closed_shaped_terminal_bulkhead"
+              ],
+              "surface_sample_count": 22088,
+              "maximum_sampled_boundary_to_source_distance_m": 0.04374999552790709,
+              "sampling_cover_radius_bound_m": 0.024486135508411954,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.06823613103631905,
+              "worst_sample_source_m": [
+                2.37299990654,
+                0.32374999672,
+                0.09062499739
+              ]
+            },
+            {
+              "semantic_part": "fixed_drawer_runner_0.83",
+              "source_parts": [
+                "fixed_drawer_runner_0.83"
+              ],
+              "surface_sample_count": 2954,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011546856757472552,
+              "sampling_cover_radius_bound_m": 0.023516123651331686,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024670809327078942,
+              "worst_sample_source_m": [
+                0.84500002861,
+                -0.26699998975,
+                0.62400001287
+              ]
+            },
+            {
+              "semantic_part": "fixed_drawer_runner_1.57",
+              "source_parts": [
+                "fixed_drawer_runner_1.57"
+              ],
+              "surface_sample_count": 2954,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011547086180985766,
+              "sampling_cover_radius_bound_m": 0.023516123651331686,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024670832269430263,
+              "worst_sample_source_m": [
+                1.58500003815,
+                -0.26699998975,
+                0.62400001287
+              ]
+            },
+            {
+              "semantic_part": "left_open_service_shelf",
+              "source_parts": [
+                "left_open_service_shelf"
+              ],
+              "surface_sample_count": 15218,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760690417147,
+              "sampling_cover_radius_bound_m": 0.024661813210355432,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025585589279397147,
+              "worst_sample_source_m": [
+                0.7879999876,
+                0.34000000358,
+                0.4469999969
+              ]
+            },
+            {
+              "semantic_part": "left_shelf_front_rolled_lip",
+              "source_parts": [
+                "left_shelf_front_rolled_lip"
+              ],
+              "surface_sample_count": 3074,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760681015142,
+              "sampling_cover_radius_bound_m": 0.024333817938137145,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.02525759400623866,
+              "worst_sample_source_m": [
+                0.7879999876,
+                0.32800000906,
+                0.47600001097
+              ]
+            },
+            {
+              "semantic_part": "left_shelf_rear_retaining_upstand",
+              "source_parts": [
+                "left_shelf_rear_retaining_upstand"
+              ],
+              "surface_sample_count": 3074,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760696594344,
+              "sampling_cover_radius_bound_m": 0.024238821961692462,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025162598031351898,
+              "worst_sample_source_m": [
+                0.7879999876,
+                -0.30099999905,
+                0.4659999907
+              ]
+            },
+            {
+              "semantic_part": "load_bearing_base_shelf",
+              "source_parts": [
+                "load_bearing_base_shelf"
+              ],
+              "surface_sample_count": 52034,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237653145303796,
+              "sampling_cover_radius_bound_m": 0.024043133512505647,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024966898827036028,
+              "worst_sample_source_m": [
+                0.02199999988,
+                0.34999999404,
+                0.16400000453
+              ]
+            },
+            {
+              "semantic_part": "load_bearing_bay_divider_1",
+              "source_parts": [
+                "load_bearing_bay_divider_1"
+              ],
+              "surface_sample_count": 15230,
+              "maximum_sampled_boundary_to_source_distance_m": 0.001154691406932855,
+              "sampling_cover_radius_bound_m": 0.02399998903274536,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025154680439678216,
+              "worst_sample_source_m": [
+                0.7879999876,
+                -0.29100000858,
+                0.16400000453
+              ]
+            },
+            {
+              "semantic_part": "load_bearing_bay_divider_2",
+              "source_parts": [
+                "load_bearing_bay_divider_2"
+              ],
+              "surface_sample_count": 15230,
+              "maximum_sampled_boundary_to_source_distance_m": 0.001154714348818392,
+              "sampling_cover_radius_bound_m": 0.023999929428100586,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025154643776918978,
+              "worst_sample_source_m": [
+                1.61199998856,
+                -0.29100000858,
+                0.16400000453
+              ]
+            },
+            {
+              "semantic_part": "lower_ivory_swept_rail",
+              "source_parts": [
+                "lower_ivory_swept_rail"
+              ],
+              "surface_sample_count": 33176,
+              "maximum_sampled_boundary_to_source_distance_m": 9.764599104488895e-05,
+              "sampling_cover_radius_bound_m": 0.024098274733086213,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.0241959207241311,
+              "worst_sample_source_m": [
+                2.31469524441,
+                -0.30892577523,
+                0.18606640422
+              ]
+            },
+            {
+              "semantic_part": "rear_recessed_floor_plinth",
+              "source_parts": [
+                "rear_recessed_floor_plinth"
+              ],
+              "surface_sample_count": 28298,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237656172673338,
+              "sampling_cover_radius_bound_m": 0.02235828829506911,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.023282053912336443,
+              "worst_sample_source_m": [
+                0.00100000005,
+                0.26800000668,
+                0.0
+              ]
+            },
+            {
+              "semantic_part": "rear_top_support_rail",
+              "source_parts": [
+                "rear_top_support_rail"
+              ],
+              "surface_sample_count": 26330,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237710506753258,
+              "sampling_cover_radius_bound_m": 0.02425045244216594,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025174223492841267,
+              "worst_sample_source_m": [
+                0.02199999988,
+                0.34999999404,
+                0.81599998474
+              ]
+            },
+            {
+              "semantic_part": "recessed_front_floor_plinth",
+              "source_parts": [
+                "recessed_front_floor_plinth"
+              ],
+              "surface_sample_count": 28298,
+              "maximum_sampled_boundary_to_source_distance_m": 0.000923765614796443,
+              "sampling_cover_radius_bound_m": 0.02235828829506911,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.02328205390986555,
+              "worst_sample_source_m": [
+                0.00100000005,
+                -0.25,
+                0.0
+              ]
+            },
+            {
+              "semantic_part": "right_open_service_shelf",
+              "source_parts": [
+                "right_open_service_shelf"
+              ],
+              "surface_sample_count": 15218,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760679690221,
+              "sampling_cover_radius_bound_m": 0.024661811133570438,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.02558558720153946,
+              "worst_sample_source_m": [
+                1.61199998856,
+                0.34000000358,
+                0.4469999969
+              ]
+            },
+            {
+              "semantic_part": "right_shelf_front_rolled_lip",
+              "source_parts": [
+                "right_shelf_front_rolled_lip"
+              ],
+              "surface_sample_count": 3074,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760670288857,
+              "sampling_cover_radius_bound_m": 0.024333815833359185,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025257591900388073,
+              "worst_sample_source_m": [
+                1.61199998856,
+                0.32800000906,
+                0.47600001097
+              ]
+            },
+            {
+              "semantic_part": "right_shelf_rear_retaining_upstand",
+              "source_parts": [
+                "right_shelf_rear_retaining_upstand"
+              ],
+              "surface_sample_count": 3074,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760685867417,
+              "sampling_cover_radius_bound_m": 0.02423881984866553,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.02516259591725227,
+              "worst_sample_source_m": [
+                1.61199998856,
+                -0.30099999905,
+                0.4659999907
+              ]
+            },
+            {
+              "semantic_part": "upper_ivory_bullnose_rail",
+              "source_parts": [
+                "upper_ivory_bullnose_rail"
+              ],
+              "surface_sample_count": 39629,
+              "maximum_sampled_boundary_to_source_distance_m": 6.082660174156716e-12,
+              "sampling_cover_radius_bound_m": 0.024774996344728475,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024774996350811134,
+              "worst_sample_source_m": [
+                0.02597916598,
+                -0.34687499981,
+                0.79631251656
+              ]
+            }
+          ],
+          "maximum_sampled_boundary_to_source_distance_m": 0.047431098918478694
+        },
+        {
+          "label": "reduced",
+          "parts": [
+            {
+              "semantic_part": "bowed_guest_walnut_shell",
+              "source_parts": [
+                "bowed_guest_walnut_shell"
+              ],
+              "surface_sample_count": 155674,
+              "maximum_sampled_boundary_to_source_distance_m": 0.011937509369394528,
+              "sampling_cover_radius_bound_m": 0.02494394177321676,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.036881451142611286,
+              "worst_sample_source_m": [
+                1.23122392215,
+                -0.33006249826,
+                0.57999998331
+              ]
+            },
+            {
+              "semantic_part": "centre_lower_service_shelf",
+              "source_parts": [
+                "centre_lower_service_shelf"
+              ],
+              "surface_sample_count": 15326,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760732062109,
+              "sampling_cover_radius_bound_m": 0.024431047784321158,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025354823857527367,
+              "worst_sample_source_m": [
+                0.81199997663,
+                0.34000000358,
+                0.4469999969
+              ]
+            },
+            {
+              "semantic_part": "continuous_eased_stone_worktop",
+              "source_parts": [
+                "continuous_eased_stone_worktop"
+              ],
+              "surface_sample_count": 100382,
+              "maximum_sampled_boundary_to_source_distance_m": 6.855337693105099e-12,
+              "sampling_cover_radius_bound_m": 0.024786902741973448,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024786902748828787,
+              "worst_sample_source_m": [
+                0.35695311456,
+                -0.38240623916,
+                0.89559373911
+              ]
+            },
+            {
+              "semantic_part": "drawer_ivory_front",
+              "source_parts": [
+                "drawer_ivory_front"
+              ],
+              "surface_sample_count": 5126,
+              "maximum_sampled_boundary_to_source_distance_m": 0.005773497190956485,
+              "sampling_cover_radius_bound_m": 0.024044232129976566,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.029817729320933052,
+              "worst_sample_source_m": [
+                0.82700002193,
+                0.36899998784,
+                0.81300002337
+              ]
+            },
+            {
+              "semantic_part": "drawer_left_side",
+              "source_parts": [
+                "drawer_left_side"
+              ],
+              "surface_sample_count": 4070,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011546856788630317,
+              "sampling_cover_radius_bound_m": 0.023104385475455524,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024259071154318555,
+              "worst_sample_source_m": [
+                0.84799998999,
+                0.34000000358,
+                0.7990000248
+              ]
+            },
+            {
+              "semantic_part": "drawer_open_pan_bottom",
+              "source_parts": [
+                "drawer_open_pan_bottom"
+              ],
+              "surface_sample_count": 15218,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011547086162726273,
+              "sampling_cover_radius_bound_m": 0.023455822475773904,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.02461053109204653,
+              "worst_sample_source_m": [
+                1.56200003624,
+                0.34000000358,
+                0.66399997473
+              ]
+            },
+            {
+              "semantic_part": "drawer_rear_wall",
+              "source_parts": [
+                "drawer_rear_wall"
+              ],
+              "surface_sample_count": 4982,
+              "maximum_sampled_boundary_to_source_distance_m": 0.001154714353979063,
+              "sampling_cover_radius_bound_m": 0.02437724158918282,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025531955943161884,
+              "worst_sample_source_m": [
+                1.55200004578,
+                -0.24400000274,
+                0.7990000248
+              ]
+            },
+            {
+              "semantic_part": "drawer_right_side",
+              "source_parts": [
+                "drawer_right_side"
+              ],
+              "surface_sample_count": 4070,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011547086170260762,
+              "sampling_cover_radius_bound_m": 0.023104385475455524,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.0242590940924816,
+              "worst_sample_source_m": [
+                1.56400001049,
+                0.34000000358,
+                0.7990000248
+              ]
+            },
+            {
+              "semantic_part": "entry_closed_shaped_terminal_bulkhead",
+              "source_parts": [
+                "entry_closed_shaped_terminal_bulkhead"
+              ],
+              "surface_sample_count": 25094,
+              "maximum_sampled_boundary_to_source_distance_m": 0.01300000032250255,
+              "sampling_cover_radius_bound_m": 0.024988376628877998,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03798837695138055,
+              "worst_sample_source_m": [
+                0.01400000037,
+                -0.0104166744,
+                0.58
+              ]
+            },
+            {
+              "semantic_part": "exit_closed_shaped_terminal_bulkhead",
+              "source_parts": [
+                "exit_closed_shaped_terminal_bulkhead"
+              ],
+              "surface_sample_count": 25094,
+              "maximum_sampled_boundary_to_source_distance_m": 0.013000011440083004,
+              "sampling_cover_radius_bound_m": 0.024988376628877998,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.037988388068961,
+              "worst_sample_source_m": [
+                2.38599991798,
+                -0.01270833284,
+                0.124
+              ]
+            },
+            {
+              "semantic_part": "fixed_drawer_runner_0.83",
+              "source_parts": [
+                "fixed_drawer_runner_0.83"
+              ],
+              "surface_sample_count": 2954,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011546856757472552,
+              "sampling_cover_radius_bound_m": 0.023516123651331686,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024670809327078942,
+              "worst_sample_source_m": [
+                0.84500002861,
+                -0.26699998975,
+                0.62400001287
+              ]
+            },
+            {
+              "semantic_part": "fixed_drawer_runner_1.57",
+              "source_parts": [
+                "fixed_drawer_runner_1.57"
+              ],
+              "surface_sample_count": 2954,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0011547086180985766,
+              "sampling_cover_radius_bound_m": 0.023516123651331686,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024670832269430263,
+              "worst_sample_source_m": [
+                1.58500003815,
+                -0.26699998975,
+                0.62400001287
+              ]
+            },
+            {
+              "semantic_part": "left_open_service_shelf",
+              "source_parts": [
+                "left_open_service_shelf",
+                "left_shelf_front_rolled_lip"
+              ],
+              "surface_sample_count": 16028,
+              "maximum_sampled_boundary_to_source_distance_m": 0.009843769948324588,
+              "sampling_cover_radius_bound_m": 0.024661813210355432,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03450558315868002,
+              "worst_sample_source_m": [
+                0.0309635423,
+                0.31817188393,
+                0.47584376065
+              ]
+            },
+            {
+              "semantic_part": "left_shelf_rear_retaining_upstand",
+              "source_parts": [
+                "left_shelf_rear_retaining_upstand"
+              ],
+              "surface_sample_count": 3074,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760696594344,
+              "sampling_cover_radius_bound_m": 0.024238821961692462,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025162598031351898,
+              "worst_sample_source_m": [
+                0.7879999876,
+                -0.30099999905,
+                0.4659999907
+              ]
+            },
+            {
+              "semantic_part": "load_bearing_base_shelf",
+              "source_parts": [
+                "load_bearing_base_shelf"
+              ],
+              "surface_sample_count": 52034,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237653145303796,
+              "sampling_cover_radius_bound_m": 0.024043133512505647,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024966898827036028,
+              "worst_sample_source_m": [
+                0.02199999988,
+                0.34999999404,
+                0.16400000453
+              ]
+            },
+            {
+              "semantic_part": "load_bearing_bay_divider_1",
+              "source_parts": [
+                "load_bearing_bay_divider_1"
+              ],
+              "surface_sample_count": 15230,
+              "maximum_sampled_boundary_to_source_distance_m": 0.001154691406932855,
+              "sampling_cover_radius_bound_m": 0.02399998903274536,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025154680439678216,
+              "worst_sample_source_m": [
+                0.7879999876,
+                -0.29100000858,
+                0.16400000453
+              ]
+            },
+            {
+              "semantic_part": "load_bearing_bay_divider_2",
+              "source_parts": [
+                "load_bearing_bay_divider_2"
+              ],
+              "surface_sample_count": 15230,
+              "maximum_sampled_boundary_to_source_distance_m": 0.001154714348818392,
+              "sampling_cover_radius_bound_m": 0.023999929428100586,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025154643776918978,
+              "worst_sample_source_m": [
+                1.61199998856,
+                -0.29100000858,
+                0.16400000453
+              ]
+            },
+            {
+              "semantic_part": "lower_ivory_swept_rail",
+              "source_parts": [
+                "lower_ivory_swept_rail"
+              ],
+              "surface_sample_count": 33176,
+              "maximum_sampled_boundary_to_source_distance_m": 9.764599104488895e-05,
+              "sampling_cover_radius_bound_m": 0.024098274733086213,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.0241959207241311,
+              "worst_sample_source_m": [
+                2.31469524441,
+                -0.30892577523,
+                0.18606640422
+              ]
+            },
+            {
+              "semantic_part": "rear_recessed_floor_plinth",
+              "source_parts": [
+                "rear_recessed_floor_plinth"
+              ],
+              "surface_sample_count": 28298,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237656172673338,
+              "sampling_cover_radius_bound_m": 0.02235828829506911,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.023282053912336443,
+              "worst_sample_source_m": [
+                0.00100000005,
+                0.26800000668,
+                0.0
+              ]
+            },
+            {
+              "semantic_part": "rear_top_support_rail",
+              "source_parts": [
+                "rear_top_support_rail"
+              ],
+              "surface_sample_count": 26330,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237710506753258,
+              "sampling_cover_radius_bound_m": 0.02425045244216594,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.025174223492841267,
+              "worst_sample_source_m": [
+                0.02199999988,
+                0.34999999404,
+                0.81599998474
+              ]
+            },
+            {
+              "semantic_part": "recessed_front_floor_plinth",
+              "source_parts": [
+                "recessed_front_floor_plinth"
+              ],
+              "surface_sample_count": 28298,
+              "maximum_sampled_boundary_to_source_distance_m": 0.000923765614796443,
+              "sampling_cover_radius_bound_m": 0.02235828829506911,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.02328205390986555,
+              "worst_sample_source_m": [
+                0.00100000005,
+                -0.25,
+                0.0
+              ]
+            },
+            {
+              "semantic_part": "right_open_service_shelf",
+              "source_parts": [
+                "right_open_service_shelf",
+                "right_shelf_front_rolled_lip"
+              ],
+              "surface_sample_count": 16028,
+              "maximum_sampled_boundary_to_source_distance_m": 0.009843769948324588,
+              "sampling_cover_radius_bound_m": 0.024661811133570438,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.034505581081895026,
+              "worst_sample_source_m": [
+                1.6159635298,
+                0.31817188393,
+                0.47584376065
+              ]
+            },
+            {
+              "semantic_part": "right_shelf_rear_retaining_upstand",
+              "source_parts": [
+                "right_shelf_rear_retaining_upstand"
+              ],
+              "surface_sample_count": 3074,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009237760685867417,
+              "sampling_cover_radius_bound_m": 0.02423881984866553,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.02516259591725227,
+              "worst_sample_source_m": [
+                1.61199998856,
+                -0.30099999905,
+                0.4659999907
+              ]
+            },
+            {
+              "semantic_part": "upper_ivory_bullnose_rail",
+              "source_parts": [
+                "upper_ivory_bullnose_rail"
+              ],
+              "surface_sample_count": 39629,
+              "maximum_sampled_boundary_to_source_distance_m": 6.082660174156716e-12,
+              "sampling_cover_radius_bound_m": 0.024774996344728475,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.024774996350811134,
+              "worst_sample_source_m": [
+                0.02597916598,
+                -0.34687499981,
+                0.79631251656
+              ]
+            }
+          ],
+          "maximum_sampled_boundary_to_source_distance_m": 0.013000011440083004
+        }
+      ],
+      "continuous_service_corridors": [
+        {
+          "source_x_interval_m": [
+            0.12,
+            0.66
+          ],
+          "source_z_interval_m": [
+            0.22,
+            0.39
+          ],
+          "source_y_path_m": [
+            0.6,
+            -0.24
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.015,
+          "sampled_segments": 504,
+          "proposal_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.055999995470047
+        },
+        {
+          "source_x_interval_m": [
+            0.12,
+            0.66
+          ],
+          "source_z_interval_m": [
+            0.525,
+            0.595
+          ],
+          "source_y_path_m": [
+            0.6,
+            -0.24
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.015,
+          "sampled_segments": 224,
+          "proposal_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.048999989032745384
+        },
+        {
+          "source_x_interval_m": [
+            0.94,
+            1.46
+          ],
+          "source_z_interval_m": [
+            0.22,
+            0.39
+          ],
+          "source_y_path_m": [
+            0.6,
+            -0.24
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.015000000000000013,
+          "sampled_segments": 486,
+          "proposal_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.055999995470047
+        },
+        {
+          "source_x_interval_m": [
+            0.94,
+            1.46
+          ],
+          "source_z_interval_m": [
+            0.525,
+            0.595
+          ],
+          "source_y_path_m": [
+            0.6,
+            -0.24
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.015000000000000013,
+          "sampled_segments": 216,
+          "proposal_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.04800000667572024
+        },
+        {
+          "source_x_interval_m": [
+            1.74,
+            2.28
+          ],
+          "source_z_interval_m": [
+            0.22,
+            0.39
+          ],
+          "source_y_path_m": [
+            0.6,
+            -0.24
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.015000000000000013,
+          "sampled_segments": 504,
+          "proposal_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.055999995470047
+        },
+        {
+          "source_x_interval_m": [
+            1.74,
+            2.28
+          ],
+          "source_z_interval_m": [
+            0.525,
+            0.595
+          ],
+          "source_y_path_m": [
+            0.6,
+            -0.24
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.015000000000000013,
+          "sampled_segments": 224,
+          "proposal_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.048999989032745384
+        }
+      ]
+    },
+    {
+      "id": "AST-HSP-002",
+      "baseline_shape_count": 263,
+      "reduced_shape_count": 121,
+      "source_triangles_covered": 4830,
+      "approximations": [
+        {
+          "label": "baseline",
+          "parts": [
+            {
+              "semantic_part": "bowed_guest_walnut_shell",
+              "source_parts": [
+                "bowed_guest_walnut_shell"
+              ],
+              "surface_sample_count": 109323,
+              "maximum_sampled_boundary_to_source_distance_m": 0.04724267043577347,
+              "sampling_cover_radius_bound_m": 0.02498811843272335,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.07223078886849682,
+              "worst_sample_source_m": [
+                0.85939674452,
+                0.32939960466,
+                0.27786458377
+              ]
+            },
+            {
+              "semantic_part": "continuous_eased_stone_worktop",
+              "source_parts": [
+                "continuous_eased_stone_worktop"
+              ],
+              "surface_sample_count": 126000,
+              "maximum_sampled_boundary_to_source_distance_m": 0.023999989028142044,
+              "sampling_cover_radius_bound_m": 0.024856482400298818,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.048856471428440865,
+              "worst_sample_source_m": [
+                0.040411267,
+                0.01710282577,
+                0.87599998713
+              ]
+            },
+            {
+              "semantic_part": "curved_open_service_shelf",
+              "source_parts": [
+                "curved_open_service_shelf"
+              ],
+              "surface_sample_count": 70150,
+              "maximum_sampled_boundary_to_source_distance_m": 0.009499996899441532,
+              "sampling_cover_radius_bound_m": 0.023594928677547443,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.033094925576988975,
+              "worst_sample_source_m": [
+                0.06450934029,
+                0.03339054746,
+                0.4564999938
+              ]
+            },
+            {
+              "semantic_part": "curved_shelf_inner_rolled_lip",
+              "source_parts": [
+                "curved_shelf_inner_rolled_lip"
+              ],
+              "surface_sample_count": 1012,
+              "maximum_sampled_boundary_to_source_distance_m": 0.007995864041245188,
+              "sampling_cover_radius_bound_m": 0.024431474896058306,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03242733893730349,
+              "worst_sample_source_m": [
+                0.08553646877,
+                0.34604285657,
+                0.46150000393
+              ]
+            },
+            {
+              "semantic_part": "curved_shelf_outer_retaining_upstand",
+              "source_parts": [
+                "curved_shelf_outer_retaining_upstand"
+              ],
+              "surface_sample_count": 3082,
+              "maximum_sampled_boundary_to_source_distance_m": 0.006996396768510123,
+              "sampling_cover_radius_bound_m": 0.024520702240272977,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.0315170990087831,
+              "worst_sample_source_m": [
+                0.8910934329,
+                0.40357102454,
+                0.47900000215
+              ]
+            },
+            {
+              "semantic_part": "curved_shelf_radial_support_1",
+              "source_parts": [
+                "curved_shelf_radial_support_1"
+              ],
+              "surface_sample_count": 6572,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009287304012172876,
+              "sampling_cover_radius_bound_m": 0.021537106159597967,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.022465836560815255,
+              "worst_sample_source_m": [
+                0.41551160812,
+                -0.19633701444,
+                0.4469999969
+              ]
+            },
+            {
+              "semantic_part": "curved_shelf_radial_support_2",
+              "source_parts": [
+                "curved_shelf_radial_support_2"
+              ],
+              "surface_sample_count": 6572,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009287351048559489,
+              "sampling_cover_radius_bound_m": 0.021537106650529197,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.022465841755385147,
+              "worst_sample_source_m": [
+                0.8025110364,
+                0.17837567627,
+                0.4469999969
+              ]
+            },
+            {
+              "semantic_part": "entry_closed_shaped_terminal_bulkhead",
+              "source_parts": [
+                "entry_closed_shaped_terminal_bulkhead"
+              ],
+              "surface_sample_count": 19778,
+              "maximum_sampled_boundary_to_source_distance_m": 0.04374108821204344,
+              "sampling_cover_radius_bound_m": 0.024793285778270172,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.06853437399031362,
+              "worst_sample_source_m": [
+                0.01289713266,
+                0.32403087616,
+                0.09062499739
+              ]
+            },
+            {
+              "semantic_part": "exit_closed_shaped_terminal_bulkhead",
+              "source_parts": [
+                "exit_closed_shaped_terminal_bulkhead"
+              ],
+              "surface_sample_count": 19703,
+              "maximum_sampled_boundary_to_source_distance_m": 0.04374108877442766,
+              "sampling_cover_radius_bound_m": 0.0249660122272737,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.06870710100170135,
+              "worst_sample_source_m": [
+                0.29596912861,
+                0.60710287094,
+                0.09062499739
+              ]
+            },
+            {
+              "semantic_part": "load_bearing_base_shelf",
+              "source_parts": [
+                "load_bearing_base_shelf"
+              ],
+              "surface_sample_count": 70426,
+              "maximum_sampled_boundary_to_source_distance_m": 0.010999999939953015,
+              "sampling_cover_radius_bound_m": 0.023842501002705276,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03484250094265829,
+              "worst_sample_source_m": [
+                0.05893204132,
+                0.03671955876,
+                0.15300000459
+              ]
+            },
+            {
+              "semantic_part": "lower_ivory_swept_rail",
+              "source_parts": [
+                "lower_ivory_swept_rail"
+              ],
+              "surface_sample_count": 6849,
+              "maximum_sampled_boundary_to_source_distance_m": 0.01790000626426415,
+              "sampling_cover_radius_bound_m": 0.023929588750541145,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.04182959501480529,
+              "worst_sample_source_m": [
+                0.87484139204,
+                0.322113129,
+                0.16000000139
+              ]
+            },
+            {
+              "semantic_part": "rear_recessed_floor_plinth",
+              "source_parts": [
+                "rear_recessed_floor_plinth"
+              ],
+              "surface_sample_count": 8688,
+              "maximum_sampled_boundary_to_source_distance_m": 0.014992015771049255,
+              "sampling_cover_radius_bound_m": 0.024946084961720964,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03993810073277022,
+              "worst_sample_source_m": [
+                0.34741221368,
+                0.50170479715,
+                0.0591666686
+              ]
+            },
+            {
+              "semantic_part": "rear_top_support_rail",
+              "source_parts": [
+                "rear_top_support_rail"
+              ],
+              "surface_sample_count": 2392,
+              "maximum_sampled_boundary_to_source_distance_m": 0.018000006672651336,
+              "sampling_cover_radius_bound_m": 0.02482411702347996,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.0428241236961313,
+              "worst_sample_source_m": [
+                0.02950371709,
+                0.32798668742,
+                0.83399999142
+              ]
+            },
+            {
+              "semantic_part": "recessed_front_floor_plinth",
+              "source_parts": [
+                "recessed_front_floor_plinth"
+              ],
+              "surface_sample_count": 13008,
+              "maximum_sampled_boundary_to_source_distance_m": 0.015991483799150955,
+              "sampling_cover_radius_bound_m": 0.02142575089198571,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03741723469113667,
+              "worst_sample_source_m": [
+                0.76706022024,
+                0.17658753693,
+                0.0591666686
+              ]
+            },
+            {
+              "semantic_part": "upper_ivory_bullnose_rail",
+              "source_parts": [
+                "upper_ivory_bullnose_rail"
+              ],
+              "surface_sample_count": 7599,
+              "maximum_sampled_boundary_to_source_distance_m": 0.026749998332651348,
+              "sampling_cover_radius_bound_m": 0.024709574125451904,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.05145957245810325,
+              "worst_sample_source_m": [
+                0.76020617783,
+                0.03634852264,
+                0.82524999976
+              ]
+            }
+          ],
+          "maximum_sampled_boundary_to_source_distance_m": 0.04724267043577347
+        },
+        {
+          "label": "reduced",
+          "parts": [
+            {
+              "semantic_part": "bowed_guest_walnut_shell",
+              "source_parts": [
+                "bowed_guest_walnut_shell"
+              ],
+              "surface_sample_count": 49373,
+              "maximum_sampled_boundary_to_source_distance_m": 0.01198677216270354,
+              "sampling_cover_radius_bound_m": 0.02496950302455417,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03695627518725771,
+              "worst_sample_source_m": [
+                0.94097936029,
+                0.43164397342,
+                0.4726041661
+              ]
+            },
+            {
+              "semantic_part": "continuous_eased_stone_worktop",
+              "source_parts": [
+                "continuous_eased_stone_worktop"
+              ],
+              "surface_sample_count": 59566,
+              "maximum_sampled_boundary_to_source_distance_m": 0.023999989028142044,
+              "sampling_cover_radius_bound_m": 0.02491011214171467,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.04891010116985671,
+              "worst_sample_source_m": [
+                0.33590587353,
+                0.11771989769,
+                0.87599998713
+              ]
+            },
+            {
+              "semantic_part": "curved_open_service_shelf",
+              "source_parts": [
+                "curved_open_service_shelf",
+                "curved_shelf_inner_rolled_lip"
+              ],
+              "surface_sample_count": 49912,
+              "maximum_sampled_boundary_to_source_distance_m": 0.009824314151127556,
+              "sampling_cover_radius_bound_m": 0.02496110050198153,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03478541465310908,
+              "worst_sample_source_m": [
+                0.3061250591,
+                0.6061655879,
+                0.47579167721
+              ]
+            },
+            {
+              "semantic_part": "curved_shelf_outer_retaining_upstand",
+              "source_parts": [
+                "curved_shelf_outer_retaining_upstand"
+              ],
+              "surface_sample_count": 3322,
+              "maximum_sampled_boundary_to_source_distance_m": 0.006996387704414749,
+              "sampling_cover_radius_bound_m": 0.024520702240272977,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03151708994468773,
+              "worst_sample_source_m": [
+                0.90316960216,
+                0.4613379091,
+                0.47900000215
+              ]
+            },
+            {
+              "semantic_part": "curved_shelf_radial_support_1",
+              "source_parts": [
+                "curved_shelf_radial_support_1"
+              ],
+              "surface_sample_count": 6572,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009287304012172876,
+              "sampling_cover_radius_bound_m": 0.021537106159597967,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.022465836560815255,
+              "worst_sample_source_m": [
+                0.41551160812,
+                -0.19633701444,
+                0.4469999969
+              ]
+            },
+            {
+              "semantic_part": "curved_shelf_radial_support_2",
+              "source_parts": [
+                "curved_shelf_radial_support_2"
+              ],
+              "surface_sample_count": 6572,
+              "maximum_sampled_boundary_to_source_distance_m": 0.0009287351048559489,
+              "sampling_cover_radius_bound_m": 0.021537106650529197,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.022465841755385147,
+              "worst_sample_source_m": [
+                0.8025110364,
+                0.17837567627,
+                0.4469999969
+              ]
+            },
+            {
+              "semantic_part": "entry_closed_shaped_terminal_bulkhead",
+              "source_parts": [
+                "entry_closed_shaped_terminal_bulkhead"
+              ],
+              "surface_sample_count": 28088,
+              "maximum_sampled_boundary_to_source_distance_m": 0.019667242159846377,
+              "sampling_cover_radius_bound_m": 0.024965603276231773,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.04463284543607815,
+              "worst_sample_source_m": [
+                0.02080140001,
+                -0.30912072516,
+                0.58
+              ]
+            },
+            {
+              "semantic_part": "exit_closed_shaped_terminal_bulkhead",
+              "source_parts": [
+                "exit_closed_shaped_terminal_bulkhead"
+              ],
+              "surface_sample_count": 26189,
+              "maximum_sampled_boundary_to_source_distance_m": 0.01966727061811355,
+              "sampling_cover_radius_bound_m": 0.02487695716730944,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.04454422778542299,
+              "worst_sample_source_m": [
+                0.92912072993,
+                0.59919861142,
+                0.58
+              ]
+            },
+            {
+              "semantic_part": "load_bearing_base_shelf",
+              "source_parts": [
+                "load_bearing_base_shelf"
+              ],
+              "surface_sample_count": 35338,
+              "maximum_sampled_boundary_to_source_distance_m": 0.010999999939953015,
+              "sampling_cover_radius_bound_m": 0.023749649440597216,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03474964938055023,
+              "worst_sample_source_m": [
+                0.1342874448,
+                0.04933726477,
+                0.15300000459
+              ]
+            },
+            {
+              "semantic_part": "lower_ivory_swept_rail",
+              "source_parts": [
+                "lower_ivory_swept_rail"
+              ],
+              "surface_sample_count": 6691,
+              "maximum_sampled_boundary_to_source_distance_m": 0.017899998187045726,
+              "sampling_cover_radius_bound_m": 0.024045306058910476,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.0419453042459562,
+              "worst_sample_source_m": [
+                0.85353318353,
+                0.26564828803,
+                0.16000000139
+              ]
+            },
+            {
+              "semantic_part": "rear_recessed_floor_plinth",
+              "source_parts": [
+                "rear_recessed_floor_plinth"
+              ],
+              "surface_sample_count": 4512,
+              "maximum_sampled_boundary_to_source_distance_m": 0.014992004052544186,
+              "sampling_cover_radius_bound_m": 0.024946084961720964,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.03993808901426515,
+              "worst_sample_source_m": [
+                0.35439243913,
+                0.52463230491,
+                0.0591666686
+              ]
+            },
+            {
+              "semantic_part": "rear_top_support_rail",
+              "source_parts": [
+                "rear_top_support_rail"
+              ],
+              "surface_sample_count": 1372,
+              "maximum_sampled_boundary_to_source_distance_m": 0.018000006672651336,
+              "sampling_cover_radius_bound_m": 0.023687381190621224,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.04168738786327256,
+              "worst_sample_source_m": [
+                0.1038136147,
+                0.34547317028,
+                0.83399999142
+              ]
+            },
+            {
+              "semantic_part": "recessed_front_floor_plinth",
+              "source_parts": [
+                "recessed_front_floor_plinth"
+              ],
+              "surface_sample_count": 10096,
+              "maximum_sampled_boundary_to_source_distance_m": 0.01599147484144071,
+              "sampling_cover_radius_bound_m": 0.02320847937593401,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.039199954217374725,
+              "worst_sample_source_m": [
+                0.33971753716,
+                -0.19828356057,
+                0.0591666686
+              ]
+            },
+            {
+              "semantic_part": "upper_ivory_bullnose_rail",
+              "source_parts": [
+                "upper_ivory_bullnose_rail"
+              ],
+              "surface_sample_count": 7443,
+              "maximum_sampled_boundary_to_source_distance_m": 0.026749998332651348,
+              "sampling_cover_radius_bound_m": 0.024709574125451904,
+              "includes_internal_section_faces": true,
+              "conservative_maximum_distance_bound_m": 0.05145957245810325,
+              "worst_sample_source_m": [
+                0.76020617783,
+                0.03634852264,
+                0.82524999976
+              ]
+            }
+          ],
+          "maximum_sampled_boundary_to_source_distance_m": 0.026749998332651348
+        }
+      ],
+      "continuous_service_corridors": [
+        {
+          "region_name": "lower_entry",
+          "expanded_plane_broadphase_candidates": 189,
+          "exact_distance_rejected_corner_false_positives": 189,
+          "angle_interval_rad": [
+            0.15,
+            0.37
+          ],
+          "source_z_interval_m": [
+            0.215,
+            0.4
+          ],
+          "radial_interval_m": [
+            0.1,
+            0.73
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.002577070619006105,
+          "tested_radius_m": 0.027577070619006105,
+          "sampled_segments": 4725,
+          "proposal_blocked_count": 0,
+          "actual_GLB_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.02868767999870558,
+          "continuum_argument": "Each intermediate path is within r_max*d_theta/2 + d_z/2 of a sampled path; enlarged radius proves the nominal 25mm sphere clear throughout this closed parameter rectangle. Expanded convex planes are a conservative broad phase; exact Euclidean segment-to-hull distance resolves their edge/corner false positives."
+        },
+        {
+          "region_name": "lower_middle",
+          "expanded_plane_broadphase_candidates": 0,
+          "exact_distance_rejected_corner_false_positives": 0,
+          "angle_interval_rad": [
+            0.61,
+            0.96
+          ],
+          "source_z_interval_m": [
+            0.215,
+            0.4
+          ],
+          "radial_interval_m": [
+            0.1,
+            0.73
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.002583815825751309,
+          "tested_radius_m": 0.027583815825751312,
+          "sampled_segments": 7434,
+          "proposal_blocked_count": 0,
+          "actual_GLB_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.03242169378667854,
+          "continuum_argument": "Each intermediate path is within r_max*d_theta/2 + d_z/2 of a sampled path; enlarged radius proves the nominal 25mm sphere clear throughout this closed parameter rectangle. Expanded convex planes are a conservative broad phase; exact Euclidean segment-to-hull distance resolves their edge/corner false positives."
+        },
+        {
+          "region_name": "lower_exit",
+          "expanded_plane_broadphase_candidates": 126,
+          "exact_distance_rejected_corner_false_positives": 126,
+          "angle_interval_rad": [
+            1.2,
+            1.42
+          ],
+          "source_z_interval_m": [
+            0.215,
+            0.4
+          ],
+          "radial_interval_m": [
+            0.1,
+            0.73
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.0025770706190061353,
+          "tested_radius_m": 0.027577070619006137,
+          "sampled_segments": 4725,
+          "proposal_blocked_count": 0,
+          "actual_GLB_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.02890148218553912,
+          "continuum_argument": "Each intermediate path is within r_max*d_theta/2 + d_z/2 of a sampled path; enlarged radius proves the nominal 25mm sphere clear throughout this closed parameter rectangle. Expanded convex planes are a conservative broad phase; exact Euclidean segment-to-hull distance resolves their edge/corner false positives."
+        },
+        {
+          "region_name": "upper_open_arc",
+          "expanded_plane_broadphase_candidates": 500,
+          "exact_distance_rejected_corner_false_positives": 500,
+          "angle_interval_rad": [
+            0.15,
+            1.42
+          ],
+          "source_z_interval_m": [
+            0.535,
+            0.775
+          ],
+          "radial_interval_m": [
+            0.1,
+            0.73
+          ],
+          "nominal_sphere_radius_m": 0.025,
+          "covering_radius_inflation_m": 0.002593278301886793,
+          "tested_radius_m": 0.027593278301886796,
+          "sampled_segments": 34425,
+          "proposal_blocked_count": 0,
+          "actual_GLB_blocked_count": 0,
+          "minimum_actual_GLB_clearance_m": 0.02868767999870558,
+          "continuum_argument": "Each intermediate path is within r_max*d_theta/2 + d_z/2 of a sampled path; enlarged radius proves the nominal 25mm sphere clear throughout this closed parameter rectangle. Expanded convex planes are a conservative broad phase; exact Euclidean segment-to-hull distance resolves their edge/corner false positives."
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "preserved_qa/batch07/__pycache__/render_hospitality_arrangement.cpython-312.pyc",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/README.md",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/component_fixture.blend",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/component_fixture.blend1",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/evidence.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/guest_overview_1280.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/guest_overview_1280_labelled.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/guest_standing_640.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/guest_standing_640_labelled.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/labelled_media.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/source_equivalence.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement/staff_workside_640.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement_preflight.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/arrangement_render.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_assembly_report.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_assembly_review.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_collision_report.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_collision_review.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_counter_report.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_counter_review.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_export_AST-HSP-001.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_export_AST-HSP-002.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_export_AST-HSP-003.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_export_AST-HSP-004.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_export_AST-HSP-005.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_export_AST-HSP-006.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_export_review.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_export_review.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_export_summary.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_final_review.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_final_source_hash_receipt.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_finalize_review.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_geometry.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_manifest_report.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_manifest_review.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_manifest_review.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_preservation_check.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_preservation_report.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_reference_check.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_review.md",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_serviceware_report.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_serviceware_review.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_AST-HSP-001.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_AST-HSP-002.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_AST-HSP-003.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_AST-HSP-004.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_AST-HSP-005.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_AST-HSP-006.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_counters.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_geometry_AST-HSP-001.npz",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_geometry_AST-HSP-002.npz",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_geometry_AST-HSP-003.npz",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_geometry_AST-HSP-004.npz",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_geometry_AST-HSP-005.npz",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_geometry_AST-HSP-006.npz",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_review.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_serviceware.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_station004_final.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_source_stations.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_start_baseline.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_station_report.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_station_review.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_visual_assembly.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_visual_counters.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_visual_serviceware.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/independent_visual_stations.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/label_arrangement.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/render_hospitality_arrangement.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/render_workside_followthrough.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/workside_followthrough/component_fixture.blend",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/workside_followthrough/component_fixture.blend1",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/workside_followthrough/counter_workside_640.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/workside_followthrough/evidence.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/workside_followthrough/storage_trolley_640.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/workside_followthrough_preflight.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_qa/batch07/workside_followthrough_render.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/build.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/camera_preflight.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/check_interfaces.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/final_evidence_binding.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/finalize_records.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/glb_validation.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/glb_validation.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/guest_labelled.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/guest_raw.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/inspect_sources.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/interface_checks.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/interface_checks.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/joint_labelled.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/joint_raw.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/label_evidence.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/metadata_reproduction_check.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/preflight.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/render.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/render_evidence.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/render_imported.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/review_media_manifest.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/source_reload.log",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/source_reload_checks.json",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/staff_labelled.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/staff_raw.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/standing_labelled.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/standing_raw.png",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/qa/validate_glb.py",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/source/AST-HSP-001.blend",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/source/AST-HSP-002.blend",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/exports/AST-HSP-001.glb",
+      "pass": true
+    },
+    {
+      "name": "preserved_assets/hospitality_counters/exports/AST-HSP-002.glb",
+      "pass": true
+    },
+    {
+      "name": "AST-HSP-001_source_cache_hash",
+      "pass": true
+    },
+    {
+      "name": "AST-HSP-001_frame_exact",
+      "pass": true
+    },
+    {
+      "name": "AST-HSP-001_all_unaffected_old_hulls_contained",
+      "pass": true,
+      "old_hull_count": 23,
+      "intentional_exception": "Old whole-fascia hulls filled real lower-shelf depth and old terminal hulls filled toe recesses; source-backed band/step decomposition removes those false positives",
+      "maximum_plane_excess_m": 5.551115123125783e-17
+    },
+    {
+      "name": "AST-HSP-001_whole_source_triangle_union_containment",
+      "pass": true,
+      "triangles": 1116,
+      "cap_or_band_crossing_triangles_clipped": 40,
+      "maximum_uncovered_area_m2": 0.0,
+      "failures": []
+    },
+    {
+      "name": "AST-HSP-001_cache_actual_GLB_parity",
+      "pass": true,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "name": "AST-HSP-001_legacy_straight_(0.4, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.4,
+          0.6,
+          0.3
+        ],
+        [
+          0.4,
+          -0.24,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_legacy_straight_(0.4, 0.55)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.4,
+          0.6,
+          0.55
+        ],
+        [
+          0.4,
+          -0.24,
+          0.55
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_legacy_straight_(1.2, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          1.2,
+          0.6,
+          0.3
+        ],
+        [
+          1.2,
+          -0.24,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_legacy_straight_(1.2, 0.55)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          1.2,
+          0.6,
+          0.55
+        ],
+        [
+          1.2,
+          -0.24,
+          0.55
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_legacy_straight_(2.0, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          2.0,
+          0.6,
+          0.3
+        ],
+        [
+          2.0,
+          -0.24,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_legacy_straight_(2.0, 0.55)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          2.0,
+          0.6,
+          0.55
+        ],
+        [
+          2.0,
+          -0.24,
+          0.55
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(0.4, 0.22)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.4,
+          0.6,
+          0.22
+        ],
+        [
+          0.4,
+          -0.304,
+          0.22
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(0.4, 0.27)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.4,
+          0.6,
+          0.27
+        ],
+        [
+          0.4,
+          -0.304,
+          0.27
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(0.4, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.4,
+          0.6,
+          0.3
+        ],
+        [
+          0.4,
+          -0.304,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(0.4, 0.4)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.4,
+          0.6,
+          0.4
+        ],
+        [
+          0.4,
+          -0.304,
+          0.4
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(1.2, 0.22)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          1.2,
+          0.6,
+          0.22
+        ],
+        [
+          1.2,
+          -0.304,
+          0.22
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(1.2, 0.27)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          1.2,
+          0.6,
+          0.27
+        ],
+        [
+          1.2,
+          -0.304,
+          0.27
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(1.2, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          1.2,
+          0.6,
+          0.3
+        ],
+        [
+          1.2,
+          -0.304,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(1.2, 0.4)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          1.2,
+          0.6,
+          0.4
+        ],
+        [
+          1.2,
+          -0.304,
+          0.4
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(2.0, 0.22)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          2.0,
+          0.6,
+          0.22
+        ],
+        [
+          2.0,
+          -0.304,
+          0.22
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(2.0, 0.27)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          2.0,
+          0.6,
+          0.27
+        ],
+        [
+          2.0,
+          -0.304,
+          0.27
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(2.0, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          2.0,
+          0.6,
+          0.3
+        ],
+        [
+          2.0,
+          -0.304,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_deep_shelf_(2.0, 0.4)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          2.0,
+          0.6,
+          0.4
+        ],
+        [
+          2.0,
+          -0.304,
+          0.4
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_legacy_drawer_cavity",
+      "pass": true,
+      "source_segment_m": [
+        [
+          1.2,
+          0.25,
+          0.72
+        ],
+        [
+          1.2,
+          -0.2,
+          0.72
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-001_blocked_fascia",
+      "pass": true,
+      "source_segment_m": [
+        [
+          1.2,
+          -0.42,
+          0.55
+        ],
+        [
+          1.2,
+          -0.25,
+          0.55
+        ]
+      ],
+      "expected_empty": false,
+      "proposal_hits": [
+        "bowed_guest_walnut_shell"
+      ],
+      "actual_GLB_hit_count": 2
+    },
+    {
+      "name": "AST-HSP-001_continuous_drawer_documented_source_axis",
+      "pass": true,
+      "source_axis": [
+        0,
+        1,
+        0
+      ],
+      "travel_m": 0.32,
+      "moving_hulls": 5,
+      "stationary_hulls": 29,
+      "penetrating_pairs": [],
+      "touching_tolerance_m": 1e-06
+    },
+    {
+      "name": "AST-HSP-001_continuous_drawer_wrong_source_axis",
+      "pass": true,
+      "source_axis": [
+        0,
+        0,
+        1
+      ],
+      "travel_m": 0.32,
+      "moving_hulls": 5,
+      "stationary_hulls": 29,
+      "penetrating_pairs": [
+        [
+          "drawer_ivory_front",
+          "continuous_eased_stone_worktop"
+        ],
+        [
+          "drawer_ivory_front",
+          "rear_top_support_rail"
+        ],
+        [
+          "drawer_left_side",
+          "continuous_eased_stone_worktop"
+        ],
+        [
+          "drawer_left_side",
+          "rear_top_support_rail"
+        ],
+        [
+          "drawer_open_pan_bottom",
+          "continuous_eased_stone_worktop"
+        ],
+        [
+          "drawer_open_pan_bottom",
+          "rear_top_support_rail"
+        ],
+        [
+          "drawer_rear_wall",
+          "continuous_eased_stone_worktop"
+        ],
+        [
+          "drawer_right_side",
+          "continuous_eased_stone_worktop"
+        ],
+        [
+          "drawer_right_side",
+          "rear_top_support_rail"
+        ]
+      ],
+      "touching_tolerance_m": 1e-06
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_bowed_guest_walnut_shell_0",
+      "pass": true,
+      "source_surface_control_m": [
+        1.5996666196345661,
+        -0.3169999917348226,
+        0.17633333802223206
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_bowed_guest_walnut_shell_1",
+      "pass": true,
+      "source_surface_control_m": [
+        1.5996666196345661,
+        -0.34833332896232605,
+        0.22566667199134827
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_bowed_guest_walnut_shell_2",
+      "pass": true,
+      "source_surface_control_m": [
+        1.5996666196345661,
+        -0.329666664203008,
+        0.4183333416779836
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_bowed_guest_walnut_shell_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8003333098410318,
+        -0.350000003973643,
+        0.6573333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_bowed_guest_walnut_shell_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8003333098410318,
+        -0.35233333706855774,
+        0.7946666479110718
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_centre_lower_service_shelf_0",
+      "pass": true,
+      "source_surface_control_m": [
+        1.3290666937828064,
+        0.12606666485468546,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_continuous_eased_stone_worktop_0",
+      "pass": true,
+      "source_surface_control_m": [
+        1.5996666196345661,
+        -0.12599999705950418,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_entry_closed_shaped_terminal_bulkhead_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.027000000700354576,
+        0.09266666571299235,
+        0.08266666531562805
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_entry_closed_shaped_terminal_bulkhead_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.027000000700354576,
+        -0.10199999809265137,
+        0.13733333349227905
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_entry_closed_shaped_terminal_bulkhead_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.027000000700354576,
+        -0.12433333198229472,
+        0.38000000019868213
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_entry_closed_shaped_terminal_bulkhead_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.00966666693178316,
+        -0.11600000659624736,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_exit_closed_shaped_terminal_bulkhead_0",
+      "pass": true,
+      "source_surface_control_m": [
+        2.3989999294281006,
+        0.09266666571299235,
+        0.08266666531562805
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_exit_closed_shaped_terminal_bulkhead_1",
+      "pass": true,
+      "source_surface_control_m": [
+        2.3989999294281006,
+        -0.10199999809265137,
+        0.13733333349227905
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_exit_closed_shaped_terminal_bulkhead_2",
+      "pass": true,
+      "source_surface_control_m": [
+        2.3989999294281006,
+        -0.12433333198229472,
+        0.38000000019868213
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_exit_closed_shaped_terminal_bulkhead_3",
+      "pass": true,
+      "source_surface_control_m": [
+        2.381666580835978,
+        -0.11600000659624736,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_fixed_drawer_runner_0.83_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8253333369890848,
+        0.12866666913032532,
+        0.6240000128746033
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_fixed_drawer_runner_1.57_0",
+      "pass": true,
+      "source_surface_control_m": [
+        1.565333326657613,
+        0.12866666913032532,
+        0.6240000128746033
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_left_open_service_shelf_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5340666497747103,
+        0.12606666485468546,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_left_shelf_rear_retaining_upstand_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5340666497747103,
+        -0.2879999876022339,
+        0.47626666227976483
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_load_bearing_base_shelf_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.807600042472283,
+        -0.08973333239555359,
+        0.164000004529953
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_load_bearing_bay_divider_1_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7879999876022339,
+        -0.07933334509531657,
+        0.3830000062783559
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_load_bearing_bay_divider_2_0",
+      "pass": true,
+      "source_surface_control_m": [
+        1.5880000591278076,
+        -0.07933334509531657,
+        0.3830000062783559
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_lower_ivory_swept_rail_0",
+      "pass": true,
+      "source_surface_control_m": [
+        1.5996666196345661,
+        -0.3009999891122182,
+        0.18000000218550363
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_rear_recessed_floor_plinth_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8006000116777917,
+        0.23800000548362732,
+        0.04760000200864548
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_rear_top_support_rail_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.807600042472283,
+        0.3189333379268646,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_recessed_front_floor_plinth_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8006000116777917,
+        -0.28200000524520874,
+        0.04760000200864548
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_right_open_service_shelf_0",
+      "pass": true,
+      "source_surface_control_m": [
+        2.119066675504049,
+        0.12606666485468546,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_right_shelf_rear_retaining_upstand_0",
+      "pass": true,
+      "source_surface_control_m": [
+        1.8659333388010662,
+        -0.2879999876022339,
+        0.4857333203156789
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_blocked_section_upper_ivory_bullnose_rail_0",
+      "pass": true,
+      "source_surface_control_m": [
+        1.5996666196345661,
+        -0.3660000065962474,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-001_continuous_straight_corridor_(0.12, 0.22)",
+      "pass": true,
+      "source_x_interval_m": [
+        0.12,
+        0.66
+      ],
+      "source_z_interval_m": [
+        0.22,
+        0.39
+      ],
+      "source_y_path_m": [
+        0.6,
+        -0.24
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.015,
+      "sampled_segments": 504,
+      "proposal_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.055999995470047
+    },
+    {
+      "name": "AST-HSP-001_continuous_straight_corridor_(0.12, 0.525)",
+      "pass": true,
+      "source_x_interval_m": [
+        0.12,
+        0.66
+      ],
+      "source_z_interval_m": [
+        0.525,
+        0.595
+      ],
+      "source_y_path_m": [
+        0.6,
+        -0.24
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.015,
+      "sampled_segments": 224,
+      "proposal_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.048999989032745384
+    },
+    {
+      "name": "AST-HSP-001_continuous_straight_corridor_(0.94, 0.22)",
+      "pass": true,
+      "source_x_interval_m": [
+        0.94,
+        1.46
+      ],
+      "source_z_interval_m": [
+        0.22,
+        0.39
+      ],
+      "source_y_path_m": [
+        0.6,
+        -0.24
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.015000000000000013,
+      "sampled_segments": 486,
+      "proposal_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.055999995470047
+    },
+    {
+      "name": "AST-HSP-001_continuous_straight_corridor_(0.94, 0.525)",
+      "pass": true,
+      "source_x_interval_m": [
+        0.94,
+        1.46
+      ],
+      "source_z_interval_m": [
+        0.525,
+        0.595
+      ],
+      "source_y_path_m": [
+        0.6,
+        -0.24
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.015000000000000013,
+      "sampled_segments": 216,
+      "proposal_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.04800000667572024
+    },
+    {
+      "name": "AST-HSP-001_continuous_straight_corridor_(1.74, 0.22)",
+      "pass": true,
+      "source_x_interval_m": [
+        1.74,
+        2.28
+      ],
+      "source_z_interval_m": [
+        0.22,
+        0.39
+      ],
+      "source_y_path_m": [
+        0.6,
+        -0.24
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.015000000000000013,
+      "sampled_segments": 504,
+      "proposal_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.055999995470047
+    },
+    {
+      "name": "AST-HSP-001_continuous_straight_corridor_(1.74, 0.525)",
+      "pass": true,
+      "source_x_interval_m": [
+        1.74,
+        2.28
+      ],
+      "source_z_interval_m": [
+        0.525,
+        0.595
+      ],
+      "source_y_path_m": [
+        0.6,
+        -0.24
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.015000000000000013,
+      "sampled_segments": 224,
+      "proposal_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.048999989032745384
+    },
+    {
+      "name": "AST-HSP-002_source_cache_hash",
+      "pass": true
+    },
+    {
+      "name": "AST-HSP-002_frame_exact",
+      "pass": true
+    },
+    {
+      "name": "AST-HSP-002_all_unaffected_old_hulls_contained",
+      "pass": true,
+      "old_hull_count": 237,
+      "intentional_exception": "Old whole-fascia hulls filled real lower-shelf depth and old terminal hulls filled toe recesses; source-backed band/step decomposition removes those false positives",
+      "maximum_plane_excess_m": 2.220446049250313e-16
+    },
+    {
+      "name": "AST-HSP-002_whole_source_triangle_union_containment",
+      "pass": true,
+      "triangles": 4830,
+      "cap_or_band_crossing_triangles_clipped": 40,
+      "maximum_uncovered_area_m2": 0.0,
+      "failures": []
+    },
+    {
+      "name": "AST-HSP-002_cache_actual_GLB_parity",
+      "pass": true,
+      "max_bidirectional_vertex_error_m": 0.0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_0",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.02377026264271346,
+          0.522866202514797,
+          0.26
+        ],
+        [
+          0.17352291729180824,
+          -0.08907672164198166,
+          0.26
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_1",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.02377026264271346,
+          0.522866202514797,
+          0.38
+        ],
+        [
+          0.17352291729180824,
+          -0.08907672164198166,
+          0.38
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_2",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.02377026264271346,
+          0.522866202514797,
+          0.55
+        ],
+        [
+          0.17352291729180824,
+          -0.08907672164198166,
+          0.55
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_3",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.02377026264271346,
+          0.522866202514797,
+          0.73
+        ],
+        [
+          0.17352291729180824,
+          -0.08907672164198166,
+          0.73
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_4",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.0706825181105366,
+          0.54926117308328,
+          0.26
+        ],
+        [
+          0.5159823822069172,
+          0.10360656350794417,
+          0.26
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_5",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.0706825181105366,
+          0.54926117308328,
+          0.38
+        ],
+        [
+          0.5159823822069172,
+          0.10360656350794417,
+          0.38
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_6",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.0706825181105366,
+          0.54926117308328,
+          0.55
+        ],
+        [
+          0.5159823822069172,
+          0.10360656350794417,
+          0.55
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_7",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.0706825181105366,
+          0.54926117308328,
+          0.73
+        ],
+        [
+          0.5159823822069172,
+          0.10360656350794417,
+          0.73
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_8",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.09711483779210446,
+          0.5961523946566277,
+          0.26
+        ],
+        [
+          0.7089383158823626,
+          0.44591248099338215,
+          0.26
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_9",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.09711483779210446,
+          0.5961523946566277,
+          0.38
+        ],
+        [
+          0.7089383158823626,
+          0.44591248099338215,
+          0.38
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_10",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.09711483779210446,
+          0.5961523946566277,
+          0.55
+        ],
+        [
+          0.7089383158823626,
+          0.44591248099338215,
+          0.55
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_original_twelve_access_11",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.09711483779210446,
+          0.5961523946566277,
+          0.73
+        ],
+        [
+          0.7089383158823626,
+          0.44591248099338215,
+          0.73
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_legacy_return_(0.2, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.009933466539753062,
+          0.570996671107938,
+          0.3
+        ],
+        [
+          0.16688223786785142,
+          -0.20325592538664294,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_legacy_return_(0.2, 0.55)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.009933466539753062,
+          0.570996671107938,
+          0.55
+        ],
+        [
+          0.16688223786785142,
+          -0.20325592538664294,
+          0.55
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_legacy_return_(0.75, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.034081938001166705,
+          0.583415556556309,
+          0.3
+        ],
+        [
+          0.5725765584196006,
+          0.005381350145990504,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_legacy_return_(0.75, 0.55)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.034081938001166705,
+          0.583415556556309,
+          0.55
+        ],
+        [
+          0.5725765584196006,
+          0.005381350145990504,
+          0.55
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_legacy_return_(1.4, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.04927248649942301,
+          0.611501642854988,
+          0.3
+        ],
+        [
+          0.8277777731903065,
+          0.47722759996379754,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_legacy_return_(1.4, 0.55)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.04927248649942301,
+          0.611501642854988,
+          0.55
+        ],
+        [
+          0.8277777731903065,
+          0.47722759996379754,
+          0.55
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(0.2, 0.22)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.019866933079506124,
+          0.5219933422158758,
+          0.22
+        ],
+        [
+          0.18357046165463659,
+          -0.2855815179253073,
+          0.22
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(0.2, 0.27)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.019866933079506124,
+          0.5219933422158758,
+          0.27
+        ],
+        [
+          0.18357046165463659,
+          -0.2855815179253073,
+          0.27
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(0.2, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.019866933079506124,
+          0.5219933422158758,
+          0.3
+        ],
+        [
+          0.18357046165463659,
+          -0.2855815179253073,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(0.2, 0.4)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.019866933079506124,
+          0.5219933422158758,
+          0.4
+        ],
+        [
+          0.18357046165463659,
+          -0.2855815179253073,
+          0.4
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(0.75, 0.22)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.06816387600233341,
+          0.5468311131126179,
+          0.22
+        ],
+        [
+          0.6298342142615607,
+          -0.05608051483941057,
+          0.22
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(0.75, 0.27)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.06816387600233341,
+          0.5468311131126179,
+          0.27
+        ],
+        [
+          0.6298342142615607,
+          -0.05608051483941057,
+          0.27
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(0.75, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.06816387600233341,
+          0.5468311131126179,
+          0.3
+        ],
+        [
+          0.6298342142615607,
+          -0.05608051483941057,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(0.75, 0.4)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.06816387600233341,
+          0.5468311131126179,
+          0.4
+        ],
+        [
+          0.6298342142615607,
+          -0.05608051483941057,
+          0.4
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(1.4, 0.22)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.09854497299884601,
+          0.6030032857099759,
+          0.22
+        ],
+        [
+          0.9105555505093372,
+          0.4629503599601773,
+          0.22
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(1.4, 0.27)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.09854497299884601,
+          0.6030032857099759,
+          0.27
+        ],
+        [
+          0.9105555505093372,
+          0.4629503599601773,
+          0.27
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(1.4, 0.3)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.09854497299884601,
+          0.6030032857099759,
+          0.3
+        ],
+        [
+          0.9105555505093372,
+          0.4629503599601773,
+          0.3
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_deep_shelf_(1.4, 0.4)",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.09854497299884601,
+          0.6030032857099759,
+          0.4
+        ],
+        [
+          0.9105555505093372,
+          0.4629503599601773,
+          0.4
+        ]
+      ],
+      "expected_empty": true,
+      "proposal_hits": [],
+      "actual_GLB_hit_count": 0
+    },
+    {
+      "name": "AST-HSP-002_blocked_fascia",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.6222539674441618,
+          -0.002253967444161842,
+          0.55
+        ],
+        [
+          0.700035713374682,
+          -0.08003571337468196,
+          0.55
+        ]
+      ],
+      "expected_empty": false,
+      "proposal_hits": [
+        "bowed_guest_walnut_shell",
+        "bowed_guest_walnut_shell"
+      ],
+      "actual_GLB_hit_count": 2
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.10176229476928711,
+        -0.2999468445777893,
+        0.1886666715145111
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2789238492647807,
+        -0.26253002882003784,
+        0.1886666715145111
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4454103608926137,
+        -0.19133678078651428,
+        0.1886666715145111
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5948500037193298,
+        -0.08909183616439502,
+        0.1886666715145111
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.721523384253184,
+        0.04029165637136126,
+        0.1886666715145111
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_5",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8205824295679728,
+        0.19186190267403921,
+        0.1886666715145111
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_6",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8882359266281128,
+        0.3598179618517558,
+        0.1886666715145111
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_7",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9218946297963461,
+        0.5377317865689596,
+        0.1886666715145111
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_8",
+      "pass": true,
+      "source_surface_control_m": [
+        0.10453638682762782,
+        -0.323441485563914,
+        0.25033333897590637
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_9",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2862191398938497,
+        -0.28503498435020447,
+        0.25033333897590637
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_10",
+      "pass": true,
+      "source_surface_control_m": [
+        0.45694764455159503,
+        -0.2119907190402349,
+        0.25033333897590637
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_11",
+      "pass": true,
+      "source_surface_control_m": [
+        0.6101877291997274,
+        -0.10710428655147552,
+        0.25033333897590637
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_12",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7400745352109274,
+        0.02561007036517064,
+        0.25033333897590637
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_13",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8416370153427124,
+        0.18107308447360992,
+        0.25033333897590637
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_14",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9109881520271301,
+        0.35333482424418133,
+        0.25033333897590637
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_15",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9454736908276876,
+        0.5358024338881174,
+        0.25033333897590637
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_16",
+      "pass": true,
+      "source_surface_control_m": [
+        0.10470966746409734,
+        -0.3234241803487142,
+        0.4183333416779836
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_17",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2863857348759969,
+        -0.2849842607975006,
+        0.4183333416779836
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_18",
+      "pass": true,
+      "source_surface_control_m": [
+        0.457101176182429,
+        -0.21190853416919708,
+        0.4183333416779836
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_19",
+      "pass": true,
+      "source_surface_control_m": [
+        0.6103223164876302,
+        -0.10699378699064255,
+        0.4183333416779836
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_20",
+      "pass": true,
+      "source_surface_control_m": [
+        0.740185022354126,
+        0.02574466308578849,
+        0.4183333416779836
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_21",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8417192101478577,
+        0.18122661113739014,
+        0.4183333416779836
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_22",
+      "pass": true,
+      "source_surface_control_m": [
+        0.911038875579834,
+        0.35350141922632855,
+        0.4183333416779836
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_23",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9454909960428873,
+        0.5359757244586945,
+        0.4183333416779836
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_24",
+      "pass": true,
+      "source_surface_control_m": [
+        0.08596896380186081,
+        -0.345720370610555,
+        0.6573333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_25",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2723446140686671,
+        -0.3105025092760722,
+        0.6573333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_26",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4482970138390859,
+        -0.23967219392458597,
+        0.6573333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_27",
+      "pass": true,
+      "source_surface_control_m": [
+        0.6070920626322428,
+        -0.13594028105338415,
+        0.6573333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_28",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7426523367563883,
+        -0.0032768196736772857,
+        0.6573333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_29",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8497896393140157,
+        0.1532408595085144,
+        0.6573333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_30",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9244035085042318,
+        0.3276224633057912,
+        0.6573333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_31",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9636384050051371,
+        0.5131940344969431,
+        0.6573333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_32",
+      "pass": true,
+      "source_surface_control_m": [
+        0.08477210998535156,
+        -0.331442932287852,
+        0.7823333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_33",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2683909187714259,
+        -0.29673129320144653,
+        0.7823333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_34",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4417378008365631,
+        -0.22693427900473276,
+        0.7823333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_35",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5981783668200175,
+        -0.12472316871086757,
+        0.7823333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_36",
+      "pass": true,
+      "source_surface_control_m": [
+        0.731725295384725,
+        0.005990187462884933,
+        0.7823333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_37",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8372674385706583,
+        0.160203089316686,
+        0.7823333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_38",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9107654690742493,
+        0.332013467947642,
+        0.7823333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_bowed_guest_walnut_shell_39",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9494064052899679,
+        0.514845738808314,
+        0.7823333144187927
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_continuous_eased_stone_worktop_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.07674979045987129,
+        -0.12164620558420818,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_continuous_eased_stone_worktop_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.21967577189207077,
+        -0.09251116712888081,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_continuous_eased_stone_worktop_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.3541942685842514,
+        -0.03610672056674957,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_continuous_eased_stone_worktop_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4751569479703903,
+        0.04540841778119405,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_continuous_eased_stone_worktop_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5779342750708262,
+        0.1489144740626216,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_continuous_eased_stone_worktop_5",
+      "pass": true,
+      "source_surface_control_m": [
+        0.6585927605628967,
+        0.27045005311568576,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_continuous_eased_stone_worktop_6",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7140454252560934,
+        0.40536369880040485,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_continuous_eased_stone_worktop_7",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7421699414650599,
+        0.5484919548034668,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_open_service_shelf_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.07995374004046123,
+        0.1297014852364858,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_open_service_shelf_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.17255953699350357,
+        0.15415836373964945,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_open_service_shelf_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2587506224711736,
+        0.19593238830566406,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_open_service_shelf_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.3353229413429896,
+        0.25347066298127174,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_open_service_shelf_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.39942999680836994,
+        0.3246342713634173,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_open_service_shelf_5",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4486886610587438,
+        0.4067777742942174,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_open_service_shelf_6",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4812678396701813,
+        0.49684759974479675,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_open_service_shelf_7",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4930957655111949,
+        0.5596526066462199,
+        0.4659999907016754
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_outer_retaining_upstand_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.1381249080101649,
+        -0.279032438993454,
+        0.47493333617846173
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_outer_retaining_upstand_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.28965086738268536,
+        -0.2422297696272532,
+        0.4830666681130727
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_outer_retaining_upstand_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4497353831926982,
+        -0.17061740656693777,
+        0.4830666681130727
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_outer_retaining_upstand_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5931015014648438,
+        -0.06961470594008763,
+        0.4830666681130727
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_outer_retaining_upstand_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.726337194442749,
+        0.07248555620511372,
+        0.47493333617846173
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_outer_retaining_upstand_5",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8091801007588705,
+        0.2045900970697403,
+        0.4830666681130727
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_outer_retaining_upstand_6",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8738601207733154,
+        0.36759892106056213,
+        0.4830666681130727
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_outer_retaining_upstand_7",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9060347278912863,
+        0.53972460826238,
+        0.4830666681130727
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_radial_support_1_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.23025511701901755,
+        0.1676280895868937,
+        0.3523999899625778
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_curved_shelf_radial_support_2_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.45237191518147785,
+        0.3897448579470317,
+        0.25859999656677246
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_entry_closed_shaped_terminal_bulkhead_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.02295725792646408,
+        0.09316661953926086,
+        0.08266666531562805
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_entry_closed_shaped_terminal_bulkhead_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.03143199843664964,
+        -0.10131548841794331,
+        0.13733333349227905
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_entry_closed_shaped_terminal_bulkhead_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.03240427188575268,
+        -0.12362765272458394,
+        0.38000000019868213
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_entry_closed_shaped_terminal_bulkhead_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.014728349866345525,
+        -0.11569377779960632,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_exit_closed_shaped_terminal_bulkhead_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5273333390553793,
+        0.6190000176429749,
+        0.08266666531562805
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_exit_closed_shaped_terminal_bulkhead_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7220000127951304,
+        0.6190000176429749,
+        0.13733333349227905
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_exit_closed_shaped_terminal_bulkhead_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7443333367506663,
+        0.6190000176429749,
+        0.38000000019868213
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_exit_closed_shaped_terminal_bulkhead_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7356084287166595,
+        0.6016868750254313,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_load_bearing_base_shelf_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.05511649387578169,
+        0.1329987347126007,
+        0.1420000046491623
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_load_bearing_base_shelf_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.14873060335715613,
+        0.15300185481707254,
+        0.1420000046491623
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_load_bearing_base_shelf_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.23667078713575998,
+        0.19082054992516836,
+        0.1420000046491623
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_load_bearing_base_shelf_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.31558216114838916,
+        0.24501206477483115,
+        0.1420000046491623
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_load_bearing_base_shelf_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.3947554479042689,
+        0.3295241917173068,
+        0.164000004529953
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_load_bearing_base_shelf_5",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4347362816333771,
+        0.3936983793973923,
+        0.1420000046491623
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_load_bearing_base_shelf_6",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4756974180539449,
+        0.5020168622334799,
+        0.164000004529953
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_load_bearing_base_shelf_7",
+      "pass": true,
+      "source_surface_control_m": [
+        0.488165686527888,
+        0.5763219793637594,
+        0.1420000046491623
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_lower_ivory_swept_rail_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.10131960113843282,
+        -0.2949688533941905,
+        0.18000000218550363
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_lower_ivory_swept_rail_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.27752044300238293,
+        -0.257733479142189,
+        0.18000000218550363
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_lower_ivory_swept_rail_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.44309993584950763,
+        -0.1869052698214849,
+        0.18000000218550363
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_lower_ivory_swept_rail_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5917210181554159,
+        -0.08519495278596878,
+        0.18000000218550363
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_lower_ivory_swept_rail_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7176955540974935,
+        0.0435047703795135,
+        0.18000000218550363
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_lower_ivory_swept_rail_5",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8162022829055786,
+        0.19426827629407248,
+        0.18000000218550363
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_lower_ivory_swept_rail_6",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8834710915883383,
+        0.3613255023956299,
+        0.18000000218550363
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_lower_ivory_swept_rail_7",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9169274767239889,
+        0.5382827818393707,
+        0.18000000218550363
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_recessed_floor_plinth_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.05397262175877889,
+        0.2723312973976135,
+        0.09440000399869557
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_recessed_floor_plinth_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.14194377760092416,
+        0.2980705797672272,
+        0.09440000399869557
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_recessed_floor_plinth_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.20813230176766714,
+        0.3363320231437683,
+        0.047600001989242934
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_recessed_floor_plinth_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2743406494458516,
+        0.39971883098284405,
+        0.047600001989242934
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_recessed_floor_plinth_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.321929395198822,
+        0.4780562222003937,
+        0.047600001989242934
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_recessed_floor_plinth_5",
+      "pass": true,
+      "source_surface_control_m": [
+        0.34766870737075806,
+        0.5660273830095927,
+        0.047600001989242934
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_top_support_rail_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.05972674489021301,
+        0.3405083318551381,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_top_support_rail_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.14015422264734903,
+        0.37092236677805585,
+        0.8159999847412109
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_top_support_rail_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.21708279848098755,
+        0.4341023564338684,
+        0.8519999980926514
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_top_support_rail_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2625505328178406,
+        0.5070837040742239,
+        0.8159999847412109
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_rear_top_support_rail_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2827896475791931,
+        0.5786129236221313,
+        0.8159999847412109
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_recessed_front_floor_plinth_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.07702847570180893,
+        -0.24616932372252145,
+        0.09440000399869557
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_recessed_front_floor_plinth_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.2623102217912674,
+        -0.20908144116401672,
+        0.047600001989242934
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_recessed_front_floor_plinth_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.4187084933121999,
+        -0.14214558899402618,
+        0.047600001989242934
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_recessed_front_floor_plinth_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5444449186325073,
+        -0.058057850847641625,
+        0.09440000399869557
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_recessed_front_floor_plinth_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.6660406788190206,
+        0.06091816474994024,
+        0.09440000399869557
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_recessed_front_floor_plinth_5",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7710830569267273,
+        0.21798802415529886,
+        0.047600001989242934
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_recessed_front_floor_plinth_6",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8345971504847208,
+        0.37580684820810956,
+        0.047600001989242934
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_recessed_front_floor_plinth_7",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8661693334579468,
+        0.5429715116818746,
+        0.047600001989242934
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_0",
+      "pass": true,
+      "source_surface_control_m": [
+        0.04431701882276684,
+        -0.3645275831222534,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_1",
+      "pass": true,
+      "source_surface_control_m": [
+        0.17237818241119385,
+        -0.3503406047821045,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_2",
+      "pass": true,
+      "source_surface_control_m": [
+        0.29730574289957684,
+        -0.3196192979812622,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_3",
+      "pass": true,
+      "source_surface_control_m": [
+        0.41716716686884564,
+        -0.2728867034117381,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_4",
+      "pass": true,
+      "source_surface_control_m": [
+        0.5299200018246969,
+        -0.21093917886416116,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_5",
+      "pass": true,
+      "source_surface_control_m": [
+        0.6336428920427958,
+        -0.13483230024576187,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_6",
+      "pass": true,
+      "source_surface_control_m": [
+        0.7265684207280477,
+        -0.04586294665932655,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_7",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8071130911509196,
+        0.05445282471676668,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_8",
+      "pass": true,
+      "source_surface_control_m": [
+        0.8739043871561686,
+        0.16440561910470328,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_9",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9258042375246683,
+        0.28212182223796844,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_10",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9619282086690267,
+        0.40559553106625873,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_blocked_section_upper_ivory_bullnose_rail_11",
+      "pass": true,
+      "source_surface_control_m": [
+        0.9816607236862183,
+        0.5327227115631104,
+        0.8193333347638448
+      ],
+      "numeric_surface_tolerance_m": 2e-07
+    },
+    {
+      "name": "AST-HSP-002_continuous_capsule_corridor_lower_entry",
+      "pass": true,
+      "region_name": "lower_entry",
+      "expanded_plane_broadphase_candidates": 189,
+      "exact_distance_rejected_corner_false_positives": 189,
+      "angle_interval_rad": [
+        0.15,
+        0.37
+      ],
+      "source_z_interval_m": [
+        0.215,
+        0.4
+      ],
+      "radial_interval_m": [
+        0.1,
+        0.73
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.002577070619006105,
+      "tested_radius_m": 0.027577070619006105,
+      "sampled_segments": 4725,
+      "proposal_blocked_count": 0,
+      "actual_GLB_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.02868767999870558,
+      "continuum_argument": "Each intermediate path is within r_max*d_theta/2 + d_z/2 of a sampled path; enlarged radius proves the nominal 25mm sphere clear throughout this closed parameter rectangle. Expanded convex planes are a conservative broad phase; exact Euclidean segment-to-hull distance resolves their edge/corner false positives."
+    },
+    {
+      "name": "AST-HSP-002_continuous_capsule_corridor_lower_middle",
+      "pass": true,
+      "region_name": "lower_middle",
+      "expanded_plane_broadphase_candidates": 0,
+      "exact_distance_rejected_corner_false_positives": 0,
+      "angle_interval_rad": [
+        0.61,
+        0.96
+      ],
+      "source_z_interval_m": [
+        0.215,
+        0.4
+      ],
+      "radial_interval_m": [
+        0.1,
+        0.73
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.002583815825751309,
+      "tested_radius_m": 0.027583815825751312,
+      "sampled_segments": 7434,
+      "proposal_blocked_count": 0,
+      "actual_GLB_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.03242169378667854,
+      "continuum_argument": "Each intermediate path is within r_max*d_theta/2 + d_z/2 of a sampled path; enlarged radius proves the nominal 25mm sphere clear throughout this closed parameter rectangle. Expanded convex planes are a conservative broad phase; exact Euclidean segment-to-hull distance resolves their edge/corner false positives."
+    },
+    {
+      "name": "AST-HSP-002_continuous_capsule_corridor_lower_exit",
+      "pass": true,
+      "region_name": "lower_exit",
+      "expanded_plane_broadphase_candidates": 126,
+      "exact_distance_rejected_corner_false_positives": 126,
+      "angle_interval_rad": [
+        1.2,
+        1.42
+      ],
+      "source_z_interval_m": [
+        0.215,
+        0.4
+      ],
+      "radial_interval_m": [
+        0.1,
+        0.73
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.0025770706190061353,
+      "tested_radius_m": 0.027577070619006137,
+      "sampled_segments": 4725,
+      "proposal_blocked_count": 0,
+      "actual_GLB_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.02890148218553912,
+      "continuum_argument": "Each intermediate path is within r_max*d_theta/2 + d_z/2 of a sampled path; enlarged radius proves the nominal 25mm sphere clear throughout this closed parameter rectangle. Expanded convex planes are a conservative broad phase; exact Euclidean segment-to-hull distance resolves their edge/corner false positives."
+    },
+    {
+      "name": "AST-HSP-002_continuous_capsule_corridor_upper_open_arc",
+      "pass": true,
+      "region_name": "upper_open_arc",
+      "expanded_plane_broadphase_candidates": 500,
+      "exact_distance_rejected_corner_false_positives": 500,
+      "angle_interval_rad": [
+        0.15,
+        1.42
+      ],
+      "source_z_interval_m": [
+        0.535,
+        0.775
+      ],
+      "radial_interval_m": [
+        0.1,
+        0.73
+      ],
+      "nominal_sphere_radius_m": 0.025,
+      "covering_radius_inflation_m": 0.002593278301886793,
+      "tested_radius_m": 0.027593278301886796,
+      "sampled_segments": 34425,
+      "proposal_blocked_count": 0,
+      "actual_GLB_blocked_count": 0,
+      "minimum_actual_GLB_clearance_m": 0.02868767999870558,
+      "continuum_argument": "Each intermediate path is within r_max*d_theta/2 + d_z/2 of a sampled path; enlarged radius proves the nominal 25mm sphere clear throughout this closed parameter rectangle. Expanded convex planes are a conservative broad phase; exact Euclidean segment-to-hull distance resolves their edge/corner false positives."
+    },
+    {
+      "name": "AST-HSP-002_blocked_mouth_entry_bulkhead",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.001499943750632809,
+          0.5200112497890641,
+          0.3
+        ],
+        [
+          0.010949589379619505,
+          -0.1099178765398322,
+          0.3
+        ]
+      ],
+      "expected_empty": false,
+      "proposal_hits": [
+        "entry_closed_shaped_terminal_bulkhead"
+      ],
+      "actual_GLB_hit_count": 1
+    },
+    {
+      "name": "AST-HSP-002_blocked_mouth_exit_bulkhead",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.09998875021093592,
+          0.6185000562493672,
+          0.3
+        ],
+        [
+          0.7299178765398322,
+          0.6090504106203806,
+          0.3
+        ]
+      ],
+      "expected_empty": false,
+      "proposal_hits": [
+        "exit_closed_shaped_terminal_bulkhead"
+      ],
+      "actual_GLB_hit_count": 1
+    },
+    {
+      "name": "AST-HSP-002_blocked_mouth_radial_support_1",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.04679298142605734,
+          0.5316234369911307,
+          0.3
+        ],
+        [
+          0.34158876441021857,
+          -0.02514890996474617,
+          0.3
+        ]
+      ],
+      "expected_empty": false,
+      "proposal_hits": [
+        "curved_shelf_radial_support_1"
+      ],
+      "actual_GLB_hit_count": 1
+    },
+    {
+      "name": "AST-HSP-002_blocked_mouth_radial_support_2",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.08837656300886934,
+          0.5732070185739426,
+          0.3
+        ],
+        [
+          0.6451489099647462,
+          0.27841123558978137,
+          0.3
+        ]
+      ],
+      "expected_empty": false,
+      "proposal_hits": [
+        "curved_shelf_radial_support_2"
+      ],
+      "actual_GLB_hit_count": 1
+    },
+    {
+      "name": "AST-HSP-002_blocked_shelf_0.25",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.12370197962726147,
+          0.13554378914467763,
+          0.42
+        ],
+        [
+          0.12370197962726147,
+          0.13554378914467763,
+          0.51
+        ]
+      ],
+      "expected_empty": false,
+      "proposal_hits": [
+        "curved_open_service_shelf"
+      ],
+      "actual_GLB_hit_count": 2
+    },
+    {
+      "name": "AST-HSP-002_blocked_shelf_0.8",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.3586780454497614,
+          0.2716466453264173,
+          0.42
+        ],
+        [
+          0.3586780454497614,
+          0.2716466453264173,
+          0.51
+        ]
+      ],
+      "expected_empty": false,
+      "proposal_hits": [
+        "curved_open_service_shelf"
+      ],
+      "actual_GLB_hit_count": 2
+    },
+    {
+      "name": "AST-HSP-002_blocked_shelf_1.3",
+      "pass": true,
+      "source_segment_m": [
+        [
+          0.4817790927085965,
+          0.4862505856877063,
+          0.42
+        ],
+        [
+          0.4817790927085965,
+          0.4862505856877063,
+          0.51
+        ]
+      ],
+      "expected_empty": false,
+      "proposal_hits": [
+        "curved_open_service_shelf"
+      ],
+      "actual_GLB_hit_count": 2
+    }
+  ],
+  "baseline_total_hospitality_shape_count": 399,
+  "current_total_hospitality_shape_count": 265,
+  "current_collision_sha256": "b37c063ac25d0c926d278c5ba2085833ab2f94c632b3b0f1018be7ddb1ec953c",
+  "pass": true,
+  "limits": [
+    "No original game/room is present; no engine physics, runtime material, CPU/GPU performance, installed species/body accessibility or load/food certification.",
+    "Hull boundary error includes internal section faces, so its conservative upper bound also bounds the compound exterior; inward/source omission is assessed separately by whole-triangle containment.",
+    "The 25mm sphere is a bounded service-object/hand proxy only. Reported rectangles exclude actual support, end bulkhead, shelf and drawer volumes.",
+    "All source surfaces represented by the baseline are retained conservatively; old whole-fascia overfill is intentionally removed with five vertical profile bands. Decorative ribs, reveal and drawer grip remain intentionally absent from collisions, as in Batch07.",
+    "Diagnostic hull-face to source-surface distance includes internal partition faces and points inside source material; it is not the signed outward-overfill metric. Use the independent winding/solid-distance report for that metric.",
+    "Surface error is sampled on a <=25mm triangular net with its explicit covering-radius upper bound. Distances include inherited per-profile convexification; new arc chord bound is5mm and profile-depth bound5mm.",
+    "Contact within1 micrometre is allowed in the continuous drawer proposal test. This is geometric separation, not joint/controller or mechanical certification."
+  ]
+}

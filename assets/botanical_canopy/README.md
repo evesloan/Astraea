@@ -32,3 +32,7 @@ From the catalogue root, run Blender 4.3.2 with `-b --threads 2 --python assets/
 Use `qa/check_and_render.py -- --preflight-only` for cheap source/contact and camera checks. Coordinate the shared render slot before the same script without the preflight argument. It renders only an imported final GLB with EEVEE_NEXT, no denoiser, two full 640×360 views and one deliberate branch detail crop. `standards/qa_frame.py` checks every full-frame camera. Then run `qa/label_evidence.py` for labelled evidence and `qa/validate_glb.py` for independent binary checks.
 
 Lights, floor and cameras are QA helpers, excluded from the source asset and GLB. The generator reads shared botanical materials but does not alter them. Future game performance, instancing, shared runtime material mapping and collision acceptance remain untested.
+
+## Compact-source rebuild readiness
+
+Batch08 makes the generator create its own output directories before writing completion evidence. It can complete from source-only staging without a pre-existing review folder. Existing editable masters, exported geometry and texture bytes are unchanged; original generator provenance is retained in the checkpoint evidence.

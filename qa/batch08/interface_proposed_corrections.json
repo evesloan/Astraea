@@ -1,0 +1,231 @@
+{
+  "scope": "IF-001 was the concrete metadata omission; IF-005 records the lead-discovered compact-restoration generator issue. Their status reflects the current inspected version. Notices preserve reasonable file-level frame declarations; no current geometry correction was identified.",
+  "outstanding_required_corrections": [],
+  "findings": [
+    {
+      "id": "IF-001",
+      "severity": "resolved_restoration_metadata_clarification",
+      "assets": [
+        "AST-LIB-006",
+        "AST-LIB-007"
+      ],
+      "evidence": [
+        "assets/library_contents/texture_manifest.json#/materials/*/base_color_file",
+        "assets/library_contents/build_library_contents.py:17-20",
+        "qa/batch08/library_texture_path_revision/revision_report.json"
+      ],
+      "fact": "Eight bare PNG basenames have no declared base directory in the texture manifest. The generator explicitly loads them from its textures/ subdirectory. All actual files exist.",
+      "proposed_change": "Add a versioned texture-root/path-resolution declaration, preserving existing basenames, pixels, material roles and all source/GLB bytes. Refresh only affected metadata dependency bindings.",
+      "geometry_change_required": false,
+      "status": "resolved_in_current_version",
+      "resolution": "Current texture manifest declares interface_revision=library-texture-paths-02, texture_root=textures, path_base=directory_containing_this_manifest and base_color_file_resolution=texture_root/base_color_file. The corresponding current generator reads that declaration."
+    },
+    {
+      "id": "IF-002",
+      "severity": "consumer_semantic_notice",
+      "assets": [
+        "AST-FUR-001",
+        "AST-FUR-002",
+        "AST-FUR-003",
+        "AST-LIB-STUDY-01",
+        "AST-LIB-STUDY-02",
+        "AST-LIB-006",
+        "AST-LIB-007",
+        "AST-STF-007"
+      ],
+      "evidence": [
+        "qa/batch08/interface_checks_summary.json#/legacy_source_axis_prose",
+        "standards/COORDINATE_CONTRACT.md"
+      ],
+      "fact": "Eight native GLBs retain origin/pivot prose describing Z-up/front -Y without an explicit source label. The paired manifests, catalogue coordinate contract and actual geometry clearly establish source Z-up and native GLB Y-up. This is not a geometry/frame failure and does not invalidate the corrected cabinet hinge.",
+      "proposed_change": "A versioned sidecar/current interface index should explicitly interpret these exact node extras as source-description text. Frozen GLBs need not change. Do not transform native GLB geometry twice.",
+      "geometry_change_required": false
+    },
+    {
+      "id": "IF-003",
+      "severity": "consumer_semantic_notice",
+      "assets": [
+        "AST-HSP-003",
+        "AST-HSP-004"
+      ],
+      "evidence": [
+        "assets/hospitality_stations/AST-HSP-003.manifest.json#/proposed_motion_nodes/0",
+        "assets/hospitality_stations/AST-HSP-004.manifest.json#/proposed_motion_nodes/0"
+      ],
+      "fact": "Motion roots have export_group=static alongside kind=proposed_linear_removal_root. Actual DRIP_TRAY and RECEIVING_CADDY parent the intended moving material meshes and descendant markers. export_group is an authoring/consolidation tag, not an instruction to suppress the declared motion.",
+      "proposed_change": "Keep exact original records but state tag semantics in the normalized consumer map; use actual hierarchy and explicit motion kind/axis/travel. No need to rewrite native meshes.",
+      "geometry_change_required": false
+    },
+    {
+      "id": "IF-004",
+      "severity": "explicit_known_limit",
+      "assets": [
+        "AST-HSP-001",
+        "AST-HSP-002",
+        "AST-HSP-005",
+        "AST-HSP-006"
+      ],
+      "evidence": [
+        "qa/batch08/interface_native_glb_evidence.json",
+        "assets/hospitality_serviceware/AST-HSP-005.manifest.json#/stock_groups",
+        "assets/hospitality_counters/AST-HSP-002.manifest.json#/runtime_consolidation"
+      ],
+      "fact": "Removable shelves, plate stacks and context tray are separable groups without a complete prescribed extraction trajectory for every group. Existing named tray/drawer translations and wheel axes are explicit.",
+      "proposed_change": "Mark unrestricted/removable-only groups as separable_geometry_trajectory_unspecified; do not invent clearance, grab points, motion limits or operating behavior. This is a semantic limit, not a requirement to add moving interfaces to static parts.",
+      "geometry_change_required": false
+    },
+    {
+      "id": "IF-005",
+      "severity": "resolved_restoration_generator_issue",
+      "assets": [
+        "AST-LIB-006",
+        "AST-LIB-007"
+      ],
+      "evidence": [
+        "assets/library_contents/build_stock_variants.py:8",
+        "qa/batch08/library_texture_path_revision/failed_missing_qa_directory/",
+        "qa/batch08/library_texture_path_revision/isolated_rebuild_report.json"
+      ],
+      "fact": "The lead isolated rebuild found the stock-variant generator assumed an existing qa/ output folder, which compact source packages omit. Current generator explicitly creates qa/ before writing its audit output.",
+      "current_rebuild_input_hashes_match": true,
+      "current_isolated_rebuild_report_pass": true,
+      "resolution": "Current isolated generator report records both scripts exit0 and four byte-identical GLB outputs, while current visual masters remain unchanged. Auditor verified report inputs against current bytes; auditor did not execute the rebuild.",
+      "geometry_change_required": false
+    },
+    {
+      "id": "IF-006",
+      "severity": "resolved_restoration_output_directory",
+      "assets": [
+        "AST-BOT-001"
+      ],
+      "evidence": [
+        "qa/batch08/interface_compact_source_report.md",
+        "qa/batch08/interface_compact_source_static_scan.json",
+        "assets/botanical_canopy/source/build_canopy.py",
+        "qa/batch08/source_output_directory_revision/isolated_rebuild_report.json"
+      ],
+      "fact": "This is a mandatory output write in the invoked generation entrypoint, not a required QA input. A missing parent makes a source-only restored generator fail at the end of generation.",
+      "current_source_guard_verified": true,
+      "output": "qa/support_contacts.json",
+      "resolution": "Current generator explicitly creates the omitted QA output parent before its mandatory report write. This static guard check is separate from lead-run isolated rebuild evidence.",
+      "geometry_change_required": false,
+      "separate_lead_rebuild_evidence": {
+        "report": "qa/batch08/source_output_directory_revision/isolated_rebuild_report.json",
+        "report_sha256": "6b34220997c0014b5bdadfd82f1867a222049f57779055a737d09deabcee4f9c",
+        "current_input_and_exports_bound": true,
+        "exit_code": 0,
+        "byte_identical_exports": true,
+        "attribution": "Lead-run isolated rebuild; this auditor read and bound the report, did not execute it."
+      }
+    },
+    {
+      "id": "IF-007",
+      "severity": "resolved_restoration_output_directory",
+      "assets": [
+        "AST-AQU-001",
+        "AST-AQU-002"
+      ],
+      "evidence": [
+        "qa/batch08/interface_compact_source_report.md",
+        "qa/batch08/interface_compact_source_static_scan.json",
+        "assets/aquatic_lounge/source/build_aquatic_lounge.py",
+        "qa/batch08/source_output_directory_revision/isolated_rebuild_report.json"
+      ],
+      "fact": "This is a mandatory output write in the invoked generation entrypoint, not a required QA input. A missing parent makes a source-only restored generator fail at the end of generation.",
+      "current_source_guard_verified": true,
+      "output": "qa/join_checks.json",
+      "resolution": "Current generator explicitly creates the omitted QA output parent before its mandatory report write. This static guard check is separate from lead-run isolated rebuild evidence.",
+      "geometry_change_required": false,
+      "separate_lead_rebuild_evidence": {
+        "report": "qa/batch08/source_output_directory_revision/isolated_rebuild_report.json",
+        "report_sha256": "6b34220997c0014b5bdadfd82f1867a222049f57779055a737d09deabcee4f9c",
+        "current_input_and_exports_bound": true,
+        "exit_code": 0,
+        "byte_identical_exports": true,
+        "attribution": "Lead-run isolated rebuild; this auditor read and bound the report, did not execute it."
+      }
+    }
+  ],
+  "library_texture_resolution_evidence": [
+    {
+      "role": "book_cover_teal",
+      "declared_basename": "book_cover_teal.png",
+      "resolved_by_existing_generator": {
+        "path": "assets/library_contents/textures/book_cover_teal.png",
+        "bytes": 38253,
+        "sha256": "0b50f02d95f7cd49aaf450106dae35e4253ae71ed6087b3c688596622376d269"
+      },
+      "manifest_sha256_matches": true
+    },
+    {
+      "role": "book_cover_clay",
+      "declared_basename": "book_cover_clay.png",
+      "resolved_by_existing_generator": {
+        "path": "assets/library_contents/textures/book_cover_clay.png",
+        "bytes": 38120,
+        "sha256": "f29731b102fbf2e1ac861e7c703070e4ab4b6ac2c5763211096c4725b7925fea"
+      },
+      "manifest_sha256_matches": true
+    },
+    {
+      "role": "book_cover_ochre",
+      "declared_basename": "book_cover_ochre.png",
+      "resolved_by_existing_generator": {
+        "path": "assets/library_contents/textures/book_cover_ochre.png",
+        "bytes": 38045,
+        "sha256": "4c1debde36cf59a09a5a30babf31460058a9288f4e32c27851911a394bc0faf2"
+      },
+      "manifest_sha256_matches": true
+    },
+    {
+      "role": "book_paper_edges",
+      "declared_basename": "book_paper_edges.png",
+      "resolved_by_existing_generator": {
+        "path": "assets/library_contents/textures/book_paper_edges.png",
+        "bytes": 34808,
+        "sha256": "191efc92a5c8f573c195c9f148dfaf44c64c51c3e38974f83420692368bd0be0"
+      },
+      "manifest_sha256_matches": true
+    },
+    {
+      "role": "book_label_paper",
+      "declared_basename": "book_label_paper.png",
+      "resolved_by_existing_generator": {
+        "path": "assets/library_contents/textures/book_label_paper.png",
+        "bytes": 34987,
+        "sha256": "c6fada7750dcd515625ed6d9c6a9ac4f99ffdf306abcfb14dc5cb9ae8fb21d28"
+      },
+      "manifest_sha256_matches": true
+    },
+    {
+      "role": "book_print_ink",
+      "declared_basename": "book_print_ink.png",
+      "resolved_by_existing_generator": {
+        "path": "assets/library_contents/textures/book_print_ink.png",
+        "bytes": 33637,
+        "sha256": "1f52f03ffd3d88a5e6b422e8fb38b08bc71da91b54805f175908994b893f0aab"
+      },
+      "manifest_sha256_matches": true
+    },
+    {
+      "role": "folio_text_page",
+      "declared_basename": "folio_text_page.png",
+      "resolved_by_existing_generator": {
+        "path": "assets/library_contents/textures/folio_text_page.png",
+        "bytes": 34905,
+        "sha256": "f667d073936a6ed23e08c639aebdc8a2bacb4c58fd6bb0bbbf2de1b21b955226"
+      },
+      "manifest_sha256_matches": true
+    },
+    {
+      "role": "folio_chart_page",
+      "declared_basename": "folio_chart_page.png",
+      "resolved_by_existing_generator": {
+        "path": "assets/library_contents/textures/folio_chart_page.png",
+        "bytes": 37219,
+        "sha256": "d887af792d4412c77eb16c914ec79f82ffb49b7c806532de98fa591012782419"
+      },
+      "manifest_sha256_matches": true
+    }
+  ]
+}
