@@ -4,7 +4,7 @@ New asset production began on 2 October 2026 while recovery of the original ship
 
 Batch 01 is a compact coordinated day-use family: upholstered window bench, reading chair, day table, and four compatible deep reveal/junction pieces. It translates the supplied residential and premium references into editable low-poly furniture and construction components. Every authored asset is counted once, separately from exports and any LODs. This is one standard day-use construction family, not sufficient variety for every district or luxury tier. The furniture does not claim aquatic use, cocoon provision or universal species fit.
 
-Batch 02 adds seven collection/study designs: three joined structural shelf/canopy pieces, two contrasting study edges and two book/folio details. Two additional stock arrangements reuse the same authored books and are recorded as assembly variants. Batch 03 adds seven staff-only wall, overhead-service and work-cabinet designs. Batch 04 adds six botanical and planted-seat designs. Batch 05 adds six aquatic-leisure designs. Batch 06 adds six engineering utility designs with common mating interfaces and separately named controls/service parts. Batch 07 adds six hospitality service designs: a joined pantry counter/return, beverage station, dirty-dish return, stocked credenza and distinct service trolley. The catalogue now contains 45 unique authored component designs, with zero adopted game instances. The first botanical family is deliberately small: an open-crown specimen, two low planting forms and joined seating edges. It does not complete the lush garden massing or plant diversity of the references.
+Batch 02 adds seven collection/study designs: three joined structural shelf/canopy pieces, two contrasting study edges and two book/folio details. Two additional stock arrangements reuse the same authored books and are recorded as assembly variants. Batch 03 adds seven staff-only wall, overhead-service and work-cabinet designs. Batch 04 adds six botanical and planted-seat designs. Batch 05 adds six aquatic-leisure designs. Batch 06 adds six engineering utility designs with common mating interfaces and separately named controls/service parts. Batch 07 adds six hospitality service designs: a joined pantry counter/return, beverage station, dirty-dish return, stocked credenza and distinct service trolley. Batch 08 closes source/interface readiness issues without adding designs. Batch 09 adds three guest-use designs (reading floor lamp, wall sconce and luggage/personal console) and three library-use designs (study fixture, periodical browser and catalogue terminal). The catalogue now contains 51 unique authored component designs, with zero adopted game instances. The first botanical family is deliberately small: an open-crown specimen, two low planting forms and joined seating edges. It does not complete the lush garden massing or plant diversity of the references.
 
 ## Current verification boundary
 
@@ -14,11 +14,13 @@ The reference images guide shape, material and use. No courtyard, hull aperture,
 
 ## Contents
 
-- `assets/furniture`: three new furniture assets and their editable source/export evidence
+- `assets/furniture`: three furniture assets and their editable source/export evidence
+- `assets/guest_use`: supported reading fixtures and open luggage/personal storage
 - `assets/view_reveal`: four joinable reveal/transition assets and their source/export evidence
 - `assets/library_structure`: straight/curved collection and terminal pieces
 - `assets/library_study`: shared table and sheltered single study edge
 - `assets/library_contents`: upright books, open folio and derived stock arrangements
+- `assets/library_use`: study lighting housing, low periodical browser and framed catalogue terminal
 - `assets/staff_wall`: washable bays, protected corner and closed terminal
 - `assets/staff_overhead`: supported service run, turn and utility housing
 - `assets/staff_workbay`: folded-metal cabinet with a separately pivoted leaf
@@ -50,8 +52,16 @@ Restoration of the original ship remains a separate process. Any returned origin
 
 ## Batch08 integration-readiness checkpoint
 
-The artistic-design count remains 45. This pass reduces proposed counter collision complexity while preserving real shelf and toe spaces, adds an economical derivative of the existing shared utility flange, and makes all current component interfaces explicit in `standards/catalogue_interfaces.json`. The index classifies units, datums, native frames, connections, physical contacts versus poses, and proposed motion without inventing missing behavior. Actual native node hierarchy remains authoritative; legacy origin prose describes source coordinates.
+At this checkpoint, the artistic-design count remained 45. This pass reduces proposed counter collision complexity while preserving real shelf and toe spaces, adds an economical derivative of the existing shared utility flange, and makes all current component interfaces explicit in `standards/catalogue_interfaces.json`. The index classifies units, datums, native frames, connections, physical contacts versus poses, and proposed motion without inventing missing behavior. Actual native node hierarchy remains authoritative; legacy origin prose describes source coordinates.
 
 Detailed masters remain available and unchanged. Derived variants are selected explicitly; no automatic engine LOD, game interaction, room adoption or target-PC result is implied. Source-generation output-folder assumptions and a texture-path omission were repaired and tested from isolated source-only staging, with original failure evidence retained and existing visual masters preserved. The measured source-level reductions and remaining native-engine work are detailed in `batches/batch08/STATUS.md` and `standards/PERFORMANCE_FOLLOWUPS.md`.
 
 The user supported the demonstrated asset-quality threshold on 2 October 2026 at 16:08 UTC and requested categorical expansion of each family while recovery continues. `CATEGORY_COVERAGE.md` and its exact-ID JSON ledger guide balanced expansion without counting recolors, derived parts or integrated subcomponents as new designs. This is catalogue-baseline approval; whole-ship and gameplay acceptance remain separate.
+
+## Batch09 guest and library expansion
+
+Six original designs pass independent source, actual GLB, material, interface, bounded collision and ordinary-scale visual review. Nineteen final imported-component views were inspected. Actual exports total 14,598 triangles. Separate fresh source-only builds reproduce all six GLBs and fifteen original texture images byte-for-byte; source dependencies and output parents are explicit. The canonical interface index now covers 51 designs while retaining all 45 prior records unchanged.
+
+Shaped housings, mounting feet, switches, stock and display art establish useful component identities. They do not implement powered lighting, terminal controls, character fit or game-side use. The browser's side-frame proposal retains its real opening, and its current header sign is visible. The lamp/chair inspection placement was corrected with preserved earlier evidence.
+
+The user directed asset delivery and district planning to work together. Following this batch's durable backup, the next kit is to address the documented D09 salon threshold/section problem using later surviving construction guidance and adjustable interfaces. Historical allocation claims and new proposed dimensions must remain distinct until the original host geometry is available.

@@ -1,0 +1,1 @@
+Earlier passing source-only rebuild preserved. The browser header sign and side-frame collision proposals changed afterward. This earlier receipt is superseded for the library family; unchanged guest evidence stays current. No historical results are deleted.

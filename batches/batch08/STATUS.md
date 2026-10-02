@@ -1,4 +1,4 @@
-# Readiness checkpoint — independently reviewed, awaiting durable backup
+# Readiness checkpoint — reviewed and durably backed up
 
 The catalogue remains at 45 unique artistic designs and zero game instances. This pass fixes existing component data and adds a derivative of an existing shared part. The original game is still outside this catalogue; no replacement room, controller or ship is built.
 
@@ -27,3 +27,7 @@ The independent eight-gate review and exact 380-file source/dependency receipt p
 ## Approved baseline and next work
 
 At 16:08 UTC on 2 October 2026, the user supported the demonstrated asset-quality threshold and requested categorical expansion while recovery continues (message `Sentinel_1f1516ffa9a08191a5f37800301a001c`). This is an asset-quality baseline, not finished-ship, room or gameplay acceptance. `CATEGORY_COVERAGE.md` and its exact-ID JSON ledger guide useful variety across architecture/transitions, furnishings, fixtures, equipment and purposeful props. The next bounded expansion begins after this backup gate.
+
+## Durable checkpoint
+
+All eight portable history checkpoints, all 1,586 current file hashes and all 45 source/export pairs restored successfully. Parent independently verified archive and compact checksums, uploaded full Library archive `libfile_ed020265a4dc8191bea6808cb7aac0ac`, and delivered all seven complete source packages in accepted message `Sentinel_bae02058e0908191ab52a0efcc982bd8`. The durable gate passed before Batch09 expansion began. Frozen archive SHA256: `2ce7d0699c14836a268a2e7d94dd51fd113321e9133e9b578dcc3cbcab1788d4`.

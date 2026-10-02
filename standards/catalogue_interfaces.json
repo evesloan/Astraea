@@ -1,7 +1,7 @@
 {
-  "revision": "astraea-catalogue-interfaces-01",
+  "revision": "astraea-catalogue-interfaces-02",
   "status": "current_component_consumer_index_not_engine_acceptance",
-  "unique_assets": 45,
+  "unique_assets": 51,
   "semantic_rules": [
     "Exact existing source/export/manifest hashes bind every row.",
     "Metadata records map existing points and behavior only. No nonexistent point/trajectory is invented.",
@@ -11455,18 +11455,884 @@
       ],
       "exact_record_inventory_pointer": "qa/batch08/interface_coverage_map.json#/assets/44",
       "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-GST-001",
+      "family": "guest_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/guest_use/source/AST-GST-001.blend",
+          "bytes": 194890,
+          "sha256": "1c22655aa251820157aabdd9564df2629e53fe2377917a3d99ea6049d70b1d94"
+        },
+        "export": {
+          "path": "assets/guest_use/exports/AST-GST-001.glb",
+          "bytes": 180904,
+          "sha256": "62e07f5db55a3869e1f01a0f232041f770b6438b0e09a04ddd64a7142fc7f4f1"
+        },
+        "manifest": {
+          "path": "assets/guest_use/AST-GST-001.manifest.json",
+          "bytes": 11240,
+          "sha256": "22f3bb76b768d5617384b298adb4aaaf5d99c47dd6391135e38a8370bec49e84"
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "assets/guest_use/AST-GST-001.manifest.json#/source_frame",
+          "standards/COORDINATE_CONTRACT.md#Axes-and-units"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor origin at source Z0; the split runners retain their open front.",
+        "evidence": [
+          "assets/guest_use/AST-GST-001.manifest.json#/pivot"
+        ],
+        "actual_native_root_nodes": [
+          {
+            "name": "AST-GST-001",
+            "index": 18,
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender source Z-up",
+        "exchange": "Native glTF Y-up",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native node parents. Do not convert native GLB transforms twice. Metadata points describe the neutral asset pose.",
+        "evidence": [
+          "assets/guest_use/AST-GST-001.manifest.json#/exchange_frame",
+          "qa/batch09/independent_guest_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "no_modular_connector_claimed",
+        "meaning": "No modular seam connector is claimed; use the individual support/contact and approach proposals.",
+        "evidence": [
+          "assets/guest_use/AST-GST-001.manifest.json#/physical_and_proposal_markers"
+        ],
+        "omission_assessment": "No connector, reach guarantee, moving trajectory or runtime light is invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Floor-pad, switch and diffuser points are physical surfaces. Reading aim is a nonphysical direction target; clips and power-entry datums are static service proposals.",
+        "evidence": [
+          "assets/guest_use/AST-GST-001.manifest.json#/physical_and_proposal_markers",
+          "qa/batch09/independent_guest_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 7,
+        "limit": "Contact surfaces, housing source centres, opening/pose datums and service workspace have distinct semantics. No universal actor fit."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "evidence": [
+          "assets/guest_use/AST-GST-001.manifest.json#/interaction_status"
+        ],
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Fixed represented controls, covers and stock. No moving descendant, operating control, removable trajectory, animation, physics or electrical behavior is supplied. Static marker hierarchy is preserved."
+      },
+      "dependencies_and_material_roles": {
+        "status": "existing_paths_and_role_mapping_inspected",
+        "evidence": [
+          "assets/guest_use/AST-GST-001.manifest.json#/generator",
+          "assets/guest_use/AST-GST-001.manifest.json#/material_roles",
+          "assets/guest_use/dependency_manifest.json"
+        ],
+        "actual_material_roles": [
+          "champagne_metal",
+          "dark_rubber",
+          "ivory_enamel",
+          "oatmeal_weave",
+          "warm_walnut"
+        ],
+        "material_match": true,
+        "local_generator_files": [
+          {
+            "path": "assets/guest_use/source/build_guest_use.py",
+            "bytes": 22024,
+            "sha256": "afc99e85812c0e525eb8d20565a6088987dc249343976e20f2a521d948d4872f"
+          }
+        ],
+        "runtime_external_uris": [],
+        "limit": "Self-contained GLBs do not alone prove generator restoration. Source-only execution is separately bound in the Batch09 review."
+      },
+      "existing_independent_evidence": [
+        "qa/batch09/independent_guest_interfaces.json",
+        "qa/batch09/independent_export_AST-GST-001.json",
+        "qa/batch09/independent_source_AST-GST-001.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch09/interface_coverage_map.json#/assets/0",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-GST-002",
+      "family": "guest_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/guest_use/source/AST-GST-002.blend",
+          "bytes": 193786,
+          "sha256": "770f9ebc66d84a2d49d7a6ffec8c3207d673fef0c86d622e3912b00060676afd"
+        },
+        "export": {
+          "path": "assets/guest_use/exports/AST-GST-002.glb",
+          "bytes": 159640,
+          "sha256": "91ff884a53353abca07f4709208bb0f7cd9ce138a48f813b7ef5759c6c60a6c0"
+        },
+        "manifest": {
+          "path": "assets/guest_use/AST-GST-002.manifest.json",
+          "bytes": 10507,
+          "sha256": "c3437f338c35a07100dcfd607dd2a07b012d0735c10e070a88779d4d36444542"
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "assets/guest_use/AST-GST-002.manifest.json#/source_frame",
+          "standards/COORDINATE_CONTRACT.md#Axes-and-units"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Wall plane source Y0, local mounting centre source Z0; not a floor origin.",
+        "evidence": [
+          "assets/guest_use/AST-GST-002.manifest.json#/pivot"
+        ],
+        "actual_native_root_nodes": [
+          {
+            "name": "AST-GST-002",
+            "index": 17,
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender source Z-up",
+        "exchange": "Native glTF Y-up",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native node parents. Do not convert native GLB transforms twice. Metadata points describe the neutral asset pose.",
+        "evidence": [
+          "assets/guest_use/AST-GST-002.manifest.json#/exchange_frame",
+          "qa/batch09/independent_guest_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_interface",
+        "meaning": "Existing wall/study support mounting datums and explicit outward directions.",
+        "evidence": [
+          "assets/guest_use/AST-GST-002.manifest.json#/physical_and_proposal_markers"
+        ],
+        "omission_assessment": "No connector, reach guarantee, moving trajectory or runtime light is invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Rear mount, rocker and diffuser points are physical surfaces. Reading aim is a nonphysical direction target. Service fasteners do not supply a removal trajectory.",
+        "evidence": [
+          "assets/guest_use/AST-GST-002.manifest.json#/physical_and_proposal_markers",
+          "qa/batch09/independent_guest_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 7,
+        "limit": "Contact surfaces, housing source centres, opening/pose datums and service workspace have distinct semantics. No universal actor fit."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "evidence": [
+          "assets/guest_use/AST-GST-002.manifest.json#/interaction_status"
+        ],
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Fixed represented controls, covers and stock. No moving descendant, operating control, removable trajectory, animation, physics or electrical behavior is supplied. Static marker hierarchy is preserved."
+      },
+      "dependencies_and_material_roles": {
+        "status": "existing_paths_and_role_mapping_inspected",
+        "evidence": [
+          "assets/guest_use/AST-GST-002.manifest.json#/generator",
+          "assets/guest_use/AST-GST-002.manifest.json#/material_roles",
+          "assets/guest_use/dependency_manifest.json"
+        ],
+        "actual_material_roles": [
+          "champagne_metal",
+          "dark_rubber",
+          "ivory_enamel",
+          "oatmeal_weave",
+          "warm_walnut"
+        ],
+        "material_match": true,
+        "local_generator_files": [
+          {
+            "path": "assets/guest_use/source/build_guest_use.py",
+            "bytes": 22024,
+            "sha256": "afc99e85812c0e525eb8d20565a6088987dc249343976e20f2a521d948d4872f"
+          }
+        ],
+        "runtime_external_uris": [],
+        "limit": "Self-contained GLBs do not alone prove generator restoration. Source-only execution is separately bound in the Batch09 review."
+      },
+      "existing_independent_evidence": [
+        "qa/batch09/independent_guest_interfaces.json",
+        "qa/batch09/independent_export_AST-GST-002.json",
+        "qa/batch09/independent_source_AST-GST-002.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch09/interface_coverage_map.json#/assets/1",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-GST-003",
+      "family": "guest_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/guest_use/source/AST-GST-003.blend",
+          "bytes": 197873,
+          "sha256": "2e84cabfe4a2d37d03536e4650692aecdfc6dcd398fc2335192437e11083a71a"
+        },
+        "export": {
+          "path": "assets/guest_use/exports/AST-GST-003.glb",
+          "bytes": 290620,
+          "sha256": "c6efd93f4d3307788a443670793c8b73161a62199a3326789e0c2104cb8461c6"
+        },
+        "manifest": {
+          "path": "assets/guest_use/AST-GST-003.manifest.json",
+          "bytes": 13333,
+          "sha256": "a8aa214823da40c88ecfae8f1aa091df15d87d4ed0361e12d5b96bf99bd2afa7"
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "assets/guest_use/AST-GST-003.manifest.json#/source_frame",
+          "standards/COORDINATE_CONTRACT.md#Axes-and-units"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor origin at source Z0.",
+        "evidence": [
+          "assets/guest_use/AST-GST-003.manifest.json#/pivot"
+        ],
+        "actual_native_root_nodes": [
+          {
+            "name": "AST-GST-003",
+            "index": 21,
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender source Z-up",
+        "exchange": "Native glTF Y-up",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native node parents. Do not convert native GLB transforms twice. Metadata points describe the neutral asset pose.",
+        "evidence": [
+          "assets/guest_use/AST-GST-003.manifest.json#/exchange_frame",
+          "qa/batch09/independent_guest_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "no_modular_connector_claimed",
+        "meaning": "No modular seam connector is claimed; use the individual support/contact and approach proposals.",
+        "evidence": [
+          "assets/guest_use/AST-GST-003.manifest.json#/physical_and_proposal_markers"
+        ],
+        "omission_assessment": "No connector, reach guarantee, moving trajectory or runtime light is invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Luggage slat, tray and shelf contacts are physical surfaces; open-landing and shelf-mouth centres are nonphysical receiver volumes. Three distinct open regions are preserved.",
+        "evidence": [
+          "assets/guest_use/AST-GST-003.manifest.json#/physical_and_proposal_markers",
+          "qa/batch09/independent_guest_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 9,
+        "limit": "Contact surfaces, housing source centres, opening/pose datums and service workspace have distinct semantics. No universal actor fit."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "evidence": [
+          "assets/guest_use/AST-GST-003.manifest.json#/interaction_status"
+        ],
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Fixed represented controls, covers and stock. No moving descendant, operating control, removable trajectory, animation, physics or electrical behavior is supplied. Static marker hierarchy is preserved."
+      },
+      "dependencies_and_material_roles": {
+        "status": "existing_paths_and_role_mapping_inspected",
+        "evidence": [
+          "assets/guest_use/AST-GST-003.manifest.json#/generator",
+          "assets/guest_use/AST-GST-003.manifest.json#/material_roles",
+          "assets/guest_use/dependency_manifest.json"
+        ],
+        "actual_material_roles": [
+          "champagne_metal",
+          "dark_rubber",
+          "ivory_enamel",
+          "warm_stone",
+          "warm_walnut"
+        ],
+        "material_match": true,
+        "local_generator_files": [
+          {
+            "path": "assets/guest_use/source/build_guest_use.py",
+            "bytes": 22024,
+            "sha256": "afc99e85812c0e525eb8d20565a6088987dc249343976e20f2a521d948d4872f"
+          }
+        ],
+        "runtime_external_uris": [],
+        "limit": "Self-contained GLBs do not alone prove generator restoration. Source-only execution is separately bound in the Batch09 review."
+      },
+      "existing_independent_evidence": [
+        "qa/batch09/independent_guest_interfaces.json",
+        "qa/batch09/independent_export_AST-GST-003.json",
+        "qa/batch09/independent_source_AST-GST-003.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch09/interface_coverage_map.json#/assets/2",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-LIB-008",
+      "family": "library_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/library_use/source/AST-LIB-008.blend",
+          "bytes": 357355,
+          "sha256": "31e57785f89752b3e60a8ec43d4013896911f6759331b2b2995b7d36f4ad54b7"
+        },
+        "export": {
+          "path": "assets/library_use/exports/AST-LIB-008.glb",
+          "bytes": 176440,
+          "sha256": "6521e24ef26f0bf3c63d99f9e430315cb8e501daa67fad2d7a5dd654add48387"
+        },
+        "manifest": {
+          "path": "assets/library_use/AST-LIB-008.manifest.json",
+          "bytes": 17023,
+          "sha256": "0e6edba46d9332973875ac015f75d6186703b6ec7773b3d8e0e7502621855027"
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "assets/library_use/AST-LIB-008.manifest.json#/units",
+          "standards/COORDINATE_CONTRACT.md#Axes-and-units"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Receiver contact plane source Z0; not a floor datum. Existing study receiver transforms are separate placements.",
+        "evidence": [
+          "assets/library_use/AST-LIB-008.manifest.json#/datum"
+        ],
+        "actual_native_root_nodes": [
+          {
+            "name": "AST-LIB-008_root",
+            "index": 7,
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender source Z-up",
+        "exchange": "Native glTF Y-up",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native node parents. Do not convert native GLB transforms twice. Metadata points describe the neutral asset pose.",
+        "evidence": [
+          "assets/library_use/AST-LIB-008.manifest.json#/coordinate_contract",
+          "qa/batch09/independent_library_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_interface",
+        "meaning": "Existing wall/study support mounting datums and explicit outward directions.",
+        "evidence": [
+          "assets/library_use/AST-LIB-008.manifest.json#/positions_and_normals",
+          "assets/library_use/AST-LIB-008.manifest.json#/compatible_mounts"
+        ],
+        "omission_assessment": "No connector, reach guarantee, moving trajectory or runtime light is invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Shoe underside and diffuser are physical contact surfaces. Source centre is inside the represented housing, while service workspace and cable feed are proposals. No working illumination is supplied.",
+        "evidence": [
+          "assets/library_use/AST-LIB-008.manifest.json#/positions_and_normals",
+          "qa/batch09/independent_library_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 3,
+        "limit": "Contact surfaces, housing source centres, opening/pose datums and service workspace have distinct semantics. No universal actor fit."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "evidence": [
+          "assets/library_use/AST-LIB-008.manifest.json#/runtime_status"
+        ],
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Fixed represented controls, covers and stock. No moving descendant, operating control, removable trajectory, animation, physics or electrical behavior is supplied. Static marker hierarchy is preserved."
+      },
+      "dependencies_and_material_roles": {
+        "status": "existing_paths_and_role_mapping_inspected",
+        "evidence": [
+          "assets/library_use/AST-LIB-008.manifest.json#/generator",
+          "assets/library_use/AST-LIB-008.manifest.json#/material_roles",
+          "assets/library_use/dependency_manifest.json"
+        ],
+        "actual_material_roles": [
+          "champagne_metal",
+          "dark_rubber",
+          "ivory_enamel",
+          "label_service",
+          "opal_diffuser",
+          "reflector",
+          "warm_walnut"
+        ],
+        "material_match": true,
+        "local_generator_files": [
+          {
+            "path": "assets/library_use/source/build_library_use.py",
+            "bytes": 30736,
+            "sha256": "7028943f3b26e5e79011d08f4de3ac222731208e1f76c9f184f3657ffbdf2cd3"
+          },
+          {
+            "path": "assets/library_use/source/make_use_art.py",
+            "bytes": 6825,
+            "sha256": "ae6e038d7e9fbf3449e6eced3bb69f94a4b0f5545370d02e95d311a9bd746181"
+          }
+        ],
+        "runtime_external_uris": [],
+        "limit": "Self-contained GLBs do not alone prove generator restoration. Source-only execution is separately bound in the Batch09 review."
+      },
+      "existing_independent_evidence": [
+        "qa/batch09/independent_library_interfaces.json",
+        "qa/batch09/independent_export_AST-LIB-008.json",
+        "qa/batch09/independent_source_AST-LIB-008.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch09/interface_coverage_map.json#/assets/3",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-LIB-009",
+      "family": "library_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/library_use/source/AST-LIB-009.blend",
+          "bytes": 368730,
+          "sha256": "2da3a4a9b2faf6d76875506ddba4dc70496639015d6c5d2339052f75b521c249"
+        },
+        "export": {
+          "path": "assets/library_use/exports/AST-LIB-009.glb",
+          "bytes": 355416,
+          "sha256": "8895fbe654a0cf7b6d2e9036f1cbfb2190ce4de7b4130c0fd787222b68dc1bb8"
+        },
+        "manifest": {
+          "path": "assets/library_use/AST-LIB-009.manifest.json",
+          "bytes": 29984,
+          "sha256": "a04736a85c2b66bb598f9197ab2e2510ab859a75e7fb2a7cce618929d40baa57"
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "assets/library_use/AST-LIB-009.manifest.json#/units",
+          "standards/COORDINATE_CONTRACT.md#Axes-and-units"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor origin at source Z0.",
+        "evidence": [
+          "assets/library_use/AST-LIB-009.manifest.json#/datum"
+        ],
+        "actual_native_root_nodes": [
+          {
+            "name": "AST-LIB-009_root",
+            "index": 11,
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender source Z-up",
+        "exchange": "Native glTF Y-up",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native node parents. Do not convert native GLB transforms twice. Metadata points describe the neutral asset pose.",
+        "evidence": [
+          "assets/library_use/AST-LIB-009.manifest.json#/coordinate_contract",
+          "qa/batch09/independent_library_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "no_modular_connector_claimed",
+        "meaning": "No modular seam connector is claimed; use the individual support/contact and approach proposals.",
+        "evidence": [
+          "assets/library_use/AST-LIB-009.manifest.json#/positions_and_normals"
+        ],
+        "omission_assessment": "No connector, reach guarantee, moving trajectory or runtime light is invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Six static face-out title centres are proposed selection targets, not removable-book motion. Lower/upper stock is about 0.69/1.05 m; this is not universal reach approval. Lower storage has two real dividers.",
+        "evidence": [
+          "assets/library_use/AST-LIB-009.manifest.json#/positions_and_normals",
+          "qa/batch09/independent_library_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 9,
+        "limit": "Contact surfaces, housing source centres, opening/pose datums and service workspace have distinct semantics. No universal actor fit."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "evidence": [
+          "assets/library_use/AST-LIB-009.manifest.json#/runtime_status"
+        ],
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Fixed represented controls, covers and stock. No moving descendant, operating control, removable trajectory, animation, physics or electrical behavior is supplied. Static marker hierarchy is preserved."
+      },
+      "dependencies_and_material_roles": {
+        "status": "existing_paths_and_role_mapping_inspected",
+        "evidence": [
+          "assets/library_use/AST-LIB-009.manifest.json#/generator",
+          "assets/library_use/AST-LIB-009.manifest.json#/material_roles",
+          "assets/library_use/dependency_manifest.json"
+        ],
+        "actual_material_roles": [
+          "book_cover_clay",
+          "book_cover_ochre",
+          "book_cover_teal",
+          "book_paper_edges",
+          "champagne_metal",
+          "dark_rubber",
+          "ivory_enamel",
+          "label_archive",
+          "label_current",
+          "periodical_form",
+          "periodical_orbit",
+          "periodical_terra",
+          "warm_walnut"
+        ],
+        "material_match": true,
+        "local_generator_files": [
+          {
+            "path": "assets/library_use/source/build_library_use.py",
+            "bytes": 30736,
+            "sha256": "7028943f3b26e5e79011d08f4de3ac222731208e1f76c9f184f3657ffbdf2cd3"
+          },
+          {
+            "path": "assets/library_use/source/make_use_art.py",
+            "bytes": 6825,
+            "sha256": "ae6e038d7e9fbf3449e6eced3bb69f94a4b0f5545370d02e95d311a9bd746181"
+          }
+        ],
+        "runtime_external_uris": [],
+        "limit": "Self-contained GLBs do not alone prove generator restoration. Source-only execution is separately bound in the Batch09 review."
+      },
+      "existing_independent_evidence": [
+        "qa/batch09/independent_library_interfaces.json",
+        "qa/batch09/independent_export_AST-LIB-009.json",
+        "qa/batch09/independent_source_AST-LIB-009.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch09/interface_coverage_map.json#/assets/4",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-LIB-010",
+      "family": "library_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/library_use/source/AST-LIB-010.blend",
+          "bytes": 369995,
+          "sha256": "2fcdcce84d06a136be57fec5f4cf170a81b5e2cc62fac0e24949d583a5c67fe0"
+        },
+        "export": {
+          "path": "assets/library_use/exports/AST-LIB-010.glb",
+          "bytes": 247896,
+          "sha256": "dacb0bd023b42a3420b5ffc7dfcf69cc890e7a2d7f88b79945aecb5e6e1be01c"
+        },
+        "manifest": {
+          "path": "assets/library_use/AST-LIB-010.manifest.json",
+          "bytes": 27534,
+          "sha256": "297529ed780b9dc8eb305df65b6f7cf425d66322330533731ceab40763a56f6b"
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "assets/library_use/AST-LIB-010.manifest.json#/units",
+          "standards/COORDINATE_CONTRACT.md#Axes-and-units"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor origin at source Z0.",
+        "evidence": [
+          "assets/library_use/AST-LIB-010.manifest.json#/datum"
+        ],
+        "actual_native_root_nodes": [
+          {
+            "name": "AST-LIB-010_root",
+            "index": 11,
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender source Z-up",
+        "exchange": "Native glTF Y-up",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native node parents. Do not convert native GLB transforms twice. Metadata points describe the neutral asset pose.",
+        "evidence": [
+          "assets/library_use/AST-LIB-010.manifest.json#/coordinate_contract",
+          "qa/batch09/independent_library_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "no_modular_connector_claimed",
+        "meaning": "No modular seam connector is claimed; use the individual support/contact and approach proposals.",
+        "evidence": [
+          "assets/library_use/AST-LIB-010.manifest.json#/positions_and_normals"
+        ],
+        "omission_assessment": "No connector, reach guarantee, moving trajectory or runtime light is invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Display and separate search/index/back/select control points lie on their represented surfaces. Standing/seated points are pose proposals; the central void is not actor-fit or accessibility certification.",
+        "evidence": [
+          "assets/library_use/AST-LIB-010.manifest.json#/positions_and_normals",
+          "qa/batch09/independent_library_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 7,
+        "limit": "Contact surfaces, housing source centres, opening/pose datums and service workspace have distinct semantics. No universal actor fit."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "evidence": [
+          "assets/library_use/AST-LIB-010.manifest.json#/runtime_status"
+        ],
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Fixed represented controls, covers and stock. No moving descendant, operating control, removable trajectory, animation, physics or electrical behavior is supplied. Static marker hierarchy is preserved."
+      },
+      "dependencies_and_material_roles": {
+        "status": "existing_paths_and_role_mapping_inspected",
+        "evidence": [
+          "assets/library_use/AST-LIB-010.manifest.json#/generator",
+          "assets/library_use/AST-LIB-010.manifest.json#/material_roles",
+          "assets/library_use/dependency_manifest.json"
+        ],
+        "actual_material_roles": [
+          "catalogue_screen",
+          "champagne_metal",
+          "dark_rubber",
+          "display_glass",
+          "ivory_enamel",
+          "label_back",
+          "label_map",
+          "label_search",
+          "label_select",
+          "label_service",
+          "warm_walnut"
+        ],
+        "material_match": true,
+        "local_generator_files": [
+          {
+            "path": "assets/library_use/source/build_library_use.py",
+            "bytes": 30736,
+            "sha256": "7028943f3b26e5e79011d08f4de3ac222731208e1f76c9f184f3657ffbdf2cd3"
+          },
+          {
+            "path": "assets/library_use/source/make_use_art.py",
+            "bytes": 6825,
+            "sha256": "ae6e038d7e9fbf3449e6eced3bb69f94a4b0f5545370d02e95d311a9bd746181"
+          }
+        ],
+        "runtime_external_uris": [],
+        "limit": "Self-contained GLBs do not alone prove generator restoration. Source-only execution is separately bound in the Batch09 review."
+      },
+      "existing_independent_evidence": [
+        "qa/batch09/independent_library_interfaces.json",
+        "qa/batch09/independent_export_AST-LIB-010.json",
+        "qa/batch09/independent_source_AST-LIB-010.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch09/interface_coverage_map.json#/assets/5",
+      "engine_adopted_instances": 0
     }
   ],
   "scope": "Explicit existing component declarations and bounded offline interface evidence. Actual native hierarchy governs geometry; no engine, installed-room, actor, controller or operating behavior is implemented by this index.",
   "audit_source": {
-    "path": "qa/batch08/interface_normalized_index_proposed.json",
-    "sha256": "ba0346b607b3438d6e3d2974d219d715b254283e8bc4508acab11682df7bf40f",
-    "report": "qa/batch08/interface_audit_report.md",
-    "correction_map": "qa/batch08/interface_proposed_corrections.json"
+    "path": "qa/batch09/interface_normalized_index_proposed.json",
+    "sha256": "1b80ebdddc6e7b55641a7376f3d6b917f4ea795e8dc8d4b5280b7316048ceaf4",
+    "report": "qa/batch09/independent_final_review.json",
+    "correction_map": "qa/batch09/interface_proposed_corrections.json"
   },
   "binding_validation": {
     "exact_asset_id_set": true,
-    "current_bound_files_checked": 135,
+    "current_bound_files_checked": 153,
     "all_files_current": true
   }
 }
