@@ -1,0 +1,52 @@
+"""Unscaled QA stock subsets from existing editable volumes; zero new designs."""
+from pathlib import Path
+import bpy,json,hashlib
+from mathutils import Matrix,Vector
+ROOT=Path(__file__).resolve().parents[3];OUT=Path(__file__).resolve().parent
+SOURCE=ROOT/'assets/library_contents/AST-LIB-006_upright_book_group.blend'
+MANIFEST=ROOT/'assets/library_contents/AST-LIB-006_upright_book_group.manifest.json'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def bounds(obs):
+ pts=[];dg=bpy.context.evaluated_depsgraph_get();tri=0
+ for o in obs:
+  e=o.evaluated_get(dg);m=e.to_mesh();m.calc_loop_triangles();tri+=len(m.loop_triangles);pts.extend(o.matrix_world@v.co for v in m.vertices);e.to_mesh_clear()
+ return [min(p[i] for p in pts) for i in range(3)],[max(p[i] for p in pts) for i in range(3)],tri
+source_hash=sha(SOURCE);mf=json.loads(MANIFEST.read_text());cases=[]
+for side,indices in [('left',range(1,6)),('right',range(6,11))]:
+ bpy.ops.wm.read_factory_settings(use_empty=True);bpy.context.preferences.filepaths.save_version=0
+ prefixes=tuple('STOCK_volume_%02d_'%i for i in indices);expected=[r for r in mf['parts'] if r['name'].startswith(prefixes)];names=[r['name'] for r in expected]
+ with bpy.data.libraries.load(str(SOURCE),link=False) as (available,loaded):
+  assert set(names).issubset(available.objects);loaded.objects=list(names)
+ obs=[]
+ for o in loaded.objects:
+  bpy.context.collection.objects.link(o);obs.append(o)
+ bpy.context.view_layer.update()
+ for o in obs:
+  old=o.matrix_world.copy();o.parent=None;o.matrix_world=old
+ bpy.context.view_layer.update()
+ for rec in expected:
+  o=next(o for o in obs if o.name==rec['name']);lo,hi,n=bounds([o]);assert max(abs(lo[i]-rec['bounds_min_m'][i]) for i in range(3))<1e-5;assert max(abs(hi[i]-rec['bounds_max_m'][i]) for i in range(3))<1e-5
+ lo,hi,tri=bounds(obs);shift=-(lo[0]+hi[0])/2
+ for o in obs:o.matrix_world=Matrix.Translation(Vector((shift,0,0)))@o.matrix_world
+ bpy.context.view_layer.update();lo,hi,tri=bounds(obs)
+ blend=OUT/('quiet_books_'+side+'.blend');bpy.ops.wm.save_as_mainfile(filepath=str(blend),compress=True)
+ groups={};dg=bpy.context.evaluated_depsgraph_get();copies=[]
+ for src in obs:
+  me=bpy.data.meshes.new_from_object(src.evaluated_get(dg));uv=me.uv_layers.active;assert uv is not None
+  for layer in list(me.uv_layers):
+   if layer!=uv:me.uv_layers.remove(layer)
+  uv.name='metric_material_uv';uv.active_render=True
+  o=bpy.data.objects.new('QA_EXPORT_'+src.name,me);bpy.context.collection.objects.link(o);o.matrix_world=src.matrix_world.copy();role=src.data.materials[0].name;groups.setdefault(role,[]).append(o)
+ for role,group in groups.items():
+  bpy.ops.object.select_all(action='DESELECT')
+  for o in group:o.select_set(True)
+  bpy.context.view_layer.objects.active=group[0];bpy.ops.object.join();o=group[0];o.name='QA_EXISTING_BOOKS_'+side+'_'+role;o['qa_context_only']=True;o['source_asset']='AST-LIB-006';copies.append(o)
+ bpy.ops.object.select_all(action='DESELECT')
+ for o in copies:o.select_set(True)
+ bpy.context.view_layer.objects.active=copies[0];glb=OUT/('quiet_books_'+side+'.glb');bpy.ops.export_scene.gltf(filepath=str(glb),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_texcoords=True,export_normals=True,export_cameras=False,export_lights=False)
+ # Actual reimport verifies exchange dimensions and that no scale was used.
+ bpy.ops.wm.read_factory_settings(use_empty=True);bpy.ops.import_scene.gltf(filepath=str(glb));actual=[o for o in bpy.context.scene.objects if o.type=='MESH'];alo,ahi,atri=bounds(actual);assert atri==tri and max(abs(alo[i]-lo[i]) for i in range(3))<2e-6 and max(abs(ahi[i]-hi[i]) for i in range(3))<2e-6
+ cases.append({'side':side,'source_asset':'AST-LIB-006','selected_volume_numbers':list(indices),'selected_source_parts':[r['name'] for r in expected],'translation_only_x_m':shift,'scale':[1,1,1],'bounds_min_source_m':lo,'bounds_max_source_m':hi,'dimensions_source_m':[hi[i]-lo[i] for i in range(3)],'actual_imported_triangles':atri,'editable_qa_source':str(blend.relative_to(ROOT)),'editable_qa_sha256':sha(blend),'export':str(glb.relative_to(ROOT)),'export_sha256':sha(glb),'new_design_count':0})
+assert sha(SOURCE)==source_hash
+(OUT/'book_context_receipt.json').write_text(json.dumps({'passed':True,'scope':'Two QA stock arrangements using unmodified selected existing editable volumes. Translation only, no geometry scaling or original-asset changes; no additional artistic designs.','original_source':str(SOURCE.relative_to(ROOT)),'original_source_sha256':source_hash,'source_manifest':str(MANIFEST.relative_to(ROOT)),'source_manifest_sha256':sha(MANIFEST),'cases':cases},indent=2)+'\n')
+print('BOOK_CONTEXT_PASS',[(x['side'],x['dimensions_source_m'],x['actual_imported_triangles']) for x in cases])

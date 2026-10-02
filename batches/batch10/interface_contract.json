@@ -1,0 +1,283 @@
+{
+  "revision": "salon-transition-interface-01",
+  "scope": "New adjustable component kit responding to documented D09 salon arrival, quiet edge and planted court. Historical host geometry remains unavailable.",
+  "frames": {
+    "source": "metres; Blender +Z up, +X across component, -Y guest/use front",
+    "exchange": "metres; glTF +Y up, source(x,y,z)->(x,z,-y)",
+    "placement": "Each actual native node hierarchy is authoritative; source pivots must be stated per component"
+  },
+  "materials": {
+    "primary": "ivory_enamel",
+    "acoustic_recess": "teal_weave",
+    "tactile": "warm_walnut",
+    "joints": "champagne_metal",
+    "narrow_reveal": "dark_rubber",
+    "upholstery": [
+      "clay_weave",
+      "oatmeal_weave"
+    ]
+  },
+  "proposed_compatible_profile": {
+    "outer_structural_depth_m": 0.16,
+    "wood_inset_depth_m": 0.022,
+    "recess_joint_m": 0.012,
+    "arris_width_m": 0.012,
+    "note": "Editable initial profile values for the new kit, not dimensions read from the lost host. Use substantial joined profiles; avoid luminous outlines and unsupported thin trim."
+  },
+  "historical_baseline_claims": {
+    "target_id": "D09_salon5",
+    "allocation_ship_x_m": [
+      52,
+      98
+    ],
+    "allocation_ship_z_m": [
+      -34,
+      34
+    ],
+    "front_door_ship_xz_m": [
+      52,
+      0
+    ],
+    "service_door_ship_xz_m": [
+      98,
+      0
+    ],
+    "deck_floor_world_y_m": 52.5,
+    "deck_clear_budget_m": 8.25,
+    "tram_strip_ship_x_m": [
+      35,
+      45
+    ],
+    "terrace_ship_z_m": [
+      -14,
+      14
+    ],
+    "final_guest_enclosure_area_m2": 825.8,
+    "final_guest_polygon": null,
+    "tram_strip_ship_z_m": [
+      -52,
+      52
+    ]
+  },
+  "unknown_host_moving_door_interfaces": {
+    "public_clear_width_m": null,
+    "public_clear_height_m": null,
+    "service_clear_width_m": null,
+    "service_clear_height_m": null,
+    "leaf_stroke_m": null,
+    "cassette_depth_m": null,
+    "head_reservation_m": null
+  },
+  "later_documented_component_maxima": {
+    "quiet_bay_xyz_source_m": [
+      7.2,
+      5.4,
+      3.8
+    ],
+    "tea_bay_xyz_source_m": [
+      6,
+      3,
+      3.2
+    ],
+    "note": "Authoring maxima in the later historical contract, not measured built envelopes or door datums"
+  },
+  "proposed_qa_arrangement": {
+    "central_clear_strip_ship_z_m": [
+      -2,
+      2
+    ],
+    "quiet_candidate_ship_x_m": [
+      60,
+      67.2
+    ],
+    "quiet_candidate_ship_z_m": [
+      -7.4,
+      -2
+    ],
+    "planted_candidate_ship_x_m": [
+      60,
+      67.2
+    ],
+    "planted_candidate_ship_z_m": [
+      2,
+      4.5
+    ],
+    "portal_exemplar_clear_width_m": 4.4,
+    "portal_exemplar_clear_height_m": 3.1,
+    "status": "Proposed adjustable inspection coordinates only. No moving leaves. Exact host polygon, door mechanism and real actor/cart routes must be reconciled before adoption.",
+    "orientation_contract": {
+      "quiet_front_ship_direction": [
+        0,
+        0,
+        1
+      ],
+      "planted_front_ship_direction": [
+        0,
+        0,
+        -1
+      ],
+      "portal_front_ship_direction": [
+        -1,
+        0,
+        0
+      ],
+      "inspection_source_scene": "Ship(x,y,z)=(BlenderX,BlenderZ,-BlenderY), with ship y measured above the D09 floor in this inspection scene. Thus Blender X=ship x, Blender Y=-ship z, Blender Z=height above deck.",
+      "quiet_local_to_inspection_source": "Local component front -Y faces +shipZ; no source-Z rotation, front datum at inspection source Y=+2",
+      "portal_local_to_inspection_source": "Rotate local source about +Z by -90deg so front -Y faces -shipX and depth +Y enters along +shipX",
+      "planted_local_to_inspection_source": "Rotate local source about +Z by180deg so front -Y faces -shipZ; front datum at inspection source Y=-2",
+      "limit": "Exact component origins and total rotated bounds remain to be checked after authored sources exist"
+    }
+  },
+  "requirements": [
+    "Keep historical door positions, transverse arrival/service connection along ship X at Z0, tram reserve and terrace connection explicit",
+    "The six pieces must form a threshold-to-room section with useful quiet and planted edges; no complete replacement room or ship",
+    "Share compatible profiles and material roles while keeping guest, open-court and service faces distinct",
+    "Every physical seam, contact and optional infill/fixture interface declares source and GLB coordinates",
+    "Collision proposals retain actual useful voids; unknown door sweep envelopes cannot be silently filled or credited as passing",
+    "No early 7.4m court scheme is revived as final; use later nested-bay guidance and purpose-built transitions",
+    "Sources are new authored catalogue work, not recovered lost assets",
+    "Keep rising cove, all trim and fixture geometry within quiet-edge maximum; no cove spanning the proposed through strip"
+  ],
+  "settled_threshold_section_proposals": {
+    "status": "Authoring proposals; actual exported bounds and joint surfaces still require checks",
+    "AST-SAL-001": {
+      "overall_source_xyz_m": [
+        5.28,
+        1.28,
+        3.56
+      ],
+      "clear_opening_width_m": 4.4,
+      "clear_opening_height_m": 3.1,
+      "moving_leaves": false,
+      "datum": "Opening floor centre, front toward source -Y; remains independent of the quiet return"
+    },
+    "AST-SAL-002": {
+      "reserved_in_quiet_source_min_m": [
+        -3.1,
+        0,
+        2.85
+      ],
+      "reserved_in_quiet_source_max_m": [
+        -0.7,
+        1.28,
+        3.74
+      ],
+      "low_clear_underside_m": 2.85,
+      "high_clear_underside_m": 3.28,
+      "note": "Local rising quiet-edge insert. Its region is omitted from SAL-003 to avoid stacked solids. It meets the high header and rear quiet shell; never spans the through route",
+      "reservation_scope": "Overhead roof volume only. Seat, books and SAL-003 supporting rib below remain. The AABB is a contract envelope, not an automatic subtraction from all scene geometry.",
+      "support_owner": "AST-SAL-003 owns the outer bearing rib and its floor/book support; actual rib top follows the low cove underside at X -3.10..-2.94, Y0..0.16.",
+      "placement_in_quiet_source_translation_m": [
+        -3.1,
+        0,
+        0
+      ],
+      "physical_joint_witnesses_source": [
+        {
+          "joint": "rear",
+          "quiet_point": [
+            -1.9,
+            1.28,
+            3.4
+          ],
+          "quiet_normal": [
+            0,
+            -1,
+            0
+          ],
+          "insert_local_point": [
+            1.2,
+            1.28,
+            3.4
+          ],
+          "insert_normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "joint": "high_end",
+          "quiet_point": [
+            -0.7,
+            0.64,
+            3.51
+          ],
+          "quiet_normal": [
+            -1,
+            0,
+            0
+          ],
+          "insert_local_point": [
+            2.4,
+            0.64,
+            3.51
+          ],
+          "insert_normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "joint": "low_bearing",
+          "quiet_point": [
+            -3.1,
+            0.08,
+            2.85
+          ],
+          "quiet_normal": [
+            0,
+            0,
+            1
+          ],
+          "insert_local_point": [
+            0,
+            0.08,
+            2.85
+          ],
+          "insert_normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ]
+    },
+    "AST-SAL-003": {
+      "overall_source_xyz_m": [
+        6.2,
+        3.2,
+        3.74
+      ],
+      "rear_shell_starts_source_y_m": 1.28,
+      "proposed_qa_front_origin_ship_xyz_m": [
+        63.6,
+        0,
+        -2
+      ],
+      "proposed_qa_front_origin_inspection_blender_xyz_m": [
+        63.6,
+        2,
+        0
+      ],
+      "rotation_about_inspection_source_z_deg": 0,
+      "combined_quiet_ship_x_bounds_m": [
+        60.5,
+        66.7
+      ],
+      "combined_quiet_ship_z_bounds_m": [
+        -5.2,
+        -2
+      ],
+      "note": "Dimensions include inserted cove but exclude any unreviewed future fixtures/props. Final native bounds and actual joints must be checked.",
+      "nominal_containment_screen": {
+        "side_margin_m": 0.5,
+        "rear_margin_m": 2.2,
+        "route_edge_margin_m": 0,
+        "height_margin_m": 0.06,
+        "status": "Nominal proposed bounds only; actual imported geometry including trim, fixtures and context must stay out of the route and below3.8m. Resolve any nonzero source-front offsets from actual bounds, not assumed pivots."
+      }
+    }
+  }
+}

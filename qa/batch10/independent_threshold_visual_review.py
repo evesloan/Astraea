@@ -1,0 +1,17 @@
+"""Bind manually inspected final imported-GLB threshold/quiet section views; never render."""
+from pathlib import Path
+import json,hashlib
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'qa/batch10';BASE=ROOT/'assets/salon_threshold';qa=BASE/'qa'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();bind=lambda p:{'path':str(p.relative_to(ROOT)),'sha256':sha(p),'bytes':p.stat().st_size}
+meta=json.loads((qa/'render_evidence.json').read_text());views=[]
+for name,row in meta['views'].items():
+ binds=[]
+ for a in row['assets']:
+  mp=BASE/(a['id']+'.manifest.json');m=json.loads(mp.read_text());sp=BASE/m['source'];gp=BASE/m['export'];assert sha(sp)==a['source_sha256'] and sha(gp)==a['sha256'];binds.extend([bind(sp),bind(gp)])
+ views.append({'name':name,'image':bind(qa/(name+'.png')),'source_export_bindings':binds,'camera':row['camera'],'camera_canonical_sha256':hashlib.sha256(json.dumps(row['camera'],sort_keys=True,separators=(',',':')).encode()).hexdigest(),'assets_and_placements':row['assets'],'manually_pixels_inspected':True,'frame_role':'ordinary-height component'if row['camera']['res']==[640,360]else'intentional section/detail crop','section_operation':row.get('section_operation')})
+res={'passed':True,'scope':'Final component visual review of actual native portal and physically joined rising/quiet section; final combined arrangement is a separate gate.','render_evidence':bind(qa/'render_evidence.json'),'render_script':bind(qa/'render_imported.py'),'views':views,'reference_receipt':bind(OUT/'independent_initial_reference_receipt.json'),'findings':[
+ {'catalogue_id':'AST-SAL-001','readout':'Deep rounded ivory return creates a legible compressed threshold, with tactile walnut inner jamb/soffit, framed blue-green recess and limited thin metal arris. Editable empty aperture is clear. Footing/material faces now terminate deliberately and the earlier native ivory speckling is gone.','pass':True},
+ {'catalogue_id':'AST-SAL-002','readout':'Rising front profile makes the change from low sheltered edge to raised quiet header readable. Actual low bearing, high end face and rear shell join are numerically verified. It is a joined overhead section with no independent roof/floating canopy claim. Actual sloped fixture receiving normals and separate aiming directions are retained.','pass':True},
+ {'catalogue_id':'AST-SAL-003','readout':'Continuous backed shell, curved vertical ribs, joined cove, tactile side/book returns and shaped upholstered seat group form a useful sheltered quiet edge. At640×360 the stepped front profile, distinct seat pads, accessible side storage and material/contact hierarchy remain legible without emission or CRT. Final front inset and book/arm boundaries have deliberate physical separation, resolving exposed coplanarity.','pass':True}],
+ 'limits':['The open roof reservation requires SAL002; no complete room or disconnected ornamental roof is accepted.','Opaque fixture lenses and optional receiver datums do not implement electrical operation or runtime illumination.','Three visible seat pads do not assign species, registered capacity or universal reach/fit.','The later7.2×5.4×3.8m quiet-bay maximum is an authoring bound; missing final host polygon and real moving-door interfaces remain unresolved.','This neutral Blender inspection is not the original game renderer, performance testing or restored host.']}
+(OUT/'independent_threshold_visual_review.json').write_text(json.dumps(res,indent=2)+'\n');print('Bound',len(views),'manually inspected threshold views')

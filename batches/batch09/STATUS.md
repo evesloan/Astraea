@@ -4,7 +4,7 @@ All six components pass independent source/export/material/interface and ordinar
 
 Fresh source-only rebuilds reproduce all six GLBs and 15 original library textures byte-for-byte. The original 45 catalogue and interface records remain unchanged. Browser side-frame collision and header-sign corrections, and camera/placement evidence corrections, are recorded with superseded evidence preserved.
 
-Independent final review: `qa/batch09/independent_final_review.json`. Current source/interface promotion receipt: `qa/batch09/lead_integration_receipt.json`. Full archive, compact-family restoration and durable Library delivery are the remaining gate.
+Independent final review: `qa/batch09/independent_final_review.json`. Current source/interface promotion receipt: `qa/batch09/lead_integration_receipt.json`. The complete archive and all seven compact family packages were verified and delivered. Full Library archive: libfile_a58ca78eacec8191b536adcaddd21fa4; accepted delivery: Sentinel_a322870b00008191a2a6e1ef88fe3ac5. The parent verified all 1,801 tracked hashes and CRC; nine history checkpoints and 51 source/export pairs restored successfully.
 
 ## Next-work dependency
 

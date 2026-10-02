@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "prior51_rows_changed": false,
+  "proposed_new_rows": 6,
+  "promoted": false,
+  "corrections": [
+    {
+      "component": "AST-SAL-004",
+      "finding": "Plant-bearing witnesses missed bevelled tray/support surfaces by2.07\u201311.15mm",
+      "resolution": "Tray widened into real bearing overlap and witnesses moved to actual shared regions",
+      "evidence": "qa/batch10/independent_salon_edges_interfaces.json"
+    },
+    {
+      "component": "AST-SAL-006",
+      "finding": "Turn support witness missed by2mm; claimed lower shelf voids intersected real corner support",
+      "resolution": "Exact shared top/support witness and lower receiver widths reduced to actual open mouths",
+      "evidence": "qa/batch10/independent_salon_edges_interfaces.json"
+    },
+    {
+      "component": "AST-SAL-002",
+      "finding": "Fixture normals were vertical despite a10.4\u00b0 sloping surface",
+      "resolution": "Measured actual surface normals retained separately from optional vertical aiming direction",
+      "evidence": "qa/batch10/independent_salon_threshold_interfaces.json"
+    },
+    {
+      "component": "AST-SAL-002+003",
+      "finding": "Different tessellation grids produced up to1.173mm gap at declared low bearing",
+      "resolution": "Rib top now uses exact same cove chord interpolation;71 surface probes pass",
+      "evidence": "qa/batch10/independent_section_seams.json"
+    },
+    {
+      "component": "AST-SAL-004",
+      "finding": "End-perch front support did not reach floor",
+      "resolution": "Final support extends toZ0 with actual floor contact marker and re-rendered standing/detail images",
+      "evidence": "qa/batch10/independent_edges_visual_review.json"
+    },
+    {
+      "component": "Both families",
+      "finding": "Used texture subset alone would omit unused material images opened by helpers",
+      "resolution": "Complete11/19 file input closures verified, six source-only GLBs reproduce byte-identically",
+      "evidence": "qa/batch10/independent_rebuild_receipts.json"
+    }
+  ],
+  "surface_termination_correction": {
+    "finding": "Different-material same-facing overlaps caused visible native speckles and exposed latent z-fighting",
+    "resolution": "Portal wood ends on an actual ivory socket; quiet rib uses a physical inset/recess; book backs fit cheek interiors; arm edges terminate deliberately; edge shoes/posts/ledges/caps have real reveals. Two wholly buried cove strips were removed. Remaining eight tiny service shelf-bearing overlaps are buried inside the side cheeks.",
+    "evidence": [
+      "qa/batch10/independent_coplanar_screen.json",
+      "qa/batch10/independent_threshold_visual_review.json",
+      "qa/batch10/independent_edges_visual_review.json"
+    ]
+  },
+  "collision_profile_qualification": {
+    "evidence": "qa/batch10/independent_profile_collision.json",
+    "local_crown_vertical_clearance_reduction_max_m": 0.011774251807438851,
+    "cove_conservative_clearance_reduction_max_m": 0.0040232943736007165,
+    "intentional_cove_finish_channel_fill_max_m": 0.04702327720746302,
+    "meaning": "The simplified profile compounds preserve their declared minimum finite voids, with small measured profile approximations and deliberate channel filling. They are not exact sweep volumes or runtime acceptance."
+  },
+  "open_adoption_limits": [
+    "Final guest polygon and actual host geometry are missing",
+    "Real public/service clear widths/heights, leaf stroke, cassette and head reservations remain unknown",
+    "No door leaves or infill supplied; no completed guard, universal actor/cart fit or room acceptance",
+    "Final normal-height assembly visual acceptance is separate from interface inventory; no runtime performance claim"
+  ]
+}

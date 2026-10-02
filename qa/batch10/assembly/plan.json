@@ -1,0 +1,264 @@
+{
+  "revision": "salon-connected-component-arrangement-01",
+  "status": "Proposed adjustable QA arrangement, not a recovered room or actor/door fit",
+  "inspection_origin_ship_m": [
+    52,
+    0,
+    0
+  ],
+  "source_to_ship": "ship(x,y,z)=(source_x+52,source_z,-source_y); y is above deck",
+  "historical_unmodeled_interfaces": [
+    {
+      "id": "guest_moving_door",
+      "ship_xz_m": [
+        52,
+        0
+      ],
+      "dimensions": null,
+      "sweep": null,
+      "fit": "unknown"
+    },
+    {
+      "id": "rear_service_moving_door",
+      "ship_xz_m": [
+        98,
+        0
+      ],
+      "dimensions": null,
+      "sweep": null,
+      "fit": "unknown"
+    }
+  ],
+  "through_strip_ship_z_m": [
+    -2,
+    2
+  ],
+  "tram_reserve_ship_x_m": [
+    35,
+    45
+  ],
+  "tram_reserve_ship_z_m": [
+    -52,
+    52
+  ],
+  "items": [
+    {
+      "key": "portal",
+      "catalogue_id": "AST-SAL-001",
+      "path": "assets/salon_threshold/exports/AST-SAL-001.glb",
+      "source_path": "assets/salon_threshold/source/AST-SAL-001.blend",
+      "manifest_path": "assets/salon_threshold/AST-SAL-001.manifest.json",
+      "ship_origin_m": [
+        48,
+        0,
+        0
+      ],
+      "inspection_source_origin_m": [
+        -4,
+        0,
+        0
+      ],
+      "source_z_rotation_deg": -90
+    },
+    {
+      "key": "cove",
+      "catalogue_id": "AST-SAL-002",
+      "path": "assets/salon_threshold/exports/AST-SAL-002.glb",
+      "source_path": "assets/salon_threshold/source/AST-SAL-002.blend",
+      "manifest_path": "assets/salon_threshold/AST-SAL-002.manifest.json",
+      "ship_origin_m": [
+        60.5,
+        0,
+        -2
+      ],
+      "inspection_source_origin_m": [
+        8.5,
+        2,
+        0
+      ],
+      "source_z_rotation_deg": 0
+    },
+    {
+      "key": "quiet",
+      "catalogue_id": "AST-SAL-003",
+      "path": "assets/salon_threshold/exports/AST-SAL-003.glb",
+      "source_path": "assets/salon_threshold/source/AST-SAL-003.blend",
+      "manifest_path": "assets/salon_threshold/AST-SAL-003.manifest.json",
+      "ship_origin_m": [
+        63.6,
+        0,
+        -2
+      ],
+      "inspection_source_origin_m": [
+        11.600000000000001,
+        2,
+        0
+      ],
+      "source_z_rotation_deg": 0
+    },
+    {
+      "key": "planted",
+      "catalogue_id": "AST-SAL-004",
+      "path": "assets/salon_edges/exports/AST-SAL-004.glb",
+      "source_path": "assets/salon_edges/source/AST-SAL-004.blend",
+      "manifest_path": "assets/salon_edges/AST-SAL-004.manifest.json",
+      "ship_origin_m": [
+        63.6,
+        0,
+        2
+      ],
+      "inspection_source_origin_m": [
+        11.600000000000001,
+        -2,
+        0
+      ],
+      "source_z_rotation_deg": 180
+    },
+    {
+      "key": "terminal",
+      "catalogue_id": "AST-SAL-005",
+      "path": "assets/salon_edges/exports/AST-SAL-005.glb",
+      "source_path": "assets/salon_edges/source/AST-SAL-005.blend",
+      "manifest_path": "assets/salon_edges/AST-SAL-005.manifest.json",
+      "ship_origin_m": [
+        48.4,
+        0,
+        4.04
+      ],
+      "inspection_source_origin_m": [
+        -3.6000000000000014,
+        -4.04,
+        0
+      ],
+      "source_z_rotation_deg": -90
+    },
+    {
+      "key": "service",
+      "catalogue_id": "AST-SAL-006",
+      "path": "assets/salon_edges/exports/AST-SAL-006.glb",
+      "source_path": "assets/salon_edges/source/AST-SAL-006.blend",
+      "manifest_path": "assets/salon_edges/AST-SAL-006.manifest.json",
+      "ship_origin_m": [
+        94.8,
+        0,
+        3.4
+      ],
+      "inspection_source_origin_m": [
+        42.8,
+        -3.4,
+        0
+      ],
+      "source_z_rotation_deg": -90
+    }
+  ],
+  "joins": [
+    {
+      "name": "cove_high_end",
+      "a": "cove",
+      "a_local_m": [
+        2.4,
+        0.64,
+        3.51
+      ],
+      "a_normal": [
+        1,
+        0,
+        0
+      ],
+      "b": "quiet",
+      "b_local_m": [
+        -0.7,
+        0.64,
+        3.51
+      ],
+      "b_normal": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cove_rear",
+      "a": "cove",
+      "a_local_m": [
+        1.2,
+        1.28,
+        3.4
+      ],
+      "a_normal": [
+        0,
+        1,
+        0
+      ],
+      "b": "quiet",
+      "b_local_m": [
+        -1.9,
+        1.28,
+        3.4
+      ],
+      "b_normal": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "cove_low_bearing",
+      "a": "cove",
+      "a_local_m": [
+        0,
+        0.08,
+        2.85
+      ],
+      "a_normal": [
+        0,
+        0,
+        -1
+      ],
+      "b": "quiet",
+      "b_local_m": [
+        -3.1,
+        0.08,
+        2.85
+      ],
+      "b_normal": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "portal_terminal",
+      "a": "portal",
+      "a_local_m": [
+        2.64,
+        0.64,
+        0.55
+      ],
+      "a_normal": [
+        1,
+        0,
+        0
+      ],
+      "b": "terminal",
+      "b_local_m": [
+        -1.4,
+        0.24,
+        0.55
+      ],
+      "b_normal": [
+        -1,
+        0,
+        0
+      ]
+    }
+  ],
+  "notes": [
+    "Portal exemplar uses documented architectural atrium interface X48; it does not replace or validate unknown moving guest door X52",
+    "Terminal is joined to the exemplar outside the proposed clear strip; actual terrace floor support and guard infill remain unverified",
+    "Quiet/cove is a single joined section within the proposed northern study zone, separated from the arrival by breathing room",
+    "Planted edge opposes the quiet group across the clear strip",
+    "Service return is a proposed separate rear-interface candidate, leaving nominal clearance to X98; final guest polygon and connected staff route remain unknown",
+    "Inspection ground, local lights, stock and plants are QA only; no runtime world or new registered room"
+  ]
+}

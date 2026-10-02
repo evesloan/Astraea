@@ -1,0 +1,1 @@
+Independent spatial-auditor output copied unchanged from its separate district-layout audit. It binds the actual six component exports, four disclosed context exports, plan and original final geometry preflight. Later camera-only changes retain those exact geometry inputs. The screen does not certify the missing host polygon, floor, doors, guard infill or actor/cart routes.
