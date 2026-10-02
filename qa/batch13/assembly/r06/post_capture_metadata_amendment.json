@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "scope": "Exact evidence-only metadata amendment after successful capture. Geometry, source .blend, GLB, placements, cameras and image pixels are unchanged; original capture is not rewritten.",
+  "captured_manifest": {
+    "path": "qa/batch13/assembly/r06/captured_manifests/transition.json",
+    "sha256": "c374740d95672ee77b472c0f5bb4f273bf35192a92e1853ec32b2a1e233f004f"
+  },
+  "current_manifest": {
+    "path": "assets/botanical_transition/AST-BOT-010.manifest.json",
+    "sha256": "1509b95881674156d70230c0568b03dc9a9c2a2bf46d0c767d6b64f363a5a9e7"
+  },
+  "unchanged_geometry_bindings": [
+    {
+      "path": "assets/botanical_transition/exports/AST-BOT-010.glb",
+      "sha256": "57b4be033ffbb6d3ccff8b9bb7663dfb5d7d6e7dd497625aae3b3ff6a79fae11"
+    },
+    {
+      "path": "assets/botanical_transition/source/AST-BOT-010.blend",
+      "sha256": "7bbadd270846fe67029800660b93e23a7d2396ce83745bdd3bdc48ab41a882f3"
+    }
+  ],
+  "changes": [
+    {
+      "pointer": "/collision_approximation_limits/continuous_surface_coverage_complete",
+      "before": null,
+      "after": false
+    },
+    {
+      "pointer": "/collision_approximation_limits/front_uncovered_surface_area_m2",
+      "before": null,
+      "after": 0.00015432502998777994
+    },
+    {
+      "pointer": "/collision_approximation_limits/independent_dense_observed_inflation_m",
+      "before": null,
+      "after": 0.01954327617867773
+    },
+    {
+      "pointer": "/collision_approximation_limits/independent_sample_max_grid_edge_m",
+      "before": null,
+      "after": 0.035
+    },
+    {
+      "pointer": "/collision_approximation_limits/independent_surface_undercoverage_front_max_sampled_m",
+      "before": null,
+      "after": 0.00025372500678529363
+    },
+    {
+      "pointer": "/collision_approximation_limits/independent_surface_undercoverage_rear_max_sampled_m",
+      "before": null,
+      "after": 0.0003013736647113642
+    },
+    {
+      "pointer": "/collision_approximation_limits/rear_uncovered_surface_area_m2",
+      "before": null,
+      "after": 0.0606301295108089
+    },
+    {
+      "pointer": "/collision_approximation_limits/receipt",
+      "before": null,
+      "after": "qa/independent_collision_profile.json"
+    },
+    {
+      "pointer": "/evidence/native_attribute_comparison",
+      "before": null,
+      "after": "qa/independent_native_attribute_comparison.json"
+    },
+    {
+      "pointer": "/evidence/source_only_rebuild",
+      "before": "Independent Batch13 traced source-only rebuild receipt, referenced by final review",
+      "after": {
+        "receipt": "qa/independent_source_only_rebuild.json",
+        "origin": "qa/batch13/independent_rebuild_botanical_transition_r04.json",
+        "sha256": "899917ae73a60784124a83416b967a797fb359579818ca9a997e0d6bdc0dea8a",
+        "fresh_seed_files": 20,
+        "unexpected_catalogue_reads": [],
+        "byte_identical_glb": true,
+        "editable_evaluated_source_signatures_equal": true
+      }
+    },
+    {
+      "pointer": "/export/UV_repair_detail",
+      "before": null,
+      "after": "3 evaluated bevel polygons are reprojected on their dominant physical plane for export; actual native corners match independently after this explicit expected correction"
+    }
+  ],
+  "render_receipt": {
+    "path": "qa/batch13/assembly/r06/render_evidence.json",
+    "sha256": "f85b8e3427f7f8773d31d79ee48a1cf6a5b155b08fbe8900fbf9635c28149303"
+  },
+  "post_amendment_wording_note": "Removed a redundant collapsed-triangle count after an independent current-source counter check. The3 evaluated UV-repair polygons, geometry, native attributes, source .blend and GLB are unchanged."
+}

@@ -1,0 +1,7621 @@
+{
+  "path": "assets/botanical_cluster/source/AST-BOT-009.blend",
+  "sha256": "a092778c443093d193723213bf4b698ed8b46c2b5a91334301e4d45ca9a25a09",
+  "executed_script_sha256": "4985cb50eb00db3e4d339c0d1951b21f2cb69e70be54d8941ed97e6580dfd267",
+  "blender_version": "4.3.2",
+  "units": {
+    "system": "METRIC",
+    "scale_length": 1.0
+  },
+  "objects": [
+    {
+      "name": "AST-BOT-009",
+      "type": "EMPTY",
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "catalogue_id": "AST-BOT-009",
+        "placement_datum": "Soil plane Z0; negative Z is intentional only on trailing foliage",
+        "source_to_glb": "(x,y,z) -> (x,z,-y)",
+        "front_source": [
+          0,
+          -1,
+          0
+        ],
+        "front_native_glb": [
+          0,
+          0,
+          1
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "basal_collar_01",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_bark",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.25, -0.014999999664723873, 0.0], [-0.25, -0.014999999664723873, 0.03500000014901161], [-0.25, -0.014999999664723873, 0.07000000029802322]]",
+        "radii_m": "[0.07, 0.073, 0.05]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 56,
+      "min_xyz": [
+        -0.3230000138282776,
+        -0.0844271257519722,
+        0.0
+      ],
+      "max_xyz": [
+        -0.1770000010728836,
+        0.0544271245598793,
+        0.07000000029802322
+      ],
+      "source_vertices": 30,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_bark"
+      ],
+      "editable_mesh_sha256": "29cd6bf1e18e69746b735bd078b401575429a1cf3287676625b17089d1e12dfa",
+      "modifier_settings": []
+    },
+    {
+      "name": "SOIL_CONTACT_01",
+      "type": "EMPTY",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.25
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.014999999664723873
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_soil_contact",
+        "physical_part": "basal_collar_01",
+        "source_position_m": [
+          -0.25,
+          -0.015,
+          0.0
+        ],
+        "gltf_position_m": [
+          -0.25,
+          0.0,
+          0.015
+        ],
+        "normal_source": [
+          0,
+          0,
+          -1
+        ],
+        "normal_gltf": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "group_01_folded_strap_01",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.25,
+          -0.015,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.28, \"width\": 0.086, \"rise\": 0.12, \"arch\": 0.14, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.5114024877548218,
+        -0.02161337435245514,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        -0.25,
+        0.0915602594614029,
+        0.2666787803173065
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "ae804f153d64ed8eb3b9797b4216715ccdd859f8de9b7d3233b002eee7acc40a",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_01_folded_strap_02",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.25,
+          -0.015,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.28, \"width\": 0.09, \"rise\": 0.11, \"arch\": 0.15, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.25,
+        -0.04415024071931839,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.027912914752960205,
+        0.046745482832193375,
+        0.2677689492702484
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "5d12b49da82da4ee36b57044be3c601f2e7d756aad44bececc38b3c5aab29263",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_01_folded_strap_03",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_sage",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.25,
+          -0.015,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.24, \"width\": 0.078, \"rise\": 0.13, \"arch\": 0.14, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.3145061731338501,
+        -0.2505905032157898,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        -0.23212911188602448,
+        -0.014999999664723873,
+        0.27367880940437317
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_sage"
+      ],
+      "editable_mesh_sha256": "67f7ef314c0833c752ce3124f9bd31f6ea1d842ffb0bc94f79218e14117460ec",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_01_folded_strap_04",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.25,
+          -0.015,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.21, \"width\": 0.07, \"rise\": 0.26, \"arch\": 0.1, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.2730799913406372,
+        -0.014999999664723873,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        -0.20263925194740295,
+        0.1934346854686737,
+        0.33231812715530396
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "3a805b2fc8ec49321cdddca6033c398ce6d5b41b6cedba8c5c5ea6fc41afe743",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_01_folded_strap_05",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.25,
+          -0.015,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.24, \"width\": 0.065, \"rise\": 0.36, \"arch\": 0.07, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.25,
+        -0.014999999664723873,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        -0.05340351164340973,
+        0.12265834212303162,
+        0.4100000262260437
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "110addc72ba6de61803a8f0fe527a36ae30be9490ee357122e12cfbd1c27c6bb",
+      "modifier_settings": []
+    },
+    {
+      "name": "basal_collar_02",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_bark",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.0, 0.02500000037252903, 0.0], [0.0, 0.02500000037252903, 0.03500000014901161], [0.0, 0.02500000037252903, 0.07000000029802322]]",
+        "radii_m": "[0.07, 0.073, 0.05]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 56,
+      "min_xyz": [
+        -0.0729999989271164,
+        -0.04442712664604187,
+        0.0
+      ],
+      "max_xyz": [
+        0.0729999989271164,
+        0.09442712366580963,
+        0.07000000029802322
+      ],
+      "source_vertices": 30,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_bark"
+      ],
+      "editable_mesh_sha256": "cd7f8b26d954a4f1ed40e25bb09ea1b30dd65e406c7a6713d7d48491681846d1",
+      "modifier_settings": []
+    },
+    {
+      "name": "SOIL_CONTACT_02",
+      "type": "EMPTY",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.02500000037252903
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_soil_contact",
+        "physical_part": "basal_collar_02",
+        "source_position_m": [
+          0.0,
+          0.025,
+          0.0
+        ],
+        "gltf_position_m": [
+          0.0,
+          0.0,
+          -0.025
+        ],
+        "normal_source": [
+          0,
+          0,
+          -1
+        ],
+        "normal_gltf": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "group_02_folded_strap_01",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.0,
+          0.025,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.28, \"width\": 0.086, \"rise\": 0.12, \"arch\": 0.14, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.27727505564689636,
+        -2.3052096366882324e-05,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.0,
+        0.08837136626243591,
+        0.2666787803173065
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "b5a4129093821b2dcd0d8b300c1a14806be371b65b4b5ef933a8b87fd3e88f61",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_02_folded_strap_02",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.0,
+          0.025,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.28, \"width\": 0.09, \"rise\": 0.11, \"arch\": 0.15, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.0,
+        0.016245955601334572,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.26311394572257996,
+        0.12840716540813446,
+        0.2677689492702484
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "4cdb951e9573f8c162c448c0063bbeb1f558307edb02aaaa88f06db539685057",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_02_folded_strap_03",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_sage",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.0,
+          0.025,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.24, \"width\": 0.078, \"rise\": 0.13, \"arch\": 0.14, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.034640491008758545,
+        -0.21485379338264465,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.04184374958276749,
+        0.02500000037252903,
+        0.27367880940437317
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_sage"
+      ],
+      "editable_mesh_sha256": "1069e4879550cffc58c02d9fcb375bb71f1cc79804fdffeb54d2c1e72598cef6",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_02_folded_strap_04",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.0,
+          0.025,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.21, \"width\": 0.07, \"rise\": 0.26, \"arch\": 0.1, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.04487025737762451,
+        0.02500000037252903,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.024713724851608276,
+        0.23384959995746613,
+        0.33231812715530396
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "8f17c936fc1b90bbd58efebccb463bf05ef23cf1275febbff7f9889ebdc28227",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_02_folded_strap_05",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.0,
+          0.025,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.24, \"width\": 0.065, \"rise\": 0.36, \"arch\": 0.07, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.0,
+        0.02500000037252903,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.16059134900569916,
+        0.20335476100444794,
+        0.4100000262260437
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "aa3ac4b18ddd4bd90b28ea330ebcc65a89376774bb43a3b01e1b24c3686e63f5",
+      "modifier_settings": []
+    },
+    {
+      "name": "basal_collar_03",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_bark",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.25, -0.009999999776482582, 0.0], [0.25, -0.009999999776482582, 0.03500000014901161], [0.25, -0.009999999776482582, 0.07000000029802322]]",
+        "radii_m": "[0.07, 0.073, 0.05]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 56,
+      "min_xyz": [
+        0.1770000010728836,
+        -0.07942712306976318,
+        0.0
+      ],
+      "max_xyz": [
+        0.3230000138282776,
+        0.05942712724208832,
+        0.07000000029802322
+      ],
+      "source_vertices": 30,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_bark"
+      ],
+      "editable_mesh_sha256": "61574153e9d0ee164024fb34faabe9d803d43b4f07152cd8eee58fdc6fa9e8c2",
+      "modifier_settings": []
+    },
+    {
+      "name": "SOIL_CONTACT_03",
+      "type": "EMPTY",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.25
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_soil_contact",
+        "physical_part": "basal_collar_03",
+        "source_position_m": [
+          0.25,
+          -0.01,
+          0.0
+        ],
+        "gltf_position_m": [
+          0.25,
+          0.0,
+          0.01
+        ],
+        "normal_source": [
+          0,
+          0,
+          -1
+        ],
+        "normal_gltf": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "group_03_folded_strap_01",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.25,
+          -0.01,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.28, \"width\": 0.086, \"rise\": 0.12, \"arch\": 0.14, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.028934508562088013,
+        -0.06339196860790253,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.25,
+        0.02153598889708519,
+        0.2666787803173065
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "3216d90529cddf495d7e6d615729c96d6493f2a94f8b10dce6e778b6e396f8e9",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_03_folded_strap_02",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.25,
+          -0.01,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.28, \"width\": 0.09, \"rise\": 0.11, \"arch\": 0.15, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.25,
+        -0.009999999776482582,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.48482775688171387,
+        0.1424989253282547,
+        0.2677689492702484
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "bffc48d2e1b44b9e32b134cd2a933842f50d0db76bf316b55d009af830f80bac",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_03_folded_strap_03",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_sage",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.25,
+          -0.01,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.24, \"width\": 0.078, \"rise\": 0.13, \"arch\": 0.14, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.23802585899829865,
+        -0.24182219803333282,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.3254128098487854,
+        -0.009999999776482582,
+        0.27367880940437317
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_sage"
+      ],
+      "editable_mesh_sha256": "114b6cf53d320c3a7f9496baa3118c2e8a6b7fb7478327830e4ee422aecf13d5",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_03_folded_strap_04",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.25,
+          -0.01,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.21, \"width\": 0.07, \"rise\": 0.26, \"arch\": 0.1, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.1740906834602356,
+        -0.009999999776482582,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.25803473591804504,
+        0.188558891415596,
+        0.33231812715530396
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "12652ab4b54fa3259077854ca0738616e66b691e262e217e2b681ac2407ebdcf",
+      "modifier_settings": []
+    },
+    {
+      "name": "group_03_folded_strap_05",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_jade",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.25,
+          -0.01,
+          0.05
+        ],
+        "shape_controls": "{\"length\": 0.24, \"width\": 0.065, \"rise\": 0.36, \"arch\": 0.07, \"fold\": 0.024}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.25,
+        -0.009999999776482582,
+        0.05000000074505806
+      ],
+      "max_xyz": [
+        0.3663542866706848,
+        0.19990871846675873,
+        0.4100000262260437
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_jade"
+      ],
+      "editable_mesh_sha256": "1a7144d3d0f0fa8a5f4a125232afb39e502b1abb1977391723d3717baabc65b5",
+      "modifier_settings": []
+    },
+    {
+      "name": "upright_flower_stalk_01",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.25, -0.014999999664723873, 0.05299999937415123], [-0.3050000071525574, -0.012500000186264515, 0.3864000141620636], [-0.3546000123023987, -0.009800000116229057, 0.671999990940094], [-0.36000001430511475, -0.009999999776482582, 0.8399999737739563]]",
+        "radii_m": "[0.012, 0.01, 0.007, 0.0045]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 52,
+      "min_xyz": [
+        -0.3643849194049835,
+        -0.02581767737865448,
+        0.051115892827510834
+      ],
+      "max_xyz": [
+        -0.2384568750858307,
+        -0.002500353381037712,
+        0.8401397466659546
+      ],
+      "source_vertices": 28,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "075aa7590e185e634d33ee0326bfa8596e00f00bbbcf7e4a2d30bc78da9f120a",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_01_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.3407120108604431, -0.010555999353528023, 0.5920320153236389], [-0.3107568621635437, 0.03557088226079941, 0.617031991481781]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.3444424569606781,
+        -0.013061339035630226,
+        0.5880492925643921
+      ],
+      "max_xyz": [
+        -0.3082408607006073,
+        0.037504710257053375,
+        0.619629442691803
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "87900085a0d038cf434b4b93a7aff5f23f1891d07e5ba071d30c6808480413e6",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_01_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.3107568621635437, 0.03557088226079941, 0.614031970500946], [-0.3107568621635437, 0.03557088226079941, 0.6220319867134094], [-0.3107568621635437, 0.03557088226079941, 0.6290320158004761]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        -0.3227568566799164,
+        0.02517857775092125,
+        0.614031970500946
+      ],
+      "max_xyz": [
+        -0.298756867647171,
+        0.045963186770677567,
+        0.6290320158004761
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "d67b96f09e00f5e1c46ebe5eb18201c83780a6ec88a2882c153a5c95fcead8a7",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_01_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.3107568621635437,
+          0.03557088226079941,
+          0.6230319738388062
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.31555160880088806,
+        0.03557088226079941,
+        0.6230319738388062
+      ],
+      "max_xyz": [
+        -0.27780649065971375,
+        0.07834307849407196,
+        0.6623754501342773
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "5614a1ec085d687a178401ba1f76025c123e320a5e13b4d03c234da984848c06",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_01_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.3107568621635437,
+          0.03557088226079941,
+          0.6230319738388062
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.36168697476387024,
+        0.018102027475833893,
+        0.6230319738388062
+      ],
+      "max_xyz": [
+        -0.3107568621635437,
+        0.05533519387245178,
+        0.6623754501342773
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "96fab986344fea6efd6288cbee4883e7fed8fca9fc81ddf23175f127dc18f393",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_01_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.3107568621635437,
+          0.03557088226079941,
+          0.6230319738388062
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.3174111247062683,
+        -0.00987045094370842,
+        0.6230319738388062
+      ],
+      "max_xyz": [
+        -0.28019973635673523,
+        0.03557088226079941,
+        0.6623754501342773
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "ff22d2b58fb02fecb9d9da380869e7a86ef6457fc1db51649ecc6a2c1ac441e3",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_02_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.35557201504707336, -0.009835999459028244, 0.702239990234375], [-0.4105384945869446, -0.0079165268689394, 0.7272399663925171]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.4116860628128052,
+        -0.013594258576631546,
+        0.6982572674751282
+      ],
+      "max_xyz": [
+        -0.35371318459510803,
+        -0.0049183545634150505,
+        0.7298374176025391
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "6469d69441229cfc4036f12c47b7e1dded53d571e40d7e20d9218d17a96c5eca",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_02_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.4105384945869446, -0.0079165268689394, 0.7242399454116821], [-0.4105384945869446, -0.0079165268689394, 0.7322399616241455], [-0.4105384945869446, -0.0079165268689394, 0.7392399907112122]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        -0.42253848910331726,
+        -0.01830883137881756,
+        0.7242399454116821
+      ],
+      "max_xyz": [
+        -0.3985385000705719,
+        0.002475777640938759,
+        0.7392399907112122
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "496360c6a5cec5ead4663a9335afe055838b4c9ae9bd9b4db6125d2e16a7b760",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_02_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.4105384945869446,
+          -0.0079165268689394,
+          0.7332399487495422
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.46750378608703613,
+        -0.025691915303468704,
+        0.7332399487495422
+      ],
+      "max_xyz": [
+        -0.4105384945869446,
+        0.011569634079933167,
+        0.7725834250450134
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "3f9d984f1fb7dbae955fa20b3f022f7c25b2f5c96a0f4b0788c09ad44bdcb30c",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_02_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.4105384945869446,
+          -0.0079165268689394,
+          0.7332399487495422
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.4160333573818207,
+        -0.05824454128742218,
+        0.7332399487495422
+      ],
+      "max_xyz": [
+        -0.3775867223739624,
+        -0.0079165268689394,
+        0.7725834250450134
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "8285b7a3e38088f629a3c522fce7ac1826af7a8582689668b6a6cb5cc4a36522",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_02_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.4105384945869446,
+          -0.0079165268689394,
+          0.7332399487495422
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.4150055944919586,
+        -0.0079165268689394,
+        0.7332399487495422
+      ],
+      "max_xyz": [
+        -0.37573689222335815,
+        0.040422216057777405,
+        0.7725834250450134
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "8412a2169c46a5ae9ed749e9d075e24a580640f75b328ed644db00f3a9ea5acb",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_03_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.3587040305137634, -0.0099519994109869, 0.7996799945831299], [-0.3330582082271576, -0.03071957267820835, 0.824679970741272]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.3616516590118408,
+        -0.033051010221242905,
+        0.7961928248405457
+      ],
+      "max_xyz": [
+        -0.3307032883167267,
+        -0.006032365374267101,
+        0.826954185962677
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "a3274d49de4aff852bb81445ecd7af2f04e440b54b5e63c6760fed1acd3f665a",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_03_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.3330582082271576, -0.03071957267820835, 0.821679949760437], [-0.3330582082271576, -0.03071957267820835, 0.8296799659729004], [-0.3330582082271576, -0.03071957267820835, 0.836679995059967]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        -0.3450582027435303,
+        -0.04111187905073166,
+        0.821679949760437
+      ],
+      "max_xyz": [
+        -0.3210582137107849,
+        -0.020327268168330193,
+        0.836679995059967
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "dde31a423858b27d5105c521afc834f7e2f5710aba3a6d2e6a928024b8fb4a04",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_03_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.3330582082271576,
+          -0.03071957267820835,
+          0.8306799530982971
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.33327361941337585,
+        -0.06570224463939667,
+        0.8306799530982971
+      ],
+      "max_xyz": [
+        -0.29264408349990845,
+        -0.027420716360211372,
+        0.8700234293937683
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "0cec2efc6d245695e84292ea6a9385b9556950e6f7ae3d89161cb03b9ddb96f7",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_03_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.3330582082271576,
+          -0.03071957267820835,
+          0.8306799530982971
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.34804022312164307,
+        -0.03071957267820835,
+        0.8306799530982971
+      ],
+      "max_xyz": [
+        -0.31121498346328735,
+        0.019652532413601875,
+        0.8700234293937683
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "304915265ad8f716e5e89afcf6ac3ef62f2c0e24b4f4ff9102fea27de6735a66",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_01_cluster_03_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.3330582082271576,
+          -0.03071957267820835,
+          0.8306799530982971
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.38067081570625305,
+        -0.058548614382743835,
+        0.8306799530982971
+      ],
+      "max_xyz": [
+        -0.3330582082271576,
+        -0.021174652501940727,
+        0.8700234293937683
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "eac1289d248c6cbc574e46f3df1c83916469f39a077a04d17ef28fab49cefa06",
+      "modifier_settings": []
+    },
+    {
+      "name": "upright_flower_stalk_02",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.25, -0.014999999664723873, 0.05299999937415123], [-0.2199999988079071, 0.014999999664723873, 0.48069998621940613], [-0.1871500015258789, 0.04410000145435333, 0.8360000252723694], [-0.1899999976158142, 0.04500000178813934, 1.0449999570846558]]",
+        "radii_m": "[0.012, 0.01, 0.007, 0.0045]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 52,
+      "min_xyz": [
+        -0.2616705894470215,
+        -0.02581055648624897,
+        0.05182322859764099
+      ],
+      "max_xyz": [
+        -0.18033510446548462,
+        0.05109012871980667,
+        1.045064091682434
+      ],
+      "source_vertices": 28,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "658f229e5c2b81ecc7d4dd2e64cd04902138b170bf0f8ded9fd38a8524889b7e",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_01_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.19634801149368286, 0.03595200181007385, 0.7365160584449768], [-0.1811879575252533, 0.0888213962316513, 0.7615160346031189]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.20023372769355774,
+        0.03381998836994171,
+        0.73253333568573
+      ],
+      "max_xyz": [
+        -0.17830416560173035,
+        0.0901917964220047,
+        0.7641134858131409
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "cd0238052756d01f4bb241729cea65b9719945864ea8e291bbab2d17c30568ff",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_01_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.1811879575252533, 0.0888213962316513, 0.7585160136222839], [-0.1811879575252533, 0.0888213962316513, 0.7665160298347473], [-0.1811879575252533, 0.0888213962316513, 0.773516058921814]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        -0.19318795204162598,
+        0.07842908799648285,
+        0.7585160136222839
+      ],
+      "max_xyz": [
+        -0.16918796300888062,
+        0.09921370446681976,
+        0.773516058921814
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "303d05ee33b8918f9f49688181f028bb06070bfa55c0cc2397b7962c24e929d3",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_01_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.1811879575252533,
+          0.0888213962316513,
+          0.767516016960144
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.19306319952011108,
+        0.0888213962316513,
+        0.767516016960144
+      ],
+      "max_xyz": [
+        -0.1558665931224823,
+        0.1378457397222519,
+        0.8068594932556152
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "b8b4017d1fa6890936802ab7c7a9347276baa03fb57a0a2c4e046793ee3e0c0d",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_01_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.1811879575252533,
+          0.0888213962316513,
+          0.767516016960144
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.23067304491996765,
+        0.06455817818641663,
+        0.767516016960144
+      ],
+      "max_xyz": [
+        -0.1811879575252533,
+        0.10160442441701889,
+        0.8068594932556152
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "edf074bd8ecf00713d586f017eab6f5599895e22ff1a1b3c3a578338c70de301",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_01_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.1811879575252533,
+          0.0888213962316513,
+          0.767516016960144
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.18321190774440765,
+        0.05049748718738556,
+        0.767516016960144
+      ],
+      "max_xyz": [
+        -0.14378276467323303,
+        0.09033052623271942,
+        0.8068594932556152
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "7733ac798b765b5d0069f48ccee9ba3531f716b617ad46d1a361f90c3f97d40f",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_02_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.1876630038022995, 0.04426199942827225, 0.8736199736595154], [-0.2416524887084961, 0.03376750648021698, 0.8986199498176575]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.24298833310604095,
+        0.031245816498994827,
+        0.8696372509002686
+      ],
+      "max_xyz": [
+        -0.18585462868213654,
+        0.04877748340368271,
+        0.9012174010276794
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "6bdb880030d8ad0e023fc2b16e21b61bc6efa7f03476c96a7991a16225e15f7f",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_02_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.2416524887084961, 0.03376750648021698, 0.8956199288368225], [-0.2416524887084961, 0.03376750648021698, 0.9036199450492859], [-0.2416524887084961, 0.03376750648021698, 0.9106199741363525]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        -0.2536524832248688,
+        0.02337520197033882,
+        0.8956199288368225
+      ],
+      "max_xyz": [
+        -0.2296524941921234,
+        0.04415981099009514,
+        0.9106199741363525
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "77a2fbd27522f7aa2e077930bc9e8b32eb65cd495de1f8a723cb6fff8cffa93c",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_02_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.2416524887084961,
+          0.03376750648021698,
+          0.9046199321746826
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.2976052463054657,
+        0.010345127433538437,
+        0.9046199321746826
+      ],
+      "max_xyz": [
+        -0.2416524887084961,
+        0.0473904013633728,
+        0.9439634084701538
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "0a3e4411082d243528508f4043337db2a40d28b0da28eec8df3bb63534212f9e",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_02_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.2416524887084961,
+          0.03376750648021698,
+          0.9046199321746826
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.24373531341552734,
+        -0.009876757860183716,
+        0.9046199321746826
+      ],
+      "max_xyz": [
+        -0.20220711827278137,
+        0.03376750648021698,
+        0.9439634084701538
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "3377ada18d78b7abcd544504f764a8506911208e585a92a9abd59effbb783597",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_02_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.2416524887084961,
+          0.03376750648021698,
+          0.9046199321746826
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.25129929184913635,
+        0.03376750648021698,
+        0.9046199321746826
+      ],
+      "max_xyz": [
+        -0.21343474090099335,
+        0.08766206353902817,
+        0.9439634084701538
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "6fa83c34d64f436138236d63004acb2ccd43238d4a78bfbc4b155dced1c0f03d",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_03_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.1893160045146942, 0.044784002006053925, 0.9948399662971497], [-0.16017873585224152, 0.029291439801454544, 1.0198400020599365]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.19231592118740082,
+        0.02664259821176529,
+        0.9913527965545654
+      ],
+      "max_xyz": [
+        -0.15809912979602814,
+        0.04883638769388199,
+        1.0221142768859863
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "28acf836ae111343a16579393875adbad1ab41b0be28cd2d61c4af6db997b0d8",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_03_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.16017873585224152, 0.029291439801454544, 1.0168399810791016], [-0.16017873585224152, 0.029291439801454544, 1.024839997291565], [-0.16017873585224152, 0.029291439801454544, 1.0318399667739868]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        -0.1721787303686142,
+        0.018899135291576385,
+        1.0168399810791016
+      ],
+      "max_xyz": [
+        -0.14817874133586884,
+        0.0396837443113327,
+        1.0318399667739868
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "013d14b406ce308e1598cd5e6acfc0842ea2c3527b7b802558f2dd29ac0419cf",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_03_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.16017873585224152,
+          0.029291439801454544,
+          1.0258400440216064
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.16017873585224152,
+        -0.0016885604709386826,
+        1.0258400440216064
+      ],
+      "max_xyz": [
+        -0.11514841020107269,
+        0.03545595332980156,
+        1.0651835203170776
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "f24d2bb0b3bebdf3c30bfa3723a231c8557a8ece3134c0258c089ada40b8fab6",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_03_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.16017873585224152,
+          0.029291439801454544,
+          1.0258400440216064
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.1795748472213745,
+        0.029291439801454544,
+        1.0258400440216064
+      ],
+      "max_xyz": [
+        -0.14231330156326294,
+        0.08026036620140076,
+        1.0651835203170776
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "ae58b8267a52e5f6061aacc1bc5fd88d476565b7866b4646415b8032799245a8",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_02_cluster_03_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.16017873585224152,
+          0.029291439801454544,
+          1.0258400440216064
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.2034291923046112,
+        -0.003284487873315811,
+        1.0258400440216064
+      ],
+      "max_xyz": [
+        -0.16017873585224152,
+        0.034330837428569794,
+        1.0651835203170776
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "f4ccb422ab241081f93dc816038b5add17619ccce72c4414fb715b37761c6272",
+      "modifier_settings": []
+    },
+    {
+      "name": "upright_flower_stalk_03",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.0, 0.02500000037252903, 0.05299999937415123], [-0.014999999664723873, 0.0625, 0.5105999708175659], [-0.02954999916255474, 0.09799999743700027, 0.8880000114440918], [-0.029999999329447746, 0.10000000149011612, 1.1100000143051147]]",
+        "radii_m": "[0.012, 0.01, 0.007, 0.0045]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 52,
+      "min_xyz": [
+        -0.03637236729264259,
+        0.014210609719157219,
+        0.05201989412307739
+      ],
+      "max_xyz": [
+        0.0116928955540061,
+        0.10498633980751038,
+        1.110040545463562
+      ],
+      "source_vertices": 28,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "0bee62838cfea89f5b535bff7a3f5c9fc6b38486f1e627e67b301b963ad51cc0",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_01_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.02547600120306015, 0.08805999904870987, 0.7823280096054077], [-0.026435883715748787, 0.1430516242980957, 0.8073279857635498]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.02921643853187561,
+        0.08627475798130035,
+        0.7783452868461609
+      ],
+      "max_xyz": [
+        -0.020876701921224594,
+        0.14424827694892883,
+        0.8099254369735718
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "c4e8b79eb27e9a7363062925b8b456ea29e36ecdfab6b47f105adaa59dd31bc2",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_01_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.026435883715748787, 0.1430516242980957, 0.8043279647827148], [-0.026435883715748787, 0.1430516242980957, 0.8123279809951782], [-0.026435883715748787, 0.1430516242980957, 0.8193280100822449]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        -0.038435883820056915,
+        0.13265931606292725,
+        0.8043279647827148
+      ],
+      "max_xyz": [
+        -0.014435883611440659,
+        0.15344393253326416,
+        0.8193280100822449
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "defb254506c00cbcfb0a7ac944b3bdbd26c93a6c6e58f56ddafbc6e3206510e5",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_01_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.026435883715748787,
+          0.1430516242980957,
+          0.813327968120575
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.045457907021045685,
+        0.1430516242980957,
+        0.813327968120575
+      ],
+      "max_xyz": [
+        -0.008179321885108948,
+        0.1940438598394394,
+        0.8526714444160461
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "fdbf26ccee6e4fbe4db662a07785b89ffe112981c93afb420a63a0b966fc89a1",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_01_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.026435883715748787,
+          0.1430516242980957,
+          0.813327968120575
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.0701514184474945,
+        0.11086009442806244,
+        0.813327968120575
+      ],
+      "max_xyz": [
+        -0.026435883715748787,
+        0.14833413064479828,
+        0.8526714444160461
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "3a7d6a55dd6e34b4062d8c04308f47e5132a8d8e07dcb2eb75a4d6684f11332c",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_01_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.026435883715748787,
+          0.1430516242980957,
+          0.813327968120575
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.026435883715748787,
+        0.11165817826986313,
+        0.813327968120575
+      ],
+      "max_xyz": [
+        0.018169721588492393,
+        0.14881543815135956,
+        0.8526714444160461
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "484961c58e25b036692e686167ba4ad4e1bc0f2c217abf7fa67ba48e9195035b",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_02_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.029631000012159348, 0.09835999459028244, 0.9279600381851196], [-0.07987599819898605, 0.07598947733640671, 0.9529600143432617]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.08133164048194885,
+        0.07347546517848969,
+        0.9239773154258728
+      ],
+      "max_xyz": [
+        -0.02709522284567356,
+        0.1025623008608818,
+        0.9555574655532837
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "d7614552b603d4a9101f2736ec7bd722f3ed4076ad4a3a9481b35d5082c51692",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_02_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.07987599819898605, 0.07598947733640671, 0.9499599933624268], [-0.07987599819898605, 0.07598947733640671, 0.9579600095748901], [-0.07987599819898605, 0.07598947733640671, 0.9649600386619568]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        -0.09187600016593933,
+        0.06559717655181885,
+        0.9499599933624268
+      ],
+      "max_xyz": [
+        -0.06787599623203278,
+        0.08638177812099457,
+        0.9649600386619568
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "21a13f1a70386f60b2ac998e65af8ce47e52722c0b0f88deb0f5d445f9873e33",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_02_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.07987599819898605,
+          0.07598947733640671,
+          0.9589599967002869
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.1319480836391449,
+        0.04504803940653801,
+        0.9589599967002869
+      ],
+      "max_xyz": [
+        -0.07987599819898605,
+        0.08305079489946365,
+        0.9983034729957581
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "c7f040a3d705c55a0ee36c282e00aa3adc52a2dd2de1bb991ddbc588715db903",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_02_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.07987599819898605,
+          0.07598947733640671,
+          0.9589599967002869
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.07987599819898605,
+        0.039507631212472916,
+        0.9589599967002869
+      ],
+      "max_xyz": [
+        -0.03376203030347824,
+        0.07940702140331268,
+        0.9983034729957581
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "87484809cb7dad3ecfbb80bc2d540d0ab6eb203e85948aaad30093c781c1de28",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_02_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          -0.07987599819898605,
+          0.07598947733640671,
+          0.9589599967002869
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.0958540141582489,
+        0.07598947733640671,
+        0.9589599967002869
+      ],
+      "max_xyz": [
+        -0.05877399444580078,
+        0.13267722725868225,
+        0.9983034729957581
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "c43977de9c8dff18a1ac8d371e9f101f54f0ba35b292330616294a04c8057fea",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_03_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[-0.029891997575759888, 0.0995199978351593, 1.0567200183868408], [0.0016660578548908234, 0.08987173438072205, 1.081719994544983]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.03283395618200302,
+        0.08700282126665115,
+        1.0532329082489014
+      ],
+      "max_xyz": [
+        0.0033939466811716557,
+        0.10355622321367264,
+        1.0839942693710327
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "2ff1ccb92fc2455cc6cfa484ec8f37112e0a28c252832a4a66750c9bca288aaf",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_03_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.0016660578548908234, 0.08987173438072205, 1.078719973564148], [0.0016660578548908234, 0.08987173438072205, 1.0867199897766113], [0.0016660578548908234, 0.08987173438072205, 1.0937199592590332]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        -0.010333942249417305,
+        0.07947942614555359,
+        1.078719973564148
+      ],
+      "max_xyz": [
+        0.013666057959198952,
+        0.1002640426158905,
+        1.0937199592590332
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "29017a1d9257a8adb7b485057834de8744ddb9a433e706baff796a4d3153ba07",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_03_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.0016660578548908234,
+          0.08987173438072205,
+          1.0877200365066528
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.0016660578548908234,
+        0.06403278559446335,
+        1.0877200365066528
+      ],
+      "max_xyz": [
+        0.050437603145837784,
+        0.10128758102655411,
+        1.127063512802124
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "0c62f63b1890e386c65b753a84da92cbe334105d74d38ab39886f48938374264",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_03_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.0016660578548908234,
+          0.08987173438072205,
+          1.0877200365066528
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.02205691859126091,
+        0.08987173438072205,
+        1.0877200365066528
+      ],
+      "max_xyz": [
+        0.014897216111421585,
+        0.1395646035671234,
+        1.127063512802124
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "5f755657350973c7fda753d5d4f201dbdc4b75b0815128d92eac4521fe5c0645",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_03_cluster_03_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.0016660578548908234,
+          0.08987173438072205,
+          1.0877200365066528
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.037099771201610565,
+        0.05294307321310043,
+        1.0877200365066528
+      ],
+      "max_xyz": [
+        0.002917051315307617,
+        0.09215221554040909,
+        1.127063512802124
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "fab19760e34906697966567e547ccf9c342753cf8082dac980bd7ed444527c82",
+      "modifier_settings": []
+    },
+    {
+      "name": "upright_flower_stalk_04",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.0, 0.02500000037252903, 0.05299999937415123], [0.04500000178813934, -0.004999999888241291, 0.4047999978065491], [0.08865000307559967, -0.034299999475479126, 0.7039999961853027], [0.09000000357627869, -0.03500000014901161, 0.8799999952316284]]",
+        "radii_m": "[0.012, 0.01, 0.007, 0.0045]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 52,
+      "min_xyz": [
+        -0.011605257168412209,
+        -0.04061225429177284,
+        0.05129936337471008
+      ],
+      "max_xyz": [
+        0.0954442247748375,
+        0.036956604570150375,
+        0.8800381422042847
+      ],
+      "source_vertices": 28,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "7414318cd9addc23b774821e4d5fc87cbe972c9594554fc00bf171f0ea01be46",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_01_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.07642800360918045, -0.026095999404788017, 0.6202240586280823], [0.05943206697702408, 0.026212109252810478, 0.6452240347862244]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.0568983219563961,
+        -0.028310082852840424,
+        0.6162413358688354
+      ],
+      "max_xyz": [
+        0.08080286532640457,
+        0.027621448040008545,
+        0.6478214859962463
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "3fe0bcc3b85f960e47d2982b990e881db54c294d8df5930651612b0c3292bf9c",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_01_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.05943206697702408, 0.026212109252810478, 0.6422240138053894], [0.05943206697702408, 0.026212109252810478, 0.6502240300178528], [0.05943206697702408, 0.026212109252810478, 0.6572240591049194]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        0.0474320650100708,
+        0.01581980474293232,
+        0.6422240138053894
+      ],
+      "max_xyz": [
+        0.07143206894397736,
+        0.03660441190004349,
+        0.6572240591049194
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "ed6794d6fb6f40ccb26cc9b3d2cd1a141747ce0871ad2a199312eac33157fffd",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_01_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.05943206697702408,
+          0.026212109252810478,
+          0.6512240171432495
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.03308340162038803,
+        0.026212109252810478,
+        0.6512240171432495
+      ],
+      "max_xyz": [
+        0.07038504630327225,
+        0.0747159942984581,
+        0.6905674934387207
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "69c564c5924c7ad81314f2242aebd02df25fe2ce7c7ac3c7a570469189439650",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_01_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.05943206697702408,
+          0.026212109252810478,
+          0.6512240171432495
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.022991178557276726,
+        -0.012983830645680428,
+        0.6512240171432495
+      ],
+      "max_xyz": [
+        0.061968374997377396,
+        0.02720458060503006,
+        0.6905674934387207
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "09bf10992fc05db35427c5520e8b0c5028d1ef6e5bf07f4c4848f87363f2cad0",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_01_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.05943206697702408,
+          0.026212109252810478,
+          0.6512240171432495
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.05943206697702408,
+        0.0030365996062755585,
+        0.6512240171432495
+      ],
+      "max_xyz": [
+        0.1093175932765007,
+        0.039887361228466034,
+        0.6905674934387207
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "2b15b5688ecb82fb1a24e9da54854db2161621a3a40eaf536b2ca762882a60d0",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_02_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.08889300376176834, -0.034425999969244, 0.7356799840927124], [0.044968053698539734, -0.06752582639455795, 0.7606799602508545]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.04316261038184166,
+        -0.06990329176187515,
+        0.7316972613334656
+      ],
+      "max_xyz": [
+        0.09202619642019272,
+        -0.03075227700173855,
+        0.7632774114608765
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "3194121400aa22ac9c6ed1d31f4f2ae2fd617e3e32021958f0201de969721815",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_02_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.044968053698539734, -0.06752582639455795, 0.7576799392700195], [0.044968053698539734, -0.06752582639455795, 0.7656799554824829], [0.044968053698539734, -0.06752582639455795, 0.7726799845695496]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        0.032968051731586456,
+        -0.07791812717914581,
+        0.7576799392700195
+      ],
+      "max_xyz": [
+        0.05696805566549301,
+        -0.057133521884679794,
+        0.7726799845695496
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "0f2f4487c074771e767829dee0dd2ffc885470b95f052284a363667fdf7dcf2c",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_02_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.044968053698539734,
+          -0.06752582639455795,
+          0.7666799426078796
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        -0.0005541704595088959,
+        -0.10457813739776611,
+        0.7666799426078796
+      ],
+      "max_xyz": [
+        0.044968053698539734,
+        -0.06437346339225769,
+        0.8060234189033508
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "9991c363db241fdc822d85b33ceeac2c1e2fa1ae87b8166e11c7a212ff7a6a6a",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_02_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.044968053698539734,
+          -0.06752582639455795,
+          0.7666799426078796
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.044968053698539734,
+        -0.09794072061777115,
+        0.7666799426078796
+      ],
+      "max_xyz": [
+        0.0974368304014206,
+        -0.05994247645139694,
+        0.8060234189033508
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "62372f6b662b33814dfc759a98e3b3b483669845cac04c61ccf235060a2876a4",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_02_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.044968053698539734,
+          -0.06752582639455795,
+          0.7666799426078796
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.023477861657738686,
+        -0.06752582639455795,
+        0.7666799426078796
+      ],
+      "max_xyz": [
+        0.06048421561717987,
+        -0.010950695723295212,
+        0.8060234189033508
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "b6ee15569cee9ccfa779f4181cb5782ac3813c5c80b1457a3175c6309e4daafe",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_03_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.08967600762844086, -0.034832000732421875, 0.8377599716186523], [0.12249523401260376, -0.03828144073486328, 0.8627599477767944]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.08690010011196136,
+        -0.041265007108449936,
+        0.8342728018760681
+      ],
+      "max_xyz": [
+        0.12411180138587952,
+        -0.030960243195295334,
+        0.8650341629981995
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "99e65c29b5d77aa3196ec0d87beaca0499421139afe9625bff63a47fd7dcb4e1",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_03_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.12249523401260376, -0.03828144073486328, 0.8597599267959595], [0.12249523401260376, -0.03828144073486328, 0.8677599430084229], [0.12249523401260376, -0.03828144073486328, 0.8747599720954895]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        0.11049523204565048,
+        -0.04867374524474144,
+        0.8597599267959595
+      ],
+      "max_xyz": [
+        0.13449522852897644,
+        -0.027889136224985123,
+        0.8747599720954895
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "1ec3210b8ef92921d64b2fe6366fd530bd1baf67ddacf0486696e8bdc8aeaeca",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_03_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.12249523401260376,
+          -0.03828144073486328,
+          0.8687599301338196
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.12249523401260376,
+        -0.0591137558221817,
+        0.8687599301338196
+      ],
+      "max_xyz": [
+        0.173215851187706,
+        -0.02203374169766903,
+        0.9081034064292908
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "8b3ba4b7ec529f1af5a82033c55a2a6dfc7372830b5a06ec0b961ccc9c6e1b99",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_03_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.12249523401260376,
+          -0.03828144073486328,
+          0.8687599301338196
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.09326209127902985,
+        -0.03828144073486328,
+        0.8687599301338196
+      ],
+      "max_xyz": [
+        0.13060593605041504,
+        0.008309375494718552,
+        0.9081034064292908
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "e5cc890b8ebb72ed7072b18e490190f2de8737586d3888032a7499c5578506f4",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_04_cluster_03_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.12249523401260376,
+          -0.03828144073486328,
+          0.8687599301338196
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.0884820818901062,
+        -0.0798029974102974,
+        0.8687599301338196
+      ],
+      "max_xyz": [
+        0.12654758989810944,
+        -0.03828144073486328,
+        0.9081034064292908
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "8a383764b94b7df6342196431e220a993539ed9c87282f1a8d823d3b075a1ec5",
+      "modifier_settings": []
+    },
+    {
+      "name": "upright_flower_stalk_05",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.25, -0.009999999776482582, 0.05299999937415123], [0.25, 0.012500000186264515, 0.4668999910354614], [0.2462500035762787, 0.034299999475479126, 0.8119999766349792], [0.25, 0.03500000014901161, 1.0149999856948853]]",
+        "radii_m": "[0.012, 0.01, 0.007, 0.0045]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 52,
+      "min_xyz": [
+        0.2383008599281311,
+        -0.020795686170458794,
+        0.052348628640174866
+      ],
+      "max_xyz": [
+        0.2616991400718689,
+        0.04129410907626152,
+        1.0150845050811768
+      ],
+      "source_vertices": 28,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "aaf54ec09f13287e3d908c910b221e99f24f3285ddb58934f7daf0eb5cb44ae0",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_01_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.24729999899864197, 0.028195999562740326, 0.7153720259666443], [0.21575328707695007, 0.07324936240911484, 0.7403720021247864]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.21334663033485413,
+        0.025144943967461586,
+        0.7113893032073975
+      ],
+      "max_xyz": [
+        0.2510680854320526,
+        0.07497008889913559,
+        0.7429694533348083
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "3b2fff95a376796dbd8683369ee930a7d94d2b98729843daaf7a3c6a5dd8213d",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_01_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.21575328707695007, 0.07324936240911484, 0.7373719811439514], [0.21575328707695007, 0.07324936240911484, 0.7453719973564148], [0.21575328707695007, 0.07324936240911484, 0.7523720264434814]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        0.2037532925605774,
+        0.06285706162452698,
+        0.7373719811439514
+      ],
+      "max_xyz": [
+        0.22775328159332275,
+        0.0836416631937027,
+        0.7523720264434814
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "ff2bfb2e76154d0590bb65add37b9b0a4ee17dbdd13d425b48ecd6ff7394e8e2",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_01_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.21575328707695007,
+          0.07324936240911484,
+          0.7463719844818115
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.18208415806293488,
+        0.07324936240911484,
+        0.7463719844818115
+      ],
+      "max_xyz": [
+        0.22005444765090942,
+        0.11511490494012833,
+        0.7857154607772827
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "11f11fb885c63f2999e89cf2f5d4edcaf8bfd65fe5633c8e3c3279b20aaa9fb5",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_01_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.21575328707695007,
+          0.07324936240911484,
+          0.7463719844818115
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.18606972694396973,
+        0.027027662843465805,
+        0.7463719844818115
+      ],
+      "max_xyz": [
+        0.22338077425956726,
+        0.07324936240911484,
+        0.7857154607772827
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "cc8a3063e4001c0e827cd58c578acf1f0881c7d1d48e1cc002d0a955f8736957",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_01_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.21575328707695007,
+          0.07324936240911484,
+          0.7463719844818115
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.21575328707695007,
+        0.05658949911594391,
+        0.7463719844818115
+      ],
+      "max_xyz": [
+        0.2665592133998871,
+        0.09373188018798828,
+        0.7857154607772827
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "b614990d8c3fb20da904545ac726c3e71b3aeb74a3e0b11f35784dffc1ca165e",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_02_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.2469249963760376, 0.034425999969244, 0.8485399484634399], [0.21157167851924896, -0.007706444710493088, 0.873539924621582]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.2092735469341278,
+        -0.009825491346418858,
+        0.8445572257041931
+      ],
+      "max_xyz": [
+        0.25049498677253723,
+        0.037382822483778,
+        0.876137375831604
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "b05ba1d12a3f800e9036e114a00a2491a7667e5e8f940a52a9863918343ee96f",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_02_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.21157167851924896, -0.007706444710493088, 0.8705399036407471], [0.21157167851924896, -0.007706444710493088, 0.8785399198532104], [0.21157167851924896, -0.007706444710493088, 0.8855399489402771]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        0.19957168400287628,
+        -0.018098749220371246,
+        0.8705399036407471
+      ],
+      "max_xyz": [
+        0.22357167303562164,
+        0.002685859799385071,
+        0.8855399489402771
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "3e49ea9b42b4b5ee36080d34ca18260c061ed6f241d96322429aaeea7e6d8cc0",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_02_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.21157167851924896,
+          -0.007706444710493088,
+          0.8795399069786072
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.1727069914340973,
+        -0.05181734263896942,
+        0.8795399069786072
+      ],
+      "max_xyz": [
+        0.21392303705215454,
+        -0.007706444710493088,
+        0.9188833832740784
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "59e01712464b9e37009850fd3313b25a4830a37c3d20253e12fe10e294c482c7",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_02_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.21157167851924896,
+          -0.007706444710493088,
+          0.8795399069786072
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.21157167851924896,
+        -0.030495330691337585,
+        0.8795399069786072
+      ],
+      "max_xyz": [
+        0.2677057087421417,
+        0.006396353244781494,
+        0.9188833832740784
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "fe24fdea0cfb67c20fb498f4ed6e1779974cf01263794a1e3e80df32240fe26a",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_02_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.21157167851924896,
+          -0.007706444710493088,
+          0.8795399069786072
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.1827913373708725,
+        -0.007706444710493088,
+        0.8795399069786072
+      ],
+      "max_xyz": [
+        0.22070664167404175,
+        0.045856036245822906,
+        0.9188833832740784
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "4ae435a9caaa0a1a08451afbc9c4c8e15bc8c90d6317163f5d150a2bf2e638a1",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_03_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.249099999666214, 0.034832000732421875, 0.9662799835205078], [0.2819744348526001, 0.03770814090967178, 0.9912799596786499]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.24659214913845062,
+        0.03024950437247753,
+        0.9627928137779236
+      ],
+      "max_xyz": [
+        0.2837715744972229,
+        0.040218763053417206,
+        0.9935541749000549
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "def7640aa6b31b1b6ac3bd9318e3dfd3cf9a2cee6d5c560de16d6696412536a0",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_03_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.2819744348526001, 0.03770814090967178, 0.9882799386978149], [0.2819744348526001, 0.03770814090967178, 0.9962799549102783], [0.2819744348526001, 0.03770814090967178, 1.0032799243927002]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        0.2699744403362274,
+        0.027315836399793625,
+        0.9882799386978149
+      ],
+      "max_xyz": [
+        0.2939744293689728,
+        0.04810044541954994,
+        1.0032799243927002
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "aa1e58a759c37fc4244b693d8dd2c961ea5280451669487585573c40d2ecf4a1",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_03_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.2819744348526001,
+          0.03770814090967178,
+          0.997279942035675
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.2819744348526001,
+        0.021048275753855705,
+        0.997279942035675
+      ],
+      "max_xyz": [
+        0.3327803611755371,
+        0.05819065868854523,
+        1.0366233587265015
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "6b271722961d535a312a592561e89b9bc74e8989d77603d1efb59e9a9d34eeeb",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_03_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.2819744348526001,
+          0.03770814090967178,
+          0.997279942035675
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.2483053207397461,
+        0.03770814090967178,
+        0.997279942035675
+      ],
+      "max_xyz": [
+        0.28627556562423706,
+        0.07957368344068527,
+        1.0366233587265015
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "775c4b8151688c289e64c4ce1616978c6803f35d4e5895a43cf79a2e1e06a605",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_05_cluster_03_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.2819744348526001,
+          0.03770814090967178,
+          0.997279942035675
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.25229087471961975,
+        -0.00851355865597725,
+        0.997279942035675
+      ],
+      "max_xyz": [
+        0.2896019220352173,
+        0.03770814090967178,
+        1.0366233587265015
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "f46e02f8847bdd50a0c6a7e126e2f8e1da2e8a3b1fa6e68e40cd98a961340d4a",
+      "modifier_settings": []
+    },
+    {
+      "name": "upright_flower_stalk_06",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.25, -0.009999999776482582, 0.05299999937415123], [0.32499998807907104, -0.009999999776482582, 0.3587999939918518], [0.39399999380111694, -0.009800000116229057, 0.6240000128746033], [0.4000000059604645, -0.009999999776482582, 0.7799999713897705]]",
+        "radii_m": "[0.012, 0.01, 0.007, 0.0045]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 52,
+      "min_xyz": [
+        0.23863761126995087,
+        -0.020811624825000763,
+        0.0502132773399353
+      ],
+      "max_xyz": [
+        0.40438392758369446,
+        0.0020000003278255463,
+        0.780167281627655
+      ],
+      "source_vertices": 28,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "0ca2d5640b133b6180538615383f0ae0ec9e516441c1544ef73fa8c41712730e",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_01_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.3746799826622009, -0.009855999611318111, 0.5497440099716187], [0.33133938908576965, 0.024005383253097534, 0.5747439861297607]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.3292701542377472,
+        -0.013477394357323647,
+        0.5457612872123718
+      ],
+      "max_xyz": [
+        0.37751203775405884,
+        0.02636941522359848,
+        0.5773414373397827
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "7fb78a9960e6ba0dd3af4e59916e88b1a02c489f6a168ab3339532b5920c744c",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_01_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.33133938908576965, 0.024005383253097534, 0.5717439651489258], [0.33133938908576965, 0.024005383253097534, 0.5797439813613892], [0.33133938908576965, 0.024005383253097534, 0.5867440104484558]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        0.319339394569397,
+        0.013613078743219376,
+        0.5717439651489258
+      ],
+      "max_xyz": [
+        0.34333938360214233,
+        0.03439768776297569,
+        0.5867440104484558
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "e94b39b15f96f0759d2124a079a49723097454997d0da4e9fe04248fd117a1c0",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_01_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.33133938908576965,
+          0.024005383253097534,
+          0.5807439684867859
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.29054364562034607,
+        0.020454254001379013,
+        0.5807439684867859
+      ],
+      "max_xyz": [
+        0.33133938908576965,
+        0.058675408363342285,
+        0.6200874447822571
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "9f5eab18b77eb560810880d768453f05424290fc18acdc399d46ef03142880f3",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_01_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.33133938908576965,
+          0.024005383253097534,
+          0.5807439684867859
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.3098266124725342,
+        -0.02649828791618347,
+        0.5807439684867859
+      ],
+      "max_xyz": [
+        0.3467480540275574,
+        0.024005383253097534,
+        0.6200874447822571
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "49217d36106fa1ef8a0704ede8607e951c4020b29a3fce70be1ec4e4e56da101",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_01_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.33133938908576965,
+          0.024005383253097534,
+          0.5807439684867859
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.33133938908576965,
+        0.014935821294784546,
+        0.5807439684867859
+      ],
+      "max_xyz": [
+        0.378625750541687,
+        0.05231112986803055,
+        0.6200874447822571
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "196e2fdc33e0f9992f45a4d7e75ed31c187da4739f65591ccca61a2f91bc2ba0",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_02_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.39508000016212463, -0.009835999459028244, 0.6520799994468689], [0.37011051177978516, -0.05884135887026787, 0.677079975605011]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.367437481880188,
+        -0.060593366622924805,
+        0.6480972766876221
+      ],
+      "max_xyz": [
+        0.39890381693840027,
+        -0.00757764745503664,
+        0.679677426815033
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "768c3dc4f851316c7d75f976aee81dfce3e1631356159b10772b8607470e6fb3",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_02_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.37011051177978516, -0.05884135887026787, 0.674079954624176], [0.37011051177978516, -0.05884135887026787, 0.6820799708366394], [0.37011051177978516, -0.05884135887026787, 0.689079999923706]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        0.3581105172634125,
+        -0.06923366338014603,
+        0.674079954624176
+      ],
+      "max_xyz": [
+        0.38211050629615784,
+        -0.04844905436038971,
+        0.689079999923706
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "147bcdf85121acaeb3a8d7c6bc1757bcdfb3f74ee21e747dde7260c832b0a2be",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_02_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.37011051177978516,
+          -0.05884135887026787,
+          0.6830799579620361
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.33764663338661194,
+        -0.10962872952222824,
+        0.6830799579620361
+      ],
+      "max_xyz": [
+        0.3758583068847656,
+        -0.05884135887026787,
+        0.7224234342575073
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "e8be5adc56f3775f6503637a67cc733a216ec37f95edc256edc30b6622a21079",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_02_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.37011051177978516,
+          -0.05884135887026787,
+          0.6830799579620361
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.37011051177978516,
+        -0.07617518305778503,
+        0.6830799579620361
+      ],
+      "max_xyz": [
+        0.42703238129615784,
+        -0.03894202038645744,
+        0.7224234342575073
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "04ef4a7c57274ea5e2c5e8b32401ce35e2bea8cf4bdc3d1211edb70a7fbc9b05",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_02_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.37011051177978516,
+          -0.05884135887026787,
+          0.6830799579620361
+        ],
+        "shape_controls": "{\"length\": 0.057, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.33487263321876526,
+        -0.05884135887026787,
+        0.6830799579620361
+      ],
+      "max_xyz": [
+        0.3743170499801636,
+        -0.011037137359380722,
+        0.7224234342575073
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "88a8a625376b9c0c587822af47f5cf840056ab2ead0b7ade2b1502e749821414",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_03_pedicel",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.3985599875450134, -0.0099519994109869, 0.7425599694252014], [0.4302816390991211, -0.0008559664711356163, 0.7675599455833435]]",
+        "radii_m": "[0.0046, 0.003]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.39596474170684814,
+        -0.01437380351126194,
+        0.7390727996826172
+      ],
+      "max_xyz": [
+        0.4321933388710022,
+        0.0017705673817545176,
+        0.7698341608047485
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "51b0c945b42586af05a6f3923cbd9eb0c5cb58963e47a849394a8c36b87d7c1b",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_03_pedicel_calyx",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_leaf_olive",
+        "surface_kind": "closed_support",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "only_when_listed_in_collision_proposal",
+        "centerline_source_m": "[[0.4302816390991211, -0.0008559664711356163, 0.7645599246025085], [0.4302816390991211, -0.0008559664711356163, 0.7725599408149719], [0.4302816390991211, -0.0008559664711356163, 0.7795599699020386]]",
+        "radii_m": "[0.004, 0.012, 0.008]"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 32,
+      "min_xyz": [
+        0.4182816445827484,
+        -0.011248270981013775,
+        0.7645599246025085
+      ],
+      "max_xyz": [
+        0.4422816336154938,
+        0.009536338038742542,
+        0.7795599699020386
+      ],
+      "source_vertices": 18,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_leaf_olive"
+      ],
+      "editable_mesh_sha256": "ce6c604bbe9cd9381fb594a9805c30b88495723f12d4f45ccf03db2864511c0e",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_03_folded_petal_1",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.4302816390991211,
+          -0.0008559664711356163,
+          0.7735599279403687
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.4302816390991211,
+        -0.01273120567202568,
+        0.7735599279403687
+      ],
+      "max_xyz": [
+        0.4793059825897217,
+        0.024465400725603104,
+        0.8129034042358398
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "6a38f548ab008ac1a87189ce110433602cfdab086e01da5597b472916481d339",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_03_folded_petal_2",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.4302816390991211,
+          -0.0008559664711356163,
+          0.7735599279403687
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.39195773005485535,
+        -0.0028799204155802727,
+        0.7735599279403687
+      ],
+      "max_xyz": [
+        0.4317907691001892,
+        0.036549217998981476,
+        0.8129034042358398
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "b8c482b1e7bb306a2799089f4814287a2482d0f4811bbaf0da476e513f455c30",
+      "modifier_settings": []
+    },
+    {
+      "name": "stalk_06_cluster_03_folded_petal_3",
+      "type": "MESH",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "botanical_flower",
+        "surface_kind": "open_folded_surface",
+        "provenance": "Original deterministic script-assisted design",
+        "collision_treatment": "decorative_noncolliding",
+        "leaf_base_source_m": [
+          0.4302816390991211,
+          -0.0008559664711356163,
+          0.7735599279403687
+        ],
+        "shape_controls": "{\"length\": 0.051, \"width\": 0.038, \"rise\": 0.025, \"arch\": 0.017, \"fold\": 0.01}"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 16,
+      "min_xyz": [
+        0.4060184061527252,
+        -0.05034104734659195,
+        0.7735599279403687
+      ],
+      "max_xyz": [
+        0.4430646598339081,
+        -0.0008559664711356163,
+        0.8129034042358398
+      ],
+      "source_vertices": 14,
+      "uv_layers": [
+        "botanical_shape_uv"
+      ],
+      "materials": [
+        "ASTRAEA_botanical_flower"
+      ],
+      "editable_mesh_sha256": "da1374a686b5bca9e7c8f134badf912112caad7b748f865eba1c98b24ba2a592",
+      "modifier_settings": []
+    },
+    {
+      "name": "SOIL_ORIGIN",
+      "type": "EMPTY",
+      "parent": "AST-BOT-009",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "placement_origin",
+        "physical_part": "",
+        "source_position_m": [
+          0,
+          0,
+          0
+        ],
+        "gltf_position_m": [
+          0,
+          0,
+          0
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    }
+  ],
+  "used_materials": [
+    {
+      "name": "ASTRAEA_botanical_bark",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "botanical_bark.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.9100000262260437,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_botanical_flower",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "botanical_flower.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.7900000214576721,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_botanical_leaf_jade",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "botanical_leaf_jade.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.699999988079071,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_botanical_leaf_olive",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "botanical_leaf_olive.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.75,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_botanical_leaf_sage",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "botanical_leaf_sage.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.7699999809265137,
+          "Alpha": 1.0
+        }
+      ]
+    }
+  ],
+  "used_images": [
+    {
+      "name": "botanical_bark.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/botanical/botanical_bark.png",
+      "packed": true,
+      "packed_sha256": "b6c9e4f38812b846b07867bb676f3b29aadc37049846bac0c786cb87cce96447"
+    },
+    {
+      "name": "botanical_flower.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/botanical/botanical_flower.png",
+      "packed": true,
+      "packed_sha256": "f0c7e510dc566f8c490276c096e317c834f2f436d063d9ee796e076db8086fe9"
+    },
+    {
+      "name": "botanical_leaf_jade.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/botanical/botanical_leaf_jade.png",
+      "packed": true,
+      "packed_sha256": "77c09ec24712b7210f37e98ad56880d24a1d61f8d6656d0d4ca6ae557e6ee2dd"
+    },
+    {
+      "name": "botanical_leaf_olive.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/botanical/botanical_leaf_olive.png",
+      "packed": true,
+      "packed_sha256": "8bc512d3b26c3f8874359580f1a31402f8fc4012918faa7ce0fea8d8cf3a22a6"
+    },
+    {
+      "name": "botanical_leaf_sage.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/botanical/botanical_leaf_sage.png",
+      "packed": true,
+      "packed_sha256": "3f7609039b41a386a769a44c6de953153b8fea61f3c1c1db186103bfddc04026"
+    }
+  ],
+  "load_success": true,
+  "unused_images": [
+    "botanical_soil.png",
+    "Render Result"
+  ],
+  "bounds_min_m": [
+    -0.5114024877548218,
+    -0.2505905032157898,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.48482775688171387,
+    0.23384959995746613,
+    1.127063512802124
+  ],
+  "dimensions_m": [
+    0.9962302446365356,
+    0.4844401031732559,
+    1.127063512802124
+  ],
+  "evaluated_triangles": 2448,
+  "source_unchanged_after_load": true,
+  "geometry_cache": "qa/batch13/independent_source_geometry_AST-BOT-009.npz"
+}

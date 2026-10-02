@@ -1,7 +1,7 @@
 {
-  "revision": "astraea-catalogue-interfaces-05",
-  "status": "current_component_consumer_index_not_engine_acceptance",
-  "unique_assets": 65,
+  "revision": "astraea-catalogue-interfaces-06-proposed",
+  "status": "proposed_component_consumer_index_not_engine_acceptance",
+  "unique_assets": 69,
   "semantic_rules": [
     "Exact existing source/export/manifest hashes bind every row.",
     "Metadata records map existing points and behavior only. No nonexistent point/trajectory is invented.",
@@ -17002,18 +17002,1598 @@
       "findings": [],
       "exact_record_inventory_pointer": "qa/batch12/independent_interface_coverage_map.json#/assets/3",
       "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-BOT-007",
+      "family": "botanical_cluster",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/botanical_cluster/source/AST-BOT-007.blend",
+          "sha256": "399d43bf77e06a59773965cac24f779c46a1e9458a993a392ae0244750b3bd82",
+          "bytes": 174245
+        },
+        "export": {
+          "path": "assets/botanical_cluster/exports/AST-BOT-007.glb",
+          "sha256": "467d00e588c9de6a08222d265bc0e5801fd2d9f2a1e8a932c0ce50dfeb0987d5",
+          "bytes": 127840
+        },
+        "manifest": {
+          "path": "assets/botanical_cluster/AST-BOT-007.manifest.json",
+          "sha256": "5860e8027f33838473b25ef911804b62f280521fd5c5816dad0704483ed49646",
+          "bytes": 17785
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/botanical_cluster/AST-BOT-007.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Soil-plane source origin; root physical contact is distinct from the placement datum. Trailing negativeZ is intentional.",
+        "actual_native_root_nodes": [
+          {
+            "index": 6,
+            "name": "AST-BOT-007",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-007.manifest.json#/physical_and_proposal_markers",
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender X right/along edge, Y rear, Z up; front−Y",
+        "exchange": "Native glTF Y-up; front+Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Read actual exported hierarchy before placement; never basis-convert native coordinates twice.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "physical_surfaces_independently_witnessed",
+        "meaning": "Physical source/native outward normals are checked against real triangles. Proposed plant positions, approach directions and eyes remain geometric proposals.",
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-007.manifest.json#/physical_and_proposal_markers",
+          "qa/batch13/independent_botanical_cluster_interfaces.json",
+          "qa/batch13/independent_assembly_geometry_review.json"
+        ],
+        "omission_assessment": "No missing host coordinates, recovered courtyard, actor controls, irrigation, wind, root growth or structural loads are invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Three joined stem supports with nine intentional pleated fans. Actual lowest foliage1.23m above soil; no universal headroom. Roots below soil are unmodelled.",
+        "native_physical_surface_witness_count": 1,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-007.manifest.json#/physical_and_proposal_markers",
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ],
+        "limit": "Component geometry only; spatial soil reservations are not long-term viability or load certification."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Static role-consolidated export; semantic authoring parts remain editable in source. No wind or individual leaf behavior.",
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-007.manifest.json",
+          "qa/batch13/independent_export_AST-BOT-007.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "reviewer_fresh_source_only_rebuild_and_embedded_native_roles_checked",
+        "actual_material_roles": [
+          "botanical_bark",
+          "botanical_leaf_jade",
+          "botanical_leaf_olive",
+          "botanical_leaf_sage"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/botanical_cluster/source/build_botanical_cluster.py",
+            "sha256": "01d89a0b367137f182eefa706ec6192933be5d0c2b9953f038e03af90232df17",
+            "bytes": 20255
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/botanical_cluster/source/build_botanical_cluster.py",
+            "sha256": "01d89a0b367137f182eefa706ec6192933be5d0c2b9953f038e03af90232df17",
+            "bytes": 20255
+          },
+          {
+            "path": "materials/botanical/botanical_bark.png",
+            "sha256": "b6c9e4f38812b846b07867bb676f3b29aadc37049846bac0c786cb87cce96447",
+            "bytes": 11164
+          },
+          {
+            "path": "materials/botanical/botanical_flower.png",
+            "sha256": "f0c7e510dc566f8c490276c096e317c834f2f436d063d9ee796e076db8086fe9",
+            "bytes": 6128
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_jade.png",
+            "sha256": "77c09ec24712b7210f37e98ad56880d24a1d61f8d6656d0d4ca6ae557e6ee2dd",
+            "bytes": 12136
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_olive.png",
+            "sha256": "8bc512d3b26c3f8874359580f1a31402f8fc4012918faa7ce0fea8d8cf3a22a6",
+            "bytes": 12134
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_sage.png",
+            "sha256": "3f7609039b41a386a769a44c6de953153b8fea61f3c1c1db186103bfddc04026",
+            "bytes": 12134
+          },
+          {
+            "path": "materials/botanical/botanical_soil.png",
+            "sha256": "ff0651486bc63ba9aab69a344167f936f8e16eae76de7720d6b81e27b9833165",
+            "bytes": 12401
+          },
+          {
+            "path": "materials/botanical/manifest.json",
+            "sha256": "fb8c58cdc8d70d7b9b932780bf9ca19d55975fd1fea2d47e6bdc6a13049f8630",
+            "bytes": 2836
+          },
+          {
+            "path": "standards/botanical_materials.py",
+            "sha256": "d06b19d91cd5c1d18fe2e7e1b32b86e855bab5993872dbad9865248017e24ea7",
+            "bytes": 1482
+          }
+        ],
+        "evidence": [
+          "qa/batch13/independent_rebuild_receipts.json"
+        ],
+        "limit": "All helper-loaded original role maps are included, including roles unused by this export. Python-open observations and actual Blender-loaded images are bound; OS syscall tracing was unavailable."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 1130,
+        "mesh_nodes": 4,
+        "primitives": 4,
+        "materials": 4,
+        "double_sided_materials": 3,
+        "double_sided_triangle_count": 882,
+        "alpha_materials": 0,
+        "native_animations": 0,
+        "native_skins": 0,
+        "glb_bytes": 127840,
+        "evidence": [
+          "qa/batch13/independent_botanical_cluster_interfaces.json",
+          "qa/batch13/independent_export_AST-BOT-007.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_component_geometry_proposal",
+        "shape_count": 11,
+        "sampled_max_external_inflation_m": 0.0004732354759311431,
+        "evidence": [
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ],
+        "limits": "Fine foliage is deliberately noncolliding; no enclosing crown hull. Profile errors are finite samples, not continuous-distance certificates.010 has documented19.543mm sampled support overreach and0.301mm sampled rear-loft underreach; cavities and useful empty boxes independently pass."
+      },
+      "existing_independent_evidence": [
+        "qa/batch13/independent_botanical_cluster_interfaces.json",
+        "qa/batch13/independent_assembly_geometry_review.json",
+        "qa/batch13/independent_source_native_corner_comparison.json",
+        "qa/batch13/independent_source_AST-BOT-007.json",
+        "qa/batch13/independent_export_AST-BOT-007.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch13/independent_interface_coverage_map.json#/assets/0",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-BOT-008",
+      "family": "botanical_cluster",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/botanical_cluster/source/AST-BOT-008.blend",
+          "sha256": "1affa4ad3f08255968e489eedc3f29231fbb0b3aa112215885c7c392aadcf00e",
+          "bytes": 187414
+        },
+        "export": {
+          "path": "assets/botanical_cluster/exports/AST-BOT-008.glb",
+          "sha256": "214e17b893803203561a5944bca6ed9bb9dbeb51d371c83dbc7ceb23317d5efd",
+          "bytes": 145068
+        },
+        "manifest": {
+          "path": "assets/botanical_cluster/AST-BOT-008.manifest.json",
+          "sha256": "14efc075f56f5b2fa822ff23d4421a1263364271388ea64ef71f5c9122591397",
+          "bytes": 45575
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/botanical_cluster/AST-BOT-008.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Soil-plane source origin; root physical contact is distinct from the placement datum. Trailing negativeZ is intentional.",
+        "actual_native_root_nodes": [
+          {
+            "index": 7,
+            "name": "AST-BOT-008",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-008.manifest.json#/physical_and_proposal_markers",
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender X right/along edge, Y rear, Z up; front−Y",
+        "exchange": "Native glTF Y-up; front+Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Read actual exported hierarchy before placement; never basis-convert native coordinates twice.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "physical_surfaces_independently_witnessed",
+        "meaning": "Physical source/native outward normals are checked against real triangles. Proposed plant positions, approach directions and eyes remain geometric proposals.",
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-008.manifest.json#/physical_and_proposal_markers",
+          "qa/batch13/independent_botanical_cluster_interfaces.json",
+          "qa/batch13/independent_assembly_geometry_review.json"
+        ],
+        "omission_assessment": "No missing host coordinates, recovered courtyard, actor controls, irrigation, wind, root growth or structural loads are invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Five unequal rearward trailing stems with real root chain and deliberate negative-Z tail envelope. Actual proposed rear-coping crossing is screened separately. Fine stems/leaves outside the basal proposal are decorative/noncolliding.",
+        "native_physical_surface_witness_count": 1,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-008.manifest.json#/physical_and_proposal_markers",
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ],
+        "limit": "Component geometry only; spatial soil reservations are not long-term viability or load certification."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Static role-consolidated export; semantic authoring parts remain editable in source. No wind or individual leaf behavior.",
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-008.manifest.json",
+          "qa/batch13/independent_export_AST-BOT-008.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "reviewer_fresh_source_only_rebuild_and_embedded_native_roles_checked",
+        "actual_material_roles": [
+          "botanical_bark",
+          "botanical_leaf_jade",
+          "botanical_leaf_olive",
+          "botanical_leaf_sage"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/botanical_cluster/source/build_botanical_cluster.py",
+            "sha256": "01d89a0b367137f182eefa706ec6192933be5d0c2b9953f038e03af90232df17",
+            "bytes": 20255
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/botanical_cluster/source/build_botanical_cluster.py",
+            "sha256": "01d89a0b367137f182eefa706ec6192933be5d0c2b9953f038e03af90232df17",
+            "bytes": 20255
+          },
+          {
+            "path": "materials/botanical/botanical_bark.png",
+            "sha256": "b6c9e4f38812b846b07867bb676f3b29aadc37049846bac0c786cb87cce96447",
+            "bytes": 11164
+          },
+          {
+            "path": "materials/botanical/botanical_flower.png",
+            "sha256": "f0c7e510dc566f8c490276c096e317c834f2f436d063d9ee796e076db8086fe9",
+            "bytes": 6128
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_jade.png",
+            "sha256": "77c09ec24712b7210f37e98ad56880d24a1d61f8d6656d0d4ca6ae557e6ee2dd",
+            "bytes": 12136
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_olive.png",
+            "sha256": "8bc512d3b26c3f8874359580f1a31402f8fc4012918faa7ce0fea8d8cf3a22a6",
+            "bytes": 12134
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_sage.png",
+            "sha256": "3f7609039b41a386a769a44c6de953153b8fea61f3c1c1db186103bfddc04026",
+            "bytes": 12134
+          },
+          {
+            "path": "materials/botanical/botanical_soil.png",
+            "sha256": "ff0651486bc63ba9aab69a344167f936f8e16eae76de7720d6b81e27b9833165",
+            "bytes": 12401
+          },
+          {
+            "path": "materials/botanical/manifest.json",
+            "sha256": "fb8c58cdc8d70d7b9b932780bf9ca19d55975fd1fea2d47e6bdc6a13049f8630",
+            "bytes": 2836
+          },
+          {
+            "path": "standards/botanical_materials.py",
+            "sha256": "d06b19d91cd5c1d18fe2e7e1b32b86e855bab5993872dbad9865248017e24ea7",
+            "bytes": 1482
+          }
+        ],
+        "evidence": [
+          "qa/batch13/independent_rebuild_receipts.json"
+        ],
+        "limit": "All helper-loaded original role maps are included, including roles unused by this export. Python-open observations and actual Blender-loaded images are bound; OS syscall tracing was unavailable."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 1256,
+        "mesh_nodes": 4,
+        "primitives": 4,
+        "materials": 4,
+        "double_sided_materials": 3,
+        "double_sided_triangle_count": 1200,
+        "alpha_materials": 0,
+        "native_animations": 0,
+        "native_skins": 0,
+        "glb_bytes": 145068,
+        "evidence": [
+          "qa/batch13/independent_botanical_cluster_interfaces.json",
+          "qa/batch13/independent_export_AST-BOT-008.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_component_geometry_proposal",
+        "shape_count": 2,
+        "sampled_max_external_inflation_m": 1.8586074697909483e-09,
+        "evidence": [
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ],
+        "limits": "Fine foliage is deliberately noncolliding; no enclosing crown hull. Profile errors are finite samples, not continuous-distance certificates.010 has documented19.543mm sampled support overreach and0.301mm sampled rear-loft underreach; cavities and useful empty boxes independently pass."
+      },
+      "existing_independent_evidence": [
+        "qa/batch13/independent_botanical_cluster_interfaces.json",
+        "qa/batch13/independent_assembly_geometry_review.json",
+        "qa/batch13/independent_source_native_corner_comparison.json",
+        "qa/batch13/independent_source_AST-BOT-008.json",
+        "qa/batch13/independent_export_AST-BOT-008.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch13/independent_interface_coverage_map.json#/assets/1",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-BOT-009",
+      "family": "botanical_cluster",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/botanical_cluster/source/AST-BOT-009.blend",
+          "sha256": "a092778c443093d193723213bf4b698ed8b46c2b5a91334301e4d45ca9a25a09",
+          "bytes": 217230
+        },
+        "export": {
+          "path": "assets/botanical_cluster/exports/AST-BOT-009.glb",
+          "sha256": "670572ef5806228d91d6eb1ded84cac29fa1c3029b535378af4d0b0d0032d3ad",
+          "bytes": 241600
+        },
+        "manifest": {
+          "path": "assets/botanical_cluster/AST-BOT-009.manifest.json",
+          "sha256": "5ac45980453d63e48e51f180fac98c03fcd19530de0368026fc56f0ba814530d",
+          "bytes": 85992
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/botanical_cluster/AST-BOT-009.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Soil-plane source origin; root physical contact is distinct from the placement datum. Trailing negativeZ is intentional.",
+        "actual_native_root_nodes": [
+          {
+            "index": 9,
+            "name": "AST-BOT-009",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-009.manifest.json#/physical_and_proposal_markers",
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender X right/along edge, Y rear, Z up; front−Y",
+        "exchange": "Native glTF Y-up; front+Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Read actual exported hierarchy before placement; never basis-convert native coordinates twice.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "physical_surfaces_independently_witnessed",
+        "meaning": "Physical source/native outward normals are checked against real triangles. Proposed plant positions, approach directions and eyes remain geometric proposals.",
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-009.manifest.json#/physical_and_proposal_markers",
+          "qa/batch13/independent_botanical_cluster_interfaces.json",
+          "qa/batch13/independent_assembly_geometry_review.json"
+        ],
+        "omission_assessment": "No missing host coordinates, recovered courtyard, actor controls, irrigation, wind, root growth or structural loads are invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Three independently rooted basal clumps support six upright flowering stems and folded straps. Each soil root has an actual physical contact and attached geometry graph; no artificial connecting bar remains.",
+        "native_physical_surface_witness_count": 3,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-009.manifest.json#/physical_and_proposal_markers",
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ],
+        "limit": "Component geometry only; spatial soil reservations are not long-term viability or load certification."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Static role-consolidated export; semantic authoring parts remain editable in source. No wind or individual leaf behavior.",
+        "evidence": [
+          "assets/botanical_cluster/AST-BOT-009.manifest.json",
+          "qa/batch13/independent_export_AST-BOT-009.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "reviewer_fresh_source_only_rebuild_and_embedded_native_roles_checked",
+        "actual_material_roles": [
+          "botanical_bark",
+          "botanical_flower",
+          "botanical_leaf_jade",
+          "botanical_leaf_olive",
+          "botanical_leaf_sage"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/botanical_cluster/source/build_botanical_cluster.py",
+            "sha256": "01d89a0b367137f182eefa706ec6192933be5d0c2b9953f038e03af90232df17",
+            "bytes": 20255
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/botanical_cluster/source/build_botanical_cluster.py",
+            "sha256": "01d89a0b367137f182eefa706ec6192933be5d0c2b9953f038e03af90232df17",
+            "bytes": 20255
+          },
+          {
+            "path": "materials/botanical/botanical_bark.png",
+            "sha256": "b6c9e4f38812b846b07867bb676f3b29aadc37049846bac0c786cb87cce96447",
+            "bytes": 11164
+          },
+          {
+            "path": "materials/botanical/botanical_flower.png",
+            "sha256": "f0c7e510dc566f8c490276c096e317c834f2f436d063d9ee796e076db8086fe9",
+            "bytes": 6128
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_jade.png",
+            "sha256": "77c09ec24712b7210f37e98ad56880d24a1d61f8d6656d0d4ca6ae557e6ee2dd",
+            "bytes": 12136
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_olive.png",
+            "sha256": "8bc512d3b26c3f8874359580f1a31402f8fc4012918faa7ce0fea8d8cf3a22a6",
+            "bytes": 12134
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_sage.png",
+            "sha256": "3f7609039b41a386a769a44c6de953153b8fea61f3c1c1db186103bfddc04026",
+            "bytes": 12134
+          },
+          {
+            "path": "materials/botanical/botanical_soil.png",
+            "sha256": "ff0651486bc63ba9aab69a344167f936f8e16eae76de7720d6b81e27b9833165",
+            "bytes": 12401
+          },
+          {
+            "path": "materials/botanical/manifest.json",
+            "sha256": "fb8c58cdc8d70d7b9b932780bf9ca19d55975fd1fea2d47e6bdc6a13049f8630",
+            "bytes": 2836
+          },
+          {
+            "path": "standards/botanical_materials.py",
+            "sha256": "d06b19d91cd5c1d18fe2e7e1b32b86e855bab5993872dbad9865248017e24ea7",
+            "bytes": 1482
+          }
+        ],
+        "evidence": [
+          "qa/batch13/independent_rebuild_receipts.json"
+        ],
+        "limit": "All helper-loaded original role maps are included, including roles unused by this export. Python-open observations and actual Blender-loaded images are bound; OS syscall tracing was unavailable."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 2448,
+        "mesh_nodes": 5,
+        "primitives": 5,
+        "materials": 5,
+        "double_sided_materials": 4,
+        "double_sided_triangle_count": 2280,
+        "alpha_materials": 0,
+        "native_animations": 0,
+        "native_skins": 0,
+        "glb_bytes": 241600,
+        "evidence": [
+          "qa/batch13/independent_botanical_cluster_interfaces.json",
+          "qa/batch13/independent_export_AST-BOT-009.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_component_geometry_proposal",
+        "shape_count": 6,
+        "sampled_max_external_inflation_m": 6.113083609680924e-09,
+        "evidence": [
+          "qa/batch13/independent_botanical_cluster_interfaces.json"
+        ],
+        "limits": "Fine foliage is deliberately noncolliding; no enclosing crown hull. Profile errors are finite samples, not continuous-distance certificates.010 has documented19.543mm sampled support overreach and0.301mm sampled rear-loft underreach; cavities and useful empty boxes independently pass."
+      },
+      "existing_independent_evidence": [
+        "qa/batch13/independent_botanical_cluster_interfaces.json",
+        "qa/batch13/independent_assembly_geometry_review.json",
+        "qa/batch13/independent_source_native_corner_comparison.json",
+        "qa/batch13/independent_source_AST-BOT-009.json",
+        "qa/batch13/independent_export_AST-BOT-009.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch13/independent_interface_coverage_map.json#/assets/2",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-BOT-010",
+      "family": "botanical_transition",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/botanical_transition/source/AST-BOT-010.blend",
+          "sha256": "7bbadd270846fe67029800660b93e23a7d2396ce83745bdd3bdc48ab41a882f3",
+          "bytes": 254513
+        },
+        "export": {
+          "path": "assets/botanical_transition/exports/AST-BOT-010.glb",
+          "sha256": "57b4be033ffbb6d3ccff8b9bb7663dfb5d7d6e7dd497625aae3b3ff6a79fae11",
+          "bytes": 182608
+        },
+        "manifest": {
+          "path": "assets/botanical_transition/AST-BOT-010.manifest.json",
+          "sha256": "1509b95881674156d70230c0568b03dc9a9c2a2bf46d0c767d6b64f363a5a9e7",
+          "bytes": 16198
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/botanical_transition/AST-BOT-010.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Nominal start-seam/floor origin at0; actual mating faces beginX0.001 and original004 end is placedX−0.001.",
+        "actual_native_root_nodes": [
+          {
+            "index": 0,
+            "name": "MARKER_seat_contact_1",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.2199999988079071
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.4699999988079071
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.25
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 1,
+            "name": "MARKER_floor_contact_1",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.2199999988079071
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.10000000149011612
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 2,
+            "name": "MARKER_seat_bearing_1",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.2199999988079071
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.41499999165534973
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.10000000149011612
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 3,
+            "name": "MARKER_seat_contact_2",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.8999999761581421
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.4699999988079071
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.25
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 4,
+            "name": "MARKER_floor_contact_2",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.8999999761581421
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.10000000149011612
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 5,
+            "name": "MARKER_seat_bearing_2",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.8999999761581421
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.41499999165534973
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.10000000149011612
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 6,
+            "name": "MARKER_seat_contact_3",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                1.5800000429153442
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.4699999988079071
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.25
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 7,
+            "name": "MARKER_floor_contact_3",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                1.5800000429153442
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.10000000149011612
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 8,
+            "name": "MARKER_seat_bearing_3",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                1.5800000429153442
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.41499999165534973
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.10000000149011612
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 9,
+            "name": "MARKER_origin",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 10,
+            "name": "MARKER_start_front_wall",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0010000000474974513
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.20000000298023224
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                -0.07999999821186066
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 11,
+            "name": "MARKER_start_rear_wall",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0010000000474974513
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.20000000298023224
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                -0.9300000071525574
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 12,
+            "name": "MARKER_start_seat",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0010000000474974513
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.4449999928474426
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.23999999463558197
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 13,
+            "name": "MARKER_lower_soil",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.2800000011920929
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.38999998569488525
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                -0.5149999856948853
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 14,
+            "name": "MARKER_upper_soil",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                1.100000023841858
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.7900000214576721
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                -0.6899999976158142
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 15,
+            "name": "MARKER_upper_base_contact",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                1.100000023841858
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.36500000953674316
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                -0.5149999856948853
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 16,
+            "name": "MARKER_rear_coping_top",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                1.100000023841858
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.8299999833106995
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                -0.9399999976158142
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 17,
+            "name": "MARKER_closed_end",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                1.7960000038146973
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.6000000238418579
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                -0.5149999856948853
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 18,
+            "name": "ASTRAEA_planted_seat_warm_stone",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 19,
+            "name": "ASTRAEA_planted_seat_ivory_enamel",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 20,
+            "name": "ASTRAEA_planted_seat_botanical_soil",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 21,
+            "name": "ASTRAEA_planted_seat_warm_walnut",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "index": 22,
+            "name": "ASTRAEA_planted_seat_champagne_metal",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/botanical_transition/AST-BOT-010.manifest.json#/markers",
+          "qa/batch13/independent_botanical_transition_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender X right/along edge, Y rear, Z up; front−Y",
+        "exchange": "Native glTF Y-up; front+Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Read actual exported hierarchy before placement; never basis-convert native coordinates twice.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch13/independent_botanical_transition_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "physical_surfaces_independently_witnessed",
+        "meaning": "Physical source/native outward normals are checked against real triangles. Proposed plant positions, approach directions and eyes remain geometric proposals.",
+        "evidence": [
+          "assets/botanical_transition/AST-BOT-010.manifest.json#/markers",
+          "qa/batch13/independent_botanical_transition_interfaces.json",
+          "qa/batch13/independent_assembly_geometry_review.json"
+        ],
+        "omission_assessment": "No missing host coordinates, recovered courtyard, actor controls, irrigation, wind, root growth or structural loads are invented."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Supported raised planted-seat end transition with original low start profile, unchanged470mm seat, two soil cells, upper floor piers and closed terminal. The start joins accepted004 across a2mm construction joint.",
+        "native_physical_surface_witness_count": 17,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "assets/botanical_transition/AST-BOT-010.manifest.json#/markers",
+          "qa/batch13/independent_botanical_transition_interfaces.json"
+        ],
+        "limit": "Component geometry only; spatial soil reservations are not long-term viability or load certification."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Static role-consolidated export; semantic authoring parts remain editable in source. No wind or individual leaf behavior.",
+        "evidence": [
+          "assets/botanical_transition/AST-BOT-010.manifest.json",
+          "qa/batch13/independent_export_AST-BOT-010.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "reviewer_fresh_source_only_rebuild_and_embedded_native_roles_checked",
+        "actual_material_roles": [
+          "botanical_soil",
+          "champagne_metal",
+          "ivory_enamel",
+          "warm_stone",
+          "warm_walnut"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/botanical_transition/source/build_botanical_transition.py",
+            "sha256": "ca189ae24223485bf46c67e71bb68bab846077f814ff31e31c95fc6ac11a9eb8",
+            "bytes": 15536
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/botanical_transition/source/build_botanical_transition.py",
+            "sha256": "ca189ae24223485bf46c67e71bb68bab846077f814ff31e31c95fc6ac11a9eb8",
+            "bytes": 15536
+          },
+          {
+            "path": "assets/botanical_transition/source/profile_helpers.py",
+            "sha256": "9fd99e695a75a47201edd2811d61d338d38abfe691c4b9951d4e5a5cf8839623",
+            "bytes": 4359
+          },
+          {
+            "path": "materials/botanical/botanical_bark.png",
+            "sha256": "b6c9e4f38812b846b07867bb676f3b29aadc37049846bac0c786cb87cce96447",
+            "bytes": 11164
+          },
+          {
+            "path": "materials/botanical/botanical_flower.png",
+            "sha256": "f0c7e510dc566f8c490276c096e317c834f2f436d063d9ee796e076db8086fe9",
+            "bytes": 6128
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_jade.png",
+            "sha256": "77c09ec24712b7210f37e98ad56880d24a1d61f8d6656d0d4ca6ae557e6ee2dd",
+            "bytes": 12136
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_olive.png",
+            "sha256": "8bc512d3b26c3f8874359580f1a31402f8fc4012918faa7ce0fea8d8cf3a22a6",
+            "bytes": 12134
+          },
+          {
+            "path": "materials/botanical/botanical_leaf_sage.png",
+            "sha256": "3f7609039b41a386a769a44c6de953153b8fea61f3c1c1db186103bfddc04026",
+            "bytes": 12134
+          },
+          {
+            "path": "materials/botanical/botanical_soil.png",
+            "sha256": "ff0651486bc63ba9aab69a344167f936f8e16eae76de7720d6b81e27b9833165",
+            "bytes": 12401
+          },
+          {
+            "path": "materials/botanical/manifest.json",
+            "sha256": "fb8c58cdc8d70d7b9b932780bf9ca19d55975fd1fea2d47e6bdc6a13049f8630",
+            "bytes": 2836
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/botanical_materials.py",
+            "sha256": "d06b19d91cd5c1d18fe2e7e1b32b86e855bab5993872dbad9865248017e24ea7",
+            "bytes": 1482
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          }
+        ],
+        "evidence": [
+          "qa/batch13/independent_rebuild_receipts.json"
+        ],
+        "limit": "All helper-loaded original role maps are included, including roles unused by this export. Python-open observations and actual Blender-loaded images are bound; OS syscall tracing was unavailable."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 1806,
+        "mesh_nodes": 5,
+        "primitives": 5,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 182608,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 4,
+        "alpha_materials": 0,
+        "double_sided_triangle_count": 1782,
+        "evidence": [
+          "qa/batch13/independent_botanical_transition_interfaces.json",
+          "qa/batch13/independent_export_AST-BOT-010.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_component_geometry_proposal",
+        "shape_count": 25,
+        "sampled_max_external_inflation_m": 0.01954327617867773,
+        "evidence": [
+          "qa/batch13/independent_botanical_transition_interfaces.json",
+          "qa/batch13/independent_botanical_transition_collision_profile.json"
+        ],
+        "limits": "Fine foliage is deliberately noncolliding; no enclosing crown hull. Profile errors are finite samples, not continuous-distance certificates.010 has documented19.543mm sampled support overreach and0.301mm sampled rear-loft underreach; cavities and useful empty boxes independently pass."
+      },
+      "existing_independent_evidence": [
+        "qa/batch13/independent_botanical_transition_interfaces.json",
+        "qa/batch13/independent_assembly_geometry_review.json",
+        "qa/batch13/independent_source_native_corner_comparison.json",
+        "qa/batch13/independent_source_AST-BOT-010.json",
+        "qa/batch13/independent_export_AST-BOT-010.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch13/independent_interface_coverage_map.json#/assets/3",
+      "engine_adopted_instances": 0
     }
   ],
   "scope": "Explicit existing component declarations and bounded offline interface evidence. Actual native hierarchy governs geometry; no engine, installed-room, actor, controller or operating behavior is implemented by this index.",
   "audit_source": {
-    "path": "qa/batch12/independent_interface_normalized_index_proposed.json",
-    "sha256": "478d46bff1035423f507a72e9ebdd201422c98487e11c7a81a4012efcfe41c06",
-    "report": "qa/batch12/independent_final_review.json",
-    "correction_map": "qa/batch12/independent_interface_coverage_map.json"
+    "path": "qa/batch13/independent_interface_coverage_map.json",
+    "report": "qa/batch13/independent_review.md"
   },
   "binding_validation": {
     "exact_asset_id_set": true,
-    "current_bound_files_checked": 195,
+    "current_bound_files_checked": 207,
     "all_files_current": true
   }
 }
