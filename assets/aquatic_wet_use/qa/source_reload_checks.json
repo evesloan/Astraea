@@ -1,0 +1,1708 @@
+{
+  "assets": [
+    {
+      "catalogue_id": "AST-AQU-009",
+      "source_sha256": "b987c9f6758c2def8d7ab6531ab560c5d3edaf3eeee6c1761a7dad0a55e2fe2c",
+      "editable_meshes": 25,
+      "editable_modifiers": 28,
+      "physical_marker_checks": [
+        {
+          "name": "FLOOR_CONTACT",
+          "source_node_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_matches": true,
+          "part": "continuous_floor_isolator",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "VESSEL_CONTACT",
+          "source_node_position_m": [
+            0.0,
+            -0.10999999940395355,
+            0.9150000214576721
+          ],
+          "position_matches": true,
+          "part": "vessel_landing_rail_0",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "OPTIONAL_OUTLET_CAP",
+          "source_node_position_m": [
+            0.0,
+            -0.10999999940395355,
+            1.309999942779541
+          ],
+          "position_matches": true,
+          "part": "protected_capped_optional_outlet",
+          "surface_distance_m": 9.313225746154785e-10,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "SELECT_CONTACT",
+          "source_node_position_m": [
+            0.125,
+            0.10499999672174454,
+            1.2000000476837158
+          ],
+          "position_matches": true,
+          "part": "bounded_select_pad",
+          "surface_distance_m": 7.450580596923828e-09,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "REAR_REMOVABLE_SERVICE_PLATE_SERVICE_FACE",
+          "source_node_position_m": [
+            0.0,
+            0.25999999046325684,
+            0.4950000047683716
+          ],
+          "position_matches": true,
+          "part": "rear_removable_service_plate",
+          "surface_distance_m": 1.4901161193847656e-08,
+          "surface_matches": true,
+          "physical_normal_dot": 0.9999999403953552,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "LOW_DRAIN_CAP",
+          "source_node_position_m": [
+            0.0,
+            -0.32499998807907104,
+            0.07500000298023224
+          ],
+          "position_matches": true,
+          "part": "visible_front_low_drain_cap",
+          "surface_distance_m": 1.862645149230957e-09,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "FRONT_APPROACH",
+          "source_node_position_m": [
+            0.0,
+            -0.8799999952316284,
+            0.0
+          ],
+          "position_matches": true,
+          "passes": true
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "source_node_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_matches": true,
+          "passes": true
+        }
+      ],
+      "joint_checks": [
+        {
+          "name": "join_0",
+          "kind": "boundary_contact",
+          "parts": [
+            "continuous_floor_isolator",
+            "pearl_splayed_pedestal"
+          ],
+          "probe_source_m": [
+            0.0,
+            0.0,
+            0.02500000037252903
+          ],
+          "boundary_distances_m": [
+            0.0,
+            0.0
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_1",
+          "kind": "boundary_contact",
+          "parts": [
+            "left_swept_crescent_rib",
+            "pearl_splayed_pedestal"
+          ],
+          "probe_source_m": [
+            -0.25,
+            0.11999999731779099,
+            0.12999999523162842
+          ],
+          "boundary_distances_m": [
+            0.0,
+            3.0719530030864917e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_2",
+          "kind": "boundary_contact",
+          "parts": [
+            "right_swept_crescent_rib",
+            "pearl_splayed_pedestal"
+          ],
+          "probe_source_m": [
+            0.25,
+            0.11999999731779099,
+            0.12999999523162842
+          ],
+          "boundary_distances_m": [
+            0.0,
+            7.450580596923828e-09
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_3",
+          "kind": "boundary_contact",
+          "parts": [
+            "teal_splash_back",
+            "left_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            -0.2150000035762787,
+            0.164000004529953,
+            1.100000023841858
+          ],
+          "boundary_distances_m": [
+            1.4901161193847656e-08,
+            5.960464477539062e-07
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_4",
+          "kind": "boundary_contact",
+          "parts": [
+            "teal_splash_back",
+            "right_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            0.2150000035762787,
+            0.164000004529953,
+            1.100000023841858
+          ],
+          "boundary_distances_m": [
+            0.0,
+            2.4575624024691933e-07
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_5",
+          "kind": "boundary_contact",
+          "parts": [
+            "arched_orange_hood_infill",
+            "left_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            -0.2150000035762787,
+            0.0,
+            1.4299999475479126
+          ],
+          "boundary_distances_m": [
+            1.4202669262886047e-08,
+            5.587935447692871e-09
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_6",
+          "kind": "boundary_contact",
+          "parts": [
+            "arched_orange_hood_infill",
+            "right_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            0.2150000035762787,
+            0.0,
+            1.4299999475479126
+          ],
+          "boundary_distances_m": [
+            0.0,
+            5.587935447692871e-09
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_7",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "orange_splash_collection_floor",
+            "left_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            -0.23999999463558197,
+            0.1599999964237213,
+            0.8500000238418579
+          ],
+          "boundary_distances_m": [
+            0.010606602765619755,
+            0.015000000596046448
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_8",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "orange_splash_collection_floor",
+            "right_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            0.23999999463558197,
+            0.1599999964237213,
+            0.8500000238418579
+          ],
+          "boundary_distances_m": [
+            0.01060659158974886,
+            0.015000000596046448
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_9",
+          "kind": "boundary_contact",
+          "parts": [
+            "left_raised_collection_return",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            -0.26600000262260437,
+            -0.03500000014901161,
+            0.875
+          ],
+          "boundary_distances_m": [
+            3.725290298461914e-09,
+            1.862645149230957e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_10",
+          "kind": "boundary_contact",
+          "parts": [
+            "right_raised_collection_return",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            0.26600000262260437,
+            -0.03500000014901161,
+            0.875
+          ],
+          "boundary_distances_m": [
+            3.725290298461914e-09,
+            3.9600379864168644e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_11",
+          "kind": "boundary_contact",
+          "parts": [
+            "clipped_front_collection_lip",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            0.0,
+            -0.2750000059604645,
+            0.875
+          ],
+          "boundary_distances_m": [
+            1.862645149230957e-09,
+            2.9802322387695312e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_12",
+          "kind": "boundary_contact",
+          "parts": [
+            "vessel_landing_rail_-0.075",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            -0.07500000298023224,
+            -0.10999999940395355,
+            0.875
+          ],
+          "boundary_distances_m": [
+            0.0,
+            4.214684778958144e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_13",
+          "kind": "boundary_contact",
+          "parts": [
+            "vessel_landing_rail_0",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            0.0,
+            -0.10999999940395355,
+            0.875
+          ],
+          "boundary_distances_m": [
+            0.0,
+            7.450580596923828e-09
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_14",
+          "kind": "boundary_contact",
+          "parts": [
+            "vessel_landing_rail_0.075",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            0.07500000298023224,
+            -0.10999999940395355,
+            0.875
+          ],
+          "boundary_distances_m": [
+            0.0,
+            3.332000986233652e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_15",
+          "kind": "boundary_contact",
+          "parts": [
+            "protected_capped_optional_outlet",
+            "arched_orange_hood_infill"
+          ],
+          "probe_source_m": [
+            0.0,
+            -0.10999999940395355,
+            1.3949999809265137
+          ],
+          "boundary_distances_m": [
+            0.0,
+            1.666000493116826e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_16",
+          "kind": "boundary_contact",
+          "parts": [
+            "bounded_select_pad",
+            "teal_splash_back"
+          ],
+          "probe_source_m": [
+            0.125,
+            0.14499999582767487,
+            1.2000000476837158
+          ],
+          "boundary_distances_m": [
+            0.0,
+            1.4901161193847656e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_17",
+          "kind": "boundary_contact",
+          "parts": [
+            "glyph_vessel_left",
+            "teal_splash_back"
+          ],
+          "probe_source_m": [
+            -0.14000000059604645,
+            0.14499999582767487,
+            1.190000057220459
+          ],
+          "boundary_distances_m": [
+            0.0020000040531158447,
+            0.0
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_18",
+          "kind": "boundary_contact",
+          "parts": [
+            "glyph_vessel_right",
+            "teal_splash_back"
+          ],
+          "probe_source_m": [
+            -0.05000000074505806,
+            0.14499999582767487,
+            1.190000057220459
+          ],
+          "boundary_distances_m": [
+            0.0020000040531158447,
+            1.1175870895385742e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_19",
+          "kind": "boundary_contact",
+          "parts": [
+            "glyph_vessel_base",
+            "teal_splash_back"
+          ],
+          "probe_source_m": [
+            -0.0949999988079071,
+            0.14499999582767487,
+            1.1399999856948853
+          ],
+          "boundary_distances_m": [
+            0.0020000040531158447,
+            7.450580596923828e-09
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_20",
+          "kind": "boundary_contact",
+          "parts": [
+            "left_rear_panel_seat",
+            "left_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            -0.2150000035762787,
+            0.2150000035762787,
+            0.49000000953674316
+          ],
+          "boundary_distances_m": [
+            0.0,
+            4.217318121391145e-07
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_21",
+          "kind": "boundary_contact",
+          "parts": [
+            "right_rear_panel_seat",
+            "right_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            0.2150000035762787,
+            0.2150000035762787,
+            0.49000000953674316
+          ],
+          "boundary_distances_m": [
+            0.0,
+            1.3411872714641504e-06
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_22",
+          "kind": "boundary_contact",
+          "parts": [
+            "service_bay_lower_sill",
+            "left_rear_panel_seat"
+          ],
+          "probe_source_m": [
+            -0.18000000715255737,
+            0.2150000035762787,
+            0.24500000476837158
+          ],
+          "boundary_distances_m": [
+            0.0,
+            0.015000000596046448
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_23",
+          "kind": "boundary_contact",
+          "parts": [
+            "service_bay_lower_sill",
+            "right_rear_panel_seat"
+          ],
+          "probe_source_m": [
+            0.18000000715255737,
+            0.2150000035762787,
+            0.24500000476837158
+          ],
+          "boundary_distances_m": [
+            1.4901161193847656e-08,
+            0.015000000596046448
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_24",
+          "kind": "boundary_contact",
+          "parts": [
+            "rear_removable_service_plate",
+            "left_rear_panel_seat"
+          ],
+          "probe_source_m": [
+            -0.15700000524520874,
+            0.23499999940395355,
+            0.4950000047683716
+          ],
+          "boundary_distances_m": [
+            0.0,
+            1.9371509552001953e-07
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_25",
+          "kind": "boundary_contact",
+          "parts": [
+            "rear_removable_service_plate",
+            "right_rear_panel_seat"
+          ],
+          "probe_source_m": [
+            0.15700000524520874,
+            0.23499999940395355,
+            0.4950000047683716
+          ],
+          "boundary_distances_m": [
+            1.4901161193847656e-08,
+            0.0
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_26",
+          "kind": "boundary_contact",
+          "parts": [
+            "rear_removable_service_plate_grip_-0.11199999999999999",
+            "rear_removable_service_plate"
+          ],
+          "probe_source_m": [
+            -0.1120000034570694,
+            0.25999999046325684,
+            0.4950000047683716
+          ],
+          "boundary_distances_m": [
+            0.0004999935626983643,
+            0.0
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_27",
+          "kind": "boundary_contact",
+          "parts": [
+            "rear_removable_service_plate_grip_0.11199999999999999",
+            "rear_removable_service_plate"
+          ],
+          "probe_source_m": [
+            0.1120000034570694,
+            0.25999999046325684,
+            0.4950000047683716
+          ],
+          "boundary_distances_m": [
+            0.0004999935626983643,
+            0.0
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_28",
+          "kind": "boundary_contact",
+          "parts": [
+            "visible_front_low_drain_cap",
+            "pearl_splayed_pedestal"
+          ],
+          "probe_source_m": [
+            0.0,
+            -0.28999999165534973,
+            0.07500000298023224
+          ],
+          "boundary_distances_m": [
+            0.0,
+            0.010000020265579224
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        }
+      ],
+      "complete_support_graph": {
+        "root": "FLOOR_CONTACT",
+        "connected_count": 25,
+        "all_semantic_parts": 25,
+        "unsupported": [],
+        "passes": true
+      },
+      "void_checks": [
+        {
+          "name": "vessel_air_space",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "collector_gap_-0.1375",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "collector_gap_-0.0375",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "collector_gap_0.0375",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "collector_gap_0.1375",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "rear_service_approach",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true
+        }
+      ],
+      "removal_checks": [
+        {
+          "name": "rear_removable_service_plate",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true,
+          "translation_source_m": [
+            0,
+            0.4,
+            0
+          ]
+        }
+      ],
+      "positive_solid_control_detected": true,
+      "material_checks": [
+        {
+          "role": "ASTRAEA_aquatic_pearl_float",
+          "images_packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_aquatic_edge_tile",
+          "images_packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_aquatic_satin_alloy",
+          "images_packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_aquatic_orange_float",
+          "images_packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_aquatic_dark_grip",
+          "images_packed": true,
+          "emission_strength": 0.0
+        }
+      ],
+      "passes": true
+    },
+    {
+      "catalogue_id": "AST-AQU-010",
+      "source_sha256": "f2d060f5b67521142f4f2deec59f469b3c75071905ce6899991d99e0ac39fe71",
+      "editable_meshes": 25,
+      "editable_modifiers": 26,
+      "physical_marker_checks": [
+        {
+          "name": "FLOOR_CONTACT",
+          "source_node_position_m": [
+            0.0,
+            -0.02500000037252903,
+            0.0
+          ],
+          "position_matches": true,
+          "part": "continuous_rinse_floor_isolator",
+          "surface_distance_m": 5.587935447692871e-09,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "HEAD_INTERFACE_CAP",
+          "source_node_position_m": [
+            0.0,
+            -0.20499999821186066,
+            2.015000104904175
+          ],
+          "position_matches": true,
+          "part": "capped_adjustable_head_interface",
+          "surface_distance_m": 3.725290298461914e-09,
+          "surface_matches": true,
+          "physical_normal_dot": 0.9999999403953552,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "SELECT_CONTROL_CONTACT",
+          "source_node_position_m": [
+            -0.06499999761581421,
+            0.017999999225139618,
+            1.0800000429153442
+          ],
+          "position_matches": true,
+          "part": "bounded_select_control",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "physical_normal_dot": 0.9999999403953552,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "STOP_CONTROL_CONTACT",
+          "source_node_position_m": [
+            0.07000000029802322,
+            0.017999999225139618,
+            1.0800000429153442
+          ],
+          "position_matches": true,
+          "part": "bounded_stop_control",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "RINSE_REAR_REMOVABLE_PLATE_SERVICE_FACE",
+          "source_node_position_m": [
+            0.0,
+            0.27000001072883606,
+            0.4350000023841858
+          ],
+          "position_matches": true,
+          "part": "rinse_rear_removable_plate",
+          "surface_distance_m": 1.4901161193847656e-08,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "LOW_CONNECTION_CAP",
+          "source_node_position_m": [
+            0.0,
+            -0.34700000286102295,
+            0.07000000029802322
+          ],
+          "position_matches": true,
+          "part": "low_front_capped_connection",
+          "surface_distance_m": 1.862645149230957e-09,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "SPLASH_FLOOR_CONTACT",
+          "source_node_position_m": [
+            0.0,
+            -0.12999999523162842,
+            0.11999999731779099
+          ],
+          "position_matches": true,
+          "part": "tile_splash_landing",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "physical_normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "FRONT_APPROACH",
+          "source_node_position_m": [
+            0.0,
+            -0.949999988079071,
+            0.0
+          ],
+          "position_matches": true,
+          "passes": true
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "source_node_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_matches": true,
+          "passes": true
+        }
+      ],
+      "joint_checks": [
+        {
+          "name": "join_0",
+          "kind": "boundary_contact",
+          "parts": [
+            "continuous_rinse_floor_isolator",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0.0,
+            -0.02500000037252903,
+            0.02500000037252903
+          ],
+          "boundary_distances_m": [
+            5.587935447692871e-09,
+            2.421438694000244e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_1",
+          "kind": "boundary_contact",
+          "parts": [
+            "left_tapered_spine_rail",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            -0.2150000035762787,
+            0.17000000178813934,
+            0.10999999940395355
+          ],
+          "boundary_distances_m": [
+            0.0,
+            2.107342389479072e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_2",
+          "kind": "boundary_contact",
+          "parts": [
+            "right_tapered_spine_rail",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0.2150000035762787,
+            0.17000000178813934,
+            0.10999999940395355
+          ],
+          "boundary_distances_m": [
+            0.0,
+            0.0
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_3",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "upper_teal_control_web",
+            "left_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            -0.15000000596046448,
+            0.125,
+            1.2799999713897705
+          ],
+          "boundary_distances_m": [
+            0.0040418170392513275,
+            0.0009485901682637632
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_4",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "upper_teal_control_web",
+            "right_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            0.15000000596046448,
+            0.125,
+            1.2799999713897705
+          ],
+          "boundary_distances_m": [
+            0.0040418291464447975,
+            0.0009485901682637632
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_5",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "swept_protective_head",
+            "left_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            -0.09000000357627869,
+            0.20000000298023224,
+            2.055000066757202
+          ],
+          "boundary_distances_m": [
+            0.01648971438407898,
+            0.004999876022338867
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_6",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "swept_protective_head",
+            "right_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            0.09000000357627869,
+            0.20000000298023224,
+            2.055000066757202
+          ],
+          "boundary_distances_m": [
+            0.016489731147885323,
+            0.004999876022338867
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_7",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "left_head_load_gusset",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            -0.11500000208616257,
+            0.125,
+            1.8300000429153442
+          ],
+          "boundary_distances_m": [
+            0.019999995827674866,
+            0.0049491748213768005
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_8",
+          "kind": "boundary_contact",
+          "parts": [
+            "left_head_load_gusset",
+            "swept_protective_head"
+          ],
+          "probe_source_m": [
+            -0.11500000208616257,
+            -0.17000000178813934,
+            2.0799999237060547
+          ],
+          "boundary_distances_m": [
+            1.666000493116826e-08,
+            1.4901161193847656e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_9",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "right_head_load_gusset",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            0.11500000208616257,
+            0.125,
+            1.8300000429153442
+          ],
+          "boundary_distances_m": [
+            0.019999995827674866,
+            0.00494918180629611
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_10",
+          "kind": "boundary_contact",
+          "parts": [
+            "right_head_load_gusset",
+            "swept_protective_head"
+          ],
+          "probe_source_m": [
+            0.11500000208616257,
+            -0.17000000178813934,
+            2.0799999237060547
+          ],
+          "boundary_distances_m": [
+            1.666000493116826e-08,
+            7.450580596923828e-09
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_11",
+          "kind": "boundary_contact",
+          "parts": [
+            "capped_adjustable_head_interface",
+            "swept_protective_head"
+          ],
+          "probe_source_m": [
+            0.0,
+            -0.20499999821186066,
+            2.0799999237060547
+          ],
+          "boundary_distances_m": [
+            1.862645149230957e-09,
+            1.4901161193847656e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_12",
+          "kind": "boundary_contact",
+          "parts": [
+            "orange_bounded_control_cradle",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            0.0,
+            0.10300000011920929,
+            1.0800000429153442
+          ],
+          "boundary_distances_m": [
+            0.001999996602535248,
+            1.2013700256829907e-07
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_13",
+          "kind": "boundary_contact",
+          "parts": [
+            "bounded_select_control",
+            "orange_bounded_control_cradle"
+          ],
+          "probe_source_m": [
+            -0.06499999761581421,
+            0.04699999839067459,
+            1.0800000429153442
+          ],
+          "boundary_distances_m": [
+            7.450580596923828e-09,
+            7.450580596923828e-09
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_14",
+          "kind": "boundary_contact",
+          "parts": [
+            "bounded_stop_control",
+            "orange_bounded_control_cradle"
+          ],
+          "probe_source_m": [
+            0.07000000029802322,
+            0.04699999839067459,
+            1.0800000429153442
+          ],
+          "boundary_distances_m": [
+            0.0,
+            1.4901161193847656e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_15",
+          "kind": "boundary_contact",
+          "parts": [
+            "original_optional_rinse_glyph_0",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            -0.054999999701976776,
+            0.10300000011920929,
+            1.4824999570846558
+          ],
+          "boundary_distances_m": [
+            0.0,
+            1.6597411445218313e-07
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_16",
+          "kind": "boundary_contact",
+          "parts": [
+            "original_optional_rinse_glyph_1",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            0.0,
+            0.10300000011920929,
+            1.5099999904632568
+          ],
+          "boundary_distances_m": [
+            0.0,
+            1.1315569281578064e-07
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_17",
+          "kind": "boundary_contact",
+          "parts": [
+            "original_optional_rinse_glyph_2",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            0.054999999701976776,
+            0.10300000011920929,
+            1.4824999570846558
+          ],
+          "boundary_distances_m": [
+            0.0,
+            7.450580596923828e-09
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_18",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "lower_service_cross_tie",
+            "left_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            -0.18700000643730164,
+            0.17000000178813934,
+            0.1850000023841858
+          ],
+          "boundary_distances_m": [
+            0.0029999911785125732,
+            0.0020000040531158447
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_19",
+          "kind": "buried_structural_overlap",
+          "parts": [
+            "lower_service_cross_tie",
+            "right_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            0.18700000643730164,
+            0.17000000178813934,
+            0.1850000023841858
+          ],
+          "boundary_distances_m": [
+            0.0029999911785125732,
+            0.0020000040531158447
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_20",
+          "kind": "boundary_contact",
+          "parts": [
+            "left_rear_cover_seat",
+            "left_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            -0.19499999284744263,
+            0.22499999403953552,
+            0.4399999976158142
+          ],
+          "boundary_distances_m": [
+            0.007500007748603821,
+            0.009999990463256836
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_21",
+          "kind": "boundary_contact",
+          "parts": [
+            "right_rear_cover_seat",
+            "right_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            0.19499999284744263,
+            0.22499999403953552,
+            0.4399999976158142
+          ],
+          "boundary_distances_m": [
+            0.007500007748603821,
+            0.009999990463256836
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_22",
+          "kind": "boundary_contact",
+          "parts": [
+            "rinse_rear_removable_plate",
+            "left_rear_cover_seat"
+          ],
+          "probe_source_m": [
+            -0.1420000046491623,
+            0.24500000476837158,
+            0.4350000023841858
+          ],
+          "boundary_distances_m": [
+            0.0,
+            5.372690026206328e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_23",
+          "kind": "boundary_contact",
+          "parts": [
+            "rinse_rear_removable_plate",
+            "right_rear_cover_seat"
+          ],
+          "probe_source_m": [
+            0.1420000046491623,
+            0.24500000476837158,
+            0.4350000023841858
+          ],
+          "boundary_distances_m": [
+            1.4901161193847656e-08,
+            1.4901161193847656e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_24",
+          "kind": "boundary_contact",
+          "parts": [
+            "rinse_rear_removable_plate_grip_-0.1024",
+            "rinse_rear_removable_plate"
+          ],
+          "probe_source_m": [
+            -0.10239999741315842,
+            0.27000001072883606,
+            0.4350000023841858
+          ],
+          "boundary_distances_m": [
+            0.000500023365020752,
+            0.0
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_25",
+          "kind": "boundary_contact",
+          "parts": [
+            "rinse_rear_removable_plate_grip_0.1024",
+            "rinse_rear_removable_plate"
+          ],
+          "probe_source_m": [
+            0.10239999741315842,
+            0.27000001072883606,
+            0.4350000023841858
+          ],
+          "boundary_distances_m": [
+            0.000500023365020752,
+            3.0719530030864917e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_26",
+          "kind": "boundary_contact",
+          "parts": [
+            "low_front_capped_connection",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0.0,
+            -0.3050000071525574,
+            0.07000000029802322
+          ],
+          "boundary_distances_m": [
+            1.862645149230957e-09,
+            0.019999980926513672
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_27",
+          "kind": "boundary_contact",
+          "parts": [
+            "tile_splash_landing",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0.0,
+            -0.12999999523162842,
+            0.10999999940395355
+          ],
+          "boundary_distances_m": [
+            0.0,
+            0.0
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_28",
+          "kind": "boundary_contact",
+          "parts": [
+            "left_splash_guard",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            -0.23999999463558197,
+            -0.07999999821186066,
+            0.10999999940395355
+          ],
+          "boundary_distances_m": [
+            7.450580596923828e-09,
+            1.4901161193847656e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "join_29",
+          "kind": "boundary_contact",
+          "parts": [
+            "right_splash_guard",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0.23999999463558197,
+            -0.07999999821186066,
+            0.10999999940395355
+          ],
+          "boundary_distances_m": [
+            7.450580596923828e-09,
+            2.107342389479072e-08
+          ],
+          "probe_inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        }
+      ],
+      "complete_support_graph": {
+        "root": "FLOOR_CONTACT",
+        "connected_count": 25,
+        "all_semantic_parts": 25,
+        "unsupported": [],
+        "passes": true
+      },
+      "void_checks": [
+        {
+          "name": "front_unoccupied_rinse_space",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "rear_maintenance_approach",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true
+        }
+      ],
+      "removal_checks": [
+        {
+          "name": "rinse_rear_removable_plate",
+          "method": "Complete triangle/AABB separating-axis intersection plus center containment; boundary inclusive; all evaluated triangles",
+          "hits": [],
+          "passes": true,
+          "translation_source_m": [
+            0,
+            0.4,
+            0
+          ]
+        }
+      ],
+      "positive_solid_control_detected": true,
+      "material_checks": [
+        {
+          "role": "ASTRAEA_aquatic_dark_grip",
+          "images_packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_aquatic_edge_tile",
+          "images_packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_aquatic_pearl_float",
+          "images_packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_aquatic_orange_float",
+          "images_packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_aquatic_satin_alloy",
+          "images_packed": true,
+          "emission_strength": 0.0
+        }
+      ],
+      "passes": true
+    }
+  ],
+  "all_passed": true
+}

@@ -1,7 +1,7 @@
 {
-  "revision": "astraea-catalogue-interfaces-06-proposed",
+  "revision": "astraea-catalogue-interfaces-07-proposed",
   "status": "proposed_component_consumer_index_not_engine_acceptance",
-  "unique_assets": 69,
+  "unique_assets": 73,
   "semantic_rules": [
     "Exact existing source/export/manifest hashes bind every row.",
     "Metadata records map existing points and behavior only. No nonexistent point/trajectory is invented.",
@@ -18584,16 +18584,1005 @@
       "findings": [],
       "exact_record_inventory_pointer": "qa/batch13/independent_interface_coverage_map.json#/assets/3",
       "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-AQU-007",
+      "family": "aquatic_towel_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/aquatic_towel_use/source/AST-AQU-007.blend",
+          "sha256": "ce94623660fd59f6a1ad8e1d22423e025fb6445f91815aae72b68629d47b8653",
+          "bytes": 1081212
+        },
+        "export": {
+          "path": "assets/aquatic_towel_use/exports/AST-AQU-007.glb",
+          "sha256": "d9047cc74ebeb222fa0e6b4313b8947f7e245e95ee45a77c84e03248bc2ab126",
+          "bytes": 526180
+        },
+        "manifest": {
+          "path": "assets/aquatic_towel_use/AST-AQU-007.manifest.json",
+          "sha256": "314aba9e872c4594907faddcf535e3dd66706e1e6445a05462c85e3cc7916d49",
+          "bytes": 26614
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/aquatic_towel_use/AST-AQU-007.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Source floor Z0 and native floor Y0. Actual contact surfaces and removable-part pivots are distinct from the asset placement origin.",
+        "actual_native_root_nodes": [
+          {
+            "index": 10,
+            "name": "AST-AQU-007_floor_origin",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/aquatic_towel_use/AST-AQU-007.manifest.json#/contacts",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender X width/right, Y rear/depth, Z up; front−Y",
+        "exchange": "Native glTF Y-up; front+Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual exported hierarchy, then place. Never basis-convert native vertices twice.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "physical_surfaces_independently_witnessed",
+        "meaning": "Physical source/native outward normals and their named target surfaces are checked. The008 mouth orientation and wet approach positions remain nonphysical proposals.",
+        "evidence": [
+          "assets/aquatic_towel_use/AST-AQU-007.manifest.json#/contacts",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ],
+        "omission_assessment": "No host mount, door aperture, local room, plumbing, substances or six-species fitting is invented. D08 dry changing and separate aft towel care retain their distinct programme roles."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Floor-supported sculpted dry retrieval niche with two protected front-loading shelves and ten integrated original folded-stock forms. Rear face is opaque; no aft service-room aperture is implied.",
+        "native_physical_surface_witness_count": 4,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "assets/aquatic_towel_use/AST-AQU-007.manifest.json#/contacts",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ],
+        "limit": "Geometric contact and support connectivity only, not loads, real hygiene, fluid operation or body/reach certification."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Static material-role consolidation; no stock inventory or moving restock door.",
+        "evidence": [
+          "assets/aquatic_towel_use/AST-AQU-007.manifest.json",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "reviewer_fresh_source_only_rebuild_and_embedded_native_roles_checked",
+        "actual_material_roles": [
+          "aquatic_clay_sling",
+          "aquatic_dark_grip",
+          "aquatic_satin_alloy",
+          "ivory_enamel",
+          "oatmeal_weave",
+          "teal_weave"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/aquatic_towel_use/source/build_towel_use.py",
+            "sha256": "c642ad7f1f5a5f7768908114aa456854553345fbd331412f406070cebc6c3bd2",
+            "bytes": 28916
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/aquatic_towel_use/source/build_towel_use.py",
+            "sha256": "c642ad7f1f5a5f7768908114aa456854553345fbd331412f406070cebc6c3bd2",
+            "bytes": 28916
+          },
+          {
+            "path": "materials/aquatic/aquatic_clay_sling.png",
+            "sha256": "224732b5da3eb280bc0e1d2f230f675bc0ecff4755bfccd411013ea615f88a03",
+            "bytes": 7191
+          },
+          {
+            "path": "materials/aquatic/aquatic_dark_grip.png",
+            "sha256": "31fb5e4b919ab8d20014478c5fce95ad973706abd59784512506222cde02996f",
+            "bytes": 4931
+          },
+          {
+            "path": "materials/aquatic/aquatic_edge_tile.png",
+            "sha256": "8099dff47429905a7faaa80cd64fa97545b07eccb4c94409541c3a1a6d805514",
+            "bytes": 4510
+          },
+          {
+            "path": "materials/aquatic/aquatic_orange_float.png",
+            "sha256": "0cd1dfcecd560d243d99203eb765e58e4b7b859975cf0218074128f865fcc418",
+            "bytes": 4541
+          },
+          {
+            "path": "materials/aquatic/aquatic_pearl_float.png",
+            "sha256": "42a44c9972822e0d450e009f994a360aeb2e30d8ec4a8626624fe8925b1acf7f",
+            "bytes": 4540
+          },
+          {
+            "path": "materials/aquatic/aquatic_satin_alloy.png",
+            "sha256": "df28dd239365ecf295aeefbcb780e358c4d7dcf733063a62a370bdf46daa2dbf",
+            "bytes": 4988
+          },
+          {
+            "path": "materials/aquatic/aquatic_teal_sling.png",
+            "sha256": "e0ff20812d32a82f9ca5009c43179b3c19f27807c24a23420f2d2e5ef438eede",
+            "bytes": 7152
+          },
+          {
+            "path": "materials/aquatic/manifest.json",
+            "sha256": "adde735e9cce3fa836afbf078f4b87a755c13fdb6c7822196a47036953bd4fe8",
+            "bytes": 3059
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/aquatic_materials.py",
+            "sha256": "6c522b087f2c0aef5baa599559211f6070be147d1984feeb77dc2343494a5ca1",
+            "bytes": 1389
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          }
+        ],
+        "evidence": [
+          "qa/batch14/independent_rebuild_receipts.json"
+        ],
+        "limit": "Reviewer starts from only source/helpers/all helper-loaded material maps, with no pre-existing new outputs or QA inputs. Python open instrumentation and loaded-image witnesses are not an OS-syscall-complete trace."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 6900,
+        "mesh_nodes": 6,
+        "primitives": 6,
+        "materials": 6,
+        "embedded_texture_count": 6,
+        "glb_bytes": 526180,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 3,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch14/independent_export_AST-AQU-007.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_component_geometry_proposal",
+        "shape_count": 13,
+        "review_convex_subshape_count": 117,
+        "sampled_max_external_inflation_m": 0.0036602896418295745,
+        "evidence": [
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json",
+          "qa/batch14/independent_collision_profile_AST-AQU-007.json"
+        ],
+        "limits": "Purposeful compounds preserve complete tested shelves, vessel, receiver, service and extraction regions. Profile inflation and omitted fine geometry are finite samples and explicitly reported, not continuous distance or physics acceptance."
+      },
+      "existing_independent_evidence": [
+        "qa/batch14/independent_aquatic_towel_use_interfaces.json",
+        "qa/batch14/independent_assembly_geometry_review.json",
+        "qa/batch14/independent_source_native_corner_comparison.json",
+        "qa/batch14/independent_visual_review.json",
+        "qa/batch14/independent_source_AST-AQU-007.json",
+        "qa/batch14/independent_export_AST-AQU-007.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch14/independent_interface_coverage_map.json#/assets/0",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-AQU-008",
+      "family": "aquatic_towel_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/aquatic_towel_use/source/AST-AQU-008.blend",
+          "sha256": "aeb09d6aa3e5d8abbf13f506c395b41b52e8494822bd5f009752ee73911c216d",
+          "bytes": 1005788
+        },
+        "export": {
+          "path": "assets/aquatic_towel_use/exports/AST-AQU-008.glb",
+          "sha256": "dcd95b5e561d4b99f584526313f7a8d48d1e5130c4407a48885a3afa88722c44",
+          "bytes": 402544
+        },
+        "manifest": {
+          "path": "assets/aquatic_towel_use/AST-AQU-008.manifest.json",
+          "sha256": "0fb5982b02b187c800de2f59bb262cc9e39240746de5f938ed0d980c13ec03c1",
+          "bytes": 26792
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/aquatic_towel_use/AST-AQU-008.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Source floor Z0 and native floor Y0. Actual contact surfaces and removable-part pivots are distinct from the asset placement origin.",
+        "actual_native_root_nodes": [
+          {
+            "index": 14,
+            "name": "AST-AQU-008_floor_origin",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/aquatic_towel_use/AST-AQU-008.manifest.json#/contacts",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender X width/right, Y rear/depth, Z up; front−Y",
+        "exchange": "Native glTF Y-up; front+Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual exported hierarchy, then place. Never basis-convert native vertices twice.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "physical_surfaces_independently_witnessed",
+        "meaning": "Physical source/native outward normals and their named target surfaces are checked. The008 mouth orientation and wet approach positions remain nonphysical proposals.",
+        "evidence": [
+          "assets/aquatic_towel_use/AST-AQU-008.manifest.json#/contacts",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ],
+        "omission_assessment": "No host mount, door aperture, local room, plumbing, substances or six-species fitting is invented. D08 dry changing and separate aft towel care retain their distinct programme roles."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Guarded used-towel receiver with a real open-top bin, rear grip and four actual floor-contact wheel treads. A0.92m straight proposed extraction and complete bounded throat passage are geometrically checked; states count once.",
+        "native_physical_surface_witness_count": 4,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "assets/aquatic_towel_use/AST-AQU-008.manifest.json#/contacts",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ],
+        "limit": "Geometric contact and support connectivity only, not loads, real hygiene, fluid operation or body/reach certification."
+      },
+      "motion_and_hierarchy": {
+        "status": "independently_checked_proposed_removable_translation",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Actual0.92m bin root translation, its dependent physical markers and both exported states are checked continuously against the fixed housing. Four wheel treads stay at floor datum; wheel dynamics are unimplemented.",
+        "evidence": [
+          "assets/aquatic_towel_use/AST-AQU-008.manifest.json",
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "reviewer_fresh_source_only_rebuild_and_embedded_native_roles_checked",
+        "actual_material_roles": [
+          "aquatic_clay_sling",
+          "aquatic_dark_grip",
+          "aquatic_satin_alloy",
+          "aquatic_teal_sling",
+          "ivory_enamel"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/aquatic_towel_use/source/build_towel_use.py",
+            "sha256": "c642ad7f1f5a5f7768908114aa456854553345fbd331412f406070cebc6c3bd2",
+            "bytes": 28916
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/aquatic_towel_use/source/build_towel_use.py",
+            "sha256": "c642ad7f1f5a5f7768908114aa456854553345fbd331412f406070cebc6c3bd2",
+            "bytes": 28916
+          },
+          {
+            "path": "materials/aquatic/aquatic_clay_sling.png",
+            "sha256": "224732b5da3eb280bc0e1d2f230f675bc0ecff4755bfccd411013ea615f88a03",
+            "bytes": 7191
+          },
+          {
+            "path": "materials/aquatic/aquatic_dark_grip.png",
+            "sha256": "31fb5e4b919ab8d20014478c5fce95ad973706abd59784512506222cde02996f",
+            "bytes": 4931
+          },
+          {
+            "path": "materials/aquatic/aquatic_edge_tile.png",
+            "sha256": "8099dff47429905a7faaa80cd64fa97545b07eccb4c94409541c3a1a6d805514",
+            "bytes": 4510
+          },
+          {
+            "path": "materials/aquatic/aquatic_orange_float.png",
+            "sha256": "0cd1dfcecd560d243d99203eb765e58e4b7b859975cf0218074128f865fcc418",
+            "bytes": 4541
+          },
+          {
+            "path": "materials/aquatic/aquatic_pearl_float.png",
+            "sha256": "42a44c9972822e0d450e009f994a360aeb2e30d8ec4a8626624fe8925b1acf7f",
+            "bytes": 4540
+          },
+          {
+            "path": "materials/aquatic/aquatic_satin_alloy.png",
+            "sha256": "df28dd239365ecf295aeefbcb780e358c4d7dcf733063a62a370bdf46daa2dbf",
+            "bytes": 4988
+          },
+          {
+            "path": "materials/aquatic/aquatic_teal_sling.png",
+            "sha256": "e0ff20812d32a82f9ca5009c43179b3c19f27807c24a23420f2d2e5ef438eede",
+            "bytes": 7152
+          },
+          {
+            "path": "materials/aquatic/manifest.json",
+            "sha256": "adde735e9cce3fa836afbf078f4b87a755c13fdb6c7822196a47036953bd4fe8",
+            "bytes": 3059
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/aquatic_materials.py",
+            "sha256": "6c522b087f2c0aef5baa599559211f6070be147d1984feeb77dc2343494a5ca1",
+            "bytes": 1389
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          }
+        ],
+        "evidence": [
+          "qa/batch14/independent_rebuild_receipts.json"
+        ],
+        "limit": "Reviewer starts from only source/helpers/all helper-loaded material maps, with no pre-existing new outputs or QA inputs. Python open instrumentation and loaded-image witnesses are not an OS-syscall-complete trace."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 5388,
+        "mesh_nodes": 8,
+        "primitives": 8,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 402544,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 1,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch14/independent_export_AST-AQU-008.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_component_geometry_proposal",
+        "shape_count": 25,
+        "review_convex_subshape_count": 93,
+        "sampled_max_external_inflation_m": 0.01359007326640344,
+        "evidence": [
+          "qa/batch14/independent_aquatic_towel_use_interfaces.json",
+          "qa/batch14/independent_collision_profile_AST-AQU-008.json"
+        ],
+        "limits": "Purposeful compounds preserve complete tested shelves, vessel, receiver, service and extraction regions. Profile inflation and omitted fine geometry are finite samples and explicitly reported, not continuous distance or physics acceptance."
+      },
+      "existing_independent_evidence": [
+        "qa/batch14/independent_aquatic_towel_use_interfaces.json",
+        "qa/batch14/independent_assembly_geometry_review.json",
+        "qa/batch14/independent_source_native_corner_comparison.json",
+        "qa/batch14/independent_visual_review.json",
+        "qa/batch14/independent_source_AST-AQU-008.json",
+        "qa/batch14/independent_export_AST-AQU-008.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch14/independent_interface_coverage_map.json#/assets/1",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-AQU-009",
+      "family": "aquatic_wet_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/aquatic_wet_use/source/AST-AQU-009.blend",
+          "sha256": "b987c9f6758c2def8d7ab6531ab560c5d3edaf3eeee6c1761a7dad0a55e2fe2c",
+          "bytes": 151947
+        },
+        "export": {
+          "path": "assets/aquatic_wet_use/exports/AST-AQU-009.glb",
+          "sha256": "00b2e2bf0ed1a9eb7969619edc5a8aa335b8dce57ddb81b9abb8b1d22a2041f2",
+          "bytes": 207324
+        },
+        "manifest": {
+          "path": "assets/aquatic_wet_use/AST-AQU-009.manifest.json",
+          "sha256": "b6fe83493f970203d983808ba0bb91f7288a7d36a523bc20a2cc6c2e44da008b",
+          "bytes": 21570
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/aquatic_wet_use/AST-AQU-009.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Source floor Z0 and native floor Y0. Actual contact surfaces and removable-part pivots are distinct from the asset placement origin.",
+        "actual_native_root_nodes": [
+          {
+            "index": 16,
+            "name": "AST-AQU-009",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/aquatic_wet_use/AST-AQU-009.manifest.json#/physical_and_proposal_markers",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender X width/right, Y rear/depth, Z up; front−Y",
+        "exchange": "Native glTF Y-up; front+Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual exported hierarchy, then place. Never basis-convert native vertices twice.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "physical_surfaces_independently_witnessed",
+        "meaning": "Physical source/native outward normals and their named target surfaces are checked. The008 mouth orientation and wet approach positions remain nonphysical proposals.",
+        "evidence": [
+          "assets/aquatic_wet_use/AST-AQU-009.manifest.json#/physical_and_proposal_markers",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ],
+        "omission_assessment": "No host mount, door aperture, local room, plumbing, substances or six-species fitting is invented. D08 dry changing and separate aft towel care retain their distinct programme roles."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Optional compatible-user refreshment pedestal with supported crescent ribs, vessel landing rails, contained splash collector, physical uncalibrated selector and capped outlet/drain interfaces.",
+        "native_physical_surface_witness_count": 6,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "assets/aquatic_wet_use/AST-AQU-009.manifest.json#/physical_and_proposal_markers",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ],
+        "limit": "Geometric contact and support connectivity only, not loads, real hygiene, fluid operation or body/reach certification."
+      },
+      "motion_and_hierarchy": {
+        "status": "independently_checked_proposed_removable_translation",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Actual separate plate/grip root and physical service-face marker retain zero pose and0.40m +sourceY/−nativeZ removal vector. Full t=0 geometric sweep permits only departing seating boundary contact.",
+        "evidence": [
+          "assets/aquatic_wet_use/AST-AQU-009.manifest.json",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "reviewer_fresh_source_only_rebuild_and_embedded_native_roles_checked",
+        "actual_material_roles": [
+          "aquatic_dark_grip",
+          "aquatic_edge_tile",
+          "aquatic_orange_float",
+          "aquatic_pearl_float",
+          "aquatic_satin_alloy"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/aquatic_wet_use/source/build_aquatic_wet_use.py",
+            "sha256": "5ff155655f36d22d5fbc632a7a2a4fd1d4b2360b8475ebdcf8f96427334b83df",
+            "bytes": 25141
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/aquatic_wet_use/source/build_aquatic_wet_use.py",
+            "sha256": "5ff155655f36d22d5fbc632a7a2a4fd1d4b2360b8475ebdcf8f96427334b83df",
+            "bytes": 25141
+          },
+          {
+            "path": "materials/aquatic/aquatic_clay_sling.png",
+            "sha256": "224732b5da3eb280bc0e1d2f230f675bc0ecff4755bfccd411013ea615f88a03",
+            "bytes": 7191
+          },
+          {
+            "path": "materials/aquatic/aquatic_dark_grip.png",
+            "sha256": "31fb5e4b919ab8d20014478c5fce95ad973706abd59784512506222cde02996f",
+            "bytes": 4931
+          },
+          {
+            "path": "materials/aquatic/aquatic_edge_tile.png",
+            "sha256": "8099dff47429905a7faaa80cd64fa97545b07eccb4c94409541c3a1a6d805514",
+            "bytes": 4510
+          },
+          {
+            "path": "materials/aquatic/aquatic_orange_float.png",
+            "sha256": "0cd1dfcecd560d243d99203eb765e58e4b7b859975cf0218074128f865fcc418",
+            "bytes": 4541
+          },
+          {
+            "path": "materials/aquatic/aquatic_pearl_float.png",
+            "sha256": "42a44c9972822e0d450e009f994a360aeb2e30d8ec4a8626624fe8925b1acf7f",
+            "bytes": 4540
+          },
+          {
+            "path": "materials/aquatic/aquatic_satin_alloy.png",
+            "sha256": "df28dd239365ecf295aeefbcb780e358c4d7dcf733063a62a370bdf46daa2dbf",
+            "bytes": 4988
+          },
+          {
+            "path": "materials/aquatic/aquatic_teal_sling.png",
+            "sha256": "e0ff20812d32a82f9ca5009c43179b3c19f27807c24a23420f2d2e5ef438eede",
+            "bytes": 7152
+          },
+          {
+            "path": "materials/aquatic/manifest.json",
+            "sha256": "adde735e9cce3fa836afbf078f4b87a755c13fdb6c7822196a47036953bd4fe8",
+            "bytes": 3059
+          },
+          {
+            "path": "standards/aquatic_materials.py",
+            "sha256": "6c522b087f2c0aef5baa599559211f6070be147d1984feeb77dc2343494a5ca1",
+            "bytes": 1389
+          }
+        ],
+        "evidence": [
+          "qa/batch14/independent_rebuild_receipts.json"
+        ],
+        "limit": "Reviewer starts from only source/helpers/all helper-loaded material maps, with no pre-existing new outputs or QA inputs. Python open instrumentation and loaded-image witnesses are not an OS-syscall-complete trace."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 2488,
+        "mesh_nodes": 7,
+        "primitives": 7,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 207324,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 0,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch14/independent_export_AST-AQU-009.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_component_geometry_proposal",
+        "shape_count": 28,
+        "review_convex_subshape_count": 28,
+        "sampled_max_external_inflation_m": 0.024500012536743165,
+        "evidence": [
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json",
+          "qa/batch14/independent_collision_profile_AST-AQU-009.json"
+        ],
+        "limits": "Purposeful compounds preserve complete tested shelves, vessel, receiver, service and extraction regions. Profile inflation and omitted fine geometry are finite samples and explicitly reported, not continuous distance or physics acceptance."
+      },
+      "existing_independent_evidence": [
+        "qa/batch14/independent_aquatic_wet_use_interfaces.json",
+        "qa/batch14/independent_assembly_geometry_review.json",
+        "qa/batch14/independent_source_native_corner_comparison.json",
+        "qa/batch14/independent_visual_review.json",
+        "qa/batch14/independent_source_AST-AQU-009.json",
+        "qa/batch14/independent_export_AST-AQU-009.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch14/independent_interface_coverage_map.json#/assets/2",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-AQU-010",
+      "family": "aquatic_wet_use",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/aquatic_wet_use/source/AST-AQU-010.blend",
+          "sha256": "f2d060f5b67521142f4f2deec59f469b3c75071905ce6899991d99e0ac39fe71",
+          "bytes": 153402
+        },
+        "export": {
+          "path": "assets/aquatic_wet_use/exports/AST-AQU-010.glb",
+          "sha256": "096429bf084c15fcec597dee66f425beccf49b5a8b09b6542dd896e1e85f10f3",
+          "bytes": 179232
+        },
+        "manifest": {
+          "path": "assets/aquatic_wet_use/AST-AQU-010.manifest.json",
+          "sha256": "39cdd43facea49372056895095a003c7620e0a9d3c7460b9f4dd9593710b94d7",
+          "bytes": 20687
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/aquatic_wet_use/AST-AQU-010.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Source floor Z0 and native floor Y0. Actual contact surfaces and removable-part pivots are distinct from the asset placement origin.",
+        "actual_native_root_nodes": [
+          {
+            "index": 17,
+            "name": "AST-AQU-010",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/aquatic_wet_use/AST-AQU-010.manifest.json#/physical_and_proposal_markers",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender X width/right, Y rear/depth, Z up; front−Y",
+        "exchange": "Native glTF Y-up; front+Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual exported hierarchy, then place. Never basis-convert native vertices twice.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "physical_surfaces_independently_witnessed",
+        "meaning": "Physical source/native outward normals and their named target surfaces are checked. The008 mouth orientation and wet approach positions remain nonphysical proposals.",
+        "evidence": [
+          "assets/aquatic_wet_use/AST-AQU-010.manifest.json#/physical_and_proposal_markers",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ],
+        "omission_assessment": "No host mount, door aperture, local room, plumbing, substances or six-species fitting is invented. D08 dry changing and separate aft towel care retain their distinct programme roles."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Floor-supported tapered rinse-control blade, explicit head gussets, bounded uncalibrated controls, capped head/low connection and independently removable rear plate.",
+        "native_physical_surface_witness_count": 7,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "assets/aquatic_wet_use/AST-AQU-010.manifest.json#/physical_and_proposal_markers",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ],
+        "limit": "Geometric contact and support connectivity only, not loads, real hygiene, fluid operation or body/reach certification."
+      },
+      "motion_and_hierarchy": {
+        "status": "independently_checked_proposed_removable_translation",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "Actual separate plate/grip root and physical service-face marker retain zero pose and0.40m +sourceY/−nativeZ removal vector. Full t=0 geometric sweep permits only departing seating boundary contact.",
+        "evidence": [
+          "assets/aquatic_wet_use/AST-AQU-010.manifest.json",
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "reviewer_fresh_source_only_rebuild_and_embedded_native_roles_checked",
+        "actual_material_roles": [
+          "aquatic_dark_grip",
+          "aquatic_edge_tile",
+          "aquatic_orange_float",
+          "aquatic_pearl_float",
+          "aquatic_satin_alloy"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/aquatic_wet_use/source/build_aquatic_wet_use.py",
+            "sha256": "5ff155655f36d22d5fbc632a7a2a4fd1d4b2360b8475ebdcf8f96427334b83df",
+            "bytes": 25141
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/aquatic_wet_use/source/build_aquatic_wet_use.py",
+            "sha256": "5ff155655f36d22d5fbc632a7a2a4fd1d4b2360b8475ebdcf8f96427334b83df",
+            "bytes": 25141
+          },
+          {
+            "path": "materials/aquatic/aquatic_clay_sling.png",
+            "sha256": "224732b5da3eb280bc0e1d2f230f675bc0ecff4755bfccd411013ea615f88a03",
+            "bytes": 7191
+          },
+          {
+            "path": "materials/aquatic/aquatic_dark_grip.png",
+            "sha256": "31fb5e4b919ab8d20014478c5fce95ad973706abd59784512506222cde02996f",
+            "bytes": 4931
+          },
+          {
+            "path": "materials/aquatic/aquatic_edge_tile.png",
+            "sha256": "8099dff47429905a7faaa80cd64fa97545b07eccb4c94409541c3a1a6d805514",
+            "bytes": 4510
+          },
+          {
+            "path": "materials/aquatic/aquatic_orange_float.png",
+            "sha256": "0cd1dfcecd560d243d99203eb765e58e4b7b859975cf0218074128f865fcc418",
+            "bytes": 4541
+          },
+          {
+            "path": "materials/aquatic/aquatic_pearl_float.png",
+            "sha256": "42a44c9972822e0d450e009f994a360aeb2e30d8ec4a8626624fe8925b1acf7f",
+            "bytes": 4540
+          },
+          {
+            "path": "materials/aquatic/aquatic_satin_alloy.png",
+            "sha256": "df28dd239365ecf295aeefbcb780e358c4d7dcf733063a62a370bdf46daa2dbf",
+            "bytes": 4988
+          },
+          {
+            "path": "materials/aquatic/aquatic_teal_sling.png",
+            "sha256": "e0ff20812d32a82f9ca5009c43179b3c19f27807c24a23420f2d2e5ef438eede",
+            "bytes": 7152
+          },
+          {
+            "path": "materials/aquatic/manifest.json",
+            "sha256": "adde735e9cce3fa836afbf078f4b87a755c13fdb6c7822196a47036953bd4fe8",
+            "bytes": 3059
+          },
+          {
+            "path": "standards/aquatic_materials.py",
+            "sha256": "6c522b087f2c0aef5baa599559211f6070be147d1984feeb77dc2343494a5ca1",
+            "bytes": 1389
+          }
+        ],
+        "evidence": [
+          "qa/batch14/independent_rebuild_receipts.json"
+        ],
+        "limit": "Reviewer starts from only source/helpers/all helper-loaded material maps, with no pre-existing new outputs or QA inputs. Python open instrumentation and loaded-image witnesses are not an OS-syscall-complete trace."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 2084,
+        "mesh_nodes": 7,
+        "primitives": 7,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 179232,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 0,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch14/independent_export_AST-AQU-010.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_component_geometry_proposal",
+        "shape_count": 22,
+        "review_convex_subshape_count": 22,
+        "sampled_max_external_inflation_m": 0.036266687888246676,
+        "evidence": [
+          "qa/batch14/independent_aquatic_wet_use_interfaces.json",
+          "qa/batch14/independent_collision_profile_AST-AQU-010.json"
+        ],
+        "limits": "Purposeful compounds preserve complete tested shelves, vessel, receiver, service and extraction regions. Profile inflation and omitted fine geometry are finite samples and explicitly reported, not continuous distance or physics acceptance."
+      },
+      "existing_independent_evidence": [
+        "qa/batch14/independent_aquatic_wet_use_interfaces.json",
+        "qa/batch14/independent_assembly_geometry_review.json",
+        "qa/batch14/independent_source_native_corner_comparison.json",
+        "qa/batch14/independent_visual_review.json",
+        "qa/batch14/independent_source_AST-AQU-010.json",
+        "qa/batch14/independent_export_AST-AQU-010.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch14/independent_interface_coverage_map.json#/assets/3",
+      "engine_adopted_instances": 0
     }
   ],
   "scope": "Explicit existing component declarations and bounded offline interface evidence. Actual native hierarchy governs geometry; no engine, installed-room, actor, controller or operating behavior is implemented by this index.",
   "audit_source": {
-    "path": "qa/batch13/independent_interface_coverage_map.json",
-    "report": "qa/batch13/independent_review.md"
+    "path": "qa/batch14/independent_interface_coverage_map.json",
+    "report": "qa/batch14/independent_review.md"
   },
   "binding_validation": {
     "exact_asset_id_set": true,
-    "current_bound_files_checked": 207,
+    "current_bound_files_checked": 219,
     "all_files_current": true
   }
 }

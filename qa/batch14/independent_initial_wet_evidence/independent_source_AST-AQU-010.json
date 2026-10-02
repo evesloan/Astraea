@@ -1,0 +1,3119 @@
+{
+  "path": "assets/aquatic_wet_use/source/AST-AQU-010.blend",
+  "sha256": "621da29d34717e9219f7ad77afaf7ee253e56cd2055fb78d5d2b56bca650b086",
+  "executed_script_sha256": "e51395a6b94c60bd8df134b0073f39e91071cbae47a5259e8c74fd45d5d1f366",
+  "blender_version": "4.3.2",
+  "units": {
+    "system": "METRIC",
+    "scale_length": 1.0
+  },
+  "objects": [
+    {
+      "name": "AST-AQU-010",
+      "type": "EMPTY",
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "catalogue_id": "AST-AQU-010",
+        "source_frame": "metres X width Y depth Z up front -Y",
+        "native_glb_frame": "metres X width Y up Z front",
+        "water_behavior": "UNIMPLEMENTED; capped interfaces, substance and species unknown"
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "continuous_rinse_floor_isolator",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_dark_grip",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 28,
+      "min_xyz": [
+        -0.29499998688697815,
+        -0.2800000011920929,
+        0.0
+      ],
+      "max_xyz": [
+        0.29499998688697815,
+        0.23000000417232513,
+        0.02500000037252903
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_dark_grip"
+      ],
+      "editable_mesh_sha256": "5f3bf048fc3db044dad0edf6dc7deb656b933fb45735331f1f5b863272f711b1",
+      "modifier_settings": []
+    },
+    {
+      "name": "FLOOR_CONTACT",
+      "type": "EMPTY",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.02500000037252903
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_surface_contact",
+        "source_position_m": [
+          0.0,
+          -0.025,
+          0.0
+        ],
+        "gltf_position_m": [
+          0.0,
+          0.0,
+          0.025
+        ],
+        "physical_part": "continuous_rinse_floor_isolator",
+        "surface_normal_source": [
+          0,
+          0,
+          -1
+        ],
+        "surface_normal_gltf": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "flared_rinse_load_plinth",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 220,
+      "min_xyz": [
+        -0.3199999928474426,
+        -0.32499998807907104,
+        0.02500000037252903
+      ],
+      "max_xyz": [
+        0.3199999928474426,
+        0.2750000059604645,
+        0.10999999940395355
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "528215ba79a73cc1b989f34445d76e907d5932775e5555a8d9d56bc85b0a3efc",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "left_tapered_spine_rail",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 156,
+      "min_xyz": [
+        -0.24500000476837158,
+        0.10000000149011612,
+        0.10999999940395355
+      ],
+      "max_xyz": [
+        -0.06557469069957733,
+        0.23999999463558197,
+        2.059999942779541
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "99880087faacb068578c31bec0c2ab047bf0fea4c762a9e2d0024b9d154d5d38",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "right_tapered_spine_rail",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 156,
+      "min_xyz": [
+        0.06557469069957733,
+        0.10000000149011612,
+        0.10999999940395355
+      ],
+      "max_xyz": [
+        0.24500000476837158,
+        0.23999999463558197,
+        2.059999942779541
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "b94a7539a9797121817205023c6a6ba8532a62aa9bc3df4a2c83af6e739b0ae6",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "upper_teal_control_web",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_edge_tile",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 20,
+      "min_xyz": [
+        -0.1850000023841858,
+        0.10000000149011612,
+        0.699999988079071
+      ],
+      "max_xyz": [
+        0.1850000023841858,
+        0.15000000596046448,
+        2.059999942779541
+      ],
+      "source_vertices": 12,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_edge_tile"
+      ],
+      "editable_mesh_sha256": "25bd5f10b79dafbb13ea8d62389f8b3bf5ccfd64540d7fc68e6fa2f8135be41c",
+      "modifier_settings": []
+    },
+    {
+      "name": "swept_protective_head",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 188,
+      "min_xyz": [
+        -0.20499999821186066,
+        -0.3400000035762787,
+        1.9957797527313232
+      ],
+      "max_xyz": [
+        0.20499999821186066,
+        0.23999999463558197,
+        2.180000066757202
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "cc80604195824d2fd876249a212f1702c40725666f601f915f149a6bded77758",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "left_head_load_gusset",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_orange_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 136,
+      "min_xyz": [
+        -0.14000000059604645,
+        -0.23000000417232513,
+        1.7701873779296875
+      ],
+      "max_xyz": [
+        -0.09000000357627869,
+        0.14499999582767487,
+        2.0799999237060547
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_orange_float"
+      ],
+      "editable_mesh_sha256": "d474fc9f75c3016ad389008c6b59ec267cb3da0f80a5e7fab5f7685f4cff8ebf",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0010000000474974513,
+          "width_pct": 0.0010000000474974513,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "right_head_load_gusset",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_orange_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 136,
+      "min_xyz": [
+        0.09000000357627869,
+        -0.23000000417232513,
+        1.7701873779296875
+      ],
+      "max_xyz": [
+        0.14000000059604645,
+        0.14499999582767487,
+        2.0799999237060547
+      ],
+      "source_vertices": 10,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_orange_float"
+      ],
+      "editable_mesh_sha256": "a673c3c72d6c93813f137b373a4984624381383cd21cdc1a8479ec31402b2345",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0010000000474974513,
+          "width_pct": 0.0010000000474974513,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "capped_adjustable_head_interface",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_satin_alloy",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.05299999937415123,
+        -0.257999986410141,
+        2.015000104904175
+      ],
+      "max_xyz": [
+        0.05299999937415123,
+        -0.15199999511241913,
+        2.0799999237060547
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_satin_alloy"
+      ],
+      "editable_mesh_sha256": "1b43119f178bac76d728a09bf7a6755a7fd34f47b7c6b66115394b1d301cd9df",
+      "modifier_settings": []
+    },
+    {
+      "name": "HEAD_INTERFACE_CAP",
+      "type": "EMPTY",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.20499999821186066
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          2.015000104904175
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_capped_interface",
+        "source_position_m": [
+          0.0,
+          -0.205,
+          2.015
+        ],
+        "gltf_position_m": [
+          0.0,
+          2.015,
+          0.205
+        ],
+        "physical_part": "capped_adjustable_head_interface",
+        "surface_normal_source": [
+          0,
+          0,
+          -1
+        ],
+        "surface_normal_gltf": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "orange_bounded_control_cradle",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_orange_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 132,
+      "min_xyz": [
+        -0.1599999964237213,
+        0.04699999839067459,
+        0.9649999737739563
+      ],
+      "max_xyz": [
+        0.1599999964237213,
+        0.10000000149011612,
+        1.1950000524520874
+      ],
+      "source_vertices": 12,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_orange_float"
+      ],
+      "editable_mesh_sha256": "2168bc791ad47c3cc4e79f5b16245bb596b145c7453473f1c737dc492e5c27b9",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.004000000189989805,
+          "width_pct": 0.004000000189989805,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "bounded_select_control",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_dark_grip",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.10699999332427979,
+        0.017999999225139618,
+        1.0379999876022339
+      ],
+      "max_xyz": [
+        -0.022999998182058334,
+        0.04699999839067459,
+        1.1220000982284546
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_dark_grip"
+      ],
+      "editable_mesh_sha256": "ce771eeb6f17de7b5ff4fc0182e4143253793bafd14763fe2888d6a4cc697c8b",
+      "modifier_settings": []
+    },
+    {
+      "name": "SELECT_CONTROL_CONTACT",
+      "type": "EMPTY",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.06499999761581421
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.017999999225139618
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.0800000429153442
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_control_contact",
+        "source_position_m": [
+          -0.065,
+          0.018,
+          1.08
+        ],
+        "gltf_position_m": [
+          -0.065,
+          1.08,
+          -0.018
+        ],
+        "physical_part": "bounded_select_control",
+        "surface_normal_source": [
+          0,
+          -1,
+          0
+        ],
+        "surface_normal_gltf": [
+          0,
+          0,
+          1
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "bounded_stop_control",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_dark_grip",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        0.03500000014901161,
+        0.017999999225139618,
+        1.0450000762939453
+      ],
+      "max_xyz": [
+        0.10500000417232513,
+        0.04699999839067459,
+        1.1150000095367432
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_dark_grip"
+      ],
+      "editable_mesh_sha256": "81bb583d27b2f1df5dcd746c4c09f95143aeb2cf26f4c05e69d72e9548518b71",
+      "modifier_settings": []
+    },
+    {
+      "name": "STOP_CONTROL_CONTACT",
+      "type": "EMPTY",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.017999999225139618
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.0800000429153442
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_control_contact",
+        "source_position_m": [
+          0.07,
+          0.018,
+          1.08
+        ],
+        "gltf_position_m": [
+          0.07,
+          1.08,
+          -0.018
+        ],
+        "physical_part": "bounded_stop_control",
+        "surface_normal_source": [
+          0,
+          -1,
+          0
+        ],
+        "surface_normal_gltf": [
+          0,
+          0,
+          1
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "original_optional_rinse_glyph_0",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.06300000101327896,
+        0.08399999886751175,
+        1.4275000095367432
+      ],
+      "max_xyz": [
+        -0.04699999839067459,
+        0.10000000149011612,
+        1.537500023841858
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "ba94a43acc916e73b29f056beb85226ff6a241d1f7219b3cfb8b83890a68ce94",
+      "modifier_settings": []
+    },
+    {
+      "name": "original_optional_rinse_glyph_1",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.00800000037997961,
+        0.08399999886751175,
+        1.4550000429153442
+      ],
+      "max_xyz": [
+        0.00800000037997961,
+        0.10000000149011612,
+        1.565000057220459
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "cc4fff6000b013fe3cc292750ce034bb7f61161259412c4f77d9b683e719d474",
+      "modifier_settings": []
+    },
+    {
+      "name": "original_optional_rinse_glyph_2",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.04699999839067459,
+        0.08399999886751175,
+        1.4275000095367432
+      ],
+      "max_xyz": [
+        0.06300000101327896,
+        0.10000000149011612,
+        1.537500023841858
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "5148074963017319a5cca720bbc37e9ebe97659afd9ec45e2b946a6bd87cbf5e",
+      "modifier_settings": []
+    },
+    {
+      "name": "lower_service_cross_tie",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.1899999976158142,
+        0.10000000149011612,
+        0.14749999344348907
+      ],
+      "max_xyz": [
+        0.1899999976158142,
+        0.23999999463558197,
+        0.2224999964237213
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "bf26bdbea3456b6ff402a8ab96410f3b6da58bd459e35dd7d9a9be704c0e31a3",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "left_rear_cover_seat",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.20250000059604645,
+        0.20499999821186066,
+        0.2150000035762787
+      ],
+      "max_xyz": [
+        -0.1274999976158142,
+        0.24500000476837158,
+        0.6650000214576721
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "5af0b303973cb5d3f80929a01a93e4024fb810fef2bb81a5844e47fc2d116c43",
+      "modifier_settings": []
+    },
+    {
+      "name": "right_rear_cover_seat",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_pearl_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.1274999976158142,
+        0.20499999821186066,
+        0.2150000035762787
+      ],
+      "max_xyz": [
+        0.20250000059604645,
+        0.24500000476837158,
+        0.6650000214576721
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_pearl_float"
+      ],
+      "editable_mesh_sha256": "9b1310fc38edb3339a89de1f44d78aa420bc195727fa6e09fdee7aa5c89d7635",
+      "modifier_settings": []
+    },
+    {
+      "name": "rinse_rear_lift_off_cover",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_orange_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.1599999964237213,
+        0.24500000476837158,
+        0.22499999403953552
+      ],
+      "max_xyz": [
+        0.1599999964237213,
+        0.27000001072883606,
+        0.6449999809265137
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_orange_float"
+      ],
+      "editable_mesh_sha256": "9b37fc62c8c5b558146cf875cf0d5997005bee534b1b2fe6341215f6292b3f97",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "rinse_rear_lift_off_cover_grip_-0.1024",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_dark_grip",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.12489999830722809,
+        0.2694999873638153,
+        0.39250001311302185
+      ],
+      "max_xyz": [
+        -0.07989999651908875,
+        0.2944999933242798,
+        0.47749999165534973
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_dark_grip"
+      ],
+      "editable_mesh_sha256": "6ca5cac72e1219f3bf4f575e3e8dbd147ec578aa384f1134b73b19432d880899",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.004000000189989805,
+          "width_pct": 0.004000000189989805,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "rinse_rear_lift_off_cover_grip_0.1024",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_dark_grip",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.07989999651908875,
+        0.2694999873638153,
+        0.39250001311302185
+      ],
+      "max_xyz": [
+        0.12489999830722809,
+        0.2944999933242798,
+        0.47749999165534973
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_dark_grip"
+      ],
+      "editable_mesh_sha256": "73a1b8dfc7ca625d46e3d79a49f18a5cb1533b6174c1e3bec020e774332168bb",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.004000000189989805,
+          "width_pct": 0.004000000189989805,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "RINSE_REAR_LIFT_OFF_COVER_SERVICE_FACE",
+      "type": "EMPTY",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.27000001072883606
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.4350000023841858
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_surface_contact",
+        "source_position_m": [
+          0.0,
+          0.27,
+          0.435
+        ],
+        "gltf_position_m": [
+          0.0,
+          0.435,
+          -0.27
+        ],
+        "physical_part": "rinse_rear_lift_off_cover",
+        "surface_normal_source": [
+          0,
+          1,
+          0
+        ],
+        "surface_normal_gltf": [
+          0,
+          0,
+          -1
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "low_front_capped_connection",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_satin_alloy",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.029999999329447746,
+        -0.34700000286102295,
+        0.03999999910593033
+      ],
+      "max_xyz": [
+        0.029999999329447746,
+        -0.3050000071525574,
+        0.10000000149011612
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_satin_alloy"
+      ],
+      "editable_mesh_sha256": "adbd01660078ee35a2be079e69fcc1811179756590dfe5fb02eb24a65d956f45",
+      "modifier_settings": []
+    },
+    {
+      "name": "LOW_CONNECTION_CAP",
+      "type": "EMPTY",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.34700000286102295
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_capped_interface",
+        "source_position_m": [
+          0.0,
+          -0.347,
+          0.07
+        ],
+        "gltf_position_m": [
+          0.0,
+          0.07,
+          0.347
+        ],
+        "physical_part": "low_front_capped_connection",
+        "surface_normal_source": [
+          0,
+          -1,
+          0
+        ],
+        "surface_normal_gltf": [
+          0,
+          0,
+          1
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "tile_splash_landing",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_edge_tile",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 28,
+      "min_xyz": [
+        -0.2150000035762787,
+        -0.27000001072883606,
+        0.10999999940395355
+      ],
+      "max_xyz": [
+        0.2150000035762787,
+        0.009999999776482582,
+        0.11999999731779099
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_edge_tile"
+      ],
+      "editable_mesh_sha256": "55bfc58274d09d5ad0d3e2852067daadabdba268e1886f11ad9267c96f826c3a",
+      "modifier_settings": []
+    },
+    {
+      "name": "SPLASH_FLOOR_CONTACT",
+      "type": "EMPTY",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.12999999523162842
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.11999999731779099
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_surface_contact",
+        "source_position_m": [
+          0.0,
+          -0.13,
+          0.12
+        ],
+        "gltf_position_m": [
+          0.0,
+          0.12,
+          0.13
+        ],
+        "physical_part": "tile_splash_landing",
+        "surface_normal_source": [
+          0,
+          0,
+          1
+        ],
+        "surface_normal_gltf": [
+          0,
+          1,
+          0
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "left_splash_guard",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_orange_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.2574999928474426,
+        -0.20000000298023224,
+        0.10999999940395355
+      ],
+      "max_xyz": [
+        -0.2224999964237213,
+        0.03999999910593033,
+        0.16500000655651093
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_orange_float"
+      ],
+      "editable_mesh_sha256": "0f753b6026536f53469364740262b1dffbdb5c94da6bfda6911380c6cc70104b",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.004999999888241291,
+          "width_pct": 0.004999999888241291,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "right_splash_guard",
+      "type": "MESH",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "aquatic_orange_float",
+        "provenance": "Original aquatic component geometry; generic metric UV authoring"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.2224999964237213,
+        -0.20000000298023224,
+        0.10999999940395355
+      ],
+      "max_xyz": [
+        0.2574999928474426,
+        0.03999999910593033,
+        0.16500000655651093
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_aquatic_orange_float"
+      ],
+      "editable_mesh_sha256": "855881b92055753f7a424ded0406d70a966517afa6bd64af075e5171f8ec007c",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.004999999888241291,
+          "width_pct": 0.004999999888241291,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "FRONT_APPROACH",
+      "type": "EMPTY",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.949999988079071
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "nonphysical_approach_proposal",
+        "source_position_m": [
+          0.0,
+          -0.95,
+          0.0
+        ],
+        "gltf_position_m": [
+          0.0,
+          0.0,
+          0.95
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "FLOOR_ORIGIN",
+      "type": "EMPTY",
+      "parent": "AST-AQU-010",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "placement_origin",
+        "source_position_m": [
+          0,
+          0,
+          0
+        ],
+        "gltf_position_m": [
+          0,
+          0,
+          0
+        ]
+      },
+      "modifiers": [],
+      "modifier_settings": []
+    }
+  ],
+  "used_materials": [
+    {
+      "name": "ASTRAEA_aquatic_dark_grip",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "aquatic_dark_grip.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.8999999761581421,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_aquatic_edge_tile",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "aquatic_edge_tile.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.47999998927116394,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_aquatic_orange_float",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "aquatic_orange_float.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.5799999833106995,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_aquatic_pearl_float",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "aquatic_pearl_float.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.6200000047683716,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_aquatic_satin_alloy",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "aquatic_satin_alloy.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.699999988079071,
+          "Roughness": 0.4699999988079071,
+          "Alpha": 1.0
+        }
+      ]
+    }
+  ],
+  "used_images": [
+    {
+      "name": "aquatic_dark_grip.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/aquatic/aquatic_dark_grip.png",
+      "packed": true,
+      "packed_sha256": "31fb5e4b919ab8d20014478c5fce95ad973706abd59784512506222cde02996f"
+    },
+    {
+      "name": "aquatic_edge_tile.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/aquatic/aquatic_edge_tile.png",
+      "packed": true,
+      "packed_sha256": "8099dff47429905a7faaa80cd64fa97545b07eccb4c94409541c3a1a6d805514"
+    },
+    {
+      "name": "aquatic_orange_float.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/aquatic/aquatic_orange_float.png",
+      "packed": true,
+      "packed_sha256": "0cd1dfcecd560d243d99203eb765e58e4b7b859975cf0218074128f865fcc418"
+    },
+    {
+      "name": "aquatic_pearl_float.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/aquatic/aquatic_pearl_float.png",
+      "packed": true,
+      "packed_sha256": "42a44c9972822e0d450e009f994a360aeb2e30d8ec4a8626624fe8925b1acf7f"
+    },
+    {
+      "name": "aquatic_satin_alloy.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/aquatic/aquatic_satin_alloy.png",
+      "packed": true,
+      "packed_sha256": "df28dd239365ecf295aeefbcb780e358c4d7dcf733063a62a370bdf46daa2dbf"
+    }
+  ],
+  "load_success": true,
+  "unused_images": [
+    "aquatic_clay_sling.png",
+    "aquatic_teal_sling.png",
+    "Render Result"
+  ],
+  "bounds_min_m": [
+    -0.3199999928474426,
+    -0.34700000286102295,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.3199999928474426,
+    0.2944999933242798,
+    2.180000066757202
+  ],
+  "dimensions_m": [
+    0.6399999856948853,
+    0.6414999961853027,
+    2.180000066757202
+  ],
+  "evaluated_triangles": 2084,
+  "source_unchanged_after_load": true,
+  "geometry_cache": "qa/batch14/independent_source_geometry_AST-AQU-010.npz"
+}

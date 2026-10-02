@@ -1,0 +1,237 @@
+{
+  "scope": "Proposed relative component inspection positions only; distinct dry-use and wet-use examples in a studio, not adjoining historical D08 rooms or a reconstructed circulation plan.",
+  "frame": "Blender source metres, Z up, front -Y; actual native GLB basis remains (sourceX,sourceZ,-sourceY).",
+  "status": "Actual first exports available for provisional preflight; final sources and poses remain under review.",
+  "placements": [
+    {
+      "catalogue_id": "AST-AQU-007",
+      "key": "clean",
+      "source_origin_m": [
+        -1.8,
+        0,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "role": "Protected dry retrieval; same front opening serves restocking"
+    },
+    {
+      "catalogue_id": "AST-AQU-008",
+      "key": "used",
+      "source_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "role": "Guarded return, rear bin withdrawal distinct from guest approach"
+    },
+    {
+      "catalogue_id": "AST-AQU-009",
+      "key": "refreshment",
+      "source_origin_m": [
+        1.95,
+        0.65,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "role": "Optional compatible-user vessel/control/splash use"
+    },
+    {
+      "catalogue_id": "AST-AQU-010",
+      "key": "rinse",
+      "source_origin_m": [
+        3.4,
+        0.65,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "role": "Supported capped rinse-control housing and maintenance interfaces"
+    }
+  ],
+  "proposed_empty_regions": [
+    {
+      "id": "front_through_strip",
+      "min_source_m": [
+        -2.55,
+        -3.5,
+        0.03
+      ],
+      "max_source_m": [
+        3.85,
+        -1.5,
+        2.3
+      ],
+      "meaning": "Two-metre-wide QA strip separated from component use positions; still not an actual ship route or body/cart guarantee"
+    },
+    {
+      "id": "rear_service_stance",
+      "min_source_m": [
+        -2.55,
+        1.5,
+        0.03
+      ],
+      "max_source_m": [
+        3.85,
+        2.5,
+        2.3
+      ],
+      "meaning": "Proposed stance beyond full bin/panel removal; exact exports must prove empty geometry"
+    }
+  ],
+  "requirements": [
+    "Dry clean supply and used return retain distinct face/opening/markings",
+    "No guest-to-service line through the return guard in tested closed/withdrawn states",
+    "Bin full-state support remains actual floor wheels; physics is unimplemented",
+    "No water, real hygiene, fluid or species compatibility assumed",
+    "Original room adjacency, actual dry/wet thresholds and structural/floor fit stay unknown"
+  ],
+  "views_intent": [
+    "Dry clean/used pair at ordinary standing height",
+    "Same pair with container withdrawn, guarded mouth unchanged",
+    "Wet fixture pair showing vessel/controls and supported head",
+    "Actual rear service and drain/panel interfaces, clearly component QA"
+  ],
+  "items": [
+    {
+      "catalogue_id": "AST-AQU-007",
+      "key": "clean",
+      "source_origin_m": [
+        -1.8,
+        0,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "role": "Protected dry retrieval; same front opening serves restocking",
+      "path": "assets/aquatic_towel_use/exports/AST-AQU-007.glb",
+      "source_path": "assets/aquatic_towel_use/source/AST-AQU-007.blend",
+      "manifest_path": "assets/aquatic_towel_use/AST-AQU-007.manifest.json"
+    },
+    {
+      "catalogue_id": "AST-AQU-008",
+      "key": "used",
+      "source_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "role": "Guarded return, rear bin withdrawal distinct from guest approach",
+      "path": "assets/aquatic_towel_use/exports/AST-AQU-008.glb",
+      "source_path": "assets/aquatic_towel_use/source/AST-AQU-008.blend",
+      "manifest_path": "assets/aquatic_towel_use/AST-AQU-008.manifest.json"
+    },
+    {
+      "catalogue_id": "AST-AQU-009",
+      "key": "refreshment",
+      "source_origin_m": [
+        1.95,
+        0.65,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "role": "Optional compatible-user vessel/control/splash use",
+      "path": "assets/aquatic_wet_use/exports/AST-AQU-009.glb",
+      "source_path": "assets/aquatic_wet_use/source/AST-AQU-009.blend",
+      "manifest_path": "assets/aquatic_wet_use/AST-AQU-009.manifest.json"
+    },
+    {
+      "catalogue_id": "AST-AQU-010",
+      "key": "rinse",
+      "source_origin_m": [
+        3.4,
+        0.65,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "role": "Supported capped rinse-control housing and maintenance interfaces",
+      "path": "assets/aquatic_wet_use/exports/AST-AQU-010.glb",
+      "source_path": "assets/aquatic_wet_use/source/AST-AQU-010.blend",
+      "manifest_path": "assets/aquatic_wet_use/AST-AQU-010.manifest.json"
+    }
+  ],
+  "withdrawn_export": "assets/aquatic_towel_use/exports/AST-AQU-008_withdrawn.glb",
+  "views": {
+    "dry_closed": {
+      "state": "closed",
+      "keys": [
+        "clean",
+        "used"
+      ],
+      "source_eye_m": [
+        2.6,
+        -4.3,
+        1.65
+      ],
+      "source_target_m": [
+        -0.7,
+        0.15,
+        0.9
+      ],
+      "lens_mm": 32,
+      "full_component_frame": true,
+      "purpose": "Dry supply and guarded return, ordinary standing inspection"
+    },
+    "dry_withdrawn": {
+      "state": "withdrawn",
+      "keys": [
+        "clean",
+        "used"
+      ],
+      "source_eye_m": [
+        2.6,
+        -4.3,
+        1.65
+      ],
+      "source_target_m": [
+        -0.7,
+        0.15,
+        0.9
+      ],
+      "lens_mm": 32,
+      "full_component_frame": true,
+      "purpose": "Same camera, actual supported bin withdrawal; no engine dynamics"
+    },
+    "wet_pair": {
+      "state": "closed",
+      "keys": [
+        "refreshment",
+        "rinse"
+      ],
+      "source_eye_m": [
+        5.4,
+        -3.8,
+        1.65
+      ],
+      "source_target_m": [
+        2.65,
+        0.65,
+        1.07
+      ],
+      "lens_mm": 35,
+      "full_component_frame": true,
+      "purpose": "Distinct supported optional wet-use fixtures, connections capped"
+    },
+    "service_interfaces": {
+      "state": "withdrawn",
+      "keys": [
+        "clean",
+        "used",
+        "refreshment",
+        "rinse"
+      ],
+      "source_eye_m": [
+        4.9,
+        6.5,
+        1.65
+      ],
+      "source_target_m": [
+        0.5,
+        0.6,
+        1.02
+      ],
+      "lens_mm": 27,
+      "full_component_frame": true,
+      "purpose": "Component rear maintenance and withdrawal, not an installed service corridor"
+    }
+  }
+}

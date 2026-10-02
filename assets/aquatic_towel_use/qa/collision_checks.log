@@ -1,0 +1,151 @@
+AST-AQU-007 PASS True clear [('lower_front_retrieval_mouth', 0), ('upper_front_retrieval_mouth', 0), ('front_restock_approach', 0)]
+AST-AQU-008 PASS True clear [('guest_mouth_aperture', 0), ('bin_internal_collection', 0), ('rear_handle_finger_gap', 0)]
+SWEEP True []
+SIGHT True []
+THROAT True [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0)]
+{
+  "assets": {
+    "AST-AQU-007": {
+      "proposal_shape_count": 13,
+      "whole_clear_volumes": [
+        {
+          "name": "lower_front_retrieval_mouth",
+          "whole_clear_volume_boundary_intrusions": 0,
+          "center_contained_in_shapes": [],
+          "passed": true
+        },
+        {
+          "name": "upper_front_retrieval_mouth",
+          "whole_clear_volume_boundary_intrusions": 0,
+          "center_contained_in_shapes": [],
+          "passed": true
+        },
+        {
+          "name": "front_restock_approach",
+          "whole_clear_volume_boundary_intrusions": 0,
+          "center_contained_in_shapes": [],
+          "passed": true
+        }
+      ],
+      "positive_solid_boundary_hits": 10,
+      "passed": true,
+      "limitations": "Declared geometric compounds, not engine physics. Boundaries tested against full volumes and continuous sweeps. Wheel analytic cylinders conservatively enclosed in AABBs; the documented0.961mm floor overreach remains."
+    },
+    "AST-AQU-008": {
+      "proposal_shape_count": 25,
+      "whole_clear_volumes": [
+        {
+          "name": "guest_mouth_aperture",
+          "whole_clear_volume_boundary_intrusions": 0,
+          "center_contained_in_shapes": [],
+          "passed": true
+        },
+        {
+          "name": "bin_internal_collection",
+          "whole_clear_volume_boundary_intrusions": 0,
+          "center_contained_in_shapes": [],
+          "passed": true
+        },
+        {
+          "name": "rear_handle_finger_gap",
+          "whole_clear_volume_boundary_intrusions": 0,
+          "center_contained_in_shapes": [],
+          "passed": true
+        }
+      ],
+      "positive_solid_boundary_hits": 12,
+      "passed": true,
+      "continuous_proposal_sweeps": [
+        {
+          "shape": "bin_bottom",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "bin_side_-1",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "bin_side_1",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "bin_low_front_wall",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "bin_rear_service_wall",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "handle_left",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "handle_right",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "handle_bar",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "wheel_(-0.274, -0.195)",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "wheel_(-0.274, 0.195)",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "wheel_(0.274, -0.195)",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        },
+        {
+          "shape": "wheel_(0.274, 0.195)",
+          "fixed_proposal_triangle_intrusions": 0,
+          "passed": true
+        }
+      ],
+      "continuous_proposal_throat": [
+        {
+          "segment": 0,
+          "proposal_intrusions": 0,
+          "passed": true
+        },
+        {
+          "segment": 1,
+          "proposal_intrusions": 0,
+          "passed": true
+        },
+        {
+          "segment": 2,
+          "proposal_intrusions": 0,
+          "passed": true
+        },
+        {
+          "segment": 3,
+          "proposal_intrusions": 0,
+          "passed": true
+        },
+        {
+          "segment": 4,
+          "proposal_intrusions": 0,
+          "passed": true
+        }
+      ],
+      "limitations": "Declared geometric compounds, not engine physics. Boundaries tested against full volumes and continuous sweeps. Wheel analytic cylinders conservatively enclosed in AABBs; the documented0.961mm floor overreach remains."
+    }
+  },
+  "all_passed": true
+}

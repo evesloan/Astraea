@@ -1,0 +1,2038 @@
+{
+  "family": "aquatic_wet_use",
+  "revision": "aquatic-wet-use-01",
+  "assets": [
+    {
+      "catalogue_id": "AST-AQU-009",
+      "name": "Crescent optional refreshment pedestal",
+      "title": "Crescent optional refreshment pedestal",
+      "unique_design": true,
+      "source": "source/AST-AQU-009.blend",
+      "export": "exports/AST-AQU-009.glb",
+      "generator": "source/build_aquatic_wet_use.py",
+      "source_frame": "metres Blender X width Y depth Z up front -Y",
+      "exchange_frame": "metres native GLB Y-up source(x,y,z)->(x,z,-y)",
+      "pivot": {
+        "source_m": [
+          0,
+          0,
+          0
+        ],
+        "gltf_m": [
+          0,
+          0,
+          0
+        ],
+        "datum": "floor contact datum; host support unknown"
+      },
+      "bounds_blender_z_up": {
+        "min_m": [
+          -0.36000001430511475,
+          -0.32499998807907104,
+          0.0
+        ],
+        "max_m": [
+          0.36000001430511475,
+          0.30000001192092896,
+          1.5
+        ],
+        "dimensions_m": [
+          0.7200000286102295,
+          0.625,
+          1.5
+        ]
+      },
+      "bounds_gltf_y_up": {
+        "min_m": [
+          -0.36000001430511475,
+          0.0,
+          -0.30000001192092896
+        ],
+        "max_m": [
+          0.36000001430511475,
+          1.5,
+          0.32499998807907104
+        ],
+        "dimensions_m": [
+          0.7200000286102295,
+          1.5,
+          0.625
+        ]
+      },
+      "dimensions_blender_xyz_m": [
+        0.7200000286102295,
+        0.625,
+        1.5
+      ],
+      "evaluated_triangles": 2488,
+      "editable_semantic_parts": 25,
+      "semantic_parts": [
+        "continuous_floor_isolator",
+        "pearl_splayed_pedestal",
+        "left_swept_crescent_rib",
+        "right_swept_crescent_rib",
+        "teal_splash_back",
+        "arched_orange_hood_infill",
+        "orange_splash_collection_floor",
+        "left_raised_collection_return",
+        "right_raised_collection_return",
+        "clipped_front_collection_lip",
+        "vessel_landing_rail_-0.075",
+        "vessel_landing_rail_0",
+        "vessel_landing_rail_0.075",
+        "protected_capped_optional_outlet",
+        "bounded_select_pad",
+        "glyph_vessel_left",
+        "glyph_vessel_right",
+        "glyph_vessel_base",
+        "left_rear_panel_seat",
+        "right_rear_panel_seat",
+        "service_bay_lower_sill",
+        "rear_removable_service_plate",
+        "rear_removable_service_plate_grip_-0.11199999999999999",
+        "rear_removable_service_plate_grip_0.11199999999999999",
+        "visible_front_low_drain_cap"
+      ],
+      "material_roles": [
+        "aquatic_dark_grip",
+        "aquatic_edge_tile",
+        "aquatic_orange_float",
+        "aquatic_pearl_float",
+        "aquatic_satin_alloy"
+      ],
+      "runtime_consolidation": "Static evaluated body copies grouped by material; separate purposeful removable plate root with plate/grips grouped by material; source/native zero pose and removal vector explicit",
+      "physical_and_proposal_markers": [
+        {
+          "name": "FLOOR_CONTACT",
+          "kind": "physical_surface_contact",
+          "source_m": [
+            0,
+            0,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "physical_part": "continuous_floor_isolator",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "",
+          "surface_normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "surface_normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "VESSEL_CONTACT",
+          "kind": "physical_surface_contact",
+          "source_m": [
+            0,
+            -0.11,
+            0.915
+          ],
+          "gltf_m": [
+            0,
+            0.915,
+            0.11
+          ],
+          "physical_part": "vessel_landing_rail_0",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Actual 36mm central landing rail; adjacent support rails; vessel and user compatibility unknown",
+          "surface_normal_source": [
+            0,
+            0,
+            1
+          ],
+          "surface_normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "OPTIONAL_OUTLET_CAP",
+          "kind": "physical_capped_interface",
+          "source_m": [
+            0,
+            -0.11,
+            1.31
+          ],
+          "gltf_m": [
+            0,
+            1.31,
+            0.11
+          ],
+          "physical_part": "protected_capped_optional_outlet",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Closed adjustable interface; no substance or functioning flow",
+          "surface_normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "surface_normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "SELECT_CONTACT",
+          "kind": "physical_control_contact",
+          "source_m": [
+            0.125,
+            0.105,
+            1.2
+          ],
+          "gltf_m": [
+            0.125,
+            1.2,
+            -0.105
+          ],
+          "physical_part": "bounded_select_pad",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "",
+          "surface_normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "surface_normal_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "REAR_REMOVABLE_SERVICE_PLATE_SERVICE_FACE",
+          "kind": "physical_surface_contact",
+          "source_m": [
+            0,
+            0.26,
+            0.495
+          ],
+          "gltf_m": [
+            0,
+            0.495,
+            -0.26
+          ],
+          "physical_part": "rear_removable_service_plate",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Pull rearward after releasing unspecified retainers; no lock or operation simulation",
+          "surface_normal_source": [
+            0,
+            1,
+            0
+          ],
+          "surface_normal_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "LOW_DRAIN_CAP",
+          "kind": "physical_capped_interface",
+          "source_m": [
+            0,
+            -0.325,
+            0.075
+          ],
+          "gltf_m": [
+            0,
+            0.075,
+            0.325
+          ],
+          "physical_part": "visible_front_low_drain_cap",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Capped provision only; drain route, host aperture and fluid behavior absent",
+          "surface_normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "surface_normal_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "FRONT_APPROACH",
+          "kind": "nonphysical_approach_proposal",
+          "source_m": [
+            0,
+            -0.88,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0.88
+          ],
+          "physical_part": null,
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Not an actor position or reach certificate"
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "kind": "placement_origin",
+          "source_m": [
+            0,
+            0,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "physical_part": null,
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": ""
+        }
+      ],
+      "joins": [
+        {
+          "parts": [
+            "continuous_floor_isolator",
+            "pearl_splayed_pedestal"
+          ],
+          "probe_source_m": [
+            0,
+            0,
+            0.025
+          ],
+          "probe_gltf_m": [
+            0,
+            0.025,
+            0
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "left_swept_crescent_rib",
+            "pearl_splayed_pedestal"
+          ],
+          "probe_source_m": [
+            -0.25,
+            0.12,
+            0.13
+          ],
+          "probe_gltf_m": [
+            -0.25,
+            0.13,
+            -0.12
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "right_swept_crescent_rib",
+            "pearl_splayed_pedestal"
+          ],
+          "probe_source_m": [
+            0.25,
+            0.12,
+            0.13
+          ],
+          "probe_gltf_m": [
+            0.25,
+            0.13,
+            -0.12
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "teal_splash_back",
+            "left_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            -0.215,
+            0.164,
+            1.1
+          ],
+          "probe_gltf_m": [
+            -0.215,
+            1.1,
+            -0.164
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "teal_splash_back",
+            "right_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            0.215,
+            0.164,
+            1.1
+          ],
+          "probe_gltf_m": [
+            0.215,
+            1.1,
+            -0.164
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "arched_orange_hood_infill",
+            "left_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            -0.215,
+            0,
+            1.43
+          ],
+          "probe_gltf_m": [
+            -0.215,
+            1.43,
+            0
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "arched_orange_hood_infill",
+            "right_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            0.215,
+            0,
+            1.43
+          ],
+          "probe_gltf_m": [
+            0.215,
+            1.43,
+            0
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "orange_splash_collection_floor",
+            "left_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            -0.24,
+            0.16,
+            0.85
+          ],
+          "probe_gltf_m": [
+            -0.24,
+            0.85,
+            -0.16
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "orange_splash_collection_floor",
+            "right_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            0.24,
+            0.16,
+            0.85
+          ],
+          "probe_gltf_m": [
+            0.24,
+            0.85,
+            -0.16
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "left_raised_collection_return",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            -0.266,
+            -0.035,
+            0.875
+          ],
+          "probe_gltf_m": [
+            -0.266,
+            0.875,
+            0.035
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "right_raised_collection_return",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            0.266,
+            -0.035,
+            0.875
+          ],
+          "probe_gltf_m": [
+            0.266,
+            0.875,
+            0.035
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "clipped_front_collection_lip",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            0,
+            -0.275,
+            0.875
+          ],
+          "probe_gltf_m": [
+            0,
+            0.875,
+            0.275
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "vessel_landing_rail_-0.075",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            -0.075,
+            -0.11,
+            0.875
+          ],
+          "probe_gltf_m": [
+            -0.075,
+            0.875,
+            0.11
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "vessel_landing_rail_0",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            0,
+            -0.11,
+            0.875
+          ],
+          "probe_gltf_m": [
+            0,
+            0.875,
+            0.11
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "vessel_landing_rail_0.075",
+            "orange_splash_collection_floor"
+          ],
+          "probe_source_m": [
+            0.075,
+            -0.11,
+            0.875
+          ],
+          "probe_gltf_m": [
+            0.075,
+            0.875,
+            0.11
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "protected_capped_optional_outlet",
+            "arched_orange_hood_infill"
+          ],
+          "probe_source_m": [
+            0,
+            -0.11,
+            1.395
+          ],
+          "probe_gltf_m": [
+            0,
+            1.395,
+            0.11
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "bounded_select_pad",
+            "teal_splash_back"
+          ],
+          "probe_source_m": [
+            0.125,
+            0.145,
+            1.2
+          ],
+          "probe_gltf_m": [
+            0.125,
+            1.2,
+            -0.145
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "glyph_vessel_left",
+            "teal_splash_back"
+          ],
+          "probe_source_m": [
+            -0.14,
+            0.145,
+            1.19
+          ],
+          "probe_gltf_m": [
+            -0.14,
+            1.19,
+            -0.145
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "glyph_vessel_right",
+            "teal_splash_back"
+          ],
+          "probe_source_m": [
+            -0.05,
+            0.145,
+            1.19
+          ],
+          "probe_gltf_m": [
+            -0.05,
+            1.19,
+            -0.145
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "glyph_vessel_base",
+            "teal_splash_back"
+          ],
+          "probe_source_m": [
+            -0.095,
+            0.145,
+            1.14
+          ],
+          "probe_gltf_m": [
+            -0.095,
+            1.14,
+            -0.145
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "left_rear_panel_seat",
+            "left_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            -0.215,
+            0.215,
+            0.49
+          ],
+          "probe_gltf_m": [
+            -0.215,
+            0.49,
+            -0.215
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "right_rear_panel_seat",
+            "right_swept_crescent_rib"
+          ],
+          "probe_source_m": [
+            0.215,
+            0.215,
+            0.49
+          ],
+          "probe_gltf_m": [
+            0.215,
+            0.49,
+            -0.215
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "service_bay_lower_sill",
+            "left_rear_panel_seat"
+          ],
+          "probe_source_m": [
+            -0.18,
+            0.215,
+            0.245
+          ],
+          "probe_gltf_m": [
+            -0.18,
+            0.245,
+            -0.215
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "service_bay_lower_sill",
+            "right_rear_panel_seat"
+          ],
+          "probe_source_m": [
+            0.18,
+            0.215,
+            0.245
+          ],
+          "probe_gltf_m": [
+            0.18,
+            0.245,
+            -0.215
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "rear_removable_service_plate",
+            "left_rear_panel_seat"
+          ],
+          "probe_source_m": [
+            -0.157,
+            0.235,
+            0.495
+          ],
+          "probe_gltf_m": [
+            -0.157,
+            0.495,
+            -0.235
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "rear_removable_service_plate",
+            "right_rear_panel_seat"
+          ],
+          "probe_source_m": [
+            0.157,
+            0.235,
+            0.495
+          ],
+          "probe_gltf_m": [
+            0.157,
+            0.495,
+            -0.235
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "rear_removable_service_plate_grip_-0.11199999999999999",
+            "rear_removable_service_plate"
+          ],
+          "probe_source_m": [
+            -0.11199999999999999,
+            0.26,
+            0.495
+          ],
+          "probe_gltf_m": [
+            -0.11199999999999999,
+            0.495,
+            -0.26
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "rear_removable_service_plate_grip_0.11199999999999999",
+            "rear_removable_service_plate"
+          ],
+          "probe_source_m": [
+            0.11199999999999999,
+            0.26,
+            0.495
+          ],
+          "probe_gltf_m": [
+            0.11199999999999999,
+            0.495,
+            -0.26
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "visible_front_low_drain_cap",
+            "pearl_splayed_pedestal"
+          ],
+          "probe_source_m": [
+            0,
+            -0.29,
+            0.075
+          ],
+          "probe_gltf_m": [
+            0,
+            0.075,
+            0.29
+          ],
+          "kind": "boundary_contact"
+        }
+      ],
+      "receiver_voids": [
+        {
+          "name": "vessel_air_space",
+          "purpose": "Unoccupied vessel accommodation above landing rails; actual vessel fit unassigned",
+          "min_source_m": [
+            -0.12,
+            -0.205,
+            0.925
+          ],
+          "max_source_m": [
+            0.12,
+            0.025,
+            1.275
+          ],
+          "min_gltf_m": [
+            -0.12,
+            0.925,
+            -0.025
+          ],
+          "max_gltf_m": [
+            0.12,
+            1.275,
+            0.205
+          ]
+        },
+        {
+          "name": "collector_gap_-0.1375",
+          "purpose": "Unoccupied collector gap between/alongside raised vessel landing rails",
+          "min_source_m": [
+            -0.15250000000000002,
+            -0.2,
+            0.88
+          ],
+          "max_source_m": [
+            -0.12250000000000001,
+            -0.025,
+            0.908
+          ],
+          "min_gltf_m": [
+            -0.15250000000000002,
+            0.88,
+            0.025
+          ],
+          "max_gltf_m": [
+            -0.12250000000000001,
+            0.908,
+            0.2
+          ]
+        },
+        {
+          "name": "collector_gap_-0.0375",
+          "purpose": "Unoccupied collector gap between/alongside raised vessel landing rails",
+          "min_source_m": [
+            -0.0525,
+            -0.2,
+            0.88
+          ],
+          "max_source_m": [
+            -0.0225,
+            -0.025,
+            0.908
+          ],
+          "min_gltf_m": [
+            -0.0525,
+            0.88,
+            0.025
+          ],
+          "max_gltf_m": [
+            -0.0225,
+            0.908,
+            0.2
+          ]
+        },
+        {
+          "name": "collector_gap_0.0375",
+          "purpose": "Unoccupied collector gap between/alongside raised vessel landing rails",
+          "min_source_m": [
+            0.0225,
+            -0.2,
+            0.88
+          ],
+          "max_source_m": [
+            0.0525,
+            -0.025,
+            0.908
+          ],
+          "min_gltf_m": [
+            0.0225,
+            0.88,
+            0.025
+          ],
+          "max_gltf_m": [
+            0.0525,
+            0.908,
+            0.2
+          ]
+        },
+        {
+          "name": "collector_gap_0.1375",
+          "purpose": "Unoccupied collector gap between/alongside raised vessel landing rails",
+          "min_source_m": [
+            0.12250000000000001,
+            -0.2,
+            0.88
+          ],
+          "max_source_m": [
+            0.15250000000000002,
+            -0.025,
+            0.908
+          ],
+          "min_gltf_m": [
+            0.12250000000000001,
+            0.88,
+            0.025
+          ],
+          "max_gltf_m": [
+            0.15250000000000002,
+            0.908,
+            0.2
+          ]
+        },
+        {
+          "name": "rear_service_approach",
+          "purpose": "Separate rear maintenance space after cover extraction; not a recovered room route",
+          "min_source_m": [
+            -0.32,
+            0.72,
+            0.05
+          ],
+          "max_source_m": [
+            0.32,
+            1.05,
+            0.85
+          ],
+          "min_gltf_m": [
+            -0.32,
+            0.05,
+            -1.05
+          ],
+          "max_gltf_m": [
+            0.32,
+            0.85,
+            -0.72
+          ]
+        }
+      ],
+      "removal_proposals": [
+        {
+          "name": "rear_removable_service_plate",
+          "parts": [
+            "rear_removable_service_plate",
+            "rear_removable_service_plate_grip_-0.11199999999999999",
+            "rear_removable_service_plate_grip_0.11199999999999999"
+          ],
+          "translation_source_m": [
+            0,
+            0.4,
+            0
+          ],
+          "translation_gltf_m": [
+            0,
+            0,
+            -0.4
+          ],
+          "reserve": {
+            "min_source_m": [
+              -0.181,
+              0.236,
+              0.249
+            ],
+            "max_source_m": [
+              0.181,
+              0.6910000000000001,
+              0.741
+            ],
+            "min_gltf_m": [
+              -0.181,
+              0.249,
+              -0.6910000000000001
+            ],
+            "max_gltf_m": [
+              0.181,
+              0.741,
+              -0.236
+            ]
+          },
+          "method": "Full translated AABB sweep excludes only this cover and its two grips; 1mm departure avoids intentional seating contact",
+          "limitations": "Nominal removable cover proposal; release hardware, reach and force unknown"
+        }
+      ],
+      "independent_removable_roots": [
+        {
+          "name": "rear_removable_service_plate_REMOVAL_ROOT",
+          "parts": [
+            "rear_removable_service_plate",
+            "rear_removable_service_plate_grip_-0.11199999999999999",
+            "rear_removable_service_plate_grip_0.11199999999999999"
+          ],
+          "zero_pose_source_m": [
+            0.0,
+            0.2475000023841858,
+            0.4950000047683716
+          ],
+          "zero_pose_gltf_m": [
+            0.0,
+            0.4950000047683716,
+            -0.2475000023841858
+          ],
+          "removal_vector_source_m": [
+            0,
+            0.4,
+            0
+          ],
+          "removal_vector_gltf_m": [
+            0,
+            0,
+            -0.4
+          ]
+        }
+      ],
+      "collision_proposal_file": "collision_proposals.json",
+      "marker_api_file": "marker_api.json",
+      "source_sha256": "569e707c3578e161e7bc76055adf3d32b2018f62c3ea3671297668f5649ba987",
+      "glb_sha256": "00b2e2bf0ed1a9eb7969619edc5a8aa335b8dce57ddb81b9abb8b1d22a2041f2",
+      "generator_sha256": "e2f9d05a3bbc44a4b0a6f4aef215841470bb86ba706241257fbcf310082066fd",
+      "details": {
+        "roles": [
+          "optional compatible-user refreshment",
+          "bounded vessel landing",
+          "contained splash collection",
+          "separate rear maintenance"
+        ],
+        "fixed_height_m": 1.5,
+        "outlet_state": "closed cap",
+        "no_claims": [
+          "substance",
+          "temperature",
+          "pressure",
+          "consumption need",
+          "species suitability",
+          "working water"
+        ],
+        "shape_intent": "Pearl twin crescent support ribs and orange recessed hood; no bar furniture or clinical wash anatomy"
+      },
+      "limitations": [
+        "Component only; no game, room, host fixture, anatomy/species or performance acceptance",
+        "Historical D08 changing and aft staff towel care remain separate; no recovered connecting aperture",
+        "No new room, guest, changing slot, seat or population",
+        "Substance, temperature, pressure, water behavior and plumbing unimplemented",
+        "Editable cap locations and removable cover are proposals; host support, headroom, release hardware and maintenance reach unknown"
+      ]
+    },
+    {
+      "catalogue_id": "AST-AQU-010",
+      "name": "Supported rinse control blade",
+      "title": "Supported rinse control blade",
+      "unique_design": true,
+      "source": "source/AST-AQU-010.blend",
+      "export": "exports/AST-AQU-010.glb",
+      "generator": "source/build_aquatic_wet_use.py",
+      "source_frame": "metres Blender X width Y depth Z up front -Y",
+      "exchange_frame": "metres native GLB Y-up source(x,y,z)->(x,z,-y)",
+      "pivot": {
+        "source_m": [
+          0,
+          0,
+          0
+        ],
+        "gltf_m": [
+          0,
+          0,
+          0
+        ],
+        "datum": "floor contact datum; host support unknown"
+      },
+      "bounds_blender_z_up": {
+        "min_m": [
+          -0.3199999928474426,
+          -0.34700000286102295,
+          0.0
+        ],
+        "max_m": [
+          0.3199999928474426,
+          0.2944999933242798,
+          2.180000066757202
+        ],
+        "dimensions_m": [
+          0.6399999856948853,
+          0.6414999961853027,
+          2.180000066757202
+        ]
+      },
+      "bounds_gltf_y_up": {
+        "min_m": [
+          -0.3199999928474426,
+          0.0,
+          -0.2944999933242798
+        ],
+        "max_m": [
+          0.3199999928474426,
+          2.180000066757202,
+          0.34700000286102295
+        ],
+        "dimensions_m": [
+          0.6399999856948853,
+          2.180000066757202,
+          0.6414999961853027
+        ]
+      },
+      "dimensions_blender_xyz_m": [
+        0.6399999856948853,
+        0.6414999961853027,
+        2.180000066757202
+      ],
+      "evaluated_triangles": 2084,
+      "editable_semantic_parts": 25,
+      "semantic_parts": [
+        "continuous_rinse_floor_isolator",
+        "flared_rinse_load_plinth",
+        "left_tapered_spine_rail",
+        "right_tapered_spine_rail",
+        "upper_teal_control_web",
+        "swept_protective_head",
+        "left_head_load_gusset",
+        "right_head_load_gusset",
+        "capped_adjustable_head_interface",
+        "orange_bounded_control_cradle",
+        "bounded_select_control",
+        "bounded_stop_control",
+        "original_optional_rinse_glyph_0",
+        "original_optional_rinse_glyph_1",
+        "original_optional_rinse_glyph_2",
+        "lower_service_cross_tie",
+        "left_rear_cover_seat",
+        "right_rear_cover_seat",
+        "rinse_rear_removable_plate",
+        "rinse_rear_removable_plate_grip_-0.1024",
+        "rinse_rear_removable_plate_grip_0.1024",
+        "low_front_capped_connection",
+        "tile_splash_landing",
+        "left_splash_guard",
+        "right_splash_guard"
+      ],
+      "material_roles": [
+        "aquatic_dark_grip",
+        "aquatic_edge_tile",
+        "aquatic_orange_float",
+        "aquatic_pearl_float",
+        "aquatic_satin_alloy"
+      ],
+      "runtime_consolidation": "Static evaluated body copies grouped by material; separate purposeful removable plate root with plate/grips grouped by material; source/native zero pose and removal vector explicit",
+      "physical_and_proposal_markers": [
+        {
+          "name": "FLOOR_CONTACT",
+          "kind": "physical_surface_contact",
+          "source_m": [
+            0,
+            -0.025,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0.025
+          ],
+          "physical_part": "continuous_rinse_floor_isolator",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "",
+          "surface_normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "surface_normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "HEAD_INTERFACE_CAP",
+          "kind": "physical_capped_interface",
+          "source_m": [
+            0,
+            -0.205,
+            2.015
+          ],
+          "gltf_m": [
+            0,
+            2.015,
+            0.205
+          ],
+          "physical_part": "capped_adjustable_head_interface",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Protective housing only; cap center may be repositioned at authoring; no headroom, body, aiming, pressure or fluid claim",
+          "surface_normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "surface_normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "SELECT_CONTROL_CONTACT",
+          "kind": "physical_control_contact",
+          "source_m": [
+            -0.065,
+            0.018,
+            1.08
+          ],
+          "gltf_m": [
+            -0.065,
+            1.08,
+            -0.018
+          ],
+          "physical_part": "bounded_select_control",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Uncalibrated control area; no temperature, pressure or mode implementation",
+          "surface_normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "surface_normal_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "STOP_CONTROL_CONTACT",
+          "kind": "physical_control_contact",
+          "source_m": [
+            0.07,
+            0.018,
+            1.08
+          ],
+          "gltf_m": [
+            0.07,
+            1.08,
+            -0.018
+          ],
+          "physical_part": "bounded_stop_control",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Uncalibrated control area; no temperature, pressure or mode implementation",
+          "surface_normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "surface_normal_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "RINSE_REAR_REMOVABLE_PLATE_SERVICE_FACE",
+          "kind": "physical_surface_contact",
+          "source_m": [
+            0,
+            0.27,
+            0.435
+          ],
+          "gltf_m": [
+            0,
+            0.435,
+            -0.27
+          ],
+          "physical_part": "rinse_rear_removable_plate",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Pull rearward after releasing unspecified retainers; no lock or operation simulation",
+          "surface_normal_source": [
+            0,
+            1,
+            0
+          ],
+          "surface_normal_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "LOW_CONNECTION_CAP",
+          "kind": "physical_capped_interface",
+          "source_m": [
+            0,
+            -0.347,
+            0.07
+          ],
+          "gltf_m": [
+            0,
+            0.07,
+            0.347
+          ],
+          "physical_part": "low_front_capped_connection",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "",
+          "surface_normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "surface_normal_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "SPLASH_FLOOR_CONTACT",
+          "kind": "physical_surface_contact",
+          "source_m": [
+            0,
+            -0.13,
+            0.12
+          ],
+          "gltf_m": [
+            0,
+            0.12,
+            0.13
+          ],
+          "physical_part": "tile_splash_landing",
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Physical tile surface only; no standing/foot/body fit or drain performance",
+          "surface_normal_source": [
+            0,
+            0,
+            1
+          ],
+          "surface_normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "FRONT_APPROACH",
+          "kind": "nonphysical_approach_proposal",
+          "source_m": [
+            0,
+            -0.95,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0.95
+          ],
+          "physical_part": null,
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": "Unvalidated placement reservation, no species/body pose"
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "kind": "placement_origin",
+          "source_m": [
+            0,
+            0,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "physical_part": null,
+          "position_state": "closed/default assembly; parent hierarchy governs transformed states",
+          "note": ""
+        }
+      ],
+      "joins": [
+        {
+          "parts": [
+            "continuous_rinse_floor_isolator",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0,
+            -0.025,
+            0.025
+          ],
+          "probe_gltf_m": [
+            0,
+            0.025,
+            0.025
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "left_tapered_spine_rail",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            -0.215,
+            0.17,
+            0.11
+          ],
+          "probe_gltf_m": [
+            -0.215,
+            0.11,
+            -0.17
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "right_tapered_spine_rail",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0.215,
+            0.17,
+            0.11
+          ],
+          "probe_gltf_m": [
+            0.215,
+            0.11,
+            -0.17
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "upper_teal_control_web",
+            "left_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            -0.15,
+            0.125,
+            1.28
+          ],
+          "probe_gltf_m": [
+            -0.15,
+            1.28,
+            -0.125
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "upper_teal_control_web",
+            "right_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            0.15,
+            0.125,
+            1.28
+          ],
+          "probe_gltf_m": [
+            0.15,
+            1.28,
+            -0.125
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "swept_protective_head",
+            "left_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            -0.09,
+            0.2,
+            2.055
+          ],
+          "probe_gltf_m": [
+            -0.09,
+            2.055,
+            -0.2
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "swept_protective_head",
+            "right_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            0.09,
+            0.2,
+            2.055
+          ],
+          "probe_gltf_m": [
+            0.09,
+            2.055,
+            -0.2
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "left_head_load_gusset",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            -0.115,
+            0.125,
+            1.83
+          ],
+          "probe_gltf_m": [
+            -0.115,
+            1.83,
+            -0.125
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "left_head_load_gusset",
+            "swept_protective_head"
+          ],
+          "probe_source_m": [
+            -0.115,
+            -0.17,
+            2.08
+          ],
+          "probe_gltf_m": [
+            -0.115,
+            2.08,
+            0.17
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "right_head_load_gusset",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            0.115,
+            0.125,
+            1.83
+          ],
+          "probe_gltf_m": [
+            0.115,
+            1.83,
+            -0.125
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "right_head_load_gusset",
+            "swept_protective_head"
+          ],
+          "probe_source_m": [
+            0.115,
+            -0.17,
+            2.08
+          ],
+          "probe_gltf_m": [
+            0.115,
+            2.08,
+            0.17
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "capped_adjustable_head_interface",
+            "swept_protective_head"
+          ],
+          "probe_source_m": [
+            0,
+            -0.205,
+            2.08
+          ],
+          "probe_gltf_m": [
+            0,
+            2.08,
+            0.205
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "orange_bounded_control_cradle",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            0,
+            0.103,
+            1.08
+          ],
+          "probe_gltf_m": [
+            0,
+            1.08,
+            -0.103
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "bounded_select_control",
+            "orange_bounded_control_cradle"
+          ],
+          "probe_source_m": [
+            -0.065,
+            0.047,
+            1.08
+          ],
+          "probe_gltf_m": [
+            -0.065,
+            1.08,
+            -0.047
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "bounded_stop_control",
+            "orange_bounded_control_cradle"
+          ],
+          "probe_source_m": [
+            0.07,
+            0.047,
+            1.08
+          ],
+          "probe_gltf_m": [
+            0.07,
+            1.08,
+            -0.047
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "original_optional_rinse_glyph_0",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            -0.055,
+            0.103,
+            1.4825
+          ],
+          "probe_gltf_m": [
+            -0.055,
+            1.4825,
+            -0.103
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "original_optional_rinse_glyph_1",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            0,
+            0.103,
+            1.51
+          ],
+          "probe_gltf_m": [
+            0,
+            1.51,
+            -0.103
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "original_optional_rinse_glyph_2",
+            "upper_teal_control_web"
+          ],
+          "probe_source_m": [
+            0.055,
+            0.103,
+            1.4825
+          ],
+          "probe_gltf_m": [
+            0.055,
+            1.4825,
+            -0.103
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "lower_service_cross_tie",
+            "left_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            -0.187,
+            0.17,
+            0.185
+          ],
+          "probe_gltf_m": [
+            -0.187,
+            0.185,
+            -0.17
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "lower_service_cross_tie",
+            "right_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            0.187,
+            0.17,
+            0.185
+          ],
+          "probe_gltf_m": [
+            0.187,
+            0.185,
+            -0.17
+          ],
+          "kind": "buried_structural_overlap"
+        },
+        {
+          "parts": [
+            "left_rear_cover_seat",
+            "left_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            -0.195,
+            0.225,
+            0.44
+          ],
+          "probe_gltf_m": [
+            -0.195,
+            0.44,
+            -0.225
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "right_rear_cover_seat",
+            "right_tapered_spine_rail"
+          ],
+          "probe_source_m": [
+            0.195,
+            0.225,
+            0.44
+          ],
+          "probe_gltf_m": [
+            0.195,
+            0.44,
+            -0.225
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "rinse_rear_removable_plate",
+            "left_rear_cover_seat"
+          ],
+          "probe_source_m": [
+            -0.14200000000000002,
+            0.245,
+            0.435
+          ],
+          "probe_gltf_m": [
+            -0.14200000000000002,
+            0.435,
+            -0.245
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "rinse_rear_removable_plate",
+            "right_rear_cover_seat"
+          ],
+          "probe_source_m": [
+            0.14200000000000002,
+            0.245,
+            0.435
+          ],
+          "probe_gltf_m": [
+            0.14200000000000002,
+            0.435,
+            -0.245
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "rinse_rear_removable_plate_grip_-0.1024",
+            "rinse_rear_removable_plate"
+          ],
+          "probe_source_m": [
+            -0.1024,
+            0.27,
+            0.435
+          ],
+          "probe_gltf_m": [
+            -0.1024,
+            0.435,
+            -0.27
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "rinse_rear_removable_plate_grip_0.1024",
+            "rinse_rear_removable_plate"
+          ],
+          "probe_source_m": [
+            0.1024,
+            0.27,
+            0.435
+          ],
+          "probe_gltf_m": [
+            0.1024,
+            0.435,
+            -0.27
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "low_front_capped_connection",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0,
+            -0.305,
+            0.07
+          ],
+          "probe_gltf_m": [
+            0,
+            0.07,
+            0.305
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "tile_splash_landing",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0,
+            -0.13,
+            0.11
+          ],
+          "probe_gltf_m": [
+            0,
+            0.11,
+            0.13
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "left_splash_guard",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            -0.24,
+            -0.08,
+            0.11
+          ],
+          "probe_gltf_m": [
+            -0.24,
+            0.11,
+            0.08
+          ],
+          "kind": "boundary_contact"
+        },
+        {
+          "parts": [
+            "right_splash_guard",
+            "flared_rinse_load_plinth"
+          ],
+          "probe_source_m": [
+            0.24,
+            -0.08,
+            0.11
+          ],
+          "probe_gltf_m": [
+            0.24,
+            0.11,
+            0.08
+          ],
+          "kind": "boundary_contact"
+        }
+      ],
+      "receiver_voids": [
+        {
+          "name": "front_unoccupied_rinse_space",
+          "purpose": "Component-front air volume, not a shower stall, actor pose or body clearance certificate",
+          "min_source_m": [
+            -0.2,
+            -0.3,
+            0.17
+          ],
+          "max_source_m": [
+            0.2,
+            0.0,
+            1.82
+          ],
+          "min_gltf_m": [
+            -0.2,
+            0.17,
+            -0.0
+          ],
+          "max_gltf_m": [
+            0.2,
+            1.82,
+            0.3
+          ]
+        },
+        {
+          "name": "rear_maintenance_approach",
+          "purpose": "Separate maintenance reserve after panel removal; host route unknown",
+          "min_source_m": [
+            -0.33,
+            0.74,
+            0.05
+          ],
+          "max_source_m": [
+            0.33,
+            1.05,
+            0.8
+          ],
+          "min_gltf_m": [
+            -0.33,
+            0.05,
+            -1.05
+          ],
+          "max_gltf_m": [
+            0.33,
+            0.8,
+            -0.74
+          ]
+        }
+      ],
+      "removal_proposals": [
+        {
+          "name": "rinse_rear_removable_plate",
+          "parts": [
+            "rinse_rear_removable_plate",
+            "rinse_rear_removable_plate_grip_-0.1024",
+            "rinse_rear_removable_plate_grip_0.1024"
+          ],
+          "translation_source_m": [
+            0,
+            0.4,
+            0
+          ],
+          "translation_gltf_m": [
+            0,
+            0,
+            -0.4
+          ],
+          "reserve": {
+            "min_source_m": [
+              -0.166,
+              0.246,
+              0.219
+            ],
+            "max_source_m": [
+              0.166,
+              0.7010000000000001,
+              0.651
+            ],
+            "min_gltf_m": [
+              -0.166,
+              0.219,
+              -0.7010000000000001
+            ],
+            "max_gltf_m": [
+              0.166,
+              0.651,
+              -0.246
+            ]
+          },
+          "method": "Full translated AABB sweep excludes only this cover and its two grips; 1mm departure avoids intentional seating contact",
+          "limitations": "Nominal removable cover proposal; release hardware, reach and force unknown"
+        }
+      ],
+      "independent_removable_roots": [
+        {
+          "name": "rinse_rear_removable_plate_REMOVAL_ROOT",
+          "parts": [
+            "rinse_rear_removable_plate",
+            "rinse_rear_removable_plate_grip_-0.1024",
+            "rinse_rear_removable_plate_grip_0.1024"
+          ],
+          "zero_pose_source_m": [
+            0.0,
+            0.2574999928474426,
+            0.4350000023841858
+          ],
+          "zero_pose_gltf_m": [
+            0.0,
+            0.4350000023841858,
+            -0.2574999928474426
+          ],
+          "removal_vector_source_m": [
+            0,
+            0.4,
+            0
+          ],
+          "removal_vector_gltf_m": [
+            0,
+            0,
+            -0.4
+          ]
+        }
+      ],
+      "collision_proposal_file": "collision_proposals.json",
+      "marker_api_file": "marker_api.json",
+      "source_sha256": "c482184a7780e128e881df9a8f8f69e8e80b4733a3da729746f33628a20a1e79",
+      "glb_sha256": "096429bf084c15fcec597dee66f425beccf49b5a8b09b6542dd896e1e85f10f3",
+      "generator_sha256": "e2f9d05a3bbc44a4b0a6f4aef215841470bb86ba706241257fbcf310082066fd",
+      "details": {
+        "support": "Two tapered rails carry head and explicit orange gussets through flared floor plinth; wall support is not assumed",
+        "controls": "Bounded select and stop regions, uncalibrated",
+        "connections": "Closed downward head cap and low front capped provision, adjustable authoring positions",
+        "no_claims": [
+          "water behavior",
+          "body fit",
+          "headroom",
+          "plumbing",
+          "species compatibility",
+          "temperature",
+          "pressure",
+          "game interaction"
+        ]
+      },
+      "limitations": [
+        "Component only; no game, room, host fixture, anatomy/species or performance acceptance",
+        "Historical D08 changing and aft staff towel care remain separate; no recovered connecting aperture",
+        "No new room, guest, changing slot, seat or population",
+        "Substance, temperature, pressure, water behavior and plumbing unimplemented",
+        "Editable cap locations and removable cover are proposals; host support, headroom, release hardware and maintenance reach unknown"
+      ]
+    }
+  ]
+}
