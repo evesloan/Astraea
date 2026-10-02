@@ -1,0 +1,516 @@
+{
+  "catalogue_id": "AST-ENG-003",
+  "design": "Wall-mounted water-recovery utility control console",
+  "revision": "utility-console-01",
+  "unique_designs": 1,
+  "authoring": "Original script-assisted intentional design; no original game files changed",
+  "source": "source/AST-ENG-003.blend",
+  "generator": "source/build_utility_console.py",
+  "exchange": "AST-ENG-003.glb",
+  "min_blender_source_m": [
+    -0.4099999964237213,
+    -0.24799999594688416,
+    -0.4255000054836273
+  ],
+  "max_blender_source_m": [
+    0.4099999964237213,
+    0.0,
+    0.3400000035762787
+  ],
+  "dimensions_blender_source_xyz_m": [
+    0.8199999928474426,
+    0.24799999594688416,
+    0.765500009059906
+  ],
+  "min_gltf_yup_m": [
+    -0.4099999964237213,
+    -0.4255000054836273,
+    -0.0
+  ],
+  "max_gltf_yup_m": [
+    0.4099999964237213,
+    0.3400000035762787,
+    0.24799999594688416
+  ],
+  "triangles": 10844,
+  "units": "metres",
+  "source_frame": "Blender source Z-up; front -Y; datum at wall plane/console centre",
+  "exchange_frame": "glTF Y-up; front +Z; map (x,y,z)->(x,z,-y)",
+  "pivot_blender_source_m": [
+    0,
+    0,
+    0
+  ],
+  "pivot_gltf_yup_m": [
+    0,
+    0,
+    0
+  ],
+  "proposed_installation": {
+    "datum_height_above_deck_m": 1.45,
+    "body_bottom_above_deck_m": 1.11,
+    "upper_body_above_deck_m": 1.79,
+    "button_contact_height_above_deck_m": 1.317,
+    "mode_grip_height_above_deck_m": 1.351,
+    "standing_eye_above_deck_m": 1.65,
+    "standing_eye_blender_source_m": [
+      0,
+      -0.85,
+      0.2
+    ],
+    "standing_eye_gltf_yup_m": [
+      0,
+      0.2,
+      0.85
+    ],
+    "approach": "From source -Y / native GLB +Z; keep 0.80 m open from foremost control, plus site-specific circulation and access assessment",
+    "status": "Human-scale installation proposal only; all-species reach, accessibility codes, load rating and engine actor fit untested"
+  },
+  "mounts": [
+    {
+      "name": "MOUNT_L_LOW",
+      "point_blender_source_m": [
+        -0.305,
+        0,
+        -0.221
+      ],
+      "point_gltf_yup_m": [
+        -0.305,
+        -0.221,
+        0
+      ],
+      "normal_blender_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf_yup": [
+        0,
+        0,
+        -1
+      ],
+      "wall_pad_radius_m": 0.034,
+      "physical_support_node": "MOUNT_L_LOW_wall_pad"
+    },
+    {
+      "name": "MOUNT_L_HIGH",
+      "point_blender_source_m": [
+        -0.305,
+        0,
+        0.221
+      ],
+      "point_gltf_yup_m": [
+        -0.305,
+        0.221,
+        0
+      ],
+      "normal_blender_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf_yup": [
+        0,
+        0,
+        -1
+      ],
+      "wall_pad_radius_m": 0.034,
+      "physical_support_node": "MOUNT_L_HIGH_wall_pad"
+    },
+    {
+      "name": "MOUNT_R_LOW",
+      "point_blender_source_m": [
+        0.305,
+        0,
+        -0.221
+      ],
+      "point_gltf_yup_m": [
+        0.305,
+        -0.221,
+        0
+      ],
+      "normal_blender_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf_yup": [
+        0,
+        0,
+        -1
+      ],
+      "wall_pad_radius_m": 0.034,
+      "physical_support_node": "MOUNT_R_LOW_wall_pad"
+    },
+    {
+      "name": "MOUNT_R_HIGH",
+      "point_blender_source_m": [
+        0.305,
+        0,
+        0.221
+      ],
+      "point_gltf_yup_m": [
+        0.305,
+        0.221,
+        0
+      ],
+      "normal_blender_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf_yup": [
+        0,
+        0,
+        -1
+      ],
+      "wall_pad_radius_m": 0.034,
+      "physical_support_node": "MOUNT_R_HIGH_wall_pad"
+    }
+  ],
+  "controls": [
+    {
+      "node": "CTRL_button_START",
+      "kind": "button",
+      "pivot_blender_source_m": [
+        -0.263,
+        -0.2115,
+        -0.133
+      ],
+      "pivot_gltf_yup_m": [
+        -0.263,
+        -0.133,
+        0.2115
+      ],
+      "interaction_blender_source_m": [
+        -0.263,
+        -0.2265,
+        -0.133
+      ],
+      "interaction_gltf_yup_m": [
+        -0.263,
+        -0.133,
+        0.2265
+      ],
+      "axis_blender_source": [
+        0,
+        1,
+        0
+      ],
+      "axis_gltf_yup": [
+        0,
+        0,
+        -1
+      ],
+      "max_travel_proposal_m": 0.003,
+      "purpose": "Proposed circulate/start action"
+    },
+    {
+      "node": "CTRL_button_HOLD",
+      "kind": "button",
+      "pivot_blender_source_m": [
+        -0.127,
+        -0.2115,
+        -0.133
+      ],
+      "pivot_gltf_yup_m": [
+        -0.127,
+        -0.133,
+        0.2115
+      ],
+      "interaction_blender_source_m": [
+        -0.127,
+        -0.2265,
+        -0.133
+      ],
+      "interaction_gltf_yup_m": [
+        -0.127,
+        -0.133,
+        0.2265
+      ],
+      "axis_blender_source": [
+        0,
+        1,
+        0
+      ],
+      "axis_gltf_yup": [
+        0,
+        0,
+        -1
+      ],
+      "max_travel_proposal_m": 0.003,
+      "purpose": "Proposed hold action"
+    },
+    {
+      "node": "CTRL_button_ISOLATE",
+      "kind": "button",
+      "pivot_blender_source_m": [
+        0.009,
+        -0.2115,
+        -0.133
+      ],
+      "pivot_gltf_yup_m": [
+        0.009,
+        -0.133,
+        0.2115
+      ],
+      "interaction_blender_source_m": [
+        0.009,
+        -0.2265,
+        -0.133
+      ],
+      "interaction_gltf_yup_m": [
+        0.009,
+        -0.133,
+        0.2265
+      ],
+      "axis_blender_source": [
+        0,
+        1,
+        0
+      ],
+      "axis_gltf_yup": [
+        0,
+        0,
+        -1
+      ],
+      "max_travel_proposal_m": 0.003,
+      "purpose": "Proposed isolate action; no safety-system claim"
+    },
+    {
+      "node": "CTRL_mode_selector",
+      "kind": "rotary_selector",
+      "pivot_blender_source_m": [
+        0.263,
+        -0.2105,
+        -0.099
+      ],
+      "pivot_gltf_yup_m": [
+        0.263,
+        -0.099,
+        0.2105
+      ],
+      "interaction_blender_source_m": [
+        0.263,
+        -0.247,
+        -0.099
+      ],
+      "interaction_gltf_yup_m": [
+        0.263,
+        -0.099,
+        0.247
+      ],
+      "axis_blender_source": [
+        0,
+        -1,
+        0
+      ],
+      "axis_gltf_yup": [
+        0,
+        0,
+        1
+      ],
+      "detent_proposals_deg": [
+        -90,
+        0,
+        90
+      ],
+      "parts": [
+        "CTRL_mode_selector",
+        "CTRL_mode_selector_grip",
+        "CTRL_mode_selector_index"
+      ]
+    }
+  ],
+  "service": {
+    "hatch_node": "SERVICE_removable_hatch",
+    "front_withdrawal_axis_blender_source": [
+      0,
+      -1,
+      0
+    ],
+    "front_withdrawal_axis_gltf_yup": [
+      0,
+      0,
+      1
+    ],
+    "clearance_proposal_m": 0.3,
+    "fastener_count": 4,
+    "vent_fins": 8,
+    "vent_clear_gaps_m": 0.011,
+    "cable_termination_blender_source_m": [
+      [
+        -0.154,
+        -0.118,
+        -0.4255
+      ],
+      [
+        -0.094,
+        -0.118,
+        -0.4255
+      ]
+    ],
+    "cable_termination_gltf_yup_m": [
+      [
+        -0.154,
+        -0.4255,
+        0.118
+      ],
+      [
+        -0.094,
+        -0.4255,
+        0.118
+      ]
+    ],
+    "notes": "Rear cleats/standoffs carry case against wall; organised cable glands and bridge; hollow shell is closed by rear and recessed face. Site cabling and load bearing remain unresolved."
+  },
+  "static_artwork": "Original printed flow mimic, control legend and static analogue dial with separate fixed pointer. No live telemetry, fluid simulation, device logic, operating rating or emission.",
+  "material_roles": [
+    "staff_bluegrey_paint",
+    "staff_cable_blue",
+    "staff_cable_red",
+    "staff_opal",
+    "staff_rubber",
+    "staff_white_paint",
+    "staff_zinc",
+    "utility_console_original_print"
+  ],
+  "shared_material_revision": "astraea-staff-materials-01 unchanged",
+  "local_graphic_sources": [
+    "textures/draw_console_graphics.py",
+    "textures/console_graphics.png",
+    "textures/console_graphics.json"
+  ],
+  "source_dependencies": [
+    "standards/staff_materials.py",
+    "materials/staff/manifest.json",
+    "materials/staff/*.png"
+  ],
+  "editable_named_parts": [
+    "formed_rear_closure",
+    "deep_formed_case_returns",
+    "pale_front_protection_rim",
+    "recessed_control_face",
+    "lower_face_return",
+    "schematic_recess_gasket",
+    "schematic_zinc_frame",
+    "printed_flow_path_mimic",
+    "console_identifier_plate",
+    "filter_gauge_outer_rim",
+    "filter_gauge_inset",
+    "printed_filter_dial",
+    "STATIC_filter_gauge_pointer",
+    "gauge_pointer_pin",
+    "control_button_legend",
+    "START_guard_collar",
+    "START_dark_socket",
+    "CTRL_button_START",
+    "HOLD_guard_collar",
+    "HOLD_dark_socket",
+    "CTRL_button_HOLD",
+    "ISOLATE_guard_collar",
+    "ISOLATE_dark_socket",
+    "CTRL_button_ISOLATE",
+    "mode_selector_legend",
+    "selector_escutcheon",
+    "selector_socket",
+    "CTRL_mode_selector",
+    "CTRL_mode_selector_grip",
+    "CTRL_mode_selector_index",
+    "service_hatch_perimeter_gasket",
+    "SERVICE_removable_hatch",
+    "service_hatch_print",
+    "vent_dark_rear_baffle",
+    "vent_left_pocket_wall",
+    "vent_right_pocket_wall",
+    "vent_bottom_pocket_wall",
+    "vent_top_pocket_wall",
+    "vent_formed_louver_00",
+    "vent_formed_louver_01",
+    "vent_formed_louver_02",
+    "vent_formed_louver_03",
+    "vent_formed_louver_04",
+    "vent_formed_louver_05",
+    "vent_formed_louver_06",
+    "vent_formed_louver_07",
+    "hatch_fastener_-0.314_-0.220",
+    "hatch_fastener_-0.314_-0.220_slot",
+    "hatch_fastener_-0.314_-0.275",
+    "hatch_fastener_-0.314_-0.275_slot",
+    "hatch_fastener_0.314_-0.220",
+    "hatch_fastener_0.314_-0.220_slot",
+    "hatch_fastener_0.314_-0.275",
+    "hatch_fastener_0.314_-0.275_slot",
+    "case_fixing_-0.371_0.254",
+    "case_fixing_-0.371_0.254_slot",
+    "case_fixing_0.371_0.254",
+    "case_fixing_0.371_0.254_slot",
+    "case_fixing_-0.348_-0.286",
+    "case_fixing_-0.348_-0.286_slot",
+    "case_fixing_0.348_-0.286",
+    "case_fixing_0.348_-0.286_slot",
+    "rear_vertical_mount_cleat_-0.305",
+    "MOUNT_L_LOW_standoff",
+    "MOUNT_L_LOW_wall_pad",
+    "MOUNT_L_HIGH_standoff",
+    "MOUNT_L_HIGH_wall_pad",
+    "rear_vertical_mount_cleat_0.305",
+    "MOUNT_R_LOW_standoff",
+    "MOUNT_R_LOW_wall_pad",
+    "MOUNT_R_HIGH_standoff",
+    "MOUNT_R_HIGH_wall_pad",
+    "cable_gland_0",
+    "cable_gland_grip_0",
+    "rear_cable_drop_0",
+    "cable_gland_1",
+    "cable_gland_grip_1",
+    "rear_cable_drop_1",
+    "cable_organising_bridge",
+    "cable_bridge_return_-0.177",
+    "cable_bridge_case_strap_-0.177",
+    "cable_bridge_return_-0.069",
+    "cable_bridge_case_strap_-0.069"
+  ],
+  "named_export_controls": [
+    "CTRL_button_START",
+    "CTRL_button_HOLD",
+    "CTRL_button_ISOLATE",
+    "CTRL_mode_selector"
+  ],
+  "export_settings": "Evaluated static meshes consolidated by staff semantic role, normalised active UV layers and embedded PNG; control/hatch nodes and explicit source/native exchange marker extras preserved",
+  "cost": {
+    "triangles": 10844,
+    "source_mesh_parts": 83,
+    "source_editable_bevels": 42,
+    "export_mesh_objects": 17,
+    "authored_lods": 0,
+    "runtime_drawcalls": "See actual GLB primitive count in qa validation; target-PC performance pending"
+  },
+  "source_sha256": "22705351720d3b8366b69914c3bd19701382fd4d9685e2660dbca9325d1d3277",
+  "glb_sha256": "83693db9307383746c7ee386a9775ac29793513b13ac3ecfeacefd8a4da956a6",
+  "reference_manifest": "batches/batch06/reference_manifest.json",
+  "reference_use": "Actual blueprint/staff photographs inspected: maintenance purpose, cool painted metal, practical supported service runs; no reference pixels copied or old deck labels adopted.",
+  "limits": [
+    "Component-only source/export/visual evidence",
+    "No room placement or game engine integration",
+    "No live controls, circuitry, fluid dynamics, accessibility or safety certification",
+    "Collision proposals need original engine testing"
+  ],
+  "collision_generator": "source/write_collision_proposals.py",
+  "qa_records": [
+    "qa/source_reload_checks.json",
+    "qa/glb_validation.json",
+    "qa/collision_validation.json",
+    "qa/camera_preflight.json",
+    "qa/render_evidence.json",
+    "qa/review_media_manifest.json",
+    "qa/visual_review.json"
+  ],
+  "review_media": [
+    "qa/actualGLB_standing_640.png",
+    "qa/actualGLB_threequarter_640.png",
+    "qa/actualGLB_use_640.png",
+    "qa/actualGLB_controls_detail_1280.png",
+    "qa/actualGLB_rear_mounts_detail_1280.png"
+  ]
+}

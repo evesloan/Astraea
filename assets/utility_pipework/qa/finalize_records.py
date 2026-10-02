@@ -1,0 +1,27 @@
+"""Bind final editable sources, native exports, costs, media and contact evidence."""
+import json,hashlib,struct
+from pathlib import Path
+from PIL import Image
+BASE=Path(__file__).resolve().parents[1];CAT=BASE.parents[1]
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+validation=json.loads((BASE/'qa/glb_validation.json').read_text());byid={Path(r['file']).stem:r for r in validation['results']}
+contacts={r['id']:r for r in json.loads((BASE/'qa/source_contact_inspection.json').read_text())['results']}
+render=json.loads((BASE/'qa/render_evidence.json').read_text());media=[]
+captions={'004_standing640.png':'Straight0.8 m face pitch, open bore and two exact common flanges; QA stands excluded from export','005_standing640.png':'Quarter turn0.45 m centreline radius with0.12 m tangent ends; QA stands excluded','006_standing640.png':'Manual valve open-bore geometry; named rotating wheel, stem, yoke and bonnet; QA stand excluded','004_bore_detail.png':'Six drilled face holes, genuine annular open pipe, behind-face fastener arrangement; oblique bore view','005_bend_detail.png':'Continuous curved shell with straight tangents at both common flange necks','006_wheel_bonnet_detail.png':'Continuous grip ring, six spokes, stem guide, supported yoke and bolted bonnet; targeted crop','assembly_assembly.png':'Straight to elbow to valve component-only assembly; exact mating transforms and QA stands','assembly_joint_detail.png':'Coincident front mating faces, opposing flange bodies and rear-side captive hardware'}
+for path in sorted((BASE/'renders').glob('*.png')):
+ im=Image.open(path);media.append({'path':str(path.relative_to(BASE)),'sha256':sha(path),'dimensions_px':list(im.size),'caption':captions[path.name],'actual_pixels_inspected':True,'source':'actual imported final GLBs','evidence':'qa/render_evidence.json'})
+records=[]
+for ident,row in byid.items():
+ path=BASE/f'{ident}.manifest.json';r=json.loads(path.read_text());glb=BASE/r['export_file'];raw=glb.read_bytes();n,k=struct.unpack_from('<II',raw,12);doc=json.loads(raw[20:20+n]);code=ident[-3:]
+ assert sha(glb)==row['sha256']==render['source_hashes'][glb.name]
+ r['actual_export_cost']={'triangles':row['triangle_count'],'mesh_nodes':row['runtime_mesh_count'],'material_primitives':row['runtime_primitive_count'],'vertex_accessor_count':sum(a['count']for a in doc['accessors']if a['type']=='VEC3'and a.get('min')is not None),'file_bytes':glb.stat().st_size,'embedded_png_textures':row['embedded_png_texture_count'],'shared_flange_neck_and_hardware_triangles_nominal':2328,'scope':'Measured native GLB geometry/file cost, no target-PC frame-time claim'}
+ r['uv']['status']='PASS: actual GLB has finite UVs and zero collapsed UV triangles';r['normal_policy']='PASS: closed oriented source meshes, deterministic1 µm Boolean cleanup; actual GLB normals finite/unit with zero opposed triangles and zero degenerate triangles; formed casework has editable bevels/weighted normals'
+ r['verification']={'native_glb':'qa/glb_validation.json','editable_source_contacts':'qa/source_contact_inspection.json','actual_native_motion_and_ports':'qa/native_motion_and_ports.json','shared_helper_smoke':'qa/helper_smoke.json','preflight':'qa/camera_preflight.json','actual_glb_renders':'qa/render_evidence.json','independent_batch_review':'../../qa/batch06/','all_own_numerical_checks_passed':True,'visual_review':'All eight final render pixels inspected; full silhouettes at640 and targeted detail. Gray floor, lamps and stands are QA-only; no room asset.'}
+ r['finished_contact_inspection']=contacts[ident];r['review_media']=[x for x in media if x['path'].split('/')[-1].startswith(code+'_')]
+ r['tessellation']={'shared_ring_segments':48,'bore_nominal_diameter_m':.16,'bore_polygon_minimum_clear_inscribed_diameter_m':.16*__import__('math').cos(__import__('math').pi/48),'flange_nominal_outer_diameter_m':.32,'flange_polygon_maximum_radial_sagitta_m':.16*(1-__import__('math').cos(__import__('math').pi/48)),'boolean_cleanup_tolerance_m':.000001,'note':'Nominal shared interface dimensions unchanged; faceted sections retain48-way angular profile'}
+ r['dependencies']={'shared_port_helper':'../../standards/utility_ports.py','shared_port_helper_sha256':sha(CAT/'standards/utility_ports.py'),'unchanged_staff_material_helper_sha256':sha(CAT/'standards/staff_materials.py'),'unchanged_staff_material_manifest_sha256':sha(CAT/'materials/staff/manifest.json'),'generator_sha256':sha(BASE/'source/build_utility_pipework.py')}
+ path.write_text(json.dumps(r,indent=2)+'\n');records.append(r)
+(BASE/'manifest.json').write_text(json.dumps({'family':'Engineering utility pipework','unique_design_count':3,'assets':records,'shared_review_media':[x for x in media if'assembly_'in x['path']]},indent=2)+'\n')
+(BASE/'qa/review_media_manifest.json').write_text(json.dumps({'scope':'Final actual-GLB inspection images; original source geometry and unchanged staff materials','media':media},indent=2)+'\n')
+(BASE/'dependency_manifest.json').write_text(json.dumps({'scope':'Relative catalogue dependencies; copy complete catalogue tree to preserve generator paths','files':{str(p.relative_to(CAT)):sha(p)for p in [CAT/'standards/utility_ports.py',CAT/'standards/staff_materials.py',CAT/'standards/qa_frame.py',CAT/'standards/utility_port_spec.json',CAT/'materials/staff/manifest.json',*sorted((CAT/'materials/staff').glob('*.png'))]}},indent=2)+'\n')
+print('PIPEWORK_FINAL_RECORDS_COMPLETE',[(r['catalogue_id'],r['actual_export_cost'])for r in records])

@@ -1,0 +1,165 @@
+{
+  "scope": "Editable source evaluated bounds and actual yoke tip vertices against finished cover/bridge extents; no load or real engineering certification",
+  "results": [
+    {
+      "id": "AST-ENG-004",
+      "source_sha256": "fbbea017b31217ffd0bea970251f56c32cf6da3b143100237be178c0ee3eb861",
+      "editable_mesh_objects": 31,
+      "bounds_blender_source_m": {
+        "min": [
+          0.0,
+          -0.1599999964237213,
+          -0.1599999964237213
+        ],
+        "max": [
+          0.800000011920929,
+          0.1599999964237213,
+          0.1599999964237213
+        ]
+      },
+      "uv_layers_normalized": true,
+      "every_material_texture_packed": true,
+      "connections": [
+        {
+          "name": "inlet hollow neck to pipe shell",
+          "overlap_axial_m": 0.01,
+          "inner_radii_both_m": [
+            0.08,
+            0.08
+          ],
+          "finished_outer_shell_radius_m": 0.1,
+          "neck_straight_part_outer_radius_m": 0.1,
+          "finished_face_status": "coaxial designed overlap inside the same annular wall; no cap or cross-bore support"
+        },
+        {
+          "name": "outlet hollow neck to pipe shell",
+          "overlap_axial_m": 0.01,
+          "inner_radii_both_m": [
+            0.08,
+            0.08
+          ],
+          "finished_face_status": "coaxial designed overlap inside the same annular wall; no cap or cross-bore support"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "AST-ENG-005",
+      "source_sha256": "175bc100f2a226f224b56b0cc84d76d62df0bf85362fd37dcf77d03ab587ed30",
+      "editable_mesh_objects": 29,
+      "bounds_blender_source_m": {
+        "min": [
+          0.0,
+          -0.1599999964237213,
+          -0.1599999964237213
+        ],
+        "max": [
+          0.7300000190734863,
+          0.5699999928474426,
+          0.1599999964237213
+        ]
+      },
+      "uv_layers_normalized": true,
+      "every_material_texture_packed": true,
+      "connections": [
+        {
+          "name": "inlet hollow neck to pipe shell",
+          "overlap_axial_m": 0.01,
+          "inner_radii_both_m": [
+            0.08,
+            0.08
+          ],
+          "finished_outer_shell_radius_m": 0.1,
+          "neck_straight_part_outer_radius_m": 0.1,
+          "finished_face_status": "coaxial designed overlap inside the same annular wall; no cap or cross-bore support"
+        },
+        {
+          "name": "outlet hollow neck to pipe shell",
+          "overlap_axial_m": 0.01,
+          "inner_radii_both_m": [
+            0.08,
+            0.08
+          ],
+          "finished_face_status": "coaxial designed overlap inside the same annular wall; no cap or cross-bore support"
+        }
+      ],
+      "curve_starts_after_neck_end_clearance_m": 0.024999999999999994,
+      "passed": true
+    },
+    {
+      "id": "AST-ENG-006",
+      "source_sha256": "fe24a833b5f1eafe8c095708510103f48ae47f3a31ededc23955f09028e7787a",
+      "editable_mesh_objects": 85,
+      "bounds_blender_source_m": {
+        "min": [
+          0.0,
+          -0.18000000715255737,
+          -0.16500000655651093
+        ],
+        "max": [
+          0.6499999761581421,
+          0.18000000715255737,
+          0.48500001430511475
+        ]
+      },
+      "uv_layers_normalized": true,
+      "every_material_texture_packed": true,
+      "connections": [
+        {
+          "name": "bonnet housing to upper body wall",
+          "lower_socket_face_z_m": 0.128,
+          "body_outer_top_z_m": 0.152,
+          "nominal_overlap_m": 0.024,
+          "minimum_bore_clearance_m": 0.048
+        },
+        {
+          "name": "guide to yoke upper bridge",
+          "guide_axial_z_m": [
+            0.386,
+            0.425
+          ],
+          "bridge_axial_z_m": [
+            0.3840000033378601,
+            0.4099999964237213
+          ],
+          "connection": "guide passes through enclosed bridge; exposed stem reaches wheel hub"
+        },
+        {
+          "name": "stem to wheel hub",
+          "stem_axial_z_m": [
+            0.279,
+            0.469
+          ],
+          "hub_axial_z_m": [
+            0.448,
+            0.485
+          ],
+          "overlap_m": 0.021
+        }
+      ],
+      "yoke_contact_and_finished_face_containment": [
+        {
+          "support": "closed_tapered_yoke_cheek_-1",
+          "toe_overlap_in_cover_m": 0.0029999911785125732,
+          "toe_min_flat_finished_face_margin_m": 0.011999995827674866,
+          "head_overlap_in_bridge_m": 0.014999985694885254,
+          "upper_tip_distance_below_bridge_finished_top_m": 0.011000007390975952,
+          "passed": true
+        },
+        {
+          "support": "closed_tapered_yoke_cheek_1",
+          "toe_overlap_in_cover_m": 0.0029999911785125732,
+          "toe_min_flat_finished_face_margin_m": 0.011999995827674859,
+          "head_overlap_in_bridge_m": 0.014999985694885254,
+          "upper_tip_distance_below_bridge_finished_top_m": 0.011000007390975952,
+          "passed": true
+        }
+      ],
+      "bonnet_lower_face_z_m": 0.128,
+      "bore_highest_z_m": 0.08,
+      "bonnet_to_bore_gap_m": 0.048,
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

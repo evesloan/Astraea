@@ -5,6 +5,7 @@ The result receipt is written outside the source repository by the caller.
 """
 from pathlib import Path, PurePosixPath
 import argparse, hashlib, json, subprocess, tempfile, zipfile
+from source_family_packages import is_review_file
 
 
 def sha(raw):
@@ -91,7 +92,7 @@ def main():
                     packages.append({"archive": str(path), "sha256": sha(path.read_bytes()), "family": family["family"], "assets": len(ids), "verified_files": len(checks)})
             assert packages
             assert supplied == {a["catalogue_id"] for a in catalog["assets"]}
-            source_rows = [r for r in manifest["files"] if "/qa/" not in "/" + r["path"] and not r["path"].startswith("references/")]
+            source_rows = [r for r in manifest["files"] if not is_review_file(r['path'])]
             for row in source_rows:
                 assert common["Astraea_Catalogue/" + row["path"]] == row["sha256"]
     report = {"passed": True, "scope": "Offline portable-history restore and complete family-source byte/dependency verification; no source code execution", "history_chain": restored, "source_packages": packages, "network_used": False}

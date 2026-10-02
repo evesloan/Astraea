@@ -5,7 +5,7 @@ Source/assets remain independently usable. Only optional history is byte-split.
 """
 from pathlib import Path
 import argparse, hashlib, json, zipfile
-from source_family_packages import partition_sources
+from source_family_packages import partition_sources, is_review_file
 
 PAYLOAD=7_500_000
 LIMIT=8_000_000
@@ -46,7 +46,7 @@ def main():
   for row in manifest['files']:
    rel=row['path'];raw=z.read(prefix+rel)
    if sha(raw)!=row['sha256']:raise ValueError('Source manifest mismatch: '+rel)
-   review='/qa/' in ('/'+rel) or rel.startswith('references/')
+   review=is_review_file(rel)
    if review and base.get(rel)==row['sha256']:
     prior.append(row);coverage[rel]='prior_verified_archive';continue
    target=reviews if review else sources
