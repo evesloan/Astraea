@@ -4,7 +4,7 @@ New asset production began on 2 October 2026 while recovery of the original ship
 
 Batch 01 is a compact coordinated day-use family: upholstered window bench, reading chair, day table, and four compatible deep reveal/junction pieces. It translates the supplied residential and premium references into editable low-poly furniture and construction components. Every authored asset is counted once, separately from exports and any LODs. This is one standard day-use construction family, not sufficient variety for every district or luxury tier. The furniture does not claim aquatic use, cocoon provision or universal species fit.
 
-Batch 02 adds seven collection/study designs: three joined structural shelf/canopy pieces, two contrasting study edges and two book/folio details. Two additional stock arrangements reuse the same authored books and are recorded as assembly variants. Batch 03 adds seven staff-only wall, overhead-service and work-cabinet designs. Batch 04 adds six botanical and planted-seat designs. Batch 05 adds six aquatic-leisure designs. Batch 06 adds six engineering utility designs with common mating interfaces and separately named controls/service parts. The catalogue now contains 39 unique authored component designs, with zero adopted game instances. The first botanical family is deliberately small: an open-crown specimen, two low planting forms and joined seating edges. It does not complete the lush garden massing or plant diversity of the references.
+Batch 02 adds seven collection/study designs: three joined structural shelf/canopy pieces, two contrasting study edges and two book/folio details. Two additional stock arrangements reuse the same authored books and are recorded as assembly variants. Batch 03 adds seven staff-only wall, overhead-service and work-cabinet designs. Batch 04 adds six botanical and planted-seat designs. Batch 05 adds six aquatic-leisure designs. Batch 06 adds six engineering utility designs with common mating interfaces and separately named controls/service parts. Batch 07 adds six hospitality service designs: a joined pantry counter/return, beverage station, dirty-dish return, stocked credenza and distinct service trolley. The catalogue now contains 45 unique authored component designs, with zero adopted game instances. The first botanical family is deliberately small: an open-crown specimen, two low planting forms and joined seating edges. It does not complete the lush garden massing or plant diversity of the references.
 
 ## Current verification boundary
 
@@ -31,6 +31,9 @@ The reference images guide shape, material and use. No courtyard, hull aperture,
 - `assets/utility_machines`: transfer pump skid and serviceable filter vessel
 - `assets/utility_pipework`: compatible straight, elbow and manually operated valve geometry
 - `assets/utility_console`: mounted control case with separate controls and service hatch
+- `assets/hospitality_counters`: joined pantry counter and curved return with usable staff side
+- `assets/hospitality_stations`: beverage station and rear-extraction dish return
+- `assets/hospitality_serviceware`: stocked credenza and distinct two-tier service trolley
 - `materials`: original shared colour tiles and material metadata
 - `standards`: source, scale, material, export and review contracts
 - `qa`: independent review and batch-level checks

@@ -1,0 +1,639 @@
+{
+  "version": "hospitality-counter-interface-01",
+  "units": "metres",
+  "source_frame": "Blender +Z up, local seam travel +X, depth d toward staff +Y",
+  "glb_frame": "(x,y,z)->(x,z,-y), native glTF +Y up",
+  "profile_coordinates": "Pairs [d,z] in local travel frame; identical at both ends and both designs",
+  "profiles": {
+    "stone_top": [
+      [
+        -0.378,
+        0.852
+      ],
+      [
+        0.378,
+        0.852
+      ],
+      [
+        0.39,
+        0.864
+      ],
+      [
+        0.39,
+        0.888
+      ],
+      [
+        0.378,
+        0.9
+      ],
+      [
+        -0.378,
+        0.9
+      ],
+      [
+        -0.39,
+        0.888
+      ],
+      [
+        -0.39,
+        0.869
+      ],
+      [
+        -0.386,
+        0.86
+      ]
+    ],
+    "walnut_shell": [
+      [
+        -0.304,
+        0.164
+      ],
+      [
+        -0.343,
+        0.201
+      ],
+      [
+        -0.359,
+        0.275
+      ],
+      [
+        -0.351,
+        0.49
+      ],
+      [
+        -0.342,
+        0.58
+      ],
+      [
+        -0.354,
+        0.696
+      ],
+      [
+        -0.367,
+        0.77
+      ],
+      [
+        -0.345,
+        0.807
+      ],
+      [
+        -0.32099999999999995,
+        0.807
+      ],
+      [
+        -0.34299999999999997,
+        0.77
+      ],
+      [
+        -0.32999999999999996,
+        0.696
+      ],
+      [
+        -0.318,
+        0.58
+      ],
+      [
+        -0.32699999999999996,
+        0.49
+      ],
+      [
+        -0.33499999999999996,
+        0.275
+      ],
+      [
+        -0.319,
+        0.201
+      ],
+      [
+        -0.27999999999999997,
+        0.164
+      ]
+    ],
+    "ivory_upper_rail": [
+      [
+        -0.345,
+        0.795
+      ],
+      [
+        -0.365,
+        0.809
+      ],
+      [
+        -0.368,
+        0.84
+      ],
+      [
+        -0.352,
+        0.852
+      ],
+      [
+        -0.308,
+        0.852
+      ],
+      [
+        -0.308,
+        0.795
+      ]
+    ],
+    "ivory_lower_rail": [
+      [
+        -0.283,
+        0.124
+      ],
+      [
+        -0.316,
+        0.144
+      ],
+      [
+        -0.345,
+        0.185
+      ],
+      [
+        -0.334,
+        0.205
+      ],
+      [
+        -0.309,
+        0.186
+      ],
+      [
+        -0.285,
+        0.168
+      ]
+    ],
+    "closed_terminal_bulkhead": [
+      [
+        -0.282,
+        0
+      ],
+      [
+        0.28,
+        0
+      ],
+      [
+        0.28,
+        0.124
+      ],
+      [
+        0.35,
+        0.145
+      ],
+      [
+        0.35,
+        0.852
+      ],
+      [
+        -0.349,
+        0.852
+      ],
+      [
+        -0.367,
+        0.77
+      ],
+      [
+        -0.354,
+        0.696
+      ],
+      [
+        -0.342,
+        0.58
+      ],
+      [
+        -0.351,
+        0.49
+      ],
+      [
+        -0.359,
+        0.275
+      ],
+      [
+        -0.343,
+        0.201
+      ],
+      [
+        -0.304,
+        0.164
+      ],
+      [
+        -0.282,
+        0.124
+      ]
+    ]
+  },
+  "seam": "Nominal planes at each entry/exit, all main mesh inset 0.001 m. 0.002 m physical joint between adjacent matching modules. Each module remains closed.",
+  "AST-HSP-001": {
+    "entry_source_m": [
+      0,
+      0,
+      0
+    ],
+    "exit_source_m": [
+      2.4,
+      0,
+      0
+    ],
+    "exit_tangent_source": [
+      1,
+      0,
+      0
+    ],
+    "usable_host_worktop_source_m": {
+      "min": [
+        0.06,
+        -0.34,
+        0.9
+      ],
+      "max": [
+        2.34,
+        0.34,
+        0.9
+      ]
+    },
+    "proposed_beverage_origin_source_m": [
+      0.7,
+      0,
+      0.9
+    ],
+    "host_plane_normal_source": [
+      0,
+      0,
+      1
+    ],
+    "host_plane_normal_glb": [
+      0,
+      1,
+      0
+    ],
+    "entry_glb_m": [
+      0,
+      0,
+      0
+    ],
+    "exit_glb_m": [
+      2.4,
+      0,
+      0
+    ],
+    "proposed_beverage_origin_glb_m": [
+      0.7,
+      0.9,
+      0
+    ]
+  },
+  "AST-HSP-002": {
+    "entry_source_m": [
+      0,
+      0,
+      0
+    ],
+    "exit_source_m": [
+      0.62,
+      0.62,
+      0
+    ],
+    "exit_tangent_source": [
+      0,
+      1,
+      0
+    ],
+    "centerline_radius_m": 0.62,
+    "turn_degrees": 90,
+    "entry_glb_m": [
+      0,
+      0,
+      0
+    ],
+    "exit_glb_m": [
+      0.62,
+      0,
+      -0.62
+    ],
+    "staff_shelf_access": {
+      "type": "geometric_inner_curve_service_access_proposal",
+      "frame_source": "Blender source +Z up",
+      "frame_glb": "native glTF +Y up",
+      "access_from": "Concave inner side of return, toward larger radius",
+      "inner_curve_center_source_m": [
+        0,
+        0.62,
+        0
+      ],
+      "inner_curve_center_glb_m": [
+        0,
+        0,
+        -0.62
+      ],
+      "nominal_inner_worktop_radius_m": 0.23,
+      "lower_usable_vertical_interval_source_z_m": [
+        0.2,
+        0.42
+      ],
+      "upper_usable_vertical_interval_source_z_m": [
+        0.505,
+        0.8
+      ],
+      "sampled_approach_rays": [
+        {
+          "source_start_m": [
+            0.02377026264271346,
+            0.522866202514797,
+            0.26
+          ],
+          "source_direction": [
+            0.23770262642713458,
+            -0.9713379748520297,
+            0
+          ],
+          "glb_start_m": [
+            0.02377026264271346,
+            0.26,
+            -0.522866202514797
+          ],
+          "glb_direction": [
+            0.23770262642713458,
+            0,
+            0.9713379748520297
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.02377026264271346,
+            0.522866202514797,
+            0.38
+          ],
+          "source_direction": [
+            0.23770262642713458,
+            -0.9713379748520297,
+            0
+          ],
+          "glb_start_m": [
+            0.02377026264271346,
+            0.38,
+            -0.522866202514797
+          ],
+          "glb_direction": [
+            0.23770262642713458,
+            0,
+            0.9713379748520297
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.02377026264271346,
+            0.522866202514797,
+            0.55
+          ],
+          "source_direction": [
+            0.23770262642713458,
+            -0.9713379748520297,
+            0
+          ],
+          "glb_start_m": [
+            0.02377026264271346,
+            0.55,
+            -0.522866202514797
+          ],
+          "glb_direction": [
+            0.23770262642713458,
+            0,
+            0.9713379748520297
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.02377026264271346,
+            0.522866202514797,
+            0.73
+          ],
+          "source_direction": [
+            0.23770262642713458,
+            -0.9713379748520297,
+            0
+          ],
+          "glb_start_m": [
+            0.02377026264271346,
+            0.73,
+            -0.522866202514797
+          ],
+          "glb_direction": [
+            0.23770262642713458,
+            0,
+            0.9713379748520297
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.0706825181105366,
+            0.54926117308328,
+            0.26
+          ],
+          "source_direction": [
+            0.706825181105366,
+            -0.7073882691671998,
+            0
+          ],
+          "glb_start_m": [
+            0.0706825181105366,
+            0.26,
+            -0.54926117308328
+          ],
+          "glb_direction": [
+            0.706825181105366,
+            0,
+            0.7073882691671998
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.0706825181105366,
+            0.54926117308328,
+            0.38
+          ],
+          "source_direction": [
+            0.706825181105366,
+            -0.7073882691671998,
+            0
+          ],
+          "glb_start_m": [
+            0.0706825181105366,
+            0.38,
+            -0.54926117308328
+          ],
+          "glb_direction": [
+            0.706825181105366,
+            0,
+            0.7073882691671998
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.0706825181105366,
+            0.54926117308328,
+            0.55
+          ],
+          "source_direction": [
+            0.706825181105366,
+            -0.7073882691671998,
+            0
+          ],
+          "glb_start_m": [
+            0.0706825181105366,
+            0.55,
+            -0.54926117308328
+          ],
+          "glb_direction": [
+            0.706825181105366,
+            0,
+            0.7073882691671998
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.0706825181105366,
+            0.54926117308328,
+            0.73
+          ],
+          "source_direction": [
+            0.706825181105366,
+            -0.7073882691671998,
+            0
+          ],
+          "glb_start_m": [
+            0.0706825181105366,
+            0.73,
+            -0.54926117308328
+          ],
+          "glb_direction": [
+            0.706825181105366,
+            0,
+            0.7073882691671998
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.09711483779210446,
+            0.5961523946566277,
+            0.26
+          ],
+          "source_direction": [
+            0.9711483779210446,
+            -0.23847605343372313,
+            0
+          ],
+          "glb_start_m": [
+            0.09711483779210446,
+            0.26,
+            -0.5961523946566277
+          ],
+          "glb_direction": [
+            0.9711483779210446,
+            0,
+            0.23847605343372313
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.09711483779210446,
+            0.5961523946566277,
+            0.38
+          ],
+          "source_direction": [
+            0.9711483779210446,
+            -0.23847605343372313,
+            0
+          ],
+          "glb_start_m": [
+            0.09711483779210446,
+            0.38,
+            -0.5961523946566277
+          ],
+          "glb_direction": [
+            0.9711483779210446,
+            0,
+            0.23847605343372313
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.09711483779210446,
+            0.5961523946566277,
+            0.55
+          ],
+          "source_direction": [
+            0.9711483779210446,
+            -0.23847605343372313,
+            0
+          ],
+          "glb_start_m": [
+            0.09711483779210446,
+            0.55,
+            -0.5961523946566277
+          ],
+          "glb_direction": [
+            0.9711483779210446,
+            0,
+            0.23847605343372313
+          ],
+          "ray_length_m": 0.63
+        },
+        {
+          "source_start_m": [
+            0.09711483779210446,
+            0.5961523946566277,
+            0.73
+          ],
+          "source_direction": [
+            0.9711483779210446,
+            -0.23847605343372313,
+            0
+          ],
+          "glb_start_m": [
+            0.09711483779210446,
+            0.73,
+            -0.5961523946566277
+          ],
+          "glb_direction": [
+            0.9711483779210446,
+            0,
+            0.23847605343372313
+          ],
+          "ray_length_m": 0.63
+        }
+      ],
+      "actual_check_file": "qa/interface_checks.json",
+      "scope": "Actual GLB triangle rays at 3 angular bays and 4 service heights clear to radius .73m. Rays demonstrate sampled openings only, not universal actor/body/hand envelope, food hygiene or implemented interaction. Radial shelf supports and closed end bulkheads are excluded from access rays."
+    }
+  },
+  "inspection_pair_placement_source": [
+    {
+      "id": "AST-HSP-001",
+      "translation_m": [
+        0,
+        0,
+        0
+      ],
+      "yaw_degrees": 0
+    },
+    {
+      "id": "AST-HSP-002",
+      "translation_m": [
+        2.4,
+        0,
+        0
+      ],
+      "yaw_degrees": 0
+    }
+  ],
+  "closure": "Built-in closed shaped terminal bulkheads at both ends; no optional missing closure derivative",
+  "scope": "Component-only placement proposal, no approved room fit or installation"
+}

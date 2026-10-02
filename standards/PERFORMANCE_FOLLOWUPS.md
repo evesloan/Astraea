@@ -15,3 +15,9 @@ AST-STF-007 remains 11,060 triangles for a relatively simple distant silhouette.
 ## Common adoption gates
 
 Map shared material roles to shared engine resources where appropriate; embedded portable texture copies are not a reason to allocate a new runtime material for every instance. Keep named functional parts and interaction anchors when simplifying. Measure actual visible instance counts, per-pass/shadow draw cost, GPU/CPU time and memory in a representative occupied game space. Do not hide required actors, lights, views or mechanics to manufacture a performance pass.
+
+## Hospitality stock and collision proposals
+
+AST-HSP-005 currently contains 10,468 visual triangles: 4,748 in the storage furnishing and 5,720 in configurable plate/tray stock. AST-HSP-006 contains 5,816: 5,540 in the trolley/castors and 276 in its removable tray. Stock groups remain separate and must not become an unavoidable identical full load in every installed instance. Actual density, distance variants and material batching require the game context.
+
+The initial six hospitality assets have 399 numerical collision pieces, including 263 in the curved return. These proposals preserve tested shelf and service openings but are too fragmented to treat as an automatically approved runtime representation. Before adoption, simplify the static body into larger conservative compound sections while retaining its real hollow/service regions, joins and separately moving parts. Recheck the existing positive and blocked opening samples against the simplified shapes. Do not import every decorative rib or small trim as a separate physical shape, and do not replace the whole curved furnishing with a solid hull across usable shelf access. No simplification or native physics-cost pass is delivered by this component checkpoint.
