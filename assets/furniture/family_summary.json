@@ -1,0 +1,435 @@
+[
+  {
+    "catalogue_id": "AST-FUR-001",
+    "name": "Astraea Day Window Bench",
+    "intended_use": "Two-person view-facing daytime seating",
+    "seat_contact_proposal": {
+      "crown_z_m": 0.475,
+      "seat_centres_m": [
+        [
+          -0.548,
+          -0.11,
+          0.475
+        ],
+        [
+          0.548,
+          -0.11,
+          0.475
+        ]
+      ],
+      "front_edge_y_m": -0.425,
+      "usable_depth_m": 0.56
+    },
+    "approach_proposal": {
+      "front_direction": [
+        0,
+        -1,
+        0
+      ],
+      "clear_floor_rectangle_m": [
+        [
+          -1.2,
+          -1.16
+        ],
+        [
+          1.2,
+          -0.47
+        ]
+      ],
+      "status": "Proposal only; actor rig and original game fit untested"
+    },
+    "collision_proposal": {
+      "method": "Compound simple boxes for runners, posts, seat deck, back, side cheeks; omit decorative seams and pins; do not hull the complete chair",
+      "status": "Not generated or engine-tested"
+    },
+    "contact_joins": [
+      {
+        "members": [
+          "floor_shoe",
+          "timber_runner"
+        ],
+        "overlap_m": 0.002
+      },
+      {
+        "members": [
+          "splayed_post",
+          "cross_rail",
+          "swept_walnut_cheek"
+        ],
+        "intent": "Continuous physical load path with fitted join overlap"
+      },
+      {
+        "members": [
+          "crowned_seat",
+          "inset_seat_deck"
+        ],
+        "overlap_m": 0.01045
+      },
+      {
+        "members": [
+          "reclined_back_cross_shell",
+          "swept_walnut_cheek"
+        ],
+        "intent": "Back shell ends overlap cheeks"
+      }
+    ],
+    "bounds_min_m": [
+      -1.2000000476837158,
+      -0.44699999690055847,
+      0.0
+    ],
+    "bounds_max_m": [
+      1.2000000476837158,
+      0.48229193687438965,
+      0.9971820116043091
+    ],
+    "dimensions_m": [
+      2.4000000953674316,
+      0.9292919337749481,
+      0.9971820116043091
+    ],
+    "triangles_evaluated": 4936,
+    "blender_version": "4.3.2",
+    "units": "metres",
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "front_axis": "-Y",
+    "authoring": "Script-assisted intentional ring, extrusion and join design; editable semantic parts and modifiers retained",
+    "provenance": "New independent 2026-10-02 continuation. Not recovery or reconstruction of lost game. Reference images used only for warm residential palette, material restraint and use; no reference pixels copied.",
+    "materials": [
+      "ASTRAEA_champagne_metal",
+      "ASTRAEA_clay_weave",
+      "ASTRAEA_dark_rubber",
+      "ASTRAEA_ivory_enamel",
+      "ASTRAEA_oatmeal_weave",
+      "ASTRAEA_warm_walnut"
+    ],
+    "qa_scope": "Blender component QA only; original Godot integration, actor contact, physics and target-PC performance are untested",
+    "export": {
+      "format": "GLB",
+      "Y_up": true,
+      "apply_modifiers": true,
+      "UVs": true,
+      "normals": true,
+      "materials": "EXPORT",
+      "textures": "Embedded ordinary Principled base-color roles",
+      "static_visual_meshes": 1,
+      "material_primitives": 6,
+      "source_semantic_part_count": 36,
+      "consolidation": "Disconnected evaluated visual parts joined by shared material role, no auto-collision or object deletion in saved source"
+    },
+    "source_generator": "build_furniture.py",
+    "asset_files": [
+      "AST-FUR-001_day_window_bench.blend",
+      "AST-FUR-001_day_window_bench.glb"
+    ],
+    "source_generator_sha256": "480dcc3bb79d0158ec827eebe295aab3623cc5de30982412e9bad3eb30a97dd5",
+    "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+    "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+    "reference_provenance": [
+      {
+        "file": "references/dense/image(20261002-001051).png",
+        "sha256": "9c453f44985a06d8a83d9ae07a8027f29f04b24f42e967ff996508cc7abaa9d2",
+        "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+      },
+      {
+        "file": "references/intimate/image(20261002-000722).png",
+        "sha256": "0328f70e493c30640f0405d0158278e0f38d3e72754aa37a79c9ce2f2bf82081",
+        "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+      },
+      {
+        "file": "references/premium/image(20261002-001347).png",
+        "sha256": "0a92cd5adc6b354bb1432284a270ad286225b7cbeb2b6635ad818b2230083eac",
+        "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+      }
+    ],
+    "blend_sha256": "301d05d6ac0f8dfb7aafc3e45d7461082577b852fe8214b9ade8f76e8d1ebea0",
+    "glb_sha256": "e38e67e363019495a2bbb8183702b569487d8e50a917352e8eed3f9db78c4aca"
+  },
+  {
+    "catalogue_id": "AST-FUR-002",
+    "name": "Astraea Day Reading Chair",
+    "intended_use": "Companion reading and conversation chair",
+    "seat_contact_proposal": {
+      "crown_z_m": 0.475,
+      "seat_centres_m": [
+        [
+          0,
+          -0.11,
+          0.475
+        ]
+      ],
+      "front_edge_y_m": -0.425,
+      "usable_depth_m": 0.56
+    },
+    "approach_proposal": {
+      "front_direction": [
+        0,
+        -1,
+        0
+      ],
+      "clear_floor_rectangle_m": [
+        [
+          -0.47,
+          -1.16
+        ],
+        [
+          0.47,
+          -0.47
+        ]
+      ],
+      "status": "Proposal only; actor rig and original game fit untested"
+    },
+    "collision_proposal": {
+      "method": "Compound simple boxes for runners, posts, seat deck, back, side cheeks; omit decorative seams and pins; do not hull the complete chair",
+      "status": "Not generated or engine-tested"
+    },
+    "contact_joins": [
+      {
+        "members": [
+          "floor_shoe",
+          "timber_runner"
+        ],
+        "overlap_m": 0.002
+      },
+      {
+        "members": [
+          "splayed_post",
+          "cross_rail",
+          "swept_walnut_cheek"
+        ],
+        "intent": "Continuous physical load path with fitted join overlap"
+      },
+      {
+        "members": [
+          "crowned_seat",
+          "inset_seat_deck"
+        ],
+        "overlap_m": 0.01045
+      },
+      {
+        "members": [
+          "reclined_back_cross_shell",
+          "swept_walnut_cheek"
+        ],
+        "intent": "Back shell ends overlap cheeks"
+      }
+    ],
+    "bounds_min_m": [
+      -0.4699999988079071,
+      -0.44699999690055847,
+      0.0
+    ],
+    "bounds_max_m": [
+      0.4699999988079071,
+      0.48229193687438965,
+      0.9971818923950195
+    ],
+    "dimensions_m": [
+      0.9399999976158142,
+      0.9292919337749481,
+      0.9971818923950195
+    ],
+    "triangles_evaluated": 3872,
+    "blender_version": "4.3.2",
+    "units": "metres",
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "front_axis": "-Y",
+    "authoring": "Script-assisted intentional ring, extrusion and join design; editable semantic parts and modifiers retained",
+    "provenance": "New independent 2026-10-02 continuation. Not recovery or reconstruction of lost game. Reference images used only for warm residential palette, material restraint and use; no reference pixels copied.",
+    "materials": [
+      "ASTRAEA_champagne_metal",
+      "ASTRAEA_dark_rubber",
+      "ASTRAEA_ivory_enamel",
+      "ASTRAEA_oatmeal_weave",
+      "ASTRAEA_teal_weave",
+      "ASTRAEA_warm_walnut"
+    ],
+    "qa_scope": "Blender component QA only; original Godot integration, actor contact, physics and target-PC performance are untested",
+    "export": {
+      "format": "GLB",
+      "Y_up": true,
+      "apply_modifiers": true,
+      "UVs": true,
+      "normals": true,
+      "materials": "EXPORT",
+      "textures": "Embedded ordinary Principled base-color roles",
+      "static_visual_meshes": 1,
+      "material_primitives": 6,
+      "source_semantic_part_count": 30,
+      "consolidation": "Disconnected evaluated visual parts joined by shared material role, no auto-collision or object deletion in saved source"
+    },
+    "source_generator": "build_furniture.py",
+    "asset_files": [
+      "AST-FUR-002_day_reading_chair.blend",
+      "AST-FUR-002_day_reading_chair.glb"
+    ],
+    "source_generator_sha256": "480dcc3bb79d0158ec827eebe295aab3623cc5de30982412e9bad3eb30a97dd5",
+    "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+    "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+    "reference_provenance": [
+      {
+        "file": "references/dense/image(20261002-001051).png",
+        "sha256": "9c453f44985a06d8a83d9ae07a8027f29f04b24f42e967ff996508cc7abaa9d2",
+        "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+      },
+      {
+        "file": "references/intimate/image(20261002-000722).png",
+        "sha256": "0328f70e493c30640f0405d0158278e0f38d3e72754aa37a79c9ce2f2bf82081",
+        "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+      },
+      {
+        "file": "references/premium/image(20261002-001347).png",
+        "sha256": "0a92cd5adc6b354bb1432284a270ad286225b7cbeb2b6635ad818b2230083eac",
+        "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+      }
+    ],
+    "blend_sha256": "d57540d49e130571e7a9c2f3882bae4ac6dd83daf763249e84c00d8e6fc8c96b",
+    "glb_sha256": "4652e7887de85b982a8fc56a429663fd20752ad967d572f14404ab2b2be24863"
+  },
+  {
+    "catalogue_id": "AST-FUR-003",
+    "name": "Astraea Day Table",
+    "intended_use": "Forward-of-knees day-use surface for two drinks or a book; no tucked-in dining claim",
+    "contact_proposal": {
+      "worktop_z_m": 0.665,
+      "usable_top_m": [
+        0.953,
+        0.593
+      ],
+      "shelf_z_m": 0.245
+    },
+    "approach_proposal": {
+      "directions": [
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "underside_apron_z_m": 0.596,
+      "placement_note": "Place forward of knees, not over the seated knee envelope; broad-body fit not established",
+      "status": "Proposal only; ergonomic and original-engine validation pending"
+    },
+    "collision_proposal": {
+      "method": "Top shallow convex capsule approximation; separate trestle and stretcher boxes; retain space between supports",
+      "status": "Not generated or engine-tested"
+    },
+    "contact_joins": [
+      {
+        "members": [
+          "rubber_foot",
+          "waisted_trestle"
+        ],
+        "overlap_m": 0.008
+      },
+      {
+        "members": [
+          "waisted_trestle",
+          "top_bearing_rail",
+          "oval_walnut_edge_apron"
+        ],
+        "intent": "Continuous support overlap"
+      },
+      {
+        "members": [
+          "low_cross_stretcher",
+          "waisted_trestle"
+        ],
+        "intent": "Through-tenon overlap"
+      },
+      {
+        "members": [
+          "small_lower_book_shelf",
+          "waisted_trestle"
+        ],
+        "intent": "Shelf ends housed in trestles"
+      }
+    ],
+    "bounds_min_m": [
+      -0.49000000953674316,
+      -0.3100000023841858,
+      0.0
+    ],
+    "bounds_max_m": [
+      0.49000000953674316,
+      0.3100000023841858,
+      0.6650000214576721
+    ],
+    "dimensions_m": [
+      0.9800000190734863,
+      0.6200000047683716,
+      0.6650000214576721
+    ],
+    "triangles_evaluated": 1848,
+    "blender_version": "4.3.2",
+    "units": "metres",
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "front_axis": "-Y",
+    "authoring": "Script-assisted intentional ring, extrusion and join design; editable semantic parts and modifiers retained",
+    "provenance": "New independent 2026-10-02 continuation. Not recovery or reconstruction of lost game. Reference images used only for warm residential palette, material restraint and use; no reference pixels copied.",
+    "materials": [
+      "ASTRAEA_champagne_metal",
+      "ASTRAEA_dark_rubber",
+      "ASTRAEA_warm_stone",
+      "ASTRAEA_warm_walnut"
+    ],
+    "qa_scope": "Blender component QA only; original Godot integration, actor contact, physics and target-PC performance are untested",
+    "export": {
+      "format": "GLB",
+      "Y_up": true,
+      "apply_modifiers": true,
+      "UVs": true,
+      "normals": true,
+      "materials": "EXPORT",
+      "textures": "Embedded ordinary Principled base-color roles",
+      "static_visual_meshes": 1,
+      "material_primitives": 4,
+      "source_semantic_part_count": 15,
+      "consolidation": "Disconnected evaluated visual parts joined by shared material role, no auto-collision or object deletion in saved source"
+    },
+    "source_generator": "build_furniture.py",
+    "asset_files": [
+      "AST-FUR-003_day_table.blend",
+      "AST-FUR-003_day_table.glb"
+    ],
+    "source_generator_sha256": "480dcc3bb79d0158ec827eebe295aab3623cc5de30982412e9bad3eb30a97dd5",
+    "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+    "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+    "reference_provenance": [
+      {
+        "file": "references/dense/image(20261002-001051).png",
+        "sha256": "9c453f44985a06d8a83d9ae07a8027f29f04b24f42e967ff996508cc7abaa9d2",
+        "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+      },
+      {
+        "file": "references/intimate/image(20261002-000722).png",
+        "sha256": "0328f70e493c30640f0405d0158278e0f38d3e72754aa37a79c9ce2f2bf82081",
+        "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+      },
+      {
+        "file": "references/premium/image(20261002-001347).png",
+        "sha256": "0a92cd5adc6b354bb1432284a270ad286225b7cbeb2b6635ad818b2230083eac",
+        "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+      }
+    ],
+    "blend_sha256": "1c61d8cbc18a2b92f31567b6b3bef5414d1ff49682a70e1407d24f8551ef5327",
+    "glb_sha256": "cf60132b141261930eb6548c0edd71367e57551228f3e6937e25f9dc939a3113"
+  }
+]

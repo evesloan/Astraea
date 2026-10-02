@@ -35,9 +35,12 @@ def tile(name, colour, kind):
    broad=sum(wave(u,v,p,q,phase)*w for p,q,phase,w in coarse)/9
    if kind=='wood':
     # Long grain has slow wavering, wide tonal ribbons, and narrow understated pores.
-    drift=.11*wave(0,v,0,1)+.05*wave(0,v,0,3,1.1)
-    a=math.sin(math.tau*(u*9+drift));b=math.sin(math.tau*(u*23+drift*.3))
-    delta=10*a+3*b+3*broad
+    drift=.21*wave(0,v,0,1)+.06*wave(0,v,0,3,1.1)
+    ribbon=math.sin(math.tau*(u*3+drift))
+    fibre=math.sin(math.tau*(u*23+drift*.65))
+    pore=math.sin(math.tau*(u*47+drift*.85))
+    interrupted=max(0.0,pore-.94)*14*(.5+.5*wave(u,v,2,3,.7))
+    delta=3.5*ribbon+1.4*fibre+2.4*broad-interrupted
    elif kind=='weave':
     # Deliberately coarse bands avoid subpixel checkerboard contrast.
     warp=1.3*math.sin(math.tau*x/8);weft=1.1*math.sin(math.tau*y/8)
@@ -58,7 +61,7 @@ def tile(name, colour, kind):
  im.save(OUT/f'{name}.png')
 
 def main():
- manifest={'revision':'astraea-catalogue-materials-01','provenance':'Original deterministic texture art generated for this catalogue; no third-party pixels.','materials':{}}
+ manifest={'revision':'astraea-catalogue-materials-02','provenance':'Original deterministic texture art generated for this catalogue; no third-party pixels.','materials':{}}
  for name,(colour,rough,metal,kind,metric) in PALETTE.items():
   tile(name,colour,kind)
   f=OUT/f'{name}.png'

@@ -1,0 +1,896 @@
+{
+  "catalogue_id": "AST-FUR-001",
+  "name": "Astraea Day Window Bench",
+  "intended_use": "Two-person view-facing daytime seating",
+  "seat_contact_proposal": {
+    "crown_z_m": 0.475,
+    "seat_centres_m": [
+      [
+        -0.548,
+        -0.11,
+        0.475
+      ],
+      [
+        0.548,
+        -0.11,
+        0.475
+      ]
+    ],
+    "front_edge_y_m": -0.425,
+    "usable_depth_m": 0.56
+  },
+  "approach_proposal": {
+    "front_direction": [
+      0,
+      -1,
+      0
+    ],
+    "clear_floor_rectangle_m": [
+      [
+        -1.2,
+        -1.16
+      ],
+      [
+        1.2,
+        -0.47
+      ]
+    ],
+    "status": "Proposal only; actor rig and original game fit untested"
+  },
+  "collision_proposal": {
+    "method": "Compound simple boxes for runners, posts, seat deck, back, side cheeks; omit decorative seams and pins; do not hull the complete chair",
+    "status": "Not generated or engine-tested"
+  },
+  "contact_joins": [
+    {
+      "members": [
+        "floor_shoe",
+        "timber_runner"
+      ],
+      "overlap_m": 0.002
+    },
+    {
+      "members": [
+        "splayed_post",
+        "cross_rail",
+        "swept_walnut_cheek"
+      ],
+      "intent": "Continuous physical load path with fitted join overlap"
+    },
+    {
+      "members": [
+        "crowned_seat",
+        "inset_seat_deck"
+      ],
+      "overlap_m": 0.01045
+    },
+    {
+      "members": [
+        "reclined_back_cross_shell",
+        "swept_walnut_cheek"
+      ],
+      "intent": "Back shell ends overlap cheeks"
+    }
+  ],
+  "bounds_min_m": [
+    -1.2000000476837158,
+    -0.44699999690055847,
+    0.0
+  ],
+  "bounds_max_m": [
+    1.2000000476837158,
+    0.48229193687438965,
+    0.9971820116043091
+  ],
+  "dimensions_m": [
+    2.4000000953674316,
+    0.9292919337749481,
+    0.9971820116043091
+  ],
+  "triangles_evaluated": 4936,
+  "parts": [
+    {
+      "name": "DAY_BENCH_L_swept_walnut_cheek",
+      "type": "MESH",
+      "triangles": 184,
+      "bounds_min_m": [
+        -1.1764999628067017,
+        -0.44699999690055847,
+        0.2022681087255478
+      ],
+      "bounds_max_m": [
+        -1.090499997138977,
+        0.4749999940395355,
+        0.9681851863861084
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_recessed_ivory_liner",
+      "type": "MESH",
+      "triangles": 104,
+      "bounds_min_m": [
+        -1.0885000228881836,
+        -0.375,
+        0.32310250401496887
+      ],
+      "bounds_max_m": [
+        -1.0724999904632568,
+        0.39796531200408936,
+        0.9031530618667603
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_rubber_floor_shoe",
+      "type": "MESH",
+      "triangles": 140,
+      "bounds_min_m": [
+        -1.2000000476837158,
+        -0.35899999737739563,
+        0.0
+      ],
+      "bounds_max_m": [
+        -1.0670000314712524,
+        0.382999986410141,
+        0.017999999225139618
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_timber_runner",
+      "type": "MESH",
+      "triangles": 140,
+      "bounds_min_m": [
+        -1.1929999589920044,
+        -0.34599998593330383,
+        0.01600000075995922
+      ],
+      "bounds_max_m": [
+        -1.0740000009536743,
+        0.3700000047683716,
+        0.07000000029802322
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_front_splayed_post",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -1.1755000352859497,
+        -0.32884836196899414,
+        0.060598067939281464
+      ],
+      "bounds_max_m": [
+        -1.091499924659729,
+        -0.2161516696214676,
+        0.29840192198753357
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_rear_splayed_post",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -1.1755000352859497,
+        0.24615177512168884,
+        0.06059809774160385
+      ],
+      "bounds_max_m": [
+        -1.091499924659729,
+        0.3588482439517975,
+        0.2984018921852112
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_front_inset_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        -1.18149995803833,
+        -0.2930000126361847,
+        0.2759999930858612
+      ],
+      "bounds_max_m": [
+        -1.1775000095367432,
+        -0.2750000059604645,
+        0.2939999997615814
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_L_rear_inset_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        -1.18149995803833,
+        0.30300000309944153,
+        0.2759999930858612
+      ],
+      "bounds_max_m": [
+        -1.1775000095367432,
+        0.32100000977516174,
+        0.2939999997615814
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_L_arm_pad",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        -1.1864999532699585,
+        -0.3425000011920929,
+        0.6499999761581421
+      ],
+      "bounds_max_m": [
+        -1.0805000066757202,
+        0.0625,
+        0.7098000049591064
+      ],
+      "materials": [
+        "ASTRAEA_oatmeal_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_arm_pad_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        -1.1879799365997314,
+        -0.3379996418952942,
+        0.6919000148773193
+      ],
+      "bounds_max_m": [
+        -1.0790200233459473,
+        0.05799965560436249,
+        0.6991000175476074
+      ],
+      "materials": [
+        "ASTRAEA_oatmeal_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_R_swept_walnut_cheek",
+      "type": "MESH",
+      "triangles": 184,
+      "bounds_min_m": [
+        1.090499997138977,
+        -0.44699999690055847,
+        0.2022681087255478
+      ],
+      "bounds_max_m": [
+        1.1764999628067017,
+        0.4749999940395355,
+        0.9681851863861084
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_R_recessed_ivory_liner",
+      "type": "MESH",
+      "triangles": 104,
+      "bounds_min_m": [
+        1.0724999904632568,
+        -0.375,
+        0.32310250401496887
+      ],
+      "bounds_max_m": [
+        1.0885000228881836,
+        0.39796531200408936,
+        0.9031530618667603
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_R_rubber_floor_shoe",
+      "type": "MESH",
+      "triangles": 140,
+      "bounds_min_m": [
+        1.0670000314712524,
+        -0.35899999737739563,
+        0.0
+      ],
+      "bounds_max_m": [
+        1.2000000476837158,
+        0.382999986410141,
+        0.017999999225139618
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_R_timber_runner",
+      "type": "MESH",
+      "triangles": 140,
+      "bounds_min_m": [
+        1.0740000009536743,
+        -0.34599998593330383,
+        0.01600000075995922
+      ],
+      "bounds_max_m": [
+        1.1929999589920044,
+        0.3700000047683716,
+        0.07000000029802322
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_R_front_splayed_post",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        1.091499924659729,
+        -0.32884836196899414,
+        0.060598067939281464
+      ],
+      "bounds_max_m": [
+        1.1755000352859497,
+        -0.2161516696214676,
+        0.29840192198753357
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_R_rear_splayed_post",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        1.091499924659729,
+        0.24615177512168884,
+        0.06059809774160385
+      ],
+      "bounds_max_m": [
+        1.1755000352859497,
+        0.3588482439517975,
+        0.2984018921852112
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_R_front_inset_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        1.1775000095367432,
+        -0.2930000126361847,
+        0.2759999930858612
+      ],
+      "bounds_max_m": [
+        1.18149995803833,
+        -0.2750000059604645,
+        0.2939999997615814
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_R_rear_inset_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        1.1775000095367432,
+        0.30300000309944153,
+        0.2759999930858612
+      ],
+      "bounds_max_m": [
+        1.18149995803833,
+        0.32100000977516174,
+        0.2939999997615814
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_R_arm_pad",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        1.0805000066757202,
+        -0.3425000011920929,
+        0.6499999761581421
+      ],
+      "bounds_max_m": [
+        1.1864999532699585,
+        0.0625,
+        0.7098000049591064
+      ],
+      "materials": [
+        "ASTRAEA_oatmeal_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_R_arm_pad_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        1.0790200233459473,
+        -0.3379996418952942,
+        0.6919000148773193
+      ],
+      "bounds_max_m": [
+        1.1879799365997314,
+        0.05799965560436249,
+        0.6991000175476074
+      ],
+      "materials": [
+        "ASTRAEA_oatmeal_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_front_continuous_cross_rail",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -1.1334999799728394,
+        -0.3380000591278076,
+        0.2644999623298645
+      ],
+      "bounds_max_m": [
+        1.1334999799728394,
+        -0.2579999566078186,
+        0.32750004529953003
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_rear_continuous_cross_rail",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -1.1334999799728394,
+        0.262999951839447,
+        0.2644999623298645
+      ],
+      "bounds_max_m": [
+        1.1334999799728394,
+        0.34300005435943604,
+        0.32750004529953003
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_inset_seat_deck",
+      "type": "MESH",
+      "triangles": 148,
+      "bounds_min_m": [
+        -1.1024999618530273,
+        -0.39250001311302185,
+        0.3050000071525574
+      ],
+      "bounds_max_m": [
+        1.1024999618530273,
+        0.3084999918937683,
+        0.3440000116825104
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_reclined_back_cross_shell",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -1.162500023841858,
+        0.3157080411911011,
+        0.336212158203125
+      ],
+      "bounds_max_m": [
+        1.162500023841858,
+        0.48229193687438965,
+        0.9237878322601318
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_crowned_seat",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        -1.0829999446868896,
+        -0.42499998211860657,
+        0.33354997634887695
+      ],
+      "bounds_max_m": [
+        -0.012999951839447021,
+        0.2709999978542328,
+        0.4749999940395355
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_crowned_seat_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        -1.0651997327804565,
+        -0.4146799147129059,
+        0.43757498264312744
+      ],
+      "bounds_max_m": [
+        -0.030800223350524902,
+        0.2606799304485321,
+        0.4447749853134155
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_L_reclined_back_cushion",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        -1.0799999237060547,
+        0.20961853861808777,
+        0.4894659221172333
+      ],
+      "bounds_max_m": [
+        -0.015999972820281982,
+        0.4392414093017578,
+        0.9962086081504822
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_L_reclined_back_cushion_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        -1.0623195171356201,
+        0.21932832896709442,
+        0.5131165385246277
+      ],
+      "bounds_max_m": [
+        -0.033680498600006104,
+        0.3277653455734253,
+        0.9971820116043091
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_L_back_pull_-0.23",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        -0.7802000045776367,
+        0.21118779480457306,
+        0.6010159254074097
+      ],
+      "bounds_max_m": [
+        -0.7757999897003174,
+        0.2811777889728546,
+        0.911022424697876
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_L_back_pull_0.23",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        -0.32019996643066406,
+        0.21118779480457306,
+        0.6010159254074097
+      ],
+      "bounds_max_m": [
+        -0.3157999813556671,
+        0.2811777889728546,
+        0.911022424697876
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_R_crowned_seat",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        0.012999951839447021,
+        -0.42499998211860657,
+        0.33354997634887695
+      ],
+      "bounds_max_m": [
+        1.0829999446868896,
+        0.2709999978542328,
+        0.4749999940395355
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_R_crowned_seat_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        0.030800223350524902,
+        -0.4146799147129059,
+        0.43757498264312744
+      ],
+      "bounds_max_m": [
+        1.0651997327804565,
+        0.2606799304485321,
+        0.4447749853134155
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_R_reclined_back_cushion",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        0.015999972820281982,
+        0.20961853861808777,
+        0.4894659221172333
+      ],
+      "bounds_max_m": [
+        1.0799999237060547,
+        0.4392414093017578,
+        0.9962086081504822
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_BENCH_R_reclined_back_cushion_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        0.033680498600006104,
+        0.21932832896709442,
+        0.5131165385246277
+      ],
+      "bounds_max_m": [
+        1.0623195171356201,
+        0.3277653455734253,
+        0.9971820116043091
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_R_back_pull_-0.23",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        0.3157999813556671,
+        0.21118779480457306,
+        0.6010159254074097
+      ],
+      "bounds_max_m": [
+        0.32019996643066406,
+        0.2811777889728546,
+        0.911022424697876
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_BENCH_R_back_pull_0.23",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        0.7757999897003174,
+        0.21118779480457306,
+        0.6010159254074097
+      ],
+      "bounds_max_m": [
+        0.7802000045776367,
+        0.2811777889728546,
+        0.911022424697876
+      ],
+      "materials": [
+        "ASTRAEA_clay_weave"
+      ],
+      "modifiers": []
+    }
+  ],
+  "blender_version": "4.3.2",
+  "units": "metres",
+  "pivot_m": [
+    0,
+    0,
+    0
+  ],
+  "front_axis": "-Y",
+  "authoring": "Script-assisted intentional ring, extrusion and join design; editable semantic parts and modifiers retained",
+  "provenance": "New independent 2026-10-02 continuation. Not recovery or reconstruction of lost game. Reference images used only for warm residential palette, material restraint and use; no reference pixels copied.",
+  "materials": [
+    "ASTRAEA_champagne_metal",
+    "ASTRAEA_clay_weave",
+    "ASTRAEA_dark_rubber",
+    "ASTRAEA_ivory_enamel",
+    "ASTRAEA_oatmeal_weave",
+    "ASTRAEA_warm_walnut"
+  ],
+  "qa_scope": "Blender component QA only; original Godot integration, actor contact, physics and target-PC performance are untested",
+  "export": {
+    "format": "GLB",
+    "Y_up": true,
+    "apply_modifiers": true,
+    "UVs": true,
+    "normals": true,
+    "materials": "EXPORT",
+    "textures": "Embedded ordinary Principled base-color roles",
+    "static_visual_meshes": 1,
+    "material_primitives": 6,
+    "source_semantic_part_count": 36,
+    "consolidation": "Disconnected evaluated visual parts joined by shared material role, no auto-collision or object deletion in saved source"
+  },
+  "source_generator": "build_furniture.py",
+  "asset_files": [
+    "AST-FUR-001_day_window_bench.blend",
+    "AST-FUR-001_day_window_bench.glb"
+  ],
+  "source_generator_sha256": "480dcc3bb79d0158ec827eebe295aab3623cc5de30982412e9bad3eb30a97dd5",
+  "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+  "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+  "reference_provenance": [
+    {
+      "file": "references/dense/image(20261002-001051).png",
+      "sha256": "9c453f44985a06d8a83d9ae07a8027f29f04b24f42e967ff996508cc7abaa9d2",
+      "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+    },
+    {
+      "file": "references/intimate/image(20261002-000722).png",
+      "sha256": "0328f70e493c30640f0405d0158278e0f38d3e72754aa37a79c9ce2f2bf82081",
+      "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+    },
+    {
+      "file": "references/premium/image(20261002-001347).png",
+      "sha256": "0a92cd5adc6b354bb1432284a270ad286225b7cbeb2b6635ad818b2230083eac",
+      "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+    }
+  ],
+  "blend_sha256": "301d05d6ac0f8dfb7aafc3e45d7461082577b852fe8214b9ade8f76e8d1ebea0",
+  "glb_sha256": "e38e67e363019495a2bbb8183702b569487d8e50a917352e8eed3f9db78c4aca"
+}

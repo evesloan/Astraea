@@ -1,0 +1,1 @@
+Intermediate automatic Blender backup copies retained for traceability. Use the three named .blend files in the furniture folder as delivered editable sources. These backups are not additional catalogue assets.
