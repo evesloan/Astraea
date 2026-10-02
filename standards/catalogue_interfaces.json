@@ -1,7 +1,7 @@
 {
-  "revision": "astraea-catalogue-interfaces-03",
+  "revision": "astraea-catalogue-interfaces-04",
   "status": "current_component_consumer_index_not_engine_acceptance",
-  "unique_assets": 57,
+  "unique_assets": 61,
   "semantic_rules": [
     "Exact existing source/export/manifest hashes bind every row.",
     "Metadata records map existing points and behavior only. No nonexistent point/trajectory is invented.",
@@ -15069,18 +15069,958 @@
         "evidence": "qa/batch10/independent_salon_edges_interfaces.json",
         "limits": "Conservative compounds and local contacts; no complete sweep, host aperture or actor/cart fit."
       }
+    },
+    {
+      "catalogue_id": "AST-LND-001",
+      "family": "landing_guest",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/landing_guest/source/AST-LND-001.blend",
+          "sha256": "af3bc07ab9570ac1a305599e82ca6995600da70723060fa08f2c8e5c47ac24cc",
+          "bytes": 190300
+        },
+        "export": {
+          "path": "assets/landing_guest/exports/AST-LND-001.glb",
+          "sha256": "375ac96ccf8bfd4d4f93f78cae614f6d352c1720005aae8b358f7d489516a0dd",
+          "bytes": 113996
+        },
+        "manifest": {
+          "path": "assets/landing_guest/AST-LND-001.manifest.json",
+          "sha256": "83d4715740ff89e1e62a103d7d1d8ab77fd4ca4b98d7b418e93418a06dfad437",
+          "bytes": 15582
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/landing_guest/AST-LND-001.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor/contact datum at source origin; it can lie in intentional empty space. Host floor/support remains unknown.",
+        "actual_native_root_nodes": [
+          {
+            "index": 16,
+            "name": "AST-LND-001",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/landing_guest/AST-LND-001.manifest.json",
+          "qa/batch11/independent_landing_guest_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender Z-up, +X right, front -Y",
+        "exchange": "Native GLB Y-up, front +Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native parent hierarchy before placement; do not convert native geometry a second time.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch11/independent_landing_guest_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_physical_interfaces_and_proposed_placements",
+        "meaning": "Actual named source surfaces and native geometry carry contacts and opposing joins. Fixture receiver normals and optional aiming directions are separate.",
+        "evidence": [
+          "assets/landing_guest/AST-LND-001.manifest.json#/physical_and_proposal_markers",
+          "qa/batch11/independent_landing_guest_interfaces.json",
+          "qa/batch11/independent_fixture_review.json"
+        ],
+        "omission_assessment": "Original host absent. Door/leaf/pocket/shaft/head/ceiling/floor/support dimensions and actual core interfaces remain unknown."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Localized supported cove and canted static arrival field; physical floor, touch rail, opaque liner and fixture receiver contacts. Service and light aiming datums are nonphysical proposals. Contains no door, aperture, shaft or route implementation.",
+        "evidence": [
+          "assets/landing_guest/AST-LND-001.manifest.json#/physical_and_proposal_markers",
+          "qa/batch11/independent_landing_guest_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 8,
+        "physical_surface_normals_independently_checked": true,
+        "limit": "Component geometric witnesses only; no structural load, universal species fit or installed room acceptance."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "All components are fixed. No lift, leaf, shelf travel, operational light or electrical behavior.",
+        "evidence": [
+          "assets/landing_guest/AST-LND-001.manifest.json#/physical_and_proposal_markers",
+          "qa/batch11/independent_landing_guest_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "actual_generator_read_closure_and_native_roles_inspected",
+        "actual_material_roles": [
+          "dark_rubber",
+          "guest_arrival_original",
+          "ivory_enamel",
+          "oatmeal_weave",
+          "warm_walnut"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/landing_guest/source/build_landing_guest.py",
+            "sha256": "3aa69311a6b84f475c1b83b574359e33cdfd3b5cb39c24af2494deac9a64ac6b",
+            "bytes": 27792
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/landing_guest/source/build_landing_guest.py",
+            "sha256": "3aa69311a6b84f475c1b83b574359e33cdfd3b5cb39c24af2494deac9a64ac6b",
+            "bytes": 27792
+          },
+          {
+            "path": "assets/landing_guest/source/make_orientation_art.py",
+            "sha256": "c988e3614bed07dfa2392201a89d337c10d0510b672e623ca5b603c282d7dc56",
+            "bytes": 1772
+          },
+          {
+            "path": "assets/landing_guest/textures/guest_arrival_original.png",
+            "sha256": "e815e53e896000bdbbd4b0fc459217ec10de5858688b16276a420c9ceca0b1b4",
+            "bytes": 4104
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          }
+        ],
+        "evidence": [
+          "qa/batch11/independent_rebuild_receipts.json"
+        ],
+        "limit": "Every helper-loaded image role is included even when unused. Reused fixtures are separate QA-only context and are not new designs or production inputs."
+      },
+      "collision_proposal_screen": {
+        "status": "component_geometry_not_runtime_adoption",
+        "shape_count": 9,
+        "finite_clear_and_blocked_controls": 152,
+        "empty_box_volume_checks": 2,
+        "sampled_max_external_inflation_m": 0.041415490232464366,
+        "evidence": [
+          "qa/batch11/independent_landing_guest_interfaces.json",
+          "qa/batch11/independent_collision_profile_review.json"
+        ],
+        "limits": "Empty boxes use triangle/box and convex feasibility with0.2mm surface inset. Profile inflation is sampled, not a certified continuous upper bound. No actor/cart sweep or runtime physics."
+      },
+      "existing_independent_evidence": [
+        "qa/batch11/independent_landing_guest_interfaces.json",
+        "qa/batch11/independent_source_AST-LND-001.json",
+        "qa/batch11/independent_export_AST-LND-001.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch11/independent_interface_coverage_map.json#/assets/0",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-LND-002",
+      "family": "landing_guest",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/landing_guest/source/AST-LND-002.blend",
+          "sha256": "dd4030b11e91b7641fa912699904b72ea6eee173f4300a0ea2c4cc62049aa5b7",
+          "bytes": 197611
+        },
+        "export": {
+          "path": "assets/landing_guest/exports/AST-LND-002.glb",
+          "sha256": "854d0f784f0cc199b4ec1971992fa143b54f8bb377e18590307eba989f50aad9",
+          "bytes": 153396
+        },
+        "manifest": {
+          "path": "assets/landing_guest/AST-LND-002.manifest.json",
+          "sha256": "f88bbb158224504fad4c5adbbd98f5b6a1d37704bb7e83f32d24d40da36a6f57",
+          "bytes": 16384
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/landing_guest/AST-LND-002.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor/contact datum at source origin; it can lie in intentional empty space. Host floor/support remains unknown.",
+        "actual_native_root_nodes": [
+          {
+            "index": 22,
+            "name": "AST-LND-002",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/landing_guest/AST-LND-002.manifest.json",
+          "qa/batch11/independent_landing_guest_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender Z-up, +X right, front -Y",
+        "exchange": "Native GLB Y-up, front +Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native parent hierarchy before placement; do not convert native geometry a second time.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch11/independent_landing_guest_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_physical_interfaces_and_proposed_placements",
+        "meaning": "Actual named source surfaces and native geometry carry contacts and opposing joins. Fixture receiver normals and optional aiming directions are separate.",
+        "evidence": [
+          "assets/landing_guest/AST-LND-002.manifest.json#/physical_and_proposal_markers",
+          "qa/batch11/independent_landing_guest_interfaces.json",
+          "qa/batch11/independent_fixture_review.json"
+        ],
+        "omission_assessment": "Original host absent. Door/leaf/pocket/shaft/head/ceiling/floor/support dimensions and actual core interfaces remain unknown."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Single waiting seat with separate luggage support and lower retrieval shelf. Physical floor/seat/bag/shelf contacts and supported joins; waiting/body/storage positions remain unverified proposals. No moving shelf.",
+        "evidence": [
+          "assets/landing_guest/AST-LND-002.manifest.json#/physical_and_proposal_markers",
+          "qa/batch11/independent_landing_guest_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 7,
+        "physical_surface_normals_independently_checked": true,
+        "limit": "Component geometric witnesses only; no structural load, universal species fit or installed room acceptance."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "All components are fixed. No lift, leaf, shelf travel, operational light or electrical behavior.",
+        "evidence": [
+          "assets/landing_guest/AST-LND-002.manifest.json#/physical_and_proposal_markers",
+          "qa/batch11/independent_landing_guest_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "actual_generator_read_closure_and_native_roles_inspected",
+        "actual_material_roles": [
+          "clay_weave",
+          "dark_rubber",
+          "ivory_enamel",
+          "teal_weave",
+          "warm_walnut"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/landing_guest/source/build_landing_guest.py",
+            "sha256": "3aa69311a6b84f475c1b83b574359e33cdfd3b5cb39c24af2494deac9a64ac6b",
+            "bytes": 27792
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/landing_guest/source/build_landing_guest.py",
+            "sha256": "3aa69311a6b84f475c1b83b574359e33cdfd3b5cb39c24af2494deac9a64ac6b",
+            "bytes": 27792
+          },
+          {
+            "path": "assets/landing_guest/source/make_orientation_art.py",
+            "sha256": "c988e3614bed07dfa2392201a89d337c10d0510b672e623ca5b603c282d7dc56",
+            "bytes": 1772
+          },
+          {
+            "path": "assets/landing_guest/textures/guest_arrival_original.png",
+            "sha256": "e815e53e896000bdbbd4b0fc459217ec10de5858688b16276a420c9ceca0b1b4",
+            "bytes": 4104
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          }
+        ],
+        "evidence": [
+          "qa/batch11/independent_rebuild_receipts.json"
+        ],
+        "limit": "Every helper-loaded image role is included even when unused. Reused fixtures are separate QA-only context and are not new designs or production inputs."
+      },
+      "collision_proposal_screen": {
+        "status": "component_geometry_not_runtime_adoption",
+        "shape_count": 9,
+        "finite_clear_and_blocked_controls": 153,
+        "empty_box_volume_checks": 2,
+        "sampled_max_external_inflation_m": 0.057564189766506145,
+        "evidence": [
+          "qa/batch11/independent_landing_guest_interfaces.json",
+          "qa/batch11/independent_collision_profile_review.json"
+        ],
+        "limits": "Empty boxes use triangle/box and convex feasibility with0.2mm surface inset. Profile inflation is sampled, not a certified continuous upper bound. No actor/cart sweep or runtime physics."
+      },
+      "existing_independent_evidence": [
+        "qa/batch11/independent_landing_guest_interfaces.json",
+        "qa/batch11/independent_source_AST-LND-002.json",
+        "qa/batch11/independent_export_AST-LND-002.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch11/independent_interface_coverage_map.json#/assets/1",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-LND-003",
+      "family": "landing_service",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/landing_service/source/AST-LND-003.blend",
+          "sha256": "aa9f74076c14261e98a3ef6d6872b81f12097f11b4106fdd9060d462ca08ae82",
+          "bytes": 1039388
+        },
+        "export": {
+          "path": "assets/landing_service/exports/AST-LND-003.glb",
+          "sha256": "8cf4d107816f484ce0f425e04369f8cfc1e60a4e527e1ffcdf3c960b6705a047",
+          "bytes": 149176
+        },
+        "manifest": {
+          "path": "assets/landing_service/AST-LND-003.manifest.json",
+          "sha256": "0d2f10a0aaa59689f87f34b76ae8e93931af59cf1f46759af48c64c3e3e45453",
+          "bytes": 4121
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/landing_service/AST-LND-003.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor/contact datum at source origin; it can lie in intentional empty space. Host floor/support remains unknown.",
+        "actual_native_root_nodes": [
+          {
+            "index": 16,
+            "name": "AST-LND-003_floor_datum",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/landing_service/AST-LND-003.manifest.json",
+          "qa/batch11/independent_landing_service_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender Z-up, +X right, front -Y",
+        "exchange": "Native GLB Y-up, front +Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native parent hierarchy before placement; do not convert native geometry a second time.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch11/independent_landing_service_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_physical_interfaces_and_proposed_placements",
+        "meaning": "Actual named source surfaces and native geometry carry contacts and opposing joins. Fixture receiver normals and optional aiming directions are separate.",
+        "evidence": [
+          "assets/landing_service/interface_api.json",
+          "qa/batch11/independent_landing_service_interfaces.json",
+          "qa/batch11/independent_fixture_review.json"
+        ],
+        "omission_assessment": "Original host absent. Door/leaf/pocket/shaft/head/ceiling/floor/support dimensions and actual core interfaces remain unknown."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Protected staff return with actual separate control surfaces, floor shoe and supported fixture receivers. Static affordances only; no lift, electrical control or working status indication.",
+        "evidence": [
+          "assets/landing_service/interface_api.json",
+          "qa/batch11/independent_landing_service_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 8,
+        "physical_surface_normals_independently_checked": true,
+        "limit": "Component geometric witnesses only; no structural load, universal species fit or installed room acceptance."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "All components are fixed. No lift, leaf, shelf travel, operational light or electrical behavior.",
+        "evidence": [
+          "assets/landing_service/interface_api.json",
+          "qa/batch11/independent_landing_service_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "actual_generator_read_closure_and_native_roles_inspected",
+        "actual_material_roles": [
+          "landing_service_inactive_symbol",
+          "landing_service_inspection_symbol",
+          "landing_service_legend_graphic",
+          "landing_service_request_symbol",
+          "staff_bluegrey_paint",
+          "staff_cable_blue",
+          "staff_label",
+          "staff_opal",
+          "staff_rubber",
+          "staff_white_paint",
+          "staff_zinc"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/landing_service/source/build_landing_service.py",
+            "sha256": "c62da0b7fe5b89fafa442e477ace4a8974aaadf600b1bad436d50640bea8f972",
+            "bytes": 24360
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/landing_service/source/build_landing_service.py",
+            "sha256": "c62da0b7fe5b89fafa442e477ace4a8974aaadf600b1bad436d50640bea8f972",
+            "bytes": 24360
+          },
+          {
+            "path": "assets/landing_service/textures/draw_service_graphics.py",
+            "sha256": "486e1b28b6eb7bddbcfc62db0d27fe46474f12b734abcc3db117eb881816099f",
+            "bytes": 2768
+          },
+          {
+            "path": "assets/landing_service/textures/landing_service_inactive_symbol.png",
+            "sha256": "e3439f1012492451eb218d2e1bf5280ef79af64479c66091748f346a27a99112",
+            "bytes": 818
+          },
+          {
+            "path": "assets/landing_service/textures/landing_service_inspection_symbol.png",
+            "sha256": "307b80cec3e3563a4a010c6b38a54147940a8475d2e1f9dc0356544bbf7a571a",
+            "bytes": 815
+          },
+          {
+            "path": "assets/landing_service/textures/landing_service_legend_graphic.png",
+            "sha256": "212de32b048fc2dfa7bec26cdf7274e749aa92f24a3354ee3a0d1b088f499af8",
+            "bytes": 471
+          },
+          {
+            "path": "assets/landing_service/textures/landing_service_request_symbol.png",
+            "sha256": "9ce8ed922d16ab79dfff6504390091429c1c66bb501934800cf65ca7f06189cf",
+            "bytes": 646
+          },
+          {
+            "path": "assets/landing_service/textures/manifest.json",
+            "sha256": "d0b099fa194c9516e84ff77f6ae17593a7784ef0073b0e589ca821b2623809ce",
+            "bytes": 1986
+          },
+          {
+            "path": "materials/staff/manifest.json",
+            "sha256": "5cf6681db7a5ba8d1c459cc5b9eaf2ee9f210efd03f1f146b4d8dd21b1d0f759",
+            "bytes": 3205
+          },
+          {
+            "path": "materials/staff/staff_bluegrey_paint.png",
+            "sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f",
+            "bytes": 6069
+          },
+          {
+            "path": "materials/staff/staff_cable_blue.png",
+            "sha256": "8ca09105d6bae6f49541ee8741933eca4f427e8e46a40ac74a7d03142619c60a",
+            "bytes": 4146
+          },
+          {
+            "path": "materials/staff/staff_cable_red.png",
+            "sha256": "13ed2b2baa42fd70dcaab3a12a9cc80a849e49b35e44dd8bc026dca603acb081",
+            "bytes": 4133
+          },
+          {
+            "path": "materials/staff/staff_floor.png",
+            "sha256": "7d39c03c816ecdc8df6efe1869bf288c1e8a6419d8472a0386bca0a2f57f599f",
+            "bytes": 11485
+          },
+          {
+            "path": "materials/staff/staff_label.png",
+            "sha256": "68480ff4080dd2b93ddfba454623db9890006bb55cbb415911607773e348b644",
+            "bytes": 5976
+          },
+          {
+            "path": "materials/staff/staff_opal.png",
+            "sha256": "d1884536391beb3bbffbf8d5d9ecb40c678b810cf841c13b53f891594c5d086b",
+            "bytes": 6219
+          },
+          {
+            "path": "materials/staff/staff_rubber.png",
+            "sha256": "9e9623559d6dcd7b4c459da948132417a966976177ff608153ff8b71764036f8",
+            "bytes": 4240
+          },
+          {
+            "path": "materials/staff/staff_white_paint.png",
+            "sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88",
+            "bytes": 6159
+          },
+          {
+            "path": "materials/staff/staff_zinc.png",
+            "sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c",
+            "bytes": 5827
+          },
+          {
+            "path": "standards/staff_materials.py",
+            "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
+            "bytes": 1319
+          }
+        ],
+        "evidence": [
+          "qa/batch11/independent_rebuild_receipts.json"
+        ],
+        "limit": "Every helper-loaded image role is included even when unused. Reused fixtures are separate QA-only context and are not new designs or production inputs."
+      },
+      "collision_proposal_screen": {
+        "status": "component_geometry_not_runtime_adoption",
+        "shape_count": 10,
+        "finite_clear_and_blocked_controls": 76,
+        "empty_box_volume_checks": 1,
+        "sampled_max_external_inflation_m": 0.0079999766349792,
+        "evidence": [
+          "qa/batch11/independent_landing_service_interfaces.json",
+          "qa/batch11/independent_collision_profile_review.json"
+        ],
+        "limits": "Empty boxes use triangle/box and convex feasibility with0.2mm surface inset. Profile inflation is sampled, not a certified continuous upper bound. No actor/cart sweep or runtime physics."
+      },
+      "existing_independent_evidence": [
+        "qa/batch11/independent_landing_service_interfaces.json",
+        "qa/batch11/independent_source_AST-LND-003.json",
+        "qa/batch11/independent_export_AST-LND-003.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch11/independent_interface_coverage_map.json#/assets/2",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-LND-004",
+      "family": "landing_service",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/landing_service/source/AST-LND-004.blend",
+          "sha256": "266ad3f714a7b8345651aa9d31b277cee5b206435aed844ff48af4cf747172ef",
+          "bytes": 867616
+        },
+        "export": {
+          "path": "assets/landing_service/exports/AST-LND-004.glb",
+          "sha256": "96ef96ff8e24614149ce27e6aebb1b35be1c51096fc62237af099f4ef78f234f",
+          "bytes": 110368
+        },
+        "manifest": {
+          "path": "assets/landing_service/AST-LND-004.manifest.json",
+          "sha256": "1ad883421a35a61b208cc6e798c43057dc26d8752c136c2f8ec3ae1f3eb5d981",
+          "bytes": 3563
+        }
+      },
+      "units": {
+        "status": "explicit_existing_file_or_catalogue_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/landing_service/AST-LND-004.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "identified_existing_datum",
+        "meaning": "Floor/contact datum at source origin; it can lie in intentional empty space. Host floor/support remains unknown.",
+        "actual_native_root_nodes": [
+          {
+            "index": 10,
+            "name": "AST-LND-004_floor_datum",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/landing_service/AST-LND-004.manifest.json",
+          "qa/batch11/independent_landing_service_interfaces.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "identified_and_actual_native_hierarchy_read",
+        "source": "Blender Z-up, +X right, front -Y",
+        "exchange": "Native GLB Y-up, front +Z",
+        "conversion": "(x,y,z) -> (x,z,-y)",
+        "rule": "Resolve actual native parent hierarchy before placement; do not convert native geometry a second time.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch11/independent_landing_service_interfaces.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "existing_physical_interfaces_and_proposed_placements",
+        "meaning": "Actual named source surfaces and native geometry carry contacts and opposing joins. Fixture receiver normals and optional aiming directions are separate.",
+        "evidence": [
+          "assets/landing_service/interface_api.json",
+          "qa/batch11/independent_landing_service_interfaces.json",
+          "qa/batch11/independent_fixture_review.json"
+        ],
+        "omission_assessment": "Original host absent. Door/leaf/pocket/shaft/head/ceiling/floor/support dimensions and actual core interfaces remain unknown."
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "existing_records_classified",
+        "meaning": "Fixed inspection top and separate lower retrieval bay on shaped end frames. Floor/top/tray/tag surfaces are physical; service approach remains an empty geometric reservation. No cart replacement or moving drawer.",
+        "evidence": [
+          "assets/landing_service/interface_api.json",
+          "qa/batch11/independent_landing_service_interfaces.json"
+        ],
+        "native_physical_surface_witness_count": 5,
+        "physical_surface_normals_independently_checked": true,
+        "limit": "Component geometric witnesses only; no structural load, universal species fit or installed room acceptance."
+      },
+      "motion_and_hierarchy": {
+        "status": "not_applicable_static_part",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "meaning": "All components are fixed. No lift, leaf, shelf travel, operational light or electrical behavior.",
+        "evidence": [
+          "assets/landing_service/interface_api.json",
+          "qa/batch11/independent_landing_service_interfaces.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "actual_generator_read_closure_and_native_roles_inspected",
+        "actual_material_roles": [
+          "staff_bluegrey_paint",
+          "staff_label",
+          "staff_rubber",
+          "staff_white_paint",
+          "staff_zinc"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/landing_service/source/build_landing_service.py",
+            "sha256": "c62da0b7fe5b89fafa442e477ace4a8974aaadf600b1bad436d50640bea8f972",
+            "bytes": 24360
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/landing_service/source/build_landing_service.py",
+            "sha256": "c62da0b7fe5b89fafa442e477ace4a8974aaadf600b1bad436d50640bea8f972",
+            "bytes": 24360
+          },
+          {
+            "path": "assets/landing_service/textures/draw_service_graphics.py",
+            "sha256": "486e1b28b6eb7bddbcfc62db0d27fe46474f12b734abcc3db117eb881816099f",
+            "bytes": 2768
+          },
+          {
+            "path": "assets/landing_service/textures/landing_service_inactive_symbol.png",
+            "sha256": "e3439f1012492451eb218d2e1bf5280ef79af64479c66091748f346a27a99112",
+            "bytes": 818
+          },
+          {
+            "path": "assets/landing_service/textures/landing_service_inspection_symbol.png",
+            "sha256": "307b80cec3e3563a4a010c6b38a54147940a8475d2e1f9dc0356544bbf7a571a",
+            "bytes": 815
+          },
+          {
+            "path": "assets/landing_service/textures/landing_service_legend_graphic.png",
+            "sha256": "212de32b048fc2dfa7bec26cdf7274e749aa92f24a3354ee3a0d1b088f499af8",
+            "bytes": 471
+          },
+          {
+            "path": "assets/landing_service/textures/landing_service_request_symbol.png",
+            "sha256": "9ce8ed922d16ab79dfff6504390091429c1c66bb501934800cf65ca7f06189cf",
+            "bytes": 646
+          },
+          {
+            "path": "assets/landing_service/textures/manifest.json",
+            "sha256": "d0b099fa194c9516e84ff77f6ae17593a7784ef0073b0e589ca821b2623809ce",
+            "bytes": 1986
+          },
+          {
+            "path": "materials/staff/manifest.json",
+            "sha256": "5cf6681db7a5ba8d1c459cc5b9eaf2ee9f210efd03f1f146b4d8dd21b1d0f759",
+            "bytes": 3205
+          },
+          {
+            "path": "materials/staff/staff_bluegrey_paint.png",
+            "sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f",
+            "bytes": 6069
+          },
+          {
+            "path": "materials/staff/staff_cable_blue.png",
+            "sha256": "8ca09105d6bae6f49541ee8741933eca4f427e8e46a40ac74a7d03142619c60a",
+            "bytes": 4146
+          },
+          {
+            "path": "materials/staff/staff_cable_red.png",
+            "sha256": "13ed2b2baa42fd70dcaab3a12a9cc80a849e49b35e44dd8bc026dca603acb081",
+            "bytes": 4133
+          },
+          {
+            "path": "materials/staff/staff_floor.png",
+            "sha256": "7d39c03c816ecdc8df6efe1869bf288c1e8a6419d8472a0386bca0a2f57f599f",
+            "bytes": 11485
+          },
+          {
+            "path": "materials/staff/staff_label.png",
+            "sha256": "68480ff4080dd2b93ddfba454623db9890006bb55cbb415911607773e348b644",
+            "bytes": 5976
+          },
+          {
+            "path": "materials/staff/staff_opal.png",
+            "sha256": "d1884536391beb3bbffbf8d5d9ecb40c678b810cf841c13b53f891594c5d086b",
+            "bytes": 6219
+          },
+          {
+            "path": "materials/staff/staff_rubber.png",
+            "sha256": "9e9623559d6dcd7b4c459da948132417a966976177ff608153ff8b71764036f8",
+            "bytes": 4240
+          },
+          {
+            "path": "materials/staff/staff_white_paint.png",
+            "sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88",
+            "bytes": 6159
+          },
+          {
+            "path": "materials/staff/staff_zinc.png",
+            "sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c",
+            "bytes": 5827
+          },
+          {
+            "path": "standards/staff_materials.py",
+            "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
+            "bytes": 1319
+          }
+        ],
+        "evidence": [
+          "qa/batch11/independent_rebuild_receipts.json"
+        ],
+        "limit": "Every helper-loaded image role is included even when unused. Reused fixtures are separate QA-only context and are not new designs or production inputs."
+      },
+      "collision_proposal_screen": {
+        "status": "component_geometry_not_runtime_adoption",
+        "shape_count": 16,
+        "finite_clear_and_blocked_controls": 152,
+        "empty_box_volume_checks": 2,
+        "sampled_max_external_inflation_m": 0.0023093731047481836,
+        "evidence": [
+          "qa/batch11/independent_landing_service_interfaces.json",
+          "qa/batch11/independent_collision_profile_review.json"
+        ],
+        "limits": "Empty boxes use triangle/box and convex feasibility with0.2mm surface inset. Profile inflation is sampled, not a certified continuous upper bound. No actor/cart sweep or runtime physics."
+      },
+      "existing_independent_evidence": [
+        "qa/batch11/independent_landing_service_interfaces.json",
+        "qa/batch11/independent_source_AST-LND-004.json",
+        "qa/batch11/independent_export_AST-LND-004.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch11/independent_interface_coverage_map.json#/assets/3",
+      "engine_adopted_instances": 0
     }
   ],
   "scope": "Explicit existing component declarations and bounded offline interface evidence. Actual native hierarchy governs geometry; no engine, installed-room, actor, controller or operating behavior is implemented by this index.",
   "audit_source": {
-    "path": "qa/batch10/independent_interface_normalized_index_proposed.json",
-    "sha256": "f7465fb89cd22d5b6197b1078b3f2253e09838a9870a21b6456ad553b6bc581d",
-    "report": "qa/batch10/independent_final_review.json",
-    "correction_map": "qa/batch10/independent_interface_proposed_corrections.json"
+    "path": "qa/batch11/independent_interface_normalized_index_proposed.json",
+    "sha256": "f5aa2c04fc03e49b20fd710f7612e6799617395836e1bf46db34d84447d277ce",
+    "report": "qa/batch11/independent_final_review.json",
+    "correction_map": "qa/batch11/independent_interface_coverage_map.json"
   },
   "binding_validation": {
     "exact_asset_id_set": true,
-    "current_bound_files_checked": 171,
+    "current_bound_files_checked": 183,
     "all_files_current": true
   }
 }

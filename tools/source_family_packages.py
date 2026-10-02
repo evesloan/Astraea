@@ -7,9 +7,9 @@ from pathlib import PurePosixPath
 
 
 def is_review_file(path):
-    """Media folders are evidence; texture and editable-source folders are not."""
+    """Media and generated standalone package folders are evidence; texture and editable-source folders are not."""
     rel = PurePosixPath(path)
-    return rel.parts[0] == 'references' or any(part in ('qa', 'renders') for part in rel.parts[:-1])
+    return rel.parts[0] == 'references' or any(part in ('qa', 'renders', 'packages') for part in rel.parts[:-1])
 
 
 def partition_sources(items, config, catalogue):

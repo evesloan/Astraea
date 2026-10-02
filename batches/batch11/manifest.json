@@ -1,0 +1,103 @@
+{
+  "batch": "11",
+  "started_utc": "2026-10-02T19:24:06Z",
+  "kind": "district_guided_guest_service_landing_interfaces",
+  "unique_authored_asset_count": 4,
+  "assets": [
+    {
+      "catalogue_id": "AST-LND-001",
+      "name": "Guest arrival directory and rolled cove return",
+      "family": "landing_guest",
+      "source": "assets/landing_guest/source/AST-LND-001.blend",
+      "export": "assets/landing_guest/exports/AST-LND-001.glb",
+      "manifest": "assets/landing_guest/AST-LND-001.manifest.json",
+      "dimensions_blender_xyz_m": [
+        1.399999976158142,
+        0.6499999761581421,
+        2.799999952316284
+      ],
+      "evaluated_triangles": 980,
+      "batch": "11",
+      "adopted_game_instances": 0,
+      "source_sha256": "af3bc07ab9570ac1a305599e82ca6995600da70723060fa08f2c8e5c47ac24cc",
+      "export_sha256": "375ac96ccf8bfd4d4f93f78cae614f6d352c1720005aae8b358f7d489516a0dd",
+      "interface_record_id": "AST-LND-001"
+    },
+    {
+      "catalogue_id": "AST-LND-002",
+      "name": "Fitted single waiting seat and luggage edge",
+      "family": "landing_guest",
+      "source": "assets/landing_guest/source/AST-LND-002.blend",
+      "export": "assets/landing_guest/exports/AST-LND-002.glb",
+      "manifest": "assets/landing_guest/AST-LND-002.manifest.json",
+      "dimensions_blender_xyz_m": [
+        1.399999976158142,
+        0.75,
+        1.0499999523162842
+      ],
+      "evaluated_triangles": 1392,
+      "batch": "11",
+      "adopted_game_instances": 0,
+      "source_sha256": "dd4030b11e91b7641fa912699904b72ea6eee173f4300a0ea2c4cc62049aa5b7",
+      "export_sha256": "854d0f784f0cc199b4ec1971992fa143b54f8bb377e18590307eba989f50aad9",
+      "interface_record_id": "AST-LND-002"
+    },
+    {
+      "catalogue_id": "AST-LND-003",
+      "name": "Protected staff arrival and control return",
+      "family": "landing_service",
+      "source": "assets/landing_service/source/AST-LND-003.blend",
+      "export": "assets/landing_service/exports/AST-LND-003.glb",
+      "manifest": "assets/landing_service/AST-LND-003.manifest.json",
+      "dimensions_blender_xyz_m": [
+        1.2999999523162842,
+        0.44999998807907104,
+        2.5
+      ],
+      "evaluated_triangles": 1192,
+      "batch": "11",
+      "adopted_game_instances": 0,
+      "source_sha256": "aa9f74076c14261e98a3ef6d6872b81f12097f11b4106fdd9060d462ca08ae82",
+      "export_sha256": "8cf4d107816f484ce0f425e04369f8cfc1e60a4e527e1ffcdf3c960b6705a047",
+      "interface_record_id": "AST-LND-003"
+    },
+    {
+      "catalogue_id": "AST-LND-004",
+      "name": "Fixed service stow and inspection edge",
+      "family": "landing_service",
+      "source": "assets/landing_service/source/AST-LND-004.blend",
+      "export": "assets/landing_service/exports/AST-LND-004.glb",
+      "manifest": "assets/landing_service/AST-LND-004.manifest.json",
+      "dimensions_blender_xyz_m": [
+        1.5,
+        0.75,
+        1.0499999523162842
+      ],
+      "evaluated_triangles": 984,
+      "batch": "11",
+      "adopted_game_instances": 0,
+      "source_sha256": "266ad3f714a7b8345651aa9d31b277cee5b206435aed844ff48af4cf747172ef",
+      "export_sha256": "96ef96ff8e24614149ce27e6aebb1b35be1c51096fc62237af099f4ef78f234f",
+      "interface_record_id": "AST-LND-004"
+    }
+  ],
+  "actual_game_adoptions": 0,
+  "scope": "Guest directory/cove return and fitted waiting/luggage edge; protected staff arrival/control return and fixed service inspection/retrieval edge. Proposed separate landing interfaces guided by R3. Existing guest/staff lighting is disclosed QA reuse, adding zero designs.",
+  "review_completed_utc": "2026-10-02T20:08:55Z",
+  "review": "qa/batch11/independent_final_review.json",
+  "coordinate_contract": "standards/COORDINATE_CONTRACT.md",
+  "reference_manifest": "batches/batch11/reference_manifest.json",
+  "interface_contract": "batches/batch11/interface_contract.json",
+  "arrangement_plan": "qa/batch11/assembly/plan.json",
+  "category_coverage": "CATEGORY_COVERAGE.json",
+  "quality_baseline_user_message": "Sentinel_1f1516ffa9a08191a5f37800301a001c",
+  "limits": [
+    "R3 plan boxes are proposals, not recovered host or safe solid envelopes",
+    "No actual aperture, leaf/cassette travel, headroom, shaft, support, pit or lift operation is established",
+    "Preserve empty guest central/front zones and the west staff approach; the upper staff route still joins the public cross-street",
+    "Components have explicit designed heights only; no available ceiling height is inferred from deck intervals",
+    "Nominal guest edge margins and staff component separation include only 0.1m reserve; later trim and motion need renewed fit checks",
+    "Controls, directory art, waiting posture, storage use and fixture mounts are component interfaces, not implemented game behavior or universal species fit",
+    "Collision and source tests remain bounded offline evidence; no actor/cart route, guard/safety or target-PC certification"
+  ]
+}

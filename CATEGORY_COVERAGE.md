@@ -2,19 +2,19 @@
 
 The demonstrated catalogue quality is the user-supported baseline for larger asset delivery (2 October 2026, 16:08 UTC; message `Sentinel_1f1516ffa9a08191a5f37800301a001c`). This supports expanding the collections while recovery continues. It does not approve a finished ship, installed room, gameplay or native performance.
 
-Each of the 57 designs has one primary planning category. Integrated subparts and derivative copies are not counted again. These counts measure coverage, not completion.
+Each of the 61 designs has one primary planning category. Integrated subparts and derivative copies are not counted again. These counts measure coverage, not completion.
 
 | Existing family | Architecture / transitions | Furnishings | Fixtures | Equipment | Purposeful props | Total |
 |---|---:|---:|---:|---:|---:|---:|
-| Guest day-use / reveals | 4 | 4 | 2 | 0 | 0 | 10 |
+| Guest day-use / reveals | 5 | 5 | 2 | 0 | 0 | 12 |
 | Library | 3 | 3 | 1 | 1 | 2 | 10 |
-| Staff / service | 3 | 1 | 1 | 2 | 0 | 7 |
+| Staff / service | 4 | 2 | 1 | 2 | 0 | 9 |
 | Botanical / planted edges | 3 | 0 | 0 | 0 | 3 | 6 |
 | Aquatic leisure | 3 | 2 | 0 | 1 | 0 | 6 |
 | Engineering utilities | 0 | 0 | 0 | 6 | 0 | 6 |
 | Hospitality service | 2 | 2 | 0 | 2 | 0 | 6 |
 | Public salon transitions | 6 | 0 | 0 | 0 | 0 | 6 |
-| Total | 24 | 12 | 4 | 12 | 5 | 57 |
+| Total | 26 | 14 | 4 | 12 | 5 | 61 |
 
 ## Useful gaps for successive batches
 

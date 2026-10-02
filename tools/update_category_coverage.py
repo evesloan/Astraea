@@ -26,6 +26,13 @@ salon_ids={f'AST-SAL-{i:03d}' for i in range(1,7)}
 if salon_ids.intersection(by_id):
  assert salon_ids.issubset(by_id), 'Partial salon kit in catalogue'
  groups.append(('public_salon','Public salon transitions',{A:sorted(salon_ids)},'Host-specific placement and join revisions after recovered geometry review; paired landing interfaces guided by district planning'))
+landing_ids={f'AST-LND-{i:03d}' for i in range(1,5)}
+if landing_ids.intersection(by_id):
+ assert landing_ids.issubset(by_id), 'Partial landing kit in catalogue'
+ groups[0][2][A]+=['AST-LND-001']
+ groups[0][2][F]+=['AST-LND-002']
+ groups[2][2][A]+=['AST-LND-003']
+ groups[2][2][F]+=['AST-LND-004']
 count=len(by_id)
 rows=[];seen=[];totals={k:0 for k in (A,F,L,E,P)}
 for key,title,entries,gap in groups:

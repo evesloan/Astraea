@@ -27,4 +27,4 @@ Earlier seam/material/collision and camera-framing failures are preserved as sup
 
 ## Backup gate
 
-Full archive, compact-family restoration and durable Library delivery remain the final gate before expansion. Batch09 commit ea303a53c42de3d8b9fb3f05ae513c5d83cbab59 is the verified prior checkpoint: Library libfile_a58ca78eacec8191b536adcaddd21fa4, accepted delivery Sentinel_a322870b00008191a2a6e1ef88fe3ac5. All 1,801 files and nine history checkpoints were verified there.
+The durable gate passed. Full Library archive libfile_788c020fb58c819189f534c008483be7 and all eight complete family source ZIPs plus preview were delivered in accepted message Sentinel_151cd27b3d80819199d972e822e2ae72. Parent independently checked all 2,121 archive hashes, CRC and source ZIP hashes; ten portable history checkpoints and 57 source/export pairs restored successfully. Batch09 commit ea303a53c42de3d8b9fb3f05ae513c5d83cbab59 is the verified prior checkpoint: Library libfile_a58ca78eacec8191b536adcaddd21fa4, accepted delivery Sentinel_a322870b00008191a2a6e1ef88fe3ac5. All 1,801 files and nine history checkpoints were verified there.

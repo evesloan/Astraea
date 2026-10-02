@@ -1,0 +1,15 @@
+"""Bind guest actual-pixel inspection; initial render review flags distance layer interference."""
+from pathlib import Path
+import hashlib,json,sys
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'qa/batch11';Q=ROOT/'assets/landing_guest/qa'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();bind=lambda p:{'path':str(p.relative_to(ROOT)),'sha256':sha(p),'bytes':p.stat().st_size}
+ep=Q/'superseded_art_overlay_v1/qa/render_evidence.json';e=json.loads(ep.read_text());views=[]
+assess={
+ '001_standing_640':(False,'Broad teal directory artwork and lettering break into faint horizontal stripes at ordinary1.65m eye-height/distant view. Detail view renders solid artwork; the separate face is only0.1mm ahead of the backing. This is consistent with distance-dependent near-layer interference and fails intended stable low-resolution legibility. Correct physical layer termination/separation and repeat same-camera001 views.'),
+ '001_cove_receiver_detail_1280':(True,'Disclosed intentional upper construction crop shows supported local rolled cove, dark recessed liner, finished end profile and correctly backed reused sconce. Artwork is clear in this close view; that does not establish distant low-resolution stability.'),
+ '002_standing_640':(True,'Standing1.65m viewpoint clearly distinguishes crowned single waiting seat, reclined shaped back, independent luggage top with soft contact strips, and lower retrieval surface. Actual profile changes carry craft and useful variation. Broad clay/teal/timber materials are clear without global yellow tint.'),
+ '002_waiting_640':(True,'Ordinary1.19m waiting-eye inspection clearly shows supported seat and back, cheek/floor contacts, independent bag top and visibly open retrieval/underseat spaces. No actor or universal species-fit claim.')}
+for key,v in e['views'].items():
+ ident=v['camera']['id'];base=Q/'superseded_art_overlay_v1' if ident=='AST-LND-001'else Q.parent;p=base/'qa'/(key+'.png');assert sha(p)==v['image_sha256'];assert list(Image.open(p).size)==v['camera']['res'];assert sha(base/'source'/(ident+'.blend'))==v['source_sha256_at_capture']==v['source_sha256_after_capture'];assert sha(base/'exports'/(ident+'.glb'))==v['glb_sha256']==v['glb_sha256_after_capture'];views.append({'image':bind(p),'capture':v,'actual_pixels_inspected':True,'assessment':assess[key][1],'passed':assess[key][0]})
+r={'passed':all(x['passed']for x in views),'status':'001 distance-layer correction pending;002 accepted unchanged','executed_script_sha256':sha(Path(__file__)),'render_receipt':bind(ep),'render_script_current':bind(Q/'render_imported.py'),'views':views,'reference':'references/landings/guest_suite_hall.png','reference_interpretation':'Localized supported warm cove, tactile legible arrival landmark and deliberate route clarity; no copied reel art, real lift, door or borrowed photo passage dimensions.','limit':'Imported Blender component evidence only; original ship and runtime renderer unavailable.'};(OUT/'independent_initial_guest_visual_review.json').write_text(json.dumps(r,indent=2)+'\n');print('Initial guest001 visual issue recorded;002 passes')
