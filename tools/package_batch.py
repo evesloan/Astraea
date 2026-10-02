@@ -15,7 +15,13 @@ def digest(path):
  return h.hexdigest()
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('output_zip',type=Path);args=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('output_zip',type=Path)
+ ap.add_argument('--prefix',default='Astraea_Catalogue')
+ ap.add_argument('--incremental-base',default=None)
+ ap.add_argument('--base-library-file-id',default=None)
+ args=ap.parse_args()
+ if '/' in args.prefix or '\\' in args.prefix or args.prefix in ('','.','..'):raise SystemExit('Prefix must be one plain directory name')
+ prefix=args.prefix+'/'
  output=args.output_zip.resolve()
  if output.exists(): raise SystemExit('Output exists; use a new versioned archive path')
  if output.is_relative_to(ROOT): raise SystemExit('Archive must be outside source tree')
@@ -34,20 +40,24 @@ def main():
  output.parent.mkdir(parents=True,exist_ok=True)
  with tempfile.TemporaryDirectory(prefix='astraea-catalogue-freeze-') as tmp:
   bundle=Path(tmp)/'source-history.bundle'
-  subprocess.run(['git','-C',str(ROOT),'bundle','create',str(bundle),'--all'],check=True)
+  history_args=['--all']
+  if args.incremental_base:
+   subprocess.run(['git','-C',str(ROOT),'merge-base','--is-ancestor',args.incremental_base,'HEAD'],check=True)
+   history_args=[args.incremental_base+'..HEAD']
+  subprocess.run(['git','-C',str(ROOT),'bundle','create',str(bundle),*history_args],check=True)
   subprocess.run(['git','-C',str(ROOT),'bundle','verify',str(bundle)],check=True,capture_output=True)
-  manifest['source_history']={'path':'source-history.bundle','bytes':bundle.stat().st_size,'sha256':digest(bundle)}
+  manifest['source_history']={'path':'source-history.bundle','bytes':bundle.stat().st_size,'sha256':digest(bundle),'kind':'incremental' if args.incremental_base else 'complete','requires_base_commit':args.incremental_base,'base_archive_library_file_id':args.base_library_file_id}
   with zipfile.ZipFile(output,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
-   for row,p in zip(rows,files):z.write(p,'Astraea_Catalogue_Batch01/'+row['path'])
-   z.write(bundle,'Astraea_Catalogue_Batch01/source-history.bundle')
-   z.writestr('Astraea_Catalogue_Batch01/BACKUP_MANIFEST.json',json.dumps(manifest,indent=2)+'\n')
+   for row,p in zip(rows,files):z.write(p,prefix+row['path'])
+   z.write(bundle,prefix+'source-history.bundle')
+   z.writestr(prefix+'BACKUP_MANIFEST.json',json.dumps(manifest,indent=2)+'\n')
  for row,p in zip(rows,files):
   if digest(p)!=row['sha256']: raise SystemExit('Source changed during archive: '+row['path'])
  with zipfile.ZipFile(output) as z:
   bad=z.testzip()
   if bad: raise SystemExit('CRC failure: '+bad)
   for row in rows:
-   if hashlib.sha256(z.read('Astraea_Catalogue_Batch01/'+row['path'])).hexdigest()!=row['sha256']:raise SystemExit('Archive hash mismatch: '+row['path'])
+   if hashlib.sha256(z.read(prefix+row['path'])).hexdigest()!=row['sha256']:raise SystemExit('Archive hash mismatch: '+row['path'])
  report={'archive':str(output),'bytes':output.stat().st_size,'sha256':digest(output),'git_commit':commit,'files':len(rows),'crc_pass':True,'source_snapshot_unchanged':True,'durable_upload':'pending durable Library verification'}
  output.with_suffix('.verification.json').write_text(json.dumps(report,indent=2)+'\n')
  print(json.dumps(report,indent=2))

@@ -19,3 +19,9 @@ python3 tools/package_batch.py /absolute/delivery/path/Astraea_Catalogue_Batch01
 ```
 
 The complete original game, runtime shaders, physics, saves and player controls are not contained here. They remain part of the original-workspace recovery process.
+
+## Later catalogue checkpoints
+
+`package_batch.py` accepts `--prefix`, `--incremental-base` and `--base-library-file-id`. The full ZIP still contains all current tracked source/evidence files; only optional Git history becomes incremental from the stated backed-up commit. Verify restoration from that base plus the new bundle before delivery.
+
+`package_small_delivery.py` takes an already verified full ZIP, a new output directory and `--label`. With `--base-zip` and `--base-library-file-id`, it omits unchanged prior review/reference copies from current delivery while listing their exact hashes and backup dependency. Complete current editable source, textures and generator dependencies remain together. Review ZIPs are ordinary archives; only optional history uses byte segments and a checksum-verifying join helper. Payloads use7.5MB and every finished file must be below8MB.

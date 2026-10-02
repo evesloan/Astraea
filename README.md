@@ -4,6 +4,8 @@ New asset production began on 2 October 2026 while recovery of the original ship
 
 Batch 01 is a compact coordinated day-use family: upholstered window bench, reading chair, day table, and four compatible deep reveal/junction pieces. It translates the supplied residential and premium references into editable low-poly furniture and construction components. Every authored asset is counted once, separately from exports and any LODs. This is one standard day-use construction family, not sufficient variety for every district or luxury tier. The furniture does not claim aquatic use, cocoon provision or universal species fit.
 
+Batch02 adds seven collection/study designs: three joined structural shelf/canopy pieces, two contrasting study edges and two book/folio details. Two additional stock arrangements reuse the same authored books and are recorded as assembly variants. The catalogue now contains14 unique authored component designs, with zero adopted game instances.
+
 ## Current verification boundary
 
 Blender 4.3.2 is available on this workspace. Editable source, evaluated GLB export, texture/pivot/dimension checks and Blender component renders are the scope of this batch. The live Godot project is unavailable, so actual room adoption, controls, save continuity, character contact, loaded-cart passage, streaming, in-engine lighting and target-PC performance are pending.
@@ -14,6 +16,9 @@ The reference images guide shape, material and use. No courtyard, hull aperture,
 
 - `assets/furniture`: three new furniture assets and their editable source/export evidence
 - `assets/view_reveal`: four joinable reveal/transition assets and their source/export evidence
+- `assets/library_structure`: straight/curved collection and terminal pieces
+- `assets/library_study`: shared table and sheltered single study edge
+- `assets/library_contents`: upright books, open folio and derived stock arrangements
 - `materials`: original shared colour tiles and material metadata
 - `standards`: source, scale, material, export and review contracts
 - `qa`: independent review and batch-level checks
@@ -22,6 +27,6 @@ The reference images guide shape, material and use. No courtyard, hull aperture,
 
 ## Backup policy
 
-Local Git records versions but is not a backup. A completed batch must be frozen, hashed, archived and verified in the user's durable Library before a new batch begins. The delivery includes editable `.blend` files, the script-assisted authoring sources, ordinary image textures, GLB exports, manifests, checks and labelled component renders. A portable Git bundle is included when a verified batch is published.
+Local Git records versions but is not a backup. A completed batch must be frozen, hashed, archived and verified in the user's durable Library before a new batch begins. The delivery includes editable `.blend` files, the script-assisted authoring sources, ordinary image textures, GLB exports, manifests, checks and labelled component renders. A portable Git bundle is included when a verified batch is published. Later history may be incremental from a named backed-up commit; complete editable sources never require that optional history step. User-delivery ZIPs stay below8MB, with complete source/assets separated from bulkier review media. The full unsplit snapshot remains a separate durable checkpoint.
 
 Restoration of the original ship remains a separate process. Any returned original workspace must be verified and fully backed up before game development resumes.

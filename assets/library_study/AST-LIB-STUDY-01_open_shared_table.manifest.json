@@ -1,0 +1,801 @@
+{
+  "catalogue_id": "AST-LIB-STUDY-01",
+  "name": "Astraea Open Shared Study Table",
+  "intent": "Four proposed reading positions on two long edges. No seats included, no venue-capacity claim.",
+  "surface_z_m": 0.75,
+  "fixture_receiver_z_m": 0.754,
+  "reading_surface_use_rectangles_m": [
+    {
+      "min": [
+        -0.9,
+        -0.46,
+        0.75
+      ],
+      "max": [
+        -0.20000000000000007,
+        -0.08000000000000002,
+        0.75
+      ]
+    },
+    {
+      "min": [
+        -0.9,
+        0.08000000000000002,
+        0.75
+      ],
+      "max": [
+        -0.20000000000000007,
+        0.46,
+        0.75
+      ]
+    },
+    {
+      "min": [
+        0.20000000000000007,
+        -0.46,
+        0.75
+      ],
+      "max": [
+        0.9,
+        -0.08000000000000002,
+        0.75
+      ]
+    },
+    {
+      "min": [
+        0.20000000000000007,
+        0.08000000000000002,
+        0.75
+      ],
+      "max": [
+        0.9,
+        0.46,
+        0.75
+      ]
+    }
+  ],
+  "approach": {
+    "sides": [
+      "-Y",
+      "+Y"
+    ],
+    "candidate_chairs": [
+      {
+        "reference_id": "AST-FUR-002",
+        "origin_m": [
+          -0.55,
+          -1.035,
+          0
+        ],
+        "rotation_z_degrees": 180,
+        "seat_crown_z_m": 0.475,
+        "contact_claim": false,
+        "outside_table_approach_rectangle_m": [
+          [
+            -1.03,
+            -1.85
+          ],
+          [
+            -0.07000000000000006,
+            -0.6
+          ]
+        ],
+        "knee_volume_m": {
+          "min": [
+            -0.9500000000000001,
+            -0.515,
+            0
+          ],
+          "max": [
+            -0.15000000000000002,
+            -0.04,
+            0.665
+          ]
+        },
+        "note": "Chair partly occupies proposed outside-table envelope; movement and user access are untested, not navigation clearance"
+      },
+      {
+        "reference_id": "AST-FUR-002",
+        "origin_m": [
+          -0.55,
+          1.035,
+          0
+        ],
+        "rotation_z_degrees": 0,
+        "seat_crown_z_m": 0.475,
+        "contact_claim": false,
+        "outside_table_approach_rectangle_m": [
+          [
+            -1.03,
+            0.6
+          ],
+          [
+            -0.07000000000000006,
+            1.85
+          ]
+        ],
+        "knee_volume_m": {
+          "min": [
+            -0.9500000000000001,
+            0.04,
+            0
+          ],
+          "max": [
+            -0.15000000000000002,
+            0.515,
+            0.665
+          ]
+        },
+        "note": "Chair partly occupies proposed outside-table envelope; movement and user access are untested, not navigation clearance"
+      },
+      {
+        "reference_id": "AST-FUR-002",
+        "origin_m": [
+          0.55,
+          -1.035,
+          0
+        ],
+        "rotation_z_degrees": 180,
+        "seat_crown_z_m": 0.475,
+        "contact_claim": false,
+        "outside_table_approach_rectangle_m": [
+          [
+            0.07000000000000006,
+            -1.85
+          ],
+          [
+            1.03,
+            -0.6
+          ]
+        ],
+        "knee_volume_m": {
+          "min": [
+            0.15000000000000002,
+            -0.515,
+            0
+          ],
+          "max": [
+            0.9500000000000001,
+            -0.04,
+            0.665
+          ]
+        },
+        "note": "Chair partly occupies proposed outside-table envelope; movement and user access are untested, not navigation clearance"
+      },
+      {
+        "reference_id": "AST-FUR-002",
+        "origin_m": [
+          0.55,
+          1.035,
+          0
+        ],
+        "rotation_z_degrees": 0,
+        "seat_crown_z_m": 0.475,
+        "contact_claim": false,
+        "outside_table_approach_rectangle_m": [
+          [
+            0.07000000000000006,
+            0.6
+          ],
+          [
+            1.03,
+            1.85
+          ]
+        ],
+        "knee_volume_m": {
+          "min": [
+            0.15000000000000002,
+            0.04,
+            0
+          ],
+          "max": [
+            0.9500000000000001,
+            0.515,
+            0.665
+          ]
+        },
+        "note": "Chair partly occupies proposed outside-table envelope; movement and user access are untested, not navigation clearance"
+      }
+    ],
+    "status": "Proposed component placement only; original rig, species fit, reach, collision behavior and room fit untested"
+  },
+  "clear_volumes_m": [
+    {
+      "name": "central_knee_and_foot_void",
+      "min": [
+        -0.96,
+        -0.515,
+        0
+      ],
+      "max": [
+        0.96,
+        0.515,
+        0.665
+      ]
+    }
+  ],
+  "bookstock_mounts": [
+    {
+      "name": "central_folio_optional",
+      "stock_catalogue_id": "AST-LIB-007",
+      "origin_m": [
+        0.0,
+        0.2,
+        0.75
+      ],
+      "rotation_z_degrees": 0,
+      "envelope_m": [
+        0.37,
+        0.256,
+        0.0801
+      ],
+      "note": "Optional open folio placement. Four writing rectangles are each .70x.38m and stop at |X|=.20, leaving .015m beyond measured folio bounds. Fixtures and reading reach remain integration proposals."
+    }
+  ],
+  "fixture_mounts": [
+    {
+      "name": "central_shared_light_receiver",
+      "origin_m": [
+        0,
+        0,
+        0.754
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "plate_size_m": [
+        0.14,
+        0.09
+      ],
+      "status": "Geometry and data only, no fixture, wiring, light or runtime system"
+    }
+  ],
+  "relationships": [
+    {
+      "members": [
+        "floor_pad",
+        "swept_ivory_rib"
+      ],
+      "minimum_overlap_m": 0.008
+    },
+    {
+      "members": [
+        "swept_ivory_rib",
+        "upper_bearing_rail",
+        "sculpted_walnut_perimeter"
+      ],
+      "intent": "Load path overlaps at end frames; no stretcher across user approach or feet"
+    },
+    {
+      "members": [
+        "flush_stone_reading_surface",
+        "sculpted_walnut_perimeter"
+      ],
+      "inset_overlap_m": 0.003
+    }
+  ],
+  "bounds_min_m": [
+    -1.1200000047683716,
+    -0.574999988079071,
+    0.0
+  ],
+  "bounds_max_m": [
+    1.1200000047683716,
+    0.574999988079071,
+    0.7540000081062317
+  ],
+  "dimensions_m": [
+    2.240000009536743,
+    1.149999976158142,
+    0.7540000081062317
+  ],
+  "triangles_evaluated": 2268,
+  "parts": [
+    {
+      "name": "SHARED_sculpted_walnut_perimeter",
+      "bounds_min_m": [
+        -1.1200000047683716,
+        -0.574999988079071,
+        0.699999988079071
+      ],
+      "bounds_max_m": [
+        1.1200000047683716,
+        0.574999988079071,
+        0.75
+      ],
+      "triangles": 320,
+      "role": "warm_walnut",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_flush_stone_reading_surface",
+      "bounds_min_m": [
+        -1.0540000200271606,
+        -0.5090000033378601,
+        0.7210000157356262
+      ],
+      "bounds_max_m": [
+        1.0540000200271606,
+        0.5090000033378601,
+        0.75
+      ],
+      "triangles": 140,
+      "role": "warm_stone",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_recessed_ivory_underlip",
+      "bounds_min_m": [
+        -1.090000033378601,
+        -0.5450000166893005,
+        0.6930000185966492
+      ],
+      "bounds_max_m": [
+        1.090000033378601,
+        0.5450000166893005,
+        0.7080000042915344
+      ],
+      "triangles": 320,
+      "role": "ivory_enamel",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_LEFT_FRONT_swept_ivory_rib",
+      "bounds_min_m": [
+        -1.0700000524520874,
+        -0.482276976108551,
+        0.02039872482419014
+      ],
+      "bounds_max_m": [
+        -0.9800000190734863,
+        -0.2720000147819519,
+        0.7157840132713318
+      ],
+      "triangles": 120,
+      "role": "ivory_enamel",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_LEFT_FRONT_floor_pad",
+      "bounds_min_m": [
+        -1.0789999961853027,
+        -0.4819999933242798,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.9710000157356262,
+        -0.335999995470047,
+        0.02800000086426735
+      ],
+      "triangles": 140,
+      "role": "dark_rubber",
+      "grain_axis": "y",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_LEFT_FRONT_timber_seat",
+      "bounds_min_m": [
+        -1.0824999809265137,
+        -0.4899849593639374,
+        0.6531204581260681
+      ],
+      "bounds_max_m": [
+        -0.9674999713897705,
+        -0.33801504969596863,
+        0.7068795561790466
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_LEFT_BACK_swept_ivory_rib",
+      "bounds_min_m": [
+        -1.0700000524520874,
+        0.2720000147819519,
+        0.02039872482419014
+      ],
+      "bounds_max_m": [
+        -0.9800000190734863,
+        0.482276976108551,
+        0.7157840132713318
+      ],
+      "triangles": 120,
+      "role": "ivory_enamel",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_LEFT_BACK_floor_pad",
+      "bounds_min_m": [
+        -1.0789999961853027,
+        0.335999995470047,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.9710000157356262,
+        0.4819999933242798,
+        0.02800000086426735
+      ],
+      "triangles": 140,
+      "role": "dark_rubber",
+      "grain_axis": "y",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_LEFT_BACK_timber_seat",
+      "bounds_min_m": [
+        -1.0824999809265137,
+        0.33801504969596863,
+        0.6531204581260681
+      ],
+      "bounds_max_m": [
+        -0.9674999713897705,
+        0.4899849593639374,
+        0.7068795561790466
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_LEFT_upper_bearing_rail",
+      "bounds_min_m": [
+        -1.0714999437332153,
+        -0.4699999988079071,
+        0.6629999876022339
+      ],
+      "bounds_max_m": [
+        -0.9784999489784241,
+        0.4699999988079071,
+        0.7030000686645508
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_RIGHT_FRONT_swept_ivory_rib",
+      "bounds_min_m": [
+        0.9800000190734863,
+        -0.482276976108551,
+        0.02039872482419014
+      ],
+      "bounds_max_m": [
+        1.0700000524520874,
+        -0.2720000147819519,
+        0.7157840132713318
+      ],
+      "triangles": 120,
+      "role": "ivory_enamel",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_RIGHT_FRONT_floor_pad",
+      "bounds_min_m": [
+        0.9710000157356262,
+        -0.4819999933242798,
+        0.0
+      ],
+      "bounds_max_m": [
+        1.0789999961853027,
+        -0.335999995470047,
+        0.02800000086426735
+      ],
+      "triangles": 140,
+      "role": "dark_rubber",
+      "grain_axis": "y",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_RIGHT_FRONT_timber_seat",
+      "bounds_min_m": [
+        0.9674999713897705,
+        -0.4899849593639374,
+        0.6531204581260681
+      ],
+      "bounds_max_m": [
+        1.0824999809265137,
+        -0.33801504969596863,
+        0.7068795561790466
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_RIGHT_BACK_swept_ivory_rib",
+      "bounds_min_m": [
+        0.9800000190734863,
+        0.2720000147819519,
+        0.02039872482419014
+      ],
+      "bounds_max_m": [
+        1.0700000524520874,
+        0.482276976108551,
+        0.7157840132713318
+      ],
+      "triangles": 120,
+      "role": "ivory_enamel",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_RIGHT_BACK_floor_pad",
+      "bounds_min_m": [
+        0.9710000157356262,
+        0.335999995470047,
+        0.0
+      ],
+      "bounds_max_m": [
+        1.0789999961853027,
+        0.4819999933242798,
+        0.02800000086426735
+      ],
+      "triangles": 140,
+      "role": "dark_rubber",
+      "grain_axis": "y",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_RIGHT_BACK_timber_seat",
+      "bounds_min_m": [
+        0.9674999713897705,
+        0.33801504969596863,
+        0.6531204581260681
+      ],
+      "bounds_max_m": [
+        1.0824999809265137,
+        0.4899849593639374,
+        0.7068795561790466
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_RIGHT_upper_bearing_rail",
+      "bounds_min_m": [
+        0.9784999489784241,
+        -0.4699999988079071,
+        0.6629999876022339
+      ],
+      "bounds_max_m": [
+        1.0714999437332153,
+        0.4699999988079071,
+        0.7030000686645508
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_high_central_tie",
+      "bounds_min_m": [
+        -1.0399999618530273,
+        -0.03050004504621029,
+        0.6814999580383301
+      ],
+      "bounds_max_m": [
+        1.0399999618530273,
+        0.03050004504621029,
+        0.718500018119812
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SHARED_optional_fixture_receiver",
+      "bounds_min_m": [
+        -0.07000000029802322,
+        -0.04500000178813934,
+        0.75
+      ],
+      "bounds_max_m": [
+        0.07000000029802322,
+        0.04500000178813934,
+        0.7540000081062317
+      ],
+      "triangles": 140,
+      "role": "champagne_metal",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    }
+  ],
+  "units": "metres",
+  "front_axis": "-Y",
+  "source_up_axis": "+Z",
+  "pivot_m": [
+    0,
+    0,
+    0
+  ],
+  "blender_version": "4.3.2",
+  "authoring": "Script-assisted original shaped polygon extrusions and semantic join design, editable meshes and non-destructive bevel/normal modifiers retained.",
+  "qa_scope": "Blender component evidence only. Unavailable original game is not restored or edited. Godot, controller, collision behavior, alien contact and room-fit claims are pending.",
+  "reference_provenance": [
+    {
+      "library_file_id": "libfile_807774ec0ff08191a5142732312d71a6",
+      "sha256": "b74349b557268aabf1d05d56515879fa4d8a845963c4e38b2b7db6020d4a439a",
+      "pixels_inspected": true,
+      "use": "Use, spatial edge, silhouette and material guidance only; no copied geometry or texture pixels"
+    },
+    {
+      "library_file_id": "libfile_287947375fa88191b4fbf4cc6ff0ee27",
+      "sha256": "bacc0c55bbe9dfde6c967d18431484a0c2715e51c46cf4622e278f7770f9f284",
+      "pixels_inspected": true,
+      "use": "Use, spatial edge, silhouette and material guidance only; no copied geometry or texture pixels"
+    },
+    {
+      "library_file_id": "libfile_a2a84e0fdbf08191a1e4bb435347e634",
+      "sha256": "980fe8b7e63014fb5fa56541931ca049bf9eaca5c6dd24135d125098c9809502",
+      "pixels_inspected": true,
+      "use": "Use, spatial edge, silhouette and material guidance only; no copied geometry or texture pixels"
+    },
+    {
+      "library_file_id": "libfile_7ee8f43ca31881919cf52c4794b4afeb",
+      "sha256": "4e1375543aa4035b0110aa7d1cf1af14667478274afcf38b407c75c9a23ee49f",
+      "pixels_inspected": true,
+      "use": "Use, spatial edge, silhouette and material guidance only; no copied geometry or texture pixels"
+    }
+  ],
+  "materials_revision": "astraea-catalogue-materials-02",
+  "materials": [
+    "champagne_metal",
+    "dark_rubber",
+    "ivory_enamel",
+    "warm_stone",
+    "warm_walnut"
+  ],
+  "source_generator": "build_study.py",
+  "source_generator_sha256": "ef259f905eccf2663404950d6b18d9d7eb391604e043d7084de58785505fcdb2",
+  "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+  "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+  "dependencies": [
+    "../../standards/materials.py",
+    "../../materials/material_manifest.json",
+    "../../materials/*.png"
+  ],
+  "asset_files": [
+    "AST-LIB-STUDY-01_open_shared_table.blend",
+    "AST-LIB-STUDY-01_open_shared_table.glb"
+  ],
+  "floor_contacts": [
+    {
+      "source_part": "SHARED_LEFT_FRONT_floor_pad",
+      "bounds_min_m": [
+        -1.0789999961853027,
+        -0.4819999933242798,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.9710000157356262,
+        -0.335999995470047,
+        0.02800000086426735
+      ]
+    },
+    {
+      "source_part": "SHARED_LEFT_BACK_floor_pad",
+      "bounds_min_m": [
+        -1.0789999961853027,
+        0.335999995470047,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.9710000157356262,
+        0.4819999933242798,
+        0.02800000086426735
+      ]
+    },
+    {
+      "source_part": "SHARED_RIGHT_FRONT_floor_pad",
+      "bounds_min_m": [
+        0.9710000157356262,
+        -0.4819999933242798,
+        0.0
+      ],
+      "bounds_max_m": [
+        1.0789999961853027,
+        -0.335999995470047,
+        0.02800000086426735
+      ]
+    },
+    {
+      "source_part": "SHARED_RIGHT_BACK_floor_pad",
+      "bounds_min_m": [
+        0.9710000157356262,
+        0.335999995470047,
+        0.0
+      ],
+      "bounds_max_m": [
+        1.0789999961853027,
+        0.4819999933242798,
+        0.02800000086426735
+      ]
+    }
+  ],
+  "export": {
+    "format": "GLB",
+    "Y_up": true,
+    "static_visual_meshes": 1,
+    "material_primitives": 5,
+    "source_semantic_part_count": 19,
+    "UVs": "Normalized UV_Metric_Metres before joining; projected in part-local metres; walnut grain V follows named grain axis",
+    "textures": "Ordinary shared Principled base-color images embedded",
+    "collision": "None, separate numeric proposal only"
+  },
+  "blend_sha256": "d2ce1eb5627d3471f9f07f43cfbf18400215e8366ce7db0f9e04b6dbb3fec5cb",
+  "glb_sha256": "40961705c71a02ca998e7f8ef8836c9359670fb7ff87d62f20c22bbd07d23ef5"
+}
