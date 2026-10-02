@@ -1,0 +1,141 @@
+{
+  "evidence_scope": "Blender imported-GLB component QA only; no game, room, actor, physics or load certification",
+  "renderer": "BLENDER_EEVEE_NEXT",
+  "denoising": false,
+  "samples": 48,
+  "source_export_hashes": [
+    {
+      "asset_id": "AST-BOT-004",
+      "blend_sha256": "9711afb061c05a02f2642cce9e9974bbfc6a2b1f6cb5a9c6ef60cf2e7aec13cc",
+      "glb_sha256": "fc97d63629b951da81932a5b77150cec94911573f575079de20600a2bcc8112b"
+    },
+    {
+      "asset_id": "AST-BOT-005",
+      "blend_sha256": "84b847cda32152d777ce2f854983717e2fe15fd15329f43c58c4df4bbc397ae0",
+      "glb_sha256": "d485c26103cb74f8fe985772fda8781d272ca24cf9adce579b3c6b6fd1a281af"
+    },
+    {
+      "asset_id": "AST-BOT-006",
+      "blend_sha256": "2d75a1facb20c545f8a0fd3edae621e72dfedf33aef744759355c1b8965d4061",
+      "glb_sha256": "685e232317a68d4c3f528aad36a01c0a90f29681c2c894355e08deac5d2defc4"
+    }
+  ],
+  "derived_start_closure_sha256": "f660dccf985abea3153d723bddf70c30d3a8b958563a395ed272f9bb2fc04611",
+  "assembly_instances": [
+    {
+      "asset_id": "derived/AST-BOT-006_START",
+      "translation_m": [
+        0,
+        0,
+        0
+      ],
+      "rotation_z_degrees": 0
+    },
+    {
+      "asset_id": "AST-BOT-004",
+      "translation_m": [
+        0,
+        0,
+        0
+      ],
+      "rotation_z_degrees": 0
+    },
+    {
+      "asset_id": "AST-BOT-005",
+      "translation_m": [
+        2.4,
+        0,
+        0
+      ],
+      "rotation_z_degrees": 0
+    },
+    {
+      "asset_id": "AST-BOT-006",
+      "translation_m": [
+        3.8,
+        1.4,
+        0
+      ],
+      "rotation_z_degrees": 90
+    }
+  ],
+  "views": [
+    {
+      "key": "joined_standing_640",
+      "camera_m": [
+        5.6,
+        -5.4,
+        1.65
+      ],
+      "target_m": [
+        2.1,
+        0.4,
+        0.42
+      ],
+      "resolution": [
+        640,
+        360
+      ],
+      "ortho_scale": null,
+      "lens_mm": 45,
+      "requires_full_frame": true,
+      "purpose": "Ordinary standing eye Z1.65; clear front approach and continuous seat edge",
+      "frame_preflight": {
+        "passes": true,
+        "uv_depth_min": [
+          0.07923062890768051,
+          0.2098192423582077,
+          5.013038158416748
+        ],
+        "uv_depth_max": [
+          0.9619110822677612,
+          0.5834071636199951,
+          8.673707962036133
+        ],
+        "margin": 0.035,
+        "bounds_points": 160,
+        "scope": "Conservative component-bounds framing only, not visibility or collision"
+      },
+      "intentional_framing_limit": "none"
+    },
+    {
+      "key": "seat_soil_support_detail_1280",
+      "camera_m": [
+        3.25,
+        -1.8,
+        1.28
+      ],
+      "target_m": [
+        2.65,
+        0.22,
+        0.28
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "ortho_scale": 2.4,
+      "lens_mm": 48,
+      "requires_full_frame": false,
+      "purpose": "Intentional construction crop: slatted timber bearing, coping, soil cavity, wall profile and flared brackets",
+      "frame_preflight": {
+        "passes": false,
+        "uv_depth_min": [
+          -0.7381563186645508,
+          0.013692202046513557,
+          1.2142808437347412
+        ],
+        "uv_depth_max": [
+          1.3233968019485474,
+          1.1102172136306763,
+          3.887624740600586
+        ],
+        "margin": 0.035,
+        "bounds_points": 160,
+        "scope": "Conservative component-bounds framing only, not visibility or collision"
+      },
+      "intentional_framing_limit": "Construction detail; whole arrangement intentionally omitted"
+    }
+  ],
+  "preflight_only": false
+}

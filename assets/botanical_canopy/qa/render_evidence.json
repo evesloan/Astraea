@@ -1,0 +1,121 @@
+{
+  "asset_id": "AST-BOT-001",
+  "evidence_scope": "Blender imported-GLB component QA only",
+  "glb_sha256": "9789567e69c43d6192dadf7b75b079f7cb91cc1ed094e295965a8271cc7839db",
+  "renderer": "BLENDER_EEVEE_NEXT",
+  "render_samples": 48,
+  "denoising": false,
+  "views": [
+    {
+      "key": "canopy_imported_full_640",
+      "camera_m": [
+        4.7,
+        -7.0,
+        4.1
+      ],
+      "target_m": [
+        0.0,
+        0.0,
+        1.36
+      ],
+      "resolution": [
+        640,
+        360
+      ],
+      "ortho_scale": 6.9,
+      "requires_full_frame": true,
+      "purpose": "Complete actual-GLB silhouette with visible trunk and layered leaf groups",
+      "frame_preflight": {
+        "passes": true,
+        "uv_depth_min": [
+          0.27957338094711304,
+          0.06145550683140755,
+          7.05327033996582
+        ],
+        "uv_depth_max": [
+          0.7296860218048096,
+          0.9398297071456909,
+          10.43284797668457
+        ],
+        "margin": 0.045,
+        "bounds_points": 32,
+        "scope": "Conservative component-bounds framing only, not visibility or collision"
+      }
+    },
+    {
+      "key": "canopy_imported_standing_640",
+      "camera_m": [
+        4.4,
+        -7.3,
+        1.65
+      ],
+      "target_m": [
+        0,
+        0,
+        1.33
+      ],
+      "resolution": [
+        640,
+        360
+      ],
+      "ortho_scale": null,
+      "lens_mm": 45,
+      "requires_full_frame": true,
+      "purpose": "Standing eye Z1.65 m from soil plane; neutral component proof, not seated placement",
+      "frame_preflight": {
+        "passes": true,
+        "uv_depth_min": [
+          0.27028563618659973,
+          0.0797010287642479,
+          7.025489807128906
+        ],
+        "uv_depth_max": [
+          0.7264842391014099,
+          0.9108644723892212,
+          9.931583404541016
+        ],
+        "margin": 0.045,
+        "bounds_points": 32,
+        "scope": "Conservative component-bounds framing only, not visibility or collision"
+      }
+    },
+    {
+      "key": "canopy_imported_branch_detail_1280",
+      "camera_m": [
+        -2.9,
+        -4.3,
+        2.7
+      ],
+      "target_m": [
+        -0.16,
+        -0.04,
+        1.86
+      ],
+      "resolution": [
+        1280,
+        720
+      ],
+      "ortho_scale": 3.05,
+      "requires_full_frame": false,
+      "purpose": "Intentional upper trunk and crown detail crop: overlapping support joins, thin folded leaf profiles and opaque materials",
+      "frame_preflight": {
+        "passes": false,
+        "uv_depth_min": [
+          0.047860968858003616,
+          -0.6794005036354065,
+          3.6669363975524902
+        ],
+        "uv_depth_max": [
+          1.0350698232650757,
+          1.1344834566116333,
+          6.776543140411377
+        ],
+        "margin": 0.045,
+        "bounds_points": 32,
+        "scope": "Conservative component-bounds framing only, not visibility or collision"
+      }
+    }
+  ],
+  "preflight_only": false,
+  "qa_helpers_excluded_from_asset": "floor, lights, camera"
+}

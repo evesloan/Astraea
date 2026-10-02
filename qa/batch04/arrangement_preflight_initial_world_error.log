@@ -1,0 +1,56 @@
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/agent/.config/blender').
+04:34:50 | INFO: Data are loaded, start creating Blender stuff
+04:34:50 | INFO: Blender create Mesh node sculpted_front_basin_wall_mesh.001
+04:34:50 | INFO: Blender create Mesh node enamel_seat_root_coping_mesh.001
+04:34:50 | INFO: Blender create Mesh node soil_volume_with_usable_planting_surface_mesh.001
+04:34:50 | INFO: Blender create Mesh node timber_sitting_ribbon_01_mesh.001
+04:34:50 | INFO: Blender create Mesh node recessed_front_shadow_stringer_mesh.001
+04:34:50 | INFO: glTF import finished in 0.01s
+04:34:50 | INFO: Data are loaded, start creating Blender stuff
+04:34:50 | INFO: Blender create Mesh node sculpted_front_basin_wall_mesh.003
+04:34:51 | INFO: Blender create Mesh node enamel_seat_root_coping_mesh.003
+04:34:51 | INFO: Blender create Mesh node soil_volume_with_usable_planting_surface_mesh.003
+04:34:51 | INFO: Blender create Mesh node timber_sitting_ribbon_01_mesh.003
+04:34:51 | INFO: Blender create Mesh node recessed_front_shadow_stringer_mesh.003
+04:34:51 | INFO: glTF import finished in 0.02s
+04:34:51 | INFO: Data are loaded, start creating Blender stuff
+04:34:51 | INFO: Blender create Mesh node sculpted_front_basin_wall_mesh.005
+04:34:51 | INFO: Blender create Mesh node enamel_seat_root_coping_mesh.005
+04:34:51 | INFO: Blender create Mesh node soil_volume_with_usable_planting_surface_mesh.005
+04:34:51 | INFO: Blender create Mesh node timber_sitting_ribbon_01_mesh.005
+04:34:51 | INFO: Blender create Mesh node recessed_front_shadow_stringer_mesh.005
+04:34:51 | INFO: glTF import finished in 0.01s
+04:34:51 | INFO: Data are loaded, start creating Blender stuff
+04:34:51 | INFO: Blender create Mesh node sculpted_front_basin_wall_mesh.001
+04:34:51 | INFO: Blender create Mesh node enamel_seat_root_coping_mesh.001
+04:34:51 | INFO: Blender create Mesh node soil_volume_with_usable_planting_surface_mesh.001
+04:34:51 | INFO: Blender create Mesh node timber_sitting_ribbon_01_mesh.001
+04:34:51 | INFO: Blender create Mesh node recessed_front_shadow_stringer_mesh.001
+04:34:51 | INFO: glTF import finished in 0.01s
+04:34:51 | INFO: Data are loaded, start creating Blender stuff
+04:34:51 | INFO: Blender create Mesh node 01_primary_S_trunk_editable_path
+04:34:51 | INFO: Blender create Mesh node 40_leaves_tier_01_spray_1_jade_folded_leaf_mesh.001
+04:34:51 | INFO: Blender create Mesh node 40_leaves_tier_01_spray_1_sage_folded_leaf_mesh.001
+04:34:51 | INFO: Blender create Mesh node 40_leaves_tier_01_spray_1_olive_folded_leaf_mesh.001
+04:34:51 | INFO: glTF import finished in 0.02s
+04:34:51 | INFO: Data are loaded, start creating Blender stuff
+04:34:51 | INFO: Blender create Mesh node main_crown_editable_mesh.001
+04:34:51 | INFO: Blender create Mesh node petiole_01_editable_mesh.001
+04:34:51 | INFO: Blender create Mesh node cupped_broad_leaf_01_editable_mesh.001
+04:34:51 | INFO: Blender create Mesh node cupped_broad_leaf_03_editable_mesh.001
+04:34:51 | INFO: glTF import finished in 0.01s
+04:34:51 | INFO: Data are loaded, start creating Blender stuff
+04:34:51 | INFO: Blender create Mesh node rosette_basal_crown_editable_mesh.001
+04:34:51 | INFO: Blender create Mesh node rosette_spoon_leaf_01_editable_mesh.001
+04:34:51 | INFO: Blender create Mesh node rosette_spoon_leaf_08_editable_mesh.001
+04:34:51 | INFO: Blender create Mesh node rosette_spoon_leaf_13_editable_mesh.001
+04:34:51 | INFO: Blender create Mesh node flower_A_petal_1_editable_mesh.001
+04:34:51 | INFO: glTF import finished in 0.02s
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch04/render_botanical_arrangement.py", line 70, in <module>
+    sc=bpy.context.scene;sc.render.engine='BLENDER_EEVEE_NEXT';sc.render.threads_mode='FIXED';sc.render.threads=4;sc.world.color=(.18,.18,.18);sc.view_settings.view_transform='AgX';sc.view_settings.look='AgX - Medium High Contrast';sc.view_settings.exposure=0
+                                                                                                                  ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'color' and no __dict__ for setting new attributes
+Blender 4.3.2
+
+Blender quit
