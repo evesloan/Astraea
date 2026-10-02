@@ -1,0 +1,97 @@
+{
+  "min_m": [
+    0.0,
+    -0.11999999731779099,
+    0.0
+  ],
+  "max_m": [
+    0.09000000357627869,
+    0.0,
+    2.5999999046325684
+  ],
+  "dimensions_m": [
+    0.09000000357627869,
+    0.11999999731779099,
+    2.5999999046325684
+  ],
+  "triangles": 576,
+  "catalogue_id": "AST-STF-003",
+  "design": "terminal",
+  "authorship": "New script-assisted authored asset, 2026-10-02; no original game files changed",
+  "source": "AST-STF-003.blend",
+  "exchange": "AST-STF-003.glb",
+  "editable_semantic_parts": [
+    "closed_terminal_backplate",
+    "terminal_sealed_reveal",
+    "terminal_lower_washable_face",
+    "terminal_upper_washable_face",
+    "full_height_closed_folded_end",
+    "terminal_front_return_flange",
+    "terminal_back_return_flange",
+    "terminal_top_return",
+    "terminal_coved_foot",
+    "terminal_cove_end_plate",
+    "terminal_rail_carrier",
+    "closed_tapered_rubber_bumper_end",
+    "terminal_fixing_0.258",
+    "terminal_fixing_0.258_recessed_slot",
+    "terminal_fixing_1.040",
+    "terminal_fixing_1.040_recessed_slot",
+    "terminal_fixing_2.480",
+    "terminal_fixing_2.480_recessed_slot"
+  ],
+  "material_roles": [
+    "staff_rubber",
+    "staff_white_paint",
+    "staff_zinc"
+  ],
+  "connection_api": {
+    "origin": "inboard floor seam",
+    "backing_planes": [
+      "Y=0"
+    ],
+    "mating_seams": [
+      {
+        "name": "inboard",
+        "plane": "X=0",
+        "normal": [
+          -1,
+          0,
+          0
+        ]
+      }
+    ],
+    "place_at_bay_right_m": [
+      1.2,
+      0,
+      0
+    ],
+    "extension_m": [
+      0.09,
+      0,
+      0
+    ],
+    "closed_end_plane": "X=0.09",
+    "panel_to_panel_gap_m": 0.012,
+    "maximum_inward_projection_m": 0.12,
+    "left_end_variant": "Reuse the same design with reflection across the mating seam; apply transform and correct winding before integration. Not a fourth authored asset.",
+    "mount": "Fasten backplate to verified substrate; formed cove and end plate touch Z0."
+  },
+  "collision_proposal": "AST-STF-003.collision_proposal.json",
+  "source_sha256": "0a981dacfda89eb2fa5df1dcca0b7c1d43dbee737714da26f123c229b49b00f0",
+  "glb_sha256": "db278b6f6978b80c052ccbc09e9dc4ddb9321a4ee2a66269f21a87d175c7a601",
+  "generator": "source/build_staff_wall.py",
+  "units": "metres",
+  "source_axes": "Z up, front \u2212Y; corner interior +X/\u2212Y",
+  "export": "GLB standard Y-up conversion; evaluated static meshes consolidated by material role after active UV normalization; embedded original colour tiles",
+  "source_dependencies": [
+    "standards/staff_materials.py",
+    "materials/staff/"
+  ],
+  "visual_intent": "Washable pale panels, practical folded metal, rubber cart protection, restrained surface variation. Deliberately no guest timber/luxury language.",
+  "acceptance_limits": [
+    "Component source/export checks only",
+    "No room shell, doorway, route or actor integration",
+    "No game rendering, collision runtime or performance acceptance"
+  ]
+}

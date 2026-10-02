@@ -1,0 +1,1 @@
+Optional incremental history only. This autosave predates the final evaluated-export UV correction. It is not an additional design or an accepted delivery source. Active final .blend and .glb are at the family root.

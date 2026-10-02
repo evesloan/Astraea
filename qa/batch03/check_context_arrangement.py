@@ -1,0 +1,15 @@
+"""Recompute final inspection arrangement bounds from imported-source GLB bytes."""
+from pathlib import Path
+import sys,json,numpy as np,hashlib
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'qa/batch02'))
+from geometry_checks import triangles,placement
+base=ROOT/'assets/staff_overhead';e=json.loads((base/'qa/render_evidence.json').read_text());api=json.loads((base/'mounting_api.json').read_text());aisle=e['service_bay_clearances'];low=np.array(aisle['aisle_min_world_m']);high=np.array(aisle['aisle_max_world_m']);rows=[]
+for it in e['context_placements']:
+ p=ROOT/'assets'/it['glb'];t=np.concatenate([r['triangles'] for r in triangles(p,placement(it['translation_m'],it['rotation_z_degrees']))]);pts=t.reshape(-1,3);lo,hi=pts.min(0),pts.max(0);rec=e['context_measured_world_bounds'][it['instance']];overlap=np.minimum(hi,high)-np.maximum(lo,low)
+ rows.append({'instance':it['instance'],'glb':str(p.relative_to(ROOT)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'recorded_hash_matches':hashlib.sha256(p.read_bytes()).hexdigest()==e['context_glb_hashes'][it['glb']],'min_m':lo.tolist(),'max_m':hi.tolist(),'reported_bounds_max_error_m':float(max(np.max(np.abs(lo-rec['min_m'])),np.max(np.abs(hi-rec['max_m'])))),'aabb_intrudes_aisle_prism':bool((overlap>1e-6).all())})
+for it in api['inspection_assembly']:
+ p=base/'exports'/(it['id']+'.glb');t=np.concatenate([r['triangles'] for r in triangles(p,placement(it['translation_m'],it['rotation_z_degrees']))]);pts=t.reshape(-1,3);lo,hi=pts.min(0),pts.max(0);overlap=np.minimum(hi,high)-np.maximum(lo,low)
+ rows.append({'instance':it['instance'],'glb':str(p.relative_to(ROOT)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'recorded_hash_matches':hashlib.sha256(p.read_bytes()).hexdigest()==e['source_hashes'][p.name],'min_m':lo.tolist(),'max_m':hi.tolist(),'aabb_intrudes_aisle_prism':bool((overlap>1e-6).all())})
+cab=next(r for r in rows if r['instance']=='closed_cabinet');back=next(r for r in rows if r['instance']=='back_wall_B');side=next(r for r in rows if r['instance']=='side_wall_A')
+result={'instances':rows,'clearances_recomputed_m':{'cabinet_back_to_bumper':back['min_m'][1]-cab['max_m'][1],'cabinet_front_to_marked_aisle':cab['min_m'][1]-high[1],'side_wall_to_marked_aisle':low[0]-side['max_m'][0],'lowest_hanging_above_prism':min(r['min_m'][2] for r in rows if r['instance'] in [s['instance'] for s in api['inspection_assembly']])-high[2]},'passes':all(r['recorded_hash_matches'] and not r['aabb_intrudes_aisle_prism'] and r.get('reported_bounds_max_error_m',0)<1e-6 for r in rows),'scope':'Closed-cabinet component inspection arrangement, including conservative AABB exclusion of marked 1.8 m wide × 2.65 m high prism. No room, real route, turning radius, open-door aisle clearance or actor claim.'}
+(ROOT/'qa/batch03/independent_context_arrangement.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({'passes':result['passes'],'clearances_recomputed_m':result['clearances_recomputed_m']},indent=2))

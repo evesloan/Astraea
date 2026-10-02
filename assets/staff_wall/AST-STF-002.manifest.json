@@ -1,0 +1,116 @@
+{
+  "min_m": [
+    0.0,
+    -0.30000001192092896,
+    0.0
+  ],
+  "max_m": [
+    0.30000001192092896,
+    0.0,
+    2.5999999046325684
+  ],
+  "dimensions_m": [
+    0.30000001192092896,
+    0.30000001192092896,
+    2.5999999046325684
+  ],
+  "triangles": 746,
+  "catalogue_id": "AST-STF-002",
+  "design": "corner",
+  "authorship": "New script-assisted authored asset, 2026-10-02; no original game files changed",
+  "source": "AST-STF-002.blend",
+  "exchange": "AST-STF-002.glb",
+  "editable_semantic_parts": [
+    "L_backing_carrier",
+    "L_continuous_reveal_seal",
+    "L_washable_lower_corner_skin",
+    "L_washable_upper_corner_skin",
+    "L_folded_top_closure",
+    "L_continuous_coved_foot",
+    "L_impact_rail_carrier",
+    "L_mitered_closed_rubber_guard",
+    "A_corner_fixing_0.258",
+    "A_corner_fixing_0.258_recessed_slot",
+    "B_corner_fixing_0.258",
+    "B_corner_fixing_0.258_recessed_slot",
+    "A_corner_fixing_0.671",
+    "A_corner_fixing_0.671_recessed_slot",
+    "B_corner_fixing_0.671",
+    "B_corner_fixing_0.671_recessed_slot",
+    "A_corner_fixing_1.040",
+    "A_corner_fixing_1.040_recessed_slot",
+    "B_corner_fixing_1.040",
+    "B_corner_fixing_1.040_recessed_slot",
+    "A_corner_fixing_2.480",
+    "A_corner_fixing_2.480_recessed_slot",
+    "B_corner_fixing_2.480",
+    "B_corner_fixing_2.480_recessed_slot",
+    "folded_inside_corner_hygiene_cover"
+  ],
+  "material_roles": [
+    "staff_rubber",
+    "staff_white_paint",
+    "staff_zinc"
+  ],
+  "connection_api": {
+    "origin": "backing-plane intersection at floor",
+    "backing_planes": [
+      "Y=0",
+      "X=0"
+    ],
+    "inside_quadrant": "X>0 and Y<0",
+    "mating_seams": [
+      {
+        "name": "A",
+        "plane": "X=0.3",
+        "normal": [
+          1,
+          0,
+          0
+        ],
+        "connect_bay_origin_m": [
+          0.3,
+          0,
+          0
+        ],
+        "bay_rotation_z_deg": 0
+      },
+      {
+        "name": "B",
+        "plane": "Y=-0.3",
+        "normal": [
+          0,
+          -1,
+          0
+        ],
+        "connect_bay_origin_m": [
+          0,
+          -1.5,
+          0
+        ],
+        "bay_rotation_z_deg": 90
+      }
+    ],
+    "leg_length_m": 0.3,
+    "panel_to_panel_gap_m": 0.012,
+    "maximum_inward_projection_m": 0.12,
+    "mount": "Fix both L carrier legs to separately verified orthogonal substrate planes. Continuous cove reaches Z0."
+  },
+  "collision_proposal": "AST-STF-002.collision_proposal.json",
+  "source_sha256": "0fc068321940da005227e915b45ac63afef99b64fb6743580f9ce0d99d4e90aa",
+  "glb_sha256": "bceced29f7a950a4af036c0be82dd8bdd768f9b1a383ca2411980900576bf6df",
+  "generator": "source/build_staff_wall.py",
+  "units": "metres",
+  "source_axes": "Z up, front \u2212Y; corner interior +X/\u2212Y",
+  "export": "GLB standard Y-up conversion; evaluated static meshes consolidated by material role after active UV normalization; embedded original colour tiles",
+  "source_dependencies": [
+    "standards/staff_materials.py",
+    "materials/staff/"
+  ],
+  "visual_intent": "Washable pale panels, practical folded metal, rubber cart protection, restrained surface variation. Deliberately no guest timber/luxury language.",
+  "acceptance_limits": [
+    "Component source/export checks only",
+    "No room shell, doorway, route or actor integration",
+    "No game rendering, collision runtime or performance acceptance"
+  ]
+}
