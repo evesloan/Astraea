@@ -7,7 +7,7 @@ One new independent editable design. The cabinet uses cooler painted metal, a ro
 - Front: **Blender −Y**. Floor origin: **(0, 0, 0)**
 - Editable source: `AST-STF-007_supply_work_cabinet.blend`
 - Portable exchange: `AST-STF-007_supply_work_cabinet.glb`
-- Reproduce: `blender --background --threads 4 --python build_staff_workbay.py`
+- Reproduce: `blender --background --threads 1 --python build_staff_workbay.py`
 - Dependencies: `../../standards/staff_materials.py` and the original staff colour tiles in `../../materials/staff/`; ordinary base colour maps are embedded in the Blender and GLB files
 - Geometry: **11,060 evaluated triangles**. Static material-role meshes, leaf material-role meshes and handle material-role meshes are separate in GLB. Source keeps semantic parts and editable bevel modifiers
 - UVs: metric projection, one active `UV_Metric_Metres` layer. Evaluated bevel/corner UVs are refreshed before export consolidation. Independent GLB parsing reports zero missing/collapsed UV area, degenerate triangles, or opposed normals
@@ -44,3 +44,11 @@ The report separately gives continuous conservative bounds across the full angle
 `qa/RENDER_MANIFEST.json` identifies source/export hashes, cameras, intended angles, actual pivot matrices and handle landmarks. QA views are labelled **Blender imported-GLB component evidence**. The 1.65 m eye-height image is an ordinary standing view. Inspection floor and lighting are not source/game geometry.
 
 The initial intended-open images were invalid because the importer selected quaternion rotation mode and ignored Euler edits. Their exact old hashes are labelled invalid in `qa/invalid_pose_history/invalid_pose_manifest.json`; the root QA images supersede them. Optional history is not part of the active deliverable and adds no unique designs.
+
+## Coordinate metadata revision 02
+
+The current `.blend` and `.glb` use **hinge-frame-metadata-02**. Their actual hinge node has no unqualified `axis` field. `hinge_axis_blender_source` is `[0, 0, 1]`, and `hinge_axis_gltf_yup` is `[0, 1, 0]`. Each frame has its own numeric pivot and explicit opening hint. The signed opening remains 0° through −105° about its stated positive axis. Exported extras are copied verbatim, so their names identify the frame of each value.
+
+The generator writes the same fields. An isolated reconstruction with copied shared dependencies produces exactly equal GLB JSON values and a byte-identical BIN chunk. The reviewed production geometry was retained; the current GLB was changed only by replacing the hinge extras in its JSON chunk.
+
+Exact pre-revision source, export, generator, manifests and checksums are preserved under `../../qa/batch05/cabinet_metadata_revision/original_inputs/`. Existing Batch03 sweep, render and validation records retain those historical hashes and were not rerendered or rewritten. `../../qa/batch05/cabinet_metadata_revision/verification_report.json` records the current source reload comparison, GLB invariants and generator check. All 63 base/evaluated meshes, 65 objects and their hierarchy/transforms/modifiers, four material graphs, all nine packed images and scene units match. Blender editor window/layout state is outside that asset-data comparison.

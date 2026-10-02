@@ -1,0 +1,108 @@
+{
+  "min_m": [
+    0.0,
+    -0.5600000023841858,
+    -0.1899999976158142
+  ],
+  "max_m": [
+    0.02800000086426735,
+    0.1599999964237213,
+    0.0
+  ],
+  "dimensions_m": [
+    0.02800000086426735,
+    0.7199999988079071,
+    0.1899999976158142
+  ],
+  "triangles": 104,
+  "catalogue_id": "AST-AQU-003_END",
+  "design": "28 mm same-profile closed terminal recipe",
+  "authorship": "Original script-assisted intentional design, 2026-10-02",
+  "source": "derived/AST-AQU-003_END.blend",
+  "exchange": "derived/AST-AQU-003_END.glb",
+  "generator": "source/build_aquatic_edges.py",
+  "units": "metres",
+  "source_axes": "Z up, dry/arrival side -Y; GLB standard Y-up conversion",
+  "pivot_m": [
+    0,
+    0,
+    0
+  ],
+  "source_parts": [
+    {
+      "name": "01_same_profile_terminal_bullnose",
+      "material_role": "warm_stone",
+      "semantic_kind": "same_profile_terminal"
+    },
+    {
+      "name": "02_same_profile_terminal_apron",
+      "material_role": "aquatic_edge_tile",
+      "semantic_kind": "same_profile_terminal"
+    },
+    {
+      "name": "03_closed_drain_end_wall",
+      "material_role": "ivory_enamel",
+      "semantic_kind": "closed_drain_terminal_wall"
+    },
+    {
+      "name": "04_terminal_grate_crossbar",
+      "material_role": "aquatic_satin_alloy",
+      "semantic_kind": "end_grate_crossbar"
+    },
+    {
+      "name": "05_terminal_under_edge_return",
+      "material_role": "ivory_enamel",
+      "semantic_kind": "closed_shaped_end_fascia"
+    }
+  ],
+  "source_object_count": 5,
+  "material_roles": [
+    "aquatic_edge_tile",
+    "aquatic_satin_alloy",
+    "ivory_enamel",
+    "warm_stone"
+  ],
+  "material_count": 4,
+  "role_consolidated_export_mesh_count": 4,
+  "source_sha256": "6e5e8d09676065e7e24b1774bac41682a0663cfc57981f0c132fe98121852138",
+  "glb_sha256": "89fce7b908af0a1a71049ed8344c25be2957f3a363c0f0e7f4e99d3360de37ad",
+  "source_dependencies": [
+    "standards/aquatic_materials.py",
+    "standards/materials.py",
+    "materials/aquatic/",
+    "materials/ivory_enamel.png",
+    "materials/warm_stone.png"
+  ],
+  "support_contacts": [],
+  "connections": [
+    {
+      "name": "closure_seam",
+      "position_m": [
+        0,
+        0,
+        0
+      ],
+      "tangent_yaw_degrees": 0,
+      "mate": "straight or curved end_profile_seam after matching tangent transform",
+      "nominal_surface_gap_m": 0,
+      "alignment_tongue_note": "The final 23 mm tongue extension is contained by this 28 mm closure; no below-deck tongue protrudes past the return"
+    }
+  ],
+  "collision_proposal": "AST-AQU-003_END.collision_proposal.json",
+  "export": "Evaluated meshes consolidated by material role; all active UV names normalized to metric_material_uv before joins; ordinary embedded color texture maps",
+  "limitations": [
+    "Proposed component interfaces only; no recovered engine, water physics, actor rigs, load or slip tests",
+    "Not an all-species fit, accessibility route or safety-code certification",
+    "QA floors/lights/cameras excluded from source and GLB"
+  ],
+  "derived_same_profile_not_new_design": true,
+  "pivot_meaning": "Closure start seam at deck surface",
+  "design_count": 0,
+  "terminal_direction": "positive local X",
+  "same_profile_parent_ids": [
+    "AST-AQU-003",
+    "AST-AQU-004"
+  ],
+  "assembly_rule": "At final seam, use seam position and tangent rotation. At a start seam, mirror terminal across local X. The 23 mm below-apron alignment tongue ends inside the 28 mm closure; no cutting or omitted parts are required.",
+  "host_contact_pads": []
+}

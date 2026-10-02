@@ -4,7 +4,7 @@ New asset production began on 2 October 2026 while recovery of the original ship
 
 Batch 01 is a compact coordinated day-use family: upholstered window bench, reading chair, day table, and four compatible deep reveal/junction pieces. It translates the supplied residential and premium references into editable low-poly furniture and construction components. Every authored asset is counted once, separately from exports and any LODs. This is one standard day-use construction family, not sufficient variety for every district or luxury tier. The furniture does not claim aquatic use, cocoon provision or universal species fit.
 
-Batch 02 adds seven collection/study designs: three joined structural shelf/canopy pieces, two contrasting study edges and two book/folio details. Two additional stock arrangements reuse the same authored books and are recorded as assembly variants. Batch 03 adds seven staff-only wall, overhead-service and work-cabinet designs. Batch 04 adds six botanical and planted-seat designs. The catalogue now contains 27 unique authored component designs, with zero adopted game instances. The first botanical family is deliberately small: an open-crown specimen, two low planting forms and joined seating edges. It does not complete the lush garden massing or plant diversity of the references.
+Batch 02 adds seven collection/study designs: three joined structural shelf/canopy pieces, two contrasting study edges and two book/folio details. Two additional stock arrangements reuse the same authored books and are recorded as assembly variants. Batch 03 adds seven staff-only wall, overhead-service and work-cabinet designs. Batch 04 adds six botanical and planted-seat designs. Batch 05 adds six aquatic-leisure designs. The catalogue now contains 33 unique authored component designs, with zero adopted game instances. The first botanical family is deliberately small: an open-crown specimen, two low planting forms and joined seating edges. It does not complete the lush garden massing or plant diversity of the references.
 
 ## Current verification boundary
 
@@ -25,11 +25,16 @@ The reference images guide shape, material and use. No courtyard, hull aperture,
 - `assets/botanical_canopy`: small branching open-crown specimen
 - `assets/botanical_understory`: cupped broad-leaf plant and low flowering rosette
 - `assets/botanical_planter`: straight, curved and closed planted-seat edges
+- `assets/aquatic_lounge`: shaped wet-area recliner and companion tray table
+- `assets/aquatic_edges`: compatible coping/drain edges and compact step/rail entry
+- `assets/aquatic_float`: purpose-shaped leisure float with seat and grip proposals
 - `materials`: original shared colour tiles and material metadata
 - `standards`: source, scale, material, export and review contracts
 - `qa`: independent review and batch-level checks
 - `references`: selected user-provided reference pixels and their source metadata; batch manifests identify additional referenced Library inputs
 - `tools`: authoring/support scripts
+
+Source-space versus GLB-space pivots, points, rotations and collision records are defined in `standards/COORDINATE_CONTRACT.md`. Additive legacy clarifications are recorded separately; prior backed-up assets are not silently rewritten.
 
 ## Backup policy
 

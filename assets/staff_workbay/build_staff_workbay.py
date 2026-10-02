@@ -13,6 +13,21 @@ from staff_materials import materials
 ID='AST-STF-007'; SLUG=ID+'_supply_work_cabinet'
 PARTS=[]; COLL=[]; M={}; PIVOT=(-.837,-.317,.2)
 ROLE_BODY='staff_bluegrey_paint'; ROLE_TOP='staff_zinc'; ROLE_DARK='staff_rubber'; ROLE_LIGHT='staff_white_paint'
+HINGE_METADATA={
+    'coordinate_metadata_revision':'hinge-frame-metadata-02',
+    'hinge_axis_blender_source':[0,0,1],
+    'hinge_axis_gltf_yup':[0,1,0],
+    'hinge_pivot_blender_source_m':list(PIVOT),
+    'hinge_pivot_gltf_yup_m':[PIVOT[0],PIVOT[2],-PIVOT[1]],
+    'hinge_hint_blender_source':'Blender source frame: negative rotation about local +Z opens outward.',
+    'hinge_hint_gltf_yup':'Native GLB Y-up frame: negative rotation about local +Y opens outward.',
+    'hinge_coordinate_conversion':'Blender source (X,Y,Z) -> native glTF/GLB (X,Z,-Y); custom-property vectors retain their explicitly named frame.',
+}
+
+def set_hinge_metadata(pivot):
+    # Extras are copied verbatim by glTF export, so both frames must be explicit.
+    if 'axis' in pivot:del pivot['axis']
+    for key,value in HINGE_METADATA.items():pivot[key]=value
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def uv_metric(ob):
@@ -171,7 +186,7 @@ def build():
     root=bpy.data.objects.new(ID+'_floor_origin',None);bpy.context.collection.objects.link(root);root['catalogue_id']=ID;root['datum']='Floor origin; X width, Z up, front -Y'
     pivot=bpy.data.objects.new(ID+'_door_hinge_pivot',None);bpy.context.collection.objects.link(pivot);pivot.location=PIVOT;pivot.parent=root
     bpy.context.view_layer.update()
-    pivot['axis']='Local +Z, negative rotation opens outward';pivot['normal_open_range_degrees']=[0,-105];pivot['runtime_status']='Articulation proposal only; no animation/controller/gameplay implemented'
+    set_hinge_metadata(pivot);pivot['normal_open_range_degrees']=[0,-105];pivot['runtime_status']='Articulation proposal only; no animation/controller/gameplay implemented'
     for ob in PARTS:
         world=ob.matrix_world.copy();ob.parent=pivot if ob['assembly'] in ['door_leaf','door_handle','bearing_moving'] else root;ob.matrix_world=world
     bpy.context.view_layer.update()
@@ -223,6 +238,7 @@ def main():
     data['shared_material_manifest_sha256']=sha(BASE/'materials/staff/manifest.json')
     data['resources']=[{'role':role,'source':'materials/staff/'+mm['materials'][role]['file'],'source_sha256':mm['materials'][role]['sha256'],'metric_uv_metres_per_tile':mm['materials'][role]['meters_per_tile_uv'],'embedded_in_blend_and_glb':True} for role in data['material_roles']]
     data['door'].update({'pivot_gltf_Yup_m':[-.837,.2,.317],'axis_gltf_Yup':[0,1,0],'front_blender':[0,-1,0],'front_gltf_Yup':[0,0,1],'rotation_degrees_about_positive_axis':[0,-105],'pivot_node_name':ID+'_door_hinge_pivot','leaf_node_names':[ID+'_door_leaf_staff_bluegrey_paint',ID+'_door_leaf_staff_zinc'],'handle_node_names':[ID+'_door_handle_staff_rubber',ID+'_door_handle_staff_zinc'],'coordinate_conversion':'Blender (X,Y,Z) -> glTF (X,Z,-Y). Same signed rotation around converted positive axis. Blender imports glTF back to Blender Z-up.','source_origin_and_export_conversion':'Pivot location given in each declared coordinate frame, never apply Blender Z rotation directly in glTF Y-up. Godot adoption pending.'})
+    data['door']['node_coordinate_metadata']=HINGE_METADATA.copy()
     nodes=export(root,pivot)
     data['export']={'format':'GLB','embedded_textures':True,'modifiers_evaluated':True,'UV_active_name':'UV_Metric_Metres','static_consolidation':'by semantic material role','moving_consolidation':'leaf and handle separate per-role nodes parented to genuine hinge pivot','visual_nodes':nodes,'animation_controllers':False}
     for suffix in ['blend','glb']:data[suffix+'_sha256']=sha(ROOT/(SLUG+'.'+suffix));data[suffix+'_bytes']=(ROOT/(SLUG+'.'+suffix)).stat().st_size

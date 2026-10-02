@@ -1495,6 +1495,32 @@
       "hinge_strap_to_fixed_ear_axial_gap_m": 0.003,
       "moving_barrel_to_fixed_ear_axial_gap_m": 0.001,
       "moving_bore_to_fixed_pin_radial_gap_lower_bound_m": 0.00044325880092971424
+    },
+    "node_coordinate_metadata": {
+      "coordinate_metadata_revision": "hinge-frame-metadata-02",
+      "hinge_axis_blender_source": [
+        0,
+        0,
+        1
+      ],
+      "hinge_axis_gltf_yup": [
+        0,
+        1,
+        0
+      ],
+      "hinge_pivot_blender_source_m": [
+        -0.837,
+        -0.317,
+        0.2
+      ],
+      "hinge_pivot_gltf_yup_m": [
+        -0.837,
+        0.2,
+        0.317
+      ],
+      "hinge_hint_blender_source": "Blender source frame: negative rotation about local +Z opens outward.",
+      "hinge_hint_gltf_yup": "Native GLB Y-up frame: negative rotation about local +Y opens outward.",
+      "hinge_coordinate_conversion": "Blender source (X,Y,Z) -> native glTF/GLB (X,Z,-Y); custom-property vectors retain their explicitly named frame."
     }
   },
   "storage_openings": {
@@ -1605,7 +1631,7 @@
   ],
   "authoring": "Script-assisted original folded/extruded sheet construction, one connected perforated leaf, separate hardware, editable semantic source and bevel modifiers",
   "source_generator": "build_staff_workbay.py",
-  "source_generator_sha256": "1e6190c01d54fd719e37fbbac608e8e538e221ce3273a2cfe965f482ccc6ec75",
+  "source_generator_sha256": "a156aabec749943c1aab0f8dbab6f40568ebbd4bca30c3b104d2d7d0a119936b",
   "shared_material_source": "standards/staff_materials.py",
   "shared_material_source_sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
   "dependencies": [
@@ -1674,10 +1700,10 @@
     "animation_controllers": false,
     "evaluated_bevel_uvs": "Metric face projection refreshed before consolidation to preserve nonzero bevel/corner UV area; same active layer name on every evaluated part."
   },
-  "blend_sha256": "91644fc55a17f39f7a1d37bfefad3c682140834fc19abb332d85e699a31ca9c1",
-  "blend_bytes": 1059304,
-  "glb_sha256": "81161f496db681a31695f8b4becffc3b5ebf98faab6a46048aef52da44a8661a",
-  "glb_bytes": 784600,
+  "blend_sha256": "b1705b3e5d7a48f4d28765a26b7c9f60fe4aa61df3b593ba4f35861125cf8edb",
+  "blend_bytes": 831140,
+  "glb_sha256": "1cdff25f6bd41dc4ecb850d5c9f70394a303ce667ba65ea0322199ba63e17d56",
+  "glb_bytes": 785108,
   "shared_material_manifest_sha256": "5cf6681db7a5ba8d1c459cc5b9eaf2ee9f210efd03f1f146b4d8dd21b1d0f759",
   "resources": [
     {
@@ -1726,6 +1752,16 @@
     "independent_glb_validation": "qa/glb_independent_validation.json",
     "sweep": "qa/door_sweep_report.json",
     "imported_views": "qa/RENDER_MANIFEST.json",
-    "status": "Component checks pass; original engine/rig/scene integration pending"
+    "status": "Historical component checks pass; current metadata-only revision preservation passes; original engine/rig/scene integration pending",
+    "metadata_revision_verification": "../../qa/batch05/cabinet_metadata_revision/verification_report.json",
+    "historical_evidence_scope": "Existing source/export validation, sweep and render reports bind the pre-revision hashes preserved in original_inputs. They have not been rewritten or rerun. Their geometry remains applicable through the new exact semantic source and byte-identical GLB BIN/non-extras JSON comparisons; metadata fields are checked on the current actual files."
+  },
+  "metadata_revision": {
+    "revision": "hinge-frame-metadata-02",
+    "scope": "Hinge custom-property coordinate clarification only; asset geometry, material graphs and object transforms unchanged. GLB BIN unchanged. Editor session layout is outside preservation scope.",
+    "previous_blend_sha256": "91644fc55a17f39f7a1d37bfefad3c682140834fc19abb332d85e699a31ca9c1",
+    "previous_glb_sha256": "81161f496db681a31695f8b4becffc3b5ebf98faab6a46048aef52da44a8661a",
+    "original_inputs": "../../qa/batch05/cabinet_metadata_revision/original_inputs/",
+    "verification": "../../qa/batch05/cabinet_metadata_revision/verification_report.json"
   }
 }

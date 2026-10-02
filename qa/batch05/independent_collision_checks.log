@@ -1,0 +1,226 @@
+{
+  "scope": "Data-only numerical collision proposals. Finite sample checks cannot prove full swept actor access, game collision, solver support, fluid or buoyancy behavior.",
+  "rows": [
+    {
+      "asset": "AST-AQU-001",
+      "proposal_shape_count": 46,
+      "types": [
+        "oriented_box_proposal"
+      ],
+      "all_finite_positive_boxes": true,
+      "void_samples": [
+        {
+          "point_m": [
+            0,
+            -0.1,
+            0.2
+          ],
+          "containing_shapes": []
+        },
+        {
+          "point_m": [
+            -0.7,
+            -0.1,
+            0.5
+          ],
+          "containing_shapes": []
+        },
+        {
+          "point_m": [
+            0.7,
+            -0.1,
+            0.5
+          ],
+          "containing_shapes": []
+        }
+      ],
+      "drain_slots": "Thin seating/table contact surfaces intentionally bridge narrow drainage slots; no full-height hull."
+    },
+    {
+      "asset": "AST-AQU-002",
+      "proposal_shape_count": 33,
+      "types": [
+        "oriented_box_proposal"
+      ],
+      "all_finite_positive_boxes": true,
+      "void_samples": [
+        {
+          "point_m": [
+            0,
+            0,
+            0.2
+          ],
+          "containing_shapes": []
+        }
+      ],
+      "drain_slots": "Thin seating/table contact surfaces intentionally bridge narrow drainage slots; no full-height hull."
+    },
+    {
+      "asset": "AST-AQU-006",
+      "separate_hull_wedges": 24,
+      "all_hull_points_finite": true,
+      "well_samples": [
+        {
+          "point_m": [
+            0,
+            -0.06,
+            0.1
+          ],
+          "containing_wedges": []
+        },
+        {
+          "point_m": [
+            -0.12,
+            -0.06,
+            0.1
+          ],
+          "containing_wedges": []
+        },
+        {
+          "point_m": [
+            0.12,
+            -0.06,
+            0.1
+          ],
+          "containing_wedges": []
+        },
+        {
+          "point_m": [
+            0,
+            -0.2,
+            0.1
+          ],
+          "containing_wedges": []
+        },
+        {
+          "point_m": [
+            0,
+            0.15,
+            0.2
+          ],
+          "containing_wedges": []
+        }
+      ],
+      "grip_capsules": 40,
+      "grip_void_samples": [
+        {
+          "side": "left",
+          "under_grip_point_m": [
+            -0.499381,
+            -0.09,
+            0.27
+          ],
+          "minimum_clearance_to_capsule_surface_m": 0.06115519688185427,
+          "chain_continuity_max_gap_m": 0.0
+        },
+        {
+          "side": "right",
+          "under_grip_point_m": [
+            0.499381,
+            -0.09,
+            0.27
+          ],
+          "minimum_clearance_to_capsule_surface_m": 0.06115519543172781,
+          "chain_continuity_max_gap_m": 0.0
+        }
+      ],
+      "sampled_seat_surface_keys": [
+        "vertices_m",
+        "top_triangles",
+        "thickness_m",
+        "rows_from_source",
+        "angular_stride",
+        "preserve_center_drain",
+        "mesh_type",
+        "winding"
+      ],
+      "sampled_seat_vertex_count": 64,
+      "scope": "Numeric proposal geometry only; reduced concave seat and segmented coaming need recovered-engine dynamic-body evaluation."
+    },
+    {
+      "asset": "AST-AQU-003",
+      "part_count": 23,
+      "types": [
+        "per_semantic_closed_part_hulls",
+        "swept_box",
+        "swept_profile"
+      ],
+      "explicitly_disallows_whole_assembly_convex_hull": true,
+      "preserve_openings": [
+        "Every 22 mm drain slot and drain throat",
+        "Open stair underside and spaces between handrails and support posts"
+      ]
+    },
+    {
+      "asset": "AST-AQU-004",
+      "part_count": 23,
+      "types": [
+        "per_semantic_closed_part_hulls",
+        "swept_box",
+        "swept_profile"
+      ],
+      "explicitly_disallows_whole_assembly_convex_hull": true,
+      "preserve_openings": [
+        "Every 22 mm drain slot and drain throat",
+        "Open stair underside and spaces between handrails and support posts"
+      ]
+    },
+    {
+      "asset": "AST-AQU-005",
+      "part_count": 14,
+      "types": [
+        "box",
+        "capsule",
+        "capsules_per_centerline_segment",
+        "per_part_convex_decomposition"
+      ],
+      "explicitly_disallows_whole_assembly_convex_hull": true,
+      "preserve_openings": [
+        "Every 22 mm drain slot and drain throat",
+        "Open stair underside and spaces between handrails and support posts"
+      ],
+      "center_route_box_samples": [
+        {
+          "point_m": [
+            0,
+            -0.3,
+            0.15
+          ],
+          "containing_boxes": []
+        },
+        {
+          "point_m": [
+            0,
+            0.16,
+            -0.03
+          ],
+          "containing_boxes": []
+        },
+        {
+          "point_m": [
+            0,
+            0.48,
+            -0.21
+          ],
+          "containing_boxes": []
+        },
+        {
+          "point_m": [
+            0,
+            0.8,
+            -0.39
+          ],
+          "containing_boxes": []
+        },
+        {
+          "point_m": [
+            0,
+            1.22,
+            -0.57
+          ],
+          "containing_boxes": []
+        }
+      ]
+    }
+  ]
+}

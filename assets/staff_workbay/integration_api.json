@@ -55,7 +55,33 @@
       "AST-STF-007_door_handle_staff_zinc"
     ],
     "coordinate_conversion": "Blender (X,Y,Z) -> glTF (X,Z,-Y). Same signed rotation around converted positive axis. Blender imports glTF back to Blender Z-up.",
-    "source_origin_and_export_conversion": "Pivot location given in each declared coordinate frame, never apply Blender Z rotation directly in glTF Y-up. Godot adoption pending."
+    "source_origin_and_export_conversion": "Pivot location given in each declared coordinate frame, never apply Blender Z rotation directly in glTF Y-up. Godot adoption pending.",
+    "node_coordinate_metadata": {
+      "coordinate_metadata_revision": "hinge-frame-metadata-02",
+      "hinge_axis_blender_source": [
+        0,
+        0,
+        1
+      ],
+      "hinge_axis_gltf_yup": [
+        0,
+        1,
+        0
+      ],
+      "hinge_pivot_blender_source_m": [
+        -0.837,
+        -0.317,
+        0.2
+      ],
+      "hinge_pivot_gltf_yup_m": [
+        -0.837,
+        0.2,
+        0.317
+      ],
+      "hinge_hint_blender_source": "Blender source frame: negative rotation about local +Z opens outward.",
+      "hinge_hint_gltf_yup": "Native GLB Y-up frame: negative rotation about local +Y opens outward.",
+      "hinge_coordinate_conversion": "Blender source (X,Y,Z) -> native glTF/GLB (X,Z,-Y); custom-property vectors retain their explicitly named frame."
+    }
   },
   "work_surface_z_blender_m": 0.94,
   "usable_work_surface_proposal_m": {
@@ -166,5 +192,7 @@
       }
     ]
   },
-  "collision_file": "AST-STF-007_supply_work_cabinet.collision_proposal.json"
+  "collision_file": "AST-STF-007_supply_work_cabinet.collision_proposal.json",
+  "metadata_revision": "hinge-frame-metadata-02",
+  "metadata_revision_verification": "../../qa/batch05/cabinet_metadata_revision/verification_report.json"
 }

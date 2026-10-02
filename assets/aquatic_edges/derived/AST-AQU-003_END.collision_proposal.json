@@ -1,0 +1,17 @@
+{
+  "status": "PROPOSAL, not runtime-tested",
+  "coordinate_system": "source metres Z up",
+  "do_not_use_whole_assembly_convex_hull": true,
+  "preserve_openings": [
+    "Every 22 mm drain slot and drain throat",
+    "Open stair underside and spaces between handrails and support posts"
+  ],
+  "parts": [
+    {
+      "name": "terminal_solids",
+      "shape": "one_convex_hull_per_semantic_part",
+      "preserve_drain_before_terminal": true
+    }
+  ],
+  "limits": "Exact authored section hulls and narrow rail capsules need host-engine evaluation; no physics or actor test is asserted"
+}
