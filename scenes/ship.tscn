@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+[sub_resource type="Environment" id="Environment_ship"]
+background_mode = 1
+background_color = Color(0.025, 0.034, 0.046, 1)
+[node name="Astraea" type="Node3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ship")
+[node name="ShipSpace" type="Node3D" parent="."]
+[node name="Districts" type="Node3D" parent="ShipSpace"]
+[node name="PersistentActors" type="Node3D" parent="ShipSpace"]
+[node name="ShipSystems" type="Node" parent="."]
