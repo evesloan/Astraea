@@ -50,6 +50,9 @@ func run() -> void:
 		var fractions := world.get_world_3d().direct_space_state.cast_motion(sweep)
 		assert(fractions[0] > 0.999, "Temporary guards or portal must not block a shared route")
 	assert(not world.express_arrive(-1) and not world.express_arrive(18))
+	for arrival in [Vector3(13,44.1,218),Vector3(13,52.6,218),Vector3(13,61.1,218),Vector3(63,52.6,-20.5)]:
+		assert(world.arrive_at(arrival,0.0),"Authored destination needs floor and body clearance")
+	assert(not world.arrive_at(Vector3(30,52.6,216),0.0),"Arrival inside floor opening must be rejected")
 	print("WORLD PASS: supported D09 spawn; 18 express arrivals and 108 structural route probes; 18 structural datums; 640x360 world; source cove mating; adjustable effect resources. Not full route, collision, visual or performance acceptance.")
 	main.queue_free()
 	await process_frame

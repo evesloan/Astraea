@@ -136,6 +136,15 @@ func _build_directory() -> void:
 		button.custom_minimum_size = Vector2(450,46)
 		grid.add_child(button)
 		button.pressed.connect(_travel.bind(index))
+	var places := GridContainer.new()
+	places.columns = 2
+	column.add_child(places)
+	for target in [{"name":"D08 Gentle Waters — unfinished", "position":Vector3(13,44.1,218)}, {"name":"D09 Living Gifts — unfinished", "position":Vector3(13,52.6,218)}, {"name":"D10 Vesper — unfinished", "position":Vector3(13,61.1,218)}, {"name":"D09 Conversation salon — partial", "position":Vector3(63,52.6,-20.5)}]:
+		var button := Button.new()
+		button.text = target.name
+		button.custom_minimum_size = Vector2(450,36)
+		places.add_child(button)
+		button.pressed.connect(_visit.bind(target.name,target.position))
 	var close := Button.new()
 	close.text = "Close directory"
 	close.pressed.connect(_toggle_directory)
@@ -152,4 +161,10 @@ func _travel(index: int) -> void:
 	var world = world_view.get_node("Astraea")
 	if world.express_arrive(index):
 		get_node("NativeResolutionStatus").text = "ASTRAEA / D%02d / +%.1f m — STRUCTURE ONLY\nWASD · Mouse · RMB focus · M directory · F4 effects\nInteriors, transport, population and final architecture unfinished" % [index+1,world.deck_y[index]]
+		_toggle_directory()
+
+func _visit(label: String, arrival: Vector3) -> void:
+	var world = world_view.get_node("Astraea")
+	if world.arrive_at(arrival,-PI/2):
+		get_node("NativeResolutionStatus").text = "ASTRAEA / "+label+"\nWASD · Mouse · RMB focus · M directory · F4 effects\nProduction architecture in progress"
 		_toggle_directory()

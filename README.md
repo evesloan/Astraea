@@ -1,14 +1,32 @@
 # The Astraea — Godot production restart
 
-Godot 4.6.3 Compatibility. One metre per unit; X port/starboard, bow toward -Z, canonical floor-origin Y datums. This is the permanent reconstruction project, distinct from the missing original `/workspace/shared/space-hotel-full` and preserved Unity work.
+Godot 4.6.3 Compatibility. One metre per unit; X port/starboard, bow toward -Z, canonical floor-origin Y datums. This is the permanent reconstruction project, distinct from the missing original and preserved Unity work.
 
-Current revision: early main-world structural datums, a partial D09 salon terrace, a 360p presentation and source-bound local lighting. Thirteen authored model imports are present. No room, district or whole-game acceptance is claimed. Full ship, authored interconnected districts, tactile custodial play and autonomous life remain the goal.
+## Current state
+The main world has 18 nonuniform structural datums and compiled circulation slabs. D09 has a partial conversation-salon terrace. An aligned D08 Gentle Waters / D09 Living Gifts / D10 Vesper section has offset openings, a basin, traversable switchback stairs, profiled columns and one sheltered wet-rest bay. Interiors and public programmes remain unfinished. No whole room, district or full-game acceptance is claimed.
 
-- `scenes/main.tscn`: presentation entry; `scenes/ship.tscn`: single main ship world
-- `data/design_contract.json`: reconciled owner decisions; historical records remain explicitly labeled
-- `assets/models`: exact eight approved current GLBs, ten underlying designs
-- `docs/INITIAL_ASSET_PROVENANCE.json`: source hashes and complete source-package paths; editable Blender sources remain in the versioned catalogue
+The presentation uses a real640×360 world, nearest-neighbor integer scaling, restrained ordered dithering, optional scanlines and local fixture lighting. The latest main-scene inspection found16 source designs instantiated23times; these are not completed-room counts. The catalogue has93 authored designs, including4 new drafts awaiting fuller review.
 
-Do not restore superseded occupancy arithmetic or flatten districts into deck layers. Keep architecture, collision and navigation in agreement. The reveal assembly has a known stale scene-extra catalogue ID; bind to its manifest identity and preserve imported node transforms.
+## Controls
+- WASD and mouse: walk/look
+- Hold RMB: modest focus zoom (precise E targeting and depth-of-field remain to implement)
+- Escape: release mouse; left-click: capture mouse
+- M: temporary express deck/destination directory; actual physical transit remains incomplete
+- F4: toggle display effects, glow and SSAO
+- F12: save raw world, processed world and presentation captures in artifacts
 
-Backups: local Git is not an independent backup. Publish verified source snapshots to Library and verify separate Workshop copies. Automatic Workshop delivery remains unproven. Exclude import caches and authentication state. Do not remove original inputs or preserved Unity work.
+## Organization
+- scenes/main.tscn: presentation entry; scenes/ship.tscn: single main ship world
+- data/design_contract.json: latest reconciled owner decisions
+- data/spatial_layout.json: authored floor polygons, holes, relative elevations and ownership
+- tools/compile_layout.py: offline cached structural meshes; requires tools/requirements-geometry.txt
+- data/programme_ledger.json: historical programme continuity and pending work, not a replacement room registry
+- data/reference: historical source evidence; allocation rectangles are not mandatory room geometry
+- assets/models: source catalogue GLB imports; editable Blender sources remain separately versioned
+- docs/PRODUCTION_STATUS.md: scoped implementation, tests and limitations
+
+## Validation
+Run python3 tools/validate.py with Godot4.6.3 on PATH. It isolates Godot cache/config under the project and checks import, baseline, main-world support/arrivals and actual capsule stair traversal. Run tools/test_multilevel_compiler.py with the pinned geometry dependencies to verify stacked floor ownership. Target-GPU frame rate, cart clearance, NPCs, persistence, physical lifts, swimming and final visual quality have not passed acceptance.
+
+## Backups
+Local Git alone is not an independent backup. Verified source snapshots are retained in Library; the first baseline is independently hash-verified on Workshop. Automatic Workshop delivery is not established. Preserve original inputs and Unity work. Exclude authentication state and disposable import caches from archives.

@@ -216,12 +216,26 @@ func _static_contacts(node: Node) -> void:
 
 func express_arrive(deck_index: int) -> bool:
 	if deck_index < 0 or deck_index >= deck_y.size(): return false
+	return arrive_at(Vector3(5.5,deck_y[deck_index]+0.1,-72),0.0)
+
+func arrive_at(arrival: Vector3, facing_y: float) -> bool:
 	var player: CharacterBody3D = $ShipSpace/PersistentActors/Player
-	var arrival := Vector3(5.5,deck_y[deck_index]+0.1,-72)
+	var state := get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(arrival+Vector3.UP,arrival-Vector3.UP*2)
-	var hit := get_world_3d().direct_space_state.intersect_ray(query)
-	if hit.is_empty(): return false
+	query.exclude = [player.get_rid()]
+	var hit := state.intersect_ray(query)
+	if hit.is_empty() or hit.normal.y < 0.7: return false
+	if absf(hit.position.y-(arrival.y-0.1)) > 0.15: return false
+	var capsule := CapsuleShape3D.new()
+	capsule.radius = 0.3
+	capsule.height = 1.8
+	var clearance := PhysicsShapeQueryParameters3D.new()
+	clearance.shape = capsule
+	clearance.transform.origin = arrival+Vector3.UP*0.9
+	clearance.exclude = [player.get_rid()]
+	if not state.intersect_shape(clearance).is_empty(): return false
 	player.position = arrival
 	player.spawn_position = arrival
 	player.velocity = Vector3.ZERO
+	player.rotation.y = facing_y
 	return true
