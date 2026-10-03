@@ -93,6 +93,7 @@ func beam(parent: Node3D, label: String, a: Vector3, b: Vector3, radius: float, 
 func model(parent: Node3D, file: String, label: String, location: Vector3, yaw: float = 0.0) -> Node3D:
 	var wrapper := Node3D.new()
 	wrapper.name = label
+	wrapper.set_meta("catalogue_file",file)
 	parent.add_child(wrapper)
 	wrapper.position = location
 	wrapper.rotation.y = yaw

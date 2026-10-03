@@ -75,6 +75,12 @@ func _ready() -> void:
 			actor.camera.rotation.x = actor.pitch
 			await get_tree().create_timer(1.0).timeout
 			await _capture("aquatic_")
+			actor.spawn_position = Vector3(47,44.1,216)
+			actor.position = actor.spawn_position
+			actor.pitch = 0.0
+			actor.camera.rotation.x = 0.0
+			await get_tree().create_timer(1.0).timeout
+			await _capture("wet_retreat_")
 		get_tree().quit()
 
 func _resize() -> void:

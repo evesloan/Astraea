@@ -24,6 +24,27 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	wall.mesh = st.commit()
 	root.add_child(wall)
 	wall.create_trimesh_collision()
+	var water_material := ShaderMaterial.new()
+	water_material.shader = load("res://shaders/shallow_water.gdshader")
+	var water_outline := PackedVector2Array()
+	for point in boundary: water_outline.append(Vector2(point[0],point[1]))
+	water_material.set_shader_parameter("boundary",water_outline)
+	ship.floor_mesh(root,"ShallowWaterVisual_NoSwimmingYet",water_outline,basin.water_y,water_material,false)
+	var retreat := ship.model(root,"AST-AQU-011.glb","ShelteredWetRetreat",Vector3(51,44,216),-PI/2) as Node3D
+	for key in ["LOUNGER_LEFT","LOUNGER_RIGHT","TRAY"]:
+		var datum := retreat.find_child("DATUM_"+key,true,false) as Node3D
+		assert(datum != null)
+		ship.model(root,"AST-AQU-002.glb" if key == "TRAY" else "AST-AQU-001.glb",key,datum.global_position,-PI/2)
+	for index in range(2):
+		var datum := retreat.find_child("DATUM_light_"+str(index),true,false) as Node3D
+		var light := SpotLight3D.new()
+		root.add_child(light)
+		light.global_position = datum.global_position
+		light.rotation.x = -PI/2
+		ship.apply_light_profile(light,"guest_reading")
+		light.light_energy = 0.7
+		light.spot_range = 6
+		light.spot_angle = 62
 	for base_y in [44.0,52.5]:
 		for location in [Vector2(20,186),Vector2(50,244),Vector2(12,243)]:
 			var column := ship.model(root,"AST-STR-001.glb","BearingColumn",Vector3(location.x,base_y,location.y)) as Node3D
@@ -43,6 +64,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	for base_y in [44.0,52.5]:
 		var stairs := (load("res://assets/models/AST-CIR-001.glb") as PackedScene).instantiate()
 		stairs.name = "Switchback_"+str(base_y)
+		stairs.set_meta("catalogue_file","AST-CIR-001.glb")
 		root.add_child(stairs)
 		stairs.position = Vector3(10,base_y,200.5)
 		for part in stairs.find_children("CIR_Guard*","MeshInstance3D",true,false):
