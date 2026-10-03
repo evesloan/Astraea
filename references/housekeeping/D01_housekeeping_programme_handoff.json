@@ -1,0 +1,1271 @@
+{
+  "schema": "astraea.d01_housekeeping_programme_handoff.v1",
+  "created_utc": "2026-10-03T03:05:23.080796+00:00",
+  "title": "D01 housekeeping and laundry programme and asset roles",
+  "conclusion": "All four roles are useful and distinct as a bounded D01_laundry2 workplace kit. The linen carrier needs a specifically textile-focused carrying/transfer purpose to avoid duplicating the existing towel-return receiver or dining trolley. This audit approves no room layout, machinery operation or chore loop.",
+  "scope": {
+    "read_only_sources": true,
+    "catalogue_edited": false,
+    "assets_authored": false,
+    "new_room_or_district_masterplan": false,
+    "original_game_expected_path": "/workspace/shared/space-hotel-full",
+    "original_game_path_present": false,
+    "historical_runtime_claims_are_not_current_runtime": true,
+    "audit_type": "Historical programme and reference audit; current catalogue-role comparison; JSON evidence handoff only",
+    "source_roots": {
+      "district_layout_audit": "source locators are relative to the audit source directory",
+      "catalogue": "source locators are relative to the catalogue root"
+    },
+    "portability": "Core facts, limits, role decisions, geometry and hashes are embedded. Local source paths are provenance locators, not runtime dependencies. Heavyweight source images are not duplicated."
+  },
+  "current_governing_canon": {
+    "source_id": "current_canon",
+    "decks": 18,
+    "guest_units_total_including_luxury": 1000,
+    "luxury_units_included": 81,
+    "luxury_breakdown": {
+      "deluxe": 50,
+      "premium": 25,
+      "royalty": 5,
+      "supreme": 1
+    },
+    "hard_passenger_cap": 2000,
+    "crew_including_one_player": 400,
+    "player_home": "Shared with an existing colleague within the unchanged 400; no roommate story or room relocation decided here",
+    "species": [
+      "Koblins",
+      "Mantelids",
+      "Humans",
+      "Baelins",
+      "Munkos",
+      "Mindos"
+    ],
+    "preserve": [
+      "Existing original care cart and bottle identities",
+      "Stable room, person, berth, incident and ownership identities",
+      "No guest/crew capacity or equipment quantity change"
+    ],
+    "historical_conflicts": [
+      "SHIP_DESIGN, GUEST_SIMULATION, atlas p2 and coverage prose retain a private employee-cabin/single player-berth statement. The current shared-existing-colleague rule supersedes that housing description without adding a 401st crew member.",
+      "Old class distributions, illustrative technical-plate totals and legacy species labels do not override current 1,000 inclusive units, 81 luxury units, 2,000 cap and six-species canon."
+    ]
+  },
+  "historical_source_scope": {
+    "atlas_snapshot_utc": "2026-10-01T01:07:00Z",
+    "coverage_registry_snapshot_utc": "2026-10-01T02:46:31Z",
+    "coverage_extraction_method": "Single external data-only script instantiates ship.gd, calls register_rooms/register_meal_seats, serializes dictionaries, frees the object. It never enters the scene tree, builds geometry, loads main.tscn or advances simulation.",
+    "spatial_evidence_scope": {
+      "path": "../../../astraea-panel-review/spatial.json",
+      "snapshot_utc": "2026-10-01T01:35:12Z",
+      "scope": "All 1462 recorded center/foyer routes, portal alignment/open/closed screens and sampled support; no per-room rendered or dynamic cart walkthrough.",
+      "result": "1462 ordinary routes and sampled floors pass; 25 broad-body routes failed at that historical snapshot. Later D09 and crew checks have narrower superseding evidence.",
+      "limits": "These are historical facts. Do not subtract repaired samples to claim a fresh whole-ship pass."
+    },
+    "consequence": "Historical ledger and atlas snapshots are related but different captures. Their original pass/status text does not certify current geometry, machinery operation or six-species use."
+  },
+  "historical_d01_deck": {
+    "name": "Logistics & shuttle docks",
+    "floor_elevation_m": 0,
+    "next_deck_floor_elevation_m": 6,
+    "available_clear_height_m_in_historical_coverage": 5.75,
+    "clear_height_limit": "Deck-level allowance only. Actual laundry/depot soffit, beams, hanging services and equipment headroom remain unknown.",
+    "registered_spaces": 10,
+    "all_ten_staff_only": true,
+    "finished_deck_acceptance": false,
+    "room_ledger": [
+      {
+        "id": "D01_luggage0",
+        "name": "Shuttle arrivals",
+        "kind": "luggage",
+        "family_id": "service_logistics",
+        "deck": 1,
+        "atlas_directory_number": 1,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            -54.0,
+            -8.0
+          ],
+          "z": [
+            -466.0,
+            -398.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          -31.0,
+          -432.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 38,
+        "door_marker": {
+          "center_xz_m": [
+            -8.0,
+            -432.0
+          ],
+          "drawing_index_zero_based": 39,
+          "pdf_sequence_number": 63,
+          "symbol_bounds_xz_m": {
+            "x": [
+              -9.605,
+              -6.395
+            ],
+            "z": [
+              -433.605,
+              -430.395
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      },
+      {
+        "id": "D01_provisions1",
+        "name": "Cold provisions",
+        "kind": "provisions",
+        "family_id": "service_logistics",
+        "deck": 1,
+        "atlas_directory_number": 2,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            8.0,
+            54.0
+          ],
+          "z": [
+            -466.0,
+            -398.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          31.0,
+          -432.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 41,
+        "door_marker": {
+          "center_xz_m": [
+            8.0,
+            -432.0
+          ],
+          "drawing_index_zero_based": 42,
+          "pdf_sequence_number": 68,
+          "symbol_bounds_xz_m": {
+            "x": [
+              6.395,
+              9.605
+            ],
+            "z": [
+              -433.605,
+              -430.395
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      },
+      {
+        "id": "D01_laundry2",
+        "name": "Housekeeping & laundry",
+        "kind": "laundry",
+        "family_id": "service_logistics",
+        "deck": 1,
+        "atlas_directory_number": 3,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            -54.0,
+            -8.0
+          ],
+          "z": [
+            -250.0,
+            -182.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          -31.0,
+          -216.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 44,
+        "door_marker": {
+          "center_xz_m": [
+            -8.0,
+            -216.0
+          ],
+          "drawing_index_zero_based": 45,
+          "pdf_sequence_number": 73,
+          "symbol_bounds_xz_m": {
+            "x": [
+              -9.605,
+              -6.395
+            ],
+            "z": [
+              -217.605,
+              -214.395
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      },
+      {
+        "id": "D01_service3",
+        "name": "Cargo exchange",
+        "kind": "service",
+        "family_id": "service_logistics",
+        "deck": 1,
+        "atlas_directory_number": 4,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            8.0,
+            54.0
+          ],
+          "z": [
+            -250.0,
+            -182.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          31.0,
+          -216.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 47,
+        "door_marker": {
+          "center_xz_m": [
+            8.0,
+            -216.0
+          ],
+          "drawing_index_zero_based": 48,
+          "pdf_sequence_number": 78,
+          "symbol_bounds_xz_m": {
+            "x": [
+              6.395,
+              9.605
+            ],
+            "z": [
+              -217.605,
+              -214.395
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      },
+      {
+        "id": "D01_galley4",
+        "name": "Food synthesis",
+        "kind": "galley",
+        "family_id": "service_logistics",
+        "deck": 1,
+        "atlas_directory_number": 5,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            -98.0,
+            -52.0
+          ],
+          "z": [
+            -34.0,
+            34.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          -75.0,
+          -0.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 50,
+        "door_marker": {
+          "center_xz_m": [
+            -52.0,
+            -0.0
+          ],
+          "drawing_index_zero_based": 51,
+          "pdf_sequence_number": 83,
+          "symbol_bounds_xz_m": {
+            "x": [
+              -53.605,
+              -50.395
+            ],
+            "z": [
+              -1.605,
+              1.605
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      },
+      {
+        "id": "D01_maker5",
+        "name": "Repair workshop",
+        "kind": "maker",
+        "family_id": "service_logistics",
+        "deck": 1,
+        "atlas_directory_number": 6,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            52.0,
+            98.0
+          ],
+          "z": [
+            -34.0,
+            34.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          75.0,
+          -0.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 53,
+        "door_marker": {
+          "center_xz_m": [
+            52.0,
+            -0.0
+          ],
+          "drawing_index_zero_based": 54,
+          "pdf_sequence_number": 88,
+          "symbol_bounds_xz_m": {
+            "x": [
+              50.395,
+              53.605
+            ],
+            "z": [
+              -1.605,
+              1.605
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      },
+      {
+        "id": "D01_engineering6",
+        "name": "Reclamation plant",
+        "kind": "engineering",
+        "family_id": "engineering",
+        "deck": 1,
+        "atlas_directory_number": 7,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            -54.0,
+            -8.0
+          ],
+          "z": [
+            182.0,
+            250.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          -31.0,
+          216.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 56,
+        "door_marker": {
+          "center_xz_m": [
+            -8.0,
+            216.0
+          ],
+          "drawing_index_zero_based": 57,
+          "pdf_sequence_number": 93,
+          "symbol_bounds_xz_m": {
+            "x": [
+              -9.605,
+              -6.395
+            ],
+            "z": [
+              214.395,
+              217.605
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      },
+      {
+        "id": "D01_parcel7",
+        "name": "Cargo dispatch",
+        "kind": "parcel",
+        "family_id": "service_logistics",
+        "deck": 1,
+        "atlas_directory_number": 8,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            8.0,
+            54.0
+          ],
+          "z": [
+            182.0,
+            250.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          31.0,
+          216.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 59,
+        "door_marker": {
+          "center_xz_m": [
+            8.0,
+            216.0
+          ],
+          "drawing_index_zero_based": 60,
+          "pdf_sequence_number": 98,
+          "symbol_bounds_xz_m": {
+            "x": [
+              6.395,
+              9.605
+            ],
+            "z": [
+              214.395,
+              217.605
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      },
+      {
+        "id": "D01_arrivals8",
+        "name": "Shuttle concourse",
+        "kind": "arrivals",
+        "family_id": "service_logistics",
+        "deck": 1,
+        "atlas_directory_number": 9,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            -54.0,
+            -8.0
+          ],
+          "z": [
+            398.0,
+            466.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          -31.0,
+          432.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 62,
+        "door_marker": {
+          "center_xz_m": [
+            -8.0,
+            431.999
+          ],
+          "drawing_index_zero_based": 63,
+          "pdf_sequence_number": 103,
+          "symbol_bounds_xz_m": {
+            "x": [
+              -9.605,
+              -6.395
+            ],
+            "z": [
+              430.394,
+              433.604
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      },
+      {
+        "id": "D01_service9",
+        "name": "Custodial depot",
+        "kind": "service",
+        "family_id": "service_logistics",
+        "deck": 1,
+        "atlas_directory_number": 10,
+        "atlas_page_one_based": 3,
+        "historical_allocation_bounds_xz_m": {
+          "x": [
+            8.0,
+            54.0
+          ],
+          "z": [
+            398.0,
+            466.0
+          ]
+        },
+        "historical_allocation_center_xz_m": [
+          31.0,
+          432.0
+        ],
+        "historical_allocation_dimensions_xz_m": [
+          46.0,
+          68.0
+        ],
+        "historical_allocation_rectangle_area_m2": 3128.0,
+        "allocation_drawing_index_zero_based": 65,
+        "door_marker": {
+          "center_xz_m": [
+            8.0,
+            431.999
+          ],
+          "drawing_index_zero_based": 66,
+          "pdf_sequence_number": 108,
+          "symbol_bounds_xz_m": {
+            "x": [
+              6.395,
+              9.605
+            ],
+            "z": [
+              430.394,
+              433.604
+            ]
+          },
+          "interpretation": "Historical symbolic door center only; marker size is not clear opening, swing or pocket."
+        },
+        "historical_staff_only": true,
+        "registered_capacity": {
+          "berth_count": null,
+          "meal_capacity": null,
+          "crew_meal_capacity": null,
+          "entertainment_capacity": null,
+          "crew_break_capacity": null,
+          "changing_places": null
+        },
+        "whole_room_simultaneous_occupancy_limit": null,
+        "finished_polygon_known": false,
+        "evidence_sources": [
+          "atlas",
+          "coverage_json"
+        ]
+      }
+    ],
+    "geometry_source": "atlas page3; direct vectors in D01_atlas_vector_evidence.json"
+  },
+  "primary_programme_rooms": [
+    {
+      "id": "D01_laundry2",
+      "name": "Housekeeping & laundry",
+      "role": "Workplace textile handling and fictional laundry processing; anchor for the four candidate assets",
+      "status_in_historical_coverage": {
+        "architecture_plan_section": "shared_shell_unaccepted",
+        "original_asset_craft": "shared_original_assets_partial",
+        "materials_fixture_lighting": "shared_baseline_unaccepted",
+        "npc_facility_function": "crew_routine_model_tested",
+        "physical_access_persistence": "historical_screens_only"
+      },
+      "physical_evidence_in_historical_coverage": {
+        "evidence": "SPATIAL_ALL",
+        "historical_player_center_or_foyer_route": "pass",
+        "historical_broad_0_65m_route": "pass",
+        "historical_sampled_route_floor": "pass",
+        "historical_door_function": "pass_query_and_alignment",
+        "historical_static_cart_threshold": "pass_static_threshold_and_turn_screen",
+        "complete_dynamic_loaded_cart_route": "not_tested_individually",
+        "full_body_seated_and_animation_clearance": "not_certified",
+        "current_revision_whole_route_acceptance": "limited_to_recorded_scope_and_unchanged_physical_modules"
+      },
+      "whole_room_simultaneous_occupancy_limit": null,
+      "equipment_quantity": null,
+      "source_ids": [
+        "coverage_json",
+        "coverage_md",
+        "atlas"
+      ]
+    },
+    {
+      "id": "D01_service9",
+      "name": "Custodial depot",
+      "role": "Separately registered custodial depot; retain depot/stores/support identity without moving the laundry or prescribing the player return/refill/locker route",
+      "status_in_historical_coverage": {
+        "architecture_plan_section": "shared_shell_unaccepted",
+        "original_asset_craft": "shared_original_assets_partial",
+        "materials_fixture_lighting": "shared_baseline_unaccepted",
+        "npc_facility_function": "crew_routine_model_tested",
+        "physical_access_persistence": "historical_screens_only"
+      },
+      "physical_evidence_in_historical_coverage": {
+        "evidence": "SPATIAL_ALL",
+        "historical_player_center_or_foyer_route": "pass",
+        "historical_broad_0_65m_route": "pass",
+        "historical_sampled_route_floor": "pass",
+        "historical_door_function": "pass_query_and_alignment",
+        "historical_static_cart_threshold": "pass_static_threshold_and_turn_screen",
+        "complete_dynamic_loaded_cart_route": "not_tested_individually",
+        "full_body_seated_and_animation_clearance": "not_certified",
+        "current_revision_whole_route_acceptance": "limited_to_recorded_scope_and_unchanged_physical_modules"
+      },
+      "whole_room_simultaneous_occupancy_limit": null,
+      "equipment_quantity": null,
+      "source_ids": [
+        "coverage_json",
+        "coverage_md",
+        "atlas"
+      ]
+    }
+  ],
+  "known_spatial_relationships": [
+    {
+      "fact": "Laundry and Cargo exchange share the longitudinal band Z[-250,-182] and face inward across the axial street.",
+      "ids": [
+        "D01_laundry2",
+        "D01_service3"
+      ],
+      "scope": "Historical allocation and door-marker relationship; not a certified connecting route"
+    },
+    {
+      "fact": "Custodial depot and Shuttle concourse share Z[398,466] and face inward across the axial street.",
+      "ids": [
+        "D01_service9",
+        "D01_arrivals8"
+      ],
+      "scope": "Historical allocation and door-marker relationship; access policy remains unresolved"
+    },
+    {
+      "fact": "Laundry door is approximately (-8,-216); depot door approximately (8,432) in X,Z metres. They are 648 m apart longitudinally.",
+      "ids": [
+        "D01_laundry2",
+        "D01_service9"
+      ],
+      "scope": "Coordinate separation only, not travel distance or adjacency"
+    },
+    {
+      "fact": "The D01 atlas draws a straight axial tram line at X0 with stop markers Z[-432,-216,-72,216,432], plus paired axial circulation ribbons at X\u00b15.5 and service-colored outer lines at X\u00b157.",
+      "scope": "Drawn relationships only; widths are graphical, not installed clear widths"
+    },
+    {
+      "fact": "The extracted logistics family calls for readable arrival/sort/store/dispatch and clean/dirty purposes, recessed work bays, storage depth, overhead service structure and protected cart thresholds.",
+      "source_id": "coverage_json",
+      "pointer": "families[family_id=service_logistics]"
+    },
+    {
+      "fact": "Technical reference plate includes laundry, stores, maintenance and separated circulation; master GDD remaps its logistics D03 to D01.",
+      "source_ids": [
+        "engineering_reference",
+        "master_gdd"
+      ],
+      "scope": "Programme/composition guidance; no adjacency or equipment count transfer"
+    }
+  ],
+  "access_conflicts": [
+    {
+      "id": "all_d01_staff_only_vs_arrivals",
+      "evidence": "All 10 coverage room records have staff_only=true, including D01_luggage0 Shuttle arrivals and D01_arrivals8 Shuttle concourse; the atlas also uses guest-circulation ribbons on D01.",
+      "interpretation": "Access metadata conflicts with guest-facing names/drawing language. Neither names nor colors establish permission.",
+      "action": "Retain flags and IDs; report the conflict for access-policy design. Do not silently open public access or treat all D01 as guest circulation."
+    },
+    {
+      "id": "allocation_vs_finished_route",
+      "evidence": "Atlas p2 explicitly omits furnishings, wall thickness, ceiling forms and most minor objects; corridor ribbons are not a navigation certification.",
+      "interpretation": "A rectangle, door marker or old static route pass cannot establish a usable workroom.",
+      "action": "No room fitting, direct route, door aperture or loaded-carrier clearance claim."
+    }
+  ],
+  "unknowns": {
+    "finished_laundry_polygon": null,
+    "finished_depot_polygon": null,
+    "door_aperture_dimensions": null,
+    "door_pockets_and_swings": null,
+    "local_headroom_and_overhead_service_intrusions": null,
+    "workstation_and_maintenance_clearances": null,
+    "loaded_carrier_turning_parking_passing": null,
+    "laundry_to_depot_direct_connection": null,
+    "laundry_to_guest_towel_points_connection": null,
+    "staff_home_locker_room_and_refill_sequence": null,
+    "utilities_and_plumbing": null,
+    "installed_equipment_count_or_capacity": null,
+    "workstation_ownership_and_shift_assignment": null,
+    "six_species_body_reach_environment_contact_compatibility": null,
+    "note": "Null means unknown or undecided; it is not zero, a failed test, free space or permission to invent an implementation."
+  },
+  "design_purposes": [
+    {
+      "purpose": "Used handling",
+      "intent": "Make awaiting-processing textile staging and staff handling readable",
+      "limit": "No disease, infection or hazardous-material classification inferred"
+    },
+    {
+      "purpose": "Clean/ready handling and storage",
+      "intent": "Give ready-to-store/folded items their own legible staging and storage purpose",
+      "limit": "Design labels are not proof of successful treatment, disinfection or biological safety"
+    },
+    {
+      "purpose": "Conditioning",
+      "intent": "Support separated textiles at an open work rack",
+      "limit": "No active drying mechanism or validated environmental setpoint"
+    },
+    {
+      "purpose": "Maintenance",
+      "intent": "Keep service faces, supports, joins and removable components comprehensible",
+      "limit": "Actual access volumes, utilities and procedures are unknown"
+    },
+    {
+      "purpose": "Staff access",
+      "intent": "Retain protected arrivals/approaches, handling surfaces and carrier parking as requirements to resolve",
+      "limit": "No new access policy, travel route or space allocation"
+    },
+    {
+      "purpose": "Optional player interaction",
+      "intent": "Assets may support future authored choices once gameplay is defined",
+      "limit": "The return/refill/locker/room example is not a compulsory loop, production sequence or authorization to relocate rooms"
+    }
+  ],
+  "candidate_asset_roles": [
+    {
+      "id": "cloth_treatment_appliance",
+      "name": "Fictional cloth-treatment appliance",
+      "anchor_room_id": "D01_laundry2",
+      "useful_distinct_role": true,
+      "purpose": "An enclosed workplace textile-processing station gives the named laundry a specific work object.",
+      "design_readout": [
+        "Readable textile load opening and supported load staging",
+        "Fictional state display/control face",
+        "Distinct maintainable access face and removable-component intent"
+      ],
+      "separation_from_existing": "Neither AST-AQU-007 dry stock retrieval nor AST-AQU-008 guest towel return is a textile-processing appliance.",
+      "boundaries": [
+        "No actual wash chemistry, temperature, disinfection, biological compatibility or treatment sequence",
+        "No inferred water, waste, power, extraction or plumbing connection",
+        "No promise that this appliance replenishes the player cloth or bottles",
+        "No production throughput, equipment count or installed placement"
+      ]
+    },
+    {
+      "id": "drying_conditioning_rack",
+      "name": "Drying and conditioning rack",
+      "anchor_room_id": "D01_laundry2",
+      "useful_distinct_role": true,
+      "purpose": "Provide explicit supported spacing and temporary holding for work textiles rather than another folded-stock display.",
+      "design_readout": [
+        "Open supported rails or textile holders with deliberate hand access",
+        "Readable separation of items and stable floor contact",
+        "A serviceable frame distinct from enclosed treatment and flat folding work"
+      ],
+      "separation_from_existing": "AST-AQU-007 stores folded dry guest stock. This proposed rack stages separated textiles for fictional conditioning; it is not a second guest retrieval niche.",
+      "boundaries": [
+        "No inferred active heat, airflow, humidity target or biological/hygiene result",
+        "No textile dryness or treated/clean state established by appearance alone",
+        "No canonical body/reach fit, load capacity, throughput or quantity"
+      ]
+    },
+    {
+      "id": "sorting_folding_workbench",
+      "name": "Sorting and folding workbench",
+      "anchor_room_id": "D01_laundry2",
+      "useful_distinct_role": true,
+      "purpose": "Give staff a supported flat surface for identifying, separating, folding and staging textiles, with storage supporting those tasks.",
+      "design_readout": [
+        "Clear supported work surface",
+        "Legible used/awaiting-process and ready-to-store staging intent without mixing them by default",
+        "Under-surface storage or return recesses that leave approach and service access readable"
+      ],
+      "separation_from_existing": "A staff textile work surface differs from both guest towel dispensing and the small mobile dining-service trays. It must not become a generic decorated counter.",
+      "boundaries": [
+        "Any separation labels denote design purposes, not contamination control or proven hygiene",
+        "No prescribed compulsory sequence, worker count, cleaning method or workstation ownership",
+        "Keep actual knee/reach/body and service clearances unresolved until a host layout and bodies exist"
+      ]
+    },
+    {
+      "id": "wheeled_linen_carrier",
+      "name": "Distinct wheeled linen carrier",
+      "anchor_room_id": "D01_laundry2",
+      "useful_distinct_role": true,
+      "condition": "Useful only with a clear standalone workplace textile-carrying identity; another generic wheeled receiver would duplicate existing coverage.",
+      "purpose": "A manoeuvrable staff carrier for staged linens, with load retention, credible hand contact, wheels and a parking/transfer purpose.",
+      "design_readout": [
+        "Purpose-specific textile holding body and load-retaining edges",
+        "Readable push grip, wheel/floor contacts and turning/parking needs",
+        "Separate used-load and ready-load staging intent; no asserted common mixed load"
+      ],
+      "separation_from_existing": "AST-AQU-008 is a guest-return fixed station with a removable rolling receiver; AST-HSP-006 is a two-tier dining trolley. Neither establishes this independent workplace linen-transfer role. AST-MED-004 is clinical supply/retrieval and remains a separate purpose.",
+      "boundaries": [
+        "Do not replace, reskin, duplicate or modify the inherited player care cart or its three bottle identities",
+        "Do not claim fit through historical doors, lifts, tram or corridors",
+        "No implemented rolling controller, route, staff delivery automation, payload or inventory count",
+        "No invented D08-to-D01 or D01-to-depot transport connection"
+      ]
+    }
+  ],
+  "existing_catalogue_comparison": [
+    {
+      "source_id": "aqu007_manifest",
+      "catalogue_id": "AST-AQU-007",
+      "name": "Protected dry towel and supply niche",
+      "known_asset_roles": [
+        "dry guest retrieval",
+        "front restocking",
+        "opaque rear service face"
+      ],
+      "limitations": [
+        "Component proposals; no original engine adoption, species/actor fit, real hygiene, plumbing, mechanical certification or target-PC performance",
+        "D08_bath6 dry changing and aft D08_service9 towels/care are distinct historical allocations, not adjoining rooms"
+      ],
+      "special_limitation": [],
+      "game_adoption_claim": false
+    },
+    {
+      "source_id": "aqu008_manifest",
+      "catalogue_id": "AST-AQU-008",
+      "name": "Guarded used-towel return with rolling receiver",
+      "known_asset_roles": [
+        "guarded guest return",
+        "rear container extraction"
+      ],
+      "limitations": [
+        "Component proposals; no original engine adoption, species/actor fit, real hygiene, plumbing, mechanical certification or target-PC performance",
+        "D08_bath6 dry changing and aft D08_service9 towels/care are distinct historical allocations, not adjoining rooms",
+        "Lower container front rim passes below fixed chute. Receiver is not a sealed laundry or fluid vessel",
+        "No laundry, saturation, disposal, collection automation, hygienic material or mechanical validation"
+      ],
+      "special_limitation": [
+        "Lower container front rim passes below fixed chute. Receiver is not a sealed laundry or fluid vessel",
+        "No laundry, saturation, disposal, collection automation, hygienic material or mechanical validation"
+      ],
+      "game_adoption_claim": false
+    },
+    {
+      "source_id": "hsp006_manifest",
+      "catalogue_id": "AST-HSP-006",
+      "name": "Aster two-tier dining service trolley",
+      "known_asset_roles": [
+        "dining-service trays on a two-tier mobile furnishing"
+      ],
+      "limitations": [
+        "No room/game/controller/cargo/rolling implementation",
+        "No species reach, load-bearing, food-service, accessibility or physical certification",
+        "Component QA and conservative geometric proposals only"
+      ],
+      "special_limitation": [],
+      "game_adoption_claim": false
+    },
+    {
+      "source_id": "med004_manifest",
+      "catalogue_id": "AST-MED-004",
+      "name": "Closed-supply and retrieval clinical trolley",
+      "known_asset_roles": [
+        "closed clinical supplies and retrieval"
+      ],
+      "limitations": [
+        "Original game/host absent; no game implementation or catalogue promotion",
+        "Adjustable dimensions only; no room, bed, patient or population allocation",
+        "All body/load/transfer/species fit remains unverified",
+        "No treatment behavior, active fluids, chemistry or clinical certification",
+        "No performance, collision-engine or dynamics claims"
+      ],
+      "special_limitation": [],
+      "game_adoption_claim": false
+    }
+  ],
+  "reference_pixel_audit": [
+    {
+      "source_id": "engineering_reference",
+      "library_file_id": "libfile_10019fb78188819197691dbcc5f685f1",
+      "sha256": "6729d6150c305237a7d40285074e3cf28aa1522a8240ad180e2f89746abc6d52",
+      "pixels_inspected_in_this_audit": true,
+      "pixel_size": [
+        1491,
+        1055
+      ],
+      "stored_provenance_source_id": "engineering_provenance",
+      "label_or_original_name": "Crew + Medical + Engineering + Logistics; sheet 4 of 6, ASW-GV-04; printed v1.0.3, 25.07.04",
+      "observations": [
+        "The lower Deck 03 Logistics & Services panel visibly labels housekeeping/laundry, stores/supplies and maintenance alongside the longitudinal service route.",
+        "The legend differentiates service corridor, separated guest circulation, restricted access and vertical circulation.",
+        "The panel gives useful programme relationships and an institutional service identity, not laundry equipment dimensions or operating design."
+      ],
+      "authority_limits": [
+        "Master GDD reference plate 2 explicitly remaps this plate logistics D03 to canonical D01, engineering D04 to D02 and crew D06 to D03; medical remains D05.",
+        "The plate faces forward to page-right, opposite the atlas main-plan orientation. Do not transfer coordinates.",
+        "Printed machinery/facility totals, old deck labels and legacy species examples are not current allocation or capacity authority."
+      ],
+      "runtime_dependency": false
+    },
+    {
+      "source_id": "staff_tall_reference",
+      "library_file_id": "libfile_763ed82d83e88191a7b025212b2b4592",
+      "sha256": "9e43a460638b2339eeb9479d7679fd16a0a6b25207fae980870321ad2c5dafcd",
+      "pixels_inspected_in_this_audit": true,
+      "pixel_size": [
+        1152,
+        2048
+      ],
+      "stored_provenance_source_id": "corridor_provenance",
+      "label_or_original_name": "Original stored filename image(20261001-185254).png",
+      "observations": [
+        "Actual pixels show broad pale panels, long metallic protective contact rails, a regularly tiled floor, a high exposed structural/service zone and paired longitudinal pipes.",
+        "Small practical wall fixtures and repeated service supports organize the long passage."
+      ],
+      "authority_limits": [
+        "Use broad washable-looking panel language, protected edges and coherent service mounting; no real material hygiene certification.",
+        "Do not infer a safe passage width, ceiling height, species fit or photometric performance from the photo."
+      ],
+      "runtime_dependency": false
+    },
+    {
+      "source_id": "staff_services_reference",
+      "library_file_id": "libfile_024c7db762c481918da24e3840ef1412",
+      "sha256": "35f53a078f3a620c83385278c0a6e8a83f3b8e43d48e1603f3ced363b4dc3a1c",
+      "pixels_inspected_in_this_audit": true,
+      "pixel_size": [
+        1536,
+        2048
+      ],
+      "stored_provenance_source_id": "corridor_provenance",
+      "label_or_original_name": "Original stored filename image(20261001-185255).png",
+      "observations": [
+        "Actual pixels show pale block-like walls, dark door frames, exposed overhead conduits and parallel service runs, suspended elongated fixtures, and an uncluttered hard floor.",
+        "Workmanlike repeatable brackets, service organization and readable door outlines matter more than decorative clutter."
+      ],
+      "authority_limits": [
+        "Do not copy the narrow photographed passage width or invent measurements.",
+        "Practical cool light and exposed services are visual intent; actual game illumination and clearance need separate checks."
+      ],
+      "runtime_dependency": false
+    }
+  ],
+  "biological_and_gameplay_boundaries": [
+    "No demographics, body dimensions, reach envelopes or species-to-job distribution are assigned.",
+    "Baelin special-cleaner need is canon; names, ingredients, dose, process and actual textile/equipment compatibility remain open. No generic appliance claims universal compatibility.",
+    "Mantelid molting is extremely gruesome; frequency, privacy, depiction and care method remain unresolved. Do not turn it into infection simulation or ordinary dust.",
+    "Munko four-arm contact and all six actual body/environment interactions require later asset/host verification. Legacy broad 0.65 m screens do not certify them.",
+    "Mindo sentience and rights are preserved. No charging ports, fuel, food, connectors or rest system is invented.",
+    "Historical staff work means bounded arrived station time and aggregate background care, not a specific custodian physically carrying every linen load.",
+    "No new real treatment instructions, plumbing, equipment quantity, autonomous chore scheduling, worker throughput, economy rule or compulsory player action."
+  ],
+  "next_design_gate": "Use the four distinct roles for component contracts only. A later room/host placement must establish actual room envelope, apertures, support and service access before any installed-workplace or operational claim. This audit does not relocate a room or replace the player cart.",
+  "sources": [
+    {
+      "id": "atlas",
+      "source_root": "district_layout_audit",
+      "path": "sources/Astraea-current-layout-atlas.pdf",
+      "sha256": "315c985198f70a08e4fa72bbda29a9b554e53997314aa45e5ec0b51cd24999cc",
+      "bytes": 526459
+    },
+    {
+      "id": "coverage_json",
+      "source_root": "district_layout_audit",
+      "path": "extracted/project_docs/architecture/whole_ship_coverage.json",
+      "sha256": "3b02b1fdea59ec9ddd7cb66e39bbcfbd6492e0d3e37647eeb6d38b3d370edefe",
+      "bytes": 3095275
+    },
+    {
+      "id": "coverage_md",
+      "source_root": "district_layout_audit",
+      "path": "extracted/project_docs/architecture/WHOLE_SHIP_COVERAGE.md",
+      "sha256": "76998f50a82bb9d6278f4a72a67b816cf0b975eeec50fbe3373a9c4d999dc452",
+      "bytes": 24127
+    },
+    {
+      "id": "ship_design",
+      "source_root": "district_layout_audit",
+      "path": "extracted/project_docs/SHIP_DESIGN.md",
+      "sha256": "709fd9f2339c5eef3c93bea223ccc2d01bed24cd3fd89729023c13b777e6b439",
+      "bytes": 14847
+    },
+    {
+      "id": "daily_guest_life",
+      "source_root": "district_layout_audit",
+      "path": "extracted/project_docs/DAILY_GUEST_LIFE.md",
+      "sha256": "43e014468b5af8d0ca0d3a2a4de7f9463df79cc4e4883341f8dcf7aa8152219e",
+      "bytes": 9457
+    },
+    {
+      "id": "guest_simulation",
+      "source_root": "district_layout_audit",
+      "path": "extracted/project_docs/GUEST_SIMULATION.md",
+      "sha256": "9fc032059f177520a5bcbd5f86e54c314a4a634a740a1da41adcf6d1906297a8",
+      "bytes": 24956
+    },
+    {
+      "id": "species_canon",
+      "source_root": "district_layout_audit",
+      "path": "extracted/project_docs/SPECIES_CANON.md",
+      "sha256": "6ec4fe36941e96a23cb93479bc1adafc786a9f10cb388647fd7686e3e097c6b2",
+      "bytes": 5172
+    },
+    {
+      "id": "master_gdd",
+      "source_root": "district_layout_audit",
+      "path": "extracted/Astraea_Master_Game_Design.md",
+      "sha256": "819ecd4606db9d62148c956713e8cb65ff9354c2f079d0f765db02945da21666",
+      "bytes": 152200
+    },
+    {
+      "id": "phase_direction",
+      "source_root": "district_layout_audit",
+      "path": "extracted/Current_Phase_Direction.txt",
+      "sha256": "dcf6baf0ec18d025cd1134c560924174f3c1553c17c9ff2567b250b1a776d64e",
+      "bytes": 432
+    },
+    {
+      "id": "archive_readme",
+      "source_root": "district_layout_audit",
+      "path": "extracted/SOURCE_README.txt",
+      "sha256": "371bdcbabb07ca62d18c391ea49df49a15d155968e563976f93634f5296d7df1",
+      "bytes": 1701
+    },
+    {
+      "id": "current_canon",
+      "source_root": "catalogue",
+      "path": "CATEGORY_COVERAGE.json",
+      "sha256": "341b7fa42cca6fcd54ed132d9fe77df59dcc2b5e4288805351fd33bfa85b8820",
+      "bytes": 10619
+    },
+    {
+      "id": "catalogue_manifest",
+      "source_root": "catalogue",
+      "path": "catalogue_manifest.json",
+      "sha256": "b721ce2d986d8ddc224581120c75ddaee97401984edfedf044702841099e4561",
+      "bytes": 73060
+    },
+    {
+      "id": "engineering_reference",
+      "source_root": "catalogue",
+      "path": "references/engineering/technical_reference.png",
+      "sha256": "6729d6150c305237a7d40285074e3cf28aa1522a8240ad180e2f89746abc6d52",
+      "bytes": 2803385
+    },
+    {
+      "id": "staff_tall_reference",
+      "source_root": "catalogue",
+      "path": "references/landings/staff_corridor_tall.png",
+      "sha256": "9e43a460638b2339eeb9479d7679fd16a0a6b25207fae980870321ad2c5dafcd",
+      "bytes": 1833748
+    },
+    {
+      "id": "staff_services_reference",
+      "source_root": "catalogue",
+      "path": "references/landings/staff_corridor_services.png",
+      "sha256": "35f53a078f3a620c83385278c0a6e8a83f3b8e43d48e1603f3ced363b4dc3a1c",
+      "bytes": 4804167
+    },
+    {
+      "id": "engineering_provenance",
+      "source_root": "catalogue",
+      "path": "batches/batch12/reference_manifest.json",
+      "sha256": "58505b4b7d758e2323f316e397c9c580c5be3497151e6799371f9447a67d06e8",
+      "bytes": 2042
+    },
+    {
+      "id": "corridor_provenance",
+      "source_root": "catalogue",
+      "path": "batches/batch11/reference_manifest.json",
+      "sha256": "0fa6f2b557876e0e38ad527f9378de6453e3732daab7b29ce3477500f5eae3cf",
+      "bytes": 2439
+    },
+    {
+      "id": "corridor_prior_provenance",
+      "source_root": "catalogue",
+      "path": "batches/batch03/reference_manifest.json",
+      "sha256": "ce4e5d45442075f3edf33bde22e918b2c87ec35b6be8d15cf5ee338ea0f9a458",
+      "bytes": 1416
+    },
+    {
+      "id": "aqu007_manifest",
+      "source_root": "catalogue",
+      "path": "assets/aquatic_towel_use/AST-AQU-007.manifest.json",
+      "sha256": "314aba9e872c4594907faddcf535e3dd66706e1e6445a05462c85e3cc7916d49",
+      "bytes": 26614
+    },
+    {
+      "id": "aqu008_manifest",
+      "source_root": "catalogue",
+      "path": "assets/aquatic_towel_use/AST-AQU-008.manifest.json",
+      "sha256": "0fb5982b02b187c800de2f59bb262cc9e39240746de5f938ed0d980c13ec03c1",
+      "bytes": 26792
+    },
+    {
+      "id": "hsp006_manifest",
+      "source_root": "catalogue",
+      "path": "assets/hospitality_serviceware/AST-HSP-006.manifest.json",
+      "sha256": "9f6eb84e98e679e109133cac1df87972fb6e14b41d2934a79dcebb1de853f118",
+      "bytes": 12925
+    },
+    {
+      "id": "med004_manifest",
+      "source_root": "catalogue",
+      "path": "assets/clinical_support/AST-MED-004.manifest.json",
+      "sha256": "643d00b4b77040463541fe0b140b3bf32fa30ff74c41ed093764a03f2b87ab06",
+      "bytes": 45213
+    }
+  ],
+  "derivative_evidence": {
+    "file": "D01_atlas_vector_evidence.json",
+    "sha256": "305227d99db53103df4aca046561c1ebc0339e902a8af1478819dd509e5d5db9",
+    "preview": "atlas-page-03.png",
+    "preview_sha256": "3252e77aa6206c232d49e6f0aee1487e771846583950aa1774276d7e8825a670"
+  },
+  "validation": {
+    "ten_D01_IDs_match_coverage": true,
+    "ten_atlas_labels_uniquely_resolved": true,
+    "all_source_files_hashed": true,
+    "three_reference_hashes_match_stored_provenance": true,
+    "catalogue_and_sources_unmodified_by_this_audit": true,
+    "runtime_or_assets_authored": false
+  }
+}

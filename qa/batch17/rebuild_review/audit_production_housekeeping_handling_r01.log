@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/rebuild_source_audit.py", line 83, in <module>
+    m=bpy.data.materials[name];rec={'name':name,'use_nodes':m.use_nodes,'images':[],'principled':[], 'properties':{k:prop(v)for k,v in m.items()if k!='_RNA_UI'},'node_graph':graph(m.node_tree)}
+                                                                                                                                                                              ~~~~~^^^^^^^^^^^^^
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/rebuild_source_audit.py", line 34, in graph
+    return {'nodes':[{'name':n.name,'type':n.bl_idname,'settings':settings(n),'inputs':[{'name':s.name,'identifier':s.identifier,'default':prop(s.default_value) if hasattr(s,'default_value') else None}for s in n.inputs],'outputs':[{'name':s.name,'identifier':s.identifier,'default':prop(s.default_value) if hasattr(s,'default_value') else None}for s in n.outputs]}for n in sorted(tree.nodes,key=lambda n:n.name)],'links':sorted([l.from_node.name,l.from_socket.identifier,l.to_node.name,l.to_socket.identifier]for l in tree.links)}
+                                                                  ~~~~~~~~^^^
+TypeError: 'dict' object is not callable
+
+Error: script failed, file: '/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/rebuild_source_audit.py', exiting.
+Blender 4.3.2
+Read blend: "/workspace/shared/astraea-catalogue-continuation-20261002/assets/housekeeping_handling/source/AST-HSK-003.blend"
+
+Blender quit

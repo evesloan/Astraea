@@ -1,0 +1,144 @@
+{
+  "passed": true,
+  "family": "housekeeping_equipment",
+  "revision": "r01",
+  "source_only_stage1_receipt": {
+    "path": "qa/batch17/rebuild_review/rebuild_housekeeping_equipment_r01.json",
+    "sha256": "de99f06b9451ef280bca6f1fae0afaded129583e8a78b693e1927c3a2504018c",
+    "bytes": 23267
+  },
+  "stage2_original_inputs": false,
+  "stage2_exact_inputs": [
+    {
+      "path": "qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/select_body_stage2.py",
+      "sha256": "997e66e87d1a0cbd332afb17115730f80c3e7bd41143c7c62d38907c85e5b463",
+      "bytes": 1371
+    },
+    {
+      "path": "qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/generated_stage1_detailed_collision.json",
+      "sha256": "4113b6b07ef365d1c0b2fdfa1e66635aa6ebc7b1d1ecb9f833c8c1b32985f3a1",
+      "bytes": 377802
+    },
+    {
+      "path": "qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/generated_selection_from_stage1_editable_source.json",
+      "sha256": "ca2a131c1be48c663a2be4fb099cb004388efbea07634ea6a7f39a8bc7063b2f",
+      "bytes": 7755
+    }
+  ],
+  "stage1_generated_detailed_dependency": {
+    "path": "qa/batch17/rebuild_review/stage_housekeeping_equipment_r01/assets/housekeeping_equipment/collision_proposals.json",
+    "sha256": "4113b6b07ef365d1c0b2fdfa1e66635aa6ebc7b1d1ecb9f833c8c1b32985f3a1",
+    "bytes": 377802
+  },
+  "production_detailed_dependency": {
+    "path": "assets/housekeeping_equipment/collision_proposals.json",
+    "sha256": "4113b6b07ef365d1c0b2fdfa1e66635aa6ebc7b1d1ecb9f833c8c1b32985f3a1",
+    "bytes": 377802
+  },
+  "selection_provenance": [
+    {
+      "catalogue_id": "AST-HSK-001",
+      "original_source": {
+        "path": "assets/housekeeping_equipment/source/AST-HSK-001.blend",
+        "sha256": "7c0cd5c25bb18d9c6c405efa94776718b6a2d0f223076b9dde247ad0441ecffa",
+        "bytes": 188860
+      },
+      "rebuilt_source": {
+        "path": "qa/batch17/rebuild_review/stage_housekeeping_equipment_r01/assets/housekeeping_equipment/source/AST-HSK-001.blend",
+        "sha256": "71899deb76f1fe26538fea4d25676f7def0b7ca6c49b2f5e39e3c67fb3f63278",
+        "bytes": 188988
+      },
+      "source_audit": {
+        "path": "qa/batch17/rebuild_review/rebuilt_housekeeping_equipment_r01_source_AST-HSK-001.json",
+        "sha256": "1f7ca59a803f12e617b3064f708c6ed49e1f4a3700216556c66847c172943192",
+        "bytes": 262812
+      },
+      "detailed_shape_count": 77,
+      "retained_shape_count": 55,
+      "omitted_shape_count": 22,
+      "author_choice_matches_editable_source_keep_roles": true
+    },
+    {
+      "catalogue_id": "AST-HSK-002",
+      "original_source": {
+        "path": "assets/housekeeping_equipment/source/AST-HSK-002.blend",
+        "sha256": "1252f0ab37621bdc5b71aa31e0b453633f5a2f357a4a9b271db6cc9398357327",
+        "bytes": 181725
+      },
+      "rebuilt_source": {
+        "path": "qa/batch17/rebuild_review/stage_housekeeping_equipment_r01/assets/housekeeping_equipment/source/AST-HSK-002.blend",
+        "sha256": "b65a38d79a683842cdabe7f8a051ffe991ee502770b0d72370ee2dd6bdbc3004",
+        "bytes": 181660
+      },
+      "source_audit": {
+        "path": "qa/batch17/rebuild_review/rebuilt_housekeeping_equipment_r01_source_AST-HSK-002.json",
+        "sha256": "a67427e48f8f845bb0a51c9f51cd9843d711301cff3b3c4a268eebfbbb7d657b",
+        "bytes": 223164
+      },
+      "detailed_shape_count": 61,
+      "retained_shape_count": 61,
+      "omitted_shape_count": 0,
+      "author_choice_matches_editable_source_keep_roles": true
+    }
+  ],
+  "two_repetitions_byte_identical": true,
+  "outputs": [
+    {
+      "output": {
+        "path": "qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/body_subset_run1.json",
+        "sha256": "8e24cf2269b04d47a87f02ac82b7ce2a902fec868005a3de5cd7daa5bfcfa341",
+        "bytes": 312936
+      },
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/select_body_stage2.py",
+        "--detailed",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/generated_stage1_detailed_collision.json",
+        "--selection",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/generated_selection_from_stage1_editable_source.json",
+        "--output",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/body_subset_run1.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "output": {
+        "path": "qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/body_subset_run2.json",
+        "sha256": "8e24cf2269b04d47a87f02ac82b7ce2a902fec868005a3de5cd7daa5bfcfa341",
+        "bytes": 312936
+      },
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/select_body_stage2.py",
+        "--detailed",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/generated_stage1_detailed_collision.json",
+        "--selection",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/generated_selection_from_stage1_editable_source.json",
+        "--output",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/rebuild_review/stage2_housekeeping_equipment_r01/body_subset_run2.json"
+      ],
+      "returncode": 0
+    }
+  ],
+  "source_selector": {
+    "path": "qa/batch17/rebuild_review/select_body_stage2.py",
+    "sha256": "997e66e87d1a0cbd332afb17115730f80c3e7bd41143c7c62d38907c85e5b463",
+    "bytes": 1371
+  },
+  "executed_script": {
+    "path": "qa/batch17/rebuild_review/rebuild_stage2_runner.py",
+    "sha256": "46ffc34c8a0dda506aa11a1f867602fc572061f94d179103dcb2e2b81934475a",
+    "bytes": 4751
+  },
+  "invariants": "Each retained entire detailed shape dictionary is copied unchanged in source order. Voids, motion records and original owners remain exact. No enclosing hull, inflation or movement is introduced. Literal subset under the same owner transforms cannot add an intrusion at any pose; omitted fine detail remains omitted. No distance, fit, physical adequacy or engine acceptance claim.",
+  "production_body_subset": {
+    "path": "assets/housekeeping_equipment/actor_proxies/body_collision_subset.json",
+    "sha256": "ae2e0c00cd653ef91ac23595efb68b42984c8f283b7ec01ee445e45934a3cfc7",
+    "bytes": 317182
+  },
+  "rebuilt_body_subset": {
+    "path": "qa/batch17/rebuild_review/stage_housekeeping_equipment_r01/assets/housekeeping_equipment/actor_proxies/body_collision_subset.json",
+    "sha256": "ae2e0c00cd653ef91ac23595efb68b42984c8f283b7ec01ee445e45934a3cfc7",
+    "bytes": 317182
+  }
+}

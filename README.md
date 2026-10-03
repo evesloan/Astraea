@@ -4,7 +4,7 @@ New asset production began on 2 October 2026 while recovery of the original ship
 
 Batch 01 is a compact coordinated day-use family: upholstered window bench, reading chair, day table, and four compatible deep reveal/junction pieces. It translates the supplied residential and premium references into editable low-poly furniture and construction components. Every authored asset is counted once, separately from exports and any LODs. This is one standard day-use construction family, not sufficient variety for every district or luxury tier. The furniture does not claim aquatic use, cocoon provision or universal species fit.
 
-The catalogue now contains 81 unique authored component designs, with zero adopted game instances. Batch16 adds four auditorium arrival, audience and backstage components. Exact IDs, source/export paths, review status and limits are in catalogue_manifest.json and the per-batch manifests.
+The catalogue now contains 85 unique authored component designs, with zero adopted game instances. Batch17 adds four housekeeping and laundry workplace components. Exact IDs, source/export paths, review status and limits are in catalogue_manifest.json and the per-batch manifests.
 
 The collection covers guest day-use, libraries, staff/service, botanical edges, aquatic leisure, engineering utilities, hospitality service, salon transitions, clinical support and cultural/auditorium use. These are reviewed components; whole-room composition, six-species fitting and game adoption still require the recovered host and further testing.
 
@@ -131,3 +131,9 @@ The D11 handoff preserves the historical theatre/cinema capacity and the D12/D13
 ### Optional body-collision candidates
 
 Batch16 preserves the detailed seat and stand mechanism/reference profiles and adds an explicit separate body-only selection at standards/body_proxy_candidates.json. The seat subset uses 13 unchanged profiles instead of 43; the stand uses 30 instead of 56. No new enclosing hull is added. All primary floor/rest/work/control surfaces and declared empty regions remain represented, while fine pivots/internal cable detail is omitted. Conservative omission bounds are 72.002 mm and 48.002 mm. Precise service, mechanism and interaction contacts still require the detailed set and physical markers. These are optional adoption candidates with no runtime or performance approval. Their selector reproduces a second-stage result from the independently reproduced base collision output; it is not disguised as an original source input.
+
+## Batch17 housekeeping and laundry
+
+Four original designs add a fictional cloth-treatment appliance, open conditioning rack, sorting/folding bench and a distinct bulk-linen carrier. Useful chambers, work surfaces, retained moving parts, source/native interfaces and collision proposals are reviewed at component scale. The actual exported components are shown in separate equipment and handling examples under inspection lighting.
+
+The historical D01 laundry and custodial depot remain separate allocations, 648 m apart longitudinally. These examples do not invent their connector or establish a mandatory end-of-shift loop. Live cleaning, heat, utilities, hygiene and species compatibility are unimplemented. The carrier does not replace the original player cart. See batches/batch17/STATUS.md and the independent source/export review.

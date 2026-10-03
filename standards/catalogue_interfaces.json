@@ -1,7 +1,7 @@
 {
-  "revision": "astraea-catalogue-interfaces-09-proposed",
+  "revision": "astraea-catalogue-interfaces-10-proposed",
   "status": "proposed_component_consumer_index_not_engine_acceptance",
-  "unique_assets": 81,
+  "unique_assets": 85,
   "semantic_rules": [
     "Exact existing source/export/manifest hashes bind every row.",
     "Metadata records map existing points and behavior only. No nonexistent point/trajectory is invented.",
@@ -21981,16 +21981,1251 @@
       "findings": [],
       "exact_record_inventory_pointer": "qa/batch16/independent_interface_coverage_map.json#/assets/3",
       "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-HSK-001",
+      "family": "housekeeping_equipment",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/housekeeping_equipment/source/AST-HSK-001.blend",
+          "sha256": "7c0cd5c25bb18d9c6c405efa94776718b6a2d0f223076b9dde247ad0441ecffa",
+          "bytes": 188860
+        },
+        "export": {
+          "path": "assets/housekeeping_equipment/exports/AST-HSK-001.glb",
+          "sha256": "4498490728f5126d7f5a206c855d64879b38bf68d18c496ba58739a860ce02bc",
+          "bytes": 118332
+        },
+        "manifest": {
+          "path": "assets/housekeeping_equipment/AST-HSK-001.manifest.json",
+          "sha256": "2a8dafae582b889238540f5b467083fcbb2f88dd5831f9a4e30c2557ea3d9e29",
+          "bytes": 43325
+        }
+      },
+      "units": {
+        "status": "explicit_source_file_and_coordinate_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/housekeeping_equipment/AST-HSK-001.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "actual_source_and_native_nodes_checked",
+        "meaning": "Floor origin; the centre datum may lie in air between actual supports. Real floor contacts and moving roots are separate.",
+        "actual_native_root_nodes": [
+          {
+            "index": 26,
+            "name": "AST-HSK-001",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/housekeeping_equipment/AST-HSK-001.manifest.json#/physical_and_proposal_markers",
+          "qa/batch17/independent_equipment_motion_AST-HSK-001.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "actual_hierarchy_geometry_normals_uv_and_marker_metadata_checked",
+        "source": "Blender XYZ Z-up, front−Y",
+        "exchange": "native glTF Y-up",
+        "conversion": "(x,y,z)->(x,z,−y)",
+        "rule": "Resolve native hierarchy once; directions omit translation. Root affine transforms and terminal mesh attributes checked.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch17/independent_interface_metadata_review.json",
+          "qa/batch17/independent_equipment_motion_AST-HSK-001.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "actual_primary_surfaces_and_complete_semantic_support_checked",
+        "meaning": "Every named physical point/outward normal and declared join probe agrees with actual source/native surfaces; real support graph covers every part.",
+        "evidence": [
+          "assets/housekeeping_equipment/AST-HSK-001.manifest.json#/physical_and_proposal_markers",
+          "qa/batch17/independent_equipment_motion_AST-HSK-001.json",
+          "qa/batch17/independent_support_finish_AST-HSK-001.json"
+        ],
+        "omission_assessment": "No historical room polygon, door aperture, overhead service, body dimension or installation inferred"
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "physical_nonphysical_and_placement_roles_distinguished",
+        "meaning": "Original faceted fictional cloth-treatment appliance with useful hollow chamber, retained full hatch and hand-supported separate rear maintenance cover. Inactive controls and capped unassigned utility faces; no process or plumbing.",
+        "all_marker_count": 13,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "qa/batch17/independent_equipment_motion_AST-HSK-001.json",
+          "qa/batch17/independent_equipment_collision_bearings_AST-HSK-001.json",
+          "qa/batch17/independent_support_finish_AST-HSK-001.json",
+          "qa/batch17/independent_equipment_motion_review.json",
+          "qa/batch17/independent_equipment_collision_bearings_review.json",
+          "qa/batch17/independent_handling_geometry_review.json",
+          "qa/batch17/independent_finish_resolution.json",
+          "qa/batch17/independent_source_native_corner_comparison.json",
+          "qa/batch17/independent_interface_metadata_review.json",
+          "qa/batch17/independent_reference_pixels_review.json",
+          "qa/batch17/independent_visual_review.json",
+          "qa/batch17/independent_preservation_report.json"
+        ],
+        "limit": "Geometric form/support/retention only; no loaded dynamics, strength, cloth tension, reach or host acceptance"
+      },
+      "motion_and_hierarchy": {
+        "status": "complete_closed_to_terminal_source_native_motion_checked",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "declared_motions": [
+          {
+            "root": "LOADING_HATCH_Z",
+            "kind": "rotation",
+            "pivot_source_m": [
+              -0.4699999988079071,
+              -0.5199999809265137,
+              1.0299999713897705
+            ],
+            "pivot_gltf_m": [
+              -0.4699999988079071,
+              1.0299999713897705,
+              0.5199999809265137
+            ],
+            "axis_source": [
+              0,
+              0,
+              1
+            ],
+            "axis_gltf": [
+              0.0,
+              1.0,
+              -0.0
+            ],
+            "travel": -105,
+            "initial_pose": 0,
+            "support_scope": "retained geometric support, engineering unverified",
+            "semantic_parts": [
+              "hatch_pressed_ring_00",
+              "hatch_pressed_ring_01",
+              "hatch_pressed_ring_02",
+              "hatch_pressed_ring_03",
+              "hatch_pressed_ring_04",
+              "hatch_pressed_ring_05",
+              "hatch_pressed_ring_06",
+              "hatch_pressed_ring_07",
+              "opaque_inactive_inspection_inset",
+              "hatch_pull_bridge",
+              "hatch_pull_left_return",
+              "hatch_pull_right_return",
+              "lower_bored_hinge_sleeve_0",
+              "lower_bored_hinge_sleeve_1",
+              "lower_bored_hinge_sleeve_2",
+              "lower_bored_hinge_sleeve_3",
+              "lower_bored_hinge_sleeve_4",
+              "lower_bored_hinge_sleeve_5",
+              "lower_bored_hinge_sleeve_6",
+              "lower_bored_hinge_sleeve_7",
+              "lower_hatch_retaining_strap",
+              "upper_bored_hinge_sleeve_0",
+              "upper_bored_hinge_sleeve_1",
+              "upper_bored_hinge_sleeve_2",
+              "upper_bored_hinge_sleeve_3",
+              "upper_bored_hinge_sleeve_4",
+              "upper_bored_hinge_sleeve_5",
+              "upper_bored_hinge_sleeve_6",
+              "upper_bored_hinge_sleeve_7",
+              "upper_hatch_retaining_strap"
+            ]
+          },
+          {
+            "root": "REAR_SERVICE_COVER",
+            "kind": "translation",
+            "pivot_source_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pivot_gltf_m": [
+              0.0,
+              0.0,
+              -0.0
+            ],
+            "axis_source": [
+              0,
+              1,
+              0
+            ],
+            "axis_gltf": [
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "travel": 0.25,
+            "initial_pose": 0,
+            "support_scope": "detached hand-supported proposal",
+            "semantic_parts": [
+              "removable_rear_service_cover",
+              "rear_cover_pull_bridge",
+              "rear_pull_left_return",
+              "rear_pull_right_return"
+            ]
+          }
+        ],
+        "meaning": "Whole owned geometry and markers included; supported hatch/slide separate from hand-supported detached maintenance covers. Static carrier has no rolling controller.",
+        "evidence": [
+          "assets/housekeeping_equipment/AST-HSK-001.manifest.json",
+          "qa/batch17/independent_equipment_motion_AST-HSK-001.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "independent_exact_original_input_source_rebuild_and_artwork_regeneration",
+        "actual_material_roles": [
+          "cloth_controls",
+          "staff_bluegrey_paint",
+          "staff_rubber",
+          "staff_white_paint",
+          "staff_zinc"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/housekeeping_equipment/source/build_housekeeping_equipment.py",
+            "sha256": "dcf6dabafbd8eebbb07e4ec603ad72773045d7294ec08830e45d734d3e389543",
+            "bytes": 31936
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/housekeeping_equipment/source/build_housekeeping_equipment.py",
+            "sha256": "dcf6dabafbd8eebbb07e4ec603ad72773045d7294ec08830e45d734d3e389543",
+            "bytes": 31936
+          },
+          {
+            "path": "assets/housekeeping_equipment/source/draw_controls.py",
+            "sha256": "0b9b8303ec2f5e69c5d8f14490b3ba5d86b1fdfa4137d85367c7c2351963993a",
+            "bytes": 1502
+          },
+          {
+            "path": "materials/staff/manifest.json",
+            "sha256": "5cf6681db7a5ba8d1c459cc5b9eaf2ee9f210efd03f1f146b4d8dd21b1d0f759",
+            "bytes": 3205
+          },
+          {
+            "path": "materials/staff/staff_bluegrey_paint.png",
+            "sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f",
+            "bytes": 6069
+          },
+          {
+            "path": "materials/staff/staff_cable_blue.png",
+            "sha256": "8ca09105d6bae6f49541ee8741933eca4f427e8e46a40ac74a7d03142619c60a",
+            "bytes": 4146
+          },
+          {
+            "path": "materials/staff/staff_cable_red.png",
+            "sha256": "13ed2b2baa42fd70dcaab3a12a9cc80a849e49b35e44dd8bc026dca603acb081",
+            "bytes": 4133
+          },
+          {
+            "path": "materials/staff/staff_floor.png",
+            "sha256": "7d39c03c816ecdc8df6efe1869bf288c1e8a6419d8472a0386bca0a2f57f599f",
+            "bytes": 11485
+          },
+          {
+            "path": "materials/staff/staff_label.png",
+            "sha256": "68480ff4080dd2b93ddfba454623db9890006bb55cbb415911607773e348b644",
+            "bytes": 5976
+          },
+          {
+            "path": "materials/staff/staff_opal.png",
+            "sha256": "d1884536391beb3bbffbf8d5d9ecb40c678b810cf841c13b53f891594c5d086b",
+            "bytes": 6219
+          },
+          {
+            "path": "materials/staff/staff_rubber.png",
+            "sha256": "9e9623559d6dcd7b4c459da948132417a966976177ff608153ff8b71764036f8",
+            "bytes": 4240
+          },
+          {
+            "path": "materials/staff/staff_white_paint.png",
+            "sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88",
+            "bytes": 6159
+          },
+          {
+            "path": "materials/staff/staff_zinc.png",
+            "sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c",
+            "bytes": 5827
+          },
+          {
+            "path": "standards/staff_materials.py",
+            "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
+            "bytes": 1319
+          }
+        ],
+        "evidence": [
+          "qa/batch17/rebuild_review/FINAL_REBUILD_RECEIPT.json"
+        ],
+        "limit": "13 original inputs per family; body selection is separately labelled stage2 over regenerated detailed collisions. Python/native image tracing is not an OS-syscall-complete proof."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 1108,
+        "mesh_nodes": 11,
+        "primitives": 11,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 118332,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 5,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch17/independent_export_AST-HSK-001.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_detailed_reference_plus_literal_optional_body_selection",
+        "shape_count": 77,
+        "optional_body_shape_count": 55,
+        "candidate_binding": {
+          "path": "assets/housekeeping_equipment/actor_proxies/body_collision_subset.json",
+          "sha256": "ae2e0c00cd653ef91ac23595efb68b42984c8f283b7ec01ee445e45934a3cfc7",
+          "bytes": 317182
+        },
+        "candidate_json_pointer": "/AST-HSK-001/shapes",
+        "detailed_binding": {
+          "path": "assets/housekeeping_equipment/collision_proposals.json",
+          "sha256": "4113b6b07ef365d1c0b2fdfa1e66635aa6ebc7b1d1ecb9f833c8c1b32985f3a1",
+          "bytes": 377802
+        },
+        "finite_observed_omitted_detail_distance_m": 0.04205947729079104,
+        "evidence": [
+          "qa/batch17/independent_equipment_collision_bearings_AST-HSK-001.json"
+        ],
+        "limits": "Useful voids and primary floor/work/load/grip/control contacts retained. Fine bearing/identification/service targeting remains detailed. Counts and finite distance observations do not establish performance or continuous Hausdorff bounds. Faithful chamber sectors retained instead of a filled hull."
+      },
+      "existing_independent_evidence": [
+        "qa/batch17/independent_equipment_motion_AST-HSK-001.json",
+        "qa/batch17/independent_equipment_collision_bearings_AST-HSK-001.json",
+        "qa/batch17/independent_support_finish_AST-HSK-001.json",
+        "qa/batch17/independent_equipment_motion_review.json",
+        "qa/batch17/independent_equipment_collision_bearings_review.json",
+        "qa/batch17/independent_handling_geometry_review.json",
+        "qa/batch17/independent_finish_resolution.json",
+        "qa/batch17/independent_source_native_corner_comparison.json",
+        "qa/batch17/independent_interface_metadata_review.json",
+        "qa/batch17/independent_reference_pixels_review.json",
+        "qa/batch17/independent_visual_review.json",
+        "qa/batch17/independent_preservation_report.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch17/independent_interface_coverage_map.json#/assets/0",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-HSK-002",
+      "family": "housekeeping_equipment",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/housekeeping_equipment/source/AST-HSK-002.blend",
+          "sha256": "1252f0ab37621bdc5b71aa31e0b453633f5a2f357a4a9b271db6cc9398357327",
+          "bytes": 181725
+        },
+        "export": {
+          "path": "assets/housekeeping_equipment/exports/AST-HSK-002.glb",
+          "sha256": "7fac74a337978febfdc24d8d136049a6795a86d6fc0e5ac6cba819e3bb98d131",
+          "bytes": 93696
+        },
+        "manifest": {
+          "path": "assets/housekeeping_equipment/AST-HSK-002.manifest.json",
+          "sha256": "438a60d72ef0fcb512350efcf0f3a256af6f3aec865a08654a5f1dc6da0765c9",
+          "bytes": 49762
+        }
+      },
+      "units": {
+        "status": "explicit_source_file_and_coordinate_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/housekeeping_equipment/AST-HSK-002.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "actual_source_and_native_nodes_checked",
+        "meaning": "Floor origin; the centre datum may lie in air between actual supports. Real floor contacts and moving roots are separate.",
+        "actual_native_root_nodes": [
+          {
+            "index": 21,
+            "name": "AST-HSK-002",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/housekeeping_equipment/AST-HSK-002.manifest.json#/physical_and_proposal_markers",
+          "qa/batch17/independent_equipment_motion_AST-HSK-002.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "actual_hierarchy_geometry_normals_uv_and_marker_metadata_checked",
+        "source": "Blender XYZ Z-up, front−Y",
+        "exchange": "native glTF Y-up",
+        "conversion": "(x,y,z)->(x,z,−y)",
+        "rule": "Resolve native hierarchy once; directions omit translation. Root affine transforms and terminal mesh attributes checked.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch17/independent_interface_metadata_review.json",
+          "qa/batch17/independent_equipment_motion_AST-HSK-002.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "actual_primary_surfaces_and_complete_semantic_support_checked",
+        "meaning": "Every named physical point/outward normal and declared join probe agrees with actual source/native surfaces; real support graph covers every part.",
+        "evidence": [
+          "assets/housekeeping_equipment/AST-HSK-002.manifest.json#/physical_and_proposal_markers",
+          "qa/batch17/independent_equipment_motion_AST-HSK-002.json",
+          "qa/batch17/independent_support_finish_AST-HSK-002.json"
+        ],
+        "omission_assessment": "No historical room polygon, door aperture, overhead service, body dimension or installation inferred"
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "physical_nonphysical_and_placement_roles_distinguished",
+        "meaning": "Open tier conditioning rack with supported rails, retained sliding middle carrier and genuinely hollow service hood with removable rear panel. No airflow, temperature, drying or biological compatibility.",
+        "all_marker_count": 11,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "qa/batch17/independent_equipment_motion_AST-HSK-002.json",
+          "qa/batch17/independent_equipment_collision_bearings_AST-HSK-002.json",
+          "qa/batch17/independent_support_finish_AST-HSK-002.json",
+          "qa/batch17/independent_equipment_motion_review.json",
+          "qa/batch17/independent_equipment_collision_bearings_review.json",
+          "qa/batch17/independent_handling_geometry_review.json",
+          "qa/batch17/independent_finish_resolution.json",
+          "qa/batch17/independent_source_native_corner_comparison.json",
+          "qa/batch17/independent_interface_metadata_review.json",
+          "qa/batch17/independent_reference_pixels_review.json",
+          "qa/batch17/independent_visual_review.json",
+          "qa/batch17/independent_preservation_report.json"
+        ],
+        "limit": "Geometric form/support/retention only; no loaded dynamics, strength, cloth tension, reach or host acceptance"
+      },
+      "motion_and_hierarchy": {
+        "status": "complete_closed_to_terminal_source_native_motion_checked",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "declared_motions": [
+          {
+            "root": "MIDDLE_CARRIER_SLIDE",
+            "kind": "translation",
+            "pivot_source_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pivot_gltf_m": [
+              0.0,
+              0.0,
+              -0.0
+            ],
+            "axis_source": [
+              0,
+              -1,
+              0
+            ],
+            "axis_gltf": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "travel": 0.28,
+            "initial_pose": 0,
+            "support_scope": "retained geometric support, engineering unverified",
+            "semantic_parts": [
+              "left_moving_carrier_runner",
+              "left_moving_carrier_edge",
+              "right_moving_carrier_runner",
+              "right_moving_carrier_edge",
+              "moving_textile_support_rail_0",
+              "moving_textile_support_rail_1",
+              "moving_textile_support_rail_2",
+              "moving_textile_support_rail_3",
+              "moving_textile_support_rail_4",
+              "moving_textile_support_rail_5",
+              "moving_textile_support_rail_6",
+              "moving_carrier_front_tie",
+              "carrier_pull_bridge",
+              "carrier_pull_left_return",
+              "carrier_pull_right_return"
+            ]
+          },
+          {
+            "root": "HOOD_REAR_SERVICE",
+            "kind": "translation",
+            "pivot_source_m": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pivot_gltf_m": [
+              0.0,
+              0.0,
+              -0.0
+            ],
+            "axis_source": [
+              0,
+              1,
+              0
+            ],
+            "axis_gltf": [
+              0.0,
+              0.0,
+              -1.0
+            ],
+            "travel": 0.2,
+            "initial_pose": 0,
+            "support_scope": "detached hand-supported proposal",
+            "semantic_parts": [
+              "hood_rear_removable_panel"
+            ]
+          }
+        ],
+        "meaning": "Whole owned geometry and markers included; supported hatch/slide separate from hand-supported detached maintenance covers. Static carrier has no rolling controller.",
+        "evidence": [
+          "assets/housekeeping_equipment/AST-HSK-002.manifest.json",
+          "qa/batch17/independent_equipment_motion_AST-HSK-002.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "independent_exact_original_input_source_rebuild_and_artwork_regeneration",
+        "actual_material_roles": [
+          "rack_controls",
+          "staff_bluegrey_paint",
+          "staff_rubber",
+          "staff_white_paint",
+          "staff_zinc"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/housekeeping_equipment/source/build_housekeeping_equipment.py",
+            "sha256": "dcf6dabafbd8eebbb07e4ec603ad72773045d7294ec08830e45d734d3e389543",
+            "bytes": 31936
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/housekeeping_equipment/source/build_housekeeping_equipment.py",
+            "sha256": "dcf6dabafbd8eebbb07e4ec603ad72773045d7294ec08830e45d734d3e389543",
+            "bytes": 31936
+          },
+          {
+            "path": "assets/housekeeping_equipment/source/draw_controls.py",
+            "sha256": "0b9b8303ec2f5e69c5d8f14490b3ba5d86b1fdfa4137d85367c7c2351963993a",
+            "bytes": 1502
+          },
+          {
+            "path": "materials/staff/manifest.json",
+            "sha256": "5cf6681db7a5ba8d1c459cc5b9eaf2ee9f210efd03f1f146b4d8dd21b1d0f759",
+            "bytes": 3205
+          },
+          {
+            "path": "materials/staff/staff_bluegrey_paint.png",
+            "sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f",
+            "bytes": 6069
+          },
+          {
+            "path": "materials/staff/staff_cable_blue.png",
+            "sha256": "8ca09105d6bae6f49541ee8741933eca4f427e8e46a40ac74a7d03142619c60a",
+            "bytes": 4146
+          },
+          {
+            "path": "materials/staff/staff_cable_red.png",
+            "sha256": "13ed2b2baa42fd70dcaab3a12a9cc80a849e49b35e44dd8bc026dca603acb081",
+            "bytes": 4133
+          },
+          {
+            "path": "materials/staff/staff_floor.png",
+            "sha256": "7d39c03c816ecdc8df6efe1869bf288c1e8a6419d8472a0386bca0a2f57f599f",
+            "bytes": 11485
+          },
+          {
+            "path": "materials/staff/staff_label.png",
+            "sha256": "68480ff4080dd2b93ddfba454623db9890006bb55cbb415911607773e348b644",
+            "bytes": 5976
+          },
+          {
+            "path": "materials/staff/staff_opal.png",
+            "sha256": "d1884536391beb3bbffbf8d5d9ecb40c678b810cf841c13b53f891594c5d086b",
+            "bytes": 6219
+          },
+          {
+            "path": "materials/staff/staff_rubber.png",
+            "sha256": "9e9623559d6dcd7b4c459da948132417a966976177ff608153ff8b71764036f8",
+            "bytes": 4240
+          },
+          {
+            "path": "materials/staff/staff_white_paint.png",
+            "sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88",
+            "bytes": 6159
+          },
+          {
+            "path": "materials/staff/staff_zinc.png",
+            "sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c",
+            "bytes": 5827
+          },
+          {
+            "path": "standards/staff_materials.py",
+            "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
+            "bytes": 1319
+          }
+        ],
+        "evidence": [
+          "qa/batch17/rebuild_review/FINAL_REBUILD_RECEIPT.json"
+        ],
+        "limit": "13 original inputs per family; body selection is separately labelled stage2 over regenerated detailed collisions. Python/native image tracing is not an OS-syscall-complete proof."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 780,
+        "mesh_nodes": 8,
+        "primitives": 8,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 93696,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 5,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch17/independent_export_AST-HSK-002.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_detailed_reference_plus_literal_optional_body_selection",
+        "shape_count": 61,
+        "optional_body_shape_count": 61,
+        "candidate_binding": {
+          "path": "assets/housekeeping_equipment/actor_proxies/body_collision_subset.json",
+          "sha256": "ae2e0c00cd653ef91ac23595efb68b42984c8f283b7ec01ee445e45934a3cfc7",
+          "bytes": 317182
+        },
+        "candidate_json_pointer": "/AST-HSK-002/shapes",
+        "detailed_binding": {
+          "path": "assets/housekeeping_equipment/collision_proposals.json",
+          "sha256": "4113b6b07ef365d1c0b2fdfa1e66635aa6ebc7b1d1ecb9f833c8c1b32985f3a1",
+          "bytes": 377802
+        },
+        "finite_observed_omitted_detail_distance_m": 0,
+        "evidence": [
+          "qa/batch17/independent_equipment_collision_bearings_AST-HSK-002.json"
+        ],
+        "limits": "Useful voids and primary floor/work/load/grip/control contacts retained. Fine bearing/identification/service targeting remains detailed. Counts and finite distance observations do not establish performance or continuous Hausdorff bounds. Faithful chamber sectors retained instead of a filled hull."
+      },
+      "existing_independent_evidence": [
+        "qa/batch17/independent_equipment_motion_AST-HSK-002.json",
+        "qa/batch17/independent_equipment_collision_bearings_AST-HSK-002.json",
+        "qa/batch17/independent_support_finish_AST-HSK-002.json",
+        "qa/batch17/independent_equipment_motion_review.json",
+        "qa/batch17/independent_equipment_collision_bearings_review.json",
+        "qa/batch17/independent_handling_geometry_review.json",
+        "qa/batch17/independent_finish_resolution.json",
+        "qa/batch17/independent_source_native_corner_comparison.json",
+        "qa/batch17/independent_interface_metadata_review.json",
+        "qa/batch17/independent_reference_pixels_review.json",
+        "qa/batch17/independent_visual_review.json",
+        "qa/batch17/independent_preservation_report.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch17/independent_interface_coverage_map.json#/assets/1",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-HSK-003",
+      "family": "housekeeping_handling",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/housekeeping_handling/source/AST-HSK-003.blend",
+          "sha256": "d0d952f890868d2234ececa0e80b19d7df681bb557a152590d76a9510bc6c47c",
+          "bytes": 169615
+        },
+        "export": {
+          "path": "assets/housekeeping_handling/exports/AST-HSK-003.glb",
+          "sha256": "c4be41f9c4a6cf71e490c2f5b5f7bbc9d5c872b3d8788305f6c0ac0a59a53e68",
+          "bytes": 225048
+        },
+        "manifest": {
+          "path": "assets/housekeeping_handling/AST-HSK-003.manifest.json",
+          "sha256": "98418f5e2fff1d3146df054aa626cb89c002d41ab59b2f643e2dcc7a5d171bb6",
+          "bytes": 25557
+        }
+      },
+      "units": {
+        "status": "explicit_source_file_and_coordinate_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/housekeeping_handling/AST-HSK-003.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "actual_source_and_native_nodes_checked",
+        "meaning": "Floor origin; the centre datum may lie in air between actual supports. Real floor contacts and moving roots are separate.",
+        "actual_native_root_nodes": [
+          {
+            "index": 17,
+            "name": "AST-HSK-003",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/housekeeping_handling/AST-HSK-003.manifest.json#/physical_and_proposal_markers",
+          "qa/batch17/independent_handling_geometry_AST-HSK-003.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "actual_hierarchy_geometry_normals_uv_and_marker_metadata_checked",
+        "source": "Blender XYZ Z-up, front−Y",
+        "exchange": "native glTF Y-up",
+        "conversion": "(x,y,z)->(x,z,−y)",
+        "rule": "Resolve native hierarchy once; directions omit translation. Root affine transforms and terminal mesh attributes checked.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch17/independent_interface_metadata_review.json",
+          "qa/batch17/independent_handling_geometry_AST-HSK-003.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "actual_primary_surfaces_and_complete_semantic_support_checked",
+        "meaning": "Every named physical point/outward normal and declared join probe agrees with actual source/native surfaces; real support graph covers every part.",
+        "evidence": [
+          "assets/housekeeping_handling/AST-HSK-003.manifest.json#/physical_and_proposal_markers",
+          "qa/batch17/independent_handling_geometry_AST-HSK-003.json",
+          "qa/batch17/independent_support_finish_AST-HSK-003.json"
+        ],
+        "omission_assessment": "No historical room polygon, door aperture, overhead service, body dimension or installation inferred"
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "physical_nonphysical_and_placement_roles_distinguished",
+        "meaning": "Open textile workbench with original clean/used handling marks, real divided work top and open shelf; integrated anonymous folded forms add no design or inventory. Marking is intent, not hygienic validation.",
+        "all_marker_count": 11,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "qa/batch17/independent_handling_geometry_AST-HSK-003.json",
+          "qa/batch17/independent_handling_geometry_AST-HSK-003.json",
+          "qa/batch17/independent_support_finish_AST-HSK-003.json",
+          "qa/batch17/independent_equipment_motion_review.json",
+          "qa/batch17/independent_equipment_collision_bearings_review.json",
+          "qa/batch17/independent_handling_geometry_review.json",
+          "qa/batch17/independent_finish_resolution.json",
+          "qa/batch17/independent_source_native_corner_comparison.json",
+          "qa/batch17/independent_interface_metadata_review.json",
+          "qa/batch17/independent_reference_pixels_review.json",
+          "qa/batch17/independent_visual_review.json",
+          "qa/batch17/independent_preservation_report.json"
+        ],
+        "limit": "Geometric form/support/retention only; no loaded dynamics, strength, cloth tension, reach or host acceptance"
+      },
+      "motion_and_hierarchy": {
+        "status": "static_configuration_no_unnecessary_articulation",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "declared_motions": [],
+        "meaning": "Whole owned geometry and markers included; supported hatch/slide separate from hand-supported detached maintenance covers. Static carrier has no rolling controller.",
+        "evidence": [
+          "assets/housekeeping_handling/AST-HSK-003.manifest.json",
+          "qa/batch17/independent_handling_geometry_AST-HSK-003.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "independent_exact_original_input_source_rebuild_and_artwork_regeneration",
+        "actual_material_roles": [
+          "handling_clean_graphic",
+          "handling_linen",
+          "handling_used_graphic",
+          "staff_bluegrey_paint",
+          "staff_rubber",
+          "staff_white_paint",
+          "staff_zinc"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/housekeeping_handling/source/build_handling.py",
+            "sha256": "2be089fd01ce3d5de28e22adb3fa51bc2178bdcbadbc247f102502ae63ee08f8",
+            "bytes": 25204
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/housekeeping_handling/source/build_handling.py",
+            "sha256": "2be089fd01ce3d5de28e22adb3fa51bc2178bdcbadbc247f102502ae63ee08f8",
+            "bytes": 25204
+          },
+          {
+            "path": "assets/housekeeping_handling/textures/draw_handling_art.py",
+            "sha256": "553cdf487a5b681a9c471c04f33c7613c2eb5309343e450d9b0276eb4df2c65d",
+            "bytes": 2798
+          },
+          {
+            "path": "materials/staff/manifest.json",
+            "sha256": "5cf6681db7a5ba8d1c459cc5b9eaf2ee9f210efd03f1f146b4d8dd21b1d0f759",
+            "bytes": 3205
+          },
+          {
+            "path": "materials/staff/staff_bluegrey_paint.png",
+            "sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f",
+            "bytes": 6069
+          },
+          {
+            "path": "materials/staff/staff_cable_blue.png",
+            "sha256": "8ca09105d6bae6f49541ee8741933eca4f427e8e46a40ac74a7d03142619c60a",
+            "bytes": 4146
+          },
+          {
+            "path": "materials/staff/staff_cable_red.png",
+            "sha256": "13ed2b2baa42fd70dcaab3a12a9cc80a849e49b35e44dd8bc026dca603acb081",
+            "bytes": 4133
+          },
+          {
+            "path": "materials/staff/staff_floor.png",
+            "sha256": "7d39c03c816ecdc8df6efe1869bf288c1e8a6419d8472a0386bca0a2f57f599f",
+            "bytes": 11485
+          },
+          {
+            "path": "materials/staff/staff_label.png",
+            "sha256": "68480ff4080dd2b93ddfba454623db9890006bb55cbb415911607773e348b644",
+            "bytes": 5976
+          },
+          {
+            "path": "materials/staff/staff_opal.png",
+            "sha256": "d1884536391beb3bbffbf8d5d9ecb40c678b810cf841c13b53f891594c5d086b",
+            "bytes": 6219
+          },
+          {
+            "path": "materials/staff/staff_rubber.png",
+            "sha256": "9e9623559d6dcd7b4c459da948132417a966976177ff608153ff8b71764036f8",
+            "bytes": 4240
+          },
+          {
+            "path": "materials/staff/staff_white_paint.png",
+            "sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88",
+            "bytes": 6159
+          },
+          {
+            "path": "materials/staff/staff_zinc.png",
+            "sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c",
+            "bytes": 5827
+          },
+          {
+            "path": "standards/staff_materials.py",
+            "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
+            "bytes": 1319
+          }
+        ],
+        "evidence": [
+          "qa/batch17/rebuild_review/FINAL_REBUILD_RECEIPT.json"
+        ],
+        "limit": "13 original inputs per family; body selection is separately labelled stage2 over regenerated detailed collisions. Python/native image tracing is not an OS-syscall-complete proof."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 2684,
+        "mesh_nodes": 6,
+        "primitives": 8,
+        "materials": 7,
+        "embedded_texture_count": 7,
+        "glb_bytes": 225048,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 7,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch17/independent_export_AST-HSK-003.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_detailed_reference_plus_literal_optional_body_selection",
+        "shape_count": 25,
+        "optional_body_shape_count": 23,
+        "candidate_binding": {
+          "path": "assets/housekeeping_handling/collision_proposals.json",
+          "sha256": "491559f8f3737cd0e878affb74472f335d14ed33ca393e5e80f0269c2a2d2fc5",
+          "bytes": 260880
+        },
+        "candidate_json_pointer": "/AST-HSK-003/optional_body_candidate",
+        "detailed_binding": {
+          "path": "assets/housekeeping_handling/collision_proposals.json",
+          "sha256": "491559f8f3737cd0e878affb74472f335d14ed33ca393e5e80f0269c2a2d2fc5",
+          "bytes": 260880
+        },
+        "finite_observed_omitted_detail_distance_m": 0.005000007152557384,
+        "evidence": [
+          "qa/batch17/independent_handling_geometry_AST-HSK-003.json"
+        ],
+        "limits": "Useful voids and primary floor/work/load/grip/control contacts retained. Fine bearing/identification/service targeting remains detailed. Counts and finite distance observations do not establish performance or continuous Hausdorff bounds. Faithful chamber sectors retained instead of a filled hull."
+      },
+      "existing_independent_evidence": [
+        "qa/batch17/independent_handling_geometry_AST-HSK-003.json",
+        "qa/batch17/independent_handling_geometry_AST-HSK-003.json",
+        "qa/batch17/independent_support_finish_AST-HSK-003.json",
+        "qa/batch17/independent_equipment_motion_review.json",
+        "qa/batch17/independent_equipment_collision_bearings_review.json",
+        "qa/batch17/independent_handling_geometry_review.json",
+        "qa/batch17/independent_finish_resolution.json",
+        "qa/batch17/independent_source_native_corner_comparison.json",
+        "qa/batch17/independent_interface_metadata_review.json",
+        "qa/batch17/independent_reference_pixels_review.json",
+        "qa/batch17/independent_visual_review.json",
+        "qa/batch17/independent_preservation_report.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch17/independent_interface_coverage_map.json#/assets/2",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-HSK-004",
+      "family": "housekeeping_handling",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/housekeeping_handling/source/AST-HSK-004.blend",
+          "sha256": "73ea7b4ceb77ec583c072f5e4147a09436883836bcb1d72ef7568e33e5f75489",
+          "bytes": 184940
+        },
+        "export": {
+          "path": "assets/housekeeping_handling/exports/AST-HSK-004.glb",
+          "sha256": "ba2fd45541a2ccf81d83f79cc7400b25205d2b504a6a04d85549426afcffa03f",
+          "bytes": 252196
+        },
+        "manifest": {
+          "path": "assets/housekeeping_handling/AST-HSK-004.manifest.json",
+          "sha256": "31c584eb11853b5829dc8e77d8f66aa658b5605a3024597294454fe38f487df0",
+          "bytes": 43459
+        }
+      },
+      "units": {
+        "status": "explicit_source_file_and_coordinate_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/housekeeping_handling/AST-HSK-004.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "actual_source_and_native_nodes_checked",
+        "meaning": "Floor origin; the centre datum may lie in air between actual supports. Real floor contacts and moving roots are separate.",
+        "actual_native_root_nodes": [
+          {
+            "index": 21,
+            "name": "AST-HSK-004",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "assets/housekeeping_handling/AST-HSK-004.manifest.json#/physical_and_proposal_markers",
+          "qa/batch17/independent_handling_geometry_AST-HSK-004.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "actual_hierarchy_geometry_normals_uv_and_marker_metadata_checked",
+        "source": "Blender XYZ Z-up, front−Y",
+        "exchange": "native glTF Y-up",
+        "conversion": "(x,y,z)->(x,z,−y)",
+        "rule": "Resolve native hierarchy once; directions omit translation. Root affine transforms and terminal mesh attributes checked.",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "qa/batch17/independent_interface_metadata_review.json",
+          "qa/batch17/independent_handling_geometry_AST-HSK-004.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "actual_primary_surfaces_and_complete_semantic_support_checked",
+        "meaning": "Every named physical point/outward normal and declared join probe agrees with actual source/native surfaces; real support graph covers every part.",
+        "evidence": [
+          "assets/housekeeping_handling/AST-HSK-004.manifest.json#/physical_and_proposal_markers",
+          "qa/batch17/independent_handling_geometry_AST-HSK-004.json",
+          "qa/batch17/independent_support_finish_AST-HSK-004.json"
+        ],
+        "omission_assessment": "No historical room polygon, door aperture, overhead service, body dimension or installation inferred"
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "physical_nonphysical_and_placement_roles_distinguished",
+        "meaning": "Used-only independent bulk-textile carrier with tapered eight-panel liner, continuous cradle, retained hoop straps, staff grip and caster construction. It is distinct from towel-return, dining and clinical trolleys, and never replaces the player care cart.",
+        "all_marker_count": 15,
+        "physical_surface_normals_independently_checked": true,
+        "evidence": [
+          "qa/batch17/independent_handling_geometry_AST-HSK-004.json",
+          "qa/batch17/independent_handling_geometry_AST-HSK-004.json",
+          "qa/batch17/independent_support_finish_AST-HSK-004.json",
+          "qa/batch17/independent_equipment_motion_review.json",
+          "qa/batch17/independent_equipment_collision_bearings_review.json",
+          "qa/batch17/independent_handling_geometry_review.json",
+          "qa/batch17/independent_finish_resolution.json",
+          "qa/batch17/independent_source_native_corner_comparison.json",
+          "qa/batch17/independent_interface_metadata_review.json",
+          "qa/batch17/independent_reference_pixels_review.json",
+          "qa/batch17/independent_visual_review.json",
+          "qa/batch17/independent_preservation_report.json"
+        ],
+        "limit": "Geometric form/support/retention only; no loaded dynamics, strength, cloth tension, reach or host acceptance"
+      },
+      "motion_and_hierarchy": {
+        "status": "static_configuration_no_unnecessary_articulation",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "declared_motions": [],
+        "meaning": "Whole owned geometry and markers included; supported hatch/slide separate from hand-supported detached maintenance covers. Static carrier has no rolling controller.",
+        "evidence": [
+          "assets/housekeeping_handling/AST-HSK-004.manifest.json",
+          "qa/batch17/independent_handling_geometry_AST-HSK-004.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "independent_exact_original_input_source_rebuild_and_artwork_regeneration",
+        "actual_material_roles": [
+          "handling_canvas",
+          "handling_linen",
+          "handling_used_graphic",
+          "staff_bluegrey_paint",
+          "staff_rubber",
+          "staff_zinc"
+        ],
+        "material_match": true,
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/housekeeping_handling/source/build_handling.py",
+            "sha256": "2be089fd01ce3d5de28e22adb3fa51bc2178bdcbadbc247f102502ae63ee08f8",
+            "bytes": 25204
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/housekeeping_handling/source/build_handling.py",
+            "sha256": "2be089fd01ce3d5de28e22adb3fa51bc2178bdcbadbc247f102502ae63ee08f8",
+            "bytes": 25204
+          },
+          {
+            "path": "assets/housekeeping_handling/textures/draw_handling_art.py",
+            "sha256": "553cdf487a5b681a9c471c04f33c7613c2eb5309343e450d9b0276eb4df2c65d",
+            "bytes": 2798
+          },
+          {
+            "path": "materials/staff/manifest.json",
+            "sha256": "5cf6681db7a5ba8d1c459cc5b9eaf2ee9f210efd03f1f146b4d8dd21b1d0f759",
+            "bytes": 3205
+          },
+          {
+            "path": "materials/staff/staff_bluegrey_paint.png",
+            "sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f",
+            "bytes": 6069
+          },
+          {
+            "path": "materials/staff/staff_cable_blue.png",
+            "sha256": "8ca09105d6bae6f49541ee8741933eca4f427e8e46a40ac74a7d03142619c60a",
+            "bytes": 4146
+          },
+          {
+            "path": "materials/staff/staff_cable_red.png",
+            "sha256": "13ed2b2baa42fd70dcaab3a12a9cc80a849e49b35e44dd8bc026dca603acb081",
+            "bytes": 4133
+          },
+          {
+            "path": "materials/staff/staff_floor.png",
+            "sha256": "7d39c03c816ecdc8df6efe1869bf288c1e8a6419d8472a0386bca0a2f57f599f",
+            "bytes": 11485
+          },
+          {
+            "path": "materials/staff/staff_label.png",
+            "sha256": "68480ff4080dd2b93ddfba454623db9890006bb55cbb415911607773e348b644",
+            "bytes": 5976
+          },
+          {
+            "path": "materials/staff/staff_opal.png",
+            "sha256": "d1884536391beb3bbffbf8d5d9ecb40c678b810cf841c13b53f891594c5d086b",
+            "bytes": 6219
+          },
+          {
+            "path": "materials/staff/staff_rubber.png",
+            "sha256": "9e9623559d6dcd7b4c459da948132417a966976177ff608153ff8b71764036f8",
+            "bytes": 4240
+          },
+          {
+            "path": "materials/staff/staff_white_paint.png",
+            "sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88",
+            "bytes": 6159
+          },
+          {
+            "path": "materials/staff/staff_zinc.png",
+            "sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c",
+            "bytes": 5827
+          },
+          {
+            "path": "standards/staff_materials.py",
+            "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
+            "bytes": 1319
+          }
+        ],
+        "evidence": [
+          "qa/batch17/rebuild_review/FINAL_REBUILD_RECEIPT.json"
+        ],
+        "limit": "13 original inputs per family; body selection is separately labelled stage2 over regenerated detailed collisions. Python/native image tracing is not an OS-syscall-complete proof."
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 3332,
+        "mesh_nodes": 6,
+        "primitives": 7,
+        "materials": 6,
+        "embedded_texture_count": 6,
+        "glb_bytes": 252196,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 6,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch17/independent_export_AST-HSK-004.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_detailed_reference_plus_literal_optional_body_selection",
+        "shape_count": 51,
+        "optional_body_shape_count": 33,
+        "candidate_binding": {
+          "path": "assets/housekeeping_handling/collision_proposals.json",
+          "sha256": "491559f8f3737cd0e878affb74472f335d14ed33ca393e5e80f0269c2a2d2fc5",
+          "bytes": 260880
+        },
+        "candidate_json_pointer": "/AST-HSK-004/optional_body_candidate",
+        "detailed_binding": {
+          "path": "assets/housekeeping_handling/collision_proposals.json",
+          "sha256": "491559f8f3737cd0e878affb74472f335d14ed33ca393e5e80f0269c2a2d2fc5",
+          "bytes": 260880
+        },
+        "finite_observed_omitted_detail_distance_m": 0.04292313014692904,
+        "evidence": [
+          "qa/batch17/independent_handling_geometry_AST-HSK-004.json"
+        ],
+        "limits": "Useful voids and primary floor/work/load/grip/control contacts retained. Fine bearing/identification/service targeting remains detailed. Counts and finite distance observations do not establish performance or continuous Hausdorff bounds. Faithful chamber sectors retained instead of a filled hull."
+      },
+      "existing_independent_evidence": [
+        "qa/batch17/independent_handling_geometry_AST-HSK-004.json",
+        "qa/batch17/independent_handling_geometry_AST-HSK-004.json",
+        "qa/batch17/independent_support_finish_AST-HSK-004.json",
+        "qa/batch17/independent_equipment_motion_review.json",
+        "qa/batch17/independent_equipment_collision_bearings_review.json",
+        "qa/batch17/independent_handling_geometry_review.json",
+        "qa/batch17/independent_finish_resolution.json",
+        "qa/batch17/independent_source_native_corner_comparison.json",
+        "qa/batch17/independent_interface_metadata_review.json",
+        "qa/batch17/independent_reference_pixels_review.json",
+        "qa/batch17/independent_visual_review.json",
+        "qa/batch17/independent_preservation_report.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch17/independent_interface_coverage_map.json#/assets/3",
+      "engine_adopted_instances": 0
     }
   ],
   "scope": "Explicit existing component declarations and bounded offline interface evidence. Actual native hierarchy governs geometry; no engine, installed-room, actor, controller or operating behavior is implemented by this index.",
   "audit_source": {
-    "path": "qa/batch16/independent_interface_coverage_map.json",
-    "report": "qa/batch16/independent_review.md"
+    "path": "qa/batch17/independent_interface_coverage_map.json",
+    "report": "qa/batch17/independent_review.md"
   },
   "binding_validation": {
     "exact_asset_id_set": true,
-    "current_bound_files_checked": 243,
+    "current_bound_files_checked": 255,
     "all_files_current": true
   }
 }

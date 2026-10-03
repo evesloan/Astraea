@@ -1,0 +1,441 @@
+{
+  "assets": [
+    {
+      "catalogue_id": "AST-HSK-001",
+      "source_sha256": "7c0cd5c25bb18d9c6c405efa94776718b6a2d0f223076b9dde247ad0441ecffa",
+      "export_sha256": "4498490728f5126d7f5a206c855d64879b38bf68d18c496ba58739a860ce02bc",
+      "motion": [
+        {
+          "root": "LOADING_HATCH_Z",
+          "full_interval": [
+            0,
+            -105
+          ],
+          "whole_moving_parts": 30,
+          "method": "Full convex swept translation or2degree endpoint-hull rotation with sagitta padding",
+          "maximum_XY_arc_enclosure_m": 0.00012944475800192473,
+          "occupied_sweep_min_source_m": [
+            -0.7435340866967656,
+            -1.3862962822291545,
+            0.6349999904632568
+          ],
+          "occupied_sweep_max_source_m": [
+            0.3951309704582491,
+            -0.49599640502036013,
+            1.4249999523162842
+          ],
+          "interference_pairs": [],
+          "passes": true
+        },
+        {
+          "root": "REAR_SERVICE_COVER",
+          "full_interval": [
+            0,
+            0.25
+          ],
+          "whole_moving_parts": 4,
+          "method": "Full convex swept translation or2degree endpoint-hull rotation with sagitta padding",
+          "maximum_XY_arc_enclosure_m": 0,
+          "occupied_sweep_min_source_m": [
+            -0.46000000834465027,
+            0.41999998688697815,
+            0.41999998688697815
+          ],
+          "occupied_sweep_max_source_m": [
+            0.46000000834465027,
+            0.7549999952316284,
+            1.4299999475479126
+          ],
+          "interference_pairs": [],
+          "passes": true
+        }
+      ],
+      "voids": [
+        {
+          "name": "useful_loading_chamber",
+          "scope": "all",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "opened_loading_approach",
+          "scope": "LOADING_HATCH_Z_terminal",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "rear_service_clear_region",
+          "scope": "all",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "hatch_grip_void",
+          "scope": "LOADING_HATCH_Z_local",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "rear_service_approach",
+          "scope": "all",
+          "hits": [],
+          "passes": true
+        }
+      ],
+      "containment": [
+        {
+          "name": "entire_octagonal_chamber_bore",
+          "whole_solid_intrusions": [],
+          "inserted_solid_positive_control_detected": true,
+          "passes": true
+        }
+      ],
+      "bearings": [
+        {
+          "name": "lower_vertical_hatch_bearing",
+          "full_angle_radial_clearance_min_m": 0.0005865543901354409,
+          "axial_faces_retained_at_all_angles": true,
+          "passes": true
+        },
+        {
+          "name": "upper_vertical_hatch_bearing",
+          "full_angle_radial_clearance_min_m": 0.0005865543901354409,
+          "axial_faces_retained_at_all_angles": true,
+          "passes": true
+        }
+      ],
+      "body_subset": {
+        "literal_exact_subset": true,
+        "precise_shape_count": 77,
+        "body_shape_count": 55,
+        "omitted_detail_count": 22,
+        "whole_omitted_part_distance_checks": [
+          {
+            "part": "lower_retained_hinge_pin",
+            "retained_convex_box_witness": "lower_fixed_hinge_bracket",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.06999999284744263,
+            "declared_omitted_detail_distance_m": 0.075,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_lower_pin_retainer",
+            "retained_convex_box_witness": "lower_fixed_hinge_bracket",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.004999995231628418,
+            "declared_omitted_detail_distance_m": 0.075,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_upper_pin_retainer",
+            "retained_convex_box_witness": "lower_fixed_hinge_bracket",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.06999999284744263,
+            "declared_omitted_detail_distance_m": 0.075,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_bored_hinge_sleeve_0",
+            "retained_convex_box_witness": "lower_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.015015699850623182,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_bored_hinge_sleeve_1",
+            "retained_convex_box_witness": "lower_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.02291288263695976,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_bored_hinge_sleeve_2",
+            "retained_convex_box_witness": "lower_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.03556519711968939,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_bored_hinge_sleeve_3",
+            "retained_convex_box_witness": "lower_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.04205947729079102,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_bored_hinge_sleeve_4",
+            "retained_convex_box_witness": "lower_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.04205947729079102,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_bored_hinge_sleeve_5",
+            "retained_convex_box_witness": "lower_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.03556520209810565,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_bored_hinge_sleeve_6",
+            "retained_convex_box_witness": "lower_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.02291290865059265,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "lower_bored_hinge_sleeve_7",
+            "retained_convex_box_witness": "lower_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.015015699850623182,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_retained_hinge_pin",
+            "retained_convex_box_witness": "upper_fixed_hinge_bracket",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.06999993324279785,
+            "declared_omitted_detail_distance_m": 0.075,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_lower_pin_retainer",
+            "retained_convex_box_witness": "upper_fixed_hinge_bracket",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.06999993324279785,
+            "declared_omitted_detail_distance_m": 0.075,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_upper_pin_retainer",
+            "retained_convex_box_witness": "upper_fixed_hinge_bracket",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.004999995231628418,
+            "declared_omitted_detail_distance_m": 0.075,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_bored_hinge_sleeve_0",
+            "retained_convex_box_witness": "upper_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.015015699850623182,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_bored_hinge_sleeve_1",
+            "retained_convex_box_witness": "upper_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.02291288263695976,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_bored_hinge_sleeve_2",
+            "retained_convex_box_witness": "upper_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.03556519711968939,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_bored_hinge_sleeve_3",
+            "retained_convex_box_witness": "upper_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.04205947729079102,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_bored_hinge_sleeve_4",
+            "retained_convex_box_witness": "upper_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.04205947729079102,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_bored_hinge_sleeve_5",
+            "retained_convex_box_witness": "upper_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.03556520209810565,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_bored_hinge_sleeve_6",
+            "retained_convex_box_witness": "upper_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.02291290865059265,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          },
+          {
+            "part": "upper_bored_hinge_sleeve_7",
+            "retained_convex_box_witness": "upper_hatch_retaining_strap",
+            "same_motion_owner": true,
+            "whole_part_max_distance_upper_bound_m": 0.015015699850623182,
+            "declared_omitted_detail_distance_m": 0.045,
+            "all_motion_proof": "Distance to a convex box is convex: maximum over a convex polyhedron is bounded by its vertices; common rigid ownership preserves that bound for every state",
+            "passes": true
+          }
+        ],
+        "added_inflation_m": 0,
+        "void_preservation_reason": "Literal subset cannot add geometry to any previously empty void",
+        "passes": true
+      },
+      "all_passed": true
+    },
+    {
+      "catalogue_id": "AST-HSK-002",
+      "source_sha256": "1252f0ab37621bdc5b71aa31e0b453633f5a2f357a4a9b271db6cc9398357327",
+      "export_sha256": "7fac74a337978febfdc24d8d136049a6795a86d6fc0e5ac6cba819e3bb98d131",
+      "motion": [
+        {
+          "root": "MIDDLE_CARRIER_SLIDE",
+          "full_interval": [
+            0,
+            0.28
+          ],
+          "whole_moving_parts": 15,
+          "method": "Full convex swept translation or2degree endpoint-hull rotation with sagitta padding",
+          "maximum_XY_arc_enclosure_m": 0,
+          "occupied_sweep_min_source_m": [
+            -0.5099999904632568,
+            -0.7100000071525574,
+            0.9649999737739563
+          ],
+          "occupied_sweep_max_source_m": [
+            0.5099999904632568,
+            0.3199999928474426,
+            1.0199999809265137
+          ],
+          "interference_pairs": [],
+          "passes": true
+        },
+        {
+          "root": "HOOD_REAR_SERVICE",
+          "full_interval": [
+            0,
+            0.2
+          ],
+          "whole_moving_parts": 1,
+          "method": "Full convex swept translation or2degree endpoint-hull rotation with sagitta padding",
+          "maximum_XY_arc_enclosure_m": 0,
+          "occupied_sweep_min_source_m": [
+            -0.46000000834465027,
+            0.3799999952316284,
+            1.8389999866485596
+          ],
+          "occupied_sweep_max_source_m": [
+            0.46000000834465027,
+            0.5959999978542327,
+            1.934999942779541
+          ],
+          "interference_pairs": [],
+          "passes": true
+        }
+      ],
+      "voids": [
+        {
+          "name": "lower_open_textile_zone",
+          "scope": "all",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "middle_open_textile_zone",
+          "scope": "all",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "hood_real_service_volume",
+          "scope": "all",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "upper_open_textile_zone",
+          "scope": "all",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "carrier_grip_void",
+          "scope": "MIDDLE_CARRIER_SLIDE_local",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "front_retrieval_approach",
+          "scope": "all",
+          "hits": [],
+          "passes": true
+        }
+      ],
+      "containment": [
+        {
+          "name": "whole_unassigned_hood_service_volume",
+          "whole_solid_intrusions": [],
+          "passes": true
+        }
+      ],
+      "bearings": [
+        {
+          "name": "left_retained_linear_carrier",
+          "linear_endpoint_minimum_overlap_m": 0.32,
+          "retained_vertical_clearance_m": 0.016,
+          "passes": true
+        },
+        {
+          "name": "right_retained_linear_carrier",
+          "linear_endpoint_minimum_overlap_m": 0.32,
+          "retained_vertical_clearance_m": 0.016,
+          "passes": true
+        }
+      ],
+      "body_subset": {
+        "literal_exact_subset": true,
+        "precise_shape_count": 61,
+        "body_shape_count": 61,
+        "omitted_detail_count": 0,
+        "whole_omitted_part_distance_checks": [],
+        "added_inflation_m": 0,
+        "void_preservation_reason": "Literal subset cannot add geometry to any previously empty void",
+        "passes": true
+      },
+      "all_passed": true
+    }
+  ],
+  "all_passed": true
+}

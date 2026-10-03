@@ -1,0 +1,24 @@
+"""Source-bound imported GLB review captures; ordinary eye height, neutral QA only."""
+import bpy,json,math,hashlib,sys
+from pathlib import Path
+from mathutils import Vector
+from bpy_extras.object_utils import world_to_camera_view
+BASE=Path(__file__).resolve().parents[1];OUT=BASE/'qa/renders';OUT.mkdir(exist_ok=True)
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+views=[('001_closed','AST-HSK-001.glb',(2.9,-4.1,1.60),(0,0,.87),44),('001_hatch_open','AST-HSK-001_hatch_open.glb',(2.8,-4.3,1.60),(-.17,-.20,.87),44),('001_rear_service','AST-HSK-001_service_open.glb',(2.9,4.2,1.60),(0,.15,.87),44),('002_closed','AST-HSK-002.glb',(2.9,-4.3,1.60),(0,0,1.0),42),('002_retrieval','AST-HSK-002_retrieval.glb',(2.9,-4.3,1.60),(0,-.15,1.0),42),('002_rear_service','AST-HSK-002_service_open.glb',(2.9,4.2,1.60),(0,.15,1.0),42)]
+selected=set(sys.argv[sys.argv.index('--')+1:])if '--'in sys.argv else set()
+if selected:views=[v for v in views if v[0]in selected]
+prior=BASE/'qa/review_media_manifest.json'
+manifest=[v for v in json.loads(prior.read_text())['views']if v['view']not in {x[0]for x in views}]if prior.exists()else[]
+for label,file,pos,look,lens in views:
+ bpy.ops.wm.read_factory_settings(use_empty=True);src=BASE/'exports'/file;ident=file[:11];manifestfile=BASE/(ident+'.manifest.json');rec=json.loads(manifestfile.read_text());inputs={str(src.relative_to(BASE)):sha(src),rec['source']:sha(BASE/rec['source']),'source/build_housekeeping_equipment.py':sha(BASE/'source/build_housekeeping_equipment.py')};bpy.ops.import_scene.gltf(filepath=str(src));bpy.context.view_layer.update();meshes=[o for o in bpy.context.scene.objects if o.type=='MESH'];vertices=[o.matrix_world@v.co for o in meshes for v in o.data.vertices]
+ floor=bpy.data.materials.new('QA_neutral_floor');floor.diffuse_color=(.16,.185,.195,1);floor.use_nodes=True;floor.node_tree.nodes.get('Principled BSDF').inputs['Base Color'].default_value=(.16,.185,.195,1);floor.node_tree.nodes.get('Principled BSDF').inputs['Roughness'].default_value=.82;bpy.ops.mesh.primitive_plane_add(size=200);bpy.context.object.name='QA_FLOOR_NOT_GAME';bpy.context.object.data.materials.append(floor)
+ world=bpy.data.worlds.new('QA_neutral_world');bpy.context.scene.world=world;world.use_nodes=True;world.node_tree.nodes['Background'].inputs[0].default_value=(.18,.21,.24,1);world.node_tree.nodes['Background'].inputs[1].default_value=.65
+ for n,p,power,size in[('large_key',(-3,-4,6),1500,5),('fill',(4,1,4),1100,4),('rim',(-2,4,5),1300,3)]:
+  light=bpy.data.lights.new('QA_'+n,'AREA');light.energy=power;light.shape='DISK';light.size=size;o=bpy.data.objects.new('QA_'+n,light);bpy.context.collection.objects.link(o);o.location=p;o.rotation_euler=(Vector((0,0,1))-o.location).to_track_quat('-Z','Y').to_euler()
+ camdata=bpy.data.cameras.new('QA_CAMERA');cam=bpy.data.objects.new('QA_CAMERA',camdata);bpy.context.collection.objects.link(cam);cam.location=pos;cam.rotation_euler=(Vector(look)-cam.location).to_track_quat('-Z','Y').to_euler();camdata.lens=lens;sc=bpy.context.scene;sc.camera=cam;sc.render.engine='BLENDER_EEVEE_NEXT';sc.eevee.taa_render_samples=64;sc.render.resolution_x=640;sc.render.resolution_y=360;sc.render.resolution_percentage=100;sc.render.image_settings.file_format='PNG';sc.view_settings.view_transform='AgX';sc.render.filepath=str(OUT/(label+'.png'));bpy.context.view_layer.update();proj=[world_to_camera_view(sc,cam,p)for p in vertices];mins=[min(p[i]for p in proj)for i in range(3)];maxs=[max(p[i]for p in proj)for i in range(3)];print('FRAME',label,mins,maxs);framed=min(mins[:2])>.025 and max(maxs[:2])<.975 and mins[2]>0
+ row={'view':label,'type':'ordinary standing-height imported whole component','inputs_sha256':inputs,'camera_source_position_m':pos,'camera_target_source_m':look,'camera_lens_mm':lens,'pixel_dimensions':[640,360],'projected_min':mins,'projected_max':maxs,'entire_visual_bounds_inside_frame':framed,'scope':'Neutral inspection floor/lights only; no room, operator, operation, installation or game renderer. Detached service cover pose requires separate hand support.'}
+ if not framed:
+  (BASE/('qa/failed_camera_'+label+'.json')).write_text(json.dumps(row,indent=2));raise RuntimeError('whole component not framed: '+label)
+ bpy.ops.render.render(write_still=True);row['image']='qa/renders/'+label+'.png';row['image_sha256']=sha(OUT/(label+'.png'));row['inputs_unchanged_after_capture']=all(sha(BASE/p)==h for p,h in inputs.items());manifest.append(row);(BASE/'qa/review_media_manifest.json').write_text(json.dumps({'schema':'housekeeping_equipment_imported_captures_v1','views':manifest},indent=2)+'\n')
+print('IMPORTED_CAPTURES',len(manifest))

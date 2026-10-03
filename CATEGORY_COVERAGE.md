@@ -2,7 +2,7 @@
 
 The demonstrated catalogue quality is the user-supported baseline for larger asset delivery (2 October 2026, 16:08 UTC; message `Sentinel_1f1516ffa9a08191a5f37800301a001c`). This supports expanding the collections while recovery continues. It does not approve a finished ship, installed room, gameplay or native performance.
 
-Each of the 81 designs has one primary planning category. Integrated subparts and derivative copies are not counted again. These counts measure coverage, not completion.
+Each of the 85 designs has one primary planning category. Integrated subparts and derivative copies are not counted again. These counts measure coverage, not completion.
 
 | Existing family | Architecture / transitions | Furnishings | Fixtures | Equipment | Purposeful props | Total |
 |---|---:|---:|---:|---:|---:|---:|
@@ -16,7 +16,8 @@ Each of the 81 designs has one primary planning category. Integrated subparts an
 | Public salon transitions | 6 | 0 | 0 | 0 | 0 | 6 |
 | Clinical care support | 1 | 2 | 0 | 1 | 0 | 4 |
 | Cultural / auditorium use | 1 | 2 | 0 | 1 | 0 | 4 |
-| Total | 31 | 20 | 7 | 15 | 8 | 81 |
+| Housekeeping / laundry | 0 | 1 | 0 | 3 | 0 | 4 |
+| Total | 31 | 21 | 7 | 18 | 8 | 85 |
 
 ## Useful gaps for successive batches
 
@@ -31,6 +32,8 @@ Each of the 81 designs has one primary planning category. Integrated subparts an
 - **Clinical care support:** Species-specific body/support and host privacy/access reconciliation; no new clinical capacity.
 
 - **Cultural / auditorium use:** Verified-host aisle/row adapters, accessible/body variants, foyer/stage transitions and original performance equipment after spatial review.
+
+- **Housekeeping / laundry:** Recovered-host clean/used routes, supported utility and storage transitions, actual carrier and six-species work fitting; no fixed player chore loop.
 
 These directions support district-specific needs, not mechanical filling of every category. The user clarified at 16:50 UTC on 2 October that assets and district planning must work together (Sentinel_8f46f68ad3c88191b3568d463bcc0e91). Variants must change useful silhouette, activity, mounting, reach, privacy or connection decisions. Recoloring, extra tessellation and repeated stock do not create new designs. Preserve the coordinated vessel language and the difference between guest comfort and practical staff spaces.
 

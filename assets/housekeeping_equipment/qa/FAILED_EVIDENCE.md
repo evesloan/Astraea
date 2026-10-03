@@ -1,0 +1,5 @@
+# Preserved early failed evidence
+
+build_r01.log is the initial syntax failure before any geometry was generated. build_r02 through build_r08 logs record subsequent generated revisions. failed_r02/source_checks.json preserves the actual failing source hash and complete per-part/contact/UV results, including inaccurate faceted witnesses and disconnected handle/strap witness selections. failed_r05/geometry_checks.json preserves the full finite-solid sweep failure: both hinge strap roots intruded into the real retained pins, and the initial rectangular hood service witness clipped the forward fold. The corresponding full source snapshots were not preserved; these failed result files are historical evidence, not independently reproducible former revisions or current geometry certification.
+
+The current production source is r08. Its source checks, full geometry checks, exact source-only rebuild and independent source/native review supersede those failures. Current retained straps begin clear of the bore while remaining attached to the actual sleeves. The hood witness was restricted to a genuinely empty rectangular volume. No failure is silently recorded as a pass.
