@@ -58,6 +58,7 @@ func target_from_view() -> Node:
 	var start := camera.global_position
 	var query := PhysicsRayQueryParameters3D.create(start,start-camera.global_basis.z*2.5)
 	query.exclude = [get_rid()]
+	query.collide_with_areas = true
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	if hit.is_empty(): return null
 	var candidate: Node = hit.collider

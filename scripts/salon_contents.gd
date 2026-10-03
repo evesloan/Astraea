@@ -28,6 +28,11 @@ static func build(room: Node3D, ship: Node3D) -> void:
 	task_light.light_energy = .35
 	task_light.light_color = Color(1,.93,.83)
 	task_light.shadow_enabled = true
+	var control := Node3D.new()
+	control.name = "SharedStudyLightSwitch"
+	control.set_script(load("res://scripts/fixture_switch.gd"))
+	root.add_child(control)
+	control.configure(task_fixture,task_light,&"D09_salon5_shared_study_light")
 	# The rear-of-reading route now serves a real fitted counter, not leftover empty space.
 	ship.model(root,"AST-HSP-001.glb","GuestRefreshmentCounter",Vector3(59,y,-33.35))
 	ship.model(root,"AST-HSP-003.glb","TwinSpoutStation_StaticOnly",Vector3(60.2,y+.90,-33.35))

@@ -22,6 +22,11 @@ func refresh() -> void:
 	if not is_instance_valid(actor): return
 	var ranked: Array = []
 	for light in sources:
+		if not is_instance_valid(light): continue
+		if not light.get_meta("fixture_powered",true):
+			if light.visible: light.visible = false
+			if light.shadow_enabled: light.shadow_enabled = false
+			continue
 		if not requested_shadow[light.get_instance_id()]: continue
 		var reach: float = light.spot_range if light is SpotLight3D else (light.omni_range if light is OmniLight3D else 120.0)
 		var distance := actor.global_position.distance_to(light.global_position)

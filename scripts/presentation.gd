@@ -63,7 +63,8 @@ func _ready() -> void:
 	hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(hud)
 	interaction_hint = Label.new()
-	interaction_hint.position = Vector2(18,76)
+	interaction_hint.position = Vector2(18,110)
+	interaction_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	interaction_hint.add_theme_font_size_override("font_size",16)
 	add_child(interaction_hint)
 	_build_directory()
@@ -97,6 +98,33 @@ func _ready() -> void:
 		salon_actor.camera.rotation.x = salon_actor.pitch
 		await get_tree().create_timer(0.5).timeout
 		await _capture("salon_study_")
+		var study_switch = world_view.get_node("Astraea").find_child("SharedStudyLightSwitch",true,false)
+		var study_actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
+		world_view.get_node("Astraea").arrive_at(Vector3(65.5,52.6,-21.5),0)
+		await get_tree().create_timer(.3).timeout
+		study_actor.look_at(Vector3(study_switch.global_position.x,study_actor.global_position.y,study_switch.global_position.z),Vector3.UP)
+		var switch_delta: Vector3 = study_switch.global_position-study_actor.camera.global_position
+		study_actor.pitch = atan2(switch_delta.y,Vector2(switch_delta.x,switch_delta.z).length())
+		study_actor.camera.rotation.x = study_actor.pitch
+		var study_focus := InputEventMouseButton.new()
+		study_focus.button_index = MOUSE_BUTTON_RIGHT
+		study_focus.pressed = true
+		Input.parse_input_event(study_focus)
+		await get_tree().create_timer(.4).timeout
+		await _capture("study_focus_on_")
+		var study_press := InputEventKey.new()
+		study_press.keycode = KEY_E
+		study_press.physical_keycode = KEY_E
+		study_press.pressed = true
+		Input.parse_input_event(study_press)
+		await get_tree().create_timer(.3).timeout
+		await _capture("study_focus_off_")
+		study_press.pressed = false
+		Input.parse_input_event(study_press)
+		study_focus.pressed = false
+		Input.parse_input_event(study_focus)
+		study_switch.powered = true
+		study_switch.apply_power()
 		if "--capture-d06" in OS.get_cmdline_user_args():
 			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
 			actor.spawn_position = Vector3(-31.623,27.1,4)
