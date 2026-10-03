@@ -1,7 +1,7 @@
 import bpy,json,pathlib
 from mathutils import Vector
 root=pathlib.Path(__file__).resolve().parents[1];records=[]
-for fam,aid in [('garden_overlook','AST-GAR-003'),('canopy_terrace','AST-GAR-004')]:
+for fam,aid in [('garden_overlook','AST-GAR-003'),('canopy_terrace','AST-GAR-004'),('botanical_portico','AST-GAR-005')]:
  path=root/'assets'/fam/'source'/(aid+'.blend');bpy.ops.wm.open_mainfile(filepath=str(path));coords=[];tri=0
  for o in bpy.context.scene.objects:
   if o.type!='MESH':continue
