@@ -18,7 +18,9 @@ for item in layout['regions']:
     shape=Polygon(item['boundary'],item.get('holes',[]));assert shape.is_valid,item['id']
     exemptions=item.get('void_exemptions',[])
     assert set(exemptions)<= {'central_atrium'},('Protected void exemption',item['id'])
-    if exemptions:assert item.get('kind')=='atrium_terrace',item['id']
+    if exemptions:
+        kind=item.get('kind')
+        assert kind=='atrium_terrace' or (kind=='atrium_garden_base' and item['deck']=='D02' and 5.2<=levels[item['id']]<=6.0),item['id']
     for void in layout['voids']:
         if item['deck'] in void['decks'] and void['id'] not in exemptions:shape=shape.difference(Polygon(void['boundary']))
     shapes[item['id']]=shape

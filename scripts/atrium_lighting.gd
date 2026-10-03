@@ -28,11 +28,13 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		var coffer := ship.model(root,"AST-ATR-002.glb","ArtificialDaylightCoffer",Vector3(0,106.26,z)) as Node3D
 		var marker := coffer.find_child("DATUM_emitter",true,false) as Node3D
 		assert(marker != null)
-		var light := SpotLight3D.new()
+		var light := OmniLight3D.new()
 		light.name = "RoofDaylightSource"
 		root.add_child(light)
 		light.global_position = marker.global_position
-		light.rotation.x = -PI/2
 		ship.apply_light_profile(light,"atrium_daylight")
-		light.spot_angle = 60
-		light.spot_attenuation = 0.35
+		light.omni_attenuation = 0.35
+		light.omni_shadow_mode = OmniLight3D.SHADOW_CUBE
+		light.light_specular = 0.15
+		light.shadow_normal_bias = 1.5
+		light.shadow_bias = 0.08

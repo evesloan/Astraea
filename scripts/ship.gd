@@ -36,11 +36,17 @@ func _ready() -> void:
 	load("res://scripts/aquatic_section.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/staff_section.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/atrium_lighting.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/atrium_garden.gd").build($ShipSpace/Districts,self)
 	var player := CharacterBody3D.new()
 	player.set_script(load("res://scripts/player.gd"))
 	$ShipSpace/PersistentActors.add_child(player)
 	player.spawn_position = Vector3(63.0,d09_y+0.1,-20.5)
 	player.position = player.spawn_position
+	var lighting_budget := Node.new()
+	lighting_budget.name = "LocalShadowSourceBudget"
+	lighting_budget.set_script(load("res://scripts/lighting_budget.gd"))
+	$ShipSystems.add_child(lighting_budget)
+	lighting_budget.configure(self,player)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
@@ -102,6 +108,10 @@ func model(parent: Node3D, file: String, label: String, location: Vector3, yaw: 
 	wrapper.rotation.y = yaw
 	var visual := (load("res://assets/models/"+file) as PackedScene).instantiate()
 	wrapper.add_child(visual)
+	if file == "AST-ATR-001.glb":
+		# D02 now has a level garden floor; its former drop-edge guard is superseded.
+		for part in visual.find_children("D02_*","MeshInstance3D",true,false):
+			part.visible = false
 	if file == "AST-ARC-001.glb":
 		# The continuous fitted network owns this edge; keep the source floor/soffit.
 		for part in visual.find_children("*","MeshInstance3D",true,false):

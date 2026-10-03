@@ -33,6 +33,12 @@ func run() -> void:
 		for frame in range(15): await physics_frame
 		assert(absf(player.position.y-world.deck_y[deck_index]) < 0.15)
 		assert(player.is_on_floor())
+		var budget := world.get_node("ShipSystems/LocalShadowSourceBudget")
+		budget.refresh()
+		var active_shadows := 0
+		for source in budget.sources:
+			if source.visible and source.shadow_enabled: active_shadows += 1
+		assert(active_shadows<=budget.shadow_source_budget,"Local shadow budget")
 		for z in [-500.0,-100.0,-72.0,72.0,100.0,500.0]:
 			var origin := Vector3(0,world.deck_y[deck_index]+0.8,z)
 			var query := PhysicsRayQueryParameters3D.create(origin,origin-Vector3.UP*1.5)

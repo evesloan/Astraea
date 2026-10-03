@@ -20,6 +20,7 @@ func _ready() -> void:
 	world_view.process_mode = Node.PROCESS_MODE_PAUSABLE
 	world_view.size = Vector2i(640, 360)
 	world_view.own_world_3d = true
+	world_view.positional_shadow_atlas_16_bits = false
 	world_view.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	add_child(world_view)
 	world_view.add_child(load("res://scenes/ship.tscn").instantiate())
@@ -87,6 +88,30 @@ func _ready() -> void:
 			await get_tree().create_timer(1.0).timeout
 			get_node("NativeResolutionStatus").text = "ASTRAEA / GRAND ATRIUM — restored floor contours, finish incomplete"
 			await _capture("atrium_")
+			actor.spawn_position = Vector3(0,6.1,-51)
+			actor.position = actor.spawn_position
+			actor.rotation.y = PI
+			actor.pitch = 0.12
+			actor.camera.rotation.x = actor.pitch
+			await get_tree().create_timer(1.0).timeout
+			get_node("NativeResolutionStatus").text = "ASTRAEA / D02 BOTANICAL COURT — first architectural composition"
+			await _capture("garden_")
+			actor.spawn_position = Vector3(-9,6.1,-35)
+			actor.position = actor.spawn_position
+			actor.pitch = 0.20
+			actor.camera.rotation.x = actor.pitch
+			await get_tree().create_timer(0.5).timeout
+			await _capture("garden_near_")
+			set_world_resolution(2)
+			effects = false
+			post_pass.material.set_shader_parameter("enabled",effects)
+			world_view.get_node("Astraea").set_display_effects(false)
+			await get_tree().create_timer(0.5).timeout
+			await _capture("garden_clear_")
+			set_world_resolution(0)
+			effects = true
+			post_pass.material.set_shader_parameter("enabled",effects)
+			world_view.get_node("Astraea").set_display_effects(true)
 		if "--capture-aquatic" in OS.get_cmdline_user_args():
 			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
 			actor.spawn_position = Vector3(13,44.1,218)
@@ -205,7 +230,7 @@ func _build_directory() -> void:
 	var places := GridContainer.new()
 	places.columns = 2
 	column.add_child(places)
-	for target in [{"name":"D09 Grand Atrium — unfinished", "position":Vector3(5,52.6,-59),"facing":PI}, {"name":"D01 Synthesis service bay — partial", "position":Vector3(-59,0.1,0)}, {"name":"D08 Gentle Waters — unfinished", "position":Vector3(13,44.1,218)}, {"name":"D09 Living Gifts — unfinished", "position":Vector3(13,52.6,218)}, {"name":"D10 Vesper — unfinished", "position":Vector3(13,61.1,218)}, {"name":"D09 Conversation salon — partial", "position":Vector3(63,52.6,-20.5)}]:
+	for target in [{"name":"D02 Botanical garden — unfinished", "position":Vector3(0,6.1,-51),"facing":PI}, {"name":"D09 Grand Atrium — unfinished", "position":Vector3(5,52.6,-59),"facing":PI}, {"name":"D01 Synthesis service bay — partial", "position":Vector3(-59,0.1,0)}, {"name":"D08 Gentle Waters — unfinished", "position":Vector3(13,44.1,218)}, {"name":"D09 Living Gifts — unfinished", "position":Vector3(13,52.6,218)}, {"name":"D10 Vesper — unfinished", "position":Vector3(13,61.1,218)}, {"name":"D09 Conversation salon — partial", "position":Vector3(63,52.6,-20.5)}]:
 		var button := Button.new()
 		button.text = target.name
 		button.custom_minimum_size = Vector2(450,36)
