@@ -1,0 +1,879 @@
+{
+  "asset": "AST-CUL-002",
+  "source_sha256": "820458bd7ef168cde6aa0ba673a1e261a33a618fddac7a23b533d1e953375a34",
+  "manifest_sha256": "119cbdd3c6fa444b76ef7df45e11b256c915255ac47f1616f6f6bb6daa721faf",
+  "generator_sha256": "fc627a4c608fbea17692b472c2a9b526ef5fa789036453dbba13240c6f733aa8",
+  "scope": "Every actual interior shelf, divider, fixed bearing, drawer wall/back/floor/runner and grip compared with true bowed inner/public shell planes over complete closed/access translation. Exterior trim exceptions are explicit.",
+  "actual_shell_triangle_patches": 14,
+  "external_or_perimeter_exceptions": [
+    {
+      "part": "recessed_stone_counter_plinth",
+      "reason": "Deliberate full floor plinth and toe return"
+    },
+    {
+      "part": "low_wing_left_cheek",
+      "reason": "Actual perimeter structural end return, forms left public shell termination"
+    },
+    {
+      "part": "right_full_height_cheek",
+      "reason": "Actual perimeter structural end return, forms right public shell termination"
+    },
+    {
+      "part": "low_rounded_writing_stone",
+      "reason": "Intended lower stone writing surface with public overhang"
+    },
+    {
+      "part": "main_rounded_usher_counter",
+      "reason": "Intended upper stone working surface with public overhang"
+    },
+    {
+      "part": "usher_mark_timber_bearing",
+      "reason": "Deliberate planar sign plaque supported across central public shell; its returned ends remain visible"
+    },
+    {
+      "part": "original_usher_mark",
+      "reason": "Original public-facing graphic on real supported plaque"
+    },
+    {
+      "part": "low_public_amber_insert",
+      "reason": "Deliberate public-facing textile insert supported by complete horizontal carrier rails"
+    },
+    {
+      "part": "amber_insert_carrier_0.3",
+      "reason": "Deliberate public-facing insert frame/carrier, supported across bowed shell"
+    },
+    {
+      "part": "amber_insert_carrier_0.65",
+      "reason": "Deliberate public-facing insert frame/carrier, supported across bowed shell"
+    }
+  ],
+  "interior_parts": [
+    {
+      "part": "counter_central_divider",
+      "owner": "AST-CUL-002",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": "Central divider intentionally bears within43mm shell thickness; no external public projection",
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": -0.005781234538880964,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.0372188134875619,
+          "worst_witness_source_m": [
+            -0.23499999940395355,
+            -0.32499998807907104,
+            0.10499999672174454
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_2",
+          "actual_shell_depth_y_m": 0.04300004802644286,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0.005781234538880964
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": -0.005781234538880964,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.0372188134875619,
+          "worst_witness_source_m": [
+            -0.23499999940395355,
+            -0.32499998807907104,
+            0.10499999672174454
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_2",
+          "actual_shell_depth_y_m": 0.04300004802644286,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0.005781234538880964
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": -0.005781234538880964,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.0372188134875619,
+          "worst_witness_source_m": [
+            -0.23499999940395355,
+            -0.32499998807907104,
+            0.10499999672174454
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_2",
+          "actual_shell_depth_y_m": 0.04300004802644286,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0.005781234538880964
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "open_programme_cubby_floor",
+      "owner": "AST-CUL-002",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": -5.551115123125783e-17,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.04300001263618464,
+          "worst_witness_source_m": [
+            0.01571428557065442,
+            -0.3265714219497924,
+            0.23499999940395355
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_3",
+          "actual_shell_depth_y_m": 0.04300001263618469,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 5.551115123125783e-17
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": -5.551115123125783e-17,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.04300001263618464,
+          "worst_witness_source_m": [
+            0.01571428557065442,
+            -0.3265714219497924,
+            0.23499999940395355
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_3",
+          "actual_shell_depth_y_m": 0.04300001263618469,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 5.551115123125783e-17
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": -5.551115123125783e-17,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.04300001263618464,
+          "worst_witness_source_m": [
+            0.01571428557065442,
+            -0.3265714219497924,
+            0.23499999940395355
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_3",
+          "actual_shell_depth_y_m": 0.04300001263618469,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 5.551115123125783e-17
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "drawer_separation_shelf",
+      "owner": "AST-CUL-002",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.0,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.04300004802644286,
+          "worst_witness_source_m": [
+            -0.1899999976158142,
+            -0.3240000009536743,
+            0.6549999713897705
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_2",
+          "actual_shell_depth_y_m": 0.04300004802644286,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.0,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.04300004802644286,
+          "worst_witness_source_m": [
+            -0.1899999976158142,
+            -0.3240000009536743,
+            0.6549999713897705
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_2",
+          "actual_shell_depth_y_m": 0.04300004802644286,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.0,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.04300004802644286,
+          "worst_witness_source_m": [
+            -0.1899999976158142,
+            -0.3240000009536743,
+            0.6549999713897705
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_2",
+          "actual_shell_depth_y_m": 0.04300004802644286,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "left_fixed_slide_bearing",
+      "owner": "AST-CUL-002",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.13400000333786008,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.17700005136430294,
+          "worst_witness_source_m": [
+            -0.1899999976158142,
+            -0.1899999976158142,
+            0.7149999737739563
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_2",
+          "actual_shell_depth_y_m": 0.04300004802644286,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.13400000333786008,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.17700005136430294,
+          "worst_witness_source_m": [
+            -0.1899999976158142,
+            -0.1899999976158142,
+            0.7149999737739563
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_2",
+          "actual_shell_depth_y_m": 0.04300004802644286,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.13400000333786008,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.17700005136430294,
+          "worst_witness_source_m": [
+            -0.1899999976158142,
+            -0.1899999976158142,
+            0.7149999737739563
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_2",
+          "actual_shell_depth_y_m": 0.04300004802644286,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "left_drawer_slide",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.13417500280658717,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.17717501544277187,
+          "worst_witness_source_m": [
+            -0.17599999904632568,
+            -0.1899999976158142,
+            0.7310000061988831
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_3",
+          "actual_shell_depth_y_m": 0.04300001263618469,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.13517500280658717,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.17817501544277187,
+          "worst_witness_source_m": [
+            -0.17599999904632568,
+            -0.1889999976158142,
+            0.7310000061988831
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_3",
+          "actual_shell_depth_y_m": 0.04300001263618469,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.4141750028065872,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.4571750154427719,
+          "worst_witness_source_m": [
+            -0.17599999904632568,
+            0.09000000238418582,
+            0.7310000061988831
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_3",
+          "actual_shell_depth_y_m": 0.04300001263618469,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "right_fixed_slide_bearing",
+      "owner": "AST-CUL-002",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.017000004649162348,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.06000006631496346,
+          "worst_witness_source_m": [
+            0.6650000214576721,
+            -0.1899999976158142,
+            0.7149999737739563
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.017000004649162348,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.06000006631496346,
+          "worst_witness_source_m": [
+            0.6650000214576721,
+            -0.1899999976158142,
+            0.7149999737739563
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.017000004649162348,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.06000006631496346,
+          "worst_witness_source_m": [
+            0.6650000214576721,
+            -0.1899999976158142,
+            0.7149999737739563
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "right_drawer_slide",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.02151613204772007,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.06451619371352119,
+          "worst_witness_source_m": [
+            0.6510000228881836,
+            -0.1899999976158142,
+            0.7310000061988831
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.022516132047720072,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.06551619371352119,
+          "worst_witness_source_m": [
+            0.6510000228881836,
+            -0.1889999976158142,
+            0.7310000061988831
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.3015161320477201,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.3445161937135212,
+          "worst_witness_source_m": [
+            0.6510000228881836,
+            0.09000000238418582,
+            0.7310000061988831
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "drawer_tray_floor",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.02151613204772007,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.06451619371352119,
+          "worst_witness_source_m": [
+            0.6510000228881836,
+            -0.1899999976158142,
+            0.7440000176429749
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.022516132047720072,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.06551619371352119,
+          "worst_witness_source_m": [
+            0.6510000228881836,
+            -0.1889999976158142,
+            0.7440000176429749
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.3015161320477201,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.3445161937135212,
+          "worst_witness_source_m": [
+            0.6510000228881836,
+            0.09000000238418582,
+            0.7440000176429749
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "drawer_left_wall",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.13417500280658717,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.17717501544277187,
+          "worst_witness_source_m": [
+            -0.17599999904632568,
+            -0.1899999976158142,
+            0.7609999775886536
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_3",
+          "actual_shell_depth_y_m": 0.04300001263618469,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.13517500280658717,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.17817501544277187,
+          "worst_witness_source_m": [
+            -0.17599999904632568,
+            -0.1889999976158142,
+            0.7609999775886536
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_3",
+          "actual_shell_depth_y_m": 0.04300001263618469,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.4141750028065872,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.4571750154427719,
+          "worst_witness_source_m": [
+            -0.17599999904632568,
+            0.09000000238418582,
+            0.7609999775886536
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_3",
+          "actual_shell_depth_y_m": 0.04300001263618469,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "drawer_right_wall",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.02151613204772007,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.06451619371352119,
+          "worst_witness_source_m": [
+            0.6510000228881836,
+            -0.1899999976158142,
+            0.7609999775886536
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.022516132047720072,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.06551619371352119,
+          "worst_witness_source_m": [
+            0.6510000228881836,
+            -0.1889999976158142,
+            0.7609999775886536
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.3015161320477201,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.3445161937135212,
+          "worst_witness_source_m": [
+            0.6510000228881836,
+            0.09000000238418582,
+            0.7609999775886536
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "drawer_inner_back",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.028612909167539335,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.07161297083334045,
+          "worst_witness_source_m": [
+            0.6290000081062317,
+            -0.1899999976158142,
+            0.7609999775886536
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.029612909167539336,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.07261297083334045,
+          "worst_witness_source_m": [
+            0.6290000081062317,
+            -0.1889999976158142,
+            0.7609999775886536
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.30861290916753936,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.3516129708333405,
+          "worst_witness_source_m": [
+            0.6290000081062317,
+            0.09000000238418582,
+            0.7609999775886536
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "drawer_walnut_fascia",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.4558709816152404,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.49887104328104154,
+          "worst_witness_source_m": [
+            0.652999997138977,
+            0.24500000476837158,
+            0.7099999785423279
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.4568709816152404,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.49987104328104154,
+          "worst_witness_source_m": [
+            0.652999997138977,
+            0.24600000476837158,
+            0.7099999785423279
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.7358709816152404,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.7788710432810415,
+          "worst_witness_source_m": [
+            0.652999997138977,
+            0.5250000047683716,
+            0.7099999785423279
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_6",
+          "actual_shell_depth_y_m": 0.043000061665801115,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "drawer_pull_boss_0.145",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.592083323530904,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.6350833423759062,
+          "worst_witness_source_m": [
+            0.15699999034404755,
+            0.27399998903274536,
+            0.8259999752044678
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_4",
+          "actual_shell_depth_y_m": 0.043000018845002264,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.5930833235309041,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.6360833423759064,
+          "worst_witness_source_m": [
+            0.15699999034404755,
+            0.27499998903274536,
+            0.8259999752044678
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_4",
+          "actual_shell_depth_y_m": 0.043000018845002264,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.872083323530904,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.9150833423759063,
+          "worst_witness_source_m": [
+            0.15699999034404755,
+            0.5539999890327454,
+            0.8259999752044678
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_4",
+          "actual_shell_depth_y_m": 0.043000018845002264,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "drawer_pull_boss_0.325",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.570318181511046,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.6133181250600297,
+          "worst_witness_source_m": [
+            0.3369999825954437,
+            0.27399998903274536,
+            0.8259999752044679
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_5",
+          "actual_shell_depth_y_m": 0.04299994354898373,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.571318181511046,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.6143181250600297,
+          "worst_witness_source_m": [
+            0.3369999825954437,
+            0.27499998903274536,
+            0.8259999752044679
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_5",
+          "actual_shell_depth_y_m": 0.04299994354898373,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.850318181511046,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.8933181250600297,
+          "worst_witness_source_m": [
+            0.3369999825954437,
+            0.5539999890327454,
+            0.8259999752044679
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_5",
+          "actual_shell_depth_y_m": 0.04299994354898373,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    },
+    {
+      "part": "drawer_brass_pull",
+      "owner": "USHER_DRAWER",
+      "method": "Convex hull of all actual source mesh vertices; LP clips its complete volume against each actual inner-shell triangle XZ domain, not rectangular bounds",
+      "allowed_bearing": null,
+      "states": [
+        {
+          "state": "closed",
+          "translation_source_y_m": 0,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.6140454622401188,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.6570454057891025,
+          "worst_witness_source_m": [
+            0.32499998807907104,
+            0.3149999976158142,
+            0.8140000104904175
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_5",
+          "actual_shell_depth_y_m": 0.04299994354898373,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "first_millimetre",
+          "translation_source_y_m": 0.001,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.6150454622401188,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.6580454057891025,
+          "worst_witness_source_m": [
+            0.32499998807907104,
+            0.3159999976158142,
+            0.8140000104904175
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_5",
+          "actual_shell_depth_y_m": 0.04299994354898373,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        },
+        {
+          "state": "access",
+          "translation_source_y_m": 0.28,
+          "minimum_clearance_to_actual_inner_shell_plane_m": 0.8940454622401188,
+          "minimum_clearance_to_actual_public_outer_shell_plane_m": 0.9370454057891026,
+          "worst_witness_source_m": [
+            0.32499998807907104,
+            0.5949999976158142,
+            0.8140000104904175
+          ],
+          "actual_shell_patch": "curved_public_shell_segment_5",
+          "actual_shell_depth_y_m": 0.04299994354898373,
+          "public_face_material_breach": false,
+          "inside_shell_bearing_penetration_m": 0
+        }
+      ],
+      "whole_translation_interval": "All moving parts translate only +Y, so signed shell clearances increase monotonically over [0,.28]; exact closed minimum proves complete interval including first millimetre",
+      "passed": true
+    }
+  ],
+  "absent_redundant_backing": true,
+  "all_passed": true
+}

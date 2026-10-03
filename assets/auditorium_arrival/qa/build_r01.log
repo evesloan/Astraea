@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/assets/auditorium_arrival/source/build_auditorium_arrival.py", line 231, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/assets/auditorium_arrival/source/build_auditorium_arrival.py", line 216, in main
+    reset(ident);name,details=fn();bpy.context.view_layer.update();bounds,tris=measure()
+                              ~~^^
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/assets/auditorium_arrival/source/build_auditorium_arrival.py", line 96, in display
+    ps=[[v.x,y,v.y]for y in(-.12,.14)for v in tri]
+         ^^^
+AttributeError: 'int' object has no attribute 'x'
+
+Error: script failed, file: '/workspace/shared/astraea-catalogue-continuation-20261002/assets/auditorium_arrival/source/build_auditorium_arrival.py', exiting.
+Blender 4.3.2
+
+Blender quit

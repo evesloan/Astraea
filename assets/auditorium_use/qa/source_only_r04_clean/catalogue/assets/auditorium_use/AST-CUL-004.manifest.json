@@ -1,0 +1,2664 @@
+{
+  "catalogue_id": "AST-CUL-004",
+  "name": "Backstage shielded cue and work-light stand",
+  "title": "Backstage shielded cue and work-light stand",
+  "unique_design": true,
+  "source": "source/AST-CUL-004.blend",
+  "export": "exports/AST-CUL-004.glb",
+  "generator": "source/build_auditorium_use.py",
+  "source_frame": "metres Blender XYZ Z-up front -Y",
+  "exchange_frame": "metres native GLB Y-up source(x,y,z)->(x,z,-y)",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "floor between supported soles, not a physical centre support"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.36000001430511475,
+      -0.33000001311302185,
+      0.0
+    ],
+    "max_m": [
+      0.36000001430511475,
+      0.3100000023841858,
+      1.625
+    ],
+    "dimensions_m": [
+      0.7200000286102295,
+      0.6400000154972076,
+      1.625
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -0.36000001430511475,
+      0.0,
+      -0.3100000023841858
+    ],
+    "max_m": [
+      0.36000001430511475,
+      1.625,
+      0.33000001311302185
+    ],
+    "dimensions_m": [
+      0.7200000286102295,
+      1.625,
+      0.6400000154972076
+    ]
+  },
+  "dimensions_blender_xyz_m": [
+    0.7200000286102295,
+    0.6400000154972076,
+    1.625
+  ],
+  "evaluated_source_triangles": 544,
+  "evaluated_triangles": 544,
+  "editable_semantic_parts": 34,
+  "semantic_parts": [
+    "left_front_rubber_sole",
+    "left_rear_rubber_sole",
+    "right_front_rubber_sole",
+    "right_rear_rubber_sole",
+    "clipped_ballast_base",
+    "service_column_front_web",
+    "service_column_left_wall",
+    "service_column_right_wall",
+    "protected_internal_cable_proposal",
+    "cable_retention_0.18",
+    "cable_retention_0.7",
+    "cable_retention_1.28",
+    "removable_rear_service_cover",
+    "rear_cover_pull_bridge",
+    "rear_pull_left_return",
+    "rear_pull_right_return",
+    "supported_clipped_work_tray",
+    "left_tray_gusset",
+    "right_tray_gusset",
+    "front_paper_retaining_lip",
+    "clipped_cue_notes_backer",
+    "inactive_rehearsal_notes_face",
+    "light_yoke_crossbar",
+    "left_light_yoke_upright",
+    "left_fixed_aim_stub",
+    "right_light_yoke_upright",
+    "right_fixed_aim_stub",
+    "formed_light_hood",
+    "light_rear_spine",
+    "left_light_end_shield",
+    "right_light_end_shield",
+    "downturned_glare_shield",
+    "recessed_opal_diffuser",
+    "inactive_local_control_pad"
+  ],
+  "material_roles": [
+    "original_rehearsal_notes",
+    "staff_bluegrey_paint",
+    "staff_opal",
+    "staff_rubber",
+    "staff_zinc"
+  ],
+  "export_mesh_groups": 9,
+  "export_group_ownership": [
+    [
+      "AST-CUL-004",
+      "original_rehearsal_notes"
+    ],
+    [
+      "AST-CUL-004",
+      "staff_bluegrey_paint"
+    ],
+    [
+      "AST-CUL-004",
+      "staff_rubber"
+    ],
+    [
+      "AST-CUL-004",
+      "staff_zinc"
+    ],
+    [
+      "LIGHT_AIM_X",
+      "staff_bluegrey_paint"
+    ],
+    [
+      "LIGHT_AIM_X",
+      "staff_opal"
+    ],
+    [
+      "LIGHT_AIM_X",
+      "staff_rubber"
+    ],
+    [
+      "REAR_COVER_REMOVE",
+      "staff_bluegrey_paint"
+    ],
+    [
+      "REAR_COVER_REMOVE",
+      "staff_zinc"
+    ]
+  ],
+  "physical_and_proposal_markers": [
+    {
+      "name": "LEFT_FRONT_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.2800000011920929,
+        -0.2199999988079071,
+        0.0
+      ],
+      "gltf_m": [
+        -0.2800000011920929,
+        0.0,
+        0.2199999988079071
+      ],
+      "parent_local_source_m": [
+        -0.28,
+        -0.22,
+        0
+      ],
+      "physical_part": "left_front_rubber_sole",
+      "parent_root": "AST-CUL-004",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "LEFT_REAR_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.2800000011920929,
+        0.2199999988079071,
+        0.0
+      ],
+      "gltf_m": [
+        -0.2800000011920929,
+        0.0,
+        -0.2199999988079071
+      ],
+      "parent_local_source_m": [
+        -0.28,
+        0.22,
+        0
+      ],
+      "physical_part": "left_rear_rubber_sole",
+      "parent_root": "AST-CUL-004",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_FRONT_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.2800000011920929,
+        -0.2199999988079071,
+        0.0
+      ],
+      "gltf_m": [
+        0.2800000011920929,
+        0.0,
+        0.2199999988079071
+      ],
+      "parent_local_source_m": [
+        0.28,
+        -0.22,
+        0
+      ],
+      "physical_part": "right_front_rubber_sole",
+      "parent_root": "AST-CUL-004",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_REAR_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.2800000011920929,
+        0.2199999988079071,
+        0.0
+      ],
+      "gltf_m": [
+        0.2800000011920929,
+        0.0,
+        -0.2199999988079071
+      ],
+      "parent_local_source_m": [
+        0.28,
+        0.22,
+        0
+      ],
+      "physical_part": "right_rear_rubber_sole",
+      "parent_root": "AST-CUL-004",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "REAR_SERVICE_GRIP",
+      "kind": "physical_service_grip",
+      "source_m": [
+        0.0,
+        0.22599999606609344,
+        0.7099999785423279
+      ],
+      "gltf_m": [
+        0.0,
+        0.7099999785423279,
+        -0.22599999606609344
+      ],
+      "parent_local_source_m": [
+        0,
+        0.226,
+        0.71
+      ],
+      "physical_part": "rear_cover_pull_bridge",
+      "parent_root": "REAR_COVER_REMOVE",
+      "description": "",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "SERVICE_INSPECTION_DATUM",
+      "kind": "nonphysical_service_route_datum",
+      "source_m": [
+        0.0,
+        0.15000000596046448,
+        0.9399999976158142
+      ],
+      "gltf_m": [
+        0.0,
+        0.9399999976158142,
+        -0.15000000596046448
+      ],
+      "parent_local_source_m": [
+        0,
+        0.15,
+        0.94
+      ],
+      "physical_part": null,
+      "parent_root": "AST-CUL-004",
+      "description": "Open backed channel behind cover; proposed cable only, no powered system"
+    },
+    {
+      "name": "WORK_SURFACE",
+      "kind": "physical_work_surface",
+      "source_m": [
+        0.0,
+        -0.10999999940395355,
+        0.9620000123977661
+      ],
+      "gltf_m": [
+        0.0,
+        0.9620000123977661,
+        0.10999999940395355
+      ],
+      "parent_local_source_m": [
+        0,
+        -0.11,
+        0.962
+      ],
+      "physical_part": "supported_clipped_work_tray",
+      "parent_root": "AST-CUL-004",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "INACTIVE_CUE_NOTES_FACE",
+      "kind": "physical_notes_surface",
+      "source_m": [
+        0.0,
+        0.03999999910593033,
+        1.159999966621399
+      ],
+      "gltf_m": [
+        0.0,
+        1.159999966621399,
+        -0.03999999910593033
+      ],
+      "parent_local_source_m": [
+        0,
+        0.04,
+        1.16
+      ],
+      "physical_part": "inactive_rehearsal_notes_face",
+      "parent_root": "AST-CUL-004",
+      "description": "",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "LEFT_MOVING_AIM_BEARING",
+      "kind": "physical_aim_bearing",
+      "source_m": [
+        -0.18000000715255737,
+        0.11500000208616257,
+        1.5399999618530273
+      ],
+      "gltf_m": [
+        -0.18000000715255737,
+        1.5399999618530273,
+        -0.11500000208616257
+      ],
+      "parent_local_source_m": [
+        -0.18,
+        0,
+        0
+      ],
+      "physical_part": "left_light_end_shield",
+      "parent_root": "LIGHT_AIM_X",
+      "description": "",
+      "direction_source": [
+        -1,
+        0,
+        0
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_MOVING_AIM_BEARING",
+      "kind": "physical_aim_bearing",
+      "source_m": [
+        0.18000000715255737,
+        0.11500000208616257,
+        1.5399999618530273
+      ],
+      "gltf_m": [
+        0.18000000715255737,
+        1.5399999618530273,
+        -0.11500000208616257
+      ],
+      "parent_local_source_m": [
+        0.18,
+        0,
+        0
+      ],
+      "physical_part": "right_light_end_shield",
+      "parent_root": "LIGHT_AIM_X",
+      "description": "",
+      "direction_source": [
+        1,
+        0,
+        0
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "PROPOSED_EMITTER_SURFACE",
+      "kind": "physical_proposed_emitter_surface",
+      "source_m": [
+        0.0,
+        0.015000000596046448,
+        1.5499999523162842
+      ],
+      "gltf_m": [
+        0.0,
+        1.5499999523162842,
+        -0.015000000596046448
+      ],
+      "parent_local_source_m": [
+        0,
+        -0.1,
+        0.01
+      ],
+      "physical_part": "recessed_opal_diffuser",
+      "parent_root": "LIGHT_AIM_X",
+      "description": "Opal art surface; material emission zero and no real light object",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "PROPOSED_LIGHT_AIM",
+      "kind": "nonphysical_light_aim",
+      "source_m": [
+        0.0,
+        0.015000000596046448,
+        1.5499999523162842
+      ],
+      "gltf_m": [
+        0.0,
+        1.5499999523162842,
+        -0.015000000596046448
+      ],
+      "parent_local_source_m": [
+        0,
+        -0.1,
+        0.01
+      ],
+      "physical_part": null,
+      "parent_root": "LIGHT_AIM_X",
+      "description": "Proposed downward direction; separate from runtime light/photometry",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "PROPOSED_LOCAL_CONTROL",
+      "kind": "physical_inactive_control_proposal",
+      "source_m": [
+        0.11249999701976776,
+        0.1899999976158142,
+        1.525999903678894
+      ],
+      "gltf_m": [
+        0.11249999701976776,
+        1.525999903678894,
+        -0.1899999976158142
+      ],
+      "parent_local_source_m": [
+        0.1125,
+        0.075,
+        -0.014
+      ],
+      "physical_part": "inactive_local_control_pad",
+      "parent_root": "LIGHT_AIM_X",
+      "description": "No working cue protocol, lamp input or electrical state",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "FLOOR_ORIGIN",
+      "kind": "placement_origin",
+      "source_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gltf_m": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "parent_local_source_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "parent_root": "AST-CUL-004",
+      "description": "Floor between soles; ballasted-base appearance, no stability/load certification"
+    }
+  ],
+  "joins": [
+    {
+      "name": "left_front_sole_base",
+      "parts": [
+        "left_front_rubber_sole",
+        "clipped_ballast_base"
+      ],
+      "probe_source_m": [
+        -0.28,
+        -0.22,
+        0.018
+      ],
+      "probe_gltf_m": [
+        -0.28,
+        0.018,
+        0.22
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "left_rear_sole_base",
+      "parts": [
+        "left_rear_rubber_sole",
+        "clipped_ballast_base"
+      ],
+      "probe_source_m": [
+        -0.28,
+        0.22,
+        0.018
+      ],
+      "probe_gltf_m": [
+        -0.28,
+        0.018,
+        -0.22
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "right_front_sole_base",
+      "parts": [
+        "right_front_rubber_sole",
+        "clipped_ballast_base"
+      ],
+      "probe_source_m": [
+        0.28,
+        -0.22,
+        0.018
+      ],
+      "probe_gltf_m": [
+        0.28,
+        0.018,
+        0.22
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "right_rear_sole_base",
+      "parts": [
+        "right_rear_rubber_sole",
+        "clipped_ballast_base"
+      ],
+      "probe_source_m": [
+        0.28,
+        0.22,
+        0.018
+      ],
+      "probe_gltf_m": [
+        0.28,
+        0.018,
+        -0.22
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "column_front_base",
+      "parts": [
+        "service_column_front_web",
+        "clipped_ballast_base"
+      ],
+      "probe_source_m": [
+        0,
+        0.085,
+        0.06
+      ],
+      "probe_gltf_m": [
+        0,
+        0.06,
+        -0.085
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "left_column_base",
+      "parts": [
+        "service_column_left_wall",
+        "clipped_ballast_base"
+      ],
+      "probe_source_m": [
+        -0.042,
+        0.13,
+        0.06
+      ],
+      "probe_gltf_m": [
+        -0.042,
+        0.06,
+        -0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "left_column_front_web",
+      "parts": [
+        "service_column_left_wall",
+        "service_column_front_web"
+      ],
+      "probe_source_m": [
+        -0.042,
+        0.095,
+        0.8
+      ],
+      "probe_gltf_m": [
+        -0.042,
+        0.8,
+        -0.095
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "right_column_base",
+      "parts": [
+        "service_column_right_wall",
+        "clipped_ballast_base"
+      ],
+      "probe_source_m": [
+        0.042,
+        0.13,
+        0.06
+      ],
+      "probe_gltf_m": [
+        0.042,
+        0.06,
+        -0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "right_column_front_web",
+      "parts": [
+        "service_column_right_wall",
+        "service_column_front_web"
+      ],
+      "probe_source_m": [
+        0.042,
+        0.095,
+        0.8
+      ],
+      "probe_gltf_m": [
+        0.042,
+        0.8,
+        -0.095
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "cable_clamp_0.18",
+      "parts": [
+        "cable_retention_0.18",
+        "protected_internal_cable_proposal"
+      ],
+      "probe_source_m": [
+        0,
+        0.137,
+        0.18
+      ],
+      "probe_gltf_m": [
+        0,
+        0.18,
+        -0.137
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "static"
+    },
+    {
+      "name": "clamp_0.18_left",
+      "parts": [
+        "cable_retention_0.18",
+        "service_column_left_wall"
+      ],
+      "probe_source_m": [
+        -0.035,
+        0.13,
+        0.18
+      ],
+      "probe_gltf_m": [
+        -0.035,
+        0.18,
+        -0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "clamp_0.18_right",
+      "parts": [
+        "cable_retention_0.18",
+        "service_column_right_wall"
+      ],
+      "probe_source_m": [
+        0.035,
+        0.13,
+        0.18
+      ],
+      "probe_gltf_m": [
+        0.035,
+        0.18,
+        -0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cable_clamp_0.7",
+      "parts": [
+        "cable_retention_0.7",
+        "protected_internal_cable_proposal"
+      ],
+      "probe_source_m": [
+        0,
+        0.137,
+        0.7
+      ],
+      "probe_gltf_m": [
+        0,
+        0.7,
+        -0.137
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "static"
+    },
+    {
+      "name": "clamp_0.7_left",
+      "parts": [
+        "cable_retention_0.7",
+        "service_column_left_wall"
+      ],
+      "probe_source_m": [
+        -0.035,
+        0.13,
+        0.7
+      ],
+      "probe_gltf_m": [
+        -0.035,
+        0.7,
+        -0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "clamp_0.7_right",
+      "parts": [
+        "cable_retention_0.7",
+        "service_column_right_wall"
+      ],
+      "probe_source_m": [
+        0.035,
+        0.13,
+        0.7
+      ],
+      "probe_gltf_m": [
+        0.035,
+        0.7,
+        -0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cable_clamp_1.28",
+      "parts": [
+        "cable_retention_1.28",
+        "protected_internal_cable_proposal"
+      ],
+      "probe_source_m": [
+        0,
+        0.137,
+        1.28
+      ],
+      "probe_gltf_m": [
+        0,
+        1.28,
+        -0.137
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "static"
+    },
+    {
+      "name": "clamp_1.28_left",
+      "parts": [
+        "cable_retention_1.28",
+        "service_column_left_wall"
+      ],
+      "probe_source_m": [
+        -0.035,
+        0.13,
+        1.28
+      ],
+      "probe_gltf_m": [
+        -0.035,
+        1.28,
+        -0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "clamp_1.28_right",
+      "parts": [
+        "cable_retention_1.28",
+        "service_column_right_wall"
+      ],
+      "probe_source_m": [
+        0.035,
+        0.13,
+        1.28
+      ],
+      "probe_gltf_m": [
+        0.035,
+        1.28,
+        -0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_cover_support",
+      "parts": [
+        "removable_rear_service_cover",
+        "service_column_left_wall"
+      ],
+      "probe_source_m": [
+        -0.042,
+        0.175,
+        0.7
+      ],
+      "probe_gltf_m": [
+        -0.042,
+        0.7,
+        -0.175
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "REAR_COVER_REMOVE_to_fixed",
+      "normal_a_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "right_cover_support",
+      "parts": [
+        "removable_rear_service_cover",
+        "service_column_right_wall"
+      ],
+      "probe_source_m": [
+        0.042,
+        0.175,
+        0.7
+      ],
+      "probe_gltf_m": [
+        0.042,
+        0.7,
+        -0.175
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "REAR_COVER_REMOVE_to_fixed",
+      "normal_a_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "rear_pull_left_cover",
+      "parts": [
+        "rear_pull_left_return",
+        "removable_rear_service_cover"
+      ],
+      "probe_source_m": [
+        -0.012,
+        0.187,
+        0.71
+      ],
+      "probe_gltf_m": [
+        -0.012,
+        0.71,
+        -0.187
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "REAR_COVER_REMOVE",
+      "normal_a_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "rear_pull_left_bridge",
+      "parts": [
+        "rear_pull_left_return",
+        "rear_cover_pull_bridge"
+      ],
+      "probe_source_m": [
+        -0.012,
+        0.213,
+        0.71
+      ],
+      "probe_gltf_m": [
+        -0.012,
+        0.71,
+        -0.213
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "REAR_COVER_REMOVE",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "rear_pull_right_cover",
+      "parts": [
+        "rear_pull_right_return",
+        "removable_rear_service_cover"
+      ],
+      "probe_source_m": [
+        0.012,
+        0.187,
+        0.71
+      ],
+      "probe_gltf_m": [
+        0.012,
+        0.71,
+        -0.187
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "REAR_COVER_REMOVE",
+      "normal_a_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "rear_pull_right_bridge",
+      "parts": [
+        "rear_pull_right_return",
+        "rear_cover_pull_bridge"
+      ],
+      "probe_source_m": [
+        0.012,
+        0.213,
+        0.71
+      ],
+      "probe_gltf_m": [
+        0.012,
+        0.71,
+        -0.213
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "REAR_COVER_REMOVE",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "tray_column_web",
+      "parts": [
+        "supported_clipped_work_tray",
+        "service_column_front_web"
+      ],
+      "probe_source_m": [
+        0,
+        0.075,
+        0.951
+      ],
+      "probe_gltf_m": [
+        0,
+        0.951,
+        -0.075
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "left_gusset_tray",
+      "parts": [
+        "left_tray_gusset",
+        "supported_clipped_work_tray"
+      ],
+      "probe_source_m": [
+        -0.041,
+        -0.08,
+        0.94
+      ],
+      "probe_gltf_m": [
+        -0.041,
+        0.94,
+        0.08
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "left_gusset_web",
+      "parts": [
+        "left_tray_gusset",
+        "service_column_front_web"
+      ],
+      "probe_source_m": [
+        -0.041,
+        0.075,
+        0.86
+      ],
+      "probe_gltf_m": [
+        -0.041,
+        0.86,
+        -0.075
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "right_gusset_tray",
+      "parts": [
+        "right_tray_gusset",
+        "supported_clipped_work_tray"
+      ],
+      "probe_source_m": [
+        0.041,
+        -0.08,
+        0.94
+      ],
+      "probe_gltf_m": [
+        0.041,
+        0.94,
+        0.08
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "right_gusset_web",
+      "parts": [
+        "right_tray_gusset",
+        "service_column_front_web"
+      ],
+      "probe_source_m": [
+        0.041,
+        0.075,
+        0.86
+      ],
+      "probe_gltf_m": [
+        0.041,
+        0.86,
+        -0.075
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "paper_lip_tray",
+      "parts": [
+        "front_paper_retaining_lip",
+        "supported_clipped_work_tray"
+      ],
+      "probe_source_m": [
+        0,
+        -0.323,
+        0.962
+      ],
+      "probe_gltf_m": [
+        0,
+        0.962,
+        0.323
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "notes_backer_column",
+      "parts": [
+        "clipped_cue_notes_backer",
+        "service_column_front_web"
+      ],
+      "probe_source_m": [
+        0,
+        0.075,
+        1.15
+      ],
+      "probe_gltf_m": [
+        0,
+        1.15,
+        -0.075
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "notes_face_backer",
+      "parts": [
+        "inactive_rehearsal_notes_face",
+        "clipped_cue_notes_backer"
+      ],
+      "probe_source_m": [
+        0,
+        0.045,
+        1.15
+      ],
+      "probe_gltf_m": [
+        0,
+        1.15,
+        -0.045
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "yoke_column_top",
+      "parts": [
+        "light_yoke_crossbar",
+        "service_column_front_web"
+      ],
+      "probe_source_m": [
+        0,
+        0.085,
+        1.4
+      ],
+      "probe_gltf_m": [
+        0,
+        1.4,
+        -0.085
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "left_yoke_bar",
+      "parts": [
+        "left_light_yoke_upright",
+        "light_yoke_crossbar"
+      ],
+      "probe_source_m": [
+        -0.215,
+        0.115,
+        1.425
+      ],
+      "probe_gltf_m": [
+        -0.215,
+        1.425,
+        -0.115
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "left_aim_stub_yoke",
+      "parts": [
+        "left_fixed_aim_stub",
+        "left_light_yoke_upright"
+      ],
+      "probe_source_m": [
+        -0.204,
+        0.115,
+        1.54
+      ],
+      "probe_gltf_m": [
+        -0.204,
+        1.54,
+        -0.115
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_yoke_bar",
+      "parts": [
+        "right_light_yoke_upright",
+        "light_yoke_crossbar"
+      ],
+      "probe_source_m": [
+        0.215,
+        0.115,
+        1.425
+      ],
+      "probe_gltf_m": [
+        0.215,
+        1.425,
+        -0.115
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "right_aim_stub_yoke",
+      "parts": [
+        "right_fixed_aim_stub",
+        "right_light_yoke_upright"
+      ],
+      "probe_source_m": [
+        0.204,
+        0.115,
+        1.54
+      ],
+      "probe_gltf_m": [
+        0.204,
+        1.54,
+        -0.115
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "hood_rear_spine",
+      "parts": [
+        "formed_light_hood",
+        "light_rear_spine"
+      ],
+      "probe_source_m": [
+        0,
+        0.16,
+        1.562
+      ],
+      "probe_gltf_m": [
+        0,
+        1.562,
+        -0.16
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "LIGHT_AIM_X",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "left_spine_shield_butt",
+      "parts": [
+        "light_rear_spine",
+        "left_light_end_shield"
+      ],
+      "probe_source_m": [
+        -0.164,
+        0.165,
+        1.525
+      ],
+      "probe_gltf_m": [
+        -0.164,
+        1.525,
+        -0.165
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "LIGHT_AIM_X",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_shield_hood",
+      "parts": [
+        "left_light_end_shield",
+        "formed_light_hood"
+      ],
+      "probe_source_m": [
+        -0.172,
+        0,
+        1.562
+      ],
+      "probe_gltf_m": [
+        -0.172,
+        1.562,
+        0
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "LIGHT_AIM_X",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "left_aim_bearing",
+      "parts": [
+        "left_light_end_shield",
+        "left_fixed_aim_stub"
+      ],
+      "probe_source_m": [
+        -0.18,
+        0.115,
+        1.54
+      ],
+      "probe_gltf_m": [
+        -0.18,
+        1.54,
+        -0.115
+      ],
+      "kind": "rotating_endface_bearing",
+      "movement_group": "LIGHT_AIM_X_to_fixed",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_spine_shield_butt",
+      "parts": [
+        "light_rear_spine",
+        "right_light_end_shield"
+      ],
+      "probe_source_m": [
+        0.164,
+        0.165,
+        1.525
+      ],
+      "probe_gltf_m": [
+        0.164,
+        1.525,
+        -0.165
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "LIGHT_AIM_X",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_shield_hood",
+      "parts": [
+        "right_light_end_shield",
+        "formed_light_hood"
+      ],
+      "probe_source_m": [
+        0.172,
+        0,
+        1.562
+      ],
+      "probe_gltf_m": [
+        0.172,
+        1.562,
+        0
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "LIGHT_AIM_X",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "right_aim_bearing",
+      "parts": [
+        "right_light_end_shield",
+        "right_fixed_aim_stub"
+      ],
+      "probe_source_m": [
+        0.18,
+        0.115,
+        1.54
+      ],
+      "probe_gltf_m": [
+        0.18,
+        1.54,
+        -0.115
+      ],
+      "kind": "rotating_endface_bearing",
+      "movement_group": "LIGHT_AIM_X_to_fixed",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_shield_hood",
+      "parts": [
+        "downturned_glare_shield",
+        "formed_light_hood"
+      ],
+      "probe_source_m": [
+        0,
+        -0.13,
+        1.562
+      ],
+      "probe_gltf_m": [
+        0,
+        1.562,
+        0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "LIGHT_AIM_X",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "diffuser_hood",
+      "parts": [
+        "recessed_opal_diffuser",
+        "formed_light_hood"
+      ],
+      "probe_source_m": [
+        0,
+        0.015,
+        1.562
+      ],
+      "probe_gltf_m": [
+        0,
+        1.562,
+        -0.015
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "LIGHT_AIM_X",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "control_rear_spine",
+      "parts": [
+        "inactive_local_control_pad",
+        "light_rear_spine"
+      ],
+      "probe_source_m": [
+        0.1125,
+        0.18,
+        1.5255
+      ],
+      "probe_gltf_m": [
+        0.1125,
+        1.5255,
+        -0.18
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "LIGHT_AIM_X",
+      "normal_a_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "work_surface_clear_use",
+      "min_source_m": [
+        -0.25,
+        -0.3,
+        0.993
+      ],
+      "max_source_m": [
+        0.25,
+        0.027,
+        1.25
+      ],
+      "min_gltf_m": [
+        -0.25,
+        0.993,
+        -0.027
+      ],
+      "max_gltf_m": [
+        0.25,
+        1.25,
+        0.3
+      ],
+      "purpose": "Useful front work/retrieval reservation, separate from notes card and lip",
+      "state": "all"
+    },
+    {
+      "name": "rear_cover_grip_opening",
+      "min_source_m": [
+        -0.005,
+        0.191,
+        0.695
+      ],
+      "max_source_m": [
+        0.005,
+        0.21,
+        0.725
+      ],
+      "min_gltf_m": [
+        -0.005,
+        0.695,
+        -0.21
+      ],
+      "max_gltf_m": [
+        0.005,
+        0.725,
+        -0.191
+      ],
+      "purpose": "Small central pull opening; not a certified hand envelope",
+      "state": "cover_local"
+    },
+    {
+      "name": "service_channel_upper_clearance",
+      "min_source_m": [
+        -0.028,
+        0.149,
+        0.99
+      ],
+      "max_source_m": [
+        0.028,
+        0.171,
+        1.2
+      ],
+      "min_gltf_m": [
+        -0.028,
+        0.99,
+        -0.171
+      ],
+      "max_gltf_m": [
+        0.028,
+        1.2,
+        -0.149
+      ],
+      "purpose": "Bounded open service volume behind removable cover; remaining internal cable intentionally outside this reserved strip",
+      "state": "all"
+    },
+    {
+      "name": "rear_service_approach",
+      "min_source_m": [
+        -0.25,
+        0.46,
+        0.12
+      ],
+      "max_source_m": [
+        0.25,
+        0.85,
+        1.36
+      ],
+      "min_gltf_m": [
+        -0.25,
+        0.12,
+        -0.85
+      ],
+      "max_gltf_m": [
+        0.25,
+        1.36,
+        -0.46
+      ],
+      "purpose": "Proposed complete removal/retrieval approach behind translated cover, host route unknown",
+      "state": "all"
+    }
+  ],
+  "motion_records": [
+    {
+      "root": "REAR_COVER_REMOVE",
+      "kind": "translation",
+      "pivot_source_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pivot_gltf_m": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "axis_source": [
+        0,
+        1,
+        0
+      ],
+      "axis_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "travel": 0.22,
+      "semantic_parts": [
+        "removable_rear_service_cover",
+        "rear_cover_pull_bridge",
+        "rear_pull_left_return",
+        "rear_pull_right_return"
+      ],
+      "contact_allowance_m": 0,
+      "initial_pose": 0
+    },
+    {
+      "root": "LIGHT_AIM_X",
+      "kind": "rotation",
+      "pivot_source_m": [
+        0.0,
+        0.11500000208616257,
+        1.5399999618530273
+      ],
+      "pivot_gltf_m": [
+        0.0,
+        1.5399999618530273,
+        -0.11500000208616257
+      ],
+      "axis_source": [
+        1,
+        0,
+        0
+      ],
+      "axis_gltf": [
+        1,
+        0,
+        0
+      ],
+      "travel": -25,
+      "semantic_parts": [
+        "formed_light_hood",
+        "light_rear_spine",
+        "left_light_end_shield",
+        "right_light_end_shield",
+        "downturned_glare_shield",
+        "recessed_opal_diffuser",
+        "inactive_local_control_pad"
+      ],
+      "contact_allowance_m": 0,
+      "initial_pose": 0
+    }
+  ],
+  "state_derivatives": [
+    {
+      "name": "REAR_COVER_REMOVE terminal",
+      "export": "exports/AST-CUL-004_service_open.glb",
+      "root": "REAR_COVER_REMOVE",
+      "kind": "translation",
+      "travel": 0.22,
+      "bounds_source": {
+        "min_m": [
+          -0.36000001430511475,
+          -0.33000001311302185,
+          0.0
+        ],
+        "max_m": [
+          0.36000001430511475,
+          0.44599997997283936,
+          1.625
+        ],
+        "dimensions_m": [
+          0.7200000286102295,
+          0.7759999930858612,
+          1.625
+        ]
+      },
+      "glb_sha256": "0b54e998e991c9d629a2a8322166fd65463a5231e65a176e9fbadfe24e4f03df"
+    },
+    {
+      "name": "LIGHT_AIM_X terminal",
+      "export": "exports/AST-CUL-004_aimed.glb",
+      "root": "LIGHT_AIM_X",
+      "kind": "rotation",
+      "travel": -25,
+      "bounds_source": {
+        "min_m": [
+          -0.36000001430511475,
+          -0.33000001311302185,
+          0.0
+        ],
+        "max_m": [
+          0.36000001430511475,
+          0.3100000023841858,
+          1.7078990936279297
+        ],
+        "dimensions_m": [
+          0.7200000286102295,
+          0.6400000154972076,
+          1.7078990936279297
+        ]
+      },
+      "glb_sha256": "634e3240522865517c20016a15697874b615b49f552f50efd572c4ef5f6372bd"
+    }
+  ],
+  "collision_proposal_file": "collision_proposals.json",
+  "marker_api_file": "marker_api.json",
+  "used_textures_packed": true,
+  "source_sha256": "697b8f567d0d4d5d10ff9f0f556050aa79bf1e09636a7036ec170badbb753115",
+  "glb_sha256": "2da451918728852186d3a47ebd77d335319db34d9b8c974e93558c0a33ed2bb4",
+  "generator_sha256": "850da309258c0be110c5ca45aa4c10f5b2330a6520d4cbbb9eaf3a86a9e52df0",
+  "details": {
+    "context": "Separate D11_service workshop use proposal; no inferred physical connection to theatre wings",
+    "aim_motion": {
+      "root": "LIGHT_AIM_X",
+      "pivot_source_m": [
+        0,
+        0.115,
+        1.54
+      ],
+      "pivot_gltf_m": [
+        0,
+        1.54,
+        -0.115
+      ],
+      "axis_source": [
+        1,
+        0,
+        0
+      ],
+      "axis_gltf": [
+        1,
+        0,
+        0
+      ],
+      "range_degrees": [
+        0,
+        -25
+      ]
+    },
+    "service_motion": {
+      "root": "REAR_COVER_REMOVE",
+      "translation_source_m": [
+        0,
+        0.22,
+        0
+      ],
+      "translation_gltf_m": [
+        0,
+        0,
+        -0.22
+      ],
+      "type": "Supported at closed boundary; complete lift-off cover translation as a handling proposal, no retained hinge"
+    },
+    "work_surface_height_m": 0.962,
+    "access_reservations": [
+      {
+        "name": "complete_occupied_cover_removal_sweep",
+        "kind": "occupied_handling_swept_reservation_not_empty_void",
+        "min_source_m": [
+          -0.049,
+          0.175,
+          0.09
+        ],
+        "max_source_m": [
+          0.049,
+          0.446,
+          1.36
+        ],
+        "min_gltf_m": [
+          -0.049,
+          0.09,
+          -0.446
+        ],
+        "max_gltf_m": [
+          0.049,
+          1.36,
+          -0.175
+        ],
+        "includes": "entire cover, both handle returns and pull bridge from true closed pose to +0.22m removal"
+      }
+    ],
+    "inactive_marking": "WORK / REHEARSAL / CUE NOTES / INACTIVE",
+    "electrical_scope": "Protected proposed cable and non-emissive diffuser, no outlet assignment, powered cable, flexible joint wiring, active cue/control, photometry or stage certification",
+    "light_material_emission_strength": 0
+  },
+  "limitations": [
+    "Original host absent; no placement, row assignment, stage connection or capacity addition",
+    "All six-species body/support/reach, room/route/crowd, collision adoption and target-PC performance acceptance pending",
+    "No runtime mechanical, cue/control, electrical, lighting/acoustic, stability/load or stage certification"
+  ]
+}

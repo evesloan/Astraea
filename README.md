@@ -4,9 +4,9 @@ New asset production began on 2 October 2026 while recovery of the original ship
 
 Batch 01 is a compact coordinated day-use family: upholstered window bench, reading chair, day table, and four compatible deep reveal/junction pieces. It translates the supplied residential and premium references into editable low-poly furniture and construction components. Every authored asset is counted once, separately from exports and any LODs. This is one standard day-use construction family, not sufficient variety for every district or luxury tier. The furniture does not claim aquatic use, cocoon provision or universal species fit.
 
-The catalogue now contains 77 unique authored component designs, with zero adopted game instances. Batch15 adds the four shared-crew rest/privacy components. Exact IDs, source/export paths, review status and limits are in catalogue_manifest.json and the per-batch manifests.
+The catalogue now contains 81 unique authored component designs, with zero adopted game instances. Batch16 adds four auditorium arrival, audience and backstage components. Exact IDs, source/export paths, review status and limits are in catalogue_manifest.json and the per-batch manifests.
 
-The collection covers guest day-use, libraries, staff/service, botanical edges, aquatic leisure, engineering utilities, hospitality service, salon transitions and clinical support. These are reviewed components; whole-room composition, six-species fitting and game adoption still require the recovered host and further testing.
+The collection covers guest day-use, libraries, staff/service, botanical edges, aquatic leisure, engineering utilities, hospitality service, salon transitions, clinical support and cultural/auditorium use. These are reviewed components; whole-room composition, six-species fitting and game adoption still require the recovered host and further testing.
 
 ## Current verification boundary
 
@@ -121,3 +121,13 @@ The historical D08 changing allocation and farther-aft towel/care allocation are
 Four original designs extend the practical staff family with shaped single-place bedding and frame, a supported side curtain with constant-length geometric folds, useful open storage with a hollow moving drawer, and a joined reading-light/shelf module. The relative QA pair repeats those four assets; it is not a new cabin or population allocation.
 
 The actual shared-room reference and preserved D03 programme guide material restraint, personal privacy and storage. Final room dimensions, the player’s shared-home identity and all six-species body/environment fitting remain unresolved. The source photo’s bunk option is not claimed implemented by two independent frames. The 77-row index retains every earlier record. See batches/batch15/STATUS.md for actual export, motion, collision and ordinary-height review scope.
+
+## Batch16 auditorium use
+
+Four original designs add a cultural programme/acoustic return, usher station, economical repeated audience seat/end and distinct backstage cue/work-light stand. Source ownership, material roles, true access/seat states and source/native interfaces are explicit. The repeated seat is reviewed as a compact primary component; counts do not claim engine or crowd performance.
+
+The D11 handoff preserves the historical theatre/cinema capacity and the D12/D13 access aliases. The workshop remains a separate allocation. New relative inspection examples do not create a finished foyer, audience row or stage-wing connection, and actual body/aisle/rake/access fitting awaits the host. See batches/batch16/STATUS.md and the exact independent source/visual receipt.
+
+### Optional body-collision candidates
+
+Batch16 preserves the detailed seat and stand mechanism/reference profiles and adds an explicit separate body-only selection at standards/body_proxy_candidates.json. The seat subset uses 13 unchanged profiles instead of 43; the stand uses 30 instead of 56. No new enclosing hull is added. All primary floor/rest/work/control surfaces and declared empty regions remain represented, while fine pivots/internal cable detail is omitted. Conservative omission bounds are 72.002 mm and 48.002 mm. Precise service, mechanism and interaction contacts still require the detailed set and physical markers. These are optional adoption candidates with no runtime or performance approval. Their selector reproduces a second-stage result from the independently reproduced base collision output; it is not disguised as an original source input.
