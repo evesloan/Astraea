@@ -144,7 +144,7 @@ func _ready() -> void:
 			actor.camera.rotation.x = actor.pitch
 			await get_tree().create_timer(.6).timeout
 			await _capture("garden_overlook_")
-			for view in [{"p":Vector3(-53,27.1,0),"yaw":PI/2,"label":"canopy_arrival_"},{"p":Vector3(-72,27.1,0),"yaw":-PI/2,"label":"canopy_return_"}]:
+			for view in [{"p":Vector3(-42,27.1,3),"yaw":1.34,"label":"canopy_portico_"},{"p":Vector3(-53,27.1,0),"yaw":PI/2,"label":"canopy_arrival_"},{"p":Vector3(-72,27.1,0),"yaw":-PI/2,"label":"canopy_return_"}]:
 				actor.spawn_position = view.p
 				actor.position = view.p
 				actor.velocity = Vector3.ZERO

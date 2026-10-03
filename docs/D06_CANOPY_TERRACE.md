@@ -9,3 +9,6 @@ Source/export roundtrip and focused135-point arrival/niche checks passed. All13 
 Visual review: the narrowed arrival and sheltered edges now read, but the central floor remains too undifferentiated, wall bays need deeper coordinated profiles and the planting/furnishing composition needs refinement. This is a reversible production checkpoint, not the final art threshold.
 
 The following finish pass adds four deep acoustic wall returns with stone shelves and coordinated headers, plus two asymmetrically placed conversation groups on fitted floor islands. The groups avoid the central spine and the tested routes to quieter perimeter seats. Furniture remains static; this is not a completed NPC-use or cleaning-gameplay pass.
+
+## Arrival connection
+AST-GAR-005 continues the six-metre doorway into the existing forecourt with a fanning canopy and two profiled forked piers, rather than leaving the room entrance flush against an empty gallery. It has no new slab or allocation; its bounds are validated separately from the actual room. The inner room now also has two rear benches facing the atrium view, with tested side approaches.

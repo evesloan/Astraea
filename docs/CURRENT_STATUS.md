@@ -11,7 +11,7 @@ Updated 2026-10-03 after the D06 planted court and connected Canopy terrace arri
 - An eastern arrival room inside the existing D06 Canopy terrace allocation: faceted envelope, raised central ceiling field, two garden/resting pockets and quiet perimeter niches; remaining allocation and adjoining gallery remain unfinished
 - Partial D09 salon with authored enclosure, variable ceiling profile, glazed gallery, conversation/reading/study/refreshment groups
 - One low-resolution presentation stack, adjustable resolution/effects, restrained dithering, selected source-positioned shadows and geometric occlusion
-- 104 catalogue design families including15 recent drafts. Imported presence does not measure completed rooms
+- 105 catalogue design families including16 recent drafts. Imported presence does not measure completed rooms
 
 ## Evidence
 Checkpoint10 clean restore passed all10 then-existing test groups. The subsequent reading-light and garden-overlook integration passed all12 current working-source import,world,route,interaction and asset-placement groups. Current graphical captures use cloud llvmpipe software rendering. Static paired visibility review reduced the window view from2254 to752 visible draw calls with an unchanged image. This is not an FPS or target-hardware result.
@@ -25,7 +25,7 @@ No completed ship, finished guest units, populated guest life, real cleaning car
 Automatic post-commit and changed-WIP retention is running. Godot2e148e4 and catalogue621cc2e were independently retained after the planted-court pass; the Canopy terrace commit follows its final validation. Earlier archives remain retained. Only the initial baseline is verified on Workshop; the latest six-file download set awaits local verification. See AUTOMATED_BACKUPS.md for actual coverage and reset limits.
 
 ## Latest checks
-The Canopy terrace integration passes all13 current Godot groups, including51 spine and84 niche approach probes, allocation/vertical fit and four real fixture-source exits. The structural compiler reports no coplanar ownership overlaps or invalid opening triangulation. Source/GLB bounds roundtrip passes. These checks do not establish finished art, loaded-cart travel, guest navigation or target-GPU performance.
+The Canopy terrace integration passes all13 current Godot groups, including213 three-lane spine,84 niche and26 rear-seat approach probes, allocation/vertical fit and six real fixture-source exits. The structural compiler reports no coplanar ownership overlaps or invalid opening triangulation. Source/GLB bounds roundtrip passes. These checks do not establish finished art, loaded-cart travel, guest navigation or target-GPU performance.
 
 ## Next construction gate
 Use WHOLE_SHIP_SECTION_COORDINATION.md and its source-hashed JSON audit to coordinate district volumes and neighbouring uses before adding full floor plates or propagating room shells. Continue district-specific Blender authoring alongside actual spatial composition. Keep all protected guest allocations and existing programme interfaces until any conflict is explicitly resolved.

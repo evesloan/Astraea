@@ -30,3 +30,21 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 			var offset := Vector3(1.25*side,0,0).rotated(Vector3.UP,group.axis)
 			var yaw := atan2(-offset.x,-offset.z)
 			ship.model(root,"AST-FUR-002_day_reading_chair.glb","CanopyConversationChair",center+offset,yaw)
+	# The western edge becomes a usable destination facing back toward the
+	# atrium. Opposed benches leave the axial arrival visible and accessible.
+	for side in [-1,1]:
+		ship.model(root,"AST-FUR-001_day_window_bench.glb","CanopyRearBench_"+str(side),Vector3(-78,27,side*3.4),PI/2)
+		ship.model(root,"AST-FUR-003_day_table.glb","CanopyRearTable_"+str(side),Vector3(-76.6,27,side*3.4))
+	var portico := ship.model(root,"AST-GAR-005.glb","CanopyArrivalPortico",Vector3(-52,27,0)) as Node3D
+	for i in range(2):
+		var marker := portico.find_child("DATUM_light_"+str(i),true,false) as Node3D
+		var source := SpotLight3D.new()
+		root.add_child(source)
+		source.name = "CanopyPorticoLight_"+str(i)
+		source.global_position = marker.global_position
+		source.rotation.x = -PI/2
+		source.spot_range = 6
+		source.spot_angle = 64
+		source.light_energy = 1.3
+		source.light_color = Color(1,.96,.88)
+		source.shadow_enabled = true
