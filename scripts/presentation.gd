@@ -136,6 +136,14 @@ func _ready() -> void:
 			await get_tree().create_timer(1.0).timeout
 			get_node("NativeResolutionStatus").text = "ASTRAEA / D06 CURVED GALLERY — unfinished architecture"
 			await _capture("d06_")
+			actor.spawn_position = Vector3(-34,27.1,-19)
+			actor.position = actor.spawn_position
+			actor.velocity = Vector3.ZERO
+			actor.rotation.y = .6435
+			actor.pitch = .05
+			actor.camera.rotation.x = actor.pitch
+			await get_tree().create_timer(.6).timeout
+			await _capture("garden_overlook_")
 			actor.spawn_position = Vector3(5,52.6,-59)
 			actor.position = actor.spawn_position
 			actor.rotation.y = PI

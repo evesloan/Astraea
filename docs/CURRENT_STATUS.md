@@ -7,12 +7,13 @@ Updated 2026-10-03 after checkpoint10 and the reading-light interaction pass. Fr
 - Partial D01 staff service bay with tested two-leaf focus/E door
 - Partial connected D08–D10 aquatic/garden/dining section with two traversable switchback stairs and a wet-rest alcove
 - Sixteen atrium terraces following their recovered contours, four principal bands with fitted supports, D02 planted water garden and opaque D18 cap
+- A sheltered D06 port garden overlook with an asymmetrical canopy, integrated rests and planted ends; surrounding gallery architecture remains unfinished
 - Partial D09 salon with authored enclosure, variable ceiling profile, glazed gallery, conversation/reading/study/refreshment groups
 - One low-resolution presentation stack, adjustable resolution/effects, restrained dithering, selected source-positioned shadows and geometric occlusion
-- 102 catalogue design families including13 recent drafts;39 families represented by222 imported model instances. Neither count measures completed rooms
+- 103 catalogue design families including14 recent drafts;40 families represented by226 imported model instances. Neither count measures completed rooms
 
 ## Evidence
-Checkpoint10 clean restore passed all10 then-existing test groups. The subsequent reading-light integration passed all11 current working-source import,world,route,interaction and asset-placement groups. Current graphical captures use cloud llvmpipe software rendering. Static paired visibility review reduced the window view from2254 to752 visible draw calls with an unchanged image. This is not an FPS or target-hardware result.
+Checkpoint10 clean restore passed all10 then-existing test groups. The subsequent reading-light and garden-overlook integration passed all12 current working-source import,world,route,interaction and asset-placement groups. Current graphical captures use cloud llvmpipe software rendering. Static paired visibility review reduced the window view from2254 to752 visible draw calls with an unchanged image. This is not an FPS or target-hardware result.
 
 The subsequent section audit accounts for161 historical programmes and1,000 guest allocation envelopes, with120 adjacent-level programme overlaps. Checked atrium,theatre and aquatic openings intersect no guest envelopes. These are allocation/geometry checks; luxury fitting, physical beds and whole-ship access are unresolved.
 
