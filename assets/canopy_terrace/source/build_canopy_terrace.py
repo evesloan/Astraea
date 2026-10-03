@@ -49,6 +49,21 @@ for i in range(len(outline)-1):
   for j in range(3):
    q=a.lerp(b,(j+.5)/3)-n*.13
    extrusion('CAN_Reveal_%d_%d'%(i,j),[tuple(q+t*u+n*v) for u,v in [(-.09,-.10),(.09,-.10),(.09,.10),(-.09,.10)]],.62,h,'warm_walnut')
+# Selected wall bays have deep, coordinated acoustic returns, rather than
+# repeating the same vertical baton on every face. Low tables can face these
+# quieter edges while the centre remains an understandable through route.
+for i in [3,5,8,10]:
+ a=Vector(outline[i]);b=Vector(outline[i+1]);t=(b-a).normalized();n=Vector((-t.y,t.x));c=(a+b)/2-n*.16;half=min((b-a).length*.32,1.7)
+ def quad(u0,u1,v0,v1):return [tuple(c+t*u+n*v)for u,v in [(u0,v0),(u1,v0),(u1,v1),(u0,v1)]]
+ extrusion('CAN_AcousticInset_'+str(i),quad(-half,half,-.03,.03),1.05,3.12,'teal_weave')
+ for j,sign in enumerate([-1,1]):
+  extrusion('CAN_DeepReturn_%d_%d'%(i,j),quad(sign*half-.09,sign*half+.09,-.20,.12),.62,3.52,'warm_walnut')
+ extrusion('CAN_LowDisplayShelf_'+str(i),quad(-half-.12,half+.12,-.32,.09),.80,.91,'warm_stone')
+ extrusion('CAN_RecessedHeader_'+str(i),quad(-half-.16,half+.16,-.27,.15),3.35,3.52,'ivory_enamel')
+# Two tailored floor islands support the social groups; no raised platform
+# blocks the accessible central route or the perimeter niche approaches.
+for i,(cx,cy,rx,ry) in enumerate([(-15,3.2,3.0,1.5),(-8.5,-5.0,2.2,2.0)]):
+ extrusion('CAN_GatheringFloor_'+str(i),[(cx+rx*math.cos(j*math.tau/24),cy+ry*math.sin(j*math.tau/24))for j in range(24)],.001,.009,'warm_walnut')
 # A broad raised ceiling field replaces the single-point tent. The offset
 # inner ring creates a low perimeter and a legible high central gathering space.
 inner=[(-15+(x+15)*.62,y*.60) for x,y in outline]
