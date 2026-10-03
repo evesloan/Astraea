@@ -1,0 +1,115 @@
+{
+  "catalogue_id": "AST-CRW-001",
+  "title": "Single-place crew rest frame with fitted bedding",
+  "unique_design": true,
+  "script_assisted_original_design": true,
+  "source": "source/AST-CRW-001.blend",
+  "export": "exports/AST-CRW-001.glb",
+  "generator": "source/build_crew_rest.py",
+  "dimension_adjustment": "Editable semantic meshes and generator coordinates; summary fields are not live dimension controls. Resizing requires coordinated interface/collision review.",
+  "source_coordinates": {
+    "units": "metres",
+    "right": "+X",
+    "depth": "+Y",
+    "up": "+Z",
+    "front": "-Y (foot end); long-side access +X",
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "pivot_datum": "floor/foot-end centre, NOT centred footprint"
+  },
+  "glb_coordinates": {
+    "up": "+Y",
+    "source_to_glb": "(x,y,z)->(x,z,-y)"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.5400000214576721,
+      0.0,
+      0.0
+    ],
+    "max_m": [
+      0.5400000214576721,
+      2.200000047683716,
+      1.100000023841858
+    ],
+    "dimensions_m": [
+      1.0800000429153442,
+      2.200000047683716,
+      1.100000023841858
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -0.5400000214576721,
+      0.0,
+      -2.200000047683716
+    ],
+    "max_m": [
+      0.5400000214576721,
+      1.100000023841858,
+      -0.0
+    ]
+  },
+  "editable_semantic_parts": 34,
+  "semantic_parts": [
+    "001_floor_pad_-1_0",
+    "001_folded_leg_-1_0",
+    "001_floor_pad_-1_1",
+    "001_folded_leg_-1_1",
+    "001_floor_pad_-1_2",
+    "001_folded_leg_-1_2",
+    "001_side_rail_-1",
+    "001_inward_bearing_lip_-1",
+    "001_floor_pad_1_0",
+    "001_folded_leg_1_0",
+    "001_floor_pad_1_1",
+    "001_folded_leg_1_1",
+    "001_floor_pad_1_2",
+    "001_folded_leg_1_2",
+    "001_side_rail_1",
+    "001_inward_bearing_lip_1",
+    "001_breathable_support_slat_0",
+    "001_breathable_support_slat_1",
+    "001_breathable_support_slat_2",
+    "001_breathable_support_slat_3",
+    "001_breathable_support_slat_4",
+    "001_breathable_support_slat_5",
+    "001_breathable_support_slat_6",
+    "001_breathable_support_slat_7",
+    "001_breathable_support_slat_8",
+    "001_foot_crossrail",
+    "001_head_crossrail",
+    "001_shaped_single_mattress",
+    "001_shaped_head_pillow",
+    "001_draped_folded_blanket",
+    "001_flat_headboard",
+    "001_headboard_support_-1",
+    "001_headboard_support_1",
+    "001_low_foot_guard"
+  ],
+  "evaluated_triangles": 5132,
+  "material_roles": [
+    "crew_ecru_sheet",
+    "crew_terracotta_blanket",
+    "staff_bluegrey_paint",
+    "staff_rubber",
+    "staff_white_paint",
+    "staff_zinc"
+  ],
+  "runtime_consolidation": "Evaluated meshes grouped by material and static/moving parent; semantic source preserved, moving roots and physical markers retained",
+  "interface_api": "interface_api.json",
+  "collision_proposal_file": "collision_proposals.json",
+  "source_sha256": "7a47d55b997b6c6d6caf5ef4a43ca5755b36023141ffb4bcc6bb0ca54aca7993",
+  "glb_sha256": "07ca15b5b50c371a481b04e9c847fbd7d487294f4cfb77affa7fdaf6cbd81835",
+  "generator_sha256": "0a3b26d6e9fedf95066c0135b7f832d62470cadde3b0d8f54b54e9adccb4f295",
+  "state_derivatives": [],
+  "limitations": [
+    "Single-place dry prototype; no registered berth/person/room allocation",
+    "Only configured source size checked; six-species fit, sleeping poses and loads unverified",
+    "No stacked configuration, original host fit, cloth simulation, gameplay, acoustics or lighting performance",
+    "Collision compounds are proposals preserving declared voids; not runtime physics certification"
+  ]
+}

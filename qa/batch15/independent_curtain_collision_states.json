@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "collision_path": "assets/crew_rest/collision_proposals.json",
+  "collision_sha256": "f689b060748302c0b78eaa57c9b4073fdca1411275ad1d4a933100c69d8ea21c",
+  "curtain_states": [
+    {
+      "gather": 0,
+      "actual_source_sha256": "a419c85160603296dc8772d1170c5c86cf5967af2f04bbcf8aaada439be416af",
+      "thin_panel_shape_count": 24,
+      "evaluated_source_corner_edge_centroid_count": 2090,
+      "samples_outside_proposal": 299,
+      "sampled_max_undercoverage_m": 0.000728483344409214,
+      "proposal_vertex_samples": 192,
+      "sampled_max_external_vertex_inflation_m": 0.00018879956809267934,
+      "author_declared_complete_profile_bound_m": 0.003,
+      "pass": true
+    },
+    {
+      "gather": 1,
+      "actual_source_sha256": "a419c85160603296dc8772d1170c5c86cf5967af2f04bbcf8aaada439be416af",
+      "thin_panel_shape_count": 24,
+      "evaluated_source_corner_edge_centroid_count": 2090,
+      "samples_outside_proposal": 299,
+      "sampled_max_undercoverage_m": 0.0014840289935370103,
+      "proposal_vertex_samples": 192,
+      "sampled_max_external_vertex_inflation_m": 0.001281663617272599,
+      "author_declared_complete_profile_bound_m": 0.003,
+      "pass": true
+    }
+  ],
+  "blanket_visual_omission_bound": {
+    "source_sha256": "c5773eda6fae26d58a7accb1c57818aee4ceb491d47b1490946de33139e38024",
+    "vertex_count": 418,
+    "max_vertex_distance_to_convex_mattress_m": 0.07962621999358464,
+    "declared_omission_bound_m": 0.08,
+    "complete_surface_bound_basis": "Distance to a convex set is convex. Every planar triangle point is a convex combination of its vertices, so every triangle distance is <= maximum vertex distance. Other collision bodies can only reduce union distance.",
+    "pass": true
+  },
+  "limits": [
+    "Thin-panel sample values are finite; complete declared3mm normal-offset bound is the triangle inequality for two1.5mm offsets of the same neutral panel, with linear interpolation across panel faces.",
+    "The blanket is explicitly a visual textile without independent flexible collision; the mattress supplies rest collision. No engine collision or real cloth behavior is certified."
+  ],
+  "executed_script_sha256": "2bcd67000a6aecc245e6aa78abe06afb4b177994603dd727bc0d224cd7601384"
+}

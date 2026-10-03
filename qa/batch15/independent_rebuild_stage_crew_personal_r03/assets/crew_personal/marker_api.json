@@ -1,0 +1,472 @@
+{
+  "AST-CRW-003": [
+    {
+      "name": "LEFT_FRONT_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.26,
+        -0.16,
+        0
+      ],
+      "gltf_m": [
+        -0.26,
+        0,
+        0.16
+      ],
+      "physical_part": "left_front_floor_sole",
+      "parent_root": "AST-CRW-003",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "LEFT_BACK_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.26,
+        0.16,
+        0
+      ],
+      "gltf_m": [
+        -0.26,
+        0,
+        -0.16
+      ],
+      "physical_part": "left_back_floor_sole",
+      "parent_root": "AST-CRW-003",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_FRONT_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.26,
+        -0.16,
+        0
+      ],
+      "gltf_m": [
+        0.26,
+        0,
+        0.16
+      ],
+      "physical_part": "right_front_floor_sole",
+      "parent_root": "AST-CRW-003",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_BACK_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.26,
+        0.16,
+        0
+      ],
+      "gltf_m": [
+        0.26,
+        0,
+        -0.16
+      ],
+      "physical_part": "right_back_floor_sole",
+      "parent_root": "AST-CRW-003",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "LOWER_OPEN_SHELF_RESTING_SURFACE",
+      "kind": "physical_storage_contact",
+      "source_m": [
+        0,
+        -0.05,
+        0.525
+      ],
+      "gltf_m": [
+        0,
+        0.525,
+        0.05
+      ],
+      "physical_part": "lower_open_shelf_replaceable_liner",
+      "parent_root": "AST-CRW-003",
+      "description": "Useful open personal storage; no item, identity or ownership assignment",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "UPPER_OPEN_SHELF_RESTING_SURFACE",
+      "kind": "physical_storage_contact",
+      "source_m": [
+        0,
+        -0.05,
+        0.915
+      ],
+      "gltf_m": [
+        0,
+        0.915,
+        0.05
+      ],
+      "physical_part": "upper_open_shelf_replaceable_liner",
+      "parent_root": "AST-CRW-003",
+      "description": "Useful open personal storage; no item, identity or ownership assignment",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "DRAWER_GRIP",
+      "kind": "physical_hand_contact",
+      "source_m": [
+        0,
+        -0.296,
+        0.355
+      ],
+      "gltf_m": [
+        0,
+        0.355,
+        0.296
+      ],
+      "physical_part": "drawer_pull_bridge",
+      "parent_root": "DRAWER_TRANSLATE",
+      "description": "Grip moves with complete drawer root; no live interaction",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "DRAWER_INNER_STORAGE",
+      "kind": "physical_storage_contact",
+      "source_m": [
+        0,
+        0,
+        0.213
+      ],
+      "gltf_m": [
+        0,
+        0.213,
+        0
+      ],
+      "physical_part": "drawer_inner_base",
+      "parent_root": "DRAWER_TRANSLATE",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "FLOOR_DATUM",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "parent_root": "AST-CRW-003",
+      "description": "Origin between four soles, not a physical centre floor contact"
+    }
+  ],
+  "AST-CRW-004": [
+    {
+      "name": "HEADBOARD_CONTACT_L_LOW",
+      "kind": "physical_mount_contact",
+      "source_m": [
+        -0.11,
+        0,
+        -0.12
+      ],
+      "gltf_m": [
+        -0.11,
+        -0.12,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "Opposes actual AST-CRW-001 headboard face after declared placement",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "HEADBOARD_CONTACT_L_HIGH",
+      "kind": "physical_mount_contact",
+      "source_m": [
+        -0.11,
+        0,
+        0.12
+      ],
+      "gltf_m": [
+        -0.11,
+        0.12,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "Opposes actual AST-CRW-001 headboard face after declared placement",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "HEADBOARD_CONTACT_R_LOW",
+      "kind": "physical_mount_contact",
+      "source_m": [
+        0.11,
+        0,
+        -0.12
+      ],
+      "gltf_m": [
+        0.11,
+        -0.12,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "Opposes actual AST-CRW-001 headboard face after declared placement",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "HEADBOARD_CONTACT_R_HIGH",
+      "kind": "physical_mount_contact",
+      "source_m": [
+        0.11,
+        0,
+        0.12
+      ],
+      "gltf_m": [
+        0.11,
+        0.12,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "Opposes actual AST-CRW-001 headboard face after declared placement",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "PERSONAL_SHELF_SURFACE",
+      "kind": "physical_resting_surface",
+      "source_m": [
+        0,
+        -0.13,
+        -0.12
+      ],
+      "gltf_m": [
+        0,
+        -0.12,
+        0.13
+      ],
+      "physical_part": "replaceable_small_shelf_liner",
+      "parent_root": "AST-CRW-004",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "PROPOSED_EMITTER_SURFACE",
+      "kind": "physical_proposed_emitter_surface",
+      "source_m": [
+        0,
+        -0.11,
+        0.16
+      ],
+      "gltf_m": [
+        0,
+        0.16,
+        0.11
+      ],
+      "physical_part": "recessed_task_light_diffuser",
+      "parent_root": "AST-CRW-004",
+      "description": "Opal art surface and proposed local emitter position; material emits no light and actual runtime light/photometry are unimplemented",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "PROPOSED_LIGHT_AIM",
+      "kind": "nonphysical_light_aim",
+      "source_m": [
+        0,
+        -0.11,
+        0.16
+      ],
+      "gltf_m": [
+        0,
+        0.16,
+        0.11
+      ],
+      "physical_part": null,
+      "parent_root": "AST-CRW-004",
+      "description": "Suggested local down/forward aim (0,-.22,-.98), distinct from physical diffuser normal (0,0,-1)"
+    },
+    {
+      "name": "PROPOSED_LIGHT_CONTROL",
+      "kind": "physical_control_proposal",
+      "source_m": [
+        0.097,
+        -0.02,
+        0.032
+      ],
+      "gltf_m": [
+        0.097,
+        0.032,
+        0.02
+      ],
+      "physical_part": "proposed_local_control_pad",
+      "parent_root": "AST-CRW-004",
+      "description": "Physical proposed button face; no game input or implemented electrical control",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "MOUNT_DATUM",
+      "kind": "physical_mount_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ]
+}

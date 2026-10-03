@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch15/independent_rebuild_runner.py", line 29, in <module>
+    ident=p.stem;original=source/'source'/p.name;sp=OUT/f'independent_source_{ident}.json';rp=OUT/f'{prefix}source_{ident}.json';s=json.loads(sp.read_text());r=json.loads(rp.read_text());assert s['sha256']==sha(original)and r['sha256']==sha(p)
+                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

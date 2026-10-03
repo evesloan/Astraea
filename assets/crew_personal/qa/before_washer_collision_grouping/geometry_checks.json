@@ -1,0 +1,525 @@
+{
+  "method": "Scipy convex hull and maximum-insphere intersection on entire evaluated convex solids, full-volume voids and continuous linear moving-part swept hulls",
+  "assets": [
+    {
+      "catalogue_id": "AST-CRW-003",
+      "complete_void_checks": [
+        {
+          "name": "lower_open_retrieval_volume",
+          "test": "Every full convex evaluated source solid against complete bounded void, not centre-ray sampling",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "upper_open_retrieval_volume",
+          "test": "Every full convex evaluated source solid against complete bounded void, not centre-ray sampling",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "drawer_inner_useful_volume",
+          "test": "Every full convex evaluated source solid against complete bounded void, not centre-ray sampling",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "pull_fingerspace",
+          "test": "Every full convex evaluated source solid against complete bounded void, not centre-ray sampling",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "between_feet_underplinth",
+          "test": "Every full convex evaluated source solid against complete bounded void, not centre-ray sampling",
+          "hits": [],
+          "passes": true
+        }
+      ],
+      "complete_drawer_sweep": {
+        "motion": "continuous translation [0,-.24,0] from exact zero; convex hull per moving physical solid, against every fixed solid",
+        "moving_parts": 10,
+        "fixed_parts": 19,
+        "includes_handle_returns_bridge_and_slides": true,
+        "penetrations": [],
+        "passes": true
+      },
+      "support_graph": {
+        "physical_support_roots": [
+          "left_back_floor_sole",
+          "left_front_floor_sole",
+          "right_back_floor_sole",
+          "right_front_floor_sole"
+        ],
+        "all_parts": 29,
+        "reachable": 29,
+        "unconnected_parts": [],
+        "passes": true
+      },
+      "collision_profiles": [
+        {
+          "name": "left_front_floor_sole_structural_profile",
+          "covered_parts": [
+            "left_front_floor_sole",
+            "left_front_short_support"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.005333344141642271,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "left_back_floor_sole_structural_profile",
+          "covered_parts": [
+            "left_back_floor_sole",
+            "left_back_short_support"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.005333344141642271,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "right_front_floor_sole_structural_profile",
+          "covered_parts": [
+            "right_front_floor_sole",
+            "right_front_short_support"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.005333344141642271,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "right_back_floor_sole_structural_profile",
+          "covered_parts": [
+            "right_back_floor_sole",
+            "right_back_short_support"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.005333344141642271,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "protected_plinth_structural_profile",
+          "covered_parts": [
+            "protected_plinth"
+          ],
+          "source_vertex_outside_max_m": 1.0536712113928814e-08,
+          "max_sampled_profile_plane_excess_m": 0.0005637849347689405,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "left_formed_cheek_structural_profile",
+          "covered_parts": [
+            "left_formed_cheek"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0006493153666164986,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "right_formed_cheek_structural_profile",
+          "covered_parts": [
+            "right_formed_cheek"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0006493153666164986,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "recessed_bluegrey_back_structural_profile",
+          "covered_parts": [
+            "recessed_bluegrey_back"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0006493008302346226,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "lower_open_shelf_structural_profile",
+          "covered_parts": [
+            "lower_open_shelf"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0006489453141624857,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "lower_open_shelf_replaceable_liner_structural_profile",
+          "covered_parts": [
+            "lower_open_shelf_replaceable_liner"
+          ],
+          "source_vertex_outside_max_m": 4.470367964692912e-10,
+          "max_sampled_profile_plane_excess_m": 0.000338240042342286,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "upper_open_shelf_structural_profile",
+          "covered_parts": [
+            "upper_open_shelf"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0006489453141624857,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "upper_open_shelf_replaceable_liner_structural_profile",
+          "covered_parts": [
+            "upper_open_shelf_replaceable_liner"
+          ],
+          "source_vertex_outside_max_m": 4.470367964692912e-10,
+          "max_sampled_profile_plane_excess_m": 0.00033818276149544246,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "protected_top_cap_structural_profile",
+          "covered_parts": [
+            "protected_top_cap"
+          ],
+          "source_vertex_outside_max_m": 8.278400187577972e-10,
+          "max_sampled_profile_plane_excess_m": 0.0011277977969164077,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "left_fixed_drawer_runner_structural_profile",
+          "covered_parts": [
+            "left_fixed_drawer_runner"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "right_fixed_drawer_runner_structural_profile",
+          "covered_parts": [
+            "right_fixed_drawer_runner"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_inner_base_structural_profile",
+          "covered_parts": [
+            "drawer_inner_base"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_left_wall_structural_profile",
+          "covered_parts": [
+            "drawer_left_wall"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_left_sliding_runner_structural_profile",
+          "covered_parts": [
+            "drawer_left_sliding_runner"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_right_wall_structural_profile",
+          "covered_parts": [
+            "drawer_right_wall"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_right_sliding_runner_structural_profile",
+          "covered_parts": [
+            "drawer_right_sliding_runner"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_back_wall_structural_profile",
+          "covered_parts": [
+            "drawer_back_wall"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_protected_front_structural_profile",
+          "covered_parts": [
+            "drawer_protected_front"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0006489861053949053,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_pull_bridge_structural_profile",
+          "covered_parts": [
+            "drawer_pull_bridge"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0019468027016823763,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_left_pull_return_structural_profile",
+          "covered_parts": [
+            "drawer_left_pull_return"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0006489740746722927,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "drawer_right_pull_return_structural_profile",
+          "covered_parts": [
+            "drawer_right_pull_return"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0006489740746722927,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        }
+      ],
+      "source_overlap_screen": [],
+      "passes": true
+    },
+    {
+      "catalogue_id": "AST-CRW-004",
+      "complete_void_checks": [
+        {
+          "name": "shelf_useful_retrieval_volume",
+          "test": "Every full convex evaluated source solid against complete bounded void, not centre-ray sampling",
+          "hits": [],
+          "passes": true
+        }
+      ],
+      "complete_drawer_sweep": {
+        "motion": "continuous translation [0,-.24,0] from exact zero; convex hull per moving physical solid, against every fixed solid",
+        "moving_parts": 0,
+        "fixed_parts": 16,
+        "includes_handle_returns_bridge_and_slides": false,
+        "penetrations": [],
+        "passes": true
+      },
+      "support_graph": {
+        "physical_support_roots": [
+          "headboard_mount_backplate"
+        ],
+        "all_parts": 16,
+        "reachable": 16,
+        "unconnected_parts": [],
+        "passes": true
+      },
+      "collision_profiles": [
+        {
+          "name": "headboard_mount_backplate_structural_profile",
+          "covered_parts": [
+            "headboard_mount_backplate"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "recessed_mount_washer_L_LOW_structural_profile",
+          "covered_parts": [
+            "recessed_mount_washer_L_LOW"
+          ],
+          "source_vertex_outside_max_m": 2.7755575615628914e-17,
+          "max_sampled_profile_plane_excess_m": 2.7755575615628914e-17,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "recessed_mount_washer_L_HIGH_structural_profile",
+          "covered_parts": [
+            "recessed_mount_washer_L_HIGH"
+          ],
+          "source_vertex_outside_max_m": 2.7755575615628914e-17,
+          "max_sampled_profile_plane_excess_m": 2.7755575615628914e-17,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "recessed_mount_washer_R_LOW_structural_profile",
+          "covered_parts": [
+            "recessed_mount_washer_R_LOW"
+          ],
+          "source_vertex_outside_max_m": 2.7755575615628914e-17,
+          "max_sampled_profile_plane_excess_m": 2.7755575615628914e-17,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "recessed_mount_washer_R_HIGH_structural_profile",
+          "covered_parts": [
+            "recessed_mount_washer_R_HIGH"
+          ],
+          "source_vertex_outside_max_m": 2.7755575615628914e-17,
+          "max_sampled_profile_plane_excess_m": 2.7755575615628914e-17,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "clipped_personal_shelf_structural_profile",
+          "covered_parts": [
+            "clipped_personal_shelf"
+          ],
+          "source_vertex_outside_max_m": 1.52404924791405e-09,
+          "max_sampled_profile_plane_excess_m": 0.000563783984815075,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "left_triangular_shelf_gusset_structural_profile",
+          "covered_parts": [
+            "left_triangular_shelf_gusset"
+          ],
+          "source_vertex_outside_max_m": 3.469446951953614e-18,
+          "max_sampled_profile_plane_excess_m": 3.469446951953614e-18,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "right_triangular_shelf_gusset_structural_profile",
+          "covered_parts": [
+            "right_triangular_shelf_gusset"
+          ],
+          "source_vertex_outside_max_m": 3.469446951953614e-18,
+          "max_sampled_profile_plane_excess_m": 3.469446951953614e-18,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "replaceable_small_shelf_liner_structural_profile",
+          "covered_parts": [
+            "replaceable_small_shelf_liner"
+          ],
+          "source_vertex_outside_max_m": 5.345966905268007e-09,
+          "max_sampled_profile_plane_excess_m": 0.0002757464340458343,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "supported_light_return_arm_structural_profile",
+          "covered_parts": [
+            "supported_light_return_arm"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0006489716993081651,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "formed_shield_top_structural_profile",
+          "covered_parts": [
+            "formed_shield_top"
+          ],
+          "source_vertex_outside_max_m": 4.018214427858879e-09,
+          "max_sampled_profile_plane_excess_m": 0.0007244128993710297,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "lowered_front_glare_shield_structural_profile",
+          "covered_parts": [
+            "lowered_front_glare_shield"
+          ],
+          "source_vertex_outside_max_m": 3.5614701465735976e-09,
+          "max_sampled_profile_plane_excess_m": 0.0004190251823963653,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "left_light_end_shield_structural_profile",
+          "covered_parts": [
+            "left_light_end_shield"
+          ],
+          "source_vertex_outside_max_m": 4.717717744240346e-09,
+          "max_sampled_profile_plane_excess_m": 0.0004320811240691308,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "right_light_end_shield_structural_profile",
+          "covered_parts": [
+            "right_light_end_shield"
+          ],
+          "source_vertex_outside_max_m": 4.717717744240346e-09,
+          "max_sampled_profile_plane_excess_m": 0.0004320811240691447,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "recessed_task_light_diffuser_structural_profile",
+          "covered_parts": [
+            "recessed_task_light_diffuser"
+          ],
+          "source_vertex_outside_max_m": 5.082090137609185e-09,
+          "max_sampled_profile_plane_excess_m": 0.0002819025642286088,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        },
+        {
+          "name": "proposed_local_control_pad_structural_profile",
+          "covered_parts": [
+            "proposed_local_control_pad"
+          ],
+          "source_vertex_outside_max_m": 0.0,
+          "max_sampled_profile_plane_excess_m": 0.0019467859361998081,
+          "finite_sample_scope": "Original hull vertices + every hull facet centroid, signed plane-bound approximation; not a global Hausdorff distance",
+          "passes": true
+        }
+      ],
+      "source_overlap_screen": [
+        {
+          "parts": [
+            "supported_light_return_arm",
+            "formed_shield_top"
+          ],
+          "radius_m": 0.0037499964237213135,
+          "declared_joint": true
+        }
+      ],
+      "passes": true
+    }
+  ],
+  "positive_controls": {
+    "real_10mm_corner_overlap_detected": true,
+    "boundary_contact_not_penetration": true,
+    "corner_insphere_radius_m": 0.0050000000000000044
+  },
+  "all_passed": true
+}

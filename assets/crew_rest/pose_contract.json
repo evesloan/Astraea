@@ -1,0 +1,26 @@
+{
+  "AST-CRW-002": {
+    "parameter": "CURTAIN_MOTION[\"gather\"]",
+    "range": [
+      0,
+      1
+    ],
+    "leading_y_m": ".02+1.8*t",
+    "span_m": "2.16-1.8*t",
+    "pleat_segments": 24,
+    "segment_developed_length_m": 0.10295630140987001,
+    "developed_fabric_width_m": 2.4709512338368804,
+    "half_pleat_amplitude_m": "0.5*sqrt(segment_length^2-(span/24)^2)",
+    "half_amplitude_closed_m": 0.025,
+    "half_amplitude_gathered_m": 0.05092887196865841,
+    "trailing_y_m": 2.18,
+    "fabric_height_m": 1.735,
+    "fabric_thickness_m": 0.003,
+    "shape_keys": [
+      "GatherSpan linear t",
+      "PleatDepth exact nonlinear sqrt driver"
+    ],
+    "texture_intent": "U is immutable developed pleat distance / .4m; V is vertical distance /.4m. No material stretching during gather.",
+    "native_derivatives": "Closed and gathered static geometric poses under the same named motion root. Parametric driver is source-only, no GLB runtime animation or cloth simulation."
+  }
+}

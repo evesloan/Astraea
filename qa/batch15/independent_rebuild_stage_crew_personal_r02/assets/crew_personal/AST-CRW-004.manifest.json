@@ -1,0 +1,1034 @@
+{
+  "catalogue_id": "AST-CRW-004",
+  "name": "Headboard-mounted individual reading light and shelf",
+  "title": "Headboard-mounted individual reading light and shelf",
+  "unique_design": true,
+  "source": "source/AST-CRW-004.blend",
+  "export": "exports/AST-CRW-004.glb",
+  "generator": "source/build_crew_personal.py",
+  "source_frame": "metres Blender X width Y depth Z-up, front -Y",
+  "exchange_frame": "metres native GLB Y-up source(x,y,z)->(x,z,-y)",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "rear mounting plane centre"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.17000000178813934,
+      -0.25999999046325684,
+      -0.1599999964237213
+    ],
+    "max_m": [
+      0.17000000178813934,
+      0.0,
+      0.20000000298023224
+    ],
+    "dimensions_m": [
+      0.3400000035762787,
+      0.25999999046325684,
+      0.35999999940395355
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -0.17000000178813934,
+      -0.1599999964237213,
+      -0.0
+    ],
+    "max_m": [
+      0.17000000178813934,
+      0.20000000298023224,
+      0.25999999046325684
+    ],
+    "dimensions_m": [
+      0.3400000035762787,
+      0.35999999940395355,
+      0.25999999046325684
+    ]
+  },
+  "dimensions_blender_xyz_m": [
+    0.3400000035762787,
+    0.25999999046325684,
+    0.35999999940395355
+  ],
+  "evaluated_source_triangles": 1540,
+  "evaluated_triangles": 1540,
+  "editable_semantic_parts": 16,
+  "semantic_parts": [
+    "headboard_mount_backplate",
+    "recessed_mount_washer_L_LOW",
+    "recessed_mount_washer_L_HIGH",
+    "recessed_mount_washer_R_LOW",
+    "recessed_mount_washer_R_HIGH",
+    "clipped_personal_shelf",
+    "left_triangular_shelf_gusset",
+    "right_triangular_shelf_gusset",
+    "replaceable_small_shelf_liner",
+    "supported_light_return_arm",
+    "formed_shield_top",
+    "lowered_front_glare_shield",
+    "left_light_end_shield",
+    "right_light_end_shield",
+    "recessed_task_light_diffuser",
+    "proposed_local_control_pad"
+  ],
+  "material_roles": [
+    "staff_bluegrey_paint",
+    "staff_label",
+    "staff_opal",
+    "staff_rubber",
+    "staff_white_paint",
+    "staff_zinc"
+  ],
+  "runtime_consolidation": "Static evaluated copies consolidated by material; drawer copies consolidated by material under sole actual moving root; physical moving markers parented to it",
+  "physical_and_proposal_markers": [
+    {
+      "name": "HEADBOARD_CONTACT_L_LOW",
+      "kind": "physical_mount_contact",
+      "source_m": [
+        -0.11,
+        0,
+        -0.12
+      ],
+      "gltf_m": [
+        -0.11,
+        -0.12,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "Opposes actual AST-CRW-001 headboard face after declared placement",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "HEADBOARD_CONTACT_L_HIGH",
+      "kind": "physical_mount_contact",
+      "source_m": [
+        -0.11,
+        0,
+        0.12
+      ],
+      "gltf_m": [
+        -0.11,
+        0.12,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "Opposes actual AST-CRW-001 headboard face after declared placement",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "HEADBOARD_CONTACT_R_LOW",
+      "kind": "physical_mount_contact",
+      "source_m": [
+        0.11,
+        0,
+        -0.12
+      ],
+      "gltf_m": [
+        0.11,
+        -0.12,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "Opposes actual AST-CRW-001 headboard face after declared placement",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "HEADBOARD_CONTACT_R_HIGH",
+      "kind": "physical_mount_contact",
+      "source_m": [
+        0.11,
+        0,
+        0.12
+      ],
+      "gltf_m": [
+        0.11,
+        0.12,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "Opposes actual AST-CRW-001 headboard face after declared placement",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "PERSONAL_SHELF_SURFACE",
+      "kind": "physical_resting_surface",
+      "source_m": [
+        0,
+        -0.13,
+        -0.12
+      ],
+      "gltf_m": [
+        0,
+        -0.12,
+        0.13
+      ],
+      "physical_part": "replaceable_small_shelf_liner",
+      "parent_root": "AST-CRW-004",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "PROPOSED_EMITTER_SURFACE",
+      "kind": "physical_proposed_emitter_surface",
+      "source_m": [
+        0,
+        -0.11,
+        0.16
+      ],
+      "gltf_m": [
+        0,
+        0.16,
+        0.11
+      ],
+      "physical_part": "recessed_task_light_diffuser",
+      "parent_root": "AST-CRW-004",
+      "description": "Opal art surface and proposed local emitter position; material emits no light and actual runtime light/photometry are unimplemented",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "PROPOSED_LIGHT_AIM",
+      "kind": "nonphysical_light_aim",
+      "source_m": [
+        0,
+        -0.11,
+        0.16
+      ],
+      "gltf_m": [
+        0,
+        0.16,
+        0.11
+      ],
+      "physical_part": null,
+      "parent_root": "AST-CRW-004",
+      "description": "Suggested local down/forward aim (0,-.22,-.98), distinct from physical diffuser normal (0,0,-1)"
+    },
+    {
+      "name": "PROPOSED_LIGHT_CONTROL",
+      "kind": "physical_control_proposal",
+      "source_m": [
+        0.097,
+        -0.02,
+        0.032
+      ],
+      "gltf_m": [
+        0.097,
+        0.032,
+        0.02
+      ],
+      "physical_part": "proposed_local_control_pad",
+      "parent_root": "AST-CRW-004",
+      "description": "Physical proposed button face; no game input or implemented electrical control",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "MOUNT_DATUM",
+      "kind": "physical_mount_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": "headboard_mount_backplate",
+      "parent_root": "AST-CRW-004",
+      "description": "",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "name": "washer_L_LOW_plate",
+      "parts": [
+        "recessed_mount_washer_L_LOW",
+        "headboard_mount_backplate"
+      ],
+      "probe_source_m": [
+        -0.11,
+        -0.012,
+        -0.095
+      ],
+      "probe_gltf_m": [
+        -0.11,
+        -0.095,
+        0.012
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "washer_L_HIGH_plate",
+      "parts": [
+        "recessed_mount_washer_L_HIGH",
+        "headboard_mount_backplate"
+      ],
+      "probe_source_m": [
+        -0.11,
+        -0.012,
+        0.12
+      ],
+      "probe_gltf_m": [
+        -0.11,
+        0.12,
+        0.012
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "washer_R_LOW_plate",
+      "parts": [
+        "recessed_mount_washer_R_LOW",
+        "headboard_mount_backplate"
+      ],
+      "probe_source_m": [
+        0.11,
+        -0.012,
+        -0.095
+      ],
+      "probe_gltf_m": [
+        0.11,
+        -0.095,
+        0.012
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "washer_R_HIGH_plate",
+      "parts": [
+        "recessed_mount_washer_R_HIGH",
+        "headboard_mount_backplate"
+      ],
+      "probe_source_m": [
+        0.11,
+        -0.012,
+        0.12
+      ],
+      "probe_gltf_m": [
+        0.11,
+        0.12,
+        0.012
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "shelf_backplate",
+      "parts": [
+        "clipped_personal_shelf",
+        "headboard_mount_backplate"
+      ],
+      "probe_source_m": [
+        0,
+        -0.012,
+        -0.135
+      ],
+      "probe_gltf_m": [
+        0,
+        -0.135,
+        0.012
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "left_gusset_shelf",
+      "parts": [
+        "left_triangular_shelf_gusset",
+        "clipped_personal_shelf"
+      ],
+      "probe_source_m": [
+        -0.155,
+        -0.11,
+        -0.125
+      ],
+      "probe_gltf_m": [
+        -0.155,
+        -0.125,
+        0.11
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "left_gusset_plate",
+      "parts": [
+        "left_triangular_shelf_gusset",
+        "headboard_mount_backplate"
+      ],
+      "probe_source_m": [
+        -0.155,
+        -0.012,
+        -0.1
+      ],
+      "probe_gltf_m": [
+        -0.155,
+        -0.1,
+        0.012
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "right_gusset_shelf",
+      "parts": [
+        "right_triangular_shelf_gusset",
+        "clipped_personal_shelf"
+      ],
+      "probe_source_m": [
+        0.155,
+        -0.11,
+        -0.125
+      ],
+      "probe_gltf_m": [
+        0.155,
+        -0.125,
+        0.11
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "right_gusset_plate",
+      "parts": [
+        "right_triangular_shelf_gusset",
+        "headboard_mount_backplate"
+      ],
+      "probe_source_m": [
+        0.155,
+        -0.012,
+        -0.1
+      ],
+      "probe_gltf_m": [
+        0.155,
+        -0.1,
+        0.012
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "liner_shelf",
+      "parts": [
+        "replaceable_small_shelf_liner",
+        "clipped_personal_shelf"
+      ],
+      "probe_source_m": [
+        0,
+        -0.13,
+        -0.125
+      ],
+      "probe_gltf_m": [
+        0,
+        -0.125,
+        0.13
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "light_arm_plate",
+      "parts": [
+        "supported_light_return_arm",
+        "headboard_mount_backplate"
+      ],
+      "probe_source_m": [
+        0,
+        -0.012,
+        0.165
+      ],
+      "probe_gltf_m": [
+        0,
+        0.165,
+        0.012
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "light_arm_hood",
+      "parts": [
+        "supported_light_return_arm",
+        "formed_shield_top"
+      ],
+      "probe_source_m": [
+        0,
+        -0.06,
+        0.174
+      ],
+      "probe_gltf_m": [
+        0,
+        0.174,
+        0.06
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "static"
+    },
+    {
+      "name": "front_shield_hood",
+      "parts": [
+        "lowered_front_glare_shield",
+        "formed_shield_top"
+      ],
+      "probe_source_m": [
+        0,
+        -0.18,
+        0.17
+      ],
+      "probe_gltf_m": [
+        0,
+        0.17,
+        0.18
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "left_shield_hood",
+      "parts": [
+        "left_light_end_shield",
+        "formed_shield_top"
+      ],
+      "probe_source_m": [
+        -0.133,
+        -0.1,
+        0.17
+      ],
+      "probe_gltf_m": [
+        -0.133,
+        0.17,
+        0.1
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "right_shield_hood",
+      "parts": [
+        "right_light_end_shield",
+        "formed_shield_top"
+      ],
+      "probe_source_m": [
+        0.133,
+        -0.1,
+        0.17
+      ],
+      "probe_gltf_m": [
+        0.133,
+        0.17,
+        0.1
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "diffuser_hood_support",
+      "parts": [
+        "recessed_task_light_diffuser",
+        "formed_shield_top"
+      ],
+      "probe_source_m": [
+        0,
+        -0.1,
+        0.17
+      ],
+      "probe_gltf_m": [
+        0,
+        0.17,
+        0.1
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "control_pad_backplate",
+      "parts": [
+        "proposed_local_control_pad",
+        "headboard_mount_backplate"
+      ],
+      "probe_source_m": [
+        0.097,
+        -0.012,
+        0.032
+      ],
+      "probe_gltf_m": [
+        0.097,
+        0.032,
+        0.012
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "shelf_useful_retrieval_volume",
+      "min_source_m": [
+        -0.132,
+        -0.4,
+        -0.105
+      ],
+      "max_source_m": [
+        0.132,
+        -0.037,
+        0.04
+      ],
+      "min_gltf_m": [
+        -0.132,
+        -0.105,
+        0.037
+      ],
+      "max_gltf_m": [
+        0.132,
+        0.04,
+        0.4
+      ],
+      "purpose": "Open supported small personal resting area and front retrieval; no item or occupant identity",
+      "state": "all"
+    }
+  ],
+  "state_derivatives": [],
+  "collision_proposal_file": "collision_proposals.json",
+  "marker_api_file": "marker_api.json",
+  "used_textures_packed": true,
+  "source_sha256": "627ac18088fdcc294481885e68b208b46127cf785d2eefcb62e8b2787be79d3f",
+  "glb_sha256": "5b339a9968228474ee5fbf509270ce9ee55c6680243fa80714d1776a8042386c",
+  "generator_sha256": "c79eafbae1736fd3a0ca960e329f941d8c90e4e6bf25a40959204dac7abc0401",
+  "details": {
+    "mount_contract": "mount_contract.json",
+    "envelope_relative_to_mount_datum_m": [
+      0.34,
+      0.26,
+      0.36
+    ],
+    "proposed_emitter_position_source_m": [
+      0,
+      -0.11,
+      0.16
+    ],
+    "proposed_light_aim_source": [
+      0,
+      -0.22,
+      -0.98
+    ],
+    "material_emission_strength": 0,
+    "light_scope": "Visible shaped opal diffuser and local aim/control interfaces only, no light objects, active emitter, working input, electrical/load design or runtime photometry",
+    "shelf_source_top_m": -0.12,
+    "shelf_world_proposed_top_m": 0.76
+  },
+  "limitations": [
+    "Proposed component dimensions only; no final host room, berth keys, roommate identity or story",
+    "Zero new people and zero registered berths; shared-player programme remains within 400 crew",
+    "No species fitting, loading, anatomy/reach, runtime controls, illumination, engine collision or performance acceptance"
+  ]
+}

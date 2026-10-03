@@ -1,0 +1,30 @@
+{
+  "revision": "crew-rest-collision-profile-03",
+  "scope": "Collision proposal and corresponding generator metadata only; preserved actual source/GLB bytes and earlier exact render binding.",
+  "before": {
+    "source/AST-CRW-001.blend": "7a47d55b997b6c6d6caf5ef4a43ca5755b36023141ffb4bcc6bb0ca54aca7993",
+    "source/AST-CRW-002.blend": "12e01b3fa45f240b88ebbaf5b4e8886715da5aa45826d633c5f92c98e97669f6",
+    "exports/AST-CRW-002.glb": "1961f29c45e2dc9108ae68f23eed990a9efa8c7efbef357096f702346124a108",
+    "exports/AST-CRW-002__gathered.glb": "61aa54c2964886eb9ddc75801a29dd96f84da6f724fbaefb0eaddf80d0ab95c3",
+    "exports/AST-CRW-001.glb": "07ca15b5b50c371a481b04e9c847fbd7d487294f4cfb77affa7fdaf6cbd81835",
+    "collision_proposals.json": "d2748d89566524edba36611be9ac21f3be5f89c1a082787342ebb027e2470e17",
+    "source/build_crew_rest.py": "0a3b26d6e9fedf95066c0135b7f832d62470cadde3b0d8f54b54e9adccb4f295"
+  },
+  "after": {
+    "source/AST-CRW-001.blend": "7a47d55b997b6c6d6caf5ef4a43ca5755b36023141ffb4bcc6bb0ca54aca7993",
+    "source/AST-CRW-002.blend": "12e01b3fa45f240b88ebbaf5b4e8886715da5aa45826d633c5f92c98e97669f6",
+    "exports/AST-CRW-002.glb": "1961f29c45e2dc9108ae68f23eed990a9efa8c7efbef357096f702346124a108",
+    "exports/AST-CRW-002__gathered.glb": "61aa54c2964886eb9ddc75801a29dd96f84da6f724fbaefb0eaddf80d0ab95c3",
+    "exports/AST-CRW-001.glb": "07ca15b5b50c371a481b04e9c847fbd7d487294f4cfb77affa7fdaf6cbd81835",
+    "collision_proposals.json": "bf4e594dc129c3212335b1330529a3dc28fded277a34eb7c51cd7d9a432bc73a",
+    "source/build_crew_rest.py": "34a64356a5b0c92847f294faa382e751b5dd4fc6540d7ea549f382de60930a5e"
+  },
+  "source_and_glb_unchanged": true,
+  "changes": [
+    "Separate thin inward rail bearing-lip boxes now cover actual lip while preserving open inner bay",
+    "Blanket omission bound corrected to80mm, a conservative full triangle bound from convex mattress distance; explicit flexible visual-only omission remains",
+    "Thin-normal curtain panel collision has3mm conservative join/thickness approximation relative to Solidify averaged vertex normals, replacing zero-error claim"
+  ],
+  "render_evidence": "Existing qa/render_evidence.json retains exact earlier collision hash and unchanged visual hashes; no recapture implied",
+  "curtain_profile_bound": "Both visual and collision offsets have length at most1.5mm from corresponding neutral panel. At any parameter value their separation is at most3mm by triangle inequality, and interpolation extends the bound across each triangle. This is a geometric approximation, not cloth behavior."
+}
