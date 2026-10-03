@@ -24,7 +24,7 @@ class Backups(unittest.TestCase):
             with zipfile.ZipFile(a['path'])as z:
                 m=json.loads(z.read('MANIFEST.json'));names.extend(m['files'])
                 for n,h in m['files'].items():self.assertEqual(backup.hashlib.sha256(z.read(n)).hexdigest(),h)
-        self.assertIn('source/scripts/new.gd',names);self.assertNotIn('source/.env',names)
+        self.assertIn('Astraea_Test/scripts/new.gd',names);self.assertNotIn('Astraea_Test/.env',names)
     def test_no_retry_after_uncertain_upload(self):
         config={'state':str(self.output/'state.json'),'output':str(self.output),'upload_helper':'missing','projects':[self.project]}
         with self.assertRaises(RuntimeError):backup.run_once(config)

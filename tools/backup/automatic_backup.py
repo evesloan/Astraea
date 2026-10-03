@@ -71,7 +71,7 @@ def snapshot(project, info, output, retained, part_limit=20*1024*1024):
     try:
         for name in selected_files(project,info):
             src=root/name;dest=stage/'source'/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dest)
-            files['source/'+name]=dest
+            files['Astraea_'+project['name']+'/'+name]=dest
         base=retained.get('head')
         if base != info['head']:
             bundle=stage/'history.bundle'
@@ -81,7 +81,7 @@ def snapshot(project, info, output, retained, part_limit=20*1024*1024):
             if any(secret_name(n) for n in changed_paths if n):raise RuntimeError('Credential-like path in new Git history; backup requires review')
             subprocess.run(['git','-C',str(root),'bundle','create',str(bundle),revision],check=True,capture_output=True)
             subprocess.run(['git','-C',str(root),'bundle','verify',str(bundle)],check=True,capture_output=True)
-            files['history.bundle']=bundle
+            files['Astraea_'+project['name']+'_history.bundle']=bundle
         after=inventory(project)
         if after['signature'] != info['signature']:raise SnapshotChanged('Source changed during snapshot; no upload attempted')
         hashes={n:digest(p) for n,p in files.items()}
@@ -102,7 +102,7 @@ def snapshot(project, info, output, retained, part_limit=20*1024*1024):
                 for name,path in group:z.write(path,name)
                 part=dict(manifest,part=i+1,parts=len(groups),files={n:hashes[n] for n,p in group})
                 z.writestr('MANIFEST.json',json.dumps(part,indent=2)+'\n')
-                z.writestr('READ_ME.txt','Extract every part of this checkpoint into one empty folder. The source folder contains the current portable production files. Work-in-progress checkpoints may be untested. Git history can be incremental; see manifest prerequisites. Do not delete previous retained checkpoints or reference archives.\n')
+                z.writestr('READ_ME.txt','Extract every part of this checkpoint into one empty folder. The project-named Astraea folder contains the current portable production files. Keep Godot and Blender backup sets in separate extraction folders. Work-in-progress checkpoints may be untested. Git history can be incremental; see manifest prerequisites. Do not delete previous retained checkpoints or reference archives.\n')
             with zipfile.ZipFile(target) as z:
                 if z.testzip() is not None:raise ValueError('Archive CRC failed')
                 for name,path in group:
