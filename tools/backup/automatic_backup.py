@@ -184,8 +184,13 @@ def main():
     if args.action=='status':print(Path(config['state']).read_text());return
     if args.action=='once':print(json.dumps(run_once(config,args.force)));return
     last=time.monotonic();request.parent.mkdir(parents=True,exist_ok=True)
-    atomic_json(Path(config['output'])/'runner.json',{'pid':os.getpid(),'started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'config':str(args.config.resolve())})
+    watcher_lock=(Path(config['output'])/'watcher.lock').open('a')
+    try:fcntl.flock(watcher_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    except BlockingIOError:raise SystemExit('A backup watcher already holds the session lock')
+    runner={'pid':os.getpid(),'started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'config':str(args.config.resolve())}
     while not (Path(config['output'])/'STOP').exists():
+        runner['heartbeat_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+        atomic_json(Path(config['output'])/'runner.json',runner)
         due=request.exists() or time.monotonic()-last>=config.get('wip_interval_seconds',900)
         if due:
             # Do not consume a later request that arrives during retention.
