@@ -1,0 +1,868 @@
+{
+  "schema": 1,
+  "scope": "Whole-ship section coordination; source allocations are not constructed rooms or capacity acceptance",
+  "source_sha256": {
+    "data/design_contract.json": "1a308501a64463520fa6db90fc6464ee182d84ef384a50f989efecb00f1ccd82",
+    "data/programme_ledger.json": "48480840df74814e07dc09ab7ce115fe44c53915c945b40f4696c1d13a08f1cf",
+    "data/reference/directory_allocations.json": "63df12482a840d0c3ed30cf4ad669f5cb8b6cf8e89d6823fc0937bf8e3e2c539",
+    "data/reference/historical_guest_census.json": "9436f006b2e71f6ee5bda71cd8dc09d1c52f44844027fa7082e3b286a7215038",
+    "data/spatial_layout.json": "ff0c05907051efefd7c8698d962edf26c30fec3c5aad84c3fce7ebc1e96350d4",
+    "data/aquatic_section.json": "5f45e870ab2e38acdf8843cb1f2f7ca0adbe83284e0abb241b4b04613e2acfc3"
+  },
+  "decks": 18,
+  "programme_records": 161,
+  "historical_guest_envelopes": 1000,
+  "physical_guest_beds": null,
+  "finished_guest_units": 0,
+  "protected_opening_guest_conflicts": [],
+  "stacked_programme_adjacencies": [
+    {
+      "lower": "D01_directory_01",
+      "upper": "D02_directory_01",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D01_directory_09",
+      "upper": "D02_directory_09",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D01_directory_02",
+      "upper": "D02_directory_02",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D01_directory_10",
+      "upper": "D02_directory_10",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D01_directory_03",
+      "upper": "D02_directory_03",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D01_directory_04",
+      "upper": "D02_directory_04",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D01_directory_05",
+      "upper": "D02_directory_05",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D01_directory_06",
+      "upper": "D02_directory_06",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D01_directory_07",
+      "upper": "D02_directory_07",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D01_directory_08",
+      "upper": "D02_directory_08",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_01",
+      "upper": "D03_directory_01",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_09",
+      "upper": "D03_directory_09",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_02",
+      "upper": "D03_directory_02",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_10",
+      "upper": "D03_directory_10",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_03",
+      "upper": "D03_directory_03",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_04",
+      "upper": "D03_directory_04",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_05",
+      "upper": "D03_directory_05",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_06",
+      "upper": "D03_directory_06",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_07",
+      "upper": "D03_directory_07",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D02_directory_08",
+      "upper": "D03_directory_08",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D03_directory_05",
+      "upper": "D04_directory_03",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D03_directory_06",
+      "upper": "D04_directory_04",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D04_directory_03",
+      "upper": "D05_directory_05",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D04_directory_04",
+      "upper": "D05_directory_06",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_01",
+      "upper": "D06_directory_01",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_09",
+      "upper": "D06_directory_09",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_02",
+      "upper": "D06_directory_02",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_10",
+      "upper": "D06_directory_10",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_03",
+      "upper": "D06_directory_03",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_04",
+      "upper": "D06_directory_04",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_05",
+      "upper": "D06_directory_05",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_06",
+      "upper": "D06_directory_06",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_07",
+      "upper": "D06_directory_07",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D05_directory_08",
+      "upper": "D06_directory_08",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_01",
+      "upper": "D07_directory_01",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_09",
+      "upper": "D07_directory_09",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_02",
+      "upper": "D07_directory_02",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_10",
+      "upper": "D07_directory_10",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_03",
+      "upper": "D07_directory_03",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_04",
+      "upper": "D07_directory_04",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_05",
+      "upper": "D07_directory_05",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_06",
+      "upper": "D07_directory_06",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_07",
+      "upper": "D07_directory_07",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D06_directory_08",
+      "upper": "D07_directory_08",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_01",
+      "upper": "D08_directory_01",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_09",
+      "upper": "D08_directory_09",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_02",
+      "upper": "D08_directory_02",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_10",
+      "upper": "D08_directory_10",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_03",
+      "upper": "D08_directory_03",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_04",
+      "upper": "D08_directory_04",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_05",
+      "upper": "D08_directory_05",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_06",
+      "upper": "D08_directory_06",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_07",
+      "upper": "D08_directory_07",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D07_directory_08",
+      "upper": "D08_directory_08",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_01",
+      "upper": "D09_directory_01",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_09",
+      "upper": "D09_directory_09",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_02",
+      "upper": "D09_directory_02",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_10",
+      "upper": "D09_directory_10",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_03",
+      "upper": "D09_directory_03",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_04",
+      "upper": "D09_directory_04",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_05",
+      "upper": "D09_directory_05",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_06",
+      "upper": "D09_directory_06",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_07",
+      "upper": "D09_directory_07",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D08_directory_08",
+      "upper": "D09_directory_08",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_01",
+      "upper": "D10_directory_01",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_09",
+      "upper": "D10_directory_09",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_02",
+      "upper": "D10_directory_02",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_10",
+      "upper": "D10_directory_10",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_03",
+      "upper": "D10_directory_03",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_04",
+      "upper": "D10_directory_04",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_05",
+      "upper": "D10_directory_05",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_06",
+      "upper": "D10_directory_06",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_07",
+      "upper": "D10_directory_07",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D09_directory_08",
+      "upper": "D10_directory_08",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D10_directory_09",
+      "upper": "D11_directory_12",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D10_directory_02",
+      "upper": "D11_directory_02",
+      "overlap_m2": 2924.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D10_directory_10",
+      "upper": "D11_directory_07",
+      "overlap_m2": 2924.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D10_directory_03",
+      "upper": "D11_directory_01",
+      "overlap_m2": 1360.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D10_directory_04",
+      "upper": "D11_directory_03",
+      "overlap_m2": 258.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D10_directory_05",
+      "upper": "D11_directory_09",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D10_directory_07",
+      "upper": "D11_directory_10",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D10_directory_08",
+      "upper": "D11_directory_06",
+      "overlap_m2": 258.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D11_directory_01",
+      "upper": "D12_directory_11",
+      "overlap_m2": 72.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D11_directory_09",
+      "upper": "D12_directory_05",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D11_directory_02",
+      "upper": "D12_directory_02",
+      "overlap_m2": 2924.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D11_directory_10",
+      "upper": "D12_directory_07",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D11_directory_03",
+      "upper": "D12_directory_04",
+      "overlap_m2": 258.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D11_directory_12",
+      "upper": "D12_directory_09",
+      "overlap_m2": 3128.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D11_directory_06",
+      "upper": "D12_directory_08",
+      "overlap_m2": 258.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D11_directory_07",
+      "upper": "D12_directory_10",
+      "overlap_m2": 2924.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D11_directory_08",
+      "upper": "D12_directory_03",
+      "overlap_m2": 1932.0,
+      "floor_datum_difference_m": 8.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D12_directory_11",
+      "upper": "D13_directory_01",
+      "overlap_m2": 72.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D12_directory_05",
+      "upper": "D13_directory_04",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D12_directory_06",
+      "upper": "D13_directory_05",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 6.0,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D13_directory_02",
+      "upper": "D14_directory_01",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D13_directory_03",
+      "upper": "D14_directory_02",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D13_directory_04",
+      "upper": "D14_directory_03",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D13_directory_05",
+      "upper": "D14_directory_04",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D13_directory_06",
+      "upper": "D14_directory_05",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D13_directory_07",
+      "upper": "D14_directory_06",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D14_directory_01",
+      "upper": "D15_directory_01",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D14_directory_02",
+      "upper": "D15_directory_02",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D14_directory_03",
+      "upper": "D15_directory_03",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D14_directory_04",
+      "upper": "D15_directory_04",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D14_directory_05",
+      "upper": "D15_directory_05",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D14_directory_06",
+      "upper": "D15_directory_06",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D15_directory_01",
+      "upper": "D16_directory_01",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D15_directory_02",
+      "upper": "D16_directory_02",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D15_directory_03",
+      "upper": "D16_directory_03",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D15_directory_04",
+      "upper": "D16_directory_04",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D15_directory_05",
+      "upper": "D16_directory_05",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D15_directory_06",
+      "upper": "D16_directory_06",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D16_directory_01",
+      "upper": "D17_directory_01",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D16_directory_02",
+      "upper": "D17_directory_02",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D16_directory_03",
+      "upper": "D17_directory_03",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D16_directory_04",
+      "upper": "D17_directory_04",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D16_directory_05",
+      "upper": "D17_directory_05",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D16_directory_06",
+      "upper": "D17_directory_06",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D17_directory_03",
+      "upper": "D18_directory_05",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    },
+    {
+      "lower": "D17_directory_04",
+      "upper": "D18_directory_06",
+      "overlap_m2": 952.0,
+      "floor_datum_difference_m": 4.5,
+      "meaning": "Stacked allocation only; no opening, route, headroom or architectural approval implied"
+    }
+  ],
+  "limitations": [
+    "Unknown persistent IDs remain unknown",
+    "No new structural openings authorized",
+    "Luxury replacements and multistorey fit unresolved",
+    "Deck pitch is not finished ceiling height",
+    "Programme adjacency does not prove an accessible connection",
+    "Full hull, crew berth fit and environmental routing require separate review"
+  ]
+}

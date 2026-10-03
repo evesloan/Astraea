@@ -1,4 +1,8 @@
-# Production status — 3 October 2026, checkpoint 03
+# Production history — 3 October 2026
+
+The entries below are chronological snapshots, not the current summary. See CURRENT_STATUS.md for the latest verified scope.
+
+## Checkpoint03
 
 Godot cloud restart, not recovered original code.
 
