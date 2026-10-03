@@ -31,3 +31,10 @@ An original crescent wet-rest bay now coordinates curved tiled walls, a sheltere
 - Fixed cloud capture batches now run through a session-scoped queue, without repeated manual relaunches. The latest full batch completed in13.089seconds. This measures capture execution, not frame rate or token savings.
 - Catalogue is94 authored designs including5 new drafts. Main scene uses24 source designs instantiated70times. No completed district or accommodation unit is claimed.
 - The complete current production catalogue is retained as three ordinary Library ZIPs, separate from earlier history/reference archives. Workshop verification still covers only the initial Godot baseline.
+
+## Atrium coordination and lighting work after checkpoint06
+The remaining 120 historical D04 guest envelopes were extracted and visually cross-checked; all 1,000 historical guest footprints are now accounted for. This does not settle the new luxury allocation, recover persistent IDs or build those rooms.
+
+An important structural interpretation was corrected: the 96 × 128 m slab opening does not remove the authored terraces inside it. The actual sixteen outer/inner contours were recovered from the atlas, including the four wider bands. Continuous four-metre service-route support and retained inner openings passed geometric checks. The D01 central service axis and opaque D18 cap were added. A now-internal D09 boundary rail was removed to restore direct access to the salon.
+
+A fitted Blender guard/fascia network now follows those contours, using deeper profiles on the principal bands. Column shaft-height variants and two artificial roof daylight coffers are integrated. They are physical lighting fixtures under an opaque cap, not invented exterior skylights. Floor render cells are split while their collision remains continuous. These remain architectural drafts; the captured atrium still needs destinations, garden composition, activity and substantial finish work.

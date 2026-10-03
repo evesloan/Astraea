@@ -70,7 +70,7 @@ func _ready() -> void:
 		await _capture()
 		if "--capture-d06" in OS.get_cmdline_user_args():
 			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
-			actor.spawn_position = Vector3(-51,27.1,4)
+			actor.spawn_position = Vector3(-31.623,27.1,4)
 			actor.position = actor.spawn_position
 			actor.velocity = Vector3.ZERO
 			actor.rotation.y = 0.0
@@ -79,6 +79,14 @@ func _ready() -> void:
 			await get_tree().create_timer(1.0).timeout
 			get_node("NativeResolutionStatus").text = "ASTRAEA / D06 CURVED GALLERY — unfinished architecture"
 			await _capture("d06_")
+			actor.spawn_position = Vector3(5,52.6,-59)
+			actor.position = actor.spawn_position
+			actor.rotation.y = PI
+			actor.pitch = 0.08
+			actor.camera.rotation.x = actor.pitch
+			await get_tree().create_timer(1.0).timeout
+			get_node("NativeResolutionStatus").text = "ASTRAEA / GRAND ATRIUM — restored floor contours, finish incomplete"
+			await _capture("atrium_")
 		if "--capture-aquatic" in OS.get_cmdline_user_args():
 			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
 			actor.spawn_position = Vector3(13,44.1,218)
@@ -197,12 +205,12 @@ func _build_directory() -> void:
 	var places := GridContainer.new()
 	places.columns = 2
 	column.add_child(places)
-	for target in [{"name":"D01 Synthesis service bay — partial", "position":Vector3(-59,0.1,0)}, {"name":"D08 Gentle Waters — unfinished", "position":Vector3(13,44.1,218)}, {"name":"D09 Living Gifts — unfinished", "position":Vector3(13,52.6,218)}, {"name":"D10 Vesper — unfinished", "position":Vector3(13,61.1,218)}, {"name":"D09 Conversation salon — partial", "position":Vector3(63,52.6,-20.5)}]:
+	for target in [{"name":"D09 Grand Atrium — unfinished", "position":Vector3(5,52.6,-59),"facing":PI}, {"name":"D01 Synthesis service bay — partial", "position":Vector3(-59,0.1,0)}, {"name":"D08 Gentle Waters — unfinished", "position":Vector3(13,44.1,218)}, {"name":"D09 Living Gifts — unfinished", "position":Vector3(13,52.6,218)}, {"name":"D10 Vesper — unfinished", "position":Vector3(13,61.1,218)}, {"name":"D09 Conversation salon — partial", "position":Vector3(63,52.6,-20.5)}]:
 		var button := Button.new()
 		button.text = target.name
 		button.custom_minimum_size = Vector2(450,36)
 		places.add_child(button)
-		button.pressed.connect(_visit.bind(target.name,target.position))
+		button.pressed.connect(_visit.bind(target.name,target.position,target.get("facing",PI/2 if target.position.x < 0 else -PI/2)))
 	var close := Button.new()
 	close.text = "Close directory"
 	close.pressed.connect(_toggle_directory)
@@ -221,9 +229,9 @@ func _travel(index: int) -> void:
 		get_node("NativeResolutionStatus").text = "ASTRAEA / D%02d / +%.1f m — STRUCTURE ONLY\nWASD · Mouse · RMB focus · M directory · F4 effects\nInteriors, transport, population and final architecture unfinished" % [index+1,world.deck_y[index]]
 		_toggle_directory()
 
-func _visit(label: String, arrival: Vector3) -> void:
+func _visit(label: String, arrival: Vector3, facing: float) -> void:
 	var world = world_view.get_node("Astraea")
-	if world.arrive_at(arrival,PI/2 if arrival.x < 0 else -PI/2):
+	if world.arrive_at(arrival,facing):
 		get_node("NativeResolutionStatus").text = "ASTRAEA / "+label+"\nWASD · Mouse · RMB focus · M directory · F4 effects\nProduction architecture in progress"
 		_toggle_directory()
 

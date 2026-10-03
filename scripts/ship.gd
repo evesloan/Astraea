@@ -30,10 +30,12 @@ func _ready() -> void:
 	environment.ssao_intensity = 0.45
 	build_structural_datums()
 	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory,{"staff_floor":surface("staff_floor",Color.WHITE)})
-	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-48,deck_y[5],0),PI/2)
+	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-28.623,deck_y[5],0),PI/2)
+	model($ShipSpace,"AST-ATR-001.glb","AuthoredAtriumGuards_All16Levels",Vector3.ZERO)
 	build_retail_terrace()
 	load("res://scripts/aquatic_section.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/staff_section.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/atrium_lighting.gd").build($ShipSpace/Districts,self)
 	var player := CharacterBody3D.new()
 	player.set_script(load("res://scripts/player.gd"))
 	$ShipSpace/PersistentActors.add_child(player)
@@ -100,6 +102,11 @@ func model(parent: Node3D, file: String, label: String, location: Vector3, yaw: 
 	wrapper.rotation.y = yaw
 	var visual := (load("res://assets/models/"+file) as PackedScene).instantiate()
 	wrapper.add_child(visual)
+	if file == "AST-ARC-001.glb":
+		# The continuous fitted network owns this edge; keep the source floor/soffit.
+		for part in visual.find_children("*","MeshInstance3D",true,false):
+			if part.name.begins_with("ARC_Guard") or part.name.begins_with("ARC_Handrail") or part.name.begins_with("ARC_Continuous") or part.name.begins_with("ARC_Glass") or part.name.begins_with("ARC_Post") or part.name in ["ARC_ProfiledFascia","ARC_LowerShadowReveal"]:
+				part.visible = false
 	if not file.begins_with("AST-BOT"):
 		_static_contacts(visual)
 	return wrapper
@@ -176,6 +183,7 @@ func build_retail_terrace() -> void:
 		lens.rotation.x = PI/2
 	# Boundary protection for the currently playable floor; final authored guards pending.
 	for i in range(outline.size()):
+		if i == 7: continue # Continuous connection into the restored inner terrace
 		var a := Vector3(outline[i].x,d09_y,outline[i].y)
 		var b := Vector3(outline[(i+1)%outline.size()].x,d09_y,outline[(i+1)%outline.size()].y)
 		# The six-metre ring continues through both ends of this terrace.
@@ -210,7 +218,7 @@ func set_display_effects(enabled: bool) -> void:
 	environment.ssao_enabled = enabled
 
 func _static_contacts(node: Node) -> void:
-	if node is MeshInstance3D and node.mesh != null:
+	if node is MeshInstance3D and node.mesh != null and node.visible:
 		load("res://scripts/static_contact_cache.gd").attach(node)
 	for child in node.get_children():
 		if not child is StaticBody3D: _static_contacts(child)

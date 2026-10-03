@@ -37,15 +37,15 @@ func run() -> void:
 			var origin := Vector3(0,world.deck_y[deck_index]+0.8,z)
 			var query := PhysicsRayQueryParameters3D.create(origin,origin-Vector3.UP*1.5)
 			assert(not world.get_world_3d().direct_space_state.intersect_ray(query).is_empty(), "Missing route datum support")
-	var arc_floor_ray := PhysicsRayQueryParameters3D.create(Vector3(-50,27.8,-2.5),Vector3(-50,26.6,-2.5))
+	var arc_floor_ray := PhysicsRayQueryParameters3D.create(Vector3(-30.623,27.8,-2.5),Vector3(-30.623,26.6,-2.5))
 	assert(not world.get_world_3d().direct_space_state.intersect_ray(arc_floor_ray).is_empty(), "Authored curved floor must provide support")
-	var arc_void_ray := PhysicsRayQueryParameters3D.create(Vector3(-48.2,27.8,-4),Vector3(-48.2,26.6,-4))
+	var arc_void_ray := PhysicsRayQueryParameters3D.create(Vector3(-28.823,27.8,-4),Vector3(-28.823,26.6,-4))
 	assert(world.get_world_3d().direct_space_state.intersect_ray(arc_void_ray).is_empty(), "No generic slab may fill the new curved opening")
 	# Actual body-width sweep across the two shared terrace boundaries and portal.
 	var clearance := CapsuleShape3D.new()
 	clearance.radius = 0.3
 	clearance.height = 1.8
-	for segment in [[Vector3(50,53.43,-36),Vector3(50,53.43,-32)], [Vector3(50,53.43,2),Vector3(50,53.43,6)], [Vector3(49.5,53.43,0),Vector3(59,53.43,0)], [Vector3(-46,0.93,0),Vector3(-65,0.93,0)]]:
+	for segment in [[Vector3(50,53.43,-36),Vector3(50,53.43,-32)], [Vector3(50,53.43,2),Vector3(50,53.43,6)], [Vector3(40,53.43,0),Vector3(59,53.43,0)], [Vector3(-46,0.93,0),Vector3(-65,0.93,0)]]:
 		var sweep := PhysicsShapeQueryParameters3D.new()
 		sweep.shape = clearance
 		sweep.transform.origin = segment[0]

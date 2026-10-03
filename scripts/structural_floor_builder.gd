@@ -34,13 +34,41 @@ static func build(parent: Node3D, top_material: Material, side_material: Materia
 		edges.set_material(side_material)
 		var mesh: ArrayMesh = top.commit()
 		edges.commit(mesh)
-		var instance := MeshInstance3D.new()
+		var instance := Node3D.new()
 		instance.name = region.id
-		instance.mesh = mesh
 		instance.set_meta("region_id",region.id)
 		instance.set_meta("coverage","structural_only")
 		group.add_child(instance)
-		instance.create_trimesh_collision()
+		# Physics stays continuous; rendering is spatially bounded for local light limits.
+		var body := StaticBody3D.new()
+		var contact := CollisionShape3D.new()
+		contact.shape = mesh.create_trimesh_shape()
+		body.add_child(contact)
+		instance.add_child(body)
+		var chunks: Array = region.get("render_chunks",[])
+		if chunks.is_empty():
+			var visual := MeshInstance3D.new()
+			visual.mesh = mesh
+			instance.add_child(visual)
+		else:
+			for chunk in chunks:
+				var tool := SurfaceTool.new()
+				tool.begin(Mesh.PRIMITIVE_TRIANGLES)
+				for triangle in chunk.triangles:
+					face(tool,Vector3(triangle[0][0],y,triangle[0][1]),Vector3(triangle[1][0],y,triangle[1][1]),Vector3(triangle[2][0],y,triangle[2][1]),Vector3.UP)
+				tool.set_material(materials.get(region.get("material_role","guest_floor"),top_material))
+				var visual := MeshInstance3D.new()
+				visual.name = chunk.id
+				visual.mesh = tool.commit()
+				instance.add_child(visual)
+			var underside := MeshInstance3D.new()
+			underside.name = "StructuralSidesAndUnderside"
+			var edge_mesh := ArrayMesh.new()
+			edge_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,mesh.surface_get_arrays(1))
+			edge_mesh.surface_set_material(0,side_material)
+			underside.mesh = edge_mesh
+			instance.add_child(underside)
+
 	return group
 
 static func face(tool: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, normal: Vector3) -> void:
