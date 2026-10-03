@@ -44,3 +44,6 @@ D02 now has a level dry garden court, four offset shallow water pockets, a seate
 
 ## Post-checkpoint08 salon pass
 The partial D09_salon5 room now has an authored softened enclosure, court-facing glazed gallery, a ceiling rising from 4.2 to 5.6 metres, an oblique arrival screen and a supported crescent conversation alcove. The existing portal, identity and reading components remain. Eight test groups pass; the salon group checks routes, stopping positions, optical exits and six ceiling samples. This is a room-family integration pass, not full-room, final-art or NPC acceptance.
+
+## Post-checkpoint09 integration and rendering pass
+Four principal terrace bands now use visible inner-edge columns with three-branch supports meeting actual upper galleries. A narrower, real eye-height overlook is verified against the offset floor contour. The salon now has fitted study and refreshment groups from the existing catalogue. Static visibility uses actual opaque floor/wall geometry; redundant shadow-state writes and ornamental-water shadow casting were removed. Ten scoped test groups pass on the working source. Current source counts are 102 catalogue designs including 13 new drafts, with 39 design families represented by 222 model instances; these are not room-completion counts.

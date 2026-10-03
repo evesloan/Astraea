@@ -32,5 +32,6 @@ func refresh() -> void:
 	for i in range(ranked.size()):
 		var light: Light3D = ranked[i].light
 		# A shadowed fixture is never silently converted to a wall-leaking unshadowed lamp.
-		light.visible = i < shadow_source_budget
-		light.shadow_enabled = light.visible
+		var active := i < shadow_source_budget
+		if light.visible != active: light.visible = active
+		if light.shadow_enabled != active: light.shadow_enabled = active

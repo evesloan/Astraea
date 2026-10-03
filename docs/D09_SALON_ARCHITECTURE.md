@@ -22,3 +22,6 @@ Window glass has a modest, view-dependent tint and opacity with local light resp
 - No final visual approval, loaded cart, all-species clearance, NPC seating, persistence or finished full-room claim
 
 Future seating markers are potential interaction locations only. They do not create new passenger berths or implemented AI behavior.
+
+## Activity furnishing pass
+The existing catalogue now supplies a four-position shared reading table with individually placed chairs, open folios and a source-mounted task fixture. A fitted refreshment counter uses a real worktop contact for its twin-spout station. A paired window setting provides a smaller conversation arrangement. These remain static furnishings; serving, seating AI and object pickup are not implemented. The rear reading-space gap now serves the counter and its approach rather than remaining unexplained leftover space.

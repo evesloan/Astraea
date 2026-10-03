@@ -4,7 +4,7 @@ The garden occupies the atrium's already reserved lower base. It does not cut an
 
 Four shallow water pockets separate a central grove court from the perimeter promenade. Their offset inner and outer curves make broader stopping areas on one side and shorter passages on the other. Four six-metre approaches arrive obliquely, rather than forming an overhead bridge grid. The central planted island has an integrated seated edge. Two branching conservatory trees terminate below D06 so the first main terrace overlooks their canopies; the upper atrium remains open.
 
-D02's old continuous drop-edge guard is superseded by the level garden floor. Other fifteen gallery guards remain. The shallow basin bed is at Y5.2, water Y5.74, dry routes Y6.0. Nothing reaches D01's ceiling zone. The source meshes include curved stone coping, tile lining, metal inlay, soil, seat cap and four actual uplight housings. Their optical datums drive the corresponding runtime sources.
+D02's old continuous drop-edge guard is superseded by the level garden floor. Other fifteen gallery guards remain. The shallow basin bed is at Y5.2, water Y5.74, dry routes Y6.0. The basin underside is at Y4.96, above the currently reserved D01 service-route headroom. Full engineering and life-support fit beneath it remains to be resolved; this does not certify the entire lower-deck ceiling zone. The source meshes include curved stone coping, tile lining, metal inlay, soil, seat cap and four actual uplight housings. Their optical datums drive the corresponding runtime sources.
 
 ## Evidence and limits
 
@@ -18,3 +18,5 @@ D02's old continuous drop-edge guard is superseded by the level garden floor. Ot
 Next refinement must address lighting behavior and inhabited perimeter destinations before multiplying decoration. Pool edges, entrances and stopping areas need normal-eye-height review together. The registered destinations and accommodation census remain unchanged.
 
 Ten path lanterns were fitted after the first pass. Tests verify their dry-floor support and clear optical exit rays. Their feet were moved inward from coping intersections rather than relaxing the clearance checks.
+
+The current D01 central route also passes a four-metre-wide, four-metre-high swept-clearance check beneath the basin. This remains a check of the built route, not the unresolved full engineering programme.

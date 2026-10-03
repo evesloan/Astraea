@@ -29,7 +29,8 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	var water_outline := PackedVector2Array()
 	for point in boundary: water_outline.append(Vector2(point[0],point[1]))
 	water_material.set_shader_parameter("boundary",water_outline)
-	ship.floor_mesh(root,"ShallowWaterVisual_NoSwimmingYet",water_outline,basin.water_y,water_material,false)
+	var water_visual := ship.floor_mesh(root,"ShallowWaterVisual_NoSwimmingYet",water_outline,basin.water_y,water_material,false) as MeshInstance3D
+	water_visual.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	var retreat := ship.model(root,"AST-AQU-011.glb","ShelteredWetRetreat",Vector3(51,44,216),-PI/2) as Node3D
 	for key in ["LOUNGER_LEFT","LOUNGER_RIGHT","TRAY"]:
 		var datum := retreat.find_child("DATUM_"+key,true,false) as Node3D

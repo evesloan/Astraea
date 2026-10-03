@@ -61,7 +61,7 @@ func run() -> void:
 		var fractions := world.get_world_3d().direct_space_state.cast_motion(sweep)
 		assert(fractions[0] > 0.999, "Temporary guards or portal must not block a shared route")
 	assert(not world.express_arrive(-1) and not world.express_arrive(18))
-	for arrival in [Vector3(13,44.1,218),Vector3(13,52.6,218),Vector3(13,61.1,218),Vector3(63,52.6,-20.5),Vector3(-59,0.1,0)]:
+	for arrival in [Vector3(13,44.1,218),Vector3(13,52.6,218),Vector3(13,61.1,218),Vector3(63,52.6,-20.5),Vector3(5,52.6,-42.5),Vector3(-59,0.1,0)]:
 		assert(world.arrive_at(arrival,0.0),"Authored destination needs floor and body clearance")
 	assert(not world.arrive_at(Vector3(30,52.6,216),0.0),"Arrival inside floor opening must be rejected")
 	var cache = load("res://scripts/static_contact_cache.gd")

@@ -20,6 +20,7 @@ func _ready() -> void:
 	world_view.process_mode = Node.PROCESS_MODE_PAUSABLE
 	world_view.size = Vector2i(640, 360)
 	world_view.own_world_3d = true
+	world_view.use_occlusion_culling = true
 	world_view.positional_shadow_atlas_16_bits = false
 	world_view.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	add_child(world_view)
@@ -89,6 +90,13 @@ func _ready() -> void:
 		salon_actor.rotation.y = PI/2
 		await get_tree().create_timer(0.5).timeout
 		await _capture("salon_window_")
+		salon_actor.spawn_position = Vector3(64,52.6,-18.5)
+		salon_actor.position = salon_actor.spawn_position
+		salon_actor.rotation.y = -PI/4
+		salon_actor.pitch = -0.18
+		salon_actor.camera.rotation.x = salon_actor.pitch
+		await get_tree().create_timer(0.5).timeout
+		await _capture("salon_study_")
 		if "--capture-d06" in OS.get_cmdline_user_args():
 			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
 			actor.spawn_position = Vector3(-31.623,27.1,4)
@@ -108,6 +116,12 @@ func _ready() -> void:
 			await get_tree().create_timer(1.0).timeout
 			get_node("NativeResolutionStatus").text = "ASTRAEA / GRAND ATRIUM — restored floor contours, finish incomplete"
 			await _capture("atrium_")
+			actor.spawn_position = Vector3(5,52.6,-42.5)
+			actor.position = actor.spawn_position
+			actor.pitch = -0.50
+			actor.camera.rotation.x = actor.pitch
+			await get_tree().create_timer(0.5).timeout
+			await _capture("atrium_overlook_")
 			actor.spawn_position = Vector3(0,6.1,-51)
 			actor.position = actor.spawn_position
 			actor.rotation.y = PI
@@ -182,6 +196,8 @@ func _ready() -> void:
 			world_view.get_node("Astraea").set_display_effects(false)
 			await get_tree().create_timer(0.25).timeout
 			await _capture("staff_clear_")
+		if FileAccess.file_exists("res://artifacts/profile_architecture.request"):
+			await _profile_architecture()
 		get_tree().quit()
 
 func _resize() -> void:
@@ -296,3 +312,33 @@ func set_world_resolution(index: int) -> void:
 	post_pass.size = Vector2(world_view.size)
 	reticle.queue_redraw()
 	_resize()
+
+func _profile_architecture() -> void:
+	set_world_resolution(0)
+	effects = true
+	post_pass.material.set_shader_parameter("enabled",true)
+	world_view.get_node("Astraea").set_display_effects(true)
+	var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
+	var routes := [{"name":"reading","position":Vector3(63,52.6,-20.5),"yaw":0.0,"pitch":0.0},{"name":"conversation","position":Vector3(62,52.6,-9),"yaw":-PI/2,"pitch":-0.05},{"name":"window","position":Vector3(55.5,52.6,-22.5),"yaw":PI/2,"pitch":0.0},{"name":"garden","position":Vector3(-9,6.1,-35),"yaw":PI,"pitch":0.20}]
+	var records: Array = []
+	for route in routes:
+		actor.spawn_position = route.position
+		actor.position = route.position
+		actor.velocity = Vector3.ZERO
+		actor.rotation.y = route.yaw
+		actor.pitch = route.pitch
+		actor.camera.rotation.x = route.pitch
+		for enabled in [false,true]:
+			world_view.use_occlusion_culling = enabled
+			await get_tree().create_timer(2.0).timeout
+			var samples: Array = []
+			for i in range(12):
+				await RenderingServer.frame_post_draw
+				samples.append({"visible_draws":world_view.get_render_info(Viewport.RENDER_INFO_TYPE_VISIBLE,Viewport.RENDER_INFO_DRAW_CALLS_IN_FRAME),"shadow_draws":world_view.get_render_info(Viewport.RENDER_INFO_TYPE_SHADOW,Viewport.RENDER_INFO_DRAW_CALLS_IN_FRAME),"visible_primitives":world_view.get_render_info(Viewport.RENDER_INFO_TYPE_VISIBLE,Viewport.RENDER_INFO_PRIMITIVES_IN_FRAME),"shadow_primitives":world_view.get_render_info(Viewport.RENDER_INFO_TYPE_SHADOW,Viewport.RENDER_INFO_PRIMITIVES_IN_FRAME)})
+			var tag: String = "occlusion_"+route.name+("_on" if enabled else "_off")
+			world_view.get_texture().get_image().save_png("res://artifacts/"+tag+".png")
+			records.append({"view":route.name,"occlusion":enabled,"samples":samples})
+	world_view.use_occlusion_culling = true
+	var file := FileAccess.open("res://artifacts/occlusion_profile.json",FileAccess.WRITE)
+	file.store_string(JSON.stringify({"adapter":RenderingServer.get_video_adapter_name(),"world_resolution":[640,360],"scope":"Paired stationary-view render counters after warmup; twelve frame samples; not target-PC FPS or a full moving-route benchmark","records":records},"  "))
+	DirAccess.remove_absolute(ProjectSettings.globalize_path("res://artifacts/profile_architecture.request"))

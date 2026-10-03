@@ -143,6 +143,7 @@ func build_retail_terrace() -> void:
 	$ShipSpace/Districts.add_child(district)
 	var outline := PackedVector2Array([Vector2(48,-34),Vector2(66,-34),Vector2(72,-30),Vector2(76,-22),Vector2(76,-10),Vector2(70,-3),Vector2(60,4),Vector2(48,4)])
 	var shell := model(district,"AST-SAL-007.glb","AuthoredSalonShell",Vector3(64,d09_y,-15))
+	load("res://scripts/architectural_occlusion.gd").salon_shell(shell)
 	var pane := ShaderMaterial.new()
 	pane.shader = load("res://shaders/hospitality_glass.gdshader")
 	for part in shell.find_children("SAL_Glass_*","MeshInstance3D",true,false): part.material_override = pane
@@ -174,7 +175,7 @@ func build_retail_terrace() -> void:
 		fixture.light_color = Color(1,.91,.78)
 		fixture.light_energy = 1.1
 		fixture.shadow_enabled = true
-	for z in [-13.4,-10.6]: model(district,"AST-FUR-003_day_table.glb","ConversationTable",Vector3(69.5,d09_y,z))
+	for z in [-13.4,-10.6]: model(district,"AST-FUR-003_day_table.glb","ConversationTable_"+("North" if z < -12 else "South"),Vector3(69.5,d09_y,z))
 	# Floor is supplied by the compiled layout, with this authored footprint taking priority.
 	# Quiet bay remains one assembled source family with its actual mating offset.
 	var bay := Node3D.new()
@@ -190,6 +191,7 @@ func build_retail_terrace() -> void:
 	model(district,"AST-GST-001.glb","ReadingLamp",Vector3(57,d09_y,-32))
 	model(district,"AST-BOT-001.glb","SmallCanopy",Vector3(54,d09_y,-21))
 	model(district,"AST-BOT-002.glb","Understory",Vector3(54.9,d09_y,-20.6))
+	load("res://scripts/salon_contents.gd").build(district,self)
 	# Actual lights colocated with fixtures, not an unexplained directional sun.
 	var light := OmniLight3D.new()
 	light.name = "ReadingLampActualLight"

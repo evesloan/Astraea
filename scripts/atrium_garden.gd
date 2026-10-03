@@ -30,7 +30,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		var datum := garden.find_child("DATUM_uplight_"+str(i),true,false) as Node3D
 		assert(datum != null)
 		var light := SpotLight3D.new()
-		light.name = "PlantedIslandSourceUplight"
+		light.name = "PlantedIslandSourceUplight_"+str(i)
 		root.add_child(light)
 		light.global_position = datum.global_position
 		light.rotation.x = PI/2
@@ -67,4 +67,5 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	for i in range(data.pools.size()):
 		var boundary := PackedVector2Array()
 		for p in data.pools[i]: boundary.append(Vector2(p[0],p[1]))
-		ship.floor_mesh(root,"OrnamentalGardenPocket_"+str(i),boundary,float(data.water_y),water,false)
+		var water_visual := ship.floor_mesh(root,"OrnamentalGardenPocket_"+str(i),boundary,float(data.water_y),water,false) as MeshInstance3D
+		water_visual.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

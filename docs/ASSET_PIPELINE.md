@@ -26,10 +26,12 @@ RMB focus and E use one camera-targeted interaction path. Keep future buttons/pi
 Light sources belong at fixture datums or verified source lens geometry. Profiles are artistic tuning, not species biological requirements. Large render meshes need deliberate spatial grouping: Godot's Compatibility renderer has default per-mesh light limits. See the official renderer overview: https://docs.godotengine.org/en/stable/tutorials/rendering/renderers.html
 
 ## Evidence and backups
-Run tools/validate.py for import, baseline, world, stairs, doors, contact-cache, garden and salon checks. Use its --only option during focused debugging; a full run is required for a milestone.
+Run tools/validate.py for import, baseline, world, stairs, doors, contact-cache, garden, salon, principal-bearing and activity-placement checks. Use its --only option during focused debugging; a full run is required for a milestone.
 
 The fixed cloud capture runner is session-scoped. It is not an OS startup service, an autonomous coding agent or a target-GPU benchmark. It records in-engine views, camera settings and errors. Inspect the actual images, including native-resolution effects-off views.
 
 A local Git commit is not an independent backup. Retain verified source archives and hashes, perform clean restores, and separately verify Workshop copies. Automatic Workshop delivery is not established. Keep engine installers, authentication state and disposable import caches out of project backups.
 
 Use Blender --python-exit-code 1 for scripted authoring so a Python failure cannot be mistaken for a successful export. Source IDs must be checked against the entire current catalogue before allocation.
+
+Opaque structural slabs and selected room walls/ceilings now provide occluders copied from actual surfaces. Glass, fixtures and door openings are excluded. Paired stationary-view diagnostics are available through the fixed review request helper; they are not target-device benchmarks. Animated ornamental water receives light but does not cast an opaque moving shadow, and unchanged light-budget state is not reapplied on every refresh.

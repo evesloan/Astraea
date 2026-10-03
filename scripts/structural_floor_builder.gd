@@ -39,6 +39,7 @@ static func build(parent: Node3D, top_material: Material, side_material: Materia
 		instance.set_meta("region_id",region.id)
 		instance.set_meta("coverage","structural_only")
 		group.add_child(instance)
+		load("res://scripts/architectural_occlusion.gd").from_mesh(instance,mesh,"ActualOpaqueSlabOccluder")
 		# Physics stays continuous; rendering is spatially bounded for local light limits.
 		var body := StaticBody3D.new()
 		var contact := CollisionShape3D.new()
