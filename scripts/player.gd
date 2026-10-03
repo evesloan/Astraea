@@ -2,6 +2,8 @@ extends CharacterBody3D
 @export var spawn_position := Vector3(63.0,52.6,-20.5)
 var camera: Camera3D
 var pitch := 0.0
+var interaction_target: Node
+var interaction_requested := false
 
 func _ready() -> void:
 	name = "Player"
@@ -21,6 +23,8 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_E:
+		interaction_requested = true
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -41,7 +45,23 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor(): velocity.y -= 9.8 * delta
 	else: velocity.y = 0.0
 	move_and_slide()
+	interaction_target = target_from_view() if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) else null
+	if interaction_requested:
+		if is_instance_valid(interaction_target): interaction_target.interact(self)
+		interaction_requested = false
 	camera.fov = lerpf(camera.fov, 58.0 if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) else 72.0, 1.0 - exp(-delta*10.0))
 	if position.y < spawn_position.y - 7.0:
 		position = spawn_position
 		velocity = Vector3.ZERO
+
+func target_from_view() -> Node:
+	var start := camera.global_position
+	var query := PhysicsRayQueryParameters3D.create(start,start-camera.global_basis.z*2.5)
+	query.exclude = [get_rid()]
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	if hit.is_empty(): return null
+	var candidate: Node = hit.collider
+	while candidate != null:
+		if candidate.has_method("interact") and candidate.has_method("get_interaction_label"): return candidate
+		candidate = candidate.get_parent()
+	return null

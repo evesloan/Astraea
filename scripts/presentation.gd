@@ -6,6 +6,11 @@ var post_pass: TextureRect
 var effects := true
 var directory: PanelContainer
 var directory_open := false
+var reticle: Node2D
+var interaction_hint: Label
+var resolution_index := 0
+var capture_records: Array = []
+const RESOLUTIONS := [Vector2i(640,360),Vector2i(960,540),Vector2i(1920,1080)]
 
 func _ready() -> void:
 	Engine.max_fps = 60
@@ -31,6 +36,10 @@ func _ready() -> void:
 	post_pass.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	post_pass.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	post_view.add_child(post_pass)
+	reticle = Node2D.new()
+	reticle.set_script(load("res://scripts/focus_reticle.gd"))
+	post_view.add_child(reticle)
+	reticle.hide()
 	display = TextureRect.new()
 	display.name = "NearestWorldPresentation"
 	display.texture = post_view.get_texture()
@@ -51,6 +60,10 @@ func _ready() -> void:
 	hud.add_theme_font_size_override("font_size", 16)
 	hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(hud)
+	interaction_hint = Label.new()
+	interaction_hint.position = Vector2(18,76)
+	interaction_hint.add_theme_font_size_override("font_size",16)
+	add_child(interaction_hint)
 	_build_directory()
 	if "--capture-validation" in OS.get_cmdline_user_args():
 		await get_tree().create_timer(2.0).timeout
@@ -64,6 +77,7 @@ func _ready() -> void:
 			actor.pitch = -0.22
 			actor.camera.rotation.x = actor.pitch
 			await get_tree().create_timer(1.0).timeout
+			get_node("NativeResolutionStatus").text = "ASTRAEA / D06 CURVED GALLERY — unfinished architecture"
 			await _capture("d06_")
 		if "--capture-aquatic" in OS.get_cmdline_user_args():
 			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
@@ -74,21 +88,56 @@ func _ready() -> void:
 			actor.pitch = 0.18
 			actor.camera.rotation.x = actor.pitch
 			await get_tree().create_timer(1.0).timeout
+			get_node("NativeResolutionStatus").text = "ASTRAEA / D08–D10 AQUATIC SECTION — unfinished architecture"
 			await _capture("aquatic_")
 			actor.spawn_position = Vector3(47,44.1,216)
 			actor.position = actor.spawn_position
 			actor.pitch = 0.0
 			actor.camera.rotation.x = 0.0
 			await get_tree().create_timer(1.0).timeout
+			get_node("NativeResolutionStatus").text = "ASTRAEA / D08 WET RETREAT — component integration"
 			await _capture("wet_retreat_")
+		if "--capture-staff" in OS.get_cmdline_user_args():
+			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
+			actor.spawn_position = Vector3(-59,0.1,0)
+			actor.position = actor.spawn_position
+			actor.velocity = Vector3.ZERO
+			actor.rotation.y = PI/2
+			actor.pitch = 0.0
+			actor.camera.rotation.x = 0.0
+			await get_tree().create_timer(1.0).timeout
+			get_node("NativeResolutionStatus").text = "ASTRAEA / D01 SYNTHESIS SERVICE BAY — partial installation"
+			await _capture("staff_")
+			var door = world_view.get_node("Astraea").find_child("SynthesisServiceDoor",true,false)
+			await get_tree().physics_frame
+			door.interact(actor)
+			await get_tree().create_timer(1.4).timeout
+			var focus := InputEventMouseButton.new()
+			focus.button_index = MOUSE_BUTTON_RIGHT
+			focus.pressed = true
+			Input.parse_input_event(focus)
+			await get_tree().create_timer(0.5).timeout
+			await _capture("staff_focus_")
+			focus.pressed = false
+			Input.parse_input_event(focus)
+			await get_tree().physics_frame
+			door.interact(actor)
+			await get_tree().create_timer(1.4).timeout
+			set_world_resolution(2)
+			effects = false
+			post_pass.material.set_shader_parameter("effects_enabled",false)
+			world_view.get_node("Astraea").set_display_effects(false)
+			await get_tree().create_timer(0.25).timeout
+			await _capture("staff_clear_")
 		get_tree().quit()
 
 func _resize() -> void:
 	var screen := Vector2(get_viewport().size)
-	var scale_factor := minf(screen.x / 640.0, screen.y / 360.0)
+	var logical := Vector2(world_view.size)
+	var scale_factor := minf(screen.x / logical.x, screen.y / logical.y)
 	if scale_factor >= 1.0:
 		scale_factor = maxf(1.0, floorf(scale_factor))
-	display.size = Vector2(640,360) * scale_factor
+	display.size = logical * scale_factor
 	display.position = (screen - display.size) * 0.5
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -97,6 +146,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_M:
 		_toggle_directory()
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F3:
+		set_world_resolution((resolution_index+1)%RESOLUTIONS.size())
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F11:
+		get_window().mode = Window.MODE_WINDOWED if get_window().mode == Window.MODE_FULLSCREEN else Window.MODE_FULLSCREEN
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F12:
 		_capture()
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F4:
@@ -113,6 +166,11 @@ func _capture(prefix: String = "") -> void:
 	world_view.get_texture().get_image().save_png("res://artifacts/"+prefix+"world_capture.png")
 	post_view.get_texture().get_image().save_png("res://artifacts/"+prefix+"processed_world_capture.png")
 	get_viewport().get_texture().get_image().save_png("res://artifacts/"+prefix+"presentation_capture.png")
+	var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
+	capture_records.append({"prefix":prefix,"world_resolution":[world_view.size.x,world_view.size.y],"effects_enabled":effects,"camera_position":[actor.camera.global_position.x,actor.camera.global_position.y,actor.camera.global_position.z],"camera_rotation":[actor.camera.global_rotation.x,actor.camera.global_rotation.y,actor.camera.global_rotation.z],"fov":actor.camera.fov,"adapter":RenderingServer.get_video_adapter_name(),"scope":"In-engine review, not target-platform performance acceptance"})
+	var record := FileAccess.open("res://artifacts/capture_settings.json",FileAccess.WRITE)
+	record.store_string(JSON.stringify(capture_records,"  "))
+	record.close()
 
 func _build_directory() -> void:
 	directory = PanelContainer.new()
@@ -139,7 +197,7 @@ func _build_directory() -> void:
 	var places := GridContainer.new()
 	places.columns = 2
 	column.add_child(places)
-	for target in [{"name":"D08 Gentle Waters — unfinished", "position":Vector3(13,44.1,218)}, {"name":"D09 Living Gifts — unfinished", "position":Vector3(13,52.6,218)}, {"name":"D10 Vesper — unfinished", "position":Vector3(13,61.1,218)}, {"name":"D09 Conversation salon — partial", "position":Vector3(63,52.6,-20.5)}]:
+	for target in [{"name":"D01 Synthesis service bay — partial", "position":Vector3(-59,0.1,0)}, {"name":"D08 Gentle Waters — unfinished", "position":Vector3(13,44.1,218)}, {"name":"D09 Living Gifts — unfinished", "position":Vector3(13,52.6,218)}, {"name":"D10 Vesper — unfinished", "position":Vector3(13,61.1,218)}, {"name":"D09 Conversation salon — partial", "position":Vector3(63,52.6,-20.5)}]:
 		var button := Button.new()
 		button.text = target.name
 		button.custom_minimum_size = Vector2(450,36)
@@ -165,6 +223,23 @@ func _travel(index: int) -> void:
 
 func _visit(label: String, arrival: Vector3) -> void:
 	var world = world_view.get_node("Astraea")
-	if world.arrive_at(arrival,-PI/2):
+	if world.arrive_at(arrival,PI/2 if arrival.x < 0 else -PI/2):
 		get_node("NativeResolutionStatus").text = "ASTRAEA / "+label+"\nWASD · Mouse · RMB focus · M directory · F4 effects\nProduction architecture in progress"
 		_toggle_directory()
+
+func _process(_delta: float) -> void:
+	if not is_instance_valid(reticle): return
+	reticle.visible = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not directory_open
+	var actor = world_view.get_node_or_null("Astraea/ShipSpace/PersistentActors/Player")
+	if actor != null and reticle.visible and is_instance_valid(actor.interaction_target):
+		interaction_hint.text = actor.interaction_target.get_interaction_label()
+	else: interaction_hint.text = ""
+
+func set_world_resolution(index: int) -> void:
+	assert(index >= 0 and index < RESOLUTIONS.size())
+	resolution_index = index
+	world_view.size = RESOLUTIONS[index]
+	post_view.size = world_view.size
+	post_pass.size = Vector2(world_view.size)
+	reticle.queue_redraw()
+	_resize()

@@ -12,6 +12,11 @@ func run() -> void:
 	assert(world.get_node("ShipSpace/All18DeckStructuralDatums_NOT_FINISHED_ARCHITECTURE").get_child_count()==18)
 	var viewport: SubViewport = main.get_node("World360")
 	assert(viewport.size == Vector2i(640,360))
+	main.set_world_resolution(2)
+	assert(viewport.size == Vector2i(1920,1080))
+	assert(main.post_view.size == viewport.size and main.post_pass.size == Vector2(viewport.size))
+	main.set_world_resolution(0)
+	assert(viewport.size == Vector2i(640,360))
 	var bay := world.get_node("ShipSpace/Districts/D09_StarboardTerrace_AuthoredFootprint_WIP/QuietReturn")
 	assert(bay.get_child_count()==2)
 	assert(world.find_children("QuietBayTaskLight_*","SpotLight3D",true,false).size()==2, "Both real fixture lights must exist")
@@ -40,7 +45,7 @@ func run() -> void:
 	var clearance := CapsuleShape3D.new()
 	clearance.radius = 0.3
 	clearance.height = 1.8
-	for segment in [[Vector3(50,53.43,-36),Vector3(50,53.43,-32)], [Vector3(50,53.43,2),Vector3(50,53.43,6)], [Vector3(49.5,53.43,0),Vector3(59,53.43,0)]]:
+	for segment in [[Vector3(50,53.43,-36),Vector3(50,53.43,-32)], [Vector3(50,53.43,2),Vector3(50,53.43,6)], [Vector3(49.5,53.43,0),Vector3(59,53.43,0)], [Vector3(-46,0.93,0),Vector3(-65,0.93,0)]]:
 		var sweep := PhysicsShapeQueryParameters3D.new()
 		sweep.shape = clearance
 		sweep.transform.origin = segment[0]
@@ -50,9 +55,12 @@ func run() -> void:
 		var fractions := world.get_world_3d().direct_space_state.cast_motion(sweep)
 		assert(fractions[0] > 0.999, "Temporary guards or portal must not block a shared route")
 	assert(not world.express_arrive(-1) and not world.express_arrive(18))
-	for arrival in [Vector3(13,44.1,218),Vector3(13,52.6,218),Vector3(13,61.1,218),Vector3(63,52.6,-20.5)]:
+	for arrival in [Vector3(13,44.1,218),Vector3(13,52.6,218),Vector3(13,61.1,218),Vector3(63,52.6,-20.5),Vector3(-59,0.1,0)]:
 		assert(world.arrive_at(arrival,0.0),"Authored destination needs floor and body clearance")
 	assert(not world.arrive_at(Vector3(30,52.6,216),0.0),"Arrival inside floor opening must be rejected")
+	var cache = load("res://scripts/static_contact_cache.gd")
+	assert(cache.shapes_reused > 0 and cache.contacts_created > cache.live_shape_count(),"Repeated source meshes should share immutable contact geometry")
+	print("CONTACT CACHE: %d placements use %d shared shapes (%d reuses)" % [cache.contacts_created,cache.live_shape_count(),cache.shapes_reused])
 	print("WORLD PASS: supported D09 spawn; 18 express arrivals and 108 structural route probes; 18 structural datums; 640x360 world; source cove mating; adjustable effect resources. Not full route, collision, visual or performance acceptance.")
 	main.queue_free()
 	await process_frame

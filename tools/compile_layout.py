@@ -36,7 +36,7 @@ for item in layout['regions']:
         p=orient(component,sign=1.0)
         rings.append([list(c) for c in p.exterior.coords[:-1]])
         rings.extend([[list(c) for c in ring.coords[:-1]] for ring in p.interiors])
-    outputs.append({'id':item['id'],'deck':item['deck'],'floor_y':elevations[item['deck']]+item.get('offset_y',0),'thickness':item.get('thickness',.24),'triangles':[[list(c) for c in t.exterior.coords[:3]] for t in triangles.geoms],'rings':rings,'structural_area_m2':shape.area,'status':item['status']})
+    outputs.append({'id':item['id'],'deck':item['deck'],'floor_y':elevations[item['deck']]+item.get('offset_y',0),'thickness':item.get('thickness',.24),'triangles':[[list(c) for c in t.exterior.coords[:3]] for t in triangles.geoms],'rings':rings,'structural_area_m2':shape.area,'status':item['status'],'material_role':item.get('material_role','guest_floor')})
 for i,a in enumerate(layout['regions']):
     for b in layout['regions'][i+1:]:
         overlap=owned[a['id']].intersection(owned[b['id']]).area

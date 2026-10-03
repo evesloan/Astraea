@@ -29,10 +29,11 @@ func _ready() -> void:
 	environment.ssao_radius = 0.65
 	environment.ssao_intensity = 0.45
 	build_structural_datums()
-	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory)
+	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory,{"staff_floor":surface("staff_floor",Color.WHITE)})
 	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-48,deck_y[5],0),PI/2)
 	build_retail_terrace()
 	load("res://scripts/aquatic_section.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/staff_section.gd").build($ShipSpace/Districts,self)
 	var player := CharacterBody3D.new()
 	player.set_script(load("res://scripts/player.gd"))
 	$ShipSpace/PersistentActors.add_child(player)
@@ -107,16 +108,16 @@ func build_structural_datums() -> void:
 	var structure := Node3D.new()
 	structure.name = "All18DeckStructuralDatums_NOT_FINISHED_ARCHITECTURE"
 	$ShipSpace.add_child(structure)
-	# Reversible hull-station study fitted to the overview, not finished hull or room allocation.
-	var stations := [Vector2(-541,2),Vector2(-480,48),Vector2(-360,105),Vector2(-280,120),Vector2(0,120),Vector2(280,110),Vector2(450,82),Vector2(541,64)]
+	var hull: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/hull_envelope.json"))
+	var outline: Array = hull.plan_xz_m
 	for d in range(18):
 		var deck := Node3D.new()
 		deck.name = "D%02d_Datum" % (d+1)
 		structure.add_child(deck)
-		for side in [-1.0,1.0]:
-			for i in range(stations.size()-1):
-				var a: Vector2 = stations[i]; var b: Vector2 = stations[i+1]
-				beam(deck,"HullDatum_%d_%d"%[int(side),i],Vector3(a.y*side,deck_y[d],a.x),Vector3(b.y*side,deck_y[d],b.x),0.14,metal)
+		for i in range(outline.size()):
+			var a: Array = outline[i]
+			var b: Array = outline[(i+1)%outline.size()]
+			beam(deck,"HullDatum_%d"%i,Vector3(a[0],deck_y[d],a[1]),Vector3(b[0],deck_y[d],b[1]),0.14,metal)
 
 func build_retail_terrace() -> void:
 	var district := Node3D.new()
@@ -210,7 +211,7 @@ func set_display_effects(enabled: bool) -> void:
 
 func _static_contacts(node: Node) -> void:
 	if node is MeshInstance3D and node.mesh != null:
-		node.create_trimesh_collision()
+		load("res://scripts/static_contact_cache.gd").attach(node)
 	for child in node.get_children():
 		if not child is StaticBody3D: _static_contacts(child)
 

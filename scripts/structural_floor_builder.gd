@@ -1,6 +1,6 @@
 extends RefCounted
 
-static func build(parent: Node3D, top_material: Material, side_material: Material) -> Node3D:
+static func build(parent: Node3D, top_material: Material, side_material: Material, materials: Dictionary = {}) -> Node3D:
 	var definition: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	var group := Node3D.new()
 	group.name = "CompiledStructuralFloors_NotFinishedRooms"
@@ -30,7 +30,7 @@ static func build(parent: Node3D, top_material: Material, side_material: Materia
 				var normal := Vector3(direction.z,0,-direction.x).normalized()
 				face(edges,a,b,bottom_b,normal)
 				face(edges,a,bottom_b,bottom_a,normal)
-		top.set_material(top_material)
+		top.set_material(materials.get(region.get("material_role","guest_floor"),top_material))
 		edges.set_material(side_material)
 		var mesh: ArrayMesh = top.commit()
 		edges.commit(mesh)
