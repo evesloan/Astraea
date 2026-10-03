@@ -22,3 +22,11 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		source.light_energy = 2.3
 		source.light_color = Color(1,.96,.88)
 		source.shadow_enabled = true
+	# Conversation groups sit against the planted edges, leaving the spine clear.
+	for group in [{"center":Vector3(-67,27,-3.2),"axis":0.0},{"center":Vector3(-60.5,27,5),"axis":PI/2}]:
+		var center: Vector3 = group.center
+		ship.model(root,"AST-FUR-003_day_table.glb","CanopyConversationTable",center)
+		for side in [-1,1]:
+			var offset := Vector3(1.25*side,0,0).rotated(Vector3.UP,group.axis)
+			var yaw := atan2(-offset.x,-offset.z)
+			ship.model(root,"AST-FUR-002_day_reading_chair.glb","CanopyConversationChair",center+offset,yaw)
