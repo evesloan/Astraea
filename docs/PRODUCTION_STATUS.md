@@ -1,13 +1,15 @@
-# Production status — 3 October 2026
+# Production status — 3 October 2026, checkpoint 03
 
 Godot cloud restart, not recovered original code.
 
-Implemented: single main entry and 640x360 world with native HUD; restrained ordered dithering and optional scanlines; F4 toggles display effects including glow/SSAO; first-person movement/slight RMB zoom; 18 structural datum outlines and provisional atrium strips; one provisional D09 terrace footprint; imported cove/day-use/plant assets; actual fixture lights; source-preserving static contact meshes.
+Implemented: one main scene, a 640×360 world and single low-resolution display-effects pass with native HUD; restrained ordered dithering and optional scanlines; F4 effects toggle; first-person movement and slight RMB zoom. Canonical 18 nonuniform deck datums drive structural circulation. An offline polygon compiler produces 91 slab regions with explicit atrium/theater holes and authored floor replacement. M opens a temporary express deck directory; this is not a physical elevator. D09 salon remains partially furnished. A new editable Blender curved gallery bay is integrated at D06 with matching collision and a real curved opening.
 
-Verified: Godot4.6.3 Compatibility runs on cloud desktop using llvmpipe software OpenGL. Source assets render; native640x360 captures saved. Headless tests confirm supported D09 spawn, source cove mate offset,18datums and viewport size. No target GPU performance or audio acceptance (dummy audio fallback).
+Verified: cloud desktop renders using Godot 4.6.3 Compatibility and llvmpipe software OpenGL. Latest processed-world capture succeeded without script or rendering errors; V-Sync unsupported warning remains. Dummy audio was explicitly selected, so no audio acceptance. Headless tests cover 18 express arrivals, 108 route support probes, curved gallery support/opening, source fixture positions, viewport and effect toggles. Polygon checks cover area conservation, holes and overlap ownership.
 
-Not complete: hull shell, real district/room allocation, connected18deck traversal, final terrace architecture, ceilings/doors/glass, cart/cleaning/persistence/guests. Structural ribbons are planning representation, not finished balconies. Temporary boundary guards keep the currently supported floor bounded. No room counted complete.
+Visual review: cove lighting is legible and source-positioned. Surrounding structural slabs are plainly unfinished; ceilings, edges, material variation and the district composition require further architecture. No complete room or district is claimed. The D06 asset has source/GLB roundtrip and joined-module Blender review; its ordinary in-engine player view remains pending.
 
-Next: finish source review and author structural fit/connected circulation before propagating rooms. Remove generic datum overlaps as each authored surface takes ownership. Expand Blender catalogue from actual missing component needs.
+Not complete: final hull, complete room/program allocation, finished circulation architecture, physical lifts/trams, cart/cleaning/persistence/guests, accurate interaction targeting, audio, target GPU performance. Current structural floors do not establish 1,000 finished accommodations. Temporary boundary guards remain.
 
-Backup: source baseline9caa948 is independently retained in Library and clean-restore tested; newer scene work requires another checkpoint. Automatic Workshop copy not yet established. Unity changeset3 retained separately.
+Next: coordinate major district volumes, programs and circulation against the master and blueprints, then develop connected authored spaces and their Blender kits together. Keep deck datums without flattening all spaces into full floor plates.
+
+Backup: baseline is hash-verified on Workshop. Checkpoint02 is retained in Library and clean-restore tested. Automatic Workshop transfer remains unresolved. Unity changeset3 is preserved separately. This checkpoint needs its own archive verification and independent retention.

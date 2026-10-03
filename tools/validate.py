@@ -8,7 +8,7 @@ for key,sub in [('XDG_CONFIG_HOME','config'),('XDG_DATA_HOME','data'),('XDG_CACH
 results=[]
 commands=[('import',['--editor','--quit']),('baseline',['--script','res://tests/validate_baseline.gd']),('world',['--script','res://tests/validate_world.gd'])]
 for label,args in commands:
-    process=subprocess.run(['godot','--headless','--path',str(root),*args],env=env,capture_output=True,text=True,timeout=90)
+    process=subprocess.run(['godot','--headless','--path',str(root),'--quit-after','600',*args],env=env,capture_output=True,text=True,timeout=90)
     output=process.stdout+process.stderr
     errors=[line for line in output.splitlines() if 'ERROR:' in line or 'Assertion failed' in line or 'Parse Error' in line]
     passed=process.returncode==0 and not errors and (label=='import' or 'PASS:' in output)

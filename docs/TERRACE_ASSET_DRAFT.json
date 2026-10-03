@@ -1,0 +1,53 @@
+{
+  "catalogue_id": "AST-ARC-001",
+  "name": "Swept gallery bay with profiled fascia and restrained glazed guard",
+  "status": "Draft original design; component and in-engine fit review pending",
+  "unique_design": true,
+  "source": "source/AST-ARC-001.blend",
+  "export": "exports/AST-ARC-001.glb",
+  "generator": "source/build_swept_terrace.py",
+  "radius_m": 10.0,
+  "angle_degrees": 30,
+  "floor_width_m": 4.2,
+  "usable_floor_width_m": 3.8600000000000003,
+  "source_axes": "Blender XYZ, Z up; +X tangent at start, +Y inward depth",
+  "native_glb_mapping": "(x,y,z)->(x,z,-y)",
+  "source_bounds": {
+    "min": [
+      -0.054999999701976776,
+      0.0,
+      -0.699999988079071
+    ],
+    "max": [
+      5.0,
+      4.977052688598633,
+      1.149999976158142
+    ]
+  },
+  "triangles": 1378,
+  "semantic_mesh_parts": [
+    "ARC_Floor",
+    "ARC_ProfiledFascia",
+    "ARC_RecessedSoffit",
+    "ARC_LowerShadowReveal",
+    "ARC_GuardPlinth",
+    "ARC_ContinuousHandrail",
+    "ARC_HandrailMetalSeat",
+    "ARC_Glass_00",
+    "ARC_Glass_01",
+    "ARC_Glass_02",
+    "ARC_Glass_03",
+    "ARC_Post_00",
+    "ARC_Post_01",
+    "ARC_Post_02",
+    "ARC_Post_03",
+    "ARC_Post_04",
+    "ARC_UndersideRib_0",
+    "ARC_UndersideRib_1"
+  ],
+  "source_sha256": "5f521423f89865214077077bbd3549c75d057b9f25b03dd5609dce9d1a9aed27",
+  "export_sha256": "17266a9010d9fde5baf9d4dbe0bb09b42107ccef69e6542f6a5cc225c4da595c",
+  "collision_policy": "Static floor and guard surfaces only; never one convex hull across the curved open side. Body and cart route acceptance still pending.",
+  "join_policy": "End socket receives next start socket; omit one duplicate endpoint post. Floor ownership must replace, not overlap, authored slab. Source geometry remains editable.",
+  "design_count_note": "One authored design; copies/rotation/joins are not new designs."
+}

@@ -29,6 +29,8 @@ func _ready() -> void:
 	environment.ssao_radius = 0.65
 	environment.ssao_intensity = 0.45
 	build_structural_datums()
+	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory)
+	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-48,deck_y[5],0),PI/2)
 	build_retail_terrace()
 	var player := CharacterBody3D.new()
 	player.set_script(load("res://scripts/player.gd"))
@@ -113,25 +115,13 @@ func build_structural_datums() -> void:
 			for i in range(stations.size()-1):
 				var a: Vector2 = stations[i]; var b: Vector2 = stations[i+1]
 				beam(deck,"HullDatum_%d_%d"%[int(side),i],Vector3(a.y*side,deck_y[d],a.x),Vector3(b.y*side,deck_y[d],b.x),0.14,metal)
-		if d >= 1 and d <= 16:
-			var width := 6.0 if d in [5,8,11,15] else 3.0
-			# Four separated perimeter strips; never a floor through the center.
-			floor_mesh(deck,"PortGalleryDatum",PackedVector2Array([Vector2(-48-width,-64),Vector2(-48,-64),Vector2(-48,64),Vector2(-48-width,64)]),deck_y[d],ivory,false)
-			if d == 8:
-				# The authored terrace owns this interval; no coplanar generic floor beneath it.
-				floor_mesh(deck,"StarboardForeDatum",PackedVector2Array([Vector2(48,-64),Vector2(48+width,-64),Vector2(48+width,-34),Vector2(48,-34)]),deck_y[d],ivory,false)
-				floor_mesh(deck,"StarboardAftDatum",PackedVector2Array([Vector2(48,4),Vector2(48+width,4),Vector2(48+width,64),Vector2(48,64)]),deck_y[d],ivory,false)
-			else:
-				floor_mesh(deck,"StarboardGalleryDatum",PackedVector2Array([Vector2(48,-64),Vector2(48+width,-64),Vector2(48+width,64),Vector2(48,64)]),deck_y[d],ivory,false)
-			floor_mesh(deck,"ForeGalleryDatum",PackedVector2Array([Vector2(-48-width,-64-width),Vector2(48+width,-64-width),Vector2(48+width,-64),Vector2(-48-width,-64)]),deck_y[d],ivory,false)
-			floor_mesh(deck,"AftGalleryDatum",PackedVector2Array([Vector2(-48-width,64),Vector2(48+width,64),Vector2(48+width,64+width),Vector2(-48-width,64+width)]),deck_y[d],ivory,false)
 
 func build_retail_terrace() -> void:
 	var district := Node3D.new()
 	district.name = "D09_StarboardTerrace_AuthoredFootprint_WIP"
 	$ShipSpace/Districts.add_child(district)
 	var outline := PackedVector2Array([Vector2(48,-34),Vector2(66,-34),Vector2(72,-30),Vector2(76,-22),Vector2(76,-10),Vector2(70,-3),Vector2(60,4),Vector2(48,4)])
-	floor_mesh(district,"TerraceFloor",outline,d09_y,stone)
+	# Floor is supplied by the compiled layout, with this authored footprint taking priority.
 	# Quiet bay remains one assembled source family with its actual mating offset.
 	var bay := Node3D.new()
 	bay.name = "QuietReturn"
@@ -217,3 +207,15 @@ func _static_contacts(node: Node) -> void:
 		node.create_trimesh_collision()
 	for child in node.get_children():
 		if not child is StaticBody3D: _static_contacts(child)
+
+func express_arrive(deck_index: int) -> bool:
+	if deck_index < 0 or deck_index >= deck_y.size(): return false
+	var player: CharacterBody3D = $ShipSpace/PersistentActors/Player
+	var arrival := Vector3(5.5,deck_y[deck_index]+0.1,-72)
+	var query := PhysicsRayQueryParameters3D.create(arrival+Vector3.UP,arrival-Vector3.UP*2)
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	if hit.is_empty(): return false
+	player.position = arrival
+	player.spawn_position = arrival
+	player.velocity = Vector3.ZERO
+	return true

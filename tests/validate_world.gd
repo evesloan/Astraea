@@ -23,7 +23,21 @@ func run() -> void:
 	world.set_display_effects(false)
 	assert(not env.glow_enabled and not env.ssao_enabled)
 	world.set_display_effects(true)
-	print("WORLD PASS: supported D09 spawn; 18 structural datums; 640x360 world; source cove mating; adjustable effect resources. Not full route, collision, visual or performance acceptance.")
+	for deck_index in range(18):
+		assert(world.express_arrive(deck_index), "Every express landing needs existing collision")
+		for frame in range(15): await physics_frame
+		assert(absf(player.position.y-world.deck_y[deck_index]) < 0.15)
+		assert(player.is_on_floor())
+		for z in [-500.0,-100.0,-72.0,72.0,100.0,500.0]:
+			var origin := Vector3(0,world.deck_y[deck_index]+0.8,z)
+			var query := PhysicsRayQueryParameters3D.create(origin,origin-Vector3.UP*1.5)
+			assert(not world.get_world_3d().direct_space_state.intersect_ray(query).is_empty(), "Missing route datum support")
+	var arc_floor_ray := PhysicsRayQueryParameters3D.create(Vector3(-50,27.8,-2.5),Vector3(-50,26.6,-2.5))
+	assert(not world.get_world_3d().direct_space_state.intersect_ray(arc_floor_ray).is_empty(), "Authored curved floor must provide support")
+	var arc_void_ray := PhysicsRayQueryParameters3D.create(Vector3(-48.2,27.8,-4),Vector3(-48.2,26.6,-4))
+	assert(world.get_world_3d().direct_space_state.intersect_ray(arc_void_ray).is_empty(), "No generic slab may fill the new curved opening")
+	assert(not world.express_arrive(-1) and not world.express_arrive(18))
+	print("WORLD PASS: supported D09 spawn; 18 express arrivals and 108 structural route probes; 18 structural datums; 640x360 world; source cove mating; adjustable effect resources. Not full route, collision, visual or performance acceptance.")
 	main.queue_free()
 	await process_frame
 	quit(0)
