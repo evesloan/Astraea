@@ -5,7 +5,7 @@ The surviving master document, blueprints and reference archives supply design i
 ## Geometry ownership
 - Edit data/spatial_layout.json deliberately. Floor datums remain separate from local offsets, ceilings and voids.
 - Compile with tools/compile_layout.py and the pinned geometry dependencies. Ownership is evaluated at absolute elevation, so mezzanines do not erase lower floors.
-- The 96 × 128 m atrium rectangle is a structural slab cut-out. Authored terraces occupy part of it. Only explicit atrium-terrace records may exempt that structural cut-out; the theater reservation remains protected.
+- The 96 × 128 m atrium rectangle is a structural slab cut-out. Authored terraces occupy part of it. Explicit atrium-terrace records and the separately constrained D02 garden-base records may exempt that structural cut-out; the theater reservation remains protected.
 - Run tools/validate_atrium_routes.py for continuous four-metre support around the reserved service route. This is not actual loaded-cart or tram acceptance.
 - Floor rendering can use 24 m cells while physics remains one continuous contact mesh per authored region. This supports local lighting without adding collision seams.
 
@@ -26,8 +26,10 @@ RMB focus and E use one camera-targeted interaction path. Keep future buttons/pi
 Light sources belong at fixture datums or verified source lens geometry. Profiles are artistic tuning, not species biological requirements. Large render meshes need deliberate spatial grouping: Godot's Compatibility renderer has default per-mesh light limits. See the official renderer overview: https://docs.godotengine.org/en/stable/tutorials/rendering/renderers.html
 
 ## Evidence and backups
-Run tools/validate.py for import, baseline, world, stairs, doors and contact-cache checks. Use its --only option during focused debugging; a full run is required for a milestone.
+Run tools/validate.py for import, baseline, world, stairs, doors, contact-cache, garden and salon checks. Use its --only option during focused debugging; a full run is required for a milestone.
 
 The fixed cloud capture runner is session-scoped. It is not an OS startup service, an autonomous coding agent or a target-GPU benchmark. It records in-engine views, camera settings and errors. Inspect the actual images, including native-resolution effects-off views.
 
 A local Git commit is not an independent backup. Retain verified source archives and hashes, perform clean restores, and separately verify Workshop copies. Automatic Workshop delivery is not established. Keep engine installers, authentication state and disposable import caches out of project backups.
+
+Use Blender --python-exit-code 1 for scripted authoring so a Python failure cannot be mistaken for a successful export. Source IDs must be checked against the entire current catalogue before allocation.

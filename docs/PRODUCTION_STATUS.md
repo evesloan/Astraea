@@ -41,3 +41,6 @@ A fitted Blender guard/fascia network now follows those contours, using deeper p
 
 ## Post-checkpoint07 garden pass
 D02 now has a level dry garden court, four offset shallow water pockets, a seated planted island, two custom conservatory canopies and layered existing botanical models. Ten new path lanterns use source datums. Four approaches pass312 player-clearance/support probes; no cart/swimming or final visual approval. See ATRIUM_GARDEN_COMPOSITION.md and LIGHTING_REVIEW.md for scope and unresolved work. Original accommodations and deck elevations are preserved.
+
+## Post-checkpoint08 salon pass
+The partial D09_salon5 room now has an authored softened enclosure, court-facing glazed gallery, a ceiling rising from 4.2 to 5.6 metres, an oblique arrival screen and a supported crescent conversation alcove. The existing portal, identity and reading components remain. Eight test groups pass; the salon group checks routes, stopping positions, optical exits and six ceiling samples. This is a room-family integration pass, not full-room, final-art or NPC acceptance.

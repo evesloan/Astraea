@@ -139,8 +139,42 @@ func build_structural_datums() -> void:
 func build_retail_terrace() -> void:
 	var district := Node3D.new()
 	district.name = "D09_StarboardTerrace_AuthoredFootprint_WIP"
+	district.set_meta("allocation_room_id","D09_salon5")
 	$ShipSpace/Districts.add_child(district)
 	var outline := PackedVector2Array([Vector2(48,-34),Vector2(66,-34),Vector2(72,-30),Vector2(76,-22),Vector2(76,-10),Vector2(70,-3),Vector2(60,4),Vector2(48,4)])
+	var shell := model(district,"AST-SAL-007.glb","AuthoredSalonShell",Vector3(64,d09_y,-15))
+	var pane := ShaderMaterial.new()
+	pane.shader = load("res://shaders/hospitality_glass.gdshader")
+	for part in shell.find_children("SAL_Glass_*","MeshInstance3D",true,false): part.material_override = pane
+	for i in range(6):
+		var datum := shell.find_child("DATUM_ceiling_light_"+str(i),true,false) as Node3D
+		assert(datum != null)
+		var fixture := SpotLight3D.new()
+		fixture.name = "SalonCeilingSource_"+str(i)
+		district.add_child(fixture)
+		fixture.global_position = datum.global_position
+		fixture.rotation.x = -PI/2
+		fixture.spot_angle = 65
+		fixture.spot_range = 9
+		fixture.light_color = Color(1,.92,.81)
+		fixture.light_energy = 1.5
+		fixture.shadow_enabled = true
+	var conversation := model(district,"AST-SAL-008.glb","CrescentConversationAlcove",Vector3(68,d09_y,-12))
+	for part in conversation.find_children("ALC_VisualFloor*","MeshInstance3D",true,false): part.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	for i in range(3):
+		var datum := conversation.find_child("DATUM_light_"+str(i),true,false) as Node3D
+		assert(datum != null)
+		var fixture := SpotLight3D.new()
+		fixture.name = "ConversationSource_"+str(i)
+		district.add_child(fixture)
+		fixture.global_position = datum.global_position
+		fixture.rotation.x = -PI/2
+		fixture.spot_angle = 58
+		fixture.spot_range = 5
+		fixture.light_color = Color(1,.91,.78)
+		fixture.light_energy = 1.1
+		fixture.shadow_enabled = true
+	for z in [-13.4,-10.6]: model(district,"AST-FUR-003_day_table.glb","ConversationTable",Vector3(69.5,d09_y,z))
 	# Floor is supplied by the compiled layout, with this authored footprint taking priority.
 	# Quiet bay remains one assembled source family with its actual mating offset.
 	var bay := Node3D.new()
@@ -150,13 +184,12 @@ func build_retail_terrace() -> void:
 	model(bay,"AST-SAL-003.glb","BookSeatBay",Vector3.ZERO)
 	model(bay,"AST-SAL-002.glb","MatedOverhead",Vector3(-3.1,0,0))
 	model(district,"AST-SAL-001.glb","PublicPortal_NoDoorYet",Vector3(52,d09_y,0),PI/2)
-	model(district,"AST-FUR-001_day_window_bench.glb","CourtBench",Vector3(52.5,d09_y,-29),-PI/2)
-	model(district,"AST-FUR-002_day_reading_chair.glb","ReadingChair",Vector3(56.2,d09_y,-34),-PI/2)
-	model(district,"AST-FUR-003_day_table.glb","LowReadingTable",Vector3(54.8,d09_y,-33))
+	model(district,"AST-FUR-001_day_window_bench.glb","CourtBench",Vector3(53.7,d09_y,-25.2),-PI/2)
+	model(district,"AST-FUR-002_day_reading_chair.glb","ReadingChair",Vector3(56.2,d09_y,-31.4),-PI/2)
+	model(district,"AST-FUR-003_day_table.glb","LowReadingTable",Vector3(54.8,d09_y,-30.7))
 	model(district,"AST-GST-001.glb","ReadingLamp",Vector3(57,d09_y,-32))
-	model(district,"AST-BOT-001.glb","SmallCanopy",Vector3(52.5,d09_y,-21))
-	model(district,"AST-BOT-002.glb","Understory",Vector3(53.8,d09_y,-21))
-	model(district,"AST-BOT-006.glb","PlantedSeatTerminal",Vector3(55,d09_y,-23))
+	model(district,"AST-BOT-001.glb","SmallCanopy",Vector3(54,d09_y,-21))
+	model(district,"AST-BOT-002.glb","Understory",Vector3(54.9,d09_y,-20.6))
 	# Actual lights colocated with fixtures, not an unexplained directional sun.
 	var light := OmniLight3D.new()
 	light.name = "ReadingLampActualLight"
@@ -228,7 +261,7 @@ func set_display_effects(enabled: bool) -> void:
 	environment.ssao_enabled = enabled
 
 func _static_contacts(node: Node) -> void:
-	if node is MeshInstance3D and node.mesh != null and node.visible:
+	if node is MeshInstance3D and node.mesh != null and node.visible and not node.name.begins_with("ALC_VisualFloor"):
 		load("res://scripts/static_contact_cache.gd").attach(node)
 	for child in node.get_children():
 		if not child is StaticBody3D: _static_contacts(child)

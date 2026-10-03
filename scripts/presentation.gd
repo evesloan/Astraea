@@ -69,6 +69,26 @@ func _ready() -> void:
 	if "--capture-validation" in OS.get_cmdline_user_args():
 		await get_tree().create_timer(2.0).timeout
 		await _capture()
+		var salon_actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
+		salon_actor.spawn_position = Vector3(62,52.6,-9)
+		salon_actor.position = salon_actor.spawn_position
+		salon_actor.rotation.y = -PI/2
+		salon_actor.pitch = -0.05
+		salon_actor.camera.rotation.x = salon_actor.pitch
+		await get_tree().create_timer(0.5).timeout
+		await _capture("salon_conversation_")
+		salon_actor.spawn_position = Vector3(48,52.6,0)
+		salon_actor.position = salon_actor.spawn_position
+		salon_actor.rotation.y = -PI/2
+		salon_actor.pitch = 0
+		salon_actor.camera.rotation.x = 0
+		await get_tree().create_timer(0.5).timeout
+		await _capture("salon_entry_")
+		salon_actor.spawn_position = Vector3(55.5,52.6,-22.5)
+		salon_actor.position = salon_actor.spawn_position
+		salon_actor.rotation.y = PI/2
+		await get_tree().create_timer(0.5).timeout
+		await _capture("salon_window_")
 		if "--capture-d06" in OS.get_cmdline_user_args():
 			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
 			actor.spawn_position = Vector3(-31.623,27.1,4)
@@ -200,7 +220,7 @@ func _capture(prefix: String = "") -> void:
 	post_view.get_texture().get_image().save_png("res://artifacts/"+prefix+"processed_world_capture.png")
 	get_viewport().get_texture().get_image().save_png("res://artifacts/"+prefix+"presentation_capture.png")
 	var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
-	capture_records.append({"prefix":prefix,"world_resolution":[world_view.size.x,world_view.size.y],"effects_enabled":effects,"camera_position":[actor.camera.global_position.x,actor.camera.global_position.y,actor.camera.global_position.z],"camera_rotation":[actor.camera.global_rotation.x,actor.camera.global_rotation.y,actor.camera.global_rotation.z],"fov":actor.camera.fov,"adapter":RenderingServer.get_video_adapter_name(),"scope":"In-engine review, not target-platform performance acceptance"})
+	capture_records.append({"prefix":prefix,"world_resolution":[world_view.size.x,world_view.size.y],"effects_enabled":effects,"camera_position":[actor.camera.global_position.x,actor.camera.global_position.y,actor.camera.global_position.z],"camera_rotation":[actor.camera.global_rotation.x,actor.camera.global_rotation.y,actor.camera.global_rotation.z],"fov":actor.camera.fov,"adapter":RenderingServer.get_video_adapter_name(),"rendered_objects":Performance.get_monitor(Performance.RENDER_TOTAL_OBJECTS_IN_FRAME),"rendered_primitives":Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME),"draw_calls":Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME),"static_memory_bytes":Performance.get_monitor(Performance.MEMORY_STATIC),"process_seconds":Performance.get_monitor(Performance.TIME_PROCESS),"physics_seconds":Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS),"active_physics_objects":Performance.get_monitor(Performance.PHYSICS_3D_ACTIVE_OBJECTS),"scope":"Single-capture engine observations on reported adapter; not a benchmark or target-platform performance acceptance"})
 	var record := FileAccess.open("res://artifacts/capture_settings.json",FileAccess.WRITE)
 	record.store_string(JSON.stringify(capture_records,"  "))
 	record.close()
