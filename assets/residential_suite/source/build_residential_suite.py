@@ -46,7 +46,7 @@ def wall(name,a,b,lo,ha,hb,role,thickness=.12):
  return mesh(name,[(x,y,lo)for x,y in ring]+[(x,y,z)for (x,y),z in zip(ring,[ha,hb,hb,ha])],[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],role)
 for side,path in [('L',left),('R',right)]:
  for i in range(len(path)-1):
-  a,b=path[i:i+2];ha,hb=height(a[1]),height(b[1]);wall('SUI_Base_'+side+str(i),a,b,0,.24,.24,'warm_walnut');wall('SUI_Wall_'+side+str(i),a,b,.24,ha,hb,'ivory_enamel');wall('SUI_Crown_'+side+str(i),a,b,ha-.15,ha+.08,hb+.08,'warm_walnut',.20)
+  a,b=path[i:i+2];ha,hb=height(a[1]),height(b[1]);wall('SUI_Base_'+side+str(i),a,b,0,.24,.24,'warm_walnut');wall('SUI_Wall_'+side+str(i),a,b,.24,ha,hb,'ivory_enamel');wall('SUI_Crown_'+side+str(i),a,b,ha-.045,ha+.045,hb+.045,'warm_walnut',.16)
 # Soft finishes and curved acoustic panels belong to the room profile, not
 # a stronger display filter. The bathroom keeps its washable stone surface.
 carpet=[(-.55,1.4),(2.45,1.4),(2.45,2.7),(3.25,3.5),(2.85,4.2),(2.65,5.1),(2.80,6.2),(3.25,7.25),(3.40,8),(3.40,12.65),(-3.40,12.65),(-3.40,7.8),(-3.05,7.2),(-2.75,6.3),(-2.90,5.5),(-3.30,4.8),(-3.40,4.1),(-.55,4.1)]
@@ -58,6 +58,13 @@ for side,path in [('L',left),('R',right)]:
   a,b=path[i:i+2]
   wall('SUI_TimberWainscot_'+side+str(i),a,b,.24,1.05,1.05,'warm_walnut',.15)
   if a[1]>=4 and b[1]<=8:wall('SUI_AcousticLiving_'+side+str(i),a,b,1.12,2.18,2.18,'clay_weave',.15)
+# A broad woven colour field distinguishes the occupied lounge at gameplay
+# resolution; the restrained bound edge stays flush and does not obstruct feet.
+lounge=[(-3.15,4.35),(-.60,4.35),(0,4.10),(2.78,4.35),(2.60,5.20),(2.70,6.35),(3.20,7.35),(-3.00,7.35),(-2.65,6.30),(-2.82,5.50)]
+extrusion('SUI_LoungeCarpet',lounge,.013,.018,'clay_weave')
+for i,a in enumerate(lounge):
+ b=lounge[(i+1)%len(lounge)];wall('SUI_LoungeCarpetBinding_'+str(i),a,b,.018,.020,.020,'oatmeal_weave',.05)
+datum('window_view_target',(0,12.7,1.4))
 # Front entrance remains centred on its historical marker; the wet room
 # has an offset side entrance so the bathroom is not exposed to the street.
 for a,b in [((-3.5,.12),(-.80,.12)),((.80,.12),(3.5,.12))]:wall('SUI_EntryJamb_'+str(a[0]),a,b,0,2.95,2.95,'ivory_enamel',.18)
@@ -77,6 +84,26 @@ def at(path,y):
 for i in range(len(ys)-1):
  a,b=ys[i:i+2];q=[(at(left,a),a,height(a)),(at(right,a),a,height(a)),(at(right,b),b,height(b)),(at(left,b),b,height(b))]
  mesh('SUI_Ceiling_'+str(i),q+[(x,y,z+.14)for x,y,z in q],[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'ivory_enamel')
+# Low screened wings and a shaped overhead threshold distinguish the lounge
+# from sleeping without taking away the long view or the central cart route.
+for side in [-1,1]:
+ profile=[(side*3.43,7.63),(side*1.70,7.63),(side*1.35,7.84),(side*1.50,8.04),(side*3.43,8.04)]
+ h=1.20 if side<0 else 1.50
+ if side<0:
+  extrusion('SUI_LivingCasePlinth',profile,0,.34,'warm_walnut')
+  extrusion('SUI_LivingCaseBack',[(-3.43,7.98),(-1.5,7.98),(-1.5,8.04),(-3.43,8.04)],.34,h,'ivory_enamel')
+  for a,b in [(-3.43,-3.31),(-1.70,-1.58)]:extrusion('SUI_LivingCaseReturn_'+str(a),[(a,7.63),(b,7.63),(b,8.04),(a,8.04)],.34,h,'warm_walnut')
+  extrusion('SUI_LivingCaseShelf',profile,.73,.78,'warm_walnut')
+ else:extrusion('SUI_SleepThresholdWing_'+str(side),profile,0,h,'ivory_enamel')
+ extrusion('SUI_ThresholdTimberCap_'+str(side),profile,h,h+.065,'warm_walnut')
+section=[(-3.45,3.0),(-2.8,3.0),(-1.2,3.20),(1.2,3.20),(2.8,3.0),(3.45,3.0),(3.45,3.60),(-3.45,3.60)]
+v=[(x,y,z)for y in [7.65,7.98]for x,z in section];n=len(section)
+mesh('SUI_SleepingValance',v,[tuple(reversed(range(n))),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n)for i in range(n)],'ivory_enamel')
+# A fitted writing/reading position gives the second lounge edge a different
+# purpose from the shared bench. Its kneehole is left genuinely open.
+extrusion('SUI_WritingTop',[(1.48,7.12),(3.22,7.12),(3.27,7.57),(1.66,7.57),(1.40,7.36)],.73,.79,'warm_walnut')
+for x in [1.58,3.1]:extrusion('SUI_WritingSupport_'+str(x),[(x-.045,7.16),(x+.045,7.16),(x+.045,7.53),(x-.045,7.53)],0,.735,'champagne_metal')
+datum('writing_chair',(2.22,6.25,0))
 # A real inward-facing window; separate glass batch gets the existing Godot shader.
 wall('SUI_WindowSill',(-3.5,12.78),(3.5,12.78),0,.48,.48,'warm_walnut',.22)
 wall('SUI_WindowHead',(-3.5,12.78),(3.5,12.78),3.60,3.90,3.90,'warm_walnut',.22)
@@ -98,7 +125,11 @@ for i,side in enumerate([-1,1]):
  datum('bed_light_'+str(i),(side*3.20,10.8,1.44))
  datum('bed_table_'+str(i),(side*2.83,11.7,0))
 for i,x in enumerate([-1.65,1.65]):datum('bed_'+str(i),(x,10.25,0))
-datum('living_bench',(-2.18,6,0));datum('living_table',(-1.0,6,0));datum('door',(0,0,0));datum('bath_entry',(-.65,2.9,0))
+datum('living_bench',(-1.50,5.8,0));datum('living_table',(-.85,6.75,0));datum('door',(0,0,0));datum('bath_entry',(-.65,2.9,0))
+datum('bath_vanity',(-3.44,3.1,0));datum('bath_wc',(-2.8,.90,0));datum('bath_shower',(-1.38,.905,0))
+extrusion('SUI_BathFixture',[(-2.3,2.2),(-1.7,2.2),(-1.7,2.6),(-2.3,2.6)],2.47,2.63,'champagne_metal')
+extrusion('SUI_BathLens',[(-2.26,2.24),(-1.74,2.24),(-1.74,2.56),(-2.26,2.56)],2.455,2.47,'lens')
+datum('bath_light',(-2.0,2.4,2.43))
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();blend=ROOT/'source/AST-SUI-001.blend';glb=ROOT/'exports/AST-SUI-001.glb';bpy.ops.wm.save_as_mainfile(filepath=str(blend))
 tri=0
 for o in parts:o.data.calc_loop_triangles();tri+=len(o.data.loop_triangles)
