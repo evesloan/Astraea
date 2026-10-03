@@ -1,0 +1,2887 @@
+{
+  "catalogue_id": "AST-RTL-001",
+  "name": "Rising recessed retail display bay",
+  "title": "Rising recessed retail display bay",
+  "unique_design": true,
+  "source": "source/AST-RTL-001.blend",
+  "export": "exports/AST-RTL-001.glb",
+  "generator": "source/build_retail_display.py",
+  "source_frame": "metres Blender XYZ Z-up front -Y",
+  "exchange_frame": "metres native GLB Y-up source(x,y,z)->(x,z,-y)",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "floor origin"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -1.7000000476837158,
+      -0.44999998807907104,
+      0.0
+    ],
+    "max_m": [
+      1.7000000476837158,
+      0.44999998807907104,
+      2.9000000953674316
+    ],
+    "dimensions_m": [
+      3.4000000953674316,
+      0.8999999761581421,
+      2.9000000953674316
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -1.7000000476837158,
+      0.0,
+      -0.44999998807907104
+    ],
+    "max_m": [
+      1.7000000476837158,
+      2.9000000953674316,
+      0.44999998807907104
+    ],
+    "dimensions_m": [
+      3.4000000953674316,
+      2.9000000953674316,
+      0.8999999761581421
+    ]
+  },
+  "dimensions_blender_xyz_m": [
+    3.4000000953674316,
+    0.8999999761581421,
+    2.9000000953674316
+  ],
+  "evaluated_source_triangles": 552,
+  "evaluated_triangles": 552,
+  "editable_semantic_parts": 40,
+  "semantic_parts": [
+    "recessed_faceted_floor_sole",
+    "continuous_shaped_pale_plinth",
+    "entry_pylon_lower_pier",
+    "entry_pylon_upper_pier",
+    "entry_pylon_forward_return",
+    "entry_pylon_rear_return",
+    "entry_recess_structural_back",
+    "pale_rising_surround_01",
+    "pale_rising_surround_02",
+    "pale_rising_surround_03",
+    "pale_rising_surround_04",
+    "pale_rising_surround_05",
+    "pale_rising_surround_06",
+    "pale_rising_surround_07",
+    "pale_rising_surround_08",
+    "recessed_terracotta_return_00",
+    "recessed_terracotta_return_01",
+    "recessed_terracotta_return_02",
+    "recessed_terracotta_return_03",
+    "recessed_terracotta_return_04",
+    "recessed_terracotta_return_05",
+    "recessed_terracotta_return_06",
+    "recessed_terracotta_return_07",
+    "recessed_terracotta_return_08",
+    "dark_inset_display_back",
+    "left_rear_wall_mount_pad",
+    "right_rear_wall_mount_pad",
+    "entry_recess_front_terracotta_return",
+    "entry_recess_rear_terracotta_return",
+    "entry_recess_dark_back",
+    "entry_recess_terracotta_head",
+    "entry_recess_tactile_display_sill",
+    "lower_storage_tactile_floor",
+    "left_open_storage_divider",
+    "right_open_storage_divider",
+    "main_display_work_slab",
+    "main_slab_recessed_edge_strip",
+    "upper_timber_display_mullion",
+    "left_supported_display_shelf",
+    "right_supported_display_shelf"
+  ],
+  "material_roles": [
+    "champagne_metal",
+    "dark_rubber",
+    "ivory_enamel",
+    "retail_terracotta_enamel",
+    "warm_walnut"
+  ],
+  "export_mesh_groups": 5,
+  "physical_and_proposal_markers": [
+    {
+      "name": "FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "physical_part": "recessed_faceted_floor_sole",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0.0,
+        -1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "LEFT_WALL_MOUNT",
+      "kind": "proposed_wall_contact",
+      "source_m": [
+        -1.5,
+        0.45,
+        1.97
+      ],
+      "gltf_m": [
+        -1.5,
+        1.97,
+        -0.45
+      ],
+      "physical_part": "left_rear_wall_mount_pad",
+      "description": "Actual pad face; host anchorage/wall/support unknown",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "name": "RIGHT_WALL_MOUNT",
+      "kind": "proposed_wall_contact",
+      "source_m": [
+        1.53,
+        0.45,
+        1.97
+      ],
+      "gltf_m": [
+        1.53,
+        1.97,
+        -0.45
+      ],
+      "physical_part": "right_rear_wall_mount_pad",
+      "description": "Actual pad face; host anchorage/wall/support unknown",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0.0,
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "name": "ENTRY_FACING_REVEAL_BACK",
+      "kind": "physical_entry_reveal_back",
+      "source_m": [
+        -1.425,
+        0,
+        1.44
+      ],
+      "gltf_m": [
+        -1.425,
+        1.44,
+        -0.0
+      ],
+      "physical_part": "entry_recess_dark_back",
+      "description": "",
+      "direction_source": [
+        -1,
+        0,
+        0
+      ],
+      "direction_gltf": [
+        -1.0,
+        0.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "MAIN_DISPLAY_LEFT_PATCH_CONTACT",
+      "kind": "physical_display_support",
+      "source_m": [
+        -0.4,
+        -0.06499999999999999,
+        0.95
+      ],
+      "gltf_m": [
+        -0.4,
+        0.95,
+        0.06499999999999999
+      ],
+      "physical_part": "main_display_work_slab",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "MAIN_DISPLAY_RIGHT_PATCH_CONTACT",
+      "kind": "physical_display_support",
+      "source_m": [
+        0.86,
+        -0.06000000000000001,
+        0.95
+      ],
+      "gltf_m": [
+        0.86,
+        0.95,
+        0.06000000000000001
+      ],
+      "physical_part": "main_display_work_slab",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "LEFT_SHELF_PATCH_CONTACT",
+      "kind": "physical_display_support",
+      "source_m": [
+        -0.41000000000000003,
+        0.065,
+        1.52
+      ],
+      "gltf_m": [
+        -0.41000000000000003,
+        1.52,
+        -0.065
+      ],
+      "physical_part": "left_supported_display_shelf",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "RIGHT_SHELF_PATCH_CONTACT",
+      "kind": "physical_display_support",
+      "source_m": [
+        0.89,
+        0.10500000000000001,
+        1.94
+      ],
+      "gltf_m": [
+        0.89,
+        1.94,
+        -0.10500000000000001
+      ],
+      "physical_part": "right_supported_display_shelf",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "ENTRY_SILL_PATCH_CONTACT",
+      "kind": "physical_display_support",
+      "source_m": [
+        -1.56,
+        0.0050000000000000044,
+        1.03
+      ],
+      "gltf_m": [
+        -1.56,
+        1.03,
+        -0.0050000000000000044
+      ],
+      "physical_part": "entry_recess_tactile_display_sill",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "FLOOR_ORIGIN",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "physical_part": null,
+      "description": "Floor source pivot within supported plinth"
+    }
+  ],
+  "joins": [
+    {
+      "name": "plinth_on_floor_sole",
+      "parts": [
+        "continuous_shaped_pale_plinth",
+        "recessed_faceted_floor_sole"
+      ],
+      "probe_source_m": [
+        0,
+        0,
+        0.04
+      ],
+      "probe_gltf_m": [
+        0.0,
+        0.04,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "nested_pale_terracotta_contact_0",
+      "parts": [
+        "entry_recess_structural_back",
+        "recessed_terracotta_return_00"
+      ],
+      "probe_source_m": [
+        -1.29,
+        0,
+        1.1500000000000001
+      ],
+      "probe_gltf_m": [
+        -1.29,
+        1.1500000000000001,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "nested_pale_terracotta_contact_1",
+      "parts": [
+        "pale_rising_surround_01",
+        "recessed_terracotta_return_01"
+      ],
+      "probe_source_m": [
+        -1.24,
+        0,
+        2.225
+      ],
+      "probe_gltf_m": [
+        -1.24,
+        2.225,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "nested_pale_terracotta_contact_2",
+      "parts": [
+        "pale_rising_surround_02",
+        "recessed_terracotta_return_02"
+      ],
+      "probe_source_m": [
+        -1.0899999999999999,
+        0,
+        2.41
+      ],
+      "probe_gltf_m": [
+        -1.0899999999999999,
+        2.41,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "nested_pale_terracotta_contact_3",
+      "parts": [
+        "pale_rising_surround_03",
+        "recessed_terracotta_return_03"
+      ],
+      "probe_source_m": [
+        -0.8300000000000001,
+        0,
+        2.5300000000000002
+      ],
+      "probe_gltf_m": [
+        -0.8300000000000001,
+        2.5300000000000002,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "nested_pale_terracotta_contact_4",
+      "parts": [
+        "pale_rising_surround_04",
+        "recessed_terracotta_return_04"
+      ],
+      "probe_source_m": [
+        0.14499999999999996,
+        0,
+        2.57
+      ],
+      "probe_gltf_m": [
+        0.14499999999999996,
+        2.57,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "nested_pale_terracotta_contact_5",
+      "parts": [
+        "pale_rising_surround_05",
+        "recessed_terracotta_return_05"
+      ],
+      "probe_source_m": [
+        1.08,
+        0,
+        2.535
+      ],
+      "probe_gltf_m": [
+        1.08,
+        2.535,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "nested_pale_terracotta_contact_6",
+      "parts": [
+        "pale_rising_surround_06",
+        "recessed_terracotta_return_06"
+      ],
+      "probe_source_m": [
+        1.27,
+        0,
+        2.4299999999999997
+      ],
+      "probe_gltf_m": [
+        1.27,
+        2.4299999999999997,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "nested_pale_terracotta_contact_7",
+      "parts": [
+        "pale_rising_surround_07",
+        "recessed_terracotta_return_07"
+      ],
+      "probe_source_m": [
+        1.3599999999999999,
+        0,
+        2.26
+      ],
+      "probe_gltf_m": [
+        1.3599999999999999,
+        2.26,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "nested_pale_terracotta_contact_8",
+      "parts": [
+        "pale_rising_surround_08",
+        "recessed_terracotta_return_08"
+      ],
+      "probe_source_m": [
+        1.38,
+        0,
+        1.1700000000000002
+      ],
+      "probe_gltf_m": [
+        1.38,
+        1.1700000000000002,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_lower_plinth",
+      "parts": [
+        "dark_inset_display_back",
+        "continuous_shaped_pale_plinth"
+      ],
+      "probe_source_m": [
+        0,
+        0.35,
+        0.18
+      ],
+      "probe_gltf_m": [
+        0.0,
+        0.18,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_arch_contact_0",
+      "parts": [
+        "dark_inset_display_back",
+        "recessed_terracotta_return_00"
+      ],
+      "probe_source_m": [
+        -1.22,
+        0.35,
+        1.1400000000000001
+      ],
+      "probe_gltf_m": [
+        -1.22,
+        1.1400000000000001,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_arch_contact_1",
+      "parts": [
+        "dark_inset_display_back",
+        "recessed_terracotta_return_01"
+      ],
+      "probe_source_m": [
+        -1.17,
+        0.35,
+        2.19
+      ],
+      "probe_gltf_m": [
+        -1.17,
+        2.19,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_arch_contact_2",
+      "parts": [
+        "dark_inset_display_back",
+        "recessed_terracotta_return_02"
+      ],
+      "probe_source_m": [
+        -1.0350000000000001,
+        0.35,
+        2.3499999999999996
+      ],
+      "probe_gltf_m": [
+        -1.0350000000000001,
+        2.3499999999999996,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_arch_contact_3",
+      "parts": [
+        "dark_inset_display_back",
+        "recessed_terracotta_return_03"
+      ],
+      "probe_source_m": [
+        -0.7949999999999999,
+        0.35,
+        2.4575
+      ],
+      "probe_gltf_m": [
+        -0.7949999999999999,
+        2.4575,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_arch_contact_4",
+      "parts": [
+        "dark_inset_display_back",
+        "recessed_terracotta_return_04"
+      ],
+      "probe_source_m": [
+        0.15249999999999997,
+        0.35,
+        2.495
+      ],
+      "probe_gltf_m": [
+        0.15249999999999997,
+        2.495,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_arch_contact_5",
+      "parts": [
+        "dark_inset_display_back",
+        "recessed_terracotta_return_05"
+      ],
+      "probe_source_m": [
+        1.0525,
+        0.35,
+        2.4625000000000004
+      ],
+      "probe_gltf_m": [
+        1.0525,
+        2.4625000000000004,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_arch_contact_6",
+      "parts": [
+        "dark_inset_display_back",
+        "recessed_terracotta_return_06"
+      ],
+      "probe_source_m": [
+        1.2149999999999999,
+        0.35,
+        2.37
+      ],
+      "probe_gltf_m": [
+        1.2149999999999999,
+        2.37,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_arch_contact_7",
+      "parts": [
+        "dark_inset_display_back",
+        "recessed_terracotta_return_07"
+      ],
+      "probe_source_m": [
+        1.29,
+        0.35,
+        2.23
+      ],
+      "probe_gltf_m": [
+        1.29,
+        2.23,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "dark_back_arch_contact_8",
+      "parts": [
+        "dark_inset_display_back",
+        "recessed_terracotta_return_08"
+      ],
+      "probe_source_m": [
+        1.31,
+        0.35,
+        1.165
+      ],
+      "probe_gltf_m": [
+        1.31,
+        1.165,
+        -0.35
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "left_mount_to_structure",
+      "parts": [
+        "left_rear_wall_mount_pad",
+        "entry_pylon_upper_pier"
+      ],
+      "probe_source_m": [
+        -1.5,
+        0.43,
+        1.97
+      ],
+      "probe_gltf_m": [
+        -1.5,
+        1.97,
+        -0.43
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "right_mount_to_structure",
+      "parts": [
+        "right_rear_wall_mount_pad",
+        "pale_rising_surround_08"
+      ],
+      "probe_source_m": [
+        1.53,
+        0.43,
+        1.97
+      ],
+      "probe_gltf_m": [
+        1.53,
+        1.97,
+        -0.43
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "entry_front_lining",
+      "parts": [
+        "entry_recess_front_terracotta_return",
+        "entry_pylon_forward_return"
+      ],
+      "probe_source_m": [
+        -1.55,
+        -0.23,
+        1.4
+      ],
+      "probe_gltf_m": [
+        -1.55,
+        1.4,
+        0.23
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "entry_rear_lining",
+      "parts": [
+        "entry_recess_rear_terracotta_return",
+        "entry_pylon_rear_return"
+      ],
+      "probe_source_m": [
+        -1.55,
+        0.24,
+        1.4
+      ],
+      "probe_gltf_m": [
+        -1.55,
+        1.4,
+        -0.24
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "entry_sill_pier",
+      "parts": [
+        "entry_recess_tactile_display_sill",
+        "entry_pylon_lower_pier"
+      ],
+      "probe_source_m": [
+        -1.55,
+        0,
+        1.0
+      ],
+      "probe_gltf_m": [
+        -1.55,
+        1.0,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "entry_head_pier",
+      "parts": [
+        "entry_recess_terracotta_head",
+        "entry_pylon_upper_pier"
+      ],
+      "probe_source_m": [
+        -1.55,
+        0,
+        1.88
+      ],
+      "probe_gltf_m": [
+        -1.55,
+        1.88,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "entry_back_structure",
+      "parts": [
+        "entry_recess_dark_back",
+        "entry_recess_structural_back"
+      ],
+      "probe_source_m": [
+        -1.4,
+        0,
+        1.4
+      ],
+      "probe_gltf_m": [
+        -1.4,
+        1.4,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "storage_floor_plinth",
+      "parts": [
+        "lower_storage_tactile_floor",
+        "continuous_shaped_pale_plinth"
+      ],
+      "probe_source_m": [
+        0,
+        0,
+        0.18
+      ],
+      "probe_gltf_m": [
+        0.0,
+        0.18,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "left_divider_floor",
+      "parts": [
+        "left_open_storage_divider",
+        "lower_storage_tactile_floor"
+      ],
+      "probe_source_m": [
+        -0.38999999999999996,
+        0,
+        0.23
+      ],
+      "probe_gltf_m": [
+        -0.38999999999999996,
+        0.23,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "right_divider_floor",
+      "parts": [
+        "right_open_storage_divider",
+        "lower_storage_tactile_floor"
+      ],
+      "probe_source_m": [
+        0.45,
+        0,
+        0.23
+      ],
+      "probe_gltf_m": [
+        0.45,
+        0.23,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "left_open_storage_divider_slab",
+      "parts": [
+        "left_open_storage_divider",
+        "main_display_work_slab"
+      ],
+      "probe_source_m": [
+        -0.3899999964237213,
+        0,
+        0.83
+      ],
+      "probe_gltf_m": [
+        -0.3899999964237213,
+        0.83,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "right_open_storage_divider_slab",
+      "parts": [
+        "right_open_storage_divider",
+        "main_display_work_slab"
+      ],
+      "probe_source_m": [
+        0.4500000071525574,
+        0,
+        0.83
+      ],
+      "probe_gltf_m": [
+        0.4500000071525574,
+        0.83,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "left_work_slab_return",
+      "parts": [
+        "main_display_work_slab",
+        "recessed_terracotta_return_00"
+      ],
+      "probe_source_m": [
+        -1.22,
+        0,
+        0.9
+      ],
+      "probe_gltf_m": [
+        -1.22,
+        0.9,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "right_work_slab_return",
+      "parts": [
+        "main_display_work_slab",
+        "recessed_terracotta_return_08"
+      ],
+      "probe_source_m": [
+        1.31,
+        0,
+        0.9
+      ],
+      "probe_gltf_m": [
+        1.31,
+        0.9,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "edge_strip_slab",
+      "parts": [
+        "main_slab_recessed_edge_strip",
+        "main_display_work_slab"
+      ],
+      "probe_source_m": [
+        0,
+        -0.447,
+        0.876
+      ],
+      "probe_gltf_m": [
+        0.0,
+        0.876,
+        0.447
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "mullion_main_top",
+      "parts": [
+        "upper_timber_display_mullion",
+        "main_display_work_slab"
+      ],
+      "probe_source_m": [
+        0.435,
+        0.16,
+        0.95
+      ],
+      "probe_gltf_m": [
+        0.435,
+        0.95,
+        -0.16
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "mullion_arch_head",
+      "parts": [
+        "upper_timber_display_mullion",
+        "recessed_terracotta_return_04"
+      ],
+      "probe_source_m": [
+        0.435,
+        0.16,
+        2.495
+      ],
+      "probe_gltf_m": [
+        0.435,
+        2.495,
+        -0.16
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "left_shelf_mullion",
+      "parts": [
+        "left_supported_display_shelf",
+        "upper_timber_display_mullion"
+      ],
+      "probe_source_m": [
+        0.4,
+        0.16,
+        1.49
+      ],
+      "probe_gltf_m": [
+        0.4,
+        1.49,
+        -0.16
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "left_shelf_side_return",
+      "parts": [
+        "left_supported_display_shelf",
+        "recessed_terracotta_return_00"
+      ],
+      "probe_source_m": [
+        -1.22,
+        0.16,
+        1.49
+      ],
+      "probe_gltf_m": [
+        -1.22,
+        1.49,
+        -0.16
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "left_shelf_back",
+      "parts": [
+        "left_supported_display_shelf",
+        "dark_inset_display_back"
+      ],
+      "probe_source_m": [
+        -0.41,
+        0.31,
+        1.49
+      ],
+      "probe_gltf_m": [
+        -0.41,
+        1.49,
+        -0.31
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "right_shelf_mullion",
+      "parts": [
+        "right_supported_display_shelf",
+        "upper_timber_display_mullion"
+      ],
+      "probe_source_m": [
+        0.47,
+        0.16,
+        1.91
+      ],
+      "probe_gltf_m": [
+        0.47,
+        1.91,
+        -0.16
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "right_shelf_side_return",
+      "parts": [
+        "right_supported_display_shelf",
+        "recessed_terracotta_return_08"
+      ],
+      "probe_source_m": [
+        1.31,
+        0.16,
+        1.91
+      ],
+      "probe_gltf_m": [
+        1.31,
+        1.91,
+        -0.16
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "right_shelf_back",
+      "parts": [
+        "right_supported_display_shelf",
+        "dark_inset_display_back"
+      ],
+      "probe_source_m": [
+        0.89,
+        0.31,
+        1.91
+      ],
+      "probe_gltf_m": [
+        0.89,
+        1.91,
+        -0.31
+      ],
+      "kind": "boundary_contact"
+    }
+  ],
+  "useful_voids": [
+    {
+      "name": "entry_facing_display_recess",
+      "min_source_m": [
+        -1.695,
+        -0.205,
+        1.035
+      ],
+      "max_source_m": [
+        -1.43,
+        0.215,
+        1.845
+      ],
+      "min_gltf_m": [
+        -1.695,
+        1.035,
+        -0.215
+      ],
+      "max_gltf_m": [
+        -1.43,
+        1.845,
+        0.205
+      ],
+      "purpose": "Side-facing useful display/retrieval recess; no inventory or hand-fit claim",
+      "state": "fixed"
+    },
+    {
+      "name": "lower_open_storage_left",
+      "min_source_m": [
+        -1.2,
+        -0.33,
+        0.235
+      ],
+      "max_source_m": [
+        -0.42,
+        0.3,
+        0.825
+      ],
+      "min_gltf_m": [
+        -1.2,
+        0.235,
+        -0.3
+      ],
+      "max_gltf_m": [
+        -0.42,
+        0.825,
+        0.33
+      ],
+      "purpose": "Useful open lower storage/retrieval; no door sweep or capacity assignment",
+      "state": "fixed"
+    },
+    {
+      "name": "lower_open_storage_middle",
+      "min_source_m": [
+        -0.36,
+        -0.33,
+        0.235
+      ],
+      "max_source_m": [
+        0.42,
+        0.3,
+        0.825
+      ],
+      "min_gltf_m": [
+        -0.36,
+        0.235,
+        -0.3
+      ],
+      "max_gltf_m": [
+        0.42,
+        0.825,
+        0.33
+      ],
+      "purpose": "Useful open lower storage/retrieval; no door sweep or capacity assignment",
+      "state": "fixed"
+    },
+    {
+      "name": "lower_open_storage_right",
+      "min_source_m": [
+        0.48,
+        -0.33,
+        0.235
+      ],
+      "max_source_m": [
+        1.29,
+        0.3,
+        0.825
+      ],
+      "min_gltf_m": [
+        0.48,
+        0.235,
+        -0.3
+      ],
+      "max_gltf_m": [
+        1.29,
+        0.825,
+        0.33
+      ],
+      "purpose": "Useful open lower storage/retrieval; no door sweep or capacity assignment",
+      "state": "fixed"
+    },
+    {
+      "name": "left_main_display_void",
+      "min_source_m": [
+        -1.2,
+        -0.155,
+        0.955
+      ],
+      "max_source_m": [
+        0.39,
+        0.3,
+        1.455
+      ],
+      "min_gltf_m": [
+        -1.2,
+        0.955,
+        -0.3
+      ],
+      "max_gltf_m": [
+        0.39,
+        1.455,
+        0.155
+      ],
+      "purpose": "Open display volume above primary top and below left shelf",
+      "state": "fixed"
+    },
+    {
+      "name": "left_upper_display_void",
+      "min_source_m": [
+        -1.15,
+        -0.13,
+        1.525
+      ],
+      "max_source_m": [
+        0.38,
+        0.3,
+        2.2
+      ],
+      "min_gltf_m": [
+        -1.15,
+        1.525,
+        -0.3
+      ],
+      "max_gltf_m": [
+        0.38,
+        2.2,
+        0.13
+      ],
+      "purpose": "Open upper alcove below rising profile",
+      "state": "fixed"
+    },
+    {
+      "name": "right_tall_display_void",
+      "min_source_m": [
+        0.48,
+        -0.075,
+        0.955
+      ],
+      "max_source_m": [
+        1.29,
+        0.3,
+        1.875
+      ],
+      "min_gltf_m": [
+        0.48,
+        0.955,
+        -0.3
+      ],
+      "max_gltf_m": [
+        1.29,
+        1.875,
+        0.075
+      ],
+      "purpose": "Tall display alcove beside timber mullion",
+      "state": "fixed"
+    }
+  ],
+  "support_patches": [
+    {
+      "name": "main_display_left_patch",
+      "physical_part": "main_display_work_slab",
+      "polygon_source_m": [
+        [
+          -1.08,
+          -0.36,
+          0.95
+        ],
+        [
+          0.28,
+          -0.36,
+          0.95
+        ],
+        [
+          0.28,
+          0.23,
+          0.95
+        ],
+        [
+          -1.08,
+          0.23,
+          0.95
+        ]
+      ],
+      "polygon_gltf_m": [
+        [
+          -1.08,
+          0.95,
+          0.36
+        ],
+        [
+          0.28,
+          0.95,
+          0.36
+        ],
+        [
+          0.28,
+          0.95,
+          -0.23
+        ],
+        [
+          -1.08,
+          0.95,
+          -0.23
+        ]
+      ],
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ],
+      "purpose": "Primary bare display/work surface; prospective container support",
+      "load_or_reach_claim": false
+    },
+    {
+      "name": "main_display_right_patch",
+      "physical_part": "main_display_work_slab",
+      "polygon_source_m": [
+        [
+          0.55,
+          -0.34,
+          0.95
+        ],
+        [
+          1.17,
+          -0.34,
+          0.95
+        ],
+        [
+          1.17,
+          0.22,
+          0.95
+        ],
+        [
+          0.55,
+          0.22,
+          0.95
+        ]
+      ],
+      "polygon_gltf_m": [
+        [
+          0.55,
+          0.95,
+          0.34
+        ],
+        [
+          1.17,
+          0.95,
+          0.34
+        ],
+        [
+          1.17,
+          0.95,
+          -0.22
+        ],
+        [
+          0.55,
+          0.95,
+          -0.22
+        ]
+      ],
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ],
+      "purpose": "Secondary clear parcel/display surface",
+      "load_or_reach_claim": false
+    },
+    {
+      "name": "left_shelf_patch",
+      "physical_part": "left_supported_display_shelf",
+      "polygon_source_m": [
+        [
+          -1.12,
+          -0.13,
+          1.52
+        ],
+        [
+          0.3,
+          -0.13,
+          1.52
+        ],
+        [
+          0.3,
+          0.26,
+          1.52
+        ],
+        [
+          -1.12,
+          0.26,
+          1.52
+        ]
+      ],
+      "polygon_gltf_m": [
+        [
+          -1.12,
+          1.52,
+          0.13
+        ],
+        [
+          0.3,
+          1.52,
+          0.13
+        ],
+        [
+          0.3,
+          1.52,
+          -0.26
+        ],
+        [
+          -1.12,
+          1.52,
+          -0.26
+        ]
+      ],
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ],
+      "purpose": "True supported display shelf; prospective small container patch",
+      "load_or_reach_claim": false
+    },
+    {
+      "name": "right_shelf_patch",
+      "physical_part": "right_supported_display_shelf",
+      "polygon_source_m": [
+        [
+          0.53,
+          -0.05,
+          1.94
+        ],
+        [
+          1.25,
+          -0.05,
+          1.94
+        ],
+        [
+          1.25,
+          0.26,
+          1.94
+        ],
+        [
+          0.53,
+          0.26,
+          1.94
+        ]
+      ],
+      "polygon_gltf_m": [
+        [
+          0.53,
+          1.94,
+          0.05
+        ],
+        [
+          1.25,
+          1.94,
+          0.05
+        ],
+        [
+          1.25,
+          1.94,
+          -0.26
+        ],
+        [
+          0.53,
+          1.94,
+          -0.26
+        ]
+      ],
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ],
+      "purpose": "Narrower upper surface; container footprint must be independently tested",
+      "load_or_reach_claim": false
+    },
+    {
+      "name": "entry_sill_patch",
+      "physical_part": "entry_recess_tactile_display_sill",
+      "polygon_source_m": [
+        [
+          -1.68,
+          -0.19,
+          1.03
+        ],
+        [
+          -1.44,
+          -0.19,
+          1.03
+        ],
+        [
+          -1.44,
+          0.2,
+          1.03
+        ],
+        [
+          -1.68,
+          0.2,
+          1.03
+        ]
+      ],
+      "polygon_gltf_m": [
+        [
+          -1.68,
+          1.03,
+          0.19
+        ],
+        [
+          -1.44,
+          1.03,
+          0.19
+        ],
+        [
+          -1.44,
+          1.03,
+          -0.2
+        ],
+        [
+          -1.68,
+          1.03,
+          -0.2
+        ]
+      ],
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ],
+      "purpose": "Small entry-facing display surface, distinct from main front",
+      "load_or_reach_claim": false
+    }
+  ],
+  "whole_profile_records": [
+    {
+      "part": "recessed_faceted_floor_sole",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.5599999999999998,
+          -0.35
+        ],
+        [
+          1.5599999999999998,
+          -0.35
+        ],
+        [
+          1.65,
+          -0.26
+        ],
+        [
+          1.65,
+          0.30000000000000004
+        ],
+        [
+          1.5599999999999998,
+          0.39
+        ],
+        [
+          -1.5599999999999998,
+          0.39
+        ],
+        [
+          -1.65,
+          0.30000000000000004
+        ],
+        [
+          -1.65,
+          -0.26
+        ]
+      ],
+      "extrusion_range_m": [
+        0,
+        0.04
+      ]
+    },
+    {
+      "part": "continuous_shaped_pale_plinth",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.5899999999999999,
+          -0.45
+        ],
+        [
+          1.5899999999999999,
+          -0.45
+        ],
+        [
+          1.7,
+          -0.34
+        ],
+        [
+          1.7,
+          0.32
+        ],
+        [
+          1.5899999999999999,
+          0.43
+        ],
+        [
+          -1.5899999999999999,
+          0.43
+        ],
+        [
+          -1.7,
+          0.32
+        ],
+        [
+          -1.7,
+          -0.34
+        ]
+      ],
+      "extrusion_range_m": [
+        0.04,
+        0.18
+      ]
+    },
+    {
+      "part": "entry_pylon_lower_pier",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.7,
+          -0.4
+        ],
+        [
+          -1.29,
+          -0.4
+        ],
+        [
+          -1.29,
+          0.43
+        ],
+        [
+          -1.7,
+          0.43
+        ]
+      ],
+      "extrusion_range_m": [
+        0.18,
+        1.0
+      ]
+    },
+    {
+      "part": "entry_pylon_upper_pier",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -1.7,
+          1.88
+        ],
+        [
+          -1.29,
+          1.88
+        ],
+        [
+          -1.29,
+          2.12
+        ],
+        [
+          -1.7,
+          2.18
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.4,
+        0.43
+      ]
+    },
+    {
+      "part": "entry_pylon_forward_return",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.7,
+          -0.4
+        ],
+        [
+          -1.29,
+          -0.4
+        ],
+        [
+          -1.29,
+          -0.23
+        ],
+        [
+          -1.7,
+          -0.23
+        ]
+      ],
+      "extrusion_range_m": [
+        1.0,
+        1.88
+      ]
+    },
+    {
+      "part": "entry_pylon_rear_return",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.7,
+          0.24
+        ],
+        [
+          -1.29,
+          0.24
+        ],
+        [
+          -1.29,
+          0.43
+        ],
+        [
+          -1.7,
+          0.43
+        ]
+      ],
+      "extrusion_range_m": [
+        1.0,
+        1.88
+      ]
+    },
+    {
+      "part": "entry_recess_structural_back",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.4,
+          -0.23
+        ],
+        [
+          -1.29,
+          -0.23
+        ],
+        [
+          -1.29,
+          0.24
+        ],
+        [
+          -1.4,
+          0.24
+        ]
+      ],
+      "extrusion_range_m": [
+        1.0,
+        1.88
+      ]
+    },
+    {
+      "part": "pale_rising_surround_01",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -1.7,
+          2.18
+        ],
+        [
+          -1.58,
+          2.53
+        ],
+        [
+          -1.19,
+          2.33
+        ],
+        [
+          -1.29,
+          2.12
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.4,
+        0.43
+      ]
+    },
+    {
+      "part": "pale_rising_surround_02",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -1.58,
+          2.53
+        ],
+        [
+          -1.27,
+          2.78
+        ],
+        [
+          -0.99,
+          2.49
+        ],
+        [
+          -1.19,
+          2.33
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.4,
+        0.43
+      ]
+    },
+    {
+      "part": "pale_rising_surround_03",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -1.27,
+          2.78
+        ],
+        [
+          -0.82,
+          2.9
+        ],
+        [
+          -0.67,
+          2.57
+        ],
+        [
+          -0.99,
+          2.49
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.4,
+        0.43
+      ]
+    },
+    {
+      "part": "pale_rising_surround_04",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -0.82,
+          2.9
+        ],
+        [
+          0.98,
+          2.9
+        ],
+        [
+          0.96,
+          2.57
+        ],
+        [
+          -0.67,
+          2.57
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.4,
+        0.43
+      ]
+    },
+    {
+      "part": "pale_rising_surround_05",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          0.98,
+          2.9
+        ],
+        [
+          1.4,
+          2.78
+        ],
+        [
+          1.2,
+          2.5
+        ],
+        [
+          0.96,
+          2.57
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.4,
+        0.43
+      ]
+    },
+    {
+      "part": "pale_rising_surround_06",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          1.4,
+          2.78
+        ],
+        [
+          1.62,
+          2.56
+        ],
+        [
+          1.34,
+          2.36
+        ],
+        [
+          1.2,
+          2.5
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.4,
+        0.43
+      ]
+    },
+    {
+      "part": "pale_rising_surround_07",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          1.62,
+          2.56
+        ],
+        [
+          1.7,
+          2.25
+        ],
+        [
+          1.38,
+          2.16
+        ],
+        [
+          1.34,
+          2.36
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.4,
+        0.43
+      ]
+    },
+    {
+      "part": "pale_rising_surround_08",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          1.7,
+          2.25
+        ],
+        [
+          1.7,
+          0.18
+        ],
+        [
+          1.38,
+          0.18
+        ],
+        [
+          1.38,
+          2.16
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.4,
+        0.43
+      ]
+    },
+    {
+      "part": "recessed_terracotta_return_00",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -1.29,
+          0.18
+        ],
+        [
+          -1.29,
+          2.12
+        ],
+        [
+          -1.22,
+          2.1
+        ],
+        [
+          -1.22,
+          0.18
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "recessed_terracotta_return_01",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -1.29,
+          2.12
+        ],
+        [
+          -1.19,
+          2.33
+        ],
+        [
+          -1.12,
+          2.28
+        ],
+        [
+          -1.22,
+          2.1
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "recessed_terracotta_return_02",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -1.19,
+          2.33
+        ],
+        [
+          -0.99,
+          2.49
+        ],
+        [
+          -0.95,
+          2.42
+        ],
+        [
+          -1.12,
+          2.28
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "recessed_terracotta_return_03",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -0.99,
+          2.49
+        ],
+        [
+          -0.67,
+          2.57
+        ],
+        [
+          -0.64,
+          2.495
+        ],
+        [
+          -0.95,
+          2.42
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "recessed_terracotta_return_04",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -0.67,
+          2.57
+        ],
+        [
+          0.96,
+          2.57
+        ],
+        [
+          0.945,
+          2.495
+        ],
+        [
+          -0.64,
+          2.495
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "recessed_terracotta_return_05",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          0.96,
+          2.57
+        ],
+        [
+          1.2,
+          2.5
+        ],
+        [
+          1.16,
+          2.43
+        ],
+        [
+          0.945,
+          2.495
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "recessed_terracotta_return_06",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          1.2,
+          2.5
+        ],
+        [
+          1.34,
+          2.36
+        ],
+        [
+          1.27,
+          2.31
+        ],
+        [
+          1.16,
+          2.43
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "recessed_terracotta_return_07",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          1.34,
+          2.36
+        ],
+        [
+          1.38,
+          2.16
+        ],
+        [
+          1.31,
+          2.15
+        ],
+        [
+          1.27,
+          2.31
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "recessed_terracotta_return_08",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          1.38,
+          2.16
+        ],
+        [
+          1.38,
+          0.18
+        ],
+        [
+          1.31,
+          0.18
+        ],
+        [
+          1.31,
+          2.15
+        ]
+      ],
+      "extrusion_range_m": [
+        -0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "dark_inset_display_back",
+      "profile_axis_source": 1,
+      "polygon_m": [
+        [
+          -1.22,
+          0.18
+        ],
+        [
+          -1.22,
+          2.1
+        ],
+        [
+          -1.12,
+          2.28
+        ],
+        [
+          -0.95,
+          2.42
+        ],
+        [
+          -0.64,
+          2.495
+        ],
+        [
+          0.945,
+          2.495
+        ],
+        [
+          1.16,
+          2.43
+        ],
+        [
+          1.27,
+          2.31
+        ],
+        [
+          1.31,
+          2.15
+        ],
+        [
+          1.31,
+          0.18
+        ]
+      ],
+      "extrusion_range_m": [
+        0.31,
+        0.4
+      ]
+    },
+    {
+      "part": "left_rear_wall_mount_pad",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.545,
+          0.43
+        ],
+        [
+          -1.455,
+          0.43
+        ],
+        [
+          -1.455,
+          0.45
+        ],
+        [
+          -1.545,
+          0.45
+        ]
+      ],
+      "extrusion_range_m": [
+        1.92,
+        2.02
+      ]
+    },
+    {
+      "part": "right_rear_wall_mount_pad",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          1.485,
+          0.43
+        ],
+        [
+          1.575,
+          0.43
+        ],
+        [
+          1.575,
+          0.45
+        ],
+        [
+          1.485,
+          0.45
+        ]
+      ],
+      "extrusion_range_m": [
+        1.92,
+        2.02
+      ]
+    },
+    {
+      "part": "entry_recess_front_terracotta_return",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.7,
+          -0.23
+        ],
+        [
+          -1.425,
+          -0.23
+        ],
+        [
+          -1.425,
+          -0.21000000000000002
+        ],
+        [
+          -1.7,
+          -0.21000000000000002
+        ]
+      ],
+      "extrusion_range_m": [
+        1.0,
+        1.88
+      ]
+    },
+    {
+      "part": "entry_recess_rear_terracotta_return",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.7,
+          0.22
+        ],
+        [
+          -1.425,
+          0.22
+        ],
+        [
+          -1.425,
+          0.24
+        ],
+        [
+          -1.7,
+          0.24
+        ]
+      ],
+      "extrusion_range_m": [
+        1.0,
+        1.88
+      ]
+    },
+    {
+      "part": "entry_recess_dark_back",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.425,
+          -0.21
+        ],
+        [
+          -1.4,
+          -0.21
+        ],
+        [
+          -1.4,
+          0.22
+        ],
+        [
+          -1.425,
+          0.22
+        ]
+      ],
+      "extrusion_range_m": [
+        1.03,
+        1.85
+      ]
+    },
+    {
+      "part": "entry_recess_terracotta_head",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.7,
+          -0.21
+        ],
+        [
+          -1.4,
+          -0.21
+        ],
+        [
+          -1.4,
+          0.22
+        ],
+        [
+          -1.7,
+          0.22
+        ]
+      ],
+      "extrusion_range_m": [
+        1.85,
+        1.88
+      ]
+    },
+    {
+      "part": "entry_recess_tactile_display_sill",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.7,
+          -0.21
+        ],
+        [
+          -1.4,
+          -0.21
+        ],
+        [
+          -1.4,
+          0.22
+        ],
+        [
+          -1.7,
+          0.22
+        ]
+      ],
+      "extrusion_range_m": [
+        1.0,
+        1.03
+      ]
+    },
+    {
+      "part": "lower_storage_tactile_floor",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.22,
+          -0.34
+        ],
+        [
+          1.31,
+          -0.34
+        ],
+        [
+          1.31,
+          0.31
+        ],
+        [
+          -1.22,
+          0.31
+        ]
+      ],
+      "extrusion_range_m": [
+        0.18,
+        0.23
+      ]
+    },
+    {
+      "part": "left_open_storage_divider",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.41,
+          -0.32
+        ],
+        [
+          -0.37,
+          -0.32
+        ],
+        [
+          -0.37,
+          0.31
+        ],
+        [
+          -0.41,
+          0.31
+        ]
+      ],
+      "extrusion_range_m": [
+        0.23,
+        0.83
+      ]
+    },
+    {
+      "part": "right_open_storage_divider",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          0.43,
+          -0.32
+        ],
+        [
+          0.47,
+          -0.32
+        ],
+        [
+          0.47,
+          0.31
+        ],
+        [
+          0.43,
+          0.31
+        ]
+      ],
+      "extrusion_range_m": [
+        0.23,
+        0.83
+      ]
+    },
+    {
+      "part": "main_display_work_slab",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.155,
+          -0.447
+        ],
+        [
+          1.245,
+          -0.447
+        ],
+        [
+          1.31,
+          -0.382
+        ],
+        [
+          1.31,
+          0.245
+        ],
+        [
+          1.245,
+          0.31
+        ],
+        [
+          -1.155,
+          0.31
+        ],
+        [
+          -1.22,
+          0.245
+        ],
+        [
+          -1.22,
+          -0.382
+        ]
+      ],
+      "extrusion_range_m": [
+        0.83,
+        0.95
+      ]
+    },
+    {
+      "part": "main_slab_recessed_edge_strip",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.12,
+          -0.45
+        ],
+        [
+          1.21,
+          -0.45
+        ],
+        [
+          1.21,
+          -0.447
+        ],
+        [
+          -1.12,
+          -0.447
+        ]
+      ],
+      "extrusion_range_m": [
+        0.867,
+        0.885
+      ]
+    },
+    {
+      "part": "upper_timber_display_mullion",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          0.4,
+          0.01
+        ],
+        [
+          0.47,
+          0.01
+        ],
+        [
+          0.47,
+          0.31
+        ],
+        [
+          0.4,
+          0.31
+        ]
+      ],
+      "extrusion_range_m": [
+        0.95,
+        2.495
+      ]
+    },
+    {
+      "part": "left_supported_display_shelf",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -1.22,
+          -0.16
+        ],
+        [
+          0.4,
+          -0.16
+        ],
+        [
+          0.4,
+          0.31
+        ],
+        [
+          -1.22,
+          0.31
+        ]
+      ],
+      "extrusion_range_m": [
+        1.46,
+        1.52
+      ]
+    },
+    {
+      "part": "right_supported_display_shelf",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          0.47,
+          -0.08
+        ],
+        [
+          1.31,
+          -0.08
+        ],
+        [
+          1.31,
+          0.31
+        ],
+        [
+          0.47,
+          0.31
+        ]
+      ],
+      "extrusion_range_m": [
+        1.88,
+        1.94
+      ]
+    }
+  ],
+  "mechanisms": [],
+  "state_derivatives": [],
+  "collision_proposal_file": "collision_proposals.json",
+  "body_candidate_file": "actor_proxies/body_collision_subset.json",
+  "marker_api_file": "marker_api.json",
+  "used_textures_packed": true,
+  "export_uv_repair": "None: authored per-face metric UVs are carried unchanged into grouped evaluated export",
+  "source_sha256": "4690f0671319c53bda8c25aa0b28a43c7e7ae2431d422e2329378bb3bc5b6f66",
+  "glb_sha256": "a9d6ab0144e5748c814fcecc1846d06b562236ce5ab5c29441fc8b6c6ef1de8d",
+  "generator_sha256": "99cc729a34cc7ec42485faaedb249418e0cc8e8ad5c32296a022b8c879a70200",
+  "details": {
+    "outer_elevation_profile_source_xz_m": [
+      [
+        -1.7,
+        0.18
+      ],
+      [
+        -1.7,
+        2.18
+      ],
+      [
+        -1.58,
+        2.53
+      ],
+      [
+        -1.27,
+        2.78
+      ],
+      [
+        -0.82,
+        2.9
+      ],
+      [
+        0.98,
+        2.9
+      ],
+      [
+        1.4,
+        2.78
+      ],
+      [
+        1.62,
+        2.56
+      ],
+      [
+        1.7,
+        2.25
+      ],
+      [
+        1.7,
+        0.18
+      ]
+    ],
+    "pale_opening_profile_source_xz_m": [
+      [
+        -1.29,
+        0.18
+      ],
+      [
+        -1.29,
+        2.12
+      ],
+      [
+        -1.19,
+        2.33
+      ],
+      [
+        -0.99,
+        2.49
+      ],
+      [
+        -0.67,
+        2.57
+      ],
+      [
+        0.96,
+        2.57
+      ],
+      [
+        1.2,
+        2.5
+      ],
+      [
+        1.34,
+        2.36
+      ],
+      [
+        1.38,
+        2.16
+      ],
+      [
+        1.38,
+        0.18
+      ]
+    ],
+    "terracotta_opening_profile_source_xz_m": [
+      [
+        -1.22,
+        0.18
+      ],
+      [
+        -1.22,
+        2.1
+      ],
+      [
+        -1.12,
+        2.28
+      ],
+      [
+        -0.95,
+        2.42
+      ],
+      [
+        -0.64,
+        2.495
+      ],
+      [
+        0.945,
+        2.495
+      ],
+      [
+        1.16,
+        2.43
+      ],
+      [
+        1.27,
+        2.31
+      ],
+      [
+        1.31,
+        2.15
+      ],
+      [
+        1.31,
+        0.18
+      ]
+    ],
+    "entry_facing_end": "source -X; becomes arrangement -Y under yaw +90 degrees",
+    "front_source": "-Y",
+    "wall_plane_proposal_source_y_m": 0.45,
+    "floor_plane_source_z_m": 0,
+    "junction_proposal": "Self-contained fitted floor/wall module; host wall, local ceiling, anchors and adjacent junctions unverified",
+    "mechanism": "None; permanently open display and storage",
+    "fixture": "No powered fixture or runtime illumination"
+  },
+  "limitations": [
+    "Proposed catalogue component only; R070 is a historical allocation, not a recovered finished shop",
+    "No actual host support, ceiling, door mechanism, activity slot, quantity, species fit, load, stability or operating certification",
+    "Optional detail/body collision proposals are not measured engine performance or runtime adoption"
+  ]
+}

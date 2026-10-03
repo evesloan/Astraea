@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "families": [
+    {
+      "family": "retail_display",
+      "revision": "r02",
+      "stage": "second_stage_selection_from_reconstructed_outputs",
+      "inputs": [
+        {
+          "path": "qa/batch18/rebuild_review/rebuild_retail_display_r02.json",
+          "sha256": "37d0a91b0e241450412227e401c3ad0a72883c9fb6167507465f5a6f2e77eee8"
+        },
+        {
+          "path": "qa/batch18/rebuild_review/stage_retail_display_r02/assets/retail_display/collision_proposals.json",
+          "sha256": "6d32d79ee063b92c95aaf2174a428ac1942d37dd848afe523dfefde15bbd736e"
+        },
+        {
+          "path": "qa/batch18/rebuild_review/stage_retail_display_r02/assets/retail_display/actor_proxies/body_collision_subset.json",
+          "sha256": "d631d352ff159660aa0021698dc33b00d659b3b2c1d8080c9b1943bd0f5566f8"
+        },
+        {
+          "path": "qa/batch18/rebuild_review/stage_retail_display_r02/assets/retail_display/AST-RTL-001.manifest.json",
+          "sha256": "a2420e05e65c614ac2178daeb1d62e2bdc500024e133a86ab01680e976c12280"
+        },
+        {
+          "path": "qa/batch18/rebuild_review/rebuilt_retail_display_r02_source_AST-RTL-001.json",
+          "sha256": "3396a6494a453051783552577018732df6719b04ccc7dacb9a0ccef07c6fa92f"
+        },
+        {
+          "path": "qa/batch18/rebuild_review/stage_retail_display_r02/assets/retail_display/AST-RTL-002.manifest.json",
+          "sha256": "7585f59824285bb0a696887aad06f7b58be95d5447bd2f98a51db178189fd6cd"
+        },
+        {
+          "path": "qa/batch18/rebuild_review/rebuilt_retail_display_r02_source_AST-RTL-002.json",
+          "sha256": "bcef0fdb4c2dcef373217e4c31113e254159361b0669404954e0fa86b299f2e6"
+        }
+      ],
+      "checks": [
+        {
+          "catalogue_id": "AST-RTL-001",
+          "detailed_count": 40,
+          "selected_count": 31,
+          "selection_derived_from_fresh_editable_body_flags_and_whole_profiles": true,
+          "exact_named_group_set_matches_generated_policy": true,
+          "max_candidate_vertex_difference_m": 0.0,
+          "candidate_geometry_matches": true
+        },
+        {
+          "catalogue_id": "AST-RTL-002",
+          "detailed_count": 12,
+          "selected_count": 11,
+          "selection_derived_from_fresh_editable_body_flags_and_whole_profiles": true,
+          "exact_named_group_set_matches_generated_policy": true,
+          "max_candidate_vertex_difference_m": 0.0,
+          "candidate_geometry_matches": true
+        }
+      ],
+      "selection_outputs": [
+        {
+          "path": "qa/batch18/rebuild_review/stage2_retail_display_r02/selected_collision_roles_run1.json",
+          "sha256": "900f7e34721256982dd3dd9432d899dfd618e111cb022f9cf545ddbc97527ffd"
+        },
+        {
+          "path": "qa/batch18/rebuild_review/stage2_retail_display_r02/selected_collision_roles_run2.json",
+          "sha256": "900f7e34721256982dd3dd9432d899dfd618e111cb022f9cf545ddbc97527ffd"
+        }
+      ],
+      "two_selections_byte_identical": true,
+      "not_original_seed_inputs": true,
+      "limits": "Optional collision role construction/selection remains unadopted. Stage1 consumed only exact original generator/helper/old palette inputs and regenerated new art; no generated collision, previous asset or QA output was seeded. Stage2 reads regenerated detail/source metadata, not a hidden prior candidate dependency.",
+      "passed": true
+    },
+    {
+      "family": "retail_work",
+      "revision": "r05",
+      "stage": "second_stage_selection_from_reconstructed_outputs",
+      "inputs": [
+        {
+          "path": "qa/batch18/rebuild_review/rebuild_retail_work_r05.json",
+          "sha256": "13d019b0a0db345a78e9a141101f70c695dffb71f05b16e52648369fce1d000c"
+        },
+        {
+          "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/collision_proposals.json",
+          "sha256": "d68300ca2336dcb5b9fa9e764b1603c4688246aac9e0de98fd7ab893d299ee06"
+        }
+      ],
+      "checks": [
+        {
+          "catalogue_id": "AST-RTL-003",
+          "detailed_count": 26,
+          "selected_count": 15,
+          "literal_precise_shapes_unchanged": true,
+          "retained_names_match_generated_policy": true,
+          "omitted_names_match_generated_policy": true
+        },
+        {
+          "catalogue_id": "AST-RTL-004",
+          "detailed_count": 48,
+          "selected_count": 40,
+          "literal_precise_shapes_unchanged": true,
+          "retained_names_match_generated_policy": true,
+          "omitted_names_match_generated_policy": true
+        }
+      ],
+      "selection_outputs": [
+        {
+          "path": "qa/batch18/rebuild_review/stage2_retail_work_r05/selected_collision_roles_run1.json",
+          "sha256": "7ad410906145d3029355c20180cbed7216588a645e3e39f4375873bd21b9aed6"
+        },
+        {
+          "path": "qa/batch18/rebuild_review/stage2_retail_work_r05/selected_collision_roles_run2.json",
+          "sha256": "7ad410906145d3029355c20180cbed7216588a645e3e39f4375873bd21b9aed6"
+        }
+      ],
+      "two_selections_byte_identical": true,
+      "not_original_seed_inputs": true,
+      "limits": "Optional collision role construction/selection remains unadopted. Stage1 consumed only exact original generator/helper/old palette inputs and regenerated new art; no generated collision, previous asset or QA output was seeded. Stage2 reads regenerated detail/source metadata, not a hidden prior candidate dependency.",
+      "passed": true
+    }
+  ],
+  "executed_script_sha256": "4266cc408174cf8d94306ace65d2da3045ac2e973594f8dcf280c7b0d2a73645"
+}

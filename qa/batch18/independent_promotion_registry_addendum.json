@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "revision": "batch18-promotion-registry-addendum-01",
+  "created_utc": "2026-10-03T05:04:44.371514+00:00",
+  "scope": "Accept only the planned source-delivery group registry metadata promotion. Original immutable component review and every other accepted file remain strict and unchanged.",
+  "original_immutable_review": {
+    "path": "qa/batch18/independent_final_review.json",
+    "sha256": "9084cf6d2768edea2a32999cefceeaaf41752da2ad400c7051d47532c16a401e",
+    "unchanged": true
+  },
+  "approved_exception": {
+    "path": "standards/source_package_groups.json",
+    "baseline_commit": "95dc75eeb5ea36af8e74ddf372e191e9dd39432e",
+    "baseline_sha256": "e20a8a582cf118be00a882f98919d73c52046be50764c76571cd6a3bfdc359fc",
+    "frozen_review_sha256": "e20a8a582cf118be00a882f98919d73c52046be50764c76571cd6a3bfdc359fc",
+    "approved_current_sha256": "35daf098f5e6a8b530333cde8bc6c8a8d0b91aa332632f69a7d9131c3e87377d",
+    "baseline_bytes": 2283,
+    "current_bytes": 2413,
+    "old_revision": "source-family-delivery-10",
+    "new_revision": "source-family-delivery-11",
+    "prior_group_count": 11,
+    "current_group_count": 12,
+    "prior_groups_decoded_identical": true,
+    "prior_groups_raw_json_record_bytes_identical": true,
+    "policy_unchanged": true,
+    "only_decoded_changes": [
+      "revision source-family-delivery-10 to source-family-delivery-11",
+      "append Retail_Display with exactly retail_display and retail_work"
+    ],
+    "new_group": {
+      "name": "Retail_Display",
+      "asset_directories": [
+        "retail_display",
+        "retail_work"
+      ]
+    },
+    "new_family_coverage": [
+      {
+        "asset_directory": "assets/retail_display",
+        "catalogue_ids": [
+          "AST-RTL-001",
+          "AST-RTL-002"
+        ],
+        "contains_current_editable_sources_exports_manifests_and_original_generator": true
+      },
+      {
+        "asset_directory": "assets/retail_work",
+        "catalogue_ids": [
+          "AST-RTL-003",
+          "AST-RTL-004"
+        ],
+        "contains_current_editable_sources_exports_manifests_and_original_generator": true
+      }
+    ],
+    "present_in_protected_baseline_list": true,
+    "protected_baseline_entries": [
+      {
+        "path": "standards/source_package_groups.json",
+        "sha256": "e20a8a582cf118be00a882f98919d73c52046be50764c76571cd6a3bfdc359fc"
+      }
+    ]
+  },
+  "all_other_frozen_file_count": 3607,
+  "all_other_frozen_files_unchanged": true,
+  "observed_frozen_binding_mismatches": [
+    {
+      "path": "standards/source_package_groups.json",
+      "frozen_sha256": "e20a8a582cf118be00a882f98919d73c52046be50764c76571cd6a3bfdc359fc",
+      "current_sha256": "35daf098f5e6a8b530333cde8bc6c8a8d0b91aa332632f69a7d9131c3e87377d"
+    }
+  ],
+  "promotion_container_screen": {
+    "checked_known_containers": [
+      "catalogue_manifest.json",
+      "standards/catalogue_interfaces.json",
+      "CATEGORY_COVERAGE.json",
+      "README.md",
+      "DELIVERY_LOG.md"
+    ],
+    "accidentally_frozen_other_known_promotion_containers": [],
+    "only_current_frozen_mismatch_is_approved_registry": true,
+    "scope": "All accepted-file hashes were checked; root canonical catalogue/interface/category/README/delivery containers are not frozen. No additional changed accepted file is implicitly permitted."
+  },
+  "checker_rule": "Verify the immutable final review keeps the baseline registry hash and git baseline bytes match it; permit only this exact registry path/current hash from this addendum. Keep every other frozen binding strict. This is delivery organization, not an asset-content or host acceptance change.",
+  "new_renders_or_source_regeneration": false
+}

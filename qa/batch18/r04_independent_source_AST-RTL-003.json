@@ -1,0 +1,2963 @@
+{
+  "path": "assets/retail_work/source/AST-RTL-003.blend",
+  "sha256": "ab6211b2d8231400f8a708054d3c0a8fbf55cd8d557696c6ac490f6804c687ea",
+  "executed_script_sha256": "cf94ae01a6b1719a62487686009d8d6df757c642b3ff4872b92322ef168b4ca1",
+  "blender_version": "4.3.2",
+  "units": {
+    "system": "METRIC",
+    "scale_length": 1.0
+  },
+  "scene_properties": {
+    "catalogue_id": "AST-RTL-003"
+  },
+  "objects": [
+    {
+      "name": "AST-RTL-003",
+      "type": "EMPTY",
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "catalogue_id": "AST-RTL-003",
+        "scope": "Proposed component geometry only; not actual shop ownership, species fit, payment or load acceptance"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "AST-RTL-003__ownership_fixed",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "motion_group": "fixed",
+        "pivot_source_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pivot_gltf_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "attachment": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "AST-RTL-003__ownership_lid",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "motion_group": "lid",
+        "pivot_source_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pivot_gltf_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "attachment": "detachable manual handling; no retained joint or automatic motion"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "AST-RTL-003__ownership_carrier",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "motion_group": "carrier",
+        "pivot_source_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pivot_gltf_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "attachment": "detachable manual handling; no retained joint or automatic motion"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "parcel_pylon_floor_plinth",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "dark_rubber",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 28,
+      "min_xyz": [
+        -0.8899999856948853,
+        -0.4050000011920929,
+        0.0
+      ],
+      "max_xyz": [
+        -0.23000000417232513,
+        0.39500001072883606,
+        0.054999999701976776
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "editable_mesh_sha256": "b2e485320ec65fe278d041206c8facc43e16f0fcb6d92a311f83380fc5555e1f",
+      "modifier_settings": []
+    },
+    {
+      "name": "parcel_pylon_outer_return",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "ivory_enamel",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.875,
+        -0.3700000047683716,
+        0.054999999701976776
+      ],
+      "max_xyz": [
+        -0.7900000214576721,
+        0.3700000047683716,
+        1.024999976158142
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "editable_mesh_sha256": "7de7ba07ffb2d6979c37712ffe1c867a136210fa0545776cb9519f04f9ac07f8",
+      "modifier_settings": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 1,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "OUTER_FLOOR",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.8324999809265137
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_floor_contact",
+        "physical_part": "parcel_pylon_floor_plinth",
+        "source_position_m": [
+          -0.8325,
+          0.0,
+          0.0
+        ],
+        "gltf_position_m": [
+          -0.8325,
+          0.0,
+          0.0
+        ],
+        "normal_source": [
+          0,
+          0,
+          -1
+        ],
+        "normal_gltf": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "parcel_pylon_inner_return",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "ivory_enamel",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.3149999976158142,
+        -0.3700000047683716,
+        0.054999999701976776
+      ],
+      "max_xyz": [
+        -0.23000000417232513,
+        0.3700000047683716,
+        1.024999976158142
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "editable_mesh_sha256": "75639bd8d5ddfdc9731335a9275d655ddb0ec056ba669dc6e975cf1156b08856",
+      "modifier_settings": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 1,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "INNER_FLOOR",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.27250000834465027
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_floor_contact",
+        "physical_part": "parcel_pylon_floor_plinth",
+        "source_position_m": [
+          -0.2725,
+          0.0,
+          0.0
+        ],
+        "gltf_position_m": [
+          -0.2725,
+          0.0,
+          0.0
+        ],
+        "normal_source": [
+          0,
+          0,
+          -1
+        ],
+        "normal_gltf": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "parcel_pylon_recessed_terracotta_front",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "retail_terracotta_enamel",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.7900000214576721,
+        -0.3700000047683716,
+        0.054999999701976776
+      ],
+      "max_xyz": [
+        -0.3149999976158142,
+        -0.23499999940395355,
+        1.024999976158142
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_retail_terracotta_enamel"
+      ],
+      "editable_mesh_sha256": "790d5a61d4b4df1adbab57bce9efe80205b79a987cc20578f6acd3f89a600232",
+      "modifier_settings": []
+    },
+    {
+      "name": "guest_parcel_rest",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "warm_walnut",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 92,
+      "min_xyz": [
+        -0.8999999761581421,
+        -0.44999998807907104,
+        1.024999976158142
+      ],
+      "max_xyz": [
+        -0.20000000298023224,
+        0.4000000059604645,
+        1.0750000476837158
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "editable_mesh_sha256": "6401c1f2124b035c3ccafd6997778cbcbf8cb2bd981c402f0effb599dad423ea",
+      "modifier_settings": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 1,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "paper_stock_lower_shelf",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "warm_walnut",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.7900000214576721,
+        -0.23499999940395355,
+        0.14800000190734863
+      ],
+      "max_xyz": [
+        -0.3149999976158142,
+        0.3449999988079071,
+        0.17499999701976776
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "editable_mesh_sha256": "6a8ea0522030c13e71a5d8ebab9051e12b12c76482101cdf0e537b640ec9929d",
+      "modifier_settings": []
+    },
+    {
+      "name": "paper_stock_upper_shelf",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "warm_walnut",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.7900000214576721,
+        -0.23499999940395355,
+        0.527999997138977
+      ],
+      "max_xyz": [
+        -0.3149999976158142,
+        0.3449999988079071,
+        0.5550000071525574
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "editable_mesh_sha256": "8b3bd1d7d9de4cdb0d97fd0cc7cf03ac8b92c09daf2b78e394e1186ee3c16267",
+      "modifier_settings": []
+    },
+    {
+      "name": "parcel_rest_outer_raised_cheek",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "ivory_enamel",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.875,
+        -0.33000001311302185,
+        1.0750000476837158
+      ],
+      "max_xyz": [
+        -0.824999988079071,
+        0.33500000834465027,
+        1.149999976158142
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "editable_mesh_sha256": "ae374f54f5dd1f56f0586fcf631fc15c4084c16929432288c480062f6fa5fee5",
+      "modifier_settings": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 1,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "clear_wrapping_worktop",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "warm_walnut",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 92,
+      "min_xyz": [
+        -0.23000000417232513,
+        -0.4300000071525574,
+        0.9150000214576721
+      ],
+      "max_xyz": [
+        0.8999999761581421,
+        0.4300000071525574,
+        0.949999988079071
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "editable_mesh_sha256": "7421a2ddad62611d2143102c75e9739ff384b39a43f5d9b3439c4e38e2fd9064",
+      "modifier_settings": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 1,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "work_wing_floor_shoe",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "dark_rubber",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 28,
+      "min_xyz": [
+        0.7599999904632568,
+        -0.3199999928474426,
+        0.0
+      ],
+      "max_xyz": [
+        0.8849999904632568,
+        0.3499999940395355,
+        0.04500000178813934
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "editable_mesh_sha256": "791e07ca70f59f5c153949c8d9ccbccd067054f414d01426818ad20980ea37fe",
+      "modifier_settings": []
+    },
+    {
+      "name": "work_wing_outer_support_fin",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "ivory_enamel",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        0.7749999761581421,
+        -0.30000001192092896,
+        0.04500000178813934
+      ],
+      "max_xyz": [
+        0.8600000143051147,
+        0.33000001311302185,
+        0.9150000214576721
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "editable_mesh_sha256": "0b5fb8f736124f217c71fe36b1e1550593f482be71dbdf4226a69f4efcff7f77",
+      "modifier_settings": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 1,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "WING_FLOOR",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.8149999976158142
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_floor_contact",
+        "physical_part": "work_wing_floor_shoe",
+        "source_position_m": [
+          0.815,
+          0.0,
+          0.0
+        ],
+        "gltf_position_m": [
+          0.815,
+          0.0,
+          0.0
+        ],
+        "normal_source": [
+          0,
+          0,
+          -1
+        ],
+        "normal_gltf": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "staff_open_stock_sill",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "ivory_enamel",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.23000000417232513,
+        -0.2849999964237213,
+        0.28999999165534973
+      ],
+      "max_xyz": [
+        0.7749999761581421,
+        0.33000001311302185,
+        0.32199999690055847
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "editable_mesh_sha256": "84a63ce7540d9fcb7cdb6c148071611f7997c2418f678c751dfb7f81be61cc7c",
+      "modifier_settings": []
+    },
+    {
+      "name": "wrapping_front_recessed_return",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "retail_terracotta_enamel",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.23000000417232513,
+        -0.375,
+        0.7350000143051147
+      ],
+      "max_xyz": [
+        0.7749999761581421,
+        -0.32499998807907104,
+        0.9150000214576721
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_retail_terracotta_enamel"
+      ],
+      "editable_mesh_sha256": "2913b1b16c7b219fed47abf1badeaeca0cb6448fe96e7fa1e11712e36219cebf",
+      "modifier_settings": []
+    },
+    {
+      "name": "open_stock_short_divider",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "warm_walnut",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.20000000298023224,
+        -0.23499999940395355,
+        0.32199999690055847
+      ],
+      "max_xyz": [
+        0.22200000286102295,
+        0.2800000011920929,
+        0.5899999737739563
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "editable_mesh_sha256": "38be0dac14986bb250d938510e718b20e0499d2b992fb54352e5e2932e440d2c",
+      "modifier_settings": []
+    },
+    {
+      "name": "original_parcel_service_face",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "dark_rubber",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.7160000205039978,
+        -0.3779999911785126,
+        0.6000000238418579
+      ],
+      "max_xyz": [
+        -0.3889999985694885,
+        -0.3700000047683716,
+        0.9259999990463257
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "editable_mesh_sha256": "77b8b69df7248d61c924a1f14c63911b766da1c6055ba0ed128643a4ab459c41",
+      "modifier_settings": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 1,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "original_parcel_outline_0",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "champagne_metal",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.6449999809265137,
+        -0.38100001215934753,
+        0.7005000114440918
+      ],
+      "max_xyz": [
+        -0.46000000834465027,
+        -0.3779999911785126,
+        0.7094999551773071
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "editable_mesh_sha256": "db33349e9205ee7063fc66dc8a944e746ad7540048b1b3d839d30c99a8388e83",
+      "modifier_settings": []
+    },
+    {
+      "name": "original_parcel_outline_1",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "champagne_metal",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.4645000100135803,
+        -0.38100001215934753,
+        0.7049999833106995
+      ],
+      "max_xyz": [
+        -0.4555000066757202,
+        -0.3779999911785126,
+        0.8500000238418579
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "editable_mesh_sha256": "d0b3d3f73a64ded9db103359a49cb03fbd3aba7d198e2dd1db4681cc72d7f3b8",
+      "modifier_settings": []
+    },
+    {
+      "name": "original_parcel_outline_2",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "champagne_metal",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.6449999809265137,
+        -0.38100001215934753,
+        0.8455000519752502
+      ],
+      "max_xyz": [
+        -0.46000000834465027,
+        -0.3779999911785126,
+        0.8544999957084656
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "editable_mesh_sha256": "e532e24bc804bf6afd74250564b1bd678f16148c9dbb171ecfbc4ed5776dd7cb",
+      "modifier_settings": []
+    },
+    {
+      "name": "original_parcel_outline_3",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "champagne_metal",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.6494999527931213,
+        -0.38100001215934753,
+        0.7049999833106995
+      ],
+      "max_xyz": [
+        -0.640500009059906,
+        -0.3779999911785126,
+        0.8500000238418579
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "editable_mesh_sha256": "218efcfcd4252719b2a470c67412c82674cac5bc88c06cb62d2bdcb81cbaa3e2",
+      "modifier_settings": []
+    },
+    {
+      "name": "original_parcel_fold_left",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "champagne_metal",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.6471397876739502,
+        -0.38100001215934753,
+        0.7960413098335266
+      ],
+      "max_xyz": [
+        -0.5503602027893066,
+        -0.3779999911785126,
+        0.8539587259292603
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "editable_mesh_sha256": "44a0f2f549a2e1379c64eccdc433fc7cec5e756fb3be94e88ddf9bb6a958bd54",
+      "modifier_settings": []
+    },
+    {
+      "name": "original_parcel_fold_right",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "champagne_metal",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.5546398162841797,
+        -0.38100001215934753,
+        0.7960413098335266
+      ],
+      "max_xyz": [
+        -0.45786017179489136,
+        -0.3779999911785126,
+        0.8539587259292603
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "editable_mesh_sha256": "f521a6b94551e6f60a4483913f1aa8dcdb85c174e245de51cc0b10c6ca568d6d",
+      "modifier_settings": []
+    },
+    {
+      "name": "original_parcel_wrap_seam",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "champagne_metal",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.5569999814033508,
+        -0.38100001215934753,
+        0.7059999704360962
+      ],
+      "max_xyz": [
+        -0.5480000376701355,
+        -0.3779999911785126,
+        0.800000011920929
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "editable_mesh_sha256": "416ece29580e97aaa487eeb8f0ed4189b16aa50513cf0e1aab957b73e546da3a",
+      "modifier_settings": []
+    },
+    {
+      "name": "inactive_staff_control_face",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "dark_rubber",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.6800000071525574,
+        0.35499998927116394,
+        0.8180000185966492
+      ],
+      "max_xyz": [
+        -0.41999998688697815,
+        0.3709999918937683,
+        0.9649999737739563
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "editable_mesh_sha256": "11284054ab3eb000182af3814a839f0ce7a2ad7e1dfb08f64d45d4e9041c638a",
+      "modifier_settings": [
+        {
+          "name": "Small editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 1,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.6108652353286743,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted face normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "inactive_face_fixed_backing",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "ivory_enamel",
+        "body_candidate_retained": true,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.6899999976158142,
+        0.3400000035762787,
+        0.7950000166893005
+      ],
+      "max_xyz": [
+        -0.4099999964237213,
+        0.35499998927116394,
+        1.024999976158142
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "editable_mesh_sha256": "a05922964cefa36fc78bbe56132a90ad72c313e80eba4de3a0fddbef8d972245",
+      "modifier_settings": []
+    },
+    {
+      "name": "inactive_staff_recess_mark_0",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "retail_terracotta_enamel",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.6179999709129333,
+        0.3709999918937683,
+        0.8669999837875366
+      ],
+      "max_xyz": [
+        -0.5720000267028809,
+        0.37400001287460327,
+        0.890999972820282
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_retail_terracotta_enamel"
+      ],
+      "editable_mesh_sha256": "0659983a654983d74662e783dddfc9e7dc7bf8161da5906fb70217d04bca4712",
+      "modifier_settings": []
+    },
+    {
+      "name": "inactive_staff_recess_mark_1",
+      "type": "MESH",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "retail_terracotta_enamel",
+        "body_candidate_retained": false,
+        "motion_group": "fixed"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.527999997138977,
+        0.3709999918937683,
+        0.8669999837875366
+      ],
+      "max_xyz": [
+        -0.4819999933242798,
+        0.37400001287460327,
+        0.890999972820282
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_retail_terracotta_enamel"
+      ],
+      "editable_mesh_sha256": "97798dd1cdf7f7c996b26c5799ec8ebbe7f187c1ef3ffb2f8186f76cbedcc104",
+      "modifier_settings": []
+    },
+    {
+      "name": "PARCEL_REST",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.5400000214576721
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.019999999552965164
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.0750000476837158
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_guest_parcel_surface",
+        "physical_part": "guest_parcel_rest",
+        "source_position_m": [
+          -0.54,
+          -0.02,
+          1.075
+        ],
+        "gltf_position_m": [
+          -0.54,
+          1.075,
+          0.02
+        ],
+        "normal_source": [
+          0,
+          0,
+          1
+        ],
+        "normal_gltf": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "WRAPPING_SURFACE",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.2800000011920929
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.949999988079071
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_staff_work_surface",
+        "physical_part": "clear_wrapping_worktop",
+        "source_position_m": [
+          0.28,
+          0.0,
+          0.95
+        ],
+        "gltf_position_m": [
+          0.28,
+          0.95,
+          0.0
+        ],
+        "normal_source": [
+          0,
+          0,
+          1
+        ],
+        "normal_gltf": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "SERVICE_IDENTITY_FACE",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.550000011920929
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.3779999911785126
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.7599999904632568
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "physical_inactive_identity_surface",
+        "physical_part": "original_parcel_service_face",
+        "source_position_m": [
+          -0.55,
+          -0.378,
+          0.76
+        ],
+        "gltf_position_m": [
+          -0.55,
+          0.76,
+          0.378
+        ],
+        "normal_source": [
+          0,
+          -1,
+          0
+        ],
+        "normal_gltf": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "STAFF_APPROACH",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.2800000011920929
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.8999999761581421
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "nonphysical_approach_proposal",
+        "physical_part": "",
+        "source_position_m": [
+          0.28,
+          0.9,
+          0.0
+        ],
+        "gltf_position_m": [
+          0.28,
+          0.0,
+          -0.9
+        ]
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "FLOOR_ORIGIN",
+      "type": "EMPTY",
+      "parent": "AST-RTL-003__ownership_fixed",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "marker_kind": "placement_origin",
+        "physical_part": "",
+        "source_position_m": [
+          0,
+          0,
+          0
+        ],
+        "gltf_position_m": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    }
+  ],
+  "used_materials": [
+    {
+      "name": "ASTRAEA_champagne_metal",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "champagne_metal.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.7200000286102295,
+          "Roughness": 0.4699999988079071,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_dark_rubber",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "dark_rubber.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.8999999761581421,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_ivory_enamel",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "ivory_enamel.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.6800000071525574,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_retail_terracotta_enamel",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "retail_terracotta_enamel.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.6800000071525574,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_warm_walnut",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "warm_walnut.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.6499999761581421,
+          "Alpha": 1.0
+        }
+      ]
+    }
+  ],
+  "used_images": [
+    {
+      "name": "champagne_metal.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/champagne_metal.png",
+      "packed": true,
+      "packed_sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4"
+    },
+    {
+      "name": "dark_rubber.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/dark_rubber.png",
+      "packed": true,
+      "packed_sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3"
+    },
+    {
+      "name": "ivory_enamel.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/ivory_enamel.png",
+      "packed": true,
+      "packed_sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68"
+    },
+    {
+      "name": "retail_terracotta_enamel.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/retail/retail_terracotta_enamel.png",
+      "packed": true,
+      "packed_sha256": "f5f57caac4d52e864ce215f10bb74260cd1b11c786f966406daf345c73c16375"
+    },
+    {
+      "name": "warm_walnut.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/warm_walnut.png",
+      "packed": true,
+      "packed_sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe"
+    }
+  ],
+  "load_success": true,
+  "unused_images": [
+    "clay_weave.png",
+    "oatmeal_weave.png",
+    "Render Result",
+    "teal_weave.png",
+    "warm_stone.png"
+  ],
+  "bounds_min_m": [
+    -0.8999999761581421,
+    -0.44999998807907104,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.8999999761581421,
+    0.4300000071525574,
+    1.149999976158142
+  ],
+  "dimensions_m": [
+    1.7999999523162842,
+    0.8799999952316284,
+    1.149999976158142
+  ],
+  "evaluated_triangles": 696,
+  "source_unchanged_after_load": true,
+  "geometry_cache": "qa/batch18/independent_source_geometry_AST-RTL-003.npz"
+}

@@ -4,7 +4,7 @@ New asset production began on 2 October 2026 while recovery of the original ship
 
 Batch 01 is a compact coordinated day-use family: upholstered window bench, reading chair, day table, and four compatible deep reveal/junction pieces. It translates the supplied residential and premium references into editable low-poly furniture and construction components. Every authored asset is counted once, separately from exports and any LODs. This is one standard day-use construction family, not sufficient variety for every district or luxury tier. The furniture does not claim aquatic use, cocoon provision or universal species fit.
 
-The catalogue now contains 85 unique authored component designs, with zero adopted game instances. Batch17 adds four housekeeping and laundry workplace components. Exact IDs, source/export paths, review status and limits are in catalogue_manifest.json and the per-batch manifests.
+The catalogue now contains 89 unique authored component designs, with zero adopted game instances. Batch18 adds four retail display and work components. Exact IDs, source/export paths, review status and limits are in catalogue_manifest.json and the per-batch manifests.
 
 The collection covers guest day-use, libraries, staff/service, botanical edges, aquatic leisure, engineering utilities, hospitality service, salon transitions, clinical support and cultural/auditorium use. These are reviewed components; whole-room composition, six-species fitting and game adoption still require the recovered host and further testing.
 
@@ -137,3 +137,9 @@ Batch16 preserves the detailed seat and stand mechanism/reference profiles and a
 Four original designs add a fictional cloth-treatment appliance, open conditioning rack, sorting/folding bench and a distinct bulk-linen carrier. Useful chambers, work surfaces, retained moving parts, source/native interfaces and collision proposals are reviewed at component scale. The actual exported components are shown in separate equipment and handling examples under inspection lighting.
 
 The historical D01 laundry and custodial depot remain separate allocations, 648 m apart longitudinally. These examples do not invent their connector or establish a mandatory end-of-shift loop. Live cleaning, heat, utilities, hygiene and species compatibility are unimplemented. The carrier does not replace the original player cart. See batches/batch17/STATUS.md and the independent source/export review.
+
+## Batch18 retail display and work
+
+Four original designs add an authored recessed wall-display bay, stepped island, wrapping/service bench and one coordinated reusable small-goods case. The partial source-level arrangement is grounded in the explicitly mapped historical R070 Kind Curios /070 allocation. Supported repeated case placements count as instances, and derivative handling states remain the same design.
+
+The100 addressed small shops remain distinct from the ten larger D09 destinations and the separate forward Orchard market. Historical outer containment and ordinary-height component pictures do not recover actual door pockets, supports, activity-slot ownership or finished shop architecture. Payment, stock, staff assignment, persistence and engine use are unimplemented. See batches/batch18/STATUS.md and the frozen source/export review.

@@ -1,7 +1,7 @@
 {
-  "revision": "astraea-catalogue-interfaces-10-proposed",
+  "revision": "astraea-catalogue-interfaces-11-proposed",
   "status": "proposed_component_consumer_index_not_engine_acceptance",
-  "unique_assets": 85,
+  "unique_assets": 89,
   "semantic_rules": [
     "Exact existing source/export/manifest hashes bind every row.",
     "Metadata records map existing points and behavior only. No nonexistent point/trajectory is invented.",
@@ -23216,16 +23216,1293 @@
       "findings": [],
       "exact_record_inventory_pointer": "qa/batch17/independent_interface_coverage_map.json#/assets/3",
       "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-RTL-001",
+      "family": "retail_display",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/retail_display/source/AST-RTL-001.blend",
+          "sha256": "4690f0671319c53bda8c25aa0b28a43c7e7ae2431d422e2329378bb3bc5b6f66",
+          "bytes": 1027100
+        },
+        "export": {
+          "path": "assets/retail_display/exports/AST-RTL-001.glb",
+          "sha256": "a9d6ab0144e5748c814fcecc1846d06b562236ce5ab5c29441fc8b6c6ef1de8d",
+          "bytes": 97064
+        },
+        "manifest": {
+          "path": "assets/retail_display/AST-RTL-001.manifest.json",
+          "sha256": "ac57d0335d489f22d88511195c2daa9b302e834c8bd9a3d358a413f5406069b2",
+          "bytes": 50680
+        }
+      },
+      "units": {
+        "status": "explicit_source_and_exchange_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/retail_display/AST-RTL-001.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "actual_source_and_native_root_checked",
+        "meaning": "Floor/source design datum; physical support surfaces, proposed installation contacts and movable ownership are separately named",
+        "actual_native_root_nodes": [
+          {
+            "index": 15,
+            "name": "AST-RTL-001",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-001.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "actual_source_geometry_native_hierarchy_marker_and_attribute_correspondence_checked",
+        "source": "Blender XYZ Z-up, front−Y",
+        "exchange": "native GLB Y-up",
+        "conversion": "(x,y,z)->(x,z,−y)",
+        "proposed_R070_source_to_ship": "(78−sourceY,52.5+sourceZ,236−sourceX)",
+        "proper_R070_rotation_determinant": 1,
+        "rule": "Resolve native transforms once; no reflected lateral planning axis or second basis conversion",
+        "evidence": [
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_display_geometry_AST-RTL-001.json",
+          "qa/batch18/independent_export_AST-RTL-001.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "actual_physical_surface_normal_and_support_witnesses_checked",
+        "meaning": "Named physical points, opposed joins and full useful support polygons agree with actual source/native surfaces; host support, anchorage and interfaces remain proposals",
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-001.json"
+        ],
+        "omission_assessment": "No actual R070 wall, door aperture/pocket/head, local ceiling/service/support or authored activity slot is inferred"
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "physical_and_nonphysical_roles_distinguished",
+        "meaning": "Joined rising/faceted pale fitted display profile, recessed terracotta return, entry-facing side alcove, open lower storage and supported wood shelves. The actual fitted pads remain unassigned proposals; no host wall/ceiling or fixture is invented.",
+        "declared_marker_count": 10,
+        "support_patch_count": 5,
+        "whole_shaped_profile_checked": true,
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-001.json",
+          "qa/batch18/independent_export_AST-RTL-001.json",
+          "qa/batch18/independent_corner_comparison_AST-RTL-001.json",
+          "qa/batch18/rebuild_review/rebuild_retail_display_r02.json",
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_display_geometry_review.json",
+          "qa/batch18/work_review_summary.json",
+          "qa/batch18/independent_finish_resolution.json",
+          "qa/batch18/independent_source_native_corner_comparison.json",
+          "qa/batch18/independent_arrangement_review.json",
+          "qa/batch18/independent_visual_review.json",
+          "qa/batch18/independent_preservation_report.json"
+        ],
+        "limits": "Geometry only; no strength, stability, load, material safety, grip/reach/species, cart or operational acceptance"
+      },
+      "motion_and_hierarchy": {
+        "status": "fixed_static_component_no_unnecessary_motion",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "declared_derivative_states": [],
+        "meaning": "Fixed supported shelving/work/display form; no opening animation, controller or runtime mechanism",
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-001.json",
+          "assets/retail_display/AST-RTL-001.manifest.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "independent_fresh_exact_original_input_reconstruction_passed",
+        "actual_material_roles": [
+          "champagne_metal",
+          "dark_rubber",
+          "ivory_enamel",
+          "retail_terracotta_enamel",
+          "warm_walnut"
+        ],
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/retail_display/source/build_retail_display.py",
+            "sha256": "99cc729a34cc7ec42485faaedb249418e0cc8e8ad5c32296a022b8c879a70200",
+            "bytes": 22583
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/retail_display/source/build_retail_display.py",
+            "sha256": "99cc729a34cc7ec42485faaedb249418e0cc8e8ad5c32296a022b8c879a70200",
+            "bytes": 22583
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/retail/draw_textures.py",
+            "sha256": "0eda2b9e861c49366504906ca71313381ac23b5356abeef96dbc4d7c79c17ee9",
+            "bytes": 1633
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          },
+          {
+            "path": "standards/retail_materials.py",
+            "sha256": "27d3ba74b215555c3e4c310aaafe5afcf26897600f345d3c6077bfe1999b7b62",
+            "bytes": 1793
+          }
+        ],
+        "original_input_count": 13,
+        "all_helper_loaded_common_roles_included": true,
+        "new_enamel_recreated_from_original_script": true,
+        "generated_collision_selection_is_separate_stage2": true,
+        "evidence": [
+          "qa/batch18/rebuild_review/rebuild_retail_display_r02.json",
+          "qa/batch18/rebuild_review/STAGE2_ROLE_REVIEW.json"
+        ],
+        "limits": "Source-only stage begins without new outputs or QA seeds; original common palette is copied as unchanged input. Python/native-image read tracing is not a complete OS syscall trace. Blender/Python execution environment remains required."
+      },
+      "uv_and_surface_policy": {
+        "status": "actual_native_split_normals_position_uv_and_materials_checked",
+        "policy": "None: authored per-face metric UVs are carried unchanged into grouped evaluated export",
+        "source_export_texture_bytes_equal": true,
+        "source_export_surface_area_and_volume_equivalent": true,
+        "evidence": [
+          "qa/batch18/independent_corner_comparison_AST-RTL-001.json",
+          "qa/batch18/independent_export_AST-RTL-001.json"
+        ]
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 552,
+        "mesh_nodes": 5,
+        "primitives": 5,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 97064,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 5,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch18/independent_export_AST-RTL-001.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_detailed_and_optional_body_roles_checked",
+        "shape_count": 40,
+        "optional_body_shape_count": 31,
+        "candidate_binding": {
+          "path": "assets/retail_display/actor_proxies/body_collision_subset.json",
+          "sha256": "d631d352ff159660aa0021698dc33b00d659b3b2c1d8080c9b1943bd0f5566f8",
+          "bytes": 56918
+        },
+        "candidate_json_pointer": "/assets/AST-RTL-001/shapes",
+        "detailed_binding": {
+          "path": "assets/retail_display/collision_proposals.json",
+          "sha256": "6d32d79ee063b92c95aaf2174a428ac1942d37dd848afe523dfefde15bbd736e",
+          "bytes": 84309
+        },
+        "maximum_outward_shallow_finish_approximation_m": 0.09,
+        "maximum_omitted_fine_detail_distance_m": 0.003,
+        "meaning": "Static optional compound joins pale/terracotta material wedges across the whole actual profile; shallow finish setback infill is analytically bounded90mm; omitted3mm strip is separate",
+        "limits": "Distinguish material thickness, approximation fill and omitted-detail distance. Work hulls retain original semantic geometry before small editable edge easing; approximation and all useful voids independently checked. Counts are not measured engine cost.",
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-001.json",
+          "qa/batch18/rebuild_review/STAGE2_ROLE_REVIEW.json"
+        ]
+      },
+      "reference_and_arrangement_scope": {
+        "status": "bounded_source_proposal",
+        "historical_candidate": "R070 Kind Curios /070",
+        "new_design_count": 1,
+        "registered_places_or_capacity_added": 0,
+        "host_room_door_support_and_slot_geometry_recovered": false,
+        "meaning": "Six source inspection instances represent these four designs; three closed case placements have whole actual foot support. Historical12×12m allocation and8.25m deck allowance do not prove local interior/height.",
+        "evidence": [
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_arrangement_review.json",
+          "qa/batch18/independent_visual_review.json"
+        ]
+      },
+      "existing_independent_evidence": [
+        "qa/batch18/independent_display_geometry_AST-RTL-001.json",
+        "qa/batch18/independent_export_AST-RTL-001.json",
+        "qa/batch18/independent_corner_comparison_AST-RTL-001.json",
+        "qa/batch18/rebuild_review/rebuild_retail_display_r02.json",
+        "qa/batch18/independent_programme_review.json",
+        "qa/batch18/independent_display_geometry_review.json",
+        "qa/batch18/work_review_summary.json",
+        "qa/batch18/independent_finish_resolution.json",
+        "qa/batch18/independent_source_native_corner_comparison.json",
+        "qa/batch18/independent_arrangement_review.json",
+        "qa/batch18/independent_visual_review.json",
+        "qa/batch18/independent_preservation_report.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch18/independent_interface_coverage_map.json#/assets/0",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-RTL-002",
+      "family": "retail_display",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/retail_display/source/AST-RTL-002.blend",
+          "sha256": "459db78cf41a4b330132ac71148498b4942290951ce0df0b4a515c5a75e02774",
+          "bytes": 825696
+        },
+        "export": {
+          "path": "assets/retail_display/exports/AST-RTL-002.glb",
+          "sha256": "03b435b05885bb27d56672311c98c6bdc8bc85b43e8b547b1c5bf9454387bd25",
+          "bytes": 73336
+        },
+        "manifest": {
+          "path": "assets/retail_display/AST-RTL-002.manifest.json",
+          "sha256": "4cde4ccba4ca8d9b6c98f4f34fa95dc28c63c45ccf20f1ff75506765af3d2bb6",
+          "bytes": 21062
+        }
+      },
+      "units": {
+        "status": "explicit_source_and_exchange_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/retail_display/AST-RTL-002.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "actual_source_and_native_root_checked",
+        "meaning": "Floor/source design datum; physical support surfaces, proposed installation contacts and movable ownership are separately named",
+        "actual_native_root_nodes": [
+          {
+            "index": 11,
+            "name": "AST-RTL-002",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-002.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "actual_source_geometry_native_hierarchy_marker_and_attribute_correspondence_checked",
+        "source": "Blender XYZ Z-up, front−Y",
+        "exchange": "native GLB Y-up",
+        "conversion": "(x,y,z)->(x,z,−y)",
+        "proposed_R070_source_to_ship": "(78−sourceY,52.5+sourceZ,236−sourceX)",
+        "proper_R070_rotation_determinant": 1,
+        "rule": "Resolve native transforms once; no reflected lateral planning axis or second basis conversion",
+        "evidence": [
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_display_geometry_AST-RTL-002.json",
+          "qa/batch18/independent_export_AST-RTL-002.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "actual_physical_surface_normal_and_support_witnesses_checked",
+        "meaning": "Named physical points, opposed joins and full useful support polygons agree with actual source/native surfaces; host support, anchorage and interfaces remain proposals",
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-002.json"
+        ],
+        "omission_assessment": "No actual R070 wall, door aperture/pocket/head, local ceiling/service/support or authored activity slot is inferred"
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "physical_and_nonphysical_roles_distinguished",
+        "meaning": "Two different supported display levels with coherent faceted ends and grounded plinth, plus real front retrieval pocket. No goods inventory, visitor capacity or universal reach is assigned.",
+        "declared_marker_count": 6,
+        "support_patch_count": 3,
+        "whole_shaped_profile_checked": true,
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-002.json",
+          "qa/batch18/independent_export_AST-RTL-002.json",
+          "qa/batch18/independent_corner_comparison_AST-RTL-002.json",
+          "qa/batch18/rebuild_review/rebuild_retail_display_r02.json",
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_display_geometry_review.json",
+          "qa/batch18/work_review_summary.json",
+          "qa/batch18/independent_finish_resolution.json",
+          "qa/batch18/independent_source_native_corner_comparison.json",
+          "qa/batch18/independent_arrangement_review.json",
+          "qa/batch18/independent_visual_review.json",
+          "qa/batch18/independent_preservation_report.json"
+        ],
+        "limits": "Geometry only; no strength, stability, load, material safety, grip/reach/species, cart or operational acceptance"
+      },
+      "motion_and_hierarchy": {
+        "status": "fixed_static_component_no_unnecessary_motion",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "declared_derivative_states": [],
+        "meaning": "Fixed supported shelving/work/display form; no opening animation, controller or runtime mechanism",
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-002.json",
+          "assets/retail_display/AST-RTL-002.manifest.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "independent_fresh_exact_original_input_reconstruction_passed",
+        "actual_material_roles": [
+          "champagne_metal",
+          "dark_rubber",
+          "ivory_enamel",
+          "retail_terracotta_enamel",
+          "warm_walnut"
+        ],
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/retail_display/source/build_retail_display.py",
+            "sha256": "99cc729a34cc7ec42485faaedb249418e0cc8e8ad5c32296a022b8c879a70200",
+            "bytes": 22583
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/retail_display/source/build_retail_display.py",
+            "sha256": "99cc729a34cc7ec42485faaedb249418e0cc8e8ad5c32296a022b8c879a70200",
+            "bytes": 22583
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/retail/draw_textures.py",
+            "sha256": "0eda2b9e861c49366504906ca71313381ac23b5356abeef96dbc4d7c79c17ee9",
+            "bytes": 1633
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          },
+          {
+            "path": "standards/retail_materials.py",
+            "sha256": "27d3ba74b215555c3e4c310aaafe5afcf26897600f345d3c6077bfe1999b7b62",
+            "bytes": 1793
+          }
+        ],
+        "original_input_count": 13,
+        "all_helper_loaded_common_roles_included": true,
+        "new_enamel_recreated_from_original_script": true,
+        "generated_collision_selection_is_separate_stage2": true,
+        "evidence": [
+          "qa/batch18/rebuild_review/rebuild_retail_display_r02.json",
+          "qa/batch18/rebuild_review/STAGE2_ROLE_REVIEW.json"
+        ],
+        "limits": "Source-only stage begins without new outputs or QA seeds; original common palette is copied as unchanged input. Python/native-image read tracing is not a complete OS syscall trace. Blender/Python execution environment remains required."
+      },
+      "uv_and_surface_policy": {
+        "status": "actual_native_split_normals_position_uv_and_materials_checked",
+        "policy": "None: authored per-face metric UVs are carried unchanged into grouped evaluated export",
+        "source_export_texture_bytes_equal": true,
+        "source_export_surface_area_and_volume_equivalent": true,
+        "evidence": [
+          "qa/batch18/independent_corner_comparison_AST-RTL-002.json",
+          "qa/batch18/independent_export_AST-RTL-002.json"
+        ]
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 256,
+        "mesh_nodes": 5,
+        "primitives": 5,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 73336,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 5,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch18/independent_export_AST-RTL-002.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_detailed_and_optional_body_roles_checked",
+        "shape_count": 12,
+        "optional_body_shape_count": 11,
+        "candidate_binding": {
+          "path": "assets/retail_display/actor_proxies/body_collision_subset.json",
+          "sha256": "d631d352ff159660aa0021698dc33b00d659b3b2c1d8080c9b1943bd0f5566f8",
+          "bytes": 56918
+        },
+        "candidate_json_pointer": "/assets/AST-RTL-002/shapes",
+        "detailed_binding": {
+          "path": "assets/retail_display/collision_proposals.json",
+          "sha256": "6d32d79ee063b92c95aaf2174a428ac1942d37dd848afe523dfefde15bbd736e",
+          "bytes": 84309
+        },
+        "maximum_outward_shallow_finish_approximation_m": 0,
+        "maximum_omitted_fine_detail_distance_m": 0.005,
+        "meaning": "Optional11-shape source-authored body;5mm ornamental metal datum omitted; primary support and retrieval shapes retained",
+        "limits": "Distinguish material thickness, approximation fill and omitted-detail distance. Work hulls retain original semantic geometry before small editable edge easing; approximation and all useful voids independently checked. Counts are not measured engine cost.",
+        "evidence": [
+          "qa/batch18/independent_display_geometry_AST-RTL-002.json",
+          "qa/batch18/rebuild_review/STAGE2_ROLE_REVIEW.json"
+        ]
+      },
+      "reference_and_arrangement_scope": {
+        "status": "bounded_source_proposal",
+        "historical_candidate": "R070 Kind Curios /070",
+        "new_design_count": 1,
+        "registered_places_or_capacity_added": 0,
+        "host_room_door_support_and_slot_geometry_recovered": false,
+        "meaning": "Six source inspection instances represent these four designs; three closed case placements have whole actual foot support. Historical12×12m allocation and8.25m deck allowance do not prove local interior/height.",
+        "evidence": [
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_arrangement_review.json",
+          "qa/batch18/independent_visual_review.json"
+        ]
+      },
+      "existing_independent_evidence": [
+        "qa/batch18/independent_display_geometry_AST-RTL-002.json",
+        "qa/batch18/independent_export_AST-RTL-002.json",
+        "qa/batch18/independent_corner_comparison_AST-RTL-002.json",
+        "qa/batch18/rebuild_review/rebuild_retail_display_r02.json",
+        "qa/batch18/independent_programme_review.json",
+        "qa/batch18/independent_display_geometry_review.json",
+        "qa/batch18/work_review_summary.json",
+        "qa/batch18/independent_finish_resolution.json",
+        "qa/batch18/independent_source_native_corner_comparison.json",
+        "qa/batch18/independent_arrangement_review.json",
+        "qa/batch18/independent_visual_review.json",
+        "qa/batch18/independent_preservation_report.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch18/independent_interface_coverage_map.json#/assets/1",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-RTL-003",
+      "family": "retail_work",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/retail_work/source/AST-RTL-003.blend",
+          "sha256": "2b7f4fe60c1dd463be0550a99eea9b29ebfb3592c8c42dfe3d6a0dec965bba87",
+          "bytes": 220605
+        },
+        "export": {
+          "path": "assets/retail_work/exports/AST-RTL-003.glb",
+          "sha256": "9915377c00afe2fd180f53e736d5c658a0591c6d889a1b722345e43fe61606d8",
+          "bytes": 107992
+        },
+        "manifest": {
+          "path": "assets/retail_work/AST-RTL-003.manifest.json",
+          "sha256": "d4a22fca5afa7217f8b5765f7e01eb188357abafed15d375a64d758e72a1ac8d",
+          "bytes": 32949
+        }
+      },
+      "units": {
+        "status": "explicit_source_and_exchange_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/retail_work/AST-RTL-003.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "actual_source_and_native_root_checked",
+        "meaning": "Floor/source design datum; physical support surfaces, proposed installation contacts and movable ownership are separately named",
+        "actual_native_root_nodes": [
+          {
+            "index": 16,
+            "name": "AST-RTL-003",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-003.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "actual_source_geometry_native_hierarchy_marker_and_attribute_correspondence_checked",
+        "source": "Blender XYZ Z-up, front−Y",
+        "exchange": "native GLB Y-up",
+        "conversion": "(x,y,z)->(x,z,−y)",
+        "proposed_R070_source_to_ship": "(78−sourceY,52.5+sourceZ,236−sourceX)",
+        "proper_R070_rotation_determinant": 1,
+        "rule": "Resolve native transforms once; no reflected lateral planning axis or second basis conversion",
+        "evidence": [
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/work_review_AST-RTL-003.json",
+          "qa/batch18/independent_export_AST-RTL-003.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "actual_physical_surface_normal_and_support_witnesses_checked",
+        "meaning": "Named physical points, opposed joins and full useful support polygons agree with actual source/native surfaces; host support, anchorage and interfaces remain proposals",
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-003.json"
+        ],
+        "omission_assessment": "No actual R070 wall, door aperture/pocket/head, local ceiling/service/support or authored activity slot is inferred"
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "physical_and_nonphysical_roles_distinguished",
+        "meaning": "Raised public parcel rest, separate clear wrapping top, rear open stock shelves and original inactive identity/control face. No register, payment, prices, wallet, assigned operator or transaction is implemented.",
+        "declared_marker_count": 8,
+        "support_patch_count": 5,
+        "whole_shaped_profile_checked": true,
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-003.json",
+          "qa/batch18/independent_export_AST-RTL-003.json",
+          "qa/batch18/independent_corner_comparison_AST-RTL-003.json",
+          "qa/batch18/rebuild_review/rebuild_retail_work_r05.json",
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_display_geometry_review.json",
+          "qa/batch18/work_review_summary.json",
+          "qa/batch18/independent_finish_resolution.json",
+          "qa/batch18/independent_source_native_corner_comparison.json",
+          "qa/batch18/independent_arrangement_review.json",
+          "qa/batch18/independent_visual_review.json",
+          "qa/batch18/independent_preservation_report.json"
+        ],
+        "limits": "Geometry only; no strength, stability, load, material safety, grip/reach/species, cart or operational acceptance"
+      },
+      "motion_and_hierarchy": {
+        "status": "fixed_static_component_no_unnecessary_motion",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "declared_derivative_states": [],
+        "meaning": "Fixed supported shelving/work/display form; no opening animation, controller or runtime mechanism",
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-003.json",
+          "assets/retail_work/AST-RTL-003.manifest.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "independent_fresh_exact_original_input_reconstruction_passed",
+        "actual_material_roles": [
+          "champagne_metal",
+          "dark_rubber",
+          "ivory_enamel",
+          "retail_terracotta_enamel",
+          "warm_walnut"
+        ],
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/retail_work/source/build_retail_work.py",
+            "sha256": "381f4787796f0e3169be6f08c43f515154c4a6c5c78f474e2ba5b9db7934d661",
+            "bytes": 28281
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/retail_work/source/build_retail_work.py",
+            "sha256": "381f4787796f0e3169be6f08c43f515154c4a6c5c78f474e2ba5b9db7934d661",
+            "bytes": 28281
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/retail/draw_textures.py",
+            "sha256": "0eda2b9e861c49366504906ca71313381ac23b5356abeef96dbc4d7c79c17ee9",
+            "bytes": 1633
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          },
+          {
+            "path": "standards/retail_materials.py",
+            "sha256": "27d3ba74b215555c3e4c310aaafe5afcf26897600f345d3c6077bfe1999b7b62",
+            "bytes": 1793
+          }
+        ],
+        "original_input_count": 13,
+        "all_helper_loaded_common_roles_included": true,
+        "new_enamel_recreated_from_original_script": true,
+        "generated_collision_selection_is_separate_stage2": true,
+        "evidence": [
+          "qa/batch18/rebuild_review/rebuild_retail_work_r05.json",
+          "qa/batch18/rebuild_review/STAGE2_ROLE_REVIEW.json"
+        ],
+        "limits": "Source-only stage begins without new outputs or QA seeds; original common palette is copied as unchanged input. Python/native-image read tracing is not a complete OS syscall trace. Blender/Python execution environment remains required."
+      },
+      "uv_and_surface_policy": {
+        "status": "actual_native_split_normals_position_uv_and_materials_checked",
+        "policy": {
+          "editable_source": "Metric projection on raw semantic faces before edge modifiers; modifier-created UVs remain interpolated in the editable source",
+          "evaluated_export": "Reproject each evaluated face using its dominant absolute normal axis; omit that axis and divide the other two source-local coordinates by unchanged material meters_per_tile_uv; then group by ownership/material",
+          "export_reprojects_after_modifiers": true,
+          "consequence": "Bevel-face native UVs can differ from direct modifier-interpolated source UVs. Export normals and geometry are evaluated source values; independent expected-export corner comparison uses this declared projection."
+        },
+        "source_export_texture_bytes_equal": true,
+        "source_export_surface_area_and_volume_equivalent": true,
+        "evidence": [
+          "qa/batch18/independent_corner_comparison_AST-RTL-003.json",
+          "qa/batch18/independent_export_AST-RTL-003.json"
+        ]
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 696,
+        "mesh_nodes": 5,
+        "primitives": 5,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 107992,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 5,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch18/independent_export_AST-RTL-003.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_detailed_and_optional_body_roles_checked",
+        "shape_count": 26,
+        "optional_body_shape_count": 15,
+        "candidate_binding": {
+          "path": "assets/retail_work/collision_proposals.json",
+          "sha256": "d68300ca2336dcb5b9fa9e764b1603c4688246aac9e0de98fd7ab893d299ee06",
+          "bytes": 158012
+        },
+        "candidate_json_pointer": "/AST-RTL-003/optional_body_candidate",
+        "detailed_binding": {
+          "path": "assets/retail_work/collision_proposals.json",
+          "sha256": "d68300ca2336dcb5b9fa9e764b1603c4688246aac9e0de98fd7ab893d299ee06",
+          "bytes": 158012
+        },
+        "maximum_outward_shallow_finish_approximation_m": 0,
+        "maximum_omitted_fine_detail_distance_m": 0.019,
+        "meaning": "Literal subset of detailed semantic hulls; structural, support, grip and useful openings retained; fine identity/controls or external ribs omitted with independent whole-part distance bound",
+        "limits": "Distinguish material thickness, approximation fill and omitted-detail distance. Work hulls retain original semantic geometry before small editable edge easing; approximation and all useful voids independently checked. Counts are not measured engine cost.",
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-003.json",
+          "qa/batch18/rebuild_review/STAGE2_ROLE_REVIEW.json"
+        ]
+      },
+      "reference_and_arrangement_scope": {
+        "status": "bounded_source_proposal",
+        "historical_candidate": "R070 Kind Curios /070",
+        "new_design_count": 1,
+        "registered_places_or_capacity_added": 0,
+        "host_room_door_support_and_slot_geometry_recovered": false,
+        "meaning": "Six source inspection instances represent these four designs; three closed case placements have whole actual foot support. Historical12×12m allocation and8.25m deck allowance do not prove local interior/height.",
+        "evidence": [
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_arrangement_review.json",
+          "qa/batch18/independent_visual_review.json"
+        ]
+      },
+      "existing_independent_evidence": [
+        "qa/batch18/work_review_AST-RTL-003.json",
+        "qa/batch18/independent_export_AST-RTL-003.json",
+        "qa/batch18/independent_corner_comparison_AST-RTL-003.json",
+        "qa/batch18/rebuild_review/rebuild_retail_work_r05.json",
+        "qa/batch18/independent_programme_review.json",
+        "qa/batch18/independent_display_geometry_review.json",
+        "qa/batch18/work_review_summary.json",
+        "qa/batch18/independent_finish_resolution.json",
+        "qa/batch18/independent_source_native_corner_comparison.json",
+        "qa/batch18/independent_arrangement_review.json",
+        "qa/batch18/independent_visual_review.json",
+        "qa/batch18/independent_preservation_report.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch18/independent_interface_coverage_map.json#/assets/2",
+      "engine_adopted_instances": 0
+    },
+    {
+      "catalogue_id": "AST-RTL-004",
+      "family": "retail_work",
+      "source_export_manifest_bindings": {
+        "source": {
+          "path": "assets/retail_work/source/AST-RTL-004.blend",
+          "sha256": "561edd3364b277f770ee77e91a1b5ed20aaf39341d400f5c5810ce2c1cdc6e51",
+          "bytes": 227436
+        },
+        "export": {
+          "path": "assets/retail_work/exports/AST-RTL-004.glb",
+          "sha256": "4d68339331c0c55ed42e787b012af005c65afaae4df93f7dafa14bdf1aee807a",
+          "bytes": 138556
+        },
+        "manifest": {
+          "path": "assets/retail_work/AST-RTL-004.manifest.json",
+          "sha256": "d605067c5d5b2462883dcae2396aa90652eb4ff7ecc4924415c2c56e988c344c",
+          "bytes": 54210
+        }
+      },
+      "units": {
+        "status": "explicit_source_and_exchange_contract",
+        "value": "metres",
+        "evidence": [
+          "standards/COORDINATE_CONTRACT.md",
+          "assets/retail_work/AST-RTL-004.manifest.json"
+        ]
+      },
+      "datum_and_pivot": {
+        "status": "actual_source_and_native_root_checked",
+        "meaning": "Floor/source design datum; physical support surfaces, proposed installation contacts and movable ownership are separately named",
+        "actual_native_root_nodes": [
+          {
+            "index": 22,
+            "name": "AST-RTL-004",
+            "world_matrix_gltf_yup": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-004.json"
+        ]
+      },
+      "source_and_native_frames": {
+        "status": "actual_source_geometry_native_hierarchy_marker_and_attribute_correspondence_checked",
+        "source": "Blender XYZ Z-up, front−Y",
+        "exchange": "native GLB Y-up",
+        "conversion": "(x,y,z)->(x,z,−y)",
+        "proposed_R070_source_to_ship": "(78−sourceY,52.5+sourceZ,236−sourceX)",
+        "proper_R070_rotation_determinant": 1,
+        "rule": "Resolve native transforms once; no reflected lateral planning axis or second basis conversion",
+        "evidence": [
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/work_review_AST-RTL-004.json",
+          "qa/batch18/independent_export_AST-RTL-004.json"
+        ]
+      },
+      "connections_and_normals": {
+        "status": "actual_physical_surface_normal_and_support_witnesses_checked",
+        "meaning": "Named physical points, opposed joins and full useful support polygons agree with actual source/native surfaces; host support, anchorage and interfaces remain proposals",
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-004.json"
+        ],
+        "omission_assessment": "No actual R070 wall, door aperture/pocket/head, local ceiling/service/support or authored activity slot is inferred"
+      },
+      "physical_contact_pose_and_origin": {
+        "status": "physical_and_nonphysical_roles_distinguished",
+        "meaning": "One reusable faceted goods container with whole nested tray, retained support bearings and fully detached lid/handling states. A parked lid rests on its locator; the lifted carrier is explicitly externally held. No contents, safe materials, load, operating latch or biological compatibility is claimed.",
+        "declared_marker_count": 9,
+        "support_patch_count": 3,
+        "whole_shaped_profile_checked": true,
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-004.json",
+          "qa/batch18/independent_export_AST-RTL-004.json",
+          "qa/batch18/independent_corner_comparison_AST-RTL-004.json",
+          "qa/batch18/rebuild_review/rebuild_retail_work_r05.json",
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_display_geometry_review.json",
+          "qa/batch18/work_review_summary.json",
+          "qa/batch18/independent_finish_resolution.json",
+          "qa/batch18/independent_source_native_corner_comparison.json",
+          "qa/batch18/independent_arrangement_review.json",
+          "qa/batch18/independent_visual_review.json",
+          "qa/batch18/independent_preservation_report.json"
+        ],
+        "limits": "Geometry only; no strength, stability, load, material safety, grip/reach/species, cart or operational acceptance"
+      },
+      "motion_and_hierarchy": {
+        "status": "continuous_detached_manual_handling_checked",
+        "native_animation_clips": 0,
+        "native_skin_count": 0,
+        "declared_derivative_states": [
+          {
+            "state": "open_lid_parked",
+            "export": "exports/AST-RTL-004__open_lid_parked.glb",
+            "glb_sha256": "881f17b8af81491a85f823aa97acb636b7e824f03355ba401205fe6baec5a94f",
+            "ownership_translations_source_m": {
+              "fixed": [
+                0,
+                0,
+                0
+              ],
+              "lid": [
+                0.58,
+                0,
+                -0.235
+              ],
+              "carrier": [
+                0,
+                0,
+                0
+              ]
+            },
+            "ownership_translations_gltf_m": {
+              "fixed": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "lid": [
+                0.58,
+                -0.235,
+                0.0
+              ],
+              "carrier": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "design_count": 0,
+            "support": "Lid locator parked at Z0; carrier remains seated"
+          },
+          {
+            "state": "handling",
+            "export": "exports/AST-RTL-004__handling.glb",
+            "glb_sha256": "b55d51f3d64f62954c2654ebd31e640cc71ed1b1795571f4633a105b4bdfd13a",
+            "ownership_translations_source_m": {
+              "fixed": [
+                0,
+                0,
+                0
+              ],
+              "lid": [
+                0.58,
+                0,
+                -0.235
+              ],
+              "carrier": [
+                0,
+                0,
+                0.3
+              ]
+            },
+            "ownership_translations_gltf_m": {
+              "fixed": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "lid": [
+                0.58,
+                -0.235,
+                0.0
+              ],
+              "carrier": [
+                0.0,
+                0.3,
+                0.0
+              ]
+            },
+            "design_count": 0,
+            "support": "Lid parked at Z0; carrier is explicitly detached and externally held, no physical support claim"
+          }
+        ],
+        "meaning": "Manual detached case parts have complete closed-to-clearance-to-park/lift translations and separate ownership; unsupported lifted tray is explicitly externally held",
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-004.json",
+          "assets/retail_work/AST-RTL-004.manifest.json"
+        ]
+      },
+      "dependencies_and_material_roles": {
+        "status": "independent_fresh_exact_original_input_reconstruction_passed",
+        "actual_material_roles": [
+          "champagne_metal",
+          "dark_rubber",
+          "ivory_enamel",
+          "retail_terracotta_enamel",
+          "warm_walnut"
+        ],
+        "runtime_external_uris": [],
+        "local_generator_files": [
+          {
+            "path": "assets/retail_work/source/build_retail_work.py",
+            "sha256": "381f4787796f0e3169be6f08c43f515154c4a6c5c78f474e2ba5b9db7934d661",
+            "bytes": 28281
+          }
+        ],
+        "full_generator_input_closure": [
+          {
+            "path": "assets/retail_work/source/build_retail_work.py",
+            "sha256": "381f4787796f0e3169be6f08c43f515154c4a6c5c78f474e2ba5b9db7934d661",
+            "bytes": 28281
+          },
+          {
+            "path": "materials/champagne_metal.png",
+            "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+            "bytes": 5262
+          },
+          {
+            "path": "materials/clay_weave.png",
+            "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+            "bytes": 16478
+          },
+          {
+            "path": "materials/dark_rubber.png",
+            "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+            "bytes": 1631
+          },
+          {
+            "path": "materials/ivory_enamel.png",
+            "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+            "bytes": 3464
+          },
+          {
+            "path": "materials/material_manifest.json",
+            "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+            "bytes": 3672
+          },
+          {
+            "path": "materials/oatmeal_weave.png",
+            "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+            "bytes": 16827
+          },
+          {
+            "path": "materials/retail/draw_textures.py",
+            "sha256": "0eda2b9e861c49366504906ca71313381ac23b5356abeef96dbc4d7c79c17ee9",
+            "bytes": 1633
+          },
+          {
+            "path": "materials/teal_weave.png",
+            "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+            "bytes": 16512
+          },
+          {
+            "path": "materials/warm_stone.png",
+            "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+            "bytes": 10430
+          },
+          {
+            "path": "materials/warm_walnut.png",
+            "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+            "bytes": 8275
+          },
+          {
+            "path": "standards/materials.py",
+            "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+            "bytes": 1584
+          },
+          {
+            "path": "standards/retail_materials.py",
+            "sha256": "27d3ba74b215555c3e4c310aaafe5afcf26897600f345d3c6077bfe1999b7b62",
+            "bytes": 1793
+          }
+        ],
+        "original_input_count": 13,
+        "all_helper_loaded_common_roles_included": true,
+        "new_enamel_recreated_from_original_script": true,
+        "generated_collision_selection_is_separate_stage2": true,
+        "evidence": [
+          "qa/batch18/rebuild_review/rebuild_retail_work_r05.json",
+          "qa/batch18/rebuild_review/STAGE2_ROLE_REVIEW.json"
+        ],
+        "limits": "Source-only stage begins without new outputs or QA seeds; original common palette is copied as unchanged input. Python/native-image read tracing is not a complete OS syscall trace. Blender/Python execution environment remains required."
+      },
+      "uv_and_surface_policy": {
+        "status": "actual_native_split_normals_position_uv_and_materials_checked",
+        "policy": {
+          "editable_source": "Metric projection on raw semantic faces before edge modifiers; modifier-created UVs remain interpolated in the editable source",
+          "evaluated_export": "Reproject each evaluated face using its dominant absolute normal axis; omit that axis and divide the other two source-local coordinates by unchanged material meters_per_tile_uv; then group by ownership/material",
+          "export_reprojects_after_modifiers": true,
+          "consequence": "Bevel-face native UVs can differ from direct modifier-interpolated source UVs. Export normals and geometry are evaluated source values; independent expected-export corner comparison uses this declared projection."
+        },
+        "source_export_texture_bytes_equal": true,
+        "source_export_surface_area_and_volume_equivalent": true,
+        "evidence": [
+          "qa/batch18/independent_corner_comparison_AST-RTL-004.json",
+          "qa/batch18/independent_export_AST-RTL-004.json"
+        ]
+      },
+      "material_and_geometry_cost": {
+        "status": "actual_file_counts_not_runtime_performance",
+        "triangles": 1056,
+        "mesh_nodes": 10,
+        "primitives": 10,
+        "materials": 5,
+        "embedded_texture_count": 5,
+        "glb_bytes": 138556,
+        "target_gpu_or_engine_accepted": false,
+        "double_sided_materials": 5,
+        "alpha_materials": 0,
+        "evidence": [
+          "qa/batch18/independent_export_AST-RTL-004.json"
+        ]
+      },
+      "collision_proposal_screen": {
+        "status": "unadopted_detailed_and_optional_body_roles_checked",
+        "shape_count": 48,
+        "optional_body_shape_count": 40,
+        "candidate_binding": {
+          "path": "assets/retail_work/collision_proposals.json",
+          "sha256": "d68300ca2336dcb5b9fa9e764b1603c4688246aac9e0de98fd7ab893d299ee06",
+          "bytes": 158012
+        },
+        "candidate_json_pointer": "/AST-RTL-004/optional_body_candidate",
+        "detailed_binding": {
+          "path": "assets/retail_work/collision_proposals.json",
+          "sha256": "d68300ca2336dcb5b9fa9e764b1603c4688246aac9e0de98fd7ab893d299ee06",
+          "bytes": 158012
+        },
+        "maximum_outward_shallow_finish_approximation_m": 0,
+        "maximum_omitted_fine_detail_distance_m": 0.006,
+        "meaning": "Literal subset of detailed semantic hulls; structural, support, grip and useful openings retained; fine identity/controls or external ribs omitted with independent whole-part distance bound",
+        "limits": "Distinguish material thickness, approximation fill and omitted-detail distance. Work hulls retain original semantic geometry before small editable edge easing; approximation and all useful voids independently checked. Counts are not measured engine cost.",
+        "evidence": [
+          "qa/batch18/work_review_AST-RTL-004.json",
+          "qa/batch18/rebuild_review/STAGE2_ROLE_REVIEW.json"
+        ]
+      },
+      "reference_and_arrangement_scope": {
+        "status": "bounded_source_proposal",
+        "historical_candidate": "R070 Kind Curios /070",
+        "new_design_count": 1,
+        "registered_places_or_capacity_added": 0,
+        "host_room_door_support_and_slot_geometry_recovered": false,
+        "meaning": "Six source inspection instances represent these four designs; three closed case placements have whole actual foot support. Historical12×12m allocation and8.25m deck allowance do not prove local interior/height.",
+        "evidence": [
+          "qa/batch18/independent_programme_review.json",
+          "qa/batch18/independent_arrangement_review.json",
+          "qa/batch18/independent_visual_review.json"
+        ]
+      },
+      "existing_independent_evidence": [
+        "qa/batch18/work_review_AST-RTL-004.json",
+        "qa/batch18/independent_export_AST-RTL-004.json",
+        "qa/batch18/independent_corner_comparison_AST-RTL-004.json",
+        "qa/batch18/rebuild_review/rebuild_retail_work_r05.json",
+        "qa/batch18/independent_programme_review.json",
+        "qa/batch18/independent_display_geometry_review.json",
+        "qa/batch18/work_review_summary.json",
+        "qa/batch18/independent_finish_resolution.json",
+        "qa/batch18/independent_source_native_corner_comparison.json",
+        "qa/batch18/independent_arrangement_review.json",
+        "qa/batch18/independent_visual_review.json",
+        "qa/batch18/independent_preservation_report.json"
+      ],
+      "findings": [],
+      "exact_record_inventory_pointer": "qa/batch18/independent_interface_coverage_map.json#/assets/3",
+      "engine_adopted_instances": 0
     }
   ],
   "scope": "Explicit existing component declarations and bounded offline interface evidence. Actual native hierarchy governs geometry; no engine, installed-room, actor, controller or operating behavior is implemented by this index.",
   "audit_source": {
-    "path": "qa/batch17/independent_interface_coverage_map.json",
-    "report": "qa/batch17/independent_review.md"
+    "path": "qa/batch18/independent_interface_coverage_map.json",
+    "report": "qa/batch18/independent_review.md"
   },
   "binding_validation": {
     "exact_asset_id_set": true,
-    "current_bound_files_checked": 255,
+    "current_bound_files_checked": 267,
     "all_files_current": true
   }
 }

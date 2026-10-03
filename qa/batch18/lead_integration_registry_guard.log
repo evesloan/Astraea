@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/check_lead_integration.py", line 20, in <module>
+    scan(review)
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/check_lead_integration.py", line 17, in scan
+    for v in value.values():scan(v)
+                            ^^^^^^^
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/check_lead_integration.py", line 19, in scan
+    for v in value:scan(v)
+                   ^^^^^^^
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/check_lead_integration.py", line 16, in scan
+    p=ROOT/value['path'];assert p.is_file() and sha(p)==value['sha256'],value['path'];records.append(value['path'])
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: standards/source_package_groups.json

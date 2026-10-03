@@ -1,0 +1,1164 @@
+{
+  "catalogue_id": "AST-RTL-002",
+  "name": "Offset stepped merchandise island",
+  "title": "Offset stepped merchandise island",
+  "unique_design": true,
+  "source": "source/AST-RTL-002.blend",
+  "export": "exports/AST-RTL-002.glb",
+  "generator": "source/build_retail_display.py",
+  "source_frame": "metres Blender XYZ Z-up front -Y",
+  "exchange_frame": "metres native GLB Y-up source(x,y,z)->(x,z,-y)",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "floor origin"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.949999988079071,
+      -0.699999988079071,
+      0.0
+    ],
+    "max_m": [
+      0.949999988079071,
+      0.699999988079071,
+      1.0499999523162842
+    ],
+    "dimensions_m": [
+      1.899999976158142,
+      1.399999976158142,
+      1.0499999523162842
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -0.949999988079071,
+      0.0,
+      -0.699999988079071
+    ],
+    "max_m": [
+      0.949999988079071,
+      1.0499999523162842,
+      0.699999988079071
+    ],
+    "dimensions_m": [
+      1.899999976158142,
+      1.0499999523162842,
+      1.399999976158142
+    ]
+  },
+  "dimensions_blender_xyz_m": [
+    1.899999976158142,
+    1.399999976158142,
+    1.0499999523162842
+  ],
+  "evaluated_source_triangles": 256,
+  "evaluated_triangles": 256,
+  "editable_semantic_parts": 12,
+  "semantic_parts": [
+    "inset_faceted_floor_sole",
+    "grounded_octagonal_pale_plinth",
+    "left_faceted_support_cheek",
+    "right_faceted_support_cheek",
+    "rear_display_support_core",
+    "front_retrieval_tactile_floor",
+    "front_retrieval_dark_back",
+    "broad_low_display_terrace",
+    "raised_tier_pale_foot",
+    "raised_terracotta_facet_support",
+    "offset_high_display_tablet",
+    "raised_front_recessed_metal_datum"
+  ],
+  "material_roles": [
+    "champagne_metal",
+    "dark_rubber",
+    "ivory_enamel",
+    "retail_terracotta_enamel",
+    "warm_walnut"
+  ],
+  "export_mesh_groups": 5,
+  "physical_and_proposal_markers": [
+    {
+      "name": "FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "physical_part": "inset_faceted_floor_sole",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0.0,
+        -1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "LOW_FRONT_DISPLAY_PATCH_CONTACT",
+      "kind": "physical_display_support",
+      "source_m": [
+        0.0,
+        -0.32499999999999996,
+        0.69
+      ],
+      "gltf_m": [
+        0.0,
+        0.69,
+        0.32499999999999996
+      ],
+      "physical_part": "broad_low_display_terrace",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "HIGH_DISPLAY_PATCH_CONTACT",
+      "kind": "physical_display_support",
+      "source_m": [
+        0.13999999999999999,
+        0.30000000000000004,
+        1.05
+      ],
+      "gltf_m": [
+        0.13999999999999999,
+        1.05,
+        -0.30000000000000004
+      ],
+      "physical_part": "offset_high_display_tablet",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "FRONT_RETRIEVAL_FLOOR_PATCH_CONTACT",
+      "kind": "physical_display_support",
+      "source_m": [
+        0.0,
+        -0.275,
+        0.225
+      ],
+      "gltf_m": [
+        0.0,
+        0.225,
+        0.275
+      ],
+      "physical_part": "front_retrieval_tactile_floor",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    },
+    {
+      "name": "FRONT_RETRIEVAL_BACK",
+      "kind": "physical_recess_back",
+      "source_m": [
+        0,
+        -0.03,
+        0.42
+      ],
+      "gltf_m": [
+        0.0,
+        0.42,
+        0.03
+      ],
+      "physical_part": "front_retrieval_dark_back",
+      "description": "",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "FLOOR_ORIGIN",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "physical_part": null,
+      "description": "Floor pivot inside grounded plinth"
+    }
+  ],
+  "joins": [
+    {
+      "name": "plinth_floor_sole",
+      "parts": [
+        "grounded_octagonal_pale_plinth",
+        "inset_faceted_floor_sole"
+      ],
+      "probe_source_m": [
+        0,
+        0,
+        0.035
+      ],
+      "probe_gltf_m": [
+        0.0,
+        0.035,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "left_to_plinth",
+      "parts": [
+        "left_faceted_support_cheek",
+        "grounded_octagonal_pale_plinth"
+      ],
+      "probe_source_m": [
+        -0.64,
+        0,
+        0.18
+      ],
+      "probe_gltf_m": [
+        -0.64,
+        0.18,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "right_to_plinth",
+      "parts": [
+        "right_faceted_support_cheek",
+        "grounded_octagonal_pale_plinth"
+      ],
+      "probe_source_m": [
+        0.64,
+        0,
+        0.18
+      ],
+      "probe_gltf_m": [
+        0.64,
+        0.18,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "rear_to_plinth",
+      "parts": [
+        "rear_display_support_core",
+        "grounded_octagonal_pale_plinth"
+      ],
+      "probe_source_m": [
+        0,
+        0.25,
+        0.18
+      ],
+      "probe_gltf_m": [
+        0.0,
+        0.18,
+        -0.25
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "floor_to_plinth",
+      "parts": [
+        "front_retrieval_tactile_floor",
+        "grounded_octagonal_pale_plinth"
+      ],
+      "probe_source_m": [
+        0,
+        -0.25,
+        0.18
+      ],
+      "probe_gltf_m": [
+        0.0,
+        0.18,
+        0.25
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "left_terrace_support",
+      "parts": [
+        "left_faceted_support_cheek",
+        "broad_low_display_terrace"
+      ],
+      "probe_source_m": [
+        -0.65,
+        0,
+        0.63
+      ],
+      "probe_gltf_m": [
+        -0.65,
+        0.63,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "right_terrace_support",
+      "parts": [
+        "right_faceted_support_cheek",
+        "broad_low_display_terrace"
+      ],
+      "probe_source_m": [
+        0.65,
+        0,
+        0.63
+      ],
+      "probe_gltf_m": [
+        0.65,
+        0.63,
+        -0.0
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "rear_terrace_support",
+      "parts": [
+        "rear_display_support_core",
+        "broad_low_display_terrace"
+      ],
+      "probe_source_m": [
+        0,
+        0.25,
+        0.63
+      ],
+      "probe_gltf_m": [
+        0.0,
+        0.63,
+        -0.25
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "raised_foot_low_terrace",
+      "parts": [
+        "raised_tier_pale_foot",
+        "broad_low_display_terrace"
+      ],
+      "probe_source_m": [
+        0.1,
+        0.3,
+        0.69
+      ],
+      "probe_gltf_m": [
+        0.1,
+        0.69,
+        -0.3
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "terracotta_support_foot",
+      "parts": [
+        "raised_terracotta_facet_support",
+        "raised_tier_pale_foot"
+      ],
+      "probe_source_m": [
+        0.1,
+        0.3,
+        0.73
+      ],
+      "probe_gltf_m": [
+        0.1,
+        0.73,
+        -0.3
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "high_tablet_support",
+      "parts": [
+        "offset_high_display_tablet",
+        "raised_terracotta_facet_support"
+      ],
+      "probe_source_m": [
+        0.1,
+        0.3,
+        0.99
+      ],
+      "probe_gltf_m": [
+        0.1,
+        0.99,
+        -0.3
+      ],
+      "kind": "boundary_contact"
+    },
+    {
+      "name": "step_datum_support",
+      "parts": [
+        "raised_front_recessed_metal_datum",
+        "raised_terracotta_facet_support"
+      ],
+      "probe_source_m": [
+        0.1,
+        0.035,
+        0.8235
+      ],
+      "probe_gltf_m": [
+        0.1,
+        0.8235,
+        -0.035
+      ],
+      "kind": "boundary_contact"
+    }
+  ],
+  "useful_voids": [
+    {
+      "name": "front_retrieval_pocket",
+      "min_source_m": [
+        -0.54,
+        -0.535,
+        0.23
+      ],
+      "max_source_m": [
+        0.54,
+        -0.035,
+        0.625
+      ],
+      "min_gltf_m": [
+        -0.54,
+        0.23,
+        0.035
+      ],
+      "max_gltf_m": [
+        0.54,
+        0.625,
+        0.535
+      ],
+      "purpose": "Actual lower front pocket preserved by detailed and body collision proposal",
+      "state": "fixed"
+    },
+    {
+      "name": "low_terrace_clear_volume",
+      "min_source_m": [
+        -0.7,
+        -0.57,
+        0.695
+      ],
+      "max_source_m": [
+        0.7,
+        -0.07,
+        1.2
+      ],
+      "min_gltf_m": [
+        -0.7,
+        0.695,
+        0.07
+      ],
+      "max_gltf_m": [
+        0.7,
+        1.2,
+        0.57
+      ],
+      "purpose": "True open volume above the low tier; no body/reach claim",
+      "state": "fixed"
+    },
+    {
+      "name": "high_terrace_clear_volume",
+      "min_source_m": [
+        -0.42,
+        0.07,
+        1.055
+      ],
+      "max_source_m": [
+        0.7,
+        0.53,
+        1.55
+      ],
+      "min_gltf_m": [
+        -0.42,
+        1.055,
+        -0.53
+      ],
+      "max_gltf_m": [
+        0.7,
+        1.55,
+        -0.07
+      ],
+      "purpose": "Open display volume over raised tablet, no stock content included",
+      "state": "fixed"
+    }
+  ],
+  "support_patches": [
+    {
+      "name": "low_front_display_patch",
+      "physical_part": "broad_low_display_terrace",
+      "polygon_source_m": [
+        [
+          -0.72,
+          -0.58,
+          0.69
+        ],
+        [
+          0.72,
+          -0.58,
+          0.69
+        ],
+        [
+          0.72,
+          -0.07,
+          0.69
+        ],
+        [
+          -0.72,
+          -0.07,
+          0.69
+        ]
+      ],
+      "polygon_gltf_m": [
+        [
+          -0.72,
+          0.69,
+          0.58
+        ],
+        [
+          0.72,
+          0.69,
+          0.58
+        ],
+        [
+          0.72,
+          0.69,
+          0.07
+        ],
+        [
+          -0.72,
+          0.69,
+          0.07
+        ]
+      ],
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ],
+      "purpose": "Broad low approach-facing terrace; container support must fit this exact patch",
+      "load_or_reach_claim": false
+    },
+    {
+      "name": "high_display_patch",
+      "physical_part": "offset_high_display_tablet",
+      "polygon_source_m": [
+        [
+          -0.42,
+          0.07,
+          1.05
+        ],
+        [
+          0.7,
+          0.07,
+          1.05
+        ],
+        [
+          0.7,
+          0.53,
+          1.05
+        ],
+        [
+          -0.42,
+          0.53,
+          1.05
+        ]
+      ],
+      "polygon_gltf_m": [
+        [
+          -0.42,
+          1.05,
+          -0.07
+        ],
+        [
+          0.7,
+          1.05,
+          -0.07
+        ],
+        [
+          0.7,
+          1.05,
+          -0.53
+        ],
+        [
+          -0.42,
+          1.05,
+          -0.53
+        ]
+      ],
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ],
+      "purpose": "Raised stepped display patch with lower circumferential retrieval edge",
+      "load_or_reach_claim": false
+    },
+    {
+      "name": "front_retrieval_floor_patch",
+      "physical_part": "front_retrieval_tactile_floor",
+      "polygon_source_m": [
+        [
+          -0.49,
+          -0.49,
+          0.225
+        ],
+        [
+          0.49,
+          -0.49,
+          0.225
+        ],
+        [
+          0.49,
+          -0.06,
+          0.225
+        ],
+        [
+          -0.49,
+          -0.06,
+          0.225
+        ]
+      ],
+      "polygon_gltf_m": [
+        [
+          -0.49,
+          0.225,
+          0.49
+        ],
+        [
+          0.49,
+          0.225,
+          0.49
+        ],
+        [
+          0.49,
+          0.225,
+          0.06
+        ],
+        [
+          -0.49,
+          0.225,
+          0.06
+        ]
+      ],
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ],
+      "purpose": "Open storage floor; no inventory or capacity claim",
+      "load_or_reach_claim": false
+    }
+  ],
+  "whole_profile_records": [
+    {
+      "part": "inset_faceted_floor_sole",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.6900000000000001,
+          -0.56
+        ],
+        [
+          0.6900000000000001,
+          -0.56
+        ],
+        [
+          0.81,
+          -0.44000000000000006
+        ],
+        [
+          0.81,
+          0.44000000000000006
+        ],
+        [
+          0.6900000000000001,
+          0.56
+        ],
+        [
+          -0.6900000000000001,
+          0.56
+        ],
+        [
+          -0.81,
+          0.44000000000000006
+        ],
+        [
+          -0.81,
+          -0.44000000000000006
+        ]
+      ],
+      "extrusion_range_m": [
+        0,
+        0.035
+      ]
+    },
+    {
+      "part": "grounded_octagonal_pale_plinth",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.72,
+          -0.61
+        ],
+        [
+          0.72,
+          -0.61
+        ],
+        [
+          0.86,
+          -0.47
+        ],
+        [
+          0.86,
+          0.47
+        ],
+        [
+          0.72,
+          0.61
+        ],
+        [
+          -0.72,
+          0.61
+        ],
+        [
+          -0.86,
+          0.47
+        ],
+        [
+          -0.86,
+          -0.47
+        ]
+      ],
+      "extrusion_range_m": [
+        0.035,
+        0.18
+      ]
+    },
+    {
+      "part": "left_faceted_support_cheek",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.78,
+          -0.46
+        ],
+        [
+          -0.68,
+          -0.56
+        ],
+        [
+          -0.55,
+          -0.56
+        ],
+        [
+          -0.55,
+          0.52
+        ],
+        [
+          -0.66,
+          0.52
+        ],
+        [
+          -0.78,
+          0.4
+        ]
+      ],
+      "extrusion_range_m": [
+        0.18,
+        0.63
+      ]
+    },
+    {
+      "part": "right_faceted_support_cheek",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          0.55,
+          -0.56
+        ],
+        [
+          0.68,
+          -0.56
+        ],
+        [
+          0.78,
+          -0.46
+        ],
+        [
+          0.78,
+          0.4
+        ],
+        [
+          0.66,
+          0.52
+        ],
+        [
+          0.55,
+          0.52
+        ]
+      ],
+      "extrusion_range_m": [
+        0.18,
+        0.63
+      ]
+    },
+    {
+      "part": "rear_display_support_core",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.55,
+          -0.015
+        ],
+        [
+          0.55,
+          -0.015
+        ],
+        [
+          0.55,
+          0.52
+        ],
+        [
+          -0.55,
+          0.52
+        ]
+      ],
+      "extrusion_range_m": [
+        0.18,
+        0.63
+      ]
+    },
+    {
+      "part": "front_retrieval_tactile_floor",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.55,
+          -0.54
+        ],
+        [
+          0.55,
+          -0.54
+        ],
+        [
+          0.55,
+          -0.015
+        ],
+        [
+          -0.55,
+          -0.015
+        ]
+      ],
+      "extrusion_range_m": [
+        0.18,
+        0.225
+      ]
+    },
+    {
+      "part": "front_retrieval_dark_back",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.55,
+          -0.03
+        ],
+        [
+          0.55,
+          -0.03
+        ],
+        [
+          0.55,
+          -0.015
+        ],
+        [
+          -0.55,
+          -0.015
+        ]
+      ],
+      "extrusion_range_m": [
+        0.225,
+        0.63
+      ]
+    },
+    {
+      "part": "broad_low_display_terrace",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.75,
+          -0.7
+        ],
+        [
+          0.75,
+          -0.7
+        ],
+        [
+          0.95,
+          -0.49999999999999994
+        ],
+        [
+          0.95,
+          0.49999999999999994
+        ],
+        [
+          0.75,
+          0.7
+        ],
+        [
+          -0.75,
+          0.7
+        ],
+        [
+          -0.95,
+          0.49999999999999994
+        ],
+        [
+          -0.95,
+          -0.49999999999999994
+        ]
+      ],
+      "extrusion_range_m": [
+        0.63,
+        0.69
+      ]
+    },
+    {
+      "part": "raised_tier_pale_foot",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.45999999999999996,
+          -0.005
+        ],
+        [
+          0.74,
+          -0.005
+        ],
+        [
+          0.85,
+          0.105
+        ],
+        [
+          0.85,
+          0.53
+        ],
+        [
+          0.74,
+          0.64
+        ],
+        [
+          -0.45999999999999996,
+          0.64
+        ],
+        [
+          -0.57,
+          0.53
+        ],
+        [
+          -0.57,
+          0.105
+        ]
+      ],
+      "extrusion_range_m": [
+        0.69,
+        0.73
+      ]
+    },
+    {
+      "part": "raised_terracotta_facet_support",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.42500000000000004,
+          0.035
+        ],
+        [
+          0.7050000000000001,
+          0.035
+        ],
+        [
+          0.81,
+          0.14
+        ],
+        [
+          0.81,
+          0.495
+        ],
+        [
+          0.7050000000000001,
+          0.6
+        ],
+        [
+          -0.42500000000000004,
+          0.6
+        ],
+        [
+          -0.53,
+          0.495
+        ],
+        [
+          -0.53,
+          0.14
+        ]
+      ],
+      "extrusion_range_m": [
+        0.73,
+        0.99
+      ]
+    },
+    {
+      "part": "offset_high_display_tablet",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.45999999999999996,
+          -0.025
+        ],
+        [
+          0.74,
+          -0.025
+        ],
+        [
+          0.87,
+          0.10500000000000001
+        ],
+        [
+          0.87,
+          0.53
+        ],
+        [
+          0.74,
+          0.66
+        ],
+        [
+          -0.45999999999999996,
+          0.66
+        ],
+        [
+          -0.59,
+          0.53
+        ],
+        [
+          -0.59,
+          0.10500000000000001
+        ]
+      ],
+      "extrusion_range_m": [
+        0.99,
+        1.05
+      ]
+    },
+    {
+      "part": "raised_front_recessed_metal_datum",
+      "profile_axis_source": 2,
+      "polygon_m": [
+        [
+          -0.38,
+          0.03
+        ],
+        [
+          0.66,
+          0.03
+        ],
+        [
+          0.66,
+          0.035
+        ],
+        [
+          -0.38,
+          0.035
+        ]
+      ],
+      "extrusion_range_m": [
+        0.815,
+        0.832
+      ]
+    }
+  ],
+  "mechanisms": [],
+  "state_derivatives": [],
+  "collision_proposal_file": "collision_proposals.json",
+  "body_candidate_file": "actor_proxies/body_collision_subset.json",
+  "marker_api_file": "marker_api.json",
+  "used_textures_packed": true,
+  "export_uv_repair": "None: authored per-face metric UVs are carried unchanged into grouped evaluated export",
+  "source_sha256": "459db78cf41a4b330132ac71148498b4942290951ce0df0b4a515c5a75e02774",
+  "glb_sha256": "03b435b05885bb27d56672311c98c6bdc8bc85b43e8b547b1c5bf9454387bd25",
+  "generator_sha256": "99cc729a34cc7ec42485faaedb249418e0cc8e8ad5c32296a022b8c879a70200",
+  "details": {
+    "levels_source_z_m": [
+      0.69,
+      1.05
+    ],
+    "appearance": "Faceted continuous low wood terrace, offset terracotta upper tier and grounded pale open-pocket pedestal",
+    "public_approach_source": "front -Y and side edges",
+    "mechanism": "None; fixed tiers and open retrieval pocket",
+    "mount": "Floor-supported proposal; no host anchorage or structural rating"
+  },
+  "limitations": [
+    "Proposed catalogue component only; R070 is a historical allocation, not a recovered finished shop",
+    "No actual host support, ceiling, door mechanism, activity slot, quantity, species fit, load, stability or operating certification",
+    "Optional detail/body collision proposals are not measured engine performance or runtime adoption"
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "scope": "Partial source-level display/work kit inside historical R070 outer allocation. Separate ordinary-height views show the actual authored bay, island and wrapping edge; no complete shop, host door or activity-slot placement is implied.",
+  "units": "metres",
+  "coordinate_contract": "Blender source XYZ Z-up, native GLB=(x,z,-y). Proper source-to-ship=(78-sourceY,52.5+sourceZ,236-sourceX); native yaw+90deg.",
+  "historical_candidate": "R070 Kind Curios /070",
+  "historical_allocation_source_xy_m": {
+    "x": [
+      -6,
+      6
+    ],
+    "y": [
+      0,
+      12
+    ]
+  },
+  "source_to_ship_determinant": 1,
+  "unique_designs": 4,
+  "display_instances": 6,
+  "source_context_cases": "Three reused closed AST-RTL-004 instances; parked-lid/handling states are not placed on these bounded display surfaces",
+  "registered_places_added": 0,
+  "body_cart_or_host_fit": false,
+  "items": [
+    {
+      "key": "wall_bay",
+      "asset_id": "AST-RTL-001",
+      "group": "retail",
+      "source_origin_m": [
+        -4.85,
+        3.5,
+        0
+      ],
+      "source_z_rotation_deg": 90,
+      "source_path": "assets/retail_display/source/AST-RTL-001.blend",
+      "manifest_path": "assets/retail_display/AST-RTL-001.manifest.json",
+      "variants": {
+        "closed": "assets/retail_display/exports/AST-RTL-001.glb"
+      }
+    },
+    {
+      "key": "island",
+      "asset_id": "AST-RTL-002",
+      "group": "retail",
+      "source_origin_m": [
+        3.2,
+        4.2,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/retail_display/source/AST-RTL-002.blend",
+      "manifest_path": "assets/retail_display/AST-RTL-002.manifest.json",
+      "variants": {
+        "closed": "assets/retail_display/exports/AST-RTL-002.glb"
+      }
+    },
+    {
+      "key": "workbench",
+      "asset_id": "AST-RTL-003",
+      "group": "retail",
+      "source_origin_m": [
+        3.2,
+        8.9,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/retail_work/source/AST-RTL-003.blend",
+      "manifest_path": "assets/retail_work/AST-RTL-003.manifest.json",
+      "variants": {
+        "closed": "assets/retail_work/exports/AST-RTL-003.glb"
+      }
+    },
+    {
+      "key": "bay_case",
+      "asset_id": "AST-RTL-004",
+      "group": "retail",
+      "source_origin_m": [
+        -4.79,
+        3.15,
+        0.95
+      ],
+      "source_z_rotation_deg": 90,
+      "source_path": "assets/retail_work/source/AST-RTL-004.blend",
+      "manifest_path": "assets/retail_work/AST-RTL-004.manifest.json",
+      "variants": {
+        "closed": "assets/retail_work/exports/AST-RTL-004.glb"
+      },
+      "support": {
+        "parent_key": "wall_bay",
+        "parent_state": "closed",
+        "parent_patch": "main_display_left_patch",
+        "child_patch": "CASE_FLOOR_PATCH"
+      }
+    },
+    {
+      "key": "island_case",
+      "asset_id": "AST-RTL-004",
+      "group": "retail",
+      "source_origin_m": [
+        3.25,
+        3.88,
+        0.69
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/retail_work/source/AST-RTL-004.blend",
+      "manifest_path": "assets/retail_work/AST-RTL-004.manifest.json",
+      "variants": {
+        "closed": "assets/retail_work/exports/AST-RTL-004.glb"
+      },
+      "support": {
+        "parent_key": "island",
+        "parent_state": "closed",
+        "parent_patch": "low_front_display_patch",
+        "child_patch": "CASE_FLOOR_PATCH"
+      }
+    },
+    {
+      "key": "bench_case",
+      "asset_id": "AST-RTL-004",
+      "group": "retail",
+      "source_origin_m": [
+        2.67,
+        8.85,
+        1.075
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/retail_work/source/AST-RTL-004.blend",
+      "manifest_path": "assets/retail_work/AST-RTL-004.manifest.json",
+      "variants": {
+        "closed": "assets/retail_work/exports/AST-RTL-004.glb"
+      },
+      "support": {
+        "parent_key": "workbench",
+        "parent_state": "closed",
+        "parent_patch": "GUEST_PARCEL_PATCH",
+        "child_patch": "CASE_FLOOR_PATCH"
+      }
+    }
+  ],
+  "proposed_empty_regions": [
+    {
+      "id": "arrival_band",
+      "group": "retail",
+      "min_source_m": [
+        -6,
+        0,
+        -0.001
+      ],
+      "max_source_m": [
+        6,
+        1.5,
+        10
+      ],
+      "status": "Proposed vertical empty inspection region; not actual route or door reservation"
+    },
+    {
+      "id": "central_test_strip",
+      "group": "retail",
+      "min_source_m": [
+        -1.2,
+        1.5,
+        -0.001
+      ],
+      "max_source_m": [
+        1.2,
+        11.5,
+        10
+      ],
+      "status": "Proposed vertical empty inspection region; not actual route or door reservation"
+    },
+    {
+      "id": "wall_browse_pad",
+      "group": "retail",
+      "min_source_m": [
+        -4.4,
+        1.8,
+        -0.001
+      ],
+      "max_source_m": [
+        -2.9,
+        5.2,
+        10
+      ],
+      "status": "Proposed vertical empty inspection region; not actual route or door reservation"
+    },
+    {
+      "id": "island_browse_pad",
+      "group": "retail",
+      "min_source_m": [
+        2.25,
+        2,
+        -0.001
+      ],
+      "max_source_m": [
+        4.15,
+        3.5,
+        10
+      ],
+      "status": "Proposed vertical empty inspection region; not actual route or door reservation"
+    },
+    {
+      "id": "public_parcel_pad",
+      "group": "retail",
+      "min_source_m": [
+        2.1,
+        7.05,
+        -0.001
+      ],
+      "max_source_m": [
+        4.3,
+        8.45,
+        10
+      ],
+      "status": "Proposed vertical empty inspection region; not actual route or door reservation"
+    },
+    {
+      "id": "staff_work_pad",
+      "group": "retail",
+      "min_source_m": [
+        2.1,
+        9.35,
+        -0.001
+      ],
+      "max_source_m": [
+        4.3,
+        10.85,
+        10
+      ],
+      "status": "Proposed vertical empty inspection region; not actual route or door reservation"
+    }
+  ],
+  "views": {
+    "entry_facing_bay": {
+      "source_eye_m": [
+        -1,
+        0.3,
+        1.63
+      ],
+      "source_target_m": [
+        -4.7,
+        3.5,
+        1.42
+      ],
+      "lens_mm": 22.5,
+      "states": {
+        "wall_bay": "closed",
+        "bay_case": "closed"
+      },
+      "lighting_origin_m": [
+        -4.85,
+        3.5,
+        0
+      ],
+      "purpose": "Threshold-side partial bay view showing the left reveal, nested canopy and supported goods case"
+    },
+    "island_browse": {
+      "source_eye_m": [
+        0.3,
+        2,
+        1.63
+      ],
+      "source_target_m": [
+        3.2,
+        4.2,
+        0.55
+      ],
+      "lens_mm": 34,
+      "states": {
+        "island": "closed",
+        "island_case": "closed"
+      },
+      "lighting_origin_m": [
+        3.2,
+        4.2,
+        0
+      ],
+      "purpose": "Useful stepped display and a single supported repeated container"
+    },
+    "public_wrapping_edge": {
+      "source_eye_m": [
+        0.5,
+        5.7,
+        1.63
+      ],
+      "source_target_m": [
+        3.2,
+        8.9,
+        0.67
+      ],
+      "lens_mm": 38,
+      "states": {
+        "workbench": "closed",
+        "bench_case": "closed"
+      },
+      "lighting_origin_m": [
+        3.2,
+        8.9,
+        0
+      ],
+      "purpose": "Raised guest parcel rest remains distinct from the clear wrapping work area"
+    },
+    "staff_wrapping_edge": {
+      "source_eye_m": [
+        0.5,
+        11.2,
+        1.63
+      ],
+      "source_target_m": [
+        3.2,
+        8.9,
+        0.68
+      ],
+      "lens_mm": 30,
+      "states": {
+        "workbench": "closed",
+        "bench_case": "closed"
+      },
+      "lighting_origin_m": [
+        3.2,
+        8.9,
+        0
+      ],
+      "purpose": "Staff stock and wrapping face from the proposed rear inspection pad"
+    }
+  },
+  "limits": [
+    "Historical outer containment is distinct from actual finished room polygon, door/pocket/head, support and authored-slot ownership",
+    "All pads are new adjustable QA proposals, not proven six-species or cart clearances",
+    "Only closed case geometry is placed; detached handling needs a separately validated working surface and operator",
+    "Neutral movable inspection light rigs do not establish actual retail lighting or engine appearance",
+    "No new store, assigned staff, payment, inventory or capacity is created"
+  ]
+}
