@@ -1,5 +1,5 @@
 from pathlib import Path
-import importlib.util,json,subprocess,tempfile,unittest,zipfile
+import importlib.util,json,subprocess,tempfile,unittest,zipfile,time,sys
 from unittest.mock import patch
 spec=importlib.util.spec_from_file_location('backup',Path(__file__).with_name('automatic_backup.py'));backup=importlib.util.module_from_spec(spec);spec.loader.exec_module(backup)
 
@@ -43,5 +43,36 @@ class Backups(unittest.TestCase):
         hook=self.root/'.git/hooks/post-commit';hook.write_text('# owner hook')
         with self.assertRaises(RuntimeError):backup.install_hooks(Path('/tmp/config.json'),{'projects':[self.project]})
         self.assertEqual(hook.read_text(),'# owner hook')
+
+
+    def test_live_hook_and_periodic_wip_trigger_with_fake_transport(self):
+        helper=Path(self.temp.name)/'fake_helper.py'
+        helper.write_text("import json,sys\nr=json.load(sys.stdin);print(json.dumps({'results':[{'local_path':x['local_path'],'status':'succeeded','library_file_id':'TEST_ONLY','local_metadata_applied':True} for x in r['uploads']]}))\n")
+        config={'state':str(self.output/'state.json'),'output':str(self.output),'upload_helper':str(helper),'projects':[self.project],'wip_interval_seconds':.3,'poll_seconds':.05}
+        config_path=Path(self.temp.name)/'config.json';config_path.write_text(json.dumps(config))
+        backup.install_hooks(config_path,config)
+        subprocess.run(['git','-C',str(self.root),'-c','user.name=Test','-c','user.email=test@localhost','commit','--allow-empty','-qm','hook trigger'],check=True)
+        self.assertTrue((self.output/'checkpoint.request').exists())
+        runner=subprocess.Popen([sys.executable,str(Path(backup.__file__)),'watch','--config',str(config_path)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        try:
+            deadline=time.monotonic()+5;first=None
+            while time.monotonic()<deadline:
+                if Path(config['state']).exists():
+                    first=json.loads(Path(config['state']).read_text()).get('projects',{}).get('Test')
+                    if first:break
+                time.sleep(.05)
+            self.assertIsNotNone(first,'Post-commit request must cause retention')
+            self.assertEqual(first['head'],backup.inventory(self.project)['head'])
+            (self.root/'project.godot').write_text('uncommitted edit')
+            deadline=time.monotonic()+5;second=None
+            while time.monotonic()<deadline:
+                second=json.loads(Path(config['state']).read_text()).get('projects',{}).get('Test')
+                if second and second['signature']!=first['signature']:break
+                time.sleep(.05)
+            self.assertNotEqual(first['signature'],second['signature'])
+            self.assertTrue(second['work_in_progress'])
+        finally:
+            (self.output/'STOP').touch();runner.wait(timeout=3)
+        self.assertEqual(runner.returncode,0)
 
 if __name__=='__main__':unittest.main()
