@@ -13,3 +13,8 @@ Not complete: final hull, complete room/program allocation, finished circulation
 Next: coordinate major district volumes, programs and circulation against the master and blueprints, then develop connected authored spaces and their Blender kits together. Keep deck datums without flattening all spaces into full floor plates.
 
 Backup: baseline is hash-verified on Workshop. Checkpoint02 is retained in Library and clean-restore tested. Automatic Workshop transfer remains unresolved. Unity changeset3 is preserved separately. This checkpoint needs its own archive verification and independent retention.
+
+## Subsequent section work, 10:06 UTC
+D07/D08 vector footprints were verified against numbered atlas markers and page renders. A connected D08 Gentle Waters / D09 Living Gifts / D10 Vesper structural section now occupies their aligned allocations, with different opening contours, a shallow basin bottom, and two original editable Blender switchback stairs. Actual character-capsule traversal from D08 to D10 passed with imported glass guard collision enabled. This does not certify cart access, a lift, water interaction, final capacities or completed interiors. A draft profiled column with integrated local fixture markers supports the section. Gameplay-height capture shows a clearly unfinished structural volume needing walls, furnishings, lighting balance, destinations and finished edges. There is no completed waterpark.
+
+The whole-ship programme continuity ledger now includes161 historical directory destinations across18decks, plus880 anonymous upper guest envelopes and100 shop envelopes. The remaining120 D04 guest envelopes are not yet extracted. These records preserve programme evidence and do not constitute finished rooms or recovered persistent IDs.

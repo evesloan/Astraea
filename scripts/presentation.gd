@@ -65,6 +65,16 @@ func _ready() -> void:
 			actor.camera.rotation.x = actor.pitch
 			await get_tree().create_timer(1.0).timeout
 			await _capture("d06_")
+		if "--capture-aquatic" in OS.get_cmdline_user_args():
+			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
+			actor.spawn_position = Vector3(13,44.1,218)
+			actor.position = actor.spawn_position
+			actor.velocity = Vector3.ZERO
+			actor.rotation.y = -PI/2
+			actor.pitch = 0.18
+			actor.camera.rotation.x = actor.pitch
+			await get_tree().create_timer(1.0).timeout
+			await _capture("aquatic_")
 		get_tree().quit()
 
 func _resize() -> void:

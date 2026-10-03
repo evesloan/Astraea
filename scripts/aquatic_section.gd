@@ -1,0 +1,64 @@
+extends RefCounted
+# Permanent connected section; no completed waterpark or swimming claim.
+static func build(parent: Node3D, ship: Node3D) -> void:
+	var root := Node3D.new()
+	root.name = "GentleWaters_LivingGifts_Vesper_Section_WIP"
+	parent.add_child(root)
+	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/aquatic_section.json"))
+	var basin: Dictionary = data.basin
+	var boundary: Array = basin.boundary
+	var vertices: Array[Vector3] = []
+	for index in range(boundary.size()):
+		var a: Array = boundary[index]
+		var b: Array = boundary[(index+1)%boundary.size()]
+		vertices.append_array([Vector3(a[0],basin.lip_y,a[1]),Vector3(b[0],basin.lip_y,b[1]),Vector3(b[0],basin.bottom_y,b[1]),Vector3(a[0],basin.lip_y,a[1]),Vector3(b[0],basin.bottom_y,b[1]),Vector3(a[0],basin.bottom_y,a[1])])
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for v in vertices:
+		st.set_uv(Vector2(v.x,v.z)*0.5)
+		st.add_vertex(v)
+	st.generate_normals()
+	st.set_material(ship.stone)
+	var wall := MeshInstance3D.new()
+	wall.name = "BasinRetainingWall"
+	wall.mesh = st.commit()
+	root.add_child(wall)
+	wall.create_trimesh_collision()
+	for base_y in [44.0,52.5]:
+		for location in [Vector2(20,186),Vector2(50,244),Vector2(12,243)]:
+			var column := ship.model(root,"AST-STR-001.glb","BearingColumn",Vector3(location.x,base_y,location.y)) as Node3D
+			for index in range(4):
+				var marker := column.find_child("DATUM_light_"+str(index),true,false) as Node3D
+				assert(marker != null)
+				var light := SpotLight3D.new()
+				light.name = "ColumnDownlight"
+				column.add_child(light)
+				light.global_position = marker.global_position
+				light.rotation.x = -PI/2
+				light.spot_angle = 62
+				light.spot_range = 12
+				light.light_color = Color(1.0,0.91,0.78)
+				light.light_energy = 0.45
+				light.shadow_enabled = index == 0
+	for base_y in [44.0,52.5]:
+		var stairs := (load("res://assets/models/AST-CIR-001.glb") as PackedScene).instantiate()
+		stairs.name = "Switchback_"+str(base_y)
+		root.add_child(stairs)
+		stairs.position = Vector3(10,base_y,200.5)
+		for part in stairs.find_children("CIR_Guard*","MeshInstance3D",true,false):
+			part.create_trimesh_collision()
+		# Smooth contact beneath authored treads. No solid box fills the stairwell.
+		_contact(root,[Vector3(10,base_y,200.5),Vector3(12.5,base_y,200.5),Vector3(12.5,base_y+4.25,193),Vector3(10,base_y+4.25,193)])
+		_contact(root,[Vector3(10,base_y+4.25,193),Vector3(16,base_y+4.25,193),Vector3(16,base_y+4.25,190),Vector3(10,base_y+4.25,190)])
+		_contact(root,[Vector3(13.5,base_y+8.5,200.5),Vector3(16,base_y+8.5,200.5),Vector3(16,base_y+4.25,193),Vector3(13.5,base_y+4.25,193)])
+
+static func _contact(parent: Node3D, quad: Array[Vector3]) -> void:
+	var body := StaticBody3D.new()
+	body.name = "StairSmoothContact"
+	var shape := ConcavePolygonShape3D.new()
+	shape.backface_collision = true
+	shape.set_faces(PackedVector3Array([quad[0],quad[2],quad[1],quad[0],quad[3],quad[2]]))
+	var collider := CollisionShape3D.new()
+	collider.shape = shape
+	body.add_child(collider)
+	parent.add_child(body)

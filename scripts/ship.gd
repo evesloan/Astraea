@@ -32,6 +32,7 @@ func _ready() -> void:
 	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory)
 	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-48,deck_y[5],0),PI/2)
 	build_retail_terrace()
+	load("res://scripts/aquatic_section.gd").build($ShipSpace/Districts,self)
 	var player := CharacterBody3D.new()
 	player.set_script(load("res://scripts/player.gd"))
 	$ShipSpace/PersistentActors.add_child(player)
