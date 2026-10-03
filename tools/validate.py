@@ -6,11 +6,14 @@ env=os.environ.copy()
 for key,sub in [('XDG_CONFIG_HOME','config'),('XDG_DATA_HOME','data'),('XDG_CACHE_HOME','cache')]:
     p=state/sub;p.mkdir(parents=True,exist_ok=True);env[key]=str(p)
 results=[]
-commands=[('import',['--editor','--quit']),('baseline',['--script','res://tests/validate_baseline.gd']),('world',['--script','res://tests/validate_world.gd']),('stairs',['--script','res://tests/validate_stairs.gd']),('door',['--script','res://tests/validate_door.gd']),('contact_cache',['--script','res://tests/validate_contact_cache.gd']),('garden',['--script','res://tests/validate_garden.gd']),('salon',['--script','res://tests/validate_salon.gd']),('atrium_supports',['--script','res://tests/validate_atrium_supports.gd']),('salon_contents',['--script','res://tests/validate_salon_contents.gd']),('fixture_switch',['--script','res://tests/validate_fixture_switch.gd']),('garden_overlook',['--script','res://tests/validate_garden_overlook.gd']),('canopy_terrace',['--script','res://tests/validate_canopy_terrace.gd'])]
+commands=[('import',['--editor','--quit']),('baseline',['--script','res://tests/validate_baseline.gd']),('world',['--script','res://tests/validate_world.gd']),('stairs',['--script','res://tests/validate_stairs.gd']),('door',['--script','res://tests/validate_door.gd']),('contact_cache',['--script','res://tests/validate_contact_cache.gd']),('garden',['--script','res://tests/validate_garden.gd']),('salon',['--script','res://tests/validate_salon.gd']),('atrium_supports',['--script','res://tests/validate_atrium_supports.gd']),('salon_contents',['--script','res://tests/validate_salon_contents.gd']),('fixture_switch',['--script','res://tests/validate_fixture_switch.gd']),('garden_overlook',['--script','res://tests/validate_garden_overlook.gd']),('canopy_terrace',['--script','res://tests/validate_canopy_terrace.gd']),('residential_suite',['--script','res://tests/validate_residential_suite.gd'])]
 if '--only' in sys.argv:
     requested=sys.argv[sys.argv.index('--only')+1]
     commands=[entry for entry in commands if entry[0]==requested]
     assert commands, 'Unknown check'
+    # Focused checks must not silently exercise stale imported Blender exports.
+    # This is still a focused run, never a substitute for the full suite.
+    if requested != 'import': commands.insert(0,('import',['--editor','--quit']))
 for label,args in commands:
     process=subprocess.Popen(['godot','--headless','--path',str(root),'--quit-after','2400',*args],env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
     timeout=threading.Timer(90,process.kill);timeout.daemon=True;timeout.start()

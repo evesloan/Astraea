@@ -39,6 +39,7 @@ func _ready() -> void:
 	load("res://scripts/atrium_garden.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/garden_overlook.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/canopy_terrace.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/residential_suite.gd").build($ShipSpace/Districts,self)
 	var player := CharacterBody3D.new()
 	player.set_script(load("res://scripts/player.gd"))
 	$ShipSpace/PersistentActors.add_child(player)
