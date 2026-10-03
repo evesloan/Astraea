@@ -21,4 +21,22 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.light_energy = .8
 		light.light_color = Color(1,.94,.84)
 		light.shadow_enabled = true
+	# Contained rear planting makes the bay a sheltered gallery destination.
+	for segment in range(7):
+		for item in range(2):
+			var marker := bay.find_child("DATUM_backplant_%d_%d" % [segment,item],true,false) as Node3D
+			assert(marker != null)
+			ship.model(root,("AST-BOT-007.glb" if item==0 else "AST-BOT-002.glb") if segment in [2,3,4] else ("AST-BOT-009.glb" if item==0 else "AST-BOT-003.glb"),"RearGarden_%d_%d" % [segment,item],marker.global_position,float(segment)*.65+item)
+	for segment in [2,3,4]:
+		var marker := bay.find_child("DATUM_plantlight_"+str(segment),true,false) as Node3D
+		var source := SpotLight3D.new()
+		root.add_child(source)
+		source.name = "ContainedPlantLight_"+str(segment)
+		source.global_position = marker.global_position
+		source.rotation.x = PI/2
+		source.spot_range = 4.8
+		source.spot_angle = 66
+		source.light_energy = 1.4
+		source.light_color = Color(1,.95,.86)
+		source.shadow_enabled = true
 	ship.model(root,"AST-FUR-003_day_table.glb","OverlookSharedTable",Vector3(-39.7,27,-27.8))
