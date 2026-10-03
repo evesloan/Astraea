@@ -1,31 +1,27 @@
 # Astraea current production status
 
-Updated 2026-10-03 after the D06 planted court and connected Canopy terrace arrival pass. Fresh Godot reconstruction; original recovery remains unverified.
+Updated2026-10-03 after the connected D06 and first D13 suite passes. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
-## Verified implemented scope
-- Godot4.6.3 Compatibility, one main ship,18 nonuniform deck datums, source-derived structural floor/opening meshes
-- Partial D01 staff service bay with tested two-leaf focus/E door
+## Implemented and checked scope
+- Godot4.6.3 Compatibility, one main ship,18 nonuniform deck datums and source-derived structural floor/opening meshes
+- Partial D01 staff service bay with a tested two-leaf focus/E door
 - Partial connected D08–D10 aquatic/garden/dining section with two traversable switchback stairs and a wet-rest alcove
-- Sixteen atrium terraces following their recovered contours, four principal bands with fitted supports, D02 planted water garden and opaque D18 cap
-- A sheltered D06 port garden overlook with a planted crescent, screened rear edge and contained source lighting
-- An eastern arrival room inside the existing D06 Canopy terrace allocation: faceted envelope, raised central ceiling field, two garden/resting pockets and quiet perimeter niches; remaining allocation and adjoining gallery remain unfinished
-- Partial D09 salon with authored enclosure, variable ceiling profile, glazed gallery, conversation/reading/study/refreshment groups
-- One low-resolution presentation stack, adjustable resolution/effects, restrained dithering, selected source-positioned shadows and geometric occlusion
-- 105 catalogue design families including16 recent drafts. Imported presence does not measure completed rooms
+- Sixteen atrium terraces following historical contours, four principal bands, fitted supports, D02 planted water garden and opaque D18 cap
+- D06 planted overlook plus the connected eastern Canopy terrace room and fanning arrival portico; remaining allocation and wider gallery unfinished
+- Partial D09 salon with authored enclosure, varied ceiling, glazed gallery and several occupied furniture groups; its study lamp responds to the shared RMB/E interaction
+- One actual partial D13 twin suite at historical address13017, connected by a walkable route, with preserved historical bed anchors, shaped living/sleeping thresholds, inward glazing and fitted bathroom fixtures
+- The opaque bathroom door inherits existing interaction/motion handling and passed300 fixed-architecture sweep samples, focused operation and obstruction checks
+- 112 catalogue designs, including23 recent drafts. Component presence is not room completion or final-art approval
 
-## Evidence
-Checkpoint10 clean restore passed all10 then-existing test groups. The subsequent reading-light and garden-overlook integration passed all12 current working-source import,world,route,interaction and asset-placement groups. Current graphical captures use cloud llvmpipe software rendering. Static paired visibility review reduced the window view from2254 to752 visible draw calls with an unchanged image. This is not an FPS or target-hardware result.
+## Evidence and limits
+All16 current Godot groups pass. The suite has164 connected arrival probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
 
-The subsequent section audit accounts for161 historical programmes and1,000 guest allocation envelopes, with120 adjacent-level programme overlaps. Checked atrium,theatre and aquatic openings intersect no guest envelopes. These are allocation/geometry checks; luxury fitting, physical beds and whole-ship access are unresolved.
+Source/export bounds, a genuinely hollow basin, two-sided shower-screen contact and fixture approach positions were checked. Ordinary player-height cloud captures were reviewed. An independent suite review led to changes in screening, floor contrast, ceiling weight and window-facing seating. These are cloud software-rendered checks, not5060Ti performance acceptance or final architectural approval.
 
-## Still outstanding
-No completed ship, finished guest units, populated guest life, real cleaning cart, swimming/slides/lazy river, real lifts/trams, save serialization, final soundscape, focus blur, complete hull or final art acceptance. The shared RMB/E path now also operates the study lamp at its actual control datum, with power-aware shadow budgeting; static furniture/refreshment props remain unusable. M travel is temporary teleportation.
+## Outstanding
+The ship is far from complete. The suite still lacks its entry door, live water/flush/mirror/lid functions, locks, NPC use and save serialization. There is no working cleaning cart, guest population, swimming/slides/lazy river, physical lifts/trams, final soundscape, focus blur or complete hull. M travel remains temporary teleportation. Other residences are not yet fitted.
 
-## Protection
-Automatic post-commit and changed-WIP retention is running. Godot2e148e4 and catalogue621cc2e were independently retained after the planted-court pass; the Canopy terrace commit follows its final validation. Earlier archives remain retained. Only the initial baseline is verified on Workshop; the latest six-file download set awaits local verification. See AUTOMATED_BACKUPS.md for actual coverage and reset limits.
+## Protection and continuation
+Automatic post-commit and changed-WIP checkpoints run while the session is active. Verify their actual receipts after each meaningful commit. Earlier retained versions remain available. Only the original baseline is verified on Workshop; newer local copies remain unverified. See AUTOMATED_BACKUPS.md for coverage and reset limits.
 
-## Latest checks
-The Canopy terrace integration passes all13 current Godot groups, including213 three-lane spine,84 niche and26 rear-seat approach probes, allocation/vertical fit and six real fixture-source exits. The structural compiler reports no coplanar ownership overlaps or invalid opening triangulation. Source/GLB bounds roundtrip passes. These checks do not establish finished art, loaded-cart travel, guest navigation or target-GPU performance.
-
-## Next construction gate
-Use WHOLE_SHIP_SECTION_COORDINATION.md and its source-hashed JSON audit to coordinate district volumes and neighbouring uses before adding full floor plates or propagating room shells. Continue district-specific Blender authoring alongside actual spatial composition. Keep all protected guest allocations and existing programme interfaces until any conflict is explicitly resolved.
+Continue production after routine healthy backup checks. A check is not a substitute for construction. Restore and re-arm protection before new edits if a reset occurs, and report a real blocker rather than silently waiting for another user prompt.

@@ -28,9 +28,9 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.light_color = Color(1,.96,.89)
 		light.shadow_enabled = true
 	var marker := shell.find_child("DATUM_living_bench",true,false) as Node3D
-	ship.model(root,"AST-FUR-001_day_window_bench.glb","LivingWindowBench",marker.global_position,PI)
+	ship.model(root,"AST-FUR-001_day_window_bench.glb","LivingWindowBench",marker.global_position,-3*PI/4)
 	marker = shell.find_child("DATUM_living_table",true,false) as Node3D
-	ship.model(root,"AST-FUR-003_day_table.glb","LivingTable",marker.global_position,PI/2)
+	ship.model(root,"AST-FUR-003_day_table.glb","LivingTable",marker.global_position,0)
 	for i in range(2):
 		var bedside := shell.find_child("DATUM_bed_table_"+str(i),true,false) as Node3D
 		ship.model(root,"AST-FUR-003_day_table.glb","BedsideTable_"+str(i),bedside.global_position,PI/2)
@@ -43,6 +43,29 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.light_energy = .85
 		light.light_color = Color(1,.94,.84)
 		light.shadow_enabled = true
+	var writing := shell.find_child("DATUM_writing_chair",true,false) as Node3D
+	ship.model(root,"AST-FUR-002_day_reading_chair.glb","SuiteWritingChair",writing.global_position,-PI/2)
+	var bath_door := (load("res://scripts/guest_privacy_door.gd") as GDScript).new() as Node3D
+	bath_door.name = "Suite13017BathDoor"
+	bath_door.persistent_id = &"D13_13017_bath_door_A"
+	bath_door.position = Vector3(79.05,84,-41.30)
+	bath_door.rotation.y = PI
+	root.add_child(bath_door)
+	for definition in [["bath_vanity","AST-SAN-001.glb"],["bath_wc","AST-SAN-002.glb"],["bath_shower","AST-SAN-003.glb"]]:
+		var fixture_marker := shell.find_child("DATUM_"+definition[0],true,false) as Node3D
+		var fixture := ship.model(root,definition[1],definition[0],fixture_marker.global_position,PI/2) as Node3D
+		for mesh in fixture.find_children("*bath_glass*","MeshInstance3D",true,false):mesh.material_override=pane
+	var bath_source := shell.find_child("DATUM_bath_light",true,false) as Node3D
+	var bath_light := SpotLight3D.new()
+	root.add_child(bath_light)
+	bath_light.name="SuiteBathroomLight"
+	bath_light.global_position=bath_source.global_position
+	bath_light.rotation.x=-PI/2
+	bath_light.spot_range=4
+	bath_light.spot_angle=68
+	bath_light.light_energy=1.05
+	bath_light.light_color=Color(1,.96,.90)
+	bath_light.shadow_enabled=true
 	# Guard exposed slab edges while adjoining census units remain unbuilt.
 	# Entry portals and the connection to the original atrium stay open.
 	var edges := [[Vector2(54,-36),Vector2(54,-30)],[Vector2(54,-36),Vector2(63,-36)],[Vector2(63,-36),Vector2(69.05,-38.4)],[Vector2(54,-48),Vector2(63,-48)],[Vector2(63,-48),Vector2(69.05,-45.6)],[Vector2(50,-26),Vector2(86.05,-26)],[Vector2(54,-30),Vector2(81.95,-30)],[Vector2(81.95,-51),Vector2(86.05,-51)],[Vector2(86.05,-51),Vector2(86.05,-26)],[Vector2(81.95,-51),Vector2(81.95,-45.6)],[Vector2(81.95,-38.4),Vector2(81.95,-30)]]

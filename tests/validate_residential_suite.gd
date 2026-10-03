@@ -27,7 +27,7 @@ func run() -> void:
 	for i in range(3):
 		var datum := shell.find_child("DATUM_light_"+str(i),true,false) as Node3D
 		assert(state.intersect_ray(PhysicsRayQueryParameters3D.create(datum.global_position,datum.global_position+Vector3.DOWN*.1)).is_empty(),"Suite source exits its lens")
-	print("RESIDENTIAL PASS: allocation and D14 clearance,164 connected arrival probes,2 historical bed anchors and3 fixture exits. Bath fixtures, privacy door, saved identity migration, NPC use and final art are incomplete.")
+	print("RESIDENTIAL PASS: allocation and D14 clearance,164 connected arrival probes,2 historical bed anchors and3 fixture exits. Plumbing controls, entry door, saved identity migration, NPC use and final art are incomplete.")
 	main.queue_free()
 	await process_frame
 	quit()
