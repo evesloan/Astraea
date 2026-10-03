@@ -17,7 +17,7 @@ Source files are copied to a stable staging tree before archiving. If source cha
 
 ## Session startup and recovery
 1. Obtain the current official Library upload helper and companion files through its supported skill workflow into a private temporary directory; do not vendor or modify them
-2. Configure the two project roots, conversation-scoped output directory, state file, fresh helper path and independently verified baseline artifact IDs
+2. Run tools/backup/configure_session.py with the actual conversation workspace and fresh helper path. It uses the verified retained_baselines.json and refuses to overwrite an existing session configuration. Check both restored project roots and histories first
 3. Run the backup unit tests, inspect the existing hooks, and install only the managed post-commit hooks. Existing unrelated hooks are preserved and reported
 4. Run a real retention pass and inspect every returned file result before calling the service active
 5. Start the watcher, verify its runner PID/state, and keep failure monitoring separate from the cloud process
