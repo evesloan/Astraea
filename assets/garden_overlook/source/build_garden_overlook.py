@@ -69,6 +69,36 @@ for index,y in enumerate([-1.8,1.8]):
  extrusion('OVL_OpalLight_'+str(index),[(-1.31,y-.25),(-.96,y-.25),(-.96,y+.25),(-1.31,y+.25)],4.675,4.69,'lens')
  datum('light_'+str(index),(-1.135,y,4.65))
 datum('clear_approach',(.3,0,0));datum('court_view',(1.6,0,1.65))
+# A planted crescent anchors the bay to the gallery: low ends preserve oblique
+# views, while the higher rear screen shelters the seated figures. Each segment
+# is an explicit closed prism, avoiding a convex collider across the open court.
+spine=[(-2.4,-7.4),(-4.5,-6.4),(-5.8,-4.7),(-6.3,-2.3),(-6.4,.5),(-6.0,3.3),(-4.7,5.7),(-2.2,7.2)]
+for i in range(len(spine)-1):
+ a=Vector(spine[i]);b=Vector(spine[i+1]);t=(b-a).normalized();n=Vector((-t.y,t.x));w=.88
+ outline=[tuple(a+n*w),tuple(b+n*w),tuple(b-n*w),tuple(a-n*w)]
+ height=[.48,.66,.90,.90,.82,.62,.44][i]
+ extrusion('OVL_CrescentStone_'+str(i),outline,0,height,'warm_stone')
+ # Soil is set into a raised stone rim and has actual containing sides.
+ ai=a+t*.07;bi=b-t*.07
+ inner=[tuple(ai+n*(w-.13)),tuple(bi+n*(w-.13)),tuple(bi-n*(w-.13)),tuple(ai-n*(w-.13))]
+ extrusion('OVL_CrescentSoil_'+str(i),inner,height,height+.025,'botanical_soil')
+ for j in range(2):
+  q=a.lerp(b,(j+.5)/2);datum('backplant_%d_%d'%(i,j),(q.x,q.y,height+.025))
+ if i in [2,3,4]:
+  q=a.lerp(b,.5)-n*.64
+  extrusion('OVL_PlantLightHousing_'+str(i),[(q.x-.13,q.y-.15),(q.x+.13,q.y-.15),(q.x+.13,q.y+.15),(q.x-.13,q.y+.15)],height+.025,height+.10,'champagne_metal')
+  extrusion('OVL_PlantLightLens_'+str(i),[(q.x-.10,q.y-.12),(q.x+.10,q.y-.12),(q.x+.10,q.y+.12),(q.x-.10,q.y+.12)],height+.10,height+.11,'lens')
+  datum('plantlight_'+str(i),(q.x,q.y,height+.13))
+ # Tallest screening stays behind the seats, never across the court-side path.
+ if i in [2,3,4]:
+  for j in range(5):
+   q=a.lerp(b,(j+.5)/5)+n*.80
+   corners=[tuple(q+t*u+n*v) for u,v in [(-.075,-.07),(.075,-.07),(.075,.07),(-.075,.07)]]
+   extrusion('OVL_TimberScreen_%d_%d'%(i,j),corners,height,2.8+.30*math.sin((i+j/5)*.8),'warm_walnut')
+# The floor finish traces the inhabited pocket; it remains level with the
+# existing slab and keeps the main circulation face at local X+2 clear.
+extrusion('OVL_InhabitedFloor', [(-2.3,-7.15),(-4.2,-6.1),(-5.3,-4.5),(-5.65,-2),(-5.7,.4),(-5.3,3),(-4.1,5.2),(-1.9,6.7),(.8,4.5),(1.2,1),(1.1,-3),(.2,-5.2)],0,.012,'warm_stone')
+
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();blend=ROOT/'source/AST-GAR-003.blend';glb=ROOT/'exports/AST-GAR-003.glb';bpy.ops.wm.save_as_mainfile(filepath=str(blend))
 tri=0
 for o in parts:o.data.calc_loop_triangles();tri+=len(o.data.loop_triangles)
