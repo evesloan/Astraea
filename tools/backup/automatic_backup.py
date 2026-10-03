@@ -141,7 +141,11 @@ def run_once(config, force=False):
         try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except BlockingIOError:return {'status':'busy'}
         for project in config['projects']:
-            info=inventory(project);prior=state['projects'].get(project['name'],project.get('retained_baseline',{}))
+            try:info=inventory(project)
+            except Exception as error:
+                state.update(status='blocked',blocked=True,error='Cannot read declared project for backup: '+str(error),failed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+                atomic_json(state_path,state);raise
+            prior=state['projects'].get(project['name'],project.get('retained_baseline',{}))
             if not force and prior.get('signature')==info['signature']:continue
             state['active_project']=project['name'];state['status']='packaging';state['heartbeat_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();atomic_json(state_path,state)
             try:

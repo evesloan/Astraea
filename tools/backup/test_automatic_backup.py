@@ -1,6 +1,7 @@
 from pathlib import Path
 import importlib.util,json,subprocess,tempfile,unittest,zipfile,time,sys
 from unittest.mock import patch
+from types import SimpleNamespace
 spec=importlib.util.spec_from_file_location('backup',Path(__file__).with_name('automatic_backup.py'));backup=importlib.util.module_from_spec(spec);spec.loader.exec_module(backup)
 
 class Backups(unittest.TestCase):
@@ -74,5 +75,16 @@ class Backups(unittest.TestCase):
         finally:
             (self.output/'STOP').touch();runner.wait(timeout=3)
         self.assertEqual(runner.returncode,0)
+
+    def test_partial_transport_is_not_success(self):
+        archive={'path':'/test/archive.zip','sha256':'test','bytes':1}
+        result=SimpleNamespace(returncode=0,stdout=json.dumps({'results':[{'local_path':archive['path'],'status':'failed'}]}),stderr='')
+        with patch.object(backup.subprocess,'run',return_value=result):
+            with self.assertRaises(RuntimeError):backup.upload(str(Path(backup.__file__)),[archive],Path(self.temp.name)/'log')
+    def test_missing_project_records_blocker(self):
+        bad=dict(self.project,root=str(self.root/'missing'))
+        config={'state':str(self.output/'state.json'),'output':str(self.output),'upload_helper':'missing','projects':[bad]}
+        with self.assertRaises(subprocess.CalledProcessError):backup.run_once(config)
+        self.assertTrue(json.loads(Path(config['state']).read_text())['blocked'])
 
 if __name__=='__main__':unittest.main()

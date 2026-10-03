@@ -20,7 +20,7 @@ Source files are copied to a stable staging tree before archiving. If source cha
 2. Run tools/backup/configure_session.py with the actual conversation workspace and fresh helper path. It uses the verified retained_baselines.json and refuses to overwrite an existing session configuration. Check both restored project roots and histories first
 3. Run the backup unit tests, inspect the existing hooks, and install only the managed post-commit hooks. Existing unrelated hooks are preserved and reported
 4. Run a real retention pass and inspect every returned file result before calling the service active
-5. Start the watcher, verify its runner PID/state, and keep failure monitoring separate from the cloud process
+5. Start the watcher in a live foreground execution session or cloud desktop terminal, and verify its heartbeat advances across separate checks. A detached process from a one-shot command may be terminated when the command ends. Keep failure monitoring separate from the cloud process
 
 The watcher and Git hooks are session machinery: a cloud reset can remove them. Restore source from the newest complete retained checkpoint, verify hashes/tests, then re-arm the watcher before production edits resume. Never infer that an old runner file proves a live process.
 
