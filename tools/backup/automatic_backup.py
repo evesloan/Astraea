@@ -27,9 +27,13 @@ def digest(path):
 def git(root,*args):
     return subprocess.check_output(['git','-C',str(root),*args],stderr=subprocess.PIPE)
 
+def secret_name(name):
+    p=Path(name)
+    return p.name in SECRETS or p.name.startswith('.env.') or '.ssh' in p.parts or p.suffix.lower() in {'.pem','.key','.p12','.pfx'}
+
 def safe_name(name):
     p=Path(name)
-    return not p.is_absolute() and '..' not in p.parts and not set(p.parts)&EXCLUDED and p.name not in SECRETS and not p.name.endswith(('.blend1','.pem','.key'))
+    return not p.is_absolute() and '..' not in p.parts and not set(p.parts)&EXCLUDED and not secret_name(name) and not p.name.endswith('.blend1')
 
 def inventory(project):
     root=Path(project['root']);head=git(root,'rev-parse','HEAD').decode().strip()
@@ -73,6 +77,8 @@ def snapshot(project, info, output, retained, part_limit=20*1024*1024):
             bundle=stage/'history.bundle'
             revision=base+'..HEAD' if base else '--all'
             if base:subprocess.run(['git','-C',str(root),'merge-base','--is-ancestor',base,info['head']],check=True,capture_output=True)
+            changed_paths=git(root,'log','--format=','--name-only',revision).decode().splitlines()
+            if any(secret_name(n) for n in changed_paths if n):raise RuntimeError('Credential-like path in new Git history; backup requires review')
             subprocess.run(['git','-C',str(root),'bundle','create',str(bundle),revision],check=True,capture_output=True)
             subprocess.run(['git','-C',str(root),'bundle','verify',str(bundle)],check=True,capture_output=True)
             files['history.bundle']=bundle
@@ -128,7 +134,9 @@ def upload(helper, archives, log):
 def run_once(config, force=False):
     state_path=Path(config['state']);state=json.loads(state_path.read_text()) if state_path.exists() else {'projects':{}}
     if state.get('blocked'):raise RuntimeError('Backup service is blocked pending review of its recorded failure')
-    output=Path(config['output']);output.mkdir(parents=True,exist_ok=True)
+    output=Path(config['output']).resolve()
+    if any(output.is_relative_to(Path(p['root']).resolve()) for p in config['projects']):raise ValueError('Backup output must be outside the source trees')
+    output.mkdir(parents=True,exist_ok=True)
     with (output/'service.lock').open('a') as lock:
         try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except BlockingIOError:return {'status':'busy'}
