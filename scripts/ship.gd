@@ -130,11 +130,11 @@ func build_retail_terrace() -> void:
 	model(bay,"AST-SAL-003.glb","BookSeatBay",Vector3.ZERO)
 	model(bay,"AST-SAL-002.glb","MatedOverhead",Vector3(-3.1,0,0))
 	model(district,"AST-SAL-001.glb","PublicPortal_NoDoorYet",Vector3(52,d09_y,0),PI/2)
-	model(district,"AST-FUR-001_day_window_bench.glb","CourtBench",Vector3(d09_y,d09_y,-29),-PI/2)
+	model(district,"AST-FUR-001_day_window_bench.glb","CourtBench",Vector3(52.5,d09_y,-29),-PI/2)
 	model(district,"AST-FUR-002_day_reading_chair.glb","ReadingChair",Vector3(56.2,d09_y,-34),-PI/2)
 	model(district,"AST-FUR-003_day_table.glb","LowReadingTable",Vector3(54.8,d09_y,-33))
 	model(district,"AST-GST-001.glb","ReadingLamp",Vector3(57,d09_y,-32))
-	model(district,"AST-BOT-001.glb","SmallCanopy",Vector3(d09_y,d09_y,-21))
+	model(district,"AST-BOT-001.glb","SmallCanopy",Vector3(52.5,d09_y,-21))
 	model(district,"AST-BOT-002.glb","Understory",Vector3(53.8,d09_y,-21))
 	model(district,"AST-BOT-006.glb","PlantedSeatTerminal",Vector3(55,d09_y,-23))
 	# Actual lights colocated with fixtures, not an unexplained directional sun.
@@ -175,6 +175,10 @@ func build_retail_terrace() -> void:
 	for i in range(outline.size()):
 		var a := Vector3(outline[i].x,d09_y,outline[i].y)
 		var b := Vector3(outline[(i+1)%outline.size()].x,d09_y,outline[(i+1)%outline.size()].y)
+		# The six-metre ring continues through both ends of this terrace.
+		# Keep its shared surface open rather than fencing the allocation shut.
+		if i == 0: a.x = 54.0
+		if i == 6: b.x = 54.0
 		beam(district,"EdgeRail_%d"%i,a+Vector3.UP*1.05,b+Vector3.UP*1.05,0.045,metal)
 		beam(district,"EdgePost_%d"%i,a,a+Vector3.UP*1.05,0.045,metal)
 		var body := StaticBody3D.new()

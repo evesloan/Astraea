@@ -55,6 +55,16 @@ func _ready() -> void:
 	if "--capture-validation" in OS.get_cmdline_user_args():
 		await get_tree().create_timer(2.0).timeout
 		await _capture()
+		if "--capture-d06" in OS.get_cmdline_user_args():
+			var actor = world_view.get_node("Astraea/ShipSpace/PersistentActors/Player")
+			actor.spawn_position = Vector3(-51,27.1,4)
+			actor.position = actor.spawn_position
+			actor.velocity = Vector3.ZERO
+			actor.rotation.y = 0.0
+			actor.pitch = -0.22
+			actor.camera.rotation.x = actor.pitch
+			await get_tree().create_timer(1.0).timeout
+			await _capture("d06_")
 		get_tree().quit()
 
 func _resize() -> void:
@@ -81,12 +91,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func _input(event: InputEvent) -> void:
 	if is_instance_valid(world_view) and not directory_open: world_view.push_input(event)
 
-func _capture() -> void:
+func _capture(prefix: String = "") -> void:
 	await RenderingServer.frame_post_draw
 	DirAccess.make_dir_recursive_absolute("res://artifacts")
-	world_view.get_texture().get_image().save_png("res://artifacts/world_capture.png")
-	post_view.get_texture().get_image().save_png("res://artifacts/processed_world_capture.png")
-	get_viewport().get_texture().get_image().save_png("res://artifacts/presentation_capture.png")
+	world_view.get_texture().get_image().save_png("res://artifacts/"+prefix+"world_capture.png")
+	post_view.get_texture().get_image().save_png("res://artifacts/"+prefix+"processed_world_capture.png")
+	get_viewport().get_texture().get_image().save_png("res://artifacts/"+prefix+"presentation_capture.png")
 
 func _build_directory() -> void:
 	directory = PanelContainer.new()

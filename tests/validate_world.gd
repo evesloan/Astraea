@@ -36,6 +36,19 @@ func run() -> void:
 	assert(not world.get_world_3d().direct_space_state.intersect_ray(arc_floor_ray).is_empty(), "Authored curved floor must provide support")
 	var arc_void_ray := PhysicsRayQueryParameters3D.create(Vector3(-48.2,27.8,-4),Vector3(-48.2,26.6,-4))
 	assert(world.get_world_3d().direct_space_state.intersect_ray(arc_void_ray).is_empty(), "No generic slab may fill the new curved opening")
+	# Actual body-width sweep across the two shared terrace boundaries and portal.
+	var clearance := CapsuleShape3D.new()
+	clearance.radius = 0.3
+	clearance.height = 1.8
+	for segment in [[Vector3(50,53.43,-36),Vector3(50,53.43,-32)], [Vector3(50,53.43,2),Vector3(50,53.43,6)], [Vector3(49.5,53.43,0),Vector3(59,53.43,0)]]:
+		var sweep := PhysicsShapeQueryParameters3D.new()
+		sweep.shape = clearance
+		sweep.transform.origin = segment[0]
+		sweep.motion = segment[1]-segment[0]
+		sweep.exclude = [player.get_rid()]
+		assert(world.get_world_3d().direct_space_state.intersect_shape(sweep).is_empty(), "Terrace route begins obstructed")
+		var fractions := world.get_world_3d().direct_space_state.cast_motion(sweep)
+		assert(fractions[0] > 0.999, "Temporary guards or portal must not block a shared route")
 	assert(not world.express_arrive(-1) and not world.express_arrive(18))
 	print("WORLD PASS: supported D09 spawn; 18 express arrivals and 108 structural route probes; 18 structural datums; 640x360 world; source cove mating; adjustable effect resources. Not full route, collision, visual or performance acceptance.")
 	main.queue_free()
