@@ -72,6 +72,11 @@ func _ready() -> void:
 	_box(cabin,Vector3(0,2.75,-.125),Vector3(3.84,.20,.20),"CabinGateHeader")
 	_box(cabin,Vector3(0,1.4,-3.535),Vector3(3.3,2.8,.13),"CabinRear")
 	_box(cabin,Vector3(0,2.87,-1.8),Vector3(4,.14,3.6),"CabinRoof")
+	# Match the actual authored control backing, not only the distant cabin wall.
+	if floor_heights.size()==2:
+		_box(cabin,Vector3(1.815,1.265,-.69),Vector3(.13,.57,.38),"CabinControlBacking")
+	else:
+		_box(cabin,Vector3(1.815,1.33,-.84),Vector3(.13,.46,.82),"CabinControlBacking")
 	for i in range(floor_heights.size()):
 		var marker:=visual.find_child("DATUM_floor_button_"+str(i),true,false)as Node3D
 		assert(marker!=null,"Cabin panel lacks a physical floor-control datum")

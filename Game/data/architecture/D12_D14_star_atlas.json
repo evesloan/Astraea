@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "Production section authoring in progress; independent constraint review and runtime checks pending",
+  "status": "Production section corrected after independent reviews; compiled/runtime acceptance pending",
   "name": "Star Atlas library and connected port commons",
   "programme_keys": [
     "D12_directory_05",
@@ -146,8 +146,8 @@
         -48
       ],
       "z": [
-        -3,
-        3
+        -3.2,
+        3.2
       ]
     },
     {
@@ -157,8 +157,8 @@
         -48
       ],
       "z": [
-        -3,
-        3
+        -3.2,
+        3.2
       ]
     },
     {
@@ -168,8 +168,8 @@
         -48
       ],
       "z": [
-        -3,
-        3
+        -3.2,
+        3.2
       ]
     }
   ],
@@ -207,18 +207,18 @@
   },
   "second_stair": {
     "lower_flight_x": [
-      -71.5,
-      -68.5
+      -70.5,
+      -67.5
     ],
     "upper_flight_x": [
-      -68,
-      -65
+      -67,
+      -64
     ],
-    "start_z": 9.5,
-    "turn_z": 5.0,
+    "start_z": 11.0,
+    "turn_z": 6.5,
     "landing_z": [
-      2.0,
-      5.0
+      3.5,
+      6.5
     ],
     "bottom_y": 84.0,
     "landing_y": 86.25,
@@ -228,12 +228,12 @@
     "riser_m": 0.15,
     "upper_floor_hole_xz": {
       "x": [
-        -71.65,
-        -64.85
+        -70.65,
+        -63.85
       ],
       "z": [
-        1.85,
-        9.5
+        3.35,
+        11.0
       ]
     }
   },
@@ -274,7 +274,23 @@
       ]
     },
     "shaft_top_y": 91.85,
-    "implementation": "Extend the existing reusable lift with a three-stop authored control-panel variant. Preserve current two-stop defaults and identities; no second controller."
+    "implementation": "Extend the existing reusable lift with a three-stop authored control-panel variant. Preserve current two-stop defaults and identities; no second controller.",
+    "pit_pan_y": [
+      77.76,
+      77.8
+    ],
+    "cabin_floor_lowest_y_at_D12": 77.82,
+    "trip_test_budget_policy": "Derive from longest travel, speed, acceleration and two gate transitions; preserve every motion/obstruction assertion",
+    "west_forecourt_xz": {
+      "x": [
+        -74.5,
+        -68.4
+      ],
+      "z": [
+        -12.5,
+        -7.9
+      ]
+    }
   },
   "level_roles": {
     "D12": "Public Star Atlas library: arrival desk, reachable collections, shared study and sheltered reading bays. Tall court relates these activities to the commons above.",
@@ -314,14 +330,43 @@
       "id": "D13_second_stair_understructure",
       "deck": "D13",
       "x": [
-        -71.65,
-        -64.85
+        -70.65,
+        -63.85
       ],
       "z": [
-        1.85,
-        9.5
+        3.35,
+        11.0
       ],
       "purpose": "Closed fitted stair understructure and stock storage; no under-landing cross-route"
+    },
+    {
+      "id": "D14_east_stair_backing",
+      "deck": "D14",
+      "x": [
+        -63.85,
+        -63
+      ],
+      "z": [
+        3.25,
+        11.2
+      ],
+      "bottom_y": 88.5,
+      "top_y": 91.3,
+      "purpose": "Close the narrow outer remnant; primary arrival continues west through the broad landing"
+    },
+    {
+      "id": "D12_first_stair_understructure",
+      "deck": "D12",
+      "x": [
+        -96.15,
+        -89.35
+      ],
+      "z": [
+        -8,
+        1.15
+      ],
+      "shape": "Closed wedges and landing stock storage below actual stair profiles",
+      "purpose": "No public shortcut under low flights or into the interflight well"
     }
   ],
   "support_reservations": [
@@ -358,8 +403,8 @@
     {
       "id": "library_pier_3",
       "center_xz": [
-        -76,
-        12
+        -79,
+        10.6
       ],
       "maximum_radius_m": 0.6,
       "bottom_y": 78,
@@ -375,5 +420,874 @@
     "support_scope": "Architecturally legible bearing reservations; no engineering load certification",
     "lower_peripheral_ceiling": "D13 level outside the court/stair/lift openings; do not turn it into an additional public upper programme",
     "upper_entry_connectors": "Existing atrium connections at Z0; ceilings/supports may not obstruct their six-metre width"
-  }
+  },
+  "historical_room_crosswalk": {
+    "D12_directory_05": "D12_stargazing4",
+    "D13_directory_04": null,
+    "D14_directory_03": null
+  },
+  "protected_below_programme": "D11 Performers commons; retain D12 slab underside and seal the lift pit within it",
+  "connector_clear_width_m": 6.0,
+  "connector_guard_policy": "Place guards/jambs outside the Z -3 to +3 clear prism. Extra0.2m floor margins are structural support for the guards.",
+  "interflight_gap_policy": "Close/guard both0.5m flight gaps; keep top, bottom and intermediate landing mouths open",
+  "floor_ownership_policy": {
+    "new_region_priority": -10,
+    "preserve_existing_principal_band": "Existing D12_atrium_circulation owns its overlapping patch and retains0.55m thickness. New0.24m library floor is clipped away there by lower priority. D13/D14 existing rings likewise retain ownership.",
+    "new_district_floor_assembly": "Union connectors with their district outline, then union all opening cuts before difference. No overlapping independent holes."
+  },
+  "route_reservations": [
+    {
+      "deck": "D12",
+      "purpose": "Lower stair approach",
+      "centerline_xz": [
+        [
+          -52,
+          0
+        ],
+        [
+          -60,
+          0
+        ],
+        [
+          -77,
+          -8
+        ],
+        [
+          -87,
+          -15
+        ],
+        [
+          -94.5,
+          -15
+        ],
+        [
+          -94.5,
+          -9.4
+        ]
+      ],
+      "half_width_m": 1.2,
+      "clear_height_m": 2.4
+    },
+    {
+      "deck": "D13",
+      "purpose": "First-stair landing to library lift/arrival",
+      "centerline_xz": [
+        [
+          -91,
+          -9.5
+        ],
+        [
+          -85,
+          -11.5
+        ],
+        [
+          -79,
+          -11.5
+        ],
+        [
+          -72.2,
+          -6
+        ],
+        [
+          -63,
+          0
+        ]
+      ],
+      "half_width_m": 1.2,
+      "clear_height_m": 2.4
+    },
+    {
+      "deck": "D13",
+      "purpose": "Broad western approach to second stair",
+      "centerline_xz": [
+        [
+          -63,
+          0
+        ],
+        [
+          -72.2,
+          0
+        ],
+        [
+          -72.2,
+          12.5
+        ],
+        [
+          -69,
+          12.5
+        ]
+      ],
+      "half_width_m": 1.2,
+      "clear_height_m": 2.4
+    },
+    {
+      "deck": "D14",
+      "purpose": "Upper arrival opens toward commons, not narrow east strip",
+      "centerline_xz": [
+        [
+          -65.5,
+          12.5
+        ],
+        [
+          -83,
+          12.5
+        ]
+      ],
+      "half_width_m": 1.2,
+      "clear_height_m": 2.4
+    },
+    {
+      "deck": "D14",
+      "purpose": "Upper commons returns to entrance",
+      "centerline_xz": [
+        [
+          -83,
+          12.5
+        ],
+        [
+          -72.2,
+          12.5
+        ],
+        [
+          -72.2,
+          0
+        ],
+        [
+          -63,
+          0
+        ]
+      ],
+      "half_width_m": 1.2,
+      "clear_height_m": 2.4
+    },
+    {
+      "deck": "D12",
+      "purpose": "Entrance to western lift forecourt",
+      "centerline_xz": [
+        [
+          -52,
+          0
+        ],
+        [
+          -72.2,
+          0
+        ],
+        [
+          -72.2,
+          -10.2
+        ],
+        [
+          -70,
+          -10.2
+        ]
+      ],
+      "half_width_m": 1.2,
+      "clear_height_m": 2.4
+    },
+    {
+      "deck": "D13",
+      "purpose": "Entrance to western lift forecourt",
+      "centerline_xz": [
+        [
+          -63,
+          0
+        ],
+        [
+          -72.2,
+          0
+        ],
+        [
+          -72.2,
+          -10.2
+        ],
+        [
+          -70,
+          -10.2
+        ]
+      ],
+      "half_width_m": 1.2,
+      "clear_height_m": 2.4
+    },
+    {
+      "deck": "D14",
+      "purpose": "Entrance to western lift forecourt",
+      "centerline_xz": [
+        [
+          -63,
+          0
+        ],
+        [
+          -72.2,
+          0
+        ],
+        [
+          -72.2,
+          -10.2
+        ],
+        [
+          -70,
+          -10.2
+        ]
+      ],
+      "half_width_m": 1.2,
+      "clear_height_m": 2.4
+    }
+  ],
+  "residential_connection_status": "Future streets beyond Z +/-14 are not yet built or verified; do not claim complete guest-home access.",
+  "floor_regions": [
+    {
+      "id": "D12_star_atlas_ground_0",
+      "authoring_owner": "D12_D14_star_atlas",
+      "deck": "D12",
+      "boundary": [
+        [
+          -88.0,
+          -34.0
+        ],
+        [
+          -98.0,
+          -24.0
+        ],
+        [
+          -98.0,
+          22.0
+        ],
+        [
+          -89.0,
+          34.0
+        ],
+        [
+          -62.0,
+          34.0
+        ],
+        [
+          -52.0,
+          28.0
+        ],
+        [
+          -52.0,
+          3.2
+        ],
+        [
+          -48.0,
+          3.2
+        ],
+        [
+          -48.0,
+          -3.2
+        ],
+        [
+          -52.0,
+          -3.2
+        ],
+        [
+          -52.0,
+          -30.0
+        ],
+        [
+          -60.0,
+          -34.0
+        ]
+      ],
+      "holes": [
+        [
+          [
+            -64.58,
+            -8.18
+          ],
+          [
+            -68.22,
+            -8.18
+          ],
+          [
+            -68.22,
+            -12.22
+          ],
+          [
+            -64.58,
+            -12.22
+          ]
+        ]
+      ],
+      "priority": -10,
+      "thickness": 0.24,
+      "material_role": "guest_floor",
+      "walkable_public": true,
+      "status": "Authored Star Atlas section; runtime/art acceptance pending"
+    },
+    {
+      "id": "D13_star_atlas_gallery_0",
+      "authoring_owner": "D12_D14_star_atlas",
+      "deck": "D13",
+      "boundary": [
+        [
+          -97.0,
+          -14.0
+        ],
+        [
+          -97.0,
+          14.0
+        ],
+        [
+          -63.0,
+          14.0
+        ],
+        [
+          -63.0,
+          3.2
+        ],
+        [
+          -48.0,
+          3.2
+        ],
+        [
+          -48.0,
+          -3.2
+        ],
+        [
+          -63.0,
+          -3.2
+        ],
+        [
+          -63.0,
+          -14.0
+        ]
+      ],
+      "holes": [
+        [
+          [
+            -64.58,
+            -12.22
+          ],
+          [
+            -64.58,
+            -8.18
+          ],
+          [
+            -68.22,
+            -8.18
+          ],
+          [
+            -68.22,
+            -12.22
+          ]
+        ],
+        [
+          [
+            -89.35,
+            -8.0
+          ],
+          [
+            -89.35,
+            -5.487500000000004
+          ],
+          [
+            -86.0,
+            -8.0
+          ],
+          [
+            -78.0,
+            -8.0
+          ],
+          [
+            -74.0,
+            -5.0
+          ],
+          [
+            -74.0,
+            6.0
+          ],
+          [
+            -79.0,
+            10.0
+          ],
+          [
+            -87.0,
+            10.0
+          ],
+          [
+            -90.0,
+            7.0
+          ],
+          [
+            -90.0,
+            1.15
+          ],
+          [
+            -96.15,
+            1.15
+          ],
+          [
+            -96.15,
+            -8.0
+          ]
+        ]
+      ],
+      "priority": -10,
+      "thickness": 0.24,
+      "material_role": "guest_floor",
+      "walkable_public": true,
+      "status": "Authored Star Atlas section; runtime/art acceptance pending"
+    },
+    {
+      "id": "D13_star_atlas_lower_roof_0",
+      "authoring_owner": "D12_D14_star_atlas",
+      "deck": "D13",
+      "boundary": [
+        [
+          -60.0,
+          -34.0
+        ],
+        [
+          -88.0,
+          -34.0
+        ],
+        [
+          -98.0,
+          -24.0
+        ],
+        [
+          -98.0,
+          22.0
+        ],
+        [
+          -89.0,
+          34.0
+        ],
+        [
+          -62.0,
+          34.0
+        ],
+        [
+          -52.0,
+          28.0
+        ],
+        [
+          -52.0,
+          3.2
+        ],
+        [
+          -63.0,
+          3.2
+        ],
+        [
+          -63.0,
+          14.0
+        ],
+        [
+          -97.0,
+          14.0
+        ],
+        [
+          -97.0,
+          -14.0
+        ],
+        [
+          -63.0,
+          -14.0
+        ],
+        [
+          -63.0,
+          -3.2
+        ],
+        [
+          -52.0,
+          -3.2
+        ],
+        [
+          -52.0,
+          -30.0
+        ]
+      ],
+      "holes": [],
+      "priority": -10,
+      "thickness": 0.24,
+      "material_role": "guest_floor",
+      "walkable_public": false,
+      "status": "Authored Star Atlas section; runtime/art acceptance pending"
+    },
+    {
+      "id": "D14_star_atlas_gallery_0",
+      "authoring_owner": "D12_D14_star_atlas",
+      "deck": "D14",
+      "boundary": [
+        [
+          -97.0,
+          -14.0
+        ],
+        [
+          -97.0,
+          14.0
+        ],
+        [
+          -63.0,
+          14.0
+        ],
+        [
+          -63.0,
+          3.2
+        ],
+        [
+          -48.0,
+          3.2
+        ],
+        [
+          -48.0,
+          -3.2
+        ],
+        [
+          -63.0,
+          -3.2
+        ],
+        [
+          -63.0,
+          -14.0
+        ]
+      ],
+      "holes": [
+        [
+          [
+            -64.58,
+            -12.22
+          ],
+          [
+            -64.58,
+            -8.18
+          ],
+          [
+            -68.22,
+            -8.18
+          ],
+          [
+            -68.22,
+            -12.22
+          ]
+        ],
+        [
+          [
+            -93.0,
+            2.0
+          ],
+          [
+            -93.0,
+            -6.0
+          ],
+          [
+            -88.0,
+            -11.0
+          ],
+          [
+            -81.0,
+            -11.0
+          ],
+          [
+            -76.0,
+            -6.0
+          ],
+          [
+            -76.0,
+            3.0
+          ],
+          [
+            -81.0,
+            6.0
+          ],
+          [
+            -89.0,
+            6.0
+          ]
+        ],
+        [
+          [
+            -70.65,
+            3.35
+          ],
+          [
+            -63.85,
+            3.35
+          ],
+          [
+            -63.85,
+            11.0
+          ],
+          [
+            -70.65,
+            11.0
+          ]
+        ]
+      ],
+      "priority": -10,
+      "thickness": 0.24,
+      "material_role": "guest_floor",
+      "walkable_public": true,
+      "status": "Authored Star Atlas section; runtime/art acceptance pending"
+    },
+    {
+      "id": "D15_star_atlas_protected_cover_0",
+      "authoring_owner": "D12_D14_star_atlas",
+      "deck": "D15",
+      "boundary": [
+        [
+          -63.0,
+          -14.0
+        ],
+        [
+          -97.0,
+          -14.0
+        ],
+        [
+          -97.0,
+          14.0
+        ],
+        [
+          -63.0,
+          14.0
+        ],
+        [
+          -63.0,
+          3.2
+        ],
+        [
+          -48.0,
+          3.2
+        ],
+        [
+          -48.0,
+          -3.2
+        ],
+        [
+          -63.0,
+          -3.2
+        ]
+      ],
+      "holes": [],
+      "priority": -10,
+      "thickness": 0.24,
+      "material_role": "guest_floor",
+      "walkable_public": false,
+      "status": "Authored Star Atlas section; runtime/art acceptance pending"
+    }
+  ],
+  "opening_regions": [
+    {
+      "id": "star_atlas_D12_opening_0",
+      "authoring_owner": "D12_D14_star_atlas",
+      "decks": [
+        "D12"
+      ],
+      "boundary": [
+        [
+          -64.58,
+          -12.22
+        ],
+        [
+          -64.58,
+          -8.18
+        ],
+        [
+          -68.22,
+          -8.18
+        ],
+        [
+          -68.22,
+          -12.22
+        ]
+      ],
+      "source": "Reviewed production section; preserve openings in subsequent floor work"
+    },
+    {
+      "id": "star_atlas_D13_opening_0",
+      "authoring_owner": "D12_D14_star_atlas",
+      "decks": [
+        "D13"
+      ],
+      "boundary": [
+        [
+          -68.22,
+          -12.22
+        ],
+        [
+          -68.22,
+          -8.18
+        ],
+        [
+          -64.58,
+          -8.18
+        ],
+        [
+          -64.58,
+          -12.22
+        ]
+      ],
+      "source": "Reviewed production section; preserve openings in subsequent floor work"
+    },
+    {
+      "id": "star_atlas_D13_opening_1",
+      "authoring_owner": "D12_D14_star_atlas",
+      "decks": [
+        "D13"
+      ],
+      "boundary": [
+        [
+          -96.15,
+          -8.0
+        ],
+        [
+          -96.15,
+          1.15
+        ],
+        [
+          -90.0,
+          1.15
+        ],
+        [
+          -90.0,
+          7.0
+        ],
+        [
+          -87.0,
+          10.0
+        ],
+        [
+          -79.0,
+          10.0
+        ],
+        [
+          -74.0,
+          6.0
+        ],
+        [
+          -74.0,
+          -5.0
+        ],
+        [
+          -78.0,
+          -8.0
+        ],
+        [
+          -86.0,
+          -8.0
+        ],
+        [
+          -89.35,
+          -5.487500000000004
+        ],
+        [
+          -89.35,
+          -8.0
+        ]
+      ],
+      "source": "Reviewed production section; preserve openings in subsequent floor work"
+    },
+    {
+      "id": "star_atlas_D14_opening_0",
+      "authoring_owner": "D12_D14_star_atlas",
+      "decks": [
+        "D14"
+      ],
+      "boundary": [
+        [
+          -68.22,
+          -12.22
+        ],
+        [
+          -68.22,
+          -8.18
+        ],
+        [
+          -64.58,
+          -8.18
+        ],
+        [
+          -64.58,
+          -12.22
+        ]
+      ],
+      "source": "Reviewed production section; preserve openings in subsequent floor work"
+    },
+    {
+      "id": "star_atlas_D14_opening_1",
+      "authoring_owner": "D12_D14_star_atlas",
+      "decks": [
+        "D14"
+      ],
+      "boundary": [
+        [
+          -89.0,
+          6.0
+        ],
+        [
+          -81.0,
+          6.0
+        ],
+        [
+          -76.0,
+          3.0
+        ],
+        [
+          -76.0,
+          -6.0
+        ],
+        [
+          -81.0,
+          -11.0
+        ],
+        [
+          -88.0,
+          -11.0
+        ],
+        [
+          -93.0,
+          -6.0
+        ],
+        [
+          -93.0,
+          2.0
+        ]
+      ],
+      "source": "Reviewed production section; preserve openings in subsequent floor work"
+    },
+    {
+      "id": "star_atlas_D14_opening_2",
+      "authoring_owner": "D12_D14_star_atlas",
+      "decks": [
+        "D14"
+      ],
+      "boundary": [
+        [
+          -70.65,
+          11.0
+        ],
+        [
+          -63.85,
+          11.0
+        ],
+        [
+          -63.85,
+          3.35
+        ],
+        [
+          -70.65,
+          3.35
+        ]
+      ],
+      "source": "Reviewed production section; preserve openings in subsequent floor work"
+    }
+  ],
+  "compiled_area_accounting": {
+    "lower_gross_envelope_m2": 3128.0,
+    "new_region_geometric_areas_before_existing_ring_priority_m2": {
+      "D12": 2988.8944,
+      "D13": 713.7303374999999,
+      "D14": 732.7744
+    },
+    "existing_D12_ring_overlap_retained_at_0_55m_m2": 143.8,
+    "D13_lower_roof_not_public_m2": 1955.5999999999995,
+    "D13_D14_shared_open_vertical_area_m2": 180.0,
+    "guest_envelope_intersections": 0,
+    "route_reservations_supported_in_plan": true,
+    "support_reservations_clear_of_routes": true,
+    "note": "Geometric ownership only, not seating capacity, finished rooms or runtime acceptance"
+  },
+  "pier_guard_joint_policy": "Pier3 touches the D13 court envelope at(-79,10). Terminate/fit the guard into its actual reserved0.6m profile; do not add enlarged caps beyond that envelope."
 }

@@ -44,6 +44,7 @@ func _ready() -> void:
 	load("res://scripts/vertical_commons.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/retail_curios.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/arrivals_fusion.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/star_atlas.gd").build($ShipSpace/Districts,self)
 	var cleaning_cart:RigidBody3D=(load("res://scripts/cleaning_cart.gd")as GDScript).new()
 	cleaning_cart.name="CustodialCart"
 	cleaning_cart.position=Vector3(85.2,84.04,-37.3)

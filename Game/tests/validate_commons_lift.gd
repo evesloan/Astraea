@@ -5,7 +5,10 @@ func _initialize() -> void:call_deferred("run")
 func wait_trip(lift:Node3D,cart:RigidBody3D,actor:CharacterBody3D,goal:int) -> void:
 	var reached:=false
 	var previous:=0.0
-	for frame in range(800):
+	var travel:=absf(lift.floor_heights[goal]-lift.cabin.position.y)
+	var expected_seconds:float=travel/lift.maximum_speed+lift.maximum_speed/lift.acceleration+2.0/.75+3.0
+	var budget_frames:int=ceili(expected_seconds*60.0)
+	for frame in range(budget_frames):
 		await physics_frame
 		assert(abs(lift.travel_velocity)<=lift.maximum_speed+.001)
 		if lift.phase=="moving":
