@@ -1,6 +1,6 @@
 # Astraea current production status
 
-Updated2026-10-04 after the connected D06 and first D13 suite passes. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
+Updated2026-10-04 after the integrated arrivals, reception and validation-clock passes. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Implemented and checked scope
 - Godot4.6.3 Compatibility, one main ship,18 nonuniform deck datums and source-derived structural floor/opening meshes
@@ -22,7 +22,7 @@ Updated2026-10-04 after the connected D06 and first D13 suite passes. Fresh Godo
 - The first physical cleaning cart and4 loose bottles share RMB/E pickup/release. Straight loaded travel and235 geometric cart/load clearance poses pass; final handling, driven turns and restocking remain unfinished; the new commons lift now has loaded boarding and travel checks
 
 ## Evidence and limits
-All 27 current Godot groups pass, including actual commons stairs, physical lift travel and loaded-cart boarding. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
+All29 current Godot groups pass, including actual commons stairs, physical lift travel and loaded-cart boarding. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
 
 Source/export bounds, a genuinely hollow basin, two-sided shower-screen contact and fixture approach positions were checked. Ordinary player-height cloud captures were reviewed. An independent suite review led to changes in screening, floor contrast, ceiling weight and window-facing seating. These are cloud software-rendered checks, not RTX5060 Laptop GPU performance acceptance or final architectural approval.
 
@@ -51,3 +51,6 @@ The original D01/D02 programmes now share a ceremonial branching stair, offset v
 
 ## Arrivals hospitality refinement
 All29 checks pass after adding a three-height crescent reception desk and its fitted fan-shaped enclosure, three task lights, two waiting groups, deeper upper-gallery profiles and more selective machinery glow. The shared eight-source budget now verifies authored visible illumination receivers so a correctly aimed wallwasher is not discarded solely because its emitting face points away from the viewer. Behind-wall receiver rejection is tested.131 registered editable designs and489 main-scene instances are presence counts only. Actual captures remain below final architectural approval, particularly broad surface treatment and focal-light balance.
+
+## Arrival threshold and faster regression
+The compressed entry now has an authored curved header and supporting piers, a fitted fan-shaped carpet and stair runners, all keeping the tested walking path and single physical-floor ownership. Focal-wall light was reduced after actual-view review. The current29-check suite passes in about53seconds using fixed60Hz simulated time, with the same assertions and an explicit real-time mode retained. A matched arrivals check passed in53.657seconds real-clock versus3.9753seconds fixed60; this measures test execution only. Graphical capture remains separately reviewed.
