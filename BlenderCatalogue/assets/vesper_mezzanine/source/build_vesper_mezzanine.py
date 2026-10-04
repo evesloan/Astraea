@@ -53,6 +53,9 @@ for a,b in zip(edge,edge[1:]+edge[:1]):
   lo,hi=sorted([a[1],b[1]])
   if lo<190.8:segments.append(([a[0],lo],[a[0],min(hi,190.8)]))
   if hi>193.2:segments.append(([a[0],max(lo,193.2)],[a[0],hi]))
+ elif abs(a[1]-b[1])<.001 and abs(a[1]-182.11)<.02:
+  lo,hi=sorted([a[0],b[0]])
+  if lo<26.6:segments.append(([lo,a[1]],[min(hi,26.6),a[1]]))
  else:segments.append((a,b))
 for i,(a,b)in enumerate(segments):
  if Vector(a).lerp(Vector(b),.5).length<.001:continue

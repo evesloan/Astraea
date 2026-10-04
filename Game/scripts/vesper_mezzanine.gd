@@ -26,6 +26,23 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.light_energy=1.0
 		light.light_color=Color(1,.95,.88)
 		light.shadow_enabled=true
+	for level in [61.0,64.5]:
+		for i in range(5):
+			var file:="AST-DIN-005_lower.glb" if level==61.0 else "AST-DIN-005.glb"
+			var wall:Node3D=ship.model(root,file,"VesperNorthDiningWall_%s_%d"%[level,i],Vector3(26.6+i*5.4,level,182))
+			var marker:=wall.find_child("DATUM_wash_source",true,false)as Node3D
+			var receiver:=wall.find_child("DATUM_wall_receiver",true,false)as Node3D
+			assert(marker!=null and receiver!=null)
+			var wash:=SpotLight3D.new()
+			root.add_child(wash)
+			wash.name="VesperNorthWallWash_%s_%d"%[level,i]
+			wash.global_position=marker.global_position
+			wash.look_at(receiver.global_position)
+			wash.spot_range=3.5
+			wash.spot_angle=65
+			wash.light_energy=.8
+			wash.light_color=Color(1,.95,.90)
+			wash.shadow_enabled=true
 	var lift:Node3D=load("res://scripts/commons_lift.gd").new()
 	lift.name="VesperDiningLift"
 	lift.floor_heights.assign([61.0,64.5])
