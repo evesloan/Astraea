@@ -59,6 +59,9 @@ for i,(x,y)in enumerate([(1.50,.75),(4.65,.78)]):
  box('READ_TaskHousing_'+str(i),x-.24,x+.24,2.80,3.075,-.98,-.58,'champagne_metal')
  box('READ_TaskLens_'+str(i),x-.20,x+.20,2.78,2.80,-.94,-.62,'lens')
  datum('light_'+str(i),xyz(x,2.75,-.78))
+ box('READ_SwitchPlinth_'+str(i),x+.61,x+.79,y,y+.035,-1.04,-.86,'champagne_metal')
+ box('READ_SwitchCap_'+str(i),x+.665,x+.735,y+.035,y+.055,-.985,-.915,'ivory_enamel')
+ datum('toggle_'+str(i),xyz(x+.70,y+.068,-.95))
 # A central book spine separates activities without hiding the court beyond.
 box('READ_ShelfBack',2.66,3.55,.12,2.65,-.40,-.24,'warm_walnut')
 for x in [2.66,3.49]:box('READ_ShelfSide_'+str(x),x,x+.06,.12,2.65,-.72,-.24,'warm_walnut')
