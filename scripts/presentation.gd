@@ -154,7 +154,7 @@ func _ready() -> void:
 				await get_tree().create_timer(.6).timeout
 				await _capture(view.label)
 
-			for view in [{"p":Vector3(55,78.1,0),"yaw":-PI/2,"label":"night_garden_arrival_","pitch":.08},{"p":Vector3(90,78.1,0),"yaw":PI/2,"label":"night_garden_return_","pitch":.08},{"p":Vector3(76.3,84.1,-49.4),"yaw":PI/2,"label":"suite_13041_salon_","pitch":.05},{"p":Vector3(69.7,84.1,-48.75),"yaw":-PI/2,"label":"suite_13041_retreat_","pitch":.05},{"p":Vector3(84.8,84.1,-45.3),"yaw":2.70,"label":"suite_13017_arrival_","pitch":.10},{"p":Vector3(79.4,84.1,-40.0),"yaw":-PI/2,"label":"suite_13017_bath_","pitch":-.25},{"p":Vector3(80.9,84.1,-42),"yaw":PI/2,"label":"suite_13017_entry_"},{"p":Vector3(70,84.1,-42),"yaw":-PI/2,"label":"suite_13017_return_"},{"p":Vector3(64,84.1,-42),"yaw":-PI/2,"label":"suite_13017_window_"}]:
+			for view in [{"p":Vector3(85.2,84.1,-34.9),"yaw":0.0,"label":"custodial_cart_","pitch":-.30},{"p":Vector3(55,78.1,0),"yaw":-PI/2,"label":"night_garden_arrival_","pitch":.08},{"p":Vector3(90,78.1,0),"yaw":PI/2,"label":"night_garden_return_","pitch":.08},{"p":Vector3(76.3,84.1,-49.4),"yaw":PI/2,"label":"suite_13041_salon_","pitch":.05},{"p":Vector3(69.7,84.1,-48.75),"yaw":-PI/2,"label":"suite_13041_retreat_","pitch":.05},{"p":Vector3(84.8,84.1,-45.3),"yaw":2.70,"label":"suite_13017_arrival_","pitch":.10},{"p":Vector3(79.4,84.1,-40.0),"yaw":-PI/2,"label":"suite_13017_bath_","pitch":-.25},{"p":Vector3(80.9,84.1,-42),"yaw":PI/2,"label":"suite_13017_entry_"},{"p":Vector3(70,84.1,-42),"yaw":-PI/2,"label":"suite_13017_return_"},{"p":Vector3(64,84.1,-42),"yaw":-PI/2,"label":"suite_13017_window_"}]:
 				actor.spawn_position = view.p
 				actor.position = view.p
 				actor.velocity = Vector3.ZERO
@@ -164,6 +164,52 @@ func _ready() -> void:
 				get_node("NativeResolutionStatus").text = "ASTRAEA / CONNECTED INTERIORS — work in progress"
 				await get_tree().create_timer(.6).timeout
 				await _capture(view.label)
+				if view.label=="custodial_cart_":
+					var cart=world_view.get_node("Astraea").find_child("CustodialCart",true,false)
+					var delta:Vector3=cart.global_transform*cart.grip_local-actor.camera.global_position
+					actor.rotation.y=atan2(-delta.x,-delta.z)
+					actor.pitch=atan2(delta.y,Vector2(delta.x,delta.z).length())
+					actor.camera.rotation.x=actor.pitch
+					var focus:=InputEventMouseButton.new()
+					focus.button_index=MOUSE_BUTTON_RIGHT
+					focus.pressed=true
+					Input.parse_input_event(focus.duplicate())
+					var action:=InputEventKey.new()
+					action.keycode=KEY_E
+					action.physical_keycode=KEY_E
+					action.pressed=true
+					Input.parse_input_event(action.duplicate())
+					Input.flush_buffered_events()
+					await get_tree().create_timer(1.3).timeout
+					if cart.driver!=actor:
+						push_error("Graphical RMB/E cart grab failed")
+						get_tree().quit(1)
+						return
+					await _capture("custodial_cart_focus_")
+					action.pressed=false
+					Input.parse_input_event(action.duplicate())
+					Input.flush_buffered_events()
+					for tick in range(3):await get_tree().physics_frame
+					focus.pressed=true
+					Input.parse_input_event(focus.duplicate())
+					action.pressed=true
+					Input.parse_input_event(action.duplicate())
+					Input.flush_buffered_events()
+					for tick in range(5):await get_tree().physics_frame
+					if cart.driver!=null:
+						push_error("Graphical cart release failed")
+						get_tree().quit(1)
+						return
+					action.pressed=false
+					Input.parse_input_event(action.duplicate())
+					Input.flush_buffered_events()
+					focus.pressed=false
+					Input.parse_input_event(focus.duplicate())
+					_toggle_directory()
+					await _capture("directory_")
+					assert(directory.get_global_rect().end.y<=get_viewport().get_visible_rect().size.y,"Directory remains inside native viewport")
+					_toggle_directory()
+
 			# Inspect the actual entry from the residential street at ordinary eye height.
 			actor.spawn_position = Vector3(84.1,84.1,-42)
 			actor.position = actor.spawn_position
@@ -323,9 +369,18 @@ func _build_directory() -> void:
 	var title := Label.new()
 	title.text = "EXPRESS DECK DIRECTORY — structural destinations, interiors unfinished"
 	column.add_child(title)
+	var scroll:=ScrollContainer.new()
+	scroll.name="DestinationScroll"
+	scroll.size_flags_vertical=Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.follow_focus=true
+	column.add_child(scroll)
+	var lists:=VBoxContainer.new()
+	lists.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+	scroll.add_child(lists)
 	var grid := GridContainer.new()
 	grid.columns = 2
-	column.add_child(grid)
+	lists.add_child(grid)
 	var contract: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/design_contract.json"))
 	for index in range(contract.deck_datums.size()):
 		var button := Button.new()
@@ -336,8 +391,8 @@ func _build_directory() -> void:
 		button.pressed.connect(_travel.bind(index))
 	var places := GridContainer.new()
 	places.columns = 2
-	column.add_child(places)
-	for target in [{"name":"D02 Botanical garden — unfinished", "position":Vector3(0,6.1,-51),"facing":PI}, {"name":"D09 Grand Atrium — unfinished", "position":Vector3(5,52.6,-59),"facing":PI}, {"name":"D01 Synthesis service bay — partial", "position":Vector3(-59,0.1,0)}, {"name":"D08 Gentle Waters — unfinished", "position":Vector3(13,44.1,218)}, {"name":"D09 Living Gifts — unfinished", "position":Vector3(13,52.6,218)}, {"name":"D10 Vesper — unfinished", "position":Vector3(13,61.1,218)}, {"name":"D09 Conversation salon — partial", "position":Vector3(63,52.6,-20.5)}]:
+	lists.add_child(places)
+	for target in [{"name":"D06 Canopy terrace — partial", "position":Vector3(-53,27.1,0),"facing":PI/2}, {"name":"D12 Night garden — partial", "position":Vector3(55,78.1,0),"facing":-PI/2}, {"name":"D13 Suite 13017 — partial", "position":Vector3(80.9,84.1,-42),"facing":PI/2}, {"name":"D13 Twin retreat 13041 — partial", "position":Vector3(80.9,84.1,-49.4),"facing":PI/2}, {"name":"D13 Cart starting bay", "position":Vector3(85.2,84.1,-34.9),"facing":0}, {"name":"D02 Botanical garden — unfinished", "position":Vector3(0,6.1,-51),"facing":PI}, {"name":"D09 Grand Atrium — unfinished", "position":Vector3(5,52.6,-59),"facing":PI}, {"name":"D01 Synthesis service bay — partial", "position":Vector3(-59,0.1,0)}, {"name":"D08 Gentle Waters — unfinished", "position":Vector3(13,44.1,218)}, {"name":"D09 Living Gifts — unfinished", "position":Vector3(13,52.6,218)}, {"name":"D10 Vesper — unfinished", "position":Vector3(13,61.1,218)}, {"name":"D09 Conversation salon — partial", "position":Vector3(63,52.6,-20.5)}]:
 		var button := Button.new()
 		button.text = target.name
 		button.custom_minimum_size = Vector2(450,36)
@@ -353,7 +408,7 @@ func _toggle_directory() -> void:
 	directory_open = not directory_open
 	directory.visible = directory_open
 	get_tree().paused = directory_open
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if directory_open else Input.MOUSE_MODE_CAPTURED
+	world_view.get_node("Astraea/ShipSpace/PersistentActors/Player").set_controls_enabled(not directory_open)
 
 func _travel(index: int) -> void:
 	var world = world_view.get_node("Astraea")
