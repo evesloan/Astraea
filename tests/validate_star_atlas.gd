@@ -16,6 +16,34 @@ func walk(actor:CharacterBody3D,destination:Vector2) -> void:
 	if not reached:
 		for i in range(actor.get_slide_collision_count()):print("STAR ATLAS BLOCKER ",actor.get_slide_collision(i).get_collider().get_path())
 	assert(reached,"Star Atlas route stalled at %s toward %s"%[actor.position,destination])
+func check_gallery_guards(ship:Node3D) -> int:
+	var contract:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D12_D14_star_atlas.json"))
+	var count:=0
+	for region in contract.floor_regions:
+		if not "_gallery_" in region.id:continue
+		var y:float=contract.floor_y[region.deck]
+		var stair:Dictionary=contract.first_stair if region.deck=="D13" else contract.second_stair
+		var rings:Array=[region.boundary]
+		rings.append_array(region.holes)
+		for ring in rings:
+			for i in range(ring.size()):
+				var a:=Vector2(ring[i][0],ring[i][1])
+				var b:=Vector2(ring[(i+1)%ring.size()][0],ring[(i+1)%ring.size()][1])
+				var normal:Vector2=(b-a).normalized().orthogonal()
+				for t in [.2,.5,.8]:
+					var p:Vector2=a.lerp(b,t)
+					if absf(p.x+48)<.01:continue # Real atrium connector mouth.
+					if absf(p.y-stair.start_z)<.015 and p.x>=stair.upper_flight_x[0]-.04 and p.x<=stair.upper_flight_x[1]+.04:continue
+					var shaft:Dictionary=contract.lift.floor_hole_xz
+					if p.x>=shaft.x[0]-.02 and p.x<=shaft.x[1]+.02 and p.y>=shaft.z[0]-.02 and p.y<=shaft.z[1]+.02:continue # Separate shaft and controlled gates.
+					var from:=Vector3(p.x+normal.x*.35,y+.65,p.y+normal.y*.35)
+					var to:=Vector3(p.x-normal.x*.35,y+.65,p.y-normal.y*.35)
+					var query:=PhysicsRayQueryParameters3D.create(from,to)
+					query.hit_back_faces=true
+					var hit:=ship.get_world_3d().direct_space_state.intersect_ray(query)
+					assert(not hit.is_empty(),"Missing gallery guard at %s %s"%[region.deck,p])
+					count+=1
+	return count
 func run() -> void:
 	var main:Node=(load("res://scenes/main.tscn")as PackedScene).instantiate()
 	root.add_child(main)
@@ -24,6 +52,9 @@ func run() -> void:
 	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
 	var district:=ship.find_child("D12_D14_StarAtlas_WIP",true,false)
 	assert(district!=null and district.get_meta("historical_library_id")=="D12_stargazing4")
+	var guard_samples:=check_gallery_guards(ship)
+	assert(guard_samples>50)
+	print("STAR ATLAS GUARD CONTACT SAMPLES: ",guard_samples)
 	var architecture:=district.get_node("StarAtlasAuthoredArchitecture")
 	for i in range(10):
 		var marker:=architecture.find_child("DATUM_light_"+str(i),true,false)as Node3D
@@ -36,6 +67,8 @@ func run() -> void:
 	var lift=district.get_node("StarAtlasPassengerLift")
 	assert(lift.floor_heights==[78.0,84.0,88.5])
 	for deck in [12,13,14]:assert(lift.find_child("star_atlas_cabin_D"+str(deck),true,false)!=null)
+	for part in architecture.find_children("LIB_finish*","MeshInstance3D",true,false):
+		assert(part.get_node_or_null("StaticContact")==null,"Study fabric must not duplicate physical floor")
 	var collection:=district.get_node("NorthCollectionStudy_WIP")
 	var batch:MultiMeshInstance3D=collection.get_node("LocalCollectionStock")
 	assert(batch.multimesh.instance_count>40,"Collection stock must be present")

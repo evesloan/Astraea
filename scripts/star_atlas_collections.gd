@@ -30,6 +30,7 @@ static func build(district:Node3D,ship:Node3D) -> void:
 		for i in range(transforms.size()):mm.set_instance_transform(i,transforms[i]*part.global_transform)
 		batch.multimesh=mm
 		batch.set_meta("stock_groups",transforms.size())
+		batch.set_meta("catalogue_file","AST-LIB-006.glb")
 		bay.add_child(batch)
 	stock.free()
 	var center:=Vector3(-86,78,-21.5)

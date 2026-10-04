@@ -10,7 +10,7 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	glass.shader=load("res://shaders/hospitality_glass.gdshader")
 	for part in architecture.find_children("*","MeshInstance3D",true,false):
 		if "glass" in part.name:part.material_override=glass
-		if part.name.begins_with("LIB_steps"):
+		if part.name.begins_with("LIB_steps") or part.name.begins_with("LIB_finish"):
 			var contact:=part.get_node_or_null("StaticContact")
 			if contact!=null:contact.free()
 	# Closed source-authored stair wedges provide the single smooth walking contact.
