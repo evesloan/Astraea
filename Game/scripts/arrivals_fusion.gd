@@ -9,7 +9,7 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	glass.shader=load("res://shaders/hospitality_glass.gdshader")
 	for part in architecture.find_children("*","MeshInstance3D",true,false):
 		if "Glass" in part.name:part.material_override=glass
-		if part.name.begins_with("ARR_Step"):
+		if part.name.begins_with("ARR_Step") or part.name.begins_with("ARR_VisualFloor"):
 			var contact:=part.get_node_or_null("StaticContact")
 			if contact!=null:contact.free()
 	var reception_alcove:Node3D=ship.model(district,"AST-ARR-004.glb","ArrivalsFittedReceptionAlcove",Vector3(-30,0,-456))
@@ -68,7 +68,7 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.look_at(Vector3(-47.15,7.5,-432),Vector3.UP)
 		light.spot_angle=58
 		light.spot_range=32
-		light.light_energy=2.1
+		light.light_energy=.8
 		light.light_color=Color(1,.94,.85)
 		light.shadow_enabled=true
 	for i in range(2):

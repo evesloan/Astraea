@@ -1,6 +1,8 @@
 extends SceneTree
 
 func _initialize() -> void:
+	assert(Engine.physics_ticks_per_second==60,"Current movement fixtures require the established60Hz physics rate")
+	assert(is_equal_approx(Engine.time_scale,1.0),"Tests must not alter the simulation time scale")
 	var contract: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/design_contract.json"))
 	assert(contract.binding_scale.decks == 18)
 	assert(contract.binding_scale.guest_units == 1000)
