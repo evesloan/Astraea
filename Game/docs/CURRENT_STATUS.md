@@ -11,7 +11,7 @@ Updated2026-10-04 after the connected D06 and first D13 suite passes. Fresh Godo
 - Partial D09 salon with authored enclosure, varied ceiling, glazed gallery and several occupied furniture groups; its study lamp responds to the shared RMB/E interaction
 - Two partial D13 twin suites at historical addresses13017 and13041, connected by a walkable route, with preserved historical bed anchors, shaped living/sleeping thresholds, inward glazing and fitted bathroom fixtures
 - The opaque bathroom door inherits existing interaction/motion handling and passed300 fixed-architecture sweep samples, focused operation and obstruction checks
-- 129 catalogue designs, including 29 recent drafts. Component presence is not room completion or final-art approval
+- 131 catalogue designs, including 29 recent drafts. Component presence is not room completion or final-art approval
 
 - The paired suite entry now retracts into enclosed hollow pockets. Shared focus/E and call-plate operation,400 fixed-geometry motion samples and actor/loose-prop obstruction checks pass
 
@@ -48,3 +48,6 @@ The existing12x12m R070 allocation now has an authored shop profile, recessed ro
 
 ## Integrated arrivals and fusion checkpoint
 The original D01/D02 programmes now share a ceremonial branching stair, offset visitor galleries, overhead glazed machinery, opaque maintenance routes and a physical two-stop lift. All29 Godot groups pass, including25 service-screening rays and actual player/cart/four-bottle travel in the arrivals lift. First-person review now shows the overhead spectacle, but broad surfaces, focal-wall illumination, reception and waiting activity remain unfinished. No fusion relocation or D03 crew-room change occurred. See ARRIVALS_INTEGRATION.md and ARRIVALS_VALIDATION.json.
+
+## Arrivals hospitality refinement
+All29 checks pass after adding a three-height crescent reception desk and its fitted fan-shaped enclosure, three task lights, two waiting groups, deeper upper-gallery profiles and more selective machinery glow. The shared eight-source budget now verifies authored visible illumination receivers so a correctly aimed wallwasher is not discarded solely because its emitting face points away from the viewer. Behind-wall receiver rejection is tested.131 registered editable designs and489 main-scene instances are presence counts only. Actual captures remain below final architectural approval, particularly broad surface treatment and focal-light balance.
