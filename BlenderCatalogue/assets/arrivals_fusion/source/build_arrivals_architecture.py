@@ -227,11 +227,20 @@ for i,(x0,x1,z0,z1,h)in enumerate([(-18,-8,-442,-422,4.15),(-44,-18,-465,-456,3.
    verts=[(*q[k],heights[k]+delta)for delta in [0,.18]for k in range(4)]
    mesh('ARR_HospitalityCanopy_%d_%d'%(i,j),verts,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'ivory_enamel')
   else:extrusion('ARR_HospitalityCanopy_%d_%d'%(i,j),q,h,h+.18,'ivory_enamel')
+# Two shallow, shaped pause ceilings mark real viewing seats along the galleries.
+# Their thin hanging rods meet the protected overhead slab, not the exhibit glass.
+for label,cz,sign in [('north',-444.2,1),('south',-419.8,-1)]:
+ outline=[(-34.0,cz-sign*.45),(-28.0,cz-sign*.45),(-28.0,cz+sign*.5),(-28.5,cz+sign*1.1),(-29.2,cz+sign*1.35),(-32.8,cz+sign*1.35),(-33.5,cz+sign*1.1),(-34.0,cz+sign*.5)]
+ q=[xy(v)for v in outline]
+ extrusion('ARR_GalleryPauseCeiling_'+label,q,9.55,9.73,'ivory_enamel')
+ for x in [-33.3,-28.7]:
+  cx,cy=xy((x,cz+.1*sign));beam('ARR_GalleryPauseSupport_'+label+str(x),[(cx,cy,9.73),(cx,cy,11.76)],.055,.055,'champagne_metal')
+ for a,b in zip(outline,outline[1:]+outline[:1]):wall('ARR_GalleryPauseReveal_'+label,a,b,9.48,9.55,.06,'warm_walnut')
 # Fixtures attach to actual structure and emit below their lenses.
-light_points=[(-14,-436,4.73),(-14,-428,4.73),(-25,-441,5.70),(-35,-441,5.70),(-25,-423,5.70),(-35,-423,5.70),(-40,-443.7,9.2),(-22,-432,11.25),(-40,-420.3,9.2),(-31,-460,3.56),(-31,-404,3.56)]
+light_points=[(-14,-436,4.73),(-14,-428,4.73),(-25,-441,5.70),(-35,-441,5.70),(-25,-423,5.70),(-35,-423,5.70),(-40,-443.7,9.2),(-22,-432,11.25),(-40,-420.3,9.2),(-31,-460,3.56),(-31,-404,3.56),(-31,-443.6,9.30),(-31,-420.4,9.30)]
 for i,(x,z,h)in enumerate(light_points):
  cx,cy=xy((x,z));N=16;q=[(cx+.30*math.cos(2*math.pi*j/N),cy+.30*math.sin(2*math.pi*j/N))for j in range(N)];extrusion('ARR_FixtureCasing_'+str(i),q,h,h+.10,'champagne_metal');extrusion('ARR_FixtureLens_'+str(i),[(cx+(a-cx)*.88,cy+(b-cy)*.88)for a,b in q],h-.025,h,'lens');datum('light_'+str(i),(cx,cy,h-.04))
- mount=4.96 if i<2 else (5.76 if i<6 else (11.76 if i<9 else 3.8))
+ mount=4.96 if i<2 else (5.76 if i<6 else (11.76 if i<9 else(3.8 if i<11 else 9.55)))
  if mount>h+.10:beam('ARR_FixtureMount_'+str(i),[(cx,cy,h+.10),(cx,cy,mount)],.04,.04,'champagne_metal')
 
 # Two visible directional luminaires reveal the relief and timber wall.
