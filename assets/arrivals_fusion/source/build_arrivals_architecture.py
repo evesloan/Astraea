@@ -211,7 +211,7 @@ for index,housing in enumerate(D['exhibit_housings']):
   wall('ARR_ExhibitGlassSide_'+str(index),a,b,lo+.08,hi-.12,.035,'glass')
  for x in [x0,x0+(x1-x0)/3,x0+2*(x1-x0)/3,x1]:
   for z in [z0,z1]:wall('ARR_ExhibitMullion_'+str(index),(x-.04,z),(x+.04,z),lo,hi,.12,'champagne_metal')
- for x in [(x0+x1)/2-5.5,(x0+x1)/2+5.5]:wall('ARR_ExhibitBearingCrossbeam_'+str(index),(x,z0),(x,z1),10.83,10.98,.32,'ivory_enamel')
+ for x in [(bay_x0+x1)/2-5.5,(bay_x0+x1)/2+5.5]:wall('ARR_ExhibitBearingCrossbeam_'+str(index),(x,z0),(x,z1),10.83,10.98,.32,'ivory_enamel')
  front_z=z0 if index==0 else z1
  for pier_x,target_x in [(-44.8,x0),(-20.8,x1)]:wall('ARR_ExhibitTransferShoulder_'+str(index),(pier_x,front_z),(target_x,front_z),10.40,10.98,.85,'warm_stone')
  datum('exhibit_center_'+str(index),(*xy(((bay_x0+x1)/2,(z0+z1)/2)),8.65))
