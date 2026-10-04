@@ -16,6 +16,19 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	lift.cabin_file="AST-CIR-003_three_stop.glb"
 	lift.persistent_id=&"aquatic_lift_001"
 	root.add_child(lift)
+	var ceiling:Node3D=ship.model(root,"AST-AQU-012.glb","AquaticAuthoredCeiling",Vector3(8,61,182))
+	for i in range(4):
+		var marker:=ceiling.find_child("DATUM_ceiling_light_"+str(i),true,false)as Node3D
+		assert(marker!=null)
+		var light:=OmniLight3D.new()
+		root.add_child(light)
+		light.name="AquaticCoveSource_"+str(i)
+		light.global_position=marker.global_position
+		light.omni_range=12
+		light.light_energy=1.0
+		light.light_color=Color(1,.95,.87)
+		light.shadow_enabled=true
+		light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE
 	var basin: Dictionary = data.basin
 	var boundary: Array = basin.boundary
 	var vertices: Array[Vector3] = []
@@ -57,9 +70,9 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.light_energy = 0.7
 		light.spot_range = 6
 		light.spot_angle = 62
-	for base_y in [44.0,52.5]:
+	for base_y in [44.0,52.5,61.0]:
 		for location in [Vector2(20,186),Vector2(50,244),Vector2(12,243)]:
-			var column := ship.model(root,"AST-STR-001.glb","BearingColumn",Vector3(location.x,base_y,location.y)) as Node3D
+			var column := ship.model(root,"AST-STR-001-H810.glb" if base_y==61.0 else "AST-STR-001.glb","BearingColumn",Vector3(location.x,base_y,location.y)) as Node3D
 			for index in range(4):
 				var marker := column.find_child("DATUM_light_"+str(index),true,false) as Node3D
 				assert(marker != null)

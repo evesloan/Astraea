@@ -292,6 +292,25 @@ func _ready() -> void:
 			await get_tree().create_timer(1.0).timeout
 			get_node("NativeResolutionStatus").text = "ASTRAEA / D08 WET RETREAT — component integration"
 			await _capture("wet_retreat_")
+			actor.spawn_position=Vector3(14,61.1,218)
+			actor.position=actor.spawn_position
+			actor.velocity=Vector3.ZERO
+			actor.rotation.y=-PI/2
+			actor.pitch=.15
+			actor.camera.rotation.x=actor.pitch
+			await get_tree().create_timer(.6).timeout
+			await _capture("aquatic_upper_ceiling_")
+			set_world_resolution(2)
+			effects=false
+			post_pass.material.set_shader_parameter("enabled",false)
+			world_view.get_node("Astraea").set_display_effects(false)
+			await get_tree().create_timer(.6).timeout
+			await _capture("aquatic_upper_ceiling_clear_")
+			set_world_resolution(0)
+			effects=true
+			post_pass.material.set_shader_parameter("enabled",true)
+			world_view.get_node("Astraea").set_display_effects(true)
+
 			for level in [44.0,52.5,61.0]:
 				actor.spawn_position=Vector3(9.2,level+.1,235)
 				actor.position=actor.spawn_position
