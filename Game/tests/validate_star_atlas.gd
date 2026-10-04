@@ -116,6 +116,16 @@ func run() -> void:
 		query.exclude=folio_excluded
 		var support:=ship.get_world_3d().direct_space_state.intersect_ray(query)
 		assert(not support.is_empty() and counter.is_ancestor_of(support.collider) and absf(support.position.y-folio.global_position.y)<.006,"Arrival reference books must sit on counter tops")
+	for task_fixture in arrival.find_children("CounterTaskFixture_*","Node3D",false,false):
+		var receiver:Node3D=task_fixture.find_child("POINT_mount_contact",true,false)
+		var query:=PhysicsRayQueryParameters3D.create(receiver.global_position+Vector3.UP*.025,receiver.global_position-Vector3.UP*.025)
+		var fixture_excluded:Array[RID]=[]
+		for body in task_fixture.find_children("*","StaticBody3D",true,false):fixture_excluded.append(body.get_rid())
+		query.exclude=fixture_excluded
+		var support:=ship.get_world_3d().direct_space_state.intersect_ray(query)
+		assert(not support.is_empty() and counter.is_ancestor_of(support.collider) and absf(support.position.y-receiver.global_position.y)<.006,"Counter task fixture must rest on its authored top")
+	for task_source in arrival.find_children("CounterTaskSource_*","SpotLight3D",false,false):
+		assert(ship.get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(task_source.global_position,task_source.global_position+Vector3.DOWN*.15)).is_empty(),"Counter task source must leave its diffuser")
 	var reading_source:Node3D=arrival.get_node("AtriumReadingLampSource")
 	assert(ship.get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(reading_source.global_position,reading_source.global_position-reading_source.global_basis.z*.20)).is_empty(),"Reading lamp must emit outside its actual hood")
 	for p in [Vector3(-54.7,78.1,6.25),Vector3(-59,78.1,10.5),Vector3(-57,78.1,17.25),Vector3(-53.5,78.1,17.25)]:assert(ship.arrive_at(p,0),"Library catalogue and reading approaches need room clearance")
@@ -133,7 +143,7 @@ func run() -> void:
 	await walk(actor,Vector2(-50,0))
 	assert(absf(actor.position.y-78)<.12,"Both actual stairs return to the lower library")
 	for point in [Vector2(-60,0),Vector2(-77,-8),Vector2(-87,-15),Vector2(-89.5,-21.5),Vector2(-87,-25.3),Vector2(-83,-25.3),Vector2(-79,-24),Vector2(-79,-18),Vector2(-87,-15)]:await walk(actor,point)
-	for point in [Vector2(-56,3.8),Vector2(-58.5,4.8),Vector2(-62,4.8),Vector2(-62,9.5),Vector2(-59,10.5),Vector2(-57,10.5),Vector2(-57,17.25),Vector2(-57,20.5),Vector2(-53.5,20.5),Vector2(-53.5,17.25)]:await walk(actor,point)
+	for point in [Vector2(-65,-2),Vector2(-63,3.5),Vector2(-60,3.5),Vector2(-59,7.5),Vector2(-59,10.5),Vector2(-57,10.5),Vector2(-57,17.25),Vector2(-57,20.5),Vector2(-53.5,20.5),Vector2(-53.5,17.25)]:await walk(actor,point)
 	print("STAR ATLAS WALK FINISHED AT PHYSICS FRAME: ",Engine.get_physics_frames())
 	print("STAR ATLAS PASS: actual bidirectional three-level walking circuit, ten light exits, protected D15 cap, sealed D12 lift pan, three distinct controls, supported local book stock and first collection study approaches. Loaded lift, detailed guards, wider furnishing and final art require separate checks.")
 	main.queue_free()

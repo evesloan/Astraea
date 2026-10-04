@@ -180,6 +180,10 @@ for x in [-68.65,-63.65]:
 for name,rx,rz,h,role in [('border',3.25,2.60,78.002,'oatmeal_weave'),('field',3.12,2.47,78.004,'clay_weave')]:
  q=[xyz(-86+rx*math.cos(j*math.pi/12),h,-21.5+rz*math.sin(j*math.pi/12))for j in range(24)]
  mesh('LIB_Finish_Study_'+name,q,[tuple(range(24))],role)
+# The reference-counter landing ends at the protected entrance travel band's edge.
+for name,rx,rz,h,role in [('border',3.10,2.0,78.002,'oatmeal_weave'),('field',2.96,1.86,78.004,'clay_weave')]:
+ q=[xyz(-63+rx*math.cos(j*math.pi/12),h,5+rz*math.sin(j*math.pi/12))for j in range(24)]
+ mesh('LIB_Finish_Reference_'+name,q,[tuple(range(24))],role)
 # Source-mounted local fixtures, with explicit below-lens exit markers.
 lights=[(-59,0,83.25),(-83,-25,81.18),(-83,25,81.43),(-57,-17,82.13),(-57,17,81.88),(-80,0,91.9),(-90,-11.5,87.5),(-72.2,0,87.55),(-82,12.5,91.95),(-72.2,0,91.95)]
 for i,(x,z,h)in enumerate(lights):

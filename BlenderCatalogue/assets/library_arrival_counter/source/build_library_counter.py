@@ -40,6 +40,7 @@ for name,a,b,height in [('west',-.78,-.25,.95),('lower',-.25,.25,.74),('east',.2
  if name!='lower':ring(name+'_open_storage',a+.032,b-.032,2.02,2.62,.26,.30,'warm_walnut')
  angle=(a+b)/2
  marker(name+'_work_surface',(2.32*math.sin(angle),2.5-2.32*math.cos(angle),height))
+ if name!='lower':marker(name+'_fixture_receiver',(2.03*math.sin(angle),2.5-2.03*math.cos(angle),height))
  marker(name+'_guest_approach',(3.55*math.sin(angle),2.5-3.55*math.cos(angle),0))
  marker(name+'_rear_approach',(1.20*math.sin(angle),2.5-1.20*math.cos(angle),0))
 for angle in [-.78,.78]:

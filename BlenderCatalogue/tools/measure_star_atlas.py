@@ -6,7 +6,7 @@ root=Path(__file__).resolve().parents[1]
 def bounds():
  pts=[o.matrix_world@Vector(v) for o in bpy.context.scene.objects if o.type=='MESH' for v in o.bound_box]
  return [[min(p[i] for p in pts) for i in range(3)],[max(p[i] for p in pts) for i in range(3)]]
-for family,aid,markers in [('star_atlas_architecture','AST-LIB-011',['DATUM_light_'+str(i) for i in range(10)]),('commons_lift_cabin','AST-CIR-003_three_stop',[]),('library_structure','AST-LIB-STR-003_start',[])]:
+for family,aid,markers in [('star_atlas_architecture','AST-LIB-011',['DATUM_light_'+str(i) for i in range(10)]),('commons_lift_cabin','AST-CIR-003_three_stop',[]),('library_structure','AST-LIB-STR-003_start',[]),('library_arrival_counter','AST-LIB-012',['DATUM_'+side+'_'+role for side in ['west','lower','east'] for role in ['guest_approach','rear_approach','work_surface']])]:
  r=root/'assets'/family;source=r/'source'/(aid+'.blend');export=r/'exports'/(aid+'.glb')
  bpy.ops.wm.open_mainfile(filepath=str(source));lo,hi=bounds()
  assert all(o.data.uv_layers for o in bpy.context.scene.objects if o.type=='MESH')
