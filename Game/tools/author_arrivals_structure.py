@@ -20,7 +20,7 @@ stair_voids=unary_union([box(-39.1,-443,-35.9,-436.95),box(-39.1,-427.05,-35.9,-
 public=public.difference(stair_voids).difference(lift)
 service=unary_union([rect(v)for v in d['service_upper_floor_rectangles']])
 service_link=box(-59.5,-435,-52,-429)
-service=service.union(service_link)
+service=service.union(service_link).union(unary_union([rect(v)for v in d.get('concealed_exhibit_links',[])]))
 assert public.is_valid and service.is_valid and public.intersection(service).area<1e-6
 assert envelope.covers(public.difference(entry))
 assert envelope.covers(service.difference(service_link))

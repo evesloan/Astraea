@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "Integrated section intent accepted by user; detailed geometry and clearance validation pending",
+  "status": "Revised overhead composition in progress; not final art acceptance",
   "source_messages": [
     "Sentinel_3e94fb7aee188191b9c5d63d458d665f",
     "Sentinel_4f7e344c13d08191b933a64e8734cf14"
@@ -122,33 +122,22 @@
     {
       "id": "north_overlook",
       "x": [
-        -44,
+        -46,
         -18
       ],
       "z": [
         -445,
-        -438
+        -440.5
       ]
     },
     {
       "id": "south_overlook",
       "x": [
-        -44,
+        -46,
         -18
       ],
       "z": [
-        -426,
-        -419
-      ]
-    },
-    {
-      "id": "west_overlook",
-      "x": [
-        -46,
-        -39
-      ],
-      "z": [
-        -445,
+        -423.5,
         -419
       ]
     }
@@ -196,11 +185,12 @@
         -22
       ],
       "z": [
-        -453,
-        -446
+        -440,
+        -433
       ],
       "glazed_underside_y": 6.55,
-      "top_y": 10.9
+      "top_y": 10.9,
+      "opaque_service_bay_end_x": -39.4
     },
     {
       "id": "south_contained_exhibit",
@@ -209,11 +199,12 @@
         -20
       ],
       "z": [
-        -418,
-        -411
+        -431,
+        -424
       ],
       "glazed_underside_y": 6.65,
-      "top_y": 10.9
+      "top_y": 10.9,
+      "opaque_service_bay_end_x": -37.4
     }
   ],
   "service_screens": [
@@ -272,7 +263,7 @@
     "west_overlook": [
       -43,
       7.65,
-      -432
+      -443.5
     ]
   },
   "concealed_service_view_targets": [
@@ -290,6 +281,16 @@
       -51,
       7.65,
       -432
+    ],
+    [
+      -45,
+      7.65,
+      -437
+    ],
+    [
+      -44,
+      7.65,
+      -427
     ]
   ],
   "required_tests": [
@@ -338,8 +339,8 @@
   "compiled_area_accounting": {
     "original_gross_programme_m2": 3128.0,
     "D01_floor_including_public_connection_excluding_lift_m2": 3161.2944,
-    "D02_public_floor_including_connection_excluding_stairs_lift_m2": 785.0844000000001,
-    "D02_staff_floor_including_service_connection_m2": 1401.0,
+    "D02_public_floor_including_connection_excluding_stairs_lift_m2": 587.2944000000001,
+    "D02_staff_floor_including_service_connection_m2": 1447.08,
     "D03_protected_opaque_floor_m2": 3128.0,
     "public_staff_coplanar_overlap_m2": 0.0,
     "note": "Gross programme, walkable floor and machinery/exhibit volume are distinct; no passenger or crew capacity added"
@@ -412,15 +413,47 @@
       "deck": "D02",
       "boundary": [
         [
+          -39.1,
+          -443.0
+        ],
+        [
+          -35.9,
+          -443.0
+        ],
+        [
+          -35.9,
+          -440.5
+        ],
+        [
+          -20.0,
+          -440.5
+        ],
+        [
+          -20.0,
+          -423.5
+        ],
+        [
+          -35.9,
+          -423.5
+        ],
+        [
+          -35.9,
+          -421.0
+        ],
+        [
+          -39.1,
+          -421.0
+        ],
+        [
+          -39.1,
+          -423.5
+        ],
+        [
           -46.0,
-          -419.0
+          -423.5
         ],
         [
-          -44.0,
-          -419.0
-        ],
-        [
-          -39.0,
+          -46.0,
           -419.0
         ],
         [
@@ -464,69 +497,19 @@
           -445.0
         ],
         [
-          -39.0,
-          -445.0
-        ],
-        [
-          -44.0,
+          -46.0,
           -445.0
         ],
         [
           -46.0,
-          -445.0
+          -440.5
+        ],
+        [
+          -39.1,
+          -440.5
         ]
       ],
       "holes": [
-        [
-          [
-            -35.9,
-            -426.0
-          ],
-          [
-            -35.9,
-            -421.0
-          ],
-          [
-            -39.1,
-            -421.0
-          ],
-          [
-            -39.1,
-            -427.05
-          ],
-          [
-            -39.0,
-            -427.05
-          ],
-          [
-            -39.0,
-            -436.95
-          ],
-          [
-            -39.1,
-            -436.95
-          ],
-          [
-            -39.1,
-            -443.0
-          ],
-          [
-            -35.9,
-            -443.0
-          ],
-          [
-            -35.9,
-            -438.0
-          ],
-          [
-            -20.0,
-            -438.0
-          ],
-          [
-            -20.0,
-            -426.0
-          ]
-        ],
         [
           [
             -12.78,
@@ -556,10 +539,6 @@
       "deck": "D02",
       "boundary": [
         [
-          -8.0,
-          -466.0
-        ],
-        [
           -54.0,
           -466.0
         ],
@@ -605,11 +584,47 @@
         ],
         [
           -48.0,
+          -425.8
+        ],
+        [
+          -37.4,
+          -425.8
+        ],
+        [
+          -37.4,
+          -428.2
+        ],
+        [
+          -48.0,
+          -428.2
+        ],
+        [
+          -48.0,
+          -435.8
+        ],
+        [
+          -39.4,
+          -435.8
+        ],
+        [
+          -39.4,
+          -438.2
+        ],
+        [
+          -48.0,
+          -438.2
+        ],
+        [
+          -48.0,
           -454.0
         ],
         [
           -8.0,
           -454.0
+        ],
+        [
+          -8.0,
+          -466.0
         ]
       ],
       "holes": [],
@@ -644,6 +659,30 @@
       "thickness": 0.24,
       "material_role": "staff_floor",
       "status": "Integrated arrivals/fusion structural ownership; architectural/physics acceptance pending"
+    }
+  ],
+  "concealed_exhibit_links": [
+    {
+      "id": "north_exhibit_access",
+      "x": [
+        -49,
+        -39.4
+      ],
+      "z": [
+        -438.2,
+        -435.8
+      ]
+    },
+    {
+      "id": "south_exhibit_access",
+      "x": [
+        -49,
+        -37.4
+      ],
+      "z": [
+        -428.2,
+        -425.8
+      ]
     }
   ]
 }
