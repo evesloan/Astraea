@@ -5,7 +5,7 @@ func run() -> void:
 	for frame in range(60):await physics_frame
 	var ship:Node3D=main.get_node("World360/Astraea")
 	var room:Node3D=ship.find_child("D10_VesperDining_FirstGroups_WIP",true,false)
-	assert(room.get_meta("programme_key")=="D10_directory_08" and room.get_meta("fitted_seats")==54)
+	assert(room.get_meta("programme_key")=="D10_directory_08" and room.get_meta("fitted_seats")==240)
 	var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)
 	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
 	var excluded:Array[RID]=[]
@@ -29,7 +29,7 @@ func run() -> void:
 		assert(not top_hit.is_empty() and "InsetStoneTop" in str(top_hit.collider.get_path()),"Recessed tabletop must remain exposed, not hidden under a wooden cap")
 	var ids:Dictionary={}
 	var chairs:=room.find_children("VesperChair_*","Node3D",false,false)
-	assert(chairs.size()==54)
+	assert(chairs.size()==240)
 	for chair in chairs:
 		var id:String=chair.get_meta("persistent_id")
 		assert(not ids.has(id))
@@ -48,7 +48,7 @@ func run() -> void:
 	actor.velocity=Vector3.ZERO
 	for target in route:await walk(actor,target)
 	assert(absf(actor.position.y-61)<.12)
-	print("VESPER SUBSET PASS:",samples,"compound cart/load and driver poses,54 unique chair contacts/supports and actual service/gallery walking. Full240 capacity, occupied guest access, service simulation and final art remain pending.")
+	print("VESPER SUBSET PASS:",samples,"compound cart/load and driver poses,240 unique chair contacts/supports and actual service/gallery walking. Occupied guest access, service simulation and final art remain pending.")
 	main.queue_free()
 	await process_frame
 	quit()

@@ -5,13 +5,13 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	root.name="D10_VesperDining_FirstGroups_WIP"
 	root.set_meta("programme_key","D10_directory_08")
 	root.set_meta("historical_room_id","D10_banquet7")
-	root.set_meta("fitted_seats",54)
+	root.set_meta("fitted_seats",240)
 	root.set_meta("required_capacity",240)
 	parent.add_child(root)
-	var definitions:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D10_vesper_dining_subset.json"))
+	var definitions:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D10_vesper_mezzanine.json"))
 	for item in definitions.groups:
 		var index:int=item.index
-		var table:Node3D=ship.model(root,item.model,"VesperTable_"+str(index),Vector3(item.x,61,item.z))
+		var table:Node3D=ship.model(root,item.model,"VesperTable_"+str(index),Vector3(item.x,item.y,item.z))
 		table.set_meta("persistent_id","D10_banquet7_table_%02d"%index)
 		for seat in range(int(item.seats)):
 			var marker:=table.find_child("DATUM_seat_anchor_"+str(seat),true,false)as Node3D
