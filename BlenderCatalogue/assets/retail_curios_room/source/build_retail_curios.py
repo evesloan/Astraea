@@ -38,7 +38,7 @@ import random
 rng=random.Random(7001);image=bpy.data.images.new('R070_BurntOrangeEnamel',width=128,height=128);pixels=[]
 for y in range(128):
  for x in range(128):
-  n=rng.uniform(-.016,.016);pixels.extend((.52+n,.145+n*.55,.045+n*.25,1))
+  n=rng.uniform(-.016,.016);pixels.extend((.72+n,.31+n*.55,.07+n*.25,1))
 image.pixels=pixels;image.pack();m=bpy.data.materials.new('BurntOrangeEnamel');m.use_nodes=True;p=m.node_tree.nodes.get('Principled BSDF');p.inputs['Roughness'].default_value=.66;t=m.node_tree.nodes.new('ShaderNodeTexImage');t.image=image;t.interpolation='Closest';m.node_tree.links.new(t.outputs['Color'],p.inputs['Base Color']);m['meters_per_tile_uv']=[1,1];mats['orange']=m
 m=bpy.data.materials.new('CuriosSmokedGlass');m.use_nodes=True;p=m.node_tree.nodes.get('Principled BSDF');p.inputs['Base Color'].default_value=(.28,.43,.43,.30);p.inputs['Alpha'].default_value=.30;mats['glass']=m
 D=json.loads((ROOT/'source/room_contract.json').read_text());outline=D['source_plan_polygon_xy']
@@ -106,6 +106,17 @@ extrusion('CUR_WrappingCounterBase',q,.05,.95,'orange');extrusion('CUR_WrappingC
 datum('service_approach',(.55,2.0,0));datum('staff_approach',(.55,4.3,0))
 # Deliberate patterned floor border without owning another collision floor.
 for j,(a,b)in enumerate(zip(outline,outline[1:]+outline[:1])):wall('CUR_VisualFloorBorder_%02d'%j,(a[0]*.90,a[1]*.90),(b[0]*.90,b[1]*.90),.012,.019,.11,'orange')
+# Paired fitted rear cases give the wrapping counter a legible working backdrop.
+for side in [-1,1]:
+ cx=side*1.9
+ wall('CUR_CaseBack_'+str(side),(cx-.88,5.52),(cx+.88,5.52),.20,3.65,.10,'warm_walnut')
+ for dx in [-.90,.90]:wall('CUR_CaseJamb_%s_%s'%(side,dx),(cx+dx,4.79),(cx+dx,5.57),.10,3.10,.095,'champagne_metal')
+ pts=[(cx+.90*math.cos(math.pi*i/16),5.18,3.08+.58*math.sin(math.pi*i/16))for i in range(17)]
+ beam('CUR_CaseArchedHood_'+str(side),pts,.80,.12,'orange')
+ for shelf,h in enumerate([.80,1.58,2.36]):
+  extrusion('CUR_CaseShelf_%s_%d'%(side,shelf),[(cx-.86,4.80),(cx+.86,4.80),(cx+.86,5.54),(cx-.86,5.54)],h,h+.065,'warm_stone')
+  datum('case_%s_%d'%(side,shelf),(cx,5.11,h+.067))
+
 # Three lamps follow the central browse route; their actual emitters sit below lenses.
 for i,(cx,cy,h)in enumerate([(-2.0,.20,6.30),(2.0,.20,6.30),(0,3.1,5.7)]):
  lathe('CUR_PendantStem_'+str(i),cx,cy,[(h+.15,.035),(6.97,.035)],'champagne_metal',8)
