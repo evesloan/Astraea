@@ -6,6 +6,7 @@ var deck_numbers:Array[int]=[13,14]
 var gate_origin_xz:=Vector2(92.2,0)
 var identity_prefix:="commons"
 var district_label:="Commons"
+var cabin_file:="AST-CIR-003.glb"
 var persistent_id:StringName=&"starboard_commons_lift_001"
 var cabin:AnimatableBody3D
 var cabin_gate:Node3D
@@ -19,10 +20,10 @@ var maximum_speed:=1.1
 var acceleration:=.65
 var button_script=preload("res://scripts/lift_button.gd")
 func _ready() -> void:
-	assert(floor_heights.size()==2 and deck_numbers.size()==2,"This cabin has two authored floor-button positions")
-	assert(floor_heights[1]>floor_heights[0])
+	assert(floor_heights.size() in [2,3] and deck_numbers.size()==floor_heights.size(),"Use an authored two- or three-stop cabin panel")
+	for i in range(1,floor_heights.size()):assert(floor_heights[i]>floor_heights[i-1])
 	process_physics_priority=-20
-	for i in range(2):
+	for i in range(floor_heights.size()):
 		var gate:Node3D=load("res://scripts/lift_gate.gd").new()
 		gate.name="LandingGate_D"+str(deck_numbers[i])
 		gate.persistent_id=StringName("D%d_%s_lift_gate"%[deck_numbers[i],identity_prefix])
@@ -39,8 +40,8 @@ func _ready() -> void:
 	cabin.position=Vector3(gate_origin_xz.x,floor_heights[0],gate_origin_xz.y)
 	cabin.rotation.y=-PI/2
 	add_child(cabin)
-	var visual:Node3D=(load("res://assets/models/AST-CIR-003.glb")as PackedScene).instantiate()
-	visual.set_meta("catalogue_file","AST-CIR-003.glb")
+	var visual:Node3D=(load("res://assets/models/"+cabin_file)as PackedScene).instantiate()
+	visual.set_meta("catalogue_file",cabin_file)
 	cabin.add_child(visual)
 	# Simple convex platform follows the actual faceted platform perimeter.
 	var points:=PackedVector3Array()
@@ -71,8 +72,9 @@ func _ready() -> void:
 	_box(cabin,Vector3(0,2.75,-.125),Vector3(3.84,.20,.20),"CabinGateHeader")
 	_box(cabin,Vector3(0,1.4,-3.535),Vector3(3.3,2.8,.13),"CabinRear")
 	_box(cabin,Vector3(0,2.87,-1.8),Vector3(4,.14,3.6),"CabinRoof")
-	for i in range(2):
+	for i in range(floor_heights.size()):
 		var marker:=visual.find_child("DATUM_floor_button_"+str(i),true,false)as Node3D
+		assert(marker!=null,"Cabin panel lacks a physical floor-control datum")
 		_button(cabin,marker.position,i,identity_prefix+"_cabin_D"+str(deck_numbers[i]))
 	for side in [-1,1]:
 		var marker:=visual.find_child("DATUM_light_"+str(side),true,false)as Node3D
@@ -137,7 +139,7 @@ func request_floor(index:int) -> bool:
 func _set_present() -> void:
 	cabin_gate.cabin_present_and_stopped=true
 	cabin_gate.request_open()
-	for i in range(2):
+	for i in range(floor_heights.size()):
 		landing_gates[i].cabin_present_and_stopped=(i==current_floor)
 		if i==current_floor:landing_gates[i].request_open()
 		else:landing_gates[i].request_close()

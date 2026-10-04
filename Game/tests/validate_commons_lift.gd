@@ -1,5 +1,6 @@
 extends SceneTree
 var target_lift_name:="CommonsPassengerLift"
+var test_stop_sequence:Array[int]=[1,0]
 func _initialize() -> void:call_deferred("run")
 func wait_trip(lift:Node3D,cart:RigidBody3D,actor:CharacterBody3D,goal:int) -> void:
 	var reached:=false
@@ -60,8 +61,8 @@ func run() -> void:
 	actor.global_position=actor.spawn_position
 	actor.velocity=Vector3.ZERO
 	for frame in range(60):await physics_frame
-	assert(not lift.request_floor(-1) and not lift.request_floor(2))
-	var button:Node3D=lift.find_child(lift.identity_prefix+"_cabin_D"+str(lift.deck_numbers[1]),true,false)
+	assert(not lift.request_floor(-1) and not lift.request_floor(lift.floor_heights.size()))
+	var button:Node3D=lift.find_child(lift.identity_prefix+"_cabin_D"+str(lift.deck_numbers[test_stop_sequence[0]]),true,false)
 	var aim:Vector3=button.global_position-actor.camera.global_position
 	actor.rotation.y=atan2(-aim.x,-aim.z)
 	actor.pitch=atan2(aim.y,Vector2(aim.x,aim.z).length())
@@ -85,16 +86,17 @@ func run() -> void:
 	Input.parse_input_event(key.duplicate())
 	Input.flush_buffered_events()
 	for frame in range(3):await physics_frame
-	assert(lift.destination_floor==1 and lift.phase=="closing","Focused E selects the actual upper button")
+	assert(lift.destination_floor==test_stop_sequence[0] and lift.phase=="closing","Focused E selects the actual upper button")
 	key.pressed=false
 	Input.parse_input_event(key.duplicate())
 	focus.pressed=false
 	Input.parse_input_event(focus.duplicate())
 	Input.flush_buffered_events()
-	await wait_trip(lift,cart,actor,1)
-	assert(abs(cart.global_position.y-lift.floor_heights[1])<.12)
-	assert(lift.request_floor(0))
-	await wait_trip(lift,cart,actor,0)
+	await wait_trip(lift,cart,actor,test_stop_sequence[0])
+	assert(abs(cart.global_position.y-lift.floor_heights[test_stop_sequence[0]])<.12)
+	for destination in test_stop_sequence.slice(1):
+		assert(lift.request_floor(destination))
+		await wait_trip(lift,cart,actor,destination)
 	# Obstruction of the actual threshold must hold departure.
 	var blocker:=RigidBody3D.new()
 	blocker.gravity_scale=0
