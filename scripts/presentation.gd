@@ -332,6 +332,32 @@ func _ready() -> void:
 			post_pass.material.set_shader_parameter("enabled",true)
 			world_view.get_node("Astraea").set_display_effects(true)
 
+			actor.spawn_position=Vector3(44.5,52.6,236)
+			actor.position=actor.spawn_position
+			actor.velocity=Vector3.ZERO
+			actor.rotation.y=-PI/2
+			actor.pitch=.02
+			actor.camera.rotation.x=actor.pitch
+			await get_tree().create_timer(.6).timeout
+			await _capture("living_gifts_frontage_")
+			actor.spawn_position=Vector3(50.8,52.6,235.7)
+			actor.position=actor.spawn_position
+			actor.rotation.y=.65
+			actor.pitch=.04
+			actor.camera.rotation.x=actor.pitch
+			await get_tree().create_timer(.6).timeout
+			await _capture("living_gifts_nursery_")
+			set_world_resolution(2)
+			effects=false
+			post_pass.material.set_shader_parameter("enabled",false)
+			world_view.get_node("Astraea").set_display_effects(false)
+			await get_tree().create_timer(.6).timeout
+			await _capture("living_gifts_nursery_clear_")
+			set_world_resolution(0)
+			effects=true
+			post_pass.material.set_shader_parameter("enabled",true)
+			world_view.get_node("Astraea").set_display_effects(true)
+
 			for level in [44.0,52.5,61.0]:
 				actor.spawn_position=Vector3(9.2,level+.1,235)
 				actor.position=actor.spawn_position
