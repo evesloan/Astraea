@@ -12,6 +12,27 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		if part.name.begins_with("ARR_Step"):
 			var contact:=part.get_node_or_null("StaticContact")
 			if contact!=null:contact.free()
+	var reception_alcove:Node3D=ship.model(district,"AST-ARR-004.glb","ArrivalsFittedReceptionAlcove",Vector3(-30,0,-456))
+	for i in range(3):
+		var marker:=reception_alcove.find_child("DATUM_light_"+str(i),true,false)as Node3D
+		var light:=SpotLight3D.new()
+		district.add_child(light)
+		light.name="ArrivalsReceptionTaskLight_"+str(i)
+		light.global_position=marker.global_position
+		light.rotation.x=-PI/2
+		light.spot_angle=67
+		light.spot_range=7
+		light.light_energy=1.4
+		light.light_color=Color(1,.95,.87)
+		light.shadow_enabled=true
+	var reception:Node3D=ship.model(district,"AST-ARR-003.glb","ArrivalsCrescentReception",Vector3(-30,0,-456))
+	reception.set_meta("programme","Arrival information and check-in positions; terminals and staff use pending")
+	for group in range(2):
+		var cx:float=-38.0 if group==0 else -24.0
+		ship.model(district,"AST-FUR-001_day_window_bench.glb","ArrivalsWaitingBench_"+str(group),Vector3(cx,0,-402.6),PI)
+		ship.model(district,"AST-FUR-003_day_table.glb","ArrivalsWaitingTable_"+str(group),Vector3(cx,0,-404.5))
+		for side in [-1,1]:
+			ship.model(district,"AST-FUR-002_day_reading_chair.glb","ArrivalsWaitingChair_%d_%d"%[group,side],Vector3(cx+side*2.4,0,-405.6),-side*.95)
 	const stair_contact=preload("res://scripts/aquatic_section.gd")
 	stair_contact._contact(district,[Vector3(-30,0,-435.45),Vector3(-36,3,-435),Vector3(-36,3,-429),Vector3(-30,0,-428.55)])
 	stair_contact._contact(district,[Vector3(-45,3,-437),Vector3(-42,3,-437),Vector3(-42,6,-443),Vector3(-45,6,-443)])
@@ -42,10 +63,11 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		var light:=SpotLight3D.new()
 		district.add_child(light)
 		light.name="ArrivalsReliefWallwash_"+str(i)
+		light.set_meta("illumination_anchor",Vector3(-46.6,7.5,-432))
 		light.global_position=marker.global_position
 		light.look_at(Vector3(-47.15,7.5,-432),Vector3.UP)
 		light.spot_angle=58
-		light.spot_range=12
+		light.spot_range=32
 		light.light_energy=2.1
 		light.light_color=Color(1,.94,.85)
 		light.shadow_enabled=true

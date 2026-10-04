@@ -35,7 +35,7 @@ def datum(name,p):
 
 for a in json.loads((CAT/'catalogue_manifest.json').read_text())['assets']:
  if a['catalogue_id']=='AST-ENG-007':assert a['source']=='assets/fusion_exhibit/source/AST-ENG-007.blend','Identity already belongs elsewhere'
-m=bpy.data.materials.new('ContainedInstrumentEmission');m.use_nodes=True;p=m.node_tree.nodes.get('Principled BSDF');p.inputs['Base Color'].default_value=(.025,.19,.24,1);p.inputs['Emission Color'].default_value=(.05,.65,.80,1);p.inputs['Emission Strength'].default_value=1.4;mats['energy']=m
+m=bpy.data.materials.new('ContainedInstrumentEmission');m.use_nodes=True;p=m.node_tree.nodes.get('Principled BSDF');p.inputs['Base Color'].default_value=(.025,.19,.24,1);p.inputs['Emission Color'].default_value=(.05,.65,.80,1);p.inputs['Emission Strength'].default_value=.7;mats['energy']=m
 m=bpy.data.materials.new('DeepCeramicRecess');m.use_nodes=True;p=m.node_tree.nodes.get('Principled BSDF');p.inputs['Base Color'].default_value=(.055,.095,.11,1);p.inputs['Roughness'].default_value=.7;mats['recess']=m
 
 def axial(name,rings,role,n=24):
@@ -52,7 +52,9 @@ def hoop(name,x,radius,section,role,n=24,m=6):
    b=2*math.pi*j/m;v.append((x+section*math.cos(b),(radius+section*math.sin(b))*math.cos(a),(radius+section*math.sin(b))*math.sin(a)))
  f=[(i*m+j,i*m+(j+1)%m,((i+1)%n)*m+(j+1)%m,((i+1)%n)*m+j)for i in range(n)for j in range(m)];return mesh(name,v,f,role)
 # Clean profiled end housings flank a contained illuminated instrument sleeve.
-axial('FUS_SealedInstrumentSleeve',[(-4.4,1.35),(-3.7,1.48),(3.7,1.48),(4.4,1.35)],'energy')
+axial('FUS_SealedInstrumentSleeve',[(-4.4,1.35),(-3.7,1.48),(3.7,1.48),(4.4,1.35)],'recess')
+for i,(a,b)in enumerate([(-3.1,-2.7),(-1.7,-1.3),(-.3,.3),(1.3,1.7),(2.7,3.1)]):
+ axial('FUS_ContainedInstrumentWindow_'+str(i),[(a,1.495),(b,1.495)],'energy')
 for side in [-1,1]:
  rings=[(side*x,r)for x,r in [(3.7,1.52),(4.0,1.73),(5.8,1.73),(6.5,1.42),(7.8,1.12),(8.15,.80)]]
  if side<0:rings.reverse()
