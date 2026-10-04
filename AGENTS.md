@@ -2,7 +2,7 @@
 
 Use the existing Godot project and its current design contract. The ship is unfinished; preserve room identities, protected allocations, deck datums and working interactions. Catalogue presence counts do not establish completed rooms or final art acceptance.
 
-Before production edits, inspect docs/CURRENT_STATUS.md, docs/AUTOMATED_BACKUPS.md and docs/GITHUB_BACKUPS.md and the current backup service status. Verify the watcher is running and independent retention has actually succeeded. A cloud reset may remove hooks and the watcher even when source has been restored. Re-arm it through the supported current Library workflow before continuing substantive edits. Do not store credentials or vendor modified transfer helpers.
+Before production edits, inspect docs/CURRENT_STATUS.md, docs/AUTOMATED_BACKUPS.md and docs/GITHUB_BACKUPS.md and the current backup service status. Verify the watcher is running and independent retention has actually succeeded. A cloud reset may remove hooks and the watcher even when source has been restored. Re-arm the existing approved GitHub routine only after confirming no publisher owns its lock, then verify remote retention before continuing substantive edits. Older Library checkpoints remain fallback history. Do not store credentials or vendor modified transfer helpers.
 
 Commit meaningful verified changes. The GitHub watcher observes new commits every15seconds and changed WIP every15minutes. Check the resulting retention receipt; a commit and a local ZIP are not independent backups. Respect a blocked/uncertain upload state and investigate before further automatic writes. Preserve earlier checkpoints.
 
