@@ -18,7 +18,7 @@ func run() -> void:
 			assert(ship.arrive_at(path[leg].lerp(path[leg+1],step/40.0),0),"Actual atrium-to-street-to-room route stays supported and clear")
 	for pos in [Vector3(79.1,84.1,-41.35),Vector3(79.1,84.1,-40.1),Vector3(64,84.1,-42)]:
 		assert(ship.arrive_at(pos,0),"Bath threshold or view terrace must remain approachable")
-	var beds := ship.find_children("HistoricalBedAnchor_*","Node3D",true,false)
+	var beds := shell.get_parent().find_children("HistoricalBedAnchor_*","Node3D",true,false)
 	assert(beds.size()==2)
 	for bed in beds:
 		assert(absf(bed.global_position.x-71.7)<.002 and absf(bed.global_position.y-84)<.002)

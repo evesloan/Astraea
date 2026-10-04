@@ -154,14 +154,14 @@ func _ready() -> void:
 				await get_tree().create_timer(.6).timeout
 				await _capture(view.label)
 
-			for view in [{"p":Vector3(84.8,84.1,-45.3),"yaw":2.70,"label":"suite_13017_arrival_","pitch":.10},{"p":Vector3(79.4,84.1,-40.0),"yaw":-PI/2,"label":"suite_13017_bath_","pitch":-.25},{"p":Vector3(80.9,84.1,-42),"yaw":PI/2,"label":"suite_13017_entry_"},{"p":Vector3(70,84.1,-42),"yaw":-PI/2,"label":"suite_13017_return_"},{"p":Vector3(64,84.1,-42),"yaw":-PI/2,"label":"suite_13017_window_"}]:
+			for view in [{"p":Vector3(76.3,84.1,-49.4),"yaw":PI/2,"label":"suite_13041_salon_","pitch":.05},{"p":Vector3(69.7,84.1,-48.75),"yaw":-PI/2,"label":"suite_13041_retreat_","pitch":.05},{"p":Vector3(84.8,84.1,-45.3),"yaw":2.70,"label":"suite_13017_arrival_","pitch":.10},{"p":Vector3(79.4,84.1,-40.0),"yaw":-PI/2,"label":"suite_13017_bath_","pitch":-.25},{"p":Vector3(80.9,84.1,-42),"yaw":PI/2,"label":"suite_13017_entry_"},{"p":Vector3(70,84.1,-42),"yaw":-PI/2,"label":"suite_13017_return_"},{"p":Vector3(64,84.1,-42),"yaw":-PI/2,"label":"suite_13017_window_"}]:
 				actor.spawn_position = view.p
 				actor.position = view.p
 				actor.velocity = Vector3.ZERO
 				actor.rotation.y = view.yaw
 				actor.pitch = view.get("pitch",.03)
 				actor.camera.rotation.x = actor.pitch
-				get_node("NativeResolutionStatus").text = "ASTRAEA / D13 ADDRESS 13017 — partial interior"
+				get_node("NativeResolutionStatus").text = "ASTRAEA / D13 RESIDENCES — partial interiors"
 				await get_tree().create_timer(.6).timeout
 				await _capture(view.label)
 			# Inspect the actual entry from the residential street at ordinary eye height.

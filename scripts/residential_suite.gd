@@ -1,13 +1,18 @@
 extends RefCounted
 # A fitted subset of the existing census, not a replacement room registry.
 static func build(parent: Node3D, ship: Node3D) -> void:
-	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D13_13017_profile.json"))
+	_build_room(parent,ship,"13017","AST-SUI-001.glb",0,true)
+	_build_room(parent,ship,"13041","AST-SUI-002.glb",-7.4,false)
+
+static func _build_room(parent:Node3D,ship:Node3D,address:String,model_file:String,offset_z:float,include_edges:bool) -> void:
+	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D13_"+address+"_profile.json"))
+	assert(data.model==model_file and absf(data.source_origin[2]-(-42+offset_z))<.001)
 	var root := Node3D.new()
-	root.name = "D13_13017_TwinSuite_WIP"
-	root.set_meta("historical_address","13017")
-	root.set_meta("rebuild_identity",data.rebuild_identity)
+	root.name = "D13_"+address+"_TwinSuite_WIP"
+	root.set_meta("historical_address",address)
+	root.set_meta("rebuild_identity","D13-"+address)
 	parent.add_child(root)
-	var shell := ship.model(root,"AST-SUI-001.glb","AuthoredTwinSuite",Vector3(81.95,84,-42),PI/2) as Node3D
+	var shell := ship.model(root,model_file,"AuthoredTwinSuite",Vector3(81.95,84,-42),PI/2) as Node3D
 	var pane := ShaderMaterial.new()
 	pane.shader = load("res://shaders/hospitality_glass.gdshader")
 	for mesh in shell.find_children("SUI_Runtime_glass*","MeshInstance3D",true,false): mesh.material_override = pane
@@ -46,8 +51,8 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	var writing := shell.find_child("DATUM_writing_chair",true,false) as Node3D
 	ship.model(root,"AST-FUR-002_day_reading_chair.glb","SuiteWritingChair",writing.global_position,-PI/2)
 	var bath_door := (load("res://scripts/guest_privacy_door.gd") as GDScript).new() as Node3D
-	bath_door.name = "Suite13017BathDoor"
-	bath_door.persistent_id = &"D13_13017_bath_door_A"
+	bath_door.name = "Suite"+address+"BathDoor"
+	bath_door.persistent_id = StringName("D13_"+address+"_bath_door_A")
 	bath_door.position = Vector3(79.05,84,-41.30)
 	bath_door.rotation.y = PI
 	root.add_child(bath_door)
@@ -67,8 +72,8 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	bath_light.light_color=Color(1,.96,.90)
 	bath_light.shadow_enabled=true
 	var entry := (load("res://scripts/guest_entry_door.gd") as GDScript).new() as Node3D
-	entry.name="Suite13017EntryDoor"
-	entry.persistent_id=&"D13_13017_entry_door_A"
+	entry.name="Suite"+address+"EntryDoor"
+	entry.persistent_id=StringName("D13_"+address+"_entry_door_A")
 	entry.position=Vector3(82.0,84,-42)
 	entry.rotation.y=PI/2
 	root.add_child(entry)
@@ -85,9 +90,14 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.light_energy = .8
 		light.light_color = Color(1,.94,.84)
 		light.shadow_enabled = true
+	if not include_edges:
+		# Authored markers are fitted in the shared source frame, then the complete
+		# static room assembly is placed once before the first physics step.
+		root.position.z=offset_z
+		return
 	# Guard exposed slab edges while adjoining census units remain unbuilt.
 	# Entry portals and the connection to the original atrium stay open.
-	var edges := [[Vector2(54,-36),Vector2(54,-30)],[Vector2(54,-36),Vector2(63,-36)],[Vector2(63,-36),Vector2(69.05,-38.4)],[Vector2(54,-48),Vector2(63,-48)],[Vector2(63,-48),Vector2(69.05,-45.6)],[Vector2(50,-26),Vector2(86.05,-26)],[Vector2(54,-30),Vector2(81.95,-30)],[Vector2(81.95,-51),Vector2(86.05,-51)],[Vector2(86.05,-51),Vector2(86.05,-26)],[Vector2(81.95,-51),Vector2(81.95,-45.6)],[Vector2(81.95,-38.4),Vector2(81.95,-30)]]
+	var edges := [[Vector2(54,-36),Vector2(54,-30)],[Vector2(54,-36),Vector2(63,-36)],[Vector2(63,-36),Vector2(69.05,-38.4)],[Vector2(54,-48),Vector2(63,-48)],[Vector2(63,-48),Vector2(69.05,-45.6)],[Vector2(50,-26),Vector2(86.05,-26)],[Vector2(54,-30),Vector2(81.95,-30)],[Vector2(81.95,-53),Vector2(86.05,-53)],[Vector2(86.05,-53),Vector2(86.05,-26)],[Vector2(81.95,-38.4),Vector2(81.95,-30)]]
 	for i in range(edges.size()):
 		var a := Vector3(edges[i][0].x,84,edges[i][0].y)
 		var b := Vector3(edges[i][1].x,84,edges[i][1].y)
