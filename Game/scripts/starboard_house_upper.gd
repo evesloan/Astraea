@@ -61,3 +61,26 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		var stock:Node3D=ship.model(root,"AST-LIB-006.glb","D15ReadingStock_"+str(i),marker.global_position)
 		stock.set_meta("supported_book_group",true)
 		for contact in stock.find_children("StaticContact","StaticBody3D",true,false):contact.free()
+	var conversation:Node3D=ship.model(root,"AST-RES-003.glb","D16CourtConversationEdge",Vector3(67.1,97.5,9.1),PI/2)
+	for part in conversation.find_children("TALK_VisualFloor*","MeshInstance3D",true,false):
+		var contact:=part.get_node_or_null("StaticContact")
+		if contact!=null:contact.free()
+	var table_anchor:=conversation.find_child("DATUM_table",true,false)as Node3D
+	ship.model(root,"AST-FUR-003_day_table.glb","D16ConversationTable",table_anchor.global_position)
+	for i in range(2):
+		var anchor:=conversation.find_child("DATUM_chair_"+str(i),true,false)as Node3D
+		var facing:Vector3=table_anchor.global_position-anchor.global_position
+		ship.model(root,"AST-FUR-002_day_reading_chair.glb","D16ConversationChair_"+str(i),anchor.global_position,atan2(facing.x,facing.z))
+		var plant:=conversation.find_child("DATUM_plant_"+str(i),true,false)as Node3D
+		ship.model(root,"AST-BOT-002.glb","D16ConversationPlant_"+str(i),plant.global_position,i*.6)
+		var source:=conversation.find_child("DATUM_light_"+str(i),true,false)as Node3D
+		var light:=SpotLight3D.new()
+		root.add_child(light)
+		light.name="D16ConversationLight_"+str(i)
+		light.global_position=source.global_position
+		light.rotation.x=-PI/2
+		light.light_color=Color(1,.95,.87)
+		light.light_energy=.85
+		light.spot_angle=75
+		light.spot_range=4
+		light.shadow_enabled=true

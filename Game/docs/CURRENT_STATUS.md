@@ -112,3 +112,6 @@ The two D15 reading lights now have independent physical desk toggles under the 
 
 ## Physical loaded-cart perimeter turns
 The first force-driven turn test exposed sideways drifting under the original single-point rear grip. A bounded two-handed yaw couple now supplements the physical tether only while the cart is held and grounded. Scripted capsule movement pushes and pulls the cart through the actual east-stair perimeter turns onD14 andD16, retaining four loose products; no cart transforms are set during travel. All46checks pass142.6821seconds fixed60, including existing pickup/release, loaded boarding and lift regressions. Freehand input feel and the rest of the ship's cart network remain unaccepted.
+
+## D16 court-facing conversation edge
+A swept canopy, textile backing, planted ends and flush timber finish now shelter two court-facing chairs and a shared table. Actual front-lane and chair-side approaches, chair supports, soil contacts and fixture exits pass. All47current checks passed155.0534seconds fixed60. The normal view was reviewed after batch001; the wider atrium remains visually unfinished. Catalogue150designs; presence and validation do not establish final art or inhabited use.
