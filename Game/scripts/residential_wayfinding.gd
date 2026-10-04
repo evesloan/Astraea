@@ -5,6 +5,9 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	root.name="D13_ResidentialWayfindingBay_WIP"
 	parent.add_child(root)
 	var architecture:Node3D=ship.model(root,"AST-RES-001.glb","ResidentialWayfindingArchitecture",Vector3(71.8,84,-26))
+	for finish in architecture.find_children("RES_VisualFloor*","MeshInstance3D",true,false):
+		var contact:=finish.get_node_or_null("StaticContact")
+		if contact!=null:contact.free()
 	for i in range(2):
 		var base:Node3D=architecture.find_child("DATUM_plant_"+str(i),true,false)
 		var pot:Node3D=ship.model(root,"AST-BOT-012_low.glb","ResidentialRestingPot_"+str(i),base.global_position)

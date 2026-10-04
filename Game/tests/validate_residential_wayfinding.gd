@@ -8,7 +8,7 @@ func run() -> void:
 	assert(nook!=null)
 	for part in nook.find_children("*","MeshInstance3D",true,false):
 		var b:AABB=part.global_transform*part.get_aabb()
-		assert(b.position.x>=71.79 and b.end.x<=77.21 and b.position.z>=-27.151 and b.end.z<=-26.029)
+		assert(b.position.x>=71.79 and b.end.x<=77.21 and b.position.z>=(-27.701 if str(part.name).begins_with("RES_VisualFloor") else -27.151) and b.end.z<=-26.029)
 		assert(b.end.y<88.26,"Residential bay must remain below protected D14")
 	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
 	var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)

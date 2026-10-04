@@ -53,9 +53,9 @@ box('RES_Canopy',.32,5.08,3.25,3.48,-1.15,-.15,'warm_walnut')
 box('RES_AcousticCeiling',.42,4.98,3.23,3.25,-1.08,-.22,'oatmeal_weave')
 # Two-place perch integrated into the bay, with useful approaches outside it.
 box('RES_SeatFrame',1.20,4.20,.34,.43,-.95,-.24,'warm_walnut')
-box('RES_SeatCushion',1.27,4.13,.43,.50,-.91,-.28,'oatmeal_weave')
+box('RES_SeatCushion',1.27,4.13,.43,.50,-.91,-.28,'clay_weave')
 v=[xyz(x,y,z)for x in [1.23,4.17]for z,y in [(-.34,.50),(-.25,1.05),(-.14,1.05),(-.23,.50)]]
-mesh('RES_SlopedBenchBack',v,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'oatmeal_weave')
+mesh('RES_SlopedBenchBack',v,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'clay_weave')
 for x in [1.43,3.97]:box('RES_BenchBearing_'+str(x),x-.10,x+.10,0,.34,-.78,-.35,'champagne_metal')
 for x in [1.20,4.10]:box('RES_ReturnedArm_'+str(x),x,x+.10,.47,.66,-.92,-.25,'warm_walnut')
 for i,x in enumerate([2.05,3.35]):
@@ -71,6 +71,13 @@ for i,x in enumerate([1.45,3.95]):
  box('RES_FixtureHousing_'+str(i),x-.22,x+.22,3.10,3.23,-.79,-.43,'champagne_metal')
  box('RES_FixtureLens_'+str(i),x-.19,x+.19,3.085,3.10,-.76,-.46,'lens')
  datum('light_'+str(i),xyz(x,3.06,-.61))
+# A flush material threshold marks the resting edge without adding a trip lip.
+outline=[(.03,.03),(5.37,.03),(5.37,1.20),(5.10,1.70),(.30,1.70),(.03,1.20)]
+extrusion('RES_VisualFloorBorder',outline,.001,.006,'champagne_metal')
+inner=[(.10,.10),(5.30,.10),(5.30,1.18),(5.05,1.63),(.35,1.63),(.10,1.18)]
+extrusion('RES_VisualFloorWalnut',inner,.006,.008,'warm_walnut')
+for name in ['RES_SeatCushion','RES_SlopedBenchBack']:
+ o=bpy.data.objects[name];modifier=o.modifiers.new('AuthoredSoftEdges','BEVEL');modifier.width=.018;modifier.segments=2
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(AID+'.blend');export=ROOT/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source))
 for o in parts:o.data.calc_loop_triangles()
 triangles=sum(len(o.data.loop_triangles)for o in parts)
