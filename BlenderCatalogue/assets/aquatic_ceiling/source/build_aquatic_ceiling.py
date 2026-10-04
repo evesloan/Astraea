@@ -50,9 +50,13 @@ for layer in D['layers']:
    start=len(v);v.extend([xyz(a[0],layer['lo'],a[1]),xyz(b[0],layer['lo'],b[1]),xyz(b[0],layer['hi'],b[1]),xyz(a[0],layer['hi'],a[1])]);f.append(tuple(range(start,start+4)))
  mesh('AQU_'+layer['name'],v,f,layer['role'])
 for name,edge,lo,hi in [('Inner',D['central_edge'],68.36,68.85),('Outer',D['middle_edge'],67.56,68.2)]:
- for i,(a,b)in enumerate(zip(edge,edge[1:]+edge[:1])):
+ segments=D.get('edge_segments',{}).get('central_edge' if name=='Inner' else 'middle_edge',list(zip(edge,edge[1:]+edge[:1])))
+ for i,(a,b)in enumerate(segments):
   wall('AQU_'+name+'TerracottaReveal_'+str(i),a,b,lo,hi,.08,'terracotta')
   wall('AQU_'+name+'ChampagneEdge_'+str(i),a,b,lo-.035,lo+.025,.10,'champagne_metal')
+if D.get('lift_relief_boundary'):
+ edge=D['lift_relief_boundary']
+ for i,(a,b)in enumerate(zip(edge,edge[1:]+edge[:1])):wall('AQU_LocalLiftCoveReturn_'+str(i),a,b,67.4,68.2,.06,'ivory_enamel')
 for i,(x,z)in enumerate(D['bearing_centers_xz']):
  ring=[(x+1.45*math.cos(j*math.pi/8),z+1.45*math.sin(j*math.pi/8))for j in range(16)]
  for j,(a,b)in enumerate(zip(ring,ring[1:]+ring[:1])):wall('AQU_BearingCoffer_%s_%s'%(i,j),a,b,67.4,69.1,.06,'warm_walnut')
