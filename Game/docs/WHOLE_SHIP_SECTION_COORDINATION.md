@@ -2,7 +2,7 @@
 
 Generated from the historical allocations and current protected openings. This is an adjacency inventory, not a replacement room registry or a final architectural plan.
 
-All 161 directory programmes and 1,000 historical guest envelopes remain accounted for. No guest allocation intersects the checked central atrium, theatre or aquatic openings. This does not establish fitted beds, completed rooms, or permission for further openings.
+All 161 directory programmes and 1,000 historical guest envelopes remain accounted for. No guest allocation intersects the checked compiler-level and aquatic openings. This does not establish fitted beds, completed rooms, or permission for further openings.
 
 ## Section-first construction order
 
