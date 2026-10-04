@@ -115,3 +115,6 @@ The first force-driven turn test exposed sideways drifting under the original si
 
 ## D16 court-facing conversation edge
 A swept canopy, textile backing, planted ends and flush timber finish now shelter two court-facing chairs and a shared table. Actual front-lane and chair-side approaches, chair supports, soil contacts and fixture exits pass. All47current checks passed155.0534seconds fixed60. The normal view was reviewed after batch001; the wider atrium remains visually unfinished. Catalogue150designs; presence and validation do not establish final art or inhabited use.
+
+## D17 level-entry quiet reading alcove
+An original oval book-lined enclosure now creates a quieter retreat inside the existing D17 commons. Real entry and both seat approaches, shelf supports, book-envelope corners, ceiling clearance and light-control reach pass. Coplanar wall/lower-panel faces found in graphical review were separated at their true junction without changing finished clearances. All48checks pass154.2967seconds fixed60; final normal/effects-off views were inspected after batch002. The wider commons, seated behavior and broad-species ergonomics remain unfinished. Catalogue151designs; no new guest capacity.
