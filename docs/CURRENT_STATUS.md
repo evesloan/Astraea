@@ -11,7 +11,7 @@ Updated2026-10-04 after the connected D06 and first D13 suite passes. Fresh Godo
 - Partial D09 salon with authored enclosure, varied ceiling, glazed gallery and several occupied furniture groups; its study lamp responds to the shared RMB/E interaction
 - Two partial D13 twin suites at historical addresses13017 and13041, connected by a walkable route, with preserved historical bed anchors, shaped living/sleeping thresholds, inward glazing and fitted bathroom fixtures
 - The opaque bathroom door inherits existing interaction/motion handling and passed300 fixed-architecture sweep samples, focused operation and obstruction checks
-- 118 catalogue designs, including 29 recent drafts. Component presence is not room completion or final-art approval
+- 119 catalogue designs, including 29 recent drafts. Component presence is not room completion or final-art approval
 
 - The paired suite entry now retracts into enclosed hollow pockets. Shared focus/E and call-plate operation,400 fixed-geometry motion samples and actor/loose-prop obstruction checks pass
 
@@ -22,7 +22,7 @@ Updated2026-10-04 after the connected D06 and first D13 suite passes. Fresh Godo
 - The first physical cleaning cart and4 loose bottles share RMB/E pickup/release. Straight loaded travel and235 geometric cart/load clearance poses pass; final handling, driven turns, restocking and inter-deck travel remain unfinished
 
 ## Evidence and limits
-All 21 current Godot groups pass. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
+All 22 current Godot groups pass. The added group checks the imported lift-gate component; it is not an installed lift. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
 
 Source/export bounds, a genuinely hollow basin, two-sided shower-screen contact and fixture approach positions were checked. Ordinary player-height cloud captures were reviewed. An independent suite review led to changes in screening, floor contrast, ceiling weight and window-facing seating. These are cloud software-rendered checks, not5060Ti performance acceptance or final architectural approval.
 
@@ -33,3 +33,6 @@ The ship is far from complete. The suite still lacks live water/flush/mirror/lid
 Automatic post-commit and changed-WIP checkpoints run while the session is active. Verify their actual receipts after each meaningful commit. Earlier retained versions remain available. Only the original baseline is verified on Workshop; newer local copies remain unverified. See AUTOMATED_BACKUPS.md for coverage and reset limits.
 
 Continue production after routine healthy backup checks. A check is not a substitute for construction. Restore and re-arm protection before new edits if a reset occurs, and report a real blocker rather than silently waiting for another user prompt.
+
+## D13/D14 commons continuation
+The revised two-level commons contract resolves identified arrival gaps and narrow strips. An editable four-panel lift gate passes source/export and interlock/motion component checks. Commons architecture, coordinated garden bearings and the working cabin remain in progress; no additional finished destination is claimed.
