@@ -35,6 +35,13 @@ def datum(name,p):
 
 # Anchor ship(79,84,4). Planting remains beneath the real upper opening;
 # a lower canopy frames the existing southern conversation edge.
+# A bounded carpet gives the existing conversation group a readable territory.
+# Exported as visual-only finish: structural floor remains the collision owner.
+for name,base in [('rug_binding','warm_walnut'),('rug_carpet','teal_weave')]:
+ mats[name]=mats[base].copy();mats[name].name='Commons_'+name
+for role,rx,ry,lo,hi in [('rug_binding',5.10,2.92,.004,.006),('rug_carpet',4.96,2.78,.006,.008)]:
+ q=[(rx*math.cos(2*math.pi*i/32),-6+ry*math.sin(2*math.pi*i/32))for i in range(32)]
+ extrusion('GATHER_Floor_'+role,q,lo,hi,role)
 N=32
 levels=[(3.02,1.18,.02),(3.25,1.38,.14),(3.40,1.48,.46),(3.38,1.46,.59),(3.16,1.24,.64)]
 vertices=[]
@@ -93,6 +100,6 @@ for role,material in mats.items():
  if not selected:continue
  bpy.ops.object.select_all(action='DESELECT')
  for o in selected:o.select_set(True)
- bpy.context.view_layer.objects.active=selected[0];bpy.ops.object.join();bpy.context.object.name='GATHER_'+role
+ bpy.context.view_layer.objects.active=selected[0];bpy.ops.object.join();bpy.context.object.name=('GATHER_floor_'+role if role.startswith('rug_')else 'GATHER_'+role)
 bpy.ops.export_scene.gltf(filepath=str(export),export_format='GLB',export_yup=True,export_extras=True)
 (ROOT/'AST-COM-002.manifest.json').write_text(json.dumps({'catalogue_id':'AST-COM-002','name':'Commons planting island and sheltered gathering canopy','source':'source/AST-COM-002.blend','export':'exports/AST-COM-002.glb','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(export.read_bytes()).hexdigest(),'status':'Authored draft; source, route and visual acceptance pending'},indent=2)+'\n')

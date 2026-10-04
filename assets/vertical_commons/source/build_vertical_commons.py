@@ -86,6 +86,20 @@ for z in [-10,-5,0,5,10]:
  pts=[(0,-z,7.35),(5,-z,7.70),(12,-z,8.05),(22,-z,8.05),(30,-z,7.60),(33,-z,7.35)]
  beam('SC_CurvedCeilingRib_'+str(z),pts,.24,.18,'warm_walnut')
 m=bpy.data.materials.new('CommonsSmokedGlass');m.use_nodes=True;bs=m.node_tree.nodes.get('Principled BSDF');bs.inputs['Base Color'].default_value=(.25,.46,.49,.38);bs.inputs['Alpha'].default_value=.38;mats['glass']=m
+# Continuous faceted ceiling shell follows the ribs, rather than leaving a
+# flat lid above disconnected decorative strips. The occupied deck stays intact.
+roof_stations=[(0,7.35),(5,7.70),(12,8.05),(22,8.05),(30,7.60),(34,7.35)]
+for j,((xa,za),(xb,zb))in enumerate(zip(roof_stations,roof_stations[1:])):
+ wa=14-max(0,xa-30);wb=14-max(0,xb-30)
+ q=[(xa,-wa,za),(xb,-wb,zb),(xb,wb,zb),(xa,wa,za)]
+ mesh('SC_ContinuousCeilingShell_'+str(j),q+[(x,y,z+.07)for x,y,z in q],[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'ivory_enamel')
+# Preserve the reserved lift headroom inside its closed shaft. The original
+# opaque roof above remains intact; only the lowered decorative soffit is cut.
+for target in [o for o in parts if o.name.startswith(('SC_ContinuousCeilingShell','SC_CurvedCeilingRib'))]:
+ bpy.ops.mesh.primitive_cube_add(size=1,location=(31.04,0,7.8));cutter=bpy.context.object;cutter.dimensions=(4.08,4.5,2)
+ bpy.ops.object.transform_apply(location=False,rotation=False,scale=True);bpy.context.view_layer.objects.active=target
+ mod=target.modifiers.new('ReservedLiftHeadroom','BOOLEAN');mod.operation='DIFFERENCE';mod.solver='EXACT';mod.object=cutter
+ bpy.ops.object.modifier_apply(modifier=mod.name);bpy.data.objects.remove(cutter,do_unlink=True)
 # Ring-edge fascia and guards. Omit genuine arrival seams and stair mouth.
 for region in D['floor_regions']:
  h=region['floor_y']-84
