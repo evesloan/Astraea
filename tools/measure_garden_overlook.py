@@ -1,7 +1,7 @@
 import bpy,json,pathlib
 from mathutils import Vector
 root=pathlib.Path(__file__).resolve().parents[1];records=[]
-for fam,aid in [('garden_overlook','AST-GAR-003'),('canopy_terrace','AST-GAR-004'),('botanical_portico','AST-GAR-005'),('residential_suite','AST-SUI-001'),('guest_privacy_door','AST-DOR-001'),('guest_wash','AST-SAN-001'),('guest_wash','AST-SAN-002'),('guest_wash','AST-SAN-003'),('guest_entry_door','AST-DOR-002'),('residential_arrival','AST-ARR-001'),('residential_suite','AST-SUI-002')]:
+for fam,aid in [('garden_overlook','AST-GAR-003'),('canopy_terrace','AST-GAR-004'),('botanical_portico','AST-GAR-005'),('residential_suite','AST-SUI-001'),('guest_privacy_door','AST-DOR-001'),('guest_wash','AST-SAN-001'),('guest_wash','AST-SAN-002'),('guest_wash','AST-SAN-003'),('guest_entry_door','AST-DOR-002'),('residential_arrival','AST-ARR-001'),('residential_suite','AST-SUI-002'),('night_garden','AST-GAR-006')]:
  path=root/'assets'/fam/'source'/(aid+'.blend');bpy.ops.wm.open_mainfile(filepath=str(path));coords=[];tri=0
  for o in bpy.context.scene.objects:
   if o.type!='MESH':continue
