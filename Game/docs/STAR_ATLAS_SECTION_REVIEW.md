@@ -25,3 +25,10 @@ A first lower-level collection shelter now uses two straight profiles, a curved 
 The normal-height collection view was inspected: stock, segmented canopy and task lighting read clearly. The surrounding room still needs richer architectural transitions, purposeful remaining bays and broader lighting. The group is a partial integration, not a complete library or proof of seated NPC use.
 
 The final furnished revision passed all31 Godot groups in72.8553seconds fixed60. Graphical execution passed in58.884seconds. These timings are validation cost, not game performance.
+
+## Occupied-bay finish and edge coverage
+The northern study canopy now rises from the collection wall toward a fanning edge above the actual shared table, with roof returns and a coordinated fixture stem. A bordered woven floor field marks the gathering footprint without adding another physical floor. Source/export bounds and UV-presence checks pass; all132 registered design source/export hash pairs match.
+
+The section test now also samples112 gallery guard contacts from the compiled boundaries, excluding real connector/stair mouths and separately gated shaft interfaces. This is contact coverage at sampled heights, not comprehensive loose-prop or all-body safety acceptance. All31 groups passed after the changes in68.7023seconds fixed60; graphical capture passed54.229seconds. The current bay view was inspected. Upper galleries and arrival activity remain sparse, and the broad material/lighting composition remains below final art approval.
+
+The adoption report now recognizes the local book MultiMesh as one representation and records63 stock groups separately. These are geometry/presence counts, never room completion or occupant capacity.

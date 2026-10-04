@@ -149,19 +149,37 @@ for i,z in enumerate([-11.5,-4,4,11.5]):
  for x in [-92.5,-80,-66.5]:beam('LIB_RibRoofMating_%s_%s'%(i,x),[xyz(x,92.48,z),xyz(x,92.76,z)],.08,.08,'champagne_metal')
 # Distinct low canopies mark the lower peripheral reading bays.
 for i,(x0,x1,z0,z1,h)in enumerate([(-91,-76,-31,-21,81.45),(-91,-76,21,31,81.70),(-62,-53,-26,-10,82.40),(-62,-53,10,25,82.15)]):
- plane_box('LIB_ReadingCanopy_'+str(i),x0,x1,z0,z1,h,h+.18,'warm_walnut')
- for x in [x0+.2,x1-.2]:beam('LIB_CanopyReturn_%s_%s'%(i,x),[xyz(x,h+.18,z0+.2),xyz(x,83.76,z0+.2)],.10,.10,'ivory_enamel')
+ if i==0:
+  # Lower collection shelter rises toward the shared study and its court outlook.
+  # The back protects the book wall; the fanning front covers actual chair positions.
+  outline=[(-91,-31),(-76,-31),(-76,-23),(-78,-21.6),(-84,-19.2),(-89,-20.6),(-91,-23)]
+  def height(z):return 81.50+(z+31)/11.8*.65
+  n=len(outline);verts=[xyz(x,height(z)+offset,z)for offset in [0,.20]for x,z in outline]
+  faces=[tuple(reversed(range(n))),tuple(range(n,2*n))]+[(j,(j+1)%n,(j+1)%n+n,j+n)for j in range(n)]
+  mesh('LIB_CollectionRisingCanopy',verts,faces,'ivory_enamel')
+  mesh('LIB_CollectionTimberSoffit',[xyz(x,height(z)-.008,z)for x,z in outline],[tuple(range(n))],'warm_walnut')
+  for j,(a,b)in enumerate(zip(outline,outline[1:]+outline[:1])):
+   beam('LIB_CollectionProfiledEdge_'+str(j),[xyz(x,height(z)+.055,z)for x,z in [a,b]],.095,.09,'warm_walnut')
+  for x,z in [(-90.6,-30.6),(-76.4,-30.6),(-90.6,-23.2),(-76.4,-23.2)]:
+   beam('LIB_CollectionRoofReturn_'+str((x,z)),[xyz(x,height(z)+.20,z),xyz(x,83.76,z)],.14,.12,'ivory_enamel')
+ else:
+  plane_box('LIB_ReadingCanopy_'+str(i),x0,x1,z0,z1,h,h+.18,'warm_walnut')
+  for x in [x0+.2,x1-.2]:beam('LIB_CanopyReturn_%s_%s'%(i,x),[xyz(x,h+.18,z0+.2),xyz(x,83.76,z0+.2)],.10,.10,'ivory_enamel')
+# Fitted woven study field belongs to the occupied bay; visual finish only.
+for name,rx,rz,h,role in [('border',3.25,2.60,78.002,'oatmeal_weave'),('field',3.12,2.47,78.004,'clay_weave')]:
+ q=[xyz(-86+rx*math.cos(j*math.pi/12),h,-21.5+rz*math.sin(j*math.pi/12))for j in range(24)]
+ mesh('LIB_Finish_Study_'+name,q,[tuple(range(24))],role)
 # Source-mounted local fixtures, with explicit below-lens exit markers.
 lights=[(-59,0,83.25),(-83,-25,81.18),(-83,25,81.43),(-57,-17,82.13),(-57,17,81.88),(-80,0,91.9),(-90,-11.5,87.5),(-72.2,0,87.55),(-82,12.5,91.95),(-72.2,0,91.95)]
 for i,(x,z,h)in enumerate(lights):
  cx,cy=xy((x,z));q=[(cx+.28*math.cos(j*math.pi/8),cy+.28*math.sin(j*math.pi/8))for j in range(16)];extrusion('LIB_LightHousing_'+str(i),q,h-78,h-78+.10,'champagne_metal');extrusion('LIB_OpalLens_'+str(i),[(cx+(a-cx)*.88,cy+(b-cy)*.88)for a,b in q],h-78-.025,h-78,'lens');datum('light_'+str(i),(cx,cy,h-78-.04))
- mount=83.76 if i==0 else [0,81.45,81.70,82.40,82.15][i]if i<5 else 92.76 if i==5 or i>=8 else 88.26
+ mount=83.76 if i==0 else [0,81.50+6/11.8*.65+.20,81.70,82.40,82.15][i]if i<5 else 92.76 if i==5 or i>=8 else 88.26
  beam('LIB_LightMount_'+str(i),[(cx,cy,h-78+.10),(cx,cy,mount-78)],.045,.045,'champagne_metal')
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(AID+'.blend');export=ROOT/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source));tri=0
 for o in parts:o.data.calc_loop_triangles();tri+=len(o.data.loop_triangles)
 # Retain editable semantic source parts, but export local material/contact groups.
-for o in parts:o['contact_group']='steps'if o.name.startswith('LIB_Step')else'static'
-for group in ['static','steps']:
+for o in parts:o['contact_group']='steps'if o.name.startswith('LIB_Step')else'finish'if o.name.startswith('LIB_Finish')else'static'
+for group in ['static','steps','finish']:
  for role,material in mats.items():
   selected=[o for o in list(scene.objects)if o.type=='MESH'and o.get('contact_group')==group and o.data.materials and o.data.materials[0]==material]
   if not selected:continue
