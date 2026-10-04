@@ -29,6 +29,28 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.light_color=Color(1,.95,.87)
 		light.shadow_enabled=true
 		light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE
+	var edges:Node3D=ship.model(root,"AST-AQU-013.glb","AquaticAuthoredBalconyEdges",Vector3(8,44,182))
+	var guard_glass:=ShaderMaterial.new()
+	guard_glass.shader=load("res://shaders/hospitality_glass.gdshader")
+	for part in edges.find_children("*","MeshInstance3D",true,false):
+		if "glass" in part.name:part.material_override=guard_glass
+	for deck in ["D09","D10"]:
+		for i in range(4):
+			var marker:=edges.find_child("DATUM_"+deck+"_light_"+str(i),true,false)as Node3D
+			var receiver:=edges.find_child("DATUM_"+deck+"_receiver_"+str(i),true,false)as Node3D
+			assert(marker!=null and receiver!=null)
+			var light:=OmniLight3D.new()
+			root.add_child(light)
+			light.name="AquaticBalconySource_"+deck+"_"+str(i)
+			light.global_position=marker.global_position
+			light.look_at(receiver.global_position,Vector3.RIGHT if absf(receiver.global_position.x-marker.global_position.x)<.01 else Vector3.UP)
+			light.omni_range=marker.global_position.distance_to(receiver.global_position)+2
+			light.omni_attenuation=.7
+			light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE
+			light.light_energy=2.2
+			light.light_color=Color(1,.95,.88)
+			light.shadow_enabled=true
+			light.set_meta("illumination_anchor",receiver.global_position)
 	var basin: Dictionary = data.basin
 	var boundary: Array = basin.boundary
 	var vertices: Array[Vector3] = []

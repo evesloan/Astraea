@@ -44,6 +44,29 @@ func run() -> void:
 			assert(abs(region.floor_y-69.5)<.001 and abs(region.thickness-.4)<.001)
 			cover_area+=region.structural_area_m2
 	assert(abs(cover_area-3128.0)<.01,"Both protected cover ownership pieces must be present")
+	var edge_data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D09_D10_aquatic_edges.json"))
+	var guard_samples:=0
+	for deck in edge_data.decks:
+		var ring:Array=deck.boundary
+		for i in range(ring.size()):
+			var a:=Vector2(ring[i][0],ring[i][1])
+			var b:=Vector2(ring[(i+1)%ring.size()][0],ring[(i+1)%ring.size()][1])
+			var t:Vector2=(b-a).normalized()
+			var n:=Vector2(-t.y,t.x)
+			for fraction in [.08,.3,.5,.7,.92]:
+				var p:Vector2=a.lerp(b,fraction)
+				var ray:=PhysicsRayQueryParameters3D.create(Vector3(p.x+n.x*.4,deck.floor_y+.7,p.y+n.y*.4),Vector3(p.x-n.x*.4,deck.floor_y+.7,p.y-n.y*.4))
+				ray.hit_back_faces=true
+				var hit:=ship.get_world_3d().direct_space_state.intersect_ray(ray)
+				assert(not hit.is_empty() and "AquaticAuthoredBalconyEdges" in String(hit.collider.get_path()),"Missing physical aquatic guard")
+				guard_samples+=1
+		for fixture in deck.lights:
+			var a:Array=fixture.source_xyz
+			var b:Array=fixture.receiver_xyz
+			var ray:=PhysicsRayQueryParameters3D.create(Vector3(a[0],a[1],a[2]),Vector3(b[0],b[1],b[2]))
+			var optical_hit:=ship.get_world_3d().direct_space_state.intersect_ray(ray)
+			if not optical_hit.is_empty():print("BALCONY OPTICAL BLOCK:",deck.deck," ",a," to ",b," ",optical_hit.collider.get_path()," at ",optical_hit.position)
+			assert(optical_hit.is_empty(),"Balcony fixture cannot reach its authored lower-floor receiver")
 	# Compound loaded-cart clearance, including the aft bypass around the existing column.
 	for floor_y in [44.0,52.5,61.0]:
 		for i in range(66):check_pose(ship,cart,Vector3(9.8,floor_y+.03,223.2+i*.25),0,excluded)
@@ -51,7 +74,7 @@ func run() -> void:
 		for i in range(42):check_pose(ship,cart,Vector3(9.8+i*.24,floor_y+.03,239.5),PI/2,excluded)
 		for i in range(31):check_pose(ship,cart,Vector3(20,floor_y+.03,239.5),PI*.5*i/30,excluded)
 		for i in range(23):check_pose(ship,cart,Vector3(20,floor_y+.03,239.5+i*.25),0,excluded)
-	print("AQUATIC ACCESS PASS:",sweep_samples,"full cabin-shape sweep samples;",samples,"compound cart and upper-load approach poses; four ceiling fixture mounts/exits and protected cover ownership. Geometric clearance only; driven boarding turns and final art remain pending.")
+	print("AQUATIC ACCESS PASS:",sweep_samples,"full cabin-shape sweep samples;",samples,"compound cart and upper-load approach poses;",guard_samples,"guard contacts and eight lower receivers; four ceiling fixture mounts/exits and protected cover ownership. Geometric clearance only; driven boarding turns and final art remain pending.")
 	main.queue_free()
 	await process_frame
 	quit()
