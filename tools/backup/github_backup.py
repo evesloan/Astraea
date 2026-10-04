@@ -51,7 +51,7 @@ def sync_project(project, info, mirror):
         raise SnapshotChanged('Source changed during checkpoint; no upload attempted')
     return hashes
 
-def run_once(config):
+def run_once(config, force=False):
     state_path=Path(config['state']);state=json.loads(state_path.read_text())
     if state.get('blocked'):raise RuntimeError('Recorded backup blocker requires review')
     infos={p['name']:inventory(p) for p in config['projects']}
@@ -59,7 +59,7 @@ def run_once(config):
     if not changed:return False
     committed=any(state.get('projects',{}).get(n,{}).get('head')!=i['head'] for n,i in infos.items())
     elapsed=time.time()-state.get('last_verified_epoch',0)
-    if not committed and elapsed<config.get('wip_interval_seconds',900):return False
+    if not force and not committed and elapsed<config.get('wip_interval_seconds',900):return False
     mirror=Path(config['mirror']);verify_private(config)
     expected=state['remote_commit'];actual=remote_head(config)
     if actual!=expected:raise RuntimeError('Remote main changed outside this publisher; preserve both histories and review')
@@ -86,13 +86,14 @@ def run_once(config):
     return True
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--config',required=True,type=Path);ap.add_argument('--watch',action='store_true');args=ap.parse_args();c=json.loads(args.config.read_text());runtime=Path(c['state']).parent
+    ap=argparse.ArgumentParser();ap.add_argument('--config',required=True,type=Path);ap.add_argument('--watch',action='store_true');ap.add_argument('--force',action='store_true',help='Checkpoint changed WIP now without changing its regular cadence');args=ap.parse_args();c=json.loads(args.config.read_text());runtime=Path(c['state']).parent
+    if args.watch and args.force:ap.error('A watcher must respect the regular WIP cadence')
     with (runtime/'github.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         while True:
             atomic_json(runtime/'github_runner.json',{'pid':os.getpid(),'heartbeat_utc':now(),'config':str(args.config)})
             try:
-                changed=run_once(c)
+                changed=run_once(c,args.force)
                 if changed:print('Verified GitHub checkpoint',flush=True)
             except SnapshotChanged:
                 state=json.loads(Path(c['state']).read_text());state.update(status='waiting_for_stable_source');atomic_json(Path(c['state']),state)
