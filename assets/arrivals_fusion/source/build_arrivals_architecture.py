@@ -89,16 +89,46 @@ disc_x('ARR_EmblemBackplate',-15.98,0,7.5,3.55,.10,'warm_stone')
 disc_x('ARR_EmblemSun',-15.86,0,7.5,1.22,.16,'champagne_metal')
 for j in range(16):
  a=2*math.pi*j/16;verts=[(-15.74,1.45*math.cos(a-.06),7.5+1.45*math.sin(a-.06)),(-15.74,3.05*math.cos(a),7.5+3.05*math.sin(a)),(-15.74,1.45*math.cos(a+.06),7.5+1.45*math.sin(a+.06)),(-15.86,1.45*math.cos(a),7.5+1.45*math.sin(a))];mesh('ARR_SunRay_'+str(j),verts,[(0,2,1),(0,1,3),(1,2,3),(2,0,3)],'champagne_metal')
+# A fitted arrival carpet fans toward the stair and leaves the lift/side
+# destinations clear. These are finish meshes, never a second physical floor.
+carpet_world=[(-8,-435),(-18,-437),(-24,-441),(-29,-438),(-30,-435.6),(-30,-428.4),(-29,-426),(-24,-423),(-18,-427),(-8,-429)]
+carpet=[xy(v)for v in carpet_world]
+extrusion('ARR_VisualFloor_ArrivalCarpet',carpet,.003,.008,'clay_weave')
+centre=Vector(xy((-20,-432)));inner=[tuple(centre+(Vector(v)-centre)*.976)for v in carpet]
+for i in range(len(carpet)):
+ j=(i+1)%len(carpet);extrusion('ARR_VisualFloor_CarpetBinding_'+str(i),[carpet[i],carpet[j],inner[j],inner[i]],.008,.011,'warm_walnut')
+# Profiled threshold at the end of the compressed entry canopy. Its open curved
+# underside frames the release into the tall court without narrowing the axis.
+verts=[];N=24
+for x in [-18.48,-18.12]:
+ for k in range(N+1):
+  z=-442+20*k/N;h=3.45+.60*math.sin(math.pi*k/N)
+  verts.extend([(*xy((x,z)),h),(*xy((x,z)),4.33)])
+stride=2*(N+1);faces=[]
+for k in range(N):
+ a=2*k;b=2*(k+1)
+ faces.extend([(a,b,b+1,a+1),(a+stride,a+stride+1,b+stride+1,b+stride),(a,b,a+stride+2,a+stride),(a+1,a+stride+1,b+stride+1,b+1)])
+faces.extend([(0,1,stride+1,stride),(2*N,2*N+stride,2*N+stride+1,2*N+1)])
+mesh('ARR_ProfiledEntryCanopyArch',verts,faces,'ivory_enamel')
+for z in [-442,-422]:
+ wall('ARR_EntryArchPier_'+str(z),(-18.6,z),(-18,z),0,4.33,.62,'warm_stone')
+ wall('ARR_EntryPierTimber_'+str(z),(-18.64,z),(-17.96,z),.12,1.15,.65,'warm_walnut')
+
 # Actual twenty-tread flights; runtime adds matched smooth walking contacts.
 for i in range(20):
  x1=-30-i*.30;x0=x1-.30;half=3.0+.45*(1-i/19)
  q=[xy(v)for v in [(x0,-432-half),(x1,-432-half),(x1,-432+half),(x0,-432+half)]]
  extrusion('ARR_StepMain_%02d'%i,q,i*.15,(i+1)*.15,'warm_stone')
+ q=[xy(v)for v in [(x0,-433.2),(x1,-433.2),(x1,-430.8),(x0,-430.8)]]
+ extrusion('ARR_VisualFloor_MainRunner_%02d'%i,q,(i+1)*.15+.002,(i+1)*.15+.005,'clay_weave')
 for label,sign in [('North',-1),('South',1)]:
  for i in range(20):
   near=-432+sign*5+sign*i*.30;far=near+sign*.30;lo,hi=sorted([near,far]);q=[xy(v)for v in [(-45,lo),(-42,lo),(-42,hi),(-45,hi)]]
   extrusion('ARR_Step%s_%02d'%(label,i),q,3+i*.15,3+(i+1)*.15,'warm_stone')
+  q=[xy(v)for v in [(-44.5,lo),(-42.5,lo),(-42.5,hi),(-44.5,hi)]]
+  extrusion('ARR_VisualFloor_UpperRunner_%s_%02d'%(label,i),q,3+(i+1)*.15+.002,3+(i+1)*.15+.005,'clay_weave')
 landing=D['stair']['intermediate_landing'];q=[xy(v)for v in [(landing['x'][0],landing['z'][0]),(landing['x'][1],landing['z'][0]),(landing['x'][1],landing['z'][1]),(landing['x'][0],landing['z'][1])]];extrusion('ARR_IntermediateLanding',q,2.76,3,'warm_stone')
+extrusion('ARR_VisualFloor_LandingRunner',[xy(v)for v in [(-44.5,-436.8),(-42.5,-436.8),(-42.5,-433.2),(-36,-433.2),(-36,-430.8),(-42.5,-430.8),(-42.5,-427.2),(-44.5,-427.2)]],3.002,3.005,'clay_weave')
 # Supported stepped undersides are opaque; no open triangular escape pockets.
 for side in [-1,1]:
  z=-432+side*3;v=[]
