@@ -1,7 +1,7 @@
 {
   "document_kind": "Godot production canon; latest owner decisions override historical startup ledger",
   "schema_version": 2,
-  "revision": "2026-10-03-godot-r01",
+  "revision": "2026-10-04-godot-r02-current-production",
   "engine": {
     "family": "Godot",
     "version": "4.6.3.stable.official.7d41c59c4",
@@ -370,13 +370,16 @@
     "status": "Owner-confirmed target; not a benchmark pass"
   },
   "source_and_catalogue": {
-    "current_catalogue_commit": "c251cbf6e6e78d82f9db719c03ad7f1969ac71c3",
+    "current_catalogue_commit": "0e02197455a7cfeba4ca7002e93fd59434d51506",
     "reviewed_standalone_designs": 89,
-    "runtime_adopted_designs": 0,
+    "runtime_adopted_designs": 67,
     "pipeline": "Editable Blender sources, generators where used, original textures, reviewed exports and exact interface/provenance records",
     "source_axis": "Blender Z-up; existing GLB export mapping is (x,z,-y)",
-    "unity_import_basis_status": "Pending actual importer/marker/winding/handedness checks; do not assume engine-local transforms from filenames",
-    "old_third_party_kits": "Separate conditional inputs, not automatically approved current catalogue"
+    "unity_import_basis_status": "Historical separate Unity experiment; not the current runtime. Godot source/export bounds and local interface tests apply.",
+    "old_third_party_kits": "Separate conditional inputs, not automatically approved current catalogue",
+    "registered_editable_designs": 131,
+    "runtime_instances": 489,
+    "review_count_scope": "The original89 reviewed standalone components are an initial checkpoint. Registration/presence and subsequent local checks do not mean final visual acceptance."
   },
   "state_and_streaming": {
     "single_authorities": [
@@ -385,7 +388,7 @@
       "Simulation clock",
       "Interaction target/action resolver",
       "Persistence",
-      "URP visual pipeline"
+      "Godot low-resolution viewport and shared CRT/dither pipeline"
     ],
     "simulation_independent_of_visibility": true,
     "world_objects_keep_ids_and_quantities": true,
@@ -394,10 +397,15 @@
     "distant_visible_courts_and_galleries_required": true
   },
   "source_control": {
-    "local_git": "initialized",
-    "library_snapshot": "pending",
-    "workshop_backup": "pending verified transfer",
-    "uvcs": "Existing Unity work preserved separately; Godot remote integration not established"
+    "local_git": "Separate Godot and Blender histories retained",
+    "github_repository": "https://github.com/evesloan/Astraea",
+    "github_visibility": "private, verified",
+    "github_verified_main": "5a7e289910e5f46c3d01394a8b20898843df4a0c",
+    "github_verification_utc": "2026-10-04T10:18:19Z",
+    "routine": "See docs/GITHUB_BACKUPS.md; active publisher observes source commits and changed WIP",
+    "library_snapshot": "Earlier independently retained fallback checkpoints preserved",
+    "workshop_backup": "Latest automatic copy unverified",
+    "uvcs": "Separate historical Unity work preserved; current Godot production uses private GitHub checkpoints"
   },
   "historical_only": {
     "source_contract_sha256": "78647940a49af412e18e5209893127c794027a02cc1243fd54e82f308f68c5a5",
@@ -416,15 +424,16 @@
       "status": "Historical panel candidate only; not current allocation authority"
     },
     "old_geometry": "96x128m atrium, old rectangular allocations and Townline coordinates are evidence for reconciliation, not automatic geometry instructions",
-    "old_engine": "Godot 4.6.3 Compatibility; classes, render budgets and tests do not transfer to Unity",
-    "old_regression_notes": "Master chapter 33 predates later archived crew meal/break, dry-changing and residential cupboard fixes; all require fresh Unity acceptance"
+    "old_engine": "Godot and later Unity migration assumptions are retained historical evidence; the current engine is the Godot version pinned above.",
+    "old_regression_notes": "Master chapter33 predates later archived fixes. Historical Unity restart assumptions and old Godot passes are not current acceptance; all adopted work needs fresh current-Godot checks."
   },
   "validation_status": {
-    "executable": "Version verified",
-    "engine_import": "Passed 2026-10-03: eight GLBs instantiate, main scene parses; not visual acceptance",
-    "physics": "pending",
-    "visual": "pending",
-    "target_hardware": "pending"
+    "executable": "Pinned Godot version verified",
+    "engine_import": "Passed as part of the29-group check on2026-10-04",
+    "physics": "Checked local stairs, doors, cart interactions, common and arrivals loaded lifts; not full-ship physical acceptance",
+    "visual": "Actual in-engine captures inspected; final art not approved",
+    "target_hardware": "Unverified",
+    "evidence": "docs/ARRIVALS_VALIDATION.json and the other scoped validation records"
   },
   "execution": {
     "primary": "dot cloud computer",
