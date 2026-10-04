@@ -40,6 +40,7 @@ func _ready() -> void:
 	load("res://scripts/garden_overlook.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/canopy_terrace.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/residential_suite.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/residential_wayfinding.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/night_garden.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/vertical_commons.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/retail_curios.gd").build($ShipSpace/Districts,self)

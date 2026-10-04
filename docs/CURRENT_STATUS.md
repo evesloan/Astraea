@@ -98,3 +98,6 @@ Five original profiled wall bays per level now close the real northern dining ed
 
 ## Vesper supported place settings
 All240candidate places now have a supported static plate/cup/folded-cloth setting from one new editable catalogue design.2400tabletop support rays and all40current checks pass; ordinary and effects-off views were inspected. Food service,pickup physics,occupied-seat use and final art remain unfinished.146catalogue designs,93present through1102whole-model instances.
+
+## D13 residential wayfinding and resting edge
+The first application of the new corridor reference is integrated into the actual connector serving13017/13041: a two-place planted resting bay, source-shaped canopy, warm textile/flush timber finish and local route map based on current geometry. All41checks pass in118.6471seconds fixed60; normal and effects-off views were reviewed after graphical batch002. The surrounding connector and opposite frontages remain unfinished. A catalogue ID collision found by aggregate tests was corrected, the reception export verified unchanged, and import-first validation strengthened.
