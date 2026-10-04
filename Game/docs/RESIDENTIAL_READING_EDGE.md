@@ -11,3 +11,8 @@ A separate check samples564 changing-position cart/load and driver poses around 
 Graphical batch starboard-reading-edge-001 completed112.254seconds and normal/effects-off views were inspected. The nook is a useful occupied edge; wider commons still has broad blank surfaces and insufficient variety/activity. Full regression is pending in this record.
 
 Final current-source regression: all45 checks passed140.7473seconds fixed60Hz simulation on2026-10-04. This is assertion execution time, not target rendering performance.
+
+## Independent reading-light controls
+Both desks now have an authored physical toggle and stable control identity, using the existing focus interaction and power-aware shadow budget. Each control affects only its own light and lens emission. Focused tests select both switches from their tested chair-side approach, reject unfocused E, toggle off/on via RMB/E, preserve the other light and confirm switched-off lights remain off when the lighting budget refreshes. The first test position was beyond the existing2.5m reach; testing now uses the already traversed side approach without extending interaction reach. Disk persistence remains unimplemented.
+
+Final toggle-source regression: all45checks passed139.2868seconds fixed60. The existing library-switch defaults remain intact; explicitly selected built-in lenses retain their authored emission/color when powered. The final normal reading-edge capture at22:58UTC was inspected and preserves that balance. Full batch002 capture execution remains in progress at this record.
