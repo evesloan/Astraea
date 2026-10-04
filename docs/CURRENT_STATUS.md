@@ -80,3 +80,6 @@ A rising canopy now shelters the D08 threshold before the large pool volume open
 
 ## Living Gifts partial florist interior
 The existing D09 destination now has an authored curved nursery frontage, layered ceiling, wrapping area and supported plant stock. All34 current regression checks passed in82.9913seconds fixed60 simulation, and current normal in-engine views were inspected after graphical batch living-gifts-stock-final-001. Spacious unfinished wall areas and harsh lighting still require refinement; transactions, NPC use and driven cart turns remain pending. See LIVING_GIFTS_INTEGRATION.md. The catalogue now contains139 registered designs; presence does not establish finished rooms.
+
+## Arrivals stair-court breathing room
+The paired fusion cases have been narrowed around unchanged machinery, increasing the central opening from2m to6.8m nominal (6.57m between frames). Existing stairs, galleries, hidden staff access and lift remain intact. Four new contact rays verify corrected suspension/crossbeam alignment. All34 regression checks pass; same-camera views show a clearer stair and focal wall. The low entrance canopy remains the next composition problem.
