@@ -36,6 +36,13 @@ func run() -> void:
 	var lift=district.get_node("StarAtlasPassengerLift")
 	assert(lift.floor_heights==[78.0,84.0,88.5])
 	for deck in [12,13,14]:assert(lift.find_child("star_atlas_cabin_D"+str(deck),true,false)!=null)
+	var collection:=district.get_node("NorthCollectionStudy_WIP")
+	var batch:MultiMeshInstance3D=collection.get_node("LocalCollectionStock")
+	assert(batch.multimesh.instance_count>40,"Collection stock must be present")
+	for index in range(batch.multimesh.instance_count):
+		var base:Vector3=batch.global_transform*batch.multimesh.get_instance_transform(index).origin
+		var support:=ship.get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(base+Vector3.UP*.02,base-Vector3.UP*.03))
+		assert(not support.is_empty() and absf(support.position.y-base.y)<.012,"Each book group must rest on a real shelf")
 	actor.set_physics_process(false)
 	actor.position=Vector3(-50,78.1,0)
 	actor.velocity=Vector3.ZERO
@@ -49,7 +56,8 @@ func run() -> void:
 	for p in route:await walk(actor,p)
 	await walk(actor,Vector2(-50,0))
 	assert(absf(actor.position.y-78)<.12,"Both actual stairs return to the lower library")
-	print("STAR ATLAS PASS: actual bidirectional three-level walking circuit, ten light exits, protected D15 cap, sealed D12 lift pan and three distinct controls. Loaded lift, detailed guards, furnishing and final art require separate checks.")
+	for point in [Vector2(-60,0),Vector2(-77,-8),Vector2(-87,-15),Vector2(-89.5,-21.5),Vector2(-87,-25.3),Vector2(-83,-25.3),Vector2(-79,-24),Vector2(-79,-18),Vector2(-87,-15)]:await walk(actor,point)
+	print("STAR ATLAS PASS: actual bidirectional three-level walking circuit, ten light exits, protected D15 cap, sealed D12 lift pan, three distinct controls, supported local book stock and first collection study approaches. Loaded lift, detailed guards, wider furnishing and final art require separate checks.")
 	main.queue_free()
 	await process_frame
 	quit()
