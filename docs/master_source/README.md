@@ -1,14 +1,17 @@
 # Complete master design source and current application
 
-The user resupplied the complete master on4 October2026 and directed that it continue to govern the project in its entirety. The unchanged DOCX is retained here, with its Library identity and SHA-256 in MASTER_FULL_CONTENT_INDEX.json.
+The authoritative retained master is version0.3, confirmed by the user on4 October2026. The freshly supplied version0.1 was accidental and remains historical only. The unchanged v0.3 DOCX is retained alongside its complete content index and SHA-256; its retained archive origin is recorded rather than inventing an individual Library identity.
 
-All33 chapters and all body/table text were read and indexed. A character-order check verifies that the index retains every body/table text character. All9 embedded images were inspected. The current document rendered to55 pages. This is a content review, not a new layout certification or an edited Word edition.
+All33 chapters and body/table text were read and indexed. All13 embedded images were inspected. The document rendered to59 pages. This is a content review, not a new layout certification or edited Word edition.
 
-- MASTER_FULL_CONTENT_INDEX.json preserves the complete ordered text/table content and image references, not an abbreviated summary
-- MASTER_CURRENT_APPLICATION.json accounts for every chapter and records current implementation owners, unresolved work and explicit later-decision overlays
-- The original's October1 implementation and test claims describe the historical build. They are not current rebuild evidence
-- Proposed mechanics, sample cast/quests/prices and open questions remain proposals unless separately approved
+- MASTER_FULL_CONTENT_INDEX.json preserves the complete ordered v0.3 text/table content and image references
+- MASTER_CURRENT_APPLICATION.json accounts for every chapter, current implementation owners, unresolved work and later decisions
+- MASTER_V0_1_HISTORICAL_INDEX.json and the supplied20261004 DOCX preserve the older accidental upload
+- October1 implementation/test claims describe the historical build, not current rebuild evidence
+- Proposed mechanics, sample cast, quests and prices remain proposals unless separately approved
 
-Before working on a system or destination, consult its chapter application and the corresponding full source blocks, plus its relevant images/blueprints. Update application/evidence when implementation changes. Do not drop unrelated chapters, silently restore old species/controls/capacity assumptions, or overwrite the original document merely to reconcile history.
+Before each system or destination pass, read its application entry and complete source chapter, reopen the relevant blueprints/images, and record concrete implementation and verification evidence. Flag deviations explicitly. Catalogue presence or archived references do not establish finished architecture or use in review.
 
-Latest source: libfile_bfb557db72bc8191b009d58c78218708. User instruction: Sentinel_eed252f7c7288191a2d182241a29cd86.
+Version0.3 adds the six-species canon, ship-and-life-first priority, deferred story/mechanics status, retail architectural direction and four additional interior references. These reinforce the existing vision. Later luxury/admission, shared staff room, focus/E controls, hardware and grand-arrivals decisions remain explicit overlays.
+
+User authority: Sentinel_51fc0c6831388191aa46b114f24580c6. Consistent application: Sentinel_551b89f5975081919d1dfc028ba28f71.
