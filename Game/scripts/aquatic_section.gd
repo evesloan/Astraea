@@ -73,6 +73,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE
 		light.shadow_normal_bias=1.5
 		light.shadow_bias=.08
+	load("res://scripts/living_gifts.gd").build(root,ship)
 	var basin: Dictionary = data.basin
 	var boundary: Array = basin.boundary
 	var vertices: Array[Vector3] = []

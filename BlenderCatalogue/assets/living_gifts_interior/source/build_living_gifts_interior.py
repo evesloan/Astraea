@@ -45,12 +45,12 @@ def slab(name,poly,lo,hi,role):return extrusion(name,[(x-46,230.4-z)for x,z in p
 outline=[(46.2,232.7),(47,231),(49.2,230.6),(52.6,230.6),(53.65,231.4),(53.65,242.3),(47.2,242.3),(46.3,240.8),(46.4,239.1),(47.2,238.1),(46.8,236),(47.2,234.1)]
 # The roof follows the offset nursery and entrance rather than spanning an unaltered rectangular lid.
 slab('RTL_ShapedRoof',outline,56.6,56.8,'ivory_enamel')
-solid=[[(46.2,232.7),(47,231),(49.2,230.6),(52.6,230.6),(53.65,231.4),(53.65,242.3)],[(47.2,242.3),(51.4,242.3)],[(53.4,242.3),(53.65,242.3)]]
+solid=[[(47,231),(49.2,230.6),(52.6,230.6),(53.65,231.4),(53.65,242.3)],[(47.2,242.3),(51.4,242.3)],[(53.4,242.3),(53.65,242.3)]]
 for group,path in enumerate(solid):
  for i,(a,b)in enumerate(zip(path,path[1:])):
   wall('RTL_Wall_%s_%s'%(group,i),a,b,52.5,56.6,.16,'ivory_enamel');wall('RTL_WallPlinth_%s_%s'%(group,i),a,b,52.5,53.2,.19,'warm_walnut')
 # Transparent nursery/flower fronts are true interfaces into this same shop.
-for group,path in enumerate([[(46.2,232.7),(47.2,234.1)],[(47.2,238.1),(46.4,239.1),(46.3,240.8),(47.2,242.3)]]):
+for group,path in enumerate([[(47,231),(46.2,232.7),(47.2,234.1)],[(47.2,238.1),(46.4,239.1),(46.3,240.8),(47.2,242.3)]]):
  for i,(a,b)in enumerate(zip(path,path[1:])):
   wall('RTL_WindowBase_%s_%s'%(group,i),a,b,52.5,53.05,.20,'ivory_enamel');wall('RTL_WindowGlass_%s_%s'%(group,i),a,b,53.05,55.7,.035,'glass');wall('RTL_RecessOrange_%s_%s'%(group,i),a,b,55.7,56.6,.24,'orange')
 # Deep rising portal spans a clear four-metre opening, wholly within the reserved bay.
