@@ -48,25 +48,35 @@ func refresh() -> void:
 		if light.shadow_enabled != active: light.shadow_enabled = active
 
 func _has_visible_sample(light:Light3D) -> bool:
-	for offset in [Vector3(0,1.5,0),Vector3(0,.4,0),Vector3(.65,1.0,0),Vector3(-.65,1.0,0)]:
-		var query:=PhysicsRayQueryParameters3D.create(light.global_position,actor.global_position+offset)
-		if actor is CollisionObject3D:query.exclude=[actor.get_rid()]
-		var clear:=false
-		for crossing in range(6):
-			var hit:=light.get_world_3d().direct_space_state.intersect_ray(query)
-			if hit.is_empty():
-				clear=true
-				break
-			var body=hit.collider
-			var transparent:bool=body is RigidBody3D or body is CharacterBody3D
-			var owner_mesh:=body.get_parent()as MeshInstance3D
-			if owner_mesh!=null:
-				var material:Material=owner_mesh.get_active_material(0)
-				if material is ShaderMaterial and material.shader!=null and "glass" in material.shader.resource_path:transparent=true
-				elif material is StandardMaterial3D and material.transparency!=BaseMaterial3D.TRANSPARENCY_DISABLED:transparent=true
-			if not transparent:break
-			var excluded:=query.exclude
-			excluded.append(body.get_rid())
-			query.exclude=excluded
-		if clear:return true
+	var origins:Array[Vector3]=[light.global_position]
+	# A wallwasher may face away from the viewer while its illuminated relief is
+	# plainly visible. Admit one authored receiver only when the real cone reaches
+	# it unobstructed; this does not enlarge the eight-shadow-source budget.
+	var receiver=light.get_meta("illumination_anchor") if light.has_meta("illumination_anchor") else null
+	if receiver is Vector3 and light is SpotLight3D:
+		var delta:Vector3=receiver-light.global_position
+		if delta.length()<light.spot_range and delta.normalized().dot(-light.global_basis.z)>=cos(deg_to_rad(light.spot_angle)):
+			if _clear_sample(light.global_position,receiver):origins.append(receiver)
+	for origin in origins:
+		for offset in [Vector3(0,1.5,0),Vector3(0,.4,0),Vector3(.65,1.0,0),Vector3(-.65,1.0,0)]:
+			if _clear_sample(origin,actor.global_position+offset):return true
+	return false
+
+func _clear_sample(start:Vector3,end:Vector3) -> bool:
+	var query:=PhysicsRayQueryParameters3D.create(start,end)
+	if actor is CollisionObject3D:query.exclude=[actor.get_rid()]
+	for crossing in range(6):
+		var hit:=actor.get_world_3d().direct_space_state.intersect_ray(query)
+		if hit.is_empty():return true
+		var body=hit.collider
+		var transparent:bool=body is RigidBody3D or body is CharacterBody3D
+		var owner_mesh:=body.get_parent()as MeshInstance3D
+		if owner_mesh!=null:
+			var material:Material=owner_mesh.get_active_material(0)
+			if material is ShaderMaterial and material.shader!=null and "glass" in material.shader.resource_path:transparent=true
+			elif material is StandardMaterial3D and material.transparency!=BaseMaterial3D.TRANSPARENCY_DISABLED:transparent=true
+		if not transparent:return false
+		var excluded:=query.exclude
+		excluded.append(body.get_rid())
+		query.exclude=excluded
 	return false

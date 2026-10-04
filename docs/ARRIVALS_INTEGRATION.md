@@ -22,3 +22,15 @@ Reception, purposeful waiting groups, complete wayfinding, richer vertical illum
 Current focused results and full regression status must be taken from their latest logs. Earlier checks are invalidated where geometry changes. Run tools/validate.py and inspect player-height entry, court, overhead glance and upper-exhibit captures before committing the integrated phase as checked.
 
 The 09:55 UTC checkpoint passed all29 Godot groups, including actual loaded arrivals-lift travel. The revised overhead composition is visible in ordinary court captures. Focal-wall light remains insufficient; the next refinement addresses its real source/occlusion relationship alongside reception and waiting areas.
+
+## Hospitality refinement after the first integrated checkpoint
+Independent review of the real in-game views found that the exhibit dominated the hospitality composition, the upper galleries were hard to read, and the reception desk was isolated against a blank backing. The subsequent pass:
+- Gives existing gallery edges a deeper cream profile and timber reveal, without changing floors or guard lines
+- Moves the previously axial hanging fixture to a public landing, with a corresponding fixture at the opposite landing
+- Replaces the uniformly luminous machinery sleeve with a darker contained instrument and selective glowing bands
+- Adds an original three-height crescent reception desk, a fitted fan-shaped wall/ceiling enclosure, three mounted task lights and two purposefully grouped waiting areas
+- Preserves six checked capsule approach positions at the reception stations; terminals and staffing remain inactive
+
+A lighting defect was also identified: an emitter aimed away from the player could be rejected even while its illuminated wall was visible. The shared eight-source budget now accepts one explicitly authored receiver only if it is inside the real spotlight cone/range, reached without opaque obstruction, and itself visible from the player. A test rejects a receiver hidden behind the focal wall. This does not create an extra light budget or turn shadowed fixtures into wall-leaking unshadowed lamps.
+
+The latest captures still show sparse supporting surfaces and an overly bright focal patch. Grand hospitality composition and final art are not approved. Screening checks sample25 sightlines; they are not exhaustive moving-view coverage. Component knee-space verification is a measured local empty prism, not universal species-accessibility certification.

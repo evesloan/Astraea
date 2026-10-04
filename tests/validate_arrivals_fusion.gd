@@ -62,7 +62,42 @@ func run() -> void:
 		var direction:Vector3=(Vector3(-47.15,7.5,-432)-marker.global_position).normalized()
 		var source_ray:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+direction*.12)
 		assert(ship.get_world_3d().direct_space_state.intersect_ray(source_ray).is_empty(),"Wallwash source is outside its housing")
+		var wash_ray:=PhysicsRayQueryParameters3D.create(marker.global_position,Vector3(-47.5,7.5,-432))
+		var wash_hit:=ship.get_world_3d().direct_space_state.intersect_ray(wash_ray)
+		assert(not wash_hit.is_empty() and ("Emblem" in str(wash_hit.collider.get_path()) or "SunRay" in str(wash_hit.collider.get_path()) or "Focal" in str(wash_hit.collider.get_path())),"Wallwash must reach its intended relief instead of a hidden maintenance roof")
+	var reception_alcove:=district.get_node("ArrivalsFittedReceptionAlcove")
+	for i in range(3):
+		var marker:=reception_alcove.find_child("DATUM_light_"+str(i),true,false)as Node3D
+		var ray_exit:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position-Vector3.UP*.12)
+		assert(ship.get_world_3d().direct_space_state.intersect_ray(ray_exit).is_empty(),"Reception fixture exit must be clear")
+	var reception:=district.get_node("ArrivalsCrescentReception")
+	var body_shape:=CapsuleShape3D.new()
+	body_shape.radius=.30
+	body_shape.height=1.8
+	for station in ["standard","lower","tall"]:
+		for role in ["guest_approach","staff_position"]:
+			var marker:=reception.find_child("DATUM_"+station+"_"+role,true,false)as Node3D
+			assert(marker!=null)
+			var query:=PhysicsShapeQueryParameters3D.new()
+			query.shape=body_shape
+			query.transform=Transform3D(Basis.IDENTITY,marker.global_position+Vector3.UP*.905)
+			query.exclude=[actor.get_rid()]
+			assert(ship.get_world_3d().direct_space_state.intersect_shape(query).is_empty(),"Reception approach blocked: "+station+" "+role)
 	actor.set_physics_process(false)
+	actor.position=Vector3(-25,.1,-432)
+	for frame in range(30):await physics_frame
+	var enabled_washes:=0
+	for i in range(2):
+		if district.get_node("ArrivalsReliefWallwash_"+str(i)).visible:enabled_washes+=1
+	assert(enabled_washes==2,"Visible focal wall retains its real wallwash sources within the shared lighting budget")
+	var budget:=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	var source:SpotLight3D=district.get_node("ArrivalsReliefWallwash_0")
+	var saved_anchor:Vector3=source.get_meta("illumination_anchor")
+	source.set_meta("illumination_anchor",Vector3(-51,7.5,-432))
+	assert(not budget._has_visible_sample(source),"A receiver behind the opaque focal wall must not bypass occlusion")
+	source.set_meta("illumination_anchor",saved_anchor)
+	assert(budget._has_visible_sample(source),"The real illuminated relief is a valid visible receiver")
+
 	actor.position=Vector3(-5,.1,-432)
 	actor.velocity=Vector3.ZERO
 	for p in [Vector2(-18,-432),Vector2(-30,-432),Vector2(-43.5,-432),Vector2(-43.5,-443.8)]:await walk(actor,p)
@@ -73,7 +108,7 @@ func run() -> void:
 	assert(lift.floor_heights==[0.0,6.0] and lift.deck_numbers==[1,2])
 	assert(lift.find_child("arrivals_cabin_D2",true,false)!=null)
 	assert(ship.find_child("commons_cabin_D14",true,false)!=null,"Existing commons floor controls retain their identities")
-	print("ARRIVALS SECTION PASS: connected ceremonial stair/upper-gallery circuit,25 screened staff sightlines, intact D03 boundary,13 fixture exits and distinct reused lift configuration. Art, occupancy, engineering loads and arrivals loaded-lift travel still pending.")
+	print("ARRIVALS SECTION PASS: connected ceremonial stair/upper-gallery circuit,6 reception approaches,25 screened staff sightlines, intact D03 boundary,16 fixture exits and distinct reused lift configuration. Art, occupancy, engineering loads and arrivals loaded-lift travel still pending.")
 	main.queue_free()
 	await process_frame
 	quit()
