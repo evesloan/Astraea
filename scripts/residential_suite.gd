@@ -72,6 +72,19 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	entry.position=Vector3(82.0,84,-42)
 	entry.rotation.y=PI/2
 	root.add_child(entry)
+	var arrival := ship.model(root,"AST-ARR-001.glb","QuietResidentialArrival",Vector3(81.95,84,-42),0) as Node3D
+	for i in range(3):
+		var source := arrival.find_child("DATUM_arrival_light_"+str(i),true,false) as Node3D
+		var light := SpotLight3D.new()
+		root.add_child(light)
+		light.name = "QuietArrivalSource_"+str(i)
+		light.global_position = source.global_position
+		light.rotation.x = -PI/2
+		light.spot_range = 4.4
+		light.spot_angle = 75
+		light.light_energy = .8
+		light.light_color = Color(1,.94,.84)
+		light.shadow_enabled = true
 	# Guard exposed slab edges while adjoining census units remain unbuilt.
 	# Entry portals and the connection to the original atrium stay open.
 	var edges := [[Vector2(54,-36),Vector2(54,-30)],[Vector2(54,-36),Vector2(63,-36)],[Vector2(63,-36),Vector2(69.05,-38.4)],[Vector2(54,-48),Vector2(63,-48)],[Vector2(63,-48),Vector2(69.05,-45.6)],[Vector2(50,-26),Vector2(86.05,-26)],[Vector2(54,-30),Vector2(81.95,-30)],[Vector2(81.95,-51),Vector2(86.05,-51)],[Vector2(86.05,-51),Vector2(86.05,-26)],[Vector2(81.95,-51),Vector2(81.95,-45.6)],[Vector2(81.95,-38.4),Vector2(81.95,-30)]]

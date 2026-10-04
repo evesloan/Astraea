@@ -27,7 +27,20 @@ func run() -> void:
 	for i in range(3):
 		var datum := shell.find_child("DATUM_light_"+str(i),true,false) as Node3D
 		assert(state.intersect_ray(PhysicsRayQueryParameters3D.create(datum.global_position,datum.global_position+Vector3.DOWN*.1)).is_empty(),"Suite source exits its lens")
-	print("RESIDENTIAL PASS: allocation and D14 clearance,164 connected arrival probes,2 historical bed anchors and3 fixture exits. Plumbing controls, entry door, saved identity migration, NPC use and final art are incomplete.")
+	var arrival := ship.find_child("QuietResidentialArrival",true,false) as Node3D
+	assert(arrival != null)
+	for mesh in arrival.find_children("*","MeshInstance3D",true,false):
+		for corner in range(8):
+			var p: Vector3 = mesh.global_transform*mesh.get_aabb().get_endpoint(corner)
+			assert(p.x>=81.94 and p.x<=86.06 and p.z>=-45.61 and p.z<=-38.39,"Arrival stays inside existing street")
+			assert(p.y>=84 and p.y<88.26,"Arrival stays below occupied D14")
+	for x in [83.0,84.0,85.0]:
+		for step in range(29):
+			assert(ship.arrive_at(Vector3(x,84.1,-45.5+step*.25),0),"Three-lane arrival clearance")
+	for i in range(3):
+		var datum := arrival.find_child("DATUM_arrival_light_"+str(i),true,false) as Node3D
+		assert(state.intersect_ray(PhysicsRayQueryParameters3D.create(datum.global_position,datum.global_position+Vector3.DOWN*.1)).is_empty(),"Arrival source exits its lens")
+	print("RESIDENTIAL PASS: allocation and D14 clearance,164 connected route and87 arrival probes,2 historical bed anchors and6 source exits. Plumbing, saving, NPC use and final art incomplete.")
 	main.queue_free()
 	await process_frame
 	quit()
