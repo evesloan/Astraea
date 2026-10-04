@@ -43,6 +43,17 @@ func run() -> void:
 		for body in chair.find_children("*","StaticBody3D",true,false):omit.append(body.get_rid())
 		foot.exclude=omit
 		assert(not ship.get_world_3d().direct_space_state.intersect_ray(foot).is_empty(),"Dining chair needs supported floor")
+	var settings:=room.find_children("VesperPlaceSetting_*","Node3D",false,false)
+	assert(settings.size()==240)
+	for setting in settings:
+		var table:Node3D=room.find_child("VesperTable_"+str(setting.get_meta("table_index")),false,false)
+		var omit:Array[RID]=[]
+		for body in setting.find_children("*","StaticBody3D",true,false):omit.append(body.get_rid())
+		for marker in setting.find_children("DATUM_support_*","Node3D",true,false):
+			var ray:=PhysicsRayQueryParameters3D.create(marker.global_position+Vector3.UP*.005,marker.global_position-Vector3.UP*.03)
+			ray.exclude=omit
+			var hit:=ship.get_world_3d().direct_space_state.intersect_ray(ray)
+			assert(not hit.is_empty() and table.is_ancestor_of(hit.collider),"Place setting support leaves its own table: %s %s"%[setting.name,marker.name])
 	var approach_count:=0
 	for chair in chairs:
 		var usable:=false
@@ -70,7 +81,7 @@ func run() -> void:
 	actor.velocity=Vector3.ZERO
 	for target in route:await walk(actor,target)
 	assert(absf(actor.position.y-61)<.12)
-	print("VESPER SUBSET PASS:",samples,"compound cart/load and driver poses,240 unique chair contacts/supports and clear side/rear standing positions and actual service/gallery walking. Occupied guest access, service simulation and final art remain pending.")
+	print("VESPER SUBSET PASS:",samples,"compound cart/load and driver poses,240 settings with2400 tabletop support rays;240 unique chair contacts/supports and clear side/rear standing positions and actual service/gallery walking. Occupied guest access, service simulation and final art remain pending.")
 	main.queue_free()
 	await process_frame
 	quit()

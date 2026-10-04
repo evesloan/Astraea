@@ -95,3 +95,6 @@ The actual restaurant now contains240candidate chair positions across150lower/90
 
 ## Vesper north acoustic dining edge
 Five original profiled wall bays per level now close the real northern dining edge, linking acoustic panels, ceiling returns and supported wash fixtures. Lower bays use a height derivative of the same editable Blender design. All40 current checks passed in109.5215seconds; two graphical batches were reviewed, including normal/effects-off wall views. The other perimeter, occupied table use and final visual character still need work.145catalogue designs,92present through862whole-model instances.
+
+## Vesper supported place settings
+All240candidate places now have a supported static plate/cup/folded-cloth setting from one new editable catalogue design.2400tabletop support rays and all40current checks pass; ordinary and effects-off views were inspected. Food service,pickup physics,occupied-seat use and final art remain unfinished.146catalogue designs,93present through1102whole-model instances.
