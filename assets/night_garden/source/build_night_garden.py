@@ -137,6 +137,34 @@ for i,(x,y)in enumerate([(22,-23.8),(32,10)]):
  extrusion('NG_PlanterUplightHousing_'+str(i),[(x-.13,y-.13),(x+.13,y-.13),(x+.13,y+.13),(x-.13,y+.13)],.49,.64,'champagne_metal')
  extrusion('NG_PlanterUplightLens_'+str(i),[(x-.10,y-.10),(x+.10,y-.10),(x+.10,y+.10),(x-.10,y+.10)],.64,.648,'lens')
  datum('uplight_'+str(i),(x,y,.66))
+# Coordinated occupied-ceiling interfaces for the upper commons piers.
+# Each opening is filled by its explicit matching shaft and profiled collar;
+# the garden floor and deck elevations remain intact.
+interfaces=[(19,12),(12,-12),(42,11.5),(42,-11.5),(8,17)]
+for index,(cx,cy)in enumerate(interfaces):
+ targets=[o for o in parts if o.name=='NG_OpaqueRoof' or (cx>41 and o.name=='NG_RearCeilingShoulder_2')]
+ for target in targets:
+  bpy.ops.mesh.primitive_cube_add(size=1,location=(cx,cy,4.5));cutter=bpy.context.object;cutter.name='TEMP_PierAperture';cutter.dimensions=(.72,.72,4)
+  bpy.ops.object.transform_apply(location=False,rotation=False,scale=True)
+  bpy.context.view_layer.objects.active=target
+  mod=target.modifiers.new('CoordinatedPierAperture_'+str(index),'BOOLEAN');mod.operation='DIFFERENCE';mod.solver='EXACT';mod.object=cutter
+  bpy.ops.object.modifier_apply(modifier=mod.name);bpy.data.objects.remove(cutter,do_unlink=True)
+  rear=target.name.startswith('NG_Rear')
+  def plane(x):return 4.18-(x-41)*.70/4.70 if rear else 5.20
+  # Inner contour mates with the octagonal 640mm pier; the outer ring covers
+  # the720mm clearance opening. Sloped shoulder collar follows its plane.
+  half=.32;ch=.075
+  inner=[(-half+ch,-half),(half-ch,-half),(half,-half+ch),(half,half-ch),(half-ch,half),(-half+ch,half),(-half,half-ch),(-half,-half+ch)]
+  outer=[(-.42,-.42),(.42,-.42),(.42,-.20),(.42,.20),(.42,.42),(-.42,.42),(-.42,.20),(-.42,-.20)]
+  vertices=[]
+  for dz in [-.035,.035]:
+   for ring in [outer,inner]:vertices.extend((cx+x,cy+y,plane(cx+x)+dz)for x,y in ring)
+  faces=[]
+  for k in range(8):
+   j=(k+1)%8
+   faces.extend([(k,j,j+8,k+8),(k+16,k+24,j+24,j+16),(k,k+16,j+16,j),(k+8,j+8,j+24,k+24)])
+  mesh('NG_CoordinatedPierCollar_%d_%s'%(index,rear),vertices,faces,'champagne_metal')
+
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1
 bpy.ops.file.pack_all();source=ROOT/'source/AST-GAR-006.blend';export=ROOT/'exports/AST-GAR-006.glb';bpy.ops.wm.save_as_mainfile(filepath=str(source))
 tri=0
