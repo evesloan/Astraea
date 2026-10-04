@@ -1,3 +1,7 @@
+# Backup transition to private GitHub
+
+The current private GitHub publisher and recovery procedure are documented in GITHUB_BACKUPS.md. Inspect the active runtime receipt before deciding which watcher is operating. The Library process below remains a historical fallback until the GitHub watcher and clean retrieval have been verified; never run competing publishers against one mirror. Retained Library checkpoints are not deleted.
+
 # Automated source protection
 
 ## Coverage
