@@ -6,7 +6,7 @@ func run() -> void:
 	for frame in range(30):await physics_frame
 	var ship:Node3D=main.get_node("World360/Astraea")
 	var player:Node3D=ship.get_node("ShipSpace/PersistentActors/Player")
-	player.position=Vector3(89,84.1,8)
+	player.position=Vector3(13,44.1,218) if "--aquatic" in OS.get_cmdline_user_args() else Vector3(89,84.1,8)
 	var budget=ship.get_node("ShipSystems/LocalShadowSourceBudget")
 	budget.refresh()
 	for light in budget.sources:
