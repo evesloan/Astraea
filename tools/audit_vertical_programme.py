@@ -47,7 +47,8 @@ def main():
                                 'overlap_m2': round(area, 3),
                                 'floor_datum_difference_m': elevations[f"D{upper['deck']:02}"]-elevations[f"D{r['deck']:02}"],
                                 'meaning': 'Stacked allocation only; no opening, route, headroom or architectural approval implied'})
-    openings = [v for v in layout['voids'] if v['id'] in ('central_atrium', 'theater_upper_volume')]
+    # Every compiler-level cut must be checked, including district lift shafts.
+    openings = list(layout['voids'])
     openings += [{'id': 'aquatic_'+deck, 'decks': [deck], 'boundary': boundary}
                  for deck, boundary in aquatic['openings'].items()]
     conflicts = opening_conflicts(census['guest_envelopes'], openings)
@@ -55,6 +56,7 @@ def main():
               'source_sha256': {f: hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in files},
               'decks': 18, 'programme_records': len(records), 'historical_guest_envelopes': 1000,
               'physical_guest_beds': None, 'finished_guest_units': 0,
+              'checked_opening_ids': [v['id'] for v in openings],
               'protected_opening_guest_conflicts': conflicts, 'stacked_programme_adjacencies': connections,
               'limitations': ['Unknown persistent IDs remain unknown', 'No new structural openings authorized',
                               'Luxury replacements and multistorey fit unresolved', 'Deck pitch is not finished ceiling height',
@@ -63,7 +65,7 @@ def main():
     (ROOT/'docs/VERTICAL_PROGRAMME_AUDIT.json').write_text(json.dumps(report, indent=2)+'\n')
     lines = ['# Whole-ship section coordination', '',
              'Generated from the historical allocations and current protected openings. This is an adjacency inventory, not a replacement room registry or a final architectural plan.', '',
-             'All 161 directory programmes and 1,000 historical guest envelopes remain accounted for. No guest allocation intersects the checked central atrium, theatre or aquatic openings. This does not establish fitted beds, completed rooms, or permission for further openings.', '',
+             'All 161 directory programmes and 1,000 historical guest envelopes remain accounted for. No guest allocation intersects the checked compiler-level and aquatic openings. This does not establish fitted beds, completed rooms, or permission for further openings.', '',
              '## Section-first construction order', '',
              '1. Establish district volumes and their neighbouring uses in plan and section, within the hull and protected accommodation allocations.',
              '2. Resolve guest/service arrivals, accessible vertical travel, privacy and environmental boundaries before closing ceilings or adding repeatable room interiors.',
