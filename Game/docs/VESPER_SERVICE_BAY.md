@@ -1,0 +1,11 @@
+# Vesper finishing and return bay
+
+The partial service bay occupiesX48.6–53,Z233–240.8 within D10_directory_08. Its ceiling underside64.3 remains below the existing perimeter ceiling67.4. Separate clean and dirty pass-throughs, two fitted pantry counters, plate/tray storage, a dirty-return station and two cooler task sources support the intended finishing function. This is not a complete240-cover kitchen, and no operational food processing or stock interaction is claimed.
+
+AST-DIN-003 is an editable architectural enclosure with coordinated ceiling, service openings and work landings. Existing AST-HSP-001/004/005 assets are reused without scaling. Two source-derived static plate stacks now sit on the clean landing and actual counter surface;16 support probes verify their placement. An initial counter-center ray struck the newly placed stack, so the counter-contact probe moved to an uncovered portion while separate stock support checks were added.
+
+The existing service-door controller and AST-STF-008 provide a2.3m single-lane throat. This is not described as a2.4m cart street. The approach uses staging at46.2/237, followed by straight delivery and withdrawal with cart yaw−PI/2. No interior full turn is claimed. The review identified that the driver at49.38/237 occupies the closing sweep; the actual occupied-sweep interlock now has a regression case that keeps both leaves open during that situation.
+
+Verification:73 compound cart/load plus driver poses include the actual open leaves;200 moving-door frames check fixed-geometry clearance; precise RMB/E selects and opens this door; the occupied delivery-driver blocks closing. Two worktop contacts, two source exits,16 plate-support probes and an actual interior/return walk pass. All37 regression checks passed in93.1342seconds fixed60 simulation. Stock graphical batch002 completed79.14seconds; ordinary front/interior and effects-off views were inspected. Bare surfaces, further provisions, service simulation and final art remain unfinished.
+
+The programme ledger now names the actual partial builders for Gentle Waters, Living Gifts, Vesper and the three Star Atlas/port-commons levels, while retaining all programme identities and uncompleted status. This prevents an empty owner field from being mistaken for an unbuilt allocation. It changes no registered capacity.
