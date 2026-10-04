@@ -39,6 +39,37 @@ func wait_trip(lift:Node3D,cart:RigidBody3D,actor:CharacterBody3D,goal:int) -> v
 			reached=true
 			break
 	assert(reached,"Lift failed to reach requested floor")
+func select_floor_by_focus(lift:Node3D,actor:CharacterBody3D,goal:int) -> void:
+	var button:Node3D=lift.find_child(lift.identity_prefix+"_cabin_D"+str(lift.deck_numbers[goal]),true,false)
+	var aim:Vector3=button.global_position-actor.camera.global_position
+	actor.rotation.y=atan2(-aim.x,-aim.z)
+	actor.pitch=atan2(aim.y,Vector2(aim.x,aim.z).length())
+	actor.camera.rotation.x=actor.pitch
+	assert(actor.target_from_view()==button,"Each cabin floor button must be precisely selectable")
+	var key:=InputEventKey.new()
+	key.keycode=KEY_E
+	key.physical_keycode=KEY_E
+	key.pressed=true
+	Input.parse_input_event(key.duplicate())
+	Input.flush_buffered_events()
+	for frame in range(3):await physics_frame
+	assert(lift.phase=="idle","Unfocused E cannot select a floor")
+	key.pressed=false
+	Input.parse_input_event(key.duplicate())
+	var focus:=InputEventMouseButton.new()
+	focus.button_index=MOUSE_BUTTON_RIGHT
+	focus.pressed=true
+	Input.parse_input_event(focus.duplicate())
+	key.pressed=true
+	Input.parse_input_event(key.duplicate())
+	Input.flush_buffered_events()
+	for frame in range(3):await physics_frame
+	assert(lift.destination_floor==goal and lift.phase=="closing","Focused E selects the requested cabin button")
+	key.pressed=false
+	Input.parse_input_event(key.duplicate())
+	focus.pressed=false
+	Input.parse_input_event(focus.duplicate())
+	Input.flush_buffered_events()
 func run() -> void:
 	var main:Node=(load("res://scenes/main.tscn")as PackedScene).instantiate()
 	root.add_child(main)
@@ -65,41 +96,10 @@ func run() -> void:
 	actor.velocity=Vector3.ZERO
 	for frame in range(60):await physics_frame
 	assert(not lift.request_floor(-1) and not lift.request_floor(lift.floor_heights.size()))
-	var button:Node3D=lift.find_child(lift.identity_prefix+"_cabin_D"+str(lift.deck_numbers[test_stop_sequence[0]]),true,false)
-	var aim:Vector3=button.global_position-actor.camera.global_position
-	actor.rotation.y=atan2(-aim.x,-aim.z)
-	actor.pitch=atan2(aim.y,Vector2(aim.x,aim.z).length())
-	actor.camera.rotation.x=actor.pitch
-	assert(actor.target_from_view()==button,"Each cabin floor button must be precisely selectable")
-	var key:=InputEventKey.new()
-	key.keycode=KEY_E
-	key.physical_keycode=KEY_E
-	key.pressed=true
-	Input.parse_input_event(key.duplicate())
-	Input.flush_buffered_events()
-	for frame in range(3):await physics_frame
-	assert(lift.phase=="idle","Unfocused E cannot select a floor")
-	key.pressed=false
-	Input.parse_input_event(key.duplicate())
-	var focus:=InputEventMouseButton.new()
-	focus.button_index=MOUSE_BUTTON_RIGHT
-	focus.pressed=true
-	Input.parse_input_event(focus.duplicate())
-	key.pressed=true
-	Input.parse_input_event(key.duplicate())
-	Input.flush_buffered_events()
-	for frame in range(3):await physics_frame
-	assert(lift.destination_floor==test_stop_sequence[0] and lift.phase=="closing","Focused E selects the actual upper button")
-	key.pressed=false
-	Input.parse_input_event(key.duplicate())
-	focus.pressed=false
-	Input.parse_input_event(focus.duplicate())
-	Input.flush_buffered_events()
-	await wait_trip(lift,cart,actor,test_stop_sequence[0])
-	assert(abs(cart.global_position.y-lift.floor_heights[test_stop_sequence[0]])<.12)
-	for destination in test_stop_sequence.slice(1):
-		assert(lift.request_floor(destination))
+	for destination in test_stop_sequence:
+		await select_floor_by_focus(lift,actor,destination)
 		await wait_trip(lift,cart,actor,destination)
+		assert(abs(cart.global_position.y-lift.floor_heights[destination])<.12)
 	# Obstruction of the actual threshold must hold departure.
 	var blocker:=RigidBody3D.new()
 	blocker.gravity_scale=0
@@ -118,7 +118,7 @@ func run() -> void:
 	lift.request_floor(0)
 	for frame in range(100):await physics_frame
 	assert(lift.phase=="idle")
-	print(target_lift_name+" LIFT PASS: physical capsule/cart/four loose bottles carried both directions, bounded acceleration, closed travel gates, obstruction holds departure and same-floor cancellation reopens. Precise RMB/E cabin button and unfocused rejection pass. Boarding turns, save and visual acceptance pending.")
+	print(target_lift_name+" LIFT PASS: physical capsule/cart/four loose bottles carried both directions, bounded acceleration, closed travel gates, obstruction holds departure and same-floor cancellation reopens. Precise RMB/E for every trip destination and unfocused rejection pass. Boarding turns, save and visual acceptance pending.")
 	main.queue_free()
 	await process_frame
 	quit()

@@ -18,21 +18,27 @@ static func build(district:Node3D,ship:Node3D) -> void:
 			var local:=Vector3(p[0],p[2],-p[1])
 			var orientation:=Basis(Vector3.UP,part.yaw+deg_to_rad(anchor.rotation_z_degrees))
 			transforms.append(Transform3D(orientation,part.p+Basis(Vector3.UP,part.yaw)*local))
-	var stock:Node3D=(load("res://assets/models/AST-LIB-006.glb")as PackedScene).instantiate()
-	bay.add_child(stock)
-	for part in stock.find_children("*","MeshInstance3D",true,false):
-		var batch:=MultiMeshInstance3D.new()
-		batch.name="LocalCollectionStock"
-		var mm:=MultiMesh.new()
-		mm.transform_format=MultiMesh.TRANSFORM_3D
-		mm.mesh=part.mesh
-		mm.instance_count=transforms.size()
-		for i in range(transforms.size()):mm.set_instance_transform(i,transforms[i]*part.global_transform)
-		batch.multimesh=mm
-		batch.set_meta("stock_groups",transforms.size())
-		batch.set_meta("catalogue_file","AST-LIB-006.glb")
-		bay.add_child(batch)
-	stock.free()
+	var variants:Array[String]=["AST-LIB-006.glb","AST-LIB-006_reordered.glb","AST-LIB-006_short_flat.glb"]
+	for variant in range(variants.size()):
+		var selected:Array[Transform3D]=[]
+		for i in range(transforms.size()):
+			# Stable shelf/cell variation, independent of load order or frame time.
+			if (i*7+i/3)%3==variant:selected.append(transforms[i])
+		var stock:Node3D=(load("res://assets/models/"+variants[variant])as PackedScene).instantiate()
+		bay.add_child(stock)
+		for part in stock.find_children("*","MeshInstance3D",true,false):
+			var batch:=MultiMeshInstance3D.new()
+			batch.name="LocalCollectionStock_"+str(variant)
+			var mm:=MultiMesh.new()
+			mm.transform_format=MultiMesh.TRANSFORM_3D
+			mm.mesh=part.mesh
+			mm.instance_count=selected.size()
+			for i in range(selected.size()):mm.set_instance_transform(i,selected[i]*part.global_transform)
+			batch.multimesh=mm
+			batch.set_meta("stock_groups",selected.size())
+			batch.set_meta("catalogue_file",variants[variant])
+			bay.add_child(batch)
+		stock.free()
 	var center:=Vector3(-86,78,-21.5)
 	ship.model(bay,"AST-LIB-STUDY-01.glb","CollectionSharedStudy",center)
 	for x in [-.55,.55]:

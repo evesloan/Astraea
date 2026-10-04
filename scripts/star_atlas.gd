@@ -39,3 +39,5 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.shadow_enabled=true
 
 	load("res://scripts/star_atlas_collections.gd").build(district,ship)
+
+	load("res://scripts/star_atlas_commons.gd").build(district,ship)
