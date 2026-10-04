@@ -31,10 +31,20 @@ func run() -> void:
 		var ray:=PhysicsRayQueryParameters3D.create(source.global_position,source.global_position+Vector3.DOWN*.06)
 		assert(ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty())
 		var counter:=room.get_node("VesperFinishingCounter_"+str(i))as Node3D
-		var center:Vector3=counter.global_transform*Vector3(1.2,.94,0)
+		var center:Vector3=counter.global_transform*Vector3(.6,.94,0) # Uncovered worktop; the center now holds verified plate stock.
 		var top_ray:=PhysicsRayQueryParameters3D.create(center,center+Vector3.DOWN*.12)
 		var top:=ship.get_world_3d().direct_space_state.intersect_ray(top_ray)
 		assert(not top.is_empty() and counter.is_ancestor_of(top.collider),"Finishing surface lacks a real counter contact")
+	for i in range(2):
+		var stack:=room.get_node("VesperStaticPlateStack_"+str(i))as Node3D
+		var omit:Array[RID]=[]
+		for body in stack.find_children("*","StaticBody3D",true,false):omit.append(body.get_rid())
+		for j in range(8):
+			var p:Vector3=stack.global_position+Vector3(cos(TAU*j/8)*.16,0,sin(TAU*j/8)*.16)
+			var support_ray:=PhysicsRayQueryParameters3D.create(p+Vector3.UP*.03,p-Vector3.UP*.03)
+			support_ray.exclude=omit
+			var support:=ship.get_world_3d().direct_space_state.intersect_ray(support_ray)
+			assert(not support.is_empty() and absf(support.position.y-p.y)<.01,"Clean plate stock must be supported on its actual work surface")
 	# Empty close and precise RMB/E reopen use the existing shared controller.
 	door.interact(actor)
 	for frame in range(100):

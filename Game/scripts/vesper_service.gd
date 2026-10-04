@@ -16,6 +16,20 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	ship.model(root,"AST-HSP-005.glb","VesperPlateTrayStock",credenza.global_position,PI/2)
 	var dirty_return:=architecture.find_child("DATUM_dish_return",true,false)as Node3D
 	ship.model(root,"AST-HSP-004.glb","VesperDirtyReturn",dirty_return.global_position,-PI/2)
+	# Reuse the catalogue's authored plate stack, retaining its editable source identity.
+	var stock_source:Node3D=(load("res://assets/models/AST-HSP-005.glb")as PackedScene).instantiate()
+	var source_stack:=stock_source.find_child("005_plate_stock_0",true,false)as Node3D
+	assert(source_stack!=null)
+	for i in range(2):
+		var stack:Node3D=source_stack.duplicate()
+		stack.name="VesperStaticPlateStack_"+str(i)
+		root.add_child(stack)
+		stack.global_position=Vector3(48.95,61.92,234.3)if i==0 else Vector3(52.48,61.9,234.8)
+		stack.set_meta("source_catalogue_id","AST-HSP-005")
+		stack.set_meta("persistent_id","D10_banquet7_clean_plate_stock_%d"%i)
+		stack.set_meta("stock_groups",1)
+		ship._static_contacts(stack)
+	stock_source.free()
 	var door:Node3D=load("res://scripts/service_door.gd").new()
 	door.name="VesperServiceDoor"
 	door.persistent_id=&"D10_banquet7_service_door"
