@@ -11,7 +11,7 @@ Updated2026-10-04 after the connected D06 and first D13 suite passes. Fresh Godo
 - Partial D09 salon with authored enclosure, varied ceiling, glazed gallery and several occupied furniture groups; its study lamp responds to the shared RMB/E interaction
 - Two partial D13 twin suites at historical addresses13017 and13041, connected by a walkable route, with preserved historical bed anchors, shaped living/sleeping thresholds, inward glazing and fitted bathroom fixtures
 - The opaque bathroom door inherits existing interaction/motion handling and passed300 fixed-architecture sweep samples, focused operation and obstruction checks
-- 123 catalogue designs, including 29 recent drafts. Component presence is not room completion or final-art approval
+- 127 catalogue designs, including 29 recent drafts. Component presence is not room completion or final-art approval
 
 - The paired suite entry now retracts into enclosed hollow pockets. Shared focus/E and call-plate operation,400 fixed-geometry motion samples and actor/loose-prop obstruction checks pass
 
@@ -22,7 +22,7 @@ Updated2026-10-04 after the connected D06 and first D13 suite passes. Fresh Godo
 - The first physical cleaning cart and4 loose bottles share RMB/E pickup/release. Straight loaded travel and235 geometric cart/load clearance poses pass; final handling, driven turns and restocking remain unfinished; the new commons lift now has loaded boarding and travel checks
 
 ## Evidence and limits
-All 26 current Godot groups pass, including actual commons stairs, physical lift travel and loaded-cart boarding. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
+All 27 current Godot groups pass, including actual commons stairs, physical lift travel and loaded-cart boarding. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
 
 Source/export bounds, a genuinely hollow basin, two-sided shower-screen contact and fixture approach positions were checked. Ordinary player-height cloud captures were reviewed. An independent suite review led to changes in screening, floor contrast, ceiling weight and window-facing seating. These are cloud software-rendered checks, not RTX5060 Laptop GPU performance acceptance or final architectural approval.
 
@@ -42,3 +42,6 @@ The lower opening now contains a planted island and real hanging fixture, with a
 
 ## Commons finish checkpoint
 The profiled continuous ceiling and existing ribs now respect the full moving lift-cabin swept volume. Landing/cabin gate planes were adjusted to eliminate a5mm structural overlap. Four editable opal wall lanterns have clear source exits; the woven conversation carpet remains a visual finish with no duplicate floor collision. All26 Godot groups pass against this revision, including7 actual lens exits and loaded lift travel. Source/export hashes match all123 registered catalogue pairs. Normal-height capture execution passed; reviewed views still show sparse broad surfaces and insufficient spatial personality. This is a checked incremental improvement, not final art acceptance.
+
+## D09 Kind Curios / R070
+The existing12x12m R070 allocation now has an authored shop profile, recessed rounded orange entrance, substantial columns, coordinated raised ceiling, fitted counter/cases and10 supported original keepsakes. A guarded bent approach connects it to Living Gifts without consuming neighbouring shop envelopes. The original catalogue merchandise-island ID AST-RTL-002 is preserved; the new shop uses AST-RTL-005. Five fixture exits, actual capsule entry/return and226 compound loaded-cart geometric poses pass. All27 current Godot checks pass. Actual driven cart turns, sales, pickups, guest use, broader species access and final art remain pending.

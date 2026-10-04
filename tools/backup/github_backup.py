@@ -72,7 +72,16 @@ def run_once(config, force=False):
     for p in config['projects']:
         if inventory(p)['signature']!=infos[p['name']]['signature']:raise SnapshotChanged('Source changed before commit; no upload attempted')
     atomic_json(mirror/'CHECKPOINT.json',checkpoint)
-    git(config,'add','-f','--','Game','BlenderCatalogue','CHECKPOINT.json')
+    # Keep hourly checks small: the full hash manifest is for local audits.
+    summary={'schema':1,'checkpoint_created_utc':checkpoint['created_utc'],
+             'manifest_sha256':digest(mirror/'CHECKPOINT.json'),
+             'projects':{n:{'head':p['head'],'work_in_progress':p['work_in_progress'],
+                            'file_count':len(p['files']),'prefix':p['prefix']}
+                         for n,p in checkpoint['projects'].items()},
+             'scope':'Source checkpoint metadata. Verify remote refs separately; no release or final-art acceptance implied.',
+             'workshop_copy_verified':False}
+    atomic_json(mirror/'BACKUP_STATUS.json',summary)
+    git(config,'add','-f','--','Game','BlenderCatalogue','CHECKPOINT.json','BACKUP_STATUS.json')
     git(config,'-c','user.name=Higgins','-c','user.email=higgins@localhost','commit','-q','-m','Automatic source checkpoint '+checkpoint['created_utc'])
     intended=git(config,'rev-parse','HEAD')
     state.update(status='uploading',pending_commit=intended,attempted_utc=now());atomic_json(state_path,state)
