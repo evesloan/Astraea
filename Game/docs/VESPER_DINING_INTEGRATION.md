@@ -9,3 +9,5 @@ The dimensioned subset uses4×4m occupied reservations for round groups and4.2×
 An initial review's240-seat packing used overly small row pitches and was withdrawn before implementation.186 seats remain unplaced. A bounded future mezzanine atY64.5 within the existing D10 volume is a possible architectural study, not built capacity or an approved new lift. Its supports, stairs, local access and ceiling interfaces must be resolved together with all lower groups and service routes before construction.
 
 A supported restaurant watercourse toward the existing opening atX25,Z215 is being evaluated separately. No new slab hole, D09 florist intrusion or D11 programme displacement is authorized by this furniture subset.
+
+First furniture integration passed all35 regression checks in90.0061seconds fixed60 simulation. Graphical inlay-correction batch completed75.314seconds; normal views show the intended stone/wood contrast, while the wider restaurant remains largely unfitted.
