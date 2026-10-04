@@ -1,6 +1,6 @@
 # Reference application sets
 
-All70 byte-distinct references have been visually inspected at overview scale. These sets guide the next full-size comparisons; they do not certify that every image has already informed built geometry. Original images remain unchanged in the private GitHub DesignArchive and BlenderCatalogue references.
+The original70 byte-distinct references were inspected at overview scale; subsequent additions are recorded with their own review evidence in the index. These sets guide the next full-size comparisons; they do not certify that every image has already informed built geometry. Original images remain unchanged in the private GitHub DesignArchive and BlenderCatalogue references.
 
 Before altering a district, reopen its selected sources at full size, read the relevant v0.3 chapter and current application overlay, identify plan/section/material/light decisions, and compare ordinary in-engine views. Blueprints require detailed label/section inspection, not thumbnail transcription.
 
@@ -51,3 +51,6 @@ Sources: REF-523733d277, REF-9e43a46063, REF-35f53a078f, REF-5644dbcc82, REF-f2f
 ## Render And Density
 Creature Kitchen appearance and local light; Nivallis texture/readability/density reference without importing its cyberpunk palette. Distinguish helper robots from sentient Mindos.
 Sources: REF-cc653fbc18, REF-19afdc42ab, REF-9e4334e5dc, REF-bf11e25483
+
+## Residential additions,2026-10-04
+The user supplied8077.jpg and8079.jpg for intimate guest circulation and luxury single-suite space views. Both were opened at full size. Preserve integrated benches/maps/planting, shaped corridor thresholds, and the suite’s deep circular sleeping-window alcove with an offset desk/library zone. Source copies and byte hashes are retained in the image index; capacities and final visual acceptance are unchanged.
