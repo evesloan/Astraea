@@ -1,4 +1,22 @@
 extends "res://tests/validate_cart_clearance.gd"
+func walk(actor:CharacterBody3D,destination:Vector2) -> void:
+	var reached:=false
+	for frame in range(700):
+		var delta:=Vector3(destination.x-actor.position.x,0,destination.y-actor.position.z)
+		if delta.length()<.09:
+			reached=true
+			break
+		var movement:=delta.normalized()*3.1
+		actor.velocity.x=movement.x
+		actor.velocity.z=movement.z
+		actor.velocity.y=-.1 if actor.is_on_floor()else actor.velocity.y-9.8/60
+		actor.move_and_slide()
+		await physics_frame
+	if not reached:
+		for i in range(actor.get_slide_collision_count()):
+			var c:=actor.get_slide_collision(i)
+			print("BLOCKER ",c.get_collider().get_path()," normal ",c.get_normal())
+	assert(reached,"Aquatic arrival route stalled at %s toward %s"%[actor.position,destination])
 func run() -> void:
 	var main:Node=(load("res://scenes/main.tscn")as PackedScene).instantiate()
 	root.add_child(main)
@@ -94,7 +112,13 @@ func run() -> void:
 		for i in range(42):check_pose(ship,cart,Vector3(9.8+i*.24,floor_y+.03,239.5),PI/2,excluded)
 		for i in range(31):check_pose(ship,cart,Vector3(20,floor_y+.03,239.5),PI*.5*i/30,excluded)
 		for i in range(23):check_pose(ship,cart,Vector3(20,floor_y+.03,239.5+i*.25),0,excluded)
-	print("AQUATIC ACCESS PASS:",sweep_samples,"full cabin-shape sweep samples;",samples,"compound cart and upper-load approach poses;",guard_samples,"guard contacts, three arrival seats and eight lower receivers; four ceiling fixture mounts/exits and protected cover ownership. Geometric clearance only; driven boarding turns and final art remain pending.")
+	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
+	actor.set_physics_process(false)
+	actor.position=Vector3(6,44.1,218)
+	actor.velocity=Vector3.ZERO
+	for destination in [Vector2(10,218),Vector2(15.7,218),Vector2(14.1,212.8),Vector2(12.5,212.53),Vector2(10.9,212.8),Vector2(9.9,215),Vector2(6,218)]:await walk(actor,destination)
+	assert(abs(actor.position.y-44)<.12,"Arrival and waiting circuit must remain on its original floor")
+	print("AQUATIC ACCESS PASS:",sweep_samples,"full cabin-shape sweep samples;",samples,"compound cart and upper-load approach poses;",guard_samples,"guard contacts, three arrival seats and eight lower receivers; four ceiling fixture mounts/exits and protected cover ownership. Actual arrival walking passes; cart poses remain geometric only; driven boarding turns and final art remain pending.")
 	main.queue_free()
 	await process_frame
 	quit()

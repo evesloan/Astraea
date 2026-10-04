@@ -293,6 +293,17 @@ func _ready() -> void:
 			actor.camera.rotation.x=actor.pitch
 			await get_tree().create_timer(.6).timeout
 			await _capture("aquatic_arrival_recess_")
+			set_world_resolution(2)
+			effects=false
+			post_pass.material.set_shader_parameter("enabled",false)
+			world_view.get_node("Astraea").set_display_effects(false)
+			await get_tree().create_timer(.6).timeout
+			await _capture("aquatic_arrival_recess_clear_")
+			set_world_resolution(0)
+			effects=true
+			post_pass.material.set_shader_parameter("enabled",true)
+			world_view.get_node("Astraea").set_display_effects(true)
+
 
 			actor.spawn_position = Vector3(47,44.1,216)
 			actor.position = actor.spawn_position

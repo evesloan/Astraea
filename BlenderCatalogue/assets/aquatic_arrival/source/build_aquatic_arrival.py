@@ -51,12 +51,18 @@ for i,(x,z)in enumerate([(8.8,211),(8.8,221),(16.4,212)]):
 for i,(a,b)in enumerate(zip(outline,outline[1:]+outline[:1])):
  beam('ARR_CanopyEdge_'+str(i),[xyz(a[0],h(a[0])-.04,a[1]),xyz(b[0],h(b[0])-.04,b[1])],.13,.10,'champagne_metal')
 # Curved low backing and a generous continuous perch create a waiting recess.
+def back_panel(name,a,b,ha,hb):
+ av=Vector((a[0]-8,210-a[1]));bv=Vector((b[0]-8,210-b[1]));t=(bv-av).normalized();n=Vector((-t.y,t.x))*.09;q=[av+n,bv+n,bv-n,av-n];v=[(p.x,p.y,0)for p in q]+[(p.x,p.y,h)for p,h in zip(q,[ha,hb,hb,ha])]
+ mesh(name,v,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'warm_walnut')
+ beam(name+'_TopCap',[xyz(a[0],44+ha,a[1]),xyz(b[0],44+hb,b[1])],.20,.045,'champagne_metal')
 path=[(9.9,211.8),(10.7,211.1),(12.5,210.8),(14.3,211.1),(15.1,211.8)]
 for i,(a,b)in enumerate(zip(path,path[1:])):
- beam('ARR_RecessBacking_'+str(i),[xyz(a[0],45.05,a[1]),xyz(b[0],45.05,b[1])],.18,2.1,'warm_walnut')
+ heights=[1.8,1.35,1.15,1.35,1.8];back_panel('ARR_RecessBacking_'+str(i),a,b,heights[i],heights[i+1])
  # Seat surface extends toward the open approach, rather than occupying the through-route.
  beam('ARR_BenchPlinth_'+str(i),[xyz(a[0],44.19,a[1]+.38),xyz(b[0],44.19,b[1]+.38)],.72,.38,'ivory_enamel')
  beam('ARR_LowPerch_'+str(i),[xyz(a[0],44.425,a[1]+.38),xyz(b[0],44.425,b[1]+.38)],.76,.09,'wet_tile')
+back_panel('ARR_LeftShelteredReturn',(9.9,211.8),(9.9,212.35),1.8,1.4)
+back_panel('ARR_RightShelteredReturn',(15.1,211.8),(15.1,212.35),1.8,1.4)
 for i,(x,z)in enumerate([(10.9,211.446667),(12.5,211.18),(14.1,211.446667)]):datum('seat_'+str(i),xyz(x,44.47,z));datum('seat_approach_'+str(i),xyz(x,44,z+1.35))
 for label,scale,y,role in [('border',.98,44.003,'grip'),('field',.95,44.005,'wet_tile')]:
  q=[xyz(12.5+(x-12.5)*scale,y,216.5+(z-216.5)*scale)for x,z in outline];o=mesh('ARR_Finish_'+label,q,[tuple(range(len(q)))],role)
