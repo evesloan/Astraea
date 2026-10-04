@@ -74,4 +74,8 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	stairs._contact(root,[Vector3(67.2,88.5,-9.6),Vector3(69.2,88.5,-9.6),Vector3(69.2,86.25,-4.8),Vector3(67.2,86.25,-4.8)])
 	var lift:Node3D=load("res://scripts/commons_lift.gd").new()
 	lift.name="CommonsPassengerLift"
+	lift.floor_heights.assign([84.0,88.5,93.0,97.5,102.0])
+	lift.deck_numbers.assign([13,14,15,16,17])
+	lift.cabin_file="AST-CIR-003_five_stop.glb"
+	load("res://scripts/starboard_house_upper.gd").build(root,ship)
 	root.add_child(lift)
