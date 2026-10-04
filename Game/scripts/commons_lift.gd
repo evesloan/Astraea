@@ -1,7 +1,11 @@
 extends Node3D
 # Single moving physics cabin with independently positioned gates. Dynamic
 # passengers and loose objects are never reparented to the moving platform.
-const FLOORS=[84.0,88.5]
+var floor_heights:Array[float]=[84.0,88.5]
+var deck_numbers:Array[int]=[13,14]
+var gate_origin_xz:=Vector2(92.2,0)
+var identity_prefix:="commons"
+var district_label:="Commons"
 var persistent_id:StringName=&"starboard_commons_lift_001"
 var cabin:AnimatableBody3D
 var cabin_gate:Node3D
@@ -15,22 +19,24 @@ var maximum_speed:=1.1
 var acceleration:=.65
 var button_script=preload("res://scripts/lift_button.gd")
 func _ready() -> void:
+	assert(floor_heights.size()==2 and deck_numbers.size()==2,"This cabin has two authored floor-button positions")
+	assert(floor_heights[1]>floor_heights[0])
 	process_physics_priority=-20
 	for i in range(2):
 		var gate:Node3D=load("res://scripts/lift_gate.gd").new()
-		gate.name="LandingGate_D"+str(13+i)
-		gate.persistent_id=StringName("D%d_commons_lift_gate"%(13+i))
-		gate.position=Vector3(92.08,FLOORS[i],0)
+		gate.name="LandingGate_D"+str(deck_numbers[i])
+		gate.persistent_id=StringName("D%d_%s_lift_gate"%[deck_numbers[i],identity_prefix])
+		gate.position=Vector3(gate_origin_xz.x-.12,floor_heights[i],gate_origin_xz.y)
 		gate.rotation.y=PI/2
 		add_child(gate)
 		landing_gates.append(gate)
-		_button(self,Vector3(91.86,FLOORS[i]+1.3,1.65),i,"D%d_commons_lift_call"%(13+i))
-		_box(self,Vector3(92.145,FLOORS[i]-.055,0),Vector3(.09,.11,2.4),"FixedSill_D"+str(13+i))
+		_button(self,Vector3(gate_origin_xz.x-.34,floor_heights[i]+1.3,gate_origin_xz.y+1.65),i,"D%d_%s_lift_call"%[deck_numbers[i],identity_prefix])
+		_box(self,Vector3(gate_origin_xz.x-.055,floor_heights[i]-.055,gate_origin_xz.y),Vector3(.09,.11,2.4),"FixedSill_D"+str(deck_numbers[i]))
 	cabin=AnimatableBody3D.new()
-	cabin.name="MovingCommonsCabin"
-	cabin.set_meta("persistent_id","commons_lift_cabin_001")
+	cabin.name="Moving"+district_label+"Cabin"
+	cabin.set_meta("persistent_id",identity_prefix+"_lift_cabin_001")
 	cabin.sync_to_physics=false
-	cabin.position=Vector3(92.2,84,0)
+	cabin.position=Vector3(gate_origin_xz.x,floor_heights[0],gate_origin_xz.y)
 	cabin.rotation.y=-PI/2
 	add_child(cabin)
 	var visual:Node3D=(load("res://assets/models/AST-CIR-003.glb")as PackedScene).instantiate()
@@ -67,7 +73,7 @@ func _ready() -> void:
 	_box(cabin,Vector3(0,2.87,-1.8),Vector3(4,.14,3.6),"CabinRoof")
 	for i in range(2):
 		var marker:=visual.find_child("DATUM_floor_button_"+str(i),true,false)as Node3D
-		_button(cabin,marker.position,i,"commons_cabin_D"+str(13+i))
+		_button(cabin,marker.position,i,identity_prefix+"_cabin_D"+str(deck_numbers[i]))
 	for side in [-1,1]:
 		var marker:=visual.find_child("DATUM_light_"+str(side),true,false)as Node3D
 		var light:=SpotLight3D.new()
@@ -81,8 +87,8 @@ func _ready() -> void:
 		light.light_color=Color(1,.95,.87)
 	cabin_gate=load("res://scripts/lift_gate.gd").new()
 	cabin_gate.name="CabinGate"
-	cabin_gate.persistent_id=&"commons_cabin_gate"
-	cabin_gate.position=Vector3(92.32,84,0)
+	cabin_gate.persistent_id=StringName(identity_prefix+"_cabin_gate")
+	cabin_gate.position=Vector3(gate_origin_xz.x+.12,floor_heights[0],gate_origin_xz.y)
 	cabin_gate.rotation.y=PI/2
 	add_child(cabin_gate)
 	# Cabin-gate fixed-frame contacts must move with the cabin as well.
@@ -107,13 +113,15 @@ func _button(parent:Node3D,pos:Vector3,index:int,identity:String) -> void:
 	var button:Node3D=button_script.new()
 	button.controller=self
 	button.floor_index=index
+	button.display_deck=deck_numbers[index]
+	button.district_label=district_label
 	button.persistent_id=StringName(identity)
 	button.name=identity
 	button.position=pos
 	button.rotation.y=-PI/2
 	parent.add_child(button)
 func request_floor(index:int) -> bool:
-	if index<0 or index>=FLOORS.size():return false
+	if index<0 or index>=floor_heights.size():return false
 	if phase=="moving":
 		queued_floor=index
 		return true
@@ -149,11 +157,11 @@ func _physics_process(delta:float) -> void:
 		for gate in landing_gates:gate.cabin_present_and_stopped=false
 		phase="moving"
 	elif phase=="moving":
-		var remaining:float=FLOORS[destination_floor]-cabin.position.y
+		var remaining:float=floor_heights[destination_floor]-cabin.position.y
 		var wanted:float=sign(remaining)*min(maximum_speed,sqrt(2*acceleration*abs(remaining)))
 		travel_velocity=move_toward(travel_velocity,wanted,acceleration*delta)
 		if abs(remaining)<=abs(travel_velocity*delta)+.0001:
-			cabin.position.y=FLOORS[destination_floor]
+			cabin.position.y=floor_heights[destination_floor]
 			travel_velocity=0
 			current_floor=destination_floor
 			phase="opening"
