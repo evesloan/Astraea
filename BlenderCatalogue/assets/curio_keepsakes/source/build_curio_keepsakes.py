@@ -50,6 +50,8 @@ records=[]
 for index,title in [(1,'Orbit keepsake'),(2,'Coiled ceramic specimen'),(3,'Folded stellar sculpture')]:
  bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False);parts=[]
  aid='AST-CUR-%03d'%index
+ for registered in json.loads((CAT/'catalogue_manifest.json').read_text())['assets']:
+  if registered['catalogue_id']==aid:assert registered['source']=='assets/curio_keepsakes/source/'+aid+'.blend','Catalogue identity belongs to a different source'
  lathe('CURIO_WeightedFoot',[(0,.12),(.02,.15),(.04,.15),(.06,.11)],'warm_walnut',12)
  lathe('CURIO_BrassCollar',[(.04,.115),(.06,.115)],'champagne_metal',12)
  if index==1:

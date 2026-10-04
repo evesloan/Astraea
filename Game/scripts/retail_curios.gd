@@ -5,9 +5,11 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	district.set_meta("historical_room_id","R070")
 	district.set_meta("programme","Existing small retail; transactions and guest use pending")
 	parent.add_child(district)
-	var room:Node3D=ship.model(district,"AST-RTL-002.glb","KindCuriosAuthoredRoom",Vector3(72,52.5,236),PI/2)
+	var room:Node3D=ship.model(district,"AST-RTL-005.glb","KindCuriosAuthoredRoom",Vector3(72,52.5,236),PI/2)
 	var glass:=ShaderMaterial.new()
 	glass.shader=load("res://shaders/hospitality_glass.gdshader")
+	var approach:Node3D=ship.model(district,"AST-RTL-005_approach.glb","KindCuriosApproachGuards",Vector3(72,52.5,236),PI/2)
+	for part in approach.find_children("APP_glass*","MeshInstance3D",true,false):part.material_override=glass
 	for part in room.find_children("CUR_FrontGlass*","MeshInstance3D",true,false):part.material_override=glass
 	for part in room.find_children("CUR_VisualFloorBorder*","MeshInstance3D",true,false):
 		var contact:=part.get_node_or_null("StaticContact")
@@ -20,9 +22,9 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.name="CuriosSource_"+key
 		light.global_position=datum.global_position
 		light.rotation.x=-PI/2
-		light.spot_angle=74
-		light.spot_range=12
-		light.light_energy=1.05
+		light.spot_angle=65 if key.begins_with("column") else 52
+		light.spot_range=9
+		light.light_energy=.90 if key.begins_with("column") else .72
 		light.light_color=Color(1,.95,.88)
 		light.shadow_enabled=true
 

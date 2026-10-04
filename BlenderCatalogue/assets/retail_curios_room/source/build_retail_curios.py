@@ -3,6 +3,9 @@ from pathlib import Path
 import bpy,bmesh,math,json,hashlib
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];CAT=ROOT.parents[1]
+existing=json.loads((CAT/'catalogue_manifest.json').read_text())['assets']
+for registered in existing:
+ if registered['catalogue_id']=='AST-RTL-005':assert registered['source']=='assets/retail_curios_room/source/AST-RTL-005.blend','Catalogue identity belongs to a different source'
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 mats={};parts=[];material_contract=json.loads((CAT/'materials/material_manifest.json').read_text())['materials']
 for role in ['ivory_enamel','warm_walnut','warm_stone','champagne_metal','teal_weave','botanical_soil','oatmeal_weave','clay_weave']:
@@ -66,7 +69,7 @@ for side in [-1,1]:
  wall('CUR_PortalJamb_'+str(side),(side*2.03,-5.88),(side*2.03,-4.32),0,3.85,.28,'orange')
  pts=[]
  for i in range(13):
-  a=math.pi*i/12;pts.append((2.04*math.cos(a),-5.05,3.82+1.20*math.sin(a)))
+  a=math.pi*i/12;pts.append((2.04*math.copysign(abs(math.cos(a))**.45,math.cos(a)),-5.05,3.82+1.20*math.sin(a)**.45))
  if side==-1:
   beam('CUR_OrangePortalArch',pts,1.64,.28,'orange')
   beam('CUR_PortalInnerMetal',[(x,y-.76,z-.16)for x,y,z in pts],.055,.045,'champagne_metal')
@@ -123,7 +126,7 @@ for i,(cx,cy,h)in enumerate([(-2.0,.20,6.30),(2.0,.20,6.30),(0,3.1,5.7)]):
  lathe('CUR_PendantShade_'+str(i),cx,cy,[(h,.48),(h+.08,.52),(h+.24,.25)],'ivory_enamel')
  lathe('CUR_PendantLens_'+str(i),cx,cy,[(h-.025,.43),(h,.45)],'lens');datum('ceiling_light_'+str(i),(cx,cy,h-.04))
 datum('entry',(0,-5.95,0));datum('browse',(0,0,0));datum('floor_origin',(0,0,0))
-scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source/AST-RTL-002.blend';export=ROOT/'exports/AST-RTL-002.glb';bpy.ops.wm.save_as_mainfile(filepath=str(source));tri=0
+scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source/AST-RTL-005.blend';export=ROOT/'exports/AST-RTL-005.glb';bpy.ops.wm.save_as_mainfile(filepath=str(source));tri=0
 for o in parts:o.data.calc_loop_triangles();tri+=len(o.data.loop_triangles)
 bpy.ops.export_scene.gltf(filepath=str(export),export_format='GLB',export_yup=True,export_extras=True)
-record={'catalogue_id':'AST-RTL-002','name':'Kind Curios R070 authored shop enclosure','source':'source/AST-RTL-002.blend','export':'exports/AST-RTL-002.glb','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(export.read_bytes()).hexdigest(),'triangles':tri,'status':'Editable authored draft; integration and visual/clearance review pending'};(ROOT/'AST-RTL-002.manifest.json').write_text(json.dumps(record,indent=2)+'\n');print(record)
+record={'catalogue_id':'AST-RTL-005','name':'Kind Curios R070 authored shop enclosure','source':'source/AST-RTL-005.blend','export':'exports/AST-RTL-005.glb','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(export.read_bytes()).hexdigest(),'triangles':tri,'status':'Editable authored draft; integration and visual/clearance review pending'};(ROOT/'AST-RTL-005.manifest.json').write_text(json.dumps(record,indent=2)+'\n');print(record)
