@@ -64,7 +64,7 @@ for level,h in enumerate([0,4.5]):
    # True lower residential entrance X82..86 at Z-14.
    if level==0 and side==-1 and j==3:continue
    wall_segment('SC_ProfileWall_%d_%d_%d'%(level,side,j),a,b,h,h+(4.15 if level==0 else 3.5),.16,'ivory_enamel')
-   wall_segment('SC_Wainscot_%d_%d_%d'%(level,side,j),a,b,h,h+.70,.20,'warm_walnut')
+   wall_segment('SC_Wainscot_%d_%d_%d'%(level,side,j),a,b,h,h+.70,(.16 if D.get('house_extension') and level==1 and side==1 and j==4 else .20),'warm_walnut')
  # Rear envelope encloses the lift equipment, not false space glazing.
  wall_segment('SC_RearWall_'+str(level),(96.9,-10),(96.9,10),h,h+(4.2 if level==0 else 3.5),.18,'ivory_enamel')
 # Continuous enclosed lift shaft: no unguarded side access to the reserved hole.
@@ -162,6 +162,30 @@ for group,(cx,cy,level)in enumerate([(16,-10,0),(19,10,4.5)]):
  datum('conversation_'+str(group),(cx,cy,level))
 for j,(x,z,h)in enumerate([(70,10,3.65),(85,10,3.65),(88,-9,3.65),(61,0,3.6),(70,-12,7.65),(84,10,7.65),(90,-8,7.65),(60,-11.8,7.55)]):
  cx,cy=xy((x,z));extrusion('SC_LampHousing_'+str(j),[(cx-.5,cy-.23),(cx+.5,cy-.23),(cx+.5,cy+.23),(cx-.5,cy+.23)],h,h+.12,'champagne_metal');extrusion('SC_LampLens_'+str(j),[(cx-.44,cy-.19),(cx+.44,cy-.19),(cx+.44,cy+.19),(cx-.44,cy+.19)],h-.015,h,'lens');datum('light_'+str(j),(cx,cy,h-.03))
+# Coordinated new owned upper floors open only the approved lower canopy areas.
+if D.get('house_extension'):
+ extension=D['house_extension']
+ targets=[o for o in parts if o.name.startswith(('SC_OpaqueRoof','SC_CurvedCeilingRib','SC_ContinuousCeilingShell'))]
+ for index,polygon in enumerate(extension['base_roof_cuts']):
+  cutter=extrusion('TEMP_UpperHouseOpening_'+str(index),[xy(p)for p in polygon],6.5,9.1,'ivory_enamel')
+  for target in targets:
+   bpy.context.view_layer.objects.active=target
+   modifier=target.modifiers.new('ReviewedUpperHouseOpening','BOOLEAN');modifier.operation='DIFFERENCE';modifier.solver='EXACT';modifier.object=cutter
+   bpy.ops.object.modifier_apply(modifier=modifier.name)
+  parts.remove(cutter);bpy.data.objects.remove(cutter,do_unlink=True)
+ # Close the exposed ceiling/floor plenum at the cut edges, outside clear openings.
+ for index,ring in enumerate(extension['roof_reveal_rings']):
+  for j,(a,b)in enumerate(zip(ring,ring[1:]+ring[:1])):
+   def ceiling_height(x):
+    local=x-63
+    stations=[(0,7.35),(5,7.70),(12,8.05),(22,8.05),(30,7.60),(34,7.35)]
+    for (xa,ya),(xb,yb)in zip(stations,stations[1:]):
+     if xa<=local<=xb:return ya+(yb-ya)*(local-xa)/(xb-xa)
+    return 7.35
+   pa,pb=Vector(a),Vector(b);t=(pb-pa).normalized();normal=Vector((-t.y,t.x))*.03
+   outline=[pa+normal,pb+normal,pb-normal,pa-normal]
+   v=[(p.x-63,-p.y,ceiling_height(p.x)if level==0 else 8.76)for level in [0,1]for p in outline]
+   mesh('SC_UpperOpeningReveal_%d_%d'%(index,j),v,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'ivory_enamel')
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source/AST-COM-001.blend';export=ROOT/'exports/AST-COM-001.glb';bpy.ops.wm.save_as_mainfile(filepath=str(source))
 # Preserve visual-only step meshes as a distinct contact category.
 for tag in ['step','static']:
