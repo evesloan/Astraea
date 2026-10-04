@@ -64,7 +64,7 @@ for i,v in enumerate(D['service_screens']):
 piers=[(-44.8,-445.7),(-20.8,-445.7),(-44.8,-418.3),(-20.8,-418.3),(-10.0,-453),(-10.0,-411)]
 for i,p in enumerate(piers):
  cx,cy=xy(p);N=16;v=[]
- for h,radius in [(0,.80),(.22,.86),(.40,.67),(5.4,.67),(5.8,.90),(6.16,.90),(6.40,.67),(10.9,.67),(11.4,.95),(11.70,.95)]:
+ for h,radius in [(0,.80),(.22,.86),(.40,.67),(5.4,.67),(5.8,.90),(6.16,.90),(6.40,.67),(10.9,.67),(11.4,.95),(11.76,.95)]:
   for j in range(N):v.append((cx+radius*math.cos(2*math.pi*j/N),cy+radius*math.sin(2*math.pi*j/N),h))
  f=[tuple(reversed(range(N))),tuple(range(len(v)-N,len(v)))]+[(k*N+j,k*N+(j+1)%N,(k+1)*N+(j+1)%N,(k+1)*N+j)for k in range(9)for j in range(N)];mesh('ARR_ProfiledBearingPier_'+str(i),v,f,'warm_stone')
  for h in [.21,5.80,11.42]:
@@ -118,6 +118,23 @@ for label,z0,z1 in [('N',-437,-443),('S',-427,-421)]:
   for j in range(9):
    t=j/8;z=z0+(z1-z0)*t;cx,cy=xy((x,z));extrusion('ARR_UpperBaluster_%s_%s_%s'%(label,x,j),source_rect(cx-.025,cx+.025,cy-.025,cy+.025),3+3*t+.05,4.05+3*t,'champagne_metal')
 
+# Continuous guard glazing and intermediate landing edges protect ordinary
+# movement and loose props; narrow balusters alone do not close these openings.
+def slope_glass(name,a,b,low_a,low_b):
+ a=Vector(xy(a));b=Vector(xy(b));v=(b-a).normalized();n=Vector((-v.y,v.x))*.012
+ points=[]
+ for sign in [-1,1]:
+  aa=a+n*sign;bb=b+n*sign;points.extend([(aa.x,aa.y,low_a+.15),(bb.x,bb.y,low_b+.15),(bb.x,bb.y,low_b+1.0),(aa.x,aa.y,low_a+1.0)])
+ mesh(name,points,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'glass')
+for side in [-1,1]:slope_glass('ARR_MainStairGlass_'+str(side),(-30,-432+side*3.5),(-36,-432+side*3.15),0,3)
+for label,z0,z1 in [('N',-437,-443),('S',-427,-421)]:
+ for x in [-39.04,-35.96]:
+  slope_glass('ARR_UpperStairGlass_%s_%s'%(label,x),(x,z0),(x,z1),3,6)
+  a=xy((x,z0));b=xy((x,z1));beam('ARR_UpperStringer_%s_%s'%(label,x),[(*a,2.86),(*b,5.86)],.20,.28,'warm_stone')
+for i,(a,b)in enumerate([((-39,-437),(-39,-427)),((-36,-437),(-36,-435)),((-36,-429),(-36,-427))]):
+ wall('ARR_MidLandingGlass_'+str(i),a,b,3.15,4.02,.024,'glass');wall('ARR_MidLandingCap_'+str(i),a,b,4.02,4.11,.10,'champagne_metal')
+for cy in [-1.5,1.5]:beam('ARR_EmblemStandOff_'+str(cy),[(-16.40,cy,7.5),(-16.03,cy,7.5)],.20,.20,'champagne_metal')
+
 # Lift shaft matches the tested cabin contract; no alternate controller is made.
 origin=D['lift']['origin_xz'];front=origin[0];cz=origin[1]
 for side in [-1,1]:wall('ARR_LiftShaftSide_'+str(side),(front-.18,cz+side*2.10),(front+3.76,cz+side*2.10),-.24,9.35,.12,'ivory_enamel')
@@ -134,6 +151,9 @@ for index,housing in enumerate(D['exhibit_housings']):
   wall('ARR_ExhibitGlassSide_'+str(index),a,b,lo+.08,hi-.12,.035,'glass')
  for x in [x0,x0+(x1-x0)/3,x0+2*(x1-x0)/3,x1]:
   for z in [z0,z1]:wall('ARR_ExhibitMullion_'+str(index),(x-.04,z),(x+.04,z),lo,hi,.12,'champagne_metal')
+ for x in [(x0+x1)/2-5.5,(x0+x1)/2+5.5]:wall('ARR_ExhibitBearingCrossbeam_'+str(index),(x,z0),(x,z1),10.83,10.98,.32,'ivory_enamel')
+ front_z=z1 if index==0 else z0
+ for pier_x,target_x in [(-44.8,x0),(-20.8,x1)]:wall('ARR_ExhibitTransferShoulder_'+str(index),(pier_x,front_z),(target_x,front_z),5.65,6.45,.85,'warm_stone')
  datum('exhibit_center_'+str(index),(*xy(((x0+x1)/2,(z0+z1)/2)),8.65))
 # Soffits frame the entry and the side hospitality bays rather than lowering
 # the entire court. The central view remains clear of giant chandeliers.
