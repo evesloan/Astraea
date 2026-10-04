@@ -51,6 +51,28 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 			light.light_color=Color(1,.95,.88)
 			light.shadow_enabled=true
 			light.set_meta("illumination_anchor",receiver.global_position)
+	var arrival:Node3D=ship.model(root,"AST-AQU-014.glb","GentleWatersArrival",Vector3(8,44,210))
+	arrival.set_meta("programme_key","D08_directory_08")
+	for part in arrival.find_children("ARR_finish_*","MeshInstance3D",true,false):
+		var contact:=part.get_node_or_null("StaticContact")
+		if contact!=null:contact.free()
+	for lens in arrival.find_children("ARR_static_lens","MeshInstance3D",true,false):
+		lens.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	for i in range(2):
+		var marker:=arrival.find_child("DATUM_arrival_light_"+str(i),true,false)as Node3D
+		assert(marker!=null)
+		var light:=OmniLight3D.new()
+		root.add_child(light)
+		light.name="GentleWatersArrivalSource_"+str(i)
+		light.global_position=marker.global_position+Vector3.DOWN*.055
+		light.omni_range=5.5
+		light.omni_attenuation=.6
+		light.light_energy=1.4
+		light.light_color=Color(1,.95,.88)
+		light.shadow_enabled=true
+		light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE
+		light.shadow_normal_bias=1.5
+		light.shadow_bias=.08
 	var basin: Dictionary = data.basin
 	var boundary: Array = basin.boundary
 	var vertices: Array[Vector3] = []

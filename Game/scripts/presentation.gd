@@ -285,8 +285,18 @@ func _ready() -> void:
 			await get_tree().create_timer(1.0).timeout
 			get_node("NativeResolutionStatus").text = "ASTRAEA / D08–D10 AQUATIC SECTION — unfinished architecture"
 			await _capture("aquatic_")
+			actor.spawn_position=Vector3(15,44.1,216)
+			actor.position=actor.spawn_position
+			actor.velocity=Vector3.ZERO
+			actor.rotation.y=.46
+			actor.pitch=.06
+			actor.camera.rotation.x=actor.pitch
+			await get_tree().create_timer(.6).timeout
+			await _capture("aquatic_arrival_recess_")
+
 			actor.spawn_position = Vector3(47,44.1,216)
 			actor.position = actor.spawn_position
+			actor.rotation.y = -PI/2
 			actor.pitch = 0.0
 			actor.camera.rotation.x = 0.0
 			await get_tree().create_timer(1.0).timeout

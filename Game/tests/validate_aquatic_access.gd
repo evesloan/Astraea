@@ -67,6 +67,26 @@ func run() -> void:
 			var optical_hit:=ship.get_world_3d().direct_space_state.intersect_ray(ray)
 			if not optical_hit.is_empty():print("BALCONY OPTICAL BLOCK:",deck.deck," ",a," to ",b," ",optical_hit.collider.get_path()," at ",optical_hit.position)
 			assert(optical_hit.is_empty(),"Balcony fixture cannot reach its authored lower-floor receiver")
+	var arrival:Node3D=ship.find_child("GentleWatersArrival",true,false)
+	for i in range(3):
+		var seat:=arrival.find_child("DATUM_seat_"+str(i),true,false)as Node3D
+		var q:=PhysicsRayQueryParameters3D.create(seat.global_position+Vector3.UP*.08,seat.global_position-Vector3.UP*.08)
+		var hit:=ship.get_world_3d().direct_space_state.intersect_ray(q)
+		assert(not hit.is_empty() and abs(hit.position.y-seat.global_position.y)<.012,"Authored waiting seat lacks actual contact")
+		var approach:=arrival.find_child("DATUM_seat_approach_"+str(i),true,false)as Node3D
+		var capsule:=CapsuleShape3D.new()
+		capsule.radius=.35
+		capsule.height=1.8
+		var query:=PhysicsShapeQueryParameters3D.new()
+		query.shape=capsule
+		query.transform=Transform3D(Basis.IDENTITY,approach.global_position+Vector3.UP*.94)
+		query.exclude=excluded
+		assert(ship.get_world_3d().direct_space_state.intersect_shape(query).is_empty(),"Waiting-seat approach blocked")
+	for i in range(2):
+		var marker:=arrival.find_child("DATUM_arrival_light_"+str(i),true,false)as Node3D
+		var q:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+Vector3.DOWN*.2)
+		assert(ship.get_world_3d().direct_space_state.intersect_ray(q).is_empty(),"Arrival source exit blocked")
+	for i in range(45):check_pose(ship,cart,Vector3(8.4+i*.2,44.03,218),PI/2,excluded)
 	# Compound loaded-cart clearance, including the aft bypass around the existing column.
 	for floor_y in [44.0,52.5,61.0]:
 		for i in range(66):check_pose(ship,cart,Vector3(9.8,floor_y+.03,223.2+i*.25),0,excluded)
@@ -74,7 +94,7 @@ func run() -> void:
 		for i in range(42):check_pose(ship,cart,Vector3(9.8+i*.24,floor_y+.03,239.5),PI/2,excluded)
 		for i in range(31):check_pose(ship,cart,Vector3(20,floor_y+.03,239.5),PI*.5*i/30,excluded)
 		for i in range(23):check_pose(ship,cart,Vector3(20,floor_y+.03,239.5+i*.25),0,excluded)
-	print("AQUATIC ACCESS PASS:",sweep_samples,"full cabin-shape sweep samples;",samples,"compound cart and upper-load approach poses;",guard_samples,"guard contacts and eight lower receivers; four ceiling fixture mounts/exits and protected cover ownership. Geometric clearance only; driven boarding turns and final art remain pending.")
+	print("AQUATIC ACCESS PASS:",sweep_samples,"full cabin-shape sweep samples;",samples,"compound cart and upper-load approach poses;",guard_samples,"guard contacts, three arrival seats and eight lower receivers; four ceiling fixture mounts/exits and protected cover ownership. Geometric clearance only; driven boarding turns and final art remain pending.")
 	main.queue_free()
 	await process_frame
 	quit()
