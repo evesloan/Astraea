@@ -47,7 +47,7 @@ back=[(.12,.08),(.65,.16),(1.45,.26),(4.75,.26),(5.55,.16),(6.08,.08)]
 for i,((xa,za),(xb,zb))in enumerate(zip(back,back[1:])):
  h=2.45 if i in [1,2,3] else 2.05
  outline=[(xa,za),(xb,zb),(xb,zb+.12),(xa,za+.12)]
- extrusion('TALK_FacetedBack_'+str(i),outline,0,h,'oatmeal_weave')
+ extrusion('TALK_FacetedBack_'+str(i),outline,.72,h,'oatmeal_weave')
  extrusion('TALK_BackDado_'+str(i),outline,0,.72,'warm_walnut')
 # Tapered end bearings and shallow curved canopy section frame the inward view.
 for i,x in enumerate([.12,6.08]):

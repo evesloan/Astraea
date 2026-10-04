@@ -63,7 +63,7 @@ for level,h in enumerate([0,4.5]):
   for j,(a,b)in enumerate(zip(points,points[1:])):
    # True lower residential entrance X82..86 at Z-14.
    if level==0 and side==-1 and j==3:continue
-   wall_segment('SC_ProfileWall_%d_%d_%d'%(level,side,j),a,b,h,h+(4.15 if level==0 else 3.5),.16,'ivory_enamel')
+   wall_segment('SC_ProfileWall_%d_%d_%d'%(level,side,j),a,b,h+.70,h+(4.15 if level==0 else 3.5),.16,'ivory_enamel')
    wall_segment('SC_Wainscot_%d_%d_%d'%(level,side,j),a,b,h,h+.70,(.16 if D.get('house_extension') and level==1 and side==1 and j==4 else .20),'warm_walnut')
  # Rear envelope encloses the lift equipment, not false space glazing.
  wall_segment('SC_RearWall_'+str(level),(96.9,-10),(96.9,10),h,h+(4.2 if level==0 else 3.5),.18,'ivory_enamel')
