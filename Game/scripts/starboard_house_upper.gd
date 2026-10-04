@@ -35,3 +35,24 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	stairs._contact(root,[Vector3(64.2,93,-9.6),Vector3(66.2,93,-9.6),Vector3(66.2,95.25,-4.8),Vector3(64.2,95.25,-4.8)])
 	stairs._contact(root,[Vector3(67.2,97.5,-9.28),Vector3(69.2,97.5,-9.28),Vector3(69.2,95.25,-4.8),Vector3(67.2,95.25,-4.8)])
 	stairs._contact(root,[Vector3(67.2,97.5,-9.66),Vector3(69.2,97.5,-9.66),Vector3(69.2,97.5,-9.28),Vector3(67.2,97.5,-9.28)])
+	# Sheltered writing edge faces the shared court, outside the south cart route.
+	var reading:Node3D=ship.model(root,"AST-RES-002.glb","D15ResidentialReadingEdge",Vector3(83,93,-13),PI)
+	for i in range(2):
+		var anchor:=reading.find_child("DATUM_chair_"+str(i),true,false)as Node3D
+		ship.model(root,"AST-FUR-002_day_reading_chair.glb","D15ReadingChair_"+str(i),anchor.global_position,PI)
+		var marker:=reading.find_child("DATUM_light_"+str(i),true,false)as Node3D
+		var light:=SpotLight3D.new()
+		root.add_child(light)
+		light.name="D15ReadingTaskLight_"+str(i)
+		light.global_position=marker.global_position
+		light.rotation.x=-PI/2
+		light.spot_angle=62
+		light.spot_range=3.3
+		light.light_energy=.85
+		light.light_color=Color(1,.95,.87)
+		light.shadow_enabled=true
+	for i in range(5):
+		var marker:=reading.find_child("DATUM_shelf_"+str(i),true,false)as Node3D
+		var stock:Node3D=ship.model(root,"AST-LIB-006.glb","D15ReadingStock_"+str(i),marker.global_position)
+		stock.set_meta("supported_book_group",true)
+		for contact in stock.find_children("StaticContact","StaticBody3D",true,false):contact.free()
