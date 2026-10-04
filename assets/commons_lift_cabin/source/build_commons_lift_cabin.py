@@ -1,9 +1,10 @@
 """Original Night garden: four planted resting courts, sheltered thresholds and atrium views."""
 from pathlib import Path
-import bpy,bmesh,math,json,hashlib
+import bpy,bmesh,math,json,hashlib,sys,argparse
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];CAT=ROOT.parents[1]
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
+args=argparse.ArgumentParser();args.add_argument('--stops',type=int,choices=[2,3],default=2);options=args.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []);variant='AST-CIR-003' if options.stops==2 else 'AST-CIR-003_three_stop'
 mats={};parts=[];material_contract=json.loads((CAT/'materials/material_manifest.json').read_text())['materials']
 for role in ['ivory_enamel','warm_walnut','warm_stone','champagne_metal','teal_weave','botanical_soil','oatmeal_weave','clay_weave']:
  m=bpy.data.materials.new(role);m.use_nodes=True;b=m.node_tree.nodes.get('Principled BSDF');b.inputs['Roughness'].default_value=material_contract.get(role,{}).get('roughness',.82);b.inputs['Metallic'].default_value=material_contract.get(role,{}).get('metallic',0);m['meters_per_tile_uv']=material_contract.get(role,{}).get('meters_per_tile_uv',[1,1])
@@ -57,9 +58,13 @@ for side in [-1,1]:
  datum('light_'+str(side),(x,1.7,2.60))
 extrusion('CAB_FloorInlay',[(-1.20,.25),(1.20,.25),(1.20,2.90),(.85,3.2),(-.85,3.2),(-1.20,2.9)],.001,.004,'oatmeal_weave')
 # Physical two-button panel on the right, separate controls in runtime.
-extrusion('CAB_ControlPanel',[(1.75,.50),(1.88,.50),(1.88,.88),(1.75,.88)],.98,1.55,'champagne_metal')
-for i,h in enumerate([1.17,1.40]):datum('floor_button_'+str(i),(1.73,.69,h))
-scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source/AST-CIR-003.blend';export=ROOT/'exports/AST-CIR-003.glb';bpy.ops.wm.save_as_mainfile(filepath=str(source))
+if options.stops==2:
+ extrusion('CAB_ControlPanel',[(1.75,.50),(1.88,.50),(1.88,.88),(1.75,.88)],.98,1.55,'champagne_metal')
+ for i,h in enumerate([1.17,1.40]):datum('floor_button_'+str(i),(1.73,.69,h))
+else:
+ extrusion('CAB_ThreeStopControlPanel',[(1.75,.43),(1.88,.43),(1.88,1.25),(1.75,1.25)],1.10,1.56,'champagne_metal')
+ for i,y in enumerate([.55,.84,1.13]):datum('floor_button_'+str(i),(1.73,y,1.27))
+scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(variant+'.blend');export=ROOT/'exports'/(variant+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source))
 for role,material in mats.items():
  selected=[o for o in list(scene.objects)if o.type=='MESH'and o.data.materials and o.data.materials[0]==material]
  if not selected:continue
@@ -67,4 +72,4 @@ for role,material in mats.items():
  for o in selected:o.select_set(True)
  bpy.context.view_layer.objects.active=selected[0];bpy.ops.object.join();bpy.context.object.name='CAB_'+role
 bpy.ops.export_scene.gltf(filepath=str(export),export_format='GLB',export_yup=True,export_extras=True)
-(ROOT/'AST-CIR-003.manifest.json').write_text(json.dumps({'catalogue_id':'AST-CIR-003','name':'Starboard commons fitted lift cabin','source':'source/AST-CIR-003.blend','export':'exports/AST-CIR-003.glb','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(export.read_bytes()).hexdigest(),'status':'Authored draft; physics/controller integration pending'},indent=2)+'\n')
+(ROOT/(variant+'.manifest.json')).write_text(json.dumps({'catalogue_id':'AST-CIR-003','name':'Starboard commons fitted lift cabin','source':'source/'+variant+'.blend','export':'exports/'+variant+'.glb','floor_button_count':options.stops,'representation':variant,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(export.read_bytes()).hexdigest(),'status':'Authored draft; physics/controller integration pending'},indent=2)+'\n')
