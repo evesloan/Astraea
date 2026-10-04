@@ -11,7 +11,7 @@ Updated2026-10-04 after the arrivals spacing, Vesper dining and watercourse pass
 - Partial D09 salon with authored enclosure, varied ceiling, glazed gallery and several occupied furniture groups; its study lamp responds to the shared RMB/E interaction
 - Two partial D13 twin suites at historical addresses13017 and13041, connected by a walkable route, with preserved historical bed anchors, shaped living/sleeping thresholds, inward glazing and fitted bathroom fixtures
 - The opaque bathroom door inherits existing interaction/motion handling and passed300 fixed-architecture sweep samples, focused operation and obstruction checks
-- 142 registered catalogue designs. Component presence is not room completion or final-art approval
+- 143 registered catalogue designs. Component presence is not room completion or final-art approval
 
 - The paired suite entry now retracts into enclosed hollow pockets. Shared focus/E and call-plate operation,400 fixed-geometry motion samples and actor/loose-prop obstruction checks pass
 
@@ -86,3 +86,6 @@ The paired fusion cases have been narrowed around unchanged machinery, increasin
 
 ## Current Vesper subset and watercourse
 54 candidate dining seats are fitted in11 table groups; the240-seat target still has186 unplaced seats. Original profiled tables and swept dining chairs have supported contacts and checked service routes. A glass-sided channel now leads through the existing openings to a contained receiver in the aquatic basin. Guard, support, stream-envelope and west-passage checks pass. All36 current regression checks passed in91.3924seconds fixed60 simulation; actual normal views were inspected after the refined graphical batch. Flow is visually animated only: pumping, splash/acoustic behavior, swimming, occupied dining simulation and final art remain unfinished. The catalogue contains142 designs,87 present through624 model instances; these are not completed-room counts.
+
+## Vesper finishing-service bay
+The actual restaurant now has distinct clean/dirty work landings, fitted counters and static stock, cooler task light and an operating shared-controller service door. All37 checks passed in93.1342seconds, including the occupied-sweep delivery-driver interlock and actual bay walking. Normal/effects-off views were reviewed after stock batch002. The full240-seat layout remains a candidate under section/access review, not fitted capacity; the current dining subset remains54. Food processing,stock interaction and final art remain pending.
