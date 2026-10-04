@@ -57,9 +57,22 @@ func run() -> void:
 			ray.hit_back_faces=true
 			ray.exclude=[lift.cabin.get_rid()]
 			var hit:=ship.get_world_3d().direct_space_state.intersect_ray(ray)
-			assert(not hit.is_empty() and ("MEZ_GuardGlass" in str(hit.collider.get_path()) or "MEZ_LiftShaft" in str(hit.collider.get_path()) or "LandingGate_D10M/AST-DOR-003/LIFT_fixed" in str(hit.collider.get_path())),"Missing upper edge protection near %s; first contact %s"%[point,"none" if hit.is_empty() else hit.collider.get_path()])
+			assert(not hit.is_empty() and ("MEZ_GuardGlass" in str(hit.collider.get_path()) or "MEZ_LiftShaft" in str(hit.collider.get_path()) or "LandingGate_D10M/AST-DOR-003/LIFT_fixed" in str(hit.collider.get_path()) or ("VesperNorthDiningWall" in str(hit.collider.get_path()) and ("DIN_BackdropSolid" in str(hit.collider.get_path()) or "DIN_WalnutDado" in str(hit.collider.get_path())))),"Missing upper edge protection near %s; first contact %s"%[point,"none" if hit.is_empty() else hit.collider.get_path()])
 			guard_samples+=1
 	print("UPPER GUARD CONTACTS:",guard_samples)
+	var walls:=ship.find_children("VesperNorthDiningWall_*","Node3D",true,false)
+	assert(walls.size()==10)
+	for wall in walls:
+		var omit:Array[RID]=[]
+		for body in wall.find_children("*","StaticBody3D",true,false):omit.append(body.get_rid())
+		var foot:Vector3=wall.global_position+Vector3(2.7,.03,.08)
+		var ray:=PhysicsRayQueryParameters3D.create(foot,foot+Vector3.DOWN*.10)
+		ray.exclude=omit
+		assert(not ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"North backdrop needs floor bearing")
+		var marker:Node3D=wall.find_child("DATUM_wash_source",true,false)
+		var receiver:Node3D=wall.find_child("DATUM_wall_receiver",true,false)
+		ray=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+(receiver.global_position-marker.global_position).normalized()*.08)
+		assert(ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Wall wash source starts inside its housing")
 	for i in range(8):
 		var light:Node3D=ship.find_child("VesperMezzanineTaskLight_"+str(i),true,false)
 		var ray:=PhysicsRayQueryParameters3D.create(light.global_position,light.global_position+Vector3.DOWN*.05)
