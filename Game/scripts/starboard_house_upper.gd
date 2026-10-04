@@ -84,3 +84,27 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.spot_angle=75
 		light.spot_range=4
 		light.shadow_enabled=true
+	var quiet:Node3D=ship.model(root,"AST-RES-004.glb","D17QuietReadingAlcove",Vector3(66.7,102,5),PI/2)
+	for side in [-1,1]:
+		for level in range(4):
+			for row in range(2):
+				var marker:=quiet.find_child("DATUM_book_%s_%s_%s"%[side,level,row],true,false)as Node3D
+				var stock:Node3D=ship.model(root,"AST-LIB-006.glb","D17QuietBook_%s_%s_%s"%[side,level,row],marker.global_position,PI if side<0 else 0.0)
+				stock.set_meta("supported_book_group",true)
+				for contact in stock.find_children("StaticContact","StaticBody3D",true,false):contact.free()
+	var quiet_marker:=quiet.find_child("DATUM_light",true,false)as Node3D
+	var quiet_light:=SpotLight3D.new()
+	root.add_child(quiet_light)
+	quiet_light.name="D17QuietReadingSource"
+	quiet_light.global_position=quiet_marker.global_position
+	quiet_light.rotation.x=-PI/2
+	quiet_light.spot_angle=78
+	quiet_light.spot_range=3.1
+	quiet_light.light_energy=.70
+	quiet_light.light_color=Color(1,.95,.87)
+	quiet_light.shadow_enabled=true
+	var quiet_control:=Node3D.new()
+	quiet_control.name="D17QuietReadingLightSwitch"
+	quiet_control.set_script(load("res://scripts/fixture_switch.gd"))
+	root.add_child(quiet_control)
+	quiet_control.configure(quiet,quiet_light,&"D17_directory_04_quiet_reading_light","DATUM_toggle","QUIET_LampLens")

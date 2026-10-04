@@ -71,7 +71,7 @@ for record in D['floor_regions']:
   points=[(63,side*14),(72,side*14),(78,side*13.2),(82,side*13.2),(86,side*14),(93,side*14),(97,side*10)]
   for i,(a,b)in enumerate(zip(points,points[1:])):
    top=106.26 if y==102 else y+4.26 # Walls meet structural cover behind the shaped ceiling, closing roof-edge gaps.
-   wall('HC_ProfileWall_%s_%s_%s'%(tag,side,i),a,b,y,top,.16,'ivory_enamel')
+   wall('HC_ProfileWall_%s_%s_%s'%(tag,side,i),a,b,y+.70,top,.16,'ivory_enamel')
    wall('HC_Wainscot_%s_%s_%s'%(tag,side,i),a,b,y,y+.70,.16,'warm_walnut')
  wall('HC_RearWall_'+tag,(96.9,-10),(96.9,10),y,106.26 if y==102 else y+4.26,.18,'ivory_enamel')
  # Bridge frames span into the existing atrium and commons end supports.
