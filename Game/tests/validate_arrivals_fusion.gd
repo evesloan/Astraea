@@ -65,6 +65,17 @@ func run() -> void:
 		var wash_ray:=PhysicsRayQueryParameters3D.create(marker.global_position,Vector3(-47.5,7.5,-432))
 		var wash_hit:=ship.get_world_3d().direct_space_state.intersect_ray(wash_ray)
 		assert(not wash_hit.is_empty() and ("Emblem" in str(wash_hit.collider.get_path()) or "SunRay" in str(wash_hit.collider.get_path()) or "Focal" in str(wash_hit.collider.get_path())),"Wallwash must reach its intended relief instead of a hidden maintenance roof")
+	# Narrow cases preserve the authored machinery while reopening the stair axis.
+	assert(float(definition.exhibit_housings[1].z[0])-float(definition.exhibit_housings[0].z[1])>=6.79,"Cases must leave the reviewed central opening")
+	for i in range(2):
+		var exhibit:=district.get_node("ContainedFusionExhibit_"+str(i))
+		var mounts:=exhibit.find_children("DATUM_mount_*","Node3D",true,false)
+		assert(mounts.size()==2,"Both exported suspension mounts remain present")
+		for mount in mounts:
+			assert(absf(absf(mount.position.x)-5.5)<.001)
+			var bearing_ray:=PhysicsRayQueryParameters3D.create(mount.global_position+Vector3.UP*.30,mount.global_position-Vector3.UP*.04)
+			var bearing:=ship.get_world_3d().direct_space_state.intersect_ray(bearing_ray)
+			assert(not bearing.is_empty() and "ExhibitBearingCrossbeam" in str(bearing.collider.get_path()),"Exhibit yoke must meet its architectural crossbeam")
 	var reception_alcove:=district.get_node("ArrivalsFittedReceptionAlcove")
 	for i in range(3):
 		var marker:=reception_alcove.find_child("DATUM_light_"+str(i),true,false)as Node3D
