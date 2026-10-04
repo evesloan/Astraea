@@ -1,6 +1,7 @@
 extends Node3D
 # A controller-owned landing gate. It intentionally exposes no interact() method:
 # only the lift interlock can authorize opening at a present, stationary cabin.
+var persistent_id:StringName
 var leaves:Array[AnimatableBody3D]=[]
 var origins:Array[Vector3]=[]
 var travels:Array[float]=[]

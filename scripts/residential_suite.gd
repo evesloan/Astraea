@@ -97,7 +97,7 @@ static func _build_room(parent:Node3D,ship:Node3D,address:String,model_file:Stri
 		return
 	# Guard exposed slab edges while adjoining census units remain unbuilt.
 	# Entry portals and the connection to the original atrium stay open.
-	var edges := [[Vector2(54,-36),Vector2(54,-30)],[Vector2(54,-36),Vector2(63,-36)],[Vector2(63,-36),Vector2(69.05,-38.4)],[Vector2(54,-48),Vector2(63,-48)],[Vector2(63,-48),Vector2(69.05,-45.6)],[Vector2(50,-26),Vector2(86.05,-26)],[Vector2(54,-30),Vector2(81.95,-30)],[Vector2(81.95,-53),Vector2(86.05,-53)],[Vector2(86.05,-53),Vector2(86.05,-26)],[Vector2(81.95,-38.4),Vector2(81.95,-30)]]
+	var edges := [[Vector2(54,-36),Vector2(54,-30)],[Vector2(54,-36),Vector2(63,-36)],[Vector2(63,-36),Vector2(69.05,-38.4)],[Vector2(54,-48),Vector2(63,-48)],[Vector2(63,-48),Vector2(69.05,-45.6)],[Vector2(50,-26),Vector2(82,-26)],[Vector2(86,-26),Vector2(86.05,-26)],[Vector2(54,-30),Vector2(81.95,-30)],[Vector2(81.95,-53),Vector2(86.05,-53)],[Vector2(86.05,-53),Vector2(86.05,-26)],[Vector2(81.95,-38.4),Vector2(81.95,-30)]]
 	for i in range(edges.size()):
 		var a := Vector3(edges[i][0].x,84,edges[i][0].y)
 		var b := Vector3(edges[i][1].x,84,edges[i][1].y)
