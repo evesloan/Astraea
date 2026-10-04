@@ -77,6 +77,7 @@ func _ready() -> void:
 		light.spot_angle=70
 		light.spot_range=4
 		light.light_energy=.7
+		light.shadow_enabled=true
 		light.light_color=Color(1,.95,.87)
 	cabin_gate=load("res://scripts/lift_gate.gd").new()
 	cabin_gate.name="CabinGate"

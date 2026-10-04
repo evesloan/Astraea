@@ -26,6 +26,32 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.spot_angle=70
 		light.spot_range=11
 		light.shadow_enabled=true
+	# A planted social island sits beneath the real opening; the lower canopy
+	# frames existing conversation seating while upper tables support quieter use.
+	var gathering:Node3D=ship.model(root,"AST-COM-002.glb","CommonsShelteredGathering",Vector3(79,84,4))
+	for i in range(2):
+		var marker:=gathering.find_child("DATUM_canopy_plant_"+str(i),true,false)as Node3D
+		ship.model(root,"AST-BOT-001.glb" if i==0 else "AST-BOT-007.glb","CommonsCanopyPlant_"+str(i),marker.global_position,i*.65)
+	for i in range(12):
+		var marker:=gathering.find_child("DATUM_underplant_"+str(i),true,false)as Node3D
+		ship.model(root,"AST-BOT-002.glb","CommonsIslandUnderplant_"+str(i),marker.global_position,i*.6)
+	for i in range(3):
+		var marker:=gathering.find_child("DATUM_light_"+str(i),true,false)as Node3D
+		var light:=SpotLight3D.new()
+		root.add_child(light)
+		light.name="CommonsGatheringLight_"+str(i)
+		light.global_position=marker.global_position
+		light.rotation.x=-PI/2
+		light.spot_angle=65
+		light.spot_range=12 if i==2 else 6
+		light.light_energy=1.65 if i==2 else 1.25
+		light.light_color=Color(1,.94,.84)
+		light.shadow_enabled=true
+	for center in [Vector3(79,84,10),Vector3(82,88.5,-10)]:
+		ship.model(root,"AST-FUR-003_day_table.glb","CommonsConversationTable",center)
+	ship.model(root,"AST-LIB-STUDY-01.glb","CommonsSharedReadingTable",Vector3(88,88.5,-9))
+	for side in [-1,1]:
+		ship.model(root,"AST-FUR-002_day_reading_chair.glb","CommonsSharedReadingChair",Vector3(88,88.5,-9+side*1.4),PI if side>0 else 0)
 	# Matched walking planes; lower maintenance volume is deliberately closed.
 	const stairs=preload("res://scripts/aquatic_section.gd")
 	stairs._contact(root,[Vector3(64.2,84,-9.6),Vector3(66.2,84,-9.6),Vector3(66.2,86.25,-4.8),Vector3(64.2,86.25,-4.8)])
