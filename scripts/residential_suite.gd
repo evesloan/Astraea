@@ -66,6 +66,12 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	bath_light.light_energy=1.05
 	bath_light.light_color=Color(1,.96,.90)
 	bath_light.shadow_enabled=true
+	var entry := (load("res://scripts/guest_entry_door.gd") as GDScript).new() as Node3D
+	entry.name="Suite13017EntryDoor"
+	entry.persistent_id=&"D13_13017_entry_door_A"
+	entry.position=Vector3(82.0,84,-42)
+	entry.rotation.y=PI/2
+	root.add_child(entry)
 	# Guard exposed slab edges while adjoining census units remain unbuilt.
 	# Entry portals and the connection to the original atrium stay open.
 	var edges := [[Vector2(54,-36),Vector2(54,-30)],[Vector2(54,-36),Vector2(63,-36)],[Vector2(63,-36),Vector2(69.05,-38.4)],[Vector2(54,-48),Vector2(63,-48)],[Vector2(63,-48),Vector2(69.05,-45.6)],[Vector2(50,-26),Vector2(86.05,-26)],[Vector2(54,-30),Vector2(81.95,-30)],[Vector2(81.95,-51),Vector2(86.05,-51)],[Vector2(86.05,-51),Vector2(86.05,-26)],[Vector2(81.95,-51),Vector2(81.95,-45.6)],[Vector2(81.95,-38.4),Vector2(81.95,-30)]]
