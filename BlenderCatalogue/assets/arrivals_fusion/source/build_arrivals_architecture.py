@@ -102,8 +102,8 @@ for i in range(len(carpet)):
 verts=[];N=24
 for x in [-18.48,-18.12]:
  for k in range(N+1):
-  z=-442+20*k/N;h=3.45+.60*math.sin(math.pi*k/N)
-  verts.extend([(*xy((x,z)),h),(*xy((x,z)),4.33)])
+  z=-442+20*k/N;h=4.85+.60*math.sin(math.pi*k/N)
+  verts.extend([(*xy((x,z)),h),(*xy((x,z)),5.68)])
 stride=2*(N+1);faces=[]
 for k in range(N):
  a=2*k;b=2*(k+1)
@@ -111,7 +111,7 @@ for k in range(N):
 faces.extend([(0,1,stride+1,stride),(2*N,2*N+stride,2*N+stride+1,2*N+1)])
 mesh('ARR_ProfiledEntryCanopyArch',verts,faces,'ivory_enamel')
 for z in [-442,-422]:
- wall('ARR_EntryArchPier_'+str(z),(-18.6,z),(-18,z),0,4.33,.62,'warm_stone')
+ wall('ARR_EntryArchPier_'+str(z),(-18.6,z),(-18,z),0,5.68,.62,'warm_stone')
  wall('ARR_EntryPierTimber_'+str(z),(-18.64,z),(-17.96,z),.12,1.15,.65,'warm_walnut')
 
 # Actual twenty-tread flights; runtime adds matched smooth walking contacts.
@@ -220,12 +220,18 @@ for index,housing in enumerate(D['exhibit_housings']):
 for i,(x0,x1,z0,z1,h)in enumerate([(-18,-8,-442,-422,4.15),(-44,-18,-465,-456,3.8),(-44,-18,-408,-399,3.8)]):
  pieces=[(x0,x1,z0,z1)] if i!=0 else [(-18,-16.7,z0,z1),(-12.5,-8,z0,z1),(-16.7,-12.5,z0,-426.3)]
  for j,(a,b,c,d)in enumerate(pieces):
-  q=[xy(v)for v in [(a,c),(b,c),(b,d),(a,d)]];extrusion('ARR_HospitalityCanopy_%d_%d'%(i,j),q,h,h+.18,'ivory_enamel')
+  q=[xy(v)for v in [(a,c),(b,c),(b,d),(a,d)]]
+  if i==0:
+   # A rising underside reveals the tall court before leaving the existing slab.
+   world=[(a,c),(b,c),(b,d),(a,d)];heights=[4.15+.135*(-x-8)for x,z in world]
+   verts=[(*q[k],heights[k]+delta)for delta in [0,.18]for k in range(4)]
+   mesh('ARR_HospitalityCanopy_%d_%d'%(i,j),verts,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'ivory_enamel')
+  else:extrusion('ARR_HospitalityCanopy_%d_%d'%(i,j),q,h,h+.18,'ivory_enamel')
 # Fixtures attach to actual structure and emit below their lenses.
-light_points=[(-14,-436,3.92),(-14,-428,3.92),(-25,-441,5.70),(-35,-441,5.70),(-25,-423,5.70),(-35,-423,5.70),(-40,-443.7,9.2),(-22,-432,11.25),(-40,-420.3,9.2),(-31,-460,3.56),(-31,-404,3.56)]
+light_points=[(-14,-436,4.73),(-14,-428,4.73),(-25,-441,5.70),(-35,-441,5.70),(-25,-423,5.70),(-35,-423,5.70),(-40,-443.7,9.2),(-22,-432,11.25),(-40,-420.3,9.2),(-31,-460,3.56),(-31,-404,3.56)]
 for i,(x,z,h)in enumerate(light_points):
  cx,cy=xy((x,z));N=16;q=[(cx+.30*math.cos(2*math.pi*j/N),cy+.30*math.sin(2*math.pi*j/N))for j in range(N)];extrusion('ARR_FixtureCasing_'+str(i),q,h,h+.10,'champagne_metal');extrusion('ARR_FixtureLens_'+str(i),[(cx+(a-cx)*.88,cy+(b-cy)*.88)for a,b in q],h-.025,h,'lens');datum('light_'+str(i),(cx,cy,h-.04))
- mount=4.15 if i<2 else (5.76 if i<6 else (11.76 if i<9 else 3.8))
+ mount=4.96 if i<2 else (5.76 if i<6 else (11.76 if i<9 else 3.8))
  if mount>h+.10:beam('ARR_FixtureMount_'+str(i),[(cx,cy,h+.10),(cx,cy,mount)],.04,.04,'champagne_metal')
 
 # Two visible directional luminaires reveal the relief and timber wall.

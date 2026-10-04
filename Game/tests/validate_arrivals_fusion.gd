@@ -76,6 +76,11 @@ func run() -> void:
 			var bearing_ray:=PhysicsRayQueryParameters3D.create(mount.global_position+Vector3.UP*.30,mount.global_position-Vector3.UP*.04)
 			var bearing:=ship.get_world_3d().direct_space_state.intersect_ray(bearing_ray)
 			assert(not bearing.is_empty() and "ExhibitBearingCrossbeam" in str(bearing.collider.get_path()),"Exhibit yoke must meet its architectural crossbeam")
+	for entry_x in [-9.0,-17.5]:
+		var canopy_top:float=4.15+.135*(-entry_x-8)+.18
+		var canopy_ray:=PhysicsRayQueryParameters3D.create(Vector3(entry_x,5.74,-438),Vector3(entry_x,3.9,-438))
+		var canopy_hit:=ship.get_world_3d().direct_space_state.intersect_ray(canopy_ray)
+		assert(not canopy_hit.is_empty() and "HospitalityCanopy" in str(canopy_hit.collider.get_path()) and absf(canopy_hit.position.y-canopy_top)<.015,"Rising entry ceiling stays below protected D02 slab")
 	var reception_alcove:=district.get_node("ArrivalsFittedReceptionAlcove")
 	for i in range(3):
 		var marker:=reception_alcove.find_child("DATUM_light_"+str(i),true,false)as Node3D
