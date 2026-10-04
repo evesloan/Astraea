@@ -14,8 +14,8 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 			if contact!=null:contact.free()
 	const stair_contact=preload("res://scripts/aquatic_section.gd")
 	stair_contact._contact(district,[Vector3(-30,0,-435.45),Vector3(-36,3,-435),Vector3(-36,3,-429),Vector3(-30,0,-428.55)])
-	stair_contact._contact(district,[Vector3(-39,3,-437),Vector3(-36,3,-437),Vector3(-36,6,-443),Vector3(-39,6,-443)])
-	stair_contact._contact(district,[Vector3(-39,3,-427),Vector3(-36,3,-427),Vector3(-36,6,-421),Vector3(-39,6,-421)])
+	stair_contact._contact(district,[Vector3(-45,3,-437),Vector3(-42,3,-437),Vector3(-42,6,-443),Vector3(-45,6,-443)])
+	stair_contact._contact(district,[Vector3(-45,3,-427),Vector3(-42,3,-427),Vector3(-42,6,-421),Vector3(-45,6,-421)])
 	var lift:Node3D=load("res://scripts/commons_lift.gd").new()
 	lift.name="ArrivalsVisitorLift"
 	lift.floor_heights.assign([0.0,6.0])
@@ -36,6 +36,18 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.spot_range=16
 		light.light_energy=1.15
 		light.light_color=Color(1,.95,.87)
+		light.shadow_enabled=true
+	for i in range(2):
+		var marker:=architecture.find_child("DATUM_wallwash_"+str(i),true,false)as Node3D
+		var light:=SpotLight3D.new()
+		district.add_child(light)
+		light.name="ArrivalsReliefWallwash_"+str(i)
+		light.global_position=marker.global_position
+		light.look_at(Vector3(-47.15,7.5,-432),Vector3.UP)
+		light.spot_angle=58
+		light.spot_range=12
+		light.light_energy=2.1
+		light.light_color=Color(1,.94,.85)
 		light.shadow_enabled=true
 	for i in range(2):
 		var mount:=architecture.find_child("DATUM_exhibit_center_"+str(i),true,false)as Node3D

@@ -56,12 +56,24 @@ for lo,hi in [(4.4,6),(9.8,11.76)]:wall('ARR_PublicEntryHeader_'+str(lo),(-8.15,
 wall('ARR_WestLowerOpaque',(-53.85,-465.85),(-53.85,-398.15),0,6,.20,'ivory_enamel')
 for za,zb in [(-465.85,-434),(-430,-398.15)]:wall('ARR_WestServiceEnclosure_'+str(za),(-53.85,za),(-53.85,zb),6,11.76,.20,'ivory_enamel')
 wall('ARR_ServiceEntryHeader',(-53.85,-434),(-53.85,-430),9.2,11.76,.20,'ivory_enamel')
+# Opaque maintenance portals are opened only inside fully enclosed links.
+def screened_wall(name,x,z0,z1,bottom,top,width,role):
+ cursor=z0
+ for link in sorted(D.get('concealed_exhibit_links',[]),key=lambda v:v['z'][0]):
+  a,b=link['z']
+  if a<z0 or b>z1:continue
+  if a>cursor:wall(name+'_solid_'+str(a),(x,cursor),(x,a),bottom,top,width,role)
+  if bottom<6:wall(name+'_plinth_'+str(a),(x,a),(x,b),bottom,6,width,role)
+  wall(name+'_header_'+str(a),(x,a),(x,b),9.2,top,width,role)
+  cursor=b
+ if cursor<z1:wall(name+'_end',(x,cursor),(x,z1),bottom,top,width,role)
 # Full-height opaque screens conceal all service paths from both guest levels.
 for i,v in enumerate(D['service_screens']):
  a,b=((v['span'][0],v['value']),(v['span'][1],v['value']))if v['axis']=='z'else((v['value'],v['span'][0]),(v['value'],v['span'][1]))
- wall('ARR_OpaqueServiceScreen_'+str(i),a,b,v['bottom_y'],v['top_y'],.24,'ivory_enamel')
+ if v['axis']=='x':screened_wall('ARR_OpaqueServiceScreen_'+str(i),v['value'],v['span'][0],v['span'][1],v['bottom_y'],v['top_y'],.24,'ivory_enamel')
+ else:wall('ARR_OpaqueServiceScreen_'+str(i),a,b,v['bottom_y'],v['top_y'],.24,'ivory_enamel')
 # Architectural bearing piers at gallery/exhibit edges; metallic bands are narrow.
-piers=[(-44.8,-445.7),(-20.8,-445.7),(-44.8,-418.3),(-20.8,-418.3),(-10.0,-453),(-10.0,-411)]
+piers=[(-44.8,-440.7),(-20.8,-440.7),(-44.8,-423.3),(-20.8,-423.3),(-10.0,-453),(-10.0,-411)]
 for i,p in enumerate(piers):
  cx,cy=xy(p);N=16;v=[]
  for h,radius in [(0,.80),(.22,.86),(.40,.67),(5.4,.67),(5.8,.90),(6.16,.90),(6.40,.67),(10.9,.67),(11.4,.95),(11.76,.95)]:
@@ -71,7 +83,7 @@ for i,p in enumerate(piers):
   ring=[(cx+.91*math.cos(2*math.pi*j/N),cy+.91*math.sin(2*math.pi*j/N))for j in range(N)];extrusion('ARR_PierBand_%d_%s'%(i,h),ring,h,h+.055,'champagne_metal')
 # Framed focal wall behind the stair. The original sun relief is a SunCorp
 # architectural motif, not copied Cunard imagery or a second oversized monument.
-wall('ARR_StairFocalWall',(-47.4,-445),(-47.4,-419),0,11.76,.28,'warm_walnut')
+screened_wall('ARR_StairFocalWall',-47.4,-445,-419,0,11.76,.28,'warm_walnut')
 for z in [-444,-420]:wall('ARR_FocalPilaster_'+str(z),(-47.10,z),(-46.7,z),0,11.55,.7,'warm_stone')
 disc_x('ARR_EmblemBackplate',-15.98,0,7.5,3.55,.10,'warm_stone')
 disc_x('ARR_EmblemSun',-15.86,0,7.5,1.22,.16,'champagne_metal')
@@ -84,7 +96,7 @@ for i in range(20):
  extrusion('ARR_StepMain_%02d'%i,q,i*.15,(i+1)*.15,'warm_stone')
 for label,sign in [('North',-1),('South',1)]:
  for i in range(20):
-  near=-432+sign*5+sign*i*.30;far=near+sign*.30;lo,hi=sorted([near,far]);q=[xy(v)for v in [(-39,lo),(-36,lo),(-36,hi),(-39,hi)]]
+  near=-432+sign*5+sign*i*.30;far=near+sign*.30;lo,hi=sorted([near,far]);q=[xy(v)for v in [(-45,lo),(-42,lo),(-42,hi),(-45,hi)]]
   extrusion('ARR_Step%s_%02d'%(label,i),q,3+i*.15,3+(i+1)*.15,'warm_stone')
 landing=D['stair']['intermediate_landing'];q=[xy(v)for v in [(landing['x'][0],landing['z'][0]),(landing['x'][1],landing['z'][0]),(landing['x'][1],landing['z'][1]),(landing['x'][0],landing['z'][1])]];extrusion('ARR_IntermediateLanding',q,2.76,3,'warm_stone')
 # Supported stepped undersides are opaque; no open triangular escape pockets.
@@ -101,7 +113,7 @@ for region in D['floor_regions']:
    mid=((a[0]+b[0])/2,(a[1]+b[1])/2)
    if abs(mid[0])<.01:continue
    if -16.5<mid[0]<-12.7 and -426.1<mid[1]<-421.9:continue
-   if -39.15<mid[0]<-35.85 and (abs(mid[1]+443)<.03 or abs(mid[1]+421)<.03):continue
+   if -45.15<mid[0]<-41.85 and (abs(mid[1]+443)<.03 or abs(mid[1]+421)<.03):continue
    if mid[0]>-8.2 or mid[0]<-47.5:continue
    wall('ARR_BalconyFascia_'+str(i),a,b,5.74,6.03,.18,'ivory_enamel')
    wall('ARR_BalconyGlass_'+str(i),a,b,6.24,7.08,.024,'glass')
@@ -113,7 +125,7 @@ for side in [-1,1]:
  for j in range(9):
   t=j/8;x=-30-6*t;z=-432+side*(3.5-.35*t);cx,cy=xy((x,z));extrusion('ARR_MainBaluster_%s_%s'%(side,j),source_rect(cx-.025,cx+.025,cy-.025,cy+.025),3*t+.05,3*t+1.05,'champagne_metal')
 for label,z0,z1 in [('N',-437,-443),('S',-427,-421)]:
- for x in [-39.04,-35.96]:
+ for x in [-45.04,-41.96]:
   a=xy((x,z0));b=xy((x,z1));beam('ARR_UpperStairRail_%s_%s'%(label,x),[(*a,4.08),(*b,7.08)],.085,.085,'champagne_metal')
   for j in range(9):
    t=j/8;z=z0+(z1-z0)*t;cx,cy=xy((x,z));extrusion('ARR_UpperBaluster_%s_%s_%s'%(label,x,j),source_rect(cx-.025,cx+.025,cy-.025,cy+.025),3+3*t+.05,4.05+3*t,'champagne_metal')
@@ -128,10 +140,10 @@ def slope_glass(name,a,b,low_a,low_b):
  mesh(name,points,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'glass')
 for side in [-1,1]:slope_glass('ARR_MainStairGlass_'+str(side),(-30,-432+side*3.5),(-36,-432+side*3.15),0,3)
 for label,z0,z1 in [('N',-437,-443),('S',-427,-421)]:
- for x in [-39.04,-35.96]:
+ for x in [-45.04,-41.96]:
   slope_glass('ARR_UpperStairGlass_%s_%s'%(label,x),(x,z0),(x,z1),3,6)
   a=xy((x,z0));b=xy((x,z1));beam('ARR_UpperStringer_%s_%s'%(label,x),[(*a,2.86),(*b,5.86)],.20,.28,'warm_stone')
-for i,(a,b)in enumerate([((-39,-437),(-39,-427)),((-36,-437),(-36,-435)),((-36,-429),(-36,-427))]):
+for i,(a,b)in enumerate([((-45,-437),(-45,-427)),((-42,-437),(-36,-437)),((-42,-427),(-36,-427)),((-36,-437),(-36,-435)),((-36,-429),(-36,-427))]):
  wall('ARR_MidLandingGlass_'+str(i),a,b,3.15,4.02,.024,'glass');wall('ARR_MidLandingCap_'+str(i),a,b,4.02,4.11,.10,'champagne_metal')
 for cy in [-1.5,1.5]:beam('ARR_EmblemStandOff_'+str(cy),[(-16.40,cy,7.5),(-16.03,cy,7.5)],.20,.20,'champagne_metal')
 
@@ -140,11 +152,27 @@ origin=D['lift']['origin_xz'];front=origin[0];cz=origin[1]
 for side in [-1,1]:wall('ARR_LiftShaftSide_'+str(side),(front-.18,cz+side*2.10),(front+3.76,cz+side*2.10),-.24,9.35,.12,'ivory_enamel')
 wall('ARR_LiftShaftRear',(front+3.76,cz-2.10),(front+3.76,cz+2.10),-.24,9.35,.12,'ivory_enamel')
 for lo,hi in [(2.86,6),(8.86,9.35)]:wall('ARR_LiftFrontBand_'+str(lo),(front-.10,cz-2.04),(front-.10,cz+2.04),lo,hi,.12,'ivory_enamel')
+# Enclosed service connectors: opaque floors, sides and roofs. No guest-facing
+# catwalks or visible access doors; the route terminates in a screened end bay.
+for link in D.get('concealed_exhibit_links',[]):
+ x0,x1=link['x'];z0,z1=link['z'];name=link['id']
+ for z in [z0,z1]:wall('ARR_EnclosedLink_'+name+str(z),(x0,z),(x1,z),6,9.4,.18,'warm_walnut')
+ q=[xy(v)for v in [(x0,z0),(x1,z0),(x1,z1),(x0,z1)]]
+ extrusion('ARR_LinkRoof_'+name,q,9.2,9.4,'ivory_enamel')
 # Selected overhead exhibit glazing with opaque structural edge frames. All
 # maintenance is behind the dedicated screens, not visible factory catwalks.
 for index,housing in enumerate(D['exhibit_housings']):
- x0,x1=housing['x'];z0,z1=housing['z'];lo=housing['glazed_underside_y'];hi=housing['top_y'];q=[xy(v)for v in [(x0,z0),(x1,z0),(x1,z1),(x0,z1)]]
+ bay_x0,x1=housing['x'];x0=housing['opaque_service_bay_end_x'];z0,z1=housing['z'];lo=housing['glazed_underside_y'];hi=housing['top_y'];q=[xy(v)for v in [(x0,z0),(x1,z0),(x1,z1),(x0,z1)]]
  extrusion('ARR_ExhibitGlassBelly_'+str(index),q,lo,lo+.06,'glass')
+ bay=[xy(v)for v in [(bay_x0,z0),(x0,z0),(x0,z1),(bay_x0,z1)]]
+ extrusion('ARR_ServiceBayBase_'+str(index),bay,5.76,6,'warm_stone')
+ extrusion('ARR_ServiceBayRoof_'+str(index),bay,hi-.12,hi+.08,'ivory_enamel')
+ for z in [z0,z1]:wall('ARR_ServiceBaySide_'+str(index),(bay_x0,z),(x0,z),6,hi,.18,'warm_walnut')
+ link=D['concealed_exhibit_links'][index];a,b=link['z']
+ for za,zb in [(z0,a),(b,z1)]:wall('ARR_ServiceBayWest_'+str(index),(bay_x0,za),(bay_x0,zb),6,hi,.18,'warm_walnut')
+ wall('ARR_ServiceBayDoorHeader_'+str(index),(bay_x0,a),(bay_x0,b),9.2,hi,.18,'warm_walnut')
+ # Opaque separation hides the service bay from the curated display volume.
+ wall('ARR_ServiceBayDisplayPartition_'+str(index),(x0,z0),(x0,z1),6,hi,.18,'warm_walnut')
  for a,b in zip([(x0,z0),(x1,z0),(x1,z1),(x0,z1)],[(x1,z0),(x1,z1),(x0,z1),(x0,z0)]):
   wall('ARR_ExhibitLowerFrame_'+str(index),a,b,lo-.16,lo+.08,.23,'warm_stone')
   wall('ARR_ExhibitUpperFrame_'+str(index),a,b,hi-.12,hi+.08,.22,'warm_stone')
@@ -152,19 +180,29 @@ for index,housing in enumerate(D['exhibit_housings']):
  for x in [x0,x0+(x1-x0)/3,x0+2*(x1-x0)/3,x1]:
   for z in [z0,z1]:wall('ARR_ExhibitMullion_'+str(index),(x-.04,z),(x+.04,z),lo,hi,.12,'champagne_metal')
  for x in [(x0+x1)/2-5.5,(x0+x1)/2+5.5]:wall('ARR_ExhibitBearingCrossbeam_'+str(index),(x,z0),(x,z1),10.83,10.98,.32,'ivory_enamel')
- front_z=z1 if index==0 else z0
- for pier_x,target_x in [(-44.8,x0),(-20.8,x1)]:wall('ARR_ExhibitTransferShoulder_'+str(index),(pier_x,front_z),(target_x,front_z),5.65,6.45,.85,'warm_stone')
- datum('exhibit_center_'+str(index),(*xy(((x0+x1)/2,(z0+z1)/2)),8.65))
+ front_z=z0 if index==0 else z1
+ for pier_x,target_x in [(-44.8,x0),(-20.8,x1)]:wall('ARR_ExhibitTransferShoulder_'+str(index),(pier_x,front_z),(target_x,front_z),10.40,10.98,.85,'warm_stone')
+ datum('exhibit_center_'+str(index),(*xy(((bay_x0+x1)/2,(z0+z1)/2)),8.65))
 # Soffits frame the entry and the side hospitality bays rather than lowering
 # the entire court. The central view remains clear of giant chandeliers.
 for i,(x0,x1,z0,z1,h)in enumerate([(-18,-8,-442,-422,4.15),(-44,-18,-465,-456,3.8),(-44,-18,-408,-399,3.8)]):
- q=[xy(v)for v in [(x0,z0),(x1,z0),(x1,z1),(x0,z1)]];extrusion('ARR_HospitalityCanopy_'+str(i),q,h,h+.18,'ivory_enamel')
+ pieces=[(x0,x1,z0,z1)] if i!=0 else [(-18,-16.7,z0,z1),(-12.5,-8,z0,z1),(-16.7,-12.5,z0,-426.3)]
+ for j,(a,b,c,d)in enumerate(pieces):
+  q=[xy(v)for v in [(a,c),(b,c),(b,d),(a,d)]];extrusion('ARR_HospitalityCanopy_%d_%d'%(i,j),q,h,h+.18,'ivory_enamel')
 # Fixtures attach to actual structure and emit below their lenses.
 light_points=[(-14,-436,3.92),(-14,-428,3.92),(-25,-441,5.70),(-35,-441,5.70),(-25,-423,5.70),(-35,-423,5.70),(-42,-432,10.9),(-22,-432,11.25),(-35,-432,11.25),(-31,-460,3.56),(-31,-404,3.56)]
 for i,(x,z,h)in enumerate(light_points):
  cx,cy=xy((x,z));N=16;q=[(cx+.30*math.cos(2*math.pi*j/N),cy+.30*math.sin(2*math.pi*j/N))for j in range(N)];extrusion('ARR_FixtureCasing_'+str(i),q,h,h+.10,'champagne_metal');extrusion('ARR_FixtureLens_'+str(i),[(cx+(a-cx)*.88,cy+(b-cy)*.88)for a,b in q],h-.025,h,'lens');datum('light_'+str(i),(cx,cy,h-.04))
  mount=4.15 if i<2 else (5.76 if i<6 else (11.76 if i<9 else 3.8))
  if mount>h+.10:beam('ARR_FixtureMount_'+str(i),[(cx,cy,h+.10),(cx,cy,mount)],.04,.04,'champagne_metal')
+
+# Two visible directional luminaires reveal the relief and timber wall.
+for i,z in enumerate([-437.5,-426.5]):
+ cx,cy=xy((-43.7,z));h=9.8
+ disc_x('ARR_WallwashHousing_'+str(i),cx+.04,cy,h,.32,.14,'champagne_metal',16)
+ disc_x('ARR_WallwashLens_'+str(i),cx-.045,cy,h,.265,.025,'lens',16)
+ beam('ARR_WallwashStem_'+str(i),[(cx,cy,h+.25),(cx,cy,11.76)],.055,.055,'champagne_metal')
+ datum('wallwash_'+str(i),(cx-.08,cy,h))
 
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source/AST-ARR-002.blend';export=ROOT/'exports/AST-ARR-002.glb';bpy.ops.wm.save_as_mainfile(filepath=str(source));tri=0
 for o in parts:o.data.calc_loop_triangles();tri+=len(o.data.loop_triangles)

@@ -14,6 +14,12 @@ func walk(actor:CharacterBody3D,destination:Vector2) -> void:
 		actor.move_and_slide()
 		await physics_frame
 	if not reached:
+		var probe:=PhysicsShapeQueryParameters3D.new()
+		probe.shape=actor.get_child(0).shape
+		probe.transform=actor.get_child(0).global_transform
+		probe.transform.origin+=(Vector3(destination.x,actor.position.y,destination.y)-actor.position).normalized()*.08
+		probe.exclude=[actor.get_rid()]
+		for hit in actor.get_world_3d().direct_space_state.intersect_shape(probe,20):print("PROBE ",hit.collider.get_path())
 		for i in range(actor.get_slide_collision_count()):
 			var c:=actor.get_slide_collision(i)
 			print("BLOCKER ",c.get_collider().get_path()," normal ",c.get_normal())
@@ -51,18 +57,23 @@ func run() -> void:
 		var marker:=architecture.find_child("DATUM_light_"+str(i),true,false)as Node3D
 		var source_ray:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position-Vector3.UP*.12)
 		assert(ship.get_world_3d().direct_space_state.intersect_ray(source_ray).is_empty(),"Arrival fixture exit must be outside its lens")
+	for i in range(2):
+		var marker:=architecture.find_child("DATUM_wallwash_"+str(i),true,false)as Node3D
+		var direction:Vector3=(Vector3(-47.15,7.5,-432)-marker.global_position).normalized()
+		var source_ray:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+direction*.12)
+		assert(ship.get_world_3d().direct_space_state.intersect_ray(source_ray).is_empty(),"Wallwash source is outside its housing")
 	actor.set_physics_process(false)
 	actor.position=Vector3(-5,.1,-432)
 	actor.velocity=Vector3.ZERO
-	for p in [Vector2(-18,-432),Vector2(-30,-432),Vector2(-37.5,-432),Vector2(-37.5,-443.8)]:await walk(actor,p)
+	for p in [Vector2(-18,-432),Vector2(-30,-432),Vector2(-43.5,-432),Vector2(-43.5,-443.8)]:await walk(actor,p)
 	assert(absf(actor.position.y-6)<.12,"Ceremonial stair reaches actual D02 visitor floor")
-	for p in [Vector2(-34.5,-443.8),Vector2(-30,-441),Vector2(-18,-441),Vector2(-12,-432),Vector2(-18,-422),Vector2(-34.5,-422),Vector2(-34.5,-419.9),Vector2(-37.5,-419.9),Vector2(-37.5,-432),Vector2(-29,-432)]:await walk(actor,p)
+	for p in [Vector2(-34.5,-443.8),Vector2(-30,-443),Vector2(-18,-443),Vector2(-12,-432),Vector2(-18,-422),Vector2(-34.5,-422),Vector2(-34.5,-419.9),Vector2(-43.5,-419.9),Vector2(-43.5,-432),Vector2(-29,-432)]:await walk(actor,p)
 	assert(absf(actor.position.y)<.12,"Both upper flights return to supported D01 arrival")
 	var lift=district.get_node("ArrivalsVisitorLift")
 	assert(lift.floor_heights==[0.0,6.0] and lift.deck_numbers==[1,2])
 	assert(lift.find_child("arrivals_cabin_D2",true,false)!=null)
 	assert(ship.find_child("commons_cabin_D14",true,false)!=null,"Existing commons floor controls retain their identities")
-	print("ARRIVALS SECTION PASS: connected ceremonial stair/upper-gallery circuit,15 screened staff sightlines, intact D03 boundary,11 fixture exits and distinct reused lift configuration. Art, occupancy, engineering loads and arrivals loaded-lift travel still pending.")
+	print("ARRIVALS SECTION PASS: connected ceremonial stair/upper-gallery circuit,25 screened staff sightlines, intact D03 boundary,13 fixture exits and distinct reused lift configuration. Art, occupancy, engineering loads and arrivals loaded-lift travel still pending.")
 	main.queue_free()
 	await process_frame
 	quit()
