@@ -11,7 +11,7 @@ for family,aid,markers in [('vesper_mezzanine','AST-DIN-004',['DATUM_light_'+str
  bpy.ops.wm.open_mainfile(filepath=str(source));lo,hi=bounds()
  assert all(o.data.uv_layers for o in bpy.context.scene.objects if o.type=='MESH')
  if aid=='AST-AQU-012':
-  for name in ['AQU_HighCentralField','AQU_MiddleCove','AQU_PeripheralSoffit','AQU_VesperLiftRelief']:
+  for name in ['AQU_HighCentralField','AQU_MiddleCove','AQU_PeripheralSoffit','AQU_VesperLiftRelief','AQU_WestDiningBay','AQU_EastDiningBay']:
    o=bpy.data.objects.get(name)
    if o is None:continue
    low=min(v.co.z for v in o.data.vertices)

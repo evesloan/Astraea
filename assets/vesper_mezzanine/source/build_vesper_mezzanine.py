@@ -92,7 +92,7 @@ for level in [61,64.5]:
  slab('MEZ_LiftHeader_'+str(level),20.325,20.41,190.15,193.85,level+2.93,level+3.05,'warm_walnut')
 # Paired lower and upper dining light fields belong to actual ceiling surfaces.
 for index,(x,z,level)in enumerate([(x,z,y)for y in [61,64.5]for x,z in [(29.3,186.8),(40.1,186.8),(34.7,192.6),(45.5,192.6)]]):
- h=63.93 if level==61 else 67.10;mount=64.22 if level==61 else 67.4;cx,cy=xy((x,z));q=[(cx+.25*math.cos(2*math.pi*j/16),cy+.25*math.sin(2*math.pi*j/16))for j in range(16)]
+ h=63.93 if level==61 else 67.10;mount=64.22 if level==61 else next(v['height'] for v in json.loads((CAT/'assets/aquatic_ceiling/source/ceiling_contract.json').read_text())['dining_task_mounts'] if v['x']==x and v['z']==z);cx,cy=xy((x,z));q=[(cx+.25*math.cos(2*math.pi*j/16),cy+.25*math.sin(2*math.pi*j/16))for j in range(16)]
  extrusion('MEZ_FixtureBody_'+str(index),q,h-61,h-61+.14,'champagne_metal');extrusion('MEZ_FixtureLens_'+str(index),q,h-61-.02,h-61,'lens');beam('MEZ_FixtureMount_'+str(index),[(cx,cy,h-61+.14),(cx,cy,mount-61)],.045,.045,'champagne_metal');datum('light_'+str(index),(cx,cy,h-61-.04))
 datum('lower_stair_approach',xyz(9.8,61,205));datum('upper_stair_arrival',xyz(17.6,64.5,205));datum('lower_lift_stage',xyz(18.25,61,192));datum('upper_lift_stage',xyz(18.25,64.5,192))
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(AID+'.blend');export=ROOT/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source));tri=0
