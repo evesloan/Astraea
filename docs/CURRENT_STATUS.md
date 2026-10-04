@@ -11,14 +11,16 @@ Updated2026-10-04 after the connected D06 and first D13 suite passes. Fresh Godo
 - Partial D09 salon with authored enclosure, varied ceiling, glazed gallery and several occupied furniture groups; its study lamp responds to the shared RMB/E interaction
 - Two partial D13 twin suites at historical addresses13017 and13041, connected by a walkable route, with preserved historical bed anchors, shaped living/sleeping thresholds, inward glazing and fitted bathroom fixtures
 - The opaque bathroom door inherits existing interaction/motion handling and passed300 fixed-architecture sweep samples, focused operation and obstruction checks
-- 115 catalogue designs, including26 recent drafts. Component presence is not room completion or final-art approval
+- 116 catalogue designs, including27 recent drafts. Component presence is not room completion or final-art approval
 
 - The paired suite entry now retracts into enclosed hollow pockets. Shared focus/E and call-plate operation,400 fixed-geometry motion samples and actor/loose-prop obstruction checks pass
 
 - A7.2m quiet suite-arrival segment now has a rising acoustic ceiling, bordered woven runner and three modelled warm light sources; neighbouring frontages remain unfinished
 
+- D12 Night garden is fitted inside its existing programme with four planted courts, a source-derived walking loop, quieter ceiling edges, real atrium glazing and local source lighting. Its visual finish and guest use remain incomplete
+
 ## Evidence and limits
-All18 current Godot groups pass. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
+All19 current Godot groups pass. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
 
 Source/export bounds, a genuinely hollow basin, two-sided shower-screen contact and fixture approach positions were checked. Ordinary player-height cloud captures were reviewed. An independent suite review led to changes in screening, floor contrast, ceiling weight and window-facing seating. These are cloud software-rendered checks, not5060Ti performance acceptance or final architectural approval.
 
