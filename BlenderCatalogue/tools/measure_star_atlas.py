@@ -10,6 +10,17 @@ for family,aid,markers in [('vesper_mezzanine','AST-DIN-004',['DATUM_light_'+str
  r=root/'assets'/family;source=r/'source'/(aid+'.blend');export=r/'exports'/(aid+'.glb')
  bpy.ops.wm.open_mainfile(filepath=str(source));lo,hi=bounds()
  assert all(o.data.uv_layers for o in bpy.context.scene.objects if o.type=='MESH')
+ if aid=='AST-AQU-012':
+  for name in ['AQU_HighCentralField','AQU_MiddleCove','AQU_PeripheralSoffit','AQU_VesperLiftRelief']:
+   o=bpy.data.objects.get(name)
+   if o is None:continue
+   low=min(v.co.z for v in o.data.vertices)
+   for face in o.data.polygons:
+    zs=[o.data.vertices[i].co.z for i in face.vertices]
+    if max(zs)-min(zs)<1e-5:
+     expected=-1 if abs(zs[0]-low)<1e-5 else 1
+     assert face.normal.z*expected>.99,(name,face.index,'inward level cap')
+
  assert all(p.normal.z>.99 for o in bpy.context.scene.objects if o.type=='MESH' and o.name.startswith('LIB_Finish') for p in o.data.polygons),'Floor finishes must face upward'
  assert all(bpy.data.objects.get(n) is not None for n in markers)
  bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)

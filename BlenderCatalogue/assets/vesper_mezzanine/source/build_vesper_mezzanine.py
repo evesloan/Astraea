@@ -87,6 +87,7 @@ for lo,hi in [(63.86,64.5),(67.36,67.85)]:wall('MEZ_LiftFrontSpandrel_'+str(lo),
 slab('MEZ_LiftPitPan',20.48,24.12,189.98,194.02,60.76,60.8,'warm_stone')
 slab('MEZ_LiftClosedCap',20.32,24.32,189.84,194.16,67.73,67.85,'ivory_enamel')
 for level in [61,64.5]:
+ slab('MEZ_LiftThreshold_'+str(level),20.30,20.445,190.8,193.2,level-.11,level,'champagne_metal')
  for side in [-1,1]:wall('MEZ_LiftCollar_'+str(level)+str(side),(20.32,192+side*2.1),(24.26,192+side*2.1),level+3.1,level+3.22,.12,'champagne_metal')
  slab('MEZ_LiftHeader_'+str(level),20.325,20.41,190.15,193.85,level+2.93,level+3.05,'warm_walnut')
 # Paired lower and upper dining light fields belong to actual ceiling surfaces.

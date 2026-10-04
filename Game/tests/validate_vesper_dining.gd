@@ -11,9 +11,9 @@ func run() -> void:
 	var excluded:Array[RID]=[]
 	for body in ship.find_children("*","CollisionObject3D",true,false):
 		if not body is StaticBody3D or body is AnimatableBody3D:excluded.append(body.get_rid())
-	for center in [Vector2(43,245),Vector2(43,231),Vector2(46.8,231),Vector2(46.8,198)]:
+	for center in [Vector2(43,245),Vector2(43,231),Vector2(46.8,231),Vector2(46.8,198),Vector2(46.8,192.6)]:
 		for i in range(40):driver_pose(ship,cart,Vector3(center.x,61.03,center.y),TAU*i/40,excluded)
-	var route:Array[Vector2]=[Vector2(20,245),Vector2(43,245),Vector2(43,231),Vector2(46.8,231),Vector2(46.8,198)]
+	var route:Array[Vector2]=[Vector2(20,245),Vector2(43,245),Vector2(43,231),Vector2(46.8,231),Vector2(46.8,198),Vector2(46.8,192.6)]
 	for segment in range(route.size()-1):
 		var a:Vector2=route[segment]
 		var b:Vector2=route[segment+1]
@@ -43,12 +43,34 @@ func run() -> void:
 		for body in chair.find_children("*","StaticBody3D",true,false):omit.append(body.get_rid())
 		foot.exclude=omit
 		assert(not ship.get_world_3d().direct_space_state.intersect_ray(foot).is_empty(),"Dining chair needs supported floor")
+	var approach_count:=0
+	for chair in chairs:
+		var usable:=false
+		for local in [Vector3(-.85,0,0),Vector3(.85,0,0),Vector3(0,0,-.85)]:
+			var foot:Vector3=chair.global_transform*local
+			var capsule:=CapsuleShape3D.new()
+			capsule.radius=.3
+			capsule.height=1.8
+			var query:=PhysicsShapeQueryParameters3D.new()
+			query.shape=capsule
+			query.transform.origin=foot+Vector3.UP*.93
+			query.exclude=excluded
+			if not ship.get_world_3d().direct_space_state.intersect_shape(query).is_empty():continue
+			var ray:=PhysicsRayQueryParameters3D.create(foot+Vector3.UP*.08,foot-Vector3.UP*.1)
+			ray.exclude=excluded
+			var hit:=ship.get_world_3d().direct_space_state.intersect_ray(ray)
+			if hit.is_empty() or hit.normal.y<.9:continue
+			usable=true
+			break
+		if not usable:print("DINING APPROACH BLOCK:",chair.get_meta("persistent_id")," ",chair.global_position)
+		assert(usable,"Every installed chair needs a supported clear side/rear standing position")
+		approach_count+=1
 	actor.set_physics_process(false)
 	actor.position=Vector3(20,61.1,245)
 	actor.velocity=Vector3.ZERO
 	for target in route:await walk(actor,target)
 	assert(absf(actor.position.y-61)<.12)
-	print("VESPER SUBSET PASS:",samples,"compound cart/load and driver poses,240 unique chair contacts/supports and actual service/gallery walking. Occupied guest access, service simulation and final art remain pending.")
+	print("VESPER SUBSET PASS:",samples,"compound cart/load and driver poses,240 unique chair contacts/supports and clear side/rear standing positions and actual service/gallery walking. Occupied guest access, service simulation and final art remain pending.")
 	main.queue_free()
 	await process_frame
 	quit()
