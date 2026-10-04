@@ -12,7 +12,17 @@ for role in ['ivory_enamel','warm_walnut','warm_stone','champagne_metal','teal_w
 m=bpy.data.materials.new('GardenOpalLens');m.use_nodes=True;b=m.node_tree.nodes.get('Principled BSDF');b.inputs['Base Color'].default_value=(1,.95,.84,1);b.inputs['Emission Color'].default_value=(1,.91,.75,1);b.inputs['Emission Strength'].default_value=.7;mats['lens']=m
 
 def mesh(name,vertices,faces,role):
- d=bpy.data.meshes.new(name);d.from_pydata(vertices,[],faces);d.update();bm=bmesh.new();bm.from_mesh(d);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7);bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-7);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(d);bm.free();o=bpy.data.objects.new(name,d);bpy.context.collection.objects.link(o);d.materials.append(mats[role]);parts.append(o);uv=d.uv_layers.new(name='MetreScaled')
+ d=bpy.data.meshes.new(name);d.from_pydata(vertices,[],faces);d.update();bm=bmesh.new();bm.from_mesh(d);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7);bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-7);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));
+ if name in ['AQU_HighCentralField','AQU_MiddleCove','AQU_PeripheralSoffit','AQU_VesperLiftRelief']:
+  # Triangulated cap boundary T-junctions can confuse global normal propagation.
+  # These level faces have an explicit authored outward direction.
+  low=min(v.co.z for v in bm.verts);high=max(v.co.z for v in bm.verts)
+  for face in bm.faces:
+   zs=[v.co.z for v in face.verts]
+   if max(zs)-min(zs)<1e-5:
+    want=-1 if abs(zs[0]-low)<1e-5 else 1
+    if face.normal.z*want<0:face.normal_flip()
+ bm.to_mesh(d);bm.free();o=bpy.data.objects.new(name,d);bpy.context.collection.objects.link(o);d.materials.append(mats[role]);parts.append(o);uv=d.uv_layers.new(name='MetreScaled')
  for p in d.polygons:
   n=p.normal.normalized();u=(Vector((1,0,0))-n*n.x).normalized() if abs(n.z)>.7 else Vector((-n.y,n.x,0)).normalized();v=n.cross(u).normalized();scale=mats[role].get('meters_per_tile_uv',[1,1])
   for li in p.loop_indices:
@@ -50,9 +60,13 @@ for layer in D['layers']:
    start=len(v);v.extend([xyz(a[0],layer['lo'],a[1]),xyz(b[0],layer['lo'],b[1]),xyz(b[0],layer['hi'],b[1]),xyz(a[0],layer['hi'],a[1])]);f.append(tuple(range(start,start+4)))
  mesh('AQU_'+layer['name'],v,f,layer['role'])
 for name,edge,lo,hi in [('Inner',D['central_edge'],68.36,68.85),('Outer',D['middle_edge'],67.56,68.2)]:
- for i,(a,b)in enumerate(zip(edge,edge[1:]+edge[:1])):
+ segments=D.get('edge_segments',{}).get('central_edge' if name=='Inner' else 'middle_edge',list(zip(edge,edge[1:]+edge[:1])))
+ for i,(a,b)in enumerate(segments):
   wall('AQU_'+name+'TerracottaReveal_'+str(i),a,b,lo,hi,.08,'terracotta')
   wall('AQU_'+name+'ChampagneEdge_'+str(i),a,b,lo-.035,lo+.025,.10,'champagne_metal')
+if D.get('lift_relief_boundary'):
+ edge=D['lift_relief_boundary']
+ for i,(a,b)in enumerate(zip(edge,edge[1:]+edge[:1])):wall('AQU_LocalLiftCoveReturn_'+str(i),a,b,67.4,68.2,.06,'ivory_enamel')
 for i,(x,z)in enumerate(D['bearing_centers_xz']):
  ring=[(x+1.45*math.cos(j*math.pi/8),z+1.45*math.sin(j*math.pi/8))for j in range(16)]
  for j,(a,b)in enumerate(zip(ring,ring[1:]+ring[:1])):wall('AQU_BearingCoffer_%s_%s'%(i,j),a,b,67.4,69.1,.06,'warm_walnut')
