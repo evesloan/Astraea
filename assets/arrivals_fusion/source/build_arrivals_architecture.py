@@ -115,7 +115,9 @@ for region in D['floor_regions']:
    if -16.5<mid[0]<-12.7 and -426.1<mid[1]<-421.9:continue
    if -45.15<mid[0]<-41.85 and (abs(mid[1]+443)<.03 or abs(mid[1]+421)<.03):continue
    if mid[0]>-8.2 or mid[0]<-47.5:continue
-   wall('ARR_BalconyFascia_'+str(i),a,b,5.74,6.03,.18,'ivory_enamel')
+   wall('ARR_BalconyFascia_'+str(i),a,b,5.62,6.03,.28,'ivory_enamel')
+   wall('ARR_BalconyLowerCornice_'+str(i),a,b,5.35,5.47,.30,'ivory_enamel')
+   wall('ARR_BalconyTimberReveal_'+str(i),a,b,5.47,5.62,.22,'warm_walnut')
    wall('ARR_BalconyGlass_'+str(i),a,b,6.24,7.08,.024,'glass')
    wall('ARR_BalconyBase_'+str(i),a,b,6.03,6.24,.12,'warm_walnut')
    wall('ARR_BalconyCap_'+str(i),a,b,7.08,7.17,.10,'champagne_metal')
@@ -190,15 +192,15 @@ for i,(x0,x1,z0,z1,h)in enumerate([(-18,-8,-442,-422,4.15),(-44,-18,-465,-456,3.
  for j,(a,b,c,d)in enumerate(pieces):
   q=[xy(v)for v in [(a,c),(b,c),(b,d),(a,d)]];extrusion('ARR_HospitalityCanopy_%d_%d'%(i,j),q,h,h+.18,'ivory_enamel')
 # Fixtures attach to actual structure and emit below their lenses.
-light_points=[(-14,-436,3.92),(-14,-428,3.92),(-25,-441,5.70),(-35,-441,5.70),(-25,-423,5.70),(-35,-423,5.70),(-42,-432,10.9),(-22,-432,11.25),(-35,-432,11.25),(-31,-460,3.56),(-31,-404,3.56)]
+light_points=[(-14,-436,3.92),(-14,-428,3.92),(-25,-441,5.70),(-35,-441,5.70),(-25,-423,5.70),(-35,-423,5.70),(-40,-443.7,9.2),(-22,-432,11.25),(-40,-420.3,9.2),(-31,-460,3.56),(-31,-404,3.56)]
 for i,(x,z,h)in enumerate(light_points):
  cx,cy=xy((x,z));N=16;q=[(cx+.30*math.cos(2*math.pi*j/N),cy+.30*math.sin(2*math.pi*j/N))for j in range(N)];extrusion('ARR_FixtureCasing_'+str(i),q,h,h+.10,'champagne_metal');extrusion('ARR_FixtureLens_'+str(i),[(cx+(a-cx)*.88,cy+(b-cy)*.88)for a,b in q],h-.025,h,'lens');datum('light_'+str(i),(cx,cy,h-.04))
  mount=4.15 if i<2 else (5.76 if i<6 else (11.76 if i<9 else 3.8))
  if mount>h+.10:beam('ARR_FixtureMount_'+str(i),[(cx,cy,h+.10),(cx,cy,mount)],.04,.04,'champagne_metal')
 
 # Two visible directional luminaires reveal the relief and timber wall.
-for i,z in enumerate([-437.5,-426.5]):
- cx,cy=xy((-43.7,z));h=9.8
+for i,z in enumerate([-432.7,-431.3]):
+ cx,cy=xy((-43.7,z));h=10.5
  disc_x('ARR_WallwashHousing_'+str(i),cx+.04,cy,h,.32,.14,'champagne_metal',16)
  disc_x('ARR_WallwashLens_'+str(i),cx-.045,cy,h,.265,.025,'lens',16)
  beam('ARR_WallwashStem_'+str(i),[(cx,cy,h+.25),(cx,cy,11.76)],.055,.055,'champagne_metal')
