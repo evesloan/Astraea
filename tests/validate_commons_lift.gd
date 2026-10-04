@@ -1,4 +1,5 @@
 extends SceneTree
+var target_lift_name:="CommonsPassengerLift"
 func _initialize() -> void:call_deferred("run")
 func wait_trip(lift:Node3D,cart:RigidBody3D,actor:CharacterBody3D,goal:int) -> void:
 	var reached:=false
@@ -39,12 +40,13 @@ func run() -> void:
 	root.add_child(main)
 	for frame in range(120):await physics_frame
 	var ship:Node3D=main.get_node("World360/Astraea")
-	var lift:Node3D=ship.find_child("CommonsPassengerLift",true,false)
+	var lift:Node3D=ship.find_child(target_lift_name,true,false)
 	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
 	var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)
 	assert(lift.phase=="idle" and lift.current_floor==0)
 	# Load the fixture on a stationary cabin, then test entirely physical carry.
-	var offset:Vector3=Vector3(94.05,84.04,0)-cart.global_position
+	var base:=Vector3(lift.gate_origin_xz.x,lift.floor_heights[0],lift.gate_origin_xz.y)
+	var offset:Vector3=base+Vector3(1.85,.04,0)-cart.global_position
 	cart.global_position+=offset
 	cart.linear_velocity=Vector3.ZERO
 	cart.angular_velocity=Vector3.ZERO
@@ -54,11 +56,12 @@ func run() -> void:
 		product.linear_velocity=Vector3.ZERO
 		product.angular_velocity=Vector3.ZERO
 		product.sleeping=false
-	actor.global_position=Vector3(94.35,84.1,1.25)
+	actor.spawn_position=base+Vector3(2.15,.1,1.25)
+	actor.global_position=actor.spawn_position
 	actor.velocity=Vector3.ZERO
 	for frame in range(60):await physics_frame
 	assert(not lift.request_floor(-1) and not lift.request_floor(2))
-	var button:Node3D=lift.find_child("commons_cabin_D14",true,false)
+	var button:Node3D=lift.find_child(lift.identity_prefix+"_cabin_D"+str(lift.deck_numbers[1]),true,false)
 	var aim:Vector3=button.global_position-actor.camera.global_position
 	actor.rotation.y=atan2(-aim.x,-aim.z)
 	actor.pitch=atan2(aim.y,Vector2(aim.x,aim.z).length())
@@ -89,13 +92,13 @@ func run() -> void:
 	Input.parse_input_event(focus.duplicate())
 	Input.flush_buffered_events()
 	await wait_trip(lift,cart,actor,1)
-	assert(abs(cart.global_position.y-88.5)<.12)
+	assert(abs(cart.global_position.y-lift.floor_heights[1])<.12)
 	assert(lift.request_floor(0))
 	await wait_trip(lift,cart,actor,0)
 	# Obstruction of the actual threshold must hold departure.
 	var blocker:=RigidBody3D.new()
 	blocker.gravity_scale=0
-	blocker.position=Vector3(92.1,85,0)
+	blocker.position=base+Vector3(-.1,1,0)
 	var contact:=CollisionShape3D.new()
 	var shape:=SphereShape3D.new()
 	shape.radius=.18
@@ -105,12 +108,12 @@ func run() -> void:
 	for frame in range(5):await physics_frame
 	lift.request_floor(1)
 	for frame in range(100):await physics_frame
-	assert(lift.phase=="closing" and abs(lift.cabin.position.y-84)<.001)
+	assert(lift.phase=="closing" and abs(lift.cabin.position.y-lift.floor_heights[0])<.001)
 	blocker.queue_free()
 	lift.request_floor(0)
 	for frame in range(100):await physics_frame
 	assert(lift.phase=="idle")
-	print("COMMONS LIFT PASS: physical capsule/cart/four loose bottles carried both directions, bounded acceleration, closed travel gates, obstruction holds departure and same-floor cancellation reopens. Precise RMB/E cabin button and unfocused rejection pass. Boarding turns, save and visual acceptance pending.")
+	print(target_lift_name+" LIFT PASS: physical capsule/cart/four loose bottles carried both directions, bounded acceleration, closed travel gates, obstruction holds departure and same-floor cancellation reopens. Precise RMB/E cabin button and unfocused rejection pass. Boarding turns, save and visual acceptance pending.")
 	main.queue_free()
 	await process_frame
 	quit()

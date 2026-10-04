@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "Integrated section intent accepted by user; detailed geometry and clearance validation pending",
+  "status": "Revised overhead composition in progress; not final art acceptance",
   "source_messages": [
     "Sentinel_3e94fb7aee188191b9c5d63d458d665f",
     "Sentinel_4f7e344c13d08191b933a64e8734cf14"
@@ -71,7 +71,7 @@
     },
     "intermediate_landing": {
       "x": [
-        -39,
+        -45,
         -36
       ],
       "z": [
@@ -82,8 +82,8 @@
     },
     "north_upper_flight": {
       "x": [
-        -39,
-        -36
+        -45,
+        -42
       ],
       "z": [
         -443,
@@ -95,8 +95,8 @@
     },
     "south_upper_flight": {
       "x": [
-        -39,
-        -36
+        -45,
+        -42
       ],
       "z": [
         -427,
@@ -111,7 +111,7 @@
     {
       "id": "east_arrival",
       "x": [
-        -18,
+        -20,
         -8
       ],
       "z": [
@@ -122,33 +122,22 @@
     {
       "id": "north_overlook",
       "x": [
-        -44,
+        -46,
         -18
       ],
       "z": [
         -445,
-        -438
+        -440.5
       ]
     },
     {
       "id": "south_overlook",
       "x": [
-        -44,
+        -46,
         -18
       ],
       "z": [
-        -426,
-        -419
-      ]
-    },
-    {
-      "id": "west_overlook",
-      "x": [
-        -46,
-        -39
-      ],
-      "z": [
-        -445,
+        -423.5,
         -419
       ]
     }
@@ -196,11 +185,12 @@
         -22
       ],
       "z": [
-        -453,
-        -446
+        -440,
+        -433
       ],
       "glazed_underside_y": 6.55,
-      "top_y": 10.9
+      "top_y": 10.9,
+      "opaque_service_bay_end_x": -40.6
     },
     {
       "id": "south_contained_exhibit",
@@ -209,11 +199,12 @@
         -20
       ],
       "z": [
-        -418,
-        -411
+        -431,
+        -424
       ],
       "glazed_underside_y": 6.65,
-      "top_y": 10.9
+      "top_y": 10.9,
+      "opaque_service_bay_end_x": -38.6
     }
   ],
   "service_screens": [
@@ -270,9 +261,9 @@
       -422
     ],
     "west_overlook": [
-      -43,
+      -40,
       7.65,
-      -432
+      -443.5
     ]
   },
   "concealed_service_view_targets": [
@@ -290,6 +281,16 @@
       -51,
       7.65,
       -432
+    ],
+    [
+      -45,
+      7.65,
+      -437
+    ],
+    [
+      -44,
+      7.65,
+      -427
     ]
   ],
   "required_tests": [
@@ -299,5 +300,389 @@
     "Gross programme envelope, public walkable area, staff walkable area and exhibit volume separately reported",
     "Ordinary player-height visual comparison with Cunard and wider grand-space references"
   ],
-  "architectural_intent": "Arrival axis framed by a ceremonial branching stair and inhabited hospitality galleries. Curated sealed machinery above provides grand technical spectacle. Service catwalks, access doors and maintenance remain concealed. Glass is an enclosure, not the apparent bearing structure. No engineering/radiation certification implied."
+  "architectural_intent": "Arrival axis framed by a ceremonial branching stair and inhabited hospitality galleries. Curated sealed machinery above provides grand technical spectacle. Service catwalks, access doors and maintenance remain concealed. Glass is an enclosure, not the apparent bearing structure. No engineering/radiation certification implied.",
+  "lift": {
+    "origin_xz": [
+      -16.4,
+      -424
+    ],
+    "floor_heights": [
+      0,
+      6
+    ],
+    "deck_numbers": [
+      1,
+      2
+    ],
+    "floor_hole_xz": {
+      "x": [
+        -16.42,
+        -12.78
+      ],
+      "z": [
+        -426.02,
+        -421.98
+      ]
+    },
+    "shaft_outer_xz": {
+      "x": [
+        -16.58,
+        -12.62
+      ],
+      "z": [
+        -426.16,
+        -421.84
+      ]
+    },
+    "identity": "arrivals_fusion_lift_001"
+  },
+  "compiled_area_accounting": {
+    "original_gross_programme_m2": 3128.0,
+    "D01_floor_including_public_connection_excluding_lift_m2": 3161.2944,
+    "D02_public_floor_including_connection_excluding_stairs_lift_m2": 587.2944000000001,
+    "D02_staff_floor_including_service_connection_m2": 1441.3199999999997,
+    "D03_protected_opaque_floor_m2": 3128.0,
+    "public_staff_coplanar_overlap_m2": 0.0,
+    "note": "Gross programme, walkable floor and machinery/exhibit volume are distinct; no passenger or crew capacity added"
+  },
+  "floor_regions": [
+    {
+      "id": "D01_arrivals_ground",
+      "deck": "D01",
+      "boundary": [
+        [
+          -54.0,
+          -466.0
+        ],
+        [
+          -54.0,
+          -398.0
+        ],
+        [
+          -8.0,
+          -398.0
+        ],
+        [
+          -8.0,
+          -429.0
+        ],
+        [
+          0.0,
+          -429.0
+        ],
+        [
+          0.0,
+          -435.0
+        ],
+        [
+          -8.0,
+          -435.0
+        ],
+        [
+          -8.0,
+          -466.0
+        ]
+      ],
+      "holes": [
+        [
+          [
+            -12.78,
+            -421.98
+          ],
+          [
+            -16.42,
+            -421.98
+          ],
+          [
+            -16.42,
+            -426.02
+          ],
+          [
+            -12.78,
+            -426.02
+          ]
+        ]
+      ],
+      "priority": 70,
+      "thickness": 0.24,
+      "material_role": "guest_floor",
+      "status": "Integrated arrivals/fusion structural ownership; architectural/physics acceptance pending"
+    },
+    {
+      "id": "D02_fusion_visitor_galleries",
+      "deck": "D02",
+      "boundary": [
+        [
+          -45.1,
+          -443.0
+        ],
+        [
+          -41.9,
+          -443.0
+        ],
+        [
+          -41.9,
+          -440.5
+        ],
+        [
+          -20.0,
+          -440.5
+        ],
+        [
+          -20.0,
+          -423.5
+        ],
+        [
+          -41.9,
+          -423.5
+        ],
+        [
+          -41.9,
+          -421.0
+        ],
+        [
+          -45.1,
+          -421.0
+        ],
+        [
+          -45.1,
+          -423.5
+        ],
+        [
+          -46.0,
+          -423.5
+        ],
+        [
+          -46.0,
+          -419.0
+        ],
+        [
+          -20.0,
+          -419.0
+        ],
+        [
+          -20.0,
+          -418.0
+        ],
+        [
+          -8.0,
+          -418.0
+        ],
+        [
+          -8.0,
+          -429.0
+        ],
+        [
+          0.0,
+          -429.0
+        ],
+        [
+          0.0,
+          -435.0
+        ],
+        [
+          -8.0,
+          -435.0
+        ],
+        [
+          -8.0,
+          -446.0
+        ],
+        [
+          -20.0,
+          -446.0
+        ],
+        [
+          -20.0,
+          -445.0
+        ],
+        [
+          -46.0,
+          -445.0
+        ],
+        [
+          -46.0,
+          -440.5
+        ],
+        [
+          -45.1,
+          -440.5
+        ]
+      ],
+      "holes": [
+        [
+          [
+            -12.78,
+            -421.98
+          ],
+          [
+            -16.42,
+            -421.98
+          ],
+          [
+            -16.42,
+            -426.02
+          ],
+          [
+            -12.78,
+            -426.02
+          ]
+        ]
+      ],
+      "priority": 70,
+      "thickness": 0.24,
+      "material_role": "guest_floor",
+      "status": "Integrated arrivals/fusion structural ownership; architectural/physics acceptance pending"
+    },
+    {
+      "id": "D02_fusion_screened_service",
+      "deck": "D02",
+      "boundary": [
+        [
+          -54.0,
+          -466.0
+        ],
+        [
+          -54.0,
+          -454.0
+        ],
+        [
+          -54.0,
+          -435.0
+        ],
+        [
+          -59.5,
+          -435.0
+        ],
+        [
+          -59.5,
+          -429.0
+        ],
+        [
+          -54.0,
+          -429.0
+        ],
+        [
+          -54.0,
+          -410.0
+        ],
+        [
+          -54.0,
+          -398.0
+        ],
+        [
+          -8.0,
+          -398.0
+        ],
+        [
+          -8.0,
+          -410.0
+        ],
+        [
+          -48.0,
+          -410.0
+        ],
+        [
+          -48.0,
+          -425.8
+        ],
+        [
+          -38.6,
+          -425.8
+        ],
+        [
+          -38.6,
+          -428.2
+        ],
+        [
+          -48.0,
+          -428.2
+        ],
+        [
+          -48.0,
+          -435.8
+        ],
+        [
+          -40.6,
+          -435.8
+        ],
+        [
+          -40.6,
+          -438.2
+        ],
+        [
+          -48.0,
+          -438.2
+        ],
+        [
+          -48.0,
+          -454.0
+        ],
+        [
+          -8.0,
+          -454.0
+        ],
+        [
+          -8.0,
+          -466.0
+        ]
+      ],
+      "holes": [],
+      "priority": 70,
+      "thickness": 0.24,
+      "material_role": "staff_floor",
+      "status": "Integrated arrivals/fusion structural ownership; architectural/physics acceptance pending"
+    },
+    {
+      "id": "D03_protected_crew_cover",
+      "deck": "D03",
+      "boundary": [
+        [
+          -8.0,
+          -466.0
+        ],
+        [
+          -8.0,
+          -398.0
+        ],
+        [
+          -54.0,
+          -398.0
+        ],
+        [
+          -54.0,
+          -466.0
+        ]
+      ],
+      "holes": [],
+      "priority": 70,
+      "thickness": 0.24,
+      "material_role": "staff_floor",
+      "status": "Integrated arrivals/fusion structural ownership; architectural/physics acceptance pending"
+    }
+  ],
+  "concealed_exhibit_links": [
+    {
+      "id": "north_exhibit_access",
+      "x": [
+        -49,
+        -40.6
+      ],
+      "z": [
+        -438.2,
+        -435.8
+      ]
+    },
+    {
+      "id": "south_exhibit_access",
+      "x": [
+        -49,
+        -38.6
+      ],
+      "z": [
+        -428.2,
+        -425.8
+      ]
+    }
+  ]
 }
