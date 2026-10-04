@@ -50,15 +50,18 @@ def ribbon(name,width,bottom,top,role,offset=0,limit=None):
   k=i*2;f.extend([(k,k+2,k+3,k+1),(n+k,n+k+1,n+k+3,n+k+2),(k,n+k,n+k+2,k+2),(k+1,k+3,n+k+3,n+k+1)])
  f.extend([(0,1,n+1,n),(n-2,2*n-2,2*n-1,n-1)]);return mesh(name,v,f,role)
 # Continuous supported cabinet keeps the low under-trough space non-walkable.
-ribbon('WAT_SculptedSupportCabinet',.50,[.02]*6,[h-.075 for h in heights],'warm_walnut',limit=5)
+ribbon('WAT_SculptedSupportCabinet',.50,[.02]*6,[h-.075 for h in heights],'ivory_enamel',limit=5)
+ribbon('WAT_WeightedPlinth',.56,[.02]*6,[.16]*6,'warm_stone',limit=5)
+ribbon('WAT_RecessedTimberWaist',.508,[.30]*6,[.58]*6,'warm_walnut',limit=5)
+ribbon('WAT_ProfiledChannelShoulder',.63,[h-.14 for h in heights],[h-.075 for h in heights],'warm_stone',limit=5)
 ribbon('WAT_StoneChannelFloor',.81,[h-.06 for h in heights],heights,'warm_stone')
 for sign in [-1,1]:
- ribbon('WAT_GlassBank_'+str(sign),.035,heights,[h+.30 for h in heights],'glass',sign*.37)
- ribbon('WAT_BankRim_'+str(sign),.055,[h+.28 for h in heights],[h+.315 for h in heights],'champagne_metal',sign*.37)
+ ribbon('WAT_GlassBank_'+str(sign),.035,heights,[h+.22 for h in heights],'glass',sign*.37)
+ ribbon('WAT_BankRim_'+str(sign),.055,[h+.20 for h in heights],[h+.235 for h in heights],'champagne_metal',sign*.37)
  ribbon('WAT_LowerReveal_'+str(sign),.055,[h-.055 for h in heights],[h-.015 for h in heights],'ivory_enamel',sign*.377)
 # Source-side end is closed; the terminal remains a real spill mouth.
 q=pts[0];n=normals[0];v=[]
-for h in [heights[0],heights[0]+.30]:
+for h in [heights[0],heights[0]+.22]:
  for side in [-1,1]:
   a=q+n*side*.39;v.append((a.x,a.y,h))
 mesh('WAT_SourceEndGlass',v,[(0,1,3,2)],'glass')
@@ -73,21 +76,25 @@ def flow(name,rows):
  return o
 flow('WAT_visual_trough',[(pts[i]+Vector((0,0,heights[i]+.12)),normals[i],.65)for i in range(len(pts))])
 rows=[]
-for i in range(25):
- t=i/24;rows.append((Vector((3.5+.12*math.sin(math.pi*t),-8,1.36-18.5*t)),Vector((0,1,0)),.65+.15*t))
+for drop in [0,.03,.06,.09,.12,.25,.5]+[18.5*i/24 for i in range(1,25)]:
+ t=drop/18.5;rows.append((Vector((3.5+.12*math.sin(min(drop/.12,1)*math.pi/2),-8,1.36-drop)),Vector((0,1,0)),.65+.15*t))
 flow('WAT_visual_fall',rows)
 def lathe(name,cx,cy,profile,role,n=24):
  v=[(cx+r*math.cos(2*math.pi*i/n),cy+r*math.sin(2*math.pi*i/n),h)for r,h in profile for i in range(n)];f=[tuple(reversed(range(n))),tuple(range((len(profile)-1)*n,len(profile)*n))]+[(j*n+i,j*n+(i+1)%n,(j+1)*n+(i+1)%n,(j+1)*n+i)for j in range(len(profile)-1)for i in range(n)];return mesh(name,v,f,role)
 # Sculpted return/support spine and closed receiver stand on the retained basin floor.
 lathe('WAT_ConcealedReturnSpine',3.95,-8,[(.15,-18.2),(.15,-17.0),(.12,-15),(.12,.8),(.15,1.40)],'ivory_enamel',12)
-beam('WAT_OutletBearing',[(3.5,-8,1.13),(3.95,-8,1.13),(3.95,-8,1.38)],.14,.14,'champagne_metal')
+for side in [-1,1]:beam('WAT_OutletBearing_'+str(side),[(3.3,-8+side*.37,1.20),(3.3,-8+side*.48,1.10),(3.95,-8+side*.48,1.10),(3.95,-8,1.38)],.10,.10,'champagne_metal')
 lathe('WAT_ReceiverBody',3.5,-8,[(.70,-18.2),(.85,-18.05),(1.25,-17.25),(1.40,-16.9),(1.18,-16.9),(.67,-17.45)],'warm_stone')
 # A contained shallow return pool, with an actual intake grille visible beneath it.
 q=[(3.5+1.12*math.cos(2*math.pi*i/32),-8+1.12*math.sin(2*math.pi*i/32))for i in range(32)];extrusion('WAT_visual_receiver',q,-17.145,-17.14,'glass')
 for i in range(7):
  x=2.65+i*.12;beam('WAT_ReturnGrille_'+str(i),[(x,-8.55,-17.18),(x,-8.25,-17.18)],.035,.045,'champagne_metal')
-for i,(x,y,h)in enumerate([(0,0,heights[0]-.10),(0,-6.7,heights[3]-.10),(2.2,-8,-16.86)]):
- q=[(x+.065*math.cos(2*math.pi*j/12),y+.065*math.sin(2*math.pi*j/12))for j in range(12)];extrusion('WAT_FixtureBody_'+str(i),q,h+.015,h+.07,'champagne_metal');extrusion('WAT_FixtureLens_'+str(i),q,h,h+.015,'lens');datum('light_'+str(i),(x,y,h-.02))
+for i,(x,y,h)in enumerate([(-.42,0,heights[0]-.10),(-.42,-6.7,heights[3]-.10),(2.2,-8,-16.86)]):
+ q=[(x+.065*math.cos(2*math.pi*j/12),y+.065*math.sin(2*math.pi*j/12))for j in range(12)]
+ if i<2:
+  extrusion('WAT_FixtureBody_'+str(i),q,h+.015,h+.07,'champagne_metal');extrusion('WAT_FixtureLens_'+str(i),q,h,h+.015,'lens');datum('light_'+str(i),(x,y,h-.02))
+ else:
+  extrusion('WAT_FixtureBody_'+str(i),q,h,h+.055,'champagne_metal');extrusion('WAT_FixtureLens_'+str(i),q,h+.055,h+.07,'lens');datum('light_'+str(i),(x,y,h+.085))
 for i in range(5):datum('supported_base_'+str(i),(pts[i].x,pts[i].y,0))
 datum('spillway_guard_crossing',(23.2347-21.5,-8,62.2707-61));datum('receiver_floor',(3.5,-8,-18.2));datum('outlet',(3.5,-8,1.36))
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(AID+'.blend');export=ROOT/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source));tri=0
