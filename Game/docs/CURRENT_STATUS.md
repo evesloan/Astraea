@@ -11,7 +11,7 @@ Updated2026-10-04 after the integrated arrivals, reception and validation-clock 
 - Partial D09 salon with authored enclosure, varied ceiling, glazed gallery and several occupied furniture groups; its study lamp responds to the shared RMB/E interaction
 - Two partial D13 twin suites at historical addresses13017 and13041, connected by a walkable route, with preserved historical bed anchors, shaped living/sleeping thresholds, inward glazing and fitted bathroom fixtures
 - The opaque bathroom door inherits existing interaction/motion handling and passed300 fixed-architecture sweep samples, focused operation and obstruction checks
-- 131 catalogue designs, including 29 recent drafts. Component presence is not room completion or final-art approval
+- 132 registered catalogue designs. Component presence is not room completion or final-art approval
 
 - The paired suite entry now retracts into enclosed hollow pockets. Shared focus/E and call-plate operation,400 fixed-geometry motion samples and actor/loose-prop obstruction checks pass
 
@@ -57,3 +57,6 @@ The compressed entry now has an authored curved header and supporting piers, a f
 
 ## Star Atlas connected section
 The existing port library and two commons allocations now form a three-level D12–D14 district, with offset court openings, two physically traversable stairs, source-authored guards and a three-stop derivative of the existing passenger lift. All31 current Godot groups passed on2026-10-04 in67.02seconds fixed60 simulation. The added checks traverse the walking circuit both directions and carry the player, cart and four loose bottles through the lift stops. Protected D15 overhead and D11 underside remain intact. Library furnishings, detailed guard review, actual lift boarding/exit turns and final visual acceptance remain pending. AST-LIB-011 and the three-stop cabin are editable source work awaiting catalogue registration; do not add them to approved asset totals yet.
+
+## Star Atlas collection integration
+The first lower collection bay now uses the existing profiled straight/curved shelf family and a matching baked start-cap derivative. Supported book groups use one local MultiMesh representation; a four-place study group has a switched task fixture and supported folio. Focused shelf-support and actual walking checks pass. The normal-height capture was reviewed and remains a partial furnished bay; room-wide composition and upper-level activities are unfinished. The new section and three-stop cabin now have source/export roundtrip and UV-presence checks; the cabin and start cap are derivatives, not additional unique designs.

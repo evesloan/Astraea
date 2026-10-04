@@ -37,3 +37,5 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.light_energy=2.1 if i==5 else 1.3
 		light.light_color=Color(1,.95,.87)
 		light.shadow_enabled=true
+
+	load("res://scripts/star_atlas_collections.gd").build(district,ship)

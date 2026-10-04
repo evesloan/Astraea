@@ -18,3 +18,10 @@ Fit collection shelters and study groups to the quieter lower side bays. Use the
 
 ## Remaining checks
 Detailed guard-edge coverage, furnished route/clearance checks, actual loaded lift boarding and exit turns, all three controls through ordinary focus interaction, registration of the new source assets and another full regression after furnishing. No NPC library use, seating animation, book pickup/persistence, final art or target-hardware performance is established.
+
+## First collection and study bay
+A first lower-level collection shelter now uses two straight profiles, a curved return and fitted terminal pieces. Static book stock is grouped locally with MultiMesh; each group has a tested shelf support ray. The shared study table, four chairs, supported folio and switched task fixture use existing catalogue assets. Actual capsule travel reaches the shelf fronts and returns around the table. The extended walk exceeded the former9000-frame test allowance; its budget is now12000frames to cover the added route, with assertions unchanged. The initial forced-quit run failed and is not counted as a pass.
+
+The normal-height collection view was inspected: stock, segmented canopy and task lighting read clearly. The surrounding room still needs richer architectural transitions, purposeful remaining bays and broader lighting. The group is a partial integration, not a complete library or proof of seated NPC use.
+
+The final furnished revision passed all31 Godot groups in72.8553seconds fixed60. Graphical execution passed in58.884seconds. These timings are validation cost, not game performance.

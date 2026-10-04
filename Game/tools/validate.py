@@ -19,7 +19,7 @@ if '--only' in sys.argv:
     # This is still a focused run, never a substitute for the full suite.
     if requested != 'import': commands.insert(0,('import',['--editor','--quit']))
 for label,args in commands:
-    frame_budget='9000' if label=='star_atlas' else '4800' if label in ['arrivals_fusion','star_atlas_lift'] else '2400'
+    frame_budget='12000' if label=='star_atlas' else '4800' if label in ['arrivals_fusion','star_atlas_lift'] else '2400'
     # Fixed60 advances the same60Hz simulation without wall-clock waiting.
     # Import and graphical review retain their separate original workflows.
     clock_args=[] if realtime or label=='import' else ['--fixed-fps','60']
