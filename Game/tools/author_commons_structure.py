@@ -20,5 +20,8 @@ layout['regions']=[x for x in layout['regions']if x['id']not in [q['id']for q in
 p.write_text(json.dumps(layout,indent=2)+'\n')
 cat=Path('/workspace/shared/astraea-catalogue-continuation-20261002/assets/vertical_commons')
 (cat/'source').mkdir(parents=True,exist_ok=True);(cat/'exports').mkdir(exist_ok=True)
-(cat/'source/architecture_contract.json').write_text(json.dumps({'contract':d,'floor_regions':records},indent=2)+'\n')
+payload={'contract':d,'floor_regions':records}
+extension=r/'data/architecture/D13_D17_starboard_house_extension.json'
+if extension.exists():payload['house_extension']=json.loads(extension.read_text())
+(cat/'source/architecture_contract.json').write_text(json.dumps(payload,indent=2)+'\n')
 print('Two actual commons allocations compiled to ownership source; no extra guest units')
