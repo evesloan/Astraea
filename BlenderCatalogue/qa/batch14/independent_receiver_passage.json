@@ -1,0 +1,168 @@
+{
+  "passed": true,
+  "bindings": {
+    "source": {
+      "path": "assets/aquatic_towel_use/source/AST-AQU-008.blend",
+      "sha256": "aeb09d6aa3e5d8abbf13f506c395b41b52e8494822bd5f009752ee73911c216d"
+    },
+    "export": {
+      "path": "assets/aquatic_towel_use/exports/AST-AQU-008.glb",
+      "sha256": "dcd95b5e561d4b99f584526313f7a8d48d1e5130c4407a48885a3afa88722c44"
+    },
+    "manifest": {
+      "path": "assets/aquatic_towel_use/AST-AQU-008.manifest.json",
+      "sha256": "0fb5982b02b187c800de2f59bb262cc9e39240746de5f938ed0d980c13ec03c1"
+    },
+    "collision": {
+      "path": "assets/aquatic_towel_use/AST-AQU-008.collision_proposal.json",
+      "sha256": "d16810b66581d4699eec3dabe1570a04efde0cdd1556df8390738b96b25b9974"
+    },
+    "source_audit": {
+      "path": "qa/batch14/independent_source_AST-AQU-008.json",
+      "sha256": "20a7dc0421e45dee48c13d13778a8692b5439adce389cf5733b3e23cd2571937"
+    }
+  },
+  "route_source_m": [
+    [
+      0.0,
+      -0.35,
+      0.96
+    ],
+    [
+      0.0,
+      -0.2,
+      0.97
+    ],
+    [
+      0.0,
+      -0.03,
+      0.825
+    ],
+    [
+      0.0,
+      0.125,
+      0.635
+    ],
+    [
+      0.0,
+      0.16,
+      0.47
+    ],
+    [
+      0.0,
+      0.16,
+      0.3
+    ]
+  ],
+  "capsule_radius_m": 0.025,
+  "segments": [
+    {
+      "segment_source_m": [
+        [
+          0.0,
+          -0.35,
+          0.96
+        ],
+        [
+          0.0,
+          -0.2,
+          0.97
+        ]
+      ],
+      "capsule_radius_m": 0.025,
+      "minimum_source_surface_distance_m": 0.07023939613136944,
+      "minimum_native_surface_distance_m": 0.07023939613136944,
+      "minimum_collision_surface_distance_m": 0.07023942248188154,
+      "endpoints_inside_named_parts": [],
+      "pass": true
+    },
+    {
+      "segment_source_m": [
+        [
+          0.0,
+          -0.2,
+          0.97
+        ],
+        [
+          0.0,
+          -0.03,
+          0.825
+        ]
+      ],
+      "capsule_radius_m": 0.025,
+      "minimum_source_surface_distance_m": 0.07023939613136944,
+      "minimum_native_surface_distance_m": 0.07023939613136944,
+      "minimum_collision_surface_distance_m": 0.07023942248188154,
+      "endpoints_inside_named_parts": [],
+      "pass": true
+    },
+    {
+      "segment_source_m": [
+        [
+          0.0,
+          -0.03,
+          0.825
+        ],
+        [
+          0.0,
+          0.125,
+          0.635
+        ]
+      ],
+      "capsule_radius_m": 0.025,
+      "minimum_source_surface_distance_m": 0.06700000166893005,
+      "minimum_native_surface_distance_m": 0.06700000166893005,
+      "minimum_collision_surface_distance_m": 0.067,
+      "endpoints_inside_named_parts": [],
+      "pass": true
+    },
+    {
+      "segment_source_m": [
+        [
+          0.0,
+          0.125,
+          0.635
+        ],
+        [
+          0.0,
+          0.16,
+          0.47
+        ]
+      ],
+      "capsule_radius_m": 0.025,
+      "minimum_source_surface_distance_m": 0.03815112449699645,
+      "minimum_native_surface_distance_m": 0.03815112449699645,
+      "minimum_collision_surface_distance_m": 0.03773612246228509,
+      "endpoints_inside_named_parts": [],
+      "pass": true
+    },
+    {
+      "segment_source_m": [
+        [
+          0.0,
+          0.16,
+          0.47
+        ],
+        [
+          0.0,
+          0.16,
+          0.3
+        ]
+      ],
+      "capsule_radius_m": 0.025,
+      "minimum_source_surface_distance_m": 0.045381719257214556,
+      "minimum_native_surface_distance_m": 0.045381719257214556,
+      "minimum_collision_surface_distance_m": 0.044553338819890945,
+      "endpoints_inside_named_parts": [],
+      "pass": true
+    }
+  ],
+  "obstructed_floor_negative_control_detected": true,
+  "method": "Minimum distance between every complete finite segment and every source/native triangle, using exact intersection, endpoint-to-face and segment-to-edge distances. Conservative polygon/cylinder collision surfaces are checked separately. The union of radius25mm capsules is a complete bounded geometric passage, not finite point or pose sampling.",
+  "limits": [
+    "A50mm-diameter geometric passage does not certify compressible towels, hands, species, cleaning or gameplay.",
+    "The route ends inside the closed bin. With the bin removed, containment is deliberately unavailable.",
+    "Endpoint-in-solid checks reject a segment that starts wholly inside a named solid."
+  ],
+  "executed_script_sha256": "44dbc5bdfe47a84fa7e1d3e657e3d8b29e1647d4a8c7cd9047f734f8fbf073e0"
+}

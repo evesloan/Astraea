@@ -1,0 +1,1231 @@
+{
+  "catalogue_id": "AST-SAL-005",
+  "name": "Continuous balcony edge with portal terminal",
+  "title": "Continuous balcony edge with portal terminal",
+  "unique_design": true,
+  "original_script_assisted_design": true,
+  "source": "source/AST-SAL-005.blend",
+  "export": "exports/AST-SAL-005.glb",
+  "generator": "source/build_salon_edges.py",
+  "source_frame": "metres Blender +Z up,+X across,-Y guest front",
+  "exchange_frame": "metres glTF +Y up; source(x,y,z)->(x,z,-y); native node transforms authoritative",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "Source floor Z0, component centre acrossX; depth origin at guest edgeY0"
+  },
+  "dimensions_blender_xyz_m": [
+    2.799999952316284,
+    0.47999998927116394,
+    1.149999976158142
+  ],
+  "bounds_blender_z_up": {
+    "min_m": [
+      -1.399999976158142,
+      0.0,
+      0.0
+    ],
+    "max_m": [
+      1.399999976158142,
+      0.47999998927116394,
+      1.149999976158142
+    ],
+    "dimensions_m": [
+      2.799999952316284,
+      0.47999998927116394,
+      1.149999976158142
+    ]
+  },
+  "evaluated_triangles": 2220,
+  "evaluated_source_triangles": 2220,
+  "editable_semantic_parts": 25,
+  "semantic_parts": [
+    "edge_floor_shoe_0",
+    "edge_anchor_foot_0",
+    "edge_structural_post_0",
+    "edge_anchor_fastener_0_0",
+    "edge_anchor_fastener_0_1",
+    "edge_floor_shoe_1",
+    "edge_anchor_foot_1",
+    "edge_structural_post_1",
+    "edge_anchor_fastener_1_0",
+    "edge_anchor_fastener_1_1",
+    "edge_floor_shoe_2",
+    "edge_anchor_foot_2",
+    "edge_structural_post_2",
+    "edge_anchor_fastener_2_0",
+    "edge_anchor_fastener_2_1",
+    "continuous_ivory_edge_sill",
+    "continuous_ivory_top_structural_profile",
+    "continuous_walnut_tactile_top",
+    "edge_front_recessed_walnut_inset",
+    "edge_front_joint_shadow",
+    "edge_front_limited_arris",
+    "infill_seat_gasket_0_0.205",
+    "infill_seat_gasket_0_0.275",
+    "infill_seat_gasket_1_0.205",
+    "infill_seat_gasket_1_0.275"
+  ],
+  "material_roles": [
+    "champagne_metal",
+    "dark_rubber",
+    "ivory_enamel",
+    "warm_walnut"
+  ],
+  "physical_and_proposal_markers": [
+    {
+      "name": "EDGE_FLOOR_CONTACT_0",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -1.32,
+        0.24,
+        0
+      ],
+      "gltf_m": [
+        -1.32,
+        0,
+        -0.24
+      ],
+      "physical_part": "edge_floor_shoe_0",
+      "description": "",
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "JOIN_edge_post_to_foot_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.32,
+        0.24,
+        0.08
+      ],
+      "gltf_m": [
+        -1.32,
+        0.08,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "edge_structural_post_0 bears into edge_anchor_foot_0"
+    },
+    {
+      "name": "JOIN_edge_foot_to_shoe_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.32,
+        0.24,
+        0.052
+      ],
+      "gltf_m": [
+        -1.32,
+        0.052,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "edge_anchor_foot_0 bears into edge_floor_shoe_0"
+    },
+    {
+      "name": "EDGE_ANCHOR_0_0",
+      "kind": "physical_host_anchor_surface",
+      "source_m": [
+        -1.32,
+        0.075,
+        0.118
+      ],
+      "gltf_m": [
+        -1.32,
+        0.118,
+        -0.075
+      ],
+      "physical_part": "edge_anchor_fastener_0_0",
+      "description": "Visible fixing head only; host bolt/substrate/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "EDGE_ANCHOR_0_1",
+      "kind": "physical_host_anchor_surface",
+      "source_m": [
+        -1.32,
+        0.405,
+        0.118
+      ],
+      "gltf_m": [
+        -1.32,
+        0.118,
+        -0.405
+      ],
+      "physical_part": "edge_anchor_fastener_0_1",
+      "description": "Visible fixing head only; host bolt/substrate/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "EDGE_FLOOR_CONTACT_1",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0,
+        0.24,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        -0.24
+      ],
+      "physical_part": "edge_floor_shoe_1",
+      "description": "",
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "JOIN_edge_post_to_foot_1",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.24,
+        0.08
+      ],
+      "gltf_m": [
+        0,
+        0.08,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "edge_structural_post_1 bears into edge_anchor_foot_1"
+    },
+    {
+      "name": "JOIN_edge_foot_to_shoe_1",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.24,
+        0.052
+      ],
+      "gltf_m": [
+        0,
+        0.052,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "edge_anchor_foot_1 bears into edge_floor_shoe_1"
+    },
+    {
+      "name": "EDGE_ANCHOR_1_0",
+      "kind": "physical_host_anchor_surface",
+      "source_m": [
+        0,
+        0.075,
+        0.118
+      ],
+      "gltf_m": [
+        0,
+        0.118,
+        -0.075
+      ],
+      "physical_part": "edge_anchor_fastener_1_0",
+      "description": "Visible fixing head only; host bolt/substrate/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "EDGE_ANCHOR_1_1",
+      "kind": "physical_host_anchor_surface",
+      "source_m": [
+        0,
+        0.405,
+        0.118
+      ],
+      "gltf_m": [
+        0,
+        0.118,
+        -0.405
+      ],
+      "physical_part": "edge_anchor_fastener_1_1",
+      "description": "Visible fixing head only; host bolt/substrate/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "EDGE_FLOOR_CONTACT_2",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        1.32,
+        0.24,
+        0
+      ],
+      "gltf_m": [
+        1.32,
+        0,
+        -0.24
+      ],
+      "physical_part": "edge_floor_shoe_2",
+      "description": "",
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "JOIN_edge_post_to_foot_2",
+      "kind": "physical_joint",
+      "source_m": [
+        1.32,
+        0.24,
+        0.08
+      ],
+      "gltf_m": [
+        1.32,
+        0.08,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "edge_structural_post_2 bears into edge_anchor_foot_2"
+    },
+    {
+      "name": "JOIN_edge_foot_to_shoe_2",
+      "kind": "physical_joint",
+      "source_m": [
+        1.32,
+        0.24,
+        0.052
+      ],
+      "gltf_m": [
+        1.32,
+        0.052,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "edge_anchor_foot_2 bears into edge_floor_shoe_2"
+    },
+    {
+      "name": "EDGE_ANCHOR_2_0",
+      "kind": "physical_host_anchor_surface",
+      "source_m": [
+        1.32,
+        0.075,
+        0.118
+      ],
+      "gltf_m": [
+        1.32,
+        0.118,
+        -0.075
+      ],
+      "physical_part": "edge_anchor_fastener_2_0",
+      "description": "Visible fixing head only; host bolt/substrate/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "EDGE_ANCHOR_2_1",
+      "kind": "physical_host_anchor_surface",
+      "source_m": [
+        1.32,
+        0.405,
+        0.118
+      ],
+      "gltf_m": [
+        1.32,
+        0.118,
+        -0.405
+      ],
+      "physical_part": "edge_anchor_fastener_2_1",
+      "description": "Visible fixing head only; host bolt/substrate/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "JOIN_edge_top_to_post_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.32,
+        0.24,
+        1.04
+      ],
+      "gltf_m": [
+        -1.32,
+        1.04,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "continuous_ivory_top_structural_profile bears into edge_structural_post_0"
+    },
+    {
+      "name": "JOIN_edge_sill_to_post_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.32,
+        0.24,
+        0.235
+      ],
+      "gltf_m": [
+        -1.32,
+        0.235,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "continuous_ivory_edge_sill bears into edge_structural_post_0"
+    },
+    {
+      "name": "JOIN_edge_top_to_post_1",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.24,
+        1.04
+      ],
+      "gltf_m": [
+        0,
+        1.04,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "continuous_ivory_top_structural_profile bears into edge_structural_post_1"
+    },
+    {
+      "name": "JOIN_edge_sill_to_post_1",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.24,
+        0.235
+      ],
+      "gltf_m": [
+        0,
+        0.235,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "continuous_ivory_edge_sill bears into edge_structural_post_1"
+    },
+    {
+      "name": "JOIN_edge_top_to_post_2",
+      "kind": "physical_joint",
+      "source_m": [
+        1.32,
+        0.24,
+        1.04
+      ],
+      "gltf_m": [
+        1.32,
+        1.04,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "continuous_ivory_top_structural_profile bears into edge_structural_post_2"
+    },
+    {
+      "name": "JOIN_edge_sill_to_post_2",
+      "kind": "physical_joint",
+      "source_m": [
+        1.32,
+        0.24,
+        0.235
+      ],
+      "gltf_m": [
+        1.32,
+        0.235,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "continuous_ivory_edge_sill bears into edge_structural_post_2"
+    },
+    {
+      "name": "JOIN_edge_cap_to_beam",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.24,
+        1.1
+      ],
+      "gltf_m": [
+        0,
+        1.1,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "continuous_walnut_tactile_top bears into continuous_ivory_top_structural_profile"
+    },
+    {
+      "name": "INFILL_LOWER_CONTACT_0",
+      "kind": "physical_infill_bottom_support",
+      "source_m": [
+        -0.66,
+        0.24,
+        0.32
+      ],
+      "gltf_m": [
+        -0.66,
+        0.32,
+        -0.24
+      ],
+      "physical_part": "continuous_ivory_edge_sill",
+      "description": "Actual sill top; pane/panel is absent. This component alone is not a completed safety barrier",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "INFILL_RECEIVER_0",
+      "kind": "nonphysical_infill_receiver",
+      "source_m": [
+        -0.66,
+        0.24,
+        0.6
+      ],
+      "gltf_m": [
+        -0.66,
+        0.6,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "Empty0.048m depth panel receiver; fieldZ.33.. .88; infill and host connections remain required",
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "INFILL_UPPER_CONTACT_0",
+      "kind": "physical_infill_upper_interface",
+      "source_m": [
+        -0.66,
+        0.24,
+        0.886
+      ],
+      "gltf_m": [
+        -0.66,
+        0.886,
+        -0.24
+      ],
+      "physical_part": "continuous_ivory_top_structural_profile",
+      "description": "Underside of substantial structural top; host-selected panel retention unresolved",
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "INFILL_LOWER_CONTACT_1",
+      "kind": "physical_infill_bottom_support",
+      "source_m": [
+        0.66,
+        0.24,
+        0.32
+      ],
+      "gltf_m": [
+        0.66,
+        0.32,
+        -0.24
+      ],
+      "physical_part": "continuous_ivory_edge_sill",
+      "description": "Actual sill top; pane/panel is absent. This component alone is not a completed safety barrier",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "INFILL_RECEIVER_1",
+      "kind": "nonphysical_infill_receiver",
+      "source_m": [
+        0.66,
+        0.24,
+        0.6
+      ],
+      "gltf_m": [
+        0.66,
+        0.6,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "Empty0.048m depth panel receiver; fieldZ.33.. .88; infill and host connections remain required",
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "INFILL_UPPER_CONTACT_1",
+      "kind": "physical_infill_upper_interface",
+      "source_m": [
+        0.66,
+        0.24,
+        0.886
+      ],
+      "gltf_m": [
+        0.66,
+        0.886,
+        -0.24
+      ],
+      "physical_part": "continuous_ivory_top_structural_profile",
+      "description": "Underside of substantial structural top; host-selected panel retention unresolved",
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "BALCONY_CONTINUATION_LOW_JOIN",
+      "kind": "physical_join_face",
+      "source_m": [
+        -1.4,
+        0.24,
+        0.55
+      ],
+      "gltf_m": [
+        -1.4,
+        0.55,
+        -0.24
+      ],
+      "physical_part": "edge_structural_post_0",
+      "description": "Physical full-depth terminal face. Portal mate uses SAL001 outside jamb face with0.40m depth-axis translation; no invented host door or full guard",
+      "normal_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "BALCONY_PORTAL_LOW_JOIN",
+      "kind": "physical_join_face",
+      "source_m": [
+        1.4,
+        0.24,
+        0.55
+      ],
+      "gltf_m": [
+        1.4,
+        0.55,
+        -0.24
+      ],
+      "physical_part": "edge_structural_post_2",
+      "description": "Physical full-depth terminal face. Portal mate uses SAL001 outside jamb face with0.40m depth-axis translation; no invented host door or full guard",
+      "normal_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "BALCONY_HAND_REST",
+      "kind": "physical_hand_rest",
+      "source_m": [
+        0,
+        0.24,
+        1.15
+      ],
+      "gltf_m": [
+        0,
+        1.15,
+        -0.24
+      ],
+      "physical_part": "continuous_walnut_tactile_top",
+      "description": "Actual continuous walnut top; height proposed, safety/ergonomics unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "BALCONY_FLOOR_DATUM",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": "",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "name": "edge_post_to_foot_0",
+      "parts": [
+        "edge_structural_post_0",
+        "edge_anchor_foot_0"
+      ],
+      "probe_source_m": [
+        -1.32,
+        0.24,
+        0.08
+      ],
+      "probe_gltf_m": [
+        -1.32,
+        0.08,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_foot_to_shoe_0",
+      "parts": [
+        "edge_anchor_foot_0",
+        "edge_floor_shoe_0"
+      ],
+      "probe_source_m": [
+        -1.32,
+        0.24,
+        0.052
+      ],
+      "probe_gltf_m": [
+        -1.32,
+        0.052,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_post_to_foot_1",
+      "parts": [
+        "edge_structural_post_1",
+        "edge_anchor_foot_1"
+      ],
+      "probe_source_m": [
+        0,
+        0.24,
+        0.08
+      ],
+      "probe_gltf_m": [
+        0,
+        0.08,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_foot_to_shoe_1",
+      "parts": [
+        "edge_anchor_foot_1",
+        "edge_floor_shoe_1"
+      ],
+      "probe_source_m": [
+        0,
+        0.24,
+        0.052
+      ],
+      "probe_gltf_m": [
+        0,
+        0.052,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_post_to_foot_2",
+      "parts": [
+        "edge_structural_post_2",
+        "edge_anchor_foot_2"
+      ],
+      "probe_source_m": [
+        1.32,
+        0.24,
+        0.08
+      ],
+      "probe_gltf_m": [
+        1.32,
+        0.08,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_foot_to_shoe_2",
+      "parts": [
+        "edge_anchor_foot_2",
+        "edge_floor_shoe_2"
+      ],
+      "probe_source_m": [
+        1.32,
+        0.24,
+        0.052
+      ],
+      "probe_gltf_m": [
+        1.32,
+        0.052,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_top_to_post_0",
+      "parts": [
+        "continuous_ivory_top_structural_profile",
+        "edge_structural_post_0"
+      ],
+      "probe_source_m": [
+        -1.32,
+        0.24,
+        1.04
+      ],
+      "probe_gltf_m": [
+        -1.32,
+        1.04,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_sill_to_post_0",
+      "parts": [
+        "continuous_ivory_edge_sill",
+        "edge_structural_post_0"
+      ],
+      "probe_source_m": [
+        -1.32,
+        0.24,
+        0.235
+      ],
+      "probe_gltf_m": [
+        -1.32,
+        0.235,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_top_to_post_1",
+      "parts": [
+        "continuous_ivory_top_structural_profile",
+        "edge_structural_post_1"
+      ],
+      "probe_source_m": [
+        0,
+        0.24,
+        1.04
+      ],
+      "probe_gltf_m": [
+        0,
+        1.04,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_sill_to_post_1",
+      "parts": [
+        "continuous_ivory_edge_sill",
+        "edge_structural_post_1"
+      ],
+      "probe_source_m": [
+        0,
+        0.24,
+        0.235
+      ],
+      "probe_gltf_m": [
+        0,
+        0.235,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_top_to_post_2",
+      "parts": [
+        "continuous_ivory_top_structural_profile",
+        "edge_structural_post_2"
+      ],
+      "probe_source_m": [
+        1.32,
+        0.24,
+        1.04
+      ],
+      "probe_gltf_m": [
+        1.32,
+        1.04,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_sill_to_post_2",
+      "parts": [
+        "continuous_ivory_edge_sill",
+        "edge_structural_post_2"
+      ],
+      "probe_source_m": [
+        1.32,
+        0.24,
+        0.235
+      ],
+      "probe_gltf_m": [
+        1.32,
+        0.235,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "edge_cap_to_beam",
+      "parts": [
+        "continuous_walnut_tactile_top",
+        "continuous_ivory_top_structural_profile"
+      ],
+      "probe_source_m": [
+        0,
+        0.24,
+        1.1
+      ],
+      "probe_gltf_m": [
+        0,
+        1.1,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    }
+  ],
+  "physical_join_interfaces": [
+    {
+      "name": "BALCONY_CONTINUATION_LOW_JOIN",
+      "centre_source_m": [
+        -1.4,
+        0.24,
+        0.55
+      ],
+      "centre_gltf_m": [
+        -1.4,
+        0.55,
+        -0.24
+      ],
+      "normal_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "physical_part": "edge_structural_post_0",
+      "face_extent_source_m": {
+        "x": [
+          -1.4,
+          -1.4
+        ],
+        "y": [
+          0.16,
+          0.32
+        ],
+        "z": [
+          0.08,
+          1.1
+        ]
+      },
+      "description": "Physical full-depth terminal face. Portal mate uses SAL001 outside jamb face with0.40m depth-axis translation; no invented host door or full guard",
+      "profile_m": {
+        "structural_depth": 0.16,
+        "wood_inset": 0.022,
+        "reveal": 0.012,
+        "arris": 0.012
+      }
+    },
+    {
+      "name": "BALCONY_PORTAL_LOW_JOIN",
+      "centre_source_m": [
+        1.4,
+        0.24,
+        0.55
+      ],
+      "centre_gltf_m": [
+        1.4,
+        0.55,
+        -0.24
+      ],
+      "normal_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_gltf": [
+        1,
+        0,
+        0
+      ],
+      "physical_part": "edge_structural_post_2",
+      "face_extent_source_m": {
+        "x": [
+          1.4,
+          1.4
+        ],
+        "y": [
+          0.16,
+          0.32
+        ],
+        "z": [
+          0.08,
+          1.1
+        ]
+      },
+      "description": "Physical full-depth terminal face. Portal mate uses SAL001 outside jamb face with0.40m depth-axis translation; no invented host door or full guard",
+      "profile_m": {
+        "structural_depth": 0.16,
+        "wood_inset": 0.022,
+        "reveal": 0.012,
+        "arris": 0.012
+      }
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "infill_open_field_0",
+      "min_source_m": [
+        -1.226,
+        0.218,
+        0.336
+      ],
+      "max_source_m": [
+        -0.094,
+        0.262,
+        0.872
+      ],
+      "min_gltf_m": [
+        -1.226,
+        0.336,
+        -0.262
+      ],
+      "max_gltf_m": [
+        -0.094,
+        0.872,
+        -0.218
+      ],
+      "purpose": "Explicitly absent infill; preserve opening in collider. No completed barrier or safety compliance claim"
+    },
+    {
+      "name": "infill_open_field_1",
+      "min_source_m": [
+        0.094,
+        0.218,
+        0.336
+      ],
+      "max_source_m": [
+        1.226,
+        0.262,
+        0.872
+      ],
+      "min_gltf_m": [
+        0.094,
+        0.336,
+        -0.262
+      ],
+      "max_gltf_m": [
+        1.226,
+        0.872,
+        -0.218
+      ],
+      "purpose": "Explicitly absent infill; preserve opening in collider. No completed barrier or safety compliance claim"
+    },
+    {
+      "name": "guest_side_clear_strip",
+      "min_source_m": [
+        -1.24,
+        -0.6,
+        0.02
+      ],
+      "max_source_m": [
+        1.24,
+        -0.02,
+        1.45
+      ],
+      "min_gltf_m": [
+        -1.24,
+        0.02,
+        0.02
+      ],
+      "max_gltf_m": [
+        1.24,
+        1.45,
+        0.6
+      ],
+      "purpose": "Open approach to hand rest; no whole-envelope barrier collision"
+    }
+  ],
+  "marker_api_file": "marker_api.json",
+  "collision_proposal_file": "collision_proposals.json",
+  "runtime_consolidation": "Evaluated static copies by semantic material role; native semantic marker nodes retained; editable meshes and modifiers in source",
+  "details": {
+    "top_height_proposal_m": 1.15,
+    "infill_status": "Two open receiver fields; no panel or glass included and no completed barrier claim",
+    "runtime_glass_shader": "Absent; original runtime shader remains unavailable",
+    "host_interface": "Source right endX+1.40 can butt SAL001 left or right jamb face with explicit chosen placement; floor substrate/structural engineering pending"
+  },
+  "moving_host_door_interfaces": {
+    "public_clear_width_m": null,
+    "public_clear_height_m": null,
+    "service_clear_width_m": null,
+    "service_clear_height_m": null,
+    "leaf_stroke_m": null,
+    "cassette_depth_m": null,
+    "head_reservation_m": null
+  },
+  "reference_manifest": "../../batches/batch10/reference_manifest.json",
+  "profile_contract": "../../batches/batch10/interface_contract.json",
+  "context_dependencies": "None for production rebuild. QA plant/other components are separate existing context, separately hashed.",
+  "source_sha256": "0f6a837b786e7d806601d530a57c86b4dd7960c201cc67a47f9e6b9438f2dfb9",
+  "glb_sha256": "dd8dffd4cb70d66b8a89c35612ca3ff1a1f391df85ed0fa90c0713de3c73e6f6",
+  "generator_sha256": "3c8ec84fb14f5a59c325cff8279379d7212e5d265f8d9e23e825443a997aea38",
+  "limitations": [
+    "New adjustable source work; original final host polygon and game remain unavailable",
+    "No recovered-host or installed-room claim",
+    "No door motion, real door dimensions or cassette/head fit asserted",
+    "No load rating, guard safety compliance, species ergonomics or engine collision acceptance",
+    "Host arrival/service axis, terrace relation, X35..45 tram reserve and D09_salon5 identity remain governed by historical records; local QA layouts are hypotheses only"
+  ],
+  "validation_files": [
+    "qa/source_reload_checks.json",
+    "qa/glb_validation.json",
+    "qa/native_interfaces_and_voids.json",
+    "qa/source_only_rebuild.json",
+    "qa/camera_preflight.json",
+    "qa/render_evidence.json",
+    "qa/exposed_surface_review.json"
+  ],
+  "evidence_media_manifest": "qa/review_media_manifest.json",
+  "source_and_export_verified": true
+}

@@ -1,0 +1,14 @@
+"""Bind final manifests to validated source/export and evidence hashes."""
+from pathlib import Path
+import json,hashlib
+BASE=Path(__file__).resolve().parents[1];CAT=BASE.parents[1]
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+validation=json.loads((BASE/'qa/glb_validation.json').read_text());records=[]
+material_specs=json.loads((CAT/'materials/material_manifest.json').read_text())['materials'];material_specs.update(json.loads((CAT/'materials/staff/manifest.json').read_text())['materials'])
+for p in sorted(BASE.glob('AST-*.manifest.json')):
+ r=json.loads(p.read_text());v=next(x for x in validation['results'] if Path(x['file']).stem==r['catalogue_id']);r['source_sha256']=sha(BASE/r['source']);r['export_sha256']=sha(BASE/r['export']);r['generator_sha256']=sha(BASE/r['generator']);r['actual_glb_triangle_count']=v['triangle_count'];r['runtime_mesh_count']=v['runtime_mesh_count'];r['runtime_primitive_count']=v['runtime_primitive_count'];r['bounds_gltf_y_up']=v['bounds_gltf_y_up'];r['qa']={'source_reload':'qa/source_reload_checks.json','glb_inspection':'qa/glb_validation.json','native_interface_checks':'qa/interface_checks.json','camera_preflight':'qa/camera_preflight.json','actual_imported_glb_views':'qa/render_evidence.json'};r['material_roles_and_uv']={role:{'meters_per_tile_uv':material_specs[role]['meters_per_tile_uv'],'grain':'Vertical along local Z in broad fascia and ribs; generator records per-object projection' if role=='warm_walnut' else'Physical metre-scaled planar/swept projection','uv_layer':'metric_material_uv','shared_helper':'standards/staff_materials.py' if role.startswith('staff_') else'standards/materials.py'} for role in r['material_roles']};r['reference_pixels_inspected']=[{'catalogue_relative_path':str(x.relative_to(CAT)),'sha256':sha(x)} for x in [CAT/'references/hospitality/public_reference.png',CAT/'references/hospitality/vibe_dining_edge.jpg']];p.write_text(json.dumps(r,indent=2)+'\n');records.append(r)
+(BASE/'manifest.json').write_text(json.dumps({'family':'Hospitality counters','unique_design_count':2,'assets':records},indent=2)+'\n')
+paths=[CAT/'standards/materials.py',CAT/'standards/staff_materials.py',CAT/'standards/qa_frame.py',CAT/'materials/material_manifest.json',CAT/'materials/staff/manifest.json']
+for role in sorted(set(x for r in records for x in r['material_roles'])):paths.append(CAT/'materials'/('staff' if role.startswith('staff_') else '')/f'{role}.png')
+(BASE/'dependency_manifest.json').write_text(json.dumps({'scope':'Frozen shared helper and texture dependencies; no shared file modifications','files':[{'catalogue_relative_path':str(p.relative_to(CAT)),'sha256':sha(p)} for p in paths]},indent=2)+'\n')
+print('FINAL_RECORDS_BOUND',[(r['catalogue_id'],r['source_sha256'],r['export_sha256']) for r in records])

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/assets/botanical_cluster/qa/render_components.py", line 28, in <module>
+    frame=f.assert_full_frame(scene,cam,objects,margin=.025);path=BASE/'qa'/f'{ident}_{mode}_640.png';scene.render.filepath=str(path);before=(sha(src),sha(export));bpy.ops.render.render(write_still=True);after=(sha(src),sha(export));assert before==after
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/standards/qa_frame.py", line 17, in assert_full_frame
+    if not result['passes']:raise ValueError('Component framing preflight failed: '+str(result))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Component framing preflight failed: {'passes': False, 'uv_depth_min': [0.22431455552577972, -0.005013334099203348, 6.320208549499512], 'uv_depth_max': [0.7402822971343994, 0.9671922326087952, 8.877156257629395], 'margin': 0.025, 'bounds_points': 176, 'scope': 'Conservative component-bounds framing only, not visibility or collision'}
+
+Error: script failed, file: '/workspace/shared/astraea-catalogue-continuation-20261002/assets/botanical_cluster/qa/render_components.py', exiting.
+Blender 4.3.2
+Read blend: "/workspace/shared/astraea-catalogue-continuation-20261002/assets/botanical_cluster/source/AST-BOT-007.blend"
+
+Blender quit

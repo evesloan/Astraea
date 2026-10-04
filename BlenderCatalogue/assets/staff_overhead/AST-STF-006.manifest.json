@@ -1,0 +1,159 @@
+{
+  "catalogue_id": "AST-STF-006",
+  "title": "Guarded utility light housing",
+  "unique_design": true,
+  "kind": "fixture",
+  "units": "metres",
+  "source": "source/AST-STF-006.blend",
+  "export": "exports/AST-STF-006.glb",
+  "generator": "source/build_staff_overhead.py",
+  "script_assisted_original_design": true,
+  "coordinates": "Blender Z up. Ceiling mounting datum at local Z0, hangs negative Z. Straight travel +X; turn exits +Y; fixture long axis +X. GLB standard Y-up conversion.",
+  "pivot": {
+    "position_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "Ceiling support plane at entry centreline, or fixture pitch start"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      0.03999999910593033,
+      -0.17499999701976776,
+      -0.6074999570846558
+    ],
+    "max_m": [
+      1.159999966621399,
+      0.17299999296665192,
+      0.0
+    ],
+    "dimensions_m": [
+      1.1199999675154686,
+      0.3479999899864197,
+      0.6074999570846558
+    ]
+  },
+  "evaluated_triangles": 1496,
+  "editable_semantic_parts": 36,
+  "semantic_parts": [
+    "formed_enamel_channel_with_return_lips",
+    "twin_bay_folded_reflector",
+    "continuous_opal_prismatic_lens",
+    "closed_formed_end_cap_1",
+    "end_cap_gasket_1",
+    "captive_lens_clip_1",
+    "closed_formed_end_cap_2",
+    "end_cap_gasket_2",
+    "captive_lens_clip_2",
+    "fixture_mount_1_ceiling_plate",
+    "fixture_mount_1_folded_drop",
+    "fixture_mount_1_housing_saddle",
+    "fixture_mount_1_locking_pin",
+    "fixture_mount_2_ceiling_plate",
+    "fixture_mount_2_folded_drop",
+    "fixture_mount_2_housing_saddle",
+    "fixture_mount_2_locking_pin",
+    "lens_guard_longitudinal_-0.119",
+    "lens_guard_longitudinal_0.119",
+    "guard_hoop_1_segment_1",
+    "guard_hoop_1_segment_2",
+    "guard_hoop_1_segment_3",
+    "guard_hoop_1_segment_4",
+    "guard_hoop_1_segment_5",
+    "guard_hoop_2_segment_1",
+    "guard_hoop_2_segment_2",
+    "guard_hoop_2_segment_3",
+    "guard_hoop_2_segment_4",
+    "guard_hoop_2_segment_5",
+    "guard_hoop_3_segment_1",
+    "guard_hoop_3_segment_2",
+    "guard_hoop_3_segment_3",
+    "guard_hoop_3_segment_4",
+    "guard_hoop_3_segment_5",
+    "sealed_top_cable_entry_gland",
+    "small_service_identification_tab"
+  ],
+  "material_roles": [
+    "staff_label",
+    "staff_opal",
+    "staff_rubber",
+    "staff_white_paint",
+    "staff_zinc"
+  ],
+  "runtime_static_consolidation": "One mesh per semantic material role; active UV names normalized before join; real planar end caps; no runtime light objects",
+  "nominal_straight_pitch_m": 1.2,
+  "turn_centerline_radius_m": null,
+  "joins": [],
+  "ceiling_support_anchors": [
+    {
+      "name": "fixture_ceiling_anchor_1",
+      "position_m": [
+        0.24,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "status": "geometric anchor proposal only"
+    },
+    {
+      "name": "fixture_ceiling_anchor_2",
+      "position_m": [
+        0.96,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "status": "geometric anchor proposal only"
+    }
+  ],
+  "lowest_geometry_z_m": -0.6074999570846558,
+  "lowest_geometry_semantics": "guard rails/hoops",
+  "inspection_clearance_example": {
+    "ceiling_datum_world_z_m": 3.3,
+    "world_lowest_geometry_z_m": 2.692500042915344,
+    "minimum_requested_clearance_m": 2.65,
+    "meets_example": true,
+    "limitation": "Component inspection placement only. No claim of actual ship route headroom, structural safety or installation",
+    "minimum_mounting_datum_for_2_65m_m": 3.2574999570846557,
+    "installation_limit": "The fixture requires a ceiling mounting datum of at least 3.2575 m to preserve 2.65 m below its guard. A lower crew corridor is not automatically suitable. The 3.30 m inspection example does not certify an actual route."
+  },
+  "fixture_anchor_data_only": {
+    "housing_centre_m": [
+      0.6,
+      0,
+      -0.493
+    ],
+    "lens_down_direction": [
+      0,
+      0,
+      -1
+    ],
+    "electrical_function": "None; opaque unlit lens material, no light nodes, cable entry is geometric only"
+  },
+  "support_proposal": "Two rigid ceiling drops, plated anchors, housing saddles and locking pins",
+  "collision_proposal_file": "collision_proposals.json",
+  "reference_manifest": "../../batches/batch03/reference_manifest.json",
+  "dependencies": [
+    "../../standards/staff_materials.py",
+    "../../materials/staff/"
+  ],
+  "limitations": [
+    "Not installed in original ship",
+    "No electrical or photometric function",
+    "No engine/route/structural/load rating verification",
+    "No new game systems or room allocation"
+  ],
+  "source_sha256": "65d5bed7daf32fc9fbda91e6bdd30f2c2c8faeb118a25b6c369089b66c484769",
+  "glb_sha256": "17e5accdeb4b4f356f9ca17d1a89cb23eb94a603a05c5f9bd6f6bcd4b9c8aa98",
+  "hanger_length_editability": "Named rod/drop meshes and support dimensions are editable in source/generator. No single validated hanger-length parameter or tested shorter installation is provided.",
+  "generator_sha256": "6828950f293763bc4a1aa54e25c2b101c194a786c512e4e98b10e8ee2c6aae37"
+}

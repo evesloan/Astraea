@@ -1,0 +1,1 @@
+These are preserved prior metadata bytes. A redundant triangle-count phrase was removed from current manifest/README; actual measured three repair polygons and every source/export geometry byte stayed unchanged. No extra render was performed.

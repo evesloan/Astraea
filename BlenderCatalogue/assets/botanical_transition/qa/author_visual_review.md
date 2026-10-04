@@ -1,0 +1,11 @@
+# Final imported-export visual review
+
+The final four PNGs were opened and inspected at their authored resolutions after the terminal finish correction. The ordinary standing front view shows the full timber ribbon with three distinct floor-bearing supports; the raised planting mass remains behind the seat. The ordinary seated view confirms that the raised coping sits behind the actual seating edge rather than projecting into it. The ordinary rear view reveals the lower soil shelf, real transverse retaining rise and broad upper planting opening. Its open source-start soil face is the intended mating edge for the unchanged straight module, not a free-standing unretained planting claim.
+
+The higher soil/retaining detail intentionally crops the front ribbon tip while showing the upper soil depression, coping above soil, lower soil below the riser and deliberate closed terminal finish. The renderer floor and lamps are inspection aids only. A few darker underside pixels around brackets are soft shadow, not substitute support geometry; actual support paths were measured separately.
+
+The final terminal has a real 3mm stone setback under the coping/timber. The axial advisory screen shows zero exposed cross-material same-facing terminal candidates. Remaining start-face candidates reproduce the inherited mating section and are within its deliberate construction joint. SourceZ0.415 candidates are timber/bracket bearing contacts buried under the sitting surface. Ordinary views and the source checks support that interpretation.
+
+The unchanged native004/010 seam image is retained from `revision01_before_terminal_finish/`, with its own source/export snapshot and original render receipt. Its seam portion was unchanged by the far terminal finish correction; it is not presented as a new final-export render. Source/native final seam triangles were checked again independently.
+
+These views establish editable component craft and actual imported geometry. They do not establish a host courtyard, floor load, irrigation, species suitability, actor contact, collision behavior, game lighting or runtime performance. Plant density, trailing clearance and final open outlook are assessed in the lead’s joined planted arrangement.

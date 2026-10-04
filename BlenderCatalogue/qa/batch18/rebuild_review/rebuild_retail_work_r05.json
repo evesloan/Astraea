@@ -1,0 +1,495 @@
+{
+  "passed": true,
+  "family": "retail_work",
+  "revision": "r05",
+  "stage": "qa/batch18/rebuild_review/stage_retail_work_r05",
+  "executed_script_sha256": "12631be27add2cc24a5130eb531e2f4e7ca8795aab0e5bd8ede3c525beb6daba",
+  "commands": [
+    {
+      "argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/rebuild_review/rebuild_instrument_retail_work_r05.py",
+        "--",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/source/build_retail_work.py",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/rebuild_review/stage_retail_work_r05",
+        "/workspace/shared/astraea-catalogue-continuation-20261002",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/rebuild_review/build_reads_retail_work_r05.json"
+      ],
+      "cwd": "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/rebuild_review/stage_retail_work_r05",
+      "returncode": 0,
+      "log": {
+        "path": "qa/batch18/rebuild_review/build_retail_work_r05.log",
+        "sha256": "f626b923a0b582e85ce01fb32bd87e356d5d15b0ff1c74c7e8e2128b6d2e8415",
+        "bytes": 5003
+      }
+    },
+    {
+      "argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/rebuild_review/rebuild_source_audit_retail_work_r05.py",
+        "--",
+        "--prefix",
+        "production_retail_work_r05_",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/retail_work/source/AST-RTL-003.blend",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/retail_work/source/AST-RTL-004.blend"
+      ],
+      "cwd": "/workspace/shared/astraea-catalogue-continuation-20261002",
+      "returncode": 0,
+      "log": {
+        "path": "qa/batch18/rebuild_review/audit_production_retail_work_r05.log",
+        "sha256": "cd54e54471638f758ebabd0b248bdb9f0ccfdccafba74f5c912faa6063b169ce",
+        "bytes": 413
+      }
+    },
+    {
+      "argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/rebuild_review/rebuild_source_audit_retail_work_r05.py",
+        "--",
+        "--prefix",
+        "rebuilt_retail_work_r05_",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/source/AST-RTL-003.blend",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/source/AST-RTL-004.blend"
+      ],
+      "cwd": "/workspace/shared/astraea-catalogue-continuation-20261002",
+      "returncode": 0,
+      "log": {
+        "path": "qa/batch18/rebuild_review/audit_rebuilt_retail_work_r05.log",
+        "sha256": "6d1bce105cededb44a3a0ee2967dc0b88dcf7f3ea862f5d2c7da8f9ed0f59507",
+        "bytes": 509
+      }
+    }
+  ],
+  "exact_reviewer_code_snapshots": [
+    {
+      "path": "qa/batch18/rebuild_review/rebuild_runner_retail_work_r05.py",
+      "sha256": "12631be27add2cc24a5130eb531e2f4e7ca8795aab0e5bd8ede3c525beb6daba",
+      "bytes": 12775
+    },
+    {
+      "path": "qa/batch18/rebuild_review/rebuild_instrument_retail_work_r05.py",
+      "sha256": "412900a6c4400990a3d9e6904e5d0e553b71a028493ccd071d22437ee92b0124",
+      "bytes": 3171
+    },
+    {
+      "path": "qa/batch18/rebuild_review/rebuild_source_audit_retail_work_r05.py",
+      "sha256": "0e1e9e24edce8923cc954fa81a4288ba51568e1767eb05ed0844b1b86eab6f87",
+      "bytes": 8731
+    }
+  ],
+  "declared_dependency_manifest": {
+    "path": "assets/retail_work/dependency_manifest.json",
+    "sha256": "79626f81dc401b95cb747f8d0441324951cbfdae134c20f46aa7a6e0a01e4b5f",
+    "bytes": 2304
+  },
+  "production_original_inputs": [
+    {
+      "path": "assets/retail_work/source/build_retail_work.py",
+      "sha256": "381f4787796f0e3169be6f08c43f515154c4a6c5c78f474e2ba5b9db7934d661",
+      "bytes": 28281
+    },
+    {
+      "path": "materials/champagne_metal.png",
+      "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+      "bytes": 5262
+    },
+    {
+      "path": "materials/clay_weave.png",
+      "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+      "bytes": 16478
+    },
+    {
+      "path": "materials/dark_rubber.png",
+      "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+      "bytes": 1631
+    },
+    {
+      "path": "materials/ivory_enamel.png",
+      "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+      "bytes": 3464
+    },
+    {
+      "path": "materials/material_manifest.json",
+      "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+      "bytes": 3672
+    },
+    {
+      "path": "materials/oatmeal_weave.png",
+      "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+      "bytes": 16827
+    },
+    {
+      "path": "materials/retail/draw_textures.py",
+      "sha256": "0eda2b9e861c49366504906ca71313381ac23b5356abeef96dbc4d7c79c17ee9",
+      "bytes": 1633
+    },
+    {
+      "path": "materials/teal_weave.png",
+      "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+      "bytes": 16512
+    },
+    {
+      "path": "materials/warm_stone.png",
+      "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+      "bytes": 10430
+    },
+    {
+      "path": "materials/warm_walnut.png",
+      "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+      "bytes": 8275
+    },
+    {
+      "path": "standards/materials.py",
+      "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+      "bytes": 1584
+    },
+    {
+      "path": "standards/retail_materials.py",
+      "sha256": "27d3ba74b215555c3e4c310aaafe5afcf26897600f345d3c6077bfe1999b7b62",
+      "bytes": 1793
+    }
+  ],
+  "seed_files": [
+    "assets/retail_work/source/build_retail_work.py",
+    "materials/champagne_metal.png",
+    "materials/clay_weave.png",
+    "materials/dark_rubber.png",
+    "materials/ivory_enamel.png",
+    "materials/material_manifest.json",
+    "materials/oatmeal_weave.png",
+    "materials/retail/draw_textures.py",
+    "materials/teal_weave.png",
+    "materials/warm_stone.png",
+    "materials/warm_walnut.png",
+    "standards/materials.py",
+    "standards/retail_materials.py"
+  ],
+  "fresh_stage_exact_declared_original_inputs": true,
+  "file_read_trace": {
+    "path": "qa/batch18/rebuild_review/build_reads_retail_work_r05.json",
+    "sha256": "4117076a752ac4deeaf32ff26b69ca7b890c76418198d6138b70f88eb18d39b4",
+    "bytes": 19372
+  },
+  "instrumentation_script": {
+    "path": "qa/batch18/rebuild_review/rebuild_instrument_retail_work_r05.py",
+    "sha256": "412900a6c4400990a3d9e6904e5d0e553b71a028493ccd071d22437ee92b0124",
+    "bytes": 3171
+  },
+  "child_python_read_traces": [],
+  "observed_catalogue_reads": [
+    "assets/retail_work/exports/AST-RTL-003.glb",
+    "assets/retail_work/exports/AST-RTL-004.glb",
+    "assets/retail_work/exports/AST-RTL-004__handling.glb",
+    "assets/retail_work/exports/AST-RTL-004__open_lid_parked.glb",
+    "assets/retail_work/source/AST-RTL-003.blend",
+    "assets/retail_work/source/AST-RTL-004.blend",
+    "assets/retail_work/source/build_retail_work.py",
+    "materials/champagne_metal.png",
+    "materials/clay_weave.png",
+    "materials/dark_rubber.png",
+    "materials/ivory_enamel.png",
+    "materials/material_manifest.json",
+    "materials/oatmeal_weave.png",
+    "materials/retail/draw_textures.py",
+    "materials/retail/manifest.json",
+    "materials/retail/retail_terracotta_enamel.png",
+    "materials/teal_weave.png",
+    "materials/warm_stone.png",
+    "materials/warm_walnut.png",
+    "standards/__pycache__/materials.cpython-313.pyc",
+    "standards/__pycache__/retail_materials.cpython-313.pyc",
+    "standards/materials.py",
+    "standards/retail_materials.py"
+  ],
+  "outside_stage_catalogue_reads": [],
+  "freshly_generated_files_reopened": [
+    "assets/retail_work/exports/AST-RTL-003.glb",
+    "assets/retail_work/exports/AST-RTL-004.glb",
+    "assets/retail_work/exports/AST-RTL-004__handling.glb",
+    "assets/retail_work/exports/AST-RTL-004__open_lid_parked.glb",
+    "assets/retail_work/source/AST-RTL-003.blend",
+    "assets/retail_work/source/AST-RTL-004.blend",
+    "materials/retail/manifest.json",
+    "materials/retail/retail_terracotta_enamel.png"
+  ],
+  "original_inputs_unchanged_through_generation": true,
+  "actual_exports": [
+    {
+      "current": {
+        "path": "assets/retail_work/exports/AST-RTL-003.glb",
+        "sha256": "9915377c00afe2fd180f53e736d5c658a0591c6d889a1b722345e43fe61606d8",
+        "bytes": 107992
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/exports/AST-RTL-003.glb",
+        "sha256": "9915377c00afe2fd180f53e736d5c658a0591c6d889a1b722345e43fe61606d8",
+        "bytes": 107992
+      },
+      "byte_identical": true
+    },
+    {
+      "current": {
+        "path": "assets/retail_work/exports/AST-RTL-004.glb",
+        "sha256": "4d68339331c0c55ed42e787b012af005c65afaae4df93f7dafa14bdf1aee807a",
+        "bytes": 138556
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/exports/AST-RTL-004.glb",
+        "sha256": "4d68339331c0c55ed42e787b012af005c65afaae4df93f7dafa14bdf1aee807a",
+        "bytes": 138556
+      },
+      "byte_identical": true
+    },
+    {
+      "current": {
+        "path": "assets/retail_work/exports/AST-RTL-004__handling.glb",
+        "sha256": "b55d51f3d64f62954c2654ebd31e640cc71ed1b1795571f4633a105b4bdfd13a",
+        "bytes": 138656
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/exports/AST-RTL-004__handling.glb",
+        "sha256": "b55d51f3d64f62954c2654ebd31e640cc71ed1b1795571f4633a105b4bdfd13a",
+        "bytes": 138656
+      },
+      "byte_identical": true
+    },
+    {
+      "current": {
+        "path": "assets/retail_work/exports/AST-RTL-004__open_lid_parked.glb",
+        "sha256": "881f17b8af81491a85f823aa97acb636b7e824f03355ba401205fe6baec5a94f",
+        "bytes": 138616
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/exports/AST-RTL-004__open_lid_parked.glb",
+        "sha256": "881f17b8af81491a85f823aa97acb636b7e824f03355ba401205fe6baec5a94f",
+        "bytes": 138616
+      },
+      "byte_identical": true
+    }
+  ],
+  "source_audit_script": {
+    "path": "qa/batch18/rebuild_review/rebuild_source_audit_retail_work_r05.py",
+    "sha256": "0e1e9e24edce8923cc954fa81a4288ba51568e1767eb05ed0844b1b86eab6f87",
+    "bytes": 8731
+  },
+  "editable_sources": [
+    {
+      "catalogue_id": "AST-RTL-003",
+      "current_source": {
+        "path": "assets/retail_work/source/AST-RTL-003.blend",
+        "sha256": "2b7f4fe60c1dd463be0550a99eea9b29ebfb3592c8c42dfe3d6a0dec965bba87",
+        "bytes": 220605
+      },
+      "rebuilt_source": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/source/AST-RTL-003.blend",
+        "sha256": "cc7f05935f9b4d99722206241fa9ab7eca44fe63686220049c03bd6c94e2373b",
+        "bytes": 220201
+      },
+      "audit_bindings": [
+        {
+          "path": "qa/batch18/rebuild_review/production_retail_work_r05_source_AST-RTL-003.json",
+          "sha256": "d3322128386fe4c1b896dc4c96e2317ca6ed5ffd8007512a82d19bd049e588e6",
+          "bytes": 158184
+        },
+        {
+          "path": "qa/batch18/rebuild_review/rebuilt_retail_work_r05_source_AST-RTL-003.json",
+          "sha256": "209fc3f4c87af22a6ab78764ff95af0b179632e5af239ed452fa6647072503c7",
+          "bytes": 158229
+        }
+      ],
+      "evaluated_geometry_equal": true,
+      "editable_geometry_uv_normals_material_graph_hierarchy_properties_equal": true,
+      "semantic_differences": [],
+      "packed_image_identity_size_and_bytes_equal": true,
+      "image_differences": [],
+      "pass": true
+    },
+    {
+      "catalogue_id": "AST-RTL-004",
+      "current_source": {
+        "path": "assets/retail_work/source/AST-RTL-004.blend",
+        "sha256": "561edd3364b277f770ee77e91a1b5ed20aaf39341d400f5c5810ce2c1cdc6e51",
+        "bytes": 227436
+      },
+      "rebuilt_source": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/source/AST-RTL-004.blend",
+        "sha256": "b5cb8e0bec5f41aeb910898614b60ed5b6b1c3a57501d2b380b4784d61dcc594",
+        "bytes": 226709
+      },
+      "audit_bindings": [
+        {
+          "path": "qa/batch18/rebuild_review/production_retail_work_r05_source_AST-RTL-004.json",
+          "sha256": "34350358416e82eab7241ff499569b713ad12e13ad15e17666103479f7e4bddb",
+          "bytes": 214178
+        },
+        {
+          "path": "qa/batch18/rebuild_review/rebuilt_retail_work_r05_source_AST-RTL-004.json",
+          "sha256": "52a4496e2877f1eebecdae23868c0e5cd864bf3a9e4f8627e8b46a1ce68029bb",
+          "bytes": 214223
+        }
+      ],
+      "evaluated_geometry_equal": true,
+      "editable_geometry_uv_normals_material_graph_hierarchy_properties_equal": true,
+      "semantic_differences": [],
+      "packed_image_identity_size_and_bytes_equal": true,
+      "image_differences": [],
+      "pass": true
+    }
+  ],
+  "generated_interface_and_manifest_json": [
+    {
+      "current": {
+        "path": "assets/retail_work/AST-RTL-003.manifest.json",
+        "sha256": "d4a22fca5afa7217f8b5765f7e01eb188357abafed15d375a64d758e72a1ac8d",
+        "bytes": 32949
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/AST-RTL-003.manifest.json",
+        "sha256": "30accaf8da53422196009afef6ef2c9dd622ce22806662b4e56064b218929184",
+        "bytes": 32949
+      },
+      "equal_except_verified_source_container_hashes": true,
+      "differences": []
+    },
+    {
+      "current": {
+        "path": "assets/retail_work/AST-RTL-004.manifest.json",
+        "sha256": "d605067c5d5b2462883dcae2396aa90652eb4ff7ecc4924415c2c56e988c344c",
+        "bytes": 54210
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/AST-RTL-004.manifest.json",
+        "sha256": "746eb5f521c578d895699f94faaee4d17c0158947af363265b5a72db9e5796da",
+        "bytes": 54210
+      },
+      "equal_except_verified_source_container_hashes": true,
+      "differences": []
+    },
+    {
+      "current": {
+        "path": "assets/retail_work/collision_proposals.json",
+        "sha256": "d68300ca2336dcb5b9fa9e764b1603c4688246aac9e0de98fd7ab893d299ee06",
+        "bytes": 158012
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/collision_proposals.json",
+        "sha256": "d68300ca2336dcb5b9fa9e764b1603c4688246aac9e0de98fd7ab893d299ee06",
+        "bytes": 158012
+      },
+      "equal_except_verified_source_container_hashes": true,
+      "differences": []
+    },
+    {
+      "current": {
+        "path": "assets/retail_work/dependency_manifest.json",
+        "sha256": "79626f81dc401b95cb747f8d0441324951cbfdae134c20f46aa7a6e0a01e4b5f",
+        "bytes": 2304
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/dependency_manifest.json",
+        "sha256": "79626f81dc401b95cb747f8d0441324951cbfdae134c20f46aa7a6e0a01e4b5f",
+        "bytes": 2304
+      },
+      "equal_except_verified_source_container_hashes": true,
+      "differences": []
+    },
+    {
+      "current": {
+        "path": "assets/retail_work/manifest.json",
+        "sha256": "3cf64885b2ea01808550031748f4ae19c3eb79c7a5230219a69c97e6c7e14233",
+        "bytes": 104325
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/manifest.json",
+        "sha256": "28a92c95bb0fdd2ff43c053e766908de89702949bc7088c7876a0379a3fc07f2",
+        "bytes": 104325
+      },
+      "equal_except_verified_source_container_hashes": true,
+      "differences": []
+    },
+    {
+      "current": {
+        "path": "assets/retail_work/marker_api.json",
+        "sha256": "6f0c889067907ff66ee91441541538c22d6e8ce6e9b4fccbd6e99277b6e55a6e",
+        "bytes": 63026
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/assets/retail_work/marker_api.json",
+        "sha256": "6f0c889067907ff66ee91441541538c22d6e8ce6e9b4fccbd6e99277b6e55a6e",
+        "bytes": 63026
+      },
+      "equal_except_verified_source_container_hashes": true,
+      "differences": []
+    }
+  ],
+  "legitimate_source_hash_normalizations": [
+    {
+      "json_path": "AST-RTL-003.manifest.json.source_sha256",
+      "production": "2b7f4fe60c1dd463be0550a99eea9b29ebfb3592c8c42dfe3d6a0dec965bba87",
+      "rebuilt": "cc7f05935f9b4d99722206241fa9ab7eca44fe63686220049c03bd6c94e2373b"
+    },
+    {
+      "json_path": "AST-RTL-004.manifest.json.source_sha256",
+      "production": "561edd3364b277f770ee77e91a1b5ed20aaf39341d400f5c5810ce2c1cdc6e51",
+      "rebuilt": "b5cb8e0bec5f41aeb910898614b60ed5b6b1c3a57501d2b380b4784d61dcc594"
+    },
+    {
+      "json_path": "manifest.json.assets[0].source_sha256",
+      "production": "2b7f4fe60c1dd463be0550a99eea9b29ebfb3592c8c42dfe3d6a0dec965bba87",
+      "rebuilt": "cc7f05935f9b4d99722206241fa9ab7eca44fe63686220049c03bd6c94e2373b"
+    },
+    {
+      "json_path": "manifest.json.assets[1].source_sha256",
+      "production": "561edd3364b277f770ee77e91a1b5ed20aaf39341d400f5c5810ce2c1cdc6e51",
+      "rebuilt": "b5cb8e0bec5f41aeb910898614b60ed5b6b1c3a57501d2b380b4784d61dcc594"
+    }
+  ],
+  "regenerated_original_artwork": [],
+  "regenerated_shared_retail_artwork_and_manifest": [
+    {
+      "current": {
+        "path": "materials/retail/manifest.json",
+        "sha256": "8664003dbd880487ab47fc8c972b79e41f05792f0f14287f2bf5ee2c2a79cb07",
+        "bytes": 823
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/materials/retail/manifest.json",
+        "sha256": "8664003dbd880487ab47fc8c972b79e41f05792f0f14287f2bf5ee2c2a79cb07",
+        "bytes": 823
+      },
+      "byte_identical": true
+    },
+    {
+      "current": {
+        "path": "materials/retail/retail_terracotta_enamel.png",
+        "sha256": "f5f57caac4d52e864ce215f10bb74260cd1b11c786f966406daf345c73c16375",
+        "bytes": 28932
+      },
+      "rebuilt": {
+        "path": "qa/batch18/rebuild_review/stage_retail_work_r05/materials/retail/retail_terracotta_enamel.png",
+        "sha256": "f5f57caac4d52e864ce215f10bb74260cd1b11c786f966406daf345c73c16375",
+        "bytes": 28932
+      },
+      "byte_identical": true
+    }
+  ],
+  "limits": "No render or source modification. Original source-container bytes may differ through stored stage paths; only verified source_sha256 fields are normalized. Export byte identity proves actual native geometry, UV, normals, materials and hierarchy reproduction, not physical adequacy. Source audit checks editable mesh topology/UV/normals, modifiers, drivers, shape keys, transforms, material node graphs/properties and packed image bytes. Python audit is not syscall complete; Blender/Python standard resources are execution environment dependencies. Generated collision profiles are not original inputs; any body selection from them is a separate stage2."
+}

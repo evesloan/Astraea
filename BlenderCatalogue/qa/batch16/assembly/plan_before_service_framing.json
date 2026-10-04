@@ -1,0 +1,283 @@
+{
+  "scope": "Three separate relative imported-component QA examples: foyer pair, three reused audience seats and distinct workshop stand. These coordinate blocks do not establish adjacency, a real row or a finished auditorium.",
+  "units": "metres",
+  "coordinate_contract": "Inspection world uses Blender source XYZ, Z up; native GLB=(x,z,-y). Blender imports convert native nodes back to source basis.",
+  "unique_designs": 4,
+  "display_instances": 6,
+  "registered_seats_added": 0,
+  "body_cart_or_host_fit": false,
+  "items": [
+    {
+      "key": "programme",
+      "asset_id": "AST-CUL-001",
+      "group": "foyer",
+      "source_origin_m": [
+        -1.5,
+        0,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/auditorium_arrival/source/AST-CUL-001.blend",
+      "manifest_path": "assets/auditorium_arrival/AST-CUL-001.manifest.json",
+      "variants": {
+        "closed": "assets/auditorium_arrival/exports/AST-CUL-001.glb",
+        "access": "assets/auditorium_arrival/exports/AST-CUL-001_access.glb"
+      }
+    },
+    {
+      "key": "usher",
+      "asset_id": "AST-CUL-002",
+      "group": "foyer",
+      "source_origin_m": [
+        0.6,
+        0,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/auditorium_arrival/source/AST-CUL-002.blend",
+      "manifest_path": "assets/auditorium_arrival/AST-CUL-002.manifest.json",
+      "variants": {
+        "closed": "assets/auditorium_arrival/exports/AST-CUL-002.glb",
+        "access": "assets/auditorium_arrival/exports/AST-CUL-002_access.glb"
+      }
+    },
+    {
+      "key": "seat_left",
+      "asset_id": "AST-CUL-003",
+      "group": "audience",
+      "source_origin_m": [
+        -0.74,
+        4,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/auditorium_use/source/AST-CUL-003.blend",
+      "manifest_path": "assets/auditorium_use/AST-CUL-003.manifest.json",
+      "variants": {
+        "closed": "assets/auditorium_use/exports/AST-CUL-003.glb",
+        "folded": "assets/auditorium_use/exports/AST-CUL-003_folded.glb"
+      }
+    },
+    {
+      "key": "seat_middle",
+      "asset_id": "AST-CUL-003",
+      "group": "audience",
+      "source_origin_m": [
+        0,
+        4,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/auditorium_use/source/AST-CUL-003.blend",
+      "manifest_path": "assets/auditorium_use/AST-CUL-003.manifest.json",
+      "variants": {
+        "closed": "assets/auditorium_use/exports/AST-CUL-003.glb",
+        "folded": "assets/auditorium_use/exports/AST-CUL-003_folded.glb"
+      }
+    },
+    {
+      "key": "seat_right",
+      "asset_id": "AST-CUL-003",
+      "group": "audience",
+      "source_origin_m": [
+        0.74,
+        4,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/auditorium_use/source/AST-CUL-003.blend",
+      "manifest_path": "assets/auditorium_use/AST-CUL-003.manifest.json",
+      "variants": {
+        "closed": "assets/auditorium_use/exports/AST-CUL-003.glb",
+        "folded": "assets/auditorium_use/exports/AST-CUL-003_folded.glb"
+      }
+    },
+    {
+      "key": "work_stand",
+      "asset_id": "AST-CUL-004",
+      "group": "workshop",
+      "source_origin_m": [
+        4.5,
+        3.5,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "source_path": "assets/auditorium_use/source/AST-CUL-004.blend",
+      "manifest_path": "assets/auditorium_use/AST-CUL-004.manifest.json",
+      "variants": {
+        "closed": "assets/auditorium_use/exports/AST-CUL-004.glb",
+        "service": "assets/auditorium_use/exports/AST-CUL-004_service_open.glb",
+        "aimed": "assets/auditorium_use/exports/AST-CUL-004_aimed.glb"
+      }
+    }
+  ],
+  "proposed_empty_regions": [
+    {
+      "id": "foyer_public_approach",
+      "group": "foyer",
+      "min_source_m": [
+        -2.15,
+        -0.95,
+        0.01
+      ],
+      "max_source_m": [
+        1.45,
+        -0.45,
+        2.2
+      ]
+    },
+    {
+      "id": "foyer_staff_approach",
+      "group": "foyer",
+      "min_source_m": [
+        -2.15,
+        0.7,
+        0.01
+      ],
+      "max_source_m": [
+        1.45,
+        1.15,
+        2.2
+      ]
+    },
+    {
+      "id": "audience_front_inspection_strip",
+      "group": "audience",
+      "min_source_m": [
+        -1.15,
+        2.6,
+        0.01
+      ],
+      "max_source_m": [
+        1.15,
+        3.3,
+        1.8
+      ]
+    },
+    {
+      "id": "workshop_front_use_proposal",
+      "group": "workshop",
+      "min_source_m": [
+        4.15,
+        2.5,
+        0.01
+      ],
+      "max_source_m": [
+        4.85,
+        3.1,
+        1.8
+      ]
+    },
+    {
+      "id": "workshop_rear_service_proposal",
+      "group": "workshop",
+      "min_source_m": [
+        4.15,
+        4.0,
+        0.01
+      ],
+      "max_source_m": [
+        4.85,
+        4.5,
+        1.8
+      ]
+    }
+  ],
+  "views": {
+    "foyer_public_standing": {
+      "source_eye_m": [
+        2,
+        -5.8,
+        1.63
+      ],
+      "source_target_m": [
+        -0.3,
+        0,
+        1.1
+      ],
+      "lens_mm": 42,
+      "states": {
+        "programme": "closed",
+        "usher": "closed"
+      },
+      "purpose": "Actual public programme and usher faces in one relative fixture; no door or queue adoption"
+    },
+    "foyer_service_standing": {
+      "source_eye_m": [
+        1,
+        4.8,
+        1.63
+      ],
+      "source_target_m": [
+        -0.4,
+        0,
+        1.1
+      ],
+      "lens_mm": 38,
+      "states": {
+        "programme": "access",
+        "usher": "access"
+      },
+      "purpose": "Rear panel handling pose and supported withdrawn drawer; no live service or inferred room connection"
+    },
+    "audience_mixed_states": {
+      "source_eye_m": [
+        2.8,
+        0.4,
+        1.63
+      ],
+      "source_target_m": [
+        0,
+        4,
+        0.65
+      ],
+      "lens_mm": 42,
+      "states": {
+        "seat_left": "closed",
+        "seat_middle": "folded",
+        "seat_right": "closed"
+      },
+      "purpose": "Three instances of one repeated seat at a proposed0.74m pitch, mixed pan states; no new capacity or actor/rake fit"
+    },
+    "workshop_aimed_standing": {
+      "source_eye_m": [
+        6,
+        0,
+        1.63
+      ],
+      "source_target_m": [
+        4.5,
+        3.5,
+        0.92
+      ],
+      "lens_mm": 38,
+      "states": {
+        "work_stand": "aimed"
+      },
+      "purpose": "Separate workshop example with authored aimed housing and inactive work/cue face"
+    },
+    "workshop_service_standing": {
+      "source_eye_m": [
+        6,
+        6.8,
+        1.63
+      ],
+      "source_target_m": [
+        4.5,
+        3.5,
+        0.95
+      ],
+      "lens_mm": 38,
+      "states": {
+        "work_stand": "service"
+      },
+      "purpose": "Backside service removal pose; handling support and electrical implementation unverified"
+    }
+  },
+  "limits": [
+    "The preserved historical3400 places are unchanged; upper gallery access aliases add none",
+    "These are separate studio examples, not an established foyer-audience-workshop route",
+    "The historical3.4m cart contract is not replaced or proven by these inspection strips",
+    "A low triangle count or repeated studio arrangement is not a crowd/engine benchmark"
+  ]
+}

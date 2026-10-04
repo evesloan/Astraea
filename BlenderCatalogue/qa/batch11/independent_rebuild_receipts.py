@@ -1,0 +1,37 @@
+"""Scope/hash-check coordinated completed fresh builds; no duplicate regeneration."""
+from pathlib import Path
+import hashlib,json,zipfile,re
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'qa/batch11'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();bind=lambda p:{'path':str(p.relative_to(ROOT)),'sha256':sha(p),'bytes':p.stat().st_size}
+rows=[]
+# Guest: fresh full-family default invocation; --only current-workspace retention path is not executed.
+b=ROOT/'assets/landing_guest';q=b/'qa';rp=q/'source_only_rebuild_receipt.json';r=json.loads(rp.read_text());dp=b/'dependency_manifest.json';d=json.loads(dp.read_text());common={'standards/materials.py','materials/material_manifest.json'}|{'materials/'+x['base_color_file']for x in json.loads((ROOT/'materials/material_manifest.json').read_text())['materials'].values()};required=common|{'assets/landing_guest/source/build_landing_guest.py','assets/landing_guest/textures/guest_arrival_original.png'};extra={'materials/material_contact_sheet.png'};declared={x['origin_from_catalogue_root']for x in r['source_inputs']};assert declared==required|extra
+for x in r['source_inputs']:assert sha(ROOT/x['origin_from_catalogue_root'])==x['sha256']
+assert set(r['staged_initial_files'])=={'catalogue/'+x for x in declared};assert not any(x.endswith(('.blend','.glb'))or'/qa/'in x for x in r['staged_initial_files']);assert '--only'not in r['build_command'];assert r['all_passed']and r['build_exit_code']==r['postbuild_reload_exit_code']==0 and r['postbuild_reload_all_passed']
+for x in d['local_input_files']:assert sha(b/x['path'])==x['sha256']
+for x in d['external_input_files']:assert sha(ROOT/x['path_from_catalogue_root'])==x['sha256']
+for x in d['files']:assert sha(b/x['path'])==x['sha256']
+ep=q/'rebuild_execution_bindings.json';ex=json.loads(ep.read_text());assert ex['all_passed']and all(ex['executed_copy_checks'].values())
+for x in ex['files']:assert sha(b/x['path'])==x['sha256']
+runner=q/'source_only_rebuild.py';code=runner.read_text();assert 'assert not STAGE.exists()'in code and "assert not any(x.endswith(('.blend','.glb'))"in code;log=q/'source_only_build.log';txt=log.read_text();assert txt.count('Finished glTF 2.0 export')==2 and len(re.findall(r'Saved "AST-LND-\d+\.blend"',txt))==2
+stage=Path(r['build_command'][-1]).parents[3];outputs=[]
+for a in r['assets']:
+ ident=a['catalogue_id'];p=b/'exports'/(ident+'.glb');assert sha(p)==a['current_glb_sha256']==a['rebuilt_glb_sha256'];assert sha(b/'source'/(ident+'.blend'))==a['current_source_sha256'];assert all(a[k]for k in ['glb_binary_identical','bounds_equal','triangles_equal','semantic_parts_equal','marker_records_equal','joins_equal']);outputs.append(bind(p))
+artp=q/'art_reproduction_receipt.json';art=json.loads(artp.read_text());assert art['binary_identical']and art['source_script_sha256']==sha(b/'source/make_orientation_art.py')and art['current_art_sha256']==art['recreated_art_sha256']==sha(b/'textures/guest_arrival_original.png')
+rows.append({'family':'landing_guest','passed':True,'receipt':bind(rp),'dependency_manifest':bind(dp),'execution_bindings':bind(ep),'runner':bind(runner),'postbuild_checker':bind(q/'check_sources.py'),'logs':[bind(log),bind(q/'source_only_reload.log')],'production_inputs':[bind(ROOT/p)for p in sorted(required|{'assets/landing_guest/source/make_orientation_art.py'})],'extra_staged_input_not_opened_by_builder':[bind(ROOT/p)for p in sorted(extra)],'all_helper_loaded_roles_included':True,'fresh_input_only_stage':True,'default_full_build_has_no_previous_output_dependency':True,'art_reproduction':bind(artp),'byte_identical_exports':outputs,'no_reviewer_duplicate_build':True})
+# Staff: archive contains every file actually read, including source artwork hashed for dependency inventory.
+b=ROOT/'assets/landing_service';q=b/'qa';rp=q/'source_only_rebuild.json';r=json.loads(rp.read_text());dp=b/'dependency_manifest.json';d=json.loads(dp.read_text());common={'standards/staff_materials.py','materials/staff/manifest.json'}|{'materials/staff/'+x['file']for x in json.loads((ROOT/'materials/staff/manifest.json').read_text())['materials'].values()};gm=json.loads((b/'textures/manifest.json').read_text());required=common|{'assets/landing_service/source/build_landing_service.py','assets/landing_service/textures/manifest.json','assets/landing_service/textures/draw_service_graphics.py'}|{'assets/landing_service/textures/'+x['file']for x in gm['roles'].values()};assert required==set(r['fresh_stage_initial_files'])=={x['path']for x in d['source_only_inputs']};assert r['all_required_checks_pass']and r['builder_returncode']==0 and r['prior_new_outputs_or_qa_inputs_in_stage']is False
+for x in d['source_only_inputs']:assert sha(ROOT/x['path'])==x['sha256']
+assert r['execution_file_bindings_before']==r['execution_file_bindings_after']and r['executed_runner_and_checker_unchanged']
+for p,h in r['execution_file_bindings_after'].items():assert sha(ROOT/p)==h
+for p,h in r['execution_logs'].items():assert sha(ROOT/p)==h
+zp=b/r['source_only_package'];assert sha(zp)==r['source_only_package_sha256']
+with zipfile.ZipFile(zp)as z:
+ assert z.testzip()is None and set(z.namelist())==required
+ for p in required:assert hashlib.sha256(z.read(p)).hexdigest()==sha(ROOT/p)
+runner=q/'rebuild_source_only.py';code=runner.read_text();assert "assert not STAGE.exists()"in code and 'assert initial==sorted' in code;log=q/'source_only_build.log';txt=log.read_text();assert txt.count('Finished glTF 2.0 export')==2 and len(re.findall(r'Saved "AST-LND-\d+\.blend"',txt))==2
+outputs=[]
+for a in r['results']:
+ p=b/'exports'/(a['id']+'.glb');assert sha(p)==a['original_glb_sha256']==a['fresh_glb_sha256'];assert sha(b/'source'/(a['id']+'.blend'))==a['original_blend_sha256'];assert a['export_byte_identical']and a['editable_geometry_uv_material_hierarchy_modifier_identical'];outputs.append(bind(p))
+rows.append({'family':'landing_service','passed':True,'receipt':bind(rp),'dependency_manifest':bind(dp),'runner':bind(runner),'postbuild_checker':bind(q/'source_signature.py'),'logs':[bind(ROOT/p)for p in r['execution_logs']],'production_inputs':[bind(ROOT/p)for p in sorted(required)],'input_only_archive':bind(zp),'archive_crc_pass':True,'archive_members_exactly_current_required_inputs':True,'all_helper_loaded_roles_included':True,'fresh_input_only_stage':True,'byte_identical_exports':outputs,'no_reviewer_duplicate_build':True})
+res={'passed':True,'executed_script_sha256':sha(Path(__file__)),'families':rows,'byte_identical_glbs':4,'scope':'Independently reconstructed all material/helper/local-art read dependencies, checked fresh-stage inventory and exact executed runner/checker/log bindings, and verified current/regenerated GLB byte equality. Source-only work was coordinated by lead/authors; reviewer did not duplicate it.','limits':['Editable .blend files are regenerated and reloaded; binary save equality is not claimed. Guest compares semantic parts/bounds/markers/joins plus byte-identical export; staff additionally compares editable vertex/topology/UV/material/hierarchy/modifier signatures.','Guest --only maintenance mode reads current metadata to retain unaffected002; fresh source-only execution invokes full default build and opens no previous outputs.','This closes independent component source packages, not the missing original game.']};(OUT/'independent_rebuild_receipts.json').write_text(json.dumps(res,indent=2)+'\n');print('Four source-only GLBs byte-identical; guest13 production/art inputs plus disclosed contact sheet, staff18 inputs closed')

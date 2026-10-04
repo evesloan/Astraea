@@ -1,0 +1,1081 @@
+{
+  "catalogue_id": "AST-AQU-008",
+  "name": "Guarded used-towel return with rolling receiver",
+  "design_count": 1,
+  "use_roles": [
+    "guarded guest return",
+    "rear container extraction"
+  ],
+  "motion": {
+    "group": "return_container_translation",
+    "direction_blender_source": [
+      0,
+      1,
+      0
+    ],
+    "direction_gltf_yup": [
+      0,
+      0,
+      -1
+    ],
+    "travel_m": 0.92,
+    "states": {
+      "closed_m": 0,
+      "withdrawn_m": 0.92
+    },
+    "support": "Four real wheel treads reach floor Z0 in both states and during a horizontal translation. Bearings, traction, loads and game motion are unimplemented.",
+    "swept_reserve_min_m": [
+      -0.385,
+      -0.29,
+      0
+    ],
+    "swept_reserve_max_m": [
+      0.385,
+      1.305,
+      0.73
+    ],
+    "service_staging_min_m": [
+      -0.62,
+      0.39,
+      0
+    ],
+    "service_staging_max_m": [
+      0.62,
+      1.82,
+      1.0
+    ]
+  },
+  "clear_volumes": [
+    {
+      "name": "guest_mouth_aperture",
+      "min_m": [
+        -0.28,
+        -0.48,
+        0.878
+      ],
+      "max_m": [
+        0.28,
+        -0.339,
+        1.045
+      ]
+    },
+    {
+      "name": "bin_internal_collection",
+      "min_m": [
+        -0.32,
+        -0.23,
+        0.15
+      ],
+      "max_m": [
+        0.32,
+        0.23,
+        0.44
+      ]
+    },
+    {
+      "name": "rear_handle_finger_gap",
+      "min_m": [
+        -0.12,
+        0.287,
+        0.55
+      ],
+      "max_m": [
+        0.12,
+        0.322,
+        0.578
+      ]
+    }
+  ],
+  "collision_notes": "Fixed profile-following cheeks/floor shoes/chute/hood/baffle and explicit thin container floor/walls/handle/wheels preserve the mouth, receiving cavity and rear travel. Small labels and fine wheel axle brackets are deliberately noncolliding visual attachments. Source open/closed exports count once.",
+  "sightline_scope": "Fixed dogleg chute and opaque upper rear curtain. Ordinary guest-eye finite rays require fresh measured evidence in both states. No privacy certification or whole-room implication.",
+  "throat_path_proposal": {
+    "centres_blender_source_m": [
+      [
+        0,
+        -0.35,
+        0.96
+      ],
+      [
+        0,
+        -0.2,
+        0.97
+      ],
+      [
+        0,
+        -0.03,
+        0.825
+      ],
+      [
+        0,
+        0.125,
+        0.635
+      ],
+      [
+        0,
+        0.16,
+        0.47
+      ],
+      [
+        0,
+        0.16,
+        0.25
+      ]
+    ],
+    "test_radius_m": 0.025,
+    "meaning": "Proposed continuous50mm diameter empty geometric passage; requires actual source/native check. No towel size, transport, flow or species compatibility claim."
+  },
+  "limitations_extra": [
+    "Lower container front rim passes below fixed chute. Receiver is not a sealed laundry or fluid vessel",
+    "No laundry, saturation, disposal, collection automation, hygienic material or mechanical validation"
+  ],
+  "units": "metres",
+  "coordinate_frame": "Blender source X width, Y depth, Z up, front -Y; native GLB (X,Z,-Y)",
+  "pivot_m": [
+    0,
+    0,
+    0
+  ],
+  "datum": "Floor Z0",
+  "blender_version": "4.3.2",
+  "dimensions_m": [
+    1.003999948501587,
+    0.7459999918937683,
+    1.2200000286102295
+  ],
+  "bounds_min_m": [
+    -0.5019999742507935,
+    -0.375,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.5019999742507935,
+    0.3709999918937683,
+    1.2200000286102295
+  ],
+  "triangles": 5388,
+  "editable_semantic_parts": 35,
+  "parts": [
+    {
+      "name": "return_L_formed_load_cheek",
+      "role": "ivory_enamel",
+      "motion_group": "fixed",
+      "triangles": 188,
+      "bounds_min_m": [
+        -0.5,
+        -0.375,
+        0.02500000037252903
+      ],
+      "bounds_max_m": [
+        -0.4020000100135803,
+        0.33500000834465027,
+        1.2200000286102295
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_L_floor_shoe",
+      "role": "aquatic_dark_grip",
+      "motion_group": "fixed",
+      "triangles": 236,
+      "bounds_min_m": [
+        -0.5019999742507935,
+        -0.28999999165534973,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.4000000059604645,
+        0.2800000011920929,
+        0.039000000804662704
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_R_formed_load_cheek",
+      "role": "ivory_enamel",
+      "motion_group": "fixed",
+      "triangles": 188,
+      "bounds_min_m": [
+        0.4020000100135803,
+        -0.375,
+        0.02500000037252903
+      ],
+      "bounds_max_m": [
+        0.5,
+        0.33500000834465027,
+        1.2200000286102295
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_R_floor_shoe",
+      "role": "aquatic_dark_grip",
+      "motion_group": "fixed",
+      "triangles": 236,
+      "bounds_min_m": [
+        0.4000000059604645,
+        -0.28999999165534973,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.5019999742507935,
+        0.2800000011920929,
+        0.039000000804662704
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_front_low_guard",
+      "role": "aquatic_clay_sling",
+      "motion_group": "fixed",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.4180000126361847,
+        -0.36500000953674316,
+        0.03500000014901161
+      ],
+      "bounds_max_m": [
+        0.4180000126361847,
+        -0.32100000977516174,
+        0.8199999928474426
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_curved_guard_hood",
+      "role": "ivory_enamel",
+      "motion_group": "fixed",
+      "triangles": 168,
+      "bounds_min_m": [
+        -0.41999998688697815,
+        -0.3586105406284332,
+        1.070704698562622
+      ],
+      "bounds_max_m": [
+        0.41999998688697815,
+        0.33000001311302185,
+        1.215000033378601
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_chute_side_-1",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "fixed",
+      "triangles": 176,
+      "bounds_min_m": [
+        -0.32199999690055847,
+        -0.3449999988079071,
+        0.4950000047683716
+      ],
+      "bounds_max_m": [
+        -0.3019999861717224,
+        0.20000000298023224,
+        1.119464635848999
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_chute_side_1",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "fixed",
+      "triangles": 176,
+      "bounds_min_m": [
+        0.3019999861717224,
+        -0.3449999988079071,
+        0.4950000047683716
+      ],
+      "bounds_max_m": [
+        0.32199999690055847,
+        0.20000000298023224,
+        1.119464635848999
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_downturn_receiving_floor",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "fixed",
+      "triangles": 164,
+      "bounds_min_m": [
+        -0.3100000023841858,
+        -0.34564101696014404,
+        0.49545082449913025
+      ],
+      "bounds_max_m": [
+        0.3100000023841858,
+        0.08865874260663986,
+        0.8456116914749146
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_opaque_dogleg_baffle",
+      "role": "aquatic_clay_sling",
+      "motion_group": "fixed",
+      "triangles": 164,
+      "bounds_min_m": [
+        -0.3109999895095825,
+        -0.25117596983909607,
+        0.5009999871253967
+      ],
+      "bounds_max_m": [
+        0.3109999895095825,
+        0.21799999475479126,
+        1.1181799173355103
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_upper_back_curtain",
+      "role": "aquatic_clay_sling",
+      "motion_group": "fixed",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.414000004529953,
+        0.26899999380111694,
+        0.75
+      ],
+      "bounds_max_m": [
+        0.414000004529953,
+        0.30399999022483826,
+        1.1440000534057617
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_mouth_side_guard_-1",
+      "role": "aquatic_clay_sling",
+      "motion_group": "fixed",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.414000004529953,
+        -0.335999995470047,
+        0.8040000200271606
+      ],
+      "bounds_max_m": [
+        -0.3100000023841858,
+        0.2849999964237213,
+        1.1050000190734863
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_mouth_side_guard_1",
+      "role": "aquatic_clay_sling",
+      "motion_group": "fixed",
+      "triangles": 108,
+      "bounds_min_m": [
+        0.3100000023841858,
+        -0.335999995470047,
+        0.8040000200271606
+      ],
+      "bounds_max_m": [
+        0.414000004529953,
+        0.2849999964237213,
+        1.1050000190734863
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_real_bottom",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "container",
+      "triangles": 236,
+      "bounds_min_m": [
+        -0.36399999260902405,
+        -0.2759999930858612,
+        0.11299999803304672
+      ],
+      "bounds_max_m": [
+        0.36399999260902405,
+        0.2759999930858612,
+        0.1420000046491623
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_rising_side_-1",
+      "role": "aquatic_teal_sling",
+      "motion_group": "container",
+      "triangles": 120,
+      "bounds_min_m": [
+        -0.367000013589859,
+        -0.2759999930858612,
+        0.13099999725818634
+      ],
+      "bounds_max_m": [
+        -0.3449999988079071,
+        0.2759999930858612,
+        0.7099999785423279
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_rising_side_1",
+      "role": "aquatic_teal_sling",
+      "motion_group": "container",
+      "triangles": 120,
+      "bounds_min_m": [
+        0.3449999988079071,
+        -0.2759999930858612,
+        0.13099999725818634
+      ],
+      "bounds_max_m": [
+        0.367000013589859,
+        0.2759999930858612,
+        0.7099999785423279
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_low_front_wall",
+      "role": "aquatic_teal_sling",
+      "motion_group": "container",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.36000001430511475,
+        -0.27799999713897705,
+        0.1289999932050705
+      ],
+      "bounds_max_m": [
+        0.36000001430511475,
+        -0.25200000405311584,
+        0.4650000035762787
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_rear_service_wall",
+      "role": "aquatic_teal_sling",
+      "motion_group": "container",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.36000001430511475,
+        0.25099998712539673,
+        0.1289999932050705
+      ],
+      "bounds_max_m": [
+        0.36000001430511475,
+        0.2800000011920929,
+        0.7099999785423279
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_pull_handle_standoff_-0.14",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "container",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.15600000321865082,
+        0.2750000059604645,
+        0.550000011920929
+      ],
+      "bounds_max_m": [
+        -0.12399999797344208,
+        0.3529999852180481,
+        0.578000009059906
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_pull_handle_standoff_0.14",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "container",
+      "triangles": 108,
+      "bounds_min_m": [
+        0.12399999797344208,
+        0.2750000059604645,
+        0.550000011920929
+      ],
+      "bounds_max_m": [
+        0.15600000321865082,
+        0.3529999852180481,
+        0.578000009059906
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_pull_handle_grip",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "container",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.15600000321865082,
+        0.3269999921321869,
+        0.546999990940094
+      ],
+      "bounds_max_m": [
+        0.15600000321865082,
+        0.3709999918937683,
+        0.5809999704360962
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_wheel_(-0.274, -0.195)_tread",
+      "role": "aquatic_dark_grip",
+      "motion_group": "container",
+      "triangles": 188,
+      "bounds_min_m": [
+        -0.30000001192092896,
+        -0.24403926730155945,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.24799999594688416,
+        -0.145960733294487,
+        0.09807852655649185
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_wheel_(-0.274, -0.195)_axle_bracket",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "container",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.2919999957084656,
+        -0.2329999953508377,
+        0.04399999976158142
+      ],
+      "bounds_max_m": [
+        -0.25600001215934753,
+        -0.15700000524520874,
+        0.12800000607967377
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_wheel_(-0.274, 0.195)_tread",
+      "role": "aquatic_dark_grip",
+      "motion_group": "container",
+      "triangles": 188,
+      "bounds_min_m": [
+        -0.30000001192092896,
+        0.145960733294487,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.24799999594688416,
+        0.24403926730155945,
+        0.09807852655649185
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_wheel_(-0.274, 0.195)_axle_bracket",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "container",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.2919999957084656,
+        0.15700000524520874,
+        0.04399999976158142
+      ],
+      "bounds_max_m": [
+        -0.25600001215934753,
+        0.2329999953508377,
+        0.12800000607967377
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_wheel_(0.274, -0.195)_tread",
+      "role": "aquatic_dark_grip",
+      "motion_group": "container",
+      "triangles": 188,
+      "bounds_min_m": [
+        0.24799999594688416,
+        -0.24403926730155945,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.30000001192092896,
+        -0.145960733294487,
+        0.09807852655649185
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_wheel_(0.274, -0.195)_axle_bracket",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "container",
+      "triangles": 108,
+      "bounds_min_m": [
+        0.25600001215934753,
+        -0.2329999953508377,
+        0.04399999976158142
+      ],
+      "bounds_max_m": [
+        0.2919999957084656,
+        -0.15700000524520874,
+        0.12800000607967377
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_wheel_(0.274, 0.195)_tread",
+      "role": "aquatic_dark_grip",
+      "motion_group": "container",
+      "triangles": 188,
+      "bounds_min_m": [
+        0.24799999594688416,
+        0.145960733294487,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.30000001192092896,
+        0.24403926730155945,
+        0.09807852655649185
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_wheel_(0.274, 0.195)_axle_bracket",
+      "role": "aquatic_satin_alloy",
+      "motion_group": "container",
+      "triangles": 108,
+      "bounds_min_m": [
+        0.25600001215934753,
+        0.15700000524520874,
+        0.04399999976158142
+      ],
+      "bounds_max_m": [
+        0.2919999957084656,
+        0.2329999953508377,
+        0.12800000607967377
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "bin_service_word",
+      "role": "ivory_enamel",
+      "motion_group": "container",
+      "triangles": 212,
+      "bounds_min_m": [
+        -0.07078500092029572,
+        0.27949997782707214,
+        0.37441501021385193
+      ],
+      "bounds_max_m": [
+        0.06688499450683594,
+        0.2824999988079071,
+        0.41933000087738037
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": []
+    },
+    {
+      "name": "return_wordmark",
+      "role": "ivory_enamel",
+      "motion_group": "fixed",
+      "triangles": 444,
+      "bounds_min_m": [
+        -0.11546799540519714,
+        -0.3675000071525574,
+        0.601207971572876
+      ],
+      "bounds_max_m": [
+        0.20564402639865875,
+        -0.3644999861717224,
+        0.662015974521637
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": []
+    },
+    {
+      "name": "return_symbol_stem",
+      "role": "ivory_enamel",
+      "motion_group": "fixed",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.0560000017285347,
+        -0.36899998784065247,
+        0.43700000643730164
+      ],
+      "bounds_max_m": [
+        -0.019999999552965164,
+        -0.3619999885559082,
+        0.5329999923706055
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_symbol_arrow",
+      "role": "ivory_enamel",
+      "motion_group": "fixed",
+      "triangles": 80,
+      "bounds_min_m": [
+        -0.09449073672294617,
+        -0.36899998784065247,
+        0.40339359641075134
+      ],
+      "bounds_max_m": [
+        0.018490727990865707,
+        -0.3619999885559082,
+        0.45500001311302185
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_symbol_fold_0",
+      "role": "ivory_enamel",
+      "motion_group": "fixed",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.1379999965429306,
+        -0.36899998784065247,
+        0.35199999809265137
+      ],
+      "bounds_max_m": [
+        0.06199999898672104,
+        -0.3619999885559082,
+        0.37400001287460327
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    },
+    {
+      "name": "return_symbol_fold_1",
+      "role": "ivory_enamel",
+      "motion_group": "fixed",
+      "triangles": 108,
+      "bounds_min_m": [
+        -0.12300000339746475,
+        -0.36899998784065247,
+        0.3869999945163727
+      ],
+      "bounds_max_m": [
+        0.04699999839067459,
+        -0.3619999885559082,
+        0.4090000092983246
+      ],
+      "editable_type": "MESH",
+      "editable_modifiers": [
+        "Editable edge easing"
+      ]
+    }
+  ],
+  "material_roles": [
+    "aquatic_clay_sling",
+    "aquatic_dark_grip",
+    "aquatic_satin_alloy",
+    "aquatic_teal_sling",
+    "ivory_enamel"
+  ],
+  "contacts": [
+    {
+      "kind": "mouth_position_proposal",
+      "source_part": "return_downturn_receiving_floor",
+      "position_blender_source_m": [
+        0.0,
+        -0.346,
+        0.832
+      ],
+      "normal_blender_source": [
+        0.394,
+        -0.919,
+        0.0
+      ],
+      "record_pose": "Fixed source pose",
+      "position_gltf_yup_m": [
+        0.0,
+        0.832,
+        0.346
+      ],
+      "normal_gltf_yup": [
+        0.394,
+        0.0,
+        0.919
+      ],
+      "normal_status": "Nonphysical mouth orientation proposal; this direction is not asserted as a surface normal",
+      "name": "return_receiving_lip",
+      "actual_source_surface_m": [
+        -1.4901161193847656e-08,
+        -0.34197935461997986,
+        0.830453634262085
+      ],
+      "actual_source_surface_normal": [
+        0.0,
+        -0.9333454966545105,
+        0.3589792251586914
+      ],
+      "distance_to_source_surface_m": 0.004307757597416639
+    },
+    {
+      "kind": "physical_surface",
+      "source_part": "bin_pull_handle_grip",
+      "position_blender_source_m": [
+        0.0,
+        0.371,
+        0.565
+      ],
+      "normal_blender_source": [
+        0,
+        1,
+        0
+      ],
+      "record_pose": "Closed source pose; parent container transform applies the declared translation to this marker in state exports",
+      "position_gltf_yup_m": [
+        0.0,
+        0.565,
+        -0.371
+      ],
+      "normal_gltf_yup": [
+        0,
+        0,
+        -1
+      ],
+      "normal_status": "Physical outward surface normal, not approach direction",
+      "name": "return_container_grip",
+      "actual_source_surface_m": [
+        1.4901161193847656e-08,
+        0.3709999918937683,
+        0.5649999976158142
+      ],
+      "actual_source_surface_normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "distance_to_source_surface_m": 1.4901161193847656e-08
+    },
+    {
+      "kind": "physical_surface",
+      "source_part": "bin_wheel_(-0.274, -0.195)_tread",
+      "position_blender_source_m": [
+        -0.274,
+        -0.195,
+        0.0
+      ],
+      "normal_blender_source": [
+        0,
+        0,
+        -1
+      ],
+      "record_pose": "Closed source pose; parent container transform applies the declared translation to this marker in state exports",
+      "position_gltf_yup_m": [
+        -0.274,
+        0.0,
+        0.195
+      ],
+      "normal_gltf_yup": [
+        0,
+        -1,
+        0
+      ],
+      "normal_status": "Physical outward surface normal, not approach direction",
+      "name": "return_container_floor",
+      "actual_source_surface_m": [
+        -0.27399998903274536,
+        -0.19499999284744263,
+        3.4694440568214703e-18
+      ],
+      "actual_source_surface_normal": [
+        -0.0,
+        -3.5567596375521795e-16,
+        -1.0
+      ],
+      "distance_to_source_surface_m": 3.4694440568214703e-18
+    },
+    {
+      "kind": "physical_surface",
+      "source_part": "return_L_floor_shoe",
+      "position_blender_source_m": [
+        -0.451,
+        -0.005,
+        0.0
+      ],
+      "normal_blender_source": [
+        0,
+        0,
+        -1
+      ],
+      "record_pose": "Fixed source pose",
+      "position_gltf_yup_m": [
+        -0.451,
+        0.0,
+        0.005
+      ],
+      "normal_gltf_yup": [
+        0,
+        -1,
+        0
+      ],
+      "normal_status": "Physical outward surface normal, not approach direction",
+      "name": "return_fixed_floor",
+      "actual_source_surface_m": [
+        -0.45100006461143494,
+        -0.004998981952667236,
+        0.0
+      ],
+      "actual_source_surface_normal": [
+        -0.0,
+        0.0,
+        -1.0
+      ],
+      "distance_to_source_surface_m": 1.0196791890848544e-06
+    },
+    {
+      "kind": "physical_surface",
+      "source_part": "bin_real_bottom",
+      "position_blender_source_m": [
+        0.0,
+        0.0,
+        0.142
+      ],
+      "normal_blender_source": [
+        0,
+        0,
+        1
+      ],
+      "record_pose": "Closed source pose; parent container transform applies the declared translation to this marker in state exports",
+      "position_gltf_yup_m": [
+        0.0,
+        0.142,
+        0.0
+      ],
+      "normal_gltf_yup": [
+        0,
+        1,
+        0
+      ],
+      "normal_status": "Physical outward surface normal, not approach direction",
+      "name": "return_bin_bottom_contact",
+      "actual_source_surface_m": [
+        -1.341104507446289e-07,
+        5.960464477539062e-07,
+        0.1420000046491623
+      ],
+      "actual_source_surface_normal": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "distance_to_source_surface_m": 6.109476089477539e-07
+    }
+  ],
+  "source": "source/AST-AQU-008.blend",
+  "export": "exports/AST-AQU-008.glb",
+  "generator": "source/build_towel_use.py",
+  "reference_manifest": "../../batches/batch14/reference_manifest.json",
+  "programme_handoff": "../../references/aquatic_program/D08_programme_handoff.json",
+  "provenance": "Original script-assisted geometry and glyph forms; waterpark and public blueprint pixels inspected for resort material/use guidance only; no sampled pixels, reused clinical forms or external meshes",
+  "limitations": [
+    "Component proposals; no original engine adoption, species/actor fit, real hygiene, plumbing, mechanical certification or target-PC performance",
+    "D08_bath6 dry changing and aft D08_service9 towels/care are distinct historical allocations, not adjoining rooms",
+    "Lower container front rim passes below fixed chute. Receiver is not a sealed laundry or fluid vessel",
+    "No laundry, saturation, disposal, collection automation, hygienic material or mechanical validation"
+  ],
+  "export_settings": {
+    "static_meshes": "one per material role",
+    "moving_meshes": "one per material role under the one actual bin translation node",
+    "uv": "evaluated copies reprojected per face in metric material units; original semantic source retained",
+    "lights": false,
+    "textures": "shared unchanged images packed in source and embedded in GLB"
+  },
+  "state_exports": [
+    "exports/AST-AQU-008.glb",
+    "exports/AST-AQU-008_withdrawn.glb"
+  ],
+  "source_sha256": "aeb09d6aa3e5d8abbf13f506c395b41b52e8494822bd5f009752ee73911c216d",
+  "glb_sha256": "dcd95b5e561d4b99f584526313f7a8d48d1e5130c4407a48885a3afa88722c44",
+  "generator_sha256": "c642ad7f1f5a5f7768908114aa456854553345fbd331412f406070cebc6c3bd2",
+  "withdrawn_glb_sha256": "a7c774e655bf786a1e7762a271cf09e8eaf5ecf9705f30a97b19d6b592d282b3"
+}

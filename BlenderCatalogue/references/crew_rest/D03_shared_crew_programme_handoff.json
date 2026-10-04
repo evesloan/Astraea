@@ -1,0 +1,357 @@
+{
+  "schema": "astraea_d03_shared_crew_programme_handoff_v1",
+  "created_utc": "2026-10-03T00:23:18Z",
+  "status": "Read-only source audit with a new handoff file only; no catalogue or scene changes",
+  "purpose": "Ground the approved four-component shared-crew rest and privacy kit after Batch14 durable delivery",
+  "summary": {
+    "source_best_supported_frame_arrangement": "A two-level bunk is directly visible in the actual supplied shared-room photograph",
+    "recommended_first_prototype": "One adjustable single-place frame, instantiated twice in a clearly proposed paired QA arrangement",
+    "recommendation_basis": "The single-place prototype is a deliberate lower-assumption design choice, not a claim that the reference depicts side-by-side beds. It preserves independent support, privacy and access while usable D03 headroom, body envelopes and climbing access remain unknown. A stacked derivative should be separately proposed and tested if selected later.",
+    "current_canon": "400 crew including one player; the player shares a room with an existing colleague. The colleague's identity and story are deferred. Asset prototypes add no registered berths or people.",
+    "host_status": "No final host room ID, roommate ID, berth-key migration or room fit is established by these surviving sources"
+  },
+  "authority_order": [
+    {
+      "priority": 1,
+      "source": "Current parent task instruction for this audit",
+      "rules": [
+        "Approved components are an adjustable modest rest frame, supported berth curtain/track, personal storage with real access, and compact individual task-light/shelf module",
+        "The player shares with an existing colleague inside the 400-person crew total",
+        "The colleague's identity and story are explicitly deferred",
+        "Older private-player-home text is superseded",
+        "No new registered berths, people, species dimensions, charging ports or final host-fit claims"
+      ]
+    },
+    {
+      "priority": 2,
+      "source_ids": ["batch12_contract", "planning_ledger", "species_canon"],
+      "rules": [
+        "Current catalogue canon confirms a shared existing crew room and leaves exact ID reconciliation open",
+        "The six canonical species replace the old eight-species roster",
+        "The old eight rest/habitat profiles may remain physical types and legacy identifiers, not a six-species compatibility certificate"
+      ]
+    },
+    {
+      "priority": 3,
+      "source_ids": ["coverage_json", "coverage_md", "ship_design", "atlas_pdf", "atlas_text", "guest_simulation", "daily_guest_life", "master_design"],
+      "rules": [
+        "Historical stable IDs, recorded counts and scoped evidence remain useful",
+        "Historical private-player-cabin allocation and narrative are not current design authority",
+        "Historical route/model results retain their limited scope and do not certify new asset fit or six-species use"
+      ]
+    },
+    {
+      "priority": 4,
+      "source_ids": ["shared_room_reference", "staff_reference_manifest", "batch03_contract"],
+      "rules": [
+        "The photograph supplies useful functional and material relationships",
+        "Its room width, human anatomy, apparent clearances and stack height are not approved dimensions"
+      ]
+    }
+  ],
+  "historical_d03_registry": {
+    "source_ids": ["coverage_json", "coverage_md", "atlas_text"],
+    "source_locators": [
+      "WHOLE_SHIP_COVERAGE.md lines 21-45 and 71-83",
+      "whole_ship_coverage.json records C001-C200 and D03_employee_cabin0 through D03_service9",
+      "Atlas printed page 05; existing atlas.txt lines 286-443"
+    ],
+    "deck": 3,
+    "registered_spaces": 210,
+    "passenger_units": 0,
+    "passenger_berths": 0,
+    "crew_cabin_records": {
+      "id_range": ["C001", "C200"],
+      "inclusive_count": 200,
+      "ordinary_double_count": 199,
+      "ordinary_berths_each": 2,
+      "exception": {"id": "C036", "historical_berths": 1},
+      "historical_total_crew_cabin_berths": 399,
+      "example": {
+        "id": "C001",
+        "name": "Crew cabin 001",
+        "staff_only": true,
+        "historical_berths": 2,
+        "legacy_morphology_family": 0,
+        "morphology_warning": "This value is not an assignment to a canonical species",
+        "locator": "whole_ship_coverage.json line 67446 onward"
+      }
+    },
+    "named_records": [
+      {"id": "D03_employee_cabin0", "name": "Employee cabin / 071", "kind": "employee_cabin", "staff_only": true, "historical_berths": 1, "other_tracked_capacity": null, "locator_line": 7369, "current_warning": "Historical separate player-home allocation is superseded; retain identity for future explicit reconciliation, not automatic assignment as the shared home"},
+      {"id": "D03_crew1", "name": "Custodian breakroom", "kind": "crew", "staff_only": true, "historical_berths": null, "crew_break_places": 14, "locator_line": 7417},
+      {"id": "D03_service2", "name": "Equipment depot", "kind": "service", "staff_only": true, "historical_berths": null, "other_tracked_capacity": null, "locator_line": 7468},
+      {"id": "D03_dining3", "name": "Crew dining", "kind": "dining", "staff_only": true, "historical_berths": null, "crew_meal_places": 300, "locator_line": 7516},
+      {"id": "D03_classroom4", "name": "Training room", "kind": "classroom", "staff_only": true, "historical_berths": null, "other_tracked_capacity": null, "locator_line": 7567},
+      {"id": "D03_reception5", "name": "Staff administration", "kind": "reception", "staff_only": true, "historical_berths": null, "other_tracked_capacity": null, "locator_line": 7615},
+      {"id": "D03_music6", "name": "Crew recreation", "kind": "music", "staff_only": true, "historical_berths": null, "crew_break_places": 12, "locator_line": 7663},
+      {"id": "D03_classroom7", "name": "Briefing room", "kind": "classroom", "staff_only": true, "historical_berths": null, "other_tracked_capacity": null, "locator_line": 7714},
+      {"id": "D03_clinic8", "name": "Crew care", "kind": "clinic", "staff_only": true, "historical_berths": null, "other_tracked_capacity": null, "locator_line": 7762},
+      {"id": "D03_service9", "name": "Uniforms & lockers", "kind": "service", "staff_only": true, "historical_berths": null, "other_tracked_capacity": null, "locator_line": 7810}
+    ],
+    "capacity_semantics": [
+      "The historical arithmetic was 199 doubles plus one single C036, giving 399 ordinary-cabin places, plus the one-berth employee cabin, giving 400 crew berths",
+      "That arithmetic documents the source snapshot; it is not an instruction to preserve a private player residence after the shared-room decision",
+      "A future shared-room integration must reconcile actual room, berth and person assignments explicitly while preserving the approved 400-person total and stable state",
+      "Do not add an existing colleague into the employee cabin by silently creating a 401st berth or duplicating the colleague",
+      "Two prototype frame instances in QA demonstrate a paired design relation and create zero registered berths and zero people",
+      "D03's recorded shared break places total 26: 14 in D03_crew1 and 12 in D03_music6. The all-ship total of 40 includes 14 in D18_crew4 Officer respite",
+      "300 crew dining places, break places, residential berths and whole-room occupancy are different quantities",
+      "Null capacities are unassigned or untracked, not zero. All listed room records have null whole-room simultaneous occupancy limits",
+      "No staff species proportions, species-to-job mapping or roommate demographics are fixed"
+    ]
+  },
+  "dimensions_and_geometry": {
+    "preserved_numeric_evidence": [
+      {"quantity": "D03 floor elevation", "value_m": 12, "source_ids": ["atlas_text", "master_design", "planning_ledger"]},
+      {"quantity": "D04 floor elevation", "value_m": 16.5, "source_ids": ["atlas_text", "master_design", "planning_ledger"]},
+      {"quantity": "D03 to D04 floor-to-floor interval", "value_m": 4.5, "status": "Arithmetic derived from preserved floor elevations; not usable room headroom"},
+      {"quantity": "Atlas crew-bank detail diagram extent", "x_m": [63, 108], "z_m": [-145, -45], "status": "Printed page 05 crop/detail extent, not a crew-room footprint or a bed envelope", "source_ids": ["atlas_text"]}
+    ],
+    "room_finished_polygon_m": null,
+    "room_internal_width_m": null,
+    "room_internal_depth_m": null,
+    "room_clear_height_m": null,
+    "existing_rest_surface_dimensions_m": null,
+    "existing_rest_surface_height_m": null,
+    "existing_bed_anchor_coordinates_m": null,
+    "door_aperture_m": null,
+    "door_leaf_sweep_m": null,
+    "curtain_track_mount_coordinates_m": null,
+    "storage_retrieval_envelope_m": null,
+    "actual_body_envelopes_m": null,
+    "actual_loaded_cart_envelope_m": null,
+    "evidence_limit": "No numeric crew-room internal or rest-surface dimensions were found in the bounded reviewed text sources. The atlas says bed anchors and exact doors are drawn, but their coordinates were not extracted or reconstructed in this no-render/no-code audit. Do not infer furniture dimensions from the photograph or treat atlas rectangles as finished interiors.",
+    "do_not_import_as_host_dimensions": [
+      "Batch03's 1.2 m wall width and 2.6 m cladding height are component proposals",
+      "Batch03's 2.65 m inspection clearance is not a D03 cabin ceiling requirement",
+      "Existing staff overhead modules require at least 3.2575 m mounting datum to preserve their 2.65 m example clearance; the 3.30 m example does not prove they fit D03",
+      "Neither the 4.5 m floor interval nor any component height proves bunk upper-berth clearance"
+    ],
+    "source_ids": ["architecture_brief", "atlas_text", "coverage_json", "batch03_contract", "staff_overhead_manifest"]
+  },
+  "shared_room_pixel_audit": {
+    "source_id": "shared_room_reference",
+    "library_file_id": "libfile_67f3b2c156e88191b07a939e80495fde",
+    "hash_verified": true,
+    "pixels_inspected": true,
+    "observed": [
+      "One compact two-level bed frame with two horizontal rest surfaces",
+      "An exposed ladder at the front and a raised rail along the visible upper edge",
+      "Curtains at upper and lower rest levels, with opening/retracted portions that reveal each berth",
+      "Curtain fabric descends from overhead or bed-frame edges; precise runners and concealed fastenings cannot be certified from the image",
+      "Separate light sources near the head end of the upper and lower berths",
+      "A tall adjacent storage unit with open shelf compartments containing folded possessions, lower drawers and an ajar mirrored door",
+      "A small freestanding open shelf beside the lower berth and usable-looking shared floor area in front",
+      "Plain pale painted structure, restrained grey-green curtain fabric and a practical institutional finish"
+    ],
+    "transferable_relationships": [
+      "Each shared-room occupant has a distinct support surface, controllable visual privacy and local task light",
+      "Rest, curtain, personal storage and light form one fitted assembly rather than isolated themed objects",
+      "Curtains need credible structural support and storage needs real reachable openings",
+      "Compactness must preserve an intelligible approach to both personal places"
+    ],
+    "not_established_by_pixels": [
+      "Scale, mattress size, ladder dimensions, loads, clear headroom, room width or fire/egress compliance",
+      "A six-species bed or accessible upper berth",
+      "Acoustic privacy, light-tightness, ventilation or actual cloth mechanics",
+      "Actual hidden track construction, service routing, electrical function or locking hardware",
+      "A third berth inferred from a mirror or any additional crew capacity",
+      "The player, the colleague's identity, a particular species or a roommate story"
+    ]
+  },
+  "frame_choice": {
+    "two_level_frame": {
+      "evidence_strength": "Direct visual support in the supplied photograph, compatible with the historical prevalence of two-berth crew records",
+      "what_counts_do_not_prove": "Two berths per record do not specify stacked versus side-by-side arrangement",
+      "extra_unresolved_requirements": [
+        "Actual upper and lower body/rest clearance and final ceiling relationship",
+        "Supported vertical load path and attachment design",
+        "Climb or transfer method suited to represented bodies",
+        "Upper edge/guard, safe entrance and departure",
+        "Independent curtain and light access at both levels",
+        "Cleaning and changing access to both rest surfaces",
+        "Interference between ladder, personal storage, curtain travel and shared route"
+      ],
+      "decision": "A source-backed optional future configuration; it cannot be described as a validated D03 or universal six-species solution"
+    },
+    "single_place_frame_paired_in_qa": {
+      "evidence_strength": "Source-supported separate rest/privacy/storage/task-light functions; the floor-level pair arrangement itself is a new proposal",
+      "advantages_within_current_unknowns": [
+        "Keeps support, entry and service access individually measurable",
+        "Avoids assuming climbing ability and an unverified upper-berth/ceiling relationship",
+        "Allows future species-specific support replacement without claiming that an ordinary mattress is sufficient",
+        "Can demonstrate two simultaneous personal zones without deciding a host room or changing a registry"
+      ],
+      "decision": "Recommended first component prototype for the approved adjustable modest rest frame",
+      "limits": [
+        "Pairing does not establish room fit or a room footprint",
+        "The paired arrangement must be labelled proposed",
+        "Adjustable means explicit editable dimensions or supported replaceable parts; no powered mechanism is implied",
+        "A neutral rest frame is not an aquatic home, a quiet cocoon or an approved synthetic sleep/charging station"
+      ]
+    }
+  },
+  "approved_component_programme": [
+    {
+      "component": "Adjustable modest rest frame",
+      "catalogue_asset_id": null,
+      "source_ids": ["shared_room_reference", "coverage_md", "species_canon"],
+      "source_backed_use": "A real personal rest support within compact shared crew housing",
+      "proposed_authoring_requirements": [
+        "Visible grounded frame/support joints and a distinct replaceable contact/support surface",
+        "Separate contact/support faces, attachment datums and proposed approach markers",
+        "Editable dimensions without invented species-size presets",
+        "One owned personal place per proposed frame instance; two instances may demonstrate shared use",
+        "A declared rest-entry side and cleaning/service access that remains outside occupied support volume"
+      ],
+      "must_not_claim": ["Final body fit", "Universal species support", "Load certification", "Runtime sleep behavior", "New berth registration"]
+    },
+    {
+      "component": "Supported berth curtain and track",
+      "catalogue_asset_id": null,
+      "source_ids": ["shared_room_reference", "master_design", "architecture_brief"],
+      "source_backed_use": "Individual controllable visual privacy inside a shared rest space",
+      "proposed_authoring_requirements": [
+        "Track and returns visibly attach to real frame/support geometry",
+        "Explicit open, intermediate and closed states with a declared travel envelope and parked fabric volume",
+        "Closed curtain is checked against declared sightlines; open curtain leaves the berth approach legible",
+        "Curtain, grip and any rigid support clear the rest surface, task light, storage opening and proposed approach",
+        "Privacy states remain separate per occupant so one berth can be closed while the other is in use"
+      ],
+      "must_not_claim": ["Whole-room confidentiality", "Acoustic cocoon performance", "Ventilation validation", "Cloth simulation", "Implemented permission/housekeeping behavior"]
+    },
+    {
+      "component": "Personal storage with real access",
+      "catalogue_asset_id": null,
+      "source_ids": ["shared_room_reference", "batch03_contract", "master_design"],
+      "source_backed_use": "Visible individual possessions close to the rest position, with useful open/retrieval space",
+      "proposed_authoring_requirements": [
+        "Real interior shelves or compartments rather than opaque decorative fronts",
+        "Declare accessible openings, retrieval regions and proposed standing/reaching areas separately from support anchors",
+        "If moving drawers or doors are used, preserve pivots and evaluate their complete swept volumes",
+        "Open access states do not occupy the neighboring berth, curtain parking volume or common approach",
+        "Grounded supports and modest washable staff finishes",
+        "Keep personal possessions distinct from disposable litter or service stock"
+      ],
+      "must_not_claim": ["Approved reach for every species", "Invented lock/security system", "Inventory gameplay", "Roommate ownership identity", "Runtime possession persistence"]
+    },
+    {
+      "component": "Compact individual task-light and shelf module",
+      "catalogue_asset_id": null,
+      "source_ids": ["shared_room_reference", "coverage_md", "batch03_contract"],
+      "source_backed_use": "A practical light associated with each personal rest place and a small useful local shelf",
+      "proposed_authoring_requirements": [
+        "A shaped visible fixture, physically supported mount and useful shelf surface",
+        "Declare physical mount/contact, emitter direction and proposed control/reach position separately",
+        "Plan individual lighting and visible spill behavior for the paired arrangement",
+        "Keep light housing and shelf out of head/contact, curtain-travel and entry volumes",
+        "Use restrained staff material roles; do not turn the crew unit into a guest luxury fitting"
+      ],
+      "must_not_claim": ["Working electrical service", "Approved illumination metrics", "Native runtime lighting integration", "Mindo charging or diagnostic ports"]
+    }
+  ],
+  "service_privacy_and_approach_constraints": {
+    "source_backed": [
+      "Protect existing room, bed, person, party and incident IDs and current ownership until an explicit migration is planned",
+      "Crew housing is staff-only in the historical registry; the asset kit does not change access flags",
+      "Practical fitted bed/storage/work/overhead assemblies and task lights are specified for crew accommodation",
+      "Back-of-house craft uses washable surfaces, formed edges, useful storage and supported services; the narrow photographed width is not a design rule",
+      "Architecture must preserve actual usable routes, cart turning, service approaches and species accommodation needs",
+      "Room-state privacy and housekeeping by request/vacancy/permission are design proposals, not implemented behavior certified by this kit"
+    ],
+    "proposed_component_qa": [
+      "Inspect two personal places simultaneously: one occupied/private, one approached or being used",
+      "Reserve distinct rest-contact, curtain-travel, storage-retrieval, light-control and common-approach spaces",
+      "Exercise all advertised curtain/storage states and ensure credible supports and collision openings",
+      "Check closed-state sightlines from declared component test eyes without calling that whole-room privacy",
+      "Keep a clear route past one open storage unit to the other proposed berth",
+      "Keep cleaning access and curtain removal/service questions explicit; do not invent chemical routines",
+      "Any scale, spacing, approach or eye point authored for QA remains proposed and adjustable"
+    ],
+    "historical_evidence_limits": [
+      "C001, C036 and D03_employee_cabin0 have historical ordinary route, broad 0.65 m route, floor, door and static cart threshold screen passes",
+      "Their complete dynamic loaded-cart routes and full-body seated/animation clearances are not individually certified",
+      "D03_crew1 has 14 newer focused activity-approach screens; D03_dining3 has 300; D03_music6 has 12",
+      "The historical all-room broad-route field fails for D03_classroom4, D03_reception5, D03_music6 and D03_classroom7. Newer focused screens or later summaries have narrower or different scope; this audit does not rerun or reconcile the absent source geometry",
+      "The surviving narrative reports a later 210-route D03 central recheck; that is reported historical evidence, not a new actual-source validation",
+      "The 356-approach crew/changing review excludes final movement into occupied furniture and dynamic cart use",
+      "No new component should inherit a route pass merely because an older room ID passed"
+    ],
+    "source_ids": ["coverage_json", "coverage_md", "master_design", "guest_simulation", "architecture_brief", "batch03_contract"]
+  },
+  "six_species_limits": [
+    {
+      "species": "Koblins",
+      "confirmed": "Small goblinoids, large families, no extraordinary needs",
+      "rest_kit_limit": "No approved numeric body size, reach or berth scale. Small does not imply a child. Do not add family berths or infer crew demographics."
+    },
+    {
+      "species": "Mantelids",
+      "confirmed": "Sophisticated insectoids, quiet cocoons, extremely gruesome molting",
+      "rest_kit_limit": "A curtain alone is not a certified quiet cocoon. Cocoon fit, noise isolation, molt privacy, residue handling and physical clearance remain open. Do not sanitize molting into harmless dust."
+    },
+    {
+      "species": "Humans",
+      "confirmed": "Humans as expected",
+      "rest_kit_limit": "The human-looking reference does not supply approved game rig dimensions, support loads or host fit."
+    },
+    {
+      "species": "Baelins",
+      "confirmed": "Beluga-like humanoids with soft gelatinous cartilage, gooey oily trails requiring special cleaners, enjoyment of baths and required aquatic accommodations",
+      "rest_kit_limit": "Any represented Baelin crew requires an aquatic-compatible home. A dry frame or damp material label is insufficient. Aquatic containment, support/contact, cleaner details, drainage and environmental settings are unassigned."
+    },
+    {
+      "species": "Munkos",
+      "confirmed": "Four-armed humanoids with extreme appetite; respectful enough",
+      "rest_kit_limit": "Check actual four-arm support, entry, curtain and storage reach when bodies are available. No approved body dimensions, support loads, diet quantity or cadence."
+    },
+    {
+      "species": "Mindos",
+      "confirmed": "Sentient artificial intelligences on synthetic hardware with recently recognized rights",
+      "rest_kit_limit": "No approved charging system, ports, power/fuel interface, diet, biological hunger or sleep routine. An ordinary rest surface is only a proposed furnishing, not a synthetic-body specification."
+    }
+  ],
+  "open_questions_for_later_host_integration": [
+    "Which existing room and berth keys will hold the player and existing colleague?",
+    "How are the historical separate employee-home entry and single C036 entry reconciled without changing population or losing persistent state?",
+    "What are the actual finished room polygon, floor/ceiling surfaces, door apertures, leaves, thresholds and service landings?",
+    "What are the actual six-species body envelopes, rest poses, appendage clearances, reach and support needs?",
+    "Does any future stacked frame have enough verified upper/lower clearance and a suitable access method?",
+    "What final storage ownership, permission, personal-item persistence, curtain and task-light controls will be implemented?",
+    "How are aquatic Baelin homes and Mantelid cocoons represented for actual crew assignments?",
+    "What native engine collision, lighting, material-sharing, route, save and performance checks are required at adoption?"
+  ],
+  "audit_execution": {
+    "read_only_sources": true,
+    "new_handoff_only": true,
+    "reference_pixels_viewed": true,
+    "source_hashes_measured_with_sha256sum": true,
+    "renderer_run": false,
+    "project_or_generator_code_run": false,
+    "scene_created": false,
+    "catalogue_modified": false,
+    "atlas_visual_or_vector_reconstruction_performed": false,
+    "atlas_evidence_basis": "Pre-existing text extraction plus exact PDF hash; no fresh atlas rendering",
+    "all_game_integration_claims": "Unestablished"
+  },
+  "sources": [
+    {"id": "shared_room_reference", "path": "/workspace/scratch/375c2e438292/staff-room-catalogue-input/image(20261001-190513).png", "filename": "image(20261001-190513).png", "library_file_id": "libfile_67f3b2c156e88191b07a939e80495fde", "sha256": "5644dbcc82030fc6e4958bf89d5971066d74e35da8f5c67f1b4288f6d4ef046b", "role": "Actual shared-room visual reference; inspected pixels"},
+    {"id": "species_canon", "path": "/workspace/scratch/375c2e438292/district-layout-audit/extracted/project_docs/SPECIES_CANON.md", "sha256": "6ec4fe36941e96a23cb93479bc1adafc786a9f10cb388647fd7686e3e097c6b2", "role": "Current six-species authority and numeric limits"},
+    {"id": "coverage_json", "path": "/workspace/scratch/375c2e438292/district-layout-audit/extracted/project_docs/architecture/whole_ship_coverage.json", "sha256": "3b02b1fdea59ec9ddd7cb66e39bbcfbd6492e0d3e37647eeb6d38b3d370edefe", "role": "Historical registered IDs, capacities and scoped evidence"},
+    {"id": "coverage_md", "path": "/workspace/scratch/375c2e438292/district-layout-audit/extracted/project_docs/architecture/WHOLE_SHIP_COVERAGE.md", "sha256": "76998f50a82bb9d6278f4a72a67b816cf0b975eeec50fbe3373a9c4d999dc452", "role": "Historical counts, compact fitted crew assemblies and evidence limits"},
+    {"id": "ship_design", "path": "/workspace/scratch/375c2e438292/district-layout-audit/extracted/project_docs/SHIP_DESIGN.md", "sha256": "709fd9f2339c5eef3c93bea223ccc2d01bed24cd3fd89729023c13b777e6b439", "role": "Historical programme and identity/persistence requirements; private-player wording superseded"},
+    {"id": "guest_simulation", "path": "/workspace/scratch/375c2e438292/district-layout-audit/extracted/project_docs/GUEST_SIMULATION.md", "sha256": "9fc032059f177520a5bcbd5f86e54c314a4a634a740a1da41adcf6d1906297a8", "role": "Historical crew places, individual ownership and model-versus-physical evidence limits"},
+    {"id": "daily_guest_life", "path": "/workspace/scratch/375c2e438292/district-layout-audit/extracted/project_docs/DAILY_GUEST_LIFE.md", "sha256": "43e014468b5af8d0ca0d3a2a4de7f9463df79cc4e4883341f8dcf7aa8152219e", "role": "Canonical crew species requirements and legacy behavior distinction"},
+    {"id": "master_design", "path": "/workspace/scratch/375c2e438292/district-layout-audit/extracted/Astraea_Master_Game_Design.md", "sha256": "819ecd4606db9d62148c956713e8cb65ff9354c2f079d0f765db02945da21666", "role": "Historical room/crew/privacy design and floor elevations; later current canon overrides older private-home narrative"},
+    {"id": "architecture_brief", "path": "/workspace/scratch/375c2e438292/district-layout-audit/extracted/Governing_Architecture_Brief.txt", "sha256": "e946e5c9e8465275799511f43eb9e7a930382913f955e288dba55a0fbedfc552", "role": "Allocation-versus-interior distinction and protection of real body/cart/service access"},
+    {"id": "atlas_pdf", "path": "/workspace/scratch/375c2e438292/district-layout-audit/sources/Astraea-current-layout-atlas.pdf", "sha256": "315c985198f70a08e4fa72bbda29a9b554e53997314aa45e5ec0b51cd24999cc", "role": "Historical 1 October 2026 spatial baseline; referenced through existing text extraction, not freshly rendered"},
+    {"id": "atlas_text", "path": "/workspace/scratch/375c2e438292/district-layout-audit/atlas.txt", "sha256": "a2a543d7a373b1ab1c31147b28a83537dd1fdc4ba31a43d36b5132ffd8515deb", "role": "Existing text extraction, printed page 05 D03 and page 06 D04 elevations"},
+    {"id": "planning_ledger", "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/salon/planning_constraint_ledger.json", "sha256": "ede8a052d669b1c1efd6590ae4f013f20cb9a4d9aa8f2e42db6ca044ec127346", "role": "Newer current canon explicitly says shared existing crew room and exact ID reconciliation open"},
+    {"id": "batch12_contract", "path": "/workspace/shared/astraea-catalogue-continuation-20261002/batches/batch12/CONTRACT.md", "sha256": "d8f05c150bd87f828830d0fafc23aa0bd0ea26faccd34fc43e6c9e7e5053b5f6", "role": "Current catalogue canon: 400 including one player sharing with an existing colleague"},
+    {"id": "batch03_contract", "path": "/workspace/shared/astraea-catalogue-continuation-20261002/batches/batch03/CONTRACT.md", "sha256": "135c80614d8161ffa8dfb0748adffed1b3a1552f13317dd93b0488589e48d178", "role": "Staff material/use language, supported services, actual storage access and component QA limits"},
+    {"id": "staff_reference_manifest", "path": "/workspace/shared/astraea-catalogue-continuation-20261002/batches/batch03/reference_manifest.json", "sha256": "ce4e5d45442075f3edf33bde22e918b2c87ec35b6be8d15cf5ee338ea0f9a458", "role": "Existing provenance of the exact shared-room image and its Library identity"},
+    {"id": "catalogue_authority", "path": "/workspace/shared/astraea-catalogue-continuation-20261002/standards/AUTHORITY_AND_PROVENANCE.md", "sha256": "8293d987fbe338546c675b7f51cd76ec4622fc982baa634de6709e918487b385", "role": "Independent catalogue scope and later-canon precedence"},
+    {"id": "staff_overhead_manifest", "path": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/staff_overhead/manifest.json", "sha256": "68ce41ef3f0f218104a0a6ba7a3fb056f80998d819c29285c2c3888ae897b074", "role": "Pre-existing overhead mounting limits; not D03 host dimensions"}
+  ]
+}

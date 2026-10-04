@@ -1,0 +1,2157 @@
+ASTRAEA                                         CURRENT SHIP LAYOUT                                                                                                                                                                     01 OCT 2026
+                                                                                                                                                                                                                                    WORK IN PROGRESS
+18 decks. One continuous liner. The geometry in the game so far.
+
+  1,082 m length                          240 m maximum beam                             118 m reference envelope                             1,000 guest units                          2,000 guest berths       400 crew berths
+
+
+
+THE DECK STACK                                                                      UNITS / GUESTS                ACTUAL PLAN FOOTPRINTS
+Floor elevations are exact; row spacing is an index.                                                              Forward is left. Port is up. Each plan uses the same scale.
+
+
+ 18         Bridge & navigation                                                                       -           D09 Retail promenade                                                                                                 BOW <   > STERN
+            Floor +106.5 m
+
+ 17         Premier suites & horizon                                                       100 / 200
+            Floor +102 m
+
+ 16         Family gardens & skyline                                                       200 / 600
+            Floor +97.5 m
+
+ 15         Adaptive habitat residences                                                    180 / 240
+            Floor +93 m
+
+ 14         Thermal-reef residences                                                        240 / 550
+            Floor +88.5 m
+
+ 13         Quiet cocoon residences                                                        160 / 260
+            Floor +84 m
+                                                                                                                  100 small storefronts around the central leisure terrace
+ 12         Panoramic gallery & library                                                               -           D11 Theater & culture                                                                                                BOW <   > STERN
+            Floor +78 m
+
+ 11         Theater & culture                                                                         -
+            Floor +69.5 m
+
+ 10         Grand dining & restaurants                                                                -
+            Floor +61 m
+
+ 09         Retail promenade                                                                          -
+            Floor +52.5 m
+
+ 08         Aquatic recreation & wellness                                                             -
+            Floor +44 m
+
+ 07         Sports & active living                                                                    -
+            Floor +35.5 m
+                                                                                                                  Port-side theater volume and six starboard cinemas
+
+ 06         Grand botanical atrium                                                                    -           D14 Thermal-reef residences                                                                                          BOW <   > STERN
+            Floor +27 m
+
+ 05         Medical & species care                                                                    -                                                              THEATER VOLUME
+            Floor +21 m
+
+ 04         Aquatic & arboreal habitats                                                    120 / 150
+            Floor +16.5 m
+
+ 03         Crew quarters & operations                                                      400 crew
+            Floor +12 m
+
+ 02         Engineering & life support                                                                -
+            Floor +6 m
+
+ 01         Logistics & shuttle docks                                                                 -
+            Floor +0 m                                                                                            240 units / 550 guests; center banks moved clear of the atrium
+
+
+
+
+   Standard          Family         Specialty        Crew         Public        Garden / habitat          Service / staff       Culture        Retail
+
+       Service-tram route + stops                      Authored guest circulation                         Open volume / floor cut-out                       Room footprint colors describe function, not finish
+
+Built footprints and floor openings are shown. Furniture, art and final playability are still being refined. Full deck plans and enlarged details follow.
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                01
+How to read the current build
+This is a spatial snapshot of the game, not a new proposal or a construction drawing.
+
+
+
+WHAT IS ACTUALLY DRAWN                                                                                COORDINATES & MULTI-DECK SPACES
+
+Room rectangles come from the live Godot room registry. Hull walls come from the authored hull        Horizontal on the page: Z, forward -541 m to aft +541 m.
+stations. The botanical terraces use the actual per-deck inner and outer contours. Theater floor
+cut-outs and the service-tram path use their current implementation.                                  Vertical on the page: -X, port at top and starboard at bottom.
+
+                                                                                                      Y is height: registry room Y values are relative to each deck floor.
+WHAT THE DIAGRAM SIMPLIFIES
+                                                                                                      The atrium slab opening is 96 x 128 m on D02-D17. The sculpted floor ring partly fills that opening; the
+Furnishings, wall thickness, lights, ceiling forms and most minor objects are omitted. Beds in        pale interior is open volume.
+enlarged residential details are anchor dots, not scaled bed furniture. Corridor ribbons indicate
+authored ground markings and access links; they are not an independent navigation certification.      The grand theater begins on D11. Its volume removes intermediate floor slabs on D12-D14. D12 and D13
+                                                                                                      have gallery entries.
+
+WHAT IS STILL AN INTERFACE OR ARCHITECTURE
+                                                                                                      RECONCILED CAPACITY
+Service-tram travel follows the plotted route and carries the cart. Passenger Townline movement
+uses logical boarding, ride and exit states behind screened vestibules. Express deck travel is the    Standard doubles                                                        300 units                            600 guests
+usable inter-deck interface. Panoramic atrium lift towers are modeled architecture; they are not
+                                                                                                      Family triples                                                          300 units                            900 guests
+shown as functioning elevator cabins.
+                                                                                                      Specialty singles                                                       300 units                            300 guests
+
+WHAT IS NOT BEING CLAIMED                                                                             Specialty doubles                                                       100 units                            200 guests
+
+This atlas does not certify pressure boundaries, evacuation, passenger operations, native Windows
+                                                                                                      Total guest accommodation                                           1,000 units                          2,000 guests
+behavior or final visual quality. No proposed extra rooms, berths, decks or tracks were inserted to
+make the drawing look complete.
+                                                                                                      Crew is separate: 200 ordinary crew cabins contain 399 beds, plus the employee cabin has one bed. Total:
+                                                                                                      400, including the player.
+
+
+                                                                                                      SOURCE SNAPSHOT
+
+                                                                                                      Extracted directly from the main build: 1,462 registered spaces. Source files: ship.gd, auditoriums.gd, living_atrium.gd
+                                                                                                      and full_game.gd; names and berth intent checked against SHIP_DESIGN.md.
+
+                                                                                                      Snapshot: 1 October 2026, 01:07 UTC. Small layout refinements may follow as the main build continues.
+
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                         02
+D01 Logistics & shuttle docks                                                                                                                                                                                                    FLOOR +0 m
+
+                                                                                                                                                                                                                            10 registered spaces
+Cargo, provisions, synthesis, laundry and repair
+
+     Standard       Family          Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                  Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                           AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                             1                                                  3                                                                                                            7                         9
+
+
+
+
+                             2                                                  4                                                                                                            8                         10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                   100 m              STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                       CENTRAL SERVICE STREET
+                                                                                                                                                                 5
+
+                                                                                                                                              Straight axial tram route on this deck
+01     Shuttle arrivals                                           09    Shuttle concourse
+
+
+02     Cold provisions                                            10    Custodial depot
+
+
+03     Housekeeping & laundry
+
+
+04     Cargo exchange
+
+
+05     Food synthesis
+
+
+06     Repair workshop
+
+
+07     Reclamation plant
+
+
+08     Cargo dispatch
+
+
+The logistics and synthesis spaces are functional game rooms, not a complete real-world freight or industrial plant
+design.
+
+
+
+                                                                                                                                              0    20 m                               6 Z -80 to 80 m; X -60 to 60 m
+                                                                                                                                                                         Detail extents:
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                          03
+D02 Engineering & life support                                                                                                                                                                                                  FLOOR +6 m
+
+                                                                                                                                                                                                                           10 registered spaces
+Fusion, water, atmosphere and power systems
+
+     Standard       Family          Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                          AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                                1                                               3                                                                                                           7                         9
+
+
+
+
+                                2                                               4                                                                                                           8                         10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                   100 m              STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                       CENTRAL ATRIUM DETAIL
+                                                                                                                                                                 5
+
+                                                                                                                                              Exact floor contour and tram bypass
+01     Primary fusion gallery                                     09    Solar project archive
+
+
+02     Secondary fusion gallery                                   10    Inspection dock
+
+
+03     Atmosphere plant
+
+
+04     Water recovery
+
+
+05     Technical workshop
+
+
+06     Emergency stores
+
+
+07     Power distribution
+
+
+08     Life support control
+
+
+The D02 garden basin is the bottom of the atrium volume; the higher leisure terraces are on D06, D09, D12 and
+D16.
+
+
+
+                                                                                                                                              0    20 m                              6 Z -80 to 80 m; X -60 to 60 m
+                                                                                                                                                                        Detail extents:
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                         04
+D03 Crew quarters & operations                                                                                                                                                                                                                      FLOOR +12 m
+
+                                                                                                                                                                                                                                                    400 crew berths
+Employee home, 200 crew cabins and shared services
+
+     Standard        Family         Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                   Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                                               AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                              1                                                 3                                                                                                                7                                      9
+
+
+
+
+                              2                                                 4                                                                                                                8                                      10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                    100 m             STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                         CREW BANK DETAIL
+                                                                                                                                                Two cabin banks, exact door positions and assigned bed anchors
+01     Employee cabin / 071                                       09    Crew care
+
+
+02     Custodian breakroom                                        10    Uniforms & lockers
+
+
+
+
+                                                                                                                                         C117
+
+
+
+
+                                                                                                                                                          C118
+
+
+
+
+                                                                                                                                                                         C119
+
+
+
+
+                                                                                                                                                                                          C120
+
+
+
+
+                                                                                                                                                                                                           C121
+
+
+
+
+                                                                                                                                                                                                                          C122
+
+
+
+
+                                                                                                                                                                                                                                 C123
+
+
+
+
+                                                                                                                                                                                                                                             C124
+
+
+
+
+                                                                                                                                                                                                                                                           C125
+03     Equipment depot
+
+
+04     Crew dining
+
+
+05     Training room
+
+
+06     Staff administration
+
+
+07     Crew recreation
+
+
+08     Briefing room
+                                                                                                                                         C167
+
+
+
+
+                                                                                                                                                          C168
+
+
+
+
+                                                                                                                                                                         C169
+
+
+
+
+                                                                                                                                                                                          C170
+
+
+
+
+                                                                                                                                                                                                           C171
+
+
+
+
+                                                                                                                                                                                                                          C172
+
+
+
+
+                                                                                                                                                                                                                                 C173
+
+
+
+
+                                                                                                                                                                                                                                             C174
+
+
+
+
+                                                                                                                                                                                                                                                           C175
+C001-C200 contain 399 crew beds. The employee cabin is the 400th crew berth, rather than an extra passenger
+unit.
+
+
+
+                                                                                                                                                0                   20 m Detail extents: Z -145 to -45 m; X 63 to 108 m
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                              05
+D04 Aquatic & arboreal habitats                                                                                                                                                                                                                                           FLOOR +16.5 m
+
+                                                                                                                                                                                                                                                  120 units / 150 guest berths
+Aquatic / arboreal homes and habitat commons
+
+     Standard       Family          Specialty       Crew       Public        Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                    Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                          PORT UP (-X)                                                                                                                                           AFT / STERN (+Z)
+
+
+
+
+                                                1                                                                                       3                                                                                             5
+
+
+
+
+                                                2                                                                                       4                                                                                             6
+
+
+
+
+0                  100 m               STARBOARD DOWN (+X)       |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                          ATRIUM-SIDE STARBOARD HOMES
+                                                                                                                                                 All cabin footprints + doors; dots are assigned bed anchors
+01     Port forward commons
+
+
+02     Starboard forward commons
+
+
+03     Port atrium commons
+
+
+04     Starboard atrium commons
+
+
+05     Port aft commons
+
+
+06     Starboard aft commons
+
+
+
+
+                                                                                                                                                                     04113
+
+
+                                                                                                                                                                             04089
+
+
+                                                                                                                                                                                       04065
+
+
+                                                                                                                                                                                               04041
+
+
+                                                                                                                                                                                                       04017
+
+
+
+
+                                                                                                                                                                                                                                          04023
+
+
+                                                                                                                                                                                                                                                  04047
+
+
+                                                                                                                                                                                                                                                          04071
+
+
+                                                                                                                                                                                                                                                                  04095
+
+
+                                                                                                                                                                                                                                                                           04119
+                                                                                                                                                                                                                              4
+
+
+                                                                                                                                                                     04101
+
+
+                                                                                                                                                                             04077
+
+
+                                                                                                                                                                                       04053
+
+
+                                                                                                                                                                                               04029
+
+
+                                                                                                                                                                                                       04005
+
+
+
+
+                                                                                                                                                                                                                                          04011
+
+
+                                                                                                                                                                                                                                                  04035
+
+
+                                                                                                                                                                                                                                                          04059
+
+
+                                                                                                                                                                                                                                                                  04083
+
+
+                                                                                                                                                                                                                                                                           04107
+90 specialty singles | 30 specialty doubles
+
+
+All numbered guest units are drawn individually. Colors are accommodation classes; environmental adaptations overlap
+those classes.
+
+                                                                                                                                                 0      20 m                         Detail extents: Z -105 to 105 m; X 55 to 110 m
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                                                            06
+D05 Medical & species care                                                                                                                                                                                                    FLOOR +21 m
+
+                                                                                                                                                                                                                           10 registered spaces
+Triage, recovery, research and species care
+
+     Standard        Family         Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                          AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                              1                                                 3                                                                                                           7                         9
+
+
+
+
+                              2                                                 4                                                                                                           8                         10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                    100 m             STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                       CENTRAL ATRIUM DETAIL
+                                                                                                                                                                 5
+
+                                                                                                                                              Exact floor contour and tram bypass
+01     Species triage                                             09    Hydration support
+
+
+02     Medical bay                                                10    Family waiting
+
+
+03     Clinical research
+
+
+04     Pharmacy stores
+
+
+05     Recovery lounge
+
+
+06     Atmosphere research
+
+
+07     Consultation pods
+
+
+08     Quiet care
+
+
+Access classifications follow the registry. Clinic and laboratory rooms are service/staff-tagged in the present
+implementation.
+
+
+
+                                                                                                                                              0    20 m                              6 Z -80 to 80 m; X -60 to 60 m
+                                                                                                                                                                        Detail extents:
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                         07
+D06 Grand botanical atrium                                                                                                                                                                                                    FLOOR +27 m
+
+                                                                                                                                                                                                                           11 registered spaces
+Main leisure terrace, gardens and conservatories
+
+     Standard       Family          Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                          AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                             1                                                  3                                                                                                           7                         9
+
+
+
+
+                             2                                                  4                                                                                                           8                         10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                  100 m               STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                       CENTRAL ATRIUM DETAIL
+                                                                                                                                                                 5
+
+                                                                                                                                              Exact floor contour and tram bypass
+01     The living grove                                           09    The waterside grove
+
+
+02     Cloud conservatory                                         10    Sunset garden cafe
+
+
+03     Moss sanctuary
+
+
+04     Botanical nursery
+
+
+05     Canopy terrace
+
+
+06     Sheltered walk
+
+
+07     Orchard gardens
+
+
+08     Fern cathedral
+
+
+The atlas draws the true centered atrium shell from its builder, rather than treating the registry landmark entry as a
+separate rectangular room.
+
+
+
+                                                                                                                                              0    20 m                              6 Z -80 to 80 m; X -60 to 60 m
+                                                                                                                                                                        Detail extents:
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                         08
+D07 Sports & active living                                                                                                                                                                                                  FLOOR +35.5 m
+
+                                                                                                                                                                                                                           10 registered spaces
+Full court, adaptive arena and movement studios
+
+     Standard        Family         Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                          AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                              1                                                 3                                                                                                           7                         9
+
+
+
+
+                              2                                                 4                                                                                                           8                         10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                    100 m             STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                       CENTRAL ATRIUM DETAIL
+                                                                                                                                                                 5
+
+                                                                                                                                              Exact floor contour and tram bypass
+01     Orbit full court                                           09    Activity terrace
+
+
+02     Movement studio                                            10    Sports care & changing
+
+
+03     Adaptive arena
+
+
+04     Sports viewing
+
+
+05     Training commons
+
+
+06     Simulation suites
+
+
+07     Gravity practice
+
+
+08     Team lounge
+
+
+Sport courts are represented by their real room shells and principal court footprints; minor props are omitted.
+
+
+
+
+                                                                                                                                              0    20 m                              6 Z -80 to 80 m; X -60 to 60 m
+                                                                                                                                                                        Detail extents:
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                         09
+D08 Aquatic recreation & wellness                                                                                                                                                                                             FLOOR +44 m
+
+                                                                                                                                                                                                                           10 registered spaces
+50 m pool, thermal baths and wellness spaces
+
+     Standard       Family          Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                          AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                             1                                                  3                                                                                                           7                         9
+
+
+
+
+                             2                                                  4                                                                                                           8                         10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                  100 m               STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                       CENTRAL ATRIUM DETAIL
+                                                                                                                                                                 5
+
+                                                                                                                                              Exact floor contour and tram bypass
+01     The grand aquatic pool                                     09    Panoramic repose
+
+
+02     Tidal thermal baths                                        10    Towels & care
+
+
+03     Mineral springs
+
+
+04     Hushed grotto
+
+
+05     Wellness studio
+
+
+06     Relaxation gallery
+
+
+07     Universal changing
+
+
+08     Gentle waters
+
+
+The main pool has a 50 m lane footprint. Other aquatic rooms are shown as registered shells.
+
+
+
+
+                                                                                                                                              0    20 m                              6 Z -80 to 80 m; X -60 to 60 m
+                                                                                                                                                                        Detail extents:
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                         10
+D09 Retail promenade                                                                                                                                                                                                                             FLOOR +52.5 m
+
+                                                                                                                                                                                                                                               110 registered spaces
+100 addressed shops plus 10 larger destinations
+
+     Standard         Family        Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                  Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                                               AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                               1                                                3                                                                                                             7                                        9
+
+
+
+
+                               2                                                4                                                                                                             8                                        10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                     100 m            STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                       STARBOARD RETAIL BANKS
+                                                                                                                                              Addressed storefronts, shown individually at their actual positions
+01     Orchard market                                             09    Starlight bakery
+
+
+02     The copper kettle                                          10    Companion games
+
+
+03     Paper moon books
+
+
+04     Thread & shell
+
+
+05     Little makers gallery
+
+
+06     Conversation salon                                                                                                                          R064
+
+
+
+
+                                                                                                                                                                   R065
+
+
+
+
+                                                                                                                                                                                    R066
+
+
+
+
+                                                                                                                                                                                                      R067
+
+
+
+
+                                                                                                                                                                                                                         R068
+
+
+
+
+                                                                                                                                                                                                                                R069
+
+
+
+
+                                                                                                                                                                                                                                        R070
+
+
+
+
+                                                                                                                                                                                                                                                        R071
+
+
+
+
+                                                                                                                                                                                                                                                                       R072
+07     Post & parcels
+
+
+08     Living gifts
+                                                                                                                                                   R089
+
+
+
+
+                                                                                                                                                                   R090
+
+
+
+
+                                                                                                                                                                                    R091
+
+
+
+
+                                                                                                                                                                                                      R092
+
+
+
+
+                                                                                                                                                                                                                         R093
+
+
+
+
+                                                                                                                                                                                                                                R094
+
+
+
+
+                                                                                                                                                                                                                                        R095
+
+
+
+
+                                                                                                                                                                                                                                                        R096
+
+
+
+
+                                                                                                                                                                                                                                                                       R097
+R001-R100 are actual 12 x 12 m shop footprints. The ten numbered larger destinations are separate from those 100
+storefronts.
+
+
+
+                                                                                                                                              0           20 m            Detail extents: Z 70 to 285 m; X 62 to 108 m
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                              11
+D10 Grand dining & restaurants                                                                                                                                                                                                FLOOR +61 m
+
+                                                                                                                                                                                                                           10 registered spaces
+10 dining rooms; 2,200 reserved places
+
+     Standard       Family          Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                          AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                               1                                                3                                                                                                           7                         9
+
+
+
+
+                               2                                                4                                                                                                           8                         10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                   100 m              STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                       CENTRAL ATRIUM DETAIL
+                                                                                                                                                                 5
+
+                                                                                                                                              Exact floor contour and tram bypass
+01     The shared table / 240                                     09    Moonfruit parlor / 160
+
+
+02     Sunward dining / 240                                       10    Observation cafe / 120
+
+
+03     Lantern restaurant / 240
+
+
+04     Orchard food hall / 240
+
+
+05     Tide kitchen / 240
+
+
+06     Mineral broth hall / 240
+
+
+07     The night table / 240
+
+
+08     Vesper dining / 240
+
+
+Dining places are reserved capacity: eight rooms at 240, Moonfruit parlor at 160, and Observation cafe at 120.
+
+
+
+
+                                                                                                                                              0    20 m                              6 Z -80 to 80 m; X -60 to 60 m
+                                                                                                                                                                        Detail extents:
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                         12
+D11 Theater & culture                                                                                                                                                                                                                        FLOOR +69.5 m
+
+                                                                                                                                                                                                                                            13 registered spaces
+2,200-seat theater and six 200-seat cinemas
+
+     Standard       Family          Specialty    Crew          Public          Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                    Authored guest circulation                        Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                            PORT UP (-X)                                                                                                      AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                                                                                                                  11
+                                                                                            1                                             9                  13
+
+
+
+
+                                                 8                                                                                                                                               10                                    12
+
+
+
+
+                              2                                      3                                       4                                                            5                                         6                  7
+
+
+
+
+0                  100 m               STARBOARD DOWN (+X)       |   All distances in metres      |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                            GRAND LANTERN THEATER
+                                                                                                                                                   D11 plan projection; lower-tier seats shown, upper galleries omitted
+01     Grand Lantern Theater / 2,200 seats                               09   Performers' commons
+
+
+02     Cinema 1 / 200 seats                                              10   Games & companionship
+
+
+03     Cinema 2 / 200 seats                                              11   Cultural gallery
+
+
+04     Cinema 3 / 200 seats                                              12   Immersive sound
+
+
+05     Cinema 4 / 200 seats                                              13   Backstage workshop
+                                                                                                                                                                                                          1
+
+06     Cinema 5 / 200 seats
+
+
+07     Cinema 6 / 200 seats
+
+
+08     The music room
+
+
+The 2,200 theater seats span D11-D13 tiers (740 / 740 / 720). The full theater shell rises 22 m through the D14 floor
+zone.
+
+
+
+                                                                                                                                                   0       20 m               Detail extents: Z -273 to -108 m; X -121 to -28 m
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                          13
+D12 Panoramic gallery & library                                                                                                                                                                                               FLOOR +78 m
+
+                                                                                                                                                                                                                           11 registered spaces
+Library, observation rooms and theater gallery
+
+     Standard          Family       Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                          AFT / STERN (+Z)
+
+
+
+
+                                                                               THEATER VOLUME
+                                                                                                                                     5
+
+
+
+                                                                                                        11
+                                1                       3                                                                                                                                   7                         9
+
+
+
+
+                                2                                               4                                                                                                           8                         10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                   100 m              STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+                                                                       THEATER VOLUME
+DESTINATIONS & CAPACITY                                                                                                                       CENTRAL ATRIUM DETAIL
+                                                                                                                                                                 5
+
+                                                                                                                                              Exact floor contour and tram bypass
+01     Horizon room                                               09    Vesper panorama
+
+
+02     The long library                                           10    Celestial lounge
+
+
+03     Listening salon                                            11    Grand theater / First gallery
+
+
+04     The stillroom
+
+
+05     Star atlas
+
+
+06     Night garden
+
+
+07     Many worlds gallery
+
+
+08     Reading nooks
+
+
+The port theater void remains open; the first gallery landing is a distinct registered destination.
+
+
+
+
+                                                                                                                                              0    20 m                              6 Z -80 to 80 m; X -60 to 60 m
+                                                                                                                                                                        Detail extents:
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                         14
+D13 Quiet cocoon residences                                                                                                                                                                                                                                                     FLOOR +84 m
+
+                                                                                                                                                                                                                                                        160 units / 260 guest berths
+Standard doubles and quiet specialty singles
+
+     Standard       Family          Specialty       Crew       Public        Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                    Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                          PORT UP (-X)                                                                                                                                                AFT / STERN (+Z)
+
+
+
+
+                                                2                                 THEATER VOLUME                                        4                                                                                                   6
+
+
+
+
+                                                                                                           1
+
+
+
+                                                                        THEATER VOLUME
+
+
+
+                                                3                                                                                       5                                                                                                   7
+
+
+
+
+0                  100 m               STARBOARD DOWN (+X)       |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                          ATRIUM-SIDE STARBOARD HOMES
+                                                                                                                                                 All cabin footprints + doors; dots are assigned bed anchors
+01     Grand theater / Crown gallery
+
+
+02     Port forward commons
+
+
+03     Starboard forward commons
+
+
+04     Port atrium commons
+
+
+05     Starboard atrium commons
+
+
+06     Port aft commons
+
+
+
+                                                                                                                                                                   13137
+
+
+                                                                                                                                                                           13113
+
+
+                                                                                                                                                                                   13089
+
+
+                                                                                                                                                                                             13065
+
+
+                                                                                                                                                                                                     13041
+
+
+                                                                                                                                                                                                             13017
+
+
+
+
+                                                                                                                                                                                                                                                13023
+
+
+                                                                                                                                                                                                                                                        13047
+
+
+                                                                                                                                                                                                                                                                13071
+
+
+                                                                                                                                                                                                                                                                        13095
+
+
+                                                                                                                                                                                                                                                                                13119
+
+
+                                                                                                                                                                                                                                                                                          13143
+07     Starboard aft commons
+                                                                                                                                                                                                                                    5
+                                                                                                                                                           13149
+
+
+                                                                                                                                                                   13125
+
+
+                                                                                                                                                                           13101
+
+
+                                                                                                                                                                                   13077
+
+
+                                                                                                                                                                                             13053
+
+
+                                                                                                                                                                                                     13029
+
+
+                                                                                                                                                                                                             13005
+
+
+
+
+                                                                                                                                                                                                                                                13011
+
+
+                                                                                                                                                                                                                                                        13035
+
+
+                                                                                                                                                                                                                                                                13059
+
+
+                                                                                                                                                                                                                                                                        13083
+
+
+                                                                                                                                                                                                                                                                                13107
+
+
+                                                                                                                                                                                                                                                                                          13131
+
+
+                                                                                                                                                                                                                                                                                                  13155
+100 standard doubles | 60 specialty singles
+
+
+All numbered guest units are drawn individually. Colors are accommodation classes; environmental adaptations overlap
+those classes.
+
+                                                                                                                                                 0      20 m                               Detail extents: Z -105 to 105 m; X 55 to 110 m
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                                                                      15
+D14 Thermal-reef residences                                                                                                                                                                                                                                                                         FLOOR +88.5 m
+
+                                                                                                                                                                                                                                                                            240 units / 550 guest berths
+Standard, family and specialty neighborhoods
+
+     Standard       Family          Specialty       Crew       Public        Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                    Authored guest circulation                      Open volume / floor cut-out                         Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                          PORT UP (-X)                                                                                                                                                                     AFT / STERN (+Z)
+
+
+
+
+                                                1                                 THEATER VOLUME                                        3                                                                                                                       5
+
+
+
+
+                                                                        THEATER VOLUME
+
+
+
+                                                2                                                                                       4                                                                                                                       6
+
+
+
+
+0                  100 m               STARBOARD DOWN (+X)       |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                                  ATRIUM-SIDE STARBOARD HOMES
+                                                                                                                                                         All cabin footprints + doors; dots are assigned bed anchors
+01     Port forward commons
+
+
+02     Starboard forward commons
+
+
+03     Port atrium commons
+
+
+04     Starboard atrium commons
+
+
+05     Port aft commons
+
+
+06     Starboard aft commons
+                                                                                                                                                 14233
+
+
+                                                                                                                                                             14209
+
+
+                                                                                                                                                                     14185
+
+
+                                                                                                                                                                               14161
+
+
+                                                                                                                                                                                       14137
+
+
+                                                                                                                                                                                               14113
+
+
+                                                                                                                                                                                                       14089
+
+
+                                                                                                                                                                                                                 14065
+
+
+                                                                                                                                                                                                                         14041
+
+
+                                                                                                                                                                                                                                 14017
+
+
+
+
+                                                                                                                                                                                                                                                                    14023
+
+
+                                                                                                                                                                                                                                                                            14047
+
+
+                                                                                                                                                                                                                                                                                    14071
+
+
+                                                                                                                                                                                                                                                                                            14095
+
+
+                                                                                                                                                                                                                                                                                                     14119
+
+
+                                                                                                                                                                                                                                                                                                               14143
+
+
+                                                                                                                                                                                                                                                                                                                       14167
+
+
+                                                                                                                                                                                                                                                                                                                               14191
+
+
+                                                                                                                                                                                                                                                                                                                                       14215
+
+
+                                                                                                                                                                                                                                                                                                                                               14239
+                                                                                                                                                                                                                                                        4
+                                                                                                                                                 14221
+
+
+                                                                                                                                                             14197
+
+
+                                                                                                                                                                     14173
+
+
+                                                                                                                                                                               14149
+
+
+                                                                                                                                                                                       14125
+
+
+                                                                                                                                                                                               14101
+
+
+                                                                                                                                                                                                       14077
+
+
+                                                                                                                                                                                                                 14053
+
+
+                                                                                                                                                                                                                         14029
+
+
+                                                                                                                                                                                                                                 14005
+
+
+
+
+                                                                                                                                                                                                                                                                    14011
+
+
+                                                                                                                                                                                                                                                                            14035
+
+
+                                                                                                                                                                                                                                                                                    14059
+
+
+                                                                                                                                                                                                                                                                                            14083
+
+
+                                                                                                                                                                                                                                                                                                     14107
+
+
+                                                                                                                                                                                                                                                                                                               14131
+
+
+                                                                                                                                                                                                                                                                                                                       14155
+
+
+                                                                                                                                                                                                                                                                                                                               14179
+
+
+                                                                                                                                                                                                                                                                                                                                       14203
+
+
+                                                                                                                                                                                                                                                                                                                                               14227
+100 standard doubles | 100 family triples | 30 specialty singles | 10 specialty doubles
+
+
+All numbered guest units are drawn individually. Colors are accommodation classes; environmental adaptations overlap
+those classes.
+
+                                                                                                                                                         0                   20 m                              Detail extents: Z -105 to 105 m; X 55 to 110 m
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                                                                                                     16
+D15 Adaptive habitat residences                                                                                                                                                                                                                                                       FLOOR +93 m
+
+                                                                                                                                                                                                                                                              180 units / 240 guest berths
+Variable-environment specialty accommodation
+
+     Standard       Family          Specialty       Crew       Public        Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                    Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                          PORT UP (-X)                                                                                                                                                      AFT / STERN (+Z)
+
+
+
+
+                                                1                                                                                       3                                                                                                         5
+
+
+
+
+                                                2                                                                                       4                                                                                                         6
+
+
+
+
+0                  100 m               STARBOARD DOWN (+X)       |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                          ATRIUM-SIDE STARBOARD HOMES
+                                                                                                                                                 All cabin footprints + doors; dots are assigned bed anchors
+01     Port forward commons
+
+
+02     Starboard forward commons
+
+
+03     Port atrium commons
+
+
+04     Starboard atrium commons
+
+
+05     Port aft commons
+
+
+06     Starboard aft commons
+
+                                                                                                                                                                 15161
+
+
+                                                                                                                                                                         15137
+
+
+                                                                                                                                                                                 15113
+
+
+                                                                                                                                                                                         15089
+
+
+                                                                                                                                                                                                   15065
+
+
+                                                                                                                                                                                                           15041
+
+
+                                                                                                                                                                                                                   15017
+
+
+
+
+                                                                                                                                                                                                                                                      15023
+
+
+                                                                                                                                                                                                                                                              15047
+
+
+                                                                                                                                                                                                                                                                      15071
+
+
+                                                                                                                                                                                                                                                                              15095
+
+
+                                                                                                                                                                                                                                                                                      15119
+
+
+                                                                                                                                                                                                                                                                                                15143
+
+
+                                                                                                                                                                                                                                                                                                        15167
+                                                                                                                                                                                                                                          4
+                                                                                                                                                       15173
+
+
+                                                                                                                                                                 15149
+
+
+                                                                                                                                                                         15125
+
+
+                                                                                                                                                                                 15101
+
+
+                                                                                                                                                                                         15077
+
+
+                                                                                                                                                                                                   15053
+
+
+                                                                                                                                                                                                           15029
+
+
+                                                                                                                                                                                                                   15005
+
+
+
+
+                                                                                                                                                                                                                                                      15011
+
+
+                                                                                                                                                                                                                                                              15035
+
+
+                                                                                                                                                                                                                                                                      15059
+
+
+                                                                                                                                                                                                                                                                              15083
+
+
+                                                                                                                                                                                                                                                                                      15107
+
+
+                                                                                                                                                                                                                                                                                                15131
+
+
+                                                                                                                                                                                                                                                                                                        15155
+
+
+                                                                                                                                                                                                                                                                                                                15179
+120 specialty singles | 60 specialty doubles
+
+
+All numbered guest units are drawn individually. Colors are accommodation classes; environmental adaptations overlap
+those classes.
+
+                                                                                                                                                 0             20 m                              Detail extents: Z -105 to 105 m; X 55 to 110 m
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                                                                                    17
+D16 Family gardens & skyline                                                                                                                                                                                                                                                                FLOOR +97.5 m
+
+                                                                                                                                                                                                                                                                    200 units / 600 guest berths
+Family triples, garden commons and skyline
+
+     Standard       Family          Specialty       Crew       Public        Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                    Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                          PORT UP (-X)                                                                                                                                                             AFT / STERN (+Z)
+
+
+
+
+                                                1                                                                                       3                                                                                                               5
+
+
+
+
+                                                2                                                                                       4                                                                                                               6
+
+
+
+
+0                  100 m               STARBOARD DOWN (+X)       |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                          ATRIUM-SIDE STARBOARD HOMES
+                                                                                                                                                 All cabin footprints + doors; dots are assigned bed anchors
+01     Port forward commons
+
+
+02     Starboard forward commons
+
+
+03     Port atrium commons
+
+
+04     Starboard atrium commons
+
+
+05     Port aft commons
+
+
+06     Starboard aft commons
+                                                                                                                                                             16185
+
+
+                                                                                                                                                                       16161
+
+
+                                                                                                                                                                               16137
+
+
+                                                                                                                                                                                       16113
+
+
+                                                                                                                                                                                               16089
+
+
+                                                                                                                                                                                                         16065
+
+
+                                                                                                                                                                                                                 16041
+
+
+                                                                                                                                                                                                                         16017
+
+
+
+
+                                                                                                                                                                                                                                                            16023
+
+
+                                                                                                                                                                                                                                                                    16047
+
+
+                                                                                                                                                                                                                                                                            16071
+
+
+                                                                                                                                                                                                                                                                                    16095
+
+
+                                                                                                                                                                                                                                                                                             16119
+
+
+                                                                                                                                                                                                                                                                                                       16143
+
+
+                                                                                                                                                                                                                                                                                                               16167
+
+
+                                                                                                                                                                                                                                                                                                                       16191
+                                                                                                                                                                                                                                                4
+                                                                                                                                                     16197
+
+
+                                                                                                                                                             16173
+
+
+                                                                                                                                                                       16149
+
+
+                                                                                                                                                                               16125
+
+
+                                                                                                                                                                                       16101
+
+
+                                                                                                                                                                                               16077
+
+
+                                                                                                                                                                                                         16053
+
+
+                                                                                                                                                                                                                 16029
+
+
+                                                                                                                                                                                                                         16005
+
+
+
+
+                                                                                                                                                                                                                                                            16011
+
+
+                                                                                                                                                                                                                                                                    16035
+
+
+                                                                                                                                                                                                                                                                            16059
+
+
+                                                                                                                                                                                                                                                                                    16083
+
+
+                                                                                                                                                                                                                                                                                             16107
+
+
+                                                                                                                                                                                                                                                                                                       16131
+
+
+                                                                                                                                                                                                                                                                                                               16155
+
+
+                                                                                                                                                                                                                                                                                                                       16179
+200 family triples
+
+
+All numbered guest units are drawn individually. Colors are accommodation classes; environmental adaptations overlap
+those classes.
+
+                                                                                                                                                 0                   20 m                              Detail extents: Z -105 to 105 m; X 55 to 110 m
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                                                                                           18
+D17 Premier suites & horizon                                                                                                                                                                                                                                          FLOOR +102 m
+
+                                                                                                                                                                                                                                              100 units / 200 guest berths
+Standard doubles with premier finish
+
+     Standard       Family          Specialty       Crew       Public        Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                    Authored guest circulation                      Open volume / floor cut-out                 Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                          PORT UP (-X)                                                                                                                               AFT / STERN (+Z)
+
+
+
+
+                                                1                                                                                       3                                                                                         5
+
+
+
+
+                                                2                                                                                       4                                                                                         6
+
+
+
+
+0                  100 m               STARBOARD DOWN (+X)       |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                          ATRIUM-SIDE STARBOARD HOMES
+                                                                                                                                                 All cabin footprints + doors; dots are assigned bed anchors
+01     Port forward commons
+
+
+02     Starboard forward commons
+
+
+03     Port atrium commons
+
+
+04     Starboard atrium commons
+
+
+05     Port aft commons
+
+
+06     Starboard aft commons
+
+
+
+
+                                                                                                                                                                         17089
+
+
+                                                                                                                                                                                   17065
+
+
+                                                                                                                                                                                           17041
+
+
+                                                                                                                                                                                                   17017
+
+
+
+
+                                                                                                                                                                                                                                      17023
+
+
+                                                                                                                                                                                                                                              17047
+
+
+                                                                                                                                                                                                                                                      17071
+
+
+                                                                                                                                                                                                                                                              17095
+                                                                                                                                                                                                                          4
+
+
+
+
+                                                                                                                                                                         17077
+
+
+                                                                                                                                                                                   17053
+
+
+                                                                                                                                                                                           17029
+
+
+                                                                                                                                                                                                   17005
+
+
+
+
+                                                                                                                                                                                                                                      17011
+
+
+                                                                                                                                                                                                                                              17035
+
+
+                                                                                                                                                                                                                                                      17059
+
+
+                                                                                                                                                                                                                                                              17083
+100 standard doubles
+
+
+All numbered guest units are drawn individually. Colors are accommodation classes; environmental adaptations overlap
+those classes.
+
+                                                                                                                                                 0      20 m                     Detail extents: Z -105 to 105 m; X 55 to 110 m
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                                                                19
+D18 Bridge & navigation                                                                                                                                                                                                     FLOOR +106.5 m
+
+                                                                                                                                                                                                                            10 registered spaces
+Bridge, navigation, communications and outlook
+
+     Standard        Family         Specialty    Crew        Public       Garden / habitat         Service / staff     Culture       Retail
+
+       Service-tram route + stops                 Authored guest circulation                      Open volume / floor cut-out                  Room footprint colors describe function, not finish
+
+
+FORWARD / BOW (-Z)                                                                                                       PORT UP (-X)                                                                                           AFT / STERN (+Z)
+
+
+
+
+                                                                                                                                     5
+
+
+
+
+                               1                                                3                                                                                                            7                         9
+
+
+
+
+                               2                                                4                                                                                                            8                         10
+
+
+
+
+                                                                                                                                     6
+
+
+
+
+0                    100 m             STARBOARD DOWN (+X)    |   All distances in metres    |   Room numbers refer to the directory below
+
+
+
+
+DESTINATIONS & CAPACITY                                                                                                                       CENTRAL SERVICE STREET
+                                                                                                                                                                 5
+
+                                                                                                                                              Straight axial tram route on this deck
+01     Command bridge                                             09    Upper horizon
+
+
+02     Navigation gallery                                         10    Emergency control
+
+
+03     Communications
+
+
+04     Solar enclosure chart
+
+
+05     Officer respite
+
+
+06     Bridge briefing
+
+
+07     Astrometric station
+
+
+08     Ship status
+
+
+The upper observation and navigation programs remain within the current 118 m reference height envelope.
+
+
+
+
+                                                                                                                                              0    20 m                               6 Z -80 to 80 m; X -60 to 60 m
+                                                                                                                                                                         Detail extents:
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                                          20
+The new central atrium & transit
+A real open volume, with sculpted terraces and a service-tram route around the starboard edge.
+
+
+D09 TERRACE PLAN
+Forward is left; port is up. Original geometry, to scale.                                                                        96 x 128 m
+                                                                                                                                 Rectangular slab opening on D02-D17; rounded, sculpted terraces replace the
+                                                                                                                                 navigable perimeter.
+
+
+                                                                                                                                 16 visible levels
+                                                                                                                                 Four broad leisure terraces: D06, D09, D12 and D16. Twelve smaller connecting
+                                                                                                                                 galleries.
+
+
+                                                                                                                                 Clear central void
+                                                                                                                                 No former full cross-bridge grid. Optional narrow crossings exist only on D09 and D12.
+
+
+                                                                                                                                 Starboard tram bypass
+                                                                                                                                 X/Z route: (0,-72), (0,-56), (40,-52), (40,52), (0,56), (0,72).
+
+
+                                                                                                                                 Five Townline stops
+                                                                                                                                 Z = -432, -216, -72, +216, +432 m. Central express arrival is X +5.5, Z -72 m.
+
+
+                                                                                                                                 Distinct lift meanings
+                                                                                                                                 Hollow circles in the plan are panoramic lift architecture. Express deck travel remains
+                                                                                                                                 the working inter-deck interface.
+
+
+
+
+0             20 m
+
+
+
+DOORS, PORTALS & SUPPORT
+
+Fore/aft entry aprons are 16 m wide. Side portals join the perimeter at X +/-52, Z 0. Extra cross-street portals at X +/-52, Z
++/-42 connect the crew, retail and residential sides. These diagrams preserve that revised geometry.                             The floorplan shows the current ship so far. Visual review, normal-play walkthroughs
+                                                                                                                                 and final packaging remain separate completion checks.
+
+
+
+
+Current-build atlas | 1 October 2026                                                                                                                                                                                       21
+

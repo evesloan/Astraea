@@ -1,0 +1,7 @@
+# Optional housekeeping body candidate
+
+body_collision_subset.json is selected from exact authored convex solids during the original generator. It is a literal subset of collision_proposals.json, not an enclosing replacement hull or generated seed. AST-HSK-001 keeps55 of77 precise shapes; its22 omitted shapes are fine retained journal sleeves/pins/caps. Sleeve omission is bounded by45mm to a same-moving retained strap; static pin/cap omission by75mm to its fixed retained bracket. Actual maximum witness bound is70mm. These are distance-to-retained-body bounds, separate from zero geometric inflation and material thickness. The fine mechanism and contact records remain available.
+
+AST-HSK-002 keeps all61 purposeful rail/frame/hood/carrier convex shapes. It has no safe exact subset omission that retains every rail load support and open slot; there is no claimed reduction for this asset. Its8 exported material/ownership meshes are separate from collision shape count. Both sets are optional, unadopted candidates pending actual engine/body and performance acceptance.
+
+The author geometry check uses the convexity of distance-to-box and common motion ownership to bound each entire omitted solid for every state. The independent source reconstruction recovers keep flags from actual rebuilt editable sources and independently copies whole detailed shape dictionaries. Real voids remain empty because a literal subset adds no geometry. No fine grip/control/load surface is discarded.

@@ -1,0 +1,6589 @@
+{
+  "path": "assets/utility_console/source/AST-ENG-003.blend",
+  "sha256": "22705351720d3b8366b69914c3bd19701382fd4d9685e2660dbca9325d1d3277",
+  "blender_version": "4.3.2",
+  "units": {
+    "system": "METRIC",
+    "scale_length": 1.0
+  },
+  "objects": [
+    {
+      "name": "AST-ENG-003_wall_datum",
+      "type": "EMPTY",
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "catalogue_id": "AST-ENG-003",
+        "metadata_revision": "utility-console-frames-01",
+        "source_frame": "Blender source metres Z-up; front -Y; wall datum at console centre",
+        "exchange_frame": "glTF Y-up metres; front +Z; actual node hierarchy authoritative",
+        "datum_blender_source_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "datum_gltf_yup_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "proposed_installation_datum_height_above_deck_m": 1.45,
+        "static_artwork": "Printed circuit mimic and analogue dial; no live telemetry, simulation or operating ratings",
+        "scope": "Original independent catalogue asset; no room, fluid simulator, device controller or certified actor fit",
+        "width_blender_X_m": 0.82,
+        "wall_front_direction_blender_source": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "wall_front_direction_gltf_yup": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "mount_records_json": "[{\"name\": \"MOUNT_L_LOW\", \"point_blender_source_m\": [-0.305, 0, -0.221], \"point_gltf_yup_m\": [-0.305, -0.221, 0], \"normal_blender_source\": [0, 1, 0], \"normal_gltf_yup\": [0, 0, -1], \"wall_pad_radius_m\": 0.034, \"physical_support_node\": \"MOUNT_L_LOW_wall_pad\"}, {\"name\": \"MOUNT_L_HIGH\", \"point_blender_source_m\": [-0.305, 0, 0.221], \"point_gltf_yup_m\": [-0.305, 0.221, 0], \"normal_blender_source\": [0, 1, 0], \"normal_gltf_yup\": [0, 0, -1], \"wall_pad_radius_m\": 0.034, \"physical_support_node\": \"MOUNT_L_HIGH_wall_pad\"}, {\"name\": \"MOUNT_R_LOW\", \"point_blender_source_m\": [0.305, 0, -0.221], \"point_gltf_yup_m\": [0.305, -0.221, 0], \"normal_blender_source\": [0, 1, 0], \"normal_gltf_yup\": [0, 0, -1], \"wall_pad_radius_m\": 0.034, \"physical_support_node\": \"MOUNT_R_LOW_wall_pad\"}, {\"name\": \"MOUNT_R_HIGH\", \"point_blender_source_m\": [0.305, 0, 0.221], \"point_gltf_yup_m\": [0.305, 0.221, 0], \"normal_blender_source\": [0, 1, 0], \"normal_gltf_yup\": [0, 0, -1], \"wall_pad_radius_m\": 0.034, \"physical_support_node\": \"MOUNT_R_HIGH_wall_pad\"}]",
+        "control_records_json": "[{\"node\": \"CTRL_button_START\", \"kind\": \"button\", \"pivot_blender_source_m\": [-0.263, -0.2115, -0.133], \"pivot_gltf_yup_m\": [-0.263, -0.133, 0.2115], \"interaction_blender_source_m\": [-0.263, -0.2265, -0.133], \"interaction_gltf_yup_m\": [-0.263, -0.133, 0.2265], \"axis_blender_source\": [0, 1, 0], \"axis_gltf_yup\": [0, 0, -1], \"max_travel_proposal_m\": 0.003, \"purpose\": \"Proposed circulate/start action\"}, {\"node\": \"CTRL_button_HOLD\", \"kind\": \"button\", \"pivot_blender_source_m\": [-0.127, -0.2115, -0.133], \"pivot_gltf_yup_m\": [-0.127, -0.133, 0.2115], \"interaction_blender_source_m\": [-0.127, -0.2265, -0.133], \"interaction_gltf_yup_m\": [-0.127, -0.133, 0.2265], \"axis_blender_source\": [0, 1, 0], \"axis_gltf_yup\": [0, 0, -1], \"max_travel_proposal_m\": 0.003, \"purpose\": \"Proposed hold action\"}, {\"node\": \"CTRL_button_ISOLATE\", \"kind\": \"button\", \"pivot_blender_source_m\": [0.009, -0.2115, -0.133], \"pivot_gltf_yup_m\": [0.009, -0.133, 0.2115], \"interaction_blender_source_m\": [0.009, -0.2265, -0.133], \"interaction_gltf_yup_m\": [0.009, -0.133, 0.2265], \"axis_blender_source\": [0, 1, 0], \"axis_gltf_yup\": [0, 0, -1], \"max_travel_proposal_m\": 0.003, \"purpose\": \"Proposed isolate action; no safety-system claim\"}, {\"node\": \"CTRL_mode_selector\", \"kind\": \"rotary_selector\", \"pivot_blender_source_m\": [0.263, -0.2105, -0.099], \"pivot_gltf_yup_m\": [0.263, -0.099, 0.2105], \"interaction_blender_source_m\": [0.263, -0.247, -0.099], \"interaction_gltf_yup_m\": [0.263, -0.099, 0.247], \"axis_blender_source\": [0, -1, 0], \"axis_gltf_yup\": [0, 0, 1], \"detent_proposals_deg\": [-90, 0, 90], \"parts\": [\"CTRL_mode_selector\", \"CTRL_mode_selector_grip\", \"CTRL_mode_selector_index\"]}]"
+      },
+      "modifiers": []
+    },
+    {
+      "name": "formed_rear_closure",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 220,
+      "min_xyz": [
+        -0.4099999964237213,
+        -0.09799999743700027,
+        -0.3400000035762787
+      ],
+      "max_xyz": [
+        0.4099999964237213,
+        -0.07900000363588333,
+        0.3400000035762787
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "deep_formed_case_returns",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 448,
+      "min_xyz": [
+        -0.4099999964237213,
+        -0.20499999821186066,
+        -0.3400000035762787
+      ],
+      "max_xyz": [
+        0.4099999964237213,
+        -0.08799999952316284,
+        0.3400000035762787
+      ],
+      "source_vertices": 32,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ]
+    },
+    {
+      "name": "pale_front_protection_rim",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_white_paint",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 448,
+      "min_xyz": [
+        -0.4099999964237213,
+        -0.21199999749660492,
+        -0.3400000035762787
+      ],
+      "max_xyz": [
+        0.4099999964237213,
+        -0.1940000057220459,
+        0.3400000035762787
+      ],
+      "source_vertices": 32,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_white_paint"
+      ]
+    },
+    {
+      "name": "recessed_control_face",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_white_paint",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 164,
+      "min_xyz": [
+        -0.3824999928474426,
+        -0.1850000023841858,
+        -0.19499999284744263
+      ],
+      "max_xyz": [
+        0.3824999928474426,
+        -0.16500000655651093,
+        0.3109999895095825
+      ],
+      "source_vertices": 12,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_white_paint"
+      ]
+    },
+    {
+      "name": "lower_face_return",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_white_paint",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.3319999873638153,
+        -0.1850000023841858,
+        -0.31200000643730164
+      ],
+      "max_xyz": [
+        0.3319999873638153,
+        -0.16500000655651093,
+        -0.2939999997615814
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_white_paint"
+      ]
+    },
+    {
+      "name": "schematic_recess_gasket",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.3479999899864197,
+        -0.1899999976158142,
+        -0.052000001072883606
+      ],
+      "max_xyz": [
+        0.11800000071525574,
+        -0.18400000035762787,
+        0.21799999475479126
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "schematic_zinc_frame",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.3409999907016754,
+        -0.19499999284744263,
+        -0.04699999839067459
+      ],
+      "max_xyz": [
+        0.11100000143051147,
+        -0.18799999356269836,
+        0.210999995470047
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "printed_flow_path_mimic",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "utility_console_original_print",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "static_artwork": true,
+        "graphic_atlas_zone": "schematic",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.3319999873638153,
+        -0.19580000638961792,
+        -0.03999999910593033
+      ],
+      "max_xyz": [
+        0.10199999809265137,
+        -0.19499999284744263,
+        0.20399999618530273
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_utility_console_original_print"
+      ]
+    },
+    {
+      "name": "console_identifier_plate",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "utility_console_original_print",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "static_artwork": true,
+        "graphic_atlas_zone": "header",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.36399999260902405,
+        -0.1858000010251999,
+        0.23399999737739563
+      ],
+      "max_xyz": [
+        0.25600001215934753,
+        -0.1850000023841858,
+        0.30000001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_utility_console_original_print"
+      ]
+    },
+    {
+      "name": "filter_gauge_outer_rim",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 380,
+      "min_xyz": [
+        0.1809999942779541,
+        -0.20999999344348907,
+        0.05999999865889549
+      ],
+      "max_xyz": [
+        0.33500000834465027,
+        -0.18400000035762787,
+        0.21400000154972076
+      ],
+      "source_vertices": 64,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "filter_gauge_inset",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 124,
+      "min_xyz": [
+        0.19200000166893005,
+        -0.2134999930858612,
+        0.07100000232458115
+      ],
+      "max_xyz": [
+        0.3240000009536743,
+        -0.20649999380111694,
+        0.2029999941587448
+      ],
+      "source_vertices": 64,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "printed_filter_dial",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "utility_console_original_print",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "static_artwork": true,
+        "graphic_atlas_zone": "gauge_dial",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 124,
+      "min_xyz": [
+        0.19599999487400055,
+        -0.21400000154972076,
+        0.07500000298023224
+      ],
+      "max_xyz": [
+        0.3199999928474426,
+        -0.21320000290870667,
+        0.19900000095367432
+      ],
+      "source_vertices": 64,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_utility_console_original_print"
+      ]
+    },
+    {
+      "name": "STATIC_filter_gauge_pointer",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_cable_red",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": true,
+        "static_artwork": true,
+        "not_live_telemetry": true,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.21699999272823334,
+        -0.21799999475479126,
+        0.1340000033378601
+      ],
+      "max_xyz": [
+        0.2619999945163727,
+        -0.2150000035762787,
+        0.16599999368190765
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_cable_red"
+      ]
+    },
+    {
+      "name": "gauge_pointer_pin",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 60,
+      "min_xyz": [
+        0.25200000405311584,
+        -0.22100000083446503,
+        0.13099999725818634
+      ],
+      "max_xyz": [
+        0.2639999985694885,
+        -0.21699999272823334,
+        0.14300000667572021
+      ],
+      "source_vertices": 32,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "gauge_static_pointer_datum",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.257999986410141
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.21899999678134918
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.13699999451637268
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Static artwork origin, not a control",
+        "point_blender_source_m": [
+          0.258,
+          -0.219,
+          0.137
+        ],
+        "point_gltf_yup_m": [
+          0.258,
+          0.137,
+          0.219
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          -1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "control_button_legend",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "utility_console_original_print",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "static_artwork": true,
+        "graphic_atlas_zone": "button_legend",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.3395000100135803,
+        -0.1858000010251999,
+        -0.09600000083446503
+      ],
+      "max_xyz": [
+        0.08550000190734863,
+        -0.1850000023841858,
+        -0.0560000017285347
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_utility_console_original_print"
+      ]
+    },
+    {
+      "name": "START_guard_collar",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 576,
+      "min_xyz": [
+        -0.2919999957084656,
+        -0.21250000596046448,
+        -0.16200000047683716
+      ],
+      "max_xyz": [
+        -0.23399999737739563,
+        -0.1835000067949295,
+        -0.10400000214576721
+      ],
+      "source_vertices": 96,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "START_dark_socket",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 192,
+      "min_xyz": [
+        -0.28600001335144043,
+        -0.2160000056028366,
+        -0.15600000321865082
+      ],
+      "max_xyz": [
+        -0.23999999463558197,
+        -0.20600000023841858,
+        -0.10999999940395355
+      ],
+      "source_vertices": 96,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "CTRL_button_START",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.2630000114440918
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.21150000393390656
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.13300000131130219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_cable_blue",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": true,
+        "control_kind": "button",
+        "pivot_blender_source_m": [
+          -0.263,
+          -0.2115,
+          -0.133
+        ],
+        "pivot_gltf_yup_m": [
+          -0.263,
+          -0.133,
+          0.2115
+        ],
+        "interaction_blender_source_m": [
+          -0.263,
+          -0.2265,
+          -0.133
+        ],
+        "interaction_gltf_yup_m": [
+          -0.263,
+          -0.133,
+          0.2265
+        ],
+        "press_axis_blender_source": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "press_axis_gltf_yup": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "proposed_max_travel_m": 0.003,
+        "purpose": "Proposed circulate/start action",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 284,
+      "min_xyz": [
+        -0.2824999988079071,
+        -0.226500004529953,
+        -0.1525000035762787
+      ],
+      "max_xyz": [
+        -0.2434999942779541,
+        -0.21150000393390656,
+        -0.11349999904632568
+      ],
+      "source_vertices": 48,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ]
+    },
+    {
+      "name": "START_interaction",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.2630000114440918
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.226500004529953
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.13300000131130219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Front cap centre contact proposal",
+        "point_blender_source_m": [
+          -0.263,
+          -0.2265,
+          -0.133
+        ],
+        "point_gltf_yup_m": [
+          -0.263,
+          -0.133,
+          0.2265
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          -1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "HOLD_guard_collar",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 576,
+      "min_xyz": [
+        -0.15600000321865082,
+        -0.21250000596046448,
+        -0.16200000047683716
+      ],
+      "max_xyz": [
+        -0.09799999743700027,
+        -0.1835000067949295,
+        -0.10400000214576721
+      ],
+      "source_vertices": 96,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "HOLD_dark_socket",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 192,
+      "min_xyz": [
+        -0.15000000596046448,
+        -0.2160000056028366,
+        -0.15600000321865082
+      ],
+      "max_xyz": [
+        -0.10400000214576721,
+        -0.20600000023841858,
+        -0.10999999940395355
+      ],
+      "source_vertices": 96,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "CTRL_button_HOLD",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.12700000405311584
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.21150000393390656
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.13300000131130219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_opal",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": true,
+        "control_kind": "button",
+        "pivot_blender_source_m": [
+          -0.127,
+          -0.2115,
+          -0.133
+        ],
+        "pivot_gltf_yup_m": [
+          -0.127,
+          -0.133,
+          0.2115
+        ],
+        "interaction_blender_source_m": [
+          -0.127,
+          -0.2265,
+          -0.133
+        ],
+        "interaction_gltf_yup_m": [
+          -0.127,
+          -0.133,
+          0.2265
+        ],
+        "press_axis_blender_source": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "press_axis_gltf_yup": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "proposed_max_travel_m": 0.003,
+        "purpose": "Proposed hold action",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 284,
+      "min_xyz": [
+        -0.14650000631809235,
+        -0.226500004529953,
+        -0.1525000035762787
+      ],
+      "max_xyz": [
+        -0.10750000178813934,
+        -0.21150000393390656,
+        -0.11349999904632568
+      ],
+      "source_vertices": 48,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_opal"
+      ]
+    },
+    {
+      "name": "HOLD_interaction",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.12700000405311584
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.226500004529953
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.13300000131130219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Front cap centre contact proposal",
+        "point_blender_source_m": [
+          -0.127,
+          -0.2265,
+          -0.133
+        ],
+        "point_gltf_yup_m": [
+          -0.127,
+          -0.133,
+          0.2265
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          -1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "ISOLATE_guard_collar",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 576,
+      "min_xyz": [
+        -0.019999999552965164,
+        -0.21250000596046448,
+        -0.16200000047683716
+      ],
+      "max_xyz": [
+        0.03799999877810478,
+        -0.1835000067949295,
+        -0.10400000214576721
+      ],
+      "source_vertices": 96,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "ISOLATE_dark_socket",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 192,
+      "min_xyz": [
+        -0.014000000432133675,
+        -0.2160000056028366,
+        -0.15600000321865082
+      ],
+      "max_xyz": [
+        0.03200000151991844,
+        -0.20600000023841858,
+        -0.10999999940395355
+      ],
+      "source_vertices": 96,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "CTRL_button_ISOLATE",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.008999999612569809
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.21150000393390656
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.13300000131130219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_cable_red",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": true,
+        "control_kind": "button",
+        "pivot_blender_source_m": [
+          0.009,
+          -0.2115,
+          -0.133
+        ],
+        "pivot_gltf_yup_m": [
+          0.009,
+          -0.133,
+          0.2115
+        ],
+        "interaction_blender_source_m": [
+          0.009,
+          -0.2265,
+          -0.133
+        ],
+        "interaction_gltf_yup_m": [
+          0.009,
+          -0.133,
+          0.2265
+        ],
+        "press_axis_blender_source": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "press_axis_gltf_yup": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "proposed_max_travel_m": 0.003,
+        "purpose": "Proposed isolate action; no safety-system claim",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 284,
+      "min_xyz": [
+        -0.010499998927116394,
+        -0.226500004529953,
+        -0.1525000035762787
+      ],
+      "max_xyz": [
+        0.02850000001490116,
+        -0.21150000393390656,
+        -0.11349999904632568
+      ],
+      "source_vertices": 48,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_cable_red"
+      ]
+    },
+    {
+      "name": "ISOLATE_interaction",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.008999999612569809
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.226500004529953
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.13300000131130219
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Front cap centre contact proposal",
+        "point_blender_source_m": [
+          0.009,
+          -0.2265,
+          -0.133
+        ],
+        "point_gltf_yup_m": [
+          0.009,
+          -0.133,
+          0.2265
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          -1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "mode_selector_legend",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "utility_console_original_print",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "static_artwork": true,
+        "graphic_atlas_zone": "selector_legend",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.17249999940395355,
+        -0.1858000010251999,
+        -0.17249999940395355
+      ],
+      "max_xyz": [
+        0.35350000858306885,
+        -0.1850000023841858,
+        -0.029500000178813934
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_utility_console_original_print"
+      ]
+    },
+    {
+      "name": "selector_escutcheon",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 576,
+      "min_xyz": [
+        0.21299999952316284,
+        -0.2070000022649765,
+        -0.14900000393390656
+      ],
+      "max_xyz": [
+        0.31299999356269836,
+        -0.18299999833106995,
+        -0.04899999871850014
+      ],
+      "source_vertices": 96,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "selector_socket",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 192,
+      "min_xyz": [
+        0.22599999606609344,
+        -0.2150000035762787,
+        -0.13600000739097595
+      ],
+      "max_xyz": [
+        0.30000001192092896,
+        -0.19900000095367432,
+        -0.06199999898672104
+      ],
+      "source_vertices": 96,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "CTRL_mode_selector",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.2630000114440918
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.21050000190734863
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0989999994635582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": true,
+        "control_kind": "rotary_selector",
+        "pivot_blender_source_m": [
+          0.263,
+          -0.2105,
+          -0.099
+        ],
+        "pivot_gltf_yup_m": [
+          0.263,
+          -0.099,
+          0.2105
+        ],
+        "interaction_blender_source_m": [
+          0.263,
+          -0.247,
+          -0.099
+        ],
+        "interaction_gltf_yup_m": [
+          0.263,
+          -0.099,
+          0.247
+        ],
+        "rotation_axis_blender_source": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "rotation_axis_gltf_yup": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "proposed_detents_about_named_axis_deg": [
+          -90.0,
+          0.0,
+          90.0
+        ],
+        "static_selected_detent": "OFF artwork; no software state",
+        "detent_labels_by_angle_deg_json": "{\"-90\": \"LOCAL\", \"0\": \"OFF\", \"90\": \"REMOTE\"}",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 284,
+      "min_xyz": [
+        0.23600000143051147,
+        -0.23350000381469727,
+        -0.12600000202655792
+      ],
+      "max_xyz": [
+        0.28999999165534973,
+        -0.21050000190734863,
+        -0.07199999690055847
+      ],
+      "source_vertices": 48,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ]
+    },
+    {
+      "name": "CTRL_mode_selector_grip",
+      "type": "MESH",
+      "parent": "CTRL_mode_selector",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.2630000114440918
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.21050000190734863
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0989999994635582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": true,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.2529999911785126,
+        -0.24699999392032623,
+        -0.12600000202655792
+      ],
+      "max_xyz": [
+        0.27300000190734863,
+        -0.22599999606609344,
+        -0.07199999690055847
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "CTRL_mode_selector_index",
+      "type": "MESH",
+      "parent": "CTRL_mode_selector",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.2630000114440918
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.21050000190734863
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0989999994635582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_opal",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": true,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.25999999046325684,
+        -0.24799999594688416,
+        -0.125
+      ],
+      "max_xyz": [
+        0.26600000262260437,
+        -0.24699999392032623,
+        -0.11800000071525574
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_opal"
+      ]
+    },
+    {
+      "name": "MODE_interaction",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.2630000114440918
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.24699999392032623
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.0989999994635582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Front grip contact proposal",
+        "point_blender_source_m": [
+          0.263,
+          -0.247,
+          -0.099
+        ],
+        "point_gltf_yup_m": [
+          0.263,
+          -0.099,
+          0.247
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          -1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "service_hatch_perimeter_gasket",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 224,
+      "min_xyz": [
+        -0.3319999873638153,
+        -0.1889999955892563,
+        -0.2919999957084656
+      ],
+      "max_xyz": [
+        0.3319999873638153,
+        -0.18400000035762787,
+        -0.20200000703334808
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "SERVICE_removable_hatch",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": true,
+        "service_action": "Remove four front fasteners, withdraw hatch toward source -Y / GLB +Z; no animation implemented",
+        "withdrawal_axis_blender_source": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "withdrawal_axis_gltf_yup": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 224,
+      "min_xyz": [
+        -0.328000009059906,
+        -0.19699999690055847,
+        -0.28800949454307556
+      ],
+      "max_xyz": [
+        0.328000009059906,
+        -0.18700000643730164,
+        -0.2059904932975769
+      ],
+      "source_vertices": 16,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ]
+    },
+    {
+      "name": "service_hatch_print",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "utility_console_original_print",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "static_artwork": true,
+        "graphic_atlas_zone": "service_label",
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.289000004529953,
+        -0.19779999554157257,
+        -0.27149999141693115
+      ],
+      "max_xyz": [
+        -0.054999999701976776,
+        -0.19699999690055847,
+        -0.2224999964237213
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_utility_console_original_print"
+      ]
+    },
+    {
+      "name": "vent_dark_rear_baffle",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.014000000432133675,
+        -0.16200000047683716,
+        -0.2750000059604645
+      ],
+      "max_xyz": [
+        0.2800000011920929,
+        -0.15800000727176666,
+        -0.21899999678134918
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "vent_left_pocket_wall",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.009999999776482582,
+        -0.1899999976158142,
+        -0.27900001406669617
+      ],
+      "max_xyz": [
+        0.014999999664723873,
+        -0.15800000727176666,
+        -0.2150000035762787
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_right_pocket_wall",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.2800000011920929,
+        -0.1899999976158142,
+        -0.27900001406669617
+      ],
+      "max_xyz": [
+        0.2849999964237213,
+        -0.15800000727176666,
+        -0.2150000035762787
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_bottom_pocket_wall",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.014000000432133675,
+        -0.1899999976158142,
+        -0.27900001406669617
+      ],
+      "max_xyz": [
+        0.2809999883174896,
+        -0.15800000727176666,
+        -0.2750000059604645
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_top_pocket_wall",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.014000000432133675,
+        -0.1899999976158142,
+        -0.21899999678134918
+      ],
+      "max_xyz": [
+        0.2809999883174896,
+        -0.15800000727176666,
+        -0.2150000035762787
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_formed_louver_00",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.027127057313919067,
+        -0.20488184690475464,
+        -0.27799999713897705
+      ],
+      "max_xyz": [
+        0.04687293991446495,
+        -0.1891181468963623,
+        -0.2160000056028366
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_formed_louver_01",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.058127060532569885,
+        -0.20488184690475464,
+        -0.27799999713897705
+      ],
+      "max_xyz": [
+        0.07787293940782547,
+        -0.1891181468963623,
+        -0.2160000056028366
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_formed_louver_02",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.0891270637512207,
+        -0.20488184690475464,
+        -0.27799999713897705
+      ],
+      "max_xyz": [
+        0.10887294262647629,
+        -0.1891181468963623,
+        -0.2160000056028366
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_formed_louver_03",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.12012704461812973,
+        -0.20488184690475464,
+        -0.27799999713897705
+      ],
+      "max_xyz": [
+        0.1398729532957077,
+        -0.1891181468963623,
+        -0.2160000056028366
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_formed_louver_04",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.15112705528736115,
+        -0.20488184690475464,
+        -0.27799999713897705
+      ],
+      "max_xyz": [
+        0.17087294161319733,
+        -0.1891181468963623,
+        -0.2160000056028366
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_formed_louver_05",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.18212704360485077,
+        -0.20488184690475464,
+        -0.27799999713897705
+      ],
+      "max_xyz": [
+        0.20187295973300934,
+        -0.1891181468963623,
+        -0.2160000056028366
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_formed_louver_06",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.21312706172466278,
+        -0.20488184690475464,
+        -0.27799999713897705
+      ],
+      "max_xyz": [
+        0.23287294805049896,
+        -0.1891181468963623,
+        -0.2160000056028366
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "vent_formed_louver_07",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.2441270500421524,
+        -0.20488184690475464,
+        -0.27799999713897705
+      ],
+      "max_xyz": [
+        0.2638729214668274,
+        -0.1891181468963623,
+        -0.2160000056028366
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "hatch_fastener_-0.314_-0.220",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 140,
+      "min_xyz": [
+        -0.31949999928474426,
+        -0.19949999451637268,
+        -0.22550000250339508
+      ],
+      "max_xyz": [
+        -0.3084999918937683,
+        -0.19670000672340393,
+        -0.21449999511241913
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "hatch_fastener_-0.314_-0.220_slot",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.3165299892425537,
+        -0.1995999962091446,
+        -0.22059999406337738
+      ],
+      "max_xyz": [
+        -0.31147000193595886,
+        -0.1992499977350235,
+        -0.21940000355243683
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "hatch_fastener_-0.314_-0.275",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 140,
+      "min_xyz": [
+        -0.31949999928474426,
+        -0.19949999451637268,
+        -0.28049999475479126
+      ],
+      "max_xyz": [
+        -0.3084999918937683,
+        -0.19670000672340393,
+        -0.2694999873638153
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "hatch_fastener_-0.314_-0.275_slot",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.3165299892425537,
+        -0.1995999962091446,
+        -0.27559998631477356
+      ],
+      "max_xyz": [
+        -0.31147000193595886,
+        -0.1992499977350235,
+        -0.274399995803833
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "hatch_fastener_0.314_-0.220",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 140,
+      "min_xyz": [
+        0.3084999918937683,
+        -0.19949999451637268,
+        -0.22550000250339508
+      ],
+      "max_xyz": [
+        0.31949999928474426,
+        -0.19670000672340393,
+        -0.21449999511241913
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "hatch_fastener_0.314_-0.220_slot",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.31147000193595886,
+        -0.1995999962091446,
+        -0.22059999406337738
+      ],
+      "max_xyz": [
+        0.3165299892425537,
+        -0.1992499977350235,
+        -0.21940000355243683
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "hatch_fastener_0.314_-0.275",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 140,
+      "min_xyz": [
+        0.3084999918937683,
+        -0.19949999451637268,
+        -0.28049999475479126
+      ],
+      "max_xyz": [
+        0.31949999928474426,
+        -0.19670000672340393,
+        -0.2694999873638153
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "hatch_fastener_0.314_-0.275_slot",
+      "type": "MESH",
+      "parent": "SERVICE_removable_hatch",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.31147000193595886,
+        -0.1995999962091446,
+        -0.27559998631477356
+      ],
+      "max_xyz": [
+        0.3165299892425537,
+        -0.1992499977350235,
+        -0.274399995803833
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "case_fixing_-0.371_0.254",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 140,
+      "min_xyz": [
+        -0.3779999911785126,
+        -0.2134999930858612,
+        0.24699999392032623
+      ],
+      "max_xyz": [
+        -0.36399999260902405,
+        -0.21070000529289246,
+        0.26100000739097595
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "case_fixing_-0.371_0.254_slot",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.37422001361846924,
+        -0.21359999477863312,
+        0.2533999979496002
+      ],
+      "max_xyz": [
+        -0.36777999997138977,
+        -0.21324999630451202,
+        0.25459998846054077
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "case_fixing_0.371_0.254",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 140,
+      "min_xyz": [
+        0.36399999260902405,
+        -0.2134999930858612,
+        0.24699999392032623
+      ],
+      "max_xyz": [
+        0.3779999911785126,
+        -0.21070000529289246,
+        0.26100000739097595
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "case_fixing_0.371_0.254_slot",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.36777999997138977,
+        -0.21359999477863312,
+        0.2533999979496002
+      ],
+      "max_xyz": [
+        0.37422001361846924,
+        -0.21324999630451202,
+        0.25459998846054077
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "case_fixing_-0.348_-0.286",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 140,
+      "min_xyz": [
+        -0.35499998927116394,
+        -0.2134999930858612,
+        -0.2930000126361847
+      ],
+      "max_xyz": [
+        -0.3409999907016754,
+        -0.21070000529289246,
+        -0.27900001406669617
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "case_fixing_-0.348_-0.286_slot",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        -0.3512200117111206,
+        -0.21359999477863312,
+        -0.2865999937057495
+      ],
+      "max_xyz": [
+        -0.34477999806404114,
+        -0.21324999630451202,
+        -0.28540000319480896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "case_fixing_0.348_-0.286",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 140,
+      "min_xyz": [
+        0.3409999907016754,
+        -0.2134999930858612,
+        -0.2930000126361847
+      ],
+      "max_xyz": [
+        0.35499998927116394,
+        -0.21070000529289246,
+        -0.27900001406669617
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "case_fixing_0.348_-0.286_slot",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 12,
+      "min_xyz": [
+        0.34477999806404114,
+        -0.21359999477863312,
+        -0.2865999937057495
+      ],
+      "max_xyz": [
+        0.3512200117111206,
+        -0.21324999630451202,
+        -0.28540000319480896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "rear_vertical_mount_cleat_-0.305",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.3330000042915344,
+        -0.09399999678134918,
+        -0.26600000262260437
+      ],
+      "max_xyz": [
+        -0.2770000100135803,
+        -0.05999999865889549,
+        0.26600000262260437
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "MOUNT_L_LOW_standoff",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 60,
+      "min_xyz": [
+        -0.3269999921321869,
+        -0.08500000089406967,
+        -0.24300000071525574
+      ],
+      "max_xyz": [
+        -0.28299999237060547,
+        -0.004999999888241291,
+        -0.19900000095367432
+      ],
+      "source_vertices": 32,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "MOUNT_L_LOW_wall_pad",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 76,
+      "min_xyz": [
+        -0.33899998664855957,
+        -0.004999999888241291,
+        -0.2549999952316284
+      ],
+      "max_xyz": [
+        -0.2709999978542328,
+        0.0,
+        -0.18700000643730164
+      ],
+      "source_vertices": 40,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "MOUNT_L_LOW",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3050000071525574
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.22100000083446503
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Physical wall pad contact centre",
+        "point_blender_source_m": [
+          -0.305,
+          0.0,
+          -0.221
+        ],
+        "point_gltf_yup_m": [
+          -0.305,
+          -0.221,
+          0.0
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          -1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "MOUNT_L_HIGH_standoff",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 60,
+      "min_xyz": [
+        -0.3269999921321869,
+        -0.08500000089406967,
+        0.19900000095367432
+      ],
+      "max_xyz": [
+        -0.28299999237060547,
+        -0.004999999888241291,
+        0.24300000071525574
+      ],
+      "source_vertices": 32,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "MOUNT_L_HIGH_wall_pad",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 76,
+      "min_xyz": [
+        -0.33899998664855957,
+        -0.004999999888241291,
+        0.18700000643730164
+      ],
+      "max_xyz": [
+        -0.2709999978542328,
+        0.0,
+        0.2549999952316284
+      ],
+      "source_vertices": 40,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "MOUNT_L_HIGH",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3050000071525574
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.22100000083446503
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Physical wall pad contact centre",
+        "point_blender_source_m": [
+          -0.305,
+          0.0,
+          0.221
+        ],
+        "point_gltf_yup_m": [
+          -0.305,
+          0.221,
+          0.0
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          -1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "rear_vertical_mount_cleat_0.305",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.2770000100135803,
+        -0.09399999678134918,
+        -0.26600000262260437
+      ],
+      "max_xyz": [
+        0.3330000042915344,
+        -0.05999999865889549,
+        0.26600000262260437
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "MOUNT_R_LOW_standoff",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 60,
+      "min_xyz": [
+        0.28299999237060547,
+        -0.08500000089406967,
+        -0.24300000071525574
+      ],
+      "max_xyz": [
+        0.3269999921321869,
+        -0.004999999888241291,
+        -0.19900000095367432
+      ],
+      "source_vertices": 32,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "MOUNT_R_LOW_wall_pad",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 76,
+      "min_xyz": [
+        0.2709999978542328,
+        -0.004999999888241291,
+        -0.2549999952316284
+      ],
+      "max_xyz": [
+        0.33899998664855957,
+        0.0,
+        -0.18700000643730164
+      ],
+      "source_vertices": 40,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "MOUNT_R_LOW",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.3050000071525574
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.22100000083446503
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Physical wall pad contact centre",
+        "point_blender_source_m": [
+          0.305,
+          0.0,
+          -0.221
+        ],
+        "point_gltf_yup_m": [
+          0.305,
+          -0.221,
+          0.0
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          -1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "MOUNT_R_HIGH_standoff",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 60,
+      "min_xyz": [
+        0.28299999237060547,
+        -0.08500000089406967,
+        0.19900000095367432
+      ],
+      "max_xyz": [
+        0.3269999921321869,
+        -0.004999999888241291,
+        0.24300000071525574
+      ],
+      "source_vertices": 32,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "MOUNT_R_HIGH_wall_pad",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 76,
+      "min_xyz": [
+        0.2709999978542328,
+        -0.004999999888241291,
+        0.18700000643730164
+      ],
+      "max_xyz": [
+        0.33899998664855957,
+        0.0,
+        0.2549999952316284
+      ],
+      "source_vertices": 40,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "MOUNT_R_HIGH",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.3050000071525574
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.22100000083446503
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Physical wall pad contact centre",
+        "point_blender_source_m": [
+          0.305,
+          0.0,
+          0.221
+        ],
+        "point_gltf_yup_m": [
+          0.305,
+          0.221,
+          0.0
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          -1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "cable_gland_0",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.17000000178813934,
+        -0.1340000033378601,
+        -0.3440000116825104
+      ],
+      "max_xyz": [
+        -0.1379999965429306,
+        -0.10199999809265137,
+        -0.3199999928474426
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "cable_gland_grip_0",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.16599999368190765,
+        -0.12999999523162842,
+        -0.35600000619888306
+      ],
+      "max_xyz": [
+        -0.1420000046491623,
+        -0.10599999874830246,
+        -0.3400000035762787
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "rear_cable_drop_0",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_cable_blue",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.1615000069141388,
+        -0.12549999356269836,
+        -0.4255000054836273
+      ],
+      "max_xyz": [
+        -0.14650000631809235,
+        -0.11050000041723251,
+        -0.3504999876022339
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ]
+    },
+    {
+      "name": "CABLE_entry_0",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.15399999916553497
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.11800000071525574
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.4255000054836273
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Cable termination interface; unresolved upstream routing",
+        "point_blender_source_m": [
+          -0.154,
+          -0.118,
+          -0.4255
+        ],
+        "point_gltf_yup_m": [
+          -0.154,
+          -0.4255,
+          0.118
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          0,
+          -1
+        ],
+        "normal_gltf_yup": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "cable_gland_1",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.10999999940395355,
+        -0.1340000033378601,
+        -0.3440000116825104
+      ],
+      "max_xyz": [
+        -0.07800000160932541,
+        -0.10199999809265137,
+        -0.3199999928474426
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "cable_gland_grip_1",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.10599999874830246,
+        -0.12999999523162842,
+        -0.35600000619888306
+      ],
+      "max_xyz": [
+        -0.0820000022649765,
+        -0.10599999874830246,
+        -0.3400000035762787
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "rear_cable_drop_1",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [],
+      "evaluated_triangles": 44,
+      "min_xyz": [
+        -0.1014999970793724,
+        -0.12549999356269836,
+        -0.4255000054836273
+      ],
+      "max_xyz": [
+        -0.08649999648332596,
+        -0.11050000041723251,
+        -0.3504999876022339
+      ],
+      "source_vertices": 24,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ]
+    },
+    {
+      "name": "CABLE_entry_1",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.09399999678134918
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.11800000071525574
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.4255000054836273
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Cable termination interface; unresolved upstream routing",
+        "point_blender_source_m": [
+          -0.094,
+          -0.118,
+          -0.4255
+        ],
+        "point_gltf_yup_m": [
+          -0.094,
+          -0.4255,
+          0.118
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          0,
+          -1
+        ],
+        "normal_gltf_yup": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "cable_organising_bridge",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.17900000512599945,
+        -0.13199999928474426,
+        -0.40700000524520874
+      ],
+      "max_xyz": [
+        -0.06700000166893005,
+        -0.10599999874830246,
+        -0.3919999897480011
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "cable_bridge_return_-0.177",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.1809999942779541,
+        -0.11100000143051147,
+        -0.4000000059604645
+      ],
+      "max_xyz": [
+        -0.17299999296665192,
+        -0.07900000363588333,
+        -0.3919999897480011
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "cable_bridge_case_strap_-0.177",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.1809999942779541,
+        -0.08900000154972076,
+        -0.3959999978542328
+      ],
+      "max_xyz": [
+        -0.17299999296665192,
+        -0.07900000363588333,
+        -0.33000001311302185
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "cable_bridge_return_-0.069",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.0729999989271164,
+        -0.11100000143051147,
+        -0.4000000059604645
+      ],
+      "max_xyz": [
+        -0.06499999761581421,
+        -0.07900000363588333,
+        -0.3919999897480011
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "cable_bridge_case_strap_-0.069",
+      "type": "MESH",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "catalogue_id": "AST-ENG-003",
+        "authorship": "Original script-assisted designed construction, 2026-10-02",
+        "preserve_named_node": false,
+        "source_frame": "Blender source metres Z-up",
+        "exchange_frame": "glTF Y-up metres"
+      },
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.0729999989271164,
+        -0.08900000154972076,
+        -0.3959999978542328
+      ],
+      "max_xyz": [
+        -0.06499999761581421,
+        -0.07900000363588333,
+        -0.33000001311302185
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ]
+    },
+    {
+      "name": "wall_datum_origin",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Asset installation origin, intentionally in rear void",
+        "point_blender_source_m": [
+          0,
+          0,
+          0
+        ],
+        "point_gltf_yup_m": [
+          0,
+          0,
+          0
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          -1
+        ]
+      },
+      "modifiers": []
+    },
+    {
+      "name": "standing_use_pose",
+      "type": "EMPTY",
+      "parent": "AST-ENG-003_wall_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.8500000238418579
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.20000000298023224
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "record_kind": "Proposed eye pose at 1.65 m when installed at 1.45 m; not physical contact",
+        "point_blender_source_m": [
+          0.0,
+          -0.85,
+          0.2
+        ],
+        "point_gltf_yup_m": [
+          0.0,
+          0.2,
+          0.85
+        ],
+        "metadata_revision": "utility-console-frames-01",
+        "normal_blender_source": [
+          0,
+          1,
+          0
+        ],
+        "normal_gltf_yup": [
+          0,
+          0,
+          -1
+        ]
+      },
+      "modifiers": []
+    }
+  ],
+  "used_materials": [
+    {
+      "name": "ASTRAEA_staff_bluegrey_paint",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_bluegrey_paint.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.7799999713897705,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_cable_blue",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_cable_blue.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.8199999928474426,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_cable_red",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_cable_red.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.8199999928474426,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_opal",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_opal.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.44999998807907104,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_rubber",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_rubber.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.9100000262260437,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_white_paint",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_white_paint.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.7599999904632568,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_zinc",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_zinc.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.6499999761581421,
+          "Roughness": 0.6100000143051147,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_utility_console_original_print",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "console_graphics.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.8600000143051147,
+          "Alpha": 1.0
+        }
+      ]
+    }
+  ],
+  "used_images": [
+    {
+      "name": "console_graphics.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "filepath": "//../textures/console_graphics.png",
+      "packed": true,
+      "packed_sha256": "ff79d94ff6a71433fc3c6026412af6a200431329801ffc2108f2162c00e41186"
+    },
+    {
+      "name": "staff_bluegrey_paint.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_bluegrey_paint.png",
+      "packed": true,
+      "packed_sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f"
+    },
+    {
+      "name": "staff_cable_blue.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_cable_blue.png",
+      "packed": true,
+      "packed_sha256": "8ca09105d6bae6f49541ee8741933eca4f427e8e46a40ac74a7d03142619c60a"
+    },
+    {
+      "name": "staff_cable_red.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_cable_red.png",
+      "packed": true,
+      "packed_sha256": "13ed2b2baa42fd70dcaab3a12a9cc80a849e49b35e44dd8bc026dca603acb081"
+    },
+    {
+      "name": "staff_opal.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_opal.png",
+      "packed": true,
+      "packed_sha256": "d1884536391beb3bbffbf8d5d9ecb40c678b810cf841c13b53f891594c5d086b"
+    },
+    {
+      "name": "staff_rubber.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_rubber.png",
+      "packed": true,
+      "packed_sha256": "9e9623559d6dcd7b4c459da948132417a966976177ff608153ff8b71764036f8"
+    },
+    {
+      "name": "staff_white_paint.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_white_paint.png",
+      "packed": true,
+      "packed_sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88"
+    },
+    {
+      "name": "staff_zinc.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_zinc.png",
+      "packed": true,
+      "packed_sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c"
+    }
+  ],
+  "load_success": true,
+  "unused_images": [
+    "Render Result",
+    "staff_floor.png",
+    "staff_label.png"
+  ],
+  "bounds_min_m": [
+    -0.4099999964237213,
+    -0.24799999594688416,
+    -0.4255000054836273
+  ],
+  "bounds_max_m": [
+    0.4099999964237213,
+    0.0,
+    0.3400000035762787
+  ],
+  "dimensions_m": [
+    0.8199999928474426,
+    0.24799999594688416,
+    0.765500009059906
+  ],
+  "evaluated_triangles": 10844,
+  "source_unchanged_after_load": true,
+  "geometry_cache": "qa/batch06/independent_source_geometry_AST-ENG-003.npz"
+}

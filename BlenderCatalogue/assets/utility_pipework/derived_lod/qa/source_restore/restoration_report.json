@@ -1,0 +1,209 @@
+{
+  "revision": "utility-flange-source-restoration-02",
+  "change": "Create source/, exports/ and qa/ explicitly at generator entry; no geometry/material/interface changes",
+  "generator_before_sha256": "2aeb769acae34d2228950eb6b624c4c050432b3f0f8144126f0e5b7d7303f00b",
+  "generator_after_sha256": "d1963ce3b6531b5fea089da954e29dc6a35685ea52fad2987828c60de4b8d8d6",
+  "original_failure": {
+    "evidence": "qa/source_restore/before_failure.log",
+    "preserved_code": "qa/source_restore/build_flange_derivative_before_directory_fix.py",
+    "observation": "Original generator reaches qa/source_geometry.json then raises FileNotFoundError when qa/ is absent. Blender itself returned0 despite the Python traceback, so completion is checked explicitly."
+  },
+  "isolated_build": {
+    "staging_catalogue": "/tmp/astraea-flange-source-restore-20261002/fixed/Astraea_Catalogue",
+    "initial_inputs": "qa/source_restore/fixed_staged_inputs.json",
+    "initial_source_blend_or_glb_files": 0,
+    "initial_qa_directory_exists": false,
+    "initial_exports_directory_exists": false,
+    "command": "blender -b -t 1 --python /tmp/astraea-flange-source-restore-20261002/fixed/Astraea_Catalogue/assets/utility_pipework/derived_lod/source/build_flange_derivative.py",
+    "rendered": false,
+    "completion_marker_present": true,
+    "python_traceback_absent": true,
+    "log": "qa/source_restore/fixed_build.log",
+    "created_output_directories": [
+      "source",
+      "exports",
+      "qa"
+    ],
+    "source_geometry_report_byte_identical": true
+  },
+  "regenerated_glb_comparisons": [
+    {
+      "file": "utility_flange_economical.glb",
+      "frozen_sha256": "7ecfc537507f7e32614ff1f722ff9f62d93eaaf385ef7bbddca6cc0e857ab240",
+      "regenerated_sha256": "7ecfc537507f7e32614ff1f722ff9f62d93eaaf385ef7bbddca6cc0e857ab240",
+      "byte_identical": true
+    },
+    {
+      "file": "utility_flange_exact_profile_baseline.glb",
+      "frozen_sha256": "3378f9b18585dd95a227738ac1865dcda47074d47f170d90fd08f9c7c829adc5",
+      "regenerated_sha256": "3378f9b18585dd95a227738ac1865dcda47074d47f170d90fd08f9c7c829adc5",
+      "byte_identical": true
+    },
+    {
+      "file": "utility_flange_repeated_context.glb",
+      "frozen_sha256": "1ea43dc4ae5d891c2863341120527c0262136939b9118f7d270ccefc4af02f18",
+      "regenerated_sha256": "1ea43dc4ae5d891c2863341120527c0262136939b9118f7d270ccefc4af02f18",
+      "byte_identical": true
+    }
+  ],
+  "current_source_blend_glb_and_render_preservation": [
+    {
+      "path": "source/utility_flange_repeated_context.blend",
+      "sha256": "fbb1ac0a864ad322ba732a5787bf41f3e9aa1c139722fc8a1300878ede0151f9",
+      "current_sha256": "fbb1ac0a864ad322ba732a5787bf41f3e9aa1c139722fc8a1300878ede0151f9",
+      "unchanged": true
+    },
+    {
+      "path": "source/utility_flange_exact_profile_baseline.blend",
+      "sha256": "4ccdbee8e45453a072a4d859e49be1adec6575e31660bf9f6c6184b5b1d101b6",
+      "current_sha256": "4ccdbee8e45453a072a4d859e49be1adec6575e31660bf9f6c6184b5b1d101b6",
+      "unchanged": true
+    },
+    {
+      "path": "source/utility_flange_economical.blend",
+      "sha256": "eb348022d8a62054a61425c90057c950396c8fa641df789215a7c70a5cc02f0f",
+      "current_sha256": "eb348022d8a62054a61425c90057c950396c8fa641df789215a7c70a5cc02f0f",
+      "unchanged": true
+    },
+    {
+      "path": "exports/utility_flange_near_comparison.glb",
+      "sha256": "7f907bfe5becab1fd1ce4605b1c2b4d9eeaf5ef18691d44c2ffe00766c93684d",
+      "current_sha256": "7f907bfe5becab1fd1ce4605b1c2b4d9eeaf5ef18691d44c2ffe00766c93684d",
+      "unchanged": true
+    },
+    {
+      "path": "exports/utility_flange_repeated_context.glb",
+      "sha256": "1ea43dc4ae5d891c2863341120527c0262136939b9118f7d270ccefc4af02f18",
+      "current_sha256": "1ea43dc4ae5d891c2863341120527c0262136939b9118f7d270ccefc4af02f18",
+      "unchanged": true
+    },
+    {
+      "path": "exports/utility_flange_exact_profile_baseline.glb",
+      "sha256": "3378f9b18585dd95a227738ac1865dcda47074d47f170d90fd08f9c7c829adc5",
+      "current_sha256": "3378f9b18585dd95a227738ac1865dcda47074d47f170d90fd08f9c7c829adc5",
+      "unchanged": true
+    },
+    {
+      "path": "exports/utility_flange_economical.glb",
+      "sha256": "7ecfc537507f7e32614ff1f722ff9f62d93eaaf385ef7bbddca6cc0e857ab240",
+      "current_sha256": "7ecfc537507f7e32614ff1f722ff9f62d93eaaf385ef7bbddca6cc0e857ab240",
+      "unchanged": true
+    },
+    {
+      "path": "renders/near_economical_+00deg_640.png",
+      "sha256": "bd1cf7f858c24d01bde8c03e66128e4df7e8cb99bf81eb9a05ab32e288b9aab0",
+      "current_sha256": "bd1cf7f858c24d01bde8c03e66128e4df7e8cb99bf81eb9a05ab32e288b9aab0",
+      "unchanged": true
+    },
+    {
+      "path": "renders/near_economical_+04deg_640.png",
+      "sha256": "a7ea5dc0be8a40021890f4e1a9e605e9fef5d00f288fbda8373ca5039c11878e",
+      "current_sha256": "a7ea5dc0be8a40021890f4e1a9e605e9fef5d00f288fbda8373ca5039c11878e",
+      "unchanged": true
+    },
+    {
+      "path": "renders/repeated_economical_+00deg_640.png",
+      "sha256": "73c7deaa1a83edc611b992df0377427b4dd9b858c90cb483d77d9d01bfdad3b2",
+      "current_sha256": "73c7deaa1a83edc611b992df0377427b4dd9b858c90cb483d77d9d01bfdad3b2",
+      "unchanged": true
+    },
+    {
+      "path": "renders/static_three_way_comparison.png",
+      "sha256": "f9dd9e7bdf377bd5e53f4ae69dd504f137335102ce758a69d1d6dc0685e4b8b4",
+      "current_sha256": "f9dd9e7bdf377bd5e53f4ae69dd504f137335102ce758a69d1d6dc0685e4b8b4",
+      "unchanged": true
+    },
+    {
+      "path": "renders/near_near_-04deg_640.png",
+      "sha256": "3d8cfc603d41e4729d2aa45e5be6a04deb5fa3985c2324964df6aa582aaea0bf",
+      "current_sha256": "3d8cfc603d41e4729d2aa45e5be6a04deb5fa3985c2324964df6aa582aaea0bf",
+      "unchanged": true
+    },
+    {
+      "path": "renders/repeated_near_+00deg_640.png",
+      "sha256": "8720d894b492cc6022fabe761bca70a2a2f0eddb7c12b1d0a55acddcc6d8e121",
+      "current_sha256": "8720d894b492cc6022fabe761bca70a2a2f0eddb7c12b1d0a55acddcc6d8e121",
+      "unchanged": true
+    },
+    {
+      "path": "renders/repeated_controlled_angle_comparison.png",
+      "sha256": "69ce8f1be99701768a8b041c07fd70b37f251473592ac392a97942428a3a34a8",
+      "current_sha256": "69ce8f1be99701768a8b041c07fd70b37f251473592ac392a97942428a3a34a8",
+      "unchanged": true
+    },
+    {
+      "path": "renders/near_near_+04deg_640.png",
+      "sha256": "81f16a7b24907eaa467424ce0dd50835573554d971253d4c5a5a0e95f13b29d4",
+      "current_sha256": "81f16a7b24907eaa467424ce0dd50835573554d971253d4c5a5a0e95f13b29d4",
+      "unchanged": true
+    },
+    {
+      "path": "renders/near_economical_-04deg_640.png",
+      "sha256": "a885b7e734a8e3db5e8226fa630a9c261e7f2b9c354e1d9702093c9bdee632f7",
+      "current_sha256": "a885b7e734a8e3db5e8226fa630a9c261e7f2b9c354e1d9702093c9bdee632f7",
+      "unchanged": true
+    },
+    {
+      "path": "renders/near_controlled_angle_comparison.apng",
+      "sha256": "694697f9470636a545524a36f85ce1cce4f7637fb690f5f041004151cb98fd95",
+      "current_sha256": "694697f9470636a545524a36f85ce1cce4f7637fb690f5f041004151cb98fd95",
+      "unchanged": true
+    },
+    {
+      "path": "renders/repeated_controlled_angle_comparison.apng",
+      "sha256": "707ac256a3a99e8a03901eee5fda54590a5cfad7fa31d2a609d2489cb10d1790",
+      "current_sha256": "707ac256a3a99e8a03901eee5fda54590a5cfad7fa31d2a609d2489cb10d1790",
+      "unchanged": true
+    },
+    {
+      "path": "renders/repeated_near_-04deg_640.png",
+      "sha256": "9c6b08a58c9601351f1fe0e8f4703944926d1b6eb7305f286ba2bb60bd7affd2",
+      "current_sha256": "9c6b08a58c9601351f1fe0e8f4703944926d1b6eb7305f286ba2bb60bd7affd2",
+      "unchanged": true
+    },
+    {
+      "path": "renders/repeated_baseline_+00deg_640.png",
+      "sha256": "42cca5a7e6a281ef71c4eafe5186747df6eedc37716e49a63a2e9aaee7750d9c",
+      "current_sha256": "42cca5a7e6a281ef71c4eafe5186747df6eedc37716e49a63a2e9aaee7750d9c",
+      "unchanged": true
+    },
+    {
+      "path": "renders/repeated_near_+04deg_640.png",
+      "sha256": "881c4f23e378df534b96776ca382e441b270a5d7935738a5246b779e18fe2cb1",
+      "current_sha256": "881c4f23e378df534b96776ca382e441b270a5d7935738a5246b779e18fe2cb1",
+      "unchanged": true
+    },
+    {
+      "path": "renders/near_near_+00deg_640.png",
+      "sha256": "622e3f4dd55ffe4f261f0309296289806d5b20eb8f4a48de85c930c033e43f92",
+      "current_sha256": "622e3f4dd55ffe4f261f0309296289806d5b20eb8f4a48de85c930c033e43f92",
+      "unchanged": true
+    },
+    {
+      "path": "renders/repeated_economical_-04deg_640.png",
+      "sha256": "d36e87f1101ab334ae4bfdd3a7ee259e1cbfcdab7ab1c9bda8fc0169f997b3e2",
+      "current_sha256": "d36e87f1101ab334ae4bfdd3a7ee259e1cbfcdab7ab1c9bda8fc0169f997b3e2",
+      "unchanged": true
+    },
+    {
+      "path": "renders/near_baseline_+00deg_640.png",
+      "sha256": "fa095cc9de2fba13b6894941211e6a433bb2972c6a6f42615cc27b57e2f3bbbe",
+      "current_sha256": "fa095cc9de2fba13b6894941211e6a433bb2972c6a6f42615cc27b57e2f3bbbe",
+      "unchanged": true
+    },
+    {
+      "path": "renders/near_controlled_angle_comparison.png",
+      "sha256": "a33d7716bdde4e92c7fffaeaf48df8808ef5eea4dab65a65494ad7a133167017",
+      "current_sha256": "a33d7716bdde4e92c7fffaeaf48df8808ef5eea4dab65a65494ad7a133167017",
+      "unchanged": true
+    },
+    {
+      "path": "renders/repeated_economical_+04deg_640.png",
+      "sha256": "3e24ac8078a1169e5ed20a012693c16645fd5e129bcc2f922a35d12463929bc0",
+      "current_sha256": "3e24ac8078a1169e5ed20a012693c16645fd5e129bcc2f922a35d12463929bc0",
+      "unchanged": true
+    }
+  ],
+  "near_comparison_scope": "The immutable original near extraction is not produced by this generator and was preserved unchanged, along with all current source/GLB/render files",
+  "all_passed": true
+}

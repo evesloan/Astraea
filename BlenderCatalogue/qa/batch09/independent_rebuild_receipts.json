@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "lead_aggregate": {
+    "path": "qa/batch09/source_only_rebuild/report.json",
+    "sha256": "0f884fca63bb16f7192973b18e70df05a1f0cd6edeaff843169db2489dc3500d"
+  },
+  "families": [
+    {
+      "family": "guest_use",
+      "lead_execution_receipt": {
+        "path": "qa/batch09/source_only_rebuild/guest_use.json",
+        "sha256": "c655c83b7baa78e5327e0ca1b4380b903b7b9070cca33d23c0bf2b55299421d8"
+      },
+      "input_scope_exactly_matches_reviewed_source_reads": true,
+      "current_input_hash_count": 11,
+      "all_inputs_outputs_and_protected_masters_current": true,
+      "byte_identical_glbs": 3,
+      "byte_identical_textures": 0,
+      "generator_creates_output_parents": [
+        "(BASE / name).mkdir(parents=True, exist_ok=True)"
+      ],
+      "lead_runs_not_duplicated": true,
+      "pass": true
+    },
+    {
+      "family": "library_use",
+      "lead_execution_receipt": {
+        "path": "qa/batch09/source_only_rebuild/library_use.json",
+        "sha256": "1de2606d49b23adb3e5811f2190384f32605fea5a12c6f70f4019ac2a48ac3df"
+      },
+      "input_scope_exactly_matches_reviewed_source_reads": true,
+      "current_input_hash_count": 17,
+      "all_inputs_outputs_and_protected_masters_current": true,
+      "byte_identical_glbs": 3,
+      "byte_identical_textures": 15,
+      "generator_creates_output_parents": [
+        "(ROOT / p).mkdir(parents=True, exist_ok=True)"
+      ],
+      "lead_runs_not_duplicated": true,
+      "pass": true
+    }
+  ],
+  "limits": "Independent review of the lead execution harness, declared dependency closure and exact current bindings. The reviewer did not repeat the already successful isolated runs. Byte-identical GLBs and textures plus created editable sources establish this bounded rebuild, not a complete game restore."
+}

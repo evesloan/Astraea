@@ -1,0 +1,2065 @@
+{
+  "catalogue_id": "AST-LIB-006",
+  "name": "Astraea Bound Collection Stock \u2014 reordered assembly",
+  "intended_use": "Static reusable shelf stock: ten mutually supported upright volumes plus one crown-supported leaning volume and two weighted bookstops",
+  "resource_api": {
+    "load_glb": "AST-LIB-006_upright_book_group_reordered.glb",
+    "placement_origin": "Actual shelf/book base Z0; row near centred at X0, with rear edges Y .11",
+    "forward_blender": [
+      0,
+      -1,
+      0
+    ],
+    "forward_glTF": [
+      0,
+      0,
+      1
+    ],
+    "animation": "None; one static mesh with semantic material primitives",
+    "instancing": "Reuse same imported mesh/material resources. Separate selected volumes only in future interaction work"
+  },
+  "bounds_min_m": [
+    -0.2938667833805084,
+    -0.1106799989938736,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.24799999594688416,
+    0.10999999940395355,
+    0.27799999713897705
+  ],
+  "dimensions_m": [
+    0.5418667793273926,
+    0.22067999839782715,
+    0.27799999713897705
+  ],
+  "triangles_evaluated": 802,
+  "units": "metres",
+  "front_axis": "-Y",
+  "pivot_m": [
+    0,
+    0,
+    0
+  ],
+  "blender_version": "4.3.2",
+  "authoring": "Reproducible script-assisted intentional construction; separately editable covers, pages, labels, bands, bookstops, cover leaves and printed leaf surfaces",
+  "provenance": "New original 2026-10-02 catalogue work, independent of missing game recovery. Four library reference PNGs inspected for collection rhythm and useful reading details only; no copied pixels or book art; no downloaded models; no Tripo.",
+  "source_generator": "build_stock_variants.py",
+  "texture_generator": "make_book_textures.py",
+  "qa_scope": "Blender component evidence only; original game, Godot integration, actor acceptance, collision behavior and runtime performance are untested",
+  "materials": [
+    "book_cover_clay",
+    "book_cover_ochre",
+    "book_cover_teal",
+    "book_label_paper",
+    "book_paper_edges",
+    "book_print_ink",
+    "champagne_metal"
+  ],
+  "export": {
+    "format": "GLB",
+    "Y_up": true,
+    "geometry": "One static visual mesh consolidated into semantic material primitives",
+    "active_uv_name": "UV_Metric_Metres",
+    "embedded_textures": true,
+    "collision_exported": false,
+    "source_semantic_part_count": 74,
+    "static_mesh_count": 1,
+    "material_primitive_count": 7
+  },
+  "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+  "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+  "source_generator_sha256": "375963140fa74c1006d72c1c270533d7a5b8b1047a80fa42f8c2b2f4e688c7a6",
+  "texture_generator_sha256": "88140a1e3521b73df9c33313bb488313f7490dcd955a3c92fd7be51939004e3a",
+  "glb_sha256": "c9392c1ea3e594ceb0ef1d20872e985f9f38ed9154bc6ac5340f69257aac2ab0",
+  "parts": [
+    {
+      "name": "STOCK_volume_01_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_teal",
+      "triangles": 40,
+      "bounds_min_m": [
+        -0.19499999284744263,
+        -0.10400000214576721,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.15299999713897705,
+        0.10999999940395355,
+        0.27799999713897705
+      ]
+    },
+    {
+      "name": "STOCK_volume_01_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        -0.1914999932050705,
+        -0.0949999988079071,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        -0.15649999678134918,
+        0.10599999874830246,
+        0.2741999924182892
+      ]
+    },
+    {
+      "name": "STOCK_volume_01_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.19499999284744263,
+        -0.10445000231266022,
+        0.03613999858498573
+      ],
+      "bounds_max_m": [
+        -0.15299999713897705,
+        -0.09745000302791595,
+        0.03853999823331833
+      ]
+    },
+    {
+      "name": "STOCK_volume_01_raised_spine_band_2",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.19499999284744263,
+        -0.10445000231266022,
+        0.2307399958372116
+      ],
+      "bounds_max_m": [
+        -0.15299999713897705,
+        -0.09745000302791595,
+        0.2331400066614151
+      ]
+    },
+    {
+      "name": "STOCK_volume_01_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.18743999302387238,
+        -0.10455000400543213,
+        0.13344000279903412
+      ],
+      "bounds_max_m": [
+        -0.1605599969625473,
+        -0.10455000400543213,
+        0.16344000399112701
+      ]
+    },
+    {
+      "name": "STOCK_volume_01_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.1834079921245575,
+        -0.10468000173568726,
+        0.15413999557495117
+      ],
+      "bounds_max_m": [
+        -0.16459199786186218,
+        -0.10468000173568726,
+        0.15624000132083893
+      ]
+    },
+    {
+      "name": "STOCK_volume_01_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.1765199899673462,
+        -0.10468000173568726,
+        0.1397400051355362
+      ],
+      "bounds_max_m": [
+        -0.1714800000190735,
+        -0.10468000173568726,
+        0.14934000372886658
+      ]
+    },
+    {
+      "name": "STOCK_volume_02_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_ochre",
+      "triangles": 40,
+      "bounds_min_m": [
+        -0.09099999815225601,
+        -0.08100000023841858,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.06199999898672104,
+        0.10999999940395355,
+        0.2329999953508377
+      ]
+    },
+    {
+      "name": "STOCK_volume_02_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        -0.08749999850988388,
+        -0.07199999690055847,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        -0.06549999862909317,
+        0.10599999874830246,
+        0.22920000553131104
+      ]
+    },
+    {
+      "name": "STOCK_volume_02_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.09099999815225601,
+        -0.08145000040531158,
+        0.03960999846458435
+      ],
+      "bounds_max_m": [
+        -0.06199999898672104,
+        -0.07445000112056732,
+        0.042010001838207245
+      ]
+    },
+    {
+      "name": "STOCK_volume_02_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.08577999472618103,
+        -0.0815500020980835,
+        0.11184000223875046
+      ],
+      "bounds_max_m": [
+        -0.06722000241279602,
+        -0.0815500020980835,
+        0.14183999598026276
+      ]
+    },
+    {
+      "name": "STOCK_volume_02_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.08299599587917328,
+        -0.08167999982833862,
+        0.1325400024652481
+      ],
+      "bounds_max_m": [
+        -0.07000400125980377,
+        -0.08167999982833862,
+        0.13463999330997467
+      ]
+    },
+    {
+      "name": "STOCK_volume_02_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.07823999971151352,
+        -0.08167999982833862,
+        0.11813999712467194
+      ],
+      "bounds_max_m": [
+        -0.07475999742746353,
+        -0.08167999982833862,
+        0.12773999571800232
+      ]
+    },
+    {
+      "name": "STOCK_volume_03_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_clay",
+      "triangles": 40,
+      "bounds_min_m": [
+        0.09300000220537186,
+        -0.09700000286102295,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.14500001072883606,
+        0.10999999940395355,
+        0.2630000114440918
+      ]
+    },
+    {
+      "name": "STOCK_volume_03_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        0.09650000184774399,
+        -0.08799999952316284,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        0.14149999618530273,
+        0.10599999874830246,
+        0.25920000672340393
+      ]
+    },
+    {
+      "name": "STOCK_volume_03_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        0.09300000220537186,
+        -0.09745000302791595,
+        0.03418999910354614
+      ],
+      "bounds_max_m": [
+        0.14500001072883606,
+        -0.09045000374317169,
+        0.03658999875187874
+      ]
+    },
+    {
+      "name": "STOCK_volume_03_raised_spine_band_2",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        0.09300000220537186,
+        -0.09745000302791595,
+        0.21829000115394592
+      ],
+      "bounds_max_m": [
+        0.14500001072883606,
+        -0.09045000374317169,
+        0.22068999707698822
+      ]
+    },
+    {
+      "name": "STOCK_volume_03_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.10236000269651413,
+        -0.09755000472068787,
+        0.12624000012874603
+      ],
+      "bounds_max_m": [
+        0.1356399953365326,
+        -0.09755000472068787,
+        0.15624000132083893
+      ]
+    },
+    {
+      "name": "STOCK_volume_03_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.10735200345516205,
+        -0.097680002450943,
+        0.14693999290466309
+      ],
+      "bounds_max_m": [
+        0.13064800202846527,
+        -0.097680002450943,
+        0.14903999865055084
+      ]
+    },
+    {
+      "name": "STOCK_volume_03_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.11588000506162643,
+        -0.097680002450943,
+        0.1325400024652481
+      ],
+      "bounds_max_m": [
+        0.12212000042200089,
+        -0.097680002450943,
+        0.1421400010585785
+      ]
+    },
+    {
+      "name": "STOCK_volume_04_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_teal",
+      "triangles": 40,
+      "bounds_min_m": [
+        -0.026000000536441803,
+        -0.10999999940395355,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.011999999172985554,
+        0.10999999940395355,
+        0.25099998712539673
+      ]
+    },
+    {
+      "name": "STOCK_volume_04_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        -0.02250000089406967,
+        -0.10100000351667404,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        0.008499999530613422,
+        0.10599999874830246,
+        0.24719999730587006
+      ]
+    },
+    {
+      "name": "STOCK_volume_04_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.026000000536441803,
+        -0.11044999957084656,
+        0.03263000026345253
+      ],
+      "bounds_max_m": [
+        0.011999999172985554,
+        -0.1034500002861023,
+        0.035029999911785126
+      ]
+    },
+    {
+      "name": "STOCK_volume_04_raised_spine_band_2",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.026000000536441803,
+        -0.11044999957084656,
+        0.20833000540733337
+      ],
+      "bounds_max_m": [
+        0.011999999172985554,
+        -0.1034500002861023,
+        0.21073000133037567
+      ]
+    },
+    {
+      "name": "STOCK_volume_04_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.01916000060737133,
+        -0.11055000126361847,
+        0.1204800009727478
+      ],
+      "bounds_max_m": [
+        0.005160000175237656,
+        -0.11055000126361847,
+        0.1504800021648407
+      ]
+    },
+    {
+      "name": "STOCK_volume_04_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.01551199983805418,
+        -0.1106799989938736,
+        0.14117999374866486
+      ],
+      "bounds_max_m": [
+        0.0015119994059205055,
+        -0.1106799989938736,
+        0.1432799994945526
+      ]
+    },
+    {
+      "name": "STOCK_volume_04_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.009279999881982803,
+        -0.1106799989938736,
+        0.12678000330924988
+      ],
+      "bounds_max_m": [
+        -0.004720000550150871,
+        -0.1106799989938736,
+        0.13638000190258026
+      ]
+    },
+    {
+      "name": "STOCK_volume_05_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_clay",
+      "triangles": 40,
+      "bounds_min_m": [
+        0.05899999663233757,
+        -0.07400000095367432,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.09299999475479126,
+        0.10999999940395355,
+        0.22599999606609344
+      ]
+    },
+    {
+      "name": "STOCK_volume_05_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        0.0624999962747097,
+        -0.06499999761581421,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        0.08949999511241913,
+        0.10599999874830246,
+        0.22220000624656677
+      ]
+    },
+    {
+      "name": "STOCK_volume_05_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        0.05899999663233757,
+        -0.07445000112056732,
+        0.038419999182224274
+      ],
+      "bounds_max_m": [
+        0.09299999475479126,
+        -0.06745000183582306,
+        0.04081999883055687
+      ]
+    },
+    {
+      "name": "STOCK_volume_05_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.06511999666690826,
+        -0.07455000281333923,
+        0.10847999900579453
+      ],
+      "bounds_max_m": [
+        0.08687999844551086,
+        -0.07455000281333923,
+        0.13847999274730682
+      ]
+    },
+    {
+      "name": "STOCK_volume_05_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.06838399916887283,
+        -0.07468000054359436,
+        0.12917999923229218
+      ],
+      "bounds_max_m": [
+        0.0836159959435463,
+        -0.07468000054359436,
+        0.13128000497817993
+      ]
+    },
+    {
+      "name": "STOCK_volume_05_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.07395999878644943,
+        -0.07468000054359436,
+        0.1147800013422966
+      ],
+      "bounds_max_m": [
+        0.0780399963259697,
+        -0.07468000054359436,
+        0.12437999993562698
+      ]
+    },
+    {
+      "name": "STOCK_volume_06_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_ochre",
+      "triangles": 40,
+      "bounds_min_m": [
+        -0.15299999713897705,
+        -0.10500000417232513,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.09100000560283661,
+        0.10999999940395355,
+        0.2709999978542328
+      ]
+    },
+    {
+      "name": "STOCK_volume_06_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        -0.14949999749660492,
+        -0.09600000083446503,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        -0.09450000524520874,
+        0.10599999874830246,
+        0.2671999931335449
+      ]
+    },
+    {
+      "name": "STOCK_volume_06_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.15299999713897705,
+        -0.10545000433921814,
+        0.03522999957203865
+      ],
+      "bounds_max_m": [
+        -0.09100000560283661,
+        -0.09845000505447388,
+        0.037629999220371246
+      ]
+    },
+    {
+      "name": "STOCK_volume_06_raised_spine_band_2",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.15299999713897705,
+        -0.10545000433921814,
+        0.22493000328540802
+      ],
+      "bounds_max_m": [
+        -0.09100000560283661,
+        -0.09845000505447388,
+        0.22732999920845032
+      ]
+    },
+    {
+      "name": "STOCK_volume_06_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.14183999598026276,
+        -0.10555000603199005,
+        0.13007999956607819
+      ],
+      "bounds_max_m": [
+        -0.1021599993109703,
+        -0.10555000603199005,
+        0.16008000075817108
+      ]
+    },
+    {
+      "name": "STOCK_volume_06_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.1358879953622818,
+        -0.10568000376224518,
+        0.15078000724315643
+      ],
+      "bounds_max_m": [
+        -0.10811199992895126,
+        -0.10568000376224518,
+        0.152879998087883
+      ]
+    },
+    {
+      "name": "STOCK_volume_06_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.12571999430656433,
+        -0.10568000376224518,
+        0.13638000190258026
+      ],
+      "bounds_max_m": [
+        -0.11828000098466873,
+        -0.10568000376224518,
+        0.14598000049591064
+      ]
+    },
+    {
+      "name": "STOCK_volume_07_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_teal",
+      "triangles": 40,
+      "bounds_min_m": [
+        0.19300000369548798,
+        -0.09200000762939453,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.21899999678134918,
+        0.10999999940395355,
+        0.23800000548362732
+      ]
+    },
+    {
+      "name": "STOCK_volume_07_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        0.1965000033378601,
+        -0.08300000429153442,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        0.21549999713897705,
+        0.10600000619888306,
+        0.23420000076293945
+      ]
+    },
+    {
+      "name": "STOCK_volume_07_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        0.19300000369548798,
+        -0.09245000779628754,
+        0.040460001677274704
+      ],
+      "bounds_max_m": [
+        0.21899999678134918,
+        -0.08544999361038208,
+        0.0428600013256073
+      ]
+    },
+    {
+      "name": "STOCK_volume_07_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.19767999649047852,
+        -0.09254999458789825,
+        0.11423999816179276
+      ],
+      "bounds_max_m": [
+        0.21432000398635864,
+        -0.09254999458789825,
+        0.14424000680446625
+      ]
+    },
+    {
+      "name": "STOCK_volume_07_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.20017600059509277,
+        -0.09268000721931458,
+        0.1349399983882904
+      ],
+      "bounds_max_m": [
+        0.21182399988174438,
+        -0.09268000721931458,
+        0.13704000413417816
+      ]
+    },
+    {
+      "name": "STOCK_volume_07_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.20443999767303467,
+        -0.09268000721931458,
+        0.12054000049829483
+      ],
+      "bounds_max_m": [
+        0.2075600028038025,
+        -0.09268000721931458,
+        0.1301400065422058
+      ]
+    },
+    {
+      "name": "STOCK_volume_08_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_clay",
+      "triangles": 40,
+      "bounds_min_m": [
+        0.14499999582767487,
+        -0.10999999940395355,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.19300000369548798,
+        0.10999999940395355,
+        0.25699999928474426
+      ]
+    },
+    {
+      "name": "STOCK_volume_08_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        0.148499995470047,
+        -0.10100000351667404,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        0.18950000405311584,
+        0.10599999874830246,
+        0.2531999945640564
+      ]
+    },
+    {
+      "name": "STOCK_volume_08_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        0.14499999582767487,
+        -0.11044999957084656,
+        0.033410001546144485
+      ],
+      "bounds_max_m": [
+        0.19300000369548798,
+        -0.1034500002861023,
+        0.03581000119447708
+      ]
+    },
+    {
+      "name": "STOCK_volume_08_raised_spine_band_2",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        0.14499999582767487,
+        -0.11044999957084656,
+        0.21331000328063965
+      ],
+      "bounds_max_m": [
+        0.19300000369548798,
+        -0.1034500002861023,
+        0.21570999920368195
+      ]
+    },
+    {
+      "name": "STOCK_volume_08_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.1536400020122528,
+        -0.11055000126361847,
+        0.12336000055074692
+      ],
+      "bounds_max_m": [
+        0.18435999751091003,
+        -0.11055000126361847,
+        0.15335999429225922
+      ]
+    },
+    {
+      "name": "STOCK_volume_08_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.15824800729751587,
+        -0.1106799989938736,
+        0.14406000077724457
+      ],
+      "bounds_max_m": [
+        0.17975199222564697,
+        -0.1106799989938736,
+        0.14616000652313232
+      ]
+    },
+    {
+      "name": "STOCK_volume_08_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.1661199927330017,
+        -0.1106799989938736,
+        0.1296599954366684
+      ],
+      "bounds_max_m": [
+        0.17188000679016113,
+        -0.1106799989938736,
+        0.13925999402999878
+      ]
+    },
+    {
+      "name": "STOCK_volume_09_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_ochre",
+      "triangles": 40,
+      "bounds_min_m": [
+        -0.06199999898672104,
+        -0.08300000429153442,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.026000000536441803,
+        0.10999999940395355,
+        0.2460000067949295
+      ]
+    },
+    {
+      "name": "STOCK_volume_09_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        -0.05849999934434891,
+        -0.07400000095367432,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        -0.029500000178813934,
+        0.10599999874830246,
+        0.24220000207424164
+      ]
+    },
+    {
+      "name": "STOCK_volume_09_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.06199999898672104,
+        -0.08345000445842743,
+        0.04182000085711479
+      ],
+      "bounds_max_m": [
+        -0.026000000536441803,
+        -0.07645000517368317,
+        0.04422000050544739
+      ]
+    },
+    {
+      "name": "STOCK_volume_09_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.05551999807357788,
+        -0.08355000615119934,
+        0.11807999759912491
+      ],
+      "bounds_max_m": [
+        -0.03248000144958496,
+        -0.08355000615119934,
+        0.1480800062417984
+      ]
+    },
+    {
+      "name": "STOCK_volume_09_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.05206400156021118,
+        -0.08368000388145447,
+        0.13877999782562256
+      ],
+      "bounds_max_m": [
+        -0.03593599796295166,
+        -0.08368000388145447,
+        0.14088000357151031
+      ]
+    },
+    {
+      "name": "STOCK_volume_09_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.046160001307725906,
+        -0.08368000388145447,
+        0.12437999993562698
+      ],
+      "bounds_max_m": [
+        -0.041839998215436935,
+        -0.08368000388145447,
+        0.13398000597953796
+      ]
+    },
+    {
+      "name": "STOCK_volume_10_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_teal",
+      "triangles": 40,
+      "bounds_min_m": [
+        0.012000001966953278,
+        -0.09999999403953552,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.05900000035762787,
+        0.10999999940395355,
+        0.26899999380111694
+      ]
+    },
+    {
+      "name": "STOCK_volume_10_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        0.015500001609325409,
+        -0.09099999815225601,
+        0.003800000064074993
+      ],
+      "bounds_max_m": [
+        0.05550000071525574,
+        0.10600000619888306,
+        0.2651999890804291
+      ]
+    },
+    {
+      "name": "STOCK_volume_10_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        0.012000001966953278,
+        -0.10044999420642853,
+        0.0349700003862381
+      ],
+      "bounds_max_m": [
+        0.05900000035762787,
+        -0.09344999492168427,
+        0.037370000034570694
+      ]
+    },
+    {
+      "name": "STOCK_volume_10_raised_spine_band_2",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        0.012000001966953278,
+        -0.10044999420642853,
+        0.2232699990272522
+      ],
+      "bounds_max_m": [
+        0.05900000035762787,
+        -0.09344999492168427,
+        0.2256699949502945
+      ]
+    },
+    {
+      "name": "STOCK_volume_10_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.02046000212430954,
+        -0.10054999589920044,
+        0.12912000715732574
+      ],
+      "bounds_max_m": [
+        0.050540000200271606,
+        -0.10054999589920044,
+        0.15911999344825745
+      ]
+    },
+    {
+      "name": "STOCK_volume_10_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.02497200109064579,
+        -0.10067999362945557,
+        0.1498199999332428
+      ],
+      "bounds_max_m": [
+        0.046028003096580505,
+        -0.10067999362945557,
+        0.15192000567913055
+      ]
+    },
+    {
+      "name": "STOCK_volume_10_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.032680001109838486,
+        -0.10067999362945557,
+        0.13541999459266663
+      ],
+      "bounds_max_m": [
+        0.03832000121474266,
+        -0.10067999362945557,
+        0.145019993185997
+      ]
+    },
+    {
+      "name": "STOCK_volume_11_supported_lean_continuous_boards_and_rounded_sp",
+      "semantic_role": "book_cover_clay",
+      "triangles": 40,
+      "bounds_min_m": [
+        -0.2668667733669281,
+        -0.09999999403953552,
+        6.984919309616089e-10
+      ],
+      "bounds_max_m": [
+        -0.19500000774860382,
+        0.10999999940395355,
+        0.24889449775218964
+      ]
+    },
+    {
+      "name": "STOCK_volume_11_supported_lean_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        -0.26287198066711426,
+        -0.09099999815225601,
+        0.004250125028192997
+      ],
+      "bounds_max_m": [
+        -0.19899480044841766,
+        0.10600000619888306,
+        0.2446443736553192
+      ]
+    },
+    {
+      "name": "STOCK_volume_11_supported_lean_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.26104655861854553,
+        -0.10044999420642853,
+        0.04141300916671753
+      ],
+      "bounds_max_m": [
+        -0.22308234870433807,
+        -0.09344999492168427,
+        0.04907822981476784
+      ]
+    },
+    {
+      "name": "STOCK_volume_11_supported_lean_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.24365977942943573,
+        -0.10054999589920044,
+        0.11788278818130493
+      ],
+      "bounds_max_m": [
+        -0.21540126204490662,
+        -0.10054999589920044,
+        0.1509755253791809
+      ]
+    },
+    {
+      "name": "STOCK_volume_11_supported_lean_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.2371664047241211,
+        -0.10067999362945557,
+        0.13888902962207794
+      ],
+      "bounds_max_m": [
+        -0.22001580893993378,
+        -0.10067999362945557,
+        0.1433378905057907
+      ]
+    },
+    {
+      "name": "STOCK_volume_11_supported_lean_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.23299914598464966,
+        -0.10067999362945557,
+        0.125496506690979
+      ],
+      "bounds_max_m": [
+        -0.22714745998382568,
+        -0.10067999362945557,
+        0.13563771545886993
+      ]
+    },
+    {
+      "name": "STOCK_R_weighted_champagne_endstop",
+      "semantic_role": "champagne_metal",
+      "triangles": 12,
+      "bounds_min_m": [
+        0.21899999678134918,
+        -0.0729999989271164,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.24799999594688416,
+        0.10700000077486038,
+        0.17599999904632568
+      ]
+    },
+    {
+      "name": "STOCK_L_weighted_champagne_heel",
+      "semantic_role": "champagne_metal",
+      "triangles": 16,
+      "bounds_min_m": [
+        -0.2938667833805084,
+        -0.0729999989271164,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.2618667781352997,
+        0.10700000077486038,
+        0.03799999877810478
+      ]
+    }
+  ],
+  "assembly_variant": {
+    "variant": "reordered",
+    "catalogue_id": "AST-LIB-006",
+    "derivative_not_unique_artistic_asset": true,
+    "base_source": "AST-LIB-006_upright_book_group.blend",
+    "base_source_sha256": "e99e041fd51efb9a818a7cbef5cc27a4480dbd07d6e7ab84c312a25ff1da9f22",
+    "description": "All eleven original volumes retained. Tall first binding and supported lean remain together; remaining ten-volume order is deliberately changed.",
+    "book_order": [
+      1,
+      6,
+      2,
+      9,
+      4,
+      10,
+      5,
+      3,
+      8,
+      7
+    ],
+    "omitted_book_numbers": [],
+    "transforms_blender_world_row_major": {
+      "STOCK_volume_01_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.17399999499320984
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.003000000026077032
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_02_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.07649999856948853
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.014499999582767487
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_03_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.11900000274181366
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.006500000134110451
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_04_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.007000000216066837
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_05_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.07599999755620956
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.017999999225139618
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_06_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.12200000137090683
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0024999999441206455
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_07_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.20600000023841858
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.008999999612569809
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_08_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.16899999976158142
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_09_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.04399999976158142
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.013500000350177288
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_10_editable_volume": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.03550000116229057
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.004999999888241291
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_volume_11_supported_lean_editable_volume": [
+        [
+          0.9902679920196533,
+          0.0,
+          0.13917306065559387,
+          -0.24805167317390442
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.004999999888241291
+        ],
+        [
+          -0.13917306065559387,
+          0.0,
+          0.9902679920196533,
+          0.002644288819283247
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_R_weighted_champagne_endstop": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "STOCK_L_weighted_champagne_heel": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "book_contacts": [
+      {
+        "book": "STOCK_volume_01",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Original leaning crown touches left cover at X -.195"
+      },
+      {
+        "book": "STOCK_volume_06",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X -0.153000"
+      },
+      {
+        "book": "STOCK_volume_02",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X -0.091000"
+      },
+      {
+        "book": "STOCK_volume_09",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X -0.062000"
+      },
+      {
+        "book": "STOCK_volume_04",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X -0.026000"
+      },
+      {
+        "book": "STOCK_volume_10",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.012000"
+      },
+      {
+        "book": "STOCK_volume_05",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.059000"
+      },
+      {
+        "book": "STOCK_volume_03",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.093000"
+      },
+      {
+        "book": "STOCK_volume_08",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.145000"
+      },
+      {
+        "book": "STOCK_volume_07",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.193000"
+      },
+      {
+        "book": "STOCK_volume_11_supported_lean",
+        "lean_angle_degrees": 8,
+        "minimum_base_z_m": 0,
+        "base_contact_edge_m": [
+          [
+            -0.2292365828361761,
+            -0.093,
+            0
+          ],
+          [
+            -0.2292365828361761,
+            0.11,
+            0
+          ]
+        ],
+        "support": "Bottom right cover edge on shelf; upper right cover crown touches volume01 left cover",
+        "neighbor_contact_m": [
+          -0.195,
+          0.005,
+          0.2436059449104263
+        ],
+        "neighbor": "STOCK_volume_01",
+        "neighbor_left_face_x_m": -0.195
+      }
+    ],
+    "actual_book_bounds": [
+      {
+        "name": "STOCK_volume_01_editable_volume",
+        "bounds_min_m": [
+          -0.19499999284744263,
+          -0.10468000173568726,
+          0.0
+        ],
+        "bounds_max_m": [
+          -0.15299999713897705,
+          0.10999999940395355,
+          0.27799999713897705
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_02_editable_volume",
+        "bounds_min_m": [
+          -0.09099999815225601,
+          -0.08167999982833862,
+          0.0
+        ],
+        "bounds_max_m": [
+          -0.06199999898672104,
+          0.10999999940395355,
+          0.2329999953508377
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_03_editable_volume",
+        "bounds_min_m": [
+          0.09300000220537186,
+          -0.097680002450943,
+          0.0
+        ],
+        "bounds_max_m": [
+          0.14500001072883606,
+          0.10999999940395355,
+          0.2630000114440918
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_04_editable_volume",
+        "bounds_min_m": [
+          -0.026000000536441803,
+          -0.1106799989938736,
+          0.0
+        ],
+        "bounds_max_m": [
+          0.011999999172985554,
+          0.10999999940395355,
+          0.25099998712539673
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_05_editable_volume",
+        "bounds_min_m": [
+          0.05899999663233757,
+          -0.07468000054359436,
+          0.0
+        ],
+        "bounds_max_m": [
+          0.09299999475479126,
+          0.10999999940395355,
+          0.22599999606609344
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_06_editable_volume",
+        "bounds_min_m": [
+          -0.15299999713897705,
+          -0.10568000376224518,
+          0.0
+        ],
+        "bounds_max_m": [
+          -0.09100000560283661,
+          0.10999999940395355,
+          0.2709999978542328
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_07_editable_volume",
+        "bounds_min_m": [
+          0.19300000369548798,
+          -0.09268000721931458,
+          0.0
+        ],
+        "bounds_max_m": [
+          0.21899999678134918,
+          0.10999999940395355,
+          0.23800000548362732
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_08_editable_volume",
+        "bounds_min_m": [
+          0.14499999582767487,
+          -0.1106799989938736,
+          0.0
+        ],
+        "bounds_max_m": [
+          0.19300000369548798,
+          0.10999999940395355,
+          0.25699999928474426
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_09_editable_volume",
+        "bounds_min_m": [
+          -0.06199999898672104,
+          -0.08368000388145447,
+          0.0
+        ],
+        "bounds_max_m": [
+          -0.026000000536441803,
+          0.10999999940395355,
+          0.2460000067949295
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_10_editable_volume",
+        "bounds_min_m": [
+          0.012000001966953278,
+          -0.10067999362945557,
+          0.0
+        ],
+        "bounds_max_m": [
+          0.05900000035762787,
+          0.10999999940395355,
+          0.26899999380111694
+        ],
+        "base_contact_z_m": 0.0
+      },
+      {
+        "name": "STOCK_volume_11_supported_lean_editable_volume",
+        "bounds_min_m": [
+          -0.2668667733669281,
+          -0.10067999362945557,
+          6.984919309616089e-10
+        ],
+        "bounds_max_m": [
+          -0.19500000774860382,
+          0.10999999940395355,
+          0.24889449775218964
+        ],
+        "base_contact_z_m": 6.984919309616089e-10
+      }
+    ],
+    "bounds_min_m": [
+      -0.2938667833805084,
+      -0.1106799989938736,
+      0.0
+    ],
+    "bounds_max_m": [
+      0.24799999594688416,
+      0.10999999940395355,
+      0.27799999713897705
+    ],
+    "triangles": 802,
+    "export": "AST-LIB-006_upright_book_group_reordered.glb"
+  },
+  "book_parts": [
+    {
+      "name": "STOCK_volume_01_editable_volume",
+      "bounds_min_m": [
+        -0.19499999284744263,
+        -0.10468000173568726,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.15299999713897705,
+        0.10999999940395355,
+        0.27799999713897705
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_02_editable_volume",
+      "bounds_min_m": [
+        -0.09099999815225601,
+        -0.08167999982833862,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.06199999898672104,
+        0.10999999940395355,
+        0.2329999953508377
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_03_editable_volume",
+      "bounds_min_m": [
+        0.09300000220537186,
+        -0.097680002450943,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.14500001072883606,
+        0.10999999940395355,
+        0.2630000114440918
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_04_editable_volume",
+      "bounds_min_m": [
+        -0.026000000536441803,
+        -0.1106799989938736,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.011999999172985554,
+        0.10999999940395355,
+        0.25099998712539673
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_05_editable_volume",
+      "bounds_min_m": [
+        0.05899999663233757,
+        -0.07468000054359436,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.09299999475479126,
+        0.10999999940395355,
+        0.22599999606609344
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_06_editable_volume",
+      "bounds_min_m": [
+        -0.15299999713897705,
+        -0.10568000376224518,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.09100000560283661,
+        0.10999999940395355,
+        0.2709999978542328
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_07_editable_volume",
+      "bounds_min_m": [
+        0.19300000369548798,
+        -0.09268000721931458,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.21899999678134918,
+        0.10999999940395355,
+        0.23800000548362732
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_08_editable_volume",
+      "bounds_min_m": [
+        0.14499999582767487,
+        -0.1106799989938736,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.19300000369548798,
+        0.10999999940395355,
+        0.25699999928474426
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_09_editable_volume",
+      "bounds_min_m": [
+        -0.06199999898672104,
+        -0.08368000388145447,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.026000000536441803,
+        0.10999999940395355,
+        0.2460000067949295
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_10_editable_volume",
+      "bounds_min_m": [
+        0.012000001966953278,
+        -0.10067999362945557,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.05900000035762787,
+        0.10999999940395355,
+        0.26899999380111694
+      ],
+      "base_contact_z_m": 0.0
+    },
+    {
+      "name": "STOCK_volume_11_supported_lean_editable_volume",
+      "bounds_min_m": [
+        -0.2668667733669281,
+        -0.10067999362945557,
+        6.984919309616089e-10
+      ],
+      "bounds_max_m": [
+        -0.19500000774860382,
+        0.10999999940395355,
+        0.24889449775218964
+      ],
+      "base_contact_z_m": 6.984919309616089e-10
+    }
+  ],
+  "support_contact_proposal": {
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "stock_base_z_m": 0,
+    "stock_top_z_m": 0.27799999713897705,
+    "book_base_contacts": [
+      {
+        "book": "STOCK_volume_01",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Original leaning crown touches left cover at X -.195"
+      },
+      {
+        "book": "STOCK_volume_06",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X -0.153000"
+      },
+      {
+        "book": "STOCK_volume_02",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X -0.091000"
+      },
+      {
+        "book": "STOCK_volume_09",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X -0.062000"
+      },
+      {
+        "book": "STOCK_volume_04",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X -0.026000"
+      },
+      {
+        "book": "STOCK_volume_10",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.012000"
+      },
+      {
+        "book": "STOCK_volume_05",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.059000"
+      },
+      {
+        "book": "STOCK_volume_03",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.093000"
+      },
+      {
+        "book": "STOCK_volume_08",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.145000"
+      },
+      {
+        "book": "STOCK_volume_07",
+        "base_z_m": 0,
+        "support": "Shelf surface at asset pivot Z0",
+        "side_support": "Previous adjacent cover touching at X 0.193000"
+      },
+      {
+        "book": "STOCK_volume_11_supported_lean",
+        "lean_angle_degrees": 8,
+        "minimum_base_z_m": 0,
+        "base_contact_edge_m": [
+          [
+            -0.2292365828361761,
+            -0.093,
+            0
+          ],
+          [
+            -0.2292365828361761,
+            0.11,
+            0
+          ]
+        ],
+        "support": "Bottom right cover edge on shelf; upper right cover crown touches volume01 left cover",
+        "neighbor_contact_m": [
+          -0.195,
+          0.005,
+          0.2436059449104263
+        ],
+        "neighbor": "STOCK_volume_01",
+        "neighbor_left_face_x_m": -0.195
+      }
+    ],
+    "stock_envelope_max_m": [
+      0.68,
+      0.24,
+      0.29
+    ]
+  },
+  "texture_generator_sha256_at_original_export": "ced7c6144f5836ec36f431a456fbf0f5337c3c4ab4af6220db37cb990e9c2ba8",
+  "texture_manifest_interface_revision": "library-texture-paths-02",
+  "texture_manifest_sha256": "60e73b95cbb0c1bb8d87553c92f2b52f85a4e89b5d6dc9d17c4b1964518d6cdc",
+  "dependency_metadata_revision_note": "Batch08 explicit texture path metadata; existing Blender, GLB and texture pixels remain unchanged. Captured generator hashes are retained separately.",
+  "source_generator_sha256_at_original_export": "ee88e975b0324664b8bfed97d3a0ee73ad98aec191b2a2bb47c2e234667ca034"
+}

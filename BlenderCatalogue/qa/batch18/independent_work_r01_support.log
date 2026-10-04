@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch18/independent_support_finish_review.py", line 24, in <module>
+    s=json.loads(p.read_text());assert sha(ROOT/s['path'])==s['sha256'];a=np.load(ROOT/s['geometry_cache']);t=a['triangles'];labels=a['object_names'];materials=a['material_names'];parts={str(n):t[labels==n]for n in np.unique(labels)};roots=[name for name,tt in parts.items()if abs(tt[:,:,2].min())<.00002];graph=contact_graph(t,labels,roots)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

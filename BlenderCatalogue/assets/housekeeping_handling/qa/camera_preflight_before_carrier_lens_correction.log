@@ -1,0 +1,37 @@
+20:19:42 | INFO: Data are loaded, start creating Blender stuff
+20:19:42 | INFO: Blender create Mesh node clean_folded_linen_lower_editable.001
+20:19:42 | INFO: Blender create Mesh node left_front_square_leg_editable.001
+20:19:42 | INFO: Blender create Mesh node left_front_floor_shoe_editable.001
+20:19:42 | INFO: Blender create Mesh node bench_folded_work_deck_editable.001
+20:19:42 | INFO: Blender create Mesh node left_top_header_editable.001
+20:19:42 | INFO: Blender create Mesh node clean_zone_plate_editable.001
+20:19:42 | INFO: glTF import finished in 0.01s
+20:19:42 | INFO: Data are loaded, start creating Blender stuff
+20:19:42 | INFO: Blender create Mesh node clean_folded_linen_lower_editable.001
+20:19:42 | INFO: Blender create Mesh node left_front_square_leg_editable.001
+20:19:43 | INFO: Blender create Mesh node left_front_floor_shoe_editable.001
+20:19:43 | INFO: Blender create Mesh node bench_folded_work_deck_editable.001
+20:19:43 | INFO: Blender create Mesh node left_top_header_editable.001
+20:19:43 | INFO: Blender create Mesh node clean_zone_plate_editable.001
+20:19:43 | INFO: glTF import finished in 0.01s
+20:19:43 | INFO: Data are loaded, start creating Blender stuff
+20:19:43 | INFO: Blender create Mesh node liner_supported_bottom_editable.001
+20:19:43 | INFO: Blender create Mesh node left_liner_retention_strap_-0.17_editable.001
+20:19:43 | INFO: Blender create Mesh node carrier_lower_load_cradle_editable.001
+20:19:43 | INFO: Blender create Mesh node left_front_wheel_tread_editable.001
+20:19:43 | INFO: Blender create Mesh node left_front_retained_axle_editable.001
+20:19:43 | INFO: Blender create Mesh node used_only_identification_plate_editable.001
+20:19:43 | INFO: glTF import finished in 0.01s
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/assets/housekeeping_handling/qa/render_imported.py", line 26, in <module>
+    sc,cam,obs=setup(v);v['frame_preflight']=frame.assert_full_frame(sc,cam,obs,.035);v['camera_rotation_euler_radians']=list(cam.rotation_euler);v['clip_start_m']=cam.data.clip_start;v['clip_end_m']=cam.data.clip_end
+                                             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/standards/qa_frame.py", line 17, in assert_full_frame
+    if not result['passes']:raise ValueError('Component framing preflight failed: '+str(result))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Component framing preflight failed: {'passes': False, 'uv_depth_min': [0.2982676327228546, 0.014194391667842865, 2.7139902114868164], 'uv_depth_max': [0.7175499200820923, 0.9241272211074829, 4.025912284851074], 'margin': 0.035, 'bounds_points': 48, 'scope': 'Conservative component-bounds framing only, not visibility or collision'}
+
+Error: script failed, file: 'assets/housekeeping_handling/qa/render_imported.py', exiting.
+Blender 4.3.2
+
+Blender quit

@@ -1,0 +1,621 @@
+{
+  "catalogue_id": "AST-GST-003",
+  "title": "Split-level luggage and personal console",
+  "unique_design": true,
+  "script_assisted_original_design": true,
+  "source": "source/AST-GST-003.blend",
+  "export": "exports/AST-GST-003.glb",
+  "generator": "source/build_guest_use.py",
+  "source_frame": "metres Blender Z-up, +X right, -Y front",
+  "exchange_frame": "metres GLB Y-up, source(x,y,z) -> (x,z,-y); resolve actual native GLB node transforms",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "Floor Z0, front -Y"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.5899999737739563,
+      -0.24199999868869781,
+      0.0
+    ],
+    "max_m": [
+      0.5920000076293945,
+      0.24400000274181366,
+      0.8610000014305115
+    ],
+    "dimensions_m": [
+      1.1819999814033508,
+      0.4860000014305115,
+      0.8610000014305115
+    ]
+  },
+  "evaluated_source_triangles": 3664,
+  "editable_semantic_parts": 25,
+  "semantic_parts": [
+    "left_floor_shoe",
+    "left_tapered_structural_cheek",
+    "divider_floor_shoe",
+    "divider_tapered_structural_cheek",
+    "right_floor_shoe",
+    "right_tapered_structural_cheek",
+    "luggage_bearing_rail_-0.182",
+    "luggage_bearing_rail_0.182",
+    "luggage_support_slat_0",
+    "slat_soft_contact_strip_0",
+    "luggage_support_slat_1",
+    "slat_soft_contact_strip_1",
+    "luggage_support_slat_2",
+    "slat_soft_contact_strip_2",
+    "luggage_support_slat_3",
+    "slat_soft_contact_strip_3",
+    "luggage_rear_guard",
+    "rear_guard_ivory_inset",
+    "personal_open_shelf",
+    "personal_pod_rear",
+    "personal_tray_stone_surface",
+    "personal_tray_side_rim_0.197",
+    "personal_tray_side_rim_0.551",
+    "personal_tray_back_rim",
+    "small_personal_catch_dish"
+  ],
+  "material_roles": [
+    "champagne_metal",
+    "dark_rubber",
+    "ivory_enamel",
+    "warm_stone",
+    "warm_walnut"
+  ],
+  "runtime_consolidation": "Static evaluated copies consolidated per distinct semantic material role; active UV normalized; native marker hierarchy retained",
+  "physical_and_proposal_markers": [
+    {
+      "name": "LEFT_FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.552,
+        0,
+        0
+      ],
+      "gltf_m": [
+        -0.552,
+        0,
+        0
+      ],
+      "physical_part": "left_floor_shoe",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "DIVIDER_FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.192,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0.192,
+        0,
+        0
+      ],
+      "physical_part": "divider_floor_shoe",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.554,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0.554,
+        0,
+        0
+      ],
+      "physical_part": "right_floor_shoe",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "LUGGAGE_BEARING_0",
+      "kind": "physical_luggage_support",
+      "source_m": [
+        -0.18,
+        -0.183,
+        0.335
+      ],
+      "gltf_m": [
+        -0.18,
+        0.335,
+        0.183
+      ],
+      "physical_part": "slat_soft_contact_strip_0",
+      "description": "Open slat support plane; load rating unverified",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "LUGGAGE_BEARING_1",
+      "kind": "physical_luggage_support",
+      "source_m": [
+        -0.18,
+        -0.061,
+        0.335
+      ],
+      "gltf_m": [
+        -0.18,
+        0.335,
+        0.061
+      ],
+      "physical_part": "slat_soft_contact_strip_1",
+      "description": "Open slat support plane; load rating unverified",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "LUGGAGE_BEARING_2",
+      "kind": "physical_luggage_support",
+      "source_m": [
+        -0.18,
+        0.061,
+        0.335
+      ],
+      "gltf_m": [
+        -0.18,
+        0.335,
+        -0.061
+      ],
+      "physical_part": "slat_soft_contact_strip_2",
+      "description": "Open slat support plane; load rating unverified",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "LUGGAGE_BEARING_3",
+      "kind": "physical_luggage_support",
+      "source_m": [
+        -0.18,
+        0.183,
+        0.335
+      ],
+      "gltf_m": [
+        -0.18,
+        0.335,
+        -0.183
+      ],
+      "physical_part": "slat_soft_contact_strip_3",
+      "description": "Open slat support plane; load rating unverified",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "PERSONAL_SURFACE",
+      "kind": "physical_personal_support",
+      "source_m": [
+        0.374,
+        -0.112,
+        0.8405
+      ],
+      "gltf_m": [
+        0.374,
+        0.8405,
+        0.112
+      ],
+      "physical_part": "personal_tray_stone_surface",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "PERSONAL_SHELF",
+      "kind": "physical_storage_support",
+      "source_m": [
+        0.373,
+        -0.045,
+        0.499
+      ],
+      "gltf_m": [
+        0.373,
+        0.499,
+        0.045
+      ],
+      "physical_part": "personal_open_shelf",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "LUGGAGE_RECEIVER",
+      "kind": "nonphysical_receiver_volume",
+      "source_m": [
+        -0.18,
+        -0.012,
+        0.5
+      ],
+      "gltf_m": [
+        -0.18,
+        0.5,
+        0.012
+      ],
+      "physical_part": null,
+      "description": "Proposed open landing centre above slats; do not treat as contact",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "PERSONAL_SHELF_MOUTH",
+      "kind": "nonphysical_receiver_volume",
+      "source_m": [
+        0.373,
+        -0.197,
+        0.642
+      ],
+      "gltf_m": [
+        0.373,
+        0.642,
+        0.197
+      ],
+      "physical_part": null,
+      "description": "Open compartment centre; species hand fit unverified",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "CONSOLE_FLOOR_DATUM",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "JOIN_shelf_divider",
+      "kind": "physical_joint",
+      "source_m": [
+        0.213,
+        0.0,
+        0.487
+      ],
+      "gltf_m": [
+        0.213,
+        0.487,
+        -0.0
+      ],
+      "physical_part": null,
+      "description": "personal_open_shelf bears into divider_tapered_structural_cheek"
+    },
+    {
+      "name": "JOIN_shelf_right",
+      "kind": "physical_joint",
+      "source_m": [
+        0.534,
+        0.0,
+        0.487
+      ],
+      "gltf_m": [
+        0.534,
+        0.487,
+        -0.0
+      ],
+      "physical_part": null,
+      "description": "personal_open_shelf bears into right_tapered_structural_cheek"
+    },
+    {
+      "name": "JOIN_top_divider",
+      "kind": "physical_joint",
+      "source_m": [
+        0.203,
+        0.0,
+        0.817
+      ],
+      "gltf_m": [
+        0.203,
+        0.817,
+        -0.0
+      ],
+      "physical_part": null,
+      "description": "personal_tray_stone_surface bears into divider_tapered_structural_cheek"
+    },
+    {
+      "name": "JOIN_top_right",
+      "kind": "physical_joint",
+      "source_m": [
+        0.554,
+        0.0,
+        0.817
+      ],
+      "gltf_m": [
+        0.554,
+        0.817,
+        -0.0
+      ],
+      "physical_part": null,
+      "description": "personal_tray_stone_surface bears into right_tapered_structural_cheek"
+    }
+  ],
+  "joins": [
+    {
+      "name": "shelf_divider",
+      "parts": [
+        "personal_open_shelf",
+        "divider_tapered_structural_cheek"
+      ],
+      "probe_source_m": [
+        0.213,
+        0.0,
+        0.487
+      ],
+      "probe_gltf_m": [
+        0.213,
+        0.487,
+        -0.0
+      ],
+      "check": "Probe lies on or within both evaluated meshes; nearest-boundary distances are evidence, not assumed AABB contact"
+    },
+    {
+      "name": "shelf_right",
+      "parts": [
+        "personal_open_shelf",
+        "right_tapered_structural_cheek"
+      ],
+      "probe_source_m": [
+        0.534,
+        0.0,
+        0.487
+      ],
+      "probe_gltf_m": [
+        0.534,
+        0.487,
+        -0.0
+      ],
+      "check": "Probe lies on or within both evaluated meshes; nearest-boundary distances are evidence, not assumed AABB contact"
+    },
+    {
+      "name": "top_divider",
+      "parts": [
+        "personal_tray_stone_surface",
+        "divider_tapered_structural_cheek"
+      ],
+      "probe_source_m": [
+        0.203,
+        0.0,
+        0.817
+      ],
+      "probe_gltf_m": [
+        0.203,
+        0.817,
+        -0.0
+      ],
+      "check": "Probe lies on or within both evaluated meshes; nearest-boundary distances are evidence, not assumed AABB contact"
+    },
+    {
+      "name": "top_right",
+      "parts": [
+        "personal_tray_stone_surface",
+        "right_tapered_structural_cheek"
+      ],
+      "probe_source_m": [
+        0.554,
+        0.0,
+        0.817
+      ],
+      "probe_gltf_m": [
+        0.554,
+        0.817,
+        -0.0
+      ],
+      "check": "Probe lies on or within both evaluated meshes; nearest-boundary distances are evidence, not assumed AABB contact"
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "luggage_open_landing",
+      "min_source_m": [
+        -0.49,
+        -0.23,
+        0.35
+      ],
+      "max_source_m": [
+        0.14,
+        0.17,
+        0.92
+      ],
+      "purpose": "Uncovered luggage landing, accessible from the front; not a species-specific luggage guarantee"
+    },
+    {
+      "name": "personal_open_storage",
+      "min_source_m": [
+        0.235,
+        -0.23,
+        0.52
+      ],
+      "max_source_m": [
+        0.51,
+        0.185,
+        0.79
+      ],
+      "purpose": "Open front shelf, no drawer and no moving parts"
+    },
+    {
+      "name": "lower_luggage_open_space",
+      "min_source_m": [
+        -0.49,
+        -0.23,
+        0.05
+      ],
+      "max_source_m": [
+        0.14,
+        0.15,
+        0.245
+      ],
+      "purpose": "Preserve open lower apron and floor space"
+    }
+  ],
+  "interaction_status": "Static visible switches/receivers are proposals only; no animation, runtime light, engine collider or interaction",
+  "collision_proposal_file": "collision_proposals.json",
+  "used_textures_packed": true,
+  "source_sha256": "2e84cabfe4a2d37d03536e4650692aecdfc6dcd398fc2335192437e11083a71a",
+  "glb_sha256": "c6efd93f4d3307788a443670793c8b73161a62199a3326789e0c2104cb8461c6",
+  "generator_sha256": "afc99e85812c0e525eb8d20565a6088987dc249343976e20f2a521d948d4872f",
+  "details": {
+    "intended_use": "Low open luggage slats, raised personal tray and open storage shelf, without a decorative or unnecessary drawer",
+    "luggage_support_plane_source_z_m": 0.335,
+    "personal_surface_source_z_m": 0.8405,
+    "open_personal_shelf_plane_source_z_m": 0.499
+  },
+  "limitations": [
+    "Separate catalogue, no original ship integration",
+    "No active electrical lighting or photometric validation",
+    "No load/stability/structural engineering rating",
+    "No species-fit or accessibility claim",
+    "No target engine/physics/performance validation"
+  ],
+  "name": "Split-level luggage and personal console",
+  "dimensions_blender_xyz_m": [
+    1.1819999814033508,
+    0.4860000014305115,
+    0.8610000014305115
+  ],
+  "evaluated_triangles": 3664,
+  "marker_api_file": "marker_api.json",
+  "exported_triangles": 3664,
+  "runtime_material_group_meshes": 5,
+  "runtime_primitive_count": 5,
+  "bounds_gltf_y_up": {
+    "min": [
+      -0.5899999737739563,
+      0.0,
+      -0.24400000274181366
+    ],
+    "max": [
+      0.5920000076293945,
+      0.8610000014305115,
+      0.24199999868869781
+    ],
+    "dimensions": [
+      1.1819999814033508,
+      0.8610000014305115,
+      0.4860000014305115
+    ]
+  }
+}

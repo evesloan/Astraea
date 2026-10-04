@@ -1,0 +1,732 @@
+{
+  "catalogue_id": "AST-LND-001",
+  "name": "Guest arrival directory and rolled cove return",
+  "title": "Guest arrival directory and rolled cove return",
+  "unique_design": true,
+  "script_assisted_original_design": true,
+  "source": "source/AST-LND-001.blend",
+  "export": "exports/AST-LND-001.glb",
+  "generator": "source/build_landing_guest.py",
+  "source_frame": "metres Blender Z-up, +X right, -Y front",
+  "exchange_frame": "metres GLB Y-up; source(x,y,z) -> (x,z,-y), actual node hierarchy authoritative",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "Component floor Z0, proposed host floor elevation unknown"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.699999988079071,
+      0.0,
+      0.0
+    ],
+    "max_m": [
+      0.699999988079071,
+      0.6499999761581421,
+      2.799999952316284
+    ],
+    "dimensions_m": [
+      1.399999976158142,
+      0.6499999761581421,
+      2.799999952316284
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -0.699999988079071,
+      0.0,
+      -0.6499999761581421
+    ],
+    "max_m": [
+      0.699999988079071,
+      2.799999952316284,
+      -0.0
+    ],
+    "dimensions_m": [
+      1.399999976158142,
+      2.799999952316284,
+      0.6499999761581421
+    ]
+  },
+  "dimensions_blender_xyz_m": [
+    1.399999976158142,
+    0.6499999761581421,
+    2.799999952316284
+  ],
+  "proposed_ship_placement": {
+    "origin_ship_xyz_m": [
+      -39.2,
+      0,
+      -377.15
+    ],
+    "source_z_rotation_degrees": 0,
+    "ship_axes": "X transverse, Y up relative to unknown finished landing floor, Z longitudinal",
+    "source_to_ship_matrix": [
+      [
+        1,
+        0,
+        0,
+        -39.2
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        -377.15
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "status": "Batch11 R3 inspection proposal only, no actual room/door/shaft/headroom authority"
+  },
+  "evaluated_source_triangles": 980,
+  "evaluated_triangles": 980,
+  "editable_semantic_parts": 14,
+  "semantic_parts": [
+    "rounded_full_depth_arrival_return",
+    "rear_structural_directory_spine",
+    "recessed_rear_contact_plinth",
+    "directory_left_stile",
+    "directory_right_stile",
+    "directory_upper_rail",
+    "directory_lower_rail",
+    "inset_original_guest_arrival_field",
+    "original_guest_arrival_graphic",
+    "canted_directory_structural_wedge",
+    "low_walnut_touch_rail",
+    "rolled_local_cove_with_finished_ends",
+    "cove_recessed_opaque_liner",
+    "sconce_receiver_walnut_bearing"
+  ],
+  "material_roles": [
+    "dark_rubber",
+    "guest_arrival_original",
+    "ivory_enamel",
+    "oatmeal_weave",
+    "warm_walnut"
+  ],
+  "runtime_consolidation": "Evaluated static copies by semantic material role; normalized active UV and retained marker hierarchy",
+  "physical_and_proposal_markers": [
+    {
+      "name": "LEFT_FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.61,
+        0.32,
+        0
+      ],
+      "gltf_m": [
+        -0.61,
+        0,
+        -0.32
+      ],
+      "physical_part": "rounded_full_depth_arrival_return",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "REAR_FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.1,
+        0.59,
+        0
+      ],
+      "gltf_m": [
+        0.1,
+        0,
+        -0.59
+      ],
+      "physical_part": "rear_structural_directory_spine",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "DIRECTORY_READING_FIELD",
+      "kind": "physical_orientation_field",
+      "source_m": [
+        -0.04589575828009197,
+        0.3187236885505691,
+        1.55
+      ],
+      "gltf_m": [
+        -0.04589575828009197,
+        1.55,
+        -0.3187236885505691
+      ],
+      "physical_part": "original_guest_arrival_graphic",
+      "description": "Static original abstract arrival artwork; 20 degree inward cant, no live map, actual route or button",
+      "direction_source": [
+        0.3420201433256687,
+        -0.9396926207859084,
+        0
+      ],
+      "direction_gltf": [
+        0.3420201433256687,
+        0,
+        0.9396926207859084
+      ]
+    },
+    {
+      "name": "DIRECTORY_TOUCH_RAIL",
+      "kind": "physical_contact_surface",
+      "source_m": [
+        -0.05,
+        0.425,
+        0.765
+      ],
+      "gltf_m": [
+        -0.05,
+        0.765,
+        -0.425
+      ],
+      "physical_part": "low_walnut_touch_rail",
+      "description": "Optional steadying edge; no accessibility or loading certification",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "COVE_LINER_PHYSICAL_UNDERSIDE",
+      "kind": "physical_diffuser_surface",
+      "source_m": [
+        0,
+        0.425,
+        2.728
+      ],
+      "gltf_m": [
+        0,
+        2.728,
+        -0.425
+      ],
+      "physical_part": "cove_recessed_opaque_liner",
+      "description": "Opaque material geometry only; no emitted light or electrical assembly",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "COVE_PROPOSED_DIRECTORY_AIM",
+      "kind": "nonphysical_light_aim",
+      "source_m": [
+        0,
+        0.31,
+        2.62
+      ],
+      "gltf_m": [
+        0,
+        2.62,
+        -0.31
+      ],
+      "physical_part": null,
+      "description": "Design aiming proposal only; physical underside normal is stored on its own marker",
+      "direction_source": [
+        0,
+        0.18,
+        -0.983666
+      ],
+      "direction_gltf": [
+        0,
+        -0.983666,
+        -0.18
+      ]
+    },
+    {
+      "name": "SCONCE_RECEIVER_CENTER",
+      "kind": "physical_fixture_receiver",
+      "source_m": [
+        0.49,
+        0.47,
+        1.93
+      ],
+      "gltf_m": [
+        0.49,
+        1.93,
+        -0.47
+      ],
+      "physical_part": "sconce_receiver_walnut_bearing",
+      "description": "AST-GST-002 QA-only translation (.49,.47,1.93); rear wall face Y0 meets this plane",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "SCONCE_RECEIVER_FIXING_-0.11",
+      "kind": "physical_fixture_receiver",
+      "source_m": [
+        0.49,
+        0.47,
+        1.8199999999999998
+      ],
+      "gltf_m": [
+        0.49,
+        1.8199999999999998,
+        -0.47
+      ],
+      "physical_part": "sconce_receiver_walnut_bearing",
+      "description": "",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "SCONCE_RECEIVER_FIXING_0.11",
+      "kind": "physical_fixture_receiver",
+      "source_m": [
+        0.49,
+        0.47,
+        2.04
+      ],
+      "gltf_m": [
+        0.49,
+        2.04,
+        -0.47
+      ],
+      "physical_part": "sconce_receiver_walnut_bearing",
+      "description": "",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "SCONCE_SERVICE_WITHDRAWAL",
+      "kind": "nonphysical_service_reservation",
+      "source_m": [
+        0.49,
+        0.08,
+        1.93
+      ],
+      "gltf_m": [
+        0.49,
+        1.93,
+        -0.08
+      ],
+      "physical_part": null,
+      "description": "Front withdrawal and tool approach proposal; sconce clips are reached from below, no electrical isolation or maintainability certification",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "FLOOR_ORIGIN",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "name": "return_to_spine",
+      "parts": [
+        "rounded_full_depth_arrival_return",
+        "rear_structural_directory_spine"
+      ],
+      "probe_source_m": [
+        -0.45,
+        0.585,
+        1.3
+      ],
+      "probe_gltf_m": [
+        -0.45,
+        1.3,
+        -0.585
+      ],
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "check": "Actual evaluated mesh boundary witness; opposing physical normals separately recorded from use/light aim"
+    },
+    {
+      "name": "art_plate_to_backing",
+      "parts": [
+        "original_guest_arrival_graphic",
+        "inset_original_guest_arrival_field"
+      ],
+      "probe_source_m": [
+        -0.04760585899672032,
+        0.32342215165449867,
+        1.55
+      ],
+      "probe_gltf_m": [
+        -0.04760585899672032,
+        1.55,
+        -0.32342215165449867
+      ],
+      "normal_a_source": [
+        -0.3420201433256687,
+        0.9396926207859084,
+        0
+      ],
+      "normal_b_source": [
+        0.3420201433256687,
+        -0.9396926207859084,
+        0
+      ],
+      "normal_a_gltf": [
+        -0.3420201433256687,
+        0,
+        -0.9396926207859084
+      ],
+      "normal_b_gltf": [
+        0.3420201433256687,
+        0,
+        0.9396926207859084
+      ],
+      "check": "Actual evaluated mesh boundary witness; opposing physical normals separately recorded from use/light aim"
+    },
+    {
+      "name": "directory_wedge_to_spine",
+      "parts": [
+        "canted_directory_structural_wedge",
+        "rear_structural_directory_spine"
+      ],
+      "probe_source_m": [
+        -0.05,
+        0.53,
+        1.6
+      ],
+      "probe_gltf_m": [
+        -0.05,
+        1.6,
+        -0.53
+      ],
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ],
+      "check": "Actual evaluated mesh boundary witness; opposing physical normals separately recorded from use/light aim"
+    },
+    {
+      "name": "directory_field_to_wedge",
+      "parts": [
+        "inset_original_guest_arrival_field",
+        "canted_directory_structural_wedge"
+      ],
+      "probe_source_m": [
+        -0.05752444315316472,
+        0.35067323765729,
+        1.55
+      ],
+      "probe_gltf_m": [
+        -0.05752444315316472,
+        1.55,
+        -0.35067323765729
+      ],
+      "normal_a_source": [
+        -0.3420201433256687,
+        0.9396926207859084,
+        0
+      ],
+      "normal_b_source": [
+        0.3420201433256687,
+        -0.9396926207859084,
+        0
+      ],
+      "normal_a_gltf": [
+        -0.3420201433256687,
+        0,
+        -0.9396926207859084
+      ],
+      "normal_b_gltf": [
+        0.3420201433256687,
+        0,
+        0.9396926207859084
+      ],
+      "check": "Actual evaluated mesh boundary witness; opposing physical normals separately recorded from use/light aim"
+    },
+    {
+      "name": "cove_rear_bearing",
+      "parts": [
+        "rolled_local_cove_with_finished_ends",
+        "rear_structural_directory_spine"
+      ],
+      "probe_source_m": [
+        0.12,
+        0.585,
+        2.55
+      ],
+      "probe_gltf_m": [
+        0.12,
+        2.55,
+        -0.585
+      ],
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ],
+      "check": "Actual evaluated mesh boundary witness; opposing physical normals separately recorded from use/light aim"
+    },
+    {
+      "name": "receiver_to_spine",
+      "parts": [
+        "sconce_receiver_walnut_bearing",
+        "rear_structural_directory_spine"
+      ],
+      "probe_source_m": [
+        0.49,
+        0.53,
+        1.93
+      ],
+      "probe_gltf_m": [
+        0.49,
+        1.93,
+        -0.53
+      ],
+      "normal_a_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_a_gltf": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_gltf": [
+        0,
+        0,
+        1
+      ],
+      "check": "Actual evaluated mesh boundary witness; opposing physical normals separately recorded from use/light aim"
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "directory_front_reading_air",
+      "purpose": "Proposed front space inside component envelope; no solid directory panel across approach",
+      "min_source_m": [
+        -0.39,
+        0.02,
+        0.92
+      ],
+      "max_source_m": [
+        0.32,
+        0.13,
+        2.3
+      ],
+      "min_gltf_m": [
+        -0.39,
+        0.92,
+        -0.13
+      ],
+      "max_gltf_m": [
+        0.32,
+        2.3,
+        -0.02
+      ]
+    },
+    {
+      "name": "cove_recessed_trough",
+      "purpose": "Keep local cove recess open; excludes actual liner and lips",
+      "min_source_m": [
+        -0.6,
+        0.29,
+        2.57
+      ],
+      "max_source_m": [
+        0.6,
+        0.51,
+        2.7
+      ],
+      "min_gltf_m": [
+        -0.6,
+        2.57,
+        -0.51
+      ],
+      "max_gltf_m": [
+        0.6,
+        2.7,
+        -0.29
+      ]
+    }
+  ],
+  "collision_proposal_file": "collision_proposals.json",
+  "marker_api_file": "marker_api.json",
+  "used_textures_packed": true,
+  "source_sha256": "e9f5936be0ebece8d79e3ed5258006911aa5d46a945b0979080642fc1b6384e4",
+  "glb_sha256": "375ac96ccf8bfd4d4f93f78cae614f6d352c1720005aae8b358f7d489516a0dd",
+  "generator_sha256": "3aa69311a6b84f475c1b83b574359e33cdfd3b5cb39c24af2494deac9a64ac6b",
+  "details": {
+    "intended_use": "A localized arrival landmark and static directory beside an unknown core; no host door, lintel or route system",
+    "reused_fixture_context": {
+      "catalogue_id": "AST-GST-002",
+      "path_from_catalogue_root": "assets/guest_use/exports/AST-GST-002.glb",
+      "translation_source_m": [
+        0.49,
+        0.47,
+        1.93
+      ],
+      "rotation_z_deg": 0,
+      "receiver_normal_source": [
+        0,
+        -1,
+        0
+      ],
+      "fixture_rear_mount_normal_source": [
+        0,
+        1,
+        0
+      ],
+      "service_access": "Withdraw toward -Y, inspect retained diffuser from below. This is a geometric proposal, not certified service clearance."
+    }
+  },
+  "limitations": [
+    "New independent catalogue; original ship unavailable",
+    "No actual room, actor/cart, game renderer, lift or runtime acceptance",
+    "No structural load rating, accessibility or universal species fit",
+    "QA fixture reuse is excluded from new exports and asset count",
+    "Component heights are proposed targets, not host headroom"
+  ]
+}

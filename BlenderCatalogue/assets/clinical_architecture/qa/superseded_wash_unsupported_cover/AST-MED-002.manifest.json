@@ -1,0 +1,993 @@
+{
+  "catalogue_id": "AST-MED-002",
+  "name": "Shaped clinical wash and clean-supply bay",
+  "title": "Shaped clinical wash and clean-supply bay",
+  "unique_design": true,
+  "script_assisted_original_design": true,
+  "source": "source/AST-MED-002.blend",
+  "export": "exports/AST-MED-002.glb",
+  "generator": "source/build_clinical_architecture.py",
+  "source_frame": "metres Blender Xwidth/Ydepth/Zup, front-Y",
+  "exchange_frame": "native GLB Y-up, source(x,y,z)->(x,z,-y), actual hierarchy authoritative",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "kind": "floor origin; actual host support unknown"
+  },
+  "bounds": {
+    "min_source_m": [
+      -0.800000011920929,
+      -0.3799999952316284,
+      0.0
+    ],
+    "max_source_m": [
+      0.800000011920929,
+      0.3799999952316284,
+      1.6399999856948853
+    ],
+    "min_gltf_m": [
+      -0.800000011920929,
+      0.0,
+      -0.3799999952316284
+    ],
+    "max_gltf_m": [
+      0.800000011920929,
+      1.6399999856948853,
+      0.3799999952316284
+    ],
+    "dimensions_source_m": [
+      1.600000023841858,
+      0.7599999904632568,
+      1.6399999856948853
+    ],
+    "dimensions_gltf_m": [
+      1.600000023841858,
+      1.6399999856948853,
+      0.7599999904632568
+    ],
+    "triangles": 3140
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.800000011920929,
+      -0.3799999952316284,
+      0.0
+    ],
+    "max_m": [
+      0.800000011920929,
+      0.3799999952316284,
+      1.6399999856948853
+    ],
+    "dimensions_m": [
+      1.600000023841858,
+      0.7599999904632568,
+      1.6399999856948853
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -0.800000011920929,
+      0.0,
+      -0.3799999952316284
+    ],
+    "max_m": [
+      0.800000011920929,
+      1.6399999856948853,
+      0.3799999952316284
+    ],
+    "dimensions_m": [
+      1.600000023841858,
+      1.6399999856948853,
+      0.7599999904632568
+    ]
+  },
+  "dimensions_blender_xyz_m": [
+    1.600000023841858,
+    0.7599999904632568,
+    1.6399999856948853
+  ],
+  "evaluated_source_triangles": 3140,
+  "evaluated_triangles": 3140,
+  "editable_semantic_parts": 39,
+  "semantic_parts": [
+    "left_swept_basin_support_cheek",
+    "left_floor_isolation_shoe",
+    "right_swept_basin_support_cheek",
+    "right_floor_isolation_shoe",
+    "rear_service_bearing_wall",
+    "lower_service_and_supply_floor",
+    "basin_service_supply_divider",
+    "continuous_shaped_basin_and_dry_work_rim",
+    "front_removable_service_cover",
+    "service_cover_retainer_-0.65_0.235",
+    "service_cover_retainer_-0.65_0.625",
+    "service_cover_retainer_0.1_0.235",
+    "service_cover_retainer_0.1_0.625",
+    "service_cover_recess_grip",
+    "service_cover_semantics",
+    "lower_clean_supply_shelf",
+    "clean_supply_inner_tower_cheek",
+    "clean_supply_outer_tower_cheek",
+    "clean_supply_tower_back",
+    "clean_supply_lower_shelf",
+    "clean_supply_middle_shelf",
+    "clean_supply_shelter_cap",
+    "clean_supply_label_band",
+    "clean_supply_semantics",
+    "tap_deck_mount",
+    "tap_vertical_stem",
+    "tap_forward_elbow",
+    "tap_closed_outlet_cap",
+    "water_control_mount",
+    "water_inactive_paddle",
+    "control_control_mount",
+    "control_inactive_paddle",
+    "basin_closed_drain_cap",
+    "water_supply_rear_collar",
+    "water_supply_rear_blank_cap",
+    "drain_rear_collar",
+    "drain_rear_blank_cap",
+    "control_rear_collar",
+    "control_rear_blank_cap"
+  ],
+  "material_roles": [
+    "care_bluegreen_resin",
+    "care_brushed_metal",
+    "clinical_ink",
+    "dark_rubber",
+    "ivory_enamel",
+    "privacy_sage"
+  ],
+  "physical_and_proposal_markers": [
+    {
+      "name": "LEFT_FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.75,
+        0.02,
+        0
+      ],
+      "gltf_m": [
+        -0.75,
+        0,
+        -0.02
+      ],
+      "physical_part": "left_floor_isolation_shoe",
+      "description": "",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.75,
+        0.02,
+        0
+      ],
+      "gltf_m": [
+        0.75,
+        0,
+        -0.02
+      ],
+      "physical_part": "right_floor_isolation_shoe",
+      "description": "",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "SERVICE_COVER_CONTACT",
+      "kind": "physical_grip_surface",
+      "source_m": [
+        -0.2675,
+        -0.3,
+        0.58
+      ],
+      "gltf_m": [
+        -0.2675,
+        0.58,
+        0.3
+      ],
+      "physical_part": "service_cover_recess_grip",
+      "description": "Cover requires removal before interior access; no hinge/sweep or opening behavior implemented",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "SERVICE_WITHDRAWAL",
+      "kind": "nonphysical_service_approach",
+      "source_m": [
+        -0.27,
+        -0.58,
+        0.44
+      ],
+      "gltf_m": [
+        -0.27,
+        0.44,
+        0.58
+      ],
+      "physical_part": null,
+      "description": "Proposed front cover removal, no actual maintenance/tool or isolation acceptance",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        -1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "CLEAN_LOWER_SUPPORT",
+      "kind": "physical_storage_surface",
+      "source_m": [
+        0.515,
+        0.215,
+        1.0
+      ],
+      "gltf_m": [
+        0.515,
+        1.0,
+        -0.215
+      ],
+      "physical_part": "clean_supply_lower_shelf",
+      "description": "Clean supply designation is fictional organization; no contents or sterility claim",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "CLEAN_MIDDLE_SUPPORT",
+      "kind": "physical_storage_surface",
+      "source_m": [
+        0.515,
+        0.215,
+        1.25
+      ],
+      "gltf_m": [
+        0.515,
+        1.25,
+        -0.215
+      ],
+      "physical_part": "clean_supply_middle_shelf",
+      "description": "Clean supply designation is fictional organization; no contents or sterility claim",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "DRY_WORK_CONTACT",
+      "kind": "physical_work_surface",
+      "source_m": [
+        0.48,
+        -0.16,
+        0.94
+      ],
+      "gltf_m": [
+        0.48,
+        0.94,
+        0.16
+      ],
+      "physical_part": "continuous_shaped_basin_and_dry_work_rim",
+      "description": "Flat dry landing separate from recessed bowl; no reach certification",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "TAP_DECK_BEARING",
+      "kind": "physical_mount_face",
+      "source_m": [
+        -0.32,
+        0.265,
+        0.94
+      ],
+      "gltf_m": [
+        -0.32,
+        0.94,
+        -0.265
+      ],
+      "physical_part": "tap_deck_mount",
+      "description": "Physical counter bearing, no installed water system",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "UNIMPLEMENTED_WATER_OUTLET",
+      "kind": "physical_closed_port",
+      "source_m": [
+        -0.32,
+        -0.082,
+        1.151
+      ],
+      "gltf_m": [
+        -0.32,
+        1.151,
+        0.082
+      ],
+      "physical_part": "tap_closed_outlet_cap",
+      "description": "Opaque blank nozzle face; no liquid, plumbing or species compatibility implemented",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "UNIMPLEMENTED_WATER_CONTROL",
+      "kind": "physical_control_face",
+      "source_m": [
+        -0.59,
+        0.246,
+        1.001
+      ],
+      "gltf_m": [
+        -0.59,
+        1.001,
+        -0.246
+      ],
+      "physical_part": "water_inactive_paddle",
+      "description": "Static inactive interface; no temperature, dosing, chemistry or treatment behavior assigned",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "UNIMPLEMENTED_CONTROL_CONTROL",
+      "kind": "physical_control_face",
+      "source_m": [
+        -0.07,
+        0.246,
+        1.001
+      ],
+      "gltf_m": [
+        -0.07,
+        1.001,
+        -0.246
+      ],
+      "physical_part": "control_inactive_paddle",
+      "description": "Static inactive interface; no temperature, dosing, chemistry or treatment behavior assigned",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "UNIMPLEMENTED_DRAIN_FACE",
+      "kind": "physical_closed_port",
+      "source_m": [
+        -0.31,
+        -0.045,
+        0.761
+      ],
+      "gltf_m": [
+        -0.31,
+        0.761,
+        0.045
+      ],
+      "physical_part": "basin_closed_drain_cap",
+      "description": "Blank drain cap only; drain route and fluid are unimplemented",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "UNIMPLEMENTED_REAR_WATER_SUPPLY",
+      "kind": "physical_closed_port",
+      "source_m": [
+        -0.53,
+        0.379,
+        0.42
+      ],
+      "gltf_m": [
+        -0.53,
+        0.42,
+        -0.379
+      ],
+      "physical_part": "water_supply_rear_blank_cap",
+      "description": "Distinct static blank interface; no host connection or flow/control function",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "UNIMPLEMENTED_REAR_DRAIN",
+      "kind": "physical_closed_port",
+      "source_m": [
+        -0.34,
+        0.379,
+        0.32
+      ],
+      "gltf_m": [
+        -0.34,
+        0.32,
+        -0.379
+      ],
+      "physical_part": "drain_rear_blank_cap",
+      "description": "Distinct static blank interface; no host connection or flow/control function",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "UNIMPLEMENTED_REAR_CONTROL",
+      "kind": "physical_closed_port",
+      "source_m": [
+        -0.1,
+        0.379,
+        0.49
+      ],
+      "gltf_m": [
+        -0.1,
+        0.49,
+        -0.379
+      ],
+      "physical_part": "control_rear_blank_cap",
+      "description": "Distinct static blank interface; no host connection or flow/control function",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "FLOOR_ORIGIN",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": "",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "FRONT_WORK_APPROACH",
+      "kind": "nonphysical_approach_proposal",
+      "source_m": [
+        0,
+        -0.77,
+        1.2
+      ],
+      "gltf_m": [
+        0,
+        1.2,
+        0.77
+      ],
+      "physical_part": null,
+      "description": "No body, tool, wheelchair or universal species fit",
+      "moving_with_screen": false,
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "name": "left_cheek_to_shoe",
+      "parts": [
+        "left_swept_basin_support_cheek",
+        "left_floor_isolation_shoe"
+      ],
+      "probe_source_m": [
+        -0.75,
+        0.02,
+        0.04
+      ],
+      "probe_gltf_m": [
+        -0.75,
+        0.04,
+        -0.02
+      ],
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ],
+      "kind": "opposed physical surface witness"
+    },
+    {
+      "name": "right_cheek_to_shoe",
+      "parts": [
+        "right_swept_basin_support_cheek",
+        "right_floor_isolation_shoe"
+      ],
+      "probe_source_m": [
+        0.75,
+        0.02,
+        0.04
+      ],
+      "probe_gltf_m": [
+        0.75,
+        0.04,
+        -0.02
+      ],
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ],
+      "kind": "opposed physical surface witness"
+    },
+    {
+      "name": "rim_to_left_cheek",
+      "parts": [
+        "continuous_shaped_basin_and_dry_work_rim",
+        "left_swept_basin_support_cheek"
+      ],
+      "probe_source_m": [
+        -0.75,
+        0.1,
+        0.88
+      ],
+      "probe_gltf_m": [
+        -0.75,
+        0.88,
+        -0.1
+      ],
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ],
+      "kind": "opposed physical surface witness"
+    },
+    {
+      "name": "rim_to_right_cheek",
+      "parts": [
+        "continuous_shaped_basin_and_dry_work_rim",
+        "right_swept_basin_support_cheek"
+      ],
+      "probe_source_m": [
+        0.75,
+        0.1,
+        0.88
+      ],
+      "probe_gltf_m": [
+        0.75,
+        0.88,
+        -0.1
+      ],
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ],
+      "kind": "opposed physical surface witness"
+    },
+    {
+      "name": "rim_to_rear_bearing",
+      "parts": [
+        "continuous_shaped_basin_and_dry_work_rim",
+        "rear_service_bearing_wall"
+      ],
+      "probe_source_m": [
+        0.5,
+        0.325,
+        0.88
+      ],
+      "probe_gltf_m": [
+        0.5,
+        0.88,
+        -0.325
+      ],
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ],
+      "kind": "opposed physical surface witness"
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "lower_supply_retrieval_low",
+      "state": "all",
+      "purpose": "Finite actual lower front-access shelf volume",
+      "min_source_m": [
+        0.255,
+        -0.3,
+        0.17
+      ],
+      "max_source_m": [
+        0.68,
+        0.27,
+        0.43
+      ],
+      "min_gltf_m": [
+        0.255,
+        0.17,
+        -0.27
+      ],
+      "max_gltf_m": [
+        0.68,
+        0.43,
+        0.3
+      ]
+    },
+    {
+      "name": "lower_supply_retrieval_high",
+      "state": "all",
+      "purpose": "Finite actual upper front-access shelf volume",
+      "min_source_m": [
+        0.255,
+        -0.3,
+        0.515
+      ],
+      "max_source_m": [
+        0.68,
+        0.26,
+        0.8
+      ],
+      "min_gltf_m": [
+        0.255,
+        0.515,
+        -0.26
+      ],
+      "max_gltf_m": [
+        0.68,
+        0.8,
+        0.3
+      ]
+    },
+    {
+      "name": "clean_upper_retrieval",
+      "state": "all",
+      "purpose": "Upper open supply shelf mouth, finite component clearance",
+      "min_source_m": [
+        0.32,
+        0.025,
+        1.27
+      ],
+      "max_source_m": [
+        0.71,
+        0.315,
+        1.44
+      ],
+      "min_gltf_m": [
+        0.32,
+        1.27,
+        -0.315
+      ],
+      "max_gltf_m": [
+        0.71,
+        1.44,
+        -0.025
+      ]
+    },
+    {
+      "name": "clean_lower_retrieval",
+      "state": "all",
+      "purpose": "Lower open supply shelf mouth, finite component clearance",
+      "min_source_m": [
+        0.32,
+        0.025,
+        1.015
+      ],
+      "max_source_m": [
+        0.71,
+        0.315,
+        1.21
+      ],
+      "min_gltf_m": [
+        0.32,
+        1.015,
+        -0.315
+      ],
+      "max_gltf_m": [
+        0.71,
+        1.21,
+        -0.025
+      ]
+    },
+    {
+      "name": "basin_working_recess",
+      "state": "all",
+      "purpose": "Finite actual central bowl void, no virtual liquid or treatment assignment",
+      "min_source_m": [
+        -0.535,
+        -0.145,
+        0.8
+      ],
+      "max_source_m": [
+        -0.085,
+        0.055,
+        0.93
+      ],
+      "min_gltf_m": [
+        -0.535,
+        0.8,
+        -0.055
+      ],
+      "max_gltf_m": [
+        -0.085,
+        0.93,
+        0.145
+      ]
+    }
+  ],
+  "states": {
+    "closed": {
+      "export": "exports/AST-MED-002.glb",
+      "sha256": "851d4dcb0b97b5ed0f05a1c412100bfbc1451d571ab83494eed107d1d874d824",
+      "bounds": {
+        "min_source_m": [
+          -0.800000011920929,
+          -0.3799999952316284,
+          0.0
+        ],
+        "max_source_m": [
+          0.800000011920929,
+          0.3799999952316284,
+          1.6399999856948853
+        ],
+        "min_gltf_m": [
+          -0.800000011920929,
+          0.0,
+          -0.3799999952316284
+        ],
+        "max_gltf_m": [
+          0.800000011920929,
+          1.6399999856948853,
+          0.3799999952316284
+        ],
+        "dimensions_source_m": [
+          1.600000023841858,
+          0.7599999904632568,
+          1.6399999856948853
+        ],
+        "dimensions_gltf_m": [
+          1.600000023841858,
+          1.6399999856948853,
+          0.7599999904632568
+        ],
+        "triangles": 3140
+      }
+    }
+  },
+  "details": {
+    "purpose": "Separate recessed wash bowl, supported static tap/control interfaces, dry work landing, clean-supply retrieval and service access",
+    "basin_floor_source_z_m": 0.755,
+    "work_surface_source_z_m": 0.94,
+    "clean_shelf_source_z_m": [
+      1.0,
+      1.25
+    ],
+    "service_cover": "Removable static cover; withdrawal proposal only, no moving service state",
+    "functional_limit": "No active fluids, medicine, chemistry, treatment guidance, powered actions or sterility claim",
+    "species_limit": "Adjustable component proposal; shape does not demonstrate suitability for any species"
+  },
+  "source_sha256": "81a1bb4ed6cd918ecfdb2b4bace3878a37e0d04f561583e18cb7511dcb6165c8",
+  "glb_sha256": "851d4dcb0b97b5ed0f05a1c412100bfbc1451d571ab83494eed107d1d874d824",
+  "generator_sha256": "eda85a4d8a5e7127bd413c62ead546130df931c81f6b8e66d517e15ab3ad006d",
+  "collision_proposal_file": "collision_proposals.json",
+  "marker_api_file": "marker_api.json",
+  "used_textures_packed": true,
+  "source_editability": "Named original solids, retained bevels, separate materials and parts, screen prismatic hierarchy/keyframes; evaluated export copies only",
+  "limitations": [
+    "Original game unavailable; no host room polygon, walls, door, usable ceiling or support recovered",
+    "No patient capacity, rooms, beds or population added",
+    "No actual body/cart, actor, treatment, engineering load or universal species suitability validation",
+    "Inspection component only; no Godot integration, clinical implementation or runtime performance claim"
+  ]
+}

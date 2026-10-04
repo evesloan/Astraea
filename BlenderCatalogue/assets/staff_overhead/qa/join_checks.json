@@ -1,0 +1,90 @@
+{
+  "method": "Independent GLB accessor positions transformed back to Blender Z up; check exported rail-cap planes against exact placement API",
+  "joins": [
+    {
+      "join": "approach straight to turn entry",
+      "seam_world_m": [
+        0,
+        0,
+        3.3
+      ],
+      "body_exit_plane": -0.001,
+      "body_entry_plane": 0.001,
+      "measured_body_gap_m": 0.002,
+      "left_export_cap_vertices": 208,
+      "right_export_cap_vertices": 208,
+      "matching_tangent": [
+        1,
+        0,
+        0
+      ],
+      "collar_extension_after_seam_m": 0.035,
+      "passed": true
+    },
+    {
+      "join": "turn exit to 90 degree rotated straight",
+      "seam_world_m": [
+        0.6,
+        0.6,
+        3.3
+      ],
+      "body_exit_plane": 0.599,
+      "body_entry_plane": 0.601,
+      "measured_body_gap_m": 0.002,
+      "left_export_cap_vertices": 208,
+      "right_export_cap_vertices": 208,
+      "matching_tangent": [
+        0,
+        1,
+        0
+      ],
+      "collar_extension_after_seam_m": 0.035,
+      "passed": true
+    }
+  ],
+  "rail_dz_interface_m": [
+    [
+      -0.294,
+      -0.398
+    ],
+    [
+      -0.264,
+      -0.398
+    ],
+    [
+      -0.264,
+      -0.391
+    ],
+    [
+      -0.286,
+      -0.391
+    ],
+    [
+      -0.286,
+      -0.276
+    ],
+    [
+      -0.266,
+      -0.276
+    ],
+    [
+      -0.266,
+      -0.268
+    ],
+    [
+      -0.294,
+      -0.268
+    ]
+  ],
+  "conduit_sleeve_radial_clearance_m": 0.003,
+  "collar_policy": "Collars cross the assembly seam, surrounding the adjacent rail/pipe. Mounting fasteners intentionally meet rails. Surface overlap at fixed support/pad/contact details is construction, not hidden route geometry.",
+  "all_passed": true,
+  "limitation": "No structural, electrical or engine acceptance",
+  "inspection_clearance_prism": {
+    "width_m": 1.8,
+    "height_m": 2.65,
+    "world_lowest_geometry_z_m": 2.692500042915344,
+    "clearance_above_prism_m": 0.042500042915344,
+    "scope": "Open QA-only volume; not real ship width or traversal verification"
+  }
+}

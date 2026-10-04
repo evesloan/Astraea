@@ -1,0 +1,408 @@
+{
+  "schema": "astraea_district_study_v1",
+  "date": "2026-10-02",
+  "authority": "Latest user canon overrides older documents; every hotel box is a new proposal.",
+  "canonical": {
+    "decks": 18,
+    "length_m": 1082,
+    "max_beam_m": 240,
+    "reference_height_m": 118,
+    "floor_elevations_m": [
+      0,
+      6,
+      12,
+      16.5,
+      21,
+      27,
+      35.5,
+      44,
+      52.5,
+      61,
+      69.5,
+      78,
+      84,
+      88.5,
+      93,
+      97.5,
+      102,
+      106.5
+    ],
+    "guest_units": 1000,
+    "luxury_units_within_total": {
+      "deluxe": 50,
+      "premium": 25,
+      "royalty": 5,
+      "supreme": 1
+    },
+    "passenger_hard_cap": 2000,
+    "normal_passenger_occupancy": [
+      1200,
+      2000
+    ],
+    "crew_including_player": 400,
+    "player_home": "shares existing crew room; exact ID reconciliation open",
+    "species": [
+      "Koblins",
+      "Mantelids",
+      "Humans",
+      "Baelins",
+      "Munkos",
+      "Mindos"
+    ],
+    "court_privacy": "Sleeping areas may overlook courts; selective privacy and acoustic treatment remain design choices."
+  },
+  "historical_geometry": {
+    "hull_plan_source": "atlas page 13 vector outline; extracted without alterations",
+    "hull_plan_zx_m": [
+      [
+        -541.0,
+        -17.999999278535896
+      ],
+      [
+        -510.00001399781826,
+        -72.00002772685582
+      ],
+      [
+        -430.00004271491895,
+        -112.00000571512743
+      ],
+      [
+        -300.00014486574844,
+        -119.99996457752707
+      ],
+      [
+        249.9996596174791,
+        -119.99996457752707
+      ],
+      [
+        419.99994872653633,
+        -103.99992440187886
+      ],
+      [
+        509.99960837938124,
+        -54.99999269340764
+      ],
+      [
+        541.0,
+        -5.999999759511965
+      ],
+      [
+        541.0,
+        5.999999759511965
+      ],
+      [
+        509.99960837938124,
+        54.99996208069541
+      ],
+      [
+        419.99994872653633,
+        103.99992440187886
+      ],
+      [
+        249.9996596174791,
+        119.99996457752707
+      ],
+      [
+        -300.00014486574844,
+        119.99996457752707
+      ],
+      [
+        -430.00004271491895,
+        111.99991387699073
+      ],
+      [
+        -510.00001399781826,
+        71.99999711414358
+      ],
+      [
+        -541.0,
+        17.999999278535896
+      ]
+    ],
+    "atrium": {
+      "x": [
+        -48,
+        48
+      ],
+      "z": [
+        -64,
+        64
+      ],
+      "decks": [
+        2,
+        17
+      ],
+      "main_terraces": [
+        6,
+        9,
+        12,
+        16
+      ]
+    },
+    "theater": {
+      "x": [
+        -118,
+        -34
+      ],
+      "z": [
+        -265,
+        -115
+      ],
+      "y": [
+        69.5,
+        91.5
+      ],
+      "floor_opening_decks": [
+        12,
+        13,
+        14
+      ],
+      "gallery_interfaces": [
+        {
+          "deck": 12,
+          "world_xyz_m": [
+            -34,
+            78,
+            -126
+          ]
+        },
+        {
+          "deck": 13,
+          "world_xyz_m": [
+            -34,
+            84,
+            -126
+          ]
+        }
+      ]
+    },
+    "townline_stop_z_m": [
+      -432,
+      -216,
+      -72,
+      216,
+      432
+    ],
+    "express_arrival_xz_m": [
+      5.5,
+      -72
+    ],
+    "tram_diagram_note": "Plan bypass is simplified; the sculpted supporting floor ring is omitted. No collision claim."
+  },
+  "hotel_alternatives": [
+    {
+      "key": "A",
+      "title": "Three distinct hotels with a deeper public base",
+      "sub": "A proposal for two different forward hotels and one quieter aft hotel. Strong individual identity; greater conflict-review burden on public decks.",
+      "masses": [
+        {
+          "id": "A1",
+          "name": "Forward port hotel",
+          "z": [
+            -440,
+            -290
+          ],
+          "x": [
+            -94,
+            -20
+          ],
+          "y": [
+            52.5,
+            106.5
+          ],
+          "base": "D09-D17",
+          "fill": "#E8D7A8"
+        },
+        {
+          "id": "A2",
+          "name": "Forward starboard hotel",
+          "z": [
+            -360,
+            -110
+          ],
+          "x": [
+            20,
+            104
+          ],
+          "y": [
+            52.5,
+            106.5
+          ],
+          "base": "D09-D17",
+          "fill": "#CBDCE5"
+        },
+        {
+          "id": "A3",
+          "name": "Aft garden hotel",
+          "z": [
+            120,
+            350
+          ],
+          "x": [
+            -104,
+            -20
+          ],
+          "y": [
+            78,
+            106.5
+          ],
+          "base": "D12-D17",
+          "fill": "#BDD2BD"
+        }
+      ],
+      "strength": "Distinct scales and arrivals; hotel life can overlap retail, dining and culture without making one enormous undifferentiated accommodation bar.",
+      "risk": "A1/A2 study volumes include existing D09-D12 programs. Cinemas, shops, dining and observation remain protected allocations until exact IDs and alternatives are reviewed."
+    },
+    {
+      "key": "B",
+      "title": "Four smaller hotels with paired courts to resolve",
+      "sub": "Paired forward and aft hotels above the public decks. Local court locations are unresolved and are not drawn.",
+      "masses": [
+        {
+          "id": "B1",
+          "name": "Forward port hotel",
+          "z": [
+            -425,
+            -285
+          ],
+          "x": [
+            -95,
+            -20
+          ],
+          "y": [
+            78,
+            106.5
+          ],
+          "base": "D12-D17",
+          "fill": "#E8D7A8"
+        },
+        {
+          "id": "B2",
+          "name": "Forward starboard hotel",
+          "z": [
+            -425,
+            -285
+          ],
+          "x": [
+            20,
+            95
+          ],
+          "y": [
+            78,
+            106.5
+          ],
+          "base": "D12-D17",
+          "fill": "#CBDCE5"
+        },
+        {
+          "id": "B3",
+          "name": "Aft port hotel",
+          "z": [
+            150,
+            330
+          ],
+          "x": [
+            -104,
+            -20
+          ],
+          "y": [
+            78,
+            106.5
+          ],
+          "base": "D12-D17",
+          "fill": "#BDD2BD"
+        },
+        {
+          "id": "B4",
+          "name": "Aft starboard hotel",
+          "z": [
+            150,
+            330
+          ],
+          "x": [
+            20,
+            104
+          ],
+          "y": [
+            78,
+            106.5
+          ],
+          "base": "D12-D17",
+          "fill": "#D6BCC7"
+        }
+      ],
+      "strength": "Clearer compact neighborhoods and potential quieter upper courts. Public dining, retail and resort remain a shared layer below, reached by local cores that still need a real footprint.",
+      "risk": "Additional lift/stair/service cores consume area. D12 existing library/observation uses and D13-D17 room allocations still need a complete reconciliation.",
+      "court_locations": "unresolved; not drawn"
+    }
+  ],
+  "unresolved": [
+    "Upper hull profile and roof clearance",
+    "Exact hotel number and names",
+    "Membership of all 1000 units and 81 luxury units",
+    "All new local lift/stair/service shafts",
+    "Multistory suite floor relationships",
+    "Moonwell exact boundaries and physical connections",
+    "Vesper second-level allocation and waterfall route",
+    "Actual current runtime and later pre-loss edits"
+  ],
+  "source_policy": "Published study cites filenames and dates, not private Library download URLs.",
+  "salon_assembly_proposal": {
+    "status": "new adjustable study, not recovered installed geometry",
+    "guest_door_xz_m": [
+      52,
+      0
+    ],
+    "service_door_xz_m": [
+      98,
+      0
+    ],
+    "historical_usable_height_m": 8.25,
+    "quiet_bay_candidate_x_m": [
+      60,
+      67.2
+    ],
+    "quiet_bay_candidate_z_m": [
+      -7.4,
+      -2
+    ],
+    "quiet_bay_max_height_m": 3.8,
+    "planted_return_candidate_x_m": [
+      60,
+      67.2
+    ],
+    "planted_return_candidate_z_m": [
+      2,
+      4.5
+    ],
+    "proposed_study_clear_strip_z_m": [
+      -2,
+      2
+    ],
+    "clear_strip_warning": "Not a validated cart/body clearance or replacement for actual turn-landings.",
+    "historical_exclusions": [
+      "tram strip X35..45",
+      "Z0 arrival/service axis",
+      "actual X52 and X98 door apertures and turn landings",
+      "28m terrace interface Z-14..14"
+    ],
+    "unresolved": [
+      "final 825.8m2 guest polygon",
+      "actual floor/ceiling seams",
+      "recovered door aperture and body envelopes"
+    ],
+    "unknown_door_parameters": {
+      "public_aperture_width_m": null,
+      "public_clear_height_m": null,
+      "service_aperture_width_m": null,
+      "service_clear_height_m": null,
+      "leaf_stroke_m": null,
+      "cassette_depth_m": null,
+      "head_reservation_m": null
+    }
+  },
+  "source_hashes": {
+    "D09_CONNECTED_SALON.md": "e917ed91037d5792dd32e7d11d20faedb69ddfb849724bf7b398916b078d39d4",
+    "D09_COMPOSITION_CONTRACT.md": "d52e36366f5fc0bfae1ae6ae655b1cdf35f28026f0c82a036338907632f0f137"
+  }
+}

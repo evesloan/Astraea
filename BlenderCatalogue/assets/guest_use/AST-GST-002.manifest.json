@@ -1,0 +1,469 @@
+{
+  "catalogue_id": "AST-GST-002",
+  "title": "Shielded wall reading sconce",
+  "unique_design": true,
+  "script_assisted_original_design": true,
+  "source": "source/AST-GST-002.blend",
+  "export": "exports/AST-GST-002.glb",
+  "generator": "source/build_guest_use.py",
+  "source_frame": "metres Blender Z-up, +X right, -Y front",
+  "exchange_frame": "metres GLB Y-up, source(x,y,z) -> (x,z,-y); resolve actual native GLB node transforms",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "Wall plane Y0; local centre Z0; front -Y"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.1289999932050705,
+      -0.3160000145435333,
+      -0.17000000178813934
+    ],
+    "max_m": [
+      0.1289999932050705,
+      0.0,
+      0.17499999701976776
+    ],
+    "dimensions_m": [
+      0.257999986410141,
+      0.3160000145435333,
+      0.3449999988079071
+    ]
+  },
+  "evaluated_source_triangles": 1672,
+  "editable_semantic_parts": 16,
+  "semantic_parts": [
+    "shaped_wall_backplate",
+    "inset_metal_mount_plate",
+    "visible_fixing_boss_-0.11",
+    "fixing_slot_-0.11",
+    "visible_fixing_boss_0.11",
+    "fixing_slot_0.11",
+    "braced_sconce_arm",
+    "wall_hollow_shield",
+    "wall_recessed_diffuser",
+    "wall_crown_fixing_cap",
+    "wall_diffuser_retaining_clip_-1",
+    "wall_diffuser_retaining_clip_1",
+    "wall_hood_hub",
+    "sconce_switch_bezel",
+    "sconce_switch_rocker",
+    "sconce_switch_locator"
+  ],
+  "material_roles": [
+    "champagne_metal",
+    "dark_rubber",
+    "ivory_enamel",
+    "oatmeal_weave",
+    "warm_walnut"
+  ],
+  "runtime_consolidation": "Static evaluated copies consolidated per distinct semantic material role; active UV normalized; native marker hierarchy retained",
+  "physical_and_proposal_markers": [
+    {
+      "name": "WALL_FIXING_-0.11",
+      "kind": "physical_wall_mount",
+      "source_m": [
+        0,
+        0,
+        -0.11
+      ],
+      "gltf_m": [
+        0,
+        -0.11,
+        0
+      ],
+      "physical_part": "shaped_wall_backplate",
+      "description": "Backplate rear plane; substrate, screws and wiring unverified",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "WALL_FIXING_0.11",
+      "kind": "physical_wall_mount",
+      "source_m": [
+        0,
+        0,
+        0.11
+      ],
+      "gltf_m": [
+        0,
+        0.11,
+        0
+      ],
+      "physical_part": "shaped_wall_backplate",
+      "description": "Backplate rear plane; substrate, screws and wiring unverified",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "WALL_DIFFUSER_CLIP_-1",
+      "kind": "physical_service_fastener",
+      "source_m": [
+        -0.08772,
+        -0.214,
+        0.0635
+      ],
+      "gltf_m": [
+        -0.08772,
+        0.0635,
+        0.214
+      ],
+      "physical_part": "wall_diffuser_retaining_clip_-1",
+      "description": "Static retaining clip; diffuser service withdrawal direction is downward; no animation or electrical behavior",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "WALL_DIFFUSER_CLIP_1",
+      "kind": "physical_service_fastener",
+      "source_m": [
+        0.08772,
+        -0.214,
+        0.0635
+      ],
+      "gltf_m": [
+        0.08772,
+        0.0635,
+        0.214
+      ],
+      "physical_part": "wall_diffuser_retaining_clip_1",
+      "description": "Static retaining clip; diffuser service withdrawal direction is downward; no animation or electrical behavior",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "WALL_DIFFUSER",
+      "kind": "physical_receiver",
+      "source_m": [
+        0,
+        -0.215,
+        0.068
+      ],
+      "gltf_m": [
+        0,
+        0.068,
+        0.215
+      ],
+      "physical_part": "wall_recessed_diffuser",
+      "description": "Opaque recessed diffuser underside, not light output",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "WALL_READING_AIM",
+      "kind": "nonphysical_direction_target",
+      "source_m": [
+        0,
+        -0.382,
+        -0.403
+      ],
+      "gltf_m": [
+        0,
+        -0.403,
+        0.382
+      ],
+      "physical_part": null,
+      "description": "Proposed reading aim only; no photometry or species-fit claim",
+      "direction_source": [
+        0,
+        -0.35,
+        -0.93675
+      ],
+      "direction_gltf": [
+        0,
+        -0.93675,
+        0.35
+      ]
+    },
+    {
+      "name": "JOIN_arm_to_mount",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        -0.028,
+        0.01
+      ],
+      "gltf_m": [
+        0,
+        0.01,
+        0.028
+      ],
+      "physical_part": null,
+      "description": "braced_sconce_arm bears into inset_metal_mount_plate"
+    },
+    {
+      "name": "JOIN_arm_to_hub",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        -0.172,
+        0.083
+      ],
+      "gltf_m": [
+        0,
+        0.083,
+        0.172
+      ],
+      "physical_part": null,
+      "description": "braced_sconce_arm bears into wall_hood_hub"
+    },
+    {
+      "name": "JOIN_hub_to_shield",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        -0.143,
+        0.133
+      ],
+      "gltf_m": [
+        0,
+        0.133,
+        0.143
+      ],
+      "physical_part": null,
+      "description": "wall_hood_hub bears into wall_hollow_shield"
+    },
+    {
+      "name": "WALL_CONCEALED_POWER_ENTRY",
+      "kind": "physical_service_power_entry",
+      "source_m": [
+        0,
+        0,
+        0.032
+      ],
+      "gltf_m": [
+        0,
+        0.032,
+        0
+      ],
+      "physical_part": "shaped_wall_backplate",
+      "description": "Concealed supply entry datum behind mounting plate; no electrical behavior or drilled wall asserted",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "WALL_READING_SWITCH",
+      "kind": "physical_switch_surface",
+      "source_m": [
+        0,
+        -0.055,
+        -0.085
+      ],
+      "gltf_m": [
+        0,
+        -0.085,
+        0.055
+      ],
+      "physical_part": "sconce_switch_rocker",
+      "description": "Readable separate static rocker on backplate",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "WALL_MOUNT_DATUM",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": "Place wall plane Y0; illustrative QA datum is 1.36 m above floor",
+      "direction_source": [
+        0,
+        1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "name": "arm_to_mount",
+      "parts": [
+        "braced_sconce_arm",
+        "inset_metal_mount_plate"
+      ],
+      "probe_source_m": [
+        0,
+        -0.028,
+        0.01
+      ],
+      "probe_gltf_m": [
+        0,
+        0.01,
+        0.028
+      ],
+      "check": "Probe lies on or within both evaluated meshes; nearest-boundary distances are evidence, not assumed AABB contact"
+    },
+    {
+      "name": "arm_to_hub",
+      "parts": [
+        "braced_sconce_arm",
+        "wall_hood_hub"
+      ],
+      "probe_source_m": [
+        0,
+        -0.172,
+        0.083
+      ],
+      "probe_gltf_m": [
+        0,
+        0.083,
+        0.172
+      ],
+      "check": "Probe lies on or within both evaluated meshes; nearest-boundary distances are evidence, not assumed AABB contact"
+    },
+    {
+      "name": "hub_to_shield",
+      "parts": [
+        "wall_hood_hub",
+        "wall_hollow_shield"
+      ],
+      "probe_source_m": [
+        0,
+        -0.143,
+        0.133
+      ],
+      "probe_gltf_m": [
+        0,
+        0.133,
+        0.143
+      ],
+      "check": "Probe lies on or within both evaluated meshes; nearest-boundary distances are evidence, not assumed AABB contact"
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "space_below_projecting_shield",
+      "min_source_m": [
+        -0.11,
+        -0.31,
+        -0.14
+      ],
+      "max_source_m": [
+        0.11,
+        -0.1,
+        0.02
+      ],
+      "purpose": "Do not fill space below short arm/hood with a plate-to-mouth convex collider"
+    }
+  ],
+  "interaction_status": "Static visible switches/receivers are proposals only; no animation, runtime light, engine collider or interaction",
+  "collision_proposal_file": "collision_proposals.json",
+  "used_textures_packed": true,
+  "source_sha256": "770f9ebc66d84a2d49d7a6ffec8c3207d673fef0c86d622e3912b00060676afd",
+  "glb_sha256": "91ff884a53353abca07f4709208bb0f7cd9ce138a48f813b7ef5759c6c60a6c0",
+  "generator_sha256": "afc99e85812c0e525eb8d20565a6088987dc249343976e20f2a521d948d4872f",
+  "details": {
+    "intended_use": "A local reading fitting with shaped shield, real rear mounting plane and visible switch. Wall support and illumination remain unverified."
+  },
+  "limitations": [
+    "Separate catalogue, no original ship integration",
+    "No active electrical lighting or photometric validation",
+    "No load/stability/structural engineering rating",
+    "No species-fit or accessibility claim",
+    "No target engine/physics/performance validation"
+  ],
+  "name": "Shielded wall reading sconce",
+  "dimensions_blender_xyz_m": [
+    0.257999986410141,
+    0.3160000145435333,
+    0.3449999988079071
+  ],
+  "evaluated_triangles": 1672,
+  "marker_api_file": "marker_api.json",
+  "exported_triangles": 1672,
+  "runtime_material_group_meshes": 5,
+  "runtime_primitive_count": 5,
+  "bounds_gltf_y_up": {
+    "min": [
+      -0.1289999932050705,
+      -0.17000000178813934,
+      0.0
+    ],
+    "max": [
+      0.1289999932050705,
+      0.17499999701976776,
+      0.3160000145435333
+    ],
+    "dimensions": [
+      0.257999986410141,
+      0.3449999988079071,
+      0.3160000145435333
+    ]
+  }
+}

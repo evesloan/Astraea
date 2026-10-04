@@ -1,0 +1,88 @@
+{
+  "scope": "Numeric proposal screen only; no native engine collision or actor fit acceptance.",
+  "canopy": "Eight narrow trunk capsules, radius 0.028 to 0.113 m; no canopy collider; below-soil capsule extent explicitly documented.",
+  "understory": "Optional basal cylinder radius .045 m, height .15 m.",
+  "rosette": "Optional crown cylinder radius .035 m, height .055 m.",
+  "planters": [
+    {
+      "asset": "AST-BOT-004",
+      "part_count": 15,
+      "solid_count": 15,
+      "types": [
+        "convex_hull_points"
+      ],
+      "all_hull_points_finite": true,
+      "quarter_separate_segment_counts": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "asset": "AST-BOT-005",
+      "part_count": 17,
+      "solid_count": 170,
+      "types": [
+        "convex_hull_points"
+      ],
+      "all_hull_points_finite": true,
+      "quarter_separate_segment_counts": [
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "asset": "AST-BOT-006",
+      "part_count": 13,
+      "solid_count": 13,
+      "types": [
+        "convex_hull_points"
+      ],
+      "all_hull_points_finite": true,
+      "quarter_separate_segment_counts": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "derived_start": "Same source terminal hull points reflected in X; same-design variant, not a new authored design.",
+  "limitations": "Per-part convex simplifications require game-side evaluation; do not infer watertight union, navigation or structural load validation."
+}

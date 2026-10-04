@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "scope": "Original missing-parent failures and corrected fresh source generation. No current master overwritten, no render/network.",
+  "cases": [
+    {
+      "family": "botanical_canopy",
+      "results": [
+        {
+          "phase": "before",
+          "exit_code": 1,
+          "expected_missing_qa_parent_failure": true,
+          "source_sha256": "1ffd9a8071f8eb9d8f5ff8aa2e6da93bfe7a8a6b28ad859d2cf41adb1cf815c9",
+          "log": "qa/batch08/source_output_directory_revision/botanical_canopy_before.log"
+        },
+        {
+          "phase": "after",
+          "exit_code": 0,
+          "source_sha256": "8f25dd670481663f884d8f7795bb3688ae5f12bc4c54cef3b293917596c6e4b8",
+          "qa_output_created": true,
+          "empty_output_directories_required_before_run": false,
+          "exports": [
+            {
+              "path": "assets/botanical_canopy/AST-BOT-001.glb",
+              "sha256": "9789567e69c43d6192dadf7b75b079f7cb91cc1ed094e295965a8271cc7839db",
+              "generated_bytes_identical": true
+            }
+          ],
+          "log": "qa/batch08/source_output_directory_revision/botanical_canopy_after.log"
+        }
+      ]
+    },
+    {
+      "family": "aquatic_lounge",
+      "results": [
+        {
+          "phase": "before",
+          "exit_code": 1,
+          "expected_missing_qa_parent_failure": true,
+          "source_sha256": "a73f32d2a14b131a8a1777d9ec4c9056469a9ddab13cc38e6cbc41fbb5a61e79",
+          "log": "qa/batch08/source_output_directory_revision/aquatic_lounge_before.log"
+        },
+        {
+          "phase": "after",
+          "exit_code": 0,
+          "source_sha256": "5db2a1b1e75386d1eef3561bf65df188d936769a44aee38c3dabcd49c71fe093",
+          "qa_output_created": true,
+          "empty_output_directories_required_before_run": false,
+          "exports": [
+            {
+              "path": "assets/aquatic_lounge/exports/AST-AQU-001.glb",
+              "sha256": "15b38a27e95c5a5f894ddf1ea2c1d889814f9bbfae844f5d2d8c9a98d8455aed",
+              "generated_bytes_identical": true
+            },
+            {
+              "path": "assets/aquatic_lounge/exports/AST-AQU-002.glb",
+              "sha256": "3a12b2e3cfaf1604938b98cd34d05497ceefd58330001fc610797445f8fed9f6",
+              "generated_bytes_identical": true
+            }
+          ],
+          "log": "qa/batch08/source_output_directory_revision/aquatic_lounge_after.log"
+        }
+      ]
+    }
+  ],
+  "unchanged_current_master_files": {
+    "assets/botanical_canopy/AST-BOT-001.glb": "9789567e69c43d6192dadf7b75b079f7cb91cc1ed094e295965a8271cc7839db",
+    "assets/botanical_canopy/AST-BOT-001.blend": "c2040e7086041a9043938e9f942675d897bcc8749b7c5e676aa8d88aab30beff",
+    "assets/aquatic_lounge/exports/AST-AQU-001.glb": "15b38a27e95c5a5f894ddf1ea2c1d889814f9bbfae844f5d2d8c9a98d8455aed",
+    "assets/aquatic_lounge/exports/AST-AQU-002.glb": "3a12b2e3cfaf1604938b98cd34d05497ceefd58330001fc610797445f8fed9f6",
+    "assets/aquatic_lounge/source/AST-AQU-002.blend": "7ab258ceb7a522e3f18e0d84a38f1321daf89d54936b82739f272fce561b9ab3",
+    "assets/aquatic_lounge/source/AST-AQU-001.blend": "8f23844ded120cc65ec84d39e23cf52e5bfeec6bfe3be9a84b84bbfff01c4ed5"
+  }
+}

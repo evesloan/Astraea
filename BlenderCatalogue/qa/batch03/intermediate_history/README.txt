@@ -1,0 +1,1 @@
+Pre-final wall edge screen and initial all-source reload checks. Superseded by ../independent_export_edge_screen.json and ../independent_final_source_checks.json. Historical evidence only; keep separate from active handoff.

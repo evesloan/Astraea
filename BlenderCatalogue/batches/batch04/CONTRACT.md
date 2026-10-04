@@ -1,0 +1,13 @@
+# Batch04: botanical companions and planted seat edges
+
+Six new original designs: AST-BOT-001 branching small canopy specimen; AST-BOT-002 broad-leaf understory; AST-BOT-003 low flowering rosette; AST-BOT-004 straight planted-seat edge; AST-BOT-005 quarter-turn planted-seat edge; AST-BOT-006 closed end. These are component assets for courts, lounges and eligible aquatic edges, not installed game rooms. No original game recovery or runtime validation is claimed.
+
+Use the full actual botanical diorama and recent intimate/dense residential references. Transfer layered foliage, legible branching, inhabited planted edges and clear views. Do not copy a single giant atrium tree or make one universal courtyard. Prior architecture/material/source files stay unchanged.
+
+Metres, Blender Z up, front -Y. Plant pivot is soil plane Z0, proposed soil placement explicit. Planter pivot floor Z0, shared soil and seat datums supplied by author before plant assembly. Intentionally shaped editable branch/leaf parts, deterministic curated arrangement, no opaque sphere leaf masses. Prefer economical opaque leaf geometry with meaningful folded/cupped silhouette; measure actual alpha/material/primitives and triangle counts. Document open thin foliage boundaries and double-sided treatment. Branches/supports closed. Source generators disclosed, editable .blend and consolidated role-based GLBs required.
+
+Use original botanical materials in standards/botanical_materials.py with roles botanical_bark, botanical_leaf_jade, botanical_leaf_sage, botanical_leaf_olive, botanical_flower, botanical_soil. Existing guest materials can serve planter finish/timber seat. Source helper must pack texture dependencies. Preserve semantic roles, normalize active UV layer names before joining evaluated meshes, inspect actual GLB export.
+
+At ordinary seated and standing heights, one composed QA arrangement must show a useful stopping place, a clear approach, a visible tree trunk/branch hierarchy and an open outlook. No all-species seat/contact claim, real-room ceiling fit or native render budget certification. Upper foliage root-to-soil support, branch joins and seat/load-bearing relationships must be measured. Collision proposals are numeric simplified solids, never a whole foliage canopy blocker.
+
+Actual GLB render proof at640x360 plus detail, independent source/export/material/contact review, prior-assets hash guard. No denoiser (this Blender build lacks it). EEVEE_NEXT works; serialize heavy renders. Every full-frame camera uses standards/qa_frame.py before rendering. Label all proofs as Blender component QA. Freeze, restore-verify and durable backup before expansion.

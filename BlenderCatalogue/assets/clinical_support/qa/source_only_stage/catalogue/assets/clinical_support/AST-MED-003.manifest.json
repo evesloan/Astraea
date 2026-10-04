@@ -1,0 +1,1243 @@
+{
+  "catalogue_id": "AST-MED-003",
+  "name": "Neutral modular examination-support platform",
+  "title": "Neutral modular examination-support platform",
+  "unique_design": true,
+  "script_assisted_original_design": true,
+  "source": "source/AST-MED-003.blend",
+  "export": "exports/AST-MED-003.glb",
+  "generator": "source/build_clinical_support.py",
+  "source_frame": "metres Blender X width Y depth Z up, front -Y",
+  "exchange_frame": "metres GLB Y-up; source(x,y,z)->(x,z,-y), actual node hierarchy authoritative",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "Local floor-contact datum, host deck support unknown"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.5899999737739563,
+      -1.100000023841858,
+      0.0
+    ],
+    "max_m": [
+      0.5899999737739563,
+      1.100000023841858,
+      0.75
+    ],
+    "dimensions_m": [
+      1.1799999475479126,
+      2.200000047683716,
+      0.75
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -0.5899999737739563,
+      0.0,
+      -1.100000023841858
+    ],
+    "max_m": [
+      0.5899999737739563,
+      0.75,
+      1.100000023841858
+    ],
+    "dimensions_m": [
+      1.1799999475479126,
+      0.75,
+      2.200000047683716
+    ]
+  },
+  "dimensions_blender_xyz_m": [
+    1.1799999475479126,
+    2.200000047683716,
+    0.75
+  ],
+  "evaluated_source_triangles": 1740,
+  "evaluated_triangles": 1740,
+  "editable_semantic_parts": 21,
+  "semantic_parts": [
+    "clipped_neutral_support_deck",
+    "removable_equal_support_pad_1",
+    "removable_equal_support_pad_2",
+    "removable_equal_support_pad_3",
+    "forward_left_splayed_trestle",
+    "forward_left_floor_isolation",
+    "forward_right_splayed_trestle",
+    "forward_right_floor_isolation",
+    "forward_tapered_trestle_header",
+    "rear_left_splayed_trestle",
+    "rear_left_floor_isolation",
+    "rear_right_splayed_trestle",
+    "rear_right_floor_isolation",
+    "rear_tapered_trestle_header",
+    "underdeck_longitudinal_tie",
+    "left_recessed_attachment_rail",
+    "left_forward_attachment_bearing",
+    "left_rear_attachment_bearing",
+    "right_recessed_attachment_rail",
+    "right_forward_attachment_bearing",
+    "right_rear_attachment_bearing"
+  ],
+  "material_roles": [
+    "care_brushed_metal",
+    "care_soft_pad",
+    "dark_rubber",
+    "ivory_enamel"
+  ],
+  "runtime_consolidation": "Evaluated static copies by semantic material role; UV layers normalized; source parts editable",
+  "physical_and_proposal_markers": [
+    {
+      "name": "PAD_1_PHYSICAL_CONTACT",
+      "kind": "physical_support_contact",
+      "source_m": [
+        0,
+        -0.715,
+        0.75
+      ],
+      "gltf_m": [
+        0,
+        0.75,
+        0.715
+      ],
+      "physical_part": "removable_equal_support_pad_1",
+      "description": "Flat pad plateau only; species posture, safe loading and transfer fit unverified",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "PAD_2_PHYSICAL_CONTACT",
+      "kind": "physical_support_contact",
+      "source_m": [
+        0,
+        0,
+        0.75
+      ],
+      "gltf_m": [
+        0,
+        0.75,
+        0
+      ],
+      "physical_part": "removable_equal_support_pad_2",
+      "description": "Flat pad plateau only; species posture, safe loading and transfer fit unverified",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "PAD_3_PHYSICAL_CONTACT",
+      "kind": "physical_support_contact",
+      "source_m": [
+        0,
+        0.715,
+        0.75
+      ],
+      "gltf_m": [
+        0,
+        0.75,
+        -0.715
+      ],
+      "physical_part": "removable_equal_support_pad_3",
+      "description": "Flat pad plateau only; species posture, safe loading and transfer fit unverified",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "FORWARD_LEFT_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.43,
+        -0.68,
+        0
+      ],
+      "gltf_m": [
+        -0.43,
+        0,
+        0.68
+      ],
+      "physical_part": "forward_left_floor_isolation",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "FORWARD_RIGHT_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.43,
+        -0.68,
+        0
+      ],
+      "gltf_m": [
+        0.43,
+        0,
+        0.68
+      ],
+      "physical_part": "forward_right_floor_isolation",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "REAR_LEFT_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.43,
+        0.68,
+        0
+      ],
+      "gltf_m": [
+        -0.43,
+        0,
+        -0.68
+      ],
+      "physical_part": "rear_left_floor_isolation",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "REAR_RIGHT_FLOOR",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.43,
+        0.68,
+        0
+      ],
+      "gltf_m": [
+        0.43,
+        0,
+        -0.68
+      ],
+      "physical_part": "rear_right_floor_isolation",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "LEFT_OPTIONAL_ATTACHMENT_FACE",
+      "kind": "physical_optional_attachment_face",
+      "source_m": [
+        -0.59,
+        0,
+        0.623
+      ],
+      "gltf_m": [
+        -0.59,
+        0.623,
+        0
+      ],
+      "physical_part": "left_recessed_attachment_rail",
+      "description": "Real mounting face only; attachment absent, no latch, standard, Mindo port or load capacity assigned",
+      "direction_source": [
+        -1,
+        0,
+        0
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LEFT_STAFF_APPROACH",
+      "kind": "nonphysical_approach_proposal",
+      "source_m": [
+        -1.25,
+        0,
+        0
+      ],
+      "gltf_m": [
+        -1.25,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": "Optional staff/transfer-side reservation only; no actor or transfer acceptance"
+    },
+    {
+      "name": "RIGHT_OPTIONAL_ATTACHMENT_FACE",
+      "kind": "physical_optional_attachment_face",
+      "source_m": [
+        0.59,
+        0,
+        0.623
+      ],
+      "gltf_m": [
+        0.59,
+        0.623,
+        0
+      ],
+      "physical_part": "right_recessed_attachment_rail",
+      "description": "Real mounting face only; attachment absent, no latch, standard, Mindo port or load capacity assigned",
+      "direction_source": [
+        1,
+        0,
+        0
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_STAFF_APPROACH",
+      "kind": "nonphysical_approach_proposal",
+      "source_m": [
+        1.25,
+        0,
+        0
+      ],
+      "gltf_m": [
+        1.25,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": "Optional staff/transfer-side reservation only; no actor or transfer acceptance"
+    },
+    {
+      "name": "BARE_DECK_END_CONTACT",
+      "kind": "physical_support_contact",
+      "source_m": [
+        0,
+        -1.06,
+        0.7
+      ],
+      "gltf_m": [
+        0,
+        0.7,
+        1.06
+      ],
+      "physical_part": "clipped_neutral_support_deck",
+      "description": "Exposed deck surface beyond equal removable pad footprint",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "FLOOR_ORIGIN",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": "Floor datum, not a physical point at centre"
+    }
+  ],
+  "joins": [
+    {
+      "name": "pad_1_to_deck",
+      "parts": [
+        "removable_equal_support_pad_1",
+        "clipped_neutral_support_deck"
+      ],
+      "probe_source_m": [
+        0,
+        -0.715,
+        0.7
+      ],
+      "probe_gltf_m": [
+        0,
+        0.7,
+        0.715
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "pad_2_to_deck",
+      "parts": [
+        "removable_equal_support_pad_2",
+        "clipped_neutral_support_deck"
+      ],
+      "probe_source_m": [
+        0,
+        0,
+        0.7
+      ],
+      "probe_gltf_m": [
+        0,
+        0.7,
+        0
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "pad_3_to_deck",
+      "parts": [
+        "removable_equal_support_pad_3",
+        "clipped_neutral_support_deck"
+      ],
+      "probe_source_m": [
+        0,
+        0.715,
+        0.7
+      ],
+      "probe_gltf_m": [
+        0,
+        0.7,
+        -0.715
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "forward_left_shoe_contact",
+      "parts": [
+        "forward_left_floor_isolation",
+        "forward_left_splayed_trestle"
+      ],
+      "probe_source_m": [
+        -0.43,
+        -0.68,
+        0.025
+      ],
+      "probe_gltf_m": [
+        -0.43,
+        0.025,
+        0.68
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "forward_right_shoe_contact",
+      "parts": [
+        "forward_right_floor_isolation",
+        "forward_right_splayed_trestle"
+      ],
+      "probe_source_m": [
+        0.43,
+        -0.68,
+        0.025
+      ],
+      "probe_gltf_m": [
+        0.43,
+        0.025,
+        0.68
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "forward_header_deck",
+      "parts": [
+        "forward_tapered_trestle_header",
+        "clipped_neutral_support_deck"
+      ],
+      "probe_source_m": [
+        0,
+        -0.68,
+        0.665
+      ],
+      "probe_gltf_m": [
+        0,
+        0.665,
+        0.68
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "forward_left_leg_header",
+      "parts": [
+        "forward_left_splayed_trestle",
+        "forward_tapered_trestle_header"
+      ],
+      "probe_source_m": [
+        -0.4,
+        -0.68,
+        0.59
+      ],
+      "probe_gltf_m": [
+        -0.4,
+        0.59,
+        0.68
+      ],
+      "kind": "buried_structural_overlap"
+    },
+    {
+      "name": "forward_right_leg_header",
+      "parts": [
+        "forward_right_splayed_trestle",
+        "forward_tapered_trestle_header"
+      ],
+      "probe_source_m": [
+        0.4,
+        -0.68,
+        0.59
+      ],
+      "probe_gltf_m": [
+        0.4,
+        0.59,
+        0.68
+      ],
+      "kind": "buried_structural_overlap"
+    },
+    {
+      "name": "rear_left_shoe_contact",
+      "parts": [
+        "rear_left_floor_isolation",
+        "rear_left_splayed_trestle"
+      ],
+      "probe_source_m": [
+        -0.43,
+        0.68,
+        0.025
+      ],
+      "probe_gltf_m": [
+        -0.43,
+        0.025,
+        -0.68
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "rear_right_shoe_contact",
+      "parts": [
+        "rear_right_floor_isolation",
+        "rear_right_splayed_trestle"
+      ],
+      "probe_source_m": [
+        0.43,
+        0.68,
+        0.025
+      ],
+      "probe_gltf_m": [
+        0.43,
+        0.025,
+        -0.68
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "rear_header_deck",
+      "parts": [
+        "rear_tapered_trestle_header",
+        "clipped_neutral_support_deck"
+      ],
+      "probe_source_m": [
+        0,
+        0.68,
+        0.665
+      ],
+      "probe_gltf_m": [
+        0,
+        0.665,
+        -0.68
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "rear_left_leg_header",
+      "parts": [
+        "rear_left_splayed_trestle",
+        "rear_tapered_trestle_header"
+      ],
+      "probe_source_m": [
+        -0.4,
+        0.68,
+        0.59
+      ],
+      "probe_gltf_m": [
+        -0.4,
+        0.59,
+        -0.68
+      ],
+      "kind": "buried_structural_overlap"
+    },
+    {
+      "name": "rear_right_leg_header",
+      "parts": [
+        "rear_right_splayed_trestle",
+        "rear_tapered_trestle_header"
+      ],
+      "probe_source_m": [
+        0.4,
+        0.68,
+        0.59
+      ],
+      "probe_gltf_m": [
+        0.4,
+        0.59,
+        -0.68
+      ],
+      "kind": "buried_structural_overlap"
+    },
+    {
+      "name": "tie_into_forward",
+      "parts": [
+        "underdeck_longitudinal_tie",
+        "forward_tapered_trestle_header"
+      ],
+      "probe_source_m": [
+        0,
+        -0.5850000000000001,
+        0.608
+      ],
+      "probe_gltf_m": [
+        0,
+        0.608,
+        0.5850000000000001
+      ],
+      "kind": "buried_structural_overlap"
+    },
+    {
+      "name": "tie_into_rear",
+      "parts": [
+        "underdeck_longitudinal_tie",
+        "rear_tapered_trestle_header"
+      ],
+      "probe_source_m": [
+        0,
+        0.5850000000000001,
+        0.608
+      ],
+      "probe_gltf_m": [
+        0,
+        0.608,
+        -0.5850000000000001
+      ],
+      "kind": "buried_structural_overlap"
+    },
+    {
+      "name": "left_forward_rail_bearing",
+      "parts": [
+        "left_recessed_attachment_rail",
+        "left_forward_attachment_bearing"
+      ],
+      "probe_source_m": [
+        -0.5675,
+        -0.64,
+        0.645
+      ],
+      "probe_gltf_m": [
+        -0.5675,
+        0.645,
+        0.64
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "left_forward_deck_bearing",
+      "parts": [
+        "left_forward_attachment_bearing",
+        "clipped_neutral_support_deck"
+      ],
+      "probe_source_m": [
+        -0.555,
+        -0.64,
+        0.665
+      ],
+      "probe_gltf_m": [
+        -0.555,
+        0.665,
+        0.64
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "left_rear_rail_bearing",
+      "parts": [
+        "left_recessed_attachment_rail",
+        "left_rear_attachment_bearing"
+      ],
+      "probe_source_m": [
+        -0.5675,
+        0.64,
+        0.645
+      ],
+      "probe_gltf_m": [
+        -0.5675,
+        0.645,
+        -0.64
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "left_rear_deck_bearing",
+      "parts": [
+        "left_rear_attachment_bearing",
+        "clipped_neutral_support_deck"
+      ],
+      "probe_source_m": [
+        -0.555,
+        0.64,
+        0.665
+      ],
+      "probe_gltf_m": [
+        -0.555,
+        0.665,
+        -0.64
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "right_forward_rail_bearing",
+      "parts": [
+        "right_recessed_attachment_rail",
+        "right_forward_attachment_bearing"
+      ],
+      "probe_source_m": [
+        0.5675,
+        -0.64,
+        0.645
+      ],
+      "probe_gltf_m": [
+        0.5675,
+        0.645,
+        0.64
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "right_forward_deck_bearing",
+      "parts": [
+        "right_forward_attachment_bearing",
+        "clipped_neutral_support_deck"
+      ],
+      "probe_source_m": [
+        0.555,
+        -0.64,
+        0.665
+      ],
+      "probe_gltf_m": [
+        0.555,
+        0.665,
+        0.64
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "right_rear_rail_bearing",
+      "parts": [
+        "right_recessed_attachment_rail",
+        "right_rear_attachment_bearing"
+      ],
+      "probe_source_m": [
+        0.5675,
+        0.64,
+        0.645
+      ],
+      "probe_gltf_m": [
+        0.5675,
+        0.645,
+        -0.64
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "right_rear_deck_bearing",
+      "parts": [
+        "right_rear_attachment_bearing",
+        "clipped_neutral_support_deck"
+      ],
+      "probe_source_m": [
+        0.555,
+        0.64,
+        0.665
+      ],
+      "probe_gltf_m": [
+        0.555,
+        0.665,
+        -0.64
+      ],
+      "kind": "opposing_boundary_contact",
+      "normal_a_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_a_gltf": [
+        0,
+        1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        -1,
+        0
+      ]
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "central_underdeck_space",
+      "purpose": "Continuous clear space under fixed deck; no body-access or transfer guarantee",
+      "min_source_m": [
+        -0.28,
+        -1.04,
+        0.045
+      ],
+      "max_source_m": [
+        0.28,
+        1.04,
+        0.54
+      ],
+      "min_gltf_m": [
+        -0.28,
+        0.045,
+        -1.04
+      ],
+      "max_gltf_m": [
+        0.28,
+        0.54,
+        1.04
+      ]
+    },
+    {
+      "name": "side_underdeck_approach",
+      "purpose": "Between trestles below rail, profile-following unoccupied space",
+      "min_source_m": [
+        0.325,
+        -0.49,
+        0.04
+      ],
+      "max_source_m": [
+        0.52,
+        0.49,
+        0.57
+      ],
+      "min_gltf_m": [
+        0.325,
+        0.04,
+        -0.49
+      ],
+      "max_gltf_m": [
+        0.52,
+        0.57,
+        0.49
+      ]
+    }
+  ],
+  "collision_proposal_file": "collision_proposals.json",
+  "marker_api_file": "marker_api.json",
+  "used_textures_packed": true,
+  "source_sha256": "140bc046520fb5826029ad5fdbf2d6e740f0e6b8569d0bc260dee76c58bd7e6d",
+  "glb_sha256": "ee5cafd00320b06bb3cb38a1026bd36dd0be11a2bcb538fd3014fb806aba43dc",
+  "generator_sha256": "188da30d21908e1a3186381af6db4b91ebe7d3dd980b4bbeec56271bc329d2bd",
+  "details": {
+    "fixed_default": true,
+    "nominal_support_height_m": 0.75,
+    "supported_source_contacts": "Three equal flat removable pad plateaux, bare deck end, and four floor shoes",
+    "removable_option": "Three equal modules are separate editable parts; no removal animation or clinical pose",
+    "attachment_reserves": "Two actual under-edge rail faces with bearing lands; no installed attachment, standard or treatment interface",
+    "unverified": [
+      "species posture",
+      "body fit",
+      "support load",
+      "transfer method",
+      "Baelin aquatic/dry suitability",
+      "Mindo interfaces",
+      "chemistry"
+    ],
+    "not_allocated": "No bed, clinical capacity, powered lift or tilt"
+  },
+  "limitations": [
+    "Original game/host absent; no game implementation or catalogue promotion",
+    "Adjustable dimensions only; no room, bed, patient or population allocation",
+    "All body/load/transfer/species fit remains unverified",
+    "No treatment behavior, active fluids, chemistry or clinical certification",
+    "No performance, collision-engine or dynamics claims"
+  ]
+}

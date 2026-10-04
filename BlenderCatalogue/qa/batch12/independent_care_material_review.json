@@ -1,0 +1,37 @@
+{
+  "passed_static_and_hash_scope": true,
+  "execution_receipt_sha256": "0b14b44fc129df5b4396763e54d610c4bd17d46f5d4d304276f7b84358f3624b",
+  "source_script_sha256": "b85cb7bae7911f1f05c1b88776c482009c2c3759e37ce9f64143abd3ca63907c",
+  "helper_sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+  "outputs": [
+    {
+      "path": "materials/care/care_bluegreen_resin.png",
+      "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+      "receipt_hash_matches": true,
+      "reported_byte_identical": true
+    },
+    {
+      "path": "materials/care/care_soft_pad.png",
+      "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+      "receipt_hash_matches": true,
+      "reported_byte_identical": true
+    },
+    {
+      "path": "materials/care/care_brushed_metal.png",
+      "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+      "receipt_hash_matches": true,
+      "reported_byte_identical": true
+    },
+    {
+      "path": "materials/care/manifest.json",
+      "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+      "receipt_hash_matches": true,
+      "reported_byte_identical": true
+    }
+  ],
+  "source_read_inspection": "Generator imports Path/Pillow/json/hashlib/math/random and creates deterministic tile pixels; no input image or font reads. Helper opens care manifest and all three role files, reloads and packs each image.",
+  "actual_pixels_inspected": "qa/batch12/care_material_contact_sheet.png",
+  "contact_sheet_sha256": "edea9514e35618fd3365120584a5d020e6479a11a4d86e66c45d8eb735ce9cde",
+  "appearance_review": "Muted blue-green resin, lower contrast pale support pad and neutral metal with broader vertical grain; these are visual roles, not antimicrobial/species/load claims. Final embedded mesh use and rendering remain pending.",
+  "reproduction_method": "Scoped and hash-checked the lead completed fresh-generation receipt, without duplicate generation; independent family closure will include every helper-loaded tile."
+}

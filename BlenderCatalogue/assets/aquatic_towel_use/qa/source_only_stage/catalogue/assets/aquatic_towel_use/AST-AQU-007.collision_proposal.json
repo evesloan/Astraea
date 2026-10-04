@@ -1,0 +1,240 @@
+{
+  "catalogue_id": "AST-AQU-007",
+  "coordinate_frame": "Blender source metres; shape and movement coordinates require native C mapping",
+  "status": "Component geometric proposals only, no engine physics validation",
+  "shapes": [
+    {
+      "name": "hood_U_section",
+      "type": "extruded_polygon",
+      "axis": "y",
+      "profile_2d_m": [
+        [
+          -0.67,
+          0.08
+        ],
+        [
+          -0.67,
+          1.52
+        ],
+        [
+          -0.66,
+          1.61
+        ],
+        [
+          -0.62,
+          1.71
+        ],
+        [
+          -0.55,
+          1.78
+        ],
+        [
+          -0.45,
+          1.82
+        ],
+        [
+          0.45,
+          1.82
+        ],
+        [
+          0.55,
+          1.78
+        ],
+        [
+          0.62,
+          1.71
+        ],
+        [
+          0.66,
+          1.61
+        ],
+        [
+          0.67,
+          1.52
+        ],
+        [
+          0.67,
+          0.08
+        ],
+        [
+          0.563,
+          0.08
+        ],
+        [
+          0.563,
+          1.49
+        ],
+        [
+          0.55,
+          1.56
+        ],
+        [
+          0.51,
+          1.61
+        ],
+        [
+          0.44,
+          1.645
+        ],
+        [
+          -0.44,
+          1.645
+        ],
+        [
+          -0.51,
+          1.61
+        ],
+        [
+          -0.55,
+          1.56
+        ],
+        [
+          -0.563,
+          1.49
+        ],
+        [
+          -0.563,
+          0.08
+        ]
+      ],
+      "interval_m": [
+        -0.31,
+        0.31
+      ],
+      "motion_group": "fixed"
+    },
+    {
+      "name": "low_plinth",
+      "type": "aabb",
+      "min_m": [
+        -0.65,
+        -0.295,
+        0
+      ],
+      "max_m": [
+        0.65,
+        0.295,
+        0.145
+      ],
+      "motion_group": "fixed"
+    },
+    {
+      "name": "opaque_back",
+      "type": "aabb",
+      "min_m": [
+        -0.583,
+        0.248,
+        0.13
+      ],
+      "max_m": [
+        0.583,
+        0.292,
+        1.66
+      ],
+      "motion_group": "fixed"
+    },
+    {
+      "name": "lower_solid_guard",
+      "type": "aabb",
+      "min_m": [
+        -0.58,
+        -0.205,
+        0.13
+      ],
+      "max_m": [
+        0.58,
+        0.252,
+        0.615
+      ],
+      "motion_group": "fixed"
+    },
+    {
+      "name": "shelf_1",
+      "type": "aabb",
+      "min_m": [
+        -0.585,
+        -0.225,
+        0.615
+      ],
+      "max_m": [
+        0.585,
+        0.265,
+        0.65
+      ],
+      "motion_group": "fixed"
+    },
+    {
+      "name": "shelf_2",
+      "type": "aabb",
+      "min_m": [
+        -0.585,
+        -0.225,
+        1.075
+      ],
+      "max_m": [
+        0.585,
+        0.265,
+        1.1099999999999999
+      ],
+      "motion_group": "fixed"
+    },
+    {
+      "name": "header",
+      "type": "aabb",
+      "min_m": [
+        -0.565,
+        -0.27,
+        1.485
+      ],
+      "max_m": [
+        0.565,
+        0.265,
+        1.665
+      ],
+      "motion_group": "fixed"
+    }
+  ],
+  "clear_volumes": [
+    {
+      "name": "lower_front_retrieval_mouth",
+      "min_m": [
+        -0.52,
+        -0.48,
+        0.82
+      ],
+      "max_m": [
+        0.52,
+        -0.155,
+        1.04
+      ]
+    },
+    {
+      "name": "upper_front_retrieval_mouth",
+      "min_m": [
+        -0.52,
+        -0.48,
+        1.24
+      ],
+      "max_m": [
+        0.52,
+        -0.155,
+        1.47
+      ]
+    },
+    {
+      "name": "front_restock_approach",
+      "min_m": [
+        -0.7,
+        -1.0,
+        0.1
+      ],
+      "max_m": [
+        0.7,
+        -0.34,
+        1.75
+      ]
+    }
+  ],
+  "motion": null,
+  "limitations": "U-profile hood plus actual shelves, back, solid lower guard and header. Towels and small hems remain visual stock; no whole-niche hull fills the shelf mouths."
+}

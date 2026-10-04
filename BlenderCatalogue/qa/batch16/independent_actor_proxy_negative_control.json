@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "changed_base_rejected": true,
+  "no_output_created": true,
+  "returncode": 1,
+  "change": "Only one newline appended to a copied stage-one detailed JSON, changing exact bytes while keeping JSON semantics",
+  "reason": "Exact accepted base hash guard rejects changed input before selection/output",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch16/independent_actor_proxy_stage_r01/build_body_subset.py",
+    "--base-collision",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch16/independent_actor_proxy_stage_r01/changed_base_negative_control.json",
+    "--output",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch16/independent_actor_proxy_stage_r01/invalid_base_must_not_generate.json"
+  ]
+}

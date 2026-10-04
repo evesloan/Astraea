@@ -1,0 +1,1184 @@
+{
+  "coordinate_contracts": [
+    {
+      "path": "standards/COORDINATE_CONTRACT.md",
+      "sha256": "bff22243e67fc8ee75089234a07ede54a8d0d2774c58329bc19649c1e0f9a119"
+    },
+    {
+      "path": "standards/coordinate_compatibility.json",
+      "sha256": "96eaf9be3c0543e15b423e87cd117b17c524060143662e9f503082e999abded5"
+    }
+  ],
+  "basis_source_to_gltf": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      -1.0,
+      0.0
+    ]
+  ],
+  "determinant": 1.0,
+  "method": "Read actual GLB binary positions/indices and compose complete scene node matrices/TRS. Compare converted source records with closest points on actual native glTF triangles. No Blender importer reversal and no dimension-only pass.",
+  "surface_and_pose_checks": [
+    {
+      "name": "aquatic lounger pelvic support",
+      "record": "assets/aquatic_lounge/AST-AQU-001.manifest.json#contact_proposals.pelvic_contact_m",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "surface",
+      "source_point_m": [
+        0.054999999701976776,
+        -0.11999999731779099,
+        0.4418926239013672
+      ],
+      "expected_gltf_point_m": [
+        0.054999999701976776,
+        0.4418926239013672,
+        0.11999999731779099
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 5.0936212626646755e-08,
+        "nearest_point_gltf_m": [
+          0.054999996553636285,
+          0.44189267473053734,
+          0.11999999632725038
+        ],
+        "face_normal_gltf": [
+          -0.06180947368783197,
+          0.9978984995047625,
+          -0.019446687341982925
+        ],
+        "material": "ASTRAEA_aquatic_clay_sling",
+        "node": "AST-AQU-001__aquatic_clay_sling",
+        "triangle_index": 2746
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          0.054999999701976776,
+          -0.11999999731779099,
+          0.4418926239013672
+        ],
+        "distance_to_expected_surface_role_m": 0.5406660229971212
+      },
+      "tolerance_m": 0.002,
+      "pass": true,
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "aquatic float measured membrane 0",
+      "record": "assets/aquatic_float/AST-AQU-006.manifest.json#design_proposals.seat_contact_proposals.0",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "surface",
+      "source_point_m": [
+        -0.11999999731779099,
+        -0.05999999865889549,
+        -0.05099189281463623
+      ],
+      "expected_gltf_point_m": [
+        -0.11999999731779099,
+        -0.05099189281463623,
+        0.05999999865889549
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 9.853250410059991e-09,
+        "nearest_point_gltf_m": [
+          -0.1199999994856113,
+          -0.050991902426052456,
+          0.05999999874708211
+        ],
+        "face_normal_gltf": [
+          0.2200106782756726,
+          0.9754564054331111,
+          -0.008950002468867244
+        ],
+        "material": "ASTRAEA_aquatic_teal_sling",
+        "node": "AST-AQU-006__aquatic_teal_sling",
+        "triangle_index": 9162
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          -0.11999999731779099,
+          -0.05999999865889549,
+          -0.05099189281463623
+        ],
+        "distance_to_expected_surface_role_m": 0.007778668417106866
+      },
+      "tolerance_m": 0.0001,
+      "pass": true,
+      "expected_gltf_normal": [
+        0.2200106829404831,
+        0.9754564762115479,
+        -0.008950002491474152
+      ],
+      "actual_face_normal_dot_expected": 1.0000000700677902,
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "aquatic float measured membrane 1",
+      "record": "assets/aquatic_float/AST-AQU-006.manifest.json#design_proposals.seat_contact_proposals.1",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "surface",
+      "source_point_m": [
+        0.11999999731779099,
+        -0.05999999865889549,
+        -0.05096244812011719
+      ],
+      "expected_gltf_point_m": [
+        0.11999999731779099,
+        -0.05096244812011719,
+        0.05999999865889549
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 2.783306546918636e-08,
+        "nearest_point_gltf_m": [
+          0.11999999118824177,
+          -0.05096242097324435,
+          0.059999998264617875
+        ],
+        "face_normal_gltf": [
+          -0.2202254444721676,
+          0.9753461353493489,
+          -0.014165799170043564
+        ],
+        "material": "ASTRAEA_aquatic_teal_sling",
+        "node": "AST-AQU-006__aquatic_teal_sling",
+        "triangle_index": 9093
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          0.11999999731779099,
+          -0.05999999865889549,
+          -0.05096244812011719
+        ],
+        "distance_to_expected_surface_role_m": 0.007919359090668132
+      },
+      "tolerance_m": 0.0001,
+      "pass": true,
+      "expected_gltf_normal": [
+        -0.22022543847560883,
+        0.9753460884094238,
+        -0.0141657879576087
+      ],
+      "actual_face_normal_dot_expected": 0.9999999527378978,
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "aquatic float grip left",
+      "record": "assets/aquatic_float/AST-AQU-006.manifest.json#design_proposals.grips.0.center_m",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "grip_centerline_pose",
+      "source_point_m": [
+        -0.49938100576400757,
+        -0.09000000357627869,
+        0.35466504096984863
+      ],
+      "expected_gltf_point_m": [
+        -0.49938100576400757,
+        0.35466504096984863,
+        0.09000000357627869
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 0.02182737836476468,
+        "nearest_point_gltf_m": [
+          -0.49943667140873077,
+          0.376487851888872,
+          0.08955697851248579
+        ],
+        "face_normal_gltf": [
+          -0.002550267090850148,
+          0.9997907469387769,
+          -0.020296760169240702
+        ],
+        "material": "ASTRAEA_aquatic_dark_grip",
+        "node": "AST-AQU-006__aquatic_dark_grip",
+        "triangle_index": 11838
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          -0.49938100576400757,
+          -0.09000000357627869,
+          0.35466504096984863
+        ],
+        "distance_to_expected_surface_role_m": 0.2837527306571888
+      },
+      "tolerance_m": 0.0001,
+      "expected_distance_to_tube_surface_m": [
+        0.02,
+        0.024
+      ],
+      "pass": true,
+      "note": "Centreline record is intentionally inside grip tube; it is not a surface-contact position. Nearest actual triangle is a measured geometric witness.",
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "aquatic float grip right",
+      "record": "assets/aquatic_float/AST-AQU-006.manifest.json#design_proposals.grips.1.center_m",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "grip_centerline_pose",
+      "source_point_m": [
+        0.49938100576400757,
+        -0.09000000357627869,
+        0.35466504096984863
+      ],
+      "expected_gltf_point_m": [
+        0.49938100576400757,
+        0.35466504096984863,
+        0.09000000357627869
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 0.02182716138358793,
+        "nearest_point_gltf_m": [
+          0.49908032397610613,
+          0.37635854163355287,
+          0.09239303376444608
+        ],
+        "face_normal_gltf": [
+          -0.01377557908778445,
+          0.9938764039201087,
+          0.10963542835976535
+        ],
+        "material": "ASTRAEA_aquatic_dark_grip",
+        "node": "AST-AQU-006__aquatic_dark_grip",
+        "triangle_index": 12235
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          0.49938100576400757,
+          -0.09000000357627869,
+          0.35466504096984863
+        ],
+        "distance_to_expected_surface_role_m": 0.2837527306571888
+      },
+      "tolerance_m": 0.0001,
+      "expected_distance_to_tube_surface_m": [
+        0.02,
+        0.024
+      ],
+      "pass": true,
+      "note": "Centreline record is intentionally inside grip tube; it is not a surface-contact position. Nearest actual triangle is a measured geometric witness.",
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "aquatic float headrest",
+      "record": "assets/aquatic_float/AST-AQU-006.manifest.json#design_proposals.headrest_contact_m",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "surface",
+      "source_point_m": [
+        0.0,
+        0.4767492711544037,
+        0.4847794771194458
+      ],
+      "expected_gltf_point_m": [
+        0.0,
+        0.4847794771194458,
+        -0.4767492711544037
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 1.8091266101334262e-09,
+        "nearest_point_gltf_m": [
+          -5.854045743226155e-11,
+          0.48477947850018654,
+          -0.47674926998689904
+        ],
+        "face_normal_gltf": [
+          -0.032358408280661236,
+          0.7632084628878657,
+          0.6453415960480801
+        ],
+        "material": "ASTRAEA_aquatic_pearl_float",
+        "node": "AST-AQU-006__aquatic_pearl_float",
+        "triangle_index": 5607
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          0.0,
+          0.4767492711544037,
+          0.4847794771194458
+        ],
+        "distance_to_expected_surface_role_m": 0.28147079424275073
+      },
+      "tolerance_m": 0.0001,
+      "pass": true,
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "aquatic coping receiving mount",
+      "record": "assets/aquatic_edges/AST-AQU-003.manifest.json#host_contact_pads.0.underside_center_derived_from_bounds",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "surface",
+      "source_point_m": [
+        0.12000000104308128,
+        -0.4649999886751175,
+        -0.25
+      ],
+      "expected_gltf_point_m": [
+        0.12000000104308128,
+        -0.25,
+        0.4649999886751175
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 0.0,
+        "nearest_point_gltf_m": [
+          0.12000000104308128,
+          -0.25,
+          0.4649999886751175
+        ],
+        "face_normal_gltf": [
+          0.0,
+          -1.0,
+          0.0
+        ],
+        "material": "ASTRAEA_aquatic_satin_alloy",
+        "node": "AST-AQU-003__aquatic_satin_alloy",
+        "triangle_index": 2772
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          0.12000000104308128,
+          -0.4649999886751175,
+          -0.25
+        ],
+        "distance_to_expected_surface_role_m": 0.5999533202952909
+      },
+      "tolerance_m": 0.0001,
+      "pass": true,
+      "expected_gltf_normal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "actual_face_normal_dot_expected": 1.0,
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "prior guest bench crown",
+      "record": "assets/furniture/AST-FUR-001_day_window_bench.manifest.json#seat_contact_proposal.seat_centres_m.0",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "surface",
+      "source_point_m": [
+        -0.548,
+        -0.11,
+        0.475
+      ],
+      "expected_gltf_point_m": [
+        -0.548,
+        0.475,
+        0.11
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 0.000291589716825433,
+        "nearest_point_gltf_m": [
+          -0.548,
+          0.47470842166598354,
+          0.10999742355078966
+        ],
+        "face_normal_gltf": [
+          0.0,
+          0.9999609629272366,
+          0.008835871300213488
+        ],
+        "material": "ASTRAEA_clay_weave",
+        "node": "AST-FUR-001_static_visual",
+        "triangle_index": 3093
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          -0.548,
+          -0.11,
+          0.475
+        ],
+        "distance_to_expected_surface_role_m": 0.40051749286190996
+      },
+      "tolerance_m": 0.005,
+      "pass": true,
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "prior library light receiver",
+      "record": "assets/library_study/AST-LIB-STUDY-01_open_shared_table.manifest.json#fixture_mounts.0.origin_m",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "surface",
+      "source_point_m": [
+        0.0,
+        0.0,
+        0.754
+      ],
+      "expected_gltf_point_m": [
+        0.0,
+        0.754,
+        0.0
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 8.106231685900411e-09,
+        "nearest_point_gltf_m": [
+          0.0,
+          0.7540000081062317,
+          0.0
+        ],
+        "face_normal_gltf": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "material": "ASTRAEA_champagne_metal",
+        "node": "AST-LIB-STUDY-01_static_visual",
+        "triangle_index": 2170
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          0.0,
+          0.0,
+          0.754
+        ],
+        "distance_to_expected_surface_role_m": 0.7235099704249616
+      },
+      "tolerance_m": 0.0001,
+      "pass": true,
+      "expected_gltf_normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "actual_face_normal_dot_expected": 1.0,
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "prior staff counter",
+      "record": "assets/staff_workbay/AST-STF-007_supply_work_cabinet.manifest.json#target_proposals.counter_front_contact_m",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "surface",
+      "source_point_m": [
+        0.3,
+        -0.28,
+        0.94
+      ],
+      "expected_gltf_point_m": [
+        0.3,
+        0.94,
+        0.28
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 2.38418573772492e-09,
+        "nearest_point_gltf_m": [
+          0.3,
+          0.9399999976158142,
+          0.28
+        ],
+        "face_normal_gltf": [
+          -0.0,
+          1.0,
+          0.0
+        ],
+        "material": "ASTRAEA_staff_zinc",
+        "node": "AST-STF-007_static_staff_zinc",
+        "triangle_index": 8072
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          0.3,
+          -0.28,
+          0.94
+        ],
+        "distance_to_expected_surface_role_m": 0.8093211541481641
+      },
+      "tolerance_m": 0.0001,
+      "pass": true,
+      "expected_gltf_normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "actual_face_normal_dot_expected": 1.0,
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    },
+    {
+      "name": "prior botanical soil centre",
+      "record": "assets/botanical_planter/AST-BOT-004.manifest.json#planting_opening.soil_surface_center_derived_from_bounds",
+      "record_frame": "Blender Z-up asset/source metres",
+      "kind": "surface",
+      "source_point_m": [
+        1.2,
+        0.515,
+        0.39
+      ],
+      "expected_gltf_point_m": [
+        1.2,
+        0.39,
+        -0.515
+      ],
+      "actual_native_mesh_test": {
+        "distance_m": 1.4305114759416426e-08,
+        "nearest_point_gltf_m": [
+          1.2,
+          0.38999998569488525,
+          -0.515
+        ],
+        "face_normal_gltf": [
+          -0.0,
+          1.0,
+          0.0
+        ],
+        "material": "ASTRAEA_botanical_soil",
+        "node": "ASTRAEA_planted_seat_botanical_soil",
+        "triangle_index": 824
+      },
+      "wrong_axis_negative_control": {
+        "fault": "Intentionally use source XYZ unchanged in native GLB Y-up",
+        "wrong_point_m": [
+          1.2,
+          0.515,
+          0.39
+        ],
+        "distance_to_expected_surface_role_m": 0.5542788197410944
+      },
+      "tolerance_m": 0.0001,
+      "pass": true,
+      "expected_gltf_normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "actual_face_normal_dot_expected": 1.0,
+      "wrong_axis_detected": true,
+      "negative_control_rule": "Must fail the same acceptance interval/tolerance as the correctly converted record, even if wrong axes happen to be near another surface."
+    }
+  ],
+  "articulated_pivot_check": {
+    "asset": "AST-STF-007",
+    "actual_pivot_node_index": 4,
+    "actual_parent_matrix": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        -0.8370000123977661
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.20000000298023224
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.31700000166893005
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "source_pivot_m": [
+      -0.837,
+      -0.317,
+      0.2
+    ],
+    "expected_pivot_gltf_m": [
+      -0.837,
+      0.2,
+      0.317
+    ],
+    "actual_hierarchy_pivot_gltf_m": [
+      -0.8370000123977661,
+      0.20000000298023224,
+      0.31700000166893005
+    ],
+    "pivot_error_m": 1.2859693506384942e-08,
+    "actual_child_nodes": [
+      "AST-STF-007_door_handle_staff_rubber",
+      "AST-STF-007_door_handle_staff_zinc",
+      "AST-STF-007_door_leaf_staff_bluegrey_paint",
+      "AST-STF-007_door_leaf_staff_zinc"
+    ],
+    "source_axis": [
+      0,
+      0,
+      1
+    ],
+    "converted_axis": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "documented_gltf_axis": [
+      0,
+      1,
+      0
+    ],
+    "actual_native_child_vertex_m": [
+      -0.14300000667572021,
+      0.4360000193119049,
+      0.35499998927116394
+    ],
+    "same_signed_minus105_degree_basis_pose_error_m": 1.9849055595598574e-08,
+    "wrong_native_Z_axis_minus105_pose_error_m": 1.180467299738737,
+    "pass": true,
+    "current_explicit_frame_metadata": {
+      "normal_open_range_degrees": [
+        0,
+        -105
+      ],
+      "runtime_status": "Articulation proposal only; no animation/controller/gameplay implemented",
+      "coordinate_metadata_revision": "hinge-frame-metadata-02",
+      "hinge_axis_blender_source": [
+        0,
+        0,
+        1
+      ],
+      "hinge_axis_gltf_yup": [
+        0,
+        1,
+        0
+      ],
+      "hinge_pivot_blender_source_m": [
+        -0.837,
+        -0.317,
+        0.2
+      ],
+      "hinge_pivot_gltf_yup_m": [
+        -0.837,
+        0.2,
+        0.317
+      ],
+      "hinge_hint_blender_source": "Blender source frame: negative rotation about local +Z opens outward.",
+      "hinge_hint_gltf_yup": "Native GLB Y-up frame: negative rotation about local +Y opens outward.",
+      "hinge_coordinate_conversion": "Blender source (X,Y,Z) -> native glTF/GLB (X,Z,-Y); custom-property vectors retain their explicitly named frame."
+    },
+    "metadata_checks": {
+      "revision": true,
+      "source_axis_explicit": true,
+      "native_axis_explicit": true,
+      "source_pivot_explicit": true,
+      "native_pivot_explicit": true,
+      "old_unqualified_axis_removed": true
+    }
+  },
+  "open_drain_datum": {
+    "source_point_m": [
+      0.0,
+      -0.06,
+      -0.064
+    ],
+    "gltf_point_m": [
+      0.0,
+      -0.064,
+      0.06
+    ],
+    "kind": "open_drain_datum_not_contact",
+    "nearest_membrane_distance_m": 0.017667358527742212,
+    "note": "Do not interpret a transformed origin or this drain centre as a surface contact."
+  },
+  "static_origin_records": [
+    {
+      "glb": "assets/aquatic_lounge/exports/AST-AQU-001.glb",
+      "source_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "mapped_asset_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "meaning": "floor datum",
+      "root_nodes": [
+        {
+          "name": "AST-AQU-001__aquatic_clay_sling",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-001__aquatic_dark_grip",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-001__aquatic_satin_alloy",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-001__ivory_enamel",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "note": "Exporter baked axis conversion into mesh positions for these static roots. Origin consistency is not proof of floor contact or buoyancy."
+    },
+    {
+      "glb": "assets/aquatic_edges/AST-AQU-003.glb",
+      "source_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "mapped_asset_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "meaning": "first seam/deck datum",
+      "root_nodes": [
+        {
+          "name": "AST-AQU-003__warm_stone",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-003__aquatic_edge_tile",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-003__ivory_enamel",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-003__aquatic_satin_alloy",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-003__aquatic_dark_grip",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "note": "Exporter baked axis conversion into mesh positions for these static roots. Origin consistency is not proof of floor contact or buoyancy."
+    },
+    {
+      "glb": "assets/aquatic_float/exports/AST-AQU-006.glb",
+      "source_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "mapped_asset_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "meaning": "proposed design waterline datum",
+      "root_nodes": [
+        {
+          "name": "AST-AQU-006__aquatic_orange_float",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-006__aquatic_pearl_float",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-006__aquatic_teal_sling",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "AST-AQU-006__aquatic_dark_grip",
+          "actual_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "note": "Exporter baked axis conversion into mesh positions for these static roots. Origin consistency is not proof of floor contact or buoyancy."
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/aquatic_lounge/exports/AST-AQU-001.glb",
+      "sha256": "15b38a27e95c5a5f894ddf1ea2c1d889814f9bbfae844f5d2d8c9a98d8455aed",
+      "nodes_resolved": 4,
+      "triangles_tested": 9960
+    },
+    {
+      "path": "assets/aquatic_float/exports/AST-AQU-006.glb",
+      "sha256": "cf76c1d1e78e705966831e31c62846b7d8c4d36f7c5138fbaf90824f08cbf247",
+      "nodes_resolved": 4,
+      "triangles_tested": 12576
+    },
+    {
+      "path": "assets/aquatic_edges/AST-AQU-003.glb",
+      "sha256": "e6599723a3d4e9ca3d305c4e0285bb09126323d19311134cee3f45dda8b22e53",
+      "nodes_resolved": 5,
+      "triangles_tested": 3860
+    },
+    {
+      "path": "assets/furniture/AST-FUR-001_day_window_bench.glb",
+      "sha256": "e38e67e363019495a2bbb8183702b569487d8e50a917352e8eed3f9db78c4aca",
+      "nodes_resolved": 2,
+      "triangles_tested": 4936
+    },
+    {
+      "path": "assets/library_study/AST-LIB-STUDY-01_open_shared_table.glb",
+      "sha256": "40961705c71a02ca998e7f8ef8836c9359670fb7ff87d62f20c22bbd07d23ef5",
+      "nodes_resolved": 2,
+      "triangles_tested": 2268
+    },
+    {
+      "path": "assets/staff_workbay/AST-STF-007_supply_work_cabinet.glb",
+      "sha256": "1cdff25f6bd41dc4ecb850d5c9f70394a303ce667ba65ea0322199ba63e17d56",
+      "nodes_resolved": 10,
+      "triangles_tested": 11060
+    },
+    {
+      "path": "assets/botanical_planter/AST-BOT-004.glb",
+      "sha256": "fc97d63629b951da81932a5b77150cec94911573f575079de20600a2bcc8112b",
+      "nodes_resolved": 5,
+      "triangles_tested": 1136
+    }
+  ],
+  "all_representative_checks_pass": true,
+  "all_surface_wrong_axis_controls_detected": true,
+  "limitations": [
+    "Finite representative exchange checks, not every catalogue annotation.",
+    "No native-engine placement, collision, animation controller, species fit or physical behavior claim.",
+    "Current staff pivot native GLB extras now explicitly name both source +Z and GLB +Y axes and pivots. Archived unqualified axis metadata is covered by the compatibility history; it is absent from the current export."
+  ]
+}

@@ -1,0 +1,23 @@
+# Batch15 shared-crew rest and privacy
+
+Four original script-assisted Blender components have passed bounded independent component review: a dry single-place rest frame, supported individual side curtain/track, personal open storage with a real hollow drawer, and a mounted reading-light/shelf. The relative QA pair repeats these four designs. It adds no room, registered berth, occupant, roommate identity or species suitability.
+
+The actual shared-room image and exact D03 programme handoff are preserved under references/crew_rest. Historical C001–C200 records, the C036 exception and the separate older employee-home record remain evidence to reconcile; none selects the shared player cabin. The user’s 400-crew total and existing-colleague requirement govern. Stacking, climbing, upper guards and host headroom are deliberately unresolved by these single-place components.
+
+The actual personal-fitting source/native checks pass useful storage voids, the complete drawer withdrawal from zero, supported runner overlap, moving marker ownership and opposing headboard mount contacts. The mounted shelf clears the actual pillow crown by 78 mm and stays 360 mm beyond the proposed central rest-use region; that region is not an anatomical envelope. The latest changed-receiver check is in assets/crew_personal/qa/receiver_update_r02/receipt.json.
+
+The curtain keeps a constant developed textile width of 2.4709512338368804 m while its 24 geometric pleats gather from a 2.16 m span to 0.36 m. Its supported track, tapes, rings and grip have explicit parts, source poses and complete motion bounds. Bounded side-view privacy is checked, while ends/top/under-hem and acoustic/environmental privacy remain open or unverified. No runtime cloth or controls are implemented.
+
+The first combined four-image run completed its pictures, then correctly rejected a collision-only generator-metadata amendment in its final hash guard. Its raw failed receipt, captured manifests and a narrow unchanged-geometry bridge remain under qa/batch15/assembly/r01 and captured_geometry_metadata_bridge.json. A subsequent finish audit required genuine geometry corrections to headboard support joins and ring/tape faces. Those earlier pictures are now historical; the final accepted source binds the fresh r02 set, whose complete input hash guard passes. Unchanged personal storage views remain valid.
+
+All 73 earlier artistic designs and shared materials stay protected. The final 77-row index was promoted after source/export, motion/void/contact/collision, independent clean rebuild and actual-pixel review. Full archive, complete family source ZIPs, actual offline restore and parent-verified durable delivery remain the gate before another batch.
+
+## Frozen component result
+
+The four designs total 14,592 evaluated triangles, with six native GLBs including the curtain and drawer state derivatives. Source retains 142 supported semantic mesh parts; the canonical index has 34 physical surface witnesses for this batch. Independent rebuilds start with 17 rest/privacy inputs and 12 personal-fitting inputs and reproduce all six exports exactly. The independent reviewer inspected 10 current images: four corrected rest/privacy views, two unchanged storage views and four current joined views. Earlier mounted-light images remain historical context.
+
+Collision remains proposed rather than installed: 27/31/25/12 compounds or profiles for frame/curtain/storage/light. Finite measured external inflation is 18.44/13.35/6.07/4.00mm respectively. The soft blanket has an explicitly omitted 80 mm conservative visual-drape bound; thin curtain panel joins retain a 3 mm approximation. A 7.314 µm pillow-hull numerical deviation is explicitly within the 20 µm geometric tolerance. Complete declared access/motion checks remain separate from these sampled distance measurements.
+
+The relative pair preserves a 1.4 m empty central study strip inside the measured 1.548 m gap between the nearest curtain feet, plus separate foot-access boxes. This is a deliberately generous component inspection fixture, not evidence that an actual compact crew cabin fits. No room/actor/cart route, six-species sleeper envelope, complete privacy, structural load, live lighting or engine performance is accepted.
+
+Author source changes and failed/superseded checks are retained. Final independent receipt: qa/batch15/independent_final_review.json. Exact lead binding/preservation/freeze receipt: qa/batch15/lead_integration_receipt.json. The catalogue now holds 77 unique artistic designs and zero game adoptions. Backup and delivery are tracked separately from component acceptance.

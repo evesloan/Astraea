@@ -1,0 +1,1 @@
+Corrected open-pose images before the added per-render pivot-matrix assertion. These already show the genuine open door, but final evidence at the QA root is produced with the explicit assertion and labelled. Optional render history only.

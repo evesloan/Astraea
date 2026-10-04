@@ -1,0 +1,150 @@
+{
+  "catalogue_id": "AST-LND-003",
+  "title": "Protected staff arrival and control return",
+  "unique_design": true,
+  "script_assisted_original_design": true,
+  "source": "source/AST-LND-003.blend",
+  "export": "exports/AST-LND-003.glb",
+  "generator": "source/build_landing_service.py",
+  "units": "metres",
+  "source_coordinates": {
+    "right": "+X",
+    "depth": "+Y",
+    "up": "+Z",
+    "front": "-Y",
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "pivot_datum": "floor at source origin; may lie in intentional open space"
+  },
+  "glb_coordinates": {
+    "up": "+Y",
+    "front": "+Z",
+    "source_to_glb": "(x,y,z) -> (x,z,-y)",
+    "pivot_m": [
+      0,
+      0,
+      0
+    ]
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.6499999761581421,
+      0.0,
+      0.0
+    ],
+    "max_m": [
+      0.6499999761581421,
+      0.44999998807907104,
+      2.5
+    ],
+    "dimensions_m": [
+      1.2999999523162842,
+      0.44999998807907104,
+      2.5
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -0.6499999761581421,
+      0.0,
+      -0.44999998807907104
+    ],
+    "max_m": [
+      0.6499999761581421,
+      2.5,
+      -0.0
+    ]
+  },
+  "proposed_ship_placement": {
+    "source_z_rotation_degrees": -90,
+    "origin_ship_xyz_m": [
+      -48.55,
+      0,
+      -377.05
+    ],
+    "mapping": "ship=(originX+sourceY, originY+sourceZ, originZ+sourceX)",
+    "front_ship": [
+      -1,
+      0,
+      0
+    ],
+    "bounds_min_ship_m": [
+      -48.55,
+      0.0,
+      -377.69999997615815
+    ],
+    "bounds_max_ship_m": [
+      -48.100000011920926,
+      2.5,
+      -376.40000002384187
+    ],
+    "candidate_bounds_ship": {
+      "min": [
+        -48.55,
+        0,
+        -377.7
+      ],
+      "max": [
+        -48.1,
+        2.5,
+        -376.4
+      ]
+    },
+    "authority": "R3 plan proposal only; heights are component targets, unknown host floor/support/head/shaft/door dimensions"
+  },
+  "editable_semantic_parts": 26,
+  "semantic_parts": [
+    "003_chamfered_floor_shoe",
+    "003_structural_back_spine",
+    "003_lower_washable_field",
+    "003_upper_washable_field",
+    "003_folded_edge_return_-1",
+    "003_replaceable_corner_guard_-1",
+    "003_guard_fastener_-1_0.16",
+    "003_guard_fastener_-1_0.96",
+    "003_folded_edge_return_+1",
+    "003_replaceable_corner_guard_+1",
+    "003_guard_fastener_+1_0.16",
+    "003_guard_fastener_+1_0.96",
+    "003_replaceable_impact_strip_0.36",
+    "003_replaceable_impact_strip_0.83",
+    "003_sloped_control_cassette",
+    "003_attention_request_pad",
+    "003_inspection_key_cover",
+    "003_status_flag_surface",
+    "003_service_legend_plaque",
+    "003_service_access_backing",
+    "003_removable_service_cover",
+    "003_captive_cover_fastener_-0.402",
+    "003_captive_cover_fastener_0.402",
+    "003_folded_fixture_receiver",
+    "003_receiver_gusset_-0.55",
+    "003_receiver_gusset_0.55"
+  ],
+  "evaluated_triangles": 1192,
+  "material_roles": [
+    "staff_bluegrey_paint",
+    "staff_cable_blue",
+    "staff_label",
+    "staff_opal",
+    "staff_rubber",
+    "staff_white_paint",
+    "staff_zinc"
+  ],
+  "runtime_consolidation": "One evaluated mesh per material role except individual control objects preserved as separate meshes; active evaluated UV layers projected and normalized by name",
+  "interface_api": "interface_api.json",
+  "collision_proposal_file": "collision_proposals.json",
+  "collision_shape_count": 10,
+  "source_sha256": "5866f34f120506ccdd9a29f0622a53f1166b30b17efd1fa828c62c5aaf4df289",
+  "glb_sha256": "69ade8fee18bc9d40b200da177105657eba00d1d85a421723ba962d416ee9572",
+  "generator_sha256": "711dfa673b27f50df86183014fa867ef99ec29d532eea85a4bcba84fd823dc79",
+  "limitations": [
+    "Independent component proposal, original ship missing",
+    "No room/actor/cart/route, support/load, headroom, lighting, electrical, mechanical or engine acceptance",
+    "No lift behavior or moving travel",
+    "R3 heights and boxes are proposed reservations only"
+  ]
+}

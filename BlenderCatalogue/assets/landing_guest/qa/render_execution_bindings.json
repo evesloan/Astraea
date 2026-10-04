@@ -1,0 +1,37 @@
+{
+  "scope": "Exact executed render script/helper and retained logs for all final imported-GLB views.001 rerendered with the unchanged same-camera renderer after its physical plate correction;002 final source and export match its earlier successful capture.",
+  "scripts": [
+    {
+      "path_from_catalogue_root": "assets/landing_guest/qa/render_imported.py",
+      "bytes": 6049,
+      "sha256": "f5c467c64824f9e87eeb1eca533cff88d6d77f195c7a5747615db27637a939d9"
+    },
+    {
+      "path_from_catalogue_root": "standards/qa_frame.py",
+      "bytes": 1355,
+      "sha256": "cfa7cce4259d342cf9fdb8af960cd82eb1fed5f800ea4189c802074da129d1c2"
+    }
+  ],
+  "logs": [
+    {
+      "path": "qa/render.log",
+      "bytes": 5185,
+      "sha256": "fec07295f9c2a64937b7b40ede45a621dd618a04cd8fb47c63a6e4f76eee9e14"
+    },
+    {
+      "path": "qa/render_001_plate_correction.log",
+      "bytes": 3428,
+      "sha256": "08091ffd0b4fb29fc14d47d0661dc143672f81ffdf8a9c4e632379de1e20db4e"
+    },
+    {
+      "path": "qa/preflight.log",
+      "bytes": 3095,
+      "sha256": "cf04265b2270c473044b2fbfe60d4dc08ef17239c8c57deb9d0a244c7de1e925"
+    }
+  ],
+  "execution_commands": [
+    "blender --background --threads 3 --python-exit-code 1 --python qa/render_imported.py",
+    "blender --background --threads 3 --python-exit-code 1 --python qa/render_imported.py -- --only AST-LND-001"
+  ],
+  "no_geometry_changes_during_capture": true
+}

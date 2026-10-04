@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "stage_one_reviewer_receipt": {
+    "path": "qa/batch16/independent_rebuild_auditorium_use_r07.json",
+    "sha256": "bec3091ebce790e0cf02d17a39802c126e7032a7ffa4db8950179cd719056873",
+    "bytes": 19549
+  },
+  "stage_one_verified_generated_collision": {
+    "path": "qa/batch16/independent_rebuild_stage_auditorium_use_r07/assets/auditorium_use/collision_proposals.json",
+    "sha256": "fb81adfa4436e2d9378ee3b6e39bc4d8eaf6a7820b3c38f43174dd163baca740",
+    "bytes": 338522
+  },
+  "stage_two_initial_files": [
+    "build_body_subset.py",
+    "stage_one_generated_detailed_collision.json"
+  ],
+  "stage_two_inputs": [
+    {
+      "path": "qa/batch16/independent_actor_proxy_stage_r01/build_body_subset.py",
+      "sha256": "8753de882c977c0a4524f3b35cf01372e5ad66fc9d1b766185585629893eac3a",
+      "bytes": 6000
+    },
+    {
+      "path": "qa/batch16/independent_actor_proxy_stage_r01/stage_one_generated_detailed_collision.json",
+      "sha256": "fb81adfa4436e2d9378ee3b6e39bc4d8eaf6a7820b3c38f43174dd163baca740",
+      "bytes": 338522
+    }
+  ],
+  "stage_two_outputs": [
+    {
+      "output": {
+        "path": "qa/batch16/independent_actor_proxy_stage_r01/reproduced_body_subset_1.json",
+        "sha256": "04728bd5426500e88ca87bc254e98a40c8cf7ef3890ae490b4bd9fa0627971fd",
+        "bytes": 197977
+      },
+      "byte_identical_to_proposed_sidecar": true,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch16/independent_actor_proxy_stage_r01/build_body_subset.py",
+        "--base-collision",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch16/independent_actor_proxy_stage_r01/stage_one_generated_detailed_collision.json",
+        "--output",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch16/independent_actor_proxy_stage_r01/reproduced_body_subset_1.json"
+      ],
+      "returncode": 0
+    },
+    {
+      "output": {
+        "path": "qa/batch16/independent_actor_proxy_stage_r01/reproduced_body_subset_2.json",
+        "sha256": "04728bd5426500e88ca87bc254e98a40c8cf7ef3890ae490b4bd9fa0627971fd",
+        "bytes": 197977
+      },
+      "byte_identical_to_proposed_sidecar": true,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch16/independent_actor_proxy_stage_r01/build_body_subset.py",
+        "--base-collision",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch16/independent_actor_proxy_stage_r01/stage_one_generated_detailed_collision.json",
+        "--output",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch16/independent_actor_proxy_stage_r01/reproduced_body_subset_2.json"
+      ],
+      "returncode": 0
+    }
+  ],
+  "scope": "A deliberately two-stage chain. Original reviewer28-input source-only generation produced the exact detailed collision JSON; only that generated JSON and unchanged selector source seed this new second-stage directory. No claim that generated collision JSON is an original source-only seed. Two independent selector processes reproduce sidecar bytes exactly."
+}

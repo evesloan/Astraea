@@ -1,0 +1,2220 @@
+{
+  "catalogue_id": "AST-CUL-003",
+  "name": "Lantern audience fold-up seat/end module",
+  "title": "Lantern audience fold-up seat/end module",
+  "unique_design": true,
+  "source": "source/AST-CUL-003.blend",
+  "export": "exports/AST-CUL-003.glb",
+  "generator": "source/build_auditorium_use.py",
+  "source_frame": "metres Blender XYZ Z-up front -Y",
+  "exchange_frame": "metres native GLB Y-up source(x,y,z)->(x,z,-y)",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "floor between supported soles, not a physical centre support"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.3440000116825104,
+      -0.46000000834465027,
+      0.0
+    ],
+    "max_m": [
+      0.3440000116825104,
+      0.32499998807907104,
+      1.100000023841858
+    ],
+    "dimensions_m": [
+      0.6880000233650208,
+      0.7849999964237213,
+      1.100000023841858
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      -0.3440000116825104,
+      0.0,
+      -0.32499998807907104
+    ],
+    "max_m": [
+      0.3440000116825104,
+      1.100000023841858,
+      0.46000000834465027
+    ],
+    "dimensions_m": [
+      0.6880000233650208,
+      1.100000023841858,
+      0.7849999964237213
+    ]
+  },
+  "dimensions_blender_xyz_m": [
+    0.6880000233650208,
+    0.7849999964237213,
+    1.100000023841858
+  ],
+  "evaluated_source_triangles": 868,
+  "evaluated_triangles": 868,
+  "editable_semantic_parts": 43,
+  "semantic_parts": [
+    "left_continuous_floor_runner",
+    "left_shaped_timber_end",
+    "left_rounded_arm_cap",
+    "left_navy_fibre_end_return",
+    "left_fixed_pivot_stub",
+    "right_continuous_floor_runner",
+    "right_shaped_timber_end",
+    "right_rounded_arm_cap",
+    "right_navy_fibre_end_return",
+    "right_fixed_pivot_stub",
+    "lower_rear_cross_tie",
+    "swept_crown_back_shell",
+    "contoured_amber_back_pad",
+    "folding_timber_pan",
+    "left_moving_bearing_sector_00",
+    "left_moving_bearing_sector_01",
+    "left_moving_bearing_sector_02",
+    "left_moving_bearing_sector_03",
+    "left_moving_bearing_sector_04",
+    "left_moving_bearing_sector_05",
+    "left_moving_bearing_sector_06",
+    "left_moving_bearing_sector_07",
+    "left_moving_bearing_sector_08",
+    "left_moving_bearing_sector_09",
+    "left_moving_bearing_sector_10",
+    "left_moving_bearing_sector_11",
+    "left_retained_hinge_pin",
+    "left_inner_pin_retainer",
+    "right_moving_bearing_sector_00",
+    "right_moving_bearing_sector_01",
+    "right_moving_bearing_sector_02",
+    "right_moving_bearing_sector_03",
+    "right_moving_bearing_sector_04",
+    "right_moving_bearing_sector_05",
+    "right_moving_bearing_sector_06",
+    "right_moving_bearing_sector_07",
+    "right_moving_bearing_sector_08",
+    "right_moving_bearing_sector_09",
+    "right_moving_bearing_sector_10",
+    "right_moving_bearing_sector_11",
+    "right_retained_hinge_pin",
+    "right_inner_pin_retainer",
+    "shaped_amber_seat_pad"
+  ],
+  "material_roles": [
+    "auditorium_amber_velvet",
+    "auditorium_navy_fibre",
+    "champagne_metal",
+    "warm_walnut"
+  ],
+  "export_mesh_groups": 6,
+  "export_group_ownership": [
+    [
+      "AST-CUL-003",
+      "auditorium_amber_velvet"
+    ],
+    [
+      "AST-CUL-003",
+      "auditorium_navy_fibre"
+    ],
+    [
+      "AST-CUL-003",
+      "champagne_metal"
+    ],
+    [
+      "AST-CUL-003",
+      "warm_walnut"
+    ],
+    [
+      "PAN_HINGE_X",
+      "auditorium_amber_velvet"
+    ],
+    [
+      "PAN_HINGE_X",
+      "warm_walnut"
+    ]
+  ],
+  "physical_and_proposal_markers": [
+    {
+      "name": "LEFT_ARM_REST",
+      "kind": "physical_arm_contact",
+      "source_m": [
+        -0.30399999022483826,
+        -0.10000000149011612,
+        0.7350000143051147
+      ],
+      "gltf_m": [
+        -0.30399999022483826,
+        0.7350000143051147,
+        0.10000000149011612
+      ],
+      "parent_local_source_m": [
+        -0.304,
+        -0.1,
+        0.735
+      ],
+      "physical_part": "left_rounded_arm_cap",
+      "parent_root": "AST-CUL-003",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "LEFT_FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -0.30399999022483826,
+        0.0,
+        0.0
+      ],
+      "gltf_m": [
+        -0.30399999022483826,
+        0.0,
+        -0.0
+      ],
+      "parent_local_source_m": [
+        -0.304,
+        0,
+        0
+      ],
+      "physical_part": "left_continuous_floor_runner",
+      "parent_root": "AST-CUL-003",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "LEFT_FIXED_HINGE_BEARING",
+      "kind": "physical_fixed_hinge_contact",
+      "source_m": [
+        -0.26499998569488525,
+        0.12338268756866455,
+        0.45350000262260437
+      ],
+      "gltf_m": [
+        -0.26499998569488525,
+        0.45350000262260437,
+        -0.12338268756866455
+      ],
+      "parent_local_source_m": [
+        -0.265,
+        0.12338268590217985,
+        0.4535
+      ],
+      "physical_part": "left_fixed_pivot_stub",
+      "parent_root": "AST-CUL-003",
+      "description": "",
+      "direction_source": [
+        1,
+        0,
+        0
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_ARM_REST",
+      "kind": "physical_arm_contact",
+      "source_m": [
+        0.30399999022483826,
+        -0.10000000149011612,
+        0.7350000143051147
+      ],
+      "gltf_m": [
+        0.30399999022483826,
+        0.7350000143051147,
+        0.10000000149011612
+      ],
+      "parent_local_source_m": [
+        0.304,
+        -0.1,
+        0.735
+      ],
+      "physical_part": "right_rounded_arm_cap",
+      "parent_root": "AST-CUL-003",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_FLOOR_CONTACT",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        0.30399999022483826,
+        0.0,
+        0.0
+      ],
+      "gltf_m": [
+        0.30399999022483826,
+        0.0,
+        -0.0
+      ],
+      "parent_local_source_m": [
+        0.304,
+        0,
+        0
+      ],
+      "physical_part": "right_continuous_floor_runner",
+      "parent_root": "AST-CUL-003",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        -1
+      ],
+      "direction_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_FIXED_HINGE_BEARING",
+      "kind": "physical_fixed_hinge_contact",
+      "source_m": [
+        0.26499998569488525,
+        0.12338268756866455,
+        0.45350000262260437
+      ],
+      "gltf_m": [
+        0.26499998569488525,
+        0.45350000262260437,
+        -0.12338268756866455
+      ],
+      "parent_local_source_m": [
+        0.265,
+        0.12338268590217985,
+        0.4535
+      ],
+      "physical_part": "right_fixed_pivot_stub",
+      "parent_root": "AST-CUL-003",
+      "description": "",
+      "direction_source": [
+        -1,
+        0,
+        0
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "BACK_SUPPORT_SURFACE",
+      "kind": "physical_back_contact",
+      "source_m": [
+        0.0,
+        0.1720000058412552,
+        0.8199999928474426
+      ],
+      "gltf_m": [
+        0.0,
+        0.8199999928474426,
+        -0.1720000058412552
+      ],
+      "parent_local_source_m": [
+        0,
+        0.172,
+        0.82
+      ],
+      "physical_part": "contoured_amber_back_pad",
+      "parent_root": "AST-CUL-003",
+      "description": "",
+      "direction_source": [
+        0,
+        -0.9889363528682975,
+        0.14834045293024462
+      ],
+      "direction_gltf": [
+        0,
+        0.14834045293024462,
+        0.9889363528682975
+      ]
+    },
+    {
+      "name": "LEFT_MOVING_HINGE_BEARING",
+      "kind": "physical_moving_axial_bearing_contact",
+      "source_m": [
+        -0.26499998569488525,
+        0.12338268756866455,
+        0.45350000262260437
+      ],
+      "gltf_m": [
+        -0.26499998569488525,
+        0.45350000262260437,
+        -0.12338268756866455
+      ],
+      "parent_local_source_m": [
+        -0.265,
+        0.023382685902179845,
+        0.013499999999999998
+      ],
+      "physical_part": "left_moving_bearing_sector_00",
+      "parent_root": "PAN_HINGE_X",
+      "description": "",
+      "direction_source": [
+        -1,
+        0,
+        0
+      ],
+      "direction_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "LEFT_HINGE_AXIS",
+      "kind": "nonphysical_bored_hinge_axis",
+      "source_m": [
+        -0.23999999463558197,
+        0.10000000149011612,
+        0.4399999976158142
+      ],
+      "gltf_m": [
+        -0.23999999463558197,
+        0.4399999976158142,
+        -0.10000000149011612
+      ],
+      "parent_local_source_m": [
+        -0.24,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "parent_root": "PAN_HINGE_X",
+      "description": "Axis lies in actual annular bore around retained pin; not a surface-contact marker"
+    },
+    {
+      "name": "RIGHT_MOVING_HINGE_BEARING",
+      "kind": "physical_moving_axial_bearing_contact",
+      "source_m": [
+        0.26499998569488525,
+        0.12338268756866455,
+        0.45350000262260437
+      ],
+      "gltf_m": [
+        0.26499998569488525,
+        0.45350000262260437,
+        -0.12338268756866455
+      ],
+      "parent_local_source_m": [
+        0.265,
+        0.023382685902179845,
+        0.013499999999999998
+      ],
+      "physical_part": "right_moving_bearing_sector_00",
+      "parent_root": "PAN_HINGE_X",
+      "description": "",
+      "direction_source": [
+        1,
+        0,
+        0
+      ],
+      "direction_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "RIGHT_HINGE_AXIS",
+      "kind": "nonphysical_bored_hinge_axis",
+      "source_m": [
+        0.23999999463558197,
+        0.10000000149011612,
+        0.4399999976158142
+      ],
+      "gltf_m": [
+        0.23999999463558197,
+        0.4399999976158142,
+        -0.10000000149011612
+      ],
+      "parent_local_source_m": [
+        0.24,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "parent_root": "PAN_HINGE_X",
+      "description": "Axis lies in actual annular bore around retained pin; not a surface-contact marker"
+    },
+    {
+      "name": "SEAT_REST_SURFACE",
+      "kind": "physical_seat_contact",
+      "source_m": [
+        0.0,
+        -0.17000001668930054,
+        0.4919999837875366
+      ],
+      "gltf_m": [
+        0.0,
+        0.4919999837875366,
+        0.17000001668930054
+      ],
+      "parent_local_source_m": [
+        0,
+        -0.27,
+        0.052
+      ],
+      "physical_part": "shaped_amber_seat_pad",
+      "parent_root": "PAN_HINGE_X",
+      "description": "",
+      "direction_source": [
+        0,
+        0,
+        1
+      ],
+      "direction_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "PAN_LIFT_FRONT_EDGE",
+      "kind": "physical_pan_lift_proposal",
+      "source_m": [
+        0.0,
+        -0.46000000834465027,
+        0.42399999499320984
+      ],
+      "gltf_m": [
+        0.0,
+        0.42399999499320984,
+        0.46000000834465027
+      ],
+      "parent_local_source_m": [
+        0,
+        -0.56,
+        -0.016
+      ],
+      "physical_part": "folding_timber_pan",
+      "parent_root": "PAN_HINGE_X",
+      "description": "Geometric front edge, no live interaction",
+      "direction_source": [
+        0,
+        -1,
+        0
+      ],
+      "direction_gltf": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "FLOOR_ORIGIN",
+      "kind": "placement_origin",
+      "source_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gltf_m": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "parent_local_source_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "parent_root": "AST-CUL-003",
+      "description": "Floor between runners; not a physical central support"
+    },
+    {
+      "name": "OPTIONAL_ROW_MATE_LEFT",
+      "kind": "nonphysical_proposed_row_mating_datum",
+      "source_m": [
+        -0.3700000047683716,
+        0.0,
+        0.0
+      ],
+      "gltf_m": [
+        -0.3700000047683716,
+        0.0,
+        -0.0
+      ],
+      "parent_local_source_m": [
+        -0.37,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "parent_root": "AST-CUL-003",
+      "description": "Proposed 0.74m centre spacing QA only; actual row pitch, curvature and species transfer unknown"
+    },
+    {
+      "name": "OPTIONAL_ROW_MATE_RIGHT",
+      "kind": "nonphysical_proposed_row_mating_datum",
+      "source_m": [
+        0.3700000047683716,
+        0.0,
+        0.0
+      ],
+      "gltf_m": [
+        0.3700000047683716,
+        0.0,
+        -0.0
+      ],
+      "parent_local_source_m": [
+        0.37,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "parent_root": "AST-CUL-003",
+      "description": "Proposed 0.74m centre spacing QA only; actual row pitch, curvature and species transfer unknown"
+    }
+  ],
+  "joins": [
+    {
+      "name": "left_end_to_floor_runner",
+      "parts": [
+        "left_shaped_timber_end",
+        "left_continuous_floor_runner"
+      ],
+      "probe_source_m": [
+        -0.304,
+        0,
+        0.035
+      ],
+      "probe_gltf_m": [
+        -0.304,
+        0.035,
+        0
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "left_arm_end_support",
+      "parts": [
+        "left_rounded_arm_cap",
+        "left_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        -0.304,
+        0,
+        0.705
+      ],
+      "probe_gltf_m": [
+        -0.304,
+        0.705,
+        0
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "left_fibre_to_end",
+      "parts": [
+        "left_navy_fibre_end_return",
+        "left_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        -0.326,
+        0,
+        0.4
+      ],
+      "probe_gltf_m": [
+        -0.326,
+        0.4,
+        0
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_stub_end_bearing",
+      "parts": [
+        "left_fixed_pivot_stub",
+        "left_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        -0.282,
+        0.1,
+        0.44
+      ],
+      "probe_gltf_m": [
+        -0.282,
+        0.44,
+        -0.1
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_end_to_floor_runner",
+      "parts": [
+        "right_shaped_timber_end",
+        "right_continuous_floor_runner"
+      ],
+      "probe_source_m": [
+        0.304,
+        0,
+        0.035
+      ],
+      "probe_gltf_m": [
+        0.304,
+        0.035,
+        0
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "right_arm_end_support",
+      "parts": [
+        "right_rounded_arm_cap",
+        "right_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        0.304,
+        0,
+        0.705
+      ],
+      "probe_gltf_m": [
+        0.304,
+        0.705,
+        0
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "right_fibre_to_end",
+      "parts": [
+        "right_navy_fibre_end_return",
+        "right_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        0.326,
+        0,
+        0.4
+      ],
+      "probe_gltf_m": [
+        0.326,
+        0.4,
+        0
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_stub_end_bearing",
+      "parts": [
+        "right_fixed_pivot_stub",
+        "right_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        0.282,
+        0.1,
+        0.44
+      ],
+      "probe_gltf_m": [
+        0.282,
+        0.44,
+        -0.1
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_rear_tie_end",
+      "parts": [
+        "lower_rear_cross_tie",
+        "left_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        -0.282,
+        0.25,
+        0.145
+      ],
+      "probe_gltf_m": [
+        -0.282,
+        0.145,
+        -0.25
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_rear_tie_end",
+      "parts": [
+        "lower_rear_cross_tie",
+        "right_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        0.282,
+        0.25,
+        0.145
+      ],
+      "probe_gltf_m": [
+        0.282,
+        0.145,
+        -0.25
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_back_to_end",
+      "parts": [
+        "swept_crown_back_shell",
+        "left_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        -0.282,
+        0.223,
+        0.665
+      ],
+      "probe_gltf_m": [
+        -0.282,
+        0.665,
+        -0.223
+      ],
+      "kind": "boundary_contact",
+      "movement_group": "static"
+    },
+    {
+      "name": "left_arm_to_back_return",
+      "parts": [
+        "swept_crown_back_shell",
+        "left_rounded_arm_cap"
+      ],
+      "probe_source_m": [
+        -0.272,
+        0.233,
+        0.72
+      ],
+      "probe_gltf_m": [
+        -0.272,
+        0.72,
+        -0.233
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "static"
+    },
+    {
+      "name": "right_back_to_end",
+      "parts": [
+        "swept_crown_back_shell",
+        "right_shaped_timber_end"
+      ],
+      "probe_source_m": [
+        0.282,
+        0.223,
+        0.665
+      ],
+      "probe_gltf_m": [
+        0.282,
+        0.665,
+        -0.223
+      ],
+      "kind": "boundary_contact",
+      "movement_group": "static"
+    },
+    {
+      "name": "right_arm_to_back_return",
+      "parts": [
+        "swept_crown_back_shell",
+        "right_rounded_arm_cap"
+      ],
+      "probe_source_m": [
+        0.272,
+        0.233,
+        0.72
+      ],
+      "probe_gltf_m": [
+        0.272,
+        0.72,
+        -0.233
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "static"
+    },
+    {
+      "name": "back_pad_to_shell",
+      "parts": [
+        "contoured_amber_back_pad",
+        "swept_crown_back_shell"
+      ],
+      "probe_source_m": [
+        0,
+        0.22699999999999998,
+        0.82
+      ],
+      "probe_gltf_m": [
+        0,
+        0.82,
+        -0.22699999999999998
+      ],
+      "kind": "boundary_contact",
+      "movement_group": "static"
+    },
+    {
+      "name": "left_annulus_radial_butt_00",
+      "parts": [
+        "left_moving_bearing_sector_00",
+        "left_moving_bearing_sector_01"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.11873832970144352,
+        0.4587383297014435
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.4587383297014435,
+        -0.11873832970144352
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_01",
+      "parts": [
+        "left_moving_bearing_sector_01",
+        "left_moving_bearing_sector_02"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.1068587046952168,
+        0.46559703439666034
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.46559703439666034,
+        -0.1068587046952168
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_02",
+      "parts": [
+        "left_moving_bearing_sector_02",
+        "left_moving_bearing_sector_03"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.0931412953047832,
+        0.46559703439666034
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.46559703439666034,
+        -0.0931412953047832
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_03",
+      "parts": [
+        "left_moving_bearing_sector_03",
+        "left_moving_bearing_sector_04"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.0812616702985565,
+        0.4587383297014435
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.4587383297014435,
+        -0.0812616702985565
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_04",
+      "parts": [
+        "left_moving_bearing_sector_04",
+        "left_moving_bearing_sector_05"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.0744029656033397,
+        0.4468587046952168
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.4468587046952168,
+        -0.0744029656033397
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_05",
+      "parts": [
+        "left_moving_bearing_sector_05",
+        "left_moving_bearing_sector_06"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.0744029656033397,
+        0.4331412953047832
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.4331412953047832,
+        -0.0744029656033397
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_06",
+      "parts": [
+        "left_moving_bearing_sector_06",
+        "left_moving_bearing_sector_07"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.0812616702985565,
+        0.4212616702985565
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.4212616702985565,
+        -0.0812616702985565
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_07",
+      "parts": [
+        "left_moving_bearing_sector_07",
+        "left_moving_bearing_sector_08"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.09314129530478321,
+        0.41440296560333967
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.41440296560333967,
+        -0.09314129530478321
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_08",
+      "parts": [
+        "left_moving_bearing_sector_08",
+        "left_moving_bearing_sector_09"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.1068587046952168,
+        0.41440296560333967
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.41440296560333967,
+        -0.1068587046952168
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_09",
+      "parts": [
+        "left_moving_bearing_sector_09",
+        "left_moving_bearing_sector_10"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.11873832970144352,
+        0.4212616702985565
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.4212616702985565,
+        -0.11873832970144352
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_10",
+      "parts": [
+        "left_moving_bearing_sector_10",
+        "left_moving_bearing_sector_11"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.1255970343966603,
+        0.4331412953047832
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.4331412953047832,
+        -0.1255970343966603
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_annulus_radial_butt_11",
+      "parts": [
+        "left_moving_bearing_sector_11",
+        "left_moving_bearing_sector_00"
+      ],
+      "probe_source_m": [
+        -0.24,
+        0.1255970343966603,
+        0.44685870469521677
+      ],
+      "probe_gltf_m": [
+        -0.24,
+        0.44685870469521677,
+        -0.1255970343966603
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_pan_annulus_support",
+      "parts": [
+        "left_moving_bearing_sector_05",
+        "folding_timber_pan"
+      ],
+      "probe_source_m": [
+        -0.225,
+        0.07144057516264597,
+        0.434964202847659
+      ],
+      "probe_gltf_m": [
+        -0.225,
+        0.434964202847659,
+        -0.07144057516264597
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_pan_annulus_return",
+      "parts": [
+        "left_moving_bearing_sector_06",
+        "folding_timber_pan"
+      ],
+      "probe_source_m": [
+        -0.225,
+        0.07281076638890051,
+        0.427321452147779
+      ],
+      "probe_gltf_m": [
+        -0.225,
+        0.427321452147779,
+        -0.07281076638890051
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "left_pin_outer_stub_contact",
+      "parts": [
+        "left_retained_hinge_pin",
+        "left_fixed_pivot_stub"
+      ],
+      "probe_source_m": [
+        -0.265,
+        0.1,
+        0.44
+      ],
+      "probe_gltf_m": [
+        -0.265,
+        0.44,
+        -0.1
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_retainer_pin_contact",
+      "parts": [
+        "left_inner_pin_retainer",
+        "left_retained_hinge_pin"
+      ],
+      "probe_source_m": [
+        -0.215,
+        0.1,
+        0.44
+      ],
+      "probe_gltf_m": [
+        -0.215,
+        0.44,
+        -0.1
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_outer_axial_retention",
+      "parts": [
+        "left_moving_bearing_sector_00",
+        "left_fixed_pivot_stub"
+      ],
+      "probe_source_m": [
+        -0.265,
+        0.12338268590217985,
+        0.4535
+      ],
+      "probe_gltf_m": [
+        -0.265,
+        0.4535,
+        -0.12338268590217985
+      ],
+      "kind": "rotating_axial_endface_contact",
+      "movement_group": "PAN_HINGE_X_to_fixed",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_inner_axial_retention",
+      "parts": [
+        "left_moving_bearing_sector_00",
+        "left_inner_pin_retainer"
+      ],
+      "probe_source_m": [
+        -0.215,
+        0.11948557158514987,
+        0.45125
+      ],
+      "probe_gltf_m": [
+        -0.215,
+        0.45125,
+        -0.11948557158514987
+      ],
+      "kind": "rotating_axial_endface_contact",
+      "movement_group": "PAN_HINGE_X_to_fixed",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_annulus_radial_butt_00",
+      "parts": [
+        "right_moving_bearing_sector_00",
+        "right_moving_bearing_sector_01"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.11873832970144352,
+        0.4587383297014435
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.4587383297014435,
+        -0.11873832970144352
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_01",
+      "parts": [
+        "right_moving_bearing_sector_01",
+        "right_moving_bearing_sector_02"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.1068587046952168,
+        0.46559703439666034
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.46559703439666034,
+        -0.1068587046952168
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_02",
+      "parts": [
+        "right_moving_bearing_sector_02",
+        "right_moving_bearing_sector_03"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.0931412953047832,
+        0.46559703439666034
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.46559703439666034,
+        -0.0931412953047832
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_03",
+      "parts": [
+        "right_moving_bearing_sector_03",
+        "right_moving_bearing_sector_04"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.0812616702985565,
+        0.4587383297014435
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.4587383297014435,
+        -0.0812616702985565
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_04",
+      "parts": [
+        "right_moving_bearing_sector_04",
+        "right_moving_bearing_sector_05"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.0744029656033397,
+        0.4468587046952168
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.4468587046952168,
+        -0.0744029656033397
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_05",
+      "parts": [
+        "right_moving_bearing_sector_05",
+        "right_moving_bearing_sector_06"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.0744029656033397,
+        0.4331412953047832
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.4331412953047832,
+        -0.0744029656033397
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_06",
+      "parts": [
+        "right_moving_bearing_sector_06",
+        "right_moving_bearing_sector_07"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.0812616702985565,
+        0.4212616702985565
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.4212616702985565,
+        -0.0812616702985565
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_07",
+      "parts": [
+        "right_moving_bearing_sector_07",
+        "right_moving_bearing_sector_08"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.09314129530478321,
+        0.41440296560333967
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.41440296560333967,
+        -0.09314129530478321
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_08",
+      "parts": [
+        "right_moving_bearing_sector_08",
+        "right_moving_bearing_sector_09"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.1068587046952168,
+        0.41440296560333967
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.41440296560333967,
+        -0.1068587046952168
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_09",
+      "parts": [
+        "right_moving_bearing_sector_09",
+        "right_moving_bearing_sector_10"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.11873832970144352,
+        0.4212616702985565
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.4212616702985565,
+        -0.11873832970144352
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_10",
+      "parts": [
+        "right_moving_bearing_sector_10",
+        "right_moving_bearing_sector_11"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.1255970343966603,
+        0.4331412953047832
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.4331412953047832,
+        -0.1255970343966603
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_annulus_radial_butt_11",
+      "parts": [
+        "right_moving_bearing_sector_11",
+        "right_moving_bearing_sector_00"
+      ],
+      "probe_source_m": [
+        0.24,
+        0.1255970343966603,
+        0.44685870469521677
+      ],
+      "probe_gltf_m": [
+        0.24,
+        0.44685870469521677,
+        -0.1255970343966603
+      ],
+      "kind": "annular_sector_boundary",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_pan_annulus_support",
+      "parts": [
+        "right_moving_bearing_sector_05",
+        "folding_timber_pan"
+      ],
+      "probe_source_m": [
+        0.225,
+        0.07144057516264597,
+        0.434964202847659
+      ],
+      "probe_gltf_m": [
+        0.225,
+        0.434964202847659,
+        -0.07144057516264597
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_pan_annulus_return",
+      "parts": [
+        "right_moving_bearing_sector_06",
+        "folding_timber_pan"
+      ],
+      "probe_source_m": [
+        0.225,
+        0.07281076638890051,
+        0.427321452147779
+      ],
+      "probe_gltf_m": [
+        0.225,
+        0.427321452147779,
+        -0.07281076638890051
+      ],
+      "kind": "buried_structural_overlap",
+      "movement_group": "PAN_HINGE_X"
+    },
+    {
+      "name": "right_pin_outer_stub_contact",
+      "parts": [
+        "right_retained_hinge_pin",
+        "right_fixed_pivot_stub"
+      ],
+      "probe_source_m": [
+        0.265,
+        0.1,
+        0.44
+      ],
+      "probe_gltf_m": [
+        0.265,
+        0.44,
+        -0.1
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_retainer_pin_contact",
+      "parts": [
+        "right_inner_pin_retainer",
+        "right_retained_hinge_pin"
+      ],
+      "probe_source_m": [
+        0.215,
+        0.1,
+        0.44
+      ],
+      "probe_gltf_m": [
+        0.215,
+        0.44,
+        -0.1
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "static",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_outer_axial_retention",
+      "parts": [
+        "right_moving_bearing_sector_00",
+        "right_fixed_pivot_stub"
+      ],
+      "probe_source_m": [
+        0.265,
+        0.12338268590217985,
+        0.4535
+      ],
+      "probe_gltf_m": [
+        0.265,
+        0.4535,
+        -0.12338268590217985
+      ],
+      "kind": "rotating_axial_endface_contact",
+      "movement_group": "PAN_HINGE_X_to_fixed",
+      "normal_a_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_inner_axial_retention",
+      "parts": [
+        "right_moving_bearing_sector_00",
+        "right_inner_pin_retainer"
+      ],
+      "probe_source_m": [
+        0.215,
+        0.11948557158514987,
+        0.45125
+      ],
+      "probe_gltf_m": [
+        0.215,
+        0.45125,
+        -0.11948557158514987
+      ],
+      "kind": "rotating_axial_endface_contact",
+      "movement_group": "PAN_HINGE_X_to_fixed",
+      "normal_a_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_a_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "normal_b_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "seat_pad_pan_support",
+      "parts": [
+        "shaped_amber_seat_pad",
+        "folding_timber_pan"
+      ],
+      "probe_source_m": [
+        0,
+        -0.18,
+        0.44
+      ],
+      "probe_gltf_m": [
+        0,
+        0.44,
+        0.18
+      ],
+      "kind": "opposing_boundary_contact",
+      "movement_group": "PAN_HINGE_X",
+      "normal_a_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_b_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_a_gltf": [
+        0,
+        -1,
+        0
+      ],
+      "normal_b_gltf": [
+        0,
+        1,
+        0
+      ]
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "under_pan_open_space",
+      "min_source_m": [
+        -0.24,
+        -0.4,
+        0.06
+      ],
+      "max_source_m": [
+        0.24,
+        0.16,
+        0.37
+      ],
+      "min_gltf_m": [
+        -0.24,
+        0.06,
+        -0.16
+      ],
+      "max_gltf_m": [
+        0.24,
+        0.37,
+        0.4
+      ],
+      "purpose": "Actual underpan void in closed state, not a body/foot clearance certificate",
+      "state": "closed"
+    },
+    {
+      "name": "folded_front_recovery_volume",
+      "min_source_m": [
+        -0.24,
+        -0.47,
+        0.47
+      ],
+      "max_source_m": [
+        0.24,
+        -0.12,
+        0.95
+      ],
+      "min_gltf_m": [
+        -0.24,
+        0.47,
+        0.12
+      ],
+      "max_gltf_m": [
+        0.24,
+        0.95,
+        0.47
+      ],
+      "purpose": "Space recovered ahead of raised pan, bounded proposal only",
+      "state": "folded"
+    },
+    {
+      "name": "dry_seat_use_reservation",
+      "min_source_m": [
+        -0.23,
+        -0.38,
+        0.52
+      ],
+      "max_source_m": [
+        0.23,
+        0.03,
+        0.93
+      ],
+      "min_gltf_m": [
+        -0.23,
+        0.52,
+        -0.03
+      ],
+      "max_gltf_m": [
+        0.23,
+        0.93,
+        0.38
+      ],
+      "purpose": "Useful geometric reservation above pan, no anatomy or species fit",
+      "state": "closed"
+    }
+  ],
+  "motion_records": [
+    {
+      "root": "PAN_HINGE_X",
+      "kind": "rotation",
+      "pivot_source_m": [
+        0.0,
+        0.10000000149011612,
+        0.4399999976158142
+      ],
+      "pivot_gltf_m": [
+        0.0,
+        0.4399999976158142,
+        -0.10000000149011612
+      ],
+      "axis_source": [
+        1,
+        0,
+        0
+      ],
+      "axis_gltf": [
+        1,
+        0,
+        0
+      ],
+      "travel": -78,
+      "semantic_parts": [
+        "folding_timber_pan",
+        "left_moving_bearing_sector_00",
+        "left_moving_bearing_sector_01",
+        "left_moving_bearing_sector_02",
+        "left_moving_bearing_sector_03",
+        "left_moving_bearing_sector_04",
+        "left_moving_bearing_sector_05",
+        "left_moving_bearing_sector_06",
+        "left_moving_bearing_sector_07",
+        "left_moving_bearing_sector_08",
+        "left_moving_bearing_sector_09",
+        "left_moving_bearing_sector_10",
+        "left_moving_bearing_sector_11",
+        "right_moving_bearing_sector_00",
+        "right_moving_bearing_sector_01",
+        "right_moving_bearing_sector_02",
+        "right_moving_bearing_sector_03",
+        "right_moving_bearing_sector_04",
+        "right_moving_bearing_sector_05",
+        "right_moving_bearing_sector_06",
+        "right_moving_bearing_sector_07",
+        "right_moving_bearing_sector_08",
+        "right_moving_bearing_sector_09",
+        "right_moving_bearing_sector_10",
+        "right_moving_bearing_sector_11",
+        "shaped_amber_seat_pad"
+      ],
+      "contact_allowance_m": 0,
+      "initial_pose": 0
+    }
+  ],
+  "state_derivatives": [
+    {
+      "name": "PAN_HINGE_X terminal",
+      "export": "exports/AST-CUL-003_folded.glb",
+      "root": "PAN_HINGE_X",
+      "kind": "rotation",
+      "travel": -78,
+      "bounds_source": {
+        "min_m": [
+          -0.3440000116825104,
+          -0.32499998807907104,
+          0.0
+        ],
+        "max_m": [
+          0.3440000116825104,
+          0.32499998807907104,
+          1.100000023841858
+        ],
+        "dimensions_m": [
+          0.6880000233650208,
+          0.6499999761581421,
+          1.100000023841858
+        ]
+      },
+      "glb_sha256": "03dccb66deafcbdd66494cb70d75638a758b745223f5879acf0b112e00a24949"
+    }
+  ],
+  "collision_proposal_file": "collision_proposals.json",
+  "marker_api_file": "marker_api.json",
+  "used_textures_packed": true,
+  "source_sha256": "47ff60d0f257800f71a87517f5425727d234797dab31568ed6f7eb62189be75c",
+  "glb_sha256": "8ba34546ec20cb5ebdafce117de5f4cc64659ed6426b3d10eebca22f9d9e0934",
+  "generator_sha256": "a4713219b5bef1c581c56f7f72512888f709699e430ce257f2c8edf70bf618de",
+  "details": {
+    "budget": {
+      "max_triangles": 900,
+      "max_material_roles": 4,
+      "max_export_mesh_groups": 6
+    },
+    "pan_motion": {
+      "root": "PAN_HINGE_X",
+      "pivot_source_m": [
+        0,
+        0.1,
+        0.44
+      ],
+      "pivot_gltf_m": [
+        0,
+        0.44,
+        -0.1
+      ],
+      "axis_source": [
+        1,
+        0,
+        0
+      ],
+      "axis_gltf": [
+        1,
+        0,
+        0
+      ],
+      "closed_degrees": 0,
+      "folded_degrees": -78
+    },
+    "adjacent_QA_only": {
+      "translation_source_m": [
+        0.74,
+        0,
+        0
+      ],
+      "translation_gltf_m": [
+        0.74,
+        0,
+        0
+      ],
+      "no_host_row_assignment": true
+    },
+    "bearing_geometry": {
+      "moving_annular_sectors_per_side": 12,
+      "outer_radius_m": 0.032,
+      "bore_circumradius_m": 0.021,
+      "bore_inradius_m": 0.020284442352070435,
+      "fixed_pin_circumradius_m": 0.0198,
+      "retainer_cap_circumradius_m": 0.024,
+      "pan_minimum_axis_radius_m": 0.025,
+      "full_angle_cap_pan_clearance_min_m": 0.001,
+      "full_angle_radial_clearance_min_m": 0.00048444235207043343,
+      "sleeve_source_x_ranges_m": [
+        [
+          -0.265,
+          -0.215
+        ],
+        [
+          0.215,
+          0.265
+        ]
+      ],
+      "axial_retention": "Actual fixed outer stub and inner cap at both sleeve end faces; bore remains physically empty except for its smaller retained pin",
+      "claim": "Designed geometric running clearance, not exact radial face contact, load or wear certification"
+    },
+    "full_load_mechanism": "Finite bored sleeve, through-pin and axial retaining geometry; spring, lock, fatigue, tolerances under load and fastener engineering remain unimplemented/unverified",
+    "no_new_capacity": true
+  },
+  "limitations": [
+    "Original host absent; no placement, row assignment, stage connection or capacity addition",
+    "All six-species body/support/reach, room/route/crowd, collision adoption and target-PC performance acceptance pending",
+    "No runtime mechanical, cue/control, electrical, lighting/acoustic, stability/load or stage certification"
+  ]
+}

@@ -1,0 +1,1425 @@
+{
+  "catalogue_id": "AST-SAL-006",
+  "name": "Two-faced fixed service storage and threshold return",
+  "title": "Two-faced fixed service storage and threshold return",
+  "unique_design": true,
+  "original_script_assisted_design": true,
+  "source": "source/AST-SAL-006.blend",
+  "export": "exports/AST-SAL-006.glb",
+  "generator": "source/build_salon_edges.py",
+  "source_frame": "metres Blender +Z up,+X across,-Y guest front",
+  "exchange_frame": "metres glTF +Y up; source(x,y,z)->(x,z,-y); native node transforms authoritative",
+  "pivot": {
+    "source_m": [
+      0,
+      0,
+      0
+    ],
+    "gltf_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "Source floor Z0, component centre acrossX; depth origin at guest edgeY0"
+  },
+  "dimensions_blender_xyz_m": [
+    2.799999952316284,
+    1.3600000143051147,
+    2.3499999046325684
+  ],
+  "bounds_blender_z_up": {
+    "min_m": [
+      -1.399999976158142,
+      0.0,
+      0.0
+    ],
+    "max_m": [
+      1.399999976158142,
+      1.3600000143051147,
+      2.3499999046325684
+    ],
+    "dimensions_m": [
+      2.799999952316284,
+      1.3600000143051147,
+      2.3499999046325684
+    ]
+  },
+  "evaluated_triangles": 4116,
+  "evaluated_source_triangles": 4116,
+  "editable_semantic_parts": 36,
+  "semantic_parts": [
+    "service_guest_structural_spine",
+    "service_floor_shoe_0",
+    "service_tapered_side_cheek_0",
+    "service_floor_shoe_1",
+    "service_tapered_side_cheek_1",
+    "guest_recessed_teal_field_0",
+    "guest_field_0_ivory_side_frame_-1.1749999999999998",
+    "guest_field_0_ivory_side_frame_-0.435",
+    "guest_field_0_walnut_lower_inset",
+    "guest_field_0_top_shadow_reveal",
+    "guest_recessed_teal_field_1",
+    "guest_field_1_ivory_side_frame_-0.305",
+    "guest_field_1_ivory_side_frame_0.445",
+    "guest_field_1_walnut_lower_inset",
+    "guest_field_1_top_shadow_reveal",
+    "guest_recessed_teal_field_2",
+    "guest_field_2_ivory_side_frame_0.575",
+    "guest_field_2_ivory_side_frame_1.1749999999999998",
+    "guest_field_2_walnut_lower_inset",
+    "guest_field_2_top_shadow_reveal",
+    "guest_walnut_ledge_bearing",
+    "guest_continuous_tactile_serving_ledge",
+    "guest_lower_shaped_ivory_fascia",
+    "guest_lower_walnut_kick_recess",
+    "guest_lower_limited_champagne_joint",
+    "service_open_shelf_0",
+    "service_shelf_back_bearing_0",
+    "service_open_shelf_1",
+    "service_shelf_back_bearing_1",
+    "service_open_shelf_2",
+    "service_shelf_back_bearing_2",
+    "service_open_shelf_3",
+    "service_shelf_back_bearing_3",
+    "turned_service_work_surface",
+    "turned_service_low_structural_return",
+    "turn_inner_supported_cheek"
+  ],
+  "material_roles": [
+    "champagne_metal",
+    "dark_rubber",
+    "ivory_enamel",
+    "teal_weave",
+    "warm_walnut"
+  ],
+  "physical_and_proposal_markers": [
+    {
+      "name": "SERVICE_FLOOR_CONTACT_0",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        -1.32,
+        0.72,
+        0
+      ],
+      "gltf_m": [
+        -1.32,
+        0,
+        -0.72
+      ],
+      "physical_part": "service_floor_shoe_0",
+      "description": "",
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "JOIN_service_side_spine_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.32,
+        0.24,
+        1.5
+      ],
+      "gltf_m": [
+        -1.32,
+        1.5,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "service_tapered_side_cheek_0 bears into service_guest_structural_spine"
+    },
+    {
+      "name": "JOIN_service_side_shoe_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.32,
+        0.5,
+        0.04
+      ],
+      "gltf_m": [
+        -1.32,
+        0.04,
+        -0.5
+      ],
+      "physical_part": null,
+      "description": "service_tapered_side_cheek_0 bears into service_floor_shoe_0"
+    },
+    {
+      "name": "SERVICE_FLOOR_CONTACT_1",
+      "kind": "physical_floor_contact",
+      "source_m": [
+        1.32,
+        0.72,
+        0
+      ],
+      "gltf_m": [
+        1.32,
+        0,
+        -0.72
+      ],
+      "physical_part": "service_floor_shoe_1",
+      "description": "",
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "JOIN_service_side_spine_1",
+      "kind": "physical_joint",
+      "source_m": [
+        1.32,
+        0.24,
+        1.5
+      ],
+      "gltf_m": [
+        1.32,
+        1.5,
+        -0.24
+      ],
+      "physical_part": null,
+      "description": "service_tapered_side_cheek_1 bears into service_guest_structural_spine"
+    },
+    {
+      "name": "JOIN_service_side_shoe_1",
+      "kind": "physical_joint",
+      "source_m": [
+        1.32,
+        0.5,
+        0.04
+      ],
+      "gltf_m": [
+        1.32,
+        0.04,
+        -0.5
+      ],
+      "physical_part": null,
+      "description": "service_tapered_side_cheek_1 bears into service_floor_shoe_1"
+    },
+    {
+      "name": "JOIN_guest_ledge_to_bearing",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.17,
+        0.941
+      ],
+      "gltf_m": [
+        0,
+        0.941,
+        -0.17
+      ],
+      "physical_part": null,
+      "description": "guest_continuous_tactile_serving_ledge bears into guest_walnut_ledge_bearing"
+    },
+    {
+      "name": "GUEST_LEDGE_CONTACT",
+      "kind": "physical_guest_surface",
+      "source_m": [
+        -0.55,
+        0.17,
+        0.958
+      ],
+      "gltf_m": [
+        -0.55,
+        0.958,
+        -0.17
+      ],
+      "physical_part": "guest_continuous_tactile_serving_ledge",
+      "description": "Actual serving/setting surface; no transaction or active service mechanism",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "JOIN_service_shelf_0_back_support",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.341,
+        0.227
+      ],
+      "gltf_m": [
+        0,
+        0.227,
+        -0.341
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_0 bears into service_shelf_back_bearing_0"
+    },
+    {
+      "name": "JOIN_service_shelf_0_side_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.24,
+        0.6,
+        0.24200000000000002
+      ],
+      "gltf_m": [
+        -1.24,
+        0.24200000000000002,
+        -0.6
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_0 bears into service_tapered_side_cheek_0"
+    },
+    {
+      "name": "JOIN_service_shelf_0_side_1",
+      "kind": "physical_joint",
+      "source_m": [
+        1.24,
+        0.6,
+        0.24200000000000002
+      ],
+      "gltf_m": [
+        1.24,
+        0.24200000000000002,
+        -0.6
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_0 bears into service_tapered_side_cheek_1"
+    },
+    {
+      "name": "SERVICE_SHELF_CONTACT_0",
+      "kind": "physical_storage_support",
+      "source_m": [
+        0,
+        0.69,
+        0.26
+      ],
+      "gltf_m": [
+        0,
+        0.26,
+        -0.69
+      ],
+      "physical_part": "service_open_shelf_0",
+      "description": "Actual open shelf top,0.556m deep; reach/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "SERVICE_SHELF_MOUTH_0",
+      "kind": "nonphysical_service_receiver",
+      "source_m": [
+        0,
+        0.88,
+        0.44
+      ],
+      "gltf_m": [
+        0,
+        0.44,
+        -0.88
+      ],
+      "physical_part": null,
+      "description": "Open compartment/approach centre, not a contact",
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "JOIN_service_shelf_1_back_support",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.341,
+        0.6669999999999999
+      ],
+      "gltf_m": [
+        0,
+        0.6669999999999999,
+        -0.341
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_1 bears into service_shelf_back_bearing_1"
+    },
+    {
+      "name": "JOIN_service_shelf_1_side_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.24,
+        0.6,
+        0.6819999999999999
+      ],
+      "gltf_m": [
+        -1.24,
+        0.6819999999999999,
+        -0.6
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_1 bears into service_tapered_side_cheek_0"
+    },
+    {
+      "name": "JOIN_service_shelf_1_side_1",
+      "kind": "physical_joint",
+      "source_m": [
+        1.24,
+        0.6,
+        0.6819999999999999
+      ],
+      "gltf_m": [
+        1.24,
+        0.6819999999999999,
+        -0.6
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_1 bears into service_tapered_side_cheek_1"
+    },
+    {
+      "name": "SERVICE_SHELF_CONTACT_1",
+      "kind": "physical_storage_support",
+      "source_m": [
+        0,
+        0.69,
+        0.7
+      ],
+      "gltf_m": [
+        0,
+        0.7,
+        -0.69
+      ],
+      "physical_part": "service_open_shelf_1",
+      "description": "Actual open shelf top,0.556m deep; reach/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "SERVICE_SHELF_MOUTH_1",
+      "kind": "nonphysical_service_receiver",
+      "source_m": [
+        0,
+        0.88,
+        0.8799999999999999
+      ],
+      "gltf_m": [
+        0,
+        0.8799999999999999,
+        -0.88
+      ],
+      "physical_part": null,
+      "description": "Open compartment/approach centre, not a contact",
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "JOIN_service_shelf_2_back_support",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.341,
+        1.137
+      ],
+      "gltf_m": [
+        0,
+        1.137,
+        -0.341
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_2 bears into service_shelf_back_bearing_2"
+    },
+    {
+      "name": "JOIN_service_shelf_2_side_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.24,
+        0.6,
+        1.152
+      ],
+      "gltf_m": [
+        -1.24,
+        1.152,
+        -0.6
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_2 bears into service_tapered_side_cheek_0"
+    },
+    {
+      "name": "JOIN_service_shelf_2_side_1",
+      "kind": "physical_joint",
+      "source_m": [
+        1.24,
+        0.6,
+        1.152
+      ],
+      "gltf_m": [
+        1.24,
+        1.152,
+        -0.6
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_2 bears into service_tapered_side_cheek_1"
+    },
+    {
+      "name": "SERVICE_SHELF_CONTACT_2",
+      "kind": "physical_storage_support",
+      "source_m": [
+        0,
+        0.69,
+        1.17
+      ],
+      "gltf_m": [
+        0,
+        1.17,
+        -0.69
+      ],
+      "physical_part": "service_open_shelf_2",
+      "description": "Actual open shelf top,0.556m deep; reach/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "SERVICE_SHELF_MOUTH_2",
+      "kind": "nonphysical_service_receiver",
+      "source_m": [
+        0,
+        0.88,
+        1.3499999999999999
+      ],
+      "gltf_m": [
+        0,
+        1.3499999999999999,
+        -0.88
+      ],
+      "physical_part": null,
+      "description": "Open compartment/approach centre, not a contact",
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "JOIN_service_shelf_3_back_support",
+      "kind": "physical_joint",
+      "source_m": [
+        0,
+        0.341,
+        1.617
+      ],
+      "gltf_m": [
+        0,
+        1.617,
+        -0.341
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_3 bears into service_shelf_back_bearing_3"
+    },
+    {
+      "name": "JOIN_service_shelf_3_side_0",
+      "kind": "physical_joint",
+      "source_m": [
+        -1.24,
+        0.6,
+        1.632
+      ],
+      "gltf_m": [
+        -1.24,
+        1.632,
+        -0.6
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_3 bears into service_tapered_side_cheek_0"
+    },
+    {
+      "name": "JOIN_service_shelf_3_side_1",
+      "kind": "physical_joint",
+      "source_m": [
+        1.24,
+        0.6,
+        1.632
+      ],
+      "gltf_m": [
+        1.24,
+        1.632,
+        -0.6
+      ],
+      "physical_part": null,
+      "description": "service_open_shelf_3 bears into service_tapered_side_cheek_1"
+    },
+    {
+      "name": "SERVICE_SHELF_CONTACT_3",
+      "kind": "physical_storage_support",
+      "source_m": [
+        0,
+        0.69,
+        1.65
+      ],
+      "gltf_m": [
+        0,
+        1.65,
+        -0.69
+      ],
+      "physical_part": "service_open_shelf_3",
+      "description": "Actual open shelf top,0.556m deep; reach/load rating unverified",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "SERVICE_SHELF_MOUTH_3",
+      "kind": "nonphysical_service_receiver",
+      "source_m": [
+        0,
+        0.88,
+        1.8299999999999998
+      ],
+      "gltf_m": [
+        0,
+        1.8299999999999998,
+        -0.88
+      ],
+      "physical_part": null,
+      "description": "Open compartment/approach centre, not a contact",
+      "normal_source": [
+        0,
+        1,
+        0
+      ],
+      "normal_gltf": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "JOIN_turn_top_outer_support",
+      "kind": "physical_joint",
+      "source_m": [
+        1.32,
+        1.13,
+        0.936
+      ],
+      "gltf_m": [
+        1.32,
+        0.936,
+        -1.13
+      ],
+      "physical_part": null,
+      "description": "turned_service_work_surface bears into turned_service_low_structural_return"
+    },
+    {
+      "name": "JOIN_turn_top_inner_support",
+      "kind": "physical_joint",
+      "source_m": [
+        1.0,
+        1.05,
+        0.938
+      ],
+      "gltf_m": [
+        1.0,
+        0.938,
+        -1.05
+      ],
+      "physical_part": null,
+      "description": "turned_service_work_surface bears into turn_inner_supported_cheek"
+    },
+    {
+      "name": "SERVICE_TURN_WORK_CONTACT",
+      "kind": "physical_service_surface",
+      "source_m": [
+        1.17,
+        1.1,
+        0.958
+      ],
+      "gltf_m": [
+        1.17,
+        0.958,
+        -1.1
+      ],
+      "physical_part": "turned_service_work_surface",
+      "description": "Actual low worktop at the corner between finished guest and practical service sides",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "name": "SERVICE_RIGHT_THRESHOLD_JOIN",
+      "kind": "physical_join_face",
+      "source_m": [
+        1.4,
+        1.12,
+        0.55
+      ],
+      "gltf_m": [
+        1.4,
+        0.55,
+        -1.12
+      ],
+      "physical_part": "turned_service_low_structural_return",
+      "description": "Physical fixed right return face adjacent to reserved service turn. This is not a door jamb cassette or host opening size",
+      "normal_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "SERVICE_LEFT_PROFILE_JOIN",
+      "kind": "physical_join_face",
+      "source_m": [
+        -1.4,
+        0.64,
+        0.55
+      ],
+      "gltf_m": [
+        -1.4,
+        0.55,
+        -0.64
+      ],
+      "physical_part": "service_tapered_side_cheek_0",
+      "description": "Physical0.16m structural side profile for lower portal-compatible join; top of this piece stays below quiet cove",
+      "normal_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_gltf": [
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "SERVICE_TURN_APPROACH",
+      "kind": "nonphysical_turn_datum",
+      "source_m": [
+        1.82,
+        1.08,
+        0
+      ],
+      "gltf_m": [
+        1.82,
+        0,
+        -1.08
+      ],
+      "physical_part": null,
+      "description": "Proposed approach outside component: no real door, passage width, actor/cart fit or threshold floor asserted",
+      "normal_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_gltf": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "SERVICE_FLOOR_DATUM",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": "",
+      "normal_source": [
+        0,
+        0,
+        1
+      ],
+      "normal_gltf": [
+        0,
+        1,
+        0
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "name": "service_side_spine_0",
+      "parts": [
+        "service_tapered_side_cheek_0",
+        "service_guest_structural_spine"
+      ],
+      "probe_source_m": [
+        -1.32,
+        0.24,
+        1.5
+      ],
+      "probe_gltf_m": [
+        -1.32,
+        1.5,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_side_shoe_0",
+      "parts": [
+        "service_tapered_side_cheek_0",
+        "service_floor_shoe_0"
+      ],
+      "probe_source_m": [
+        -1.32,
+        0.5,
+        0.04
+      ],
+      "probe_gltf_m": [
+        -1.32,
+        0.04,
+        -0.5
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_side_spine_1",
+      "parts": [
+        "service_tapered_side_cheek_1",
+        "service_guest_structural_spine"
+      ],
+      "probe_source_m": [
+        1.32,
+        0.24,
+        1.5
+      ],
+      "probe_gltf_m": [
+        1.32,
+        1.5,
+        -0.24
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_side_shoe_1",
+      "parts": [
+        "service_tapered_side_cheek_1",
+        "service_floor_shoe_1"
+      ],
+      "probe_source_m": [
+        1.32,
+        0.5,
+        0.04
+      ],
+      "probe_gltf_m": [
+        1.32,
+        0.04,
+        -0.5
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "guest_ledge_to_bearing",
+      "parts": [
+        "guest_continuous_tactile_serving_ledge",
+        "guest_walnut_ledge_bearing"
+      ],
+      "probe_source_m": [
+        0,
+        0.17,
+        0.941
+      ],
+      "probe_gltf_m": [
+        0,
+        0.941,
+        -0.17
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_0_back_support",
+      "parts": [
+        "service_open_shelf_0",
+        "service_shelf_back_bearing_0"
+      ],
+      "probe_source_m": [
+        0,
+        0.341,
+        0.227
+      ],
+      "probe_gltf_m": [
+        0,
+        0.227,
+        -0.341
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_0_side_0",
+      "parts": [
+        "service_open_shelf_0",
+        "service_tapered_side_cheek_0"
+      ],
+      "probe_source_m": [
+        -1.24,
+        0.6,
+        0.24200000000000002
+      ],
+      "probe_gltf_m": [
+        -1.24,
+        0.24200000000000002,
+        -0.6
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_0_side_1",
+      "parts": [
+        "service_open_shelf_0",
+        "service_tapered_side_cheek_1"
+      ],
+      "probe_source_m": [
+        1.24,
+        0.6,
+        0.24200000000000002
+      ],
+      "probe_gltf_m": [
+        1.24,
+        0.24200000000000002,
+        -0.6
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_1_back_support",
+      "parts": [
+        "service_open_shelf_1",
+        "service_shelf_back_bearing_1"
+      ],
+      "probe_source_m": [
+        0,
+        0.341,
+        0.6669999999999999
+      ],
+      "probe_gltf_m": [
+        0,
+        0.6669999999999999,
+        -0.341
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_1_side_0",
+      "parts": [
+        "service_open_shelf_1",
+        "service_tapered_side_cheek_0"
+      ],
+      "probe_source_m": [
+        -1.24,
+        0.6,
+        0.6819999999999999
+      ],
+      "probe_gltf_m": [
+        -1.24,
+        0.6819999999999999,
+        -0.6
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_1_side_1",
+      "parts": [
+        "service_open_shelf_1",
+        "service_tapered_side_cheek_1"
+      ],
+      "probe_source_m": [
+        1.24,
+        0.6,
+        0.6819999999999999
+      ],
+      "probe_gltf_m": [
+        1.24,
+        0.6819999999999999,
+        -0.6
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_2_back_support",
+      "parts": [
+        "service_open_shelf_2",
+        "service_shelf_back_bearing_2"
+      ],
+      "probe_source_m": [
+        0,
+        0.341,
+        1.137
+      ],
+      "probe_gltf_m": [
+        0,
+        1.137,
+        -0.341
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_2_side_0",
+      "parts": [
+        "service_open_shelf_2",
+        "service_tapered_side_cheek_0"
+      ],
+      "probe_source_m": [
+        -1.24,
+        0.6,
+        1.152
+      ],
+      "probe_gltf_m": [
+        -1.24,
+        1.152,
+        -0.6
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_2_side_1",
+      "parts": [
+        "service_open_shelf_2",
+        "service_tapered_side_cheek_1"
+      ],
+      "probe_source_m": [
+        1.24,
+        0.6,
+        1.152
+      ],
+      "probe_gltf_m": [
+        1.24,
+        1.152,
+        -0.6
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_3_back_support",
+      "parts": [
+        "service_open_shelf_3",
+        "service_shelf_back_bearing_3"
+      ],
+      "probe_source_m": [
+        0,
+        0.341,
+        1.617
+      ],
+      "probe_gltf_m": [
+        0,
+        1.617,
+        -0.341
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_3_side_0",
+      "parts": [
+        "service_open_shelf_3",
+        "service_tapered_side_cheek_0"
+      ],
+      "probe_source_m": [
+        -1.24,
+        0.6,
+        1.632
+      ],
+      "probe_gltf_m": [
+        -1.24,
+        1.632,
+        -0.6
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "service_shelf_3_side_1",
+      "parts": [
+        "service_open_shelf_3",
+        "service_tapered_side_cheek_1"
+      ],
+      "probe_source_m": [
+        1.24,
+        0.6,
+        1.632
+      ],
+      "probe_gltf_m": [
+        1.24,
+        1.632,
+        -0.6
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "turn_top_outer_support",
+      "parts": [
+        "turned_service_work_surface",
+        "turned_service_low_structural_return"
+      ],
+      "probe_source_m": [
+        1.32,
+        1.13,
+        0.936
+      ],
+      "probe_gltf_m": [
+        1.32,
+        0.936,
+        -1.13
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    },
+    {
+      "name": "turn_top_inner_support",
+      "parts": [
+        "turned_service_work_surface",
+        "turn_inner_supported_cheek"
+      ],
+      "probe_source_m": [
+        1.0,
+        1.05,
+        0.938
+      ],
+      "probe_gltf_m": [
+        1.0,
+        0.938,
+        -1.05
+      ],
+      "check": "Probe on or within both actual evaluated meshes"
+    }
+  ],
+  "physical_join_interfaces": [
+    {
+      "name": "SERVICE_RIGHT_THRESHOLD_JOIN",
+      "centre_source_m": [
+        1.4,
+        1.12,
+        0.55
+      ],
+      "centre_gltf_m": [
+        1.4,
+        0.55,
+        -1.12
+      ],
+      "normal_source": [
+        1,
+        0,
+        0
+      ],
+      "normal_gltf": [
+        1,
+        0,
+        0
+      ],
+      "physical_part": "turned_service_low_structural_return",
+      "face_extent_source_m": {
+        "x": [
+          1.4,
+          1.4
+        ],
+        "y": [
+          0.98,
+          1.28
+        ],
+        "z": [
+          0.08,
+          0.9
+        ]
+      },
+      "description": "Physical fixed right return face adjacent to reserved service turn. This is not a door jamb cassette or host opening size",
+      "profile_m": {
+        "structural_depth": 0.16,
+        "wood_inset": 0.022,
+        "reveal": 0.012,
+        "arris": 0.012
+      }
+    },
+    {
+      "name": "SERVICE_LEFT_PROFILE_JOIN",
+      "centre_source_m": [
+        -1.4,
+        0.64,
+        0.55
+      ],
+      "centre_gltf_m": [
+        -1.4,
+        0.55,
+        -0.64
+      ],
+      "normal_source": [
+        -1,
+        0,
+        0
+      ],
+      "normal_gltf": [
+        -1,
+        0,
+        0
+      ],
+      "physical_part": "service_tapered_side_cheek_0",
+      "face_extent_source_m": {
+        "x": [
+          -1.4,
+          -1.4
+        ],
+        "y": [
+          0.56,
+          0.72
+        ],
+        "z": [
+          0.08,
+          1.1
+        ]
+      },
+      "description": "Physical0.16m structural side profile for lower portal-compatible join; top of this piece stays below quiet cove",
+      "profile_m": {
+        "structural_depth": 0.16,
+        "wood_inset": 0.022,
+        "reveal": 0.012,
+        "arris": 0.012
+      }
+    }
+  ],
+  "receiver_voids": [
+    {
+      "name": "open_service_storage_0",
+      "min_source_m": [
+        -1.2,
+        0.384,
+        0.28500000000000003
+      ],
+      "max_source_m": [
+        0.88,
+        0.88,
+        0.6
+      ],
+      "min_gltf_m": [
+        -1.2,
+        0.28500000000000003,
+        -0.88
+      ],
+      "max_gltf_m": [
+        0.88,
+        0.6,
+        -0.384
+      ],
+      "purpose": "Open service-side shelf mouth; lower two reserve the right corner support, with2.08m unobstructed width. No doors/covers or whole-cabinet collider"
+    },
+    {
+      "name": "open_service_storage_1",
+      "min_source_m": [
+        -1.2,
+        0.384,
+        0.725
+      ],
+      "max_source_m": [
+        0.88,
+        0.88,
+        1.0699999999999998
+      ],
+      "min_gltf_m": [
+        -1.2,
+        0.725,
+        -0.88
+      ],
+      "max_gltf_m": [
+        0.88,
+        1.0699999999999998,
+        -0.384
+      ],
+      "purpose": "Open service-side shelf mouth; lower two reserve the right corner support, with2.08m unobstructed width. No doors/covers or whole-cabinet collider"
+    },
+    {
+      "name": "open_service_storage_2",
+      "min_source_m": [
+        -1.2,
+        0.384,
+        1.1949999999999998
+      ],
+      "max_source_m": [
+        1.2,
+        0.88,
+        1.5499999999999998
+      ],
+      "min_gltf_m": [
+        -1.2,
+        1.1949999999999998,
+        -0.88
+      ],
+      "max_gltf_m": [
+        1.2,
+        1.5499999999999998,
+        -0.384
+      ],
+      "purpose": "Open service-side shelf mouth; lower two reserve the right corner support, with2.08m unobstructed width. No doors/covers or whole-cabinet collider"
+    },
+    {
+      "name": "service_turn_outside_fixed_end",
+      "min_source_m": [
+        1.43,
+        0.5,
+        0.02
+      ],
+      "max_source_m": [
+        2.18,
+        1.34,
+        2.0
+      ],
+      "min_gltf_m": [
+        1.43,
+        0.02,
+        -1.34
+      ],
+      "max_gltf_m": [
+        2.18,
+        2.0,
+        -0.5
+      ],
+      "purpose": "Proposed open turn beside actual low service return. No door motion or recovered passage width is certified"
+    },
+    {
+      "name": "service_rear_approach",
+      "min_source_m": [
+        -1.15,
+        0.96,
+        0.06
+      ],
+      "max_source_m": [
+        0.84,
+        1.76,
+        1.96
+      ],
+      "min_gltf_m": [
+        -1.15,
+        0.06,
+        -1.76
+      ],
+      "max_gltf_m": [
+        0.84,
+        1.96,
+        -0.96
+      ],
+      "purpose": "Open rear shelf approach, not filled by a cabinet convex hull; right return remains occupied"
+    }
+  ],
+  "marker_api_file": "marker_api.json",
+  "collision_proposal_file": "collision_proposals.json",
+  "runtime_consolidation": "Evaluated static copies by semantic material role; native semantic marker nodes retained; editable meshes and modifiers in source",
+  "details": {
+    "fixed_assembly": true,
+    "shelf_planes_z_m": [
+      0.26,
+      0.7,
+      1.17,
+      1.65
+    ],
+    "guest_and_service_surface_z_m": 0.958,
+    "service_side": "+Y",
+    "guest_side": "-Y",
+    "motion": "No leaf/cover/door mechanism; all parts fixed",
+    "threshold_relationship": "Actual low right return ends beside explicitly nonphysical outside turn datum; real host door interfaces unknown"
+  },
+  "moving_host_door_interfaces": {
+    "public_clear_width_m": null,
+    "public_clear_height_m": null,
+    "service_clear_width_m": null,
+    "service_clear_height_m": null,
+    "leaf_stroke_m": null,
+    "cassette_depth_m": null,
+    "head_reservation_m": null
+  },
+  "reference_manifest": "../../batches/batch10/reference_manifest.json",
+  "profile_contract": "../../batches/batch10/interface_contract.json",
+  "context_dependencies": "None for production rebuild. QA plant/other components are separate existing context, separately hashed.",
+  "source_sha256": "6ee78208c772222159c79826340c64c6b5cf385b82164d17938939f3f0dcbf13",
+  "glb_sha256": "4c851e5b24c1434c4907be1387521cdd5f71995408030447280e9fc0894a298b",
+  "generator_sha256": "3c8ec84fb14f5a59c325cff8279379d7212e5d265f8d9e23e825443a997aea38",
+  "limitations": [
+    "New adjustable source work; original final host polygon and game remain unavailable",
+    "No recovered-host or installed-room claim",
+    "No door motion, real door dimensions or cassette/head fit asserted",
+    "No load rating, guard safety compliance, species ergonomics or engine collision acceptance",
+    "Host arrival/service axis, terrace relation, X35..45 tram reserve and D09_salon5 identity remain governed by historical records; local QA layouts are hypotheses only"
+  ],
+  "validation_files": [
+    "qa/source_reload_checks.json",
+    "qa/glb_validation.json",
+    "qa/native_interfaces_and_voids.json",
+    "qa/source_only_rebuild.json",
+    "qa/camera_preflight.json",
+    "qa/render_evidence.json",
+    "qa/exposed_surface_review.json"
+  ],
+  "evidence_media_manifest": "qa/review_media_manifest.json",
+  "source_and_export_verified": true
+}

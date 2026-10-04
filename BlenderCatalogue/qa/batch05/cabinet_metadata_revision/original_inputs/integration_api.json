@@ -1,0 +1,170 @@
+{
+  "catalogue_id": "AST-STF-007",
+  "status": "Installation and interaction proposals only; original game unavailable; no engine/controller/physics/actor/room acceptance.",
+  "root_node": "AST-STF-007_floor_origin",
+  "door": {
+    "pivot_blender_m": [
+      -0.837,
+      -0.317,
+      0.2
+    ],
+    "axis_blender": [
+      0,
+      0,
+      1
+    ],
+    "closed_degrees": 0,
+    "open_degrees": -105,
+    "source_objects_independent": true,
+    "glb_leaf_handle_nodes_independent": true,
+    "sweep_check": "qa/door_sweep_report.json",
+    "status": "Geometric source/export proposal only; controller, rig, physical interaction and room fit untested",
+    "pivot_gltf_Yup_m": [
+      -0.837,
+      0.2,
+      0.317
+    ],
+    "axis_gltf_Yup": [
+      0,
+      1,
+      0
+    ],
+    "sweep_range_label": "0 through 105 degrees outward; Blender rotation Z 0 through -105 degrees",
+    "continuous_evidence": "Analytic front-plane and floor separation for main leaf/handle; analytic bearing radial/axial clearances; see detailed report. 421 sampled source and imported-GLB poses are reported separately.",
+    "front_blender": [
+      0,
+      -1,
+      0
+    ],
+    "front_gltf_Yup": [
+      0,
+      0,
+      1
+    ],
+    "rotation_degrees_about_positive_axis": [
+      0,
+      -105
+    ],
+    "pivot_node_name": "AST-STF-007_door_hinge_pivot",
+    "leaf_node_names": [
+      "AST-STF-007_door_leaf_staff_bluegrey_paint",
+      "AST-STF-007_door_leaf_staff_zinc"
+    ],
+    "handle_node_names": [
+      "AST-STF-007_door_handle_staff_rubber",
+      "AST-STF-007_door_handle_staff_zinc"
+    ],
+    "coordinate_conversion": "Blender (X,Y,Z) -> glTF (X,Z,-Y). Same signed rotation around converted positive axis. Blender imports glTF back to Blender Z-up.",
+    "source_origin_and_export_conversion": "Pivot location given in each declared coordinate frame, never apply Blender Z rotation directly in glTF Y-up. Godot adoption pending."
+  },
+  "work_surface_z_blender_m": 0.94,
+  "usable_work_surface_proposal_m": {
+    "min": [
+      -0.86,
+      -0.26,
+      0.94
+    ],
+    "max": [
+      0.86,
+      0.275,
+      0.94
+    ]
+  },
+  "continuous_component_sweep_bounds_blender_m": {
+    "min": [
+      -1.0559137823052138,
+      -1.0896302110708014,
+      0.20200000703334808
+    ],
+    "max": [
+      -0.06436978892919865,
+      -0.2849999964237213,
+      0.8579999804496765
+    ],
+    "method": "Analytic coordinate extrema of every evaluated moving vertex over the complete angle interval; excludes no visible moving geometry."
+  },
+  "approach": {
+    "min_m": [
+      -1.08,
+      -1.42,
+      0
+    ],
+    "max_m": [
+      0.95,
+      -0.365,
+      1.9
+    ],
+    "purpose": "Front work/storage access and outward door sweep; proposal only, route width and actor contact not accepted"
+  },
+  "storage": {
+    "right_open_bays_m": [
+      {
+        "min": [
+          -0.02,
+          -0.238,
+          0.192
+        ],
+        "max": [
+          0.839,
+          0.271,
+          0.487
+        ]
+      },
+      {
+        "min": [
+          -0.02,
+          -0.238,
+          0.525
+        ],
+        "max": [
+          0.839,
+          0.271,
+          0.875
+        ]
+      }
+    ],
+    "left_locker_cavity_envelope_m": {
+      "min": [
+        -0.839,
+        -0.238,
+        0.192
+      ],
+      "max": [
+        -0.056,
+        0.27,
+        0.874
+      ],
+      "mid_shelf_top_m": 0.525,
+      "note": "Overall cavity envelope includes the fixed shelf; use the separate clear volumes for access."
+    },
+    "left_locker_clear_volumes_m": [
+      {
+        "min": [
+          -0.839,
+          -0.238,
+          0.192
+        ],
+        "max": [
+          -0.056,
+          0.27,
+          0.487
+        ],
+        "compartment": "lower"
+      },
+      {
+        "min": [
+          -0.839,
+          -0.238,
+          0.525
+        ],
+        "max": [
+          -0.056,
+          0.27,
+          0.874
+        ],
+        "compartment": "upper"
+      }
+    ]
+  },
+  "collision_file": "AST-STF-007_supply_work_cabinet.collision_proposal.json"
+}

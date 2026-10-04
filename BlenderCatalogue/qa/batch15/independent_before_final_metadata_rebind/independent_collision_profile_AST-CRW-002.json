@@ -1,0 +1,527 @@
+{
+  "catalogue_id": "AST-CRW-002",
+  "source_sha256": "a419c85160603296dc8772d1170c5c86cf5967af2f04bbcf8aaada439be416af",
+  "source_audit_sha256": "73a728296cc6ceddd93ac36b79d2c1f10cc9258ee9a3a6b91d2d5fc168d75f9e",
+  "collision_sha256": "d3b9e2eb54c967411b57138de8b049d8f2e26fa2fde573f4caa4e246fd706ae6",
+  "collision_path": "assets/crew_rest/collision_proposals.json",
+  "proposal_shape_count": 31,
+  "top_level_geometry_records": 8,
+  "excluded_geometry_declarations": [
+    {
+      "name": "moving_hangers_and_grip",
+      "type": "visual_detail_exclusion",
+      "reason": "Small hangers and pull grip lie within stated sweep; no independent actor collision proposed, not a claim they are absent"
+    }
+  ],
+  "review_convex_subshape_count": 31,
+  "profiles": [
+    {
+      "name": "foot_shoe",
+      "proposal_type": "box",
+      "review_subshape_count": 1,
+      "purpose_covered_parts": null,
+      "approximation_note": null,
+      "sample_count": 102,
+      "max_sample_grid_edge_m": 0.05470888867451069,
+      "sampled_max_external_inflation_m": 0.006588481613286737,
+      "worst_sample_source_m": [
+        0.776,
+        0.03,
+        0.035
+      ]
+    },
+    {
+      "name": "foot_post",
+      "proposal_type": "box",
+      "review_subshape_count": 1,
+      "purpose_covered_parts": null,
+      "approximation_note": null,
+      "sample_count": 2922,
+      "max_sample_grid_edge_m": 0.04599999999999999,
+      "sampled_max_external_inflation_m": 0.0021963252098242216,
+      "worst_sample_source_m": [
+        0.66,
+        -0.037,
+        2.12
+      ]
+    },
+    {
+      "name": "head_shoe",
+      "proposal_type": "box",
+      "review_subshape_count": 1,
+      "purpose_covered_parts": null,
+      "approximation_note": null,
+      "sample_count": 102,
+      "max_sample_grid_edge_m": 0.05470888867451069,
+      "sampled_max_external_inflation_m": 0.006588605114004682,
+      "worst_sample_source_m": [
+        0.776,
+        2.35,
+        0.035
+      ]
+    },
+    {
+      "name": "head_post",
+      "proposal_type": "box",
+      "review_subshape_count": 1,
+      "purpose_covered_parts": null,
+      "approximation_note": null,
+      "sample_count": 2922,
+      "max_sample_grid_edge_m": 0.04600000000000026,
+      "sampled_max_external_inflation_m": 0.0021963683845307364,
+      "worst_sample_source_m": [
+        0.7,
+        2.283,
+        2.12
+      ]
+    },
+    {
+      "name": "continuous_track",
+      "proposal_type": "capsule",
+      "review_subshape_count": 1,
+      "purpose_covered_parts": null,
+      "approximation_note": null,
+      "sample_count": 23810,
+      "max_sample_grid_edge_m": 0.036891776679796935,
+      "sampled_max_external_inflation_m": 0.013352648629394448,
+      "worst_sample_source_m": [
+        0.68,
+        2.296352641,
+        2.079
+      ]
+    },
+    {
+      "name": "endstop_-0.006",
+      "proposal_type": "box",
+      "review_subshape_count": 1,
+      "purpose_covered_parts": null,
+      "approximation_note": null,
+      "sample_count": 10,
+      "max_sample_grid_edge_m": 0.05727128425310546,
+      "sampled_max_external_inflation_m": 0.01159798157434577,
+      "worst_sample_source_m": [
+        0.652,
+        -0.012,
+        2.107
+      ]
+    },
+    {
+      "name": "endstop_2.206",
+      "proposal_type": "box",
+      "review_subshape_count": 1,
+      "purpose_covered_parts": null,
+      "approximation_note": null,
+      "sample_count": 10,
+      "max_sample_grid_edge_m": 0.05727128425310537,
+      "sampled_max_external_inflation_m": 0.011597981574837612,
+      "worst_sample_source_m": [
+        0.652,
+        2.212,
+        2.107
+      ]
+    },
+    {
+      "name": "moving_fabric_profile",
+      "proposal_type": "per_pose_thin_convex_pleat_panels",
+      "review_subshape_count": 24,
+      "purpose_covered_parts": null,
+      "approximation_note": null,
+      "sample_count": 24505,
+      "max_sample_grid_edge_m": 0.05655494597347377,
+      "sampled_max_external_inflation_m": 0.00018881096831553618,
+      "worst_sample_source_m": [
+        0.657873736,
+        1.817915964,
+        0.33421875
+      ]
+    }
+  ],
+  "visual_part_sampled_coverage": [
+    {
+      "part": "002_accordion_privacy_fabric",
+      "sample_count": 2090,
+      "samples_outside_proposal": 299,
+      "sampled_max_distance_outside_proposal_m": 0.000728483344409214
+    },
+    {
+      "part": "002_continuous_round_track",
+      "sample_count": 182,
+      "samples_outside_proposal": 0,
+      "sampled_max_distance_outside_proposal_m": 0.0
+    },
+    {
+      "part": "002_foot_assembly_fastener_0.085",
+      "sample_count": 86,
+      "samples_outside_proposal": 54,
+      "sampled_max_distance_outside_proposal_m": 0.008000004000000005
+    },
+    {
+      "part": "002_foot_assembly_fastener_2.04",
+      "sample_count": 86,
+      "samples_outside_proposal": 54,
+      "sampled_max_distance_outside_proposal_m": 0.008000004000000005
+    },
+    {
+      "part": "002_foot_floor_shoe",
+      "sample_count": 326,
+      "samples_outside_proposal": 0,
+      "sampled_max_distance_outside_proposal_m": 0.0
+    },
+    {
+      "part": "002_foot_post",
+      "sample_count": 326,
+      "samples_outside_proposal": 0,
+      "sampled_max_distance_outside_proposal_m": 0.0
+    },
+    {
+      "part": "002_head_assembly_fastener_0.085",
+      "sample_count": 86,
+      "samples_outside_proposal": 54,
+      "sampled_max_distance_outside_proposal_m": 0.008000004000000007
+    },
+    {
+      "part": "002_head_assembly_fastener_2.04",
+      "sample_count": 86,
+      "samples_outside_proposal": 54,
+      "sampled_max_distance_outside_proposal_m": 0.008000004000000007
+    },
+    {
+      "part": "002_head_floor_shoe",
+      "sample_count": 326,
+      "samples_outside_proposal": 0,
+      "sampled_max_distance_outside_proposal_m": 0.0
+    },
+    {
+      "part": "002_head_post",
+      "sample_count": 326,
+      "samples_outside_proposal": 0,
+      "sampled_max_distance_outside_proposal_m": 0.0
+    },
+    {
+      "part": "002_leading_pull_grip",
+      "sample_count": 326,
+      "samples_outside_proposal": 323,
+      "sampled_max_distance_outside_proposal_m": 0.015383589001191094
+    },
+    {
+      "part": "002_supported_ring_00",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_01",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_02",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_03",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_04",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_05",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_06",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_07",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_08",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_09",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_10",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_11",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_12",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_13",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_14",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_15",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_16",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_17",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_18",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_19",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_20",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_21",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_22",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_23",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_supported_ring_24",
+      "sample_count": 384,
+      "samples_outside_proposal": 371,
+      "sampled_max_distance_outside_proposal_m": 0.015740848098857743
+    },
+    {
+      "part": "002_suspension_tape_00",
+      "sample_count": 38,
+      "samples_outside_proposal": 36,
+      "sampled_max_distance_outside_proposal_m": 0.02400232022581012
+    },
+    {
+      "part": "002_suspension_tape_01",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.02486735904956115
+    },
+    {
+      "part": "002_suspension_tape_02",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_03",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.02486736603679517
+    },
+    {
+      "part": "002_suspension_tape_04",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_05",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.02486736104591318
+    },
+    {
+      "part": "002_suspension_tape_06",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_07",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024867359299105125
+    },
+    {
+      "part": "002_suspension_tape_08",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_09",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024867357552297437
+    },
+    {
+      "part": "002_suspension_tape_10",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_11",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.02486735580549008
+    },
+    {
+      "part": "002_suspension_tape_12",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_13",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024867368781781488
+    },
+    {
+      "part": "002_suspension_tape_14",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_15",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024867354557770602
+    },
+    {
+      "part": "002_suspension_tape_16",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_17",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024867365288162715
+    },
+    {
+      "part": "002_suspension_tape_18",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_19",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024867358051385225
+    },
+    {
+      "part": "002_suspension_tape_20",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_21",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.02486736154500123
+    },
+    {
+      "part": "002_suspension_tape_22",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_suspension_tape_23",
+      "sample_count": 38,
+      "samples_outside_proposal": 34,
+      "sampled_max_distance_outside_proposal_m": 0.024867374770845527
+    },
+    {
+      "part": "002_suspension_tape_24",
+      "sample_count": 38,
+      "samples_outside_proposal": 35,
+      "sampled_max_distance_outside_proposal_m": 0.024621698037055113
+    },
+    {
+      "part": "002_track_end_stop_-0.006",
+      "sample_count": 182,
+      "samples_outside_proposal": 0,
+      "sampled_max_distance_outside_proposal_m": 0.0
+    },
+    {
+      "part": "002_track_end_stop_2.206",
+      "sample_count": 182,
+      "samples_outside_proposal": 0,
+      "sampled_max_distance_outside_proposal_m": 0.0
+    }
+  ],
+  "sampled_max_external_inflation_m": 0.013352648629394448,
+  "limits": [
+    "Surface inflation is measured with a finite adaptive triangle-vertex mesh no longer than60mm; this is not a continuous distance maximum.",
+    "Source coverage samples include every actual triangle vertex, edge midpoint and centroid. They are not a continuous coverage proof. Thin symbol/stock/attachment geometry can intentionally remain noncolliding.",
+    "Concave extrusions are independently ear-decomposed for review, never filled by a whole-profile convex hull. Round cylinders use a conservative64-sided enclosure.",
+    "Actual complete useful voids and removal paths have separate exact intersection tests. No collision-engine adoption or performance result follows."
+  ],
+  "executed_script_sha256": "dc46b7080ddfc21c317347c5463db5061666b825b9b0fcca8685335bfb827b22"
+}

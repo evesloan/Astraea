@@ -1,0 +1,154 @@
+{
+  "scope": "Clarification of separate structural collision proposal tolerances. Does not change any source mesh, production GLB, collision shape or material. No engine acceptance.",
+  "legacy_field_semantics": "The per-shape key conservative_empty_corner_limit_m denotes the authored axial/profile allowance or bevel width. It is not a certified maximum Euclidean distance. Read conservative_euclidean_allowance_m here for a conservatively padded geometric allowance.",
+  "euclidean_method": "sqrt(3) times the stored axis/profile allowance plus 0.0001m numerical allowance. This bounds three-axis simultaneous offsets; the independent finite geometry screen remains sampled rather than a full continuous surface proof.",
+  "independent_review_note": "Independent reviewer observed up to 0.008m at impact-strip compounds, 0.00231m at front nose, 0.00214m at rear crossbrace; typical others 0.0006..0.0023m. Surface screen samples at up to 0.035m spacing, so these are observed maxima, not certified extrema.",
+  "assets": {
+    "AST-LND-003": {
+      "shape_count": 10,
+      "per_shape": [
+        {
+          "name": "floor_shoe",
+          "axis_or_profile_allowance_m": 0.002,
+          "conservative_euclidean_allowance_m": 0.003564101615137754
+        },
+        {
+          "name": "back_spine",
+          "axis_or_profile_allowance_m": 0.002,
+          "conservative_euclidean_allowance_m": 0.003564101615137754
+        },
+        {
+          "name": "edge_return_-1",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "edge_return_+1",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "impact_rail_0.36",
+          "axis_or_profile_allowance_m": 0.018,
+          "conservative_euclidean_allowance_m": 0.03127691453623979
+        },
+        {
+          "name": "impact_rail_0.83",
+          "axis_or_profile_allowance_m": 0.018,
+          "conservative_euclidean_allowance_m": 0.03127691453623979
+        },
+        {
+          "name": "sloped_control_cassette",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "fixture_receiver",
+          "axis_or_profile_allowance_m": 0.001,
+          "conservative_euclidean_allowance_m": 0.0018320508075688772
+        },
+        {
+          "name": "fixture_gusset_-0.55",
+          "axis_or_profile_allowance_m": 0.0008,
+          "conservative_euclidean_allowance_m": 0.0014856406460551019
+        },
+        {
+          "name": "fixture_gusset_0.55",
+          "axis_or_profile_allowance_m": 0.0008,
+          "conservative_euclidean_allowance_m": 0.0014856406460551019
+        }
+      ],
+      "maximum_sampled_visual_undercapture_distance_m": 0.053999988317489644,
+      "omitted_relief": "Service hatch/cover bolts, raised separate controls and replaceable corner guards",
+      "intentional_limitation": "Structural proposal omits these small attachments; use the visual surfaces for precise interaction contact. Neither compounds nor omissions are accepted physics."
+    },
+    "AST-LND-004": {
+      "shape_count": 16,
+      "per_shape": [
+        {
+          "name": "inspection_top",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "front_nose",
+          "axis_or_profile_allowance_m": 0.002,
+          "conservative_euclidean_allowance_m": 0.003564101615137754
+        },
+        {
+          "name": "end_frame_-1_0",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "end_frame_-1_1",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "end_frame_-1_2",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "end_frame_+1_0",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "end_frame_+1_1",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "end_frame_+1_2",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "retrieval_tray",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "retrieval_stop",
+          "axis_or_profile_allowance_m": 0.001,
+          "conservative_euclidean_allowance_m": 0.0018320508075688772
+        },
+        {
+          "name": "tray_bearing_-1",
+          "axis_or_profile_allowance_m": 0.0008,
+          "conservative_euclidean_allowance_m": 0.0014856406460551019
+        },
+        {
+          "name": "tray_bearing_+1",
+          "axis_or_profile_allowance_m": 0.0008,
+          "conservative_euclidean_allowance_m": 0.0014856406460551019
+        },
+        {
+          "name": "rear_crossbrace",
+          "axis_or_profile_allowance_m": 0.0015,
+          "conservative_euclidean_allowance_m": 0.0026980762113533157
+        },
+        {
+          "name": "work_backstop",
+          "axis_or_profile_allowance_m": 0.001,
+          "conservative_euclidean_allowance_m": 0.0018320508075688772
+        },
+        {
+          "name": "backstop_return_-1",
+          "axis_or_profile_allowance_m": 0.001,
+          "conservative_euclidean_allowance_m": 0.0018320508075688772
+        },
+        {
+          "name": "backstop_return_+1",
+          "axis_or_profile_allowance_m": 0.001,
+          "conservative_euclidean_allowance_m": 0.0018320508075688772
+        }
+      ],
+      "maximum_sampled_visual_undercapture_distance_m": 0.04071558252974397,
+      "omitted_relief": "Identification plate/hanger relief, bolt ends and shallow corner covers",
+      "intentional_limitation": "Structural proposal omits these small attachments; use the visual surfaces for precise interaction contact. Neither compounds nor omissions are accepted physics."
+    }
+  }
+}

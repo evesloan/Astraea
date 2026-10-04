@@ -1,0 +1,1491 @@
+{
+  "assets": [
+    {
+      "catalogue_id": "AST-CRW-003",
+      "source_sha256": "176dd82ccf78eb025ffcfc4ba30e9c24081ffc3c1f9a1de5ec616ccc9201b701",
+      "editable_meshes": 29,
+      "physical_markers": [
+        {
+          "name": "LEFT_FRONT_FLOOR",
+          "source_position_m": [
+            -0.25999999046325684,
+            -0.1599999964237213,
+            0.0
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-003",
+          "parent_matches": true,
+          "part": "left_front_floor_sole",
+          "surface_distance_m": 1.4901161193847656e-08,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "LEFT_BACK_FLOOR",
+          "source_position_m": [
+            -0.25999999046325684,
+            0.1599999964237213,
+            0.0
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-003",
+          "parent_matches": true,
+          "part": "left_back_floor_sole",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "RIGHT_FRONT_FLOOR",
+          "source_position_m": [
+            0.25999999046325684,
+            -0.1599999964237213,
+            0.0
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-003",
+          "parent_matches": true,
+          "part": "right_front_floor_sole",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "RIGHT_BACK_FLOOR",
+          "source_position_m": [
+            0.25999999046325684,
+            0.1599999964237213,
+            0.0
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-003",
+          "parent_matches": true,
+          "part": "right_back_floor_sole",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "LOWER_OPEN_SHELF_RESTING_SURFACE",
+          "source_position_m": [
+            0.0,
+            -0.05000000074505806,
+            0.5249999761581421
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-003",
+          "parent_matches": true,
+          "part": "lower_open_shelf_replaceable_liner",
+          "surface_distance_m": 1.862645149230957e-08,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "UPPER_OPEN_SHELF_RESTING_SURFACE",
+          "source_position_m": [
+            0.0,
+            -0.05000000074505806,
+            0.9150000214576721
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-003",
+          "parent_matches": true,
+          "part": "upper_open_shelf_replaceable_liner",
+          "surface_distance_m": 1.862645149230957e-08,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "DRAWER_GRIP",
+          "source_position_m": [
+            0.0,
+            -0.29600000381469727,
+            0.35499998927116394
+          ],
+          "matches_declared_position": true,
+          "parent_root": "DRAWER_TRANSLATE",
+          "parent_matches": true,
+          "part": "drawer_pull_bridge",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "DRAWER_INNER_STORAGE",
+          "source_position_m": [
+            0.0,
+            0.0,
+            0.21299999952316284
+          ],
+          "matches_declared_position": true,
+          "parent_root": "DRAWER_TRANSLATE",
+          "parent_matches": true,
+          "part": "drawer_inner_base",
+          "surface_distance_m": 4.6566128730773926e-09,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "FLOOR_DATUM",
+          "source_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-003",
+          "parent_matches": true,
+          "passes": true
+        }
+      ],
+      "joins": [
+        {
+          "name": "left_front_sole_support",
+          "parts": [
+            "left_front_floor_sole",
+            "left_front_short_support"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "left_front_support_plinth",
+          "parts": [
+            "left_front_short_support",
+            "protected_plinth"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "left_back_sole_support",
+          "parts": [
+            "left_back_floor_sole",
+            "left_back_short_support"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "left_back_support_plinth",
+          "parts": [
+            "left_back_short_support",
+            "protected_plinth"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "right_front_sole_support",
+          "parts": [
+            "right_front_floor_sole",
+            "right_front_short_support"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "right_front_support_plinth",
+          "parts": [
+            "right_front_short_support",
+            "protected_plinth"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "right_back_sole_support",
+          "parts": [
+            "right_back_floor_sole",
+            "right_back_short_support"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "right_back_support_plinth",
+          "parts": [
+            "right_back_short_support",
+            "protected_plinth"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "left_cheek_plinth",
+          "parts": [
+            "left_formed_cheek",
+            "protected_plinth"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            2.9802322387695312e-08,
+            2.9802322387695312e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "left_cheek_cap",
+          "parts": [
+            "left_formed_cheek",
+            "protected_top_cap"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            3.2782554626464844e-07,
+            1.1920928955078125e-07
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            0.9999999403953552,
+            1.0
+          ]
+        },
+        {
+          "name": "right_cheek_plinth",
+          "parts": [
+            "right_formed_cheek",
+            "protected_plinth"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            2.9802322387695312e-08,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "right_cheek_cap",
+          "parts": [
+            "right_formed_cheek",
+            "protected_top_cap"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            3.2782554626464844e-07,
+            3.1868694350123405e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            0.9999999403953552,
+            1.0
+          ]
+        },
+        {
+          "name": "back_plinth",
+          "parts": [
+            "recessed_bluegrey_back",
+            "protected_plinth"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            2.2603765970075074e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "lower_open_shelf_left_bearing",
+          "parts": [
+            "lower_open_shelf",
+            "left_formed_cheek"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            4.0672253476259357e-07,
+            6.664001972467304e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "lower_open_shelf_right_bearing",
+          "parts": [
+            "lower_open_shelf",
+            "right_formed_cheek"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.0244548320770264e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "lower_open_shelf_back_bearing",
+          "parts": [
+            "lower_open_shelf",
+            "recessed_bluegrey_back"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            5.960464477539063e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "lower_open_shelf_liner_contact",
+          "parts": [
+            "lower_open_shelf_replaceable_liner",
+            "lower_open_shelf"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.4901161193847656e-08,
+            2.9802322387695312e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "upper_open_shelf_left_bearing",
+          "parts": [
+            "upper_open_shelf",
+            "left_formed_cheek"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.0150305342904176e-06,
+            1.2287812012345967e-07
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "upper_open_shelf_right_bearing",
+          "parts": [
+            "upper_open_shelf",
+            "right_formed_cheek"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "upper_open_shelf_back_bearing",
+          "parts": [
+            "upper_open_shelf",
+            "recessed_bluegrey_back"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "upper_open_shelf_liner_contact",
+          "parts": [
+            "upper_open_shelf_replaceable_liner",
+            "upper_open_shelf"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.4901161193847656e-08,
+            2.9802322387695312e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "back_to_cap",
+          "parts": [
+            "recessed_bluegrey_back",
+            "protected_top_cap"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.4901161193847656e-07
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "left_runner_cheek",
+          "parts": [
+            "left_fixed_drawer_runner",
+            "left_formed_cheek"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.467594188397925e-07,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "right_runner_cheek",
+          "parts": [
+            "right_fixed_drawer_runner",
+            "right_formed_cheek"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.6763806343078613e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_left_base_contact",
+          "parts": [
+            "drawer_left_wall",
+            "drawer_inner_base"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.7295620864388184e-06,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            0.9999999403953552,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_left_rail_wall",
+          "parts": [
+            "drawer_left_sliding_runner",
+            "drawer_left_wall"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_left_runner_bearing",
+          "parts": [
+            "drawer_left_sliding_runner",
+            "left_fixed_drawer_runner"
+          ],
+          "kind": "sliding_boundary_contact",
+          "distances_m": [
+            1.467594188397925e-07,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_right_base_contact",
+          "parts": [
+            "drawer_right_wall",
+            "drawer_inner_base"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.73084538346302e-06,
+            3.332000986233652e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            0.9999999403953552,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_right_rail_wall",
+          "parts": [
+            "drawer_right_sliding_runner",
+            "drawer_right_wall"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.467594188397925e-07,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_right_runner_bearing",
+          "parts": [
+            "drawer_right_sliding_runner",
+            "right_fixed_drawer_runner"
+          ],
+          "kind": "sliding_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.467594188397925e-07
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_rear_base",
+          "parts": [
+            "drawer_back_wall",
+            "drawer_inner_base"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_front_base",
+          "parts": [
+            "drawer_protected_front",
+            "drawer_inner_base"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            2.3853496955439368e-08,
+            4.470348358154297e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_left_pull_contact",
+          "parts": [
+            "drawer_left_pull_return",
+            "drawer_pull_bridge"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            7.450580596923828e-09
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_left_pull_front",
+          "parts": [
+            "drawer_left_pull_return",
+            "drawer_protected_front"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_right_pull_contact",
+          "parts": [
+            "drawer_right_pull_return",
+            "drawer_pull_bridge"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "drawer_right_pull_front",
+          "parts": [
+            "drawer_right_pull_return",
+            "drawer_protected_front"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            3.0719530030864917e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "role": "ASTRAEA_staff_label",
+          "packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_staff_white_paint",
+          "packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_staff_rubber",
+          "packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_staff_zinc",
+          "packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_staff_bluegrey_paint",
+          "packed": true,
+          "emission_strength": 0.0
+        }
+      ],
+      "no_light_objects": true,
+      "passes": true
+    },
+    {
+      "catalogue_id": "AST-CRW-004",
+      "source_sha256": "9c9cfebf6a633b343b711cd349877ba11581bb9e6c34dc6a9316c646d6dba091",
+      "editable_meshes": 16,
+      "physical_markers": [
+        {
+          "name": "HEADBOARD_CONTACT_L_LOW",
+          "source_position_m": [
+            -0.10999999940395355,
+            0.0,
+            -0.11999999731779099
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-004",
+          "parent_matches": true,
+          "part": "headboard_mount_backplate",
+          "surface_distance_m": 1.666000493116826e-08,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "HEADBOARD_CONTACT_L_HIGH",
+          "source_position_m": [
+            -0.10999999940395355,
+            0.0,
+            0.11999999731779099
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-004",
+          "parent_matches": true,
+          "part": "headboard_mount_backplate",
+          "surface_distance_m": 2.2351741790771484e-08,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "HEADBOARD_CONTACT_R_LOW",
+          "source_position_m": [
+            0.10999999940395355,
+            0.0,
+            -0.11999999731779099
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-004",
+          "parent_matches": true,
+          "part": "headboard_mount_backplate",
+          "surface_distance_m": 1.053671194739536e-08,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "HEADBOARD_CONTACT_R_HIGH",
+          "source_position_m": [
+            0.10999999940395355,
+            0.0,
+            0.11999999731779099
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-004",
+          "parent_matches": true,
+          "part": "headboard_mount_backplate",
+          "surface_distance_m": 7.450580596923828e-09,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "PERSONAL_SHELF_SURFACE",
+          "source_position_m": [
+            0.0,
+            -0.12999999523162842,
+            -0.11999999731779099
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-004",
+          "parent_matches": true,
+          "part": "replaceable_small_shelf_liner",
+          "surface_distance_m": 1.4901161193847656e-08,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "PROPOSED_EMITTER_SURFACE",
+          "source_position_m": [
+            0.0,
+            -0.10999999940395355,
+            0.1599999964237213
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-004",
+          "parent_matches": true,
+          "part": "recessed_task_light_diffuser",
+          "surface_distance_m": 1.666000493116826e-08,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "PROPOSED_LIGHT_AIM",
+          "source_position_m": [
+            0.0,
+            -0.10999999940395355,
+            0.1599999964237213
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-004",
+          "parent_matches": true,
+          "passes": true
+        },
+        {
+          "name": "PROPOSED_LIGHT_CONTROL",
+          "source_position_m": [
+            0.09700000286102295,
+            -0.019999999552965164,
+            0.03200000151991844
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-004",
+          "parent_matches": true,
+          "part": "proposed_local_control_pad",
+          "surface_distance_m": 0.0,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        },
+        {
+          "name": "MOUNT_DATUM",
+          "source_position_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "matches_declared_position": true,
+          "parent_root": "AST-CRW-004",
+          "parent_matches": true,
+          "part": "headboard_mount_backplate",
+          "surface_distance_m": 2.107342389479072e-08,
+          "surface_matches": true,
+          "normal_dot": 1.0,
+          "normal_matches": true,
+          "passes": true
+        }
+      ],
+      "joins": [
+        {
+          "name": "washer_L_LOW_plate",
+          "parts": [
+            "recessed_mount_washer_L_LOW",
+            "headboard_mount_backplate"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            2.9802322387695312e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "washer_L_HIGH_plate",
+          "parts": [
+            "recessed_mount_washer_L_HIGH",
+            "headboard_mount_backplate"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.666000493116826e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "washer_R_LOW_plate",
+          "parts": [
+            "recessed_mount_washer_R_LOW",
+            "headboard_mount_backplate"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            2.107342389479072e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "washer_R_HIGH_plate",
+          "parts": [
+            "recessed_mount_washer_R_HIGH",
+            "headboard_mount_backplate"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "shelf_backplate",
+          "parts": [
+            "clipped_personal_shelf",
+            "headboard_mount_backplate"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.4901161193847656e-08,
+            2.107342389479072e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "left_gusset_shelf",
+          "parts": [
+            "left_triangular_shelf_gusset",
+            "clipped_personal_shelf"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.4901161193847656e-08,
+            3.332000986233652e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            0.9999999403953552
+          ]
+        },
+        {
+          "name": "left_gusset_plate",
+          "parts": [
+            "left_triangular_shelf_gusset",
+            "headboard_mount_backplate"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            7.450580596923828e-09,
+            7.450580596923828e-09
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "right_gusset_shelf",
+          "parts": [
+            "right_triangular_shelf_gusset",
+            "clipped_personal_shelf"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.4901161193847656e-08,
+            2.9802322387695312e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "right_gusset_plate",
+          "parts": [
+            "right_triangular_shelf_gusset",
+            "headboard_mount_backplate"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            7.450580596923828e-09,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "liner_shelf",
+          "parts": [
+            "replaceable_small_shelf_liner",
+            "clipped_personal_shelf"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.4901161193847656e-08,
+            0.0
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            0.9999999403953552
+          ]
+        },
+        {
+          "name": "light_arm_plate",
+          "parts": [
+            "supported_light_return_arm",
+            "headboard_mount_backplate"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            3.725290298461914e-09,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "name": "light_arm_hood",
+          "parts": [
+            "supported_light_return_arm",
+            "formed_shield_top"
+          ],
+          "kind": "buried_structural_overlap",
+          "distances_m": [
+            0.0020000003278255463,
+            0.003999993205070496
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true
+        },
+        {
+          "name": "front_shield_hood",
+          "parts": [
+            "lowered_front_glare_shield",
+            "formed_shield_top"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.4901161193847656e-08,
+            1.4901161193847656e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            0.9999999403953552
+          ]
+        },
+        {
+          "name": "left_shield_hood",
+          "parts": [
+            "left_light_end_shield",
+            "formed_shield_top"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            7.450580596923828e-09
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            0.9999999403953552
+          ]
+        },
+        {
+          "name": "right_shield_hood",
+          "parts": [
+            "right_light_end_shield",
+            "formed_shield_top"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            7.450580596923828e-09
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            0.9999999403953552
+          ]
+        },
+        {
+          "name": "diffuser_hood_support",
+          "parts": [
+            "recessed_task_light_diffuser",
+            "formed_shield_top"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            1.053671194739536e-08,
+            7.450580596923828e-09
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            0.9999999403953552
+          ]
+        },
+        {
+          "name": "control_pad_backplate",
+          "parts": [
+            "proposed_local_control_pad",
+            "headboard_mount_backplate"
+          ],
+          "kind": "opposing_boundary_contact",
+          "distances_m": [
+            0.0,
+            1.1175870895385742e-08
+          ],
+          "inside_or_on_both": [
+            true,
+            true
+          ],
+          "passes": true,
+          "normal_dots": [
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "role": "ASTRAEA_staff_opal",
+          "packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_staff_bluegrey_paint",
+          "packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_staff_white_paint",
+          "packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_staff_zinc",
+          "packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_staff_label",
+          "packed": true,
+          "emission_strength": 0.0
+        },
+        {
+          "role": "ASTRAEA_staff_rubber",
+          "packed": true,
+          "emission_strength": 0.0
+        }
+      ],
+      "no_light_objects": true,
+      "passes": true
+    }
+  ],
+  "all_passed": true
+}

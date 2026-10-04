@@ -1,0 +1,2181 @@
+{
+  "family": "clinical_architecture",
+  "revision": "clinical-architecture-01",
+  "new_design_count": 2,
+  "state_derivatives_are_new_designs": false,
+  "assets": [
+    {
+      "catalogue_id": "AST-MED-001",
+      "name": "Controllable opaque privacy and arrival return",
+      "title": "Controllable opaque privacy and arrival return",
+      "unique_design": true,
+      "script_assisted_original_design": true,
+      "source": "source/AST-MED-001.blend",
+      "export": "exports/AST-MED-001.glb",
+      "generator": "source/build_clinical_architecture.py",
+      "source_frame": "metres Blender Xwidth/Ydepth/Zup, front-Y",
+      "exchange_frame": "native GLB Y-up, source(x,y,z)->(x,z,-y), actual hierarchy authoritative",
+      "pivot": {
+        "source_m": [
+          0,
+          0,
+          0
+        ],
+        "gltf_m": [
+          0,
+          0,
+          0
+        ],
+        "kind": "floor origin; actual host support unknown"
+      },
+      "bounds": {
+        "min_source_m": [
+          -1.3700000047683716,
+          -0.3499999940395355,
+          0.0
+        ],
+        "max_source_m": [
+          1.3700000047683716,
+          0.44999998807907104,
+          2.359999895095825
+        ],
+        "min_gltf_m": [
+          -1.3700000047683716,
+          0.0,
+          -0.44999998807907104
+        ],
+        "max_gltf_m": [
+          1.3700000047683716,
+          2.359999895095825,
+          0.3499999940395355
+        ],
+        "dimensions_source_m": [
+          2.740000009536743,
+          0.7999999821186066,
+          2.359999895095825
+        ],
+        "dimensions_gltf_m": [
+          2.740000009536743,
+          2.359999895095825,
+          0.7999999821186066
+        ],
+        "triangles": 2442
+      },
+      "bounds_blender_z_up": {
+        "min_m": [
+          -1.3700000047683716,
+          -0.3499999940395355,
+          0.0
+        ],
+        "max_m": [
+          1.3700000047683716,
+          0.44999998807907104,
+          2.359999895095825
+        ],
+        "dimensions_m": [
+          2.740000009536743,
+          0.7999999821186066,
+          2.359999895095825
+        ]
+      },
+      "bounds_gltf_y_up": {
+        "min_m": [
+          -1.3700000047683716,
+          0.0,
+          -0.44999998807907104
+        ],
+        "max_m": [
+          1.3700000047683716,
+          2.359999895095825,
+          0.3499999940395355
+        ],
+        "dimensions_m": [
+          2.740000009536743,
+          2.359999895095825,
+          0.7999999821186066
+        ]
+      },
+      "dimensions_blender_xyz_m": [
+        2.740000009536743,
+        0.7999999821186066,
+        2.359999895095825
+      ],
+      "evaluated_source_triangles": 2442,
+      "evaluated_triangles": 2442,
+      "editable_semantic_parts": 24,
+      "semantic_parts": [
+        "left_splayed_contact_foot",
+        "left_rounded_support_post",
+        "right_splayed_contact_foot",
+        "right_rounded_support_post",
+        "fixed_quiet_arrival_return",
+        "left_rounded_return_nose",
+        "lower_return_support_bracket",
+        "upper_return_support_bracket",
+        "care_arrival_relief_plaque",
+        "care_title",
+        "care_quiet_subtitle",
+        "continuous_exposed_slider_rod",
+        "left_rod_stop",
+        "right_rod_stop",
+        "opaque_sliding_privacy_field",
+        "left_annular_slider_sleeve",
+        "left_screen_hanger",
+        "right_annular_slider_sleeve",
+        "right_screen_hanger",
+        "handle_lower_standoff",
+        "handle_upper_standoff",
+        "privacy_continuous_pull_grip",
+        "privacy_raised_semantic_band",
+        "privacy_label"
+      ],
+      "material_roles": [
+        "care_bluegreen_resin",
+        "care_brushed_metal",
+        "clinical_ink",
+        "dark_rubber",
+        "ivory_enamel",
+        "privacy_sage"
+      ],
+      "physical_and_proposal_markers": [
+        {
+          "name": "LEFT_FLOOR_CONTACT",
+          "kind": "physical_floor_contact",
+          "source_m": [
+            -1.32,
+            0.05,
+            0
+          ],
+          "gltf_m": [
+            -1.32,
+            0,
+            -0.05
+          ],
+          "physical_part": "left_splayed_contact_foot",
+          "description": "",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "RIGHT_FLOOR_CONTACT",
+          "kind": "physical_floor_contact",
+          "source_m": [
+            1.32,
+            0.05,
+            0
+          ],
+          "gltf_m": [
+            1.32,
+            0,
+            -0.05
+          ],
+          "physical_part": "right_splayed_contact_foot",
+          "description": "",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "LEFT_ROD_END_BEARING",
+          "kind": "physical_bearing_axis",
+          "source_m": [
+            -1.28,
+            0.095,
+            2.29
+          ],
+          "gltf_m": [
+            -1.28,
+            2.29,
+            -0.095
+          ],
+          "physical_part": "continuous_exposed_slider_rod",
+          "description": "End bearing into actual post, no load rating",
+          "moving_with_screen": false,
+          "normal_source": [
+            -1,
+            0,
+            0
+          ],
+          "normal_gltf": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "RIGHT_ROD_END_BEARING",
+          "kind": "physical_bearing_axis",
+          "source_m": [
+            1.28,
+            0.095,
+            2.29
+          ],
+          "gltf_m": [
+            1.28,
+            2.29,
+            -0.095
+          ],
+          "physical_part": "continuous_exposed_slider_rod",
+          "description": "End bearing into actual post, no load rating",
+          "moving_with_screen": false,
+          "normal_source": [
+            1,
+            0,
+            0
+          ],
+          "normal_gltf": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "LEFT_SLIDER_AXIS",
+          "kind": "nonphysical_joint_axis_center",
+          "source_m": [
+            0.08,
+            0.095,
+            2.29
+          ],
+          "gltf_m": [
+            0.08,
+            2.29,
+            -0.095
+          ],
+          "physical_part": null,
+          "description": "Centre lies inside actual sleeve bore; separate from bearing surface",
+          "moving_with_screen": true,
+          "normal_source": [
+            1,
+            0,
+            0
+          ],
+          "normal_gltf": [
+            1,
+            0,
+            0
+          ],
+          "open_source_m": [
+            -1.0799999999999998,
+            0.095,
+            2.29
+          ],
+          "open_gltf_m": [
+            -1.0799999999999998,
+            2.29,
+            -0.095
+          ]
+        },
+        {
+          "name": "LEFT_SLEEVE_INNER_BEARING",
+          "kind": "physical_inner_bearing_surface",
+          "source_m": [
+            0.08,
+            0.09911382,
+            2.2693185
+          ],
+          "gltf_m": [
+            0.08,
+            2.2693185,
+            -0.09911382
+          ],
+          "physical_part": "left_annular_slider_sleeve",
+          "description": "Declared 1.5mm radial design gap to rod, no solved mechanical bearing",
+          "moving_with_screen": true,
+          "normal_source": [
+            0,
+            -0.195090322,
+            0.98078528
+          ],
+          "normal_gltf": [
+            0,
+            0.98078528,
+            0.195090322
+          ],
+          "open_source_m": [
+            -1.0799999999999998,
+            0.09911382,
+            2.2693185
+          ],
+          "open_gltf_m": [
+            -1.0799999999999998,
+            2.2693185,
+            -0.09911382
+          ]
+        },
+        {
+          "name": "RIGHT_SLIDER_AXIS",
+          "kind": "nonphysical_joint_axis_center",
+          "source_m": [
+            1.0,
+            0.095,
+            2.29
+          ],
+          "gltf_m": [
+            1.0,
+            2.29,
+            -0.095
+          ],
+          "physical_part": null,
+          "description": "Centre lies inside actual sleeve bore; separate from bearing surface",
+          "moving_with_screen": true,
+          "normal_source": [
+            1,
+            0,
+            0
+          ],
+          "normal_gltf": [
+            1,
+            0,
+            0
+          ],
+          "open_source_m": [
+            -0.15999999999999992,
+            0.095,
+            2.29
+          ],
+          "open_gltf_m": [
+            -0.15999999999999992,
+            2.29,
+            -0.095
+          ]
+        },
+        {
+          "name": "RIGHT_SLEEVE_INNER_BEARING",
+          "kind": "physical_inner_bearing_surface",
+          "source_m": [
+            1.0,
+            0.09911382,
+            2.2693185
+          ],
+          "gltf_m": [
+            1.0,
+            2.2693185,
+            -0.09911382
+          ],
+          "physical_part": "right_annular_slider_sleeve",
+          "description": "Declared 1.5mm radial design gap to rod, no solved mechanical bearing",
+          "moving_with_screen": true,
+          "normal_source": [
+            0,
+            -0.195090322,
+            0.98078528
+          ],
+          "normal_gltf": [
+            0,
+            0.98078528,
+            0.195090322
+          ],
+          "open_source_m": [
+            -0.15999999999999992,
+            0.09911382,
+            2.2693185
+          ],
+          "open_gltf_m": [
+            -0.15999999999999992,
+            2.2693185,
+            -0.09911382
+          ]
+        },
+        {
+          "name": "PRIVACY_PULL_CONTACT",
+          "kind": "physical_grip_surface",
+          "source_m": [
+            1.04,
+            -0.042660254,
+            1.2
+          ],
+          "gltf_m": [
+            1.04,
+            1.2,
+            0.042660254
+          ],
+          "physical_part": "privacy_continuous_pull_grip",
+          "description": "Static contact proposal; no specified hand size or accessibility certification",
+          "moving_with_screen": true,
+          "normal_source": [
+            -0.258819045,
+            -0.965925826,
+            0
+          ],
+          "normal_gltf": [
+            -0.258819045,
+            0,
+            0.965925826
+          ],
+          "open_source_m": [
+            -0.11999999999999988,
+            -0.042660254,
+            1.2
+          ],
+          "open_gltf_m": [
+            -0.11999999999999988,
+            1.2,
+            0.042660254
+          ]
+        },
+        {
+          "name": "SCREEN_CONTROL_PROPOSAL",
+          "kind": "nonphysical_interaction_proposal",
+          "source_m": [
+            0.54,
+            -0.25,
+            1.2
+          ],
+          "gltf_m": [
+            0.54,
+            1.2,
+            0.25
+          ],
+          "physical_part": null,
+          "description": "Candidate interaction location separate from physical grip; no engine action implemented",
+          "moving_with_screen": true,
+          "normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_gltf": [
+            0,
+            0,
+            1
+          ],
+          "open_source_m": [
+            -0.6199999999999999,
+            -0.25,
+            1.2
+          ],
+          "open_gltf_m": [
+            -0.6199999999999999,
+            1.2,
+            0.25
+          ]
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "kind": "placement_origin",
+          "source_m": [
+            0,
+            0,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "physical_part": null,
+          "description": "",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "APPROACH_EYE_STANDING",
+          "kind": "nonphysical_eye_proposal",
+          "source_m": [
+            0.55,
+            -1.25,
+            1.6
+          ],
+          "gltf_m": [
+            0.55,
+            1.6,
+            1.25
+          ],
+          "physical_part": null,
+          "description": "Component test camera/eye only, no actor/species standard",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "APPROACH_EYE_SEATED",
+          "kind": "nonphysical_eye_proposal",
+          "source_m": [
+            0.55,
+            -1.25,
+            1.12
+          ],
+          "gltf_m": [
+            0.55,
+            1.12,
+            1.25
+          ],
+          "physical_part": null,
+          "description": "Component test camera/eye only, no actor/species standard",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_gltf": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "joins": [
+        {
+          "name": "left_post_to_foot",
+          "parts": [
+            "left_rounded_support_post",
+            "left_splayed_contact_foot"
+          ],
+          "probe_source_m": [
+            -1.32,
+            0.1,
+            0.045
+          ],
+          "probe_gltf_m": [
+            -1.32,
+            0.045,
+            -0.1
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_a_gltf": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_gltf": [
+            0,
+            1,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "right_post_to_foot",
+          "parts": [
+            "right_rounded_support_post",
+            "right_splayed_contact_foot"
+          ],
+          "probe_source_m": [
+            1.32,
+            0.1,
+            0.045
+          ],
+          "probe_gltf_m": [
+            1.32,
+            0.045,
+            -0.1
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_a_gltf": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_gltf": [
+            0,
+            1,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "plaque_to_fixed_return",
+          "parts": [
+            "care_arrival_relief_plaque",
+            "fixed_quiet_arrival_return"
+          ],
+          "probe_source_m": [
+            -0.65,
+            0.235,
+            1.62
+          ],
+          "probe_gltf_m": [
+            -0.65,
+            1.62,
+            -0.235
+          ],
+          "normal_a_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_a_gltf": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_gltf": [
+            0,
+            0,
+            1
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "moving_band_to_screen",
+          "parts": [
+            "privacy_raised_semantic_band",
+            "opaque_sliding_privacy_field"
+          ],
+          "probe_source_m": [
+            0.47,
+            0.055,
+            1.68
+          ],
+          "probe_gltf_m": [
+            0.47,
+            1.68,
+            -0.055
+          ],
+          "normal_a_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_a_gltf": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_gltf": [
+            0,
+            0,
+            1
+          ],
+          "kind": "opposed physical surface witness"
+        }
+      ],
+      "receiver_voids": [
+        {
+          "name": "front_approach_air",
+          "state": "all",
+          "purpose": "Unoccupied strip in front of screen/grip, no reserved host route",
+          "min_source_m": [
+            -1.15,
+            -0.33,
+            0.05
+          ],
+          "max_source_m": [
+            1.15,
+            -0.08,
+            2.15
+          ],
+          "min_gltf_m": [
+            -1.15,
+            0.05,
+            0.08
+          ],
+          "max_gltf_m": [
+            1.15,
+            2.15,
+            0.33
+          ]
+        },
+        {
+          "name": "open_right_field",
+          "state": "open",
+          "purpose": "Open-state field at right; feet/posts remain outside this finite proposal",
+          "min_source_m": [
+            0.06,
+            0.01,
+            0.22
+          ],
+          "max_source_m": [
+            1.17,
+            0.22,
+            2.14
+          ],
+          "min_gltf_m": [
+            0.06,
+            0.22,
+            -0.22
+          ],
+          "max_gltf_m": [
+            1.17,
+            2.14,
+            -0.01
+          ]
+        },
+        {
+          "name": "fixed_to_moving_parallel_clearance",
+          "state": "all",
+          "purpose": "Real nesting air between parallel screen and fixed return",
+          "min_source_m": [
+            -1.2,
+            0.14,
+            0.22
+          ],
+          "max_source_m": [
+            -0.04,
+            0.205,
+            2.15
+          ],
+          "min_gltf_m": [
+            -1.2,
+            0.22,
+            -0.205
+          ],
+          "max_gltf_m": [
+            -0.04,
+            2.15,
+            -0.14
+          ]
+        }
+      ],
+      "states": {
+        "closed": {
+          "export": "exports/AST-MED-001.glb",
+          "sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a",
+          "bounds": {
+            "min_source_m": [
+              -1.3700000047683716,
+              -0.3499999940395355,
+              0.0
+            ],
+            "max_source_m": [
+              1.3700000047683716,
+              0.44999998807907104,
+              2.359999895095825
+            ],
+            "min_gltf_m": [
+              -1.3700000047683716,
+              0.0,
+              -0.44999998807907104
+            ],
+            "max_gltf_m": [
+              1.3700000047683716,
+              2.359999895095825,
+              0.3499999940395355
+            ],
+            "dimensions_source_m": [
+              2.740000009536743,
+              0.7999999821186066,
+              2.359999895095825
+            ],
+            "dimensions_gltf_m": [
+              2.740000009536743,
+              2.359999895095825,
+              0.7999999821186066
+            ],
+            "triangles": 2442
+          }
+        },
+        "open": {
+          "export": "exports/AST-MED-001__open.glb",
+          "sha256": "c0425cd6042f522a95646188600ba72932e89f5f547ab79a88ee4cc650945864",
+          "bounds": {
+            "min_source_m": [
+              -1.3700000047683716,
+              -0.3499999940395355,
+              0.0
+            ],
+            "max_source_m": [
+              1.3700000047683716,
+              0.44999998807907104,
+              2.359999895095825
+            ],
+            "min_gltf_m": [
+              -1.3700000047683716,
+              0.0,
+              -0.44999998807907104
+            ],
+            "max_gltf_m": [
+              1.3700000047683716,
+              2.359999895095825,
+              0.3499999940395355
+            ],
+            "dimensions_source_m": [
+              2.740000009536743,
+              0.7999999821186066,
+              2.359999895095825
+            ],
+            "dimensions_gltf_m": [
+              2.740000009536743,
+              2.359999895095825,
+              0.7999999821186066
+            ],
+            "triangles": 2442
+          }
+        }
+      },
+      "details": {
+        "purpose": "Lateral privacy field beside an approach, never an inferred host door",
+        "mechanism": "Two annular sleeves on one exposed supported rod, rigid hanging screen slides left in front of the fixed arrival return",
+        "motion": {
+          "node": "SCREEN_TRANSLATION",
+          "source_axis": [
+            1,
+            0,
+            0
+          ],
+          "gltf_axis": [
+            1,
+            0,
+            0
+          ],
+          "closed_translation_source_m": [
+            0,
+            0,
+            0
+          ],
+          "open_translation_source_m": [
+            -1.16,
+            0,
+            0
+          ],
+          "closed_translation_gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "open_translation_gltf_m": [
+            -1.16,
+            0,
+            0
+          ],
+          "frames": {
+            "1": "closed",
+            "117": "open"
+          },
+          "travel_m": 1.16,
+          "derivatives_count_as_designs": false,
+          "mechanical_status": "Visual kinematic proposal only; bearings, locks, end damping and load remain unsolved"
+        },
+        "privacy_limit": "Only finite declared frontal and oblique component rays are tested; open edges and top prevent whole-room confidentiality claims"
+      },
+      "source_sha256": "9433d668e5671cdf0c29f57c90be5e631106c2ce6482f25396f49afe07cbc240",
+      "glb_sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a",
+      "generator_sha256": "a047cfbc818b1d8cf2376fea44787b713bc7e18a2345ffcc8cdec074dbd02283",
+      "collision_proposal_file": "collision_proposals.json",
+      "marker_api_file": "marker_api.json",
+      "used_textures_packed": true,
+      "source_editability": "Named original solids, retained bevels, separate materials and parts, screen prismatic hierarchy/keyframes; evaluated export copies only",
+      "limitations": [
+        "Original game unavailable; no host room polygon, walls, door, usable ceiling or support recovered",
+        "No patient capacity, rooms, beds or population added",
+        "No actual body/cart, actor, treatment, engineering load or universal species suitability validation",
+        "Inspection component only; no Godot integration, clinical implementation or runtime performance claim"
+      ]
+    },
+    {
+      "catalogue_id": "AST-MED-002",
+      "name": "Shaped clinical wash and clean-supply bay",
+      "title": "Shaped clinical wash and clean-supply bay",
+      "unique_design": true,
+      "script_assisted_original_design": true,
+      "source": "source/AST-MED-002.blend",
+      "export": "exports/AST-MED-002.glb",
+      "generator": "source/build_clinical_architecture.py",
+      "source_frame": "metres Blender Xwidth/Ydepth/Zup, front-Y",
+      "exchange_frame": "native GLB Y-up, source(x,y,z)->(x,z,-y), actual hierarchy authoritative",
+      "pivot": {
+        "source_m": [
+          0,
+          0,
+          0
+        ],
+        "gltf_m": [
+          0,
+          0,
+          0
+        ],
+        "kind": "floor origin; actual host support unknown"
+      },
+      "bounds": {
+        "min_source_m": [
+          -0.800000011920929,
+          -0.3799999952316284,
+          0.0
+        ],
+        "max_source_m": [
+          0.800000011920929,
+          0.3799999952316284,
+          1.6399999856948853
+        ],
+        "min_gltf_m": [
+          -0.800000011920929,
+          0.0,
+          -0.3799999952316284
+        ],
+        "max_gltf_m": [
+          0.800000011920929,
+          1.6399999856948853,
+          0.3799999952316284
+        ],
+        "dimensions_source_m": [
+          1.600000023841858,
+          0.7599999904632568,
+          1.6399999856948853
+        ],
+        "dimensions_gltf_m": [
+          1.600000023841858,
+          1.6399999856948853,
+          0.7599999904632568
+        ],
+        "triangles": 3164
+      },
+      "bounds_blender_z_up": {
+        "min_m": [
+          -0.800000011920929,
+          -0.3799999952316284,
+          0.0
+        ],
+        "max_m": [
+          0.800000011920929,
+          0.3799999952316284,
+          1.6399999856948853
+        ],
+        "dimensions_m": [
+          1.600000023841858,
+          0.7599999904632568,
+          1.6399999856948853
+        ]
+      },
+      "bounds_gltf_y_up": {
+        "min_m": [
+          -0.800000011920929,
+          0.0,
+          -0.3799999952316284
+        ],
+        "max_m": [
+          0.800000011920929,
+          1.6399999856948853,
+          0.3799999952316284
+        ],
+        "dimensions_m": [
+          1.600000023841858,
+          1.6399999856948853,
+          0.7599999904632568
+        ]
+      },
+      "dimensions_blender_xyz_m": [
+        1.600000023841858,
+        0.7599999904632568,
+        1.6399999856948853
+      ],
+      "evaluated_source_triangles": 3164,
+      "evaluated_triangles": 3164,
+      "editable_semantic_parts": 41,
+      "semantic_parts": [
+        "left_swept_basin_support_cheek",
+        "left_floor_isolation_shoe",
+        "right_swept_basin_support_cheek",
+        "right_floor_isolation_shoe",
+        "rear_service_bearing_wall",
+        "lower_service_and_supply_floor",
+        "basin_service_supply_divider",
+        "continuous_shaped_basin_and_dry_work_rim",
+        "front_removable_service_cover",
+        "lower_service_cover_receiver",
+        "upper_service_cover_receiver",
+        "service_cover_retainer_-0.65_0.235",
+        "service_cover_retainer_-0.65_0.625",
+        "service_cover_retainer_0.1_0.235",
+        "service_cover_retainer_0.1_0.625",
+        "service_cover_recess_grip",
+        "service_cover_semantics",
+        "lower_clean_supply_shelf",
+        "clean_supply_inner_tower_cheek",
+        "clean_supply_outer_tower_cheek",
+        "clean_supply_tower_back",
+        "clean_supply_lower_shelf",
+        "clean_supply_middle_shelf",
+        "clean_supply_shelter_cap",
+        "clean_supply_label_band",
+        "clean_supply_semantics",
+        "tap_deck_mount",
+        "tap_vertical_stem",
+        "tap_forward_elbow",
+        "tap_closed_outlet_cap",
+        "water_control_mount",
+        "water_inactive_paddle",
+        "control_control_mount",
+        "control_inactive_paddle",
+        "basin_closed_drain_cap",
+        "water_supply_rear_collar",
+        "water_supply_rear_blank_cap",
+        "drain_rear_collar",
+        "drain_rear_blank_cap",
+        "control_rear_collar",
+        "control_rear_blank_cap"
+      ],
+      "material_roles": [
+        "care_bluegreen_resin",
+        "care_brushed_metal",
+        "clinical_ink",
+        "dark_rubber",
+        "ivory_enamel",
+        "privacy_sage"
+      ],
+      "physical_and_proposal_markers": [
+        {
+          "name": "LEFT_FLOOR_CONTACT",
+          "kind": "physical_floor_contact",
+          "source_m": [
+            -0.75,
+            0.02,
+            0
+          ],
+          "gltf_m": [
+            -0.75,
+            0,
+            -0.02
+          ],
+          "physical_part": "left_floor_isolation_shoe",
+          "description": "",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "RIGHT_FLOOR_CONTACT",
+          "kind": "physical_floor_contact",
+          "source_m": [
+            0.75,
+            0.02,
+            0
+          ],
+          "gltf_m": [
+            0.75,
+            0,
+            -0.02
+          ],
+          "physical_part": "right_floor_isolation_shoe",
+          "description": "",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "SERVICE_COVER_CONTACT",
+          "kind": "physical_grip_surface",
+          "source_m": [
+            -0.2675,
+            -0.3,
+            0.58
+          ],
+          "gltf_m": [
+            -0.2675,
+            0.58,
+            0.3
+          ],
+          "physical_part": "service_cover_recess_grip",
+          "description": "Cover requires removal before interior access; no hinge/sweep or opening behavior implemented",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "SERVICE_WITHDRAWAL",
+          "kind": "nonphysical_service_approach",
+          "source_m": [
+            -0.27,
+            -0.58,
+            0.44
+          ],
+          "gltf_m": [
+            -0.27,
+            0.44,
+            0.58
+          ],
+          "physical_part": null,
+          "description": "Proposed front cover removal, no actual maintenance/tool or isolation acceptance",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "CLEAN_LOWER_SUPPORT",
+          "kind": "physical_storage_surface",
+          "source_m": [
+            0.515,
+            0.215,
+            1.0
+          ],
+          "gltf_m": [
+            0.515,
+            1.0,
+            -0.215
+          ],
+          "physical_part": "clean_supply_lower_shelf",
+          "description": "Clean supply designation is fictional organization; no contents or sterility claim",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "CLEAN_MIDDLE_SUPPORT",
+          "kind": "physical_storage_surface",
+          "source_m": [
+            0.515,
+            0.215,
+            1.25
+          ],
+          "gltf_m": [
+            0.515,
+            1.25,
+            -0.215
+          ],
+          "physical_part": "clean_supply_middle_shelf",
+          "description": "Clean supply designation is fictional organization; no contents or sterility claim",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "DRY_WORK_CONTACT",
+          "kind": "physical_work_surface",
+          "source_m": [
+            0.48,
+            -0.16,
+            0.94
+          ],
+          "gltf_m": [
+            0.48,
+            0.94,
+            0.16
+          ],
+          "physical_part": "continuous_shaped_basin_and_dry_work_rim",
+          "description": "Flat dry landing separate from recessed bowl; no reach certification",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "TAP_DECK_BEARING",
+          "kind": "physical_mount_face",
+          "source_m": [
+            -0.32,
+            0.265,
+            0.94
+          ],
+          "gltf_m": [
+            -0.32,
+            0.94,
+            -0.265
+          ],
+          "physical_part": "tap_deck_mount",
+          "description": "Physical counter bearing, no installed water system",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "UNIMPLEMENTED_WATER_OUTLET",
+          "kind": "physical_closed_port",
+          "source_m": [
+            -0.32,
+            -0.082,
+            1.151
+          ],
+          "gltf_m": [
+            -0.32,
+            1.151,
+            0.082
+          ],
+          "physical_part": "tap_closed_outlet_cap",
+          "description": "Opaque blank nozzle face; no liquid, plumbing or species compatibility implemented",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "UNIMPLEMENTED_WATER_CONTROL",
+          "kind": "physical_control_face",
+          "source_m": [
+            -0.59,
+            0.246,
+            1.001
+          ],
+          "gltf_m": [
+            -0.59,
+            1.001,
+            -0.246
+          ],
+          "physical_part": "water_inactive_paddle",
+          "description": "Static inactive interface; no temperature, dosing, chemistry or treatment behavior assigned",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "UNIMPLEMENTED_CONTROL_CONTROL",
+          "kind": "physical_control_face",
+          "source_m": [
+            -0.07,
+            0.246,
+            1.001
+          ],
+          "gltf_m": [
+            -0.07,
+            1.001,
+            -0.246
+          ],
+          "physical_part": "control_inactive_paddle",
+          "description": "Static inactive interface; no temperature, dosing, chemistry or treatment behavior assigned",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "UNIMPLEMENTED_DRAIN_FACE",
+          "kind": "physical_closed_port",
+          "source_m": [
+            -0.31,
+            -0.045,
+            0.761
+          ],
+          "gltf_m": [
+            -0.31,
+            0.761,
+            0.045
+          ],
+          "physical_part": "basin_closed_drain_cap",
+          "description": "Blank drain cap only; drain route and fluid are unimplemented",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "UNIMPLEMENTED_REAR_WATER_SUPPLY",
+          "kind": "physical_closed_port",
+          "source_m": [
+            -0.53,
+            0.379,
+            0.42
+          ],
+          "gltf_m": [
+            -0.53,
+            0.42,
+            -0.379
+          ],
+          "physical_part": "water_supply_rear_blank_cap",
+          "description": "Distinct static blank interface; no host connection or flow/control function",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "UNIMPLEMENTED_REAR_DRAIN",
+          "kind": "physical_closed_port",
+          "source_m": [
+            -0.34,
+            0.379,
+            0.32
+          ],
+          "gltf_m": [
+            -0.34,
+            0.32,
+            -0.379
+          ],
+          "physical_part": "drain_rear_blank_cap",
+          "description": "Distinct static blank interface; no host connection or flow/control function",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "UNIMPLEMENTED_REAR_CONTROL",
+          "kind": "physical_closed_port",
+          "source_m": [
+            -0.1,
+            0.379,
+            0.49
+          ],
+          "gltf_m": [
+            -0.1,
+            0.49,
+            -0.379
+          ],
+          "physical_part": "control_rear_blank_cap",
+          "description": "Distinct static blank interface; no host connection or flow/control function",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "kind": "placement_origin",
+          "source_m": [
+            0,
+            0,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "physical_part": null,
+          "description": "",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "FRONT_WORK_APPROACH",
+          "kind": "nonphysical_approach_proposal",
+          "source_m": [
+            0,
+            -0.77,
+            1.2
+          ],
+          "gltf_m": [
+            0,
+            1.2,
+            0.77
+          ],
+          "physical_part": null,
+          "description": "No body, tool, wheelchair or universal species fit",
+          "moving_with_screen": false,
+          "normal_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_gltf": [
+            0,
+            0,
+            -1
+          ]
+        }
+      ],
+      "joins": [
+        {
+          "name": "left_cheek_to_shoe",
+          "parts": [
+            "left_swept_basin_support_cheek",
+            "left_floor_isolation_shoe"
+          ],
+          "probe_source_m": [
+            -0.75,
+            0.02,
+            0.04
+          ],
+          "probe_gltf_m": [
+            -0.75,
+            0.04,
+            -0.02
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_a_gltf": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_gltf": [
+            0,
+            1,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "right_cheek_to_shoe",
+          "parts": [
+            "right_swept_basin_support_cheek",
+            "right_floor_isolation_shoe"
+          ],
+          "probe_source_m": [
+            0.75,
+            0.02,
+            0.04
+          ],
+          "probe_gltf_m": [
+            0.75,
+            0.04,
+            -0.02
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_a_gltf": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_gltf": [
+            0,
+            1,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "rim_to_left_cheek",
+          "parts": [
+            "continuous_shaped_basin_and_dry_work_rim",
+            "left_swept_basin_support_cheek"
+          ],
+          "probe_source_m": [
+            -0.75,
+            0.1,
+            0.88
+          ],
+          "probe_gltf_m": [
+            -0.75,
+            0.88,
+            -0.1
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_a_gltf": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_gltf": [
+            0,
+            1,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "rim_to_right_cheek",
+          "parts": [
+            "continuous_shaped_basin_and_dry_work_rim",
+            "right_swept_basin_support_cheek"
+          ],
+          "probe_source_m": [
+            0.75,
+            0.1,
+            0.88
+          ],
+          "probe_gltf_m": [
+            0.75,
+            0.88,
+            -0.1
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_a_gltf": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_gltf": [
+            0,
+            1,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "rim_to_rear_bearing",
+          "parts": [
+            "continuous_shaped_basin_and_dry_work_rim",
+            "rear_service_bearing_wall"
+          ],
+          "probe_source_m": [
+            0.5,
+            0.325,
+            0.88
+          ],
+          "probe_gltf_m": [
+            0.5,
+            0.88,
+            -0.325
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_a_gltf": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_gltf": [
+            0,
+            1,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "lower_cover_to_receiver",
+          "parts": [
+            "front_removable_service_cover",
+            "lower_service_cover_receiver"
+          ],
+          "probe_source_m": [
+            -0.4,
+            -0.265,
+            0.235
+          ],
+          "probe_gltf_m": [
+            -0.4,
+            0.235,
+            0.265
+          ],
+          "normal_a_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_a_gltf": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_gltf": [
+            0,
+            0,
+            1
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "lower_receiver_to_left_cheek",
+          "parts": [
+            "lower_service_cover_receiver",
+            "left_swept_basin_support_cheek"
+          ],
+          "probe_source_m": [
+            -0.715,
+            -0.18,
+            0.235
+          ],
+          "probe_gltf_m": [
+            -0.715,
+            0.235,
+            0.18
+          ],
+          "normal_a_source": [
+            -1,
+            0,
+            0
+          ],
+          "normal_b_source": [
+            1,
+            0,
+            0
+          ],
+          "normal_a_gltf": [
+            -1,
+            0,
+            0
+          ],
+          "normal_b_gltf": [
+            1,
+            0,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "lower_receiver_to_divider",
+          "parts": [
+            "lower_service_cover_receiver",
+            "basin_service_supply_divider"
+          ],
+          "probe_source_m": [
+            0.1825,
+            -0.18,
+            0.235
+          ],
+          "probe_gltf_m": [
+            0.1825,
+            0.235,
+            0.18
+          ],
+          "normal_a_source": [
+            1,
+            0,
+            0
+          ],
+          "normal_b_source": [
+            -1,
+            0,
+            0
+          ],
+          "normal_a_gltf": [
+            1,
+            0,
+            0
+          ],
+          "normal_b_gltf": [
+            -1,
+            0,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "upper_cover_to_receiver",
+          "parts": [
+            "front_removable_service_cover",
+            "upper_service_cover_receiver"
+          ],
+          "probe_source_m": [
+            -0.4,
+            -0.265,
+            0.625
+          ],
+          "probe_gltf_m": [
+            -0.4,
+            0.625,
+            0.265
+          ],
+          "normal_a_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_a_gltf": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_gltf": [
+            0,
+            0,
+            1
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "upper_receiver_to_left_cheek",
+          "parts": [
+            "upper_service_cover_receiver",
+            "left_swept_basin_support_cheek"
+          ],
+          "probe_source_m": [
+            -0.715,
+            -0.18,
+            0.625
+          ],
+          "probe_gltf_m": [
+            -0.715,
+            0.625,
+            0.18
+          ],
+          "normal_a_source": [
+            -1,
+            0,
+            0
+          ],
+          "normal_b_source": [
+            1,
+            0,
+            0
+          ],
+          "normal_a_gltf": [
+            -1,
+            0,
+            0
+          ],
+          "normal_b_gltf": [
+            1,
+            0,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "upper_receiver_to_divider",
+          "parts": [
+            "upper_service_cover_receiver",
+            "basin_service_supply_divider"
+          ],
+          "probe_source_m": [
+            0.1825,
+            -0.18,
+            0.625
+          ],
+          "probe_gltf_m": [
+            0.1825,
+            0.625,
+            0.18
+          ],
+          "normal_a_source": [
+            1,
+            0,
+            0
+          ],
+          "normal_b_source": [
+            -1,
+            0,
+            0
+          ],
+          "normal_a_gltf": [
+            1,
+            0,
+            0
+          ],
+          "normal_b_gltf": [
+            -1,
+            0,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        },
+        {
+          "name": "closed_outlet_cap_to_elbow",
+          "parts": [
+            "tap_closed_outlet_cap",
+            "tap_forward_elbow"
+          ],
+          "probe_source_m": [
+            -0.32,
+            -0.082,
+            1.16
+          ],
+          "probe_gltf_m": [
+            -0.32,
+            1.16,
+            0.082
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_a_gltf": [
+            0,
+            1,
+            0
+          ],
+          "normal_b_gltf": [
+            0,
+            -1,
+            0
+          ],
+          "kind": "opposed physical surface witness"
+        }
+      ],
+      "receiver_voids": [
+        {
+          "name": "lower_supply_retrieval_low",
+          "state": "all",
+          "purpose": "Finite actual lower front-access shelf volume",
+          "min_source_m": [
+            0.255,
+            -0.3,
+            0.17
+          ],
+          "max_source_m": [
+            0.68,
+            0.27,
+            0.43
+          ],
+          "min_gltf_m": [
+            0.255,
+            0.17,
+            -0.27
+          ],
+          "max_gltf_m": [
+            0.68,
+            0.43,
+            0.3
+          ]
+        },
+        {
+          "name": "lower_supply_retrieval_high",
+          "state": "all",
+          "purpose": "Finite actual upper front-access shelf volume",
+          "min_source_m": [
+            0.255,
+            -0.3,
+            0.515
+          ],
+          "max_source_m": [
+            0.68,
+            0.26,
+            0.8
+          ],
+          "min_gltf_m": [
+            0.255,
+            0.515,
+            -0.26
+          ],
+          "max_gltf_m": [
+            0.68,
+            0.8,
+            0.3
+          ]
+        },
+        {
+          "name": "clean_upper_retrieval",
+          "state": "all",
+          "purpose": "Upper open supply shelf mouth, finite component clearance",
+          "min_source_m": [
+            0.32,
+            0.025,
+            1.27
+          ],
+          "max_source_m": [
+            0.71,
+            0.315,
+            1.44
+          ],
+          "min_gltf_m": [
+            0.32,
+            1.27,
+            -0.315
+          ],
+          "max_gltf_m": [
+            0.71,
+            1.44,
+            -0.025
+          ]
+        },
+        {
+          "name": "clean_lower_retrieval",
+          "state": "all",
+          "purpose": "Lower open supply shelf mouth, finite component clearance",
+          "min_source_m": [
+            0.32,
+            0.025,
+            1.015
+          ],
+          "max_source_m": [
+            0.71,
+            0.315,
+            1.21
+          ],
+          "min_gltf_m": [
+            0.32,
+            1.015,
+            -0.315
+          ],
+          "max_gltf_m": [
+            0.71,
+            1.21,
+            -0.025
+          ]
+        },
+        {
+          "name": "basin_working_recess",
+          "state": "all",
+          "purpose": "Finite actual central bowl void, no virtual liquid or treatment assignment",
+          "min_source_m": [
+            -0.535,
+            -0.145,
+            0.8
+          ],
+          "max_source_m": [
+            -0.085,
+            0.055,
+            0.93
+          ],
+          "min_gltf_m": [
+            -0.535,
+            0.8,
+            -0.055
+          ],
+          "max_gltf_m": [
+            -0.085,
+            0.93,
+            0.145
+          ]
+        }
+      ],
+      "states": {
+        "closed": {
+          "export": "exports/AST-MED-002.glb",
+          "sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e",
+          "bounds": {
+            "min_source_m": [
+              -0.800000011920929,
+              -0.3799999952316284,
+              0.0
+            ],
+            "max_source_m": [
+              0.800000011920929,
+              0.3799999952316284,
+              1.6399999856948853
+            ],
+            "min_gltf_m": [
+              -0.800000011920929,
+              0.0,
+              -0.3799999952316284
+            ],
+            "max_gltf_m": [
+              0.800000011920929,
+              1.6399999856948853,
+              0.3799999952316284
+            ],
+            "dimensions_source_m": [
+              1.600000023841858,
+              0.7599999904632568,
+              1.6399999856948853
+            ],
+            "dimensions_gltf_m": [
+              1.600000023841858,
+              1.6399999856948853,
+              0.7599999904632568
+            ],
+            "triangles": 3164
+          }
+        }
+      },
+      "details": {
+        "purpose": "Separate recessed wash bowl, supported static tap/control interfaces, dry work landing, clean-supply retrieval and service access",
+        "basin_floor_source_z_m": 0.755,
+        "work_surface_source_z_m": 0.94,
+        "clean_shelf_source_z_m": [
+          1.0,
+          1.25
+        ],
+        "service_cover": "Removable static cover; withdrawal proposal only, no moving service state",
+        "functional_limit": "No active fluids, medicine, chemistry, treatment guidance, powered actions or sterility claim",
+        "species_limit": "Adjustable component proposal; shape does not demonstrate suitability for any species"
+      },
+      "source_sha256": "39ab4098c5185348f3a578b690a0da3ac9f0c61265f6621bf935f189421dca23",
+      "glb_sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e",
+      "generator_sha256": "a047cfbc818b1d8cf2376fea44787b713bc7e18a2345ffcc8cdec074dbd02283",
+      "collision_proposal_file": "collision_proposals.json",
+      "marker_api_file": "marker_api.json",
+      "used_textures_packed": true,
+      "source_editability": "Named original solids, retained bevels, separate materials and parts, screen prismatic hierarchy/keyframes; evaluated export copies only",
+      "limitations": [
+        "Original game unavailable; no host room polygon, walls, door, usable ceiling or support recovered",
+        "No patient capacity, rooms, beds or population added",
+        "No actual body/cart, actor, treatment, engineering load or universal species suitability validation",
+        "Inspection component only; no Godot integration, clinical implementation or runtime performance claim"
+      ]
+    }
+  ]
+}

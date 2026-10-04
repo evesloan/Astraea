@@ -1,0 +1,372 @@
+{
+  "passed": true,
+  "family": "clinical_architecture",
+  "executed_script_sha256": "9735d84afcdf5de50c0cf20275bd6449dc2be2019c47f350fe4c7314c47546c5",
+  "receipt": {
+    "path": "assets/clinical_architecture/qa/source_only_rebuild_receipt.json",
+    "sha256": "64a0ba9f5c75a637bb0deb2a11ce4dbd55ef1a5cbeac99df17826c2d5548f684",
+    "bytes": 7515
+  },
+  "runner": {
+    "path": "assets/clinical_architecture/qa/source_only_rebuild.py",
+    "sha256": "61e3803ecf234c249ccbbb96db5b5bf5045532670b474d4af9604ecd71a699c0",
+    "bytes": 3482
+  },
+  "executions": [
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/clinical_architecture/qa/source_only_stage/catalogue/materials/care/source/generate_care_materials.py"
+      ],
+      "executed_script": {
+        "path": "assets/clinical_architecture/qa/source_only_stage/catalogue/materials/care/source/generate_care_materials.py",
+        "sha256": "b85cb7bae7911f1f05c1b88776c482009c2c3759e37ce9f64143abd3ca63907c",
+        "bytes": 2192
+      },
+      "log": {
+        "path": "assets/clinical_architecture/qa/source_only_step_0.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/clinical_architecture/qa/source_only_stage/catalogue/assets/clinical_architecture/source/make_clinical_textures.py"
+      ],
+      "executed_script": {
+        "path": "assets/clinical_architecture/qa/source_only_stage/catalogue/assets/clinical_architecture/source/make_clinical_textures.py",
+        "sha256": "96d8ee78a530b9ab549d23804e2a3597b228922e250902b273ed413cd1f6ab11",
+        "bytes": 1429
+      },
+      "log": {
+        "path": "assets/clinical_architecture/qa/source_only_step_1.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "blender",
+        "--background",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/clinical_architecture/qa/source_only_stage/catalogue/assets/clinical_architecture/source/build_clinical_architecture.py"
+      ],
+      "executed_script": {
+        "path": "assets/clinical_architecture/qa/source_only_stage/catalogue/assets/clinical_architecture/source/build_clinical_architecture.py",
+        "sha256": "eda85a4d8a5e7127bd413c62ead546130df931c81f6b8e66d517e15ab3ad006d",
+        "bytes": 29349
+      },
+      "log": {
+        "path": "assets/clinical_architecture/qa/source_only_step_2.log",
+        "sha256": "f0bf5063562c6d58230ceefe204290231351fd157a47d432f9dfdefe56d23dc2",
+        "bytes": 10750
+      },
+      "exit_code": 0
+    }
+  ],
+  "source_only_seed_inputs": [
+    {
+      "path": "assets/clinical_architecture/source/build_clinical_architecture.py",
+      "sha256": "eda85a4d8a5e7127bd413c62ead546130df931c81f6b8e66d517e15ab3ad006d",
+      "bytes": 29349
+    },
+    {
+      "path": "assets/clinical_architecture/source/make_clinical_textures.py",
+      "sha256": "96d8ee78a530b9ab549d23804e2a3597b228922e250902b273ed413cd1f6ab11",
+      "bytes": 1429
+    },
+    {
+      "path": "materials/care/source/generate_care_materials.py",
+      "sha256": "b85cb7bae7911f1f05c1b88776c482009c2c3759e37ce9f64143abd3ca63907c",
+      "bytes": 2192
+    },
+    {
+      "path": "materials/champagne_metal.png",
+      "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+      "bytes": 5262
+    },
+    {
+      "path": "materials/clay_weave.png",
+      "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+      "bytes": 16478
+    },
+    {
+      "path": "materials/dark_rubber.png",
+      "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+      "bytes": 1631
+    },
+    {
+      "path": "materials/ivory_enamel.png",
+      "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+      "bytes": 3464
+    },
+    {
+      "path": "materials/material_manifest.json",
+      "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+      "bytes": 3672
+    },
+    {
+      "path": "materials/oatmeal_weave.png",
+      "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+      "bytes": 16827
+    },
+    {
+      "path": "materials/teal_weave.png",
+      "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+      "bytes": 16512
+    },
+    {
+      "path": "materials/warm_stone.png",
+      "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+      "bytes": 10430
+    },
+    {
+      "path": "materials/warm_walnut.png",
+      "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+      "bytes": 8275
+    },
+    {
+      "path": "standards/care_materials.py",
+      "sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+      "bytes": 1308
+    },
+    {
+      "path": "standards/materials.py",
+      "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+      "bytes": 1584
+    }
+  ],
+  "generated_material_intermediate_inputs": [
+    {
+      "path": "assets/clinical_architecture/material_manifest.json",
+      "sha256": "a29eb4e7e87eb0623a881c651bb5e799397ffbaecf1f4d43c1cbbff7fb3d77ca",
+      "bytes": 1217
+    },
+    {
+      "path": "assets/clinical_architecture/textures/clinical_ink.png",
+      "sha256": "2c3e414c1b6ecd2ca8d04acdb8b871ffa12f0dd137abefc79a3a61f9f7634390",
+      "bytes": 41099
+    },
+    {
+      "path": "assets/clinical_architecture/textures/privacy_sage.png",
+      "sha256": "1c030dccc4238fb63a826a9d944d70a8b797de344ea6adcaf56a90d40a9af0e7",
+      "bytes": 42554
+    },
+    {
+      "path": "materials/care/care_bluegreen_resin.png",
+      "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+      "bytes": 4480
+    },
+    {
+      "path": "materials/care/care_brushed_metal.png",
+      "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+      "bytes": 3750
+    },
+    {
+      "path": "materials/care/care_soft_pad.png",
+      "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+      "bytes": 5664
+    },
+    {
+      "path": "materials/care/manifest.json",
+      "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+      "bytes": 1905
+    }
+  ],
+  "production_inputs": [
+    {
+      "path": "assets/clinical_architecture/material_manifest.json",
+      "sha256": "a29eb4e7e87eb0623a881c651bb5e799397ffbaecf1f4d43c1cbbff7fb3d77ca",
+      "bytes": 1217
+    },
+    {
+      "path": "assets/clinical_architecture/source/build_clinical_architecture.py",
+      "sha256": "eda85a4d8a5e7127bd413c62ead546130df931c81f6b8e66d517e15ab3ad006d",
+      "bytes": 29349
+    },
+    {
+      "path": "assets/clinical_architecture/source/make_clinical_textures.py",
+      "sha256": "96d8ee78a530b9ab549d23804e2a3597b228922e250902b273ed413cd1f6ab11",
+      "bytes": 1429
+    },
+    {
+      "path": "assets/clinical_architecture/textures/clinical_ink.png",
+      "sha256": "2c3e414c1b6ecd2ca8d04acdb8b871ffa12f0dd137abefc79a3a61f9f7634390",
+      "bytes": 41099
+    },
+    {
+      "path": "assets/clinical_architecture/textures/privacy_sage.png",
+      "sha256": "1c030dccc4238fb63a826a9d944d70a8b797de344ea6adcaf56a90d40a9af0e7",
+      "bytes": 42554
+    },
+    {
+      "path": "materials/care/care_bluegreen_resin.png",
+      "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+      "bytes": 4480
+    },
+    {
+      "path": "materials/care/care_brushed_metal.png",
+      "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+      "bytes": 3750
+    },
+    {
+      "path": "materials/care/care_soft_pad.png",
+      "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+      "bytes": 5664
+    },
+    {
+      "path": "materials/care/manifest.json",
+      "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+      "bytes": 1905
+    },
+    {
+      "path": "materials/care/source/generate_care_materials.py",
+      "sha256": "b85cb7bae7911f1f05c1b88776c482009c2c3759e37ce9f64143abd3ca63907c",
+      "bytes": 2192
+    },
+    {
+      "path": "materials/champagne_metal.png",
+      "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+      "bytes": 5262
+    },
+    {
+      "path": "materials/clay_weave.png",
+      "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+      "bytes": 16478
+    },
+    {
+      "path": "materials/dark_rubber.png",
+      "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+      "bytes": 1631
+    },
+    {
+      "path": "materials/ivory_enamel.png",
+      "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+      "bytes": 3464
+    },
+    {
+      "path": "materials/material_manifest.json",
+      "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+      "bytes": 3672
+    },
+    {
+      "path": "materials/oatmeal_weave.png",
+      "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+      "bytes": 16827
+    },
+    {
+      "path": "materials/teal_weave.png",
+      "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+      "bytes": 16512
+    },
+    {
+      "path": "materials/warm_stone.png",
+      "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+      "bytes": 10430
+    },
+    {
+      "path": "materials/warm_walnut.png",
+      "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+      "bytes": 8275
+    },
+    {
+      "path": "standards/care_materials.py",
+      "sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+      "bytes": 1308
+    },
+    {
+      "path": "standards/materials.py",
+      "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+      "bytes": 1584
+    }
+  ],
+  "fresh_input_only_stage": true,
+  "all_helper_loaded_material_roles_included": true,
+  "source_only_build_duplicated_by_reviewer": false,
+  "byte_identical_glb_count": 3,
+  "source_motion_actions_and_evaluated_states_identical": true,
+  "assets": [
+    {
+      "catalogue_id": "AST-MED-001",
+      "source": {
+        "path": "assets/clinical_architecture/source/AST-MED-001.blend",
+        "sha256": "9433d668e5671cdf0c29f57c90be5e631106c2ce6482f25396f49afe07cbc240",
+        "bytes": 316760
+      },
+      "export": {
+        "path": "assets/clinical_architecture/exports/AST-MED-001.glb",
+        "sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a",
+        "bytes": 266944
+      },
+      "rebuilt_source": {
+        "path": "assets/clinical_architecture/qa/source_only_stage/catalogue/assets/clinical_architecture/source/AST-MED-001.blend",
+        "sha256": "92a29007fcdfef8f5fd89cb2053d0e2791b86d282860e383fc5a455c65c87c8c",
+        "bytes": 316306
+      },
+      "rebuilt_export": {
+        "path": "assets/clinical_architecture/qa/source_only_stage/catalogue/assets/clinical_architecture/exports/AST-MED-001.glb",
+        "sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a",
+        "bytes": 266944
+      },
+      "editable_named_mesh_topology_uv_material_hierarchy_modifier_properties_identical": true,
+      "evaluated_source_geometry_identical": true,
+      "independent_source_audits": [
+        {
+          "path": "qa/batch12/independent_source_AST-MED-001.json",
+          "sha256": "6dca8ea523d1718cb7db4ee9379523ce729bb76cc8d17233eeb5a753ba281356",
+          "bytes": 66059
+        },
+        {
+          "path": "qa/batch12/independent_staged_source_AST-MED-001.json",
+          "sha256": "e2a0a3b3d21d36c6d9a9efa45a03e51e44d3d2ff2c21ef84bbf5596a675c7ba7",
+          "bytes": 66126
+        }
+      ]
+    },
+    {
+      "catalogue_id": "AST-MED-002",
+      "source": {
+        "path": "assets/clinical_architecture/source/AST-MED-002.blend",
+        "sha256": "81a1bb4ed6cd918ecfdb2b4bace3878a37e0d04f561583e18cb7511dcb6165c8",
+        "bytes": 319669
+      },
+      "export": {
+        "path": "assets/clinical_architecture/exports/AST-MED-002.glb",
+        "sha256": "851d4dcb0b97b5ed0f05a1c412100bfbc1451d571ab83494eed107d1d874d824",
+        "bytes": 330960
+      },
+      "rebuilt_source": {
+        "path": "assets/clinical_architecture/qa/source_only_stage/catalogue/assets/clinical_architecture/source/AST-MED-002.blend",
+        "sha256": "b5c0a17b31e01feb92c97e79baba9911bdcbdea9e0bc89bad199e9b114aaa526",
+        "bytes": 319276
+      },
+      "rebuilt_export": {
+        "path": "assets/clinical_architecture/qa/source_only_stage/catalogue/assets/clinical_architecture/exports/AST-MED-002.glb",
+        "sha256": "851d4dcb0b97b5ed0f05a1c412100bfbc1451d571ab83494eed107d1d874d824",
+        "bytes": 330960
+      },
+      "editable_named_mesh_topology_uv_material_hierarchy_modifier_properties_identical": true,
+      "evaluated_source_geometry_identical": true,
+      "independent_source_audits": [
+        {
+          "path": "qa/batch12/independent_source_AST-MED-002.json",
+          "sha256": "f225622b769e5b749762bde2cb2d47ce359b8f77af33fb5809a9198fc7198d5d",
+          "bytes": 102955
+        },
+        {
+          "path": "qa/batch12/independent_staged_source_AST-MED-002.json",
+          "sha256": "e4a5a5c4d6e57101dd8f0be9dc37901acb295e69aeada3d2eacb043e81cb4c42",
+          "bytes": 103022
+        }
+      ]
+    }
+  ],
+  "scope": "14-input fresh stage regenerates5 maps,2 material manifests,2 editable sources and3 GLB states. Independently verified actual staged/current hashes, scripts/logs, byte-identical GLBs/interfaces/collisions and named editable mesh/topology/UV/material/hierarchy/modifier/property and motion-state signatures. Blender binary equality is not required due saved pathname differences."
+}

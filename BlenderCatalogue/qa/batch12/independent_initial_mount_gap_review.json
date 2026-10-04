@@ -1,0 +1,30 @@
+{
+  "passed": false,
+  "source": "assets/clinical_architecture/source/AST-MED-002.blend",
+  "source_sha256": "81a1bb4ed6cd918ecfdb2b4bace3878a37e0d04f561583e18cb7511dcb6165c8",
+  "scope": "Additional whole-assembly support review outside previously declared joins",
+  "findings": [
+    {
+      "part": "tap_closed_outlet_cap",
+      "nearest_support": "tap_forward_elbow",
+      "actual_gap_m": 0.001999974250793457,
+      "actual_source_z_m": [
+        1.158,
+        1.16
+      ],
+      "finding": "Opaque outlet cap floats below elbow; actual mount must be joined and witnessed."
+    },
+    {
+      "part": "front_removable_service_cover",
+      "nearest_structure_distances_m": {
+        "left_swept_basin_support_cheek": 0.014999985694885252,
+        "basin_service_supply_divider": 0.017499998211860653,
+        "lower_service_and_supply_floor": 0.03640053520047118,
+        "continuous_shaped_basin_and_dry_work_rim": 0.07149450519512313
+      },
+      "finding": "Cover/retainer/grip/text group is unsupported by service-base structure; side receivers are missing. Add real modest receivers and physical opposing contact witnesses."
+    }
+  ],
+  "source_cache": "qa/batch12/independent_source_geometry_AST-MED-002.npz",
+  "method": "Actual evaluated source part bounds and bidirectional vertex-to-triangle nearest-distance corroboration; side and vertical AABB gaps independently separate these solids. Existing cover-attached retainers/grip/text are excluded from structure comparison."
+}

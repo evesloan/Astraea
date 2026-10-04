@@ -1,0 +1,1 @@
+The initial three intended open images incorrectly remained closed because the imported pivot used quaternion mode. They are invalid open-state evidence and were superseded. Their exact original hashes and intended camera records are preserved in invalid_pose_manifest.json. Current root QA images use XYZ mode, a numeric per-frame pivot-matrix assertion, and pixel review.

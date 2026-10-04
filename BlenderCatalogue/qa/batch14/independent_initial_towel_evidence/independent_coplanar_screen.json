@@ -1,0 +1,64 @@
+{
+  "scope": "Advisory same-facing axial triangle/material overlap screen, not automatic visibility rejection. Opposite-facing physical joins and nonaxial contacts are excluded.",
+  "assets": [
+    {
+      "source": "assets/aquatic_towel_use/source/AST-AQU-007.blend",
+      "source_sha256": "24c11bc86af0756f0c93a65a6fd8026ba33487da830c8dec4767f301eaaf0478",
+      "suspected_same_facing_overlaps": []
+    },
+    {
+      "source": "assets/aquatic_towel_use/source/AST-AQU-008.blend",
+      "source_sha256": "47a95f503c2d18b171b5db00ee05c36e8740a0927931ce019ea7f97eceed6af0",
+      "suspected_same_facing_overlaps": [
+        {
+          "parts": [
+            "return_chute_side_1",
+            "return_opaque_dogleg_baffle"
+          ],
+          "axis": 2,
+          "normal_sign": -1,
+          "plane_source_m": 0.495,
+          "overlap_area_m2": 1.9999946951898557e-05,
+          "sample_point_source_m": [
+            0.3067757931413415,
+            0.19603468233030086,
+            0.495
+          ],
+          "outward_probe_inside_solid": false,
+          "normal_25mm_probe_unoccluded": true,
+          "floor_contact_plane": false
+        },
+        {
+          "parts": [
+            "return_chute_side_-1",
+            "return_opaque_dogleg_baffle"
+          ],
+          "axis": 2,
+          "normal_sign": -1,
+          "plane_source_m": 0.495,
+          "overlap_area_m2": 1.999994695189855e-05,
+          "sample_point_source_m": [
+            -0.30649998784065247,
+            0.19600000232458115,
+            0.495
+          ],
+          "outward_probe_inside_solid": false,
+          "normal_25mm_probe_unoccluded": true,
+          "floor_contact_plane": false
+        }
+      ]
+    },
+    {
+      "source": "assets/aquatic_wet_use/source/AST-AQU-009.blend",
+      "source_sha256": "cb0ca1dcd59c9df95760e25df13a9e1fd738744d8150551405b207b53816ee49",
+      "suspected_same_facing_overlaps": []
+    },
+    {
+      "source": "assets/aquatic_wet_use/source/AST-AQU-010.blend",
+      "source_sha256": "621da29d34717e9219f7ad77afaf7ee253e56cd2055fb78d5d2b56bca650b086",
+      "suspected_same_facing_overlaps": []
+    }
+  ],
+  "passed": false,
+  "exposed_same_facing_pair_count": 2
+}

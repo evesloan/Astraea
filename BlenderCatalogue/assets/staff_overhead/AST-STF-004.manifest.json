@@ -1,0 +1,250 @@
+{
+  "catalogue_id": "AST-STF-004",
+  "title": "Supported straight service run",
+  "unique_design": true,
+  "kind": "straight",
+  "units": "metres",
+  "source": "source/AST-STF-004.blend",
+  "export": "exports/AST-STF-004.glb",
+  "generator": "source/build_staff_overhead.py",
+  "script_assisted_original_design": true,
+  "coordinates": "Blender Z up. Ceiling mounting datum at local Z0, hangs negative Z. Straight travel +X; turn exits +Y; fixture long axis +X. GLB standard Y-up conversion.",
+  "pivot": {
+    "position_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "Ceiling support plane at entry centreline, or fixture pitch start"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      0.0010000000474974513,
+      -0.36500000953674316,
+      -0.44200000166893005
+    ],
+    "max_m": [
+      1.2350000143051147,
+      0.36500000953674316,
+      0.0
+    ],
+    "dimensions_m": [
+      1.2340000142576173,
+      0.7300000190734863,
+      0.44200000166893005
+    ]
+  },
+  "evaluated_triangles": 2356,
+  "editable_semantic_parts": 57,
+  "semantic_parts": [
+    "formed_left_return_lip_rail",
+    "formed_right_return_lip_rail",
+    "ladder_rung_01_folded_pan",
+    "service_01_saddle_+0.030",
+    "service_01_saddle_+0.158",
+    "ladder_rung_02_folded_pan",
+    "service_02_saddle_+0.030",
+    "service_02_saddle_+0.158",
+    "ladder_rung_03_folded_pan",
+    "service_03_saddle_+0.030",
+    "service_03_saddle_+0.158",
+    "ladder_rung_04_folded_pan",
+    "service_04_saddle_+0.030",
+    "service_04_saddle_+0.158",
+    "ladder_rung_05_folded_pan",
+    "service_05_saddle_+0.030",
+    "service_05_saddle_+0.158",
+    "large_conduit_continuous_ordered_run",
+    "large_conduit_exit_union_sleeve",
+    "small_conduit_continuous_ordered_run",
+    "small_conduit_exit_union_sleeve",
+    "cable_A_continuous_ordered_run",
+    "cable_A_end_identification_band",
+    "cable_B_continuous_ordered_run",
+    "cable_B_end_identification_band",
+    "cable_C_continuous_ordered_run",
+    "cable_C_end_identification_band",
+    "exit_splice_collar_1",
+    "exit_splice_collar_2",
+    "exit_splice_fastener_1.175_-1",
+    "exit_splice_fastener_1.175_+1",
+    "exit_splice_fastener_1.223_-1",
+    "exit_splice_fastener_1.223_+1",
+    "support_1_formed_crossbeam",
+    "support_1_-1_ceiling_anchor_plate",
+    "support_1_-1_suspension_rod",
+    "support_1_-1_beam_retaining_nut",
+    "support_1_-1_anchor_nut",
+    "support_1_+1_ceiling_anchor_plate",
+    "support_1_+1_suspension_rod",
+    "support_1_+1_beam_retaining_nut",
+    "support_1_+1_anchor_nut",
+    "support_2_formed_crossbeam",
+    "support_2_-1_ceiling_anchor_plate",
+    "support_2_-1_suspension_rod",
+    "support_2_-1_beam_retaining_nut",
+    "support_2_-1_anchor_nut",
+    "support_2_+1_ceiling_anchor_plate",
+    "support_2_+1_suspension_rod",
+    "support_2_+1_beam_retaining_nut",
+    "support_2_+1_anchor_nut",
+    "cable_retainer_1_bridge",
+    "cable_retainer_1_foot_-0.196",
+    "cable_retainer_1_foot_-0.061",
+    "cable_retainer_2_bridge",
+    "cable_retainer_2_foot_-0.196",
+    "cable_retainer_2_foot_-0.061"
+  ],
+  "material_roles": [
+    "staff_cable_blue",
+    "staff_cable_red",
+    "staff_label",
+    "staff_rubber",
+    "staff_white_paint",
+    "staff_zinc"
+  ],
+  "runtime_static_consolidation": "One mesh per semantic material role; active UV names normalized before join; real planar end caps; no runtime light objects",
+  "nominal_straight_pitch_m": 1.2,
+  "turn_centerline_radius_m": null,
+  "joins": [
+    {
+      "id": "entry",
+      "origin_m": [
+        0,
+        0,
+        0
+      ],
+      "outward_tangent": [
+        -1,
+        0,
+        0
+      ],
+      "seam_plane": "X0",
+      "body_inset_m": 0.001,
+      "receiver": "No entry collar; receives preceding exit collar"
+    },
+    {
+      "id": "exit",
+      "origin_m": [
+        1.2,
+        0,
+        0
+      ],
+      "outward_tangent": [
+        1,
+        0,
+        0
+      ],
+      "seam_plane": "X1.2",
+      "body_inset_m": 0.001,
+      "exit_splice_extension_m": 0.035
+    }
+  ],
+  "ceiling_support_anchors": [
+    {
+      "name": "support_1_-1",
+      "position_m": [
+        0.24,
+        -0.327,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "plate_size_m": [
+        0.105,
+        0.075,
+        0.012
+      ],
+      "status": "geometric ceiling anchor proposal; substrate/load ratings unverified"
+    },
+    {
+      "name": "support_1_+1",
+      "position_m": [
+        0.24,
+        0.327,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "plate_size_m": [
+        0.105,
+        0.075,
+        0.012
+      ],
+      "status": "geometric ceiling anchor proposal; substrate/load ratings unverified"
+    },
+    {
+      "name": "support_2_-1",
+      "position_m": [
+        0.96,
+        -0.327,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "plate_size_m": [
+        0.105,
+        0.075,
+        0.012
+      ],
+      "status": "geometric ceiling anchor proposal; substrate/load ratings unverified"
+    },
+    {
+      "name": "support_2_+1",
+      "position_m": [
+        0.96,
+        0.327,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "plate_size_m": [
+        0.105,
+        0.075,
+        0.012
+      ],
+      "status": "geometric ceiling anchor proposal; substrate/load ratings unverified"
+    }
+  ],
+  "lowest_geometry_z_m": -0.44200000166893005,
+  "lowest_geometry_semantics": "suspension rod ends",
+  "inspection_clearance_example": {
+    "ceiling_datum_world_z_m": 3.3,
+    "world_lowest_geometry_z_m": 2.8579999983310698,
+    "minimum_requested_clearance_m": 2.65,
+    "meets_example": true,
+    "limitation": "Component inspection placement only. No claim of actual ship route headroom, structural safety or installation",
+    "minimum_mounting_datum_for_2_65m_m": 3.09200000166893,
+    "installation_limit": "The fixture requires a ceiling mounting datum of at least 3.2575 m to preserve 2.65 m below its guard. A lower crew corridor is not automatically suitable. The 3.30 m inspection example does not certify an actual route."
+  },
+  "fixture_anchor_data_only": null,
+  "support_proposal": "Two paired ceiling rod supports with plates, crossbeams and retaining nuts",
+  "collision_proposal_file": "collision_proposals.json",
+  "reference_manifest": "../../batches/batch03/reference_manifest.json",
+  "dependencies": [
+    "../../standards/staff_materials.py",
+    "../../materials/staff/"
+  ],
+  "limitations": [
+    "Not installed in original ship",
+    "No electrical or photometric function",
+    "No engine/route/structural/load rating verification",
+    "No new game systems or room allocation"
+  ],
+  "source_sha256": "7a5810aa3a87ab95c1e4ee1d89742d4c946346fb64328d07120aad872f457d85",
+  "glb_sha256": "f47a6cefb7c02fde0111cdb06966758b6b6d0958fe8645c4856356192a8e58ac",
+  "hanger_length_editability": "Named rod/drop meshes and support dimensions are editable in source/generator. No single validated hanger-length parameter or tested shorter installation is provided.",
+  "generator_sha256": "6828950f293763bc4a1aa54e25c2b101c194a786c512e4e98b10e8ee2c6aae37"
+}

@@ -1,0 +1,5092 @@
+{
+  "path": "qa/batch15/independent_rebuild_stage_crew_rest_r02/assets/crew_rest/source/AST-CRW-001.blend",
+  "sha256": "6cf05ec7c1fb4d866ad60585697a2018f16c2a443a6b1d6f70e5abdbba419103",
+  "executed_script_sha256": "5d6212eecf724895b50baf077a0a97ade7586974487a94ad1bbfadb8d7944111",
+  "blender_version": "4.3.2",
+  "units": {
+    "system": "METRIC",
+    "scale_length": 1.0
+  },
+  "scene_properties": {
+    "scope": "Independent editable components only; no original host, actor/species fit, structural loads or runtime controls",
+    "design_parameters_json": "{\"frame_width\": 1.08, \"frame_length\": 2.2, \"head_height\": 1.1, \"rest_height\": 0.534, \"curtain_x\": 0.68, \"closed_leading_y\": 0.02, \"closed_span\": 2.16, \"gathered_span\": 0.36, \"pleat_count\": 24, \"closed_half_amplitude\": 0.025, \"fabric_bottom\": 0.28, \"fabric_top\": 2.015}"
+  },
+  "objects": [
+    {
+      "name": "AST-CRW-001_floor_foot_end_datum",
+      "type": "EMPTY",
+      "parent": null,
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "catalogue_id": "AST-CRW-001",
+        "datum": "floor at centre of foot end; footprint y0..2.20"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "001_floor_pad_-1_0",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.531000018119812,
+        0.07500000298023224,
+        0.0
+      ],
+      "max_xyz": [
+        -0.4490000009536743,
+        0.1850000023841858,
+        0.017999999225139618
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ],
+      "editable_mesh_sha256": "0483b6d6fcde98003a97bc3fa976e8b041c1f55c5f7b83111cf9a9018b44caff",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_folded_leg_-1_0",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.5230000019073486,
+        0.09000000357627869,
+        0.017999999225139618
+      ],
+      "max_xyz": [
+        -0.4569999873638153,
+        0.17000000178813934,
+        0.34700000286102295
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "4b490a0d2d630096ef12481f68aa205a6521cd3f674e4a492ca6cc79ed2ab0d3",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "MARKER_floor_contact_-1_0",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.49000000953674316
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.12999999523162842
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"floor_contact_-1_0\", \"physical_object\": \"001_floor_pad_-1_0\", \"point_source_m\": [-0.49, 0.13, 0], \"normal_source\": [0, 0, -1], \"point_glb_m\": [-0.49, 0, -0.13], \"normal_glb\": [0, -1, 0], \"kind\": \"physical_surface\", \"purpose\": \"Actual supported foot; floor/load unknown\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "001_floor_pad_-1_1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.531000018119812,
+        1.0449999570846558,
+        0.0
+      ],
+      "max_xyz": [
+        -0.4490000009536743,
+        1.1549999713897705,
+        0.017999999225139618
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ],
+      "editable_mesh_sha256": "24172ffd362b1c275d0cf4a8d44daac9f4afa1197f07cd131a8bf6e95e905191",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_folded_leg_-1_1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.5230000019073486,
+        1.059999942779541,
+        0.017999999225139618
+      ],
+      "max_xyz": [
+        -0.4569999873638153,
+        1.1399999856948853,
+        0.34700000286102295
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "5a037cf1862f7c6e7191982589b0d44ce7895e29b21471700f637acf11f33ee1",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "MARKER_floor_contact_-1_1",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.49000000953674316
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.100000023841858
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"floor_contact_-1_1\", \"physical_object\": \"001_floor_pad_-1_1\", \"point_source_m\": [-0.49, 1.1, 0], \"normal_source\": [0, 0, -1], \"point_glb_m\": [-0.49, 0, -1.1], \"normal_glb\": [0, -1, 0], \"kind\": \"physical_surface\", \"purpose\": \"Actual supported foot; floor/load unknown\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "001_floor_pad_-1_2",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.531000018119812,
+        2.015000104904175,
+        0.0
+      ],
+      "max_xyz": [
+        -0.4490000009536743,
+        2.125,
+        0.017999999225139618
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ],
+      "editable_mesh_sha256": "09763eefa3f4fa0750604b1fb7ab23a1eec65d7d46b26876a5b7da441123fcda",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_folded_leg_-1_2",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.5230000019073486,
+        2.0299999713897705,
+        0.017999999225139618
+      ],
+      "max_xyz": [
+        -0.4569999873638153,
+        2.109999895095825,
+        0.34700000286102295
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "62419ccf4606f9b0f67caeb77af4c44022e72b3349297df22537ed821291d2cf",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "MARKER_floor_contact_-1_2",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.49000000953674316
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          2.069999933242798
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"floor_contact_-1_2\", \"physical_object\": \"001_floor_pad_-1_2\", \"point_source_m\": [-0.49, 2.07, 0], \"normal_source\": [0, 0, -1], \"point_glb_m\": [-0.49, 0, -2.07], \"normal_glb\": [0, -1, 0], \"kind\": \"physical_surface\", \"purpose\": \"Actual supported foot; floor/load unknown\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "001_side_rail_-1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.5400000214576721,
+        0.04500000178813934,
+        0.32199999690055847
+      ],
+      "max_xyz": [
+        -0.4699999988079071,
+        2.1549999713897705,
+        0.414000004529953
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "1a03ffe33124d4421575856b7df7e7d494e92d24cf2ae9e1880f6796236aaf56",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_inward_bearing_lip_-1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.5299999713897705,
+        0.06499999761581421,
+        0.414000004529953
+      ],
+      "max_xyz": [
+        -0.4449999928474426,
+        2.134999990463257,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "919eea21c02dee61d2ff8406916a1b56814f808b7bff936b5b0185a41588cc3f",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0010000000474974513,
+          "width_pct": 0.0010000000474974513,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_floor_pad_1_0",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.4490000009536743,
+        0.07500000298023224,
+        0.0
+      ],
+      "max_xyz": [
+        0.531000018119812,
+        0.1850000023841858,
+        0.017999999225139618
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ],
+      "editable_mesh_sha256": "7a67884ba6901c60d5b7035809d1aeb2cdb82ab4b8234780e7f89177c2ddc0ce",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_folded_leg_1_0",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.4569999873638153,
+        0.09000000357627869,
+        0.017999999225139618
+      ],
+      "max_xyz": [
+        0.5230000019073486,
+        0.17000000178813934,
+        0.34700000286102295
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "ff3ccb4bbb5ec03f3e119350a298df39695ab2dd8f5f95fa059f2c65a7b6b3c8",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "MARKER_floor_contact_1_0",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.49000000953674316
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.12999999523162842
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"floor_contact_1_0\", \"physical_object\": \"001_floor_pad_1_0\", \"point_source_m\": [0.49, 0.13, 0], \"normal_source\": [0, 0, -1], \"point_glb_m\": [0.49, 0, -0.13], \"normal_glb\": [0, -1, 0], \"kind\": \"physical_surface\", \"purpose\": \"Actual supported foot; floor/load unknown\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "001_floor_pad_1_1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.4490000009536743,
+        1.0449999570846558,
+        0.0
+      ],
+      "max_xyz": [
+        0.531000018119812,
+        1.1549999713897705,
+        0.017999999225139618
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ],
+      "editable_mesh_sha256": "bdcbdcb4b8fc3f2c71d6647b3ab4de843c31c1599c947fea9be91206019bb3ce",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_folded_leg_1_1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.4569999873638153,
+        1.059999942779541,
+        0.017999999225139618
+      ],
+      "max_xyz": [
+        0.5230000019073486,
+        1.1399999856948853,
+        0.34700000286102295
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "ed77f8e13d229c8a3a22c200342c3916024eeff1fd5d29554e3b894edb287691",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "MARKER_floor_contact_1_1",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.49000000953674316
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.100000023841858
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"floor_contact_1_1\", \"physical_object\": \"001_floor_pad_1_1\", \"point_source_m\": [0.49, 1.1, 0], \"normal_source\": [0, 0, -1], \"point_glb_m\": [0.49, 0, -1.1], \"normal_glb\": [0, -1, 0], \"kind\": \"physical_surface\", \"purpose\": \"Actual supported foot; floor/load unknown\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "001_floor_pad_1_2",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_rubber",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.4490000009536743,
+        2.015000104904175,
+        0.0
+      ],
+      "max_xyz": [
+        0.531000018119812,
+        2.125,
+        0.017999999225139618
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ],
+      "editable_mesh_sha256": "a4622d7e6544d88ddaafdf54f95951c2066fccc23e8611916b950a5c0e1acfa8",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_folded_leg_1_2",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.4569999873638153,
+        2.0299999713897705,
+        0.017999999225139618
+      ],
+      "max_xyz": [
+        0.5230000019073486,
+        2.109999895095825,
+        0.34700000286102295
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "74a53f1b0b1238c673cfb377716f2bc75eb7a7ee15b5897fd99e466c19812dd9",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "MARKER_floor_contact_1_2",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.49000000953674316
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          2.069999933242798
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"floor_contact_1_2\", \"physical_object\": \"001_floor_pad_1_2\", \"point_source_m\": [0.49, 2.07, 0], \"normal_source\": [0, 0, -1], \"point_glb_m\": [0.49, 0, -2.07], \"normal_glb\": [0, -1, 0], \"kind\": \"physical_surface\", \"purpose\": \"Actual supported foot; floor/load unknown\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "001_side_rail_1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.4699999988079071,
+        0.04500000178813934,
+        0.32199999690055847
+      ],
+      "max_xyz": [
+        0.5400000214576721,
+        2.1549999713897705,
+        0.414000004529953
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "0e0fcf86742c171546bc2ee6bb9376a4f346c1b388572c21c3d31e8eb87b30c1",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.003000000026077032,
+          "width_pct": 0.003000000026077032,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_inward_bearing_lip_1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.4449999928474426,
+        0.06499999761581421,
+        0.414000004529953
+      ],
+      "max_xyz": [
+        0.5299999713897705,
+        2.134999990463257,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "d4aeefb0f2e92ca774302e5946351bd8ba2fde862a88bafa676cb0dc2a6a8bed",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0010000000474974513,
+          "width_pct": 0.0010000000474974513,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_breathable_support_slat_0",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.4699999988079071,
+        0.11599999666213989,
+        0.4009999930858612
+      ],
+      "max_xyz": [
+        0.4699999988079071,
+        0.20399999618530273,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "19754c0e194e90801c7eda93b787580cfb3f2e87e743cbcd5494d50ce4e68997",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_breathable_support_slat_1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.4699999988079071,
+        0.35100001096725464,
+        0.4009999930858612
+      ],
+      "max_xyz": [
+        0.4699999988079071,
+        0.4390000104904175,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "d6252da1eb9430303c78e198aa5d861651f1d8e69019447d6b2568fcf932ebc7",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_breathable_support_slat_2",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.4699999988079071,
+        0.5860000252723694,
+        0.4009999930858612
+      ],
+      "max_xyz": [
+        0.4699999988079071,
+        0.6740000247955322,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "fda268d0fb8a88ad0fcb19f6120246914eaf8bac50e4e571e752b7c89ff4bfff",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_breathable_support_slat_3",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.4699999988079071,
+        0.8209999799728394,
+        0.4009999930858612
+      ],
+      "max_xyz": [
+        0.4699999988079071,
+        0.9089999794960022,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "0c5c54285a8404c7de121539e9b3c4c3f3480aff85aecf08b4b10553a55e509a",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_breathable_support_slat_4",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.4699999988079071,
+        1.055999994277954,
+        0.4009999930858612
+      ],
+      "max_xyz": [
+        0.4699999988079071,
+        1.1440000534057617,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "6de35e5dd8caa36d881bc6b3b5e3add2adcb2bb91349efccbb67e54444fd8b15",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_breathable_support_slat_5",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.4699999988079071,
+        1.2910000085830688,
+        0.4009999930858612
+      ],
+      "max_xyz": [
+        0.4699999988079071,
+        1.378999948501587,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "db710025196d397ab43efdae8cd789527e800165c0639d74071c36d3d15afc84",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_breathable_support_slat_6",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.4699999988079071,
+        1.5260000228881836,
+        0.4009999930858612
+      ],
+      "max_xyz": [
+        0.4699999988079071,
+        1.6139999628067017,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "7240d60880109148f023bab2949ba7de276e83e7c2536ef5888a73d442af30ba",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_breathable_support_slat_7",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.4699999988079071,
+        1.7610000371932983,
+        0.4009999930858612
+      ],
+      "max_xyz": [
+        0.4699999988079071,
+        1.8489999771118164,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "83608287473051f1531722313ec3b52177669a164fe48b75e4b343d566ba4f2d",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_breathable_support_slat_8",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_zinc",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.4699999988079071,
+        1.996000051498413,
+        0.4009999930858612
+      ],
+      "max_xyz": [
+        0.4699999988079071,
+        2.0840001106262207,
+        0.42500001192092896
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "editable_mesh_sha256": "b53393c72e0e2f83b111f700da8f4df06e2a49d9e3b991707c708ad985523178",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_foot_crossrail",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.5,
+        0.02500000037252903,
+        0.32199999690055847
+      ],
+      "max_xyz": [
+        0.5,
+        0.06499999761581421,
+        0.414000004529953
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "8571e57cb21f962a27a490085d8b42269a4415cfa43d12cefb2bcf1a4fe32d1d",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_head_crossrail",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.5,
+        2.134999990463257,
+        0.32199999690055847
+      ],
+      "max_xyz": [
+        0.5,
+        2.174999952316284,
+        0.414000004529953
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "ca27f45a19a0e0235f2fcca9de1204ed4003326126dafec061945c7a1179faac",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_shaped_single_mattress",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "crew_ecru_sheet",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 476,
+      "min_xyz": [
+        -0.48899999260902405,
+        0.10000000149011612,
+        0.42500001192092896
+      ],
+      "max_xyz": [
+        0.48899999260902405,
+        2.0799999237060547,
+        0.5339999794960022
+      ],
+      "source_vertices": 240,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_crew_ecru_sheet"
+      ],
+      "editable_mesh_sha256": "2514537077f060fa1270b9863f8438676da485d2acd6a06146580180c79d41a2",
+      "modifier_settings": []
+    },
+    {
+      "name": "001_shaped_head_pillow",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "crew_ecru_sheet",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "evaluated_triangles": 476,
+      "min_xyz": [
+        -0.3440000116825104,
+        1.555999994277954,
+        0.5339999794960022
+      ],
+      "max_xyz": [
+        0.3440000116825104,
+        2.0439999103546143,
+        0.6570000052452087
+      ],
+      "source_vertices": 240,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_crew_ecru_sheet"
+      ],
+      "editable_mesh_sha256": "4771e0f95e90a0c278847b35c54ed9e1174ff439f1fdb18d4992b7842acffcea",
+      "modifier_settings": []
+    },
+    {
+      "name": "001_draped_folded_blanket",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "crew_terracotta_blanket",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable textile thickness",
+          "type": "SOLIDIFY",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 832,
+      "min_xyz": [
+        -0.5099644064903259,
+        0.14997310936450958,
+        0.4326251149177551
+      ],
+      "max_xyz": [
+        0.5099644064903259,
+        1.4832806587219238,
+        0.554496169090271
+      ],
+      "source_vertices": 209,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_crew_terracotta_blanket"
+      ],
+      "editable_mesh_sha256": "599e5c618a2ca85e456ff5c63f9a59c03eac9c57fb8db87d6b39d10800df4e16",
+      "modifier_settings": [
+        {
+          "name": "Editable textile thickness",
+          "type": "SOLIDIFY",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 129666994,
+          "solidify_mode": "EXTRUDE",
+          "thickness": 0.004000000189989805,
+          "thickness_clamp": 0.0,
+          "use_thickness_angle_clamp": false,
+          "thickness_vertex_group": 0.0,
+          "offset": 0.0,
+          "edge_crease_inner": 0.0,
+          "edge_crease_outer": 0.0,
+          "edge_crease_rim": 0.0,
+          "material_offset": 0,
+          "material_offset_rim": 0,
+          "vertex_group": "",
+          "shell_vertex_group": "",
+          "rim_vertex_group": "",
+          "use_rim": true,
+          "use_even_offset": false,
+          "use_quality_normals": false,
+          "invert_vertex_group": false,
+          "use_flat_faces": false,
+          "use_flip_normals": false,
+          "use_rim_only": false,
+          "nonmanifold_thickness_mode": "CONSTRAINTS",
+          "nonmanifold_boundary_mode": "NONE",
+          "nonmanifold_merge_threshold": 9.999999747378752e-05,
+          "bevel_convex": 0.0
+        }
+      ]
+    },
+    {
+      "name": "001_flat_headboard",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_white_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.5,
+        2.140000104904175,
+        0.414000004529953
+      ],
+      "max_xyz": [
+        0.5,
+        2.200000047683716,
+        1.100000023841858
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_white_paint"
+      ],
+      "editable_mesh_sha256": "a4a889a597870598703f8c217f6e23ab8ea32a58b44b0c527f6a8daae0df87aa",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.007000000216066837,
+          "width_pct": 0.007000000216066837,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_headboard_support_-1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.48500001430511475,
+        2.140000104904175,
+        0.0
+      ],
+      "max_xyz": [
+        -0.41499999165534973,
+        2.200000047683716,
+        0.414000004529953
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "4dbd920989e5f067f53229117a59659cbec53657b2304fa22d5c6c4459de770b",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_headboard_support_1",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_bluegrey_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        0.41499999165534973,
+        2.140000104904175,
+        0.0
+      ],
+      "max_xyz": [
+        0.48500001430511475,
+        2.200000047683716,
+        0.414000004529953
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "editable_mesh_sha256": "cacde82a599e076fe8e2c25bfcc3b31ef28a441291446bb25eba0123779aced6",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.0020000000949949026,
+          "width_pct": 0.0020000000949949026,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "001_low_foot_guard",
+      "type": "MESH",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "material_role": "staff_white_paint",
+        "authoring": "Original editable geometric construction"
+      },
+      "drivers": [],
+      "modifiers": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "enabled": true
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "enabled": true
+        }
+      ],
+      "evaluated_triangles": 108,
+      "min_xyz": [
+        -0.47999998927116394,
+        0.0,
+        0.34200000762939453
+      ],
+      "max_xyz": [
+        0.47999998927116394,
+        0.05000000074505806,
+        0.49000000953674316
+      ],
+      "source_vertices": 8,
+      "uv_layers": [
+        "metric_material_uv"
+      ],
+      "materials": [
+        "ASTRAEA_staff_white_paint"
+      ],
+      "editable_mesh_sha256": "639985403c7d32ab74df823c380af65f395887b45e331bb6cf8f1c1baa89ae03",
+      "modifier_settings": [
+        {
+          "name": "Editable edge easing",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": false,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1277244409,
+          "width": 0.004999999888241291,
+          "width_pct": 0.004999999888241291,
+          "segments": 2,
+          "affect": "EDGES",
+          "limit_method": "ANGLE",
+          "edge_weight": "bevel_weight_edge",
+          "vertex_weight": "bevel_weight_vert",
+          "angle_limit": 0.5235987901687622,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_clamp_overlap": true,
+          "offset_type": "OFFSET",
+          "profile_type": "SUPERELLIPSE",
+          "profile": 0.5,
+          "material": -1,
+          "loop_slide": true,
+          "mark_seam": false,
+          "mark_sharp": false,
+          "harden_normals": false,
+          "face_strength_mode": "FSTR_NONE",
+          "miter_outer": "MITER_SHARP",
+          "miter_inner": "MITER_SHARP",
+          "spread": 0.10000000149011612,
+          "vmesh_method": "ADJ"
+        },
+        {
+          "name": "Editable weighted normals",
+          "type": "WEIGHTED_NORMAL",
+          "show_viewport": true,
+          "show_render": true,
+          "show_in_editmode": true,
+          "show_on_cage": false,
+          "show_expanded": true,
+          "is_active": true,
+          "use_pin_to_last": false,
+          "is_override_data": false,
+          "use_apply_on_spline": false,
+          "execution_time": 0.0,
+          "persistent_uid": 1800999687,
+          "weight": 50,
+          "mode": "FACE_AREA",
+          "thresh": 0.009999999776482582,
+          "keep_sharp": true,
+          "vertex_group": "",
+          "invert_vertex_group": false,
+          "use_face_influence": false
+        }
+      ]
+    },
+    {
+      "name": "MARKER_rest_contact",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.5199999809265137
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.5339999794960022
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"rest_contact\", \"physical_object\": \"001_shaped_single_mattress\", \"point_source_m\": [0, 1.52, 0.534], \"normal_source\": [0, 0, 1], \"point_glb_m\": [0, 0.534, -1.52], \"normal_glb\": [0, 1, 0], \"kind\": \"physical_surface\", \"purpose\": \"Actual exposed mattress crown between blanket and pillow; blanket contact is a separate surface\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "MARKER_head_contact",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          1.7999999523162842
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.6570000052452087
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"head_contact\", \"physical_object\": \"001_shaped_head_pillow\", \"point_source_m\": [0, 1.8, 0.657], \"normal_source\": [0, 0, 1], \"point_glb_m\": [0, 0.657, -1.8], \"normal_glb\": [0, 1, 0], \"kind\": \"physical_surface\", \"purpose\": \"Actual pillow central crown\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "MARKER_foot_contact",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.41600000858306885
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"foot_contact\", \"physical_object\": \"001_low_foot_guard\", \"point_source_m\": [0, 0, 0.416], \"normal_source\": [0, -1, 0], \"point_glb_m\": [0, 0.416, 0], \"normal_glb\": [0, 0, 1], \"kind\": \"physical_surface\", \"purpose\": \"Actual outward foot guard face\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "MARKER_headboard_mount",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.25999999046325684
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          2.140000104904175
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.8799999952316284
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"headboard_mount\", \"physical_object\": \"001_flat_headboard\", \"point_source_m\": [-0.26, 2.14, 0.88], \"normal_source\": [0, -1, 0], \"point_glb_m\": [-0.26, 0.88, -2.14], \"normal_glb\": [0, 0, 1], \"kind\": \"physical_surface\", \"purpose\": \"Real receiving face for AST-CRW-004\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "MARKER_light_mount_-0.37_0.76",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3700000047683716
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          2.140000104904175
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.7599999904632568
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"light_mount_-0.37_0.76\", \"physical_object\": \"001_flat_headboard\", \"point_source_m\": [-0.37, 2.14, 0.76], \"normal_source\": [0, -1, 0], \"point_glb_m\": [-0.37, 0.76, -2.14], \"normal_glb\": [0, 0, 1], \"kind\": \"physical_surface\", \"purpose\": \"Opposing physical mount witness for AST-CRW-004\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "MARKER_light_mount_-0.37_1.0",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.3700000047683716
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          2.140000104904175
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"light_mount_-0.37_1.0\", \"physical_object\": \"001_flat_headboard\", \"point_source_m\": [-0.37, 2.14, 1.0], \"normal_source\": [0, -1, 0], \"point_glb_m\": [-0.37, 1.0, -2.14], \"normal_glb\": [0, 0, 1], \"kind\": \"physical_surface\", \"purpose\": \"Opposing physical mount witness for AST-CRW-004\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "MARKER_light_mount_-0.15_0.76",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.15000000596046448
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          2.140000104904175
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.7599999904632568
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"light_mount_-0.15_0.76\", \"physical_object\": \"001_flat_headboard\", \"point_source_m\": [-0.15, 2.14, 0.76], \"normal_source\": [0, -1, 0], \"point_glb_m\": [-0.15, 0.76, -2.14], \"normal_glb\": [0, 0, 1], \"kind\": \"physical_surface\", \"purpose\": \"Opposing physical mount witness for AST-CRW-004\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    },
+    {
+      "name": "MARKER_light_mount_-0.15_1.0",
+      "type": "EMPTY",
+      "parent": "AST-CRW-001_floor_foot_end_datum",
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.15000000596046448
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          2.140000104904175
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "properties": {
+        "surface_record": "{\"name\": \"light_mount_-0.15_1.0\", \"physical_object\": \"001_flat_headboard\", \"point_source_m\": [-0.15, 2.14, 1.0], \"normal_source\": [0, -1, 0], \"point_glb_m\": [-0.15, 1.0, -2.14], \"normal_glb\": [0, 0, 1], \"kind\": \"physical_surface\", \"purpose\": \"Opposing physical mount witness for AST-CRW-004\"}"
+      },
+      "drivers": [],
+      "modifiers": [],
+      "modifier_settings": []
+    }
+  ],
+  "used_materials": [
+    {
+      "name": "ASTRAEA_crew_ecru_sheet",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "crew_ecru_sheet.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.8999999761581421,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_crew_terracotta_blanket",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "crew_terracotta_blanket.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.9300000071525574,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_bluegrey_paint",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_bluegrey_paint.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.7799999713897705,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_rubber",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_rubber.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.9100000262260437,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_white_paint",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_white_paint.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.0,
+          "Roughness": 0.7599999904632568,
+          "Alpha": 1.0
+        }
+      ]
+    },
+    {
+      "name": "ASTRAEA_staff_zinc",
+      "use_nodes": true,
+      "images": [
+        {
+          "name": "staff_zinc.png",
+          "node_name": "Image Texture",
+          "linked_outputs": [
+            {
+              "from": "Color",
+              "to_node": "BSDF_PRINCIPLED",
+              "to_input": "Base Color"
+            }
+          ]
+        }
+      ],
+      "principled": [
+        {
+          "Base Color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "Metallic": 0.6499999761581421,
+          "Roughness": 0.6100000143051147,
+          "Alpha": 1.0
+        }
+      ]
+    }
+  ],
+  "used_images": [
+    {
+      "name": "crew_ecru_sheet.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../textures/crew_ecru_sheet.png",
+      "packed": true,
+      "packed_sha256": "8b68d45aaf79c37e126dd19efd4ba734c7e6886b4ad88e992a29e094ee3de5a7"
+    },
+    {
+      "name": "crew_terracotta_blanket.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../textures/crew_terracotta_blanket.png",
+      "packed": true,
+      "packed_sha256": "4fb0f8506c134a3c2989af989c5392810fd136d3a897dd0e994a480c5461f642"
+    },
+    {
+      "name": "staff_bluegrey_paint.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_bluegrey_paint.png",
+      "packed": true,
+      "packed_sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f"
+    },
+    {
+      "name": "staff_rubber.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_rubber.png",
+      "packed": true,
+      "packed_sha256": "9e9623559d6dcd7b4c459da948132417a966976177ff608153ff8b71764036f8"
+    },
+    {
+      "name": "staff_white_paint.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_white_paint.png",
+      "packed": true,
+      "packed_sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88"
+    },
+    {
+      "name": "staff_zinc.png",
+      "size": [
+        256,
+        256
+      ],
+      "filepath": "//../../../materials/staff/staff_zinc.png",
+      "packed": true,
+      "packed_sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c"
+    }
+  ],
+  "load_success": true,
+  "unused_images": [
+    "crew_sage_privacy.png",
+    "Render Result",
+    "staff_cable_blue.png",
+    "staff_cable_red.png",
+    "staff_floor.png",
+    "staff_label.png",
+    "staff_opal.png"
+  ],
+  "bounds_min_m": [
+    -0.5400000214576721,
+    0.0,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.5400000214576721,
+    2.200000047683716,
+    1.100000023841858
+  ],
+  "dimensions_m": [
+    1.0800000429153442,
+    2.200000047683716,
+    1.100000023841858
+  ],
+  "evaluated_triangles": 5132,
+  "source_unchanged_after_load": true,
+  "geometry_cache": "qa/batch15/independent_rebuilt_crew_rest_r02_source_geometry_AST-CRW-001.npz"
+}

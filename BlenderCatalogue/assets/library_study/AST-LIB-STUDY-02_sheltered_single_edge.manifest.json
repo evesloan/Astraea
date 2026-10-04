@@ -1,0 +1,849 @@
+{
+  "catalogue_id": "AST-LIB-STUDY-02",
+  "name": "Astraea Sheltered Single Study Edge",
+  "intent": "One proposed reading position, useful inward-facing two-tier book wing, open central sightline and front approach. No seat or book stock included.",
+  "surface_z_m": 0.752,
+  "fixture_receiver_z_m": 0.756,
+  "approach": {
+    "sides": [
+      "-Y"
+    ],
+    "candidate_chairs": [
+      {
+        "reference_id": "AST-FUR-002",
+        "origin_m": [
+          0.105,
+          -0.99,
+          0
+        ],
+        "rotation_z_degrees": 180,
+        "seat_crown_z_m": 0.475,
+        "contact_claim": false
+      }
+    ],
+    "clear_floor_entry_rectangle_m": [
+      [
+        -0.49,
+        -1.68
+      ],
+      [
+        0.67,
+        -0.48
+      ]
+    ],
+    "status": "Proposed component placement only; original rig, species fit, reach, collision behavior and room fit untested"
+  },
+  "clear_volumes_m": [
+    {
+      "name": "central_knee_and_foot_void",
+      "min": [
+        -0.495,
+        -0.415,
+        0
+      ],
+      "max": [
+        0.655,
+        0.299,
+        0.686
+      ]
+    },
+    {
+      "name": "central_seated_outlook_above_desk",
+      "min": [
+        -0.405,
+        -0.25,
+        0.76
+      ],
+      "max": [
+        0.65,
+        0.4,
+        1.45
+      ]
+    }
+  ],
+  "bookstock_mounts": [
+    {
+      "name": "lower_inward_facing_shelf",
+      "origin_m": [
+        -0.711,
+        0.075,
+        0.42
+      ],
+      "rotation_z_degrees": 90,
+      "envelope_m": [
+        0.68,
+        0.24,
+        0.29
+      ],
+      "shelf_usable_local_m": [
+        0.72,
+        0.27
+      ],
+      "clear_height_m": 0.375,
+      "front_axis_world": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "upper_inward_facing_shelf",
+      "origin_m": [
+        -0.711,
+        0.075,
+        0.83
+      ],
+      "rotation_z_degrees": 90,
+      "envelope_m": [
+        0.68,
+        0.24,
+        0.29
+      ],
+      "shelf_usable_local_m": [
+        0.72,
+        0.27
+      ],
+      "clear_height_m": 0.342,
+      "front_axis_world": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "fixture_mounts": [
+    {
+      "name": "rear_left_reading_light_receiver",
+      "origin_m": [
+        -0.433,
+        0.286,
+        0.756
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "plate_size_m": [
+        0.09,
+        0.12
+      ],
+      "status": "Geometry and data only, no fixture, wiring, light or runtime system"
+    }
+  ],
+  "relationships": [
+    {
+      "members": [
+        "wing_floor_pad",
+        "shaped_wing_post"
+      ],
+      "minimum_overlap_m": 0.008
+    },
+    {
+      "members": [
+        "wing_book_shelf",
+        "shaped_wing_post",
+        "outer_privacy_batten"
+      ],
+      "intent": "Housed shelf junction and porous outside screening"
+    },
+    {
+      "members": [
+        "carved_walnut_writing_edge",
+        "wing_book_shelf",
+        "rear_ivory_bearing_rail",
+        "right_top_bearing"
+      ],
+      "intent": "Left wing bears desk; right fork and rear rail carry opposite side"
+    },
+    {
+      "members": [
+        "inset_stone_writing_surface",
+        "carved_walnut_writing_edge"
+      ],
+      "overlap_m": 0.003
+    }
+  ],
+  "bounds_min_m": [
+    -0.8955000042915344,
+    -0.47699999809265137,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.8230000138282776,
+    0.5450000166893005,
+    1.3967511653900146
+  ],
+  "dimensions_m": [
+    1.718500018119812,
+    1.022000014781952,
+    1.3967511653900146
+  ],
+  "triangles_evaluated": 2316,
+  "parts": [
+    {
+      "name": "SINGLE_FRONT_shaped_wing_post",
+      "bounds_min_m": [
+        -0.8849999904632568,
+        -0.37294355034828186,
+        0.02500000037252903
+      ],
+      "bounds_max_m": [
+        -0.8240000009536743,
+        -0.28702598810195923,
+        1.2036327123641968
+      ],
+      "triangles": 56,
+      "role": "ivory_enamel",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_FRONT_wing_floor_pad",
+      "bounds_min_m": [
+        -0.8955000042915344,
+        -0.39500001072883606,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.7785000205039978,
+        -0.26499998569488525,
+        0.032999999821186066
+      ],
+      "triangles": 140,
+      "role": "dark_rubber",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_REAR_shaped_wing_post",
+      "bounds_min_m": [
+        -0.8849999904632568,
+        0.43704912066459656,
+        0.02500000037252903
+      ],
+      "bounds_max_m": [
+        -0.8240000009536743,
+        0.5229774117469788,
+        1.378632664680481
+      ],
+      "triangles": 56,
+      "role": "ivory_enamel",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_REAR_wing_floor_pad",
+      "bounds_min_m": [
+        -0.8955000042915344,
+        0.41499999165534973,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.7785000205039978,
+        0.5450000166893005,
+        0.032999999821186066
+      ],
+      "triangles": 140,
+      "role": "dark_rubber",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_LOWER_wing_book_shelf",
+      "bounds_min_m": [
+        -0.8740000128746033,
+        -0.33500000834465027,
+        0.38499999046325684
+      ],
+      "bounds_max_m": [
+        -0.5559999942779541,
+        0.48500001430511475,
+        0.41999998688697815
+      ],
+      "triangles": 140,
+      "role": "warm_walnut",
+      "grain_axis": "y",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_LOWER_inboard_shelf_rail",
+      "bounds_min_m": [
+        -0.5789999961853027,
+        -0.312000036239624,
+        0.3854999840259552
+      ],
+      "bounds_max_m": [
+        -0.5570000410079956,
+        0.45900002121925354,
+        0.4285000264644623
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_UPPER_wing_book_shelf",
+      "bounds_min_m": [
+        -0.8740000128746033,
+        -0.33500000834465027,
+        0.7950000166893005
+      ],
+      "bounds_max_m": [
+        -0.5559999942779541,
+        0.48500001430511475,
+        0.8299999833106995
+      ],
+      "triangles": 140,
+      "role": "warm_walnut",
+      "grain_axis": "y",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_UPPER_inboard_shelf_rail",
+      "bounds_min_m": [
+        -0.5789999961853027,
+        -0.312000036239624,
+        0.7954999208450317
+      ],
+      "bounds_max_m": [
+        -0.5570000410079956,
+        0.45900002121925354,
+        0.8385000228881836
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_outer_privacy_batten_00",
+      "bounds_min_m": [
+        -0.8539999723434448,
+        -0.2919941544532776,
+        0.35899999737739563
+      ],
+      "bounds_max_m": [
+        -0.8220000267028809,
+        -0.2380089908838272,
+        1.217294692993164
+      ],
+      "triangles": 56,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_outer_privacy_batten_01",
+      "bounds_min_m": [
+        -0.8539999723434448,
+        -0.165994331240654,
+        0.35899999737739563
+      ],
+      "bounds_max_m": [
+        -0.8220000267028809,
+        -0.1120087057352066,
+        1.2452946901321411
+      ],
+      "triangles": 56,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_outer_privacy_batten_02",
+      "bounds_min_m": [
+        -0.8539999723434448,
+        -0.0399945043027401,
+        0.35899999737739563
+      ],
+      "bounds_max_m": [
+        -0.8220000267028809,
+        0.013991573825478554,
+        1.2732946872711182
+      ],
+      "triangles": 56,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_outer_privacy_batten_03",
+      "bounds_min_m": [
+        -0.8539999723434448,
+        0.0860053300857544,
+        0.35899999737739563
+      ],
+      "bounds_max_m": [
+        -0.8220000267028809,
+        0.13999183475971222,
+        1.3012946844100952
+      ],
+      "triangles": 56,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_outer_privacy_batten_04",
+      "bounds_min_m": [
+        -0.8539999723434448,
+        0.21200516819953918,
+        0.35899999737739563
+      ],
+      "bounds_max_m": [
+        -0.8220000267028809,
+        0.26599207520484924,
+        1.3292946815490723
+      ],
+      "triangles": 56,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_outer_privacy_batten_05",
+      "bounds_min_m": [
+        -0.8539999723434448,
+        0.33800503611564636,
+        0.35899999737739563
+      ],
+      "bounds_max_m": [
+        -0.8220000267028809,
+        0.3919923007488251,
+        1.3572946786880493
+      ],
+      "triangles": 56,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_sloping_wing_crown",
+      "bounds_min_m": [
+        -0.8800000548362732,
+        -0.35155677795410156,
+        1.1592488288879395
+      ],
+      "bounds_max_m": [
+        -0.8159999251365662,
+        0.48955678939819336,
+        1.3967511653900146
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_wing_low_plinth",
+      "bounds_min_m": [
+        -0.8734999895095825,
+        -0.33399999141693115,
+        0.0860000029206276
+      ],
+      "bounds_max_m": [
+        -0.5565000176429749,
+        0.48399999737739563,
+        0.11900000274181366
+      ],
+      "triangles": 140,
+      "role": "ivory_enamel",
+      "grain_axis": "y",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_carved_walnut_writing_edge",
+      "bounds_min_m": [
+        -0.5820000171661377,
+        -0.47699999809265137,
+        0.6949999928474426
+      ],
+      "bounds_max_m": [
+        0.8230000138282776,
+        0.45399999618530273,
+        0.75
+      ],
+      "triangles": 120,
+      "role": "warm_walnut",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_inset_stone_writing_surface",
+      "bounds_min_m": [
+        -0.5070000290870667,
+        -0.3889999985694885,
+        0.746999979019165
+      ],
+      "bounds_max_m": [
+        0.7369999885559082,
+        0.36899998784065247,
+        0.7519999742507935
+      ],
+      "triangles": 116,
+      "role": "warm_stone",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_front_wing_desk_tenon",
+      "bounds_min_m": [
+        -0.8619999885559082,
+        -0.367000013589859,
+        0.6779999732971191
+      ],
+      "bounds_max_m": [
+        -0.5269999504089355,
+        -0.29899999499320984,
+        0.7419999837875366
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_rear_wing_desk_tenon",
+      "bounds_min_m": [
+        -0.8619999885559082,
+        0.43799999356269836,
+        0.6779999732971191
+      ],
+      "bounds_max_m": [
+        -0.5269999504089355,
+        0.5059999823570251,
+        0.7419999837875366
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_rear_ivory_bearing_rail",
+      "bounds_min_m": [
+        -0.6100000143051147,
+        0.31349995732307434,
+        0.6674998998641968
+      ],
+      "bounds_max_m": [
+        0.7419999837875366,
+        0.38050004839897156,
+        0.7265001535415649
+      ],
+      "triangles": 44,
+      "role": "ivory_enamel",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_right_forward_swept_leg",
+      "bounds_min_m": [
+        0.699999988079071,
+        -0.40299999713897705,
+        0.027000000700354576
+      ],
+      "bounds_max_m": [
+        0.7730000019073486,
+        -0.09110750257968903,
+        0.712270200252533
+      ],
+      "triangles": 120,
+      "role": "ivory_enamel",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_right_rear_swept_leg",
+      "bounds_min_m": [
+        0.699999988079071,
+        0.23999999463558197,
+        0.024000000208616257
+      ],
+      "bounds_max_m": [
+        0.7730000019073486,
+        0.3937353193759918,
+        0.716143012046814
+      ],
+      "triangles": 84,
+      "role": "ivory_enamel",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_right_FRONT_floor_pad",
+      "bounds_min_m": [
+        0.6840000152587891,
+        -0.39899998903274536,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.7879999876022339,
+        -0.2709999978542328,
+        0.03200000151991844
+      ],
+      "triangles": 140,
+      "role": "dark_rubber",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_right_REAR_floor_pad",
+      "bounds_min_m": [
+        0.6840000152587891,
+        0.25099998712539673,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.7879999876022339,
+        0.3790000081062317,
+        0.03200000151991844
+      ],
+      "triangles": 140,
+      "role": "dark_rubber",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_right_top_bearing",
+      "bounds_min_m": [
+        0.6904999613761902,
+        -0.25999999046325684,
+        0.6775000095367432
+      ],
+      "bounds_max_m": [
+        0.7854999899864197,
+        0.3610000014305115,
+        0.7165000438690186
+      ],
+      "triangles": 44,
+      "role": "warm_walnut",
+      "grain_axis": "z",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    },
+    {
+      "name": "SINGLE_optional_fixture_receiver",
+      "bounds_min_m": [
+        -0.4779999852180481,
+        0.22599999606609344,
+        0.7519999742507935
+      ],
+      "bounds_max_m": [
+        -0.3880000114440918,
+        0.34599998593330383,
+        0.7559999823570251
+      ],
+      "triangles": 140,
+      "role": "champagne_metal",
+      "grain_axis": "x",
+      "modifiers": [
+        "Retained edge easing",
+        "Retained weighted normals"
+      ]
+    }
+  ],
+  "units": "metres",
+  "front_axis": "-Y",
+  "source_up_axis": "+Z",
+  "pivot_m": [
+    0,
+    0,
+    0
+  ],
+  "blender_version": "4.3.2",
+  "authoring": "Script-assisted original shaped polygon extrusions and semantic join design, editable meshes and non-destructive bevel/normal modifiers retained.",
+  "qa_scope": "Blender component evidence only. Unavailable original game is not restored or edited. Godot, controller, collision behavior, alien contact and room-fit claims are pending.",
+  "reference_provenance": [
+    {
+      "library_file_id": "libfile_807774ec0ff08191a5142732312d71a6",
+      "sha256": "b74349b557268aabf1d05d56515879fa4d8a845963c4e38b2b7db6020d4a439a",
+      "pixels_inspected": true,
+      "use": "Use, spatial edge, silhouette and material guidance only; no copied geometry or texture pixels"
+    },
+    {
+      "library_file_id": "libfile_287947375fa88191b4fbf4cc6ff0ee27",
+      "sha256": "bacc0c55bbe9dfde6c967d18431484a0c2715e51c46cf4622e278f7770f9f284",
+      "pixels_inspected": true,
+      "use": "Use, spatial edge, silhouette and material guidance only; no copied geometry or texture pixels"
+    },
+    {
+      "library_file_id": "libfile_a2a84e0fdbf08191a1e4bb435347e634",
+      "sha256": "980fe8b7e63014fb5fa56541931ca049bf9eaca5c6dd24135d125098c9809502",
+      "pixels_inspected": true,
+      "use": "Use, spatial edge, silhouette and material guidance only; no copied geometry or texture pixels"
+    },
+    {
+      "library_file_id": "libfile_7ee8f43ca31881919cf52c4794b4afeb",
+      "sha256": "4e1375543aa4035b0110aa7d1cf1af14667478274afcf38b407c75c9a23ee49f",
+      "pixels_inspected": true,
+      "use": "Use, spatial edge, silhouette and material guidance only; no copied geometry or texture pixels"
+    }
+  ],
+  "materials_revision": "astraea-catalogue-materials-02",
+  "materials": [
+    "champagne_metal",
+    "dark_rubber",
+    "ivory_enamel",
+    "warm_stone",
+    "warm_walnut"
+  ],
+  "source_generator": "build_study.py",
+  "source_generator_sha256": "ef259f905eccf2663404950d6b18d9d7eb391604e043d7084de58785505fcdb2",
+  "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+  "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+  "dependencies": [
+    "../../standards/materials.py",
+    "../../materials/material_manifest.json",
+    "../../materials/*.png"
+  ],
+  "asset_files": [
+    "AST-LIB-STUDY-02_sheltered_single_edge.blend",
+    "AST-LIB-STUDY-02_sheltered_single_edge.glb"
+  ],
+  "floor_contacts": [
+    {
+      "source_part": "SINGLE_FRONT_wing_floor_pad",
+      "bounds_min_m": [
+        -0.8955000042915344,
+        -0.39500001072883606,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.7785000205039978,
+        -0.26499998569488525,
+        0.032999999821186066
+      ]
+    },
+    {
+      "source_part": "SINGLE_REAR_wing_floor_pad",
+      "bounds_min_m": [
+        -0.8955000042915344,
+        0.41499999165534973,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.7785000205039978,
+        0.5450000166893005,
+        0.032999999821186066
+      ]
+    },
+    {
+      "source_part": "SINGLE_right_FRONT_floor_pad",
+      "bounds_min_m": [
+        0.6840000152587891,
+        -0.39899998903274536,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.7879999876022339,
+        -0.2709999978542328,
+        0.03200000151991844
+      ]
+    },
+    {
+      "source_part": "SINGLE_right_REAR_floor_pad",
+      "bounds_min_m": [
+        0.6840000152587891,
+        0.25099998712539673,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.7879999876022339,
+        0.3790000081062317,
+        0.03200000151991844
+      ]
+    }
+  ],
+  "export": {
+    "format": "GLB",
+    "Y_up": true,
+    "static_visual_meshes": 1,
+    "material_primitives": 5,
+    "source_semantic_part_count": 27,
+    "UVs": "Normalized UV_Metric_Metres before joining; projected in part-local metres; walnut grain V follows named grain axis",
+    "textures": "Ordinary shared Principled base-color images embedded",
+    "collision": "None, separate numeric proposal only"
+  },
+  "blend_sha256": "b285c783ec963c306e5d64ba8fca8dda9e3b100fbf32c18882a51b5cf5646bba",
+  "glb_sha256": "2bdcf9a74936e5d529e9ea90dfb94481f9592f07d8d9806c8ebf44e89d4b52ca"
+}

@@ -1,0 +1,524 @@
+{
+  "catalogue_id": "AST-BOT-002",
+  "title": "Cupped broad-leaf understory",
+  "unique_design": true,
+  "original_script_assisted_design": true,
+  "units": "metres",
+  "source": "source/AST-BOT-002.blend",
+  "export": "exports/AST-BOT-002.glb",
+  "generator": "source/build_botanical_understory.py",
+  "coordinates": "Blender Z up; front -Y; exported GLB standard Y-up",
+  "pivot": {
+    "position_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "Soil plane at root/crown center"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -0.5323647856712341,
+      -0.3416428864002228,
+      0.0
+    ],
+    "max_m": [
+      0.47862011194229126,
+      0.35911044478416443,
+      0.925983190536499
+    ],
+    "dimensions_m": [
+      1.0109848976135254,
+      0.7007533311843872,
+      0.925983190536499
+    ]
+  },
+  "evaluated_triangles": 1508,
+  "editable_semantic_parts": 33,
+  "semantic_parts": [
+    "main_crown",
+    "left_shoot",
+    "rear_shoot",
+    "petiole_01",
+    "cupped_broad_leaf_01",
+    "cupped_broad_leaf_01_raised_midrib",
+    "petiole_02",
+    "cupped_broad_leaf_02",
+    "cupped_broad_leaf_02_raised_midrib",
+    "petiole_03",
+    "cupped_broad_leaf_03",
+    "cupped_broad_leaf_03_raised_midrib",
+    "petiole_04",
+    "cupped_broad_leaf_04",
+    "cupped_broad_leaf_04_raised_midrib",
+    "petiole_05",
+    "cupped_broad_leaf_05",
+    "cupped_broad_leaf_05_raised_midrib",
+    "petiole_06",
+    "cupped_broad_leaf_06",
+    "cupped_broad_leaf_06_raised_midrib",
+    "petiole_07",
+    "cupped_broad_leaf_07",
+    "cupped_broad_leaf_07_raised_midrib",
+    "petiole_08",
+    "cupped_broad_leaf_08",
+    "cupped_broad_leaf_08_raised_midrib",
+    "petiole_09",
+    "cupped_broad_leaf_09",
+    "cupped_broad_leaf_09_raised_midrib",
+    "petiole_10",
+    "cupped_broad_leaf_10",
+    "cupped_broad_leaf_10_raised_midrib"
+  ],
+  "material_roles": [
+    "botanical_bark",
+    "botanical_leaf_jade",
+    "botanical_leaf_olive",
+    "botanical_leaf_sage"
+  ],
+  "material_alpha": "All OPAQUE, no alpha cutouts or blend",
+  "thin_surfaces": "Single deliberately shaped leaf and petal surfaces have open perimeters; double-sided material. Closed stem/crown/receptacle solids. No sphere foliage or alpha cards.",
+  "soil_placement": {
+    "suggested_soil_patch_radius_m": 0.13,
+    "root_or_crown_contact_radius_m": 0.032,
+    "suggested_minimum_soil_depth_m": 0.22,
+    "height_intent_m": [
+      0.7,
+      1.0
+    ],
+    "botanical_identity": "Original broad ovate cupped-leaf understory, not a named real species",
+    "curated_fan_depth_scale": 0.755,
+    "proposed_straight_planter_base_m": [
+      1.2,
+      0.51,
+      0.39
+    ],
+    "straight_planter_soil_opening_y_m": [
+      0.15,
+      0.88
+    ]
+  },
+  "soil_contact_z_m": 0.0,
+  "support_joints": [
+    {
+      "child": "left_shoot",
+      "parent": "main_crown",
+      "child_attachment_m": [
+        0.004,
+        0.0,
+        0.12
+      ],
+      "parent_centerline_attachment_m": [
+        0.004,
+        0.0,
+        0.12
+      ],
+      "parent_radius_m": 0.029,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "branch_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "rear_shoot",
+      "parent": "main_crown",
+      "child_attachment_m": [
+        0.011,
+        0.00302,
+        0.3
+      ],
+      "parent_centerline_attachment_m": [
+        0.011,
+        0.00302,
+        0.3
+      ],
+      "parent_radius_m": 0.023,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "branch_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_01",
+      "parent": "main_crown",
+      "child_attachment_m": [
+        0.010999999940395355,
+        0.003020000143442303,
+        0.30000001192092896
+      ],
+      "parent_centerline_attachment_m": [
+        0.010999999940395355,
+        0.003020000143442303,
+        0.30000001192092896
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_01",
+      "parent": "petiole_01",
+      "child_attachment_m": [
+        0.03417627513408661,
+        -0.050833578333258626,
+        0.33500000834465027
+      ],
+      "parent_centerline_attachment_m": [
+        0.03417627513408661,
+        -0.050833578333258626,
+        0.33500000834465027
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_02",
+      "parent": "left_shoot",
+      "child_attachment_m": [
+        -0.07100000232458115,
+        0.015854999786242843,
+        0.3700000047683716
+      ],
+      "parent_centerline_attachment_m": [
+        -0.07100000232458115,
+        0.015854999786242843,
+        0.3700000047683716
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_02",
+      "parent": "petiole_02",
+      "child_attachment_m": [
+        -0.1446220427751541,
+        0.005050439652986825,
+        0.4050000011920929
+      ],
+      "parent_centerline_attachment_m": [
+        -0.1446220427751541,
+        0.005050439652986825,
+        0.4050000011920929
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_03",
+      "parent": "main_crown",
+      "child_attachment_m": [
+        0.014000000432133675,
+        0.006040000286884606,
+        0.47999998927116394
+      ],
+      "parent_centerline_attachment_m": [
+        0.014000000432133675,
+        0.006040000286884606,
+        0.47999998927116394
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_03",
+      "parent": "petiole_03",
+      "child_attachment_m": [
+        0.08736107498407364,
+        0.0178129998780787,
+        0.5149999856948853
+      ],
+      "parent_centerline_attachment_m": [
+        0.08736107498407364,
+        0.0178129998780787,
+        0.5149999856948853
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_04",
+      "parent": "rear_shoot",
+      "child_attachment_m": [
+        0.04100000113248825,
+        0.039260000810027125,
+        0.4000000059604645
+      ],
+      "parent_centerline_attachment_m": [
+        0.04100000113248825,
+        0.039260000810027125,
+        0.4000000059604645
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_04",
+      "parent": "petiole_04",
+      "child_attachment_m": [
+        0.06292787939310074,
+        0.09341075833886862,
+        0.4350000023841858
+      ],
+      "parent_centerline_attachment_m": [
+        0.06292787939310074,
+        0.09341075833886862,
+        0.4350000023841858
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_05",
+      "parent": "left_shoot",
+      "child_attachment_m": [
+        -0.10000000149011612,
+        0.022649999493733048,
+        0.5299999713897705
+      ],
+      "parent_centerline_attachment_m": [
+        -0.10000000149011612,
+        0.022649999493733048,
+        0.5299999713897705
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_05",
+      "parent": "petiole_05",
+      "child_attachment_m": [
+        -0.15395048260688782,
+        -0.016685032891109584,
+        0.5649999976158142
+      ],
+      "parent_centerline_attachment_m": [
+        -0.15395048260688782,
+        -0.016685032891109584,
+        0.5649999976158142
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_06",
+      "parent": "rear_shoot",
+      "child_attachment_m": [
+        0.07100000232458115,
+        0.06870499860495329,
+        0.5299999713897705
+      ],
+      "parent_centerline_attachment_m": [
+        0.07100000232458115,
+        0.06870499860495329,
+        0.5299999713897705
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_06",
+      "parent": "petiole_06",
+      "child_attachment_m": [
+        0.026916109025478363,
+        0.11451558187603951,
+        0.5649999976158142
+      ],
+      "parent_centerline_attachment_m": [
+        0.026916109025478363,
+        0.11451558187603951,
+        0.5649999976158142
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_07",
+      "parent": "main_crown",
+      "child_attachment_m": [
+        0.004000000189989805,
+        0.011324999746866524,
+        0.6600000262260437
+      ],
+      "parent_centerline_attachment_m": [
+        0.004000000189989805,
+        0.011324999746866524,
+        0.6600000262260437
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_07",
+      "parent": "petiole_07",
+      "child_attachment_m": [
+        0.05703300982713699,
+        -0.028714921474456787,
+        0.6950000524520874
+      ],
+      "parent_centerline_attachment_m": [
+        0.05703300982713699,
+        -0.028714921474456787,
+        0.6950000524520874
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_08",
+      "parent": "left_shoot",
+      "child_attachment_m": [
+        -0.10499999672174454,
+        0.025670001395046712,
+        0.6549999713897705
+      ],
+      "parent_centerline_attachment_m": [
+        -0.10499999672174454,
+        0.025670001395046712,
+        0.6549999713897705
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_08",
+      "parent": "petiole_08",
+      "child_attachment_m": [
+        -0.17886057496070862,
+        0.03550283063203096,
+        0.6899999976158142
+      ],
+      "parent_centerline_attachment_m": [
+        -0.17886057496070862,
+        0.03550283063203096,
+        0.6899999976158142
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_09",
+      "parent": "rear_shoot",
+      "child_attachment_m": [
+        0.08500000089406967,
+        0.07776500009000302,
+        0.6650000214576721
+      ],
+      "parent_centerline_attachment_m": [
+        0.08500000089406967,
+        0.07776500009000302,
+        0.6650000214576721
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_09",
+      "parent": "petiole_09",
+      "child_attachment_m": [
+        0.13518479466438293,
+        0.11984558284282684,
+        0.7000000476837158
+      ],
+      "parent_centerline_attachment_m": [
+        0.13518479466438293,
+        0.11984558284282684,
+        0.7000000476837158
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "petiole_10",
+      "parent": "main_crown",
+      "child_attachment_m": [
+        -0.004999999888241291,
+        0.013589999414980411,
+        0.7549999952316284
+      ],
+      "parent_centerline_attachment_m": [
+        -0.004999999888241291,
+        0.013589999414980411,
+        0.7549999952316284
+      ],
+      "parent_radius_m": 0.008,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "petiole_to_stem_overlap",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    },
+    {
+      "child": "cupped_broad_leaf_10",
+      "parent": "petiole_10",
+      "child_attachment_m": [
+        -0.050136130303144455,
+        0.05881273925304413,
+        0.7900000214576721
+      ],
+      "parent_centerline_attachment_m": [
+        -0.050136130303144455,
+        0.05881273925304413,
+        0.7900000214576721
+      ],
+      "parent_radius_m": 0.0045,
+      "attachment_center_distance_m": 0.0,
+      "joint_type": "leaf_base_to_petiole",
+      "required": "Child attachment is on parent centerline; closed overlapping caps for supports or rooted leaf surface"
+    }
+  ],
+  "runtime_consolidation": "One evaluated static mesh per material role. UV names normalized before join. Editable named parts retained in .blend.",
+  "source_sha256": "5a2d429332a25c31ea2af6f6e27ad47357ef80cc61d11b38deb1745d03c459e6",
+  "glb_sha256": "3ba7d02e977877a729a2b57aa11d3a34cb9afe5665a9317c6a1d9b9ad3e84060",
+  "reference_manifest": "../../batches/batch04/reference_manifest.json",
+  "dependencies": [
+    "../../standards/botanical_materials.py",
+    "../../materials/botanical/"
+  ],
+  "limitations": [
+    "Independent botanical components, not original game restoration",
+    "No native engine performance, physics, room fit or species contact claim",
+    "No biological planting/horticultural viability claim; soil depth is spatial proposal only",
+    "Placement must avoid walk and seat approach space; foliage excluded from collision proposal"
+  ],
+  "generator_sha256": "3ce7e29bc8eb427b64e4f229ef2a64bb62bcbf3e506b38e5de81b38ae9c6a883",
+  "validation_files": [
+    "qa/source_reload_checks.json",
+    "qa/glb_validation.json",
+    "qa/source_export_comparison.json",
+    "qa/camera_preflight.json",
+    "qa/render_evidence.json"
+  ],
+  "evidence_media_manifest": "qa/review_media_manifest.json",
+  "source_and_export_verified": true
+}

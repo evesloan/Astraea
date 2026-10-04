@@ -1,0 +1,21 @@
+"""Publish four independently reviewed crew-rest/privacy component designs."""
+from pathlib import Path
+import argparse,json,hashlib
+ROOT=Path(__file__).resolve().parents[2]
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+p=argparse.ArgumentParser();p.add_argument('--review-completed-utc',required=True);a=p.parse_args()
+assert json.loads((ROOT/'qa/batch15/independent_final_review.json').read_text())['passed'] is True
+rows=[]
+for i in range(1,5):
+ aid=f'AST-CRW-{i:03d}';family='crew_rest' if i<3 else 'crew_personal';base=ROOT/'assets'/family;mp=base/(aid+'.manifest.json');m=json.loads(mp.read_text());source=base/m['source'];export=base/m['export'];assert source.is_file() and export.is_file()
+ row={'catalogue_id':aid,'name':m['title'],'family':family,'source':str(source.relative_to(ROOT)),'export':str(export.relative_to(ROOT)),'manifest':str(mp.relative_to(ROOT)),'dimensions_blender_xyz_m':m['bounds_blender_z_up']['dimensions_m'],'evaluated_triangles':m['evaluated_triangles'],'batch':'15','adopted_game_instances':0,'source_sha256':sha(source),'export_sha256':sha(export),'interface_record_id':aid}
+ for st in m.get('state_derivatives',[]):
+  derivative=base/st['export'];assert derivative.is_file();row.setdefault('state_derivatives',[]).append({'state':st.get('state',st.get('name')),'export':str(derivative.relative_to(ROOT)),'sha256':sha(derivative),'counts_as_new_design':False})
+ rows.append(row)
+assert len(rows)==4 and sum(x['evaluated_triangles'] for x in rows)==14592
+manifest={'batch':'15','started_utc':'2026-10-03T00:11:52Z','kind':'D03_programme_guided_shared_crew_rest_privacy_components','unique_authored_asset_count':4,'assets':rows,'actual_game_adoptions':0,'scope':'Adjustable single-place rest frame, independently supported side curtain, personal open storage with hollow drawer, and individual headboard light/shelf. Two reused assemblies demonstrate component relationships only.','review_completed_utc':a.review_completed_utc,'review':'qa/batch15/independent_final_review.json','coordinate_contract':'standards/COORDINATE_CONTRACT.md','reference_manifest':'batches/batch15/reference_manifest.json','programme_handoff':'references/crew_rest/D03_shared_crew_programme_handoff.json','contract':'batches/batch15/CONTRACT.md','arrangement':'qa/batch15/assembly/plan.json','category_coverage':'CATEGORY_COVERAGE.json','quality_baseline_user_message':'Sentinel_1f1516ffa9a08191a5f37800301a001c','limits':['The paired fixture assigns no registered berth, roommate identity or final player-cabin host; 400 crew including the player remains unchanged','Source photo shows stacked bunks, but this first frame does not implement stacking, a ladder, upper guard or proven room headroom','Curtain is a supported side screen with open ends and finite tested sightlines; no complete privacy, acoustic or environmental seal claim','Constant developed fabric length and drawer travel are geometric source states, not live cloth, controls, ownership, persistent storage or load certification','The fixture is adjustable dry rest furniture; six-species suitability and actual room/body/cart fit remain unverified','Light source/aim/control proposals and shaped diffuser do not implement runtime lighting, electrical behavior or user controls','Collision proposals and component access checks have finite measured limits; engine interaction/performance and real-room quality remain pending']}
+(ROOT/'batches/batch15/manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+p=ROOT/'catalogue_manifest.json';cat=json.loads(p.read_text());old=[x for x in cat['assets'] if x.get('batch')!='15'];assert len(old)==73;cat.update({'assets':old+rows,'unique_authored_asset_count':77,'batch':'01–15','current_batch':'15','version':15,'component_review_completed_utc':a.review_completed_utc});cat['status']['independent_component_visual_review']='batches01_to07_09_to15_passed_for_components_only_with_batch08_readiness'
+for key,value in [('batches','batches/batch15/manifest.json'),('reviews','qa/batch15/independent_final_review.json')]:
+ if value not in cat[key]:cat[key].append(value)
+p.write_text(json.dumps(cat,indent=2)+'\n');print(json.dumps({'published_designs':4,'catalogue_total':77,'triangles':14592,'adoptions':0},indent=2))

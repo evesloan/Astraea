@@ -1,0 +1,226 @@
+{
+  "passed": true,
+  "family": "library_use",
+  "scope": "Fresh source-only generator and actual export rebuild; no current asset overwritten, no render or engine run",
+  "input_files": [
+    {
+      "path": "assets/library_contents/texture_manifest.json",
+      "sha256": "60e73b95cbb0c1bb8d87553c92f2b52f85a4e89b5d6dc9d17c4b1964518d6cdc"
+    },
+    {
+      "path": "assets/library_contents/textures/book_cover_clay.png",
+      "sha256": "f29731b102fbf2e1ac861e7c703070e4ab4b6ac2c5763211096c4725b7925fea"
+    },
+    {
+      "path": "assets/library_contents/textures/book_cover_ochre.png",
+      "sha256": "4c1debde36cf59a09a5a30babf31460058a9288f4e32c27851911a394bc0faf2"
+    },
+    {
+      "path": "assets/library_contents/textures/book_cover_teal.png",
+      "sha256": "0b50f02d95f7cd49aaf450106dae35e4253ae71ed6087b3c688596622376d269"
+    },
+    {
+      "path": "assets/library_contents/textures/book_paper_edges.png",
+      "sha256": "191efc92a5c8f573c195c9f148dfaf44c64c51c3e38974f83420692368bd0be0"
+    },
+    {
+      "path": "materials/champagne_metal.png",
+      "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4"
+    },
+    {
+      "path": "materials/clay_weave.png",
+      "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7"
+    },
+    {
+      "path": "materials/dark_rubber.png",
+      "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3"
+    },
+    {
+      "path": "materials/ivory_enamel.png",
+      "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68"
+    },
+    {
+      "path": "materials/material_manifest.json",
+      "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236"
+    },
+    {
+      "path": "materials/oatmeal_weave.png",
+      "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480"
+    },
+    {
+      "path": "materials/teal_weave.png",
+      "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38"
+    },
+    {
+      "path": "materials/warm_stone.png",
+      "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b"
+    },
+    {
+      "path": "materials/warm_walnut.png",
+      "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe"
+    },
+    {
+      "path": "standards/materials.py",
+      "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78"
+    },
+    {
+      "path": "assets/library_use/source/build_library_use.py",
+      "sha256": "7028943f3b26e5e79011d08f4de3ac222731208e1f76c9f184f3657ffbdf2cd3"
+    },
+    {
+      "path": "assets/library_use/source/make_use_art.py",
+      "sha256": "ae6e038d7e9fbf3449e6eced3bb69f94a4b0f5545370d02e95d311a9bd746181"
+    }
+  ],
+  "input_count": 17,
+  "preexisting_new_source_or_export_outputs": false,
+  "qa_render_inputs": false,
+  "commands": [
+    {
+      "command_template": [
+        "python",
+        "<isolated-source-root>/assets/library_use/source/make_use_art.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.08306114700098988,
+      "log": "qa/batch09/source_only_rebuild/library_use_00.log"
+    },
+    {
+      "command_template": [
+        "blender",
+        "--background",
+        "--threads",
+        "1",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "<isolated-source-root>/assets/library_use/source/build_library_use.py"
+      ],
+      "returncode": 0,
+      "seconds": 1.8779952059994685,
+      "log": "qa/batch09/source_only_rebuild/library_use_01.log"
+    }
+  ],
+  "exports": [
+    {
+      "path": "assets/library_use/exports/AST-LIB-008.glb",
+      "sha256": "6521e24ef26f0bf3c63d99f9e430315cb8e501daa67fad2d7a5dd654add48387",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/exports/AST-LIB-009.glb",
+      "sha256": "8895fbe654a0cf7b6d2e9036f1cbfb2190ce4de7b4130c0fd787222b68dc1bb8",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/exports/AST-LIB-010.glb",
+      "sha256": "dacb0bd023b42a3420b5ffc7dfcf69cc890e7a2d7f88b79945aecb5e6e1be01c",
+      "generated_bytes_identical": true
+    }
+  ],
+  "textures": [
+    {
+      "path": "assets/library_use/textures/catalogue_screen.png",
+      "sha256": "9ab35932899cc354eb3c0d8abd9bcae5c5cc3a62add7e3d79e4d0aaefd0a57be",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/display_glass.png",
+      "sha256": "3c25a0803d7496f57142e142ca630e958c5e5c8c0bcbc3b37fefba72aa6be80c",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/label_archive.png",
+      "sha256": "8ae10410f0468c1b07b74b74d9530a5c0a0498ae59f174ee0ed637fc795606f6",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/label_back.png",
+      "sha256": "c595ee678d8bdc14fb54355648761c10dbaad8a9633793f21fd265259a7ef2ed",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/label_current.png",
+      "sha256": "7e6ff23c85847374a18d0817881363a11664d0a171a2d2dfaad6f6f8f4fbb166",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/label_light.png",
+      "sha256": "fcdd40cbb1d4156bb2711b917324d5f3603ccaaad835f02851ec88965dfb93b8",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/label_map.png",
+      "sha256": "f54acdad633ef1228c1d7b1b00f21aad58b1b3c701cddf3d2142dba61cf78116",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/label_search.png",
+      "sha256": "6d2d1eecd0bc042914f2af27d28506258fa4c23b0d13f8983bb9a41bc6cb832a",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/label_select.png",
+      "sha256": "930dc03eb0fef272c3ba16b77c6180c65197b1bcbbd60ff0ec7534277ecd410e",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/label_service.png",
+      "sha256": "f19a6a39a2c13c7406fc9ceae4a15a05a48d6b2e7524ea6a97a9c6bf6224f85d",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/opal_diffuser.png",
+      "sha256": "0bb515370268af754f50df8fc53f7dd83551bce9ffc27be717461b48904bdf2a",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/periodical_form.png",
+      "sha256": "147fbba6e50b213c24153512c411d2092fec6e0c5cee6ce3ed55b2d3434ccc2c",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/periodical_orbit.png",
+      "sha256": "624b0a66aed5f86e7922e12f181b667bb4d272f8e6b525e15474d2b8a25bb39b",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/periodical_terra.png",
+      "sha256": "a146f48783e897fac838d1dad5cd6ef369557f1bcdf096ce5b8bacecfb7b880c",
+      "generated_bytes_identical": true
+    },
+    {
+      "path": "assets/library_use/textures/reflector.png",
+      "sha256": "e2578bc41e7cceed4a3f26a22d9f00ac9be1f4d608d44aa0f5f6c68f8bc3ad63",
+      "generated_bytes_identical": true
+    }
+  ],
+  "editable_blend_outputs_created": 3,
+  "elapsed_seconds": 1.9667298360000132,
+  "current_bound_files_unchanged": {
+    "assets/library_use/source/build_library_use.py": "7028943f3b26e5e79011d08f4de3ac222731208e1f76c9f184f3657ffbdf2cd3",
+    "assets/library_use/textures/label_current.png": "7e6ff23c85847374a18d0817881363a11664d0a171a2d2dfaad6f6f8f4fbb166",
+    "assets/library_use/textures/label_select.png": "930dc03eb0fef272c3ba16b77c6180c65197b1bcbbd60ff0ec7534277ecd410e",
+    "assets/library_use/textures/catalogue_screen.png": "9ab35932899cc354eb3c0d8abd9bcae5c5cc3a62add7e3d79e4d0aaefd0a57be",
+    "assets/library_use/textures/label_map.png": "f54acdad633ef1228c1d7b1b00f21aad58b1b3c701cddf3d2142dba61cf78116",
+    "assets/library_use/textures/periodical_terra.png": "a146f48783e897fac838d1dad5cd6ef369557f1bcdf096ce5b8bacecfb7b880c",
+    "assets/library_use/textures/opal_diffuser.png": "0bb515370268af754f50df8fc53f7dd83551bce9ffc27be717461b48904bdf2a",
+    "assets/library_use/source/AST-LIB-009.blend": "2da3a4a9b2faf6d76875506ddba4dc70496639015d6c5d2339052f75b521c249",
+    "assets/library_use/textures/label_back.png": "c595ee678d8bdc14fb54355648761c10dbaad8a9633793f21fd265259a7ef2ed",
+    "assets/library_use/textures/label_search.png": "6d2d1eecd0bc042914f2af27d28506258fa4c23b0d13f8983bb9a41bc6cb832a",
+    "assets/library_use/textures/label_light.png": "fcdd40cbb1d4156bb2711b917324d5f3603ccaaad835f02851ec88965dfb93b8",
+    "assets/library_use/exports/AST-LIB-008.glb": "6521e24ef26f0bf3c63d99f9e430315cb8e501daa67fad2d7a5dd654add48387",
+    "assets/library_use/textures/periodical_form.png": "147fbba6e50b213c24153512c411d2092fec6e0c5cee6ce3ed55b2d3434ccc2c",
+    "assets/library_use/exports/AST-LIB-010.glb": "dacb0bd023b42a3420b5ffc7dfcf69cc890e7a2d7f88b79945aecb5e6e1be01c",
+    "assets/library_use/textures/periodical_orbit.png": "624b0a66aed5f86e7922e12f181b667bb4d272f8e6b525e15474d2b8a25bb39b",
+    "assets/library_use/source/AST-LIB-008.blend": "31e57785f89752b3e60a8ec43d4013896911f6759331b2b2995b7d36f4ad54b7",
+    "assets/library_use/textures/label_service.png": "f19a6a39a2c13c7406fc9ceae4a15a05a48d6b2e7524ea6a97a9c6bf6224f85d",
+    "assets/library_use/textures/display_glass.png": "3c25a0803d7496f57142e142ca630e958c5e5c8c0bcbc3b37fefba72aa6be80c",
+    "assets/library_use/source/AST-LIB-010.blend": "2fcdcce84d06a136be57fec5f4cf170a81b5e2cc62fac0e24949d583a5c67fe0",
+    "assets/library_use/textures/label_archive.png": "8ae10410f0468c1b07b74b74d9530a5c0a0498ae59f174ee0ed637fc795606f6",
+    "assets/library_use/exports/AST-LIB-009.glb": "8895fbe654a0cf7b6d2e9036f1cbfb2190ce4de7b4130c0fd787222b68dc1bb8",
+    "assets/library_use/dependency_manifest.json": "024f0a836dcdc40337901ed10fdbfc328c8dc8d021af3735b33c321bf31829ab",
+    "assets/library_use/textures/reflector.png": "e2578bc41e7cceed4a3f26a22d9f00ac9be1f4d608d44aa0f5f6c68f8bc3ad63",
+    "assets/library_use/source/make_use_art.py": "ae6e038d7e9fbf3449e6eced3bb69f94a4b0f5545370d02e95d311a9bd746181"
+  }
+}

@@ -1,0 +1,642 @@
+{
+  "catalogue_id": "AST-BOT-007",
+  "title": "Joined pleated fan crown",
+  "unique_design": true,
+  "original_script_assisted_design": true,
+  "units": "metres",
+  "source": "source/AST-BOT-007.blend",
+  "export": "exports/AST-BOT-007.glb",
+  "generator": "source/build_botanical_cluster.py",
+  "source_sha256": "399d43bf77e06a59773965cac24f779c46a1e9458a993a392ae0244750b3bd82",
+  "glb_sha256": "467d00e588c9de6a08222d265bc0e5801fd2d9f2a1e8a932c0ce50dfeb0987d5",
+  "generator_sha256": "01d89a0b367137f182eefa706ec6192933be5d0c2b9953f038e03af90232df17",
+  "coordinates": {
+    "source": "X right, Y depth/rear, Z up; front -Y",
+    "native_glb": "X right, Y up, Z forward; front +Z",
+    "mapping": "(x,y,z)->(x,z,-y)",
+    "pivot_source_m": [
+      0,
+      0,
+      0
+    ],
+    "pivot_native_glb_m": [
+      0,
+      0,
+      0
+    ],
+    "datum": "soil plane; trailing asset intentionally extends below soil"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      -1.0939509868621826,
+      -0.804780900478363,
+      0.0
+    ],
+    "max_m": [
+      1.1899064779281616,
+      0.913284957408905,
+      2.529818296432495
+    ],
+    "dimensions_m": [
+      2.2838574647903442,
+      1.718065857887268,
+      2.529818296432495
+    ]
+  },
+  "foliage_bounds_blender_z_up": {
+    "min_m": [
+      -1.0939509868621826,
+      -0.804780900478363,
+      1.2300000190734863
+    ],
+    "max_m": [
+      1.1899064779281616,
+      0.913284957408905,
+      2.529818296432495
+    ],
+    "dimensions_m": [
+      2.2838574647903442,
+      1.718065857887268,
+      1.2998182773590088
+    ]
+  },
+  "lowest_foliage_z_m": 1.2300000190734863,
+  "evaluated_triangles": 1130,
+  "foliage_triangles": 540,
+  "editable_semantic_parts": 22,
+  "semantic_parts": [
+    "joined_root_crown",
+    "left_lift_stem",
+    "rear_high_stem",
+    "right_outward_stem",
+    "fan_petiole_01",
+    "pleated_fan_01",
+    "fan_petiole_02",
+    "pleated_fan_02",
+    "fan_petiole_03",
+    "pleated_fan_03",
+    "fan_petiole_04",
+    "pleated_fan_04",
+    "fan_petiole_05",
+    "pleated_fan_05",
+    "fan_petiole_06",
+    "pleated_fan_06",
+    "fan_petiole_07",
+    "pleated_fan_07",
+    "fan_petiole_08",
+    "pleated_fan_08",
+    "fan_petiole_09",
+    "pleated_fan_09"
+  ],
+  "root_graph_part": "joined_root_crown",
+  "material_roles": [
+    "botanical_bark",
+    "botanical_leaf_jade",
+    "botanical_leaf_olive",
+    "botanical_leaf_sage"
+  ],
+  "material_alpha": "OPAQUE, all existing original botanical roles unchanged",
+  "two_sided_roles": [
+    "botanical_leaf_jade",
+    "botanical_leaf_olive",
+    "botanical_leaf_sage"
+  ],
+  "thin_surface_treatment": "Intentionally open shaped folded leaves/petals; opaque two-sided material. Supports closed. No alpha cards or enclosing foliage hull.",
+  "runtime_semantics": "One evaluated runtime mesh per material role plus purposeful root/contact/origin empties; full named semantic parts retained in editable source; no engine performance acceptance",
+  "physical_and_proposal_markers": [
+    {
+      "name": "SOIL_ROOT_CONTACT",
+      "kind": "physical_soil_contact",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": "joined_root_crown",
+      "description": "",
+      "normal_source": [
+        0,
+        0,
+        -1
+      ],
+      "normal_gltf": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "name": "SOIL_ORIGIN",
+      "kind": "placement_origin",
+      "source_m": [
+        0,
+        0,
+        0
+      ],
+      "gltf_m": [
+        0,
+        0,
+        0
+      ],
+      "physical_part": null,
+      "description": ""
+    }
+  ],
+  "joins": [
+    {
+      "name": "left_lift_stem_to_joined_root_crown",
+      "child": "left_lift_stem",
+      "parent": "joined_root_crown",
+      "parts": [
+        "left_lift_stem",
+        "joined_root_crown"
+      ],
+      "probe_source_m": [
+        0.0,
+        0.0,
+        0.08
+      ],
+      "probe_gltf_m": [
+        0,
+        0.08,
+        0
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "rear_high_stem_to_joined_root_crown",
+      "child": "rear_high_stem",
+      "parent": "joined_root_crown",
+      "parts": [
+        "rear_high_stem",
+        "joined_root_crown"
+      ],
+      "probe_source_m": [
+        0.0,
+        0.015,
+        0.1
+      ],
+      "probe_gltf_m": [
+        0,
+        0.1,
+        -0.015
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "right_outward_stem_to_joined_root_crown",
+      "child": "right_outward_stem",
+      "parent": "joined_root_crown",
+      "parts": [
+        "right_outward_stem",
+        "joined_root_crown"
+      ],
+      "probe_source_m": [
+        0.025,
+        -0.015,
+        0.09
+      ],
+      "probe_gltf_m": [
+        0.025,
+        0.09,
+        0.015
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "fan_petiole_01_to_left_lift_stem",
+      "child": "fan_petiole_01",
+      "parent": "left_lift_stem",
+      "parts": [
+        "fan_petiole_01",
+        "left_lift_stem"
+      ],
+      "probe_source_m": [
+        -0.25,
+        0.029999999329447746,
+        1.0399999618530273
+      ],
+      "probe_gltf_m": [
+        -0.25,
+        1.0399999618530273,
+        -0.029999999329447746
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "pleated_fan_01_to_fan_petiole_01",
+      "child": "pleated_fan_01",
+      "parent": "fan_petiole_01",
+      "parts": [
+        "pleated_fan_01",
+        "fan_petiole_01"
+      ],
+      "probe_source_m": [
+        -0.5204592347145081,
+        -0.0424693301320076,
+        1.2300000190734863
+      ],
+      "probe_gltf_m": [
+        -0.5204592347145081,
+        1.2300000190734863,
+        0.0424693301320076
+      ],
+      "kind": "fan_base_on_petiole_cap",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "fan_petiole_02_to_right_outward_stem",
+      "child": "fan_petiole_02",
+      "parent": "right_outward_stem",
+      "parts": [
+        "fan_petiole_02",
+        "right_outward_stem"
+      ],
+      "probe_source_m": [
+        0.3100000023841858,
+        -0.03500000014901161,
+        1.1200000047683716
+      ],
+      "probe_gltf_m": [
+        0.3100000023841858,
+        1.1200000047683716,
+        0.03500000014901161
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "pleated_fan_02_to_fan_petiole_02",
+      "child": "pleated_fan_02",
+      "parent": "fan_petiole_02",
+      "parts": [
+        "pleated_fan_02",
+        "fan_petiole_02"
+      ],
+      "probe_source_m": [
+        0.5731139183044434,
+        -0.1307656466960907,
+        1.3300000429153442
+      ],
+      "probe_gltf_m": [
+        0.5731139183044434,
+        1.3300000429153442,
+        0.1307656466960907
+      ],
+      "kind": "fan_base_on_petiole_cap",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "fan_petiole_03_to_left_lift_stem",
+      "child": "fan_petiole_03",
+      "parent": "left_lift_stem",
+      "parts": [
+        "fan_petiole_03",
+        "left_lift_stem"
+      ],
+      "probe_source_m": [
+        -0.3400000035762787,
+        0.05999999865889549,
+        1.5099999904632568
+      ],
+      "probe_gltf_m": [
+        -0.3400000035762787,
+        1.5099999904632568,
+        -0.05999999865889549
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "pleated_fan_03_to_fan_petiole_03",
+      "child": "pleated_fan_03",
+      "parent": "fan_petiole_03",
+      "parts": [
+        "pleated_fan_03",
+        "fan_petiole_03"
+      ],
+      "probe_source_m": [
+        -0.5847030878067017,
+        0.17410694062709808,
+        1.6299999952316284
+      ],
+      "probe_gltf_m": [
+        -0.5847030878067017,
+        1.6299999952316284,
+        -0.17410694062709808
+      ],
+      "kind": "fan_base_on_petiole_cap",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "fan_petiole_04_to_rear_high_stem",
+      "child": "fan_petiole_04",
+      "parent": "rear_high_stem",
+      "parts": [
+        "fan_petiole_04",
+        "rear_high_stem"
+      ],
+      "probe_source_m": [
+        0.019999999552965164,
+        0.1599999964237213,
+        1.2400000095367432
+      ],
+      "probe_gltf_m": [
+        0.019999999552965164,
+        1.2400000095367432,
+        -0.1599999964237213
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "pleated_fan_04_to_fan_petiole_04",
+      "child": "pleated_fan_04",
+      "parent": "fan_petiole_04",
+      "parts": [
+        "pleated_fan_04",
+        "fan_petiole_04"
+      ],
+      "probe_source_m": [
+        0.08729295432567596,
+        0.41114071011543274,
+        1.4300000667572021
+      ],
+      "probe_gltf_m": [
+        0.08729295432567596,
+        1.4300000667572021,
+        -0.41114071011543274
+      ],
+      "kind": "fan_base_on_petiole_cap",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "fan_petiole_05_to_right_outward_stem",
+      "child": "fan_petiole_05",
+      "parent": "right_outward_stem",
+      "parts": [
+        "fan_petiole_05",
+        "right_outward_stem"
+      ],
+      "probe_source_m": [
+        0.38999998569488525,
+        -0.009999999776482582,
+        1.600000023841858
+      ],
+      "probe_gltf_m": [
+        0.38999998569488525,
+        1.600000023841858,
+        0.009999999776482582
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "pleated_fan_05_to_fan_petiole_05",
+      "child": "pleated_fan_05",
+      "parent": "fan_petiole_05",
+      "parts": [
+        "pleated_fan_05",
+        "fan_petiole_05"
+      ],
+      "probe_source_m": [
+        0.5500719547271729,
+        -0.21488280594348907,
+        1.7000000476837158
+      ],
+      "probe_gltf_m": [
+        0.5500719547271729,
+        1.7000000476837158,
+        0.21488280594348907
+      ],
+      "kind": "fan_base_on_petiole_cap",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "fan_petiole_06_to_rear_high_stem",
+      "child": "fan_petiole_06",
+      "parent": "rear_high_stem",
+      "parts": [
+        "fan_petiole_06",
+        "rear_high_stem"
+      ],
+      "probe_source_m": [
+        0.05000000074505806,
+        0.20999999344348907,
+        1.9299999475479126
+      ],
+      "probe_gltf_m": [
+        0.05000000074505806,
+        1.9299999475479126,
+        -0.20999999344348907
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "pleated_fan_06_to_fan_petiole_06",
+      "child": "pleated_fan_06",
+      "parent": "fan_petiole_06",
+      "parts": [
+        "pleated_fan_06",
+        "fan_petiole_06"
+      ],
+      "probe_source_m": [
+        0.15466246008872986,
+        0.34396183490753174,
+        1.9799998998641968
+      ],
+      "probe_gltf_m": [
+        0.15466246008872986,
+        1.9799998998641968,
+        -0.34396183490753174
+      ],
+      "kind": "fan_base_on_petiole_cap",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "fan_petiole_07_to_left_lift_stem",
+      "child": "fan_petiole_07",
+      "parent": "left_lift_stem",
+      "parts": [
+        "fan_petiole_07",
+        "left_lift_stem"
+      ],
+      "probe_source_m": [
+        -0.3400000035762787,
+        0.05999999865889549,
+        1.5099999904632568
+      ],
+      "probe_gltf_m": [
+        -0.3400000035762787,
+        1.5099999904632568,
+        -0.05999999865889549
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "pleated_fan_07_to_fan_petiole_07",
+      "child": "pleated_fan_07",
+      "parent": "fan_petiole_07",
+      "parts": [
+        "pleated_fan_07",
+        "fan_petiole_07"
+      ],
+      "probe_source_m": [
+        -0.43008628487586975,
+        -0.08416818082332611,
+        1.6100000143051147
+      ],
+      "probe_gltf_m": [
+        -0.43008628487586975,
+        1.6100000143051147,
+        0.08416818082332611
+      ],
+      "kind": "fan_base_on_petiole_cap",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "fan_petiole_08_to_right_outward_stem",
+      "child": "fan_petiole_08",
+      "parent": "right_outward_stem",
+      "parts": [
+        "fan_petiole_08",
+        "right_outward_stem"
+      ],
+      "probe_source_m": [
+        0.38999998569488525,
+        -0.009999999776482582,
+        1.600000023841858
+      ],
+      "probe_gltf_m": [
+        0.38999998569488525,
+        1.600000023841858,
+        0.009999999776482582
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "pleated_fan_08_to_fan_petiole_08",
+      "child": "pleated_fan_08",
+      "parent": "fan_petiole_08",
+      "parts": [
+        "pleated_fan_08",
+        "fan_petiole_08"
+      ],
+      "probe_source_m": [
+        0.5754367709159851,
+        0.0649213194847107,
+        1.7000000476837158
+      ],
+      "probe_gltf_m": [
+        0.5754367709159851,
+        1.7000000476837158,
+        -0.0649213194847107
+      ],
+      "kind": "fan_base_on_petiole_cap",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "fan_petiole_09_to_rear_high_stem",
+      "child": "fan_petiole_09",
+      "parent": "rear_high_stem",
+      "parts": [
+        "fan_petiole_09",
+        "rear_high_stem"
+      ],
+      "probe_source_m": [
+        0.05000000074505806,
+        0.20999999344348907,
+        1.9299999475479126
+      ],
+      "probe_gltf_m": [
+        0.05000000074505806,
+        1.9299999475479126,
+        -0.20999999344348907
+      ],
+      "kind": "buried_attachment",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    },
+    {
+      "name": "pleated_fan_09_to_fan_petiole_09",
+      "child": "pleated_fan_09",
+      "parent": "fan_petiole_09",
+      "parts": [
+        "pleated_fan_09",
+        "fan_petiole_09"
+      ],
+      "probe_source_m": [
+        -0.06258329749107361,
+        0.2749999761581421,
+        1.96999990940094
+      ],
+      "probe_gltf_m": [
+        -0.06258329749107361,
+        1.96999990940094,
+        -0.2749999761581421
+      ],
+      "kind": "fan_base_on_petiole_cap",
+      "check": "Probe is on child attachment surface and on or inside closed parent; every mesh has a path to root crown"
+    }
+  ],
+  "planting_and_placement": {
+    "root_reservation_polygon_source_xy": [
+      [
+        -0.22,
+        -0.22
+      ],
+      [
+        0.22,
+        -0.22
+      ],
+      [
+        0.22,
+        0.22
+      ],
+      [
+        -0.22,
+        0.22
+      ]
+    ],
+    "root_reservation_diameter_m": 0.44,
+    "actual_root_contact_radius_m": 0.17,
+    "root_below_soil_not_modelled": true,
+    "suggested_spatial_soil_depth_m": 0.26,
+    "design_intent": "Three visible joined stems and nine pleated fans; lower stem zone remains legible",
+    "headroom_claim": false
+  },
+  "collision_proposal_file": "collision_proposals.json",
+  "collision_proposal_count": 11,
+  "reference_manifest": "../../batches/batch13/reference_manifest.json",
+  "limitations": [
+    "Proposed components only, no recovered host/room/deck geometry",
+    "Soil/root reservation and depth are spatial proposals, no biological/species/irrigation/load claim",
+    "No engine, actor, collision behavior, wind, LOD or target-PC acceptance",
+    "Foliage decorative non-colliding; no foliage AABB as collision",
+    "Standing/seated outlook and maintenance clearances require the recorded relative arrangement"
+  ],
+  "runtime_mesh_count": 4,
+  "source_unchanged_during_consolidation": true,
+  "runtime_primitive_count": 4,
+  "validation_files": [
+    "qa/source_reload_checks.json",
+    "qa/glb_validation.json",
+    "qa/source_native_geometry.json",
+    "qa/collision_profile_checks.json",
+    "qa/source_only_rebuild_receipt.json",
+    "qa/render_evidence.json"
+  ],
+  "evidence_media_manifest": "qa/review_media_manifest.json",
+  "source_and_export_verified": true
+}

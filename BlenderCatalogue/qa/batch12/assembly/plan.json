@@ -1,0 +1,195 @@
+{
+  "scope": "New component inspection arrangement for staff-assisted forward D05 triage/medical purposes. This is not a clinic allocation or original host fit.",
+  "coordinate_frame": "Local Blender metres, Z up; no original ship-world position is assigned",
+  "historical_program_anchors": [
+    "D05_clinic0",
+    "D05_clinic1"
+  ],
+  "items": [
+    {
+      "key": "privacy",
+      "catalogue_id": "AST-MED-001",
+      "path": "assets/clinical_architecture/exports/AST-MED-001.glb",
+      "source_path": "assets/clinical_architecture/source/AST-MED-001.blend",
+      "manifest_path": "assets/clinical_architecture/AST-MED-001.manifest.json",
+      "source_origin_m": [
+        0,
+        0,
+        0
+      ],
+      "source_z_rotation_deg": 0
+    },
+    {
+      "key": "wash",
+      "catalogue_id": "AST-MED-002",
+      "path": "assets/clinical_architecture/exports/AST-MED-002.glb",
+      "source_path": "assets/clinical_architecture/source/AST-MED-002.blend",
+      "manifest_path": "assets/clinical_architecture/AST-MED-002.manifest.json",
+      "source_origin_m": [
+        -1.95,
+        2.0,
+        0
+      ],
+      "source_z_rotation_deg": 90
+    },
+    {
+      "key": "support",
+      "catalogue_id": "AST-MED-003",
+      "path": "assets/clinical_support/exports/AST-MED-003.glb",
+      "source_path": "assets/clinical_support/source/AST-MED-003.blend",
+      "manifest_path": "assets/clinical_support/AST-MED-003.manifest.json",
+      "source_origin_m": [
+        0.56,
+        2.6,
+        0
+      ],
+      "source_z_rotation_deg": 0
+    },
+    {
+      "key": "trolley",
+      "catalogue_id": "AST-MED-004",
+      "path": "assets/clinical_support/exports/AST-MED-004.glb",
+      "source_path": "assets/clinical_support/source/AST-MED-004.blend",
+      "manifest_path": "assets/clinical_support/AST-MED-004.manifest.json",
+      "source_origin_m": [
+        2.85,
+        2.3,
+        0
+      ],
+      "source_z_rotation_deg": -90
+    }
+  ],
+  "privacy_state_exports": {
+    "closed": "assets/clinical_architecture/exports/AST-MED-001.glb",
+    "open": "assets/clinical_architecture/exports/AST-MED-001__open.glb"
+  },
+  "privacy_source_interface": "assets/clinical_architecture/privacy_test_field.json",
+  "empty_component_approach": {
+    "min_source_m": [
+      1.5,
+      -0.1,
+      0.03
+    ],
+    "max_source_m": [
+      2.3,
+      3.75,
+      2.65
+    ],
+    "authority": "Proposed inspection clear space only; no supported actor/cart or host route acceptance"
+  },
+  "views": {
+    "privacy_closed_arrival": {
+      "state": "closed",
+      "source_eye_m": [
+        0.56,
+        -4.8,
+        1.65
+      ],
+      "source_target_m": [
+        0.56,
+        1.4,
+        1.35
+      ],
+      "lens_mm": 24,
+      "keys": [
+        "privacy",
+        "wash",
+        "support",
+        "trolley"
+      ],
+      "full_component_frame": true,
+      "meaning": "Closed local privacy field with the proposed support/use group behind it; no whole-room confidentiality"
+    },
+    "privacy_open_arrival": {
+      "state": "open",
+      "source_eye_m": [
+        0.56,
+        -4.8,
+        1.65
+      ],
+      "source_target_m": [
+        0.56,
+        1.4,
+        1.35
+      ],
+      "lens_mm": 24,
+      "keys": [
+        "privacy",
+        "wash",
+        "support",
+        "trolley"
+      ],
+      "full_component_frame": true,
+      "meaning": "Same source/camera/light arrangement, open source screen state; no working game control"
+    },
+    "clinical_working_side": {
+      "state": "open",
+      "source_eye_m": [
+        5.8,
+        -1.8,
+        1.65
+      ],
+      "source_target_m": [
+        0.55,
+        2.1,
+        1.05
+      ],
+      "lens_mm": 25,
+      "keys": [
+        "wash",
+        "support",
+        "trolley"
+      ],
+      "full_component_frame": true,
+      "meaning": "Ordinary-height view of the support, wash and supply relationships; original floor/support and treatment suitability unknown"
+    },
+    "support_contact_view": {
+      "state": "open",
+      "source_eye_m": [
+        0.56,
+        1.15,
+        1.65
+      ],
+      "source_target_m": [
+        0.56,
+        2.6,
+        0.75
+      ],
+      "lens_mm": 28,
+      "keys": [
+        "support"
+      ],
+      "full_component_frame": false,
+      "meaning": "Intentional close source-contact view of three neutral pad modules, not a body or transfer simulation"
+    },
+    "wash_work_view": {
+      "state": "open",
+      "source_eye_m": [
+        -1.05,
+        1.85,
+        1.65
+      ],
+      "source_target_m": [
+        -1.905,
+        1.69,
+        0.86
+      ],
+      "lens_mm": 30,
+      "keys": [
+        "wash"
+      ],
+      "full_component_frame": false,
+      "meaning": "Ordinary 1.65m close inspection eye showing actual bowl, closed drain cap, static controls and dry landing; intentionally partial context, no body/chemistry or treatment claim"
+    }
+  },
+  "unknown_host": {
+    "room_polygon": null,
+    "door_clear_aperture": null,
+    "ceiling_height": null,
+    "floor_support": null,
+    "service_route": null,
+    "species_body_fit": null
+  },
+  "new_design_count": 4,
+  "state_derivatives_counted_as_new": false
+}

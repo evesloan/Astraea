@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch17/independent_handling_geometry_review.py", line 31, in <module>
+    mp=BASE/(ident+'.manifest.json');m=json.loads(mp.read_text());sp=BASE/m['source'];gp=BASE/m['export'];srp=OUT/f'independent_source_{ident}.json';s=json.loads(srp.read_text());assert s['sha256']==sha(sp);cache=np.load(ROOT/s['geometry_cache']);t=cache['triangles'];labels=cache['object_names'];parts={str(n):t[labels==n]for n in np.unique(labels)};native=Native(gp);nt=native.tris@C;ns=SourceCache(srp);node_by={x.get('name'):i for i,x in enumerate(native.g.doc['nodes'])};markers=[]
+                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^
+AssertionError

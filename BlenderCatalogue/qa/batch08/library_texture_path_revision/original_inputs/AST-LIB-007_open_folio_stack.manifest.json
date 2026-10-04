@@ -1,0 +1,494 @@
+{
+  "catalogue_id": "AST-LIB-007",
+  "name": "Astraea Open Field Folio",
+  "intended_use": "Static reading-table display, shaped open folio borne on two individually bound closed volumes",
+  "support_contact_proposal": {
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "tabletop_contact_z_m": 0,
+    "tabletop_contact_rectangle_m": [
+      [
+        -0.149,
+        -0.1105
+      ],
+      [
+        0.149,
+        0.1105
+      ]
+    ],
+    "closed_volume_stack_contacts_z_m": [
+      0,
+      0.026,
+      0.048
+    ],
+    "open_cover_lower_face_z_m": 0.048,
+    "open_page_gutter_z_m": 0.0611,
+    "open_page_shoulder_z_m": 0.0801,
+    "open_cover_overhang_past_bottom_book_m": {
+      "left_x": 0.036,
+      "right_x": 0.036,
+      "back_y": 0.0055,
+      "front_y": 0.0055
+    },
+    "bookmark_extension_y_min_m": -0.14,
+    "placement": "Place origin on study surface Z .74\u2013.76 m; front -Y faces reader. Display entirely inside tabletop safe perimeter.",
+    "interaction": "Static grouped display; picking individual books, page turning, page text interpretation and actor hand contact are future work"
+  },
+  "resource_api": {
+    "load_glb": "AST-LIB-007_open_folio_stack.glb",
+    "placement_origin": "Bottom closed volume lower cover on support plane Z0",
+    "forward_blender": [
+      0,
+      -1,
+      0
+    ],
+    "forward_glTF": [
+      0,
+      0,
+      1
+    ],
+    "animation": "None; static semantic material primitives"
+  },
+  "contact_joins": [
+    {
+      "members": [
+        "lower_closed_volume",
+        "upper_closed_volume"
+      ],
+      "support_z_m": 0.026
+    },
+    {
+      "members": [
+        "upper_closed_volume",
+        "open_cover_boards"
+      ],
+      "support_z_m": 0.048
+    },
+    {
+      "members": [
+        "open_cover_boards",
+        "shaped_bound_page_block"
+      ],
+      "gap_m": 0,
+      "intent": "Page blocks bear directly on cover top Z .052; sewn gutter joins both halves"
+    }
+  ],
+  "bounds_min_m": [
+    -0.1850000023841858,
+    -0.14000000059604645,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.1850000023841858,
+    0.11599999666213989,
+    0.08009999990463257
+  ],
+  "dimensions_m": [
+    0.3700000047683716,
+    0.25599999725818634,
+    0.08009999990463257
+  ],
+  "triangles_evaluated": 276,
+  "parts": [
+    {
+      "name": "FOLIO_lower_closed_volume_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_teal",
+      "triangles": 40,
+      "bounds_min_m": [
+        -0.14900000393390656,
+        -0.11050000041723251,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.14900000393390656,
+        0.11050000041723251,
+        0.026000022888183594
+      ]
+    },
+    {
+      "name": "FOLIO_lower_closed_volume_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        -0.1451999992132187,
+        -0.1014999970793724,
+        0.0035000008065253496
+      ],
+      "bounds_max_m": [
+        0.1451999992132187,
+        0.10649999976158142,
+        0.022500021383166313
+      ]
+    },
+    {
+      "name": "FOLIO_lower_closed_volume_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.1102600023150444,
+        -0.11095000058412552,
+        2.9247888555516965e-09
+      ],
+      "bounds_max_m": [
+        -0.10785999894142151,
+        -0.10395000129938126,
+        0.0260000042617321
+      ]
+    },
+    {
+      "name": "FOLIO_lower_closed_volume_raised_spine_band_2",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        0.0983399897813797,
+        -0.11095000058412552,
+        1.8673651069889274e-08
+      ],
+      "bounds_max_m": [
+        0.10074000060558319,
+        -0.10395000129938126,
+        0.026000019162893295
+      ]
+    },
+    {
+      "name": "FOLIO_lower_closed_volume_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.0059600030072033405,
+        -0.11105000227689743,
+        0.0046800109557807446
+      ],
+      "bounds_max_m": [
+        0.024039998650550842,
+        -0.11105000227689743,
+        0.02132001332938671
+      ]
+    },
+    {
+      "name": "FOLIO_lower_closed_volume_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.014739990234375,
+        -0.11118000000715256,
+        0.007176012732088566
+      ],
+      "bounds_max_m": [
+        0.016839995980262756,
+        -0.11118000000715256,
+        0.018824012950062752
+      ]
+    },
+    {
+      "name": "FOLIO_lower_closed_volume_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.00033999967854470015,
+        -0.11118000000715256,
+        0.01144001167267561
+      ],
+      "bounds_max_m": [
+        0.009939998388290405,
+        -0.11118000000715256,
+        0.014560012146830559
+      ]
+    },
+    {
+      "name": "FOLIO_upper_closed_volume_continuous_boards_and_rounded_spine",
+      "semantic_role": "book_cover_ochre",
+      "triangles": 40,
+      "bounds_min_m": [
+        -0.15114913880825043,
+        -0.1030825674533844,
+        0.02599998749792576
+      ],
+      "bounds_max_m": [
+        0.13514913618564606,
+        0.11508256196975708,
+        0.04800000041723251
+      ]
+    },
+    {
+      "name": "FOLIO_upper_closed_volume_recessed_bound_leaf_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 12,
+      "bounds_min_m": [
+        -0.14688332378864288,
+        -0.09389602392911911,
+        0.02949998900294304
+      ],
+      "bounds_max_m": [
+        0.13114500045776367,
+        0.11088916659355164,
+        0.04450000077486038
+      ]
+    },
+    {
+      "name": "FOLIO_upper_closed_volume_raised_spine_band_1",
+      "semantic_role": "book_label_paper",
+      "triangles": 8,
+      "bounds_min_m": [
+        -0.10431698709726334,
+        -0.09166844189167023,
+        0.025999998673796654
+      ],
+      "bounds_max_m": [
+        -0.10155392438173294,
+        -0.08455243706703186,
+        0.04800000041723251
+      ]
+    },
+    {
+      "name": "FOLIO_upper_closed_volume_catalogue_paper_label",
+      "semantic_role": "book_label_paper",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.0188794806599617,
+        -0.0976906418800354,
+        0.029959993436932564
+      ],
+      "bounds_max_m": [
+        0.01107939425855875,
+        -0.09612056612968445,
+        0.04403999447822571
+      ]
+    },
+    {
+      "name": "FOLIO_upper_closed_volume_original_catalogue_mark_1",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        0.0017853521276265383,
+        -0.09744364023208618,
+        0.03207199275493622
+      ],
+      "bounds_max_m": [
+        0.0038824675139039755,
+        -0.09733373671770096,
+        0.041927993297576904
+      ]
+    },
+    {
+      "name": "FOLIO_upper_closed_volume_original_catalogue_mark_2",
+      "semantic_role": "book_print_ink",
+      "triangles": 2,
+      "bounds_min_m": [
+        -0.012594924308359623,
+        -0.09708252549171448,
+        0.03567999601364136
+      ],
+      "bounds_max_m": [
+        -0.00300808297470212,
+        -0.09658010303974152,
+        0.038319993764162064
+      ]
+    },
+    {
+      "name": "FOLIO_L_open_cover_board",
+      "semantic_role": "book_cover_clay",
+      "triangles": 28,
+      "bounds_min_m": [
+        -0.1850000023841858,
+        -0.11599999666213989,
+        0.04800000041723251
+      ],
+      "bounds_max_m": [
+        -0.003000000026077032,
+        0.11599999666213989,
+        0.052000001072883606
+      ]
+    },
+    {
+      "name": "FOLIO_L_shaped_bound_page_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 20,
+      "bounds_min_m": [
+        -0.17599999904632568,
+        -0.10949999839067459,
+        0.052000001072883606
+      ],
+      "bounds_max_m": [
+        -0.004999999888241291,
+        0.10949999839067459,
+        0.07999999821186066
+      ]
+    },
+    {
+      "name": "FOLIO_L_printed_open_page",
+      "semantic_role": "folio_text_page",
+      "triangles": 6,
+      "bounds_min_m": [
+        -0.17599999904632568,
+        -0.10949999839067459,
+        0.06109999865293503
+      ],
+      "bounds_max_m": [
+        -0.004999999888241291,
+        0.10949999839067459,
+        0.08009999990463257
+      ]
+    },
+    {
+      "name": "FOLIO_R_open_cover_board",
+      "semantic_role": "book_cover_clay",
+      "triangles": 28,
+      "bounds_min_m": [
+        0.003000000026077032,
+        -0.11599999666213989,
+        0.04800000041723251
+      ],
+      "bounds_max_m": [
+        0.1850000023841858,
+        0.11599999666213989,
+        0.052000001072883606
+      ]
+    },
+    {
+      "name": "FOLIO_R_shaped_bound_page_block",
+      "semantic_role": "book_paper_edges",
+      "triangles": 20,
+      "bounds_min_m": [
+        0.004999999888241291,
+        -0.10949999839067459,
+        0.052000001072883606
+      ],
+      "bounds_max_m": [
+        0.17599999904632568,
+        0.10949999839067459,
+        0.07999999821186066
+      ]
+    },
+    {
+      "name": "FOLIO_R_printed_open_page",
+      "semantic_role": "folio_chart_page",
+      "triangles": 6,
+      "bounds_min_m": [
+        0.004999999888241291,
+        -0.10949999839067459,
+        0.06109999865293503
+      ],
+      "bounds_max_m": [
+        0.17599999904632568,
+        0.10949999839067459,
+        0.08009999990463257
+      ]
+    },
+    {
+      "name": "FOLIO_sewn_gutter_spine",
+      "semantic_role": "book_cover_ochre",
+      "triangles": 12,
+      "bounds_min_m": [
+        -0.004999999888241291,
+        -0.10999999940395355,
+        0.04899999871850014
+      ],
+      "bounds_max_m": [
+        0.004999999888241291,
+        0.10999999940395355,
+        0.061000000685453415
+      ]
+    },
+    {
+      "name": "FOLIO_cloth_bookmark_fishtail",
+      "semantic_role": "book_cover_teal",
+      "triangles": 16,
+      "bounds_min_m": [
+        -0.06700000166893005,
+        -0.14000000059604645,
+        0.05400000140070915
+      ],
+      "bounds_max_m": [
+        -0.052000001072883606,
+        -0.09200000017881393,
+        0.055399999022483826
+      ]
+    }
+  ],
+  "book_parts": [
+    {
+      "name": "FOLIO_lower_closed_volume",
+      "source_local_dimensions_m": [
+        0.026,
+        0.221,
+        0.298
+      ],
+      "bounds_min_m": [
+        -0.14900000393390656,
+        -0.11118000000715256,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.14900000393390656,
+        0.11050000041723251,
+        0.026000022888183594
+      ],
+      "base_contact_z_m": 0.0,
+      "triangles": 74
+    },
+    {
+      "name": "FOLIO_upper_closed_volume",
+      "source_local_dimensions_m": [
+        0.022,
+        0.204,
+        0.276
+      ],
+      "bounds_min_m": [
+        -0.15114913880825043,
+        -0.1030825674533844,
+        0.02599998749792576
+      ],
+      "bounds_max_m": [
+        0.13514913618564606,
+        0.11508256196975708,
+        0.04800000041723251
+      ],
+      "base_contact_z_m": 0.02599998749792576,
+      "triangles": 66
+    }
+  ],
+  "units": "metres",
+  "front_axis": "-Y",
+  "pivot_m": [
+    0,
+    0,
+    0
+  ],
+  "blender_version": "4.3.2",
+  "authoring": "Reproducible script-assisted intentional construction; separately editable covers, pages, labels, bands, bookstops, cover leaves and printed leaf surfaces",
+  "provenance": "New original 2026-10-02 catalogue work, independent of missing game recovery. Four library reference PNGs inspected for collection rhythm and useful reading details only; no copied pixels or book art; no downloaded models; no Tripo.",
+  "source_generator": "build_library_contents.py",
+  "texture_generator": "make_book_textures.py",
+  "qa_scope": "Blender component evidence only; original game, Godot integration, actor acceptance, collision behavior and runtime performance are untested",
+  "materials": [
+    "book_cover_clay",
+    "book_cover_ochre",
+    "book_cover_teal",
+    "book_label_paper",
+    "book_paper_edges",
+    "book_print_ink",
+    "folio_chart_page",
+    "folio_text_page"
+  ],
+  "export": {
+    "format": "GLB",
+    "Y_up": true,
+    "geometry": "One static visual mesh consolidated into semantic material primitives",
+    "active_uv_name": "UV_Metric_Metres",
+    "embedded_textures": true,
+    "collision_exported": false,
+    "source_semantic_part_count": 21,
+    "static_mesh_count": 1,
+    "material_primitive_count": 8
+  },
+  "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+  "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+  "source_generator_sha256": "9fb0073ca9c0bb48a0d83c4336689f0b6ad3f7b4ff84e712d3053b15c7d88a4c",
+  "texture_generator_sha256": "ced7c6144f5836ec36f431a456fbf0f5337c3c4ab4af6220db37cb990e9c2ba8",
+  "blend_sha256": "c10dbd29c712b34c749eacb618b4b18c418dca6e56dfc3076ba4b006295cf0de",
+  "glb_sha256": "be04e9ab7dbe3b555d272f1d72acfdee477cc274a4f64d6f5a6a57510bec5c54"
+}

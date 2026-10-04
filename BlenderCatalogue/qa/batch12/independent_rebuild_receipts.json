@@ -1,0 +1,617 @@
+{
+  "passed": true,
+  "families": [
+    {
+      "dependency_manifest": {
+        "path": "assets/clinical_architecture/dependency_manifest.json",
+        "sha256": "4a6ef0ef675bbc51658b075595324edf299b0989bde9d7e537dec4ba635a1eb3",
+        "bytes": 3985
+      },
+      "author_final_execution_bindings": {
+        "path": "assets/clinical_architecture/qa/final_execution_bindings.json",
+        "sha256": "9de7de8899ca8a4115e18d5319e5a1c09b4b67db02b5ec77e786dfc29d97dbd9",
+        "bytes": 2681
+      },
+      "passed": true,
+      "family": "clinical_architecture",
+      "executed_script_sha256": "e38a21315dfd8bd3d050ac2014a1ced6487b6784a704f3265d49d9878eeeaeba",
+      "receipt": {
+        "path": "assets/clinical_architecture/qa/source_only_rebuild_receipt.json",
+        "sha256": "d264c1e51b9b735377ccf077581a5b1c52292402384e5ed06d9ecab43d13c424",
+        "bytes": 7575
+      },
+      "runner": {
+        "path": "assets/clinical_architecture/qa/source_only_rebuild.py",
+        "sha256": "66355c8fd64a4ee655dc165c48ed9d53add5c974d5c93a5bf9621fda58362d8c",
+        "bytes": 3542
+      },
+      "executions": [
+        {
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "/workspace/shared/astraea-catalogue-continuation-20261002/assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/materials/care/source/generate_care_materials.py"
+          ],
+          "executed_script": {
+            "path": "assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/materials/care/source/generate_care_materials.py",
+            "sha256": "b85cb7bae7911f1f05c1b88776c482009c2c3759e37ce9f64143abd3ca63907c",
+            "bytes": 2192
+          },
+          "log": {
+            "path": "assets/clinical_architecture/qa/source_only_step_0.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "/workspace/shared/astraea-catalogue-continuation-20261002/assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/assets/clinical_architecture/source/make_clinical_textures.py"
+          ],
+          "executed_script": {
+            "path": "assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/assets/clinical_architecture/source/make_clinical_textures.py",
+            "sha256": "96d8ee78a530b9ab549d23804e2a3597b228922e250902b273ed413cd1f6ab11",
+            "bytes": 1429
+          },
+          "log": {
+            "path": "assets/clinical_architecture/qa/source_only_step_1.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "exit_code": 0
+        },
+        {
+          "argv": [
+            "blender",
+            "--background",
+            "--threads",
+            "2",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "/workspace/shared/astraea-catalogue-continuation-20261002/assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/assets/clinical_architecture/source/build_clinical_architecture.py"
+          ],
+          "executed_script": {
+            "path": "assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/assets/clinical_architecture/source/build_clinical_architecture.py",
+            "sha256": "a047cfbc818b1d8cf2376fea44787b713bc7e18a2345ffcc8cdec074dbd02283",
+            "bytes": 30684
+          },
+          "log": {
+            "path": "assets/clinical_architecture/qa/source_only_step_2.log",
+            "sha256": "278bcc2bfc84f023282efa80c84866baebb1fa7cb92986a27442c030d857a30e",
+            "bytes": 10989
+          },
+          "exit_code": 0
+        }
+      ],
+      "source_only_seed_inputs": [
+        {
+          "path": "assets/clinical_architecture/source/build_clinical_architecture.py",
+          "sha256": "a047cfbc818b1d8cf2376fea44787b713bc7e18a2345ffcc8cdec074dbd02283",
+          "bytes": 30684
+        },
+        {
+          "path": "assets/clinical_architecture/source/make_clinical_textures.py",
+          "sha256": "96d8ee78a530b9ab549d23804e2a3597b228922e250902b273ed413cd1f6ab11",
+          "bytes": 1429
+        },
+        {
+          "path": "materials/care/source/generate_care_materials.py",
+          "sha256": "b85cb7bae7911f1f05c1b88776c482009c2c3759e37ce9f64143abd3ca63907c",
+          "bytes": 2192
+        },
+        {
+          "path": "materials/champagne_metal.png",
+          "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+          "bytes": 5262
+        },
+        {
+          "path": "materials/clay_weave.png",
+          "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+          "bytes": 16478
+        },
+        {
+          "path": "materials/dark_rubber.png",
+          "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+          "bytes": 1631
+        },
+        {
+          "path": "materials/ivory_enamel.png",
+          "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+          "bytes": 3464
+        },
+        {
+          "path": "materials/material_manifest.json",
+          "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+          "bytes": 3672
+        },
+        {
+          "path": "materials/oatmeal_weave.png",
+          "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+          "bytes": 16827
+        },
+        {
+          "path": "materials/teal_weave.png",
+          "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+          "bytes": 16512
+        },
+        {
+          "path": "materials/warm_stone.png",
+          "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+          "bytes": 10430
+        },
+        {
+          "path": "materials/warm_walnut.png",
+          "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+          "bytes": 8275
+        },
+        {
+          "path": "standards/care_materials.py",
+          "sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+          "bytes": 1308
+        },
+        {
+          "path": "standards/materials.py",
+          "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+          "bytes": 1584
+        }
+      ],
+      "generated_material_intermediate_inputs": [
+        {
+          "path": "assets/clinical_architecture/material_manifest.json",
+          "sha256": "a29eb4e7e87eb0623a881c651bb5e799397ffbaecf1f4d43c1cbbff7fb3d77ca",
+          "bytes": 1217
+        },
+        {
+          "path": "assets/clinical_architecture/textures/clinical_ink.png",
+          "sha256": "2c3e414c1b6ecd2ca8d04acdb8b871ffa12f0dd137abefc79a3a61f9f7634390",
+          "bytes": 41099
+        },
+        {
+          "path": "assets/clinical_architecture/textures/privacy_sage.png",
+          "sha256": "1c030dccc4238fb63a826a9d944d70a8b797de344ea6adcaf56a90d40a9af0e7",
+          "bytes": 42554
+        },
+        {
+          "path": "materials/care/care_bluegreen_resin.png",
+          "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+          "bytes": 4480
+        },
+        {
+          "path": "materials/care/care_brushed_metal.png",
+          "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+          "bytes": 3750
+        },
+        {
+          "path": "materials/care/care_soft_pad.png",
+          "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+          "bytes": 5664
+        },
+        {
+          "path": "materials/care/manifest.json",
+          "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+          "bytes": 1905
+        }
+      ],
+      "production_inputs": [
+        {
+          "path": "assets/clinical_architecture/material_manifest.json",
+          "sha256": "a29eb4e7e87eb0623a881c651bb5e799397ffbaecf1f4d43c1cbbff7fb3d77ca",
+          "bytes": 1217
+        },
+        {
+          "path": "assets/clinical_architecture/source/build_clinical_architecture.py",
+          "sha256": "a047cfbc818b1d8cf2376fea44787b713bc7e18a2345ffcc8cdec074dbd02283",
+          "bytes": 30684
+        },
+        {
+          "path": "assets/clinical_architecture/source/make_clinical_textures.py",
+          "sha256": "96d8ee78a530b9ab549d23804e2a3597b228922e250902b273ed413cd1f6ab11",
+          "bytes": 1429
+        },
+        {
+          "path": "assets/clinical_architecture/textures/clinical_ink.png",
+          "sha256": "2c3e414c1b6ecd2ca8d04acdb8b871ffa12f0dd137abefc79a3a61f9f7634390",
+          "bytes": 41099
+        },
+        {
+          "path": "assets/clinical_architecture/textures/privacy_sage.png",
+          "sha256": "1c030dccc4238fb63a826a9d944d70a8b797de344ea6adcaf56a90d40a9af0e7",
+          "bytes": 42554
+        },
+        {
+          "path": "materials/care/care_bluegreen_resin.png",
+          "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+          "bytes": 4480
+        },
+        {
+          "path": "materials/care/care_brushed_metal.png",
+          "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+          "bytes": 3750
+        },
+        {
+          "path": "materials/care/care_soft_pad.png",
+          "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+          "bytes": 5664
+        },
+        {
+          "path": "materials/care/manifest.json",
+          "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+          "bytes": 1905
+        },
+        {
+          "path": "materials/care/source/generate_care_materials.py",
+          "sha256": "b85cb7bae7911f1f05c1b88776c482009c2c3759e37ce9f64143abd3ca63907c",
+          "bytes": 2192
+        },
+        {
+          "path": "materials/champagne_metal.png",
+          "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+          "bytes": 5262
+        },
+        {
+          "path": "materials/clay_weave.png",
+          "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+          "bytes": 16478
+        },
+        {
+          "path": "materials/dark_rubber.png",
+          "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+          "bytes": 1631
+        },
+        {
+          "path": "materials/ivory_enamel.png",
+          "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+          "bytes": 3464
+        },
+        {
+          "path": "materials/material_manifest.json",
+          "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+          "bytes": 3672
+        },
+        {
+          "path": "materials/oatmeal_weave.png",
+          "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+          "bytes": 16827
+        },
+        {
+          "path": "materials/teal_weave.png",
+          "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+          "bytes": 16512
+        },
+        {
+          "path": "materials/warm_stone.png",
+          "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+          "bytes": 10430
+        },
+        {
+          "path": "materials/warm_walnut.png",
+          "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+          "bytes": 8275
+        },
+        {
+          "path": "standards/care_materials.py",
+          "sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+          "bytes": 1308
+        },
+        {
+          "path": "standards/materials.py",
+          "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+          "bytes": 1584
+        }
+      ],
+      "fresh_input_only_stage": true,
+      "full_default_build_without_previous_output_reads": true,
+      "maintenance_only_mode_limit": "The optional --only path reads current metadata to retain an unchanged sibling; this path is not used by the proven fresh default source-only build.",
+      "all_helper_loaded_material_roles_included": true,
+      "source_only_build_duplicated_by_reviewer": false,
+      "byte_identical_glb_count": 3,
+      "source_motion_actions_and_evaluated_states_identical": true,
+      "assets": [
+        {
+          "catalogue_id": "AST-MED-001",
+          "source": {
+            "path": "assets/clinical_architecture/source/AST-MED-001.blend",
+            "sha256": "9433d668e5671cdf0c29f57c90be5e631106c2ce6482f25396f49afe07cbc240",
+            "bytes": 316760
+          },
+          "export": {
+            "path": "assets/clinical_architecture/exports/AST-MED-001.glb",
+            "sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a",
+            "bytes": 266944
+          },
+          "rebuilt_source": {
+            "path": "assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/assets/clinical_architecture/source/AST-MED-001.blend",
+            "sha256": "31d25f1990210e4f9f60763f3cd7188428fd10fac768da3605bd98a1ce220165",
+            "bytes": 316758
+          },
+          "rebuilt_export": {
+            "path": "assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/assets/clinical_architecture/exports/AST-MED-001.glb",
+            "sha256": "40415052c17dcdfc24942577135eb52b4cf2119685a85122477b42c3a6cacc5a",
+            "bytes": 266944
+          },
+          "editable_named_mesh_topology_uv_material_hierarchy_modifier_properties_identical": true,
+          "evaluated_source_geometry_identical": true,
+          "independent_source_audits": [
+            {
+              "path": "qa/batch12/independent_source_AST-MED-001.json",
+              "sha256": "6dca8ea523d1718cb7db4ee9379523ce729bb76cc8d17233eeb5a753ba281356",
+              "bytes": 66059
+            },
+            {
+              "path": "qa/batch12/independent_staged_source_AST-MED-001.json",
+              "sha256": "3fac01387e93f3e52ad14562ef4aae88bc3f960b06cfc8090d2869a445191c9b",
+              "bytes": 66141
+            }
+          ]
+        },
+        {
+          "catalogue_id": "AST-MED-002",
+          "source": {
+            "path": "assets/clinical_architecture/source/AST-MED-002.blend",
+            "sha256": "39ab4098c5185348f3a578b690a0da3ac9f0c61265f6621bf935f189421dca23",
+            "bytes": 319985
+          },
+          "export": {
+            "path": "assets/clinical_architecture/exports/AST-MED-002.glb",
+            "sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e",
+            "bytes": 334440
+          },
+          "rebuilt_source": {
+            "path": "assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/assets/clinical_architecture/source/AST-MED-002.blend",
+            "sha256": "e4092e0b59aa0887c146b5b002801b9845d69cc2528ede1ce738b6e93033d9dd",
+            "bytes": 320592
+          },
+          "rebuilt_export": {
+            "path": "assets/clinical_architecture/qa/source_only_stage_supported_wash/catalogue/assets/clinical_architecture/exports/AST-MED-002.glb",
+            "sha256": "1af4dd66e1f3e97d074b80826be5ef87fbe10ee2135de319d12c9568a3cb615e",
+            "bytes": 334440
+          },
+          "editable_named_mesh_topology_uv_material_hierarchy_modifier_properties_identical": true,
+          "evaluated_source_geometry_identical": true,
+          "independent_source_audits": [
+            {
+              "path": "qa/batch12/independent_source_AST-MED-002.json",
+              "sha256": "35492530f46febb786b3da9900076948ff5714bb64b96dd75a24398213a88c5d",
+              "bytes": 105298
+            },
+            {
+              "path": "qa/batch12/independent_staged_source_AST-MED-002.json",
+              "sha256": "f9032d006a75df936ffe8e2f5ba9a47ee9da1ac6007a849ca88f7c96fd6bea04",
+              "bytes": 105380
+            }
+          ]
+        }
+      ],
+      "scope": "14-input fresh stage regenerates5 maps,2 material manifests,2 editable sources and3 GLB states. Independently verified actual staged/current hashes, scripts/logs, byte-identical GLBs/interfaces/collisions and named editable mesh/topology/UV/material/hierarchy/modifier/property and motion-state signatures. Blender binary equality is not required due saved pathname differences."
+    },
+    {
+      "passed": true,
+      "family": "clinical_support",
+      "executed_script_sha256": "e996cf7fbbb233b77a76ce1842b286a7375fa0fa26da81b28ae6788428943277",
+      "receipt": {
+        "path": "assets/clinical_support/qa/source_only_rebuild_receipt.json",
+        "sha256": "486c4cfb43160805f32da3ba789d066e9912eb2899d1e2c3e970df1aec64e0fd",
+        "bytes": 2745
+      },
+      "dependency_manifest": {
+        "path": "assets/clinical_support/dependency_manifest.json",
+        "sha256": "f312b06ab6703f6ce3272fda44c9965194804ce41c14ec74ac4b8ce16f997e1f",
+        "bytes": 5636
+      },
+      "runner": {
+        "path": "assets/clinical_support/qa/rebuild_source_only.py",
+        "sha256": "201ec6e9c1df67f7521b162e06a13c718680521b7924c395092061f9b74519f7",
+        "bytes": 4635
+      },
+      "build_log": {
+        "path": "assets/clinical_support/qa/source_only_build.log",
+        "sha256": "4919c48c537d508036c6d4a7d2659099ebd44e86f717cc7bd9e5d28e4d6bbe49",
+        "bytes": 1855
+      },
+      "postbuild_checkers": [
+        {
+          "script": {
+            "path": "assets/clinical_support/qa/check_sources.py",
+            "sha256": "9445a87dc2d7bdacf9a706d7de1e5c038c0e5a7a11b65550a0c4273b800886e5",
+            "bytes": 3880
+          },
+          "executed_copy": {
+            "path": "assets/clinical_support/qa/source_only_stage/catalogue/assets/clinical_support/qa/check_sources.py",
+            "sha256": "9445a87dc2d7bdacf9a706d7de1e5c038c0e5a7a11b65550a0c4273b800886e5",
+            "bytes": 3880
+          },
+          "execution_log": {
+            "path": "assets/clinical_support/qa/source_only_check_sources.py.log",
+            "sha256": "ece4b3f22cbf854e8ac6b628ee2d1fefac68c46ed8aaff8014b6e0206d3971ad",
+            "bytes": 436
+          }
+        },
+        {
+          "script": {
+            "path": "assets/clinical_support/qa/validate_glb.py",
+            "sha256": "f5746b13d4d5b7f11c6b5da76c2ee1f0d7ded27919b0e40c4c4773c4faf87566",
+            "bytes": 5292
+          },
+          "executed_copy": {
+            "path": "assets/clinical_support/qa/source_only_stage/catalogue/assets/clinical_support/qa/validate_glb.py",
+            "sha256": "f5746b13d4d5b7f11c6b5da76c2ee1f0d7ded27919b0e40c4c4773c4faf87566",
+            "bytes": 5292
+          },
+          "execution_log": {
+            "path": "assets/clinical_support/qa/source_only_validate_glb.py.log",
+            "sha256": "e14c10b92fbe889813205768ace553dfa45e9449dab081537d5ba07f2ecfaaf3",
+            "bytes": 3562
+          }
+        }
+      ],
+      "production_inputs": [
+        {
+          "path": "assets/clinical_support/source/build_clinical_support.py",
+          "sha256": "188da30d21908e1a3186381af6db4b91ebe7d3dd980b4bbeec56271bc329d2bd",
+          "bytes": 23661
+        },
+        {
+          "path": "materials/care/care_bluegreen_resin.png",
+          "sha256": "897ad1fc00527e652d06ceadf5d676f136422c6b6e032faba87afea6661d5a2d",
+          "bytes": 4480
+        },
+        {
+          "path": "materials/care/care_brushed_metal.png",
+          "sha256": "4febde18bd375dff83b842a1c85c82c7c19cf2b1258b1180d498234ddbe2f5c4",
+          "bytes": 3750
+        },
+        {
+          "path": "materials/care/care_soft_pad.png",
+          "sha256": "916d17ed09378f3a92f188070f7029d535f4cf07c0b0d07b07562d7c099ed191",
+          "bytes": 5664
+        },
+        {
+          "path": "materials/care/manifest.json",
+          "sha256": "d6555302e5ea5034ff7b4c4c748d65e186bca91537e13199e99bd5faade402f9",
+          "bytes": 1905
+        },
+        {
+          "path": "materials/champagne_metal.png",
+          "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+          "bytes": 5262
+        },
+        {
+          "path": "materials/clay_weave.png",
+          "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
+          "bytes": 16478
+        },
+        {
+          "path": "materials/dark_rubber.png",
+          "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
+          "bytes": 1631
+        },
+        {
+          "path": "materials/ivory_enamel.png",
+          "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+          "bytes": 3464
+        },
+        {
+          "path": "materials/material_manifest.json",
+          "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+          "bytes": 3672
+        },
+        {
+          "path": "materials/oatmeal_weave.png",
+          "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
+          "bytes": 16827
+        },
+        {
+          "path": "materials/teal_weave.png",
+          "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
+          "bytes": 16512
+        },
+        {
+          "path": "materials/warm_stone.png",
+          "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+          "bytes": 10430
+        },
+        {
+          "path": "materials/warm_walnut.png",
+          "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+          "bytes": 8275
+        },
+        {
+          "path": "standards/care_materials.py",
+          "sha256": "05d2064382e4e8b3af2c632568ce8785f4737c143dc122d9b4c8805161272a77",
+          "bytes": 1308
+        },
+        {
+          "path": "standards/materials.py",
+          "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+          "bytes": 1584
+        }
+      ],
+      "fresh_input_only_stage": true,
+      "all_helper_loaded_material_roles_included": true,
+      "source_only_build_duplicated_by_reviewer": false,
+      "assets": [
+        {
+          "catalogue_id": "AST-MED-003",
+          "source": {
+            "path": "assets/clinical_support/source/AST-MED-003.blend",
+            "sha256": "dfc34a0be9d1810eaf80a61061da5fad01bbc43c01ced3bb9b17a9a4fc288509",
+            "bytes": 204302
+          },
+          "export": {
+            "path": "assets/clinical_support/exports/AST-MED-003.glb",
+            "sha256": "ee5cafd00320b06bb3cb38a1026bd36dd0be11a2bcb538fd3014fb806aba43dc",
+            "bytes": 143912
+          },
+          "rebuilt_source": {
+            "path": "assets/clinical_support/qa/source_only_stage/catalogue/assets/clinical_support/source/AST-MED-003.blend",
+            "sha256": "140bc046520fb5826029ad5fdbf2d6e740f0e6b8569d0bc260dee76c58bd7e6d",
+            "bytes": 204234
+          },
+          "rebuilt_export": {
+            "path": "assets/clinical_support/qa/source_only_stage/catalogue/assets/clinical_support/exports/AST-MED-003.glb",
+            "sha256": "ee5cafd00320b06bb3cb38a1026bd36dd0be11a2bcb538fd3014fb806aba43dc",
+            "bytes": 143912
+          },
+          "byte_identical_glb": true,
+          "editable_named_mesh_topology_uv_material_hierarchy_modifier_properties_identical": true,
+          "evaluated_source_geometry_identical": true,
+          "independent_source_audits": [
+            {
+              "path": "qa/batch12/independent_source_AST-MED-003.json",
+              "sha256": "b732121a655ad763935481b94004dc3ce59c68b9c913eaff7dcb119d4c242f70",
+              "bytes": 66631
+            },
+            {
+              "path": "qa/batch12/independent_staged_source_AST-MED-003.json",
+              "sha256": "c11a3689253d2656980452b185d784b83bfb97d307552d018c0bf1abf05d8766",
+              "bytes": 66693
+            }
+          ]
+        },
+        {
+          "catalogue_id": "AST-MED-004",
+          "source": {
+            "path": "assets/clinical_support/source/AST-MED-004.blend",
+            "sha256": "ea20126de6f166fa2e1d5413285e298cab5933c351db532a5778f4de083e126d",
+            "bytes": 220836
+          },
+          "export": {
+            "path": "assets/clinical_support/exports/AST-MED-004.glb",
+            "sha256": "f6f7ff53f120a5a415bc24261d3723ff72b77bfce003ffe9a2f1fdfa7abaa6e2",
+            "bytes": 358832
+          },
+          "rebuilt_source": {
+            "path": "assets/clinical_support/qa/source_only_stage/catalogue/assets/clinical_support/source/AST-MED-004.blend",
+            "sha256": "e5b88ca163fcd546288bfa1bbdf0bcb752e20497f84b582eb0a535e13f633a18",
+            "bytes": 220710
+          },
+          "rebuilt_export": {
+            "path": "assets/clinical_support/qa/source_only_stage/catalogue/assets/clinical_support/exports/AST-MED-004.glb",
+            "sha256": "f6f7ff53f120a5a415bc24261d3723ff72b77bfce003ffe9a2f1fdfa7abaa6e2",
+            "bytes": 358832
+          },
+          "byte_identical_glb": true,
+          "editable_named_mesh_topology_uv_material_hierarchy_modifier_properties_identical": true,
+          "evaluated_source_geometry_identical": true,
+          "independent_source_audits": [
+            {
+              "path": "qa/batch12/independent_source_AST-MED-004.json",
+              "sha256": "f0c4947682c2991835272b06099f3f8e40782db77275c4eaf3b51bd76d87a4f1",
+              "bytes": 143823
+            },
+            {
+              "path": "qa/batch12/independent_staged_source_AST-MED-004.json",
+              "sha256": "4da1549d70eb900bf088c9b5b3ace527cc9c8d9e294c1ec753492d53773257eb",
+              "bytes": 143885
+            }
+          ]
+        }
+      ],
+      "scope": "Independently read generator/helper file access, reconstructed 16-input closure, checked staged exact bytes, fresh-stage guards, actual execution hashes/logs, byte-identical GLBs, and read-only reloaded named source mesh/topology/UV/material/hierarchy/modifier/property signatures. Blender binary file equality is not required due saved pathname differences."
+    }
+  ],
+  "byte_identical_glbs": 5,
+  "unique_designs": 4,
+  "scope": "Independent actual source-only closure, executed script/log/stage inputs, byte-identical native outputs and read-only editable/source-state signature checks. No reviewer duplicate authoring build."
+}

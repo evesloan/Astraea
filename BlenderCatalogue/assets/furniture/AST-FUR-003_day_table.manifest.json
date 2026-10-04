@@ -1,0 +1,461 @@
+{
+  "catalogue_id": "AST-FUR-003",
+  "name": "Astraea Day Table",
+  "intended_use": "Forward-of-knees day-use surface for two drinks or a book; no tucked-in dining claim",
+  "contact_proposal": {
+    "worktop_z_m": 0.665,
+    "usable_top_m": [
+      0.953,
+      0.593
+    ],
+    "shelf_z_m": 0.245
+  },
+  "approach_proposal": {
+    "directions": [
+      [
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ]
+    ],
+    "underside_apron_z_m": 0.596,
+    "placement_note": "Place forward of knees, not over the seated knee envelope; broad-body fit not established",
+    "status": "Proposal only; ergonomic and original-engine validation pending"
+  },
+  "collision_proposal": {
+    "method": "Top shallow convex capsule approximation; separate trestle and stretcher boxes; retain space between supports",
+    "status": "Not generated or engine-tested"
+  },
+  "contact_joins": [
+    {
+      "members": [
+        "rubber_foot",
+        "waisted_trestle"
+      ],
+      "overlap_m": 0.008
+    },
+    {
+      "members": [
+        "waisted_trestle",
+        "top_bearing_rail",
+        "oval_walnut_edge_apron"
+      ],
+      "intent": "Continuous support overlap"
+    },
+    {
+      "members": [
+        "low_cross_stretcher",
+        "waisted_trestle"
+      ],
+      "intent": "Through-tenon overlap"
+    },
+    {
+      "members": [
+        "small_lower_book_shelf",
+        "waisted_trestle"
+      ],
+      "intent": "Shelf ends housed in trestles"
+    }
+  ],
+  "bounds_min_m": [
+    -0.49000000953674316,
+    -0.3100000023841858,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.49000000953674316,
+    0.3100000023841858,
+    0.6650000214576721
+  ],
+  "dimensions_m": [
+    0.9800000190734863,
+    0.6200000047683716,
+    0.6650000214576721
+  ],
+  "triangles_evaluated": 1848,
+  "parts": [
+    {
+      "name": "DAY_TABLE_oval_walnut_edge_apron",
+      "type": "MESH",
+      "triangles": 252,
+      "bounds_min_m": [
+        -0.49000000953674316,
+        -0.3100000023841858,
+        0.5960000157356262
+      ],
+      "bounds_max_m": [
+        0.49000000953674316,
+        0.3100000023841858,
+        0.6470000147819519
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_inset_stone_worktop",
+      "type": "MESH",
+      "triangles": 252,
+      "bounds_min_m": [
+        -0.476500004529953,
+        -0.29649999737739563,
+        0.6380000114440918
+      ],
+      "bounds_max_m": [
+        0.476500004529953,
+        0.29649999737739563,
+        0.6650000214576721
+      ],
+      "materials": [
+        "ASTRAEA_warm_stone"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_recessed_champagne_edge_inlay",
+      "type": "MESH",
+      "triangles": 256,
+      "bounds_min_m": [
+        -0.4855000078678131,
+        -0.30550000071525574,
+        0.640500009059906
+      ],
+      "bounds_max_m": [
+        0.4855000078678131,
+        0.30550000071525574,
+        0.6455000042915344
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_TABLE_L_waisted_trestle",
+      "type": "MESH",
+      "triangles": 124,
+      "bounds_min_m": [
+        -0.3109999895095825,
+        -0.22438830137252808,
+        0.03799999877810478
+      ],
+      "bounds_max_m": [
+        -0.23899999260902405,
+        0.22438830137252808,
+        0.6100000143051147
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_L_front_rubber_foot",
+      "type": "MESH",
+      "triangles": 132,
+      "bounds_min_m": [
+        -0.3215000033378601,
+        -0.23250000178813934,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.22849999368190765,
+        -0.12950000166893005,
+        0.04600000008940697
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_L_rear_rubber_foot",
+      "type": "MESH",
+      "triangles": 132,
+      "bounds_min_m": [
+        -0.3215000033378601,
+        0.12950000166893005,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.22849999368190765,
+        0.23250000178813934,
+        0.04600000008940697
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_L_top_bearing_rail",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -0.3149999976158142,
+        -0.21299999952316284,
+        0.575499951839447
+      ],
+      "bounds_max_m": [
+        -0.23499999940395355,
+        0.21299999952316284,
+        0.6225000023841858
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_R_waisted_trestle",
+      "type": "MESH",
+      "triangles": 124,
+      "bounds_min_m": [
+        0.23899999260902405,
+        -0.22438830137252808,
+        0.03799999877810478
+      ],
+      "bounds_max_m": [
+        0.3109999895095825,
+        0.22438830137252808,
+        0.6100000143051147
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_R_front_rubber_foot",
+      "type": "MESH",
+      "triangles": 132,
+      "bounds_min_m": [
+        0.22849999368190765,
+        -0.23250000178813934,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.3215000033378601,
+        -0.12950000166893005,
+        0.04600000008940697
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_R_rear_rubber_foot",
+      "type": "MESH",
+      "triangles": 132,
+      "bounds_min_m": [
+        0.22849999368190765,
+        0.12950000166893005,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.3215000033378601,
+        0.23250000178813934,
+        0.04600000008940697
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_R_top_bearing_rail",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        0.23499999940395355,
+        -0.21299999952316284,
+        0.575499951839447
+      ],
+      "bounds_max_m": [
+        0.3149999976158142,
+        0.21299999952316284,
+        0.6225000023841858
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_low_cross_stretcher",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -0.3109999895095825,
+        -0.03750002384185791,
+        0.15199998021125793
+      ],
+      "bounds_max_m": [
+        0.3109999895095825,
+        0.03750002384185791,
+        0.22800001502037048
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_small_lower_book_shelf",
+      "type": "MESH",
+      "triangles": 124,
+      "bounds_min_m": [
+        -0.2775000035762787,
+        -0.12600000202655792,
+        0.22200000286102295
+      ],
+      "bounds_max_m": [
+        0.2775000035762787,
+        0.12600000202655792,
+        0.24500000476837158
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_TABLE_L_stretcher_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        -0.3149999976158142,
+        -0.012000000104308128,
+        0.17800000309944153
+      ],
+      "bounds_max_m": [
+        -0.3109999895095825,
+        0.012000000104308128,
+        0.2019999921321869
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_TABLE_R_stretcher_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        0.3109999895095825,
+        -0.012000000104308128,
+        0.17800000309944153
+      ],
+      "bounds_max_m": [
+        0.3149999976158142,
+        0.012000000104308128,
+        0.2019999921321869
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    }
+  ],
+  "blender_version": "4.3.2",
+  "units": "metres",
+  "pivot_m": [
+    0,
+    0,
+    0
+  ],
+  "front_axis": "-Y",
+  "authoring": "Script-assisted intentional ring, extrusion and join design; editable semantic parts and modifiers retained",
+  "provenance": "New independent 2026-10-02 continuation. Not recovery or reconstruction of lost game. Reference images used only for warm residential palette, material restraint and use; no reference pixels copied.",
+  "materials": [
+    "ASTRAEA_champagne_metal",
+    "ASTRAEA_dark_rubber",
+    "ASTRAEA_warm_stone",
+    "ASTRAEA_warm_walnut"
+  ],
+  "qa_scope": "Blender component QA only; original Godot integration, actor contact, physics and target-PC performance are untested",
+  "export": {
+    "format": "GLB",
+    "Y_up": true,
+    "apply_modifiers": true,
+    "UVs": true,
+    "normals": true,
+    "materials": "EXPORT",
+    "textures": "Embedded ordinary Principled base-color roles",
+    "static_visual_meshes": 1,
+    "material_primitives": 4,
+    "source_semantic_part_count": 15,
+    "consolidation": "Disconnected evaluated visual parts joined by shared material role, no auto-collision or object deletion in saved source"
+  },
+  "source_generator": "build_furniture.py",
+  "asset_files": [
+    "AST-FUR-003_day_table.blend",
+    "AST-FUR-003_day_table.glb"
+  ],
+  "source_generator_sha256": "480dcc3bb79d0158ec827eebe295aab3623cc5de30982412e9bad3eb30a97dd5",
+  "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+  "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+  "reference_provenance": [
+    {
+      "file": "references/dense/image(20261002-001051).png",
+      "sha256": "9c453f44985a06d8a83d9ae07a8027f29f04b24f42e967ff996508cc7abaa9d2",
+      "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+    },
+    {
+      "file": "references/intimate/image(20261002-000722).png",
+      "sha256": "0328f70e493c30640f0405d0158278e0f38d3e72754aa37a79c9ce2f2bf82081",
+      "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+    },
+    {
+      "file": "references/premium/image(20261002-001347).png",
+      "sha256": "0a92cd5adc6b354bb1432284a270ad286225b7cbeb2b6635ad818b2230083eac",
+      "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+    }
+  ],
+  "blend_sha256": "1c61d8cbc18a2b92f31567b6b3bef5414d1ff49682a70e1407d24f8551ef5327",
+  "glb_sha256": "cf60132b141261930eb6548c0edd71367e57551228f3e6937e25f9dc939a3113"
+}

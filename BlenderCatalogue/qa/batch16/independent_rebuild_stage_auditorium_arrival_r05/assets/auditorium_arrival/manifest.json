@@ -1,0 +1,1926 @@
+{
+  "family": "auditorium_arrival",
+  "revision": "auditorium-arrival-02",
+  "assets": [
+    {
+      "catalogue_id": "AST-CUL-001",
+      "name": "Acoustic programme wing and removable cultural cassette",
+      "title": "Acoustic programme wing and removable cultural cassette",
+      "unique_design": true,
+      "script_assisted_original_design": true,
+      "source": "source/AST-CUL-001.blend",
+      "export": "exports/AST-CUL-001.glb",
+      "generator": "source/build_auditorium_arrival.py",
+      "source_frame": "metres, Blender source Z-up; -Y public front; +Y staff/service",
+      "exchange_frame": "metres GLB Y-up; source(x,y,z)->(x,z,-y); actual node hierarchy authoritative",
+      "pivot": {
+        "source_m": [
+          0,
+          0,
+          0
+        ],
+        "gltf_m": [
+          0,
+          0,
+          0
+        ],
+        "datum": "floor plane Z0; unplaced component"
+      },
+      "bounds_blender_z_up": {
+        "min_m": [
+          -0.6000000238418579,
+          -0.3199999928474426,
+          0.0
+        ],
+        "max_m": [
+          0.6000000238418579,
+          0.3199999928474426,
+          2.299999952316284
+        ],
+        "dimensions_m": [
+          1.2000000476837158,
+          0.6399999856948853,
+          2.299999952316284
+        ]
+      },
+      "bounds_gltf_y_up": {
+        "min_m": [
+          -0.6000000238418579,
+          0.0,
+          -0.3199999928474426
+        ],
+        "max_m": [
+          0.6000000238418579,
+          2.299999952316284,
+          0.3199999928474426
+        ],
+        "dimensions_m": [
+          1.2000000476837158,
+          2.299999952316284,
+          0.6399999856948853
+        ]
+      },
+      "dimensions_blender_xyz_m": [
+        1.2000000476837158,
+        0.6399999856948853,
+        2.299999952316284
+      ],
+      "evaluated_source_triangles": 332,
+      "evaluated_triangles": 332,
+      "editable_semantic_parts": 19,
+      "semantic_parts": [
+        "stone_elliptic_floor_plinth",
+        "swept_tall_walnut_left_stile",
+        "short_tapered_right_stile",
+        "lower_sculpted_cross_web",
+        "sloping_crown_lintel",
+        "cassette_lower_bearing",
+        "programme_front_rigid_backing",
+        "replaceable_original_programme_face",
+        "rear_navy_absorptive_cassette",
+        "cassette_rear_edge_-0.38",
+        "cassette_rear_edge_0.38",
+        "fixed_panel_seat_-0.39",
+        "fixed_panel_seat_0.39",
+        "rear_handle_boss_-0.09",
+        "rear_handle_boss_0.09",
+        "rear_cassette_pull",
+        "lower_amber_return_insert",
+        "lower_insert_walnut_rail_0.21",
+        "lower_insert_walnut_rail_0.615"
+      ],
+      "material_roles": [
+        "auditorium_amber_velvet",
+        "auditorium_navy_fibre",
+        "champagne_metal",
+        "programme_original",
+        "warm_stone",
+        "warm_walnut"
+      ],
+      "export_mesh_groups": 8,
+      "runtime_consolidation": "Evaluated semantic copies consolidated by material role and genuine fixed/removable/drawer ownership",
+      "physical_and_proposal_markers": [
+        {
+          "name": "FLOOR_CONTACT",
+          "kind": "physical_floor_contact",
+          "source_m": [
+            0,
+            0,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "physical_part": "stone_elliptic_floor_plinth",
+          "owner": "AST-CUL-001",
+          "description": "",
+          "direction_source": [
+            0,
+            0,
+            -1
+          ],
+          "direction_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "PROGRAMME_FACE",
+          "kind": "physical_programme_surface",
+          "source_m": [
+            0,
+            -0.125,
+            1.4
+          ],
+          "gltf_m": [
+            0,
+            1.4,
+            0.125
+          ],
+          "physical_part": "replaceable_original_programme_face",
+          "owner": "AST-CUL-001",
+          "description": "Original programme study; no current performance or showtime asserted",
+          "direction_source": [
+            0,
+            -1,
+            0
+          ],
+          "direction_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "PANEL_PULL",
+          "kind": "physical_grip",
+          "source_m": [
+            0,
+            0.185,
+            1.39
+          ],
+          "gltf_m": [
+            0,
+            1.39,
+            -0.185
+          ],
+          "physical_part": "rear_cassette_pull",
+          "owner": "REAR_SERVICE_PANEL",
+          "description": "",
+          "direction_source": [
+            0,
+            1,
+            0
+          ],
+          "direction_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "REAR_ABSORPTIVE_FACE",
+          "kind": "physical_material_surface",
+          "source_m": [
+            0.2,
+            0.119,
+            1.5
+          ],
+          "gltf_m": [
+            0.2,
+            1.5,
+            -0.119
+          ],
+          "physical_part": "rear_navy_absorptive_cassette",
+          "owner": "REAR_SERVICE_PANEL",
+          "description": "Navy fibre proposal; acoustic effect is unmeasured",
+          "direction_source": [
+            0,
+            1,
+            0
+          ],
+          "direction_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "REAR_SERVICE_APPROACH",
+          "kind": "nonphysical_service_reservation",
+          "source_m": [
+            0,
+            0.76,
+            1.36
+          ],
+          "gltf_m": [
+            0,
+            1.36,
+            -0.76
+          ],
+          "physical_part": null,
+          "owner": "AST-CUL-001",
+          "description": "",
+          "direction_source": [
+            0,
+            -1,
+            0
+          ],
+          "direction_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "kind": "placement_origin",
+          "source_m": [
+            0,
+            0,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "physical_part": null,
+          "owner": "AST-CUL-001",
+          "description": ""
+        }
+      ],
+      "joins": [
+        {
+          "name": "swept_tall_walnut_left_stile_to_plinth",
+          "parts": [
+            "swept_tall_walnut_left_stile",
+            "stone_elliptic_floor_plinth"
+          ],
+          "probe_source_m": [
+            -0.48,
+            0,
+            0.085
+          ],
+          "probe_gltf_m": [
+            -0.48,
+            0.085,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "short_tapered_right_stile_to_plinth",
+          "parts": [
+            "short_tapered_right_stile",
+            "stone_elliptic_floor_plinth"
+          ],
+          "probe_source_m": [
+            0.46,
+            0,
+            0.085
+          ],
+          "probe_gltf_m": [
+            0.46,
+            0.085,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "lower_sculpted_cross_web_to_plinth",
+          "parts": [
+            "lower_sculpted_cross_web",
+            "stone_elliptic_floor_plinth"
+          ],
+          "probe_source_m": [
+            0,
+            0,
+            0.085
+          ],
+          "probe_gltf_m": [
+            0,
+            0.085,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "left_crown_bearing",
+          "parts": [
+            "sloping_crown_lintel",
+            "swept_tall_walnut_left_stile"
+          ],
+          "probe_source_m": [
+            -0.53,
+            0,
+            2.23
+          ],
+          "probe_gltf_m": [
+            -0.53,
+            2.23,
+            0
+          ],
+          "normal_a_source": null,
+          "normal_b_source": null,
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "right_crown_bearing",
+          "parts": [
+            "sloping_crown_lintel",
+            "short_tapered_right_stile"
+          ],
+          "probe_source_m": [
+            0.435,
+            0,
+            2.07
+          ],
+          "probe_gltf_m": [
+            0.435,
+            2.07,
+            0
+          ],
+          "normal_a_source": null,
+          "normal_b_source": null,
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "graphic_to_rigid_backing",
+          "parts": [
+            "replaceable_original_programme_face",
+            "programme_front_rigid_backing"
+          ],
+          "probe_source_m": [
+            0,
+            -0.12,
+            1.3
+          ],
+          "probe_gltf_m": [
+            0,
+            1.3,
+            0.12
+          ],
+          "normal_a_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            -1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "cassette_edge_support_-0.38",
+          "parts": [
+            "cassette_rear_edge_-0.38",
+            "rear_navy_absorptive_cassette"
+          ],
+          "probe_source_m": [
+            -0.38,
+            0.119,
+            1.4
+          ],
+          "probe_gltf_m": [
+            -0.38,
+            1.4,
+            -0.119
+          ],
+          "normal_a_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "cassette_edge_support_0.38",
+          "parts": [
+            "cassette_rear_edge_0.38",
+            "rear_navy_absorptive_cassette"
+          ],
+          "probe_source_m": [
+            0.38,
+            0.119,
+            1.4
+          ],
+          "probe_gltf_m": [
+            0.38,
+            1.4,
+            -0.119
+          ],
+          "normal_a_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "rear_cassette_closed_bearing_-0.39",
+          "parts": [
+            "rear_navy_absorptive_cassette",
+            "fixed_panel_seat_-0.39"
+          ],
+          "probe_source_m": [
+            -0.375,
+            0.093,
+            1.4
+          ],
+          "probe_gltf_m": [
+            -0.375,
+            1.4,
+            -0.093
+          ],
+          "normal_a_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "rear_cassette_closed_bearing_0.39",
+          "parts": [
+            "rear_navy_absorptive_cassette",
+            "fixed_panel_seat_0.39"
+          ],
+          "probe_source_m": [
+            0.375,
+            0.093,
+            1.4
+          ],
+          "probe_gltf_m": [
+            0.375,
+            1.4,
+            -0.093
+          ],
+          "normal_a_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "handle_boss_to_panel_-0.09",
+          "parts": [
+            "rear_handle_boss_-0.09",
+            "rear_navy_absorptive_cassette"
+          ],
+          "probe_source_m": [
+            -0.09,
+            0.119,
+            1.39
+          ],
+          "probe_gltf_m": [
+            -0.09,
+            1.39,
+            -0.119
+          ],
+          "normal_a_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "handle_boss_to_panel_0.09",
+          "parts": [
+            "rear_handle_boss_0.09",
+            "rear_navy_absorptive_cassette"
+          ],
+          "probe_source_m": [
+            0.09,
+            0.119,
+            1.39
+          ],
+          "probe_gltf_m": [
+            0.09,
+            1.39,
+            -0.119
+          ],
+          "normal_a_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "amber_backing_contact",
+          "parts": [
+            "lower_amber_return_insert",
+            "lower_sculpted_cross_web"
+          ],
+          "probe_source_m": [
+            0,
+            0.13,
+            0.4
+          ],
+          "probe_gltf_m": [
+            0,
+            0.4,
+            -0.13
+          ],
+          "normal_a_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        }
+      ],
+      "receiver_voids": [
+        {
+          "name": "closed_programme_cassette_air",
+          "min_source_m": [
+            -0.36,
+            -0.055,
+            0.78
+          ],
+          "max_source_m": [
+            0.36,
+            0.06,
+            1.98
+          ],
+          "pose": "closed",
+          "purpose": "Useful access cavity behind replaceable front graphic, bounded away from support"
+        },
+        {
+          "name": "rear_panel_hand_gap",
+          "min_source_m": [
+            -0.065,
+            0.14,
+            1.374
+          ],
+          "max_source_m": [
+            0.065,
+            0.155,
+            1.405
+          ],
+          "pose": "closed",
+          "purpose": "Clear pocket below real pull bar; not a hand-fit certificate"
+        },
+        {
+          "name": "rear_service_reach",
+          "min_source_m": [
+            -0.37,
+            0.53,
+            0.77
+          ],
+          "max_source_m": [
+            0.37,
+            0.82,
+            1.99
+          ],
+          "pose": "access",
+          "purpose": "External handling proposal, not a room allocation"
+        }
+      ],
+      "motions": [
+        {
+          "root": "REAR_SERVICE_PANEL",
+          "type": "translation",
+          "axis_source": [
+            0,
+            1,
+            0
+          ],
+          "axis_gltf": [
+            0,
+            0,
+            -1
+          ],
+          "closed_m": 0,
+          "access_m": 0.32,
+          "motion_includes_handle_and_all_owned_parts": true,
+          "claim": "Geometric removal along +Y from true closed state; tool release/hand support and installed service reach pending"
+        }
+      ],
+      "collision_proposal_file": "collision_proposals.json",
+      "marker_api_file": "marker_api.json",
+      "used_textures_packed": true,
+      "source_sha256": "5b97db40eaa7885c2782b0b954709a0f4d81a4fce73000509ed04d43f626c4a1",
+      "glb_sha256": "8084eca03bad651444fb5273baa12a38474010817e2d12578cb82b8a0895abe5",
+      "generator_sha256": "0c1cdf09da22d3121f5e8ab9cf2649f66fc76184dd0776659f1d344187640b6e",
+      "details": {
+        "programme": "A Thousand Small Worlds",
+        "programme_state": "Historically original title used in original static programme study",
+        "acoustic_status": "Absorptive material/design intent only",
+        "front": "source -Y",
+        "service_side": "source +Y",
+        "envelope_is_component_only": true
+      },
+      "state_derivatives": [
+        {
+          "name": "access",
+          "export": "exports/AST-CUL-001_access.glb",
+          "glb_sha256": "e592792ec0875df283ba72e2963a2cce9ec1da1688ab43f5bed5fa820cb31eec",
+          "bounds_blender_z_up": {
+            "min_m": [
+              -0.6000000238418579,
+              -0.3199999928474426,
+              0.0
+            ],
+            "max_m": [
+              0.6000000238418579,
+              0.5049999952316284,
+              2.299999952316284
+            ],
+            "dimensions_m": [
+              1.2000000476837158,
+              0.824999988079071,
+              2.299999952316284
+            ]
+          },
+          "motion_roots": [
+            {
+              "root": "REAR_SERVICE_PANEL",
+              "type": "translation",
+              "axis_source": [
+                0,
+                1,
+                0
+              ],
+              "axis_gltf": [
+                0,
+                0,
+                -1
+              ],
+              "closed_m": 0,
+              "access_m": 0.32,
+              "motion_includes_handle_and_all_owned_parts": true,
+              "claim": "Geometric removal along +Y from true closed state; tool release/hand support and installed service reach pending"
+            }
+          ],
+          "counted_as_new_design": false
+        }
+      ],
+      "limitations": [
+        "Original host absent; no room adjacency, fit, registered place or capacity added",
+        "Physical host support, access/egress, body/cart routes and all six species fit remain pending",
+        "No acoustic, load, moving mechanism, lighting, electrical, transaction or game performance certification",
+        "Removal pose needs hand support and tool release; animation is a geometric proposal only"
+      ]
+    },
+    {
+      "catalogue_id": "AST-CUL-002",
+      "name": "Curved usher counter with lower writing wing and programme storage",
+      "title": "Curved usher counter with lower writing wing and programme storage",
+      "unique_design": true,
+      "script_assisted_original_design": true,
+      "source": "source/AST-CUL-002.blend",
+      "export": "exports/AST-CUL-002.glb",
+      "generator": "source/build_auditorium_arrival.py",
+      "source_frame": "metres, Blender source Z-up; -Y public front; +Y staff/service",
+      "exchange_frame": "metres GLB Y-up; source(x,y,z)->(x,z,-y); actual node hierarchy authoritative",
+      "pivot": {
+        "source_m": [
+          0,
+          0,
+          0
+        ],
+        "gltf_m": [
+          0,
+          0,
+          0
+        ],
+        "datum": "floor plane Z0; unplaced component"
+      },
+      "bounds_blender_z_up": {
+        "min_m": [
+          -0.7549999952316284,
+          -0.4050000011920929,
+          0.0
+        ],
+        "max_m": [
+          0.7549999952316284,
+          0.375,
+          1.065000057220459
+        ],
+        "dimensions_m": [
+          1.5099999904632568,
+          0.7800000011920929,
+          1.065000057220459
+        ]
+      },
+      "bounds_gltf_y_up": {
+        "min_m": [
+          -0.7549999952316284,
+          0.0,
+          -0.375
+        ],
+        "max_m": [
+          0.7549999952316284,
+          1.065000057220459,
+          0.4050000011920929
+        ],
+        "dimensions_m": [
+          1.5099999904632568,
+          1.065000057220459,
+          0.7800000011920929
+        ]
+      },
+      "dimensions_blender_xyz_m": [
+        1.5099999904632568,
+        0.7800000011920929,
+        1.065000057220459
+      ],
+      "evaluated_source_triangles": 580,
+      "evaluated_triangles": 580,
+      "editable_semantic_parts": 33,
+      "semantic_parts": [
+        "recessed_stone_counter_plinth",
+        "curved_public_shell_segment_0",
+        "curved_public_shell_segment_1",
+        "curved_public_shell_segment_2",
+        "curved_public_shell_segment_3",
+        "curved_public_shell_segment_4",
+        "curved_public_shell_segment_5",
+        "curved_public_shell_segment_6",
+        "low_wing_left_cheek",
+        "counter_central_divider",
+        "right_full_height_cheek",
+        "low_rounded_writing_stone",
+        "main_rounded_usher_counter",
+        "open_programme_cubby_floor",
+        "open_cubby_rear_of_public_shell",
+        "drawer_separation_shelf",
+        "left_fixed_slide_bearing",
+        "left_drawer_slide",
+        "right_fixed_slide_bearing",
+        "right_drawer_slide",
+        "drawer_tray_floor",
+        "drawer_left_wall",
+        "drawer_right_wall",
+        "drawer_inner_back",
+        "drawer_walnut_fascia",
+        "drawer_pull_boss_0.145",
+        "drawer_pull_boss_0.325",
+        "drawer_brass_pull",
+        "usher_mark_timber_bearing",
+        "original_usher_mark",
+        "low_public_amber_insert",
+        "amber_insert_carrier_0.3",
+        "amber_insert_carrier_0.65"
+      ],
+      "material_roles": [
+        "auditorium_amber_velvet",
+        "auditorium_navy_fibre",
+        "champagne_metal",
+        "usher_original",
+        "warm_stone",
+        "warm_walnut"
+      ],
+      "export_mesh_groups": 8,
+      "runtime_consolidation": "Evaluated semantic copies consolidated by material role and genuine fixed/removable/drawer ownership",
+      "physical_and_proposal_markers": [
+        {
+          "name": "FLOOR_CONTACT",
+          "kind": "physical_floor_contact",
+          "source_m": [
+            0,
+            0,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "physical_part": "recessed_stone_counter_plinth",
+          "owner": "AST-CUL-002",
+          "description": "",
+          "direction_source": [
+            0,
+            0,
+            -1
+          ],
+          "direction_gltf": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "name": "LOW_WRITING_SURFACE",
+          "kind": "physical_work_surface",
+          "source_m": [
+            -0.47,
+            -0.04,
+            0.805
+          ],
+          "gltf_m": [
+            -0.47,
+            0.805,
+            0.04
+          ],
+          "physical_part": "low_rounded_writing_stone",
+          "owner": "AST-CUL-002",
+          "description": "Proposed lower writing/retrieval height; six-species reach pending",
+          "direction_source": [
+            0,
+            0,
+            1
+          ],
+          "direction_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "USHER_WORK_SURFACE",
+          "kind": "physical_work_surface",
+          "source_m": [
+            0.27,
+            0,
+            1.065
+          ],
+          "gltf_m": [
+            0.27,
+            1.065,
+            0
+          ],
+          "physical_part": "main_rounded_usher_counter",
+          "owner": "AST-CUL-002",
+          "description": "",
+          "direction_source": [
+            0,
+            0,
+            1
+          ],
+          "direction_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "CUBBY_SUPPORT",
+          "kind": "physical_storage_surface",
+          "source_m": [
+            0.23,
+            0,
+            0.267
+          ],
+          "gltf_m": [
+            0.23,
+            0.267,
+            0
+          ],
+          "physical_part": "open_programme_cubby_floor",
+          "owner": "AST-CUL-002",
+          "description": "",
+          "direction_source": [
+            0,
+            0,
+            1
+          ],
+          "direction_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "DRAWER_PULL",
+          "kind": "physical_grip",
+          "source_m": [
+            0.235,
+            0.339,
+            0.826
+          ],
+          "gltf_m": [
+            0.235,
+            0.826,
+            -0.339
+          ],
+          "physical_part": "drawer_brass_pull",
+          "owner": "USHER_DRAWER",
+          "description": "",
+          "direction_source": [
+            0,
+            1,
+            0
+          ],
+          "direction_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "DRAWER_STOW_FLOOR",
+          "kind": "physical_storage_surface",
+          "source_m": [
+            0.235,
+            0,
+            0.761
+          ],
+          "gltf_m": [
+            0.235,
+            0.761,
+            0
+          ],
+          "physical_part": "drawer_tray_floor",
+          "owner": "USHER_DRAWER",
+          "description": "",
+          "direction_source": [
+            0,
+            0,
+            1
+          ],
+          "direction_gltf": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "PUBLIC_USHER_MARK",
+          "kind": "physical_orientation_surface",
+          "source_m": [
+            0.25,
+            -0.397,
+            0.52
+          ],
+          "gltf_m": [
+            0.25,
+            0.52,
+            0.397
+          ],
+          "physical_part": "original_usher_mark",
+          "owner": "AST-CUL-002",
+          "description": "",
+          "direction_source": [
+            0,
+            -1,
+            0
+          ],
+          "direction_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "STAFF_APPROACH",
+          "kind": "nonphysical_service_reservation",
+          "source_m": [
+            0.25,
+            0.82,
+            0.5
+          ],
+          "gltf_m": [
+            0.25,
+            0.5,
+            -0.82
+          ],
+          "physical_part": null,
+          "owner": "AST-CUL-002",
+          "description": "",
+          "direction_source": [
+            0,
+            -1,
+            0
+          ],
+          "direction_gltf": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "PUBLIC_APPROACH",
+          "kind": "nonphysical_use_reservation",
+          "source_m": [
+            0.1,
+            -0.85,
+            0.5
+          ],
+          "gltf_m": [
+            0.1,
+            0.5,
+            0.85
+          ],
+          "physical_part": null,
+          "owner": "AST-CUL-002",
+          "description": "",
+          "direction_source": [
+            0,
+            1,
+            0
+          ],
+          "direction_gltf": [
+            0,
+            0,
+            -1
+          ]
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "kind": "placement_origin",
+          "source_m": [
+            0,
+            0,
+            0
+          ],
+          "gltf_m": [
+            0,
+            0,
+            0
+          ],
+          "physical_part": null,
+          "owner": "AST-CUL-002",
+          "description": ""
+        }
+      ],
+      "joins": [
+        {
+          "name": "front_shell_to_floor_0",
+          "parts": [
+            "curved_public_shell_segment_0",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            -0.6075,
+            -0.25,
+            0.105
+          ],
+          "probe_gltf_m": [
+            -0.6075,
+            0.105,
+            0.25
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "front_shell_to_floor_1",
+          "parts": [
+            "curved_public_shell_segment_1",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            -0.45,
+            -0.29999999999999993,
+            0.105
+          ],
+          "probe_gltf_m": [
+            -0.45,
+            0.105,
+            0.29999999999999993
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "front_shell_to_floor_2",
+          "parts": [
+            "curved_public_shell_segment_2",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            -0.27,
+            -0.33349999999999996,
+            0.105
+          ],
+          "probe_gltf_m": [
+            -0.27,
+            0.105,
+            0.33349999999999996
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "front_shell_to_floor_3",
+          "parts": [
+            "curved_public_shell_segment_3",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            -0.07,
+            -0.34349999999999997,
+            0.105
+          ],
+          "probe_gltf_m": [
+            -0.07,
+            0.105,
+            0.34349999999999997
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "front_shell_to_floor_4",
+          "parts": [
+            "curved_public_shell_segment_4",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            0.16999999999999998,
+            -0.33499999999999996,
+            0.105
+          ],
+          "probe_gltf_m": [
+            0.16999999999999998,
+            0.105,
+            0.33499999999999996
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "front_shell_to_floor_5",
+          "parts": [
+            "curved_public_shell_segment_5",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            0.4,
+            -0.29999999999999993,
+            0.105
+          ],
+          "probe_gltf_m": [
+            0.4,
+            0.105,
+            0.29999999999999993
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "front_shell_to_floor_6",
+          "parts": [
+            "curved_public_shell_segment_6",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            0.5875,
+            -0.25,
+            0.105
+          ],
+          "probe_gltf_m": [
+            0.5875,
+            0.105,
+            0.25
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "low_wing_left_cheek_plinth",
+          "parts": [
+            "low_wing_left_cheek",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            -0.69,
+            0,
+            0.105
+          ],
+          "probe_gltf_m": [
+            -0.69,
+            0.105,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "counter_central_divider_plinth",
+          "parts": [
+            "counter_central_divider",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            -0.21,
+            0,
+            0.105
+          ],
+          "probe_gltf_m": [
+            -0.21,
+            0.105,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "right_full_height_cheek_plinth",
+          "parts": [
+            "right_full_height_cheek",
+            "recessed_stone_counter_plinth"
+          ],
+          "probe_source_m": [
+            0.685,
+            0,
+            0.105
+          ],
+          "probe_gltf_m": [
+            0.685,
+            0.105,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "lower_writing_to_cheek",
+          "parts": [
+            "low_rounded_writing_stone",
+            "low_wing_left_cheek"
+          ],
+          "probe_source_m": [
+            -0.69,
+            0,
+            0.765
+          ],
+          "probe_gltf_m": [
+            -0.69,
+            0.765,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "upper_counter_to_right",
+          "parts": [
+            "main_rounded_usher_counter",
+            "right_full_height_cheek"
+          ],
+          "probe_source_m": [
+            0.685,
+            0,
+            1.015
+          ],
+          "probe_gltf_m": [
+            0.685,
+            1.015,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "upper_counter_to_divider",
+          "parts": [
+            "main_rounded_usher_counter",
+            "counter_central_divider"
+          ],
+          "probe_source_m": [
+            -0.2,
+            0,
+            1.015
+          ],
+          "probe_gltf_m": [
+            -0.2,
+            1.015,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "open_programme_cubby_floor_left_support",
+          "parts": [
+            "open_programme_cubby_floor",
+            "counter_central_divider"
+          ],
+          "probe_source_m": [
+            -0.19,
+            0,
+            0.25
+          ],
+          "probe_gltf_m": [
+            -0.19,
+            0.25,
+            0
+          ],
+          "normal_a_source": [
+            -1,
+            0,
+            0
+          ],
+          "normal_b_source": [
+            1,
+            0,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "open_programme_cubby_floor_right_support",
+          "parts": [
+            "open_programme_cubby_floor",
+            "right_full_height_cheek"
+          ],
+          "probe_source_m": [
+            0.665,
+            0,
+            0.25
+          ],
+          "probe_gltf_m": [
+            0.665,
+            0.25,
+            0
+          ],
+          "normal_a_source": [
+            1,
+            0,
+            0
+          ],
+          "normal_b_source": [
+            -1,
+            0,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "drawer_separation_shelf_left_support",
+          "parts": [
+            "drawer_separation_shelf",
+            "counter_central_divider"
+          ],
+          "probe_source_m": [
+            -0.19,
+            0,
+            0.67
+          ],
+          "probe_gltf_m": [
+            -0.19,
+            0.67,
+            0
+          ],
+          "normal_a_source": [
+            -1,
+            0,
+            0
+          ],
+          "normal_b_source": [
+            1,
+            0,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "drawer_separation_shelf_right_support",
+          "parts": [
+            "drawer_separation_shelf",
+            "right_full_height_cheek"
+          ],
+          "probe_source_m": [
+            0.665,
+            0,
+            0.67
+          ],
+          "probe_gltf_m": [
+            0.665,
+            0.67,
+            0
+          ],
+          "normal_a_source": [
+            1,
+            0,
+            0
+          ],
+          "normal_b_source": [
+            -1,
+            0,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "left_slide_closed_support",
+          "parts": [
+            "left_drawer_slide",
+            "left_fixed_slide_bearing"
+          ],
+          "probe_source_m": [
+            -0.165,
+            0,
+            0.731
+          ],
+          "probe_gltf_m": [
+            -0.165,
+            0.731,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "right_slide_closed_support",
+          "parts": [
+            "right_drawer_slide",
+            "right_fixed_slide_bearing"
+          ],
+          "probe_source_m": [
+            0.64,
+            0,
+            0.731
+          ],
+          "probe_gltf_m": [
+            0.64,
+            0.731,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "left_tray_to_floor",
+          "parts": [
+            "drawer_left_wall",
+            "drawer_tray_floor"
+          ],
+          "probe_source_m": [
+            -0.16499999999999998,
+            0,
+            0.761
+          ],
+          "probe_gltf_m": [
+            -0.16499999999999998,
+            0.761,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "right_tray_to_floor",
+          "parts": [
+            "drawer_right_wall",
+            "drawer_tray_floor"
+          ],
+          "probe_source_m": [
+            0.64,
+            0,
+            0.761
+          ],
+          "probe_gltf_m": [
+            0.64,
+            0.761,
+            0
+          ],
+          "normal_a_source": [
+            0,
+            0,
+            -1
+          ],
+          "normal_b_source": [
+            0,
+            0,
+            1
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "fascia_floor_bearing",
+          "parts": [
+            "drawer_walnut_fascia",
+            "drawer_tray_floor"
+          ],
+          "probe_source_m": [
+            0.24,
+            0.245,
+            0.75
+          ],
+          "probe_gltf_m": [
+            0.24,
+            0.75,
+            -0.245
+          ],
+          "normal_a_source": [
+            0,
+            -1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        },
+        {
+          "name": "usher_mark_backing",
+          "parts": [
+            "original_usher_mark",
+            "usher_mark_timber_bearing"
+          ],
+          "probe_source_m": [
+            0.25,
+            -0.392,
+            0.5
+          ],
+          "probe_gltf_m": [
+            0.25,
+            0.5,
+            0.392
+          ],
+          "normal_a_source": [
+            0,
+            1,
+            0
+          ],
+          "normal_b_source": [
+            0,
+            -1,
+            0
+          ],
+          "method": "Actual evaluated boundary or shared buried bearing probe; finite source/native witness check"
+        }
+      ],
+      "receiver_voids": [
+        {
+          "name": "staff_open_programme_cubby",
+          "min_source_m": [
+            -0.16,
+            -0.19,
+            0.285
+          ],
+          "max_source_m": [
+            0.63,
+            0.5,
+            0.635
+          ],
+          "pose": "closed",
+          "purpose": "Whole actual open storage mouth, continues outside counter to staff side"
+        },
+        {
+          "name": "drawer_closed_useful_tray",
+          "min_source_m": [
+            -0.13,
+            -0.15,
+            0.78
+          ],
+          "max_source_m": [
+            0.6,
+            0.22,
+            0.9
+          ],
+          "pose": "closed",
+          "purpose": "Real open-top drawer stow, not a solid block"
+        },
+        {
+          "name": "lower_wing_staff_knee_proposal",
+          "min_source_m": [
+            -0.64,
+            -0.19,
+            0.15
+          ],
+          "max_source_m": [
+            -0.27,
+            0.4,
+            0.735
+          ],
+          "pose": "closed",
+          "purpose": "Open staff-side lower writing bay, finite furniture void only"
+        },
+        {
+          "name": "drawer_access_tray",
+          "min_source_m": [
+            -0.13,
+            0.13,
+            0.78
+          ],
+          "max_source_m": [
+            0.6,
+            0.5,
+            0.9
+          ],
+          "pose": "access",
+          "purpose": "Translated useful storage well in access pose"
+        },
+        {
+          "name": "staff_service_approach",
+          "min_source_m": [
+            -0.14,
+            0.63,
+            0.1
+          ],
+          "max_source_m": [
+            0.61,
+            1.1,
+            1.0
+          ],
+          "pose": "access",
+          "purpose": "External staff reach reservation, host placement pending"
+        }
+      ],
+      "motions": [
+        {
+          "root": "USHER_DRAWER",
+          "type": "translation",
+          "axis_source": [
+            0,
+            1,
+            0
+          ],
+          "axis_gltf": [
+            0,
+            0,
+            -1
+          ],
+          "closed_m": 0,
+          "access_m": 0.28,
+          "motion_includes_handle_and_all_owned_parts": true,
+          "claim": "Complete shallow drawer +Y translation; real runner bearing overlap 0.15 m at access pose; not an implemented mechanism"
+        }
+      ],
+      "collision_proposal_file": "collision_proposals.json",
+      "marker_api_file": "marker_api.json",
+      "used_textures_packed": true,
+      "source_sha256": "3dfe866885b0723342aa8facc88f7c2f8b863bf3f0dd57494790584210f3d4b0",
+      "glb_sha256": "acaf7c7b7553e9bea7f1f831f2d93724037ce760731ba3ea78b7b94c9f5eb7a0",
+      "generator_sha256": "0c1cdf09da22d3121f5e8ab9cf2649f66fc76184dd0776659f1d344187640b6e",
+      "details": {
+        "front": "source -Y",
+        "staff_side": "source +Y",
+        "work_heights_m": [
+          0.805,
+          1.065
+        ],
+        "drawer_translation_m": 0.28,
+        "runtime_ticketing": false,
+        "six_species_fit": "pending",
+        "utility": "Original usher mark, lower writing edge, fixed programme cubby, shallow pull-out tray"
+      },
+      "state_derivatives": [
+        {
+          "name": "access",
+          "export": "exports/AST-CUL-002_access.glb",
+          "glb_sha256": "95063e7d08515133098a27977521691da326a907231a20e0deb6602f371ae98e",
+          "bounds_blender_z_up": {
+            "min_m": [
+              -0.7549999952316284,
+              -0.4050000011920929,
+              0.0
+            ],
+            "max_m": [
+              0.7549999952316284,
+              0.6189999580383301,
+              1.065000057220459
+            ],
+            "dimensions_m": [
+              1.5099999904632568,
+              1.023999959230423,
+              1.065000057220459
+            ]
+          },
+          "motion_roots": [
+            {
+              "root": "USHER_DRAWER",
+              "type": "translation",
+              "axis_source": [
+                0,
+                1,
+                0
+              ],
+              "axis_gltf": [
+                0,
+                0,
+                -1
+              ],
+              "closed_m": 0,
+              "access_m": 0.28,
+              "motion_includes_handle_and_all_owned_parts": true,
+              "claim": "Complete shallow drawer +Y translation; real runner bearing overlap 0.15 m at access pose; not an implemented mechanism"
+            }
+          ],
+          "counted_as_new_design": false
+        }
+      ],
+      "limitations": [
+        "Original host absent; no room adjacency, fit, registered place or capacity added",
+        "Physical host support, access/egress, body/cart routes and all six species fit remain pending",
+        "No acoustic, load, moving mechanism, lighting, electrical, transaction or game performance certification",
+        "Removal pose needs hand support and tool release; animation is a geometric proposal only"
+      ]
+    }
+  ]
+}

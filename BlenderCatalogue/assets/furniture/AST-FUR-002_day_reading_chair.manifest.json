@@ -1,0 +1,773 @@
+{
+  "catalogue_id": "AST-FUR-002",
+  "name": "Astraea Day Reading Chair",
+  "intended_use": "Companion reading and conversation chair",
+  "seat_contact_proposal": {
+    "crown_z_m": 0.475,
+    "seat_centres_m": [
+      [
+        0,
+        -0.11,
+        0.475
+      ]
+    ],
+    "front_edge_y_m": -0.425,
+    "usable_depth_m": 0.56
+  },
+  "approach_proposal": {
+    "front_direction": [
+      0,
+      -1,
+      0
+    ],
+    "clear_floor_rectangle_m": [
+      [
+        -0.47,
+        -1.16
+      ],
+      [
+        0.47,
+        -0.47
+      ]
+    ],
+    "status": "Proposal only; actor rig and original game fit untested"
+  },
+  "collision_proposal": {
+    "method": "Compound simple boxes for runners, posts, seat deck, back, side cheeks; omit decorative seams and pins; do not hull the complete chair",
+    "status": "Not generated or engine-tested"
+  },
+  "contact_joins": [
+    {
+      "members": [
+        "floor_shoe",
+        "timber_runner"
+      ],
+      "overlap_m": 0.002
+    },
+    {
+      "members": [
+        "splayed_post",
+        "cross_rail",
+        "swept_walnut_cheek"
+      ],
+      "intent": "Continuous physical load path with fitted join overlap"
+    },
+    {
+      "members": [
+        "crowned_seat",
+        "inset_seat_deck"
+      ],
+      "overlap_m": 0.01045
+    },
+    {
+      "members": [
+        "reclined_back_cross_shell",
+        "swept_walnut_cheek"
+      ],
+      "intent": "Back shell ends overlap cheeks"
+    }
+  ],
+  "bounds_min_m": [
+    -0.4699999988079071,
+    -0.44699999690055847,
+    0.0
+  ],
+  "bounds_max_m": [
+    0.4699999988079071,
+    0.48229193687438965,
+    0.9971818923950195
+  ],
+  "dimensions_m": [
+    0.9399999976158142,
+    0.9292919337749481,
+    0.9971818923950195
+  ],
+  "triangles_evaluated": 3872,
+  "parts": [
+    {
+      "name": "DAY_CHAIR_L_swept_walnut_cheek",
+      "type": "MESH",
+      "triangles": 184,
+      "bounds_min_m": [
+        -0.4465000033378601,
+        -0.44699999690055847,
+        0.2022681087255478
+      ],
+      "bounds_max_m": [
+        -0.3605000078678131,
+        0.4749999940395355,
+        0.9681851863861084
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_L_recessed_ivory_liner",
+      "type": "MESH",
+      "triangles": 104,
+      "bounds_min_m": [
+        -0.35850000381469727,
+        -0.375,
+        0.32310250401496887
+      ],
+      "bounds_max_m": [
+        -0.3425000011920929,
+        0.39796531200408936,
+        0.9031530618667603
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_L_rubber_floor_shoe",
+      "type": "MESH",
+      "triangles": 148,
+      "bounds_min_m": [
+        -0.4699999988079071,
+        -0.35899999737739563,
+        0.0
+      ],
+      "bounds_max_m": [
+        -0.3370000123977661,
+        0.382999986410141,
+        0.017999999225139618
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_L_timber_runner",
+      "type": "MESH",
+      "triangles": 148,
+      "bounds_min_m": [
+        -0.46299999952316284,
+        -0.34599998593330383,
+        0.01600000075995922
+      ],
+      "bounds_max_m": [
+        -0.3440000116825104,
+        0.3700000047683716,
+        0.07000000029802322
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_L_front_splayed_post",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -0.445499986410141,
+        -0.32884836196899414,
+        0.060598067939281464
+      ],
+      "bounds_max_m": [
+        -0.36149999499320984,
+        -0.2161516696214676,
+        0.29840192198753357
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_L_rear_splayed_post",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -0.445499986410141,
+        0.24615177512168884,
+        0.06059809774160385
+      ],
+      "bounds_max_m": [
+        -0.36149999499320984,
+        0.3588482439517975,
+        0.2984018921852112
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_L_front_inset_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        -0.4514999985694885,
+        -0.2930000126361847,
+        0.2759999930858612
+      ],
+      "bounds_max_m": [
+        -0.44749999046325684,
+        -0.2750000059604645,
+        0.2939999997615814
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_CHAIR_L_rear_inset_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        -0.4514999985694885,
+        0.30300000309944153,
+        0.2759999930858612
+      ],
+      "bounds_max_m": [
+        -0.44749999046325684,
+        0.32100000977516174,
+        0.2939999997615814
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_CHAIR_L_arm_pad",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        -0.45649999380111694,
+        -0.3425000011920929,
+        0.6499999761581421
+      ],
+      "bounds_max_m": [
+        -0.3504999876022339,
+        0.0625,
+        0.7098000049591064
+      ],
+      "materials": [
+        "ASTRAEA_oatmeal_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_L_arm_pad_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        -0.4579799771308899,
+        -0.3379996418952942,
+        0.6919000148773193
+      ],
+      "bounds_max_m": [
+        -0.34902000427246094,
+        0.05799965560436249,
+        0.6991000175476074
+      ],
+      "materials": [
+        "ASTRAEA_oatmeal_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_CHAIR_R_swept_walnut_cheek",
+      "type": "MESH",
+      "triangles": 184,
+      "bounds_min_m": [
+        0.3605000078678131,
+        -0.44699999690055847,
+        0.2022681087255478
+      ],
+      "bounds_max_m": [
+        0.4465000033378601,
+        0.4749999940395355,
+        0.9681851863861084
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_R_recessed_ivory_liner",
+      "type": "MESH",
+      "triangles": 104,
+      "bounds_min_m": [
+        0.3425000011920929,
+        -0.375,
+        0.32310250401496887
+      ],
+      "bounds_max_m": [
+        0.35850000381469727,
+        0.39796531200408936,
+        0.9031530618667603
+      ],
+      "materials": [
+        "ASTRAEA_ivory_enamel"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_R_rubber_floor_shoe",
+      "type": "MESH",
+      "triangles": 148,
+      "bounds_min_m": [
+        0.3370000123977661,
+        -0.35899999737739563,
+        0.0
+      ],
+      "bounds_max_m": [
+        0.4699999988079071,
+        0.382999986410141,
+        0.017999999225139618
+      ],
+      "materials": [
+        "ASTRAEA_dark_rubber"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_R_timber_runner",
+      "type": "MESH",
+      "triangles": 148,
+      "bounds_min_m": [
+        0.3440000116825104,
+        -0.34599998593330383,
+        0.01600000075995922
+      ],
+      "bounds_max_m": [
+        0.46299999952316284,
+        0.3700000047683716,
+        0.07000000029802322
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_R_front_splayed_post",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        0.36149999499320984,
+        -0.32884836196899414,
+        0.060598067939281464
+      ],
+      "bounds_max_m": [
+        0.445499986410141,
+        -0.2161516696214676,
+        0.29840192198753357
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_R_rear_splayed_post",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        0.36149999499320984,
+        0.24615177512168884,
+        0.06059809774160385
+      ],
+      "bounds_max_m": [
+        0.445499986410141,
+        0.3588482439517975,
+        0.2984018921852112
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_R_front_inset_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        0.44749999046325684,
+        -0.2930000126361847,
+        0.2759999930858612
+      ],
+      "bounds_max_m": [
+        0.4514999985694885,
+        -0.2750000059604645,
+        0.2939999997615814
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_CHAIR_R_rear_inset_join_pin",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        0.44749999046325684,
+        0.30300000309944153,
+        0.2759999930858612
+      ],
+      "bounds_max_m": [
+        0.4514999985694885,
+        0.32100000977516174,
+        0.2939999997615814
+      ],
+      "materials": [
+        "ASTRAEA_champagne_metal"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_CHAIR_R_arm_pad",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        0.3504999876022339,
+        -0.3425000011920929,
+        0.6499999761581421
+      ],
+      "bounds_max_m": [
+        0.45649999380111694,
+        0.0625,
+        0.7098000049591064
+      ],
+      "materials": [
+        "ASTRAEA_oatmeal_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_R_arm_pad_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        0.34902000427246094,
+        -0.3379996418952942,
+        0.6919000148773193
+      ],
+      "bounds_max_m": [
+        0.4579799771308899,
+        0.05799965560436249,
+        0.6991000175476074
+      ],
+      "materials": [
+        "ASTRAEA_oatmeal_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_CHAIR_front_continuous_cross_rail",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -0.4034999907016754,
+        -0.33800002932548523,
+        0.2644999921321869
+      ],
+      "bounds_max_m": [
+        0.4034999907016754,
+        -0.257999986410141,
+        0.32750001549720764
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_rear_continuous_cross_rail",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -0.4034999907016754,
+        0.2629999816417694,
+        0.2644999921321869
+      ],
+      "bounds_max_m": [
+        0.4034999907016754,
+        0.34300002455711365,
+        0.32750001549720764
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_inset_seat_deck",
+      "type": "MESH",
+      "triangles": 148,
+      "bounds_min_m": [
+        -0.3725000023841858,
+        -0.39250001311302185,
+        0.3050000071525574
+      ],
+      "bounds_max_m": [
+        0.3725000023841858,
+        0.3084999918937683,
+        0.3440000116825104
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable soft join edges",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_reclined_back_cross_shell",
+      "type": "MESH",
+      "triangles": 44,
+      "bounds_min_m": [
+        -0.4324999749660492,
+        0.3157080411911011,
+        0.336212158203125
+      ],
+      "bounds_max_m": [
+        0.4324999749660492,
+        0.48229193687438965,
+        0.9237878322601318
+      ],
+      "materials": [
+        "ASTRAEA_warm_walnut"
+      ],
+      "modifiers": [
+        "Editable join easing",
+        "Weighted surface normals"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_single_crowned_seat",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        -0.35899999737739563,
+        -0.42499998211860657,
+        0.33354997634887695
+      ],
+      "bounds_max_m": [
+        0.35899999737739563,
+        0.2709999978542328,
+        0.4749999940395355
+      ],
+      "materials": [
+        "ASTRAEA_teal_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_single_crowned_seat_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        -0.3482397496700287,
+        -0.41467976570129395,
+        0.43757498264312744
+      ],
+      "bounds_max_m": [
+        0.3482397496700287,
+        0.26067978143692017,
+        0.4447749853134155
+      ],
+      "materials": [
+        "ASTRAEA_teal_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_CHAIR_single_reclined_back_cushion",
+      "type": "MESH",
+      "triangles": 360,
+      "bounds_min_m": [
+        -0.35600000619888306,
+        0.20961853861808777,
+        0.4894659221172333
+      ],
+      "bounds_max_m": [
+        0.35600000619888306,
+        0.4392414093017578,
+        0.9962086081504822
+      ],
+      "materials": [
+        "ASTRAEA_teal_weave"
+      ],
+      "modifiers": [
+        "Optional upholstery refinement"
+      ]
+    },
+    {
+      "name": "DAY_CHAIR_single_reclined_back_cushion_welt_seam",
+      "type": "MESH",
+      "triangles": 160,
+      "bounds_min_m": [
+        -0.3453594744205475,
+        0.21932832896709442,
+        0.5131166577339172
+      ],
+      "bounds_max_m": [
+        0.3453594744205475,
+        0.3277653455734253,
+        0.9971818923950195
+      ],
+      "materials": [
+        "ASTRAEA_teal_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_CHAIR_single_back_pull_-0.17",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        -0.17219999432563782,
+        0.21118779480457306,
+        0.6010159254074097
+      ],
+      "bounds_max_m": [
+        -0.16780000925064087,
+        0.2811777889728546,
+        0.911022424697876
+      ],
+      "materials": [
+        "ASTRAEA_teal_weave"
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "DAY_CHAIR_single_back_pull_0.17",
+      "type": "MESH",
+      "triangles": 28,
+      "bounds_min_m": [
+        0.16780000925064087,
+        0.21118779480457306,
+        0.6010159254074097
+      ],
+      "bounds_max_m": [
+        0.17219999432563782,
+        0.2811777889728546,
+        0.911022424697876
+      ],
+      "materials": [
+        "ASTRAEA_teal_weave"
+      ],
+      "modifiers": []
+    }
+  ],
+  "blender_version": "4.3.2",
+  "units": "metres",
+  "pivot_m": [
+    0,
+    0,
+    0
+  ],
+  "front_axis": "-Y",
+  "authoring": "Script-assisted intentional ring, extrusion and join design; editable semantic parts and modifiers retained",
+  "provenance": "New independent 2026-10-02 continuation. Not recovery or reconstruction of lost game. Reference images used only for warm residential palette, material restraint and use; no reference pixels copied.",
+  "materials": [
+    "ASTRAEA_champagne_metal",
+    "ASTRAEA_dark_rubber",
+    "ASTRAEA_ivory_enamel",
+    "ASTRAEA_oatmeal_weave",
+    "ASTRAEA_teal_weave",
+    "ASTRAEA_warm_walnut"
+  ],
+  "qa_scope": "Blender component QA only; original Godot integration, actor contact, physics and target-PC performance are untested",
+  "export": {
+    "format": "GLB",
+    "Y_up": true,
+    "apply_modifiers": true,
+    "UVs": true,
+    "normals": true,
+    "materials": "EXPORT",
+    "textures": "Embedded ordinary Principled base-color roles",
+    "static_visual_meshes": 1,
+    "material_primitives": 6,
+    "source_semantic_part_count": 30,
+    "consolidation": "Disconnected evaluated visual parts joined by shared material role, no auto-collision or object deletion in saved source"
+  },
+  "source_generator": "build_furniture.py",
+  "asset_files": [
+    "AST-FUR-002_day_reading_chair.blend",
+    "AST-FUR-002_day_reading_chair.glb"
+  ],
+  "source_generator_sha256": "480dcc3bb79d0158ec827eebe295aab3623cc5de30982412e9bad3eb30a97dd5",
+  "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+  "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+  "reference_provenance": [
+    {
+      "file": "references/dense/image(20261002-001051).png",
+      "sha256": "9c453f44985a06d8a83d9ae07a8027f29f04b24f42e967ff996508cc7abaa9d2",
+      "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+    },
+    {
+      "file": "references/intimate/image(20261002-000722).png",
+      "sha256": "0328f70e493c30640f0405d0158278e0f38d3e72754aa37a79c9ce2f2bf82081",
+      "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+    },
+    {
+      "file": "references/premium/image(20261002-001347).png",
+      "sha256": "0a92cd5adc6b354bb1432284a270ad286225b7cbeb2b6635ad818b2230083eac",
+      "use": "Shape, material and spatial-use guidance only; no sampled or copied image pixels"
+    }
+  ],
+  "blend_sha256": "d57540d49e130571e7a9c2f3882bae4ac6dd83daf763249e84c00d8e6fc8c96b",
+  "glb_sha256": "4652e7887de85b982a8fc56a429663fd20752ad967d572f14404ab2b2be24863"
+}

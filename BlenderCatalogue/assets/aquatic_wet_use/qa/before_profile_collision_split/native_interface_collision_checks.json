@@ -1,0 +1,438 @@
+{
+  "assets": [
+    {
+      "catalogue_id": "AST-AQU-009",
+      "glb_sha256": "00b2e2bf0ed1a9eb7969619edc5a8aa335b8dce57ddb81b9abb8b1d22a2041f2",
+      "native_markers": [
+        {
+          "name": "FLOOR_CONTACT",
+          "native_node_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "expected": [
+            0,
+            0,
+            0
+          ],
+          "position_error_m": 0.0,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "continuous_floor_isolator",
+          "wrong_axis_distance_m": 0.0,
+          "passes": true
+        },
+        {
+          "name": "VESSEL_CONTACT",
+          "native_node_position": [
+            0.0,
+            0.9150000214576721,
+            0.10999999940395355
+          ],
+          "expected": [
+            0,
+            0.915,
+            0.11
+          ],
+          "position_error_m": 2.1465948910225875e-08,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "vessel_landing_rail_0",
+          "wrong_axis_distance_m": 0.6102753601915137,
+          "passes": true
+        },
+        {
+          "name": "OPTIONAL_OUTLET_CAP",
+          "native_node_position": [
+            0.0,
+            1.309999942779541,
+            0.10999999940395355
+          ],
+          "expected": [
+            0,
+            1.31,
+            0.11
+          ],
+          "position_error_m": 5.7223563362042746e-08,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "protected_capped_optional_outlet",
+          "wrong_axis_distance_m": 0.9972768044401794,
+          "passes": true
+        },
+        {
+          "name": "SELECT_CONTACT",
+          "native_node_position": [
+            0.125,
+            1.2000000476837158,
+            -0.10499999672174454
+          ],
+          "expected": [
+            0.125,
+            1.2,
+            -0.105
+          ],
+          "position_error_m": 4.779627305052539e-08,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "bounded_select_pad",
+          "wrong_axis_distance_m": 1.1596777133271605,
+          "passes": true
+        },
+        {
+          "name": "REAR_REMOVABLE_SERVICE_PLATE_SERVICE_FACE",
+          "native_node_position": [
+            0.0,
+            0.4950000047683716,
+            -0.25999999046325684
+          ],
+          "expected": [
+            0,
+            0.495,
+            -0.26
+          ],
+          "position_error_m": 1.0662403009330226e-08,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "rear_removable_service_plate",
+          "wrong_axis_distance_m": 0.7299999994039535,
+          "passes": true
+        },
+        {
+          "name": "LOW_DRAIN_CAP",
+          "native_node_position": [
+            0.0,
+            0.07500000298023224,
+            0.32499998807907104
+          ],
+          "expected": [
+            0,
+            0.075,
+            0.325
+          ],
+          "position_error_m": 1.2287812320761686e-08,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "visible_front_low_drain_cap",
+          "wrong_axis_distance_m": 0.4287959879036951,
+          "passes": true
+        },
+        {
+          "name": "FRONT_APPROACH",
+          "native_node_position": [
+            0.0,
+            0.0,
+            0.8799999952316284
+          ],
+          "expected": [
+            0,
+            0,
+            0.88
+          ],
+          "position_error_m": 4.768371586472142e-09,
+          "passes": true
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "native_node_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "expected": [
+            0,
+            0,
+            0
+          ],
+          "position_error_m": 0.0,
+          "passes": true
+        }
+      ],
+      "native_removal_hierarchy_checks": [
+        {
+          "root": "rear_removable_service_plate_REMOVAL_ROOT",
+          "zero_pose_native_error_m": 0.0,
+          "native_children": [
+            "AST-AQU-009__plate__aquatic_dark_grip",
+            "AST-AQU-009__plate__aquatic_orange_float",
+            "REAR_REMOVABLE_SERVICE_PLATE_SERVICE_FACE",
+            "rear_removable_service_plate_REMOVAL_ROOT"
+          ],
+          "plate_mesh_nodes": [
+            "AST-AQU-009__plate__aquatic_dark_grip",
+            "AST-AQU-009__plate__aquatic_orange_float"
+          ],
+          "dependent_marker_moves": true,
+          "all_plate_meshes_move": true,
+          "translation_native_m": [
+            0.0,
+            0.0,
+            -0.4
+          ],
+          "translated_marker_position": [
+            0.0,
+            0.4950000047683716,
+            -0.6599999904632569
+          ],
+          "body_fixed": true,
+          "passes": true
+        }
+      ],
+      "collision_compounds": 24,
+      "collision_clear_volume_checks": [
+        {
+          "name": "vessel_air_space",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "collector_gap_-0.1375",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "collector_gap_-0.0375",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "collector_gap_0.0375",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "collector_gap_0.1375",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "rear_service_approach",
+          "hits": [],
+          "passes": true
+        }
+      ],
+      "collision_method": "Complete convex hull/AABB SAT using hull face normals, box axes and all hull edge cross box axes; positive occupied controls are in source checker",
+      "runtime_meshes": 7,
+      "native_nodes": 17,
+      "passes": true
+    },
+    {
+      "catalogue_id": "AST-AQU-010",
+      "glb_sha256": "096429bf084c15fcec597dee66f425beccf49b5a8b09b6542dd896e1e85f10f3",
+      "native_markers": [
+        {
+          "name": "FLOOR_CONTACT",
+          "native_node_position": [
+            0.0,
+            0.0,
+            0.02500000037252903
+          ],
+          "expected": [
+            0,
+            0,
+            0.025
+          ],
+          "position_error_m": 3.725290284584126e-10,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "continuous_rinse_floor_isolator",
+          "wrong_axis_distance_m": 0.025,
+          "passes": true
+        },
+        {
+          "name": "HEAD_INTERFACE_CAP",
+          "native_node_position": [
+            0.0,
+            2.015000104904175,
+            0.20499999821186066
+          ],
+          "expected": [
+            0,
+            2.015,
+            0.205
+          ],
+          "position_error_m": 1.0491941339728821e-07,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "capped_adjustable_head_interface",
+          "wrong_axis_distance_m": 1.6858970876116768,
+          "passes": true
+        },
+        {
+          "name": "SELECT_CONTROL_CONTACT",
+          "native_node_position": [
+            -0.06499999761581421,
+            1.0800000429153442,
+            -0.017999999225139618
+          ],
+          "expected": [
+            -0.065,
+            1.08,
+            -0.018
+          ],
+          "position_error_m": 4.298850445756192e-08,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "bounded_select_control",
+          "wrong_axis_distance_m": 0.7999999988079072,
+          "passes": true
+        },
+        {
+          "name": "STOP_CONTROL_CONTACT",
+          "native_node_position": [
+            0.07000000029802322,
+            1.0800000429153442,
+            -0.017999999225139618
+          ],
+          "expected": [
+            0.07,
+            1.08,
+            -0.018
+          ],
+          "position_error_m": 4.292337348623884e-08,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "bounded_stop_control",
+          "wrong_axis_distance_m": 0.7999999988079072,
+          "passes": true
+        },
+        {
+          "name": "RINSE_REAR_REMOVABLE_PLATE_SERVICE_FACE",
+          "native_node_position": [
+            0.0,
+            0.4350000023841858,
+            -0.27000001072883606
+          ],
+          "expected": [
+            0,
+            0.435,
+            -0.27
+          ],
+          "position_error_m": 1.0990553430498398e-08,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "rinse_rear_removable_plate",
+          "wrong_axis_distance_m": 0.6800000047683716,
+          "passes": true
+        },
+        {
+          "name": "LOW_CONNECTION_CAP",
+          "native_node_position": [
+            0.0,
+            0.07000000029802322,
+            0.34700000286102295
+          ],
+          "expected": [
+            0,
+            0.07,
+            0.347
+          ],
+          "position_error_m": 2.8765031368412298e-09,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "low_front_capped_connection",
+          "wrong_axis_distance_m": 0.45276263391504834,
+          "passes": true
+        },
+        {
+          "name": "SPLASH_FLOOR_CONTACT",
+          "native_node_position": [
+            0.0,
+            0.11999999731779099,
+            0.12999999523162842
+          ],
+          "expected": [
+            0,
+            0.12,
+            0.13
+          ],
+          "position_error_m": 5.470979141106559e-09,
+          "surface_distance_m": 0.0,
+          "normal_dot": 1.0,
+          "named_part": "tile_splash_landing",
+          "wrong_axis_distance_m": 0.23999999940395356,
+          "passes": true
+        },
+        {
+          "name": "FRONT_APPROACH",
+          "native_node_position": [
+            0.0,
+            0.0,
+            0.949999988079071
+          ],
+          "expected": [
+            0,
+            0,
+            0.95
+          ],
+          "position_error_m": 1.1920928910669204e-08,
+          "passes": true
+        },
+        {
+          "name": "FLOOR_ORIGIN",
+          "native_node_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "expected": [
+            0,
+            0,
+            0
+          ],
+          "position_error_m": 0.0,
+          "passes": true
+        }
+      ],
+      "native_removal_hierarchy_checks": [
+        {
+          "root": "rinse_rear_removable_plate_REMOVAL_ROOT",
+          "zero_pose_native_error_m": 0.0,
+          "native_children": [
+            "AST-AQU-010__plate__aquatic_dark_grip",
+            "AST-AQU-010__plate__aquatic_orange_float",
+            "RINSE_REAR_REMOVABLE_PLATE_SERVICE_FACE",
+            "rinse_rear_removable_plate_REMOVAL_ROOT"
+          ],
+          "plate_mesh_nodes": [
+            "AST-AQU-010__plate__aquatic_dark_grip",
+            "AST-AQU-010__plate__aquatic_orange_float"
+          ],
+          "dependent_marker_moves": true,
+          "all_plate_meshes_move": true,
+          "translation_native_m": [
+            0.0,
+            0.0,
+            -0.4
+          ],
+          "translated_marker_position": [
+            0.0,
+            0.4350000023841858,
+            -0.6700000107288361
+          ],
+          "body_fixed": true,
+          "passes": true
+        }
+      ],
+      "collision_compounds": 20,
+      "collision_clear_volume_checks": [
+        {
+          "name": "front_unoccupied_rinse_space",
+          "hits": [],
+          "passes": true
+        },
+        {
+          "name": "rear_maintenance_approach",
+          "hits": [],
+          "passes": true
+        }
+      ],
+      "collision_method": "Complete convex hull/AABB SAT using hull face normals, box axes and all hull edge cross box axes; positive occupied controls are in source checker",
+      "runtime_meshes": 7,
+      "native_nodes": 18,
+      "passes": true
+    }
+  ],
+  "all_passed": true
+}

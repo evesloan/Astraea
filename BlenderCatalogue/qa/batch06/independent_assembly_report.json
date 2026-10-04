@@ -1,0 +1,145 @@
+{
+  "files": [
+    {
+      "instance": "pump",
+      "path": "assets/utility_machines/exports/AST-ENG-001.glb",
+      "sha256": "0650a9aac2a9151434fabaceae94768272927afccfeb7ee6ffc811cfb4aed91d",
+      "arrangement_import_hash_current": true
+    },
+    {
+      "instance": "filter",
+      "path": "assets/utility_machines/exports/AST-ENG-002.glb",
+      "sha256": "f214c0d2094d0f47180c26864c2ea5bc78f0c32d6c54888e850d6f65c3e975c5",
+      "arrangement_import_hash_current": true
+    },
+    {
+      "instance": "straight",
+      "path": "assets/utility_pipework/exports/AST-ENG-004.glb",
+      "sha256": "151e7f5847df017cba91d7d5a6d833c0fc4ffecf2a039f2b6770618d5c52c431",
+      "arrangement_import_hash_current": true
+    },
+    {
+      "instance": "valve",
+      "path": "assets/utility_pipework/exports/AST-ENG-006.glb",
+      "sha256": "a44d3898d646ae770859e14a50310203cc9ab76d5c60602c7e6c78d807a9202d",
+      "arrangement_import_hash_current": true
+    },
+    {
+      "instance": "elbow",
+      "path": "assets/utility_pipework/exports/AST-ENG-005.glb",
+      "sha256": "a26e45826595a6de3f5d24cdbe5fc2c8d4ae97fbfe2615a71ae2374984ca4ce3",
+      "arrangement_import_hash_current": true
+    },
+    {
+      "instance": "console",
+      "path": "assets/utility_console/AST-ENG-003.glb",
+      "sha256": "83693db9307383746c7ee386a9775ac29793513b13ac3ecfeacefd8a4da956a6",
+      "arrangement_import_hash_current": true
+    }
+  ],
+  "seams": [
+    {
+      "a": [
+        "pump",
+        "pump_right"
+      ],
+      "b": [
+        "straight",
+        "INLET"
+      ],
+      "native_position_gap_m": 3.371747884011707e-08,
+      "native_normal_dot": -1.0,
+      "native_six_bolt_phase_error_m": 3.371747884011707e-08,
+      "pass": true
+    },
+    {
+      "a": [
+        "straight",
+        "OUTLET"
+      ],
+      "b": [
+        "valve",
+        "INLET"
+      ],
+      "native_position_gap_m": 1.1920928980058143e-08,
+      "native_normal_dot": -1.0,
+      "native_six_bolt_phase_error_m": 1.1920928980058143e-08,
+      "pass": true
+    },
+    {
+      "a": [
+        "valve",
+        "OUTLET"
+      ],
+      "b": [
+        "filter",
+        "filter_left"
+      ],
+      "native_position_gap_m": 4.4984727577413e-08,
+      "native_normal_dot": -1.0,
+      "native_six_bolt_phase_error_m": 4.4984727577413e-08,
+      "pass": true
+    },
+    {
+      "a": [
+        "filter",
+        "filter_right"
+      ],
+      "b": [
+        "elbow",
+        "INLET"
+      ],
+      "native_position_gap_m": 2.7804145280345726e-08,
+      "native_normal_dot": -1.0,
+      "native_six_bolt_phase_error_m": 2.7804145280345726e-08,
+      "pass": true
+    }
+  ],
+  "service_reservations": [
+    {
+      "owner": "pump",
+      "reservation": "front_cover_withdrawal",
+      "other_asset_aabb_overlaps": [],
+      "pass": true
+    },
+    {
+      "owner": "pump",
+      "reservation": "drive_rear_service",
+      "other_asset_aabb_overlaps": [],
+      "pass": true
+    },
+    {
+      "owner": "pump",
+      "reservation": "coupling_guard_lift",
+      "other_asset_aabb_overlaps": [],
+      "pass": true
+    },
+    {
+      "owner": "filter",
+      "reservation": "filter_front_maintenance",
+      "other_asset_aabb_overlaps": [],
+      "pass": true
+    },
+    {
+      "owner": "filter",
+      "reservation": "filter_lid_and_cartridge_withdrawal",
+      "other_asset_aabb_overlaps": [],
+      "pass": true
+    },
+    {
+      "owner": "valve",
+      "reservation": "proposed_control_approach",
+      "other_asset_aabb_overlaps": [],
+      "pass": true
+    },
+    {
+      "owner": "console",
+      "reservation": "proposed_control_approach",
+      "other_asset_aabb_overlaps": [],
+      "pass": true
+    }
+  ],
+  "numeric_pass": true,
+  "method": "Independently resolve actual native GLB node transforms, then apply the documented arrangement translations in the GLB basis. Compare mating origins/normals/bolt phases. Separately screen other-asset bounds against proposed work reservations.",
+  "scope": "Neutral component inspection assembly only. Not a ship room, real load/clearance certification, completed service network, fluid circuit, game scene or target-GPU acceptance."
+}

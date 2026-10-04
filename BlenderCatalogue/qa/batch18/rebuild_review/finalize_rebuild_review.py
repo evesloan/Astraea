@@ -1,0 +1,12 @@
+from pathlib import Path
+import json,hashlib
+ROOT=Path(__file__).resolve().parents[3];OUT=Path(__file__).resolve().parent
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();bind=lambda p:{'path':str(p.relative_to(ROOT)),'sha256':sha(p),'bytes':p.stat().st_size}
+rows=[];bindings=[]
+for family,rev in [('retail_display','r02'),('retail_work','r05')]:
+ p=OUT/f'rebuild_{family}_{rev}.json';r=json.loads(p.read_text());assert r['passed'];bindings.extend(r['production_original_inputs']);bindings.append(r['declared_dependency_manifest']);
+ for key in ['actual_exports','editable_sources','generated_interface_and_manifest_json','regenerated_original_artwork','regenerated_shared_retail_artwork_and_manifest']:
+  for x in r[key]:bindings.append(x['current_source'] if key=='editable_sources' else x['current'])
+ rows.append({'family':family,'original_seed_count':len(r['production_original_inputs']),'source_only_rebuild_receipt':bind(p),'editable_sources':len(r['editable_sources']),'byte_identical_GLBS':len(r['actual_exports']),'new_material_outputs_regenerated':len(r['regenerated_shared_retail_artwork_and_manifest']),'passed':True})
+unique=list({x['path']:x for x in bindings}.values());assert all(sha(ROOT/x['path'])==x['sha256']for x in unique)
+p=OUT/'STAGE2_ROLE_REVIEW.json';st=json.loads(p.read_text());assert st['passed'];res={'passed':True,'families':rows,'stage2_collision_role_review':bind(p),'all_current_production_bindings':unique,'current_bound_file_count':len(unique),'limits':['Only exact original source/helper/unchanged common-palette inputs seeded. New enamel and all assets/interfaces regenerated; no pre-existing new geometry, generated collision selection or QA input seeded.','Stage2 optional role extraction follows source reconstruction; compound display profile and literal work subsets remain proposals.','Actual native GLBs are byte-identical. Editable topology/UV/modifiers/material graphs/hierarchy and packed used artwork are independently equivalent; source-container byte differences only normalized where actually bound.','Python audit plus native Blender image witnesses covers observed catalogue reads, not every OS syscall; standard Blender/Python installation dependencies are required.'],'executed_script_sha256':sha(Path(__file__))};(OUT/'FINAL_REBUILD_RECEIPT.json').write_text(json.dumps(res,indent=2)+'\n');print('Rebuild final',len(unique),'current files',[(r['family'],r['original_seed_count'],r['byte_identical_GLBS'])for r in rows])

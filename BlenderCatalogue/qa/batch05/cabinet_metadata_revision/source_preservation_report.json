@@ -1,0 +1,86 @@
+{
+  "revision": "hinge-frame-metadata-02",
+  "method": "Open reviewed source; change only hinge custom properties through generator helper; write all existing datablocks at same path without remapping or fake-user changes, retaining unused packed tiles; reopen final source and compare semantic content. Both base and evaluated mesh coordinates/topology/normals/UV/attributes, material graphs, packed images, object hierarchy/transforms/modifiers/constraints and scene units are captured.",
+  "source_before_sha256": "91644fc55a17f39f7a1d37bfefad3c682140834fc19abb332d85e699a31ca9c1",
+  "source_after_sha256": "b1705b3e5d7a48f4d28765a26b7c9f60fe4aa61df3b593ba4f35861125cf8edb",
+  "components": {
+    "objects": {
+      "before_sha256": "1cdc6ac744202db5ae3520f8047455d9309747b83b95702c5bfafc05e19549fb",
+      "after_sha256": "1cdc6ac744202db5ae3520f8047455d9309747b83b95702c5bfafc05e19549fb",
+      "unchanged": true,
+      "count": 65
+    },
+    "meshes": {
+      "before_sha256": "d91fd2fb7cf5f932243068a3c8506d8393f995fa0a2021b509d8d5714e664d2b",
+      "after_sha256": "d91fd2fb7cf5f932243068a3c8506d8393f995fa0a2021b509d8d5714e664d2b",
+      "unchanged": true,
+      "count": 63
+    },
+    "evaluated_geometry": {
+      "before_sha256": "45393dcbf491b1211789f10c222680897f961c9411f815dda24e7288689d716b",
+      "after_sha256": "45393dcbf491b1211789f10c222680897f961c9411f815dda24e7288689d716b",
+      "unchanged": true,
+      "count": 63
+    },
+    "materials": {
+      "before_sha256": "196ecb9dfb92aecfbd6aa4d74f9e60fdeb35c2b98f34dfa2cf6c752793223460",
+      "after_sha256": "196ecb9dfb92aecfbd6aa4d74f9e60fdeb35c2b98f34dfa2cf6c752793223460",
+      "unchanged": true,
+      "count": 4
+    },
+    "images": {
+      "before_sha256": "d114b3ce892628afc97233063007d5d0d5a04d4bee772eae511aa8a146f96747",
+      "after_sha256": "d114b3ce892628afc97233063007d5d0d5a04d4bee772eae511aa8a146f96747",
+      "unchanged": true,
+      "count": 9
+    },
+    "scenes": {
+      "before_sha256": "00fec2b0aa19c694b24e75a95e2083c45b170c64faf31aa154f4f89bd453559c",
+      "after_sha256": "00fec2b0aa19c694b24e75a95e2083c45b170c64faf31aa154f4f89bd453559c",
+      "unchanged": true,
+      "count": 1
+    }
+  },
+  "legacy_hinge_custom_properties": {
+    "axis": "Local +Z, negative rotation opens outward",
+    "normal_open_range_degrees": [
+      0,
+      -105
+    ],
+    "runtime_status": "Articulation proposal only; no animation/controller/gameplay implemented"
+  },
+  "current_hinge_custom_properties": {
+    "normal_open_range_degrees": [
+      0,
+      -105
+    ],
+    "runtime_status": "Articulation proposal only; no animation/controller/gameplay implemented",
+    "coordinate_metadata_revision": "hinge-frame-metadata-02",
+    "hinge_axis_blender_source": [
+      0,
+      0,
+      1
+    ],
+    "hinge_axis_gltf_yup": [
+      0,
+      1,
+      0
+    ],
+    "hinge_pivot_blender_source_m": [
+      -0.837,
+      -0.317,
+      0.2
+    ],
+    "hinge_pivot_gltf_yup_m": [
+      -0.837,
+      0.2,
+      0.317
+    ],
+    "hinge_hint_blender_source": "Blender source frame: negative rotation about local +Z opens outward.",
+    "hinge_hint_gltf_yup": "Native GLB Y-up frame: negative rotation about local +Y opens outward.",
+    "hinge_coordinate_conversion": "Blender source (X,Y,Z) -> native glTF/GLB (X,Z,-Y); custom-property vectors retain their explicitly named frame."
+  },
+  "unqualified_axis_absent": true,
+  "all_invariants_unchanged": true,
+  "serialization_note": "Blender data-block library write preserves all asset data including five otherwise orphaned packed staff tiles. Editor session WindowManager/Screen/WorkSpace blocks are excluded; this check does not certify preservation of editor window/layout state. Runtime session IDs and empty renderer-initialized custom-property groups are excluded from semantic comparison."
+}

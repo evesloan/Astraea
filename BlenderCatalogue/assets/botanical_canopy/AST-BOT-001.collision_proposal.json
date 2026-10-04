@@ -1,0 +1,132 @@
+{
+  "status": "PROPOSAL only, not runtime-tested",
+  "coordinate_system": "Blender metres Z up, plant soil pivot Z0",
+  "parts": [
+    {
+      "name": "trunk_segment_1",
+      "shape": "capsule",
+      "endpoint_a_m": [
+        0,
+        0,
+        0
+      ],
+      "endpoint_b_m": [
+        0,
+        0,
+        0.13
+      ],
+      "radius_m": 0.11299999999999999
+    },
+    {
+      "name": "trunk_segment_2",
+      "shape": "capsule",
+      "endpoint_a_m": [
+        0,
+        0,
+        0.13
+      ],
+      "endpoint_b_m": [
+        0.038,
+        0.012,
+        0.32
+      ],
+      "radius_m": 0.10400000000000001
+    },
+    {
+      "name": "trunk_segment_3",
+      "shape": "capsule",
+      "endpoint_a_m": [
+        0.038,
+        0.012,
+        0.32
+      ],
+      "endpoint_b_m": [
+        -0.024,
+        0.034,
+        0.79
+      ],
+      "radius_m": 0.095
+    },
+    {
+      "name": "trunk_segment_4",
+      "shape": "capsule",
+      "endpoint_a_m": [
+        -0.024,
+        0.034,
+        0.79
+      ],
+      "endpoint_b_m": [
+        0.065,
+        0.02,
+        1.22
+      ],
+      "radius_m": 0.07899999999999999
+    },
+    {
+      "name": "trunk_segment_5",
+      "shape": "capsule",
+      "endpoint_a_m": [
+        0.065,
+        0.02,
+        1.22
+      ],
+      "endpoint_b_m": [
+        0.05,
+        0.045,
+        1.53
+      ],
+      "radius_m": 0.066
+    },
+    {
+      "name": "trunk_segment_6",
+      "shape": "capsule",
+      "endpoint_a_m": [
+        0.05,
+        0.045,
+        1.53
+      ],
+      "endpoint_b_m": [
+        0.16,
+        0.07,
+        1.88
+      ],
+      "radius_m": 0.055
+    },
+    {
+      "name": "trunk_segment_7",
+      "shape": "capsule",
+      "endpoint_a_m": [
+        0.16,
+        0.07,
+        1.88
+      ],
+      "endpoint_b_m": [
+        0.12,
+        0.08,
+        2.2
+      ],
+      "radius_m": 0.044
+    },
+    {
+      "name": "trunk_segment_8",
+      "shape": "capsule",
+      "endpoint_a_m": [
+        0.12,
+        0.08,
+        2.2
+      ],
+      "endpoint_b_m": [
+        0.18,
+        0.08,
+        2.45
+      ],
+      "radius_m": 0.028
+    }
+  ],
+  "canopy_collision": false,
+  "limitations": [
+    "Capsule end at soil may extend below Z0; clamp/merge with separately tested planter collision on adoption",
+    "Minor twigs and opaque thin leaves nonblocking proposal",
+    "No game, actor, ceiling, native physics, route or room-fit certification"
+  ]
+}

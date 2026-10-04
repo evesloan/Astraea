@@ -1,0 +1,393 @@
+{
+  "schema": "astraea_d05_component_reference_handoff_v1",
+  "date": "2026-10-02",
+  "purpose": "Portable reference record for the bounded four-component D05 kit; no new hospital study, room allocation, capacity, runtime or access change",
+  "source_priority": "Latest explicit user canon governs when a historical document, illustration, ledger or runtime statement conflicts. This file preserves historical evidence without treating it as the missing current runtime.",
+  "current_canon_overrides": {
+    "guest_units": 1000,
+    "luxury_units_included_in_total": {
+      "deluxe": 50,
+      "premium": 25,
+      "royalty": 5,
+      "supreme": 1
+    },
+    "passenger_hard_cap": 2000,
+    "normal_passengers": [
+      1200,
+      2000
+    ],
+    "crew_including_player": 400,
+    "player_room": "Player shares an existing staff room; historical private-player-room arithmetic is superseded",
+    "unit_allocation_status": "Revised sizes, luxury levels/IDs and final unit mapping remain unresolved; old 300/300/300/100 category arithmetic is not a new allocation."
+  },
+  "sources": [
+    {
+      "key": "medical_blueprint",
+      "filename": "1.png",
+      "audit_relative_path": "sources/1.png",
+      "library_file_id": "libfile_10019fb78188819197691dbcc5f685f1",
+      "title": "Crew + Medical + Engineering + Logistics",
+      "sheet": "4 of 6 / ASW-GV-04",
+      "medical_reference": "D05 Medical & Life Support panel within the broader sheet; not a distinct medical-only image in the surviving supplied set",
+      "printed_version": "v1.0.3",
+      "printed_date": "25.07.04 (as printed; not interpreted as a capture timestamp)",
+      "catalogue_reference": "references/engineering/technical_reference.png",
+      "authority": "Illustrative historical reference; its facility quantities and neighboring deck labels are not adopted current allocations or capacities",
+      "sha256": "6729d6150c305237a7d40285074e3cf28aa1522a8240ad180e2f89746abc6d52"
+    },
+    {
+      "key": "atlas",
+      "filename": "Astraea-current-layout-atlas.pdf",
+      "audit_relative_path": "sources/Astraea-current-layout-atlas.pdf",
+      "library_file_id": "libfile_b9125cc753a481919b12ded74d590b04",
+      "page_one_based": 7,
+      "source_date": "2026-10-01",
+      "authority": "Historical implemented-plan snapshot; allocation rectangles and symbolic door markers, not recovered current room interiors or navigation certification",
+      "sha256": "315c985198f70a08e4fa72bbda29a9b554e53997314aa45e5ec0b51cd24999cc"
+    },
+    {
+      "key": "coverage",
+      "filename": "whole_ship_coverage.json",
+      "audit_relative_path": "extracted/project_docs/architecture/whole_ship_coverage.json",
+      "container_library_file_id": "libfile_362451ac969c8191afbf823122078feb",
+      "registry_capture_utc": "2026-10-01T02:46:31Z",
+      "generated_utc": "2026-10-01T02:54:15+00:00",
+      "authority": "Dated stable IDs, access tags, capacity fields and bounded historical checks; not verification of the missing runtime",
+      "sha256": "3b02b1fdea59ec9ddd7cb66e39bbcfbd6492e0d3e37647eeb6d38b3d370edefe"
+    },
+    {
+      "key": "coverage_explanation",
+      "filename": "WHOLE_SHIP_COVERAGE.md",
+      "audit_relative_path": "extracted/project_docs/architecture/WHOLE_SHIP_COVERAGE.md",
+      "container_library_file_id": "libfile_362451ac969c8191afbf823122078feb",
+      "authority": "Historical coverage and qualification of source evidence",
+      "sha256": "76998f50a82bb9d6278f4a72a67b816cf0b975eeec50fbe3373a9c4d999dc452"
+    },
+    {
+      "key": "ship_design",
+      "filename": "SHIP_DESIGN.md",
+      "audit_relative_path": "extracted/project_docs/SHIP_DESIGN.md",
+      "container_library_file_id": "libfile_362451ac969c8191afbf823122078feb",
+      "authority": "Historical ship programme and route intent; stale capacity/player-room statements are superseded by latest user canon",
+      "sha256": "709fd9f2339c5eef3c93bea223ccc2d01bed24cd3fd89729023c13b777e6b439"
+    },
+    {
+      "key": "species",
+      "filename": "SPECIES_CANON.md",
+      "audit_relative_path": "extracted/project_docs/SPECIES_CANON.md",
+      "container_library_file_id": "libfile_362451ac969c8191afbf823122078feb",
+      "declared_update_date": "2026-10-01",
+      "authority": "Source for the six confirmed species and qualitative traits; historical accommodation arithmetic and runtime-status paragraphs are not current acceptance",
+      "sha256": "6ec4fe36941e96a23cb93479bc1adafc786a9f10cb388647fd7686e3e097c6b2"
+    }
+  ],
+  "existing_d05_programme": [
+    {
+      "stable_id": "D05_clinic0",
+      "name": "Species triage",
+      "kind": "clinic",
+      "historical_allocation_x_m": [
+        -54,
+        -8
+      ],
+      "historical_allocation_z_m": [
+        -466,
+        -398
+      ],
+      "historical_front_door_symbol_xz_m": [
+        -8,
+        -432
+      ],
+      "historical_staff_only": true
+    },
+    {
+      "stable_id": "D05_clinic1",
+      "name": "Medical bay",
+      "kind": "clinic",
+      "historical_allocation_x_m": [
+        8,
+        54
+      ],
+      "historical_allocation_z_m": [
+        -466,
+        -398
+      ],
+      "historical_front_door_symbol_xz_m": [
+        8,
+        -432
+      ],
+      "historical_staff_only": true
+    },
+    {
+      "stable_id": "D05_laboratory2",
+      "name": "Clinical research",
+      "kind": "laboratory",
+      "historical_allocation_x_m": [
+        -54,
+        -8
+      ],
+      "historical_allocation_z_m": [
+        -250,
+        -182
+      ],
+      "historical_front_door_symbol_xz_m": [
+        -8,
+        -216
+      ],
+      "historical_staff_only": true
+    },
+    {
+      "stable_id": "D05_service3",
+      "name": "Pharmacy stores",
+      "kind": "service",
+      "historical_allocation_x_m": [
+        8,
+        54
+      ],
+      "historical_allocation_z_m": [
+        -250,
+        -182
+      ],
+      "historical_front_door_symbol_xz_m": [
+        8,
+        -216
+      ],
+      "historical_staff_only": true
+    },
+    {
+      "stable_id": "D05_clinic4",
+      "name": "Recovery lounge",
+      "kind": "clinic",
+      "historical_allocation_x_m": [
+        -98,
+        -52
+      ],
+      "historical_allocation_z_m": [
+        -34,
+        34
+      ],
+      "historical_front_door_symbol_xz_m": [
+        -52,
+        0
+      ],
+      "historical_staff_only": true
+    },
+    {
+      "stable_id": "D05_laboratory5",
+      "name": "Atmosphere research",
+      "kind": "laboratory",
+      "historical_allocation_x_m": [
+        52,
+        98
+      ],
+      "historical_allocation_z_m": [
+        -34,
+        34
+      ],
+      "historical_front_door_symbol_xz_m": [
+        52,
+        0
+      ],
+      "historical_staff_only": true
+    },
+    {
+      "stable_id": "D05_clinic6",
+      "name": "Consultation pods",
+      "kind": "clinic",
+      "historical_allocation_x_m": [
+        -54,
+        -8
+      ],
+      "historical_allocation_z_m": [
+        182,
+        250
+      ],
+      "historical_front_door_symbol_xz_m": [
+        -8,
+        216
+      ],
+      "historical_staff_only": true
+    },
+    {
+      "stable_id": "D05_clinic7",
+      "name": "Quiet care",
+      "kind": "clinic",
+      "historical_allocation_x_m": [
+        8,
+        54
+      ],
+      "historical_allocation_z_m": [
+        182,
+        250
+      ],
+      "historical_front_door_symbol_xz_m": [
+        8,
+        216
+      ],
+      "historical_staff_only": true
+    },
+    {
+      "stable_id": "D05_laboratory8",
+      "name": "Hydration support",
+      "kind": "laboratory",
+      "historical_allocation_x_m": [
+        -54,
+        -8
+      ],
+      "historical_allocation_z_m": [
+        398,
+        466
+      ],
+      "historical_front_door_symbol_xz_m": [
+        -8,
+        432
+      ],
+      "historical_staff_only": true
+    },
+    {
+      "stable_id": "D05_waiting9",
+      "name": "Family waiting",
+      "kind": "waiting",
+      "historical_allocation_x_m": [
+        8,
+        54
+      ],
+      "historical_allocation_z_m": [
+        398,
+        466
+      ],
+      "historical_front_door_symbol_xz_m": [
+        8,
+        432
+      ],
+      "historical_staff_only": false
+    }
+  ],
+  "recommended_anchor": {
+    "ids": [
+      "D05_clinic0",
+      "D05_clinic1"
+    ],
+    "relationship": "Forward opposing triage and medical allocations at Townline Z-432. Use these as the evidence-backed programme context for the component kit, not a recovered final room fit.",
+    "distributed_programme_warning": "Pharmacy/Clinical research lie at Z-216, Recovery/Atmosphere at the central atrium, Consultation/Quiet care at Z+216, and Hydration/Family waiting at Z+432. Family waiting is 864m longitudinally from the forward pair and must not be silently relocated beside triage."
+  },
+  "staff_access_history_and_guest_care_intent": {
+    "dated_implementation": "The first nine D05 records are staff_only=true; D05_waiting9 is staff_only=false. These are historical implementation tags.",
+    "design_intent": "Guests may receive staff-assisted care. The historical staff-only tags do not mean the design forbids guest care. Exact escort, admission, privacy and operational access flows remain unresolved.",
+    "boundary": "This component handoff does not change access flags, establish autonomous clinical operation or claim verified guest admission."
+  },
+  "arrival_and_service_evidence": {
+    "forward_townline_stop_xz_m": [
+      0,
+      -432
+    ],
+    "sidewalk_center_x_m": [
+      -5.5,
+      5.5
+    ],
+    "sidewalk_drawn_width_m": 4.6,
+    "service_staff_colored_ribbon_center_x_m": [
+      -57,
+      57
+    ],
+    "colored_ribbon_drawn_width_m": 5,
+    "colored_ribbon_role": "Service-route interpretation from matching legend color; not independently certified navigation or built clear width. Underlying line primitives do not prove a route through later drawn room allocations.",
+    "known_front_interfaces": "Door symbols listed per room are location markers, not clear apertures. Preserve them pending host reconciliation.",
+    "unknown_interfaces": [
+      "Forward boarding/egress vestibule",
+      "Rear clinical service-door positions, clear spans and connectors",
+      "Moving leaf strokes, pockets/cassettes and head reservations",
+      "Cart parking/turning and staff-assisted guest access"
+    ],
+    "central_room_constraint": "Recovery lounge and Atmosphere research address the protected atrium perimeter; do not invent a new bridge, floor opening or unrestricted middle passage."
+  },
+  "section_and_geometry_limits": {
+    "D05_floor_y_m": 21,
+    "D06_floor_y_m": 27,
+    "floor_interval_m": 6,
+    "usable_clear_height_m": null,
+    "allocation_rectangle_xz_m": [
+      46,
+      68
+    ],
+    "allocation_meaning": "Historical registry envelopes only; not final wall/ceiling polygons, treatment-bay subdivisions or free furnishing areas",
+    "new_component_dimensions": "Adjustable design proposals for a labelled inspection arrangement; every placement, footprint, height, opening and movement reservation requires its own bounded screen. No earlier salon/landing dimensions transfer.",
+    "unresolved": [
+      "Final enclosing walls and privacy geometry",
+      "Ceilings, structure and support",
+      "Clinical subdivisions and actual fixtures",
+      "Door mechanisms and complete staff/guest routes",
+      "Species contact and treatment suitability"
+    ]
+  },
+  "historical_capacity_warning": {
+    "medical_blueprint_quantities": {
+      "general_beds": 20,
+      "surgical_suites": 4,
+      "quarantine_rooms": 12,
+      "species_triage_pods": 8,
+      "medical_laboratories": 6,
+      "pharmacy_and_xenomed_storage": 2
+    },
+    "status": "Printed older illustration quantities, not reconciled current clinical capacities or permission to add facilities. Treatment furnishings add no guest residential berths."
+  },
+  "historical_route_evidence": {
+    "snapshot_utc": "2026-10-01T01:35:12Z",
+    "D05_waiting9_broad_0_65m_route": "failed at that historical snapshot",
+    "other_nine_D05_broad_0_65m_routes": "passed the recorded historical samples",
+    "individual_dynamic_loaded_cart_routes": "not tested individually",
+    "qualification": "No current missing-runtime verdict or universal species/body clearance follows; later unrelated D09/crew repairs do not establish a D05 Family waiting repair."
+  },
+  "species_traits_and_design_cautions": [
+    {
+      "species": "Koblins",
+      "source_traits": "Small goblinoids; large families; no extraordinary needs specified",
+      "caution": "Consider accompaniment; small size does not mean children. Body and household dimensions remain unassigned."
+    },
+    {
+      "species": "Mantelids",
+      "source_traits": "Reserved insectoids; quiet cocoons; gruesome molting",
+      "caution": "Support controllable visual/acoustic privacy. Do not infer infection, care procedures or a medical game from molting."
+    },
+    {
+      "species": "Humans",
+      "source_traits": "Confirmed in the six-species roster",
+      "caution": "The fictional kit does not certify human treatment suitability."
+    },
+    {
+      "species": "Baelins",
+      "source_traits": "Soft gelatinous cartilage; aquatic accommodation needs; oily/gooey trails",
+      "caution": "Support/contact, transfers, water and cleaner compatibility remain unverified."
+    },
+    {
+      "species": "Munkos",
+      "source_traits": "Four arms; extreme appetite",
+      "caution": "Four-arm contact/reach needs later testing; numerical bodies and medical fit remain unknown."
+    },
+    {
+      "species": "Mindos",
+      "source_traits": "Synthetic hardware; recognized sentient personhood",
+      "caution": "Respect privacy and agency. No charging ports, fuel, biology or treatment needs are established."
+    }
+  ],
+  "bounded_four_function_kit": [
+    {
+      "function": "Calm controllable-privacy arrival return",
+      "purpose": "Legible triage/medical approach with view control and staff-assisted care context; avoid an inferred core-spanning header or fixed host doorway."
+    },
+    {
+      "function": "Clinical wash and supply bay",
+      "purpose": "Fictional support interface with fluid, cleaner, service connection and species compatibility left unassigned."
+    },
+    {
+      "function": "Adaptable examination-support furnishing",
+      "purpose": "Useful support/contact composition; transfer, load, species fit and treatment suitability remain explicitly unverified rather than defaulting to a human treatment bed."
+    },
+    {
+      "function": "Distinct medical supply and stow trolley",
+      "purpose": "Clinical support furnishing distinct from the player cleaning cart; storage access, parking and turning require bounded component checks."
+    }
+  ],
+  "change_status": "Reference handoff only. No original project, catalogue, room IDs, capacities, access flags, runtime geometry or planning allocations changed.",
+  "d05_capacity_status": "All ten whole-room occupancy limits and all six tracked numeric capacity fields are null in the dated ledger: unknown, not zero."
+}

@@ -1,0 +1,373 @@
+{
+  "scope": "R3-guided proposed landing component arrangement. Original host and working lift remain missing.",
+  "baseline_commit": "62ad3577716127bfc419cddbb90fe5abf85b487e",
+  "inspection_coordinates": "ship(x,y,z)=(BlenderX-44,BlenderZ,-BlenderY-378); Y is relative to an unverified local finished-floor datum",
+  "input_ledger": "references/landings/R3_constraint_ledger.json",
+  "input_ledger_sha256": "057fe44c8405c6a16df6aa005bd8aa4a864e4bd63c649f2ae4acb67ab7aa4a68",
+  "items": [
+    {
+      "key": "guest_directory",
+      "catalogue_id": "AST-LND-001",
+      "path": "assets/landing_guest/exports/AST-LND-001.glb",
+      "source_path": "assets/landing_guest/source/AST-LND-001.blend",
+      "manifest_path": "assets/landing_guest/AST-LND-001.manifest.json",
+      "ship_origin_m": [
+        -39.2,
+        0,
+        -377.15
+      ],
+      "inspection_source_origin_m": [
+        4.799999999999997,
+        -0.8500000000000227,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "candidate_ship_bounds_m": {
+        "min": [
+          -39.9,
+          0,
+          -377.8
+        ],
+        "max": [
+          -38.5,
+          2.8,
+          -377.15
+        ]
+      },
+      "height_kind": "new component design target only, not host headroom"
+    },
+    {
+      "key": "guest_waiting",
+      "catalogue_id": "AST-LND-002",
+      "path": "assets/landing_guest/exports/AST-LND-002.glb",
+      "source_path": "assets/landing_guest/source/AST-LND-002.blend",
+      "manifest_path": "assets/landing_guest/AST-LND-002.manifest.json",
+      "ship_origin_m": [
+        -34.8,
+        0,
+        -377.05
+      ],
+      "inspection_source_origin_m": [
+        9.200000000000003,
+        -0.9499999999999886,
+        0
+      ],
+      "source_z_rotation_deg": 0,
+      "candidate_ship_bounds_m": {
+        "min": [
+          -35.5,
+          0,
+          -377.8
+        ],
+        "max": [
+          -34.1,
+          1.05,
+          -377.05
+        ]
+      },
+      "height_kind": "new component design target only, not host headroom"
+    },
+    {
+      "key": "staff_return",
+      "catalogue_id": "AST-LND-003",
+      "path": "assets/landing_service/exports/AST-LND-003.glb",
+      "source_path": "assets/landing_service/source/AST-LND-003.blend",
+      "manifest_path": "assets/landing_service/AST-LND-003.manifest.json",
+      "ship_origin_m": [
+        -48.55,
+        0,
+        -377.05
+      ],
+      "inspection_source_origin_m": [
+        -4.549999999999997,
+        -0.9499999999999886,
+        0
+      ],
+      "source_z_rotation_deg": -90,
+      "candidate_ship_bounds_m": {
+        "min": [
+          -48.55,
+          0,
+          -377.7
+        ],
+        "max": [
+          -48.1,
+          2.5,
+          -376.4
+        ]
+      },
+      "height_kind": "new component design target only, not host headroom"
+    },
+    {
+      "key": "staff_stow",
+      "catalogue_id": "AST-LND-004",
+      "path": "assets/landing_service/exports/AST-LND-004.glb",
+      "source_path": "assets/landing_service/source/AST-LND-004.blend",
+      "manifest_path": "assets/landing_service/AST-LND-004.manifest.json",
+      "ship_origin_m": [
+        -48.95,
+        0,
+        -375.55
+      ],
+      "inspection_source_origin_m": [
+        -4.950000000000003,
+        -2.4499999999999886,
+        0
+      ],
+      "source_z_rotation_deg": -90,
+      "candidate_ship_bounds_m": {
+        "min": [
+          -48.95,
+          0,
+          -376.3
+        ],
+        "max": [
+          -48.2,
+          1.05,
+          -374.8
+        ]
+      },
+      "height_kind": "new component design target only, not host headroom"
+    }
+  ],
+  "empty_plan_reservations": [
+    {
+      "name": "guest_central_approach",
+      "ship_x": [
+        -38.4,
+        -35.6
+      ],
+      "ship_z": [
+        -378,
+        -374
+      ]
+    },
+    {
+      "name": "guest_front_turn_strip",
+      "ship_x": [
+        -40,
+        -34
+      ],
+      "ship_z": [
+        -375,
+        -374
+      ]
+    },
+    {
+      "name": "staff_west_approach_turn",
+      "ship_x": [
+        -54,
+        -49.2
+      ],
+      "ship_z": [
+        -378,
+        -374
+      ]
+    },
+    {
+      "name": "residential_lane",
+      "ship_x": [
+        -46,
+        -42
+      ],
+      "ship_z": [
+        -541,
+        -80
+      ],
+      "evidence_kind": "Historical drawing reserve, actual built clearance unverified"
+    },
+    {
+      "name": "shared_cross_street",
+      "ship_x": [
+        -110,
+        110
+      ],
+      "ship_z": [
+        -374,
+        -366
+      ]
+    },
+    {
+      "name": "D12_staff_ribbon",
+      "ship_x": [
+        -59.5,
+        -54.5
+      ],
+      "ship_z": [
+        -541,
+        541
+      ],
+      "evidence_kind": "Service-route interpretation from service/staff legend color; vector position/width explicit, built clearance unverified"
+    }
+  ],
+  "context": [
+    {
+      "key": "guest_sconce",
+      "parent": "guest_directory",
+      "catalogue_id": "AST-GST-002",
+      "path": "assets/guest_use/exports/AST-GST-002.glb",
+      "parent_local_source_matrix": [
+        [
+          1,
+          0,
+          0,
+          0.49
+        ],
+        [
+          0,
+          1,
+          0,
+          0.47
+        ],
+        [
+          0,
+          0,
+          1,
+          1.93
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "declared_placement_source": "assets/landing_guest/qa_context_placements.json",
+      "counted_as_new": false
+    },
+    {
+      "key": "staff_fixture",
+      "parent": "staff_return",
+      "catalogue_id": "AST-STF-006",
+      "path": "assets/staff_overhead/exports/AST-STF-006.glb",
+      "parent_local_source_matrix": [
+        [
+          1,
+          0,
+          0,
+          -0.6
+        ],
+        [
+          0,
+          1,
+          0,
+          0.2
+        ],
+        [
+          0,
+          0,
+          1,
+          2.47
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "declared_placement_source": "assets/landing_service/interface_api.json",
+      "counted_as_new": false
+    }
+  ],
+  "unknown_host_dimensions": {
+    "guest_clear_aperture_m": null,
+    "service_clear_aperture_m": null,
+    "leaf_stroke_m": null,
+    "cassette_depth_m": null,
+    "head_reservation_m": null,
+    "ceiling_height_m": null,
+    "floor_support": null,
+    "pit_support": null
+  },
+  "actor_cart_species_or_mechanism_acceptance": false,
+  "views": {
+    "guest_arrival_standing": {
+      "source_eye_m": [
+        7,
+        -7,
+        1.65
+      ],
+      "source_target_m": [
+        7,
+        -0.6,
+        1.4
+      ],
+      "lens_mm": 22,
+      "keys": [
+        "guest_directory",
+        "guest_waiting",
+        "guest_sconce"
+      ],
+      "full_component_frame": true,
+      "meaning": "Standing approach toward two proposed outboard guest interfaces. Core-facing strip remains empty; no original door/core geometry is shown."
+    },
+    "guest_waiting_directory": {
+      "source_eye_m": [
+        8.910000000000004,
+        -0.7799999999999886,
+        1.19
+      ],
+      "source_target_m": [
+        4.9,
+        -0.5,
+        1.5
+      ],
+      "lens_mm": 30,
+      "keys": [
+        "guest_directory",
+        "guest_sconce"
+      ],
+      "full_component_frame": false,
+      "meaning": "Author-declared nonphysical waiting-eye proposal looking toward the inward-canted directory. No species or actor fit."
+    },
+    "staff_side_arrival": {
+      "source_eye_m": [
+        -10.5,
+        -2,
+        1.65
+      ],
+      "source_target_m": [
+        -4.35,
+        -1.9,
+        1.2
+      ],
+      "lens_mm": 28,
+      "keys": [
+        "staff_return",
+        "staff_stow",
+        "staff_fixture"
+      ],
+      "full_component_frame": true,
+      "meaning": "Standing west-side arrival showing practical control/service edge while preserving the empty lateral approach."
+    },
+    "staff_inspection_use": {
+      "source_eye_m": [
+        -5.7,
+        -2.45,
+        1.65
+      ],
+      "source_target_m": [
+        -4.4,
+        -2.45,
+        0.9
+      ],
+      "lens_mm": 24,
+      "keys": [
+        "staff_stow"
+      ],
+      "full_component_frame": false,
+      "meaning": "Ordinary-height close work-surface/retrieval view, deliberately partial context; no actor or operating behavior."
+    }
+  },
+  "author_interface_inputs": [
+    {
+      "path": "assets/landing_guest/qa_context_placements.json",
+      "sha256": "cff866e35676fac866163889beaf92a09c99f4dceb0e5248c7b637a54a8d9c60"
+    },
+    {
+      "path": "assets/landing_service/interface_api.json",
+      "sha256": "48ad5e08af58989c91917b6be0777f62129348f6350a850c9fc2be27102f6b55"
+    }
+  ]
+}

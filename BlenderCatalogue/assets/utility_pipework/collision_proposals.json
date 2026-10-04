@@ -1,0 +1,857 @@
+{
+  "AST-ENG-004": {
+    "source_frame": "Blender Z-up asset source, metres",
+    "exchange_frame": "GLB Y-up asset exchange, metres",
+    "proposal": "static triangle mesh using exported shell geometry; retain openings. Do not replace entire asset by a convex hull or box. Separate wheel mesh if interactive.",
+    "geometry_source": "matching exports/AST-ENG-004.glb",
+    "preserve_open_bore_diameter_m": 0.16,
+    "pipe_outer_diameter_m": 0.2,
+    "port_records": [
+      {
+        "name": "INLET",
+        "interface_revision": "utility-port-01",
+        "datum": "bare front mating-face centre; hardware lies behind this plane",
+        "source_frame": "Blender Z-up asset source, metres",
+        "position_blender_source_m": [
+          0,
+          0,
+          0
+        ],
+        "normal_blender_source": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "radial_zero_blender_source": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "exchange_frame": "GLB Y-up asset exchange, metres",
+        "position_gltf_yup_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "normal_gltf_yup": [
+          -1.0,
+          0.0,
+          -0.0
+        ],
+        "radial_zero_gltf_yup": [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        "bore_diameter_m": 0.16,
+        "pipe_outer_diameter_m": 0.2,
+        "flange_outer_diameter_m": 0.32,
+        "flange_thickness_m": 0.035,
+        "bolt_circle_diameter_m": 0.26,
+        "bolt_hole_diameter_m": 0.018,
+        "bolt_count": 6,
+        "bolt_centres_blender_source_m": [
+          [
+            0.0,
+            0.0,
+            0.12999999523162842
+          ],
+          [
+            0.0,
+            0.11258329451084137,
+            0.06499999761581421
+          ],
+          [
+            0.0,
+            0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.0,
+            1.5920407760118202e-17,
+            -0.12999999523162842
+          ],
+          [
+            0.0,
+            -0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.0,
+            -0.11258329451084137,
+            0.06499999761581421
+          ]
+        ],
+        "bolt_centres_gltf_yup_m": [
+          [
+            0.0,
+            0.12999999523162842,
+            -0.0
+          ],
+          [
+            0.0,
+            0.06499999761581421,
+            -0.11258329451084137
+          ],
+          [
+            0.0,
+            -0.06499999761581421,
+            -0.11258329451084137
+          ],
+          [
+            0.0,
+            -0.12999999523162842,
+            -1.5920407760118202e-17
+          ],
+          [
+            0.0,
+            -0.06499999761581421,
+            0.11258329451084137
+          ],
+          [
+            0.0,
+            0.06499999761581421,
+            0.11258329451084137
+          ]
+        ],
+        "neck_back_offset_m": -0.095,
+        "hardware_axial_bounds_relative_face_m": [
+          -0.056,
+          -0.006
+        ],
+        "mating_rule": "coincident bare annular front faces; opposed normals; matched six-hole pattern",
+        "marker_axis_convention": "marker local axes remain aligned with Blender asset-source axes; outward direction is the explicit normal field, not marker local Z",
+        "status": "artistic modular connection proposal, no real operating rating"
+      },
+      {
+        "name": "OUTLET",
+        "interface_revision": "utility-port-01",
+        "datum": "bare front mating-face centre; hardware lies behind this plane",
+        "source_frame": "Blender Z-up asset source, metres",
+        "position_blender_source_m": [
+          0.8,
+          0,
+          0
+        ],
+        "normal_blender_source": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "radial_zero_blender_source": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "exchange_frame": "GLB Y-up asset exchange, metres",
+        "position_gltf_yup_m": [
+          0.8,
+          0.0,
+          0.0
+        ],
+        "normal_gltf_yup": [
+          1.0,
+          0.0,
+          -0.0
+        ],
+        "radial_zero_gltf_yup": [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        "bore_diameter_m": 0.16,
+        "pipe_outer_diameter_m": 0.2,
+        "flange_outer_diameter_m": 0.32,
+        "flange_thickness_m": 0.035,
+        "bolt_circle_diameter_m": 0.26,
+        "bolt_hole_diameter_m": 0.018,
+        "bolt_count": 6,
+        "bolt_centres_blender_source_m": [
+          [
+            0.800000011920929,
+            0.0,
+            0.12999999523162842
+          ],
+          [
+            0.800000011920929,
+            -0.11258329451084137,
+            0.06499999761581421
+          ],
+          [
+            0.800000011920929,
+            -0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.800000011920929,
+            -1.5920407760118202e-17,
+            -0.12999999523162842
+          ],
+          [
+            0.800000011920929,
+            0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.800000011920929,
+            0.11258329451084137,
+            0.06499999761581421
+          ]
+        ],
+        "bolt_centres_gltf_yup_m": [
+          [
+            0.800000011920929,
+            0.12999999523162842,
+            -0.0
+          ],
+          [
+            0.800000011920929,
+            0.06499999761581421,
+            0.11258329451084137
+          ],
+          [
+            0.800000011920929,
+            -0.06499999761581421,
+            0.11258329451084137
+          ],
+          [
+            0.800000011920929,
+            -0.12999999523162842,
+            1.5920407760118202e-17
+          ],
+          [
+            0.800000011920929,
+            -0.06499999761581421,
+            -0.11258329451084137
+          ],
+          [
+            0.800000011920929,
+            0.06499999761581421,
+            -0.11258329451084137
+          ]
+        ],
+        "neck_back_offset_m": -0.095,
+        "hardware_axial_bounds_relative_face_m": [
+          -0.056,
+          -0.006
+        ],
+        "mating_rule": "coincident bare annular front faces; opposed normals; matched six-hole pattern",
+        "marker_axis_convention": "marker local axes remain aligned with Blender asset-source axes; outward direction is the explicit normal field, not marker local Z",
+        "status": "artistic modular connection proposal, no real operating rating"
+      }
+    ],
+    "moving_part": null,
+    "wheel_axes_and_pivot": [],
+    "status": "unimplemented proposal; receiving engine scale, contact tolerances and dynamic collision pending"
+  },
+  "AST-ENG-005": {
+    "source_frame": "Blender Z-up asset source, metres",
+    "exchange_frame": "GLB Y-up asset exchange, metres",
+    "proposal": "static triangle mesh using exported shell geometry; retain openings. Do not replace entire asset by a convex hull or box. Separate wheel mesh if interactive.",
+    "geometry_source": "matching exports/AST-ENG-005.glb",
+    "preserve_open_bore_diameter_m": 0.16,
+    "pipe_outer_diameter_m": 0.2,
+    "port_records": [
+      {
+        "name": "INLET",
+        "interface_revision": "utility-port-01",
+        "datum": "bare front mating-face centre; hardware lies behind this plane",
+        "source_frame": "Blender Z-up asset source, metres",
+        "position_blender_source_m": [
+          0,
+          0,
+          0
+        ],
+        "normal_blender_source": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "radial_zero_blender_source": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "exchange_frame": "GLB Y-up asset exchange, metres",
+        "position_gltf_yup_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "normal_gltf_yup": [
+          -1.0,
+          0.0,
+          -0.0
+        ],
+        "radial_zero_gltf_yup": [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        "bore_diameter_m": 0.16,
+        "pipe_outer_diameter_m": 0.2,
+        "flange_outer_diameter_m": 0.32,
+        "flange_thickness_m": 0.035,
+        "bolt_circle_diameter_m": 0.26,
+        "bolt_hole_diameter_m": 0.018,
+        "bolt_count": 6,
+        "bolt_centres_blender_source_m": [
+          [
+            0.0,
+            0.0,
+            0.12999999523162842
+          ],
+          [
+            0.0,
+            0.11258329451084137,
+            0.06499999761581421
+          ],
+          [
+            0.0,
+            0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.0,
+            1.5920407760118202e-17,
+            -0.12999999523162842
+          ],
+          [
+            0.0,
+            -0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.0,
+            -0.11258329451084137,
+            0.06499999761581421
+          ]
+        ],
+        "bolt_centres_gltf_yup_m": [
+          [
+            0.0,
+            0.12999999523162842,
+            -0.0
+          ],
+          [
+            0.0,
+            0.06499999761581421,
+            -0.11258329451084137
+          ],
+          [
+            0.0,
+            -0.06499999761581421,
+            -0.11258329451084137
+          ],
+          [
+            0.0,
+            -0.12999999523162842,
+            -1.5920407760118202e-17
+          ],
+          [
+            0.0,
+            -0.06499999761581421,
+            0.11258329451084137
+          ],
+          [
+            0.0,
+            0.06499999761581421,
+            0.11258329451084137
+          ]
+        ],
+        "neck_back_offset_m": -0.095,
+        "hardware_axial_bounds_relative_face_m": [
+          -0.056,
+          -0.006
+        ],
+        "mating_rule": "coincident bare annular front faces; opposed normals; matched six-hole pattern",
+        "marker_axis_convention": "marker local axes remain aligned with Blender asset-source axes; outward direction is the explicit normal field, not marker local Z",
+        "status": "artistic modular connection proposal, no real operating rating"
+      },
+      {
+        "name": "OUTLET",
+        "interface_revision": "utility-port-01",
+        "datum": "bare front mating-face centre; hardware lies behind this plane",
+        "source_frame": "Blender Z-up asset source, metres",
+        "position_blender_source_m": [
+          0.5700000000000001,
+          0.5700000000000001,
+          0
+        ],
+        "normal_blender_source": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "radial_zero_blender_source": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "exchange_frame": "GLB Y-up asset exchange, metres",
+        "position_gltf_yup_m": [
+          0.5700000000000001,
+          0.0,
+          -0.5700000000000001
+        ],
+        "normal_gltf_yup": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "radial_zero_gltf_yup": [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        "bore_diameter_m": 0.16,
+        "pipe_outer_diameter_m": 0.2,
+        "flange_outer_diameter_m": 0.32,
+        "flange_thickness_m": 0.035,
+        "bolt_circle_diameter_m": 0.26,
+        "bolt_hole_diameter_m": 0.018,
+        "bolt_count": 6,
+        "bolt_centres_blender_source_m": [
+          [
+            0.5699999928474426,
+            0.5699999928474426,
+            0.12999999523162842
+          ],
+          [
+            0.6825832724571228,
+            0.5699999928474426,
+            0.06499999761581421
+          ],
+          [
+            0.6825832724571228,
+            0.5699999928474426,
+            -0.06499999761581421
+          ],
+          [
+            0.5699999928474426,
+            0.5699999928474426,
+            -0.12999999523162842
+          ],
+          [
+            0.45741671323776245,
+            0.5699999928474426,
+            -0.06499999761581421
+          ],
+          [
+            0.45741671323776245,
+            0.5699999928474426,
+            0.06499999761581421
+          ]
+        ],
+        "bolt_centres_gltf_yup_m": [
+          [
+            0.5699999928474426,
+            0.12999999523162842,
+            -0.5699999928474426
+          ],
+          [
+            0.6825832724571228,
+            0.06499999761581421,
+            -0.5699999928474426
+          ],
+          [
+            0.6825832724571228,
+            -0.06499999761581421,
+            -0.5699999928474426
+          ],
+          [
+            0.5699999928474426,
+            -0.12999999523162842,
+            -0.5699999928474426
+          ],
+          [
+            0.45741671323776245,
+            -0.06499999761581421,
+            -0.5699999928474426
+          ],
+          [
+            0.45741671323776245,
+            0.06499999761581421,
+            -0.5699999928474426
+          ]
+        ],
+        "neck_back_offset_m": -0.095,
+        "hardware_axial_bounds_relative_face_m": [
+          -0.056,
+          -0.006
+        ],
+        "mating_rule": "coincident bare annular front faces; opposed normals; matched six-hole pattern",
+        "marker_axis_convention": "marker local axes remain aligned with Blender asset-source axes; outward direction is the explicit normal field, not marker local Z",
+        "status": "artistic modular connection proposal, no real operating rating"
+      }
+    ],
+    "moving_part": null,
+    "wheel_axes_and_pivot": [],
+    "status": "unimplemented proposal; receiving engine scale, contact tolerances and dynamic collision pending"
+  },
+  "AST-ENG-006": {
+    "source_frame": "Blender Z-up asset source, metres",
+    "exchange_frame": "GLB Y-up asset exchange, metres",
+    "proposal": "static triangle mesh using exported shell geometry; retain openings. Do not replace entire asset by a convex hull or box. Separate wheel mesh if interactive.",
+    "geometry_source": "matching exports/AST-ENG-006.glb",
+    "preserve_open_bore_diameter_m": 0.16,
+    "pipe_outer_diameter_m": 0.2,
+    "port_records": [
+      {
+        "name": "INLET",
+        "interface_revision": "utility-port-01",
+        "datum": "bare front mating-face centre; hardware lies behind this plane",
+        "source_frame": "Blender Z-up asset source, metres",
+        "position_blender_source_m": [
+          0,
+          0,
+          0
+        ],
+        "normal_blender_source": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "radial_zero_blender_source": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "exchange_frame": "GLB Y-up asset exchange, metres",
+        "position_gltf_yup_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "normal_gltf_yup": [
+          -1.0,
+          0.0,
+          -0.0
+        ],
+        "radial_zero_gltf_yup": [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        "bore_diameter_m": 0.16,
+        "pipe_outer_diameter_m": 0.2,
+        "flange_outer_diameter_m": 0.32,
+        "flange_thickness_m": 0.035,
+        "bolt_circle_diameter_m": 0.26,
+        "bolt_hole_diameter_m": 0.018,
+        "bolt_count": 6,
+        "bolt_centres_blender_source_m": [
+          [
+            0.0,
+            0.0,
+            0.12999999523162842
+          ],
+          [
+            0.0,
+            0.11258329451084137,
+            0.06499999761581421
+          ],
+          [
+            0.0,
+            0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.0,
+            1.5920407760118202e-17,
+            -0.12999999523162842
+          ],
+          [
+            0.0,
+            -0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.0,
+            -0.11258329451084137,
+            0.06499999761581421
+          ]
+        ],
+        "bolt_centres_gltf_yup_m": [
+          [
+            0.0,
+            0.12999999523162842,
+            -0.0
+          ],
+          [
+            0.0,
+            0.06499999761581421,
+            -0.11258329451084137
+          ],
+          [
+            0.0,
+            -0.06499999761581421,
+            -0.11258329451084137
+          ],
+          [
+            0.0,
+            -0.12999999523162842,
+            -1.5920407760118202e-17
+          ],
+          [
+            0.0,
+            -0.06499999761581421,
+            0.11258329451084137
+          ],
+          [
+            0.0,
+            0.06499999761581421,
+            0.11258329451084137
+          ]
+        ],
+        "neck_back_offset_m": -0.095,
+        "hardware_axial_bounds_relative_face_m": [
+          -0.056,
+          -0.006
+        ],
+        "mating_rule": "coincident bare annular front faces; opposed normals; matched six-hole pattern",
+        "marker_axis_convention": "marker local axes remain aligned with Blender asset-source axes; outward direction is the explicit normal field, not marker local Z",
+        "status": "artistic modular connection proposal, no real operating rating"
+      },
+      {
+        "name": "OUTLET",
+        "interface_revision": "utility-port-01",
+        "datum": "bare front mating-face centre; hardware lies behind this plane",
+        "source_frame": "Blender Z-up asset source, metres",
+        "position_blender_source_m": [
+          0.65,
+          0,
+          0
+        ],
+        "normal_blender_source": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "radial_zero_blender_source": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "exchange_frame": "GLB Y-up asset exchange, metres",
+        "position_gltf_yup_m": [
+          0.65,
+          0.0,
+          0.0
+        ],
+        "normal_gltf_yup": [
+          1.0,
+          0.0,
+          -0.0
+        ],
+        "radial_zero_gltf_yup": [
+          0.0,
+          1.0,
+          -0.0
+        ],
+        "bore_diameter_m": 0.16,
+        "pipe_outer_diameter_m": 0.2,
+        "flange_outer_diameter_m": 0.32,
+        "flange_thickness_m": 0.035,
+        "bolt_circle_diameter_m": 0.26,
+        "bolt_hole_diameter_m": 0.018,
+        "bolt_count": 6,
+        "bolt_centres_blender_source_m": [
+          [
+            0.6499999761581421,
+            0.0,
+            0.12999999523162842
+          ],
+          [
+            0.6499999761581421,
+            -0.11258329451084137,
+            0.06499999761581421
+          ],
+          [
+            0.6499999761581421,
+            -0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.6499999761581421,
+            -1.5920407760118202e-17,
+            -0.12999999523162842
+          ],
+          [
+            0.6499999761581421,
+            0.11258329451084137,
+            -0.06499999761581421
+          ],
+          [
+            0.6499999761581421,
+            0.11258329451084137,
+            0.06499999761581421
+          ]
+        ],
+        "bolt_centres_gltf_yup_m": [
+          [
+            0.6499999761581421,
+            0.12999999523162842,
+            -0.0
+          ],
+          [
+            0.6499999761581421,
+            0.06499999761581421,
+            0.11258329451084137
+          ],
+          [
+            0.6499999761581421,
+            -0.06499999761581421,
+            0.11258329451084137
+          ],
+          [
+            0.6499999761581421,
+            -0.12999999523162842,
+            1.5920407760118202e-17
+          ],
+          [
+            0.6499999761581421,
+            -0.06499999761581421,
+            -0.11258329451084137
+          ],
+          [
+            0.6499999761581421,
+            0.06499999761581421,
+            -0.11258329451084137
+          ]
+        ],
+        "neck_back_offset_m": -0.095,
+        "hardware_axial_bounds_relative_face_m": [
+          -0.056,
+          -0.006
+        ],
+        "mating_rule": "coincident bare annular front faces; opposed normals; matched six-hole pattern",
+        "marker_axis_convention": "marker local axes remain aligned with Blender asset-source axes; outward direction is the explicit normal field, not marker local Z",
+        "status": "artistic modular connection proposal, no real operating rating"
+      }
+    ],
+    "moving_part": "VALVE_CONTROL_WHEEL",
+    "wheel_axes_and_pivot": [
+      {
+        "metadata_revision": "utility-wheel-frame-01",
+        "source_frame": "Blender Z-up asset source, metres",
+        "exchange_frame": "GLB Y-up asset exchange, metres",
+        "pivot_blender_source_m": [
+          0.325,
+          0,
+          0.466
+        ],
+        "pivot_gltf_yup_m": [
+          0.325,
+          0.466,
+          0.0
+        ],
+        "wheel_axis_blender_source": [
+          0,
+          0,
+          1
+        ],
+        "wheel_axis_gltf_yup": [
+          0,
+          1,
+          0
+        ],
+        "grip_records": [
+          {
+            "name": "wheel_grip_1",
+            "kind": "physical grip centreline, not pose centre",
+            "position_blender_source_m": [
+              0.49,
+              0.0,
+              0.466
+            ],
+            "position_gltf_yup_m": [
+              0.49,
+              0.466,
+              -0.0
+            ],
+            "grip_minor_radius_m": 0.015
+          },
+          {
+            "name": "wheel_grip_2",
+            "kind": "physical grip centreline, not pose centre",
+            "position_blender_source_m": [
+              0.40750000000000003,
+              0.14289419162443237,
+              0.466
+            ],
+            "position_gltf_yup_m": [
+              0.40750000000000003,
+              0.466,
+              -0.14289419162443237
+            ],
+            "grip_minor_radius_m": 0.015
+          },
+          {
+            "name": "wheel_grip_3",
+            "kind": "physical grip centreline, not pose centre",
+            "position_blender_source_m": [
+              0.24250000000000005,
+              0.1428941916244324,
+              0.466
+            ],
+            "position_gltf_yup_m": [
+              0.24250000000000005,
+              0.466,
+              -0.1428941916244324
+            ],
+            "grip_minor_radius_m": 0.015
+          },
+          {
+            "name": "wheel_grip_4",
+            "kind": "physical grip centreline, not pose centre",
+            "position_blender_source_m": [
+              0.16,
+              2.020667218593133e-17,
+              0.466
+            ],
+            "position_gltf_yup_m": [
+              0.16,
+              0.466,
+              -2.020667218593133e-17
+            ],
+            "grip_minor_radius_m": 0.015
+          },
+          {
+            "name": "wheel_grip_5",
+            "kind": "physical grip centreline, not pose centre",
+            "position_blender_source_m": [
+              0.24249999999999994,
+              -0.14289419162443234,
+              0.466
+            ],
+            "position_gltf_yup_m": [
+              0.24249999999999994,
+              0.466,
+              0.14289419162443234
+            ],
+            "grip_minor_radius_m": 0.015
+          },
+          {
+            "name": "wheel_grip_6",
+            "kind": "physical grip centreline, not pose centre",
+            "position_blender_source_m": [
+              0.40750000000000003,
+              -0.14289419162443237,
+              0.466
+            ],
+            "position_gltf_yup_m": [
+              0.40750000000000003,
+              0.466,
+              0.14289419162443237
+            ],
+            "grip_minor_radius_m": 0.015
+          }
+        ],
+        "default_visual_pose": "Open bore geometric inspection state",
+        "motion_scope": "Rotatable wheel mesh only; no rig, valve travel mapping or simulation"
+      }
+    ],
+    "status": "unimplemented proposal; receiving engine scale, contact tolerances and dynamic collision pending"
+  }
+}

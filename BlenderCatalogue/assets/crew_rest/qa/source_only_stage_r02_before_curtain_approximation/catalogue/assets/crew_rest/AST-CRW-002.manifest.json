@@ -1,0 +1,167 @@
+{
+  "catalogue_id": "AST-CRW-002",
+  "title": "Supported individual crew privacy curtain and track",
+  "unique_design": true,
+  "script_assisted_original_design": true,
+  "source": "source/AST-CRW-002.blend",
+  "export": "exports/AST-CRW-002.glb",
+  "generator": "source/build_crew_rest.py",
+  "dimension_adjustment": "Editable semantic meshes and generator coordinates; summary fields are not live dimension controls. Resizing requires coordinated interface/collision review.",
+  "source_coordinates": {
+    "units": "metres",
+    "right": "+X",
+    "depth": "+Y",
+    "up": "+Z",
+    "front": "-Y (foot end); long-side access +X",
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "pivot_datum": "floor/foot-end centre, NOT centred footprint"
+  },
+  "glb_coordinates": {
+    "up": "+Y",
+    "source_to_glb": "(x,y,z)->(x,z,-y)"
+  },
+  "bounds_blender_z_up": {
+    "min_m": [
+      0.5839999914169312,
+      -0.15000000596046448,
+      0.0
+    ],
+    "max_m": [
+      0.7760000228881836,
+      2.3499999046325684,
+      2.119999885559082
+    ],
+    "dimensions_m": [
+      0.19200003147125244,
+      2.499999910593033,
+      2.119999885559082
+    ]
+  },
+  "bounds_gltf_y_up": {
+    "min_m": [
+      0.5839999914169312,
+      0.0,
+      -2.3499999046325684
+    ],
+    "max_m": [
+      0.7760000228881836,
+      2.119999885559082,
+      0.15000000596046448
+    ]
+  },
+  "editable_semantic_parts": 63,
+  "semantic_parts": [
+    "002_foot_floor_shoe",
+    "002_foot_post",
+    "002_foot_assembly_fastener_0.085",
+    "002_foot_assembly_fastener_2.04",
+    "002_head_floor_shoe",
+    "002_head_post",
+    "002_head_assembly_fastener_0.085",
+    "002_head_assembly_fastener_2.04",
+    "002_continuous_round_track",
+    "002_track_end_stop_-0.006",
+    "002_track_end_stop_2.206",
+    "002_accordion_privacy_fabric",
+    "002_supported_ring_00",
+    "002_suspension_tape_00",
+    "002_supported_ring_01",
+    "002_suspension_tape_01",
+    "002_supported_ring_02",
+    "002_suspension_tape_02",
+    "002_supported_ring_03",
+    "002_suspension_tape_03",
+    "002_supported_ring_04",
+    "002_suspension_tape_04",
+    "002_supported_ring_05",
+    "002_suspension_tape_05",
+    "002_supported_ring_06",
+    "002_suspension_tape_06",
+    "002_supported_ring_07",
+    "002_suspension_tape_07",
+    "002_supported_ring_08",
+    "002_suspension_tape_08",
+    "002_supported_ring_09",
+    "002_suspension_tape_09",
+    "002_supported_ring_10",
+    "002_suspension_tape_10",
+    "002_supported_ring_11",
+    "002_suspension_tape_11",
+    "002_supported_ring_12",
+    "002_suspension_tape_12",
+    "002_supported_ring_13",
+    "002_suspension_tape_13",
+    "002_supported_ring_14",
+    "002_suspension_tape_14",
+    "002_supported_ring_15",
+    "002_suspension_tape_15",
+    "002_supported_ring_16",
+    "002_suspension_tape_16",
+    "002_supported_ring_17",
+    "002_suspension_tape_17",
+    "002_supported_ring_18",
+    "002_suspension_tape_18",
+    "002_supported_ring_19",
+    "002_suspension_tape_19",
+    "002_supported_ring_20",
+    "002_suspension_tape_20",
+    "002_supported_ring_21",
+    "002_suspension_tape_21",
+    "002_supported_ring_22",
+    "002_suspension_tape_22",
+    "002_supported_ring_23",
+    "002_suspension_tape_23",
+    "002_supported_ring_24",
+    "002_suspension_tape_24",
+    "002_leading_pull_grip"
+  ],
+  "evaluated_triangles": 5028,
+  "material_roles": [
+    "crew_sage_privacy",
+    "staff_bluegrey_paint",
+    "staff_rubber",
+    "staff_white_paint",
+    "staff_zinc"
+  ],
+  "runtime_consolidation": "Evaluated meshes grouped by material and static/moving parent; semantic source preserved, moving roots and physical markers retained",
+  "interface_api": "interface_api.json",
+  "collision_proposal_file": "collision_proposals.json",
+  "source_sha256": "774b0bfcde476747c572ef026b6b9f77ca50c9e92988ba6c4bc03d3cca1a6da7",
+  "glb_sha256": "1961f29c45e2dc9108ae68f23eed990a9efa8c7efbef357096f702346124a108",
+  "generator_sha256": "488894e586a2b0bb213ec7ccb5974a76d0d5a88fd0fab14fdb6508b84fc82241",
+  "state_derivatives": [
+    {
+      "state": "gathered",
+      "gather": 1.0,
+      "export": "exports/AST-CRW-002__gathered.glb",
+      "sha256": "61aa54c2964886eb9ddc75801a29dd96f84da6f724fbaefb0eaddf80d0ab95c3",
+      "bounds_blender_z_up": {
+        "min_m": [
+          0.5839999914169312,
+          -0.15000000596046448,
+          0.0
+        ],
+        "max_m": [
+          0.7760000228881836,
+          2.3499999046325684,
+          2.119999885559082
+        ],
+        "dimensions_m": [
+          0.19200003147125244,
+          2.499999910593033,
+          2.119999885559082
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Single-place dry prototype; no registered berth/person/room allocation",
+    "Only configured source size checked; six-species fit, sleeping poses and loads unverified",
+    "No stacked configuration, original host fit, cloth simulation, gameplay, acoustics or lighting performance",
+    "Collision compounds are proposals preserving declared voids; not runtime physics certification"
+  ]
+}

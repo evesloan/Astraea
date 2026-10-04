@@ -1,0 +1,58 @@
+"""Rebuild only the new Batch09 sources in disposable, input-only trees.
+No current source/export is written; no renders, network or engine run.
+"""
+from pathlib import Path
+import argparse,hashlib,json,shutil,subprocess,tempfile,time
+ROOT=Path(__file__).resolve().parents[2]
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+ ap=argparse.ArgumentParser();ap.add_argument('--family',choices=['guest_use','library_use'],required=True);args=ap.parse_args()
+ family=args.family;base=ROOT/'assets'/family;out=ROOT/'qa/batch09/source_only_rebuild';out.mkdir(parents=True,exist_ok=True)
+ receipt=out/(family+'.json');assert not receipt.exists(),'Preserve earlier receipts; do not overwrite a completed rebuild'
+ generator=base/'source'/('build_'+family+'.py')
+ dependency_path=base/'dependency_manifest.json';dep=json.loads(dependency_path.read_text())
+ dependencies=dep['external_input_files'] if family=='guest_use' else dep['unchanged_shared_dependencies']
+ bound=[generator,dependency_path]+sorted((base/'source').glob('*.py'))
+ masters=sorted(base.glob('source/*.blend'))+sorted(base.glob('exports/*.glb'))+sorted(base.glob('textures/*.png'))
+ assert len(list(base.glob('source/*.blend')))==3 and len(list(base.glob('exports/*.glb')))==3
+ protected={str(p.relative_to(ROOT)):sha(p) for p in set(bound+masters)}
+ inputs=[];logs=[];started=time.monotonic()
+ with tempfile.TemporaryDirectory(prefix='astraea-batch09-source-only-') as tmp:
+  stage=Path(tmp)
+  def copy(p):
+   rel=p.relative_to(ROOT);assert not any(x in ('qa','renders','__pycache__') for x in rel.parts)
+   target=stage/rel;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,target)
+   inputs.append({'path':str(rel),'sha256':sha(p)})
+  for row in dependencies:
+   p=(ROOT/row['path']).resolve();assert p.is_relative_to(ROOT) and p.is_file();assert sha(p)==row['sha256'];copy(p)
+  for p in sorted((base/'source').glob('*.py')):copy(p)
+  staged_base=stage/'assets'/family
+  assert not (staged_base/'qa').exists() and not (staged_base/'exports').exists()
+  assert not list(stage.rglob('*.blend')) and not list(stage.rglob('*.glb'))
+  commands=[]
+  if family=='library_use':commands.append(['python',str(staged_base/'source/make_use_art.py')])
+  commands.append(['blender','--background','--threads','1','--python-exit-code','1','--python',str(staged_base/'source'/generator.name)])
+  for n,cmd in enumerate(commands):
+   t=time.monotonic();run=subprocess.run(cmd,cwd=stage,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=300)
+   log=out/(family+'_%02d.log'%n);log.write_text(run.stdout)
+   logs.append({'command_template':[s.replace(str(stage),'<isolated-source-root>') for s in cmd],'returncode':run.returncode,'seconds':time.monotonic()-t,'log':str(log.relative_to(ROOT))})
+   assert run.returncode==0,(family,run.returncode,run.stdout[-2500:])
+  exports=[]
+  for p in sorted(base.glob('exports/*.glb')):
+   generated=stage/p.relative_to(ROOT);assert generated.is_file() and generated.read_bytes()==p.read_bytes(),('GLB rebuild differs',p)
+   exports.append({'path':str(p.relative_to(ROOT)),'sha256':sha(p),'generated_bytes_identical':True})
+  textures=[]
+  for p in sorted(base.glob('textures/*.png')):
+   generated=stage/p.relative_to(ROOT);assert generated.is_file() and generated.read_bytes()==p.read_bytes(),('Texture rebuild differs',p)
+   textures.append({'path':str(p.relative_to(ROOT)),'sha256':sha(p),'generated_bytes_identical':True})
+  assert len(list((staged_base/'source').glob('*.blend')))==3
+  result={'passed':True,'family':family,'scope':'Fresh source-only generator and actual export rebuild; no current asset overwritten, no render or engine run','input_files':inputs,'input_count':len(inputs),'preexisting_new_source_or_export_outputs':False,'qa_render_inputs':False,'commands':logs,'exports':exports,'textures':textures,'editable_blend_outputs_created':3,'elapsed_seconds':time.monotonic()-started,'current_bound_files_unchanged':protected}
+ for rel,digest in protected.items():assert sha(ROOT/rel)==digest,('Source changed during isolated rebuild',rel)
+ receipt.write_text(json.dumps(result,indent=2)+'\n')
+ reports=[out/(f+'.json') for f in ('guest_use','library_use')]
+ if all(p.is_file() for p in reports):
+  all_reports=[json.loads(p.read_text()) for p in reports];assert all(x['passed'] for x in all_reports)
+  report={'passed':True,'families':[{'path':str(p.relative_to(ROOT)),'sha256':sha(p)} for p in reports],'byte_identical_glb_count':sum(len(x['exports']) for x in all_reports),'byte_identical_texture_count':sum(len(x['textures']) for x in all_reports),'source_only_inputs':True,'no_preexisting_new_outputs':True,'current_assets_untouched':True,'no_render_network_or_engine':True}
+  (out/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+ print(json.dumps({'passed':True,'family':family,'identical_exports':len(exports),'identical_textures':len(textures),'seconds':result['elapsed_seconds']},indent=2))
+if __name__=='__main__':main()

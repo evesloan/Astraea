@@ -1,0 +1,24 @@
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/agent/.config/blender').
+20:35:29 | INFO: Data are loaded, start creating Blender stuff
+20:35:29 | INFO: Blender create Mesh node original_inactive_control_face_editable.001
+20:35:29 | INFO: Blender create Mesh node clipped_kick_plinth_editable.001
+20:35:29 | INFO: Blender create Mesh node left_rubber_floor_runner_editable.001
+20:35:29 | INFO: Blender create Mesh node left_folded_casing_side_editable.001
+20:35:29 | INFO: Blender create Mesh node formed_octagonal_chamber_mouth_00_editable.001
+20:35:29 | INFO: Blender create Mesh node hatch_pressed_ring_00_editable.001
+20:35:29 | INFO: Blender create Mesh node opaque_inactive_inspection_inset_editable.001
+20:35:29 | INFO: Blender create Mesh node hatch_pull_left_return_editable.001
+20:35:29 | INFO: Blender create Mesh node rear_cover_pull_bridge_editable.001
+20:35:29 | INFO: Blender create Mesh node removable_rear_service_cover_editable.001
+20:35:29 | INFO: Blender create Mesh node rear_pull_left_return_editable.001
+20:35:29 | INFO: glTF import finished in 0.01s
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/assets/housekeeping_equipment/qa/render_imported.py", line 19, in <module>
+    (BASE/'qa/failed_camera_'+label+'.json').write_text(json.dumps(row,indent=2));raise RuntimeError('whole component not framed: '+label)
+     ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+TypeError: unsupported operand type(s) for +: 'PosixPath' and 'str'
+
+Error: script failed, file: 'assets/housekeeping_equipment/qa/render_imported.py', exiting.
+Blender 4.3.2
+
+Blender quit

@@ -1,0 +1,578 @@
+{
+  "units": "metres",
+  "source_basis": "X across, Y depth, Z up, front -Y",
+  "glb_basis": "X across, Y up, front +Z",
+  "source_to_glb": "(x,y,z)->(x,z,-y)",
+  "assets": {
+    "AST-LND-003": {
+      "surfaces": [
+        {
+          "name": "003_attention_request_pad_contact",
+          "physical_object": "003_attention_request_pad",
+          "point_source_m": [
+            -0.23499999940395355,
+            0.2864986062049866,
+            1.2535806894302368
+          ],
+          "normal_source": [
+            0.0,
+            -0.9936052560806274,
+            0.11290968954563141
+          ],
+          "point_glb_m": [
+            -0.23499999940395355,
+            1.2535806894302368,
+            -0.2864986062049866
+          ],
+          "normal_glb": [
+            0.0,
+            0.11290968954563141,
+            0.9936052560806274
+          ],
+          "kind": "physical surface",
+          "purpose": "Static control affordance; no lift action, wiring, state or interaction implementation"
+        },
+        {
+          "name": "003_inspection_key_cover_contact",
+          "physical_object": "003_inspection_key_cover",
+          "point_source_m": [
+            0.0,
+            0.2864986062049866,
+            1.2535806894302368
+          ],
+          "normal_source": [
+            0.0,
+            -0.9936052560806274,
+            0.11290968954563141
+          ],
+          "point_glb_m": [
+            0.0,
+            1.2535806894302368,
+            -0.2864986062049866
+          ],
+          "normal_glb": [
+            0.0,
+            0.11290968954563141,
+            0.9936052560806274
+          ],
+          "kind": "physical surface",
+          "purpose": "Static control affordance; no lift action, wiring, state or interaction implementation"
+        },
+        {
+          "name": "003_status_flag_surface_contact",
+          "physical_object": "003_status_flag_surface",
+          "point_source_m": [
+            0.23499999940395355,
+            0.291466623544693,
+            1.2530161142349243
+          ],
+          "normal_source": [
+            0.0,
+            -0.9936052560806274,
+            0.11290968954563141
+          ],
+          "point_glb_m": [
+            0.23499999940395355,
+            1.2530161142349243,
+            -0.291466623544693
+          ],
+          "normal_glb": [
+            0.0,
+            0.11290968954563141,
+            0.9936052560806274
+          ],
+          "kind": "physical surface",
+          "purpose": "Static control affordance; no lift action, wiring, state or interaction implementation"
+        },
+        {
+          "name": "003_service_legend_plaque_contact",
+          "physical_object": "003_service_legend_plaque",
+          "point_source_m": [
+            0.0,
+            0.3182237148284912,
+            1.4353386163711548
+          ],
+          "normal_source": [
+            0.0,
+            -0.9936052560806274,
+            0.11290968954563141
+          ],
+          "point_glb_m": [
+            0.0,
+            1.4353386163711548,
+            -0.3182237148284912
+          ],
+          "normal_glb": [
+            0.0,
+            0.11290968954563141,
+            0.9936052560806274
+          ],
+          "kind": "physical surface",
+          "purpose": "Static control affordance; no lift action, wiring, state or interaction implementation"
+        },
+        {
+          "name": "service_cover_face",
+          "physical_object": "003_removable_service_cover",
+          "point_source_m": [
+            0,
+            0.353,
+            1.71
+          ],
+          "normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "point_glb_m": [
+            0,
+            1.71,
+            -0.353
+          ],
+          "normal_glb": [
+            0,
+            0,
+            1
+          ],
+          "kind": "physical surface",
+          "purpose": "Removable cover witness only; no animation"
+        },
+        {
+          "name": "fixture_receiver_-0.36",
+          "physical_object": "003_folded_fixture_receiver",
+          "point_source_m": [
+            -0.36,
+            0.2,
+            2.47
+          ],
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "point_glb_m": [
+            -0.36,
+            2.47,
+            -0.2
+          ],
+          "normal_glb": [
+            0,
+            -1,
+            0
+          ],
+          "kind": "physical surface",
+          "purpose": "Opposing mount receiver for reused AST-STF-006 top plate"
+        },
+        {
+          "name": "fixture_receiver_0.36",
+          "physical_object": "003_folded_fixture_receiver",
+          "point_source_m": [
+            0.36,
+            0.2,
+            2.47
+          ],
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "point_glb_m": [
+            0.36,
+            2.47,
+            -0.2
+          ],
+          "normal_glb": [
+            0,
+            -1,
+            0
+          ],
+          "kind": "physical surface",
+          "purpose": "Opposing mount receiver for reused AST-STF-006 top plate"
+        },
+        {
+          "name": "floor_contact",
+          "physical_object": "003_chamfered_floor_shoe",
+          "point_source_m": [
+            0,
+            0.225,
+            0
+          ],
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "point_glb_m": [
+            0,
+            0,
+            -0.225
+          ],
+          "normal_glb": [
+            0,
+            -1,
+            0
+          ],
+          "kind": "physical surface",
+          "purpose": "Actual bottom of component shoe; host support unknown"
+        }
+      ],
+      "joins": [
+        {
+          "a": "003_folded_fixture_receiver",
+          "b": "003_structural_back_spine",
+          "witness_source_m": [
+            0,
+            0.425,
+            2.47
+          ],
+          "type": "opposing butt",
+          "designed_gap_m": 0
+        },
+        {
+          "a": "003_chamfered_floor_shoe",
+          "b": "003_structural_back_spine",
+          "witness_source_m": [
+            0,
+            0.425,
+            0.055
+          ],
+          "type": "opposing butt",
+          "designed_gap_m": 0
+        }
+      ],
+      "fixture_context": {
+        "asset_id": "AST-STF-006",
+        "scope": "Reused original QA fixture only; not copied into new source or production export; no new fixture count",
+        "existing_source": "../staff_overhead/source/AST-STF-006.blend",
+        "existing_export": "../staff_overhead/exports/AST-STF-006.glb",
+        "translation_source_m": [
+          -0.6,
+          0.2,
+          2.47
+        ],
+        "rotation_source_degrees": [
+          0,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "anchor_source_m": [
+          [
+            -0.36,
+            0.2,
+            2.47
+          ],
+          [
+            0.36,
+            0.2,
+            2.47
+          ]
+        ],
+        "fixture_top_normal_source": [
+          0,
+          0,
+          1
+        ],
+        "receiver_surface_normal_source": [
+          0,
+          0,
+          -1
+        ],
+        "lens_aim_source": [
+          0,
+          0,
+          -1
+        ],
+        "all_context_bounds_source_m": {
+          "min": [
+            -0.560000001,
+            0.025000003,
+            1.862500043
+          ],
+          "max": [
+            0.559999967,
+            0.372999993,
+            2.47
+          ]
+        },
+        "matrix_source_local": [
+          [
+            1,
+            0,
+            0,
+            -0.6
+          ],
+          [
+            0,
+            1,
+            0,
+            0.2
+          ],
+          [
+            0,
+            0,
+            1,
+            2.47
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "paired_mount_witnesses": [
+          {
+            "fixture_local_point_m": [
+              0.24,
+              0,
+              0
+            ],
+            "receiver_source_point_m": [
+              -0.36,
+              0.2,
+              2.47
+            ],
+            "receiver_object": "003_folded_fixture_receiver"
+          },
+          {
+            "fixture_local_point_m": [
+              0.96,
+              0,
+              0
+            ],
+            "receiver_source_point_m": [
+              0.36,
+              0.2,
+              2.47
+            ],
+            "receiver_object": "003_folded_fixture_receiver"
+          }
+        ],
+        "whole_fixture_check_required": true
+      },
+      "reserved_voids": [
+        {
+          "name": "front_approach",
+          "min_source_m": [
+            -0.5,
+            -0.8,
+            0
+          ],
+          "max_source_m": [
+            0.5,
+            -0.02,
+            1.8
+          ],
+          "authority": "negative geometry QA only; no actor fit"
+        }
+      ],
+      "standing_point_source_m": [
+        0,
+        -0.75,
+        0
+      ],
+      "standing_point_scope": "Unverified inspection viewpoint only, no actor fit",
+      "moving_travel": "None"
+    },
+    "AST-LND-004": {
+      "surfaces": [
+        {
+          "name": "floor_contact_-1",
+          "physical_object": "004_folded_end_frame_-1",
+          "point_source_m": [
+            -0.655,
+            0.45,
+            0
+          ],
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "point_glb_m": [
+            -0.655,
+            0,
+            -0.45
+          ],
+          "normal_glb": [
+            0,
+            -1,
+            0
+          ],
+          "kind": "physical surface",
+          "purpose": "Actual flat floor-bearing frame face"
+        },
+        {
+          "name": "floor_contact_+1",
+          "physical_object": "004_folded_end_frame_+1",
+          "point_source_m": [
+            0.655,
+            0.45,
+            0
+          ],
+          "normal_source": [
+            0,
+            0,
+            -1
+          ],
+          "point_glb_m": [
+            0.655,
+            0,
+            -0.45
+          ],
+          "normal_glb": [
+            0,
+            -1,
+            0
+          ],
+          "kind": "physical surface",
+          "purpose": "Actual flat floor-bearing frame face"
+        },
+        {
+          "name": "service_tag",
+          "physical_object": "004_service_identification_plate",
+          "point_source_m": [
+            0,
+            0.066,
+            0.86
+          ],
+          "normal_source": [
+            0,
+            -1,
+            0
+          ],
+          "point_glb_m": [
+            0,
+            0.86,
+            -0.066
+          ],
+          "normal_glb": [
+            0,
+            0,
+            1
+          ],
+          "kind": "physical surface",
+          "purpose": "Physical identification surface, static"
+        },
+        {
+          "name": "inspection_contact",
+          "physical_object": "004_folded_inspection_top",
+          "point_source_m": [
+            0,
+            0.375,
+            0.925
+          ],
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "point_glb_m": [
+            0,
+            0.925,
+            -0.375
+          ],
+          "normal_glb": [
+            0,
+            1,
+            0
+          ],
+          "kind": "physical surface",
+          "purpose": "Fixed usable inspection surface"
+        },
+        {
+          "name": "retrieval_contact",
+          "physical_object": "004_fixed_lower_retrieval_tray",
+          "point_source_m": [
+            0,
+            0.46,
+            0.25
+          ],
+          "normal_source": [
+            0,
+            0,
+            1
+          ],
+          "point_glb_m": [
+            0,
+            0.25,
+            -0.46
+          ],
+          "normal_glb": [
+            0,
+            1,
+            0
+          ],
+          "kind": "physical surface",
+          "purpose": "Actual lower support; open approach from -Y"
+        }
+      ],
+      "joins": [
+        {
+          "a": "004_folded_inspection_top",
+          "b": "004_folded_end_frame_-1",
+          "witness_source_m": [
+            -0.65,
+            0.45,
+            0.9
+          ],
+          "type": "opposing butt",
+          "designed_gap_m": 0
+        },
+        {
+          "a": "004_fixed_lower_retrieval_tray",
+          "b": "004_tray_bearing_ledge_-1",
+          "witness_source_m": [
+            -0.59,
+            0.45,
+            0.225
+          ],
+          "type": "opposing butt",
+          "designed_gap_m": 0
+        }
+      ],
+      "fixture_context": null,
+      "reserved_voids": [
+        {
+          "name": "lower_retrieval_mouth",
+          "min_source_m": [
+            -0.56,
+            -0.3,
+            0.33
+          ],
+          "max_source_m": [
+            0.56,
+            0.625,
+            0.8
+          ],
+          "authority": "actual geometric bay negative control, not actor/cart fit"
+        },
+        {
+          "name": "below_tray_front_toe_void",
+          "min_source_m": [
+            -0.54,
+            -0.2,
+            0.03
+          ],
+          "max_source_m": [
+            0.54,
+            0.24,
+            0.19
+          ],
+          "authority": "negative geometry QA only"
+        }
+      ],
+      "standing_point_source_m": [
+        0,
+        -0.65,
+        0
+      ],
+      "standing_point_scope": "Unverified service viewpoint only, no actor fit",
+      "moving_travel": "None; fixed service furnishing, not player cart"
+    }
+  }
+}

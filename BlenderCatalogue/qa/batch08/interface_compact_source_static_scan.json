@@ -1,0 +1,1556 @@
+{
+  "observed_utc": "2026-10-02T16:09:43.572761+00:00",
+  "scope": "Bounded static audit of production generators/support scripts for compact family restoration; no generators executed, no scenes rebuilt.",
+  "compact_exclusion_rule": {
+    "path": "tools/source_family_packages.py",
+    "sha256": "f7f403eff9d1b0f562a7e6bd3be2ecc43341fbd1c6895f89da0d9259e11cb7ad",
+    "bytes": 3536
+  },
+  "script_counts": {
+    "primary_family_generator": 20,
+    "family_support_or_derivative_script": 9,
+    "derived_flange_script": 2,
+    "shared_standard": 6
+  },
+  "total_scripts": 37,
+  "catalogue_unique_design_count": 45,
+  "primary_generator_covered_ids": [
+    "AST-AQU-001",
+    "AST-AQU-002",
+    "AST-AQU-003",
+    "AST-AQU-004",
+    "AST-AQU-005",
+    "AST-AQU-006",
+    "AST-BOT-001",
+    "AST-BOT-002",
+    "AST-BOT-003",
+    "AST-BOT-004",
+    "AST-BOT-005",
+    "AST-BOT-006",
+    "AST-ENG-001",
+    "AST-ENG-002",
+    "AST-ENG-003",
+    "AST-ENG-004",
+    "AST-ENG-005",
+    "AST-ENG-006",
+    "AST-FUR-001",
+    "AST-FUR-002",
+    "AST-FUR-003",
+    "AST-HSP-001",
+    "AST-HSP-002",
+    "AST-HSP-003",
+    "AST-HSP-004",
+    "AST-HSP-005",
+    "AST-HSP-006",
+    "AST-LIB-006",
+    "AST-LIB-007",
+    "AST-LIB-STR-001",
+    "AST-LIB-STR-002",
+    "AST-LIB-STR-003",
+    "AST-LIB-STUDY-01",
+    "AST-LIB-STUDY-02",
+    "AST-STF-001",
+    "AST-STF-002",
+    "AST-STF-003",
+    "AST-STF-004",
+    "AST-STF-005",
+    "AST-STF-006",
+    "AST-STF-007",
+    "AST-VR-01-H",
+    "AST-VR-01-J",
+    "AST-VR-01-S",
+    "AST-VR-01-T"
+  ],
+  "excluded_qa_or_render_input_dependencies_found": [],
+  "findings": [
+    {
+      "id": "CS-001",
+      "path": "assets/botanical_canopy/source/build_canopy.py",
+      "asset_ids": [
+        "AST-BOT-001"
+      ],
+      "output": "qa/support_contacts.json",
+      "status": "guard_present_in_current_source",
+      "source_sha256": "8f25dd670481663f884d8f7795bb3688ae5f12bc4c54cef3b293917596c6e4b8",
+      "write_evidence": [
+        {
+          "line": 9,
+          "operation": "mkdir",
+          "target_expression": "ROOT / 'qa'",
+          "enclosing": []
+        },
+        {
+          "line": 181,
+          "operation": "write_text",
+          "target_expression": "ROOT / 'qa/support_contacts.json'",
+          "enclosing": []
+        }
+      ],
+      "fact": "This is a mandatory output write in the invoked generation entrypoint, not a required QA input. A missing parent makes a source-only restored generator fail at the end of generation.",
+      "change_needed": "Create the output parent before this write; preserve geometry and existing master bytes.",
+      "execution_proof": "Not executed by this auditor; see separately scoped lead/author rebuild checks."
+    },
+    {
+      "id": "CS-002",
+      "path": "assets/aquatic_lounge/source/build_aquatic_lounge.py",
+      "asset_ids": [
+        "AST-AQU-001",
+        "AST-AQU-002"
+      ],
+      "output": "qa/join_checks.json",
+      "status": "guard_present_in_current_source",
+      "source_sha256": "5db2a1b1e75386d1eef3561bf65df188d936769a44aee38c3dabcd49c71fe093",
+      "write_evidence": [
+        {
+          "line": 302,
+          "operation": "write_text",
+          "target_expression": "ROOT / 'qa' / 'join_checks.json'",
+          "enclosing": [
+            "if __name__ == '__main__'"
+          ]
+        }
+      ],
+      "fact": "This is a mandatory output write in the invoked generation entrypoint, not a required QA input. A missing parent makes a source-only restored generator fail at the end of generation.",
+      "change_needed": "Create the output parent before this write; preserve geometry and existing master bytes.",
+      "execution_proof": "Not executed by this auditor; see separately scoped lead/author rebuild checks."
+    },
+    {
+      "id": "CS-003",
+      "path": "assets/library_contents/build_stock_variants.py",
+      "asset_ids": [
+        "AST-LIB-006"
+      ],
+      "output": "qa/variant_source_import_audit.json",
+      "status": "guard_present_in_current_source",
+      "source_sha256": "375963140fa74c1006d72c1c270533d7a5b8b1047a80fa42f8c2b2f4e688c7a6",
+      "write_evidence": [
+        {
+          "line": 8,
+          "operation": "mkdir",
+          "target_expression": "ROOT / 'qa'",
+          "enclosing": []
+        },
+        {
+          "line": 78,
+          "operation": "write_text",
+          "target_expression": "ROOT / 'qa/variant_source_import_audit.json'",
+          "enclosing": []
+        }
+      ],
+      "fact": "This is a mandatory output write in the invoked generation entrypoint, not a required QA input. A missing parent makes a source-only restored generator fail at the end of generation.",
+      "change_needed": "Create the output parent before this write; preserve geometry and existing master bytes.",
+      "execution_proof": "Not executed by this auditor; see separately scoped lead/author rebuild checks."
+    },
+    {
+      "id": "CS-004",
+      "path": "assets/utility_pipework/derived_lod/source/build_flange_derivative.py",
+      "asset_ids": [],
+      "output": "qa/source_geometry.json",
+      "status": "guard_present_in_current_source",
+      "source_sha256": "d1963ce3b6531b5fea089da954e29dc6a35685ea52fad2987828c60de4b8d8d6",
+      "write_evidence": [
+        {
+          "line": 47,
+          "operation": "write_text",
+          "target_expression": "BASE / 'qa/source_geometry.json'",
+          "enclosing": [
+            "function main"
+          ]
+        }
+      ],
+      "fact": "This is a mandatory output write in the invoked generation entrypoint, not a required QA input. A missing parent makes a source-only restored generator fail at the end of generation.",
+      "change_needed": "Create the output parent before this write; preserve geometry and existing master bytes.",
+      "execution_proof": "Not executed by this auditor; see separately scoped lead/author rebuild checks."
+    }
+  ],
+  "required_local_support_inputs": [
+    {
+      "family": "utility_machines",
+      "required_path": "assets/utility_machines/source/build_collision_proposals.py",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/utility_machines/source/build_collision_proposals.py",
+        "sha256": "b7c54208f8d69152637ff47d6e6537ee127c66485cda0554d82a44e3f80a0b04",
+        "bytes": 5043
+      }
+    },
+    {
+      "family": "utility_console",
+      "required_path": "assets/utility_console/source/write_collision_proposals.py",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/utility_console/source/write_collision_proposals.py",
+        "sha256": "e14e4d8467c1451e8d16738498299477a463affe006a178a22f827049aec4b31",
+        "bytes": 4891
+      }
+    },
+    {
+      "family": "utility_console",
+      "required_path": "assets/utility_console/textures/console_graphics.json",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/utility_console/textures/console_graphics.json",
+        "sha256": "a22afcc5aaf9693687b3197e7a5f9680d2239fa406bcb1e9e728f5b417fad766",
+        "bytes": 977
+      }
+    },
+    {
+      "family": "utility_console",
+      "required_path": "assets/utility_console/textures/console_graphics.png",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/utility_console/textures/console_graphics.png",
+        "sha256": "ff79d94ff6a71433fc3c6026412af6a200431329801ffc2108f2162c00e41186",
+        "bytes": 48224
+      }
+    },
+    {
+      "family": "hospitality_serviceware",
+      "required_path": "assets/hospitality_serviceware/source/collision_shapes.py",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/hospitality_serviceware/source/collision_shapes.py",
+        "sha256": "0411eb87ed8f306926d2510a40de34d3b8aa5420d51ecf65d058fac19fdbf0d3",
+        "bytes": 4870
+      }
+    },
+    {
+      "family": "hospitality_stations",
+      "required_path": "assets/hospitality_stations/textures/station_graphics.png",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/hospitality_stations/textures/station_graphics.png",
+        "sha256": "c966c097118a7db5b7016d0cbde049e8ee5a1b5541179082862fbefb2ef1ca27",
+        "bytes": 19377
+      }
+    },
+    {
+      "family": "library_contents",
+      "required_path": "assets/library_contents/build_library_contents.py",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/library_contents/build_library_contents.py",
+        "sha256": "a878c2f61173db874615de18b203ce2fd6550a90df86bb81ee48c3a72361481f",
+        "bytes": 18623
+      }
+    },
+    {
+      "family": "library_contents",
+      "required_path": "assets/library_contents/texture_manifest.json",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/library_contents/texture_manifest.json",
+        "sha256": "60e73b95cbb0c1bb8d87553c92f2b52f85a4e89b5d6dc9d17c4b1964518d6cdc",
+        "bytes": 3948
+      }
+    },
+    {
+      "family": "botanical_planter",
+      "required_path": "assets/botanical_planter/source/build_botanical_planter.py",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/botanical_planter/source/build_botanical_planter.py",
+        "sha256": "0f538766821b2b96f023950cba4158caa3e7934164755b3587ea4aae2a4e98da",
+        "bytes": 15671
+      }
+    },
+    {
+      "family": "botanical_planter",
+      "required_path": "assets/botanical_planter/AST-BOT-006.blend",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/botanical_planter/AST-BOT-006.blend",
+        "sha256": "2d75a1facb20c545f8a0fd3edae621e72dfedf33aef744759355c1b8965d4061",
+        "bytes": 240169
+      }
+    },
+    {
+      "family": "botanical_planter",
+      "required_path": "assets/botanical_planter/collision_proposals.json",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/botanical_planter/collision_proposals.json",
+        "sha256": "dd780a6d8af1c4938c46cfd93200013c05f6a629c8dbfed1a48067301daa784c",
+        "bytes": 311592
+      }
+    },
+    {
+      "family": "botanical_planter",
+      "required_path": "assets/botanical_planter/manifest.json",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/botanical_planter/manifest.json",
+        "sha256": "590ff90c3b4319819110c9bcc2773d5dc6a5694f6dad2c18686288fc05b3903c",
+        "bytes": 23919
+      }
+    },
+    {
+      "family": "flange_derivative",
+      "required_path": "assets/utility_pipework/derived_lod/source/utility_flange_economical.py",
+      "exists": true,
+      "included_in_compact_source_by_folder": true,
+      "binding": {
+        "path": "assets/utility_pipework/derived_lod/source/utility_flange_economical.py",
+        "sha256": "a57430c9ce0d09617a4e604f9639fc484e11d02933c01c6635d85473a00eeae8",
+        "bytes": 4055
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "assets/aquatic_edges/source/build_aquatic_edges.py",
+      "sha256": "0897bc34ef75e8ed1553f3e9fec9643b89ea83df759eb0e6d03dc959d702d3be",
+      "bytes": 25786,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-AQU-003",
+        "AST-AQU-004",
+        "AST-AQU-005"
+      ],
+      "line_count": 255,
+      "imports": [
+        {
+          "line": 6,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util, sys"
+        },
+        {
+          "line": 7,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 8,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [
+        {
+          "line": 105,
+          "code": "folder.mkdir(exist_ok=True)",
+          "enclosing": [
+            "function save_asset"
+          ]
+        }
+      ],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/aquatic_float/source/build_float.py",
+      "sha256": "184e2e9db0bb1a0fa5522a0dec70aae7348252dfd77e2751560f5fd9fa0296b8",
+      "bytes": 17938,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-AQU-006"
+      ],
+      "line_count": 207,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/aquatic_lounge/source/build_aquatic_lounge.py",
+      "sha256": "5db2a1b1e75386d1eef3561bf65df188d936769a44aee38c3dabcd49c71fe093",
+      "bytes": 22713,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-AQU-001",
+        "AST-AQU-002"
+      ],
+      "line_count": 303,
+      "imports": [
+        {
+          "line": 7,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 8,
+          "code": "import sys, math, json, hashlib"
+        },
+        {
+          "line": 9,
+          "code": "import bpy, bmesh"
+        },
+        {
+          "line": 10,
+          "code": "from mathutils import Vector"
+        },
+        {
+          "line": 11,
+          "code": "from mathutils.bvhtree import BVHTree"
+        },
+        {
+          "line": 17,
+          "code": "from materials import materials"
+        },
+        {
+          "line": 18,
+          "code": "from aquatic_materials import materials as aquatic_materials"
+        }
+      ],
+      "excluded_folder_io": [
+        {
+          "line": 302,
+          "operation": "write_text",
+          "target_expression": "ROOT / 'qa' / 'join_checks.json'",
+          "enclosing": [
+            "if __name__ == '__main__'"
+          ]
+        }
+      ],
+      "mkdir_calls": [
+        {
+          "line": 14,
+          "code": "(ROOT / output_folder).mkdir(parents=True, exist_ok=True)",
+          "enclosing": []
+        }
+      ],
+      "creates_qa_or_render_parent": true,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/botanical_canopy/source/build_canopy.py",
+      "sha256": "8f25dd670481663f884d8f7795bb3688ae5f12bc4c54cef3b293917596c6e4b8",
+      "bytes": 14747,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-BOT-001"
+      ],
+      "line_count": 182,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [
+        {
+          "line": 9,
+          "operation": "mkdir",
+          "target_expression": "ROOT / 'qa'",
+          "enclosing": []
+        },
+        {
+          "line": 181,
+          "operation": "write_text",
+          "target_expression": "ROOT / 'qa/support_contacts.json'",
+          "enclosing": []
+        }
+      ],
+      "mkdir_calls": [
+        {
+          "line": 9,
+          "code": "(ROOT / 'qa').mkdir(parents=True, exist_ok=True)",
+          "enclosing": []
+        }
+      ],
+      "creates_qa_or_render_parent": true,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/botanical_planter/source/build_botanical_planter.py",
+      "sha256": "0f538766821b2b96f023950cba4158caa3e7934164755b3587ea4aae2a4e98da",
+      "bytes": 15671,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-BOT-004",
+        "AST-BOT-005",
+        "AST-BOT-006"
+      ],
+      "line_count": 168,
+      "imports": [
+        {
+          "line": 6,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 7,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 8,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/botanical_planter/source/build_start_closure.py",
+      "sha256": "bb90f7c4a283bbad6dd2297520f3e77ec60c5ccf6b0c6a5282a69105684275d2",
+      "bytes": 2981,
+      "category": "family_support_or_derivative_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 28,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, json, importlib.util, hashlib"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [
+        {
+          "line": 7,
+          "code": "DERIVED.mkdir(exist_ok=True)",
+          "enclosing": []
+        }
+      ],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/botanical_planter/source/repack_soil.py",
+      "sha256": "22205906b78bfb269e6fe27534f95365825d23a91bcecb1e3ef3cc9d03c587d3",
+      "bytes": 2040,
+      "category": "family_support_or_derivative_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 21,
+      "imports": [
+        {
+          "line": 4,
+          "code": "import bpy, importlib.util, json, hashlib"
+        },
+        {
+          "line": 5,
+          "code": "from pathlib import Path"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/botanical_understory/source/build_botanical_understory.py",
+      "sha256": "3ce7e29bc8eb427b64e4f229ef2a64bb62bcbf3e506b38e5de81b38ae9c6a883",
+      "bytes": 17266,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-BOT-002",
+        "AST-BOT-003"
+      ],
+      "line_count": 205,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/furniture/build_furniture.py",
+      "sha256": "480dcc3bb79d0158ec827eebe295aab3623cc5de30982412e9bad3eb30a97dd5",
+      "bytes": 22126,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-FUR-001",
+        "AST-FUR-002",
+        "AST-FUR-003"
+      ],
+      "line_count": 292,
+      "imports": [
+        {
+          "line": 5,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 6,
+          "code": "import sys, math, json, hashlib"
+        },
+        {
+          "line": 7,
+          "code": "import bpy, bmesh"
+        },
+        {
+          "line": 8,
+          "code": "from mathutils import Vector"
+        },
+        {
+          "line": 13,
+          "code": "from materials import materials"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/hospitality_counters/source/build_hospitality_counters.py",
+      "sha256": "967acd9c8c7da058a754aec8af3365dba7c5c32fbd11c7e6a592ca792c07850b",
+      "bytes": 32036,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-HSP-001",
+        "AST-HSP-002"
+      ],
+      "line_count": 343,
+      "imports": [
+        {
+          "line": 4,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util, sys"
+        },
+        {
+          "line": 5,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 6,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/hospitality_serviceware/source/build_serviceware.py",
+      "sha256": "39a9bfdfcdd24c579666d65330e507cd9e27cdaf7e108b32d53c03f26ba8abc4",
+      "bytes": 21327,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-HSP-005",
+        "AST-HSP-006"
+      ],
+      "line_count": 243,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector, Matrix"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/hospitality_serviceware/source/collision_shapes.py",
+      "sha256": "0411eb87ed8f306926d2510a40de34d3b8aa5420d51ecf65d058fac19fdbf0d3",
+      "bytes": 4870,
+      "category": "family_support_or_derivative_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 47,
+      "imports": [
+        {
+          "line": 2,
+          "code": "import json, math"
+        },
+        {
+          "line": 3,
+          "code": "from pathlib import Path"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/hospitality_stations/source/build_hospitality_stations.py",
+      "sha256": "8c90b0aa15827a929f48497422d2ef5b73ee876b555dbf189c072e1ce03fffa9",
+      "bytes": 23513,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-HSP-003",
+        "AST-HSP-004"
+      ],
+      "line_count": 243,
+      "imports": [
+        {
+          "line": 4,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util, struct, sys"
+        },
+        {
+          "line": 5,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 6,
+          "code": "from mathutils import Vector, Matrix"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/hospitality_stations/textures/draw_graphics.py",
+      "sha256": "99473a37be250fbff6e82b745c93d06dfc3cc8f1b4ed03d6109b10fdb5b5a724",
+      "bytes": 1146,
+      "category": "family_support_or_derivative_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 17,
+      "imports": [
+        {
+          "line": 1,
+          "code": "from PIL import Image, ImageDraw, ImageFont"
+        },
+        {
+          "line": 2,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 3,
+          "code": "import json, hashlib"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/library_contents/build_library_contents.py",
+      "sha256": "a878c2f61173db874615de18b203ce2fd6550a90df86bb81ee48c3a72361481f",
+      "bytes": 18623,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-LIB-006",
+        "AST-LIB-007"
+      ],
+      "line_count": 184,
+      "imports": [
+        {
+          "line": 5,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 6,
+          "code": "import bpy, bmesh, math, json, sys, hashlib"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector, Matrix"
+        },
+        {
+          "line": 10,
+          "code": "from materials import materials"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/library_contents/build_stock_variants.py",
+      "sha256": "375963140fa74c1006d72c1c270533d7a5b8b1047a80fa42f8c2b2f4e688c7a6",
+      "bytes": 8206,
+      "category": "family_support_or_derivative_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 78,
+      "imports": [
+        {
+          "line": 4,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 5,
+          "code": "import bpy, json, math, sys, hashlib, copy"
+        },
+        {
+          "line": 6,
+          "code": "from mathutils import Matrix"
+        },
+        {
+          "line": 9,
+          "code": "import build_library_contents as lib"
+        }
+      ],
+      "excluded_folder_io": [
+        {
+          "line": 8,
+          "operation": "mkdir",
+          "target_expression": "ROOT / 'qa'",
+          "enclosing": []
+        },
+        {
+          "line": 78,
+          "operation": "write_text",
+          "target_expression": "ROOT / 'qa/variant_source_import_audit.json'",
+          "enclosing": []
+        }
+      ],
+      "mkdir_calls": [
+        {
+          "line": 8,
+          "code": "(ROOT / 'qa').mkdir(parents=True, exist_ok=True)",
+          "enclosing": []
+        }
+      ],
+      "creates_qa_or_render_parent": true,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/library_contents/make_book_textures.py",
+      "sha256": "88140a1e3521b73df9c33313bb488313f7490dcd955a3c92fd7be51939004e3a",
+      "bytes": 4853,
+      "category": "family_support_or_derivative_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 77,
+      "imports": [
+        {
+          "line": 4,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 5,
+          "code": "import json, random, math, hashlib"
+        },
+        {
+          "line": 6,
+          "code": "from PIL import Image, ImageDraw"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [
+        {
+          "line": 8,
+          "code": "TEX.mkdir(exist_ok=True)",
+          "enclosing": []
+        }
+      ],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/library_structure/source/build_library_structure.py",
+      "sha256": "58cc1fc7acb85351ceec9a72818e79f875026eed31f435795aac9700836ea6a3",
+      "bytes": 19895,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-LIB-STR-001",
+        "AST-LIB-STR-002",
+        "AST-LIB-STR-003"
+      ],
+      "line_count": 292,
+      "imports": [
+        {
+          "line": 7,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 8,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 9,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/library_study/build_study.py",
+      "sha256": "ef259f905eccf2663404950d6b18d9d7eb391604e043d7084de58785505fcdb2",
+      "bytes": 19867,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-LIB-STUDY-01",
+        "AST-LIB-STUDY-02"
+      ],
+      "line_count": 233,
+      "imports": [
+        {
+          "line": 5,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 6,
+          "code": "import math, json, sys, hashlib"
+        },
+        {
+          "line": 7,
+          "code": "import bpy, bmesh"
+        },
+        {
+          "line": 8,
+          "code": "from mathutils import Vector"
+        },
+        {
+          "line": 13,
+          "code": "from materials import materials"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/staff_overhead/source/build_staff_overhead.py",
+      "sha256": "6828950f293763bc4a1aa54e25c2b101c194a786c512e4e98b10e8ee2c6aae37",
+      "bytes": 23256,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-STF-004",
+        "AST-STF-005",
+        "AST-STF-006"
+      ],
+      "line_count": 275,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/staff_wall/source/build_staff_wall.py",
+      "sha256": "d4cd8c1acde52b478a2aa293dc00cff1bb24c64c065ba4a20541fd67b842b514",
+      "bytes": 15101,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-STF-001",
+        "AST-STF-002",
+        "AST-STF-003"
+      ],
+      "line_count": 193,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/staff_workbay/build_staff_workbay.py",
+      "sha256": "a156aabec749943c1aab0f8dbab6f40568ebbd4bca30c3b104d2d7d0a119936b",
+      "bytes": 22152,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-STF-007"
+      ],
+      "line_count": 248,
+      "imports": [
+        {
+          "line": 5,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 6,
+          "code": "import sys, math, json, hashlib"
+        },
+        {
+          "line": 7,
+          "code": "import bpy, bmesh"
+        },
+        {
+          "line": 8,
+          "code": "from mathutils import Vector"
+        },
+        {
+          "line": 12,
+          "code": "from staff_materials import materials"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/utility_console/source/build_utility_console.py",
+      "sha256": "0687ca700b4b9f9d20d59390d9816c7f794b3149898e849e75688e3d94239908",
+      "bytes": 23278,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-ENG-003"
+      ],
+      "line_count": 254,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector, Matrix"
+        },
+        {
+          "line": 252,
+          "code": "import runpy"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/utility_console/source/write_collision_proposals.py",
+      "sha256": "e14e4d8467c1451e8d16738498299477a463affe006a178a22f827049aec4b31",
+      "bytes": 4891,
+      "category": "family_support_or_derivative_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 47,
+      "imports": [
+        {
+          "line": 4,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 5,
+          "code": "import json, math"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/utility_console/textures/draw_console_graphics.py",
+      "sha256": "594950c99b89ae1c4d00ede3a6b240c9ad87385d0f60aa1e2f7347ff28a302b8",
+      "bytes": 3749,
+      "category": "family_support_or_derivative_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 44,
+      "imports": [
+        {
+          "line": 4,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 5,
+          "code": "import json, math, hashlib"
+        },
+        {
+          "line": 6,
+          "code": "from PIL import Image, ImageDraw, ImageFont"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/utility_machines/source/build_collision_proposals.py",
+      "sha256": "b7c54208f8d69152637ff47d6e6537ee127c66485cda0554d82a44e3f80a0b04",
+      "bytes": 5043,
+      "category": "family_support_or_derivative_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 56,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import math, json"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/utility_machines/source/build_utility_machines.py",
+      "sha256": "da6fdcbb5d3563cd283c8c16bfed1d84883e6486d1128ae6a97204001a9263b8",
+      "bytes": 26751,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-ENG-001",
+        "AST-ENG-002"
+      ],
+      "line_count": 296,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector, Matrix"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/utility_pipework/derived_lod/source/build_flange_derivative.py",
+      "sha256": "d1963ce3b6531b5fea089da954e29dc6a35685ea52fad2987828c60de4b8d8d6",
+      "bytes": 4011,
+      "category": "derived_flange_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 49,
+      "imports": [
+        {
+          "line": 2,
+          "code": "import bpy, bmesh, json, hashlib, importlib.util, math"
+        },
+        {
+          "line": 3,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 4,
+          "code": "from mathutils import Vector, Matrix"
+        }
+      ],
+      "excluded_folder_io": [
+        {
+          "line": 47,
+          "operation": "write_text",
+          "target_expression": "BASE / 'qa/source_geometry.json'",
+          "enclosing": [
+            "function main"
+          ]
+        }
+      ],
+      "mkdir_calls": [
+        {
+          "line": 33,
+          "code": "(BASE / directory).mkdir(parents=True, exist_ok=True)",
+          "enclosing": [
+            "function main"
+          ]
+        }
+      ],
+      "creates_qa_or_render_parent": true,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/utility_pipework/derived_lod/source/utility_flange_economical.py",
+      "sha256": "a57430c9ce0d09617a4e604f9639fc484e11d02933c01c6635d85473a00eeae8",
+      "bytes": 4055,
+      "category": "derived_flange_script",
+      "covered_unique_asset_ids": [],
+      "line_count": 67,
+      "imports": [
+        {
+          "line": 6,
+          "code": "import math, importlib.util, bpy, bmesh"
+        },
+        {
+          "line": 7,
+          "code": "import numpy as np"
+        },
+        {
+          "line": 8,
+          "code": "from scipy.spatial import Delaunay"
+        },
+        {
+          "line": 9,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 10,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/utility_pipework/source/build_utility_pipework.py",
+      "sha256": "4c885b6b5fdfc4a2f5697487f7f3edc38de836fabf673cfee73d1c8137e5afb7",
+      "bytes": 17210,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-ENG-004",
+        "AST-ENG-005",
+        "AST-ENG-006"
+      ],
+      "line_count": 156,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector, Matrix"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "assets/view_reveal/source/build_reveal.py",
+      "sha256": "5ae61f238a8e5aa58f54474c5f23b0d88143546e6eb0d24b358d982b648dc942",
+      "bytes": 17827,
+      "category": "primary_family_generator",
+      "covered_unique_asset_ids": [
+        "AST-VR-01-H",
+        "AST-VR-01-S",
+        "AST-VR-01-J",
+        "AST-VR-01-T"
+      ],
+      "line_count": 240,
+      "imports": [
+        {
+          "line": 5,
+          "code": "import bpy, bmesh, math, json, hashlib, sys, importlib.util"
+        },
+        {
+          "line": 6,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 7,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [
+        {
+          "line": 230,
+          "operation": "save_as_mainfile",
+          "target_expression": "bpy.ops.wm.save_as_mainfile(filepath=str(ROOT / 'qa/joins_editable.blend'), compress=True)",
+          "enclosing": [
+            "function main"
+          ]
+        },
+        {
+          "line": 236,
+          "operation": "save_as_mainfile",
+          "target_expression": "bpy.ops.wm.save_as_mainfile(filepath=str(ROOT / 'qa/terminal_editable.blend'), compress=True)",
+          "enclosing": [
+            "function main"
+          ]
+        }
+      ],
+      "mkdir_calls": [
+        {
+          "line": 11,
+          "code": "(ROOT / d).mkdir(exist_ok=True)",
+          "enclosing": []
+        }
+      ],
+      "creates_qa_or_render_parent": true,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "standards/aquatic_materials.py",
+      "sha256": "6c522b087f2c0aef5baa599559211f6070be147d1984feeb77dc2343494a5ca1",
+      "bytes": 1389,
+      "category": "shared_standard",
+      "covered_unique_asset_ids": [],
+      "line_count": 13,
+      "imports": [
+        {
+          "line": 2,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 3,
+          "code": "import json, bpy"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "standards/botanical_materials.py",
+      "sha256": "d06b19d91cd5c1d18fe2e7e1b32b86e855bab5993872dbad9865248017e24ea7",
+      "bytes": 1482,
+      "category": "shared_standard",
+      "covered_unique_asset_ids": [],
+      "line_count": 15,
+      "imports": [
+        {
+          "line": 2,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 3,
+          "code": "import json, bpy"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "standards/materials.py",
+      "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+      "bytes": 1584,
+      "category": "shared_standard",
+      "covered_unique_asset_ids": [],
+      "line_count": 30,
+      "imports": [
+        {
+          "line": 7,
+          "code": "import bpy, json"
+        },
+        {
+          "line": 8,
+          "code": "from pathlib import Path"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "standards/qa_frame.py",
+      "sha256": "cfa7cce4259d342cf9fdb8af960cd82eb1fed5f800ea4189c802074da129d1c2",
+      "bytes": 1355,
+      "category": "shared_standard",
+      "covered_unique_asset_ids": [],
+      "line_count": 18,
+      "imports": [
+        {
+          "line": 7,
+          "code": "from bpy_extras.object_utils import world_to_camera_view"
+        },
+        {
+          "line": 8,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "standards/staff_materials.py",
+      "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
+      "bytes": 1319,
+      "category": "shared_standard",
+      "covered_unique_asset_ids": [],
+      "line_count": 15,
+      "imports": [
+        {
+          "line": 2,
+          "code": "from pathlib import Path"
+        },
+        {
+          "line": 3,
+          "code": "import json, bpy"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    },
+    {
+      "path": "standards/utility_ports.py",
+      "sha256": "d8c238828769863e60682684aece892b4c9938bed5572269de76c45cfeb13ed2",
+      "bytes": 8222,
+      "category": "shared_standard",
+      "covered_unique_asset_ids": [],
+      "line_count": 138,
+      "imports": [
+        {
+          "line": 11,
+          "code": "import math, json"
+        },
+        {
+          "line": 12,
+          "code": "import bpy, bmesh"
+        },
+        {
+          "line": 13,
+          "code": "from mathutils import Vector"
+        }
+      ],
+      "excluded_folder_io": [],
+      "mkdir_calls": [],
+      "creates_qa_or_render_parent": false,
+      "excluded_folder_reads_or_imports": [],
+      "uncreated_excluded_folder_write_candidates": [],
+      "notes": "Static path/use scan plus manual inspection. No arbitrary code executed and no full dataflow/program-correctness proof."
+    }
+  ],
+  "distinctions": [
+    "build_reveal.py main couples model creation and new QA rendering; line11 creates qa/. It has no dependency on pre-existing QA media and no missing-directory defect. It is not a render-free command.",
+    "Other excluded QA/report paths in manifests or strings are references to separate validation evidence, not generation-time reads.",
+    "build_stock_variants.py reads the included base source .blend and manifest; botanical closure/repack scripts read included master/family records. These are expected local source dependencies.",
+    "Texture redraw scripts need Pillow and, for the two graphic labels, system DejaVu fonts. Current PNG/JSON resources are included; primary model generators read those resources, not pre-existing renders.",
+    "New flange helper additionally imports NumPy and SciPy Delaunay; these are environment requirements, not excluded-folder files.",
+    "Batch reference-manifest JSONs are common source data. Furniture/reveal reference-image globbing may be empty without optional reference media; it does not supply geometry or fail on a missing QA input.",
+    "Static absence of excluded-input dependencies does not certify arbitrary full regeneration or replace prior actual source/export/visual QA."
+  ]
+}

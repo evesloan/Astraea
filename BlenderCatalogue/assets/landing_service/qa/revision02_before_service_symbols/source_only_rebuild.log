@@ -1,0 +1,57 @@
+{
+  "source_only_package": "qa/landing_service_source_only.zip",
+  "source_only_package_sha256": "8fdc1f7702c43240fd30cff2b40cca5efc6ec0fe317764a09664f149de2819a7",
+  "fresh_stage_initial_files": [
+    "assets/landing_service/source/build_landing_service.py",
+    "materials/staff/manifest.json",
+    "materials/staff/staff_bluegrey_paint.png",
+    "materials/staff/staff_cable_blue.png",
+    "materials/staff/staff_cable_red.png",
+    "materials/staff/staff_floor.png",
+    "materials/staff/staff_label.png",
+    "materials/staff/staff_opal.png",
+    "materials/staff/staff_rubber.png",
+    "materials/staff/staff_white_paint.png",
+    "materials/staff/staff_zinc.png",
+    "standards/staff_materials.py"
+  ],
+  "source_input_count": 12,
+  "all_loaded_staff_material_roles_included": true,
+  "prior_new_outputs_or_qa_inputs_in_stage": false,
+  "build_command": [
+    "blender",
+    "--background",
+    "--threads",
+    "1",
+    "--python",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/landing_service/qa/fresh_source_only_stage/assets/landing_service/source/build_landing_service.py"
+  ],
+  "builder_returncode": 0,
+  "source_equivalence_method": "Reopened saved blend compares named editable geometry, topology, UV, materials, object hierarchy, extras, world transforms and modifier type/width/segments; .blend binary separately checked",
+  "blend_byte_scope": "Packed texture absolute paths and Blender save metadata may differ with staging location; editable semantic equivalence and evaluated GLB byte equivalence are independently required",
+  "results": [
+    {
+      "id": "AST-LND-003",
+      "original_glb_sha256": "69ade8fee18bc9d40b200da177105657eba00d1d85a421723ba962d416ee9572",
+      "fresh_glb_sha256": "69ade8fee18bc9d40b200da177105657eba00d1d85a421723ba962d416ee9572",
+      "export_byte_identical": true,
+      "original_blend_sha256": "5866f34f120506ccdd9a29f0622a53f1166b30b17efd1fa828c62c5aaf4df289",
+      "fresh_blend_sha256": "888b6bdd3ecd1fa0603da0718ffbc466c17238033deba4c8ecb258ece156e61e",
+      "blend_byte_identical": false,
+      "editable_geometry_uv_material_hierarchy_modifier_identical": true,
+      "editable_signature": "43cc3aa8e9db1016d70cc5fb421a5a6f5ba9e6f7d399b8ab13ec4492f20ae725"
+    },
+    {
+      "id": "AST-LND-004",
+      "original_glb_sha256": "96ef96ff8e24614149ce27e6aebb1b35be1c51096fc62237af099f4ef78f234f",
+      "fresh_glb_sha256": "96ef96ff8e24614149ce27e6aebb1b35be1c51096fc62237af099f4ef78f234f",
+      "export_byte_identical": true,
+      "original_blend_sha256": "266ad3f714a7b8345651aa9d31b277cee5b206435aed844ff48af4cf747172ef",
+      "fresh_blend_sha256": "5880f36e64cb6c3270bd3c86095adc382a2add74d57e16b81770c1da18e4d121",
+      "blend_byte_identical": false,
+      "editable_geometry_uv_material_hierarchy_modifier_identical": true,
+      "editable_signature": "2f026847c763a25a1e4bb1d6c62179b8e0da5fe274c52f264b245666ec7ef4ce"
+    }
+  ],
+  "all_required_checks_pass": true
+}

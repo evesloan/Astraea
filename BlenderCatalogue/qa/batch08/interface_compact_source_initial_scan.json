@@ -1,0 +1,653 @@
+{
+  "method": "Static AST and source scan only, not execution or full abstract interpretation. Production generators and supporting local/shared modules outside qa/renders, plus new flange derivative, were read.",
+  "files": [
+    {
+      "path": "assets/aquatic_edges/source/build_aquatic_edges.py",
+      "sha256": "0897bc34ef75e8ed1553f3e9fec9643b89ea83df759eb0e6d03dc959d702d3be",
+      "line_count": 255,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util, sys",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [
+        {
+          "line": 105,
+          "code": "folder.mkdir(exist_ok=True)"
+        }
+      ],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/aquatic_float/source/build_float.py",
+      "sha256": "184e2e9db0bb1a0fa5522a0dec70aae7348252dfd77e2751560f5fd9fa0296b8",
+      "line_count": 207,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/aquatic_lounge/source/build_aquatic_lounge.py",
+      "sha256": "a73f32d2a14b131a8a1777d9ec4c9056469a9ddab13cc38e6cbc41fbb5a61e79",
+      "line_count": 302,
+      "imports": [
+        "from pathlib import Path",
+        "import sys, math, json, hashlib",
+        "import bpy, bmesh",
+        "from mathutils import Vector",
+        "from mathutils.bvhtree import BVHTree",
+        "from materials import materials",
+        "from aquatic_materials import materials as aquatic_materials"
+      ],
+      "qa_or_render_io_calls": [
+        {
+          "line": 301,
+          "call": "write_text",
+          "code": "ROOT / 'qa' / 'join_checks.json'.write_text(...)",
+          "enclosing": [
+            "if __name__ == '__main__'"
+          ]
+        }
+      ],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": [
+        {
+          "line": 301,
+          "code": "    (ROOT/'qa'/'join_checks.json').write_text(json.dumps({r['catalogue_id']:r['join_checks'] for r in rows},indent=2)+'\\n')"
+        }
+      ]
+    },
+    {
+      "path": "assets/botanical_canopy/source/build_canopy.py",
+      "sha256": "1ffd9a8071f8eb9d8f5ff8aa2e6da93bfe7a8a6b28ad859d2cf41adb1cf815c9",
+      "line_count": 181,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [
+        {
+          "line": 180,
+          "call": "write_text",
+          "code": "ROOT / 'qa/support_contacts.json'.write_text(...)",
+          "enclosing": []
+        }
+      ],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": [
+        {
+          "line": 178,
+          "code": "data.update({'catalogue_id':'AST-BOT-001','design':'Asymmetric small branching canopy specimen','authorship':'Original script-assisted intentional geometry, 2026-10-02; no hand-GUI claim','source':blend.name,'exchange':glb.name,'generator':'source/build_canopy.py','units':'metres','source_axes':'Z u..."
+        },
+        {
+          "line": 180,
+          "code": "(ROOT/'qa/support_contacts.json').write_text(json.dumps({'scope':'Actual authored path geometry; analytical capped-support overlap and exact leaf-base contact','soil_contact_z_m':0.0,'branch_contacts':CONTACTS,'leaf_contacts':LEAF_RECORDS,'all_child_starts_inside_parent_radius':all(c['parent_centerl..."
+        }
+      ]
+    },
+    {
+      "path": "assets/botanical_planter/source/build_botanical_planter.py",
+      "sha256": "0f538766821b2b96f023950cba4158caa3e7934164755b3587ea4aae2a4e98da",
+      "line_count": 168,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/botanical_planter/source/build_start_closure.py",
+      "sha256": "bb90f7c4a283bbad6dd2297520f3e77ec60c5ccf6b0c6a5282a69105684275d2",
+      "line_count": 28,
+      "imports": [
+        "import bpy, bmesh, json, importlib.util, hashlib",
+        "from pathlib import Path"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [
+        {
+          "line": 7,
+          "code": "DERIVED.mkdir(exist_ok=True)"
+        }
+      ],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/botanical_planter/source/repack_soil.py",
+      "sha256": "22205906b78bfb269e6fe27534f95365825d23a91bcecb1e3ef3cc9d03c587d3",
+      "line_count": 21,
+      "imports": [
+        "import bpy, importlib.util, json, hashlib",
+        "from pathlib import Path"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/botanical_understory/source/build_botanical_understory.py",
+      "sha256": "3ce7e29bc8eb427b64e4f229ef2a64bb62bcbf3e506b38e5de81b38ae9c6a883",
+      "line_count": 205,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/furniture/build_furniture.py",
+      "sha256": "480dcc3bb79d0158ec827eebe295aab3623cc5de30982412e9bad3eb30a97dd5",
+      "line_count": 292,
+      "imports": [
+        "from pathlib import Path",
+        "import sys, math, json, hashlib",
+        "import bpy, bmesh",
+        "from mathutils import Vector",
+        "from materials import materials"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/hospitality_counters/source/build_hospitality_counters.py",
+      "sha256": "967acd9c8c7da058a754aec8af3365dba7c5c32fbd11c7e6a592ca792c07850b",
+      "line_count": 343,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util, sys",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": [
+        {
+          "line": 19,
+          "code": "CURVED_SERVICE_ACCESS={'type': 'geometric_inner_curve_service_access_proposal', 'frame_source': 'Blender source +Z up', 'frame_glb': 'native glTF +Y up', 'access_from': 'Concave inner side of return, toward larger radius', 'inner_curve_center_source_m': [0, 0.62, 0], 'inner_curve_center_glb_m': [0, ..."
+        },
+        {
+          "line": 310,
+          "code": "         'validation_catalogue_relative_path':'qa/batch08/counter_collision_revision/validation_report.json',"
+        }
+      ]
+    },
+    {
+      "path": "assets/hospitality_serviceware/source/build_serviceware.py",
+      "sha256": "39a9bfdfcdd24c579666d65330e507cd9e27cdaf7e108b32d53c03f26ba8abc4",
+      "line_count": 243,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector, Matrix"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/hospitality_serviceware/source/collision_shapes.py",
+      "sha256": "0411eb87ed8f306926d2510a40de34d3b8aa5420d51ecf65d058fac19fdbf0d3",
+      "line_count": 47,
+      "imports": [
+        "import json, math",
+        "from pathlib import Path"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/hospitality_stations/source/build_hospitality_stations.py",
+      "sha256": "8c90b0aa15827a929f48497422d2ef5b73ee876b555dbf189c072e1ce03fffa9",
+      "line_count": 243,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util, struct, sys",
+        "from pathlib import Path",
+        "from mathutils import Vector, Matrix"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/hospitality_stations/textures/draw_graphics.py",
+      "sha256": "99473a37be250fbff6e82b745c93d06dfc3cc8f1b4ed03d6109b10fdb5b5a724",
+      "line_count": 17,
+      "imports": [
+        "from PIL import Image, ImageDraw, ImageFont",
+        "from pathlib import Path",
+        "import json, hashlib"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/library_contents/build_library_contents.py",
+      "sha256": "a878c2f61173db874615de18b203ce2fd6550a90df86bb81ee48c3a72361481f",
+      "line_count": 184,
+      "imports": [
+        "from pathlib import Path",
+        "import bpy, bmesh, math, json, sys, hashlib",
+        "from mathutils import Vector, Matrix",
+        "from materials import materials"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/library_contents/build_stock_variants.py",
+      "sha256": "375963140fa74c1006d72c1c270533d7a5b8b1047a80fa42f8c2b2f4e688c7a6",
+      "line_count": 78,
+      "imports": [
+        "from pathlib import Path",
+        "import bpy, json, math, sys, hashlib, copy",
+        "from mathutils import Matrix",
+        "import build_library_contents as lib"
+      ],
+      "qa_or_render_io_calls": [
+        {
+          "line": 8,
+          "call": "mkdir",
+          "code": "ROOT / 'qa'.mkdir(...)",
+          "enclosing": []
+        },
+        {
+          "line": 78,
+          "call": "write_text",
+          "code": "ROOT / 'qa/variant_source_import_audit.json'.write_text(...)",
+          "enclosing": []
+        }
+      ],
+      "mkdir_lines": [
+        {
+          "line": 8,
+          "code": "(ROOT/'qa').mkdir(parents=True,exist_ok=True)"
+        }
+      ],
+      "excluded_folder_literal_lines": [
+        {
+          "line": 8,
+          "code": "(ROOT/'qa').mkdir(parents=True,exist_ok=True)"
+        },
+        {
+          "line": 78,
+          "code": "(ROOT/'qa/variant_source_import_audit.json').write_text(json.dumps(audits,indent=2));print('DERIVED_ASSEMBLIES_PASS',audits)"
+        }
+      ]
+    },
+    {
+      "path": "assets/library_contents/make_book_textures.py",
+      "sha256": "88140a1e3521b73df9c33313bb488313f7490dcd955a3c92fd7be51939004e3a",
+      "line_count": 77,
+      "imports": [
+        "from pathlib import Path",
+        "import json, random, math, hashlib",
+        "from PIL import Image, ImageDraw"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [
+        {
+          "line": 8,
+          "code": "TEX.mkdir(exist_ok=True)"
+        }
+      ],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/library_structure/source/build_library_structure.py",
+      "sha256": "58cc1fc7acb85351ceec9a72818e79f875026eed31f435795aac9700836ea6a3",
+      "line_count": 292,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/library_study/build_study.py",
+      "sha256": "ef259f905eccf2663404950d6b18d9d7eb391604e043d7084de58785505fcdb2",
+      "line_count": 233,
+      "imports": [
+        "from pathlib import Path",
+        "import math, json, sys, hashlib",
+        "import bpy, bmesh",
+        "from mathutils import Vector",
+        "from materials import materials"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/staff_overhead/source/build_staff_overhead.py",
+      "sha256": "6828950f293763bc4a1aa54e25c2b101c194a786c512e4e98b10e8ee2c6aae37",
+      "line_count": 275,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/staff_wall/source/build_staff_wall.py",
+      "sha256": "d4cd8c1acde52b478a2aa293dc00cff1bb24c64c065ba4a20541fd67b842b514",
+      "line_count": 193,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/staff_workbay/build_staff_workbay.py",
+      "sha256": "a156aabec749943c1aab0f8dbab6f40568ebbd4bca30c3b104d2d7d0a119936b",
+      "line_count": 248,
+      "imports": [
+        "from pathlib import Path",
+        "import sys, math, json, hashlib",
+        "import bpy, bmesh",
+        "from mathutils import Vector",
+        "from staff_materials import materials"
+      ],
+      "qa_or_render_io_calls": [
+        {
+          "line": 246,
+          "call": "write_text",
+          "code": "ROOT / (SLUG + '.collision_proposal.json').write_text(...)",
+          "enclosing": [
+            "function main"
+          ]
+        }
+      ],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": [
+        {
+          "line": 236,
+          "code": "    data.update({'catalogue_id':ID,'name':'Astraea Staff Supply / Work Cabinet','unique_design_count':1,'units':'metres','axis':'Blender Z up; front -Y; GLB standard Y-up conversion','pivot_m':[0,0,0],'work_surface_z_m':.940,'body_width_m':1.8,'counter_depth_m':.620,'closed_total_depth_including_han..."
+        },
+        {
+          "line": 246,
+          "code": "    (ROOT/(SLUG+'.collision_proposal.json')).write_text(json.dumps({'catalogue_id':ID,'status':'Proposals only; no engine physics authored or accepted. No full-cabinet convex proxy; storage apertures and hollow volume remain unfilled.','coordinates':'Blender metres, Z up, front -Y; initial closed st..."
+        }
+      ]
+    },
+    {
+      "path": "assets/utility_console/source/build_utility_console.py",
+      "sha256": "0687ca700b4b9f9d20d59390d9816c7f794b3149898e849e75688e3d94239908",
+      "line_count": 254,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector, Matrix",
+        "import runpy"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/utility_console/source/write_collision_proposals.py",
+      "sha256": "e14e4d8467c1451e8d16738498299477a463affe006a178a22f827049aec4b31",
+      "line_count": 47,
+      "imports": [
+        "from pathlib import Path",
+        "import json, math"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/utility_console/textures/draw_console_graphics.py",
+      "sha256": "594950c99b89ae1c4d00ede3a6b240c9ad87385d0f60aa1e2f7347ff28a302b8",
+      "line_count": 44,
+      "imports": [
+        "from pathlib import Path",
+        "import json, math, hashlib",
+        "from PIL import Image, ImageDraw, ImageFont"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/utility_machines/source/build_collision_proposals.py",
+      "sha256": "b7c54208f8d69152637ff47d6e6537ee127c66485cda0554d82a44e3f80a0b04",
+      "line_count": 56,
+      "imports": [
+        "import math, json",
+        "from pathlib import Path"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/utility_machines/source/build_utility_machines.py",
+      "sha256": "da6fdcbb5d3563cd283c8c16bfed1d84883e6486d1128ae6a97204001a9263b8",
+      "line_count": 296,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector, Matrix"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/utility_pipework/derived_lod/source/build_flange_derivative.py",
+      "sha256": "d1963ce3b6531b5fea089da954e29dc6a35685ea52fad2987828c60de4b8d8d6",
+      "line_count": 49,
+      "imports": [
+        "import bpy, bmesh, json, hashlib, importlib.util, math",
+        "from pathlib import Path",
+        "from mathutils import Vector, Matrix"
+      ],
+      "qa_or_render_io_calls": [
+        {
+          "line": 47,
+          "call": "write_text",
+          "code": "BASE / 'qa/source_geometry.json'.write_text(...)",
+          "enclosing": [
+            "function main"
+          ]
+        }
+      ],
+      "mkdir_lines": [
+        {
+          "line": 33,
+          "code": "(BASE/directory).mkdir(parents=True,exist_ok=True)"
+        }
+      ],
+      "excluded_folder_literal_lines": [
+        {
+          "line": 32,
+          "code": " for directory in ('source','exports','qa'):"
+        },
+        {
+          "line": 47,
+          "code": " (BASE/'qa/source_geometry.json').write_text(json.dumps({'revision':lod.REVISION,'results':result},indent=2)+'\\n')"
+        }
+      ]
+    },
+    {
+      "path": "assets/utility_pipework/derived_lod/source/utility_flange_economical.py",
+      "sha256": "a57430c9ce0d09617a4e604f9639fc484e11d02933c01c6635d85473a00eeae8",
+      "line_count": 67,
+      "imports": [
+        "import math, importlib.util, bpy, bmesh",
+        "import numpy as np",
+        "from scipy.spatial import Delaunay",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/utility_pipework/source/build_utility_pipework.py",
+      "sha256": "4c885b6b5fdfc4a2f5697487f7f3edc38de836fabf673cfee73d1c8137e5afb7",
+      "line_count": 156,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector, Matrix"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "assets/view_reveal/source/build_reveal.py",
+      "sha256": "5ae61f238a8e5aa58f54474c5f23b0d88143546e6eb0d24b358d982b648dc942",
+      "line_count": 240,
+      "imports": [
+        "import bpy, bmesh, math, json, hashlib, sys, importlib.util",
+        "from pathlib import Path",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [
+        {
+          "line": 230,
+          "call": "save_as_mainfile",
+          "code": "bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'qa/joins_editable.blend'),compress=True)",
+          "enclosing": [
+            "function main"
+          ]
+        },
+        {
+          "line": 236,
+          "call": "save_as_mainfile",
+          "code": "bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'qa/terminal_editable.blend'),compress=True)",
+          "enclosing": [
+            "function main"
+          ]
+        }
+      ],
+      "mkdir_lines": [
+        {
+          "line": 11,
+          "code": "(ROOT/d).mkdir(exist_ok=True)"
+        }
+      ],
+      "excluded_folder_literal_lines": [
+        {
+          "line": 11,
+          "code": "for d in ('source','exports','qa'): (ROOT/d).mkdir(exist_ok=True)"
+        },
+        {
+          "line": 168,
+          "code": "    c=camera('QA_ONLY_'+file,loc,target,lens,ortho);sc=bpy.context.scene;sc.render.resolution_x,sc.render.resolution_y=res;sc.render.filepath=str(ROOT/'qa'/file);bpy.ops.render.render(write_still=True);bpy.data.objects.remove(c,do_unlink=True)"
+        },
+        {
+          "line": 230,
+          "code": "    bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'qa/joins_editable.blend'),compress=True)"
+        },
+        {
+          "line": 236,
+          "code": "    bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'qa/terminal_editable.blend'),compress=True)"
+        }
+      ]
+    },
+    {
+      "path": "standards/aquatic_materials.py",
+      "sha256": "6c522b087f2c0aef5baa599559211f6070be147d1984feeb77dc2343494a5ca1",
+      "line_count": 13,
+      "imports": [
+        "from pathlib import Path",
+        "import json, bpy"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "standards/botanical_materials.py",
+      "sha256": "d06b19d91cd5c1d18fe2e7e1b32b86e855bab5993872dbad9865248017e24ea7",
+      "line_count": 15,
+      "imports": [
+        "from pathlib import Path",
+        "import json, bpy"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "standards/materials.py",
+      "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+      "line_count": 30,
+      "imports": [
+        "import bpy, json",
+        "from pathlib import Path"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "standards/qa_frame.py",
+      "sha256": "cfa7cce4259d342cf9fdb8af960cd82eb1fed5f800ea4189c802074da129d1c2",
+      "line_count": 18,
+      "imports": [
+        "from bpy_extras.object_utils import world_to_camera_view",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "standards/staff_materials.py",
+      "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
+      "line_count": 15,
+      "imports": [
+        "from pathlib import Path",
+        "import json, bpy"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    },
+    {
+      "path": "standards/utility_ports.py",
+      "sha256": "d8c238828769863e60682684aece892b4c9938bed5572269de76c45cfeb13ed2",
+      "line_count": 138,
+      "imports": [
+        "import math, json",
+        "import bpy, bmesh",
+        "from mathutils import Vector"
+      ],
+      "qa_or_render_io_calls": [],
+      "mkdir_lines": [],
+      "excluded_folder_literal_lines": []
+    }
+  ],
+  "file_count": 37
+}

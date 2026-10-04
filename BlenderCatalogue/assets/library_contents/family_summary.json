@@ -1,0 +1,348 @@
+[
+  {
+    "catalogue_id": "AST-LIB-006",
+    "name": "Astraea Bound Collection Stock",
+    "intended_use": "Static reusable shelf stock: ten mutually supported upright volumes plus one crown-supported leaning volume and two weighted bookstops",
+    "support_contact_proposal": {
+      "pivot_m": [
+        0,
+        0,
+        0
+      ],
+      "stock_base_z_m": 0,
+      "stock_top_z_m": 0.278,
+      "book_base_contacts": [
+        {
+          "book": "STOCK_volume_01",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Leaning volume crown touches left board"
+        },
+        {
+          "book": "STOCK_volume_02",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Adjacent broad cover touching at X -0.153000"
+        },
+        {
+          "book": "STOCK_volume_03",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Adjacent broad cover touching at X -0.124000"
+        },
+        {
+          "book": "STOCK_volume_04",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Adjacent broad cover touching at X -0.072000"
+        },
+        {
+          "book": "STOCK_volume_05",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Adjacent broad cover touching at X -0.034000"
+        },
+        {
+          "book": "STOCK_volume_06",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Adjacent broad cover touching at X -0.000000"
+        },
+        {
+          "book": "STOCK_volume_07",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Adjacent broad cover touching at X 0.062000"
+        },
+        {
+          "book": "STOCK_volume_08",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Adjacent broad cover touching at X 0.088000"
+        },
+        {
+          "book": "STOCK_volume_09",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Adjacent broad cover touching at X 0.136000"
+        },
+        {
+          "book": "STOCK_volume_10",
+          "base_z_m": 0,
+          "support": "shelf surface at asset pivot Z0",
+          "side_support": "Adjacent broad cover touching at X 0.172000"
+        },
+        {
+          "book": "STOCK_volume_11_supported_lean",
+          "lean_angle_degrees": 8,
+          "minimum_base_z_m": 0,
+          "base_contact_edge_m": [
+            [
+              -0.2292365828361761,
+              -0.093,
+              0
+            ],
+            [
+              -0.2292365828361761,
+              0.11,
+              0
+            ]
+          ],
+          "support": "Bottom right cover edge on shelf; upper right cover crown touches volume01 left cover",
+          "neighbor_contact_m": [
+            -0.195,
+            0.005,
+            0.2436059449104263
+          ],
+          "neighbor": "STOCK_volume_01",
+          "neighbor_left_face_x_m": -0.195
+        }
+      ],
+      "upright_cover_gaps_m": 0,
+      "stock_envelope_max_m": [
+        0.68,
+        0.24,
+        0.29
+      ],
+      "placement": "Place origin on declared shelf-top anchor; keep -Y spines facing accessible aisle. Rotation about Z is supported.",
+      "ordinary_reach": "Upper stock requires staff access planning; no guest standing-reach claim"
+    },
+    "resource_api": {
+      "load_glb": "AST-LIB-006_upright_book_group.glb",
+      "placement_origin": "Actual shelf/book base Z0; row near centred at X0, with rear edges Y .11",
+      "forward_blender": [
+        0,
+        -1,
+        0
+      ],
+      "forward_glTF": [
+        0,
+        0,
+        1
+      ],
+      "animation": "None; one static mesh with semantic material primitives",
+      "instancing": "Reuse same imported mesh/material resources. Separate selected volumes only in future interaction work"
+    },
+    "contact_joins": [
+      {
+        "members": [
+          "volume_11_supported_lean",
+          "volume_01"
+        ],
+        "intent": "Exact transformed crown/board contact",
+        "contact_m": [
+          -0.195,
+          0.005,
+          0.2436059449104263
+        ]
+      },
+      {
+        "members": [
+          "volume_10",
+          "R_weighted_champagne_endstop"
+        ],
+        "intent": "Exact side contact X 0.21900000000000003"
+      }
+    ],
+    "bounds_min_m": [
+      -0.2938667833805084,
+      -0.1106799989938736,
+      0.0
+    ],
+    "bounds_max_m": [
+      0.24799999594688416,
+      0.10999999940395355,
+      0.27799999713897705
+    ],
+    "dimensions_m": [
+      0.5418667793273926,
+      0.22067999839782715,
+      0.27799999713897705
+    ],
+    "triangles_evaluated": 802,
+    "units": "metres",
+    "front_axis": "-Y",
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "blender_version": "4.3.2",
+    "authoring": "Reproducible script-assisted intentional construction; separately editable covers, pages, labels, bands, bookstops, cover leaves and printed leaf surfaces",
+    "provenance": "New original 2026-10-02 catalogue work, independent of missing game recovery. Four library reference PNGs inspected for collection rhythm and useful reading details only; no copied pixels or book art; no downloaded models; no Tripo.",
+    "source_generator": "build_library_contents.py",
+    "texture_generator": "make_book_textures.py",
+    "qa_scope": "Blender component evidence only; original game, Godot integration, actor acceptance, collision behavior and runtime performance are untested",
+    "materials": [
+      "book_cover_clay",
+      "book_cover_ochre",
+      "book_cover_teal",
+      "book_label_paper",
+      "book_paper_edges",
+      "book_print_ink",
+      "champagne_metal"
+    ],
+    "export": {
+      "format": "GLB",
+      "Y_up": true,
+      "geometry": "One static visual mesh consolidated into semantic material primitives",
+      "active_uv_name": "UV_Metric_Metres",
+      "embedded_textures": true,
+      "collision_exported": false,
+      "source_semantic_part_count": 74,
+      "static_mesh_count": 1,
+      "material_primitive_count": 7
+    },
+    "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+    "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+    "source_generator_sha256": "a878c2f61173db874615de18b203ce2fd6550a90df86bb81ee48c3a72361481f",
+    "texture_generator_sha256": "88140a1e3521b73df9c33313bb488313f7490dcd955a3c92fd7be51939004e3a",
+    "blend_sha256": "e99e041fd51efb9a818a7cbef5cc27a4480dbd07d6e7ab84c312a25ff1da9f22",
+    "glb_sha256": "738354f196511820457230760f86237d6ce82d333326a8343ef8553663e31b84",
+    "texture_generator_sha256_at_original_export": "ced7c6144f5836ec36f431a456fbf0f5337c3c4ab4af6220db37cb990e9c2ba8",
+    "source_generator_sha256_at_original_export": "9fb0073ca9c0bb48a0d83c4336689f0b6ad3f7b4ff84e712d3053b15c7d88a4c",
+    "texture_manifest_interface_revision": "library-texture-paths-02",
+    "texture_manifest_sha256": "60e73b95cbb0c1bb8d87553c92f2b52f85a4e89b5d6dc9d17c4b1964518d6cdc",
+    "dependency_metadata_revision_note": "Batch08 explicit texture path metadata; existing Blender, GLB and texture pixels remain unchanged. Captured generator hashes are retained separately."
+  },
+  {
+    "catalogue_id": "AST-LIB-007",
+    "name": "Astraea Open Field Folio",
+    "intended_use": "Static reading-table display, shaped open folio borne on two individually bound closed volumes",
+    "support_contact_proposal": {
+      "pivot_m": [
+        0,
+        0,
+        0
+      ],
+      "tabletop_contact_z_m": 0,
+      "tabletop_contact_rectangle_m": [
+        [
+          -0.149,
+          -0.1105
+        ],
+        [
+          0.149,
+          0.1105
+        ]
+      ],
+      "closed_volume_stack_contacts_z_m": [
+        0,
+        0.026,
+        0.048
+      ],
+      "open_cover_lower_face_z_m": 0.048,
+      "open_page_gutter_z_m": 0.0611,
+      "open_page_shoulder_z_m": 0.0801,
+      "open_cover_overhang_past_bottom_book_m": {
+        "left_x": 0.036,
+        "right_x": 0.036,
+        "back_y": 0.0055,
+        "front_y": 0.0055
+      },
+      "bookmark_extension_y_min_m": -0.14,
+      "placement": "Place origin on study surface Z .74\u2013.76 m; front -Y faces reader. Display entirely inside tabletop safe perimeter.",
+      "interaction": "Static grouped display; picking individual books, page turning, page text interpretation and actor hand contact are future work"
+    },
+    "resource_api": {
+      "load_glb": "AST-LIB-007_open_folio_stack.glb",
+      "placement_origin": "Bottom closed volume lower cover on support plane Z0",
+      "forward_blender": [
+        0,
+        -1,
+        0
+      ],
+      "forward_glTF": [
+        0,
+        0,
+        1
+      ],
+      "animation": "None; static semantic material primitives"
+    },
+    "contact_joins": [
+      {
+        "members": [
+          "lower_closed_volume",
+          "upper_closed_volume"
+        ],
+        "support_z_m": 0.026
+      },
+      {
+        "members": [
+          "upper_closed_volume",
+          "open_cover_boards"
+        ],
+        "support_z_m": 0.048
+      },
+      {
+        "members": [
+          "open_cover_boards",
+          "shaped_bound_page_block"
+        ],
+        "gap_m": 0,
+        "intent": "Page blocks bear directly on cover top Z .052; sewn gutter joins both halves"
+      }
+    ],
+    "bounds_min_m": [
+      -0.1850000023841858,
+      -0.14000000059604645,
+      0.0
+    ],
+    "bounds_max_m": [
+      0.1850000023841858,
+      0.11599999666213989,
+      0.08009999990463257
+    ],
+    "dimensions_m": [
+      0.3700000047683716,
+      0.25599999725818634,
+      0.08009999990463257
+    ],
+    "triangles_evaluated": 276,
+    "units": "metres",
+    "front_axis": "-Y",
+    "pivot_m": [
+      0,
+      0,
+      0
+    ],
+    "blender_version": "4.3.2",
+    "authoring": "Reproducible script-assisted intentional construction; separately editable covers, pages, labels, bands, bookstops, cover leaves and printed leaf surfaces",
+    "provenance": "New original 2026-10-02 catalogue work, independent of missing game recovery. Four library reference PNGs inspected for collection rhythm and useful reading details only; no copied pixels or book art; no downloaded models; no Tripo.",
+    "source_generator": "build_library_contents.py",
+    "texture_generator": "make_book_textures.py",
+    "qa_scope": "Blender component evidence only; original game, Godot integration, actor acceptance, collision behavior and runtime performance are untested",
+    "materials": [
+      "book_cover_clay",
+      "book_cover_ochre",
+      "book_cover_teal",
+      "book_label_paper",
+      "book_paper_edges",
+      "book_print_ink",
+      "folio_chart_page",
+      "folio_text_page"
+    ],
+    "export": {
+      "format": "GLB",
+      "Y_up": true,
+      "geometry": "One static visual mesh consolidated into semantic material primitives",
+      "active_uv_name": "UV_Metric_Metres",
+      "embedded_textures": true,
+      "collision_exported": false,
+      "source_semantic_part_count": 21,
+      "static_mesh_count": 1,
+      "material_primitive_count": 8
+    },
+    "shared_material_source_sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78",
+    "shared_material_manifest_sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236",
+    "source_generator_sha256": "a878c2f61173db874615de18b203ce2fd6550a90df86bb81ee48c3a72361481f",
+    "texture_generator_sha256": "88140a1e3521b73df9c33313bb488313f7490dcd955a3c92fd7be51939004e3a",
+    "blend_sha256": "c10dbd29c712b34c749eacb618b4b18c418dca6e56dfc3076ba4b006295cf0de",
+    "glb_sha256": "be04e9ab7dbe3b555d272f1d72acfdee477cc274a4f64d6f5a6a57510bec5c54",
+    "texture_generator_sha256_at_original_export": "ced7c6144f5836ec36f431a456fbf0f5337c3c4ab4af6220db37cb990e9c2ba8",
+    "source_generator_sha256_at_original_export": "9fb0073ca9c0bb48a0d83c4336689f0b6ad3f7b4ff84e712d3053b15c7d88a4c",
+    "texture_manifest_interface_revision": "library-texture-paths-02",
+    "texture_manifest_sha256": "60e73b95cbb0c1bb8d87553c92f2b52f85a4e89b5d6dc9d17c4b1964518d6cdc",
+    "dependency_metadata_revision_note": "Batch08 explicit texture path metadata; existing Blender, GLB and texture pixels remain unchanged. Captured generator hashes are retained separately."
+  }
+]

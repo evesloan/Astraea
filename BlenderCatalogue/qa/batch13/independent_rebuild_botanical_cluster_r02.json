@@ -1,0 +1,278 @@
+{
+  "passed": true,
+  "family": "botanical_cluster",
+  "revision": "r02",
+  "fresh_input_only_stage": true,
+  "source_only_build_duplicated_by_reviewer": true,
+  "stage": "qa/batch13/independent_rebuild_stage_botanical_cluster_r02",
+  "production_inputs": [
+    {
+      "path": "assets/botanical_cluster/source/build_botanical_cluster.py",
+      "sha256": "01d89a0b367137f182eefa706ec6192933be5d0c2b9953f038e03af90232df17",
+      "bytes": 20255
+    },
+    {
+      "path": "materials/botanical/botanical_bark.png",
+      "sha256": "b6c9e4f38812b846b07867bb676f3b29aadc37049846bac0c786cb87cce96447",
+      "bytes": 11164
+    },
+    {
+      "path": "materials/botanical/botanical_flower.png",
+      "sha256": "f0c7e510dc566f8c490276c096e317c834f2f436d063d9ee796e076db8086fe9",
+      "bytes": 6128
+    },
+    {
+      "path": "materials/botanical/botanical_leaf_jade.png",
+      "sha256": "77c09ec24712b7210f37e98ad56880d24a1d61f8d6656d0d4ca6ae557e6ee2dd",
+      "bytes": 12136
+    },
+    {
+      "path": "materials/botanical/botanical_leaf_olive.png",
+      "sha256": "8bc512d3b26c3f8874359580f1a31402f8fc4012918faa7ce0fea8d8cf3a22a6",
+      "bytes": 12134
+    },
+    {
+      "path": "materials/botanical/botanical_leaf_sage.png",
+      "sha256": "3f7609039b41a386a769a44c6de953153b8fea61f3c1c1db186103bfddc04026",
+      "bytes": 12134
+    },
+    {
+      "path": "materials/botanical/botanical_soil.png",
+      "sha256": "ff0651486bc63ba9aab69a344167f936f8e16eae76de7720d6b81e27b9833165",
+      "bytes": 12401
+    },
+    {
+      "path": "materials/botanical/manifest.json",
+      "sha256": "fb8c58cdc8d70d7b9b932780bf9ca19d55975fd1fea2d47e6bdc6a13049f8630",
+      "bytes": 2836
+    },
+    {
+      "path": "standards/botanical_materials.py",
+      "sha256": "d06b19d91cd5c1d18fe2e7e1b32b86e855bab5993872dbad9865248017e24ea7",
+      "bytes": 1482
+    }
+  ],
+  "seed_files": [
+    "assets/botanical_cluster/source/build_botanical_cluster.py",
+    "materials/botanical/botanical_bark.png",
+    "materials/botanical/botanical_flower.png",
+    "materials/botanical/botanical_leaf_jade.png",
+    "materials/botanical/botanical_leaf_olive.png",
+    "materials/botanical/botanical_leaf_sage.png",
+    "materials/botanical/botanical_soil.png",
+    "materials/botanical/manifest.json",
+    "standards/botanical_materials.py"
+  ],
+  "observed_catalogue_read_paths": [
+    "assets/botanical_cluster/AST-BOT-007.manifest.json",
+    "assets/botanical_cluster/AST-BOT-008.manifest.json",
+    "assets/botanical_cluster/AST-BOT-009.manifest.json",
+    "assets/botanical_cluster/exports/AST-BOT-007.glb",
+    "assets/botanical_cluster/exports/AST-BOT-008.glb",
+    "assets/botanical_cluster/exports/AST-BOT-009.glb",
+    "assets/botanical_cluster/source/AST-BOT-007.blend",
+    "assets/botanical_cluster/source/AST-BOT-008.blend",
+    "assets/botanical_cluster/source/AST-BOT-009.blend",
+    "assets/botanical_cluster/source/build_botanical_cluster.py",
+    "materials/botanical/botanical_bark.png",
+    "materials/botanical/botanical_flower.png",
+    "materials/botanical/botanical_leaf_jade.png",
+    "materials/botanical/botanical_leaf_olive.png",
+    "materials/botanical/botanical_leaf_sage.png",
+    "materials/botanical/botanical_soil.png",
+    "materials/botanical/manifest.json",
+    "standards/__pycache__/botanical_materials.cpython-313.pyc",
+    "standards/botanical_materials.py"
+  ],
+  "unexpected_catalogue_reads": [],
+  "freshly_generated_outputs_reopened_for_hashing": [
+    "assets/botanical_cluster/AST-BOT-007.manifest.json",
+    "assets/botanical_cluster/AST-BOT-008.manifest.json",
+    "assets/botanical_cluster/AST-BOT-009.manifest.json",
+    "assets/botanical_cluster/exports/AST-BOT-007.glb",
+    "assets/botanical_cluster/exports/AST-BOT-008.glb",
+    "assets/botanical_cluster/exports/AST-BOT-009.glb",
+    "assets/botanical_cluster/source/AST-BOT-007.blend",
+    "assets/botanical_cluster/source/AST-BOT-008.blend",
+    "assets/botanical_cluster/source/AST-BOT-009.blend"
+  ],
+  "all_helper_loaded_material_roles_included": true,
+  "command": [
+    "blender",
+    "--background",
+    "--threads",
+    "1",
+    "--python",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch13/independent_rebuild_instrument.py",
+    "--",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/source/build_botanical_cluster.py",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch13/independent_rebuild_botanical_cluster_r02_reads.json"
+  ],
+  "returncode": 0,
+  "build_log": {
+    "path": "qa/batch13/independent_rebuild_botanical_cluster_r02.log",
+    "sha256": "cad4884cfba3d4ebe60d9b9403d896803d1f9156646686f2963471833710f708",
+    "bytes": 2841
+  },
+  "file_read_instrumentation": {
+    "path": "qa/batch13/independent_rebuild_botanical_cluster_r02_reads.json",
+    "sha256": "2218c8884f33d038ddbf87532de0c3a52262ad3387a3456ef1fe359be629d7eb",
+    "bytes": 4748
+  },
+  "instrumentation_script": {
+    "path": "qa/batch13/independent_rebuild_instrument.py",
+    "sha256": "b18d092e619d6a7ccdfd75dfdc020dc311618a2da32cf17f0e803f3f473a6f07",
+    "bytes": 1157
+  },
+  "source_audit_command": [
+    "blender",
+    "--background",
+    "--threads",
+    "1",
+    "--python",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch13/independent_source_review.py",
+    "--",
+    "--prefix",
+    "independent_rebuilt_botanical_cluster_r02_",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/source/AST-BOT-007.blend",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/source/AST-BOT-008.blend",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/source/AST-BOT-009.blend"
+  ],
+  "source_audit_log": {
+    "path": "qa/batch13/independent_rebuilt_audit_botanical_cluster_r02.log",
+    "sha256": "24f3b9f78a61948df7da5b85e21ca853e4e144855d0b39edbb1db7917ecb8572",
+    "bytes": 785
+  },
+  "exports": [
+    {
+      "current": {
+        "path": "assets/botanical_cluster/exports/AST-BOT-007.glb",
+        "sha256": "467d00e588c9de6a08222d265bc0e5801fd2d9f2a1e8a932c0ce50dfeb0987d5",
+        "bytes": 127840
+      },
+      "rebuilt": {
+        "path": "qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/exports/AST-BOT-007.glb",
+        "sha256": "467d00e588c9de6a08222d265bc0e5801fd2d9f2a1e8a932c0ce50dfeb0987d5",
+        "bytes": 127840
+      },
+      "byte_identical": true
+    },
+    {
+      "current": {
+        "path": "assets/botanical_cluster/exports/AST-BOT-008.glb",
+        "sha256": "214e17b893803203561a5944bca6ed9bb9dbeb51d371c83dbc7ceb23317d5efd",
+        "bytes": 145068
+      },
+      "rebuilt": {
+        "path": "qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/exports/AST-BOT-008.glb",
+        "sha256": "214e17b893803203561a5944bca6ed9bb9dbeb51d371c83dbc7ceb23317d5efd",
+        "bytes": 145068
+      },
+      "byte_identical": true
+    },
+    {
+      "current": {
+        "path": "assets/botanical_cluster/exports/AST-BOT-009.glb",
+        "sha256": "670572ef5806228d91d6eb1ded84cac29fa1c3029b535378af4d0b0d0032d3ad",
+        "bytes": 241600
+      },
+      "rebuilt": {
+        "path": "qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/exports/AST-BOT-009.glb",
+        "sha256": "670572ef5806228d91d6eb1ded84cac29fa1c3029b535378af4d0b0d0032d3ad",
+        "bytes": 241600
+      },
+      "byte_identical": true
+    }
+  ],
+  "assets": [
+    {
+      "catalogue_id": "AST-BOT-007",
+      "source": {
+        "path": "assets/botanical_cluster/source/AST-BOT-007.blend",
+        "sha256": "399d43bf77e06a59773965cac24f779c46a1e9458a993a392ae0244750b3bd82",
+        "bytes": 174245
+      },
+      "rebuilt_source": {
+        "path": "qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/source/AST-BOT-007.blend",
+        "sha256": "a4a25b6ce88a70e60abcea8062e7d8d3d098a9669645d00477b565915593cb69",
+        "bytes": 174147
+      },
+      "source_audits": [
+        {
+          "path": "qa/batch13/independent_source_AST-BOT-007.json",
+          "sha256": "ece687cf6d84e1e16bc4bfe357b8bc76f9146b6ea94d38966371d78eed662232",
+          "bytes": 41263
+        },
+        {
+          "path": "qa/batch13/independent_rebuilt_botanical_cluster_r02_source_AST-BOT-007.json",
+          "sha256": "1662db824003b78b8cb305301c43988acabc728755165651a1b04a3f9630ebe1",
+          "bytes": 41352
+        }
+      ],
+      "evaluated_geometry_equal": true,
+      "editable_mesh_hierarchy_uv_material_modifier_properties_equal": true,
+      "units_material_graph_image_bytes_equal": true,
+      "pass": true
+    },
+    {
+      "catalogue_id": "AST-BOT-008",
+      "source": {
+        "path": "assets/botanical_cluster/source/AST-BOT-008.blend",
+        "sha256": "1affa4ad3f08255968e489eedc3f29231fbb0b3aa112215885c7c392aadcf00e",
+        "bytes": 187414
+      },
+      "rebuilt_source": {
+        "path": "qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/source/AST-BOT-008.blend",
+        "sha256": "61f76f89b4806182cca8c39ff1dc1429b98586007b0309f2bf076ed92a54c18c",
+        "bytes": 187464
+      },
+      "source_audits": [
+        {
+          "path": "qa/batch13/independent_source_AST-BOT-008.json",
+          "sha256": "8e27b870fbe167a7d1475a3c582895f7a55e880a5244e9239288b6eebfdd6e5e",
+          "bytes": 94458
+        },
+        {
+          "path": "qa/batch13/independent_rebuilt_botanical_cluster_r02_source_AST-BOT-008.json",
+          "sha256": "45f0dcf5b2a73566bdd2e350c1b02f30f30f6deb37dc5e910cb39d23e01c633a",
+          "bytes": 94547
+        }
+      ],
+      "evaluated_geometry_equal": true,
+      "editable_mesh_hierarchy_uv_material_modifier_properties_equal": true,
+      "units_material_graph_image_bytes_equal": true,
+      "pass": true
+    },
+    {
+      "catalogue_id": "AST-BOT-009",
+      "source": {
+        "path": "assets/botanical_cluster/source/AST-BOT-009.blend",
+        "sha256": "a092778c443093d193723213bf4b698ed8b46c2b5a91334301e4d45ca9a25a09",
+        "bytes": 217230
+      },
+      "rebuilt_source": {
+        "path": "qa/batch13/independent_rebuild_stage_botanical_cluster_r02/assets/botanical_cluster/source/AST-BOT-009.blend",
+        "sha256": "80faaf7c272b280dd4fd344fcf12bbebe0e11f2c9ecb747c79226b7515bd31e7",
+        "bytes": 218205
+      },
+      "source_audits": [
+        {
+          "path": "qa/batch13/independent_source_AST-BOT-009.json",
+          "sha256": "f3dc710ef06924eb5fcd3907a8b731dc84019abdb230c84633c512c4f31eccad",
+          "bytes": 185012
+        },
+        {
+          "path": "qa/batch13/independent_rebuilt_botanical_cluster_r02_source_AST-BOT-009.json",
+          "sha256": "369abf52ca6cf34b7564ed08a8f650a66e91edc4bb5358d82f77f4f3dd2ea280",
+          "bytes": 185101
+        }
+      ],
+      "evaluated_geometry_equal": true,
+      "editable_mesh_hierarchy_uv_material_modifier_properties_equal": true,
+      "units_material_graph_image_bytes_equal": true,
+      "pass": true
+    }
+  ],
+  "executed_script_sha256": "995dadd03bd5c00c0ca01985930e2d8a6e7080ebbfa8e35e5e7aa24a97a89762",
+  "limits": "Python open events are observed attempts, not guaranteed successful reads; native image witnesses bind existing loaded image bytes. Blender/system add-on, Python and renderer resources are execution environment dependencies; catalogue Python opens are instrumented and all actual native-loaded Blender image datablocks are bound. OS ptrace tracing was unavailable; the unsuccessful r01 trace is retained. This is not claimed as a system-call-complete trace. No pre-existing new source/export, QA input or author receipt was seeded. Blender binary equality is not required because stored paths differ; actual editable signatures and evaluated geometry are compared."
+}

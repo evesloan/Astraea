@@ -1,0 +1,149 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "id": "AST-HSP-001",
+      "region": "left",
+      "coordinate": "source_x",
+      "closed_interval": [
+        0.12,
+        0.66
+      ],
+      "source_z_closed_interval_m": [
+        0.23,
+        0.4
+      ],
+      "path": "source y+.600 to y-.304",
+      "nominal_sphere_radius_m": 0.003,
+      "covering_inflation_m": 0.007500000000000007,
+      "tested_radius_m": 0.010500000000000006,
+      "sample_count": 1925,
+      "current_compound_blocked_count": 0,
+      "actual_visual_blocked_count": 0,
+      "minimum_actual_visual_clearance_m": 0.02078986878495933,
+      "old_fascia_negative_control_blocked_centreline_count": 1925,
+      "pass": true
+    },
+    {
+      "id": "AST-HSP-001",
+      "region": "middle",
+      "coordinate": "source_x",
+      "closed_interval": [
+        0.94,
+        1.46
+      ],
+      "source_z_closed_interval_m": [
+        0.23,
+        0.4
+      ],
+      "path": "source y+.600 to y-.304",
+      "nominal_sphere_radius_m": 0.003,
+      "covering_inflation_m": 0.007500000000000007,
+      "tested_radius_m": 0.010500000000000006,
+      "sample_count": 1855,
+      "current_compound_blocked_count": 0,
+      "actual_visual_blocked_count": 0,
+      "minimum_actual_visual_clearance_m": 0.02078986878495933,
+      "old_fascia_negative_control_blocked_centreline_count": 1855,
+      "pass": true
+    },
+    {
+      "id": "AST-HSP-001",
+      "region": "right",
+      "coordinate": "source_x",
+      "closed_interval": [
+        1.74,
+        2.28
+      ],
+      "source_z_closed_interval_m": [
+        0.23,
+        0.4
+      ],
+      "path": "source y+.600 to y-.304",
+      "nominal_sphere_radius_m": 0.003,
+      "covering_inflation_m": 0.007500000000000007,
+      "tested_radius_m": 0.010500000000000006,
+      "sample_count": 1925,
+      "current_compound_blocked_count": 0,
+      "actual_visual_blocked_count": 0,
+      "minimum_actual_visual_clearance_m": 0.02078986878495933,
+      "old_fascia_negative_control_blocked_centreline_count": 1925,
+      "pass": true
+    },
+    {
+      "id": "AST-HSP-002",
+      "region": "entry",
+      "coordinate": "angle_radians",
+      "closed_interval": [
+        0.18,
+        0.35
+      ],
+      "source_z_closed_interval_m": [
+        0.23,
+        0.4
+      ],
+      "path": "radius.100 to radius.924 about source(0,.620)",
+      "nominal_sphere_radius_m": 0.003,
+      "covering_inflation_m": 0.004810000000000004,
+      "tested_radius_m": 0.0078100000000000044,
+      "sample_count": 1225,
+      "current_compound_blocked_count": 0,
+      "actual_visual_blocked_count": 0,
+      "minimum_actual_visual_clearance_m": 0.020297726336425164,
+      "old_fascia_negative_control_blocked_centreline_count": 1225,
+      "pass": true
+    },
+    {
+      "id": "AST-HSP-002",
+      "region": "middle",
+      "coordinate": "angle_radians",
+      "closed_interval": [
+        0.63,
+        0.94
+      ],
+      "source_z_closed_interval_m": [
+        0.23,
+        0.4
+      ],
+      "path": "radius.100 to radius.924 about source(0,.620)",
+      "nominal_sphere_radius_m": 0.003,
+      "covering_inflation_m": 0.004810000000000004,
+      "tested_radius_m": 0.0078100000000000044,
+      "sample_count": 2205,
+      "current_compound_blocked_count": 0,
+      "actual_visual_blocked_count": 0,
+      "minimum_actual_visual_clearance_m": 0.020298898102130303,
+      "old_fascia_negative_control_blocked_centreline_count": 2205,
+      "pass": true
+    },
+    {
+      "id": "AST-HSP-002",
+      "region": "exit",
+      "coordinate": "angle_radians",
+      "closed_interval": [
+        1.22,
+        1.4
+      ],
+      "source_z_closed_interval_m": [
+        0.23,
+        0.4
+      ],
+      "path": "radius.100 to radius.924 about source(0,.620)",
+      "nominal_sphere_radius_m": 0.003,
+      "covering_inflation_m": 0.004809999999999953,
+      "tested_radius_m": 0.007809999999999953,
+      "sample_count": 1295,
+      "current_compound_blocked_count": 0,
+      "actual_visual_blocked_count": 0,
+      "minimum_actual_visual_clearance_m": 0.020297734128054554,
+      "old_fascia_negative_control_blocked_centreline_count": 1295,
+      "pass": true
+    }
+  ],
+  "current_collision_sha256": "b37c063ac25d0c926d278c5ba2085833ab2f94c632b3b0f1018be7ddb1ec953c",
+  "method": "Every point of each closed coordinate/height rectangle is within the inflated radius of a sampled segment. Expanded hull plane tests conservatively prove compound clearance; exact segment-to-triangle distances check actual visual clearance. Baseline whole-fascia hulls deliberately fail source-clear centrelines.",
+  "limits": [
+    "3mm sphere is a storage-depth geometric probe, not a body/hand fit claim.",
+    "Continuous regional coverage is bounded to the stated rectangles. No engine or mechanical certification."
+  ]
+}

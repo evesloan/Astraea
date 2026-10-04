@@ -1,0 +1,76 @@
+{
+  "scope": "Frozen shared helper and texture dependencies; no shared file modifications",
+  "files": [
+    {
+      "catalogue_relative_path": "standards/materials.py",
+      "sha256": "b939f4f1090911381a48141f7d3ded26614bb7ee465cd8f66d28e30580e42a78"
+    },
+    {
+      "catalogue_relative_path": "standards/staff_materials.py",
+      "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228"
+    },
+    {
+      "catalogue_relative_path": "standards/qa_frame.py",
+      "sha256": "cfa7cce4259d342cf9fdb8af960cd82eb1fed5f800ea4189c802074da129d1c2"
+    },
+    {
+      "catalogue_relative_path": "materials/material_manifest.json",
+      "sha256": "0b3ca5933f8a860a88137e76e72988f5cd2532dbf5ea43d6ec3d25bdb666f236"
+    },
+    {
+      "catalogue_relative_path": "materials/staff/manifest.json",
+      "sha256": "5cf6681db7a5ba8d1c459cc5b9eaf2ee9f210efd03f1f146b4d8dd21b1d0f759"
+    },
+    {
+      "catalogue_relative_path": "materials/champagne_metal.png",
+      "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4"
+    },
+    {
+      "catalogue_relative_path": "materials/dark_rubber.png",
+      "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3"
+    },
+    {
+      "catalogue_relative_path": "materials/ivory_enamel.png",
+      "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68"
+    },
+    {
+      "catalogue_relative_path": "materials/staff/staff_zinc.png",
+      "sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c"
+    },
+    {
+      "catalogue_relative_path": "materials/warm_stone.png",
+      "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b"
+    },
+    {
+      "catalogue_relative_path": "materials/warm_walnut.png",
+      "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe"
+    }
+  ],
+  "collision_only_reproduction": {
+    "revision": "hospitality-static-compound-03",
+    "command": "blender --background --threads 2 --python-exit-code 1 --python assets/hospitality_counters/source/build_hospitality_counters.py -- --collision-only",
+    "required_existing_inputs": [
+      {
+        "catalogue_relative_path": "assets/hospitality_counters/source/build_hospitality_counters.py",
+        "sha256": "967acd9c8c7da058a754aec8af3365dba7c5c32fbd11c7e6a592ca792c07850b"
+      },
+      {
+        "catalogue_relative_path": "assets/hospitality_counters/source/AST-HSP-001.blend",
+        "sha256": "fa5deefeae8aa20e596b4f76606c733c1345e7bdc728e820bdf696191ecacad3"
+      },
+      {
+        "catalogue_relative_path": "assets/hospitality_counters/source/AST-HSP-002.blend",
+        "sha256": "cf6a0497eb577623314ceb5438da56dd6bb5383a7989905c2b127496a69cc195"
+      }
+    ],
+    "output": {
+      "catalogue_relative_path": "assets/hospitality_counters/collision_proposals.json",
+      "sha256": "b37c063ac25d0c926d278c5ba2085833ab2f94c632b3b0f1018be7ddb1ec953c"
+    },
+    "does_not_write": [
+      "existing Blender source files",
+      "visual GLB exports"
+    ],
+    "validation_catalogue_relative_path": "qa/batch08/counter_collision_revision/validation_report.json"
+  }
+}

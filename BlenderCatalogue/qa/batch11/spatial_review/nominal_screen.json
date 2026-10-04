@@ -1,0 +1,176 @@
+{
+  "scope": "Proposed component-envelope and declared-context bounds screen only. No final new-component mesh, attachment, collision, body/cart, moving-door, floor/support or host-fit acceptance.",
+  "plan_sha256": "5976bf7b0a52e4bc6121e2304cecc1b3fc53edb1b258a7531b6590d910671dfe",
+  "contract_sha256": "246e2e49dd0e3019fe4f85b5b864c24a98656702545ef3c8fffcf7bcd7d8df26",
+  "R3_ledger_sha256": "057fe44c8405c6a16df6aa005bd8aa4a864e4bd63c649f2ae4acb67ab7aa4a68",
+  "items": [
+    {
+      "key": "guest_directory",
+      "computed_bounds_ship_m": {
+        "min": [
+          -39.900000000000006,
+          0,
+          -377.79999999999995
+        ],
+        "max": [
+          -38.5,
+          2.8,
+          -377.15
+        ]
+      },
+      "front_ship_xyz": [
+        0.0,
+        0,
+        1.0
+      ],
+      "inside_R3_landing": true,
+      "empty_reservation_intersections": [],
+      "core_plane_z_minus378_gap_m": 0.2,
+      "cross_street_start_z_minus374_gap_m": 3.15,
+      "height_kind": "new component design target only, not host headroom"
+    },
+    {
+      "key": "guest_waiting",
+      "computed_bounds_ship_m": {
+        "min": [
+          -35.5,
+          0,
+          -377.8
+        ],
+        "max": [
+          -34.099999999999994,
+          1.05,
+          -377.05
+        ]
+      },
+      "front_ship_xyz": [
+        0.0,
+        0,
+        1.0
+      ],
+      "inside_R3_landing": true,
+      "empty_reservation_intersections": [],
+      "core_plane_z_minus378_gap_m": 0.2,
+      "cross_street_start_z_minus374_gap_m": 3.05,
+      "height_kind": "new component design target only, not host headroom"
+    },
+    {
+      "key": "staff_return",
+      "computed_bounds_ship_m": {
+        "min": [
+          -48.55,
+          0,
+          -377.7
+        ],
+        "max": [
+          -48.099999999999994,
+          2.5,
+          -376.40000000000003
+        ]
+      },
+      "front_ship_xyz": [
+        -1.0,
+        0,
+        6.123233995736766e-17
+      ],
+      "inside_R3_landing": true,
+      "empty_reservation_intersections": [],
+      "core_plane_z_minus378_gap_m": 0.3,
+      "cross_street_start_z_minus374_gap_m": 2.4,
+      "height_kind": "new component design target only, not host headroom"
+    },
+    {
+      "key": "staff_stow",
+      "computed_bounds_ship_m": {
+        "min": [
+          -48.95,
+          0,
+          -376.3
+        ],
+        "max": [
+          -48.2,
+          1.05,
+          -374.8
+        ]
+      },
+      "front_ship_xyz": [
+        -1.0,
+        0,
+        6.123233995736766e-17
+      ],
+      "inside_R3_landing": true,
+      "empty_reservation_intersections": [],
+      "core_plane_z_minus378_gap_m": 1.7,
+      "cross_street_start_z_minus374_gap_m": 0.8,
+      "height_kind": "new component design target only, not host headroom"
+    }
+  ],
+  "margins": {
+    "guest_each_component_to_central_strip_m": 0.1,
+    "guest_outside_landing_edges_m": 0.1,
+    "guest_directory_front_strip_gap_m": 2.15,
+    "guest_waiting_front_strip_gap_m": 2.05,
+    "staff_return_to_west_empty_region_m": 0.65,
+    "staff_stow_to_west_empty_region_m": 0.25,
+    "staff_component_z_separation_m": 0.1
+  },
+  "directions": {
+    "guest": "Front +shipZ; core-bound approach moves -Z from the shared cross-street/guest spur. Central and full-width front empty strips remain connected.",
+    "staff": "Front -shipX; D12 west-side approach moves +X, then can turn -Z toward the unknown core plane. Upper +Z exit to shared cross-street remains open."
+  },
+  "context": [
+    {
+      "key": "guest_sconce",
+      "glb_sha256": "91ff884a53353abca07f4709208bb0f7cd9ce138a48f813b7ef5759c6c60a6c0",
+      "ship_min_m": [
+        -38.83899999320507,
+        1.7599999982118606,
+        -377.62
+      ],
+      "ship_max_m": [
+        -38.58100000679493,
+        2.1049999970197675,
+        -377.30399998545647
+      ],
+      "inside_parent_candidate_envelope": true,
+      "empty_plan_reservation_intersections": [],
+      "attachment_support_light_aim": "unverified"
+    },
+    {
+      "key": "staff_fixture",
+      "glb_sha256": "17e5accdeb4b4f356f9ca17d1a89cb23eb94a603a05c5f9bd6f6bcd4b9c8aa98",
+      "ship_min_m": [
+        -48.52499999701976,
+        1.8625000429153444,
+        -377.6100000008941
+      ],
+      "ship_max_m": [
+        -48.17700000703334,
+        2.47,
+        -376.49000003337864
+      ],
+      "inside_parent_candidate_envelope": true,
+      "empty_plan_reservation_intersections": [],
+      "attachment_support_light_aim": "unverified"
+    }
+  ],
+  "context_status": "Existing fixture meshes transformed at current proposed parent placements; their bounding extents are checked, while mounting, support, aim and final assembled meshes remain for later review.",
+  "unresolved": {
+    "guest_clear_aperture_m": null,
+    "service_clear_aperture_m": null,
+    "leaf_stroke_m": null,
+    "cassette_depth_m": null,
+    "head_reservation_m": null,
+    "ceiling_height_m": null,
+    "floor_support": null,
+    "pit_support": null
+  },
+  "cautions": [
+    "Component target heights are not verified host headroom.",
+    "0.1m nominal separations/edge margins are not trim allowance or actor clearance.",
+    "Unknown moving door/cassette fit may constrain these candidate positions later.",
+    "The 6x4m landing reservation is not a safe solid envelope; named empty strips must remain empty.",
+    "D12 pit/slab and D11 Music coexistence and upper-hull fit remain unresolved."
+  ],
+  "status": "Pass nominal placement, facing and reserved-plan logic only"
+}

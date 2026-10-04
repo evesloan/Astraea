@@ -1,0 +1,358 @@
+{
+  "passed": true,
+  "family": "crew_personal",
+  "revision": "r01",
+  "fresh_input_only_stage": true,
+  "source_only_build_duplicated_by_reviewer": true,
+  "stage": "qa/batch15/independent_rebuild_stage_crew_personal_r01",
+  "production_inputs": [
+    {
+      "path": "assets/crew_personal/source/build_crew_personal.py",
+      "sha256": "cc60e4d52650359a0dd3cb19b562782bd1293f9ec29c5be9adc53d5e2776bd28",
+      "bytes": 23326
+    },
+    {
+      "path": "materials/staff/manifest.json",
+      "sha256": "5cf6681db7a5ba8d1c459cc5b9eaf2ee9f210efd03f1f146b4d8dd21b1d0f759",
+      "bytes": 3205
+    },
+    {
+      "path": "materials/staff/staff_bluegrey_paint.png",
+      "sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f",
+      "bytes": 6069
+    },
+    {
+      "path": "materials/staff/staff_cable_blue.png",
+      "sha256": "8ca09105d6bae6f49541ee8741933eca4f427e8e46a40ac74a7d03142619c60a",
+      "bytes": 4146
+    },
+    {
+      "path": "materials/staff/staff_cable_red.png",
+      "sha256": "13ed2b2baa42fd70dcaab3a12a9cc80a849e49b35e44dd8bc026dca603acb081",
+      "bytes": 4133
+    },
+    {
+      "path": "materials/staff/staff_floor.png",
+      "sha256": "7d39c03c816ecdc8df6efe1869bf288c1e8a6419d8472a0386bca0a2f57f599f",
+      "bytes": 11485
+    },
+    {
+      "path": "materials/staff/staff_label.png",
+      "sha256": "68480ff4080dd2b93ddfba454623db9890006bb55cbb415911607773e348b644",
+      "bytes": 5976
+    },
+    {
+      "path": "materials/staff/staff_opal.png",
+      "sha256": "d1884536391beb3bbffbf8d5d9ecb40c678b810cf841c13b53f891594c5d086b",
+      "bytes": 6219
+    },
+    {
+      "path": "materials/staff/staff_rubber.png",
+      "sha256": "9e9623559d6dcd7b4c459da948132417a966976177ff608153ff8b71764036f8",
+      "bytes": 4240
+    },
+    {
+      "path": "materials/staff/staff_white_paint.png",
+      "sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88",
+      "bytes": 6159
+    },
+    {
+      "path": "materials/staff/staff_zinc.png",
+      "sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c",
+      "bytes": 5827
+    },
+    {
+      "path": "standards/staff_materials.py",
+      "sha256": "805c20460b4997fd020f117dae0a04d75eda55a31500683c015c3cb45a8af228",
+      "bytes": 1319
+    }
+  ],
+  "seed_files": [
+    "assets/crew_personal/source/build_crew_personal.py",
+    "materials/staff/manifest.json",
+    "materials/staff/staff_bluegrey_paint.png",
+    "materials/staff/staff_cable_blue.png",
+    "materials/staff/staff_cable_red.png",
+    "materials/staff/staff_floor.png",
+    "materials/staff/staff_label.png",
+    "materials/staff/staff_opal.png",
+    "materials/staff/staff_rubber.png",
+    "materials/staff/staff_white_paint.png",
+    "materials/staff/staff_zinc.png",
+    "standards/staff_materials.py"
+  ],
+  "observed_catalogue_read_paths": [
+    "assets/crew_personal/exports/AST-CRW-003.glb",
+    "assets/crew_personal/exports/AST-CRW-003_open.glb",
+    "assets/crew_personal/exports/AST-CRW-004.glb",
+    "assets/crew_personal/source/AST-CRW-003.blend",
+    "assets/crew_personal/source/AST-CRW-004.blend",
+    "assets/crew_personal/source/build_crew_personal.py",
+    "materials/staff/manifest.json",
+    "materials/staff/staff_bluegrey_paint.png",
+    "materials/staff/staff_cable_blue.png",
+    "materials/staff/staff_cable_red.png",
+    "materials/staff/staff_floor.png",
+    "materials/staff/staff_label.png",
+    "materials/staff/staff_opal.png",
+    "materials/staff/staff_rubber.png",
+    "materials/staff/staff_white_paint.png",
+    "materials/staff/staff_zinc.png",
+    "standards/__pycache__/staff_materials.cpython-313.pyc",
+    "standards/staff_materials.py"
+  ],
+  "unexpected_catalogue_reads": [],
+  "freshly_generated_outputs_reopened_for_hashing": [
+    "assets/crew_personal/exports/AST-CRW-003.glb",
+    "assets/crew_personal/exports/AST-CRW-003_open.glb",
+    "assets/crew_personal/exports/AST-CRW-004.glb",
+    "assets/crew_personal/source/AST-CRW-003.blend",
+    "assets/crew_personal/source/AST-CRW-004.blend"
+  ],
+  "all_helper_loaded_material_roles_included": true,
+  "command": [
+    "blender",
+    "--background",
+    "--threads",
+    "1",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch15/independent_rebuild_instrument.py",
+    "--",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/source/build_crew_personal.py",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch15/independent_rebuild_crew_personal_r01_reads.json"
+  ],
+  "returncode": 0,
+  "build_log": {
+    "path": "qa/batch15/independent_rebuild_crew_personal_r01.log",
+    "sha256": "129adf6094649e83c7b66b48bfab13699f7f668326a05e4b6124e15e4511ea6e",
+    "bytes": 3386
+  },
+  "file_read_instrumentation": {
+    "path": "qa/batch15/independent_rebuild_crew_personal_r01_reads.json",
+    "sha256": "2a0caaba52f01738a41091200a9889e4c87543308bf2088e5b057a85e3969023",
+    "bytes": 6152
+  },
+  "instrumentation_script": {
+    "path": "qa/batch15/independent_rebuild_instrument.py",
+    "sha256": "b18d092e619d6a7ccdfd75dfdc020dc311618a2da32cf17f0e803f3f473a6f07",
+    "bytes": 1157
+  },
+  "source_audit_command": [
+    "blender",
+    "--background",
+    "--threads",
+    "1",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch15/independent_source_review.py",
+    "--",
+    "--prefix",
+    "independent_rebuilt_crew_personal_r01_",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/source/AST-CRW-003.blend",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/source/AST-CRW-004.blend"
+  ],
+  "source_audit_log": {
+    "path": "qa/batch15/independent_rebuilt_audit_crew_personal_r01.log",
+    "sha256": "89a18ba600fa4a43956b798b57c43df9c69c2aa73c02da20328fc2bd76d7de1b",
+    "bytes": 528
+  },
+  "exports": [
+    {
+      "current": {
+        "path": "assets/crew_personal/exports/AST-CRW-003.glb",
+        "sha256": "12e8b8740729737585f16ddf6b8e788b79387a0af8302bf25ba71905f817b652",
+        "bytes": 243360
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/exports/AST-CRW-003.glb",
+        "sha256": "12e8b8740729737585f16ddf6b8e788b79387a0af8302bf25ba71905f817b652",
+        "bytes": 243360
+      },
+      "byte_identical": true
+    },
+    {
+      "current": {
+        "path": "assets/crew_personal/exports/AST-CRW-003_open.glb",
+        "sha256": "05432e2f9c11186bb0609f7baa9949e222d5de9c1b75d610f5ccc13d150749cc",
+        "bytes": 243400
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/exports/AST-CRW-003_open.glb",
+        "sha256": "05432e2f9c11186bb0609f7baa9949e222d5de9c1b75d610f5ccc13d150749cc",
+        "bytes": 243400
+      },
+      "byte_identical": true
+    },
+    {
+      "current": {
+        "path": "assets/crew_personal/exports/AST-CRW-004.glb",
+        "sha256": "5b339a9968228474ee5fbf509270ce9ee55c6680243fa80714d1776a8042386c",
+        "bytes": 151384
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/exports/AST-CRW-004.glb",
+        "sha256": "5b339a9968228474ee5fbf509270ce9ee55c6680243fa80714d1776a8042386c",
+        "bytes": 151384
+      },
+      "byte_identical": true
+    }
+  ],
+  "assets": [
+    {
+      "catalogue_id": "AST-CRW-003",
+      "source": {
+        "path": "assets/crew_personal/source/AST-CRW-003.blend",
+        "sha256": "075d3b9afce0b1e37e9290f0bb5757b0bea1b240b9cd2b3bbea3a0332e079dfc",
+        "bytes": 167278
+      },
+      "rebuilt_source": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/source/AST-CRW-003.blend",
+        "sha256": "abffb1ceb4f7ad9652a9816c7d8312f2039f65665e360422d8ccbf893d279ca6",
+        "bytes": 166778
+      },
+      "source_audits": [
+        {
+          "path": "qa/batch15/independent_source_AST-CRW-003.json",
+          "sha256": "19f57523b9c5e345216b76c72c35e0767ae9b3fb2deeaaa88eab3054a0eb04cf",
+          "bytes": 101306
+        },
+        {
+          "path": "qa/batch15/independent_rebuilt_crew_personal_r01_source_AST-CRW-003.json",
+          "sha256": "8f7886221173f122d57f26459f6d0d8c292aa73ab3734ad52d982ca2af2f41fc",
+          "bytes": 101387
+        }
+      ],
+      "evaluated_geometry_equal": true,
+      "editable_mesh_hierarchy_uv_material_modifier_properties_equal": true,
+      "units_material_graph_image_bytes_equal": true,
+      "pass": true
+    },
+    {
+      "catalogue_id": "AST-CRW-004",
+      "source": {
+        "path": "assets/crew_personal/source/AST-CRW-004.blend",
+        "sha256": "15f319a30cbf9a1c32e5d34141088bfb5333d46d7ad0c65f163c71a13ebd6582",
+        "bytes": 165274
+      },
+      "rebuilt_source": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/source/AST-CRW-004.blend",
+        "sha256": "072e4c04411fb532c029a27937a5a95d39beabf072d7ed4960925c2b7eb99017",
+        "bytes": 164588
+      },
+      "source_audits": [
+        {
+          "path": "qa/batch15/independent_source_AST-CRW-004.json",
+          "sha256": "8a68a0cd11d3621c04d358f154c867e7d8cc68eca86cc3b0eef060d4b81b095f",
+          "bytes": 57428
+        },
+        {
+          "path": "qa/batch15/independent_rebuilt_crew_personal_r01_source_AST-CRW-004.json",
+          "sha256": "82d1bcf9450a5fab40e1ddca4ef005305aec3b8a9c27328ee013d426e0d9ff73",
+          "bytes": 57509
+        }
+      ],
+      "evaluated_geometry_equal": true,
+      "editable_mesh_hierarchy_uv_material_modifier_properties_equal": true,
+      "units_material_graph_image_bytes_equal": true,
+      "pass": true
+    }
+  ],
+  "generated_json_outputs": [
+    {
+      "current": {
+        "path": "assets/crew_personal/AST-CRW-003.manifest.json",
+        "sha256": "e4c8dd29be624c0b32c38cbd33bf3b0741d5bbd600d900b4e335898e25958065",
+        "bytes": 34491
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/AST-CRW-003.manifest.json",
+        "sha256": "f8b3f4d62b35557424829c0cbeaafff6ee0bd5f3d6488938cce7a424a8986b19",
+        "bytes": 34491
+      },
+      "semantically_equal_except_source_binary_hash": true
+    },
+    {
+      "current": {
+        "path": "assets/crew_personal/AST-CRW-004.manifest.json",
+        "sha256": "1316041454013ccadaa05e2e1086a0949e9116326e9fe5a2ecfd448ce7169eac",
+        "bytes": 19731
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/AST-CRW-004.manifest.json",
+        "sha256": "c5e273ed348cd3c458d0a5d052e00b47ff24af73fd90062a7dcc789ade0f9432",
+        "bytes": 19731
+      },
+      "semantically_equal_except_source_binary_hash": true
+    },
+    {
+      "current": {
+        "path": "assets/crew_personal/collision_proposals.json",
+        "sha256": "b30aa6a3186c734f2088224fc2007d0f9c7cd42e0e4783693662b97c6f6a6b49",
+        "bytes": 142503
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/collision_proposals.json",
+        "sha256": "b30aa6a3186c734f2088224fc2007d0f9c7cd42e0e4783693662b97c6f6a6b49",
+        "bytes": 142503
+      },
+      "semantically_equal_except_source_binary_hash": true
+    },
+    {
+      "current": {
+        "path": "assets/crew_personal/dependency_manifest.json",
+        "sha256": "9f02a1a803843fecce98923f5b436ee3bca69050c0f59d410cf66a4d61e84e0e",
+        "bytes": 2282
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/dependency_manifest.json",
+        "sha256": "9f02a1a803843fecce98923f5b436ee3bca69050c0f59d410cf66a4d61e84e0e",
+        "bytes": 2282
+      },
+      "semantically_equal_except_source_binary_hash": true
+    },
+    {
+      "current": {
+        "path": "assets/crew_personal/manifest.json",
+        "sha256": "a5d5c1fc4de366f488a3ced8553f6eec1561b5248c3e48732b2b780a43c4d0d9",
+        "bytes": 66227
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/manifest.json",
+        "sha256": "a9262e1b1b43c0ae304ea06f8e225025bb58d5ffb69ff96dccda7e8c9bc984d0",
+        "bytes": 66227
+      },
+      "semantically_equal_except_source_binary_hash": true
+    },
+    {
+      "current": {
+        "path": "assets/crew_personal/marker_api.json",
+        "sha256": "13597f01c0bd217e917f0ab6fee7817c56c71495126c95b720daa2b16f17e101",
+        "bytes": 9089
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/marker_api.json",
+        "sha256": "13597f01c0bd217e917f0ab6fee7817c56c71495126c95b720daa2b16f17e101",
+        "bytes": 9089
+      },
+      "semantically_equal_except_source_binary_hash": true
+    },
+    {
+      "current": {
+        "path": "assets/crew_personal/mount_contract.json",
+        "sha256": "d3cc0a6edaadd756d46cdd5c7cb0a1079b2caf7198144ae14b95792cd7511bef",
+        "bytes": 1521
+      },
+      "rebuilt": {
+        "path": "qa/batch15/independent_rebuild_stage_crew_personal_r01/assets/crew_personal/mount_contract.json",
+        "sha256": "d3cc0a6edaadd756d46cdd5c7cb0a1079b2caf7198144ae14b95792cd7511bef",
+        "bytes": 1521
+      },
+      "semantically_equal_except_source_binary_hash": true
+    }
+  ],
+  "executed_script_sha256": "09f34a6e41fa0f908148002b793189e49d2a54a794a63e0299b316a2f66131a1",
+  "limits": "Python open events are observed attempts, not guaranteed successful reads; native image witnesses bind existing loaded image bytes. Blender/system add-on, Python and renderer resources are execution environment dependencies; catalogue Python opens are instrumented and all actual native-loaded Blender image datablocks are bound. This is not claimed as a system-call-complete trace. No pre-existing new source/export, QA input or author receipt was seeded. Blender binary equality is not required because stored paths differ; actual editable signatures and evaluated geometry are compared."
+}
