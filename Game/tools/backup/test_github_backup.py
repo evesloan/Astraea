@@ -1,9 +1,27 @@
-import json, tempfile, unittest
+import json, tempfile, unittest, subprocess
 from pathlib import Path
 from unittest.mock import patch
 import github_backup as b
 
 class GitHubBackupTests(unittest.TestCase):
+    def test_command_failure_is_classified_without_secret_text(self):
+        secret='ghp_'+'a'*36
+        error=subprocess.CalledProcessError(1,['gh'],stderr=('HTTP401 Bad credentials '+secret).encode())
+        with patch.object(b.subprocess,'check_output',side_effect=error):
+            with self.assertRaises(RuntimeError) as result:b.command(['gh','api','private-repository'],'/unused')
+        self.assertIn('authentication',str(result.exception))
+        self.assertNotIn(secret,str(result.exception))
+        self.assertNotIn('private-repository',str(result.exception))
+
+    def test_command_timeout_is_bounded_and_sanitized(self):
+        with patch.object(b.subprocess,'check_output',side_effect=subprocess.TimeoutExpired(['gh','sensitive-argument'],600)):
+            with self.assertRaisesRegex(RuntimeError,'gh timed out after600seconds'):b.command(['gh'],'/unused')
+
+    def test_network_failure_categories_remain_distinct(self):
+        for message,category in [('Could not resolve host','name_resolution'),('HTTP403 Forbidden','access_denied'),('Network access blocked by policy','egress_policy')]:
+            with patch.object(b.subprocess,'check_output',side_effect=subprocess.CalledProcessError(1,['gh'],stderr=message.encode())):
+                with self.assertRaisesRegex(RuntimeError,category):b.command(['gh'],'/unused')
+
     def test_secret_names_and_text_rejected(self):
         with tempfile.TemporaryDirectory() as t:
             root=Path(t);p=root/'safe.md';p.write_text('Astraea construction notes')

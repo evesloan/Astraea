@@ -14,7 +14,24 @@ def now():
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
 def command(args, cwd, env=None):
-    return subprocess.check_output(args, cwd=cwd, env=env, stderr=subprocess.PIPE, timeout=600).decode().strip()
+    try:
+        return subprocess.check_output(args, cwd=cwd, env=env, stderr=subprocess.PIPE, timeout=600).decode().strip()
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(Path(args[0]).name+' timed out after600seconds') from None
+    except subprocess.CalledProcessError as failure:
+        # Classify without retaining command arguments or raw stderr, which may
+        # contain authentication material. Verification still stops publication.
+        detail=(failure.stderr or b'').decode(errors='replace').lower()
+        category='external_command_failure'
+        categories=[('egress_policy',['blocked by policy']),
+                    ('authentication',['401','bad credentials','authentication failed','not logged']),
+                    ('rate_limit',['rate limit']),('access_denied',['403','forbidden','access denied']),
+                    ('remote_not_found',['404','repository not found']),
+                    ('name_resolution',['could not resolve','name or service not known']),
+                    ('transport',['timed out','timeout','connection refused','network is unreachable','connection reset','unexpected eof','failed to connect','tls'])]
+        for label,signals in categories:
+            if any(signal in detail for signal in signals):category=label;break
+        raise RuntimeError('%s failed (exit%d; %s)'%(Path(args[0]).name,failure.returncode,category)) from None
 
 def git(config, *args):
     env=os.environ.copy();env['GH_CONFIG_DIR']=config['auth_directory']
@@ -60,6 +77,7 @@ def run_once(config, force=False):
     committed=any(state.get('projects',{}).get(n,{}).get('head')!=i['head'] for n,i in infos.items())
     elapsed=time.time()-state.get('last_verified_epoch',0)
     if not force and not committed and elapsed<config.get('wip_interval_seconds',900):return False
+    state.update(status='checking_remote',attempted_utc=now());atomic_json(state_path,state)
     mirror=Path(config['mirror']);verify_private(config)
     expected=state['remote_commit'];actual=remote_head(config)
     if actual!=expected:raise RuntimeError('Remote main changed outside this publisher; preserve both histories and review')
