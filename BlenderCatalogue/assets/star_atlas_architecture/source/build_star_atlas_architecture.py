@@ -190,6 +190,13 @@ for i,(x,z,h)in enumerate(lights):
  cx,cy=xy((x,z));q=[(cx+.28*math.cos(j*math.pi/8),cy+.28*math.sin(j*math.pi/8))for j in range(16)];extrusion('LIB_LightHousing_'+str(i),q,h-78,h-78+.10,'champagne_metal');extrusion('LIB_OpalLens_'+str(i),[(cx+(a-cx)*.88,cy+(b-cy)*.88)for a,b in q],h-78-.025,h-78,'lens');datum('light_'+str(i),(cx,cy,h-78-.04))
  mount=83.76 if i==0 else [0,81.50+6/11.8*.65+.20,81.70,82.40,82.15][i]if i<5 else 92.76 if i==5 or i>=8 else 88.26
  beam('LIB_LightMount_'+str(i),[(cx,cy,h-78+.10),(cx,cy,mount-78)],.045,.045,'champagne_metal')
+# Open finish faces need an explicit upward normal; outside-volume inference is ambiguous.
+for o in parts:
+ if o.name.startswith('LIB_Finish'):
+  bm=bmesh.new();bm.from_mesh(o.data);bm.normal_update()
+  downward=[f for f in bm.faces if f.normal.z<0]
+  if downward:bmesh.ops.reverse_faces(bm,faces=downward)
+  bm.normal_update();bm.to_mesh(o.data);bm.free();o.data.update()
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(AID+'.blend');export=ROOT/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source));tri=0
 for o in parts:o.data.calc_loop_triangles();tri+=len(o.data.loop_triangles)
 # Retain editable semantic source parts, but export local material/contact groups.

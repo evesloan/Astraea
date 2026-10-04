@@ -1,6 +1,6 @@
 # Astraea current production status
 
-Updated2026-10-04 after the integrated arrivals, reception and validation-clock passes. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
+Updated2026-10-04 after the connected Star Atlas library and arrival pass. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Implemented and checked scope
 - Godot4.6.3 Compatibility, one main ship,18 nonuniform deck datums and source-derived structural floor/opening meshes
@@ -11,7 +11,7 @@ Updated2026-10-04 after the integrated arrivals, reception and validation-clock 
 - Partial D09 salon with authored enclosure, varied ceiling, glazed gallery and several occupied furniture groups; its study lamp responds to the shared RMB/E interaction
 - Two partial D13 twin suites at historical addresses13017 and13041, connected by a walkable route, with preserved historical bed anchors, shaped living/sleeping thresholds, inward glazing and fitted bathroom fixtures
 - The opaque bathroom door inherits existing interaction/motion handling and passed300 fixed-architecture sweep samples, focused operation and obstruction checks
-- 132 registered catalogue designs. Component presence is not room completion or final-art approval
+- 133 registered catalogue designs. Component presence is not room completion or final-art approval
 
 - The paired suite entry now retracts into enclosed hollow pockets. Shared focus/E and call-plate operation,400 fixed-geometry motion samples and actor/loose-prop obstruction checks pass
 
@@ -22,7 +22,7 @@ Updated2026-10-04 after the integrated arrivals, reception and validation-clock 
 - The first physical cleaning cart and4 loose bottles share RMB/E pickup/release. Straight loaded travel and235 geometric cart/load clearance poses pass; final handling, driven turns and restocking remain unfinished; the new commons lift now has loaded boarding and travel checks
 
 ## Evidence and limits
-All29 current Godot groups pass, including actual commons stairs, physical lift travel and loaded-cart boarding. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
+All31 current Godot groups pass, including actual commons stairs, physical lift travel and loaded-cart boarding. The first suite has164 connected route probes plus87 three-lane corridor probes; the second has166 connected/bifurcated route probes; the D06 arrival has213 three-lane spine,84 niche and26 rear-seat probes. The structural compiler rejects overlapping floor ownership and invalid opening triangulation. Four new residential floor regions do not consume another guest envelope. All1,000 historical guest envelopes remain accounted for; luxury fitting and physical-bed reconciliation remain incomplete.
 
 Source/export bounds, a genuinely hollow basin, two-sided shower-screen contact and fixture approach positions were checked. Ordinary player-height cloud captures were reviewed. An independent suite review led to changes in screening, floor contrast, ceiling weight and window-facing seating. These are cloud software-rendered checks, not RTX5060 Laptop GPU performance acceptance or final architectural approval.
 
@@ -56,7 +56,12 @@ All29 checks pass after adding a three-height crescent reception desk and its fi
 The compressed entry now has an authored curved header and supporting piers, a fitted fan-shaped carpet and stair runners, all keeping the tested walking path and single physical-floor ownership. Focal-wall light was reduced after actual-view review. The current29-check suite passes in about53seconds using fixed60Hz simulated time, with the same assertions and an explicit real-time mode retained. A matched arrivals check passed in53.657seconds real-clock versus3.9753seconds fixed60; this measures test execution only. Graphical capture remains separately reviewed.
 
 ## Star Atlas connected section
-The existing port library and two commons allocations now form a three-level D12–D14 district, with offset court openings, two physically traversable stairs, source-authored guards and a three-stop derivative of the existing passenger lift. All31 current Godot groups passed on2026-10-04 in67.02seconds fixed60 simulation. The added checks traverse the walking circuit both directions and carry the player, cart and four loose bottles through the lift stops. Protected D15 overhead and D11 underside remain intact. Library furnishings, detailed guard review, actual lift boarding/exit turns and final visual acceptance remain pending. AST-LIB-011 and the three-stop cabin are editable source work awaiting catalogue registration; do not add them to approved asset totals yet.
+The existing port library and two commons allocations now form a three-level D12–D14 district, with offset court openings, two physically traversable stairs, source-authored guards and a three-stop derivative of the existing passenger lift. All31 current Godot groups passed on2026-10-04 in67.02seconds fixed60 simulation. The added checks traverse the walking circuit both directions and carry the player, cart and four loose bottles through the lift stops. Protected D15 overhead and D11 underside remain intact. Library furnishings, detailed guard review, actual lift boarding/exit turns and final visual acceptance remain pending. AST-LIB-011 is registered after source/export checks; the three-stop cabin remains a derivative of its existing design.
 
 ## Star Atlas collection integration
 The first lower collection bay now uses the existing profiled straight/curved shelf family and a matching baked start-cap derivative. Supported book groups use one local MultiMesh representation; a four-place study group has a switched task fixture and supported folio. Focused shelf-support and actual walking checks pass. The normal-height capture was reviewed and remains a partial furnished bay; room-wide composition and upper-level activities are unfinished. The new section and three-stop cabin now have source/export roundtrip and UV-presence checks; the cabin and start cap are derivatives, not additional unique designs.
+
+## Library arrival and browsing sequence
+A new crescent reference counter with two supported task lights and an open lower writing/knee position now introduces the library before its browsing and atrium-view resting bay. Six counter approaches, supported folios, optical exits and an extended actual walking circuit pass. The catalogue terminal remains static hardware with no search service. The counter was moved farther inside its existing allocation after a normal entry capture showed the first placement was poorly revealed; the six-metre through-route remains clear. The new133rd catalogue design retains editable Blender source. Normal and full-resolution effects-off views were inspected; broader room detailing, lighting and population are still unfinished.
+
+The final reference-arrival revision passed all31 regression groups in73.656seconds fixed60 simulation. Graphical batch003 passed61.659seconds and its normal/effects-off views were reviewed. The refreshed inventory is133 registered designs,76 present in the main scene and529 model representations.
