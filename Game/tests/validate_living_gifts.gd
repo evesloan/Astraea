@@ -40,6 +40,12 @@ func run() -> void:
 	var room:Node3D=ship.find_child("LivingGiftsInterior_WIP",true,false)
 	assert(room.get_meta("programme_key")=="D09_directory_08" and room.get_meta("historical_room_id")=="D09_florist7")
 	var architecture:Node3D=room.find_child("LivingGiftsAuthoredInterior",true,false)
+	var frame_ray:=PhysicsRayQueryParameters3D.create(Vector3(13,45.65,218),Vector3(46.88,56.45,236))
+	assert(ship.get_world_3d().direct_space_state.intersect_ray(frame_ray).is_empty(),"Upper florist framing obscured from original aquatic arrival")
+	for i in range(4):
+		var light:Node3D=room.find_child("LivingGiftsSource_"+str(i),true,false)
+		var ray:=PhysicsRayQueryParameters3D.create(light.global_position,light.global_position+Vector3.DOWN*.04)
+		assert(ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Florist emitter exit blocked")
 	var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)
 	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
 	var excluded:Array[RID]=[]
@@ -58,12 +64,35 @@ func run() -> void:
 		ray.exclude=omit
 		var hit:=ship.get_world_3d().direct_space_state.intersect_ray(ray)
 		assert(not hit.is_empty() and abs(hit.position.y-marker.global_position.y)<.012,"Plant lacks fitted soil support")
+	for i in range(4):
+		var pot:Node3D=room.find_child("LivingGiftsShelfPot_"+str(i),true,false)
+		var flower:Node3D=room.find_child("LivingGiftsShelfFlower_"+str(i),true,false)
+		var omit:Array[RID]=[]
+		for host in [pot,flower]:
+			for body in host.find_children("*","StaticBody3D",true,false):omit.append(body.get_rid())
+		for j in range(16):
+			var p:Vector3=pot.global_position+Vector3(cos(TAU*j/16)*.074,0,sin(TAU*j/16)*.074)
+			var q:=PhysicsRayQueryParameters3D.create(p+Vector3.UP*.03,p-Vector3.UP*.03)
+			q.exclude=omit
+			var hit:=ship.get_world_3d().direct_space_state.intersect_ray(q)
+			assert(not hit.is_empty() and abs(hit.position.y-p.y)<.008,"Nursery pot foot is unsupported")
+		for mesh in flower.find_children("*","MeshInstance3D",true,false):
+			for surface in range(mesh.mesh.get_surface_count()):
+				var arrays:Array=mesh.mesh.surface_get_arrays(surface)
+				for vertex in arrays[Mesh.ARRAY_VERTEX]:
+					var endpoint:Vector3=mesh.global_transform*vertex
+					if endpoint.distance_to(flower.global_position)<.015:continue
+					var q:=PhysicsRayQueryParameters3D.create(flower.global_position,endpoint)
+					q.exclude=omit
+					var hit:=ship.get_world_3d().direct_space_state.intersect_ray(q)
+					if not hit.is_empty():print("FLOWER CLIP:",i," ",hit.collider.get_path()," at ",hit.position)
+					assert(hit.is_empty(),"Shelf foliage clips display geometry")
 	actor.set_physics_process(false)
 	actor.position=Vector3(52,52.6,216)
 	actor.velocity=Vector3.ZERO
 	for target in [Vector2(52,225),Vector2(46.7,227.5),Vector2(44.5,232),Vector2(44.5,236),Vector2(48.2,236),Vector2(50.8,235.7),Vector2(52.4,237.8),Vector2(52.4,241),Vector2(52.4,245),Vector2(51.5,247),Vector2(52.4,242.4),Vector2(52.4,237.8),Vector2(50.5,238),Vector2(50.5,241),Vector2(48.9,241)]:await walk(actor,target)
 	assert(abs(actor.position.y-52.5)<.12)
-	print("LIVING GIFTS PASS:",samples,"compound cart/load plus driver poses, four soil supports, canonical/historical identity and actual public/shop/service/wrapping walk. Driven cart turning, transactions, NPC use and final art remain pending.")
+	print("LIVING GIFTS PASS:",samples,"compound cart/load plus driver poses, four soil supports, four supported potted shelf specimens, canonical/historical identity and actual public/shop/service/wrapping walk. Driven cart turning, transactions, NPC use and final art remain pending.")
 	main.queue_free()
 	await process_frame
 	quit()

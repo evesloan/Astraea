@@ -1,0 +1,9 @@
+# Living Gifts partial interior
+
+2026-10-04. Canonical D09_directory_08 and historical D09_florist7 remain one destination. A partial93.6m² bay at X46–53.8, Z230.4–242.4 now contains an authored curved nursery frontage, recessed orange portal, layered nursery/wrapping ceiling, fitted planters and an offset wrapping workbench. The existing D09 floor remains Y52.5; roof top56.8 stays below D10 underside60.6. No registry capacity or new shop was added.
+
+Editable AST-RTL-006 and AST-BOT-012 sources accompany their runtime exports. A low pottery derivative fits bounded shelf headroom without counting as another design. Four display plants sit in supported pots, and four larger planting positions use authored soil datums. Plant stock, checkout and wrapping equipment are currently static; no florist transactions or NPC operation are claimed.
+
+The east service opening remains2m clear. Cart/driver turns are staged inward at51.5/247 rather than against the hull-side boundary; the existing column at50/244, aquatic lift bypass and R070 connection remain intact. Focused checks cover258 compound cart/load plus driver poses, supported feet/soil, clear plant-to-shelf geometry, source light exits, an upper-frontage sightline from the pool approach, and an actual capsule walking circuit. These are not driven cart-turn tests or species-wide certification.
+
+All34 regression checks passed in82.9913seconds with fixed60 simulation. Graphical capture batch living-gifts-stock-final-001 completed in74.06seconds. Neither timing is game FPS. Actual normal views show the curved nursery, stock and clearer entrance, but large wall areas remain under-detailed, tree shadows are harsh, and light pools remain too bright. This is a functional architectural increment below the final art threshold. The independent fit review constrained the bay, service staging and lower-level reveal before construction.

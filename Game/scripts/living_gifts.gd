@@ -16,7 +16,7 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 			if contact!=null:contact.free()
 		if "lens" in part.name:part.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	var marker:=architecture.find_child("DATUM_display_bay",true,false)as Node3D
-	ship.model(root,"AST-RTL-001.glb","LivingGiftsRecessedDisplay",marker.global_position,-PI/2)
+	var display:Node3D=ship.model(root,"AST-RTL-001.glb","LivingGiftsRecessedDisplay",marker.global_position,-PI/2)
 	marker=architecture.find_child("DATUM_wrapping_workbench",true,false)as Node3D
 	ship.model(root,"AST-RTL-003.glb","LivingGiftsWrappingWorkbench",marker.global_position)
 	for i in range(4):
@@ -24,6 +24,16 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		assert(marker!=null)
 		var file:="AST-BOT-001.glb" if i==0 else "AST-BOT-003.glb" if i==3 else "AST-BOT-009.glb"
 		ship.model(root,file,"LivingGiftsSpecimen_"+str(i),marker.global_position,float(i)*.42)
+	var shelves:=["MAIN_DISPLAY_LEFT_PATCH_CONTACT","MAIN_DISPLAY_RIGHT_PATCH_CONTACT","LEFT_SHELF_PATCH_CONTACT","RIGHT_SHELF_PATCH_CONTACT"]
+	for i in range(shelves.size()):
+		var support:=display.find_child(shelves[i],true,false)as Node3D
+		assert(support!=null)
+		var file:="AST-BOT-012_low.glb" if i in [0,3] else "AST-BOT-012.glb"
+		var pot:Node3D=ship.model(root,file,"LivingGiftsShelfPot_"+str(i),support.global_position+display.global_basis*Vector3(0,0,.07),-PI/2)
+		pot.set_meta("persistent_id","D09_florist7_nursery_pot_"+str(i))
+		var soil:=pot.find_child("DATUM_soil_surface",true,false)as Node3D
+		assert(soil!=null)
+		ship.model(root,"AST-BOT-003.glb","LivingGiftsShelfFlower_"+str(i),soil.global_position,-PI/2)
 	for i in range(4):
 		marker=architecture.find_child("DATUM_light_"+str(i),true,false)as Node3D
 		assert(marker!=null)

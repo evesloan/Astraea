@@ -35,13 +35,16 @@ def datum(name,p):
 
 
 TAU=2*math.pi
-AID='AST-BOT-012'
-profile=[(.075,0),(.085,.02),(.095,.06),(.125,.17),(.145,.195)];n=16;v=[(r*math.cos(i*TAU/n),r*math.sin(i*TAU/n),h)for r,h in profile for i in range(n)];f=[tuple(reversed(range(n))),tuple(range((len(profile)-1)*n,len(profile)*n))]+[(j*n+i,j*n+(i+1)%n,(j+1)*n+(i+1)%n,(j+1)*n+i)for j in range(len(profile)-1)for i in range(n)];mesh('POT_TaperedCeramicBody',v,f,'warm_stone')
-v=[(r*math.cos(i*TAU/n),r*math.sin(i*TAU/n),h)for h in [.19,.22]for r in [.15,.115]for i in range(n)];f=[]
+import sys
+LOW_BOWL='--low' in sys.argv
+AID='AST-BOT-012'+('_low' if LOW_BOWL else '')
+shoulder=.115 if LOW_BOWL else .195
+profile=[(.075,0),(.085,.02),(.095,.04 if LOW_BOWL else .06),(.125,.09 if LOW_BOWL else .17),(.145,shoulder)];n=16;v=[(r*math.cos(i*TAU/n),r*math.sin(i*TAU/n),h)for r,h in profile for i in range(n)];f=[tuple(reversed(range(n))),tuple(range((len(profile)-1)*n,len(profile)*n))]+[(j*n+i,j*n+(i+1)%n,(j+1)*n+(i+1)%n,(j+1)*n+i)for j in range(len(profile)-1)for i in range(n)];mesh('POT_TaperedCeramicBody',v,f,'warm_stone')
+v=[(r*math.cos(i*TAU/n),r*math.sin(i*TAU/n),h)for h in [shoulder-.005,shoulder+.025]for r in [.15,.115]for i in range(n)];f=[]
 for i in range(n):
  j=(i+1)%n;f.extend([(i,j,j+2*n,i+2*n),(i+n,i+3*n,j+3*n,j+n),(i+2*n,j+2*n,j+3*n,i+3*n),(i,j,j+n,i+n)])
 mesh('POT_RolledLip',v,f,'ivory_enamel')
-q=[(.114*math.cos(i*TAU/n),.114*math.sin(i*TAU/n))for i in range(n)];extrusion('POT_ContainedSoil',q,.19,.20,'botanical_soil');datum('soil_surface',(0,0,.198));datum('floor_contact',(0,0,0))
+q=[(.114*math.cos(i*TAU/n),.114*math.sin(i*TAU/n))for i in range(n)];extrusion('POT_ContainedSoil',q,shoulder-.005,shoulder+.005,'botanical_soil');datum('soil_surface',(0,0,shoulder+.003));datum('floor_contact',(0,0,0))
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(AID+'.blend');export=ROOT/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source));tri=0
 for o in parts:o.data.calc_loop_triangles();tri+=len(o.data.loop_triangles)
 bpy.ops.export_scene.gltf(filepath=str(export),export_format='GLB',export_yup=True,export_extras=True)
