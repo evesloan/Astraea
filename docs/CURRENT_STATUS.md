@@ -107,3 +107,5 @@ The existing D13/D14 residential commons now connects to three authored upper co
 
 ## D15 sheltered writing and book edge
 The new AST-RES-002 family joins a rolled portal, lowered acoustic soffit, two shaped writing surfaces and shared book storage along the existing north edge. Actual chair-side and browsing approaches, eight chair feet,30book supports and two task-light receiver paths pass. A separate564pose cart/load/driver check covers changing-heading routes around the east-stair perimeter. All45current checks passed140.7473seconds fixed60; normal/effects-off graphical review was completed. Static stock, unanimated seating and unfinished broader commons remain explicit limits.
+
+The two D15 reading lights now have independent physical desk toggles under the shared RMB/E interaction. Their stable identities, unfocused rejection, off/on behavior, isolated lens response and power-aware lighting budget pass. All45checks pass139.2868seconds against the final controller revision. The authored light balance is preserved; disk persistence remains pending.

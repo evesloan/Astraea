@@ -49,7 +49,45 @@ func run() -> void:
 	await walk(actor,Vector2(79.895,-11.8))
 	await walk(actor,Vector2(79.895,-9.5))
 	assert(abs(actor.position.y-93)<.12)
-	print("STARBOARD READING PASS: actual two chair-side approaches and shared shelf browsing; eight chair feet,30 book supports and both task-light receiver paths. Seated use, species fit, book interaction and final art pending.")
+	actor.set_physics_process(true)
+	var budget:Node=ship.find_child("LocalShadowSourceBudget",true,false)
+	for i in range(2):
+		var control:Node3D=ship.find_child("D15ReadingLightSwitch_"+str(i),true,false)
+		var other:Node3D=ship.find_child("D15ReadingLightSwitch_"+str(1-i),true,false)
+		assert(control.diffuser_materials.size()>0 and control.persistent_id==StringName("D15_directory_04_reading_light_"+str(i)))
+		var approach:Node3D=edge.find_child("DATUM_approach_"+str(i),true,false)
+		var side_anchor:Node3D=edge.find_child("DATUM_chair_"+str(i),true,false)
+		assert(ship.arrive_at(side_anchor.global_position+Vector3(.92,.1,0),0))
+		for frame in range(10):await physics_frame
+		actor.camera.look_at(control.global_position,Vector3.UP)
+		assert(actor.target_from_view()==control,"Authored desk toggle must be precisely targetable")
+		var press:=InputEventKey.new()
+		press.keycode=KEY_E
+		press.physical_keycode=KEY_E
+		press.pressed=true
+		Input.parse_input_event(press.duplicate())
+		for frame in range(3):await physics_frame
+		assert(control.powered,"Unfocused E must not operate a desk light")
+		press.pressed=false
+		Input.parse_input_event(press.duplicate())
+		var focus:=InputEventMouseButton.new()
+		focus.button_index=MOUSE_BUTTON_RIGHT
+		focus.pressed=true
+		Input.parse_input_event(focus.duplicate())
+		for expected in [false,true]:
+			press.pressed=true
+			Input.parse_input_event(press.duplicate())
+			for frame in range(5):await physics_frame
+			budget.refresh()
+			assert(control.powered==expected and other.powered,"Reading lights must operate independently")
+			assert(control.diffuser_materials[0].emission_enabled==expected)
+			if not expected:assert(not control.source.visible and not control.source.shadow_enabled)
+			press.pressed=false
+			Input.parse_input_event(press.duplicate())
+			for frame in range(2):await physics_frame
+		focus.pressed=false
+		Input.parse_input_event(focus.duplicate())
+	print("STARBOARD READING PASS: actual two chair-side approaches and shared shelf browsing; eight chair feet,30 book supports and both task-light receiver paths and two independent RMB/E desk toggles with visible diffuser response. Seated use, species fit, book interaction and final art pending.")
 	main.queue_free()
 	await process_frame
 	quit()

@@ -51,6 +51,11 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.light_energy=.85
 		light.light_color=Color(1,.95,.87)
 		light.shadow_enabled=true
+		var control:=Node3D.new()
+		control.name="D15ReadingLightSwitch_"+str(i)
+		control.set_script(load("res://scripts/fixture_switch.gd"))
+		root.add_child(control)
+		control.configure(reading,light,StringName("D15_directory_04_reading_light_"+str(i)),"DATUM_toggle_"+str(i),"READ_TaskLens_"+str(i))
 	for i in range(5):
 		var marker:=reading.find_child("DATUM_shelf_"+str(i),true,false)as Node3D
 		var stock:Node3D=ship.model(root,"AST-LIB-006.glb","D15ReadingStock_"+str(i),marker.global_position)

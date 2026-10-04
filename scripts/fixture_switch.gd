@@ -6,11 +6,11 @@ var powered := true
 var source: Light3D
 var diffuser_materials: Array[StandardMaterial3D] = []
 
-func configure(fixture: Node3D, light: Light3D, identity: StringName) -> void:
+func configure(fixture: Node3D, light: Light3D, identity: StringName, toggle_datum_name:String="POINT_toggle", diffuser_mesh_prefix:String="") -> void:
 	assert(not identity.is_empty())
 	persistent_id = identity
 	source = light
-	var datum := fixture.find_child("POINT_toggle",true,false) as Node3D
+	var datum := fixture.find_child(toggle_datum_name,true,false) as Node3D
 	assert(datum != null)
 	global_transform = datum.global_transform
 	var target := Area3D.new()
@@ -26,13 +26,16 @@ func configure(fixture: Node3D, light: Light3D, identity: StringName) -> void:
 	target.add_child(shape)
 	add_child(target)
 	for mesh in fixture.find_children("*","MeshInstance3D",true,false):
+		if not diffuser_mesh_prefix.is_empty() and not str(mesh.name).begins_with(diffuser_mesh_prefix):continue
 		for index in range(mesh.mesh.get_surface_count()):
 			var material: Material = mesh.get_active_material(index)
-			if material is StandardMaterial3D and "opal_diffuser" in material.resource_name:
+			if material is StandardMaterial3D and (not diffuser_mesh_prefix.is_empty() or "opal_diffuser" in material.resource_name):
 				var local := material.duplicate() as StandardMaterial3D
 				mesh.set_surface_override_material(index,local)
-				local.emission = Color(1,.93,.83)
-				local.emission_energy_multiplier = .18
+				if diffuser_mesh_prefix.is_empty():
+					local.emission = Color(1,.93,.83)
+					local.emission_energy_multiplier = .18
+				# Explicit built-in lenses retain their authored emission/color balance.
 				diffuser_materials.append(local)
 	apply_power()
 
