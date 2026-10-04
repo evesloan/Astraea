@@ -70,12 +70,32 @@ func run() -> void:
 	for part in architecture.find_children("LIB_finish*","MeshInstance3D",true,false):
 		assert(part.get_node_or_null("StaticContact")==null,"Study fabric must not duplicate physical floor")
 	var collection:=district.get_node("NorthCollectionStudy_WIP")
-	var batch:MultiMeshInstance3D=collection.get_node("LocalCollectionStock")
-	assert(batch.multimesh.instance_count>40,"Collection stock must be present")
-	for index in range(batch.multimesh.instance_count):
-		var base:Vector3=batch.global_transform*batch.multimesh.get_instance_transform(index).origin
-		var support:=ship.get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(base+Vector3.UP*.02,base-Vector3.UP*.03))
-		assert(not support.is_empty() and absf(support.position.y-base.y)<.012,"Each book group must rest on a real shelf")
+	var stocked_groups:=0
+	for batch in collection.find_children("LocalCollectionStock_*","MultiMeshInstance3D",false,false):
+		assert(batch.multimesh.instance_count>0)
+		stocked_groups+=batch.multimesh.instance_count
+		for index in range(batch.multimesh.instance_count):
+			var base:Vector3=batch.global_transform*batch.multimesh.get_instance_transform(index).origin
+			var support:=ship.get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(base+Vector3.UP*.02,base-Vector3.UP*.03))
+			assert(not support.is_empty() and absf(support.position.y-base.y)<.012,"Each book group must rest on a real shelf")
+	assert(stocked_groups==63,"All authored shelf positions must remain stocked")
+	var activities:=district.get_node("StarAtlasCommonsActivities_WIP")
+	for item in activities.get_children():
+		if item.has_meta("supported_book_group"):
+			var p:Vector3=item.global_position
+			var support:=ship.get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(p+Vector3.UP*.02,p-Vector3.UP*.03))
+			assert(not support.is_empty() and absf(support.position.y-p.y)<.012,"Window-study stock needs shelf contact")
+	var fixture:=activities.get_node("D13WindowStudyFixture")
+	var mount:Node3D=fixture.find_child("POINT_mount_contact",true,false)
+	var mounting:=PhysicsRayQueryParameters3D.create(mount.global_position+Vector3.UP*.025,mount.global_position-Vector3.UP*.025)
+	var excluded:Array[RID]=[]
+	for body in fixture.find_children("*","StaticBody3D",true,false):excluded.append(body.get_rid())
+	mounting.exclude=excluded
+	var mounting_contact:=ship.get_world_3d().direct_space_state.intersect_ray(mounting)
+	assert(not mounting_contact.is_empty() and absf(mounting_contact.position.y-mount.global_position.y)<.006,"Single-study fixture must sit on its receiver")
+	var source:Node3D=activities.get_node("D13WindowStudyOpticalSource")
+	assert(ship.get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(source.global_position,source.global_position+Vector3.DOWN*.20)).is_empty(),"Window-study light must leave its diffuser")
+	for p in [Vector3(-67.1,84.1,-4.8),Vector3(-88.5,88.6,10.6),Vector3(-91.4,88.6,9)]:assert(ship.arrive_at(p,0),"Upper activity approach must have floor and capsule clearance")
 	actor.set_physics_process(false)
 	actor.position=Vector3(-50,78.1,0)
 	actor.velocity=Vector3.ZERO

@@ -165,6 +165,17 @@ for i,(x0,x1,z0,z1,h)in enumerate([(-91,-76,-31,-21,81.45),(-91,-76,21,31,81.70)
  else:
   plane_box('LIB_ReadingCanopy_'+str(i),x0,x1,z0,z1,h,h+.18,'warm_walnut')
   for x in [x0+.2,x1-.2]:beam('LIB_CanopyReturn_%s_%s'%(i,x),[xyz(x,h+.18,z0+.2),xyz(x,83.76,z0+.2)],.10,.10,'ivory_enamel')
+# A quieter D13 window study has a low screened service-side edge and a
+# fanning overhead shelter. The north approach and west circulation remain open.
+wall('LIB_WindowStudyLowScreen',(-68.8,-7.15),(-63.5,-7.15),84,85.05,.18,'warm_walnut')
+wall('LIB_WindowStudyScreenCap',(-68.8,-7.15),(-63.5,-7.15),85.05,85.12,.24,'ivory_enamel')
+profile=[(-68.8,-7.2),(-63.5,-7.2),(-63.5,-3.7),(-65.2,-3.3),(-67.2,-3.6),(-68.8,-4.4)]
+extrusion('LIB_WindowStudyCanopy',[xy(p)for p in profile],86.92-78,87.08-78,'ivory_enamel')
+for j in range(2,len(profile)):
+ a=profile[j];b=profile[(j+1)%len(profile)]
+ beam('LIB_WindowStudyCanopyBrow_'+str(j),[xyz(x,86.94,z)for x,z in [a,b]],.10,.12,'warm_walnut')
+for x in [-68.65,-63.65]:
+ beam('LIB_WindowStudyRoofReturn_'+str(x),[xyz(x,85.12,-7.15),xyz(x,88.26,-7.15)],.10,.12,'champagne_metal')
 # Fitted woven study field belongs to the occupied bay; visual finish only.
 for name,rx,rz,h,role in [('border',3.25,2.60,78.002,'oatmeal_weave'),('field',3.12,2.47,78.004,'clay_weave')]:
  q=[xyz(-86+rx*math.cos(j*math.pi/12),h,-21.5+rz*math.sin(j*math.pi/12))for j in range(24)]
