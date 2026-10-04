@@ -6,10 +6,11 @@ root=Path(__file__).resolve().parents[1]
 def bounds():
  pts=[o.matrix_world@Vector(v) for o in bpy.context.scene.objects if o.type=='MESH' for v in o.bound_box]
  return [[min(p[i] for p in pts) for i in range(3)],[max(p[i] for p in pts) for i in range(3)]]
-for family,aid,markers in [('star_atlas_architecture','AST-LIB-011',['DATUM_light_'+str(i) for i in range(10)]),('commons_lift_cabin','AST-CIR-003_three_stop',[]),('library_structure','AST-LIB-STR-003_start',[])]:
+for family,aid,markers in [('star_atlas_architecture','AST-LIB-011',['DATUM_light_'+str(i) for i in range(10)]),('commons_lift_cabin','AST-CIR-003_three_stop',[]),('library_structure','AST-LIB-STR-003_start',[]),('library_arrival_counter','AST-LIB-012',['DATUM_'+side+'_'+role for side in ['west','lower','east'] for role in ['guest_approach','rear_approach','work_surface']])]:
  r=root/'assets'/family;source=r/'source'/(aid+'.blend');export=r/'exports'/(aid+'.glb')
  bpy.ops.wm.open_mainfile(filepath=str(source));lo,hi=bounds()
  assert all(o.data.uv_layers for o in bpy.context.scene.objects if o.type=='MESH')
+ assert all(p.normal.z>.99 for o in bpy.context.scene.objects if o.type=='MESH' and o.name.startswith('LIB_Finish') for p in o.data.polygons),'Floor finishes must face upward'
  assert all(bpy.data.objects.get(n) is not None for n in markers)
  bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
  bpy.ops.import_scene.gltf(filepath=str(export));elo,ehi=bounds()
