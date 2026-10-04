@@ -33,6 +33,10 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		ship.model(district,"AST-FUR-003_day_table.glb","ArrivalsWaitingTable_"+str(group),Vector3(cx,0,-404.5))
 		for side in [-1,1]:
 			ship.model(district,"AST-FUR-002_day_reading_chair.glb","ArrivalsWaitingChair_%d_%d"%[group,side],Vector3(cx+side*2.4,0,-405.6),-side*.95)
+	# Authored pause ceilings and seats face the exhibits without occupying the through-route.
+	for i in range(2):
+		var gallery_z:float=-444.2 if i==0 else -419.8
+		ship.model(district,"AST-FUR-001_day_window_bench.glb","ArrivalsGalleryViewingBench_"+str(i),Vector3(-31,6,gallery_z),0.0 if i==0 else PI)
 	const stair_contact=preload("res://scripts/aquatic_section.gd")
 	stair_contact._contact(district,[Vector3(-30,0,-435.45),Vector3(-36,3,-435),Vector3(-36,3,-429),Vector3(-30,0,-428.55)])
 	stair_contact._contact(district,[Vector3(-45,3,-437),Vector3(-42,3,-437),Vector3(-42,6,-443),Vector3(-45,6,-443)])
@@ -46,7 +50,7 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	lift.district_label="Arrivals"
 	lift.persistent_id=&"arrivals_fusion_lift_001"
 	district.add_child(lift)
-	for i in range(11):
+	for i in range(13):
 		var marker:=architecture.find_child("DATUM_light_"+str(i),true,false)as Node3D
 		var light:=SpotLight3D.new()
 		district.add_child(light)
@@ -54,8 +58,8 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.global_position=marker.global_position
 		light.rotation.x=-PI/2
 		light.spot_angle=65
-		light.spot_range=16
-		light.light_energy=1.15
+		light.spot_range=16 if i<11 else 5.0
+		light.light_energy=1.15 if i<11 else .65
 		light.light_color=Color(1,.95,.87)
 		light.shadow_enabled=true
 	for i in range(2):
