@@ -5,6 +5,17 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	root.name = "GentleWaters_LivingGifts_Vesper_Section_WIP"
 	parent.add_child(root)
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/aquatic_section.json"))
+	var enclosure:Node3D=ship.model(root,"AST-CIR-004.glb","AquaticLiftEnclosure",Vector3(12,44,235))
+	var lift:Node3D=load("res://scripts/commons_lift.gd").new()
+	lift.name="AquaticPassengerLift"
+	lift.floor_heights.assign([44.0,52.5,61.0])
+	lift.deck_numbers.assign([8,9,10])
+	lift.gate_origin_xz=Vector2(12,235)
+	lift.identity_prefix="aquatic"
+	lift.district_label="Aquatic"
+	lift.cabin_file="AST-CIR-003_three_stop.glb"
+	lift.persistent_id=&"aquatic_lift_001"
+	root.add_child(lift)
 	var basin: Dictionary = data.basin
 	var boundary: Array = basin.boundary
 	var vertices: Array[Vector3] = []
