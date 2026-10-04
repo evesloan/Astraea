@@ -13,7 +13,7 @@ m=bpy.data.materials.new('GardenOpalLens');m.use_nodes=True;b=m.node_tree.nodes.
 
 def mesh(name,vertices,faces,role):
  d=bpy.data.meshes.new(name);d.from_pydata(vertices,[],faces);d.update();bm=bmesh.new();bm.from_mesh(d);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7);bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-7);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));
- if name in ['AQU_HighCentralField','AQU_MiddleCove','AQU_PeripheralSoffit','AQU_VesperLiftRelief']:
+ if name in ['AQU_HighCentralField','AQU_MiddleCove','AQU_PeripheralSoffit','AQU_VesperLiftRelief','AQU_WestDiningBay','AQU_EastDiningBay']:
   # Triangulated cap boundary T-junctions can confuse global normal propagation.
   # These level faces have an explicit authored outward direction.
   low=min(v.co.z for v in bm.verts);high=max(v.co.z for v in bm.verts)
@@ -59,6 +59,13 @@ for layer in D['layers']:
   for a,b in zip(ring,ring[1:]+ring[:1]):
    start=len(v);v.extend([xyz(a[0],layer['lo'],a[1]),xyz(b[0],layer['lo'],b[1]),xyz(b[0],layer['hi'],b[1]),xyz(a[0],layer['hi'],a[1])]);f.append(tuple(range(start,start+4)))
  mesh('AQU_'+layer['name'],v,f,layer['role'])
+for bay in D.get('dining_bays',[]):
+ outer,inner=bay['outer'],bay['inner'];assert len(outer)==len(inner)
+ for i in range(len(outer)):
+  j=(i+1)%len(outer)
+  points=[(outer[i],bay['base_y']),(outer[j],bay['base_y']),(inner[j],bay['crown_y']),(inner[i],bay['crown_y'])]
+  v=[xyz(p[0],h+thickness,p[1])for thickness in [0,.08]for p,h in points]
+  mesh('AQU_'+bay['name']+'_SplayedReturn_'+str(i),v,[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'warm_walnut')
 for name,edge,lo,hi in [('Inner',D['central_edge'],68.36,68.85),('Outer',D['middle_edge'],67.56,68.2)]:
  segments=D.get('edge_segments',{}).get('central_edge' if name=='Inner' else 'middle_edge',list(zip(edge,edge[1:]+edge[:1])))
  for i,(a,b)in enumerate(segments):
@@ -74,10 +81,11 @@ for i,(x,z)in enumerate(D['bearing_centers_xz']):
  end=(x,182.05)if i==0 else(53.95,z)if i==1 else(8.05,z)
  beam('AQU_PerimeterTransfer_'+str(i),[xyz(x,68.95,z),xyz(end[0],68.95,end[1])],.32,.30,'ivory_enamel')
 # Pendant-free surface fixtures fitted to lower peripheral ceiling zones.
-for i,(x,z)in enumerate([(15,207),(52,207),(20,246),(43,186)]):
+for i,fixture in enumerate(D['fixture_mounts']):
+ x,z,h=fixture['x'],fixture['z'],fixture['height']
  cx,cy=x-8,182-z;q=[(cx+.42*math.cos(j*math.pi/8),cy+.42*math.sin(j*math.pi/8))for j in range(16)]
- extrusion('AQU_CoveHousing_'+str(i),q,67.27-61,67.4-61,'champagne_metal')
- extrusion('AQU_CoveDiffuser_'+str(i),[(cx+(a-cx)*.88,cy+(b-cy)*.88)for a,b in q],67.245-61,67.27-61,'lens');datum('ceiling_light_'+str(i),(cx,cy,67.22-61))
+ extrusion('AQU_CoveHousing_'+str(i),q,h-.13-61,h-61,'champagne_metal')
+ extrusion('AQU_CoveDiffuser_'+str(i),[(cx+(a-cx)*.88,cy+(b-cy)*.88)for a,b in q],h-.155-61,h-.13-61,'lens');datum('ceiling_light_'+str(i),(cx,cy,h-.18-61))
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(AID+'.blend');export=ROOT/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source));tri=0
 for o in parts:o.data.calc_loop_triangles();tri+=len(o.data.loop_triangles)
 for role,m in mats.items():

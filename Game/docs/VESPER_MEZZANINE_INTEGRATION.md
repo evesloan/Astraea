@@ -28,3 +28,6 @@ The added driven-boarding test passes: the player pushes the loaded cart across 
 
 ## Visual review
 Graphical batch vesper-mezzanine-connected-001 passed in89.062seconds. Ordinary stair, lower dining and upper dining views plus the upper effects-off view were inspected. The stair and two-level relationship are legible. The table grid, broad undifferentiated ceiling and dark unresolved perimeter are below the intended hospitality quality. This is a construction/circulation milestone with further architectural finish work required, not approved final art.
+
+## Raised dining ceiling bays
+Two shallow rounded ceiling bays now rise from67.4 to68.0, with splayed walnut returns and fitted fixture mounts. Their footprints remain wholly in the former lower peripheral ceiling field, with explicit no-tier-crossing assertions. No guest headroom was reduced and all seating/circulation stayed fixed. Source/export measurements and outward level-cap normals pass; all40 gameplay checks pass in109.728seconds. Graphical batch vesper-dining-ceiling-bays-001 completed in86.394seconds; ordinary and effects-off views were inspected. The relief gives modest ceiling depth, but the dark unresolved perimeter and repetitive table field remain the larger quality gap. Further trim alone will not resolve the room.
