@@ -22,3 +22,10 @@ Clone the private repository into an empty directory, verify CHECKPOINT.json fil
 Cloud reset can remove the running publisher and its sign-in. Remote checkpoints survive independently; credentials must be re-established through an approved sign-in. An hourly independent read-only check looks for confirmed protection failures. Inactivity or an old-but-current checkpoint alone is not failure.
 
 Older Library checkpoints remain retained. Automatic Workshop copies remain unverified. Do not claim zero-loss guarantees, perpetual execution or hardware performance validation.
+
+## Publisher lifetime and reviewed recovery
+A single publisher is now hosted in a named foreground terminal on the cloud desktop, following the existing graphical-review runner's lifetime pattern. Its lock and fresh heartbeat must still be checked; an open terminal or stale healthy receipt is not evidence of current protection. Never start another publisher while the lock is owned.
+
+If a publisher has exited, first compare private destination identity, remote main, clean mirror HEAD and any pending upload. A bounded invocation of the same publisher is a permitted recovery path only after confirming no writer remains and resolving the recorded blocker. Do not reset a blocked state merely to retry. Unknown or divergent upload outcomes still stop publication.
+
+New launches from this revision record the checking-remote stage and classify external command failures without retaining raw stderr or command arguments. Ten publisher unit tests cover the existing safety checks plus sanitized authentication/transport diagnostics. This does not change credentials, repository permissions, retention cadence or the no-force-push policy. Long-running operation remains subject to actual verification and cloud-session availability.
