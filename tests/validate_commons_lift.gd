@@ -10,6 +10,18 @@ func wait_trip(lift:Node3D,cart:RigidBody3D,actor:CharacterBody3D,goal:int) -> v
 			assert(lift.cabin_gate.open_fraction<.001,"Cabin gate stays closed during travel")
 			for gate in lift.landing_gates:assert(gate.open_fraction<.001,"All shaft gates stay closed during travel")
 			assert(abs(lift.travel_velocity-previous)<.025,"Acceleration is bounded")
+		# Detect fitted-frame/roof intersections independently of carried-body tests.
+		# Kinematic platforms can otherwise move through static geometry unnoticed.
+		for contact in lift.cabin.get_children():
+			if not contact is CollisionShape3D:continue
+			var query:=PhysicsShapeQueryParameters3D.new()
+			query.shape=contact.shape
+			query.transform=contact.global_transform
+			query.exclude=[lift.cabin.get_rid()]
+			query.margin=.0001
+			for hit in lift.get_world_3d().direct_space_state.intersect_shape(query,64):
+				if hit.collider is StaticBody3D and not hit.collider is AnimatableBody3D:
+					assert(false,"Moving cabin clips static structure at cabin Y%.4f: %s / %s"%[lift.cabin.position.y,contact.name,hit.collider.get_path()])
 		previous=lift.travel_velocity
 		assert(cart.get_parent().name=="PersistentActors","Cart is not parented to moving lift")
 		assert(abs(cart.global_position.y-lift.cabin.global_position.y)<.16,"Loose physical cart stays on moving platform: cart=%s cabin=%s phase=%s velocity=%s"%[cart.global_position,lift.cabin.global_position,lift.phase,lift.travel_velocity])

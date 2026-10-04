@@ -20,7 +20,7 @@ func _ready() -> void:
 		var gate:Node3D=load("res://scripts/lift_gate.gd").new()
 		gate.name="LandingGate_D"+str(13+i)
 		gate.persistent_id=StringName("D%d_commons_lift_gate"%(13+i))
-		gate.position=Vector3(92.10,FLOORS[i],0)
+		gate.position=Vector3(92.08,FLOORS[i],0)
 		gate.rotation.y=PI/2
 		add_child(gate)
 		landing_gates.append(gate)
@@ -59,10 +59,10 @@ func _ready() -> void:
 		corner_contact.shape=corner_shape
 		cabin.add_child(corner_contact)
 		# Actual pocket skins, not a solid box across moving leaf travel.
-		_box(cabin,Vector3(side*1.55,1.325,-.155),Vector3(.70,2.65,.020),"CabinGateFrontSkin")
-		_box(cabin,Vector3(side*1.55,1.325,.0025),Vector3(.70,2.65,.025),"CabinGateBackSkin")
-		_box(cabin,Vector3(side*1.89,1.405,-.075),Vector3(.02,2.81,.18),"CabinGatePocketEnd")
-	_box(cabin,Vector3(0,2.75,-.07),Vector3(3.84,.20,.20),"CabinGateHeader")
+		_box(cabin,Vector3(side*1.55,1.325,-.205),Vector3(.70,2.65,.020),"CabinGateFrontSkin")
+		_box(cabin,Vector3(side*1.55,1.325,-.0475),Vector3(.70,2.65,.025),"CabinGateBackSkin")
+		_box(cabin,Vector3(side*1.89,1.405,-.125),Vector3(.02,2.81,.18),"CabinGatePocketEnd")
+	_box(cabin,Vector3(0,2.75,-.125),Vector3(3.84,.20,.20),"CabinGateHeader")
 	_box(cabin,Vector3(0,1.4,-3.535),Vector3(3.3,2.8,.13),"CabinRear")
 	_box(cabin,Vector3(0,2.87,-1.8),Vector3(4,.14,3.6),"CabinRoof")
 	for i in range(2):
@@ -82,7 +82,7 @@ func _ready() -> void:
 	cabin_gate=load("res://scripts/lift_gate.gd").new()
 	cabin_gate.name="CabinGate"
 	cabin_gate.persistent_id=&"commons_cabin_gate"
-	cabin_gate.position=Vector3(92.27,84,0)
+	cabin_gate.position=Vector3(92.32,84,0)
 	cabin_gate.rotation.y=PI/2
 	add_child(cabin_gate)
 	# Cabin-gate fixed-frame contacts must move with the cabin as well.

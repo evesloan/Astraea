@@ -52,3 +52,6 @@ print('PASS: pier bands exclude the full arrival/landing clearway and protected 
 garden_approach=LineString([(54.5,-15),(75,-15)]).buffer(.65,cap_style='square')
 for x,z in d['support_intent']['commons_piers_xz_m']+[d['support_intent']['offset_arrival_pier_xz_m']]:assert box(x-.336,z-.336,x+.336,z+.336).intersection(garden_approach).area<1e-8
 print('PASS: support shafts clear the protected garden approach with650mm path buffer')
+
+assert d["lift"]["moving_platform_front_x_m"]-(d["lift"]["landing_gate_x_m"]+.105)>=.01499
+print("PASS: station header clears the full moving platform envelope")

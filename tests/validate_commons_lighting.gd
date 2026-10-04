@@ -28,9 +28,20 @@ func run() -> void:
 		var marker:=gathering.find_child("DATUM_light_"+str(i),true,false)as Node3D
 		var ray:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position-Vector3.UP*.12)
 		assert(ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Authored light exits remain outside lenses")
+	var lantern_count:=0
+	for marker in ship.find_children("DATUM_light_exit","Node3D",true,false):
+		if marker.get_parent().get_parent().get_meta("catalogue_file","")!="AST-LGT-001.glb":continue
+		lantern_count+=1
+		var toward_room:=Vector3(0,0,-sign(marker.global_position.z))
+		var ray:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+toward_room*.15)
+		assert(ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Wall-lantern light exits clear opal lenses and wall")
+	assert(lantern_count==4,"Four actual wall lanterns retain authored source markers")
+	var carpet_meshes:=gathering.find_children("GATHER_floor_*","MeshInstance3D",true,false)
+	assert(carpet_meshes.size()>0)
+	for mesh in carpet_meshes:assert(mesh.get_node_or_null("StaticContact")==null,"Carpet finish does not create a second walkable floor owner")
 	for p in [Vector3(79,84.1,9.2),Vector3(82,88.6,-9.2),Vector3(88,88.6,-6.8),Vector3(86.3,88.6,-9),Vector3(89.7,88.6,-9)]:
 		assert(ship.arrive_at(p,0),"Social/shared-table approaches remain usable")
-	print("COMMONS LIGHTING PASS: eight-source cap preserved, occupied-floor/roof-hidden sources deprioritized,14 plant contacts,3 actual lens exits and5 gathering approaches. Final art and target-GPU cost remain unverified.")
+	print("COMMONS LIGHTING PASS: eight-source cap preserved, occupied-floor/roof-hidden sources deprioritized,14 plant contacts,7 actual lens exits, visual-only carpet finish and5 gathering approaches. Final art and target-GPU cost remain unverified.")
 	main.queue_free()
 	await process_frame
 	quit()
