@@ -75,6 +75,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.shadow_bias=.08
 	load("res://scripts/living_gifts.gd").build(root,ship)
 	load("res://scripts/vesper_dining.gd").build(root,ship)
+	load("res://scripts/vesper_service.gd").build(root,ship)
 	load("res://scripts/vesper_watercourse.gd").build(root,ship)
 	var basin: Dictionary = data.basin
 	var boundary: Array = basin.boundary
