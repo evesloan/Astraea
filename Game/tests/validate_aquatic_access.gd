@@ -25,6 +25,25 @@ func run() -> void:
 			for hit in hits:print("SWEEP CONTACT:",hit.collider.get_path()," part:",part.name," y:",pose.origin.y)
 			assert(hits.is_empty(),"Aquatic cabin contacts fixed structure: %s at %.2f"%[part.name,pose.origin.y])
 			sweep_samples+=1
+	var ceiling:Node3D=ship.find_child("AquaticAuthoredCeiling",true,false)
+	for part in ceiling.find_children("*","MeshInstance3D",true,false):
+		var bounds:AABB=part.global_transform*part.get_aabb()
+		assert(bounds.end.y<=69.101,"Ceiling must not enter Cinema5 volume")
+	for i in range(4):
+		var marker:=ceiling.find_child("DATUM_ceiling_light_"+str(i),true,false)as Node3D
+		var ray:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+Vector3.DOWN*.2)
+		assert(ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Ceiling source exit obstructed")
+		var mount:=marker.global_position+Vector3(.48,0,0)
+		ray=PhysicsRayQueryParameters3D.create(mount,Vector3(mount.x,67.6,mount.z))
+		var hit:=ship.get_world_3d().direct_space_state.intersect_ray(ray)
+		assert(not hit.is_empty() and abs(hit.position.y-67.4)<.01,"Ceiling luminaire lacks its fitted overhead mounting surface")
+	var compiled:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var cover_area:=0.0
+	for region in compiled.regions:
+		if String(region.id).begins_with("D11_aquatic_"):
+			assert(abs(region.floor_y-69.5)<.001 and abs(region.thickness-.4)<.001)
+			cover_area+=region.structural_area_m2
+	assert(abs(cover_area-3128.0)<.01,"Both protected cover ownership pieces must be present")
 	# Compound loaded-cart clearance, including the aft bypass around the existing column.
 	for floor_y in [44.0,52.5,61.0]:
 		for i in range(66):check_pose(ship,cart,Vector3(9.8,floor_y+.03,223.2+i*.25),0,excluded)
@@ -32,7 +51,7 @@ func run() -> void:
 		for i in range(42):check_pose(ship,cart,Vector3(9.8+i*.24,floor_y+.03,239.5),PI/2,excluded)
 		for i in range(31):check_pose(ship,cart,Vector3(20,floor_y+.03,239.5),PI*.5*i/30,excluded)
 		for i in range(23):check_pose(ship,cart,Vector3(20,floor_y+.03,239.5+i*.25),0,excluded)
-	print("AQUATIC ACCESS PASS:",sweep_samples,"full cabin-shape sweep samples;",samples,"compound cart and upper-load approach poses. Geometric clearance only; driven boarding turns and final art remain pending.")
+	print("AQUATIC ACCESS PASS:",sweep_samples,"full cabin-shape sweep samples;",samples,"compound cart and upper-load approach poses; four ceiling fixture mounts/exits and protected cover ownership. Geometric clearance only; driven boarding turns and final art remain pending.")
 	main.queue_free()
 	await process_frame
 	quit()
