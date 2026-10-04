@@ -50,4 +50,15 @@ class GitHubBackupTests(unittest.TestCase):
             with patch.object(b,'inventory',return_value={'signature':'x','head':'h'}),patch.object(b,'remote_head')as remote:
                 self.assertFalse(b.run_once(c));remote.assert_not_called()
 
+    def test_wip_waits_fifteen_minutes_but_new_commit_does_not(self):
+        with tempfile.TemporaryDirectory() as t:
+            state=Path(t)/'state.json';state.write_text(json.dumps({'remote_commit':'old','projects':{'Godot':{'signature':'before','head':'h'}},'last_verified_epoch':1000}))
+            c={'state':str(state),'mirror':t,'projects':[{'name':'Godot'}],'wip_interval_seconds':900}
+            with patch.object(b.time,'time',return_value=1899),patch.object(b,'inventory',return_value={'signature':'after','head':'h'}),patch.object(b,'verify_private')as remote:
+                self.assertFalse(b.run_once(c));remote.assert_not_called()
+            for clock,head in [(1900,'h'),(1001,'new_commit')]:
+                with patch.object(b.time,'time',return_value=clock),patch.object(b,'inventory',return_value={'signature':'after','head':head}),patch.object(b,'verify_private',side_effect=RuntimeError('Reached remote validation'))as remote:
+                    with self.assertRaisesRegex(RuntimeError,'Reached remote validation'):b.run_once(c)
+                    remote.assert_called_once()
+
 if __name__=='__main__':unittest.main()
