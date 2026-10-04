@@ -1,6 +1,6 @@
 # Astraea current production status
 
-Updated2026-10-04 after the connected Star Atlas library and arrival pass. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
+Updated2026-10-04 after the arrivals spacing, Vesper dining and watercourse passes. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Implemented and checked scope
 - Godot4.6.3 Compatibility, one main ship,18 nonuniform deck datums and source-derived structural floor/opening meshes
@@ -11,7 +11,7 @@ Updated2026-10-04 after the connected Star Atlas library and arrival pass. Fresh
 - Partial D09 salon with authored enclosure, varied ceiling, glazed gallery and several occupied furniture groups; its study lamp responds to the shared RMB/E interaction
 - Two partial D13 twin suites at historical addresses13017 and13041, connected by a walkable route, with preserved historical bed anchors, shaped living/sleeping thresholds, inward glazing and fitted bathroom fixtures
 - The opaque bathroom door inherits existing interaction/motion handling and passed300 fixed-architecture sweep samples, focused operation and obstruction checks
-- 133 registered catalogue designs. Component presence is not room completion or final-art approval
+- 142 registered catalogue designs. Component presence is not room completion or final-art approval
 
 - The paired suite entry now retracts into enclosed hollow pockets. Shared focus/E and call-plate operation,400 fixed-geometry motion samples and actor/loose-prop obstruction checks pass
 
@@ -83,3 +83,6 @@ The existing D09 destination now has an authored curved nursery frontage, layere
 
 ## Arrivals stair-court breathing room
 The paired fusion cases have been narrowed around unchanged machinery, increasing the central opening from2m to6.8m nominal (6.57m between frames). Existing stairs, galleries, hidden staff access and lift remain intact. Four new contact rays verify corrected suspension/crossbeam alignment. All34 regression checks pass; same-camera views show a clearer stair and focal wall. The low entrance canopy remains the next composition problem.
+
+## Current Vesper subset and watercourse
+54 candidate dining seats are fitted in11 table groups; the240-seat target still has186 unplaced seats. Original profiled tables and swept dining chairs have supported contacts and checked service routes. A glass-sided channel now leads through the existing openings to a contained receiver in the aquatic basin. Guard, support, stream-envelope and west-passage checks pass. All36 current regression checks passed in91.3924seconds fixed60 simulation; actual normal views were inspected after the refined graphical batch. Flow is visually animated only: pumping, splash/acoustic behavior, swimming, occupied dining simulation and final art remain unfinished. The catalogue contains142 designs,87 present through624 model instances; these are not completed-room counts.
