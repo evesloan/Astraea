@@ -3,6 +3,10 @@ extends Node3D
 # passengers and loose objects are never reparented to the moving platform.
 var floor_heights:Array[float]=[84.0,88.5]
 var deck_numbers:Array[int]=[13,14]
+# Optional local destinations share a deck without inventing extra ship decks.
+var stop_ids:Array[String]=[]
+var stop_names:Array[String]=[]
+var stop_codes:Array[String]=[]
 var gate_origin_xz:=Vector2(92.2,0)
 var identity_prefix:="commons"
 var district_label:="Commons"
@@ -19,20 +23,27 @@ var travel_velocity:=0.0
 var maximum_speed:=1.1
 var acceleration:=.65
 var button_script=preload("res://scripts/lift_button.gd")
+func _stop_id(index:int) -> String:
+	return stop_ids[index] if not stop_ids.is_empty() else "D"+str(deck_numbers[index])
 func _ready() -> void:
 	assert(floor_heights.size() in [2,3] and deck_numbers.size()==floor_heights.size(),"Use an authored two- or three-stop cabin panel")
+	assert(stop_ids.is_empty() or (stop_ids.size()==floor_heights.size() and stop_names.size()==floor_heights.size() and stop_codes.size()==floor_heights.size()))
+	var identities:Dictionary={}
+	for i in range(floor_heights.size()):
+		assert(not identities.has(_stop_id(i)),"Lift destinations require distinct persistent identities")
+		identities[_stop_id(i)]=true
 	for i in range(1,floor_heights.size()):assert(floor_heights[i]>floor_heights[i-1])
 	process_physics_priority=-20
 	for i in range(floor_heights.size()):
 		var gate:Node3D=load("res://scripts/lift_gate.gd").new()
-		gate.name="LandingGate_D"+str(deck_numbers[i])
-		gate.persistent_id=StringName("D%d_%s_lift_gate"%[deck_numbers[i],identity_prefix])
+		gate.name="LandingGate_"+_stop_id(i)
+		gate.persistent_id=StringName(_stop_id(i)+"_"+identity_prefix+"_lift_gate")
 		gate.position=Vector3(gate_origin_xz.x-.12,floor_heights[i],gate_origin_xz.y)
 		gate.rotation.y=PI/2
 		add_child(gate)
 		landing_gates.append(gate)
-		_button(self,Vector3(gate_origin_xz.x-.34,floor_heights[i]+1.3,gate_origin_xz.y+1.65),i,"D%d_%s_lift_call"%[deck_numbers[i],identity_prefix])
-		_box(self,Vector3(gate_origin_xz.x-.055,floor_heights[i]-.055,gate_origin_xz.y),Vector3(.09,.11,2.4),"FixedSill_D"+str(deck_numbers[i]))
+		_button(self,Vector3(gate_origin_xz.x-.34,floor_heights[i]+1.3,gate_origin_xz.y+1.65),i,_stop_id(i)+"_"+identity_prefix+"_lift_call")
+		_box(self,Vector3(gate_origin_xz.x-.055,floor_heights[i]-.055,gate_origin_xz.y),Vector3(.09,.11,2.4),"FixedSill_"+_stop_id(i))
 	cabin=AnimatableBody3D.new()
 	cabin.name="Moving"+district_label+"Cabin"
 	cabin.set_meta("persistent_id",identity_prefix+"_lift_cabin_001")
@@ -80,7 +91,7 @@ func _ready() -> void:
 	for i in range(floor_heights.size()):
 		var marker:=visual.find_child("DATUM_floor_button_"+str(i),true,false)as Node3D
 		assert(marker!=null,"Cabin panel lacks a physical floor-control datum")
-		_button(cabin,marker.position,i,identity_prefix+"_cabin_D"+str(deck_numbers[i]))
+		_button(cabin,marker.position,i,identity_prefix+"_cabin_"+_stop_id(i))
 	for side in [-1,1]:
 		var marker:=visual.find_child("DATUM_light_"+str(side),true,false)as Node3D
 		var light:=SpotLight3D.new()
@@ -121,6 +132,9 @@ func _button(parent:Node3D,pos:Vector3,index:int,identity:String) -> void:
 	button.controller=self
 	button.floor_index=index
 	button.display_deck=deck_numbers[index]
+	if not stop_ids.is_empty():
+		button.destination_name=stop_names[index]
+		button.face_code=stop_codes[index]
 	button.district_label=district_label
 	button.persistent_id=StringName(identity)
 	button.name=identity

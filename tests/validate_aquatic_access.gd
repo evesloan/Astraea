@@ -54,6 +54,7 @@ func run() -> void:
 		var mount:=marker.global_position+Vector3(.48,0,0)
 		ray=PhysicsRayQueryParameters3D.create(mount,Vector3(mount.x,67.6,mount.z))
 		var hit:=ship.get_world_3d().direct_space_state.intersect_ray(ray)
+		if hit.is_empty() or abs(hit.position.y-67.4)>=.01:print("CEILING MOUNT FAIL:",i," ",mount," hit:",hit)
 		assert(not hit.is_empty() and abs(hit.position.y-67.4)<.01,"Ceiling luminaire lacks its fitted overhead mounting surface")
 	var compiled:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	var cover_area:=0.0

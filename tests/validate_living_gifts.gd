@@ -15,7 +15,7 @@ func driver_pose(ship:Node3D,cart:RigidBody3D,p:Vector3,yaw:float,excluded:Array
 	var feet:Vector3=p+basis*Vector3(0,0,1.62)
 	var ray:=PhysicsRayQueryParameters3D.create(feet+Vector3.UP*.2,feet-Vector3.UP*.2)
 	ray.exclude=excluded
-	assert(not ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Driver left supported floor")
+	assert(not ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Driver left supported floor at %s with cart %s yaw %.3f"%[feet,p,yaw])
 func walk(actor:CharacterBody3D,destination:Vector2) -> void:
 	var reached:=false
 	for frame in range(700):

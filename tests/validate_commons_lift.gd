@@ -40,7 +40,7 @@ func wait_trip(lift:Node3D,cart:RigidBody3D,actor:CharacterBody3D,goal:int) -> v
 			break
 	assert(reached,"Lift failed to reach requested floor")
 func select_floor_by_focus(lift:Node3D,actor:CharacterBody3D,goal:int) -> void:
-	var button:Node3D=lift.find_child(lift.identity_prefix+"_cabin_D"+str(lift.deck_numbers[goal]),true,false)
+	var button:Node3D=lift.find_child(lift.identity_prefix+"_cabin_"+lift._stop_id(goal),true,false)
 	var aim:Vector3=button.global_position-actor.camera.global_position
 	actor.rotation.y=atan2(-aim.x,-aim.z)
 	actor.pitch=atan2(aim.y,Vector2(aim.x,aim.z).length())

@@ -56,7 +56,7 @@ func run() -> void:
 	actor.set_physics_process(false)
 	actor.position=Vector3(18,61.1,202)
 	actor.velocity=Vector3.ZERO
-	for target in [Vector2(18,220),Vector2(20.5,223),Vector2(20.5,234),Vector2(20,245)]:await walk(actor,target)
+	for target in [Vector2(18,220),Vector2(20.5,220),Vector2(22,223),Vector2(22,234),Vector2(20,245)]:await walk(actor,target)
 	assert(absf(actor.position.y-61)<.12)
 	print("VESPER WATERCOURSE PASS:80 upper support probes,112 curtain-clearance samples, original guard and basin retained,3 clear fixture exits,",samples,"cart/driver poses and actual west passage. Flow is visual animation; pumping, splash/acoustic simulation and swimming remain unimplemented.")
 	main.queue_free()
