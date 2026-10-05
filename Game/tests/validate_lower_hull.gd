@@ -23,7 +23,7 @@ func run()->void:
 		while j+1<data.rings.size() and float(data.rings[j+1].y)<y:j+=1
 		var lo:Dictionary=data.rings[j];var hi:Dictionary=data.rings[j+1]
 		var t:float=(y-float(lo.y))/(float(hi.y)-float(lo.y))
-		for i in range(0,lo.inner.size(),8):
+		for i in range(lo.inner.size()):
 			var k:int=(i+1)%lo.inner.size()
 			var a:=Vector2(lo.inner[i][0],lo.inner[i][1]).lerp(Vector2(hi.inner[i][0],hi.inner[i][1]),t)
 			var b:=Vector2(lo.inner[k][0],lo.inner[k][1]).lerp(Vector2(hi.inner[k][0],hi.inner[k][1]),t)
@@ -31,7 +31,7 @@ func run()->void:
 			var ray:=PhysicsRayQueryParameters3D.create(Vector3(p.x-direction.x,y,p.y-direction.y),Vector3(p.x+5*direction.x,y,p.y+5*direction.y));ray.exclude=omit
 			var hit:=space.intersect_ray(ray)
 			assert(not hit.is_empty(),"Actual lower shell contact is missing")
-			# Loft quads at changing corners are triangulated; bilinear ring midpoints are not exact surface contacts.
+			# Compare physics against the actual exported triangles and the independent planar offset contract.
 			var closest:Vector3=ray.to
 			for triangle in triangles:
 				var point=Geometry3D.segment_intersects_triangle(ray.from,ray.to,triangle[0],triangle[1],triangle[2])
@@ -39,7 +39,7 @@ func run()->void:
 			assert(hit.position.distance_to(closest)<.005,"Physics contact must match the actual exported triangle surface")
 			var deviation:float=hit.position.distance_to(Vector3(p.x,y,p.y))
 			maximum_loft_deviation=maxf(maximum_loft_deviation,deviation)
-			assert(deviation<.7,"Loft deviation must fit within the unused0.7m frame reservation")
+			assert(deviation<.04,"Planar shell contact differs y%s station%s expected%s hit%s deviation%s"%[y,i,Vector3(p.x,y,p.y),hit.position,deviation])
 			checked+=1
 	print("LOWER HULL MAX LOFT RAY DEVIATION:",maximum_loft_deviation)
 	var pan:=PhysicsRayQueryParameters3D.create(Vector3(0,-2,0),Vector3(0,-4,0));pan.exclude=omit
