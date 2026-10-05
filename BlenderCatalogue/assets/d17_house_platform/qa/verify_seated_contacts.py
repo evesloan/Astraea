@@ -21,18 +21,20 @@ for s in D['seated_footings']:
  samples.append({'centre_xz':[s['x'],s['z']],'same_actual_hull_polygon':face.index,'grid_rays':81,'maximum_plane_error_m':maximum_plane_error,'maximum_ray_error_m':maximum_ray_error,'minimum_positive_wedge_thickness_m':min(s['top_y']-v[1]for v in q),'footprint_contact_area_xz_m2':.96})
 assert sha(C/'assets/lower_hull_body/source/AST-HUL-001.blend')==D['source_inputs']['catalogue/assets/lower_hull_body/source/AST-HUL-001.blend']
 assert sha(C/'assets/lower_hull_body/exports/AST-HUL-001.glb')==D['source_inputs']['catalogue/assets/lower_hull_body/exports/AST-HUL-001.glb']
-phys=json.loads((R/'qa/parent_outer_support_census.json').read_text());diffs=[]
+phys=json.loads((R/'qa/parent_outer_support_census.json').read_text());phys['candidate_support_columns']+=json.loads((R/'qa/parent_original_support_census.json').read_text())['candidate_support_columns'];diffs=[]
 for s in D['seated_footings']:
  row=next(a for a in phys['candidate_support_columns'] if abs(a['xz'][0]-s['x'])<1e-4 and abs(a['xz'][1]-s['z'])<1e-4)
  for a in row['base_rays']:
   xyz=a['position'];b=min(s['witnesses'],key=lambda v:abs(v['point_world'][0]-xyz[0])+abs(v['point_world'][2]-xyz[2]));diffs.append(abs(xyz[1]-b['point_world'][1]))
-assert len(diffs)==10 and max(diffs)<.001
+assert len(diffs)==5*len(D['seated_footings']) and max(diffs)<.001
 runtime_delta={'maximum_absolute_y_m':max(diffs),'scope':'Previously measured retained-hull runtime rays versus new source seats; new footing runtime not imported'}
-(R/'qa/seated_contact_verification.json').write_text(json.dumps({'pass':True,'scope':'Two exact source-plane seats; no whole-house structural or engine acceptance','hull_source_unchanged':True,'hull_export_unchanged':True,'source_seats':samples,'runtime_census_difference':runtime_delta},indent=2)+'\n');print(samples)
+(R/'qa/seated_contact_verification.json').write_text(json.dumps({'pass':True,'scope':'Exact source-plane seats; no whole-house structural or engine acceptance','hull_source_unchanged':True,'hull_export_unchanged':True,'source_seats':samples,'runtime_census_difference':runtime_delta},indent=2)+'\n');print(samples)
 
 ledger=json.loads((R/'qa/source_join_ledger.json').read_text())
 for i,s in enumerate(samples):
- entry=next(a for a in ledger['contacts'] if a['part']==f'D17_SeatedHullFooting_{i}')
+ entry=next((a for a in ledger['contacts'] if a['part']==f'D17_SeatedHullFooting_{i}'),None)
+ if entry is None:
+  entry={'part':f'D17_SeatedHullFooting_{i}','root':'AST-HUL-001/HUL_LowerBand_00'};ledger['contacts'].append(entry)
  entry['contact']=f"Source polygon{s['same_actual_hull_polygon']};0.96m² XZ footprint; see seated_contact_verification.json"
  entry['centre_xz']=s['centre_xz'];entry['minimum_positive_wedge_thickness_m']=s['minimum_positive_wedge_thickness_m']
 (R/'qa/source_join_ledger.json').write_text(json.dumps(ledger,indent=2)+'\n')
