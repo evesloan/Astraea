@@ -31,7 +31,7 @@ def plan(draw,deck,origin,scale,labels=False):
    rectangle(c['arrival_focus_x'],c['arrival_focus_z'],'#faf9f5','#8e55a7',1)
  if deck in ['D08','D09']:
   for c in P['aquatic_section_reservations']:rectangle(c['x'],c['z'],'#abd7db','#3f8d97',2)
- for c in P['longitudinal_vertical_core_reservations']:rectangle(c['x'],c['z'],'#e38c88','#a34b46',2)
+ for c in P['longitudinal_vertical_core_reservations']:rectangle(c['x'],c['z'],'#68b39c' if c.get('geometry_owner') else '#e38c88','#296b5d' if c.get('geometry_owner') else '#a34b46',2)
  for c in P.get('staff_riser_reservations',[]):rectangle(c['shaft_x'],c['shaft_z'],'#52747e','#284a56',1)
  if labels:
   for r in P['programmes']:
@@ -53,13 +53,13 @@ for deck in P['decks']:
 canvas=Image.new('RGB',(1440,1100),'#faf9f5');d=ImageDraw.Draw(canvas)
 d.text((25,18),'ASTRAEA / WHOLE-SHIP LAYOUT ACCOUNTING',font=f(29),fill='#203943')
 d.text((25,58),'18 decks · 161 directory programmes · 1,000 guest allocations · 100 retail addresses · 400 crew target',font=f(17),fill='#465962')
-d.text((25,87),'Working reservations only. Complete source coverage does not mean a finalized or constructed ship.',font=f(16),fill='#8c4b45')
+d.text((25,87),'Working plans: central core authored; other reservations proposed. Source coverage is not finished construction.',font=f(16),fill='#8c4b45')
 for i,deck in enumerate(P['decks']):
  col=i%3;row=i//3;x=25+col*472;y=139+row*142
  d.text((x,y),f"{deck['deck']}   {deck['floor_y']:g} m   {len(deck['programme_keys'])} programmes / {deck['crew_bank_envelope_count'] if deck['deck']=='D03' else deck['guest_envelope_count']} {'crew allocations' if deck['deck']=='D03' else 'guest units'}",font=f(14),fill='#203943')
  plan(d,deck['deck'],(x,y+29),.40)
 d.text((25,1010),'Gold: guest allocations. Blue-grey: retail addresses. Purple: proposed landscaped house courts; pale centres retain local arrivals.',font=f(17),fill='#465962')
-d.text((25,1037),'Red: public lift/stair cores. Dark blue: separate staff risers. Cyan: raised pool / market overlook reservation. Grey outlines: programmes.',font=f(17),fill='#465962')
+d.text((25,1037),'Green: authored central core. Red: planned public cores. Dark blue: staff risers. Cyan: pool reservation. Outlines: programmes.',font=f(17),fill='#465962')
 d.text((25,1064),'Crew berth fit, luxury replacement layouts, hull section and complete guest/service routes remain open gates.',font=f(17),fill='#8c4b45')
 canvas.save(OUT/'overview.png')
 print(OUT/'overview.png')
@@ -84,7 +84,7 @@ for court in P['residential_court_reservations']:
  block(court['z'][0],court['z'][1],84,106.5,'#e0cce9','#8e55a7')
 for z in [-370,370]:d.text(sec(z-53,113),'P/S house courts',font=f(12),fill='#714283')
 for core in P['longitudinal_vertical_core_reservations']:
- block(core['z'][0],core['z'][1],0,106.5,'#e8b2ae','#a34b46')
+ block(core['z'][0],core['z'][1],0,106.5,'#68b39c' if core.get('geometry_owner') else '#e8b2ae','#296b5d' if core.get('geometry_owner') else '#a34b46')
  z=sum(core['z'])/2;d.text(sec(z-22,-5),f'{z:g}m',font=f(12),fill='#a34b46')
 block(-459,-405,44,61,'#abd7db','#3f8d97')
 d.text(sec(-510,74),'Raised pool / market',font=f(12),fill='#347883')

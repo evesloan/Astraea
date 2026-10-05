@@ -7,9 +7,10 @@
     "data/reference/directory_allocations.json": "63df12482a840d0c3ed30cf4ad669f5cb8b6cf8e89d6823fc0937bf8e3e2c539",
     "data/reference/historical_guest_census.json": "9436f006b2e71f6ee5bda71cd8dc09d1c52f44844027fa7082e3b286a7215038",
     "data/reference/historical_atlas_allocations.json": "deabb459263f09f342dc76b1d588105eb579d1eb60a0c658a6358f9ab8d1b063",
-    "data/spatial_layout.json": "39fb7a0b43b753af5bfa2a1f8d17257b1bb9dce652114fae0740c18c1ea5fb41",
+    "data/spatial_layout.json": "bb47ec55e4b935fd16de61c462915e7a15d79348ffc0b8c87097763b24d845c9",
     "data/hull_envelope.json": "8412bacc9253a967fda398c2b81c54f413079374edafbf3d4a3716c70c913f87",
-    "data/reference/D03_crew_envelopes.json": "6473d78e789860594c6a955268d7ecc7f0ff44b130cc3ccc833b857e4513ec81"
+    "data/reference/D03_crew_envelopes.json": "6473d78e789860594c6a955268d7ecc7f0ff44b130cc3ccc833b857e4513ec81",
+    "data/architecture/PRIMARY_ATRIUM_CORE.json": "b2a2ffc3fb039753d34be514bb55179dd602d94bdb8f497805d02e9633d9029b"
   },
   "decks": [
     {
@@ -6907,14 +6908,6 @@
       ],
       "boundary": [
         [
-          -63.0,
-          -500.0
-        ],
-        [
-          -74.764,
-          -500.0
-        ],
-        [
           -100.0,
           -449.528
         ],
@@ -6925,6 +6918,14 @@
         [
           -63.0,
           -268.0
+        ],
+        [
+          -63.0,
+          -500.0
+        ],
+        [
+          -74.764,
+          -500.0
         ]
       ],
       "area_m2": 7947.141,
@@ -7050,20 +7051,20 @@
       ],
       "boundary": [
         [
-          -63.0,
-          491.123
-        ],
-        [
-          -63.0,
-          250.0
-        ],
-        [
           -100.0,
           250.0
         ],
         [
           -100.0,
           423.164
+        ],
+        [
+          -63.0,
+          491.123
+        ],
+        [
+          -63.0,
+          250.0
         ]
       ],
       "area_m2": 7664.324,
@@ -7188,14 +7189,6 @@
       ],
       "boundary": [
         [
-          100.0,
-          -250.0
-        ],
-        [
-          100.0,
-          -449.528
-        ],
-        [
           74.764,
           -500.0
         ],
@@ -7206,6 +7199,14 @@
         [
           63.0,
           -250.0
+        ],
+        [
+          100.0,
+          -250.0
+        ],
+        [
+          100.0,
+          -449.528
         ]
       ],
       "area_m2": 8613.141,
@@ -7330,20 +7331,20 @@
       ],
       "boundary": [
         [
-          100.0,
-          423.164
-        ],
-        [
-          100.0,
-          250.0
-        ],
-        [
           63.0,
           250.0
         ],
         [
           63.0,
           491.123
+        ],
+        [
+          100.0,
+          423.164
+        ],
+        [
+          100.0,
+          250.0
         ]
       ],
       "area_m2": 7664.324,
@@ -7628,7 +7629,7 @@
     },
     {
       "id": "atrium_threshold_vertical_core",
-      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
+      "status": "Authored main-scene central core; validation and visual review recorded separately. Other public cores remain reservations",
       "x": [
         -3.3,
         3.3
@@ -7648,7 +7649,7 @@
           -81,
           -80
         ],
-        "status": "Required authored bridge between lobby end and existing apron"
+        "status": "Authored continuous floor within the central core footprint"
       },
       "bypass_end_extension_m": 4,
       "decks": [
@@ -7719,6 +7720,13 @@
         "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
         "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
         "Test physical doors, cabins and loaded cart transfers before use"
+      ],
+      "construction_contract": "data/architecture/PRIMARY_ATRIUM_CORE.json",
+      "geometry_owner": "primary_atrium_core",
+      "remaining_acceptance": [
+        "Resolved hull section",
+        "Broader destination network and freehand cart use",
+        "Final art and all-species ergonomics"
       ]
     },
     {

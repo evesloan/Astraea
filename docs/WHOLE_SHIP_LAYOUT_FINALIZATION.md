@@ -74,3 +74,6 @@ The earlier20x20m court-only reservations and first planning image describe the 
 
 ## Main lift control preparation
 An editable eighteen-stop derivative of AST-CIR-003 now has a three-column, six-row panel. Source/export bounds match, and the focused runtime check selects all eighteen unique, nonoverlapping targets in front of the physical backing. The full55-check runtime suite passes in199.4888seconds fixed60. The derivative is not yet installed in a whole-ship shaft, and loaded18-deck travel, staff access and final visual review are not established. Existing two-, three- and five-stop behavior remains covered by regression.
+
+## Central core promoted to construction
+The central atrium-threshold reservation is now authored in the main scene, with physical floors, protected shaft/stair openings, seventeen switchbacks and one eighteen-stop lift. The four other public cores remain unbuilt plans. The earlier panel-only checkpoint above is historical; current test and review evidence is in PRIMARY_ATRIUM_CORE_PROGRESS.md. Whole-ship finalization gates remain open.

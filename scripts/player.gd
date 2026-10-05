@@ -1,5 +1,7 @@
 extends CharacterBody3D
 @export var spawn_position := Vector3(63.0,52.6,-20.5)
+# Recovery is below the lowest ship deck (D01 = 0), independent of the selected spawn deck.
+@export var fall_recovery_y := -7.0
 var camera: Camera3D
 var pitch := 0.0
 var interaction_target: Node
@@ -61,7 +63,7 @@ func _physics_process(delta: float) -> void:
 		elif is_instance_valid(interaction_target): interaction_target.interact(self)
 		interaction_requested = false
 	camera.fov = lerpf(camera.fov, 58.0 if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) else 72.0, 1.0 - exp(-delta*10.0))
-	if position.y < spawn_position.y - 7.0:
+	if position.y < fall_recovery_y:
 		position = spawn_position
 		velocity = Vector3.ZERO
 
