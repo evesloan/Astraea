@@ -47,6 +47,11 @@ func run() -> void:
 	for marker in architecture.find_children("DATUM_light_*","Node3D",true,false):
 		var q:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+Vector3.DOWN*.07)
 		assert(ship.get_world_3d().direct_space_state.intersect_ray(q).is_empty(),"Tailor fixture exit blocked: "+str(marker.name))
+	for marker in architecture.find_children("DATUM_bounce_*","Node3D",true,false):
+		var space:=ship.get_world_3d().direct_space_state
+		assert(space.intersect_ray(PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+Vector3.UP*.07)).is_empty(),"Pendant upper source is obstructed")
+		var hit:=space.intersect_ray(PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+Vector3.UP*7))
+		assert(not hit.is_empty() and "TAIL_PublicCeiling_" in str(hit.collider.get_path()),"Pendant uplight needs a real public ceiling receiver")
 	for i in range(10):
 		var stock:Node3D=shop.find_child("ThreadShellTextile_"+str(i),true,false)
 		var marker:Node3D=stock.find_child("DATUM_hanging_contact",true,false)

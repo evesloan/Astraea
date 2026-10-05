@@ -150,10 +150,19 @@ for index,(cx,cz,start,end)in enumerate([(19,-226,-65,65),(19,-206,115,245)]):
  for i in [2,4,6,8,10]:
   x=(points[i][0]+points[i+1][0])/2;z=(points[i][1]+points[i+1][1])/2;datum('fabric_%s_%s'%(index,i),xyz(x,F+1.60,z))
 # Actual fixture housings touch their ceiling or private roof.
-fixtures=[('public_'+str(i),x,z,(F+3.7 if i==3 else h(x,z)),True)for i,(x,z)in enumerate([(18,-228),(18,-204),(22,-216),(32,-217)])]+[('private_'+str(i),33,z,F+3.4,True)for i,z in enumerate([-225.5,-209.5])]+[('staff_'+str(i),x,z,F+3.7,False)for i,(x,z)in enumerate([(40,-227),(40,-209),(22,-194.5)])]
+fixtures=[('public_'+str(i),x,z,(F+3.7 if i==3 else F+3.6 if i<2 else h(x,z)),True)for i,(x,z)in enumerate([(20,-226),(20,-206),(22,-216),(32,-217)])]+[('private_'+str(i),33,z,F+3.4,True)for i,z in enumerate([-225.5,-209.5])]+[('staff_'+str(i),x,z,F+3.7,False)for i,(x,z)in enumerate([(40,-227),(40,-209),(22,-194.5)])]
 for key,x,z,top,warm in fixtures:
- slab('TAIL_FixtureHousing_'+key,x-.36,x+.36,z-.28,z+.28,top-.16,top,'champagne_metal')
- slab('TAIL_FixtureLens_'+key,x-.31,x+.31,z-.23,z+.23,top-.175,top-.16,'lens')
+ if key in ['public_0','public_1']:
+  # A long, faceted light follows the hanging-textile bank, with real roof ties.
+  for dz in [-1.15,1.15]:slab('TAIL_PendantStem_'+key+str(dz),x-.022,x+.022,z+dz-.022,z+dz+.022,top,h(x,z+dz),'champagne_metal')
+  outline=[(x-.42,z-1.55),(x-.22,z-1.75),(x+.22,z-1.75),(x+.42,z-1.55),(x+.42,z+1.55),(x+.22,z+1.75),(x-.22,z+1.75),(x-.42,z+1.55)]
+  extrusion('TAIL_FixtureHousing_'+key,[(xx-8,-zz-216)for xx,zz in outline],top-F-.16,top-F,'warm_walnut')
+  slab('TAIL_FixtureLens_'+key,x-.32,x+.32,z-1.53,z+1.53,top-.175,top-.16,'lens')
+  slab('TAIL_PendantUpperLens_'+key,x-.30,x+.30,z-1.51,z+1.51,top,top+.015,'lens')
+  datum('bounce_'+key,xyz(x,top+.025,z))
+ else:
+  slab('TAIL_FixtureHousing_'+key,x-.36,x+.36,z-.28,z+.28,top-.16,top,'champagne_metal')
+  slab('TAIL_FixtureLens_'+key,x-.31,x+.31,z-.23,z+.23,top-.175,top-.16,'lens')
  datum('light_'+key,xyz(x,top-.20,z))
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(AID+'.blend');export=ROOT/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source))
 bpy.ops.export_scene.gltf(filepath=str(export),export_format='GLB',export_yup=True,export_extras=True)
