@@ -1,12 +1,12 @@
 {
   "catalogue_id": "AST-STF-009",
-  "source_closed_outward_meshes": 1600,
-  "source_triangles": 19200,
-  "export_triangles": 19200,
+  "source_closed_outward_meshes": 1605,
+  "source_triangles": 19260,
+  "export_triangles": 19260,
   "exact_triangle_material_uv_equivalence_at_1mm_rounding": true,
   "source_to_export_vertex_max_error_m": 0.0,
   "export_to_source_vertex_max_error_m": 0,
-  "uv_faces_tested": 9600,
+  "uv_faces_tested": 9630,
   "max_metric_uv_area_relative_error": 0.006639167444029851,
   "runtime_mesh_batches": 281,
   "max_runtime_plan_dimensions_m": [
@@ -21,8 +21,79 @@
     0.010000000000001563
   ],
   "floor_union_wall_fixture_containment": true,
+  "strict_general_floor_union_check": true,
+  "explicit_supported_interface_extensions": [
+    {
+      "id": "D02_fusion_service_transition_collar",
+      "mesh_name_prefix": "STF_D02_FusionCollar_",
+      "supported_plan_rectangle": [
+        -54.12,
+        -53.77,
+        -434.02,
+        -429.98
+      ],
+      "height_y": [
+        6,
+        9.345
+      ],
+      "existing_floor_owner": "D02_fusion_screened_service",
+      "new_floor_required": false,
+      "clear_passage_z": [
+        -433.8,
+        -430.2
+      ],
+      "minimum_headroom_m": 3.2,
+      "header_bottom_y": 9.205,
+      "jamb_top_y": 9.225,
+      "reason": "Close20cm side slots and5cm axial gap between existing4m fusion opening and new3.6m gross corridor without narrowing the route. Overlap old wall ends by20mm; header is5mm above existing undersides to avoid coplanar flicker.",
+      "measured_existing_asset": "assets/arrivals_fusion/exports/AST-ARR-002.glb",
+      "measured_existing_asset_sha256": "938a20eae3eec4a164e8822368b6776d534216bb6f438153e10aa60aa67f1d9e",
+      "measured_existing_mesh_aabbs": [
+        {
+          "name": "ARR_WestServiceEnclosure_-465.85",
+          "world_aabb": [
+            -53.95000076293945,
+            -53.75,
+            6.0,
+            11.760000228881836,
+            -465.8499984741211,
+            -434.0
+          ]
+        },
+        {
+          "name": "ARR_WestServiceEnclosure_-430",
+          "world_aabb": [
+            -53.95000076293945,
+            -53.75,
+            6.0,
+            11.760000228881836,
+            -430.0,
+            -398.1500015258789
+          ]
+        },
+        {
+          "name": "ARR_ServiceEntryHeader",
+          "world_aabb": [
+            -53.95000076293945,
+            -53.75,
+            9.199999809265137,
+            11.760000228881836,
+            -434.0,
+            -430.0
+          ]
+        }
+      ],
+      "permitted_parts": [
+        "STF_D02_FusionCollar_North_Wainscot",
+        "STF_D02_FusionCollar_North_Enamel",
+        "STF_D02_FusionCollar_South_Wainscot",
+        "STF_D02_FusionCollar_South_Enamel",
+        "STF_D02_FusionCollar_Header"
+      ]
+    }
+  ],
   "floor_contact_tolerance_east_m": 0.02,
-  "lower_hull_corner_points_checked": 12800,
+  "lower_hull_corner_points_checked": 12840,
   "minimum_oblique_inner_hull_face_distance_m": 4.300483703613281,
   "lift_apertures_and_dynamic_leaf_sweeps_clear": true,
   "complete_moving_cabin_swept_aabb_clear": true,
@@ -1946,6 +2017,5 @@
       "path": "assets/commons_lift_cabin/exports/AST-CIR-003_three_stop.glb",
       "sha256": "7724dbf3152b486aa7d01354beacd009eb6ba2a67fb8f7a72238ebcc9f6de6d9"
     }
-  ],
-  "contract_recreation_matches_exactly_except_generated_light_markers": true
+  ]
 }

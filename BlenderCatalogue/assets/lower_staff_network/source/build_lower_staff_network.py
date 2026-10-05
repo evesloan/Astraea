@@ -75,6 +75,12 @@ for deck in D['decks']:
     for q in range(math.ceil(aa/4)*4,math.floor(bb/4)*4+1,4):
      if q-.01<aa or q+.01>bb:continue
      box(label+'_PanelJoint',q-.008,q+.008,y+1.04,y+3.14,s0,s1,'staff_zinc',n)if axis=='z'else box(label+'_PanelJoint',s0,s1,y+1.04,y+3.14,q-.008,q+.008,'staff_zinc',n)
+# Fitted D02 collar closes measured side/axial seams into the existing fusion opening.
+# This five-piece exception is supported by the existing fusion floor, not new slabs.
+for side,z0,z1 in [('North',-434.02,-433.8),('South',-430.2,-429.98)]:
+ box('STF_D02_FusionCollar_'+side+'_Wainscot',-54.12,-53.77,6,7.03,z0,z1,'staff_bluegrey_paint',2)
+ box('STF_D02_FusionCollar_'+side+'_Enamel',-54.12,-53.77,7.03,9.225,z0,z1,'staff_white_paint',2)
+box('STF_D02_FusionCollar_Header',-54.12,-53.77,9.205,9.345,-434.02,-429.98,'staff_bluegrey_paint',2)
 # Opaque shaft. The gate pocket apertures are cut, never covered by a cross-wall.
 for z0,z1 in [(-492.2,-492.04),(-487.96,-487.8)]:box('STF_ShaftSide',-27.12,-22.84,-.24,15.1,z0,z1,'staff_bluegrey_paint',0)
 box('STF_ShaftRear',-27.12,-26.96,-.24,15.1,-492.04,-487.96,'staff_bluegrey_paint',0)

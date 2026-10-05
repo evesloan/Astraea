@@ -5,8 +5,8 @@ Editable construction kit for one port-forward D01/D02/D03 staff lift enclosure 
 ## Authoritative component files
 
 - `source/section_contract.json`: exact world-space floor union polygons, supported interface apertures, shaft exclusion, dynamic lift transform, clearances and all 99 task-light markers
-- `source/AST-STF-009.blend`: 1,600 separately editable closed outward source pieces; packed staff material textures
-- `exports/AST-STF-009.glb`: 19,200 triangles in 281 spatially bounded material batches, each at most 20 m in X and Z
+- `source/AST-STF-009.blend`: 1,605 separately editable closed outward source pieces; packed staff material textures
+- `exports/AST-STF-009.glb`: 19,260 triangles in 281 spatially bounded material batches, each at most 20 m in X and Z
 - `source/geometry_parts.json`: exact authored cuboid bounds for reproducible interface tests
 - `qa/source_export_validation.json`: geometry, UV, equivalence, light-exit, interface, hull and protected-file evidence
 
@@ -41,3 +41,11 @@ Run Blender 4.3.2 or the established compatible Blender version:
 The builder asserts that AST-STF-009 is unused or already belongs to this family. `make_section_contract.py` reproduces the unlit coordinate contract; the builder appends the exact marker list.
 
 `source_landing_preview.png` and `source_corridor_preview.png` are inspected Blender-only diagnostic renders with temporary union floors and imported existing lift components. They are not in-engine evidence. Godot motion/boarding, complete player routes, loaded-cart physical turns, fixture lighting/occlusion and final visual acceptance are owned by the parent integration task. No Godot production files or prior catalogue assets were modified by this authoring task.
+
+## D02 fusion interface closure revision
+
+Five fitted jamb/header pieces close the measured 200 mm side slots and 50 mm axial gap at the existing fusion opening. The existing AST-ARR-002 GLB was measured directly: wall X−53.9500008..−53.75, opening Z−434..−430, header underside Y9.1999998. The new collar occupies X−54.12..−53.77, with side strips outside the full 3.6 m transition aperture. Its header underside is Y9.205, preserving at least 3.2 m headroom and avoiding coplanar flicker.
+
+The five exact permitted names and supported footprint are in D02's interface_extensions. All 45 sampled support points lie on the retained D02_fusion_screened_service floor. No floor slab or general union polygon changed; ordinary containment remains strict. The 1,600 pre-collar pieces, all materials and fixtures are unchanged.
+
+qa/fusion_collar_validation.json records 2,356 closed side-seam rays, 273 closed header-seam rays and 1,085 unobstructed aperture rays against the actual combined GLBs. Run qa/verify_fusion_collar.py with Blender to repeat. The diagnostic source preview is separate from the parent's in-engine visual acceptance.
