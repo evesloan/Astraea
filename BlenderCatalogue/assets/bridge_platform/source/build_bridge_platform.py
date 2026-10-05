@@ -109,10 +109,12 @@ for s in[-1,1]:
  guard_path=[(s*4,-171.7)]+path[1:-1]+[(s*4,-118.3)]
  for end_z in[-171.7,-118.3]:box('BRP_'+side+'_GuardMouthShoe',*sorted([s*4,s*4.60]),106.265,106.47,end_z-.24,end_z+.24,'staff_zinc','platform_support_shallow')
  for i,(a,b)in enumerate(zip(guard_path,guard_path[1:])):
-  bar('BRP_'+side+'_GuardBack_%02d'%i,a,b,.16,106.45,107.70,'staff_bluegrey_paint','guard')
-  bar('BRP_'+side+'_GuardCap_%02d'%i,a,b,.22,107.68,107.82,'staff_zinc','guard')
+  # Stage2 pressure glazing takes over only these approved guard bays.
+  lowered=(side=='Starboard' and i in [0,1,2]) or (side=='Port' and i==0)
+  bar('BRP_'+side+'_GuardBack_%02d'%i,a,b,.16,106.45,107.10 if lowered else 107.70,'staff_bluegrey_paint','guard')
+  bar('BRP_'+side+'_GuardCap_%02d'%i,a,b,.22,107.08 if lowered else 107.68,107.12 if lowered else 107.82,'staff_zinc','guard')
   bar('BRP_'+side+'_GuardToe_%02d'%i,a,b,.24,106.28,106.58,'staff_zinc','guard')
-  D['guards'].append({'id':side+'_%02d'%i,'a_xz':a,'b_xz':b,'backed':True,'height_above_floor':1.32,'positive_support':'matching BRP_'+side+'_Perimeter_%02d'%i,'connection_mouth_policy':'No guard along inner X±4.5 line; wings open to centreline. Fore/aft mouths X±4 remain fully clear.'})
+  D['guards'].append({'id':side+'_%02d'%i,'a_xz':a,'b_xz':b,'backed':True,'height_above_floor':.62 if lowered else 1.32,'replacement_boundary':'AST-CMD-004 collidable pressure glazing' if lowered else 'retained opaque guard','positive_support':'matching BRP_'+side+'_Perimeter_%02d'%i,'connection_mouth_policy':'No guard along inner X±4.5 line; wings open to centreline. Fore/aft mouths X±4 remain fully clear.'})
  # Backed terminal returns stop a sidestep behind the deliberately inboard safety guard.
  for end,z0,z1 in[('Fore',-172,-171.68),('Aft',-118.32,-118)]:
   box('BRP_'+side+'_'+end+'_GuardMouthReturnBack',*sorted([s*4,s*4.16]),106.45,107.70,z0,z1,'staff_bluegrey_paint','guard')
@@ -199,7 +201,7 @@ for x in[-44,-32,-20,-8,0]:fixture('BRP_ForeGalleryLight_X%s'%x,x,-177,'x')
 for z in[-160,-136,-124]:
  for x in[-20,20]:fixture('BRP_PlatformLight_X%s_Z%s'%(x,str(abs(z)).replace('.','p')),x,z,'x')
 marker('DATUM_origin',[0,0,0]);marker('DATUM_bypass_turn',[-44,106.5,-177]);marker('DATUM_bypass_apron',[-44,106.5,-80]);marker('DATUM_old_spine_fore',[0,106.5,-181]);marker('DATUM_old_spine_aft',[0,106.5,-173])
-D['source_validation']='qa/source_export_validation.json';D['status']='Stage1 editable construction kit; source verification and parent runtime acceptance required';D['support']['old_frame_optional_ties']='Not used; all primary loads resolve geometrically to the four new keel-bearing piers'
+D['source_validation']='qa/exact_roundtrip.json';D['status']='Stage2 bounded sill derivative paired with AST-CMD-004; original platform/public bypass geometry otherwise unchanged; parent runtime adoption pending';D['support']['old_frame_optional_ties']='Not used; all primary loads resolve geometrically to the four new keel-bearing piers'
 D['source_groups']=['pier','transfer','bypass_transfer','roof_support','hanger','platform_support','platform_support_shallow','guard','enclosure','window_frame','glass','ceiling','roof','fixture']
 (R/'source/section_contract.json').write_text(json.dumps(D,indent=2)+'\n');(R/'source/geometry_parts.json').write_text(json.dumps({'catalogue_id':AID,'parts':records},indent=2)+'\n')
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.context.preferences.filepaths.save_version=0;bpy.ops.file.pack_all();src=R/'source'/(AID+'.blend');out=R/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(src))
