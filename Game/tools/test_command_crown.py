@@ -36,7 +36,7 @@ class CrownPlan(unittest.TestCase):
   self.assertTrue(self.p['existing_cover_reconciliation']['retain_geometry'])
   self.assertEqual(self.p['atrium_support_and_cover_gate']['retain_opaque_cover']['x'],[-48,48])
   self.assertEqual(self.p['aft_arrival_and_alternative_descent']['floor_heights'],[102,106.5])
- def test_geometry_stays_proposal(self):
+ def test_full_proposal_has_no_duplicate_floor_owner(self):
   layout=json.loads((R/'data/spatial_layout.json').read_text())
   self.assertFalse(any(r.get('authoring_owner')=='D18_command_crown'for r in layout['regions']))
   self.assertLess(self.p['dimensions']['proposed_longitudinal_span_m'],self.p['dimensions']['source_longitudinal_span_m'])

@@ -1,0 +1,13 @@
+# Central D18 crown construction
+
+Six programme shells are now integrated on the existing cap and apron: Navigation gallery, Communications, Solar enclosure chart, Officer respite, Bridge briefing and Astrometric station. Their original programme keys and historical envelopes remain retained. Only these six current boundaries are adopted; the rest of the ten-programme crown remains a proposal. No guest units or new general floor slabs were created. The built starboard-house cover stays physically unchanged while its former future Bridge briefing assignment is retired.
+
+## Structure and protected circulation
+Four bounded structural spines at X±51.5/Z±71 contact the actual keel pan. Sixteen below-floor ties engage the existing principal bands. The frame keeps its roof below114.5m and leaves the full opaque atrium cap and daylight coffers intact. These are game-architecture contact checks, not structural load certification.
+
+The initial north room-wing proposal would obstruct the established D18 fore crossing atZ−72. The built brief instead retains a full6m belt fromZ−80 to−74 on the same existing apron, with the nominated crossing centred at−77. Navigation/Communications north wing edges move from−78 to−74, leaving1,172m² each and6,504m² across the six shells. North-facing staff-corridor doors are inset to−73.80 so their frames remain behind the belt. No original floor is removed.
+
+## Focused evidence
+All63 planning checks pass. The18-deck backbone probe passes21,858 sampled support/capsule positions. The crown-specific checks confirm4 real piers,20 keel rays,16 built ties with positive intended slab contacts,170 protected core openings,74 clear fixture exits and6 backed signs. All10 doors are precisely operated usingRMB/E with full opening/closing sweeps and capsule entry/return. A continuous walk visits every room and both core approaches.600 cart/load/driver poses cover all ten open doors and the public belt; the real loaded cart is driven forward and back through the north control door, corridor turn and Navigation doorway. These are not freehand-feel or occupancy-capacity approvals.
+
+Full84-check regression and normal/effects-off graphical review are still pending. The spaces have framed selected windows and physical room boundaries, but remain largely unfurnished. Operational command equipment, role-based access, final celestial scenery, the remaining crown, D17 luxury homes and overall upper hull are unfinished.
