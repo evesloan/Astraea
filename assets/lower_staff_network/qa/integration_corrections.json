@@ -1,0 +1,21 @@
+{
+  "reported_by": "Parent Godot integration task",
+  "scope": "Exact earlier runtime findings and authored fixes, not a claim that every runtime gate has passed",
+  "revisions": [
+    {
+      "finding": "Compiled lobby slab began exactly at cabin front X\u221223.20 and made contact at the lowest stop",
+      "fix": "Floor shaft exclusion east edge changed to X\u221223.18; fixed sill bridges20mm clearance",
+      "geometry_scope": "Floor contract only; floor generation owned by parent"
+    },
+    {
+      "finding": "D01 ceiling began exactly at cabin roof front X\u221223.20; actual moving sweep touched at cabinY0.2681",
+      "fix": "Subtracted the same clearance rectangle from all three corridor ceilings",
+      "geometry_scope": "Only ceiling union subdivisions and clearance; walls/fixtures/floor polygons preserved"
+    },
+    {
+      "finding": "Zero-volume source overlap test did not reject touching faces",
+      "fix": "Full cabin swept AABB now inflated5mm in all directions, checked against every authored box",
+      "final_source_result": "Pass; current GLB0b6585a073e2d96c4494c84efaa9f4ba818d0db69845cf7d38bc48798f6e3948"
+    }
+  ]
+}
