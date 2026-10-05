@@ -1,12 +1,12 @@
 extends RefCounted
-# Stage1: supported public bypass and guarded bridge platform, never a closed bridge.
+# Supported public bypass and bridge platform; the separate enclosure owns its doors.
 static func build(parent:Node3D,ship:Node3D)->void:
 	var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/BRIDGE_PLATFORM_RUNTIME.json"))
-	assert(data.get("doors",[]).is_empty(),"The original centreline stays open until bypass acceptance")
+	assert(data.get("doors",[]).is_empty(),"Platform kit does not own the enclosure doors")
 	var root:=Node3D.new()
 	root.name="BridgePlatform_WIP"
 	root.set_meta("persistent_id","D18_bridge_platform_stage1")
-	root.set_meta("scope","Guarded platform and public bypass; bridge enclosure and operational systems unfinished")
+	root.set_meta("scope","Supported platform and public bypass; operational systems unfinished")
 	parent.add_child(root)
 	var shell:Node3D=ship.model(root,"AST-CMD-003.glb","BridgePlatformArchitecture",Vector3.ZERO)
 	var glass:=ShaderMaterial.new()

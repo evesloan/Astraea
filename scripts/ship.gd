@@ -78,6 +78,7 @@ func _ready() -> void:
 	load("res://scripts/central_command_crown.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/aft_command_crown.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/bridge_platform.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/bridge_enclosure.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/arrivals_fusion.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/star_atlas.gd").build($ShipSpace/Districts,self)
 	var cleaning_cart:RigidBody3D=(load("res://scripts/cleaning_cart.gd")as GDScript).new()

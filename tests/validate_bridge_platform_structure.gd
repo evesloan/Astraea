@@ -4,20 +4,20 @@ extends SceneTree
 # convex pieces; the witnesses below must not be inflated into AABB cuboids.
 const CONTRACT := "res://data/architecture/BRIDGE_PLATFORM_RUNTIME.json"
 const ASSET := "res://assets/models/AST-CMD-003.glb"
-const SOURCE_EXPORT_SHA256 := "42cfbe2e4ef6ea1df75c77a25c86a1c4ebe3b39652720415ebc61f62f3b97269"
-const SOURCE_BLEND_SHA256 := "25b01464a01e7f86e97d6d79eefd2fbf8bd7ddf25d69694c3eb3ff494957a355"
-const SOURCE_TRIANGLE_SHA256 := "d0700ed013782c0525d3aebcac6231235f1ef68b318a2e827ed9485a4380f67e"
+const SOURCE_EXPORT_SHA256 := "c617bdfd70cbeffc09675592aaeea17fc9558a74ec472e91424f3520025970d4"
+const SOURCE_BLEND_SHA256 := "52c1f4d9167ac0b5ac9ecfdbd82195fe69d2262e9588191da8062e42361b513c"
+const SOURCE_TRIANGLE_SHA256 := "d24b036d0137b072c12f7ec358df29e2fa5f296c9b8b3e6c0d35f0e59865aec6"
 # Independently matched all 40,728 imported/source triangles one-to-one, including
 # face multiplicity and consistent glTF/Godot winding conversion. Max real corner
 # displacement 0.000250851m; 54 skew triangle occurrences cross a 1mm rounding bin.
 # Source GLB and source proof remain immutable; this pins the measured import.
-const IMPORTED_TRIANGLE_SHA256 := "f4a1c5a29a26f1973f234961697f6b080099e299b740831ef29ff06d251f3bec"
-const SOURCE_CONTRACT_SHA256 := "ac3be9add60ac33d345b4c3c25f2147e9802c3f74eaad7cccd48f42a32f0dc61"
-const SOURCE_PARTS_SHA256 := "f5c6ef1d5f3fa76053e5103979b99551838c27a97f0026137944ce6ccd149292"
+const IMPORTED_TRIANGLE_SHA256 := "a7bec80d2aa8060d44cc040ebf12e6527c22e4188c92e9baa1bb5663a738c6ab"
+const SOURCE_CONTRACT_SHA256 := "4ef6e70105140885316e85a2367c895124e53274c2657b0510d2fb71bc67e545"
+const SOURCE_PARTS_SHA256 := "f3605cdcc78aac0c51da0ad80f7eba1973ef44ae3b509c339ba2c66dd59300b9"
 const CONTACT_AUDIT := "res://docs/BRIDGE_PLATFORM_SOURCE_CONTACT_AUDIT.json"
-const CONTACT_AUDIT_SHA256 := "cac6bd78a732742da6259062cca665b4400d367403552bce8e1e38d3fef7e9c9"
+const CONTACT_AUDIT_SHA256 := "b5a1c1b8422c48ef80baa874c845648f370f5f74f8e3d98ba12e489c4c1b36bc"
 const ROUNDTRIP := "res://docs/BRIDGE_PLATFORM_SOURCE_ROUNDTRIP.json"
-const ROUNDTRIP_SHA256 := "ccdee2f5908d4f93d290264a7d807893c1557342f61fd56fac514083c04a9e47"
+const ROUNDTRIP_SHA256 := "900c845f30d329f782fce09c1af505019d4f55bd322968a905a7678f7db31508"
 const EXPECTED_BATCHES := 785
 const EXPECTED_TRIANGLES := 40728
 const EPS := 0.001
@@ -524,7 +524,7 @@ func validate_provenance(data: Dictionary) -> void:
 	var roundtrip := read_json(ROUNDTRIP)
 	check(str(source_audit.get("source_sha256", "")) == SOURCE_BLEND_SHA256 and str(roundtrip.get("source_sha256", "")) == SOURCE_BLEND_SHA256 and str(roundtrip.get("export_sha256", "")) == SOURCE_EXPORT_SHA256, "Contact graph and exact roundtrip must refer to the same frozen source/export")
 	check(bool(roundtrip.get("exact_float32_position_oriented_triangle_uv_material_equality", false)), "Exact source/export geometry proof absent")
-	check(int(source_audit.get("structural_mesh_count", 0)) == 2833 and int(source_audit.get("actual_contact_edges", 0)) == 21591, "Independent contact graph census changed")
+	check(int(source_audit.get("structural_mesh_count", 0)) == 2833 and int(source_audit.get("actual_contact_edges", 0)) == 21583, "Independent contact graph census changed")
 	for key in ["structural_disconnected", "all_mesh_disconnected", "ledger_mismatch", "unresolved_geometry_findings"]:
 		check(source_audit.has(key) and source_audit[key].is_empty(), "Source review has unresolved geometry: " + key)
 	check(data.get("doors", []).is_empty(), "Stage one must not adopt private bridge doors")
@@ -856,8 +856,16 @@ func validate_spine_interfaces() -> void:
 
 func validate_clearances() -> void:
 	assert_empty(AABB(Vector3(-4.099,102.02,-181),Vector3(8.198,4.237,101)),shell_only_exclusions,"D17 spine headroom: deeper branches must stay outside X±4.1")
+	# Preserve the stage-one mouth geometry check independently of the declared
+	# stage-two shell/doors. Actual closed-door routes and apertures are checked
+	# by the enclosure tests; no other clearance query receives this exclusion.
+	var platform_mouth_exclusions: Array[RID] = dynamic_exclusions.duplicate()
+	var enclosure := ship.get_node_or_null("ShipSpace/Districts/BridgeEnclosure_WIP")
+	if enclosure != null:
+		for body in enclosure.find_children("*","CollisionObject3D",true,false):
+			platform_mouth_exclusions.append(body.get_rid())
 	for z in [-181.0,-173.0,-172.0,-118.0]:
-		assert_empty(AABB(Vector3(-3.998,106.52,z-0.05),Vector3(7.996,3.88,0.1)),dynamic_exclusions,"Original full-width centreline mouth must stay open at Z"+str(z))
+		assert_empty(AABB(Vector3(-3.998,106.52,z-0.05),Vector3(7.996,3.88,0.1)),platform_mouth_exclusions,"Preserved platform-stage full-width mouth, excluding only declared enclosure addition, at Z"+str(z))
 	assert_empty(AABB(Vector3(-47,106.52,-180),Vector3(6,3.88,100.1)),dynamic_exclusions,"Six-metre public port leg")
 	assert_empty(AABB(Vector3(-47,106.52,-180),Vector3(50.8,3.88,6)),dynamic_exclusions,"Six-metre transverse bypass and turning junction")
 	assert_empty(AABB(Vector3(-47.5,106.52,-80.05),Vector3(7,3.88,0.1)),dynamic_exclusions,"Open bypass/fore apron connection")

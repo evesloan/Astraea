@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "id": "D18_bridge_platform_stage1",
-  "status": "Stage1 source construction verified; parent runtime floor, traversal, collision and final art acceptance pending",
+  "status": "Stage2 bounded sill derivative paired with AST-CMD-004; original platform/public bypass geometry otherwise unchanged; parent runtime adoption pending",
   "scope": "Four-bearing transfer frame, supported bridge floor wings with safety edges and enclosed public port bypass; keep old centreline open. Private bridge enclosure is a separate later stage after bypass traversal acceptance.",
   "catalogue_id_candidate": "AST-CMD-003",
   "datums": {
@@ -2724,7 +2724,8 @@
         -171.7
       ],
       "backed": true,
-      "height_above_floor": 1.32,
+      "height_above_floor": 0.62,
+      "replacement_boundary": "AST-CMD-004 collidable pressure glazing",
       "positive_support": "matching BRP_Port_Perimeter_00",
       "connection_mouth_policy": "No guard along inner X\u00b14.5 line; wings open to centreline. Fore/aft mouths X\u00b14 remain fully clear."
     },
@@ -2740,6 +2741,7 @@
       ],
       "backed": true,
       "height_above_floor": 1.32,
+      "replacement_boundary": "retained opaque guard",
       "positive_support": "matching BRP_Port_Perimeter_01",
       "connection_mouth_policy": "No guard along inner X\u00b14.5 line; wings open to centreline. Fore/aft mouths X\u00b14 remain fully clear."
     },
@@ -2755,6 +2757,7 @@
       ],
       "backed": true,
       "height_above_floor": 1.32,
+      "replacement_boundary": "retained opaque guard",
       "positive_support": "matching BRP_Port_Perimeter_02",
       "connection_mouth_policy": "No guard along inner X\u00b14.5 line; wings open to centreline. Fore/aft mouths X\u00b14 remain fully clear."
     },
@@ -2770,6 +2773,7 @@
       ],
       "backed": true,
       "height_above_floor": 1.32,
+      "replacement_boundary": "retained opaque guard",
       "positive_support": "matching BRP_Port_Perimeter_03",
       "connection_mouth_policy": "No guard along inner X\u00b14.5 line; wings open to centreline. Fore/aft mouths X\u00b14 remain fully clear."
     },
@@ -2814,7 +2818,8 @@
         -171.7
       ],
       "backed": true,
-      "height_above_floor": 1.32,
+      "height_above_floor": 0.62,
+      "replacement_boundary": "AST-CMD-004 collidable pressure glazing",
       "positive_support": "matching BRP_Starboard_Perimeter_00",
       "connection_mouth_policy": "No guard along inner X\u00b14.5 line; wings open to centreline. Fore/aft mouths X\u00b14 remain fully clear."
     },
@@ -2829,7 +2834,8 @@
         -159.7
       ],
       "backed": true,
-      "height_above_floor": 1.32,
+      "height_above_floor": 0.62,
+      "replacement_boundary": "AST-CMD-004 collidable pressure glazing",
       "positive_support": "matching BRP_Starboard_Perimeter_01",
       "connection_mouth_policy": "No guard along inner X\u00b14.5 line; wings open to centreline. Fore/aft mouths X\u00b14 remain fully clear."
     },
@@ -2844,7 +2850,8 @@
         -118.3
       ],
       "backed": true,
-      "height_above_floor": 1.32,
+      "height_above_floor": 0.62,
+      "replacement_boundary": "AST-CMD-004 collidable pressure glazing",
       "positive_support": "matching BRP_Starboard_Perimeter_02",
       "connection_mouth_policy": "No guard along inner X\u00b14.5 line; wings open to centreline. Fore/aft mouths X\u00b14 remain fully clear."
     },
@@ -2860,6 +2867,7 @@
       ],
       "backed": true,
       "height_above_floor": 1.32,
+      "replacement_boundary": "retained opaque guard",
       "positive_support": "matching BRP_Starboard_Perimeter_03",
       "connection_mouth_policy": "No guard along inner X\u00b14.5 line; wings open to centreline. Fore/aft mouths X\u00b14 remain fully clear."
     },
@@ -2949,7 +2957,7 @@
     ],
     "reason": "Side closure wholly outside retained spine; ceiling and east roof fascia extend 0.18 m beyond bypass floor boundary. No fore extension beyond Z\u2212181."
   },
-  "source_validation": "qa/source_export_validation.json",
+  "source_validation": "qa/exact_roundtrip.json",
   "source_groups": [
     "pier",
     "transfer",
@@ -2974,6 +2982,20 @@
     "reviewed_source_pixels": "qa/source_diagnostic_review.json",
     "prior_preservation": "qa/prior_preservation_validation.json"
   },
-  "export_sha256": "42cfbe2e4ef6ea1df75c77a25c86a1c4ebe3b39652720415ebc61f62f3b97269",
-  "runtime_status": "Supported platform/bypass integration; no private bridge enclosure or final route acceptance yet"
+  "stage2_guard_integration": {
+    "replacement_asset": "AST-CMD-004",
+    "lowered_guards": [
+      "Starboard_00",
+      "Starboard_01",
+      "Starboard_02",
+      "Port_00"
+    ],
+    "new_sill_top_y": 107.12,
+    "unchanged_parts": 3362,
+    "changed_mesh_pieces": 32,
+    "proof": "../bridge_enclosure/qa/003_actual_mesh_preservation.json",
+    "prior_stage1_qa": "Historical accepted baseline; new paired004 glazing supplies the reduced guards protective boundary"
+  },
+  "export_sha256": "c617bdfd70cbeffc09675592aaeea17fc9558a74ec472e91424f3520025970d4",
+  "runtime_status": "Supported platform and bypass with bounded low-sill guards joined to bridge enclosure"
 }
