@@ -13,6 +13,9 @@ def plan_floors(layout,brief):
     result=copy.deepcopy(layout)
     result['regions']=[r for r in result['regions'] if r.get('authoring_owner')!=OWNER]
     existing=unary_union([Polygon(r['boundary'],r.get('holes',[])) for r in result['regions'] if r['deck']=='D18' and abs(r.get('offset_y',0))<1e-6])
+    # Infill never supersedes an existing owner. Even a disjoint GEOS difference
+    # can reorder rings and retriangulate protected slabs without changing area.
+    infill_priority=min(r.get('priority',0) for r in result['regions'] if r['deck']=='D18' and abs(r.get('offset_y',0))<1e-6)
     added=[]
     for kind,target,expected in [('bridge',Polygon(brief['bridge_floor']['boundary']),3384),('bypass',Polygon(brief['public_bypass']['boundary']),1096)]:
         missing=target.difference(existing)
@@ -24,7 +27,7 @@ def plan_floors(layout,brief):
             assert p.intersection(existing).area<1e-6
             assert all(p.intersection(Polygon(v['boundary'])).area<1e-6 for v in result['voids'] if 'D18' in v.get('decks',[]))
             suffix=('port_wing' if i==0 else 'starboard_wing') if kind=='bridge' else 'public_bypass'
-            row={'id':'D18_bridge_platform_'+suffix,'authoring_owner':OWNER,'deck':'D18','boundary':[list(q) for q in p.exterior.coords[:-1]],'holes':[],'priority':80,'thickness':.24,'material_role':'guest_floor','status':'Supported platform stage; bridge enclosure and route revision are separate acceptance gates'}
+            row={'id':'D18_bridge_platform_'+suffix,'authoring_owner':OWNER,'deck':'D18','boundary':[list(q) for q in p.exterior.coords[:-1]],'holes':[],'priority':infill_priority,'thickness':.24,'material_role':'guest_floor','status':'Supported platform stage; bridge enclosure and route revision are separate acceptance gates'}
             result['regions'].append(row);added.append(p)
     assert abs(sum(p.area for p in added)-4480)<1e-6
     assert abs(unary_union(added).area-4480)<1e-6
