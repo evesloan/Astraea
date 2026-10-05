@@ -1,6 +1,6 @@
-# D17 house platform: verified interface stage, full platform held
+# D17 house platform: held Royalty frame source, full platform held
 
-## Delivered source subset
+## Earlier delivered interface subset (superseded by frame stage below)
 
 AST-RES-005 is a new, unadopted partial interface family: two deep open commons frames and two positive seated Royalty hull footings. It contains14 editable mesh parts,168 triangles, four interface markers and six spatial export batches. There are **zero walkable floors**, furnishings, new controls, room registrations or capacity additions in this source.
 
@@ -61,3 +61,11 @@ Both embedded export textures still match the original catalogue PNG bytes. The 
 ## Reproducible allocation regression
 
 Run `python3 assets/d17_house_platform/qa/verify_allocation_footprints.py <Godot project root>` from the catalogue. This checks every configured footing footprint against all1000 guest,200 crew-bank,100 retail and161 programme envelopes and records exact input hashes. Four negative regressions require detection of the previously missed X100 crew-bank conflicts (drawings414,418,420,424). Current two X108 footprints pass. This conservative full-height plan screen is separate from actual mesh contacts, structural design and route acceptance; no new geometry was built in this QA addition.
+
+## Royalty longitudinal frame source, 20:58 UTC
+
+The kit now has49 editable meshes,588 triangles,39 export batches and four unchanged markers. Added two rooted chords, a1.20m deep longitudinal transfer and16 open braced panels (16 rails/16 alternating diagonals). The full X107.6..108.4/Z29..51/Y−.45..101.76 strip cleared16 actual main-scene static-query slices; its entire plan strip also clears all1461 historical allocation envelopes. Both existing hull wedges and all18 prior objects/materials/packed images remain exact. QA verifies68 actual mesh/bearing contacts for35 new parts; source/export oriented triangle, UV and material equality passes. No new Godot asset or floor was installed.
+
+This is geometric in-plane bracing only. Out-of-plane restraint, transverse second bearings, physical load/connection sizing, whole-room support, routes and Royalty upper remain unresolved. No14m west/10m east room-floor cantilever is accepted. Next: resolve one transverse frame with a second rooted bearing toward the X94 entry edge. The temptation to use retained commons pier(94,11.5) crosses the existing diagonal D16/D17 side wall; it is not a free beam seat. All16 floor records and COM003 runtime openings remain HELD.
+
+Current preservation proof: qa/royalty_frame_verification.json against catalogueac8dba6, rather than the older two-footing relocation proof. Run qa/verify_royalty_frame.py in Blender and qa/verify_allocation_footprints.py with the actual Godot root. qa/source_join_ledger.json now combines the14 prior rooted parts and35 new frame parts. Older footing relocation reports remain historical evidence. Source-only status does not establish in-game appearance or traversal.

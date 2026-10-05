@@ -38,6 +38,21 @@ faces=[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
 def box(name,x0,x1,y0,y1,z0,z1,role,seat):return mesh(name,[[x,y,z]for y in[y0,y1]for x,z in[(x0,z0),(x1,z0),(x1,z1),(x0,z1)]],faces,role,seat)
 for i,s in enumerate(seats):
  q=s['corners_world'];mesh('D17_SeatedHullFooting_%s'%i,q+[[x,s['top_y'],z]for x,y,z in q],faces,'champagne_metal',s['source_owner'])
+for spec in D.get('royalty_frame_candidate',{}).get('members',[]):
+ box(spec['name'],*spec['bounds'],'champagne_metal',spec['support'])
+if D.get('royalty_frame_candidate'):
+ # Open, in-plane triangulated web within the actual cleared support strip.
+ levels=[-.45,5.76,11.76,16.26,20.76,26.76,35.26,43.76,52.26,60.76,69.26,77.76,83.76,88.26,92.76,97.26,100.56]
+ for i,high in enumerate(levels[1:]):
+  low=levels[i]
+  box('D17_RoyaltyWebRail_%02d'%i,107.7,108.3,high-.36,high,29.8,50.2,'champagne_metal','D17_RoyaltyPier_Fore and D17_RoyaltyPier_Aft')
+  ya,yb=(low+.20,high-.20) if i%2==0 else (high-.20,low+.20)
+  # World-YZ parallelogram, extruded across X; both ends embedded in chords.
+  yz=[(ya-.16,29.9),(ya+.16,29.9),(yb+.16,50.1),(yb-.16,50.1)]
+  world=[[x,y,z] for x in [107.8,108.2] for y,z in yz]
+  mesh('D17_RoyaltyWebBrace_%02d'%i,world,faces,'champagne_metal','D17_RoyaltyPier_Fore and D17_RoyaltyPier_Aft')
+ D['royalty_frame_candidate']['web_levels_y']=levels
+ D['royalty_frame_candidate']['web_status']='Geometric in-plane bracing only; out-of-plane frame, connection/load capacity and transverse floor bearings unresolved'
 for side in[-1,1]:
  z0,z1=sorted([side*12.75,side*13.65]);prefix='D17_CommonsPortal_%s'%('Fore'if side<0 else'Aft')
  for name,x0,x1 in [('Left',78.22,78.5),('Right',81.5,81.78)]:
@@ -61,6 +76,6 @@ for key,obs in sorted(groups.items()):
  for ob in obs:ob.select_set(True)
  bpy.context.view_layer.objects.active=obs[0];bpy.ops.object.join();obs[0].name='D17_InterfaceBatch_'+'_'.join(key)
 bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True)
-M={'catalogue_id':AID,'family':FAMILY,'name':'D17 residential house open commons portals and seated hull footing interfaces','source':f'source/{AID}.blend','export':f'exports/{AID}.glb','source_sha256':sha(src),'export_sha256':sha(out),'editable_part_count':len(records),'runtime_mesh_batches':len(groups),'status':'Partial source kit; full16-unit supported platform and routes held. Not adopted.','new_walkable_source_meshes':0}
-M.update({'verification': ['qa/interface_verification.json', 'qa/seated_contact_verification.json', 'qa/floor_contract_verification.json', 'qa/source_join_ledger.json', 'qa/texture_byte_equality.json', 'qa/footing_revision_preservation.json', 'qa/footing_allocation_check.json'], 'integration_hold': 'No Godot adoption of this partial family or companion COM-003 open portals until supported onward floor, guard and route fit is ready'})
+M={'catalogue_id':AID,'family':FAMILY,'name':'D17 residential house portal interfaces and held Royalty support bay','source':f'source/{AID}.blend','export':f'exports/{AID}.glb','source_sha256':sha(src),'export_sha256':sha(out),'editable_part_count':len(records),'runtime_mesh_batches':len(groups),'status':'Partial source kit; full16-unit supported platform and routes held. Not adopted.','new_walkable_source_meshes':0}
+M.update({'verification': ['qa/interface_verification.json', 'qa/seated_contact_verification.json', 'qa/floor_contract_verification.json', 'qa/source_join_ledger.json', 'qa/texture_byte_equality.json', 'qa/royalty_frame_verification.json', 'qa/allocation_footprint_regression.json'], 'integration_hold': 'No Godot adoption of this partial family or companion COM-003 open portals until supported onward floor, guard and route fit is ready'})
 (R/f'{AID}.manifest.json').write_text(json.dumps(M,indent=2)+'\n');print(json.dumps(M))
