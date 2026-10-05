@@ -13,6 +13,9 @@ func run()->void:
 	for sign in network.find_children("StaffDeckSign_*","Label3D",true,false):
 		var ray:=PhysicsRayQueryParameters3D.create(sign.global_position,sign.global_position+Vector3.RIGHT*.3)
 		assert(not ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Staff sign requires actual wall backing")
+	for z in [-433.9,-430.1]:
+		var seam:=PhysicsRayQueryParameters3D.create(Vector3(-53,7.6,z),Vector3(-54.3,7.6,z))
+		assert(not ship.get_world_3d().direct_space_state.intersect_ray(seam).is_empty(),"Fusion interface side seam must be opaque and closed")
 	var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)
 	var excluded:Array[RID]=[]
 	for body in ship.find_children("*","CollisionObject3D",true,false):
