@@ -1,10 +1,16 @@
 """Editable structural public core, with real shaft enclosure and guarded stair edges."""
 from pathlib import Path
-import bpy,bmesh,json,hashlib
+import bpy,bmesh,json,hashlib,argparse,sys
 from mathutils import Vector
 R=Path(__file__).resolve().parents[1];C=R.parents[1];AID='AST-CIR-005'
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--variant',choices=['base','upper_link'],default='base')
+options=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+upper_link=options.variant=='upper_link'
+representation=AID+'_upper_link' if upper_link else AID
+contract='upper_link_section_contract.json' if upper_link else 'section_contract.json'
 assert all(a['catalogue_id']!=AID or a['family']=='primary_atrium_core'for a in json.loads((C/'catalogue_manifest.json').read_text())['assets'])
-D=json.loads((R/'source/section_contract.json').read_text());ys=D['floor_y'];bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
+D=json.loads((R/'source'/contract).read_text());ys=D['floor_y'];cap_y=D['lift']['cap_y'];bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 materials={}
 for role in ['ivory_enamel','warm_stone','warm_walnut','champagne_metal']:
  m=bpy.data.materials.new(role);m.use_nodes=True;n=m.node_tree.nodes.get('Principled BSDF');n.inputs['Roughness'].default_value=.78
@@ -23,12 +29,12 @@ def box(name,x0,x1,z0,z1,y0,y1,role):
 def datum(name,x,y,z):
  o=bpy.data.objects.new('DATUM_'+name,None);bpy.context.collection.objects.link(o);o.location=(x,-(z+100),y)
 # Shaft skins are outside the actual moving cabin and keep every absent stop safe.
-box('CORE_ShaftRear',1.88,2,-108.2,-103.8,-.24,109.85,'ivory_enamel')
-box('CORE_ShaftNorth',-2,2,-108.2,-108.08,-.24,109.85,'ivory_enamel')
-box('CORE_ShaftSouth',-2,2,-103.92,-103.8,-.24,109.85,'ivory_enamel')
+box('CORE_ShaftRear',1.88,2,-108.2,-103.8,-.24,cap_y[1],'ivory_enamel')
+box('CORE_ShaftNorth',-2,2,-108.2,-108.08,-.24,cap_y[1],'ivory_enamel')
+box('CORE_ShaftSouth',-2,2,-103.92,-103.8,-.24,cap_y[1],'ivory_enamel')
 box('CORE_PitPan',-1.99,1.99,-108.19,-103.81,-.24,-.20,'champagne_metal')
 for i,y in enumerate(ys):
- ceil=ys[i+1]-.24 if i<17 else 109.73
+ ceil=ys[i+1]-.24 if i<len(ys)-1 else cap_y[0]
  box('CORE_GateSpandrel_%02d'%i,-2,-1.88,-108.2,-103.8,y+2.82,ceil,'ivory_enamel')
  for side in [-1,1]:
   x=side*7.8
@@ -38,6 +44,10 @@ for i,y in enumerate(ys):
   a,b=(-7.8,-4.0)if side<0 else(4.0,7.8)
   for h in [.14,1.06]:box('CORE_ForeWingRail_%02d_%s_%s'%(i,side,h),a,b,-113.04,-112.96,y+h,y+h+.08,'champagne_metal')
   for xpost in [a+.12,b-.12]:box('CORE_ForeWingPost_%02d_%s_%s'%(i,side,xpost),xpost-.04,xpost+.04,-113.04,-112.96,y,y+1.14,'champagne_metal')
+  if upper_link:
+   # Both upper-link ends return to the 8m spine; guard both rear wings.
+   for h in [.14,1.06]:box('CORE_RearWingRail_%02d_%s_%s'%(i,side,h),a,b,-80.04,-79.96,y+h,y+h+.08,'champagne_metal')
+   for xpost in [a+.12,b-.12]:box('CORE_RearWingPost_%02d_%s_%s'%(i,side,xpost),xpost-.04,xpost+.04,-80.04,-79.96,y,y+1.14,'champagne_metal')
   # Main framing stays outside the nominal4.3m bypass lanes.
   for z in [-103.5,-96.5]:box('CORE_Pier_%02d_%s_%s'%(i,side,z),side*3.35-.10,side*3.35+.10,z-.12,z+.12,y,ceil,'champagne_metal')
   xlight=side*5.6
@@ -55,13 +65,16 @@ for i,y in enumerate(ys):
    box('CORE_StairFrontDivider_%02d_%s'%(i,h),-.48,.48,-96.17,-96.09,y+h,y+h+.08,'champagne_metal')
   for x in [-.44,.44]:box('CORE_FrontDividerPost_%02d_%s'%(i,x),x-.04,x+.04,-96.17,-96.09,y,y+1.14,'champagne_metal')
   for x in [-3.18,0,3.18]:box('CORE_StairRearPost_%02d_%s'%(i,x),x-.04,x+.04,-85.24,-85.16,y,y+1.14,'champagne_metal')
-  if i==17:
+  if i==len(ys)-1:
    box('CORE_TopFrontGuardPost',3.08,3.16,-96.17,-96.09,y,y+1.14,'champagne_metal')
    for h in [.14,1.06]:box('CORE_TopNoFurtherStair_%s'%h,.48,3.18,-96.17,-96.09,y+h,y+h+.08,'champagne_metal')
  datum('landing_%02d'%(i+1),-5.4,y,-100)
 # The top public landing has a proper opaque cover; it is not a new deck.
-box('CORE_TopCover',-7.88,7.88,-113,-80,109.73,109.85,'ivory_enamel')
-scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();src=R/'source'/(AID+'.blend');out=R/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(src));bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True)
+box('CORE_TopCover',-7.88,7.88,-113,-80,cap_y[0],cap_y[1],'ivory_enamel')
+scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();src=R/'source'/(representation+'.blend');out=R/'exports'/(representation+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(src));bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True)
 tri=sum(len(p.vertices)-2 for o in parts for p in o.data.polygons)
-(R/(AID+'.manifest.json')).write_text(json.dumps({'catalogue_id':AID,'name':'Central18-deck public core enclosure, framing and guarded landings','source':'source/'+AID+'.blend','export':'exports/'+AID+'.glb','triangles':tri,'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'status':'Original structural platform architecture; runtime and visual checks pending'},indent=2)+'\n')
-print(AID,tri)
+manifest={'catalogue_id':AID,'name':'Two-level upper public link enclosure, framing and guarded landings' if upper_link else 'Central18-deck public core enclosure, framing and guarded landings','source':'source/'+representation+'.blend','export':'exports/'+representation+'.glb','triangles':tri,'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'status':'Reconstructed structural derivative; fresh geometry checks, runtime integration and visual review separate' if upper_link else 'Original structural platform architecture; runtime and visual checks pending'}
+if upper_link:
+ manifest.update({'representation':representation,'parent_design_ids':[AID],'new_unique_design_count':0,'section_contract':'source/'+contract,'builder':'source/build_primary_atrium_core.py -- --variant upper_link','floor_y_m':ys,'cap_y_m':cap_y,'nominal_floor_plan_xz_m':[15.6,33.0],'intended_world_placement_gltf_xyz_m':D['intended_world_placement_gltf_xyz_m'],'scope':'Enclosure, framing, guards and markers only. Floors, stairs, lift cabin, gates, collision and lights are separate runtime integrations; no old receipts certify this rebuild.'})
+(R/(representation+'.manifest.json')).write_text(json.dumps(manifest,indent=2)+'\n')
+print(representation,tri)
