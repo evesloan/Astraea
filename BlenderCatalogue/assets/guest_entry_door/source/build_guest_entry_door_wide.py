@@ -59,6 +59,9 @@ for side,label in [(-1,'LEFT'),(1,'RIGHT')]:
 extrusion('ENTRY_CallPlate',[(-2.50,-.165),(-2.28,-.165),(-2.28,-.13),(-2.50,-.13)],1.02,1.42,'champagne_metal')
 extrusion('ENTRY_CallLens',[(-2.46,-.175),(-2.32,-.175),(-2.32,-.165),(-2.46,-.165)],1.12,1.30,'lens')
 datum('call_button',(-2.39,-.18,1.21))
+extrusion('ENTRY_InsideCallPlate',[(-2.50,.13),(-2.28,.13),(-2.28,.165),(-2.50,.165)],1.02,1.42,'champagne_metal')
+extrusion('ENTRY_InsideCallLens',[(-2.46,.165),(-2.32,.165),(-2.32,.175),(-2.46,.175)],1.12,1.30,'lens')
+datum('call_button_inside',(-2.39,.18,1.21))
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source/AST-DOR-002_wide.blend';export=ROOT/'exports/AST-DOR-002_wide.glb';bpy.ops.wm.save_as_mainfile(filepath=str(source))
 tri=0
 for o in parts:o.data.calc_loop_triangles();tri+=len(o.data.loop_triangles)

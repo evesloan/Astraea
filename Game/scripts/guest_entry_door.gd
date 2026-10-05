@@ -8,6 +8,10 @@ var enclosure_width:=3.48
 var door_description:="suite door"
 func _ready() -> void:
 	assert(not persistent_id.is_empty())
+	var fittings:Dictionary={"AST-DOR-002.glb":[.78,.84,3.48],"AST-DOR-002_wide.glb":[1.18,1.24,5.16]}
+	assert(fittings.has(visual_file),"Door needs an authored matching source profile")
+	var expected:Array=fittings[visual_file]
+	assert(is_equal_approx(leaf_width,expected[0]) and is_equal_approx(leaf_travel,expected[1]) and is_equal_approx(enclosure_width,expected[2]),"Door collision and travel must match its export")
 	set_meta("catalogue_file",visual_file)
 	var visual := (load("res://assets/models/"+visual_file) as PackedScene).instantiate()
 	add_child(visual)
