@@ -3,7 +3,7 @@
 Updated2026-10-05. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Latest verified scope
-50 regression groups pass after physical loaded-cart entry and reverse travel through the first Thread & Shell fitting room.153 catalogue designs are registered;100 are present through1162 whole-model instances. These are component counts, not finished rooms. Thread & Shell now has two private fitting bays, separate staff access and a lower sheltered consultation counter with supported sample storage. Public browsing/light refinement is in progress; sales, NPC use and final art remain absent. See THREAD_SHELL_PROGRESS.md.
+53 regression groups pass after the connected D09/D10 Orchard court, local stairs and physical loaded lift checks.154 catalogue designs are registered;101 are present through1172 whole-model instances. These are component counts, not finished rooms. Thread & Shell now has two private fitting bays, separate staff access and a lower sheltered consultation counter with supported sample storage. Public browsing/light refinement is in progress; sales, NPC use and final art remain absent. See THREAD_SHELL_PROGRESS.md.
 
 The remaining sections are chronological construction records. Earlier test, catalogue and furniture totals describe those dated stages and are superseded by later entries. Do not treat an earlier outstanding item as still absent when a later entry records its implementation.
 
@@ -123,3 +123,6 @@ A swept canopy, textile backing, planted ends and flush timber finish now shelte
 
 ## D17 level-entry quiet reading alcove
 An original oval book-lined enclosure now creates a quieter retreat inside the existing D17 commons. Real entry and both seat approaches, shelf supports, book-envelope corners, ceiling clearance and light-control reach pass. Coplanar wall/lower-panel faces found in graphical review were separated at their true junction without changing finished clearances. All48checks pass154.2967seconds fixed60; final normal/effects-off views were inspected after batch002. The wider commons, seated behavior and broad-species ergonomics remain unfinished. Catalogue151designs; no new guest capacity.
+
+## Orchard retail/dining exchange
+A new local two-level arrival now links D09 retail to the D10 Orchard approach through an8.5m switchback and fitted physical lift. Existing programme allocations/datums remain unchanged. Actual stairs, guard support,80cart/operator staging poses, loaded boarding and round-trip lift motion pass in the53-check suite. Ordinary and clear views remain an early architectural finish; Orchard240dining places are still reserved/unfitted. See ORCHARD_EXCHANGE_PROGRESS.md.
