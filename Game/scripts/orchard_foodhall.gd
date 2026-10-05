@@ -17,8 +17,8 @@ static func build(parent:Node3D,ship:Node3D)->void:
 		light.rotation.x=-PI/2
 		var staff:bool="work_" in str(marker.name) or "staff_" in str(marker.name)
 		light.light_color=Color(.85,.92,1)if staff else Color(1,.96,.91)
-		light.light_energy=1.15
-		light.spot_range=5
+		light.light_energy=1.05 if staff else 1.35
+		light.spot_range=5 if staff else 8
 		light.spot_angle=70
 		light.shadow_enabled=true
 	for g in data.candidate_groups:

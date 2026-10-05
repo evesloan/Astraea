@@ -71,6 +71,7 @@ func run() -> void:
 	for target in route:await walk(actor,target)
 	assert(absf(actor.position.y-61)<.12)
 	var architecture:Node3D=room.find_child("OrchardFoodHallArchitecture",true,false)
+	assert(architecture.find_children("DATUM_light_*","Node3D",true,false).size()==46,"Current authored fixture revision must be imported")
 	for marker in architecture.find_children("DATUM_light_*","Node3D",true,false):
 		var q:=PhysicsRayQueryParameters3D.create(marker.global_position,marker.global_position+Vector3.DOWN*.07)
 		assert(ship.get_world_3d().direct_space_state.intersect_ray(q).is_empty(),"Orchard source exit is obstructed")
@@ -104,7 +105,7 @@ func run() -> void:
 		work_door.interact(actor)
 		await animate_clear(ship,work_door)
 		assert(work_door.open_fraction<.001)
-	print("ORCHARD DINING PASS:240 unique supported candidate chairs and clear standing positions;36 exposed stone table surfaces;",samples,"cart/operator poses; actual guest/service/work-bay routes,43 source exits,8 beverage supports and500door-motion frames. Occupied guest access, food service, full species fit and final art pending.")
+	print("ORCHARD DINING PASS:240 unique supported candidate chairs and clear standing positions;36 exposed stone table surfaces;",samples,"cart/operator poses; actual guest/service/work-bay routes,46 source exits,8 beverage supports and500door-motion frames. Occupied guest access, food service, full species fit and final art pending.")
 	main.queue_free()
 	await process_frame
 	quit()

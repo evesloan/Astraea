@@ -103,7 +103,9 @@ for index,(north,south)in enumerate([(-229,-218),(-214,-203)]):
 # The vaults create table-sized rooms within the taller hall and leave main lanes open.
 for g in D['candidate_groups']:
  if g['kind']!='communal10':continue
- z=g['z'];idx=g['index'];profile=[(13.8,F+2.9),(14.6,F+3.5),(16,F+3.8),(19,F+3.8),(20.4,F+3.5),(21.2,F+2.9)]
+ z=g['z'];idx=g['index']
+ slab('ORCH_CommunalFloorInset_'+str(idx),13.6,21.4,z-2.075,z+2.075,F+.003,F+.007,'warm_walnut')
+ profile=[(13.8,F+2.9),(14.6,F+3.5),(16,F+3.8),(19,F+3.8),(20.4,F+3.5),(21.2,F+2.9)]
  for side in [-1,1]:
   zz=z+side*1.9
   beam('ORCH_CommunalRib_%s_%s'%(idx,side),[xyz(13.8,F,zz)]+[xyz(x,y,zz)for x,y in profile]+[xyz(21.2,F,zz)],.22,.24,'warm_walnut')
@@ -111,7 +113,7 @@ for g in D['candidate_groups']:
  for i in range(n-1):f.extend([(i,i+1,2*n+i+1,2*n+i),(n+i,3*n+i,3*n+i+1,n+i+1),(i,n+i,n+i+1,i+1),(2*n+i,2*n+i+1,3*n+i+1,3*n+i)])
  f.extend([(0,2*n,3*n,n),(n-1,2*n-1,4*n-1,3*n-1)]);mesh('ORCH_AcousticVault_'+str(idx),v,f,'oatmeal_weave')
 # Actual sources hang from their intended canopy/roof and illuminate usable places.
-fixtures=[]
+fixtures=[('arrival_'+str(i),8.23,F+3.8,z,True)for i,z in enumerate([-219,-216,-213])]
 for g in D['candidate_groups']:
  x,z=g['x'],g['z'];top=F+3.8 if g['kind']=='communal10'else roof(x,z)
  y=top if g['kind']=='communal10'else min(top,F+3.5)
