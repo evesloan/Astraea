@@ -16,6 +16,7 @@ commands=[('bridge_platform_structure',['--script','res://tests/validate_bridge_
 # New checks must not outrun the import barrier when their models are first added.
 commands = [(name, ['--script', 'res://tests/validate_' + name + '.gd']) for name in ['upper_horizon_enclosure_structure','upper_horizon_enclosure_windows','aft_crown_platform_structure','aft_crown_platform_access','aft_crown_platform_cart','bridge_enclosure_structure','bridge_enclosure_windows','bridge_enclosure_access','bridge_enclosure_cart']] + commands
 commands = [('d17_connected_access', ['--script', 'res://tests/validate_d17_connected_access.gd']), ('d17_connected_cart', ['--script', 'res://tests/validate_d17_connected_cart.gd'])] + commands
+commands = [('lighting_budget', ['--script', 'res://tests/validate_lighting_budget.gd'])] + commands
 commands.sort(key=lambda entry: entry[0] != 'import')
 if '--only' in sys.argv:
     requested=sys.argv[sys.argv.index('--only')+1]

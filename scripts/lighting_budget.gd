@@ -2,6 +2,7 @@ extends Node
 # Bound active shadow sources while retaining visible fixture geometry/emission.
 # This is an initial cloud-tested budget, not target-GPU performance acceptance.
 @export var shadow_source_budget := 8
+const MAX_VISIBILITY_CANDIDATES := 32
 var actor: Node3D
 var sources: Array[Light3D] = []
 var requested_shadow: Dictionary = {}
@@ -34,16 +35,15 @@ func refresh() -> void:
 		var score := distance/maxf(reach,1.0)-(0.08 if light.visible else 0.0)
 		ranked.append({"light":light,"score":score})
 	ranked.sort_custom(func(a,b): return a.score < b.score)
-	# Do not spend scarce shadow slots on fixtures behind occupied decks or walls.
-	# Bounded candidate count keeps this visibility preference independent of ship size.
-	for i in range(mini(24,ranked.size())):
-		if not _has_visible_sample(ranked[i].light):ranked[i].score+=4.0
-	for i in range(24,ranked.size()):ranked[i].score+=4.0
-	ranked.sort_custom(func(a,b): return a.score < b.score)
+	# Visibility is required, not a penalty: hidden/untested sources cannot fill slots.
+	# Eight extra candidates avoid newly fitted decks starving nearby room fixtures.
+	# Stop once the budget is full; visibility work stays independent of ship size.
+	var active_sources := 0
 	for i in range(ranked.size()):
 		var light: Light3D = ranked[i].light
 		# A shadowed fixture is never silently converted to a wall-leaking unshadowed lamp.
-		var active := i < shadow_source_budget
+		var active := i < MAX_VISIBILITY_CANDIDATES and active_sources < shadow_source_budget and _has_visible_sample(light)
+		if active: active_sources += 1
 		if light.visible != active: light.visible = active
 		if light.shadow_enabled != active: light.shadow_enabled = active
 

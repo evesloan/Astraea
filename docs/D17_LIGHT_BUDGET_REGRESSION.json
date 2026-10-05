@@ -1,0 +1,248 @@
+{
+  "schema": 1,
+  "checked_utc": "2026-10-05T23:27:40Z",
+  "status": "FOCUSED_RUNTIME_AND_D17_VISUAL_REVIEW_PASS_FULL_PENDING",
+  "scope": "Repair shared shadow-source selection exposed by nine new D17 connected-house fixtures; preserve the eight-source cap and actual source-backed lights. Not final art or target-GPU performance acceptance.",
+  "baseline_commit": "84a967e3a3b6145839aa633e5e1c3dd16cf8a96e",
+  "observed_failure": {
+    "full_suite": {
+      "passed_before_stop": 91,
+      "checks_attempted": 92,
+      "failed_check": "commons_lighting",
+      "assertion": "Fixtures behind occupied floor should not consume commons budget",
+      "log_name": "d17-connected-full-002.log"
+    },
+    "focused_reproduction": "Parent independently reproduced the unchanged commons_lighting assertion after fresh editor import.",
+    "actor_position": [
+      89,
+      84.1,
+      8
+    ],
+    "diagnostic_log_name": "d17-light-diagnostic-001.log",
+    "diagnostic_log_sha256": "b85c01ce8d1716ecf7975cdbecac78476f9f7fa25fff27fe04460969b83bb035",
+    "visible_sources_in_first24": 7,
+    "selected_before_fix": [
+      "NightGardenLocalSource_2",
+      "CommonsFixture_1",
+      "CommonsGatheringLight_2",
+      "CommonsGatheringLight_1",
+      "CommonsFixture_2",
+      "CommonsWallSource_84_0_1",
+      "CommonsFixture_0",
+      "CommonsGatheringLight_0"
+    ],
+    "rank_evidence": [
+      {
+        "active": true,
+        "before": false,
+        "distance": 2.78632020950317,
+        "name": "NightGardenLocalSource_2",
+        "position": "(87.0, 82.16, 8.0)",
+        "rank": 0,
+        "rank_without_D17": 0,
+        "reach": 16.0,
+        "score": 0.174145013093948,
+        "visible_sample": false
+      },
+      {
+        "active": false,
+        "before": false,
+        "distance": 23.854944229126,
+        "name": "D17HouseSource_DATUM_light_Portal",
+        "position": "(80.0, 104.88, 15.5)",
+        "rank": 15,
+        "rank_without_D17": null,
+        "reach": 12.0,
+        "score": 1.98791201909383,
+        "visible_sample": false
+      },
+      {
+        "active": false,
+        "before": false,
+        "distance": 27.9295845031738,
+        "name": "D17HouseSource_DATUM_light_Court",
+        "position": "(84.5, 105.64, 25.2)",
+        "rank": 21,
+        "rank_without_D17": null,
+        "reach": 12.0,
+        "score": 2.32746537526449,
+        "visible_sample": false
+      },
+      {
+        "active": false,
+        "before": false,
+        "distance": 30.9874439239502,
+        "name": "D17HouseSource_DATUM_light_Lane",
+        "position": "(92.5, 105.64, 30.0)",
+        "rank": 22,
+        "rank_without_D17": null,
+        "reach": 12.0,
+        "score": 2.58228699366252,
+        "visible_sample": false
+      },
+      {
+        "active": false,
+        "before": false,
+        "distance": 28.5928401947021,
+        "name": "CommonsFixture_4",
+        "position": "(70.0, 91.62, -12.0)",
+        "rank": 24,
+        "rank_without_D17": 21,
+        "reach": 11.0,
+        "score": 2.59934910860929,
+        "visible_sample": true
+      },
+      {
+        "active": false,
+        "before": false,
+        "distance": 29.3264541625977,
+        "name": "CommonsFixture_3",
+        "position": "(61.0, 87.57, 0.0)",
+        "rank": 25,
+        "rank_without_D17": 22,
+        "reach": 11.0,
+        "score": 2.66604128750888,
+        "visible_sample": true
+      }
+    ],
+    "repeat_refresh": "The second refresh again selected the same hidden NightGardenLocalSource_2 alongside seven clear-sample commons sources."
+  },
+  "cause": [
+    "Three hidden D17 fixtures enter the nearest24 normalized-distance candidates, pushing visible CommonsFixture_4 and CommonsFixture_3 from counterfactual ranks21/22 to zero-based ranks24/25.",
+    "The old +4 score penalty neither excludes occluded sources nor requires a tested clear sample. With only seven clear candidates in the tested window, nearest hidden NightGardenLocalSource_2 fills the eighth slot.",
+    "Both candidate-window starvation and hidden filler selection are observed; geometry corruption or a removed D17 fixture is not needed to explain the regression."
+  ],
+  "repair": {
+    "changed_runtime_file": "scripts/lighting_budget.gd",
+    "eligibility": "A requested, powered shadow source must return a positive _has_visible_sample result to become active. Hidden and untested sources remain disabled even when slots remain.",
+    "ranking": "Existing normalized distance and 0.08 visible-source hysteresis are unchanged; eligible sources retain that order.",
+    "bounds": "At most32 visibility candidates per refresh, with early termination once eight sources have qualified. Eight extra fallback candidates reach the directly observed displaced commons fixture; remaining slots are allowed to stay empty.",
+    "preserved": [
+      "Default eight-shadow-source cap",
+      "fixture_powered handling",
+      "Authored source marker positions, fixture names, colors, energy, cone and range",
+      "All nine D17 connected-house sources",
+      "Existing source-to-receiver range/cone and opaque-obstruction checks",
+      "Glass and character/rigid-body exclusions",
+      "Four actor samples and six-crossing per-ray bound",
+      "Unselected shadowed sources stay fully disabled rather than becoming unshadowed lamps"
+    ],
+    "existing_assertions": "No existing validation assertion changed."
+  },
+  "regression_test": {
+    "file": "tests/validate_lighting_budget.gd",
+    "synthetic_policy_cases": [
+      "Eighth visible fixture at zero-based rank24 is sampled and selected; stop after25 candidates",
+      "Powered-off fixture stays disabled and does not consume a sample",
+      "Fewer than eight visible sources leave slots empty",
+      "No clear candidates yields zero active sources; an untested visible source beyond the32-candidate window remains inactive",
+      "At least eight clear nearest sources fill exactly eight slots and need only eight samples"
+    ],
+    "main_scene_cases": [
+      "Exact failing commons position retains eight verified visible sources including CommonsFixture_4",
+      "D17 portal, court, lane, receiving and aft-view route positions retain the corresponding actual D17 source",
+      "Two refreshes at each sample, followed by return to commons",
+      "Every active requested source is powered, shadowed and has a clear sample"
+    ],
+    "requested_preservation_checks": [
+      "commons_lighting",
+      "fixture_switch",
+      "arrivals_fusion",
+      "thread_shell"
+    ],
+    "execution_owner": "Parent runs all Godot imports, focused validation, graphical checks and aggregate validation serially."
+  },
+  "validation": {
+    "static_diff_check": "PASS",
+    "static_preservation": "PASS: ranking inputs, requested-shadow/power handling, full visibility/raycast helpers, original commons assertions and D17 source creation matched baseline exactly.",
+    "focused_checks": [
+      {
+        "check": "lighting_budget",
+        "passed": true,
+        "checks_including_import": 2,
+        "clock_mode": "fixed60",
+        "wall_seconds": 14.8475,
+        "log_name": "d17-light-budget-001.log",
+        "log_sha256": "cab6c474e45ec7ca90eef122b888bae288b4c16f1b56e7f593dcf78213094f92"
+      },
+      {
+        "check": "commons_lighting",
+        "passed": true,
+        "checks_including_import": 2,
+        "clock_mode": "fixed60",
+        "wall_seconds": 15.7856,
+        "log_name": "d17-light-fix-commons_lighting.log",
+        "log_sha256": "0d0b374785314a430041d26566e641c16252fd1a013c75d79e48203fd93e22ce"
+      },
+      {
+        "check": "fixture_switch",
+        "passed": true,
+        "checks_including_import": 2,
+        "clock_mode": "fixed60",
+        "wall_seconds": 15.6099,
+        "log_name": "d17-light-fix-fixture_switch.log",
+        "log_sha256": "1f2d0ecd01d28c0b52c3879d2be2b2145359175096f41991035a74c307a6c87a"
+      },
+      {
+        "check": "arrivals_fusion",
+        "passed": true,
+        "checks_including_import": 2,
+        "clock_mode": "fixed60",
+        "wall_seconds": 19.0435,
+        "log_name": "d17-light-fix-arrivals_fusion.log",
+        "log_sha256": "78b6fc390d45375cd3ef9d7a35f7b5d60e3bf6c8efc3f55f6535d1d19af991e4"
+      },
+      {
+        "check": "thread_shell",
+        "passed": true,
+        "checks_including_import": 2,
+        "clock_mode": "fixed60",
+        "wall_seconds": 22.1084,
+        "log_name": "d17-light-fix-thread_shell.log",
+        "log_sha256": "e4e40f7e4aa50e66c133d08e7479dfbef31890a8e90250bdbf69d7cd9ae8e9b3"
+      }
+    ],
+    "verified_main_scene": "Commons selected the same eight clear-sample commons sources before and after the D17 visit; recovered CommonsFixture_4 replaced hidden NightGardenLocalSource_2. Five D17 locations retained the corresponding actual fixtures on both refreshes. The D17 court legitimately retained seven sources instead of filling a slot with an occluded light.",
+    "verified_common_sources": [
+      "CommonsFixture_0",
+      "CommonsFixture_1",
+      "CommonsFixture_2",
+      "CommonsFixture_4",
+      "CommonsGatheringLight_0",
+      "CommonsGatheringLight_1",
+      "CommonsGatheringLight_2",
+      "CommonsWallSource_84_0_1"
+    ],
+    "new_test_registered": "Parent added lighting_budget to the standard tools/validate.py suite.",
+    "full_current_aggregate": "PENDING: parent will rerun after this repair; no full-pass claim.",
+    "graphical_review": "PENDING: parent will capture the repaired selection; prior D17 art review does not approve this revision.",
+    "timing_scope": "Focused execution timings include import and test simulation, not rendering FPS or target-GPU performance."
+  },
+  "limits": [
+    "The bounded32-candidate search does not guarantee that every visible distant fixture is selected in an arbitrarily dense scene; it must never activate untested sources to fill the cap.",
+    "No scalable whole-ship sector streaming, fade/popping acceptance or target-hardware cost claim.",
+    "The prior101-pass receipt and the failed current91-pass prefix do not validate this repair."
+  ],
+  "reviewed_source_sha256": {
+    "scripts/lighting_budget.gd": "73366f8831a591473355c9d15a5de8ae0e63c59bdf3b8cd1b1abe7663d1f7337",
+    "tests/validate_lighting_budget.gd": "cdea289e182d7715e88c2036b1564fec544655ae06bdeb739daeb259f171f4ec",
+    "tests/validate_lighting_budget.gd.uid": "c86c806d17456f9ef841e65f359a116c8abe2429b67afbde8e2e63e225ae9249",
+    "tests/validate_commons_lighting.gd": "0f8660f2ab47c26d5cc7422c67f3e92c25d163c3ff6034e924c438bddc8e8f02",
+    "scripts/d17_connected_house.gd": "a43dc0d5776760188f4153f3df8af02f74ce0d702f24c7b5d5667c0b96838f69"
+  },
+  "graphical_review": {
+    "capture": "d17-connected-lighting-002",
+    "execution_pass": true,
+    "clear_views_reviewed": [
+      "court",
+      "threshold",
+      "gathering"
+    ],
+    "observations": "Connected route and source-backed room illumination remain readable; existing striped jamb lighting, broad ceiling and unfinished enclosure remain tracked",
+    "images_sha256": {
+      "court": "0d99f4015ea1c5e15084b29baf5941bdfe917637db3350249049d23f72de9626",
+      "threshold": "30c2fafb594231853a80c96e8d3064c6a122606b903b3cd7ab5889246f97ee58",
+      "gathering": "848633bccac163c5640b231dda677459cdfbada1f4fda9a77489c69a6a093cbe"
+    }
+  }
+}
