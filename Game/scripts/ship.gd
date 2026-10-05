@@ -25,6 +25,8 @@ func _ready() -> void:
 	# Static world-oriented exterior, with zero sky contribution to indoor ambient.
 	var space_material := ShaderMaterial.new()
 	space_material.shader = load("res://shaders/astraea_space.gdshader")
+	# Cached display was black on GL Compatibility; use the identical direct field.
+	space_material.set_shader_parameter("use_radiance_cache",false)
 	var space_sky := Sky.new()
 	space_sky.sky_material = space_material
 	space_sky.process_mode = Sky.PROCESS_MODE_QUALITY

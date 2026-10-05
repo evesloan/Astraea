@@ -8,6 +8,7 @@ func run()->void:
 	assert(environment.background_mode==Environment.BG_SKY and environment.sky!=null)
 	assert(environment.sky.sky_material is ShaderMaterial)
 	assert(environment.sky.sky_material.shader.resource_path=="res://shaders/astraea_space.gdshader")
+	assert(environment.sky.sky_material.get_shader_parameter("use_radiance_cache")==false,"Keep the visually verified direct path until cached sampling is proven")
 	assert(environment.sky.process_mode==Sky.PROCESS_MODE_QUALITY and environment.sky.radiance_size==Sky.RADIANCE_SIZE_256)
 	assert(environment.sky_rotation==Vector3.ZERO and is_zero_approx(environment.sky_custom_fov))
 	assert(environment.ambient_light_source==Environment.AMBIENT_SOURCE_SKY and is_zero_approx(environment.ambient_light_sky_contribution))
