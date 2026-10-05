@@ -46,7 +46,7 @@ def build():
    courts.append({'id':f'{side}_{end}_residential_court','status':'Proposed landscaped house court; no slab cut or final architecture acceptance','x':[round(p.bounds[0],3),round(p.bounds[2],3)],'z':[round(p.bounds[1],3),round(p.bounds[3],3)],'boundary':[[round(x,3),round(z,3)]for x,z in list(p.exterior.coords)[:-1]],'area_m2':round(p.area,3),'floor_y':84,'upper_cover_y':106.5,'affected_programmes':keys,'arrival_focus_x':focus_x,'arrival_focus_z':[focus_z-10,focus_z+10],'arrival_focus_role':'Retain shaped lobbies, lift landings and inhabited terraces within the commons; not an uninterrupted slab opening','purpose':'A five-level landscaped court alongside real residential banks, with distinct local arrivals and private window edges','guest_envelope_conflicts':conflicts,'potential_outward_view_source_indices':candidates,'view_evidence_scope':'Short plan rays from source room outer edges reach the court without crossing another guest allocation. No installed window, finished view or privacy acceptance implied','guest_access_intent':'Use inward paired-bank corridor gaps and common arrivals; do not run a public gallery directly across every bedroom window','required_before_cut':['Resolve shaped gallery floor ownership for all five commons','Connect both guest and concealed service networks','Confirm protected D18 cover and source-derived support','Fit planted court base, offset bridges and preserved arrival islands','Check all local room entries and views; preserve1000units']})
  cores=[]
  obstacles=dest+guests+shops+crew
- for name,z,catchment in [('forward',-432,-432),('fore_midship',-216,-216),('atrium_threshold',-100,-72),('aft_midship',216,216),('aft',432,432)]:
+ for name,z,catchment in [('forward',-432,-432),('fore_midship',-272,-216),('atrium_threshold',-100,-72),('aft_midship',272,216),('aft',432,432)]:
   p=box(-3.3,z-9,3.3,z+15)
   conflicts=[r.get('programme_key',r.get('stable_id'))for r in obstacles if p.intersection(rect(r)).area>1e-6]
   assert not conflicts
@@ -57,7 +57,7 @@ def build():
  # Track the one authored core separately from the four unbuilt reservations.
  authored=read('data/architecture/PRIMARY_ATRIUM_CORE.json')
  primary=next(c for c in cores if c['id']==authored['core_reservation'])
- primary['status']='Authored main-scene central core; validation and visual review recorded separately. Other public cores remain reservations'
+ primary['status']='Authored main-scene central core; validation and visual review recorded separately. Other public cores are recorded separately'
  primary['construction_contract']='data/architecture/PRIMARY_ATRIUM_CORE.json'
  primary['geometry_owner']='primary_atrium_core'
  primary['apron_connector']['status']='Authored continuous floor within the central core footprint'
@@ -73,6 +73,14 @@ def build():
   forward=read('data/architecture/FORWARD_PUBLIC_CORE.json');entry=next(c for c in cores if c['id']==forward['core_reservation'])
   entry.update(status='Authored forward platform; fresh runtime and visual acceptance recorded separately',geometry_owner='forward_public_core',construction_contract='data/architecture/FORWARD_PUBLIC_CORE.json',lobby_z=[-445,-412],lateral_portal_decks=['D01','D02'],lateral_portal_side='port',terminal_cap_y=forward['lift']['cap_y'])
   paths.append('data/architecture/FORWARD_PUBLIC_CORE.json')
+ for file in ['FORE_MIDSHIP_PUBLIC_CORE.json','AFT_MIDSHIP_PUBLIC_CORE.json','AFT_PUBLIC_CORE.json']:
+  path='data/architecture/'+file
+  if not (ROOT/path).exists():continue
+  built=read(path);entry=next(c for c in cores if c['id']==built['core_reservation'])
+  entry.update(status='Authored public spine platform; runtime and visual results recorded separately',geometry_owner=built['id'],construction_contract=path,lobby_z=[built['origin'][2]-13,built['origin'][2]+20],lateral_portal_decks=[],terminal_cap_y=built['lift']['cap_y'],planning_shift_m=built['planning_shift_m'])
+  entry['placement_reason']='Preserve fitted retail/aquatic courts; original Townline catchment retained' if built['planning_shift_m'] else 'Original catchment retained; no fitted non-spine floor overlap'
+  paths.append(path)
+
 
  staff_cores=[]
  positions={'port':[-490,-283,-90,290,490],'starboard':[-490,-323,-86,323,490]}

@@ -18,7 +18,7 @@ for level in s['levels']:
  y=level['floor_y'];d.line([lon(-541,y),lon(541,y)],fill='#d8d9d2');text((20,lon(0,y)[1]-7),level['deck'],11,'#66747b')
 outline=[lon(min(p[1]for p in ring['outer']),ring['y'])for ring in b['rings']]+[lon(max(p[1]for p in ring['outer']),ring['y'])for ring in reversed(b['rings'])]
 d.polygon(outline,fill='#d7e0e2',outline='#486a77',width=3)
-for zlo,zhi,ylo,yhi in [(-445,-412,0,105.9),(-113,-80,0,109.85),(106,139,102,109.85)]:d.rectangle([lon(zlo,yhi),lon(zhi,ylo)],fill='#77a295',outline='#356f5f',width=2)
+for zlo,zhi,ylo,yhi in [(-445,-412,0,105.9),(-285,-252,0,105.9),(-113,-80,0,109.85),(106,139,102,109.85),(259,292,0,105.9),(419,452,0,105.9)]:d.rectangle([lon(zlo,yhi),lon(zhi,ylo)],fill='#77a295',outline='#356f5f',width=2)
 for zlo,zhi,top in [(-180,202,114.5)]+[(min(q[1]for q in p['boundary']),max(q[1]for q in p['boundary']),p['external_roof_limit_y'])for p in u['private_upper_pavilions']]:
  for a,c in [(lon(zlo,106.5),lon(zlo,top)),(lon(zlo,top),lon(zhi,top)),(lon(zhi,top),lon(zhi,106.5))]:dashed(a,c)
 text((91,535),'1,082 m calibrated plan length; vertical scale exaggerated for legibility',15,'#66747b')

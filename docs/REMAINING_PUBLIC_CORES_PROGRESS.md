@@ -1,0 +1,9 @@
+# Remaining public spine connections
+
+Three D01–D17 public cores are authored at Z−272m, +272m and +432m. Each has sixteen switchbacks, seventeen supported longitudinal bypasses and a physical seventeen-stop lift. They use one checked closed-sided enclosure derivative, with 839 editable source pieces exported as four material batches. No new unique catalogue design or guest unit is created.
+
+The two midship cores were shifted 56m away from their earlier plan centres. At−216m, the full enclosure footprint overlapped fitted Thread & Shell floor/cover areas by120.978m² each and the Orchard floor by38.8m². At+216m, it overlapped46.56m² on each of the three aquatic arrival levels. These are recorded floor overlaps, not a claim that every overlap was a diagnosed collision. The new positions avoid all fitted non-spine floor regions, preserving those authored courts rather than consuming their approaches. The original Townline catchments remain−216m and+216m; connecting streets and signage must express the short offset.
+
+Sidewalls remain closed on all levels because no supported lateral branches are built at these new positions. The existing forward core keeps its separately verified port D01/D02 openings. The central core still reaches D18; four outlying caps stay at105.9m below the general roof, with the aft crown link giving a second local D17/D18 descent.
+
+The compiler validates237 structural regions and3,883 triangles. All45 planning/tool checks pass. The first new core's sixteen stairs and seventeen bypasses pass focused actual-capsule testing; full three-core travel, loaded boarding and aggregate regression/visual results remain pending. The source allocation ledger remains18decks,161directory programmes,1000guest units and100retail addresses. Most destination interiors and branches, the staff network and upper hull remain unfinished.
