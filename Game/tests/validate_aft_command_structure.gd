@@ -676,6 +676,8 @@ func validate_meshes() -> void:
 			maximum = maximum.max(world_vertex)
 		var contact := mesh.get_node_or_null("StaticContact/SharedShape") as CollisionShape3D
 		if check(contact != null and not contact.disabled, "Missing active concave collision for " + str(mesh.name)):
+			var body := contact.get_parent() as StaticBody3D
+			check(body != null and body.collision_layer != 0, "Architecture contact needs an active static physics owner: " + str(mesh.name))
 			check(contact.shape is ConcavePolygonShape3D, "Architecture contact must use real surface triangles: " + str(mesh.name))
 			if contact.shape is ConcavePolygonShape3D:
 				check(contact.shape.get_faces() == local_faces, "Render/contact triangle mismatch: " + str(mesh.name))
@@ -683,7 +685,7 @@ func validate_meshes() -> void:
 	check(all_faces.size() == EXPECTED_TRIANGLES * 3, "Imported triangle count changed: %d" % (all_faces.size() / 3))
 	check(geometry_signature(all_faces) == IMPORTED_TRIANGLE_SHA256,
 		"Actual world-space triangles differ from final verified GLB; stale import, moved shell or changed source")
-	check(minimum.distance_to(Vector3(-36, -3.2, 64)) < EPS, "Actual source minimum bounds changed: " + str(minimum))
+	check(minimum.distance_to(Vector3(-36.0, -3.2, 62.79)) < EPS, "Actual source minimum bounds changed: " + str(minimum))
 	check(maximum.distance_to(Vector3(36, 114.44, 102)) < EPS, "Actual source maximum bounds changed: " + str(maximum))
 	for index in range(0, all_faces.size(), 3):
 		for offset in range(3):
@@ -708,26 +710,38 @@ func validate_real_box(bounds: AABB, label: String) -> bool:
 	var used_corners: Dictionary = {}
 	var count := 0
 	var area := 0.0
+	var plane_areas := [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	for index in candidates:
 		var a := all_faces[index]
 		var b := all_faces[index + 1]
 		var c := all_faces[index + 2]
 		if not (corners.has(vertex_key(a)) and corners.has(vertex_key(b)) and corners.has(vertex_key(c))):
 			continue
-		var on_surface := false
+		var plane_index := -1
 		for axis in range(3):
-			for plane in [bounds.position[axis], bounds.end[axis]]:
-				on_surface = on_surface or (absf(a[axis] - plane) < EPS and absf(b[axis] - plane) < EPS and absf(c[axis] - plane) < EPS)
-		if not on_surface:
+			for endpoint in range(2):
+				var plane: float = bounds.position[axis] if endpoint == 0 else bounds.end[axis]
+				if absf(a[axis] - plane) < EPS and absf(b[axis] - plane) < EPS and absf(c[axis] - plane) < EPS:
+					plane_index = axis * 2 + endpoint
+		if plane_index < 0:
 			continue
 		count += 1
-		area += (b - a).cross(c - a).length() * 0.5
+		var triangle_area := (b - a).cross(c - a).length() * 0.5
+		area += triangle_area
+		plane_areas[plane_index] += triangle_area
 		for vertex in [a, b, c]:
 			used_corners[vertex_key(vertex)] = true
 	var size := bounds.size
 	var expected_area := 2.0 * (size.x * size.y + size.x * size.z + size.y * size.z)
-	return check(count == 12 and used_corners.size() == 8 and absf(area - expected_area) < maxf(0.005, expected_area * 0.0001),
-		"Built member must have twelve real surface triangles/eight corners/full surface area: %s got %d/%d/%.5f expected %.5f" % [label, count, used_corners.size(), area, expected_area])
+	# Adjacent source boxes retain both coincident interface faces. Their opposite
+	# diagonals can legitimately give four triangles on a shared plane. The full
+	# frozen triangle signature above establishes exact global multiplicity.
+	var expected_planes := [size.y * size.z, size.y * size.z, size.x * size.z, size.x * size.z, size.x * size.y, size.x * size.y]
+	var all_planes := true
+	for index in range(6):
+		all_planes = all_planes and plane_areas[index] >= expected_planes[index] - maxf(0.001, expected_planes[index] * 0.0001)
+	return check(count >= 12 and used_corners.size() == 8 and all_planes,
+		"Built member must retain eight corners and all six real surface faces: %s got %d triangles/%d corners/%.5f area; minimum %.5f" % [label, count, used_corners.size(), area, expected_area])
 
 func validate_members_and_graph() -> void:
 	var definitions: Array = JSON.parse_string(STRUCTURAL_PARTS_JSON)
@@ -778,7 +792,7 @@ func validate_piers(data: Dictionary) -> void:
 	check(centres == [[-35.5, 86], [35.5, 86]], "Exactly two audited pier centres X±35.5/Z86 required")
 	for x in [-35.5, 35.5]:
 		var side := "Port" if x < 0 else "Starboard"
-		var intended := FLOOR_IDS[0 if x < 0 else 1]
+		var intended: String = FLOOR_IDS[0 if x < 0 else 1]
 		for segment in range(16):
 			var low := lerpf(-3.19, 114.0, segment / 16.0)
 			var high := lerpf(-3.19, 114.0, (segment + 1) / 16.0)
@@ -789,7 +803,9 @@ func validate_piers(data: Dictionary) -> void:
 				check(allowed, "Pier intersects unintended existing static/dynamic body: " + label + " -> " + owner(hit))
 			var y := (low + high) * 0.5
 			for direction in [-1.0, 1.0]:
-				var start := Vector3(x + direction, y, 86)
+				# Start immediately outside the chord so its fitted outer wall cannot
+				# mask the real pier face in the upper occupied segment.
+				var start := Vector3(x + direction * 0.45, y, 86)
 				var hit := ray(start, Vector3(x, y, 86), shell_only_exclusions)
 				if check(not hit.is_empty(), "Empty hypothetical pier envelope: " + label):
 					check(shell.is_ancestor_of(hit.collider) and absf(hit.position.x - (x + direction * 0.4)) < EPS,
@@ -866,6 +882,12 @@ func validate_floor_chain() -> void:
 		var compiled: Array = generated.regions.filter(func(item: Dictionary) -> bool: return str(item.id) == id)
 		if check(compiled.size() == 1, "Missing/duplicate compiled floor: " + id):
 			check(absf(float(compiled[0].floor_y) - FLOOR_Y) < EPS and absf(float(compiled[0].thickness) - 0.24) < EPS and absf(float(compiled[0].structural_area_m2) - 704.0) < EPS, "Compiled floor datum/thickness/net area changed: " + id)
+		var owned_volume := AABB(Vector3(x0 + 0.002, SLAB_BOTTOM, 80.002), Vector3(x1 - x0 - 0.004, 0.24, 21.996))
+		var found_owner := false
+		for hit in box_hits(owned_volume, crown_exclusions, id + " whole slab ownership"):
+			check(region_id(hit.collider) == id, "Duplicate or unintended physical owner inside new slab: " + id + " -> " + owner(hit))
+			found_owner = found_owner or region_id(hit.collider) == id
+		check(found_owner, "New platform has no actual compiled owner contact: " + id)
 		var slab := floors.get_node_or_null(id) as Node3D
 		if not check(slab != null, "Actual compiled slab absent: " + id):
 			continue
@@ -969,6 +991,51 @@ func validate_protected_routes() -> void:
 			var intended := "D18_atrium_structural_cap" if z < 64 else "D18_aft_apron"
 			slab_witness(Vector2(x, z), intended, "Protected belt floor X%s Z%s" % [x, z])
 
+func validate_door_sweep_routes() -> void:
+	# Inspect actual moving render vertices and their real contact boxes at every
+	# coordinated door pose. This supplements the separate operation/cart tests.
+	var belt := AABB(Vector3(-48, 106.52, 60.001), Vector3(96, 2.1, 5.998))
+	var spine := AABB(Vector3(-3.999, 106.52, 60), Vector3(7.998, 2.1, 42))
+	var door_count := 0
+	for district in [crown, old_shell.get_parent()]:
+		for door in district.get_children():
+			if not door.has_method("_apply_pose"):
+				continue
+			# Only doors adjoining this aft interface are in this regression's scope.
+			if door.global_position.z < 59.0:
+				continue
+			door_count += 1
+			var saved_fraction := float(door.open_fraction)
+			for leaf in door.leaves:
+				leaf.sync_to_physics = false
+			for step in range(91):
+				door.open_fraction = step / 90.0
+				door._apply_pose()
+				for leaf in door.leaves:
+					for node in leaf.find_children("*", "MeshInstance3D", true, false):
+						var mesh := node as MeshInstance3D
+						if mesh.mesh == null:
+							continue
+						var minimum := Vector3(INF, INF, INF)
+						var maximum := Vector3(-INF, -INF, -INF)
+						for vertex in mesh.mesh.get_faces():
+							var point: Vector3 = mesh.global_transform * vertex
+							minimum = minimum.min(point)
+							maximum = maximum.max(point)
+						var bounds := AABB(minimum, maximum - minimum)
+						check(not bounds.intersects(belt) and not bounds.intersects(spine), "Actual moving door mesh enters protected belt/spine: %s pose%d/%s" % [door.name, step, mesh.name])
+					for node in leaf.find_children("*", "CollisionShape3D", true, false):
+						var shape := node as CollisionShape3D
+						if shape.disabled or not shape.shape is BoxShape3D:
+							continue
+						var bounds: AABB = shape.global_transform * AABB(-shape.shape.size * 0.5, shape.shape.size)
+						check(not bounds.intersects(belt) and not bounds.intersects(spine), "Actual moving door contact enters protected belt/spine: %s pose%d/%s" % [door.name, step, shape.name])
+			door.open_fraction = saved_fraction
+			door._apply_pose()
+			for leaf in door.leaves:
+				leaf.sync_to_physics = true
+	check(door_count == 6, "Exactly four new and two old aft-interface doors require 91 protected-route poses")
+
 func validate_core_openings() -> void:
 	var exclusions: Array[RID] = []
 	for body in ship.find_children("*", "CollisionObject3D", true, false):
@@ -1004,9 +1071,9 @@ func validate_core_openings() -> void:
 
 func validate_fixtures_and_signs(data: Dictionary) -> void:
 	var markers: Array = data.get("light_markers", [])
-	check(markers.size() == 24, "Source contract must retain 24 fixtures")
-	check(shell.find_children("DATUM_light_*", "Node3D", true, false).size() == 24, "Actual imported fixture-marker count changed")
-	check(crown.find_children("AftCommandSource_*", "SpotLight3D", true, false).size() == 24, "Actual runtime source-light count changed")
+	check(markers.size() == 30, "Source contract must retain 30 fixtures")
+	check(shell.find_children("DATUM_light_*", "Node3D", true, false).size() == 30, "Actual imported fixture-marker count changed")
+	check(crown.find_children("AftCommandSource_*", "SpotLight3D", true, false).size() == 30, "Actual runtime source-light count changed")
 	var unique: Dictionary = {}
 	for item in markers:
 		var name := str(item.name)
@@ -1090,13 +1157,14 @@ func run() -> void:
 	validate_floor_chain()
 	validate_apron_ties(data)
 	validate_protected_routes()
+	validate_door_sweep_routes()
 	validate_core_openings()
 	validate_fixtures_and_signs(data)
 	if not failures.is_empty():
 		print("AFT COMMAND STRUCTURE: %d recorded failures" % failures.size())
 		quit(1)
 		return
-	print("AFT COMMAND STRUCTURE PASS: real imported member/contact equality; 2 constructed piers, 32 envelope slices, 10 keel rays; roof/frame/saddle/hanger/girder chain, 60 slab contacts, 4 old/new apron ties; protected belt/spine and 170 core openings; 24 clear fixture exits and 2 backed signs. Geometric construction contacts only, no structural load certification.")
+	print("AFT COMMAND STRUCTURE PASS: real imported member/contact equality; 2 constructed piers, 32 envelope slices, 10 keel rays; roof/frame/saddle/hanger/girder chain, 60 slab contacts, 4 old/new apron ties; protected belt/spine and 170 core openings; 30 clear fixture exits and 2 backed signs. Geometric construction contacts only, no structural load certification.")
 	main.queue_free()
 	await process_frame
 	quit()

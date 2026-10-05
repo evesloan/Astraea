@@ -8,10 +8,10 @@ for row in protected['assets']:assert sha(C/row['path'])==row['sha256'],row['pat
 catalogue_path=C/'catalogue_manifest.json';catalogue=json.loads(catalogue_path.read_text());entries=catalogue['assets']
 for old in protected['protected_other_entries']:
     assert [entry for entry in entries if entry['catalogue_id']==old['catalogue_id']]==[old],old['catalogue_id']
-review=json.loads((R/'qa/independent_aft_construction_review.json').read_text())
-assert review['status']=='PASS_SOURCE_GEOMETRY_PENDING_PARENT_RUNTIME' and not review['findings']
-assert review['files']['assets/aft_command/source/AST-CMD-002.blend']==sha(R/'source/AST-CMD-002.blend')
-assert review['files']['assets/aft_command/exports/AST-CMD-002.glb']==sha(R/'exports/AST-CMD-002.glb')
+review=json.loads((R/'qa/independent_geometry_reconstruction_validation.json').read_text())
+assert review['status']=='PASS' and not review['errors']
+assert review['input_sha256'][str(R/'source/AST-CMD-002.blend')]==sha(R/'source/AST-CMD-002.blend')
+assert review['input_sha256'][str(R/'exports/AST-CMD-002.glb')]==sha(R/'exports/AST-CMD-002.glb')
 materials=json.loads((R/'qa/material_fidelity.json').read_text())
 for family,aid,batch in [('central_crown','AST-CMD-001','66'),('aft_command','AST-CMD-002','67')]:
     root=C/'assets'/family;path=root/(aid+'.manifest.json');manifest=json.loads(path.read_text());qa=json.loads((root/'qa/source_export_validation.json').read_text())
@@ -19,7 +19,7 @@ for family,aid,batch in [('central_crown','AST-CMD-001','66'),('aft_command','AS
     assert manifest['export_sha256']==qa['export_sha256']==sha(root/manifest['export'])==materials[aid]['export_sha256']
     matches=[entry for entry in entries if entry['catalogue_id']==aid]
     assert not matches or(len(matches)==1 and matches[0]['family']==family)
-    manifest.update(status='Source/export geometry, UV, materials, actual shared-door sweeps, fixture exits and independent contact review pass; runtime and visual acceptance remain integration-owned.',validation='qa/source_export_validation.json',material_validation='../aft_command/qa/material_fidelity.json',independent_construction_review='../aft_command/qa/independent_aft_construction_review.json',runtime_batch_extent_blender_xyz_m=qa['max_runtime_dimensions_blender_xyz_m'],protected_other_design_count=159)
+    manifest.update(status='Source/export geometry, UV, materials, actual shared-door sweeps, fixture exits and independent contact review pass; runtime and visual acceptance remain integration-owned.',validation='qa/source_export_validation.json',material_validation='../aft_command/qa/material_fidelity.json',independent_construction_review='../aft_command/qa/independent_geometry_reconstruction_validation.json',pre_lighting_independent_review='../aft_command/qa/independent_aft_construction_review.json',runtime_batch_extent_blender_xyz_m=qa['max_runtime_dimensions_blender_xyz_m'],protected_other_design_count=159)
     if aid=='AST-CMD-001':
         manifest['aft_endcap_interface_revision']={'baseline_commit':'5918f89a9ff913bd6077f2a7464f4bef66292dac','prior_export_sha256':'fd23668ccfe850409708b6e18a1a483f28ba4f7091e4c417069fc9f0e182b604','scope':'Two fitted endcap apertures and two door markers only','diff':'qa/aft_endcap_interface_diff.json'}
     else:

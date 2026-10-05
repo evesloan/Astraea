@@ -36,10 +36,13 @@ Run from the catalogue root with Blender4.3.2:
 1. `blender -b -t 2 --python assets/aft_command/qa/verify_aft_command.py`
 2. `blender -b -t 2 --python assets/central_crown/qa/verify_central_crown.py`
 3. `blender -b -t 2 --python assets/aft_command/qa/verify_material_fidelity.py`
+4. `python assets/aft_command/qa/independent_geometry_harness.py`
 
 Checks include closed/outward source parts, nondegenerate faces, metric UVs, complete triangle/material/UV roundtrip, exact bidirectional source/export vertex positions, preserved datum markers, bounded batches, actual shared-door moving geometry and fixed-frame seals, fixture exits, all purlin bearings and positive support-chain contacts. The combined16-door one-degree sweep evaluates13,104 moving-part poses. Independent review repeats all six new/revised door assemblies at0.5° and intersects actual compiled floor triangles.
 
-The initial independent review found the forward purlin lacked a direct beam seat. The added three saddles resolved that finding; final verification is `PASS_SOURCE_GEOMETRY_PENDING_PARENT_RUNTIME`.
+The first eye-level source render exposed a dark public crossing. Six supported ceiling fixtures were added across the roofed street and the matching view was rerendered; this does not substitute for the parent’s Godot lighting review. The pre-fixture image is retained beside the current source views.
+
+The initial independent review found the forward purlin lacked a direct beam seat. The added three saddles resolved that finding; the pre-light review is `PASS_SOURCE_GEOMETRY_PENDING_PARENT_RUNTIME`. Its final reconstructed executable harness passes all1,018 parts,66 support/contact stages,30 fixture exits and actual parent-adopted floor triangles. A direct retained pre-light comparison proves exactly12 fixture meshes and six markers were added, with no existing aft mesh or marker changed. The original pre-adoption review remains preserved.
 
 `qa/material_fidelity.json` separately verifies all used material parameters, effective emitted RGB and packed texture bytes for both revised exports. All159 other catalogue entries and477 source/export/manifest files match their protected baselines.
 

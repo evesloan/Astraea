@@ -14,7 +14,7 @@
   "status": "Source/export geometry, UV, materials, actual shared-door sweeps, fixture exits and independent contact review pass; runtime and visual acceptance remain integration-owned.",
   "validation": "qa/source_export_validation.json",
   "material_validation": "../aft_command/qa/material_fidelity.json",
-  "independent_construction_review": "../aft_command/qa/independent_aft_construction_review.json",
+  "independent_construction_review": "../aft_command/qa/independent_geometry_reconstruction_validation.json",
   "runtime_batch_extent_blender_xyz_m": [
     12.0,
     13.639999985694885,
@@ -26,5 +26,6 @@
     "prior_export_sha256": "fd23668ccfe850409708b6e18a1a483f28ba4f7091e4c417069fc9f0e182b604",
     "scope": "Two fitted endcap apertures and two door markers only",
     "diff": "qa/aft_endcap_interface_diff.json"
-  }
+  },
+  "pre_lighting_independent_review": "../aft_command/qa/independent_aft_construction_review.json"
 }
