@@ -33,3 +33,11 @@ The new floor must be disjoint from existing owners after exact subtraction. Sou
 3. Circulation/gameplay: can the proposed route offer a legible arrival and credible cart/operator turn/return path, while preserving the current core and future service separation? Identify exact pinch points and the minimum runtime checks. Do not call this one guest route a complete staff network or occupied species-capacity acceptance
 
 Keep reviews bounded and evidence-led. Preserve scale and vision. Distinguish read/source review from runtime/visual acceptance; no representative screenshot closes whole-ship review.
+
+## Integrated review conditions
+
+The three bounded reviews are retained under docs/reviews/D17_*_REVIEW_20261005.md. They permit source authoring while keeping runtime adoption separate. Use the existing floor edge at Z14 (not the wall plane13.2), union overlapping new strips, keep the fore portal closed, and protect D16 source590/614 below790. Reconcile790/814 replacement reservations and the corrected five-fore/four-aft standard membership.
+
+Make the court corner a widened, faceted overlook with a clear through-route and separate stopping edge. Recess the private entry within790; a wide sliding fitting needs its complete5.16m enclosure, so do not force it into a literal3m frontage. Reserve a receiving/turning bay and future same-unit upper circulation. Actual cart/operator tests must include the1.62m driver offset, handle release for controls, forward return and backing recovery, guards and D17 lift reboarding. Existing D14/D16 cart tests do not certify this route.
+
+Source authoring is now assigned as one bounded catalogue task. Root owns all Godot integration and serial engine/import/capture jobs. No further hidden full-height bracing is requested. The next construction result must be a connected, reference-led part of the actual ship.
