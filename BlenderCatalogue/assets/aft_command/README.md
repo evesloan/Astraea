@@ -4,10 +4,10 @@ Editable construction for Ship status (`D18_directory_08`) and Emergency control
 
 ## Source and integration
 
-- `source/AST-CMD-002.blend`: 1,006 independently editable closed outward mesh parts and 33 exported datum empties
-- `exports/AST-CMD-002.glb`: 12,072 triangles in 196 spatial/material batches, no batch over12m
+- `source/AST-CMD-002.blend`: 1,018 independently editable closed outward mesh parts and 39 exported datum empties
+- `exports/AST-CMD-002.glb`: 12,216 triangles in 196 spatial/material batches, no batch over12m
 - `source/build_aft_command.py`: deterministic source authoring and optimized export
-- `source/section_contract.json`: world-origin coordinates, programmes, four working-door anchors,24 light markers, support interfaces and remaining runtime requirements
+- `source/section_contract.json`: world-origin coordinates, programmes, four working-door anchors,30 light markers, support interfaces and remaining runtime requirements
 - `source/geometry_parts.json`: every authored part's world vertices, material role, group and bounds
 - Blender coordinates `(X,-Z,Y)` correspond to runtime `(X,Y,Z)` with glTF Y-up export
 - Parent owns two new floor rectangles: X−36..−4 and X4..36, Z80..102, Y106.26..106.5. Their total1408m² excludes the unchanged176m² central route. No floor slab or duplicate moving door is in this kit
@@ -17,7 +17,7 @@ Editable construction for Ship status (`D18_directory_08`) and Emergency control
 
 The two936m² room shells occupy X−36..−10 and X10..36, Z66..102. Two5m gross side corridors sit between X±5 and X±10. New doors at X±7.5/Z66.2 face the retained6m street. Room doors at X±10/Z82 connect to these corridors. The X±4 public route remains clear.
 
-Two audited0.8×1.2m full-height piers at X±35.5/Z86 meet the actual keel datumY−3.2. Their newZ86 transfer frame connects to the existingZ71 frame through seven longitudinal roof members. Eight wall-zone hangers connect to four underfloor edge girders and twelve transverse bearer spans. Four ties positively embed into actual compiled D18 apron triangles atZ80. Three small saddles at X−32/0/+32/Z66 connect the forward purlin to the lower existing roof beams. Maximum roof height is114.44m.
+Two audited0.8×1.2m full-height piers at X±35.5/Z86 meet the actual keel datumY−3.2. Their newZ86 transfer frame connects to the existingZ71 frame through seven longitudinal roof members. Eight wall-zone hangers connect to four underfloor edge girders and twelve transverse bearer spans. Four ties positively embed into actual compiled D18 apron triangles atZ80. Three small saddles at X−32/0/+32/Z66 connect the forward purlin to the lower existing roof beams. Six added fixture lenses at X±6/±18/±30 and Z63 light the roofed public crossing from the unchanged old ceiling; the original74 central fixtures remain intact. Maximum roof height is114.44m.
 
 The institutional textured materials, deep thresholds, ceiling bay hierarchy and visible fixture lenses carry this shell increment. The supplied reference pixels were reopened for composition and ceiling/threshold relationships. Broad interiors and activity zones remain unfinished; no furnishing detour or final-art claim is made.
 

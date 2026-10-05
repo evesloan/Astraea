@@ -27,7 +27,7 @@ for label,args in commands:
     # Lower staff routes exceed 500m at the unchanged3.1m/s walking speed.
     # Include all three stops and loaded return turns without premature quit-after.
     if label in ['forward_staff_lift','forward_staff_boarding','lower_staff_routes','upper_staff_routes','staff_cart_turns']:frame_budget='20000'
-    if label in ['crown_access','crown_cart']:frame_budget='30000'
+    if label in ['crown_access','crown_cart','aft_command_access','aft_command_cart']:frame_budget='30000'
     # Fixed60 advances the same60Hz simulation without wall-clock waiting.
     # Import and graphical review retain their separate original workflows.
     clock_args=[] if realtime or label=='import' else ['--fixed-fps','60']

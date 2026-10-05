@@ -13,3 +13,5 @@ The existing screened side corridors have solid endcaps atZ59.84…60. The catal
 The bridge's3,384m² missing floor and foyer/Horizon's5,517.2m² net missing floor remain outside this increment. Do not add columns through the cinema or protected garden/aquatic bands to support them.
 
 Evidence: AFT_COMMAND_LAYOUT_SCREENING.json, AFT_COMMAND_PIER_RUNTIME_AUDIT.json and data/architecture/AFT_COMMAND_CONSTRUCTION.json. The full85-check central-crown batch already passed before this new source work; later runtime adoption will require fresh focused, aggregate and visual acceptance.
+
+Intermediate source candidate291bc55 is now installed with its1408m² floor. Six new/extended door operations and continuous room/street walking pass, as do906 loaded-cart/driver poses and actual forward/reverse travel across the controlled/public junction. Final source lighting revision, actual support-contact test, visual review and aggregate remain pending. See AFT_COMMAND_FOCUSED_VALIDATION.json; the old85-check baseline is not acceptance of this new increment.

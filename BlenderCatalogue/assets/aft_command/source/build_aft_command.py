@@ -103,6 +103,15 @@ for index,p in enumerate(D['programmes']):
 for x in [-7.5,0,7.5]:
  for z in [70,82,94,100]if x!=0 else[70,82,94,100]:
   name='AFC_RouteLight_X%s_Z%s'%(str(x).replace('.','p'),z);box(name+'_Housing',x-.2,x+.2,110.58,111,z-.74,z+.74,'staff_zinc','fixture');box(name+'_Lens',x-.15,x+.15,110.56,110.58,z-.67,z+.67,'staff_opal','fixture');marker='DATUM_light_aft_route_%s_%s'%(str(x).replace('.','p'),z);pos=[x,110.55,z];datum(marker,pos,{'profile':'crown_route','direction':'down'});D['light_markers'].append({'name':marker,'position':pos,'direction':[0,-1,0],'profile':'crown_route','temperature':'cool','suggested_color':[.78,.88,1.0],'suggested_range':9.0,'suggested_spot_angle_degrees':70})
+# Cross-street source lights hang directly from the existing unchanged crown roof.
+# Their complete housings stay above the standing belt and all emission starts below the real lens.
+for x in [-30,-18,-6,6,18,30]:
+ z=63;name='AFC_CrossStreetLight_X%s'%x
+ box(name+'_Housing',x-.72,x+.72,110.58,111,z-.21,z+.21,'staff_zinc','fixture')
+ box(name+'_Lens',x-.65,x+.65,110.56,110.58,z-.15,z+.15,'staff_opal','fixture')
+ marker='DATUM_light_aft_cross_street_X%s'%x;pos=[x,110.55,z]
+ datum(marker,pos,{'profile':'crown_route','direction':'down'})
+ D['light_markers'].append({'name':marker,'position':pos,'direction':[0,-1,0],'profile':'crown_route','temperature':'cool','suggested_color':[.78,.88,1.0],'suggested_range':9.0,'suggested_spot_angle_degrees':76,'support':'Existing AST-CMD-001 roof underside Y111; no old source changed'})
 # Full-height audited bearing envelopes. Every web/chord/collar stays inside 0.8 by1.2m.
 levels=[-3.2,0,6,12,16.5,21,27,35.5,44,52.5,61,69.5,78,84,88.5,93,97.5,102,106.5,111,114]
 for x,z in D['support']['pier_centres_xz']:
