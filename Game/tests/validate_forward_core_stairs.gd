@@ -23,10 +23,16 @@ func run()->void:
 		actor.position=Vector3(0,float(y)+.1,-446);actor.velocity=Vector3.ZERO
 		for point in [Vector2(0,-443),Vector2(5.5,-443),Vector2(5.5,-414),Vector2(0,-414),Vector2(0,-408)]:await walk(actor,point)
 		assert(absf(actor.position.y-float(y))<.12)
+	var core:Node3D=ship.find_child("ForwardPublicCore_WIP",true,false)
+	for deck in [1,2]:
+		var sign:Label3D=core.get_node("PrimaryDeckSign_%02d"%deck)
+		assert(absf(sign.position.x-7.66)<.001 and absf(sign.rotation.y+PI/2)<.001,"Arrivals signs face the entry from the intact opposite wall")
+		var ray:=PhysicsRayQueryParameters3D.create(sign.global_position+Vector3.RIGHT*.01,sign.global_position+Vector3.RIGHT*.3)
+		assert(not ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Sign has actual solid-wall backing, not a floating portal position")
 	# Preserve the actual port arrivals connections; no unsupported starboard branch.
 	for y in [0.0,6.0]:
 		actor.position=Vector3(-10,y+.1,-432);actor.velocity=Vector3.ZERO
 		for point in [Vector2(0,-432),Vector2(5.5,-432),Vector2(0,-432),Vector2(-10,-432)]:await walk(actor,point)
 		assert(absf(actor.position.y-y)<.12,"Existing arrivals crosslink stays supported")
-	print("FORWARD CORE STAIRS PASS: real capsule ascends and descends all16 switchbacks across17 canonical decks; each deck has a supported supported longitudinal bypass. Final art, all-species fit and full ship destinations remain unfinished.")
+	print("FORWARD CORE STAIRS PASS: real capsule ascends and descends all16 switchbacks across17 canonical decks; each deck has a supported longitudinal bypass. Final art, all-species fit and full ship destinations remain unfinished.")
 	quit(0)
