@@ -132,7 +132,7 @@ for z in bypass_stations:
   if edge=='Inner'and z<-173:continue
   tag='BRP_Bypass_'+edge+'_Hanger_Z%s'%str(abs(z)).replace('.','p');box(tag,x-.12,x+.12,105.96,111.9,z-.14,z+.14,'champagne_metal','hanger');D['support']['hanger_assemblies'].append({'name':tag,'kind':'bypass','edge':edge,'x':x,'z':z,'y':[105.96,111.9]})
 for x in[-32,-24,-16,-8,4.08]:
- 
+
  if x<0:girder_z('BRP_ForeGalleryFloorGrid_X%s'%str(x).replace('.','p'),x,-180.8,-173.2,105.88,106.28,.20,'platform_support')
  else:box('BRP_EastReturnSlabHeightClosure',3.74,4.18,106.265,106.49,-181,-173,'staff_zinc','platform_support_shallow')
  for edge,z in[('Fore',-180.7),('Aft',-173.3)]:
