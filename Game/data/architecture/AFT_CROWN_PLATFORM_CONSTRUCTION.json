@@ -1,0 +1,295 @@
+{
+  "schema": 1,
+  "id": "D18_aft_crown_platform",
+  "status": "Unadopted missing-only floor construction brief; source and runtime acceptance pending",
+  "scope": "Receiving foyer and Upper Horizon supported platform only. No room, accommodation, capacity, furnishing or operational completion claim.",
+  "catalogue_id_candidate": "AST-CMD-005",
+  "datums": {
+    "floor_y": 106.5,
+    "slab_depth": 0.24,
+    "transfer_y": [
+      111,
+      114
+    ],
+    "roof_max_y": 114.5,
+    "keel_top_y": -3.2
+  },
+  "baseline": {
+    "layout_records_sha256": "752a301b75f4de26660892e9cf4599017924deea24a60cba0eaa9f8b200429ea",
+    "compiled_record_count": 245,
+    "compiled_records_sha256": "0c42336865eb1f9719e0b7c2619a7df73b29f65b7f57bee1f8c25270255bd3a2",
+    "original_002_export_sha256": "c7543f3c9bb6e1284511175f33dd559b5f2ca5eaf025899e66ac2d2230f962ce"
+  },
+  "floors": {
+    "foyer": {
+      "boundary": [
+        [
+          -36,
+          102
+        ],
+        [
+          36,
+          102
+        ],
+        [
+          36,
+          142
+        ],
+        [
+          -36,
+          142
+        ]
+      ],
+      "gross_m2": 2880,
+      "existing_actual_floor_m2": 489.7544,
+      "protected_openings_m2": 81.0456,
+      "new_floor_m2": 2309.2,
+      "component_m2": 1154.6,
+      "expected_missing_boundaries": [
+        [
+          [
+            -36,
+            102
+          ],
+          [
+            -4,
+            102
+          ],
+          [
+            -4,
+            106
+          ],
+          [
+            -7.8,
+            106
+          ],
+          [
+            -7.8,
+            139
+          ],
+          [
+            -4,
+            139
+          ],
+          [
+            -4,
+            142
+          ],
+          [
+            -36,
+            142
+          ]
+        ],
+        [
+          [
+            4,
+            102
+          ],
+          [
+            36,
+            102
+          ],
+          [
+            36,
+            142
+          ],
+          [
+            4,
+            142
+          ],
+          [
+            4,
+            139
+          ],
+          [
+            7.8,
+            139
+          ],
+          [
+            7.8,
+            106
+          ],
+          [
+            4,
+            106
+          ]
+        ]
+      ]
+    },
+    "upper_horizon": {
+      "programme_key_reserved": "D18_directory_09",
+      "boundary": [
+        [
+          -36,
+          142
+        ],
+        [
+          36,
+          142
+        ],
+        [
+          36,
+          182
+        ],
+        [
+          26,
+          194
+        ],
+        [
+          -26,
+          194
+        ],
+        [
+          -36,
+          182
+        ]
+      ],
+      "gross_m2": 3624,
+      "existing_actual_floor_m2": 416,
+      "protected_openings_m2": 0,
+      "new_floor_m2": 3208,
+      "component_m2": 1604,
+      "expected_missing_boundaries": [
+        [
+          [
+            -36,
+            142
+          ],
+          [
+            -4,
+            142
+          ],
+          [
+            -4,
+            194
+          ],
+          [
+            -26,
+            194
+          ],
+          [
+            -36,
+            182
+          ]
+        ],
+        [
+          [
+            4,
+            142
+          ],
+          [
+            36,
+            142
+          ],
+          [
+            36,
+            182
+          ],
+          [
+            26,
+            194
+          ],
+          [
+            4,
+            194
+          ]
+        ]
+      ]
+    }
+  },
+  "floor_ownership": {
+    "total_new_m2": 5517.2,
+    "components": 4,
+    "priority": -10,
+    "policy": "Subtract existing coplanar owners and applicable protected voids; preserve all existing compiled records exactly. Runtime polygons own floors, never duplicate Blender slabs."
+  },
+  "preservation": {
+    "programme_destinations": 161,
+    "guest_units": 1000,
+    "crew_including_player": 400,
+    "historical_crew_envelopes": 200,
+    "files_sha256": {
+      "data/programme_ledger.json": "7ad90e3322ef4ce666262d0d27e191f85bf7480fc6e5f2c312f5574c69ca2366",
+      "data/reference/historical_guest_census.json": "9436f006b2e71f6ee5bda71cd8dc09d1c52f44844027fa7082e3b286a7215038",
+      "data/reference/D03_crew_envelopes.json": "6473d78e789860594c6a955268d7ecc7f0ff44b130cc3ccc833b857e4513ec81",
+      "data/design_contract.json": "8790e9997fd39c6ddd8a494f665b2a438a7160ec31f343bd858ce5c036fa569a"
+    }
+  },
+  "support": {
+    "pier_centres_xz": [
+      [
+        -9.5,
+        119
+      ],
+      [
+        9.5,
+        119
+      ],
+      [
+        -9.5,
+        148
+      ],
+      [
+        9.5,
+        148
+      ],
+      [
+        -35.5,
+        174
+      ],
+      [
+        35.5,
+        174
+      ]
+    ],
+    "pier_size_xz": [
+      0.8,
+      1.2
+    ],
+    "pier_y": [
+      -3.2,
+      114
+    ],
+    "transverse_frame_z": [
+      119,
+      148,
+      174
+    ],
+    "candidate_audit": "docs/AFT_CROWN_CANDIDATE_PIER_AUDIT.json",
+    "candidate_limit": "Current candidate fit only; installed contacts and structural capacity are not established",
+    "seam": "Positively overlap existing roof longitudinal ends atZ101.84; do not start an unconnected member atZ102",
+    "exclusions": [
+      "No deep underfloor additions across central spineX\u00b14.1 or coreX\u00b17.8/Z106..139",
+      "Preserve shaft capY109.85, all lift/stair identities and clearance",
+      "Keep receiving turn zoneZ139..145 clear",
+      "No outer full-height columns atX\u00b135.5/Z119 or148 through Cinema4",
+      "No new columns through garden/aquatic protected volumes"
+    ]
+  },
+  "source_gate": {
+    "required": [
+      "Reviewed final AST-CMD-005 export and exact source-contract SHA-256",
+      "Reviewed revised AST-CMD-002 export and exact source-contract SHA-256",
+      "Exact unique catalogue ID, family, source path, export path and manifest path",
+      "Bounded old002 part-diff allowlist verified; original parts and identities otherwise unchanged",
+      "Final runtime schema review before enabling live adoption"
+    ],
+    "copy_policy": "Copy verified source contracts without invented acceptance or completion claims",
+    "current_adoption": "Disabled; helper stages in memory only"
+  },
+  "required_runtime_evidence": [
+    "Installed96 pier slices and30 actual keel rays",
+    "Pier/frame/hanger/girder/slab contacts and positive old roof seam",
+    "Core cap, moving lift/stair clearance, guards and below-floor exclusions",
+    "Both public wings and onward spine with command doors closed",
+    "Loaded staff cart turns through both revised002 service doors",
+    "D17/D18 boarding and stairs retained",
+    "Actual normal/effects-off views, focused and full planning/runtime validation"
+  ],
+  "limits": [
+    "Unfurnished platform; pressure enclosure and glazing are later scope",
+    "Far inboard of main hull; no accepted hull/court-view claim",
+    "Retain onward central spine beyondZ194",
+    "No programme or accommodation records are rewritten by this helper"
+  ]
+}
