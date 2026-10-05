@@ -739,6 +739,73 @@ func compiled_faces(region: Dictionary) -> PackedVector3Array:
 			faces.append_array(PackedVector3Array([a,b,c,a,c,d]))
 	return faces
 
+func declared_wall_base(body: Node, triangle: Array, y: float, expected_id: String) -> bool:
+	# All ten slab triangles were clipped against all 963 final enclosure parts.
+	# Only Fore/Aft_DoorCheek (+ .001 starboard) meet a wing top prism:
+	# port fore samples 0/2, aft 1/2; starboard fore 1/2, aft 0/2.
+	# Their downward bases start at 106.5 and walls rise to 111.18. No bypass
+	# or underside exception exists. Actual low faces must fit these footprints.
+	if absf(y-(FLOOR_Y+0.005)) > EPS or expected_id not in [FLOOR_IDS[0],FLOOR_IDS[1]]:
+		return false
+	var side := 0 if expected_id == FLOOR_IDS[0] else 1
+	var cell_x := -1 if side == 0 else 0
+	var x0 := -4.45 if side == 0 else 1.375
+	var x1 := -1.375 if side == 0 else 4.45
+	var foot := Rect2()
+	for row in [[-22,-172.03,-171.37],[-15,-118.63,-117.97]]:
+		var declared := ship.get_node_or_null("ShipSpace/Districts/BridgeEnclosure_WIP/BridgeEnclosureArchitecture/AST-CMD-004/BRE_CELL_X%d_Y13_Z%d_ASTRAEA_ivory_enamel/StaticContact" % [cell_x,int(row[0])])
+		if body == declared:
+			foot = Rect2(Vector2(x0,float(row[1])),Vector2(x1-x0,float(row[2])-float(row[1])))
+	if foot.size == Vector2.ZERO:
+		return false
+	if FileAccess.get_sha256("res://assets/models/AST-CMD-004.glb") != "0c6d37681d76909ce14f8526b7f6bfadd10b8114b39d11cd12ba29a7e9970dbf":
+		return false
+	var contact := body.get_node_or_null("SharedShape") as CollisionShape3D
+	var mesh := body.get_parent() as MeshInstance3D
+	if contact == null or contact.disabled or not contact.shape is ConcavePolygonShape3D or mesh == null or mesh.mesh == null:
+		return false
+	var faces: PackedVector3Array = contact.shape.get_faces()
+	if faces != mesh.mesh.get_faces() or not contact.global_transform.is_equal_approx(mesh.global_transform):
+		return false
+	var centre := Vector2.ZERO
+	for point in triangle:
+		centre += Vector2(float(point[0]),float(point[1]))/3.0
+	var sample := PackedVector2Array()
+	for point in triangle:
+		sample.append(Vector2(float(point[0]),float(point[1])).move_toward(centre,0.002))
+	var base_area := 0.0
+	var max_y := -INF
+	for index in range(0,faces.size(),3):
+		var world := PackedVector3Array()
+		var plan := PackedVector2Array()
+		var min_y := INF
+		for offset in range(3):
+			var point: Vector3 = contact.global_transform*faces[index+offset]
+			if point.y < FLOOR_Y-EPS:
+				return false
+			max_y = maxf(max_y,point.y)
+			min_y = minf(min_y,point.y)
+			world.append(point)
+			plan.append(Vector2(point.x,point.z))
+		if min_y > y+0.0101 or polygon_area(plan) < 0.00000001:
+			continue # Vertical wall sides cannot be a duplicate walkable floor.
+		for overlap in Geometry2D.intersect_polygons(plan,sample):
+			var area := polygon_area(overlap)
+			if area < 0.00000001:
+				continue
+			# Godot uses clockwise front faces; reverse cross product is outward.
+			var outward := -(world[1]-world[0]).cross(world[2]-world[0]).normalized()
+			if outward.y > -0.999:
+				return false # Reject upward/sloped walking faces at floor level.
+			for point in world:
+				if absf(point.y-FLOOR_Y) > EPS:
+					return false
+			for point in overlap:
+				if not foot.grow(EPS).has_point(point):
+					return false
+			base_area += area
+	return base_area > 0.00000001 and absf(max_y-111.18) < EPS
+
 func slab_triangle_ownership(triangle: Array, y: float, expected_id: String) -> void:
 	# Exterior-centred shallow prisms avoid backface-culled concave slab interiors.
 	var centre := Vector2.ZERO
@@ -758,8 +825,12 @@ func slab_triangle_ownership(triangle: Array, y: float, expected_id: String) -> 
 	query.exclude = own_exclusions
 	var hits := space.intersect_shape(query,MAX_RESULTS)
 	check(hits.size() > 0 and hits.size() < MAX_RESULTS, "Slab ownership prism empty/saturated: " + expected_id)
+	var intended_owner_found := false
 	for hit in hits:
-		check(region_id(hit.collider) == expected_id, "Duplicate/unintended physical floor ownership: " + expected_id + " -> " + owner(hit))
+		var intended: bool = region_id(hit.collider) == expected_id
+		intended_owner_found = intended_owner_found or intended
+		check(intended or declared_wall_base(hit.collider,triangle,y,expected_id), "Duplicate/unintended physical floor ownership: " + expected_id + " -> " + owner(hit))
+	check(intended_owner_found, "Original physical slab owner required independently of wall bearings: " + expected_id)
 
 func expected_floor(point: Vector2) -> String:
 	if point.x >= -4.0 and point.x <= 4.0 and point.y >= -181 and point.y <= -113:
@@ -1045,7 +1116,7 @@ func run() -> void:
 		print("BRIDGE PLATFORM STRUCTURE: %d recorded failures" % failures.size())
 		quit(1)
 		return
-	print("BRIDGE PLATFORM STRUCTURE PASS: immutable 785-batch/40,728-triangle render/contact identity; oriented positive support-chain interfaces; 4 physical piers, 64 slices/20 keel rays; 4,480m2 single-owned floors and real bearing witnesses; exact spine seams, slab-height east closure, D17 headroom, open mouths/6m bypass, primary cap/170 openings, supported guard returns and 20 fixtures with 100 clear exits. Architectural contacts only; no structural load certification.")
+	print("BRIDGE PLATFORM STRUCTURE PASS: immutable 785-batch/40,728-triangle render/contact identity; oriented positive support-chain interfaces; 4 physical piers, 64 slices/20 keel rays; 4,480m2 single-owned floors and real bearing witnesses; exact spine seams, slab-height east closure, D17 headroom, platform-local mouths/6m public bypass, primary cap/170 openings, supported guard returns and 20 fixtures with 100 clear exits. Architectural contacts only; no structural load certification.")
 	main.queue_free()
 	await process_frame
 	quit()
