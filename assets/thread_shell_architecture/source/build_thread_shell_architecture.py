@@ -69,6 +69,8 @@ def rail(name,a,b):
 ring=D['floor_boundary']
 for i,(a,b)in enumerate(zip(ring,ring[1:]+ring[:1])):
  if abs(a[0]-4)<.001 and abs(b[0]-4)<.001:continue
+ # The north apron now joins the real Orchard exchange court; no obsolete rail.
+ if abs(a[1]+234)<.001 and abs(b[1]+234)<.001 and max(a[0],b[0])<=12.001:continue
  mid=((a[0]+b[0])/2,(a[1]+b[1])/2)
  if max(a[0],b[0])<=12.001 and mid[1]<-198:
   rail('TAIL_PromenadeEdge_'+str(i),a,b);continue
