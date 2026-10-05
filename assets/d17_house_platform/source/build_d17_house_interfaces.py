@@ -10,14 +10,16 @@ D=json.loads((R/'source/section_contract.json').read_text())
 # Read the real retained hull mesh. Raycast every footprint corner and centre.
 bpy.ops.wm.open_mainfile(filepath=str(C/'assets/lower_hull_body/source/AST-HUL-001.blend'))
 o=bpy.data.objects['HUL_LowerBand_00'];tree=BVHTree.FromObject(o,bpy.context.evaluated_depsgraph_get());seats=[]
-for z in [29.6,50.4]:
+for spec in D['footing_specs']:
+ cx,z=spec['centre_xz'];width,depth=spec['size_xz'];top=float(spec['top_y'])
+ assert width==.8 and depth==1.2
  corners=[];witness=[]
- for x,zz in [(99.6,z-.6),(100.4,z-.6),(100.4,z+.6),(99.6,z+.6),(100,z)]:
+ for x,zz in [(cx-width/2,z-depth/2),(cx+width/2,z-depth/2),(cx+width/2,z+depth/2),(cx-width/2,z+depth/2),(cx,z)]:
   hit,n,face,distance=tree.ray_cast(Vector((x,-zz,4)),Vector((0,0,-1)),12)
   assert hit is not None and n.z>.9,(x,zz)
   corners.append([x,hit.z,zz]);witness.append({'point_world':[x,hit.z,zz],'normal_world':[n.x,n.z,-n.y],'face_index':face})
- assert max(v[1] for v in corners)<-1.5
- seats.append({'z':z,'corners_world':corners[:4],'witnesses':witness,'top_y':-1.5,'source_owner':'AST-HUL-001/HUL_LowerBand_00','hull_source_sha256':sha(C/'assets/lower_hull_body/source/AST-HUL-001.blend'),'method':'Actual editable hull BVH; positive wedge bottom seated on the upward-facing inner hull surface. Hull is never edited.'})
+ assert min(top-v[1] for v in corners)>.34
+ seats.append({'x':cx,'z':z,'corners_world':corners[:4],'witnesses':witness,'top_y':top,'source_owner':'AST-HUL-001/HUL_LowerBand_00','hull_source_sha256':sha(C/'assets/lower_hull_body/source/AST-HUL-001.blend'),'method':'Actual editable hull BVH; positive wedge bottom seated on the upward-facing inner hull surface. Hull is never edited.'})
 # Reuse the established material graphs and packed textures without creating flat substitutes.
 bpy.ops.wm.open_mainfile(filepath=str(C/'assets/starboard_house_upper/source/AST-COM-003.blend'))
 mats={name:bpy.data.materials[name] for name in ['ivory_enamel','warm_walnut','champagne_metal']}
@@ -60,4 +62,5 @@ for key,obs in sorted(groups.items()):
  bpy.context.view_layer.objects.active=obs[0];bpy.ops.object.join();obs[0].name='D17_InterfaceBatch_'+'_'.join(key)
 bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True)
 M={'catalogue_id':AID,'family':FAMILY,'name':'D17 residential house open commons portals and seated hull footing interfaces','source':f'source/{AID}.blend','export':f'exports/{AID}.glb','source_sha256':sha(src),'export_sha256':sha(out),'editable_part_count':len(records),'runtime_mesh_batches':len(groups),'status':'Partial source kit; full16-unit supported platform and routes held. Not adopted.','new_walkable_source_meshes':0}
+M.update({'verification': ['qa/interface_verification.json', 'qa/seated_contact_verification.json', 'qa/floor_contract_verification.json', 'qa/source_join_ledger.json', 'qa/texture_byte_equality.json', 'qa/footing_revision_preservation.json', 'qa/footing_allocation_check.json'], 'integration_hold': 'No Godot adoption of this partial family or companion COM-003 open portals until supported onward floor, guard and route fit is ready'})
 (R/f'{AID}.manifest.json').write_text(json.dumps(M,indent=2)+'\n');print(json.dumps(M))
