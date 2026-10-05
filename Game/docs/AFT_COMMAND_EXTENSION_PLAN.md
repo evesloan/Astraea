@@ -19,3 +19,7 @@ Intermediate source candidate291bc55 is now installed with its1408m² floor. Six
 ## Final-source focused acceptance
 
 Final002 export c7543f3c9bb6e1284511175f33dd559b5f2ca5eaf025899e66ac2d2230f962ce is installed. Actual constructed support chain,32 pier-envelope slices,10 keel rays,60 slab contacts,4 apron ties,170 core openings,30 fixture exits and2 backed signs pass. Six added/interface doors, continuous room/street walking and906 compound cart/driver poses plus physical forward/reverse loaded travel pass. Original central crown routes/contacts and21,863 whole-spine samples also pass.69 planning checks pass. Actual normal/effects-off gallery, side corridor and room images are retained in AFT_COMMAND_VISUAL_REVIEW.json; unfurnished plain interiors and operating systems remain unfinished. Full88 validation is underway and not yet claimed.
+
+## Full platform regression — 2026-10-05 12:51 UTC
+
+All88 runtime checks pass against final source in1010.313seconds fixed60 simulation. See AFT_COMMAND_VALIDATION.json.75 planning checks now pass, including six dry-run tests for the next unadopted bridge-platform stage. Actual main-scene inventory finds108 registered designs in1681 model instances; these are component-presence counts, not finished rooms. The source catalogue remains161 designs; source worker is preparing the next independent kit. Main bridge, full aft foyer, Upper Horizon and luxury accommodation remain unfinished.
