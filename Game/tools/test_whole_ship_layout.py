@@ -31,9 +31,13 @@ class WholeShipLayout(unittest.TestCase):
     self.assertTrue(all(p.intersection(rect(r)).area<1e-6 for r in allocations))
  def test_every_space_has_one_vertical_coordination_group(self):
   stacks=self.plan['neighbourhood_stacks'];self.assertEqual(len(stacks),10)
-  for field,count in [('programme_keys',161),('guest_envelope_source_indices',1000),('retail_envelope_source_indices',100)]:
+  for field,count in [('programme_keys',161),('guest_envelope_source_indices',1000),('retail_envelope_source_indices',100),('crew_envelope_source_indices',200)]:
    values=[v for group in stacks for v in group[field]]
    self.assertEqual(len(values),count);self.assertEqual(len(set(values)),count)
+ def test_crew_footprints_and_assignment_remain_distinct(self):
+  self.assertEqual(sum(d['crew_bank_envelope_count']for d in self.plan['decks']),200)
+  self.assertEqual(self.plan['protected_totals']['crew_people_including_player'],400)
+  self.assertIn('Unresolved',self.plan['crew_assignment_gate'])
  def test_raised_pool_protects_lower_sport_and_upper_dining(self):
   p=self.plan['aquatic_section_reservations'][0]
   self.assertGreater(p['proposed_basin_bottom_y'],p['lower_arrival_y'])
