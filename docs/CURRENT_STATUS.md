@@ -3,7 +3,7 @@
 Updated2026-10-05. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Latest verified scope
-53 regression groups pass after the connected D09/D10 Orchard court, local stairs and physical loaded lift checks.154 catalogue designs are registered;101 are present through1172 whole-model instances. These are component counts, not finished rooms. Thread & Shell now has two private fitting bays, separate staff access and a lower sheltered consultation counter with supported sample storage. Public browsing/light refinement is in progress; sales, NPC use and final art remain absent. See THREAD_SHELL_PROGRESS.md.
+54 regression groups pass after the Orchard food-hall fit and its public/service route checks.156 catalogue designs are registered;103 are present through1456 whole-model instances. These are component counts, not finished rooms. Thread & Shell now has two private fitting bays, separate staff access and a lower sheltered consultation counter with supported sample storage. Public browsing/light refinement is in progress; sales, NPC use and final art remain absent. See THREAD_SHELL_PROGRESS.md.
 
 The remaining sections are chronological construction records. Earlier test, catalogue and furniture totals describe those dated stages and are superseded by later entries. Do not treat an earlier outstanding item as still absent when a later entry records its implementation.
 
@@ -126,3 +126,6 @@ An original oval book-lined enclosure now creates a quieter retreat inside the e
 
 ## Orchard retail/dining exchange
 A new local two-level arrival now links D09 retail to the D10 Orchard approach through an8.5m switchback and fitted physical lift. Existing programme allocations/datums remain unchanged. Actual stairs, guard support,80cart/operator staging poses, loaded boarding and round-trip lift motion pass in the53-check suite. Ordinary and clear views remain an early architectural finish; Orchard240dining places are still reserved/unfitted. See ORCHARD_EXCHANGE_PROGRESS.md.
+
+## Orchard food-hall candidate fit
+The reserved240 places now have actual candidate chairs across six communal tables and thirty smaller groups. Two serving pavilions, lower staff circulation, a court-facing internal window and coordinated dining vaults are implemented. All54 current checks pass; normal and effects-off views were reviewed. Occupied service, species fit and final art remain unfinished. See ORCHARD_FOODHALL_PROGRESS.md.
