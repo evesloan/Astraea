@@ -85,9 +85,87 @@ def geometry(source):
             bm.free()
         meshes[obj.name] = {'points': [tuple(p) for p in points], 'bounds': [lo, hi],
                             'triangles': len(mesh.loop_triangles)}
-    
-markers=["DATUM_landing_%02d"%i for i in range(1,18)]+["DATUM_light_%02d_%s"%(i,side)for i in range(17)for side in [-1,1]]
+    markers = {o.name: tuple(o.matrix_world.translation)
+               for o in bpy.context.scene.objects if o.type == 'EMPTY'}
+    return meshes, markers, corners, triangles, uv_ratios
+
+
+def nearest_corner_deviation(a, b):
+    # Join/export duplicates UV seams but must preserve each geometric/UV corner.
+    tree = kdtree.KDTree(len(b))
+    for i, p in enumerate(b):
+        tree.insert(p[:3], i)
+    tree.balance()
+    max_position = max_corner = 0
+    for p in set(a):
+        nearby = tree.find_range(p[:3], TOL)
+        assert nearby, ('missing vertex', p)
+        max_position = max(max_position, min(row[2] for row in nearby))
+        max_corner = max(max_corner, min(math.dist(p, b[row[1]]) for row in nearby))
+    return max_position, max_corner
+
+
+def validate(family, aid, markers, expected_source_count, expected_export_count):
+    src, out = family/'source'/(aid+'.blend'), family/'exports'/(aid+'.glb')
+    bpy.ops.wm.open_mainfile(filepath=str(src))
+    assert bpy.context.scene.unit_settings.system == 'METRIC'
+    assert bpy.context.scene.unit_settings.scale_length == 1
+    sm, sd, sc, st, su = geometry(True)
+    assert len(sm) == expected_source_count, len(sm)
+    assert set(sd) == set(markers), (set(sd)-set(markers), set(markers)-set(sd))
+    for name, position in markers.items():
+        close(sd[name], position, name)
+    images = [n.image for m in bpy.data.materials if m.use_nodes
+              for n in m.node_tree.nodes if n.type == 'TEX_IMAGE' and n.image]
+    assert images and all(im.packed_file for im in images)
+    packed = sorted({im.name for im in images})
+    bpy.ops.wm.read_factory_settings(use_empty=True)
+    bpy.ops.import_scene.gltf(filepath=str(out))
+    em, ed, ec, et, eu = geometry(False)
+    assert len(em) == expected_export_count, len(em)
+    assert set(ed) == set(markers)
+    for name, position in markers.items():
+        close(ed[name], position, name)
+    assert set(sc) == set(ec)
+    assert st == et, 'Material batching changed oriented triangle surfaces or multiplicity'
+    position_error = corner_error = 0
+    for role in sc:
+        for a, b in [(sc[role], ec[role]), (ec[role], sc[role])]:
+            pd, cd = nearest_corner_deviation(a, b)
+            position_error = max(position_error, pd)
+            corner_error = max(corner_error, cd)
+    assert position_error < TOL and corner_error < TOL, (position_error, corner_error)
+    report = {
+        'passed': True, 'representation': aid, 'new_unique_design_count': 0,
+        'source_sha256': sha(src), 'export_sha256': sha(out), 'verifier_sha256': sha(Path(__file__)),
+        'blender_version': bpy.app.version_string,
+        'editable_source_meshes': len(sm), 'closed_positive_volume_source_meshes': len(sm),
+        'export_meshes': len(em), 'export_triangles': sum(row['triangles'] for row in em.values()),
+        'all_triangles_non_degenerate': True, 'source_faces_outward': True,
+        'source_and_export_oriented_triangle_multisets_identical_per_material': True,
+        'batching_preserves_concave_surface_geometry': True,
+        'finite_noncollapsed_metric_uvs': True, 'packed_texture_images': packed,
+        'material_roles': sorted(sc),
+        'source_uv_area_per_square_metre_range_by_role': {k: [min(v), max(v)] for k, v in su.items()},
+        'export_uv_area_per_square_metre_range_by_role': {k: [min(v), max(v)] for k, v in eu.items()},
+        'bidirectional_vertex_max_deviation_m': position_error,
+        'bidirectional_position_uv_corner_max_deviation': corner_error,
+        'source_bounds_blender_xyz_m': bounds([p for row in sm.values() for p in row['points']]),
+        'export_bounds_blender_xyz_m': bounds([p for row in em.values() for p in row['points']]),
+        'required_source_and_export_markers_blender_xyz_m': markers,
+        'scope': 'Fresh saved source and actual imported GLB geometry, UV, material and marker validation. Does not certify runtime collision, continuous routes, lift/controller behavior, species/cart fit, hull fit, visual quality or performance.',
+        'runtime_and_visual_status': 'Pending separate receiving-game integration and visual review',
+    }
+    return report, sm
+
+
+markers = {'DATUM_landing_%02d' % (i+1): (-5.4, 0, y) for i, y in enumerate(FLOORS)}
+for i, y in enumerate(FLOORS):
+    ceil = FLOORS[i+1]-.24 if i < 16 else 105.78
+    for side in [-1, 1]:
+        markers['DATUM_light_%02d_%s' % (i, side)] = (side*5.6, 0, ceil-.23)
 report,meshes=validate(CORE,"AST-CIR-005_spine_core",markers,839,4)
+assert report["export_triangles"]==10068
 protected=json.loads((CORE/"qa/spine_core_protected_hashes.json").read_text())
 assert all(sha(CAT/path)==value for path,value in protected.items())
 report["protected_original_files_unchanged"]=len(protected)
