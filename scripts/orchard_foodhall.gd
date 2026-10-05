@@ -31,6 +31,7 @@ static func build(parent:Node3D,ship:Node3D)->void:
 			var direction:Vector3=table.global_position-marker.global_position
 			var chair:Node3D=ship.model(root,"AST-DIN-002.glb","OrchardChair_%s_%s"%[g.index,seat],marker.global_position,atan2(direction.x,direction.z))
 			chair.set_meta("persistent_id",str(g.id)+"_seat_%02d"%seat)
+			load("res://scripts/dining_chair_visual.gd").apply(chair)
 	for key in ["staff_door","pavilion_door_0","pavilion_door_1"]:
 		var marker:=architecture.find_child("DATUM_"+key,true,false)as Node3D
 		var door:Node3D=load("res://scripts/service_door.gd").new()

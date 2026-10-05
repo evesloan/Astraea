@@ -30,6 +30,32 @@ func run() -> void:
 	var ids:Dictionary={}
 	var chairs:=room.find_children("OrchardChair_*","Node3D",false,false)
 	assert(chairs.size()==240)
+	var joined_mesh: Mesh = chairs[0].get_node("JoinedChairVisual").mesh
+	assert(joined_mesh.get_surface_count()==2)
+	var expected: Dictionary = {}
+	for part: MeshInstance3D in chairs[0].find_children("*","MeshInstance3D",true,false):
+		if part.name == "JoinedChairVisual": continue
+		var local: Transform3D = load("res://scripts/dining_chair_visual.gd").relative_transform(part,chairs[0])
+		append_visual_vertices(expected,part.mesh,local)
+	var actual: Dictionary = {}
+	append_visual_vertices(actual,joined_mesh,Transform3D.IDENTITY)
+	assert(actual.size()==expected.size(),"Joined chair geometry/UV/material keys differ")
+	for key in expected:
+		assert(actual.has(key) and actual[key].size()==expected[key].size(),"Joined chair lost or duplicated vertices")
+		var candidates: Array = actual[key].duplicate()
+		for normal: Vector3 in expected[key]:
+			var match_index := -1
+			for i in range(candidates.size()):
+				# Godot repacks mesh normals on commit; compare angular direction.
+				if normal.dot(candidates[i]) > .999999: match_index=i;break
+			assert(match_index>=0,"Joined chair changed an authored normal")
+			candidates.remove_at(match_index)
+	for chair in chairs:
+		assert(chair.get_node("JoinedChairVisual").mesh == joined_mesh,"Repeated chair visual must share one joined mesh")
+		assert(chair.find_children("StaticContact","StaticBody3D",true,false).size()==10)
+		for part: MeshInstance3D in chair.find_children("*","MeshInstance3D",true,false):
+			assert(part.visible == (part.name == "JoinedChairVisual"),"Draw each chair part exactly once")
+
 	for chair in chairs:
 		var id:String=chair.get_meta("persistent_id")
 		assert(not ids.has(id))
@@ -109,3 +135,19 @@ func run() -> void:
 	main.queue_free()
 	await process_frame
 	quit()
+
+func append_visual_vertices(records: Dictionary, mesh: Mesh, transform: Transform3D) -> void:
+	for surface in range(mesh.get_surface_count()):
+		var arrays := mesh.surface_get_arrays(surface)
+		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+		var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL]
+		var uv: PackedVector2Array = arrays[Mesh.ARRAY_TEX_UV]
+		var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+		var material: int = mesh.surface_get_material(surface).get_instance_id()
+		for n in range(indices.size() if not indices.is_empty() else vertices.size()):
+			var i: int = indices[n] if not indices.is_empty() else n
+			var v: Vector3 = transform * vertices[i]
+			var normal: Vector3 = (transform.basis.inverse().transposed() * normals[i]).normalized()
+			var key := "%s/%.4f/%.4f/%.4f/%.4f/%.4f" % [material,v.x,v.y,v.z,uv[i].x,uv[i].y]
+			if not records.has(key): records[key]=[]
+			records[key].append(normal)
