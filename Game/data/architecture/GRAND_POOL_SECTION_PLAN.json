@@ -1,0 +1,802 @@
+{
+  "schema": 1,
+  "id": "fore_grand_pool_market_connected_section_plan",
+  "reviewed_utc": "2026-10-05T23:03:18.004805+00:00",
+  "status": "Dimensioned proposal with fresh read-only source-fit evidence; no geometry adopted or runtime acceptance",
+  "coordinate_system": "Godot world XYZ metres; rect_x0_x1_z0_z1; bounds are nominal planning limits unless explicitly clear",
+  "scope": "D08 Grand Pool and D09 Orchard Market with bounded forward public/service connections. No source, runtime, identity, hull, existing floor or controller change in this handoff.",
+  "source_sha256": {
+    "data/programme_ledger.json": "7ad90e3322ef4ce666262d0d27e191f85bf7480fc6e5f2c312f5574c69ca2366",
+    "data/design_contract.json": "8790e9997fd39c6ddd8a494f665b2a438a7160ec31f343bd858ce5c036fa569a",
+    "data/spatial_layout.json": "f913b8a7fd7100762f7477bdb37400e003d45a2098824b7d2aaf95c98f0c5f52",
+    "data/generated/structural_meshes.json": "29b063c3d039e8a183e057e0a4e2673842fc1d6064ab2f8e0bbd54dc1130bf89",
+    "data/reference/directory_allocations.json": "63df12482a840d0c3ed30cf4ad669f5cb8b6cf8e89d6823fc0937bf8e3e2c539",
+    "data/reference/historical_atlas_allocations.json": "deabb459263f09f342dc76b1d588105eb579d1eb60a0c658a6358f9ab8d1b063",
+    "data/reference/historical_guest_census.json": "9436f006b2e71f6ee5bda71cd8dc09d1c52f44844027fa7082e3b286a7215038",
+    "data/reference/D03_crew_envelopes.json": "6473d78e789860594c6a955268d7ecc7f0ff44b130cc3ccc833b857e4513ec81",
+    "data/hull_envelope.json": "8412bacc9253a967fda398c2b81c54f413079374edafbf3d4a3716c70c913f87",
+    "data/architecture/LOWER_HULL_BODY.json": "ed9d06c6f824207d086fe93c1f8a22e77ff74eb039919fda9ec5365753649796",
+    "data/architecture/FORWARD_PUBLIC_CORE.json": "47d7dba4e28d8151f5a8c5b8a623789500a997f0dadca3b4165734f5017dd88c",
+    "data/architecture/LOWER_STAFF_NETWORK.json": "417e2a66db351ed1bdd37cd8ae62b3ea421ea863be910b8d48071dc2ce554f93",
+    "scripts/commons_lift.gd": "e53ba41f6e066ff2454340d2b73ad405a2db301f8176046f7741b401fcc8e203",
+    "scripts/lower_staff_network.gd": "5e34a9358031d4baa8436e31ddb2152b18334e775a37bb2f45f3cb7a1936bb8f",
+    "assets/models/AST-CIR-005_forward_core.glb": "2c34d398cd111ebddf37cd7a25ae091d51bda1f16968eb9488fadcb4d54e11d6",
+    "assets/models/AST-STF-009.glb": "9f6d6ad808a948e94f87d89a9e4399ee0c8a3d3e77475a603cb0487d938125ab",
+    "assets/models/AST-CIR-003_five_stop.glb": "6e2fa392f1cc84da8fa80e9b38ddf117a587fc4c4f4a47b631fd0143561eb19b",
+    "assets/models/AST-CIR-003.glb": "4123e1ad0ab64fee2ee16bcd753f537b60211de28521c416e1da853973f239b9",
+    "assets/models/AST-HUL-001.glb": "0a53fd2357fe1ca24b350bf53f0ee9bc2d495e8306f581c1ac13bfb685cd7fd0",
+    "docs/master_source/MASTER_CURRENT_APPLICATION.json": "baeaea99c08680a91c9660cbce200d2ece4b78aa7fcf869338497f47db686a71",
+    "docs/master_source/MASTER_FULL_CONTENT_INDEX.json": "f3128ddcbd40966f01e10cfc6a35d7d8444aaaeff86f52126d271249a8d74ddb"
+  },
+  "catalogue_source_root": "/workspace/shared/astraea-catalogue-continuation-20261002",
+  "catalogue_source_sha256": {
+    "references/aquatic_program/D08_programme_handoff.json": "5b1f99c74612ebaa2f66975b066780af6b3026381a257e5f449bfd506f334cf6",
+    "references/aquatic/image(20261001-035517).png": "58874dc6daa337a88ef3aca078d8e4b71d25c71e3c94225e0d71e9b1bdd83530",
+    "assets/primary_atrium_core/source/build_forward_atrium_core.py": "c9b022b1cab6ed9176a03f151952db4c940ed6f331cf2264cc12b592bdc550a3",
+    "assets/primary_atrium_core/source/forward_core_section_contract.json": "27430fcfe074034987e87e7a7dab692c27f050da2433047e626e59089a137d13",
+    "assets/lower_staff_network/source/build_lower_staff_network.py": "02d7f7e0581abb16bf5540305c343b990eea14346ef6b0abb2c405721bb8ab2f",
+    "catalogue_manifest.json": "37984139f206f9dce418745b2f02ca3f69540d7f2898031bfae6cd6ec5f1a422"
+  },
+  "authority": {
+    "master_complete_chapters_read": [
+      4,
+      5,
+      7,
+      8,
+      9,
+      11,
+      14,
+      21,
+      24,
+      28,
+      32
+    ],
+    "latest_overlays": "MASTER_CURRENT_APPLICATION.json; current Godot source overrides historical implementation claims",
+    "aquatic_reference_pixels_inspected": true,
+    "historical_pool_id": "D08_pool0",
+    "ledger_pool_historical_room_id": null,
+    "identity_rule": "Keep D08_directory_01; retain D08_pool0 as historical cross-reference only until its missing ledger mapping is explicitly reconciled. Do not silently create a second pool identity."
+  },
+  "programmes": [
+    {
+      "key": "D07_directory_01",
+      "name": "Orbit full court",
+      "floor_y": 35.5,
+      "allocation": [
+        -54,
+        -8,
+        -466,
+        -398
+      ],
+      "protection": "No new columns, basin, services or ceiling downstand in this allocation below Y43.76. 8.26 m is a reserved clear band, not sport certification."
+    },
+    {
+      "key": "D08_directory_01",
+      "name": "The grand aquatic pool",
+      "floor_y": 44,
+      "allocation": [
+        -54,
+        -8,
+        -466,
+        -398
+      ],
+      "historical_reference_id": "D08_pool0"
+    },
+    {
+      "key": "D09_directory_01",
+      "name": "Orchard market",
+      "floor_y": 52.5,
+      "allocation": [
+        -54,
+        -8,
+        -466,
+        -398
+      ],
+      "historical_room_id": "D09_market0"
+    },
+    {
+      "key": "D10_directory_01",
+      "name": "The shared table / 240",
+      "floor_y": 61,
+      "allocation": [
+        -54,
+        -8,
+        -466,
+        -398
+      ],
+      "historical_room_id": "D10_dining0",
+      "protection": "Full allocation and 240-place programme remain. Roof work stays at or below Y61; no occupied mezzanine, skylight or void cut into D10."
+    }
+  ],
+  "section": {
+    "arrival_y": 44,
+    "base_slab_bottom_y": 43.76,
+    "wet_deck_y": 46.2,
+    "basin_bottom_y": 44.8,
+    "basin_shell_thickness_trial_m": 0.4,
+    "basin_shell_underside_y": 44.4,
+    "water_level_trial_y": 46.05,
+    "water_depth_trial_m": 1.25,
+    "freeboard_trial_m": 0.15,
+    "market_y": 52.5,
+    "market_slab_thickness_trial_m": 0.24,
+    "market_soffit_y": 52.26,
+    "wet_under_gallery_clear_m": 6.06,
+    "roof_upper_limit_y": 61,
+    "roof_soffit_trial_y": 60.76,
+    "wet_to_roof_soffit_m": 14.56,
+    "market_to_roof_soffit_m": 8.26,
+    "note": "Heights fit arithmetically. Basin, waterproofing, drains, loads, transfer depths, species-water compatibility and actual bearings are unresolved. No real-world compliance claim."
+  },
+  "water": {
+    "rect": [
+      -40,
+      -22,
+      -457,
+      -407
+    ],
+    "size_x_z_m": [
+      18,
+      50
+    ],
+    "area_m2": 900,
+    "source": "Historical handoff protected_extra_geometry.pool0_lane_rectangle",
+    "rule": "Retain the unobstructed historical lane. Islands, bridges, stairs or jets do not consume this rectangle. Waterpark/slides/lazy river remain open wider-programme work, not fulfilled by this lane."
+  },
+  "shared_volume": {
+    "earlier_rect": [
+      -44,
+      -18,
+      -459,
+      -405
+    ],
+    "earlier_end_margin_m": 2,
+    "candidate_boundary_xz": [
+      [
+        -41,
+        -461
+      ],
+      [
+        -21,
+        -461
+      ],
+      [
+        -18,
+        -458
+      ],
+      [
+        -18,
+        -406
+      ],
+      [
+        -21,
+        -403
+      ],
+      [
+        -41,
+        -403
+      ],
+      [
+        -44,
+        -406
+      ],
+      [
+        -44,
+        -458
+      ]
+    ],
+    "candidate_bounds": [
+      -44,
+      -18,
+      -461,
+      -403
+    ],
+    "size_x_z_m": [
+      26,
+      58
+    ],
+    "corner_chamfer_m": 3,
+    "area_m2": 1490,
+    "straight_wet_apron_m": 4,
+    "purpose": "Long water axis, two inhabited upper overlooks and generous end approaches. Chamfered plan is a buildable control polygon for later rounded/faceted authored fascia, not the finished room walls.",
+    "change_reason": "Increase the old 54 m trial to 58 m so end aprons have 4 m before details; upper end galleries retain 5 m gross."
+  },
+  "public_interfaces": {
+    "core_id": "forward_public_core_001",
+    "lift_id_prefix": "forward_public",
+    "add_portal_decks": [
+      "D08",
+      "D09"
+    ],
+    "preserve_portal_decks": [
+      "D01",
+      "D02"
+    ],
+    "portal_wall_x": [
+      -7.88,
+      -7.72
+    ],
+    "portal_z": [
+      -435,
+      -429
+    ],
+    "clear_height_m": 3.2,
+    "new_floor_tongue_rect": [
+      -8,
+      -7.8,
+      -435,
+      -429
+    ],
+    "tongue_area_each_m2": 1.2,
+    "rule": "Actually author supported floor seam and remove matching wall/dado/collision faces only on these two levels in an existing-family derivative. Preserve lift shaft, piers, stair openings, all original stop IDs, fore/aft bypasses and other closed walls.",
+    "D08_route_xyz": [
+      [
+        -5.4,
+        44,
+        -432
+      ],
+      [
+        -9.5,
+        44,
+        -432
+      ],
+      [
+        -9.5,
+        44,
+        -447.8
+      ],
+      [
+        -12,
+        44,
+        -447.8
+      ]
+    ],
+    "D09_route_xyz": [
+      [
+        -5.4,
+        52.5,
+        -432
+      ],
+      [
+        -10,
+        52.5,
+        -432
+      ],
+      [
+        -15.5,
+        52.5,
+        -432
+      ]
+    ],
+    "D08_dry_arrival_bay_rect": [
+      -18,
+      -8,
+      -445.6,
+      -428.2
+    ],
+    "D08_dry_east_approach_clear_rect": [
+      -10.6,
+      -8.2,
+      -447.8,
+      -435
+    ],
+    "ceremonial_wet_steps": {
+      "z_clear": [
+        -434,
+        -430
+      ],
+      "bottom_x": -11,
+      "top_x": -16.6,
+      "rise_m": 2.2,
+      "risers": 14,
+      "riser_m": 0.15714285714285717,
+      "going_trial_m": 0.4,
+      "top_landing_x": [
+        -18,
+        -16.6
+      ],
+      "rule": "Dry arrival to wet terrace; ramp is the step-free equivalent. Do not route anyone beneath the 2.2 m raised platform."
+    }
+  },
+  "accessible_ramp": {
+    "status": "Dimensioned geometric reservation, not legal accessibility or six-species certification",
+    "gross_envelope": [
+      -18,
+      -10.5,
+      -464.9,
+      -446.3
+    ],
+    "clear_width_each_run_m": 2.4,
+    "clear_landing_depth_m": 2.4,
+    "slope": {
+      "rise": 1,
+      "run": 12
+    },
+    "rise_each_run_m": 1.1,
+    "run_each_m": 13.2,
+    "total_sloping_run_m": 26.4,
+    "lower_run": {
+      "x_clear": [
+        -13.2,
+        -10.8
+      ],
+      "z": [
+        -462.2,
+        -449
+      ],
+      "start_xyz": [
+        -12,
+        44,
+        -449
+      ],
+      "end_xyz": [
+        -12,
+        45.1,
+        -462.2
+      ]
+    },
+    "turn_landing": {
+      "rect": [
+        -16.4,
+        -10.8,
+        -464.6,
+        -462.2
+      ],
+      "y": 45.1
+    },
+    "upper_run": {
+      "x_clear": [
+        -16.4,
+        -14
+      ],
+      "z": [
+        -462.2,
+        -449
+      ],
+      "start_xyz": [
+        -15.2,
+        45.1,
+        -462.2
+      ],
+      "end_xyz": [
+        -15.2,
+        46.2,
+        -449
+      ]
+    },
+    "bottom_landing": {
+      "rect": [
+        -13.2,
+        -10.8,
+        -449,
+        -446.6
+      ],
+      "y": 44
+    },
+    "top_landing_and_bridge": {
+      "rect": [
+        -18,
+        -14,
+        -449,
+        -446.6
+      ],
+      "y": 46.2
+    },
+    "route_xyz": [
+      [
+        -12,
+        44,
+        -447.8
+      ],
+      [
+        -12,
+        44,
+        -449
+      ],
+      [
+        -12,
+        45.1,
+        -462.2
+      ],
+      [
+        -12,
+        45.1,
+        -463.4
+      ],
+      [
+        -15.2,
+        45.1,
+        -463.4
+      ],
+      [
+        -15.2,
+        45.1,
+        -462.2
+      ],
+      [
+        -15.2,
+        46.2,
+        -449
+      ],
+      [
+        -15.2,
+        46.2,
+        -447.8
+      ],
+      [
+        -20,
+        46.2,
+        -447.8
+      ]
+    ],
+    "rules": [
+      "Keep guard and handrail projections outside the stated clear bands; provide edge protection and drained dry landings.",
+      "Raised deck excludes the entire ramp envelope and dry eastern approach. The upper landing must not cover a lower walking path.",
+      "Show slope, bottom and both return landings from ordinary arrival; do not hide the accessible entrance."
+    ]
+  },
+  "wet_market_link": {
+    "status": "Spatial reservation to author and collision-test; existing core plus ramp already supplies an independent proposed step-free route",
+    "rejected_three_stop_solution": "Same-face 44/46.2/52.5 m stops overlap existing 2.65 m gate clear apertures and ~2.85 m frames; do not reuse that plan.",
+    "stair": {
+      "clear_rise_m": 6.3,
+      "bottom_y": 46.2,
+      "middle_y": 49.35,
+      "top_y": 52.5,
+      "gross_rect": [
+        -17.5,
+        -11.1,
+        -425.5,
+        -415.7
+      ],
+      "clear_flight_width_m": 2.6,
+      "risers": 36,
+      "riser_m": 0.175,
+      "going_trial_m": 0.32,
+      "clear_landing_depth_m": 2,
+      "rule": "Existing stair family with a new 6.3 m authored derivative. 18 risers per flight; reserve at least 9.44 m including two landings. Do not assume the 6 m derivative reaches 52.5."
+    },
+    "lift": {
+      "family": "AST-CIR-003",
+      "controller": "scripts/commons_lift.gd",
+      "root_xyz": [
+        -15.4,
+        46.2,
+        -412.4
+      ],
+      "yaw_radians": 3.141592653589793,
+      "relative_floor_heights": [
+        0,
+        6.3
+      ],
+      "world_floor_heights": [
+        46.2,
+        52.5
+      ],
+      "cabin_file": "AST-CIR-003.glb",
+      "shaft_outer_rect": [
+        -17.52,
+        -13.24,
+        -414.6,
+        -410.2
+      ],
+      "shaft_floor_exclusion_rect": [
+        -17.6,
+        -13.58,
+        -414.6,
+        -410.2
+      ],
+      "gate_centre_xz": [
+        -13.48,
+        -412.4
+      ],
+      "pit_bottom_y": 45.96,
+      "cap_y": [
+        55.6,
+        55.74
+      ],
+      "dynamic_clear_aperture_width_height": [
+        2.4,
+        2.65
+      ],
+      "lower_approach_xyz": [
+        [
+          -20,
+          46.2,
+          -407
+        ],
+        [
+          -10.8,
+          46.2,
+          -407
+        ],
+        [
+          -10.8,
+          46.2,
+          -412.4
+        ]
+      ],
+      "rule": "Positive 6.3 m stop separation. Recompute translated sills/cabin front clearances from the actual family; root placement is a proposal, not instantiated identity."
+    },
+    "D09_opening_extensions_rects": [
+      [
+        -18,
+        -11.1,
+        -425.5,
+        -415.7
+      ],
+      [
+        -18,
+        -13.18,
+        -415.7,
+        -410.2
+      ]
+    ],
+    "extension_area_m2": 94.13,
+    "rule": "Join stair/lift voids to the main opening; no 0.5 m or 1.1 m leftover ledges pretending to be circulation. Authored lift enclosure occupies its part of the connected void.",
+    "market_bypass_clear_rect": [
+      -10.85,
+      -8.45,
+      -427.9,
+      -410.2
+    ]
+  },
+  "market": {
+    "gross_allocation_area_m2": 3128,
+    "main_opening_area_m2": 1490,
+    "combined_void_reservation_area_m2": 1584.13,
+    "remaining_floor_before_walls_boh_stock_m2": 1543.87,
+    "gross_side_belts_m": 10,
+    "gross_end_belts_m": 5,
+    "normal_ring_clear_target_m": 3.4,
+    "local_link_bypass_clear_target_m": 2.4,
+    "west_ring_clear_x": [
+      -47.6,
+      -44.2
+    ],
+    "ordinary_east_ring_clear_x": [
+      -17.8,
+      -14.4
+    ],
+    "fore_ring_clear_z": [
+      -464.8,
+      -461.4
+    ],
+    "aft_ring_clear_z": [
+      -402.6,
+      -399.2
+    ],
+    "rule": "Continuous dry market loop with genuinely glazed wet/dry separation at the overlooking edge. Recess orange shop/market bays, canopy/soffit changes, planted seating outside walking strips. The loop must remain usable when pool access gates are closed.",
+    "retail_relationship": "Preserve all 100 source shop allocations and original source order. Fore-port neighbour indices are 0,1,2,25,26,27 in the filtered historical shop list; they are not stable room IDs. Nearest are X\u221278..\u221266 and X\u2212106..\u221294, Z\u2212398..\u2212386. Reserve west/aft future frontage connections outside their envelopes; do not relocate those shops into this market or invent a new business."
+  },
+  "staff": {
+    "status": "Bounded upper extension plus screened physical approaches, not implemented",
+    "existing_persistent_lift_id": "forward_staff_lift_001",
+    "existing_root_xyz": [
+      -25,
+      0,
+      -490
+    ],
+    "preserved_lower_stops_y": [
+      0,
+      6,
+      12
+    ],
+    "proposed_all_stops_y": [
+      0,
+      6,
+      12,
+      46.2,
+      52.5
+    ],
+    "proposed_deck_numbers": [
+      1,
+      2,
+      3,
+      8,
+      9
+    ],
+    "proposed_upper_stop_labels": [
+      "D08 wet service",
+      "D09 market service"
+    ],
+    "cabin_file": "AST-CIR-003_five_stop.glb",
+    "shaft_reserved_rect": [
+      -27.2,
+      -22.8,
+      -492.2,
+      -487.8
+    ],
+    "remove_existing_cap_y": [
+      15.1,
+      15.24
+    ],
+    "new_cap_y": [
+      55.6,
+      55.74
+    ],
+    "upper_route_floor_rects": [
+      [
+        -23.18,
+        -18.8,
+        -496,
+        -484
+      ],
+      [
+        -22.8,
+        -19.2,
+        -500,
+        -490
+      ],
+      [
+        -58.8,
+        -19.2,
+        -501.8,
+        -498.2
+      ],
+      [
+        -58.8,
+        -55.2,
+        -500,
+        -461.2
+      ],
+      [
+        -58.8,
+        -54,
+        -464.8,
+        -461.2
+      ]
+    ],
+    "upper_route_y": [
+      46.2,
+      52.5
+    ],
+    "route_xz": [
+      [
+        -23.08,
+        -490
+      ],
+      [
+        -21,
+        -490
+      ],
+      [
+        -21,
+        -500
+      ],
+      [
+        -57,
+        -500
+      ],
+      [
+        -57,
+        -463
+      ],
+      [
+        -51.5,
+        -463
+      ],
+      [
+        -51.5,
+        -458.6
+      ],
+      [
+        -48,
+        -458.6
+      ]
+    ],
+    "screened_vestibule_rect": [
+      -54,
+      -48,
+      -465.8,
+      -456.8
+    ],
+    "outer_door_plane_x": -54,
+    "outer_door_clear_z": [
+      -464.2,
+      -461.8
+    ],
+    "screen_rect": [
+      -50,
+      -49.8,
+      -465.8,
+      -460
+    ],
+    "public_mouth_plane_x": -48,
+    "public_mouth_clear_z": [
+      -459.8,
+      -457.4
+    ],
+    "corridor_gross_width_m": 3.6,
+    "corridor_clear_target_m": 3.3,
+    "headroom_clear_target_m": 3.2,
+    "rules": [
+      "No new D04\u2013D07 stops, gates or side branches. Blank enclosed shaft passes through these levels; prove actual mesh clearance through the whole sweep.",
+      "Retain all three lower gate/sill locations and persistent identities; rebuild source cap/upper shaft in a derivative, never hide a surviving cap with a new shaft.",
+      "Upper D08 stop is at wet Y46.2, explicitly not canonical arrival Y44. Staff do not push loaded carts up the public ramp to reach wet care.",
+      "Place dry supplies/dirty towel return in separate recessed niches outside the 2.4 m dogleg/cart turn envelope. Prove screening with doors open from both wet floor and market gallery; the plan does not yet certify it."
+    ]
+  },
+  "floor_ownership": {
+    "existing_compiled_records": 250,
+    "existing_records_must_remain_exact": true,
+    "new_owners_proposed_only": [
+      "grand_pool_base",
+      "grand_pool_wet_terraces",
+      "grand_pool_public_branches",
+      "orchard_market_perimeter",
+      "grand_pool_local_link",
+      "forward_staff_upper_extension",
+      "grand_pool_roof_under_D10"
+    ],
+    "rules": [
+      "Compiler owns common horizontal slabs and opening cuts; ramps/stair treads, moving lift floor, basin and authored pit pans have explicit asset ownership. No duplicate same-elevation floor contacts.",
+      "D08 base slab can protect D07, but the low inaccessible plenum beneath raised wet deck is not a guest/service route. Exclude dry arrival and ramp pockets from raised deck.",
+      "D09 floor subtracts the chamfered main hole and joined link extensions. Never fill the volume with a convex hull collision.",
+      "D10 full-plan cap is prospective floor for the unchanged Shared Table allocation, not completed dining or seat capacity. Its roof/soffit geometry stays below Y61.",
+      "Any support below Y43.76 within D07 or any changed surviving record invalidates this contract and requires replanning."
+    ]
+  },
+  "architecture_brief": {
+    "sequence": "Compressed framed entry at Y44, broad lateral reveal, rising paired ramp/ceremonial steps, long clear water axis, deep planted wet edges, inhabited glazed market gallery, shaped luminous ceiling below the preserved dining deck.",
+    "reference_translation": [
+      "Large layered balcony reveals, textured sculpted piers, recessed warm orange bays, botanical pockets and fixture-driven illumination.",
+      "Use low-poly faceted curves, strong fascia/soffit profiles and low-resolution material scale; avoid an unchanged slab box, uniformly repeated strip lighting or a full bridge grid.",
+      "Two coordinated public levels plus the raised wet terrace are this allocation\u2019s honest section. Do not reproduce the reference\u2019s extra storeys or skylight through D10.",
+      "Retain open lane and useful pauses; spectacle light/water features cannot displace circulation. Piers/bearings must be integrated visibly, not developed as a separate hidden frame exercise.",
+      "No exterior window claimed: this allocation lies well inside the hull, with intervening space to coordinate. Compose internal pool/market views now."
+    ]
+  },
+  "fresh_read_only_evidence": {
+    "method": "Standard-library polygon clipping of actual compiled triangles, rectangle allocation checks, GLB POSITION/indices triangle probes, source/controller/builder inspection and actual reference image review. No imports/builds/engines run.",
+    "compiled_hash_matches_spatial_source": true,
+    "compiled_floor_overlap_m2": {
+      "D07": 0,
+      "D08": 0,
+      "D09": 0,
+      "D10": 0
+    },
+    "upper_staff_shaft_compiled_floor_clashes": [],
+    "staff_route_D08_D09_other_allocation_clashes": [],
+    "upper_staff_shaft_D04_D09_allocation_clashes": [],
+    "core_GLb_wall_hit_x_at_z_minus432": {
+      "y45_5": [
+        -7.88,
+        -7.72
+      ],
+      "y54": [
+        -7.88,
+        -7.72
+      ]
+    },
+    "programme_min_hull_plan_boundary_distance_m": 35.77708764,
+    "upper_staff_route_min_hull_plan_boundary_distance_m": 13.68332664,
+    "hull_limit": "Hull distances are from the plan outline only. Actual AST-HUL-001 stops at Y16.5; no D08/D09 hull shell, load path or pressure enclosure is certified.",
+    "stale_legacy_inputs": {
+      "data/whole_ship_layout.json": [
+        "data/programme_ledger.json",
+        "data/spatial_layout.json"
+      ],
+      "docs/PROGRAMME_FLOOR_CONNECTION_AUDIT.json": [
+        "data/generated/structural_meshes.json",
+        "data/spatial_layout.json",
+        "data/programme_ledger.json"
+      ]
+    },
+    "not_proven": [
+      "Source bearing/load path to real retained structure",
+      "Designed shell, ceiling, guards and drainage geometry",
+      "All dynamic and full-body routes; ramp comfort; wet access into water",
+      "Upper staff cap removal/sweep and five-stop behavior",
+      "Current Godot regression/visual acceptance of a future section",
+      "Waterpark, slides, lazy river, swimming, NPC life, stocking and final materials/lighting"
+    ]
+  },
+  "implementation_gates": [
+    "Resolve a visible architectural/load-bearing section to retained structure without taking D07 clear volume or D10 allocation; show contacts and transfer depths before construction adoption. Do not start another hidden-brace-only increment.",
+    "Author source shell and real public portal derivatives, base/wet/market floors, ramp, local links, guards, sealed boundaries and screened staff upper approach together. Reuse catalogue families, verify exact ID ownership before any export destination.",
+    "Verify new floor/void ownership, zero neighbour loss, unchanged 250 surviving records and family source/export correspondence. Hash final sources.",
+    "Test actual ordinary public arrival/return, full ramp ascent/descent and turn landings, D09 closed-pool-gate circuit, both local stops, preserved public-core stops/stairs, all five staff stops, reverse/regrip and loaded four-product cart journeys with real closed walls/gates.",
+    "Inspect D08 arrival, ramp turn, wet long view, seated rest, D09 entrance/overlook/circuit, open-door staff screening and ship-section context in normal/effects-off play; then run revision-matching full regression. Keep unfinished gates explicit."
+  ]
+}
