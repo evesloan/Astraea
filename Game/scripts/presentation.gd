@@ -164,7 +164,7 @@ func _ready() -> void:
 				get_node("NativeResolutionStatus").text = "ASTRAEA / CONNECTED INTERIORS — work in progress"
 				await get_tree().create_timer(.6).timeout
 				await _capture(view.label)
-				if view.label in ["thread_shell_arrival_","thread_shell_browsing_","thread_shell_fitting_","house_quiet_alcove_","house_conversation_edge_","house_reading_edge_","house_d15_terrace_","house_d16_crossview_","house_d17_gallery_","residential_wayfinding_","vesper_acoustic_dining_","vesper_upper_overlook_","vesper_upper_dining_","vesper_mezzanine_stair_","star_atlas_reference_counter_","arrivals_gallery_pause_","arrivals_court_","vesper_service_inside_"]:
+				if view.label in ["orchard_court_lower_","orchard_court_upper_","thread_shell_arrival_","thread_shell_browsing_","thread_shell_fitting_","house_quiet_alcove_","house_conversation_edge_","house_reading_edge_","house_d15_terrace_","house_d16_crossview_","house_d17_gallery_","residential_wayfinding_","vesper_acoustic_dining_","vesper_upper_overlook_","vesper_upper_dining_","vesper_mezzanine_stair_","star_atlas_reference_counter_","arrivals_gallery_pause_","arrivals_court_","vesper_service_inside_"]:
 					set_world_resolution(2)
 					effects=false
 					post_pass.material.set_shader_parameter("enabled",false)

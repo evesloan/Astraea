@@ -17,7 +17,7 @@ func run() -> void:
 	var lift:Node3D=ship.find_child("OrchardExchangeLift",true,false)
 	var local_products:Array[Vector3]=[]
 	for product in cart.products:local_products.append(cart.to_local(product.global_position))
-	cart.position=Vector3(16.3,52.54,-241.5)
+	cart.position=Vector3(17.8,52.54,-241.5)
 	cart.rotation=Vector3(0,-PI/2,0)
 	cart.linear_velocity=Vector3.ZERO
 	cart.angular_velocity=Vector3.ZERO
@@ -27,7 +27,7 @@ func run() -> void:
 		cart.products[i].linear_velocity=Vector3.ZERO
 		cart.products[i].angular_velocity=Vector3.ZERO
 		cart.products[i].sleeping=false
-	actor.position=Vector3(14.68,52.6,-241.5)
+	actor.position=Vector3(16.18,52.6,-241.5)
 	actor.rotation.y=-PI/2
 	actor.pitch=0
 	actor.camera.rotation.x=0
@@ -38,18 +38,18 @@ func run() -> void:
 	var boarded:=false
 	for frame in range(450):
 		await physics_frame
-		if actor.position.x>=18.52:
+		if actor.position.x>=20.02:
 			boarded=true
 			break
 	key(KEY_W,false)
 	assert(boarded,"Player pushing loaded cart stalled at actual lift threshold")
 	for frame in range(90):await physics_frame
-	assert(cart.global_position.x>19.7 and cart.global_position.x<20.6,"Cart is physically inside cabin")
+	assert(cart.global_position.x>21.2 and cart.global_position.x<22.1,"Cart is physically inside cabin")
 	cart.release_grab()
 	key(KEY_W,true)
 	for frame in range(90):
 		await physics_frame
-		if actor.position.x>=19.05:break
+		if actor.position.x>=20.55:break
 	key(KEY_W,false)
 	for frame in range(30):await physics_frame
 	assert(not lift.cabin_gate.threshold_occupied(),"Player and cart clear the gate before travel")

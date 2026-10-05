@@ -45,7 +45,7 @@ static func build(parent:Node3D,ship:Node3D)->void:
 	lift.stop_ids.assign(["D09","D10"])
 	lift.stop_names.assign(["Retail court","Orchard arrival"])
 	lift.stop_codes.assign(["09","10"])
-	lift.gate_origin_xz=Vector2(18.3,-241.5)
+	lift.gate_origin_xz=Vector2(19.8,-241.5)
 	lift.identity_prefix="orchard_exchange"
 	lift.district_label="OrchardExchange"
 	lift.persistent_id=&"orchard_exchange_lift_001"

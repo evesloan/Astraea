@@ -56,13 +56,13 @@ slab('EX_EastUpperWall',23.84,24,-250,-235.75,61,69.1,'ivory_enamel')
 slab('EX_UpperPortalHeader',23.76,24.08,-235.75,-233,65.1,69.1,'retail_terracotta_enamel')
 slab('EX_NorthJoint',4,24,-250,-249.72,60.3,61,'warm_stone')
 # Profiled upper edge around the real switchback opening, with supported guards.
-for i,(a,b)in enumerate([((7.85,-248.15),(14.15,-248.15)),((7.85,-248.15),(7.85,-237.5)),((14.15,-248.15),(14.15,-237.5))]):
+for i,(a,b)in enumerate([((7.8,-248.2),(14.2,-248.2)),((7.8,-248.2),(7.8,-237.5)),((14.2,-248.2),(14.2,-237.5))]):
  wall('EX_GalleryFascia_'+str(i),a,b,60.40,60.76,.23,'warm_stone')
  wall('EX_GalleryGuardBase_'+str(i),a,b,61,61.2,.14,'ivory_enamel')
  wall('EX_GalleryGlass_'+str(i),a,b,61.2,62.10,.024,'glass')
  wall('EX_GalleryHandrail_'+str(i),a,b,62.10,62.18,.17,'warm_walnut')
 # Fitted local lift enclosure: sides/back, relieved entrance and source floor/roof.
-x0,x1=18.12,22.12;z0,z1=-243.66,-239.34
+x0,x1=19.62,23.62;z0,z1=-243.66,-239.34
 slab('EX_LiftBack',x1-.16,x1,z0,z1,52.26,64.35,'ivory_enamel')
 for z in [z0,z1-.12]:slab('EX_LiftSide_'+str(z),x0,x1,z,z+.12,52.26,64.35,'ivory_enamel')
 for level in [52.5,61]:
