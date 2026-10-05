@@ -3,6 +3,8 @@
 Updated2026-10-05. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Latest verified scope
+66 runtime checks pass after the forward D01–D17 core and its reviewed sign correction. The source/export-verified batched enclosure preserves the supported port D01/D02 arrivals crosslinks. The existing central D01–D18 core and aft D17/D18 link remain intact. Normal and effects-off views were reviewed; this is a working circulation platform, not final architectural finish. See FORWARD_PUBLIC_CORE_PROGRESS.md.
+
 63 runtime checks and 45 planning/tool checks pass after integrating the chined lower body and keel pan. The editable catalogue now has 158 designs. The lower section fits the source allocation ledger and existing compiled floors; actual lower mesh vertices and bounded shell contacts were checked. Diagnostic and normal views remain unfinished, with the upper hull, apertures, room fit and windows still open. See LOWER_HULL_PROGRESS.md and HULL_BODY_SECTION_STUDY.md.
 
 62 runtime regression groups pass after reconstructing the D17/D18 aft link, including actual loaded boarding/exit and travel through every central lift stop. All18decks are connected by the central working core; the aft link adds a local second descent between the top two decks. The157-design catalogue includes the new two-level enclosure as a derivative. Normal/effects-off views were reviewed; surfaces and surrounding districts remain unfinished. Source and fresh validation are independently retained in the private GitHub checkpoint routine. See CLOUD_RECOVERY_20261005.md and AFT_CROWN_LINK_PROGRESS.md.
