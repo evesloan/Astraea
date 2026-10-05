@@ -3,7 +3,7 @@ Planning reservations never become floor cuts automatically.
 """
 from pathlib import Path
 import json,hashlib
-from shapely.geometry import Polygon,box
+from shapely.geometry import Polygon,box,LineString
 from shapely.ops import unary_union
 ROOT=Path(__file__).resolve().parents[1]
 def read(p):return json.loads((ROOT/p).read_text())
@@ -22,12 +22,28 @@ def build():
   key=r['programme_key'];d=f"D{r['deck']:02}";p=rect(r);entry=bykey[key]
   programmes.append({'programme_key':key,'name':r['name'],'deck':d,'floor_y':elevations[d],'allocation_x':r['x'],'allocation_z':r['z'],'historical_room_id':entry.get('historical_room_id'),'geometry_owner':entry.get('current_geometry_owner'),'construction_status':entry['current_status'],'allocation_inside_plan_hull':hull_plan.buffer(1e-6).covers(p),'raw_structural_floor_overlap_m2':round(p.intersection(floors[d]).area,3),'allocation_area_m2':round(p.area,3),'overlap_scope':'Floor-plan overlap only; includes reservations/closures and ignores height, voids and route ownership; never finished-area credit','neighbours_above':[q['programme_key']for q in dest if q['deck']==r['deck']+1 and p.intersection(rect(q)).area>1e-6]})
  courts=[]
- for side,x0,x1 in [('port',-90,-70),('starboard',70,90)]:
-  for end,z0,z1 in [('forward',-380,-360),('aft',360,380)]:
-   p=box(x0,z0,x1,z1);keys=[r['programme_key']for r in dest if 13<=r['deck']<=17 and p.intersection(rect(r)).area>1e-6]
+ for side,x0,x1 in [('port',-100,-63),('starboard',63,100)]:
+  for end,z0,z1 in [('forward',-500,-250),('aft',250,500)]:
+   p=box(x0,z0,x1,z1).intersection(hull_plan.buffer(-2))
+   for protected in layout['voids']:
+    if any(f'D{deck:02}'in protected['decks']for deck in range(13,18)):
+     p=p.difference(Polygon(protected['boundary']).buffer(3))
+   assert p.geom_type=='Polygon' and p.is_valid
+   keys=[r['programme_key']for r in dest if 13<=r['deck']<=17 and p.intersection(rect(r)).area>1e-6]
    conflicts=[i for i,g in enumerate(guests)if 13<=g['deck']<=17 and p.intersection(rect(g)).area>1e-6]
    assert not conflicts and len(keys)==5
-   courts.append({'id':f'{side}_{end}_residential_court','status':'Proposed vertical reservation; no slab cut or final architecture acceptance','x':[x0,x1],'z':[z0,z1],'floor_y':84,'upper_cover_y':106.5,'affected_programmes':keys,'purpose':'A five-level local residential court with arrival, terraces, resting edges, stairs and equivalent lift access; room views and house circulation must be composed around it','guest_envelope_conflicts':conflicts,'required_before_cut':['Resolve shaped gallery floor ownership for all five commons','Connect both guest and concealed service networks','Confirm protected D18 cover and source-derived support','Check all local room entries and views; preserve 1000 units']})
+   candidates=[]
+   direction=-1 if side=='port'else 1
+   for i,g in enumerate(guests):
+    if not 13<=g['deck']<=17:continue
+    z=sum(g['z'])/2;edge=g['x'][0]if direction<0 else g['x'][1]
+    ray=LineString([(edge+direction*.01,z),(edge+direction*10,z)])
+    if not ray.intersects(p):continue
+    blocked=any(j!=i and other['deck']==g['deck']and ray.intersection(rect(other)).length>1e-6 for j,other in enumerate(guests))
+    if not blocked:candidates.append(i)
+   focus_z=-370 if end=='forward' else 370
+   focus_x=[-90,-70]if side=='port'else[70,90]
+   courts.append({'id':f'{side}_{end}_residential_court','status':'Proposed landscaped house court; no slab cut or final architecture acceptance','x':[round(p.bounds[0],3),round(p.bounds[2],3)],'z':[round(p.bounds[1],3),round(p.bounds[3],3)],'boundary':[[round(x,3),round(z,3)]for x,z in list(p.exterior.coords)[:-1]],'area_m2':round(p.area,3),'floor_y':84,'upper_cover_y':106.5,'affected_programmes':keys,'arrival_focus_x':focus_x,'arrival_focus_z':[focus_z-10,focus_z+10],'arrival_focus_role':'Retain shaped lobbies, lift landings and inhabited terraces within the commons; not an uninterrupted slab opening','purpose':'A five-level landscaped court alongside real residential banks, with distinct local arrivals and private window edges','guest_envelope_conflicts':conflicts,'potential_outward_view_source_indices':candidates,'view_evidence_scope':'Short plan rays from source room outer edges reach the court without crossing another guest allocation. No installed window, finished view or privacy acceptance implied','guest_access_intent':'Use inward paired-bank corridor gaps and common arrivals; do not run a public gallery directly across every bedroom window','required_before_cut':['Resolve shaped gallery floor ownership for all five commons','Connect both guest and concealed service networks','Confirm protected D18 cover and source-derived support','Fit planted court base, offset bridges and preserved arrival islands','Check all local room entries and views; preserve1000units']})
  cores=[]
  for name,z in [('forward',-432),('fore_midship',-216),('atrium_threshold',-72),('aft_midship',216),('aft',432)]:
   half=6 if z==-72 else 9
@@ -45,6 +61,16 @@ def build():
  decks=[]
  for d in elevations:
   n=int(d[1:]);decks.append({'deck':d,'floor_y':elevations[d],'programme_keys':[r['programme_key']for r in programmes if r['deck']==d],'guest_envelope_count':sum(g['deck']==n for g in guests),'retail_envelope_count':sum(g['deck']==n for g in shops),'crew_bank_envelope_count':sum(g['deck']==n for g in crew),'final_layout_accepted':False})
+ houses=[]
+ for side in ['port','starboard']:
+  direction=-1 if side=='port'else 1
+  for district in ['forward','central','aft']:
+   indices=[i for i,g in enumerate(guests)if g['deck']>=13 and sum(g['x'])*direction>0 and ('forward'if sum(g['z'])/2<-200 else'aft'if sum(g['z'])/2>200 else'central')==district]
+   houses.append({'id':side+'_'+district+'_upper_house','guest_envelope_source_indices':indices,'decks':[f'D{n:02}'for n in range(13,18)],'court_reservation':side+'_'+district+'_residential_court'if district!='central'else None,'status':'House membership plan; room shapes, privacy, local routes and luxury replacements still require fitting','identity_scope':'Source-index crosswalk only; no recovered room IDs invented'})
+  for district,center in [('forward',-370),('central',0),('aft',370)]:
+   indices=[i for i,g in enumerate(guests)if g['deck']==4 and sum(g['x'])*direction>0 and min([-370,0,370],key=lambda z:abs(sum(g['z'])/2-z))==center]
+   houses.append({'id':side+'_'+district+'_lower_habitat_house','guest_envelope_source_indices':indices,'decks':['D04'],'status':'Lower habitat-neighbourhood membership; environmental boundaries and species compatibility unresolved','identity_scope':'Habitat profiles are not species and source indices are not recovered room IDs'})
+ assert sum(len(h['guest_envelope_source_indices'])for h in houses)==1000
  stacks=[]
  catchments=[('forward',-432),('fore_midship',-216),('central',0),('aft_midship',216),('aft',432)]
  def district_for(r):
@@ -57,7 +83,7 @@ def build():
  assert sum(len(s['programme_keys'])for s in stacks)==161
  assert sum(len(s['guest_envelope_source_indices'])for s in stacks)==1000
  assert sum(len(s['retail_envelope_source_indices'])for s in stacks)==100
- result={'schema':1,'scope':'Complete programme/accounting crosswalk and initial vertical reservations, not final construction or a substitute room registry','source_sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()for p in paths},'decks':decks,'programmes':programmes,'neighbourhood_stacks':stacks,'residential_court_reservations':courts,'longitudinal_vertical_core_reservations':cores,'aquatic_section_reservations':[aquatic_reservation],'protected_totals':{'guest_units':1000,'retail_addresses':100,'directory_programmes':161,'crew_people_including_player':400,'historical_crew_bank_envelopes':200,'luxury_replacements_within_guest_units':81},'unresolved_finalization_gates':['Resolved three-dimensional hull and roof clearances','All161 destination shapes, arrivals and service connections','100retail addresses assigned to designed courts/streets','1000unit identity/layout crosswalk including81luxury replacements','Royalty/Supreme multistorey and all-species provision','400crew berths and service support','Guest and service route connectivity including accessible vertical transport','Purpose, floor ownership and protection for every multi-level void','Normal-play route, visibility and performance acceptance'],'crew_assignment_gate':crew_source['bed_assignment_status'],'legacy_implementation_claims_are_current_evidence':False}
+ result={'schema':1,'scope':'Complete programme/accounting crosswalk and initial vertical reservations, not final construction or a substitute room registry','source_sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()for p in paths},'decks':decks,'programmes':programmes,'neighbourhood_stacks':stacks,'residential_houses':houses,'residential_court_reservations':courts,'longitudinal_vertical_core_reservations':cores,'aquatic_section_reservations':[aquatic_reservation],'protected_totals':{'guest_units':1000,'retail_addresses':100,'directory_programmes':161,'crew_people_including_player':400,'historical_crew_bank_envelopes':200,'luxury_replacements_within_guest_units':81},'unresolved_finalization_gates':['Resolved three-dimensional hull and roof clearances','All161 destination shapes, arrivals and service connections','100retail addresses assigned to designed courts/streets','1000unit identity/layout crosswalk including81luxury replacements','Royalty/Supreme multistorey and all-species provision','400crew berths and service support','Guest and service route connectivity including accessible vertical transport','Purpose, floor ownership and protection for every multi-level void','Normal-play route, visibility and performance acceptance'],'crew_assignment_gate':crew_source['bed_assignment_status'],'legacy_implementation_claims_are_current_evidence':False}
  return result
 if __name__=='__main__':
  result=build();(ROOT/'data/whole_ship_layout.json').write_text(json.dumps(result,indent=2)+'\n')

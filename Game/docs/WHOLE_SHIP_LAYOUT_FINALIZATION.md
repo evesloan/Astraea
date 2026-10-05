@@ -28,7 +28,11 @@ Port/starboard pairs at forward, fore-midship, central, aft-midship and aft catc
 
 ## Initial coordinated reservations
 
-Four 20 × 20 m residential courts fit within the forward/aft port/starboard commons on D13–D17 without crossing a retained guest allocation. Their 22.5 m high local sections are intended to contain distinct arrivals, inhabited terraces, stairs and equivalent lift access. Final house footprints, room views and service routes must shape them; these are not cuts through current floors.
+The four forward/aft house courts now follow the actual room banks rather than stopping at the small commons rectangles. Their tapered plan areas are7,664–8,613m² and their upper residential sections remain22.5m high. The port-forward court is cut back from the protected theater volume. The original20x20m commons focuses remain reserved for shaped lobbies, inhabited terraces and local lift/stair access, so this is not a proposal for four uninterrupted slab holes.
+
+Short outward plan rays identify304 source guest allocations with a potential court-facing edge and no other guest allocation in that ray. This is a view opportunity, not304 fitted windows or final privacy acceptance. Guest access should remain on the inward paired-bank corridor side, avoiding a public passage directly across every bedroom window.
+
+All1000guest allocations are now assigned once to twelve residential house groups: six upper-deck houses containing880units, plus six D04 habitat neighbourhoods of20units each. Their membership is a source crosswalk, not recovered room IDs or finished room placement.
 
 Five longitudinal vertical-core reservations align with the established transport catchments near Z −432, −216, −72, 216 and 432 m. Their shaft envelopes avoid the retained programme, guest and retail rectangles in plan. Four-metre side bypass reservations fit the plan hull and programme boundaries. These still require resolved cars, screened guest/service landings, stair provision, pit/headroom and physical route checks. Their presence on a drawing is not a playable travel system.
 
@@ -54,10 +58,12 @@ Resolve the whole hull/occupied-volume envelope and these cross-deck dependencie
 
 The reproducible eighteen individual plans and overview are under docs/whole_ship_plans. Their grey hull guide is not a full slab; darker regions show current structural-plan coverage, and outlined rectangles are source programme envelopes. Coloured reservations remain proposals.
 
-tools/compile_whole_ship_layout.py regenerates data/whole_ship_layout.json from hashed source inputs. Eight planning checks cover complete accounting, unique coordination groups, court protection, core/bypass plan fit, the raised-pool section and non-mutating reservations. The existing five vertical-programme tests and all-current-opening guest conflict audit remain required. These planning checks supplement, rather than replace, the Godot regression suite and normal-height architectural review.
+tools/compile_whole_ship_layout.py regenerates data/whole_ship_layout.json from hashed source inputs. Nine planning checks cover complete accounting, unique coordination groups, court protection, core/bypass plan fit, the raised-pool section and non-mutating reservations. The existing five vertical-programme tests and all-current-opening guest conflict audit remain required. These planning checks supplement, rather than replace, the Godot regression suite and normal-height architectural review.
 
 ## Verification checkpoint
 
-Eight whole-layout checks and five existing vertical-programme checks pass; the all-current-opening audit finds zero guest-envelope conflicts. The unchanged runtime passed all54 Godot regression groups in207.126seconds fixed60 simulation after the programme-ledger reconciliation. Later crew-footprint extraction and planning images are source evidence only and do not alter runtime geometry.
+Nine whole-layout checks and five existing vertical-programme checks pass; the all-current-opening audit finds zero guest-envelope conflicts. The unchanged runtime passed all54 Godot regression groups in207.126seconds fixed60 simulation after the programme-ledger reconciliation. Later crew-footprint extraction and planning images are source evidence only and do not alter runtime geometry.
 
 The D03 source footnote places399 beds in C001–C200 and the player separately. The newer shared player home must reassign an existing crew member within400 total. The working plan retains this as an explicit bed-assignment gate rather than silently assuming200 occupied doubles plus another player room.
+
+The earlier20x20m court-only reservations and first planning image describe the arrival focuses, not the expanded landscaped house courts. The expanded proposal is superseding planning work; no protected guest room has been cut or moved.

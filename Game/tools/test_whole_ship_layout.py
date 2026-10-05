@@ -20,6 +20,9 @@ class WholeShipLayout(unittest.TestCase):
   for c in self.plan['residential_court_reservations']:
    self.assertEqual(len(c['affected_programmes']),5);self.assertFalse(c['guest_envelope_conflicts'])
    self.assertEqual(c['upper_cover_y']-c['floor_y'],22.5)
+   self.assertGreater(c['area_m2'],5000)
+   self.assertGreater(len(c['potential_outward_view_source_indices']),40)
+   self.assertTrue(Polygon(c['boundary']).is_valid)
  def test_cores_and_bypasses_fit_plan(self):
   hull=Polygon(json.loads((ROOT/'data/hull_envelope.json').read_text())['plan_xz_m'])
   allocations=json.loads((ROOT/'data/reference/directory_allocations.json').read_text())['records']
@@ -34,6 +37,10 @@ class WholeShipLayout(unittest.TestCase):
   for field,count in [('programme_keys',161),('guest_envelope_source_indices',1000),('retail_envelope_source_indices',100),('crew_envelope_source_indices',200)]:
    values=[v for group in stacks for v in group[field]]
    self.assertEqual(len(values),count);self.assertEqual(len(set(values)),count)
+ def test_houses_account_for_every_guest_once(self):
+  h=self.plan['residential_houses'];ids=[i for row in h for i in row['guest_envelope_source_indices']]
+  self.assertEqual(len(h),12);self.assertEqual(len(ids),1000);self.assertEqual(len(set(ids)),1000)
+  self.assertEqual(sum(len(r['guest_envelope_source_indices'])for r in h if r['decks']==['D04']),120)
  def test_crew_footprints_and_assignment_remain_distinct(self):
   self.assertEqual(sum(d['crew_bank_envelope_count']for d in self.plan['decks']),200)
   self.assertEqual(self.plan['protected_totals']['crew_people_including_player'],400)
