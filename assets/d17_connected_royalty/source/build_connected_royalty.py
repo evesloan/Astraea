@@ -31,7 +31,9 @@ for expected_name,ob in zip(fore,b.objects):
  for i,m in enumerate(ob.data.materials):ob.data.materials[i]=bpy.data.materials[m.name.split('.')[0]]
 bpy.context.preferences.filepaths.save_version=0
 comsrc=R/'source/AST-COM-003_aft_only.blend';comout=R/'exports/AST-COM-003_aft_only.glb'
-bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str(comsrc));bpy.ops.export_scene.gltf(filepath=str(comout),export_format='GLB',export_yup=True,export_extras=True)
+# The aft-only variant is already verified; avoid byte churn during a RES006-only correction.
+if not comsrc.exists() or not comout.exists():
+ bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str(comsrc));bpy.ops.export_scene.gltf(filepath=str(comout),export_format='GLB',export_yup=True,export_extras=True)
 # Source material graphs and embedded textures come from existing commons exactly.
 mats={name:bpy.data.materials[name] for name in ['ivory_enamel','warm_walnut','warm_stone','champagne_metal','HouseSmokedGlass','GardenOpalLens']}
 for m in mats.values():m.use_fake_user=True
@@ -87,6 +89,16 @@ for i,(a,b) in enumerate(zip(perimeter,perimeter[1:]+perimeter[:1])):
  wall('CR_GuardGlass_'+tag,a,b,102.35,103.01,.024,'HouseSmokedGlass','guard')
  wall('CR_GuardCap_'+tag,a,b,103.01,103.09,.12,'champagne_metal','guard')
  guards.append({'id':tag,'a_xz':a,'b_xz':b,'base_y':[102.025,102.35],'glass_y':[102.35,103.01],'cap_y':[103.01,103.09],'collision':'actual source meshes; no separate larger hidden wall','removable_future_closure':i in [16,21,22,15]})
+# Close the0.35m side gaps between the existing jamb ends and apron edge guards.
+# These returns sit on the unchanged old-floor shoulder, aft of the Z13.2 aperture.
+portal_returns=[]
+for side,x,apron in [('Left',78.5,'22'),('Right',81.5,'01')]:
+ a,b=[x,13.65],[x,14]
+ for part,lo,hi,width,role in [('Fascia',101.76,102.025,.16,'ivory_enamel'),('Base',102.025,102.35,.10,'warm_walnut'),('Glass',102.35,103.01,.024,'HouseSmokedGlass'),('Cap',103.01,103.09,.12,'champagne_metal')]:
+  wall('CR_PortalReturn_'+side+'_'+part,a,b,lo,hi,width,role,'portal_guard_return','CR_Portal_'+side+' to apron guard '+apron)
+ spec={'id':'portal_return_'+side.lower(),'a_xz':a,'b_xz':b,'base_y':[102.025,102.35],'glass_y':[102.35,103.01],'cap_y':[103.01,103.09],'collision':'actual source meshes; closes jamb-to-apron side gap','removable_future_closure':False,'floor_owner':'unchanged existing D17 floor','joins':['CR_Portal_'+side,'apron_guard_'+apron]}
+ guards.append(spec);portal_returns.append(spec)
+D['portal_guard_returns']=portal_returns
 # Compressed reveal then rising approach canopy. Front underside equals portal head.
 world=[[x,y,z]for x in [78.22,81.78]for y,z in [(104.82,13.65),(105.65,20),(105.87,20),(105.04,13.65)]]
 mesh('CR_ApproachRisingSoffit',world,faces,'ivory_enamel','ceiling')
