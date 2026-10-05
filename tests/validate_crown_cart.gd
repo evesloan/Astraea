@@ -15,7 +15,7 @@ func run()->void:
 	var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)
 	var crown:Node3D=ship.find_child("CentralCommandCrown_WIP",true,false)
 	var doors:=crown.find_children("CrownDoor_*","Node3D",true,false)
-	assert(doors.size()==10)
+	assert(doors.size()==12)
 	for door in doors:door.interact(actor)
 	for frame in range(110):await physics_frame
 	var excluded:Array[RID]=[]
@@ -64,5 +64,5 @@ func run()->void:
 			var p:Vector3=cart.to_local(product.global_position)
 			assert(p.y>.8 and p.y<1.3 and abs(p.x)<.4 and abs(p.z)<.6,"Four loose products survive crown doorway/turn traversal")
 	cart.release_grab()
-	print("CROWN CART PASS:",samples," compound cart/load/driver poses across all ten open doors and public fore street; actual loaded forward/reverse trip through the north control door, side-corridor turn and navigation-gallery doorway. Scripted1m/s steering only; freehand feel and occupied-room capacity remain pending.")
+	print("CROWN CART PASS:",samples," compound cart/load/driver poses across all twelve open doors and public fore street; actual loaded forward/reverse trip through the north control door, side-corridor turn and navigation-gallery doorway. Scripted1m/s steering only; freehand feel and occupied-room capacity remain pending.")
 	main.queue_free();await process_frame;quit()

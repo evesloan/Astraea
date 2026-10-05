@@ -24,7 +24,7 @@ func run()->void:
 	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
 	var crown:Node3D=ship.find_child("CentralCommandCrown_WIP",true,false)
 	var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/CENTRAL_CROWN_RUNTIME.json"))
-	assert(crown!=null and data.programmes.size()==6 and data.doors.size()==10)
+	assert(crown!=null and data.programmes.size()==6 and data.doors.size()==12)
 	var identities:Dictionary={}
 	for entry in data.doors:
 		var door:Node3D=crown.get_node("CrownDoor_"+str(entry.name))
@@ -59,7 +59,7 @@ func run()->void:
 	for entry in data.doors:
 		var door:Node3D=crown.get_node("CrownDoor_"+str(entry.name));door.interact(actor)
 	for frame in range(110):await physics_frame
-	await walk_route(actor,[Vector2(5.5,-77),Vector2(45,-77),Vector2(45,72),Vector2(0,72),Vector2(0,-77),Vector2(-8,-77),Vector2(-8,-71)])
+	await walk_route(actor,[Vector2(5.5,-77),Vector2(45,-77),Vector2(45,63),Vector2(0,63),Vector2(0,-77),Vector2(-8,-77),Vector2(-8,-71)])
 	for z in [-52.0,-4.0,40.0]:
 		await walk_route(actor,[Vector2(-8,z),Vector2(-23,z),Vector2(-8,z)])
 	await walk_route(actor,[Vector2(-8,16),Vector2(0,16),Vector2(0,30),Vector2(8,30)])
@@ -68,5 +68,5 @@ func run()->void:
 	await walk_route(actor,[Vector2(8,30),Vector2(0,30),Vector2(0,108),Vector2(5.5,108),Vector2(5.5,137),Vector2(0,137)])
 	assert(absf(actor.position.y-106.5)<.12,"Destination circuit must reach the existing aft crown link at the same datum")
 	assert(ship.express_arrive(17),"Temporary D18 directory arrival remains safe on the new fore cross-street")
-	print("CROWN ACCESS PASS: ten precisely targeted RMB/E doors with full opening/closing collision sweeps and capsule entry/return; continuous walk visits all six programme shells, revised fore street and both existing core approaches. Equipment, role-based access, species fit and final appearance remain unfinished.")
+	print("CROWN ACCESS PASS: twelve precisely targeted RMB/E doors with full opening/closing collision sweeps and capsule entry/return; continuous walk visits all six programme shells, revised fore street and both existing core approaches. Equipment, role-based access, species fit and final appearance remain unfinished.")
 	main.queue_free();await process_frame;quit()

@@ -76,6 +76,7 @@ func _ready() -> void:
 	load("res://scripts/primary_atrium_core.gd").build($ShipSpace/Districts,self,"res://data/architecture/AFT_MIDSHIP_PUBLIC_CORE.json")
 	load("res://scripts/primary_atrium_core.gd").build($ShipSpace/Districts,self,"res://data/architecture/AFT_PUBLIC_CORE.json")
 	load("res://scripts/central_command_crown.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/aft_command_crown.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/arrivals_fusion.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/star_atlas.gd").build($ShipSpace/Districts,self)
 	var cleaning_cart:RigidBody3D=(load("res://scripts/cleaning_cart.gd")as GDScript).new()
