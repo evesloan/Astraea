@@ -92,3 +92,9 @@ D17_ADDED_SUPPORT_CENSUS.json and D17_SUPPORT_ALTERNATIVES_CENSUS.json retain ad
 Critically, guest-only clearance was insufficient: X100/Z50.4 intersects D03 crew-bank drawing420, while X100/Z−71.4,−48.6,+71.6 intersect drawings414,418,424. Their small lower-hull footings can be geometrically seated, but that does not authorize full-height columns through those banks. All downstream adoption remains held. An outer band such asX108 is only a new hypothesis until actual collision, hull seating and all allocation checks pass.
 
 The controlled source helper stopped at a verified partial interface stage to avoid expanding the usage-limited trial: two portal frames and two small source-seated footings, with all16 floor regions HELD. The COM003 portal revision must not be copied into the game before supported onward floors and guards are ready. Source-side component verification is not whole-house acceptance.
+
+## Bounded source correction, 20:25 UTC
+
+The root continued from the helper handoff without another agent assignment. Both unadopted Royalty footing candidates moved from X100 to X108 (Z29.6/50.4), outside the retained crew-bank band. Each source-matched wedge now seats on hull polygon56 with top−0.45;162 source rays and exact raw-export geometry/UV/material tests pass. Only the two footing objects moved; all16 remaining interface objects, COM003 and hull source are unchanged. All guest, crew, retail and historical programme allocation envelopes were checked. No living unit or programme was relocated.
+
+This resolves the candidate full-height footprint conflict, not the missing house framing. All16 floor regions stay HELD. Game runtime geometry remains byte-unchanged since its101-check pass; the partial portal revision has not been installed. See D17_FOOTING_RELOCATION_SOURCE_REVIEW.json and catalogue assets/d17_house_platform/HANDOFF.md.
