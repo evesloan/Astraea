@@ -1,0 +1,86 @@
+{
+  "scope": "Static additive D17 regression-baseline audit; Godot runtime validation remains a separate required parent-run check.",
+  "baseline_commit": "3781cb2be3047b7ee61e3d1ff7ec6c2176440e9b",
+  "candidate_commit": "b7a1ecd5e8890b345439a80d69bafe51e1d7e57f",
+  "pre_adoption_receipt": {
+    "path": "docs/D17_CONNECTED_PRE_ADOPTION_MESHES.json",
+    "sha256": "a0d569a2f4b40ad9e202bfea988c79fcfe62bc65fbe73f3723c0d49ffdf45acf",
+    "all_249_prior_record_hashes_match_git_and_current": true
+  },
+  "preservation": {
+    "compiled_record_count": 249,
+    "compiled_record_order_and_canonical_bytes_unchanged": true,
+    "compiled_prior_regions_canonical_sha256": "7f7b33c0a846a6243554cece74486dae468000e25013adba325e5c3281553354",
+    "authored_layout_region_count": 255,
+    "all_prior_layout_rows_metadata_and_voids_exact": true,
+    "prior_layout_canonical_sha256": "57e92da7a449ba51af977cf51267fab2f20360e1aea6c24c34b9b277efa9257b",
+    "original_245_numeric_record_pins_unchanged": true,
+    "four_aft_record_numeric_sha256": {
+      "D18_aft_crown_platform_foyer_port": "ddd6b4ecb3b6c6d60ac5f4b06bdd6444290f0a69a5db73053a02b7562954ecc9",
+      "D18_aft_crown_platform_foyer_starboard": "60b21cb02a18c50d70e22112c316d212a668bd10fa711811279ccc54b954889e",
+      "D18_aft_crown_platform_upper_horizon_port": "77ea616da47402f9078399abe3024b9bda4636a4daf1d60f6f879d989c435c0c",
+      "D18_aft_crown_platform_upper_horizon_starboard": "38bd6bf4549b4e897617c46040bf152cad728cd9a30c91c0556cc48359de9553"
+    },
+    "four_aft_area_m2_unchanged": 5517.2,
+    "all_existing_physical_floor_checks_unchanged": true,
+    "runtime_coordinate_tolerance_m_unchanged": 0.001
+  },
+  "approved_only_addition": {
+    "id": "D17_connected_house_floor_00",
+    "authoring_owner": "d17_connected_house",
+    "deck": "D17",
+    "floor_y": 102.0,
+    "thickness": 0.24,
+    "structural_area_m2": 605.2,
+    "compiled_record_canonical_sha256": "cd3eba02e23addbced96f060f9f2ceeb61f496ec2a4e9f1651affbf0af5ad152",
+    "compiled_record_numeric9_sha256": "4fd1e7d7c62a36d1cd8826a598acccf7c54ed26c36054d09e764cae862c97d38",
+    "layout_record_numeric9_sha256": "4c4ad3a2ba8d2e5a507573ba102ad87d128a627afc5cca073cc6d3a4b7980c0b",
+    "current_compiled_owner_count": 250
+  },
+  "whole_file_pins": {
+    "data/generated/structural_meshes.json": {
+      "before": "1427634f9531fcdfec73b26e9e20343794d35d216991a4d4054005f1099e3e90",
+      "after": "29b063c3d039e8a183e057e0a4e2673842fc1d6064ab2f8e0bbd54dc1130bf89"
+    },
+    "data/spatial_layout.json": {
+      "before": "8560fa088ea15109e8539afbc9bed52732ebbe109956508c315e4a71995253be",
+      "after": "f913b8a7fd7100762f7477bdb37400e003d45a2098824b7d2aaf95c98f0c5f52"
+    }
+  },
+  "only_compiler_metadata_changes": {
+    "regions": {
+      "before": 249,
+      "after": 250
+    },
+    "triangles": {
+      "before": 3981,
+      "after": 4004
+    },
+    "source_sha256": {
+      "before": "8560fa088ea15109e8539afbc9bed52732ebbe109956508c315e4a71995253be",
+      "after": "f913b8a7fd7100762f7477bdb37400e003d45a2098824b7d2aaf95c98f0c5f52"
+    }
+  },
+  "changed_tests": [
+    {
+      "test": "tests/validate_aft_crown_platform_structure.gd",
+      "sha256": "8959314ae779f80c5fb9b0687cb7ac3b961bedbb6a726082cb5faeb349c2e47d",
+      "original_functions_unchanged_except_validate_floors": 33,
+      "unchanged_physical_floor_check_block_sha256": "0d033d4829c11d9ef7afdd71133a8f4ac84d16d7a87c5e9ea0e9973a908ec171",
+      "static_numeric_pin_and_identity_mutations_rejected": 262
+    },
+    {
+      "test": "tests/validate_upper_horizon_enclosure_structure.gd",
+      "sha256": "4e166ac0ce26f4b0d346f79e6059385689d72fa2bae95caccd7ac09e7e66c589",
+      "original_functions_unchanged_except_validate_floors": 27,
+      "unchanged_physical_floor_check_block_sha256": "0d033d4829c11d9ef7afdd71133a8f4ac84d16d7a87c5e9ea0e9973a908ec171",
+      "static_numeric_pin_and_identity_mutations_rejected": 262
+    }
+  ],
+  "static_checks_pass": true,
+  "godot_engine_import_build_backup_or_commit_run_by_this_audit": false,
+  "hash_formats": {
+    "canonical": "SHA256 of Python json.dumps(sort_keys=True,separators=(comma,colon),allow_nan=False) UTF-8; matches retained pre-adoption receipt",
+    "numeric9": "Existing GDScript canonical function: sorted object keys, ordered arrays, numeric scalars normalized to nine decimal places; old245 pins independently reconfirm this format"
+  }
+}
