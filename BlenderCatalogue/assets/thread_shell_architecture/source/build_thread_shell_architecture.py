@@ -160,6 +160,7 @@ for key,x,z,top,warm in fixtures:
   slab('TAIL_FixtureLens_'+key,x-.32,x+.32,z-1.53,z+1.53,top-.175,top-.16,'lens')
   slab('TAIL_PendantUpperLens_'+key,x-.30,x+.30,z-1.51,z+1.51,top,top+.015,'lens')
   datum('bounce_'+key,xyz(x,top+.025,z))
+  datum('receiver_'+key,xyz(x,h(x,z)-.035,z))
  else:
   slab('TAIL_FixtureHousing_'+key,x-.36,x+.36,z-.28,z+.28,top-.16,top,'champagne_metal')
   slab('TAIL_FixtureLens_'+key,x-.31,x+.31,z-.23,z+.23,top-.175,top-.16,'lens')

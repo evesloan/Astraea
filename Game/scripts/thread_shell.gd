@@ -28,6 +28,9 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		var light:=SpotLight3D.new()
 		root.add_child(light)
 		light.name="ThreadShellCeilingWash_"+str(marker.name)
+		var receiver:=architecture.find_child(str(marker.name).replace("bounce_","receiver_"),true,false)as Node3D
+		assert(receiver!=null)
+		light.set_meta("illumination_anchor",receiver.global_position)
 		light.global_position=marker.global_position
 		light.rotation.x=PI/2
 		light.light_color=Color(1,.96,.90)
