@@ -1,7 +1,7 @@
 """Queue the fixed current-project graphical review atomically; no arbitrary command payloads."""
 from pathlib import Path
 import argparse,json,re,os,subprocess
-parser=argparse.ArgumentParser();parser.add_argument('name');parser.add_argument('--profile',action='store_true');parser.add_argument('--view-group',choices=['all','aft_crown_platform'],default='all');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('name');parser.add_argument('--profile',action='store_true');parser.add_argument('--view-group',choices=['all','aft_crown_platform','upper_horizon_enclosure'],default='all');args=parser.parse_args()
 assert re.fullmatch('[A-Za-z0-9_-]+',args.name),'Use a simple unique review name'
 root=Path(__file__).resolve().parents[1];queue=Path('/workspace/shared/astraea-review-queue');assert queue.is_dir(),'Cloud graphical runner must already be started'
 assert not any(queue.glob('*.request')), 'A graphical review is already queued or running'

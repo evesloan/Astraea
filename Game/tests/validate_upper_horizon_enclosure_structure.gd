@@ -29,7 +29,6 @@ var dynamic_exclusions: Array[RID] = []
 var shell_exclusions: Array[RID] = []
 var own_exclusions: Array[RID] = []
 var slab_exclusions: Array[RID] = []
-var old_shell_exclusions: Array[RID] = []
 var gltf: Dictionary
 var binary: PackedByteArray
 var matched_triangles := 0
@@ -40,7 +39,7 @@ var floor_owners := 0
 var maximum_floor_corner_error := 0.0
 var matched_floor_triangles := 0
 var bearing_witnesses := 0
-const PINS := {"assets/models/AST-CMD-002.glb":"3577d49136b0252f8eef677604ef85488b92913580c8f8a034b947120a70a0ea","data/generated/structural_meshes.json":"1427634f9531fcdfec73b26e9e20343794d35d216991a4d4054005f1099e3e90","data/spatial_layout.json":"8560fa088ea15109e8539afbc9bed52732ebbe109956508c315e4a71995253be","docs/AFT_CROWN_PLATFORM_SOURCE_CONTACT_AUDIT.json":"02afb1e3ce0822a6620ef5f0f5602da206ada97e86eadd02056bb6983e40e9ad","data/architecture/UPPER_HORIZON_ENCLOSURE_RUNTIME.json":"08fac10329f0a58661daa5e69b1f345c58386be130e10d8c3e215d09a8bb5880","docs/UPPER_HORIZON_ENCLOSURE_SOURCE_CONTACTS.json":"09b9f786ccc57359cec19f183dcc1451cc85343d4714bc2853c78261f18a8398","docs/UPPER_HORIZON_ENCLOSURE_SOURCE_ROUNDTRIP.json":"2d1b9adcd64b827686099c2b283f9408c2a822c930b8f724e0cc8b866eef9c42","data/architecture/UPPER_HORIZON_ENCLOSURE_GEOMETRY_PARTS.json":"d070ab3cec5cb2b2563f08cb79a741be728dd66f93310338f36fccc5f588548e","assets/models/AST-CMD-005.glb":"323a26fe17cb9d6bd652309c0a4c99e4d1ce2d3316526b4d125d732dec0c0cf6","assets/models/AST-CMD-006.glb":"70fd0d75fba5a61f0f59dddc9a00e86fdb88828acf7379f7838e7e2db5fc1860"}
+const PINS := {"assets/models/AST-CMD-002.glb":"3577d49136b0252f8eef677604ef85488b92913580c8f8a034b947120a70a0ea","data/generated/structural_meshes.json":"1427634f9531fcdfec73b26e9e20343794d35d216991a4d4054005f1099e3e90","data/spatial_layout.json":"8560fa088ea15109e8539afbc9bed52732ebbe109956508c315e4a71995253be","docs/AFT_CROWN_PLATFORM_SOURCE_CONTACT_AUDIT.json":"02afb1e3ce0822a6620ef5f0f5602da206ada97e86eadd02056bb6983e40e9ad","data/architecture/UPPER_HORIZON_ENCLOSURE_RUNTIME.json":"08fac10329f0a58661daa5e69b1f345c58386be130e10d8c3e215d09a8bb5880","docs/UPPER_HORIZON_ENCLOSURE_SOURCE_CONTACTS.json":"09b9f786ccc57359cec19f183dcc1451cc85343d4714bc2853c78261f18a8398","docs/UPPER_HORIZON_ENCLOSURE_SOURCE_ROUNDTRIP.json":"2d1b9adcd64b827686099c2b283f9408c2a822c930b8f724e0cc8b866eef9c42","data/architecture/UPPER_HORIZON_ENCLOSURE_GEOMETRY_PARTS.json":"d070ab3cec5cb2b2563f08cb79a741be728dd66f93310338f36fccc5f588548e","assets/models/AST-CMD-005.glb":"323a26fe17cb9d6bd652309c0a4c99e4d1ce2d3316526b4d125d732dec0c0cf6","assets/models/AST-CMD-006.glb":"70fd0d75fba5a61f0f59dddc9a00e86fdb88828acf7379f7838e7e2db5fc1860","data/architecture/AFT_CROWN_PLATFORM_RUNTIME.json":"b6692962f2c4a477827acbb685542b79aa0e09ef513ee6445ed840aefbf79011"}
 
 func _initialize() -> void:
 	call_deferred("run")
@@ -477,3 +476,184 @@ func validate_fixtures(data: Dictionary) -> void:
 			var lens := ray(q,q+Vector3.UP*0.08,dynamic_exclusions)
 			check(not lens.is_empty() and shell.is_ancestor_of(lens.collider),"Real source lens absent: "+str(item.name))
 
+func validate_contacts(data: Dictionary, audit: Dictionary, geometry: Dictionary) -> void:
+	check(bool(audit.get("pass",false)) and int(audit.part_count)==598 and bool(audit.new_parts_all_connected_to_six_old_piers),"Final rooted contact proof absent/failed")
+	check(str(audit.source_sha256)=="0b892eb5b59111bea434d4a3c3c1c886fd8995511641c6f2e6f89c997ac9ab34","Contact source identity changed")
+	var parts: Dictionary = {}
+	var glass: Dictionary = {}
+	for part in geometry.parts:
+		check(not parts.has(str(part.name)),"Duplicate individual source solid")
+		parts[str(part.name)] = part
+		if str(part.group)=="glass":
+			glass[str(part.name)] = true
+		var bounds: Array = part.world_aabb
+		check(float(bounds[2])>=106.5-EPS and float(bounds[3])<=114.5+EPS,"New solid violates retained floor/exterior datums")
+		if str(part.group) in ["shoulder","shoulder_support"]:
+			check(float(bounds[2])>=113.4-EPS,"High shoulder support lowered into view corridor")
+		var centre := Vector2.ZERO
+		for p in part.footprint_xz:
+			centre += Vector2(p[0],p[1])/float(part.footprint_xz.size())
+		# Probe both actual outward faces of every individual authored solid.
+		# No opaque mesh/batch is exempted from geometric coverage.
+		for face in [[float(bounds[2]),-1.0],[float(bounds[3]),1.0]]:
+			var point := Vector3(centre.x,float(face[0]),centre.y)
+			var delta := Vector3.UP*float(face[1])*0.004
+			var hit := ray(point+delta,point-delta,enclosure_exclusions)
+			check(not hit.is_empty() and hit.position.distance_to(point)<EPS,"Actual source solid face absent: "+str(part.name)+" y"+str(face[0]))
+			solid_witnesses += 1
+		# New floor-seated walls must meet an actual retained compiler slab.
+		if absf(float(bounds[2])-FLOOR_Y)<EPS:
+			var hit := ray(Vector3(centre.x,106.51,centre.y),Vector3(centre.x,106.24,centre.y),slab_exclusions)
+			check(not hit.is_empty() and absf(hit.position.y-FLOOR_Y)<EPS and region_id(hit.collider) in FLOOR_IDS,"New wall lacks actual fixed-floor bearing: "+str(part.name))
+			bearing_witnesses += 1
+	check(parts.size()==598 and solid_witnesses==1196,"Complete individual closed-solid witnesses required")
+	var roots: Dictionary = {}
+	var old_audit := read_json("res://docs/AFT_CROWN_PLATFORM_SOURCE_CONTACT_AUDIT.json")
+	for part in old_audit.root_pier_parts:
+		roots[str(part.name)] = true
+	check(roots.size()==24 and int(audit.old_root_part_count)==24,"Only six retained keel-bearing piers may root enclosure")
+	# The enclosure has no new slab: its retained six-pier frame still bears the
+	# same four compiled floor infills at every independently measured witness.
+	for row in old_audit.slab_witnesses:
+		check(float(row.plan_contact_area_m2)>0.00000001 and float(row.vertical_overlap_m)>0.001 and roots.has(str(row.root_pier_part)),"Retained slab support is not a positive rooted bearing")
+		var ids := {"foyer_0":FLOOR_IDS[0],"foyer_1":FLOOR_IDS[1],"upper_horizon_0":FLOOR_IDS[2],"upper_horizon_1":FLOOR_IDS[3]}
+		slab_witness(Vector2(row.sample_xz[0],row.sample_xz[1]),"Rooted slab bearer "+str(row.part),str(ids.get(str(row.floor_component),"INVALID")))
+		bearing_witnesses += 1
+	check(bearing_witnesses>=542,"All retained distributed slab bearings required")
+	var parents: Dictionary = {}
+	for edge in audit.full_chosen_contact_network:
+		var name := str(edge.part)
+		check(not parents.has(name),"Duplicate contact parent")
+		check(float(edge.volume_overlap_m3)>0.00000001 or float(edge.contact_area_if_seam_m2)>0.00000001,"Point/line-only architectural join: "+name)
+		check(float(edge.y_overlap[1])>=float(edge.y_overlap[0])-0.00000001,"Disconnected vertical contact: "+name)
+		parents[name] = str(edge.support)
+	check(audit.new_part_join_ledger.size()==598 and audit.all_new_to_old_contacts.size()==3856,"Complete new join/bearing census changed")
+	var joined: Dictionary = {}
+	for edge in audit.new_part_join_ledger:
+		var name := str(edge.part)
+		check(parts.has(name) and not joined.has(name) and parents.get(name,"")==str(edge.support),"Individual join ledger mismatch")
+		joined[name] = true
+	for name in parts:
+		var current: String = name
+		var visited: Dictionary = {}
+		while not roots.has(current) and parents.has(current) and not visited.has(current):
+			visited[current] = true
+			if not glass.has(name):
+				check(not glass.has(current),"Opaque structure relies on protective glass: "+name)
+			current = str(parents[current])
+		check(roots.has(current),"Unrooted/cyclic actual-source join: "+name)
+	for label in audit.protected_queries:
+		var row: Dictionary = audit.protected_queries[label]
+		check(row.hits.is_empty(),"Source protected volume obstructed: "+str(label))
+		var b: Array = row.bounds
+		var inset := 0.002
+		assert_empty(AABB(Vector3(b[0]+inset,b[2]+inset,b[4]+inset),Vector3(b[1]-b[0]-2*inset,b[3]-b[2]-2*inset,b[5]-b[4]-2*inset)),enclosure_exclusions,"Actual new intrusion "+str(label))
+	check(data.doors.is_empty() and data.light_markers.is_empty(),"No new controllers, doors or lights authorized")
+	check(enclosure.find_children("*","Light3D",true,false).is_empty(),"Enclosure added unapproved runtime light")
+	check(audit.all25fixture_near_exits.size()==25 and audit.onward_full_downward_optical_cone.raised_header_hits.is_empty() and float(audit.onward_full_downward_optical_cone.half_angle)==82.0,"Correct82-degree existing optical cone proof missing")
+	for row in audit.all25fixture_near_exits:
+		check(row.new_material_exit_hits.is_empty() and float(row.half_angle_degrees)==82.0,"Existing fixture exit newly blocked")
+		var marker := shell.find_child(str(row.marker),true,false) as Node3D
+		if not check(marker!=null,"Retained optical source absent"):
+			continue
+		for depth in [0.01,0.04,0.12]:
+			for index in range(32):
+				var angle := TAU*float(index)/32.0
+				var radius := tan(deg_to_rad(82.0))*float(depth)
+				var target := marker.global_position+Vector3(cos(angle)*radius,-float(depth),sin(angle)*radius)
+				check(ray(marker.global_position,target,enclosure_exclusions).is_empty(),"Actual82-degree near-source cone blocked: "+str(row.marker))
+
+func validate_windows(data: Dictionary) -> void:
+	check(data.windows.size()==28,"All28 framed protective windows required")
+	for window in data.windows:
+		var a := Vector3.ZERO
+		var b := Vector3.ZERO
+		var heights: Array = window.get("glass_y",[])
+		if window.has("glass_aabb"):
+			var bounds: Array = window.glass_aabb
+			a = Vector3(float(window.position[0]),0,float(bounds[4]))
+			b = Vector3(float(window.position[0]),0,float(bounds[5]))
+			heights = [bounds[2],bounds[3]]
+		else:
+			a = Vector3(window.a_xz[0],0,window.a_xz[1])
+			b = Vector3(window.b_xz[0],0,window.b_xz[1])
+		var tangent := (b-a).normalized()
+		var normal := Vector3(tangent.z,0,-tangent.x)
+		var steps := maxi(2,ceili(a.distance_to(b)/0.45))
+		for index in range(1,steps):
+			var p := a.lerp(b,float(index)/steps)
+			for fraction in [0.05,0.25,0.5,0.75,0.95]:
+				p.y = lerpf(float(heights[0]),float(heights[1]),fraction)
+				for sign_side in [-1.0,1.0]:
+					var hit := ray(p+normal*0.10*sign_side,p-normal*0.10*sign_side,enclosure_exclusions)
+					check(not hit.is_empty() and absf(hit.position.distance_to(p)-0.03)<EPS,"Missing/thickened protective pane face: "+str(window.id)+" at"+str(p))
+	# Full8m onward mouth remains open below unchanged fixture/header level.
+	for x in [-3.99,-3.0,0.0,3.0,3.99]:
+		for y in [106.6,107.4,108.2,109.4,110.39]:
+			check(ray(Vector3(x,y,193.0),Vector3(x,y,202.0),enclosure_exclusions).is_empty(),"New enclosure blocks8m onward opening")
+
+func run() -> void:
+	for path in PINS:
+		check(FileAccess.get_sha256("res://"+str(path))==str(PINS[path]),"Reviewed final/preserved identity changed: "+str(path))
+	var preserved: Dictionary = JSON.parse_string(PRESERVED_HASHES_JSON)
+	for path in preserved:
+		check(FileAccess.get_sha256("res://"+str(path))==str(preserved[path]),"Protected core/programme identity changed: "+str(path))
+	var data := read_json(CONTRACT)
+	var proof := read_json(ROUNDTRIP)
+	var audit := read_json(AUDIT)
+	var geometry := read_json(PARTS)
+	if data.is_empty() or proof.is_empty() or audit.is_empty() or geometry.is_empty():
+		quit(1)
+		return
+	for id in ["AST-CMD-005","AST-CMD-006"]:
+		check(bool(proof[id].get("pass",false)) and bool(proof[id].get("source_closed_outward",false)) and bool(proof[id].get("exact_float32_oriented_position_triangle_uv_material_equality",false)),"Exact closed source/export proof missing: "+id)
+		check(str(proof[id].export_sha256)==str(PINS["assets/models/"+id+".glb"]),"Paired source/export identity mismatch")
+	var main := (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	root.add_child(main)
+	for frame in range(30):
+		await physics_frame
+	ship = main.get_node("World360/Astraea") as Node3D
+	platform = ship.get_node_or_null("ShipSpace/Districts/AftCrownPlatform_WIP") as Node3D
+	var enclosure_root := ship.get_node_or_null("ShipSpace/Districts/UpperHorizonEnclosure_WIP") as Node3D
+	floors = ship.find_child("CompiledStructuralFloors_NotFinishedRooms",true,false) as Node3D
+	if not check(platform!=null and enclosure_root!=null and floors!=null,"Actual retained platform/floors or new enclosure root missing"):
+		quit(1)
+		return
+	var platform_shell := platform.get_node_or_null("AftCrownPlatformArchitecture") as Node3D
+	enclosure = enclosure_root.get_node_or_null("UpperHorizonEnclosureArchitecture") as Node3D
+	if not check(platform_shell!=null and enclosure!=null,"Actual architecture missing"):
+		quit(1)
+		return
+	check(enclosure.global_transform.is_equal_approx(Transform3D.IDENTITY) and platform_shell.global_transform.is_equal_approx(Transform3D.IDENTITY),"Reviewed paired source placement changed")
+	space = ship.get_world_3d().direct_space_state
+	for body in ship.find_children("*","CollisionObject3D",true,false):
+		var dynamic: bool = not body is StaticBody3D or body is AnimatableBody3D
+		if dynamic:
+			dynamic_exclusions.append(body.get_rid())
+		if not enclosure.is_ancestor_of(body):
+			enclosure_exclusions.append(body.get_rid())
+		if not platform_shell.is_ancestor_of(body):
+			shell_exclusions.append(body.get_rid())
+		if dynamic or platform_shell.is_ancestor_of(body):
+			own_exclusions.append(body.get_rid())
+		if not floors.is_ancestor_of(body):
+			slab_exclusions.append(body.get_rid())
+	shell = enclosure
+	validate_meshes(proof["AST-CMD-006"])
+	enclosure_triangles = matched_triangles
+	matched_triangles = 0
+	shell = platform_shell
+	asset_path = "res://assets/models/AST-CMD-005.glb"
+	expected_batches = 964
+	validate_meshes(proof["AST-CMD-005"])
+	validate_floors()
+	validate_core()
+	var platform_data := read_json("res://data/architecture/AFT_CROWN_PLATFORM_RUNTIME.json")
+	validate_piers(platform_data)
+	validate_fixtures(platform_data)
+	validate_contacts(data,audit,geometry)
+	validate_windows(data)
+	print(("UPPER HORIZON ENCLOSURE STRUCTURE PASS: " if failures.is_empty() else "UPPER HORIZON ENCLOSURE STRUCTURE FAILED: ")+"%d new/%d paired oriented triangles, max error %.9fm; %d solid faces, %d actual slab bearings, %d fixed floor owners/%d floor triangles, %d pier slices/%d keel rays; %d failures. Architectural geometry only." % [enclosure_triangles,matched_triangles,maximum_corner_error,solid_witnesses,bearing_witnesses,floor_owners,matched_floor_triangles,pier_slices,keel_rays,failures.size()])
+	main.queue_free()
+	await process_frame
+	quit(0 if failures.is_empty() else 1)
