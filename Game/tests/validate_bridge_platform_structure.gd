@@ -676,10 +676,29 @@ func validate_piers(data: Dictionary) -> void:
 			var high := lerpf(-3.19, 114.0, (segment + 1) / 16.0)
 			var label := "pier %d slice %d" % [index + 1, segment]
 			var bounds := AABB(Vector3(centre.x - 0.4, low, centre.y - 0.6), Vector3(0.8, high-low,1.2))
+			# Source-clipped stage-two contacts: FanCeiling .029/.030 at port,
+			# .184/.185 at starboard, each 0.48m2 x 0.18m at Y111..111.18.
+			# Only these exact batches may meet the two fore-pier top slices.
+			var ceiling_contacts: Array[Node] = []
+			if index < 2 and segment == 15:
+				var cell_x := -4 if index == 0 else 3
+				for cell_z in [-22,-21]:
+					var contact := ship.get_node_or_null("ShipSpace/Districts/BridgeEnclosure_WIP/BridgeEnclosureArchitecture/AST-CMD-004/BRE_CELL_X%d_Y13_Z%d_ASTRAEA_ivory_enamel/StaticContact" % [cell_x,cell_z])
+					if check(contact != null, "Declared fan-ceiling/pier contact batch missing: " + label):
+						ceiling_contacts.append(contact)
+			var seen_ceiling_contacts: Array[Node] = []
 			for hit in box_hits(bounds, own_exclusions, label):
-				# Fore piers intentionally pierce ONLY their new parent-owned wing slab.
 				var allowed: bool = index < 2 and region_id(hit.collider) == FLOOR_IDS[index] and low < FLOOR_Y and high > SLAB_BOTTOM
+				if ceiling_contacts.has(hit.collider):
+					allowed = true
+					seen_ceiling_contacts.append(hit.collider)
 				check(allowed, "Pier contacts unintended permanent architecture: " + label + " -> " + owner(hit))
+			if index < 2 and segment == 15:
+				check(seen_ceiling_contacts.size() == 2, "Both declared fan-ceiling contacts required: " + label)
+				# Original exclusions remain active, so even accepted batches cannot
+				# hide lower/upper intrusion. EPS also clears the 0.5mm query margin.
+				assert_empty(AABB(bounds.position,Vector3(bounds.size.x,111.0-EPS-low,bounds.size.z)),own_exclusions,"No pier contact below declared ceiling band: " + label)
+				assert_empty(AABB(Vector3(bounds.position.x,111.18+EPS,bounds.position.z),Vector3(bounds.size.x,high-111.18-EPS,bounds.size.z)),own_exclusions,"No pier contact above declared ceiling band: " + label)
 			var y := (low + high) * 0.5
 			var witness := ray(Vector3(centre.x-1,y,centre.y+0.17), Vector3(centre.x+1,y,centre.y+0.17), shell_only_exclusions)
 			check(not witness.is_empty() and shell.is_ancestor_of(witness.collider) and absf(witness.position.x-(centre.x-0.4)) < EPS, "No actual full-height pier chord at " + label)
