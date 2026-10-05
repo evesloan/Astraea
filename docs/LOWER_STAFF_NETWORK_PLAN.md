@@ -1,6 +1,6 @@
 # Lower staff duty backbone
 
-This is the next construction increment after the five public cores. The source and runtime kit are integrated. Focused checks pass; the full aggregate and in-engine visual review remain pending.
+This is the next construction increment after the five public cores. The source and runtime kit are integrated. All81 runtime checks pass in715.3368seconds fixed60 simulation, alongside51 planning checks. These are assertion timings, not rendering performance. In-engine visual review remains pending. See LOWER_STAFF_VALIDATION.json.
 
 ## Bounded route
 Use the port-forward staff reservation centred at X -25, Z -490 for a three-stop service lift at Y 0, 6 and 12. Do not blindly extend it to D18: the upper terminal is outside the compact crown and needs separate roof coordination. The 8.6 by 12 metre lobby is not a verified stair core.
