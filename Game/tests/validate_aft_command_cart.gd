@@ -18,7 +18,14 @@ func run()->void:
 	assert(central!=null and aft!=null)
 	var doors:=central.find_children("CrownDoor_*","Node3D",true,false)
 	doors.append_array(aft.find_children("AftCommandDoor_*","Node3D",true,false))
-	assert(doors.size()==16)
+	assert(doors.size()==18,"Twelve retained central doors plus six aft-command doors must exist")
+	# Preserve the original sixteen straight-approach probes. The two new aft
+	# returns enter tight L-corridors and require asymmetric turns, exercised
+	# physically in validate_aft_crown_platform_cart.gd rather than this old
+	# generic five-metre straight corridor envelope.
+	var new_returns := ["AftCommandDoor_aft_command_port_exit","AftCommandDoor_aft_command_starboard_exit"]
+	doors=doors.filter(func(door:Node)->bool:return str(door.name) not in new_returns)
+	assert(doors.size()==16,"All original straight-door approaches remain covered")
 	for door in doors:door.interact(actor)
 	for frame in range(110):await physics_frame
 	var excluded:Array[RID]=[]
