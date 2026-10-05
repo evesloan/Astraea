@@ -71,8 +71,17 @@ for record in D['floor_regions']:
   points=[(63,side*14),(72,side*14),(78,side*13.2),(82,side*13.2),(86,side*14),(93,side*14),(97,side*10)]
   for i,(a,b)in enumerate(zip(points,points[1:])):
    top=106.26 if y==102 else y+4.26 # Walls meet structural cover behind the shaped ceiling, closing roof-edge gaps.
-   wall('HC_ProfileWall_%s_%s_%s'%(tag,side,i),a,b,y+.70,top,.16,'ivory_enamel')
-   wall('HC_Wainscot_%s_%s_%s'%(tag,side,i),a,b,y,y+.70,.16,'warm_walnut')
+   if tag=='D17' and i==2:
+    # Bounded open portal; preserve the original left-stub identity and all other owners.
+    # The paired AST-RES-005 frame is seated on the unchanged D17 floor.
+    for kind,lo,hi,role in [('ProfileWall',y+.70,top,'ivory_enamel'),('Wainscot',y,y+.70,'warm_walnut')]:
+     name='HC_%s_%s_%s_%s'%(kind,tag,side,i)
+     wall(name,a,(78.5,side*13.2),lo,hi,.16,role)
+     wall(name+'_PortalRightStub',(81.5,side*13.2),b,lo,hi,.16,role)
+     if kind=='ProfileWall':wall(name+'_PortalHeader',(78.5,side*13.2),(81.5,side*13.2),104.82,top,.16,role)
+   else:
+    wall('HC_ProfileWall_%s_%s_%s'%(tag,side,i),a,b,y+.70,top,.16,'ivory_enamel')
+    wall('HC_Wainscot_%s_%s_%s'%(tag,side,i),a,b,y,y+.70,.16,'warm_walnut')
  wall('HC_RearWall_'+tag,(96.9,-10),(96.9,10),y,106.26 if y==102 else y+4.26,.18,'ivory_enamel')
  # Bridge frames span into the existing atrium and commons end supports.
  for i,(a,b)in enumerate(zip(record['arrival'],record['arrival'][1:])):
@@ -135,7 +144,8 @@ for level,(floor,positions)in enumerate(fixture_sets):
   extrusion('HC_LampLens_%s_%s'%(level,index),[(cx-.35,cy-.18),(cx+.35,cy-.18),(cx+.35,cy+.18),(cx-.35,cy+.18)],h-84-.015,h-84,'lens')
   beam('HC_LampMount_%s_%s'%(level,index),[xyz(x,h+.12,z),xyz(x,ceiling,z)],.04,.04,'champagne_metal')
   datum('light_%s_%s'%(level,index),xyz(x,h-.03,z))
+bpy.context.preferences.filepaths.save_version=0
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(AID+'.blend');export=ROOT/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source))
 bpy.ops.export_scene.gltf(filepath=str(export),export_format='GLB',export_yup=True,export_extras=True)
-record={'catalogue_id':AID,'name':'Starboard residential commons upper section and alternating stairs','source':'source/'+AID+'.blend','export':'exports/'+AID+'.glb','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(export.read_bytes()).hexdigest(),'status':'Authored reviewed section; runtime sweeps, circulation and final visual acceptance pending'}
+record={'catalogue_id':AID,'name':'Starboard residential commons upper section and alternating stairs','source':'source/'+AID+'.blend','export':'exports/'+AID+'.glb','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(export.read_bytes()).hexdigest(),'status':'Bounded D17 open-portal source revision; parent must retain runtime baseline until supported onward floors and guards are ready. Runtime and visual acceptance pending'}
 (ROOT/(AID+'.manifest.json')).write_text(json.dumps(record,indent=2)+'\n');print(record)
