@@ -1,6 +1,6 @@
 # Upper Horizon enclosure: next-stage plan
 
-Planning snapshot: 2026-10-05. **No enclosure source, runtime geometry, imports, captures or tests are authored or run by this document.** The full 99-check platform regression is parent-owned and pending at this snapshot; its result must be reconciled before enclosure integration. This stage continues the complete ship platform before furnishings, rather than closing the Upper Horizon destination or its operating systems.
+Planning snapshot: 2026-10-05. **No enclosure source, runtime geometry, imports, captures or tests are authored or run by this document.** The full 99-check platform regression passed at the 926f4ad baseline; its receipt is AFT_CROWN_PLATFORM_VALIDATION.json. Enclosure integration requires fresh affected and aggregate validation. This stage continues the complete ship platform before furnishings, rather than closing the Upper Horizon destination or its operating systems.
 
 ## 1. Governing sources and exact baseline
 
@@ -12,7 +12,7 @@ Source baseline is catalogue commit `62ecbc2c24d9a64c4999c8e7afc25bfc7ed3f4b8`, 
 - Source geometry-parts SHA-256: `939a06fc142d194a4bf48e09472b6fbbef350cb5320679ed5261c895073fbfe0`
 - The installed 005 platform adds 2,309.2 m² foyer and 3,208 m² Upper Horizon floor, total 5,517.2 m². Its four missing-only regions leave the preceding 245 compiled records exact; the current baseline has 249 owners. No further floor addition is proposed here
 - Programme remains `D18_directory_09`; floor Y106.5, slab depth 0.24 m. Preserve all stable programme, guest, crew, floor and interaction IDs
-- Focused structural, public walking, four service-door and loaded-cart checks pass for 005; full 99-check acceptance is pending here. Enclosure changes require new scoped and aggregate evidence
+- Focused structural, public walking, four service-door and loaded-cart checks pass for 005; full 99-check platform regression now passes. Enclosure changes require new scoped and aggregate evidence
 
 ### Catalogue identity gate
 
