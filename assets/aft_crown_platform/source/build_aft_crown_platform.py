@@ -8,6 +8,12 @@ R=Path(__file__).resolve().parents[1];C=R.parents[1];AID='AST-CMD-005';FAMILY='a
 manifest=json.loads((C/'catalogue_manifest.json').read_text())
 assert all(a['catalogue_id']!=AID or a['family']==FAMILY for a in manifest['assets'])
 D=json.loads((R/'source/section_contract.json').read_text())
+# A later bounded enclosure revision owns four split Back/Cap objects only. Reproduce it
+# from its immutable source baseline rather than silently restoring the old high guards.
+if D.get('low_sill_revision'):
+ import runpy
+ runpy.run_path(str(C/'assets/upper_horizon_enclosure/source/revise_005_guards.py'),run_name='__main__')
+ raise SystemExit(0)
 for key in ['light_markers','windows','guards','doors']:D[key]=[]
 D['support']['hanger_assemblies']=[];D['support']['member_assemblies']=[]
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)

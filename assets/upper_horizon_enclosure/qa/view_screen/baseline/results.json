@@ -1,0 +1,1856 @@
+{
+  "status": "Design screen only; current005 and future envelopes. No new006 triangle, runtime, visual, collision/body-route, engineering, pressure or full-ship acceptance.",
+  "source_sha256": {
+    "/tmp/upper_horizon_view_screen/baseline_source/geometry_parts.json": "939a06fc142d194a4bf48e09472b6fbbef350cb5320679ed5261c895073fbfe0",
+    "/tmp/upper_horizon_view_screen/baseline_source/section_contract.json": "3b23828f71a63b6175cff393e33a2ebbeaf0e353c67f5f2546f7086a2aa247f7",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/aft_crown_platform/source/build_aft_crown_platform.py": "446ff556e04301c10a28a7db73caa2ce8b9322487362073ce18535ec116a2247",
+    "/workspace/shared/astraea-godot-production-20261003/shaders/astraea_space.gdshader": "08f0ec4c92b7de0c45afa539f8d9abdd65ec00c3d4af1831548f0ec24d485b2d",
+    "/workspace/shared/astraea-godot-production-20261003/scripts/ship.gd": "9d1a640e8b719aac5cbe741cd09a66e39f59a5a80fdda313e866e551bc1d3557",
+    "/workspace/shared/astraea-godot-production-20261003/data/architecture/SPACE_VIEW_COMPOSITION.json": "f9ac6257c278929b942c91381489ccd98d05eb5bac870f8ec0011da188bd48b2",
+    "/workspace/shared/astraea-godot-production-20261003/data/architecture/UPPER_SECTION_COORDINATION.json": "9e6a29d70f5ac21199270750abea0e01ae2637b56306926260693a2590b34867",
+    "/workspace/shared/astraea-godot-production-20261003/data/whole_ship_layout.json": "d641e95cf82b5ddd19e9448dc5d029aef2123d32630a08810a2169c8979706d8",
+    "/workspace/shared/astraea-godot-production-20261003/data/hull_envelope.json": "8412bacc9253a967fda398c2b81c54f413079374edafbf3d4a3716c70c913f87",
+    "/workspace/shared/astraea-godot-production-20261003/data/generated/structural_meshes.json": "1427634f9531fcdfec73b26e9e20343794d35d216991a4d4054005f1099e3e90",
+    "/workspace/shared/astraea-godot-production-20261003/docs/UPPER_HORIZON_ENCLOSURE_PLAN.md": "3832ba2ef6999473072b56c9f4b0fd46165e4f26b9717baec86c51fc59356c9b"
+  },
+  "world_sky": {
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "use_radiance_cache": false,
+    "direction_uniforms_normalized_before_use": true,
+    "no_shader_edits": true
+  },
+  "aperture": {
+    "abs_x_glass": 35.7,
+    "glass_thickness": 0.06,
+    "abs_x_glass_faces": [
+      35.67,
+      35.73
+    ],
+    "abs_x_reveal_faces": [
+      35.52,
+      35.88
+    ],
+    "clear_y": [
+      107.42,
+      111.03
+    ],
+    "preserved005_guard_top_y": 107.4,
+    "clear_z": [
+      160.1,
+      163.9
+    ]
+  },
+  "method": {
+    "continuous_proof": "For each actual005 source AABB at outward X, intersect a conservative AABB of the entire eye-box times complete target slope intervals. Zero candidates proves no source triangles can intersect any target ray; it is stronger than the ray-grid sample.",
+    "sample_formula": "d(rho,t)=normalize(c)*cos(rho)+(u*cos(t)+v*sin(t))*sin(rho); u=normalize(cross(c,up)); v=cross(u,c); 65 rho samples, 721 t samples, plus extrema/horizon directions; 27 eye grid stations including 8 corners.",
+    "parameterization": "p=dy/d|x| and q=dz/d|x|; at outward |X|=a, hit=(sign*a,eyeY+(a-|eyeX|)*p,eyeZ+(a-|eyeX|)*q).",
+    "source_triangles": "Current005 eight-vertex hexahedra reconstructed with exact FACES list used by source builder; double-sided Moller-Trumbore checks for negative/high-ray witness failures.",
+    "future_roof": "Y106.5 horizontal conservative roof reservation clipped to historical whole-hull plan, NOT installed roof triangles or resolved per-height hull shape. Infinite-plane result also given separately. General roof outside constructed floors is a future reservation.",
+    "plane_envelope_caution": "Independent p/q bounds are conservative; extremes need not occur on one ray."
+  },
+  "features": {
+    "starboard": {
+      "raw_direction": [
+        0.9354072,
+        -0.2923717,
+        0.1988269
+      ],
+      "normalized_direction": [
+        0.9354072107869571,
+        -0.29237170337158086,
+        0.19882690229283806
+      ],
+      "nominal_radius_degrees": 29,
+      "support_radius_degrees": 29.85,
+      "support_formula": "radians(29)+radians(.85)",
+      "full_support_extrema": {
+        "p_min": {
+          "value": -1.1059190763421047,
+          "direction": [
+            0.652833820595811,
+            -0.7219813758782065,
+            0.22923982108544866
+          ]
+        },
+        "p_max": {
+          "value": 0.2339018641569208,
+          "direction": [
+            0.9477884152696088,
+            0.22168947715789528,
+            0.22923982114410868
+          ]
+        },
+        "q_min": {
+          "value": -0.3514495753361701,
+          "direction": [
+            0.8882132702729509,
+            -0.33709340246146724,
+            -0.3121621766453795
+          ]
+        },
+        "q_max": {
+          "value": 0.9444634650027224,
+          "direction": [
+            0.6844554532781287,
+            -0.33709340200511756,
+            0.6464431690430704
+          ]
+        }
+      },
+      "positive_target_p": [
+        0,
+        0.2339018641569208
+      ],
+      "positive_target_q": [
+        -0.22923727128336502,
+        0.7511282568269942
+      ],
+      "positive_horizon_endpoints": [
+        {
+          "azimuth_degrees": -12.911252108444813,
+          "direction": [
+            0.9747173321211842,
+            0.0,
+            -0.2234415414880617
+          ]
+        },
+        {
+          "azimuth_degrees": 36.91124763183919,
+          "direction": [
+            0.7995667756602902,
+            0.0,
+            0.6005771984184941
+          ]
+        }
+      ],
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.95,
+          108.35
+        ],
+        "z": [
+          161.05,
+          161.35
+        ]
+      },
+      "nominal_eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "eye_heights_above_floor": [
+        1.45,
+        1.85
+      ],
+      "floor_scope": "Inside existing supported Upper Horizon wing; actual body, approach and route checks still required by parent",
+      "complete_positive_target_continuous_005_aabb_candidates": [],
+      "plane_envelopes": [
+        {
+          "abs_x": 35.52,
+          "y": [
+            107.95,
+            109.00960325692252
+          ],
+          "z": [
+            160.40355089498092,
+            163.46818168425213
+          ]
+        },
+        {
+          "abs_x": 35.67,
+          "y": [
+            107.95,
+            109.04468853654605
+          ],
+          "z": [
+            160.36916530428843,
+            163.58085092277616
+          ]
+        },
+        {
+          "abs_x": 35.7,
+          "y": [
+            107.95,
+            109.05170559247075
+          ],
+          "z": [
+            160.36228818614993,
+            163.60338477048097
+          ]
+        },
+        {
+          "abs_x": 35.73,
+          "y": [
+            107.95,
+            109.05872264839546
+          ],
+          "z": [
+            160.35541106801142,
+            163.62591861818578
+          ]
+        },
+        {
+          "abs_x": 35.88,
+          "y": [
+            107.95,
+            109.093807928019
+          ],
+          "z": [
+            160.3210254773189,
+            163.73858785670984
+          ]
+        },
+        {
+          "abs_x": 35.975,
+          "y": [
+            107.95,
+            109.11602860511391
+          ],
+          "z": [
+            160.299247936547,
+            163.8099450411084
+          ]
+        },
+        {
+          "abs_x": 52,
+          "y": [
+            107.95,
+            112.86430597822857
+          ],
+          "z": [
+            156.62572066423107,
+            175.846775356761
+          ]
+        },
+        {
+          "abs_x": 63,
+          "y": [
+            107.95,
+            115.43722648395469
+          ],
+          "z": [
+            154.10411068011405,
+            184.10918618185792
+          ]
+        },
+        {
+          "abs_x": 73,
+          "y": [
+            107.95,
+            117.7762451255239
+          ],
+          "z": [
+            151.8117379672804,
+            191.62046875012786
+          ]
+        },
+        {
+          "abs_x": 94,
+          "y": [
+            107.95,
+            122.68818427281924
+          ],
+          "z": [
+            146.99775527032975,
+            207.39416214349473
+          ]
+        },
+        {
+          "abs_x": 100,
+          "y": [
+            107.95,
+            124.09159545776076
+          ],
+          "z": [
+            145.62233164262955,
+            211.9009316844567
+          ]
+        },
+        {
+          "abs_x": 104,
+          "y": [
+            107.95,
+            125.02720291438845
+          ],
+          "z": [
+            144.70538255749608,
+            214.9054447117647
+          ]
+        },
+        {
+          "abs_x": 118,
+          "y": [
+            107.95,
+            128.30182901258533
+          ],
+          "z": [
+            141.49606075952897,
+            225.4212403073426
+          ]
+        },
+        {
+          "abs_x": 120,
+          "y": [
+            107.95,
+            128.76963274089917
+          ],
+          "z": [
+            141.03758621696224,
+            226.9234968209966
+          ]
+        }
+      ],
+      "aperture_checks": [
+        {
+          "abs_x": 35.52,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            2.020396743077484,
+            0.3035508949809298,
+            0.43181831574787566
+          ]
+        },
+        {
+          "abs_x": 35.67,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            1.9853114634539537,
+            0.26916530428843544,
+            0.319149077223841
+          ]
+        },
+        {
+          "abs_x": 35.7,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            1.9782944075292477,
+            0.2622881861499309,
+            0.2966152295190341
+          ]
+        },
+        {
+          "abs_x": 35.73,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            1.9712773516045416,
+            0.2554110680114263,
+            0.27408138181422714
+          ]
+        },
+        {
+          "abs_x": 35.88,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            1.9361920719809973,
+            0.22102547731890354,
+            0.16141214329016407
+          ]
+        }
+      ],
+      "minimum_shoulder_clearance": 0.5356940217714339,
+      "new_shoulder_required_corridor": [
+        35.7,
+        52.0,
+        107.95,
+        112.86430597822857,
+        156.62572066423107,
+        175.846775356761
+      ],
+      "future_massing": [
+        {
+          "name": "central_upper_pavilion",
+          "screen_aabb": [
+            94.0,
+            118.0,
+            106.5,
+            114.5,
+            22,
+            54
+          ],
+          "target_envelope_aabb": [
+            94.0,
+            118.0,
+            107.95,
+            128.30182901258533,
+            141.49606075952897,
+            225.4212403073426
+          ],
+          "overlap": false,
+          "scope": "Conservative bound only; no relocation or private-space cut assumed"
+        },
+        {
+          "name": "aft_upper_pavilion",
+          "screen_aabb": [
+            73.0,
+            104.0,
+            106.5,
+            114.5,
+            400,
+            436
+          ],
+          "target_envelope_aabb": [
+            73.0,
+            104.0,
+            107.95,
+            125.02720291438845,
+            144.70538255749608,
+            214.9054447117647
+          ],
+          "overlap": false,
+          "scope": "Conservative bound only; no relocation or private-space cut assumed"
+        },
+        {
+          "name": "aft_residential_court",
+          "screen_aabb": [
+            63.0,
+            100.0,
+            84,
+            106.5,
+            250,
+            491.123
+          ],
+          "target_envelope_aabb": [
+            63.0,
+            100.0,
+            107.95,
+            124.09159545776076,
+            145.62233164262955,
+            211.9009316844567
+          ],
+          "overlap": false,
+          "scope": "Conservative bound only; no relocation or private-space cut assumed"
+        }
+      ],
+      "sample_direction_count_positive": 5450,
+      "sample_direction_count_full_support": 46869,
+      "sample_eye_count": 27,
+      "sample_positive_eye_ray_pairs": 147150,
+      "npz_keys": [
+        "starboard_positive_directions",
+        "starboard_full_directions",
+        "starboard_eyes"
+      ],
+      "rejected_inboard_x30_horizon_width": 5.588083510229048,
+      "rejected_inboard_x30_why": "5.588m positive halo horizon width exceeds3.8m clear pane; apex alone can pass while side endpoints fail.",
+      "seated_diagnostics": [
+        {
+          "eye_y": 107.55,
+          "height_above_floor": 1.0499999999999972,
+          "eye_x_z_box": {
+            "abs_x": [
+              32.7,
+              33.1
+            ],
+            "y": [
+              107.55,
+              107.55
+            ],
+            "z": [
+              161.05,
+              161.35
+            ]
+          },
+          "nominal_eye": [
+            32.9,
+            107.55,
+            161.2
+          ],
+          "positive_target_current005_candidates": [
+            {
+              "name": "ACP_Starboard_GuardBack_01.008",
+              "world_aabb": [
+                35.620000000000005,
+                35.78,
+                106.49,
+                107.62,
+                159.95272727272726,
+                167.20181818181817
+              ],
+              "cone_bound_at_part_x": [
+                35.620000000000005,
+                35.78,
+                107.55,
+                108.27041774160331,
+                160.34394920444726,
+                163.66347503102713
+              ]
+            },
+            {
+              "name": "ACP_Starboard_GuardCap_01.008",
+              "world_aabb": [
+                35.580000000000005,
+                35.82,
+                107.59,
+                107.82,
+                159.95272727272726,
+                167.20181818181817
+              ],
+              "cone_bound_at_part_x": [
+                35.580000000000005,
+                35.82,
+                107.55,
+                108.2797738161696,
+                160.3347797135959,
+                163.69352016130023
+              ]
+            }
+          ],
+          "current005_nominal_sample_blocked_count": 3487,
+          "current005_nominal_sample_total": 5450,
+          "sampling_warning": "Directional construction sample counts are not projected image-area percentages.",
+          "current005_blocked_witnesses": [
+            {
+              "part": "ACP_Starboard_GuardBack_01.008",
+              "direction": [
+                0.9661384534081914,
+                0.00017604531000942059,
+                0.2580241419985292
+              ],
+              "point": [
+                35.620000000000005,
+                107.55049562590283,
+                161.92642348905605
+              ]
+            },
+            {
+              "part": "ACP_Starboard_GuardCap_01.008",
+              "direction": [
+                0.961772952519495,
+                0.013688933856381202,
+                0.2735057602534345
+              ],
+              "point": [
+                35.71036627866036,
+                107.59,
+                161.9992025182472
+              ]
+            }
+          ],
+          "baseline107_82_guard_centre_azimuth_crop_elevation_degrees": 5.628025555577661,
+          "positive_target_full_clear_aperture": true,
+          "positive_target_outer_reveal_bounds": [
+            35.88,
+            35.88,
+            107.55,
+            108.293807928019,
+            160.3210254773189,
+            163.73858785670984
+          ],
+          "positive_target_preserved005_guard_top107_40_margin": 0.14999999999999147,
+          "positive_target_new006_sill_top107_42_margin": 0.12999999999999545,
+          "guard_slice_ray_bounds": [
+            35.58,
+            35.82,
+            107.55,
+            108.2797738161696,
+            160.3347797135959,
+            163.69352016130023
+          ],
+          "new_guard_contract_conclusion": "All positive target rays pass aboveY107.40 and inside preserved Z160..164 replacement slice. Baseline higher guard causes the recorded seated crop. This is a conditional lower-sill envelope proof.",
+          "minimum_shoulder_clearance": 1.3356940217714453
+        },
+        {
+          "eye_y": 107.65,
+          "height_above_floor": 1.1500000000000057,
+          "eye_x_z_box": {
+            "abs_x": [
+              32.7,
+              33.1
+            ],
+            "y": [
+              107.65,
+              107.65
+            ],
+            "z": [
+              161.05,
+              161.35
+            ]
+          },
+          "nominal_eye": [
+            32.9,
+            107.65,
+            161.2
+          ],
+          "positive_target_current005_candidates": [
+            {
+              "name": "ACP_Starboard_GuardCap_01.008",
+              "world_aabb": [
+                35.580000000000005,
+                35.82,
+                107.59,
+                107.82,
+                159.95272727272726,
+                167.20181818181817
+              ],
+              "cone_bound_at_part_x": [
+                35.580000000000005,
+                35.82,
+                107.65,
+                108.3797738161696,
+                160.3347797135959,
+                163.69352016130023
+              ]
+            }
+          ],
+          "current005_nominal_sample_blocked_count": 2597,
+          "current005_nominal_sample_total": 5450,
+          "sampling_warning": "Directional construction sample counts are not projected image-area percentages.",
+          "current005_blocked_witnesses": [
+            {
+              "part": "ACP_Starboard_GuardCap_01.008",
+              "direction": [
+                0.9661384534081914,
+                0.00017604531000942059,
+                0.2580241419985292
+              ],
+              "point": [
+                35.580000000000005,
+                107.65048833728662,
+                161.91574079068758
+              ]
+            }
+          ],
+          "baseline107_82_guard_centre_azimuth_crop_elevation_degrees": 3.550461197879492,
+          "positive_target_full_clear_aperture": true,
+          "positive_target_outer_reveal_bounds": [
+            35.88,
+            35.88,
+            107.65,
+            108.39380792801902,
+            160.3210254773189,
+            163.73858785670984
+          ],
+          "positive_target_preserved005_guard_top107_40_margin": 0.25,
+          "positive_target_new006_sill_top107_42_margin": 0.23000000000000398,
+          "guard_slice_ray_bounds": [
+            35.58,
+            35.82,
+            107.65,
+            108.3797738161696,
+            160.3347797135959,
+            163.69352016130023
+          ],
+          "new_guard_contract_conclusion": "All positive target rays pass aboveY107.40 and inside preserved Z160..164 replacement slice. Baseline higher guard causes the recorded seated crop. This is a conditional lower-sill envelope proof.",
+          "minimum_shoulder_clearance": 1.2356940217714225
+        },
+        {
+          "eye_y": 107.75,
+          "height_above_floor": 1.25,
+          "eye_x_z_box": {
+            "abs_x": [
+              32.7,
+              33.1
+            ],
+            "y": [
+              107.75,
+              107.75
+            ],
+            "z": [
+              161.05,
+              161.35
+            ]
+          },
+          "nominal_eye": [
+            32.9,
+            107.75,
+            161.2
+          ],
+          "positive_target_current005_candidates": [
+            {
+              "name": "ACP_Starboard_GuardCap_01.008",
+              "world_aabb": [
+                35.580000000000005,
+                35.82,
+                107.59,
+                107.82,
+                159.95272727272726,
+                167.20181818181817
+              ],
+              "cone_bound_at_part_x": [
+                35.580000000000005,
+                35.82,
+                107.75,
+                108.4797738161696,
+                160.3347797135959,
+                163.69352016130023
+              ]
+            }
+          ],
+          "current005_nominal_sample_blocked_count": 1535,
+          "current005_nominal_sample_total": 5450,
+          "sampling_warning": "Directional construction sample counts are not projected image-area percentages.",
+          "current005_blocked_witnesses": [
+            {
+              "part": "ACP_Starboard_GuardCap_01.008",
+              "direction": [
+                0.9661384534081914,
+                0.00017604531000942059,
+                0.2580241419985292
+              ],
+              "point": [
+                35.580000000000005,
+                107.75048833728661,
+                161.91574079068758
+              ]
+            }
+          ],
+          "baseline107_82_guard_centre_azimuth_crop_elevation_degrees": 1.463510389997457,
+          "positive_target_full_clear_aperture": true,
+          "positive_target_outer_reveal_bounds": [
+            35.88,
+            35.88,
+            107.75,
+            108.49380792801901,
+            160.3210254773189,
+            163.73858785670984
+          ],
+          "positive_target_preserved005_guard_top107_40_margin": 0.3499999999999943,
+          "positive_target_new006_sill_top107_42_margin": 0.3299999999999983,
+          "guard_slice_ray_bounds": [
+            35.58,
+            35.82,
+            107.75,
+            108.4797738161696,
+            160.3347797135959,
+            163.69352016130023
+          ],
+          "new_guard_contract_conclusion": "All positive target rays pass aboveY107.40 and inside preserved Z160..164 replacement slice. Baseline higher guard causes the recorded seated crop. This is a conditional lower-sill envelope proof.",
+          "minimum_shoulder_clearance": 1.1356940217714282
+        }
+      ]
+    },
+    "port": {
+      "raw_direction": [
+        -0.9871089,
+        0.1045285,
+        -0.1212017
+      ],
+      "normalized_direction": [
+        -0.9871088803297088,
+        0.10452849791704234,
+        -0.12120169758479259
+      ],
+      "nominal_radius_degrees": 7,
+      "support_radius_degrees": 7.276646279254774,
+      "support_formula": "acos(cos(radians(7))-.0006)",
+      "full_support_extrema": {
+        "p_min": {
+          "value": -0.022453174763065215,
+          "direction": [
+            -0.9922571597550345,
+            -0.02227932341788251,
+            -0.12218576293052029
+          ]
+        },
+        "p_max": {
+          "value": 0.23778570622046513,
+          "direction": [
+            -0.9655845226301824,
+            0.22960219762916861,
+            -0.12218576226753684
+          ]
+        },
+        "q_min": {
+          "value": -0.2552117877648239,
+          "direction": [
+            -0.963547882386675,
+            0.10537718641845417,
+            -0.24590877766091357
+          ]
+        },
+        "q_max": {
+          "value": 0.0055318547519102,
+          "direction": [
+            -0.994417109075425,
+            0.10537719153601907,
+            0.0055009710102196935
+          ]
+        }
+      },
+      "positive_target_p": [
+        0,
+        0.23778570622046513
+      ],
+      "positive_target_q": [
+        -0.2552117877648239,
+        0.0055318547519102
+      ],
+      "positive_horizon_endpoints": [],
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.95,
+          108.35
+        ],
+        "z": [
+          162.1,
+          162.6
+        ]
+      },
+      "nominal_eye": [
+        -32.9,
+        108.15,
+        162.35
+      ],
+      "eye_heights_above_floor": [
+        1.45,
+        1.85
+      ],
+      "floor_scope": "Inside existing supported Upper Horizon wing; actual body, approach and route checks still required by parent",
+      "complete_positive_target_continuous_005_aabb_candidates": [],
+      "plane_envelopes": [
+        {
+          "abs_x": 35.52,
+          "y": [
+            107.95,
+            109.0205556915417
+          ],
+          "z": [
+            161.38030275850318,
+            162.61559983040038
+          ]
+        },
+        {
+          "abs_x": 35.67,
+          "y": [
+            107.95,
+            109.05622354747477
+          ],
+          "z": [
+            161.34202099033845,
+            162.61642960861317
+          ]
+        },
+        {
+          "abs_x": 35.7,
+          "y": [
+            107.95,
+            109.06335711866139
+          ],
+          "z": [
+            161.33436463670552,
+            162.61659556425573
+          ]
+        },
+        {
+          "abs_x": 35.73,
+          "y": [
+            107.95,
+            109.070490689848
+          ],
+          "z": [
+            161.32670828307258,
+            162.6167615198983
+          ]
+        },
+        {
+          "abs_x": 35.88,
+          "y": [
+            107.95,
+            109.10615854578107
+          ],
+          "z": [
+            161.28842651490785,
+            162.61759129811108
+          ]
+        },
+        {
+          "abs_x": 35.975,
+          "y": [
+            107.95,
+            109.12874818787202
+          ],
+          "z": [
+            161.2641813950702,
+            162.6181168243125
+          ]
+        },
+        {
+          "abs_x": 52,
+          "y": [
+            107.95,
+            112.93926413005497
+          ],
+          "z": [
+            157.1744124961389,
+            162.70676479671187
+          ]
+        },
+        {
+          "abs_x": 63,
+          "y": [
+            107.95,
+            115.55490689848008
+          ],
+          "z": [
+            154.36708283072582,
+            162.76761519898287
+          ]
+        },
+        {
+          "abs_x": 73,
+          "y": [
+            107.95,
+            117.93276396068474
+          ],
+          "z": [
+            151.8149649530776,
+            162.82293374650197
+          ]
+        },
+        {
+          "abs_x": 94,
+          "y": [
+            107.95,
+            122.92626379131451
+          ],
+          "z": [
+            146.45551741001628,
+            162.93910269629208
+          ]
+        },
+        {
+          "abs_x": 100,
+          "y": [
+            107.95,
+            124.3529780286373
+          ],
+          "z": [
+            144.92424668342736,
+            162.97229382480356
+          ]
+        },
+        {
+          "abs_x": 104,
+          "y": [
+            107.95,
+            125.30412085351915
+          ],
+          "z": [
+            143.90339953236804,
+            162.9944212438112
+          ]
+        },
+        {
+          "abs_x": 118,
+          "y": [
+            107.95,
+            128.63312074060568
+          ],
+          "z": [
+            140.3304345036605,
+            163.07186721033793
+          ]
+        },
+        {
+          "abs_x": 120,
+          "y": [
+            107.95,
+            129.1086921530466
+          ],
+          "z": [
+            139.82001092813087,
+            163.08293091984174
+          ]
+        }
+      ],
+      "aperture_checks": [
+        {
+          "abs_x": 35.52,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            2.009444308458299,
+            1.2803027585031828,
+            1.2844001695996212
+          ]
+        },
+        {
+          "abs_x": 35.67,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            1.9737764525252288,
+            1.2420209903384603,
+            1.2835703913868315
+          ]
+        },
+        {
+          "abs_x": 35.7,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            1.9666428813386148,
+            1.2343646367055214,
+            1.2834044357442735
+          ]
+        },
+        {
+          "abs_x": 35.73,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            1.9595093101520007,
+            1.2267082830725826,
+            1.2832384801017156
+          ]
+        },
+        {
+          "abs_x": 35.88,
+          "continuous_pass": true,
+          "margins_yz": [
+            0.5300000000000011,
+            1.9238414542189304,
+            1.18842651490786,
+            1.2824087018889259
+          ]
+        }
+      ],
+      "minimum_shoulder_clearance": 0.4607358699450401,
+      "new_shoulder_required_corridor": [
+        -52.0,
+        -35.7,
+        107.95,
+        112.93926413005497,
+        157.1744124961389,
+        162.70676479671187
+      ],
+      "future_massing": [
+        {
+          "name": "central_upper_pavilion",
+          "screen_aabb": [
+            -118.0,
+            -94.0,
+            106.5,
+            114.5,
+            22,
+            54
+          ],
+          "target_envelope_aabb": [
+            -118.0,
+            -94.0,
+            107.95,
+            128.63312074060568,
+            140.3304345036605,
+            163.07186721033793
+          ],
+          "overlap": false,
+          "scope": "Conservative bound only; no relocation or private-space cut assumed"
+        },
+        {
+          "name": "aft_upper_pavilion",
+          "screen_aabb": [
+            -104.0,
+            -73.0,
+            106.5,
+            114.5,
+            400,
+            436
+          ],
+          "target_envelope_aabb": [
+            -104.0,
+            -73.0,
+            107.95,
+            125.30412085351915,
+            143.90339953236804,
+            162.9944212438112
+          ],
+          "overlap": false,
+          "scope": "Conservative bound only; no relocation or private-space cut assumed"
+        },
+        {
+          "name": "aft_residential_court",
+          "screen_aabb": [
+            -100.0,
+            -63.0,
+            84,
+            106.5,
+            250,
+            491.123
+          ],
+          "target_envelope_aabb": [
+            -100.0,
+            -63.0,
+            107.95,
+            124.3529780286373,
+            144.92424668342736,
+            162.97229382480356
+          ],
+          "overlap": false,
+          "scope": "Conservative bound only; no relocation or private-space cut assumed"
+        }
+      ],
+      "sample_direction_count_positive": 45724,
+      "sample_direction_count_full_support": 46869,
+      "sample_eye_count": 27,
+      "sample_positive_eye_ray_pairs": 1234548,
+      "npz_keys": [
+        "port_positive_directions",
+        "port_full_directions",
+        "port_eyes"
+      ],
+      "full_footprint_continuous_005_candidates": [],
+      "full_footprint_outer_reveal_bounds": [
+        -35.88,
+        -35.88,
+        107.87859890425345,
+        109.10615854578107,
+        161.28842651490785,
+        162.61759129811108
+      ],
+      "full_footprint_note": "Entire shader-supported footprint clears local frame/aperture/shoulder; below-horizon fringe is conditionally clipped by future D17 roof and is not promised.",
+      "seated_diagnostics": [
+        {
+          "eye_y": 107.55,
+          "height_above_floor": 1.0499999999999972,
+          "eye_x_z_box": {
+            "abs_x": [
+              32.7,
+              33.1
+            ],
+            "y": [
+              107.55,
+              107.55
+            ],
+            "z": [
+              162.1,
+              162.6
+            ]
+          },
+          "nominal_eye": [
+            -32.9,
+            107.55,
+            162.35
+          ],
+          "positive_target_current005_candidates": [
+            {
+              "name": "ACP_Port_GuardBack_01.008",
+              "world_aabb": [
+                -35.78,
+                -35.620000000000005,
+                106.49,
+                107.62,
+                159.95272727272726,
+                167.20181818181817
+              ],
+              "cone_bound_at_part_x": [
+                -35.78,
+                -35.620000000000005,
+                107.55,
+                108.28237997515903,
+                161.31394769368433,
+                162.61703811263587
+              ]
+            },
+            {
+              "name": "ACP_Port_GuardCap_01.008",
+              "world_aabb": [
+                -35.82,
+                -35.580000000000005,
+                107.59,
+                107.82,
+                159.95272727272726,
+                167.20181818181817
+              ],
+              "cone_bound_at_part_x": [
+                -35.82,
+                -35.580000000000005,
+                107.55,
+                108.29189140340785,
+                161.30373922217373,
+                162.61725938682596
+              ]
+            }
+          ],
+          "current005_nominal_sample_blocked_count": 19217,
+          "current005_nominal_sample_total": 45724,
+          "sampling_warning": "Directional construction sample counts are not projected image-area percentages.",
+          "current005_blocked_witnesses": [
+            {
+              "part": "ACP_Port_GuardBack_01.008",
+              "direction": [
+                -0.9928814505395326,
+                0.025533273990230324,
+                -0.11633777156991394
+              ],
+              "point": [
+                -35.620000000000005,
+                107.61994843665947,
+                162.03129252641568
+              ]
+            },
+            {
+              "part": "ACP_Port_GuardCap_01.008",
+              "direction": [
+                -0.9880021123975813,
+                0.09953330854889747,
+                -0.11808872252347885
+              ],
+              "point": [
+                -35.580000000000005,
+                107.81998855929946,
+                162.0296790488687
+              ]
+            }
+          ],
+          "baseline107_82_guard_centre_azimuth_crop_elevation_degrees": 5.710327741622474,
+          "positive_target_full_clear_aperture": true,
+          "positive_target_outer_reveal_bounds": [
+            -35.88,
+            -35.88,
+            107.55,
+            108.30615854578107,
+            161.28842651490785,
+            162.61759129811108
+          ],
+          "positive_target_preserved005_guard_top107_40_margin": 0.14999999999999147,
+          "positive_target_new006_sill_top107_42_margin": 0.12999999999999545,
+          "guard_slice_ray_bounds": [
+            -35.82,
+            -35.58,
+            107.55,
+            108.29189140340785,
+            161.30373922217373,
+            162.61725938682596
+          ],
+          "new_guard_contract_conclusion": "All positive target rays pass aboveY107.40 and inside preserved Z160..164 replacement slice. Baseline higher guard causes the recorded seated crop. This is a conditional lower-sill envelope proof.",
+          "minimum_shoulder_clearance": 1.2607358699450373,
+          "full_support_outer_reveal_bounds": [
+            -35.88,
+            -35.88,
+            107.47859890425345,
+            108.30615854578107,
+            161.28842651490785,
+            162.61759129811108
+          ],
+          "full_support_preserved005_guard_top107_40_margin": 0.07859890425343963,
+          "full_support_new006_sill_top107_42_margin": 0.05859890425344361,
+          "future_roof_negative_fringe_witnesses": [
+            {
+              "name": "nominal_minus1deg",
+              "point": [
+                -92.60607749150357,
+                106.5,
+                155.01901549197092
+              ],
+              "within_historical_hull_plan": true
+            },
+            {
+              "name": "actual_support_bottom",
+              "point": [
+                -79.66398821458492,
+                106.5,
+                156.59151942719814
+              ],
+              "within_historical_hull_plan": true
+            }
+          ]
+        },
+        {
+          "eye_y": 107.65,
+          "height_above_floor": 1.1500000000000057,
+          "eye_x_z_box": {
+            "abs_x": [
+              32.7,
+              33.1
+            ],
+            "y": [
+              107.65,
+              107.65
+            ],
+            "z": [
+              162.1,
+              162.6
+            ]
+          },
+          "nominal_eye": [
+            -32.9,
+            107.65,
+            162.35
+          ],
+          "positive_target_current005_candidates": [
+            {
+              "name": "ACP_Port_GuardCap_01.008",
+              "world_aabb": [
+                -35.82,
+                -35.580000000000005,
+                107.59,
+                107.82,
+                159.95272727272726,
+                167.20181818181817
+              ],
+              "cone_bound_at_part_x": [
+                -35.82,
+                -35.580000000000005,
+                107.65,
+                108.39189140340785,
+                161.30373922217373,
+                162.61725938682596
+              ]
+            }
+          ],
+          "current005_nominal_sample_blocked_count": 8535,
+          "current005_nominal_sample_total": 45724,
+          "sampling_warning": "Directional construction sample counts are not projected image-area percentages.",
+          "current005_blocked_witnesses": [
+            {
+              "part": "ACP_Port_GuardCap_01.008",
+              "direction": [
+                -0.9920534760915986,
+                0.06292164529579926,
+                -0.10895305010804232
+              ],
+              "point": [
+                -35.580000000000005,
+                107.81998076561064,
+                162.0556669006998
+              ]
+            }
+          ],
+          "baseline107_82_guard_centre_azimuth_crop_elevation_degrees": 3.602588116459296,
+          "positive_target_full_clear_aperture": true,
+          "positive_target_outer_reveal_bounds": [
+            -35.88,
+            -35.88,
+            107.65,
+            108.40615854578108,
+            161.28842651490785,
+            162.61759129811108
+          ],
+          "positive_target_preserved005_guard_top107_40_margin": 0.25,
+          "positive_target_new006_sill_top107_42_margin": 0.23000000000000398,
+          "guard_slice_ray_bounds": [
+            -35.82,
+            -35.58,
+            107.65,
+            108.39189140340785,
+            161.30373922217373,
+            162.61725938682596
+          ],
+          "new_guard_contract_conclusion": "All positive target rays pass aboveY107.40 and inside preserved Z160..164 replacement slice. Baseline higher guard causes the recorded seated crop. This is a conditional lower-sill envelope proof.",
+          "minimum_shoulder_clearance": 1.1607358699450288,
+          "full_support_outer_reveal_bounds": [
+            -35.88,
+            -35.88,
+            107.57859890425345,
+            108.40615854578108,
+            161.28842651490785,
+            162.61759129811108
+          ],
+          "full_support_preserved005_guard_top107_40_margin": 0.17859890425344815,
+          "full_support_new006_sill_top107_42_margin": 0.15859890425345213,
+          "future_roof_negative_fringe_witnesses": [
+            {
+              "name": "nominal_minus1deg",
+              "point": [
+                -98.29237058593299,
+                106.5,
+                154.3208264912062
+              ],
+              "within_historical_hull_plan": true
+            },
+            {
+              "name": "actual_support_bottom",
+              "point": [
+                -84.1177013778791,
+                106.5,
+                156.04309270597886
+              ],
+              "within_historical_hull_plan": true
+            }
+          ]
+        },
+        {
+          "eye_y": 107.75,
+          "height_above_floor": 1.25,
+          "eye_x_z_box": {
+            "abs_x": [
+              32.7,
+              33.1
+            ],
+            "y": [
+              107.75,
+              107.75
+            ],
+            "z": [
+              162.1,
+              162.6
+            ]
+          },
+          "nominal_eye": [
+            -32.9,
+            107.75,
+            162.35
+          ],
+          "positive_target_current005_candidates": [
+            {
+              "name": "ACP_Port_GuardCap_01.008",
+              "world_aabb": [
+                -35.82,
+                -35.580000000000005,
+                107.59,
+                107.82,
+                159.95272727272726,
+                167.20181818181817
+              ],
+              "cone_bound_at_part_x": [
+                -35.82,
+                -35.580000000000005,
+                107.75,
+                108.49189140340785,
+                161.30373922217373,
+                162.61725938682596
+              ]
+            }
+          ],
+          "current005_nominal_sample_blocked_count": 2584,
+          "current005_nominal_sample_total": 45724,
+          "sampling_warning": "Directional construction sample counts are not projected image-area percentages.",
+          "current005_blocked_witnesses": [
+            {
+              "part": "ACP_Port_GuardCap_01.008",
+              "direction": [
+                -0.9933437544428575,
+                0.02592897643685292,
+                -0.11223134005394897
+              ],
+              "point": [
+                -35.580000000000005,
+                107.81995529648218,
+                162.04720452763777
+              ]
+            }
+          ],
+          "baseline107_82_guard_centre_azimuth_crop_elevation_degrees": 1.4850440059829457,
+          "positive_target_full_clear_aperture": true,
+          "positive_target_outer_reveal_bounds": [
+            -35.88,
+            -35.88,
+            107.75,
+            108.50615854578108,
+            161.28842651490785,
+            162.61759129811108
+          ],
+          "positive_target_preserved005_guard_top107_40_margin": 0.3499999999999943,
+          "positive_target_new006_sill_top107_42_margin": 0.3299999999999983,
+          "guard_slice_ray_bounds": [
+            -35.82,
+            -35.58,
+            107.75,
+            108.49189140340785,
+            161.30373922217373,
+            162.61725938682596
+          ],
+          "new_guard_contract_conclusion": "All positive target rays pass aboveY107.40 and inside preserved Z160..164 replacement slice. Baseline higher guard causes the recorded seated crop. This is a conditional lower-sill envelope proof.",
+          "minimum_shoulder_clearance": 1.0607358699450344,
+          "full_support_outer_reveal_bounds": [
+            -35.88,
+            -35.88,
+            107.67859890425345,
+            108.50615854578108,
+            161.28842651490785,
+            162.61759129811108
+          ],
+          "full_support_preserved005_guard_top107_40_margin": 0.27859890425344247,
+          "full_support_new006_sill_top107_42_margin": 0.25859890425344645,
+          "future_roof_negative_fringe_witnesses": [
+            {
+              "name": "nominal_minus1deg",
+              "point": [
+                -103.97866368036159,
+                106.5,
+                153.62263749044155
+              ],
+              "within_historical_hull_plan": true
+            },
+            {
+              "name": "actual_support_bottom",
+              "point": [
+                -88.57141454117266,
+                106.5,
+                155.49466598475968
+              ],
+              "within_historical_hull_plan": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "witness_rays": [
+    {
+      "name": "starboard_planet_centre",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.9354072107869571,
+        -0.29237170337158086,
+        0.19882690229283806
+      ],
+      "glass_hit": [
+        35.7,
+        107.27482952878704,
+        161.79515825834994
+      ],
+      "inside_clear_glass_yz": false,
+      "current005_triangle_hits": [
+        {
+          "part": "ACP_Starboard_GuardBack_01.008",
+          "distance": 2.907824494651557,
+          "point": [
+            35.620000000000005,
+            107.29983439939312,
+            161.77815373668278
+          ]
+        },
+        {
+          "part": "ACP_Starboard_GuardBack_01.008",
+          "distance": 3.0788729943369386,
+          "point": [
+            35.78,
+            107.24982465818096,
+            161.81216278001708
+          ]
+        }
+      ],
+      "future_roof": {
+        "infinite_plane_hit": [
+          38.178971528366134,
+          106.5,
+          162.32207982167904
+        ],
+        "within_historical_hull_plan": true,
+        "distance": 5.643500998805581,
+        "reservation_only": true
+      }
+    },
+    {
+      "name": "starboard_minus5deg",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.9744254538021788,
+        -0.08715574274765817,
+        0.2071205240639421
+      ],
+      "glass_hit": [
+        35.7,
+        107.8995590055235,
+        161.79515837267604
+      ],
+      "inside_clear_glass_yz": true,
+      "current005_triangle_hits": [],
+      "future_roof": {
+        "infinite_plane_hit": [
+          51.34745908974313,
+          106.5,
+          165.1211284756642
+        ],
+        "within_historical_hull_plan": true,
+        "distance": 18.93162685535533,
+        "reservation_only": true
+      }
+    },
+    {
+      "name": "starboard_minus10deg",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.9632873407929415,
+        -0.17364817766693033,
+        0.2047530450592065
+      ],
+      "glass_hit": [
+        35.7,
+        107.64525455502492,
+        161.79515837267604
+      ],
+      "inside_clear_glass_yz": true,
+      "current005_triangle_hits": [
+        {
+          "part": "ACP_Starboard_GuardCap_01.008",
+          "distance": 2.782139748451311,
+          "point": [
+            35.580000000000005,
+            107.6668865026667,
+            161.76965158527565
+          ]
+        },
+        {
+          "part": "ACP_Starboard_GuardCap_01.008",
+          "distance": 3.0312865915961984,
+          "point": [
+            35.82,
+            107.62362260738313,
+            161.82066516007646
+          ]
+        }
+      ],
+      "future_roof": {
+        "infinite_plane_hit": [
+          42.05312866315815,
+          106.5,
+          163.1455575571642
+        ],
+        "within_historical_hull_plan": true,
+        "distance": 9.50197129718703,
+        "reservation_only": true
+      }
+    },
+    {
+      "name": "starboard_nominal_low_limb",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.6794784183941235,
+        -0.7193398003386512,
+        0.14442759634283958
+      ],
+      "glass_hit": [
+        35.7,
+        105.18573890439602,
+        161.79515837267604
+      ],
+      "inside_clear_glass_yz": false,
+      "current005_triangle_hits": [],
+      "future_roof": {
+        "infinite_plane_hit": [
+          34.458567160919635,
+          106.5,
+          161.53128367685687
+        ],
+        "within_historical_hull_plan": true,
+        "distance": 2.2937699251775276,
+        "reservation_only": true
+      }
+    },
+    {
+      "name": "port_nominal_low_limb",
+      "eye": [
+        -32.9,
+        108.15,
+        162.35
+      ],
+      "direction": [
+        -0.9923949820549218,
+        -0.01745240643728351,
+        -0.12185078211385952
+      ],
+      "glass_hit": [
+        -35.7,
+        108.10075878162624,
+        162.00620322947185
+      ],
+      "inside_clear_glass_yz": true,
+      "current005_triangle_hits": [],
+      "future_roof": {
+        "infinite_plane_hit": [
+          -126.72383605807761,
+          106.5,
+          150.82988148738283
+        ],
+        "within_historical_hull_plan": false,
+        "distance": 94.54283602260813,
+        "reservation_only": true
+      }
+    },
+    {
+      "name": "port_actual_support_lowest_slope",
+      "eye": [
+        -32.9,
+        108.15,
+        162.35
+      ],
+      "direction": [
+        -0.9922571597550346,
+        -0.022279323417882513,
+        -0.1221857629305203
+      ],
+      "glass_hit": [
+        -35.7,
+        108.08713111066342,
+        162.00521021154444
+      ],
+      "inside_clear_glass_yz": true,
+      "current005_triangle_hits": [],
+      "future_roof": {
+        "infinite_plane_hit": [
+          -106.38626719434816,
+          106.5,
+          153.30095909988273
+        ],
+        "within_historical_hull_plan": true,
+        "distance": 74.05969961707329,
+        "reservation_only": true
+      }
+    },
+    {
+      "name": "starboard_high_clear_pane_centre",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.6836511266935636,
+        0.7031840160276633,
+        0.19532889334102066
+      ],
+      "glass_hit": [
+        35.7,
+        111.03,
+        162.0
+      ],
+      "inside_clear_glass_yz": true,
+      "current005_triangle_hits": [
+        {
+          "part": "ACP_RoofLong_X35.5_Flange.008",
+          "distance": 4.195203435744671,
+          "point": [
+            35.76805555555555,
+            111.1,
+            162.01944444444445
+          ]
+        },
+        {
+          "part": "ACP_RoofLong_X35.5_Flange.008",
+          "distance": 4.2419296725592615,
+          "point": [
+            35.8,
+            111.13285714285713,
+            162.02857142857144
+          ]
+        },
+        {
+          "part": "ACP_Starboard_EdgeRoofWeb_00.008",
+          "distance": 4.280529607319142,
+          "point": [
+            35.826388888888886,
+            111.16,
+            162.0361111111111
+          ]
+        },
+        {
+          "part": "ACP_Starboard_EdgeRoofFlange_00.008",
+          "distance": 4.280529607319142,
+          "point": [
+            35.826388888888886,
+            111.16,
+            162.0361111111111
+          ]
+        },
+        {
+          "part": "ACP_Starboard_EdgeRoofWeb_00.008",
+          "distance": 4.300439047353191,
+          "point": [
+            35.84,
+            111.174,
+            162.04
+          ]
+        },
+        {
+          "part": "ACP_Starboard_EdgeRoofFlange_00.008",
+          "distance": 4.497908187282672,
+          "point": [
+            35.975,
+            111.31285714285714,
+            162.07857142857142
+          ]
+        }
+      ],
+      "future_roof": {
+        "hit": false,
+        "reason": "nonnegative elevation; eye is above roof"
+      }
+    },
+    {
+      "name": "starboard_inboard_upper_apex",
+      "eye": [
+        30.0,
+        108.15,
+        162.0
+      ],
+      "direction": [
+        0.9477884152696086,
+        0.22168947715789522,
+        0.22923982114410862
+      ],
+      "glass_hit": [
+        35.7,
+        109.48324062569445,
+        163.3786483981762
+      ],
+      "inside_clear_glass_yz": true,
+      "current005_triangle_hits": [],
+      "future_roof": {
+        "hit": false,
+        "reason": "nonnegative elevation; eye is above roof"
+      }
+    },
+    {
+      "name": "starboard_inboard_horizon_aft_endpoint",
+      "eye": [
+        30.0,
+        108.15,
+        162.0
+      ],
+      "direction": [
+        0.7995667756602902,
+        0.0,
+        0.6005771984184941
+      ],
+      "glass_hit": [
+        35.7,
+        108.15,
+        166.28143106391386
+      ],
+      "inside_clear_glass_yz": false,
+      "current005_triangle_hits": [],
+      "future_roof": {
+        "hit": false,
+        "reason": "nonnegative elevation; eye is above roof"
+      }
+    }
+  ],
+  "selected005_label": "baseline_62ecbc2",
+  "selected005_geometry_path": "/tmp/upper_horizon_view_screen/baseline_source/geometry_parts.json",
+  "baseline_guard_is_present": true,
+  "limitations": [
+    "Final006 exact mesh triangles, actual transparent-glass interpretation, source/export preservation and contact proofs must be screened after final source build.",
+    "No Godot process, import, capture, tests, backing-up or production edit performed by this screening script.",
+    "Ordinary normal/effects-off standing views and slow pans remain mandatory.",
+    "Future roof model is an envelope rather than installed complete ship geometry. Shallow negative rays can cross Y106.5 beyond the finite hull plan; do not claim every negative sky ray is hidden.",
+    "Positive-horizon rays remain at eye height above roof; from these stations the complete evaluated cap/crescent lies between central and aft pavilion/court footprints. No court view is promised.",
+    "Unrelated high-angle stars near pane top remain clipped by unchanged frame and reveal depth; full-window panoramic visibility is not certified.",
+    "Eye-box approval is optical only. Player species/body size, floor contact, safe approach and all existing public/service routes belong to separate physical validation."
+  ],
+  "sample_npz_sha256": "c4fc8fa68ea4a0fabbd7f9cc55ab59ba2b63585b3761f5a8d0bd3f294bd1922a"
+}
