@@ -134,7 +134,41 @@
           "bottom_y": 0,
           "top_y": 3.2,
           "mode": "open_existing_supported_destination"
+        },
+        {
+          "name": "D01_existing_spine_sidewall_omission_-61.8",
+          "plane_axis": "z",
+          "plane": -61.8,
+          "range_axis": "x",
+          "range": [
+            -48,
+            -46
+          ],
+          "bottom_y": 0,
+          "top_y": 3.2,
+          "mode": "omit_return_inside_existing_longitudinal_street"
+        },
+        {
+          "name": "D01_existing_spine_sidewall_omission_-58.2",
+          "plane_axis": "z",
+          "plane": -58.2,
+          "range_axis": "x",
+          "range": [
+            -48,
+            -46
+          ],
+          "bottom_y": 0,
+          "top_y": 3.2,
+          "mode": "omit_return_inside_existing_longitudinal_street"
         }
+      ],
+      "existing_floor_overlap_rectangles": [
+        [
+          -48,
+          -46,
+          -61.8,
+          -58.2
+        ]
       ]
     },
     {
@@ -482,9 +516,11 @@
     "wall_thickness": 0.12,
     "bumper_projection": 0.025,
     "minimum_straight_clear_width": 3.31,
-    "clear_height": 3.2,
+    "clear_height": 3.015,
     "corner_turn_square_clear": 3.31,
-    "cart_envelope_screen": "Parent to drive existing loaded physical cart; static planar square is not dynamic acceptance."
+    "cart_envelope_screen": "Parent to drive existing loaded physical cart; static planar square is not dynamic acceptance.",
+    "ceiling_underside_height": 3.2,
+    "fixture_minimum_underside_height": 3.015
   },
   "lift": {
     "parent_position": [
@@ -508,7 +544,7 @@
     ],
     "floor_shaft_exclusion": [
       -27.2,
-      -23.2,
+      -23.18,
       -492.2,
       -487.8
     ],
@@ -572,17 +608,1710 @@
       ],
       "height_from_stop": [
         0,
-        2.86
+        2.85
       ]
     },
     "minimum_cabin_side_clearance": 0.04,
     "minimum_cabin_rear_clearance": 0.16,
     "minimum_cabin_top_clearance": 0.16,
-    "pit_to_cabin_bottom_clearance": 0.02
+    "pit_to_cabin_bottom_clearance": 0.02,
+    "floor_contact_tolerance_east_m": 0.02,
+    "floor_contact_tolerance_note": "Reserve 0.02 m beyond cabin front X\u221223.20; existing fixed sill bridges this clearance. Authored enclosure and portal geometry unchanged.",
+    "ceiling_shaft_exclusion": [
+      -27.2,
+      -23.18,
+      -492.2,
+      -487.8
+    ],
+    "ceiling_contact_tolerance_note": "All corridor ceilings subtract the same shaft reservation; 0.02 m clearance beyond moving cabin roof front X\u221223.20. Whole moving cabin swept AABB checked with 5 mm inflation."
   },
   "render_batch_max_cell_m": 20,
   "wall_policy": "Walls and bumpers entirely inside union floor polygons. Boundary apertures open at supported existing interfaces only. D03 threshold east ends and outer walls closed. No D01 Arrivals spur.",
-  "light_markers": [],
+  "light_markers": [
+    {
+      "name": "DATUM_light_D01_000",
+      "position": [
+        -21,
+        3.005,
+        -490
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_001",
+      "position": [
+        -21,
+        3.005,
+        -497
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_002",
+      "position": [
+        -29,
+        3.005,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_003",
+      "position": [
+        -39,
+        3.005,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_004",
+      "position": [
+        -49,
+        3.005,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_005",
+      "position": [
+        -57,
+        3.005,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_006",
+      "position": [
+        -57,
+        3.005,
+        -490
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_007",
+      "position": [
+        -57,
+        3.005,
+        -480
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_008",
+      "position": [
+        -57,
+        3.005,
+        -470
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_009",
+      "position": [
+        -57,
+        3.005,
+        -460
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_010",
+      "position": [
+        -57,
+        3.005,
+        -450
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_011",
+      "position": [
+        -57,
+        3.005,
+        -440
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_012",
+      "position": [
+        -57,
+        3.005,
+        -430
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_013",
+      "position": [
+        -57,
+        3.005,
+        -420
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_014",
+      "position": [
+        -57,
+        3.005,
+        -410
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_015",
+      "position": [
+        -57,
+        3.005,
+        -400
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_016",
+      "position": [
+        -57,
+        3.005,
+        -390
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_017",
+      "position": [
+        -57,
+        3.005,
+        -380
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_018",
+      "position": [
+        -57,
+        3.005,
+        -370
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_019",
+      "position": [
+        -57,
+        3.005,
+        -360
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_020",
+      "position": [
+        -57,
+        3.005,
+        -350
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_021",
+      "position": [
+        -57,
+        3.005,
+        -340
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_022",
+      "position": [
+        -57,
+        3.005,
+        -330
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_023",
+      "position": [
+        -57,
+        3.005,
+        -320
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_024",
+      "position": [
+        -57,
+        3.005,
+        -310
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_025",
+      "position": [
+        -57,
+        3.005,
+        -300
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_026",
+      "position": [
+        -57,
+        3.005,
+        -290
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_027",
+      "position": [
+        -57,
+        3.005,
+        -280
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_028",
+      "position": [
+        -57,
+        3.005,
+        -270
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_029",
+      "position": [
+        -57,
+        3.005,
+        -260
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_030",
+      "position": [
+        -57,
+        3.005,
+        -250
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_031",
+      "position": [
+        -57,
+        3.005,
+        -240
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_032",
+      "position": [
+        -57,
+        3.005,
+        -230
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_033",
+      "position": [
+        -57,
+        3.005,
+        -220
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_034",
+      "position": [
+        -57,
+        3.005,
+        -210
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_035",
+      "position": [
+        -57,
+        3.005,
+        -200
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_036",
+      "position": [
+        -57,
+        3.005,
+        -190
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_037",
+      "position": [
+        -57,
+        3.005,
+        -180
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_038",
+      "position": [
+        -57,
+        3.005,
+        -170
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_039",
+      "position": [
+        -57,
+        3.005,
+        -160
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_040",
+      "position": [
+        -57,
+        3.005,
+        -150
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_041",
+      "position": [
+        -57,
+        3.005,
+        -140
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_042",
+      "position": [
+        -57,
+        3.005,
+        -130
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_043",
+      "position": [
+        -57,
+        3.005,
+        -120
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_044",
+      "position": [
+        -57,
+        3.005,
+        -110
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_045",
+      "position": [
+        -57,
+        3.005,
+        -100
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_046",
+      "position": [
+        -57,
+        3.005,
+        -90
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_047",
+      "position": [
+        -57,
+        3.005,
+        -80
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_048",
+      "position": [
+        -57,
+        3.005,
+        -70
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D01_049",
+      "position": [
+        -50,
+        3.005,
+        -60
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 1
+    },
+    {
+      "name": "DATUM_light_D02_000",
+      "position": [
+        -21,
+        9.004999999999999,
+        -490
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_001",
+      "position": [
+        -21,
+        9.004999999999999,
+        -497
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_002",
+      "position": [
+        -29,
+        9.004999999999999,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_003",
+      "position": [
+        -39,
+        9.004999999999999,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_004",
+      "position": [
+        -49,
+        9.004999999999999,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_005",
+      "position": [
+        -57,
+        9.004999999999999,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_006",
+      "position": [
+        -57,
+        9.004999999999999,
+        -490
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_007",
+      "position": [
+        -57,
+        9.004999999999999,
+        -480
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_008",
+      "position": [
+        -57,
+        9.004999999999999,
+        -470
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_009",
+      "position": [
+        -57,
+        9.004999999999999,
+        -460
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_010",
+      "position": [
+        -57,
+        9.004999999999999,
+        -450
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_011",
+      "position": [
+        -57,
+        9.004999999999999,
+        -440
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D02_012",
+      "position": [
+        -56,
+        9.004999999999999,
+        -432
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 2
+    },
+    {
+      "name": "DATUM_light_D03_000",
+      "position": [
+        -21,
+        15.004999999999999,
+        -490
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_001",
+      "position": [
+        -21,
+        15.004999999999999,
+        -497
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_002",
+      "position": [
+        -29,
+        15.004999999999999,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_003",
+      "position": [
+        -39,
+        15.004999999999999,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_004",
+      "position": [
+        -49,
+        15.004999999999999,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_005",
+      "position": [
+        -57,
+        15.004999999999999,
+        -500
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_006",
+      "position": [
+        -57,
+        15.004999999999999,
+        -490
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_007",
+      "position": [
+        -57,
+        15.004999999999999,
+        -480
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_008",
+      "position": [
+        -57,
+        15.004999999999999,
+        -470
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_009",
+      "position": [
+        -57,
+        15.004999999999999,
+        -460
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_010",
+      "position": [
+        -57,
+        15.004999999999999,
+        -450
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_011",
+      "position": [
+        -57,
+        15.004999999999999,
+        -440
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_012",
+      "position": [
+        -57,
+        15.004999999999999,
+        -430
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_013",
+      "position": [
+        -57,
+        15.004999999999999,
+        -420
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_014",
+      "position": [
+        -57,
+        15.004999999999999,
+        -410
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_015",
+      "position": [
+        -57,
+        15.004999999999999,
+        -400
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_016",
+      "position": [
+        -57,
+        15.004999999999999,
+        -390
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_017",
+      "position": [
+        -57,
+        15.004999999999999,
+        -380
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_018",
+      "position": [
+        -57,
+        15.004999999999999,
+        -370
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_019",
+      "position": [
+        -57,
+        15.004999999999999,
+        -360
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_020",
+      "position": [
+        -57,
+        15.004999999999999,
+        -350
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_021",
+      "position": [
+        -57,
+        15.004999999999999,
+        -340
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_022",
+      "position": [
+        -57,
+        15.004999999999999,
+        -330
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_023",
+      "position": [
+        -57,
+        15.004999999999999,
+        -320
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_024",
+      "position": [
+        -57,
+        15.004999999999999,
+        -310
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_025",
+      "position": [
+        -57,
+        15.004999999999999,
+        -300
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_026",
+      "position": [
+        -57,
+        15.004999999999999,
+        -290
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_027",
+      "position": [
+        -57,
+        15.004999999999999,
+        -280
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_028",
+      "position": [
+        -57,
+        15.004999999999999,
+        -270
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_029",
+      "position": [
+        -57,
+        15.004999999999999,
+        -260
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_030",
+      "position": [
+        -57,
+        15.004999999999999,
+        -250
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_031",
+      "position": [
+        -57,
+        15.004999999999999,
+        -240
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_032",
+      "position": [
+        -57,
+        15.004999999999999,
+        -230
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_033",
+      "position": [
+        -57,
+        15.004999999999999,
+        -220
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_034",
+      "position": [
+        -51,
+        15.004999999999999,
+        -432
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    },
+    {
+      "name": "DATUM_light_D03_035",
+      "position": [
+        -51,
+        15.004999999999999,
+        -216
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "staff_work",
+      "suggested_range": 7.5,
+      "suggested_spot_angle_degrees": 70,
+      "deck": 3
+    }
+  ],
   "floor_owner": "Godot structural floor builder, parent task; union and subtract overlaps before slab compilation",
   "reference": "Godot docs/reference_register/staff_lift_reference_20261003.jpg: actual pixels reviewed; use service grey enamel, restrained dark bumper, cool task strip housing. Preserve shared working cabin.",
   "runtime_floor_owner": "port_forward_staff_network",

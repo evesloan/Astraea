@@ -134,7 +134,41 @@
           "bottom_y": 0,
           "top_y": 3.2,
           "mode": "open_existing_supported_destination"
+        },
+        {
+          "name": "D01_existing_spine_sidewall_omission_-61.8",
+          "plane_axis": "z",
+          "plane": -61.8,
+          "range_axis": "x",
+          "range": [
+            -48,
+            -46
+          ],
+          "bottom_y": 0,
+          "top_y": 3.2,
+          "mode": "omit_return_inside_existing_longitudinal_street"
+        },
+        {
+          "name": "D01_existing_spine_sidewall_omission_-58.2",
+          "plane_axis": "z",
+          "plane": -58.2,
+          "range_axis": "x",
+          "range": [
+            -48,
+            -46
+          ],
+          "bottom_y": 0,
+          "top_y": 3.2,
+          "mode": "omit_return_inside_existing_longitudinal_street"
         }
+      ],
+      "existing_floor_overlap_rectangles": [
+        [
+          -48,
+          -46,
+          -61.8,
+          -58.2
+        ]
       ]
     },
     {
@@ -482,9 +516,11 @@
     "wall_thickness": 0.12,
     "bumper_projection": 0.025,
     "minimum_straight_clear_width": 3.31,
-    "clear_height": 3.2,
+    "clear_height": 3.015,
     "corner_turn_square_clear": 3.31,
-    "cart_envelope_screen": "Parent to drive existing loaded physical cart; static planar square is not dynamic acceptance."
+    "cart_envelope_screen": "Parent to drive existing loaded physical cart; static planar square is not dynamic acceptance.",
+    "ceiling_underside_height": 3.2,
+    "fixture_minimum_underside_height": 3.015
   },
   "lift": {
     "parent_position": [
@@ -508,7 +544,7 @@
     ],
     "floor_shaft_exclusion": [
       -27.2,
-      -23.2,
+      -23.18,
       -492.2,
       -487.8
     ],
@@ -578,7 +614,16 @@
     "minimum_cabin_side_clearance": 0.04,
     "minimum_cabin_rear_clearance": 0.16,
     "minimum_cabin_top_clearance": 0.16,
-    "pit_to_cabin_bottom_clearance": 0.02
+    "pit_to_cabin_bottom_clearance": 0.02,
+    "floor_contact_tolerance_east_m": 0.02,
+    "floor_contact_tolerance_note": "Reserve 0.02 m beyond cabin front X\u221223.20; existing fixed sill bridges this clearance. Authored enclosure and portal geometry unchanged.",
+    "ceiling_shaft_exclusion": [
+      -27.2,
+      -23.18,
+      -492.2,
+      -487.8
+    ],
+    "ceiling_contact_tolerance_note": "All corridor ceilings subtract the same shaft reservation; 0.02 m clearance beyond moving cabin roof front X\u221223.20. Whole moving cabin swept AABB checked with 5 mm inflation."
   },
   "render_batch_max_cell_m": 20,
   "wall_policy": "Walls and bumpers entirely inside union floor polygons. Boundary apertures open at supported existing interfaces only. D03 threshold east ends and outer walls closed. No D01 Arrivals spur.",

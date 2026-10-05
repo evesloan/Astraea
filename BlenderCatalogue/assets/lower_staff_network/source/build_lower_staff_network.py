@@ -41,16 +41,16 @@ def datum(name,p,extras=None):
  if extras:
   for k,v in extras.items():o[k]=v
  return o
-def rect_cells(rectangles):
- xs=sorted({r[k]for r in rectangles for k in [0,1]});zs=sorted({r[k]for r in rectangles for k in [2,3]})
+def rect_cells(rectangles,exclusions=()):
+ xs=sorted({r[k]for r in list(rectangles)+list(exclusions) for k in [0,1]});zs=sorted({r[k]for r in list(rectangles)+list(exclusions) for k in [2,3]})
  # Grid cells are disjoint, so opaque ceilings never z-fight.
  for a,b in zip(xs,xs[1:]):
   for c,d in zip(zs,zs[1:]):
-   if any(r[0]<=(a+b)/2<=r[1]and r[2]<=(c+d)/2<=r[3]for r in rectangles):yield a,b,c,d
+   if any(r[0]<=(a+b)/2<=r[1]and r[2]<=(c+d)/2<=r[3]for r in rectangles)and not any(r[0]<=(a+b)/2<=r[1]and r[2]<=(c+d)/2<=r[3]for r in exclusions):yield a,b,c,d
 # Boundary segments stay inside the exact floor polygon. All rings here are CCW in XZ.
 for deck in D['decks']:
  n=deck['deck'];y=deck['floor_y'];prefix='STF_D%02d_'%n
- for i,(x0,x1,z0,z1)in enumerate(rect_cells(deck['floor_union_rectangles_x0_x1_z0_z1'])):
+ for i,(x0,x1,z0,z1)in enumerate(rect_cells(deck['floor_union_rectangles_x0_x1_z0_z1'],[D['lift']['floor_shaft_exclusion']])):
   box(prefix+'Ceiling_%03d'%i,x0,x1,y+3.2,y+3.34,z0,z1,'staff_bluegrey_paint',n)
  for ri,ring in enumerate(deck['floor_union_polygons_xz']):
   for ei,(a,b)in enumerate(zip(ring,ring[1:]+ring[:1])):
@@ -106,7 +106,7 @@ datum('DATUM_lift_parent',[-25,0,-490]);datum('DATUM_origin',[0,0,0])
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1
 (R/'source/section_contract.json').write_text(json.dumps(D,indent=2)+'\n')
 (R/'source/geometry_parts.json').write_text(json.dumps({'catalogue_id':AID,'boxes':boxes},indent=2)+'\n')
-bpy.ops.file.pack_all();src=R/'source'/(AID+'.blend');out=R/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(src))
+bpy.context.preferences.filepaths.save_version=0;bpy.ops.file.pack_all();src=R/'source'/(AID+'.blend');out=R/'exports'/(AID+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(src))
 triangles=sum(len(o.data.polygons)*2 for o in parts);batches={}
 for o in parts:
  key=(o['deck'],o['cell_x'],o['cell_z'],o.data.materials[0].name);batches.setdefault(key,[]).append(o)

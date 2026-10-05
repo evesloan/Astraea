@@ -92,7 +92,7 @@ func run() -> void:
 	actor.position=Vector3(0,-8,-100);actor.velocity=Vector3.ZERO
 	for frame in range(3):await physics_frame
 	assert(actor.position.distance_to(actor.spawn_position)<.12,"Below-ship recovery must still return to the configured spawn")
-	print(target_lift_name," BOARDING PASS: real player pushes four-product loaded cart intoD01 cabin, travels physically toD17, and pulls it out across the upper threshold. No transforms set during travel/exit; full-network freehand acceptance pending.")
+	print(target_lift_name," BOARDING PASS: real player pushes four-product loaded cart intoD01 cabin, travels physically toD03, and pulls it out across the upper threshold. No transforms set during travel/exit; full-network freehand acceptance pending.")
 	main.queue_free()
 	await process_frame
 	quit()
