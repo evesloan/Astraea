@@ -1,10 +1,10 @@
 {
-  "created_utc": "2026-10-05T21:55:28.940888+00:00",
+  "created_utc": "2026-10-05T22:00:32.960383+00:00",
   "scope": "Source checkpoint; WIP may be untested",
   "projects": {
     "Godot": {
-      "head": "68bf3816ae580b86e5a5f7ea7fc032358aca7565",
-      "signature": "fe3e54d48127d41ff9049b8a145041069cd3f41657468b2ea233b1491ea2285f",
+      "head": "a75f76ae449e5de0f70ba12df16962073446f827",
+      "signature": "a10d2d4f83e5279f4f407a322bdea312ae8551d40568796b6a0921160090d5af",
       "work_in_progress": false,
       "prefix": "Game",
       "files": {
@@ -1785,6 +1785,7 @@
         "docs/D13_13041_TWIN_RETREAT.md": "c4513aeedbc33eb28ae503123e19e5d304d049faabe2c575948e43591c90f66d",
         "docs/D13_D14_COMMONS_REVIEW.md": "ddac6bb8048e9b3d4fcd5f0878ba2285572a2ef8c62fde1b79c9ec4696a8a15b",
         "docs/D17_ADDED_SUPPORT_CENSUS.json": "052c1284608b1e352993105a1872a8ce34139578a92244b069c43a970d13ee18",
+        "docs/D17_CONNECTED_FLOOR_PLANNER_TESTS.json": "8f35e17ca8da12c9801de55a286bbec6a9d0dc371f3d85b3cde6b65f8142fb0c",
         "docs/D17_CONNECTED_PLATFORM_BRIEF.md": "15f2b5ca163721b7e24ab67ea48692acc713b106d207a1550d243d4eacba0000",
         "docs/D17_FOOTING_RELOCATION_SOURCE_REVIEW.json": "9ab3e628fd830cae4846d09cd75710a5bc944d9ae8fbe82bb797864b13705ca0",
         "docs/D17_LUXURY_HOUSE_STUDY.md": "ae5465a92371a1f15890db862676c8fefc427428ee169f2225a8f30736c4a898",
@@ -2542,6 +2543,7 @@
         "tools/extract_lower_guest_envelopes.py": "db310d6b59f428f7193d90e1b0076b08762332e999eb8b671c0289921e68e812",
         "tools/extract_residential_detail.py": "1bb0f31e6eb15607db196809cc0b0f44fafe21508aadfe6e9a0b4d2c48e38c1d",
         "tools/plan_command_crown.py": "e6218235288d0a4374e466348420694b397171455411a88d8f13f1e14c31a69d",
+        "tools/plan_d17_connected_platform.py": "c02d1af52ca4d6a5c5b4763cc6cebc235ec5221f09a3f50e2e469e13fbff63c6",
         "tools/plan_upper_luxury_houses.py": "ccfd0bc956464895bea5242341e00251a95b643c48d71e915b6d9531de55c8a2",
         "tools/qa_inputs/AST-RES-005.glb": "8cfa8eb9a7775b6d5ba855f826176b6d34a35760a1c86fe9cc7dd051d2b3cb52",
         "tools/qa_inputs/AST-RES-005.glb.import": "1e8227c556cb246aa474e0496067916b98d7052755ea8ef6da79272f3ce2ce72",
@@ -2570,6 +2572,7 @@
         "tools/test_central_crown.py": "86d214f7c7aff8f2d0c4735f8d0b7892d1ca243257e60aca1d41834928e2bcc4",
         "tools/test_checkpoint_source.py": "864ec9e5cfa13e25bf7f19e34d81a4f78dd294f044fa2a890c8e9f60139e5c2f",
         "tools/test_command_crown.py": "d6cae4535e3f4a022c0637fc434e18a9ea24bc7712c40d75014b552c7e053098",
+        "tools/test_d17_floor_planner.py": "d97f1e9d13d8d9522b35baf330f12d9d910532c8cdca77ed4d4449cc2476eab8",
         "tools/test_hull_body.py": "65daba467547051dd847782cfae8a2a4202d5d4ce6f9a33e21ca48f8e79d3fea",
         "tools/test_lower_staff_network.py": "786bedd71d367f0db8fa2a3a75c6718fd4e50b7f25f6c8b467e87e1d53208fbb",
         "tools/test_multilevel_compiler.py": "b013c80794598335b9881da92d3c72333a945817673839efcd0017a59be36bc7",
@@ -2588,8 +2591,8 @@
     },
     "Blender": {
       "head": "f0a55b23e42b4c452624ead3d63d23a986beb6e6",
-      "signature": "c0905849a588c33aa765c7b893d44fd42b552c8652638578643adb01f8832c45",
-      "work_in_progress": false,
+      "signature": "88d9f5b575214e667d734b7ec87c39f6d25b4ad46ef75284941b61e3b316f599",
+      "work_in_progress": true,
       "prefix": "BlenderCatalogue",
       "files": {
         ".gitignore": "38ef86b219a19f29e4c664a1a5c709ff465839e563fc2fffae15be466a6904b9",
@@ -4906,6 +4909,12 @@
         "assets/curio_keepsakes/source/AST-CUR-002.blend": "5131734d59865ae414a5a2b1951c36e6979982966463ed430c5efe634312f36a",
         "assets/curio_keepsakes/source/AST-CUR-003.blend": "c20fde9239bec4f771f7a75b2333016fbb0a92fd455a2eab59cea415dc79a9c8",
         "assets/curio_keepsakes/source/build_curio_keepsakes.py": "0ec362859348e12bc93b56638c8e504d2107e5d90f61e2ec619492a1ffac5fba",
+        "assets/d17_connected_royalty/exports/AST-COM-003_aft_only.glb": "6b559b69c13d0ea2e5cb16e42791aec6af495c377fcfbf074ebfb36f7e57ff18",
+        "assets/d17_connected_royalty/qa/build.log": "e40ae6e58f810d1c01a978102b0c3c9bc2c87594f53820103fcd804e89fc7c95",
+        "assets/d17_connected_royalty/source/AST-COM-003_aft_only.blend": "ec5ff2a66bacecb585c90593e362fb6c7a389d2640b9e39aeff2d3fe8a18c8b4",
+        "assets/d17_connected_royalty/source/build_connected_royalty.py": "5e42793cde27db582333b0ecc7523ee55edb3723567506727ca71427214323d1",
+        "assets/d17_connected_royalty/source/connected_contract.json": "fd708c170156e187abddb85666a7fda7abfd6f5162eb3affa5474835faabf1be",
+        "assets/d17_connected_royalty/source/verified_closed_COM003.blend": "94c6055afcdea08d638cc6b1f51cd379e6839ead01c0678ae9cc0fdf9c620c22",
         "assets/d17_house_platform/AST-RES-005.manifest.json": "401ebc12a44276e86e1debb7f7b0dd94610d37553d52716b158c043197da309e",
         "assets/d17_house_platform/DELIVERY_HASHES.json": "de7ade1e660543ad038cab7fcad34cfc89527838dcb1f6350af8f202c94b2695",
         "assets/d17_house_platform/HANDOFF.md": "c7c942ee3d51adebebae2a8f5a26cef2241fd1933135f53452127c42e1c2c0e0",

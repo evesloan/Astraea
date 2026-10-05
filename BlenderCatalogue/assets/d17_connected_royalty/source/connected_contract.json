@@ -1,0 +1,1483 @@
+{
+  "schema": 1,
+  "catalogue_id": "AST-RES-006",
+  "family": "d17_connected_royalty",
+  "variant": "aft_connection_royalty790_lower",
+  "status": "SOURCE_AUTHORING_IN_PROGRESS_NOT_RUNTIME_ADOPTED",
+  "frame": "world Godot X right, Y up, Z aft; Blender=(X,-Z,Y); zero world origin",
+  "floor_owner": "Existing Godot floor compiler exclusively owns rendered and collision slabs. Source preview floor meshes are excluded from all exports.",
+  "floor_regions": [
+    {
+      "id": "D17_aft_approach_connected",
+      "boundary": [
+        [
+          78.5,
+          14
+        ],
+        [
+          81.5,
+          14
+        ],
+        [
+          81.5,
+          20
+        ],
+        [
+          78.5,
+          20
+        ]
+      ],
+      "holes": [],
+      "floor_y": 102,
+      "thickness": 0.24
+    },
+    {
+      "id": "D17_aft_faceted_court_landing",
+      "boundary": [
+        [
+          78.5,
+          20
+        ],
+        [
+          81.5,
+          20
+        ],
+        [
+          83.7,
+          22
+        ],
+        [
+          91,
+          22
+        ],
+        [
+          94,
+          23.5
+        ],
+        [
+          94,
+          28
+        ],
+        [
+          90,
+          28
+        ],
+        [
+          87.5,
+          29
+        ],
+        [
+          82.5,
+          29
+        ],
+        [
+          78.5,
+          26
+        ]
+      ],
+      "holes": [],
+      "floor_y": 102,
+      "thickness": 0.24
+    },
+    {
+      "id": "D17_aft_luxury_lane_first",
+      "boundary": [
+        [
+          91,
+          28
+        ],
+        [
+          94,
+          28
+        ],
+        [
+          94,
+          35.5
+        ],
+        [
+          91,
+          35.5
+        ]
+      ],
+      "holes": [],
+      "floor_y": 102,
+      "thickness": 0.24
+    },
+    {
+      "id": "D17_royalty790_lower_platform",
+      "source_envelope_index": 790,
+      "boundary": [
+        [
+          94,
+          29
+        ],
+        [
+          107,
+          29
+        ],
+        [
+          110,
+          30
+        ],
+        [
+          115,
+          33
+        ],
+        [
+          118,
+          38
+        ],
+        [
+          118,
+          42
+        ],
+        [
+          115,
+          47
+        ],
+        [
+          110,
+          50
+        ],
+        [
+          108,
+          51
+        ],
+        [
+          94,
+          51
+        ]
+      ],
+      "holes": [],
+      "floor_y": 102,
+      "thickness": 0.24
+    }
+  ],
+  "floor_integration": {
+    "operation": "Union candidates, subtract every existing D17 compiled owner and protected void; emit disjoint compiler regions",
+    "old_floor_seam": {
+      "x": [
+        78.5,
+        81.5
+      ],
+      "z": 14,
+      "y": 102
+    },
+    "old_floor_change": "none",
+    "preview_only": true,
+    "new_units": 0,
+    "new_berths": 0
+  },
+  "portal": {
+    "commons_variant": "AST-COM-003_aft_only",
+    "wall_z": 13.2,
+    "clear_x": [
+      78.5,
+      81.5
+    ],
+    "clear_y": [
+      102,
+      104.82
+    ],
+    "fore_wall": "physically closed, restored from verified pre-portal source"
+  },
+  "private_arrival": {
+    "recessed_bay_x": [
+      94,
+      99
+    ],
+    "recessed_bay_z": [
+      29,
+      35.5
+    ],
+    "threshold_plane_x": 97,
+    "clear_z": [
+      30.9,
+      33.9
+    ],
+    "clear_y": [
+      102,
+      104.82
+    ],
+    "door": {
+      "status": "OPEN GUARDED THRESHOLD; no moving door installed",
+      "future_family": "AST-DOR-002_wide",
+      "future_origin_world": [
+        97,
+        102,
+        32.4
+      ],
+      "total_enclosure_z": [
+        29.82,
+        34.98
+      ],
+      "leaf_width": 1.18,
+      "leaf_travel": 1.24
+    },
+    "receiving_bay_x": [
+      98,
+      103
+    ],
+    "receiving_bay_z": [
+      30.5,
+      35.5
+    ]
+  },
+  "reservations": {
+    "luxury_lane_aft": {
+      "x": [
+        91,
+        94
+      ],
+      "z": [
+        35.5,
+        84
+      ],
+      "initial_closure": "collision-backed removable guard at Z35.5"
+    },
+    "standard_branch": {
+      "x": [
+        76,
+        79
+      ],
+      "z": [
+        24,
+        64
+      ],
+      "initial_closure": "continuous guard on west court edge; future bounded branch connects around Z24..26"
+    },
+    "private_stair": {
+      "source_envelope_index": 790,
+      "x": [
+        94.5,
+        99
+      ],
+      "z": [
+        40,
+        49.5
+      ],
+      "from_y": 102,
+      "to_y": 106.5,
+      "status": "reserved continuous lower floor, no hole or stairs yet"
+    },
+    "private_lift_and_landing": {
+      "source_envelope_index": 790,
+      "x": [
+        99.5,
+        104
+      ],
+      "z": [
+        43,
+        49.5
+      ],
+      "from_y": 102,
+      "to_y": 106.5,
+      "status": "reserved continuous lower floor, no shaft pit or hole"
+    },
+    "care_service": {
+      "x": [
+        94.5,
+        98.5
+      ],
+      "z": [
+        36,
+        40
+      ],
+      "status": "screened future interface only, not a separate service network"
+    },
+    "unit814": {
+      "x": [
+        94,
+        118
+      ],
+      "z": [
+        51,
+        61
+      ],
+      "status": "effective future replacement allocation; do not occupy historical overlapping footprint"
+    },
+    "royalty_upper": {
+      "source_envelope_index": 790,
+      "floor_y": 106.5,
+      "roof_max_y": 112,
+      "status": "same unit, not constructed or a prerequisite to safe lower floor"
+    }
+  },
+  "roof_limits": {
+    "ordinary_max_y": 106.5,
+    "royalty_lower_max_y": 106.5,
+    "private_upper_roof_reserved_y": 112
+  },
+  "protected": {
+    "D16_590": {
+      "x": [
+        86.05,
+        98.95
+      ],
+      "z": [
+        38.4,
+        45.6
+      ],
+      "floor_y": 97.5
+    },
+    "D16_614": {
+      "x": [
+        86.05,
+        98.95
+      ],
+      "z": [
+        45.8,
+        53
+      ],
+      "floor_y": 97.5
+    },
+    "west_strip_rule": "Nothing new below Y101.76 over either protected lower home; no shaft pit, dropped beam, or support",
+    "central_gap": "Z-20..20 remains open except narrow existing-portal approach",
+    "night_garden": "No full-height support around X84/Z24"
+  },
+  "runtime_acceptance": "Root owns actual source import, compiler integration, physical walking/loaded-cart round trip, preservation regressions, matched-revision visual acceptance and backup verification",
+  "units_preserved": [
+    {
+      "source_envelope_index": 832,
+      "historical_stable_id": null,
+      "tier": "deluxe",
+      "source_allocation": {
+        "x": [
+          86.05,
+          98.95
+        ],
+        "z": [
+          -60.4,
+          -53.2
+        ]
+      },
+      "candidate_boundary": [
+        [
+          118.0,
+          -72.0
+        ],
+        [
+          118.0,
+          -62.0
+        ],
+        [
+          94.0,
+          -62.0
+        ],
+        [
+          94.0,
+          -72.0
+        ]
+      ],
+      "candidate_x": [
+        94.0,
+        118.0
+      ],
+      "candidate_z": [
+        -72.0,
+        -62.0
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            118.0,
+            -72.0
+          ],
+          [
+            118.0,
+            -62.0
+          ],
+          [
+            94.0,
+            -62.0
+          ],
+          [
+            94.0,
+            -72.0
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 808,
+      "historical_stable_id": null,
+      "tier": "premium",
+      "source_allocation": {
+        "x": [
+          86.05,
+          98.95
+        ],
+        "z": [
+          -53.0,
+          -45.8
+        ]
+      },
+      "candidate_boundary": [
+        [
+          118.0,
+          -62.0
+        ],
+        [
+          118.0,
+          -48.0
+        ],
+        [
+          94.0,
+          -48.0
+        ],
+        [
+          94.0,
+          -62.0
+        ]
+      ],
+      "candidate_x": [
+        94.0,
+        118.0
+      ],
+      "candidate_z": [
+        -62.0,
+        -48.0
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            118.0,
+            -62.0
+          ],
+          [
+            118.0,
+            -48.0
+          ],
+          [
+            94.0,
+            -48.0
+          ],
+          [
+            94.0,
+            -62.0
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 784,
+      "historical_stable_id": null,
+      "tier": "deluxe",
+      "source_allocation": {
+        "x": [
+          86.05,
+          98.95
+        ],
+        "z": [
+          -45.6,
+          -38.4
+        ]
+      },
+      "candidate_boundary": [
+        [
+          118.0,
+          -48.0
+        ],
+        [
+          118.0,
+          -38.0
+        ],
+        [
+          94.0,
+          -38.0
+        ],
+        [
+          94.0,
+          -48.0
+        ]
+      ],
+      "candidate_x": [
+        94.0,
+        118.0
+      ],
+      "candidate_z": [
+        -48.0,
+        -38.0
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            118.0,
+            -48.0
+          ],
+          [
+            118.0,
+            -38.0
+          ],
+          [
+            94.0,
+            -38.0
+          ],
+          [
+            94.0,
+            -48.0
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 790,
+      "historical_stable_id": null,
+      "tier": "royalty",
+      "source_allocation": {
+        "x": [
+          86.05,
+          98.95
+        ],
+        "z": [
+          38.4,
+          45.6
+        ]
+      },
+      "candidate_boundary": [
+        [
+          118.0,
+          29.0
+        ],
+        [
+          118.0,
+          51.0
+        ],
+        [
+          94.0,
+          51.0
+        ],
+        [
+          94.0,
+          29.0
+        ]
+      ],
+      "candidate_x": [
+        94.0,
+        118.0
+      ],
+      "candidate_z": [
+        29.0,
+        51.0
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": 106.5,
+      "candidate_external_roof_y": 112.0,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            118.0,
+            29.0
+          ],
+          [
+            118.0,
+            51.0
+          ],
+          [
+            94.0,
+            51.0
+          ],
+          [
+            94.0,
+            29.0
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 814,
+      "historical_stable_id": null,
+      "tier": "deluxe",
+      "source_allocation": {
+        "x": [
+          86.05,
+          98.95
+        ],
+        "z": [
+          45.8,
+          53.0
+        ]
+      },
+      "candidate_boundary": [
+        [
+          118.0,
+          51.0
+        ],
+        [
+          118.0,
+          61.0
+        ],
+        [
+          94.0,
+          61.0
+        ],
+        [
+          94.0,
+          51.0
+        ]
+      ],
+      "candidate_x": [
+        94.0,
+        118.0
+      ],
+      "candidate_z": [
+        51.0,
+        61.0
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            118.0,
+            51.0
+          ],
+          [
+            118.0,
+            61.0
+          ],
+          [
+            94.0,
+            61.0
+          ],
+          [
+            94.0,
+            51.0
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 838,
+      "historical_stable_id": null,
+      "tier": "deluxe",
+      "source_allocation": {
+        "x": [
+          86.05,
+          98.95
+        ],
+        "z": [
+          53.2,
+          60.4
+        ]
+      },
+      "candidate_boundary": [
+        [
+          118.0,
+          61.0
+        ],
+        [
+          118.0,
+          71.0
+        ],
+        [
+          94.0,
+          71.0
+        ],
+        [
+          94.0,
+          61.0
+        ]
+      ],
+      "candidate_x": [
+        94.0,
+        118.0
+      ],
+      "candidate_z": [
+        61.0,
+        71.0
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            118.0,
+            61.0
+          ],
+          [
+            118.0,
+            71.0
+          ],
+          [
+            94.0,
+            71.0
+          ],
+          [
+            94.0,
+            61.0
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 862,
+      "historical_stable_id": null,
+      "tier": "deluxe",
+      "source_allocation": {
+        "x": [
+          86.05,
+          98.95
+        ],
+        "z": [
+          60.6,
+          67.8
+        ]
+      },
+      "candidate_boundary": [
+        [
+          118.0,
+          71.0
+        ],
+        [
+          118.0,
+          81.0
+        ],
+        [
+          94.0,
+          81.0
+        ],
+        [
+          94.0,
+          71.0
+        ]
+      ],
+      "candidate_x": [
+        94.0,
+        118.0
+      ],
+      "candidate_z": [
+        71.0,
+        81.0
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            118.0,
+            71.0
+          ],
+          [
+            118.0,
+            81.0
+          ],
+          [
+            94.0,
+            81.0
+          ],
+          [
+            94.0,
+            71.0
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 868,
+      "historical_stable_id": null,
+      "tier": "retained_standard",
+      "source_allocation": {
+        "x": [
+          69.05,
+          81.95
+        ],
+        "z": [
+          -67.8,
+          -60.6
+        ]
+      },
+      "candidate_boundary": [
+        [
+          63,
+          -71.6
+        ],
+        [
+          76,
+          -71.6
+        ],
+        [
+          76,
+          -64.4
+        ],
+        [
+          63,
+          -64.4
+        ]
+      ],
+      "candidate_x": [
+        63,
+        76
+      ],
+      "candidate_z": [
+        -71.6,
+        -64.4
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            63,
+            -71.6
+          ],
+          [
+            76,
+            -71.6
+          ],
+          [
+            76,
+            -64.4
+          ],
+          [
+            63,
+            -64.4
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 874,
+      "historical_stable_id": null,
+      "tier": "retained_standard",
+      "source_allocation": {
+        "x": [
+          69.05,
+          81.95
+        ],
+        "z": [
+          60.6,
+          67.8
+        ]
+      },
+      "candidate_boundary": [
+        [
+          63,
+          53.6
+        ],
+        [
+          76,
+          53.6
+        ],
+        [
+          76,
+          60.8
+        ],
+        [
+          63,
+          60.8
+        ]
+      ],
+      "candidate_x": [
+        63,
+        76
+      ],
+      "candidate_z": [
+        53.6,
+        60.8
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            63,
+            53.6
+          ],
+          [
+            76,
+            53.6
+          ],
+          [
+            76,
+            60.8
+          ],
+          [
+            63,
+            60.8
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 844,
+      "historical_stable_id": null,
+      "tier": "retained_standard",
+      "source_allocation": {
+        "x": [
+          69.05,
+          81.95
+        ],
+        "z": [
+          -60.4,
+          -53.2
+        ]
+      },
+      "candidate_boundary": [
+        [
+          63,
+          -57.2
+        ],
+        [
+          76,
+          -57.2
+        ],
+        [
+          76,
+          -50.0
+        ],
+        [
+          63,
+          -50.0
+        ]
+      ],
+      "candidate_x": [
+        63,
+        76
+      ],
+      "candidate_z": [
+        -57.2,
+        -50.0
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            63,
+            -57.2
+          ],
+          [
+            76,
+            -57.2
+          ],
+          [
+            76,
+            -50.0
+          ],
+          [
+            63,
+            -50.0
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 850,
+      "historical_stable_id": null,
+      "tier": "retained_standard",
+      "source_allocation": {
+        "x": [
+          69.05,
+          81.95
+        ],
+        "z": [
+          53.2,
+          60.4
+        ]
+      },
+      "candidate_boundary": [
+        [
+          63,
+          46.4
+        ],
+        [
+          76,
+          46.4
+        ],
+        [
+          76,
+          53.6
+        ],
+        [
+          63,
+          53.6
+        ]
+      ],
+      "candidate_x": [
+        63,
+        76
+      ],
+      "candidate_z": [
+        46.4,
+        53.6
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            63,
+            46.4
+          ],
+          [
+            76,
+            46.4
+          ],
+          [
+            76,
+            53.6
+          ],
+          [
+            63,
+            53.6
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 820,
+      "historical_stable_id": null,
+      "tier": "retained_standard",
+      "source_allocation": {
+        "x": [
+          69.05,
+          81.95
+        ],
+        "z": [
+          -53.0,
+          -45.8
+        ]
+      },
+      "candidate_boundary": [
+        [
+          63,
+          -50.0
+        ],
+        [
+          76,
+          -50.0
+        ],
+        [
+          76,
+          -42.8
+        ],
+        [
+          63,
+          -42.8
+        ]
+      ],
+      "candidate_x": [
+        63,
+        76
+      ],
+      "candidate_z": [
+        -50.0,
+        -42.8
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            63,
+            -50.0
+          ],
+          [
+            76,
+            -50.0
+          ],
+          [
+            76,
+            -42.8
+          ],
+          [
+            63,
+            -42.8
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 826,
+      "historical_stable_id": null,
+      "tier": "retained_standard",
+      "source_allocation": {
+        "x": [
+          69.05,
+          81.95
+        ],
+        "z": [
+          45.8,
+          53.0
+        ]
+      },
+      "candidate_boundary": [
+        [
+          63,
+          39.2
+        ],
+        [
+          76,
+          39.2
+        ],
+        [
+          76,
+          46.4
+        ],
+        [
+          63,
+          46.4
+        ]
+      ],
+      "candidate_x": [
+        63,
+        76
+      ],
+      "candidate_z": [
+        39.2,
+        46.4
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            63,
+            39.2
+          ],
+          [
+            76,
+            39.2
+          ],
+          [
+            76,
+            46.4
+          ],
+          [
+            63,
+            46.4
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 796,
+      "historical_stable_id": null,
+      "tier": "retained_standard",
+      "source_allocation": {
+        "x": [
+          69.05,
+          81.95
+        ],
+        "z": [
+          -45.6,
+          -38.4
+        ]
+      },
+      "candidate_boundary": [
+        [
+          63,
+          -42.8
+        ],
+        [
+          76,
+          -42.8
+        ],
+        [
+          76,
+          -35.6
+        ],
+        [
+          63,
+          -35.6
+        ]
+      ],
+      "candidate_x": [
+        63,
+        76
+      ],
+      "candidate_z": [
+        -42.8,
+        -35.6
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            63,
+            -42.8
+          ],
+          [
+            76,
+            -42.8
+          ],
+          [
+            76,
+            -35.6
+          ],
+          [
+            63,
+            -35.6
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 802,
+      "historical_stable_id": null,
+      "tier": "retained_standard",
+      "source_allocation": {
+        "x": [
+          69.05,
+          81.95
+        ],
+        "z": [
+          38.4,
+          45.6
+        ]
+      },
+      "candidate_boundary": [
+        [
+          63,
+          32.0
+        ],
+        [
+          76,
+          32.0
+        ],
+        [
+          76,
+          39.2
+        ],
+        [
+          63,
+          39.2
+        ]
+      ],
+      "candidate_x": [
+        63,
+        76
+      ],
+      "candidate_z": [
+        32.0,
+        39.2
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            63,
+            32.0
+          ],
+          [
+            76,
+            32.0
+          ],
+          [
+            76,
+            39.2
+          ],
+          [
+            63,
+            39.2
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    },
+    {
+      "source_envelope_index": 856,
+      "historical_stable_id": null,
+      "tier": "retained_standard",
+      "source_allocation": {
+        "x": [
+          86.05,
+          98.95
+        ],
+        "z": [
+          -67.8,
+          -60.6
+        ]
+      },
+      "candidate_boundary": [
+        [
+          63,
+          -64.4
+        ],
+        [
+          76,
+          -64.4
+        ],
+        [
+          76,
+          -57.2
+        ],
+        [
+          63,
+          -57.2
+        ]
+      ],
+      "candidate_x": [
+        63,
+        76
+      ],
+      "candidate_z": [
+        -64.4,
+        -57.2
+      ],
+      "candidate_floor_y": 102,
+      "candidate_upper_y": null,
+      "candidate_external_roof_y": 106.5,
+      "adoption_status": "NOT_ADOPTED",
+      "compiler_candidate": {
+        "floor_y": 102,
+        "thickness": 0.24,
+        "holes": [],
+        "priority": 5,
+        "boundary": [
+          [
+            63,
+            -64.4
+          ],
+          [
+            76,
+            -64.4
+          ],
+          [
+            76,
+            -57.2
+          ],
+          [
+            63,
+            -57.2
+          ]
+        ],
+        "status": "HELD: support path not established; do not compile yet"
+      }
+    }
+  ],
+  "capacity_preserved": {
+    "source_unit_count": 16,
+    "new_units": 0,
+    "historical_stable_ids": "all null; source indices remain provenance",
+    "ship_units_unchanged": 1000
+  },
+  "standard_membership": {
+    "fore": [
+      868,
+      844,
+      820,
+      796,
+      856
+    ],
+    "aft": [
+      874,
+      850,
+      826,
+      802
+    ],
+    "rule": "five fore / four aft, exact source provenance, no new unit or berth claim"
+  }
+}
