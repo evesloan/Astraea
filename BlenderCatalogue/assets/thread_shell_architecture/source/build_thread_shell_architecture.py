@@ -124,6 +124,21 @@ datum('staff_entry_door',xyz(6,F,-194.5))
 slab('TAIL_WorkCounterBase',31.1,34.9,-221.4,-218.2,F,F+.78,'warm_walnut')
 slab('TAIL_WorkCounterTop',30.9,35.1,-221.6,-218.0,F+.78,F+.88,'warm_stone')
 slab('TAIL_LowerGuestCounter',30.9,32.3,-218.0,-216.9,F+.64,F+.72,'warm_walnut')
+# Fitting-bay roofs join through a lower supported consultation canopy. Its rear
+# lands on the service wall; its ends meet the two existing private partitions.
+outline=[(29,-222.5),(37,-222.5),(37,-212.5),(29,-212.5),(28.7,-212.8),(28.7,-222.2)]
+local=[(x-8,-z-216)for x,z in outline]
+extrusion('TAIL_ConsultationCanopy',local,3.7,3.86,'ivory_enamel')
+for z in [-222.5,-212.5]:wall('TAIL_CanopyBearingWeb_'+str(z),(29,z),(37,z),F+3.55,F+3.7,.16,'ivory_enamel')
+for i,(a,b)in enumerate(zip(outline,outline[1:]+outline[:1])):
+ wall('TAIL_ConsultationCanopyEdge_'+str(i),a,b,F+3.64,F+3.86,.10,'warm_walnut')
+# A low, continuous textile dado and useful sample storage belong to the work bay.
+for i,level in enumerate([1.10,1.54,1.98]):
+ slab('TAIL_SampleShelf_'+str(i),36.35,36.87,-221.7,-218.5,F+level,F+level+.08,'warm_walnut')
+ for j,z in enumerate([-221.25,-220.45,-219.65]):
+  slab('TAIL_FoldedSample_%s_%s'%(i,j),36.39,36.82,z-.29,z+.29,F+level+.08,F+level+.16,['clay_weave','teal_weave','oatmeal_weave'][(i+j)%3])
+# Flush inset grounds the fitting/work zone without obstructing its existing route.
+slab('TAIL_ConsultationFloorInset',28.8,36.9,-222.4,-212.6,F+.003,F+.008,'oatmeal_weave')
 # Curved textile-display frames divide browsing around the centre rather than fill its route.
 for index,(cx,cz,start,end)in enumerate([(19,-226,-65,65),(19,-206,115,245)]):
  points=[(cx+2.5*math.cos(math.radians(start+(end-start)*i/12)),cz+2.5*math.sin(math.radians(start+(end-start)*i/12)))for i in range(13)]
@@ -135,7 +150,7 @@ for index,(cx,cz,start,end)in enumerate([(19,-226,-65,65),(19,-206,115,245)]):
  for i in [2,4,6,8,10]:
   x=(points[i][0]+points[i+1][0])/2;z=(points[i][1]+points[i+1][1])/2;datum('fabric_%s_%s'%(index,i),xyz(x,F+1.60,z))
 # Actual fixture housings touch their ceiling or private roof.
-fixtures=[('public_'+str(i),x,z,h(x,z),True)for i,(x,z)in enumerate([(18,-228),(18,-204),(22,-216),(32,-217)])]+[('private_'+str(i),33,z,F+3.4,True)for i,z in enumerate([-225.5,-209.5])]+[('staff_'+str(i),x,z,F+3.7,False)for i,(x,z)in enumerate([(40,-227),(40,-209),(22,-194.5)])]
+fixtures=[('public_'+str(i),x,z,(F+3.7 if i==3 else h(x,z)),True)for i,(x,z)in enumerate([(18,-228),(18,-204),(22,-216),(32,-217)])]+[('private_'+str(i),33,z,F+3.4,True)for i,z in enumerate([-225.5,-209.5])]+[('staff_'+str(i),x,z,F+3.7,False)for i,(x,z)in enumerate([(40,-227),(40,-209),(22,-194.5)])]
 for key,x,z,top,warm in fixtures:
  slab('TAIL_FixtureHousing_'+key,x-.36,x+.36,z-.28,z+.28,top-.16,top,'champagne_metal')
  slab('TAIL_FixtureLens_'+key,x-.31,x+.31,z-.23,z+.23,top-.175,top-.16,'lens')

@@ -56,6 +56,16 @@ func run() -> void:
 		q.exclude=omit
 		var hit:=ship.get_world_3d().direct_space_state.intersect_ray(q)
 		assert(not hit.is_empty() and "TAIL_DisplayRail_" in str(hit.collider.get_path()),"Textile sample %s needs support from actual rail at %s; hit %s"%[i,marker.global_position,hit])
+	for level in [1.10,1.54,1.98]:
+		for z in [-221.25,-220.45,-219.65]:
+			var point:=Vector3(36.6,52.5+level+.08,z)
+			var q:=PhysicsRayQueryParameters3D.create(point+Vector3.UP*.012,point-Vector3.UP*.04)
+			var omit:Array[RID]=[]
+			for body in architecture.find_children("*","StaticBody3D",true,false):
+				if "TAIL_FoldedSample_" in str(body.get_path()):omit.append(body.get_rid())
+			q.exclude=omit
+			var hit:=ship.get_world_3d().direct_space_state.intersect_ray(q)
+			assert(not hit.is_empty() and "TAIL_SampleShelf_" in str(hit.collider.get_path()),"Folded textile stock must sit on its sample shelf")
 	actor.set_physics_process(false)
 	actor.position=Vector3(0,52.6,-216)
 	actor.velocity=Vector3.ZERO
