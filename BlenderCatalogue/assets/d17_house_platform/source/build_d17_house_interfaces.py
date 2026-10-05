@@ -10,14 +10,16 @@ D=json.loads((R/'source/section_contract.json').read_text())
 # Read the real retained hull mesh. Raycast every footprint corner and centre.
 bpy.ops.wm.open_mainfile(filepath=str(C/'assets/lower_hull_body/source/AST-HUL-001.blend'))
 o=bpy.data.objects['HUL_LowerBand_00'];tree=BVHTree.FromObject(o,bpy.context.evaluated_depsgraph_get());seats=[]
-for z in [29.6,50.4]:
+for spec in D['footing_specs']:
+ cx,z=spec['centre_xz'];width,depth=spec['size_xz'];top=float(spec['top_y'])
+ assert width==.8 and depth==1.2
  corners=[];witness=[]
- for x,zz in [(99.6,z-.6),(100.4,z-.6),(100.4,z+.6),(99.6,z+.6),(100,z)]:
+ for x,zz in [(cx-width/2,z-depth/2),(cx+width/2,z-depth/2),(cx+width/2,z+depth/2),(cx-width/2,z+depth/2),(cx,z)]:
   hit,n,face,distance=tree.ray_cast(Vector((x,-zz,4)),Vector((0,0,-1)),12)
   assert hit is not None and n.z>.9,(x,zz)
   corners.append([x,hit.z,zz]);witness.append({'point_world':[x,hit.z,zz],'normal_world':[n.x,n.z,-n.y],'face_index':face})
- assert max(v[1] for v in corners)<-1.5
- seats.append({'z':z,'corners_world':corners[:4],'witnesses':witness,'top_y':-1.5,'source_owner':'AST-HUL-001/HUL_LowerBand_00','hull_source_sha256':sha(C/'assets/lower_hull_body/source/AST-HUL-001.blend'),'method':'Actual editable hull BVH; positive wedge bottom seated on the upward-facing inner hull surface. Hull is never edited.'})
+ assert min(top-v[1] for v in corners)>.34
+ seats.append({'x':cx,'z':z,'corners_world':corners[:4],'witnesses':witness,'top_y':top,'source_owner':'AST-HUL-001/HUL_LowerBand_00','hull_source_sha256':sha(C/'assets/lower_hull_body/source/AST-HUL-001.blend'),'method':'Actual editable hull BVH; positive wedge bottom seated on the upward-facing inner hull surface. Hull is never edited.'})
 # Reuse the established material graphs and packed textures without creating flat substitutes.
 bpy.ops.wm.open_mainfile(filepath=str(C/'assets/starboard_house_upper/source/AST-COM-003.blend'))
 mats={name:bpy.data.materials[name] for name in ['ivory_enamel','warm_walnut','champagne_metal']}
