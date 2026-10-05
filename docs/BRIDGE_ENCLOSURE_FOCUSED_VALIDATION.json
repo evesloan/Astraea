@@ -70,13 +70,110 @@
       "wall_seconds": 64.8256,
       "clock_mode": "fixed60",
       "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "bridge_enclosure_cart": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 12.2177,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "bridge_enclosure_cart",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 177.1453,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 189.3636,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "bridge_platform_routes": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.6354,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "bridge_platform_routes",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 18.1522,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 21.7882,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "ship_backbone": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.2451,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "ship_backbone",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 8.2788,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 11.5243,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "bridge_platform_structure": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 4.1299,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "bridge_platform_structure",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 9.0221,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 13.1526,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
     }
   },
   "floor_source_and_compiled_bytes_unchanged_from": "f7a4bd67887c1cfa8c40b4c31c24e801d857927a",
   "pending": [
-    "Loaded cart complete route",
-    "Actual in-engine visual review",
     "Full96 regression"
   ],
-  "scope": "Focused checks, not full regression or final art acceptance"
+  "scope": "Focused checks, not full regression or final art acceptance",
+  "planning_tests_passed": 77,
+  "graphical_review": "BRIDGE_ENCLOSURE_VISUAL_REVIEW.json",
+  "test_corrections": [
+    "Crosslink ray originally began inside the starboard infill solid; endpoints moved outside and bidirectional exact face checks added without source edits",
+    "Original platform top-pier queries now recognize only the four proven new ceiling contacts atY111..111.18, preserving lower/upper clearance probes",
+    "Original full-triangle ownership prisms now distinguish only four pinned vertical door-cheek downward bearing faces from duplicate walkable floors; expected slab owner remains required"
+  ]
 }
