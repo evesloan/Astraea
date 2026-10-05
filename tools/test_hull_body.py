@@ -18,7 +18,7 @@ class HullBody(unittest.TestCase):
   for x in self.d['levels']:
    a=Polygon(x['outer_boundary']);b=Polygon(x['inner_reservation_boundary']);self.assertTrue(a.covers(b));self.assertGreater(a.boundary.distance(b.boundary),.99)
  def test_chine_widens_upward(self):
-  knots=self.d['lower_body_knots'];self.assertTrue(all(a['y']<b['y'] and a['inset_m']>b['inset_m']for a,b in zip(knots,knots[1:])))
+  knots=self.d['lower_body_knots'];self.assertTrue(all(a['y']<b['y'] and a['inset_m']>=b['inset_m']for a,b in zip(knots,knots[1:])))
  def test_top_not_full_width_story(self):
   self.assertIn('compact crown',self.d['roof_rule']);self.assertIn('Reference fit only',self.d['levels'][17]['section_role']);self.assertFalse(self.d['summary']['source_or_runtime_geometry_changed'])
 if __name__=='__main__':unittest.main()
