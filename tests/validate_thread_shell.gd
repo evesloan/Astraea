@@ -72,6 +72,10 @@ func run() -> void:
 			var hit:=ship.get_world_3d().direct_space_state.intersect_ray(q)
 			assert(not hit.is_empty() and "TAIL_SampleShelf_" in str(hit.collider.get_path()),"Folded textile stock must sit on its sample shelf")
 	actor.set_physics_process(false)
+	actor.position=Vector3(19,52.6,-220)
+	var budget:=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	for light in shop.find_children("ThreadShellCeilingWash_*","SpotLight3D",true,false):
+		assert(light.has_meta("illumination_anchor") and budget._has_visible_sample(light),"Visible ceiling wash receiver must remain eligible for the existing source budget")
 	actor.position=Vector3(0,52.6,-216)
 	actor.velocity=Vector3.ZERO
 	for target in [Vector2(6,-216),Vector2(17,-216),Vector2(24,-220)]:await walk(actor,target)
