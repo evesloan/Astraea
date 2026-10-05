@@ -9,12 +9,12 @@ func run()->void:
 	assert(central!=null and aft!=null)
 	var old_data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/CENTRAL_CROWN_RUNTIME.json"))
 	var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/AFT_COMMAND_RUNTIME.json"))
-	assert(data.programmes.size()==2 and data.doors.size()==4)
+	assert(data.programmes.size()==2 and data.doors.size()==6)
 	var doors:Array[Node3D]=[]
 	for entry in old_data.doors:
 		if float(entry.position[2])>58:doors.append(central.get_node("CrownDoor_"+str(entry.name)))
 	for entry in data.doors:doors.append(aft.get_node("AftCommandDoor_"+str(entry.name)))
-	assert(doors.size()==6,"Two former endcaps plus four aft doors")
+	assert(doors.size()==8,"Two former endcaps plus six aft doors")
 	var identities:Dictionary={}
 	for door in doors:
 		assert(not identities.has(door.persistent_id));identities[door.persistent_id]=true
@@ -49,5 +49,5 @@ func run()->void:
 	# The replacement public street is walked end-to-end before using either controlled branch.
 	await walk_route(actor,[Vector2(45,63),Vector2(-45,63),Vector2(-7.5,63),Vector2(-7.5,57),Vector2(-7.5,63),Vector2(-7.5,82),Vector2(-23,82),Vector2(-7.5,82),Vector2(-7.5,63),Vector2(7.5,63),Vector2(7.5,57),Vector2(7.5,63),Vector2(7.5,82),Vector2(23,82),Vector2(7.5,82),Vector2(7.5,63),Vector2(0,63),Vector2(0,108),Vector2(5.5,108),Vector2(5.5,137),Vector2(0,137)])
 	assert(absf(actor.position.y-106.5)<.12,"Aft room circuit reaches existing crown lift link on real floor")
-	print("AFT COMMAND ACCESS PASS: six precisely focused doors, full moving-leaf sweeps and entry/return; continuous public cross-street, both former endcaps, both new rooms and existing aft lift approach. Equipment, staff permissions and final art remain unfinished.")
+	print("AFT COMMAND ACCESS PASS: eight precisely focused doors, full moving-leaf sweeps and entry/return; continuous public cross-street, both former endcaps, both new rooms and existing aft lift approach. Equipment, staff permissions and final art remain unfinished.")
 	main.queue_free();await process_frame;quit()
