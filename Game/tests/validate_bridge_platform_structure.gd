@@ -856,8 +856,16 @@ func validate_spine_interfaces() -> void:
 
 func validate_clearances() -> void:
 	assert_empty(AABB(Vector3(-4.099,102.02,-181),Vector3(8.198,4.237,101)),shell_only_exclusions,"D17 spine headroom: deeper branches must stay outside X±4.1")
+	# Preserve the stage-one mouth geometry check independently of the declared
+	# stage-two shell/doors. Actual closed-door routes and apertures are checked
+	# by the enclosure tests; no other clearance query receives this exclusion.
+	var platform_mouth_exclusions: Array[RID] = dynamic_exclusions.duplicate()
+	var enclosure := ship.get_node_or_null("ShipSpace/Districts/BridgeEnclosure_WIP")
+	if enclosure != null:
+		for body in enclosure.find_children("*","CollisionObject3D",true,false):
+			platform_mouth_exclusions.append(body.get_rid())
 	for z in [-181.0,-173.0,-172.0,-118.0]:
-		assert_empty(AABB(Vector3(-3.998,106.52,z-0.05),Vector3(7.996,3.88,0.1)),dynamic_exclusions,"Original full-width centreline mouth must stay open at Z"+str(z))
+		assert_empty(AABB(Vector3(-3.998,106.52,z-0.05),Vector3(7.996,3.88,0.1)),platform_mouth_exclusions,"Preserved platform-stage full-width mouth, excluding only declared enclosure addition, at Z"+str(z))
 	assert_empty(AABB(Vector3(-47,106.52,-180),Vector3(6,3.88,100.1)),dynamic_exclusions,"Six-metre public port leg")
 	assert_empty(AABB(Vector3(-47,106.52,-180),Vector3(50.8,3.88,6)),dynamic_exclusions,"Six-metre transverse bypass and turning junction")
 	assert_empty(AABB(Vector3(-47.5,106.52,-80.05),Vector3(7,3.88,0.1)),dynamic_exclusions,"Open bypass/fore apron connection")

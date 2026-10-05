@@ -23,14 +23,14 @@ func walk(actor:CharacterBody3D,destination:Vector2) -> void:
 	actor.velocity=Vector3.ZERO
 
 func aim_at(actor:CharacterBody3D,point:Vector3) -> void:
-	var aim:=point-actor.camera.global_position
+	var aim:Vector3=point-actor.camera.global_position
 	actor.rotation.y=atan2(-aim.x,-aim.z)
 	actor.pitch=atan2(aim.y,Vector2(aim.x,aim.z).length())
 	actor.camera.rotation.x=actor.pitch
 
 func select_door(actor:CharacterBody3D,door:Node3D) -> void:
 	# Closed centre first, then actual moving contacts for an open/part-open pair.
-	var targets:Array[Vector3]=[door.to_global(Vector3(0,1.3,0))]
+	var targets:Array[Vector3]=[door.to_global(Vector3(0,1.3,0)),door.to_global(Vector3(-1.30,1.3,0)),door.to_global(Vector3(1.30,1.3,0))]
 	for leaf in door.leaves:
 		for contact in leaf.get_children():
 			if contact is CollisionShape3D:targets.append(contact.global_position)
@@ -101,6 +101,11 @@ func exercise_door(ship:Node3D,actor:CharacterBody3D,door:Node3D,first_side:floa
 	assert(is_equal_approx(paused,door.open_fraction),"Occupied animation advanced")
 	await go_local(actor,door,-2.0)
 	await animate(ship,door);assert(door.open_fraction<.001 and not door.obstructed,"Clear sweep must resume its interrupted closure")
+	await go_local(actor,door,-.65)
+	await press(actor,door)
+	assert(door.obstructed and not door.desired_open,"Occupied inward sweep must also reject opening a closed bridge door")
+	await animate(ship,door,15);assert(door.open_fraction<.001)
+	await go_local(actor,door,-2.0)
 	await press(actor,door);await animate(ship,door)
 	await go_local(actor,door,-first_side*2.0)
 	print("BRIDGE THRESHOLD PASS: ",door.name," both-side input, collision, reversal, occupancy and pause/resume")

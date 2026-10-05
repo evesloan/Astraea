@@ -1,4 +1,4 @@
-"""Editable stage-one bridge platform and enclosed public bypass. No authored floor slabs.
+"""Editable stage-two connected fan bridge enclosure. No floor, lights, furniture or door leaves.
 World mapping: Blender=(Godot X,-Godot Z,Godot Y). All new work isolated in this family.
 """
 from pathlib import Path
