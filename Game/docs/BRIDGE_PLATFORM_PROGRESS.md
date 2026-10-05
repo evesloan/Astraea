@@ -10,6 +10,6 @@ Actual bidirectional walking covers the original centreline, public bypass, core
 
 Normal/effects-off fore-junction, warm-gallery, crescent and planet-facing platform views were inspected. The original route is still visibly open. Long repeated bays, plain surfaces, furniture, wayfinding refinement, bridge enclosure and operating systems remain unfinished. No final-art, structural-load, ship-wide pressure or target-GPU acceptance is claimed.
 
-75 planning checks pass. The expanded92-check runtime aggregate is running, and is not yet a full pass. The earlier88-check result belongs to the preceding aft-command batch. Evidence: BRIDGE_PLATFORM_FOCUSED_VALIDATION.json and its referenced source/import contact receipts.
+75 planning checks pass. The expanded92-check runtime aggregate stopped after10 checks (9 passed): crown_structure detected changed protected atrium-cap render/contact signatures. The cause is under investigation; this is not a full pass. The earlier88-check result belongs to the preceding aft-command batch. Evidence: BRIDGE_PLATFORM_FOCUSED_VALIDATION.json and its referenced source/import contact receipts.
 
 Only after full bypass acceptance should a later stage close the bridge perimeter. That must preserve a public journey with every bridge door closed, retain the whole old floor owner, and document only the interior segment as controlled. No test-only reroute or global privatization of D18_fore_route is permitted.
