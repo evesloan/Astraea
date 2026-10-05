@@ -1,6 +1,6 @@
 # Lower staff duty backbone
 
-This is the next construction increment after the five public cores. The source and runtime kit are not yet integrated or accepted.
+This is the next construction increment after the five public cores. The source and runtime kit are integrated. Focused checks pass; the full aggregate and in-engine visual review remain pending.
 
 ## Bounded route
 Use the port-forward staff reservation centred at X -25, Z -490 for a three-stop service lift at Y 0, 6 and 12. Do not blindly extend it to D18: the upper terminal is outside the compact crown and needs separate roof coordination. The 8.6 by 12 metre lobby is not a verified stair core.
@@ -18,3 +18,10 @@ Read-only plan checks find the proposed forward route inside the lower inner hul
 Preserve existing identities, slabs and source/export pairs. Fit opaque washable panels, restrained numbering, protected handrails and cool practical light using the supplied staff-lift reference. Read the complete master chapters 7, 11 and 14 with current overrides; historical roster and restocking implementation claims do not apply to the current rebuild.
 
 Verify explicit floor ownership, pit/cap and lower-shell clearance, actual player walking, loaded-cart turns, all three stops, boarding and exit with the same loose products, and guest sightline screening. Run the full regression and normal/effects-off review before acceptance. Detailed furnishing remains deferred.
+
+## Focused integration evidence
+The three-stop lift passes actual cabin sweep, precise RMB/E selection, loose cart/product carry and loaded boarding/exit. The player capsule walks the complete D01 synthesis route, D02 fusion interface and D03 home/depot threshold routes. 1,040 sampled compound cart/load/driver poses pass, with physical forward/reverse loaded-cart turns at the first lobby corner on all three decks. This is not a complete freehand cart journey or room acceptance.
+
+The first actual lift sweeps detected exact contact at the lobby slab and ceiling boundaries. Both now reserve a 0.02 metre gap at the cabin front, bridged at floor level by the existing fixed sill. The revised source also passes an inflated whole-cabin sweep envelope. The initial route test's default 2,400-frame cutoff was insufficient for a 500+ metre walk at unchanged 3.1 m/s; the new checks receive 20,000 frames without changing physics or assertions. The synthesis door fixture was corrected to begin closed before testing its opening after the walk.
+
+AST-STF-009 retains 1,600 editable closed pieces, 19,200 triangles and 281 spatially bounded runtime batches. All 99 fixture markers have checked downward exits and all three signs have physical backing. Ceiling underside is 3.20 metres above deck, the lowest fixture lens is 3.015 metres, and the reused lift gate is 2.65 metres high. Final appearance, accessibility/species fit, stocked depot/home interiors and operational staff systems remain unfinished.
