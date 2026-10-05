@@ -7458,16 +7458,19 @@
   "longitudinal_vertical_core_reservations": [
     {
       "id": "forward_vertical_core",
-      "status": "Plan-fit reservation only; existing spine requires authored bypasses before any shaft cut",
+      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
       "x": [
-        -3,
-        3
+        -3.3,
+        3.3
       ],
       "z": [
         -441,
-        -423
+        -417
       ],
-      "bypass_end_extension_m": 3,
+      "center_z": -432,
+      "transport_catchment_z": -432,
+      "apron_connector": null,
+      "bypass_end_extension_m": 4,
       "decks": [
         "D01",
         "D02",
@@ -7493,37 +7496,66 @@
         106.5
       ],
       "programme_guest_shop_conflicts": [],
-      "guest_service_separation": "Separate screened landings and independently assigned cars; detailed layout pending",
+      "guest_service_separation": "Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink",
       "required_bypass_x_ranges": [
         [
           -7.8,
-          -3.8
+          -3.5
         ],
         [
-          3.8,
+          3.5,
           7.8
         ]
       ],
-      "purpose": "Longitudinal catchment access to all18decks without routing every journey through the central atrium",
+      "lobby_x": [
+        -7.8,
+        7.8
+      ],
+      "lobby_z": [
+        -445,
+        -413
+      ],
+      "guest_lift_gate_local_xz": [
+        -1.8,
+        -6
+      ],
+      "stair_reservation_local_x": [
+        -3.1,
+        3.1
+      ],
+      "stair_reservation_local_z": [
+        4,
+        14.8
+      ],
+      "preserved_crosslink_local_z": [
+        -3,
+        3
+      ],
+      "purpose": "Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks",
       "requirements": [
-        "Resolve landings and staff crosslinks on every deck",
-        "Keep public walking continuous around core",
-        "Tie into planned Townline catchments, without claiming tram implementation",
+        "Author both4.3m bypasses and4m end connections",
+        "Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations",
+        "Fit differing4.5/6/8.5m stair pitches and equivalent lift access",
+        "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
+        "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
         "Test physical doors, cabins and loaded cart transfers before use"
       ]
     },
     {
       "id": "fore_midship_vertical_core",
-      "status": "Plan-fit reservation only; existing spine requires authored bypasses before any shaft cut",
+      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
       "x": [
-        -3,
-        3
+        -3.3,
+        3.3
       ],
       "z": [
         -225,
-        -207
+        -201
       ],
-      "bypass_end_extension_m": 3,
+      "center_z": -216,
+      "transport_catchment_z": -216,
+      "apron_connector": null,
+      "bypass_end_extension_m": 4,
       "decks": [
         "D01",
         "D02",
@@ -7549,37 +7581,76 @@
         106.5
       ],
       "programme_guest_shop_conflicts": [],
-      "guest_service_separation": "Separate screened landings and independently assigned cars; detailed layout pending",
+      "guest_service_separation": "Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink",
       "required_bypass_x_ranges": [
         [
           -7.8,
-          -3.8
+          -3.5
         ],
         [
-          3.8,
+          3.5,
           7.8
         ]
       ],
-      "purpose": "Longitudinal catchment access to all18decks without routing every journey through the central atrium",
+      "lobby_x": [
+        -7.8,
+        7.8
+      ],
+      "lobby_z": [
+        -229,
+        -197
+      ],
+      "guest_lift_gate_local_xz": [
+        -1.8,
+        -6
+      ],
+      "stair_reservation_local_x": [
+        -3.1,
+        3.1
+      ],
+      "stair_reservation_local_z": [
+        4,
+        14.8
+      ],
+      "preserved_crosslink_local_z": [
+        -3,
+        3
+      ],
+      "purpose": "Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks",
       "requirements": [
-        "Resolve landings and staff crosslinks on every deck",
-        "Keep public walking continuous around core",
-        "Tie into planned Townline catchments, without claiming tram implementation",
+        "Author both4.3m bypasses and4m end connections",
+        "Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations",
+        "Fit differing4.5/6/8.5m stair pitches and equivalent lift access",
+        "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
+        "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
         "Test physical doors, cabins and loaded cart transfers before use"
       ]
     },
     {
       "id": "atrium_threshold_vertical_core",
-      "status": "Plan-fit reservation only; existing spine requires authored bypasses before any shaft cut",
+      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
       "x": [
-        -3,
-        3
+        -3.3,
+        3.3
       ],
       "z": [
-        -78,
-        -66
+        -109,
+        -85
       ],
-      "bypass_end_extension_m": 2,
+      "center_z": -100,
+      "transport_catchment_z": -72,
+      "apron_connector": {
+        "x": [
+          -7.8,
+          7.8
+        ],
+        "z": [
+          -81,
+          -80
+        ],
+        "status": "Required authored bridge between lobby end and existing apron"
+      },
+      "bypass_end_extension_m": 4,
       "decks": [
         "D01",
         "D02",
@@ -7605,37 +7676,66 @@
         106.5
       ],
       "programme_guest_shop_conflicts": [],
-      "guest_service_separation": "Separate screened landings and independently assigned cars; detailed layout pending",
+      "guest_service_separation": "Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink",
       "required_bypass_x_ranges": [
         [
           -7.8,
-          -3.8
+          -3.5
         ],
         [
-          3.8,
+          3.5,
           7.8
         ]
       ],
-      "purpose": "Longitudinal catchment access to all18decks without routing every journey through the central atrium",
+      "lobby_x": [
+        -7.8,
+        7.8
+      ],
+      "lobby_z": [
+        -113,
+        -81
+      ],
+      "guest_lift_gate_local_xz": [
+        -1.8,
+        -6
+      ],
+      "stair_reservation_local_x": [
+        -3.1,
+        3.1
+      ],
+      "stair_reservation_local_z": [
+        4,
+        14.8
+      ],
+      "preserved_crosslink_local_z": [
+        -3,
+        3
+      ],
+      "purpose": "Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks",
       "requirements": [
-        "Resolve landings and staff crosslinks on every deck",
-        "Keep public walking continuous around core",
-        "Tie into planned Townline catchments, without claiming tram implementation",
+        "Author both4.3m bypasses and4m end connections",
+        "Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations",
+        "Fit differing4.5/6/8.5m stair pitches and equivalent lift access",
+        "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
+        "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
         "Test physical doors, cabins and loaded cart transfers before use"
       ]
     },
     {
       "id": "aft_midship_vertical_core",
-      "status": "Plan-fit reservation only; existing spine requires authored bypasses before any shaft cut",
+      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
       "x": [
-        -3,
-        3
+        -3.3,
+        3.3
       ],
       "z": [
         207,
-        225
+        231
       ],
-      "bypass_end_extension_m": 3,
+      "center_z": 216,
+      "transport_catchment_z": 216,
+      "apron_connector": null,
+      "bypass_end_extension_m": 4,
       "decks": [
         "D01",
         "D02",
@@ -7661,37 +7761,66 @@
         106.5
       ],
       "programme_guest_shop_conflicts": [],
-      "guest_service_separation": "Separate screened landings and independently assigned cars; detailed layout pending",
+      "guest_service_separation": "Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink",
       "required_bypass_x_ranges": [
         [
           -7.8,
-          -3.8
+          -3.5
         ],
         [
-          3.8,
+          3.5,
           7.8
         ]
       ],
-      "purpose": "Longitudinal catchment access to all18decks without routing every journey through the central atrium",
+      "lobby_x": [
+        -7.8,
+        7.8
+      ],
+      "lobby_z": [
+        203,
+        235
+      ],
+      "guest_lift_gate_local_xz": [
+        -1.8,
+        -6
+      ],
+      "stair_reservation_local_x": [
+        -3.1,
+        3.1
+      ],
+      "stair_reservation_local_z": [
+        4,
+        14.8
+      ],
+      "preserved_crosslink_local_z": [
+        -3,
+        3
+      ],
+      "purpose": "Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks",
       "requirements": [
-        "Resolve landings and staff crosslinks on every deck",
-        "Keep public walking continuous around core",
-        "Tie into planned Townline catchments, without claiming tram implementation",
+        "Author both4.3m bypasses and4m end connections",
+        "Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations",
+        "Fit differing4.5/6/8.5m stair pitches and equivalent lift access",
+        "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
+        "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
         "Test physical doors, cabins and loaded cart transfers before use"
       ]
     },
     {
       "id": "aft_vertical_core",
-      "status": "Plan-fit reservation only; existing spine requires authored bypasses before any shaft cut",
+      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
       "x": [
-        -3,
-        3
+        -3.3,
+        3.3
       ],
       "z": [
         423,
-        441
+        447
       ],
-      "bypass_end_extension_m": 3,
+      "center_z": 432,
+      "transport_catchment_z": 432,
+      "apron_connector": null,
+      "bypass_end_extension_m": 4,
       "decks": [
         "D01",
         "D02",
@@ -7717,26 +7846,615 @@
         106.5
       ],
       "programme_guest_shop_conflicts": [],
-      "guest_service_separation": "Separate screened landings and independently assigned cars; detailed layout pending",
+      "guest_service_separation": "Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink",
       "required_bypass_x_ranges": [
         [
           -7.8,
-          -3.8
+          -3.5
         ],
         [
-          3.8,
+          3.5,
           7.8
         ]
       ],
-      "purpose": "Longitudinal catchment access to all18decks without routing every journey through the central atrium",
+      "lobby_x": [
+        -7.8,
+        7.8
+      ],
+      "lobby_z": [
+        419,
+        451
+      ],
+      "guest_lift_gate_local_xz": [
+        -1.8,
+        -6
+      ],
+      "stair_reservation_local_x": [
+        -3.1,
+        3.1
+      ],
+      "stair_reservation_local_z": [
+        4,
+        14.8
+      ],
+      "preserved_crosslink_local_z": [
+        -3,
+        3
+      ],
+      "purpose": "Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks",
       "requirements": [
-        "Resolve landings and staff crosslinks on every deck",
-        "Keep public walking continuous around core",
-        "Tie into planned Townline catchments, without claiming tram implementation",
+        "Author both4.3m bypasses and4m end connections",
+        "Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations",
+        "Fit differing4.5/6/8.5m stair pitches and equivalent lift access",
+        "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
+        "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
         "Test physical doors, cabins and loaded cart transfers before use"
       ]
     }
   ],
+  "staff_riser_reservations": [
+    {
+      "id": "port_service_riser_1",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        -25,
+        -490
+      ],
+      "lobby_x": [
+        -27.4,
+        -18.8
+      ],
+      "lobby_z": [
+        -496,
+        -484
+      ],
+      "shaft_x": [
+        -27.2,
+        -22.8
+      ],
+      "shaft_z": [
+        -492.2,
+        -487.8
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    },
+    {
+      "id": "port_service_riser_2",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        -25,
+        -283
+      ],
+      "lobby_x": [
+        -27.4,
+        -18.8
+      ],
+      "lobby_z": [
+        -289,
+        -277
+      ],
+      "shaft_x": [
+        -27.2,
+        -22.8
+      ],
+      "shaft_z": [
+        -285.2,
+        -280.8
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    },
+    {
+      "id": "port_service_riser_3",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        -25,
+        -90
+      ],
+      "lobby_x": [
+        -27.4,
+        -18.8
+      ],
+      "lobby_z": [
+        -96,
+        -84
+      ],
+      "shaft_x": [
+        -27.2,
+        -22.8
+      ],
+      "shaft_z": [
+        -92.2,
+        -87.8
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    },
+    {
+      "id": "port_service_riser_4",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        -25,
+        290
+      ],
+      "lobby_x": [
+        -27.4,
+        -18.8
+      ],
+      "lobby_z": [
+        284,
+        296
+      ],
+      "shaft_x": [
+        -27.2,
+        -22.8
+      ],
+      "shaft_z": [
+        287.8,
+        292.2
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    },
+    {
+      "id": "port_service_riser_5",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        -25,
+        490
+      ],
+      "lobby_x": [
+        -27.4,
+        -18.8
+      ],
+      "lobby_z": [
+        484,
+        496
+      ],
+      "shaft_x": [
+        -27.2,
+        -22.8
+      ],
+      "shaft_z": [
+        487.8,
+        492.2
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    },
+    {
+      "id": "starboard_service_riser_1",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        25,
+        -490
+      ],
+      "lobby_x": [
+        18.8,
+        27.4
+      ],
+      "lobby_z": [
+        -496,
+        -484
+      ],
+      "shaft_x": [
+        22.8,
+        27.2
+      ],
+      "shaft_z": [
+        -492.2,
+        -487.8
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    },
+    {
+      "id": "starboard_service_riser_2",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        25,
+        -323
+      ],
+      "lobby_x": [
+        18.8,
+        27.4
+      ],
+      "lobby_z": [
+        -329,
+        -317
+      ],
+      "shaft_x": [
+        22.8,
+        27.2
+      ],
+      "shaft_z": [
+        -325.2,
+        -320.8
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    },
+    {
+      "id": "starboard_service_riser_3",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        25,
+        -86
+      ],
+      "lobby_x": [
+        18.8,
+        27.4
+      ],
+      "lobby_z": [
+        -91.8,
+        -80.2
+      ],
+      "shaft_x": [
+        22.8,
+        27.2
+      ],
+      "shaft_z": [
+        -88.2,
+        -83.8
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    },
+    {
+      "id": "starboard_service_riser_4",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        25,
+        323
+      ],
+      "lobby_x": [
+        18.8,
+        27.4
+      ],
+      "lobby_z": [
+        317,
+        329
+      ],
+      "shaft_x": [
+        22.8,
+        27.2
+      ],
+      "shaft_z": [
+        320.8,
+        325.2
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    },
+    {
+      "id": "starboard_service_riser_5",
+      "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+      "center_xz": [
+        25,
+        490
+      ],
+      "lobby_x": [
+        18.8,
+        27.4
+      ],
+      "lobby_z": [
+        484,
+        496
+      ],
+      "shaft_x": [
+        22.8,
+        27.2
+      ],
+      "shaft_z": [
+        487.8,
+        492.2
+      ],
+      "decks": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18"
+      ],
+      "allocation_conflicts": [],
+      "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+      "requirements": [
+        "Explicit floor-by-floor staff links; no open merging with guest spine",
+        "Opaque screened arrivals and service access logic",
+        "Maintain source guest, crew and programme allocations",
+        "Protect hull section, pit/headroom and all source-derived cabin contacts"
+      ]
+    }
+  ],
+  "arrivals_service_link_reservation": {
+    "decks": [
+      "D01",
+      "D02"
+    ],
+    "riser": "port_service_riser_1",
+    "route_xz": [
+      [
+        -21,
+        -490
+      ],
+      [
+        -21,
+        -500
+      ],
+      [
+        -57,
+        -500
+      ],
+      [
+        -57,
+        -432
+      ],
+      [
+        -54,
+        -432
+      ]
+    ],
+    "width_m": 3.6,
+    "buffer_cap_style": "flat",
+    "terminal_floor_owners": [
+      "D01_arrivals_ground",
+      "D02_fusion_screened_service"
+    ],
+    "status": "Plan-fit link to the existing west service interface; floor, corners, enclosure and doors still require authoring",
+    "source_interface": "Arrivals/fusion service street atX-57, interfaceX-54",
+    "public_crossing_required": false,
+    "buffered_plan_area_m2": 421.2,
+    "programme_intrusion_m2": 0,
+    "terminal_policy": "Flat-ended floor meets the existing service interface atX-54; existing arrival/service owners retain the terminal floor beyond it"
+  },
   "aquatic_section_reservations": [
     {
       "id": "fore_grand_pool_market_section",

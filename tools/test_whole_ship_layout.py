@@ -37,6 +37,15 @@ class WholeShipLayout(unittest.TestCase):
   for field,count in [('programme_keys',161),('guest_envelope_source_indices',1000),('retail_envelope_source_indices',100),('crew_envelope_source_indices',200)]:
    values=[v for group in stacks for v in group[field]]
    self.assertEqual(len(values),count);self.assertEqual(len(set(values)),count)
+ def test_staff_risers_remain_separate_and_crosslink_is_preserved(self):
+  self.assertEqual(len(self.plan['staff_riser_reservations']),10)
+  for r in self.plan['staff_riser_reservations']:self.assertFalse(r['allocation_conflicts'])
+  for c in self.plan['longitudinal_vertical_core_reservations']:
+   self.assertEqual(c['preserved_crosslink_local_z'],[-3,3])
+   self.assertGreaterEqual(c['stair_reservation_local_z'][0],4)
+  link=self.plan['arrivals_service_link_reservation']
+  self.assertEqual(link['programme_intrusion_m2'],0);self.assertEqual(link['buffer_cap_style'],'flat')
+  self.assertFalse(link['public_crossing_required']);self.assertTrue(all(p[0]<-4 for p in link['route_xz']))
  def test_houses_account_for_every_guest_once(self):
   h=self.plan['residential_houses'];ids=[i for row in h for i in row['guest_envelope_source_indices']]
   self.assertEqual(len(h),12);self.assertEqual(len(ids),1000);self.assertEqual(len(set(ids)),1000)

@@ -32,6 +32,7 @@ def plan(draw,deck,origin,scale,labels=False):
  if deck in ['D08','D09']:
   for c in P['aquatic_section_reservations']:rectangle(c['x'],c['z'],'#abd7db','#3f8d97',2)
  for c in P['longitudinal_vertical_core_reservations']:rectangle(c['x'],c['z'],'#e38c88','#a34b46',2)
+ for c in P.get('staff_riser_reservations',[]):rectangle(c['shaft_x'],c['shaft_z'],'#52747e','#284a56',1)
  if labels:
   for r in P['programmes']:
    if r['deck']==deck:
@@ -43,7 +44,7 @@ for deck in P['decks']:
  d.text((36,57),'Working plan: allocation crosswalk + proposed vertical reservations. NOT final architecture.',font=f(15),fill='#555f65')
  plan(d,key,(65,94),1.2,True)
  d.text((36,392),'Bow left / port above | Light grey: hull guide / darker grey: structural regions / outlines: programmes | Gold: guest allocations | Blue-grey: retail addresses',font=f(11),fill='#465962')
- d.text((36,414),'Purple: proposed residential courts | Red: proposed vertical cores | Cyan: proposed pool/market section | Orange: existing voids',font=f(11),fill='#465962')
+ d.text((36,414),'Purple: proposed residential courts | Red: public lift/stair cores; dark blue: staff risers | Cyan: proposed pool/market section | Orange: existing voids',font=f(11),fill='#465962')
  rows=sorted([r for r in P['programmes']if r['deck']==key],key=lambda r:r['programme_key'])
  for i,r in enumerate(rows):
   x=36+(i//7)*700;y=452+(i%7)*25
@@ -58,7 +59,7 @@ for i,deck in enumerate(P['decks']):
  d.text((x,y),f"{deck['deck']}   {deck['floor_y']:g} m   {len(deck['programme_keys'])} programmes / {deck['crew_bank_envelope_count'] if deck['deck']=='D03' else deck['guest_envelope_count']} {'crew allocations' if deck['deck']=='D03' else 'guest units'}",font=f(14),fill='#203943')
  plan(d,deck['deck'],(x,y+29),.40)
 d.text((25,1010),'Gold: guest allocations. Blue-grey: retail addresses. Purple: proposed landscaped house courts; pale centres retain local arrivals.',font=f(17),fill='#465962')
-d.text((25,1037),'Red: five proposed vertical cores. Cyan: raised pool / market overlook reservation. Grey outlines: programmes.',font=f(17),fill='#465962')
+d.text((25,1037),'Red: public lift/stair cores. Dark blue: separate staff risers. Cyan: raised pool / market overlook reservation. Grey outlines: programmes.',font=f(17),fill='#465962')
 d.text((25,1064),'Crew berth fit, luxury replacement layouts, hull section and complete guest/service routes remain open gates.',font=f(17),fill='#8c4b45')
 canvas.save(OUT/'overview.png')
 print(OUT/'overview.png')
@@ -89,7 +90,7 @@ block(-459,-405,44,61,'#abd7db','#3f8d97')
 d.text(sec(-510,74),'Raised pool / market',font=f(12),fill='#347883')
 d.line([sec(-453,67),sec(-432,61)],fill='#347883',width=2)
 d.text(sec(-256,88),'Theater upper volume',font=f(11),fill='#915b2c')
-d.text((110,502),'Five core reservations: actual shafts, screened landings, pit/headroom and guest/service routes still require fitting',font=f(15),fill='#465962')
+d.text((110,502),'Five public lift/stair cores plus ten separate staff risers. Shaft, landing, route and hull fitting remain unfinished',font=f(15),fill='#465962')
 d.text((28,544),'KEY SECTION DECISIONS',font=f(19),fill='#203943')
 notes=['Four proposed residential courts span D13–D17, following the room banks, with22.5m between base and cover.',
 'Forward pool: arrival 44m; proposed wet deck 46.2m; basin bottom 44.8m; market overlook 52.5m; dining above 61m.',
