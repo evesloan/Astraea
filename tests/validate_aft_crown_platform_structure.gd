@@ -6,7 +6,10 @@ const ASSET := "res://assets/models/AST-CMD-005.glb"
 const AUDIT := "res://docs/AFT_CROWN_PLATFORM_SOURCE_CONTACT_AUDIT.json"
 const ROUNDTRIP := "res://docs/AFT_CROWN_PLATFORM_SOURCE_ROUNDTRIP.json"
 const PRESERVATION := "res://docs/AFT_CROWN_PLATFORM_AFT_COMMAND_PRESERVATION.json"
-const EXPORT_SHA := "96d4f49ee71113858fc97df779f810c57c05ac5b5c1244cfa7d06352258452c3"
+const BASELINE_EXPORT_SHA := "96d4f49ee71113858fc97df779f810c57c05ac5b5c1244cfa7d06352258452c3"
+const EXPORT_SHA := "323a26fe17cb9d6bd652309c0a4c99e4d1ce2d3316526b4d125d732dec0c0cf6"
+const GUARD_SPLIT := "res://docs/AFT_CROWN_PLATFORM_GUARD_SPLIT_IMPORT_EQUIVALENCE.json"
+const GUARD_SPLIT_SHA := "9fd63a48d32a25c919b5f66e00190bf1d5ba87ddb25918931aba9159d17aad7c"
 const CONTRACT_SHA := "b6692962f2c4a477827acbb685542b79aa0e09ef513ee6445ed840aefbf79011"
 const AUDIT_SHA := "02afb1e3ce0822a6620ef5f0f5602da206ada97e86eadd02056bb6983e40e9ad"
 const ROUNDTRIP_SHA := "60aaa9d08fbcf5d32d690cdeb6fc7abe23fc7e88ee230d2ee1470a3cb9ca68a0"
@@ -43,6 +46,9 @@ var matched_floor_triangles := 0
 var internal_pier_joint_triangles := 0
 var bearing_witnesses := 0
 var source_audit: Dictionary
+var guard_split: Dictionary
+var split_imported_faces := PackedVector3Array()
+var matched_split_triangles := 0
 
 func _initialize() -> void:
 	call_deferred("run")
@@ -145,6 +151,10 @@ func validate_meshes(roundtrip: Dictionary) -> void:
 			var a := faces[face]
 			var b := faces[face+1]
 			var c := faces[face+2]
+			# Keep only the tiny, explicitly bounded split neighborhood for the
+			# independent per-source-part oriented import checks below.
+			if minf(a.z,minf(b.z,c.z))>=159.952-EPS and maxf(a.z,maxf(b.z,c.z))<=167.202+EPS and minf(a.y,minf(b.y,c.y))>=106.48 and maxf(a.y,maxf(b.y,c.y))<=107.83 and minf(absf(a.x),minf(absf(b.x),absf(c.x)))>35.5:
+				split_imported_faces.append_array(PackedVector3Array([a,b,c]))
 			if absf(a.y-FLOOR_Y)<EPS and absf(b.y-FLOOR_Y)<EPS and absf(c.y-FLOOR_Y)<EPS:
 				# Downward static wall/guard feet are bearings, never duplicate floors.
 				var outward := -(b-a).cross(c-a).normalized()
@@ -462,10 +472,12 @@ func validate_piers(data: Dictionary) -> void:
 			var bounds := AABB(Vector3(centre.x-0.4,low,centre.y-0.6),Vector3(0.8,high-low,1.2))
 			var label := "pier%d slice%d" % [index+1,segment]
 			# Own source frame/hanger contacts are verified by the full immutable
-			# positive graph. External contacts are permitted ONLY at the new slab.
+			# positive graph. External contacts are permitted only at the new slab
+			# or exact source-backed006 triangles in the top-slice contact prisms.
 			for hit in box_hits(bounds,own_exclusions,label):
 				var expected_id: String = FLOOR_IDS[(0 if index<2 else 2)+(index%2)]
-				check(region_id(hit.collider)==expected_id and low<106.5 and high>106.26,"Unexpected external pier intrusion: "+label+" -> "+owner(hit))
+				var slab_contact: bool = region_id(hit.collider)==expected_id and low<106.5 and high>106.26
+				check(slab_contact or approved_enclosure_pier_contact(hit,index+1,segment,bounds),"Unexpected external pier intrusion: "+label+" -> "+owner(hit))
 			var y := (low+high)*0.5
 			var hit := ray(Vector3(centre.x-1,y,centre.y+0.17),Vector3(centre.x+1,y,centre.y+0.17),shell_exclusions)
 			# Highest slice can meet its positively seated transfer flange first;
@@ -480,6 +492,83 @@ func validate_piers(data: Dictionary) -> void:
 		var base := ray(Vector3(centre.x,-3.25,centre.y+0.17),Vector3(centre.x,-3.1,centre.y+0.17),shell_exclusions)
 		check(not base.is_empty() and absf(base.position.y+3.2)<EPS,"Actual pier/keel base gap")
 	check(pier_slices==96 and keel_rays==30,"All96 installed slices and30 keel bearings must execute")
+
+func clip_triangle_to_box(a: Vector3,b: Vector3,c: Vector3,bounds: AABB) -> PackedVector3Array:
+	# Convex polygon clipping, not an AABB-only triangle approximation. Large
+	# diagonal faces cannot obtain permission merely from a broad batch bound.
+	var polygon := PackedVector3Array([a,b,c])
+	for axis in range(3):
+		for upper in [false,true]:
+			var limit: float = bounds.end[axis] if upper else bounds.position[axis]
+			var clipped := PackedVector3Array()
+			for index in range(polygon.size()):
+				var start := polygon[index]
+				var finish := polygon[(index+1)%polygon.size()]
+				var start_inside: bool = start[axis]<=limit if upper else start[axis]>=limit
+				var finish_inside: bool = finish[axis]<=limit if upper else finish[axis]>=limit
+				if start_inside:
+					clipped.append(start)
+				if start_inside!=finish_inside:
+					clipped.append(start.lerp(finish,(limit-start[axis])/(finish[axis]-start[axis])))
+			polygon = clipped
+			if polygon.is_empty():
+				return polygon
+	return polygon
+
+func approved_enclosure_pier_contact(hit: Dictionary,pier_index: int,segment: int,bounds: AABB) -> bool:
+	if segment!=15:
+		return false
+	var enclosure := ship.get_node_or_null("ShipSpace/Districts/UpperHorizonEnclosure_WIP/UpperHorizonEnclosureArchitecture") as Node3D
+	var body := hit.collider as StaticBody3D
+	if enclosure==null or body==null or not enclosure.is_ancestor_of(body):
+		return false
+	var mesh := body.get_parent() as MeshInstance3D
+	var shape := body.get_node_or_null("SharedShape") as CollisionShape3D
+	if mesh==null or mesh.mesh==null or shape==null or shape.disabled or not shape.shape is ConcavePolygonShape3D:
+		return false
+	var local_faces := mesh.mesh.get_faces()
+	if shape.shape.get_faces()!=local_faces or not shape.global_transform.is_equal_approx(mesh.global_transform):
+		return false
+	var evidence: Dictionary = guard_split.enclosure_pier_contacts
+	if FileAccess.get_sha256("res://assets/models/AST-CMD-006.glb")!=str(evidence.source_export.export_sha256) or not bool(evidence.source_export.get("exact_float32_oriented_position_triangle_uv_material_equality",false)):
+		return false
+	var rows: Array = evidence.rows.filter(func(row: Dictionary)->bool:return int(row.pier_index)==pier_index)
+	var used: Dictionary = {}
+	var intersecting := 0
+	for offset in range(0,local_faces.size(),3):
+		var actual := PackedVector3Array()
+		for corner in range(3):
+			actual.append(mesh.global_transform*local_faces[offset+corner])
+		var clipped := clip_triangle_to_box(actual[0],actual[1],actual[2],bounds.grow(0.0005))
+		if clipped.is_empty():
+			continue
+		intersecting += 1
+		var matched := false
+		for row in rows:
+			var lo := v3(row.allowed_intersection_min)
+			var hi := v3(row.allowed_intersection_max)
+			var prism := AABB(lo,hi-lo).grow(EPS)
+			var inside := true
+			for point in clipped:
+				inside = inside and prism.has_point(point)
+			if not inside:
+				continue
+			for index in range(row.triangles.size()):
+				var key := str(row.source_part)+"/"+str(index)
+				if used.has(key):
+					continue
+				var expected := PackedVector3Array()
+				for vertex in row.triangles[index]:
+					expected.append(v3(row.vertices_world[int(vertex)]))
+				if triangle_error(expected,0,actual,0)<EPS:
+					used[key] = true
+					matched = true
+					break
+			if matched:
+				break
+		if not matched:
+			return false
+	return intersecting>0
 
 func validate_clearances() -> void:
 	# Query only new source in protected existing architecture; retained core
@@ -547,13 +636,102 @@ func validate_guards(data: Dictionary) -> void:
 		var steps := ceili(a.distance_to(b)/0.5)
 		for index in range(1,steps):
 			var p := a.lerp(b,float(index)/steps)
-			for y in [106.7,107.1,107.6]:
+			var heights := [106.7,107.1,107.6]
+			# Only the two approved 4m viewing bays have lowered Back/Cap tops.
+			# The toe, all retained stubs, and all other runs keep original probes.
+			if str(guard.id) in ["Port_01","Starboard_01"] and p.z>160.0 and p.z<164.0:
+				heights = [106.7,107.1,107.36]
+			for y in heights:
 				p.y = y
 				var hit := ray(p+normal*0.4,p-normal*0.4,shell_exclusions)
 				check(not hit.is_empty(),"Actual perimeter guard missing: "+str(guard.id)+" at"+str(p))
 	for x in [-3.8,0.0,3.8]:
 		for y in [106.7,107.4,108.2]:
 			check(ray(Vector3(x,y,193.0),Vector3(x,y,195.0),dynamic_exclusions).is_empty(),"Terminal guard blocks retained onward spine")
+
+func validate_guard_split(baseline: Dictionary) -> void:
+	var evidence: Dictionary = guard_split.source_export
+	var preservation: Dictionary = guard_split.preservation
+	var ledger: Dictionary = guard_split.ledger_preservation
+	check(bool(evidence.get("pass",false)) and bool(evidence.get("exact_float32_oriented_position_triangle_uv_material_equality",false)) and bool(evidence.get("material_parameters_and_packed_texture_bytes_equal",false)) and bool(evidence.get("all_markers_and_properties_equal",false)),"Final split source/export positions, orientation, UVs, materials or markers differ")
+	check(str(preservation.baseline_source_sha256)==str(baseline.source_sha256) and str(preservation.source_sha256)==str(evidence.source_sha256) and str(guard_split.exact_stub_audit.source_sha256)==str(evidence.source_sha256),"Guard split does not descend from the pinned original source")
+	check(bool(preservation.get("pass",false)) and bool(preservation.toes_exact) and bool(preservation.material_datablocks_unmodified) and int(preservation.exact_unaffected_objects)==3975,"Unchanged objects, toe solids or source materials differ")
+	check(int(ledger.common_records_exact)==3928 and int(ledger.baseline_parts)==3932 and int(ledger.current_parts)==3940,"Exact common source ledger census changed")
+	var removed := PackedStringArray()
+	var added := PackedStringArray()
+	for side in ["Port","Starboard"]:
+		for kind in ["Back","Cap"]:
+			var old_name := "ACP_%s_Guard%s_01.008" % [side,kind]
+			removed.append(old_name)
+			for suffix in ["aft_stub","fore_stub","low_bay"]:
+				added.append(old_name+"__"+suffix)
+	removed.sort()
+	added.sort()
+	check(PackedStringArray(preservation.removed_exact_allowlist)==removed and PackedStringArray(ledger.removed_exact_names)==removed,"Only four approved Back/Cap objects may be removed")
+	check(PackedStringArray(preservation.added_exact_names)==added and PackedStringArray(ledger.added_exact_names)==added,"Exactly12 deterministic split names required")
+	check(bool(guard_split.exact_stub_audit.get("pass",false)) and guard_split.exact_stub_audit.parts.size()==12 and bool(guard_split.geometric_delta.get("pass",false)),"Exact retained stub and central geometric delta proof missing")
+	for part in guard_split.exact_stub_audit.parts:
+		check(str(part.new) in added and float(part.source_face_interpolated_uv_max_error)<0.000001,"Unapproved split or UV drift")
+		if not str(part.new).ends_with("__low_bay"):
+			check(bool(part.retained_x_and_y_exact),"Retained stub X/Y moved")
+		if str(part.new).ends_with("__fore_stub"):
+			check(float(part.z_actual_float32[1])-float(part.z_actual_float32[0])>0.047,"Tiny fore stub omitted")
+	var seen: Dictionary = {}
+	var used: Dictionary = {}
+	for part in guard_split.replacement_triangles:
+		check(str(part.name) in added and not seen.has(str(part.name)) and part.triangles.size()==12,"Exact split source triangle part census changed")
+		seen[str(part.name)] = true
+		for indices in part.triangles:
+			var source := PackedVector3Array()
+			for index in indices:
+				source.append(v3(part.vertices_world[int(index)]))
+			var found := -1
+			for offset in range(0,split_imported_faces.size(),3):
+				if not used.has(offset) and triangle_error(source,0,split_imported_faces,offset)<EPS:
+					found = offset
+					break
+			if check(found>=0,"Exact split part source/import oriented triangle missing: "+str(part.name)):
+				used[found] = true
+				matched_split_triangles += 1
+	check(seen.size()==12 and matched_split_triangles==144,"All12 split solids and144 oriented triangles must be independently matched")
+	# Preserve the original rooted graph except four removed objects and the
+	# two adjacent cap support edges. All14 replacement edges are measured
+	# positive-volume contacts, never an allowance based on group membership.
+	var current_parts: Dictionary = {}
+	for name in guard_split.current_source_part_names:
+		current_parts[str(name)] = true
+	var roots: Dictionary = {}
+	for part in source_audit.root_pier_parts:
+		roots[str(part.name)] = true
+	var parents: Dictionary = {}
+	for edge in guard_split.current_rooted_contacts:
+		check(current_parts.has(str(edge.part)) and current_parts.has(str(edge.support)) and not parents.has(str(edge.part)),"Split rooted graph has missing/duplicate members")
+		positive_contact(edge,"Split source "+str(edge.part))
+		parents[str(edge.part)] = edge
+	check(current_parts.size()==3940 and roots.size()==24 and parents.size()==3916 and int(guard_split.retained_support_edges_exact)==3902 and guard_split.changed_support_edges.size()==14,"Bounded split source graph census changed")
+	for edge in source_audit.contact_graph:
+		if str(edge.part) in removed or str(edge.support) in removed:
+			continue
+		check(parents.has(str(edge.part)) and parents[str(edge.part)]==edge,"Unchanged original support edge was relaxed: "+str(edge.part))
+	for name in current_parts:
+		var current: String = name
+		var visited: Dictionary = {}
+		while not roots.has(current) and parents.has(current) and not visited.has(current):
+			visited[current] = true
+			current = str(parents[current].support)
+		check(roots.has(current),"Split guard/support chain floats or cycles: "+name)
+	# Dense rays explicitly see the47mm fore stub and both cut-plane seams.
+	# Query005 only;006 glazing must not conceal a missing guard or a high bay.
+	for sign_x in [-1.0,1.0]:
+		for z in [159.96,159.98,159.999,160.001,160.02,162.0,163.98,163.999,164.001,164.02,166.0,167.19]:
+			var low_bay: bool = z>160.0 and z<164.0
+			var top := 107.4 if low_bay else 107.82
+			var top_hit := ray(Vector3(sign_x*35.7,108.0,z),Vector3(sign_x*35.7,107.3,z),shell_exclusions)
+			check(not top_hit.is_empty() and absf(top_hit.position.y-top)<EPS,"Actual split cap top missing/moved: "+str(Vector2(sign_x,z)))
+			for y in [106.55,106.7,107.1,107.36]:
+				check(not ray(Vector3(sign_x*35.3,y,z),Vector3(sign_x*36.1,y,z),shell_exclusions).is_empty(),"Actual split guard/unchanged toe gap")
+			var high_hit := ray(Vector3(sign_x*35.3,107.6,z),Vector3(sign_x*36.1,107.6,z),shell_exclusions)
+			check(high_hit.is_empty()==low_bay,"High guard retained outside bay or removed inside bay incorrectly")
 
 func validate_fixtures(data: Dictionary) -> void:
 	check(data.light_markers.size()==25 and shell.find_children("DATUM_light_*","Node3D",true,false).size()==25,"Exactly25 source fixtures required")
@@ -583,7 +761,7 @@ func positive_contact(edge: Dictionary, label: String) -> void:
 
 func validate_source_contacts(audit: Dictionary, proof: Dictionary) -> void:
 	check(FileAccess.get_sha256(AUDIT)==AUDIT_SHA and bool(audit.get("pass",false)),"Immutable independent source contact evidence changed/failed")
-	check(str(audit.hashes["005_export"])==EXPORT_SHA and str(audit.hashes["005_source"])==str(proof.source_sha256),"Contact/source/export identity mismatch")
+	check(str(audit.hashes["005_export"])==BASELINE_EXPORT_SHA and str(audit.hashes["005_source"])==str(proof.source_sha256),"Contact/source/export identity mismatch")
 	check(FileAccess.get_sha256("res://assets/models/AST-CMD-002.glb")==str(audit.hashes["002_export"]),"Actual old roof differs from independently measured seam support")
 	check(audit.parts.size()==int(audit.source_mesh_count) and audit.parts.size()>3900,"Complete source part census missing")
 	var parts: Dictionary = {}
@@ -663,7 +841,11 @@ func run() -> void:
 	if data.is_empty() or proof.is_empty() or source_audit.is_empty():
 		quit(1)
 		return
-	check(FileAccess.get_sha256(ASSET)==EXPORT_SHA and str(proof.export_sha256)==EXPORT_SHA,"Installed GLB differs from reviewed source export")
+	guard_split = read_json(GUARD_SPLIT)
+	if not check(FileAccess.get_sha256(GUARD_SPLIT)==GUARD_SPLIT_SHA and not guard_split.is_empty(),"Bounded guard-split source evidence changed/missing"):
+		quit(1)
+		return
+	check(FileAccess.get_sha256(ASSET)==EXPORT_SHA and str(proof.export_sha256)==BASELINE_EXPORT_SHA and str(guard_split.source_export.export_sha256)==EXPORT_SHA,"Installed split GLB/baseline source identity mismatch")
 	check(bool(proof.get("exact_float32_position_oriented_triangle_uv_material_equality",false)),"Source/export position,oriented triangle,UV,material equality proof missing")
 	var main := (load("res://scenes/main.tscn") as PackedScene).instantiate()
 	root.add_child(main)
@@ -694,7 +876,8 @@ func run() -> void:
 			slab_exclusions.append(body.get_rid())
 		if not old_shell.is_ancestor_of(body):
 			old_shell_exclusions.append(body.get_rid())
-	validate_meshes(proof)
+	validate_meshes(guard_split.source_export)
+	validate_guard_split(proof)
 	validate_floors()
 	validate_source_contacts(source_audit,proof)
 	validate_piers(data)
@@ -703,6 +886,7 @@ func run() -> void:
 	validate_guards(data)
 	validate_fixtures(data)
 	print(("AFT CROWN PLATFORM STRUCTURE PASS:" if failures.is_empty() else "AFT CROWN PLATFORM STRUCTURE FAILED:")+" %d oriented source triangles, max import error%.9fm, %d full-height slices/%d keel rays, %d actual floor owners, %d slab bearing witnesses, %d failures. Architectural contacts only; no structural-load or final-art certification." % [matched_triangles,maximum_corner_error,pier_slices,keel_rays,floor_owners,bearing_witnesses,failures.size()])
+	print("GUARD SPLIT IMPORT: %d independently matched oriented source triangles across12 exact split parts; complete47280-triangle raw/import gate retains winding, multiplicity and1mm tolerance" % matched_split_triangles)
 	print("FLOOR GEOMETRY: %d one-to-one oriented triangles; maximum actual corner error %.9fm; unchanged1mm tolerance and retained245 numerical record pins" % [matched_floor_triangles,maximum_floor_corner_error])
 	main.queue_free()
 	await process_frame
