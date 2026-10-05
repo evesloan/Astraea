@@ -3,6 +3,10 @@
 Updated2026-10-05. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Latest verified scope
+62 runtime regression groups pass after reconstructing the D17/D18 aft link, including actual loaded boarding/exit and travel through every central lift stop. All18decks are connected by the central working core; the aft link adds a local second descent between the top two decks. The157-design catalogue includes the new two-level enclosure as a derivative. Normal/effects-off views were reviewed; surfaces and surrounding districts remain unfinished. Source and fresh validation are independently retained in the private GitHub checkpoint routine. See CLOUD_RECOVERY_20261005.md and AFT_CROWN_LINK_PROGRESS.md.
+
+The following entries describe prior checkpoints; their old counts and outstanding items are superseded by the latest evidence above and chronological records below.
+
 55 runtime regression groups pass after the eighteen-stop physical panel derivative. It has source/export checks and18 independently selectable controls, but no completed whole-ship shaft/travel acceptance. Five public lift/stair reservations and ten separately screened staff-riser reservations now replace the mixed-core proposal; the lower arrivals service link has explicit plan clearance.
 
 Whole-ship coverage now cross-references all18decks,161directory programmes,1000guest envelopes,100retail addresses and200historical crew-bank envelopes. Ten geographic vertical coordination groups, four residential-court reservations, five core reservations and a raised-pool/market section are planning proposals; final hull, luxury, crew-bed and route fit remain open. Ten planning and five vertical-programme checks pass. Twelve residential house groups account for all1000guest allocations; expanded court boundaries yield304potential outward plan-view edges without crossing another guest allocation, not fitted windows. See WHOLE_SHIP_LAYOUT_FINALIZATION.md and the generated plan/section plates.
