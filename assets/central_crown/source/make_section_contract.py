@@ -11,6 +11,10 @@ for i,p in enumerate(D['controlled_crossings']):
 for door in D['doors']:
  if abs(abs(door['yaw'])-3.141592653589793)<1e-6:
   door.pop('screen_half_depth',None);door['wall_inside_thickness']=.16;door['north_public_belt_frame_clearance_m']=.02;door['full_north_return_x_span']=([-10,-5]if door['position'][0]<0 else[5,10])
+# Aft construction extends only these two existing corridor endcap interfaces.
+for sign,side in [(-1,'port'),(1,'starboard')]:
+ D['doors'].append({'name':'central_aft_exit_'+side,'position':[sign*7.5,106.5,59.8],'yaw':0.0,'file':'AST-STF-008.glb','marker':'DATUM_door_central_aft_exit_'+side,'wall_aperture_half_width':1.375,'wall_aperture_height':2.815,'fixed_frame_outer_half_width':1.38,'fixed_frame_outer_height':2.82,'fixed_frame_half_depth':.18,'join_overlap_m':.005,'existing_endcap_interface_only':True,'frame_wall_join_sample_local_z':.10,'full_cross_street_clearance_m':.02,'source_wall_z':[59.84,60]})
+D['aft_exit_revision']={'scope':'Only fitted apertures in two existing screened corridor endcaps and two exported anchors; no new canopies or alteration to old rooms,windows,lights,roof or supports','door_positions':[[-7.5,106.5,59.8],[7.5,106.5,59.8]],'public_cross_street_z':[60,66],'six_programmes_and_ten_existing_doors_preserved':True}
 D['support']['authored_ties']=[{'name':'CMD_Tie_%s_X%s_Z%s'%(band['deck'],'P'if x>0 else'M','P'if z>0 else'M'),'deck':band['deck'],'floor_y':band['floor_y'],'world_aabb':[x-.34,x+.34,band['floor_y']-.5,band['floor_y']-.12,*sorted([s*(69.8),s*70.42])],'intended_slab_overlap_z_m':.2,'intended_pier_overlap_z_m':.02}for x,z in D['support']['pier_centres_xz']for s in [1 if z>0 else-1]for band in D['support']['intermediate_band_connections']]
 D['source_inputs']={str(p.relative_to(C) if p.is_relative_to(C) else p.relative_to(G)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [G/'data/architecture/CENTRAL_CROWN_CONSTRUCTION.json',G/'docs/CROWN_PIER_RUNTIME_AUDIT.json',C/'assets/staff_threshold/source/AST-STF-008.blend',C/'assets/staff_threshold/exports/AST-STF-008.glb']}
 (R/'source/section_contract.json').write_text(json.dumps(D,indent=2)+'\n')

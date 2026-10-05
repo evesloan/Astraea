@@ -46,3 +46,7 @@ Parent owns Godot integration, actual player/cart walking and door operation, ac
 ## Source diagnostic result
 
 Six source images were inspected; see qa/source_diagnostic_review.json for per-image hashes, findings and limits. The bearing-context image adds read-only existing band slabs and keel geometry for inspection, without adding them to the export. The north public belt is dark in the isolated source preview and needs actual main-scene lighting review. Broad empty wall fields and the absent activity/furniture layer remain unfinished. Source render noise is a diagnostic limitation, not the game display pipeline.
+
+## Aft corridor interface revision
+
+The aft command extension adds only two fitted doorway apertures to the old side-corridor endcaps and two corresponding anchors. All six programmes, ten old door identities,74 fixtures, glazing, roof and original supports remain unchanged. The revised source/export has2,727parts/32,724triangles/634batches. See `qa/aft_endcap_interface_diff.json` and the final independent report under `../aft_command/qa/`. The prior export remains in Git5918f89. This source revision requires parent-owned runtime revalidation; no command rooms are declared finished.

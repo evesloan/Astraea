@@ -1,0 +1,2295 @@
+{
+  "scope": "Independent read-only source/GLB geometry review. No Godot launch/import or runtime acceptance.",
+  "files": {
+    "assets/aft_command/source/AST-CMD-002.blend": "b5fbe7ce676ae50824151b48039f4b53bebae6897b918d78b408d407b33222e3",
+    "assets/central_crown/source/AST-CMD-001.blend": "7530848196dd55a69eeab92bda16635231abc46f8ed4bc9f3ad60e26e4ec4779",
+    "/tmp/astraea-aft-central-baseline/source/AST-CMD-001.blend": "8b388cfc1d83c0f42b0d5a854593c62b0f04e4d1017d901fa6f4bb4ec0bbebe3",
+    "assets/aft_command/exports/AST-CMD-002.glb": "291bc55d950d425e4667397f1aae1049085c386257198117cf37f3299a292fcb",
+    "runtime/data/generated/structural_meshes.json": "29ea8c90d47d720b31553cfd9c31a8837e2f977a21ded1ddf7c3d9dc31b1acbb",
+    "assets/aft_command/source/geometry_parts.json": "b49ba3ed95079a36481b121fb17e1af40d776a913babb3d1a59e693513681c94",
+    "assets/central_crown/source/geometry_parts.json": "3f8118cdb56823936cd4ba24b7b6b959f18e3b0e610ba6cac40378fa8d63eab0",
+    "assets/aft_command/source/build_aft_command.py": "73dfdd0e1ae61fbb0225398f8db298baa8a1eb34e7c811f0448b75dfafe66fb5",
+    "assets/aft_command/source/section_contract.json": "e710286c15f7477e4f60fb65fb7bd3ef306c7967f17e3e747aabab3b628a8d44",
+    "assets/central_crown/source/section_contract.json": "00270e095c953d02ce8c72338a81d3e1c08af4cc257f1166a223e9b277c3fa14"
+  },
+  "aft": {
+    "mesh_count": 1006,
+    "triangle_count": 12072,
+    "closed_outward_degenerate_failures": [],
+    "empty_count": 33,
+    "part_record_error": [],
+    "part_record_count_matches": true,
+    "export": {
+      "mesh_batches": 196,
+      "oriented_triangle_material_uv_equal_at_mm_precision": true,
+      "missing_triangles": 0,
+      "extra_triangles": 0,
+      "max_batch_span_m": 12.0,
+      "markers_equal": true
+    },
+    "inconsistent_edge_winding_meshes": []
+  },
+  "crown": {
+    "mesh_count": 2727,
+    "triangle_count": 32724,
+    "closed_outward_degenerate_failures": [],
+    "empty_count": 95,
+    "changed_mesh_names": [
+      "CMD_Port_CorridorEnd_00.003",
+      "CMD_Port_CorridorEnd_00.004",
+      "CMD_Port_CorridorEnd_00.005",
+      "CMD_Port_CorridorEnd_00_LowRail.001",
+      "CMD_Port_CorridorEnd_00_PanelStile",
+      "CMD_Port_CorridorEnd_00_PanelStile.001",
+      "CMD_Port_CorridorEnd_01.001",
+      "CMD_Port_CorridorEnd_02.003",
+      "CMD_Port_CorridorEnd_02.004",
+      "CMD_Port_CorridorEnd_02.005",
+      "CMD_Port_CorridorEnd_02_LowRail.001",
+      "CMD_Port_CorridorEnd_02_PanelStile.002",
+      "CMD_Port_CorridorEnd_02_PanelStile.003",
+      "CMD_Starboard_CorridorEnd_00.003",
+      "CMD_Starboard_CorridorEnd_00.004",
+      "CMD_Starboard_CorridorEnd_00.005",
+      "CMD_Starboard_CorridorEnd_00_LowRail.001",
+      "CMD_Starboard_CorridorEnd_01.001",
+      "CMD_Starboard_CorridorEnd_02.003",
+      "CMD_Starboard_CorridorEnd_02.004",
+      "CMD_Starboard_CorridorEnd_02.005",
+      "CMD_Starboard_CorridorEnd_02_LowRail.001"
+    ],
+    "out_of_scope_mesh_changes": [],
+    "changed_empty_names": [
+      "DATUM_door_central_aft_exit_starboard",
+      "DATUM_door_central_aft_exit_port"
+    ],
+    "part_record_error": [],
+    "part_record_count_matches": true,
+    "inconsistent_edge_winding_meshes": []
+  },
+  "crown_baseline": {
+    "mesh_count": 2717,
+    "triangle_count": 32604,
+    "closed_outward_degenerate_failures": [],
+    "empty_count": 93
+  },
+  "door_source": {
+    "fixed_mesh_count": 3,
+    "moving_mesh_count": 9,
+    "sha256": "1a2f79dfcaeb336abe2c548c339e0c980213704ffd64432161284c4ab6b13447"
+  },
+  "doors": [
+    {
+      "door": "D18_directory_08_entry",
+      "source_wall_sweep_contacts": [],
+      "cross_street_contacts": [],
+      "fixed_frame_joins": [
+        {
+          "fixed": "STF_JambLeft",
+          "contacts": [
+            "AFC_D18_directory_08_Wall_01_02",
+            "AFC_D18_directory_08_Wall_01_02.003",
+            "AFC_D18_directory_08_Wall_01_02.006",
+            "AFC_D18_directory_08_Wall_01_02_LowRail"
+          ]
+        },
+        {
+          "fixed": "STF_JambRight",
+          "contacts": [
+            "AFC_D18_directory_08_Wall_01_00.001",
+            "AFC_D18_directory_08_Wall_01_00.003",
+            "AFC_D18_directory_08_Wall_01_00.005",
+            "AFC_D18_directory_08_Wall_01_00_LowRail.001"
+          ]
+        },
+        {
+          "fixed": "STF_Header",
+          "contacts": [
+            "AFC_D18_directory_08_Wall_01_00.005",
+            "AFC_D18_directory_08_Wall_01_01",
+            "AFC_D18_directory_08_Wall_01_02.006"
+          ]
+        }
+      ],
+      "sample_count": 1629
+    },
+    {
+      "door": "D18_directory_10_entry",
+      "source_wall_sweep_contacts": [],
+      "cross_street_contacts": [],
+      "fixed_frame_joins": [
+        {
+          "fixed": "STF_JambLeft",
+          "contacts": [
+            "AFC_D18_directory_10_Wall_03_00.001",
+            "AFC_D18_directory_10_Wall_03_00.003",
+            "AFC_D18_directory_10_Wall_03_00.005",
+            "AFC_D18_directory_10_Wall_03_00_LowRail.001"
+          ]
+        },
+        {
+          "fixed": "STF_JambRight",
+          "contacts": [
+            "AFC_D18_directory_10_Wall_03_02",
+            "AFC_D18_directory_10_Wall_03_02.003",
+            "AFC_D18_directory_10_Wall_03_02.006",
+            "AFC_D18_directory_10_Wall_03_02_LowRail"
+          ]
+        },
+        {
+          "fixed": "STF_Header",
+          "contacts": [
+            "AFC_D18_directory_10_Wall_03_00.005",
+            "AFC_D18_directory_10_Wall_03_01",
+            "AFC_D18_directory_10_Wall_03_02.006"
+          ]
+        }
+      ],
+      "sample_count": 1629
+    },
+    {
+      "door": "aft_command_port_front",
+      "source_wall_sweep_contacts": [],
+      "cross_street_contacts": [],
+      "fixed_frame_joins": [
+        {
+          "fixed": "STF_JambLeft",
+          "contacts": [
+            "AFC_Port_FrontReturn_02",
+            "AFC_Port_FrontReturn_02.001",
+            "AFC_Port_FrontReturn_02.002",
+            "AFC_Port_FrontReturn_02_LowRail"
+          ]
+        },
+        {
+          "fixed": "STF_JambRight",
+          "contacts": [
+            "AFC_Port_FrontReturn_00",
+            "AFC_Port_FrontReturn_00.001",
+            "AFC_Port_FrontReturn_00.002",
+            "AFC_Port_FrontReturn_00_LowRail"
+          ]
+        },
+        {
+          "fixed": "STF_Header",
+          "contacts": [
+            "AFC_Port_FrontReturn_00.002",
+            "AFC_Port_FrontReturn_01",
+            "AFC_Port_FrontReturn_02.002"
+          ]
+        }
+      ],
+      "sample_count": 1629
+    },
+    {
+      "door": "aft_command_starboard_front",
+      "source_wall_sweep_contacts": [],
+      "cross_street_contacts": [],
+      "fixed_frame_joins": [
+        {
+          "fixed": "STF_JambLeft",
+          "contacts": [
+            "AFC_Starboard_FrontReturn_02",
+            "AFC_Starboard_FrontReturn_02.001",
+            "AFC_Starboard_FrontReturn_02.002",
+            "AFC_Starboard_FrontReturn_02_LowRail"
+          ]
+        },
+        {
+          "fixed": "STF_JambRight",
+          "contacts": [
+            "AFC_Starboard_FrontReturn_00",
+            "AFC_Starboard_FrontReturn_00.001",
+            "AFC_Starboard_FrontReturn_00.002",
+            "AFC_Starboard_FrontReturn_00_LowRail"
+          ]
+        },
+        {
+          "fixed": "STF_Header",
+          "contacts": [
+            "AFC_Starboard_FrontReturn_00.002",
+            "AFC_Starboard_FrontReturn_01",
+            "AFC_Starboard_FrontReturn_02.002"
+          ]
+        }
+      ],
+      "sample_count": 1629
+    },
+    {
+      "door": "central_aft_exit_port",
+      "source_wall_sweep_contacts": [],
+      "cross_street_contacts": [],
+      "fixed_frame_joins": [
+        {
+          "fixed": "STF_JambLeft",
+          "contacts": [
+            "CMD_Port_CorridorEnd_00.003",
+            "CMD_Port_CorridorEnd_00.004",
+            "CMD_Port_CorridorEnd_00.005",
+            "CMD_Port_CorridorEnd_00_LowRail.001"
+          ]
+        },
+        {
+          "fixed": "STF_JambRight",
+          "contacts": [
+            "CMD_Port_CorridorEnd_02.003",
+            "CMD_Port_CorridorEnd_02.004",
+            "CMD_Port_CorridorEnd_02.005",
+            "CMD_Port_CorridorEnd_02_LowRail.001"
+          ]
+        },
+        {
+          "fixed": "STF_Header",
+          "contacts": [
+            "CMD_Port_CorridorEnd_00.005",
+            "CMD_Port_CorridorEnd_01.001",
+            "CMD_Port_CorridorEnd_02.005"
+          ]
+        }
+      ],
+      "sample_count": 1629
+    },
+    {
+      "door": "central_aft_exit_starboard",
+      "source_wall_sweep_contacts": [],
+      "cross_street_contacts": [],
+      "fixed_frame_joins": [
+        {
+          "fixed": "STF_JambLeft",
+          "contacts": [
+            "CMD_Starboard_CorridorEnd_00.003",
+            "CMD_Starboard_CorridorEnd_00.004",
+            "CMD_Starboard_CorridorEnd_00.005",
+            "CMD_Starboard_CorridorEnd_00_LowRail.001"
+          ]
+        },
+        {
+          "fixed": "STF_JambRight",
+          "contacts": [
+            "CMD_Starboard_CorridorEnd_02.003",
+            "CMD_Starboard_CorridorEnd_02.004",
+            "CMD_Starboard_CorridorEnd_02.005",
+            "CMD_Starboard_CorridorEnd_02_LowRail.001"
+          ]
+        },
+        {
+          "fixed": "STF_Header",
+          "contacts": [
+            "CMD_Starboard_CorridorEnd_00.005",
+            "CMD_Starboard_CorridorEnd_01.001",
+            "CMD_Starboard_CorridorEnd_02.005"
+          ]
+        }
+      ],
+      "sample_count": 1629
+    }
+  ],
+  "body_clearance": {
+    "cross_street_collisions": [],
+    "public_gallery_collisions": [],
+    "max_new_height": 114.44000244140625,
+    "new_floor_group_meshes": []
+  },
+  "fixture_exits": [
+    {
+      "name": "DATUM_light_aft_D18_directory_08_18_0",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_18_1",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_18_2",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_28_0",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_28_1",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_28_2",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_18_0",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_18_1",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_18_2",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_28_0",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_28_1",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_28_2",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_-7p5_70",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_-7p5_82",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_-7p5_94",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_-7p5_100",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_0_70",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_0_82",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_0_94",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_0_100",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_7p5_70",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_7p5_82",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_7p5_94",
+      "blocked_by": []
+    },
+    {
+      "name": "DATUM_light_aft_route_7p5_100",
+      "blocked_by": []
+    }
+  ],
+  "support_chain": [
+    {
+      "pier_x": -35.5,
+      "envelope": [
+        -35.9,
+        -35.1,
+        -3.2,
+        114,
+        85.4,
+        86.6
+      ],
+      "pier_to_transverse": {
+        "contact_pairs": 6,
+        "sum_pair_overlap_volume_m3": 0.525312000000019,
+        "max_individual_axis_overlap_m": [
+          0.3200000000000003,
+          2.4199999999999875,
+          1.0999999999999943
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Pier_Port_Web_19",
+            "AFC_TransferGirder_Web",
+            [
+              0.3200000000000003,
+              2.4199999999999875,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Pier_Port_Web_19",
+            "AFC_TransferGirder_Flange",
+            [
+              0.3200000000000003,
+              0.18000000000000682,
+              1.039999999999992
+            ]
+          ],
+          [
+            "AFC_Pier_Port_Web_19",
+            "AFC_TransferGirder_Flange.006",
+            [
+              0.3200000000000003,
+              0.18000000000000682,
+              1.039999999999992
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "pier_x": 35.5,
+      "envelope": [
+        35.1,
+        35.9,
+        -3.2,
+        114,
+        85.4,
+        86.6
+      ],
+      "pier_to_transverse": {
+        "contact_pairs": 6,
+        "sum_pair_overlap_volume_m3": 0.525312000000019,
+        "max_individual_axis_overlap_m": [
+          0.3200000000000003,
+          2.4199999999999875,
+          1.0999999999999943
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Pier_Starboard_Web_19",
+            "AFC_TransferGirder_Web.005",
+            [
+              0.3200000000000003,
+              2.4199999999999875,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Pier_Starboard_Web_19",
+            "AFC_TransferGirder_Flange.005",
+            [
+              0.3200000000000003,
+              0.18000000000000682,
+              1.039999999999992
+            ]
+          ],
+          [
+            "AFC_Pier_Starboard_Web_19",
+            "AFC_TransferGirder_Flange.011",
+            [
+              0.3200000000000003,
+              0.18000000000000682,
+              1.039999999999992
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "roof_link_x": -35.5,
+      "to_new_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.22578000000000406,
+        "max_individual_axis_overlap_m": [
+          0.29999999999999716,
+          2.3999999999999915,
+          1.0999999999999943
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.002",
+            "AFC_TransferGirder_Web",
+            [
+              0.1599999999999966,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.002",
+            "AFC_TransferGirder_Flange",
+            [
+              0.1599999999999966,
+              0.18000000000000682,
+              1.0999999999999943
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.002",
+            "AFC_TransferGirder_Flange",
+            [
+              0.29999999999999716,
+              0.04999999999999716,
+              1.0999999999999943
+            ]
+          ]
+        ]
+      },
+      "to_old_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.4041000000000068,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999943,
+          2.3999999999999915,
+          0.75
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web",
+            "CMD_TransferGirder_Web.012",
+            [
+              0.3199999999999932,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web",
+            "CMD_TransferGirder_Flange.022",
+            [
+              0.3199999999999932,
+              0.18000000000000682,
+              0.75
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange",
+            "CMD_TransferGirder_Flange.022",
+            [
+              0.5999999999999943,
+              0.04999999999999716,
+              0.75
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "roof_link_x": -32,
+      "to_new_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.4515600000000125,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999979,
+          2.3999999999999915,
+          1.0999999999999943
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.006",
+            "AFC_TransferGirder_Web",
+            [
+              0.31999999999999673,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.006",
+            "AFC_TransferGirder_Flange",
+            [
+              0.31999999999999673,
+              0.18000000000000682,
+              1.0999999999999943
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.010",
+            "AFC_TransferGirder_Flange",
+            [
+              0.5999999999999979,
+              0.04999999999999716,
+              1.0999999999999943
+            ]
+          ]
+        ]
+      },
+      "to_old_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.4041000000000108,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999979,
+          2.3999999999999915,
+          0.75
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.004",
+            "CMD_TransferGirder_Web.012",
+            [
+              0.31999999999999673,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.004",
+            "CMD_TransferGirder_Flange.022",
+            [
+              0.31999999999999673,
+              0.18000000000000682,
+              0.75
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.008",
+            "CMD_TransferGirder_Flange.022",
+            [
+              0.5999999999999979,
+              0.04999999999999716,
+              0.75
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "roof_link_x": -5.04,
+      "to_new_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.4515600000000166,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999996,
+          2.3999999999999915,
+          1.0999999999999943
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.010",
+            "AFC_TransferGirder_Web.002",
+            [
+              0.3200000000000003,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.010",
+            "AFC_TransferGirder_Flange.002",
+            [
+              0.3200000000000003,
+              0.18000000000000682,
+              1.0999999999999943
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.018",
+            "AFC_TransferGirder_Flange.002",
+            [
+              0.5999999999999996,
+              0.04999999999999716,
+              1.0999999999999943
+            ]
+          ]
+        ]
+      },
+      "to_old_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.40410000000001456,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999996,
+          2.3999999999999915,
+          0.75
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.008",
+            "CMD_TransferGirder_Web.014",
+            [
+              0.3200000000000003,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.008",
+            "CMD_TransferGirder_Flange.024",
+            [
+              0.3200000000000003,
+              0.18000000000000682,
+              0.75
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.016",
+            "CMD_TransferGirder_Flange.024",
+            [
+              0.5999999999999996,
+              0.04999999999999716,
+              0.75
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "roof_link_x": 0,
+      "to_new_transverse": {
+        "contact_pairs": 10,
+        "sum_pair_overlap_volume_m3": 0.4515600000000164,
+        "max_individual_axis_overlap_m": [
+          0.3,
+          2.3999999999999915,
+          1.0999999999999943
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.014",
+            "AFC_TransferGirder_Web.002",
+            [
+              0.16,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.014",
+            "AFC_TransferGirder_Flange.002",
+            [
+              0.16,
+              0.18000000000000682,
+              1.0999999999999943
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.018",
+            "AFC_TransferGirder_Web.003",
+            [
+              0.16,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      "to_old_transverse": {
+        "contact_pairs": 10,
+        "sum_pair_overlap_volume_m3": 0.4041000000000144,
+        "max_individual_axis_overlap_m": [
+          0.3,
+          2.3999999999999915,
+          0.75
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.012",
+            "CMD_TransferGirder_Web.014",
+            [
+              0.16,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.012",
+            "CMD_TransferGirder_Flange.024",
+            [
+              0.16,
+              0.18000000000000682,
+              0.75
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.016",
+            "CMD_TransferGirder_Web.015",
+            [
+              0.16,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "roof_link_x": 5.04,
+      "to_new_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.4515600000000166,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999996,
+          2.3999999999999915,
+          1.0999999999999943
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.022",
+            "AFC_TransferGirder_Web.003",
+            [
+              0.3200000000000003,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.022",
+            "AFC_TransferGirder_Flange.003",
+            [
+              0.3200000000000003,
+              0.18000000000000682,
+              1.0999999999999943
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.042",
+            "AFC_TransferGirder_Flange.003",
+            [
+              0.5999999999999996,
+              0.04999999999999716,
+              1.0999999999999943
+            ]
+          ]
+        ]
+      },
+      "to_old_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.40410000000001456,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999996,
+          2.3999999999999915,
+          0.75
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.020",
+            "CMD_TransferGirder_Web.015",
+            [
+              0.3200000000000003,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.020",
+            "CMD_TransferGirder_Flange.025",
+            [
+              0.3200000000000003,
+              0.18000000000000682,
+              0.75
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.040",
+            "CMD_TransferGirder_Flange.025",
+            [
+              0.5999999999999996,
+              0.04999999999999716,
+              0.75
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "roof_link_x": 32,
+      "to_new_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.4515600000000125,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999979,
+          2.3999999999999915,
+          1.0999999999999943
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.026",
+            "AFC_TransferGirder_Web.005",
+            [
+              0.31999999999999673,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.026",
+            "AFC_TransferGirder_Flange.005",
+            [
+              0.31999999999999673,
+              0.18000000000000682,
+              1.0999999999999943
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.050",
+            "AFC_TransferGirder_Flange.005",
+            [
+              0.5999999999999979,
+              0.04999999999999716,
+              1.0999999999999943
+            ]
+          ]
+        ]
+      },
+      "to_old_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.4041000000000108,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999979,
+          2.3999999999999915,
+          0.75
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.024",
+            "CMD_TransferGirder_Web.017",
+            [
+              0.31999999999999673,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.024",
+            "CMD_TransferGirder_Flange.027",
+            [
+              0.31999999999999673,
+              0.18000000000000682,
+              0.75
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.048",
+            "CMD_TransferGirder_Flange.027",
+            [
+              0.5999999999999979,
+              0.04999999999999716,
+              0.75
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "roof_link_x": 35.5,
+      "to_new_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.22578000000000406,
+        "max_individual_axis_overlap_m": [
+          0.29999999999999716,
+          2.3999999999999915,
+          1.0999999999999943
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.030",
+            "AFC_TransferGirder_Web.005",
+            [
+              0.1599999999999966,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.030",
+            "AFC_TransferGirder_Flange.005",
+            [
+              0.1599999999999966,
+              0.18000000000000682,
+              1.0999999999999943
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.058",
+            "AFC_TransferGirder_Flange.005",
+            [
+              0.29999999999999716,
+              0.04999999999999716,
+              1.0999999999999943
+            ]
+          ]
+        ]
+      },
+      "to_old_transverse": {
+        "contact_pairs": 5,
+        "sum_pair_overlap_volume_m3": 0.4041000000000068,
+        "max_individual_axis_overlap_m": [
+          0.5999999999999943,
+          2.3999999999999915,
+          0.75
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Longitudinal_Web.028",
+            "CMD_TransferGirder_Web.017",
+            [
+              0.3199999999999932,
+              2.3999999999999915,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Web.028",
+            "CMD_TransferGirder_Flange.027",
+            [
+              0.3199999999999932,
+              0.18000000000000682,
+              0.75
+            ]
+          ],
+          [
+            "AFC_Longitudinal_Flange.056",
+            "CMD_TransferGirder_Flange.027",
+            [
+              0.5999999999999943,
+              0.04999999999999716,
+              0.75
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "hanger_xz": [
+        -35.5,
+        86
+      ],
+      "roof_link_contact": {
+        "contact_pairs": 3,
+        "sum_pair_overlap_volume_m3": 0.21744000000001104,
+        "max_individual_axis_overlap_m": [
+          0.20000000000000284,
+          2.700000000000003,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X-35p5_Z86.001",
+            "AFC_Longitudinal_Web.002",
+            [
+              0.20000000000000284,
+              2.700000000000003,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-35p5_Z86.001",
+            "AFC_Longitudinal_Flange.002",
+            [
+              0.20000000000000284,
+              0.20000000000000284,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-35p5_Z86.001",
+            "AFC_Longitudinal_Flange.006",
+            [
+              0.20000000000000284,
+              0.11999999999999034,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      "floor_edge_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.02448000000000152,
+        "max_individual_axis_overlap_m": [
+          0.20000000000000284,
+          0.21999999999999886,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X-35p5_Z86",
+            "AFC_FloorEdgeGirder_Web.001",
+            [
+              0.20000000000000284,
+              0.21999999999999886,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-35p5_Z86",
+            "AFC_FloorEdgeGirder_Flange.004",
+            [
+              0.20000000000000284,
+              0.12000000000000455,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "hanger_xz": [
+        -35.5,
+        98
+      ],
+      "roof_link_contact": {
+        "contact_pairs": 3,
+        "sum_pair_overlap_volume_m3": 0.21744000000001104,
+        "max_individual_axis_overlap_m": [
+          0.20000000000000284,
+          2.700000000000003,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X-35p5_Z98.001",
+            "AFC_Longitudinal_Web.003",
+            [
+              0.20000000000000284,
+              2.700000000000003,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-35p5_Z98.001",
+            "AFC_Longitudinal_Flange.003",
+            [
+              0.20000000000000284,
+              0.20000000000000284,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-35p5_Z98.001",
+            "AFC_Longitudinal_Flange.007",
+            [
+              0.20000000000000284,
+              0.11999999999999034,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      "floor_edge_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.02448000000000152,
+        "max_individual_axis_overlap_m": [
+          0.20000000000000284,
+          0.21999999999999886,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X-35p5_Z98",
+            "AFC_FloorEdgeGirder_Web.002",
+            [
+              0.20000000000000284,
+              0.21999999999999886,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-35p5_Z98",
+            "AFC_FloorEdgeGirder_Flange.005",
+            [
+              0.20000000000000284,
+              0.12000000000000455,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "tie": "AFC_ApronTie_X-35p5",
+      "edge_girder_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.044280000000000375,
+        "max_individual_axis_overlap_m": [
+          0.4399999999999977,
+          0.18999999999999773,
+          0.45000000000000284
+        ],
+        "sample_pairs": [
+          [
+            "AFC_ApronTie_X-35p5",
+            "AFC_FloorEdgeGirder_Web",
+            [
+              0.23999999999999488,
+              0.18999999999999773,
+              0.45000000000000284
+            ]
+          ],
+          [
+            "AFC_ApronTie_X-35p5",
+            "AFC_FloorEdgeGirder_Flange.003",
+            [
+              0.4399999999999977,
+              0.12000000000000455,
+              0.45000000000000284
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "hanger_xz": [
+        -5.04,
+        86
+      ],
+      "roof_link_contact": {
+        "contact_pairs": 3,
+        "sum_pair_overlap_volume_m3": 0.2174400000000072,
+        "max_individual_axis_overlap_m": [
+          0.1999999999999993,
+          2.700000000000003,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X-5p04_Z86.001",
+            "AFC_Longitudinal_Web.010",
+            [
+              0.1999999999999993,
+              2.700000000000003,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-5p04_Z86.001",
+            "AFC_Longitudinal_Flange.018",
+            [
+              0.1999999999999993,
+              0.20000000000000284,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-5p04_Z86.001",
+            "AFC_Longitudinal_Flange.022",
+            [
+              0.1999999999999993,
+              0.11999999999999034,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      "floor_edge_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.024480000000001084,
+        "max_individual_axis_overlap_m": [
+          0.1999999999999993,
+          0.21999999999999886,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X-5p04_Z86",
+            "AFC_FloorEdgeGirder_Web.004",
+            [
+              0.1999999999999993,
+              0.21999999999999886,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-5p04_Z86",
+            "AFC_FloorEdgeGirder_Flange.010",
+            [
+              0.1999999999999993,
+              0.12000000000000455,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "hanger_xz": [
+        -5.04,
+        98
+      ],
+      "roof_link_contact": {
+        "contact_pairs": 3,
+        "sum_pair_overlap_volume_m3": 0.2174400000000072,
+        "max_individual_axis_overlap_m": [
+          0.1999999999999993,
+          2.700000000000003,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X-5p04_Z98.001",
+            "AFC_Longitudinal_Web.011",
+            [
+              0.1999999999999993,
+              2.700000000000003,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-5p04_Z98.001",
+            "AFC_Longitudinal_Flange.019",
+            [
+              0.1999999999999993,
+              0.20000000000000284,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-5p04_Z98.001",
+            "AFC_Longitudinal_Flange.023",
+            [
+              0.1999999999999993,
+              0.11999999999999034,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      "floor_edge_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.024480000000001084,
+        "max_individual_axis_overlap_m": [
+          0.1999999999999993,
+          0.21999999999999886,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X-5p04_Z98",
+            "AFC_FloorEdgeGirder_Web.005",
+            [
+              0.1999999999999993,
+              0.21999999999999886,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-5p04_Z98",
+            "AFC_FloorEdgeGirder_Flange.011",
+            [
+              0.1999999999999993,
+              0.12000000000000455,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "tie": "AFC_ApronTie_X-5p04",
+      "edge_girder_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.04428000000000093,
+        "max_individual_axis_overlap_m": [
+          0.4399999999999995,
+          0.18999999999999773,
+          0.45000000000000284
+        ],
+        "sample_pairs": [
+          [
+            "AFC_ApronTie_X-5p04",
+            "AFC_FloorEdgeGirder_Web.003",
+            [
+              0.2400000000000002,
+              0.18999999999999773,
+              0.45000000000000284
+            ]
+          ],
+          [
+            "AFC_ApronTie_X-5p04",
+            "AFC_FloorEdgeGirder_Flange.009",
+            [
+              0.4399999999999995,
+              0.12000000000000455,
+              0.45000000000000284
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "hanger_xz": [
+        5.04,
+        86
+      ],
+      "roof_link_contact": {
+        "contact_pairs": 3,
+        "sum_pair_overlap_volume_m3": 0.2174400000000072,
+        "max_individual_axis_overlap_m": [
+          0.1999999999999993,
+          2.700000000000003,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X5p04_Z86.001",
+            "AFC_Longitudinal_Web.022",
+            [
+              0.1999999999999993,
+              2.700000000000003,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X5p04_Z86.001",
+            "AFC_Longitudinal_Flange.042",
+            [
+              0.1999999999999993,
+              0.20000000000000284,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X5p04_Z86.001",
+            "AFC_Longitudinal_Flange.046",
+            [
+              0.1999999999999993,
+              0.11999999999999034,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      "floor_edge_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.024480000000001084,
+        "max_individual_axis_overlap_m": [
+          0.1999999999999993,
+          0.21999999999999886,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X5p04_Z86",
+            "AFC_FloorEdgeGirder_Web.007",
+            [
+              0.1999999999999993,
+              0.21999999999999886,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X5p04_Z86",
+            "AFC_FloorEdgeGirder_Flange.016",
+            [
+              0.1999999999999993,
+              0.12000000000000455,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "hanger_xz": [
+        5.04,
+        98
+      ],
+      "roof_link_contact": {
+        "contact_pairs": 3,
+        "sum_pair_overlap_volume_m3": 0.2174400000000072,
+        "max_individual_axis_overlap_m": [
+          0.1999999999999993,
+          2.700000000000003,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X5p04_Z98.001",
+            "AFC_Longitudinal_Web.023",
+            [
+              0.1999999999999993,
+              2.700000000000003,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X5p04_Z98.001",
+            "AFC_Longitudinal_Flange.043",
+            [
+              0.1999999999999993,
+              0.20000000000000284,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X5p04_Z98.001",
+            "AFC_Longitudinal_Flange.047",
+            [
+              0.1999999999999993,
+              0.11999999999999034,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      "floor_edge_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.024480000000001084,
+        "max_individual_axis_overlap_m": [
+          0.1999999999999993,
+          0.21999999999999886,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X5p04_Z98",
+            "AFC_FloorEdgeGirder_Web.008",
+            [
+              0.1999999999999993,
+              0.21999999999999886,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X5p04_Z98",
+            "AFC_FloorEdgeGirder_Flange.017",
+            [
+              0.1999999999999993,
+              0.12000000000000455,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "tie": "AFC_ApronTie_X5p04",
+      "edge_girder_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.04428000000000093,
+        "max_individual_axis_overlap_m": [
+          0.4399999999999995,
+          0.18999999999999773,
+          0.45000000000000284
+        ],
+        "sample_pairs": [
+          [
+            "AFC_ApronTie_X5p04",
+            "AFC_FloorEdgeGirder_Web.006",
+            [
+              0.2400000000000002,
+              0.18999999999999773,
+              0.45000000000000284
+            ]
+          ],
+          [
+            "AFC_ApronTie_X5p04",
+            "AFC_FloorEdgeGirder_Flange.015",
+            [
+              0.4399999999999995,
+              0.12000000000000455,
+              0.45000000000000284
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "hanger_xz": [
+        35.5,
+        86
+      ],
+      "roof_link_contact": {
+        "contact_pairs": 3,
+        "sum_pair_overlap_volume_m3": 0.21744000000001104,
+        "max_individual_axis_overlap_m": [
+          0.20000000000000284,
+          2.700000000000003,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X35p5_Z86.001",
+            "AFC_Longitudinal_Web.030",
+            [
+              0.20000000000000284,
+              2.700000000000003,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X35p5_Z86.001",
+            "AFC_Longitudinal_Flange.058",
+            [
+              0.20000000000000284,
+              0.20000000000000284,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X35p5_Z86.001",
+            "AFC_Longitudinal_Flange.062",
+            [
+              0.20000000000000284,
+              0.11999999999999034,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      "floor_edge_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.02448000000000152,
+        "max_individual_axis_overlap_m": [
+          0.20000000000000284,
+          0.21999999999999886,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X35p5_Z86",
+            "AFC_FloorEdgeGirder_Web.010",
+            [
+              0.20000000000000284,
+              0.21999999999999886,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X35p5_Z86",
+            "AFC_FloorEdgeGirder_Flange.022",
+            [
+              0.20000000000000284,
+              0.12000000000000455,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "hanger_xz": [
+        35.5,
+        98
+      ],
+      "roof_link_contact": {
+        "contact_pairs": 3,
+        "sum_pair_overlap_volume_m3": 0.21744000000001104,
+        "max_individual_axis_overlap_m": [
+          0.20000000000000284,
+          2.700000000000003,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X35p5_Z98.001",
+            "AFC_Longitudinal_Web.031",
+            [
+              0.20000000000000284,
+              2.700000000000003,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X35p5_Z98.001",
+            "AFC_Longitudinal_Flange.059",
+            [
+              0.20000000000000284,
+              0.20000000000000284,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X35p5_Z98.001",
+            "AFC_Longitudinal_Flange.063",
+            [
+              0.20000000000000284,
+              0.11999999999999034,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      "floor_edge_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.02448000000000152,
+        "max_individual_axis_overlap_m": [
+          0.20000000000000284,
+          0.21999999999999886,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X35p5_Z98",
+            "AFC_FloorEdgeGirder_Web.011",
+            [
+              0.20000000000000284,
+              0.21999999999999886,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X35p5_Z98",
+            "AFC_FloorEdgeGirder_Flange.023",
+            [
+              0.20000000000000284,
+              0.12000000000000455,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "tie": "AFC_ApronTie_X35p5",
+      "edge_girder_contact": {
+        "contact_pairs": 2,
+        "sum_pair_overlap_volume_m3": 0.044280000000000375,
+        "max_individual_axis_overlap_m": [
+          0.4399999999999977,
+          0.18999999999999773,
+          0.45000000000000284
+        ],
+        "sample_pairs": [
+          [
+            "AFC_ApronTie_X35p5",
+            "AFC_FloorEdgeGirder_Web.009",
+            [
+              0.23999999999999488,
+              0.18999999999999773,
+              0.45000000000000284
+            ]
+          ],
+          [
+            "AFC_ApronTie_X35p5",
+            "AFC_FloorEdgeGirder_Flange.021",
+            [
+              0.4399999999999977,
+              0.12000000000000455,
+              0.45000000000000284
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "existing_structural_slab_contacts": [
+    {
+      "part": "AFC_FloorEdgeGirder_Web",
+      "group": "platform_support",
+      "contacts_m3": {
+        "D18_aft_apron": 0.00048000000000185535
+      }
+    },
+    {
+      "part": "AFC_FloorEdgeGirder_Flange.003",
+      "group": "platform_support",
+      "contacts_m3": {
+        "D18_aft_apron": 0.00223999999999206
+      }
+    },
+    {
+      "part": "AFC_FloorEdgeGirder_Web.003",
+      "group": "platform_support",
+      "contacts_m3": {
+        "D18_aft_apron": 0.0004799999999995816
+      }
+    },
+    {
+      "part": "AFC_FloorEdgeGirder_Flange.009",
+      "group": "platform_support",
+      "contacts_m3": {
+        "D18_aft_apron": 0.002240000000000018
+      }
+    },
+    {
+      "part": "AFC_FloorEdgeGirder_Web.006",
+      "group": "platform_support",
+      "contacts_m3": {
+        "D18_aft_apron": 0.0004799999999995816
+      }
+    },
+    {
+      "part": "AFC_FloorEdgeGirder_Flange.015",
+      "group": "platform_support",
+      "contacts_m3": {
+        "D18_aft_apron": 0.002240000000000018
+      }
+    },
+    {
+      "part": "AFC_FloorEdgeGirder_Web.009",
+      "group": "platform_support",
+      "contacts_m3": {
+        "D18_aft_apron": 0.00048000000000185535
+      }
+    },
+    {
+      "part": "AFC_FloorEdgeGirder_Flange.021",
+      "group": "platform_support",
+      "contacts_m3": {
+        "D18_aft_apron": 0.00223999999999206
+      }
+    },
+    {
+      "part": "AFC_ApronTie_X-35p5",
+      "group": "tie",
+      "contacts_m3": {
+        "D18_aft_apron": 0.012320000000027044
+      }
+    },
+    {
+      "part": "AFC_ApronTie_X-5p04",
+      "group": "tie",
+      "contacts_m3": {
+        "D18_aft_apron": 0.01232000000000317
+      }
+    },
+    {
+      "part": "AFC_ApronTie_X5p04",
+      "group": "tie",
+      "contacts_m3": {
+        "D18_aft_apron": 0.012319999999995212
+      }
+    },
+    {
+      "part": "AFC_ApronTie_X35p5",
+      "group": "tie",
+      "contacts_m3": {
+        "D18_aft_apron": 0.012320000000027044
+      }
+    }
+  ],
+  "unintended_structural_slab_contacts": [],
+  "floor_ownership": {
+    "proposed_slab_envelope_area_m2": 1584,
+    "existing_floor_areas_inside_envelope_m2": {
+      "D18_aft_route": 176.0
+    },
+    "new_two_rectangles_area_m2": 1408,
+    "source_has_new_slab": false,
+    "support_contact_to_proposed_slab": [
+      {
+        "group": "pier",
+        "contact_pairs": 6,
+        "sum_pair_overlap_volume_m3": 0.4346879999999891,
+        "max_individual_axis_overlap_m": [
+          0.6400000000000006,
+          0.23999999999999488,
+          1.1999999999999886
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Pier_Port_Web_17",
+            "parent_new_port_slab",
+            [
+              0.6400000000000006,
+              0.23999999999999488,
+              1.039999999999992
+            ]
+          ],
+          [
+            "AFC_Pier_Port_Chord.046",
+            "parent_new_port_slab",
+            [
+              0.10000000000000142,
+              0.23999999999999488,
+              1.1999999999999886
+            ]
+          ],
+          [
+            "AFC_Pier_Port_Chord.047",
+            "parent_new_port_slab",
+            [
+              0.10000000000000142,
+              0.23999999999999488,
+              1.1999999999999886
+            ]
+          ]
+        ]
+      },
+      {
+        "group": "hanger",
+        "contact_pairs": 8,
+        "sum_pair_overlap_volume_m3": 0.13824000000000303,
+        "max_individual_axis_overlap_m": [
+          0.20000000000000284,
+          0.23999999999999488,
+          0.36000000000001364
+        ],
+        "sample_pairs": [
+          [
+            "AFC_Hanger_X-35p5_Z86",
+            "parent_new_port_slab",
+            [
+              0.20000000000000284,
+              0.23999999999999488,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-35p5_Z98",
+            "parent_new_port_slab",
+            [
+              0.20000000000000284,
+              0.23999999999999488,
+              0.36000000000001364
+            ]
+          ],
+          [
+            "AFC_Hanger_X-5p04_Z86",
+            "parent_new_port_slab",
+            [
+              0.1999999999999993,
+              0.23999999999999488,
+              0.36000000000001364
+            ]
+          ]
+        ]
+      },
+      {
+        "group": "platform_support",
+        "contact_pairs": 60,
+        "sum_pair_overlap_volume_m3": 3.0399999999993152,
+        "max_individual_axis_overlap_m": [
+          12,
+          0.01999999999999602,
+          12
+        ],
+        "sample_pairs": [
+          [
+            "AFC_FloorEdgeGirder_Web",
+            "parent_new_port_slab",
+            [
+              0.23999999999999488,
+              0.009999999999990905,
+              4
+            ]
+          ],
+          [
+            "AFC_FloorEdgeGirder_Web.001",
+            "parent_new_port_slab",
+            [
+              0.23999999999999488,
+              0.009999999999990905,
+              12
+            ]
+          ],
+          [
+            "AFC_FloorEdgeGirder_Web.002",
+            "parent_new_port_slab",
+            [
+              0.23999999999999488,
+              0.009999999999990905,
+              6
+            ]
+          ]
+        ]
+      },
+      {
+        "group": "tie",
+        "contact_pairs": 4,
+        "sum_pair_overlap_volume_m3": 0.06160000000000006,
+        "max_individual_axis_overlap_m": [
+          0.4399999999999995,
+          0.14000000000000057,
+          0.25
+        ],
+        "sample_pairs": [
+          [
+            "AFC_ApronTie_X-35p5",
+            "parent_new_port_slab",
+            [
+              0.4399999999999977,
+              0.14000000000000057,
+              0.25
+            ]
+          ],
+          [
+            "AFC_ApronTie_X-5p04",
+            "parent_new_port_slab",
+            [
+              0.4399999999999995,
+              0.14000000000000057,
+              0.25
+            ]
+          ],
+          [
+            "AFC_ApronTie_X5p04",
+            "parent_new_starboard_slab",
+            [
+              0.4399999999999995,
+              0.14000000000000057,
+              0.25
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  "support_chain_zero_contacts": [],
+  "union_footprint_coverage": [
+    {
+      "region": "port_command",
+      "footprint_m2": 936,
+      "existing_m2": 364.0,
+      "proposed_new_m2": 572,
+      "uncovered_m2": 0.0
+    },
+    {
+      "region": "starboard_command",
+      "footprint_m2": 936,
+      "existing_m2": 364.0,
+      "proposed_new_m2": 572,
+      "uncovered_m2": 0.0
+    },
+    {
+      "region": "cross_street",
+      "footprint_m2": 576,
+      "existing_m2": 576.0,
+      "proposed_new_m2": 0,
+      "uncovered_m2": 0.0
+    },
+    {
+      "region": "public_spine",
+      "footprint_m2": 336,
+      "existing_m2": 336.0,
+      "proposed_new_m2": 0,
+      "uncovered_m2": 0.0
+    }
+  ],
+  "roof_purlin_connections": [
+    {
+      "purlin_section": [
+        113.76,
+        114.27,
+        65.9,
+        66.1
+      ],
+      "supporting_longitudinal_parts": [],
+      "indirect_support_via_saddles": [
+        "AFC_ForwardPurlinSaddle",
+        "AFC_ForwardPurlinSaddle.001",
+        "AFC_ForwardPurlinSaddle.002",
+        "AFC_ForwardPurlinSaddle.003"
+      ],
+      "bearing_path_verified": true
+    },
+    {
+      "purlin_section": [
+        113.76,
+        114.27,
+        73.9,
+        74.1
+      ],
+      "supporting_longitudinal_parts": [
+        "AFC_Longitudinal_Web.001",
+        "AFC_Longitudinal_Flange.005",
+        "AFC_Longitudinal_Web.005",
+        "AFC_Longitudinal_Flange.013",
+        "AFC_Longitudinal_Web.009",
+        "AFC_Longitudinal_Flange.021",
+        "AFC_Longitudinal_Web.013",
+        "AFC_Longitudinal_Web.017",
+        "AFC_Longitudinal_Flange.033",
+        "AFC_Longitudinal_Flange.037",
+        "AFC_Longitudinal_Web.021",
+        "AFC_Longitudinal_Flange.045",
+        "AFC_Longitudinal_Web.025",
+        "AFC_Longitudinal_Flange.053",
+        "AFC_Longitudinal_Web.029",
+        "AFC_Longitudinal_Flange.061"
+      ]
+    },
+    {
+      "purlin_section": [
+        113.76,
+        114.27,
+        81.9,
+        82.1
+      ],
+      "supporting_longitudinal_parts": [
+        "AFC_Longitudinal_Web.001",
+        "AFC_Longitudinal_Flange.005",
+        "AFC_Longitudinal_Web.005",
+        "AFC_Longitudinal_Flange.013",
+        "AFC_Longitudinal_Web.009",
+        "AFC_Longitudinal_Flange.021",
+        "AFC_Longitudinal_Web.013",
+        "AFC_Longitudinal_Web.017",
+        "AFC_Longitudinal_Flange.033",
+        "AFC_Longitudinal_Flange.037",
+        "AFC_Longitudinal_Web.021",
+        "AFC_Longitudinal_Flange.045",
+        "AFC_Longitudinal_Web.025",
+        "AFC_Longitudinal_Flange.053",
+        "AFC_Longitudinal_Web.029",
+        "AFC_Longitudinal_Flange.061"
+      ]
+    },
+    {
+      "purlin_section": [
+        113.76,
+        114.27,
+        89.9,
+        90.1
+      ],
+      "supporting_longitudinal_parts": [
+        "AFC_Longitudinal_Web.002",
+        "AFC_Longitudinal_Flange.006",
+        "AFC_Longitudinal_Web.006",
+        "AFC_Longitudinal_Flange.014",
+        "AFC_Longitudinal_Web.010",
+        "AFC_Longitudinal_Flange.022",
+        "AFC_Longitudinal_Web.014",
+        "AFC_Longitudinal_Web.018",
+        "AFC_Longitudinal_Flange.034",
+        "AFC_Longitudinal_Flange.038",
+        "AFC_Longitudinal_Web.022",
+        "AFC_Longitudinal_Flange.046",
+        "AFC_Longitudinal_Web.026",
+        "AFC_Longitudinal_Flange.054",
+        "AFC_Longitudinal_Web.030",
+        "AFC_Longitudinal_Flange.062"
+      ]
+    },
+    {
+      "purlin_section": [
+        113.76,
+        114.27,
+        97.9,
+        98.1
+      ],
+      "supporting_longitudinal_parts": [
+        "AFC_Longitudinal_Web.003",
+        "AFC_Longitudinal_Flange.007",
+        "AFC_Longitudinal_Web.007",
+        "AFC_Longitudinal_Flange.015",
+        "AFC_Longitudinal_Web.011",
+        "AFC_Longitudinal_Flange.023",
+        "AFC_Longitudinal_Web.015",
+        "AFC_Longitudinal_Web.019",
+        "AFC_Longitudinal_Flange.035",
+        "AFC_Longitudinal_Flange.039",
+        "AFC_Longitudinal_Web.023",
+        "AFC_Longitudinal_Flange.047",
+        "AFC_Longitudinal_Web.027",
+        "AFC_Longitudinal_Flange.055",
+        "AFC_Longitudinal_Web.031",
+        "AFC_Longitudinal_Flange.063"
+      ]
+    },
+    {
+      "purlin_section": [
+        113.76,
+        114.27,
+        101.7,
+        101.89999999999999
+      ],
+      "supporting_longitudinal_parts": [
+        "AFC_Longitudinal_Web.003",
+        "AFC_Longitudinal_Flange.007",
+        "AFC_Longitudinal_Web.007",
+        "AFC_Longitudinal_Flange.015",
+        "AFC_Longitudinal_Web.011",
+        "AFC_Longitudinal_Flange.023",
+        "AFC_Longitudinal_Web.015",
+        "AFC_Longitudinal_Web.019",
+        "AFC_Longitudinal_Flange.035",
+        "AFC_Longitudinal_Flange.039",
+        "AFC_Longitudinal_Web.023",
+        "AFC_Longitudinal_Flange.047",
+        "AFC_Longitudinal_Web.027",
+        "AFC_Longitudinal_Flange.055",
+        "AFC_Longitudinal_Web.031",
+        "AFC_Longitudinal_Flange.063"
+      ]
+    }
+  ],
+  "new_room_named_parts_outside_boundaries": [],
+  "changed_files_since_actual_mesh_read": [],
+  "reviewed_at_utc": "2026-10-05T11:59:44Z",
+  "method_notes": [
+    "Actual editable Blender mesh inspection: manifold edges, positive signed volume, nonzero faces; geometry_parts matched source coordinates within10\u00b5m.",
+    "Actual GLB imported into disposable Blender scene for oriented triangle/material/UV signatures at1mm rounding and marker coordinates within10\u00b5m. No Godot imports or runtime were executed.",
+    "All6 added/revised doors used actual shared AST-STF-008 source meshes,3 fixed+9 moving, at181 angle samples each:9,774 individual leaf-part placements. Projected convex SAT plus vertical interval avoids AABB-only swing claims.",
+    "Structural slabs checked against actual compiled triangles via clipping, plus vertical intervals. New slab measurements are proposed parent-owned rectangles, not runtime adoption.",
+    "Source-part union boundaries and contact stages measured from source-validated geometry records. Coplanar cell splits are continuous faces; positive overlap is required between load-path stages.",
+    "Room and protected allocation scope checked from new/old actual command sources and exact triangle-covered footprints. Current pre-construction runtime pier audit is corroborating prior evidence, not a new runtime test."
+  ],
+  "limitations": [
+    "Geometry expresses continuous contact paths; it does not certify structural load capacity.",
+    "No Godot scene, physics, navigation, moving-controller execution or in-engine visual acceptance was performed by this reviewer.",
+    "Parent must add the1408m\u00b2 compiled floor once, adopt shared working doors at the six verified anchors, and perform final runtime/visual regression.",
+    "Moving meshes were tested against authored command-source walls and street belts; complete final-runtime moving contacts remain parent-owned."
+  ],
+  "status": "PASS_SOURCE_GEOMETRY_PENDING_PARENT_RUNTIME",
+  "findings": [],
+  "forward_purlin_saddle_fix": [
+    {
+      "part": "AFC_ForwardPurlinSaddle",
+      "world_aabb": [
+        -32.220001220703125,
+        -31.780000686645508,
+        113.05000305175781,
+        113.8499984741211,
+        65.72000122070312,
+        66.27999877929688
+      ],
+      "old_beam_contacts": [
+        "CMD_Longitudinal_Web.011",
+        "CMD_Longitudinal_Flange.023"
+      ],
+      "purlin_contacts": [
+        "AFC_RoofPurlin"
+      ],
+      "old_beam_vertical_overlap_m": 0.09999847412109375,
+      "purlin_vertical_overlap_m": 0.089996337890625
+    },
+    {
+      "part": "AFC_ForwardPurlinSaddle.001",
+      "world_aabb": [
+        -0.2199999988079071,
+        0.0,
+        113.05000305175781,
+        113.8499984741211,
+        65.72000122070312,
+        66.27999877929688
+      ],
+      "old_beam_contacts": [
+        "CMD_Longitudinal_Web.023",
+        "CMD_Longitudinal_Flange.059"
+      ],
+      "purlin_contacts": [
+        "AFC_RoofPurlin.002"
+      ],
+      "old_beam_vertical_overlap_m": 0.09999847412109375,
+      "purlin_vertical_overlap_m": 0.089996337890625
+    },
+    {
+      "part": "AFC_ForwardPurlinSaddle.002",
+      "world_aabb": [
+        0.0,
+        0.2199999988079071,
+        113.05000305175781,
+        113.8499984741211,
+        65.72000122070312,
+        66.27999877929688
+      ],
+      "old_beam_contacts": [
+        "CMD_Longitudinal_Web.035",
+        "CMD_Longitudinal_Flange.071"
+      ],
+      "purlin_contacts": [
+        "AFC_RoofPurlin.003"
+      ],
+      "old_beam_vertical_overlap_m": 0.09999847412109375,
+      "purlin_vertical_overlap_m": 0.089996337890625
+    },
+    {
+      "part": "AFC_ForwardPurlinSaddle.003",
+      "world_aabb": [
+        31.780000686645508,
+        32.220001220703125,
+        113.05000305175781,
+        113.8499984741211,
+        65.72000122070312,
+        66.27999877929688
+      ],
+      "old_beam_contacts": [
+        "CMD_Longitudinal_Web.047",
+        "CMD_Longitudinal_Flange.095"
+      ],
+      "purlin_contacts": [
+        "AFC_RoofPurlin.005"
+      ],
+      "old_beam_vertical_overlap_m": 0.09999847412109375,
+      "purlin_vertical_overlap_m": 0.089996337890625
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "aft_front_purlin_bearing",
+      "resolution": "Three saddles, four spatially split editable meshes, make positive old-longitudinal/saddle/purlin contacts."
+    }
+  ]
+}
