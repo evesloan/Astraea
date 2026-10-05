@@ -38,6 +38,8 @@ var maximum_corner_error := 0.0
 var pier_slices := 0
 var keel_rays := 0
 var floor_owners := 0
+var maximum_floor_corner_error := 0.0
+var matched_floor_triangles := 0
 var internal_pier_joint_triangles := 0
 var bearing_witnesses := 0
 var source_audit: Dictionary
@@ -251,32 +253,85 @@ func assert_empty(bounds: AABB, exclusions: Array[RID], label: String) -> void:
 	for hit in box_hits(bounds, exclusions, label):
 		check(false, label + " -> " + owner(hit))
 
+func append_floor_face(faces: PackedVector3Array,a: Vector3,b: Vector3,c: Vector3,normal: Vector3) -> void:
+	# Source compiler describes geometry; reconstruct the builder's outward
+	# clockwise convention explicitly rather than discarding triangle winding.
+	if (b-a).cross(c-a).dot(normal)>0.0:
+		var swap := b
+		b = c
+		c = swap
+	faces.append_array(PackedVector3Array([a,b,c]))
+
 func compiled_faces(region: Dictionary, rendered: bool = false) -> PackedVector3Array:
 	var faces := PackedVector3Array()
 	var top := float(region.floor_y)
-	var bottom := top-float(region.thickness)
+	var thickness := float(region.thickness)
 	var chunks: Array = region.get("render_chunks",[])
 	for triangle in region.triangles:
-		for y in [top,bottom]:
-			if rendered and not chunks.is_empty() and y==top:
-				continue
-			for point in triangle:
-				faces.append(Vector3(float(point[0]),y,float(point[1])))
+		var a := Vector3(triangle[0][0],top,triangle[0][1])
+		var b := Vector3(triangle[1][0],top,triangle[1][1])
+		var c := Vector3(triangle[2][0],top,triangle[2][1])
+		if not rendered or chunks.is_empty():
+			append_floor_face(faces,a,b,c,Vector3.UP)
+		append_floor_face(faces,a-Vector3.UP*thickness,b-Vector3.UP*thickness,c-Vector3.UP*thickness,Vector3.DOWN)
 	if rendered:
 		for chunk in chunks:
 			for triangle in chunk.triangles:
-				for point in triangle:
-					faces.append(Vector3(float(point[0]),top,float(point[1])))
+				append_floor_face(faces,Vector3(triangle[0][0],top,triangle[0][1]),Vector3(triangle[1][0],top,triangle[1][1]),Vector3(triangle[2][0],top,triangle[2][1]),Vector3.UP)
 	for ring in region.rings:
 		for index in range(ring.size()):
 			var p: Array = ring[index]
 			var q: Array = ring[(index+1)%ring.size()]
-			var a := Vector3(float(p[0]),top,float(p[1]))
-			var b := Vector3(float(q[0]),top,float(q[1]))
-			var c := Vector3(float(q[0]),bottom,float(q[1]))
-			var d := Vector3(float(p[0]),bottom,float(p[1]))
-			faces.append_array(PackedVector3Array([a,b,c,a,c,d]))
+			var a := Vector3(p[0],top,p[1])
+			var b := Vector3(q[0],top,q[1])
+			var c := b-Vector3.UP*thickness
+			var d := a-Vector3.UP*thickness
+			var direction := b-a
+			var normal := Vector3(direction.z,0,-direction.x).normalized()
+			append_floor_face(faces,a,b,c,normal)
+			append_floor_face(faces,a,c,d,normal)
 	return faces
+
+func match_floor_faces(expected: PackedVector3Array,actual: PackedVector3Array,label: String) -> bool:
+	if not check(expected.size()==actual.size(),"Floor triangle multiplicity differs: "+label):
+		return false
+	var used: Dictionary = {}
+	var ok := true
+	var local_max := 0.0
+	for a in range(0,expected.size(),3):
+		var found := -1
+		var best := EPS
+		var best_rotation := -1
+		var centre := (expected[a]+expected[a+1]+expected[a+2])/3.0
+		for b in range(0,actual.size(),3):
+			if used.has(b) or centre.distance_to((actual[b]+actual[b+1]+actual[b+2])/3.0)>EPS:
+				continue
+			# Both arrays use Godot clockwise winding. Cyclic permutations only;
+			# reversed faces cannot satisfy this oriented multiplicity-preserving match.
+			for rotation in range(3):
+				var error := 0.0
+				for corner in range(3):
+					error = maxf(error,expected[a+corner].distance_to(actual[b+(rotation+corner)%3]))
+				if error<best:
+					best = error
+					found = b
+					best_rotation = rotation
+		if not check(found>=0,"Unmatched oriented floor triangle: "+label+" #"+str(a/3)):
+			ok = false
+			continue
+		used[found] = true
+		matched_floor_triangles += 1
+		local_max = maxf(local_max,best)
+		maximum_floor_corner_error = maxf(maximum_floor_corner_error,best)
+		if label=="D09_living_gifts_floor render":
+			for corner in range(3):
+				var p := expected[a+corner]
+				var q := actual[found+(best_rotation+corner)%3]
+				if absf(p.z-192.545454545)<0.0001:
+					print("LIVING GIFTS UNROUNDED CORNER expected(%.9f,%.9f,%.9f) actual(%.9f,%.9f,%.9f) error%.9fm" % [p.x,p.y,p.z,q.x,q.y,q.z,p.distance_to(q)])
+	if local_max>0.0001:
+		print("FLOOR MATCH "+label+" max actual corner error %.9fm" % local_max)
+	return ok and used.size()*3==expected.size()
 
 # Nine-decimal numerical record equality complements the Python byte-equivalent
 # retained-record planning receipt; numeric int/float formatting is normalized.
@@ -367,8 +422,8 @@ func validate_floors() -> void:
 					contact.append(shape.global_transform*p)
 		var expected_contact := compiled_faces(region)
 		var expected_render := compiled_faces(region,true)
-		var contact_ok := geometry_signature(contact)==geometry_signature(expected_contact)
-		var render_ok := geometry_signature(render)==geometry_signature(expected_render)
+		var contact_ok := match_floor_faces(expected_contact,contact,id+" collision")
+		var render_ok := match_floor_faces(expected_render,render,id+" render")
 		if not contact_ok:
 			floor_face_diagnostic(id+" collision",expected_contact,contact)
 		if not render_ok:
@@ -381,9 +436,14 @@ func validate_floors() -> void:
 				for corner in triangle:
 					p += Vector2(float(corner[0]),float(corner[1]))/3.0
 				slab_witness(p,"Compiled triangle "+id,id)
-				for y in [106.495,106.265]:
+				# Concave trimeshes are hollow; centre probes outside the slab
+				# while crossing its outward top/underside face.
+				for y in [106.505,106.255]:
 					var hits := box_hits(AABB(Vector3(p.x-0.01,y-0.015,p.y-0.01),Vector3(0.02,0.03,0.02)),slab_exclusions,"Unique floor ownership "+id)
-					check(hits.size()==1 and region_id(hits[0].collider)==id,"Duplicate/missing real compiled owner: "+id)
+					var owners := PackedStringArray()
+					for hit in hits:
+						owners.append(region_id(hit.collider))
+					check(hits.size()==1 and region_id(hits[0].collider)==id,"Duplicate/missing real compiled owner: "+id+" y"+str(y)+" actual owners "+str(owners))
 	check(floor_owners==249 and absf(new_area-5517.2)<EPS,"All249 physical owners and5517.2m2 new floor required")
 
 func validate_piers(data: Dictionary) -> void:
@@ -456,7 +516,8 @@ func validate_core() -> void:
 	var core := ship.find_child("AftCrownLink_WIP",true,false) as Node3D
 	check(core!=null and ship.find_child("AftCrownLift",true,false)!=null,"Existing aft core/lift identity missing")
 	var core_data := read_json("res://data/architecture/AFT_CROWN_LINK.json")
-	check(core_data.origin==[0,102,119] and core_data.lift.cap_y==[109.73,109.85] and core_data.stairs.size()==1,"Protected core datums changed")
+	# JSON numbers are floats; Array equality also compares Variant types.
+	check(core_data.origin.size()==3 and v3(core_data.origin).distance_to(Vector3(0,102,119))<EPS and core_data.lift.cap_y.size()==2 and absf(float(core_data.lift.cap_y[0])-109.73)<EPS and absf(float(core_data.lift.cap_y[1])-109.85)<EPS and core_data.stairs.size()==1,"Protected core datums changed")
 	for p in [Vector2(0,113),Vector2(-1.5,111.5),Vector2(1.5,114.5)]:
 		var hit := ray(Vector3(p.x,110.0,p.y),Vector3(p.x,109.7,p.y),own_exclusions)
 		check(not hit.is_empty() and core.is_ancestor_of(hit.collider) and absf(hit.position.y-109.85)<EPS,"Protected actual shaft cap missing/moved")
@@ -642,6 +703,7 @@ func run() -> void:
 	validate_guards(data)
 	validate_fixtures(data)
 	print(("AFT CROWN PLATFORM STRUCTURE PASS:" if failures.is_empty() else "AFT CROWN PLATFORM STRUCTURE FAILED:")+" %d oriented source triangles, max import error%.9fm, %d full-height slices/%d keel rays, %d actual floor owners, %d slab bearing witnesses, %d failures. Architectural contacts only; no structural-load or final-art certification." % [matched_triangles,maximum_corner_error,pier_slices,keel_rays,floor_owners,bearing_witnesses,failures.size()])
+	print("FLOOR GEOMETRY: %d one-to-one oriented triangles; maximum actual corner error %.9fm; unchanged1mm tolerance and retained245 numerical record pins" % [matched_floor_triangles,maximum_floor_corner_error])
 	main.queue_free()
 	await process_frame
 	quit(0 if failures.is_empty() else 1)
