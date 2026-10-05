@@ -107,9 +107,9 @@ for door in D['doors']:
  # This checks seam sealing without substituting a frame from its nominal aperture.
  fverts=[v for o in fixed for v in o['vertices']];fb=aabb(fverts);assert abs(fb[0]+1.38)<1e-5 and abs(fb[1]-1.38)<1e-5 and abs(fb[3]-2.82)<1e-5
  for side in [-1,1]:
-  q=[x+co*side*1.3775-si*.01,y+1.3,z-si*side*1.3775-co*.01]
+  join_z=door.get('frame_wall_join_sample_local_z',-.01);q=[x+co*side*1.3775+si*join_z,y+1.3,z-si*side*1.3775+co*join_z]
   assert any(p['world_aabb'][0]-1e-6<=q[0]<=p['world_aabb'][1]+1e-6 and p['world_aabb'][2]<=q[1]<=p['world_aabb'][3]and p['world_aabb'][4]-1e-6<=q[2]<=p['world_aabb'][5]+1e-6 for p in P),(door['name'],'jamb_seam')
- assert any(p['world_aabb'][0]-1e-6<=x-si*.01<=p['world_aabb'][1]+1e-6 and p['world_aabb'][2]<=y+2.8175<=p['world_aabb'][3]and p['world_aabb'][4]-1e-6<=z-co*.01<=p['world_aabb'][5]+1e-6 for p in P),(door['name'],'header_seam')
+ assert any(p['world_aabb'][0]-1e-6<=x+si*join_z<=p['world_aabb'][1]+1e-6 and p['world_aabb'][2]<=y+2.8175<=p['world_aabb'][3]and p['world_aabb'][4]-1e-6<=z+co*join_z<=p['world_aabb'][5]+1e-6 for p in P),(door['name'],'header_seam')
  door_records.append({'name':door['name'],'angles_degrees':[0,90],'angle_step_degrees':1,'actual_moving_meshes':len(leaf_data),'samples':91*len(leaf_data),'new_source_collisions':0,'frame_side_overlap_m':.005,'frame_top_overlap_m':.005})
 # Exact downward marker origins are10mm below the lens, and all rays to existing floor are clear.
 for m in D['light_markers']:

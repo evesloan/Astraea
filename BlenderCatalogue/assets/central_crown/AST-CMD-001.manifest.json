@@ -4,21 +4,27 @@
   "name": "Central D18 six-programme crown shells and four-spine roof frame",
   "source": "source/AST-CMD-001.blend",
   "export": "exports/AST-CMD-001.glb",
-  "source_sha256": "8b388cfc1d83c0f42b0d5a854593c62b0f04e4d1017d901fa6f4bb4ec0bbebe3",
-  "export_sha256": "fd23668ccfe850409708b6e18a1a483f28ba4f7091e4c417069fc9f0e182b604",
-  "triangles": 32604,
-  "editable_part_count": 2717,
+  "source_sha256": "7530848196dd55a69eeab92bda16635231abc46f8ed4bc9f3ad60e26e4ec4779",
+  "export_sha256": "83896d8b9bcba699491cfbe13c966d6dd610edac103b0713543895f0896bfea1",
+  "triangles": 32724,
+  "editable_part_count": 2727,
   "runtime_mesh_batches": 634,
   "light_marker_count": 74,
   "coordinate_contract": "source/section_contract.json",
-  "status": "Source/export, fitted door sweeps, source lens exits and architectural contact checks pass; runtime adoption and visual acceptance remain integration-owned.",
+  "status": "Source/export geometry, UV, materials, actual shared-door sweeps, fixture exits and independent contact review pass; runtime and visual acceptance remain integration-owned.",
   "validation": "qa/source_export_validation.json",
-  "independent_construction_review": "qa/independent_crown_construction_review.json",
-  "tie_source_interfaces": "qa/crown_tie_source_interfaces.json",
+  "material_validation": "../aft_command/qa/material_fidelity.json",
+  "independent_construction_review": "../aft_command/qa/independent_aft_construction_review.json",
   "runtime_batch_extent_blender_xyz_m": [
     12.0,
     13.639999985694885,
     12.0
   ],
-  "protected_prior_design_count": 159
+  "protected_other_design_count": 159,
+  "aft_endcap_interface_revision": {
+    "baseline_commit": "5918f89a9ff913bd6077f2a7464f4bef66292dac",
+    "prior_export_sha256": "fd23668ccfe850409708b6e18a1a483f28ba4f7091e4c417069fc9f0e182b604",
+    "scope": "Two fitted endcap apertures and two door markers only",
+    "diff": "qa/aft_endcap_interface_diff.json"
+  }
 }

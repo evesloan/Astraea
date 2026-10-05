@@ -76,7 +76,7 @@ for sign in [-1,1]:
  # Reset screen plane ap geometry so door plane is exact even though wall lies±0.08 around it.
  # The wall function only positions depth; all ten apertures are the same true frame width/height.
  wall('CMD_'+side+'_NotchClosure','x',sign*10,-74,-70,-sign)
- for zz,inside in [(-73.80,1),(60,-1)]:wall('CMD_'+side+'_CorridorEnd','z',zz,*sorted([sign*5,sign*10]),inside,[sign*8]if inside==1 else[])
+ for zz,inside in [(-73.80,1),(60,-1)]:wall('CMD_'+side+'_CorridorEnd','z',zz,*sorted([sign*5,sign*10]),inside,[sign*8]if inside==1 else[sign*7.5])
  # Upper corridor beam and shallow coffer rims; no floor runner or raised threshold.
  box('CMD_'+side+'_CorridorCoffer',*sorted([sign*5.08,sign*5.42]),110.65,111,-74,60,'staff_bluegrey_paint','ceiling')
  box('CMD_'+side+'_CorridorRoomRim',*sorted([sign*9.60,sign*9.84]),110.76,111,-74,60,'staff_bluegrey_paint','ceiling')
@@ -85,6 +85,8 @@ for sign,gaps in [(-1,[(-28,-24),(14,18)]),(1,[(-28,-24),(28,32)])]:
  for lo,hi in gaps:wall('CMD_InterProgrammeScreen','x',sign*10,lo,hi,sign)
 # Ten threshold canopies. Profiles project along entry direction, wholly above the true moving door.
 for i,door in enumerate(D['doors']):
+ if door.get('existing_endcap_interface_only'):
+  datum(door['marker'],door['position'],{'door_file':door['file'],'yaw_radians':door['yaw'],'interface_only':True});continue
  x,y,z=door['position'];isroom='programme_key'in door;depth=1.1 if isroom else .55;w=1.64 if isroom else 1.50
  co,si=math.cos(door['yaw']),math.sin(door['yaw'])
  def portal_point(width,back,height):return(x+co*width-si*back,height,z-si*width-co*back)

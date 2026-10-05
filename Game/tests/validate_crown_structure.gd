@@ -3,7 +3,7 @@ extends SceneTree
 # Imported parts are material/spatial batches; ties are identified by real triangles.
 const CONTRACT := "res://data/architecture/CENTRAL_CROWN_RUNTIME.json"
 const ASSET := "res://assets/models/AST-CMD-001.glb"
-const SOURCE_EXPORT_SHA256 := "fd23668ccfe850409708b6e18a1a483f28ba4f7091e4c417069fc9f0e182b604"
+const SOURCE_EXPORT_SHA256 := "83896d8b9bcba699491cfbe13c966d6dd610edac103b0713543895f0896bfea1"
 const MAX_RESULTS := 256
 const EPS := 0.001
 var failures: Array[String] = []
@@ -83,7 +83,7 @@ func validate_meshes() -> void:
 			if contact.shape is ConcavePolygonShape3D:
 				check(contact.shape.get_faces() == local_faces, "Mesh/collision triangle disagreement: " + str(mesh.name))
 		mesh_records.append({"bounds": bounds, "faces": faces, "name": str(mesh.name)})
-	check(triangle_count == 32604, "Imported architecture must retain all 32604 verified source triangles")
+	check(triangle_count == 32724, "Imported architecture must retain all 32724 verified source triangles")
 	check(minimum.y >= -3.2 - EPS and absf(minimum.y + 3.2) < EPS,
 		"Actual crown base must remain on keel top -3.2, observed %.5f" % minimum.y)
 	check(maximum.y <= 114.5 + EPS and maximum.y > 114.0,
