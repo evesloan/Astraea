@@ -29,6 +29,8 @@ func _ready() -> void:
 	environment.ssao_radius = 0.65
 	environment.ssao_intensity = 0.45
 	build_structural_datums()
+	var lower_hull:=model($ShipSpace/Districts,"AST-HUL-001.glb","LowerHullBody_WIP",Vector3.ZERO)
+	lower_hull.set_meta("persistent_id","lower_hull_body_001")
 	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory,{"staff_floor":surface("staff_floor",Color.WHITE)})
 	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-28.623,deck_y[5],0),PI/2)
 	model($ShipSpace,"AST-ATR-001.glb","AuthoredAtriumGuards_All16Levels",Vector3.ZERO)
