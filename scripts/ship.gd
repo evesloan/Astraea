@@ -37,6 +37,7 @@ func _ready() -> void:
 	build_retail_terrace()
 	load("res://scripts/aquatic_section.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/staff_section.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/lower_staff_network.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/atrium_lighting.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/atrium_garden.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/garden_overlook.gd").build($ShipSpace/Districts,self)
