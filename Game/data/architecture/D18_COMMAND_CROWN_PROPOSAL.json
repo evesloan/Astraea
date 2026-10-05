@@ -71,6 +71,14 @@
       "proposed_floor_boundary": [
         [
           10,
+          -70
+        ],
+        [
+          16,
+          -70
+        ],
+        [
+          16,
           -78
         ],
         [
@@ -86,7 +94,7 @@
           -28
         ]
       ],
-      "proposed_area_m2": 1300.0,
+      "proposed_area_m2": 1252.0,
       "status": "Reversible spatial proposal; no existing geometry moved, no final capacity or art acceptance",
       "entrance_intent": "Screened side service/controlled corridor",
       "floor_y": 106.5
@@ -110,8 +118,16 @@
           -78
         ],
         [
-          -10,
+          -16,
           -78
+        ],
+        [
+          -16,
+          -70
+        ],
+        [
+          -10,
+          -70
         ],
         [
           -10,
@@ -122,7 +138,7 @@
           -28
         ]
       ],
-      "proposed_area_m2": 1300.0,
+      "proposed_area_m2": 1252.0,
       "status": "Reversible spatial proposal; no existing geometry moved, no final capacity or art acceptance",
       "entrance_intent": "Screened side service/controlled corridor",
       "floor_y": 106.5
@@ -259,14 +275,14 @@
         ],
         [
           36,
-          78
+          60
         ],
         [
           10,
-          78
+          60
         ]
       ],
-      "proposed_area_m2": 1196.0,
+      "proposed_area_m2": 728.0,
       "status": "Reversible spatial proposal; no existing geometry moved, no final capacity or art acceptance",
       "entrance_intent": "Screened side service/controlled corridor",
       "floor_y": 106.5
@@ -323,27 +339,27 @@
       "proposed_floor_boundary": [
         [
           -36,
-          126
+          142
         ],
         [
           36,
-          126
+          142
         ],
         [
           36,
-          166
+          182
         ],
         [
           26,
-          178
+          194
         ],
         [
           -26,
-          178
+          194
         ],
         [
           -36,
-          166
+          182
         ]
       ],
       "proposed_area_m2": 3624.0,
@@ -367,19 +383,19 @@
       "proposed_floor_boundary": [
         [
           10,
-          82
+          64
         ],
         [
           36,
-          82
+          64
         ],
         [
           36,
-          120
+          102
         ],
         [
           10,
-          120
+          102
         ]
       ],
       "proposed_area_m2": 988.0,
@@ -407,7 +423,162 @@
         -113.0
       ]
     ],
-    "physical_top_clearance_y": 109.44
+    "moving_cabin_top_y": 109.44,
+    "authored_shaft_cap_top_y": 109.85
+  },
+  "controlled_bridge_vestibule": {
+    "x": [
+      -4,
+      4
+    ],
+    "z": [
+      -118,
+      -113
+    ],
+    "intent": "Explicit controlled bridge entry across the existing fore-route slab; not a diagnosed missing runtime floor"
+  },
+  "service_link_reservations": [
+    {
+      "id": "screened_fore_crosslink",
+      "width_m": 3.6,
+      "path_xz": [
+        [
+          -21,
+          -88
+        ],
+        [
+          -13,
+          -88
+        ],
+        [
+          -13,
+          -115
+        ],
+        [
+          13,
+          -115
+        ],
+        [
+          13,
+          -86
+        ],
+        [
+          21,
+          -86
+        ]
+      ],
+      "intent": "Join both staff-riser lobbies through a shared controlled bridge junction, outside the public viewing gallery; intersects the controlled bridge vestibule deliberately"
+    },
+    {
+      "id": "port_side_entry",
+      "width_m": 3.6,
+      "path_xz": [
+        [
+          -13,
+          -88
+        ],
+        [
+          -13,
+          -74
+        ],
+        [
+          -8,
+          -74
+        ]
+      ]
+    },
+    {
+      "id": "starboard_side_entry",
+      "width_m": 3.6,
+      "path_xz": [
+        [
+          13,
+          -86
+        ],
+        [
+          13,
+          -74
+        ],
+        [
+          8,
+          -74
+        ]
+      ]
+    }
+  ],
+  "existing_cover_reconciliation": {
+    "region": "D18_starboard_house_cover",
+    "retain_geometry": true,
+    "current_role": "Opaque D17house cover and future Bridge briefing substrate",
+    "proposed_role": "Retained D17house roof/cover; remove the future Bridge briefing ownership only if the new crown placement is adopted",
+    "status": "No runtime floor or ownership changed by this proposal"
+  },
+  "aft_arrival_and_alternative_descent": {
+    "status": "Spatial reservation only; no new lift/stair geometry",
+    "foyer_area_scope": "Gross receiving envelope; public walkable floor excludes screened service strips and core obstacles",
+    "foyer_boundary": [
+      [
+        -36,
+        102
+      ],
+      [
+        36,
+        102
+      ],
+      [
+        36,
+        142
+      ],
+      [
+        -36,
+        142
+      ]
+    ],
+    "two_level_core_boundary": [
+      [
+        -7.8,
+        106
+      ],
+      [
+        7.8,
+        106
+      ],
+      [
+        7.8,
+        139
+      ],
+      [
+        -7.8,
+        139
+      ]
+    ],
+    "floor_heights": [
+      102,
+      106.5
+    ],
+    "lift_gate_xz": [
+      -1.8,
+      113
+    ],
+    "stair_origin": [
+      3,
+      102,
+      123
+    ],
+    "stair_file": "AST-CIR-001_H450.glb",
+    "purpose": "A second descent to the existing D17 aft spine; breaks the single-ended D18 public journey and gives Upper Horizon a receiving space",
+    "public_bypass_x": [
+      [
+        3.5,
+        7.8
+      ],
+      [
+        -7.8,
+        -3.5
+      ]
+    ],
+    "minimum_join_to_observation_m": 3,
+    "remaining_gate": "Fit shaft roof, actual entrances and walk/cart turns; proposed foundation/support remains unbuilt"
   },
   "public_gallery_reservation": {
     "x": [
@@ -416,10 +587,56 @@
     ],
     "z": [
       -80,
-      126
+      102
     ],
     "intent": "Direct central-core to upper-horizon route, without passing through the command rooms"
   },
+  "observation_service_links": [
+    {
+      "id": "port_observation_service",
+      "width_m": 3.6,
+      "path_xz": [
+        [
+          -8,
+          100
+        ],
+        [
+          -8,
+          104
+        ],
+        [
+          -32,
+          104
+        ],
+        [
+          -32,
+          142
+        ]
+      ]
+    },
+    {
+      "id": "starboard_observation_service",
+      "width_m": 3.6,
+      "path_xz": [
+        [
+          8,
+          100
+        ],
+        [
+          8,
+          104
+        ],
+        [
+          32,
+          104
+        ],
+        [
+          32,
+          142
+        ]
+      ]
+    }
+  ],
   "screened_side_corridor_reservations": [
     {
       "x": [
@@ -428,7 +645,7 @@
       ],
       "z": [
         -78,
-        124
+        102
       ]
     },
     {
@@ -438,25 +655,45 @@
       ],
       "z": [
         -78,
-        124
+        102
       ]
     }
   ],
   "dimensions": {
     "source_longitudinal_span_m": 932,
-    "proposed_longitudinal_span_m": 350,
+    "proposed_longitudinal_span_m": 366,
     "source_max_transverse_span_m": 196,
     "proposed_transverse_span_m": 72,
-    "proposed_programme_floor_area_m2": 16644.0
+    "proposed_programme_floor_area_m2": 16080.0
   },
   "proposed_vertical_stop_strategy": {
     "central_public_core": "Keep all18 installed stops unchanged",
-    "four_unbuilt_outlying_public_cores": "Terminate atD17 under the lower roof, with D18 reached through the central core",
+    "four_unbuilt_outlying_public_cores": "Terminate atD17 under the lower roof, with D18 reached through the installed central core or proposed aft D17/D18 connection",
     "central_staff_risers": "Retain proposed D18 access inside the raised crown",
     "other_staff_risers": "Coordinate terminal levels with their local roof section; do not extend every shaft through the stepped roof",
     "status": "Proposal only; not yet applied to the five-core reservation register"
   },
-  "roof_gate": "Reserve clear occupied height above106.5 and cabin clearance above109.44 within118m overall. Roof profile, structural depth, pressure enclosure and high-level glazing are not yet authored.",
+  "atrium_support_and_cover_gate": {
+    "retain_opaque_cover": {
+      "x": [
+        -48,
+        48
+      ],
+      "z": [
+        -64,
+        64
+      ],
+      "floor_y": 106.5
+    },
+    "crown_wall_x": [
+      -36,
+      36
+    ],
+    "lower_roof_shoulders_m": 12,
+    "support_rule": "No new downward posts inside the protected central void. Reserve and resolve a transfer/support system bearing at existing protected perimeter zones; no engineering load acceptance claimed",
+    "status": "Beam depth, bearings and headroom require explicit section before construction"
+  },
+  "roof_gate": "Reserve clear occupied height above106.5 and the actual shaft cap above109.85 within118m overall. Roof profile, structural depth, pressure enclosure and high-level glazing are not yet authored.",
   "unchanged": [
     "All18deck datums",
     "All161programme identities",
