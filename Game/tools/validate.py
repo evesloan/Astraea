@@ -1,6 +1,8 @@
 """Run bounded Godot checks; a printed PASS never overrides an engine/script error."""
 import os, pathlib, subprocess, json, sys, threading, time
 root=pathlib.Path(__file__).resolve().parents[1]
+# Checks can emit receipts before the suite finishes, including on a fresh clone.
+(root/'artifacts').mkdir(exist_ok=True)
 state=root/'.godot'/'validation_state'
 env=os.environ.copy()
 for key,sub in [('XDG_CONFIG_HOME','config'),('XDG_DATA_HOME','data'),('XDG_CACHE_HOME','cache')]:
