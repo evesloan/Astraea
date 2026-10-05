@@ -21,7 +21,7 @@ for s in D['seated_footings']:
  samples.append({'centre_xz':[s['x'],s['z']],'same_actual_hull_polygon':face.index,'grid_rays':81,'maximum_plane_error_m':maximum_plane_error,'maximum_ray_error_m':maximum_ray_error,'minimum_positive_wedge_thickness_m':min(s['top_y']-v[1]for v in q),'footprint_contact_area_xz_m2':.96})
 assert sha(C/'assets/lower_hull_body/source/AST-HUL-001.blend')==D['source_inputs']['catalogue/assets/lower_hull_body/source/AST-HUL-001.blend']
 assert sha(C/'assets/lower_hull_body/exports/AST-HUL-001.glb')==D['source_inputs']['catalogue/assets/lower_hull_body/exports/AST-HUL-001.glb']
-phys=json.loads((R/'qa/parent_outer_support_census.json').read_text());phys['candidate_support_columns']+=json.loads((R/'qa/parent_original_support_census.json').read_text())['candidate_support_columns'];diffs=[]
+phys=json.loads((R/'qa/parent_outer_support_census.json').read_text());phys['candidate_support_columns']+=json.loads((R/'qa/parent_original_support_census.json').read_text())['candidate_support_columns'];phys['candidate_support_columns']+=json.loads((R/'qa/d17_royalty_remaining_support_census.json').read_text())['candidate_support_columns'];diffs=[]
 for s in D['seated_footings']:
  row=next(a for a in phys['candidate_support_columns'] if abs(a['xz'][0]-s['x'])<1e-4 and abs(a['xz'][1]-s['z'])<1e-4)
  for a in row['base_rays']:
