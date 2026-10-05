@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "scope": "Targets use explicitly adopted current programme boundaries when present; otherwise preserved historical allocations. Compiled structural floor topology plus explicitly declared asset-owned floor footprints; the latter are not extracted mesh verification. Includes guest and staff surfaces without access classification; ignores walls, furniture, gates and exact cart shape. Absent recorded floor coverage needs construction or source reconciliation; it is not proof of missing runtime geometry. No route or finished-room acceptance.",
+  "scope": "Targets use explicitly adopted current programme boundaries when present; otherwise preserved historical allocations. Compiled structural floor topology plus explicitly declared asset-owned floor footprints; the latter are not extracted mesh verification. Same-deck connectivity only; working inter-deck lifts may join otherwise separate components. Includes guest and staff surfaces without access classification; ignores walls, furniture, gates and exact cart shape. Absent recorded floor coverage needs construction or source reconciliation; it is not proof of missing runtime geometry. No route or finished-room acceptance.",
   "source_sha256": {
-    "data/generated/structural_meshes.json": "29ea8c90d47d720b31553cfd9c31a8837e2f977a21ded1ddf7c3d9dc31b1acbb",
-    "data/spatial_layout.json": "66b0506d29e1cd13b5ae97a1c2905acfa30e6ea10c1b7b5ca1e9d5ce2e861e40",
+    "data/generated/structural_meshes.json": "8670abf82f31560141564b07866d4fc78ccb423804e4ccf1458fa12cc1d76fc9",
+    "data/spatial_layout.json": "7a969a6e8a48746ebc13a0f05e93acb9c846e09f7aac2eab3d9fe973d4dd4619",
     "data/reference/directory_allocations.json": "63df12482a840d0c3ed30cf4ad669f5cb8b6cf8e89d6823fc0937bf8e3e2c539",
-    "data/programme_ledger.json": "b2843c4e35a2723da2ae3bfeb7d63aceb42ea6cb4e22ac36e838df1bad8f3536"
+    "data/programme_ledger.json": "7892d4d492ee9d2856a69be427990939dace6b3b260e428dfb6aa493211a70b2"
   },
   "seed_xz": [
     5.5,
@@ -188,10 +188,10 @@
       "floor_y": 106.5,
       "floor_components": 2,
       "declared_asset_floor_regions": 0,
-      "central_connected_floor_area_m2": 22899.509,
+      "central_connected_floor_area_m2": 24307.509,
       "programmes": 10,
-      "with_connected_floor_overlap": 6,
-      "without_connected_floor_overlap": 4
+      "with_connected_floor_overlap": 8,
+      "without_connected_floor_overlap": 2
     }
   ],
   "programmes": [
@@ -3587,22 +3587,22 @@
       "programme_key": "D18_directory_10",
       "name": "Emergency control",
       "deck": "D18",
-      "geometry_owner": null,
-      "connected_floor_overlap_m2": 0.0,
-      "allocation_area_m2": 3128.0,
-      "target_boundary_basis": "historical_allocation",
+      "geometry_owner": "scripts/aft_command_crown.gd",
+      "connected_floor_overlap_m2": 936.0,
+      "allocation_area_m2": 936.0,
+      "target_boundary_basis": "adopted_current_geometry",
       "historical_allocation_area_m2": 3128.0,
-      "nearest_floor_gap_m": 4.0,
+      "nearest_floor_gap_m": 0.0,
       "nearest_floor_xz": [
-        4.0,
-        466.0
+        10.0,
+        66.0
       ],
       "nearest_allocation_xz": [
-        8.0,
-        466.0
+        10.0,
+        66.0
       ],
-      "floor_width_probe_reaches_allocation": false,
-      "status": "No connected structural floor within allocation",
+      "floor_width_probe_reaches_allocation": true,
+      "status": "Connected structural floor intersects allocation",
       "route_accepted": false
     },
     {
@@ -3719,30 +3719,30 @@
       "programme_key": "D18_directory_08",
       "name": "Ship status",
       "deck": "D18",
-      "geometry_owner": null,
-      "connected_floor_overlap_m2": 0.0,
-      "allocation_area_m2": 3128.0,
-      "target_boundary_basis": "historical_allocation",
+      "geometry_owner": "scripts/aft_command_crown.gd",
+      "connected_floor_overlap_m2": 936.0,
+      "allocation_area_m2": 936.0,
+      "target_boundary_basis": "adopted_current_geometry",
       "historical_allocation_area_m2": 3128.0,
-      "nearest_floor_gap_m": 4.0,
+      "nearest_floor_gap_m": 0.0,
       "nearest_floor_xz": [
-        4.0,
-        250.0
+        -36.0,
+        66.0
       ],
       "nearest_allocation_xz": [
-        8.0,
-        250.0
+        -36.0,
+        66.0
       ],
-      "floor_width_probe_reaches_allocation": false,
-      "status": "No connected structural floor within allocation",
+      "floor_width_probe_reaches_allocation": true,
+      "status": "Connected structural floor intersects allocation",
       "route_accepted": false
     }
   ],
   "summary": {
     "all_programmes": 161,
-    "with_connected_floor_overlap": 28,
-    "without_connected_floor_overlap": 133,
-    "floor_width_probe_reaches": 28,
+    "with_connected_floor_overlap": 30,
+    "without_connected_floor_overlap": 131,
+    "floor_width_probe_reaches": 30,
     "fully_accepted_routes": 0
   }
 }

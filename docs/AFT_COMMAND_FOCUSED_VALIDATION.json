@@ -1,7 +1,30 @@
 {
-  "scope": "Intermediate aft source candidate; final source lighting revision, structural acceptance, visual review and full aggregate pending",
-  "runtime_export_sha256": "291bc55d950d425e4667397f1aae1049085c386257198117cf37f3299a292fcb",
+  "scope": "Final c754 aft source focused gates and retained central interfaces; full88 aggregate running, not yet accepted",
+  "runtime_export_sha256": "c7543f3c9bb6e1284511175f33dd559b5f2ca5eaf025899e66ac2d2230f962ce",
   "checks": {
+    "aft_command_structure": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.8097,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "aft_command_structure",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 5.674,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 9.4842,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
     "aft_command_access": {
       "checks": [
         {
@@ -9,7 +32,7 @@
           "passed": true,
           "exit_code": 0,
           "errors": [],
-          "wall_seconds": 3.1481,
+          "wall_seconds": 3.4432,
           "clock_mode": "editor"
         },
         {
@@ -17,11 +40,11 @@
           "passed": true,
           "exit_code": 0,
           "errors": [],
-          "wall_seconds": 18.1572,
+          "wall_seconds": 17.7608,
           "clock_mode": "fixed60"
         }
       ],
-      "wall_seconds": 21.306,
+      "wall_seconds": 21.2044,
       "clock_mode": "fixed60",
       "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
     },
@@ -32,7 +55,7 @@
           "passed": true,
           "exit_code": 0,
           "errors": [],
-          "wall_seconds": 3.4416,
+          "wall_seconds": 3.4268,
           "clock_mode": "editor"
         },
         {
@@ -40,17 +63,111 @@
           "passed": true,
           "exit_code": 0,
           "errors": [],
-          "wall_seconds": 10.9621,
+          "wall_seconds": 11.2468,
           "clock_mode": "fixed60"
         }
       ],
-      "wall_seconds": 14.4042,
+      "wall_seconds": 14.6742,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "ship_backbone": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.242,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "ship_backbone",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 5.5733,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 8.8159,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "crown_structure": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.6304,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "crown_structure",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 5.6732,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 9.3043,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "crown_access": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.4317,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "crown_access",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 35.6149,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 39.0471,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "crown_cart": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.254,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "crown_cart",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 11.9012,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 15.1557,
       "clock_mode": "fixed60",
       "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
     }
   },
   "initial_attempts": [
-    "Planning first failed stale hull-proposal source hash after new floor compilation; regenerated actual hull study with zero conflicts, then all69 planning checks passed",
-    "First access run stopped on default2400-frame harness budget. Assigned existing30000-frame crown budget; complete test passed without changing assertions or motion"
+    "Stale hull-proposal source hash after new floor compilation was resolved by regenerating actual study;69 planning checks then passed",
+    "Access harness2400-frame default was too short; existing30000-frame crown budget permits complete unchanged motion/assertions",
+    "Structural regression corrected imported sub-mm area sensitivity using stricter per-face complementary triangle coverage with negative cases; exact pinned geometry/render-contact checks retained",
+    "JSON numeric pier-coordinate comparison made explicit; concave owner probes moved outside face centres; precise boundary-only old-spine contacts verified independently rather than permitting overlap"
   ]
 }
