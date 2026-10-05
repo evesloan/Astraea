@@ -21,8 +21,9 @@ for n in fore:
  for suffix in ['', '_PortalRightStub','_PortalHeader']:
   ob=bpy.data.objects.get(n+suffix)
   if ob:bpy.data.objects.remove(ob,do_unlink=True)
-with bpy.data.libraries.load(str(BASE),link=False) as (a,b):b.objects=fore
-for ob in b.objects:
+with bpy.data.libraries.load(str(BASE),link=False) as (a,b):b.objects=list(fore)
+for expected_name,ob in zip(fore,b.objects):
+ ob.name=expected_name
  bpy.context.collection.objects.link(ob)
  # Reuse held material identity rather than loaded duplicate data-blocks.
  for i,m in enumerate(ob.data.materials):ob.data.materials[i]=bpy.data.materials[m.name.split('.')[0]]
@@ -58,8 +59,9 @@ def datum(name,p,kind):
  ob=bpy.data.objects.new('DATUM_'+name,None);bpy.context.collection.objects.link(ob);ob.location=xyz(p);ob['kind']=kind;markers.append({'name':ob.name,'position_world':p,'kind':kind});return ob
 # Minimal unchanged source subset: three accepted bearings/piers, two top transfers; no full-height bracing.
 reuse=['D17_SeatedHullFooting_0','D17_SeatedHullFooting_1','D17_SeatedHullFooting_2','D17_RoyaltyPier_Fore','D17_RoyaltyPier_Aft','D17_RoyaltyPier_WestFore','D17_RoyaltyTransfer','D17_RoyaltyTransverseTransfer']
-with bpy.data.libraries.load(str(HELD),link=False) as (a,b):b.objects=reuse
-for ob in b.objects:
+with bpy.data.libraries.load(str(HELD),link=False) as (a,b):b.objects=list(reuse)
+for expected_name,ob in zip(reuse,b.objects):
+ ob.name=expected_name
  bpy.context.collection.objects.link(ob)
  for i,m in enumerate(ob.data.materials):ob.data.materials[i]=mats[m.name.split('.')[0]]
  # Retained source identity and vertex/UV data are untouched, ownership explicit in contract.
