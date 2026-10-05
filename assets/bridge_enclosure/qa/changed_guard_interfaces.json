@@ -1,0 +1,526 @@
+{
+  "pass": true,
+  "003_source_sha256": "52c1f4d9167ac0b5ac9ecfdbd82195fe69d2262e9588191da8062e42361b513c",
+  "004_source_sha256": "a568f92e6210d2163c8af773e0c6a0b9d2a254dae8e8d2b26e25e3fcba3320de",
+  "method": "Actual reopened004 Blender world vertices and freshly reopened003 measured mesh extract. Convex polygon clipping and actual vertical overlap. Strict positive-volume collar-to-cap and cap-to-back support; original false cap-to-cap assertions remain false.",
+  "interfaces": [
+    {
+      "side": "Port",
+      "old_corner": 0,
+      "old_cap_to_cap_assertion_pass": false,
+      "reason": "Approved differing cap heights no longer share a cap-to-cap volume",
+      "replacement_collar": {
+        "name": "BRE_Fore_HangerCollar",
+        "assembly": "BRE_Fore_HangerCollar",
+        "actual_world_aabb": [
+          -30.079999923706055,
+          -29.6200008392334,
+          107.0999984741211,
+          111.18000030517578,
+          -171.9600067138672,
+          -171.44000244140625
+        ]
+      },
+      "old_caps_to_actual004_collar": [
+        {
+          "old_cap_assembly": "BRP_Port_GuardCap_00",
+          "positive_collar_contacts": [
+            {
+              "cap_part": "BRP_Port_GuardCap_00.003",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 0.017600000000129512,
+                "vertical_overlap": 0.0200042724609375,
+                "volume": 0.0003520751953150908
+              }
+            }
+          ],
+          "retained_direct_back_supports": [
+            {
+              "cap_part": "BRP_Port_GuardCap_00",
+              "back_part": "BRP_Port_GuardBack_00",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.0279999999999632,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.02055654907226489
+              }
+            },
+            {
+              "cap_part": "BRP_Port_GuardCap_00.001",
+              "back_part": "BRP_Port_GuardBack_00.001",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.02800000000002,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.020556549072266027
+              }
+            },
+            {
+              "cap_part": "BRP_Port_GuardCap_00.002",
+              "back_part": "BRP_Port_GuardBack_00.002",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.0279999999997926,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.02055654907226148
+              }
+            },
+            {
+              "cap_part": "BRP_Port_GuardCap_00.003",
+              "back_part": "BRP_Port_GuardBack_00.003",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.0280000000007021,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.020556549072279665
+              }
+            }
+          ]
+        },
+        {
+          "old_cap_assembly": "BRP_Port_GuardCap_01",
+          "positive_collar_contacts": [
+            {
+              "cap_part": "BRP_Port_GuardCap_01",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 0.06352952999986883,
+                "vertical_overlap": 0.1399993896484375,
+                "volume": 0.008894095424633736
+              }
+            }
+          ],
+          "retained_direct_back_supports": [
+            {
+              "cap_part": "BRP_Port_GuardCap_01",
+              "back_part": "BRP_Port_GuardBack_01",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.073278211249999,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.021461961301317195
+              }
+            },
+            {
+              "cap_part": "BRP_Port_GuardCap_01",
+              "back_part": "BRP_Port_GuardBack_01.001",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.7888501133711543e-06,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 3.577099721638333e-08
+              }
+            },
+            {
+              "cap_part": "BRP_Port_GuardCap_01.001",
+              "back_part": "BRP_Port_GuardBack_01.001",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.0733082111501062,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.021462561198611667
+              }
+            }
+          ]
+        }
+      ],
+      "actual004_adjacent_positive_contacts": [
+        {
+          "assembly": "BRE_PortFore_Sill",
+          "part": "BRE_PortFore_Sill",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.0258892025399291,
+            "vertical_overlap": 0.12000274658203125,
+            "volume": 0.0031067754116099917
+          }
+        },
+        {
+          "assembly": "BRE_PortFore_Header",
+          "part": "BRE_PortFore_Header",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.0258892025399291,
+            "vertical_overlap": 0.6800003051757812,
+            "volume": 0.0176046656279094
+          }
+        },
+        {
+          "assembly": "BRE_PortFore_Mullion",
+          "part": "BRE_PortFore_Mullion",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.02561529667536888,
+            "vertical_overlap": 3.4800033569335938,
+            "volume": 0.08914131841913363
+          }
+        },
+        {
+          "assembly": "BRE_PortDiagonal_UpperOpaque",
+          "part": "BRE_PortDiagonal_UpperOpaque.002",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.09237225423521522,
+            "vertical_overlap": 3.4800033569335938,
+            "volume": 0.32145575482607236
+          }
+        },
+        {
+          "assembly": "BRE_FanCeiling",
+          "part": "BRE_FanCeiling.014",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.044100000000071304,
+            "vertical_overlap": 0.18000030517578125,
+            "volume": 0.007938013458264788
+          }
+        },
+        {
+          "assembly": "BRE_FanCeiling",
+          "part": "BRE_FanCeiling.029",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.07512959999985469,
+            "vertical_overlap": 0.18000030517578125,
+            "volume": 0.01352335092770822
+          }
+        },
+        {
+          "assembly": "BRE_PerimeterRoofFascia",
+          "part": "BRE_PerimeterRoofFascia",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.0258892025399291,
+            "vertical_overlap": 0.0800018310546875,
+            "volume": 0.0020711836077399945
+          }
+        },
+        {
+          "assembly": "BRE_PerimeterRoofFascia",
+          "part": "BRE_PerimeterRoofFascia.041",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.09237225423521522,
+            "vertical_overlap": 0.0800018310546875,
+            "volume": 0.00738994947746633
+          }
+        },
+        {
+          "assembly": "BRE_ShallowPerimeterSoffit",
+          "part": "BRE_ShallowPerimeterSoffit.033",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.09959370431488423,
+            "vertical_overlap": 0.4499969482421875,
+            "volume": 0.04481686300583269
+          }
+        },
+        {
+          "assembly": "BRE_PerimeterWarmReveal",
+          "part": "BRE_PerimeterWarmReveal.033",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.041752071193513984,
+            "vertical_overlap": 0.06999969482421875,
+            "volume": 0.0029226322418250336
+          }
+        }
+      ],
+      "full_height_transition_closure": [
+        107.1,
+        111.18
+      ],
+      "perimeter_escape_slit_check": "Independent004 audit checks all145 critical perimeter height slices, excluding only approved door apertures"
+    },
+    {
+      "side": "Starboard",
+      "old_corner": 2,
+      "old_cap_to_cap_assertion_pass": false,
+      "reason": "Approved differing cap heights no longer share a cap-to-cap volume",
+      "replacement_collar": {
+        "name": "BRE_Aft_HangerCollar.001",
+        "assembly": "BRE_Aft_HangerCollar",
+        "actual_world_aabb": [
+          35.470001220703125,
+          35.93000030517578,
+          107.0999984741211,
+          111.18000030517578,
+          -118.55999755859375,
+          -118.04000091552734
+        ]
+      },
+      "old_caps_to_actual004_collar": [
+        {
+          "old_cap_assembly": "BRP_Starboard_GuardCap_02",
+          "positive_collar_contacts": [
+            {
+              "cap_part": "BRP_Starboard_GuardCap_02.005",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 0.05720000000019354,
+                "vertical_overlap": 0.0200042724609375,
+                "volume": 0.0011442443847694966
+              }
+            }
+          ],
+          "retained_direct_back_supports": [
+            {
+              "cap_part": "BRP_Starboard_GuardCap_02",
+              "back_part": "BRP_Starboard_GuardBack_02",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.1040000000002692,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.022076293945317883
+              }
+            },
+            {
+              "cap_part": "BRP_Starboard_GuardCap_02.001",
+              "back_part": "BRP_Starboard_GuardBack_02.001",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.1040015999997195,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.022076325939935797
+              }
+            },
+            {
+              "cap_part": "BRP_Starboard_GuardCap_02.002",
+              "back_part": "BRP_Starboard_GuardBack_02.002",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.1039983999999095,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.022076261950681783
+              }
+            },
+            {
+              "cap_part": "BRP_Starboard_GuardCap_02.003",
+              "back_part": "BRP_Starboard_GuardBack_02.003",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.1039983999999095,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.022076261950681783
+              }
+            },
+            {
+              "cap_part": "BRP_Starboard_GuardCap_02.004",
+              "back_part": "BRP_Starboard_GuardBack_02.004",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.104001600000629,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.022076325939953984
+              }
+            },
+            {
+              "cap_part": "BRP_Starboard_GuardCap_02.005",
+              "back_part": "BRP_Starboard_GuardBack_02.005",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.1039999999993597,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.022076293945299696
+              }
+            }
+          ]
+        },
+        {
+          "old_cap_assembly": "BRP_Starboard_GuardCap_03",
+          "positive_collar_contacts": [
+            {
+              "cap_part": "BRP_Starboard_GuardCap_03",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 0.050600000000486034,
+                "vertical_overlap": 0.1399993896484375,
+                "volume": 0.007083969116278982
+              }
+            }
+          ],
+          "retained_direct_back_supports": [
+            {
+              "cap_part": "BRP_Starboard_GuardCap_03",
+              "back_part": "BRP_Starboard_GuardBack_03",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.0143999999995685,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.020284594726553872
+              }
+            },
+            {
+              "cap_part": "BRP_Starboard_GuardCap_03.001",
+              "back_part": "BRP_Starboard_GuardBack_03.001",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.0144000000000233,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.020284594726562966
+              }
+            },
+            {
+              "cap_part": "BRP_Starboard_GuardCap_03.002",
+              "back_part": "BRP_Starboard_GuardBack_03.002",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.0144000000000233,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.020284594726562966
+              }
+            },
+            {
+              "cap_part": "BRP_Starboard_GuardCap_03.003",
+              "back_part": "BRP_Starboard_GuardBack_03.003",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.0144000000000233,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.020284594726562966
+              }
+            },
+            {
+              "cap_part": "BRP_Starboard_GuardCap_03.004",
+              "back_part": "BRP_Starboard_GuardBack_03.004",
+              "contact": {
+                "kind": "volume",
+                "plan_area": 1.0143999999999096,
+                "vertical_overlap": 0.01999664306640625,
+                "volume": 0.020284594726560693
+              }
+            }
+          ]
+        }
+      ],
+      "actual004_adjacent_positive_contacts": [
+        {
+          "assembly": "BRE_StarboardPlanet_Sill",
+          "part": "BRE_StarboardPlanet_Sill.006",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.08319839999967371,
+            "vertical_overlap": 0.12000274658203125,
+            "volume": 0.009984036511191313
+          }
+        },
+        {
+          "assembly": "BRE_StarboardPlanet_Header",
+          "part": "BRE_StarboardPlanet_Header.006",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.08319839999967371,
+            "vertical_overlap": 0.6800003051757812,
+            "volume": 0.05657493738991484
+          }
+        },
+        {
+          "assembly": "BRE_StarboardPlanet_Mullion",
+          "part": "BRE_StarboardPlanet_Mullion.004",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.04943688128832946,
+            "vertical_overlap": 3.4800033569335938,
+            "volume": 0.17204051283971408
+          }
+        },
+        {
+          "assembly": "BRE_StarboardPlanet_Glass_03",
+          "part": "BRE_StarboardPlanet_Glass_03",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.011199999999917054,
+            "vertical_overlap": 3.4500045776367188,
+            "volume": 0.038640051269245086
+          }
+        },
+        {
+          "assembly": "BRE_AftUpperOpaque",
+          "part": "BRE_AftUpperOpaque",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.07360229999994772,
+            "vertical_overlap": 3.4800033569335938,
+            "volume": 0.2561362510778515
+          }
+        },
+        {
+          "assembly": "BRE_FanCeiling",
+          "part": "BRE_FanCeiling.227",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.16380000000026484,
+            "vertical_overlap": 0.18000030517578125,
+            "volume": 0.02948404998784064
+          }
+        },
+        {
+          "assembly": "BRE_PerimeterRoofFascia",
+          "part": "BRE_PerimeterRoofFascia.019",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.08319839999967371,
+            "vertical_overlap": 0.0800018310546875,
+            "volume": 0.006656024340794209
+          }
+        },
+        {
+          "assembly": "BRE_ShallowPerimeterSoffit",
+          "part": "BRE_ShallowPerimeterSoffit.015",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.04599540000072011,
+            "vertical_overlap": 0.4499969482421875,
+            "volume": 0.02069778963350276
+          }
+        },
+        {
+          "assembly": "BRE_PerimeterWarmReveal",
+          "part": "BRE_PerimeterWarmReveal.015",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.030996899999991,
+            "vertical_overlap": 0.06999969482421875,
+            "volume": 0.0021697735404961963
+          }
+        },
+        {
+          "assembly": "BRE_PerimeterRoofFascia",
+          "part": "BRE_PerimeterRoofFascia.020",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.07360229999994772,
+            "vertical_overlap": 0.0800018310546875,
+            "volume": 0.005888318769832243
+          }
+        },
+        {
+          "assembly": "BRE_ShallowPerimeterSoffit",
+          "part": "BRE_ShallowPerimeterSoffit.016",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.036400000000867294,
+            "vertical_overlap": 0.4499969482421875,
+            "volume": 0.016379888916405905
+          }
+        },
+        {
+          "assembly": "BRE_PerimeterWarmReveal",
+          "part": "BRE_PerimeterWarmReveal.016",
+          "contact": {
+            "kind": "volume",
+            "plan_area": 0.023799300000973744,
+            "vertical_overlap": 0.06999969482421875,
+            "volume": 0.001665943737098191
+          }
+        }
+      ],
+      "full_height_transition_closure": [
+        107.1,
+        111.18
+      ],
+      "perimeter_escape_slit_check": "Independent004 audit checks all145 critical perimeter height slices, excluding only approved door apertures"
+    }
+  ]
+}
