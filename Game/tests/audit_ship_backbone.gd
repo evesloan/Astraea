@@ -14,10 +14,12 @@ func run()->void:
 	for deck in contract.deck_datums:
 		var y:float=deck.floor_elevation_m
 		var side:float=45 if deck.deck_id in ["D01","D18"]else 49.5
+		# The crown preserves a six-metre fore cross-street on the same apron.
+		var fore_cross_z:float=-77 if deck.deck_id=="D18" else -72
 		var route:Array[Vector2]=[Vector2(0,-520)]
 		if deck.deck_id!="D18":
 			for z in [-432.0,-272.0]:route.append_array([Vector2(0,z-11),Vector2(5.5,z-11),Vector2(5.5,z+18),Vector2(0,z+18)])
-		route.append_array([Vector2(0,-111),Vector2(5.5,-111),Vector2(5.5,-72),Vector2(45,-72),Vector2(45,-65.5),Vector2(side,-65.5),Vector2(side,65.5),Vector2(45,65.5),Vector2(45,72),Vector2(0,72)])
+		route.append_array([Vector2(0,-111),Vector2(5.5,-111),Vector2(5.5,fore_cross_z),Vector2(45,fore_cross_z),Vector2(45,-65.5),Vector2(side,-65.5),Vector2(side,65.5),Vector2(45,65.5),Vector2(45,72),Vector2(0,72)])
 		if deck.deck_id in ["D17","D18"]:route.append_array([Vector2(0,108),Vector2(5.5,108),Vector2(5.5,137),Vector2(0,137)])
 		if deck.deck_id!="D18":
 			for z in [272.0,432.0]:route.append_array([Vector2(0,z-11),Vector2(5.5,z-11),Vector2(5.5,z+18),Vector2(0,z+18)])

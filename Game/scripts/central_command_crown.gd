@@ -37,13 +37,14 @@ static func build(parent:Node3D,ship:Node3D)->void:
 	for item in data.light_markers:
 		var marker:=shell.find_child(str(item.name),true,false)as Node3D
 		assert(marker!=null,"Crown fixture contract requires an actual exported marker")
-		var light:=OmniLight3D.new()
+		var light:=SpotLight3D.new()
 		root.add_child(light)
 		light.name="CrownSource_"+str(item.name)
 		light.global_position=marker.global_position
-		light.light_color=Color(.82,.90,1.0) if str(item.get("profile","warm"))=="cool" else Color(1,.95,.87)
+		var color:Array=item.get("suggested_color",[1.0,.95,.87])
+		light.light_color=Color(color[0],color[1],color[2])
 		light.light_energy=1.1
-		light.omni_range=9.0
-		light.omni_attenuation=.7
+		light.spot_range=float(item.get("suggested_range",10.0))
+		light.spot_angle=float(item.get("suggested_spot_angle_degrees",76.0))
+		light.rotation.x=-PI/2
 		light.shadow_enabled=true
-		light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE

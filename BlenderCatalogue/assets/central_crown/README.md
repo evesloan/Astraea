@@ -42,3 +42,7 @@ See qa/crown_tie_source_interfaces.json for the independent compiled-slab/source
 ## Remaining acceptance
 
 Parent owns Godot integration, actual player/cart walking and door operation, actual-scene pier/tie contact and clearance queries, lighting response, normal/effects-off views and catalogue adoption counts. Broad empty shells are intentional at this platform stage; furniture, celestial views, adjacent pavilion composition, inhabited use, final architectural finish and target-hardware performance remain unfinished.
+
+## Source diagnostic result
+
+Six source images were inspected; see qa/source_diagnostic_review.json for per-image hashes, findings and limits. The bearing-context image adds read-only existing band slabs and keel geometry for inspection, without adding them to the export. The north public belt is dark in the isolated source preview and needs actual main-scene lighting review. Broad empty wall fields and the absent activity/furniture layer remain unfinished. Source render noise is a diagnostic limitation, not the game display pipeline.

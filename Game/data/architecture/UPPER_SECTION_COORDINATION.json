@@ -4,7 +4,8 @@
   "source_sha256": {
     "data/architecture/D18_COMMAND_CROWN_PROPOSAL.json": "10c65f5827e40d46525d126f2da264b7dba18ea2fa590f19daf0c084ddb90195",
     "data/architecture/D17_LUXURY_HOUSES_PROPOSAL.json": "e6b68e798842d20e6ac29532a4c537aa1699bbdecfb523b94d301b9ab9028454",
-    "data/architecture/PRIMARY_ATRIUM_CORE.json": "b2a2ffc3fb039753d34be514bb55179dd602d94bdb8f497805d02e9633d9029b"
+    "data/architecture/PRIMARY_ATRIUM_CORE.json": "b2a2ffc3fb039753d34be514bb55179dd602d94bdb8f497805d02e9633d9029b",
+    "data/architecture/CENTRAL_CROWN_RUNTIME.json": "bd7a106b2a98fc4e61a3276bc3bd0197a6941e72448aefd803e8c295f4620bdf"
   },
   "canonical_decks": {
     "D16": 97.5,
@@ -41,24 +42,43 @@
     "intent": "One compact raised occupied crown with a wider structural roof shoulder; no full-length D18slab implied"
   },
   "transfer_reservation": {
-    "status": "Architectural transfer/support reservation only, not an engineered load solution",
+    "status": "Current central crown source frame; runtime/visual receipts control acceptance, not engineering certification",
     "zone_x": [
-      -50.5,
-      50.5
+      -51.9,
+      51.9
     ],
     "zone_z": [
-      -64,
-      64
+      -71.6,
+      71.6
     ],
     "bottom_y": 111,
     "top_y": 114,
     "crown_floor_y": 106.5,
     "perimeter_bearing_x": [
-      -50.5,
-      50.5
+      -51.5,
+      51.5
     ],
     "bearing_rule": "Keep reactions and any downward posts outside the protected X\u00b148atrium void. Fit bearings to actual supported perimeter structure and preserve the walking circuit before authoring.",
-    "floor_support_intent": "Resolve an overhead transfer structure and supports within crown wall zones rather than posts through the16-level atrium. Floor hangers/transfer connections remain undesigned."
+    "floor_support_intent": "Four keel-bearing spines and principal-band edge restraints; existing opaque cap preserved",
+    "pier_centres_xz": [
+      [
+        -51.5,
+        -71
+      ],
+      [
+        -51.5,
+        71
+      ],
+      [
+        51.5,
+        -71
+      ],
+      [
+        51.5,
+        71
+      ]
+    ],
+    "source_contract": "data/architecture/CENTRAL_CROWN_RUNTIME.json"
   },
   "private_upper_pavilions": [
     {
@@ -274,7 +294,7 @@
       "name": "Constructed starboard-house cover",
       "source_region": "D18_starboard_house_cover",
       "retain": true,
-      "future_programme_owner_reassignment": "Only with coordinated Bridge briefing relocation"
+      "future_programme_owner_reassignment": "Bridge briefing assigned to central crown; physical house cover retained without new occupancy"
     }
   ],
   "core_terminal_intent": {
@@ -291,5 +311,25 @@
     "Reconcile revised courtyards/entry galleries with D13-D16preserved guest rooms",
     "Verify both historical D18overlap dependencies before adoption",
     "Test geometry, normal routes, loaded-cart access and ordinary player views after construction"
-  ]
+  ],
+  "superseded_transfer_reservation": {
+    "status": "Architectural transfer/support reservation only, not an engineered load solution",
+    "zone_x": [
+      -50.5,
+      50.5
+    ],
+    "zone_z": [
+      -64,
+      64
+    ],
+    "bottom_y": 111,
+    "top_y": 114,
+    "crown_floor_y": 106.5,
+    "perimeter_bearing_x": [
+      -50.5,
+      50.5
+    ],
+    "bearing_rule": "Keep reactions and any downward posts outside the protected X\u00b148atrium void. Fit bearings to actual supported perimeter structure and preserve the walking circuit before authoring.",
+    "floor_support_intent": "Resolve an overhead transfer structure and supports within crown wall zones rather than posts through the16-level atrium. Floor hangers/transfer connections remain undesigned."
+  }
 }
