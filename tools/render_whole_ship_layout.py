@@ -53,13 +53,13 @@ for deck in P['decks']:
 canvas=Image.new('RGB',(1440,1100),'#faf9f5');d=ImageDraw.Draw(canvas)
 d.text((25,18),'ASTRAEA / WHOLE-SHIP LAYOUT ACCOUNTING',font=f(29),fill='#203943')
 d.text((25,58),'18 decks · 161 directory programmes · 1,000 guest allocations · 100 retail addresses · 400 crew target',font=f(17),fill='#465962')
-d.text((25,87),'Working plans: central core authored; other reservations proposed. Source coverage is not finished construction.',font=f(16),fill='#8c4b45')
+d.text((25,87),'Working plans: central/forward cores authored; other reservations proposed. Source coverage is not finished construction.',font=f(16),fill='#8c4b45')
 for i,deck in enumerate(P['decks']):
  col=i%3;row=i//3;x=25+col*472;y=139+row*142
  d.text((x,y),f"{deck['deck']}   {deck['floor_y']:g} m   {len(deck['programme_keys'])} programmes / {deck['crew_bank_envelope_count'] if deck['deck']=='D03' else deck['guest_envelope_count']} {'crew allocations' if deck['deck']=='D03' else 'guest units'}",font=f(14),fill='#203943')
  plan(d,deck['deck'],(x,y+29),.40)
 d.text((25,1010),'Gold: guest allocations. Blue-grey: retail addresses. Purple: proposed landscaped house courts; pale centres retain local arrivals.',font=f(17),fill='#465962')
-d.text((25,1037),'Green: authored central core. Red: planned public cores. Dark blue: staff risers. Cyan: pool reservation. Outlines: programmes.',font=f(17),fill='#465962')
+d.text((25,1037),'Green: authored public cores. Red: planned public cores. Dark blue: staff risers. Cyan: pool reservation. Outlines: programmes.',font=f(17),fill='#465962')
 d.text((25,1064),'Crew berth fit, luxury replacement layouts, hull section and complete guest/service routes remain open gates.',font=f(17),fill='#8c4b45')
 canvas.save(OUT/'overview.png')
 print(OUT/'overview.png')

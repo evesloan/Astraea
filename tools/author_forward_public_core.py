@@ -1,0 +1,19 @@
+"""Author the forward public core through D17; preserve the lower arrivals crosslink."""
+from pathlib import Path
+import json
+from shapely.geometry import box,Polygon
+R=Path(__file__).resolve().parents[1];C=Path('/workspace/shared/astraea-catalogue-continuation-20261002')
+owner='forward_public_core';layout=json.loads((R/'data/spatial_layout.json').read_text());contract=json.loads((R/'data/design_contract.json').read_text());levels=[d['floor_elevation_m']for d in contract['deck_datums'][:17]]
+foot=box(-7.8,-445,7.8,-412);lift=box(-1.82,-440.02,1.82,-435.98);stair=box(-3.1,-428,3.1,-417.3)
+records=json.loads((R/'data/reference/directory_allocations.json').read_text())['records']+json.loads((R/'data/reference/historical_guest_census.json').read_text())['guest_envelopes']+json.loads((R/'data/reference/D03_crew_envelopes.json').read_text())['records']
+assert all(foot.intersection(box(r['x'][0],r['z'][0],r['x'][1],r['z'][1])).area<1e-6 for r in records)
+assert Polygon(json.loads((R/'data/hull_envelope.json').read_text())['plan_xz_m']).covers(foot)
+assert all(foot.intersection(Polygon(v['boundary'])).area<1e-6 for v in layout['voids']if v.get('authoring_owner')!=owner)
+def ring(p):return[list(q)for q in p.exterior.coords[:-1]]
+layout['regions']=[r for r in layout['regions']if r.get('authoring_owner')!=owner]
+for i in range(17):layout['regions'].append({'id':f'D{i+1:02}_forward_public_core_floor','authoring_owner':owner,'deck':f'D{i+1:02}','boundary':ring(foot),'holes':[],'priority':80,'thickness':.24,'material_role':'guest_floor','status':'Forward public lift/stair platform under validation; no final art or complete ship claim'})
+layout['voids']=[v for v in layout['voids']if v.get('authoring_owner')!=owner]
+layout['voids'] += [{'id':owner+'_lift','authoring_owner':owner,'decks':[f'D{i:02}'for i in range(1,18)],'boundary':ring(lift),'source':'Physical3.6x4m cabin clearance; fitted pit pan remains withinD01 slab thickness'}, {'id':owner+'_stairs','authoring_owner':owner,'decks':[f'D{i:02}'for i in range(2,18)],'boundary':ring(stair),'source':'Real stacked switchbacks; D01base floor retained; exposed edges guarded'}]
+D={'id':owner,'core_reservation':'forward_vertical_core','status':'Authored source under construction and validation','origin':[0,0,-432],'root_name':'ForwardPublicCore_WIP','persistent_id':'forward_public_core_001','enclosure_file':'AST-CIR-005_forward_core.glb','deck_numbers':list(range(1,18)),'floor_y':levels,'floor_boundary':ring(foot),'lift_opening':ring(lift),'stair_opening':ring(stair),'lift':{'name':'ForwardPublicLift','identity_prefix':'forward_public','district_label':'Forward public core','gate_origin_xz':[-1.8,-438],'shaft_outer_x':[-2,2],'shaft_outer_z':[-440.2,-435.8],'pit_pan_y':[-.24,-.20],'cap_y':[105.78,105.9],'cabin_file':'AST-CIR-003_seventeen_stop.glb'},'stairs':[{'base_y':levels[i],'top_y':levels[i+1],'rise':levels[i+1]-levels[i],'origin':[3,levels[i],-428],'yaw_pi':True,'file':{4.5:'AST-CIR-001_H450.glb',6:'AST-CIR-001_H600.glb',8.5:'AST-CIR-001.glb'}[levels[i+1]-levels[i]]}for i in range(16)],'scope':'Forward public connection D01-D17. D18 remains served by central and aft crown links. Only the supported port D01/D02 crosslinks are open. Other cores, staff risers and destination connections remain unfinished','minimum_cabin_top_y':104.94,'hull_clearance_status':'Terminal cap105.9m remains below general106.5m roof reservation and clear of existing D18datum slab; full hull fit remains unaccepted','lateral_portal_decks':['D01','D02'],'lateral_portal_side':'port','lateral_portal_z':[-435,-429],'lateral_clear_height_m':3.2}
+(R/'data/architecture/FORWARD_PUBLIC_CORE.json').write_text(json.dumps(D,indent=2)+'\n');(R/'data/spatial_layout.json').write_text(json.dumps(layout,indent=2)+'\n')
+print('Forward17-deck contract authored; source kit, runtime and visual acceptance checked separately')

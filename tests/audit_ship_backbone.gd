@@ -15,6 +15,8 @@ func run()->void:
 		var y:float=deck.floor_elevation_m
 		var side:float=45 if deck.deck_id in ["D01","D18"]else 49.5
 		var route:Array[Vector2]=[Vector2(0,-520),Vector2(0,-111),Vector2(5.5,-111),Vector2(5.5,-72),Vector2(45,-72),Vector2(45,-65.5),Vector2(side,-65.5),Vector2(side,65.5),Vector2(45,65.5),Vector2(45,72),Vector2(0,72),Vector2(0,520)]
+		if deck.deck_id!="D18":
+			for entry in [Vector2(0,-414),Vector2(5.5,-414),Vector2(5.5,-443),Vector2(0,-443)]:route.insert(1,entry)
 		if deck.deck_id in ["D17","D18"]:
 			route.remove_at(route.size()-1)
 			route.append_array([Vector2(0,108),Vector2(5.5,108),Vector2(5.5,137),Vector2(0,137),Vector2(0,520)])

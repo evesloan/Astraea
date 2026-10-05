@@ -26,7 +26,7 @@ var button_script=preload("res://scripts/lift_button.gd")
 func _stop_id(index:int) -> String:
 	return stop_ids[index] if not stop_ids.is_empty() else "D"+str(deck_numbers[index])
 func _ready() -> void:
-	assert(floor_heights.size() in [2,3,5,18] and deck_numbers.size()==floor_heights.size(),"Use an authored two-, three-, five- or eighteen-stop cabin panel")
+	assert(floor_heights.size() in [2,3,5,17,18] and deck_numbers.size()==floor_heights.size(),"Use an authored two-, three-, five-, seventeen- or eighteen-stop cabin panel")
 	assert(stop_ids.is_empty() or (stop_ids.size()==floor_heights.size() and stop_names.size()==floor_heights.size() and stop_codes.size()==floor_heights.size()))
 	var identities:Dictionary={}
 	for i in range(floor_heights.size()):
@@ -86,7 +86,7 @@ func _ready() -> void:
 	# Match the actual authored control backing, not only the distant cabin wall.
 	if floor_heights.size()==2:
 		_box(cabin,Vector3(1.815,1.265,-.69),Vector3(.13,.57,.38),"CabinControlBacking")
-	elif floor_heights.size()==18:
+	elif floor_heights.size() in [17,18]:
 		_box(cabin,Vector3(1.815,1.35,-.98),Vector3(.13,1.50,1.28),"CabinControlBacking")
 	elif floor_heights.size()==5:
 		_box(cabin,Vector3(1.815,1.33,-1.02),Vector3(.13,.46,1.40),"CabinControlBacking")

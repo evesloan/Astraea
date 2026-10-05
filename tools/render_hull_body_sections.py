@@ -11,14 +11,14 @@ def dashed(a,b,c='#aa763d',width=2):
  for i in range(0,count,2):d.line([(a[0]+dx*i/count,a[1]+dy*i/count),(a[0]+dx*min(i+1,count)/count,a[1]+dy*min(i+1,count)/count)],fill=c,width=width)
 text((36,24),'ASTRAEA / BODY AND ROOF SECTIONS',30)
 text((36,70),'Built lower shell and circulation, with the upper enclosing volumes still proposed',20)
-text((36,104),'Section coordination only. Room fit, windows, apertures and the complete upper hull remain unfinished.',16,'#7c6250')
+text((36,104),'Selected structure only; fitted districts are omitted. Room fit, windows and the upper hull remain unfinished.',16,'#7c6250')
 def lon(z,y):return(91+(z+541)*1.21,514-y*2.8)
 text((36,150),'LONGITUDINAL / centreline body; upper pavilions projected from both sides',18)
 for level in s['levels']:
  y=level['floor_y'];d.line([lon(-541,y),lon(541,y)],fill='#d8d9d2');text((20,lon(0,y)[1]-7),level['deck'],11,'#66747b')
 outline=[lon(min(p[1]for p in ring['outer']),ring['y'])for ring in b['rings']]+[lon(max(p[1]for p in ring['outer']),ring['y'])for ring in reversed(b['rings'])]
 d.polygon(outline,fill='#d7e0e2',outline='#486a77',width=3)
-for zlo,zhi,ylo,yhi in [(-113,-80,0,109.85),(106,139,102,109.85)]:d.rectangle([lon(zlo,yhi),lon(zhi,ylo)],fill='#77a295',outline='#356f5f',width=2)
+for zlo,zhi,ylo,yhi in [(-445,-412,0,105.9),(-113,-80,0,109.85),(106,139,102,109.85)]:d.rectangle([lon(zlo,yhi),lon(zhi,ylo)],fill='#77a295',outline='#356f5f',width=2)
 for zlo,zhi,top in [(-180,202,114.5)]+[(min(q[1]for q in p['boundary']),max(q[1]for q in p['boundary']),p['external_roof_limit_y'])for p in u['private_upper_pavilions']]:
  for a,c in [(lon(zlo,106.5),lon(zlo,top)),(lon(zlo,top),lon(zhi,top)),(lon(zhi,top),lon(zhi,106.5))]:dashed(a,c)
 text((91,535),'1,082 m calibrated plan length; vertical scale exaggerated for legibility',15,'#66747b')

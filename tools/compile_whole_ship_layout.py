@@ -63,6 +63,17 @@ def build():
  primary['apron_connector']['status']='Authored continuous floor within the central core footprint'
  primary['remaining_acceptance']=['Resolved hull section','Broader destination network and freehand cart use','Final art and all-species ergonomics']
  paths.append('data/architecture/PRIMARY_ATRIUM_CORE.json')
+ for c in cores:
+  if c['id']=='atrium_threshold_vertical_core':continue
+  c['decks']=list(elevations)[:17];c['floor_y_range']=[0,102]
+  c['purpose']='Public D01-D17 catchment beneath the general roof; D18 uses the compact crown connections'
+  c['requirements']=[r for r in c['requirements']if '109.44'not in r]
+  c['requirements'].append('Fit terminal cap below106.5m general roof without intersecting the existing D18datum slab')
+ if (ROOT/'data/architecture/FORWARD_PUBLIC_CORE.json').exists():
+  forward=read('data/architecture/FORWARD_PUBLIC_CORE.json');entry=next(c for c in cores if c['id']==forward['core_reservation'])
+  entry.update(status='Authored forward platform; fresh runtime and visual acceptance recorded separately',geometry_owner='forward_public_core',construction_contract='data/architecture/FORWARD_PUBLIC_CORE.json',lobby_z=[-445,-412],lateral_portal_decks=['D01','D02'],lateral_portal_side='port',terminal_cap_y=forward['lift']['cap_y'])
+  paths.append('data/architecture/FORWARD_PUBLIC_CORE.json')
+
  staff_cores=[]
  positions={'port':[-490,-283,-90,290,490],'starboard':[-490,-323,-86,323,490]}
  for side,zs in positions.items():
@@ -122,4 +133,4 @@ def build():
  return result
 if __name__=='__main__':
  result=build();(ROOT/'data/whole_ship_layout.json').write_text(json.dumps(result,indent=2)+'\n')
- print(json.dumps({'decks':len(result['decks']),'programmes':len(result['programmes']),'guest_units':1000,'shops':100,'proposed_residential_courts':4,'public_core_reservations':5,'authored_public_cores':1,'final_layout_accepted':False}))
+ print(json.dumps({'decks':len(result['decks']),'programmes':len(result['programmes']),'guest_units':1000,'shops':100,'proposed_residential_courts':4,'public_core_reservations':5,'authored_public_cores':sum(bool(c.get('geometry_owner'))for c in result['longitudinal_vertical_core_reservations']),'final_layout_accepted':False}))
