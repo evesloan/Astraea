@@ -1,0 +1,289 @@
+{
+  "id": "astraea_static_space_view_01",
+  "revision": 1,
+  "status": "Source-only composition ready for parent integration; engine compilation and visual acceptance pending",
+  "shader": "res://shaders/astraea_space.gdshader",
+  "engine_target": "Godot 4.6.3 GL Compatibility, existing main scene and retro display stack",
+  "scope": "Shared exterior-view dependency for real hull-facing windows. It does not complete rooms, window placement, hull clearance, furniture, astronomy or final art.",
+  "provenance": {
+    "method": "Original deterministic shader mathematics; no downloaded textures, photographs, image-generation tools, paid services or third-party art assets",
+    "fiction": "Unnamed abstract celestial bodies and dust only; no new settlement, species, location, orbital-system or story claims",
+    "reference_pixels_reviewed": [
+      "DesignArchive/References/Uploaded_46/20/image(20261001-071306).png",
+      "artifacts/crown_navigation_window_processed_world_capture.png"
+    ],
+    "reference_application": "The supplied interior image uses a very large curved celestial limb framed by substantial architecture. Translate that hierarchy into a quieter original low-resolution sky; do not copy its planet artwork, orbital furniture, city lights or photorealistic finish.",
+    "governing_sources_read": [
+      "docs/master_source/MASTER_FULL_CONTENT_INDEX.json chapters 21 and 32 in full",
+      "docs/master_source/MASTER_CURRENT_APPLICATION.json, including Curated views and windows",
+      "docs/RENDERING_DIRECTION.md",
+      "docs/D18_COMMAND_CROWN_STUDY.md",
+      "data/architecture/CENTRAL_CROWN_RUNTIME.json windows and reference guidance"
+    ]
+  },
+  "world_orientation": {
+    "axes": "+Y up; +X starboard; -X port; azimuth zero is +X and positive turns toward +Z",
+    "environment_sky_rotation_radians": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "environment_sky_custom_fov": 0.0,
+    "projection_policy": "One global direction field for all windows. Never rotate or recenter the sky for individual rooms or attach the celestial features to the player camera.",
+    "translation_policy": "Infinite-distance sky; no ship-scale parallax. Actual opaque hull and room meshes, plus the real glass shader, determine visibility.",
+    "light_direction_world": [
+      -0.5014059,
+      0.6016871,
+      -0.6217433
+    ],
+    "light_scope": "One shared abstract light direction shades both bodies inside the sky shader only; it creates no scene light."
+  },
+  "features": [
+    {
+      "id": "starboard_primary",
+      "direction_world": [
+        0.9354072,
+        -0.2923717,
+        0.1988269
+      ],
+      "azimuth_degrees": 12.0,
+      "elevation_degrees": -17.0,
+      "angular_radius_degrees": 29.0,
+      "upper_limb_elevation_degrees": 12.0,
+      "lower_limb_elevation_degrees": -46.0,
+      "intent": "Large slate-blue and muted mineral body rising from below the window; readable curvature, broad surface marbling, a softly graded day side and restrained thin atmospheric edge",
+      "framing": "The whole disc is deliberately not visible from the normal D18 pane. Its upper curved limb and surface occupy the lower part of the outward view, leaving dark negative space above.",
+      "approximate_projected_lit_fraction": 0.88428,
+      "primary_windows": [
+        "D18_directory_02",
+        "D18_directory_04"
+      ]
+    },
+    {
+      "id": "port_secondary",
+      "direction_world": [
+        -0.9871089,
+        0.1045285,
+        -0.1212017
+      ],
+      "azimuth_degrees": -173.0,
+      "elevation_degrees": 6.0,
+      "angular_radius_degrees": 7.0,
+      "upper_limb_elevation_degrees": 13.0,
+      "lower_limb_elevation_degrees": -1.0,
+      "intent": "Quiet smaller mineral-grey crescent in an otherwise sparse port sky; no bright halo or competing second grand spectacle",
+      "approximate_projected_lit_fraction": 0.1834,
+      "primary_windows": [
+        "D18_directory_05"
+      ]
+    },
+    {
+      "id": "sparse_field",
+      "intent": "Sparse irregular warm/cool pinpoints, dark blue-black negative space and a faint broken dusty belt",
+      "star_layout": "42 by 42 candidate cells on each of six direction faces; approximately 3.5 percent occupied, with inset varied-size points. Planet surfaces occlude stars.",
+      "dust_strength": 0.35,
+      "star_strength": 0.75,
+      "motion": "None: no twinkle, drift, camera-dependent noise or temporal grain"
+    }
+  ],
+  "known_window_geometry": {
+    "floor_y_m": 106.5,
+    "pane_bottom_y_m": 106.95,
+    "pane_top_y_m": 110.55,
+    "pane_abs_x_bottom_m": 35.1,
+    "pane_abs_x_top_m": 35.95,
+    "pane_plane_equation": "abs(x) = 35.1 + (y - 106.95) * (0.85 / 3.6)",
+    "review_camera_positions_are_player_roots": true,
+    "eye_height_assumption_m": 1.6,
+    "navigation_player_root_xyz": [
+      28.0,
+      106.6,
+      -50.0
+    ],
+    "navigation_eye_xyz_assumed": [
+      28.0,
+      108.2,
+      -50.0
+    ],
+    "navigation_facing": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "chart_review_note": "Use the equivalent +X review inside D18_directory_04; all starboard rooms must retain the same feature orientation.",
+    "respite_player_root_xyz": [
+      -28.0,
+      106.6,
+      -4.0
+    ],
+    "respite_eye_xyz_assumed": [
+      -28.0,
+      108.2,
+      -4.0
+    ],
+    "respite_facing": [
+      -1.0,
+      0.0,
+      0.0
+    ],
+    "analytic_pane_samples": [
+      {
+        "camera": "navigation",
+        "ray_azimuth_degrees": 12.0,
+        "ray_elevation_degrees": 12.0,
+        "pane_hit_xyz": [
+          35.7951,
+          109.8939,
+          -48.3431
+        ]
+      },
+      {
+        "camera": "navigation",
+        "ray_azimuth_degrees": 12.0,
+        "ray_elevation_degrees": 0.0,
+        "pane_hit_xyz": [
+          35.3951,
+          108.2,
+          -48.4281
+        ]
+      },
+      {
+        "camera": "navigation",
+        "ray_azimuth_degrees": 12.0,
+        "ray_elevation_degrees": -9.0,
+        "pane_hit_xyz": [
+          35.1228,
+          107.0467,
+          -48.486
+        ]
+      },
+      {
+        "camera": "respite",
+        "ray_azimuth_degrees": -173.0,
+        "ray_elevation_degrees": 13.0,
+        "pane_hit_xyz": [
+          -35.8249,
+          110.0201,
+          -4.9608
+        ]
+      },
+      {
+        "camera": "respite",
+        "ray_azimuth_degrees": -173.0,
+        "ray_elevation_degrees": 6.0,
+        "pane_hit_xyz": [
+          -35.5848,
+          109.0032,
+          -4.9313
+        ]
+      },
+      {
+        "camera": "respite",
+        "ray_azimuth_degrees": -173.0,
+        "ray_elevation_degrees": -1.0,
+        "pane_hit_xyz": [
+          -35.3646,
+          108.0705,
+          -4.9043
+        ]
+      }
+    ],
+    "analytic_limit": "All six samples intersect the stated glass-height band. The primary azimuth was moved from +7 to +12 degrees to move its apex off the navigation mullion at Z-49. This checks the unoccluded pane plane only; real mullions, roof ties, reveals, glass response and camera pitch still need the parent's in-engine review."
+  },
+  "parent_integration": {
+    "owner": "Parent; no runtime, scene or main-script edits were made by the backdrop author",
+    "resource_steps": [
+      "Create one ShaderMaterial from res://shaders/astraea_space.gdshader and assign it to one Sky resource in the existing WorldEnvironment.",
+      "Use Sky.PROCESS_MODE_QUALITY and Sky.RADIANCE_SIZE_256 for the first bounded trial. Keep shader parameters constant after initial setup.",
+      "Assign Environment.BG_SKY, zero sky_rotation and sky_custom_fov = 0.0. Keep background_energy_multiplier = 1.0 so cached and direct colour are not multiplied differently.",
+      "Use the existing low-resolution world SubViewport and existing retro.gdshader. Add no second dithering, quantization, CRT or full-screen post-process stage."
+    ],
+    "preserve_indoor_illumination": {
+      "baseline_observed": {
+        "source": "scripts/ship.gd and scenes/ship.tscn before backdrop integration",
+        "ambient_source": "Environment.AMBIENT_SOURCE_COLOR",
+        "ambient_color": [
+          0.75,
+          0.81,
+          0.86,
+          1.0
+        ],
+        "ambient_energy": 0.2,
+        "background_mode": "Environment.BG_COLOR",
+        "background_color": [
+          0.025,
+          0.034,
+          0.046,
+          1.0
+        ],
+        "reflection_source": "Unassigned default REFLECTION_SOURCE_BG with a color background; no sky reflection contribution",
+        "reflection_probes_found_in_scenes_or_scripts": false
+      },
+      "cached_mode": [
+        "Set ambient_light_source = Environment.AMBIENT_SOURCE_SKY ONLY as a cache-generation route, with ambient_light_sky_contribution = 0.0.",
+        "Preserve the current ambient_light_color and ambient_light_energy exactly. In the checked GLES3 renderer, zero sky contribution mixes entirely to those color-ambient values, even though the sky source is enabled.",
+        "Set reflected_light_source = Environment.REFLECTION_SOURCE_DISABLED so the new sky does not become an unrequested indoor specular source. Existing direct fixture light/specular remains unchanged.",
+        "Do not modify exposure, tonemapping, glow, local fixture light values, shadow budgets or material opacity to make the view work. The sky disables fog only for its own background pass.",
+        "Retain any later explicitly authored indoor reflection solution; do not blindly remove probes or GI if the runtime has changed since this source review."
+      ],
+      "compatibility_cache_caveat": "Godot 4.6 GLES3 only updates sky radiance when sky ambient or sky reflections are requested. COLOR ambient plus DISABLED reflections therefore leaves the cached display without its required generated map. The zero-contribution SKY route above enables map generation without using its light.",
+      "diagnostic_direct_mode": "If cache generation, orientation or brightness is suspect, set use_radiance_cache = false while retaining COLOR ambient and DISABLED sky reflections. The identical procedural world composition then runs per visible sky pixel. This is a diagnostic fallback, not a claim of cached performance.",
+      "acceptance_gate": "Compare a fixed opaque interior patch before and after under identical renderer/display settings. Require no meaningful illumination or specular change beyond existing nondeterministic capture noise. Investigate any difference before accepting the cached routing."
+    }
+  },
+  "performance_design": {
+    "static_dependencies": "No TIME, POSITION, SCREEN_UV or LIGHT0-LIGHT3 inputs; no subpasses, external textures, custom render targets or scene geometry",
+    "procedural_cost": "Bounded analytic sphere tests, up to five eight-corner value-noise evaluations in a primary-body direction, one star-cell lookup and no dynamic loops. Intended to execute when the radiance cache is built.",
+    "normal_background_path": "One RADIANCE lookup per visible sky fragment, provided the parent establishes a valid cache",
+    "cache_invalidation": "Shader parameter/material changes or renderer-side sky invalidation can regenerate the cache. Do not update direction or strength uniforms each frame.",
+    "quality_tradeoff": "Start at 256 radiance faces. Some fine stars may soften or vanish; review rather than raising the resolution automatically. A 512 trial increases storage and generation cost and still needs target-hardware acceptance.",
+    "measurement_status": "Not profiled, rendered or engine-compiled by this author. This describes design cost, not measured FPS."
+  },
+  "parent_validation_plan": [
+    "1. Compile/import through the parent's existing Godot 4.6.3 validation workflow; verify there are no sky shader errors and that the Sky resource is attached to the existing main-world environment.",
+    "2. Verify BG_SKY, one shared Sky instance, zero rotation, default camera FOV behavior, static parameters, 256 radiance size and the exact zero-contribution lighting isolation settings.",
+    "3. Capture navigation at the supplied root and ordinary eye height facing +X, then chart at its corresponding +X pane. Require a visible textured curved limb inside real glass, meaningful black space, visibly present glass and consistent world orientation. Do not substitute a free-space debug sky capture for this gate.",
+    "4. Capture respite at the supplied root facing -X. Require the quieter crescent to sit inside the actual pane and remain secondary; no copy of the starboard hero view should appear to port.",
+    "5. Compare normal low-resolution/dithered and effects-off views, then perform a short slow pan and lateral walk along both sides. Check cache orientation, stable star positions, no severe shimmer, cube-face discontinuity, limb clipping or opaque hull leaks.",
+    "6. Compare fixed indoor patches and existing fixture behavior against a pre-integration capture. If the new source routing alters them, use direct diagnostic mode while investigating; do not compensate by changing ambient energy or exposure.",
+    "7. Run the parent's existing relevant crown-window/room tests and full aggregate at its coordinated gate. Measure sustained renderer cost only after cache warm-up. Stop this bounded art pass when the three named real-window views and lighting-isolation comparison have usable evidence, or report a concrete renderer/occlusion blocker. Final art and target-GPU performance remain separate."
+  ],
+  "known_limitations": [
+    "No Godot execution, import, build, screenshot or backup mutation was performed by this author; engine/visual validation belongs to the parent.",
+    "Current defaults are a first authored view composition, not final art approval. Pane tint, structural occlusion and low-resolution star readability have not yet been observed with this shader in engine.",
+    "The sky is infinite-distance art direction, without orbital simulation, physical atmospheric scattering, world-time motion, navigation semantics or astronomical scale claims.",
+    "Only existing D18 outward panes inform this first placement. Later outward windows should compose around the same world directions or document a coherent global revision, not receive private impossible projections.",
+    "The documented cache route targets GL Compatibility. Godot 4.6 had a reported Forward+ RADIANCE sampling regression; do not assume renderer migration is validated.",
+    "No local models, rooms, materials, collision, master documents, protected allocations, berths, source lights or display effects were changed."
+  ],
+  "api_sources": [
+    "https://docs.godotengine.org/en/4.6/tutorials/shaders/shader_reference/sky_shader.html",
+    "https://docs.godotengine.org/en/4.6/classes/class_sky.html",
+    "https://docs.godotengine.org/en/4.6/classes/class_environment.html",
+    "https://github.com/godotengine/godot/blob/4.6.3-stable/drivers/gles3/rasterizer_scene_gles3.cpp",
+    "https://github.com/godotengine/godot/blob/4.6.3-stable/drivers/gles3/shaders/scene.glsl",
+    "https://github.com/godotengine/godot/blob/4.6.3-stable/drivers/gles3/shaders/sky.glsl",
+    "https://github.com/godotengine/godot/issues/115441"
+  ],
+  "source_validation": {
+    "status": "Passed bounded source and arithmetic checks only",
+    "checks": [
+      "JSON parsing",
+      "Balanced shader source delimiters",
+      "No time/camera-position/light built-ins",
+      "Cached background branch uses one radiance lookup",
+      "Sky-only fog disable present",
+      "Both direction vectors match recorded azimuth/elevation",
+      "Both approximate illuminated fractions match shared light",
+      "Six analytic rays intersect the canted pane plane within glass height"
+    ],
+    "not_run": [
+      "Godot shader compiler",
+      "Imports or builds",
+      "Runtime tests",
+      "Graphical captures or motion review",
+      "Hardware performance"
+    ],
+    "receipt_note": "Source-only checks do not establish shader compilation or in-engine appearance"
+  }
+}
