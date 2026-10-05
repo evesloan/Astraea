@@ -12,8 +12,8 @@ class LuxuryReservations(unittest.TestCase):
   ids={r['source_envelope_index']for r in self.rooms};self.assertEqual(len(ids),81)
   keep=set(self.p['retained_D17_standard_source_indices']);self.assertEqual(len(keep),19);self.assertFalse(ids&keep)
   self.assertEqual(len(ids|keep)+900,1000);self.assertEqual(self.p['counts']['admission_cap_unchanged'],2000)
- def test_unlocated_units_are_explicit(self):
-  self.assertEqual(len(self.placed),67);self.assertEqual(sum(r['proposed_floor_boundary']is None for r in self.rooms),14)
+ def test_all_units_now_have_explicit_reservations(self):
+  self.assertEqual(len(self.placed),81);self.assertEqual(sum(r['proposed_floor_boundary']is None for r in self.rooms),0)
   self.assertFalse(any(r['upper_level_is_new_unit']for r in self.rooms))
   self.assertEqual(sum(r['upper_floor_y']is not None for r in self.rooms),6)
  def test_hull_and_programme_clearance(self):
@@ -32,6 +32,17 @@ class LuxuryReservations(unittest.TestCase):
     if s['house']!=r['house']or s['tier']=='deluxe':continue
     hit=Polygon(s['proposed_floor_boundary']).intersection(LineString([(-130,z),(130,z)]))
     if not hit.is_empty:self.assertGreaterEqual(min(abs(hit.bounds[0]),abs(hit.bounds[2]))-edge,9.8)
+ def test_central_standards_and_crown_dependencies(self):
+  standard=self.p['replanned_standard_units'];self.assertEqual(len(standard),19)
+  for a in standard:
+   shape=Polygon(a['proposed_floor_boundary'])
+   for r in self.rooms:self.assertLess(shape.intersection(Polygon(r['proposed_floor_boundary'])).area,1e-5)
+  crown=json.loads((R/'data/architecture/D18_COMMAND_CROWN_PROPOSAL.json').read_text())
+  for r in self.rooms:
+   self.assertLess(r['proposed_external_roof_limit_y'],118)
+   if r['upper_floor_y']is not None:
+    for q in crown['programmes']:self.assertLess(Polygon(r['proposed_floor_boundary']).intersection(Polygon(q['proposed_floor_boundary'])).area,1e-5)
+  self.assertEqual({r['historical_D18_programme']for r in self.p['historical_D18_overlap_dependencies']},{'D18_directory_05','D18_directory_06'})
  def test_source_identity_unchanged(self):
   guests=json.loads((R/'data/reference/historical_guest_census.json').read_text())['guest_envelopes']
   for r in self.rooms:
