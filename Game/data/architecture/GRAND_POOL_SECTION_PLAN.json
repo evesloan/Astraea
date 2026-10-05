@@ -141,7 +141,33 @@
     ],
     "area_m2": 900,
     "source": "Historical handoff protected_extra_geometry.pool0_lane_rectangle",
-    "rule": "Retain the unobstructed historical lane. Islands, bridges, stairs or jets do not consume this rectangle. Waterpark/slides/lazy river remain open wider-programme work, not fulfilled by this lane."
+    "rule": "Retain the unobstructed historical lane. Islands, bridges, stairs or jets do not consume this rectangle. Waterpark/slides/lazy river remain open wider-programme work, not fulfilled by this lane.",
+    "wet_loop_centreline_xz": [
+      [
+        -20,
+        -432
+      ],
+      [
+        -20,
+        -459
+      ],
+      [
+        -42,
+        -459
+      ],
+      [
+        -42,
+        -405
+      ],
+      [
+        -20,
+        -405
+      ],
+      [
+        -20,
+        -432
+      ]
+    ]
   },
   "shared_volume": {
     "earlier_rect": [
@@ -236,12 +262,12 @@
         -432
       ],
       [
-        -9.5,
+        -9.4,
         44,
         -432
       ],
       [
-        -9.5,
+        -9.4,
         44,
         -447.8
       ],
@@ -277,7 +303,7 @@
     "D08_dry_east_approach_clear_rect": [
       -10.6,
       -8.2,
-      -447.8,
+      -449,
       -435
     ],
     "ceremonial_wet_steps": {
@@ -286,17 +312,24 @@
         -430
       ],
       "bottom_x": -11,
-      "top_x": -16.6,
+      "top_x": -16.2,
       "rise_m": 2.2,
       "risers": 14,
       "riser_m": 0.15714285714285717,
       "going_trial_m": 0.4,
       "top_landing_x": [
         -18,
-        -16.6
+        -16.2
       ],
-      "rule": "Dry arrival to wet terrace; ramp is the step-free equivalent. Do not route anyone beneath the 2.2 m raised platform."
-    }
+      "rule": "Dry arrival to wet terrace; ramp is the step-free equivalent. Do not route anyone beneath the 2.2 m raised platform.",
+      "treads": 13
+    },
+    "D08_dry_approach_raised_deck_exclusion_rect": [
+      -10.8,
+      -8,
+      -449,
+      -428.2
+    ]
   },
   "accessible_ramp": {
     "status": "Dimensioned geometric reservation, not legal accessibility or six-species certification",
@@ -539,7 +572,13 @@
       -8.45,
       -427.9,
       -410.2
-    ]
+    ],
+    "environmental_boundary": {
+      "status": "Required new source geometry; not solved by rail or lift gate alone",
+      "market_stair_upper_threshold_z": -428,
+      "stair_clear_door_width_target_m": 2.4,
+      "rule": "Keep the upper stair/lift arrival within a wet-side enclosure with a dry-market threshold. Preserve the separate 2.4 m market bypass with these access doors closed. Full-height glass, header/ceiling seals and gate/pocket swept volumes must be drawn in the source before adoption."
+    }
   },
   "market": {
     "gross_allocation_area_m2": 3128,
@@ -567,7 +606,41 @@
       -399.2
     ],
     "rule": "Continuous dry market loop with genuinely glazed wet/dry separation at the overlooking edge. Recess orange shop/market bays, canopy/soffit changes, planted seating outside walking strips. The loop must remain usable when pool access gates are closed.",
-    "retail_relationship": "Preserve all 100 source shop allocations and original source order. Fore-port neighbour indices are 0,1,2,25,26,27 in the filtered historical shop list; they are not stable room IDs. Nearest are X\u221278..\u221266 and X\u2212106..\u221294, Z\u2212398..\u2212386. Reserve west/aft future frontage connections outside their envelopes; do not relocate those shops into this market or invent a new business."
+    "retail_relationship": "Preserve all 100 source shop allocations and original source order. Fore-port neighbour indices are 0,1,2,25,26,27 in the filtered historical shop list; they are not stable room IDs. Nearest are X\u221278..\u221266 and X\u2212106..\u221294, Z\u2212398..\u2212386. Reserve west/aft future frontage connections outside their envelopes; do not relocate those shops into this market or invent a new business.",
+    "loop_centreline_xz": [
+      [
+        -15.5,
+        -432
+      ],
+      [
+        -15.5,
+        -463.1
+      ],
+      [
+        -45.9,
+        -463.1
+      ],
+      [
+        -45.9,
+        -400.9
+      ],
+      [
+        -9.65,
+        -400.9
+      ],
+      [
+        -9.65,
+        -428
+      ],
+      [
+        -15.5,
+        -428
+      ],
+      [
+        -15.5,
+        -432
+      ]
+    ]
   },
   "staff": {
     "status": "Bounded upper extension plus screened physical approaches, not implemented",
@@ -715,6 +788,13 @@
       "Retain all three lower gate/sill locations and persistent identities; rebuild source cap/upper shaft in a derivative, never hide a surviving cap with a new shaft.",
       "Upper D08 stop is at wet Y46.2, explicitly not canonical arrival Y44. Staff do not push loaded carts up the public ramp to reach wet care.",
       "Place dry supplies/dirty towel return in separate recessed niches outside the 2.4 m dogleg/cart turn envelope. Prove screening with doors open from both wet floor and market gallery; the plan does not yet certify it."
+    ],
+    "proposed_stop_ids": [
+      "D01",
+      "D02",
+      "D03",
+      "D08_WET",
+      "D09"
     ]
   },
   "floor_ownership": {
