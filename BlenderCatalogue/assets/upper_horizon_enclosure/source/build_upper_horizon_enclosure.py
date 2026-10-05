@@ -93,12 +93,12 @@ for sign in [-1,1]:
    D['windows'].append({'id':side+'_'+tag,'glass_assembly':'UHE_'+side+'_'+tag+'_Glass','a_xz':[x,za+.08],'b_xz':[x,zb-.08],'glass_y':[107.84,111.12],'single_plane':True,'unchanged_guard_top_y':107.82,'clear_aperture_y':[107.86,111.05],'view':'Shared standing observation ribbon; final full-window ray review pending'})
  # Jambs are full-depth and full-height with positive contact to retained/lowered caps and upper roof frame.
  for tag,a,b in [('ForeJamb',160,160.10),('AftJamb',163.90,164)]:sb('LowBay_'+tag,107.36,114.20,a,b,'champagne_metal',.36,'window_frame')
- sb('LowBay_Sill',107.36,107.40,160,164,'champagne_metal',.36,'window_frame')
+ sb('LowBay_Sill',107.36,107.42,160,164,'champagne_metal',.36,'window_frame')
  sb('LowBay_Header',111.05,114.20,160,164,'ivory_enamel',.36,'window_frame')
- sb('LowBay_HeadSeal',111.05,111.13,160.08,163.92,'staff_zinc',.14,'window_seal')
+ sb('LowBay_HeadSeal',111.03,111.13,160.08,163.92,'staff_zinc',.14,'window_seal')
  # A single closed solid pane, not two parallel rail/pressure panes.
  sb('LowBay_Glass',107.38,111.12,160.08,163.92,'upper_horizon_protective_glass',.06,'glass')
- D['windows'].append({'id':side+'_low_sill','glass_assembly':'UHE_'+side+'_LowBay_Glass','position':[x,109.25,162],'clear_aperture_y':[107.40,111.05],'clear_aperture_z':[160.10,163.90],'glass_aabb':[x-.03,x+.03,107.38,111.12,160.08,163.92],'single_plane':True,'collision':'closed_solid_concave_static','frame_depth':.36,'opaque_top_above_floor':.90,'join_overlap_m':.02})
+ D['windows'].append({'id':side+'_low_sill','glass_assembly':'UHE_'+side+'_LowBay_Glass','position':[x,109.25,162],'clear_aperture_y':[107.42,111.03],'clear_aperture_z':[160.10,163.90],'glass_aabb':[x-.03,x+.03,107.38,111.12,160.08,163.92],'single_plane':True,'collision':'closed_solid_concave_static','frame_depth':.36,'opaque_top_above_floor':.92,'join_overlap_m':.02})
  marker('DATUM_upper_horizon_'+side.lower()+'_view',[sign*32.9,108.15,161.2 if sign>0 else 162.35],{'programme_key':'D18_directory_09','profile':'bounded_standing_eye_box','not_capacity':True})
  # Glazed fan diagonals and rear wings complete the shared view ribbon over unchanged guards.
  a=(sign*35.7,181.7);b=(sign*25.7,193.7);c=(sign*4.02,193.7)

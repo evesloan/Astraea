@@ -22,3 +22,7 @@ Parent owns installed floor ownership, keel/static/dynamic screens, actual physi
 
 ## Reproduce
 Run Blender4.3.2 with two threads and source/build_aft_crown_platform.py. Run QA Python scripts after regeneration; contact and cart checks require Shapely2. No Godot process is launched by this family. Refresh manifest hashes and independently inspect current source before adoption.
+
+## Upper Horizon low-sill revision
+
+The current005 source is coupled to new AST-CMD-006. Four Back/Cap objects only are split atZ160/164, with exact out-of-bay stubs and unchanged toes;3975 unaffected source objects remain exact. Current preservation, material and roundtrip proofs live in ../upper_horizon_enclosure/qa. Earlier qa/exact_roundtrip.json and platform runtime receipts remain historical baseline evidence, not validation of this later guard change. Install005 and006 together; parent owns new runtime/view/regression gates. The existing builder dispatches to the bounded revision when its section contract requests it.

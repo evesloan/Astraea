@@ -49,7 +49,7 @@ assert materials_before=={m.name:m.as_pointer()for m in bpy.data.materials}
 for n in freeze['unchanged_toes']:assert before[n]==after[n]
 ledger['parts']=[q for q in ledger['parts']if q['name']not in allow]+newrecords
 (P/'source/geometry_parts.json').write_text(json.dumps(ledger,indent=2)+'\n')
-D=json.loads(original('assets/aft_crown_platform/source/section_contract.json'));D['low_sill_revision']={'source_family':'upper_horizon_enclosure','baseline':BASE,'z':[160,164],'opaque_top_y':107.4,'changed_old_parts':sorted(allow),'toes_unchanged':freeze['unchanged_toes'],'audit':'../upper_horizon_enclosure/qa/005_preservation.json','limits':'Barrier continuous only with006 protective glass; parent must adopt005 and006 together.'};(P/'source/section_contract.json').write_text(json.dumps(D,indent=2)+'\n')
+D=json.loads(original('assets/aft_crown_platform/source/section_contract.json'));D['source_validation']='../upper_horizon_enclosure/qa/source_export_validation.json';D['low_sill_revision']={'source_family':'upper_horizon_enclosure','baseline':BASE,'z':[160,164],'opaque_top_y':107.4,'changed_old_parts':sorted(allow),'toes_unchanged':freeze['unchanged_toes'],'audit':'../upper_horizon_enclosure/qa/005_preservation.json','limits':'Barrier continuous only with006 protective glass; parent must adopt005 and006 together.'};(P/'source/section_contract.json').write_text(json.dumps(D,indent=2)+'\n')
 bpy.context.preferences.filepaths.save_version=0;src=P/'source/AST-CMD-005.blend';out=P/'exports/AST-CMD-005.glb';bpy.ops.wm.save_as_mainfile(filepath=str(src))
 parts=[o for o in bpy.context.scene.objects if o.type=='MESH'];batches={};triangles=0
 for o in parts:

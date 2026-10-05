@@ -1,0 +1,886 @@
+{
+  "status": "PASS: actual source triangle/envelope optical screen for specified targets and eyes only; runtime/visual/route and final-stage acceptance remain pending",
+  "input_sha256": {
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/upper_horizon_enclosure/qa/actual_AST-CMD-005_triangles.json": "e64803318bdfbbd8333466ee6aabc1786797a2d02b440957b160896345bd2b7b",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/upper_horizon_enclosure/qa/actual_AST-CMD-006_triangles.json": "554b3431d37e82f8eb9d50a080c9f1739788fbb4cb938155d25fe574dfe08a21",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/aft_crown_platform/source/AST-CMD-005.blend": "4f96d43ec2d5c018451704168809592d9ca28269b07b7820421f482f4f5c92b9",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/upper_horizon_enclosure/source/AST-CMD-006.blend": "ebc04596d9edc69a1ccc45d31fb76a37e42a0294a1c4b04f63963202c7b0f8e9",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/aft_crown_platform/exports/AST-CMD-005.glb": "323a26fe17cb9d6bd652309c0a4c99e4d1ce2d3316526b4d125d732dec0c0cf6",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/upper_horizon_enclosure/exports/AST-CMD-006.glb": "64a0b8b22e2d0f61b64ac27f9f4b0bd1e9dd4e3b0af093319a0550e8803a9fef"
+  },
+  "actual_source_part_counts": [
+    3940,
+    598
+  ],
+  "actual_triangle_count": 54504,
+  "opaque_part_count": 4502,
+  "glass_part_count": 36,
+  "baseline_result_sha256": "319157289685d50585c5231f5f0177a3655adf0e5d147970640fef26c51f10d5",
+  "method": "AABBs computed directly from actual Blender world vertices cull against continuous complete target cones over eye boxes. Any surviving opaque candidate is tested by oriented double-sided Moller-Trumbore triangle intersections. Every sampled target ray is also tested against actual protective glass triangles and must traverse its two physical faces. Whole-box zero-candidate proof covers all intermediate rays and eyes, beyond samples. Glass is expected optically transmitting; no collision-layer exemption is asserted.",
+  "screens": [
+    {
+      "side": "starboard",
+      "eye_group": "standing",
+      "target": "complete_above_horizon",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.95,
+          108.35
+        ],
+        "z": [
+          161.05,
+          161.35
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Starboard_LowBay_Glass__p000"
+      ],
+      "eye_count": 27,
+      "direction_count": 5450,
+      "tested_eye_ray_pairs": 147150,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.569998492674776,
+        3.714509230942788
+      ],
+      "glass_ray_path_length_range": [
+        0.060001380849080466,
+        0.07504235433177708
+      ],
+      "pass": true
+    },
+    {
+      "side": "starboard",
+      "eye_group": "seated_107.55",
+      "target": "complete_above_horizon",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.55,
+          107.55
+        ],
+        "z": [
+          161.05,
+          161.35
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Starboard_LowBay_Glass__p000"
+      ],
+      "eye_count": 9,
+      "direction_count": 5450,
+      "tested_eye_ray_pairs": 49050,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.569998492674776,
+        3.714509230942788
+      ],
+      "glass_ray_path_length_range": [
+        0.060001380849080466,
+        0.07504235433177708
+      ],
+      "pass": true
+    },
+    {
+      "side": "starboard",
+      "eye_group": "seated_107.65",
+      "target": "complete_above_horizon",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.65,
+          107.65
+        ],
+        "z": [
+          161.05,
+          161.35
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Starboard_LowBay_Glass__p000"
+      ],
+      "eye_count": 9,
+      "direction_count": 5450,
+      "tested_eye_ray_pairs": 49050,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.569998492674776,
+        3.714509230942788
+      ],
+      "glass_ray_path_length_range": [
+        0.060001380849080466,
+        0.07504235433177708
+      ],
+      "pass": true
+    },
+    {
+      "side": "starboard",
+      "eye_group": "seated_107.75",
+      "target": "complete_above_horizon",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.75,
+          107.75
+        ],
+        "z": [
+          161.05,
+          161.35
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Starboard_LowBay_Glass__p000"
+      ],
+      "eye_count": 9,
+      "direction_count": 5450,
+      "tested_eye_ray_pairs": 49050,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.569998492674776,
+        3.714509230942788
+      ],
+      "glass_ray_path_length_range": [
+        0.060001380849080466,
+        0.07504235433177708
+      ],
+      "pass": true
+    },
+    {
+      "side": "port",
+      "eye_group": "standing",
+      "target": "complete_above_horizon",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.95,
+          108.35
+        ],
+        "z": [
+          162.1,
+          162.6
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Port_LowBay_Glass__p000"
+      ],
+      "eye_count": 27,
+      "direction_count": 45724,
+      "tested_eye_ray_pairs": 1234548,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.571461760985598,
+        3.097339465750069
+      ],
+      "glass_ray_path_length_range": [
+        0.060035543561413274,
+        0.06257398520870527
+      ],
+      "pass": true
+    },
+    {
+      "side": "port",
+      "eye_group": "standing",
+      "target": "complete_local_port_footprint",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.95,
+          108.35
+        ],
+        "z": [
+          162.1,
+          162.6
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Port_LowBay_Glass__p000"
+      ],
+      "eye_count": 27,
+      "direction_count": 46869,
+      "tested_eye_ray_pairs": 1265463,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.571461760985598,
+        3.097339465750069
+      ],
+      "glass_ray_path_length_range": [
+        0.060035543561413274,
+        0.06257398520870527
+      ],
+      "pass": true
+    },
+    {
+      "side": "port",
+      "eye_group": "seated_107.55",
+      "target": "complete_above_horizon",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.55,
+          107.55
+        ],
+        "z": [
+          162.1,
+          162.6
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Port_LowBay_Glass__p000"
+      ],
+      "eye_count": 9,
+      "direction_count": 45724,
+      "tested_eye_ray_pairs": 411516,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.571461760985598,
+        3.097339465750069
+      ],
+      "glass_ray_path_length_range": [
+        0.060035543561413274,
+        0.06257398520870527
+      ],
+      "pass": true
+    },
+    {
+      "side": "port",
+      "eye_group": "seated_107.55",
+      "target": "complete_local_port_footprint",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.55,
+          107.55
+        ],
+        "z": [
+          162.1,
+          162.6
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Port_LowBay_Glass__p000"
+      ],
+      "eye_count": 9,
+      "direction_count": 46869,
+      "tested_eye_ray_pairs": 421821,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.571461760985598,
+        3.097339465750069
+      ],
+      "glass_ray_path_length_range": [
+        0.060035543561413274,
+        0.06257398520870527
+      ],
+      "pass": true
+    },
+    {
+      "side": "port",
+      "eye_group": "seated_107.65",
+      "target": "complete_above_horizon",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.65,
+          107.65
+        ],
+        "z": [
+          162.1,
+          162.6
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Port_LowBay_Glass__p000"
+      ],
+      "eye_count": 9,
+      "direction_count": 45724,
+      "tested_eye_ray_pairs": 411516,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.571461760985598,
+        3.097339465750069
+      ],
+      "glass_ray_path_length_range": [
+        0.060035543561413274,
+        0.06257398520870527
+      ],
+      "pass": true
+    },
+    {
+      "side": "port",
+      "eye_group": "seated_107.65",
+      "target": "complete_local_port_footprint",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.65,
+          107.65
+        ],
+        "z": [
+          162.1,
+          162.6
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Port_LowBay_Glass__p000"
+      ],
+      "eye_count": 9,
+      "direction_count": 46869,
+      "tested_eye_ray_pairs": 421821,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.571461760985598,
+        3.097339465750069
+      ],
+      "glass_ray_path_length_range": [
+        0.060035543561413274,
+        0.06257398520870527
+      ],
+      "pass": true
+    },
+    {
+      "side": "port",
+      "eye_group": "seated_107.75",
+      "target": "complete_above_horizon",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.75,
+          107.75
+        ],
+        "z": [
+          162.1,
+          162.6
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Port_LowBay_Glass__p000"
+      ],
+      "eye_count": 9,
+      "direction_count": 45724,
+      "tested_eye_ray_pairs": 411516,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.571461760985598,
+        3.097339465750069
+      ],
+      "glass_ray_path_length_range": [
+        0.060035543561413274,
+        0.06257398520870527
+      ],
+      "pass": true
+    },
+    {
+      "side": "port",
+      "eye_group": "seated_107.75",
+      "target": "complete_local_port_footprint",
+      "eye_box": {
+        "abs_x": [
+          32.7,
+          33.1
+        ],
+        "y": [
+          107.75,
+          107.75
+        ],
+        "z": [
+          162.1,
+          162.6
+        ]
+      },
+      "opaque_continuous_candidates": [],
+      "glass_continuous_candidates": [
+        "UHE_Port_LowBay_Glass__p000"
+      ],
+      "eye_count": 9,
+      "direction_count": 46869,
+      "tested_eye_ray_pairs": 421821,
+      "sample_opaque_hit_count": 0,
+      "glass_missed_rays": 0,
+      "glass_two_face_failures": 0,
+      "first_hit_distance_range": [
+        2.571461760985598,
+        3.097339465750069
+      ],
+      "glass_ray_path_length_range": [
+        0.060035543561413274,
+        0.06257398520870527
+      ],
+      "pass": true
+    }
+  ],
+  "witness_rays": [
+    {
+      "name": "starboard_planet_centre",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.9354072107869571,
+        -0.29237170337158086,
+        0.19882690229283806
+      ],
+      "actual005_006_hits": [
+        {
+          "part": "ACP_Starboard_GuardBack_01.008__low_bay",
+          "distance": 2.9078233527796247,
+          "point": [
+            35.619998931884766,
+            107.29983473324417,
+            161.77815350964792
+          ]
+        },
+        {
+          "part": "ACP_Starboard_GuardBack_01.008__low_bay",
+          "distance": 3.078871689340449,
+          "point": [
+            35.779998779296875,
+            107.249825039725,
+            161.81216252054867
+          ]
+        }
+      ],
+      "expected_outcome": "Optically ignore hits on exactly named Glass source parts; remaining hits are genuine framing/opaque limitations. Some witnesses are intentionally out of the accepted target or eye boxes."
+    },
+    {
+      "name": "starboard_minus5deg",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.9744254538021788,
+        -0.08715574274765817,
+        0.2071205240639421
+      ],
+      "actual005_006_hits": [
+        {
+          "part": "UHE_Starboard_LowBay_Glass__p000",
+          "distance": 2.8426989033762045,
+          "point": [
+            35.66999816894531,
+            107.9022424656683,
+            161.78878128662325
+          ]
+        },
+        {
+          "part": "UHE_Starboard_LowBay_Glass__p000",
+          "distance": 2.9042750589013826,
+          "point": [
+            35.72999954223633,
+            107.89687575009796,
+            161.80153497222548
+          ]
+        }
+      ],
+      "expected_outcome": "Optically ignore hits on exactly named Glass source parts; remaining hits are genuine framing/opaque limitations. Some witnesses are intentionally out of the accepted target or eye boxes."
+    },
+    {
+      "name": "starboard_minus10deg",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.9632873407929415,
+        -0.17364817766693033,
+        0.2047530450592065
+      ],
+      "actual005_006_hits": [
+        {
+          "part": "UHE_Starboard_LowBay_Glass__p000",
+          "distance": 2.8755679137910772,
+          "point": [
+            35.66999816894531,
+            107.65066287201269,
+            161.78878128662325
+          ]
+        },
+        {
+          "part": "UHE_Starboard_LowBay_Glass__p000",
+          "distance": 2.9378560502069724,
+          "point": [
+            35.72999954223633,
+            107.6398466506338,
+            161.80153497222548
+          ]
+        }
+      ],
+      "expected_outcome": "Optically ignore hits on exactly named Glass source parts; remaining hits are genuine framing/opaque limitations. Some witnesses are intentionally out of the accepted target or eye boxes."
+    },
+    {
+      "name": "starboard_nominal_low_limb",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.6794784183941235,
+        -0.7193398003386512,
+        0.14442759634283958
+      ],
+      "actual005_006_hits": [],
+      "expected_outcome": "Optically ignore hits on exactly named Glass source parts; remaining hits are genuine framing/opaque limitations. Some witnesses are intentionally out of the accepted target or eye boxes."
+    },
+    {
+      "name": "port_nominal_low_limb",
+      "eye": [
+        -32.9,
+        108.15,
+        162.35
+      ],
+      "direction": [
+        -0.9923949820549218,
+        -0.01745240643728351,
+        -0.12185078211385952
+      ],
+      "actual005_006_hits": [
+        {
+          "part": "UHE_Port_LowBay_Glass__p000",
+          "distance": 2.791225488876983,
+          "point": [
+            -35.66999816894531,
+            108.10128639831002,
+            162.0098869911242
+          ]
+        },
+        {
+          "part": "UHE_Port_LowBay_Glass__p000",
+          "distance": 2.851686670539523,
+          "point": [
+            -35.72999954223633,
+            108.10023120519396,
+            162.00251974885109
+          ]
+        }
+      ],
+      "expected_outcome": "Optically ignore hits on exactly named Glass source parts; remaining hits are genuine framing/opaque limitations. Some witnesses are intentionally out of the accepted target or eye boxes."
+    },
+    {
+      "name": "port_actual_support_lowest_slope",
+      "eye": [
+        -32.9,
+        108.15,
+        162.35
+      ],
+      "direction": [
+        -0.9922571597550346,
+        -0.022279323417882513,
+        -0.1221857629305203
+      ],
+      "actual005_006_hits": [
+        {
+          "part": "UHE_Port_LowBay_Glass__p000",
+          "distance": 2.7916131838536318,
+          "point": [
+            -35.66999816894531,
+            108.0878047470193,
+            162.00890461332395
+          ]
+        },
+        {
+          "part": "UHE_Port_LowBay_Glass__p000",
+          "distance": 2.8520827634390575,
+          "point": [
+            -35.72999954223633,
+            108.08645752569878,
+            162.0015160916082
+          ]
+        }
+      ],
+      "expected_outcome": "Optically ignore hits on exactly named Glass source parts; remaining hits are genuine framing/opaque limitations. Some witnesses are intentionally out of the accepted target or eye boxes."
+    },
+    {
+      "name": "starboard_high_clear_pane_centre",
+      "eye": [
+        32.9,
+        108.15,
+        161.2
+      ],
+      "direction": [
+        0.6813075576849823,
+        0.7056399704594428,
+        0.1946593021957117
+      ],
+      "actual005_006_hits": [
+        {
+          "part": "UHE_Starboard_LowBay_Glass__p000",
+          "distance": 4.065708853072909,
+          "point": [
+            35.66999816894531,
+            111.01892667497907,
+            161.99142804827008
+          ]
+        },
+        {
+          "part": "UHE_Starboard_LowBay_Header__p000",
+          "distance": 4.109748842415506,
+          "point": [
+            35.70000294652479,
+            111.05000305175781,
+            162.00000084186422
+          ]
+        },
+        {
+          "part": "UHE_Starboard_LowBay_HeadSeal__p000",
+          "distance": 4.109748842415506,
+          "point": [
+            35.70000294652479,
+            111.05000305175781,
+            162.00000084186422
+          ]
+        },
+        {
+          "part": "UHE_Starboard_LowBay_Glass__p000",
+          "distance": 4.15377682269135,
+          "point": [
+            35.72999954223633,
+            111.08107095445905,
+            162.0085712977818
+          ]
+        },
+        {
+          "part": "ACP_RoofLong_X35.5_Flange.008",
+          "distance": 4.180600019299278,
+          "point": [
+            35.74827438880658,
+            111.0999984741211,
+            162.01379268251617
+          ]
+        },
+        {
+          "part": "UHE_Starboard_LowBay_HeadSeal__p000",
+          "distance": 4.212488802436978,
+          "point": [
+            35.77000045776367,
+            111.12250047411237,
+            162.0200001307896
+          ]
+        },
+        {
+          "part": "ACP_RoofLong_X35.5_Flange.008",
+          "distance": 4.256519987704918,
+          "point": [
+            35.79999923706055,
+            111.15357063838414,
+            162.02857121058872
+          ]
+        },
+        {
+          "part": "ACP_Starboard_EdgeRoofWeb_00.008",
+          "distance": 4.265636568389902,
+          "point": [
+            35.80621043238147,
+            111.16000366210938,
+            162.0303458378233
+          ]
+        },
+        {
+          "part": "ACP_Starboard_EdgeRoofFlange_00.008",
+          "distance": 4.265636568389902,
+          "point": [
+            35.80621043238147,
+            111.16000366210938,
+            162.0303458378233
+          ]
+        },
+        {
+          "part": "ACP_Starboard_EdgeRoofWeb_00.008",
+          "distance": 4.315231967450544,
+          "point": [
+            35.84000015258789,
+            111.19500015803744,
+            162.04000004359654
+          ]
+        },
+        {
+          "part": "UHE_Starboard_LowBay_Header__p000",
+          "distance": 4.373943947196173,
+          "point": [
+            35.880001068115234,
+            111.23642967769077,
+            162.05142887660435
+          ]
+        },
+        {
+          "part": "ACP_Starboard_EdgeRoofFlange_00.008",
+          "distance": 4.49237547124807,
+          "point": [
+            35.96068936051994,
+            111.31999969482422,
+            162.07448267443428
+          ]
+        },
+        {
+          "part": "UHE_ShoulderSkin_X32_Z160_0__p000",
+          "distance": 8.517096414190158,
+          "point": [
+            38.70276215651941,
+            114.16000366210938,
+            162.85793204471983
+          ]
+        },
+        {
+          "part": "UHE_ShoulderSkin_X32_Z160_0__p000",
+          "distance": 8.92806135137193,
+          "point": [
+            38.98275567416489,
+            114.44999694824219,
+            162.93793019261855
+          ]
+        }
+      ],
+      "expected_outcome": "Optically ignore hits on exactly named Glass source parts; remaining hits are genuine framing/opaque limitations. Some witnesses are intentionally out of the accepted target or eye boxes."
+    },
+    {
+      "name": "starboard_inboard_upper_apex",
+      "eye": [
+        30.0,
+        108.15,
+        162.0
+      ],
+      "direction": [
+        0.9477884152696086,
+        0.22168947715789522,
+        0.22923982114410862
+      ],
+      "actual005_006_hits": [
+        {
+          "part": "UHE_Starboard_LowBay_Glass__p000",
+          "distance": 5.982345930375632,
+          "point": [
+            35.66999816894531,
+            109.47622314148265,
+            163.37139191110148
+          ]
+        },
+        {
+          "part": "UHE_Starboard_LowBay_Glass__p000",
+          "distance": 6.045652647702355,
+          "point": [
+            35.72999954223633,
+            109.49025757454739,
+            163.3859043316587
+          ]
+        }
+      ],
+      "expected_outcome": "Optically ignore hits on exactly named Glass source parts; remaining hits are genuine framing/opaque limitations. Some witnesses are intentionally out of the accepted target or eye boxes."
+    },
+    {
+      "name": "starboard_inboard_horizon_aft_endpoint",
+      "eye": [
+        30.0,
+        108.15,
+        162.0
+      ],
+      "direction": [
+        0.7995667756602902,
+        0.0,
+        0.6005771984184941
+      ],
+      "actual005_006_hits": [
+        {
+          "part": "UHE_Starboard_SharedWindow_Z166_Glass__p000",
+          "distance": 7.091337886398508,
+          "point": [
+            35.66999816894531,
+            108.15,
+            166.25889584085215
+          ]
+        },
+        {
+          "part": "UHE_Starboard_SharedWindow_Z166_Glass__p000",
+          "distance": 7.166380240730284,
+          "point": [
+            35.72999954223633,
+            108.15,
+            166.30396456777945
+          ]
+        }
+      ],
+      "expected_outcome": "Optically ignore hits on exactly named Glass source parts; remaining hits are genuine framing/opaque limitations. Some witnesses are intentionally out of the accepted target or eye boxes."
+    }
+  ],
+  "failures": [],
+  "input_unchanged_during_check": true,
+  "total_tested_eye_ray_pairs": 5294322,
+  "all_pass": true,
+  "limits": [
+    "Glass is counted as an intended transparent passage. Material readability, optical response and collision barrier behavior need runtime evidence.",
+    "Future massing/roof results are the separate unchanged envelope assumptions in revised005/results.json; actual006 pass does not establish installed final-hull geometry.",
+    "Full above-horizon starboard cap/halo and port crescent pass; a full primary planet and all negative rays do not.",
+    "Standing and seated eye boxes are optical stations, not furniture/body-fit or route acceptance.",
+    "This is no Godot/rendering or full-suite validation; the root owns those gates."
+  ]
+}
