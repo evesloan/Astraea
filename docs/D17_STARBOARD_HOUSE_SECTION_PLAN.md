@@ -76,3 +76,11 @@ Next safe command from project root:
     python -m json.tool docs/D17_STARBOARD_HOUSE_SECTION_PLAN.json
 
 These are the only two files owned by this planning worker. Planning JSON parsing and16-way census/membership assertions passed; all geometry/runtime/visual checks remain explicitly unrun.
+
+## Parent preflight follow-through, 19:40 UTC
+
+Actual read-only runtime census is retained in D17_STARBOARD_HOUSE_INTERFACE_CENSUS.json and reproducible with tools/audit_d17_house_interfaces.gd. Three-metre portal candidates centred X80/Z±13.2 touch only the named D17 profile-wall and wainscot segment2 on each side; their inner approach volumes are clear. No portal is cut yet. Sixteen candidate slab bands currently have no static contact, which does not prove future lower-room compatibility.
+
+Two full-height0.8×1.2m support candidates atX84/Z±82 have clear actual slices and five keel-pan witnesses each. Proposed private-upper supports atX94/Z29 and51 are rejected: the former intersects the Night Garden and the latter intersects six historical guest envelopes. X100/Z29.6 and50.4 alternatives avoid current non-hull contacts and all historical guest/programme envelopes, but their bases lie on the sloped lower hull band; a source-matched seated bearing remains a mandatory design gate. No new support is approved merely by this census. Normal house roof remains106.5; only the Royalty envelope may rise to112.
+
+D17_STANDARD_MEMBERSHIP_RECONCILIATION.json proposes five fore and four aft standards, preserving original fore/aft membership and source-Z order instead of mechanically permuting source indices. All nine original source units and all seven luxury replacements remain. This refinement is not adopted geometry, a recovered address, or an occupancy/species decision.
