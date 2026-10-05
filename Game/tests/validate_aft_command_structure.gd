@@ -694,9 +694,34 @@ func validate_meshes() -> void:
 				vertex_triangles[key] = []
 			vertex_triangles[key].append(index)
 
+func face_is_complete(masks: Dictionary, corner_ids: Array[int]) -> bool:
+	if corner_ids.size() != 4:
+		return false
+	# Natural bit order is A=(0,0), B=(0,1), C=(1,0), D=(1,1).
+	# Only complementary diagonal halves cover a rectangle. Two triangles that
+	# share an outside edge overlap and leave a hole even if their areas add up.
+	var a := 1 << corner_ids[0]
+	var b := 1 << corner_ids[1]
+	var c := 1 << corner_ids[2]
+	var d := 1 << corner_ids[3]
+	return (masks.has(a | b | c) and masks.has(b | c | d)) or (masks.has(a | b | d) and masks.has(a | c | d))
+
+func validate_coverage_predicate() -> void:
+	var ids: Array[int] = [0, 1, 2, 3]
+	check(face_is_complete({7: true, 14: true}, ids), "Coverage predicate must accept complete B-C diagonal halves")
+	check(face_is_complete({11: true, 13: true}, ids), "Coverage predicate must accept complete A-D diagonal halves")
+	check(not face_is_complete({7: true}, ids), "Coverage predicate must reject a missing triangle half")
+	var duplicate_halves: Dictionary = {}
+	for mask in [7, 7]:
+		duplicate_halves[mask] = true
+	check(not face_is_complete(duplicate_halves, ids), "Coverage predicate must reject duplicated copies of the same half")
+	check(not face_is_complete({7: true, 11: true}, ids), "Coverage predicate must reject overlapping outside-edge halves")
+
 func validate_real_box(bounds: AABB, label: String) -> bool:
-	# Every frozen source member must be recovered from real imported triangles.
-	# Do not infer a member from a marker, batch AABB, declared envelope or metadata.
+	# Every frozen member is recovered from real imported triangles. A marker or
+	# batch AABB never establishes construction. The final GLB signature remains
+	# exact at the established 1mm corner precision, and contact triangles must
+	# be identical to the imported render triangles.
 	var corners: Dictionary = {}
 	var candidates: Dictionary = {}
 	for ix in range(2):
@@ -704,44 +729,51 @@ func validate_real_box(bounds: AABB, label: String) -> bool:
 			for iz in range(2):
 				var point := bounds.position + bounds.size * Vector3(ix, iy, iz)
 				var key := vertex_key(point)
-				corners[key] = true
+				corners[key] = {"position": point, "id": ix * 4 + iy * 2 + iz}
 				for index in vertex_triangles.get(key, []):
 					candidates[index] = true
 	var used_corners: Dictionary = {}
+	var face_masks: Array[Dictionary] = [{}, {}, {}, {}, {}, {}]
 	var count := 0
-	var area := 0.0
-	var plane_areas := [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+	var maximum_corner_error := 0.0
 	for index in candidates:
-		var a := all_faces[index]
-		var b := all_faces[index + 1]
-		var c := all_faces[index + 2]
-		if not (corners.has(vertex_key(a)) and corners.has(vertex_key(b)) and corners.has(vertex_key(c))):
+		var keys := [vertex_key(all_faces[index]), vertex_key(all_faces[index + 1]), vertex_key(all_faces[index + 2])]
+		if not (corners.has(keys[0]) and corners.has(keys[1]) and corners.has(keys[2])):
 			continue
-		var plane_index := -1
+		var corner_ids: Array[int] = []
+		var triangle_mask := 0
+		for offset in range(3):
+			var corner: Dictionary = corners[keys[offset]]
+			corner_ids.append(int(corner.id))
+			triangle_mask |= 1 << int(corner.id)
+			maximum_corner_error = maxf(maximum_corner_error, all_faces[index + offset].distance_to(corner.position))
+		var on_surface := false
 		for axis in range(3):
+			var axis_bit := 1 << (2 - axis)
 			for endpoint in range(2):
-				var plane: float = bounds.position[axis] if endpoint == 0 else bounds.end[axis]
-				if absf(a[axis] - plane) < EPS and absf(b[axis] - plane) < EPS and absf(c[axis] - plane) < EPS:
-					plane_index = axis * 2 + endpoint
-		if plane_index < 0:
-			continue
-		count += 1
-		var triangle_area := (b - a).cross(c - a).length() * 0.5
-		area += triangle_area
-		plane_areas[plane_index] += triangle_area
-		for vertex in [a, b, c]:
-			used_corners[vertex_key(vertex)] = true
-	var size := bounds.size
-	var expected_area := 2.0 * (size.x * size.y + size.x * size.z + size.y * size.z)
-	# Adjacent source boxes retain both coincident interface faces. Their opposite
-	# diagonals can legitimately give four triangles on a shared plane. The full
-	# frozen triangle signature above establishes exact global multiplicity.
-	var expected_planes := [size.y * size.z, size.y * size.z, size.x * size.z, size.x * size.z, size.x * size.y, size.x * size.y]
-	var all_planes := true
-	for index in range(6):
-		all_planes = all_planes and plane_areas[index] >= expected_planes[index] - maxf(0.001, expected_planes[index] * 0.0001)
-	return check(count >= 12 and used_corners.size() == 8 and all_planes,
-		"Built member must retain eight corners and all six real surface faces: %s got %d triangles/%d corners/%.5f area; minimum %.5f" % [label, count, used_corners.size(), area, expected_area])
+				var expected_bits := axis_bit * endpoint
+				if (corner_ids[0] & axis_bit) == expected_bits and (corner_ids[1] & axis_bit) == expected_bits and (corner_ids[2] & axis_bit) == expected_bits:
+					face_masks[axis * 2 + endpoint][triangle_mask] = true
+					on_surface = true
+		if on_surface:
+			count += 1
+			for key in keys:
+				used_corners[key] = true
+	# Import compression can move a coordinate by <1mm. For an 80mm-wide
+	# return, that changes measured area proportionally much more than for a
+	# broad panel. Test complete triangle coverage, not a fragile scalar-area
+	# tolerance. Each plane still needs both actual complementary halves.
+	var coverage: Array[bool] = []
+	for axis in range(3):
+		var axis_bit := 1 << (2 - axis)
+		for endpoint in range(2):
+			var face_corners: Array[int] = []
+			for corner_id in range(8):
+				if (corner_id & axis_bit) == axis_bit * endpoint:
+					face_corners.append(corner_id)
+			coverage.append(face_is_complete(face_masks[axis * 2 + endpoint], face_corners))
+	return check(count >= 12 and used_corners.size() == 8 and not coverage.has(false) and maximum_corner_error < EPS,
+		"Built member needs eight real corners and complementary triangles covering all six faces: %s got %d triangles/%d corners, face coverage %s, max corner error %.6fm" % [label, count, used_corners.size(), str(coverage), maximum_corner_error])
 
 func validate_members_and_graph() -> void:
 	var definitions: Array = JSON.parse_string(STRUCTURAL_PARTS_JSON)
@@ -789,7 +821,18 @@ func required_family_contact(first: String, second: String, zone: AABB, label: S
 
 func validate_piers(data: Dictionary) -> void:
 	var centres: Array = data.get("support", {}).get("pier_centres_xz", [])
-	check(centres == [[-35.5, 86], [35.5, 86]], "Exactly two audited pier centres X±35.5/Z86 required")
+	check(centres.size() == 2, "Exactly two audited pier centres X±35.5/Z86 required")
+	var seen_centres: Dictionary = {}
+	for centre in centres:
+		if not check(centre is Array and centre.size() == 2, "Invalid pier-centre coordinate pair: " + str(centre)):
+			continue
+		var point := Vector2(float(centre[0]), float(centre[1]))
+		var side_key := "port" if point.x < 0 else "starboard"
+		var expected := Vector2(-35.5 if point.x < 0 else 35.5, 86.0)
+		check(point.distance_to(expected) < EPS, "Audited pier centre changed: " + str(point))
+		check(not seen_centres.has(side_key), "Duplicate audited pier centre: " + side_key)
+		seen_centres[side_key] = true
+	check(seen_centres.has("port") and seen_centres.has("starboard"), "Both distinct audited pier centres must remain present")
 	for x in [-35.5, 35.5]:
 		var side := "Port" if x < 0 else "Starboard"
 		var intended: String = FLOOR_IDS[0 if x < 0 else 1]
@@ -882,7 +925,8 @@ func validate_floor_chain() -> void:
 		var compiled: Array = generated.regions.filter(func(item: Dictionary) -> bool: return str(item.id) == id)
 		if check(compiled.size() == 1, "Missing/duplicate compiled floor: " + id):
 			check(absf(float(compiled[0].floor_y) - FLOOR_Y) < EPS and absf(float(compiled[0].thickness) - 0.24) < EPS and absf(float(compiled[0].structural_area_m2) - 704.0) < EPS, "Compiled floor datum/thickness/net area changed: " + id)
-		var owned_volume := AABB(Vector3(x0 + 0.002, SLAB_BOTTOM, 80.002), Vector3(x1 - x0 - 0.004, 0.24, 21.996))
+		# Concave floor contacts are surface meshes: straddle both faces.
+		var owned_volume := AABB(Vector3(x0 + 0.002, SLAB_BOTTOM - 0.01, 80.002), Vector3(x1 - x0 - 0.004, 0.26, 21.996))
 		var found_owner := false
 		for hit in box_hits(owned_volume, crown_exclusions, id + " whole slab ownership"):
 			check(region_id(hit.collider) == id, "Duplicate or unintended physical owner inside new slab: " + id + " -> " + owner(hit))
@@ -915,21 +959,67 @@ func validate_floor_chain() -> void:
 			for z in [80.1, 85.0, 91.0, 97.0, 101.9]:
 				slab_witness(Vector2(x, z), id, id + " X%s Z%s" % [x, z])
 	# Inspect every real support touching the slab, not an empty declared envelope.
+	var spine_boundary_count := 0
 	for part in structural_parts:
 		if not part.valid or part.group != "platform_support" or part.bounds.end.y < SLAB_BOTTOM:
 			continue
 		var expected_id: String = FLOOR_IDS[0 if part.bounds.get_center().x < 0 else 1]
+		var boundary_member: bool = str(part.name).begins_with("AFC_PlatformCrossBearer") and spine_boundary_only(part.bounds)
+		if boundary_member:
+			validate_spine_boundary_witness(part)
+			spine_boundary_count += 1
 		var contact := false
 		for hit in box_hits(part.bounds, crown_exclusions, str(part.name)):
 			var actual := region_id(hit.collider)
 			var apron_ok: bool = actual == "D18_aft_apron" and part.bounds.position.z < 80
-			check(actual == expected_id or apron_ok, "Floor support intersects unintended owner: " + str(part.name) + " -> " + owner(hit))
+			var spine_boundary_ok: bool = actual == "D18_aft_route" and boundary_member
+			check(actual == expected_id or apron_ok or spine_boundary_ok, "Floor support intersects unintended owner or penetrates protected spine: " + str(part.name) + " -> " + owner(hit))
 			contact = contact or actual == expected_id
 		check(contact, "Built girder/cross-bearer lacks actual new slab underside embed: " + str(part.name))
 		floor_contact_count += 1
 	check(floor_contact_count == 60, "All 24 web/top-flange plus 36 cross-bearer slab contacts must execute")
+	check(spine_boundary_count == 12, "All twelve inner cross-bearer ends need independent zero-overlap spine seam witnesses")
 	for z in [80.1, 86.0, 98.0, 101.9]:
 		slab_witness(Vector2(0, z), "D18_aft_route", "Preserved central floor owner Z" + str(z))
+
+func spine_boundary_only(bounds: AABB) -> bool:
+	# This is a zero-material-overlap seam in the frozen, triangle-proven member.
+	# Query margin may report the adjacent spine, but positive X overlap is never
+	# accepted as an intended support. 10 micrometres accommodates float arithmetic.
+	var material_overlap := minf(bounds.end.x, 4.0) - maxf(bounds.position.x, -4.0)
+	if material_overlap > 0.00001:
+		return false
+	var member_edge := bounds.end.x if bounds.get_center().x < 0 else bounds.position.x
+	var expected_edge := -4.0 if bounds.get_center().x < 0 else 4.0
+	return absf(member_edge - expected_edge) < 0.00001 and bounds.position.z >= 80.0 and bounds.end.z <= 102.0
+
+func validate_spine_boundary_predicate() -> void:
+	check(spine_boundary_only(AABB(Vector3(-12, 105.88, 81.88), Vector3(8, 0.4, 0.24))), "Port bearer may meet the spine only at X-4")
+	check(spine_boundary_only(AABB(Vector3(4, 105.88, 81.88), Vector3(8, 0.4, 0.24))), "Starboard bearer may meet the spine only at X+4")
+	check(not spine_boundary_only(AABB(Vector3(-12, 105.88, 81.88), Vector3(8.01, 0.4, 0.24))), "Port bearer with positive spine penetration must be rejected")
+	check(not spine_boundary_only(AABB(Vector3(3.99, 105.88, 81.88), Vector3(8.01, 0.4, 0.24))), "Starboard bearer with positive spine penetration must be rejected")
+	check(not spine_boundary_only(AABB(Vector3(-12, 105.88, 81.88), Vector3(7.99, 0.4, 0.24))), "A disconnected bearer is not a shared spine-boundary contact")
+
+func validate_spine_boundary_witness(part: Dictionary) -> void:
+	var bounds: AABB = part.bounds
+	var edge := -4.0 if bounds.get_center().x < 0 else 4.0
+	var z := bounds.get_center().z
+	# Independently identify the real old slab's lateral face and new bearer's
+	# end face, excluding the opposite geometry from each witness.
+	var inside := edge - signf(edge) * 0.15
+	var outside := edge + signf(edge) * 0.15
+	var slab := ray(Vector3(outside, 106.35, z), Vector3(inside, 106.35, z), _exclude_new_slabs())
+	var bearer := ray(Vector3(inside, 106.0, z), Vector3(outside, 106.0, z), shell_only_exclusions)
+	if not check(not slab.is_empty() and not bearer.is_empty(), "Shared spine boundary needs two real independent faces: " + str(part.name)):
+		return
+	check(region_id(slab.collider) == "D18_aft_route" and absf(slab.position.x - edge) < EPS,
+		"Protected spine's actual lateral boundary moved: " + str(part.name) + " -> " + owner(slab))
+	check(shell.is_ancestor_of(bearer.collider) and absf(bearer.position.x - edge) < EPS,
+		"Cross-bearer's actual end face changed: " + str(part.name) + " -> " + owner(bearer))
+	# Exact authored zero overlap above plus measured alignment at the existing
+	# sub-mm import precision. This does not permit a designed intrusion.
+	check(absf(bearer.position.x - slab.position.x) < EPS,
+		"Actual bearer/spine seam is separated or penetrates beyond import precision: " + str(part.name))
 
 func _same_rectangle(boundary: Array, x0: float, x1: float, z0: float, z1: float) -> bool:
 	if boundary.size() != 4:
@@ -1151,9 +1241,11 @@ func run() -> void:
 		if not shell.is_ancestor_of(body):
 			shell_only_exclusions.append(body.get_rid())
 	validate_meshes()
+	validate_coverage_predicate()
 	validate_members_and_graph()
 	validate_piers(data)
 	validate_frame_and_roof()
+	validate_spine_boundary_predicate()
 	validate_floor_chain()
 	validate_apron_ties(data)
 	validate_protected_routes()
