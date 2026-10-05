@@ -3,6 +3,8 @@
 Updated2026-10-05. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Latest verified scope
+75 runtime checks and45 planning checks now pass with all five public spine cores implemented: central D01–D18 plus four D01–D17 outlying cores. The new midship cores sit at Z−272/+272 to avoid fitted retail and aquatic floors; the aft core sits at Z432. Every new stop, actual stair traversal and loaded boarding is tested. The latest three-core graphical review is underway; finish, destination branches and the staff network remain unfinished. See REMAINING_PUBLIC_CORES_PROGRESS.md and FIVE_PUBLIC_CORES_VALIDATION.json.
+
 66 runtime checks pass after the forward D01–D17 core and its reviewed sign correction. The source/export-verified batched enclosure preserves the supported port D01/D02 arrivals crosslinks. The existing central D01–D18 core and aft D17/D18 link remain intact. Normal and effects-off views were reviewed; this is a working circulation platform, not final architectural finish. See FORWARD_PUBLIC_CORE_PROGRESS.md.
 
 63 runtime checks and 45 planning/tool checks pass after integrating the chined lower body and keel pan. The editable catalogue now has 158 designs. The lower section fits the source allocation ledger and existing compiled floors; actual lower mesh vertices and bounded shell contacts were checked. Diagnostic and normal views remain unfinished, with the upper hull, apertures, room fit and windows still open. See LOWER_HULL_PROGRESS.md and HULL_BODY_SECTION_STUDY.md.
