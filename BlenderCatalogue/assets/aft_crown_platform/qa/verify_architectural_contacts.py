@@ -45,11 +45,19 @@ seams=[]
 for x in D['support']['old_roof_link_x']:
  a=[i for i,p in enumerate(P)if p['assembly']=='ACP_SeamSleeve_X%s'%x];b=[i for i,p in enumerate(ps)if i>=len(P)and p['name'].startswith('AFC_Longitudinal_')and p['world_aabb'][4]<=101.5 and p['world_aabb'][5]>=101.84 and p['world_aabb'][0]<=x<=p['world_aabb'][1]]
  pairs=[contact(i,j)for i in a for j in b if j in adj[i]];assert pairs,x;seams.append({'x':x,'contacts':pairs})
+# The fore side-guard ends overlap actual old002 wall geometry, not a0.2m open perimeter gap.
+guard_junctions=[]
+for side in['Port','Starboard']:
+ for role in['Toe','Back','Cap']:
+  indices=[i for i,p in enumerate(P)if p['assembly']=='ACP_'+side+'_Guard'+role+'_01'and p['world_aabb'][4]<102]
+  pairs=[contact(i,j)for i in indices for j in adj[i]if j>=len(P)and ps[j]['group']=='shell'and ps[j]['world_aabb'][4]<=101.96 and ps[j]['world_aabb'][5]>=102]
+  assert pairs,(side,role,'old wall junction')
+  guard_junctions.append({'side':side,'guard_role':role,'z_overlap_m':.04,'contacts':pairs})
 # Slab bearing samples are geometric proposals: parent owns installed floor ray acceptance.
 slab_contacts=[]
 for i,p in enumerate(P):
  if p['group']in['platform_support','platform_support_shallow']and p['world_aabb'][3]>=106.26:
   q=polys[i].representative_point();slab_contacts.append({'part':p['name'],'sample_xz':[q.x,q.y],'y_overlap':[max(106.26,p['world_aabb'][2]),min(106.5,p['world_aabb'][3])]})
 assert slab_contacts
-report={'pass':True,'source_sha256':hashlib.sha256((R/'source/AST-CMD-005.blend').read_bytes()).hexdigest(),'part_count':len(P),'all_parts_connected_to_six_keel_bearing_piers':True,'disconnected':disconnected,'root_part_count':len(roots),'contact_network':chains,'clearance_queries':queries,'seven_old_frame_seam_couplers':seams,'slab_contact_proposals':slab_contacts,'limits':['Ledger vertices independently compared with actual Blender source in exact_roundtrip check','Geometric physical contacts, not engineering capacity or actual runtime acceptance','Parent must rerun96 pier slices,30 keel rays,doors,loaded carts,core travel and normal/effects-off views']}
+report={'pass':True,'source_sha256':hashlib.sha256((R/'source/AST-CMD-005.blend').read_bytes()).hexdigest(),'part_count':len(P),'all_parts_connected_to_six_keel_bearing_piers':True,'disconnected':disconnected,'root_part_count':len(roots),'contact_network':chains,'clearance_queries':queries,'seven_old_frame_seam_couplers':seams,'old_wall_guard_junctions':guard_junctions,'slab_contact_proposals':slab_contacts,'limits':['Ledger vertices independently compared with actual Blender source in exact_roundtrip check','Geometric physical contacts, not engineering capacity or actual runtime acceptance','Parent must rerun96 pier slices,30 keel rays,doors,loaded carts,core travel and normal/effects-off views']}
 (R/'qa/architectural_contacts.json').write_text(json.dumps(report,indent=2)+'\n');print('CONTACTS_PASS',len(P),len(chains),len(seams),len(slab_contacts))

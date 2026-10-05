@@ -1,4 +1,4 @@
-"""Editable stage-one bridge platform and enclosed public bypass. No authored floor slabs.
+"""Editable aft receiving foyer and Upper Horizon platform. No authored floor slabs.
 World mapping: Blender=(Godot X,-Godot Z,Godot Y). All new work isolated in this family.
 """
 from pathlib import Path
@@ -106,6 +106,7 @@ for sign in[-1,1]:
   end=(sign*4.42,193.7)if i==3 else b
   bar('ACP_'+side+'_EdgeGirder_%02d'%i,a,end,.48,105.82,106.28,'staff_bluegrey_paint','platform_support')
   if i==0:continue # Existing command wall closes the front interface; no duplicate guest barrier.
+  if i==1:a=(sign*35.7,101.96) # Close the old002 wall junction with0.04m overlap; no0.2m edge gap.
   bar('ACP_'+side+'_GuardToe_%02d'%i,a,b,.28,106.27,106.62,'champagne_metal','guard')
   bar('ACP_'+side+'_GuardBack_%02d'%i,a,b,.16,106.49,107.62,'ivory_enamel','guard')
   bar('ACP_'+side+'_GuardCap_%02d'%i,a,b,.24,107.59,107.82,'warm_walnut','guard')
@@ -178,5 +179,5 @@ bpy.ops.object.select_all(action='DESELECT')
 for ob in parts:ob.select_set(True)
 bpy.ops.object.delete(use_global=False)
 bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True)
-M={'catalogue_id':AID,'family':FAMILY,'name':'D18 aft receiving foyer and Upper Horizon supported route platform','source':'source/'+AID+'.blend','export':'exports/'+AID+'.glb','source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'triangles':triangles,'editable_part_count':len(parts),'runtime_mesh_batches':len(batches),'light_marker_count':len(D['light_markers']),'coordinate_contract':'source/section_contract.json','status':'Construction source; verification pending. Not an operating bridge or final art acceptance.'}
+M={'catalogue_id':AID,'family':FAMILY,'name':'D18 aft receiving foyer and Upper Horizon supported route platform','source':'source/'+AID+'.blend','export':'exports/'+AID+'.glb','source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'triangles':triangles,'editable_part_count':len(parts),'runtime_mesh_batches':len(batches),'light_marker_count':len(D['light_markers']),'coordinate_contract':'source/section_contract.json','status':'Construction source; verification pending. No operational systems or final art acceptance.'}
 (R/(AID+'.manifest.json')).write_text(json.dumps(M,indent=2)+'\n');print(json.dumps(M))

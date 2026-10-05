@@ -36,6 +36,11 @@ class AftCrownPlatformPlan(unittest.TestCase):
                 return json.loads((root / 'data/generated/structural_meshes.json').read_text())
             cls.compiled_before = compile_rows(cls.original)
             cls.compiled_after = compile_rows(cls.candidate)
+            unchunked = copy.deepcopy(cls.candidate)
+            for row in unchunked['regions']:
+                if row.get('authoring_owner') == OWNER:
+                    row.pop('render_cell_m', None)
+            cls.compiled_unchunked = compile_rows(unchunked)
 
     @classmethod
     def tearDownClass(cls):
@@ -72,6 +77,34 @@ class AftCrownPlatformPlan(unittest.TestCase):
             self.assertEqual(new['thickness'], .24)
         compiled = [r for r in self.compiled_after['regions'] if r['id'].startswith('D18_aft_crown_platform_')]
         self.assertTrue(all(r['floor_y'] == 106.5 and r['thickness'] == .24 for r in compiled))
+
+    def test_new_render_chunks_preserve_collision_area_within_24m_cells(self):
+        self.assertTrue(all(r['render_cell_m'] == 24 for r in self.rows()))
+        compiled = [r for r in self.compiled_after['regions'] if r['id'].startswith('D18_aft_crown_platform_')]
+        self.assertEqual(len(compiled), 4)
+        unchunked = {r['id']: r for r in self.compiled_unchunked['regions']}
+        for row in compiled:
+            self.assertEqual(record_bytes(row['triangles']), record_bytes(unchunked[row['id']]['triangles']))
+            self.assertEqual(record_bytes(row['rings']), record_bytes(unchunked[row['id']]['rings']))
+            collision = unary_union([Polygon(t) for t in row['triangles']])
+            self.assertTrue(row['render_chunks'])
+            rendered = []
+            for chunk in row['render_chunks']:
+                prefix, cx, cz = chunk['id'].split('_')
+                self.assertEqual(prefix, 'cell')
+                cx, cz = int(cx), int(cz)
+                cell = box(cx * 24, cz * 24, (cx + 1) * 24, (cz + 1) * 24)
+                triangles = [Polygon(t) for t in chunk['triangles']]
+                self.assertTrue(triangles)
+                for triangle in triangles:
+                    self.assertTrue(cell.buffer(1e-9).covers(triangle), chunk['id'])
+                    self.assertAlmostEqual(triangle.difference(collision).area, 0)
+                rendered.extend(triangles)
+            render_union = unary_union(rendered)
+            self.assertAlmostEqual(sum(t.area for t in rendered), collision.area)
+            self.assertAlmostEqual(render_union.area, collision.area)
+            self.assertAlmostEqual(render_union.symmetric_difference(collision).area, 0)
+            self.assertAlmostEqual(collision.area, row['structural_area_m2'])
 
     def test_all_245_live_compiled_records_stay_byte_equivalent(self):
         self.assertEqual(len(self.current_compiled), 245)
@@ -133,7 +166,7 @@ class AftCrownPlatformPlan(unittest.TestCase):
         self.assertEqual(sum(r['programme_key'] == 'D18_directory_09' for r in ledger['destinations']), 1)
 
     def test_live_adoption_disabled(self):
-        with self.assertRaisesRegex(RuntimeError, 'intentionally disabled'):
+        with self.assertRaisesRegex(RuntimeError, 'Explicit final source'):
             author()
 
 

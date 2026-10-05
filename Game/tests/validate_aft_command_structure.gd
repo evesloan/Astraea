@@ -908,6 +908,127 @@ func slab_witness(point: Vector2, expected_id: String, label: String) -> void:
 	if check(not bottom.is_empty(), label + ": missing real slab underside"):
 		check(region_id(bottom.collider) == expected_id and absf(bottom.position.y - SLAB_BOTTOM) < EPS, label + ": incorrect slab thickness/underside owner -> " + owner(bottom))
 
+# The only permitted AST-CMD-005 contact in either old002 slab query is the
+# four source-proven side guard ends embedding the old wall at Z101.96..102.
+# These are complete frozen boxes, not whole-batch or whole005 exemptions.
+const AFT_GUARD_SEAM_BOXES := [
+	[-35.84, -35.56, 106.27, 106.62, 101.96, 109.2090909090909],
+	[-35.78, -35.62, 106.49, 107.62, 101.96, 109.2090909090909],
+	[35.56, 35.84, 106.27, 106.62, 101.96, 109.2090909090909],
+	[35.62, 35.78, 106.49, 107.62, 101.96, 109.2090909090909]]
+
+func clip_triangle_to_box(points: PackedVector3Array, bounds: AABB) -> PackedVector3Array:
+	var clipped := points.duplicate()
+	for axis in range(3):
+		for endpoint in range(2):
+			if clipped.is_empty():
+				return clipped
+			var plane: float = bounds.position[axis] if endpoint == 0 else bounds.end[axis]
+			var direction := 1.0 if endpoint == 0 else -1.0
+			var result := PackedVector3Array()
+			var previous := clipped[clipped.size() - 1]
+			var previous_distance: float = (previous[axis] - plane) * direction
+			for current in clipped:
+				var distance: float = (current[axis] - plane) * direction
+				if (distance >= 0.0) != (previous_distance >= 0.0):
+					result.append(previous.lerp(current, previous_distance / (previous_distance - distance)))
+				if distance >= 0.0:
+					result.append(current)
+				previous = current
+				previous_distance = distance
+			clipped = result
+	return clipped
+
+func guard_triangle_face(points: PackedVector3Array, bounds: AABB) -> Dictionary:
+	var ids: Array[int] = []
+	var mask := 0
+	for point in points:
+		var id := 0
+		for axis in range(3):
+			if absf(point[axis] - bounds.position[axis]) < EPS:
+				continue
+			if absf(point[axis] - bounds.end[axis]) >= EPS:
+				return {}
+			id |= 1 << (2 - axis)
+		if id in ids:
+			return {}
+		ids.append(id)
+		mask |= 1 << id
+	for axis in range(3):
+		var bit := 1 << (2 - axis)
+		for endpoint in range(2):
+			if (ids[0] & bit) == bit * endpoint and (ids[1] & bit) == bit * endpoint and (ids[2] & bit) == bit * endpoint:
+				return {"face": axis * 2 + endpoint, "mask": mask}
+	return {}
+
+func validate_guard_seam_predicates() -> void:
+	var triangle := PackedVector3Array([Vector3(0, 0, 0), Vector3(1, 0, 0), Vector3(0, 1, 0)])
+	check(clip_triangle_to_box(triangle, AABB(Vector3(0.1, 0.1, -0.1), Vector3(0.2, 0.2, 0.2))).size() >= 3, "Guard seam clipping must retain a real triangular face intersection")
+	check(clip_triangle_to_box(triangle, AABB(Vector3(0.8, 0.8, -0.1), Vector3(0.1, 0.1, 0.2))).is_empty(), "Guard seam clipping must reject loose triangle-AABB overlap without a real surface")
+	var guard := contract_box(AFT_GUARD_SEAM_BOXES[0])
+	var valid := PackedVector3Array([guard.position, guard.position + Vector3(guard.size.x, 0, 0), guard.position + Vector3(0, guard.size.y, 0)])
+	check(not guard_triangle_face(valid, guard).is_empty(), "Frozen guard face corners must match")
+	valid[2] = guard.get_center()
+	check(guard_triangle_face(valid, guard).is_empty(), "A triangle entering a frozen guard box interior is not a guard face")
+
+func verified_guard_seam_contact(hit: Dictionary, query_bounds: AABB, face_name: String, side: int) -> bool:
+	if face_name != "top":
+		return false
+	var adjacent := ship.get_node_or_null("ShipSpace/Districts/AftCrownPlatform_WIP/AftCrownPlatformArchitecture") as Node3D
+	var body := hit.collider as StaticBody3D
+	if adjacent == null or body == null or not adjacent.is_ancestor_of(body):
+		return false
+	var mesh := body.get_parent() as MeshInstance3D
+	var contact := body.get_node_or_null("SharedShape") as CollisionShape3D
+	if mesh == null or mesh.mesh == null or contact == null or contact.disabled or not contact.shape is ConcavePolygonShape3D:
+		return false
+	var faces: PackedVector3Array = contact.shape.get_faces()
+	if faces != mesh.mesh.get_faces() or not contact.global_transform.is_equal_approx(mesh.global_transform):
+		return false
+	var masks: Array = [[{}, {}, {}, {}, {}, {}], [{}, {}, {}, {}, {}, {}]]
+	var counts := [0, 0]
+	var touched := [false, false]
+	var clipped_count := 0
+	for index in range(0, faces.size(), 3):
+		var points := PackedVector3Array()
+		for offset in range(3):
+			points.append(contact.global_transform * faces[index + offset])
+		var guard_index := -1
+		for candidate in range(2):
+			var matched := guard_triangle_face(points, contract_box(AFT_GUARD_SEAM_BOXES[side * 2 + candidate]))
+			if not matched.is_empty():
+				guard_index = candidate
+				counts[candidate] += 1
+				masks[candidate][int(matched.face)][int(matched.mask)] = true
+		var clipped := clip_triangle_to_box(points, query_bounds.grow(0.0005))
+		if clipped.is_empty():
+			continue
+		# Any other surface of this same batch remains an unintended owner.
+		if guard_index < 0:
+			return false
+		for point in clipped:
+			if point.z < 101.96 - EPS or point.z > 102.0 + EPS:
+				return false
+		touched[guard_index] = true
+		clipped_count += 1
+	if clipped_count == 0:
+		return false
+	for candidate in range(2):
+		if not touched[candidate]:
+			continue
+		if counts[candidate] != 12:
+			return false
+		for axis in range(3):
+			for endpoint in range(2):
+				var corner_ids: Array[int] = []
+				for id in range(8):
+					if (id & (1 << (2 - axis))) == endpoint * (1 << (2 - axis)):
+						corner_ids.append(id)
+				if not face_is_complete(masks[candidate][axis * 2 + endpoint], corner_ids):
+					return false
+	print("AFT COMMAND verified guard/wall seam: ", body.get_path(), " clipped triangles=", clipped_count, " complete guard boxes=", touched)
+	return true
+
 func validate_floor_chain() -> void:
 	var layout := read_json("res://data/spatial_layout.json")
 	var generated := read_json("res://data/generated/structural_meshes.json")
@@ -932,7 +1053,7 @@ func validate_floor_chain() -> void:
 			var owned_surface := AABB(Vector3(x0 + 0.002, float(face[1]) - 0.01, 80.002), Vector3(x1 - x0 - 0.004, 0.02, 21.996))
 			var found_owner := false
 			for hit in box_hits(owned_surface, crown_exclusions, id + " whole slab " + str(face[0]) + " ownership"):
-				check(region_id(hit.collider) == id, "Duplicate or unintended physical owner at new slab " + str(face[0]) + ": " + id + " -> " + owner(hit))
+				check(region_id(hit.collider) == id or verified_guard_seam_contact(hit, owned_surface, str(face[0]), side), "Duplicate or unintended physical owner at new slab " + str(face[0]) + ": " + id + " -> " + owner(hit))
 				found_owner = found_owner or region_id(hit.collider) == id
 			check(found_owner, "New platform has no actual compiled owner contact at " + str(face[0]) + ": " + id)
 		var slab := floors.get_node_or_null(id) as Node3D
@@ -1249,6 +1370,7 @@ func run() -> void:
 	validate_piers(data)
 	validate_frame_and_roof()
 	validate_spine_boundary_predicate()
+	validate_guard_seam_predicates()
 	validate_floor_chain()
 	validate_apron_ties(data)
 	validate_protected_routes()

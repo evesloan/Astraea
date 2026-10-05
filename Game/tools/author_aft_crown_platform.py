@@ -1,7 +1,5 @@
-"""Plan missing-only aft floors; source-gated staging is deliberately non-mutating.
-
-The final 005/002 runtime contract integration is parent-owned. This helper does
-not write the live layout, compile meshes, import assets, or assert acceptance.
+"""Plan missing-only aft floors and adopt only explicitly pinned, reviewed sources.
+Dry-run planning never mutates live files. Adoption does not imply runtime acceptance.
 """
 from pathlib import Path
 import argparse
@@ -61,6 +59,7 @@ def plan_floors(layout, brief):
                 'authoring_owner': OWNER, 'deck': 'D18',
                 'boundary': [list(q) for q in polygon.exterior.coords[:-1]], 'holes': [],
                 'priority': priority, 'thickness': brief['datums']['slab_depth'],
+                'render_cell_m': 24,
                 'material_role': 'guest_floor',
                 'status': 'Missing-only aft platform infill; source, runtime, visual and route acceptance remain separate gates'
             })
@@ -111,15 +110,69 @@ def prepare_adoption(layout, brief, catalogue, final005_sha, revised002_sha, fin
     return {'layout': floors, 'sources': sources, 'runtime_acceptance': 'pending', 'live_write_allowed': False}
 
 
-def author(*args, **kwargs):
-    raise RuntimeError('Live adoption is intentionally disabled until the final 005/002 source schema and bounded 002 part diff are reviewed by the integration owner; use plan_floors or prepare_adoption only')
+def author(catalogue=None, final005_sha=None, revised002_sha=None,
+           final005_contract_sha=None, revised002_contract_sha=None,
+           audit_sha=None, preservation_sha=None):
+    """Adopt only after explicit final source and independent review pins."""
+    if not all([catalogue, final005_sha, revised002_sha, final005_contract_sha,
+                revised002_contract_sha, audit_sha, preservation_sha]):
+        raise RuntimeError('Explicit final source, contact and preservation hashes are required for live adoption')
+    catalogue = Path(catalogue)
+    brief = json.loads(BRIEF.read_text())
+    bundle = prepare_adoption(json.loads((R/'data/spatial_layout.json').read_text()), brief,
+                              catalogue, final005_sha, revised002_sha,
+                              final005_contract_sha, revised002_contract_sha)
+    qa = catalogue/'assets/aft_crown_platform/qa'
+    proofs = {}
+    for filename, expected in [('independent_contact_audit.json', audit_sha),
+                               ('002_actual_preservation.json', preservation_sha)]:
+        raw = (qa/filename).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == expected, 'Final reviewed QA changed: '+filename
+        proofs[filename] = json.loads(raw)
+        assert proofs[filename].get('pass') is True
+    audit = proofs['independent_contact_audit.json']
+    for key, expected in [('005_export',final005_sha),('002_export',revised002_sha),
+                          ('005_contract',final005_contract_sha),('002_contract',revised002_contract_sha)]:
+        assert audit['hashes'][key] == expected
+    preservation = proofs['002_actual_preservation.json']
+    assert preservation['all_old_markers_exact']
+    assert preservation['all_old_contract_fields_exact_except_two_appended_doors']
+    platform = copy.deepcopy(bundle['sources'][0]['contract'])
+    aft = copy.deepcopy(bundle['sources'][1]['contract'])
+    assert platform['programme_key'] == 'D18_directory_09'
+    assert platform['floor_y'] == 106.5 and platform['floor_thickness'] == .24
+    assert {d['name'] for d in platform['doors']} == {'aft_platform_port_service_exit','aft_platform_starboard_service_exit'}
+    assert {d['name'] for d in aft['doors']} == {'D18_directory_08_entry','D18_directory_10_entry',
+        'aft_command_port_front','aft_command_starboard_front','aft_command_port_exit','aft_command_starboard_exit'}
+    # All checks precede writes. Floor-only stage does not reclassify the programme ledger.
+    for data, sha in [(platform,final005_sha),(aft,revised002_sha)]:
+        data['export_sha256'] = sha
+        data['runtime_status'] = 'Supported aft platform integration; runtime, visual and aggregate acceptance pending'
+    def write(path, value):
+        path.write_text(json.dumps(value,indent=2)+'\n')
+    write(R/'data/spatial_layout.json',bundle['layout'])
+    write(R/'data/architecture/AFT_CROWN_PLATFORM_RUNTIME.json',platform)
+    write(R/'data/architecture/AFT_COMMAND_RUNTIME.json',aft)
+    for source in bundle['sources']:
+        (R/'assets/models'/(source['identity']+'.glb')).write_bytes(source['export_bytes'])
+    print(json.dumps({'new_floor_m2':5517.2,'programme_ledger_changed':False,
+                      'guest_or_crew_units_changed':False,'runtime_acceptance':'pending'}))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--dry-run', action='store_true', required=True)
-    parser.parse_args()
-    brief = json.loads(BRIEF.read_text())
-    candidate = plan_floors(json.loads((R / 'data/spatial_layout.json').read_text()), brief)
-    rows = [r for r in candidate['regions'] if r.get('authoring_owner') == OWNER]
-    print(json.dumps({'dry_run': True, 'new_regions': len(rows), 'new_floor_m2': sum(Polygon(r['boundary']).area for r in rows), 'priority': -10, 'live_files_written': False, 'source_and_runtime_acceptance': 'pending'}))
+    parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('--catalogue', default='/workspace/shared/astraea-catalogue-continuation-20261002')
+    for flag in ['platform-sha','aft-sha','platform-contract-sha','aft-contract-sha','audit-sha','preservation-sha']:
+        parser.add_argument('--'+flag)
+    args = parser.parse_args()
+    if args.dry_run:
+        brief = json.loads(BRIEF.read_text())
+        candidate = plan_floors(json.loads((R/'data/spatial_layout.json').read_text()), brief)
+        rows = [r for r in candidate['regions'] if r.get('authoring_owner') == OWNER]
+        print(json.dumps({'dry_run':True,'new_regions':len(rows),
+            'new_floor_m2':sum(Polygon(r['boundary']).area for r in rows),
+            'priority':-10,'live_files_written':False,'source_and_runtime_acceptance':'pending'}))
+    else:
+        author(args.catalogue,args.platform_sha,args.aft_sha,args.platform_contract_sha,
+               args.aft_contract_sha,args.audit_sha,args.preservation_sha)
