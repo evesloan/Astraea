@@ -1,10 +1,11 @@
-"""Editable fitted passenger cabin with separate authored two-, three- and five-stop panels."""
+"""Editable fitted passenger cabin with separate authored two-, three-, five- and eighteen-stop panels."""
 from pathlib import Path
 import bpy,bmesh,math,json,hashlib,sys,argparse
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1];CAT=ROOT.parents[1]
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
-args=argparse.ArgumentParser();args.add_argument('--stops',type=int,choices=[2,3,5],default=2);options=args.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []);variant={2:'AST-CIR-003',3:'AST-CIR-003_three_stop',5:'AST-CIR-003_five_stop'}[options.stops]
+args=argparse.ArgumentParser();args.add_argument('--stops',type=int,choices=[2,3,5,18],default=2);options=args.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []);variant={2:'AST-CIR-003',3:'AST-CIR-003_three_stop',5:'AST-CIR-003_five_stop',18:'AST-CIR-003_eighteen_stop'}[options.stops]
+assert next(a for a in json.loads((CAT/'catalogue_manifest.json').read_text())['assets'] if a['catalogue_id']=='AST-CIR-003')['family']=='commons_lift_cabin'
 mats={};parts=[];material_contract=json.loads((CAT/'materials/material_manifest.json').read_text())['materials']
 for role in ['ivory_enamel','warm_walnut','warm_stone','champagne_metal','teal_weave','botanical_soil','oatmeal_weave','clay_weave']:
  m=bpy.data.materials.new(role);m.use_nodes=True;b=m.node_tree.nodes.get('Principled BSDF');b.inputs['Roughness'].default_value=material_contract.get(role,{}).get('roughness',.82);b.inputs['Metallic'].default_value=material_contract.get(role,{}).get('metallic',0);m['meters_per_tile_uv']=material_contract.get(role,{}).get('meters_per_tile_uv',[1,1])
@@ -64,9 +65,12 @@ if options.stops==2:
 elif options.stops==3:
  extrusion('CAB_ThreeStopControlPanel',[(1.75,.43),(1.88,.43),(1.88,1.25),(1.75,1.25)],1.10,1.56,'champagne_metal')
  for i,y in enumerate([.55,.84,1.13]):datum('floor_button_'+str(i),(1.73,y,1.27))
-else:
+elif options.stops==5:
  extrusion('CAB_FiveStopControlPanel',[(1.75,.32),(1.88,.32),(1.88,1.72),(1.75,1.72)],1.10,1.56,'champagne_metal')
  for i,y in enumerate([.46,.74,1.02,1.30,1.58]):datum('floor_button_'+str(i),(1.73,y,1.27))
+else:
+ extrusion('CAB_EighteenStopControlPanel',[(1.75,.34),(1.88,.34),(1.88,1.62),(1.75,1.62)],.60,2.10,'champagne_metal')
+ for i in range(18):datum('floor_button_'+str(i),(1.73,.56+.42*(i%3),.75+.22*(i//3)))
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1;bpy.ops.file.pack_all();source=ROOT/'source'/(variant+'.blend');export=ROOT/'exports'/(variant+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source))
 for role,material in mats.items():
  selected=[o for o in list(scene.objects)if o.type=='MESH'and o.data.materials and o.data.materials[0]==material]
