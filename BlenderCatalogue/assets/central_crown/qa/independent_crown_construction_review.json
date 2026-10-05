@@ -1,0 +1,960 @@
+{
+  "schema": 1,
+  "scope": "Independent read-only source construction review. No Godot/import, source edits or structural-load certification. Parent owns actual runtime assembly/contacts/traversal acceptance.",
+  "source_sha256": {
+    "source/build_central_crown.py": "87273acde1c475c66177dfa34fae03bdbebc5bf371ef238b7189d405716ccf63",
+    "source/section_contract.json": "a249390803a469cf445edd3790ef02e48385bf40cc6b4cdc6068d5534133deeb",
+    "source/geometry_parts.json": "90ed83cace1d6ffb62d9510a9e018cb4bee9be8de63ae9256669461ea97df5af",
+    "exports/AST-CMD-001.glb": "fd23668ccfe850409708b6e18a1a483f28ba4f7091e4c417069fc9f0e182b604",
+    "source/AST-CMD-001.blend": "8b388cfc1d83c0f42b0d5a854593c62b0f04e4d1017d901fa6f4bb4ec0bbebe3",
+    "qa/door_actual_source_vertices.json": "c54728ecf7bfe113aaba4e3896616ac2f1ca97ef65f6747d1704bb1a0666eae0"
+  },
+  "revision_reason": "Final parent-authorized fixture-only refresh: side corridor terminal fixtures moved Z60 toZ56, central fixture retained Z60; all checks rerun against exact final source/export hashes.",
+  "source_part_count": 2717,
+  "unresolved_findings": [],
+  "programme_boundary_and_floor_checks": [
+    {
+      "programme_key": "D18_directory_02",
+      "named_parts": 219,
+      "all_recorded_vertices_within_boundary": true,
+      "programme_area_m2": 1172,
+      "existing_floor_coverage_m2": {
+        "D18_fore_apron": 236.0,
+        "D18_atrium_structural_cap": 936.0
+      },
+      "floor_y": 106.5
+    },
+    {
+      "programme_key": "D18_directory_03",
+      "named_parts": 203,
+      "all_recorded_vertices_within_boundary": true,
+      "programme_area_m2": 1172,
+      "existing_floor_coverage_m2": {
+        "D18_fore_apron": 236.0,
+        "D18_atrium_structural_cap": 936.0
+      },
+      "floor_y": 106.5
+    },
+    {
+      "programme_key": "D18_directory_04",
+      "named_parts": 200,
+      "all_recorded_vertices_within_boundary": true,
+      "programme_area_m2": 1352,
+      "existing_floor_coverage_m2": {
+        "D18_atrium_structural_cap": 1352.0
+      },
+      "floor_y": 106.5
+    },
+    {
+      "programme_key": "D18_directory_05",
+      "named_parts": 168,
+      "all_recorded_vertices_within_boundary": true,
+      "programme_area_m2": 988,
+      "existing_floor_coverage_m2": {
+        "D18_atrium_structural_cap": 988.0
+      },
+      "floor_y": 106.5
+    },
+    {
+      "programme_key": "D18_directory_06",
+      "named_parts": 167,
+      "all_recorded_vertices_within_boundary": true,
+      "programme_area_m2": 1092,
+      "existing_floor_coverage_m2": {
+        "D18_atrium_structural_cap": 1092.0
+      },
+      "floor_y": 106.5
+    },
+    {
+      "programme_key": "D18_directory_07",
+      "named_parts": 132,
+      "all_recorded_vertices_within_boundary": true,
+      "programme_area_m2": 728,
+      "existing_floor_coverage_m2": {
+        "D18_atrium_structural_cap": 728.0
+      },
+      "floor_y": 106.5
+    }
+  ],
+  "public_route": {
+    "checked_aabb": [
+      -4,
+      4,
+      106.50001,
+      110.5,
+      -80,
+      64
+    ],
+    "new_static_intersections": []
+  },
+  "north_cross_street": {
+    "protected_aabb": [
+      -48,
+      48,
+      106.50001,
+      110.5,
+      -80,
+      -74
+    ],
+    "new_static_intersections": [],
+    "actual_fixed_door_frames": [
+      {
+        "name": "controlled_crossing_01",
+        "actual_frame_aabb": [
+          -9.379999999999999,
+          -6.62,
+          106.5,
+          109.31999993,
+          -73.98000001,
+          -73.61999999
+        ],
+        "public_belt_intrusion": false
+      },
+      {
+        "name": "controlled_crossing_02",
+        "actual_frame_aabb": [
+          6.62,
+          9.379999999999999,
+          106.5,
+          109.31999993,
+          -73.98000001,
+          -73.61999999
+        ],
+        "public_belt_intrusion": false
+      }
+    ]
+  },
+  "side_corridors": [
+    {
+      "side": "port",
+      "continuous_static_clear_lane_aabb": [
+        -9.8,
+        -6.2,
+        106.50001,
+        109.0,
+        -73.5,
+        59.8
+      ],
+      "new_static_intersections": [],
+      "scope": "3.6m lane inside requested corridor envelope; excludes working door leaves and end-wall thickness"
+    },
+    {
+      "side": "starboard",
+      "continuous_static_clear_lane_aabb": [
+        6.2,
+        9.8,
+        106.50001,
+        109.0,
+        -73.5,
+        59.8
+      ],
+      "new_static_intersections": [],
+      "scope": "3.6m lane inside requested corridor envelope; excludes working door leaves and end-wall thickness"
+    }
+  ],
+  "ten_actual_frame_joins": [
+    {
+      "name": "D18_directory_02_entry",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    },
+    {
+      "name": "D18_directory_03_entry",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    },
+    {
+      "name": "D18_directory_04_entry",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    },
+    {
+      "name": "D18_directory_05_entry",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    },
+    {
+      "name": "D18_directory_06_entry",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    },
+    {
+      "name": "D18_directory_07_entry",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    },
+    {
+      "name": "controlled_crossing_01",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    },
+    {
+      "name": "controlled_crossing_02",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    },
+    {
+      "name": "controlled_crossing_03",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    },
+    {
+      "name": "controlled_crossing_04",
+      "fixed_frame_side_overlap_m": 0.005,
+      "fixed_frame_top_overlap_m": 0.005,
+      "new_wall_joint_samples": 13,
+      "profile_source": "qa/door_actual_source_vertices.json",
+      "moving_leaf_scope": "Not re-run here; parent source verifier owns91-angle exact leaf sweep"
+    }
+  ],
+  "roof_purlin_direct_bearings": [
+    {
+      "z_range": [
+        -71.1,
+        -70.9
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web",
+        "CMD_Longitudinal_Flange.012",
+        "CMD_Longitudinal_Web.012",
+        "CMD_Longitudinal_Web.024",
+        "CMD_Longitudinal_Flange.048",
+        "CMD_Longitudinal_Flange.060",
+        "CMD_Longitudinal_Web.036",
+        "CMD_Longitudinal_Flange.084"
+      ]
+    },
+    {
+      "z_range": [
+        -60.1,
+        -60
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web",
+        "CMD_Longitudinal_Flange.012",
+        "CMD_Longitudinal_Web.012",
+        "CMD_Longitudinal_Web.024",
+        "CMD_Longitudinal_Flange.048",
+        "CMD_Longitudinal_Flange.060",
+        "CMD_Longitudinal_Web.036",
+        "CMD_Longitudinal_Flange.084"
+      ]
+    },
+    {
+      "z_range": [
+        -60,
+        -59.9
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.001",
+        "CMD_Longitudinal_Flange.013",
+        "CMD_Longitudinal_Web.013",
+        "CMD_Longitudinal_Web.025",
+        "CMD_Longitudinal_Flange.049",
+        "CMD_Longitudinal_Flange.061",
+        "CMD_Longitudinal_Web.037",
+        "CMD_Longitudinal_Flange.085"
+      ]
+    },
+    {
+      "z_range": [
+        -48.1,
+        -48
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.001",
+        "CMD_Longitudinal_Flange.013",
+        "CMD_Longitudinal_Web.013",
+        "CMD_Longitudinal_Web.025",
+        "CMD_Longitudinal_Flange.049",
+        "CMD_Longitudinal_Flange.061",
+        "CMD_Longitudinal_Web.037",
+        "CMD_Longitudinal_Flange.085"
+      ]
+    },
+    {
+      "z_range": [
+        -48,
+        -47.9
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.002",
+        "CMD_Longitudinal_Flange.014",
+        "CMD_Longitudinal_Web.014",
+        "CMD_Longitudinal_Web.026",
+        "CMD_Longitudinal_Flange.050",
+        "CMD_Longitudinal_Flange.062",
+        "CMD_Longitudinal_Web.038",
+        "CMD_Longitudinal_Flange.086"
+      ]
+    },
+    {
+      "z_range": [
+        -36.1,
+        -36
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.002",
+        "CMD_Longitudinal_Flange.014",
+        "CMD_Longitudinal_Web.014",
+        "CMD_Longitudinal_Web.026",
+        "CMD_Longitudinal_Flange.050",
+        "CMD_Longitudinal_Flange.062",
+        "CMD_Longitudinal_Web.038",
+        "CMD_Longitudinal_Flange.086"
+      ]
+    },
+    {
+      "z_range": [
+        -36,
+        -35.9
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.003",
+        "CMD_Longitudinal_Flange.015",
+        "CMD_Longitudinal_Web.015",
+        "CMD_Longitudinal_Web.027",
+        "CMD_Longitudinal_Flange.051",
+        "CMD_Longitudinal_Flange.063",
+        "CMD_Longitudinal_Web.039",
+        "CMD_Longitudinal_Flange.087"
+      ]
+    },
+    {
+      "z_range": [
+        -24.1,
+        -24
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.003",
+        "CMD_Longitudinal_Flange.015",
+        "CMD_Longitudinal_Web.015",
+        "CMD_Longitudinal_Web.027",
+        "CMD_Longitudinal_Flange.051",
+        "CMD_Longitudinal_Flange.063",
+        "CMD_Longitudinal_Web.039",
+        "CMD_Longitudinal_Flange.087"
+      ]
+    },
+    {
+      "z_range": [
+        -24,
+        -23.9
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.004",
+        "CMD_Longitudinal_Flange.016",
+        "CMD_Longitudinal_Web.016",
+        "CMD_Longitudinal_Web.028",
+        "CMD_Longitudinal_Flange.052",
+        "CMD_Longitudinal_Flange.064",
+        "CMD_Longitudinal_Web.040",
+        "CMD_Longitudinal_Flange.088"
+      ]
+    },
+    {
+      "z_range": [
+        -12.1,
+        -12
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.004",
+        "CMD_Longitudinal_Flange.016",
+        "CMD_Longitudinal_Web.016",
+        "CMD_Longitudinal_Web.028",
+        "CMD_Longitudinal_Flange.052",
+        "CMD_Longitudinal_Flange.064",
+        "CMD_Longitudinal_Web.040",
+        "CMD_Longitudinal_Flange.088"
+      ]
+    },
+    {
+      "z_range": [
+        -12,
+        -11.9
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.005",
+        "CMD_Longitudinal_Flange.017",
+        "CMD_Longitudinal_Web.017",
+        "CMD_Longitudinal_Web.029",
+        "CMD_Longitudinal_Flange.053",
+        "CMD_Longitudinal_Flange.065",
+        "CMD_Longitudinal_Web.041",
+        "CMD_Longitudinal_Flange.089"
+      ]
+    },
+    {
+      "z_range": [
+        -0.1,
+        0
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.005",
+        "CMD_Longitudinal_Flange.017",
+        "CMD_Longitudinal_Web.017",
+        "CMD_Longitudinal_Web.029",
+        "CMD_Longitudinal_Flange.053",
+        "CMD_Longitudinal_Flange.065",
+        "CMD_Longitudinal_Web.041",
+        "CMD_Longitudinal_Flange.089"
+      ]
+    },
+    {
+      "z_range": [
+        0,
+        0.1
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.006",
+        "CMD_Longitudinal_Flange.018",
+        "CMD_Longitudinal_Web.018",
+        "CMD_Longitudinal_Web.030",
+        "CMD_Longitudinal_Flange.054",
+        "CMD_Longitudinal_Flange.066",
+        "CMD_Longitudinal_Web.042",
+        "CMD_Longitudinal_Flange.090"
+      ]
+    },
+    {
+      "z_range": [
+        11.9,
+        12
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.006",
+        "CMD_Longitudinal_Flange.018",
+        "CMD_Longitudinal_Web.018",
+        "CMD_Longitudinal_Web.030",
+        "CMD_Longitudinal_Flange.054",
+        "CMD_Longitudinal_Flange.066",
+        "CMD_Longitudinal_Web.042",
+        "CMD_Longitudinal_Flange.090"
+      ]
+    },
+    {
+      "z_range": [
+        12,
+        12.1
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.007",
+        "CMD_Longitudinal_Flange.019",
+        "CMD_Longitudinal_Web.019",
+        "CMD_Longitudinal_Web.031",
+        "CMD_Longitudinal_Flange.055",
+        "CMD_Longitudinal_Flange.067",
+        "CMD_Longitudinal_Web.043",
+        "CMD_Longitudinal_Flange.091"
+      ]
+    },
+    {
+      "z_range": [
+        23.9,
+        24
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.007",
+        "CMD_Longitudinal_Flange.019",
+        "CMD_Longitudinal_Web.019",
+        "CMD_Longitudinal_Web.031",
+        "CMD_Longitudinal_Flange.055",
+        "CMD_Longitudinal_Flange.067",
+        "CMD_Longitudinal_Web.043",
+        "CMD_Longitudinal_Flange.091"
+      ]
+    },
+    {
+      "z_range": [
+        24,
+        24.1
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.008",
+        "CMD_Longitudinal_Flange.020",
+        "CMD_Longitudinal_Web.020",
+        "CMD_Longitudinal_Web.032",
+        "CMD_Longitudinal_Flange.056",
+        "CMD_Longitudinal_Flange.068",
+        "CMD_Longitudinal_Web.044",
+        "CMD_Longitudinal_Flange.092"
+      ]
+    },
+    {
+      "z_range": [
+        35.9,
+        36
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.008",
+        "CMD_Longitudinal_Flange.020",
+        "CMD_Longitudinal_Web.020",
+        "CMD_Longitudinal_Web.032",
+        "CMD_Longitudinal_Flange.056",
+        "CMD_Longitudinal_Flange.068",
+        "CMD_Longitudinal_Web.044",
+        "CMD_Longitudinal_Flange.092"
+      ]
+    },
+    {
+      "z_range": [
+        36,
+        36.1
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.009",
+        "CMD_Longitudinal_Flange.021",
+        "CMD_Longitudinal_Web.021",
+        "CMD_Longitudinal_Web.033",
+        "CMD_Longitudinal_Flange.057",
+        "CMD_Longitudinal_Flange.069",
+        "CMD_Longitudinal_Web.045",
+        "CMD_Longitudinal_Flange.093"
+      ]
+    },
+    {
+      "z_range": [
+        47.9,
+        48
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.009",
+        "CMD_Longitudinal_Flange.021",
+        "CMD_Longitudinal_Web.021",
+        "CMD_Longitudinal_Web.033",
+        "CMD_Longitudinal_Flange.057",
+        "CMD_Longitudinal_Flange.069",
+        "CMD_Longitudinal_Web.045",
+        "CMD_Longitudinal_Flange.093"
+      ]
+    },
+    {
+      "z_range": [
+        48,
+        48.1
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.010",
+        "CMD_Longitudinal_Flange.022",
+        "CMD_Longitudinal_Web.022",
+        "CMD_Longitudinal_Web.034",
+        "CMD_Longitudinal_Flange.058",
+        "CMD_Longitudinal_Flange.070",
+        "CMD_Longitudinal_Web.046",
+        "CMD_Longitudinal_Flange.094"
+      ]
+    },
+    {
+      "z_range": [
+        59.9,
+        60
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.010",
+        "CMD_Longitudinal_Flange.022",
+        "CMD_Longitudinal_Web.022",
+        "CMD_Longitudinal_Web.034",
+        "CMD_Longitudinal_Flange.058",
+        "CMD_Longitudinal_Flange.070",
+        "CMD_Longitudinal_Web.046",
+        "CMD_Longitudinal_Flange.094"
+      ]
+    },
+    {
+      "z_range": [
+        60,
+        60.1
+      ],
+      "direct_longitudinal_parts": [
+        "CMD_Longitudinal_Web.011",
+        "CMD_Longitudinal_Flange.023",
+        "CMD_Longitudinal_Web.023",
+        "CMD_Longitudinal_Web.035",
+        "CMD_Longitudinal_Flange.059",
+        "CMD_Longitudinal_Flange.071",
+        "CMD_Longitudinal_Web.047",
+        "CMD_Longitudinal_Flange.095"
+      ]
+    }
+  ],
+  "transfer_lower_flange_contacts": [
+    {
+      "z": -71,
+      "lower_flange_web_overlap_y_m": 0.03,
+      "positive_overlap": true
+    },
+    {
+      "z": 71,
+      "lower_flange_web_overlap_y_m": 0.03,
+      "positive_overlap": true
+    }
+  ],
+  "roof_end_envelope_samples": [
+    {
+      "x": -30,
+      "z": -77.92,
+      "required_closed_y": [
+        111.16,
+        113.84
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": -18,
+      "z": -77.92,
+      "required_closed_y": [
+        111.16,
+        114.06
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": -6,
+      "z": -77.92,
+      "required_closed_y": [
+        111.16,
+        114.24
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": 6,
+      "z": -77.92,
+      "required_closed_y": [
+        111.16,
+        114.24
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": 18,
+      "z": -77.92,
+      "required_closed_y": [
+        111.16,
+        114.06
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": 30,
+      "z": -77.92,
+      "required_closed_y": [
+        111.16,
+        113.84
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": -30,
+      "z": 63.92,
+      "required_closed_y": [
+        111.16,
+        113.84
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": -18,
+      "z": 63.92,
+      "required_closed_y": [
+        111.16,
+        114.06
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": -6,
+      "z": 63.92,
+      "required_closed_y": [
+        111.16,
+        114.24
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": 6,
+      "z": 63.92,
+      "required_closed_y": [
+        111.16,
+        114.24
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": 18,
+      "z": 63.92,
+      "required_closed_y": [
+        111.16,
+        114.06
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    },
+    {
+      "x": 30,
+      "z": 63.92,
+      "required_closed_y": [
+        111.16,
+        113.84
+      ],
+      "sample_count": 61,
+      "missing_y": []
+    }
+  ],
+  "selected_windows": [
+    {
+      "programme_key": "D18_directory_02",
+      "actual_glass_outer_abs_x": 35.985,
+      "actual_complete_frame_outer_abs_x": 36,
+      "outward_cant_horizontal_m": 0.85,
+      "cant_rise_m": 3.6,
+      "actual_sill_head_corner_contacts": true,
+      "z_range": [
+        -67,
+        -31
+      ]
+    },
+    {
+      "programme_key": "D18_directory_04",
+      "actual_glass_outer_abs_x": 35.985,
+      "actual_complete_frame_outer_abs_x": 36,
+      "outward_cant_horizontal_m": 0.85,
+      "cant_rise_m": 3.6,
+      "actual_sill_head_corner_contacts": true,
+      "z_range": [
+        -18,
+        12
+      ]
+    },
+    {
+      "programme_key": "D18_directory_05",
+      "actual_glass_outer_abs_x": 35.985,
+      "actual_complete_frame_outer_abs_x": 36,
+      "outward_cant_horizontal_m": 0.85,
+      "cant_rise_m": 3.6,
+      "actual_sill_head_corner_contacts": true,
+      "z_range": [
+        -20,
+        10
+      ]
+    }
+  ],
+  "built_chord_restraint_contacts": [
+    {
+      "name": "CMD_Tie_D06_XM_ZM",
+      "actual_pier_parts": [
+        "CMD_Pier_XM_ZM_Chord.011",
+        "CMD_Pier_XM_ZM_Chord.013"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D09_XM_ZM",
+      "actual_pier_parts": [
+        "CMD_Pier_XM_ZM_Chord.021",
+        "CMD_Pier_XM_ZM_Chord.023"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D12_XM_ZM",
+      "actual_pier_parts": [
+        "CMD_Pier_XM_ZM_Chord.031",
+        "CMD_Pier_XM_ZM_Chord.033"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D16_XM_ZM",
+      "actual_pier_parts": [
+        "CMD_Pier_XM_ZM_Chord.041",
+        "CMD_Pier_XM_ZM_Chord.043"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D06_XM_ZP",
+      "actual_pier_parts": [
+        "CMD_Pier_XM_ZP_Chord.011",
+        "CMD_Pier_XM_ZP_Chord.013"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D09_XM_ZP",
+      "actual_pier_parts": [
+        "CMD_Pier_XM_ZP_Chord.021",
+        "CMD_Pier_XM_ZP_Chord.023"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D12_XM_ZP",
+      "actual_pier_parts": [
+        "CMD_Pier_XM_ZP_Chord.031",
+        "CMD_Pier_XM_ZP_Chord.033"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D16_XM_ZP",
+      "actual_pier_parts": [
+        "CMD_Pier_XM_ZP_Chord.041",
+        "CMD_Pier_XM_ZP_Chord.043"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D06_XP_ZM",
+      "actual_pier_parts": [
+        "CMD_Pier_XP_ZM_Chord.011",
+        "CMD_Pier_XP_ZM_Chord.013"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D09_XP_ZM",
+      "actual_pier_parts": [
+        "CMD_Pier_XP_ZM_Chord.021",
+        "CMD_Pier_XP_ZM_Chord.023"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D12_XP_ZM",
+      "actual_pier_parts": [
+        "CMD_Pier_XP_ZM_Chord.031",
+        "CMD_Pier_XP_ZM_Chord.033"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D16_XP_ZM",
+      "actual_pier_parts": [
+        "CMD_Pier_XP_ZM_Chord.041",
+        "CMD_Pier_XP_ZM_Chord.043"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D06_XP_ZP",
+      "actual_pier_parts": [
+        "CMD_Pier_XP_ZP_Chord.011",
+        "CMD_Pier_XP_ZP_Chord.013"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D09_XP_ZP",
+      "actual_pier_parts": [
+        "CMD_Pier_XP_ZP_Chord.021",
+        "CMD_Pier_XP_ZP_Chord.023"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D12_XP_ZP",
+      "actual_pier_parts": [
+        "CMD_Pier_XP_ZP_Chord.031",
+        "CMD_Pier_XP_ZP_Chord.033"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    },
+    {
+      "name": "CMD_Tie_D16_XP_ZP",
+      "actual_pier_parts": [
+        "CMD_Pier_XP_ZP_Chord.041",
+        "CMD_Pier_XP_ZP_Chord.043"
+      ],
+      "combined_material_overlap_m3": 0.000608,
+      "web_gap_m": 0.06
+    }
+  ],
+  "construction_limits": [
+    "Selected programme perimeters sit on existing D18 cap/apron floor106.5; no new floor part introduced. Existing floor is structural substrate, not finished floor art.",
+    "Public route free of new source parts through4.0m above floor. Side-lane check is3.6m width and2.5m height within nominated corridor envelope, not a claim of4m finished clear width or moving-door traversal.",
+    "No added floor, static duplicate moving leaves, operational command functionality or role-based access logic.",
+    "Primary source verifier remains responsible for closed outward topology, exact exported geometry/UV/materials, full leaf-sweep and light-exit verification; those results must match final hashes.",
+    "Window lower/upper seat contacts checked from actual vertices; visual/reflection/sky views, import material behavior and complete in-engine optical acceptance remain parent work.",
+    "Built ties touch the two spine chords only, combined overlap0.000608m3 each; web remains0.06m clear. Nominal solid envelope overlap0.005168m3 is not actual pier material.",
+    "Roof bearing is geometric architectural game-space contact only, not engineered load adequacy."
+  ],
+  "final_fixture_refresh": {
+    "terminal_marker_positions": {
+      "DATUM_light_route_-7p5_56": [
+        -7.5,
+        110.55,
+        56
+      ],
+      "DATUM_light_route_0_60": [
+        0,
+        110.55,
+        60
+      ],
+      "DATUM_light_route_7p5_56": [
+        7.5,
+        110.55,
+        56
+      ]
+    },
+    "matches_parent_validation_source_and_export_hashes": true,
+    "parent_validation_path": "qa/source_export_validation.json",
+    "parent_validation_sha256": "966c66ef0ec4ae2aec206626d111d2afea2555c5a2fed1c3968ec1582fe837cf",
+    "source_closed_outward_meshes": 2717,
+    "source_triangles": 32604,
+    "runtime_mesh_batches": 634,
+    "all_downward_light_exits_clear": true
+  }
+}

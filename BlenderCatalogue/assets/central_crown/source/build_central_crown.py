@@ -136,13 +136,14 @@ for idx,p in enumerate(D['programmes']):
  for zz in range(math.ceil((lo+3)/12)*12,math.floor((hi-3)/12)*12+1,12):box('CMD_'+key+'_CeilingCrossRib',*sorted([sgn*(16.3 if idx in[0,1]and zz< -70 else 11.1),sgn*33.9]),111-depth,111,zz-.14,zz+.14,'staff_zinc'if idx in[1,4,5]else'ivory_enamel','ceiling')
  # Room-wide task fixture rows, with respite's warmer material accent remaining restrained.
  for xx in [17,28]:
-  for j,zz in enumerate(range(math.ceil((lo+4)/12)*12,math.floor((hi-4)/12)*12+1,12)):
+  for j,zz in enumerate(range(math.ceil((lo+2)/12)*12,math.floor((hi-4)/12)*12+1,12)):
    x=sgn*xx
    if lo< -70 and zz< -70 and xx<16:continue
    name='CMD_'+key+'_Task_%s_%s'%(xx,j);box(name+'_Housing',x-.72,x+.72,110.62,111,zz-.21,zz+.21,'warm_walnut'if idx==3 else'staff_zinc','fixture');box(name+'_Lens',x-.65,x+.65,110.60,110.62,zz-.15,zz+.15,'staff_opal','fixture');marker='DATUM_light_'+key+'_%s_%s'%(xx,j);p0=[x,110.59,zz];datum(marker,p0,{'profile':'crown_task','direction':'down'});D['light_markers'].append({'name':marker,'position':p0,'direction':[0,-1,0],'profile':'crown_task','programme_key':key,'temperature':'warm'if idx==3 else'cool','suggested_color':[1.0,.84,.68]if idx==3 else[.78,.88,1.0],'suggested_range':10.0,'suggested_spot_angle_degrees':76})
 # Gallery and screened corridor source fixtures: directional rows, no hidden point sources.
 for x in [-7.5,0,7.5]:
- for z in range(-72,61,12):
+ for z0 in range(-72,61,12):
+  z=56 if x!=0 and z0==60 else z0
   name='CMD_RouteLight_X%s_Z%s'%(str(x).replace('.','p'),z);box(name+'_Housing',x-.2,x+.2,110.58,111,z-.74,z+.74,'staff_zinc','fixture');box(name+'_Lens',x-.15,x+.15,110.56,110.58,z-.67,z+.67,'staff_opal','fixture');mark='DATUM_light_route_%s_%s'%(str(x).replace('.','p'),z);p0=[x,110.55,z];datum(mark,p0,{'profile':'crown_route','direction':'down'});D['light_markers'].append({'name':mark,'position':p0,'direction':[0,-1,0],'profile':'crown_route','temperature':'cool','suggested_color':[.78,.88,1.0],'suggested_range':9.0,'suggested_spot_angle_degrees':70})
 # Four segmented bearing spines. Every collar, shoe and face rib stays inside audited0.8×1.2 footprint.
 levels=[-3.2,0,6,12,16.5,21,27,35.5,44,52.5,61,69.5,78,84,88.5,93,97.5,102,106.5,111,114]

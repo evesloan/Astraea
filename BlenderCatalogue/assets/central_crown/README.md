@@ -21,7 +21,7 @@ The source contains six enclosed shells, screened side circulation, ten aperture
 - Exact downward light markers sit10mm below visible opal lens undersides; warm/cool colours and local ranges are recorded in the contract
 - Glass material: ASTRAEA_crown_tinted_glass. Runtime batches use CMD_CELL_X{cell}_Y{cell}_Z{cell}_ASTRAEA_crown_tinted_glass
 - All runtime meshes use concave static surface collision. Glass is visibly present and has real closed faces. Do not replace the whole kit with convex collision
-- The public route X±4 stays clear. Side corridors keep the bounded controlled crossings from the construction brief
+- The full6m northern public belt X±48/Z−80..−74 and public route X±4 stay clear. North control door planes areX±8/Z−73.80, facing north and opening south; full-width returns join the actual screen-to-room boundary. Navigation and Communications retain1172m² each after the explicit north-wing revision. Side corridors keep the bounded controlled crossings from the construction brief
 
 ## Bearing frame
 

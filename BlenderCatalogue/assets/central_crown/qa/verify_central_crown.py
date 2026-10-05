@@ -62,10 +62,15 @@ for programme in D['programmes']:
  for p in P:
   if programme['programme_key']in p['name']:
    assert all(in_polygon(v[0],v[2],programme['boundary'])for v in p['vertices_world']),(p['name'],'outside programme')
+purlin_sections={}
 for q in P:
  if q['name'].startswith('CMD_RoofPurlin'):
-  assert any(p['name'].startswith('CMD_Longitudinal')and overlap(q['world_aabb'],p['world_aabb'])for p in P),(q['name'],'no longitudinal bearing')
-
+  b=q['world_aabb'];purlin_sections.setdefault(tuple(b[2:]),[]).append(b)
+for section,boxes in purlin_sections.items():
+ whole=[min(b[0]for b in boxes),max(b[1]for b in boxes),*section]
+ assert any(p['name'].startswith('CMD_Longitudinal')and overlap(whole,p['world_aabb'])for p in P),(section,'no longitudinal bearing')
+ spans=sorted((b[0],b[1])for b in boxes)
+ assert all(abs(a[1]-b[0])<1e-5 for a,b in zip(spans,spans[1:])),('disconnected purlin segments',section)
 # Leaf OBB vs source AABB separating-axis test. Rotations use actual Blender hinge-local parts.
 bpy.ops.wm.open_mainfile(filepath=str(C/'assets/staff_threshold/source/AST-STF-008.blend'))
 leaf_data=[];fixed=[]

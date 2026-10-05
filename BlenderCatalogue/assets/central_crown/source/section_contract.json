@@ -19,11 +19,11 @@
         ],
         [
           16,
-          -78
+          -74
         ],
         [
           36,
-          -78
+          -74
         ],
         [
           36,
@@ -56,7 +56,8 @@
         "lower_glass_abs_x": 35.1,
         "upper_glass_abs_x": 35.95,
         "application": "Framed outward-canted glazing, ceiling coordinated; celestial scene and future neighbouring pavilions still require visual review"
-      }
+      },
+      "fore_cross_street_revision": "Trim north wing from\u221278 to\u221274 to preserve a6m public cross-street on the existing apron; inner notch\u221270 retained"
     },
     {
       "programme_key": "D18_directory_03",
@@ -64,11 +65,11 @@
       "boundary": [
         [
           -36,
-          -78
+          -74
         ],
         [
           -16,
-          -78
+          -74
         ],
         [
           -16,
@@ -99,7 +100,8 @@
       "operational_fit": "Unfurnished connected programme shell; no working command simulation",
       "window_intent": {
         "policy": "Deliberately enclosed command workspace; do not force glazing toward future private pavilions"
-      }
+      },
+      "fore_cross_street_revision": "Trim north wing from\u221278 to\u221274 to preserve a6m public cross-street on the existing apron; inner notch\u221270 retained"
     },
     {
       "programme_key": "D18_directory_04",
@@ -262,7 +264,7 @@
       }
     }
   ],
-  "existing_programme_substrate_m2": 6664,
+  "existing_programme_substrate_m2": 6504,
   "public_gallery": {
     "x": [
       -4,
@@ -283,7 +285,7 @@
         -6
       ],
       "z": [
-        -78,
+        -74,
         60
       ]
     },
@@ -294,21 +296,23 @@
         10
       ],
       "z": [
-        -78,
+        -74,
         60
       ]
     }
   ],
   "controlled_crossings": [
     {
-      "x": -5,
-      "z": -74,
-      "door_yaw": 1.5707963267948966
+      "x": -8,
+      "z": -73.8,
+      "door_yaw": 3.141592653589793,
+      "approach": "North-facing from retained public cross-street; front frame plane\u221273.98 stays0.02m behind clear belt"
     },
     {
-      "x": 5,
-      "z": -74,
-      "door_yaw": -1.5707963267948966
+      "x": 8,
+      "z": -73.8,
+      "door_yaw": 3.141592653589793,
+      "approach": "North-facing from retained public cross-street; front frame plane\u221273.98 stays0.02m behind clear belt"
     },
     {
       "x": -5,
@@ -666,6 +670,21 @@
     "REF-240d196d5a"
   ],
   "reference_application": "Window composition/profile and ceiling integration before furnishings. Use original stylized materials and restrained geometry rather than copying photoreal detail. Staff command rooms remain distinct from guest resort spaces.",
+  "public_fore_cross_street": {
+    "x": [
+      -48,
+      48
+    ],
+    "z": [
+      -80,
+      -74
+    ],
+    "floor_y": 106.5,
+    "centreline_z": -77,
+    "gross_clear_width_m": 6,
+    "owner": "Existing D18_fore_apron",
+    "requirement": "No new room wall, screen, door frame or trim in this belt; physically verify its route and turns before replacing the old nominated Z\u221272 crossing"
+  },
   "catalogue_id": "AST-CMD-001",
   "family": "central_crown",
   "coordinate_mapping": "Blender=(Godot X,-Godot Z,Godot Y); export_yup=true; root world origin (0,0,0)",
@@ -814,11 +833,11 @@
     {
       "name": "controlled_crossing_01",
       "position": [
-        -5,
+        -8,
         106.5,
-        -74
+        -73.8
       ],
-      "yaw": 1.5707963267948966,
+      "yaw": 3.141592653589793,
       "file": "AST-STF-008.glb",
       "marker": "DATUM_door_crossing_01",
       "wall_aperture_half_width": 1.375,
@@ -826,17 +845,22 @@
       "fixed_frame_outer_half_width": 1.38,
       "fixed_frame_outer_height": 2.82,
       "fixed_frame_half_depth": 0.18,
-      "screen_half_depth": 0.08,
-      "join_overlap_m": 0.005
+      "join_overlap_m": 0.005,
+      "wall_inside_thickness": 0.16,
+      "north_public_belt_frame_clearance_m": 0.02,
+      "full_north_return_x_span": [
+        -10,
+        -5
+      ]
     },
     {
       "name": "controlled_crossing_02",
       "position": [
-        5,
+        8,
         106.5,
-        -74
+        -73.8
       ],
-      "yaw": -1.5707963267948966,
+      "yaw": 3.141592653589793,
       "file": "AST-STF-008.glb",
       "marker": "DATUM_door_crossing_02",
       "wall_aperture_half_width": 1.375,
@@ -844,8 +868,13 @@
       "fixed_frame_outer_half_width": 1.38,
       "fixed_frame_outer_height": 2.82,
       "fixed_frame_half_depth": 0.18,
-      "screen_half_depth": 0.08,
-      "join_overlap_m": 0.005
+      "join_overlap_m": 0.005,
+      "wall_inside_thickness": 0.16,
+      "north_public_belt_frame_clearance_m": 0.02,
+      "full_north_return_x_span": [
+        5,
+        10
+      ]
     },
     {
       "name": "controlled_crossing_03",
@@ -2002,11 +2031,11 @@
       "suggested_spot_angle_degrees": 70
     },
     {
-      "name": "DATUM_light_route_-7p5_60",
+      "name": "DATUM_light_route_-7p5_56",
       "position": [
         -7.5,
         110.55,
-        60
+        56
       ],
       "direction": [
         0,
@@ -2530,11 +2559,11 @@
       "suggested_spot_angle_degrees": 70
     },
     {
-      "name": "DATUM_light_route_7p5_60",
+      "name": "DATUM_light_route_7p5_56",
       "position": [
         7.5,
         110.55,
-        60
+        56
       ],
       "direction": [
         0,
@@ -2559,7 +2588,7 @@
     "No operational command simulation, role-based access enforcement or capacity addition"
   ],
   "source_inputs": {
-    "data/architecture/CENTRAL_CROWN_CONSTRUCTION.json": "ed305755b1b6c478b03a045292a0cf3dd4a52da9bb9312b669affc893ffbec01",
+    "data/architecture/CENTRAL_CROWN_CONSTRUCTION.json": "e0b3ee4585a7e04796af3950bd2cae332bf68eedad93e99625d65399cf7a688a",
     "docs/CROWN_PIER_RUNTIME_AUDIT.json": "3b7c206eaf2491ce9da027884c0caa60d0eb4eb1781912e9e74445918d581633",
     "assets/staff_threshold/source/AST-STF-008.blend": "1a2f79dfcaeb336abe2c548c339e0c980213704ffd64432161284c4ab6b13447",
     "assets/staff_threshold/exports/AST-STF-008.glb": "d3ab5143760df1d68958cf063cc1b57ff3e4988cbea8d0a632757a5102a1da97"
@@ -2581,7 +2610,8 @@
         35.95
       ],
       "glass_thickness_x": 0.07,
-      "outermost_frame_abs_x": 35.995,
+      "outermost_mullion_abs_x": 35.995,
+      "outermost_frame_abs_x": 36.0,
       "mullions_z": [
         -67,
         -61,
@@ -2609,7 +2639,8 @@
         35.95
       ],
       "glass_thickness_x": 0.07,
-      "outermost_frame_abs_x": 35.995,
+      "outermost_mullion_abs_x": 35.995,
+      "outermost_frame_abs_x": 36.0,
       "mullions_z": [
         -18,
         -12,
@@ -2636,7 +2667,8 @@
         35.95
       ],
       "glass_thickness_x": 0.07,
-      "outermost_frame_abs_x": 35.995,
+      "outermost_mullion_abs_x": 35.995,
+      "outermost_frame_abs_x": 36.0,
       "mullions_z": [
         -20,
         -14,
