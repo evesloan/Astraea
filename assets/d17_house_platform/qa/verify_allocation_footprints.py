@@ -54,8 +54,10 @@ def run(root):
     contract_path = FAMILY / 'source/section_contract.json'
     contract = json.loads(contract_path.read_text())
     specs = list(contract['footing_specs'])
-    if contract.get('royalty_frame_candidate'):
-        b = contract['royalty_frame_candidate']['bounds']
+    for key in ['royalty_frame_candidate', 'transverse_frame_candidate']:
+        if not contract.get(key):
+            continue
+        b = contract[key]['bounds']
         specs.append({'centre_xz': [(b['x'][0]+b['x'][1])/2, (b['z'][0]+b['z'][1])/2],
                       'size_xz': [b['x'][1]-b['x'][0], b['z'][1]-b['z'][0]]})
     rows = [{'centre_xz': s['centre_xz'], 'bounds': footprint(s), 'hits': hits(s)} for s in specs]
