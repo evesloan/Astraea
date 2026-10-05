@@ -54,7 +54,7 @@ def run(root):
     contract_path = FAMILY / 'source/section_contract.json'
     contract = json.loads(contract_path.read_text())
     specs = list(contract['footing_specs'])
-    for key in ['royalty_frame_candidate', 'transverse_frame_candidate']:
+    for key in ['royalty_frame_candidate', 'transverse_frame_candidate', 'aft_cross_frame_candidate']:
         if not contract.get(key):
             continue
         b = contract[key]['bounds']

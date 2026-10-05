@@ -83,3 +83,9 @@ Next bounded study: a second cross-frame near the aft part of Royalty790, preser
 The proposed aft cross-strip X99.6..108.4/Z45.4..46.6/Y−.45..101.76 has16 clear actual static slices. Both X100/Z46 andX108/Z46 full-height footprints touch only intended lower hull; all five rays hit band00. They remain unbuilt. A whole upper Royalty reservation X94..118/Z29..51/Y101.76..106.5 has no current static contact, which does not resolve its architectural support or floor routes.
 
 Outer X116 candidates atZ29.6/46 touch band03 atcentreY10.606685 and normalY0.44713. The original low ray origin missed because it was below this surface; the retained corrected query starts atY20. Do not call these keel bearings, reuse the band00-only source builder unchanged, or infer a floating flat foundation. See qa/remaining_support_study.json and its exact query receipts. No geometry was added by these latest checks.
+
+## Second cross-frame source, 21:14 UTC
+
+The aft X100/108 frame atZ46 is now authored on two additional actual band00 hull seats. All88 prior objects remain exact, with37 added meshes. Its new two chords,16 rails/diagonals and transfer add69 verified geometric contacts; hull source QA now samples405 rays across five seats. The combined ledger accounts for all121 editable meshes; raw export contains1452 triangles in75 batches with four unchanged markers. Current preservation proof: qa/royalty_aft_cross_verification.json against cataloguee8df16b. Source-only image reviewed. No Godot geometry changed.
+
+The supported inner framework is still only X100..108. Whole Royalty floor X94..118 is not approved as an unsupported14m/10m projection from the original line. West/east edges need deliberate supported roof/hanger or additional bearing design; lower D16 guest volumes remain protected. OuterX116 needs a new actual band03 source-seat fit and must not inherit the band00 normal/height assumptions. No room floors, connected routes or upper level are installed.
