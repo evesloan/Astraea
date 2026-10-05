@@ -40,8 +40,19 @@ assert all(a['catalogue_id']!=AID or a['family']=='thread_shell_architecture' fo
 m=bpy.data.materials.new('RetailVisibleGlass');m.use_nodes=True;b=m.node_tree.nodes.get('Principled BSDF');b.inputs['Base Color'].default_value=(.23,.42,.44,.28);b.inputs['Alpha'].default_value=.28;mats['glass']=m
 F=52.5
 def xyz(x,y,z):return(x-8,-(z+216),y-F)
-def h(x,z=0):return F+5.25+(x-8)*.04
-def wall(name,a,b,lo,hi,width,role):
+def h(x,z=0):
+ profile=D['public_ceiling_profile']
+ for (xa,ya),(xb,yb)in zip(profile,profile[1:]):
+  if xa<=x<=xb:return ya+(yb-ya)*(x-xa)/(xb-xa)
+ return profile[0][1]if x<profile[0][0]else profile[-1][1]
+def wall(name,a,b,lo,hi,width,role,_split=True):
+ if _split and (callable(lo)or callable(hi))and abs(b[0]-a[0])>.00001:
+  ratios=sorted([0.,1.]+[(x-a[0])/(b[0]-a[0])for x,y in D['public_ceiling_profile'][1:-1]if min(a[0],b[0])<x<max(a[0],b[0])])
+  if len(ratios)>2:
+   result=None
+   for i,(u,v)in enumerate(zip(ratios,ratios[1:])):
+    aa=(a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u);bb=(a[0]+(b[0]-a[0])*v,a[1]+(b[1]-a[1])*v);result=wall(name+'_'+str(i),aa,bb,lo,hi,width,role,False)
+   return result
  ax,az=a;bx,bz=b;dx=bx-ax;dz=bz-az;length=math.hypot(dx,dz);nx=-dz/length*width/2;nz=dx/length*width/2
  v=[]
  for side in [-1,1]:
@@ -78,7 +89,7 @@ wall('TAIL_EntryLintel',(8,-219),(8,-213),F+4.8,h,.42,'retail_terracotta_enamel'
 # Rising public ceiling with real higher pockets exposing the column capitals.
 for i,tri in enumerate(D['public_triangles']):ceiling('TAIL_PublicCeiling_'+str(i),tri,h,'ivory_enamel')
 for index,ring in enumerate(D['ceiling_coffers']):
- for i,(a,b)in enumerate(zip(ring,ring[1:]+ring[:1])):wall('TAIL_CapitalCoffer_%s_%s'%(index,i),a,b,h,60.76,.12,'warm_walnut')
+ for i,(a,b)in enumerate(zip(ring,ring[1:]+ring[:1])):wall('TAIL_CapitalCoffer_%s_%s'%(index,i),a,b,lambda x,z:h(x,z)+.12,60.76,.12,'warm_walnut')
 for i,tri in enumerate(D['service_triangles']):ceiling('TAIL_ServiceCeiling_'+str(i),tri,F+3.7,'staff_white_paint')
 # A lower porch marks the promenade without replacing the taller shop volume.
 slab('TAIL_PromenadeCanopy',4.05,8.0,-232,-200,F+4.6,F+4.77,'ivory_enamel')
@@ -98,7 +109,10 @@ for pod in D['fitting_pods']:
  datum('fitting_seat_'+key,xyz(x1-.74,F+.50,z));datum('fitting_approach_'+key,xyz(x1-2.2,F,z))
  # Useful hooks/rack use the nearby bench and remain inside the opaque bay.
  for i,zz in enumerate([z-1.15,z,z+1.15]):
-  wall('TAIL_FittingHook_%s_%s'%(key,i),(x1-.28,zz),(x1-.52,zz),F+1.42,F+1.50,.08,'champagne_metal')
+  wall('TAIL_FittingHook_%s_%s'%(key,i),(x1-.08,zz),(x1-.52,zz),F+1.42,F+1.50,.08,'champagne_metal')
+# The upper rear screen closes the volume above the lower fitting and staff roofs.
+for i,(a,b,low)in enumerate([(-234,-228.5,F),(-228.5,-222.5,F+3.4),(-222.5,-212.5,F+3.7),(-212.5,-206.5,F+3.4),(-206.5,-197,F)]):
+ wall('TAIL_UpperStaffScreen_'+str(i),(37,a),(37,b),low,lambda x,z:h(x,z)+.12,.18,'ivory_enamel')
 # A closed staff threshold leads to the separately enclosed rear branch.
 for a,b in [(-222.5,-216.75),(-214.25,-212.5)]:wall('TAIL_ServiceScreen_'+str(a),(37,a),(37,b),F,F+3.7,.18,'ivory_enamel')
 wall('TAIL_ServiceDoorHeader',(37,-216.75),(37,-214.25),F+2.63,F+3.7,.18,'ivory_enamel')
@@ -119,7 +133,7 @@ for index,(cx,cz,start,end)in enumerate([(19,-226,-65,65),(19,-206,115,245)]):
  for i in [0,6,12]:
   x,z=points[i];slab('TAIL_DisplayPost_%s_%s'%(index,i),x-.045,x+.045,z-.045,z+.045,F+.20,F+1.70,'champagne_metal')
  for i in [2,4,6,8,10]:
-  x,z=points[i];datum('fabric_%s_%s'%(index,i),xyz(x,F+1.60,z))
+  x=(points[i][0]+points[i+1][0])/2;z=(points[i][1]+points[i+1][1])/2;datum('fabric_%s_%s'%(index,i),xyz(x,F+1.60,z))
 # Actual fixture housings touch their ceiling or private roof.
 fixtures=[('public_'+str(i),x,z,h(x,z),True)for i,(x,z)in enumerate([(18,-228),(18,-204),(22,-216),(32,-217)])]+[('private_'+str(i),33,z,F+3.4,True)for i,z in enumerate([-225.5,-209.5])]+[('staff_'+str(i),x,z,F+3.7,False)for i,(x,z)in enumerate([(40,-227),(40,-209),(22,-194.5)])]
 for key,x,z,top,warm in fixtures:

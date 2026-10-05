@@ -20,7 +20,12 @@ columns=[[13,-226],[13,-206],[26,-230],[26,-216],[26,-202]]
 for x,z in columns:assert outer.covers(__import__('shapely').geometry.Point(x,z).buffer(1.33))
 D={'id':'D09_thread_shell','programme_key':'D09_directory_04','historical_room_id':'D09_tailor3','name':'Thread & Shell','status':'Partial real destination under construction; no completed shop, sales or species-fit claim','origin':[8,52.5,-216],'floor_y':52.5,'protected_below':'D08 volume below52.26; no new underfloor intrusion','protected_above':'D10_directory_04 / D10_banquet3 Orchard food hall','cover_top_y':61,'cover_underside_y':60.76,'allocation':[[8,-250],[54,-250],[54,-182],[8,-182]],'public_outline':[list(v)for v in outer.exterior.coords[:-1]],'floor_boundary':boundary,'floor_triangles':[[list(v)for v in t.exterior.coords[:3]]for t in tri.geoms],'columns':columns,'public_entry':[8,-216],'service_entry':[40,-197],'fitting_pods':[{'id':'D09_tailor3_fitting_01','front_x':29,'back_x':37,'center_z':-225.5,'width':6.0},{'id':'D09_tailor3_fitting_02','front_x':29,'back_x':37,'center_z':-209.5,'width':6.0}],'door_variant':{'file':'AST-DOR-002_wide.glb','clear_opening_m':2.4,'outer_case_width_m':5.16},'structural_area_m2':footprint.area,'explicit_limits':['D10 cap is a future floor substrate, not an implemented food hall','Approaches join current structural spine; complete segregated service transit remains pending','No external window or hull-shell claim','No extra addressed small shop, accommodation or population']}
 ceiling=outer.difference(unary_union([Point(x,z).buffer(1.55,quad_segs=4)for x,z in columns]))
-D['public_triangles']=[[list(v)for v in t.exterior.coords[:3]]for t in constrained_delaunay_triangles(ceiling).geoms]
+profile=[[8,57.75],[13,58.8],[20,59.65],[26,59.85],[32,59.25],[39,58.75]]
+D['public_ceiling_profile']=profile
+D['public_triangles']=[]
+for (xa,ya),(xb,yb)in zip(profile,profile[1:]):
+ band=ceiling.intersection(box(xa,-1000,xb,1000))
+ D['public_triangles'] += [[list(v)for v in t.exterior.coords[:3]]for t in constrained_delaunay_triangles(band).geoms]
 D['ceiling_coffers']=[[list(v)for v in h.coords[:-1]]for h in ceiling.interiors]
 D['service_boundary']=[list(v)for v in service.union(service_arrival).exterior.coords[:-1]]
 D['service_triangles']=[[list(v)for v in t.exterior.coords[:3]]for t in constrained_delaunay_triangles(service.union(service_arrival)).geoms]
