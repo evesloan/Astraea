@@ -1,6 +1,11 @@
 # Astraea current production status
 
-Updated2026-10-04 after the arrivals spacing, Vesper dining and watercourse passes. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
+Updated2026-10-05. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
+
+## Latest verified scope
+49 regression groups pass as of the Thread & Shell consultation-canopy checkpoint.153 catalogue designs are registered;100 are present through1162 whole-model instances. These are component counts, not finished rooms. Thread & Shell now has two private fitting bays, separate staff access and a lower sheltered consultation counter with supported sample storage. Public browsing/light refinement is in progress; sales, NPC use and final art remain absent. See THREAD_SHELL_PROGRESS.md.
+
+The remaining sections are chronological construction records. Earlier test, catalogue and furniture totals describe those dated stages and are superseded by later entries. Do not treat an earlier outstanding item as still absent when a later entry records its implementation.
 
 ## Implemented and checked scope
 - Godot4.6.3 Compatibility, one main ship,18 nonuniform deck datums and source-derived structural floor/opening meshes

@@ -24,6 +24,17 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 		light.spot_range=5 if staff or "private" in str(marker.name) else 10
 		light.spot_angle=75
 		light.shadow_enabled=true
+	for marker in architecture.find_children("DATUM_bounce_*","Node3D",true,false):
+		var light:=SpotLight3D.new()
+		root.add_child(light)
+		light.name="ThreadShellCeilingWash_"+str(marker.name)
+		light.global_position=marker.global_position
+		light.rotation.x=PI/2
+		light.light_color=Color(1,.96,.90)
+		light.light_energy=2.4
+		light.spot_range=7
+		light.spot_angle=75
+		light.shadow_enabled=true
 	for index in range(data.columns.size()):
 		var p:Array=data.columns[index]
 		var column:Node3D=ship.model(root,"AST-STR-001-H826.glb","ThreadShellBearing_"+str(index),Vector3(p[0],52.5,p[1]))
