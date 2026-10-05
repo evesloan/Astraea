@@ -272,7 +272,7 @@ func validate_core_openings() -> void:
 		"aft_public_core": [426.0, 441.35, 17], "aft_crown_link": [113.0, 128.35, 2]}
 	for prefix in expected:
 		for kind in ["lift", "stairs"]:
-			var id := str(prefix) + "_" + kind
+			var id: String = str(prefix) + "_" + str(kind)
 			var matches: Array = layout.voids.filter(func(item: Dictionary) -> bool: return str(item.id) == id)
 			if not check(matches.size() == 1, "Protected core opening missing/duplicated: " + id):
 				continue

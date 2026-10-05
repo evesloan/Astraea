@@ -56,6 +56,7 @@ func _ready() -> void:
 	load("res://scripts/primary_atrium_core.gd").build($ShipSpace/Districts,self,"res://data/architecture/FORE_MIDSHIP_PUBLIC_CORE.json")
 	load("res://scripts/primary_atrium_core.gd").build($ShipSpace/Districts,self,"res://data/architecture/AFT_MIDSHIP_PUBLIC_CORE.json")
 	load("res://scripts/primary_atrium_core.gd").build($ShipSpace/Districts,self,"res://data/architecture/AFT_PUBLIC_CORE.json")
+	load("res://scripts/central_command_crown.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/arrivals_fusion.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/star_atlas.gd").build($ShipSpace/Districts,self)
 	var cleaning_cart:RigidBody3D=(load("res://scripts/cleaning_cart.gd")as GDScript).new()
@@ -295,6 +296,7 @@ func _static_contacts(node: Node) -> void:
 
 func express_arrive(deck_index: int) -> bool:
 	if deck_index < 0 or deck_index >= deck_y.size(): return false
+	if deck_index==17:return arrive_at(Vector3(0,deck_y[deck_index]+0.1,-77),0.0)
 	return arrive_at(Vector3(5.5,deck_y[deck_index]+0.1,-72),0.0)
 
 func arrive_at(arrival: Vector3, facing_y: float) -> bool:

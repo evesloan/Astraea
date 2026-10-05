@@ -3,6 +3,8 @@
 Updated2026-10-05. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Latest verified scope
+Six central D18 command shells and their keel-bearing roof frame are integrated. Focused structure, ten-door operation, six-room walking circuit, loaded-cart approach and18-deck backbone checks pass, along with63 planning checks. Full84-check aggregate and visual review remain pending. Original floor/cap ownership,161 programme keys and1000 guest units are retained. See CENTRAL_CROWN_PROGRESS.md.
+
 The lower D01–D03 staff backbone is integrated and passing focused route, lift, boarding, cart-envelope and physical corner-turn checks. It connects synthesis and screened fusion maintenance to bounded home/depot thresholds. All51 planning checks and the corrected81-check runtime batch pass. Final normal/effects-off views confirm the fusion-portal seams are closed. Plain finishes, repetitive long streets, shadow stepping and fuller wayfinding remain unfinished. The new editable staff-network kit brings the catalogue to159 designs. See LOWER_STAFF_NETWORK_PLAN.md.
 
 75 runtime checks and45 planning checks now pass with all five public spine cores implemented: central D01–D18 plus four D01–D17 outlying cores. The new midship cores sit at Z−272/+272 to avoid fitted retail and aquatic floors; the aft core sits at Z432. Every new stop, actual stair traversal and loaded boarding is tested. Normal and effects-off views of the three new cores were reviewed; broad blank walls and sparse lighting remain unfinished, along with destination branches and the staff network. See REMAINING_PUBLIC_CORES_PROGRESS.md and FIVE_PUBLIC_CORES_VALIDATION.json.
