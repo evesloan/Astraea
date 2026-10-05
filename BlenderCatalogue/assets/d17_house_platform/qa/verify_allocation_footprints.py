@@ -52,7 +52,12 @@ def run(root):
     assert overlaps({'x': [0, 1.01], 'z': [0, 1]}, {'x': [1, 2], 'z': [0, 1]})
 
     contract_path = FAMILY / 'source/section_contract.json'
-    specs = json.loads(contract_path.read_text())['footing_specs']
+    contract = json.loads(contract_path.read_text())
+    specs = list(contract['footing_specs'])
+    if contract.get('royalty_frame_candidate'):
+        b = contract['royalty_frame_candidate']['bounds']
+        specs.append({'centre_xz': [(b['x'][0]+b['x'][1])/2, (b['z'][0]+b['z'][1])/2],
+                      'size_xz': [b['x'][1]-b['x'][0], b['z'][1]-b['z'][0]]})
     rows = [{'centre_xz': s['centre_xz'], 'bounds': footprint(s), 'hits': hits(s)} for s in specs]
     passed = all(not matches for row in rows for matches in row['hits'].values())
     report = {'pass': passed,
