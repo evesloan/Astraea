@@ -925,13 +925,16 @@ func validate_floor_chain() -> void:
 		var compiled: Array = generated.regions.filter(func(item: Dictionary) -> bool: return str(item.id) == id)
 		if check(compiled.size() == 1, "Missing/duplicate compiled floor: " + id):
 			check(absf(float(compiled[0].floor_y) - FLOOR_Y) < EPS and absf(float(compiled[0].thickness) - 0.24) < EPS and absf(float(compiled[0].structural_area_m2) - 704.0) < EPS, "Compiled floor datum/thickness/net area changed: " + id)
-		# Concave floor contacts are surface meshes: straddle both faces.
-		var owned_volume := AABB(Vector3(x0 + 0.002, SLAB_BOTTOM - 0.01, 80.002), Vector3(x1 - x0 - 0.004, 0.26, 21.996))
-		var found_owner := false
-		for hit in box_hits(owned_volume, crown_exclusions, id + " whole slab ownership"):
-			check(region_id(hit.collider) == id, "Duplicate or unintended physical owner inside new slab: " + id + " -> " + owner(hit))
-			found_owner = found_owner or region_id(hit.collider) == id
-		check(found_owner, "New platform has no actual compiled owner contact: " + id)
+		# One-sided concave surfaces require an exterior-centred query. A box
+		# centred inside the slab can be backface-culled even across both faces.
+		# Probe each real face separately, overlapping it by 5mm from outside.
+		for face in [["top", FLOOR_Y + 0.005], ["underside", SLAB_BOTTOM - 0.005]]:
+			var owned_surface := AABB(Vector3(x0 + 0.002, float(face[1]) - 0.01, 80.002), Vector3(x1 - x0 - 0.004, 0.02, 21.996))
+			var found_owner := false
+			for hit in box_hits(owned_surface, crown_exclusions, id + " whole slab " + str(face[0]) + " ownership"):
+				check(region_id(hit.collider) == id, "Duplicate or unintended physical owner at new slab " + str(face[0]) + ": " + id + " -> " + owner(hit))
+				found_owner = found_owner or region_id(hit.collider) == id
+			check(found_owner, "New platform has no actual compiled owner contact at " + str(face[0]) + ": " + id)
 		var slab := floors.get_node_or_null(id) as Node3D
 		if not check(slab != null, "Actual compiled slab absent: " + id):
 			continue
