@@ -1,6 +1,6 @@
 # Aft command platform increment
 
-2026-10-05. This is a source-authoring plan, not installed architecture.
+2026-10-05. The final source is installed and focused checks/visual review pass; the new full88-check aggregate is running. The original coordination reasoning follows.
 
 The next bounded batch is Ship status (D18_directory_08) and Emergency control (D18_directory_10). Each revised rectangle is936m² at floor106.5: X−36…−10 or10…36, Z66…102. Preserve a real6m transverse public street atZ60…66, centre63, instead of building over the current testedZ72 crossing. Its576m² is already supported by existing cap/apron. Replacing the nominated route requires actual walking and loaded-cart turns, not only editing a test coordinate.
 
@@ -15,3 +15,7 @@ The bridge's3,384m² missing floor and foyer/Horizon's5,517.2m² net missing flo
 Evidence: AFT_COMMAND_LAYOUT_SCREENING.json, AFT_COMMAND_PIER_RUNTIME_AUDIT.json and data/architecture/AFT_COMMAND_CONSTRUCTION.json. The full85-check central-crown batch already passed before this new source work; later runtime adoption will require fresh focused, aggregate and visual acceptance.
 
 Intermediate source candidate291bc55 is now installed with its1408m² floor. Six new/extended door operations and continuous room/street walking pass, as do906 loaded-cart/driver poses and actual forward/reverse travel across the controlled/public junction. Final source lighting revision, actual support-contact test, visual review and aggregate remain pending. See AFT_COMMAND_FOCUSED_VALIDATION.json; the old85-check baseline is not acceptance of this new increment.
+
+## Final-source focused acceptance
+
+Final002 export c7543f3c9bb6e1284511175f33dd559b5f2ca5eaf025899e66ac2d2230f962ce is installed. Actual constructed support chain,32 pier-envelope slices,10 keel rays,60 slab contacts,4 apron ties,170 core openings,30 fixture exits and2 backed signs pass. Six added/interface doors, continuous room/street walking and906 compound cart/driver poses plus physical forward/reverse loaded travel pass. Original central crown routes/contacts and21,863 whole-spine samples also pass.69 planning checks pass. Actual normal/effects-off gallery, side corridor and room images are retained in AFT_COMMAND_VISUAL_REVIEW.json; unfurnished plain interiors and operating systems remain unfinished. Full88 validation is underway and not yet claimed.
