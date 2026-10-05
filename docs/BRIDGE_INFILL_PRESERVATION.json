@@ -1,0 +1,21 @@
+{
+  "baseline_commit": "2aa90032c7f5dcc12349fd1d6684d0af082dc195",
+  "protected_existing_regions_exact": 242,
+  "comparison": "Whole compiled records, including raw triangles, rings, area, height, thickness, material and chunks",
+  "infill_priority": -10,
+  "new_regions": 3,
+  "new_floor_area_m2": 4480,
+  "total_regions": 245,
+  "total_triangles": 3963,
+  "compiler_unchanged": true,
+  "frozen_runtime_hashes_unchanged": true,
+  "focused_crown_structure": {
+    "passed": true,
+    "checks_including_import": 2,
+    "wall_seconds": 10.6187
+  },
+  "cause": "Unnecessary higher-priority disjoint differences rotated GEOS polygon rings and retriangulated existing slabs",
+  "fix": "Missing-only bridge infills cannot outrank existing coplanar owners",
+  "full_regression": "Pending rerun",
+  "planning_tests_passed": 77
+}
