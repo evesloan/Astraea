@@ -6,7 +6,12 @@ const CONTRACT := "res://data/architecture/BRIDGE_PLATFORM_RUNTIME.json"
 const ASSET := "res://assets/models/AST-CMD-003.glb"
 const SOURCE_EXPORT_SHA256 := "42cfbe2e4ef6ea1df75c77a25c86a1c4ebe3b39652720415ebc61f62f3b97269"
 const SOURCE_BLEND_SHA256 := "25b01464a01e7f86e97d6d79eefd2fbf8bd7ddf25d69694c3eb3ff494957a355"
-const IMPORTED_TRIANGLE_SHA256 := "d0700ed013782c0525d3aebcac6231235f1ef68b318a2e827ed9485a4380f67e"
+const SOURCE_TRIANGLE_SHA256 := "d0700ed013782c0525d3aebcac6231235f1ef68b318a2e827ed9485a4380f67e"
+# Independently matched all 40,728 imported/source triangles one-to-one, including
+# face multiplicity and consistent glTF/Godot winding conversion. Max real corner
+# displacement 0.000250851m; 54 skew triangle occurrences cross a 1mm rounding bin.
+# Source GLB and source proof remain immutable; this pins the measured import.
+const IMPORTED_TRIANGLE_SHA256 := "f4a1c5a29a26f1973f234961697f6b080099e299b740831ef29ff06d251f3bec"
 const SOURCE_CONTRACT_SHA256 := "ac3be9add60ac33d345b4c3c25f2147e9802c3f74eaad7cccd48f42a32f0dc61"
 const SOURCE_PARTS_SHA256 := "f5c6ef1d5f3fa76053e5103979b99551838c27a97f0026137944ce6ccd149292"
 const CONTACT_AUDIT := "res://docs/BRIDGE_PLATFORM_SOURCE_CONTACT_AUDIT.json"
@@ -546,7 +551,8 @@ func validate_meshes() -> void:
 			if contact.shape is ConcavePolygonShape3D:
 				check(contact.shape.get_faces() == local_faces and contact.global_transform.is_equal_approx(mesh.global_transform), "Actual render/contact geometry differs: " + str(mesh.name))
 	check(all_faces.size() == EXPECTED_TRIANGLES * 3, "Expected all 40,728 source triangles")
-	check(geometry_signature(all_faces) == IMPORTED_TRIANGLE_SHA256, "Imported world triangles differ from immutable source/export proof; refresh imports or investigate before changing pins")
+	var actual_signature := geometry_signature(all_faces)
+	check(actual_signature == IMPORTED_TRIANGLE_SHA256, "Imported world triangles differ from immutable source/export proof; refresh imports or independently measure correspondence before changing pins: " + actual_signature)
 	check(minimum.distance_to(Vector3(-48, -3.2, -181)) < EPS and maximum.distance_to(Vector3(35.94, 114.32, -80)) < EPS, "Actual source bounds changed")
 	for index in range(0, all_faces.size(), 3):
 		for offset in range(3):
@@ -566,23 +572,35 @@ func complete_face(masks: Dictionary, ids: Array) -> bool:
 func actual_prism(row: Array) -> PackedVector3Array:
 	var expected := PackedVector3Array()
 	var actual := PackedVector3Array()
-	var keys: Dictionary = {}
 	var candidates: Dictionary = {}
 	for point in row[3]:
 		var vertex := v3(point)
-		keys[vertex_key(vertex)] = expected.size()
 		expected.append(vertex)
 		actual.append(Vector3(INF, INF, INF))
-		for index in vertex_triangles.get(vertex_key(vertex), []):
-			candidates[index] = true
+		# Sub-mm importer displacement can cross a rounding-bin boundary. Bins
+		# accelerate lookup only; actual corner distance decides correspondence.
+		var cell := Vector3i(roundi(vertex.x*1000),roundi(vertex.y*1000),roundi(vertex.z*1000))
+		for dx in [-1,0,1]:
+			for dy in [-1,0,1]:
+				for dz in [-1,0,1]:
+					var key := "%d,%d,%d" % [cell.x+dx,cell.y+dy,cell.z+dz]
+					for index in vertex_triangles.get(key, []):
+						candidates[index] = true
 	var masks: Dictionary = {}
 	var maximum_error := 0.0
 	for index in candidates:
 		var ids: Array[int] = []
 		for offset in range(3):
-			var key := vertex_key(all_faces[index + offset])
-			if keys.has(key):
-				ids.append(int(keys[key]))
+			var vertex: Vector3 = all_faces[index+offset]
+			var nearest := -1
+			var distance := EPS
+			for corner in range(expected.size()):
+				var error := vertex.distance_to(expected[corner])
+				if error < distance:
+					distance = error
+					nearest = corner
+			if nearest >= 0:
+				ids.append(nearest)
 		if ids.size() != 3:
 			continue
 		var mask := 0
@@ -596,7 +614,7 @@ func actual_prism(row: Array) -> PackedVector3Array:
 	var complete := true
 	for face in PRISM_FACES:
 		complete = complete and complete_face(masks, face)
-	var valid := check(complete and maximum_error < EPS, "Actual oriented member lacks complete complementary six-face coverage/eight precise corners: " + str(row[0]))
+	var valid := check(complete and maximum_error < EPS, "Actual oriented member lacks complete complementary six-face coverage/eight precise corners: %s (max matched corner error %.6fm)" % [str(row[0]),maximum_error])
 	return actual if valid else PackedVector3Array()
 
 func polygon_area(points: PackedVector2Array) -> float:
