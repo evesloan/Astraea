@@ -19,3 +19,8 @@ The earlier court-only statement that all Orchard places were unfitted is supers
 
 ## Reference application
 The historical D10 atlas page 12 and v0.3 chapters 4, 5, 9, 21 and 32 governed the programme and section. The shopping-promenade reference informed the connected circulation and recessed warm thresholds. Hospitality's dining-edge reference was reopened for coordinated overhead form, material rhythm and table-scale enclosure. The older public-amenities blueprint was used for spatial intent only; its conflicting deck/count labels did not override the current atlas. This is not a claim that the current art matches every reference or has final approval.
+
+## Perimeter edge pass
+Twelve instances of the existing editable AST-DIN-005 acoustic wall/ceiling-return family now align with the north, south and western small-table groups. Each has a physically placed wash fixture.36floor-support samples and12source-to-receiver paths supplement the existing chair, route and staff-door checks. Full54/54 regression groups passed in204.6197seconds fixed60; graphical batch orchard-perimeter-bays-001 passed138.245seconds. Normal and effects-off north-edge views were inspected. The high blank ceiling and broad room composition remain unfinished; this local fit is not final dining art.
+
+The user has prioritized finalizing the complete ship layout across all18decks and sections. Further local dining refinement is deferred while the whole-ship plan/section, programme coverage and public/service connections are reconciled.
