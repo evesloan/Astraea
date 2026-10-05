@@ -80,8 +80,8 @@ func run() -> void:
 	var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)
 	assert(lift.phase=="idle" and lift.current_floor==0)
 	# Load the fixture on a stationary cabin, then test entirely physical carry.
-	var base:=Vector3(lift.gate_origin_xz.x,lift.floor_heights[0],lift.gate_origin_xz.y)
-	var offset:Vector3=base+Vector3(1.85,.04,0)-cart.global_position
+	var base:=lift.to_global(Vector3(lift.gate_origin_xz.x,lift.floor_heights[0],lift.gate_origin_xz.y))
+	var offset:Vector3=base+lift.global_basis*Vector3(1.85,.04,0)-cart.global_position
 	cart.global_position+=offset
 	cart.linear_velocity=Vector3.ZERO
 	cart.angular_velocity=Vector3.ZERO
@@ -91,7 +91,7 @@ func run() -> void:
 		product.linear_velocity=Vector3.ZERO
 		product.angular_velocity=Vector3.ZERO
 		product.sleeping=false
-	actor.spawn_position=base+Vector3(2.15,.1,1.25)
+	actor.spawn_position=base+lift.global_basis*Vector3(2.15,.1,1.25)
 	actor.global_position=actor.spawn_position
 	actor.velocity=Vector3.ZERO
 	for frame in range(60):await physics_frame
@@ -103,7 +103,7 @@ func run() -> void:
 	# Obstruction of the actual threshold must hold departure.
 	var blocker:=RigidBody3D.new()
 	blocker.gravity_scale=0
-	blocker.position=base+Vector3(-.1,1,0)
+	blocker.position=base+lift.global_basis*Vector3(-.1,1,0)
 	var contact:=CollisionShape3D.new()
 	var shape:=SphereShape3D.new()
 	shape.radius=.18
