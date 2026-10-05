@@ -4,24 +4,36 @@
   "name": "Connected aft commons court and Royalty790 lower platform architecture",
   "source": "source/AST-RES-006.blend",
   "export": "exports/AST-RES-006.glb",
-  "source_sha256": "c62d741dc8384e6ce1cbf6653be131121d75cc09314bfc434d8793d729453aed",
-  "export_sha256": "4523827bc3114f1f6072e1b0a4e53b3c002118683612f92253563dab8e4e1ae6",
+  "source_sha256": "a731cebb06fe7b4d8b18f2cf48d2da01ba3106d605dbf84b45e0b506d86dd0b4",
+  "export_sha256": "9582e20c70ad7baf172d35e5152fdd2f7574aa7c9f97e7ad18042cfc5dc9bd7e",
   "editable_mesh_count": 234,
   "floor_preview_meshes": 4,
   "runtime_mesh_batches": 28,
   "runtime_slab_owner": "Existing floor compiler only",
-  "status": "Source authored; QA and root-coordinated runtime acceptance pending",
+  "status": "Exact source/export/material/contact/preservation QA pass; root runtime and in-ship visual adoption pending",
   "variant_dependencies": [
     {
       "catalogue_id": "AST-COM-003",
       "variant": "aft_only",
       "source": "source/AST-COM-003_aft_only.blend",
       "export": "exports/AST-COM-003_aft_only.glb",
-      "source_sha256": "76ccdb970a857532f8b2982c696eba5cd7ef344e197542fa1755fc7f67166fc2",
+      "source_sha256": "01937b5acb17912b6bde50708c1ec031b3ac74ac2ead1a4d056f2006b952af04",
       "export_sha256": "6b559b69c13d0ea2e5cb16e42791aec6af495c377fcfbf074ebfb36f7e57ff18",
       "original_held_source_preserved": true
     }
   ],
   "new_units": 0,
-  "new_berths": 0
+  "new_berths": 0,
+  "verification": [
+    "qa/source_export_verification.json",
+    "qa/source_contact_graph.json",
+    "qa/reference_source_visual_review.json"
+  ],
+  "handoff": "HANDOFF.md",
+  "identity_plan": {
+    "new_authored_id": "AST-RES-006",
+    "unique_id_preexisting_scan": "No AST-RES-006 existed at retained f0a55b2 baseline",
+    "COM_variant": "AST-COM-003_aft_only shares existing catalogue ID, zero new unique designs",
+    "reused_RES005_components": "Eight exact original component owners preserved; do not separately instance entire RES005 frame"
+  }
 }

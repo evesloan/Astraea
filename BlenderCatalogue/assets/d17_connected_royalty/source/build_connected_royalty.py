@@ -14,6 +14,8 @@ BASE=C/'assets/d17_connected_royalty/source/verified_closed_COM003.blend'
 if not BASE.exists():BASE.write_bytes(subprocess.check_output(['git','-C',str(C),'show','3655b833f99048a109e30b3f5f39146afcc5b829:assets/starboard_house_upper/source/AST-COM-003.blend']))
 expected=json.loads((C/'assets/d17_house_platform/source/section_contract.json').read_text())['source_inputs']['catalogue/assets/starboard_house_upper/source/AST-COM-003.blend']
 assert sha(BASE)==expected
+previous_inputs=D.get('preserved_inputs',{})
+assert all(sha(C/p)==h for p,h in previous_inputs.items())
 D['preserved_inputs']={str(p.relative_to(C)):sha(p) for p in [COM,COM.parent.parent/'exports/AST-COM-003.glb',HELD,HELD.parent.parent/'exports/AST-RES-005.glb',C/'assets/starboard_house_upper/source/house_contract.json',C/'assets/d17_house_platform/source/section_contract.json']}
 # Preserve all held COM objects except restore the complete fore wall and remove its split additions.
 bpy.ops.wm.open_mainfile(filepath=str(COM));fore=['HC_ProfileWall_D17_-1_2','HC_Wainscot_D17_-1_2']
@@ -73,6 +75,9 @@ for name,x0,x1 in [('Left',78.43,78.5),('Right',81.5,81.57)]:box('CR_PortalFille
 box('CR_PortalFillet_Header',78.43,81.57,104.82,104.89,12.73,12.77,'champagne_metal','portal')
 # Exact union perimeter. No guard across the old floor seam or internal floor-owner joins.
 perimeter=[[78.5,14],[81.5,14],[81.5,20],[83.7,22],[91,22],[94,23.5],[94,29],[107,29],[110,30],[115,33],[118,38],[118,42],[115,47],[110,50],[108,51],[94,51],[94,35.5],[91,35.5],[91,28],[90,28],[87.5,29],[82.5,29],[78.5,26]]
+def inward(a,b,d):
+ t=(Vector(b)-Vector(a)).normalized();n=Vector((-t.y,t.x))*d
+ return list(Vector(a)+n),list(Vector(b)+n)
 guards=[]
 for i,(a,b) in enumerate(zip(perimeter,perimeter[1:]+perimeter[:1])):
  if i==0:continue
@@ -103,8 +108,9 @@ for x in [91,94]:box('CR_LaneRoofBeam_'+str(x),x-.12,x+.12,105.82,106.26,27.8,35
 # Main asymmetric lower room roof. Its top is the future upper slab soffit, with no hole yet.
 royal=D['floor_regions'][3]['boundary'];prism('CR_RoyaltyLowerRoof',royal,106.08,106.26,'ivory_enamel','ceiling')
 for i,(a,b) in enumerate(zip(royal,royal[1:]+royal[:1])):
- wall(f'CR_RoyaltyRoofBeam_{i:02d}',a,b,105.82,106.26,.36,'warm_walnut','structure')
- wall(f'CR_RoyaltyRoofFascia_{i:02d}',a,b,105.9,106.30,.46,'ivory_enamel','ceiling')
+ aa,bb=inward(a,b,.25)
+ wall(f'CR_RoyaltyRoofBeam_{i:02d}',aa,bb,105.82,106.26,.36,'warm_walnut','structure')
+ wall(f'CR_RoyaltyRoofFascia_{i:02d}',aa,bb,105.9,106.30,.46,'ivory_enamel','ceiling')
 # Proven footings root reused transfers; above-floor shoes/columns root roof ring.
 for label,x,z in [('WestFore',100,29.6),('InnerFore',108,29.6),('InnerAft',108,50.4)]:
  box('CR_RoofRoot_'+label,x-.16,x+.16,101.76,106.26,z-.18,z+.18,'champagne_metal','structure','retained transfer top Y101.76')
@@ -112,7 +118,7 @@ for label,x,z in [('WestFore',100,29.6),('InnerFore',108,29.6),('InnerAft',108,5
 wall('CR_RoofCrossFore',(94,29.6),(108.2,29.6),105.82,106.26,.34,'warm_walnut','structure')
 wall('CR_RoofCrossAft',(94,50.4),(108.2,50.4),105.82,106.26,.34,'warm_walnut','structure')
 # Short perimeter hangers also read as glazed view mullions; no new supports below the slab.
-hangers=[(78.5,18),(78.5,25.9),(81.5,19.9),(83.7,22),(87.5,29),(94,25.5),(91,32.8),(94,38),(94,44),(94,50.8),(107,29),(115,33),(118,38),(118,42),(115,47),(110,50)]
+hangers=[(78.5,18),(78.5,25.9),(81.5,19.9),(83.7,22),(87.5,29),(94,25.5),(91,32.8),(94.08,38),(94.08,44),(94.08,50.8),(107,29.08),(114.92,33.08),(117.92,38),(117.92,42),(114.92,46.92),(109.92,49.92)]
 for i,(x,z) in enumerate(hangers):box(f'CR_EdgeHanger_{i:02d}',x-.05,x+.05,101.76,105.98,z-.05,z+.05,'champagne_metal','structure')
 # A real recessed threshold: wide jamb/pocket volume stays within790, never in the lane.
 for label,z0,z1 in [('Fore',29.15,30.9),('Aft',33.9,35.25)]:box('CR_PrivateJamb_'+label,96.84,97.16,102,104.82,z0,z1,'ivory_enamel','private_threshold')
@@ -130,7 +136,7 @@ for i,(a,b) in enumerate(zip(sidebay,sidebay[1:]+sidebay[:1])):wall('CR_NestedBa
 for i,(x,z)in enumerate([(104,30.4),(108.5,31.8)]):box('CR_NestedBayRoofLink_'+str(i),x-.06,x+.06,105.44,106.12,z-.06,z+.06,'champagne_metal','structure')
 # View-led broad reveal follows the outward sweep, keeping the actual ship/celestial aperture unclaimed.
 for i in range(3,7):
- a,b=royal[i],royal[i+1]
+ a,b=inward(royal[i],royal[i+1],.59)
  wall('CR_ViewReveal_'+str(i),a,b,105.62,105.94,1.15,'ivory_enamel','view_reveal')
  wall('CR_ViewFillet_'+str(i),a,b,105.59,105.65,1.02,'champagne_metal','view_reveal')
 # Visible physical light fixtures with source markers for root's established light setup.
