@@ -65,8 +65,8 @@ static func build(parent:Node3D,ship:Node3D,contract_path:String="res://data/arc
 		label.name="PrimaryDeckSign_%02d"%(i+1)
 		label.text="D%02d  |  %s"%[deck_number,str(lift_data.get("district_label","Atrium core")).to_upper()]
 		label.font_size=48;label.pixel_size=.005
-		label.position=Vector3(-7.66,heights[i]+1.75,float(origin[2]))
-		label.rotation.y=PI/2
+		label.position=Vector3(float(data.get("sign_x",-7.66)),heights[i]+1.75,float(origin[2]))
+		label.rotation.y=float(data.get("sign_yaw",PI/2))
 		root.add_child(label)
 	lift.floor_heights.assign(heights);lift.deck_numbers.assign(decks)
 	lift.stop_ids.assign(ids);lift.stop_names.assign(names);lift.stop_codes.assign(codes)
