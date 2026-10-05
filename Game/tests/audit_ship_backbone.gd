@@ -18,6 +18,10 @@ func run()->void:
 		var fore_cross_z:float=-77 if deck.deck_id=="D18" else -72
 		var aft_cross_z:float=63 if deck.deck_id=="D18" else 72
 		var route:Array[Vector2]=[Vector2(0,-520)]
+		if deck.deck_id=="D18":
+			var bridge:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/BRIDGE_ENCLOSURE_RUNTIME.json"))
+			for point in bridge.public_route_with_bridge_doors_closed_xz.slice(1):
+				route.append(Vector2(point[0],point[1]))
 		if deck.deck_id!="D18":
 			for z in [-432.0,-272.0]:route.append_array([Vector2(0,z-11),Vector2(5.5,z-11),Vector2(5.5,z+18),Vector2(0,z+18)])
 		route.append_array([Vector2(0,-111),Vector2(5.5,-111),Vector2(5.5,fore_cross_z),Vector2(45,fore_cross_z),Vector2(45,-65.5),Vector2(side,-65.5),Vector2(side,65.5),Vector2(45,65.5),Vector2(45,aft_cross_z),Vector2(0,aft_cross_z)])

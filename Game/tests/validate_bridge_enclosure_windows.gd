@@ -105,6 +105,7 @@ func run() -> void:
 	for body in ship.find_children("*","CollisionObject3D",true,false):
 		if not body is StaticBody3D or body is AnimatableBody3D:
 			exclusions.append(body.get_rid())
+	check(FileAccess.get_sha256(CONTRACT)=="cbce60485b8bb2789fe6eed2a299871c923c83719570ee53fb5a49b78880a195","Final reviewed window contract changed")
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
 	var old: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/BRIDGE_PLATFORM_RUNTIME.json"))
 	validate_new_windows(data)

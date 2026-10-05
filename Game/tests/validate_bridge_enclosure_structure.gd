@@ -7,6 +7,8 @@ const ASSET := "res://assets/models/AST-CMD-004.glb"
 const AUDIT := "res://docs/BRIDGE_ENCLOSURE_SOURCE_CONTACT_AUDIT.json"
 const ROUNDTRIP := "res://docs/BRIDGE_ENCLOSURE_SOURCE_ROUNDTRIP.json"
 const EXPORT_SHA := "0c6d37681d76909ce14f8526b7f6bfadd10b8114b39d11cd12ba29a7e9970dbf"
+const ROUNDTRIP_SHA := "22132b95183fa7e0f5f5200864bef994baf152db48e13af09c2bacbbc0ae7361"
+const CONTRACT_SHA := "cbce60485b8bb2789fe6eed2a299871c923c83719570ee53fb5a49b78880a195"
 const AUDIT_SHA := "a204d808f5fe3d428cc5f4b7a76e7d61fa51ed3fb7a4449e86ddbf72b8218128"
 const EPS := 0.001
 var failures: Array[String] = []
@@ -242,10 +244,17 @@ func validate_portals() -> void:
 			check(ray(Vector3(x,101.5,z),Vector3(x,106.25,z),shell_exclusions).is_empty(),"New enclosure violates D17/core headroom")
 	# Demountable future crosslink remains sealed, with no invented exit.
 	for x in [-4.0,4.0]:
-		check(not ray(Vector3(x-0.3,108,-115),Vector3(x+0.3,108,-115),shell_exclusions).is_empty(),"Future crosslink wrongly left open")
+		# Infill is inward of X±4 with0.32m depth. Both endpoints must be
+		# outside it; an0.3m start on the starboard side begins inside a solid.
+		for direction in [-1.0,1.0]:
+			var hit := ray(Vector3(x-direction*0.5,108,-115),Vector3(x+direction*0.5,108,-115),shell_exclusions)
+			var expected_x := (3.68 if direction>0 else 4.0) if x>0 else (-4.0 if direction>0 else -3.68)
+			check(not hit.is_empty() and absf(hit.position.x-expected_x)<EPS,"Future crosslink infill exact inside/outside face missing")
 
 func run() -> void:
+	check(FileAccess.get_sha256(CONTRACT)==CONTRACT_SHA,"Final source contract metadata changed")
 	var data := read_json(CONTRACT)
+	check(FileAccess.get_sha256(ROUNDTRIP)==ROUNDTRIP_SHA,"Final exact roundtrip evidence changed")
 	var proof := read_json(ROUNDTRIP)
 	var audit := read_json(AUDIT)
 	check(FileAccess.get_sha256(ASSET)==EXPORT_SHA and str(data.get("export_sha256",""))==EXPORT_SHA and str(proof.get("export_sha256",""))==EXPORT_SHA,"Final reviewed source/export identity changed")
