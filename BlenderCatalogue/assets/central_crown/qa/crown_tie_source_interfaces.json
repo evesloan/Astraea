@@ -38,8 +38,9 @@
     "clear_below_walking_surface_m": 0.12,
     "edge_contact_face_area_m2": 0.2584,
     "slab_overlap_per_tie_m3": 0.05168,
-    "spine_overlap_per_tie_m3": 0.005168,
-    "contact_type": "Slab edge-seated restraint; no underside bearing because tie bottom stays0.05m above slab underside"
+    "contact_type": "Slab edge-seated restraint; no underside bearing because tie bottom stays0.05m above slab underside",
+    "hypothetical_solid_spine_envelope_overlap_per_tie_m3": 0.005168,
+    "hypothetical_spine_overlap_note": "This volume is only overlap with the original solid candidate query envelope, not actual built pier material."
   },
   "summary": {
     "ties_checked": 16,
@@ -8535,5 +8536,22 @@
     "scripts/starboard_house_upper.gd": "fe2a93cd56adff1c9c4e7e1a446b4a28f254400601d20378ee13946b7e1e2d58",
     "scripts/structural_floor_builder.gd": "449ab410664b83e243537a899ae46e658b9cd1b3f18de19b2e2690933854bf01",
     "scripts/vertical_commons.gd": "5b7a7a4fa5cf232b9fffcc7f15be26a56f3a4cd6a04d1defcb1676632eb8f143"
+  },
+  "built_pier_contact_clarification": {
+    "scope": "Later built source is a web and two chords, not a solid candidate box; retain proposed bounded ties without widening or extension.",
+    "actual_web_inner_abs_z": 70.48,
+    "actual_chord_inner_abs_z": 70.4,
+    "tie_outer_abs_z": 70.42,
+    "tie_to_web_gap_m": 0.06,
+    "contact_type": "Two-chord edge restraint",
+    "engagement_each_chord_xyz_m": [
+      0.04,
+      0.38,
+      0.02
+    ],
+    "combined_two_chord_overlap_per_tie_m3": 0.000608,
+    "hypothetical_solid_envelope_overlap_per_tie_m3": 0.005168,
+    "load_certification": false,
+    "verification_needed": "Parent final source/export verifier and runtime actual chord contacts; no full-width web seating claim."
   }
 }

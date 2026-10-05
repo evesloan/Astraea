@@ -49,7 +49,23 @@ for p in P:
  if p['group']in['roof','ceiling']:
   b=p['world_aabb'];assert b[2]>=109 and b[3]<=114.50001 and b[0]>=-36.00001 and b[1]<=36.00001 and b[4]>=-78.00001 and b[5]<=64.00001,(p['name'],b)
 assert not any(overlap(p['world_aabb'],[-4,4,106.51,110.5,-78,60])for p in P),'public route blocked'
+assert not any(overlap(p['world_aabb'],[-48,48,106.51,110.5,-80,-74])for p in P),'north cross-street belt blocked'
 assert not any(p['group']=='floor'for p in P)
+def in_polygon(x,z,ring):
+ inside=False
+ for a,b in zip(ring,ring[1:]+ring[:1]):
+  cross=(b[0]-a[0])*(z-a[1])-(b[1]-a[1])*(x-a[0])
+  if abs(cross)<1e-4 and min(a[0],b[0])-1e-5<=x<=max(a[0],b[0])+1e-5 and min(a[1],b[1])-1e-5<=z<=max(a[1],b[1])+1e-5:return True
+  if (a[1]>z)!=(b[1]>z) and x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0]:inside=not inside
+ return inside
+for programme in D['programmes']:
+ for p in P:
+  if programme['programme_key']in p['name']:
+   assert all(in_polygon(v[0],v[2],programme['boundary'])for v in p['vertices_world']),(p['name'],'outside programme')
+for q in P:
+ if q['name'].startswith('CMD_RoofPurlin'):
+  assert any(p['name'].startswith('CMD_Longitudinal')and overlap(q['world_aabb'],p['world_aabb'])for p in P),(q['name'],'no longitudinal bearing')
+
 # Leaf OBB vs source AABB separating-axis test. Rotations use actual Blender hinge-local parts.
 bpy.ops.wm.open_mainfile(filepath=str(C/'assets/staff_threshold/source/AST-STF-008.blend'))
 leaf_data=[];fixed=[]
@@ -86,9 +102,9 @@ for door in D['doors']:
  # This checks seam sealing without substituting a frame from its nominal aperture.
  fverts=[v for o in fixed for v in o['vertices']];fb=aabb(fverts);assert abs(fb[0]+1.38)<1e-5 and abs(fb[1]-1.38)<1e-5 and abs(fb[3]-2.82)<1e-5
  for side in [-1,1]:
-  q=[x,y+1.3,z+side*1.3775]
-  assert any(p['world_aabb'][0]-1e-6<=q[0]+(.01 if x>0 else-.01)<=p['world_aabb'][1]+1e-6 and p['world_aabb'][2]<=q[1]<=p['world_aabb'][3]and p['world_aabb'][4]<=q[2]<=p['world_aabb'][5]for p in P),(door['name'],'jamb_seam')
- assert any(p['world_aabb'][0]-1e-6<=x+(.01 if x>0 else-.01)<=p['world_aabb'][1]+1e-6 and p['world_aabb'][2]<=y+2.8175<=p['world_aabb'][3]and p['world_aabb'][4]<=z<=p['world_aabb'][5]for p in P),(door['name'],'header_seam')
+  q=[x+co*side*1.3775-si*.01,y+1.3,z-si*side*1.3775-co*.01]
+  assert any(p['world_aabb'][0]-1e-6<=q[0]<=p['world_aabb'][1]+1e-6 and p['world_aabb'][2]<=q[1]<=p['world_aabb'][3]and p['world_aabb'][4]-1e-6<=q[2]<=p['world_aabb'][5]+1e-6 for p in P),(door['name'],'jamb_seam')
+ assert any(p['world_aabb'][0]-1e-6<=x-si*.01<=p['world_aabb'][1]+1e-6 and p['world_aabb'][2]<=y+2.8175<=p['world_aabb'][3]and p['world_aabb'][4]-1e-6<=z-co*.01<=p['world_aabb'][5]+1e-6 for p in P),(door['name'],'header_seam')
  door_records.append({'name':door['name'],'angles_degrees':[0,90],'angle_step_degrees':1,'actual_moving_meshes':len(leaf_data),'samples':91*len(leaf_data),'new_source_collisions':0,'frame_side_overlap_m':.005,'frame_top_overlap_m':.005})
 # Exact downward marker origins are10mm below the lens, and all rays to existing floor are clear.
 for m in D['light_markers']:

@@ -70,26 +70,28 @@ for p in D['programmes']:
   wall('CMD_'+key+'_Wall_%02d'%i,axis,plane,lo,hi,inward,aps,win['z_range']if axis=='x'and plane==wx else None)
 # Screened corridor inner walls stay out of the public route X±4.
 for sign in [-1,1]:
- side='Port'if sign<0 else'Starboard';plane=sign*5;aps=[p['z']for p in D['controlled_crossings']if p['x']*sign>0]
+ side='Port'if sign<0 else'Starboard';plane=sign*5;aps=[p['z']for p in D['controlled_crossings']if abs(p['x']-sign*5)<1e-5]
  # Centre on the door plane, rather than copying an unrelated room wall thickness.
- wall('CMD_'+side+'_PublicScreen','x',plane-sign*.08,-78,60,sign,aps)
+ wall('CMD_'+side+'_PublicScreen','x',plane-sign*.08,-74,60,sign,aps)
  # Reset screen plane ap geometry so door plane is exact even though wall lies±0.08 around it.
  # The wall function only positions depth; all ten apertures are the same true frame width/height.
- wall('CMD_'+side+'_NotchClosure','x',sign*10,-78,-70,-sign)
- for zz,inside in [(-78,1),(60,-1)]:wall('CMD_'+side+'_CorridorEnd','z',zz,*sorted([sign*5,sign*10]),inside)
+ wall('CMD_'+side+'_NotchClosure','x',sign*10,-74,-70,-sign)
+ for zz,inside in [(-73.80,1),(60,-1)]:wall('CMD_'+side+'_CorridorEnd','z',zz,*sorted([sign*5,sign*10]),inside,[sign*8]if inside==1 else[])
  # Upper corridor beam and shallow coffer rims; no floor runner or raised threshold.
- box('CMD_'+side+'_CorridorCoffer',*sorted([sign*5.08,sign*5.42]),110.65,111,-78,60,'staff_bluegrey_paint','ceiling')
- box('CMD_'+side+'_CorridorRoomRim',*sorted([sign*9.60,sign*9.84]),110.76,111,-78,60,'staff_bluegrey_paint','ceiling')
+ box('CMD_'+side+'_CorridorCoffer',*sorted([sign*5.08,sign*5.42]),110.65,111,-74,60,'staff_bluegrey_paint','ceiling')
+ box('CMD_'+side+'_CorridorRoomRim',*sorted([sign*9.60,sign*9.84]),110.76,111,-74,60,'staff_bluegrey_paint','ceiling')
 # Clearances between programmes stay screened; short inboard outer closures fill the gaps.
 for sign,gaps in [(-1,[(-28,-24),(14,18)]),(1,[(-28,-24),(28,32)])]:
  for lo,hi in gaps:wall('CMD_InterProgrammeScreen','x',sign*10,lo,hi,sign)
 # Ten threshold canopies. Profiles project along entry direction, wholly above the true moving door.
 for i,door in enumerate(D['doors']):
- x,y,z=door['position'];s=1 if x>0 else-1;isroom='programme_key'in door
- a,b=sorted([x,x+s*(1.1 if isroom else .55)]);w=1.64 if isroom else 1.50
- profile=[(a,109.54),(b,109.69),(b,109.92),(a,109.92)] if s>0 else[(a,109.69),(b,109.54),(b,109.92),(a,109.92)]
- prism_z('CMD_Threshold_%02d_Profile'%(i+1),profile,z-w,z+w,'staff_bluegrey_paint','threshold')
- box('CMD_Threshold_%02d_Crest'%(i+1),a,b,109.93,110.00,z-w,z+w,'champagne_metal'if isroom and i in [0,2,3]else'staff_zinc','threshold')
+ x,y,z=door['position'];isroom='programme_key'in door;depth=1.1 if isroom else .55;w=1.64 if isroom else 1.50
+ co,si=math.cos(door['yaw']),math.sin(door['yaw'])
+ def portal_point(width,back,height):return(x+co*width-si*back,height,z-si*width-co*back)
+ vs=[portal_point(wi,de,he)for wi,de,he in[(-w,0,109.54),(w,0,109.54),(w,depth,109.69),(-w,depth,109.69),(-w,0,109.92),(w,0,109.92),(w,depth,109.92),(-w,depth,109.92)]]
+ mesh('CMD_Threshold_%02d_Profile'%(i+1),vs,FACES,'staff_bluegrey_paint','threshold')
+ vs=[portal_point(wi,de,he)for he in[109.93,110]for wi,de in[(-w,0),(w,0),(w,depth),(-w,depth)]]
+ mesh('CMD_Threshold_%02d_Crest'%(i+1),vs,FACES,'champagne_metal'if isroom and i in[0,2,3]else'staff_zinc','threshold')
  datum(door['marker'],door['position'],{'door_file':door['file'],'yaw_radians':door['yaw'],'programme_key':door.get('programme_key','controlled_crossing')})
 # Glazing: closed outward-canted sheets, steel pocketed jambs, continuous lower/upper rails and sloped soffit.
 D['windows']=[]
@@ -115,7 +117,7 @@ for p in D['programmes']:
  box('CMD_'+key+'_WindowHead',*sorted([sign*35.72,sign*36]),110.47,110.64,lo,hi,'staff_bluegrey_paint','glazing')
  for a,b in segments(lo,hi):
   prism_z('CMD_'+key+'_RisingViewSoffit',[(sign*33.90,110.72),(sign*35.76,110.55),(sign*36,111.0),(sign*33.90,111.0)],a,b,'ivory_enamel','ceiling')
- D['windows'].append({'programme_key':key,'side':w['side'],'z_range':[lo,hi],'glass_y':[y0,y1],'glass_centre_abs_x':[35.1,35.95],'glass_thickness_x':.07,'outermost_frame_abs_x':35.995,'mullions_z':bounds,'closed_glass_collision':True})
+ D['windows'].append({'programme_key':key,'side':w['side'],'z_range':[lo,hi],'glass_y':[y0,y1],'glass_centre_abs_x':[35.1,35.95],'glass_thickness_x':.07,'outermost_mullion_abs_x':35.995,'outermost_frame_abs_x':36.0,'mullions_z':bounds,'closed_glass_collision':True})
 # One closed roof body, no large outboard canopy. Split before rendering batches.
 box('CMD_RoofCeiling',-36,36,111,111.16,-78,64,'staff_white_paint','roof')
 for lo,hi,bot,top in D['roof_skin_levels_y']:
@@ -123,13 +125,15 @@ for lo,hi,bot,top in D['roof_skin_levels_y']:
   a,b=sorted([s*lo,s*hi]);box('CMD_SteppedRoofSkin',a,b,bot,top,-78,64,'staff_bluegrey_paint','roof')
   # Closed step returns meet adjacent top sheets. Not open planar facades.
   if lo>0:box('CMD_RoofStepReturn',s*lo-.08,s*lo+.08,bot,top+.18,-78,64,'staff_zinc','roof')
-for s in [-1,1]:box('CMD_RoofOuterFascia',*sorted([s*35.84,s*36]),110.63,114.04,-78,64,'staff_bluegrey_paint','roof')
-for z in [-78,63.84]:box('CMD_RoofEndFascia',-36,36,111,114.04,z,z+.16,'staff_bluegrey_paint','roof')
+for s in [-1,1]:box('CMD_RoofOuterFascia',*sorted([s*35.84,s*36]),111.16,113.84,-78,64,'staff_bluegrey_paint','roof')
+for z in [-78,63.84]:
+ for lo,hi,bot,top in D['roof_skin_levels_y']:
+  for sign in [-1,1]:box('CMD_RoofEndFascia',*sorted([sign*lo,sign*hi]),111.16,bot,z,z+.16,'staff_bluegrey_paint','roof')
 # Ceilings differ by programme through useful bay rhythm, integrated wall/window transitions and task zones.
 for idx,p in enumerate(D['programmes']):
  key=p['programme_key'];sgn=1 if p['entry_xz'][0]>0 else-1;zs=[v[1]for v in p['boundary']];lo,hi=min(zs),max(zs);a,b=sorted([sgn*11.1,sgn*33.9]);depth=[.20,.31,.25,.16,.34,.28][idx]
- box('CMD_'+key+'_InboardCeilingRibbon',*sorted([sgn*11.1,sgn*12.0]),111-depth,111,lo+.3,hi-.3,'staff_bluegrey_paint','ceiling')
- for zz in range(math.ceil((lo+3)/12)*12,math.floor((hi-3)/12)*12+1,12):box('CMD_'+key+'_CeilingCrossRib',a,b,111-depth,111,zz-.14,zz+.14,'staff_zinc'if idx in[1,4,5]else'ivory_enamel','ceiling')
+ box('CMD_'+key+'_InboardCeilingRibbon',*sorted([sgn*11.1,sgn*12.0]),111-depth,111,max(lo+.3,-69.7)if idx in[0,1]else lo+.3,hi-.3,'staff_bluegrey_paint','ceiling')
+ for zz in range(math.ceil((lo+3)/12)*12,math.floor((hi-3)/12)*12+1,12):box('CMD_'+key+'_CeilingCrossRib',*sorted([sgn*(16.3 if idx in[0,1]and zz< -70 else 11.1),sgn*33.9]),111-depth,111,zz-.14,zz+.14,'staff_zinc'if idx in[1,4,5]else'ivory_enamel','ceiling')
  # Room-wide task fixture rows, with respite's warmer material accent remaining restrained.
  for xx in [17,28]:
   for j,zz in enumerate(range(math.ceil((lo+4)/12)*12,math.floor((hi-4)/12)*12+1,12)):
@@ -152,13 +156,13 @@ for x,z in D['support']['pier_centres_xz']:
 for tie in D['support']['authored_ties']:box(tie['name'],*tie['world_aabb'],'staff_zinc','tie')
 # Transverse transfer girders atop four bearings, and three longitudinal members inside the roof.
 for z in [-71,71]:
- box('CMD_TransferGirder_Web',-51.5,51.5,111.45,113.82,z-.18,z+.18,'staff_bluegrey_paint','transfer')
+ box('CMD_TransferGirder_Web',-51.5,51.5,111.40,113.82,z-.18,z+.18,'staff_bluegrey_paint','transfer')
  for y in [111.25,113.82]:box('CMD_TransferGirder_Flange',-51.5,51.5,y,y+.18,z-.55,z+.55,'staff_zinc','transfer')
 for x in [-32,0,32]:
  box('CMD_Longitudinal_Web',x-.18,x+.18,111.05,113.15,-71.30,71.30,'staff_bluegrey_paint','transfer')
  for y in [111.05,112.99]:box('CMD_Longitudinal_Flange',x-.40,x+.40,y,y+.16,-71.3,71.3,'staff_zinc','transfer')
 # Short roof purlins seat ceiling/upper skin to the longitudinal system; no outboard curtain canopy.
-for z in range(-72,61,12):box('CMD_RoofPurlin',-35.84,35.84,113.10,113.88,z-.10,z+.10,'staff_bluegrey_paint','roof')
+for z in [-71]+list(range(-60,61,12)):box('CMD_RoofPurlin',-35.84,35.84,113.10,113.88,z-.10,z+.10,'staff_bluegrey_paint','roof')
 datum('DATUM_origin',[0,0,0]);scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1
 D['glass_material']='ASTRAEA_crown_tinted_glass';D['glass_batch_name_pattern']='CMD_CELL_X{cell}_Y{cell}_Z{cell}_ASTRAEA_crown_tinted_glass';D['label_backing']={'y':109.65,'room_front_plane_x':[10,-10],'solid_header_y':[109.315,111],'signage_in_source':False}
 (R/'source/section_contract.json').write_text(json.dumps(D,indent=2)+'\n');(R/'source/geometry_parts.json').write_text(json.dumps({'catalogue_id':AID,'parts':records},indent=2)+'\n')
@@ -168,10 +172,17 @@ for o in parts:o.data.calc_loop_triangles();triangles+=len(o.data.loop_triangles
 batches={}
 for o in parts:
  key=(o['cell_x'],o['cell_y'],o['cell_z'],o.data.materials[0].name);batches.setdefault(key,[]).append(o)
+# Build equivalent spatial render batches without hundreds of context-sensitive join operators.
 for key,obs in sorted(batches.items()):
- bpy.ops.object.select_all(action='DESELECT')
- for o in obs:o.select_set(True)
- bpy.context.view_layer.objects.active=obs[0];bpy.ops.object.join();bpy.context.object.name='CMD_CELL_X%d_Y%d_Z%d_%s'%key
+ name='CMD_CELL_X%d_Y%d_Z%d_%s'%key;verts=[];faces=[];uvs=[]
+ for o in obs:
+  offset=len(verts);verts.extend(tuple(v.co)for v in o.data.vertices);faces.extend(tuple(i+offset for i in f.vertices)for f in o.data.polygons);uvs.extend(tuple(v.uv)for v in o.data.uv_layers.active.data)
+ me=bpy.data.meshes.new(name);me.from_pydata(verts,[],faces);me.update();me.materials.append(obs[0].data.materials[0]);uv=me.uv_layers.new(name='MetreScaled')
+ for li,q in enumerate(uvs):uv.data[li].uv=q
+ ob=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(ob);ob['catalogue_id']=AID;ob['collision_contract']='concave_static_surface';ob['spatial_cell_metres']=12
+bpy.ops.object.select_all(action='DESELECT')
+for o in parts:o.select_set(True)
+bpy.ops.object.delete(use_global=False)
 bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True)
 manifest={'catalogue_id':AID,'family':FAMILY,'name':'Central D18 six-programme crown shells and four-spine roof frame','source':'source/'+AID+'.blend','export':'exports/'+AID+'.glb','source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'triangles':triangles,'editable_part_count':len(parts),'runtime_mesh_batches':len(batches),'light_marker_count':len(D['light_markers']),'coordinate_contract':'source/section_contract.json','status':'Editable construction kit; source verification pending; parent owns runtime integration and final art acceptance.'}
 (R/(AID+'.manifest.json')).write_text(json.dumps(manifest,indent=2)+'\n');print(json.dumps(manifest))
