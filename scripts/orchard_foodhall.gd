@@ -48,3 +48,25 @@ static func build(parent:Node3D,ship:Node3D)->void:
 		machine.set_meta("interaction_status","Static serving fixture; dispensing and guest service pending")
 		var storage:=architecture.find_child("DATUM_serviceware_"+str(i),true,false)as Node3D
 		ship.model(root,"AST-HSP-005.glb","OrchardServiceware_"+str(i),storage.global_position,-PI/2)
+
+	# Fitted perimeter dining edges reuse the authored acoustic family, aligned
+	# to actual small-table groups rather than enclosing a new generic box.
+	var bays: Array = []
+	for x in [27.8,34.0,40.2,46.0]:bays.append({"p":Vector3(x-2.7,61,-249.87),"yaw":0.0})
+	for x in [29.0,36.0,43.0]:bays.append({"p":Vector3(x+2.7,61,-182.13),"yaw":PI})
+	for z in [-229.0,-205.0,-199.0,-193.0,-187.0]:bays.append({"p":Vector3(8.13,61,z+2.7),"yaw":PI/2})
+	for i in range(bays.size()):
+		var bay:Node3D=ship.model(root,"AST-DIN-005.glb","OrchardAcousticBay_%02d"%i,bays[i].p,bays[i].yaw)
+		var source:=bay.find_child("DATUM_wash_source",true,false)as Node3D
+		var receiver:=bay.find_child("DATUM_wall_receiver",true,false)as Node3D
+		var wash:=SpotLight3D.new()
+		root.add_child(wash)
+		wash.name="OrchardPerimeterWash_%02d"%i
+		wash.global_position=source.global_position
+		wash.look_at(receiver.global_position)
+		wash.set_meta("illumination_anchor",receiver.global_position)
+		wash.spot_range=3.5
+		wash.spot_angle=65
+		wash.light_energy=.8
+		wash.light_color=Color(1,.95,.9)
+		wash.shadow_enabled=true

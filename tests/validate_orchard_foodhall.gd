@@ -69,6 +69,21 @@ func run() -> void:
 		for body in chair.find_children("*","StaticBody3D",true,false):omit.append(body.get_rid())
 		foot.exclude=omit
 		assert(not ship.get_world_3d().direct_space_state.intersect_ray(foot).is_empty(),"Dining chair needs supported floor")
+	var bays:=room.find_children("OrchardAcousticBay_*","Node3D",false,false)
+	assert(bays.size()==12)
+	for bay in bays:
+		var source:=bay.find_child("DATUM_wash_source",true,false)as Node3D
+		var receiver:=bay.find_child("DATUM_wall_receiver",true,false)as Node3D
+		var q:=PhysicsRayQueryParameters3D.create(source.global_position,receiver.global_position)
+		var hit:=ship.get_world_3d().direct_space_state.intersect_ray(q)
+		assert(hit.is_empty() or hit.position.distance_to(receiver.global_position)<.1,"Acoustic bay source blocked before its receiver")
+		for x in [.2,2.7,5.2]:
+			var p:Vector3=bay.global_transform*Vector3(x,.01,.3)
+			var floor_ray:=PhysicsRayQueryParameters3D.create(p+Vector3.UP*.04,p-Vector3.UP*.15)
+			var omitted:Array[RID]=[]
+			for body in bay.find_children("*","StaticBody3D",true,false):omitted.append(body.get_rid())
+			floor_ray.exclude=omitted
+			assert(not ship.get_world_3d().direct_space_state.intersect_ray(floor_ray).is_empty(),"Dining edge needs supported floor")
 	var approach_count:=0
 	for chair in chairs:
 		var usable:=false
