@@ -52,7 +52,10 @@ for level in [52.5,61]:
   slab('EX_NorthRecess_'+str(level)+'_'+str(x),x-.7,x+.7,-249.76,-249.70,level+1.1,level+3.1,'retail_terracotta_enamel')
 # East side ends at an actual upper food-hall approach; lower shop enclosure retained.
 slab('EX_EastLowerWall',23.84,24,-250,-236,52.5,61,'ivory_enamel')
-slab('EX_EastUpperWall',23.84,24,-250,-235.75,61,69.1,'ivory_enamel')
+slab('EX_EastUpperDado',23.84,24,-250,-235.75,61,62.1,'ivory_enamel')
+slab('EX_UpperDiningGlass',23.90,23.94,-249.9,-235.8,62.1,64.6,'glass')
+slab('EX_EastUpperTransom',23.84,24,-250,-235.75,64.6,69.1,'ivory_enamel')
+for z in [-249.9,-246.4,-242.9,-239.4,-235.8]:slab('EX_DiningWindowMullion_'+str(z),23.82,24.06,z-.06,z+.06,62.05,64.65,'warm_walnut')
 slab('EX_UpperPortalHeader',23.76,24.08,-235.75,-233,65.1,69.1,'retail_terracotta_enamel')
 slab('EX_NorthJoint',4,24,-250,-249.72,60.3,61,'warm_stone')
 # Profiled upper edge around the real switchback opening, with supported guards.
