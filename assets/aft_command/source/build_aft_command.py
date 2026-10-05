@@ -6,7 +6,7 @@ import bpy,bmesh,json,math,sys,hashlib
 from mathutils import Vector
 R=Path(__file__).resolve().parents[1];C=R.parents[1];AID='AST-CMD-002';FAMILY='aft_command'
 assert all(a['catalogue_id']!=AID or a['family']==FAMILY for a in json.loads((C/'catalogue_manifest.json').read_text())['assets'])
-D=json.loads((R/'source/section_contract.json').read_text());D['light_markers']=[]
+D=json.loads((R/'source/section_contract.json').read_text());D['light_markers']=[];D['doors']=[d for d in D['doors']if not d['name'].endswith('_exit')]
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 sys.path.insert(0,str(C/'standards'));import staff_materials,materials
 mats=staff_materials.materials();common=materials.materials();mats.update({k:common[k]for k in ['ivory_enamel','champagne_metal','warm_walnut']})
@@ -71,7 +71,7 @@ for sign in [-1,1]:
  side='Port'if sign<0 else'Starboard'
  wall('AFC_'+side+'_PublicScreen','x',sign*4.92,66.2,102,sign)
  wall('AFC_'+side+'_FrontReturn','z',66.2,*sorted([sign*5,sign*10]),1,[sign*7.5])
- wall('AFC_'+side+'_AftReturn','z',102,*sorted([sign*5,sign*10]),-1)
+ wall('AFC_'+side+'_AftReturn','z',102,*sorted([sign*5,sign*10]),-1,[sign*7.5])
  box('AFC_'+side+'_CorridorCoffer',*sorted([sign*5.08,sign*5.42]),110.65,111,66.2,102,'staff_bluegrey_paint','ceiling')
  box('AFC_'+side+'_CorridorRoomRim',*sorted([sign*9.60,sign*9.84]),110.76,111,66.2,102,'staff_bluegrey_paint','ceiling')
 # Deep profiled room portals and restrained controlled corridor entry hoods.
@@ -142,6 +142,10 @@ for z in D['support']['floor_cross_bearer_z']:
  for sign in [-1,1]:
   box('AFC_PlatformCrossBearer',*sorted([sign*4,sign*36]),105.88,106.28,z-.12,z+.12,'staff_bluegrey_paint','platform_support')
 for tie in D['support']['authored_ties']:box(tie['name'],*tie['world_aabb'],'staff_zinc','tie')
+# Bounded aft-return aperture revision: shared runtime leaves remain external.
+for sign,side in [(-1,'port'),(1,'starboard')]:
+ door={'name':'aft_command_'+side+'_exit','position':[sign*7.5,106.5,101.92],'yaw':0.0,'file':'AST-STF-008.glb','marker':'DATUM_door_aft_command_'+side+'_exit','wall_aperture_half_width':1.375,'wall_aperture_height':2.815,'fixed_frame_outer_half_width':1.38,'fixed_frame_outer_height':2.82,'fixed_frame_half_depth':.18,'join_overlap_m':.005}
+ D['doors'].append(door);datum(door['marker'],door['position'],{'door_file':door['file'],'yaw_radians':door['yaw'],'programme_key':'controlled_crossing'})
 datum('DATUM_origin',[0,0,0]);scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1
 D['windows']=[]
 (R/'source/section_contract.json').write_text(json.dumps(D,indent=2)+'\n');(R/'source/geometry_parts.json').write_text(json.dumps({'catalogue_id':AID,'parts':records},indent=2)+'\n')
