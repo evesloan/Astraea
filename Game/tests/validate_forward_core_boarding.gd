@@ -1,4 +1,6 @@
 extends SceneTree
+var target_lift_name := "ForwardPublicLift"
+var gate_z := -438.0
 func _initialize() -> void:call_deferred("run")
 func key(code:Key,pressed:bool) -> void:
 	var event:=InputEventKey.new()
@@ -14,10 +16,10 @@ func run() -> void:
 	var ship:Node3D=main.get_node("World360/Astraea")
 	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
 	var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)
-	var lift:Node3D=ship.find_child("ForwardPublicLift",true,false)
+	var lift:Node3D=ship.find_child(target_lift_name,true,false)
 	var local_products:Array[Vector3]=[]
 	for product in cart.products:local_products.append(cart.to_local(product.global_position))
-	cart.position=Vector3(-3.8,.04,-438)
+	cart.position=Vector3(-3.8,.04,gate_z)
 	cart.rotation=Vector3(0,-PI/2,0)
 	cart.linear_velocity=Vector3.ZERO
 	cart.angular_velocity=Vector3.ZERO
@@ -27,13 +29,13 @@ func run() -> void:
 		cart.products[i].linear_velocity=Vector3.ZERO
 		cart.products[i].angular_velocity=Vector3.ZERO
 		cart.products[i].sleeping=false
-	actor.position=Vector3(-5.42,.1,-438)
+	actor.position=Vector3(-5.42,.1,gate_z)
 	actor.rotation.y=-PI/2
 	actor.pitch=0
 	actor.camera.rotation.x=0
 	actor.velocity=Vector3.ZERO
 	for frame in range(60):await physics_frame
-	assert(actor.position.distance_to(Vector3(-5.42,0,-438))<.12,"Lower deck must remain playable with the default upper-deck respawn")
+	assert(actor.position.distance_to(Vector3(-5.42,0,gate_z))<.12,"Lower deck must remain playable with the default upper-deck respawn")
 	cart.toggle_grab(actor)
 	key(KEY_W,true)
 	var boarded:=false
@@ -90,7 +92,7 @@ func run() -> void:
 	actor.position=Vector3(0,-8,-100);actor.velocity=Vector3.ZERO
 	for frame in range(3):await physics_frame
 	assert(actor.position.distance_to(actor.spawn_position)<.12,"Below-ship recovery must still return to the configured spawn")
-	print("FORWARD BOARDING PASS: real player pushes four-product loaded cart intoD01 cabin, travels physically toD17, and pulls it out across the upper threshold. No transforms set during travel/exit; full-network freehand acceptance pending.")
+	print(target_lift_name," BOARDING PASS: real player pushes four-product loaded cart intoD01 cabin, travels physically toD17, and pulls it out across the upper threshold. No transforms set during travel/exit; full-network freehand acceptance pending.")
 	main.queue_free()
 	await process_frame
 	quit()

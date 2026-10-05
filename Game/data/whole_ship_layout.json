@@ -7,11 +7,14 @@
     "data/reference/directory_allocations.json": "63df12482a840d0c3ed30cf4ad669f5cb8b6cf8e89d6823fc0937bf8e3e2c539",
     "data/reference/historical_guest_census.json": "9436f006b2e71f6ee5bda71cd8dc09d1c52f44844027fa7082e3b286a7215038",
     "data/reference/historical_atlas_allocations.json": "deabb459263f09f342dc76b1d588105eb579d1eb60a0c658a6358f9ab8d1b063",
-    "data/spatial_layout.json": "a97a68bc7fc7be6d8e8857d1dd5a8fa1c17ba8264d10f2a4649ea8f8fd8aede2",
+    "data/spatial_layout.json": "ed563519ebd7442b2aebc02385456c63a272c1e539257ef17aaf421e7d819267",
     "data/hull_envelope.json": "8412bacc9253a967fda398c2b81c54f413079374edafbf3d4a3716c70c913f87",
     "data/reference/D03_crew_envelopes.json": "6473d78e789860594c6a955268d7ecc7f0ff44b130cc3ccc833b857e4513ec81",
     "data/architecture/PRIMARY_ATRIUM_CORE.json": "b2a2ffc3fb039753d34be514bb55179dd602d94bdb8f497805d02e9633d9029b",
-    "data/architecture/FORWARD_PUBLIC_CORE.json": "47d7dba4e28d8151f5a8c5b8a623789500a997f0dadca3b4165734f5017dd88c"
+    "data/architecture/FORWARD_PUBLIC_CORE.json": "47d7dba4e28d8151f5a8c5b8a623789500a997f0dadca3b4165734f5017dd88c",
+    "data/architecture/FORE_MIDSHIP_PUBLIC_CORE.json": "0fdc932348a4da62142b5f34ee7fccb9a58318488122999708c254f932b521ca",
+    "data/architecture/AFT_MIDSHIP_PUBLIC_CORE.json": "78f092f8e0168e65f9bc49ed55bd0d25147be519960ab6583624bfa91f7ac317",
+    "data/architecture/AFT_PUBLIC_CORE.json": "abc349af0ab3926ba256a84d45244ee12399fd837a46ea6e8f6567ba7fc8aead"
   },
   "decks": [
     {
@@ -6909,10 +6912,6 @@
       ],
       "boundary": [
         [
-          -63.0,
-          -500.0
-        ],
-        [
           -74.764,
           -500.0
         ],
@@ -6927,6 +6926,10 @@
         [
           -63.0,
           -268.0
+        ],
+        [
+          -63.0,
+          -500.0
         ]
       ],
       "area_m2": 7947.141,
@@ -7052,20 +7055,20 @@
       ],
       "boundary": [
         [
-          -63.0,
-          250.0
-        ],
-        [
-          -100.0,
-          250.0
-        ],
-        [
           -100.0,
           423.164
         ],
         [
           -63.0,
           491.123
+        ],
+        [
+          -63.0,
+          250.0
+        ],
+        [
+          -100.0,
+          250.0
         ]
       ],
       "area_m2": 7664.324,
@@ -7191,10 +7194,6 @@
       "boundary": [
         [
           100.0,
-          -250.0
-        ],
-        [
-          100.0,
           -449.528
         ],
         [
@@ -7207,6 +7206,10 @@
         ],
         [
           63.0,
+          -250.0
+        ],
+        [
+          100.0,
           -250.0
         ]
       ],
@@ -7332,20 +7335,20 @@
       ],
       "boundary": [
         [
-          100.0,
-          250.0
-        ],
-        [
-          63.0,
-          250.0
-        ],
-        [
           63.0,
           491.123
         ],
         [
           100.0,
           423.164
+        ],
+        [
+          100.0,
+          250.0
+        ],
+        [
+          63.0,
+          250.0
         ]
       ],
       "area_m2": 7664.324,
@@ -7555,16 +7558,16 @@
     },
     {
       "id": "fore_midship_vertical_core",
-      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
+      "status": "Authored public spine platform; runtime and visual results recorded separately",
       "x": [
         -3.3,
         3.3
       ],
       "z": [
-        -225,
-        -201
+        -281,
+        -257
       ],
-      "center_z": -216,
+      "center_z": -272,
       "transport_catchment_z": -216,
       "apron_connector": null,
       "bypass_end_extension_m": 4,
@@ -7608,8 +7611,8 @@
         7.8
       ],
       "lobby_z": [
-        -229,
-        -197
+        -285,
+        -252
       ],
       "guest_lift_gate_local_xz": [
         -1.8,
@@ -7635,11 +7638,20 @@
         "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
         "Test physical doors, cabins and loaded cart transfers before use",
         "Fit terminal cap below106.5m general roof without intersecting the existing D18datum slab"
-      ]
+      ],
+      "geometry_owner": "fore_midship_public_core",
+      "construction_contract": "data/architecture/FORE_MIDSHIP_PUBLIC_CORE.json",
+      "lateral_portal_decks": [],
+      "terminal_cap_y": [
+        105.78,
+        105.9
+      ],
+      "planning_shift_m": -56,
+      "placement_reason": "Preserve fitted retail/aquatic courts; original Townline catchment retained"
     },
     {
       "id": "atrium_threshold_vertical_core",
-      "status": "Authored main-scene central core; validation and visual review recorded separately. Other public cores remain reservations",
+      "status": "Authored main-scene central core; validation and visual review recorded separately. Other public cores are recorded separately",
       "x": [
         -3.3,
         3.3
@@ -7741,16 +7753,16 @@
     },
     {
       "id": "aft_midship_vertical_core",
-      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
+      "status": "Authored public spine platform; runtime and visual results recorded separately",
       "x": [
         -3.3,
         3.3
       ],
       "z": [
-        207,
-        231
+        263,
+        287
       ],
-      "center_z": 216,
+      "center_z": 272,
       "transport_catchment_z": 216,
       "apron_connector": null,
       "bypass_end_extension_m": 4,
@@ -7794,8 +7806,8 @@
         7.8
       ],
       "lobby_z": [
-        203,
-        235
+        259,
+        292
       ],
       "guest_lift_gate_local_xz": [
         -1.8,
@@ -7821,11 +7833,20 @@
         "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
         "Test physical doors, cabins and loaded cart transfers before use",
         "Fit terminal cap below106.5m general roof without intersecting the existing D18datum slab"
-      ]
+      ],
+      "geometry_owner": "aft_midship_public_core",
+      "construction_contract": "data/architecture/AFT_MIDSHIP_PUBLIC_CORE.json",
+      "lateral_portal_decks": [],
+      "terminal_cap_y": [
+        105.78,
+        105.9
+      ],
+      "planning_shift_m": 56,
+      "placement_reason": "Preserve fitted retail/aquatic courts; original Townline catchment retained"
     },
     {
       "id": "aft_vertical_core",
-      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
+      "status": "Authored public spine platform; runtime and visual results recorded separately",
       "x": [
         -3.3,
         3.3
@@ -7879,7 +7900,7 @@
       ],
       "lobby_z": [
         419,
-        451
+        452
       ],
       "guest_lift_gate_local_xz": [
         -1.8,
@@ -7905,7 +7926,16 @@
         "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
         "Test physical doors, cabins and loaded cart transfers before use",
         "Fit terminal cap below106.5m general roof without intersecting the existing D18datum slab"
-      ]
+      ],
+      "geometry_owner": "aft_public_core",
+      "construction_contract": "data/architecture/AFT_PUBLIC_CORE.json",
+      "lateral_portal_decks": [],
+      "terminal_cap_y": [
+        105.78,
+        105.9
+      ],
+      "planning_shift_m": 0,
+      "placement_reason": "Original catchment retained; no fitted non-spine floor overlap"
     }
   ],
   "staff_riser_reservations": [

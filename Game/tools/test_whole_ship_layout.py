@@ -67,7 +67,7 @@ class WholeShipLayout(unittest.TestCase):
   reservations=self.plan['residential_court_reservations']+self.plan['longitudinal_vertical_core_reservations']
   self.assertTrue(all(c['id']not in voids for c in reservations if not c.get('geometry_owner')))
   built=[c for c in reservations if c.get('geometry_owner')]
-  self.assertEqual({c['geometry_owner']for c in built},{'primary_atrium_core','forward_public_core'})
+  self.assertEqual({c['geometry_owner']for c in built},{'primary_atrium_core','forward_public_core','fore_midship_public_core','aft_midship_public_core','aft_public_core'})
   forward=next(c for c in built if c['geometry_owner']=='forward_public_core')
   self.assertEqual(forward['lateral_portal_decks'],['D01','D02']);self.assertEqual(forward['lateral_portal_side'],'port')
   self.assertEqual(len(forward['decks']),17);self.assertLess(forward['terminal_cap_y'][1],106.26)
