@@ -3,7 +3,7 @@
 Updated2026-10-05. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Latest verified scope
-Whole-ship coverage now cross-references all18decks,161directory programmes,1000guest envelopes,100retail addresses and200historical crew-bank envelopes. Ten geographic vertical coordination groups, four residential-court reservations, five core reservations and a raised-pool/market section are planning proposals; final hull, luxury, crew-bed and route fit remain open. Eight planning and five vertical-programme checks pass. See WHOLE_SHIP_LAYOUT_FINALIZATION.md and the generated plan/section plates.
+Whole-ship coverage now cross-references all18decks,161directory programmes,1000guest envelopes,100retail addresses and200historical crew-bank envelopes. Ten geographic vertical coordination groups, four residential-court reservations, five core reservations and a raised-pool/market section are planning proposals; final hull, luxury, crew-bed and route fit remain open. Nine planning and five vertical-programme checks pass. Twelve residential house groups account for all1000guest allocations; expanded court boundaries yield304potential outward plan-view edges without crossing another guest allocation, not fitted windows. See WHOLE_SHIP_LAYOUT_FINALIZATION.md and the generated plan/section plates.
 
 Priority: finalize the complete18-deck layout, accounting for every district in plan and section, preserving grand volumes, residential courts and distinct guest/service routes. Local dining refinement is deferred after the verified perimeter-edge pass.
 
