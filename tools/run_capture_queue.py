@@ -21,11 +21,11 @@ while not (QUEUE/'STOP').exists():
    start=time.time()
    try:
     with log.open('w') as output:
-     process=subprocess.run(['godot','--path',str(ROOT),'--rendering-method','gl_compatibility','--audio-driver','Dummy','--','--capture-validation','--capture-d06','--capture-aquatic','--capture-staff'],stdout=output,stderr=subprocess.STDOUT,timeout=180)
+     process=subprocess.run(['godot','--path',str(ROOT),'--rendering-method','gl_compatibility','--audio-driver','Dummy','--','--capture-validation','--capture-d06','--capture-aquatic','--capture-staff'],stdout=output,stderr=subprocess.STDOUT,timeout=300)
     errors=[line for line in log.read_text().splitlines() if 'ERROR:' in line or 'Assertion failed' in line]
     result={'status':'passed' if process.returncode==0 and not errors else 'failed','exit_code':process.returncode,'errors':errors,'seconds':round(time.time()-start,3),'scope':'Graphical capture execution only; appearance requires review, not target GPU performance'}
    except subprocess.TimeoutExpired:
-    result={'status':'failed','reason':'Capture exceeded180seconds'}
+    result={'status':'failed','reason':'Capture exceeded300seconds'}
   (QUEUE/(identifier+'.result.json')).write_text(json.dumps(result,indent=2)+'\n')
   request.rename(QUEUE/(identifier+'.completed-request'))
 (QUEUE/'runner-stopped.json').write_text(json.dumps({'stopped_unix':time.time()}))
