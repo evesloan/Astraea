@@ -31,7 +31,7 @@ def mesh(name,verts,faces,role,group):
  for f in me.polygons:
   n=f.normal.normalized();u=(Vector((1,0,0))-n*n.x).normalized()if abs(n.z)>.7 else Vector((-n.y,n.x,0)).normalized();v=n.cross(u)
   for li in f.loop_indices:
-   q=me.vertices[me.loops[li].vertex_index].co;uv.data[li].uv=(q.dot(u)/scale[0],q.dot(v)/scale[1])
+   q=me.vertices[me.loops[li].vertex_index].co;uv.data[li].uv=tuple(round(value*8192)/8192 for value in(q.dot(u)/scale[0],q.dot(v)/scale[1]))
  parts.append(ob);records.append({'name':ob.name,'assembly':name,'world_aabb':[lo[0],hi[0],lo[1],hi[1],lo[2],hi[2]],'vertices_world':verts,'role':role,'group':group});return ob
 
 def box(name,x0,x1,y0,y1,z0,z1,role='staff_bluegrey_paint',group='shell'):
@@ -55,12 +55,12 @@ def marker(name,p,extras=None):
 
 def girder_x(name,x0,x1,z,y0=111.1,y1=113.88,depth=.36,group='transfer'):
  box(name+'_Web',x0,x1,y0,y1,z-depth/2,z+depth/2,'staff_bluegrey_paint',group)
- for yy in[y0,y1-.16]:box(name+'_Flange',x0,x1,yy,yy+.16,z-.46,z+.46,'staff_zinc',group)
+ for yy in[y0,y1-.16]:box(name+'_Flange',x0,x1,yy,yy+.16,max(-181,z-.46),min(-80,z+.46),'staff_zinc',group)
  D['support']['member_assemblies'].append({'name':name,'axis':'x','span':[x0,x1],'z':z,'y':[y0,y1],'group':group})
 
 def girder_z(name,x,z0,z1,y0=111.1,y1=113.88,width=.32,group='transfer'):
  box(name+'_Web',x-width/2,x+width/2,y0,y1,z0,z1,'staff_bluegrey_paint',group)
- for yy in[y0,y1-.16]:box(name+'_Flange',x-.30,x+.30,yy,yy+.16,z0,z1,'staff_zinc',group)
+ for yy in[y0,y1-.16]:box(name+'_Flange',max(-48,x-.30),x+.30,yy,yy+.16,z0,z1,'staff_zinc',group)
  D['support']['member_assemblies'].append({'name':name,'axis':'z','x':x,'span':[z0,z1],'y':[y0,y1],'group':group})
 
 # The only keel-reaching parts use the four audited exact footprints.
@@ -101,16 +101,26 @@ for s in[-1,1]:
   for edge,x in[('Inner',ix),('Outer',ox)]:
    tag='BRP_'+side+'_'+edge+'_Hanger_Z%s'%str(abs(z)).replace('.','p');box(tag,x-.11,x+.11,105.98,111.85,z-.15,z+.15,'staff_zinc','hanger');D['support']['hanger_assemblies'].append({'name':tag,'kind':'bridge_wing','edge':edge,'x':x,'z':z,'y':[105.98,111.85]})
  # Explicit perimeter chain is inboard of the parent boundary; widths stay below the walk surface.
- path=[(s*4.5,-171.7),(s*29.7,-171.7),(s*35.7,-159.7),(s*35.7,-118.3),(s*4.5,-118.3)]
+ path=[(s*4.12,-171.7),(s*29.7,-171.7),(s*35.7,-159.7),(s*35.7,-118.3),(s*4.12,-118.3)]
  for i,(a,b)in enumerate(zip(path,path[1:])):bar('BRP_'+side+'_Perimeter_%02d'%i,a,b,.48,105.80,106.28)
  girder_z('BRP_'+side+'_InnerFloorEdge',s*4.5,-171.8,-118.2,105.82,106.28,.26,'platform_support')
  for x in[12,20,28]:girder_z('BRP_'+side+'_FloorStringer_%s'%x,s*x,-171.7,-118.3,105.9,106.28,.18,'platform_support')
  # Solid backed guards around every exterior open edge, leaving the original centreline mouth clear.
- for i,(a,b)in enumerate(zip(path,path[1:])):
+ guard_path=[(s*4,-171.7)]+path[1:-1]+[(s*4,-118.3)]
+ for end_z in[-171.7,-118.3]:box('BRP_'+side+'_GuardMouthShoe',*sorted([s*4,s*4.60]),106.265,106.47,end_z-.24,end_z+.24,'staff_zinc','platform_support_shallow')
+ for i,(a,b)in enumerate(zip(guard_path,guard_path[1:])):
   bar('BRP_'+side+'_GuardBack_%02d'%i,a,b,.16,106.45,107.70,'staff_bluegrey_paint','guard')
   bar('BRP_'+side+'_GuardCap_%02d'%i,a,b,.22,107.68,107.82,'staff_zinc','guard')
   bar('BRP_'+side+'_GuardToe_%02d'%i,a,b,.24,106.28,106.58,'staff_zinc','guard')
   D['guards'].append({'id':side+'_%02d'%i,'a_xz':a,'b_xz':b,'backed':True,'height_above_floor':1.32,'positive_support':'matching BRP_'+side+'_Perimeter_%02d'%i,'connection_mouth_policy':'No guard along inner X±4.5 line; wings open to centreline. Fore/aft mouths X±4 remain fully clear.'})
+ # Backed terminal returns stop a sidestep behind the deliberately inboard safety guard.
+ for end,z0,z1 in[('Fore',-172,-171.68),('Aft',-118.32,-118)]:
+  box('BRP_'+side+'_'+end+'_GuardMouthReturnBack',*sorted([s*4,s*4.16]),106.45,107.70,z0,z1,'staff_bluegrey_paint','guard')
+  box('BRP_'+side+'_'+end+'_GuardMouthReturnCap',*sorted([s*4,s*4.22]),107.68,107.82,z0,z1,'staff_zinc','guard')
+  box('BRP_'+side+'_'+end+'_GuardMouthReturnToe',*sorted([s*4,s*4.24]),106.28,106.58,z0,z1,'staff_zinc','guard')
+  box('BRP_'+side+'_'+end+'_GuardMouthReturnShoe',*sorted([s*4,s*4.60]),106.265,106.47,z0,z1,'staff_zinc','platform_support_shallow')
+  D['guards'].append({'id':side+'_'+end+'_terminal_return','world_aabb':sorted([s*4,s*4.24])+[106.28,107.82,z0,z1],'backed':True,'height_above_floor':1.32,'positive_support':'Slab-height return shoe joined to original mouth shoe and perimeter girder','purpose':'Close the narrow outside guard strip at actual platform Z boundary without intrusion into X±4 spine'})
+
 
 # Bypass floor edge system hangs entirely above D17, even over the lower theatre void.
 for x in[-47.8,-40.2]:girder_z('BRP_BypassFloorEdge_X%s'%str(x).replace('.','p'),x,-180.8,-80.0,105.80,106.28,.26,'platform_support')
@@ -137,7 +147,7 @@ for z in[-180.7,-173.3]:box('BRP_SpineShallowSaddle',-4.12,4.18,106.265,106.285,
 port_cuts=[-181,-173,-165,-157,-149,-141,-133,-125,-117,-109,-101,-93,-85,-80]
 box('BRP_PortWindowSill',-48,-47.68,106.28,107.08,-181,-80,'ivory_enamel','enclosure')
 box('BRP_PortWindowHeader',-48,-47.68,110.35,111.18,-181,-80,'ivory_enamel','enclosure')
-box('BRP_PortTimberHandrail',-47.69,-47.59,107.02,107.14,-181,-80,'warm_walnut','enclosure')
+box('BRP_PortTimberHandrail',-47.69,-47.64,107.02,107.14,-181,-80,'warm_walnut','enclosure')
 for z in port_cuts:
  lo=max(-181,z-.13);hi=min(-80,z+.13)
  box('BRP_PortWindowMullion',-48,-47.62,107.04,110.40,lo,hi,'champagne_metal','window_frame')
@@ -147,7 +157,7 @@ for i,(a,b)in enumerate(zip(port_cuts,port_cuts[1:])):
 # Opaque inner screen provides a clear guest/unfinished-platform boundary with layered upper profiles.
 box('BRP_InnerScreen',-40.32,-40,106.28,111.18,-173,-80,'ivory_enamel','enclosure')
 box('BRP_InnerTimberDado',-40.38,-40.30,106.55,107.48,-173,-80,'warm_walnut','enclosure')
-box('BRP_InnerDadoCap',-40.42,-40.28,107.43,107.55,-173,-80,'champagne_metal','enclosure')
+box('BRP_InnerDadoCap',-40.40,-40.28,107.43,107.55,-173,-80,'champagne_metal','enclosure')
 for z in[-172.8,-164,-152,-140,-128,-116,-104,-92,-80.2]:box('BRP_InnerScreenPilaster',-40.40,-40,107.5,110.48,z-.15,z+.15,'champagne_metal','enclosure')
 # Transverse gallery closes fore and aft only west of X=-4. No wall across either spine opening.
 for side,z0,z1 in[('Fore',-181,-180.68),('Aft',-173.32,-173)]:
@@ -186,7 +196,7 @@ def fixture(name,x,z,long_axis='z'):
 for z in[-172,-160,-148,-136,-124,-112,-100,-88,-82]:fixture('BRP_GalleryLight_Z%s'%abs(z),-44,z)
 for x in[-44,-32,-20,-8,0]:fixture('BRP_ForeGalleryLight_X%s'%x,x,-177,'x')
 # Quiet future platform task-wayfinding lights hang from real crossmembers, not floating points.
-for z in[-160,-136,-118.3]:
+for z in[-160,-136,-124]:
  for x in[-20,20]:fixture('BRP_PlatformLight_X%s_Z%s'%(x,str(abs(z)).replace('.','p')),x,z,'x')
 marker('DATUM_origin',[0,0,0]);marker('DATUM_bypass_turn',[-44,106.5,-177]);marker('DATUM_bypass_apron',[-44,106.5,-80]);marker('DATUM_old_spine_fore',[0,106.5,-181]);marker('DATUM_old_spine_aft',[0,106.5,-173])
 D['source_validation']='qa/source_export_validation.json';D['status']='Stage1 editable construction kit; source verification and parent runtime acceptance required';D['support']['old_frame_optional_ties']='Not used; all primary loads resolve geometrically to the four new keel-bearing piers'
