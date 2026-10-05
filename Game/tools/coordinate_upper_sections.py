@@ -21,9 +21,15 @@ if aft_path.exists():
  aft=json.loads(aft_path.read_text())
  result['aft_command_frame']={'status':'Current source geometry; consult focused/full runtime and visual receipts for acceptance','source_contract':'data/architecture/AFT_COMMAND_RUNTIME.json','pier_centres_xz':aft['support']['pier_centres_xz'],'floor_y':106.5,'added_floor_m2':1408,'transfer_y':[111,114],'roof_max_y':114.5,'public_cross_street_z':[60,66],'scope':'Two aft programme shells with a separate two-pier frame, roof hangers and below-floor platform girders; no bridge, large foyer or Upper Horizon adoption implied'}
  result['source_sha256']['data/architecture/AFT_COMMAND_RUNTIME.json']=hashlib.sha256(aft_path.read_bytes()).hexdigest()
+bridge_path=R/'data/architecture/BRIDGE_PLATFORM_RUNTIME.json'
+if bridge_path.exists():
+ bridge=json.loads(bridge_path.read_text())
+ result['bridge_platform_stage1']={'status':'Guarded platform and enclosed public bypass are installed; private bridge boundary remains open pending independent route acceptance','source_contract':'data/architecture/BRIDGE_PLATFORM_RUNTIME.json','pier_centres_xz':bridge['support']['pier_centres_xz'],'floor_y':106.5,'added_floor_m2':4480,'public_bypass_new_floor_m2':1096,'transfer_y':[111,114],'roof_max_y':114.5,'old_centreline_open':True,'scope':'Source geometry and focused receipts do not imply an enclosed or operating bridge'}
+ result['crown']['roof_reservation_z'][0]=-181
+ result['source_sha256']['data/architecture/BRIDGE_PLATFORM_RUNTIME.json']=hashlib.sha256(bridge_path.read_bytes()).hexdigest()
 assert len(pavilions)==6 and all(p['external_roof_limit_y']<118 for p in pavilions)
 assert result['crown']['cap_to_transfer_zone_m']>1
 assert result['crown']['external_roof_limit_y']<118
-for p in pavilions:assert Polygon(p['boundary']).intersection(box(-52,-180,52,202)).area<1e-6
+for p in pavilions:assert Polygon(p['boundary']).intersection(box(-52,result['crown']['roof_reservation_z'][0],52,202)).area<1e-6
 (R/'data/architecture/UPPER_SECTION_COORDINATION.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps({'private_multilevel_units':len(pavilions),'additional_guest_units':0,'crown_clearance_reservation_m':4.5,'actual_cap_to_transfer_reservation_m':result['crown']['cap_to_transfer_zone_m'],'all_roof_reservations_below_118':True,'final_section_accepted':False}))
