@@ -60,6 +60,7 @@ def run(root):
         b = contract[key]['bounds']
         specs.append({'centre_xz': [(b['x'][0]+b['x'][1])/2, (b['z'][0]+b['z'][1])/2],
                       'size_xz': [b['x'][1]-b['x'][0], b['z'][1]-b['z'][0]]})
+    specs.extend(contract.get('outer_frame_candidate', {}).get('strips', []))
     rows = [{'centre_xz': s['centre_xz'], 'bounds': footprint(s), 'hits': hits(s)} for s in specs]
     passed = all(not matches for row in rows for matches in row['hits'].values())
     report = {'pass': passed,

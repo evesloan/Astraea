@@ -1,6 +1,8 @@
 {
-  "pass": true,
-  "scope": "Exact source-plane seats; no whole-house structural or engine acceptance",
+  "pass": false,
+  "source_plane_seats_pass": true,
+  "runtime_adoption_hold": true,
+  "scope": "Exact source-plane seats separately verified; strict retained-runtime comparison remains failed where reported",
   "hull_source_unchanged": true,
   "hull_export_unchanged": true,
   "source_seats": [
@@ -9,10 +11,11 @@
         108.0,
         29.6
       ],
+      "hull_owner": "HUL_LowerBand_00",
       "same_actual_hull_polygon": 56,
       "grid_rays": 81,
       "maximum_plane_error_m": 9.238719940185547e-07,
-      "maximum_ray_error_m": 9.5367431640625e-07,
+      "maximum_ray_error_m": 4.529953002041509e-06,
       "minimum_positive_wedge_thickness_m": 0.34999876022338866,
       "footprint_contact_area_xz_m2": 0.96
     },
@@ -21,10 +24,11 @@
         108.0,
         50.4
       ],
+      "hull_owner": "HUL_LowerBand_00",
       "same_actual_hull_polygon": 56,
       "grid_rays": 81,
       "maximum_plane_error_m": 6.854534149169922e-07,
-      "maximum_ray_error_m": 9.5367431640625e-07,
+      "maximum_ray_error_m": 4.410743712490728e-06,
       "minimum_positive_wedge_thickness_m": 0.34999923706054686,
       "footprint_contact_area_xz_m2": 0.96
     },
@@ -33,10 +37,11 @@
         100.0,
         29.6
       ],
+      "hull_owner": "HUL_LowerBand_00",
       "same_actual_hull_polygon": 57,
       "grid_rays": 81,
       "maximum_plane_error_m": 9.5367431640625e-07,
-      "maximum_ray_error_m": 1.1324882498442435e-06,
+      "maximum_ray_error_m": 2.384185791015625e-06,
       "minimum_positive_wedge_thickness_m": 1.3934772491455079,
       "footprint_contact_area_xz_m2": 0.96
     },
@@ -45,10 +50,11 @@
         100.0,
         46.0
       ],
+      "hull_owner": "HUL_LowerBand_00",
       "same_actual_hull_polygon": 57,
       "grid_rays": 81,
       "maximum_plane_error_m": 9.5367431640625e-07,
-      "maximum_ray_error_m": 1.1324882498442435e-06,
+      "maximum_ray_error_m": 4.231929778164556e-06,
       "minimum_positive_wedge_thickness_m": 1.3934772491455079,
       "footprint_contact_area_xz_m2": 0.96
     },
@@ -57,16 +63,109 @@
         108.0,
         46.0
       ],
+      "hull_owner": "HUL_LowerBand_00",
       "same_actual_hull_polygon": 56,
       "grid_rays": 81,
       "maximum_plane_error_m": 6.556510925292969e-07,
-      "maximum_ray_error_m": 1.5497207641601562e-06,
+      "maximum_ray_error_m": 4.231929778164556e-06,
       "minimum_positive_wedge_thickness_m": 0.34999923706054686,
+      "footprint_contact_area_xz_m2": 0.96
+    },
+    {
+      "centre_xz": [
+        116.0,
+        29.6
+      ],
+      "hull_owner": "HUL_LowerBand_03",
+      "same_actual_hull_polygon": 60,
+      "grid_rays": 81,
+      "maximum_plane_error_m": 3.3974647521972656e-06,
+      "maximum_ray_error_m": 7.62939453125e-06,
+      "minimum_positive_wedge_thickness_m": 0.3999908447265632,
+      "footprint_contact_area_xz_m2": 0.96
+    },
+    {
+      "centre_xz": [
+        116.0,
+        46.0
+      ],
+      "hull_owner": "HUL_LowerBand_03",
+      "same_actual_hull_polygon": 60,
+      "grid_rays": 81,
+      "maximum_plane_error_m": 3.3974647521972656e-06,
+      "maximum_ray_error_m": 7.62939453125e-06,
+      "minimum_positive_wedge_thickness_m": 0.3999908447265632,
       "footprint_contact_area_xz_m2": 0.96
     }
   ],
   "runtime_census_difference": {
-    "maximum_absolute_y_m": 0.0002665519714386555,
+    "strict_1mm_comparison_pass": false,
+    "per_seat": [
+      {
+        "centre_xz": [
+          108.0,
+          29.6
+        ],
+        "hull_owner": "AST-HUL-001/HUL_LowerBand_00",
+        "max_y_difference_m": 0.0002155900001526989,
+        "strict_1mm_comparison_pass": true
+      },
+      {
+        "centre_xz": [
+          108.0,
+          50.4
+        ],
+        "hull_owner": "AST-HUL-001/HUL_LowerBand_00",
+        "max_y_difference_m": 0.0002155900001526989,
+        "strict_1mm_comparison_pass": true
+      },
+      {
+        "centre_xz": [
+          100.0,
+          29.6
+        ],
+        "hull_owner": "AST-HUL-001/HUL_LowerBand_00",
+        "max_y_difference_m": 0.0002648830413787273,
+        "strict_1mm_comparison_pass": true
+      },
+      {
+        "centre_xz": [
+          100.0,
+          46.0
+        ],
+        "hull_owner": "AST-HUL-001/HUL_LowerBand_00",
+        "max_y_difference_m": 0.0002665519714386555,
+        "strict_1mm_comparison_pass": true
+      },
+      {
+        "centre_xz": [
+          108.0,
+          46.0
+        ],
+        "hull_owner": "AST-HUL-001/HUL_LowerBand_00",
+        "max_y_difference_m": 0.00021696090698275494,
+        "strict_1mm_comparison_pass": true
+      },
+      {
+        "centre_xz": [
+          116.0,
+          29.6
+        ],
+        "hull_owner": "AST-HUL-001/HUL_LowerBand_03",
+        "max_y_difference_m": 0.0068664550781623035,
+        "strict_1mm_comparison_pass": false
+      },
+      {
+        "centre_xz": [
+          116.0,
+          46.0
+        ],
+        "hull_owner": "AST-HUL-001/HUL_LowerBand_03",
+        "max_y_difference_m": 0.0068664550781623035,
+        "strict_1mm_comparison_pass": false
+      }
+    ],
+    "maximum_absolute_y_m": 0.0068664550781623035,
     "scope": "Previously measured retained-hull runtime rays versus new source seats; new footing runtime not imported"
   }
 }

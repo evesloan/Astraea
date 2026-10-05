@@ -9,17 +9,18 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 D=json.loads((R/'source/section_contract.json').read_text())
 # Read the real retained hull mesh. Raycast every footprint corner and centre.
 bpy.ops.wm.open_mainfile(filepath=str(C/'assets/lower_hull_body/source/AST-HUL-001.blend'))
-o=bpy.data.objects['HUL_LowerBand_00'];tree=BVHTree.FromObject(o,bpy.context.evaluated_depsgraph_get());seats=[]
+seats=[]
 for spec in D['footing_specs']:
+ owner=spec.get('hull_object','HUL_LowerBand_00');o=bpy.data.objects[owner];tree=BVHTree.FromObject(o,bpy.context.evaluated_depsgraph_get());ray_start=spec.get('ray_start_y',4.0)
  cx,z=spec['centre_xz'];width,depth=spec['size_xz'];top=float(spec['top_y'])
  assert width==.8 and depth==1.2
  corners=[];witness=[]
  for x,zz in [(cx-width/2,z-depth/2),(cx+width/2,z-depth/2),(cx+width/2,z+depth/2),(cx-width/2,z+depth/2),(cx,z)]:
-  hit,n,face,distance=tree.ray_cast(Vector((x,-zz,4)),Vector((0,0,-1)),12)
-  assert hit is not None and n.z>.9,(x,zz)
+  hit,n,face,distance=tree.ray_cast(Vector((x,-zz,ray_start)),Vector((0,0,-1)),ray_start+10)
+  assert hit is not None and n.z>spec.get('minimum_normal_y',.9),(x,zz)
   corners.append([x,hit.z,zz]);witness.append({'point_world':[x,hit.z,zz],'normal_world':[n.x,n.z,-n.y],'face_index':face})
  assert min(top-v[1] for v in corners)>.34
- seats.append({'x':cx,'z':z,'corners_world':corners[:4],'witnesses':witness,'top_y':top,'source_owner':'AST-HUL-001/HUL_LowerBand_00','hull_source_sha256':sha(C/'assets/lower_hull_body/source/AST-HUL-001.blend'),'method':'Actual editable hull BVH; positive wedge bottom seated on the upward-facing inner hull surface. Hull is never edited.'})
+ seats.append({'x':cx,'z':z,'corners_world':corners[:4],'witnesses':witness,'top_y':top,'source_owner':'AST-HUL-001/'+owner,'hull_source_sha256':sha(C/'assets/lower_hull_body/source/AST-HUL-001.blend'),'method':'Actual editable hull BVH; positive wedge bottom seated on the upward-facing inner hull surface. Hull is never edited.'})
 # Reuse the established material graphs and packed textures without creating flat substitutes.
 bpy.ops.wm.open_mainfile(filepath=str(C/'assets/starboard_house_upper/source/AST-COM-003.blend'))
 mats={name:bpy.data.materials[name] for name in ['ivory_enamel','warm_walnut','champagne_metal']}
@@ -73,6 +74,22 @@ if D.get('aft_cross_frame_candidate'):
   xy=[(100.1,ya-.16),(100.1,ya+.16),(107.9,yb+.16),(107.9,yb-.16)]
   world=[[x,y,z] for z in [45.8,46.2] for x,y in xy]
   mesh('D17_RoyaltyAftCrossBrace_%02d'%i,world,faces,'champagne_metal','D17_RoyaltyPier_WestAft and D17_RoyaltyPier_InnerAft')
+if D.get('outer_frame_candidate'):
+ for spec in D['outer_frame_candidate']['members']:
+  box(spec['name'],*spec['bounds'],'champagne_metal',spec['support'])
+ outer_levels=[11.8]+[v for v in levels if v>11.8]
+ for i,high in enumerate(outer_levels[1:]):
+  low=outer_levels[i];ya,yb=(low+.20,high-.20) if i%2==0 else (high-.20,low+.20)
+  for label,z,inner in [('Fore',29.6,'D17_RoyaltyPier_Fore'),('Aft',46.0,'D17_RoyaltyPier_InnerAft')]:
+   root=inner+' and D17_RoyaltyPier_Outer'+label
+   box('D17_RoyaltyOuter'+label+'Rail_%02d'%i,108.1,115.9,high-.36,high,z-.3,z+.3,'champagne_metal',root)
+   xy=[(108.1,ya-.16),(108.1,ya+.16),(115.9,yb+.16),(115.9,yb-.16)]
+   mesh('D17_RoyaltyOuter'+label+'Brace_%02d'%i,[[x,y,zz] for zz in [z-.2,z+.2] for x,y in xy],faces,'champagne_metal',root)
+  root='D17_RoyaltyPier_OuterFore and D17_RoyaltyPier_OuterAft'
+  box('D17_RoyaltyOuterLongRail_%02d'%i,115.7,116.3,high-.36,high,29.8,45.8,'champagne_metal',root)
+  yz=[(ya-.16,29.9),(ya+.16,29.9),(yb+.16,45.7),(yb-.16,45.7)]
+  mesh('D17_RoyaltyOuterLongBrace_%02d'%i,[[x,y,z] for x in [115.8,116.2] for y,z in yz],faces,'champagne_metal',root)
+ D['outer_frame_candidate']['web_levels_y']=outer_levels
 for side in[-1,1]:
  z0,z1=sorted([side*12.75,side*13.65]);prefix='D17_CommonsPortal_%s'%('Fore'if side<0 else'Aft')
  for name,x0,x1 in [('Left',78.22,78.5),('Right',81.5,81.78)]:
@@ -97,5 +114,5 @@ for key,obs in sorted(groups.items()):
  bpy.context.view_layer.objects.active=obs[0];bpy.ops.object.join();obs[0].name='D17_InterfaceBatch_'+'_'.join(key)
 bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True)
 M={'catalogue_id':AID,'family':FAMILY,'name':'D17 residential house portal interfaces and held orthogonal Royalty support frame','source':f'source/{AID}.blend','export':f'exports/{AID}.glb','source_sha256':sha(src),'export_sha256':sha(out),'editable_part_count':len(records),'runtime_mesh_batches':len(groups),'status':'Partial source kit; full16-unit supported platform and routes held. Not adopted.','new_walkable_source_meshes':0}
-M.update({'verification': ['qa/interface_verification.json', 'qa/seated_contact_verification.json', 'qa/floor_contract_verification.json', 'qa/source_join_ledger.json', 'qa/texture_byte_equality.json', 'qa/royalty_aft_cross_verification.json', 'qa/allocation_footprint_regression.json'], 'integration_hold': 'No Godot adoption of this partial family or companion COM-003 open portals until supported onward floor, guard and route fit is ready'})
+M.update({'verification': ['qa/interface_verification.json', 'qa/seated_contact_verification.json', 'qa/floor_contract_verification.json', 'qa/source_join_ledger.json', 'qa/texture_byte_equality.json', 'qa/royalty_outer_frame_verification.json', 'qa/allocation_footprint_regression.json'], 'integration_hold': 'No Godot adoption of this partial family or companion COM-003 open portals until supported onward floor, guard and route fit is ready'})
 (R/f'{AID}.manifest.json').write_text(json.dumps(M,indent=2)+'\n');print(json.dumps(M))
