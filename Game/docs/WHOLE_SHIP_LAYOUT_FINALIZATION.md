@@ -34,7 +34,11 @@ Short outward plan rays identify304 source guest allocations with a potential co
 
 All1000guest allocations are now assigned once to twelve residential house groups: six upper-deck houses containing880units, plus six D04 habitat neighbourhoods of20units each. Their membership is a source crosswalk, not recovered room IDs or finished room placement.
 
-Five longitudinal vertical-core reservations align with the established transport catchments near Z −432, −216, −72, 216 and 432 m. Their shaft envelopes avoid the retained programme, guest and retail rectangles in plan. Four-metre side bypass reservations fit the plan hull and programme boundaries. These still require resolved cars, screened guest/service landings, stair provision, pit/headroom and physical route checks. Their presence on a drawing is not a playable travel system.
+Five public lift/stair cores retain the longitudinal catchments, with the central core moved to Z -100 ahead of the atrium while the Townline catchment remains at -72. Both 4.3 m side bypasses, 4 m end connections and the preserved arrivals crosslink are explicit reservations. A one-metre connector must join the central lobby to the existing apron. These are still unbuilt routes.
+
+Independent review rejected the original mixed public/staff core because it did not reach the existing west arrivals service network. Ten separate port/starboard staff-riser and lobby reservations now avoid source accommodation and programme envelopes. The central starboard lobby was shortened to Z -91.8..-80.2 to avoid both Cinema 3 and the public apron. Staff floor-by-floor connections and access logic remain unfinished.
+
+The D01/D02 port-forward service-link plan follows the hull-side route to the existing X -57 street and X -54 interface without crossing the public spine. Its 3.6 m-wide, flat-ended plan buffer clears intervening allocations and the plan hull. The start was shifted inside its lobby bounds; the existing arrival/service owners retain the terminal floor. This is geometric routing evidence, not constructed floor, wall or door acceptance.
 
 The forward great-pool section is being coordinated with Orchard market above and the protected D07 sport and D10 dining allocations. A proposed wet deck at 46.2 m and basin bottom at 44.8 m retain the 44 m lower arrival and avoid lowering a pool through the sports ceiling. A 26.4 m minimum ramp run at 1:12, landings and a local lift must be fitted; the market can overlook the volume through a controlled wet/dry boundary. The proposed 50 × 18 m water area and 26 × 54 m volume are working dimensions, not approved pool engineering or species-access acceptance.
 
@@ -58,12 +62,15 @@ Resolve the whole hull/occupied-volume envelope and these cross-deck dependencie
 
 The reproducible eighteen individual plans and overview are under docs/whole_ship_plans. Their grey hull guide is not a full slab; darker regions show current structural-plan coverage, and outlined rectangles are source programme envelopes. Coloured reservations remain proposals.
 
-tools/compile_whole_ship_layout.py regenerates data/whole_ship_layout.json from hashed source inputs. Nine planning checks cover complete accounting, unique coordination groups, court protection, core/bypass plan fit, the raised-pool section and non-mutating reservations. The existing five vertical-programme tests and all-current-opening guest conflict audit remain required. These planning checks supplement, rather than replace, the Godot regression suite and normal-height architectural review.
+tools/compile_whole_ship_layout.py regenerates data/whole_ship_layout.json from hashed source inputs. Ten planning checks cover complete accounting, unique coordination groups, court protection, core/bypass plan fit, the raised-pool section and non-mutating reservations. The existing five vertical-programme tests and all-current-opening guest conflict audit remain required. These planning checks supplement, rather than replace, the Godot regression suite and normal-height architectural review.
 
 ## Verification checkpoint
 
-Nine whole-layout checks and five existing vertical-programme checks pass; the all-current-opening audit finds zero guest-envelope conflicts. The unchanged runtime passed all54 Godot regression groups in207.126seconds fixed60 simulation after the programme-ledger reconciliation. Later crew-footprint extraction and planning images are source evidence only and do not alter runtime geometry.
+Ten whole-layout checks and five existing vertical-programme checks pass; the all-current-opening audit finds zero guest-envelope conflicts. The unchanged runtime passed all54 Godot regression groups in207.126seconds fixed60 simulation after the programme-ledger reconciliation. Later crew-footprint extraction and planning images are source evidence only and do not alter runtime geometry.
 
 The D03 source footnote places399 beds in C001–C200 and the player separately. The newer shared player home must reassign an existing crew member within400 total. The working plan retains this as an explicit bed-assignment gate rather than silently assuming200 occupied doubles plus another player room.
 
 The earlier20x20m court-only reservations and first planning image describe the arrival focuses, not the expanded landscaped house courts. The expanded proposal is superseding planning work; no protected guest room has been cut or moved.
+
+## Main lift control preparation
+An editable eighteen-stop derivative of AST-CIR-003 now has a three-column, six-row panel. Source/export bounds match, and the focused runtime check selects all eighteen unique, nonoverlapping targets in front of the physical backing. The full55-check runtime suite passes in199.4888seconds fixed60. The derivative is not yet installed in a whole-ship shaft, and loaded18-deck travel, staff access and final visual review are not established. Existing two-, three- and five-stop behavior remains covered by regression.

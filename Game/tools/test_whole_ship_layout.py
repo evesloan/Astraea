@@ -44,6 +44,7 @@ class WholeShipLayout(unittest.TestCase):
    self.assertEqual(c['preserved_crosslink_local_z'],[-3,3])
    self.assertGreaterEqual(c['stair_reservation_local_z'][0],4)
   link=self.plan['arrivals_service_link_reservation']
+  self.assertEqual(link['programme_intrusion_m2'],0);self.assertEqual(link['buffer_cap_style'],'flat')
   self.assertFalse(link['public_crossing_required']);self.assertTrue(all(p[0]<-4 for p in link['route_xz']))
  def test_houses_account_for_every_guest_once(self):
   h=self.plan['residential_houses'];ids=[i for row in h for i in row['guest_envelope_source_indices']]

@@ -50,6 +50,9 @@ def build():
   p=box(-3.3,z-9,3.3,z+15)
   conflicts=[r.get('programme_key',r.get('stable_id'))for r in obstacles if p.intersection(rect(r)).area>1e-6]
   assert not conflicts
+  lobby=box(-7.8,z-13,7.8,z+19)
+  assert hull_plan.buffer(-2).covers(lobby)
+  assert all(lobby.intersection(rect(r)).area<1e-6 for r in obstacles)
   cores.append({'id':name+'_vertical_core','status':'Public lift/stair plan reservation; no shaft cuts or global access acceptance','x':[-3.3,3.3],'z':[z-9,z+15],'center_z':z,'transport_catchment_z':catchment,'apron_connector':{'x':[-7.8,7.8],'z':[-81,-80],'status':'Required authored bridge between lobby end and existing apron'}if name=='atrium_threshold'else None,'bypass_end_extension_m':4,'decks':list(elevations),'floor_y_range':[0,106.5],'programme_guest_shop_conflicts':conflicts,'guest_service_separation':'Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink','required_bypass_x_ranges':[[-7.8,-3.5],[3.5,7.8]],'lobby_x':[-7.8,7.8],'lobby_z':[z-13,z+19],'guest_lift_gate_local_xz':[-1.8,-6],'stair_reservation_local_x':[-3.1,3.1],'stair_reservation_local_z':[4,14.8],'preserved_crosslink_local_z':[-3,3],'purpose':'Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks','requirements':['Author both4.3m bypasses and4m end connections','Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations','Fit differing4.5/6/8.5m stair pitches and equivalent lift access','Confirm pit below-0.18m and headroom above109.44m against resolved hull section','At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m','Test physical doors, cabins and loaded cart transfers before use']})
  staff_cores=[]
  positions={'port':[-490,-283,-90,290,490],'starboard':[-490,-323,-86,323,490]}
@@ -61,9 +64,17 @@ def build():
    p=box(floor_x[0],z-half,floor_x[1],z+half)
    conflicts=[r.get('programme_key',r.get('stable_id'))for r in obstacles if p.intersection(rect(r)).area>1e-6]
    assert not conflicts and hull_plan.buffer(-2).covers(p)
+   current_public_overlaps=[r['id']for r in layout['regions']if r.get('material_role')!='staff_floor'and p.intersection(Polygon(r['boundary'],r.get('holes',[]))).area>1e-6]
+   assert not current_public_overlaps,(side,index,current_public_overlaps)
    staff_cores.append({'id':side+'_service_riser_'+str(index+1),'status':'Separate screened staff-riser/lobby reservation; routes and access logic not constructed','center_xz':[x,z],'lobby_x':floor_x,'lobby_z':[z-half,z+half],'shaft_x':[x-2.2,x+2.2],'shaft_z':[z-2.2,z+2.2],'decks':list(elevations),'allocation_conflicts':conflicts,'purpose':'Keep staff vertical movement on its own side of the ship and link into concealed district service routes','requirements':['Explicit floor-by-floor staff links; no open merging with guest spine','Opaque screened arrivals and service access logic','Maintain source guest, crew and programme allocations','Protect hull section, pit/headroom and all source-derived cabin contacts']})
  # Concrete lower-deck routing intent, outside the public arrivals room and axis.
- staff_arrivals_link={'decks':['D01','D02'],'riser':'port_service_riser_1','route_xz':[[-20,-490],[-20,-500],[-57,-500],[-57,-432],[-54,-432]],'width_m':3.6,'status':'Plan-fit link to the existing west service interface; floor, corners, enclosure and doors still require authoring','source_interface':'Arrivals/fusion service street atX-57, interfaceX-54','public_crossing_required':False}
+ staff_arrivals_link={'decks':['D01','D02'],'riser':'port_service_riser_1','route_xz':[[-21,-490],[-21,-500],[-57,-500],[-57,-432],[-54,-432]],'width_m':3.6,'buffer_cap_style':'flat','terminal_floor_owners':['D01_arrivals_ground','D02_fusion_screened_service'],'status':'Plan-fit link to the existing west service interface; floor, corners, enclosure and doors still require authoring','source_interface':'Arrivals/fusion service street atX-57, interfaceX-54','public_crossing_required':False}
+ link_shape=LineString(staff_arrivals_link['route_xz']).buffer(1.8,cap_style=2,join_style=2)
+ assert hull_plan.buffer(-2).covers(link_shape)
+ assert all(link_shape.intersection(rect(r)).area<1e-6 for r in dest if r['deck']in [1,2])
+ staff_arrivals_link['buffered_plan_area_m2']=round(link_shape.area,3)
+ staff_arrivals_link['programme_intrusion_m2']=0
+ staff_arrivals_link['terminal_policy']='Flat-ended floor meets the existing service interface atX-54; existing arrival/service owners retain the terminal floor beyond it'
  # A purpose-led fore aquatic section keeps the sports allocation below intact.
  pool_box=box(-44,-459,-18,-405)
  pool_keys={r['name']:r['programme_key']for r in dest if r['name']in ['The grand aquatic pool','Orchard market','The shared table / 240']}
