@@ -2,7 +2,9 @@ extends "res://tests/validate_bridge_enclosure_access.gd"
 # One initial placement; all subsequent public/staff journeys use physical movement.
 # Reuse the shared-door proof: precise RMB/E on both sides, unfocused rejection,
 # closed collision, reversal, occupied opening/closing and live pause/resume.
-const PLATFORM_PUBLIC_ROUTE := [Vector2(0,95),Vector2(0,108),Vector2(5.5,108),Vector2(5.5,137),Vector2(0,137),Vector2(0,142),Vector2(-5.5,142),Vector2(-5.5,137),Vector2(-5.5,108),Vector2(0,108),Vector2(0,95),Vector2(0,108),Vector2(5.5,108),Vector2(5.5,142),Vector2(16,142),Vector2(16,108),Vector2(16,142),Vector2(-16,142),Vector2(-16,108),Vector2(-16,142),Vector2(-16,188),Vector2(0,188),Vector2(0,198),Vector2(0,188),Vector2(16,188),Vector2(16,142),Vector2(0,142)]
+# Retained core rear-wing guards atZ139 require both bypasses to join
+# the receiving platform through the actual central mouth, viaZ137.
+const PLATFORM_PUBLIC_ROUTE := [Vector2(0,95),Vector2(0,108),Vector2(5.5,108),Vector2(5.5,137),Vector2(0,137),Vector2(0,142),Vector2(0,137),Vector2(-5.5,137),Vector2(-5.5,113),Vector2(-5.5,108),Vector2(0,108),Vector2(0,95),Vector2(0,108),Vector2(5.5,108),Vector2(5.5,137),Vector2(0,137),Vector2(0,142),Vector2(16,142),Vector2(16,108),Vector2(16,142),Vector2(-16,142),Vector2(-16,108),Vector2(-16,142),Vector2(-16,188),Vector2(0,188),Vector2(0,198),Vector2(0,188),Vector2(16,188),Vector2(16,142),Vector2(0,142)]
 var platform_doors:Dictionary={}
 
 func collect_platform_doors(ship:Node3D) -> void:
@@ -48,7 +50,7 @@ func run() -> void:
 	var reverse:Array=PLATFORM_PUBLIC_ROUTE.duplicate();reverse.reverse()
 	await walk_route(actor,reverse)
 	require_closed=false
-	await walk_route(actor,[Vector2(0,108),Vector2(5.5,108),Vector2(5.5,142),Vector2(0,145)])
+	await walk_route(actor,[Vector2(0,108),Vector2(5.5,108),Vector2(5.5,137),Vector2(0,137),Vector2(0,145)])
 	for side in [-1.0,1.0]:
 		var prefix:String="port" if side<0 else "starboard"
 		var terminal:Node3D=platform_doors[prefix+"_exit"]
@@ -58,5 +60,5 @@ func run() -> void:
 		await walk_route(actor,[Vector2(side*32,104),Vector2(side*7.5,104)])
 		await exercise_door(ship,actor,corridor,1.0)
 		await walk_route(actor,[Vector2(side*7.5,98),Vector2(side*7.5,104),Vector2(side*32,104),Vector2(side*32,145),Vector2(0,145)])
-	print("AFT CROWN PLATFORM ACCESS PASS: physical public approach/return through both retained core bypasses, receiving zone, both foyer wings, fan and onward spine with all20 command/service doors closed; both screened L-routes and four new shared thresholds exercised from both sides, including occupied opening/closing and live interruption. Scripted capsule only; capacity and final art remain pending.")
+	print("AFT CROWN PLATFORM ACCESS PASS: physical public approach/return through both retained core bypasses and west lift-side approach (access only, not cabin boarding), receiving zone, both foyer wings, fan and onward spine with all20 command/service doors closed; both screened L-routes and four new shared thresholds exercised from both sides, including occupied opening/closing and live interruption. Scripted capsule only; capacity and final art remain pending.")
 	main.queue_free();await process_frame;quit()

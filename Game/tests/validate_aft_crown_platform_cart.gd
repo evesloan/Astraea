@@ -86,7 +86,7 @@ func run() -> void:
 	for frame in range(90):await physics_frame
 	check_load(cart)
 	# Reach each door on foot via the actual public bypass; no remote interact calls.
-	await walk_route(actor,[Vector2(0,108),Vector2(5.5,108),Vector2(5.5,142),Vector2(0,145)])
+	await walk_route(actor,[Vector2(0,108),Vector2(5.5,108),Vector2(5.5,137),Vector2(0,137),Vector2(0,145)])
 	for side in [1.0,-1.0]:
 		var prefix:String="port" if side<0 else "starboard"
 		var terminal:Node3D=platform_doors[prefix+"_exit"]

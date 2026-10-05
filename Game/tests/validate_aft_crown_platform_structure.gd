@@ -7,7 +7,7 @@ const AUDIT := "res://docs/AFT_CROWN_PLATFORM_SOURCE_CONTACT_AUDIT.json"
 const ROUNDTRIP := "res://docs/AFT_CROWN_PLATFORM_SOURCE_ROUNDTRIP.json"
 const PRESERVATION := "res://docs/AFT_CROWN_PLATFORM_AFT_COMMAND_PRESERVATION.json"
 const EXPORT_SHA := "96d4f49ee71113858fc97df779f810c57c05ac5b5c1244cfa7d06352258452c3"
-const CONTRACT_SHA := "PENDING_FINAL_CONTRACT"
+const CONTRACT_SHA := "b6692962f2c4a477827acbb685542b79aa0e09ef513ee6445ed840aefbf79011"
 const AUDIT_SHA := "02afb1e3ce0822a6620ef5f0f5602da206ada97e86eadd02056bb6983e40e9ad"
 const ROUNDTRIP_SHA := "60aaa9d08fbcf5d32d690cdeb6fc7abe23fc7e88ee230d2ee1470a3cb9ca68a0"
 const PRESERVATION_SHA := "f8dbe462f062d7dad6ce024d34a5a65e23a429a814f13b6a0c338aa11a17d494"
@@ -38,6 +38,7 @@ var maximum_corner_error := 0.0
 var pier_slices := 0
 var keel_rays := 0
 var floor_owners := 0
+var internal_pier_joint_triangles := 0
 var bearing_witnesses := 0
 var source_audit: Dictionary
 
@@ -145,7 +146,7 @@ func validate_meshes(roundtrip: Dictionary) -> void:
 			if absf(a.y-FLOOR_Y)<EPS and absf(b.y-FLOOR_Y)<EPS and absf(c.y-FLOOR_Y)<EPS:
 				# Downward static wall/guard feet are bearings, never duplicate floors.
 				var outward := -(b-a).cross(c-a).normalized()
-				check(outward.y < 0.999,"Source kit adds duplicate upward walking surface: "+str(mesh.name))
+				check(outward.y < 0.999 or approved_internal_pier_joint(a,b,c),"Source kit adds duplicate upward walking surface: "+str(mesh.name))
 		var contact := mesh.get_node_or_null("StaticContact/SharedShape") as CollisionShape3D
 		if check(contact != null and not contact.disabled,"Missing active collision: "+str(mesh.name)):
 			check(contact.shape is ConcavePolygonShape3D and contact.get_parent() is StaticBody3D and contact.get_parent().collision_layer != 0,"Wrong static collision type/layer")
@@ -169,8 +170,45 @@ func validate_meshes(roundtrip: Dictionary) -> void:
 				matched_triangles += 1
 				maximum_corner_error = maxf(maximum_corner_error,best)
 	check(batches.is_empty(),"Source batches absent from runtime")
+	check(internal_pier_joint_triangles==36,"All18 paired internal pier joints must retain their36 source top triangles")
 	check(matched_triangles == int(roundtrip.get("triangles",-1)),"Full immutable source triangle coverage incomplete")
 	check(absf(minimum.y+3.2)<EPS and maximum.y <= 114.5+EPS,"Platform must meet actual keel and remain within114.5m roof limit")
+
+func approved_internal_pier_joint(a: Vector3,b: Vector3,c: Vector3) -> bool:
+	# Each real pier is source-segmented at the floor datum. Its web and two
+	# chords have an internal upward bearing face at106.5, covered exactly by
+	# their next full-height segment. Never allow a whole pier batch or footprint.
+	var part_map: Dictionary = {}
+	for part in source_audit.parts:
+		part_map[str(part.name)] = part
+	for index in range(1,7):
+		for pair in [["Web.030","Web.031"],["Chord.059","Chord.062"],["Chord.061","Chord.063"]]:
+			var prefix := "ACP_Pier_%02d_" % index
+			var lower: Dictionary = part_map.get(prefix+str(pair[0]),{})
+			var upper: Dictionary = part_map.get(prefix+str(pair[1]),{})
+			if lower.is_empty() or upper.is_empty():
+				continue
+			var lo: Array = lower.bounds
+			var hi: Array = upper.bounds
+			if str(lower.group)!="pier" or str(upper.group)!="pier" or absf(float(lo[2])-104.0)>EPS or absf(float(lo[3])-FLOOR_Y)>EPS or absf(float(hi[2])-FLOOR_Y)>EPS or absf(float(hi[3])-111.0)>EPS:
+				continue
+			var exact_pair := true
+			for axis in [0,1,4,5]:
+				exact_pair = exact_pair and absf(float(lo[axis])-float(hi[axis]))<0.00000001
+			if not exact_pair:
+				continue
+			var corners := {Vector2(lo[0],lo[4]):true,Vector2(lo[1],lo[4]):true,Vector2(lo[1],lo[5]):true,Vector2(lo[0],lo[5]):true}
+			var matched := true
+			for point in [a,b,c]:
+				var found := false
+				for corner in corners:
+					if Vector2(point.x,point.z).distance_to(corner)<EPS:
+						found = true
+				matched = matched and found and absf(point.y-FLOOR_Y)<EPS
+			if matched:
+				internal_pier_joint_triangles += 1
+				return true
+	return false
 
 func vertex_key(point: Vector3) -> String:
 	return "%d,%d,%d" % [roundi(point.x * 1000), roundi(point.y * 1000), roundi(point.z * 1000)]
@@ -265,6 +303,29 @@ func slab_witness(point: Vector2, label: String, expected_id: String = "") -> vo
 	check(not top.is_empty() and region_id(top.collider) in FLOOR_IDS and (expected_id.is_empty() or region_id(top.collider)==expected_id) and absf(top.position.y-FLOOR_Y)<EPS,label+": actual new slab top missing -> "+owner(top))
 	check(not bottom.is_empty() and region_id(bottom.collider) in FLOOR_IDS and (expected_id.is_empty() or region_id(bottom.collider)==expected_id) and absf(bottom.position.y-SLAB_BOTTOM)<EPS,label+": actual new slab underside missing -> "+owner(bottom))
 
+func floor_face_diagnostic(label: String,expected: PackedVector3Array,actual: PackedVector3Array) -> void:
+	var expected_keys: Dictionary = {}
+	var actual_keys: Dictionary = {}
+	for row in [[expected,expected_keys],[actual,actual_keys]]:
+		var faces: PackedVector3Array = row[0]
+		var keys: Dictionary = row[1]
+		for index in range(0,faces.size(),3):
+			var corners := PackedStringArray([vertex_key(faces[index]),vertex_key(faces[index+1]),vertex_key(faces[index+2])])
+			corners.sort()
+			var key := "|".join(corners)
+			keys[key] = int(keys.get(key,0))+1
+	print("FLOOR DIAGNOSTIC "+label+" expected/actual triangles "+str(expected.size()/3)+"/"+str(actual.size()/3))
+	var printed := 0
+	for key in expected_keys:
+		if int(expected_keys[key])!=int(actual_keys.get(key,0)) and printed<6:
+			print("EXPECTED DIFF "+str(key)+" multiplicity "+str(expected_keys[key])+"/"+str(actual_keys.get(key,0)))
+			printed += 1
+	printed = 0
+	for key in actual_keys:
+		if int(actual_keys[key])!=int(expected_keys.get(key,0)) and printed<6:
+			print("ACTUAL DIFF "+str(key)+" multiplicity "+str(expected_keys.get(key,0))+"/"+str(actual_keys[key]))
+			printed += 1
+
 func validate_floors() -> void:
 	var generated := read_json("res://data/generated/structural_meshes.json")
 	var layout := read_json("res://data/spatial_layout.json")
@@ -304,8 +365,15 @@ func validate_floors() -> void:
 			if check(not shape.disabled and shape.shape is ConcavePolygonShape3D,"Invalid floor contact: "+id):
 				for p in shape.shape.get_faces():
 					contact.append(shape.global_transform*p)
-		var expected := geometry_signature(compiled_faces(region))
-		check(geometry_signature(render)==geometry_signature(compiled_faces(region,true)) and geometry_signature(contact)==expected,"Actual full slab triangles/multiplicity differ from compiled owner: "+id)
+		var expected_contact := compiled_faces(region)
+		var expected_render := compiled_faces(region,true)
+		var contact_ok := geometry_signature(contact)==geometry_signature(expected_contact)
+		var render_ok := geometry_signature(render)==geometry_signature(expected_render)
+		if not contact_ok:
+			floor_face_diagnostic(id+" collision",expected_contact,contact)
+		if not render_ok:
+			floor_face_diagnostic(id+" render",expected_render,render)
+		check(render_ok and contact_ok,"Actual full slab triangles/multiplicity differ from compiled owner: "+id)
 		floor_owners += 1
 		if id in FLOOR_IDS:
 			for triangle in region.triangles:
