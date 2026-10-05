@@ -57,3 +57,7 @@ No Godot source, tests, runtime export, engine, imports, captures, backup proces
 The earlier “survivor” lists referred to current static contacts and guest envelopes only. Later crew-bank comparison rejects full-height columns at X100/Z−71.4,−48.6,+71.6 (D03 drawings414,418,424) and the former Royalty X100/Z50.4 (drawing420). The revised delivered footings are at X108/Z29.6,50.4 and clear all historical guest, crew, retail and programme envelopes. No lower accommodation or address was moved.
 
 Both embedded export textures still match the original catalogue PNG bytes. The footings are parameterized in footing_specs, verified against the actual source hull, and retain the prior sixteen non-footing objects exactly. COM003 remains held and unchanged from the partial stage. Full supported floors, piers, upper circulation and runtime adoption are still outstanding.
+
+## Reproducible allocation regression
+
+Run `python3 assets/d17_house_platform/qa/verify_allocation_footprints.py <Godot project root>` from the catalogue. This checks every configured footing footprint against all1000 guest,200 crew-bank,100 retail and161 programme envelopes and records exact input hashes. Four negative regressions require detection of the previously missed X100 crew-bank conflicts (drawings414,418,420,424). Current two X108 footprints pass. This conservative full-height plan screen is separate from actual mesh contacts, structural design and route acceptance; no new geometry was built in this QA addition.
