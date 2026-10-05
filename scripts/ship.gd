@@ -22,6 +22,23 @@ func _ready() -> void:
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	environment.ambient_light_color = Color(0.75,0.81,0.86)
 	environment.ambient_light_energy = 0.2
+	# Static world-oriented exterior, with zero sky contribution to indoor ambient.
+	var space_material := ShaderMaterial.new()
+	space_material.shader = load("res://shaders/astraea_space.gdshader")
+	var space_sky := Sky.new()
+	space_sky.sky_material = space_material
+	space_sky.process_mode = Sky.PROCESS_MODE_QUALITY
+	space_sky.radiance_size = Sky.RADIANCE_SIZE_256
+	environment.sky = space_sky
+	environment.background_mode = Environment.BG_SKY
+	environment.background_energy_multiplier = 1.0
+	environment.sky_rotation = Vector3.ZERO
+	environment.sky_custom_fov = 0.0
+	# GLES3 needs sky ambient enabled to generate the display cubemap.
+	# A zero mix retains the exact existing color/energy above.
+	environment.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
+	environment.ambient_light_sky_contribution = 0.0
+	environment.reflected_light_source = Environment.REFLECTION_SOURCE_DISABLED
 	environment.glow_enabled = true
 	environment.glow_intensity = 0.18
 	environment.glow_hdr_threshold = 0.95
