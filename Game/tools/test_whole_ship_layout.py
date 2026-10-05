@@ -62,9 +62,15 @@ class WholeShipLayout(unittest.TestCase):
   self.assertAlmostEqual(p['minimum_1_to_12_ramp_run_m'],p['wet_deck_rise_m']*12)
   self.assertFalse(p['guest_envelope_conflicts']);self.assertEqual(len(p['affected_programmes']),3)
  def test_reservations_do_not_cut_floors_or_claim_completion(self):
-  voids={v['id']for v in json.loads((ROOT/'data/spatial_layout.json').read_text())['voids']}
+  layout=json.loads((ROOT/'data/spatial_layout.json').read_text())
+  voids={v['id']for v in layout['voids']}
   reservations=self.plan['residential_court_reservations']+self.plan['longitudinal_vertical_core_reservations']
-  self.assertTrue(all(c['id']not in voids for c in reservations))
+  self.assertTrue(all(c['id']not in voids for c in reservations if not c.get('geometry_owner')))
+  built=[c for c in reservations if c.get('geometry_owner')]
+  self.assertEqual(len(built),1)
+  self.assertEqual(built[0]['geometry_owner'],'primary_atrium_core')
+  self.assertEqual(sum(r.get('authoring_owner')=='primary_atrium_core'for r in layout['regions']),18)
+  self.assertEqual(sum(v.get('authoring_owner')=='primary_atrium_core'for v in layout['voids']),2)
   self.assertTrue(all(not d['final_layout_accepted']for d in self.plan['decks']))
   self.assertGreaterEqual(len(self.plan['unresolved_finalization_gates']),8)
 if __name__=='__main__':unittest.main()

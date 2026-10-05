@@ -54,6 +54,15 @@ def build():
   assert hull_plan.buffer(-2).covers(lobby)
   assert all(lobby.intersection(rect(r)).area<1e-6 for r in obstacles)
   cores.append({'id':name+'_vertical_core','status':'Public lift/stair plan reservation; no shaft cuts or global access acceptance','x':[-3.3,3.3],'z':[z-9,z+15],'center_z':z,'transport_catchment_z':catchment,'apron_connector':{'x':[-7.8,7.8],'z':[-81,-80],'status':'Required authored bridge between lobby end and existing apron'}if name=='atrium_threshold'else None,'bypass_end_extension_m':4,'decks':list(elevations),'floor_y_range':[0,106.5],'programme_guest_shop_conflicts':conflicts,'guest_service_separation':'Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink','required_bypass_x_ranges':[[-7.8,-3.5],[3.5,7.8]],'lobby_x':[-7.8,7.8],'lobby_z':[z-13,z+19],'guest_lift_gate_local_xz':[-1.8,-6],'stair_reservation_local_x':[-3.1,3.1],'stair_reservation_local_z':[4,14.8],'preserved_crosslink_local_z':[-3,3],'purpose':'Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks','requirements':['Author both4.3m bypasses and4m end connections','Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations','Fit differing4.5/6/8.5m stair pitches and equivalent lift access','Confirm pit below-0.18m and headroom above109.44m against resolved hull section','At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m','Test physical doors, cabins and loaded cart transfers before use']})
+ # Track the one authored core separately from the four unbuilt reservations.
+ authored=read('data/architecture/PRIMARY_ATRIUM_CORE.json')
+ primary=next(c for c in cores if c['id']==authored['core_reservation'])
+ primary['status']='Authored main-scene central core; validation and visual review recorded separately. Other public cores remain reservations'
+ primary['construction_contract']='data/architecture/PRIMARY_ATRIUM_CORE.json'
+ primary['geometry_owner']='primary_atrium_core'
+ primary['apron_connector']['status']='Authored continuous floor within the central core footprint'
+ primary['remaining_acceptance']=['Resolved hull section','Broader destination network and freehand cart use','Final art and all-species ergonomics']
+ paths.append('data/architecture/PRIMARY_ATRIUM_CORE.json')
  staff_cores=[]
  positions={'port':[-490,-283,-90,290,490],'starboard':[-490,-323,-86,323,490]}
  for side,zs in positions.items():
@@ -111,4 +120,4 @@ def build():
  return result
 if __name__=='__main__':
  result=build();(ROOT/'data/whole_ship_layout.json').write_text(json.dumps(result,indent=2)+'\n')
- print(json.dumps({'decks':len(result['decks']),'programmes':len(result['programmes']),'guest_units':1000,'shops':100,'proposed_residential_courts':4,'proposed_longitudinal_cores':5,'final_layout_accepted':False}))
+ print(json.dumps({'decks':len(result['decks']),'programmes':len(result['programmes']),'guest_units':1000,'shops':100,'proposed_residential_courts':4,'public_core_reservations':5,'authored_public_cores':1,'final_layout_accepted':False}))

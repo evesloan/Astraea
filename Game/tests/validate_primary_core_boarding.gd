@@ -33,6 +33,7 @@ func run() -> void:
 	actor.camera.rotation.x=0
 	actor.velocity=Vector3.ZERO
 	for frame in range(60):await physics_frame
+	assert(actor.position.distance_to(Vector3(-5.42,0,-106))<.12,"Lower deck must remain playable with the default upper-deck respawn")
 	cart.toggle_grab(actor)
 	key(KEY_W,true)
 	var boarded:=false
@@ -85,6 +86,10 @@ func run() -> void:
 	for product in cart.products:
 		var p:Vector3=cart.to_local(product.global_position)
 		assert(p.y>.8 and p.y<1.3 and abs(p.x)<.4 and abs(p.z)<.6)
+	# Independent recovery fixture only after completing the physical boarding/travel/exit circuit.
+	actor.position=Vector3(0,-8,-100);actor.velocity=Vector3.ZERO
+	for frame in range(3):await physics_frame
+	assert(actor.position.distance_to(actor.spawn_position)<.12,"Below-ship recovery must still return to the configured spawn")
 	print("PRIMARY BOARDING PASS: real player pushes four-product loaded cart intoD01 cabin, travels physically toD18, and pulls it out across the upper threshold. No transforms set during travel/exit; full-network freehand acceptance pending.")
 	main.queue_free()
 	await process_frame

@@ -137,3 +137,6 @@ A new local two-level arrival now links D09 retail to the D10 Orchard approach t
 
 ## Orchard food-hall candidate fit
 The reserved240 places now have actual candidate chairs across six communal tables and thirty smaller groups. Two serving pavilions, lower staff circulation, a court-facing internal window and coordinated dining vaults are implemented. All54 current checks pass; normal and effects-off views were reviewed. Occupied service, species fit and final art remain unfinished. See ORCHARD_FOODHALL_PROGRESS.md.
+
+## Central eighteen-deck working core
+One real central public core now joinsD01–D18 with17rise-correct switchbacks,18supported bypasses and a physical18-stop lift. All58 runtime checks pass, including actual lower-deck loaded boarding, D18loaded exit and round-trip carry. An old spawn-relative fall reset that prevented lower-deck play was corrected and covered. Normal/effects-off threshold, stairwell and panel views were inspected; broader finishes remain unfinished. Committed retention is pending; see PRIMARY_ATRIUM_CORE_PROGRESS.md. Other global cores, full hull section and complete destination/luxury/crew fit remain unfinished.
