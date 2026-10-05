@@ -40,5 +40,8 @@ for link in proposal['observation_service_links']:
  assert corridor.intersection(terminal).area<1e-6
  assert all(corridor.intersection(Polygon(r['proposed_floor_boundary'])).area<1e-6 for r in result)
  assert corridor.intersection(box(-4,-80,4,102)).area<1e-6
+if (ROOT/'data/architecture/AFT_CROWN_LINK.json').exists():
+ proposal['aft_arrival_and_alternative_descent']['status']='Two-level core authored in AFT_CROWN_LINK.json; verify current tests. Broader foyer remains an unbuilt proposal'
+ proposal['aft_arrival_and_alternative_descent']['remaining_gate']='Complete broader foyer, service entrances and normal-play review; wider crown programme remains unadopted'
 (ROOT/'data/architecture/D18_COMMAND_CROWN_PROPOSAL.json').write_text(json.dumps(proposal,indent=2)+'\n')
 print(json.dumps(proposal['dimensions']))
