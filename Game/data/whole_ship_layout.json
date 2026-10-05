@@ -7,10 +7,11 @@
     "data/reference/directory_allocations.json": "63df12482a840d0c3ed30cf4ad669f5cb8b6cf8e89d6823fc0937bf8e3e2c539",
     "data/reference/historical_guest_census.json": "9436f006b2e71f6ee5bda71cd8dc09d1c52f44844027fa7082e3b286a7215038",
     "data/reference/historical_atlas_allocations.json": "deabb459263f09f342dc76b1d588105eb579d1eb60a0c658a6358f9ab8d1b063",
-    "data/spatial_layout.json": "14c8dac511dd9304c945dab384af9aef8f90b12072be502a27c7364a4921d660",
+    "data/spatial_layout.json": "67ac24e787ad381451634937fdaf1f908573332262cb8b29e164dd4c73496d17",
     "data/hull_envelope.json": "8412bacc9253a967fda398c2b81c54f413079374edafbf3d4a3716c70c913f87",
     "data/reference/D03_crew_envelopes.json": "6473d78e789860594c6a955268d7ecc7f0ff44b130cc3ccc833b857e4513ec81",
-    "data/architecture/PRIMARY_ATRIUM_CORE.json": "b2a2ffc3fb039753d34be514bb55179dd602d94bdb8f497805d02e9633d9029b"
+    "data/architecture/PRIMARY_ATRIUM_CORE.json": "b2a2ffc3fb039753d34be514bb55179dd602d94bdb8f497805d02e9633d9029b",
+    "data/architecture/FORWARD_PUBLIC_CORE.json": "36303defc3cbbb20a3cd51b7efe9fd78697448f4f4f59983798590422ff39b73"
   },
   "decks": [
     {
@@ -6908,14 +6909,6 @@
       ],
       "boundary": [
         [
-          -100.0,
-          -268.0
-        ],
-        [
-          -63.0,
-          -268.0
-        ],
-        [
           -63.0,
           -500.0
         ],
@@ -6926,6 +6919,14 @@
         [
           -100.0,
           -449.528
+        ],
+        [
+          -100.0,
+          -268.0
+        ],
+        [
+          -63.0,
+          -268.0
         ]
       ],
       "area_m2": 7947.141,
@@ -7051,20 +7052,20 @@
       ],
       "boundary": [
         [
+          -63.0,
+          250.0
+        ],
+        [
+          -100.0,
+          250.0
+        ],
+        [
           -100.0,
           423.164
         ],
         [
           -63.0,
           491.123
-        ],
-        [
-          -63.0,
-          250.0
-        ],
-        [
-          -100.0,
-          250.0
         ]
       ],
       "area_m2": 7664.324,
@@ -7189,14 +7190,6 @@
       ],
       "boundary": [
         [
-          63.0,
-          -500.0
-        ],
-        [
-          63.0,
-          -250.0
-        ],
-        [
           100.0,
           -250.0
         ],
@@ -7207,6 +7200,14 @@
         [
           74.764,
           -500.0
+        ],
+        [
+          63.0,
+          -500.0
+        ],
+        [
+          63.0,
+          -250.0
         ]
       ],
       "area_m2": 8613.141,
@@ -7331,20 +7332,20 @@
       ],
       "boundary": [
         [
+          100.0,
+          250.0
+        ],
+        [
+          63.0,
+          250.0
+        ],
+        [
           63.0,
           491.123
         ],
         [
           100.0,
           423.164
-        ],
-        [
-          100.0,
-          250.0
-        ],
-        [
-          63.0,
-          250.0
         ]
       ],
       "area_m2": 7664.324,
@@ -7459,7 +7460,7 @@
   "longitudinal_vertical_core_reservations": [
     {
       "id": "forward_vertical_core",
-      "status": "Public lift/stair plan reservation; no shaft cuts or global access acceptance",
+      "status": "Authored forward platform; fresh runtime and visual acceptance recorded separately",
       "x": [
         -3.3,
         3.3
@@ -7489,12 +7490,11 @@
         "D14",
         "D15",
         "D16",
-        "D17",
-        "D18"
+        "D17"
       ],
       "floor_y_range": [
         0,
-        106.5
+        102
       ],
       "programme_guest_shop_conflicts": [],
       "guest_service_separation": "Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink",
@@ -7514,7 +7514,7 @@
       ],
       "lobby_z": [
         -445,
-        -413
+        -412
       ],
       "guest_lift_gate_local_xz": [
         -1.8,
@@ -7532,14 +7532,25 @@
         -3,
         3
       ],
-      "purpose": "Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks",
+      "purpose": "Public D01-D17 catchment beneath the general roof; D18 uses the compact crown connections",
       "requirements": [
         "Author both4.3m bypasses and4m end connections",
         "Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations",
         "Fit differing4.5/6/8.5m stair pitches and equivalent lift access",
-        "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
         "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
-        "Test physical doors, cabins and loaded cart transfers before use"
+        "Test physical doors, cabins and loaded cart transfers before use",
+        "Fit terminal cap below106.5m general roof without intersecting the existing D18datum slab"
+      ],
+      "geometry_owner": "forward_public_core",
+      "construction_contract": "data/architecture/FORWARD_PUBLIC_CORE.json",
+      "lateral_portal_decks": [
+        "D01",
+        "D02"
+      ],
+      "lateral_portal_side": "port",
+      "terminal_cap_y": [
+        105.78,
+        105.9
       ]
     },
     {
@@ -7574,12 +7585,11 @@
         "D14",
         "D15",
         "D16",
-        "D17",
-        "D18"
+        "D17"
       ],
       "floor_y_range": [
         0,
-        106.5
+        102
       ],
       "programme_guest_shop_conflicts": [],
       "guest_service_separation": "Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink",
@@ -7617,14 +7627,14 @@
         -3,
         3
       ],
-      "purpose": "Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks",
+      "purpose": "Public D01-D17 catchment beneath the general roof; D18 uses the compact crown connections",
       "requirements": [
         "Author both4.3m bypasses and4m end connections",
         "Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations",
         "Fit differing4.5/6/8.5m stair pitches and equivalent lift access",
-        "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
         "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
-        "Test physical doors, cabins and loaded cart transfers before use"
+        "Test physical doors, cabins and loaded cart transfers before use",
+        "Fit terminal cap below106.5m general roof without intersecting the existing D18datum slab"
       ]
     },
     {
@@ -7761,12 +7771,11 @@
         "D14",
         "D15",
         "D16",
-        "D17",
-        "D18"
+        "D17"
       ],
       "floor_y_range": [
         0,
-        106.5
+        102
       ],
       "programme_guest_shop_conflicts": [],
       "guest_service_separation": "Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink",
@@ -7804,14 +7813,14 @@
         -3,
         3
       ],
-      "purpose": "Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks",
+      "purpose": "Public D01-D17 catchment beneath the general roof; D18 uses the compact crown connections",
       "requirements": [
         "Author both4.3m bypasses and4m end connections",
         "Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations",
         "Fit differing4.5/6/8.5m stair pitches and equivalent lift access",
-        "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
         "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
-        "Test physical doors, cabins and loaded cart transfers before use"
+        "Test physical doors, cabins and loaded cart transfers before use",
+        "Fit terminal cap below106.5m general roof without intersecting the existing D18datum slab"
       ]
     },
     {
@@ -7846,12 +7855,11 @@
         "D14",
         "D15",
         "D16",
-        "D17",
-        "D18"
+        "D17"
       ],
       "floor_y_range": [
         0,
-        106.5
+        102
       ],
       "programme_guest_shop_conflicts": [],
       "guest_service_separation": "Public core only. Staff risers are separate to avoid forcing service through the arrivals crosslink",
@@ -7889,14 +7897,14 @@
         -3,
         3
       ],
-      "purpose": "Public lift and stair catchment serving all18decks, with actual bypass floors and crosslinks",
+      "purpose": "Public D01-D17 catchment beneath the general roof; D18 uses the compact crown connections",
       "requirements": [
         "Author both4.3m bypasses and4m end connections",
         "Keep the D01/D02 existing arrivals crosslink open between lift and stair reservations",
         "Fit differing4.5/6/8.5m stair pitches and equivalent lift access",
-        "Confirm pit below-0.18m and headroom above109.44m against resolved hull section",
         "At the central threshold the core is shifted forward to avoid the hero atrium; the Townline catchment remains-72m",
-        "Test physical doors, cabins and loaded cart transfers before use"
+        "Test physical doors, cabins and loaded cart transfers before use",
+        "Fit terminal cap below106.5m general roof without intersecting the existing D18datum slab"
       ]
     }
   ],

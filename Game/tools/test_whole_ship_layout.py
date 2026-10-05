@@ -27,7 +27,7 @@ class WholeShipLayout(unittest.TestCase):
   hull=Polygon(json.loads((ROOT/'data/hull_envelope.json').read_text())['plan_xz_m'])
   allocations=json.loads((ROOT/'data/reference/directory_allocations.json').read_text())['records']
   for c in self.plan['longitudinal_vertical_core_reservations']:
-   self.assertEqual(len(c['decks']),18);self.assertFalse(c['programme_guest_shop_conflicts'])
+   self.assertEqual(len(c['decks']),18 if c['id']=='atrium_threshold_vertical_core' else 17);self.assertFalse(c['programme_guest_shop_conflicts'])
    for x in c['required_bypass_x_ranges']:
     p=box(x[0],c['z'][0]-c['bypass_end_extension_m'],x[1],c['z'][1]+c['bypass_end_extension_m'])
     self.assertTrue(hull.covers(p))
@@ -67,8 +67,11 @@ class WholeShipLayout(unittest.TestCase):
   reservations=self.plan['residential_court_reservations']+self.plan['longitudinal_vertical_core_reservations']
   self.assertTrue(all(c['id']not in voids for c in reservations if not c.get('geometry_owner')))
   built=[c for c in reservations if c.get('geometry_owner')]
-  self.assertEqual(len(built),1)
-  self.assertEqual(built[0]['geometry_owner'],'primary_atrium_core')
+  self.assertEqual({c['geometry_owner']for c in built},{'primary_atrium_core','forward_public_core'})
+  forward=next(c for c in built if c['geometry_owner']=='forward_public_core')
+  self.assertEqual(forward['lateral_portal_decks'],['D01','D02']);self.assertEqual(forward['lateral_portal_side'],'port')
+  self.assertEqual(len(forward['decks']),17);self.assertLess(forward['terminal_cap_y'][1],106.26)
+  self.assertEqual(sum(r.get('authoring_owner')=='forward_public_core'for r in layout['regions']),17)
   self.assertEqual(sum(r.get('authoring_owner')=='primary_atrium_core'for r in layout['regions']),18)
   self.assertEqual(sum(v.get('authoring_owner')=='primary_atrium_core'for v in layout['voids']),2)
   self.assertTrue(all(not d['final_layout_accepted']for d in self.plan['decks']))
