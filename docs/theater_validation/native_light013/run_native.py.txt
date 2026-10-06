@@ -1,0 +1,27 @@
+"""Run only after fresh reviewed post-pool source pins and an idle graphical lane."""
+from pathlib import Path
+import json,os,sys,hashlib,subprocess,time,threading
+R=Path(__file__).resolve().parent;G=Path('/workspace/shared/astraea-godot-production-20261003');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+assert len(sys.argv)==3 and sha(R/'capture_theater.gd')==sys.argv[1]and sha(R/'SOURCE_PINS.json')==sys.argv[2]
+assert sha(R/'RECEIVERS.json')=='76fa9421fdbcd9bab988b173736c7b1f8b2e9cbfc9b147ef6f98a148ccc0bc1b'
+assert sha(R/'strict_probe.gd.txt')=='5b682f3fd1dff7765708b0fca48a3e9856416b5eba60bb14161d35a359aeaec4'
+assert os.environ.get('DISPLAY')or os.environ.get('WAYLAND_DISPLAY')
+assert not list(Path('/workspace/shared/astraea-review-queue').glob('*.request'))
+assert subprocess.run(['pgrep','-x','godot'],capture_output=True).returncode==1
+pins=json.loads((R/'SOURCE_PINS.json').read_text());assert subprocess.check_output(['git','-C',str(G),'rev-parse','HEAD'],text=True).strip()==pins['head']
+def snapshot():return {str(p.relative_to(G)):sha(p)for p in G.rglob('*')if p.is_file()and not any(x in {'.git','.godot','artifacts','__pycache__'}for x in p.relative_to(G).parts)}
+assert snapshot()==pins['sha256'],'Post-pool source changed before trial'
+run=R/'launcher_run001';run.mkdir(exist_ok=False);env=os.environ.copy()
+for key,sub in [('XDG_CONFIG_HOME','config'),('XDG_DATA_HOME','data'),('XDG_CACHE_HOME','cache')]:p=run/sub;p.mkdir();env[key]=str(p)
+receipt={'status':'RUNNING','script_sha256':sys.argv[1],'source_pin_sha256':sys.argv[2],'receivers_sha256':sha(R/'RECEIVERS.json'),'production_lighting_adopted':True,'visual_acceptance':False};(run/'RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n');start=time.monotonic();errors=[];lines=[]
+with (run/'engine.log').open('x')as log:
+ process=subprocess.Popen(['godot','--audio-driver','Dummy','--path',str(G),'--resolution','1280x720','--script',str(R/'capture_theater.gd')],env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+ timer=threading.Timer(420,process.kill);timer.start()
+ for line in process.stdout:
+  log.write(line);log.flush();lines.append(line)
+  if 'ERROR:'in line or 'Assertion failed'in line or 'Parse Error'in line:
+   errors.append(line.strip())
+   if process.poll()is None:process.terminate()
+ process.wait();timer.cancel()
+unchanged=snapshot()==pins['sha256'];passed=process.returncode==0 and not errors and unchanged and 'THEATER CAPTURE PASS:'in ''.join(lines)
+receipt.update(status='PASS_CAPTURE_REVIEW_PENDING'if passed else'FAILED',returncode=process.returncode,errors=errors,source_unchanged=unchanged,seconds=round(time.monotonic()-start,3));(run/'RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt));sys.exit(0 if passed else 1)

@@ -4,7 +4,7 @@ const CONTRACT := "res://data/architecture/THEATER_RUNTIME_STAGE001.json"
 const FIXTURES := "res://tests/fixtures/THEATER_TEST_FIXTURES.json"
 const FLOOR := 69.5
 const NATIVE_INSTANCE_QA := "res://docs/THEATER_NATIVE_INSTANCE_QA.json"
-const NATIVE_INSTANCE_QA_SHA := "f0118e20dc0fd6e96d178ffed675a9c3ff8cfba8fa9b02e809488427f6247b09"
+const NATIVE_INSTANCE_QA_SHA := "59d8c3f4e4b2bf85ae82ab798088197b05c1baddd376f50a73fcb1f730f494ad"
 var data: Dictionary
 var fixture: Dictionary
 var ship: Node3D
@@ -435,6 +435,6 @@ func require_retained_native_readback() -> bool:
 		assert(FileAccess.get_sha256("res://"+str(path)) == str(proof.input_sha256[path]), "Native instance readback is stale: "+str(path))
 	for path in proof.evidence_sha256:
 		assert(FileAccess.get_sha256("res://"+str(path)) == str(proof.evidence_sha256[path]), "Retained native evidence changed: "+str(path))
-	assert(proof.strict_probe_source_sha256 == "e75e8543676b45920cca0461c9a87382d98e9bc004cb4488531e60e3a5f629ca")
+	assert(proof.strict_probe_source_sha256 == "5b682f3fd1dff7765708b0fca48a3e9856416b5eba60bb14161d35a359aeaec4")
 	print("THEATER RETAINED NATIVE READBACK: exact actual-renderer receipt consumed; current headless physics/contact/identity/floor checks still execute")
 	return true

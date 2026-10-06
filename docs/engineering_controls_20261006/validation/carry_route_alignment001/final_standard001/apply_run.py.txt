@@ -1,0 +1,34 @@
+from pathlib import Path
+import hashlib,json,subprocess,datetime,shutil
+O=Path(__file__).resolve().parent;C=O.parent;G=Path('/workspace/shared/astraea-godot-production-20261003');T=Path('/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/runtime_stage01/carry_test_successor019');P='tests/validate_secondary_engineering_cell.gd';H='tests/theater_stair_ship_successor.gd'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def write(p,v):p.write_text(json.dumps(v,indent=2)+'\n')
+def snap():return {str(p.relative_to(G)):sha(p) for p in sorted(G.rglob('*')) if p.is_file() and not {'.git','.godot','artifacts'}.intersection(p.relative_to(G).parts)}
+assert sha(G/P)=='a3b1357dff7a3aecf82ff4a27786d88c8fbd2581cbbd74646d4f64b35e360c96'
+assert sha(C/'CANDIDATE.gd')=='12ef1bf0c464625148f077df1f994c5b46a02cfc2e4797d0885315ad5d86cd13'
+assert sha(G/H)=='509fcd766f18a7cd217f04a6980335b831a10f363d3f0242f207a25e93e22cb3'
+assert sha(T/'theater_stair_ship_successor.gd')=='925d554d58a3b7b54e545f1fdef006fb86754df0aca8e7bc744584fb5c4468b2'
+assert sha(T/'REVIEW.json')=='a73a6b471c667c13660729f628951a2a452af7221cf6575685acdb34889e5445'
+assert subprocess.check_output(['git','-C',str(G),'rev-parse','HEAD'],text=True).strip()=='e49190fee131f1354aa7de6a7fc542159c84ed7e'
+assert sha(G/'docs/THEATER_STAIR_SHIP_SUCCESSOR_011.json')=='63a0626beea724e41076e4a42a2211a21806106c38e1f5dae6017182c627e34a'
+assert not (O/'APPLY_RECEIPT.json').exists()
+for p in Path('/proc').iterdir():
+ if p.name.isdigit():
+  try:n=(p/'comm').read_text().strip()
+  except OSError:continue
+  assert not n.lower().startswith('godot'),('competing process',p.name)
+before=snap();write(O/'SOURCE_START.json',before)
+for target,source in [(P,C/'CANDIDATE.gd'),(H,T/'theater_stair_ship_successor.gd')]:
+ shutil.copy2(G/target,O/(Path(target).name+'.preimage'));(G/target).write_bytes(source.read_bytes())
+after=snap();assert sorted(k for k in before if before[k]!=after[k])==sorted([P,H]);write(O/'APPLY_RECEIPT.json',{'utc':now(),'changes':{p:{'old':before[p],'new':after[p]} for p in [P,H]},'all_other_pins_unchanged':len(before)-2})
+runs=[]
+for check in ['secondary_engineering_cell','lighting_budget']:
+ started=now()
+ with (O/(check+'.log')).open('w') as log:r=subprocess.run(['python','tools/validate.py','--only',check],cwd=G,stdout=log,stderr=subprocess.STDOUT,timeout=700)
+ shutil.copy2(G/'artifacts'/('validation_'+check+'_fixed60.json'),O/(check+'_VALIDATION.json'))
+ if check=='secondary_engineering_cell':shutil.copy2(G/'artifacts/secondary_engineering_cell_validation.json',O/'CELL_RECEIPT.json')
+ runs.append({'check':check,'started_utc':started,'finished_utc':now(),'exit_code':r.returncode});write(O/'RUNS.json',runs)
+ if r.returncode:break
+final=snap();drift={k:{'before':after.get(k),'after':final.get(k)} for k in set(after)|set(final) if after.get(k)!=final.get(k)};write(O/'SOURCE_END.json',final);write(O/'DRIFT.json',drift);assert not drift,drift
+print(json.dumps({'runs':runs,'source_pins':len(final),'drift':drift},indent=2));raise SystemExit(runs[-1]['exit_code'])

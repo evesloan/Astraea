@@ -1,0 +1,372 @@
+extends "res://tests/validate_engineering_calibration.gd"
+# QA only. Inherits installed original-input/pose/contact helpers; never writes
+# the all120 receipt. Captures only this process's application mix, not a mic.
+const OUT := "/workspace/scratch/375c2e438292/engineering-controls-runtime-apply-20261006/native_feedback002"
+const BASELINE := "/workspace/scratch/375c2e438292/engineering-controls-runtime-apply-20261006/before_listener001/engineering_listener_before_census.json"
+var capture_effect: AudioEffectCapture
+var master := -1
+var previous_effects: Array[AudioEffect] = []
+var captured := PackedVector2Array()
+var mix_rate := 0
+var capture_started_msec := 0
+var capture_stopped := false
+const WINDOW_SECONDS := 1.5
+var window_start_sample := 0
+var window_stats: Dictionary = {}
+var mix_evidence: Dictionary = {}
+var views: Array = []
+var cue_ranges: Array = []
+var input_pins: Dictionary = {}
+var voice_census: Dictionary = {}
+var original_native_voices: Array = []
+var original_native_camera: Camera3D
+var original_native_viewport: Viewport
+var native_input_trace: Node
+var target_diagnostics: Array = []
+var diagnostic_control: Node3D
+var diagnostic_row: Dictionary = {}
+var failure_before_release: Dictionary = {}
+var delivery_flushes: Array = []
+var failure_capture: Dictionary = {}
+
+func _process(_delta: float) -> bool:
+	if capture_effect != null and not capture_stopped:
+		var count := capture_effect.get_frames_available()
+		var remaining := ceili(mix_rate * WINDOW_SECONDS) - (captured.size()-window_start_sample)
+		if count > 0 and remaining > 0:
+			captured.append_array(capture_effect.get_buffer(mini(count,remaining)))
+		if remaining <= 0 or Time.get_ticks_msec()-capture_started_msec >= int(WINDOW_SECONDS*1000):
+			close_mix_window("bounded_window_cap")
+	if not failed and Time.get_ticks_msec()-_started > 180000:
+		require(false,"Native feedback watchdog")
+	return false
+
+func remove_capture() -> void:
+	if capture_effect == null or master < 0: return
+	for index in range(AudioServer.get_bus_effect_count(master)-1,-1,-1):
+		if AudioServer.get_bus_effect(master,index) == capture_effect:
+			AudioServer.remove_bus_effect(master,index)
+	capture_effect = null
+	capture_stopped = true
+
+func _finalize() -> void:
+	remove_capture()
+
+func write_receipt(status: String, reason: String = "") -> void:
+	# All failures from inherited helpers come here, never to RECEIPT.
+	remove_capture()
+	var record := {"status":status,"reason":reason,"checkpoint":_checkpoint,
+		"views":views,"cue_ranges":cue_ranges,"mixed_output":mix_evidence,
+		"target_diagnostics":target_diagnostics,"failure_before_release":failure_before_release,
+		"failure_capture":failure_capture,"delivery_flushes":delivery_flushes,"input_trace":native_input_trace.events if is_instance_valid(native_input_trace) else [],
+		"connected_route":route_records,
+		"frames":frames,"ordinary_walk_frames":walked_frames,"arrivals":arrivals,
+		"captures":main.capture_records if is_instance_valid(main) else [],
+		"listener_camera":str(actor.camera.get_path()) if is_instance_valid(actor) else "",
+		"listener_viewport":str(actor.camera.get_viewport().get_path()) if is_instance_valid(actor) else "",
+		"voice_census":voice_census,
+		"owned_voice_count":int(voice_census.get("after",{}).get("owned_voice_count",0)),
+		"human_listening_accepted":false,"visual_review_accepted":false,
+		"capture_effect_removed":capture_effect == null,
+		"scope":"Two original-input native control interactions and finite application-mixed output only; all120 receipt is preserved and listening remains separate."}
+	var file := FileAccess.open(OUT+"/NATIVE_RECEIPT.json",FileAccess.WRITE)
+	if file != null:
+		file.store_string(JSON.stringify(record,"  ")+"\n")
+		file.close()
+
+func node_path(node: Node) -> String:
+	return str(node.get_path()) if is_instance_valid(node) and node.is_inside_tree() else ""
+
+func target_snapshot(phase: String) -> Dictionary:
+	if not is_instance_valid(actor) or not is_instance_valid(diagnostic_control): return {}
+	if is_instance_valid(native_input_trace): native_input_trace.phase = phase
+	var eye: Vector3 = actor.camera.global_position
+	var forward: Vector3 = -actor.camera.global_basis.z
+	var intended: Vector3 = xyz(diagnostic_row.target_center_xyz)
+	var delta: Vector3 = intended-eye
+	var along: float = delta.dot(forward)
+	var query := PhysicsRayQueryParameters3D.create(eye,eye+forward*2.5)
+	query.exclude = [actor.get_rid()]
+	query.collide_with_areas = true
+	var hit := actor.get_world_3d().direct_space_state.intersect_ray(query)
+	var collider: Node = hit.get("collider")
+	var shape_node: Node
+	var shape_id: int = int(hit.get("shape",-1))
+	if collider is CollisionObject3D and shape_id >= 0:
+		shape_node = collider.shape_owner_get_owner(collider.shape_find_owner(shape_id)) as Node
+	var actual: Node = actor.target_from_view()
+	var row := {"phase":phase,"engine_msec":Time.get_ticks_msec(),"physics_frame":Engine.get_physics_frames(),
+		"test_frames":frames,"id":diagnostic_row.id,"actor_xyz":as_array(actor.global_position),"eye_xyz":as_array(eye),
+		"actor_rotation_xyz":as_array(actor.rotation),"actor_global_rotation_xyz":as_array(actor.global_rotation),
+		"camera_global_rotation_xyz":as_array(actor.camera.global_rotation),"yaw":actor.rotation.y,"pitch":actor.pitch,
+		"camera_fov":actor.camera.fov,"velocity_xyz":as_array(actor.velocity),"on_floor":actor.is_on_floor(),
+		"camera_path":node_path(actor.camera),"viewport_path":node_path(actor.camera.get_viewport()),
+		"intended_source_xyz":as_array(intended),"actual_control_xyz":as_array(diagnostic_control.global_position),
+		"intended_control_path":node_path(diagnostic_control),"intended_area_path":node_path(diagnostic_control.target_area),
+		"radius_m":diagnostic_row.target_radius_m,"range_m":2.5,"ray_forward_xyz":as_array(forward),
+		"target_along_ray_m":along,"target_off_ray_m":(delta-forward*along).length(),
+		"first_collider_path":node_path(collider),"first_collider_class":collider.get_class() if is_instance_valid(collider) else "",
+		"first_shape_index":shape_id,"first_shape_path":node_path(shape_node),
+		"first_hit_xyz":as_array(hit.position) if not hit.is_empty() else [],"first_hit_distance_m":eye.distance_to(hit.position) if not hit.is_empty() else -1.0,
+		"actual_first_area_matches":collider == diagnostic_control.target_area,"original_target_from_view":node_path(actual),
+		"original_target_matches":actual == diagnostic_control,"cached_interaction_target":node_path(actor.interaction_target),
+		"cached_target_matches":actor.interaction_target == diagnostic_control,"held_interaction":node_path(actor.held_interaction),
+		"gameplay_input_enabled":actor.gameplay_input_enabled,"RMB_pressed":Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT),
+		"W_pressed":Input.is_physical_key_pressed(KEY_W),"E_pressed":Input.is_physical_key_pressed(KEY_E),
+		"mouse_mode":Input.mouse_mode,"accumulated_input":Input.use_accumulated_input,"window_focused":main.get_window().has_focus(),
+		"root_gui_focus":node_path(main.get_viewport().gui_get_focus_owner()),"world_gui_focus":node_path(main.world_view.gui_get_focus_owner()),
+		"viewport_mouse_xy":[main.world_view.get_mouse_position().x,main.world_view.get_mouse_position().y],"directory_open":main.directory_open,
+		"mouse_motion_count":native_input_trace.mouse_motion_count if is_instance_valid(native_input_trace) else 0}
+	target_diagnostics.append(row)
+	if target_diagnostics.size() > 32: target_diagnostics.pop_front()
+	return row
+
+func require(ok: bool, reason: String) -> bool:
+	# Preserve the actual failed input state before the inherited cleanup releases RMB.
+	if not ok and not failed: failure_before_release = target_snapshot("failure_before_input_release")
+	return super.require(ok,reason)
+
+func flush_native_input(phase: String) -> void:
+	Input.flush_buffered_events()
+	delivery_flushes.append({"phase":phase,"engine_msec":Time.get_ticks_msec(),"physics_frame":Engine.get_physics_frames()})
+
+func capture_failed_view_once(reason: String) -> void:
+	if not failure_capture.is_empty(): return
+	var prefix := "engineering_controls_native002_failure_"
+	failure_capture = {"prefix":prefix,"reason":reason,"interaction_pass":false,"before":target_snapshot("failure_image_before_draw")}
+	# Unchanged current original camera; one existing presentation image set.
+	await main._capture(prefix)
+	failure_capture["after"] = target_snapshot("failure_image_after_draw")
+
+func original_first_hit(control: Node3D, record: Dictionary) -> bool:
+	diagnostic_control = control
+	diagnostic_row = record
+	target_snapshot("approach_complete_before_aim")
+	if not aim(xyz(record.target_center_xyz)): return false
+	target_snapshot("aimed_before_RMB")
+	focus(true)
+	target_snapshot("RMB_parsed_before_flush")
+	# Same public event flush used by presentation's existing graphical cart check.
+	flush_native_input("RMB_focus")
+	target_snapshot("RMB_flushed_before_physics")
+	if not await advance(3): return false
+	var observed := target_snapshot("post_flush_three_tick_first_hit")
+	if not bool(observed.original_target_matches) or not bool(observed.cached_target_matches) or not bool(observed.actual_first_area_matches):
+		await capture_failed_view_once("Strict original first-hit failed; diagnostic image only")
+	if not require(bool(observed.original_target_matches) and bool(observed.cached_target_matches),"Wrong first-hit source target from real original eye; see distinct ray/cached diagnostics"): return false
+	if not require(bool(observed.actual_first_area_matches),"First collider must be this precise Area, never an ancestor proxy"): return false
+	if not require(float(observed.first_hit_distance_m) <= 2.5001,"Original first hit exceeded 2.5 m"): return false
+	first_hit_evidence[str(record.id)] = observed
+	return true
+
+func tap_e() -> bool:
+	# Original RMB remains held. Refresh through normal physics before the real E.
+	flush_native_input("before_E_refresh")
+	if not await advance(2): return false
+	var observed := target_snapshot("two_frame_refresh_before_E")
+	if not bool(observed.original_target_matches) or not bool(observed.cached_target_matches) or not bool(observed.actual_first_area_matches):
+		await capture_failed_view_once("Strict pre-E first-hit failed; diagnostic image only")
+	if not require(bool(observed.original_target_matches) and bool(observed.cached_target_matches) and bool(observed.actual_first_area_matches) and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT),"Original RMB/first-hit changed before E"): return false
+	key(KEY_E,true)
+	flush_native_input("E_pressed")
+	if not await advance(2): return false
+	key(KEY_E,false)
+	flush_native_input("E_released")
+	return await advance(2)
+
+func native_voice_census(phase: String) -> bool:
+	# Two endpoint censuses only; no repeated source-geometry validation.
+	var audio: Node3D = bank.audio_owner
+	var all_voices: Array = main.find_children("*","AudioStreamPlayer3D",true,false)
+	var voice_rows: Array = []
+	var owned_count := 0
+	var original_count := 0
+	var topology_holds := true
+	for voice in all_voices:
+		var owned: bool = audio._voices.has(voice) and voice.get_parent() == audio
+		var original: bool = original_native_voices.has(voice)
+		if owned: owned_count += 1
+		if original: original_count += 1
+		var same_world: bool = voice.get_viewport() == original_native_viewport and voice.get_world_3d() == original_native_camera.get_world_3d()
+		var bounded: bool = voice.max_polyphony == 1 and not voice.autoplay and voice.volume_db <= -12.0 and voice.max_distance <= 6.0
+		topology_holds = topology_holds and owned and original and same_world and bounded
+		voice_rows.append({"path":str(voice.get_path()),"instance_id":voice.get_instance_id(),
+			"owner_path":str(voice.get_parent().get_path()),"viewport_path":str(voice.get_viewport().get_path()),
+			"owned":owned,"original_voice":original,"same_listener_world":same_world,"bounded":bounded})
+	var current_camera: Camera3D = main.world_view.get_camera_3d()
+	var original_camera_current: bool = actor.camera == original_native_camera and current_camera == original_native_camera and audio.listener_camera == original_native_camera
+	var original_viewport_current: bool = main.world_view == original_native_viewport and original_native_camera.get_viewport() == original_native_viewport
+	var alternate_listener_count: int = main.find_children("*","AudioListener3D",true,false).size()
+	voice_census[phase] = {"actual_voice_count":all_voices.size(),"owned_voice_count":owned_count,
+		"original_voice_count":original_count,"cached_voice_count":audio._voices.size(),"voices":voice_rows,
+		"camera_path":str(original_native_camera.get_path()),"camera_instance_id":original_native_camera.get_instance_id(),
+		"current_camera_path":str(current_camera.get_path()) if is_instance_valid(current_camera) else "",
+		"viewport_path":str(original_native_viewport.get_path()),"viewport_instance_id":original_native_viewport.get_instance_id(),
+		"original_camera_current":original_camera_current,"original_viewport_current":original_viewport_current,
+		"listener_enabled":main.world_view.audio_listener_enable_3d,"post_listener_enabled":main.post_view.audio_listener_enable_3d,
+		"alternate_listener_count":alternate_listener_count}
+	return require(all_voices.size() == 4 and owned_count == 4 and original_count == 4 and audio._voices.size() == 4 and topology_holds and original_camera_current and original_viewport_current and main.world_view.audio_listener_enable_3d and not main.post_view.audio_listener_enable_3d and alternate_listener_count == 0 and audio.listener_contract_holds(),"Native "+phase+" voice/camera/listener topology changed")
+
+func pinned_sources() -> bool:
+	for path in input_pins:
+		if not require(FileAccess.get_sha256("res://"+str(path)) == str(input_pins[path]),"Source changed: "+str(path)): return false
+	return true
+
+func save_view(control: Node3D, row: Dictionary, prefix: String, active: bool) -> bool:
+	if not require(control.busy == active,"Capture is not in requested real state"): return false
+	var displacement: float = control.last_motion_displacement
+	if active and not require(absf(displacement) > .000001,"No actual source displacement at active capture"): return false
+	await main._capture(prefix)
+	if not require(control.busy == active,"Effect completed before active image was captured; do not claim an active view"): return false
+	views.append({"id":row.id,"prefix":prefix,"active":active,"source_displacement":displacement,
+		"feet_xyz":as_array(actor.global_position),"eye_xyz":as_array(actor.camera.global_position),
+		"label":control.get_interaction_label(),"camera_fov":actor.camera.fov})
+	return true
+
+func begin_mix_window() -> bool:
+	if not require(capture_effect == null,"Previous cue capture is still attached"): return false
+	if master < 0:
+		master = AudioServer.get_bus_index("Master")
+		if not require(master >= 0 and not AudioServer.is_bus_mute(master),"Master unavailable/muted"): return false
+		for effect_index in range(AudioServer.get_bus_effect_count(master)):
+			previous_effects.append(AudioServer.get_bus_effect(master,effect_index))
+		mix_rate = int(AudioServer.get_mix_rate())
+	if not require(AudioServer.get_bus_effect_count(master) == previous_effects.size(),"Bus effect baseline changed between cues"): return false
+	for index in range(previous_effects.size()):
+		if not require(AudioServer.get_bus_effect(master,index) == previous_effects[index],"Existing effect changed between cues"): return false
+	capture_effect = AudioEffectCapture.new()
+	capture_effect.buffer_length = WINDOW_SECONDS
+	window_start_sample = captured.size()
+	window_stats = {}
+	capture_stopped = false
+	capture_started_msec = Time.get_ticks_msec()
+	AudioServer.add_bus_effect(master,capture_effect,previous_effects.size())
+	return true
+
+func close_mix_window(reason: String) -> void:
+	if capture_effect == null: return
+	var remaining := ceili(mix_rate*WINDOW_SECONDS)-(captured.size()-window_start_sample)
+	var available := capture_effect.get_frames_available()
+	if available > 0 and remaining > 0:
+		captured.append_array(capture_effect.get_buffer(mini(available,remaining)))
+	window_stats = {"start_sample":window_start_sample,"end_sample":captured.size(),
+		"frame_count":captured.size()-window_start_sample,"maximum_seconds":WINDOW_SECONDS,
+		"seconds":float(captured.size()-window_start_sample)/mix_rate,"started_engine_msec":capture_started_msec,
+		"stopped_engine_msec":Time.get_ticks_msec(),"stop_reason":reason,
+		"pushed_frames":capture_effect.get_pushed_frames(),"discarded_frames":capture_effect.get_discarded_frames()}
+	remove_capture()
+
+func finish_mix() -> bool:
+	if not require(capture_effect == null and cue_ranges.size() == 2,"Both independent cue windows must be closed"): return false
+	if not require(AudioServer.get_bus_effect_count(master) == previous_effects.size(),"Temporary mix effect leaked"): return false
+	for index in range(previous_effects.size()):
+		if not require(AudioServer.get_bus_effect(master,index) == previous_effects[index],"Existing bus effect changed"): return false
+	if not require(captured.size() > 0 and captured.size() <= ceili(mix_rate*WINDOW_SECONDS)*2,"No finite bounded application mix"): return false
+	var pcm := PackedByteArray()
+	pcm.resize(captured.size()*4)
+	var peak := 0.0
+	var sum_squares := 0.0
+	var nonzero := 0
+	for index in range(captured.size()):
+		var pair: Vector2 = captured[index]
+		if not require(is_finite(pair.x) and is_finite(pair.y),"Non-finite application mix sample"): return false
+		peak = maxf(peak,maxf(absf(pair.x),absf(pair.y)))
+		sum_squares += pair.x*pair.x+pair.y*pair.y
+		if absf(pair.x) > .000001 or absf(pair.y) > .000001: nonzero += 1
+		pcm.encode_s16(index*4,int(round(clampf(pair.x,-1.0,1.0)*32767.0)))
+		pcm.encode_s16(index*4+2,int(round(clampf(pair.y,-1.0,1.0)*32767.0)))
+	if not require(nonzero > 0 and peak > .000001 and peak <= 1.0,"Application mix is silent or clipped, regardless of driver/playing flag"): return false
+	for segment in cue_ranges:
+		var segment_peak := 0.0
+		for index in range(int(segment.start_sample),mini(int(segment.end_sample),captured.size())):
+			segment_peak = maxf(segment_peak,maxf(absf(captured[index].x),absf(captured[index].y)))
+		segment["actual_mix_peak"] = segment_peak
+		if not require(segment_peak > .000001,"A selected control produced no nonzero application mix"): return false
+	var wav := AudioStreamWAV.new()
+	wav.format = AudioStreamWAV.FORMAT_16_BITS
+	wav.mix_rate = mix_rate
+	wav.stereo = true
+	wav.loop_mode = AudioStreamWAV.LOOP_DISABLED
+	wav.data = pcm
+	if not require(wav.save_to_wav(OUT+"/application_mix.wav") == OK,"Mixed WAV save failed"): return false
+	mix_evidence = {"path":OUT+"/application_mix.wav","source":"Two concatenated bounded per-cue Master AudioEffectCapture windows after application spatial mixing; walking/rest gaps omitted",
+		"frames":captured.size(),"rate_hz":mix_rate,"seconds":float(captured.size())/mix_rate,
+		"peak":peak,"rms":sqrt(sum_squares/(captured.size()*2.0)),"nonzero_frames":nonzero,
+		"maximum_seconds_per_cue":WINDOW_SECONDS,"concatenated_segments":cue_ranges,"driver":AudioServer.get_driver_name(),
+		"wav_sha256":FileAccess.get_sha256(OUT+"/application_mix.wav"),"finite_nonzero_actual_mix":true,"human_listening_accepted":false}
+	return true
+
+func run() -> void:
+	_checkpoint = "native setup"
+	input_pins = JSON.parse_string(FileAccess.get_file_as_string(OUT+"/INPUT_PINS.json"))
+	if not pinned_sources(): return
+	var before: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(BASELINE))
+	if not require(before.emitters.is_empty() and before.calibration_voice_count == 0 and not before.listener_enabled and before.census_complete,"Actual zero-emitter before census required"): return
+	data = JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
+	main = (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	root.add_child(main)
+	native_input_trace = Node.new()
+	native_input_trace.set_script(load(OUT+"/input_trace.gd"))
+	native_input_trace.name = "NativeInputDiagnosticsOnly"
+	root.add_child(native_input_trace)
+	if not await advance(180): return
+	ship = main.get_node("World360/Astraea")
+	actor = ship.get_node("ShipSpace/PersistentActors/Player")
+	bank = ship.find_child("EngineeringCalibrationBank",true,false) as Node3D
+	gate = ship.find_child("EngineeringCellGate",true,false) as Node3D
+	floors = ship.find_child("CompiledStructuralFloors_NotFinishedRooms",true,false) as Node3D
+	if not identity_and_listener_census(): return
+	original_native_voices = bank.audio_owner._voices.duplicate()
+	original_native_camera = actor.camera
+	original_native_viewport = main.world_view
+	if not native_voice_census("before"): return
+	cache_real_system_states()
+	var selected: Array = []
+	for identity in ["ENG2_CONTROL_C1L_01","ENG2_CONTROL_C1L_03"]:
+		for row in data.controls:
+			if str(row.id) == identity: selected.append(row)
+	if not require(selected.size() == 2 and selected[0].kind == "toggle" and selected[1].kind == "push","Exact source toggle and push required"): return
+	release_inputs()
+	var first_foot := xyz(selected[0].proposed_approach_xyz)
+	if not require(ship.arrive_at(first_foot+Vector3(0,.1,.6),0),"Supported initial native arrival refused"): return
+	arrivals = 1
+	if not await advance(30): return
+	for index in range(selected.size()):
+		var row: Dictionary = selected[index]
+		_checkpoint = str(row.id)
+		var control: Node3D = bank.controls_by_id[str(row.id)]
+		if not await walk_to(xyz(row.proposed_approach_xyz),str(row.floor_owner)): return
+		if not await original_first_hit(control,row): return
+		if not await advance(30): return
+		var tag := "toggle" if index == 0 else "push"
+		var prefix := "engineering_controls_native002_"+tag+"_"
+		if not await save_view(control,row,prefix+"rest_",false): return
+		var home: Transform3D = control.actuator.transform
+		var activation_before: int = control.activation_count
+		# No walking or rest-image work is inside either finite capture window.
+		if not begin_mix_window(): return
+		if not await tap_e(): return
+		if not require(control.activation_count == activation_before+1 and control.busy and control.last_audio_started,"Original RMB/E did not start its real effect/audio"): return
+		if not await advance(4): return
+		if not await save_view(control,row,prefix+"active_",true): return
+		if not await advance(65): return
+		if not require(not control.busy and control.actuator.transform == home,"Native control failed exact rest restoration"): return
+		for surface in range(control.actuator.mesh.get_surface_count()):
+			if not require(control.actuator.get_surface_override_material(surface) == null,"Native pulse left material override"): return
+		close_mix_window("finite_effect_and_tail_complete")
+		if not require(not window_stats.is_empty() and int(window_stats.frame_count) > 0 and int(window_stats.discarded_frames) == 0,"Cue window has no intact finite samples"): return
+		var segment: Dictionary = window_stats.duplicate(true)
+		segment["id"] = row.id
+		segment["cue"] = row.cue_id
+		cue_ranges.append(segment)
+		if not protected_systems_unchanged(): return
+	if not await advance(30): return
+	if not finish_mix() or not pinned_sources(): return
+	if not native_voice_census("after"): return
+	release_inputs()
+	_checkpoint = "two native interactions and finite mixed output complete"
+	write_receipt("PASS")
+	print("PASS: native controls feedback, four images and finite nonzero application mix; visual/listening review pending.")
+	main.queue_free()
+	await process_frame
+	quit(0)

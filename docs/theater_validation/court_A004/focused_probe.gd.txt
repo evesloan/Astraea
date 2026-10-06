@@ -1,0 +1,173 @@
+extends "res://tests/validate_theater_cart.gd"
+# Scratch-only focused test. Main scene must construct Court A itself.
+# Reuse existing exact-old-theater and physical loaded-cart checks; no test builder.
+var output := ""
+var geometry: Dictionary
+var screen: Dictionary
+var court_data: Dictionary
+var court: Node3D
+var walking_frames := 0
+var walking_distance := 0.0
+var walking_peak := 0.0
+var walking_last := Vector3.ZERO
+var verified_contact_points := 0
+
+func same_faces(actual: PackedVector3Array, expected: PackedVector3Array) -> void:
+	assert(not actual.is_empty() and actual.to_byte_array()==expected.to_byte_array(),"Exact raw source triangles must survive into actual-world physics storage")
+	verified_contact_points+=actual.size()
+
+func inspect_court() -> void:
+	court_data=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/COURT_A_RUNTIME_INCREMENT004.json"))
+	court=probe.ship.get_node("ShipSpace/Districts/"+str(court_data.root_name)) as Node3D
+	assert(court!=null and court.get_parent()==probe.venue.get_parent() and not probe.venue.is_ancestor_of(court))
+	assert(court.transform==Transform3D(Basis.IDENTITY,probe.xyz(court_data.court_origin_native)))
+	assert(court.get_meta("source_sha256")==court_data.source_sha256 and court.get_meta("lights_added")==0)
+	assert(court.find_children("*","Light3D",true,false).is_empty())
+	var builder=load("res://scripts/court_a_increment004.gd")
+	var expected_bodies: Dictionary={}
+	for batch in court_data.batches:
+		if batch.kind!="authored":continue
+		var mesh:=court.get_node(str(batch.name)) as MeshInstance3D
+		assert(mesh!=null and mesh.mesh!=null)
+		probe.assert_transform(mesh.transform,builder.transform(batch.native_local_matrix),str(batch.name))
+		assert(mesh.get_meta("source_semantic_ids")==batch.semantic_ids)
+		if batch.collides:
+			var body:=mesh.get_node("CourtContact_"+str(batch.name)) as StaticBody3D
+			expected_bodies[body]=true
+			assert(body.transform==Transform3D.IDENTITY)
+			same_faces((body.get_child(0).shape as ConcavePolygonShape3D).get_faces(),builder.raw_faces(mesh.mesh))
+		else:assert(mesh.find_children("*","CollisionObject3D",true,false).is_empty())
+	var template:=builder.load_template(court_data.files.prototype) as Node3D
+	var definitions: Dictionary={}
+	for batch in court_data.batches:
+		if batch.kind!="prototype" or not batch.collides:continue
+		var part:=template.find_child(str(batch.name),true,false) as MeshInstance3D
+		var identity:=str(batch.definition)
+		if not definitions.has(identity):definitions[identity]=PackedVector3Array()
+		var faces: PackedVector3Array=definitions[identity]
+		faces.append_array(builder.raw_faces(part.mesh,builder.relative_transform(part,template)))
+		definitions[identity]=faces
+	var placements: Array=[]
+	for record in court_data.instances:
+		placements.append(str(record.id))
+		if not record.collides:continue
+		var body:=court.get_node("CourtContact_"+str(record.id)) as StaticBody3D
+		expected_bodies[body]=true
+		probe.assert_transform(body.global_transform,builder.transform(record.native_matrix),str(record.id))
+		same_faces((body.get_child(0).shape as ConcavePolygonShape3D).get_faces(),definitions[str(record.definition)])
+	template.free()
+	assert(court.get_meta("source_instance_ids")==placements)
+	var installed:=court.find_children("*","StaticBody3D",true,false)
+	assert(installed.size()==expected_bodies.size() and installed.size()==101)
+	for body in installed:
+		assert(expected_bodies.has(body) and body.collision_layer==1 and body.collision_mask==1 and body.get_child_count()==1)
+		var shape:=body.get_child(0) as CollisionShape3D
+		assert(shape!=null and not shape.disabled and shape.transform==Transform3D.IDENTITY)
+		assert(shape.shape is ConcavePolygonShape3D and absf(shape.shape.margin-.001)<.000001)
+	var ramps: Node=probe.ship.get_node("ShipSpace/Districts/GrandLanternTheater_StairWalkingContacts")
+	assert(ramps.get_child_count()==8 and ramps.find_children("*","GeometryInstance3D",true,false).is_empty())
+
+func check_stance(point: Vector3, label: String) -> void:
+	probe.floor_at(point,"D11_theater_flat_00")
+	var capsule:=CapsuleShape3D.new()
+	capsule.radius=float(geometry.routes.capsule_radius_m)
+	capsule.height=float(geometry.routes.capsule_height_m)
+	sweep_probe.clear_shape(probe.space,capsule,Transform3D(Basis.IDENTITY,point+Vector3.UP*.91),probe.exclusions(),label)
+
+func ordinary_walk(target: Vector3) -> void:
+	var actor: CharacterBody3D=probe.actor
+	var initial:=Vector2(target.x-actor.global_position.x,target.z-actor.global_position.z).length()
+	var reached:=false
+	for frame in range(ceili(initial/3.1*60)+360):
+		var delta:=Vector3(target.x-actor.global_position.x,0,target.z-actor.global_position.z)
+		var speed:=Vector2(actor.velocity.x,actor.velocity.z).length()
+		if delta.length()<.075 and speed<.08:reached=true;break
+		actor.rotation.y=atan2(-delta.x,-delta.z)
+		key(KEY_W,delta.length()>.06+speed*speed/32.0)
+		await physics_frame
+		walking_frames+=1
+		var step:=actor.global_position.distance_to(walking_last)
+		assert(step<.08 and actor.global_position.is_finite() and absf(actor.global_position.y-FLOOR)<.14)
+		walking_distance+=step;walking_last=actor.global_position
+		walking_peak=maxf(walking_peak,Vector2(actor.velocity.x,actor.velocity.z).length())
+		probe.floor_at(actor.global_position)
+	key(KEY_W,false)
+	assert(reached,"Court A ordinary W walk stalled at %s toward %s"%[actor.global_position,target])
+	probe.check_lights("Court A walk "+str(target))
+
+func run() -> void:
+	var args:=OS.get_cmdline_user_args()
+	assert(args.size()==3,"Expected absolute geometry JSON, pure screen JSON, and new result JSON paths")
+	assert(args[0].begins_with("/workspace/scratch/") and args[1].begins_with("/workspace/scratch/") and args[2].begins_with("/workspace/scratch/"))
+	output=args[2]
+	assert(not FileAccess.file_exists(output))
+	geometry=JSON.parse_string(FileAccess.get_file_as_string(args[0]))
+	screen=JSON.parse_string(FileAccess.get_file_as_string(args[1]))
+	assert(FileAccess.get_sha256(args[0])=="d1ea220667cf6c381aa875df099bbda083d18096c8d757c6456659e2206a67e9")
+	assert(FileAccess.get_sha256(args[1])=="17793a52b40cbf649010b48e9466b29ecc34ec5d2740f337c467609c3c8fad2a")
+	assert(screen.contract_sha256==FileAccess.get_sha256(args[0]) and screen.failures.is_empty())
+	assert(screen.route.entry_cart_poses==325 and screen.route.cart_contact_pose_count==0 and screen.route.unsupported_wheel_operator_points==0)
+	var main: Node=(load("res://scenes/main.tscn") as PackedScene).instantiate()
+	root.add_child(main)
+	for frame in range(150):await physics_frame
+	probe.configure(main.get_node("World360/Astraea"))
+	load("res://tests/secondary_engineering_additive_guard.gd").validate(JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json")))
+	probe.check_import_and_scene_census();probe.check_instances();probe.check_motion_poses_and_barriers()
+	inspect_court()
+	for seat in geometry.seats:check_stance(probe.xyz(seat.standing_point_world),str(seat.id))
+	for record in geometry.retained_instances:
+		if record.id=="A4_reception":
+			for field in ["service_standing_world","public_standing_world","low_writing_standing_world"]:check_stance(probe.xyz(record[field]),"Reception "+field)
+	var actor: CharacterBody3D=probe.actor
+	assert(probe.ship.arrive_at(Vector3(-2,FLOOR+.1,-126),PI/2))
+	actor.set_controls_enabled(true)
+	for frame in range(30):await physics_frame
+	walking_last=actor.global_position
+	for point in geometry.routes.old_main_route_preserved.slice(1):await ordinary_walk(Vector3(point[0],FLOOR,point[1]))
+	for point in geometry.routes.entry_dogleg_waypoints_xz:await ordinary_walk(Vector3(point[0],FLOOR,point[1]))
+	for seat in geometry.seats:
+		var point:=probe.xyz(seat.standing_point_world)
+		await ordinary_walk(Vector3(-69.5,FLOOR,point.z))
+		await ordinary_walk(point)
+		await ordinary_walk(Vector3(-69.5,FLOOR,point.z))
+	await ordinary_walk(Vector3(-69.5,FLOOR,-135.43))
+	await ordinary_walk(Vector3(-75.5,FLOOR,-135.43))
+	await ordinary_walk(Vector3(-77.5,FLOOR,-137.5))
+	await ordinary_walk(Vector3(-77.5,FLOOR,-139.12))
+	assert(walking_peak>3.05 and walking_peak<=3.101)
+	# Independent cart fixture starts once at the screened Court entry. The actor
+	# reached its handle by W walking; no second player arrival or travel teleport.
+	var path: Array=screen.route.poses_xzyaw
+	var first: Array=path[0]
+	var cart: RigidBody3D=probe.cart
+	var product_local: Array[Vector3]=[]
+	for product in cart.products:product_local.append(cart.to_local(product.global_position))
+	assert(not fixture_placed)
+	cart.global_position=Vector3(first[0],FLOOR+.04,first[1])
+	cart.rotation=Vector3(0,first[2],0)
+	cart.linear_velocity=Vector3.ZERO;cart.angular_velocity=Vector3.ZERO;cart.sleeping=false
+	for index in range(4):
+		cart.products[index].global_position=cart.global_transform*product_local[index]
+		cart.products[index].linear_velocity=Vector3.ZERO;cart.products[index].angular_velocity=Vector3.ZERO;cart.products[index].sleeping=false
+	actor.rotation.y=float(first[2]);actor.pitch=0;actor.camera.rotation.x=0
+	for frame in range(90):await physics_frame
+	fixture_placed=true;last_actor=actor.global_position;last_cart=cart.global_position
+	live_state(false);actual_supports()
+	for raw in path:sweep_probe.check_pose(probe.ship,actor,cart,Vector3(raw[0],FLOOR+.03,raw[1]),float(raw[2]),FLOOR)
+	assert(sweep_probe.sampled_poses==325)
+	await press_handle(false)
+	assert(cart.driver==null and actor.held_interaction==null)
+	await press_handle(true)
+	assert(cart.driver==actor and actor.held_interaction==cart.interaction_owner)
+	await drive(path)
+	assert(cart_distance>10 and driven_frames>500)
+	actor.set_physics_process(true);focus(true);key(KEY_E,true)
+	for frame in range(3):await physics_frame
+	key(KEY_E,false);focus(false)
+	assert(cart.driver==null and actor.held_interaction==null)
+	for frame in range(30):await physics_frame;live_state(false);actual_supports()
+	probe.check_motion_poses_and_barriers();probe.check_lights("Court A loaded reception arrival")
+	var result:={"status":"PASS_ACTUAL_WORLD_COURT_A_FOCUSED","ship_sha256":FileAccess.get_sha256("res://scripts/ship.gd"),"court_runtime_contract_sha256":FileAccess.get_sha256("res://data/architecture/COURT_A_RUNTIME_INCREMENT004.json"),"geometry_sha256":FileAccess.get_sha256(args[0]),"screen_sha256":FileAccess.get_sha256(args[1]),"old_theater_exact_import_instances_contacts_checked":true,"court_contacts":101,"exact_contact_corners":verified_contact_points,"seat_stances":6,"reception_stances":3,"walking_frames":walking_frames,"walking_distance_m":walking_distance,"walking_peak_speed":walking_peak,"cart_swept_poses":325,"cart_driven_frames":driven_frames,"cart_distance_m":cart_distance,"loose_products":4,"added_lights":0,"full_suite_pass":false,"native_art_acceptance":false,"cart_mode":"Existing physical 1 m/s move_and_slide force-tether helper; scripted turns, not freehand feel"}
+	var file:=FileAccess.open(output,FileAccess.WRITE);file.store_string(JSON.stringify(result,"  "));file.close()
+	print("PASS: Actual main-scene Court A; exact old theater preserved; all new raw contacts; ordinary W arrival and six seat stances; loaded 325-pose physical dogleg; no new lights or full-suite/art claim")
+	main.queue_free();await process_frame;quit(0)

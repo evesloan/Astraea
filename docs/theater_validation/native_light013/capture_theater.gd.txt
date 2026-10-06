@@ -1,0 +1,131 @@
+extends SceneTree
+# Scratch-only actual ship capture, no saved scene/render changes.
+const OUT := "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/runtime_stage01/native_light013/capture_run001"
+var records: Array = []
+const RECEIVERS := "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/runtime_stage01/native_light013/RECEIVERS.json"
+func _initialize() -> void:
+	call_deferred("run")
+func run() -> void:
+	assert(not DirAccess.dir_exists_absolute(OUT))
+	assert(DirAccess.make_dir_recursive_absolute(OUT) == OK)
+	var main = (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	root.add_child(main)
+	for frame in range(30): await physics_frame
+	var ship: Node3D = main.get_node("World360/Astraea")
+	var actor = ship.get_node("ShipSpace/PersistentActors/Player")
+	var budget = ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	assert(ship.find_child("GrandLanternTheater_ConnectedStaticStage_WIP",true,false) != null)
+	assert(budget.shadow_source_budget == 8)
+	actor.set_physics_process(false)
+	actor.set_controls_enabled(false)
+	var probe = load("res://tests/theater_stage_probe.gd").new()
+	probe.configure(ship)
+	load("res://tests/secondary_engineering_additive_guard.gd").validate(JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json")))
+	probe.check_import_and_scene_census()
+	probe.check_instances()
+	probe.check_floor_owners()
+	probe.check_motion_poses_and_barriers()
+	check_local_receivers(probe)
+	print("THEATER GRAPHICAL STRUCTURE PASS: strict actual MultiMesh transforms, contacts, floors and fixed barriers")
+	var views := [
+		{"id":"D11_main_arrival","eye":Vector3(-36.5,71.15,-126),"target":Vector3(-76,74,-142)},
+		{"id":"D11_court_A_front","eye":Vector3(-69.5,71.15,-131.7),"target":Vector3(-69.5,71.3,-143)}
+	]
+	for view in views:
+		actor.global_position = view.eye - Vector3.UP*1.65
+		actor.velocity = Vector3.ZERO
+		var direction: Vector3 = view.target - view.eye
+		actor.rotation.y = atan2(-direction.x,-direction.z)
+		actor.pitch = atan2(direction.y,Vector2(direction.x,direction.z).length())
+		actor.camera.rotation.x = actor.pitch
+		assert(actor.camera.global_position.distance_to(view.eye) < .0001 and actor.camera.fov == 72.0)
+		for effects_on in [true,false]:
+			main.set_world_resolution(0 if effects_on else 1)
+			main.effects = effects_on
+			main.post_pass.material.set_shader_parameter("enabled",effects_on)
+			ship.set_display_effects(effects_on)
+			for frame in range(20): await process_frame
+			budget.refresh()
+			probe.check_lights(str(view.id)+"_"+str(effects_on))
+			await RenderingServer.frame_post_draw
+			var suffix := "native" if effects_on else "clear"
+			var file := OUT+"/"+str(view.id)+"_"+suffix+".png"
+			assert(main.post_view.get_texture().get_image().save_png(file) == OK)
+			var raw_file := OUT+"/"+str(view.id)+"_"+suffix+"_raw.png"
+			assert(main.world_view.get_texture().get_image().save_png(raw_file) == OK)
+			var active: Array = []
+			for light in budget.sources:
+				if light.visible and light.light_energy > 0: active.append(str(light.get_path()))
+			records.append({"view":view.id,"file":file,"sha256":FileAccess.get_sha256(file),"raw_file":raw_file,"raw_sha256":FileAccess.get_sha256(raw_file),"effects":effects_on,"eye":[view.eye.x,view.eye.y,view.eye.z],"target":[view.target.x,view.target.y,view.target.z],"player_vertical_fov":actor.camera.fov,"resolution":[main.world_view.size.x,main.world_view.size.y],"active_practical_sources":active,"shadow_budget":budget.shadow_source_budget,"adapter":RenderingServer.get_video_adapter_name(),"scope":"Actual installed ship, same mounted lights and normal player optics. Static camera review, not traversal or target-hardware acceptance."})
+	var receipt := FileAccess.open(OUT+"/CAPTURE_RECEIPT.json",FileAccess.WRITE)
+	receipt.store_string(JSON.stringify(records,"  "));receipt.close()
+	print("THEATER CAPTURE PASS: two actual normal-eye views, native and effects-off diagnostics")
+	quit(0)
+
+func raw_receiver_membership(probe, sample: Dictionary) -> Dictionary:
+	var names: PackedStringArray = str(sample.node).split("/")
+	var found: Array = []
+	for view in probe.assembly.find_children("*","MultiMeshInstance3D",true,false):
+		if str(view.get_meta("source_prototype_batch","")) != names[1]: continue
+		var ids: Array = view.get_meta("source_instance_ids",[])
+		var idx: int = ids.find(names[0])
+		if idx < 0: continue
+		var mm: MultiMesh = view.multimesh
+		var transform: Transform3D = view.global_transform * mm.get_instance_transform(idx)
+		var point: Vector3 = probe.xyz(sample.point)
+		var nearest: float = INF
+		var mesh: Mesh = mm.mesh
+		for surface in range(mesh.get_surface_count()):
+			var arrays: Array = mesh.surface_get_arrays(surface)
+			var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+			var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+			var count: int = indices.size() if not indices.is_empty() else verts.size()
+			for offset in range(0,count,3):
+				var a: Vector3 = transform * verts[indices[offset] if not indices.is_empty() else offset]
+				var b: Vector3 = transform * verts[indices[offset+1] if not indices.is_empty() else offset+1]
+				var c: Vector3 = transform * verts[indices[offset+2] if not indices.is_empty() else offset+2]
+				var n: Vector3 = (b-a).cross(c-a)
+				if n.length_squared() < 1e-16: continue
+				var plane: float = absf(n.normalized().dot(point-a))
+				if plane > .0001: continue
+				var projected: Vector3 = point-n.normalized()*n.normalized().dot(point-a)
+				var bary: Vector3 = Geometry3D.get_triangle_barycentric_coords(projected,a,b,c)
+				if bary.x >= -.00001 and bary.y >= -.00001 and bary.z >= -.00001: nearest=minf(nearest,plane)
+		found.append({"view":str(view.get_path()),"source_instance_id":names[0],"raw_triangle_membership":nearest < .0001,"plane_distance_m":nearest if is_finite(nearest) else -1.0})
+	assert(found.size()==1 and found[0].raw_triangle_membership,"Exact raw imported foliage receiver required: "+str(sample.node))
+	return found[0]
+
+func check_local_receivers(probe) -> void:
+	var measurements: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(RECEIVERS))
+	assert(measurements.rows.size()==22)
+	var rows: Array = []
+	var blocked_count: int = 0
+	for row in measurements.rows:
+		var light: Light3D = probe.venue.find_child(str(row.id).validate_node_name(),true,false) as Light3D
+		assert(light != null and light.global_position.distance_to(probe.xyz(row.position_world)) < .0001)
+		assert(absf(light.light_energy-float(row.energy)) < .00001)
+		var reach: float = light.spot_range if light is SpotLight3D else light.omni_range
+		assert(absf(reach-float(row.range_m)) < .00001)
+		if light is SpotLight3D:
+			assert(absf(light.spot_angle-float(row.full_cone_degrees)*.5)<.00001)
+			assert((-light.global_basis.z).distance_to(probe.xyz(row.aim_world).normalized())<.00001)
+		var samples: Array=[]
+		for sample in row.native_receiver_samples:
+			var point: Vector3=probe.xyz(sample.point)
+			var record: Dictionary=sample.duplicate(true)
+			if sample.kind=="actual_foliage_triangle": record.raw_import_membership=raw_receiver_membership(probe,sample)
+			else:
+				var hit: Dictionary=probe.ray(point+Vector3.UP*.1,point-Vector3.UP*.15,probe.exclusions())
+				assert(not hit.is_empty() and absf(hit.position.y-(point.y-.05))<.001,"Actual retained receiver support required: "+str(sample))
+				record.collider=str(hit.collider.get_path())
+				record.support_y=hit.position.y
+			var distance: float=light.global_position.distance_to(point)
+			assert(distance < reach,"Measured receiver outside local fixture range")
+			record.distance_m=distance
+			record.ray_clear=probe.budget._clear_sample(light.global_position,point)
+			if not record.ray_clear: blocked_count+=1
+			samples.append(record)
+		rows.append({"id":row.id,"range_m":reach,"energy":light.light_energy,"receivers":samples})
+	var file:=FileAccess.open(OUT+"/RECEIVER_QA.json",FileAccess.WRITE)
+	file.store_string(JSON.stringify({"status":"ACTUAL_RECEIVER_DIAGNOSTIC_REVIEW_REQUIRED","exact_source_count":22,"blocked_receiver_rays":blocked_count,"rows":rows,"scope":"Raw imported foliage triangle identity, physical floor/stair support, exact optical properties and actual collider visibility. A blocked sample is reported rather than hidden; images still captured for honest review."},"  "));file.close()
+	print("THEATER LOCAL RECEIVERS: 22 exact source properties, actual surfaces; blocked ray count ",blocked_count)

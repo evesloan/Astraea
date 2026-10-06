@@ -1,0 +1,16 @@
+{
+  "status": "ENQUEUE_STOPPED_BEFORE_REQUEST",
+  "utc": "2026-10-06T14:31:19.325435+00:00",
+  "command": "python capture_signage_trial.py --expected-head e49190fee131f1354aa7de6a7fc542159c84ed7e --focused-run-id focused001 --enqueue",
+  "wrapper_sha256": "1e47fb1b843f6442c150b79bbc6c28562f633e372bfc31633f51e4cdb821b041",
+  "failure": "ProcessLookupError [Errno3] at os.kill(runner_pid,0); runner.json PID10270 is not visible in this exec namespace. Does not establish graphical terminal process status.",
+  "runner_json": {
+    "pid": 10270,
+    "project": "/workspace/shared/astraea-godot-production-20261003",
+    "started_unix": 1791226597.1189678,
+    "display_present": true
+  },
+  "request_exists": false,
+  "capture_directory_exists": false,
+  "action": "Parent asked to inspect the existing graphical runner in its own terminal namespace, then use the identical enqueue wrapper if alive. No duplicate request or restart by this lane."
+}

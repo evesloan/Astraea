@@ -1,0 +1,28 @@
+--- approved_draft/data/architecture/ENGINEERING_CELL_SIGNAGE_RUNTIME.json
++++ trial_stage/data/architecture/ENGINEERING_CELL_SIGNAGE_RUNTIME.json
+@@ -55,7 +55,7 @@
+   "header_phrase": "SUNCORP \u00b7 RESTRICTED ENGINEERING",
+   "original_model_sha256": "6896d757c5a248d0fcf37a2ae7a197de24566a3fec3f80ce80cdc12186e34368",
+   "all_previous_floor_model_material_controller_bytes_preserved": true,
+-  "import_precision_proposal": "Request approval to disable mesh compression only on this new GLB: ink is 0.2 mm ahead of glass; quantization must not put it behind or on the pane. Preserve every old import setting. No hardware performance claim.",
++  "import_precision_proposal": "Approved for this new sign GLB only: disable mesh compression after initial standard import, then reimport. Its ink is0.2mm ahead of glass; preserve every old import. This increases only this asset's imported memory/precision and is not a target-GPU performance claim.",
+   "existing_core_mesh_guard": "Keep exact original153 groups and47930 triangles; validate the one new print descendant separately instead of dropping whole-group identity checks.",
+   "required_actual_runtime_checks": [
+     "Original gate source faces/collider and all sweep poses unchanged; new print has no collision or target.",
+@@ -67,12 +67,12 @@
+   ],
+   "source_geometry_qa": "PASS; corrected canonical source/export match all6672 oriented position/material/UV triangles exactly. Eight zero-area Font triangulation faces removed and degenerate default font UVs repaired in new visible source meshes; editable Font originals retained.",
+   "visual_acceptance": false,
+-  "runtime_adopted": false,
++  "runtime_adopted": true,
+   "first_pass_accepted": false,
+-  "retention": "Pending approved new-only copy and independent publisher verification.",
+-  "runtime_adoption_approved": false,
++  "retention": "All66source-packagefiles independently retained at eb98722c7985422a9ab89309099568eb319cade0; exact retained-byte verification required before install.",
++  "runtime_adoption_approved": true,
+   "source_retained_commit": "eb98722c7985422a9ab89309099568eb319cade0",
+   "retention_confirmation": "Parent independently confirmed exact mirror commit eb98722c7985422a9ab89309099568eb319cade0 via GitHub main/status at11:11 UTC; all66candidateblob hashes match.",
+-  "precision_approved": false,
++  "precision_approved": true,
+   "scope": "Signage-only trial; controls v3 copy and dependent adoption are separately blocked and absent from this package."
+ }

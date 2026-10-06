@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "adoption_approved": true,
+  "scope": "Ninth supported closed-gate signage capture only; no renderer/listener/audio/control change. Original eight views and all unrelated captures retain exact bytes/behavior.",
+  "target": "scripts/presentation.gd",
+  "historical_caller_sha256": "c225697f5c5d59f0ece4e24eb17a2c46efa752cb17385c8cbcd1d56ce81377b8",
+  "section_predecessor_sha256": "76f5cef2f50caec7d49facd8ed34579c46fef37605c9f3d63050a986eddc4a80",
+  "candidate_sha256": "aabcfa21a0dd0ab763ef08bc7a0ba3422bea1df9f9383e5b2999e4dfa1198c51",
+  "previous_capture_audit_file": "docs/SECONDARY_ENGINEERING_CELL_CAPTURE_ADOPTION.json",
+  "previous_capture_audit_sha256": "0efe067bc8a06031b6304d447fa5c93d818fab25b83a24bea64306a88f96e787",
+  "exact_added_entry": "{\"p\":Vector3(20.77,6.04,-404.5),\"yaw\":-PI/2,\"label\":\"secondary_engineering_cell_restriction_closed_\",\"pitch\":0.162489109217,\"diagnostic\":false,\"cell_gate_closed\":true},",
+  "entry_anchor": "{\"p\":Vector3(-9.4,44.1,-432),\"yaw\":PI/2,\"label\":\"grand_pool_arrival_\",\"pitch\":.08}",
+  "exact_added_state_block": "\t\t\t\tif view.get(\"cell_gate_closed\",false):\n\t\t\t\t\t# Additive restriction reading view; earlier eight views remain unchanged.\n\t\t\t\t\tvar closing_gate := world_view.get_node(\"Astraea\").find_child(\"EngineeringCellGate\",true,false)\n\t\t\t\t\tassert(closing_gate!=null and closing_gate.persistent_id==&\"D02_secondary_engineering_workbay_cell_gate\")\n\t\t\t\t\tawait get_tree().create_timer(.6).timeout\n\t\t\t\t\tassert(actor.is_on_floor() and absf(actor.global_position.y-6.0)<.01 and actor.camera.position.is_equal_approx(Vector3(0,1.65,0)))\n\t\t\t\t\tif closing_gate.desired_open: closing_gate.interact(actor)\n\t\t\t\t\tawait get_tree().create_timer(1.5).timeout\n\t\t\t\t\tassert(not closing_gate.desired_open and not closing_gate.obstructed and closing_gate.open_fraction<.001,\"Restriction capture requires actual inherited closed gate\")\n\t\t\t\t\tassert(absf(actor.camera.fov-72.0)<.05,\"Restriction reading must use ordinary non-focus view\")\n",
+  "state_block_anchor": "\t\t\t\tget_node(\"NativeResolutionStatus\").text = \"ASTRAEA / CONNECTED INTERIORS \u2014 work in progress\"\n",
+  "added_label": "secondary_engineering_cell_restriction_closed_",
+  "floor_xyz": [
+    20.77,
+    6,
+    -404.5
+  ],
+  "normal_eye_xyz": [
+    20.77,
+    7.65,
+    -404.5
+  ],
+  "source_retention_pending_parent_commit_confirmation": false,
+  "source_model_sha256": "985fec01390bc3ccf3543df9062ce8ce448a99014e5a92695dea8390b1b990b1",
+  "proof_method": "Remove exactly one new view literal and one closed-state block to reproduce every predecessor byte. No predicate broadening or dropped historical pin.",
+  "independently_retained_source_commit": "eb98722c7985422a9ab89309099568eb319cade0"
+}

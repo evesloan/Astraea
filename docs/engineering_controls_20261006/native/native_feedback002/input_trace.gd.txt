@@ -1,0 +1,20 @@
+extends Node
+# Read-only observer; never consumes, synthesizes or changes an event.
+var phase := "startup"
+var events: Array = []
+var mouse_motion_count := 0
+func _input(event: InputEvent) -> void:
+	var row: Dictionary = {}
+	if event is InputEventMouseMotion:
+		mouse_motion_count += 1
+		row = {"kind":"mouse_motion","relative_xy":[event.relative.x,event.relative.y],"device":event.device}
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		row = {"kind":"RMB","pressed":event.pressed,"device":event.device}
+	elif event is InputEventKey and event.keycode in [KEY_E,KEY_ESCAPE]:
+		row = {"kind":"key","code":event.keycode,"pressed":event.pressed,"device":event.device}
+	if row.is_empty(): return
+	row["phase"] = phase
+	row["engine_msec"] = Time.get_ticks_msec()
+	row["physics_frame"] = Engine.get_physics_frames()
+	events.append(row)
+	if events.size() > 64: events.pop_front()

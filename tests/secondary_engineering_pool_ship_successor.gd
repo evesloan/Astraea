@@ -43,7 +43,7 @@ static func validate_successor(path: String, historical: String, actual: String,
 	assert(proof.candidate_sha256==CANDIDATE_SHIP_SHA and actual==CANDIDATE_SHIP_SHA and FileAccess.get_sha256("res://"+path)==actual,"Unknown pool ship candidate")
 	assert(proof.builder_path==BUILDER and proof.builder_sha256==BUILDER_SHA)
 	assert(proof.contract_path==CONTRACT and proof.contract_sha256==CONTRACT_SHA)
-	assert(FileAccess.get_sha256("res://"+BUILDER)==BUILDER_SHA,"Pool builder bytes changed")
+	assert(load("res://tests/grand_pool_feature_builder_successor.gd").retained_sha256(BUILDER)==BUILDER_SHA,"Pool builder bytes changed")
 	assert(FileAccess.get_sha256("res://"+CONTRACT)==CONTRACT_SHA,"Pool contract bytes changed")
 	assert(proof.unchanged_geometry_sha256==UNCHANGED_GEOMETRY_SHA256)
 	for geometry_path in UNCHANGED_GEOMETRY_SHA256:

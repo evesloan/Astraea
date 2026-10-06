@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""One-shot parent GUI-terminal runner; never changes/restarts the fixed queue.
+Run only after the parent releases Game. No headless fallback or new display.
+"""
+from pathlib import Path
+import argparse,datetime,hashlib,json,os,shutil,struct,subprocess,wave
+O=Path(__file__).resolve().parent;R=O.parent;G=Path('/workspace/shared/astraea-godot-production-20261003');Q=Path('/workspace/shared/astraea-review-queue')
+PINS_SHA='9d0d926ea5223e25457ec878b03d0c83126a91668b24214ce20f5c5af00976ab'
+PREFIXES=['engineering_controls_native002_'+kind+'_'+state+'_' for kind in ['toggle','push'] for state in ['rest','active']]
+FAILURE_PREFIX='engineering_controls_native002_failure_'
+SUFFIXES=['world_capture.png','processed_world_capture.png','presentation_capture.png']
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def write(p,value):p.write_text(json.dumps(value,indent=2)+'\n')
+def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def head():return subprocess.check_output(['git','-C',str(G),'rev-parse','HEAD'],text=True).strip()
+def verify(expected):
+ assert head()==expected and sha(O/'NATIVE_JOB_PINS.json')==PINS_SHA
+ fixed=json.loads((O/'NATIVE_JOB_PINS.json').read_text());pins=json.loads((O/'INPUT_PINS.json').read_text())
+ assert sha(O/'native_feedback.gd')==fixed['script_sha256'] and sha(O/'INPUT_PINS.json')==fixed['input_pins_sha256']
+ assert sha(O/'THEATER_PIN_REBASE.json')==fixed['theater_rebase_receipt_sha256']
+ assert sha(O/'input_trace.gd')==fixed['input_trace_sha256'] and sha(O/'ATTEMPT002_PREPARATION.json')==fixed['attempt002_preparation_sha256']
+ prior=json.loads((O/'ATTEMPT002_PREPARATION.json').read_text())
+ for name,key in [('RUN_RECEIPT.json','attempt001_run_sha256'),('NATIVE_RECEIPT.json','attempt001_native_sha256'),('engine.log','attempt001_log_sha256')]:assert sha(R/'native_feedback001'/name)==prior[key]
+ for path,wanted in pins.items():assert sha(G/path)==wanted,('Installed source changed',path)
+ before=R/'before_listener001/engineering_listener_before_census.json';assert sha(before)==fixed['before_census_sha256'];b=json.loads(before.read_text());assert b['emitters']==[] and not b['listener_enabled'] and b['calibration_voice_count']==0
+ receipt=R/'controls_run002/CONTROLS_RECEIPT.json';validation=R/'controls_run002/VALIDATION.json';assert sha(receipt)==fixed['all120_receipt_sha256'] and sha(validation)==fixed['all120_validation_sha256']
+ c=json.loads(receipt.read_text());v=json.loads(validation.read_text());assert c['status']=='PASS' and len(c['records'])==120 and sum(row['activations']for row in c['records'])==240;assert all(x['passed']for x in v['checks'])
+ return fixed,pins
+
+def main():
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--expected-head',required=True);parser.add_argument('--released-game',action='store_true');parser.add_argument('--execute',action='store_true');a=parser.parse_args()
+ fixed,pins=verify(a.expected_head)
+ command=['godot','--path',str(G),'--rendering-method','gl_compatibility','--audio-driver','Dummy','--script',str(O/'native_feedback.gd')]
+ if not a.execute:print(json.dumps({'status':'PREPARED_NOT_RUN','command':command,'run_from':'Existing parent GUI terminal only','dummy_condition':'Pass requires finite nonzero application-mix PCM, not playing flags'},indent=2));return
+ assert a.released_game,'Parent must explicitly release the shared Game slot after carry diagnosis.'
+ assert os.environ.get('DISPLAY'),'Use the existing GUI terminal; do not launch/restart a display or runner.'
+ assert not (O/'RUN_RECEIPT.json').exists() and not (O/'NATIVE_RECEIPT.json').exists(),'Existing attempt: inspect; no blind repeat.'
+ assert not list(Q.glob('*.request')) and not (Q/'STOP').exists(),'Existing graphical queue work/stop state; coordinate without changing it.'
+ # The GUI terminal has a different PID namespace. This is a local safeguard,
+ # not proof the other namespace is idle. Never inspect/kill runner.json's PID.
+ for proc in Path('/proc').iterdir():
+  if not proc.name.isdigit():continue
+  try:name=(proc/'comm').read_text().strip().lower()
+  except (FileNotFoundError,PermissionError,ProcessLookupError):continue
+  assert not name.startswith('godot'),('Competing local Godot',proc.name)
+ assert shutil.which('godot'),'Current Godot binary missing; do not substitute an engine.'
+ for prefix in PREFIXES+[FAILURE_PREFIX]:
+  for suffix in SUFFIXES:assert not (G/'artifacts'/(prefix+suffix)).exists(),'Do not overwrite earlier native capture evidence.'
+ old120=G/'artifacts/engineering_calibration_validation.json';old120_hash=sha(old120)
+ settings=G/'artifacts/capture_settings.json';old_settings=settings.read_bytes() if settings.exists() else None
+ if old_settings is not None:(O/'PREVIOUS_CAPTURE_SETTINGS.json').write_bytes(old_settings)
+ report={'status':'RUNNING','started_utc':now(),'head':a.expected_head,'command':command,'source_pin_count':len(pins),'all120_live_receipt_sha256_before':old120_hash,'runner_or_display_changed':False,'listening_accepted':False}
+ write(O/'RUN_RECEIPT.json',report)
+ try:
+  with (O/'engine.log').open('w') as log:
+   result=subprocess.run(command,cwd=G,env=os.environ.copy(),stdout=log,stderr=subprocess.STDOUT,timeout=240)
+  errors=[line for line in (O/'engine.log').read_text().splitlines() if 'ERROR:' in line or 'Assertion failed' in line or 'Parse Error' in line]
+  verify(a.expected_head);assert sha(old120)==old120_hash,'Native QA overwrote the all120 artifact'
+  report.update(exit_code=result.returncode,errors=errors)
+  assert result.returncode==0 and not errors,report
+  native=json.loads((O/'NATIVE_RECEIPT.json').read_text());assert native['status']=='PASS' and len(native['views'])==4 and len(native['cue_ranges'])==2 and native['capture_effect_removed']
+  for phase in ['before','after']:
+   census=native['voice_census'][phase]
+   assert all(census[key]==4 for key in ['actual_voice_count','owned_voice_count','original_voice_count','cached_voice_count'])
+   assert census['original_camera_current'] and census['original_viewport_current'] and census['listener_enabled'] and not census['post_listener_enabled'] and census['alternate_listener_count']==0
+   assert len(census['voices'])==4 and all(row['owned'] and row['original_voice'] and row['same_listener_world'] and row['bounded'] for row in census['voices'])
+  before=native['voice_census']['before'];after=native['voice_census']['after']
+  assert sorted((row['instance_id'],row['path']) for row in before['voices'])==sorted((row['instance_id'],row['path']) for row in after['voices'])
+  assert all(before[key]==after[key] for key in ['camera_instance_id','camera_path','viewport_instance_id','viewport_path'])
+  assert native['mixed_output']['finite_nonzero_actual_mix'] and all(x['actual_mix_peak']>.000001 for x in native['cue_ranges'])
+  for segment in native['cue_ranges']:
+   assert 0<segment['seconds']<=1.5 and segment['end_sample']-segment['start_sample']==segment['frame_count'] and segment['discarded_frames']==0
+  assert native['cue_ranges'][0]['start_sample']==0 and native['cue_ranges'][0]['end_sample']==native['cue_ranges'][1]['start_sample'] and native['cue_ranges'][1]['end_sample']==native['mixed_output']['frames']
+  path=O/'application_mix.wav';assert sha(path)==native['mixed_output']['wav_sha256']
+  with wave.open(str(path),'rb') as f:
+   assert f.getnchannels()==2 and f.getsampwidth()==2 and 0<f.getnframes()<=f.getframerate()*3
+   assert f.getnframes()==native['mixed_output']['frames'];samples=struct.unpack('<'+'h'*(f.getnframes()*2),f.readframes(f.getnframes()));assert any(samples)
+  images=O/'images';images.mkdir(exist_ok=False);image_records=[]
+  for prefix in PREFIXES:
+   for suffix in SUFFIXES:
+    source=G/'artifacts'/(prefix+suffix);target=images/source.name;assert source.is_file();shutil.copy2(source,target);image_records.append({'file':target.name,'sha256':sha(target),'bytes':target.stat().st_size})
+  if settings.exists():shutil.copy2(settings,O/'NATIVE_CAPTURE_SETTINGS.json')
+  report.update(status='NATIVE_FEEDBACK_CAPTURED_REVIEW_PENDING',finished_utc=now(),images=image_records,mixed_wav_sha256=sha(path),source_pins_unchanged=True,all120_receipt_unchanged=True,actual_nonzero_application_mix=True,human_listening_accepted=False,visual_review_accepted=False)
+ except Exception as error:
+  report.update(status='FAILED_PRESERVE_NATIVE_EVIDENCE',finished_utc=now(),failure=str(error));raise
+ finally:
+  failure_sources=[G/'artifacts'/(FAILURE_PREFIX+suffix) for suffix in SUFFIXES if (G/'artifacts'/(FAILURE_PREFIX+suffix)).is_file()]
+  if failure_sources:
+   archive=O/'failure_images';archive.mkdir(exist_ok=False);report['diagnostic_failure_images']=[]
+   for source in failure_sources:
+    target=archive/source.name;shutil.copy2(source,target);report['diagnostic_failure_images'].append({'file':str(target),'sha256':sha(target),'interaction_pass':False})
+   if settings.exists():shutil.copy2(settings,O/'FAILURE_CAPTURE_SETTINGS.json')
+  # _capture's artifacts are retained above; restore the prior shared settings
+  # receipt only, never presentation.gd or a persistent bus layout.
+  if old_settings is not None:settings.write_bytes(old_settings)
+  report['all120_live_receipt_unchanged']=sha(old120)==old120_hash
+  write(O/'RUN_RECEIPT.json',report)
+ print(json.dumps({k:v for k,v in report.items()if k!='images'},indent=2))
+if __name__=='__main__':main()

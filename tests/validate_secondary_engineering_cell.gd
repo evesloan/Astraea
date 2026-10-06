@@ -50,6 +50,7 @@ var tool_home_local: Vector3
 var first_hit_records: Array = []
 var light_records: Array = []
 var selection_records: Array = []
+var portable_route_pitch := 0.0
 
 func _initialize() -> void:
 	started = Time.get_ticks_msec()
@@ -166,6 +167,7 @@ func advance(count: int, inspect_leaf := true) -> bool:
 		frames += 1
 		if not require(frames <= MAX_FRAMES, "Derived 30000-frame route/control allowance exceeded"): return false
 		if inspect_leaf and is_instance_valid(gate) and not leaf_clear(): return false
+		if is_instance_valid(built) and not require(load("res://scripts/engineering_cell_signage.gd").live_binding_valid(built),"Exact additive sign/leaf binding changed during real gate route"): return false
 		if parked and not parked_cart_state(): return false
 	return true
 
@@ -202,7 +204,8 @@ func mesh_and_contact_census() -> bool:
 	# contract count and model hash, never a >= comparison or skipped group.
 	var source_triangles := int(data.source_triangles)
 	if not require(data.mesh_group_count == SOURCE_GROUPS and source_triangles > 0, "Frozen 153-group source census missing"): return false
-	var meshes := built.find_children("*", "MeshInstance3D", true, false)
+	var meshes: Array[MeshInstance3D] = load("res://scripts/engineering_cell_signage.gd").exact_core_meshes(built,data)
+	if not require(load("res://tests/engineering_signage_source_guard.gd").validate(built),"Actual additive signage backing/imported ink proof did not complete"): return false
 	if not require(meshes.size() == SOURCE_GROUPS, "Imported source group census differs from 153"): return false
 	var seen: Dictionary = {}
 	var triangles := 0
@@ -419,8 +422,8 @@ func face_heading(yaw: float) -> bool:
 
 func walk_to(destination: Vector2) -> bool:
 	focus(false)
-	actor.pitch = 0
-	actor.camera.rotation.x = 0
+	actor.pitch = portable_route_pitch if actor.held_interaction == tool and tool != null else 0.0
+	actor.camera.rotation.x = actor.pitch
 	var delta := destination - Vector2(actor.global_position.x, actor.global_position.z)
 	if delta.length() < .13: return actual_player_support()
 	if not await face_heading(atan2(-delta.x, -delta.y)): return false
@@ -544,7 +547,7 @@ func clipped_inside_band(polygon: Array, band: Dictionary) -> bool:
 func dump_imported_source_geometry() -> void:
 	var values := PackedFloat32Array()
 	var records: Array=[]
-	for item in built.find_children("*","MeshInstance3D",true,false):
+	for item in load("res://scripts/engineering_cell_signage.gd").exact_core_meshes(built,data):
 		var mesh := item as MeshInstance3D
 		var first := values.size()/9
 		var faces := mesh.mesh.get_faces()
@@ -897,8 +900,7 @@ func held_priority_at_gate() -> bool:
 	if not require(actor.target_from_view()==tool, "Released portable tool must be safely recoverable by its real first hit"): return false
 	if not await tap_e(): return false
 	if not require(tool.driver==actor and actor.held_interaction==tool, "Actual released tool recovery failed"): return false
-	actor.pitch = 0
-	actor.camera.rotation.x = 0
+	if not await set_portable_pitch(portable_route_pitch): return false
 	return await advance(50)
 
 func return_tool_to_cart() -> bool:
@@ -939,19 +941,65 @@ func return_tool_to_cart() -> bool:
 		if not require(returned.y>.85 and returned.y<1.1 and absf(returned.x)<.4 and absf(returned.z)<.58 and product.linear_velocity.length()<.15, "Every loose product must finish safely settled in actual upper cart"): return false
 	return parked_cart_state()
 
+func set_portable_pitch(value: float) -> bool:
+	# Look down at the carried cleaner while negotiating the narrow cell gate.
+	# Original 1.35 m physical tether, capsule, forces and speed bound remain.
+	portable_route_pitch = value
+	for frame in range(90):
+		actor.pitch = move_toward(actor.pitch,value,1.2/60.0)
+		actor.camera.rotation.x = actor.pitch
+		if not await advance(1) or not held_tool_state(): return false
+		if absf(actor.pitch-value)<.00001: return true
+	return require(false,"Bounded carried-tool look adjustment did not finish")
+
+func walk_aligned(destination: Vector2, yaw: float, input_key: Key) -> bool:
+	# Ordinary strafe/backward input keeps the bottle ahead through the doorway,
+	# rather than rotating its long tether sideways through a solid glass frame.
+	release_inputs()
+	if not await face_heading(yaw): return false
+	var delta := destination-Vector2(actor.global_position.x,actor.global_position.z)
+	var travel3: Vector3 = actor.global_basis * (Vector3.RIGHT if input_key == KEY_D else Vector3.BACK)
+	var travel := Vector2(travel3.x,travel3.z).normalized()
+	var allowance := ceili(delta.length()/3.1*60)+180
+	var reached := false
+	for frame in range(allowance):
+		delta = destination-Vector2(actor.global_position.x,actor.global_position.z)
+		var horizontal := Vector2(actor.velocity.x,actor.velocity.z)
+		var remaining := delta.dot(travel)
+		if remaining<.06 and horizontal.length()<.06:
+			if not require(delta.length()<.14,"Aligned carry endpoint left its ordinary route tolerance"): return false
+			reached = true
+			break
+		key(input_key,remaining>horizontal.length_squared()/32.0+.02)
+		if not await advance(1): return false
+		walked_frames += 1
+		if not actual_player_support() or not held_tool_state(): return false
+	key(input_key,false)
+	return require(reached,"Aligned original-input carry route stalled at %s toward %s"%[actor.global_position,destination])
+
 func portable_tool_route() -> bool:
 	# Travel to the cart on foot first; placing it afterward avoids using the
 	# parked fixture to mask the unchanged old engineering route test.
 	if not await walk_path([Vector2(20.85,-402.95),Vector2(28.38,-402.95),Vector2(28.38,-405)]): return false
 	if not await park_cart_once() or not await pickup_tool(): return false
-	if not await walk_path([Vector2(28.38,-402.95),Vector2(20.85,-402.95),Vector2(20.85,-405.23)]): return false
+	if not await walk_to(Vector2(28.38,-402.95)): return false
+	# Clear the tray before lowering the carried object to stair-watching height.
+	if not await set_portable_pitch(-PI/6.0): return false
+	# The west wall ends at X20.18. X20.55 leaves a supported capsule setback.
+	# Face the upper room while sidestepping west, then back to the gate centre.
+	if not await walk_aligned(Vector2(20.55,-402.95),PI,KEY_D): return false
+	if not await walk_aligned(Vector2(20.55,-404.5),PI,KEY_S): return false
 	if not await held_priority_at_gate(): return false
+	if not await set_portable_pitch(-PI/6.0): return false
 	var prior_descent := descent_frames
 	var prior_ascent := ascent_frames
-	if not await walk_path([Vector2(20.85,-404.5),Vector2(23.3,-404.5),Vector2(24.5,-404.5)]): return false
+	if not await walk_path([Vector2(23.3,-404.5),Vector2(24.5,-404.5)]): return false
 	if not require(actor.held_interaction==tool and descent_frames>prior_descent+3 and absf(actor.global_position.y-5.55)<.08, "Actual tool carry did not reach lower service face through the three-step flight"): return false
 	if not await sample_lighting_view("lower_live", false): return false
-	if not await walk_path([Vector2(23.3,-404.5),Vector2(20.85,-404.5),Vector2(20.85,-402.95),Vector2(28.38,-402.95),Vector2(28.38,-405)]): return false
+	# Back up the real steps facing the opening; no held-object reversal inside it.
+	if not await walk_aligned(Vector2(20.55,-404.5),-PI/2.0,KEY_S): return false
+	if not await walk_path([Vector2(20.55,-402.95),Vector2(28.38,-402.95),Vector2(28.38,-405)]): return false
+	if not await set_portable_pitch(0.0): return false
 	if not require(actor.held_interaction==tool and ascent_frames>prior_ascent+3 and absf(actor.global_position.y-6)<.08, "Actual carried tool did not return upstairs"): return false
 	return await return_tool_to_cart()
 

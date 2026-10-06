@@ -1,0 +1,53 @@
+{
+  "status": "FAILED_PRESERVED",
+  "started_utc": "2026-10-06T17:55:28.076922+00:00",
+  "source_files": 4834,
+  "steps": [
+    {
+      "label": "fresh_import",
+      "command": [
+        "godot",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--editor",
+        "--quit"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 4.003,
+      "errors": [],
+      "log_sha256": "0d5275e4f5b6be3ecc5348341055e1840a8ef7dc3286780c408f5f5a33038694"
+    },
+    {
+      "label": "court_actual_world",
+      "command": [
+        "godot",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--fixed-fps",
+        "60",
+        "--quit-after",
+        "18000",
+        "--script",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/actual_world_adoption004/probe_court_a_actual_world.gd",
+        "--",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/COURT_A_GEOMETRY_CONTRACT.json",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/COURT_A_PURE_SCREEN.json",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/actual_world_adoption004/focused_run001/RESULT.json"
+      ],
+      "exit_code": 1,
+      "wall_seconds": 0.251,
+      "errors": [
+        "SCRIPT ERROR: Parse Error: Cannot infer the type of \"ramps\" variable because the value doesn't have a set type.",
+        "ERROR: Failed to load script \"/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/actual_world_adoption004/probe_court_a_actual_world.gd\" with error \"Parse error\"."
+      ],
+      "log_sha256": "5e58f2f8f1e54b0f4981a23d46d69e27b0814239d0bb976114fbca54e4baf159"
+    }
+  ],
+  "full_suite_pass": false,
+  "error": "{'label': 'court_actual_world', 'command': ['godot', '--headless', '--path', '/workspace/shared/astraea-godot-production-20261003', '--fixed-fps', '60', '--quit-after', '18000', '--script', '/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/actual_world_adoption004/probe_court_a_actual_world.gd', '--', '/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/COURT_A_GEOMETRY_CONTRACT.json', '/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/COURT_A_PURE_SCREEN.json', '/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/actual_world_adoption004/focused_run001/RESULT.json'], 'exit_code': 1, 'wall_seconds': 0.251, 'errors': ['SCRIPT ERROR: Parse Error: Cannot infer the type of \"ramps\" variable because the value doesn\\'t have a set type.', 'ERROR: Failed to load script \"/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/actual_world_adoption004/probe_court_a_actual_world.gd\" with error \"Parse error\".'], 'log_sha256': '5e58f2f8f1e54b0f4981a23d46d69e27b0814239d0bb976114fbca54e4baf159'}",
+  "finished_utc": "2026-10-06T17:55:33.927296+00:00",
+  "changed_files": [],
+  "added_files": []
+}

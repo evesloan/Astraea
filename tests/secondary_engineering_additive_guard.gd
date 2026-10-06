@@ -35,11 +35,20 @@ static func validate_pinned_input(path: String, historical_sha: String) -> void:
 		if previous.has("capture_audit_file"):
 			assert(FileAccess.get_sha256("res://"+str(previous.capture_audit_file))==str(previous.capture_audit_sha256))
 		return
+	if path=="scripts/presentation.gd" and actual=="a63a5c72f76af86cb81d2bb7dcc2bf9330d0a0583862c2fea5e7f487f5628b1c":
+		assert(load("res://tests/engineering_controls_listener_successor.gd").validate_successor(path,historical_sha,actual,previous))
+		return
+	if path=="scripts/presentation.gd":
+		assert(load("res://tests/engineering_signage_capture_successor.gd").validate_successor(path,historical_sha,actual,previous))
+		return
 	var successor := theater_successor()
 	assert(successor.explicit_runtime_pin_successors.has(path),"No exact theater input successor: "+path)
 	var input: Dictionary = successor.explicit_runtime_pin_successors[path]
 	assert(historical_sha==str(input.historical_sha256) and previous.section_sha256==input.section_sha256,"Exact historical/section chain required: "+path)
 	if actual==str(input.theater_sha256): return
+	if path=="scripts/ship.gd" and actual in [preload("res://tests/theater_stair_ship_successor.gd").STAIR_CANDIDATE_SHA,preload("res://tests/theater_stair_ship_successor.gd").COURT_CANDIDATE_SHA]:
+		assert(preload("res://tests/theater_stair_ship_successor.gd").validate_successor(path,historical_sha,actual,previous,input))
+		return
 	assert(preload("res://tests/secondary_engineering_pool_ship_successor.gd").validate_successor(path,historical_sha,actual,previous,input),"No exact reviewed pool ship successor: "+path)
 
 static func validate_owner_count(actual: int, historical: int) -> void:
@@ -61,6 +70,9 @@ static func validate(compiled: Dictionary) -> Dictionary:
 		var input: Dictionary = successor.explicit_runtime_pin_successors[path]
 		if actual==str(input.theater_sha256): continue
 		var previous: Dictionary = chain.explicit_runtime_pin_successors[path]
+		if path=="scripts/ship.gd" and actual in [preload("res://tests/theater_stair_ship_successor.gd").STAIR_CANDIDATE_SHA,preload("res://tests/theater_stair_ship_successor.gd").COURT_CANDIDATE_SHA]:
+			assert(preload("res://tests/theater_stair_ship_successor.gd").validate_successor(path,str(previous.historical_sha256),actual,previous,input))
+			continue
 		assert(preload("res://tests/secondary_engineering_pool_ship_successor.gd").validate_successor(path,str(previous.historical_sha256),actual,previous,input),"Mixed or unreviewed theater/pool adoption bytes: "+path)
 	assert(compiled==JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json")),"Caller compiled records must match pinned bytes")
 	assert(compiled.regions.size()==271 and original.old_region_records.size()==258 and proof.new_records.size()==3)

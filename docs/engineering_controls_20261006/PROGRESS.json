@@ -1,0 +1,201 @@
+{
+  "updated_utc": "2026-10-06T17:02:28.000453+00:00",
+  "status": "CONTROLS_INPUT_AND_NATIVE_INCREMENT_VERIFIED_CARRY_SMOKE_OPEN",
+  "Game_head": "e49190fee131f1354aa7de6a7fc542159c84ed7e",
+  "controls": {
+    "registered": 120,
+    "bay_counts": {
+      "CONTROL": 72,
+      "WORKBAY": 48
+    },
+    "ordinary_RMB_E_cycles_passed": 240,
+    "run": "controls_run002",
+    "wall_seconds_including_import": 76.8431,
+    "all_original_dispatcher_and_camera": true,
+    "interaction_targets": "120 precise 18 mm Area3D spheres on layer 2, mask 0; they are not physical bodies.",
+    "bounded_effects": "At most four active controls and four voices. Effects are finite, local actuator motion, material pulses and cues. Cake remains disabled.",
+    "run001_failure": "A relative transform comparison at large ship coordinates masked millimetre-scale motion. The test now compares finite motion relative to its authored rest pose; runtime travel is unchanged."
+  },
+  "listener": {
+    "before_loaded_census": "The actual loaded scene had zero 3D emitters and its viewport listener was disabled.",
+    "adoption": "One World360 listener-enable line. The original current player camera is the listener.",
+    "native_before_census_actual_count": 4,
+    "native_after_census": 4,
+    "actual_mix": "Two real application-mixed cues produced 2.786 seconds of finite, nonzero stereo PCM at 44.1 kHz. Human listening has not been reviewed."
+  },
+  "native_feedback": {
+    "attempt001": {
+      "status": "FAILED_PRESERVE_NATIVE_EVIDENCE",
+      "started_utc": "2026-10-06T16:42:32.899226+00:00",
+      "finished_utc": "2026-10-06T16:43:50.934798+00:00",
+      "failure": "Combined originalfirsthit/cachedRMB target at firsttoggle; noimages orcuemix generated",
+      "source_pins_unchanged": true,
+      "all120_receipt_unchanged": true
+    },
+    "attempt002": {
+      "status": "NATIVE_FEEDBACK_CAPTURED_REVIEW_PENDING",
+      "started_utc": "2026-10-06T16:52:43.279708+00:00",
+      "finished_utc": "2026-10-06T16:53:43.387607+00:00",
+      "engine_errors": [],
+      "views": [
+        {
+          "active": false,
+          "camera_fov": 58.0409965515137,
+          "eye_xyz": [
+            22.1669998168945,
+            7.65009784698486,
+            -461.531677246094
+          ],
+          "feet_xyz": [
+            22.1669998168945,
+            6.00009775161743,
+            -461.531677246094
+          ],
+          "id": "ENG2_CONTROL_C1L_01",
+          "label": "E · Condensate Bypass",
+          "prefix": "engineering_controls_native002_toggle_rest_",
+          "source_displacement": 0.0
+        },
+        {
+          "active": true,
+          "camera_fov": 58.0055465698242,
+          "eye_xyz": [
+            22.1669998168945,
+            7.65009784698486,
+            -461.531677246094
+          ],
+          "feet_xyz": [
+            22.1669998168945,
+            6.00009775161743,
+            -461.531677246094
+          ],
+          "id": "ENG2_CONTROL_C1L_01",
+          "label": "Bypass seated",
+          "prefix": "engineering_controls_native002_toggle_active_",
+          "source_displacement": 20.0
+        },
+        {
+          "active": false,
+          "camera_fov": 58.0450668334961,
+          "eye_xyz": [
+            22.4514446258545,
+            7.65009784698486,
+            -461.478607177734
+          ],
+          "feet_xyz": [
+            22.4514446258545,
+            6.00009775161743,
+            -461.478607177734
+          ],
+          "id": "ENG2_CONTROL_C1L_03",
+          "label": "E · Condensate Level Check",
+          "prefix": "engineering_controls_native002_push_rest_",
+          "source_displacement": 0.0
+        },
+        {
+          "active": true,
+          "camera_fov": 58.0031318664551,
+          "eye_xyz": [
+            22.4514446258545,
+            7.65009784698486,
+            -461.478607177734
+          ],
+          "feet_xyz": [
+            22.4514446258545,
+            6.00009775161743,
+            -461.478607177734
+          ],
+          "id": "ENG2_CONTROL_C1L_03",
+          "label": "Collector level acknowledged",
+          "prefix": "engineering_controls_native002_push_active_",
+          "source_displacement": -0.008
+        }
+      ],
+      "mix": {
+        "concatenated_segments": [
+          {
+            "actual_mix_peak": 0.00231311796233058,
+            "cue": "mechanical_click",
+            "discarded_frames": 0,
+            "end_sample": 57344,
+            "frame_count": 57344,
+            "id": "ENG2_CONTROL_C1L_01",
+            "maximum_seconds": 1.5,
+            "pushed_frames": 57344,
+            "seconds": 1.30031746031746,
+            "start_sample": 0,
+            "started_engine_msec": 54475,
+            "stop_reason": "finite_effect_and_tail_complete",
+            "stopped_engine_msec": 55723
+          },
+          {
+            "actual_mix_peak": 0.00565113732591271,
+            "cue": "soft_hum",
+            "discarded_frames": 0,
+            "end_sample": 122880,
+            "frame_count": 65536,
+            "id": "ENG2_CONTROL_C1L_03",
+            "maximum_seconds": 1.5,
+            "pushed_frames": 65536,
+            "seconds": 1.48607709750567,
+            "start_sample": 57344,
+            "started_engine_msec": 56762,
+            "stop_reason": "finite_effect_and_tail_complete",
+            "stopped_engine_msec": 58247
+          }
+        ],
+        "driver": "Dummy",
+        "finite_nonzero_actual_mix": true,
+        "frames": 122880,
+        "human_listening_accepted": false,
+        "maximum_seconds_per_cue": 1.5,
+        "nonzero_frames": 21513,
+        "path": "/workspace/scratch/375c2e438292/engineering-controls-runtime-apply-20261006/native_feedback002/application_mix.wav",
+        "peak": 0.00565113732591271,
+        "rate_hz": 44100,
+        "rms": 0.000890662721840982,
+        "seconds": 2.78639455782313,
+        "source": "Two concatenated bounded per-cue Master AudioEffectCapture windows after application spatial mixing; walking/rest gaps omitted",
+        "wav_sha256": "64fd925751b4762807476d7570bb78af9a85880314dfab3dd0c2a1b32cb5b7a7"
+      },
+      "capture_effect_removed": true,
+      "voice_before": 4,
+      "voice_after": 4,
+      "source_pins_unchanged": true,
+      "all120_receipt_unchanged": true,
+      "visual_inspection": "Normal presentation frames were inspected. The panel and response text are legible. Small actuator movement is subtle at 640 x 360. The old default D09 HUD title remains despite the verified D02 camera position.",
+      "human_listening_accepted": false
+    },
+    "input_timing": "Raw rays already hit the correct source Areas before RMB. A public input flush delivered queued RMB and W release events; ordinary physics then refreshed the original player’s cached target. Target size, range and camera pose were unchanged.",
+    "library_pair": {
+      "rest": "libfile_f9ba11ade73c8191aca4b1f063a845d2",
+      "active": "libfile_cb49b590f4108191ac326d704e97359b"
+    }
+  },
+  "cell_smoke": {
+    "current_status": "FAIL carriedtool upperlane segment; fullcellpass notclaimed",
+    "earlier_phases_completed": [
+      "Source mesh and contact census",
+      "Compiled floor topology and stairs",
+      "Retained walking routes",
+      "Both-side RMB/E gate operation, obstruction and pause",
+      "Actual loose bottle against the under-tread contact",
+      "Source light receivers and opaque barriers",
+      "Upper/lower light selection"
+    ],
+    "first_failure": "The carried cleaner reached 8.386 m/s after contacting retained south glazing and its frame. Disabling the new target Area collision layers in memory produced the identical trace.",
+    "later_input_route_attempt": "A targeted aligned approach carried the bottle down and up the stairs. The subsequent complete check caught a lowered bottle against the retained upper bench, exceeding the original 2.1 m distance bound. Runtime geometry and physics remain unchanged.",
+    "historical_uncertainty": "The old complete cell carry check passed before controls adoption. A full pre-controls source rollback comparison has not been run; the target-layer comparison establishes only that direct interaction-Area contacts do not explain the failure.",
+    "next": "A source-cleared corridor-aligned carry route is prepared only in scratch. Run one targeted route in a granted engine window, then the final standard check if it passes."
+  },
+  "global": {
+    "current_registry_entries": 119,
+    "current_aggregate_pass": false,
+    "historical_full111": "pass beforelaterpool/theater/sign/controls",
+    "full117_attempt": "stoppedatlighting; localtheatercorrection andoriginallightingtestlaterpassed",
+    "postcontrols_lighting_budget": "Not yet run: the serial smoke batch stopped on the carry segment.",
+    "department_first_pass_accepted": false,
+    "external_staff_connection_complete": false
+  },
+  "preservation": "Failed attempts, original source hashes and scoped successor exceptions are preserved. No engine, shared lighting profile, camera height, InputMap, tether or source collision was changed."
+}
