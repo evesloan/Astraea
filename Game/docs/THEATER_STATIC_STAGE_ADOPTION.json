@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_utc": "2026-10-06T11:44:04.764252+00:00",
+  "updated_utc": "2026-10-06T12:40:04.715297+00:00",
   "status": "INSTALLED_CONNECTED_D11_STATIC_STAGE_PHYSICAL_GATES_PASSED_VISUAL_REJECTED",
   "catalogue_id": "AST-CUL-005",
   "catalogue_unique_registered_designs": 171,
@@ -65,7 +65,7 @@
   },
   "visual_acceptance": false,
   "full_regression_after_theater": false,
-  "standard_headless_structure_status": "Initial direct MultiMesh getter check fails because dummy renderer returns identity/empty buffers. Independent real-renderer strict instance gate passes; explicit hash-pinned native receipt split is prepared but not yet adopted/retested. No silent skip.",
+  "standard_headless_structure_status": "PASS: current physics/contact/identity/floor/barrier checks execute, with explicit hash-matched zero-error native-renderer proof for unavailable dummy MultiMesh readback. Exact JSON numeric-count normalization is tested; native branch remains strict.",
   "remaining": [
     "Materially composed human-scale hospitality court, fuller integrated planting and reduced floor hotspots",
     "Continuous upper-gallery/internal-stair walking and additional seated/auditorium/backstage views",
@@ -131,6 +131,60 @@
     "docs/theater_validation/static_stage_001/theater_access_RECEIPT.json": "ff01f54f65856150ce7a7e9c6a65c4fd2e834a3d516d207410090bb9fc20c60c",
     "docs/theater_validation/static_stage_001/theater_access_engine.log": "a4d9f6abadce47ba85c4c79cfc46f36f34f94a7db56f0f621783cfb2021c5582",
     "docs/theater_validation/static_stage_001/theater_cart_RECEIPT.json": "339964df93c4a0a44c599cdd35786fa94092f20e9ef80e2e0405596ec5f64167",
-    "docs/theater_validation/static_stage_001/theater_cart_engine.log": "66275da414cfaff7d8f1e17055085845dcc5473ba59eb31e4212a704f686ccea"
+    "docs/theater_validation/static_stage_001/theater_cart_engine.log": "66275da414cfaff7d8f1e17055085845dcc5473ba59eb31e4212a704f686ccea",
+    "docs/theater_validation/headless_structure_005/COUNT_FIX_APPLY_RECEIPT.json": "b3db9bfbfd84238e9182efbf037397f721e4836480b87ef5ba7a215290783332",
+    "docs/theater_validation/headless_structure_005/COUNT_TYPE_CONTROL.gd.txt": "0321f5e60ef553c61a94b43bb0a8c97f3e681dd4de8418188ff11b55349a2e80",
+    "docs/theater_validation/headless_structure_005/engine.log": "694be41567f9a1c5bcb9888bfc9a661a393acff735d62eef211e6c7dce03aed3",
+    "docs/theater_validation/headless_structure_005/FAILED_COUNT_COMPARISON_ENGINE.log": "f9ca6178ba233e03d5102c8ebce7a9e78892c654f8693ad92448dcd199cd9452",
+    "docs/theater_validation/headless_structure_005/FAILED_COUNT_COMPARISON_RECEIPT.json": "8bd36f2bb01420c61b916ae633cc19f83ff49263cf086534d8e45b24e0e632f3",
+    "docs/theater_validation/headless_structure_005/COUNT_TYPE_CONTROL.log": "73b6af2f182ee99992e5fad85c5432a3f32f1d8a478b07eac6de19d9c239003e",
+    "docs/theater_validation/headless_structure_005/NATIVE_SPLIT_APPLY_RECEIPT.json": "755fdd4f789510b1d1af7cedf32c6b62ed127cf311495dc61eaaff8b5c052fec",
+    "docs/theater_validation/headless_structure_005/RECEIPT.json": "150bd4a9c9486ebda16b9c79ca00cf78d52e0f834f0f01c171b06414c5d91bbe"
+  },
+  "standard_structure_gate": {
+    "passed": true,
+    "standard_runner": "tools/validate.py --only theater_structure",
+    "includes_fresh_import": true,
+    "wall_seconds": 30.8974,
+    "source_files_unchanged": 3920,
+    "receipt": "docs/theater_validation/headless_structure_005/RECEIPT.json",
+    "tested_input_sha256": {
+      "data/architecture/packages/theater/SOURCE_GEOMETRY_003.json": "90406045c5c23e52af1850bba8ea3088cb672de072afa47a7f5e6feb39927429",
+      "data/architecture/packages/theater/SOURCE_SURFACE_MANIFEST_003.json": "f215b6a1c3a586f8fd3a329bf852afd9b3fd291cda10aaac5260d62a7b270e33",
+      "data/architecture/packages/theater/retained/spatial_layout.json": "587e2a0d618b4957eab68c5dd437fdfed93ef4c7dab138d9b62326a53d1d6da2",
+      "data/architecture/packages/theater/retained/structural_meshes.json": "3322c84a8dc2d456c6652d641bc0e02a38b27ec1095b95d5d494a1456b14f52b",
+      "data/generated/structural_meshes.json": "4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91",
+      "data/spatial_layout.json": "6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167",
+      "docs/LAYOUT_COMPILE_CHECKS.json": "c71bcbb7044516dfc1d2628011aff882bc400615dbcb60c3cf54acd0774c81b6",
+      "docs/SECONDARY_ENGINEERING_THEATER_SUCCESSOR.json": "bf3dfe3e9b7eb4fe1f916269a6e7fde3a636f226a4f6cd02a66c13e3e0dac6af",
+      "docs/THEATER_ADDITIVE_SUCCESSOR_PROPOSAL.json": "1fa5809a6dfa77f77986a53a3e56f4fbfafdb7f5ab2d9ba1c40080bd6fe0d183",
+      "scripts/grand_lantern_theater_section.gd": "0b287238e1ab8bf5778e3c7154b9a6f44fd726f62575b7de16236f9d2eac7be8",
+      "scripts/ship.gd": "4f82ece4f0f990dad5559798044e55b26281eba3d5f0cdfb49cbdda63776982f",
+      "tests/fixtures/THEATER_TEST_FIXTURES.json": "cad1feb227176f4e24febace8aeb2ff5473f950a95bfe882eebe01a0fd5de0ce",
+      "tests/secondary_engineering_additive_guard.gd": "855f951ff614a7eb6ce0e5970020115681d10625ee826e10ed005e6573e2d71e",
+      "tests/theater_stage_probe.gd": "5b682f3fd1dff7765708b0fca48a3e9856416b5eba60bb14161d35a359aeaec4",
+      "tests/validate_secondary_engineering_cell.gd": "526f7b5c251a786ac081128348c6045f16e68c28ab0ecfdc7d23318c5255628c",
+      "tests/validate_theater_access.gd": "4e586980bb768c17e76ed513b21d6fdc6ee5db4ad487fc081fd52a360c3741cf",
+      "tests/validate_theater_cart.gd": "516277ec17ab8bd810a937de3237b73304d608e00446db4ecc1177b560b1f424",
+      "tests/validate_theater_structure.gd": "823cf9afbbe37edba388a06504222ea24ce6db945d460ccc727417f6e4c97297",
+      "tools/compile_layout.py": "6bcf59a9d1e90140137df084a1295f42ab0591fae7e891c14d63967378f1c051",
+      "tools/theater_incremental_preservation.py": "ff1b2d55dc897943b68cad5dbeceae2f22c918e0fe9342665c244d008bc3ec91",
+      "tools/theater_source_volumes.py": "d6aa1c9c8e4db40358250041684713aee9274b10b729c7f1b4a2d74b656f9896",
+      "tools/theater_surface_policy.py": "f396b6f92dc008d9d8d6ef2ad03103f622b631912658d3ad22e8267d649de2b1",
+      "tools/validate.py": "df86630b53a6b262af5ae3102bb9987c4929667d70a0cc76ad8bb405ec7f14e6"
+    },
+    "scope": "Current combined theater+pool ship structure; real native visual-instance evidence is retained and verified, not silently skipped."
+  },
+  "current_shared_successor_reconciliation": {
+    "standard_structure_rerun_on_current_combined_bytes": true,
+    "player_cart_and_native_receipts_remain_theater_stage_historical_inputs": true,
+    "old_player_cart_receipts_do_not_claim_combined_global_regression": true,
+    "current_structure_shared_inputs": {
+      "scripts/ship.gd": "4f82ece4f0f990dad5559798044e55b26281eba3d5f0cdfb49cbdda63776982f",
+      "tools/validate.py": "df86630b53a6b262af5ae3102bb9987c4929667d70a0cc76ad8bb405ec7f14e6",
+      "tests/secondary_engineering_additive_guard.gd": "855f951ff614a7eb6ce0e5970020115681d10625ee826e10ed005e6573e2d71e",
+      "tests/secondary_engineering_pool_ship_successor.gd": "07d0c1494b297763de23612ef9f7b6d9e145791a190c03a3be0bd9d4a7c72bd5"
+    },
+    "full_regression_pending": true
   }
 }

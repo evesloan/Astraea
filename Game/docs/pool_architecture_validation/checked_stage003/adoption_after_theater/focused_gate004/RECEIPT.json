@@ -1,0 +1,41 @@
+{
+  "status": "PASS_ONE_IMPORT_AND_FOCUSED_ARCHITECTURE_GATE",
+  "started_utc": "2026-10-06T12:31:42.398689+00:00",
+  "command": [
+    "python",
+    "tools/validate.py",
+    "--only",
+    "grand_pool_architecture"
+  ],
+  "full_suite": false,
+  "visual_acceptance": false,
+  "exact_repair_manifest_sha256": "a11f2897f7077389d98a17740fd8e8f1b08cdfd44919c6ac7e19296676cca5ab",
+  "finished_utc": "2026-10-06T12:32:11.776480+00:00",
+  "returncode": 0,
+  "source_bytes_unchanged": 3920,
+  "new_owned_import_files": {},
+  "unexpected_changes": [],
+  "validation": {
+    "checks": [
+      {
+        "check": "import",
+        "passed": true,
+        "exit_code": 0,
+        "errors": [],
+        "wall_seconds": 3.6125,
+        "clock_mode": "editor"
+      },
+      {
+        "check": "grand_pool_architecture",
+        "passed": true,
+        "exit_code": 0,
+        "errors": [],
+        "wall_seconds": 25.3012,
+        "clock_mode": "fixed60"
+      }
+    ],
+    "wall_seconds": 28.9145,
+    "clock_mode": "fixed60",
+    "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+  }
+}

@@ -1,0 +1,368 @@
+{
+  "status": "INSTALLED_CHECKED_INCREMENTAL_ARCHITECTURE",
+  "first_pass_visual_acceptance": false,
+  "full_suite_pass_claimed": false,
+  "registered_full_suite_checks": 117,
+  "focused_gate": {
+    "status": "PASS_ONE_IMPORT_AND_FOCUSED_ARCHITECTURE_GATE",
+    "started_utc": "2026-10-06T12:31:42.398689+00:00",
+    "command": [
+      "python",
+      "tools/validate.py",
+      "--only",
+      "grand_pool_architecture"
+    ],
+    "full_suite": false,
+    "visual_acceptance": false,
+    "exact_repair_manifest_sha256": "a11f2897f7077389d98a17740fd8e8f1b08cdfd44919c6ac7e19296676cca5ab",
+    "finished_utc": "2026-10-06T12:32:11.776480+00:00",
+    "returncode": 0,
+    "source_bytes_unchanged": 3920,
+    "new_owned_import_files": {},
+    "unexpected_changes": [],
+    "validation": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.6125,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "grand_pool_architecture",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 25.3012,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 28.9145,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    }
+  },
+  "combined_retained_checks": {
+    "status": "PASS_SIX_CHANGED_LEGACY_CHECKS_WITH_TWO_ATTESTED_POOL_PASSES",
+    "started_utc": "2026-10-06T14:07:30.388049+00:00",
+    "full_suite": false,
+    "prior_pool_checks": [
+      {
+        "name": "grand_pool_first_pass",
+        "returncode": 0,
+        "result": {
+          "checks": [
+            {
+              "check": "import",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 3.6257,
+              "clock_mode": "editor"
+            },
+            {
+              "check": "grand_pool_first_pass",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 38.1613,
+              "clock_mode": "fixed60"
+            }
+          ],
+          "wall_seconds": 41.788,
+          "clock_mode": "fixed60",
+          "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+        }
+      },
+      {
+        "name": "grand_pool_finish",
+        "returncode": 0,
+        "result": {
+          "checks": [
+            {
+              "check": "import",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 3.429,
+              "clock_mode": "editor"
+            },
+            {
+              "check": "grand_pool_finish",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 24.4555,
+              "clock_mode": "fixed60"
+            }
+          ],
+          "wall_seconds": 27.885,
+          "clock_mode": "fixed60",
+          "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+        }
+      }
+    ],
+    "prior_pass_attestation": {
+      "prior_receipt_sha256": "7d359e21ed52b8e07f3dca2fa97455d3e267e021d184495b19adc6fc51fda89e",
+      "prior_before_sha256": "07ed04f4fa28b7384410f904abd2356e212333f2d457107949e52011d70b2f43",
+      "prior_after_sha256": "07ed04f4fa28b7384410f904abd2356e212333f2d457107949e52011d70b2f43",
+      "all_existing_inputs_unchanged_except_exact_six_test_successors": true,
+      "changed_test_manifest_sha256": "c4570b2d4f9775e6c970b29c94b67bae79731541e5c17cfd299452834bbe9241",
+      "changed_test_paths": [
+        "tests/validate_aft_crown_platform_structure.gd",
+        "tests/validate_d17_connected_access.gd",
+        "tests/validate_grand_pool_access.gd",
+        "tests/validate_secondary_engineering_access.gd",
+        "tests/validate_secondary_engineering_essentials.gd",
+        "tests/validate_upper_horizon_enclosure_structure.gd"
+      ],
+      "prior_two_scripts_models_contracts_shared_guard_runtime_and_every_other_input_unchanged": true
+    },
+    "checks": [
+      {
+        "name": "grand_pool_access",
+        "returncode": 0,
+        "result": {
+          "checks": [
+            {
+              "check": "import",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 3.9038,
+              "clock_mode": "editor"
+            },
+            {
+              "check": "grand_pool_access",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 48.0297,
+              "clock_mode": "fixed60"
+            }
+          ],
+          "wall_seconds": 51.9341,
+          "clock_mode": "fixed60",
+          "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+        }
+      },
+      {
+        "name": "secondary_engineering_essentials",
+        "returncode": 0,
+        "result": {
+          "checks": [
+            {
+              "check": "import",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 3.802,
+              "clock_mode": "editor"
+            },
+            {
+              "check": "secondary_engineering_essentials",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 31.562,
+              "clock_mode": "fixed60"
+            }
+          ],
+          "wall_seconds": 35.3647,
+          "clock_mode": "fixed60",
+          "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+        }
+      },
+      {
+        "name": "secondary_engineering_access",
+        "returncode": 0,
+        "result": {
+          "checks": [
+            {
+              "check": "import",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 3.4315,
+              "clock_mode": "editor"
+            },
+            {
+              "check": "secondary_engineering_access",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 40.1097,
+              "clock_mode": "fixed60"
+            }
+          ],
+          "wall_seconds": 43.5417,
+          "clock_mode": "fixed60",
+          "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+        }
+      },
+      {
+        "name": "d17_connected_access",
+        "returncode": 0,
+        "result": {
+          "checks": [
+            {
+              "check": "import",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 3.6193,
+              "clock_mode": "editor"
+            },
+            {
+              "check": "d17_connected_access",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 35.349,
+              "clock_mode": "fixed60"
+            }
+          ],
+          "wall_seconds": 38.9689,
+          "clock_mode": "fixed60",
+          "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+        }
+      },
+      {
+        "name": "aft_crown_platform_structure",
+        "returncode": 0,
+        "result": {
+          "checks": [
+            {
+              "check": "import",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 3.4281,
+              "clock_mode": "editor"
+            },
+            {
+              "check": "aft_crown_platform_structure",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 36.4449,
+              "clock_mode": "fixed60"
+            }
+          ],
+          "wall_seconds": 39.8736,
+          "clock_mode": "fixed60",
+          "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+        }
+      },
+      {
+        "name": "upper_horizon_enclosure_structure",
+        "returncode": 0,
+        "result": {
+          "checks": [
+            {
+              "check": "import",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 3.4317,
+              "clock_mode": "editor"
+            },
+            {
+              "check": "upper_horizon_enclosure_structure",
+              "passed": true,
+              "exit_code": 0,
+              "errors": [],
+              "wall_seconds": 40.7736,
+              "clock_mode": "fixed60"
+            }
+          ],
+          "wall_seconds": 44.2059,
+          "clock_mode": "fixed60",
+          "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+        }
+      }
+    ],
+    "unrun": [
+      "grand_pool_service_cart",
+      "grand_pool_local_lift",
+      "full117"
+    ],
+    "finished_utc": "2026-10-06T14:11:47.375952+00:00",
+    "all_source_bytes_unchanged": 3920
+  },
+  "source_parts": 451,
+  "runtime_batches": 65,
+  "runtime_triangles": 7776,
+  "added_plant_instances": 12,
+  "retained_programme": 126,
+  "explicit_programme_after": 147,
+  "new_floors_windows_shared_renderer_changes": false,
+  "source_export_retention_commit": "d3c3a50a285c7a094ef55eb53cc266d29fec73ed",
+  "native_capture": {
+    "status": "PASS_CAPTURE_PIXELS_PENDING_REVIEW",
+    "started_utc": "2026-10-06T12:19:01.010135+00:00",
+    "script_sha256": "edd616c833c3aeed2aaf73b9d898749e580c56e297a4711fa613c86eea600470",
+    "focused_gate_sha256": "919270e5015efc1033d3b52cb297f29ea73da7cce4c415e5cfd99312c46b05aa",
+    "full_suite": false,
+    "visual_acceptance": false,
+    "focused_gate_pending": "Two of639 legacy root vertices differ by up to61.15micrometres in XZ; all639 actual native root contacts and all114 architecture supports pass. Reviewed test correspondence correction remains pending.",
+    "returncode": 0,
+    "errors": [],
+    "seconds": 101.014,
+    "finished_utc": "2026-10-06T12:20:42.024225+00:00",
+    "all_game_source_bytes_unchanged": true
+  },
+  "runtime_files": {
+    "assets/models/AST-AQU-016_pool_focal_end.glb": "d45d1fb6888b45b387771fe3c913b89533a0f3cee2d64199323f326c9dfbb5e6",
+    "assets/models/AST-AQU-016_pool_focal_end.glb.import": "d4bdd2a9b5a44c4c6bc4dd69906af1ce4f0407715a63adfde83c8afcec724907",
+    "assets/models/AST-AQU-016_pool_focal_end_aquatic_edge_tile.png": "8099dff47429905a7faaa80cd64fa97545b07eccb4c94409541c3a1a6d805514",
+    "assets/models/AST-AQU-016_pool_focal_end_aquatic_edge_tile.png.import": "499195410e4baf414252bfe976361e444a806d9be40025fd125888d7a2f02005",
+    "assets/models/AST-AQU-016_pool_focal_end_champagne_metal.png": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+    "assets/models/AST-AQU-016_pool_focal_end_champagne_metal.png.import": "2f9ac5b08c4d6cc4625ecc77ad9033b5064bcad9d947ed6ffbe5869df078e80c",
+    "assets/models/AST-AQU-016_pool_focal_end_ivory_enamel.png": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+    "assets/models/AST-AQU-016_pool_focal_end_ivory_enamel.png.import": "9a36de07a099e0c93989601fddd91c171ee47093fc3ca6afc9bd1debae0de18f",
+    "assets/models/AST-AQU-016_pool_focal_end_retail_terracotta_enamel.png": "f5f57caac4d52e864ce215f10bb74260cd1b11c786f966406daf345c73c16375",
+    "assets/models/AST-AQU-016_pool_focal_end_retail_terracotta_enamel.png.import": "8261faad01a727b9c9597bc28da50633b996b75a167d981600c9c43a56355a44",
+    "assets/models/AST-AQU-016_pool_focal_end_warm_stone.png": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+    "assets/models/AST-AQU-016_pool_focal_end_warm_stone.png.import": "8bef75cf8adbefaf3feda49bc9f75d222e082b03138821b12411479e6d110b6a",
+    "assets/models/AST-AQU-016_pool_focal_end_warm_walnut.png": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+    "assets/models/AST-AQU-016_pool_focal_end_warm_walnut.png.import": "01d220cfcd3e1a2788f93dc424e6e17271dfe7c25b80af60b0bff3e1bffe3b53",
+    "assets/models/AST-AQU-016_pool_loggia.glb": "defe17f4c15ad0b2b7ecc07b2b33514e1751ffe57e35f9d3932020f6c912b9ec",
+    "assets/models/AST-AQU-016_pool_loggia.glb.import": "139b93cb5584a04336aec18a13ee632b648e3f79b5e3084d3ebccbe59ba63d78",
+    "assets/models/AST-AQU-016_pool_loggia_aquatic_clay_sling.png": "224732b5da3eb280bc0e1d2f230f675bc0ecff4755bfccd411013ea615f88a03",
+    "assets/models/AST-AQU-016_pool_loggia_aquatic_clay_sling.png.import": "1d1c9b4dd1d7511724d2d6b067858e0a22e4300da101259094920f90d34ba00b",
+    "assets/models/AST-AQU-016_pool_loggia_aquatic_edge_tile.png": "8099dff47429905a7faaa80cd64fa97545b07eccb4c94409541c3a1a6d805514",
+    "assets/models/AST-AQU-016_pool_loggia_aquatic_edge_tile.png.import": "c2ae1a215af0a3d1b3eefd4cf28536fc757f2a822b77e479ca5e85328cd8a23b",
+    "assets/models/AST-AQU-016_pool_loggia_botanical_soil.png": "ff0651486bc63ba9aab69a344167f936f8e16eae76de7720d6b81e27b9833165",
+    "assets/models/AST-AQU-016_pool_loggia_botanical_soil.png.import": "7bb865df8fcee21870ae15be825db4c7a2e7a2161c2dd3181cdf304adf8c7a97",
+    "assets/models/AST-AQU-016_pool_loggia_warm_stone.png": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+    "assets/models/AST-AQU-016_pool_loggia_warm_stone.png.import": "b39caa34fa116495b331eff600c00a5e1c8bb6ca47e935150cbb55ae4e744edd",
+    "assets/models/AST-AQU-016_pool_loggia_warm_walnut.png": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+    "assets/models/AST-AQU-016_pool_loggia_warm_walnut.png.import": "c7db534e4517d98c473e294878a7f05a46dd6d1984e5b14b4aedf69af68844ce",
+    "assets/models/AST-AQU-016_pool_roof_composition.glb": "ce72d3084d99c34d630e10f944ad7e9b3fcb29be5a9cb18499c54bfd65b91136",
+    "assets/models/AST-AQU-016_pool_roof_composition.glb.import": "5bc36d2ad951a90f5978d5c5cfc781a2f108736472c6580e8db34e1b0c78efec",
+    "assets/models/AST-AQU-016_pool_roof_composition_champagne_metal.png": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+    "assets/models/AST-AQU-016_pool_roof_composition_champagne_metal.png.import": "727f85d0433ce81b99ce5accda5389e89e9b290ee455e7964c1b31a01dc12cdf",
+    "assets/models/AST-AQU-016_pool_roof_composition_ivory_enamel.png": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+    "assets/models/AST-AQU-016_pool_roof_composition_ivory_enamel.png.import": "5c97f5ea0db160ca3b554e457bce4d7e449d9c03b2fc91852e315602ff578dad",
+    "assets/models/AST-AQU-016_pool_roof_composition_warm_walnut.png": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+    "assets/models/AST-AQU-016_pool_roof_composition_warm_walnut.png.import": "1cafd185013f75f58187c4963b13767b35362e9ede8ba5d8f536de2b0fa76ce4",
+    "data/architecture/GRAND_POOL_ARCHITECTURE_RUNTIME.json": "2d5d4427464726aec388c5995c39b9af6461179e7973da5764019c7b50a5a1ea",
+    "scripts/grand_pool_architecture.gd": "a764584c22010fc5aaf6ef36cf257fb70be73b659e2d6ff189ec84ca8e4be2b4",
+    "scripts/grand_pool_architecture.gd.uid": "e3f2e7a67ecbfa1d268259cdc5a11c7c048a8d20c9e431476dff69236278b823",
+    "scripts/ship.gd": "4f82ece4f0f990dad5559798044e55b26281eba3d5f0cdfb49cbdda63776982f",
+    "tests/validate_grand_pool_architecture.gd": "3e239a6dc3ed7e609a70ec48232238f7b85e2c807b2903770d88cd261ae7959a",
+    "tests/validate_grand_pool_architecture.gd.uid": "b713dd0807fc444de13abf9dfba5f6b8897e16e3ef478a3efd51368c6deb8dee",
+    "tools/validate.py": "df86630b53a6b262af5ae3102bb9987c4929667d70a0cc76ad8bb405ec7f14e6"
+  },
+  "remaining": [
+    "Pool loaded-cart and local-lift regression",
+    "Current complete117-check suite",
+    "Fuller planted masses and subtle source-backed fixture layers",
+    "Opposite edge and market architectural treatment",
+    "Complete first-pass art acceptance"
+  ],
+  "historical_proof_policy": "Earlier111-pass and focused receipts remain historical; no new full-suite pass is implied. Captured geometry remains identical after test-only correspondence corrections and theater test-only changes."
+}

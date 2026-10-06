@@ -1,0 +1,5 @@
+extends SceneTree
+func _initialize() -> void:
+	var parsed: Dictionary=JSON.parse_string('{"n":2200}')
+	print("COUNT_CONTROL dictionary_equal=",parsed=={"n":2200}," scalar_equal=",parsed.n==2200," parsed_type=",typeof(parsed.n)," literal_type=",typeof(2200))
+	quit(0)
