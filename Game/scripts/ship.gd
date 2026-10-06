@@ -90,6 +90,7 @@ func _ready() -> void:
 	load("res://scripts/grand_pool_architecture.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/secondary_engineering_section.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/grand_lantern_theater_section.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/court_a_increment004.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/theater_stair_walking_contacts.gd").build($ShipSpace/Districts)
 	var cleaning_cart:RigidBody3D=(load("res://scripts/cleaning_cart.gd")as GDScript).new()
 	cleaning_cart.name="CustodialCart"

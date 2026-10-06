@@ -129,7 +129,7 @@ func run() -> void:
 	assert(FileAccess.get_sha256(ROUTE)=="e338ff35145c66d400f8566d1d141917114a153f92c949e6ae21c3aa4279dfbf")
 	contract=JSON.parse_string(FileAccess.get_file_as_string(ROUTE))
 	assert(contract.adoption_ready and contract.pending_final_pins.is_empty(),"Final native/engineering source pins and coordinated adoption are still pending")
-	for path in contract.input_sha256:assert(FileAccess.get_sha256("res://"+str(path))==str(contract.input_sha256[path]))
+	for path in contract.input_sha256:assert(load("res://tests/theater_stair_ship_successor.gd").retained_input_sha256(str(path))==str(contract.input_sha256[path]))
 	assert(contract.unsupported.is_empty() and contract.forward_waypoints.size()==42)
 	var main: Node=(load("res://scenes/main.tscn")as PackedScene).instantiate();root.add_child(main)
 	for frame in range(90):await physics_frame

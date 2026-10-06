@@ -46,7 +46,7 @@ static func validate_pinned_input(path: String, historical_sha: String) -> void:
 	var input: Dictionary = successor.explicit_runtime_pin_successors[path]
 	assert(historical_sha==str(input.historical_sha256) and previous.section_sha256==input.section_sha256,"Exact historical/section chain required: "+path)
 	if actual==str(input.theater_sha256): return
-	if path=="scripts/ship.gd" and actual==preload("res://tests/theater_stair_ship_successor.gd").STAIR_CANDIDATE_SHA:
+	if path=="scripts/ship.gd" and actual in [preload("res://tests/theater_stair_ship_successor.gd").STAIR_CANDIDATE_SHA,preload("res://tests/theater_stair_ship_successor.gd").COURT_CANDIDATE_SHA]:
 		assert(preload("res://tests/theater_stair_ship_successor.gd").validate_successor(path,historical_sha,actual,previous,input))
 		return
 	assert(preload("res://tests/secondary_engineering_pool_ship_successor.gd").validate_successor(path,historical_sha,actual,previous,input),"No exact reviewed pool ship successor: "+path)
@@ -70,7 +70,7 @@ static func validate(compiled: Dictionary) -> Dictionary:
 		var input: Dictionary = successor.explicit_runtime_pin_successors[path]
 		if actual==str(input.theater_sha256): continue
 		var previous: Dictionary = chain.explicit_runtime_pin_successors[path]
-		if path=="scripts/ship.gd" and actual==preload("res://tests/theater_stair_ship_successor.gd").STAIR_CANDIDATE_SHA:
+		if path=="scripts/ship.gd" and actual in [preload("res://tests/theater_stair_ship_successor.gd").STAIR_CANDIDATE_SHA,preload("res://tests/theater_stair_ship_successor.gd").COURT_CANDIDATE_SHA]:
 			assert(preload("res://tests/theater_stair_ship_successor.gd").validate_successor(path,str(previous.historical_sha256),actual,previous,input))
 			continue
 		assert(preload("res://tests/secondary_engineering_pool_ship_successor.gd").validate_successor(path,str(previous.historical_sha256),actual,previous,input),"Mixed or unreviewed theater/pool adoption bytes: "+path)
