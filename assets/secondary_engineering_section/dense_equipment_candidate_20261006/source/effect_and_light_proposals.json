@@ -1,0 +1,89 @@
+{
+  "status": "Source-bound proposals only. No interaction code or runtime adoption.",
+  "state_lifetime": "session_local_until_an_existing_save_owner_is_explicitly_wired",
+  "interaction_contract": {
+    "input": "Existing RMB focus plus precise E",
+    "max_first_hit_camera_ray_m": 2.5,
+    "no_player_gd_changes": true,
+    "no_through_wall_or_glass_lookup": true,
+    "proposed_api": [
+      "get_interaction_label()",
+      "interact(actor)"
+    ],
+    "target_contract": "Distinct front-facing actuator targets; source marker/pivot/travel metadata retained; physical cabinet contacts remain static."
+  },
+  "allowlist_candidates": [
+    "latch_click",
+    "momentary_travel",
+    "meter_step_return",
+    "local_led_sequence",
+    "phase_courtesy_check_and_chime",
+    "bounded_cake_candidate"
+  ],
+  "effect_constraints": {
+    "manager_per_bay": true,
+    "idle_per_frame_control_callbacks": false,
+    "runtime_light_per_LED": false,
+    "arbitrary_callable_or_script_path": false,
+    "real_power_door_lift_or_transit_effects": false,
+    "rate_limits": "Per-actuator and per-bay queue still require gameplay testing",
+    "sound": "Original quiet local one-shots with pooled voices, visual equivalents, and headphone/speaker audition; no audio asset approved here"
+  },
+  "cake_proposal": {
+    "source_output_marker": "EFFECT_morale_cake_output",
+    "supported_tray": "MoraleReceivingTray",
+    "modelled_aperture": true,
+    "prop_max_extent_xyz_m": [
+      0.24,
+      0.12,
+      0.2
+    ],
+    "candidate_global_live_cap": 2,
+    "candidate_cooldown_seconds": 30,
+    "max_per_press": 1,
+    "required_checks": [
+      "actual cake shape versus tray and headroom",
+      "actors and held objects",
+      "other cake occupancy",
+      "blocked-tray benign prompt",
+      "held-object preservation",
+      "return-slot or cap reached without timed visible deletion"
+    ],
+    "cake_prop_authored": false,
+    "gameplay_implemented": false
+  },
+  "light_proposals": [
+    {
+      "marker": "LIGHT_PROPOSAL_west_rack",
+      "support": "WestTaskStem seated to workbay ceiling Y9.6",
+      "receiver": "WestWorkRack and FilterSkid west-wall machinery",
+      "runtime_approved": false
+    },
+    {
+      "marker": "LIGHT_PROPOSAL_test_rack",
+      "support": "TestTaskMountShoe seated to TestRackCrown Y8.765",
+      "receiver": "TEST_RACK reachable faces outside six existing-source cone samples",
+      "runtime_approved": false
+    },
+    {
+      "marker": "LIGHT_PROPOSAL_bench_task",
+      "support": "TaskArmBenchClamp seated to existing BenchWorktop_1 Y6.936",
+      "receiver": "PumpTestCradle working part",
+      "runtime_approved": false
+    },
+    {
+      "marker": "LIGHT_PROPOSAL_north_services",
+      "support": "NorthTaskMount seated to NorthRelayCrown Y8.78",
+      "receiver": "Reachable north wall remote control wings, finned relay and transducer/stock bank",
+      "runtime_approved": false
+    }
+  ],
+  "lighting_limits": [
+    "Original nine fixture sources and shared profiles remain unchanged",
+    "The 24 east TEST_RACK controls were relocated with stable IDs to north-wall remote wings after actual-pose sparse-wall review; the east task fixture now serves the connected tester body.",
+    "West and north machinery are outside the retained southward workbay cone; real supported local sources remain source-trial proposals.",
+    "Source trial watts are not Godot energy calibration",
+    "Original eight-active-source and 32-candidate selector remains unchanged",
+    "Runtime active-source selection and shadow/receiver tests remain required"
+  ]
+}

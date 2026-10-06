@@ -1,0 +1,11 @@
+Blender 4.3.2
+Read blend: "/workspace/scratch/375c2e438292/engineering-dense-bays/sectional-proposal/source/AST-ENG-008_workbay_section.blend"
+Error: ID type 'UNKNOWN' is not valid for an object
+Traceback (most recent call last):
+  File "/workspace/scratch/375c2e438292/engineering-dense-bays/sectional-proposal/source/recover_export_and_render.py", line 7, in <module>
+    report=export_package(R,source,S['removed_upper_source_assemblies']);assert sha(source)==before
+  File "/workspace/scratch/375c2e438292/engineering-dense-bays/sectional-proposal/source/export_section_package.py", line 36, in export_package
+    e=bpy.data.objects.new('TMP_EXPORT_'+ob.name,out);bpy.context.collection.objects.link(e);e.matrix_world=ob.matrix_world.copy();e.hide_render=True
+RuntimeError: Error: ID type 'UNKNOWN' is not valid for an object
+
+Writing: /tmp/AST-ENG-008_workbay_section.crash.txt
