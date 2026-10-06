@@ -107,6 +107,17 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		ship.apply_light_profile(light, "staff_work" if item.profile == "staff_work" else "aquatic_edge" if item.profile == "wet_terrace" else "guest_lounge")
 		light.light_energy = float(item.suggested_energy)
 		light.spot_range = float(item.suggested_range_m)
+		# Measured receiver distances exceed the source's initial review ranges.
+		# Keep source positions/energies/cones and the shared eight-light cap.
+		if item.profile == "pool_vault": light.spot_range = 22.0
+		elif item.profile == "wet_terrace": light.spot_range = 14.0
+		elif item.profile == "market_warm": light.spot_range = 11.0
+		if item.profile == "wet_terrace":
+			var receiver := marker.global_position
+			receiver.y = 46.23
+			if absf(receiver.x + 16.4) < .01 and absf(receiver.z + 442.0) < .01: receiver.y = 44.03
+			elif absf(receiver.x + 16.4) < .01 and absf(receiver.z + 456.0) < .01: receiver.y = 45.6466
+			light.set_meta("illumination_anchor", receiver)
 		light.spot_angle = float(item.suggested_spot_angle_degrees)
 		light.shadow_enabled = true
 		light.set_meta("source_marker", str(item.name))

@@ -1,0 +1,3980 @@
+{
+  "schema": "astraea_amenity_scope_audit_v1",
+  "audit_utc": "2026-10-06",
+  "scope": "Explicit guest public VIP amenity programmes and named children; engineering/service independently audited elsewhere",
+  "claim_boundary": "161 directory programmes are not an exhaustive child room/system inventory. 31 partial named programmes / 130 without verified owner is a narrow programme-owner snapshot, never remaining whole-ship scope or completion. No room completion declared here.",
+  "source_precedence": [
+    "latest explicit user scope and documented approved overlays",
+    "authoritative v0.3 text/capacity/deck crosswalk",
+    "blueprint/reference spatial programme, with contradictions explicitly retained",
+    "historical implementation evidence only as dated provenance"
+  ],
+  "sources": {
+    "master": {
+      "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+      "locator": "chapter 4 table 2; chapters 5, 9, 19, 30 and 33; paragraph indices are zero-based python-docx paragraph positions",
+      "sha256": "222e547eb695f51b11aa928ac30fb36e437866c3bccd8d857c81c5901a700008"
+    },
+    "public_sheet": {
+      "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/aquatic_program/public_blueprint.png",
+      "locator": "ASW-GV-03 sheet 3 of 6: deck plans, aquatic inset and capacities",
+      "pixels_inspected": true,
+      "sha256": "1d51d4a06e33657c395408ef96ea2e28cf6571ebc6b9313b7525c4fa04779a0c"
+    },
+    "guest_sheet": {
+      "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png",
+      "locator": "ASW-GV-02 sheet 2 of 6: VIP/premier and family rows",
+      "pixels_inspected": true,
+      "sha256": "90ba2f6d316017e895aab50981c9d8e7da512ed84228622c3afdb277a3b71e16"
+    },
+    "overview": {
+      "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/02/image(1).png",
+      "locator": "ASW-GV-01 sheet 1 of 6: deck index, top view, cutaway",
+      "pixels_inspected": true,
+      "sha256": "3813a0ecc3762a5ce970983352a68711641e187a3f44c3b1104bbb2fc846a6ef"
+    },
+    "performance": {
+      "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/auditorium/theater_reference.png",
+      "locator": "Theater plan labels 1\u20136 and captioned foyer / balcony lounge images",
+      "pixels_inspected": true,
+      "sha256": "4f1d548bc85cd48e73a2375a6badccc5810d10021713e86212ea6127595e56f4"
+    },
+    "legacy_auditoriums": {
+      "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/Historical_Design/Editable_Source/project_docs/AUDITORIUMS.md",
+      "locator": "Capacity and geometry; Entry care and circulation; Original performance and film program",
+      "authority": "Historical source; no current runtime proof",
+      "sha256": "ae37b8d260cb22dd9956f564519c855ea4daed1dbf76e27a9dffb570185d4e04"
+    },
+    "current_overlay": {
+      "path": "docs/master_source/MASTER_CURRENT_APPLICATION.json",
+      "locator": "latest_decision_overrides: Recreation and sound; chapter_application chapter 19",
+      "sha256": "baeaea99c08680a91c9660cbce200d2ece4b78aa7fcf869338497f47db686a71"
+    },
+    "user_clarification": {
+      "path": null,
+      "locator": "User clarification relayed by parent 2026-10-06: secondary pools for VIP members, theater and all sections in blueprint photos",
+      "authority": "Explicit latest scope; VIP pool count/location not specified"
+    },
+    "current_register": {
+      "path": "data/programme_ledger.json",
+      "locator": "destinations",
+      "sha256": "7ad90e3322ef4ce666262d0d27e191f85bf7480fc6e5f2c312f5574c69ca2366"
+    },
+    "current_build": {
+      "path": "scripts/ship.gd",
+      "locator": "_ready build calls; no auditoriums module loaded",
+      "sha256": "f745564b463c7c4c19015bfe24e5939607b210b6672f35d5ae535adc751be754"
+    },
+    "pool": {
+      "path": "scripts/grand_pool_section.gd",
+      "locator": "build; GrandPoolProgramme; Shallow trial water scope",
+      "sha256": "5ab3ab12e66463e6232ae394c0913c1b6cb010a8ac00c29a24ba857f1ac8a6da"
+    },
+    "aquatic": {
+      "path": "scripts/aquatic_section.gd",
+      "locator": "build; GentleWatersArrival; ShallowWaterVisual_NoSwimmingYet",
+      "sha256": "26d66d2ae519888beb4dd12678fe115a10d0b70b6f3781ac431afb17d666b244"
+    }
+  },
+  "conflicts": [
+    {
+      "issue": "VIP secondary pools",
+      "resolution": "Latest user explicitly requires; pool count location access criteria and parent programme unresolved. No count inferred from reference illustration."
+    },
+    {
+      "issue": "Six thermal pools and gravity-adaptive pools",
+      "resolution": "Explicit public sheet functions, not independent directory programmes. Image water area/capacity and deck elevation do not override current text. Final numerical thermal-pool requirement needs documented reconciliation, not silent omission."
+    },
+    {
+      "issue": "Theater image side balconies/royal boxes versus canonical 3 tiers",
+      "resolution": "Retain required royal-box/lounge composition for decision, preserve 2,200-seat cap and 740/740/720 tier ledger until explicitly revised."
+    },
+    {
+      "issue": "D12 VIP guest sheet versus D12 public sheet",
+      "resolution": "v0.3 canonical residential decks D04/D13/D14/D15/D16/D17; later D17 luxury replacement overlay. Exact VIP shared spaces unresolved."
+    },
+    {
+      "issue": "Printed dining/image atrium values",
+      "resolution": "2,200 total dining; D02\u2013D17 sixteen-level atrium. Do not import 2,400 grand hall +1,200 specialties, 38 m beam, or D09\u2013D11 28 m atrium as binding dimensions."
+    }
+  ],
+  "items": [
+    {
+      "id": "AME-001",
+      "name": "The living grove",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_01",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-002",
+      "name": "The waterside grove",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_09"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_09",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_09; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-003",
+      "name": "Cloud conservatory",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_02",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-004",
+      "name": "Sunset garden cafe",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_10"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_10",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_10; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-005",
+      "name": "Moss sanctuary",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_03",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-006",
+      "name": "Botanical nursery",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_04",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_04; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-007",
+      "name": "Canopy terrace",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_05",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_05; Partial authored architecture with route tests and visual review; full programme and final art unfinished",
+        "scripts/canopy_terrace.gd; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-008",
+      "name": "Sheltered walk",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_06",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-009",
+      "name": "Orchard gardens",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_07"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_07",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_07; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-010",
+      "name": "Fern cathedral",
+      "kind": "parent_programme",
+      "deck_or_span": "D06",
+      "parent_programme_keys": [
+        "D06_directory_08"
+      ],
+      "source_citations": [
+        "current_register:D06_directory_08",
+        "data/reference/directory_allocations.json: atlas page 8"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D06_directory_08; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-011",
+      "name": "Orbit full court",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_01",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-012",
+      "name": "Activity terrace",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_09"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_09",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_09; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-013",
+      "name": "Movement studio",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_02",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-014",
+      "name": "Sports care & changing",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_10"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_10",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_10; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-015",
+      "name": "Adaptive arena",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_03",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-016",
+      "name": "Sports viewing",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_04",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_04; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-017",
+      "name": "Training commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_05",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_05; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-018",
+      "name": "Simulation suites",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_06",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-019",
+      "name": "Gravity practice",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_07"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_07",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_07; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-020",
+      "name": "Team lounge",
+      "kind": "parent_programme",
+      "deck_or_span": "D07",
+      "parent_programme_keys": [
+        "D07_directory_08"
+      ],
+      "source_citations": [
+        "current_register:D07_directory_08",
+        "data/reference/directory_allocations.json: atlas page 9"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D07_directory_08; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-021",
+      "name": "The grand aquatic pool",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_01",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_01; required programme; architecture pending",
+        "scripts/ship.gd:_ready loads grand_pool_section.gd",
+        "docs/GRAND_POOL_ACCESS_VALIDATION.json and docs/GRAND_POOL_ADOPTION.json: candidate capsule access passes; no completed waterpark"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. Owner register predates installed pool/market candidate.",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-022",
+      "name": "Panoramic repose",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_09"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_09",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_09; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-023",
+      "name": "Tidal thermal baths",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_02",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-024",
+      "name": "Towels & care",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_10"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_10",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_10; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-025",
+      "name": "Mineral springs",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_03",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-026",
+      "name": "Hushed grotto",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_04",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_04; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-027",
+      "name": "Wellness studio",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_05",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_05; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-028",
+      "name": "Relaxation gallery",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_06",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-029",
+      "name": "Universal changing",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_07"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_07",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_07; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-030",
+      "name": "Gentle waters",
+      "kind": "parent_programme",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "current_register:D08_directory_08",
+        "data/reference/directory_allocations.json: atlas page 10"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D08_directory_08; partial authored construction; capacity, activity and final architectural acceptance remain pending",
+        "scripts/aquatic_section.gd / partial Gentle Waters architecture and access; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-031",
+      "name": "Orchard market",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_01",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_01; required programme; architecture pending",
+        "scripts/ship.gd:_ready loads orchard_exchange.gd and grand_pool_section.gd; partial installed market shell"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. Owner register predates installed pool/market candidate.",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-032",
+      "name": "Starlight bakery",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_09"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_09",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_09; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-033",
+      "name": "The copper kettle",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_02",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-034",
+      "name": "Companion games",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_10"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_10",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_10; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-035",
+      "name": "Paper moon books",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_03",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-036",
+      "name": "Thread & shell",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_04",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_04; Partial authored architecture with route tests and visual review; full programme and final art unfinished",
+        "scripts/thread_shell.gd; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-037",
+      "name": "Little makers gallery",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_05",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_05; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-038",
+      "name": "Conversation salon",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_06",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_06; partial architecture",
+        "D09_salon5_initial_terrace; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-039",
+      "name": "Post & parcels",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_07"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_07",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_07; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-040",
+      "name": "Living gifts",
+      "kind": "parent_programme",
+      "deck_or_span": "D09",
+      "parent_programme_keys": [
+        "D09_directory_08"
+      ],
+      "source_citations": [
+        "current_register:D09_directory_08",
+        "data/reference/directory_allocations.json: atlas page 11"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D09_directory_08; partial authored construction; capacity, activity and final architectural acceptance remain pending",
+        "scripts/living_gifts.gd + scripts/aquatic_section.gd / partial florist and shared access; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-041",
+      "name": "The shared table / 240",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_01",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-042",
+      "name": "Moonfruit parlor / 160",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_09"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_09",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_09; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-043",
+      "name": "Sunward dining / 240",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_02",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-044",
+      "name": "Observation cafe / 120",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_10"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_10",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_10; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-045",
+      "name": "Lantern restaurant / 240",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_03",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-046",
+      "name": "Orchard food hall / 240",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_04",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_04; Partial authored architecture with route tests and visual review; full programme and final art unfinished",
+        "scripts/orchard_foodhall.gd; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-047",
+      "name": "Tide kitchen / 240",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_05",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_05; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-048",
+      "name": "Mineral broth hall / 240",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_06",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-049",
+      "name": "The night table / 240",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_07"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_07",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_07; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-050",
+      "name": "Vesper dining / 240",
+      "kind": "parent_programme",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_08"
+      ],
+      "source_citations": [
+        "current_register:D10_directory_08",
+        "data/reference/directory_allocations.json: atlas page 12"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D10_directory_08; partial authored construction; capacity, activity and final architectural acceptance remain pending",
+        "scripts/vesper_dining.gd + scripts/vesper_service.gd + scripts/vesper_watercourse.gd / partial54-seat dining, finishing and visual water feature; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-051",
+      "name": "Grand Lantern Theater / 2,200 seats",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_01",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-052",
+      "name": "Performers' commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_09"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_09",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_09; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-053",
+      "name": "Cinema 1 / 200 seats",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_02",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-054",
+      "name": "Games & companionship",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_10"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_10",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_10; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-055",
+      "name": "Cinema 2 / 200 seats",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_03",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-056",
+      "name": "Cultural gallery",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_11"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_11",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_11; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-057",
+      "name": "Cinema 3 / 200 seats",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_04",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_04; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-058",
+      "name": "Immersive sound",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_12"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_12",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_12; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-059",
+      "name": "Cinema 4 / 200 seats",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_05",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_05; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-060",
+      "name": "Backstage workshop",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_13"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_13",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_13; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-061",
+      "name": "Cinema 5 / 200 seats",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_06",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-062",
+      "name": "Cinema 6 / 200 seats",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_07"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_07",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_07; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-063",
+      "name": "The music room",
+      "kind": "parent_programme",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_08"
+      ],
+      "source_citations": [
+        "current_register:D11_directory_08",
+        "data/reference/directory_allocations.json: atlas page 13"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D11_directory_08; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-064",
+      "name": "Horizon room",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_01",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-065",
+      "name": "Vesper panorama",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_09"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_09",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_09; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-066",
+      "name": "The long library",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_02",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-067",
+      "name": "Celestial lounge",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_10"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_10",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_10; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-068",
+      "name": "Listening salon",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_03",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-069",
+      "name": "Grand theater / First gallery",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_11"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_11",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_11; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-070",
+      "name": "The stillroom",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_04",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_04; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-071",
+      "name": "Star atlas",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_05",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_05; partial authored construction; capacity, activity and final architectural acceptance remain pending",
+        "scripts/star_atlas.gd + scripts/star_atlas_arrival.gd / partial library and connected court; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-072",
+      "name": "Night garden",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_06",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_06; Partial fitted architecture, vegetation and local lighting; final art and guest use incomplete",
+        "scripts/night_garden.gd / AST-GAR-006; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-073",
+      "name": "Many worlds gallery",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_07"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_07",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_07; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-074",
+      "name": "Reading nooks",
+      "kind": "parent_programme",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_08"
+      ],
+      "source_citations": [
+        "current_register:D12_directory_08",
+        "data/reference/directory_allocations.json: atlas page 14"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D12_directory_08; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-075",
+      "name": "Grand theater / Crown gallery",
+      "kind": "parent_programme",
+      "deck_or_span": "D13",
+      "parent_programme_keys": [
+        "D13_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D13_directory_01",
+        "data/reference/directory_allocations.json: atlas page 15"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D13_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-076",
+      "name": "Port forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D13",
+      "parent_programme_keys": [
+        "D13_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D13_directory_02",
+        "data/reference/directory_allocations.json: atlas page 15"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D13_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-077",
+      "name": "Starboard forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D13",
+      "parent_programme_keys": [
+        "D13_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D13_directory_03",
+        "data/reference/directory_allocations.json: atlas page 15"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D13_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-078",
+      "name": "Port atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D13",
+      "parent_programme_keys": [
+        "D13_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D13_directory_04",
+        "data/reference/directory_allocations.json: atlas page 15"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D13_directory_04; partial authored construction; capacity, activity and final architectural acceptance remain pending",
+        "scripts/star_atlas.gd / partial shared study and connected court; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-079",
+      "name": "Starboard atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D13",
+      "parent_programme_keys": [
+        "D13_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D13_directory_05",
+        "data/reference/directory_allocations.json: atlas page 15"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D13_directory_05; Partial connected two-level architecture with walkable stair and tested physical lift; final art, guest use and full access review incomplete",
+        "scripts/vertical_commons.gd + scripts/commons_lift.gd / AST-COM-001, AST-CIR-003, AST-DOR-003; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-080",
+      "name": "Port aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D13",
+      "parent_programme_keys": [
+        "D13_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D13_directory_06",
+        "data/reference/directory_allocations.json: atlas page 15"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D13_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-081",
+      "name": "Starboard aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D13",
+      "parent_programme_keys": [
+        "D13_directory_07"
+      ],
+      "source_citations": [
+        "current_register:D13_directory_07",
+        "data/reference/directory_allocations.json: atlas page 15"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D13_directory_07; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-082",
+      "name": "Port forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D14",
+      "parent_programme_keys": [
+        "D14_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D14_directory_01",
+        "data/reference/directory_allocations.json: atlas page 16"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D14_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-083",
+      "name": "Starboard forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D14",
+      "parent_programme_keys": [
+        "D14_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D14_directory_02",
+        "data/reference/directory_allocations.json: atlas page 16"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D14_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-084",
+      "name": "Port atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D14",
+      "parent_programme_keys": [
+        "D14_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D14_directory_03",
+        "data/reference/directory_allocations.json: atlas page 16"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D14_directory_03; partial authored construction; capacity, activity and final architectural acceptance remain pending",
+        "scripts/star_atlas.gd / partial conversation gallery and connected court; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-085",
+      "name": "Starboard atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D14",
+      "parent_programme_keys": [
+        "D14_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D14_directory_04",
+        "data/reference/directory_allocations.json: atlas page 16"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D14_directory_04; Partial connected two-level architecture with walkable stair and tested physical lift; final art, guest use and full access review incomplete",
+        "scripts/vertical_commons.gd + scripts/commons_lift.gd / AST-COM-001, AST-CIR-003, AST-DOR-003; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-086",
+      "name": "Port aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D14",
+      "parent_programme_keys": [
+        "D14_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D14_directory_05",
+        "data/reference/directory_allocations.json: atlas page 16"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D14_directory_05; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-087",
+      "name": "Starboard aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D14",
+      "parent_programme_keys": [
+        "D14_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D14_directory_06",
+        "data/reference/directory_allocations.json: atlas page 16"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D14_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-088",
+      "name": "Port forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D15",
+      "parent_programme_keys": [
+        "D15_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D15_directory_01",
+        "data/reference/directory_allocations.json: atlas page 17"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D15_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-089",
+      "name": "Starboard forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D15",
+      "parent_programme_keys": [
+        "D15_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D15_directory_02",
+        "data/reference/directory_allocations.json: atlas page 17"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D15_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-090",
+      "name": "Port atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D15",
+      "parent_programme_keys": [
+        "D15_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D15_directory_03",
+        "data/reference/directory_allocations.json: atlas page 17"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D15_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-091",
+      "name": "Starboard atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D15",
+      "parent_programme_keys": [
+        "D15_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D15_directory_04",
+        "data/reference/directory_allocations.json: atlas page 17"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D15_directory_04; Partial connected D13-D17 house with local stairs, physical lift and authored resting edges; full neighbourhood and final art unfinished",
+        "scripts/vertical_commons.gd; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-092",
+      "name": "Port aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D15",
+      "parent_programme_keys": [
+        "D15_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D15_directory_05",
+        "data/reference/directory_allocations.json: atlas page 17"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D15_directory_05; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-093",
+      "name": "Starboard aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D15",
+      "parent_programme_keys": [
+        "D15_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D15_directory_06",
+        "data/reference/directory_allocations.json: atlas page 17"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D15_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-094",
+      "name": "Port forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D16",
+      "parent_programme_keys": [
+        "D16_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D16_directory_01",
+        "data/reference/directory_allocations.json: atlas page 18"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D16_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-095",
+      "name": "Starboard forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D16",
+      "parent_programme_keys": [
+        "D16_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D16_directory_02",
+        "data/reference/directory_allocations.json: atlas page 18"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D16_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-096",
+      "name": "Port atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D16",
+      "parent_programme_keys": [
+        "D16_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D16_directory_03",
+        "data/reference/directory_allocations.json: atlas page 18"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D16_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-097",
+      "name": "Starboard atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D16",
+      "parent_programme_keys": [
+        "D16_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D16_directory_04",
+        "data/reference/directory_allocations.json: atlas page 18"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D16_directory_04; Partial connected D13-D17 house with local stairs, physical lift and authored resting edges; full neighbourhood and final art unfinished",
+        "scripts/vertical_commons.gd; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-098",
+      "name": "Port aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D16",
+      "parent_programme_keys": [
+        "D16_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D16_directory_05",
+        "data/reference/directory_allocations.json: atlas page 18"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D16_directory_05; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-099",
+      "name": "Starboard aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D16",
+      "parent_programme_keys": [
+        "D16_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D16_directory_06",
+        "data/reference/directory_allocations.json: atlas page 18"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D16_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-100",
+      "name": "Port forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D17",
+      "parent_programme_keys": [
+        "D17_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D17_directory_01",
+        "data/reference/directory_allocations.json: atlas page 19"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D17_directory_01; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-101",
+      "name": "Starboard forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D17",
+      "parent_programme_keys": [
+        "D17_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D17_directory_02",
+        "data/reference/directory_allocations.json: atlas page 19"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D17_directory_02; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-102",
+      "name": "Port atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D17",
+      "parent_programme_keys": [
+        "D17_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D17_directory_03",
+        "data/reference/directory_allocations.json: atlas page 19"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D17_directory_03; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-103",
+      "name": "Starboard atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D17",
+      "parent_programme_keys": [
+        "D17_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D17_directory_04",
+        "data/reference/directory_allocations.json: atlas page 19"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D17_directory_04; Partial connected D13-D17 house with local stairs, physical lift and authored resting edges; full neighbourhood and final art unfinished",
+        "scripts/vertical_commons.gd; loaded parent ship build calls checked, scope partial only"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-104",
+      "name": "Port aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D17",
+      "parent_programme_keys": [
+        "D17_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D17_directory_05",
+        "data/reference/directory_allocations.json: atlas page 19"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D17_directory_05; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-105",
+      "name": "Starboard aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D17",
+      "parent_programme_keys": [
+        "D17_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D17_directory_06",
+        "data/reference/directory_allocations.json: atlas page 19"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D17_directory_06; required programme; architecture pending"
+      ],
+      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. ",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-106",
+      "name": "50 m unobstructed main swimming lane",
+      "kind": "subspace",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_01"
+      ],
+      "source_citations": [
+        "master:T2R8",
+        "public_sheet:aquatic inset"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "scripts/grand_pool_section.gd",
+        "data/architecture/GRAND_POOL_SECTION_PLAN.json: retained lane and trial wet datum"
+      ],
+      "unresolved_mapping": "Installed candidate shell and access, not swimming acceptance",
+      "required_count": 1,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-107",
+      "name": "Thermal pool set",
+      "kind": "subspace",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_02"
+      ],
+      "source_citations": [
+        "public_sheet:aquatic inset THERMAL POOLS 6"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Six pools are explicit image programme. Split between thermal baths/mineral springs/gentle waters needs resolution; do not create six extra directory programmes",
+      "required_count": 6,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-108",
+      "name": "Gravity-adaptive pools",
+      "kind": "system",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_01",
+        "D08_directory_02"
+      ],
+      "source_citations": [
+        "public_sheet:aquatic inset GRAVITY-ADAPTIVE POOLS"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Functional requirement; exact pool subset/count unresolved",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-109",
+      "name": "Full waterpark",
+      "kind": "system",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_01",
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "current_overlay:Recreation and sound; chapter 19"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "docs/GRAND_POOL_CONNECTED_SECTION.md: waterpark explicitly remains open"
+      ],
+      "unresolved_mapping": "Whole aquatic activity programme, not an extra unnamed room",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-110",
+      "name": "Water slides",
+      "kind": "system",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_01",
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "current_overlay:Recreation and sound",
+        "docs/AQUATIC_VERTICAL_COORDINATION.md: slides and queues"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Count/trajectories/launch levels unresolved; no penetrations through D11 reservation",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-111",
+      "name": "Floatable AFK lazy river",
+      "kind": "system",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_01",
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "current_overlay:Recreation and sound"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Loop boarding recovery and tube behaviour required; actual layout unresolved",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-112",
+      "name": "Lazy river tubes",
+      "kind": "interactive_equipment",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_01",
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "current_overlay:chapter 19 tube requests"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Equipment requirement, not a room; count unspecified",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-113",
+      "name": "Wet dry entry and exit",
+      "kind": "subspace",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_01",
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "master:P195",
+        "docs/AQUATIC_VERTICAL_COORDINATION.md"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_architectural_only",
+      "current_evidence": [
+        "scripts/aquatic_section.gd: arrival canopy/waiting perch; scripts/grand_pool_section.gd: ramp"
+      ],
+      "unresolved_mapping": "Water-entry assistance and guest water poses not implemented in candidate",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-114",
+      "name": "Sheltered wet retreat and resting seating",
+      "kind": "subspace",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "docs/AQUATIC_VERTICAL_COORDINATION.md:Gentle Waters",
+        "scripts/aquatic_section.gd"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "AST-AQU-011 ShelteredWetRetreat; AST-AQU-014 arrival"
+      ],
+      "unresolved_mapping": "Existing seating/threshold is partial child scope",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-115",
+      "name": "Vesper restaurant watercourse and waterfall",
+      "kind": "system",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_08"
+      ],
+      "source_citations": [
+        "current_overlay:Recreation and sound"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_architectural_only",
+      "current_evidence": [
+        "scripts/vesper_watercourse.gd: AST-AQU-015 animated appearance; no fluid simulation",
+        "docs/VESPER_WATERCOURSE.md"
+      ],
+      "unresolved_mapping": "Do not count this visual restaurant feature as lazy river or aquatic swimming",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-116",
+      "name": "Vesper dining mezzanine",
+      "kind": "subspace",
+      "deck_or_span": "D10",
+      "parent_programme_keys": [
+        "D10_directory_08"
+      ],
+      "source_citations": [
+        "docs/VESPER_MEZZANINE_INTEGRATION.md"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "scripts/vesper_mezzanine.gd"
+      ],
+      "unresolved_mapping": "Dining programme remains 240 total places, not 240 plus mezzanine",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-117",
+      "name": "Secondary pools for VIP members",
+      "kind": "subspace",
+      "deck_or_span": null,
+      "parent_programme_keys": [],
+      "source_citations": [
+        "user_clarification"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Required explicitly by latest user. Inspected guest sheet labels lounge/bar/private dining but gives no VIP-pool count or deck. D17 luxury proposal does not resolve pools; retain mapping open rather than assign generic D17 commons.",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-118",
+      "name": "VIP lounge and bar",
+      "kind": "subspace",
+      "deck_or_span": null,
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:VIP row center-left"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Image calls this D12 but authoritative master D12 is public observation; VIP accommodation moves into canonical residential decks and later D17 luxury decisions. Shared amenity destination/house mapping remains unresolved.",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-119",
+      "name": "VIP private dining",
+      "kind": "subspace",
+      "deck_or_span": null,
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:VIP row center-right"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Image calls this D12 but authoritative master D12 is public observation; VIP accommodation moves into canonical residential decks and later D17 luxury decisions. Shared amenity destination/house mapping remains unresolved.",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-120",
+      "name": "VIP aft observation lounge",
+      "kind": "subspace",
+      "deck_or_span": null,
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:VIP row aft"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Image calls this D12 but authoritative master D12 is public observation; VIP accommodation moves into canonical residential decks and later D17 luxury decisions. Shared amenity destination/house mapping remains unresolved.",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-121",
+      "name": "VIP forward observation lounge",
+      "kind": "subspace",
+      "deck_or_span": null,
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:VIP row forward"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Image calls this D12 but authoritative master D12 is public observation; VIP accommodation moves into canonical residential decks and later D17 luxury decisions. Shared amenity destination/house mapping remains unresolved.",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-122",
+      "name": "Lantern Stalls / orchestra seating",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:740 stalls",
+        "performance:plan label 2 ORCHESTRA"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Orchestra label can mean stalls rather than separate orchestra pit. No pit requirement inferred",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-123",
+      "name": "First Gallery / lower balcony",
+      "kind": "subspace",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:740 first-gallery places",
+        "performance:plan label 3"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Alias D12_directory_11, not additional seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-124",
+      "name": "Crown Gallery / upper balcony",
+      "kind": "subspace",
+      "deck_or_span": "D13",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:720 crown-gallery places",
+        "performance:plan label 4"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Canonical crown-gallery elevation overrides illustrative balcony-level count",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-125",
+      "name": "Royal boxes",
+      "kind": "subspace",
+      "deck_or_span": "D11\u2013D13 unresolved",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "performance:plan label 5 ROYAL BOXES"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Not independently named in register. Reconcile within existing 2,200 places, no extra tier/capacity",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-126",
+      "name": "Stage and proscenium",
+      "kind": "subspace",
+      "deck_or_span": "D11\u2013D13",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "public_sheet:stage width 36 m / height 16 m",
+        "performance:plan label 1",
+        "legacy_auditoriums:stage"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Real off-axis 22 m chamber required",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-127",
+      "name": "Theater foyer and three public entry thresholds",
+      "kind": "subspace",
+      "deck_or_span": "D11\u2013D13",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "performance:plan label 6 FOYER ACCESS; FOYER APPROACH caption",
+        "legacy_auditoriums:Entry care and circulation"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Current programme boundaries reserve theater; no installed foyer builder",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-128",
+      "name": "Balcony lounge",
+      "kind": "subspace",
+      "deck_or_span": "D11\u2013D13 unresolved",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "performance:BALCONY LOUNGE caption"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Explicit caption; which gallery and whether shared lounge remains unresolved",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-129",
+      "name": "Theater gallery lift with three landings and gates",
+      "kind": "system",
+      "deck_or_span": "D11\u2013D13",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation",
+        "master:P134"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Historical physical platform proof is dated; current public core lifts do not substitute for theater lift",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-130",
+      "name": "Theater switchback stair",
+      "kind": "system",
+      "deck_or_span": "D11\u2013D13",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:3.2 m clear flights"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Separate from gallery lift; current builder absent",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-131",
+      "name": "Theater raked gangways side aisles and upper side galleries",
+      "kind": "subspace",
+      "deck_or_span": "D11\u2013D13",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Circulation children, not separate venue programmes",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-132",
+      "name": "Accessible stage ramp",
+      "kind": "system",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:genuine 1:12 stage ramp"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "No new room",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-133",
+      "name": "Viewing and transfer bays",
+      "kind": "subspace",
+      "deck_or_span": "D11\u2013D13",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:front landing bays"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "Substitute for existing numbered places; no extra capacity",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-134",
+      "name": "Original theater light performance",
+      "kind": "system",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_01"
+      ],
+      "source_citations": [
+        "master:P328",
+        "legacy_auditoriums:Original performance"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready contains no auditoriums builder; scripts/auditoriums.gd absent",
+        "Historical AUDITORIUMS.md and catalogue auditorium components are retained evidence only"
+      ],
+      "unresolved_mapping": "A Thousand Small Worlds; equipment is not extra rooms. Exact later storyline detail deferred",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-135",
+      "name": "Cinema 1 rear foyer and entry",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_02"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-136",
+      "name": "Cinema 1 projector booth",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_02"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-137",
+      "name": "Cinema 1 raked aisles and rear return ramps",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_02"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-138",
+      "name": "Cinema 1 screen original abstract-short program and speakers",
+      "kind": "system",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_02"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-139",
+      "name": "Cinema 1 viewing transfer bay",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_02"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-140",
+      "name": "Cinema 2 rear foyer and entry",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_03"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-141",
+      "name": "Cinema 2 projector booth",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_03"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-142",
+      "name": "Cinema 2 raked aisles and rear return ramps",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_03"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-143",
+      "name": "Cinema 2 screen original abstract-short program and speakers",
+      "kind": "system",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_03"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-144",
+      "name": "Cinema 2 viewing transfer bay",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_03"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-145",
+      "name": "Cinema 3 rear foyer and entry",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_04"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-146",
+      "name": "Cinema 3 projector booth",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_04"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-147",
+      "name": "Cinema 3 raked aisles and rear return ramps",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_04"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-148",
+      "name": "Cinema 3 screen original abstract-short program and speakers",
+      "kind": "system",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_04"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-149",
+      "name": "Cinema 3 viewing transfer bay",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_04"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-150",
+      "name": "Cinema 4 rear foyer and entry",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_05"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-151",
+      "name": "Cinema 4 projector booth",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_05"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-152",
+      "name": "Cinema 4 raked aisles and rear return ramps",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_05"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-153",
+      "name": "Cinema 4 screen original abstract-short program and speakers",
+      "kind": "system",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_05"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-154",
+      "name": "Cinema 4 viewing transfer bay",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_05"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-155",
+      "name": "Cinema 5 rear foyer and entry",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_06"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-156",
+      "name": "Cinema 5 projector booth",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_06"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-157",
+      "name": "Cinema 5 raked aisles and rear return ramps",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_06"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-158",
+      "name": "Cinema 5 screen original abstract-short program and speakers",
+      "kind": "system",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_06"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-159",
+      "name": "Cinema 5 viewing transfer bay",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_06"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-160",
+      "name": "Cinema 6 rear foyer and entry",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_07"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-161",
+      "name": "Cinema 6 projector booth",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_07"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-162",
+      "name": "Cinema 6 raked aisles and rear return ramps",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_07"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-163",
+      "name": "Cinema 6 screen original abstract-short program and speakers",
+      "kind": "system",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_07"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-164",
+      "name": "Cinema 6 viewing transfer bay",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_07"
+      ],
+      "source_citations": [
+        "legacy_auditoriums:Entry care and circulation; Original performance",
+        "master:P328"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "scripts/ship.gd:_ready: no auditorium builder; scripts/auditoriums.gd absent"
+      ],
+      "unresolved_mapping": "Part of existing 200-place cinema; equipment/ramps do not add programme or seats",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-165",
+      "name": "Fitness center",
+      "kind": "subspace",
+      "deck_or_span": "D07/D08 unresolved",
+      "parent_programme_keys": [
+        "D07_directory_05",
+        "D08_directory_05"
+      ],
+      "source_citations": [
+        "public_sheet:D09 Fitness Center; canonical aquatic shift to D08",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Ambiguous relationship to Training commons and Wellness studio; do not duplicate both",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-166",
+      "name": "Panoramic relaxation deck",
+      "kind": "subspace",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [
+        "D08_directory_09"
+      ],
+      "source_citations": [
+        "public_sheet:D09 wellness row",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Panoramic repose is plausible parent; allocation does not establish view-ready geometry",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-167",
+      "name": "Recreation lounge",
+      "kind": "subspace",
+      "deck_or_span": "D08",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "public_sheet:D09 wellness row",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Potential Relaxation gallery overlap unresolved",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-168",
+      "name": "Gaming lounges",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_10"
+      ],
+      "source_citations": [
+        "public_sheet:D11 Gaming Lounges",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Games & companionship parent; no invented number of lounges",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-169",
+      "name": "Immersive experience zone",
+      "kind": "subspace",
+      "deck_or_span": "D11",
+      "parent_programme_keys": [
+        "D11_directory_12"
+      ],
+      "source_citations": [
+        "public_sheet:D11 label",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Immersive sound is plausible current parent; exact visual/experience system remains open",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-170",
+      "name": "Astraea sky lounge",
+      "kind": "subspace",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [
+        "D12_directory_10"
+      ],
+      "source_citations": [
+        "public_sheet:D12 label",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Celestial lounge naming crosswalk unresolved",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-171",
+      "name": "Panoramic observation gallery",
+      "kind": "subspace",
+      "deck_or_span": "D12",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "public_sheet:D12 label",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Likely distributed observation programme; do not count again as every named panorama",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-172",
+      "name": "Art gallery",
+      "kind": "subspace",
+      "deck_or_span": "D11/D12",
+      "parent_programme_keys": [
+        "D11_directory_11",
+        "D12_directory_07"
+      ],
+      "source_citations": [
+        "public_sheet:D11 and D12 art-gallery labels",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Two deck functions; resolve distinct rooms versus multi-level gallery",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-173",
+      "name": "Nursery and childrens center",
+      "kind": "subspace",
+      "deck_or_span": "D16 or family decks unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:D11 family row",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Canonical family/residential remap; day activity does not add overnight occupants",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-174",
+      "name": "Play and learning zone",
+      "kind": "subspace",
+      "deck_or_span": "D16 or family decks unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:D11 family row",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "May be contained in family commons; no explicit programme key yet",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-175",
+      "name": "Family dining",
+      "kind": "subspace",
+      "deck_or_span": "D16 or D10 unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:D11 family row",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Canonical total dining remains 2,200; cannot add printed image diner subtotal",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-176",
+      "name": "Hydroponic garden lounge",
+      "kind": "subspace",
+      "deck_or_span": "D16 or family decks unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:D11 family row",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Family garden/commons mapping needs explicit decision",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-177",
+      "name": "Hydration and feeding alcoves",
+      "kind": "subspace",
+      "deck_or_span": "residential decks unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:D10 standard row",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Distributed accommodation support; no separate hotel-unit capacity",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-178",
+      "name": "Multifaith meditation",
+      "kind": "subspace",
+      "deck_or_span": "residential decks unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:D09 label",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Possible quiet commons mapping unresolved",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-179",
+      "name": "Observation nooks",
+      "kind": "subspace",
+      "deck_or_span": "residential decks unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:D09 label",
+        "master:P494/P497 canonical crosswalk"
+      ],
+      "authority": "explicit_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified for this item; allocation/floor overlap alone is insufficient"
+      ],
+      "unresolved_mapping": "Embedded shared-space children rather than extra accommodations",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    }
+  ],
+  "counts": {
+    "audited_rows": 179,
+    "existing_directory_programmes": 105,
+    "child_or_system_rows": 74,
+    "additional_programme_count_asserted": 0
+  },
+  "suggestions_not_promoted_to_requirements": [
+    "Separate pool lifeguard office, pool first-aid room, VIP reception, cinema ticket office, theater orchestra pit, dressing-room counts, concession kitchens and technical projection rooms beyond documented booths are operational suggestions only unless another authoritative source specifies them.",
+    "Visible plants chairs light-worlds or stage imagery are furnishings/equipment, not independent mandatory rooms."
+  ],
+  "stopping_condition": "Finite audit of authoritative relevant text, primary overview/public/guest blueprint pixels, detailed theater reference pixels, programme allocations/owners and current loaded builders. No archival variants endlessly revisited.",
+  "limitations": [
+    "No Godot runs/imports/builds; builder and retained geometry contracts inspected only.",
+    "Current visual acceptance and every real room activity remain separate required evidence.",
+    "Retained catalogue components not loaded by current builders are not current construction."
+  ]
+}

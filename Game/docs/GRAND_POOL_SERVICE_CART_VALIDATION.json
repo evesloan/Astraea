@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "status": "PREPARED_UNRUN",
+  "test": "grand_pool_service_cart",
+  "test_file": "tests/validate_grand_pool_service_cart.gd",
+  "test_sha256": "365fcd2b9aa0bd267a64fe0fe2fb65eb6f892fe068c38e0f2541f66b83c02029",
+  "probe_file": "tests/grand_pool_cart_probe.gd",
+  "probe_sha256": "9962a5a561522e17df9a072add9b02dd7a205f2a3bc23e97a8d166ca380cd5ee",
+  "runtime_contract_sha256": "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd",
+  "source_catalogue_commit": "c333b25",
+  "source_proxy": {
+    "qa_sha256": "457e35214b9d1c6bcbf92b95bf53ca5ab9048575d355e1c48d02db57e41a303e",
+    "retained_geometric_poses": 532,
+    "minimum_plan_clearance_m": 0.13951491439718214,
+    "scope": "Geometric source proof only, not force-driven proof"
+  },
+  "new_bounded_turn_source_check": {
+    "status": "SOURCE_GEOMETRY_ONLY",
+    "poses_per_floor": 405,
+    "floor_y": [
+      46.2,
+      52.5
+    ],
+    "minimum_plan_clearance_m": 0.1900061035156,
+    "source_solid_hits": 0,
+    "all_four_wheel_centres_and_operator_supported": true,
+    "scope": "Analytical source/floor check; engine not run"
+  },
+  "scope": [
+    "both upper staff streets and screened vestibules",
+    "actual wide service door focused release/control/regrip and unfocused rejection",
+    "ordinary held W2m/s smoke across each service door",
+    "1.4m mouth backing/forward recovery",
+    "bounded moving receiving turnaround and forward-facing return",
+    "actual curved staff-lift boarding and loaded upper up/down transfers",
+    "actual per-wheel/operator support and10mm retained sill bridge",
+    "same eight-light cap"
+  ],
+  "initial_fixture_placements": 1,
+  "frame_allowance": 60000,
+  "wall_watchdog_seconds": 1000,
+  "allowance_basis": "Approximately450m operator movement at1m/s plus~50s initial call, two6.3m transfers, released controls and settles, with bounded contact/route overhead",
+  "engine_run": false,
+  "limits": "No freehand comfort, full five-stop/local lift regression, water physics, traffic/species fitting, stock or visual acceptance is claimed",
+  "analytical_preflight": {
+    "status": "SOURCE_FLOOR_GEOMETRY_ONLY",
+    "route_floor_rows": [
+      {
+        "floor_y": 46.2,
+        "route": "street_out",
+        "poses": 1124,
+        "operator_metres": 84.4038,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 46.2,
+        "route": "street_return",
+        "poses": 1121,
+        "operator_metres": 84.4738,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 46.2,
+        "route": "vestibule_out",
+        "poses": 205,
+        "operator_metres": 13.107,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 46.2,
+        "route": "turnaround",
+        "poses": 223,
+        "operator_metres": 12.3615,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 46.2,
+        "route": "vestibule_return",
+        "poses": 217,
+        "operator_metres": 13.957,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 46.2,
+        "route": "short_backing",
+        "poses": 19,
+        "operator_metres": 1.4,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 46.2,
+        "route": "short_recover",
+        "poses": 19,
+        "operator_metres": 1.4,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 52.5,
+        "route": "street_out",
+        "poses": 1124,
+        "operator_metres": 84.4038,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 52.5,
+        "route": "street_return",
+        "poses": 1121,
+        "operator_metres": 84.4738,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 52.5,
+        "route": "vestibule_out",
+        "poses": 205,
+        "operator_metres": 13.107,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 52.5,
+        "route": "turnaround",
+        "poses": 223,
+        "operator_metres": 12.3615,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 52.5,
+        "route": "vestibule_return",
+        "poses": 217,
+        "operator_metres": 13.957,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 52.5,
+        "route": "short_backing",
+        "poses": 19,
+        "operator_metres": 1.4,
+        "unsupported_points": 0
+      },
+      {
+        "floor_y": 52.5,
+        "route": "short_recover",
+        "poses": 19,
+        "operator_metres": 1.4,
+        "unsupported_points": 0
+      }
+    ],
+    "scope": "Exact source floor polygons for all five planned support points, not engine or dynamic proof"
+  },
+  "failure_handling": "First failed assertion or probe emits a latched FAIL receipt and quits1; later checkpoints cannot overwrite FAIL"
+}
