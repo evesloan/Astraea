@@ -1,0 +1,26 @@
+{
+  "status": "analytic allocation screening only",
+  "checks": {
+    "total": 2200,
+    "per_tier": {
+      "stalls": 740,
+      "first_gallery": 740,
+      "crown_gallery": 720
+    },
+    "unique_ids": true,
+    "all_centres_in_allocation": true,
+    "guest_envelope_AABB_overlap_indices_D13_D15": [],
+    "not_validated": [
+      "seat body envelopes",
+      "row access and sightlines",
+      "balcony structure",
+      "hull per-height section",
+      "capsule/cart sweeps",
+      "exit load calculations",
+      "source authoring",
+      "engine imports",
+      "visual acceptance"
+    ]
+  },
+  "method": "Exact tier arithmetic and seat-centre coordinate bounds; axis-aligned historical guest allocation intersections, no collision or anatomical proof"
+}
