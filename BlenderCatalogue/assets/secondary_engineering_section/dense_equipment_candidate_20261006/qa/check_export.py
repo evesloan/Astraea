@@ -1,0 +1,23 @@
+"""Independent GLB binary QA and retained-context rays. Pure Python, no Blender."""
+from pathlib import Path
+import sys,json,hashlib
+import numpy as np
+R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'qa'));from geometry_review import glb,Query
+S=json.loads((R/'qa/source_build.json').read_text());g=glb(R/'exports/AST-ENG-008_dense_bays.glb');meshes=g['meshes'];nodes={n['name']:n for n in g['nodes']};alltri=np.concatenate([m['triangles'] for m in meshes]);lo=alltri.reshape(-1,3).min(0);hi=alltri.reshape(-1,3).max(0);source_lo=np.array([min(r['bounds_xyz'][i] for r in S['parts']) for i in range(3)]);source_hi=np.array([max(r['bounds_xyz'][i+3] for r in S['parts']) for i in range(3)])
+geo=uv=normal=0;surface_rows=[]
+for m in meshes:
+ t=m['triangles'];cr=np.cross(t[:,1]-t[:,0],t[:,2]-t[:,0]);geo+=int((np.linalg.norm(cr,axis=1)<1e-12).sum());assert np.isfinite(t).all();assert m['uv'] is not None and np.isfinite(m['uv']).all();ut=m['uv'][m['indices']];areas=np.abs((ut[:,1,0]-ut[:,0,0])*(ut[:,2,1]-ut[:,0,1])-(ut[:,1,1]-ut[:,0,1])*(ut[:,2,0]-ut[:,0,0]));uv+=int((areas<1e-13).sum());assert m['normals'] is not None and np.isfinite(m['normals']).all()
+ mat=nodes[m['node']]['world_matrix'];norm=m['normals']@np.linalg.inv(mat[:3,:3]);normal+=int((np.einsum('ij,ij->i',cr,norm[m['indices']].mean(1))< -1e-10).sum());surface_rows.append({'node':m['node'],'material':m['material'],'triangles':len(t),'collision':m['extras'].get('collision_contract')})
+q=Query(meshes);prisms={n:q.prism_hits(b) for n,b in S['prisms'].items()};ret=[]
+for p in ['/workspace/shared/astraea-catalogue-continuation-20261002/assets/secondary_engineering_section/exports/AST-ENG-008.glb',str(R.parent/'engineering-essentials/exports/AST-ENG-008_essentials.glb')]:ret+=glb(p)['meshes']
+context=Query(meshes+ret);rays=[];marker_rows=[];actuator_rows=[]
+for c in S['controls']:
+ n=nodes.get(c['source_marker']);err=float(np.linalg.norm(n['world_matrix'][:3,3]-c['target_center_xyz'])) if n else 1e9;marker_rows.append({'id':c['id'],'marker':c['source_marker'],'error_m':err})
+ eye=np.array(c['proposed_eye_xyz']);target=np.array(c['target_center_xyz']);h=context.rays(eye,eye+(target-eye)*1.15);rays.append({'id':c['id'],'pass':bool(h and h[0]['node']=='ACT_'+c['id']),'first_hit':h[0]['node'] if h else None,'distance_m':h[0]['distance_m'] if h else None})
+ rows=[m for m in meshes if m['node']=='ACT_'+c['id']];v=np.concatenate([m['triangles'].reshape(-1,3) for m in rows]);b=np.r_[v.min(0),v.max(0)];expected=np.array(c['actual_source_actuator_bounds_xyz']);actuator_rows.append({'id':c['id'],'bounds_error_m':float(abs(b-expected).max()),'pivot_error_m':float(np.linalg.norm(nodes['ACT_'+c['id']]['world_matrix'][:3,3]-c['pivot_xyz'])),'travel_metadata_present':all(k in nodes['ACT_'+c['id']]['extras'] for k in ['travel_axis_xyz','travel_type','travel_limits','travel_units'])})
+allmarkers=[]
+for m in S['markers']:
+ n=nodes.get(m['name']);err=float(np.linalg.norm(n['world_matrix'][:3,3]-m['position_xyz'])) if n else 1e9;allmarkers.append({'name':m['name'],'kind':m['kind'],'error_m':err})
+inputs={p:hashlib.sha256(Path(p).read_bytes()).hexdigest()==h for p,h in S['input_hashes'].items()};error=max(abs(lo-source_lo).max(),abs(hi-source_hi).max())
+report={'passed':geo==uv==normal==0 and not any(prisms.values()) and len(alltri)==S['evaluated_triangles'] and error<.0001 and all(r['pass'] for r in rays) and all(m['error_m']<.0001 for m in allmarkers) and all(a['bounds_error_m']<.0001 and a['pivot_error_m']<.0001 and a['travel_metadata_present'] for a in actuator_rows) and all(inputs.values()),'scope':'Actual binary GLB geometry/UV/normals/marker/pivot/ray/prism checks; no runtime gameplay or visual acceptance','export_sha256':g['sha256'],'triangles':len(alltri),'source_triangles':S['evaluated_triangles'],'bounds_error_m':float(error),'degenerate_geometry':geo,'collapsed_uv':uv,'opposed_normals':normal,'surfaces':len(meshes),'mesh_nodes':len({m['node'] for m in meshes}),'actuator_nodes':len(actuator_rows),'material_count':len(g['doc'].get('materials',[])),'embedded_images':all('bufferView'in im for im in g['doc'].get('images',[])),'image_count':len(g['doc'].get('images',[])),'marker_count':len(allmarkers),'source_marker_error_max_m':max(m['error_m'] for m in allmarkers),'prism_hits':prisms,'rays':rays,'controls':actuator_rows,'source_markers':allmarkers,'surfaces_detail':surface_rows,'all_retained_inputs_unchanged':all(inputs.values())}
+(R/'qa/independent_export_check.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k not in ['rays','controls','source_markers','surfaces_detail']},indent=2));print('FAIL_RAYS', [r for r in rays if not r['pass']]);assert report['passed']
