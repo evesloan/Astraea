@@ -5,6 +5,7 @@ const FIXTURES := "res://tests/fixtures/THEATER_TEST_FIXTURES.json"
 const FLOOR := 69.5
 const NATIVE_INSTANCE_QA := "res://docs/THEATER_NATIVE_INSTANCE_QA.json"
 const NATIVE_INSTANCE_QA_SHA := "59d8c3f4e4b2bf85ae82ab798088197b05c1baddd376f50a73fcb1f730f494ad"
+const OPTIC = preload("res://tests/court_a_aimed_optic_probe.gd")
 var data: Dictionary
 var fixture: Dictionary
 var ship: Node3D
@@ -45,6 +46,7 @@ func configure(current_ship: Node3D) -> void:
 	assert(load("res://scripts/lighting_budget.gd").MAX_VISIBILITY_CANDIDATES == 32)
 	assert(budget.shadow_source_budget == 8)
 	assert(cart != null and cart.products.size() == 4)
+	OPTIC.check_installation(ship)
 
 func xyz(a: Array) -> Vector3:
 	return Vector3(float(a[0]), float(a[1]), float(a[2]))
@@ -162,9 +164,13 @@ func check_import_and_scene_census() -> void:
 			assert(built.find_children("*", "MeshInstance3D", true, false).size() == meshes.size())
 			for item in meshes:
 				var actual := built.find_child(str(item.name), true, false) as MeshInstance3D
-				assert(actual != null and actual.mesh == item.mesh)
+				assert(actual != null)
 				assert_transform(relative(actual,built), relative(item,imported), str(item.name))
-				check_exact_contact(actual)
+				if kind == "static" and str(item.name) == "C005_S_0326":
+					OPTIC.check_replacement(actual,item)
+				else:
+					assert(actual.mesh == item.mesh)
+					check_exact_contact(actual)
 		imported.free()
 	assert(shell.find_children("*", "MeshInstance3D", true, false).size() == 747)
 	assert(bridge.find_children("*", "MeshInstance3D", true, false).size() == 83)
@@ -404,7 +410,7 @@ func check_lights(label: String) -> void:
 		if entry.type == "SPOT":
 			assert(light is SpotLight3D)
 			assert(absf(light.spot_angle-float(entry.full_cone_degrees)*.5) < .00001)
-			assert((-light.global_basis.z).distance_to(xyz(entry.aim_world).normalized()) < .00001)
+			assert((-light.global_basis.z).distance_to(OPTIC.expected_aim(light,entry)) < .00001)
 	budget.refresh()
 	var selected: Array[String] = []
 	for light in budget.sources:

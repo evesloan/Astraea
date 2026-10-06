@@ -1,0 +1,46 @@
+{
+  "status": "PASS_STANDARD_REGISTERED_CELL",
+  "started_utc": "2026-10-06T19:25:35.380204+00:00",
+  "manifest_sha256": "b074dd5829ddd9d495dd534f4841c5897cba644923554e4f1c92ef17f1d7db6f",
+  "expected_head": "520c79d9db1c2229ba09ae98ef88212bfc60e499",
+  "source_pin_count": 4529,
+  "runtime_edits": false,
+  "applied_utc": "2026-10-06T19:25:36.214150+00:00",
+  "changes": {
+    "tests/validate_secondary_engineering_cell.gd": {
+      "old": "e0bb39a5cd147928862e8465112a9d6f03a8a9f2ac501841311a25054aadb408",
+      "new": "5dad5e1db7e3283ca5c8d207e84a20b62564e24d1523676c5819a150ba774e13"
+    },
+    "tests/theater_stair_ship_successor.gd": {
+      "old": "9a5cfa2796fbf98a9bd8b282bf0e9bc6e70b2d2c521cf7d6d42448be4c9df85c",
+      "new": "9cccbe79510f522babb134c1cf59c19ccff4ea55ecd8733d5a36a527ade6f792"
+    }
+  },
+  "finished_utc": "2026-10-06T19:26:22.687426+00:00",
+  "wall_seconds": 46.4732,
+  "exit_code": 0,
+  "source_drift": {},
+  "validation": {
+    "checks": [
+      {
+        "check": "import",
+        "passed": true,
+        "exit_code": 0,
+        "errors": [],
+        "wall_seconds": 3.2541,
+        "clock_mode": "editor"
+      },
+      {
+        "check": "secondary_engineering_cell",
+        "passed": true,
+        "exit_code": 0,
+        "errors": [],
+        "wall_seconds": 42.3218,
+        "clock_mode": "fixed60"
+      }
+    ],
+    "wall_seconds": 45.5764,
+    "clock_mode": "fixed60",
+    "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+  }
+}

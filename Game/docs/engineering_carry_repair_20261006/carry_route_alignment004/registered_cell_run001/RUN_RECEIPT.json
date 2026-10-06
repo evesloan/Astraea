@@ -1,0 +1,48 @@
+{
+  "status": "FAILED_PRESERVE_EVIDENCE",
+  "started_utc": "2026-10-06T19:16:25.663273+00:00",
+  "manifest_sha256": "19bc8da5373c9f6c559066877dec3e53fd2c74a51f0e71acd8f775f2f519ee87",
+  "expected_head": "520c79d9db1c2229ba09ae98ef88212bfc60e499",
+  "source_pin_count": 4529,
+  "runtime_edits": false,
+  "applied_utc": "2026-10-06T19:16:26.501885+00:00",
+  "changes": {
+    "tests/validate_secondary_engineering_cell.gd": {
+      "old": "12ef1bf0c464625148f077df1f994c5b46a02cfc2e4797d0885315ad5d86cd13",
+      "new": "e0bb39a5cd147928862e8465112a9d6f03a8a9f2ac501841311a25054aadb408"
+    },
+    "tests/theater_stair_ship_successor.gd": {
+      "old": "34f25800402026f4ee94c9b07eec59ea70c5b21385f688a2a1929fe98546dc7b",
+      "new": "9a5cfa2796fbf98a9bd8b282bf0e9bc6e70b2d2c521cf7d6d42448be4c9df85c"
+    }
+  },
+  "finished_utc": "2026-10-06T19:17:16.359929+00:00",
+  "wall_seconds": 49.858,
+  "exit_code": 1,
+  "source_drift": {},
+  "validation": {
+    "checks": [
+      {
+        "check": "import",
+        "passed": true,
+        "exit_code": 0,
+        "errors": [],
+        "wall_seconds": 3.4473,
+        "clock_mode": "editor"
+      },
+      {
+        "check": "secondary_engineering_cell",
+        "passed": false,
+        "exit_code": -15,
+        "errors": [
+          "ERROR: SECONDARY ENGINEERING CELL: Original tether must place tool over the real tray before release at upper parked cart, ordinary portable cleaner carry and return"
+        ],
+        "wall_seconds": 45.5157,
+        "clock_mode": "fixed60"
+      }
+    ],
+    "wall_seconds": 48.9634,
+    "clock_mode": "fixed60",
+    "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+  }
+}
