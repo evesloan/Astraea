@@ -905,11 +905,15 @@ func return_tool_to_cart() -> bool:
 	# No product/cart transform, velocity, freeze or parent edits after parking.
 	# Approach the empty tray slot, aim the ordinary 1.35 m physical tether,
 	# release with RMB/E, and demand a real stable four-product return.
-	var home: Vector3 = cart.global_transform * tool_home_local
+	# Return within the same empty slot, with a30mm inward aiming allowance
+	# from the real end rim. Keep the existing strict .45m pre-release bound.
+	var safe_home := tool_home_local
+	safe_home.z = move_toward(safe_home.z,0.0,.03)
+	var home: Vector3 = cart.global_transform * safe_home
 	# Hold the real bottle above the1.01m tray rim, then release and let gravity
 	# seat it. Aiming directly at its resting point while the spring sags pushes
 	# the returning bottle into the solid rim instead of over the open mouth.
-	var grip_y := home.y + .125 + .30
+	var grip_y := home.y + .125 + .50
 	var eye_y := 7.65
 	var horizontal := sqrt(maxf(0.0,1.35*1.35-pow(eye_y-grip_y,2)))
 	# The selected bottle's original slot is on the cart's far/east end.
@@ -920,6 +924,7 @@ func return_tool_to_cart() -> bool:
 	# original capsule. Turn on foot at the same bounded rate used on this route.
 	var toward_slot := Vector2(home.x-actor.global_position.x,home.z-actor.global_position.z)
 	if not await face_heading(atan2(-toward_slot.x,-toward_slot.y)): return false
+	if not require(absf(actor.camera.global_position.distance_to(Vector3(home.x,grip_y,home.z))-tool.hold_distance)<.015,"Actual standing pose must place the drop target on the original physical tether reach sphere"): return false
 	aim(Vector3(home.x,grip_y,home.z))
 	if not await advance(100): return false
 	var local: Vector3 = cart.to_local(tool.global_position)

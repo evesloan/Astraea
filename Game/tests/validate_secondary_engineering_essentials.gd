@@ -134,7 +134,7 @@ func run() -> void:
 		assert(not receiver.is_empty(),"Expected real source receiver absent")
 		var expected_point: Vector3 = SOURCE_RECEIVER_POINTS[name]
 		var expected_group := str(data.ray_first_contact_names[name])
-		var chain := load("res://tests/secondary_engineering_additive_guard.gd").section_proof()
+		var chain: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").section_proof()
 		if chain.receiver_successors.has(name):
 			var successor: Dictionary = chain.receiver_successors[name]
 			assert(expected_group==str(successor.historical_group) and expected_point.distance_to(xyz(successor.historical_point_xyz))<.000001)
