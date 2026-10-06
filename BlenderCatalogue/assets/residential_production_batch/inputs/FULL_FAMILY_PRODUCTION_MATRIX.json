@@ -1,0 +1,496 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-10-06T21:08:00Z",
+  "scope": "Full-family accommodation production reconciliation. Binding contract facts are separate from historical source data and an explicit compatible recommendation. No Game/Catalogue edit, runtime registry adoption, finished-room claim, engine run or import.",
+  "source_hashes": {
+    "data/design_contract.json": "8790e9997fd39c6ddd8a494f665b2a438a7160ec31f343bd858ce5c036fa569a",
+    "docs/master_source/MASTER_CURRENT_APPLICATION.json": "baeaea99c08680a91c9660cbce200d2ece4b78aa7fcf869338497f47db686a71",
+    "docs/master_source/MASTER_FULL_CONTENT_INDEX.json": "f3128ddcbd40966f01e10cfc6a35d7d8444aaaeff86f52126d271249a8d74ddb",
+    "data/reference/historical_atlas.pdf": "315c985198f70a08e4fa72bbda29a9b554e53997314aa45e5ec0b51cd24999cc",
+    "data/reference/historical_guest_census.json": "9436f006b2e71f6ee5bda71cd8dc09d1c52f44844027fa7082e3b286a7215038",
+    "data/reference/D13_named_residential_evidence.json": "1bf307b2abf9c195c74e6767ca5cdcefbb71540b456d3568fa4c444ab8f0adbc",
+    "data/whole_ship_layout.json": "d641e95cf82b5ddd19e9448dc5d029aef2123d32630a08810a2169c8979706d8",
+    "data/architecture/D17_LUXURY_HOUSES_PROPOSAL.json": "e6b68e798842d20e6ac29532a4c537aa1699bbdecfb523b94d301b9ab9028454",
+    "data/architecture/CENTRAL_CROWN_RUNTIME.json": "93675d3da5d98b6bb5d99600b63737d9756e748cb606da8d41b0c8017cd7885a",
+    "data/programme_ledger.json": "7ad90e3322ef4ce666262d0d27e191f85bf7480fc6e5f2c312f5574c69ca2366",
+    "docs/D17_STANDARD_MEMBERSHIP_RECONCILIATION.json": "59d3bd152638341ded3a30b5e0919e0984e5d600bad5e35edb75380aebedac8b",
+    "data/architecture/D17_CONNECTED_HOUSE_RUNTIME.json": "6b13b85fefd791ade3c39b3670d15d2e8c5a284c0c58b01863c8b3c697ab5187"
+  },
+  "binding_current": {
+    "guest_units": 1000,
+    "other_units": 919,
+    "luxury_units": 81,
+    "luxury_tiers": [
+      {
+        "tier": "deluxe",
+        "units": 50,
+        "maximum_occupants_per_unit": 4,
+        "multistory_required": false
+      },
+      {
+        "tier": "premium",
+        "units": 25,
+        "maximum_occupants_per_unit": 6,
+        "multistory_required": false
+      },
+      {
+        "tier": "royalty",
+        "units": 5,
+        "maximum_occupants_per_unit": 8,
+        "multistory_required": true
+      },
+      {
+        "tier": "supreme",
+        "units": 1,
+        "maximum_occupants_per_unit": 10,
+        "multistory_required": true
+      }
+    ],
+    "luxury_max_rest_places": 400,
+    "passenger_admission_cap": 2000,
+    "normal_passenger_occupancy": [
+      1200,
+      2000
+    ],
+    "actual_physical_sleeping_places": null,
+    "crew_total_including_player": 400,
+    "autonomous_crew": 399,
+    "player": 1,
+    "species_population_counts": {
+      "Koblins": null,
+      "Mantelids": null,
+      "Humans": null,
+      "Baelins": null,
+      "Munkos": null,
+      "Mindos": null
+    },
+    "habitat_adapted_luxury_per_type": [
+      5,
+      10
+    ],
+    "habitat_adapted_luxury_within_81": true,
+    "habitat_types_and_tier_mix": null,
+    "final_luxury_ids_and_decks": null
+  },
+  "historical_deck_family_matrix": [
+    {
+      "deck": "D04",
+      "units": 120,
+      "standard_double": 0,
+      "family_triple": 0,
+      "specialty_single": 90,
+      "specialty_double": 30,
+      "historic_rest_places": 150
+    },
+    {
+      "deck": "D13",
+      "units": 160,
+      "standard_double": 100,
+      "family_triple": 0,
+      "specialty_single": 60,
+      "specialty_double": 0,
+      "historic_rest_places": 260
+    },
+    {
+      "deck": "D14",
+      "units": 240,
+      "standard_double": 100,
+      "family_triple": 100,
+      "specialty_single": 30,
+      "specialty_double": 10,
+      "historic_rest_places": 550
+    },
+    {
+      "deck": "D15",
+      "units": 180,
+      "standard_double": 0,
+      "family_triple": 0,
+      "specialty_single": 120,
+      "specialty_double": 60,
+      "historic_rest_places": 240
+    },
+    {
+      "deck": "D16",
+      "units": 200,
+      "standard_double": 0,
+      "family_triple": 200,
+      "specialty_single": 0,
+      "specialty_double": 0,
+      "historic_rest_places": 600
+    },
+    {
+      "deck": "D17",
+      "units": 100,
+      "standard_double": 100,
+      "family_triple": 0,
+      "specialty_single": 0,
+      "specialty_double": 0,
+      "historic_rest_places": 200
+    }
+  ],
+  "source_evidence_summary": {
+    "exact_guest_envelopes": 1000,
+    "vector_classified": 1000,
+    "source_standard_units": 300,
+    "source_family_units": 300,
+    "source_specialty_units": 400,
+    "directly_legible_addresses": 161,
+    "direct_bed_dots": 324,
+    "known_existing_rebuild_ids": [
+      "D13-13017",
+      "D13-13041"
+    ],
+    "original_save_ids_recovered": 0,
+    "safe_broad_nonD17_standard_family_batch": 500,
+    "single_double_split_of_unlabelled_specialties": "explicit deterministic proposal constrained by historical quotas and all recovered bed-dot evidence"
+  },
+  "recommended_allocation": {
+    "status": "Recommendation using retained geometric proposal, not current accepted full registry",
+    "rationale": "Concentrate81 luxury replacements in original100D17 units; keep900 nonD17 source units intact and retain19 D17 standards. This protects immediately scalable ordinary/family work and follows upper-deck seclusion/view intent.",
+    "full_family_counts": {
+      "standard_double": 219,
+      "specialty_single": 300,
+      "family_triple": 300,
+      "specialty_double": 100,
+      "premium": 25,
+      "deluxe": 50,
+      "supreme": 1,
+      "royalty": 5
+    },
+    "guest_units": 1000,
+    "ordinary_rest_places_if_historical_rest_counts_retained": 1838,
+    "maximum_rest_places_if_every_luxury_maximum_fitted": 2238,
+    "admission_cap_stays": 2000,
+    "physical_berths_are_actual_geometry_gate": true,
+    "D17_house_matrix": [
+      {
+        "house": "port_forward_upper_house",
+        "source_D17_units": 17,
+        "retained_standard_source_indices": [],
+        "luxury_replacements": {
+          "deluxe": 10,
+          "premium": 6,
+          "royalty": 1
+        }
+      },
+      {
+        "house": "port_central_upper_house",
+        "source_D17_units": 17,
+        "retained_standard_source_indices": [
+          865,
+          871,
+          841,
+          847,
+          817,
+          823,
+          793,
+          799,
+          877,
+          853
+        ],
+        "luxury_replacements": {
+          "deluxe": 4,
+          "premium": 2,
+          "supreme": 1
+        }
+      },
+      {
+        "house": "port_aft_upper_house",
+        "source_D17_units": 17,
+        "retained_standard_source_indices": [],
+        "luxury_replacements": {
+          "deluxe": 11,
+          "premium": 5,
+          "royalty": 1
+        }
+      },
+      {
+        "house": "starboard_forward_upper_house",
+        "source_D17_units": 17,
+        "retained_standard_source_indices": [],
+        "luxury_replacements": {
+          "deluxe": 10,
+          "premium": 6,
+          "royalty": 1
+        }
+      },
+      {
+        "house": "starboard_central_upper_house",
+        "source_D17_units": 16,
+        "retained_standard_source_indices": [
+          868,
+          874,
+          844,
+          850,
+          820,
+          826,
+          796,
+          802,
+          856
+        ],
+        "luxury_replacements": {
+          "deluxe": 5,
+          "premium": 1,
+          "royalty": 1
+        }
+      },
+      {
+        "house": "starboard_aft_upper_house",
+        "source_D17_units": 16,
+        "retained_standard_source_indices": [],
+        "luxury_replacements": {
+          "deluxe": 10,
+          "premium": 5,
+          "royalty": 1
+        }
+      }
+    ],
+    "D17_lower_y": 102,
+    "Royalty_Supreme_upper_y": 106.5,
+    "upper_levels_add_units": false,
+    "candidate_roof_limits_y": {
+      "royalty": 112,
+      "supreme": 114.5,
+      "single_level": 106.5
+    },
+    "candidate_base_area_ranges_m2": {
+      "deluxe": [
+        180,
+        240
+      ],
+      "premium": [
+        252,
+        336
+      ],
+      "royalty": [
+        396.624,
+        528
+      ],
+      "supreme": [
+        768,
+        768
+      ]
+    },
+    "habitat_candidate": {
+      "status": "Concrete optional design distribution for known mandatory needs; not species occupancy counts or closure of undefined habitat taxonomy",
+      "port_forward": {
+        "aquatic": {
+          "deluxe": 5,
+          "premium": 2,
+          "royalty": 1
+        }
+      },
+      "starboard_forward": {
+        "quiet_cocoon": {
+          "deluxe": 5,
+          "premium": 2,
+          "royalty": 1
+        }
+      },
+      "port_central": {
+        "supreme_all_six_species": 1
+      },
+      "other_general_adaptable_units": 64,
+      "unique_units": 81,
+      "compatible_aquatic_units_including_supreme": 9,
+      "compatible_quiet_cocoon_units_including_supreme": 9,
+      "other_habitat_type_quotas": "Unresolved until required support-profile list is reconciled; do not equate six species with six or eight habitat profiles"
+    },
+    "starboard_standard_relocation": "Use later five-fore/four-aft recommendation in D17_STANDARD_MEMBERSHIP_RECONCILIATION, not earlier generator-index permutations",
+    "preserve_partial_Royalty790": true
+  },
+  "production_families": [
+    {
+      "family": "standard_double",
+      "recommended_units": 219,
+      "immediate_source_supported_nonD17_units": 200,
+      "actual_rest_supports_per_unit": 2,
+      "required_distinctions": [
+        "Varied court/hull/quiet layouts based on actual view opportunities",
+        "Two real rest supports, belongings, activity/sitting, bath/privacy, functional entry"
+      ]
+    },
+    {
+      "family": "family_triple",
+      "recommended_units": 300,
+      "immediate_source_supported_nonD17_units": 300,
+      "actual_rest_supports_per_unit": 3,
+      "required_distinctions": [
+        "Three independent rest places and approaches",
+        "Shared storage/common surface/party circulation",
+        "No automatic adult/child roles; adjacent household booking not extra berths"
+      ]
+    },
+    {
+      "family": "specialty_single",
+      "recommended_units": 300,
+      "actual_rest_supports_per_unit": 1,
+      "required_distinctions": [
+        "Visible environmental centerpiece and service/control point",
+        "Separate aquatic, quiet-cocoon and other justified support profiles; not recolors"
+      ]
+    },
+    {
+      "family": "specialty_double",
+      "recommended_units": 100,
+      "actual_rest_supports_per_unit": 2,
+      "required_distinctions": [
+        "Two real compatible rest supports and approaches",
+        "Environmental support and privacy designed together"
+      ]
+    },
+    {
+      "family": "deluxe",
+      "recommended_units": 50,
+      "maximum_rest_places_per_unit": 4,
+      "multistory_required": false,
+      "required_distinctions": [
+        "Increasing space, amenities, provisions and seclusion"
+      ]
+    },
+    {
+      "family": "premium",
+      "recommended_units": 25,
+      "maximum_rest_places_per_unit": 6,
+      "multistory_required": false,
+      "required_distinctions": [
+        "Increasing space, amenities, provisions and seclusion"
+      ]
+    },
+    {
+      "family": "royalty",
+      "recommended_units": 5,
+      "maximum_rest_places_per_unit": 8,
+      "multistory_required": true,
+      "required_distinctions": [
+        "Full kitchens",
+        "Sunken conversation areas resolved inside own volume",
+        "Beautiful interior and exterior views and viewing areas",
+        "Accessible private vertical connection"
+      ]
+    },
+    {
+      "family": "supreme",
+      "recommended_units": 1,
+      "maximum_rest_places_per_unit": 10,
+      "multistory_required": true,
+      "required_distinctions": [
+        "Full kitchens",
+        "Sunken conversation areas resolved inside own volume",
+        "Beautiful interior and exterior views and viewing areas",
+        "Accessible private vertical connection",
+        "Facilities support all six canonical species"
+      ]
+    },
+    {
+      "family": "crew_housing",
+      "people": 400,
+      "historical_envelopes": 200,
+      "player_shared_room_occupants": 2,
+      "final_unit_and_bed_assignment": null,
+      "required_distinctions": [
+        "Reassign existing colleague to player shared home, never add401st person",
+        "Separate sleep/storage/privacy places",
+        "Aquatic compatibility also required for Baelin crew"
+      ]
+    }
+  ],
+  "constraints": {
+    "geometry": [
+      "Historical rectangles are allocation evidence, not mandatory final walls",
+      "Preserve protected source unit crosswalk and total; new IDs clearly labelled",
+      "Respect canonical deck datums, real clear ceiling heights and existing floor ownership",
+      "No slabs/supports/sunken areas through D13-D16 occupied rooms or protected garden/theater voids",
+      "No blanket house slab; preserve inhabited courts, central Z-20..20 arrival/view reservations and current supports",
+      "Royalty790 existing lower platform and approach remain; do not regenerate its rectangular proposal over surviving work"
+    ],
+    "privacy_and_views": [
+      "Direct sleeping cross-court views are allowed; bathing/changing privacy remains mandatory",
+      "Optional blinds retained; glass visibly present, tint is not a promise of privacy",
+      "Real hull-facing windows or meaningful designed internal garden/court views; no invented exterior through adjacent rooms",
+      "Do not mislabel4.1m paired-row streets as grand courts",
+      "Keep public routes off bedroom-facing garden edges; quiet recessed entries and screened service access",
+      "D17 candidate aft band6m inset preserves at least9.8m sampled opposing gaps; central court bands18m, commons longitudinal gaps40m, subject to full normal-view review"
+    ],
+    "species": [
+      "No fixed species population, occupancy split, exclusive job or automatic nursery assignment",
+      "Baelins require actual aquatic homes and bath support; oily-trail cleaner compatibility",
+      "Mantelids require quiet cocoons and privacy-sensitive molting support",
+      "Munkos require four-arm/body-clearance review; exact dimensions unknown",
+      "Koblins need large-household booking across existing rest slots; no automatic extra bed",
+      "Mindos are sentient; charging/rest technology not yet specified and must not be invented as canon"
+    ],
+    "acceptance": [
+      "At least one composition review per functional family before mass repetition",
+      "Actual player/cart/working stance, door sweep/pocket, bathing/privacy, support contact and route checks",
+      "Proposed rest counts are not accepted geometry, population or completed room count"
+    ]
+  },
+  "resolved_or_not_conflicts": [
+    {
+      "topic": "26 room limit",
+      "resolution": "26 is only D13 inset evidence. Full1000 scope plus exact500 nonD17 standard/family envelopes is independently available."
+    },
+    {
+      "topic": "Historical2000 physical bed invariant",
+      "resolution": "Superseded by explicit admission/physical-capacity separation. Recommended D17 replacement plan permits2238 maximum physical places while admitting no more than2000."
+    },
+    {
+      "topic": "Add81 luxury units or extra habitat luxury units",
+      "resolution": "Forbidden double count:81 replaces within1000; adapted luxury is subset within81; upper levels remain same units."
+    },
+    {
+      "topic": "D18 Officer respite/Bridge briefing historic overlaps",
+      "resolution": "Retired by adopted central-crown current boundaries in programme_ledger and CENTRAL_CROWN_RUNTIME; not new owner decisions. Actual936m2 starboard cover remains protected."
+    },
+    {
+      "topic": "FullD17 allocation authority",
+      "resolution": "Tier totals are binding; six-house full layout remains proposal with localRoyalty790 construction. Missing final registry is an integration task, not reason to stop ordinary-family architecture."
+    },
+    {
+      "topic": "Species and support-profile numerical allocation",
+      "resolution": "Genuinely undefined. Do not invent population splits or equate historical8profiles with6species. Draft species-compatible families now."
+    },
+    {
+      "topic": "Specialty single/double per-unit metadata",
+      "resolution": "Historical quotas are documented; direct inset observations pinned, remaining split explicitly proposed deterministically."
+    },
+    {
+      "topic": "Crew historical200cabins plus player",
+      "resolution": "Historical399crew beds plus separate player berth is not200occupied doubles plus player; shared player home uses existing colleague within400."
+    }
+  ],
+  "deliverables": {
+    "regular_500": "REGULAR_500_STANDARD_FAMILY_ROWS_ENRICHED.json",
+    "all_source_rows": "ALL_1000_SOURCE_COLOR_CROSSWALK.json",
+    "all_inset_evidence": "ALL_RECOVERED_INSET_ADDRESSES.json",
+    "proposed_full_1000": "PROPOSED_FULL_1000_PRODUCTION_ROWS.json"
+  },
+  "deck_datums_m": {
+    "D01": 0.0,
+    "D02": 6.0,
+    "D03": 12.0,
+    "D04": 16.5,
+    "D05": 21.0,
+    "D06": 27.0,
+    "D07": 35.5,
+    "D08": 44.0,
+    "D09": 52.5,
+    "D10": 61.0,
+    "D11": 69.5,
+    "D12": 78.0,
+    "D13": 84.0,
+    "D14": 88.5,
+    "D15": 93.0,
+    "D16": 97.5,
+    "D17": 102.0,
+    "D18": 106.5
+  },
+  "recommended_construction_order": [
+    "Scale200 exact standard twins and300 exact family triples outsideD17; preserve existing pilots",
+    "Fit distinct quiet-cocoon/aquatic/other justified specialty families into400 specialty allocations",
+    "Draft fourVIP families in parallel and use proposed81D17 crosswalk; preserveRoyalty790",
+    "Fit19retainedD17 standards and all six multistory suites around existing occupied volumes/cap/routes",
+    "Resolve400crew berth assignment, then parent-controlled unit/berth/booking registry adoption"
+  ]
+}

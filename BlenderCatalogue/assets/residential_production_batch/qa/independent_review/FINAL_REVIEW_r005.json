@@ -1,0 +1,65 @@
+{
+  "status": "APPROVED_FOR_SOURCE_CANDIDATE_RETENTION",
+  "revision": "production_r005",
+  "reviewed_utc": "2026-10-06T21:31:10.417121+00:00",
+  "approval_scope": "New-only Catalogue source candidate retention after external predecessor protection is independently verified by the parent. Not Game adoption or final room/district acceptance.",
+  "checked": {
+    "source_plan_units": 500,
+    "new_source_instances": 498,
+    "existing_installed_preserved": 2,
+    "shared_prototypes": 17,
+    "district_sections": 18,
+    "new_explicit_rest_bindings": 1296,
+    "total_plan_rest_anchors": 1300,
+    "adjacency_edges": 668,
+    "input_hashes_unchanged": 113,
+    "placed_components_checked_against_shell": 183,
+    "freestanding_furniture_shell_crossing_pairs": 0,
+    "separate_furniture_aabb_overlap_pairs": 0,
+    "saved_closed_door_leaf_crossing_pairs": 0,
+    "fixed_mounting_interface_pairs": 51
+  },
+  "resolved_findings": [
+    "r004 bench/shell penetrations affected361newinstances; r005 uses the smaller measured offsets and passes the broader bidirectional check",
+    "38instances had ordinal reversals; current map binds by exact local coordinates to source-schedule proposed slot IDs",
+    "Current map source references are root-relative; actual portable Blender links resolve relative to sections directory",
+    "Stale schedule digest retained as historical; current input receipt verified",
+    "303requested occupant-prop variants are explicitly deferred; actual shared prototype variant is recorded and separate detail_props GLBs restore exported book details"
+  ],
+  "declared_mounting_interfaces": [
+    "Shower fixed screen/post terminates at entry-wall face, with approximately5mm glass/23mm post embedment",
+    "Entry fixed casing/pocket/header joins shell jamb/header",
+    "Bath fixed frame joins shell header"
+  ],
+  "integration_notes": [
+    "Shell GLBs contain no node extras; identify shell datums through their explicit names and use the per-instance map for identity. Where component extras exist, use imported extras Dictionary convention",
+    "Use coordinate-based explicit anchor_bindings, never matching historical and prototype ordinal numbers by assumption",
+    "Retain the current review/failed r004 evidence and do not label source renders as runtime evidence"
+  ],
+  "not_verified": [
+    "Blender visual reopening by this reviewer; review used byte-level .blend SDNA and GLB decoding",
+    "Godot import, motion or physical collision",
+    "Door sweeps/pockets through opening animation",
+    "Human or species body/cart/fixture approach fit",
+    "Surrounding geometry, floor ownership/support, protected voids or actual atrium visibility",
+    "NPC assignment, runtime/save persistence or final district completion"
+  ],
+  "checks": {
+    "NUMERICAL_AUDIT_r005.json": "dde9d39265252024e6ae475b081d1d968c1590d438452b11102ff172a717ccf4",
+    "CORRECTED_CONTRACT_AUDIT_r005.json": "26e66b6233a50e2ddcbeef537efcc8f5c541e9b8b0e469b639c9b33427bc84a4",
+    "BROAD_CLASSIFIED_BIDIRECTIONAL_CROSSINGS_r005.json": "4da3d64b8249e55f99695e885791c8eb042ab8091cd167bc3acf57399ad2bae6",
+    "BROAD_FURNITURE_PAIR_AABB_r005.json": "8dc825ec830029295505cb954c643b42ed6cfea61bf247b5dc16eeacfcdba9ea",
+    "PROTOTYPE_LIBRARY_PORTABILITY_r005.json": "0c8e42300f181191338586b3d75f64f33913fc353f35c11c8d9eb5e9f1672578",
+    "FULL_SCHEDULE_CHECK.json": "d99f3ef20ed0925ee4b9c3bf986297a2ecc5afb738bf999d74e24d54bf68fa57"
+  },
+  "artifact_snapshot": {
+    "RESIDENTIAL_500_PLAN.json": "d2867983c20e81c69d8d74b81bcf3a14303d081df6a5a53e58337455e2ce5ab9",
+    "PROTOTYPE_PLAN.json": "9331ff8769b1e020f32070b4a9b0b5f0e1de70e096ecd5c424164e0ea8dd4112",
+    "outputs/production_r005/sections/GODOT_BATCH_INSTANCE_MAP.json": "017e55bf9c58abdd7d80dd0a9c41c20a673a78c56377fd52ec91fcc505906324",
+    "outputs/production_r005/sections/MASS_SOURCE_RECEIPT.json": "a662b25c98b5f3136abd315aaa73599979cb9b7eb63ddfc7bfa9b721bf403f2a",
+    "outputs/production_r005/sections/Astraea_500_regular_family_portable.blend": "cd7a2d652466b5e34f29aacf57419b30a30c98a6764ece706319256e83439fda",
+    "source/build_family.py": "dd49da5fcdceeda8bd120ca751e8e161271d0ebaed21eaf10186acd66e5afb47",
+    "source/assemble_production_sections.py": "4c9c5db164e400ab840b9ea1e4a095abc9e34e78966d32807ab8f98bcce6fad7",
+    "qa/CURRENT_INPUT_FILE_HASHES.json": "dfc4585a03ee02d6c6616389fabce2356e1991396da25a8fe76225079ac23344"
+  }
+}
