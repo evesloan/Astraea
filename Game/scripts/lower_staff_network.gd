@@ -9,7 +9,7 @@ static func build(parent:Node3D,ship:Node3D)->void:
 	root.name="LowerStaffNetwork_WIP"
 	root.set_meta("persistent_id","port_forward_staff_network_001")
 	parent.add_child(root)
-	var enclosure:Node3D=ship.model(root,"AST-STF-009_pool_market.glb","LowerStaffEnclosure",Vector3.ZERO)
+	var enclosure:Node3D=ship.model(root,"AST-STF-009_pool_market_home.glb","LowerStaffEnclosure",Vector3.ZERO)
 	for marker in enclosure.find_children("DATUM_light_*","Node3D",true,false):
 		var light:=OmniLight3D.new()
 		root.add_child(light)
@@ -68,3 +68,4 @@ static func build(parent:Node3D,ship:Node3D)->void:
 		sign.position=Vector3(-18.94,float(upper.upper_route_y[i])+1.75,-486)
 		sign.rotation.y=-PI/2
 		root.add_child(sign)
+	load("res://scripts/crew_home_approach.gd").build(root,ship)

@@ -55,6 +55,8 @@ func pin_imports() -> void:
 			# silent dropped byte pin. Retain and check the original pin too.
 			assert(str(data.preserved_runtime_pins[path]) == str(capture_audit.original_sha256))
 			load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input(str(path),str(capture_audit.integrated_sha256))
+		elif str(path)=="scripts/lower_staff_network.gd":
+			assert(home_lower_staff_predecessor_sha256()==str(data.preserved_runtime_pins[path]),"Exact home-only lower staff successor required")
 		else:
 			assert(FileAccess.get_sha256("res://" + str(path)) == str(data.preserved_runtime_pins[path]), "Existing runtime bytes changed: " + str(path))
 
@@ -351,3 +353,14 @@ func validate_loaded_theater_roster(compiled: Dictionary) -> void:
 	compiled_ids.sort()
 	loaded_ids.sort()
 	assert(loaded_ids==compiled_ids,"Every exact compiled owner must exist in the loaded world")
+
+func home_lower_staff_predecessor_sha256() -> String:
+	var source: String=FileAccess.get_file_as_string("res://scripts/lower_staff_network.gd")
+	assert(source.sha256_text()=="3f81787e2119b2213fd3b5f2cdc489d45d62e8ae85742e08e835198ba566af0d","Unreviewed lower-staff builder bytes")
+	var new_model: String="\"AST-STF-009_pool_market_home.glb\""
+	var old_model: String="\"AST-STF-009_pool_market.glb\""
+	var added_call: String="\tload(\"res://scripts/crew_home_approach.gd\").build(root,ship)\n"
+	assert(source.count(new_model)==1 and source.count(added_call)==1)
+	source=source.replace(new_model,old_model).replace(added_call,"")
+	assert(source.sha256_text()=="6898338b13a8d1f58dea3946f7751a009805698286d6c19fe72e315d42c6ff7b","Every prior staff-builder byte must be recovered")
+	return source.sha256_text()

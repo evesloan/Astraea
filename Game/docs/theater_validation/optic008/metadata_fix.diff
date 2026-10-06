@@ -1,0 +1,40 @@
+--- scripts/court_a_aimed_optic008.gd before
++++ scripts/court_a_aimed_optic008.gd after
+@@ -179,8 +179,12 @@
+ 	assert(seen.size() == 7 and triangles == 116 and root.find_children("*", "CollisionShape3D", true, false).size() == 7)
+ 	var marker := root.find_child(str(data.marker.node), true, false) as Node3D
+ 	assert(marker != null and _native_transform(marker, root) == Transform3D.IDENTITY)
+-	assert(str(marker.get_meta("source_id")) == str(data.fixture.id))
+-	assert(_vector(marker.get_meta("optical_axis_native")).distance_to(_vector(data.fixture.aim_native)) < 0.000001)
++	# The editor PackedScene preserves glTF custom properties in the extras dictionary.
++	assert(marker.has_meta("extras") and marker.get_meta("extras") is Dictionary)
++	var marker_extras: Dictionary = marker.get_meta("extras")
++	assert(marker_extras.has("source_id") and marker_extras.has("optical_axis_native"))
++	assert(str(marker_extras.source_id) == str(data.fixture.id))
++	assert(_vector(marker_extras.optical_axis_native).distance_to(_vector(data.fixture.aim_native)) < 0.000001)
+ 	var theater := parent.get_node("GrandLanternTheater_ConnectedStaticStage_WIP") as Node3D
+ 	var old_node := theater.get_node("TheaterSourceArchitecture").find_child(str(data.replacement.batch), true, false) as MeshInstance3D
+ 	assert(old_node != null and not old_node.has_meta("court_a_optic_replacement"))
+--- tests/court_a_aimed_optic_probe.gd before
++++ tests/court_a_aimed_optic_probe.gd after
+@@ -2,7 +2,7 @@
+ # Independent assertions only. Never call an optic builder or repair scene geometry.
+ const CONTRACT := "res://data/architecture/COURT_A_AIMED_OPTIC008.json"
+ const CONTRACT_SHA := "50a904a7a492dd2ed6e0d97480ce42b7caf8d5ed166f42d6f89df83e8ee7f404"
+-const BUILDER_SHA := "a7da6ae55da69188e07637b9b2f2fbb95543b4026cc7296846f4e62adec369e6"
++const BUILDER_SHA := "d4fd5a9250302081e664ba86400f34d33a57d5a4b66fd0457afef537517bfa34"
+ const SOURCE_SHA := "c252539361fa2454e919b85cb5e357eb75a329b8724f2c311101a936206996b8"
+ const GLB_SHA := "9e62faa88311b58c644c77b2008c0728b25ab6c370c8cdb5f9159692e2940bca"
+ const OLD_ASSET := "res://assets/models/AST-CUL-005_static_003.glb"
+@@ -192,7 +192,10 @@
+ 	assert(seen.size()==7 and triangles==116)
+ 	var marker := installed.find_child(str(data.marker.node),true,false) as Node3D
+ 	assert(marker!=null and marker.global_position.distance_to(ORIGIN)<.000001)
+-	assert(str(marker.get_meta("source_id"))==FIXTURE and xyz(marker.get_meta("optical_axis_native")).distance_to(AIM)<.000001)
++	assert(marker.has_meta("extras") and marker.get_meta("extras") is Dictionary)
++	var marker_extras: Dictionary=marker.get_meta("extras")
++	assert(marker_extras.has("source_id") and marker_extras.has("optical_axis_native"))
++	assert(str(marker_extras.source_id)==FIXTURE and xyz(marker_extras.optical_axis_native).distance_to(AIM)<.000001)
+ 	template.free()
+ 	assert(FileAccess.get_sha256(OLD_ASSET)==OLD_ASSET_SHA)
+ 	var old_template := (load(OLD_ASSET) as PackedScene).instantiate() as Node3D

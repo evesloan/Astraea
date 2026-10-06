@@ -92,6 +92,16 @@ static func retained_guard_source() -> String:
 	return source
 
 static func retained_input_sha256(path: String) -> String:
+	if path=="tools/validate.py":
+		var source: String=FileAccess.get_file_as_string("res://"+path)
+		if source.sha256_text()=="b0f4fb8b325016278a58f8be3b8054521af8eb8ec69e63679fe4242526473abc": return source.sha256_text()
+		assert(source.sha256_text()=="5ce8ade1794899a78cfc57ed37f30cd9d288a8389439840f8a637a4f26efd84d","Exact home registration successor required")
+		var additions: Array[String]=["commands += [('crew_home_approach', ['--script', 'res://tests/validate_crew_home_approach.gd'])]\n","    if label == 'crew_home_approach': frame_budget='12000'\n"]
+		for line in additions:
+			assert(source.count(line)==1)
+			source=source.replace(line,"")
+		assert(source.sha256_text()=="b0f4fb8b325016278a58f8be3b8054521af8eb8ec69e63679fe4242526473abc","Every prior validation command, guard and timeout must remain exact")
+		return source.sha256_text()
 	if path=="scripts/court_a_increment004.gd": return retained_court_source().sha256_text()
 	if path=="tests/theater_stage_probe.gd": return retained_stage_probe_source().sha256_text()
 	if path=="tests/secondary_engineering_pool_ship_successor.gd": return load("res://tests/grand_pool_feature_builder_successor.gd").retained_sha256(path)
