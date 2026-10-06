@@ -10,6 +10,7 @@ var space: PhysicsDirectSpaceState3D
 var started := 0
 var walked := 0
 var actual_plant_roots: Dictionary = {}
+var maximum_native_support_offset := 0.0
 
 func _initialize() -> void:
 	started = Time.get_ticks_msec()
@@ -42,6 +43,9 @@ func render_faces(resource: Mesh) -> PackedVector3Array:
 	return result
 
 func pins() -> void:
+	assert(FileAccess.get_sha256("res://assets/models/AST-AQU-016.glb.import")=="ecd15cf4bf417b752363efc637f12b2265dd724a6c403480ef6d44f64c64d8f0","Retained roof import policy changed")
+	var engine: Dictionary=Engine.get_version_info()
+	assert(engine.major==4 and engine.minor==6 and engine.patch==3,"Native collision representation requires reviewed engine version")
 	for path in data.preserved_file_sha256:
 		assert(FileAccess.get_sha256(str(path)) == data.preserved_file_sha256[path],"Retained pool input changed: "+str(path))
 	for key in data.models:
@@ -113,6 +117,24 @@ func structure() -> void:
 		actual_plant_roots[str(entry.name)]=roots
 	assert(ray(Vector3(-31,52.6,-432),Vector3(-31,52.4,-432),[actor.get_rid()]).is_empty(),"Architecture created a pool-void bridge")
 
+func native_collision_projection(mesh: MeshInstance3D,start: Vector3,end: Vector3) -> Variant:
+	# Independently reproduce Godot4.6.3 TriangleMesh.create's documented source
+	# implementation: snap raw render vertices to0.0001m before collider creation.
+	# Compare the physics query to this native representation, not ideal source
+	# coordinates below its quantization grid. No collision tolerance is widened.
+	var a:=mesh.to_local(start)
+	var b:=mesh.to_local(end)
+	var vertices:=render_faces(mesh.mesh)
+	var nearest: Variant=null
+	var distance:=INF
+	for i in range(0,vertices.size(),3):
+		var hit: Variant=Geometry3D.segment_intersects_triangle(a,b,vertices[i].snappedf(.0001),vertices[i+1].snappedf(.0001),vertices[i+2].snappedf(.0001))
+		if hit==null:continue
+		var world: Vector3=mesh.to_global(hit)
+		var value:=start.distance_squared_to(world)
+		if value<distance:distance=value;nearest=world
+	return nearest
+
 func support_checks() -> void:
 	var excluded: Array[RID] = [actor.get_rid()]
 	for body in built.find_children("*","CollisionObject3D",true,false): excluded.append(body.get_rid())
@@ -122,8 +144,16 @@ func support_checks() -> void:
 	for probe in data.retained_support_probes:
 		var p := xyz(probe.position_xyz)
 		var direction := xyz(probe.into_support_xyz)
+		var expected:=p
+		if str(probe.owner).begins_with("GP_"):
+			var reference:=original.get_node("GrandPoolConnectedArchitecture").find_child(str(probe.expected_support_batch),true,false)as MeshInstance3D
+			assert(reference!=null and reference.global_transform.is_equal_approx(Transform3D.IDENTITY))
+			var projected: Variant=native_collision_projection(reference,p-direction*.02,p+direction*.02)
+			assert(projected!=null,"Retained native support surface is missing")
+			expected=projected
+			maximum_native_support_offset=maxf(maximum_native_support_offset,p.distance_to(expected))
 		var hit := ray(p-direction*.02,p+direction*.02,excluded)
-		assert(not hit.is_empty() and hit.position.distance_to(p)<.00005,"Missing exact retained support: "+str(probe.part))
+		assert(not hit.is_empty() and hit.position.distance_to(expected)<.00005,"Missing retained support in its actual native collision representation: "+str(probe.part))
 		var owner: Node3D
 		if str(probe.owner).begins_with("GP_"): owner=original.get_node("GrandPoolConnectedArchitecture")
 		else: owner=floors.get_node(NodePath(str(probe.floor_owner)))
@@ -226,5 +256,6 @@ func run() -> void:
 		var reverse: Array=entry.approach_xyz.duplicate();reverse.reverse()
 		for p in reverse: await walk_to(xyz(p))
 	pins()
+	print("POOL SOURCE TO RETAINED NATIVE SUPPORT REPRESENTATION MAX OFFSET M ",maximum_native_support_offset)
 	print("GRAND POOL ARCHITECTURE PASS: three checked derivative assemblies, 451 source parts, 114 retained support roots, 12 soil-supported plant instances, three accessible pool-facing curved seats; original 126 programme preserved. Cart/lift, affected original checks and actual visual acceptance remain separate.")
 	main.queue_free();await process_frame;quit(0)
