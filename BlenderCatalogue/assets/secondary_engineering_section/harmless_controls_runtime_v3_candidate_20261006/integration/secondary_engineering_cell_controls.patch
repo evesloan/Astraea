@@ -1,0 +1,8 @@
+--- a/scripts/secondary_engineering_cell.gd
++++ b/scripts/secondary_engineering_cell.gd
+@@ -87,4 +87,5 @@
+ 			light.set_meta("illumination_anchor",anchor)
+ 			# Existing selector admits only the independently proven real lit receiver.
+ 			# Source position/range remain exactly source-backed; no selector edit.
++	load("res://scripts/engineering_calibration_builder.gd").build(wrapper,visual,ship)
+ 	return data
