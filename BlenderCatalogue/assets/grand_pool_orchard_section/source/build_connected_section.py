@@ -18,14 +18,14 @@ lens=bpy.data.materials.new('GardenOpalLens');lens.use_nodes=True;n=lens.node_tr
 parts=[];D['fixtures']=[];D['interfaces']=[];D['source_parts']=[]
 def mesh(name,verts,faces,role,owner=AID,preview=False):
  me=bpy.data.meshes.new(name);me.from_pydata([(x,-z,y)for x,y,z in verts],[],faces);me.update();bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(me);bm.free()
- o=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(o);me.materials.append(mats[role]);o['catalogue_id']=owner;o['assembly_owner']=AID;o['export_excluded']=preview;o['collision_contract']='none' if preview else 'concave_static_surface';uv=me.uv_layers.new(name='MetreScaled');scale=mats[role].get('meters_per_tile_uv',[1,1])
+ o=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(o);me.materials.append(mats[role]);o['catalogue_id']=owner;o['assembly_owner']=AID;o['export_excluded']=preview;o['collision_contract']='none' if preview else ('visual_only_stair_tread' if name.startswith(('CIR630_Tread','CIR630_Nose','CIR630_FinalRiser','GP_CeremonialTread','GP_CeremonialFinalRiser')) else 'concave_static_surface');uv=me.uv_layers.new(name='MetreScaled');scale=mats[role].get('meters_per_tile_uv',[1,1])
  for p in me.polygons:
   normal=p.normal.normalized();u=(Vector((1,0,0))-normal*normal.x).normalized()if abs(normal.z)>.7 else Vector((-normal.y,normal.x,0)).normalized();v=normal.cross(u)
   for k in p.loop_indices:
    q=me.vertices[me.loops[k].vertex_index].co;uv.data[k].uv=(q.dot(u)/scale[0],q.dot(v)/scale[1])
  if preview:o.hide_render=True;o.display_type='WIRE'
  else:parts.append(o)
- D['source_parts'].append({'name':o.name,'role':role,'parent_design_id':owner,'export_excluded':preview,'world_vertices':verts})
+ D['source_parts'].append({'name':o.name,'role':role,'parent_design_id':owner,'export_excluded':preview,'collision_contract':o['collision_contract'],'world_vertices':verts})
  return o
 F=[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
 def box(name,x0,x1,z0,z1,y0,y1,role='ivory_enamel',owner=AID):
@@ -171,14 +171,14 @@ for i in range(13):
 box('GP_CeremonialFinalRiser',-16.22,-16.18,-434,-430,44+13*2.2/14,46.2,'warm_stone','AST-CIR-001')
 # Sloping structural ramp pans, with all rail projections outside declared clear bands.
 for label,x0,x1,z0,z1,y0,y1 in[('Lower',-13.2,-10.8,-449,-462.2,44,45.1),('Upper',-16.4,-14,-462.2,-449,45.1,46.2)]:
- vv=[(x,y,z)for y,z in[(y0-.20,z0),(y1-.20,z1),(y0,z0),(y1,z1)]for x in[x0,x1]]
+ vv=[(x,y,z)for y,z in[(y0-.20,z0),(y1-.20,z1),(y0,z0),(y1,z1)]for x in[x0-.14,x1+.14]]
  mesh('GP_RampPan_'+label,vv,[(0,2,3,1),(4,5,7,6),(0,1,5,4),(2,6,7,3),(0,4,6,2),(1,3,7,5)],'warm_stone')
  for x in[x0-.085,x1+.085]:
   beam('GP_RampRail_'+label,(x,y0+1.08,z0),(x,y1+1.08,z1),.075,.075,'warm_walnut')
   beam('GP_RampKick_'+label,(x,y0+.10,z0),(x,y1+.10,z1),.08,.18,'champagne_metal')
   for j in range(6):
    t=j/5;z=z0+(z1-z0)*t;y=y0+(y1-y0)*t;box('GP_RampPost_'+label,x-.035,x+.035,z-.035,z+.035,y,y+1.08,'champagne_metal')
-box('GP_RampReturnLanding',-16.4,-10.8,-464.6,-462.2,44.90,45.1,'warm_stone')
+box('GP_RampReturnLanding',-16.56,-10.64,-464.78,-462.2,44.90,45.1,'warm_stone')
 for a,b in[((-16.5,-464.7),(-10.7,-464.7)),((-16.5,-464.7),(-16.5,-462.2)),((-10.7,-464.7),(-10.7,-462.2))]:
  wall('GP_RampReturnGuard',a,b,45.1,46.18,.10,'glass');wall('GP_RampReturnCap',a,b,46.15,46.23,.13,'warm_walnut')
 # Solid sloping pans are visibly seated on low plenum pedestals, with no walking route underneath.
@@ -189,6 +189,11 @@ for x0,x1 in[(-13.2,-10.8),(-16.4,-14)]:
 # Guard raised terrace edges around arrival/ramp pockets; no guard across landing/stair connections.
 for a,b in[((-18,-445.6),(-10.8,-445.6)),((-18,-428.2),(-8.2,-428.2)),((-18,-445.6),(-18,-434)),((-18,-430),(-18,-428.2)),((-18,-446.3),(-18,-445.6))]:
  wall('GP_RaisedEdgeFascia',a,b,44,46.2,.12,'ivory_enamel');wall('GP_RaisedEdgeGlazing',a,b,46.2,47.24,.05,'glass');wall('GP_RaisedEdgeRail',a,b,47.24,47.32,.10,'warm_walnut')
+# Complete guards at all exposed ramp-pocket and upper-link floor edges.
+for a,b in[((-18.06,-464.93),(-18.06,-449.06)),((-18.06,-464.93),(-10.46,-464.93)),((-10.46,-464.93),(-10.46,-449.06)),((-18.06,-446.55),(-18.06,-445.6))]:
+ wall('GP_RampPocketGuard',a,b,46.2,47.25,.07,'glass');wall('GP_RampPocketCap',a,b,47.24,47.32,.12,'warm_walnut')
+for a,b in[((-18,-425.5),(-14,-425.5)),((-14,-425.5),(-14,-423.5)),((-18,-428),(-18,-425.5)),((-13.5,-415.7),(-11.1,-415.7)),((-13.5,-415.7),(-13.5,-414.6)),((-18,-410.2),(-18,-406.9))]:
+ wall('GP_UpperWetLinkGuard',a,b,52.5,53.55,.07,'glass');wall('GP_UpperWetLinkRail',a,b,53.54,53.62,.12,'warm_walnut')
 # Explicit source derivative ofCIR001:36risers,6.3m,2.6m clear flights,17goings per flight.
 for flight,(x0,x1)in enumerate([(-17.1,-14.5),(-13.9,-11.3)]):
  start=-423.5 if flight==0 else-418.06;sign=1 if flight==0 else-1;y0=46.2 if flight==0 else 49.35
@@ -227,8 +232,8 @@ for y in[46.2,52.5]:
  box('GP_ServicePrivacyScreen',-51.2,-51.0,-465.8,-459.5,y,y+3.2,'retail_terracotta_enamel')
  box('GP_ServiceVestibuleCeiling',-54,-48,-465.8,-456.8,y+3.2,y+3.34,'ivory_enamel')
  for label,z0,z1 in[('DrySupply',-459.5,-458.3),('TowelReturn',-457.9,-457.0)]:
-  box('GP_ServiceNicheBack_'+label,-53.8,-53.58,z0,z1,y+.3,y+2.5,'warm_walnut');marker(label+'_'+str(y),[-52.9,y,-(abs(z0)+abs(z1))/2],extra={'status':'recess_reserved_no_stock'})
- fixture('GP_ServiceVestibule_'+str(y),-51.5,y+3.015,-458.6,.65,.7,'staff_work',.8,6)
+  box('GP_ServiceNicheBack_'+label,-53.85,-53.73,z0,z1,y+.3,y+2.5,'warm_walnut');marker(label+'_'+str(y),[-52.9,y,-(abs(z0)+abs(z1))/2],extra={'status':'recess_reserved_no_stock'})
+ fixture('GP_ServiceVestibule_'+str(y),-51.5,y+3.04,-458.6,.65,.7,'staff_work',.8,6)
 # Supported service mouths, core tongues and ramp interface markers.
 for y in[44,52.5]:marker('public_portal_'+str(y),[-7.9,y,-432],extra={'clear_width_m':6,'clear_height_m':3.2})
 for i,p in enumerate(D['accessible_ramp']['route_xyz']):marker('ramp_route_'+str(i),p,'route')
@@ -253,6 +258,7 @@ for door in doors:
   o.hide_render=True
 # Capture editable source before material+spatial batching. Source objects stay independently authorable.
 bpy.context.scene.unit_settings.system='METRIC';bpy.context.scene.unit_settings.scale_length=1;bpy.context.preferences.filepaths.save_version=0
+D['stair_collision_contacts']={'convention':'Same existing CIR001 ramp-prism flight contacts as primary_atrium_core.gd; visual tread batches receive no collision. Separate guards stay static.','thickness_m':.24,'quads_xyz':[[[-11,44,-434],[-11,44,-430],[-16.2,46.2,-430],[-16.2,46.2,-434]],[[-17.1,46.2,-423.5],[-14.5,46.2,-423.5],[-14.5,49.35,-418.06],[-17.1,49.35,-418.06]],[[-13.9,52.5,-423.5],[-11.3,52.5,-423.5],[-11.3,49.35,-418.06],[-13.9,49.35,-418.06]]]}
 D['actual_floor_preview_count']=len(D['floor_regions']);D['builder']='source/build_connected_section.py'
 D['market']['adopted_dry_loop_centreline_xz']=[[-15.5,-432],[-15.5,-463.1],[-45.9,-463.1],[-45.9,-400.9],[-9.65,-400.9],[-9.65,-429.5],[-15.5,-429.5],[-15.5,-432]]
 D['market']['loop_fit_note']='Front cross-connection moved1.5m away from closed stair-door cassette planeZ-428; dry bypass remainsX-10.85..-8.45.'
@@ -266,11 +272,11 @@ batches={}
 for o in parts:
  vv=[v.co for v in o.data.vertices];x=sum(v.x for v in vv)/len(vv);z=-sum(v.y for v in vv)/len(vv);y=sum(v.z for v in vv)/len(vv)
  # Spatial material batches: no hull/remesh, UV layers remain the same name.
- key=(math.floor(x/20),math.floor(z/20),math.floor(y/8.5),o.data.materials[0].name);batches.setdefault(key,[]).append(o)
+ key=(math.floor(x/20),math.floor(z/20),math.floor(y/8.5),o.data.materials[0].name,o['collision_contract']);batches.setdefault(key,[]).append(o)
 for key,objects in sorted(batches.items()):
  bpy.ops.object.select_all(action='DESELECT')
  for o in objects:o.select_set(True)
- bpy.context.view_layer.objects.active=objects[0];bpy.ops.object.join();o=bpy.context.object;o.name='GPM_CELL_%d_%d_%d_%s'%key;o['source_piece_count']=len(objects);o['batching']='material/spatial join only; no weld/remesh/convexification'
+ bpy.context.view_layer.objects.active=objects[0];bpy.ops.object.join();o=bpy.context.object;o.name='GPM_CELL_%d_%d_%d_%s_%s'%key;o['source_piece_count']=len(objects);o['batching']='material/spatial join only; no weld/remesh/convexification'
 bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True)
 manifest={'catalogue_id':AID,'family':'grand_pool_orchard_section','name':'Connected Grand Pool and Orchard Market architectural section','source':'source/'+src.name,'export':'exports/'+out.name,'source_sha256':sha(src),'export_sha256':sha(out),'contract_sha256':sha(R/'source/connected_contract.json'),'triangles':tri,'editable_part_count':len(parts),'runtime_mesh_batches':len(batches),'fixture_count':len(D['fixtures']),'floor_preview_count':len(D['floor_regions']),'exported_common_floor_count':0,'status':'Built editable source; final QA and runtime integration pending'}
 (R/(AID+'.manifest.json')).write_text(json.dumps(manifest,indent=2)+'\n');print(json.dumps(manifest))

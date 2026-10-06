@@ -1,0 +1,104 @@
+{
+  "pass": true,
+  "scope": "Conservative source solid slices + exact polygon floor/sightline checks. Capsule band starts0.3m above foot, excludes gait contact. No engine proof.",
+  "source_routes": [
+    {
+      "route": "D08_dry_arrival_to_ramp",
+      "sampled_positions": 200,
+      "body_radius_m": 0.3,
+      "body_test_height_above_foot_m": [
+        0.3,
+        1.8
+      ],
+      "pass": true,
+      "hits": []
+    },
+    {
+      "route": "D08_ramp",
+      "sampled_positions": 396,
+      "body_radius_m": 0.3,
+      "body_test_height_above_foot_m": [
+        0.3,
+        1.8
+      ],
+      "pass": true,
+      "hits": []
+    },
+    {
+      "route": "D09_closed_door_dry_market_loop",
+      "sampled_positions": 1974,
+      "body_radius_m": 0.3,
+      "body_test_height_above_foot_m": [
+        0.3,
+        1.8
+      ],
+      "pass": true,
+      "hits": []
+    },
+    {
+      "route": "D08_wet_pool_circuit",
+      "sampled_positions": 1457,
+      "body_radius_m": 0.3,
+      "body_test_height_above_foot_m": [
+        0.3,
+        1.8
+      ],
+      "pass": true,
+      "hits": []
+    },
+    {
+      "route": "D08_local_lift_approach",
+      "sampled_positions": 174,
+      "body_radius_m": 0.3,
+      "body_test_height_above_foot_m": [
+        0.3,
+        1.8
+      ],
+      "pass": true,
+      "hits": []
+    },
+    {
+      "route": "local_stair_connected_route",
+      "sampled_positions": 310,
+      "body_radius_m": 0.3,
+      "body_test_height_above_foot_m": [
+        0.3,
+        1.8
+      ],
+      "pass": true,
+      "hits": []
+    }
+  ],
+  "open_door_screening": {
+    "pass": true,
+    "rays": 1444,
+    "baffle_rect": [
+      -51.2,
+      -51,
+      -465.8,
+      -459.5
+    ]
+  },
+  "screened_cart_proxy": {
+    "pass": true,
+    "sampled_poses": 532,
+    "sample_translation_step_m": 0.04,
+    "turn_angle_steps": 80,
+    "turn_centres_translate": true,
+    "operator_offset_m": 1.62,
+    "operator_radius_m": 0.3,
+    "actual_cart_compound_boxes": 19,
+    "wheel_spheres": 4,
+    "loaded_tray_plan_m": [
+      0.65,
+      0.96
+    ],
+    "minimum_plan_clearance_m": 0.13951491439718214,
+    "hits": [],
+    "reverse_scope": "Same held orientations retraced in reverse; geometric backing/regrip space, not force-driven physics",
+    "pending": "Actual dynamics, freehand steering and spring-cart comfort after runtime integration"
+  },
+  "runtime_records_and_neighbours_unchanged": true,
+  "D07_no_new_material_below43_76": true,
+  "D10_no_new_material_above61": true
+}
