@@ -47,6 +47,7 @@ var maximum_route_error := 0.0
 var failure_recorded := false
 var prior_attempts: Array = []
 var ordinary_clearance_checks: Array = []
+var interaction_ray_checks: Array = []
 
 func _initialize() -> void:
 	started_msec = Time.get_ticks_msec()
@@ -99,6 +100,7 @@ func write_receipt(status: String, detail: String = "") -> void:
 		"scripted_operator_route_metres": route_operator_metres, "moving_turn_pose_samples": moving_turn_samples,
 		"ordinary_input_peak_mps": ordinary_peak_mps, "ordinary_service_door_smokes": ordinary_smokes,
 		"ordinary_actual_clearance_checks": ordinary_clearance_checks,
+		"actual_interaction_ray_checks": interaction_ray_checks,
 		"actual_loaded_upper_staff_lift_trips": loaded_trips, "maximum_cart_route_error_m": maximum_route_error,
 		"loose_products": 4, "initial_fixture_placements": 1,
 		"limits": "Scripted operator route plus bounded ordinary straight2m/s input; no freehand turning comfort, traffic/species fitting, water physics, stock, local public lift/full five-stop regression, visual acceptance or full programme completion is certified. Collisions, source fittings and the eight-light cap are unchanged."
@@ -381,11 +383,30 @@ func aim(point: Vector3) -> void:
 	actor.pitch = atan2(delta.y,Vector2(delta.x,delta.z).length())
 	actor.camera.rotation.x = actor.pitch
 
+func interaction_view_probe(target: Node3D, point: Vector3) -> Dictionary:
+	# Match the ordinary player's exact2.5m ray and collision/area policy.
+	var origin: Vector3 = actor.camera.global_position
+	var endpoint: Vector3 = origin-actor.camera.global_basis.z*2.5
+	var query := PhysicsRayQueryParameters3D.create(origin,endpoint)
+	query.exclude = [actor.get_rid()]
+	query.collide_with_areas = true
+	var hit := ship.get_world_3d().direct_space_state.intersect_ray(query)
+	var resolved: Node = actor.target_from_view()
+	var result := {"checkpoint":checkpoint,"expected_target":str(target.get_path()),"aim_world":[point.x,point.y,point.z],"camera_world":[origin.x,origin.y,origin.z],"ray_end_world":[endpoint.x,endpoint.y,endpoint.z],"aim_distance_m":origin.distance_to(point),"resolved_target":str(resolved.get_path()) if resolved != null else "none"}
+	if not hit.is_empty():
+		result["first_collider"] = str(hit.collider.get_path())
+		result["first_hit_world"] = [hit.position.x,hit.position.y,hit.position.z]
+	return result
+
 func press(target: Node3D, point: Vector3, focused := true, held_release := false) -> void:
 	if failure_recorded: return
 	aim(point)
 	if not held_release:
-		if actor.target_from_view() != target: write_receipt("FAIL", "Precise RMB/E target unavailable: " + str(target.get_path()))
+		var view := interaction_view_probe(target,point)
+		interaction_ray_checks.append(view)
+		if actor.target_from_view() != target:
+			print("GRAND POOL PRECISE VIEW RAY BLOCK: ",view)
+			write_receipt("FAIL", "Precise RMB/E target unavailable: " + str(target.get_path()))
 		if not require(actor.target_from_view() == target, "Precise Grand Pool target unavailable: " + str(target.get_path())): return
 	actor.velocity = Vector3.ZERO
 	actor.set_physics_process(true)
@@ -414,7 +435,11 @@ func door_for() -> Node3D:
 	return built.get_node(NodePath(("GrandPoolDoor_service_" + ("46.2" if floor_y < 50 else "52.5")).validate_node_name()))
 
 func door_point(door: Node3D) -> Vector3:
-	return door.leaves[0].global_transform * Vector3(0,1.26,0)
+	# The fully retracted leaf centre sits behind the retained staff north wall.
+	# Aim at a real leaf point nearer its aperture-facing edge instead. The
+	# existing2.5m view ray remains intact and may hit its own fitted pocket skin.
+	# This works geometrically from either side without reaching through a wall.
+	return door.leaves[0].global_transform * Vector3(door.leaf_width*.4,1.26,0)
 
 func operate_door(opened: bool, held_yaw: float) -> void:
 	if failure_recorded: return

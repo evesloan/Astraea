@@ -3,12 +3,12 @@ World XYZ is Godot metres. Blender maps (x,y,z) -> (x,-z,y).
 Never reads or writes another asset; never changes catalogue registry.
 """
 from pathlib import Path
-import json, math, hashlib, argparse
+import json, math, hashlib, argparse, sys
 R=Path(__file__).resolve().parents[1]; C=R.parents[1]
 P=Path('/workspace/shared/astraea-godot-production-20261003')
 parts=[]; markers=[];doors=[]
 def mesh(n,v,f,role='staff_white_paint',kind='static_architecture',preview=False):
-    parts.append(dict(name=n,vertices_xyz=v,faces=f,material_role=role,kind=kind,export=not preview,collision='none' if preview or kind in ['lens','glazing'] else 'static_surface'))
+    parts.append(dict(name=n,vertices_xyz=v,faces=f,material_role=role,kind=kind,export=not preview,collision='none' if preview or kind in ['lens'] else 'static_surface'))
 def box(n,x0,x1,y0,y1,z0,z1,role='staff_white_paint',kind='static_architecture',preview=False):
     assert x1>x0 and y1>y0 and z1>z0,n
     mesh(n,[(x,y,z) for y in [y0,y1] for x,z in [(x0,z0),(x1,z0),(x1,z1),(x0,z1)]],[(3,2,1,0),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],role,kind,preview)
@@ -37,6 +37,8 @@ def fixture(n,x,y,z):
     box(n+'_mount',x-.75,x+.75,y+.06,y+.16,z-.18,z+.18,'staff_zinc')
     box(n+'_housing',x-.65,x+.65,y-.05,y+.06,z-.14,z+.14,'staff_bluegrey_paint')
     box(n+'_opal',x-.55,x+.55,y-.075,y-.05,z-.10,z+.10,'staff_opal','lens')
+    ceiling=9.3 if n=='control_task' else (9.6 if n in ['entry','workbay_task'] else (11.1 if n=='isolation_task' else 9.9))
+    if ceiling>y+.16:box(n+'_ceiling_stem',x-.035,x+.035,y+.16,ceiling,z-.035,z+.035,'staff_zinc')
     markers.append(dict(name='DATUM_'+n,position_xyz=[x,y-.075,z],housing=n+'_housing',support=n+'_mount',purpose=n))
 def axial(n,rings,role):
     N=24;v=[(34.5+x,8.05+r*math.sin(2*math.pi*i/N),-432+r*math.cos(2*math.pi*i/N)) for x,r in rings for i in range(N)]
@@ -47,7 +49,9 @@ def build():
     for i,(a,b) in enumerate(zip(hall,hall[1:]+hall[:1])):
         if a[0]==b[0]:axiswall('hall_face_'+str(i),'x',a[0],min(a[1],b[1]),max(a[1],b[1]),11.1,(-433.8,-430.2) if a[0]==47.7 else None,glass=a[0]==21)
         elif a[1]==b[1]:axiswall('hall_face_'+str(i),'z',a[1]+(.09 if a[1]==-451 else -.09),min(a[0],b[0]),max(a[0],b[0]),11.1,(36.8,39.2),glass=a[1]==-451)
-        else:beam('hall_facet_'+str(i),(a[0],8.55,a[1]),(b[0],8.55,b[1]),.24,5.1)
+        else:
+            length=math.hypot(b[0]-a[0],b[1]-a[1]);ox=-(b[1]-a[1])/length*.12;oz=(b[0]-a[0])/length*.12
+            beam('hall_facet_'+str(i),(a[0]+ox,8.55,a[1]+oz),(b[0]+ox,8.55,b[1]+oz),.24,5.1)
         box('hall_bearing_'+str(i),a[0]-.18,a[0]+.18,6,11.52,max(a[1]-.18,-451),min(a[1]+.18,-413),'staff_bluegrey_paint')
     slab('hall_faceted_soffit',hall,11.1,11.52)
     # Programme boundary reserve. Exact service handoffs stop at X54.
@@ -71,7 +75,7 @@ def build():
     room('clean_returns',35,47,-409.4,-400,9.3,'north',40)
     # Seal only the fictional machine enclosure; external ring remains usable.
     for axis,plane,lo,hi in [('x',25,-441,-423),('x',44,-441,-423),('z',-441,25,44),('z',-423,25,44)]:axiswall('containment_'+str(plane),axis,plane,lo,hi,10.6,glass=True,t=.12)
-    slab('containment_cap',[(25,-441),(44,-441),(44,-423),(25,-423)],10.6,10.72)
+    slab('containment_cap',[(25,-441),(44,-441),(44,-423),(25,-423)],10.48,10.6)
     axial('machine_contained_sleeve',[(-4.4,1.35),(-3.7,1.48),(3.7,1.48),(4.4,1.35)],'staff_bluegrey_paint')
     for side in [-1,1]:
         r=[(side*x,y) for x,y in [(3.7,1.52),(4,1.73),(5.8,1.73),(6.5,1.42),(7.8,1.12),(8.15,.8),(8.28,.65)]]
@@ -79,6 +83,7 @@ def build():
     for i,x in enumerate([-3.5,-2.1,-.7,.7,2.1,3.5]):axial('machine_induction_band_'+str(i),[(x-.09,1.57),(x,1.66),(x+.09,1.57)],'staff_zinc')
     for x in [29,40]:
         for z in [-434,-430]:box('plant_bearing_leg_'+str(x)+str(z),x-.18,x+.18,6,10.4,z-.18,z+.18,'staff_bluegrey_paint');box('bearing_pad_'+str(x)+str(z),x-.35,x+.35,6,6.24,z-.35,z+.35,'staff_zinc')
+        for z in [-433,-431]:box('suspension_yoke_link_'+str(x)+str(z),x-.12,x+.12,9.35,10.4,z-.09,z+.09,'staff_zinc')
         box('bearing_crossmember_'+str(x),x-.2,x+.2,10.26,10.6,-434.2,-429.8,'staff_white_paint')
     for z in [-433.45,-430.55]:beam('supported_manifold_'+str(z),(28.5,8.8,z),(40.5,8.8,z),.14,.14,'staff_zinc')
     # Purpose-required furniture only; protected floor routes remain empty.
@@ -87,16 +92,22 @@ def build():
     box('maintenance_bench',21,27,6,6.9,-402,-400.7,'staff_bluegrey_paint');box('bench_supported_instrument',22,23,6.9,7.45,-401.8,-401.0,'staff_zinc')
     box('isolation_face',35,37,6,7.6,-441.4,-441.15,'staff_bluegrey_paint')
     box('visitor_pause_bench',9,10,6,6.48,-426,-422,'staff_white_paint')
-    for n,p in [('entry',(12,9.35,-432)),('control_task',(26,9.0,-459)),('service_entry',(51,9.3,-432)),('workbay_task',(27,9.3,-405)),('isolation_task',(36,9.3,-443)),('cart_north',(51,9.3,-453)),('cart_south',(51,9.3,-411))]:fixture(n,*p)
+    for n,p in [('entry',(12,9.35,-432)),('control_task',(26,9.0,-459)),('service_entry',(51,9.675,-432)),('workbay_task',(27,9.3,-405)),('isolation_task',(36,9.3,-443)),('cart_north',(51,9.675,-453)),('cart_south',(51,9.675,-411))]:fixture(n,*p)
+    slab('east_street_ceiling',[(48.3,-465.7),(53.7,-465.7),(53.7,-398.3),(48.3,-398.3)],9.9,10.05)
     # Short overhead service supports anchor fixtures without low-hanging hazards.
-    for z in [-453,-432,-411]:box('street_overhead_support_'+str(z),48.3,53.7,9.5,9.6,z-.12,z+.12,'staff_zinc')
+    for z in [-453,-432,-411]:box('street_overhead_support_'+str(z),48.3,53.7,9.85,9.9,z-.12,z+.12,'staff_zinc')
     slab('PREVIEW_COMPILER_D02_FLOOR',[(8,-466),(54,-466),(54,-398),(8,-398)],5.76,6,True)
     slab('PREVIEW_COMPILER_D03_OPAQUE_CAP',[(8,-466),(54,-466),(54,-398),(8,-398)],11.76,12,True)
     return hall
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--blender',action='store_true');args=ap.parse_args();hall=build()
+    ap=argparse.ArgumentParser();ap.add_argument('--blender',action='store_true');args=ap.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else None);hall=build()
     contract=dict(catalogue_id='AST-ENG-008',registration='reserved only',stage='editable generator and pure geometry only; no engine/source-export acceptance',programme='D02_directory_02',world_bounds=[8,54,6,11.52,-466,-398],hall_polygon_xz=hall,rooms=dict(control=[20,34,-464,-454.6],technical_staging=[35,47,-464,-454.6],workbay=[20,34,-409.4,-400],clean_returns=[35,47,-409.4,-400]),local_dimensional_adjustment='Parent approved 0.6m room-depth reduction at 2026-10-06: north room outer edge -454.6, south room outer edge -409.4; service-facing wall thickness inset to rooms and hall; 3.6m is true face-to-face corridor clearance',floor_ownership=dict(compiler='single Y6 slab and opaque Y12 cap; preview-only objects excluded from export and collision',source='walls, ceilings, equipment bearing pads; no walkable slabs',door='clear empty apertures, runtime door leaves deferred',ramp='none: all circulation level Y6',visitor_connection='X0..8 unresolved; nothing built outside allocation',service_connection='handoff X54 at Z-432 and -404 only; external street not authored'),clearance=dict(east_street_x=[48.3,53.7],east_street_width=5.4,minimum_through_width=3.6,north_strip_z=[-454.6,-451],south_strip_z=[-413,-409.4],core_reservation=[25,44,6,10.6,-441,-423],module_xyz=[1.8,1.8,1.4],loaded_height=2.15,door_clear=[2.4,2.7],whole_machine_removal=False),doors=doors,fixtures=markers,fictional_machine='Purpose-built low-profile contained assembly with profiled end housings, induction bands, supported manifold spines and independent bearings; no operating reactor or physical engineering claim',evidence=dict(reference='technical_reference.png ASW-GV-04 native image inspected; paired core/control/service separation and supported machinery implemented; tall multi-storey silhouette explicitly not retained',source_sha256={str(p.relative_to(P)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [P/'data/architecture/packages/engineering/MACHINE_SECTION_FIT.json',P/'data/architecture/packages/engineering/DETAILED_SERVICE_ROUTE_FIT.json',P/'data/architecture/packages/engineering/SECONDARY_FUSION_SECTION_SPEC.json']}),unfinished=['dynamic door leaves and exact pockets','live capsule and loaded-cart checks','species fit','control function','plant operation','visitor external floor handoff','second control and shipwide service routes','visual acceptance'])
+    surface_rows=[]
+    for p in parts:
+        mins=[min(v[i] for v in p['vertices_xyz']) for i in range(3)];maxs=[max(v[i] for v in p['vertices_xyz']) for i in range(3)]
+        surface_rows.append(dict(name=p['name'],aabb_xyz_min_max=mins+maxs,export=p['export'],collision=p['collision'],material_role=p['material_role'],kind=p['kind'],floor_contact_owner='compiler D02_directory_02 Y6' if p['export'] and abs(mins[1]-6)<1e-6 else None,walkable_floor=False))
+    (R/'source/surface_manifest.json').write_text(json.dumps(dict(catalogue_id='AST-ENG-008',coordinate_system='world Godot XYZ metres; Blender x,-z,y',source_surfaces=surface_rows,door_and_threshold_owner=contract['floor_ownership']),indent=2)+'\n')
     (R/'source/section_contract.json').write_text(json.dumps(contract,indent=2)+'\n');(R/'source/geometry_plan.json').write_text(json.dumps(dict(parts=parts,markers=markers),indent=2)+'\n')
     if args.blender:blender()
 
@@ -112,7 +123,7 @@ def blender():
         for f in me.polygons:
             n=f.normal.normalized();u=Vector((1,0,0)) if abs(n.x)<.7 else Vector((0,1,0));u=(u-n*u.dot(n)).normalized();v=n.cross(u)
             for li in f.loop_indices:
-                q=me.vertices[me.loops[li].vertex_index].co;uv.data[li].uv=(q.dot(u),q.dot(v))
+                q=me.vertices[me.loops[li].vertex_index].co;tile=mats[p['material_role']].get('meters_per_tile_uv',[1,1]);uv.data[li].uv=(q.dot(u)/tile[0],q.dot(v)/tile[1])
     for d in markers:
         o=bpy.data.objects.new(d['name'],None);bpy.context.collection.objects.link(o);x,y,z=d['position_xyz'];o.location=(x,-z,y);o['housing']=d['housing']
     bpy.context.scene.unit_settings.system='METRIC';bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str(R/'source/AST-ENG-008.blend'))

@@ -64,10 +64,7 @@ for s in aisles:
 # Occupancy-responsive shoulder: only theater district, terminating below top canopy.
 shoulder_knots=[61,69.5,87.5,92]
 shoulder_half=[120,118.5,118.5,109.6]
-def shoulder(y,z):
- return max(half(y,z),interp(y,shoulder_knots,shoulder_half)) if -265<=z<=-115 and 61<=y<=92 else half(y,z)
 # Monkey-patch only for same detailed tests; no report/source geometry mutation.
-old_half=half
 # Preserve old function in a wrapper to avoid recursive lookup.
 def half(y,z):
  general=interp(z,[a for a,b in stations],[b for a,b in stations])*interp(y,Y,S)
