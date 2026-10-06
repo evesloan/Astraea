@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "status": "PASS_RETAINED_NATIVE_INSTANCE_READBACK",
-  "scope": "Actual native MultiMesh transforms and associated fixed-source geometry gates. Does not assert final appearance, operating doors/lift, upper-gallery walking, audio, full regression or target-hardware performance.",
+  "scope": "Actual native MultiMesh transforms and associated fixed-source geometry gates after installed optical correction. Does not assert final appearance, unobstructed receiver illumination, operating doors/lift, upper-gallery walking, audio, full regression or target-hardware performance.",
   "engine": {
     "major": 4,
     "minor": 6,
@@ -9,15 +9,17 @@
     "status": "stable",
     "hash": "7d41c59c457bd5a245092b4e7eb2d833e3b3f8c3"
   },
+  "engine_identity_provenance": "Retained engine identity matched to this run's actual official version and commit-prefix startup log; no engine switch.",
   "graphics_backend": "OpenGL Compatibility",
-  "adapter": "Mesa llvmpipe (LLVM19.1.7,256bits)",
+  "adapter": "llvmpipe (LLVM 19.1.7, 256 bits)",
   "error_count": 0,
   "source_snapshot_unchanged": true,
-  "source_snapshot_file_count": 3846,
+  "source_snapshot_file_count": 4018,
+  "source_head": "e49190fee131f1354aa7de6a7fc542159c84ed7e",
   "input_sha256": {
     "scripts/grand_lantern_theater_section.gd": "0b287238e1ab8bf5778e3c7154b9a6f44fd726f62575b7de16236f9d2eac7be8",
-    "data/architecture/THEATER_RUNTIME_STAGE001.json": "a056941635b65c03fbcbb2f5075936eae0082fa8bfb0256a2914414d58fa7994",
-    "tests/fixtures/THEATER_TEST_FIXTURES.json": "cad1feb227176f4e24febace8aeb2ff5473f950a95bfe882eebe01a0fd5de0ce",
+    "data/architecture/THEATER_RUNTIME_STAGE001.json": "82cef4249e8247a4e6048e6aa3fc716189fc5c42c2a6e764a013dd92d8018a7b",
+    "tests/fixtures/THEATER_TEST_FIXTURES.json": "f3821896980608c34231ef574103774281618c794bb88891ac8efb3c83a6cbde",
     "assets/models/AST-CUL-005_static_003.glb": "fa056d66c1064cb6ee917f0fcae7d6ffccbd9426118a95c8a09f1e8b23457947",
     "assets/models/AST-CUL-005_static_003.glb.import": "c2913556774bd8432e2094b5ec53caf38db6491158d93934b723c637069369fc",
     "assets/models/AST-CUL-005_moving_003.glb": "7a622417f104f169bf9088008019c2aab45dde71186fabe41f23f198d16cb3d8",
@@ -35,22 +37,44 @@
     "spatial_batches": 890,
     "source_floor_probes": 6514
   },
-  "evidence_sha256": {
-    "docs/theater_validation/native_run004/CAPTURE_RECEIPT.json": "9f7e63fbbd474c9d8e2dc061aa01f8e08e6b680c3cd7976c30537bfb687a8e01",
-    "docs/theater_validation/native_run004/D11_court_A_front_clear.png": "27a6087412c794847b89d6ed89825b97cc02733e226699e4a10d4451bafe8d63",
-    "docs/theater_validation/native_run004/D11_court_A_front_clear_raw.png": "e1c4ff0a5b015ff93a19f224fe4f391f5a741b5d3d974ea83263445903ba43ad",
-    "docs/theater_validation/native_run004/D11_court_A_front_native.png": "59cb3cdcd4b873c65fc5e2748b5cfc54b82abac2a81db38e00f3bc04bd3a5616",
-    "docs/theater_validation/native_run004/D11_court_A_front_native_raw.png": "5ae835b7a55152c7989ad45b5c7d5daa4d05aca729148148173ab2efa0f35d59",
-    "docs/theater_validation/native_run004/D11_main_arrival_clear.png": "e6f72d06695cd749567450803895080988cacfd2fedd639830750421ab1af719",
-    "docs/theater_validation/native_run004/D11_main_arrival_clear_raw.png": "6fd16c595316ab71804eea57b605de4a288968b4108cc331716606707adcfd9e",
-    "docs/theater_validation/native_run004/D11_main_arrival_native.png": "ac845bb7c8f18cdc410e348c1a3ca98f78e5dc88162cf291bacd7b9b9a898c8b",
-    "docs/theater_validation/native_run004/D11_main_arrival_native_raw.png": "094a9389f38f6e07955de4ed854bf461eb9eca82d6f211f27c4bdd33e95cc7cd",
-    "docs/theater_validation/native_run004/RUN_RECEIPT.json": "5c871adaf0ab0daf2c99d0b1272452fcfe1909d6f88fdd872b41cb23508f25b1",
-    "docs/theater_validation/native_run004/engine.log": "0bf4e58ee92026fc3ec158f2165385ede5f4d23ddb9b04e07eeb03b02438fee7",
-    "docs/theater_validation/native_run004/strict_probe.gd.txt": "e75e8543676b45920cca0461c9a87382d98e9bc004cb4488531e60e3a5f629ca"
+  "count_provenance": {
+    "instance_counts": "Actual strict native instance census in retained engine.log.",
+    "source_floor_probes": "Exact pinned fixture count; strict check_floor_owners completed every source_floor_probes sample before the graphical structure PASS marker."
   },
-  "strict_probe_source_sha256": "e75e8543676b45920cca0461c9a87382d98e9bc004cb4488531e60e3a5f629ca",
-  "executed_capture_script_sha256": "02f3badd98371b6915fcbeef119652013ced28d351dbbc98efc253f5c958b6bc",
-  "executed_wrapper_sha256": "e0e15a27137c93423ba9a5577f13e73e52e31b53c50952440cb85130e726f550",
+  "evidence_sha256": {
+    "docs/theater_validation/native_light013/CAPTURE_RECEIPT.json": "fb931bbdcae40639c11640387c238da225f3000ca952e7310c67e68554c417d2",
+    "docs/theater_validation/native_light013/D11_court_A_front_clear.png": "d74705956de363a15a2f3491bfa9b6c70ca07162bc7e0719a1ab64ba67633e23",
+    "docs/theater_validation/native_light013/D11_court_A_front_clear_raw.png": "03d5cf6f1b5f6dcc2fadabacf53877d547aab85ab582404c0654555e331838f1",
+    "docs/theater_validation/native_light013/D11_court_A_front_native.png": "258f8617c4d100659c29d7e22af5d2e5ee96db70e254f5c2abd6206395584d15",
+    "docs/theater_validation/native_light013/D11_court_A_front_native_raw.png": "4d67aa0f4448e2b84cc50dfdff3d5fc37f2709a582e43a37e97c706b632cf017",
+    "docs/theater_validation/native_light013/D11_main_arrival_clear.png": "03c68a92c62336ebc982c923c6e033321f25a061b755a708b00a1cab913af7e2",
+    "docs/theater_validation/native_light013/D11_main_arrival_clear_raw.png": "0f8a1506c87dc8b164da5352264d7d4b13a29f61427cdbb1efc1e9d94d47959e",
+    "docs/theater_validation/native_light013/D11_main_arrival_native.png": "3e2fc6c9941eaa34b83c6a3adaedee44d5bf6be423c3695d0351f33bb7eb52c3",
+    "docs/theater_validation/native_light013/D11_main_arrival_native_raw.png": "d2abe2a5bad998ed4a3832d82346d361c4a905011aeb001aae210325bd4a57be",
+    "docs/theater_validation/native_light013/RECEIVERS.json": "76fa9421fdbcd9bab988b173736c7b1f8b2e9cbfc9b147ef6f98a148ccc0bc1b",
+    "docs/theater_validation/native_light013/RECEIVER_QA.json": "f544d86e8408062a07711382ec2ec14584fdea80256ab04bf4a983f7b815b755",
+    "docs/theater_validation/native_light013/RUN_RECEIPT.json": "6543105447df13e11d9a57baae88fc7849005e697913bd8ce57acd4fe4c8cf9c",
+    "docs/theater_validation/native_light013/SOURCE_PINS.json": "1e2b697d02eccc102a9a5c31ccedcd4aeac884208cbf277046f8df0d382f7539",
+    "docs/theater_validation/native_light013/capture_theater.gd.txt": "9b46a263972dc683f48a8b1bf082488342d6d5b51614bcc15978df3af36a71f8",
+    "docs/theater_validation/native_light013/engine.log": "6565a806d7b726a6d5761a730b675559cc9824516f0ff5151c4d922c98d1a196",
+    "docs/theater_validation/native_light013/run_native.py.txt": "06d646ae0d395ac02cbba7c2712dcbd76d95cf06ea99e75089acfd125b8986bd",
+    "docs/theater_validation/native_light013/strict_probe.gd.txt": "5b682f3fd1dff7765708b0fca48a3e9856416b5eba60bb14161d35a359aeaec4",
+    "docs/theater_validation/THEATER_NATIVE_INSTANCE_QA_before_native_light013.json": "f0118e20dc0fd6e96d178ffed675a9c3ff8cfba8fa9b02e809488427f6247b09"
+  },
+  "strict_probe_source_sha256": "5b682f3fd1dff7765708b0fca48a3e9856416b5eba60bb14161d35a359aeaec4",
+  "executed_capture_script_sha256": "9b46a263972dc683f48a8b1bf082488342d6d5b51614bcc15978df3af36a71f8",
+  "executed_wrapper_sha256": "06d646ae0d395ac02cbba7c2712dcbd76d95cf06ea99e75089acfd125b8986bd",
+  "previous_proof": {
+    "path": "docs/theater_validation/THEATER_NATIVE_INSTANCE_QA_before_native_light013.json",
+    "sha256": "f0118e20dc0fd6e96d178ffed675a9c3ff8cfba8fa9b02e809488427f6247b09"
+  },
+  "receiver_diagnostics": {
+    "path": "docs/theater_validation/native_light013/RECEIVER_QA.json",
+    "status": "ACTUAL_RECEIVER_DIAGNOSTIC_REVIEW_REQUIRED",
+    "exact_source_count": 22,
+    "sample_count": 34,
+    "blocked_receiver_rays": 16,
+    "optical_acceptance": false
+  },
   "appearance_accepted": false
 }

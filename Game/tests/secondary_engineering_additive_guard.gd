@@ -35,6 +35,9 @@ static func validate_pinned_input(path: String, historical_sha: String) -> void:
 		if previous.has("capture_audit_file"):
 			assert(FileAccess.get_sha256("res://"+str(previous.capture_audit_file))==str(previous.capture_audit_sha256))
 		return
+	if path=="scripts/presentation.gd" and actual=="a63a5c72f76af86cb81d2bb7dcc2bf9330d0a0583862c2fea5e7f487f5628b1c":
+		assert(load("res://tests/engineering_controls_listener_successor.gd").validate_successor(path,historical_sha,actual,previous))
+		return
 	if path=="scripts/presentation.gd":
 		assert(load("res://tests/engineering_signage_capture_successor.gd").validate_successor(path,historical_sha,actual,previous))
 		return

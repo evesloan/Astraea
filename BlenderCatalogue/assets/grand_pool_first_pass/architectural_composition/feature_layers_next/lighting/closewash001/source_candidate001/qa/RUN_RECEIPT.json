@@ -1,0 +1,66 @@
+{
+  "status": "FAILED_PRESERVE_CANDIDATE_AND_LOGS",
+  "started_at_utc": "2026-10-06T12:59:51.997010+00:00",
+  "scope": "Exactly one sequential two-thread source-only build and independent reopen; no export/render/runtime edit.",
+  "processes": [
+    {
+      "step": "source_build",
+      "command": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_layer_proposal001/source_candidate001/build_feature_lighting.py"
+      ],
+      "started_at_utc": "2026-10-06T12:59:52.025430+00:00",
+      "timeout_seconds": 300,
+      "threads": 2,
+      "log": "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_layer_proposal001/source_candidate001/qa/source_build.log",
+      "exit_code": 0,
+      "elapsed_seconds": 1.5701947630004724,
+      "finished_at_utc": "2026-10-06T12:59:53.596088+00:00",
+      "log_sha256": "16aabcbca35f28d098751047b3866ae82ef246417ffde6583de5fc7a3b4fca94"
+    },
+    {
+      "step": "independent_reopen",
+      "command": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_layer_proposal001/source_candidate001/reopen_feature_lighting.py",
+        "--",
+        "--expected-source-sha256",
+        "abff45029287116967331271a538e7036bb8656263a9ed199fb5a4790a38da1f",
+        "--run-id",
+        "reopen001"
+      ],
+      "started_at_utc": "2026-10-06T12:59:53.658608+00:00",
+      "timeout_seconds": 300,
+      "threads": 2,
+      "log": "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_layer_proposal001/source_candidate001/qa/independent_reopen.log",
+      "exit_code": 1,
+      "elapsed_seconds": 1.2680194629938342,
+      "finished_at_utc": "2026-10-06T12:59:54.926967+00:00",
+      "log_sha256": "c68f503809705752a13b6a335a1b3f91bbb288b505e92b0c8edd11537e5f3c96"
+    }
+  ],
+  "input_script_sha256": {
+    "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_layer_proposal001/source_candidate001/build_feature_lighting.py": "a6bed6c08839e0c960afa41dfdda25a30ebbbda041dbbc0df8a1ca94cda56fca",
+    "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_layer_proposal001/source_candidate001/reopen_feature_lighting.py": "cd50395978cc51c4748dce37dd09b0d7f06b3a8237ea91cc0b60998a228ea290",
+    "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_layer_proposal001/source_candidate001/AUTHORING_PLAN.json": "224286681bb54e7dce97d92a84e674c631f668b3e2819093a3cc440810a67e8c"
+  },
+  "source_path": "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_layer_proposal001/source_candidate001/source/AST-AQU-016_pool_feature_lighting.blend",
+  "finished_at_utc": "2026-10-06T12:59:54.927653+00:00",
+  "error": "AssertionError(('Source process failed; do not retry or change route', 'independent_reopen', 1, '/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_layer_proposal001/source_candidate001/qa/independent_reopen.log'))"
+}
