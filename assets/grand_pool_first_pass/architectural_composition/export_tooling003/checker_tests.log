@@ -1,0 +1,32 @@
+test_duplicate_triangle_rejected (__main__.MatcherTest.test_duplicate_triangle_rejected) ... ok
+test_float32_uv_rounding_only (__main__.MatcherTest.test_float32_uv_rounding_only) ... ok
+test_hash_boundary_not_used (__main__.MatcherTest.test_hash_boundary_not_used) ... ok
+test_identity (__main__.MatcherTest.test_identity) ... ok
+test_normal_rounding_rejected (__main__.MatcherTest.test_normal_rounding_rejected) ... ok
+test_permuted_cyclic_corners (__main__.MatcherTest.test_permuted_cyclic_corners) ... ok
+test_reverse_winding_rejected (__main__.MatcherTest.test_reverse_winding_rejected) ... ok
+test_sub_limit_local_vertex_edit_rejected (__main__.MatcherTest.test_sub_limit_local_vertex_edit_rejected) ... ok
+test_triangle_loss_rejected (__main__.MatcherTest.test_triangle_loss_rejected) ... ok
+test_uv_one_ulp_edit_rejected (__main__.MatcherTest.test_uv_one_ulp_edit_rejected) ... ok
+test_uv_swap_rejected (__main__.MatcherTest.test_uv_swap_rejected) ... ok
+setUpClass (__main__.SourceMaterialTest) ... ERROR
+
+======================================================================
+ERROR: setUpClass (__main__.SourceMaterialTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/375c2e438292/pool-architectural-composition/export003/test_checker.py", line 51, in setUpClass
+    cls.source=json.loads(Path(__file__).with_name('envelope_snapshot001.json').read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/375c2e438292/pool-architectural-composition/export003/envelope_snapshot001.json'
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.004s
+
+FAILED (errors=1)
