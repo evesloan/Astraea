@@ -30,6 +30,7 @@ commands = [('grand_pool_first_pass', ['--script', 'res://tests/validate_grand_p
 commands = [('secondary_engineering_essentials', ['--script', 'res://tests/validate_secondary_engineering_essentials.gd'])] + commands
 commands = [('grand_pool_finish', ['--script', 'res://tests/validate_grand_pool_finish.gd'])] + commands
 commands = [('secondary_engineering_cell', ['--script', 'res://tests/validate_secondary_engineering_cell.gd'])] + commands
+commands = [(name, ['--script', 'res://tests/validate_' + name + '.gd']) for name in ['theater_structure','theater_access','theater_cart']] + commands
 commands.sort(key=lambda entry: entry[0] != 'import')
 if '--only' in sys.argv:
     requested=sys.argv[sys.argv.index('--only')+1]
@@ -60,12 +61,15 @@ for label,args in commands:
     if label == 'secondary_engineering_essentials': frame_budget='12000'
     if label == 'grand_pool_service_cart': frame_budget='60000'
     if label == 'forward_staff_extended_lift': frame_budget='12000'
+    if label == 'theater_structure': frame_budget='2400'
+    if label == 'theater_access': frame_budget='12000'
+    if label == 'theater_cart': frame_budget='24000'
     # Fixed60 advances the same60Hz simulation without wall-clock waiting.
     # Import and graphical review retain their separate original workflows.
     clock_args=[] if realtime or label=='import' else ['--fixed-fps','60']
     started=time.perf_counter()
     process=subprocess.Popen(['godot','--headless','--path',str(root),'--quit-after',frame_budget,*clock_args,*args],env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
-    timeout=threading.Timer(600 if label=='secondary_engineering_cell' else 1000 if label=='grand_pool_service_cart' else 240 if label in ['d17_connected_cart','grand_pool_access','grand_pool_first_pass','grand_pool_finish'] else 600 if label=='aft_crown_platform_cart' else 300 if label=='aft_crown_platform_access' else 900 if label=='bridge_enclosure_cart' else 240 if label=='bridge_enclosure_access' else 180 if label in ["star_atlas","bridge_platform_cart","forward_staff_extended_lift","secondary_engineering_access","secondary_engineering_essentials","secondary_engineering_cell"] else 90,process.kill);timeout.daemon=True;timeout.start()
+    timeout=threading.Timer(600 if label=='theater_cart' else 240 if label in ['theater_structure','theater_access'] else 600 if label=='secondary_engineering_cell' else 1000 if label=='grand_pool_service_cart' else 240 if label in ['d17_connected_cart','grand_pool_access','grand_pool_first_pass','grand_pool_finish'] else 600 if label=='aft_crown_platform_cart' else 300 if label=='aft_crown_platform_access' else 900 if label=='bridge_enclosure_cart' else 240 if label=='bridge_enclosure_access' else 180 if label in ["star_atlas","bridge_platform_cart","forward_staff_extended_lift","secondary_engineering_access","secondary_engineering_essentials","secondary_engineering_cell"] else 90,process.kill);timeout.daemon=True;timeout.start()
     lines=[];errors=[]
     for line in process.stdout:
         lines.append(line);print(line,end='',flush=True)

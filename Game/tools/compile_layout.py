@@ -10,6 +10,11 @@ root=Path(__file__).resolve().parents[1]
 source=root/'data/spatial_layout.json';layout=json.loads(source.read_text())
 contract=json.loads((root/'data/design_contract.json').read_text())
 elevations={x['deck_id']:x['floor_elevation_m'] for x in contract['deck_datums']}
+from theater_surface_policy import verify_theater_surfaces
+theater_ids=verify_theater_surfaces(root,layout,elevations)
+from theater_source_volumes import TheaterSourceVolumes
+source_volumes=TheaterSourceVolumes(root,layout,theater_ids)
+from theater_incremental_preservation import preserve_prior_records
 levels={item['id']:elevations[item['deck']]+item.get('offset_y',0) for item in layout['regions']}
 def coplanar(a,b):
     return abs(levels[a['id']]-levels[b['id']]) < 1e-6
@@ -17,8 +22,8 @@ shapes={}
 for item in layout['regions']:
     shape=Polygon(item['boundary'],item.get('holes',[]));assert shape.is_valid,item['id']
     exemptions=item.get('void_exemptions',[])
-    assert set(exemptions)<= {'central_atrium'},('Protected void exemption',item['id'])
-    if exemptions:
+    assert set(exemptions)<= ({'theater_upper_volume'} if item['id']in theater_ids else {'central_atrium'}),('Protected void exemption',item['id'])
+    if exemptions and item['id']not in theater_ids:
         kind=item.get('kind')
         assert kind=='atrium_terrace' or (kind=='atrium_garden_base' and item['deck']=='D02' and 5.2<=levels[item['id']]<=6.0),item['id']
     for void in layout['voids']:
@@ -56,15 +61,22 @@ for item in layout['regions']:
                 draw_chunks.append({'id':f'cell_{cx}_{cz}','triangles':[[list(c) for c in t.exterior.coords[:3]] for t in shapely.constrained_delaunay_triangles(piece).geoms]})
         assert abs(chunk_area-shape.area)<1e-6*max(1,shape.area)
     outputs.append({'id':item['id'],'deck':item['deck'],'floor_y':elevations[item['deck']]+item.get('offset_y',0),'thickness':item.get('thickness',.24),'triangles':[[list(c) for c in t.exterior.coords[:3]] for t in triangles.geoms],'rings':rings,'structural_area_m2':shape.area,'render_chunks':draw_chunks,'status':item['status'],'material_role':item.get('material_role','guest_floor')})
+source_volumes.validate_owned_shapes(owned)
 for i,a in enumerate(layout['regions']):
     for b in layout['regions'][i+1:]:
         overlap=owned[a['id']].intersection(owned[b['id']]).area
+        if a['id'] in theater_ids or b['id'] in theater_ids:
+            if overlap>1e-7:source_volumes.check_pair(a,b,owned,levels)
+            continue
         if coplanar(a,b):assert overlap<1e-7,(a['id'],b['id'])
         elif overlap>1e-7:
             ay,by=levels[a['id']],levels[b['id']]
             slab_overlap=min(ay,by)-max(ay-a.get('thickness',.24),by-b.get('thickness',.24))
             assert slab_overlap<1e-6,('intersecting structural slabs',a['id'],b['id'])
-checks={'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'shapely':shapely.__version__,'geos':shapely.geos_version_string,'fully_superseded_regions':superseded,'regions':len(outputs),'triangles':sum(len(x['triangles']) for x in outputs),'polygon_validity':True,'triangle_area_conservation':True,'no_triangles_cross_applicable_voids':True,'central_terrace_exemptions_explicit':True,'theater_void_not_exemptible':True,'no_coplanar_region_overlap':True,'no_intersecting_slab_volumes':True,'ownership_uses_absolute_elevation':True,'scope':'Structural geometry only; not finished rooms, route acceptance, or capacity acceptance'}
+outputs,preservation=preserve_prior_records(root,layout,elevations,owned,outputs)
+checks={'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'shapely':shapely.__version__,'geos':shapely.geos_version_string,'fully_superseded_regions':superseded,'regions':len(outputs),'triangles':sum(len(x['triangles']) for x in outputs),'polygon_validity':True,'triangle_area_conservation':True,'no_triangles_cross_applicable_voids':True,'central_terrace_exemptions_explicit':True,'theater_generic_void_preserved':True,'theater_authored_surface_allowlist_verified':sorted(theater_ids),'no_coplanar_region_overlap':True,'no_intersecting_slab_volumes':True,'ownership_uses_absolute_elevation':True,'scope':'Structural geometry only; not finished rooms, route acceptance, or capacity acceptance'}
+checks['theater_source_part_vertical_guard']=source_volumes.receipt()
+checks['theater_additive_preservation']=preservation
 (root/'data/generated/structural_meshes.json').write_text(json.dumps({'source_checks':checks,'regions':outputs},separators=(',',':'))+'\n')
 (root/'docs/LAYOUT_COMPILE_CHECKS.json').write_text(json.dumps(checks,indent=2)+'\n')
 print(json.dumps(checks))

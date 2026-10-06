@@ -21,7 +21,7 @@ static func visual(parent: Node3D, file: String, name: String) -> Node3D:
 	root.set_meta("catalogue_file",file)
 	parent.add_child(root)
 	return root
-static func build(parent: Node3D, _ship: Node3D) -> void:
+static func build(parent: Node3D, ship: Node3D) -> void:
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
 	assert(data.chair_instances == 2200 and data.prototype_instances == 2494)
 	var root := Node3D.new()
@@ -30,6 +30,13 @@ static func build(parent: Node3D, _ship: Node3D) -> void:
 	root.set_meta("programme_keys",["D11_directory_01","D12_directory_11","D13_directory_01"])
 	root.set_meta("stage_status","Source-backed venue, D11 receiving portico, held-open main entrance; other external interfaces closed; door/lift operation unfinished")
 	parent.add_child(root)
+	# Exactly seven colliding structural foundations, never public route/area credit.
+	for i in range(7):
+		var foundation := ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms/D11_theater_foundation_%02d" % i)
+		foundation.set_meta("walkable",false)
+		foundation.set_meta("navigation_surface",false)
+		foundation.set_meta("walking_area_credit",false)
+		foundation.set_meta("coverage","nonwalking_theater_foundation")
 	var glass := ShaderMaterial.new()
 	glass.shader = load("res://shaders/hospitality_glass.gdshader")
 	var shell := visual(root,str(data.static_file),"TheaterSourceArchitecture")
