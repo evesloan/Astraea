@@ -1,0 +1,53 @@
+{
+  "scope": "Two parent-approved supported normal-eye capture additions, real gate lifecycle only on new views. Existing six engineering views including original closed-rest workbay and all other views/renderer byte segments preserved.",
+  "previous_presentation_sha256": "c225697f5c5d59f0ece4e24eb17a2c46efa752cb17385c8cbcd1d56ce81377b8",
+  "new_presentation_sha256": "76f5cef2f50caec7d49facd8ed34579c46fef37605c9f3d63050a986eddc4a80",
+  "prior_capture_audit_sha256": "083f3e11dc814279e8729153c7361255829072e1d5344a855ebb62ee9712618b",
+  "added_views": [
+    {
+      "label": "secondary_engineering_cell_threshold_open_",
+      "floor_xyz": [
+        20.77,
+        6,
+        -403.35
+      ],
+      "camera_eye_xyz": [
+        20.77,
+        7.65,
+        -403.35
+      ],
+      "aim_xyz": [
+        23.5,
+        6.15,
+        -404.8
+      ],
+      "yaw": -1.0825516534813158,
+      "pitch": -0.4517792900144646,
+      "gate_state": "opened through inherited interaction after actor arrival"
+    },
+    {
+      "label": "secondary_engineering_cell_lower_service_open_",
+      "floor_xyz": [
+        23.3,
+        5.55,
+        -404.5
+      ],
+      "camera_eye_xyz": [
+        23.3,
+        7.199999999999999,
+        -404.5
+      ],
+      "aim_xyz": [
+        24.8,
+        6.5,
+        -405.85
+      ],
+      "yaw": -0.8379812250083817,
+      "pitch": -0.3338842208943164,
+      "gate_state": "opened through inherited interaction after actor arrival"
+    }
+  ],
+  "exact_original_view_literal_retained": true,
+  "new_gate_setup_exact_snippet": "\t\t\t\tactor.camera.rotation.x = actor.pitch\n\t\t\t\tif view.get(\"cell_gate_open\",false):\n\t\t\t\t\t# Only the two additive cell views open this source-bound gate.\n\t\t\t\t\t# All six original views are captured first, including closed-rest workbay.\n\t\t\t\t\tvar gate := world_view.get_node(\"Astraea\").find_child(\"EngineeringCellGate\",true,false)\n\t\t\t\t\tassert(gate!=null and gate.persistent_id==&\"D02_secondary_engineering_workbay_cell_gate\")\n\t\t\t\t\tawait get_tree().create_timer(.6).timeout\n\t\t\t\t\tif not gate.desired_open: gate.interact(actor)\n\t\t\t\t\tawait get_tree().create_timer(1.5).timeout\n\t\t\t\t\tassert(gate.desired_open and not gate.obstructed and gate.open_fraction>.999,\"Cell capture requires actual unobstructed inherited open pose\")\n\t\t\t\tget_node(\"NativeResolutionStatus\").text = \"ASTRAEA / CONNECTED INTERIORS \u2014 work in progress\"",
+  "physics_route_and_visual_acceptance_pending": true
+}

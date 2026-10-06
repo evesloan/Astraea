@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/runtime_stage01/bridge_source001/verify_bridge_source.py", line 7, in <module>
+    ob=bpy.data.objects[spec['name']];me=ob.data;points=np.array([wvec(ob.matrix_world@v.co)for v in me.vertices]);error=float(abs(points-np.array(spec['vertices_world'])).max());assert error<1e-5,(ob.name,error);edges={}
+                                                                                                                                                                                          ^^^^^^^^^^
+AssertionError: ('TB_FORE_POST_0', 1.0375976557952526e-05)
+
+Error: script failed, file: '/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/runtime_stage01/bridge_source001/verify_bridge_source.py', exiting.
+Blender 4.3.2
+Read blend: "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/runtime_stage01/bridge_source001/AST-CUL-005_bridge_001.blend"
+
+Blender quit

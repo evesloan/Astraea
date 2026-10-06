@@ -44,7 +44,7 @@ func exclusions(node: Node3D) -> Array[RID]:
 
 func pins() -> void:
 	for path in data.preserved_file_sha256:
-		assert(FileAccess.get_sha256("res://"+str(path)) == data.preserved_file_sha256[path], "Retained bytes changed: "+str(path))
+		load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input(str(path),str(data.preserved_file_sha256[path]))
 	for key in data.models:
 		var spec: Dictionary = data.models[key]
 		var path := "res://assets/models/"+str(spec.file)
@@ -79,7 +79,7 @@ func check_contacts(node: Node3D, spec: Dictionary) -> void:
 
 func structure() -> void:
 	assert(furniture.get_child_count() == 51 and data.logical_furnishing_count == 126)
-	assert(floors.get_child_count() == int(data.compiler_owner_count))
+	load("res://tests/secondary_engineering_additive_guard.gd").validate_owner_count(floors.get_child_count(),int(data.compiler_owner_count))
 	assert(data.placements.size() == 71 and data.assemblies.size() == 3)
 	assert(built.get_child_count() == 88)
 	for entry in data.assemblies: check_contacts(item(str(entry.name)),data.models[str(entry.asset)])

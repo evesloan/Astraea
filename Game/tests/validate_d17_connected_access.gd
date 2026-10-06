@@ -65,7 +65,7 @@ func run() -> void:
 	assert(FileAccess.get_sha256("res://data/generated/structural_meshes.json") == COMPILED_SHA, "Retained 258 records plus the exact three engineering additions are required")
 	assert(FileAccess.get_sha256("res://data/spatial_layout.json") == LAYOUT_SHA, "Reviewed additive layout identity changed")
 	var pool_floors: Dictionary = JSON.parse_string(GRAND_POOL_FLOORS_JSON)
-	assert(compiled.regions.size() == 261 and engineering_floors.size() == 3 and pool_floors.size() == 8)
+	assert(compiled.regions.size() == 262 and engineering_floors.size() == 4 and pool_floors.size() == 8)
 	var seen: Dictionary = {}
 	var pool_seen: Dictionary = {}
 	for region in compiled.regions:
@@ -78,7 +78,7 @@ func run() -> void:
 			assert(str(region.deck) == str(expected.deck) and absf(float(region.floor_y) - float(expected.floor_y)) < .001 and absf(float(region.thickness) - float(expected.thickness)) < .001, "Approved pool-market slab deck/datum/thickness changed: " + id)
 			assert(absf(float(region.structural_area_m2) - float(expected.structural_area_m2)) < .001, "Approved pool-market slab area changed: " + id)
 			pool_seen[id] = true
-	assert(seen.size() == 261 and pool_seen.size() == 8, "Exactly eight pool-market and three engineering additions must accompany all 250 prior owners")
+	assert(seen.size() == 262 and pool_seen.size() == 8, "Exactly eight pool-market and four reviewed engineering owners must accompany all 250 prior owners")
 	var floor_rays := 0
 	for region in compiled.regions:
 		if region.id != "D17_connected_house_floor_00": continue
