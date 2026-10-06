@@ -1,6 +1,7 @@
 """Future RESERVED SERIAL SLOT ONLY; never invoked by pure geometry builders.
 Build editable source with approved retained materials and instanced original chair.
 No engine import/export, controller authoring, registration or shared-source writes.
+Cruise references: unchanged-volume static glazed shaft panels, same-depth warm_walnut soffits.
 """
 import bpy,bmesh,json,math,hashlib
 from pathlib import Path
@@ -21,11 +22,13 @@ groups={}
 for o in g['objects']:
  if o['role']=='preview_only':continue
  key=(o.get('surface_region') or o['name'].split('_')[0],o['material_family'],o['role'])
- vs,fs,names=groups.setdefault(key,([],[],[]));base=len(vs)
- vs.extend((x,-z,y) for x,y,z in o['vertices_world']);fs.extend([base+i for i in f] for f in o['faces']);names.append(o['name'])
-for (owner,material,role),(vs,fs,names) in groups.items():
+ vs,fs,names,fm=groups.setdefault(key,([],[],[],[]));base=len(vs)
+ vs.extend((x,-z,y) for x,y,z in o['vertices_world']);fs.extend([base+i for i in f] for f in o['faces']);names.append(o['name']);fm.extend(o.get('face_material_families',[o['material_family']]*len(o['faces'])))
+for (owner,material,role),(vs,fs,names,fm) in groups.items():
  me=bpy.data.meshes.new(owner);me.from_pydata(vs,[],fs);me.update();bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(me);bm.free();me.update()
- obj=bpy.data.objects.new(owner+'__'+material,me);bpy.context.collection.objects.link(obj);obj.parent=root;me.materials.append(mats[material])
+ obj=bpy.data.objects.new(owner+'__'+material,me);bpy.context.collection.objects.link(obj);obj.parent=root;material_names=list(dict.fromkeys(fm))
+ for mat_name in material_names:me.materials.append(mats[mat_name])
+ for f,mat_name in zip(me.polygons,fm):f.material_index=material_names.index(mat_name)
  uv=me.uv_layers.new(name='metric_material_uv')
  for f in me.polygons:
   axis=max(range(3),key=lambda k:abs(f.normal[k]));axes=[k for k in range(3) if k!=axis]

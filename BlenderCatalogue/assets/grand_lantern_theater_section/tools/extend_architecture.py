@@ -93,7 +93,7 @@ def extend(objects,surfaces,box,prism,write,root):
   box(f'{deck}_vestibule_acoustic_cap',[-38.4,-128.85,-34.5,-123.15],y+3.65,.25,'static_structure','hospitality_ivory')
  # Fitted shaft enclosure; hole stays empty. Cabin/gate/pit/headroom behavior NOT authored.
  for n,r in [('west',[-44.5,-124,-44.25,-118]),('east',[-38.75,-124,-38.5,-118]),('rear',[-44.25,-118.25,-38.75,-118])]:
-  box('lift_shaft_'+n,r,87.65,18.15,'static_structure','hospitality_bronze')
+  box('lift_shaft_'+n,r,87.65,18.15,'static_structure','gallery_glass')
  for side,r in [('port',[-44.5,-124,-43.2,-123.75]),('starboard',[-39.8,-124,-38.5,-123.75])]:
   box('lift_gate_pocket_'+side,r,87.65,18.15,'static_structure','hospitality_bronze')
  for d,y in [('D11',69.5),('D12',78),('D13',84)]:

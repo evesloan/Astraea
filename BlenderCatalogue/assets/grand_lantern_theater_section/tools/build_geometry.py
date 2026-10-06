@@ -154,8 +154,15 @@ assert len(surfaces)==8 and set(s['region_id'] for s in surfaces)==set(s['region
 from extend_architecture import extend
 extend(objects,surfaces,box,prism,write,ROOT)
 material_aliases={'hospitality_ivory':'ivory_enamel','hospitality_bronze':'champagne_metal','cultural_red':'auditorium_amber_velvet','dark_stage':'dark_rubber','suncorp_service':'staff_bluegrey_paint','gallery_glass':'gallery_glass'}
-for obj in objects: obj['material_family']=material_aliases[obj['material_family']]
-write(ROOT/'contracts/material_reuse_contract.json',dict(materials=material_aliases,sources={'terrace_architecture/source/AST-ARC-001.blend':['ivory_enamel','champagne_metal','dark_rubber','gallery_glass'],'auditorium_use/source/AST-CUL-003.blend':['auditorium_amber_velvet'],'auditorium_use/source/AST-CUL-004.blend':['staff_bluegrey_paint']},policy='Read retained material datablocks only; no new palette or shared edits. Verify source hashes before controlled Blender slot.'))
+for obj in objects:
+ obj['material_family']=material_aliases[obj['material_family']]
+ sid=obj.get('surface_region','')
+ if obj['role']=='walkable_authored' and sid and sid.startswith(('D12_theater_','D13_theater_')):
+  n=len(obj['vertices_world'])//2
+  obj['face_material_families']=[('warm_walnut' if all(i>=n for i in f) else obj['material_family']) for f in obj['faces']]
+  obj['soffit_application']='Existing warm_walnut on actual lower faces only; source depth and collision unchanged'
+
+write(ROOT/'contracts/material_reuse_contract.json',dict(materials=material_aliases,sources={'terrace_architecture/source/AST-ARC-001.blend':['ivory_enamel','champagne_metal','dark_rubber','gallery_glass','warm_walnut'],'auditorium_use/source/AST-CUL-003.blend':['auditorium_amber_velvet'],'auditorium_use/source/AST-CUL-004.blend':['staff_bluegrey_paint']},policy='Read retained material datablocks only; no new palette or shared edits. Verify source hashes before controlled Blender slot.'))
 geometry=dict(schema=1,catalogue_id='AST-CUL-005',coordinate_system='world XYZ metres; Blender adapter maps (X,-Z,Y)',status='PURE_SOURCE_GEOMETRY_NO_ENGINE_ACCEPTANCE',objects=objects)
 write(ROOT/'source/geometry.json',geometry); write(ROOT/'contracts/surface_manifest.json',dict(schema=2,partition_policy='Parent approved source revision: return union subtracts actual fan rake and owns 1:12 rear ramp in its original bounds; eight IDs retained; shared compiler pending',surfaces=surfaces,D11='Compiler owns flat base; preview excluded; asset owns rake/stage/ramp, compiler must partition base against those footprints'))
 write(ROOT/'contracts/place_instances.json',dict(source_family='AST-CUL-003',source_sha256=chair_hash,instance_only=True,seat_use_controller=False,places=placements))
