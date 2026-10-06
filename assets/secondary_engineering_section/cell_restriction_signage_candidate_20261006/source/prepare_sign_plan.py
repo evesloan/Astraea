@@ -1,0 +1,29 @@
+from pathlib import Path
+import sys,json,hashlib,numpy as np,math
+R=Path(__file__).resolve().parents[1];G=Path('/workspace/shared/astraea-godot-production-20261003');C=Path('/workspace/shared/astraea-catalogue-continuation-20261002');sys.path.insert(0,'/workspace/scratch/375c2e438292/engineering-density-review');from geometry_review import glb,Query
+MODEL=G/'assets/models/AST-ENG-008_workbay_section_gate_v2.glb';SOURCE=C/'assets/secondary_engineering_section/workbay_section_gate_v2_candidate_20261006/source/AST-ENG-008_workbay_section_gate_v2.blend'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(MODEL)=='6896d757c5a248d0fcf37a2ae7a197de24566a3fec3f80ce80cdc12186e34368'and sha(SOURCE)=='0e4d89ac3a76b4f15c67ef41b5179b0a0780dbc1199eea31562b90b92737a6c3'
+m=glb(MODEL);fixed=Query([x for x in m['meshes']if x['node'].startswith('SectionStatic_')]);leaf=Query([x for x in m['meshes']if x['node']=='LEAF_WORKBAY_CELL'])
+header=[]
+for y in np.linspace(8.644,8.786,7):
+ for z in np.linspace(-406.43,-403.82,17):
+  hit=fixed.rays([27.3,y,z],[27.1,y,z])[0];assert hit['node']=='SectionStatic_0_WORKBAY'and abs(hit['position_xyz'][0]-27.15)<1e-6;header.append(hit)
+leaf_rows=[]
+for y in np.linspace(7.55,8.09,7):
+ for z in np.linspace(-405,-404,17):
+  hit=leaf.rays([21.7,y,z],[22,y,z])[0];assert hit['primitive']==0 and abs(hit['position_xyz'][0]-21.868)<1e-6;leaf_rows.append(hit)
+header_x=header[0]['position_xyz'][0];leaf_x=leaf_rows[0]['position_xyz'][0]
+plan={'catalogue_id':'AST-ENG-008','family':'secondary_engineering_section','derivative':'restricted_cell_signage','new_model_name':'AST-ENG-008_cell_restriction_signage.glb','source_blend':str(SOURCE),'source_sha256':sha(SOURCE),'model_file':str(MODEL),'model_sha256':sha(MODEL),'immutable_inputs':{str(SOURCE):sha(SOURCE),str(MODEL):sha(MODEL)},'scope':'Additive backed header plaque and printed in-envelope moving-leaf lettering only. No original mesh, floor, collision, material graph, glass shader, source light or controller changes.','header':{'name':'SIGN_FIXED_EAST_HEADER','plate_bounds_xyz':[header_x,8.643,-406.43,header_x+.006,8.787,-403.82],'material_role':'staff_label','normal_xyz':[1,0,0],'text':'SUNCORP · RESTRICTED ENGINEERING','cap_height_m':.104,'max_width_m':2.52,'text_center_xyz':[header_x+.0062,8.715,-405.125],'text_role':'staff_rubber','backing_source_group':'SectionStatic_0_WORKBAY','backing_source_part':'CellSteppedEastHeader','collision_contract':'none; 6mm surface trim on retained solid backing, not an added route obstruction'},'leaf_print':{'name':'SIGN_MOVING_GLASS_LEAF','owner':'LEAF_WORKBAY_CELL','lines':['SPECIALIZED','SUNCORP','PERSONNEL ONLY'],'cap_height_m':.094,'max_width_m':1.02,'line_centers_xyz':[[leaf_x-.0002,8.035,-404.5],[leaf_x-.0002,7.835,-404.5],[leaf_x-.0002,7.635,-404.5]],'normal_xyz':[-1,0,0],'material_role':'staff_label','backing_source_material':'ASTRAEA_bridge_pressure_glass','canonical_rest_bounds_xyz':[21.84,6.03,-405.12,21.895,8.44,-403.88],'opening_translation_xyz':[0,0,-1.22],'collision_contract':'none; ink lies entirely inside the existing leaf envelope and is parented to the existing leaf with global rest transform preserved'},'views':[{'name':'original_workbay','eye_xyz':[30,7.6501565,-405],'aim_xyz':[29,7.6501565,-405],'gate_state':'closed canonical rest','vertical_fov':72},{'name':'west_gate_closed_sign','eye_xyz':[20.77,7.65,-404.5],'aim_xyz':[21.868,7.83,-404.5],'gate_state':'closed canonical rest','vertical_fov':72,'floor_xyz':[20.77,6,-404.5],'purpose':'New ordinary upper landing approach view; does not replace existing original/step views'}],'lighting':'No new light, emission or shader; use unchanged source material roles. Direct lighting/normal presentation readability requires actual visual review, not just text count.','runtime_adopted':False,'first_pass_accepted':False}
+# Both additions avoid the unchanged circulation/door collision envelopes.
+b=np.array(plan['header']['plate_bounds_xyz']);assert b[0]>27.1 and b[3]<28.2
+p=np.array(plan['leaf_print']['line_centers_xyz']);lo=p.min(0)-[0,.05,.51];hi=p.max(0)+[0,.05,.51];assert np.all(lo>=np.array(plan['leaf_print']['canonical_rest_bounds_xyz'][:3]))and np.all(hi<=np.array(plan['leaf_print']['canonical_rest_bounds_xyz'][3:]))
+for f in np.linspace(0,1,41):
+ delta=np.array([0,0,-1.22])*f;assert np.all(lo+delta>=np.array(plan['leaf_print']['canonical_rest_bounds_xyz'][:3])+delta)and np.all(hi+delta<=np.array(plan['leaf_print']['canonical_rest_bounds_xyz'][3:])+delta)
+# Preliminary geometry visibility only, using original room+essentials+cell, no floor edits.
+meshes=list(m['meshes'])
+for name in ['AST-ENG-008_receiving_shoulders.glb','AST-ENG-008_essentials.glb']:meshes+=glb(G/'assets/models'/name)['meshes']
+q=Query(meshes);viewproof=[]
+for view,target in zip(plan['views'],[plan['header']['text_center_xyz'],plan['leaf_print']['line_centers_xyz'][1]]):
+ hits=q.rays(view['eye_xyz'],target);assert not hits,(view['name'],hits[:1]);distance=float(np.linalg.norm(np.array(target)-view['eye_xyz']));cap=.104 if view['name']=='original_workbay'else .094;px=cap/distance*360/(2*math.tan(math.radians(36)));viewproof.append({'view':view['name'],'distance_m':distance,'preliminary_cap_pixels_at_360h':px,'geometry_ray_unblocked':True,'readability_acceptance':False})
+(R/'source/sign_plan.json').write_text(json.dumps(plan,indent=2)+'\n');(R/'qa/PURE_SUPPORT_AND_SWEEP.json').write_text(json.dumps({'header_backing_samples':len(header),'glass_backing_samples':len(leaf_rows),'full_in_envelope_pose_samples':41,'header_backing_witnesses':[header[0],header[-1]],'glass_backing_witnesses':[leaf_rows[0],leaf_rows[-1]],'views':viewproof,'route_collision_additions':0,'new_lights':0,'scope':'Source-only measured support and preliminary visibility. Font mesh export, source reload and normal presentation legibility remain to test.'},indent=2)+'\n');print('SIGN_PLAN_PASS',viewproof)

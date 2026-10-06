@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "case": "valid_context",
+      "passed": true
+    },
+    {
+      "case": "extra_removed_guard",
+      "passed": true,
+      "rejected_reason": "Historical guard transition must remove exactly the original runtime context guard"
+    },
+    {
+      "case": "changed_source_pin",
+      "passed": true,
+      "rejected_reason": "An immutable/original input guard was changed"
+    },
+    {
+      "case": "missing_archived_payload",
+      "passed": true,
+      "rejected_reason": "Historical context must be retained as exact payload"
+    },
+    {
+      "case": "wrong_historical_hash",
+      "passed": true,
+      "rejected_reason": "Only the two exact reviewed historical lighting JSONs may be classified"
+    },
+    {
+      "case": "live_fixture_guard_added",
+      "passed": true,
+      "rejected_reason": "Historical fixture context must not acquire an unrelated live guard"
+    }
+  ],
+  "engines_or_git_started": false,
+  "prior_copy_mechanics_report": "history/packaging001/COPIER_TEST_REPORT.json",
+  "production_writes": false,
+  "status": "PASS_NARROW_CONTEXT_POLICY_TESTS",
+  "wrapper_sha256": "7574a2aabf817f448865614465ccc571f4a7078ee710ee5aada98bed9e6a7d04"
+}

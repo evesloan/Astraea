@@ -1,0 +1,89 @@
+{
+  "status": "PASS_SOURCE_BUILD_AND_INDEPENDENT_REOPEN",
+  "started_utc": "2026-10-06T15:30:24.417636+00:00",
+  "scope": "Source build, independent Blender snapshot, host exact geometry QA; no export/render/Game changes.",
+  "processes": [
+    {
+      "label": "build",
+      "command": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_crosswash_study002/source_candidate001/build_feature_lighting.py"
+      ],
+      "started_utc": "2026-10-06T15:30:24.417771+00:00",
+      "timeout_s": 300,
+      "exit_code": 0,
+      "elapsed_s": 1.470201313990401,
+      "finished_utc": "2026-10-06T15:30:25.888146+00:00",
+      "log_sha256": "c4db0a573fc3df79d8a1a7e5815c462638f8fb80b95351b9d85b44e7ee13ca0b"
+    },
+    {
+      "label": "reopen_snapshot",
+      "command": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_crosswash_study002/source_candidate001/reopen_feature_lighting002.py",
+        "--",
+        "--stage",
+        "snapshot",
+        "--run-id",
+        "reopen001_snapshot",
+        "--expected-source-sha256",
+        "0d02c3e4d11e8b50272a30606a6ef23955a8ef08a9a406993b4f8ee75f77daf8"
+      ],
+      "started_utc": "2026-10-06T15:30:25.889732+00:00",
+      "timeout_s": 300,
+      "exit_code": 0,
+      "elapsed_s": 1.4679488230030984,
+      "finished_utc": "2026-10-06T15:30:27.357815+00:00",
+      "log_sha256": "55296d132c55c50a8119368c3ad6553980014c1e8947fac2fde3012e912e5a30"
+    },
+    {
+      "label": "reopen_geometry",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/375c2e438292/pool-architectural-composition/fixture_crosswash_study002/source_candidate001/reopen_feature_lighting002.py",
+        "--stage",
+        "geometry",
+        "--run-id",
+        "reopen001_geometry",
+        "--snapshot-run-id",
+        "reopen001_snapshot",
+        "--expected-source-sha256",
+        "0d02c3e4d11e8b50272a30606a6ef23955a8ef08a9a406993b4f8ee75f77daf8"
+      ],
+      "started_utc": "2026-10-06T15:30:27.359078+00:00",
+      "timeout_s": 300,
+      "exit_code": 0,
+      "elapsed_s": 5.5791368009959115,
+      "finished_utc": "2026-10-06T15:30:32.938356+00:00",
+      "log_sha256": "e99d15eaa7db00bd7895fe0e1e1ceab659bd77ce671b676d91f4e5c594ad3510"
+    }
+  ],
+  "script_sha256": {
+    "builder_sha256": "b7c1dfab21154b56a03ee882d32c34bed6637a1c733a532481a3f81249fdab06",
+    "verifier_sha256": "92c9ecf05e1b12cf7ba4b782633ea891ca6e904c157cad351ec564ea2d4d8a7f",
+    "scope_sha256": "44103b09b937bae83c84d481a3f3001b65287c7c237a63e4f118c57b8bc8932f"
+  },
+  "finished_utc": "2026-10-06T15:30:32.939783+00:00",
+  "source_sha256": "0d02c3e4d11e8b50272a30606a6ef23955a8ef08a9a406993b4f8ee75f77daf8",
+  "reopen_receipt_sha256": "ec24fcf8d468bf247dc416b31b93e6ba4c8bbdfea6bcc59e8b23b60a846c692d",
+  "compound_leaf_shadow": "Separate retained record:29clear,1actual leaf interception; native visual coverage pending.",
+  "exports": [],
+  "renders": [],
+  "installed": false
+}

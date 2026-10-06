@@ -1,0 +1,11 @@
+--- reopen_court_A_readonly.py
++++ reopen_court_A_readonly_successor.py
+@@ -331,7 +331,7 @@
+     for mat,actual in actual_graphs.items():
+         role=role_of(mat)
+         if role in printed['materials']:
+-            require(material_record(mat)==build['paper_material_graphs'][role],'paper_graph_exact_build_reopen',mat.name)
++            require(digest(material_record(mat))==digest(build['paper_material_graphs'][role]),'paper_graph_exact_build_reopen',mat.name)
+             spec=printed['materials'][role]; bs=next(n for n in mat.node_tree.nodes if n.type=='BSDF_PRINCIPLED')
+             for field,socket in [('roughness','Roughness'),('metallic','Metallic'),('coat_weight','Coat Weight'),('transmission_weight','Transmission Weight'),('emission_strength','Emission Strength'),('specular_ior_level','Specular IOR Level')]:
+                 require(close(bs.inputs[socket].default_value,spec[field],1e-7),'paper_recipe_socket',[role,socket])

@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_readonly.py", line 534, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_readonly.py", line 525, in main
+    try:check()
+        ~~~~~^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_readonly.py", line 302, in check
+    topo=open_leaf_topology(me,row['name']) if kind=='open_shaped_leaf' else closed_topology(me,row['name'],Vector,part['shape_controls'] if kind=='closed_support' else None)
+                                                                             ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_readonly.py", line 156, in closed_topology
+    require(all(len(v) == 2 and v[0][:2] == v[1][:2][::-1] for v in edges.values()), 'closed_opposite_directed_edges', name)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_readonly.py", line 35, in require
+    raise AssertionError(json.dumps({'gate': code, 'detail': detail}, default=str)[:1800])
+AssertionError: {"gate": "closed_opposite_directed_edges", "detail": "A4_W_crowned_cushion"}
+{"status": "FAIL_SOURCE_ONLY_CHECK", "detail": "{\"gate\": \"closed_opposite_directed_edges\", \"detail\": \"A4_W_crowned_cushion\"}", "evidence": "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/REOPEN_FAILURE_1791295148737170804.json"}
+Blender 4.3.2
+Read blend: "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/printed_materials001/authored_preview001/AST-CUL-005_arrival_court_A_004.blend"
+
+Blender quit

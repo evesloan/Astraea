@@ -1,0 +1,43 @@
+# Court A: bounded source export and sibling increment
+
+Prepared only. No engines, export, import, shared write or runtime adoption has run. Priority remains the eight ramps, then this court. The independently retained source is 7456c069315f3ed1f74c327ba0af53a90942cd1549b6905d3abe58ba76633c49. Parent reported independent remote retention on 2026-10-06 at 15:37 UTC; source-engine execution still needs its own explicit slot approval.
+
+## Exact source boundary
+
+Use only A4_COMPLETED_COURT from the retained corrected standalone. The source contains 157 authored meshes (69 architecture, 78 fuller-plant parts, ten printed solids) and 24 collection placements: 15 BOT-003, six BOT-002, two FUR-003 and one CUL-002. Export the four definitions once, including all 120 evaluated meshes/133 authored objects. Source/source-library graph and evaluated-state hashes are checked against the retained independent reopen reports. Evaluate all original bevel/weighted-normal modifiers at the audited saved frame. Do not delete/apply modifiers to the saved source, append old theater/chairs/plants/usher, bake duplicate placements, or attach the hidden prototype library itself to the live world.
+
+The current closed-pose counter is retained furniture, not a new interactive drawer implementation. Empty physical/service markers remain source provenance, not visible solids or collision shapes. No original floor/slab, old scene shell, lights or camera enters these exports.
+
+## Two GLBs, one placement contract
+
+- AST-CUL-005_court_A_authored_004.glb: new geometry only, local to Court origin (-69.5, 69.5, -138). Each batch key is exact source material identity + collides + authored role + a 4 m court-local spatial cell. Triangles are assigned whole, never clipped or simplified. Store full per-part semantic triangle counts.
+- AST-CUL-005_court_A_prototypes_004.glb: four definitions at their own original prototype coordinates, grouped by exact material/collision role; no world placements in the GLB.
+- A later COURT_A_RUNTIME_INCREMENT004.json is derived from the successful receipt, not guessed now. It carries all 24 actual collection-instance-offset-aware matrices both in world coordinates and relative to the explicit Court root translation. The root translation plus local matrix must recover each original world matrix within 1e-7 m. Do not reconstruct yaw/position recipes in place of actual saved source transforms.
+
+The prepared exporter archives unquantized source triangle position, UV and corner-normal arrays. Optional pinned precise_normals preserves exporter decimal precision; the subsequent retained-algorithm repack replaces only quantized corner normal storage. Positions, UVs, other attributes, materials, images, nodes and extras remain unchanged. Repacking fails if source position/order correspondence is not already correct.
+
+## Material and binary gate
+
+Retain every used original Blender graph and packed image SHA, including the two complete original programme images. No material substitution, paper-as-cloth, UV regeneration, node recolouring or global filtering override. The prepared checker compares the supported simple Principled/image translation: base colour, roughness, metallic, IOR, specular factor/tint, alpha/double-sided policy, texture-byte identity, UV set and sampler wrap/filter. Unsupported shader nodes/links/features fail for review rather than being silently dropped. Engine material interpretation remains a separate actual native test.
+
+Binary tolerances remain position <= 1e-4 m, UV <= 1e-6 and corner normal <= 2e-4, with winding/degeneracy checks. Authored GLB local coordinates are compared after the explicit Court root translation; prototypes remain definition-local. Verify all 157/120 semantic meshes, four definitions and 24 unique placements with no hidden duplicate instances. None of these checks accepts collisions or final art.
+
+## New-only import and sibling builder
+
+After export/binary QA and separate adoption approval, install only the two new GLBs and new .glb.import files. Set meshes/force_disable_compression=true initially; preserve meter scale 1, material extraction disabled and embedded images. Do not copy old UIDs/cache paths or edit any existing import policy. Inspect actual imported LOD0 raw arrays against the source archive, accounting for possible engine winding reversal. Never use Mesh.get_faces() readback as the render-attribute identity source; physics triangle storage is tested separately.
+
+Implement a small new scripts/court_a_increment004.gd plus a new contract. Add one call after the existing theater build in ship.gd; never call its hardcoded full-theater build/_build_instances again. Place a unique CourtACompletion004 root at (-69.5,69.5,-138), reject an existing root/ID, add the authored GLB once, and render the four definitions using only the 24 receipt placements. Template prototype PackedScene stays detached and is freed after extracting resources. Reuse material resources without replacing existing theater materials. Spatial MultiMesh grouping may be used for plants; preserve source_instance_ids, source_definition, source_prototype_batch and exact transforms. Do not introduce a new catalogue ID.
+
+Collision contract: 68 authored solids collide; the 5 mm rug, all 78 botanical parts and all ten printed meshes do not. All 21 plant placements are noncolliding. Two tables and one counter use evaluated closed-pose furniture triangles with explicit source identity. Build colliders only from colliding batches using explicit raw surface vertex/index arrays and exact batch/placement transforms; never source the faces through Mesh.get_faces(), which snaps approximately 0.1 mm. No foliage AABB, extra floor, rug walking credit or implicit default-collides rule. Keep source float render arrays intact; independently inspect actual ConcavePolygonShape face storage and contact rays. No collider margin/dimension adjustment is authorized by a visual match.
+
+## Narrow adoption/QA sequence
+
+1. Finish the priority ramp work. Record then-current ship.gd preimage plus unchanged old theater GLBs, builder, 2200 chair identities/matrices, old plants/usher, structural ownership/compiled records, proof input manifests and 139 enabled source-light poses. The Court task consumes no live optical contract and must not restore its historical render settings.
+2. Run the prepared two-thread export/repack/binary check in a newly granted source slot. Retain the successful new export package before new-only import/adoption. No automatic installation is in this wrapper.
+3. Draft the sibling builder/contract with exact preimages and exclusive-create installation guard. Existing theater runtime contract, old GLBs, source proof inputs, eight-owner policies and compiler outputs stay unchanged; only a reviewed ship.gd call is added. Compare the old subtree before/after, not just aggregate counts.
+4. Native raw LOD0/material identity, then separate colliding-face precision and actual rays: floor/sofa feet, both table feet, reception plinth, canopy bearings/headroom, no phantom rug/foliage/art contacts, plant root/soil interfaces, public/low-writing/service and open-drawer reservations, six seat approaches and focus, 3.1 m inner spine and front cross-aisle, cart/load/operator sweep through the west dogleg and preserved D11 route. Source grid witnesses are not native contact/load certification; six-species fit remains explicit.
+5. Capture matched standing, seated and service views under the current native lighting. Parent reports that current native optical correction cleared all 18 court/coffer rays and removed floor washout, while the old court remained empty/dim. The new geometry can naturally shadow/reframe the existing spotlight targeting the old rear plant. No new lights, energy/exposure tuning, ambient changes or source-to-native photometric inference is included. Recheck the existing 8-shadow/32-candidate policy and all old identities. Visual/native acceptance remains false until reviewed.
+
+## Runnable preparation
+
+Default calls to the four Python drafts are inspection-only. The export gate template leaves parent_authorized_export and source_engine_slot_granted false. A fresh reviewed gate must pin the exporter SHA and independent-retention evidence before run_court_A_export_DRAFT.py --run --gate PATH can start Blender. It runs raw export, pure normal repack and pure independent binary QA, retains failures in new scratch directories, and never installs or retries by overwriting outputs. All scripts are prepared and syntax/inspection checked, not engine-tested.

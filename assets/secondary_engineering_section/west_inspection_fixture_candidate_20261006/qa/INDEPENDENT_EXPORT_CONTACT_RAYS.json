@@ -1,0 +1,1233 @@
+{
+  "status": "PASS",
+  "scope": "Saved-source/export equivalence; actual authored bearing-plane contacts; actual retained-surface conservative-volume screening and geometric source rays. No Game run, import, image, energy, ranking or adoption.",
+  "source_sha256": "9e1aaee34f3af3ba177e4d3f113ce40906a76212269149e0f2dcf4d45c081a34",
+  "export_sha256": "78c1f2dcf606186a730575f4135d9dea1f06ee7ef871b0fcdee52ac24c2aea75",
+  "equivalence": {
+    "source_triangles": 48,
+    "export_triangles": 48,
+    "maximum_export_to_source_vertex_error_m": 9.116486755336489e-05,
+    "maximum_source_to_export_vertex_error_m": 9.116486755336489e-05,
+    "oriented_object_material_triangles_missing": 0,
+    "oriented_object_material_triangles_extra": 0,
+    "maximum_loop_uv_error": 0.0,
+    "passed": true
+  },
+  "materials": [
+    {
+      "material": "ASTRAEA_staff_zinc",
+      "texture_exact_bytes": true,
+      "texture_identical_rgba_pixels": true,
+      "roughness_error": 0.0,
+      "metallic_error": 0.0,
+      "base_color_factor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha_mode": "OPAQUE",
+      "uv_set": 0,
+      "repeat_wrap": true,
+      "passed": true
+    },
+    {
+      "material": "ASTRAEA_staff_bluegrey_paint",
+      "texture_exact_bytes": true,
+      "texture_identical_rgba_pixels": true,
+      "roughness_error": 0.0,
+      "metallic_error": 0.0,
+      "base_color_factor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha_mode": "OPAQUE",
+      "uv_set": 0,
+      "repeat_wrap": true,
+      "passed": true
+    },
+    {
+      "material": "ASTRAEA_staff_opal",
+      "texture_exact_bytes": true,
+      "texture_identical_rgba_pixels": true,
+      "roughness_error": 0.0,
+      "metallic_error": 0.0,
+      "base_color_factor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha_mode": "OPAQUE",
+      "uv_set": 0,
+      "repeat_wrap": true,
+      "passed": true
+    }
+  ],
+  "marker": {
+    "xyz": [
+      25.549999237060547,
+      9.5,
+      -432.0
+    ],
+    "emitter_xyz": [
+      25.549999237060547,
+      9.42,
+      -432.0
+    ],
+    "passed": true
+  },
+  "contacts": [
+    {
+      "lower": "WEST_opal",
+      "upper": "WEST_housing",
+      "lower_top_y": 9.524999618530273,
+      "upper_bottom_y": 9.524999618530273,
+      "vertical_gap_m": 0.0,
+      "lower_horizontal_area_m2": 0.22001310747873504,
+      "upper_horizontal_area_m2": 0.36403784737194655,
+      "actual_face_overlap_area_m2": 0.22001310747873504,
+      "minimum_surface_fully_supported": true,
+      "passed": true
+    },
+    {
+      "lower": "WEST_housing",
+      "upper": "WEST_mount",
+      "lower_top_y": 9.63499927520752,
+      "upper_bottom_y": 9.63499927520752,
+      "vertical_gap_m": 0.0,
+      "lower_horizontal_area_m2": 0.36403784737194655,
+      "upper_horizontal_area_m2": 0.5399779903764284,
+      "actual_face_overlap_area_m2": 0.36403784737285605,
+      "minimum_surface_fully_supported": true,
+      "passed": true
+    },
+    {
+      "lower": "WEST_mount",
+      "upper": "WEST_CapStem",
+      "lower_top_y": 9.734999656677246,
+      "upper_bottom_y": 9.734999656677246,
+      "vertical_gap_m": 0.0,
+      "lower_horizontal_area_m2": 0.5399779903764284,
+      "upper_horizontal_area_m2": 0.004900491330772638,
+      "actual_face_overlap_area_m2": 0.004900491329863144,
+      "minimum_surface_fully_supported": true,
+      "passed": true
+    },
+    {
+      "lower": "WEST_CapStem",
+      "upper": "containment_cap",
+      "lower_top_y": 10.479999542236328,
+      "upper_bottom_y": 10.479999542236328,
+      "vertical_gap_m": 0.0,
+      "lower_horizontal_area_m2": 0.004900491330772638,
+      "upper_horizontal_area_m2": 342.0,
+      "actual_face_overlap_area_m2": 0.004900491330772638,
+      "minimum_surface_fully_supported": true,
+      "passed": true
+    }
+  ],
+  "retained_triangle_volume_screen": [
+    {
+      "candidate": "WEST_mount",
+      "conservative_bounds_xyz": [
+        25.370021316183283,
+        9.63499927520752,
+        -432.7501307657549,
+        25.730007212528903,
+        9.734999656677246,
+        -431.25013068339797
+      ],
+      "retained_triangle_intrusions": [],
+      "passed": true
+    },
+    {
+      "candidate": "WEST_housing",
+      "conservative_bounds_xyz": [
+        25.40999937929911,
+        9.524999618530273,
+        -432.65013037286,
+        25.69002914941308,
+        9.63499927520752,
+        -431.35013107629277
+      ],
+      "retained_triangle_intrusions": [],
+      "passed": true
+    },
+    {
+      "candidate": "WEST_opal",
+      "conservative_bounds_xyz": [
+        25.45000795999198,
+        9.5,
+        -432.55012997995385,
+        25.65002056872021,
+        9.524999618530273,
+        -431.45013146919894
+      ],
+      "retained_triangle_intrusions": [],
+      "passed": true
+    },
+    {
+      "candidate": "WEST_CapStem",
+      "conservative_bounds_xyz": [
+        25.514999389648438,
+        9.734999656677246,
+        -432.0350036621094,
+        25.584999084472656,
+        10.479999542236328,
+        -431.9649963378906
+      ],
+      "retained_triangle_intrusions": [],
+      "passed": true
+    }
+  ],
+  "retained_geometry_inputs": {
+    "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_cell_restriction_signage_004.glb": "985fec01390bc3ccf3543df9062ce8ce448a99014e5a92695dea8390b1b990b1",
+    "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_essentials.glb": "94dcb4ba3333aa8f4a70be6974428667948e13c7636ecd40bf65638bc84adec0",
+    "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb": "37a5e374c70d6ecac1bdcbf14f6f1f25dfd480408f7f4d69b31aba066b9dc28d",
+    "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_workbay_section_gate_v2.glb": "6896d757c5a248d0fcf37a2ae7a197de24566a3fec3f80ce80cdc12186e34368"
+  },
+  "retained_geometry_triangles": 128074,
+  "central_emitter_exit_10cm_first_hit": null,
+  "receiver_samples": [
+    {
+      "radius_m": 0,
+      "target_xyz": [
+        26.22,
+        8.05,
+        -432.0
+      ],
+      "distance_m": 1.5250577111504489,
+      "cone_offset_degrees": 1.2074182697257333e-06,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.5250561482059208,
+        "point_xyz": [
+          26.219999313354492,
+          8.050001404034738,
+          -432.0
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        8.25,
+        -432.0
+      ],
+      "distance_m": 1.3482585146549038,
+      "cone_offset_degrees": 3.73659793738921,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.3482571329017754,
+        "point_xyz": [
+          26.219999313354492,
+          8.25000119906616,
+          -432.0
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        8.234775906502257,
+        -431.923463313527
+      ],
+      "distance_m": 1.3636403626041798,
+      "cone_offset_degrees": 4.6930103513990185,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.36363896508707,
+        "point_xyz": [
+          26.219999313354492,
+          8.234777121170724,
+          -431.92346339196513
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        8.19142135623731,
+        -431.8585786437627
+      ],
+      "distance_m": 1.4065228424199916,
+      "cone_offset_degrees": 6.30506580734502,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.4065214009550804,
+        "point_xyz": [
+          26.219999313354492,
+          8.191422615337379,
+          -431.85857878869734
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        8.126536686473019,
+        -431.81522409349776
+      ],
+      "distance_m": 1.468363204865666,
+      "cone_offset_degrees": 7.348524721025654,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.4683617000241023,
+        "point_xyz": [
+          26.219999313354492,
+          8.126538012069679,
+          -431.815224282864
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        8.05,
+        -431.8
+      ],
+      "distance_m": 1.5381160627011998,
+      "cone_offset_degrees": 7.4712796325105515,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.5381144863739185,
+        "point_xyz": [
+          26.219999313354492,
+          8.050001404034736,
+          -431.80000020496857
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        7.973463313526983,
+        -431.81522409349776
+      ],
+      "distance_m": 1.604840036662691,
+      "cone_offset_degrees": 6.7205824354839905,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.6048383919538165,
+        "point_xyz": [
+          26.219999313354492,
+          7.973464795999794,
+          -431.81522428286405
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        7.9085786437626915,
+        -431.8585786437627
+      ],
+      "distance_m": 1.6593057398893267,
+      "cone_offset_degrees": 5.341489577631597,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.659304039361661,
+        "point_xyz": [
+          26.219999313354492,
+          7.908580192732099,
+          -431.8585787886974
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        7.865224093497743,
+        -431.923463313527
+      ],
+      "distance_m": 1.694723283062939,
+      "cone_offset_degrees": 3.7746878748498656,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.6947215462378606,
+        "point_xyz": [
+          26.219999313354492,
+          7.865225686898751,
+          -431.9234633919651
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        7.8500000000000005,
+        -432.0
+      ],
+      "distance_m": 1.7069859467316788,
+      "cone_offset_degrees": 2.950554705348869,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.7069841973392987,
+        "point_xyz": [
+          26.219999313354492,
+          7.850001609003309,
+          -432.0
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        7.865224093497743,
+        -432.076536686473
+      ],
+      "distance_m": 1.694723283062939,
+      "cone_offset_degrees": 3.7746878748498656,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.6947215462378606,
+        "point_xyz": [
+          26.219999313354492,
+          7.865225686898751,
+          -432.0765366080349
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        7.9085786437626915,
+        -432.1414213562373
+      ],
+      "distance_m": 1.6593057398893267,
+      "cone_offset_degrees": 5.341489577631597,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.659304039361661,
+        "point_xyz": [
+          26.219999313354492,
+          7.908580192732099,
+          -432.1414212113026
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        7.973463313526983,
+        -432.18477590650224
+      ],
+      "distance_m": 1.604840036662691,
+      "cone_offset_degrees": 6.7205824354839905,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.6048383919538165,
+        "point_xyz": [
+          26.219999313354492,
+          7.973464795999794,
+          -432.18477571713595
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        8.05,
+        -432.2
+      ],
+      "distance_m": 1.5381160627011998,
+      "cone_offset_degrees": 7.4712796325105515,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.5381144863739185,
+        "point_xyz": [
+          26.219999313354492,
+          8.050001404034736,
+          -432.19999979503143
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        8.126536686473019,
+        -432.18477590650224
+      ],
+      "distance_m": 1.468363204865666,
+      "cone_offset_degrees": 7.348524721025654,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.4683617000241023,
+        "point_xyz": [
+          26.219999313354492,
+          8.126538012069679,
+          -432.184775717136
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        8.19142135623731,
+        -432.1414213562373
+      ],
+      "distance_m": 1.4065228424199916,
+      "cone_offset_degrees": 6.30506580734502,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.4065214009550804,
+        "point_xyz": [
+          26.219999313354492,
+          8.191422615337379,
+          -432.14142121130266
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.2,
+      "target_xyz": [
+        26.22,
+        8.234775906502257,
+        -432.076536686473
+      ],
+      "distance_m": 1.3636403626041798,
+      "cone_offset_degrees": 4.6930103513990185,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.36363896508707,
+        "point_xyz": [
+          26.219999313354492,
+          8.234777121170724,
+          -432.07653660803487
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        8.450000000000001,
+        -432.0
+      ],
+      "distance_m": 1.1788982239105483,
+      "cone_offset_degrees": 8.572686417044281,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.1788970157251064,
+        "point_xyz": [
+          26.219999313354492,
+          8.450000994097588,
+          -432.0
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        8.419551813004515,
+        -431.84692662705396
+      ],
+      "distance_m": 1.213766474535805,
+      "cone_offset_degrees": 10.593456378847252,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.21376523061588,
+        "point_xyz": [
+          26.219999313354492,
+          8.41955283830671,
+          -431.84692678393014
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        8.33284271247462,
+        -431.71715728752537
+      ],
+      "distance_m": 1.3079801184112085,
+      "cone_offset_degrees": 13.661915647885658,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.3079787779371035,
+        "point_xyz": [
+          26.219999313354492,
+          8.332843826640016,
+          -431.71715757739474
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        8.203073372946037,
+        -431.63044818699547
+      ],
+      "distance_m": 1.4374908627422025,
+      "cone_offset_degrees": 15.14739920079101,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.437489389539942,
+        "point_xyz": [
+          26.219999313354492,
+          8.203074620104614,
+          -431.630448565728
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        8.05,
+        -431.6
+      ],
+      "distance_m": 1.576642325430669,
+      "cone_offset_degrees": 14.696787181825082,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.5766407096200217,
+        "point_xyz": [
+          26.219999313354492,
+          8.050001404034738,
+          -431.60000040993714
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        7.896926627053965,
+        -431.63044818699547
+      ],
+      "distance_m": 1.7044711978240048,
+      "cone_offset_degrees": 12.730991215112812,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.7044694510088543,
+        "point_xyz": [
+          26.219999313354492,
+          7.896928187964853,
+          -431.630448565728
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        7.767157287525381,
+        -431.71715728752537
+      ],
+      "distance_m": 1.8057657806370986,
+      "cone_offset_degrees": 9.850761220949225,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.8057639300109085,
+        "point_xyz": [
+          26.219999313354492,
+          7.767158981429459,
+          -431.7171575773947
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        7.680448186995486,
+        -431.84692662705396
+      ],
+      "distance_m": 1.870393806119935,
+      "cone_offset_degrees": 6.851697419830914,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.870391889260169,
+        "point_xyz": [
+          26.219999313354492,
+          7.680449969762767,
+          -431.84692678393014
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        7.65,
+        -432.0
+      ],
+      "distance_m": 1.8925646679412162,
+      "cone_offset_degrees": 5.327788319786216,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.8925627283598039,
+        "point_xyz": [
+          26.219999313354492,
+          7.650001813971886,
+          -432.0
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        7.680448186995486,
+        -432.15307337294604
+      ],
+      "distance_m": 1.870393806119935,
+      "cone_offset_degrees": 6.851697419830914,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.870391889260169,
+        "point_xyz": [
+          26.219999313354492,
+          7.680449969762767,
+          -432.15307321606986
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        7.767157287525381,
+        -432.28284271247463
+      ],
+      "distance_m": 1.8057657806370986,
+      "cone_offset_degrees": 9.850761220949225,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.8057639300109085,
+        "point_xyz": [
+          26.219999313354492,
+          7.767158981429459,
+          -432.2828424226053
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        7.896926627053965,
+        -432.36955181300453
+      ],
+      "distance_m": 1.7044711978240048,
+      "cone_offset_degrees": 12.730991215112812,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.7044694510088543,
+        "point_xyz": [
+          26.219999313354492,
+          7.896928187964853,
+          -432.369551434272
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        8.05,
+        -432.4
+      ],
+      "distance_m": 1.576642325430669,
+      "cone_offset_degrees": 14.696787181825082,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.5766407096200215,
+        "point_xyz": [
+          26.219999313354492,
+          8.050001404034738,
+          -432.39999959006286
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        8.203073372946037,
+        -432.36955181300453
+      ],
+      "distance_m": 1.4374908627422025,
+      "cone_offset_degrees": 15.14739920079101,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.437489389539942,
+        "point_xyz": [
+          26.219999313354492,
+          8.203074620104614,
+          -432.369551434272
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        8.33284271247462,
+        -432.28284271247463
+      ],
+      "distance_m": 1.3079801184112085,
+      "cone_offset_degrees": 13.661915647885658,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.3079787779371037,
+        "point_xyz": [
+          26.219999313354492,
+          8.332843826640016,
+          -432.28284242260526
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.4,
+      "target_xyz": [
+        26.22,
+        8.419551813004515,
+        -432.15307337294604
+      ],
+      "distance_m": 1.213766474535805,
+      "cone_offset_degrees": 10.593456378847252,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.21376523061588,
+        "point_xyz": [
+          26.219999313354492,
+          8.41955283830671,
+          -432.15307321606986
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        8.64,
+        -432.0
+      ],
+      "distance_m": 1.0282514392596038,
+      "cone_offset_degrees": 14.600743968237106,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.0282503854634446,
+        "point_xyz": [
+          26.219999313354492,
+          8.640000799377441,
+          -432.0
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        8.59508892418166,
+        -431.7742167749046
+      ],
+      "distance_m": 1.0864425295807005,
+      "cone_offset_degrees": 17.63434106960834,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.0864414161478126,
+        "point_xyz": [
+          26.219999313354492,
+          8.595089769585897,
+          -431.7742170062969
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        8.467193000900064,
+        -431.58280699909994
+      ],
+      "distance_m": 1.2372518740633482,
+      "cone_offset_degrees": 21.610763587598484,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.2372506060745825,
+        "point_xyz": [
+          26.219999313354492,
+          8.467193977377525,
+          -431.5828074266572
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        8.275783225095404,
+        -431.45491107581836
+      ],
+      "distance_m": 1.4336160523578205,
+      "cone_offset_degrees": 22.734647442240725,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.4336145831266194,
+        "point_xyz": [
+          26.219999313354492,
+          8.27578439773781,
+          -431.4549116344489
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        8.05,
+        -431.41
+      ],
+      "distance_m": 1.6352067215919264,
+      "cone_offset_degrees": 21.14998915382101,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.635205045761967,
+        "point_xyz": [
+          26.219999313354492,
+          8.05000140403474,
+          -431.41000060465734
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        7.824216774904598,
+        -431.45491107581836
+      ],
+      "distance_m": 1.814537698451269,
+      "cone_offset_degrees": 17.77828292024538,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.8145358388352422,
+        "point_xyz": [
+          26.219999313354492,
+          7.824218410331665,
+          -431.4549116344489
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        7.632806999099937,
+        -431.58280699909994
+      ],
+      "distance_m": 1.9537169305724955,
+      "cone_offset_degrees": 13.48771719758082,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.9537149283196216,
+        "point_xyz": [
+          26.219999313354492,
+          7.632808830691944,
+          -431.5828074266572
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        7.504911075818342,
+        -431.7742167749046
+      ],
+      "distance_m": 2.041432015668707,
+      "cone_offset_degrees": 9.277957474802903,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 2.0414299235216573,
+        "point_xyz": [
+          26.219999313354492,
+          7.504913038483572,
+          -431.7742170062969
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        7.460000000000001,
+        -432.0
+      ],
+      "distance_m": 2.0713524621221384,
+      "cone_offset_degrees": 7.188688829136565,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 2.0713503393113264,
+        "point_xyz": [
+          26.219999313354492,
+          7.460002008692036,
+          -432.0
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        7.504911075818342,
+        -432.2257832250954
+      ],
+      "distance_m": 2.041432015668707,
+      "cone_offset_degrees": 9.277957474802903,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 2.041429923521657,
+        "point_xyz": [
+          26.219999313354492,
+          7.504913038483572,
+          -432.2257829937031
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        7.632806999099937,
+        -432.41719300090006
+      ],
+      "distance_m": 1.9537169305724955,
+      "cone_offset_degrees": 13.48771719758082,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.9537149283196216,
+        "point_xyz": [
+          26.219999313354492,
+          7.632808830691944,
+          -432.4171925733428
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        7.824216774904597,
+        -432.54508892418164
+      ],
+      "distance_m": 1.81453769845127,
+      "cone_offset_degrees": 17.77828292024536,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.8145358388352433,
+        "point_xyz": [
+          26.219999313354492,
+          7.824218410331664,
+          -432.5450883655511
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        8.05,
+        -432.59
+      ],
+      "distance_m": 1.6352067215919264,
+      "cone_offset_degrees": 21.14998915382101,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.635205045761967,
+        "point_xyz": [
+          26.219999313354492,
+          8.05000140403474,
+          -432.58999939534266
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        8.275783225095404,
+        -432.54508892418164
+      ],
+      "distance_m": 1.4336160523578205,
+      "cone_offset_degrees": 22.734647442240725,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.4336145831266194,
+        "point_xyz": [
+          26.219999313354492,
+          8.27578439773781,
+          -432.5450883655511
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        8.467193000900064,
+        -432.41719300090006
+      ],
+      "distance_m": 1.2372518740633482,
+      "cone_offset_degrees": 21.610763587598484,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.237250606074583,
+        "point_xyz": [
+          26.219999313354492,
+          8.467193977377525,
+          -432.4171925733428
+        ]
+      },
+      "passed": true
+    },
+    {
+      "radius_m": 0.59,
+      "target_xyz": [
+        26.22,
+        8.59508892418166,
+        -432.2257832250954
+      ],
+      "distance_m": 1.0864425295807005,
+      "cone_offset_degrees": 17.63434106960834,
+      "first_hit": {
+        "node": "machine_profiled_end_-1",
+        "file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_receiving_shoulders.glb",
+        "distance_m": 1.0864414161478126,
+        "point_xyz": [
+          26.219999313354492,
+          8.595089769585897,
+          -432.2257829937031
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "receiver_pass_count": 49,
+  "all_read_inputs_unchanged": true,
+  "limitations": [
+    "49 geometric rays sample the physical radius 0.65 m central disc only to radius 0.59 m; they do not cover the radius 1.73 m profiled endcap.",
+    "Triangle contact and no-intrusion tests are geometric QA, not mechanical structural certification or volumetric signed-solid containment proof.",
+    "Visible focal machinery, retained panes, ordinary guest viewpoints, motion, glare, full profiled silhouette and seated-eye composition still need actual-image review.",
+    "Native source admission under unchanged eight-active / 32-candidate selection, energy, source registry adoption and whole first-pass acceptance remain unapproved."
+  ]
+}

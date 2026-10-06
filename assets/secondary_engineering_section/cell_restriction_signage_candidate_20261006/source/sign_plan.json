@@ -1,0 +1,134 @@
+{
+  "catalogue_id": "AST-ENG-008",
+  "family": "secondary_engineering_section",
+  "derivative": "restricted_cell_signage",
+  "new_model_name": "AST-ENG-008_cell_restriction_signage.glb",
+  "source_blend": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/secondary_engineering_section/workbay_section_gate_v2_candidate_20261006/source/AST-ENG-008_workbay_section_gate_v2.blend",
+  "source_sha256": "0e4d89ac3a76b4f15c67ef41b5179b0a0780dbc1199eea31562b90b92737a6c3",
+  "model_file": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_workbay_section_gate_v2.glb",
+  "model_sha256": "6896d757c5a248d0fcf37a2ae7a197de24566a3fec3f80ce80cdc12186e34368",
+  "immutable_inputs": {
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/secondary_engineering_section/workbay_section_gate_v2_candidate_20261006/source/AST-ENG-008_workbay_section_gate_v2.blend": "0e4d89ac3a76b4f15c67ef41b5179b0a0780dbc1199eea31562b90b92737a6c3",
+    "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-ENG-008_workbay_section_gate_v2.glb": "6896d757c5a248d0fcf37a2ae7a197de24566a3fec3f80ce80cdc12186e34368"
+  },
+  "scope": "Additive backed header plaque and printed in-envelope moving-leaf lettering only. No original mesh, floor, collision, material graph, glass shader, source light or controller changes.",
+  "header": {
+    "name": "SIGN_FIXED_EAST_HEADER",
+    "plate_bounds_xyz": [
+      27.149999618530273,
+      8.643,
+      -406.43,
+      27.155999618530274,
+      8.787,
+      -403.82
+    ],
+    "material_role": "staff_label",
+    "normal_xyz": [
+      1,
+      0,
+      0
+    ],
+    "text": "SUNCORP \u00b7 RESTRICTED ENGINEERING",
+    "cap_height_m": 0.104,
+    "max_width_m": 2.52,
+    "text_center_xyz": [
+      27.156199618530273,
+      8.715,
+      -405.125
+    ],
+    "text_role": "staff_rubber",
+    "backing_source_group": "SectionStatic_0_WORKBAY",
+    "backing_source_part": "CellSteppedEastHeader",
+    "collision_contract": "none; 6mm surface trim on retained solid backing, not an added route obstruction"
+  },
+  "leaf_print": {
+    "name": "SIGN_MOVING_GLASS_LEAF",
+    "owner": "LEAF_WORKBAY_CELL",
+    "lines": [
+      "SPECIALIZED",
+      "SUNCORP",
+      "PERSONNEL ONLY"
+    ],
+    "cap_height_m": 0.094,
+    "max_width_m": 1.02,
+    "line_centers_xyz": [
+      [
+        21.86780003051758,
+        8.035,
+        -404.5
+      ],
+      [
+        21.86780003051758,
+        7.835,
+        -404.5
+      ],
+      [
+        21.86780003051758,
+        7.635,
+        -404.5
+      ]
+    ],
+    "normal_xyz": [
+      -1,
+      0,
+      0
+    ],
+    "material_role": "staff_label",
+    "backing_source_material": "ASTRAEA_bridge_pressure_glass",
+    "canonical_rest_bounds_xyz": [
+      21.84,
+      6.03,
+      -405.12,
+      21.895,
+      8.44,
+      -403.88
+    ],
+    "opening_translation_xyz": [
+      0,
+      0,
+      -1.22
+    ],
+    "collision_contract": "none; ink lies entirely inside the existing leaf envelope and is parented to the existing leaf with global rest transform preserved"
+  },
+  "views": [
+    {
+      "name": "original_workbay",
+      "eye_xyz": [
+        30,
+        7.6501565,
+        -405
+      ],
+      "aim_xyz": [
+        29,
+        7.6501565,
+        -405
+      ],
+      "gate_state": "closed canonical rest",
+      "vertical_fov": 72
+    },
+    {
+      "name": "west_gate_closed_sign",
+      "eye_xyz": [
+        20.77,
+        7.65,
+        -404.5
+      ],
+      "aim_xyz": [
+        21.868,
+        7.83,
+        -404.5
+      ],
+      "gate_state": "closed canonical rest",
+      "vertical_fov": 72,
+      "floor_xyz": [
+        20.77,
+        6,
+        -404.5
+      ],
+      "purpose": "New ordinary upper landing approach view; does not replace existing original/step views"
+    }
+  ],
+  "lighting": "No new light, emission or shader; use unchanged source material roles. Direct lighting/normal presentation readability requires actual visual review, not just text count.",
+  "runtime_adopted": false,
+  "first_pass_accepted": false
+}

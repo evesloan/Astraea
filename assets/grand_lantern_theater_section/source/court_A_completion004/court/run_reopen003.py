@@ -1,0 +1,11 @@
+from pathlib import Path
+import os,sys,json,hashlib,subprocess,time,resource,datetime
+R=Path(__file__).resolve().parent;D=R/'reopen_qa001/winding_repair001/authored_source001';Q=R/'reopen_qa001/reopen_court_A_evaluated_readonly.py';sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+assert sha(Q)=='eb547807eebc27e18b8aa040c77ab767997e5570d7fce4c0a2df599ae806087c'
+build=json.loads((D/'BUILD_REPORT.json').read_text());source=Path(build['source']);assert sha(source)==build['sha256']=='7456c069315f3ed1f74c327ba0af53a90942cd1549b6905d3abe58ba76633c49';assert not(D/'REOPEN_REPORT.json').exists()
+run=R/'source_reopen_run003';run.mkdir(exist_ok=False);env=os.environ.copy();env.update(PYTHONDONTWRITEBYTECODE='1',OMP_NUM_THREADS='2',OPENBLAS_NUM_THREADS='1',MALLOC_ARENA_MAX='2')
+for key,sub in [('XDG_CONFIG_HOME','config'),('XDG_DATA_HOME','data'),('XDG_CACHE_HOME','cache')]:p=run/sub;p.mkdir();env[key]=str(p)
+expr='import sys,runpy;sys.dont_write_bytecode=True;sys.argv='+repr([str(Q),'--','--check'])+';runpy.run_path('+repr(str(Q))+',run_name="__main__")'
+receipt={'status':'RUNNING','started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_sha256':sha(source),'qa_sha256':sha(Q),'threads':2};(run/'RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n');start=time.monotonic()
+with(run/'blender.log').open('x')as log:r=subprocess.run(['blender','-b','-t','2','--factory-startup','--python-expr',expr],env=env,stdout=log,stderr=subprocess.STDOUT,timeout=240)
+text=(run/'blender.log').read_text(errors='replace');errors=[line for line in text.splitlines()if'Traceback'in line or'Error:'in line or'AssertionError'in line];report=D/'REOPEN_REPORT.json';unchanged=sha(source)==build['sha256'];passed=r.returncode==0 and not errors and unchanged and report.exists()and json.loads(report.read_text())['status']=='PASS_SOURCE_ONLY';receipt.update(status='PASS_INDEPENDENT_REOPEN'if passed else'FAILED_PRESERVED',seconds=round(time.monotonic()-start,3),returncode=r.returncode,errors=errors,source_unchanged=unchanged,report_sha256=sha(report)if report.exists()else None,peak_child_rss_kib=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss);(run/'RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt));sys.exit(0 if passed else 1)

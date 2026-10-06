@@ -1,0 +1,162 @@
+{
+  "revision": "engineering_controls_runtime_v3_20261006",
+  "status": "SCRATCH_ONLY_UNAPPROVED",
+  "base_game_head": "94ad78bad2173231af0ae5e00d5f09a42d95e964",
+  "post_theater_and_signage_rebase_required": true,
+  "prospective_new_game_files": [
+    {
+      "scratch": "scripts/engineering_calibration_control.gd",
+      "prospective_game": "scripts/engineering_calibration_control.gd",
+      "kind": "new_runtime_script",
+      "sha256": "07a750929cfe63c5414e4076c169d9c58c6534f1bbae0c78f8be2ae54f2a64c6"
+    },
+    {
+      "scratch": "scripts/engineering_calibration_bank.gd",
+      "prospective_game": "scripts/engineering_calibration_bank.gd",
+      "kind": "new_runtime_script",
+      "sha256": "d4564a6ae5deb262143b44c394d54d6d978c9f2f14da95595f8c473fd0aa3060"
+    },
+    {
+      "scratch": "scripts/engineering_calibration_audio.gd",
+      "prospective_game": "scripts/engineering_calibration_audio.gd",
+      "kind": "new_runtime_script",
+      "sha256": "dc8a22ec1b5b187e3fba8087a7868994588bf53b380970ee5691e223f50c1171"
+    },
+    {
+      "scratch": "scripts/engineering_calibration_builder.gd",
+      "prospective_game": "scripts/engineering_calibration_builder.gd",
+      "kind": "new_runtime_script",
+      "sha256": "bdf9ef093277014efb64789804ec7716a5d40248215d5a56c5fec00a4cbefb9b"
+    },
+    {
+      "scratch": "audio/courtesy_chirp.wav",
+      "prospective_game": "assets/audio/engineering_calibration/courtesy_chirp.wav",
+      "kind": "unchanged_original_v2_audio",
+      "sha256": "d728478f5f83d26f567dd8131f9759c68d42406b2e52b99f12d47cce6414e70f"
+    },
+    {
+      "scratch": "audio/mechanical_click.wav",
+      "prospective_game": "assets/audio/engineering_calibration/mechanical_click.wav",
+      "kind": "unchanged_original_v2_audio",
+      "sha256": "91fdd8315f251ff29e74c35996e2d3bcc80cb919ba617fb3c5b28d065e6c85f8"
+    },
+    {
+      "scratch": "audio/relay_double.wav",
+      "prospective_game": "assets/audio/engineering_calibration/relay_double.wav",
+      "kind": "unchanged_original_v2_audio",
+      "sha256": "00dad70a6266d4f25b77396f669a6a7405c290c4906011a9f735d2fb3e124a89"
+    },
+    {
+      "scratch": "audio/soft_hum.wav",
+      "prospective_game": "assets/audio/engineering_calibration/soft_hum.wav",
+      "kind": "unchanged_original_v2_audio",
+      "sha256": "fa0d4b6144d144bc08ee0eeb639c93b822295eefd40862f944cc11dfa45d0eae"
+    },
+    {
+      "scratch": "data/ENGINEERING_CALIBRATION_DRAFT.json",
+      "prospective_game": "data/architecture/ENGINEERING_CALIBRATION_DRAFT.json",
+      "kind": "new_contract_or_test_route",
+      "sha256": "4974e7356b8a3e4746cfcf2cf9a6d841d4259d3295971be1837a356a7ff0c3c2"
+    },
+    {
+      "scratch": "data/ENGINEERING_CONTROLS_WALK_ROUTE_V3.json",
+      "prospective_game": "data/architecture/ENGINEERING_CONTROLS_WALK_ROUTE_V3.json",
+      "kind": "new_contract_or_test_route",
+      "sha256": "451671bd785f6925f99ec480b131001d26f82409b75fb0535e58747ba882ba8c"
+    },
+    {
+      "scratch": "tests/validate_engineering_calibration.gd",
+      "prospective_game": "tests/validate_engineering_calibration.gd",
+      "kind": "new_unrun_test_or_separate_listener_guard",
+      "sha256": "2e9a90bd4b818fb461c1a720fc03b07df2c53b961e9be64416e7e36fb50e0350"
+    },
+    {
+      "scratch": "tests/engineering_controls_listener_successor.gd",
+      "prospective_game": "tests/engineering_controls_listener_successor.gd",
+      "kind": "new_unrun_test_or_separate_listener_guard",
+      "sha256": "ab32ea44c51e537d1a841803162d397b57f7e245e9bfc8e8be30019370da6a1a"
+    },
+    {
+      "scratch": "docs/ENGINEERING_CONTROLS_LISTENER_ADOPTION_DRAFT.json",
+      "prospective_game": "docs/ENGINEERING_CONTROLS_LISTENER_ADOPTION.json",
+      "kind": "unapproved_proof_requires_parent_revision_and_helper_repin",
+      "sha256": "d2814ea9abc4ed7b2f62ad2ee2dc6ffeba2801bac34a022ded69485575bb3592"
+    }
+  ],
+  "prospective_existing_file_patches": [
+    {
+      "target": "scripts/presentation.gd",
+      "patch": "integration/presentation_listener_prerequisite.patch",
+      "change": "one explicit listener line",
+      "predecessor_sha256": "76f5cef2f50caec7d49facd8ed34579c46fef37605c9f3d63050a986eddc4a80",
+      "patch_sha256": "9c483c11ff79ded563f861866a0520df1e5529bda07c1b18554ff264a8466357"
+    },
+    {
+      "target": "scripts/secondary_engineering_cell.gd",
+      "patch": "integration/secondary_engineering_cell_controls.patch",
+      "change": "one controls builder call using existing wrapper/visual/ship",
+      "predecessor_sha256": "9e3642e9175bb2cdce6c82791263b51bf24c5db4703d1b3dec74eed443ca82be",
+      "patch_sha256": "557cfe2b54be3a149558eb83ae01c81c4f0c321db9130fbbdd6855f1fb48de98"
+    },
+    {
+      "target": "tools/validate.py",
+      "patch": "integration/validate_wrapper_controls.patch",
+      "change": "one new focused check, derived frame allowance and watchdog; retain all old checks",
+      "predecessor_sha256": "1806605ddf4cbb7134b609712c753f6ae3c7ad3ecdbe7438bc2bfcf3840d3d29",
+      "patch_sha256": "af50bfbcf6e1e833e3bff5a8a3f7a89503afe954a048294237d975d6c4cec261"
+    }
+  ],
+  "shared_guard": "No shared guard draft or overwrite. Future separately reviewed hook specification is integration/SHARED_GUARD_HOOK.txt.",
+  "changed_scratch_paths_vs_v2": [
+    "QA_PLAN.md",
+    "README.md",
+    "data/ENGINEERING_CALIBRATION_DRAFT.json",
+    "scripts/engineering_calibration_audio.gd",
+    "scripts/engineering_calibration_bank.gd",
+    "scripts/engineering_calibration_builder.gd",
+    "scripts/engineering_calibration_control.gd",
+    "tests/validate_engineering_calibration.gd"
+  ],
+  "new_scratch_paths_vs_v2": [
+    "data/ENGINEERING_CONTROLS_WALK_ROUTE_V3.json",
+    "docs/ENGINEERING_CONTROLS_LISTENER_ADOPTION_DRAFT.json",
+    "integration/SHARED_GUARD_HOOK.txt",
+    "integration/presentation.listener_candidate.gd",
+    "integration/presentation_listener_prerequisite.patch",
+    "integration/secondary_engineering_cell.controls_candidate.gd",
+    "integration/secondary_engineering_cell_controls.patch",
+    "integration/validate.controls_candidate.py",
+    "integration/validate_wrapper_controls.patch",
+    "provenance/labels_v2_bundle_hashes.json",
+    "provenance/reports_v2/audio_build.json",
+    "provenance/reports_v2/build_candidate.json",
+    "provenance/reports_v2/display_only_code.diff",
+    "provenance/reports_v2/label_revision_build.json",
+    "provenance/reports_v2/label_revision_tests.json",
+    "provenance/reports_v2/pure_tests.json",
+    "provenance/reports_v2/source_pose_screen.json",
+    "provenance/route_v3_001_shelf_rejected.json",
+    "provenance/tools_v2/apply_labels_v2.py",
+    "provenance/tools_v2/build_candidate.py",
+    "provenance/tools_v2/test_candidate.py",
+    "provenance/tools_v2/test_labels_v2.py",
+    "provenance/v2_QA_PLAN.md",
+    "provenance/v2_README.md",
+    "provenance/v2_RETENTION_ALLOWLIST.json",
+    "provenance/v2_review_bundle_manifest.json",
+    "reports/runtime_v3_preflight.json",
+    "reports/runtime_v3_pure_tests.json",
+    "reports/source_connected_route_screen.json",
+    "reports/source_connected_route_screen_001_shelf_rejected.json",
+    "reports/validation_wrapper_candidate.json",
+    "tests/engineering_controls_listener_successor.gd",
+    "tools/prepare_listener_guard.py",
+    "tools/prepare_runtime_v3.py",
+    "tools/screen_connected_route.py",
+    "tools/test_runtime_v3.py"
+  ],
+  "core_153_mesh_roster": "Keep exact original named core identities; optional printed leaf/header mesh is separate and never counted as a calibration actuator.",
+  "game_writes": false,
+  "engine_runs": false,
+  "imports": false
+}

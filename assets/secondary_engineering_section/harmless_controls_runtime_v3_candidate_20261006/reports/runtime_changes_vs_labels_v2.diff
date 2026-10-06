@@ -1,0 +1,262 @@
+--- labels-v2/scripts/engineering_calibration_control.gd
++++ runtime-v3/scripts/engineering_calibration_control.gd
+@@ -21,6 +21,7 @@
+ var _pulse_material: StandardMaterial3D
+ var _animation: Tween
+ var _last_activation_frame := -1000000
++var last_motion_displacement := 0.0
+ 
+ func configure(owner_node: Node3D, source_root: Node3D, mesh: MeshInstance3D,
+ 		marker: Node3D, data: Dictionary) -> void:
+@@ -89,7 +90,7 @@
+ 	_animation.tween_callback(_finish_activation)
+ 
+ func _eligible_actor(actor: CharacterBody3D) -> bool:
+-	if not is_instance_valid(actor) or not actor.has_method("target_from_view"): return false
++	if not is_instance_valid(actor) or actor != manager.original_actor or not actor.has_method("target_from_view"): return false
+ 	if not actor.get("gameplay_input_enabled"): return false
+ 	if is_instance_valid(actor.get("held_interaction")): return false
+ 	if actor.get("interaction_target") != self: return false
+@@ -129,6 +130,7 @@
+ 	if not is_instance_valid(actuator) or not is_instance_valid(visual): return
+ 	var limits: Array = record.travel_limits
+ 	var value := clampf(displacement, float(limits[0]), float(limits[1]))
++	last_motion_displacement = value
+ 	var delta := Transform3D.IDENTITY
+ 	if str(record.travel_type) == "rotation":
+ 		var rotation_basis := Basis(_axis, deg_to_rad(value))
+@@ -154,6 +156,7 @@
+ func _restore_visual() -> void:
+ 	if not is_instance_valid(actuator): return
+ 	actuator.transform = _home_local
++	last_motion_displacement = 0.0
+ 	if _pulse_material != null:
+ 		actuator.set_surface_override_material(_pulse_surface, _original_surface_override)
+ 		_pulse_material = null
+--- labels-v2/scripts/engineering_calibration_bank.gd
++++ runtime-v3/scripts/engineering_calibration_bank.gd
+@@ -1,12 +1,27 @@
+ extends Node3D
+-# SCRATCH DRAFT. Owns only four bounded active controls and the local audio pool.
+-# It is not connected to gates, reactors, lifts, access control or networking.
++# SCRATCH RUNTIME V3. One exact deferred binding because the cell is constructed
++# before ShipSpace/PersistentActors/Player; no _process discovery/polling.
+ var controls_by_id: Dictionary = {}
+ var active_controls: Dictionary = {}
+ var audio_owner: Node3D
++var original_actor: CharacterBody3D
++var listener_ready := false
+ var max_active_controls := 4
++var listener_bind_attempts := 0
++
++func bind_original_player_after_build(ship: Node3D) -> void:
++	listener_bind_attempts += 1
++	assert(listener_bind_attempts == 1)
++	original_actor = ship.get_node_or_null("ShipSpace/PersistentActors/Player") as CharacterBody3D
++	if original_actor == null or not original_actor.is_physics_processing():
++		push_error("Original physical player missing at deferred calibration binding")
++		return
++	var camera := original_actor.get("camera") as Camera3D
++	listener_ready = is_instance_valid(audio_owner) and audio_owner.bind_original_listener(camera)
++	set_meta("original_listener_bound", listener_ready)
+ 
+ func try_begin_control(control: Node3D) -> bool:
++	if not listener_ready or not audio_owner.listener_contract_holds(): return false
+ 	var identity := str(control.persistent_id)
+ 	if not controls_by_id.has(identity) or controls_by_id[identity] != control: return false
+ 	if active_controls.has(identity) or active_controls.size() >= max_active_controls: return false
+@@ -21,7 +36,6 @@
+ 	return audio_owner.play_cue(cue, point)
+ 
+ func cancel_all() -> void:
+-	# Only on explicit teardown/test reset, not in any frame callback.
+ 	for reference in active_controls.values().duplicate():
+ 		var control: Node3D = reference.get_ref()
+ 		if is_instance_valid(control): control.cancel_and_restore()
+--- labels-v2/scripts/engineering_calibration_audio.gd
++++ runtime-v3/scripts/engineering_calibration_audio.gd
+@@ -1,25 +1,29 @@
+ extends Node3D
+-# SCRATCH DRAFT. One section-local owner, four finite spatial voices. No loops,
+-# bus/global edits, file generation or per-frame polling. Original scratch WAVs
+-# require real listening and an imported-runtime check before acceptance.
++# SCRATCH RUNTIME V3. Four finite spatial voices in the original player's World360.
++# Readiness/playback checks are not proof that a person has heard these samples.
+ const CUE_PATHS := {
+ 	"mechanical_click": "res://assets/audio/engineering_calibration/mechanical_click.wav",
+ 	"relay_double": "res://assets/audio/engineering_calibration/relay_double.wav",
+ 	"soft_hum": "res://assets/audio/engineering_calibration/soft_hum.wav",
+ 	"courtesy_chirp": "res://assets/audio/engineering_calibration/courtesy_chirp.wav"
+ }
++const MAX_START_HISTORY := 64
+ var available := false
++var listener_ready := false
+ var missing_cues: Array[String] = []
+ var started_count := 0
+ var declined_count := 0
++var start_history: Array[Dictionary] = []
++var listener_camera: Camera3D
+ var _streams: Dictionary = {}
+ var _voices: Array[AudioStreamPlayer3D] = []
++var _lease_until_frame: Array[int] = []
+ var _last_start_frame := -1000000
+ var _start_cooldown_s := .08
+ 
+ func configure(data: Dictionary) -> void:
+ 	assert(is_inside_tree() and _voices.is_empty())
+-	assert(int(data.max_voices) == 4 and float(data.global_start_cooldown_s) >= .08)
++	assert(int(data.max_voices) == 4 and is_equal_approx(float(data.global_start_cooldown_s), .08))
+ 	assert(float(data.volume_db) <= -12.0 and float(data.max_distance_m) <= 6.0)
+ 	_start_cooldown_s = float(data.global_start_cooldown_s)
+ 	for cue in CUE_PATHS:
+@@ -28,7 +32,7 @@
+ 			missing_cues.append(cue)
+ 			continue
+ 		var stream := load(path) as AudioStreamWAV
+-		if stream == null or stream.loop_mode != AudioStreamWAV.LOOP_DISABLED or stream.get_length() > .5:
++		if stream == null or stream.loop_mode != AudioStreamWAV.LOOP_DISABLED or stream.get_length() > .5 or stream.get_length() <= 0.0:
+ 			missing_cues.append(cue)
+ 			continue
+ 		_streams[cue] = stream
+@@ -43,29 +47,71 @@
+ 		voice.autoplay = false
+ 		add_child(voice)
+ 		_voices.append(voice)
++		_lease_until_frame.append(-1)
+ 	available = missing_cues.is_empty()
+ 	set_meta("audio_assets_available", available)
+ 	set_meta("listening_accepted", false)
+ 
++func bind_original_listener(camera: Camera3D) -> bool:
++	listener_camera = camera
++	listener_ready = listener_contract_holds()
++	if not listener_ready:
++		push_error("Calibration requires the original current camera and four voices in listener-enabled World360")
++	return listener_ready
++
++func listener_contract_holds() -> bool:
++	if not is_instance_valid(listener_camera) or not listener_camera.is_inside_tree(): return false
++	var viewport := get_viewport()
++	if not viewport is SubViewport or str(viewport.name) != "World360": return false
++	if not viewport.audio_listener_enable_3d: return false
++	if listener_camera.get_viewport() != viewport or viewport.get_camera_3d() != listener_camera: return false
++	if listener_camera.get_world_3d() != get_world_3d(): return false
++	# Four cached objects only, never a room scan or a per-frame callback.
++	for voice in _voices:
++		if voice.get_viewport() != viewport or voice.get_world_3d() != listener_camera.get_world_3d(): return false
++	return _voices.size() == 4
++
+ func play_cue(cue_id: String, source_position: Vector3) -> bool:
+-	if not _streams.has(cue_id) or float(Engine.get_physics_frames() - _last_start_frame) / float(Engine.physics_ticks_per_second) < _start_cooldown_s:
++	var frame := Engine.get_physics_frames()
++	var ticks := float(Engine.physics_ticks_per_second)
++	if not listener_ready or not listener_contract_holds() or not _streams.has(cue_id):
+ 		declined_count += 1
+ 		return false
+-	for voice in _voices:
+-		if voice.playing: continue
++	if float(frame - _last_start_frame) / ticks < _start_cooldown_s:
++		declined_count += 1
++		return false
++	for index in range(_voices.size()):
++		var voice: AudioStreamPlayer3D = _voices[index]
++		# A finite frame lease removes an audio-server start/finish race and gives
++		# accelerated headless scheduling tests the same bounded occupancy rule.
++		# We still wait for .playing to clear; a lease never truncates a cue.
++		if frame < _lease_until_frame[index] or voice.playing: continue
+ 		voice.global_position = source_position
+ 		voice.stream = _streams[cue_id]
+ 		voice.play()
+-		_last_start_frame = Engine.get_physics_frames()
++		_lease_until_frame[index] = frame + ceili(voice.stream.get_length() * ticks) + 1
++		_last_start_frame = frame
+ 		started_count += 1
++		start_history.append({"frame":frame,"physics_hz":ticks,"voice":index,"cue":cue_id,
++			"lease_end_frame":_lease_until_frame[index],"position":source_position})
++		if start_history.size() > MAX_START_HISTORY: start_history.pop_front()
+ 		return true
+ 	declined_count += 1
+ 	return false
+ 
++func active_lease_count() -> int:
++	var count := 0
++	var frame := Engine.get_physics_frames()
++	for index in range(_voices.size()):
++		if frame < _lease_until_frame[index] or _voices[index].playing: count += 1
++	return count
++
+ func stop_all() -> void:
+-	for voice in _voices:
+-		voice.stop()
+-		voice.stream = null
++	for index in range(_voices.size()):
++		_voices[index].stop()
++		_voices[index].stream = null
++		_lease_until_frame[index] = -1
++	# Do not reset start spacing: even cancellation cannot create <80 ms starts.
+ 
+ func _exit_tree() -> void:
+ 	stop_all()
+--- labels-v2/scripts/engineering_calibration_builder.gd
++++ runtime-v3/scripts/engineering_calibration_builder.gd
+@@ -6,7 +6,7 @@
+ const AudioScript := preload("res://scripts/engineering_calibration_audio.gd")
+ const CONTRACT := "res://data/architecture/ENGINEERING_CALIBRATION_DRAFT.json"
+ 
+-static func build(parent: Node3D, visual: Node3D) -> Node3D:
++static func build(parent: Node3D, visual: Node3D, ship: Node3D) -> Node3D:
+ 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
+ 	# Must remain false in this delivered draft. The accepting integration lane
+ 	# makes a reviewed contract revision after actual cell geometry/physics gates.
+@@ -32,6 +32,10 @@
+ 			assert(not index.has(label), "Duplicate source control identity: " + label)
+ 			index[label] = node
+ 		for child in node.get_children(): pending.append(child)
++	var preflight_error := validate_precise_target_data(data)
++	if not preflight_error.is_empty():
++		push_error(preflight_error)
++		return null
+ 	var seen: Dictionary = {}
+ 	for item in data.controls:
+ 		assert(not seen.has(str(item.id)))
+@@ -66,4 +70,40 @@
+ 	assert(bank.controls_by_id.size() == 120)
+ 	bank.set_meta("source_model_sha256", str(data.model_sha256))
+ 	bank.set_meta("only_local_calibration_effects", true)
++	bank.call_deferred("bind_original_player_after_build", ship)
+ 	return bank
++
++static func validate_precise_target_data(data: Dictionary) -> String:
++	if int(data.get("control_count", 0)) != 120 or data.get("controls", []).size() != 120:
++		return "Exactly 120 source controls required"
++	var identities: Dictionary = {}
++	var centers: Array[Vector3] = []
++	var source_effects := {
++		"momentary_travel":["travel_return","mechanical_click",false],
++		"meter_step_return":["detent_return","relay_double",false],
++		"local_led_sequence":["face_pulse","soft_hum",true],
++		"latch_click":["press_return","mechanical_click",false],
++		"phase_courtesy_check_and_chime":["courtesy_local_pulse","courtesy_chirp",true],
++		"bounded_cake_candidate":["reserved_cake_no_effect","mechanical_click",false]
++	}
++	for item in data.controls:
++		var identity := str(item.id)
++		if identities.has(identity): return "Duplicate source control identity: " + identity
++		identities[identity] = true
++		if str(item.source_marker) != "TARGET_" + identity or str(item.actuator_mesh_name) != "ACT_" + identity:
++			return "Source identity alias rejected: " + identity
++		if str(item.target_shape) != "sphere" or not is_equal_approx(float(item.target_radius_m), .018):
++			return "Only the reviewed 18 mm target sphere is permitted"
++		var point := Vector3(float(item.target_center_xyz[0]),float(item.target_center_xyz[1]),float(item.target_center_xyz[2]))
++		for prior in centers:
++			if point.distance_to(prior) <= .037: return "Overlapping/ambiguous source targets rejected"
++		centers.append(point)
++		if not source_effects.has(str(item.effect_candidate)): return "Unknown source effect candidate"
++		var expected: Array = source_effects[str(item.effect_candidate)]
++		if str(item.runtime_profile) != expected[0] or str(item.cue_id) != expected[1]: return "Unapproved local effect mapping"
++		if (not str(item.pulse_material_name).is_empty()) != bool(expected[2]): return "Unapproved material pulse binding"
++		if float(item.pulse_energy_max) > .22 or not is_equal_approx(float(item.cooldown_s), .9): return "Feedback bounds changed"
++		if float(item.duration_s) > .68 or float(item.duration_s) <= 0.0: return "Unbounded local effect duration"
++	if bool(data.cake.enabled) or int(data.cake.spawn_budget) != 0 or float(data.cake.probability) != 0.0:
++		return "Cake remains disabled and reserved"
++	return ""

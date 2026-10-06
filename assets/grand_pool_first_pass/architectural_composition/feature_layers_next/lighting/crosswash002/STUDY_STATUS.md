@@ -1,0 +1,1 @@
+Pure alternative study only. Existing source and installed Game remain unchanged. Cross-wash the opposite timber return from the same verified roof anchors; derive reach and cone from all real receiver-face vertices. No engine, export, retention, native activation or appearance acceptance is claimed. The independently successful focal fixture remains identical.

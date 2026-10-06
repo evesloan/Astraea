@@ -1,0 +1,2527 @@
+{
+  "schema_version": 1,
+  "status": "PURE_PRINTED_MATERIALS_DRAFT_SOURCE_UNBUILT",
+  "coordinate_frame": "world X right, Y up, Z toward public/front; source adapter bvec maps [x,y,z] to [x,-z,y]",
+  "source_inputs": {
+    "COURT_A_GEOMETRY_CONTRACT.json": "d1ea220667cf6c381aa875df099bbda083d18096c8d757c6456659e2206a67e9",
+    "TABLE_AND_COUNTER_CONTENTS_DRAFT.json": "139882967e224e58acbb96a71b2d0cb94a9d4e926c41f8ea214b7b6ace8821b0",
+    "build_court_A_source_DRAFT.py": "f087f99690f452f7390d4a7f7bdc71af0b1bc73207eb817c14cecd7bea938574",
+    "HANDOFF.md": "ea53b7dab203fc0622bb26b486c1267298634a7807f3f0bb75b5aed2a30fee59"
+  },
+  "protected_source": {
+    "path": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_lantern_theater_section/source/firstpass_003/source_repair003/AST-CUL-005_firstpass_003.blend",
+    "sha256": "dfb0948338a471104896d322bc4576df6140798a458f14eebff1e125f6b1e530"
+  },
+  "art_receipt_sha256": "04ee7ce478519a12bc147e3d671980011cd653bc2c38b2c72d5c53064078b33b",
+  "text_override": {
+    "PROGRAMME STUDY": "EVENING PROGRAMME"
+  },
+  "materials": {
+    "court_A_matte_paper": {
+      "surface": "matte uncoated paper",
+      "shader": "Principled BSDF",
+      "base_color_srgb_hex": "#e4dac4",
+      "roughness": 0.92,
+      "metallic": 0.0,
+      "specular_ior_level": 0.18,
+      "coat_weight": 0.0,
+      "transmission_weight": 0.0,
+      "emission_strength": 0.0,
+      "image": null,
+      "uses_retained_fabric": false
+    },
+    "court_A_cover_stock": {
+      "surface": "matte navy-dyed paper cover stock",
+      "shader": "Principled BSDF",
+      "base_color_srgb_hex": "#142e34",
+      "roughness": 0.88,
+      "metallic": 0.0,
+      "specular_ior_level": 0.18,
+      "coat_weight": 0.0,
+      "transmission_weight": 0.0,
+      "emission_strength": 0.0,
+      "image": null,
+      "uses_retained_fabric": false
+    },
+    "court_A_printed_paper": {
+      "surface": "original ink on matte paper",
+      "shader": "Principled BSDF",
+      "base_color_srgb_hex": "#ffffff",
+      "roughness": 0.88,
+      "metallic": 0.0,
+      "specular_ior_level": 0.18,
+      "coat_weight": 0.0,
+      "transmission_weight": 0.0,
+      "emission_strength": 0.0,
+      "image": "SUNCORP_GRAND_LANTERN_COVER.png",
+      "uses_retained_fabric": false,
+      "image_sha256": "57655b561dfd8e6a31383cfb3ead3a09f54248727864163d1f2bf2cbf1241967",
+      "colorspace": "sRGB",
+      "extension": "EXTEND",
+      "interpolation": "Linear",
+      "uv": "Explicit per-face UV; printed top spans exactly [0,1]\u00b2"
+    },
+    "court_A_original_programme": {
+      "surface": "original print on opaque matte paper-faced display plate",
+      "shader": "Principled BSDF",
+      "base_color_srgb_hex": "#ffffff",
+      "roughness": 0.88,
+      "metallic": 0.0,
+      "specular_ior_level": 0.18,
+      "coat_weight": 0.0,
+      "transmission_weight": 0.0,
+      "emission_strength": 0.0,
+      "image": "SUNCORP_GRAND_LANTERN_PROGRAMME.png",
+      "uses_retained_fabric": false,
+      "image_sha256": "cc93c619f0df7ca36ab98b8c695bd665e2887da911244f7fff68ebd237e5e4fa",
+      "colorspace": "sRGB",
+      "extension": "EXTEND",
+      "interpolation": "Linear",
+      "uv": "Explicit front (+Z) UV exactly [0,1]\u00b2"
+    }
+  },
+  "stacks": [
+    {
+      "id": "A4_west_table_programmes",
+      "source_support": "A4_W_table",
+      "bounds_world": [
+        [
+          -72.29,
+          70.16500002145767,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.18700002145768,
+          -139.28
+        ]
+      ],
+      "body_size_m": [
+        0.28,
+        0.02,
+        0.2
+      ],
+      "cover_thickness_m": 0.001,
+      "graphic_front": "upward horizontal plane",
+      "preserve_lower_writing_wing": true,
+      "geometry": "Three closed thin prisms: bottom cover, paper pages, top cover; one stack only per support",
+      "metric_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_cover_uv": "One artwork image per cover face, no repeated showtime graphics",
+      "piece_names": [
+        "A4_west_table_programmes_bottom_cover",
+        "A4_west_table_programmes_pages",
+        "A4_west_table_programmes_top_cover"
+      ],
+      "viewing_front_world": [
+        0,
+        0,
+        1
+      ],
+      "cover_top_direction_world": [
+        0,
+        0,
+        -1
+      ],
+      "viewing_basis": "Common public court approach from +Z; printed bottom edge faces viewer; rightward text is +X",
+      "total_height_m": 0.022,
+      "source_contact_y_world": 70.16500002145767
+    },
+    {
+      "id": "A4_east_table_programmes",
+      "source_support": "A4_E_table",
+      "bounds_world": [
+        [
+          -66.99,
+          70.16500002145767,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.18700002145768,
+          -139.28
+        ]
+      ],
+      "body_size_m": [
+        0.28,
+        0.02,
+        0.2
+      ],
+      "cover_thickness_m": 0.001,
+      "graphic_front": "upward horizontal plane",
+      "preserve_lower_writing_wing": true,
+      "geometry": "Three closed thin prisms: bottom cover, paper pages, top cover; one stack only per support",
+      "metric_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_cover_uv": "One artwork image per cover face, no repeated showtime graphics",
+      "piece_names": [
+        "A4_east_table_programmes_bottom_cover",
+        "A4_east_table_programmes_pages",
+        "A4_east_table_programmes_top_cover"
+      ],
+      "viewing_front_world": [
+        0,
+        0,
+        1
+      ],
+      "cover_top_direction_world": [
+        0,
+        0,
+        -1
+      ],
+      "viewing_basis": "Common public court approach from +Z; printed bottom edge faces viewer; rightward text is +X",
+      "total_height_m": 0.022,
+      "source_contact_y_world": 70.16500002145767
+    },
+    {
+      "id": "A4_reception_programmes",
+      "source_support": "A4_reception",
+      "bounds_world": [
+        [
+          -69.37,
+          70.56500005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.58700005722046,
+          -140.02
+        ]
+      ],
+      "body_size_m": [
+        0.28,
+        0.02,
+        0.2
+      ],
+      "cover_thickness_m": 0.001,
+      "graphic_front": "upward horizontal plane",
+      "preserve_lower_writing_wing": true,
+      "geometry": "Three closed thin prisms: bottom cover, paper pages, top cover; one stack only per support",
+      "metric_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_cover_uv": "One artwork image per cover face, no repeated showtime graphics",
+      "piece_names": [
+        "A4_reception_programmes_bottom_cover",
+        "A4_reception_programmes_pages",
+        "A4_reception_programmes_top_cover"
+      ],
+      "viewing_front_world": [
+        0,
+        0,
+        1
+      ],
+      "cover_top_direction_world": [
+        0,
+        0,
+        -1
+      ],
+      "viewing_basis": "Common public court approach from +Z; printed bottom edge faces viewer; rightward text is +X",
+      "total_height_m": 0.022,
+      "source_contact_y_world": 70.56500005722046
+    }
+  ],
+  "pieces": [
+    {
+      "name": "A4_west_table_programmes_bottom_cover",
+      "bounds_world": [
+        [
+          -72.29,
+          70.16500002145767,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.16600002145768,
+          -139.28
+        ]
+      ],
+      "vertices_world": [
+        [
+          -72.29,
+          70.16500002145767,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.16500002145767,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -72.29,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -72.29,
+          70.16500002145767,
+          -139.28
+        ],
+        [
+          -72.01,
+          70.16500002145767,
+          -139.28
+        ],
+        [
+          -72.01,
+          70.16600002145768,
+          -139.28
+        ],
+        [
+          -72.29,
+          70.16600002145768,
+          -139.28
+        ]
+      ],
+      "faces": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          1,
+          2,
+          6,
+          5
+        ],
+        [
+          2,
+          3,
+          7,
+          6
+        ],
+        [
+          3,
+          0,
+          4,
+          7
+        ]
+      ],
+      "face_uv": [
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ]
+        ],
+        [
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ]
+        ]
+      ],
+      "face_material_roles": [
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock"
+      ],
+      "collides": false,
+      "closed_solid": true,
+      "metric_blank_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_face_index": null,
+      "print_uv_policy": "Blank matte paper/cover stock only",
+      "stack_id": "A4_west_table_programmes",
+      "source_support": "A4_W_table",
+      "semantic_part": "bottom_cover",
+      "contact_y_lower": 70.16500002145767,
+      "contact_y_upper": 70.16600002145768
+    },
+    {
+      "name": "A4_west_table_programmes_pages",
+      "bounds_world": [
+        [
+          -72.29,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.18600002145767,
+          -139.28
+        ]
+      ],
+      "vertices_world": [
+        [
+          -72.29,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -72.29,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -72.29,
+          70.16600002145768,
+          -139.28
+        ],
+        [
+          -72.01,
+          70.16600002145768,
+          -139.28
+        ],
+        [
+          -72.01,
+          70.18600002145767,
+          -139.28
+        ],
+        [
+          -72.29,
+          70.18600002145767,
+          -139.28
+        ]
+      ],
+      "faces": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          1,
+          2,
+          6,
+          5
+        ],
+        [
+          2,
+          3,
+          7,
+          6
+        ],
+        [
+          3,
+          0,
+          4,
+          7
+        ]
+      ],
+      "face_uv": [
+        [
+          [
+            0.0,
+            0.07999999999998408
+          ],
+          [
+            1.1200000000000045,
+            0.07999999999998408
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.07999999999998408
+          ],
+          [
+            0.0,
+            0.07999999999998408
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.07999999999998408
+          ],
+          [
+            0.7999999999999545,
+            0.07999999999998408
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ]
+        ],
+        [
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.07999999999998408
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.07999999999998408
+          ]
+        ]
+      ],
+      "face_material_roles": [
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper"
+      ],
+      "collides": false,
+      "closed_solid": true,
+      "metric_blank_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_face_index": null,
+      "print_uv_policy": "Blank matte paper/cover stock only",
+      "stack_id": "A4_west_table_programmes",
+      "source_support": "A4_W_table",
+      "semantic_part": "pages",
+      "contact_y_lower": 70.16600002145768,
+      "contact_y_upper": 70.18600002145767
+    },
+    {
+      "name": "A4_west_table_programmes_top_cover",
+      "bounds_world": [
+        [
+          -72.29,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.18700002145768,
+          -139.28
+        ]
+      ],
+      "vertices_world": [
+        [
+          -72.29,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -72.01,
+          70.18700002145768,
+          -139.48
+        ],
+        [
+          -72.29,
+          70.18700002145768,
+          -139.48
+        ],
+        [
+          -72.29,
+          70.18600002145767,
+          -139.28
+        ],
+        [
+          -72.01,
+          70.18600002145767,
+          -139.28
+        ],
+        [
+          -72.01,
+          70.18700002145768,
+          -139.28
+        ],
+        [
+          -72.29,
+          70.18700002145768,
+          -139.28
+        ]
+      ],
+      "faces": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          1,
+          2,
+          6,
+          5
+        ],
+        [
+          2,
+          3,
+          7,
+          6
+        ],
+        [
+          3,
+          0,
+          4,
+          7
+        ]
+      ],
+      "face_uv": [
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ]
+        ]
+      ],
+      "face_material_roles": [
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_printed_paper",
+        "court_A_cover_stock"
+      ],
+      "collides": false,
+      "closed_solid": true,
+      "metric_blank_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_face_index": 4,
+      "print_uv_policy": "One complete image with no repeat; no print on sides or underside",
+      "stack_id": "A4_west_table_programmes",
+      "source_support": "A4_W_table",
+      "semantic_part": "top_cover",
+      "contact_y_lower": 70.18600002145767,
+      "contact_y_upper": 70.18700002145768
+    },
+    {
+      "name": "A4_east_table_programmes_bottom_cover",
+      "bounds_world": [
+        [
+          -66.99,
+          70.16500002145767,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.16600002145768,
+          -139.28
+        ]
+      ],
+      "vertices_world": [
+        [
+          -66.99,
+          70.16500002145767,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.16500002145767,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -66.99,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -66.99,
+          70.16500002145767,
+          -139.28
+        ],
+        [
+          -66.71,
+          70.16500002145767,
+          -139.28
+        ],
+        [
+          -66.71,
+          70.16600002145768,
+          -139.28
+        ],
+        [
+          -66.99,
+          70.16600002145768,
+          -139.28
+        ]
+      ],
+      "faces": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          1,
+          2,
+          6,
+          5
+        ],
+        [
+          2,
+          3,
+          7,
+          6
+        ],
+        [
+          3,
+          0,
+          4,
+          7
+        ]
+      ],
+      "face_uv": [
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ]
+        ],
+        [
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ]
+        ]
+      ],
+      "face_material_roles": [
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock"
+      ],
+      "collides": false,
+      "closed_solid": true,
+      "metric_blank_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_face_index": null,
+      "print_uv_policy": "Blank matte paper/cover stock only",
+      "stack_id": "A4_east_table_programmes",
+      "source_support": "A4_E_table",
+      "semantic_part": "bottom_cover",
+      "contact_y_lower": 70.16500002145767,
+      "contact_y_upper": 70.16600002145768
+    },
+    {
+      "name": "A4_east_table_programmes_pages",
+      "bounds_world": [
+        [
+          -66.99,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.18600002145767,
+          -139.28
+        ]
+      ],
+      "vertices_world": [
+        [
+          -66.99,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.16600002145768,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -66.99,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -66.99,
+          70.16600002145768,
+          -139.28
+        ],
+        [
+          -66.71,
+          70.16600002145768,
+          -139.28
+        ],
+        [
+          -66.71,
+          70.18600002145767,
+          -139.28
+        ],
+        [
+          -66.99,
+          70.18600002145767,
+          -139.28
+        ]
+      ],
+      "faces": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          1,
+          2,
+          6,
+          5
+        ],
+        [
+          2,
+          3,
+          7,
+          6
+        ],
+        [
+          3,
+          0,
+          4,
+          7
+        ]
+      ],
+      "face_uv": [
+        [
+          [
+            0.0,
+            0.07999999999998408
+          ],
+          [
+            1.1200000000000045,
+            0.07999999999998408
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.07999999999998408
+          ],
+          [
+            0.0,
+            0.07999999999998408
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.07999999999998408
+          ],
+          [
+            0.7999999999999545,
+            0.07999999999998408
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ]
+        ],
+        [
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.07999999999998408
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.07999999999998408
+          ]
+        ]
+      ],
+      "face_material_roles": [
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper"
+      ],
+      "collides": false,
+      "closed_solid": true,
+      "metric_blank_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_face_index": null,
+      "print_uv_policy": "Blank matte paper/cover stock only",
+      "stack_id": "A4_east_table_programmes",
+      "source_support": "A4_E_table",
+      "semantic_part": "pages",
+      "contact_y_lower": 70.16600002145768,
+      "contact_y_upper": 70.18600002145767
+    },
+    {
+      "name": "A4_east_table_programmes_top_cover",
+      "bounds_world": [
+        [
+          -66.99,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.18700002145768,
+          -139.28
+        ]
+      ],
+      "vertices_world": [
+        [
+          -66.99,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.18600002145767,
+          -139.48
+        ],
+        [
+          -66.71,
+          70.18700002145768,
+          -139.48
+        ],
+        [
+          -66.99,
+          70.18700002145768,
+          -139.48
+        ],
+        [
+          -66.99,
+          70.18600002145767,
+          -139.28
+        ],
+        [
+          -66.71,
+          70.18600002145767,
+          -139.28
+        ],
+        [
+          -66.71,
+          70.18700002145768,
+          -139.28
+        ],
+        [
+          -66.99,
+          70.18700002145768,
+          -139.28
+        ]
+      ],
+      "faces": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          1,
+          2,
+          6,
+          5
+        ],
+        [
+          2,
+          3,
+          7,
+          6
+        ],
+        [
+          3,
+          0,
+          4,
+          7
+        ]
+      ],
+      "face_uv": [
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ]
+        ]
+      ],
+      "face_material_roles": [
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_printed_paper",
+        "court_A_cover_stock"
+      ],
+      "collides": false,
+      "closed_solid": true,
+      "metric_blank_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_face_index": 4,
+      "print_uv_policy": "One complete image with no repeat; no print on sides or underside",
+      "stack_id": "A4_east_table_programmes",
+      "source_support": "A4_E_table",
+      "semantic_part": "top_cover",
+      "contact_y_lower": 70.18600002145767,
+      "contact_y_upper": 70.18700002145768
+    },
+    {
+      "name": "A4_reception_programmes_bottom_cover",
+      "bounds_world": [
+        [
+          -69.37,
+          70.56500005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.56600005722046,
+          -140.02
+        ]
+      ],
+      "vertices_world": [
+        [
+          -69.37,
+          70.56500005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.56500005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.56600005722046,
+          -140.22
+        ],
+        [
+          -69.37,
+          70.56600005722046,
+          -140.22
+        ],
+        [
+          -69.37,
+          70.56500005722046,
+          -140.02
+        ],
+        [
+          -69.09,
+          70.56500005722046,
+          -140.02
+        ],
+        [
+          -69.09,
+          70.56600005722046,
+          -140.02
+        ],
+        [
+          -69.37,
+          70.56600005722046,
+          -140.02
+        ]
+      ],
+      "faces": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          1,
+          2,
+          6,
+          5
+        ],
+        [
+          2,
+          3,
+          7,
+          6
+        ],
+        [
+          3,
+          0,
+          4,
+          7
+        ]
+      ],
+      "face_uv": [
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ]
+        ],
+        [
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ]
+        ]
+      ],
+      "face_material_roles": [
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock"
+      ],
+      "collides": false,
+      "closed_solid": true,
+      "metric_blank_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_face_index": null,
+      "print_uv_policy": "Blank matte paper/cover stock only",
+      "stack_id": "A4_reception_programmes",
+      "source_support": "A4_reception",
+      "semantic_part": "bottom_cover",
+      "contact_y_lower": 70.56500005722046,
+      "contact_y_upper": 70.56600005722046
+    },
+    {
+      "name": "A4_reception_programmes_pages",
+      "bounds_world": [
+        [
+          -69.37,
+          70.56600005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.58600005722046,
+          -140.02
+        ]
+      ],
+      "vertices_world": [
+        [
+          -69.37,
+          70.56600005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.56600005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.58600005722046,
+          -140.22
+        ],
+        [
+          -69.37,
+          70.58600005722046,
+          -140.22
+        ],
+        [
+          -69.37,
+          70.56600005722046,
+          -140.02
+        ],
+        [
+          -69.09,
+          70.56600005722046,
+          -140.02
+        ],
+        [
+          -69.09,
+          70.58600005722046,
+          -140.02
+        ],
+        [
+          -69.37,
+          70.58600005722046,
+          -140.02
+        ]
+      ],
+      "faces": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          1,
+          2,
+          6,
+          5
+        ],
+        [
+          2,
+          3,
+          7,
+          6
+        ],
+        [
+          3,
+          0,
+          4,
+          7
+        ]
+      ],
+      "face_uv": [
+        [
+          [
+            0.0,
+            0.07999999999998408
+          ],
+          [
+            1.1200000000000045,
+            0.07999999999998408
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.07999999999998408
+          ],
+          [
+            0.0,
+            0.07999999999998408
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.07999999999998408
+          ],
+          [
+            0.7999999999999545,
+            0.07999999999998408
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ]
+        ],
+        [
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.07999999999998408
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.07999999999998408
+          ]
+        ]
+      ],
+      "face_material_roles": [
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper",
+        "court_A_matte_paper"
+      ],
+      "collides": false,
+      "closed_solid": true,
+      "metric_blank_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_face_index": null,
+      "print_uv_policy": "Blank matte paper/cover stock only",
+      "stack_id": "A4_reception_programmes",
+      "source_support": "A4_reception",
+      "semantic_part": "pages",
+      "contact_y_lower": 70.56600005722046,
+      "contact_y_upper": 70.58600005722046
+    },
+    {
+      "name": "A4_reception_programmes_top_cover",
+      "bounds_world": [
+        [
+          -69.37,
+          70.58600005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.58700005722046,
+          -140.02
+        ]
+      ],
+      "vertices_world": [
+        [
+          -69.37,
+          70.58600005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.58600005722046,
+          -140.22
+        ],
+        [
+          -69.09,
+          70.58700005722046,
+          -140.22
+        ],
+        [
+          -69.37,
+          70.58700005722046,
+          -140.22
+        ],
+        [
+          -69.37,
+          70.58600005722046,
+          -140.02
+        ],
+        [
+          -69.09,
+          70.58600005722046,
+          -140.02
+        ],
+        [
+          -69.09,
+          70.58700005722046,
+          -140.02
+        ],
+        [
+          -69.37,
+          70.58700005722046,
+          -140.02
+        ]
+      ],
+      "faces": [
+        [
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          0,
+          1,
+          5,
+          4
+        ],
+        [
+          1,
+          2,
+          6,
+          5
+        ],
+        [
+          2,
+          3,
+          7,
+          6
+        ],
+        [
+          3,
+          0,
+          4,
+          7
+        ]
+      ],
+      "face_uv": [
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.0
+          ],
+          [
+            1.1200000000000045,
+            0.7999999999999545
+          ],
+          [
+            0.0,
+            0.7999999999999545
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ]
+        ],
+        [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.004000000000019099
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.0
+          ],
+          [
+            0.7999999999999545,
+            0.004000000000019099
+          ]
+        ]
+      ],
+      "face_material_roles": [
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_cover_stock",
+        "court_A_printed_paper",
+        "court_A_cover_stock"
+      ],
+      "collides": false,
+      "closed_solid": true,
+      "metric_blank_paper_uv_tile_m": [
+        0.25,
+        0.25
+      ],
+      "printed_face_index": 4,
+      "print_uv_policy": "One complete image with no repeat; no print on sides or underside",
+      "stack_id": "A4_reception_programmes",
+      "source_support": "A4_reception",
+      "semantic_part": "top_cover",
+      "contact_y_lower": 70.58600005722046,
+      "contact_y_upper": 70.58700005722046
+    }
+  ],
+  "display_plate": {
+    "name": "A4_original_programme_face",
+    "bounds_world": [
+      [
+        -70.125,
+        72.275,
+        -145.47
+      ],
+      [
+        -68.875,
+        73.265,
+        -145.465
+      ]
+    ],
+    "vertices_world": [
+      [
+        -70.125,
+        72.275,
+        -145.47
+      ],
+      [
+        -68.875,
+        72.275,
+        -145.47
+      ],
+      [
+        -68.875,
+        73.265,
+        -145.47
+      ],
+      [
+        -70.125,
+        73.265,
+        -145.47
+      ],
+      [
+        -70.125,
+        72.275,
+        -145.465
+      ],
+      [
+        -68.875,
+        72.275,
+        -145.465
+      ],
+      [
+        -68.875,
+        73.265,
+        -145.465
+      ],
+      [
+        -70.125,
+        73.265,
+        -145.465
+      ]
+    ],
+    "faces": [
+      [
+        3,
+        2,
+        1,
+        0
+      ],
+      [
+        4,
+        5,
+        6,
+        7
+      ],
+      [
+        0,
+        1,
+        5,
+        4
+      ],
+      [
+        1,
+        2,
+        6,
+        5
+      ],
+      [
+        2,
+        3,
+        7,
+        6
+      ],
+      [
+        3,
+        0,
+        4,
+        7
+      ]
+    ],
+    "face_uv": [
+      [
+        [
+          0.0,
+          3.9599999999999795
+        ],
+        [
+          5.0,
+          3.9599999999999795
+        ],
+        [
+          5.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          5.0,
+          0.0
+        ],
+        [
+          5.0,
+          0.01999999999998181
+        ],
+        [
+          0.0,
+          0.01999999999998181
+        ]
+      ],
+      [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          3.9599999999999795
+        ],
+        [
+          0.01999999999998181,
+          3.9599999999999795
+        ],
+        [
+          0.01999999999998181,
+          0.0
+        ]
+      ],
+      [
+        [
+          5.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.01999999999998181
+        ],
+        [
+          5.0,
+          0.01999999999998181
+        ]
+      ],
+      [
+        [
+          0.0,
+          3.9599999999999795
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.01999999999998181,
+          0.0
+        ],
+        [
+          0.01999999999998181,
+          3.9599999999999795
+        ]
+      ]
+    ],
+    "face_material_roles": [
+      "court_A_cover_stock",
+      "court_A_original_programme",
+      "court_A_cover_stock",
+      "court_A_cover_stock",
+      "court_A_cover_stock",
+      "court_A_cover_stock"
+    ],
+    "collides": false,
+    "closed_solid": true,
+    "metric_blank_paper_uv_tile_m": [
+      0.25,
+      0.25
+    ],
+    "printed_face_index": 1,
+    "print_uv_policy": "One complete image with no repeat; no print on sides or underside",
+    "semantic_id": "D11.CourtA.Completion004.original_programme",
+    "source_support": "A4_sign_frame",
+    "front_normal_world": [
+      0,
+      0,
+      1
+    ],
+    "printed_top_direction_world": [
+      0,
+      1,
+      0
+    ]
+  },
+  "stack_piece_limit": 9,
+  "stack_triangles": 108,
+  "display_plate_triangles": 12,
+  "preservation": {
+    "existing_objects_moved": 0,
+    "existing_lower_writing_wing_clear": true,
+    "new_lights": 0,
+    "audience_chairs_rebuilt": 0,
+    "production_writes": false,
+    "engine_runs": false,
+    "exports": false,
+    "source_build": false
+  },
+  "remaining_gates": [
+    "Parent static checkpoint and source-job slot",
+    "Parent original-art review acknowledgement",
+    "Blender source build and independent reopen",
+    "Material graphs, packed image hashes and source UV validation",
+    "Same-camera/seated/service visual review",
+    "Independent source retention",
+    "Native collision, six-species fit and any later separately authorized export/integration"
+  ],
+  "acceptance": {
+    "source_built": false,
+    "source_reopened": false,
+    "retained": false,
+    "native_verified": false,
+    "visually_accepted_in_court": false
+  }
+}
