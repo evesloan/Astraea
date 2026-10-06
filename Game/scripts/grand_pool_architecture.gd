@@ -34,3 +34,4 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		assert(item.find_children("*","CollisionObject3D",true,false).is_empty())
 	assert(data.fixtures.is_empty() and root.find_children("*","Light3D",true,false).is_empty())
 	load("res://scripts/grand_pool_feature_layers.gd").build(parent,ship,root)
+	load("res://scripts/grand_pool_east_gallery.gd").build(parent,ship)

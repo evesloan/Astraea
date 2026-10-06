@@ -6,6 +6,10 @@ const PREVIOUS_BUILDER_SHA := "a764584c22010fc5aaf6ef36cf257fb70be73b659e2d6ff18
 const CANDIDATE_BUILDER_SHA := "b0c348ee6af779bb1e7447e77fc178b63c873f393b1b2a4613d33da7e8f45333"
 const ADDED_LINE := "\tload(\"res://scripts/grand_pool_feature_layers.gd\").build(parent,ship,root)\n"
 const FEATURE_INPUTS := {"scripts/grand_pool_feature_layers.gd":"9e629e04335f4e5beb578c4ae40c44ccbba16ee074bb8acecd35b81519a343ea","data/architecture/GRAND_POOL_FEATURE_LAYERS_RUNTIME.json":"ae442888b8a06f0204cfeeacf1e3832b9b5b2d2dfbed941b181821de4eca751b"}
+# The east gallery is one exact later append; normalize it before the retained feature proof.
+const EAST_GALLERY_BUILDER_SHA := "2437bde87f2733636edb34f7e86cb2b11805e7693fc88566b1bdc345e7e495f4"
+const EAST_GALLERY_ADDED_LINE := "\tload(\"res://scripts/grand_pool_east_gallery.gd\").build(parent,ship)\n"
+const EAST_GALLERY_INPUTS := {"scripts/grand_pool_east_gallery.gd":"463fa8c443c6b1748e5cd6cc6f1194d171868b0d9aa9db5c98fcf8aa8d6f7882","data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json":"46480e3b5df4467b025bde38a36d73534c8079b668eef63d0437c226cae18cb4"}
 const POOL_HELPER := "tests/secondary_engineering_pool_ship_successor.gd"
 const PREVIOUS_HELPER_SHA := "07d0c1494b297763de23612ef9f7b6d9e145791a190c03a3be0bd9d4a7c72bd5"
 const CANDIDATE_HELPER_SHA := "c4e757ca80bc85e8fe4f7c41df5d3a3d1d2deb96ac0aa087760f30cf3cf4c241"
@@ -17,6 +21,14 @@ static func retained_sha256(path: String) -> String:
 	var source := FileAccess.get_file_as_string("res://"+path)
 	var actual := source.sha256_text()
 	if path==BUILDER:
+		if actual==EAST_GALLERY_BUILDER_SHA:
+			assert(FileAccess.get_sha256("res://"+path)==EAST_GALLERY_BUILDER_SHA,"Exact east gallery builder bytes required")
+			for input in EAST_GALLERY_INPUTS:
+				assert(FileAccess.get_sha256("res://"+str(input))==str(EAST_GALLERY_INPUTS[input]),"East gallery input changed: "+str(input))
+			assert(source.count(EAST_GALLERY_ADDED_LINE)==1 and source.ends_with(EAST_GALLERY_ADDED_LINE),"East gallery call must be appended exactly once")
+			source=source.trim_suffix(EAST_GALLERY_ADDED_LINE)
+			assert(source.sha256_text()==CANDIDATE_BUILDER_SHA,"Every prior feature builder byte must survive")
+			actual=source.sha256_text()
 		if actual==PREVIOUS_BUILDER_SHA: return actual
 		assert(actual==CANDIDATE_BUILDER_SHA,"Unknown pool feature builder")
 		for input in FEATURE_INPUTS:
