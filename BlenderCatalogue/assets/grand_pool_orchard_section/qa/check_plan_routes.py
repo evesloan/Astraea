@@ -37,9 +37,25 @@ def samples(chain,spacing=.10):
   n=max(1,math.ceil(math.dist(a,b)/spacing))
   for i in range(n):yield[a[k]+(b[k]-a[k])*i/n for k in range(len(a))]
  yield chain[-1]
+support_quads=list(D['stair_collision_contacts']['quads_xyz'])
+for p in parts:
+ if p['name'].startswith('GP_RampPan_'):
+  v=p['world_vertices'];support_quads.append([v[4],v[5],v[7],v[6]])
+ if p['name']in['GP_RampReturnLanding','CIR630_MidLanding']:support_quads.append(p['world_vertices'][4:8])
+def supported(x,y,z):
+ point=Point(x,z)
+ if any(abs(level-y)<.015 and shape.buffer(1e-6).covers(point)for level,shape in floors.items()):return True
+ for q in support_quads:
+  if not Polygon([(v[0],v[2])for v in q]).buffer(1e-6).covers(point):continue
+  a,b,c=q[:3];u=[b[i]-a[i]for i in range(3)];v=[c[i]-a[i]for i in range(3)];n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]]
+  if abs(n[1])<1e-9:continue
+  yy=a[1]-(n[0]*(x-a[0])+n[2]*(z-a[2]))/n[1]
+  if abs(yy-y)<.015:return True
+ return False
 routes={
  'D08_dry_arrival_to_ramp':[[-8.05,44,-432],[-9.4,44,-432],[-9.4,44,-447.8],[-12,44,-447.8]],
  'D08_ramp':D['accessible_ramp']['route_xyz'],
+ 'D08_ceremonial_wet_rise':[[-8.05,44,-432],[-11,44,-432],[-16.2,46.2,-432],[-20,46.2,-432]],
  'D09_closed_door_dry_market_loop':[[x,52.5,z]for x,z in D['market']['adopted_dry_loop_centreline_xz']],
  'D08_wet_pool_circuit':[[-20,46.2,-447.8],[-20,46.2,-459.8],[-43,46.2,-459.8],[-45.9,46.2,-458],[-45.9,46.2,-405],[-43,46.2,-400.9],[-20,46.2,-400.9],[-20,46.2,-426.8]],
  'D08_local_lift_approach':[[-20,46.2,-407],[-10.8,46.2,-407],[-10.8,46.2,-412.4],[-13.45,46.2,-412.4]],
@@ -49,6 +65,7 @@ for label,chain in routes.items():
  hits=[];count=0
  for x,y,z in samples(chain):
   count+=1;body=Point(x,z).buffer(.3,quad_segs=8)
+  if not supported(x,y,z):hits.append({'at':[x,y,z],'unsupported_foot':True})
   for p in parts:
    bb=p['bounds']
    if p.get('collision_contract')=='visual_only_stair_tread':continue
@@ -56,7 +73,7 @@ for label,chain in routes.items():
    cut=slice_shape(p,y+.3,y+1.8)
    if cut.intersection(body).area>1e-7:hits.append({'at':[x,y,z],'part':p['name']});break
   if len(hits)>8:break
- route_rows.append({'route':label,'sampled_positions':count,'body_radius_m':.3,'body_test_height_above_foot_m':[.3,1.8],'pass':not hits,'hits':hits})
+ route_rows.append({'route':label,'sampled_positions':count,'body_radius_m':.3,'foot_support_sampled':True,'floor_source':'Exact compiler contract + actual ramp/midlanding meshes + existing-family stair collision quads','body_test_height_above_foot_m':[.3,1.8],'pass':not hits,'hits':hits})
 # Open-door sightlines: all19x19 aperture samples, multiple eye heights, exact baffle intersection.
 baffle=box(-51.2,-465.8,-51.0,-459.5);sight_rays=0;miss=[]
 for i in range(19):
@@ -107,5 +124,5 @@ for index,(x,z,yaw)in enumerate(poses):
  if not floor.buffer(1e-6).covers(operator.centroid):cart_hits.append({'pose_index':index,'unsupported_operator':list(operator.centroid.coords)[0]})
  if len(cart_hits)>15:break
 cart_row={'pass':not cart_hits,'sampled_poses':len(poses),'sample_translation_step_m':.04,'turn_angle_steps':80,'turn_centres_translate':True,'operator_offset_m':1.62,'operator_radius_m':.3,'actual_cart_compound_boxes':len(contacts['boxes']),'wheel_spheres':4,'loaded_tray_plan_m':[.65,.96],'minimum_plan_clearance_m':min_clear,'hits':cart_hits,'route_poses':poses,'reverse_scope':'Same held orientations retraced in reverse; geometric backing/regrip space, not force-driven physics','pending':'Actual dynamics, freehand steering and spring-cart comfort after runtime integration'}
-report={'pass':all(r['pass']for r in route_rows)and cart_row['pass'],'scope':'Conservative source solid slices + exact polygon floor/sightline checks. Capsule band starts0.3m above foot, excludes gait contact. No engine proof.','source_routes':route_rows,'open_door_screening':{'pass':True,'rays':sight_rays,'baffle_rect':[-51.2,-51,-465.8,-459.5]},'screened_cart_proxy':cart_row,'runtime_records_and_neighbours_unchanged':True,'D07_no_new_material_below43_76':True,'D10_no_new_material_above61':True}
+report={'input_sha256':{str(p.relative_to(R)):sha(p)for p in[R/'source/connected_contract.json',R/'source/AST-AQU-016.blend',R/'exports/AST-AQU-016.glb',R/'source/AST-STF-009_pool_market.blend']},'pass':all(r['pass']for r in route_rows)and cart_row['pass'],'scope':'Conservative source solid slices + exact polygon floor/sightline checks. Capsule band starts0.3m above foot, excludes gait contact. No engine proof.','source_routes':route_rows,'open_door_screening':{'pass':True,'rays':sight_rays,'baffle_rect':[-51.2,-51,-465.8,-459.5]},'screened_cart_proxy':cart_row,'runtime_records_and_neighbours_unchanged':True,'D07_no_new_material_below43_76':True,'D10_no_new_material_above61':True}
 (R/'qa/plan_route_verification.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({**report,'screened_cart_proxy':{k:v for k,v in cart_row.items()if k!='route_poses'}},indent=2))

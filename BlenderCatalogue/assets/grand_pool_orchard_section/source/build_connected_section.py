@@ -238,9 +238,20 @@ for y in[46.2,52.5]:
 for y in[44,52.5]:marker('public_portal_'+str(y),[-7.9,y,-432],extra={'clear_width_m':6,'clear_height_m':3.2})
 for i,p in enumerate(D['accessible_ramp']['route_xyz']):marker('ramp_route_'+str(i),p,'route')
 D['staff']['adopted_screen_rect']=[-51.2,-51.0,-465.8,-459.5]
-D['staff']['adopted_route_xz']=[[-23.08,-490],[-21,-490],[-21,-500],[-57,-500],[-57,-463],[-52.5,-463],[-52.5,-458.15],[-48,-458.15]]
+D['staff']['adopted_route_xz']=[[-23.08,-490],[-21,-490],[-21,-500],[-57,-500],[-57,-463],[-52,-463.1],[-51.95,-462.9],[-51.95,-458.1],[-51.65,-458.1],[-51.55,-458],[-48,-458]]
 D['door_fittings']=doors
 for door in doors:marker(door['name'],door['root_xyz'],'door_fitting',{k:door[k]for k in['parent','export','yaw_radians','clear_width','cassette_width']})
+# Exact pocket ends are at±2.56m while the unchanged header reaches±2.58m. Close both20mm outer strips.
+for door in doors:
+ x,y,z=door['root_xyz']
+ for sign in[-1,1]:
+  a,b=sorted([sign*2.56,sign*2.58])
+  if door['normal_axis']=='z':box('GP_DoorCassetteSideSeal_'+door['name'],x+a,x+b,z-.13,z+.13,y,y+2.66,'champagne_metal')
+  else:box('GP_DoorCassetteSideSeal_'+door['name'],x-.13,x+.13,z+a,z+b,y,y+2.66,'champagne_metal')
+# Close the short room/core wall-depth seam outside each full6m clear public aperture.
+for y in[44,52.5]:
+ for z0,z1 in[(-435.16,-435),(-429,-428.84)]:box('GP_PublicPortalDepthJamb',-8.20,-7.72,z0,z1,y,y+3.2,'warm_stone')
+ box('GP_PublicPortalDepthHeader',-8.20,-7.72,-435.16,-428.84,y+3.2,y+3.36,'warm_stone')
 # Common compiler floors are review-only transparent ownership previews, never GLB mesh/collision.
 for f in D['floor_regions']:
  verts=[];faces=[]

@@ -1,4 +1,10 @@
 {
+  "input_sha256": {
+    "source/connected_contract.json": "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd",
+    "source/AST-AQU-016.blend": "135735f7792a9d0202060888a72c611eded40acc16d7c959d62e7e619283c222",
+    "exports/AST-AQU-016.glb": "95a72a20bd0ed653bb10622ff025b1003386020063587828b29efe5e8e40a481",
+    "source/AST-STF-009_pool_market.blend": "8e5e89ffc98e2dab8ac54a3266632d00ecfc1be8a1de5670b41e0726650ea5c6"
+  },
   "pass": true,
   "scope": "Conservative source solid slices + exact polygon floor/sightline checks. Capsule band starts0.3m above foot, excludes gait contact. No engine proof.",
   "source_routes": [
@@ -6,6 +12,8 @@
       "route": "D08_dry_arrival_to_ramp",
       "sampled_positions": 200,
       "body_radius_m": 0.3,
+      "foot_support_sampled": true,
+      "floor_source": "Exact compiler contract + actual ramp/midlanding meshes + existing-family stair collision quads",
       "body_test_height_above_foot_m": [
         0.3,
         1.8
@@ -17,6 +25,21 @@
       "route": "D08_ramp",
       "sampled_positions": 396,
       "body_radius_m": 0.3,
+      "foot_support_sampled": true,
+      "floor_source": "Exact compiler contract + actual ramp/midlanding meshes + existing-family stair collision quads",
+      "body_test_height_above_foot_m": [
+        0.3,
+        1.8
+      ],
+      "pass": true,
+      "hits": []
+    },
+    {
+      "route": "D08_ceremonial_wet_rise",
+      "sampled_positions": 127,
+      "body_radius_m": 0.3,
+      "foot_support_sampled": true,
+      "floor_source": "Exact compiler contract + actual ramp/midlanding meshes + existing-family stair collision quads",
       "body_test_height_above_foot_m": [
         0.3,
         1.8
@@ -28,6 +51,8 @@
       "route": "D09_closed_door_dry_market_loop",
       "sampled_positions": 1974,
       "body_radius_m": 0.3,
+      "foot_support_sampled": true,
+      "floor_source": "Exact compiler contract + actual ramp/midlanding meshes + existing-family stair collision quads",
       "body_test_height_above_foot_m": [
         0.3,
         1.8
@@ -39,6 +64,8 @@
       "route": "D08_wet_pool_circuit",
       "sampled_positions": 1457,
       "body_radius_m": 0.3,
+      "foot_support_sampled": true,
+      "floor_source": "Exact compiler contract + actual ramp/midlanding meshes + existing-family stair collision quads",
       "body_test_height_above_foot_m": [
         0.3,
         1.8
@@ -50,6 +77,8 @@
       "route": "D08_local_lift_approach",
       "sampled_positions": 174,
       "body_radius_m": 0.3,
+      "foot_support_sampled": true,
+      "floor_source": "Exact compiler contract + actual ramp/midlanding meshes + existing-family stair collision quads",
       "body_test_height_above_foot_m": [
         0.3,
         1.8
@@ -61,6 +90,8 @@
       "route": "local_stair_connected_route",
       "sampled_positions": 310,
       "body_radius_m": 0.3,
+      "foot_support_sampled": true,
+      "floor_source": "Exact compiler contract + actual ramp/midlanding meshes + existing-family stair collision quads",
       "body_test_height_above_foot_m": [
         0.3,
         1.8

@@ -1,7 +1,7 @@
 """Actual mesh contact graph including exact compiler-floor contract solids and retained keel mesh."""
 from pathlib import Path
 from collections import deque
-import bpy,json,math
+import bpy,json,math,hashlib
 from mathutils import Vector
 from mathutils.bvhtree import BVHTree
 R=Path(__file__).resolve().parents[1];C=R.parents[1];D=json.loads((R/'source/connected_contract.json').read_text());bpy.ops.wm.open_mainfile(filepath=str(R/'source/AST-AQU-016.blend'))
@@ -48,5 +48,5 @@ while q:
  a=q.popleft()
  for b in graph[a]-seen:seen.add(b);q.append(b)
 unrooted=sorted(set(names)-seen)
-report={'pass':not unrooted,'scope':'Actual source closed-mesh contacts, with intended compiler floor solids built exactly from contract; not civil-engineering certification or runtime adoption','root':'RETAINED_HUL_KeelPan','mesh_and_floor_nodes':len(names),'rooted_nodes':len(seen),'unrooted':unrooted,'contacts':rows,'tolerance_m':eps,'compiler_floors_exported':False}
+report={'input_sha256':{str(p.relative_to(R)):hashlib.sha256(p.read_bytes()).hexdigest()for p in[R/'source/connected_contract.json',R/'source/AST-AQU-016.blend',R/'exports/AST-AQU-016.glb']},'pass':not unrooted,'scope':'Actual source closed-mesh contacts, with intended compiler floor solids built exactly from contract; not civil-engineering certification or runtime adoption','root':'RETAINED_HUL_KeelPan','mesh_and_floor_nodes':len(names),'rooted_nodes':len(seen),'unrooted':unrooted,'contacts':rows,'tolerance_m':eps,'compiler_floors_exported':False}
 (R/'qa/source_contact_graph.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items()if k!='contacts'},indent=2));assert not unrooted,unrooted

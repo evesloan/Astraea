@@ -26,7 +26,7 @@ The spatial architecture includes a compressed dry arrival, broad ceremonial ris
 
 ## Exact compiler floor ownership
 
-`source/connected_contract.json` contains every exact boundary, hole, elevation, thickness and constrained triangulation. Suggested priority is −1 so original floor owners remain protected. The common horizontal floor meshes are previews only and never exported. The compiler owns these eight regions:
+`source/connected_contract.json` contains every exact boundary, hole, elevation, thickness and constrained triangulation. The contract's initial priority −1 is a proposal. Parent's scratch-only compiler check found that adoption priority **−11**, below every current existing owner, is required to preserve the exact ordering and bytes of all 250 old records. At −11, the actual compiler produces 258 owners, exact declared new areas and all 250 previous records unchanged. Use the verified lower-than-existing priority policy; do not blindly copy −1 into the live layout. The common horizontal floor meshes are previews only and never exported. The compiler owns these eight regions:
 
 | Region | Top Y | Area m² |
 |---|---:|---:|
@@ -62,7 +62,7 @@ Four door fittings use the unchanged AST-DOR-002_wide source, with its real 2.4 
 - D08 service threshold: `(−53.86,46.2,−463)`, yaw π/2
 - D09 service threshold: `(−53.86,52.5,−463)`, yaw π/2
 
-The matching shell uses full cassette-width cut-outs and headers, not solid walls through leaf pockets. Local upper floor edges are explicitly guarded around the stair landing and lift pocket. The dry market circuit passes with these pool/service fittings closed. Door function and collision in the actual ship remain parent-owned acceptance.
+The matching shell uses full cassette-width cut-outs and headers, not solid walls through leaf pockets. Two 20 mm static side-seal strips at each fitting close the difference between its ±2.56 m pocket ends and ±2.58 m header. Short public portal collars also close the 120 mm room/core wall-depth seam outside the clear aperture. Local upper floor edges are explicitly guarded around the stair landing and lift pocket. The dry market circuit passes with these pool/service fittings closed. Door function and collision in the actual ship remain parent-owned acceptance.
 
 ## Local and staff lift interfaces
 
@@ -74,7 +74,7 @@ The staff lift remains `forward_staff_lift_001`, root `(−25,0,−490)`, yaw π
 
 ## Screened service and tested source pose sequence
 
-The original proposed baffle had unblocked open-door corner rays. The adopted baffle is X−51.2..−51.0 / Z−465.8..−459.5, within the original X−54..−48 / Z−465.8..−456.8 vestibule. Its top meets the 3.2 m-high ceiling. All 1,444 sampled open-aperture sightlines are blocked at four eye heights. Separate clean/return niches remain outside the turn band; stock itself is not supplied.
+The original proposed baffle had unblocked open-door corner rays. The adopted baffle is X−51.2..−51.0 / Z−465.8..−459.5, within the original X−54..−48 / Z−465.8..−456.8 vestibule. Its top meets the 3.2 m-high ceiling. All 1,444 sampled open-aperture sightlines are blocked at four eye heights. Separate clean/return niches remain outside the turn band; stock itself is not supplied. The staff ceiling datum is +3.2 m, but the retained surface-mounted fixture profile projects down to +3.015 m locally. Source walking/cart probes clear it; uninterrupted 3.2 m headroom is not achieved beneath those fittings. Recessing them remains an explicit later fit item, not a passed clearance claim.
 
 The definitive source cart pose sequence is `qa/plan_route_verification.json → screened_cart_proxy.route_poses`. It uses changing position and heading during both turns, not a centreline-only or fixed-rotation-only claim. It tests all nineteen live cart contact boxes, four wheel spheres, the 0.65 × 0.96 m four-product tray envelope and a 0.3 m-radius operator at the real 1.62 m offset. Every wheel centre and operator foot has floor support. There are 532 retained poses at ≤0.04 m translation steps, with eighty heading samples per turn. Minimum tested plan clearance is about 0.1395 m. The same oriented path is geometrically reversible for backing.
 
@@ -84,7 +84,7 @@ This is a source proxy, not a force-tethered driving result. Runtime must drive 
 
 The main contract has twenty-five physical fixture markers, each paired with a modelled housing/lens, plus twenty new staff-route markers. Reuse the current lighting/material budget and culling policy; these are fixture intents, not a demand for forty-five simultaneous shadowed lights. The Blender review uses lower neutral fill and fixture-position review lights. It is not the game's final lighting, shader or CRT output.
 
-Source-export QA verifies exact oriented triangles, UVs, material names, packed texture bytes and marker transforms; every exported source mesh is finite, closed and positive-volume. Shared material families and all old source objects/materials are preserved. Glass remains physically present, but its final hospitality_glass behavior still needs in-engine review.
+Source-export QA verifies exact oriented triangles, UVs, material names, packed texture bytes and marker transforms; every exported source mesh is finite, closed and positive-volume. Shared material families and all old source objects/materials are preserved. The final audit also requires nonzero UV area on every exported triangle; the 56 initially degenerate new staff-ceiling edge triangles were corrected without changing their geometry. Glass remains physically present, but its final hospitality_glass behavior still needs in-engine review.
 
 Review `qa/dimensioned_plan_section.png` and the labelled `source_arrival`, `source_ramp_arrival`, `source_wet_long_view`, `source_market`, `source_market_west` and `source_cutaway` images. The cutaway intentionally hides roof sheets, east/end enclosing walls and lower bearing stems to expose the connected interior. A trial water plane and compiler-floor solids exist only in the review scene; neither is hidden production geometry. The normal arrival is below the raised wet datum, so water reveals as the player climbs or uses the ramp. No source image is in-game proof.
 
@@ -92,6 +92,6 @@ Review `qa/dimensioned_plan_section.png` and the labelled `source_arrival`, `sou
 
 From the catalogue root, run Blender background with `--python-exit-code 1` on `source/build_connected_section.py` and `source/build_source_derivatives.py`, then the source, contact and lift-sweep QA scripts. Run the pure-Python route checker with the available geometry dependencies. Optional source review rendering uses CPU Cycles with denoising disabled. `prepare_contract.py` is the initial baseline-proposal preparation; do not rerun it over an adopted contract after runtime has changed its source hashes. No original family needs rebuilding.
 
-Run the final metadata/hash step only after fresh QA matches the final contract/source/export. `DELIVERY_HASHES.json` identifies the exact source freeze. Parent owns commits, independent retention, model import, all eight floor/compiler additions, exact old-record preservation, existing core/staff stop regressions, door/lift identities and interlocks, ordinary player/controller motion, force-driven loaded-cart routes, normal/effects-off in-ship visuals and full matching regression.
+Run the final metadata/hash step only after fresh QA matches the final contract/source/export. `DELIVERY_HASHES.json` identifies the exact source freeze. Parent owns commits, independent retention, model import, all eight floor/compiler additions, exact old-record preservation at the parent-verified lower-than-existing adoption priority −11, existing core/staff stop regressions, door/lift identities and interlocks, ordinary player/controller motion, force-driven loaded-cart routes, normal/effects-off in-ship visuals and full matching regression.
 
 Swimming, water-entry assistance, slides/lazy river, drainage function, wet-material gameplay, species fitting, furnishings, live planting, retail stock/transactions, population activity, acoustic design, final lighting/material art and whole-ship acceptance are unfinished. D17 Royalty's upper/enclosure work remains separate unfinished scope. This connected section does not close either programme's entire design brief.
