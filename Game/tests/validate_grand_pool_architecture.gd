@@ -28,6 +28,19 @@ func ray(a: Vector3,b: Vector3,excluded: Array[RID] = []) -> Dictionary:
 	query.exclude = excluded
 	return space.intersect_ray(query)
 
+func render_faces(resource: Mesh) -> PackedVector3Array:
+	# get_faces() uses TriangleMesh's 0.0001m snapped collision/debug grid.
+	# Render/source checks use the actual imported surface buffers and indices.
+	var result := PackedVector3Array()
+	for surface in range(resource.get_surface_count()):
+		assert(resource.surface_get_primitive_type(surface)==Mesh.PRIMITIVE_TRIANGLES)
+		var arrays: Array=resource.surface_get_arrays(surface)
+		var positions: PackedVector3Array=arrays[Mesh.ARRAY_VERTEX]
+		var indices: PackedInt32Array=arrays[Mesh.ARRAY_INDEX]
+		assert(not indices.is_empty() and indices.size()%3==0)
+		for index in indices:result.append(positions[index])
+	return result
+
 func pins() -> void:
 	for path in data.preserved_file_sha256:
 		assert(FileAccess.get_sha256(str(path)) == data.preserved_file_sha256[path],"Retained pool input changed: "+str(path))
@@ -37,6 +50,8 @@ func pins() -> void:
 		assert(FileAccess.get_sha256(path) == spec.sha256)
 		var remap := ConfigFile.new()
 		assert(remap.load(path+".import") == OK)
+		if spec.has("meshes"):
+			assert(remap.get_value("params","meshes/force_disable_compression",false)==true,"New structural derivative must retain authored render precision")
 		var imported: String = remap.get_value("remap","path","")
 		assert(not imported.is_empty() and FileAccess.file_exists(imported))
 		var digest := ConfigFile.new()
@@ -66,7 +81,7 @@ func structure() -> void:
 		for mesh in node.find_children("*","MeshInstance3D",true,false):
 			assert(spec.meshes.has(str(mesh.name)) and mesh.material_override == null)
 			var expected: Dictionary = spec.meshes[str(mesh.name)]
-			var vertices: PackedVector3Array = mesh.mesh.get_faces()
+			var vertices: PackedVector3Array = render_faces(mesh.mesh)
 			assert(vertices.size() == int(expected.triangles)*3)
 			var lo := Vector3(INF,INF,INF)
 			var hi := Vector3(-INF,-INF,-INF)
@@ -91,7 +106,7 @@ func structure() -> void:
 		assert(node.find_children("*","CollisionObject3D",true,false).is_empty())
 		var roots: Array[Vector3] = []
 		for mesh in node.find_children("*","MeshInstance3D",true,false):
-			for vertex in mesh.mesh.get_faces():
+			for vertex in render_faces(mesh.mesh):
 				var world: Vector3=mesh.global_transform*vertex
 				if absf(world.y-float(entry.position_xyz[1]))<.00005: roots.append(world)
 		assert(not roots.is_empty(),"Imported plant has no soil-level roots")
@@ -137,7 +152,7 @@ func new_render_segment_clear(start: Vector3,end: Vector3) -> bool:
 		var b: Vector3=mesh.to_local(end)
 		var box: AABB=mesh.mesh.get_aabb().grow(.00005)
 		if maxf(a.x,b.x)<box.position.x or minf(a.x,b.x)>box.end.x or maxf(a.y,b.y)<box.position.y or minf(a.y,b.y)>box.end.y or maxf(a.z,b.z)<box.position.z or minf(a.z,b.z)>box.end.z: continue
-		var vertices: PackedVector3Array=mesh.mesh.get_faces()
+		var vertices: PackedVector3Array=render_faces(mesh.mesh)
 		for i in range(0,vertices.size(),3):
 			var hit: Variant=Geometry3D.segment_intersects_triangle(a,b,vertices[i],vertices[i+1],vertices[i+2])
 			if hit != null: return false
