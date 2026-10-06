@@ -2,7 +2,7 @@
 No original family, shared material, runtime file or existing source is overwritten.
 Export is a separate explicit --export step after source QA and parent retention.
 """
-import bpy,bmesh,json,hashlib,sys,math
+import bpy,bmesh,json,hashlib,sys,math,struct
 from pathlib import Path
 from mathutils import Vector
 HERE=Path(__file__).resolve().parents[1];CAT=Path('/workspace/shared/astraea-catalogue-continuation-20261002')
@@ -53,8 +53,17 @@ for role,mat in mats.items():
    im=node.image;assert min(im.size)>0;imgs.append({'name':im.name,'size':list(im.size),'packed':bool(im.packed_file or im.packed_files),'filepath':im.filepath})
  material_evidence[role]={'source_exemplar':exemplars[role],'material':mat.name,'metric_tile_m':list(mat.get('meters_per_tile_uv',[1,1])),'images':imgs}
 for row in D['parts']:
- vertices=[(v[0],-v[2],v[1]) for v in row['world_vertices']]
- data=bpy.data.meshes.new(row['name']+'_editable_mesh');data.from_pydata(vertices,[],row['faces']);data.update();bm=bmesh.new();bm.from_mesh(data);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7);bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-7);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(data);bm.free()
+ # Exact indexing of the coordinates Blender actually stores. Do not depend
+ # on a distance-weld operation at large world coordinates, and do not increase
+ # tolerances to hide disconnected triangulated caps/walls.
+ vertices=[];indices={};remap=[]
+ for v in row['world_vertices']:
+  point=struct.unpack('<3f',struct.pack('<3f',v[0],-v[2],v[1]))
+  if point not in indices:indices[point]=len(vertices);vertices.append(point)
+  remap.append(indices[point])
+ faces=[[remap[i] for i in f] for f in row['faces']]
+ assert all(len(set(f))==len(f) for f in faces),'A planned face collapses in actual float32 source coordinates'
+ data=bpy.data.meshes.new(row['name']+'_editable_mesh');data.from_pydata(vertices,[],faces);data.update();bm=bmesh.new();bm.from_mesh(data);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(data);bm.free()
  ob=bpy.data.objects.new(row['name'],data);scene.collection.objects.link(ob);data.materials.append(mats[row['material_role']]);ob['parent_design_id']='AST-AQU-016';ob['retained_host']=row['support'];ob['collision_contract']=row['collision_contract'];ob['material_role']=row['material_role'];ob['source_contract_sha256']=sha(CONTRACT)
  if row.get('cast_shadow') is False:ob['cast_shadow']=False
  uv=data.uv_layers.new(name='MetreScaled');scale=mats[row['material_role']].get('meters_per_tile_uv',[1,1])

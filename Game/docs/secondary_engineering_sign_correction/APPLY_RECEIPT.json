@@ -1,0 +1,27 @@
+{
+  "scope": "Parent-approved D02 label-only placement correction; no walls/floors/assets/controllers/shared core builder changed",
+  "regression": "Original D02 label lay inside new engineering aperture after core derivative adoption",
+  "before": [
+    7.66,
+    7.75,
+    -432
+  ],
+  "after": [
+    7.66,
+    7.75,
+    -436
+  ],
+  "identity": "ForwardPublicCore_WIP/PrimaryDeckSign_02",
+  "existing_assertions_retained": true,
+  "new_assertions": "Full-label backing30rays,0.4m aperture margin,4approach sightlines,all17sign positions/identity preservation",
+  "files": {
+    "scripts/secondary_engineering_section.gd": {
+      "before": "3e483386be0e87ded03f41aea5db5a588e73795a6721cfc2393eefc7da1b5c5a",
+      "after": "1d2b03aa3ddd9ca501269b3267eaafc0510bd0aba3cc649ff80e689fd73a1a0e"
+    },
+    "tests/validate_forward_core_stairs.gd": {
+      "before": "ee159697684d6d2245589253174b07f51516f6a28a29b584fd66ceffc49de3cf",
+      "after": "882722a815fec78c3e59f52c11488de5ca37ee5a098812f6573cc87e9bce001c"
+    }
+  }
+}

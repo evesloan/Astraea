@@ -13,10 +13,10 @@ for row in D['parts']:
  ob=bpy.data.objects.get(row['name']);assert ob is not None and ob.type=='MESH';eo=ob.evaluated_get(deps);me=eo.to_mesh();me.calc_loop_triangles();vv=[eo.matrix_world@v.co for v in me.vertices];actual=[Vector((v.x,v.z,-v.y)) for v in vv];expected=[Vector(v) for v in row['world_vertices']]
  tree=KDTree(len(actual))
  for i,v in enumerate(actual):tree.insert(v,i)
- tree.balance();error=max(tree.find(v)[2] for v in expected)
+ tree.balance();error=max(math.sqrt(sum((actual[tree.find(Vector(v))[1]][k]-v[k])**2 for k in range(3))) for v in row['world_vertices'])
  tree2=KDTree(len(expected))
  for i,v in enumerate(expected):tree2.insert(v,i)
- tree2.balance();error=max(error,max(tree2.find(v)[2] for v in actual))
+ tree2.balance();error=max(error,max(math.sqrt(sum((v[k]-row['world_vertices'][tree2.find(v)[1]][k])**2 for k in range(3))) for v in actual))
  if error>.00010:issues.append({'object':ob.name,'source_vertex_error_m':error})
  degenerate=[t.index for t in me.loop_triangles if t.area<1e-11]
  if degenerate:issues.append({'object':ob.name,'degenerate_triangles':degenerate})
