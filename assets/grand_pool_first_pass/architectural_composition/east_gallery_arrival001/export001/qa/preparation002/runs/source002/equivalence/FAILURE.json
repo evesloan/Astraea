@@ -1,0 +1,36 @@
+{
+  "status": "FAIL_PRESERVE_ALL_OUTPUTS",
+  "assets_completed": [
+    {
+      "asset": "AST-AQU-016_pool_lift_arrival_profile",
+      "status": "PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE",
+      "report": "/workspace/scratch/375c2e438292/pool-east-gallery-export002/runs/source002/equivalence/AST-AQU-016_pool_lift_arrival_profile.json",
+      "report_sha256": "6d803a56571f1af33118b4f06362e9300fb880b148bbcd369204647852187bc8",
+      "meshes": 6,
+      "triangles": 304,
+      "max_position_deviation_m": 0.0,
+      "max_normal_deviation": 2.02413949445402e-08
+    },
+    {
+      "asset": "AST-AQU-016_east_gallery_rest_bay",
+      "status": "PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE",
+      "report": "/workspace/scratch/375c2e438292/pool-east-gallery-export002/runs/source002/equivalence/AST-AQU-016_east_gallery_rest_bay.json",
+      "report_sha256": "079d6abb37aa0be517bb4d704808fd74f3fa03a2ab16910f9a8a34a0cd4f6cb4",
+      "meshes": 23,
+      "triangles": 2752,
+      "max_position_deviation_m": 0.0,
+      "max_normal_deviation": 6.186621780893651e-08
+    },
+    {
+      "asset": "AST-RES-001_east_lift_wayfinding",
+      "status": "PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE",
+      "report": "/workspace/scratch/375c2e438292/pool-east-gallery-export002/runs/source002/equivalence/AST-RES-001_east_lift_wayfinding.json",
+      "report_sha256": "d34b244b9cf2997a95e555b9fc7a0535ca5ad9ba8e0930b6f9a3354880edb15c",
+      "meshes": 21,
+      "triangles": 3468,
+      "max_position_deviation_m": 3.759900734328461e-06,
+      "max_normal_deviation": 1.5260112864893348e-07
+    }
+  ],
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/375c2e438292/pool-east-gallery-export002/verify_east_gallery.py\", line 97, in main\n    r=next(x for x in er['assets'] if x['asset']==a['name']);report=verify_asset(g,a,s,r);p=dest/(a['name']+'.json');write_new(p,report)\n                                                                    ~~~~~~~~~~~~^^^^^^^^^\n  File \"/workspace/scratch/375c2e438292/pool-east-gallery-export002/verify_east_gallery.py\", line 52, in verify_asset\n    wd=compare_matrix(row,node)\n  File \"/workspace/scratch/375c2e438292/pool-east-gallery-export002/vendor/check_glb.py\", line 109, in compare_matrix\n    require(np.array_equal(expected[:3,3].astype(np.float32),actual[:3,3].astype(np.float32)) and\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            np.max(np.abs(expected[:3,3]-actual[:3,3]))<=POSITION_LIMIT,\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n            'World origin no longer round-trips to source float32: '+source['name'])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/375c2e438292/pool-east-gallery-export002/vendor/check_glb.py\", line 25, in require\n    if not ok:raise AssertionError(msg)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: World origin no longer round-trips to source float32: EAST_Display__M0__original_pool_leisure_image\n"
+}

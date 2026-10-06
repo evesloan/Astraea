@@ -1,0 +1,59 @@
+{
+  "status": "PASS_PREPARATION_ONLY_NO_ENGINES_RUN",
+  "finished_utc": "2026-10-06T20:49:11.960644+00:00",
+  "directory": "/workspace/scratch/375c2e438292/pool-east-gallery-export001",
+  "source_sha256": "9aa232ad30c515eabb128804b6d430ae2cfc3d76f93383a612165281620e6f05",
+  "source_retention_sha256": "c3c5bdee6a28bb9074317f498fb167627ffc724812b77d5f43058b7bf58cb27e",
+  "retained_commit": "15f68cec578f1c054917f0540ac4789821889160",
+  "tool_manifest_sha256": "8f77ab726cf71acdab3f194d414b9acde4f3a2a6295b908e6f2cbe06d4059425",
+  "pure_tests": {
+    "passed": 12,
+    "failed": 0
+  },
+  "input_gate": "PASS_ALL127_RETAINED_FILE_HASHES_AND_EXACT_SELECTED_HIERARCHY",
+  "assets": [
+    {
+      "asset": "AST-AQU-016_pool_lift_arrival_profile",
+      "meshes": 6,
+      "empty_nodes": 0,
+      "triangles": 304
+    },
+    {
+      "asset": "AST-AQU-016_east_gallery_rest_bay",
+      "meshes": 23,
+      "empty_nodes": 2,
+      "triangles": 2752
+    },
+    {
+      "asset": "AST-RES-001_east_lift_wayfinding",
+      "meshes": 21,
+      "empty_nodes": 6,
+      "triangles": 3468
+    },
+    {
+      "asset": "AST-LIB-010_east_gallery_display",
+      "meshes": 26,
+      "empty_nodes": 1,
+      "triangles": 3466
+    }
+  ],
+  "total_meshes": 76,
+  "total_nodes": 85,
+  "total_triangles": 9990,
+  "source_slot": "PENDING_PARENT_COORDINATION",
+  "source_snapshot": "PREPARED_NOT_RUN",
+  "glb_export": "PREPARED_NOT_RUN",
+  "actual_equivalence": "PREPARED_NOT_RUN",
+  "native_acceptance": "NOT_RUN",
+  "shared_writes": false,
+  "commands": {
+    "after_parent_source_slot": "/usr/bin/python3 /workspace/scratch/375c2e438292/pool-east-gallery-export001/run_prepared.py --run source001 --parent-approved-source-slot"
+  },
+  "notes": [
+    "Four actual wayfinding mounting datums included under their selected roots, in addition to the initially counted 81 nodes.",
+    "No batching: exact individual mesh/hierarchy preservation.",
+    "Source export_excluded overrides occur only on selected copies; originals and full frames carried in GLB extras.",
+    "No botanical mesh copied; reuse four existing runtime models.",
+    "Native lamp aim/range/power and hotspot/floor balance remain pending."
+  ]
+}

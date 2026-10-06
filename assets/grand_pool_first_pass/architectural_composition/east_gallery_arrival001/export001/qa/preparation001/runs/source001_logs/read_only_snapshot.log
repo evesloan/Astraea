@@ -1,0 +1,26 @@
+READ_ONLY_SELECTED_SOURCE_SNAPSHOT AST-AQU-016_pool_lift_arrival_profile
+READ_ONLY_SELECTED_SOURCE_SNAPSHOT AST-AQU-016_east_gallery_rest_bay
+READ_ONLY_SELECTED_SOURCE_SNAPSHOT AST-RES-001_east_lift_wayfinding
+Traceback (most recent call last):
+  File "/workspace/scratch/375c2e438292/pool-east-gallery-export001/snapshot_east_gallery.py", line 76, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/scratch/375c2e438292/pool-east-gallery-export001/snapshot_east_gallery.py", line 73, in main
+    p=out/'snapshots'/(a['name']+'.json');write_new(p,selected_snapshot(g,a));rows.append(dict(asset=a['name'],snapshot=str(p),snapshot_sha256=sha(p),source_sha256=g['source_sha256']))
+                                                      ~~~~~~~~~~~~~~~~~^^^^^
+  File "/workspace/scratch/375c2e438292/pool-east-gallery-export001/snapshot_east_gallery.py", line 26, in selected_snapshot
+    require(not ob.modifiers and not ob.constraints and not ob.animation_data, 'Unexpected dynamic state: '+name)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/pool-east-gallery-export001/gate.py", line 12, in require
+    if not value: raise AssertionError(message)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Unexpected dynamic state: EAST_Display__M0__rear_fixed_service_case
+
+Error: script failed, file: '/workspace/scratch/375c2e438292/pool-east-gallery-export001/snapshot_east_gallery.py', exiting.
+Blender 4.3.2
+Read blend: "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/architectural_composition/east_gallery_arrival001/combined_source002/source/AST-AQU-016_east_gallery_composed.blend"
+Read blend: "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/architectural_composition/east_gallery_arrival001/combined_source002/source/AST-AQU-016_east_gallery_composed.blend"
+Read blend: "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/architectural_composition/east_gallery_arrival001/combined_source002/source/AST-AQU-016_east_gallery_composed.blend"
+Read blend: "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/architectural_composition/east_gallery_arrival001/combined_source002/source/AST-AQU-016_east_gallery_composed.blend"
+
+Blender quit

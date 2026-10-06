@@ -1,0 +1,23 @@
+PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE AST-AQU-016_pool_lift_arrival_profile
+PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE AST-AQU-016_east_gallery_rest_bay
+PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE AST-RES-001_east_lift_wayfinding
+Traceback (most recent call last):
+  File "/workspace/scratch/375c2e438292/pool-east-gallery-export002/verify_east_gallery.py", line 103, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/scratch/375c2e438292/pool-east-gallery-export002/verify_east_gallery.py", line 97, in main
+    r=next(x for x in er['assets'] if x['asset']==a['name']);report=verify_asset(g,a,s,r);p=dest/(a['name']+'.json');write_new(p,report)
+                                                                    ~~~~~~~~~~~~^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/pool-east-gallery-export002/verify_east_gallery.py", line 52, in verify_asset
+    wd=compare_matrix(row,node)
+  File "/workspace/scratch/375c2e438292/pool-east-gallery-export002/vendor/check_glb.py", line 109, in compare_matrix
+    require(np.array_equal(expected[:3,3].astype(np.float32),actual[:3,3].astype(np.float32)) and
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            np.max(np.abs(expected[:3,3]-actual[:3,3]))<=POSITION_LIMIT,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            'World origin no longer round-trips to source float32: '+source['name'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/pool-east-gallery-export002/vendor/check_glb.py", line 25, in require
+    if not ok:raise AssertionError(msg)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: World origin no longer round-trips to source float32: EAST_Display__M0__original_pool_leisure_image

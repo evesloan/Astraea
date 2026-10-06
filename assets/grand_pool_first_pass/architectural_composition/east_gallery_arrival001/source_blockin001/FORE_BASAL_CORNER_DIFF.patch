@@ -1,0 +1,31 @@
+--- plan_core_before_basal_corner_fit.py
++++ plan_core.py
+@@ -90,8 +90,15 @@
+ plants=[]
+ for label,cz,var in [('Fore',-452.20,'00'),('Aft',-446.80,'03')]:
+     cx=-9.10;prefix='EAST_'+label+'SoilBed';N=32
++    # The fore basal's real broad low leaves require slightly fuller corners.
++    # Preserve all cardinal bounds and all plant transforms; only the fore
++    # rounded profile changes from ellipse (power2) to superellipse (power2.5).
++    exponent=2.5 if label=='Fore'else 2.0
++    def contour(rx,rz,i):
++        a=2*math.pi*i/N;c=math.cos(a);s=math.sin(a)
++        return cx+rx*math.copysign(abs(c)**(2/exponent),c),cz+rz*math.copysign(abs(s)**(2/exponent),s)
+     rings=[(.65,1.24,FLOOR),(.68,1.31,52.59),(.68,1.31,53.10),(.64,1.21,53.10),(.64,1.21,52.70)]
+-    vs=[[cx+rx*math.cos(2*math.pi*i/N),y,cz+rz*math.sin(2*math.pi*i/N)]for rx,rz,y in rings for i in range(N)]
++    vs=[[contour(rx,rz,i)[0],y,contour(rx,rz,i)[1]]for rx,rz,y in rings for i in range(N)]
+     fs=[]
+     for j in range(len(rings)-1):
+         for i in range(N):fs.append([j*N+i,j*N+(i+1)%N,(j+1)*N+(i+1)%N,(j+1)*N+i])
+@@ -99,9 +106,9 @@
+     bowl=add(prefix+'_Container','soilbed','warm_stone',vs,fs,'COMPILER_FLOOR_D09_orchard_market_gallery',reservation=bay,programme_entity=label.lower()+'_soilbed',semantic='closed profiled planter with open earth basin')
+     # Soil matches the tapered basin bottom and contact sides exactly.
+     y0,y1=52.70,53.02;rx,rz=.64,1.21
+-    srings=[[[cx+r0*math.cos(2*math.pi*i/N),y,cz+r1*math.sin(2*math.pi*i/N)]for i in range(N)]for r0,r1,y in [(rx,rz,y0),(rx,rz,y1)]]
++    srings=[[[contour(r0,r1,i)[0],y,contour(r0,r1,i)[1]]for i in range(N)]for r0,r1,y in [(rx,rz,y0),(rx,rz,y1)]]
+     soil=loft_closed(prefix+'_Soil','soilbed','botanical_soil',srings,bowl,reservation=bay,programme_entity=label.lower()+'_soilbed',semantic='finite actual soil volume and unscaled botanical root receiver')
+-    plants.append(dict(name=label.lower(),variant=var,position_xyz=[cx,y1,cz],yaw_radians=math.pi/2,scale_xyz=[1,1,1],soil_object=soil,available_soil_xy_m=[2*rx,2*rz],maximum_crown_height_m=1.554))
++    plants.append(dict(name=label.lower(),variant=var,position_xyz=[cx,y1,cz],yaw_radians=math.pi/2,scale_xyz=[1,1,1],soil_object=soil,available_soil_xy_m=[2*rx,2*rz],soil_profile_superellipse_power=exponent,maximum_crown_height_m=1.554))
+ # Exact piecewise planar underside query on the authored canopy triangles.
+ def canopy_under(x,z):
+     j=min(n-1,max(0,int((z+454)/9*n)));t=(z-zs[j])/(zs[j+1]-zs[j]);q0=canopy(zs[j]);q1=canopy(zs[j+1]);q={k:q0[k]*(1-t)+q1[k]*t for k in q0}

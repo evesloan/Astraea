@@ -1,0 +1,143 @@
+{
+  "scope": "Only intersections with exact retained compiler-owned horizontal floor surfaces. No engine, import, production write, new geometry or full-scene visibility claim. Source/runtime contracts compared exactly.",
+  "source_contract": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_orchard_section/source/connected_contract.json",
+  "runtime_contract": "/workspace/shared/astraea-godot-production-20261003/data/architecture/GRAND_POOL_SECTION_RUNTIME.json",
+  "input_sha256": {
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_orchard_section/source/connected_contract.json": "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd",
+    "/workspace/shared/astraea-godot-production-20261003/data/architecture/GRAND_POOL_SECTION_RUNTIME.json": "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd"
+  },
+  "results": [
+    {
+      "id": "water_surface",
+      "eye_xyz": [
+        -9.8,
+        53.75,
+        -449.5
+      ],
+      "target_xyz": [
+        -31.0,
+        46.05,
+        -432.0
+      ],
+      "floor_blocked": true,
+      "first_floor_hit": {
+        "segment_fraction": 0.16233766233766228,
+        "distance_from_eye_m": 4.634391974085929,
+        "point_xyz": [
+          -13.24155844155844,
+          52.5,
+          -446.65909090909093
+        ],
+        "floor_owner": "D09_orchard_market_gallery",
+        "surface": "top",
+        "floor_top_y": 52.5,
+        "floor_thickness_m": 0.24,
+        "exact_triangle_index": 17,
+        "exact_triangle_xz": [
+          [
+            -8.0,
+            -466.0
+          ],
+          [
+            -18.0,
+            -458.0
+          ],
+          [
+            -11.1,
+            -423.5
+          ]
+        ],
+        "barycentric_coordinates": [
+          0.21467756381549535,
+          0.4068201288965908,
+          0.37850230728791384
+        ]
+      },
+      "all_floor_surface_hits": [
+        {
+          "segment_fraction": 0.16233766233766228,
+          "distance_from_eye_m": 4.634391974085929,
+          "point_xyz": [
+            -13.24155844155844,
+            52.5,
+            -446.65909090909093
+          ],
+          "floor_owner": "D09_orchard_market_gallery",
+          "surface": "top",
+          "floor_top_y": 52.5,
+          "floor_thickness_m": 0.24,
+          "exact_triangle_index": 17,
+          "exact_triangle_xz": [
+            [
+              -8.0,
+              -466.0
+            ],
+            [
+              -18.0,
+              -458.0
+            ],
+            [
+              -11.1,
+              -423.5
+            ]
+          ],
+          "barycentric_coordinates": [
+            0.21467756381549535,
+            0.4068201288965908,
+            0.37850230728791384
+          ]
+        },
+        {
+          "segment_fraction": 0.19350649350649368,
+          "distance_from_eye_m": 5.524195233110434,
+          "point_xyz": [
+            -13.902337662337667,
+            52.26,
+            -446.1136363636364
+          ],
+          "floor_owner": "D09_orchard_market_gallery",
+          "surface": "bottom",
+          "floor_top_y": 52.5,
+          "floor_thickness_m": 0.24,
+          "exact_triangle_index": 17,
+          "exact_triangle_xz": [
+            [
+              -8.0,
+              -466.0
+            ],
+            [
+              -18.0,
+              -458.0
+            ],
+            [
+              -11.1,
+              -423.5
+            ]
+          ],
+          "barycentric_coordinates": [
+            0.148309449171518,
+            0.4727676746042569,
+            0.37892287622422516
+          ]
+        }
+      ]
+    },
+    {
+      "id": "opposite_market_upper_eye_height",
+      "eye_xyz": [
+        -9.8,
+        53.75,
+        -449.5
+      ],
+      "target_xyz": [
+        -49.5,
+        54.0,
+        -446.0
+      ],
+      "floor_blocked": false,
+      "first_floor_hit": null,
+      "all_floor_surface_hits": []
+    }
+  ],
+  "conclusion": "The seated water target is occluded by the bay\u2019s own D09 gallery floor before the ray reaches the opening edge. The opposite-market upper-height ray does not intersect any retained floor plane; this establishes floor clearance only, not unrestricted visibility through glazing, furnishings or later proposal geometry."
+}

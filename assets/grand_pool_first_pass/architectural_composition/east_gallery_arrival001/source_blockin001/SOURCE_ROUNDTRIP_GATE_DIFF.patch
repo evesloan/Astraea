@@ -1,0 +1,91 @@
+--- build_core_before_roundtrip_gate.py
++++ build_core.py
+@@ -50,7 +50,7 @@
+         for t in mesh.loop_triangles:
+             a,b,c=[mesh.vertices[i].co for i in t.vertices];area=(b-a).cross(c-a).length*.5;assert area>1e-10,(o.name,'collapsed face');minimum_area=min(minimum_area,area)
+             uv=[mesh.uv_layers.active.data[i].uv for i in t.loops];ua=abs((uv[1].x-uv[0].x)*(uv[2].y-uv[0].y)-(uv[1].y-uv[0].y)*(uv[2].x-uv[0].x))*.5;assert ua>1e-12,(o.name,'collapsed UV');minimum_uv_area=min(minimum_uv_area,ua)
+-        out.append(dict(row,vertices_xyz=verts,faces=[list(f.vertices)for f in mesh.polygons],evaluated_triangles=[list(t.vertices)for t in mesh.loop_triangles],signed_volume_m3=volume,minimum_triangle_area_m2=minimum_area,minimum_uv_area=minimum_uv_area,uv_loops=[list(u.uv)for u in mesh.uv_layers.active.data],source_transform={'location':list(o.location),'rotation_euler':list(o.rotation_euler),'scale':list(o.scale)}))
++        out.append(dict(row,vertices_xyz=verts,faces=[list(f.vertices)for f in mesh.polygons],evaluated_triangles=[list(t.vertices)for t in mesh.loop_triangles],signed_volume_m3=volume,minimum_triangle_area_m2=minimum_area,minimum_uv_area=minimum_uv_area,uv_loops=[list(u.uv)for u in mesh.uv_layers.active.data],local_vertices_blender=[list(v.co)for v in mesh.vertices],matrix_world_blender=[list(row)for row in o.matrix_world],material_indices=[int(f.material_index)for f in mesh.polygons],material_states=[mat_state(m)for m in mesh.materials],source_transform={'location':list(o.location),'rotation_euler':list(o.rotation_euler),'scale':list(o.scale)}))
+     assert len(out)==len(expected)
+     return out
+ 
+@@ -94,7 +94,7 @@
+     out=S/'build001';assert not out.exists(),'Preserve prior source build. Author a new revision instead.'
+     plan,provenance=build_core();actual=snapshot(bpy.context.scene,plan);out.mkdir();(out/'source').mkdir();(out/'qa').mkdir();path=out/'source/AST-AQU-016_east_gallery_core.blend';bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str(path),compress=True)
+     actual_plan=dict(plan,parts=actual,status='BUILD_EVALUATED_CORE_PENDING_INDEPENDENT_REOPEN');(out/'qa/BUILD_EVALUATED_PLAN.json').write_text(json.dumps(actual_plan,indent=2)+'\n')
+-    receipt=dict(status='CORE_SOURCE_SAVED_PENDING_INDEPENDENT_REOPEN',source=str(path),source_sha256=sha(path),plan_sha256=sha(S/'CORE_PLAN.json'),review_sha256=sha(S/'CORE_REVIEW.json'),build_script_sha256=sha(__file__),material_provenance=provenance,mesh_objects=len(actual),triangles=sum(len(p['evaluated_triangles'])for p in actual),source_only_markers=5,evaluated_plan_sha256=sha(out/'qa/BUILD_EVALUATED_PLAN.json'),input_sha256=plan['input_sha256'],exports=[],renders=[],game_writes=[],catalogue_writes=[],pending=plan['pending'])
++    receipt=dict(status='CORE_SOURCE_SAVED_PENDING_INDEPENDENT_REOPEN',source=str(path),source_sha256=sha(path),plan_sha256=sha(S/'CORE_PLAN.json'),review_sha256=sha(S/'CORE_REVIEW.json'),build_script_sha256=sha(__file__),roundtrip_helper_sha256=sha(S/'source_roundtrip_checks.py'),material_provenance=provenance,mesh_objects=len(actual),triangles=sum(len(p['evaluated_triangles'])for p in actual),source_only_markers=5,evaluated_plan_sha256=sha(out/'qa/BUILD_EVALUATED_PLAN.json'),input_sha256=plan['input_sha256'],exports=[],renders=[],game_writes=[],catalogue_writes=[],pending=plan['pending'])
+     for p,h in plan['input_sha256'].items():assert sha(p)==h,p
+     (out/'qa/BUILD_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n');print('CORE_SOURCE_SAVED',path,len(actual),'closed editable objects; no export/render/runtime write',flush=True)
+ if __name__=='__main__':main()
+--- reopen_core_before_roundtrip_gate.py
++++ reopen_core.py
+@@ -1,15 +1,54 @@
+-"""Independent fresh-process source reopen. No source save/export/render."""
+-import bpy,json,hashlib,math,importlib.util
++"""Fresh-process read-only source reopen, compared exactly to saved build evidence.
++Import verify_core_subset() from a combined wrapper without running this script's
++core-only whole-scene assertions. No source save/export/render occurs here.
++"""
++import bpy,json,hashlib,importlib.util
+ from pathlib import Path
+-S=Path(__file__).resolve().parent;OUT=S/'build001';sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+-receipt=json.loads((OUT/'qa/BUILD_RECEIPT.json').read_text());assert receipt['build_script_sha256']==sha(S/'build_core.py')
+-sp=importlib.util.spec_from_file_location('core_build_helpers',S/'build_core.py');helper=importlib.util.module_from_spec(sp);sp.loader.exec_module(helper)
+-path=Path(receipt['source']);assert sha(path)==receipt['source_sha256'];bpy.ops.wm.open_mainfile(filepath=str(path));scene=bpy.context.scene;scene.view_layers[0].update();plan=json.loads((S/'CORE_PLAN.json').read_text());assert sha(S/'CORE_PLAN.json')==receipt['plan_sha256']
+-actual=helper.snapshot(scene,plan);expected={p['name']:p for p in plan['parts']};checks=[]
+-for p in actual:
+-    ob=scene.objects[p['name']];r=expected[p['name']];assert not ob.modifiers and not ob.constraints and ob.parent is None;assert ob.location.length<1e-9 and ob.rotation_euler.to_quaternion().angle<1e-9 and all(abs(x-1)<1e-9 for x in ob.scale)
+-    assert len(ob.data.materials)==1 and len(ob.data.uv_layers)==1;assert helper.mat_state(ob.data.materials[0])==receipt['material_provenance'][p['material_role']]['material_state'];assert ob['parent_design_id']=='AST-AQU-016'and not ob['new_floor_owner'];assert json.loads(ob['support_json'])==r['support']
+-    deviation=max(math.dist(a,b)for a,b in zip(p['vertices_xyz'],r['vertices_xyz']));assert deviation<1e-8,(p['name'],deviation);checks.append(dict(name=p['name'],max_vertex_deviation_m=deviation,closed=True,positive_volume_m3=p['signed_volume_m3'],minimum_triangle_area_m2=p['minimum_triangle_area_m2'],minimum_uv_area=p['minimum_uv_area'],retained_packed_material_unchanged=True))
+-meshes=[o for o in scene.objects if o.type=='MESH'];assert len(meshes)==len(expected);assert len([o for o in scene.objects if o.type=='EMPTY'])==5;assert not [o for o in scene.objects if o.type=='LIGHT'];assert sha(path)==receipt['source_sha256']
+-for p,h in receipt['input_sha256'].items():assert sha(p)==h,p
+-out=OUT/'qa/INDEPENDENT_REOPEN.json';assert not out.exists();actualpath=OUT/'qa/ACTUAL_CORE_PLAN.json';assert not actualpath.exists();actualpath.write_text(json.dumps(dict(plan,parts=actual,status='INDEPENDENTLY_REOPENED_CORE_SOURCE'),indent=2)+'\n');out.write_text(json.dumps(dict(status='PASS_INDEPENDENT_CORE_REOPEN',source=str(path),source_sha256=sha(path),source_unchanged=True,plan_sha256=receipt['plan_sha256'],actual_plan_sha256=sha(actualpath),checks=checks,limitations=['Core only; no retained programme, source composition or native integration acceptance.','Run the same pure solid/contact/route review over this actual reopened plan.']),indent=2)+'\n');print('PASS_INDEPENDENT_CORE_REOPEN',len(checks),'source objects; no source save/export/render')
++S=Path(__file__).resolve().parent
++sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
++
++def load_module(name,path):
++    spec=importlib.util.spec_from_file_location(name,path);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
++
++def verify_core_subset(scene,plan,built_plan,material_provenance):
++    """Reusable core verification within a combined scene; no total counts."""
++    helper=load_module('core_build_helpers_for_reopen',S/'build_core.py')
++    checks=load_module('exact_source_roundtrip_checks',S/'source_roundtrip_checks.py')
++    actual=helper.snapshot(scene,plan)
++    names=[p['name']for p in plan['parts']]
++    # First establish byte-value equality with evaluated build evidence. Source
++    # plan comparisons cannot substitute for this saved/reopened source gate.
++    saved_checks=checks.compare_reopened_parts(actual,built_plan['parts'],names)
++    conversion_checks=checks.verify_core_plan_conversion(actual,plan['parts'])
++    expected={p['name']:p for p in plan['parts']}
++    for p in actual:
++        ob=scene.objects[p['name']];r=expected[p['name']]
++        assert not ob.modifiers and not ob.constraints and ob.parent is None
++        assert len(ob.data.materials)==1 and len(ob.data.uv_layers)==1
++        assert helper.mat_state(ob.data.materials[0])==material_provenance[p['material_role']]['material_state']
++        assert ob['parent_design_id']=='AST-AQU-016'and not ob['new_floor_owner']
++        assert json.loads(ob['support_json'])==r['support']
++    return actual,saved_checks,conversion_checks
++
++def main():
++    out=S/'build001';receipt=json.loads((out/'qa/BUILD_RECEIPT.json').read_text())
++    assert receipt['build_script_sha256']==sha(S/'build_core.py')
++    assert receipt['roundtrip_helper_sha256']==sha(S/'source_roundtrip_checks.py')
++    path=Path(receipt['source']);assert sha(path)==receipt['source_sha256']
++    built_path=out/'qa/BUILD_EVALUATED_PLAN.json';assert sha(built_path)==receipt['evaluated_plan_sha256'];built=json.loads(built_path.read_text())
++    plan=json.loads((S/'CORE_PLAN.json').read_text());assert sha(S/'CORE_PLAN.json')==receipt['plan_sha256']
++    bpy.ops.wm.open_mainfile(filepath=str(path));scene=bpy.context.scene;scene.view_layers[0].update()
++    actual,saved_checks,conversion_checks=verify_core_subset(scene,plan,built,receipt['material_provenance'])
++    # These count assertions deliberately belong only to the standalone core
++    # entry point. A combined wrapper owns its programme/object/marker counts.
++    assert len([o for o in scene.objects if o.type=='MESH'])==len(plan['parts'])
++    assert len([o for o in scene.objects if o.type=='EMPTY'])==5
++    assert not [o for o in scene.objects if o.type=='LIGHT']
++    assert sha(path)==receipt['source_sha256']
++    for p,h in receipt['input_sha256'].items():assert sha(p)==h,p
++    report_path=out/'qa/INDEPENDENT_REOPEN.json';assert not report_path.exists()
++    actual_path=out/'qa/ACTUAL_CORE_PLAN.json';assert not actual_path.exists()
++    actual_path.write_text(json.dumps(dict(plan,parts=actual,status='INDEPENDENTLY_REOPENED_CORE_SOURCE'),indent=2)+'\n')
++    report=dict(status='PASS_INDEPENDENT_CORE_REOPEN',source=str(path),source_sha256=sha(path),source_unchanged=True,plan_sha256=receipt['plan_sha256'],built_evaluated_plan_sha256=sha(built_path),actual_plan_sha256=sha(actual_path),exact_saved_snapshot_checks=saved_checks,exact_source_conversion_checks=conversion_checks,geometry_contact_tolerance_changed=False,limitations=['Core only; no retained programme, source composition or native integration acceptance.','Run the same pure solid/contact/route review over this actual reopened plan.'])
++    report_path.write_text(json.dumps(report,indent=2)+'\n');print('PASS_INDEPENDENT_CORE_REOPEN',len(actual),'exact saved snapshots and float32 source conversions; no source save/export/render')
++if __name__=='__main__':main()
