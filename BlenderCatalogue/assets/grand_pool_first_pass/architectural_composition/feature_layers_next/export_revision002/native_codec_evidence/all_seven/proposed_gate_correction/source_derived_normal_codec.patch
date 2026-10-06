@@ -1,0 +1,75 @@
+--- reviewed_comparison003/native_glb_gate.gd
++++ PROPOSED_ONLY/native_glb_gate.gd
+@@ -48,6 +48,20 @@
+ 	return [c[0]+c[1]+c[2],c[1]+c[2]+c[0],c[2]+c[0]+c[1]]
+ func sha_bytes(bytes: PackedByteArray) -> String:
+ 	var h:=HashingContext.new();assert(h.start(HashingContext.HASH_SHA256)==OK);h.update(bytes);return h.finish().hex_encode()
++# PROPOSED ONLY: source-derived codec correspondence. Not installed or executed.
++# Godot 4.6.3 rendering_server.cpp lines 557–572 and 1377–1387;
++# vector3.cpp lines 84–105. The uncompressed-attribute path is mandatory.
++func native_normal_prediction(source_normal: Vector3) -> Dictionary:
++	var oct: Vector2=source_normal.octahedron_encode()
++	# C++ multiplies real_t float32 before uint16 truncation. GDScript scalar
++	# arithmetic is double, so explicitly reproduce the intermediate float32.
++	var qx: int=int(clampf(PackedFloat32Array([oct.x*65535.0])[0],0.0,65535.0))
++	var qy: int=int(clampf(PackedFloat32Array([oct.y*65535.0])[0],0.0,65535.0))
++	# C++ divides by 65535.0 in double then constructs float32 Vector2.
++	var decoded: Vector3=Vector3.octahedron_decode(Vector2(float(qx)/65535.0,float(qy)/65535.0))
++	return {"uint16":[qx,qy],"decoded":decoded}
++func normal_bits_equal(actual: Vector3,predicted: Vector3) -> bool:
++	return PackedVector3Array([actual]).to_byte_array()==PackedVector3Array([predicted]).to_byte_array()
+ func audit_surface(mesh: MeshInstance3D,surface: int,primitive: Dictionary,doc: Dictionary,bin: PackedByteArray,provenance: Dictionary,asset: Dictionary,out: String) -> void:
+ 	var format: int=mesh.mesh.surface_get_format(surface)
+ 	assert((format&Mesh.ARRAY_FLAG_COMPRESS_ATTRIBUTES)==0,"Native raw arrays are compressed")
+@@ -73,7 +87,11 @@
+ 		for j in order:p.append(v3(ep[j]));u.append(Vector2(eu[j][0],eu[j][1]));n.append(v3(en[j]))
+ 		var key: String=tri_keys(p,u)[0]
+ 		if not buckets.has(key):buckets[key]=[]
+-		buckets[key].append({"triangle":i/3,"normals":n})
++		var codec_normals: Array=[];var codec_uint16: Array=[]
++		for source_normal in n:
++			var prediction: Dictionary=native_normal_prediction(source_normal)
++			codec_normals.append(prediction.decoded);codec_uint16.append(prediction.uint16)
++		buckets[key].append({"triangle":i/3,"normals":n,"codec_normals":codec_normals,"codec_uint16":codec_uint16})
+ 	var correspondence: Array=[]
+ 	var max_normal: float=0.0
+ 	var rows: Array=[]
+@@ -89,20 +107,25 @@
+ 			for k in range(list.size()):
+ 				var record: Dictionary=list[k]
+ 				var error: float=0.0
+-				for j in range(3):error=maxf(error,n[(j+shift)%3].distance_to(record.normals[j]))
+-				if error>NORMAL_CODEC_LIMIT:continue
++				var codec_exact: bool=true
++				for j in range(3):
++					error=maxf(error,n[(j+shift)%3].distance_to(record.normals[j]))
++					codec_exact=codec_exact and normal_bits_equal(n[(j+shift)%3],record.codec_normals[j])
++				# Keep the old scalar result as history; never widen its tolerance.
++				# Native acceptance instead requires the exact documented codec.
++				if not codec_exact:continue
+ 				max_normal=maxf(max_normal,error)
+ 				var ti: int=int(record.triangle)
+ 				var pr: Dictionary=provenance[str(ti)]
+ 				var part: String=str(pr.source_part)
+-				rows.append({"native_triangle":i/3,"glb_triangle":ti,"cyclic_shift":shift,"source_part":part,"source_triangle":pr.source_triangle})
++				rows.append({"native_triangle":i/3,"glb_triangle":ti,"cyclic_shift":shift,"source_part":part,"source_triangle":pr.source_triangle,"source_normal_encoded_uint16":record.codec_uint16,"normal_codec_bits_exact":true,"old_scalar_normal_bound_exceeded":error>NORMAL_CODEC_LIMIT})
+ 				correspondence.append(part)
+ 				var part_key: String=str(asset.name)+"::"+part
+ 				if not parts.has(part_key):parts[part_key]=[]
+ 				parts[part_key].append({"mesh":mesh,"surface":surface,"indices":[ix[i],ix[i+1],ix[i+2]]})
+ 				list.remove_at(k);found=true;break
+ 			if found:break
+-		assert(found,"Native triangle has no exact position/UV/cyclic match within documented normal codec error")
++		assert(found,"Native triangle has no exact position/UV/cyclic and source-derived normal-codec bit match")
+ 	for key in buckets:assert(buckets[key].is_empty(),"GLB triangle was omitted")
+ 	var dump: String=out+"/"+str(asset.name)+"__"+str(mesh.name)+"_s"+str(surface)+".raw"
+ 	var file:=FileAccess.open(dump,FileAccess.WRITE);assert(file!=null)
+@@ -113,7 +136,7 @@
+ 	var map_path: String=dump+".correspondence.json"
+ 	save_json(map_path,{"installed":false,"production_changes":false,"asset":asset.name,"mesh":mesh.name,"surface":surface,"triangles":rows})
+ 	native_maps[str(mesh.get_instance_id())+":"+str(surface)]=correspondence
+-	records.append({"asset":asset.name,"mesh":mesh.name,"surface":surface,"triangles":ix.size()/3,"raw_positions_uvs_exact":true,"cyclic_bijection":true,"normals_only_codec_limit":NORMAL_CODEC_LIMIT,"max_normal_codec_error":max_normal,"compression_disabled":true,"raw_file":dump,"raw_sha256":FileAccess.get_sha256(dump),"raw_sections":sections,"triangle_correspondence":map_path,"correspondence_sha256":FileAccess.get_sha256(map_path),"installed":false,"production_changes":false})
++	records.append({"asset":asset.name,"mesh":mesh.name,"surface":surface,"triangles":ix.size()/3,"raw_positions_uvs_exact":true,"cyclic_bijection":true,"normal_gate":"Exact source-derived Godot4.6.3 octahedral uint16 roundtrip bits","old_scalar_normal_limit":NORMAL_CODEC_LIMIT,"old_scalar_normal_limit_exceeded":max_normal>NORMAL_CODEC_LIMIT,"source_derived_codec_residual":0.0,"max_normal_codec_error":max_normal,"compression_disabled":true,"raw_file":dump,"raw_sha256":FileAccess.get_sha256(dump),"raw_sections":sections,"triangle_correspondence":map_path,"correspondence_sha256":FileAccess.get_sha256(map_path),"installed":false,"production_changes":false})
+ func texture_check(texture: Texture2D,doc: Dictionary,bin: PackedByteArray,ref: Dictionary) -> Dictionary:
+ 	assert(texture!=null)
+ 	var im: Dictionary=doc.images[int(doc.textures[int(ref.index)].source)]

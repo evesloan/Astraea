@@ -1,0 +1,3 @@
+Court A is installed in the actual main scene. The focused arrival, seating/reception stance and loaded-cart check passed on 2026-10-06 at 17:56:40 UTC. See THEATER_COURT_A_ADOPTION_004.json for current scope and limitations.
+
+The native images here were captured before saved wiring in an unsaved actual main scene using the same Court asset/builder and unchanged lighting. They are honest composition evidence, not a post-install native capture or finished-art claim. The first probe parse failure is preserved; its only correction was an explicit Node type for the ramps lookup. No production source was changed to make the physical test pass.

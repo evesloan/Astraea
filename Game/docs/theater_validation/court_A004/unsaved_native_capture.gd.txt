@@ -1,0 +1,66 @@
+extends SceneTree
+# Scratch-only actual ship capture, no saved scene/render changes.
+const OUT := "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/native_composed_preview003/capture_run001"
+var records: Array = []
+func _initialize() -> void:
+	call_deferred("run")
+func run() -> void:
+	assert(not DirAccess.dir_exists_absolute(OUT))
+	assert(DirAccess.make_dir_recursive_absolute(OUT) == OK)
+	var main = (load("res://scenes/main.tscn") as PackedScene).instantiate()
+	root.add_child(main)
+	for frame in range(30): await physics_frame
+	var ship: Node3D = main.get_node("World360/Astraea")
+	var actor = ship.get_node("ShipSpace/PersistentActors/Player")
+	var budget = ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	assert(ship.find_child("GrandLanternTheater_ConnectedStaticStage_WIP",true,false) != null)
+	assert(budget.shadow_source_budget == 8)
+	actor.set_physics_process(false)
+	actor.set_controls_enabled(false)
+	var base_venue: Node3D = ship.find_child("GrandLanternTheater_ConnectedStaticStage_WIP",true,false)
+	var before_children: int = base_venue.get_child_count()
+	assert(base_venue.get_meta("source_chair_instances")==2200)
+	assert(not ship.get_node("ShipSpace/Districts").has_node("CourtACompletion004"))
+	load("res://scripts/court_a_increment004.gd").build(ship.get_node("ShipSpace/Districts"),ship)
+	var court: Node3D = ship.get_node("ShipSpace/Districts/CourtACompletion004")
+	assert(court.get_meta("authored_batches")==123 and court.get_meta("authored_contacts")==98 and court.get_meta("furniture_contacts")==3)
+	assert(court.get_meta("source_instance_ids").size()==24 and court.find_children("*","Light3D",true,false).is_empty())
+	assert(base_venue.get_child_count()==before_children and base_venue.get_meta("source_chair_instances")==2200)
+	print("COURT A UNSAVED COMPOSED PREVIEW: actual installed ship plus retained Court A increment; no saved world wiring or acceptance claim")
+	var views := [
+		{"id":"D11_court_A_matched_front","eye":Vector3(-69.5,71.15,-131.7),"target":Vector3(-69.5,71.3,-143)},
+		{"id":"D11_court_A_close_walk","eye":Vector3(-69.5,71.15,-135.2),"target":Vector3(-69.5,71.0,-140.3)}
+	]
+	for view in views:
+		actor.global_position = view.eye - Vector3.UP*1.65
+		actor.velocity = Vector3.ZERO
+		var direction: Vector3 = view.target - view.eye
+		actor.rotation.y = atan2(-direction.x,-direction.z)
+		actor.pitch = atan2(direction.y,Vector2(direction.x,direction.z).length())
+		actor.camera.rotation.x = actor.pitch
+		assert(actor.camera.global_position.distance_to(view.eye) < .0001 and actor.camera.fov == 72.0)
+		for effects_on in [true,false]:
+			main.set_world_resolution(0 if effects_on else 1)
+			main.effects = effects_on
+			main.post_pass.material.set_shader_parameter("enabled",effects_on)
+			ship.set_display_effects(effects_on)
+			for frame in range(20): await process_frame
+			budget.refresh()
+			var selected_count: int = 0
+			for source in budget.sources:
+				if source.visible and source.shadow_enabled: selected_count += 1
+			assert(selected_count <= 8)
+			await RenderingServer.frame_post_draw
+			var suffix := "native" if effects_on else "clear"
+			var file := OUT+"/"+str(view.id)+"_"+suffix+".png"
+			assert(main.post_view.get_texture().get_image().save_png(file) == OK)
+			var raw_file := OUT+"/"+str(view.id)+"_"+suffix+"_raw.png"
+			assert(main.world_view.get_texture().get_image().save_png(raw_file) == OK)
+			var active: Array = []
+			for light in budget.sources:
+				if light.visible and light.light_energy > 0: active.append(str(light.get_path()))
+			records.append({"view":view.id,"file":file,"sha256":FileAccess.get_sha256(file),"raw_file":raw_file,"raw_sha256":FileAccess.get_sha256(raw_file),"effects":effects_on,"eye":[view.eye.x,view.eye.y,view.eye.z],"target":[view.target.x,view.target.y,view.target.z],"player_vertical_fov":actor.camera.fov,"resolution":[main.world_view.size.x,main.world_view.size.y],"active_practical_sources":active,"shadow_budget":budget.shadow_source_budget,"adapter":RenderingServer.get_video_adapter_name(),"scope":"UNSAVED COMPOSED DIAGNOSTIC: actual ship plus Court A sibling built in this test scene only. Same mounted lights, exposure, materials and normal72degree vertical player optics. No traversal, installation, strict-fidelity or art-acceptance claim."})
+	var receipt := FileAccess.open(OUT+"/CAPTURE_RECEIPT.json",FileAccess.WRITE)
+	receipt.store_string(JSON.stringify(records,"  "));receipt.close()
+	print("COURT A DIAGNOSTIC CAPTURE PASS: two actual normal-eye views, native and effects-off, unsaved increment")
+	quit(0)

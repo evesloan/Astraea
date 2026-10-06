@@ -1,0 +1,51 @@
+{
+  "status": "PASS_ACTUAL_WORLD_COURT_A_FOCUSED",
+  "started_utc": "2026-10-06T17:55:59.665274+00:00",
+  "source_files": 4834,
+  "steps": [
+    {
+      "label": "fresh_import",
+      "command": [
+        "godot",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--editor",
+        "--quit"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 3.503,
+      "errors": [],
+      "log_sha256": "9572934ad4d57fbab2c09b2c82f3821584fba7ba71d7e1dec5055bc7fa531f3f"
+    },
+    {
+      "label": "court_actual_world",
+      "command": [
+        "godot",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--fixed-fps",
+        "60",
+        "--quit-after",
+        "18000",
+        "--script",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/actual_world_adoption004/probe_court_a_actual_world002.gd",
+        "--",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/COURT_A_GEOMETRY_CONTRACT.json",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/COURT_A_PURE_SCREEN.json",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/actual_world_adoption004/focused_run002/RESULT.json"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 35.026,
+      "errors": [],
+      "log_sha256": "a89f7cc34b6691eaa162ed1519b46e998b94d4d3f2a561e177b3810a0617e78c"
+    }
+  ],
+  "full_suite_pass": false,
+  "all_source_unchanged": true,
+  "result_sha256": "2ad84a837d2155d6dddc72d35d2902ef337bd1333b99e959c6531f10ad4da305",
+  "finished_utc": "2026-10-06T17:56:40.641775+00:00",
+  "changed_files": [],
+  "added_files": []
+}
