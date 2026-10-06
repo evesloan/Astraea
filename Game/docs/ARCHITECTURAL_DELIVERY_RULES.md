@@ -9,7 +9,7 @@ Owner direction reaffirmed 6 October 2026: every section on every deck must be r
 - Author purposeful curves/facets, deep thresholds and reveals, varied connected volumes, inhabited edges and plausible built-in structure. Do not substitute a generic rectangular shell plus decorative strips for the reference architecture
 - Reuse the approved editable Blender component families and material palette. Modularity is a construction method, not permission for carbon-copy destinations. Preserve district character and stable room identities
 - Guest areas use legible, welcoming architecture and warm source-backed lighting; SunCorp service areas remain more utilitarian. Preserve the existing restrained CRT/low-poly rendering direction
-- Keep the complete ship platform ahead of optional furnishing polish. Include furniture/proxies only where needed to establish purpose, capacity, clearance or essential use
+- Deliver the complete map with a high-quality first pass: proper materials, textures, lighting, furnishings, signage and details needed for each space to feel coherent and complete. Proxies may support testing but are not accepted first-pass scene content. Later polish refines this baseline
 
 ## Every package must account for
 1. Canonical parent programme keys and all explicitly required child spaces/systems
@@ -33,5 +33,7 @@ Reviewed source/spec section -> editable source and bounded derivatives -> sourc
 
 No stage implies the next stage passed. Source renders are labelled source-only. Do not claim completed rooms, operating engineering, water simulation, NPC use, target-GPU performance or continuous execution without matching evidence.
 
-## Map-first sequencing reaffirmed6 October2026
-Owner message Sentinel_0a0b79932af88191bbbf2552914ab1f5 explicitly sets the retro atrium image in docs/references/cruise_atrium_20261006/ as the eventual visual quality threshold, reached through repeated passes, while the entire map must be built and traversable first. Correct programme sections, floors, connected routes, openings, structural interfaces and safe boundaries take precedence over optional furnishing/material/lighting polish. A clearly labelled unfinished platform may retain visual issues; no unsafe shaft/edge or untested traversal is accepted by that prioritization. Preserve working systems and distinguish open architectural apertures/reservations from operational doors/lifts.
+## First-pass quality clarified6 October2026
+Owner messages Sentinel_0fefbf3a56c4819192cef4027b6a6be7 and Sentinel_d156ba7888888191aee3946905f61d78 explicitly require proper materials, textures and lighting in the first pass, plus furnishings and details that make the scene feel complete. Polish means final refinement, not supplying missing essentials. This supersedes any earlier interpretation permitting bare architecture, missing illumination or unfinished core presentation as a completed first pass.
+
+The entire18-deck map must still be built and traversable. Work in parallel on coherent complete sections, using the retro quality benchmark in docs/references/cruise_atrium_20261006/. Architecture, correct proportions, purposeful composition, entrances, vertical connections, guest/service circulation and safe traversal remain mandatory. Construction candidates may be tested incrementally, but must remain labelled unfinished until their essential presentation and functional scene contents are ready. Preserve working systems; an open aperture, empty shaft or placeholder is not an operational finished door/lift. No animal/cleaning-gameplay expansion is requested.
