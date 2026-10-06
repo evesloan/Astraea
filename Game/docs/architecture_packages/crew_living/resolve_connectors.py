@@ -15,18 +15,14 @@ hull=Polygon(next(r['inner']for r in json.load(open(R/'data/architecture/LOWER_H
 # Shift quiet lobby north, preserving original8x10 sleep box,then connect to its north wall.
 for a in plan['subspaces']:
  if a['package_local_key']=='home_quiet_lobby':a['x']=[-47,-39];a['z']=[-428,-423]
-connect=unary_union([box(-48,-433.8,-47,-430.2),box(-48,-433.8,-44.4,-427),box(-47,-430.2,-43.4,-426.6)])
-# Existing proposal would place a foyer through the southwest sleep corner;
-# avoid it by moving the sleep box east4m along with its annexes.
+# Move the sleep assembly east4m, so the screened dogleg occupies an empty west aisle.
 for a in plan['subspaces']:
  if a['package_local_key'] in ['shared_home','home_hygiene','home_clean_linen']:
-  a['x']=[v+4 for v in a['x']]
-# Dogleg clear approach x[-48,-43.4], alongside shifted sleep boundaryX-43.
-# quiet lobby endsX-39, enters home north edge atZ-428 after a turn.
+  a['x']={'shared_home':[-43,-35],'home_hygiene':[-35,-31],'home_clean_linen':[-35,-31]}[a['package_local_key']]
 connect=unary_union([box(-48,-433.8,-43.4,-430.2),box(-47.0,-433.8,-43.4,-423.0),box(-47,-426.6,-39,-423)])
 route_parts=[];squares=[];centrelines=[]
 for side in [-1,1]:
- points=[(side*57,-216),(side*57,-40),(side*103,-40),(side*103,40),(side*57,40),(side*57,432)]
+ points=([(21,-490),(21,-500),(57,-500)] if side==1 else [(-57,-216)])+[(side*57,-40),(side*103,-40),(side*103,40),(side*57,40),(side*57,432)]
  line=LineString(points);centrelines.append(list(line.coords));route_parts.append(line.buffer(1.8,cap_style=2,join_style=2))
  for x,z in points[1:-1]:squares.append(box(x-2.5,z-2.5,x+2.5,z+2.5))
  for z0,z1 in [(-344,-40),(40,344)]:route_parts.append(box(side*86-1.8,z0,side*86+1.8,z1))
@@ -38,5 +34,5 @@ check={'route_programme_or_bank_overlap_m2':route.intersection(prot).area,'route
 # serialize every exact proposed floor island to support parent compiler review.
 def polygons(g):
  return [dict(boundary=list(p.exterior.coords)[:-1],holes=[list(h.coords)[:-1]for h in p.interiors])for p in ([g]if g.geom_type=='Polygon'else list(g.geoms))]
-out={'schema':'crew_service_connector_review_v2','home_connector_union_polygons':polygons(connect),'home_new_compiler_floor_polygons':polygons(newhome),'home_floor_policy':'all connector area is already supported by protected crew cover; compiler adds zero duplicate floor','staff_route_centrelines':centrelines,'staff_route_union_polygons':polygons(route),'staff_new_compiler_floor_polygons':polygons(newroute),'floor_y':12,'slab_thickness':.24,'ceiling_underside_y':15.2,'checks':check,'cross_ship_link':'Not added: longitudinal guest spine separates sides. First build connects port network; starboard requires separate staff arrival or reviewed controlled crossover. No guest floor/void is appropriated.'}
+out={'schema':'crew_service_connector_review_v2','home_connector_union_polygons':polygons(connect),'home_new_compiler_floor_polygons':polygons(newhome),'home_floor_policy':'all connector area is already supported by protected crew cover; compiler adds zero duplicate floor','staff_route_centrelines':centrelines,'staff_route_union_polygons':polygons(route),'staff_new_compiler_floor_polygons':polygons(newroute),'floor_y':12,'slab_thickness':.24,'ceiling_underside_y':15.2,'checks':check,'cross_ship_link':'Not added: longitudinal guest spine separates sides. Port joins installed forward staff route. Starboard starts at planned forward staff lobbyX21,Z-490 and needs its own real staff vertical arrival; no installed lift is implied. No guest floor/void is appropriated.'}
 (O/'CONNECTOR_AND_DETOUR_REVIEW.json').write_text(json.dumps(out,indent=2)+'\n');(O/'SECTION_DISTRIBUTION_PROPOSAL.json').write_text(json.dumps(plan,indent=2)+'\n');print(json.dumps(check,indent=2))

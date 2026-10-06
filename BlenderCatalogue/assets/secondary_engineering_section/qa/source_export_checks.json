@@ -5,11 +5,11 @@
   "triangles": 3604,
   "fixture_markers": 7,
   "sha256": {
-    "AST-ENG-008.glb": "ddcb75fdce6641289f126e9581e3a567b7e2d36a5f0eedaff4a6ae29ae6de750",
-    "AST-ENG-008.blend": "6cc64050a8aedd479c34b302ee0e4538e93bb2276468f13f88284354ee06080c",
-    "generate_section.py": "730af97a1fc4e7b67615f3e65373c847625d84d5bc3712121a7444085eb26550",
+    "AST-ENG-008.glb": "ffe01161c40dd1efcf53f6c36a66cf5c7dae529c0a3495d1b75d98c65eab4767",
+    "AST-ENG-008.blend": "3cbc830d5ffa9e4c019c91e47167fa041f18f2dea0bbae34b495dc4ff97500d9",
+    "generate_section.py": "b031cacc626053defc5500afe29a420e7058d189edf60039da2ef5f47a126177",
     "geometry_plan.json": "420bab753350c43bf88e85be3e3d427d86546c94e5e2008871b7946bebdfd891",
-    "section_contract.json": "88faee2393a5de1bbee1c1dc1a2bf321acd9b6aec65a396f0bc563c51b9a32f0",
+    "section_contract.json": "4e1cdd70b17a1269ab389e2f275213824e45ba1b3d1e1754f485acaa6802ccf0",
     "catalogue_manifest.json": "13b26778b341351e295edb668540e7711d612b0075b9acf990d07327061681e5"
   },
   "checks": [
@@ -19,6 +19,32 @@
       "detail": {
         "expected": 167,
         "actual": 167
+      }
+    },
+    {
+      "check": "exact retained glass alpha roughness metallic profile",
+      "pass_check": true,
+      "detail": {
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "extras": {
+          "meters_per_tile_uv": [
+            1,
+            1
+          ],
+          "astraea_material_role": "bridge_pressure_glass"
+        },
+        "name": "ASTRAEA_bridge_pressure_glass",
+        "pbrMetallicRoughness": {
+          "baseColorFactor": [
+            0.23000000417232513,
+            0.41999998688697815,
+            0.4399999976158142,
+            0.2800000011920929
+          ],
+          "metallicFactor": 0.07999999821186066,
+          "roughnessFactor": 0.2199999988079071
+        }
       }
     },
     {
@@ -226,7 +252,7 @@
       "check": "hall_face_1_glass0 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -434,7 +460,7 @@
       "check": "hall_face_1_glass2 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -1370,7 +1396,7 @@
       "check": "hall_face_7_glass0 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -2462,7 +2488,7 @@
       "check": "visitor_view_glass0 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -2930,7 +2956,7 @@
       "check": "control_south_glass0 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -3138,7 +3164,7 @@
       "check": "control_south_glass2 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -4438,7 +4464,7 @@
       "check": "containment_25_glass0 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -4594,7 +4620,7 @@
       "check": "containment_44_glass0 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -4750,7 +4776,7 @@
       "check": "containment_-441_glass0 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -4906,7 +4932,7 @@
       "check": "containment_-423_glass0 material role matches",
       "pass_check": true,
       "detail": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ]
     },
     {
@@ -10463,7 +10489,7 @@
         -450.82000732421875
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },
@@ -10523,7 +10549,7 @@
         -450.82000732421875
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },
@@ -10793,7 +10819,7 @@
         -419.0
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },
@@ -11108,7 +11134,7 @@
         -417.0
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },
@@ -11243,7 +11269,7 @@
         -454.6000061035156
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },
@@ -11303,7 +11329,7 @@
         -454.6000061035156
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },
@@ -11678,7 +11704,7 @@
         -423.0
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },
@@ -11723,7 +11749,7 @@
         -423.0
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },
@@ -11768,7 +11794,7 @@
         -440.94000244140625
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },
@@ -11813,7 +11839,7 @@
         -422.94000244140625
       ],
       "materials": [
-        "section_sealed_glass"
+        "ASTRAEA_bridge_pressure_glass"
       ],
       "floor_contact_y6": false
     },

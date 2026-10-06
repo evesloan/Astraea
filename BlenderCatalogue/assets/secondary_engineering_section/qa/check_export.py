@@ -23,6 +23,7 @@ def accessor(i):
 def bounds(v):return [min(p[i] for p in v) for i in range(3)]+[max(p[i] for p in v) for i in range(3)]
 expected={p['name']:p for p in plan['parts'] if p['export']};nodes={n['name']:n for n in D['nodes'] if 'mesh' in n}
 check('exact expected surface node set',set(nodes)==set(expected),{'expected':len(expected),'actual':len(nodes)})
+material_profile=next(m for m in D['materials'] if m['name']=='ASTRAEA_bridge_pressure_glass');pbr=material_profile['pbrMetallicRoughness'];check('exact retained glass alpha roughness metallic profile',abs(pbr['baseColorFactor'][3]-.28)<1e-5 and abs(pbr['roughnessFactor']-.22)<1e-5 and abs(pbr['metallicFactor']-.08)<1e-5 and material_profile.get('alphaMode')=='BLEND',material_profile)
 check('compiler previews excluded',all('PREVIEW' not in n and not v.get('extras',{}).get('preview_only') for n,v in nodes.items()))
 palette=json.loads((C/'materials/staff/manifest.json').read_text())['materials']
 def dot(a,b):return sum(x*y for x,y in zip(a,b))
@@ -43,7 +44,7 @@ for name,node in nodes.items():
         check(name+' complete UV and normals',len(uv)==len(v)==len(norm));check(name+' valid triangle indices',len(ix)%3==0 and all(i<len(v) for i in ix))
         check(name+' material slot present',0<=p['material']<len(D['materials']));materials.append(D['materials'][p['material']]['name']);pts+=v;triangles+=len(ix)//3
     want=bounds(expected[name]['vertices_xyz']);got=bounds(pts);err=max(abs(a-b) for a,b in zip(want,got));check(name+' bounds match pure source',err<5e-5,err)
-    role=expected[name]['material_role'];check(name+' material role matches',all(m==('section_sealed_glass' if role=='section_sealed_glass' else 'ASTRAEA_'+role) for m in materials),materials)
+    role=expected[name]['material_role'];check(name+' material role matches',all(m==('ASTRAEA_bridge_pressure_glass' if role=='section_sealed_glass' else 'ASTRAEA_'+role) for m in materials),materials)
     check(name+' collision extras preserved',node['extras']['collision_contract']==expected[name]['collision'])
     records.append(dict(name=name,bounds_xyz_min_max=got,materials=materials,floor_contact_y6=abs(got[1]-6)<5e-5))
 check('expected fixture markers exported',all(any(n['name']==m['name'] and n.get('extras',{}).get('housing')==m['housing'] for n in D['nodes']) for m in plan['markers']))
