@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # Actual main-scene capsule/contact coverage. This deliberately makes no claim
 # about loaded carts, lift interlocks, water physics or graphical acceptance.
 const CONTRACT := "res://data/architecture/GRAND_POOL_SECTION_RUNTIME.json"
@@ -58,7 +59,7 @@ func check_import_pins() -> void:
 		assert(cache.get_value("", "source_md5", "") == FileAccess.get_md5(path), "Stale imported GLB: " + str(file))
 
 func check_floor_owners() -> void:
-	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/generated/structural_meshes.json"))
 	var engineering_floors: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
 	var baseline: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://docs/GRAND_POOL_PRE_ADOPTION_MESHES.json"))
 	var theater_floors := validate_loaded_theater_roster(compiled, floors)
@@ -441,7 +442,7 @@ func validate_loaded_theater_roster(compiled: Dictionary, loaded_floors: Node) -
 	approved_ids.sort()
 	added_ids.sort()
 	assert(added_ids==approved_ids and additions.size()==9,"Exactly the authenticated nine theater owners required")
-	assert(loaded_floors!=null and compiled.regions.size()==271 and loaded_floors.get_child_count()==271,"Exact reviewed combined floor count required")
+	assert(loaded_floors!=null and compiled.regions.size()==271 and MEDICAL_RETAINED.retained_owner_count(loaded_floors)==271,"Exact reviewed combined floor count required")
 	var current: Dictionary = {}
 	for row in compiled.regions:
 		assert(not current.has(str(row.id)),"Duplicate compiled owner")
@@ -449,7 +450,7 @@ func validate_loaded_theater_roster(compiled: Dictionary, loaded_floors: Node) -
 	for id in approved_ids:
 		assert(current.has(id) and current[id]==additions[id],"Whole theater record changed: "+str(id))
 	var loaded_ids: Array = []
-	for owner in loaded_floors.get_children():
+	for owner in MEDICAL_RETAINED.retained_floor_children(loaded_floors):
 		var id := str(owner.name)
 		assert(current.has(id) and not loaded_ids.has(id),"Unknown or duplicate loaded floor owner: "+id)
 		loaded_ids.append(id)

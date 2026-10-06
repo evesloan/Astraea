@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # SCRATCH DRAFT. Never executed by its author. Run only in the explicitly
 # integrated project, through the normal fresh-import validation workflow.
 # Uses the unchanged real player, physical cart/bottles, service-door state and
@@ -287,7 +288,7 @@ func floor_hit(point: Vector3, owner: String) -> bool:
 	return true
 
 func floor_topology_and_stair() -> bool:
-	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/generated/structural_meshes.json"))
 	# Reuse the reviewed, hash-pinned successor proof. A failed helper must not
 	# allow this caller to reach PASS, even if its internal assert aborts early.
 	var guard := load("res://tests/secondary_engineering_additive_guard.gd")
@@ -295,7 +296,7 @@ func floor_topology_and_stair() -> bool:
 	if not require(preserved is Dictionary and preserved.size() == 4 and preserved.has(LOWER_OWNER), "Exact old258/unchanged260/current engineering four/theater271 preservation helper did not complete"): return false
 	var chain: Variant = guard.section_proof()
 	if not require(chain is Dictionary and chain.has("original_host_record"), "Reviewed floor successor proof is missing"): return false
-	if not require(compiled.regions.size() == 271 and floors.get_child_count() == 271, "Actual compiled/runtime floor owner counts differ"): return false
+	if not require(compiled.regions.size() == 271 and MEDICAL_RETAINED.retained_owner_count(floors) == 271, "Actual compiled/runtime floor owner counts differ"): return false
 	var current: Dictionary = {}
 	for region in compiled.regions:
 		if not require(not current.has(str(region.id)), "Duplicate compiler owner"): return false

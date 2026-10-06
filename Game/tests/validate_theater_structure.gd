@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # UNRUN integration draft. No engine was started to author these checks.
 # A focused pass is NOT bridge adoption, operational door/lift, or full-suite proof.
 var probe = preload("res://tests/theater_stage_probe.gd").new()
@@ -16,7 +17,7 @@ func run() -> void:
 	root.add_child(main)
 	for frame in range(150): await physics_frame
 	probe.configure(main.get_node("World360/Astraea"))
-	load("res://tests/secondary_engineering_additive_guard.gd").validate(JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json")))
+	load("res://tests/secondary_engineering_additive_guard.gd").validate(JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/generated/structural_meshes.json")))
 	probe.actor.set_physics_process(false)
 	probe.check_import_and_scene_census()
 	probe.check_instances()

@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # Scratch candidate: must run against parent-integrated actual main scene.
 # Exact source-mesh static contacts, supported approaches and preserved routes.
 const CONTRACT := "res://data/architecture/GRAND_POOL_FIRST_PASS_RUNTIME.json"
@@ -61,7 +62,7 @@ func check_pins() -> void:
 
 func check_models_and_contacts() -> void:
 	assert(built.get_child_count() == 51)
-	load("res://tests/secondary_engineering_additive_guard.gd").validate_owner_count(floors.get_child_count(),int(data.compiler_owner_count))
+	load("res://tests/secondary_engineering_additive_guard.gd").validate_owner_count(MEDICAL_RETAINED.retained_owner_count(floors),int(data.compiler_owner_count))
 	assert(built.find_children("*", "Light3D", true, false).is_empty())
 	for entry in data.placements:
 		var item := model_for(str(entry.name))

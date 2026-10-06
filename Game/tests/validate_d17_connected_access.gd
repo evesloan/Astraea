@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # Grand Pool additive adoption: all 250 retained rows independently match Git
 # 16bf7ee and GRAND_POOL_PRE_ADOPTION_MESHES.json. Admit only these eight rows;
 # retain every original numeric pin and actual render/contact geometry check.
@@ -60,7 +61,7 @@ func run() -> void:
 	var architecture: Node3D = built.find_child("D17ConnectedArchitecture", true, false)
 	var floor_exclusions: Array[RID] = []
 	for body in architecture.find_children("*", "StaticBody3D", true, false): floor_exclusions.append(body.get_rid())
-	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/generated/structural_meshes.json"))
 	var engineering_floors: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
 	load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input("data/generated/structural_meshes.json",COMPILED_SHA)
 	load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input("data/spatial_layout.json",LAYOUT_SHA)
@@ -145,7 +146,7 @@ func validate_loaded_theater_roster(compiled: Dictionary, loaded_floors: Node) -
 	approved_ids.sort()
 	added_ids.sort()
 	assert(added_ids==approved_ids and additions.size()==9,"Exactly the authenticated nine theater owners required")
-	assert(loaded_floors!=null and compiled.regions.size()==271 and loaded_floors.get_child_count()==271,"Exact reviewed combined floor count required")
+	assert(loaded_floors!=null and compiled.regions.size()==271 and MEDICAL_RETAINED.retained_owner_count(loaded_floors)==271,"Exact reviewed combined floor count required")
 	var current: Dictionary = {}
 	for row in compiled.regions:
 		assert(not current.has(str(row.id)),"Duplicate compiled owner")
@@ -153,7 +154,7 @@ func validate_loaded_theater_roster(compiled: Dictionary, loaded_floors: Node) -
 	for id in approved_ids:
 		assert(current.has(id) and current[id]==additions[id],"Whole theater record changed: "+str(id))
 	var loaded_ids: Array = []
-	for owner in loaded_floors.get_children():
+	for owner in MEDICAL_RETAINED.retained_floor_children(loaded_floors):
 		var id := str(owner.name)
 		assert(current.has(id) and not loaded_ids.has(id),"Unknown or duplicate loaded floor owner: "+id)
 		loaded_ids.append(id)

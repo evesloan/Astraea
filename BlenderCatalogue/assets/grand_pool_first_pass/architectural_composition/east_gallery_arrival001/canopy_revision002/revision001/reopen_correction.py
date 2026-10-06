@@ -1,0 +1,6 @@
+from pathlib import Path
+import bpy,json,hashlib,sys,importlib.util
+sys.dont_write_bytecode=True
+B=Path(__file__).resolve().parent;out=B/'source001';spec=importlib.util.spec_from_file_location('correction_read_methods',B/'build_correction.py');mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
+r=json.loads((out/'qa/BUILD_RECEIPT.json').read_text());source=Path(r['source']);assert mod.sha(source)==r['sha256'];bpy.ops.wm.open_mainfile(filepath=str(source));plan=json.loads((B/'CORE_PLAN.json').read_text());expected=json.loads((out/'qa/OBJECT_PRESERVATION.json').read_text())['after'];actual={o.name:mod.fingerprint(o)for o in bpy.context.scene.objects};assert actual==expected
+snapshot=dict(plan,parts=mod.core.snapshot(bpy.context.scene,plan));(out/'qa/REOPEN_EVALUATED_CORE.json').write_text(json.dumps(snapshot,indent=2)+'\n');assert mod.sha(source)==r['sha256'];receipt={'status':'PASS_INDEPENDENT_REOPEN_EXACT_SOURCE_OBJECTS_MATERIALS_UV','source_sha256':r['sha256'],'objects':len(actual),'core_parts':len(snapshot['parts']),'source_saved':False,'exports':[],'renders':[],'Game_or_Catalogue_writes':False};(out/'qa/REOPEN_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt),flush=True)

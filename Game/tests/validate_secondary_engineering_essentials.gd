@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # Actual additive contents/fixture checks and reachable guest-side diagnostics.
 const CONTRACT := "res://data/architecture/SECONDARY_ENGINEERING_ESSENTIALS_TRIAL.json"
 const SOURCE_RECEIVER_POINTS := {
@@ -85,7 +86,7 @@ func run() -> void:
 	actor.set_physics_process(false)
 	space = ship.get_world_3d().direct_space_state
 	floors = ship.find_child("CompiledStructuralFloors_NotFinishedRooms",true,false)
-	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/generated/structural_meshes.json"))
 	load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
 	validate_loaded_theater_roster(compiled)
 	var root_section: Node3D = ship.find_child("SecondaryEngineeringSection_WIP",true,false)
@@ -196,7 +197,7 @@ func validate_loaded_theater_roster(compiled: Dictionary) -> void:
 	approved_ids.sort()
 	added_ids.sort()
 	assert(added_ids==approved_ids and additions.size()==9,"Exactly the authenticated nine theater owners required")
-	assert(compiled.regions.size()==271 and floors.get_child_count()==271,"Exact reviewed combined floor count required")
+	assert(compiled.regions.size()==271 and MEDICAL_RETAINED.retained_owner_count(floors)==271,"Exact reviewed combined floor count required")
 	var current: Dictionary = {}
 	for row in compiled.regions:
 		assert(not current.has(str(row.id)),"Duplicate compiled owner")
@@ -204,7 +205,7 @@ func validate_loaded_theater_roster(compiled: Dictionary) -> void:
 	for id in approved_ids:
 		assert(current.has(id) and current[id]==additions[id],"Whole theater record changed: "+str(id))
 	var loaded_ids: Array = []
-	for owner in floors.get_children():
+	for owner in MEDICAL_RETAINED.retained_floor_children(floors):
 		var id := str(owner.name)
 		assert(current.has(id) and not loaded_ids.has(id),"Unknown or duplicate loaded floor owner: "+id)
 		loaded_ids.append(id)

@@ -1,4 +1,5 @@
 extends RefCounted
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # Exact additive roster gate shared by retained section regressions.
 const PROOF := "res://docs/SECONDARY_ENGINEERING_ADDITIVE_PRESERVATION.json"
 const PROOF_SHA := "ee806149c47846c5d2a2374269615f2c13c681b949cea8f2ceb05ad81856e6cc"
@@ -19,11 +20,11 @@ const ALLOWED_THEATER_COMPILED_IDS := ["D11_theater_flat_00", "D11_theater_found
 const THEATER_INPUT_PATHS := ["data/spatial_layout.json", "data/generated/structural_meshes.json", "scripts/ship.gd"]
 
 static func section_proof() -> Dictionary:
-	assert(FileAccess.get_sha256(SECTION_PROOF)==SECTION_PROOF_SHA)
-	return JSON.parse_string(FileAccess.get_file_as_string(SECTION_PROOF))
+	assert(MEDICAL_RETAINED.retained_sha256(SECTION_PROOF)==SECTION_PROOF_SHA)
+	return JSON.parse_string(MEDICAL_RETAINED.retained_text(SECTION_PROOF))
 
 static func validate_pinned_input(path: String, historical_sha: String) -> void:
-	var actual := FileAccess.get_sha256("res://"+path)
+	var actual := MEDICAL_RETAINED.retained_sha256("res://"+path)
 	var chain := section_proof()
 	if not chain.explicit_runtime_pin_successors.has(path):
 		assert(actual==historical_sha,"No reviewed byte successor: "+path)
@@ -33,7 +34,7 @@ static func validate_pinned_input(path: String, historical_sha: String) -> void:
 	if actual==historical_sha: return
 	if actual==str(previous.section_sha256):
 		if previous.has("capture_audit_file"):
-			assert(FileAccess.get_sha256("res://"+str(previous.capture_audit_file))==str(previous.capture_audit_sha256))
+			assert(MEDICAL_RETAINED.retained_sha256("res://"+str(previous.capture_audit_file))==str(previous.capture_audit_sha256))
 		return
 	if path=="scripts/presentation.gd" and actual=="a63a5c72f76af86cb81d2bb7dcc2bf9330d0a0583862c2fea5e7f487f5628b1c":
 		assert(load("res://tests/engineering_controls_listener_successor.gd").validate_successor(path,historical_sha,actual,previous))
@@ -53,20 +54,21 @@ static func validate_pinned_input(path: String, historical_sha: String) -> void:
 
 static func validate_owner_count(actual: int, historical: int) -> void:
 	assert(historical==261 and actual==271)
-	var preserved := validate(JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json")))
+	var preserved := validate(JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/generated/structural_meshes.json")))
 	assert(preserved.size()==4,"Complete chained engineering preservation required")
 
 static func validate(compiled: Dictionary) -> Dictionary:
-	assert(FileAccess.get_sha256(PROOF)==PROOF_SHA)
-	assert(FileAccess.get_sha256(CONTRACT)==CONTRACT_SHA)
-	var proof: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(PROOF))
-	var original: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
+	compiled=MEDICAL_RETAINED.retained_compiled(compiled)
+	assert(MEDICAL_RETAINED.retained_sha256(PROOF)==PROOF_SHA)
+	assert(MEDICAL_RETAINED.retained_sha256(CONTRACT)==CONTRACT_SHA)
+	var proof: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(PROOF))
+	var original: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(CONTRACT))
 	var chain := section_proof()
 	assert(chain.previous_proof_sha256==PROOF_SHA and chain.previous_contract_sha256==CONTRACT_SHA)
 	assert(chain.previous_compiled_sha256==proof.new_compiled_sha256 and chain.previous_layout_sha256==proof.new_layout_sha256)
 	var successor := theater_successor()
 	for path in THEATER_INPUT_PATHS:
-		var actual := FileAccess.get_sha256("res://"+path)
+		var actual := MEDICAL_RETAINED.retained_sha256("res://"+path)
 		var input: Dictionary = successor.explicit_runtime_pin_successors[path]
 		if actual==str(input.theater_sha256): continue
 		var previous: Dictionary = chain.explicit_runtime_pin_successors[path]
@@ -74,7 +76,7 @@ static func validate(compiled: Dictionary) -> Dictionary:
 			assert(preload("res://tests/theater_stair_ship_successor.gd").validate_successor(path,str(previous.historical_sha256),actual,previous,input))
 			continue
 		assert(preload("res://tests/secondary_engineering_pool_ship_successor.gd").validate_successor(path,str(previous.historical_sha256),actual,previous,input),"Mixed or unreviewed theater/pool adoption bytes: "+path)
-	assert(compiled==JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json")),"Caller compiled records must match pinned bytes")
+	assert(compiled==JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/generated/structural_meshes.json")),"Caller compiled records must match pinned bytes")
 	assert(compiled.regions.size()==271 and original.old_region_records.size()==258 and proof.new_records.size()==3)
 	assert(chain.unchanged_prior_record_count==260 and chain.current_engineering_records.size()==4)
 	var current: Dictionary = {}
@@ -90,10 +92,10 @@ static func validate(compiled: Dictionary) -> Dictionary:
 	assert(current[str(chain.new_lower_owner_id)]==chain.new_lower_record)
 	for id in chain.current_engineering_records:
 		assert(current.has(id) and current[id]==chain.current_engineering_records[id])
-	var layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/spatial_layout.json"))
+	var layout: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/spatial_layout.json"))
 	var owned: Array = layout.regions.filter(func(row: Dictionary) -> bool: return str(row.get("authoring_owner",""))=="secondary_engineering_section")
 	assert(owned==chain.current_engineering_layout_records,"Exactly four reviewed engineering layout owners required")
-	var proposal: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(THEATER_PROPOSAL))
+	var proposal: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(THEATER_PROPOSAL))
 	assert(_validate_theater_records(compiled,layout,proposal),"Exact retained/additive theater roster required")
 	return chain.current_engineering_records
 
@@ -105,13 +107,13 @@ static func _exact_keys(value: Dictionary, expected: Array) -> bool:
 	return keys == wanted
 
 static func theater_successor() -> Dictionary:
-	assert(FileAccess.get_sha256(PROOF)==PROOF_SHA)
-	assert(FileAccess.get_sha256(CONTRACT)==CONTRACT_SHA)
-	assert(FileAccess.get_sha256(THEATER_PROPOSAL)==THEATER_PROPOSAL_SHA)
-	assert(FileAccess.get_sha256(THEATER_SUCCESSOR)==THEATER_SUCCESSOR_SHA)
+	assert(MEDICAL_RETAINED.retained_sha256(PROOF)==PROOF_SHA)
+	assert(MEDICAL_RETAINED.retained_sha256(CONTRACT)==CONTRACT_SHA)
+	assert(MEDICAL_RETAINED.retained_sha256(THEATER_PROPOSAL)==THEATER_PROPOSAL_SHA)
+	assert(MEDICAL_RETAINED.retained_sha256(THEATER_SUCCESSOR)==THEATER_SUCCESSOR_SHA)
 	var section := section_proof()
-	var proposal: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(THEATER_PROPOSAL))
-	var successor: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(THEATER_SUCCESSOR))
+	var proposal: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(THEATER_PROPOSAL))
+	var successor: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(THEATER_SUCCESSOR))
 	assert(successor.schema==1 and not successor.ship_successor_pending)
 	assert(successor.previous_engineering_proof_sha256==PROOF_SHA and successor.previous_engineering_contract_sha256==CONTRACT_SHA)
 	assert(section.previous_proof_sha256==PROOF_SHA and section.previous_contract_sha256==CONTRACT_SHA)
@@ -130,8 +132,8 @@ static func theater_successor() -> Dictionary:
 	assert(successor.allowed_new_layout_ids==ALLOWED_THEATER_LAYOUT_IDS and successor.allowed_new_compiled_ids==ALLOWED_THEATER_COMPILED_IDS)
 	assert(_exact_keys(proposal.new_layout_records,ALLOWED_THEATER_LAYOUT_IDS) and _exact_keys(proposal.new_compiled_records,ALLOWED_THEATER_COMPILED_IDS))
 	assert(successor.retained_layout_path==RETAINED_LAYOUT and successor.retained_compiled_path==RETAINED_COMPILED)
-	assert(FileAccess.get_sha256("res://"+RETAINED_LAYOUT)==section.new_layout_sha256)
-	assert(FileAccess.get_sha256("res://"+RETAINED_COMPILED)==section.new_compiled_sha256)
+	assert(MEDICAL_RETAINED.retained_sha256("res://"+RETAINED_LAYOUT)==section.new_layout_sha256)
+	assert(MEDICAL_RETAINED.retained_sha256("res://"+RETAINED_COMPILED)==section.new_compiled_sha256)
 	assert(proposal.input_package_sha256[RETAINED_LAYOUT]==section.new_layout_sha256 and proposal.input_package_sha256[RETAINED_COMPILED]==section.new_compiled_sha256)
 	assert(_exact_keys(successor.explicit_runtime_pin_successors,THEATER_INPUT_PATHS))
 	for path in THEATER_INPUT_PATHS:
@@ -146,8 +148,8 @@ static func theater_successor() -> Dictionary:
 # Pure record checks are separate from byte pins so negative tests can exercise
 # preserved records and exact allowlists even if mutated input hashes are repinned.
 static func _validate_theater_records(compiled: Dictionary, layout: Dictionary, proposal: Dictionary) -> bool:
-	var old_compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://"+RETAINED_COMPILED))
-	var old_layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://"+RETAINED_LAYOUT))
+	var old_compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text("res://"+RETAINED_COMPILED))
+	var old_layout: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text("res://"+RETAINED_LAYOUT))
 	assert(old_compiled.regions.size()==262 and old_layout.regions.size()==268)
 	assert(compiled.regions.size()==271 and layout.regions.size()==285)
 	for spec in [[compiled,old_compiled,proposal.new_compiled_records,ALLOWED_THEATER_COMPILED_IDS],[layout,old_layout,proposal.new_layout_records,ALLOWED_THEATER_LAYOUT_IDS]]:

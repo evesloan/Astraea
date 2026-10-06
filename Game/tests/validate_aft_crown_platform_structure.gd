@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # Architectural contacts only. This does not certify loads, occupancy or final art.
 # Raw GLB -> imported triangles are matched one-to-one with winding and multiplicity.
 const CONTRACT := "res://data/architecture/AFT_CROWN_PLATFORM_RUNTIME.json"
@@ -403,9 +404,9 @@ func floor_face_diagnostic(label: String,expected: PackedVector3Array,actual: Pa
 			printed += 1
 
 func validate_floors() -> void:
-	var generated := read_json("res://data/generated/structural_meshes.json")
+	var generated := MEDICAL_RETAINED.retained_json("res://data/generated/structural_meshes.json")
 	var engineering_floors: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").validate(generated)
-	var layout := read_json("res://data/spatial_layout.json")
+	var layout := MEDICAL_RETAINED.retained_json("res://data/spatial_layout.json")
 	var old_hashes: Dictionary = JSON.parse_string(OLD_RECORD_HASHES_JSON)
 	var aft_hashes: Dictionary = JSON.parse_string(AFT_RECORD_HASHES_JSON)
 	var pool_floors: Dictionary = JSON.parse_string(GRAND_POOL_FLOORS_JSON)
@@ -656,7 +657,7 @@ func validate_core() -> void:
 	for p in [Vector2(0,113),Vector2(-1.5,111.5),Vector2(1.5,114.5)]:
 		var hit := ray(Vector3(p.x,110.0,p.y),Vector3(p.x,109.7,p.y),own_exclusions)
 		check(not hit.is_empty() and core.is_ancestor_of(hit.collider) and absf(hit.position.y-109.85)<EPS,"Protected actual shaft cap missing/moved")
-	var layout := read_json("res://data/spatial_layout.json")
+	var layout := MEDICAL_RETAINED.retained_json("res://data/spatial_layout.json")
 	for spec in [["aft_crown_link_lift",[-1.82,1.82,110.98,115.02],["D17","D18"]],["aft_crown_link_stairs",[-3.1,3.1,123.0,133.7],["D18"]]]:
 		var matches: Array = layout.voids.filter(func(row:Dictionary)->bool:return str(row.id)==str(spec[0]))
 		if not check(matches.size()==1,"Protected aft hole missing/duplicated"):
@@ -950,7 +951,7 @@ func validate_loaded_theater_roster(compiled: Dictionary, loaded_floors: Node) -
 	approved_ids.sort()
 	added_ids.sort()
 	assert(added_ids==approved_ids and additions.size()==9,"Exactly the authenticated nine theater owners required")
-	assert(loaded_floors!=null and compiled.regions.size()==271 and loaded_floors.get_child_count()==271,"Exact reviewed combined floor count required")
+	assert(loaded_floors!=null and compiled.regions.size()==271 and MEDICAL_RETAINED.retained_owner_count(loaded_floors)==271,"Exact reviewed combined floor count required")
 	var current: Dictionary = {}
 	for row in compiled.regions:
 		assert(not current.has(str(row.id)),"Duplicate compiled owner")
@@ -958,7 +959,7 @@ func validate_loaded_theater_roster(compiled: Dictionary, loaded_floors: Node) -
 	for id in approved_ids:
 		assert(current.has(id) and current[id]==additions[id],"Whole theater record changed: "+str(id))
 	var loaded_ids: Array = []
-	for owner in loaded_floors.get_children():
+	for owner in MEDICAL_RETAINED.retained_floor_children(loaded_floors):
 		var id := str(owner.name)
 		assert(current.has(id) and not loaded_ids.has(id),"Unknown or duplicate loaded floor owner: "+id)
 		loaded_ids.append(id)

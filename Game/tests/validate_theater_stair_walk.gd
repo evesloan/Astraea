@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # DRAFT UNRUN. Actual reopened source proved; final native/control pins pending.
 const ROUTE := "res://tests/fixtures/THEATER_STAIR_WALK_ROUTE_011.json"
 const CONTACTS := "res://data/architecture/THEATER_STAIR_WALK_CONTACTS_011.json"
@@ -134,7 +135,7 @@ func run() -> void:
 	var main: Node=(load("res://scenes/main.tscn")as PackedScene).instantiate();root.add_child(main)
 	for frame in range(90):await physics_frame
 	probe.configure(main.get_node("World360/Astraea"));probe.check_motion_poses_and_barriers()
-	load("res://tests/secondary_engineering_additive_guard.gd").validate(JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json")))
+	load("res://tests/secondary_engineering_additive_guard.gd").validate(JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/generated/structural_meshes.json")))
 	probe.check_import_and_scene_census()
 	probe.check_instances()
 	inspect_integrated_contacts()

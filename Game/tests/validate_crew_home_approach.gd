@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # New district gate. Uses the original player and actual visible door contacts.
 # A single existing arrival starts at the D03 staff-lift landing; all approach,
 # doorway and return movement afterward is ordinary WASD input.
@@ -190,7 +191,7 @@ func run() -> void:
 	for path in data.retained_runtime_pins:
 		if not require(FileAccess.get_sha256("res://"+str(path))==str(data.retained_runtime_pins[path]),"Retained controller changed: "+str(path)): return
 	for path in data.preserve_floors:
-		if not require(FileAccess.get_sha256("res://"+str(path))==str(data.preserve_floors[path]),"Existing floor ownership bytes changed"): return
+		if not require(MEDICAL_RETAINED.retained_sha256("res://"+str(path))==str(data.preserve_floors[path]),"Existing floor ownership bytes changed"): return
 	main=(load("res://scenes/main.tscn") as PackedScene).instantiate()
 	root.add_child(main)
 	for frame in range(90): await physics_frame

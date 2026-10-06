@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 # Actual capsule movement, production cart straight smoke and conservative
 # loaded-envelope queries. Diagnostic staff starts are NOT external connections.
 const CONTRACT := "res://data/architecture/SECONDARY_ENGINEERING_RUNTIME.json"
@@ -79,7 +80,7 @@ func floor_support(p: Vector3, expected_owner: String = "", barrier_bearing_prob
 	support_rays += 1
 
 func floor_and_cap() -> void:
-	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/generated/structural_meshes.json"))
 	load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
 	assert(data.old_region_records.size() == 258)
 	validate_loaded_theater_roster(compiled)
@@ -300,7 +301,7 @@ func run() -> void:
 	actor.set_physics_process(false)
 	actor.global_position = Vector3(6, 6.04, -432)
 	actor.velocity = Vector3.ZERO
-	var core_data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/FORWARD_PUBLIC_CORE.json"))
+	var core_data: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text("res://data/architecture/FORWARD_PUBLIC_CORE.json"))
 	assert(str(core_data.enclosure_file) == str(data.core_export) and core_data.deck_numbers.size() == 17 and core_data.floor_y.size() == 17)
 	for z in [-433.19, -432.0, -430.81]:
 		for y in [6.02, 7.65, 8.69]:
@@ -337,7 +338,7 @@ func validate_loaded_theater_roster(compiled: Dictionary) -> void:
 	approved_ids.sort()
 	added_ids.sort()
 	assert(added_ids==approved_ids and additions.size()==9,"Exactly the authenticated nine theater owners required")
-	assert(compiled.regions.size()==271 and floors.get_child_count()==271,"Exact reviewed combined floor count required")
+	assert(compiled.regions.size()==271 and MEDICAL_RETAINED.retained_owner_count(floors)==271,"Exact reviewed combined floor count required")
 	var current: Dictionary = {}
 	for row in compiled.regions:
 		assert(not current.has(str(row.id)),"Duplicate compiled owner")
@@ -345,7 +346,7 @@ func validate_loaded_theater_roster(compiled: Dictionary) -> void:
 	for id in approved_ids:
 		assert(current.has(id) and current[id]==additions[id],"Whole theater record changed: "+str(id))
 	var loaded_ids: Array = []
-	for owner in floors.get_children():
+	for owner in MEDICAL_RETAINED.retained_floor_children(floors):
 		var id := str(owner.name)
 		assert(current.has(id) and not loaded_ids.has(id),"Unknown or duplicate loaded floor owner: "+id)
 		loaded_ids.append(id)

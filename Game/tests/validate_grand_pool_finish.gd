@@ -1,4 +1,5 @@
 extends SceneTree
+const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 const CONTRACT := "res://data/architecture/GRAND_POOL_FINISH_RUNTIME.json"
 var data: Dictionary
 var ship: Node3D
@@ -79,7 +80,7 @@ func check_contacts(node: Node3D, spec: Dictionary) -> void:
 
 func structure() -> void:
 	assert(furniture.get_child_count() == 51 and data.logical_furnishing_count == 126)
-	load("res://tests/secondary_engineering_additive_guard.gd").validate_owner_count(floors.get_child_count(),int(data.compiler_owner_count))
+	load("res://tests/secondary_engineering_additive_guard.gd").validate_owner_count(MEDICAL_RETAINED.retained_owner_count(floors),int(data.compiler_owner_count))
 	assert(data.placements.size() == 71 and data.assemblies.size() == 3)
 	assert(built.get_child_count() == 88)
 	for entry in data.assemblies: check_contacts(item(str(entry.name)),data.models[str(entry.asset)])
