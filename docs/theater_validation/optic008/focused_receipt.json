@@ -1,0 +1,98 @@
+{
+  "status": "PASS_OPTIC_STRUCTURE_AND_ACTUAL_COURT_WALK_CART_NATIVE_CAPTURE_PENDING",
+  "started_utc": "2026-10-06T20:51:28.173908+00:00",
+  "source_files": 5176,
+  "apply_manifest_sha256": "4ca8bf0843960000fda9d6c80df4ceb8dc40fccbc0814e361e09216d03026d4d",
+  "steps": [
+    {
+      "label": "parse_final_checker",
+      "command": [
+        "godot",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--check-only",
+        "--script",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/optic_runtime_draft010/focused_validation005/check_optic_import.gd"
+      ],
+      "exit_code": 0,
+      "seconds": 0.201,
+      "errors": [],
+      "timed_out": false,
+      "log_sha256": "a9912b85473f126d3f4f63ec824170c828df3473a292f866dde86cafda5b66da"
+    },
+    {
+      "label": "exact_optic_import",
+      "command": [
+        "godot",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--script",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/optic_runtime_draft010/focused_validation005/check_optic_import.gd",
+        "--",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/optic_runtime_draft010/focused_validation005/run003/OPTIC_IMPORT_RESULT.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.602,
+      "errors": [],
+      "timed_out": false,
+      "log_sha256": "dcd9bac72e3c86fceba814664b2e308b3ede498ad18154a0dca147641e306312"
+    },
+    {
+      "label": "registered_structure",
+      "command": [
+        "python",
+        "-B",
+        "/workspace/shared/astraea-godot-production-20261003/tools/validate.py",
+        "--only",
+        "theater_structure"
+      ],
+      "exit_code": 0,
+      "seconds": 28.421,
+      "errors": [],
+      "timed_out": false,
+      "log_sha256": "10233928c7c11581924bd62f98fe2a66e43265d2f6b4c530b18d6dbef834f9e8"
+    },
+    {
+      "label": "court_actual_world",
+      "command": [
+        "godot",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--fixed-fps",
+        "60",
+        "--quit-after",
+        "18000",
+        "--script",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/actual_world_adoption004/probe_court_a_actual_world002.gd",
+        "--",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/COURT_A_GEOMETRY_CONTRACT.json",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/COURT_A_PURE_SCREEN.json",
+        "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/optic_runtime_draft010/focused_validation005/run003/COURT_RESULT.json"
+      ],
+      "exit_code": 0,
+      "seconds": 36.235,
+      "errors": [],
+      "timed_out": false,
+      "log_sha256": "a89f7cc34b6691eaa162ed1519b46e998b94d4d3f2a561e177b3810a0617e78c"
+    }
+  ],
+  "full_suite_pass": false,
+  "expected_import_generated_paths": [],
+  "expected_import_changed_paths": [
+    "artifacts/validation.json",
+    "artifacts/validation_theater_structure_fixed60.json"
+  ],
+  "actual_court_result_sha256": "2ad84a837d2155d6dddc72d35d2902ef337bd1333b99e959c6531f10ad4da305",
+  "runtime_unchanged_after_import": true,
+  "native_visual_review_pending": true,
+  "finished_utc": "2026-10-06T20:52:36.245167+00:00",
+  "changed_paths": [
+    "artifacts/validation.json",
+    "artifacts/validation_theater_structure_fixed60.json"
+  ],
+  "added_paths": [],
+  "deleted_paths": []
+}

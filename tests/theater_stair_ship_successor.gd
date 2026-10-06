@@ -78,7 +78,7 @@ static func retained_ship_source() -> String:
 	assert(source.sha256_text()==COURT_CANDIDATE_SHA,"Unreviewed Court ship bytes")
 	assert(source.count(COURT_LINE)==1 and source.count(COURT_BEFORE+COURT_LINE+COURT_AFTER)==1,"Court must remain between the existing theater and stair builders")
 	for path in COURT_INPUT_SHA256:
-		assert(FileAccess.get_sha256("res://"+str(path))==str(COURT_INPUT_SHA256[path]),"Court input changed: "+str(path))
+		assert(retained_input_sha256(str(path))==str(COURT_INPUT_SHA256[path]),"Court input changed: "+str(path))
 	source=source.replace(COURT_LINE,"")
 	assert(source.sha256_text()==STAIR_CANDIDATE_SHA,"Removing only Court must recover every prior ship byte")
 	return source
@@ -92,6 +92,19 @@ static func retained_guard_source() -> String:
 	return source
 
 static func retained_input_sha256(path: String) -> String:
+	if path=="tools/validate.py":
+		var source: String=FileAccess.get_file_as_string("res://"+path)
+		if source.sha256_text()=="b0f4fb8b325016278a58f8be3b8054521af8eb8ec69e63679fe4242526473abc": return source.sha256_text()
+		assert(source.sha256_text()=="5ce8ade1794899a78cfc57ed37f30cd9d288a8389439840f8a637a4f26efd84d","Exact home registration successor required")
+		var additions: Array[String]=["commands += [('crew_home_approach', ['--script', 'res://tests/validate_crew_home_approach.gd'])]\n","    if label == 'crew_home_approach': frame_budget='12000'\n"]
+		for line in additions:
+			assert(source.count(line)==1)
+			source=source.replace(line,"")
+		assert(source.sha256_text()=="b0f4fb8b325016278a58f8be3b8054521af8eb8ec69e63679fe4242526473abc","Every prior validation command, guard and timeout must remain exact")
+		return source.sha256_text()
+	if path=="scripts/court_a_increment004.gd": return retained_court_source().sha256_text()
+	if path=="tests/theater_stage_probe.gd": return retained_stage_probe_source().sha256_text()
+	if path=="tests/secondary_engineering_pool_ship_successor.gd": return load("res://tests/grand_pool_feature_builder_successor.gd").retained_sha256(path)
 	if path==TARGET: return retained_ship_source().sha256_text()
 	if path=="tests/secondary_engineering_additive_guard.gd": return retained_guard_source().sha256_text()
 	if path=="tests/validate_theater_stair_walk.gd":
@@ -112,11 +125,14 @@ static func validate_successor(path: String, historical: String, actual: String,
 	assert(proof.previous_ship_sha256==CANDIDATE_SHIP_SHA and proof.historical_caller_sha256==historical)
 	assert(FileAccess.get_sha256("res://"+path)==actual)
 	for pinned in proof.immutable_sha256:
+		if str(pinned)=="tests/theater_stage_probe.gd":
+			assert(retained_input_sha256(str(pinned))==str(proof.immutable_sha256[pinned]),"Exact theater probe predecessor required")
+			continue
 		if str(pinned) in [BUILDER,"tests/secondary_engineering_pool_ship_successor.gd"]:
 			assert(load("res://tests/grand_pool_feature_builder_successor.gd").retained_sha256(str(pinned))==str(proof.immutable_sha256[pinned]),"Exact pool builder/helper predecessor changed")
 			continue
 		# Exact reviewed natural-carry test successor; original proof and all runtime pins remain intact.
-		if str(pinned)=="tests/validate_secondary_engineering_cell.gd" and str(proof.immutable_sha256[pinned])=="3b489007db83a98a13728b4ab23fe12e9e0cfa575927476800c77c0f0735b280" and FileAccess.get_sha256("res://"+str(pinned))=="12ef1bf0c464625148f077df1f994c5b46a02cfc2e4797d0885315ad5d86cd13":
+		if str(pinned)=="tests/validate_secondary_engineering_cell.gd" and str(proof.immutable_sha256[pinned])=="3b489007db83a98a13728b4ab23fe12e9e0cfa575927476800c77c0f0735b280" and FileAccess.get_sha256("res://"+str(pinned))=="5dad5e1db7e3283ca5c8d207e84a20b62564e24d1523676c5819a150ba774e13":
 			continue
 		assert(FileAccess.get_sha256("res://"+str(pinned))==str(proof.immutable_sha256[pinned]),"Preserved stair predecessor input changed: "+str(pinned))
 	for pinned in proof.new_sha256:
@@ -140,3 +156,38 @@ static func validate_successor(path: String, historical: String, actual: String,
 	var layout: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/spatial_layout.json"))
 	assert(compiled.regions.size()==271 and layout.regions.size()==285)
 	return true
+
+# Exact optic-only inverses. Original stair/native documents remain immutable.
+const OPTIC_CALL := "\tload(\"res://scripts/court_a_aimed_optic008.gd\").build(parent, _ship)\n"
+const OPTIC_CALL_ANCHOR := "\tprototype.free()\n"
+const OPTIC_PROBE_ADDED_CONSTANT := "const OPTIC = preload(\"res://tests/court_a_aimed_optic_probe.gd\")\n"
+const OPTIC_PROBE_ADDED_CALL := "\tOPTIC.check_installation(ship)\n"
+const OPTIC_PROBE_CONSTANT_PLACEMENT := "const OPTIC = preload(\"res://tests/court_a_aimed_optic_probe.gd\")\nvar data: Dictionary\n"
+const OPTIC_PROBE_CALL_PLACEMENT := "\tassert(cart != null and cart.products.size() == 4)\n\tOPTIC.check_installation(ship)\n\nfunc xyz(a: Array) -> Vector3:\n"
+const OPTIC_PROBE_OLD_BLOCK := "\t\t\t\tassert(actual != null and actual.mesh == item.mesh)\n\t\t\t\tassert_transform(relative(actual,built), relative(item,imported), str(item.name))\n\t\t\t\tcheck_exact_contact(actual)\n"
+const OPTIC_PROBE_NEW_BLOCK := "\t\t\t\tassert(actual != null)\n\t\t\t\tassert_transform(relative(actual,built), relative(item,imported), str(item.name))\n\t\t\t\tif kind == \"static\" and str(item.name) == \"C005_S_0326\":\n\t\t\t\t\tOPTIC.check_replacement(actual,item)\n\t\t\t\telse:\n\t\t\t\t\tassert(actual.mesh == item.mesh)\n\t\t\t\t\tcheck_exact_contact(actual)\n"
+const OPTIC_PROBE_OLD_AIM := "\t\t\tassert((-light.global_basis.z).distance_to(xyz(entry.aim_world).normalized()) < .00001)\n"
+const OPTIC_PROBE_NEW_AIM := "\t\t\tassert((-light.global_basis.z).distance_to(OPTIC.expected_aim(light,entry)) < .00001)\n"
+
+static func retained_court_source() -> String:
+	var source := FileAccess.get_file_as_string("res://scripts/court_a_increment004.gd")
+	var previous := str(COURT_INPUT_SHA256["scripts/court_a_increment004.gd"])
+	if source.sha256_text()==previous: return source
+	assert(source.count(OPTIC_CALL)==1 and source.ends_with(OPTIC_CALL_ANCHOR+OPTIC_CALL),"Exactly one appended optic builder call required")
+	source=source.replace(OPTIC_CALL,"")
+	assert(source.sha256_text()==previous,"Removing only the optic call must recover every prior Court builder byte")
+	load("res://tests/court_a_aimed_optic_probe.gd").authenticated_contract()
+	return source
+
+static func retained_stage_probe_source() -> String:
+	var source := FileAccess.get_file_as_string("res://tests/theater_stage_probe.gd")
+	var previous := "0734d22c0cc70a34cd76c22f16919df312613badb4107b5581c256a007365501"
+	if source.sha256_text()==previous: return source
+	assert(source.count(OPTIC_PROBE_CONSTANT_PLACEMENT)==1 and source.count(OPTIC_PROBE_CALL_PLACEMENT)==1,"Optic checks must remain at their exact initialization anchors")
+	for added in [OPTIC_PROBE_ADDED_CONSTANT,OPTIC_PROBE_ADDED_CALL]:
+		assert(source.count(added)==1)
+		source=source.replace(added,"")
+	assert(source.count(OPTIC_PROBE_NEW_BLOCK)==1 and source.count(OPTIC_PROBE_NEW_AIM)==1)
+	source=source.replace(OPTIC_PROBE_NEW_BLOCK,OPTIC_PROBE_OLD_BLOCK).replace(OPTIC_PROBE_NEW_AIM,OPTIC_PROBE_OLD_AIM)
+	assert(source.sha256_text()==previous,"Only the named optic replacement/contact/aim assertions may change; every other theater assertion must remain exact")
+	return source

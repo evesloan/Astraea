@@ -1,0 +1,72 @@
+{
+  "status": "FAILED_PRESERVE_EVIDENCE",
+  "started_utc": "2026-10-06T20:59:04.161596+00:00",
+  "checks": [
+    {
+      "check": "crew_home_approach",
+      "exit_code": 0,
+      "wall_seconds": 37.4603,
+      "validation": {
+        "checks": [
+          {
+            "check": "import",
+            "passed": true,
+            "exit_code": 0,
+            "errors": [],
+            "wall_seconds": 3.4301,
+            "clock_mode": "editor"
+          },
+          {
+            "check": "crew_home_approach",
+            "passed": true,
+            "exit_code": 0,
+            "errors": [],
+            "wall_seconds": 33.9823,
+            "clock_mode": "fixed60"
+          }
+        ],
+        "wall_seconds": 37.413,
+        "clock_mode": "fixed60",
+        "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+      }
+    },
+    {
+      "check": "secondary_engineering_access",
+      "exit_code": 1,
+      "wall_seconds": 34.2505,
+      "validation": {
+        "checks": [
+          {
+            "check": "import",
+            "passed": true,
+            "exit_code": 0,
+            "errors": [],
+            "wall_seconds": 3.8438,
+            "clock_mode": "editor"
+          },
+          {
+            "check": "secondary_engineering_access",
+            "passed": false,
+            "exit_code": -15,
+            "errors": [
+              "SCRIPT ERROR: Assertion failed: Unreviewed stair adoption input: tools/validate.py",
+              "SCRIPT ERROR: Assertion failed."
+            ],
+            "wall_seconds": 30.3176,
+            "clock_mode": "fixed60"
+          }
+        ],
+        "wall_seconds": 34.1622,
+        "clock_mode": "fixed60",
+        "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+      }
+    }
+  ],
+  "manifest_sha256": "103a13fca3e69dbc72eeded768d4e6400b1d8f733102d96b2bae5f0d95a0f2db",
+  "source_pin_count": 4626,
+  "full_suite": false,
+  "failure": "('Focused gate failed', 'secondary_engineering_access')",
+  "finished_utc": "2026-10-06T21:00:16.789118+00:00",
+  "unexpected_source_drift": {},
+  "all_preexisting_source_files_unchanged": true
+}

@@ -1,0 +1,13 @@
+--- installed/scripts/crew_home_approach.gd
++++ corrected/scripts/crew_home_approach.gd
+@@ -51,7 +51,9 @@
+ 	var source_meshes: Array[Node]=root.find_children("*","MeshInstance3D",true,false)
+ 	for value in source_meshes:
+ 		var mesh: MeshInstance3D=value as MeshInstance3D
+-		var policy: String=str(mesh.get_meta("collision_contract",""))
++		var extras: Dictionary=mesh.get_meta("extras",{})
++		assert(str(extras.get("catalogue_id",""))=="AST-STF-010")
++		var policy: String=str(extras.get("collision_contract",""))
+ 		assert(policy in ["static_surface","concave_static_surface","kinematic_source_part","none"])
+ 		if policy in ["static_surface","concave_static_surface"]: load("res://scripts/static_contact_cache.gd").attach(mesh)
+ 		elif policy=="kinematic_source_part":

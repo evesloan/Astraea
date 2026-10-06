@@ -1,0 +1,32 @@
+"""Exact helper-only home registry successor, then the three remaining standard affected checks."""
+from pathlib import Path
+import argparse,datetime,hashlib,json,shutil,subprocess,time
+F=Path(__file__).resolve().parent;O=F.parent;G=Path('/workspace/shared/astraea-godot-production-20261003');PRE='f246e30b3c31f1a004024a01616b8be9d081162c7e74bd72e88f087715a788f9';POST='84c5f2e8594fdb62c60cf23fd438a11ae86eb77d4576c2fcc0a2e1a02765985d';PATH='tests/theater_stair_ship_successor.gd'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def save(p,x):p.write_text(json.dumps(x,indent=2)+'\n')
+def snap():return{str(p.relative_to(G)):sha(p)for p in sorted(G.rglob('*'))if p.is_file()and not{'.git','.godot','artifacts','__pycache__'}.intersection(p.relative_to(G).parts)}
+def main():
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--approved-helper-successor',action='store_true');ap.add_argument('--approved-game-boundary',action='store_true');ap.add_argument('--execute',action='store_true');args=ap.parse_args();assert sha(G/PATH)==PRE and sha(F/'theater_stair_ship_successor.gd')==POST;assert sha(G/'docs/THEATER_STAIR_SHIP_SUCCESSOR_011.json')=='63a0626beea724e41076e4a42a2211a21806106c38e1f5dae6017182c627e34a'
+ prior=O/'focused_run002';v=json.loads((prior/'crew_home_approach_VALIDATION.json').read_text());assert all(x['passed']for x in v['checks']);home=json.loads((prior/'HOME_RECEIPT.json').read_text());assert home['status']=='PASS'and home['new_floor_owners']==0;before=snap();assert before==json.loads((prior/'SOURCE_FINAL.json').read_text()),'Runtime must still match the passed home gate'
+ if not args.execute:print(json.dumps({'status':'PREPARED_EXACT_ONE_HELPER','old':PRE,'new':POST,'home_gate':'Retained matching passed physical gate','remaining':['secondary_engineering_access','grand_pool_access','lighting_budget']},indent=2));return
+ assert args.approved_helper_successor and args.approved_game_boundary
+ for p in Path('/proc').iterdir():
+  if p.name.isdigit():
+   try:name=(p/'comm').read_text().strip().lower()
+   except OSError:continue
+   assert not name.startswith('godot'),('Competing Godot',p.name)
+ run=O/'affected_run003';assert not run.exists();run.mkdir();save(run/'SOURCE_BEFORE_HELPER.json',before);shutil.copy2(G/PATH,run/'HELPER.preimage');(G/PATH).write_bytes((F/'theater_stair_ship_successor.gd').read_bytes());after=snap();assert {p for p in set(before)|set(after)if before.get(p)!=after.get(p)}=={PATH}and after[PATH]==POST;save(run/'SOURCE_START.json',after);report={'status':'RUNNING','started_utc':now(),'helper_change':{'path':PATH,'before':PRE,'after':POST},'retained_home_receipt_sha256':sha(prior/'HOME_RECEIPT.json'),'home_runtime_identical':True,'checks':[]};save(run/'RUN_RECEIPT.json',report)
+ try:
+  for label in ['secondary_engineering_access','grand_pool_access','lighting_budget']:
+   start=time.monotonic()
+   with(run/(label+'.log')).open('w')as log:r=subprocess.run(['python','tools/validate.py','--only',label],cwd=G,stdout=log,stderr=subprocess.STDOUT,timeout=420)
+   src=G/'artifacts'/('validation_'+label+'_fixed60.json');shutil.copy2(src,run/(label+'_VALIDATION.json'));result=json.loads(src.read_text());report['checks'].append({'label':label,'exit_code':r.returncode,'wall_seconds':round(time.monotonic()-start,4),'validation':result});save(run/'RUN_RECEIPT.json',report);assert r.returncode==0 and all(x['passed']for x in result['checks']),label
+  report.update(status='PASS_FOCUSED_HOME_AND_AFFECTED_SMOKE',native_normal_eye_review='PENDING',first_pass_accepted=False)
+ except Exception as exc:report.update(status='FAILED_PRESERVE_EVIDENCE',failure=str(exc));raise
+ finally:
+  final=snap();drift={p:{'old':after.get(p),'new':final.get(p)}for p in set(after)|set(final)if after.get(p)!=final.get(p)};save(run/'SOURCE_FINAL.json',final);save(run/'SOURCE_DRIFT.json',drift);report.update(finished_utc=now(),source_unchanged=not drift)
+  if drift:report.update(status='FAILED_PRESERVE_EVIDENCE',failure='Unexpected source drift')
+  save(run/'RUN_RECEIPT.json',report)
+ print(json.dumps(report,indent=2));assert report['status']=='PASS_FOCUSED_HOME_AND_AFFECTED_SMOKE'
+if __name__=='__main__':main()

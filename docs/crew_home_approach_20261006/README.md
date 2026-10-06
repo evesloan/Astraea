@@ -1,0 +1,11 @@
+# Installed crew-home approach, 6 October 2026
+
+The existing 58.32 m² supported D03 dogleg is now connected by the reviewed four-part wall opening and a properly fitted working double door. All85 retained home source parts and the existing floor owners remain. Mounted readable wayfinding, utility feeds and two source-backed practical fixtures are installed. This is a connected support-stage increment, not an occupied bedroom or completed crew district.
+
+The actual original-player gate passed5,518 ordinary walking frames,5,879 support samples and285 door-contact samples, including both-side RMB/E, occupied-sweep refusal, directory pause/resume and both local fixtures under the unchanged eight-source budget. Engineering access, pool access and original lighting-budget smoke then passed. The three installed normal-eye views completed21:06:29 UTC with all4,626 source files unchanged. First-pass acceptance remains false.
+
+Two failed attempts are preserved: direct glTF metadata was corrected to the imported extras Dictionary, retaining every authored collision policy; then the historical stair helper gained an exact reversal of only the two new home test-registration lines. The original proof, all old validation commands and all watchdogs remain unchanged. The passed home physical gate was retained across that helper-only correction.
+
+The new small home export alone disables mesh compression for its8mm seal and thin ink. The new wall derivative carries the existing wall import policy. No old import, shared shader/profile, controller, tether, lift stop, floor or berth identity changed. Added models are exact retained editable-source exports. Parent reviewed and accepted the bounded installed increment: labels, threshold, cold staff palette and working enclosure read clearly. Native visual review establishes legible staff-scale construction; the far crew volume and occupied spaces remain unfinished.
+
+The earlier current full119 run stopped after43 valid passes at a90-second fore-midship stair timeout. A single unchanged-assertion scratch diagnostic later completed78.08s; timeout was not reproduced and the original cause remains unproven. This focused increment does not claim full-suite completion or target-device performance.

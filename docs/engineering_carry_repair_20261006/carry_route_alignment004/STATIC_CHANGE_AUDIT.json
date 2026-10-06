@@ -1,0 +1,30 @@
+{
+  "scope": "Test-input successor and one exact helper hash only; no runtime edits",
+  "old_test": "12ef1bf0c464625148f077df1f994c5b46a02cfc2e4797d0885315ad5d86cd13",
+  "new_test": "e0bb39a5cd147928862e8465112a9d6f03a8a9f2ac501841311a25054aadb408",
+  "old_helper": "34f25800402026f4ee94c9b07eec59ea70c5b21385f688a2a1929fe98546dc7b",
+  "new_helper": "9a5cfa2796fbf98a9bd8b282bf0e9bc6e70b2d2c521cf7d6d42448be4c9df85c",
+  "all_body_transform_velocity_shape_assignments_preserved": true,
+  "assignments": [
+    "bottle.global_position = centre-bottle.global_basis*Vector3(0,.125,0)",
+    "shape.radius = .025",
+    "prop.global_position = Vector3(21.8675,7.2,-404.5 if opened else -405.8)",
+    "cart.global_position = PARK",
+    "cart.linear_velocity = Vector3.ZERO",
+    "cart.angular_velocity = Vector3.ZERO",
+    "cart.sleeping = false",
+    "product.global_position = cart.global_transform * locals[index]",
+    "product.linear_velocity = Vector3.ZERO",
+    "product.angular_velocity = Vector3.ZERO",
+    "product.sleeping = false",
+    "capsule.radius = .3",
+    "capsule.height = 1.8"
+  ],
+  "historical_proof_hashes": {
+    "docs/THEATER_STAIR_SHIP_SUCCESSOR_011.json": "63a0626beea724e41076e4a42a2211a21806106c38e1f5dae6017182c627e34a",
+    "docs/SECONDARY_ENGINEERING_POOL_SHIP_SUCCESSOR.json": "339cd0aa4f538681f45891049d5dfa847406655258ea9cba764dc2e79f30e998"
+  },
+  "helper_reversal_exact": true,
+  "targeted_probe": "PASS_TARGETED_CARRY_ONLY",
+  "whole_cylinder_clearance_and_all_four_products_settled": true
+}

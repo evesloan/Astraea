@@ -1,0 +1,23 @@
+--- tests/court_a_aimed_optic_probe.gd before
++++ tests/court_a_aimed_optic_probe.gd after
+@@ -210,13 +210,18 @@
+ 	assert(lights.size()==139,"Optic may not add or remove theater lights")
+ 	var previous: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/THEATER_RUNTIME_STAGE001.json"))
+ 	var changed := 0
++	var mapped_names: Dictionary={}
+ 	for record in previous.fixtures:
+ 		if not record.enabled: continue
+-		var light := venue.find_child(str(record.id),true,false) as Light3D
++		var native_name: String=str(record.id).validate_node_name()
++		assert(not mapped_names.has(native_name),"Source fixtures require a unique canonical native name")
++		mapped_names[native_name]=true
++		var light := venue.get_node_or_null(NodePath(native_name)) as Light3D
+ 		assert(light!=null)
+ 		if str(record.id)==FIXTURE:
+ 			assert((-light.global_basis.z).distance_to(expected_aim(light,record))<.00001)
+ 			changed+=1
+-	assert(changed==1)
++	assert(changed==1 and mapped_names.size()==139 and mapped_names.size()==lights.size())
++	for light in lights: assert(mapped_names.has(str(light.name)))
+ 	var budget := ship.get_node("ShipSystems/LocalShadowSourceBudget")
+ 	assert(budget.shadow_source_budget==8 and load("res://scripts/lighting_budget.gd").MAX_VISIBILITY_CANDIDATES==32)

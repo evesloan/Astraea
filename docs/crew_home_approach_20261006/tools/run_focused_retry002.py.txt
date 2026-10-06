@@ -1,0 +1,45 @@
+"""Serial standard import/home/affected gates. Only the approved new-home import setting may be edited."""
+from pathlib import Path
+import argparse,datetime,hashlib,json,os,shutil,subprocess,time
+O=Path(__file__).resolve().parent;G=Path('/workspace/shared/astraea-godot-production-20261003');PIN='103a13fca3e69dbc72eeded768d4e6400b1d8f733102d96b2bae5f0d95a0f2db';CHECKS=['crew_home_approach','secondary_engineering_access','grand_pool_access','lighting_budget']
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def save(p,x):p.write_text(json.dumps(x,indent=2)+'\n')
+def snap():return{str(p.relative_to(G)):sha(p)for p in sorted(G.rglob('*'))if p.is_file()and not{'.git','.godot','artifacts','__pycache__'}.intersection(p.relative_to(G).parts)}
+def idle():
+ for p in Path('/proc').iterdir():
+  if p.name.isdigit():
+   try:n=(p/'comm').read_text().strip().lower()
+   except OSError:continue
+   assert not n.startswith('godot'),('Competing Godot',p.name)
+def generated_allowance():
+ import struct
+ names=set()
+ for p in (O/'staged/assets/models').glob('*.glb'):
+  names.add('assets/models/'+p.name+'.import');b=p.read_bytes();length=struct.unpack_from('<I',b,12)[0];g=json.loads(b[20:20+length])
+  for image in g.get('images',[]):
+   base='assets/models/'+p.stem+'_'+image['name']+'.png';names|={base,base+'.import'}
+ for name in ['scripts/crew_home_approach.gd.uid','scripts/crew_home_door.gd.uid','tests/validate_crew_home_approach.gd.uid']:names.add(name)
+ return names
+def main():
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--approved-game-boundary',action='store_true');ap.add_argument('--execute',action='store_true');args=ap.parse_args();assert sha(O/'FINAL_APPLY_ALLOWLIST.json')==PIN;m=json.loads((O/'FINAL_APPLY_ALLOWLIST.json').read_text())
+ if not args.execute:print(json.dumps({'status':'PREPARED_NOT_RUN','initial_import':'tools/validate.py --only import','new_asset_import_exception':m['post_editor_import_exception'],'focused_checks':CHECKS,'new_generated_allowance':sorted(generated_allowance()),'whole_suite':False},indent=2));return
+ assert args.approved_game_boundary;idle();assert json.loads((O/'apply_run001/APPLY_RECEIPT.json').read_text())['status']=='APPLIED_EXACT_TEN_FILES';assert subprocess.check_output(['git','-C',str(G),'rev-parse','HEAD'],text=True).strip()==m['expected_head']
+ for r in m['files']:assert sha(G/r['path'])==('56115160b6c6c4e5c525227bc7faffab0f4020f21ab2748203b9871997941b7e' if r['path']=='scripts/crew_home_approach.gd' else r['sha256']),r['path']
+ for p,h in m['unchanged_runtime_pins'].items():assert sha(G/p)==h,p
+ run=O/'focused_run002';assert not run.exists();run.mkdir();before=snap();save(run/'SOURCE_START.json',before);report={'status':'RUNNING','started_utc':now(),'checks':[],'manifest_sha256':PIN,'source_pin_count':len(before),'full_suite':False};save(run/'RUN_RECEIPT.json',report);allowed=generated_allowance()
+ def step(label):
+  began=time.monotonic()
+  with(run/(label+'.log')).open('w')as log:r=subprocess.run(['python','tools/validate.py','--only',label],cwd=G,stdout=log,stderr=subprocess.STDOUT,timeout=420)
+  src=G/'artifacts'/('validation_'+label+'_fixed60.json');dest=run/(label+'_VALIDATION.json');assert src.exists();shutil.copy2(src,dest);v=json.loads(dest.read_text());report['checks'].append({'check':label,'exit_code':r.returncode,'wall_seconds':round(time.monotonic()-began,4),'validation':v});save(run/'RUN_RECEIPT.json',report);assert r.returncode==0 and all(x['passed']for x in v['checks']),('Focused gate failed',label)
+ try:
+  home=G/m['post_editor_import_exception']['path'];wall=G/m['wall_import_policy']['path'];assert 'meshes/force_disable_compression=true' in home.read_text();assert 'meshes/force_disable_compression=false' in wall.read_text()
+  for label in CHECKS:step(label)
+  receipt=G/'artifacts/crew_home_approach_validation.json';assert json.loads(receipt.read_text())['status']=='PASS';shutil.copy2(receipt,run/'HOME_RECEIPT.json');report['status']='PASS_FOCUSED_HOME_AND_AFFECTED_SMOKE';report['first_pass_accepted']=False;report['native_normal_eye_review']='PENDING'
+ except Exception as exc:report.update(status='FAILED_PRESERVE_EVIDENCE',failure=str(exc));raise
+ finally:
+  final=snap();drift={p:{'old':before.get(p),'new':final.get(p)}for p in set(before)|set(final)if before.get(p)!=final.get(p)};save(run/'SOURCE_EFFECTS.json',drift);unexpected={p:r for p,r in drift.items()if p in before or p not in allowed};report.update(finished_utc=now(),unexpected_source_drift=unexpected,all_preexisting_source_files_unchanged=not unexpected);save(run/'SOURCE_FINAL.json',final)
+  if unexpected:report.update(status='FAILED_PRESERVE_EVIDENCE',failure='Unexpected source drift')
+  save(run/'RUN_RECEIPT.json',report)
+ print(json.dumps(report,indent=2));assert report['status']=='PASS_FOCUSED_HOME_AND_AFFECTED_SMOKE'
+if __name__=='__main__':main()
