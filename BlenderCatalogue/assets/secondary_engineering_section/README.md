@@ -1,6 +1,6 @@
 # AST-ENG-008 secondary engineering section
 
-Reserved identity only. Generator and dimensioned pure-plan deliverable; no Blender/Godot execution, source/export acceptance or runtime integration performed.
+Reserved identity only. Parent-scheduled editable Blender source/GLB builds have been performed; actual-export/preservation checks accompany the bounded section. No runtime integration or final visual acceptance is claimed.
 
 Run pure planning: `python assets/secondary_engineering_section/source/generate_section.py`, then `python assets/secondary_engineering_section/qa/check_geometry.py`.
 
@@ -12,6 +12,8 @@ Parent-approved delta: north room external edge -454.6 and south room external e
 
 Ownership: compiler owns one floor at Y6 and opaque D03 slab at Y12. Two preview slabs are included in editable source only and excluded from export/collision. Asset owns bounded walls, frames, ceilings, sealed containment and equipment. No duplicate walkable slabs, ramps, pits or neighbour penetrations. Door apertures are empty; dynamic leaves and pockets remain future runtime work. External service street and X0..8 visitor connection are not authored. Exact service handoffs terminate at X54,Z-432/-404.
 
-Seven fixtures have actual housing, lens, mounting support and source markers. Cart-street lens lower faces remain at Y9.6; required support stems connect to authored ceilings. Environmental screens are bounded sealed-glass source geometry; ordinary low-impact source surfaces use the restrained staff material family.
+Nine fixtures have actual housing, lens, mounting support and source markers. Two parent-approved inspection fixtures inside sealed containment meet the cap underside with explicit source stems; their positions are (31,10.30,-437) and (38,10.30,-427). Cart-street lens lower faces remain at Y9.6; required support stems connect to authored ceilings. Environmental screens preserve their sealed colliding pane geometry and reuse the exact retained ASTRAEA_bridge_pressure_glass material from AST-CMD-004, with source hash/provenance recorded; ordinary low-impact source surfaces use the restrained staff material family.
 
 See source/section_contract.json, source/surface_manifest.json and qa/pure_geometry_checks.json. These do not establish exported mesh integrity, controller acceptance, lighting quality, complete departmental network, independent emergency refuge, species fit, final machine engineering or finished room counts. Existing AST-ENG-007 hashes were verified unchanged.
+
+Visual-source diagnostic scripts use real fixture-centred emitters offset0.08m below each lens. Visitor/plant evidence views disable temporary neutral area/world fill. Other diagnostic views record temporary fill explicitly. Source-renders remain separate from normal-height in-game/reference acceptance.

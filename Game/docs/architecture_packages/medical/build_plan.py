@@ -31,7 +31,7 @@ plan=[];checks=[]
 for p in programmes:
  n=int(p['programme_key'][-2:]);env=p['historical_envelope'];r=[*env['x'],*env['z']];items=[]
  for name,count,w,l,u,v,cols in children[n]:
-  for i in range(count):items.append({'id':f'{p["programme_key"]}_{name}_{i+1:02}','role':name,'rect_x0_x1_z0_z1':world(p,[u+(i%cols)*w,u+(i%cols+1)*w,v+(i//cols)*l,v+(i//cols+1)*l]),'dimensions_m':[w,l],'quantity_status':'printed reference fit target, not adopted capacity' if name in ['triage_pod','quarantine_room','general_bed_position','surgical_suite','medical_laboratory','pharmacy_xenomed_store'] else 'proposed spatial subdivision, not canonical count'})
+  for i in range(count):items.append({'id':f'{p["programme_key"]}_{name}_{i+1:02}','role':name,'rect_x0_x1_z0_z1':world(p,[u+(i%cols)*w,u+(i%cols+1)*w,v+(i//cols)*l,v+(i//cols+1)*l]),'dimensions_m':[w,l],'quantity_status':'accepted source-required architecture fit target, not built or occupancy capacity' if name in ['triage_pod','quarantine_room','general_bed_position','surgical_suite','medical_laboratory','pharmacy_xenomed_store'] else 'proposed spatial subdivision, not canonical count'})
  for role,u0,u1 in [('admission_clinical_route',0,6),('clean_staff_route',34,38),('support_and_maintenance',38,42),('soiled_return_route',42,46)]:items.append({'id':p['programme_key']+'_'+role,'role':role,'rect_x0_x1_z0_z1':world(p,[u0,u1,0,68]),'dimensions_m':[u1-u0,68],'quantity_status':'proposed'})
  a=3128.;overlaps=[]
  for f in spatial['regions']:
@@ -46,7 +46,7 @@ for p in programmes:
 sources=['data/programme_ledger.json','data/spatial_layout.json','data/whole_ship_layout.json','data/hull_envelope.json','docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx','docs/master_source/MASTER_CURRENT_APPLICATION.json','docs/whole_ship_plans/D05.png']
 manifest={s:hashlib.sha256((ROOT/s).read_bytes()).hexdigest() for s in sources}
 ref=Path('/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png');manifest[str(ref)]=hashlib.sha256(ref.read_bytes()).hexdigest()
-package={'schema':'astraea_medical_section_planning_v1','status':'proposed source/spec package; no geometry or runtime acceptance','source_sha256':manifest,'programmes':plan,'capacity_policy':'20/4/12/8/6/2 are directly printed evidence retained as spatial fit targets pending master/owner reconciliation, never inferred from icons; no new residential berths','routes':[]}
+package={'schema':'astraea_medical_section_planning_v1','status':'proposed source/spec package; no geometry or runtime acceptance','source_sha256':manifest,'programmes':plan,'capacity_policy':'20/4/12/8/6/2 are directly printed source-required architecture targets; master Tables2/3 support D05 and current overrides provide no conflicting clinical counts. Never inferred from icons; no operational capacity or new residential berths','routes':[]}
 for sign in [-1,1]:
  for role,x in [('clean_supply_and_staff',57),('soiled_return',61)]:
   pts=[[sign*x,-480],[sign*x,-70],[sign*(102 if x==57 else 108),-70],[sign*(102 if x==57 else 108),70],[sign*x,70],[sign*x,480]]

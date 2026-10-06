@@ -47,6 +47,10 @@ for name,node in nodes.items():
     role=expected[name]['material_role'];check(name+' material role matches',all(m==('ASTRAEA_bridge_pressure_glass' if role=='section_sealed_glass' else 'ASTRAEA_'+role) for m in materials),materials)
     check(name+' collision extras preserved',node['extras']['collision_contract']==expected[name]['collision'])
     records.append(dict(name=name,bounds_xyz_min_max=got,materials=materials,floor_contact_y6=abs(got[1]-6)<5e-5))
+byname={p['name']:p for p in records};cap=byname['containment_cap']['bounds_xyz_min_max']
+for marker in plan['markers']:
+    if marker['name'].startswith('DATUM_plant_inspection'):
+        stem=byname[marker['ceiling_stem']]['bounds_xyz_min_max'];check(marker['name']+' exported stem-cap contact',abs(stem[4]-cap[1])<5e-5 and marker['support_owner']=='containment_cap')
 check('expected fixture markers exported',all(any(n['name']==m['name'] and n.get('extras',{}).get('housing')==m['housing'] for n in D['nodes']) for m in plan['markers']))
 contacts={p['name'] for p in surfaces['source_surfaces'] if p['export'] and p['floor_contact_owner']};check('all compiler floor contacts match',contacts=={p['name'] for p in records if p['floor_contact_y6']})
 # Existing registered asset sources/exports must remain byte-identical to retained tracked HEAD.

@@ -24,4 +24,4 @@ for m in D['markers']:
                 if t is not None:hits.append((max(0,t),part['name'],part['export']))
     first=min(hits) if hits else None;out.append(dict(marker=m['name'],lens_lower_face_xyz=p,render_emitter_xyz=o,downward_first_hit=first,clear_to_compiler_floor=bool(first and first[1]=='PREVIEW_COMPILER_D02_FLOOR')))
 assert all(r['clear_to_compiler_floor'] for r in out)
-(R/'qa/fixture_ray_diagnostic.json').write_text(json.dumps(dict(stage='pure source triangles; central downward ray only; not full area/radiance/runtime check',render_only_emitter_offset_down_m=.08,pass_check=True,fixtures=out),indent=2)+'\n');print('7 offset fixture central rays clear to preview compiler floor')
+(R/'qa/fixture_ray_diagnostic.json').write_text(json.dumps(dict(stage='pure source triangles; central downward ray only; not full area/radiance/runtime check',render_only_emitter_offset_down_m=.08,pass_check=True,fixtures=out),indent=2)+'\n');print(str(len(out))+' offset fixture central rays clear to preview compiler floor')

@@ -14,6 +14,11 @@ base=unary_union([frompoly(p) for p in review['staff_route_union_polygons']])
 old=json.loads((C/'assets/lower_staff_network/source/section_contract.json').read_text());oldroute=unary_union([Polygon(p) for p in old['decks'][2]['floor_union_polygons_xz']])
 # Existing threshold branches/home are deliberately not reauthored.
 branches=[];gates=[];turns=[]
+for side in [-1,1]:
+ for z in [-344,-40,40,344]:
+  x=side*86;turns.append([x,z]);base=base.union(box(x-2.5,z-2.5,x+2.5,z+2.5))
+for pts in review['staff_route_centrelines']:
+ turns.extend(pts[1:-1])
 def branch(key,pts,terminal=True):
  l=LineString(pts);shape=l.buffer(1.8,cap_style=2,join_style=2)
  if terminal:
@@ -62,10 +67,11 @@ for pi,p in enumerate([new] if new.geom_type=='Polygon' else new.geoms):
      slab(12,13.03,.03,.18,'staff_bluegrey_paint','LowerPanel');slab(13.03,15.2,.03,.18,'staff_white_paint','Enamel')
      slab(12.72,12.86,0,.03,'staff_rubber','Bumper');slab(15.02,15.16,0,.03,'staff_zinc','ServiceRecessLip')
 # Disjoint rectangular ceiling cells, exact union. No walkable floor goes into asset.
-xs=sorted({q[0] for r in polygons(new) for q in r['boundary']});zs=sorted({q[1] for r in polygons(new) for q in r['boundary']})
+cap_region=new.buffer(.18,join_style=2).difference(oldroute)
+xs=sorted({q[0] for r in polygons(cap_region) for q in r['boundary']});zs=sorted({q[1] for r in polygons(cap_region) for q in r['boundary']})
 for xi,(a,b) in enumerate(zip(xs,xs[1:])):
  for zi,(c,d) in enumerate(zip(zs,zs[1:])):
-  if new.covers(Point((a+b)/2,(c+d)/2)):add(f'CRW_Cap_{xi}_{zi}',[a,b,15.2,15.34,c,d],'staff_bluegrey_paint','ceiling_cap')
+  if cap_region.covers(Point((a+b)/2,(c+d)/2)):add(f'CRW_Cap_{xi}_{zi}',[a,b,15.2,15.34,c,d],'staff_bluegrey_paint','ceiling_cap')
 # Source-supported fixtures: metal hanger reaches cap, light bottom at 15.015 (3.015 clear).
 lights=[]
 lines=review['staff_route_centrelines']+[b[2] for b in branches]
@@ -97,6 +103,17 @@ for q in parts:
  if foot.intersection(protected_cells).area>1e-7:checks['source_parts_protected_cell_intrusions'].append(q['name'])
  if foot.intersection(protected_public).area>1e-7:checks['source_parts_public_void_intrusions'].append(q['name'])
  if not hull.covers(foot):checks['source_parts_outside_hull'].append(q['name'])
+oldparts=json.loads((C/'assets/lower_staff_network/source/geometry_parts.json').read_text())['boxes']
+from shapely.strtree import STRtree
+tree=STRtree([box(p['world_aabb'][0],p['world_aabb'][4],p['world_aabb'][1],p['world_aabb'][5]) for p in oldparts]);existing_hits=[]
+for q in parts:
+ r=q['world_aabb']
+ for i in tree.query(box(r[0],r[4],r[1],r[5])):
+  o=oldparts[int(i)];s=o['world_aabb'];over=[min(r[k+1],s[k+1])-max(r[k],s[k]) for k in [0,2,4]]
+  if min(over)>1e-7:existing_hits.append([q['name'],o['name']])
+checks['actual_AST_STF_009_surface_overlaps']=existing_hits
+checks['existing_surface_scope']='all retained AST-STF-009 source AABBs; other imported architecture and dynamic sweep require parent serial source/export survey'
+assert not existing_hits
 checks['reviewed_compiler_floor_area_m2']=10931.2
 checks['additional_branch_support_candidate_area_m2']=compiler.area-10931.2
 checks['branch_support_parent_review_required']=True

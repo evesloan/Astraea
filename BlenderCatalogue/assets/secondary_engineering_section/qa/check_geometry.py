@@ -22,6 +22,10 @@ for p in export:
     check('finite mesh '+p['name'],all(math.isfinite(c) for v in p['vertices_xyz'] for c in v))
     check('valid face indices '+p['name'],all(len(f)>=3 and len(set(f))==len(f) and all(0<=i<len(p['vertices_xyz']) for i in f) for f in p['faces']))
 check('fixture source housings and supports exist',all(any(p['name']==m['housing'] for p in export) and any(p['name']==m['support'] for p in export) for m in D['markers']))
+check('nine supported fixture markers',len(D['markers'])==9)
+for m in D['markers']:
+    if m['name'].startswith('DATUM_plant_inspection'):
+        stem=next(p for p in export if p['name']==m['ceiling_stem']);cap=next(p for p in export if p['name']=='containment_cap');sb=bounds(stem);cb=bounds(cap);check(m['name']+' exact stem-cap support contact',abs(sb[4]-cb[1])<1e-6 and m['support_owner']=='containment_cap')
 check('all door openings minimum width and height',all(d['range'][1]-d['range'][0]>=2.4-1e-6 and d['clear_height']>=2.7 for d in K['doors']))
 check('segmented module door margins',K['clearance']['loaded_height']<=2.7 and max(K['clearance']['module_xyz'][0],K['clearance']['module_xyz'][2])<=2.4)
 report=dict(stage='pure geometry plan check; not source/export/runtime traversal',pass_check=True,parts=len(D['parts']),export_parts=len(export),preview_parts=len(D['parts'])-len(export),fixtures=len(D['markers']),checks=checks,inputs_sha256={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [R/'source/generate_section.py',R/'source/geometry_plan.json',R/'source/section_contract.json']},not_tested=['triangulation/manifold in Blender','dynamic doors/pockets','exact capsule or loaded-cart motion','fixture visual acceptance','physical machine operation','hull per-height or external routes'])
