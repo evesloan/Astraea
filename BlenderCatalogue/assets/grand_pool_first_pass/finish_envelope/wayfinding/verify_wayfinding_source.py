@@ -43,7 +43,7 @@ def topology(me):
         key=exact_key(v.co)
         if key not in keys:keys[key]=len(keys)
         ids.append(keys[key])
-    parent=list(range(len(keys)));edge_counts={};triangles=[];areas=[];degenerate=[]
+    parent=list(range(len(keys)));edge_counts={};directed_edges={};triangles=[];areas=[];degenerate=[]
     def find(a):
         while parent[a]!=a:parent[a]=parent[parent[a]];a=parent[a]
         return a
@@ -54,13 +54,13 @@ def topology(me):
         vv=[list(me.vertices[i].co) for i in t.vertices];area=norm(cross(sub(vv[1],vv[0]),sub(vv[2],vv[0])))/2;areas.append(area)
         if len(set(ii))<3 or area<=1e-12:degenerate.append(ti)
         for a,b in zip(ii,ii[1:]+ii[:1]):
-            union(a,b);key=tuple(sorted((a,b)));edge_counts[key]=edge_counts.get(key,0)+1
+            union(a,b);key=tuple(sorted((a,b)));edge_counts[key]=edge_counts.get(key,0)+1;directed_edges[(a,b)]=directed_edges.get((a,b),0)+1
     shells={}
     for ti,t in enumerate(triangles):shells.setdefault(find(ids[t[0]]),[]).append(ti)
     return {'exact_coordinate_shells':list(shells.values()),'shell_count':len(shells),'degenerate_triangles':degenerate,
             'minimum_triangle_area_m2':min(areas) if areas else 0,'triangle_count':len(triangles),
             'boundary_edges':sum(n==1 for n in edge_counts.values()),'nonmanifold_edges':sum(n>2 for n in edge_counts.values()),
-            'unused_exact_vertices':len(keys)-len(used),'exact_unique_vertices':len(keys),'triangles':triangles}
+            'winding_mismatches':sum(directed_edges.get((a,b),0)!=directed_edges.get((b,a),0) for a,b in edge_counts),'unused_exact_vertices':len(keys)-len(used),'exact_unique_vertices':len(keys),'triangles':triangles}
 
 def convex_contact(a,b):
     """Strict SAT for the authored convex bodies (boxes and octagonal fasteners).
@@ -125,7 +125,16 @@ def verify(args):
             normals=list({tuple(round(x,10) for x in n):n for n in normals}.values());edges=list({tuple(round(x,10) for x in e):e for e in edges}.values())
             rec={'object':ob,'world':world,'bounds':b,'topology':top,'normals':normals,'edges':edges};records[ob.name]=rec
             check(ob.name+':positive_nondegenerate_triangles',top['triangle_count']>0 and not top['degenerate_triangles'],minimum_area_m2=top['minimum_triangle_area_m2'],degenerate_count=len(top['degenerate_triangles']))
-            check(ob.name+':closed_exact_edge_topology',top['boundary_edges']==0 and top['nonmanifold_edges']==0,boundary_edges=top['boundary_edges'],nonmanifold_edges=top['nonmanifold_edges'])
+            check(ob.name+':closed_exact_edge_topology',top['boundary_edges']==0 and top['nonmanifold_edges']==0 and top['winding_mismatches']==0,boundary_edges=top['boundary_edges'],nonmanifold_edges=top['nonmanifold_edges'],winding_mismatches=top['winding_mismatches'])
+            shell_volumes=[]
+            for shell in top['exact_coordinate_shells']:
+                ids={i for ti in shell for i in top['triangles'][ti]};anchor=[sum(float(me.vertices[i].co[k]) for i in ids)/len(ids) for k in range(3)];volume=0.0
+                for ti in shell:
+                    points=[sub(list(me.vertices[i].co),anchor) for i in top['triangles'][ti]]
+                    volume+=dot(points[0],cross(points[1],points[2]))/6
+                shell_volumes.append(volume)
+            top['shell_signed_volumes_m3']=shell_volumes
+            check(ob.name+':positive_per_shell_volume',bool(shell_volumes) and all(v>0 for v in shell_volumes),signed_volumes_m3=shell_volumes,calculation='Python-double signed volume about each shell local centroid; no world-coordinate cancellation')
             check(ob.name+':proper_rigid_world_basis',abs(float(ob.matrix_world.to_3x3().determinant())-1)<1e-6 and all(abs(float(v)-1)<1e-6 for v in ob.matrix_world.to_scale()))
             check(ob.name+':ownership',ob.get('catalogue_id')=='AST-RES-001' and ob.get('source_sign_id')==s['id'] and ob.parent is bpy.data.objects.get('SIGN_'+s['id']))
             role=ob.get('semantic_role');check(ob.name+':material_slot',len(me.materials)==1 and role in d['material_roles'] and me.materials[0].name==role)
@@ -144,13 +153,13 @@ def verify(args):
             check(ob.name+':metric_uv',uv_ok and uv_error<2e-5,max_metric_delta_error=uv_error)
             mesh_rows.append({'name':ob.name,'bounds_xyz':b,**{k:v for k,v in top.items() if k not in ['exact_coordinate_shells','triangles']}})
             return rec
-        def reference_font(body):
+        def reference_font(body,include_topology=False):
             cu=bpy.data.curves.new('QA_TEMP_Font','FONT');cu.body=body;cu.size=1;cu.align_x='LEFT';cu.extrude=.002;cu.resolution_u=6
             ob=bpy.data.objects.new('QA_TEMP_Font',cu);scene.collection.objects.link(ob)
             bpy.context.view_layer.update();dg=bpy.context.evaluated_depsgraph_get();eo=ob.evaluated_get(dg);me=eo.to_mesh()
-            vs=[list(v.co) for v in me.vertices];eo.to_mesh_clear();bpy.data.objects.remove(ob,do_unlink=True)
+            me.calc_loop_triangles();vs=[list(v.co) for v in me.vertices];reference_topology=topology(me) if include_topology else None;eo.to_mesh_clear();bpy.data.objects.remove(ob,do_unlink=True)
             if cu.users==0:bpy.data.curves.remove(cu)
-            return vs
+            return (vs,reference_topology) if include_topology else vs
         h=bounds(reference_font('H'));unit_cap=h[1][1]-h[0][1]
         for s in d['signs']:
             sid=s['id'];parent=bpy.data.objects.get('SIGN_'+sid)
@@ -181,7 +190,7 @@ def verify(args):
             for index,line in enumerate(s['text_lines']):
                 name='PWF_'+sid+'_Glyphs_'+str(index);expected_names.add(name);ob=actual_parts.get(name)
                 if ob is None:check(name+':exists',False);continue
-                rec=read_mesh(ob,s);coords=[local_uvd(s,v) for v in rec['world']];gb=bounds(coords);raw=reference_font(line);rb=bounds(raw)
+                rec=read_mesh(ob,s);coords=[local_uvd(s,v) for v in rec['world']];gb=bounds(coords);raw,reference_topology=reference_font(line,True);rb=bounds(raw)
                 sx=(gb[1][0]-gb[0][0])/(rb[1][0]-rb[0][0]);sy=(gb[1][1]-gb[0][1])/(rb[1][1]-rb[0][1]);cap=sy*unit_cap
                 check(name+':actual_cap_and_uniform_scale',cap>=s['minimum_glyph_cap_height_m']-1e-6 and abs(sx-sy)<2e-5 and abs(cap-float(ob.get('actual_cap_height_m',-1)))<2e-5,actual_cap_m=cap,minimum_cap_m=s['minimum_glyph_cap_height_m'],scale_u=sx,scale_v=sy)
                 check(name+':unchanged_lettering',ob.get('original_lettering')==line)
@@ -196,17 +205,30 @@ def verify(args):
                     return max(observed_to_wanted,wanted_to_observed)
                 correct=shape_error(1);mirrored=shape_error(-1)
                 check(name+':physical_glyph_pattern_not_mirrored',correct<max(tolerance,5e-6),correct_pattern_error_m=correct,mirrored_pattern_error_m=mirrored)
-                fronts=[];backs=[];shell_contacts=[]
+                fronts=[];backs=[];shell_contacts=[];shell_orientation=[]
                 for shell in rec['topology']['exact_coordinate_shells']:
                     shell_ids={v for ti in shell for v in rec['topology']['triangles'][ti]};shell_vs=[coords[i] for i in shell_ids];sb=bounds(shell_vs)
                     shell_contacts.append(sb[0][2]<.124 and sb[1][2]>.124 and sb[0][0]>=-s['width_m']/2+s['frame_border_m']-tolerance and sb[1][0]<=s['width_m']/2-s['frame_border_m']+tolerance)
+                    local_origin=[sum(float(ob.data.vertices[i].co[k]) for i in shell_ids)/len(shell_ids) for k in range(3)]
+                    signed_volume=0.0;front_directions=[];back_directions=[]
+                    for ti in shell:
+                        indices=rec['topology']['triangles'][ti];local_points=[sub(list(ob.data.vertices[i].co),local_origin) for i in indices]
+                        signed_volume+=dot(local_points[0],cross(local_points[1],local_points[2]))/6
+                        world_points=[rec['world'][i] for i in indices];n=cross(sub(world_points[1],world_points[0]),sub(world_points[2],world_points[0]));length=norm(n)
+                        if not length:continue
+                        facing=dot(mul(n,1/length),s['normal_xyz']);depths=[coords[i][2] for i in indices]
+                        if min(depths)>sb[1][2]-2e-6:front_directions.append(facing)
+                        if max(depths)<sb[0][2]+2e-6:back_directions.append(facing)
+                    shell_orientation.append({'signed_volume_m3':signed_volume,'has_outward_front':bool(front_directions) and min(front_directions)>.99,'has_inward_back':bool(back_directions) and max(back_directions)<-.99})
                 for t in rec['topology']['triangles']:
                     pts=[rec['world'][i] for i in t];nn=cross(sub(pts[1],pts[0]),sub(pts[2],pts[0]));length=norm(nn)
                     if not length:continue
                     direction=dot(mul(nn,1/length),s['normal_xyz']);depths=[coords[i][2] for i in t]
                     if min(depths)>gb[1][2]-2e-6:fronts.append(direction)
                     if max(depths)<gb[0][2]+2e-6:backs.append(direction)
-                expected_shells=sum(2 if ch in 'ij' else 1 for ch in line if not ch.isspace())
+                expected_shells=reference_topology['shell_count']
+                check(name+':reference_topology_measured',reference_topology['boundary_edges']==0 and reference_topology['nonmanifold_edges']==0 and reference_topology['winding_mismatches']==0,reference_shells=expected_shells,reference_boundary_edges=reference_topology['boundary_edges'],reference_nonmanifold_edges=reference_topology['nonmanifold_edges'],reference_winding_mismatches=reference_topology['winding_mismatches'])
+                check(name+':each_saved_shell_outward',all(r['signed_volume_m3']>0 and r['has_outward_front'] and r['has_inward_back'] for r in shell_orientation),shells=shell_orientation)
                 check(name+':exact_letter_shells_and_backing_contact',rec['topology']['shell_count']==expected_shells and all(shell_contacts),expected_shells=expected_shells,actual_shells=rec['topology']['shell_count'],all_shells_engage_backing=all(shell_contacts))
                 check(name+':outward_front_inward_back_faces',bool(fronts) and bool(backs) and min(fronts)>.99 and max(backs)<-.99,front_face_count=len(fronts),back_face_count=len(backs))
                 check(name+':glyph_reserved_bounds',within(rec['bounds'],s['glyph_envelope_world_xyz'],tolerance))
@@ -229,7 +251,14 @@ def verify(args):
             mat=bpy.data.materials.get(role)
             if mat is None:check('material:'+role,False);continue
             tex=[n for n in mat.node_tree.nodes if n.type=='TEX_IMAGE'];bsdf=mat.node_tree.nodes.get('Principled BSDF')
-            check(role+':complete_single_image_graph',len(tex)==1 and tex[0].image is not None and bsdf is not None and any(link.from_node is tex[0] and link.to_node is bsdf and link.to_socket.name=='Base Color' for link in mat.node_tree.links))
+            links=[{'from_node':link.from_node.name,'from_socket':link.from_socket.name,'to_node':link.to_node.name,'to_socket':link.to_socket.name} for link in mat.node_tree.links]
+            # Blender RNA wrappers are not Python object identities. Compare the
+            # underlying nodes, while checking both exact sockets and output flow.
+            image_connected=len(tex)==1 and tex[0].image is not None and bsdf is not None and any(link.from_node.as_pointer()==tex[0].as_pointer() and link.to_node.as_pointer()==bsdf.as_pointer() and link.from_socket.name=='Color' and link.to_socket.name=='Base Color' for link in mat.node_tree.links)
+            check(role+':complete_single_image_graph',image_connected,actual_links=links)
+            outputs=[n for n in mat.node_tree.nodes if n.type=='OUTPUT_MATERIAL' and n.is_active_output]
+            output_connected=bsdf is not None and len(outputs)==1 and any(link.from_node.as_pointer()==bsdf.as_pointer() and link.to_node.as_pointer()==outputs[0].as_pointer() and link.from_socket.name=='BSDF' and link.to_socket.name=='Surface' for link in mat.node_tree.links)
+            check(role+':shader_connected_to_active_surface',output_connected,actual_links=links)
             if len(tex)!=1 or tex[0].image is None:continue
             image=tex[0].image;packed=image.packed_file
             check(role+':packed_retained_texture_exact',packed is not None and hashlib.sha256(bytes(packed.data)).hexdigest()==expected['sha256'])

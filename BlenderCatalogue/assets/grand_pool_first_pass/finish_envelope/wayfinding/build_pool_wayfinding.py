@@ -18,6 +18,7 @@ HERE=Path(__file__).resolve().parent
 sys.path.insert(0,str(HERE))
 from wayfinding_geometry import *
 from check_wayfinding import screen
+from glyph_cap_retriangulate import repair_cap_triangles
 
 FACES=[(0,2,3,1),(4,5,7,6),(0,1,5,4),(2,6,7,3),(0,4,6,2),(1,3,7,5)]
 
@@ -64,7 +65,7 @@ def run(args):
         mat['meters_per_tile_uv']=row['meters_per_tile_uv'];mat['texture_sha256']=row['sha256'];mat['source_catalogue_material']=role
         tex=mat.node_tree.nodes.new('ShaderNodeTexImage');tex.image=bpy.data.images.load(str(texture),check_existing=True);tex.interpolation='Closest'
         mat.node_tree.links.new(tex.outputs['Color'],n.inputs['Base Color']);mats[role]=mat
-    parts=[];glyph_reports=[]
+    parts=[];glyph_reports=[];tessellation_reports=[]
     def uv(me,role,origin_world):
         for lay in list(me.uv_layers):me.uv_layers.remove(lay)
         layer=me.uv_layers.new(name='MetreScaled');tile=d['material_roles'][role]['meters_per_tile_uv']
@@ -83,8 +84,25 @@ def run(args):
         origin_b=(origin[0],-origin[2],origin[1])
         local_vs=[(v[0]-origin[0],-v[2]+origin[2],v[1]-origin[1]) for v in vs]
         me=bpy.data.meshes.new(name+'_EditableMesh');me.from_pydata(local_vs,[],fs);me.update()
-        bm=bmesh.new();bm.from_mesh(me);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7)
-        bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-9);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(me);bm.free()
+        is_glyph='_Glyphs_' in name
+        if is_glyph:
+            # Blender's font fill contains exactly collinear cap triangles in
+            # Orchard Market. Repair internal diagonals without deleting features,
+            # moving a vertex, changing exact cap area, or weakening the area gate.
+            me.calc_loop_triangles();raw_vertices=[tuple(v.co) for v in me.vertices]
+            unique=[];identities={};remap=[]
+            for vertex in raw_vertices:
+                if vertex not in identities:identities[vertex]=len(unique);unique.append(vertex)
+                remap.append(identities[vertex])
+            triangles=[tuple(remap[i] for i in t.vertices) for t in me.loop_triangles]
+            repaired,flips=repair_cap_triangles(unique,triangles,minimum_area=1e-12)
+            me.clear_geometry();me.from_pydata(unique,[],repaired);me.update()
+            tessellation_reports.append({'mesh':name,'raw_vertices':len(raw_vertices),'exact_unique_vertices':len(unique),'triangles_unchanged':len(triangles),'vertex_positions_moved':0,'glyph_boundary_changed':False,'exact_area_preserved':True,'cap_diagonal_flips':flips})
+        bm=bmesh.new();bm.from_mesh(me)
+        if not is_glyph:
+            bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7)
+            bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-9)
+        bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(me);bm.free()
         me.update();me.materials.append(mats[role]);uv(me,role,(0,0,0))
         o=bpy.data.objects.new(name,me);scene.collection.objects.link(o);o.parent=parent;o.location=origin_b
         o['catalogue_id']='AST-RES-001';o['source_family']='residential_wayfinding_bay';o['source_sign_id']=sign_id
@@ -165,7 +183,7 @@ def run(args):
         if not me.uv_layers or any(not math.isfinite(v) for datum in me.uv_layers.active.data for v in datum.uv):raise RuntimeError('Invalid metric UV: '+ob.name)
         geometry.append({'name':ob.name,'triangles':len(me.loop_triangles),'minimum_triangle_area_m2':min(areas),'collision_contract':ob['collision_contract']})
     bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str(source))
-    build_report={'status':'source_built_export_not_run','contract_sha256':sha(args.contract),'source_file':str(source),'source_sha256':sha(source),'source_screen':report,'glyphs':glyph_reports,'geometry':geometry,'material_texture_sha256':{k:v['sha256'] for k,v in d['material_roles'].items()},'required_next_gates':d['required_gates'][1:],'blender_version':bpy.app.version_string}
+    build_report={'status':'source_built_export_not_run','contract_sha256':sha(args.contract),'source_file':str(source),'source_sha256':sha(source),'source_screen':report,'glyphs':glyph_reports,'tessellation_repairs':tessellation_reports,'geometry':geometry,'material_texture_sha256':{k:v['sha256'] for k,v in d['material_roles'].items()},'required_next_gates':d['required_gates'][1:],'blender_version':bpy.app.version_string}
     dump(qa,build_report)
     print('EDITABLE_SOURCE_SAVED',source,'NO_EXPORT_RENDER_OR_RUNTIME_CHANGE')
 

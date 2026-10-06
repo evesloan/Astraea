@@ -1,0 +1,80 @@
+{
+  "status": "Final compact pure source-data package; parent Blender/import/runtime acceptance pending",
+  "final_input": "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/mechanism_package_compact.json",
+  "files": {
+    "mechanism_package_compact.json": {
+      "sha256": "e50fbd0c4018d1ca70af5d863867bf8abb15387e031c99d00e912340682b57df",
+      "bytes": 4205031
+    },
+    "build_mechanism_package_compact.py": {
+      "sha256": "775481a83a8c785919f7cdd140cb5a39bb26934bb6a4f32e9d966dbfc28b4aed",
+      "bytes": 36737
+    },
+    "MECHANISM_COMPACT_HANDOFF.md": {
+      "sha256": "2034b9961b41152e135a71f6d72efc31671a9911cbe2f15572565e044afe6fc3",
+      "bytes": 5234
+    },
+    "mechanism_package_compact.checks.json": {
+      "sha256": "19ccbc9608492161e782530fd6531a3107cf300a6600f978fb98757c6bea6de7",
+      "bytes": 573
+    },
+    "mechanism_compact_mesh_checks.json": {
+      "sha256": "c2e58d35a17f6063bed3f030169fb0af14689a70b17eb2d058f8eb7edf782521",
+      "bytes": 5155
+    },
+    "mechanism_compact_source_contact_checks.json": {
+      "sha256": "3f375525524745869b1f39e07ffe3d86556043f02ff1fc90c3f564dd3ef2e972",
+      "bytes": 14461
+    },
+    "check_mechanism_compact_meshes.py": {
+      "sha256": "9bf7891b2b10e22a8b4825fcde5ab78b869cec83054422d41906d9fd0b360409",
+      "bytes": 4131
+    },
+    "check_mechanism_source_contacts_compact.py": {
+      "sha256": "f7b699f2cea29e8a4d0db3ea547dfd890036fe9fe7d5b52ffa96bd66039a5c83",
+      "bytes": 4616
+    },
+    "check_compact_cabin_light_rays.py": {
+      "sha256": "a644bc2b7d8b46fb0df511f0258eaa691d599bc0078d6a23e6724f15906bddec",
+      "bytes": 3712
+    },
+    "mechanism_compact_cabin_light_ray_checks.json": {
+      "sha256": "c628064752024dcca729fe638c2c32b532185952d6bb05cadcae988bd621b8fa",
+      "bytes": 53250
+    }
+  },
+  "old_package_preserved_sha256": "41afd4344e40b931228ef51ee7ac4bf15a3cca180641e0e607827004972e4db5",
+  "old_generator_preserved_sha256": "72138859aa4d0975e3b958df09a3d5c5810cb9224bb9dffcb1cd420d32a15f60",
+  "rebuild_byte_identical": true,
+  "strict_json_primitives_allow_nan_false_pass": true,
+  "source_theater_sha256": "c91193af1e4a14aac3a4e75c743e7c86b6a57a669981e9a7e7cfb0412e1cb5f5",
+  "generation_dependencies": {
+    "scipy": "1.17.0",
+    "numpy": "2.3.5"
+  },
+  "costs": {
+    "before_parts": 1912,
+    "before_triangles": 76524,
+    "after_parts": 880,
+    "after_triangles": 34316,
+    "triangles_removed": 42208,
+    "reduction_percent": 55.156552192776125,
+    "motion_groups_retained": 39
+  },
+  "unperformed": [
+    "Blender source assembly/reopen",
+    "Actual component/rotating-bearing phase acceptance",
+    "Export/import and runtime tests"
+  ],
+  "cabin_light_actual_triangle_check": {
+    "status": "PASS",
+    "light_markers": 2,
+    "upward_lens_distance_m": 0.03,
+    "downward_platform_distance_m": 2.97,
+    "downward_receiver_rays": 66,
+    "first_exit_distance_m": 0.05,
+    "source_light_trial_watts_each": 12,
+    "light_creation_owner": "parent source assembly, not authored by this worker",
+    "photometry_or_visual_acceptance": false
+  }
+}
