@@ -92,6 +92,7 @@ static func retained_guard_source() -> String:
 	return source
 
 static func retained_input_sha256(path: String) -> String:
+	if path=="tests/secondary_engineering_pool_ship_successor.gd": return load("res://tests/grand_pool_feature_builder_successor.gd").retained_sha256(path)
 	if path==TARGET: return retained_ship_source().sha256_text()
 	if path=="tests/secondary_engineering_additive_guard.gd": return retained_guard_source().sha256_text()
 	if path=="tests/validate_theater_stair_walk.gd":
