@@ -418,7 +418,7 @@ func run() -> void:
 	await walk_route(ceremonial)
 	await walk_route(ceremonial,true)
 	await walk_to(Vector3(-5.4,44,-432))
-	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across258 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; ",pinned_section_fixtures," pinned section lights and ",wet_receiver_anchors," supported receivers; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
+	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across261 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; ",pinned_section_fixtures," pinned section lights and ",wet_receiver_anchors," supported receivers; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
 	main.queue_free()
 	await process_frame
 	quit(0)

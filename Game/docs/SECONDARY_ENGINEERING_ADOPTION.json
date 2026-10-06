@@ -64,10 +64,10 @@
       "tests/secondary_engineering_additive_guard.gd.uid": "acf4ab2aa658e00b3e92351567228b7995021e46171169f0f085dbd935ac26bd",
       "tests/validate_aft_crown_platform_structure.gd": "4abbcff2e86ef04ea41816c49dbbb2f30a22d5b0bdf22e26f73c414fe5df7def",
       "tests/validate_d17_connected_access.gd": "4bc1d3685ae6cfe80d5b3e8016fb9403b22ec0a15adf8ff433c1c49734f62190",
-      "tests/validate_grand_pool_access.gd": "eb2abd40d9d4fd7987348a5e0192e7292c16c3608c478bdfbc0bf1a405ba1be5",
+      "tests/validate_grand_pool_access.gd": "1cfc6054086641d8bc3b6f84fe3a6edfed317d6d26b9cd19e60bd8895e90ca96",
       "tests/validate_secondary_engineering_access.gd": "cfa728b61202f1032f044846472a97c9896f894208187a4e7c9b4c1080c6163d",
       "tests/validate_secondary_engineering_access.gd.uid": "27958e75a63bcae0ea4d456ae5c20a78fab5662fdcd3aa1e92a2c89da1339479",
-      "tests/validate_upper_horizon_enclosure_structure.gd": "5d8d8a2e4465659fd7b872fb3d07f4fc4fb71b0c447de538d96597278b34454a",
+      "tests/validate_upper_horizon_enclosure_structure.gd": "54664f5949733805ad775b8af656d09c070fcf5e986513c6e3cae3dd7fe8141e",
       "tools/validate.py": "5592609dd997fedc57d672a4bd4f561b4d3432690a87335f66a886af80bb201c"
     },
     "counts": {
@@ -109,7 +109,7 @@
     "detail": "docs/secondary_engineering_validation/light_selection.json"
   },
   "capture_group": "secondary_engineering",
-  "full_regression": "Parent-held pending coherent next integration; four old floor-roster tests narrowly extended and require fresh runtime reruns",
+  "full_regression": "Not run for this candidate; parent holds full suite pending next coherent integration",
   "first_pass_essentials_accepted": false,
   "limits": [
     "Only guest observation connected to ship; internal staff/plant remain externally unconnected",
@@ -158,5 +158,27 @@
     "tests/validate_secondary_engineering_access.gd.uid",
     "tests/validate_upper_horizon_enclosure_structure.gd",
     "tools/validate.py"
-  ]
+  ],
+  "visual_review": {
+    "first_pass_accepted": false,
+    "record": "docs/SECONDARY_ENGINEERING_VISUAL_REVIEW.json",
+    "result": "Parent and worker reject current visitor, maintenance and workbay presentation as unfinished essentials"
+  },
+  "affected_legacy_validation": {
+    "passed": [
+      "grand_pool_access",
+      "d17_connected_access",
+      "aft_crown_platform_structure",
+      "upper_horizon_enclosure_structure"
+    ],
+    "evidence_directory": "docs/secondary_engineering_validation",
+    "upper_horizon_first_attempt": "Stopped at stale global compiled/layout pins; only those two pins updated after exact258 record equality. Original old-region hashes/geometry tolerances retained; successful rerun recorded.",
+    "wall_seconds": {
+      "grand_pool_access": 39.8687,
+      "d17_connected_access": 22.7695,
+      "aft_crown_platform_structure": 23.5105,
+      "upper_horizon_enclosure_structure": 29.5544
+    }
+  },
+  "final_diff_check": "git diff --check passes"
 }

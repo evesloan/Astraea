@@ -1,0 +1,80 @@
+{
+  "review_utc": "2026-10-06T04:02:43Z",
+  "capture_job": "secondary-engineering-001",
+  "execution": {
+    "status": "passed",
+    "exit_code": 0,
+    "errors": [],
+    "seconds": 93.595,
+    "scope": "Graphical capture execution only; appearance requires review, not target GPU performance"
+  },
+  "reviewers": [
+    "coordinating parent",
+    "integration worker directly inspected all three clear images"
+  ],
+  "first_pass_essentials_accepted": false,
+  "normal_eye": {
+    "visitor": [
+      12,
+      7.65,
+      -432
+    ],
+    "maintenance_diagnostic": [
+      46,
+      7.65,
+      -439
+    ],
+    "workbay_diagnostic": [
+      30,
+      7.65,
+      -405
+    ]
+  },
+  "images": [
+    {
+      "path": "docs/secondary_engineering_validation/secondary_engineering_visitor_world_capture.png",
+      "sha256": "124c4c1b894693b99451cd4e62752a735c3ef527cb90d4422cd225019de7bc94"
+    },
+    {
+      "path": "docs/secondary_engineering_validation/secondary_engineering_visitor_clear_world_capture.png",
+      "sha256": "c791e173010b2d56b5723c0da9780a4b73df7268793b2e58b72726ecb30253b5"
+    },
+    {
+      "path": "docs/secondary_engineering_validation/secondary_engineering_maintenance_diagnostic_clear_world_capture.png",
+      "sha256": "d085732166f1b305ceda381e93c1c743e3cae8d4ee94959a708e9cec5d9db195"
+    },
+    {
+      "path": "docs/secondary_engineering_validation/secondary_engineering_workbay_diagnostic_clear_world_capture.png",
+      "sha256": "a34f073eb5b23ae38e1faf0af73a8ce01e0572d2b4408ae36b74df7f9b1033df"
+    }
+  ],
+  "findings": [
+    {
+      "view": "visitor",
+      "result": "Reject first-pass presentation",
+      "detail": "Plant is barely discernible through the retained three-layer glass sequence; broad dark glazing/frontage overwhelms the machine and its supported assembly."
+    },
+    {
+      "view": "maintenance diagnostic",
+      "result": "Reject first-pass presentation",
+      "detail": "Machine geometry and support silhouette are visible but dim; hierarchy, instrument legibility, material differentiation and purposeful plant detail are insufficient."
+    },
+    {
+      "view": "workbay diagnostic",
+      "result": "Reject first-pass presentation",
+      "detail": "Predominantly bare walls, counter and fixture. Essential bench/storage contents, task function, authored materials, labels and finished scene detail are missing or underdeveloped."
+    }
+  ],
+  "next_bounded_source_completion": [
+    "Resolve source-backed lighting hierarchy using actual machine, console, bench, labels and circulation receiver positions. Existing staff_work spots all inherit range6m/energy1, entry range6m/energy0.85; current downward uniform treatment is not tuned composition.",
+    "Inspect fixture aim, range, housing exit, casting surfaces and budget selection from both guest and maintenance viewpoints before changing local settings. Preserve shared profiles, eight-source cap and colliding glass; no invisible fill, shader replacement or unshadowed fallback.",
+    "Develop the plant instrument/manifold/support presentation, control operating face and workbench/storage composition as essential first-pass content, with distinct readable materials/textures and restrained SunCorp details. Do not credit proxy blockouts as finished furnishings.",
+    "Maintain the exact approved floor ownership, neighbours, guest/staff separation, loaded clearances and temporary east closures while completing contents.",
+    "Repeat actual normal-eye/effects-off captures and source/route regression on the completed revision. Later polish may refine an accepted first pass, not supply these essentials."
+  ],
+  "limits": [
+    "Diagnostic staff capture starts are not an external staff connection",
+    "Graphical capture execution pass does not approve visual quality or target-GPU performance",
+    "Full-map and operating engineering remain unfinished"
+  ]
+}

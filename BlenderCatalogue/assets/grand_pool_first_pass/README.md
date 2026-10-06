@@ -1,6 +1,22 @@
 # Grand Pool / Orchard Market first-pass essentials
 
-6 October 2026. NEW package only. This is an additive planning/source-generator delivery, **not completed source geometry, imported content or a completed first-pass scene**. No Blender, Godot, import, render, live edits, original source edits, registry, commit or backup operations were run. All eleven retained source/export pairs are pinned by actual SHA-256 in the generated contract. No external luxury/garden ZIP was assumed to exist and no new model library was invented.
+6 October 2026. Editable source repaired and checked, **not imported content or a completed first-pass scene**. The surviving 51-placement assembly was built before interruption and its first source QA failed. The original failed file and report remain preserved. Source-only Blender repair and checks have now run; no new GLB, Godot import/run/render, live edits, original catalogue-family edits, registry changes, commit or backup operations were performed by this package worker. Parent owns retention and adoption.
+
+## Verified resumption and route correction
+
+The interrupted generator recorded unlinked Blender objects' stale identity `matrix_world` caches. That misplaced translated/rotated beams, cushions, seams, markers and recessed caps. `source/repair_editable_assembly.py` restores the actual evaluated original world transforms rather than hiding errors with tolerances. It checked all 1,742 mesh/marker objects; restored 203 transforms; and compared every evaluated vertex in all 1,633 meshes. Maximum source-world deviation was 0.031 mm. Raw source mesh geometry, UVs and material-role assignments were preserved. All 22 retained source/export hashes still match.
+
+The original placement plan omitted the already-tested X−45.9 wet walking route. Loungers had only 6 cm visual clearance from its centreline, insufficient for the actual 0.3 m-radius player. After source/architecture screening, exactly seven loungers moved 0.5 m west to X−47.5. The actual route stayed unchanged. `source/plan_assembly.py` now protects its 0.32 m-radius envelope as well as all original circulation bands.
+
+Current authoritative package source: `source/grand_pool_first_pass_editable_corrected.blend`, SHA-256 `815effcaa856b8c776934ddddab2a86f50b892586f2ccfc7823b596ea2be3434`. `qa/editable_source_report.json` records zero evaluated bounds/support/image/hash issues for all 51 placements and 237 packed images. `qa/source_approach_report.json` passes 902 conservative source-envelope/floor samples on 17 approach branches: one supported side of each lounger, both candidate positions on each bench, and towel retrieval/return stances. The used-return extraction and staging reserve is clear of other source envelopes. These source checks are not Godot capsule, occupied-seat, towel-operation or loaded-cart acceptance.
+
+Preserved earlier evidence:
+- `source/grand_pool_first_pass_editable.blend`: failed interrupted assembly, unchanged SHA-256 `e7e38474d92294ad7a007deb0434b034736ad9117c245aa6e7fdf365b57e8e67`
+- `source/grand_pool_first_pass_transform_repaired_only.blend`: transform-corrected pre-route-revision source, SHA-256 `5c2b0f758ea13709591de16fc0e710c62f3eaf80154b3f5f3f6ca53a84e4b31e`; this is the file state measured in `qa/transform_repair_report.json`
+- `qa/rejected_source_report_20261006.json` and original failed verification log: retained without tolerance alteration
+- `qa/lounger_route_revision.json`: exact seven-placement-only revision and its source hashes
+
+Use existing retained GLBs as runtime instances; do not export the entire editable assembly into a redundant combined asset. The corrected Blender scene preserves independent authorship and source verification. Seven used runtime files already present in Game hash-match the pinned catalogue exports. AST-AQU-007, AST-AQU-008 and AST-RTL-004 require their exact retained GLBs copied under their distinct existing identities; unused AST-RTL-002 does not need adoption.
 
 ## Actual inspected evidence and gap inventory
 
@@ -18,7 +34,7 @@ Implement the evidence's cream/stone frame, darker timber hospitality contrast, 
 - Three existing AST-RTL-001 recessed display assemblies and three AST-RTL-004 static small-goods cases fill the existing market programme, without new business identities. Case placement uses the retained manifest's actual `main_display_left_patch` at +.95m, not a guessed shelf height
 - Three AST-FUR-001 social pause benches have front approaches outside the market clear loop; one level wet-end bench supplies non-reclining rest
 
-Original materials/textures remain unchanged: ivory/enamel and warm stone frames, warm walnut/metal hospitality accents, existing aquatic/botanical/retail material roles. Inspect exposure/texture scale in the actual game before accepting; no artificial texture or palette replacement is proposed. The source generator appends independently editable retained Blender mesh/marker objects with their original material/texture roles, not copies of generic boxes. It preserves each source object's frozen world matrix before changing parents.
+Original materials/textures remain unchanged: ivory/enamel and warm stone frames, warm walnut/metal hospitality accents, existing aquatic/botanical/retail material roles. Inspect exposure/texture scale in the actual game before accepting; no artificial texture or palette replacement is proposed. The source generator now links and evaluates the complete retained hierarchy before freezing each object's world matrix and changing parents. The separately repaired surviving source preserves independently editable original mesh/marker objects and material/texture roles.
 
 ## Bounded geometry planning checks
 
@@ -32,14 +48,15 @@ This conservative envelope pass establishes only a bounded planning candidate. S
 
 The contract carries all 25 existing exact section fixture markers and paired physical housing/lens names. Reuse current runtime profile ranges/energies and culling policy recorded in Game `GRAND_POOL_LIGHTING_REVIEW.json`: vault range22/energy1.1, terrace14/.85, market11/.75, staff6/.8. Do not create floating fill lights or assume 45 simultaneous shadowed lights. The long capture shows why these settings remain a partial lighting improvement. Review source-to-receiver rays, foreground exposure, warm versus neutral hierarchy and orange-bay readability after furnishings. The parent owns any runtime adjustment; no renderer/engine switch is proposed.
 
-Wayfinding is still a mandatory first-pass gap: readable existing-programme “Grand Pool”, “Orchard Market”, “Towels”, “Used towels” and step-free route directions at actual arrivals, coordinated with existing doors/route markers. No new business or unsafe depth/safety label is authorized. There is no verified retained sign-board source in this scoped inventory. A bounded sign derivative needs parent identity/placement review before authoring; this package does not claim invisible text markers are finished signage. Similarly, display cases are static scenic content, not complete stock/retail operation. No fake crowds or NPC acceptance.
+Wayfinding is still a mandatory first-pass gap: readable existing-programme “Grand Pool”, “Orchard Market”, “Towels”, “Used towels” and step-free route directions at actual arrivals, coordinated with existing doors/route markers. No new business or unsafe depth/safety label is authorized. AST-RES-001 contains retained RES_MapFrame/RES_MapBacking parts that are a possible sign derivative; their existing 3.12 by 1.45 m outer frame is not yet a fitted Grand Pool sign. A bounded derivative needs parent identity/placement review before authoring; this package does not claim invisible text markers are finished signage. Similarly, display cases are static scenic content, not complete stock/retail operation. No fake crowds or NPC acceptance.
 
 ## Parent-scheduled next steps
 
-1. Review placement contract, source-backed support contacts and retrieval/extraction/seat-approach envelopes; resolve signage derivative allocation
-2. Schedule `source/build_editable_assembly.py` in Blender; do not run concurrently with parent jobs. It fails closed on changed pinned sources, unresolved plan issues or an already surviving assembly source
-3. Verify new source-part/world transforms and material/packed texture integrity; independently retain source before export/adoption. Generator only saves the new editable .blend, deliberately withholding export pending review
-4. Allocate export/compound contacts and Game adoption without changing established floors/routes/voids or controllers
-5. Repeat actual capsule/closed-door market loop, local lift, loaded four-product cart including reverse/regrip, preserved108 existing-project checks and normal-height/effects-off in-game review. First-pass completeness includes actual materials/textures, source-backed lighting, furnishing, planting, essential stock/storage and wayfinding. Later polish refines this baseline
+1. Independently retain this verified editable-source revision and its failed/earlier evidence; parent owns the scoped commit and single backup publisher
+2. Review the additive runtime composition and focused-test drafts. Instance the ten used retained designs with exact hashes; copy only the three missing exports. Use faithful component contacts, not whole-object convex hulls that fill towel or furniture openings. No new compiler floors, controllers or new business identities
+3. Integrate through a separate Grand Pool first-pass builder without modifying the existing connected-section builder, lighting budget, retained route tests or presentation script
+4. Run import-first focused checks including actual capsule access to the 17 new approach branches, source/collider support, towel reach, closed-door market circuit, local lift and the physical four-product cart with reverse/regrip. Re-run the unchanged retained route/floor suite and matched final aggregate regression
+5. Review ordinary-height normal/effects-off views. Furnishings alone do not fix the broad blank gray walls/ceiling, flat visible illumination, untreated high wall fields, unreadable distant warm bays or absent directional signs. These are first-pass essentials, not polish
+6. Author the next bounded wall/ceiling/fixture/sign derivative only after parent placement and identity coordination. Inspect and preserve every protected neighbour, physical light housing, doorway, sightline and route
 
-No new catalogue identity was assigned. The programme IDs and retained sources stay authoritative. Current source hashes and source-only findings do not imply live runtime or visual acceptance.
+No new catalogue identity is assigned. Programme IDs and retained sources remain authoritative. Static towels and retail cases do not establish operated inventory, swimming, NPC use, species ergonomics, target-GPU performance or final visual acceptance.
