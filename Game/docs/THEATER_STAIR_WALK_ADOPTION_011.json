@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-10-06T16:34:58.038287+00:00",
+  "status": "INSTALLED_SOURCE_BACKED_D11_D13_FOYER_STAIR_WALK_PASSED",
+  "catalogue_family": "AST-CUL-005",
+  "supersedes_scope": "Upper internal stair walking and D12/D13 foyer-front route only; preserves prior static-stage and failed diagnostic receipts as history",
+  "prior_stage_receipt": {
+    "path": "docs/THEATER_STATIC_STAGE_ADOPTION.json",
+    "pre_successor_sha256": "7eb86de8c564d0a5483778a17e85a38fec946e285f99a64c1508e307cd6102e3"
+  },
+  "installation": {
+    "component_root": "ShipSpace/Districts/GrandLanternTheater_StairWalkingContacts",
+    "contact_count": 8,
+    "contact_type": "ConvexPolygonShape3D",
+    "rendered": false,
+    "source_blend_sha256": "117e5e4415d6b151e2af862702d257bf6f7f6662dabcf7dab3dce768ea788c6f",
+    "original_source_blend_sha256": "dfb0948338a471104896d322bc4576df6140798a458f14eebff1e125f6b1e530",
+    "reopened_source_qa_sha256": "e138a1f176c0e3ee5bd690ae1615f88a843ff9bf474276901bf33ce6011286a7",
+    "actual_source_runtime_float32_scalars_exact": 192,
+    "width_nominal_m": 3.2,
+    "vertical_thickness_nominal_m": 0.04,
+    "collision_margin_m": 0.001,
+    "literal_treads_retained": 90,
+    "source_meshes_and_existing_contacts_retained": true,
+    "compiler_records_unchanged": 271,
+    "layout_records_unchanged": 285,
+    "layout_sha256": "6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167",
+    "compiled_sha256": "4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91",
+    "source_independent_retention_commit": "26f51d3c7999a1ded8a94095b533bbc4c31be7d6",
+    "finished_destination_credit": false,
+    "new_rendered_geometry": false,
+    "new_compiler_floor_or_void_extension": false
+  },
+  "ordinary_input_walk": {
+    "passed": true,
+    "route": "D11 fore spine and receiving bridge, all eight retained internal flights, D12/D13 foyer fronts and return",
+    "travelled_m": 451.534921728075,
+    "supported_frames": 9876,
+    "on_floor_frames": 9876,
+    "reached_destinations": 82,
+    "initial_supported_arrivals": 1,
+    "movement": "Ordinary W input; unchanged3.1m/s player; no position/velocity assignment after supported initial arrival",
+    "peak_speed_m_s": 3.10000014305115,
+    "diagnostic_contacts_created_by_test": 0,
+    "installed_contacts_checked": 8,
+    "per_contact_support_frames": {
+      "D11_D12_F1_WALK_CONTACT": {
+        "outward": 124,
+        "return": 106
+      },
+      "D11_D12_F2_WALK_CONTACT": {
+        "outward": 118,
+        "return": 99
+      },
+      "D11_D12_F3_WALK_CONTACT": {
+        "outward": 124,
+        "return": 106
+      },
+      "D11_D12_F4_WALK_CONTACT": {
+        "outward": 118,
+        "return": 104
+      },
+      "D12_D13_F1_WALK_CONTACT": {
+        "outward": 87,
+        "return": 75
+      },
+      "D12_D13_F2_WALK_CONTACT": {
+        "outward": 88,
+        "return": 75
+      },
+      "D12_D13_F3_WALK_CONTACT": {
+        "outward": 87,
+        "return": 75
+      },
+      "D12_D13_F4_WALK_CONTACT": {
+        "outward": 89,
+        "return": 73
+      }
+    },
+    "returned_to_start": true,
+    "both_levels_ascended": true,
+    "walking_contact_contract_sha256": "7c3616b677a4b9ca48ed1fa6b3e056dfd7a3bb5c1602494bd18d4df4cbe69ca0",
+    "route_contract_sha256": "e338ff35145c66d400f8566d1d141917114a153f92c949e6ae21c3aa4279dfbf"
+  },
+  "standard_validation": {
+    "runner": "tools/validate.py --only theater_stair_walk",
+    "fresh_import_passed": true,
+    "named_check_passed": true,
+    "clock_mode": "fixed60",
+    "wall_seconds": 42.7015,
+    "is_game_performance_measurement": false,
+    "full_suite_run_or_claimed": false
+  },
+  "post_run_boundary": {
+    "passed": true,
+    "intentional_reviewed_files": 15,
+    "explicit_new_uid_sidecars": 3,
+    "prior_portable_files": 4069,
+    "portable_files_at_post_run": 4084,
+    "unexpected_changes": [],
+    "all_files_unchanged": false,
+    "subsequent_engineering_activity_outside_this_historical_audit": true
+  },
+  "limitations": [
+    "Non-rendered source-backed walking-contact approximation; not load certification",
+    "Court interiors and auditorium chair/seat aisles remain unproven",
+    "Carts on stairs are not accepted; historical D11 cart receipt is separate",
+    "Door/lift operation and loaded operation remain unaccepted; retained barriers/poses unchanged",
+    "External D12/D13 and staff receiving routes remain unfinished",
+    "First-pass theater visual acceptance remains false; no finished-room or whole-ship credit",
+    "No aggregate/full-suite, real-input comfort, all-species or target-hardware acceptance"
+  ],
+  "historical_diagnostics": {
+    "literal_stairs": {
+      "status": "FAILED_FIRST_FLIGHT",
+      "result_sha256": "908caf24d2afc06afdf34bf96da21941922a0b78d0d3d4a7810d6cc73093e34d",
+      "failure": "Ordinary W movement stalled before the authored landing",
+      "disposition": "Retained historical failure before installed walking contacts, not current installed-route status"
+    },
+    "unsaved_ramps": {
+      "result_sha256": "2dd88d372085f56729233d1f3d602581819f9de2a0e3ba1e8c1a3d19894fb51c",
+      "travelled_m": 451.62,
+      "supported_frames": 9878,
+      "disposition": "Retained earlier unsaved proof; superseded for installed route by this actual pass"
+    }
+  },
+  "archived_evidence_sha256": {
+    "docs/theater_validation/stair_walk011/INSTALLED_WALK_RESULT.json": "a10074b8e7475d5ca9e0a2edefa97615adda9f312c112111ee5dbf470897aff7",
+    "docs/theater_validation/stair_walk011/STANDARD_VALIDATION.json": "99455a2472bf2156d8edbe35a5522aa6129849c74ac4ce603dd4b479b86b15bb",
+    "docs/theater_validation/stair_walk011/COMMON_VALIDATION_EXACT_RECONSTRUCTION.json": "39362ee84bd7805ef0254eed37c7d3976cd94e240c63b0b4a35009985e7e8e19",
+    "docs/theater_validation/stair_walk011/POST_RUN_AUDIT.json": "fae97f8ad06bede701ebf8699edd510c74fe9a9aa65c6121e237ce03df4426c1",
+    "docs/theater_validation/stair_walk011/RUN_RECEIPT.json": "f93b5a90cee1f374bcc5972453e64934038d5c881031671033790c32bfcac889",
+    "docs/theater_validation/stair_walk011/engine.log": "a6711c0f5762388209971a353324ac780e4fd8109459f0ca5fc91c5a0266fd87",
+    "docs/theater_validation/stair_walk011/FINAL_APPLY_MANIFEST.json": "01755f275565a29dbfa3d34cd1ffeec75e5d1d9b464d1690ed22a7d2cace4161",
+    "docs/theater_validation/stair_walk011/APPLY_RECEIPT.json": "c66a6d87efe47dd7472d62340edfd3621f933be851526b61b61159f14ca6b272"
+  },
+  "common_validation_receipt_provenance": "Shared artifacts/validation.json was already overwritten by a later validator. Exact prior bytes were reconstructed from the named standard receipt checks and verified against post-run SHA39362ee84bd7805ef0254eed37c7d3976cd94e240c63b0b4a35009985e7e8e19. Named receipt, actual result, log and audit were copied byte-for-byte."
+}
