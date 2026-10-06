@@ -11,6 +11,8 @@ var started := 0
 var walked := 0
 var actual_plant_roots: Dictionary = {}
 var maximum_native_support_offset := 0.0
+var plant_quantization_bounds: Dictionary = {}
+var maximum_plant_source_offset := 0.0
 
 func _initialize() -> void:
 	started = Time.get_ticks_msec()
@@ -42,7 +44,20 @@ func render_faces(resource: Mesh) -> PackedVector3Array:
 		for index in indices:result.append(positions[index])
 	return result
 
+func float32_ulp(value: float) -> float:
+	var bytes:=PackedByteArray()
+	bytes.resize(4);bytes.encode_float(0,value)
+	var exponent:=int((bytes.decode_u32(0)>>23)&255)
+	return pow(2.0,-149.0 if exponent==0 else float(exponent-127-23))
+
+func world_float_bound(a: Vector3,b: Vector3) -> Vector3:
+	# Independent rounding of ideal/world-transformed native float32 positions.
+	return Vector3(float32_ulp(a.x)+float32_ulp(b.x),float32_ulp(a.y)+float32_ulp(b.y),float32_ulp(a.z)+float32_ulp(b.z))
+
 func pins() -> void:
+	var retained_plant_imports: Dictionary = {"res://assets/models/AST-BOT-003_pool_basal_00.glb.import":"1489d4c0636f1a8575039a8333ff9a925fa830a3fb9067fd0519efeb74f009ac","res://assets/models/AST-BOT-002_pool_middle_00.glb.import":"28d8f6400d2e3cc43d22b305460a7c35e43a4375a0ec202c6b5090eb27d16872","res://assets/models/AST-BOT-003_pool_basal_01.glb.import":"54a3b219d296288944f36509c3d12cca553fc314e8dfed8f4759c4b93e846819","res://assets/models/AST-BOT-002_pool_middle_01.glb.import":"09dfe236441a3d8e6b9899d6d7c1d6a6844296fb5f9212be666de2e3fa01613f","res://assets/models/AST-BOT-003_pool_basal_02.glb.import":"eb9b86895c2d8bb11d2a878a93ab02b632c1d14aa6b0e1183a075985c93c6608","res://assets/models/AST-BOT-002_pool_middle_02.glb.import":"355c2d6fab8746e6fce176244f43a965d086031f62ba985604d6fc12252bf676","res://assets/models/AST-BOT-003_pool_basal_03.glb.import":"619fb9722ae8d82229112e17cb7169f2d5b588b006a679df87f0a6ec2a8dcd6f","res://assets/models/AST-BOT-002_pool_middle_03.glb.import":"35aa63b47cdbd34d69a149a3ccbbfe56df600f683daa7efb43cff19659347116","res://assets/models/AST-BOT-003_pool_basal_04.glb.import":"7ab22249ed44b5aea1a4a64dd13789e4637fe0b8879525027689fdbd01398f25","res://assets/models/AST-BOT-002_pool_middle_04.glb.import":"954f0788db29a9da3c09ac6a183ca496ae812b69bd21168d59635ffc027c259f","res://assets/models/AST-BOT-003_pool_basal_05.glb.import":"364d39ef6b646ab358954879cafba58963023186390a0c0d7564b6a75a70b447","res://assets/models/AST-BOT-002_pool_middle_05.glb.import":"59a9a73b116643ff79689e873be6db98c4f35c31f959124c728ce69ceefb39a0"}
+	for path in retained_plant_imports:
+		assert(FileAccess.get_sha256(path)==retained_plant_imports[path],"Retained plant import policy changed")
 	assert(FileAccess.get_sha256("res://assets/models/AST-AQU-016.glb.import")=="ecd15cf4bf417b752363efc637f12b2265dd724a6c403480ef6d44f64c64d8f0","Retained roof import policy changed")
 	var engine: Dictionary=Engine.get_version_info()
 	assert(engine.major==4 and engine.minor==6 and engine.patch==3,"Native collision representation requires reviewed engine version")
@@ -109,12 +124,29 @@ func structure() -> void:
 		assert(absf(node.rotation.y-float(entry.yaw_radians))<.00001)
 		assert(node.find_children("*","CollisionObject3D",true,false).is_empty())
 		var roots: Array[Vector3] = []
+		var seen_roots: Dictionary = {}
+		var quantization_bound:=Vector3.ZERO
 		for mesh in node.find_children("*","MeshInstance3D",true,false):
+			# Godot4.6.3 compresses position coordinates to uint16 within the
+			# mesh AABB. One full quantization step is size/65535 per local axis.
+			# This is a conversion bound, separate from the50um soil contact gate.
+			var compressed:=false
+			for surface in range(mesh.mesh.get_surface_count()):
+				if mesh.mesh.surface_get_format(surface)&Mesh.ARRAY_FLAG_COMPRESS_ATTRIBUTES:compressed=true
+			if compressed:
+				var step: Vector3=mesh.mesh.get_aabb().size/65535.0
+				var basis: Basis=mesh.global_basis
+				quantization_bound=quantization_bound.max(basis.x.abs()*step.x+basis.y.abs()*step.y+basis.z.abs()*step.z)
 			for vertex in render_faces(mesh.mesh):
 				var world: Vector3=mesh.global_transform*vertex
-				if absf(world.y-float(entry.position_xyz[1]))<.00005: roots.append(world)
-		assert(not roots.is_empty(),"Imported plant has no soil-level roots")
+				if absf(world.y-float(entry.position_xyz[1]))<.00005 and not seen_roots.has(world):
+					seen_roots[world]=true;roots.append(world)
+		var expected_roots:=0
+		for probe in data.plant_support_probes:
+			if str(probe.item)==str(entry.name):expected_roots+=1
+		assert(roots.size()==expected_roots and expected_roots>0,"Imported plant soil-level root membership changed")
 		actual_plant_roots[str(entry.name)]=roots
+		plant_quantization_bounds[str(entry.name)]=quantization_bound
 	assert(ray(Vector3(-31,52.6,-432),Vector3(-31,52.4,-432),[actor.get_rid()]).is_empty(),"Architecture created a pool-void bridge")
 
 func native_collision_projection(mesh: MeshInstance3D,start: Vector3,end: Vector3) -> Variant:
@@ -160,15 +192,26 @@ func support_checks() -> void:
 		assert(owner.is_ancestor_of(hit.collider),"Wrong existing support owner: "+str(probe.part))
 		if str(probe.owner).begins_with("GP_"):
 			assert(str(hit.collider.get_parent().name)==str(probe.expected_support_batch),"Wrong actual retained roof-rib batch")
+	var mapped_roots: Dictionary = {}
 	for probe in data.plant_support_probes:
 		var p := xyz(probe.position_xyz)
 		var hit := ray(p+Vector3.UP*.015,p-Vector3.UP*.015,[actor.get_rid()])
 		assert(not hit.is_empty() and hit.position.distance_to(p)<.00005 and built.get_node("GrandPoolWetLoggias").is_ancestor_of(hit.collider),"Botanical root lost its soil contact")
 		assert(str(hit.collider.get_parent().name)==str(probe.expected_support_batch),"Root hit the wrong soil batch")
-		var actual_root := false
+		var nearest:=Vector3.INF
+		var distance:=INF
 		for vertex in actual_plant_roots[str(probe.item)]:
-			if vertex.distance_to(p)<.00005: actual_root=true;break
-		assert(actual_root,"Imported botanical root geometry is absent at its soil probe")
+			if vertex.distance_to(p)<distance:distance=vertex.distance_to(p);nearest=vertex
+		var conversion_bound: Vector3=plant_quantization_bounds[str(probe.item)]+world_float_bound(p,nearest)
+		var delta: Vector3=(nearest-p).abs()
+		assert(delta.x<=conversion_bound.x and delta.y<=conversion_bound.y and delta.z<=conversion_bound.z,"Imported root differs beyond documented16bit conversion and world float32 roundoff")
+		maximum_plant_source_offset=maxf(maximum_plant_source_offset,distance)
+		var native_hit:=ray(nearest+Vector3.UP*.015,nearest-Vector3.UP*.015,[actor.get_rid()])
+		assert(not native_hit.is_empty() and native_hit.position.distance_to(nearest)<.00005,"Actual imported root lost its physical soil contact")
+		assert(built.get_node("GrandPoolWetLoggias").is_ancestor_of(native_hit.collider) and str(native_hit.collider.get_parent().name)==str(probe.expected_support_batch),"Actual imported root contacted the wrong soil owner or batch")
+		var mapped_key:=str(probe.item)+str(nearest)
+		assert(not mapped_roots.has(mapped_key),"Source root correspondence is not one-to-one")
+		mapped_roots[mapped_key]=true
 	for probe in data.seat_surface_probes:
 		var p := xyz(probe.position_xyz)
 		var hit := ray(p+Vector3.UP*.02,p-Vector3.UP*.02,[actor.get_rid()])
@@ -257,5 +300,6 @@ func run() -> void:
 		for p in reverse: await walk_to(xyz(p))
 	pins()
 	print("POOL SOURCE TO RETAINED NATIVE SUPPORT REPRESENTATION MAX OFFSET M ",maximum_native_support_offset)
+	print("POOL SOURCE TO RETAINED IMPORTED PLANT ROOT MAX OFFSET M ",maximum_plant_source_offset)
 	print("GRAND POOL ARCHITECTURE PASS: three checked derivative assemblies, 451 source parts, 114 retained support roots, 12 soil-supported plant instances, three accessible pool-facing curved seats; original 126 programme preserved. Cart/lift, affected original checks and actual visual acceptance remain separate.")
 	main.queue_free();await process_frame;quit(0)

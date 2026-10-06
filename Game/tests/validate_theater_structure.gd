@@ -24,7 +24,7 @@ func run() -> void:
 	probe.check_motion_poses_and_barriers()
 	for frame in range(120): await physics_frame
 	probe.check_motion_poses_and_barriers()
-	print("THEATER STRUCTURE PASS: actual imported four-file census; unique 2200 chair/2494 authored placements; exact source contacts, 17 bounded owners, eight asset-owned upper surfaces, ",probe.floor_samples," source-floor probes, preserved open voids, fixed D11 open leaves, all other exits/landing gates closed, visual-only cabin. Bridge underside census, continuous traversal, appearance and aggregate acceptance remain separate.")
+	print("THEATER STRUCTURE PASS: actual imported four-file census; unique 2200 chair/2494 authored placements; strict native visual readback (retained proof on dummy renderer), current exact source contacts, 17 bounded owners, eight asset-owned upper surfaces, ",probe.floor_samples," source-floor probes, preserved open voids, fixed D11 open leaves, all other exits/landing gates closed, visual-only cabin. Bridge underside census, continuous traversal, appearance and aggregate acceptance remain separate.")
 	main.queue_free()
 	await process_frame
 	quit(0)
