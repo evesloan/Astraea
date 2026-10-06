@@ -7,6 +7,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	for filename in data.model_pins:
 		assert(FileAccess.get_sha256("res://assets/models/" + str(filename)) == str(data.model_pins[filename]), "Verified retained model required: " + str(filename))
 	assert(data.get("runtime_geometry_gate_accepted", false), "Retained core derivative, receiving shoulders, floor/cap and safety closures must be accepted")
+	_seat_forward_d02_sign(ship)
 	var root := Node3D.new()
 	root.name = "SecondaryEngineeringSection_WIP"
 	root.set_meta("persistent_id", "secondary_engineering_section_001")
@@ -17,6 +18,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	root.set_meta("first_pass_quality_accepted", false)
 	parent.add_child(root)
 	var shell: Node3D = ship.model(root, "AST-ENG-008_receiving_shoulders.glb", "SecondaryEngineeringArchitecture", Vector3.ZERO)
+	var essentials_trial: Dictionary = load("res://scripts/secondary_engineering_essentials.gd").build(root)
 	# Preserve frozen pressure-glass materials and pane collisions. No shader override.
 	assert(data.fixtures.size() == 9)
 	for item in data.fixtures:
@@ -33,6 +35,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.spot_angle = 76.0
 		light.shadow_enabled = true
 		light.set_meta("source_marker", str(item.name))
+		load("res://scripts/secondary_engineering_essentials.gd").apply_light_trial(light, str(item.name), essentials_trial)
 	# Ship's existing LocalShadowSourceBudget discovers these nine real sources.
 	# No added budget, neutral fill or unshadowed fallback.
 	assert(data.get("door_fittings", []).is_empty(), "Open-aperture platform installs no dynamic doors")
@@ -56,3 +59,15 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		barrier.add_child(sign)
 	# All internal apertures remain visibly unfinished/open. Existing legacy
 	# door/controller bytes are untouched; tall profile remains a separate gate.
+
+static func _seat_forward_d02_sign(ship: Node3D) -> void:
+	# The retained D02 east wall became the real engineering aperture. Keep
+	# its existing deck label at eye height on the adjacent retained wall,
+	# never add backing geometry across the clear opening.
+	var core := ship.find_child("ForwardPublicCore_WIP", true, false) as Node3D
+	assert(core != null and str(core.get_meta("persistent_id")) == "forward_public_core_001")
+	var label := core.get_node("PrimaryDeckSign_02") as Label3D
+	assert(label.position.distance_to(Vector3(7.66,7.75,-432)) < .001, "Unexpected pre-integration D02 sign position")
+	assert(label.text == "D02  |  FORWARD PUBLIC CORE" and label.font_size == 48 and is_equal_approx(label.pixel_size,.005))
+	assert(absf(label.rotation.y + PI/2) < .001)
+	label.position.z = -436.0

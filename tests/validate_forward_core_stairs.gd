@@ -29,7 +29,25 @@ func run()->void:
 		assert(absf(sign.position.x-7.66)<.001 and absf(sign.rotation.y+PI/2)<.001,"Arrivals signs face the entry from the intact opposite wall")
 		var ray:=PhysicsRayQueryParameters3D.create(sign.global_position+Vector3.RIGHT*.01,sign.global_position+Vector3.RIGHT*.3)
 		assert(not ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Sign has actual solid-wall backing, not a floating portal position")
-	# Preserve the actual port arrivals connections; no unsupported starboard branch.
+		assert(sign.text == "D%02d  |  FORWARD PUBLIC CORE"%deck and sign.font_size == 48 and is_equal_approx(sign.pixel_size,.005), "Retained deck-label identity/typography changed")
+		assert(absf(sign.position.y-(float(data.floor_y[deck-1])+1.75))<.001 and absf(sign.position.z-(-436.0 if deck==2 else -432.0))<.001, "Only D02 sign relocates onto the north wall")
+		var aabb := sign.get_aabb()
+		for x_fraction in [.0,.25,.5,.75,1.0]:
+			for y_fraction in [.0,.5,1.0]:
+				var point: Vector3 = sign.global_transform*Vector3(aabb.position.x+aabb.size.x*x_fraction,aabb.position.y+aabb.size.y*y_fraction,aabb.position.z+aabb.size.z*.5)
+				var backing_query := PhysicsRayQueryParameters3D.create(point+Vector3.RIGHT*.01,point+Vector3.RIGHT*.3,1)
+				var hit := ship.get_world_3d().direct_space_state.intersect_ray(backing_query)
+				assert(not hit.is_empty() and core.is_ancestor_of(hit.collider), "Entire label requires actual retained-core wall backing")
+				assert(str(hit.collider.get_parent().name)==("SEC_CORE_OuterWall_01_1_N" if deck==2 else "CORE_OuterWall_00_1"), "Label backing must be the reviewed solid wall")
+				if deck==2: assert(point.z <= -434.199, "Full label must retain0.4m aperture margin")
+	for number in range(1,18):
+		var retained_sign := core.get_node("PrimaryDeckSign_%02d"%number) as Label3D
+		assert(retained_sign.position.distance_to(Vector3(7.66,float(data.floor_y[number-1])+1.75,-436.0 if number==2 else -432.0))<.001, "Other sixteen core signs remain unchanged")
+	for from_x in [-10.0,-6.0,0.0,5.5]:
+		var approach_query := PhysicsRayQueryParameters3D.create(Vector3(from_x,7.65,-432),Vector3(7.66,7.75,-436),1)
+		assert(ship.get_world_3d().direct_space_state.intersect_ray(approach_query).is_empty(), "Relocated D02 label must remain visible from the actual entry approach")
+	print("FORWARD SIGN BACKING PASS: unchanged identity/font/facing; D02 north-wall relocation only;30 full-label wall rays,0.4m aperture margin and4 clear approach sightlines")
+	# Preserve actual port arrivals; engineering's supported east branch has its own gate.
 	for y in [0.0,6.0]:
 		actor.position=Vector3(-10,y+.1,-432);actor.velocity=Vector3.ZERO
 		for point in [Vector2(0,-432),Vector2(5.5,-432),Vector2(0,-432),Vector2(-10,-432)]:await walk(actor,point)

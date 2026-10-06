@@ -47,7 +47,7 @@ func pin_imports() -> void:
 		assert(cache.load(imported.get_basename() + ".md5") == OK)
 		assert(cache.get_value("", "source_md5", "") == FileAccess.get_md5(path), "Stale engineering import: " + str(filename))
 	var capture_audit_path := "res://docs/SECONDARY_ENGINEERING_CAPTURE_ADOPTION.json"
-	assert(FileAccess.get_sha256(capture_audit_path) == "e4eb3b4979dab5eb1ba0046028960ca2a67eef4733cb3d064d06161afe70b577")
+	assert(FileAccess.get_sha256(capture_audit_path) == "083f3e11dc814279e8729153c7361255829072e1d5344a855ebb62ee9712618b")
 	var capture_audit: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(capture_audit_path))
 	for path in data.preserved_runtime_pins:
 		if str(path) == "scripts/presentation.gd":

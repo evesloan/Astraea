@@ -1,0 +1,81 @@
+{
+  "scope": "Actual integration regression corrected by moving existing D02 sign only; no old core/controller/geometry bytes changed",
+  "first_full_attempt": {
+    "completed": 45,
+    "passed": 44,
+    "failed": "forward_core_stairs",
+    "error": "Sign has actual solid-wall backing, not a floating portal position",
+    "frozen_runtime_changed_during_run": false,
+    "expected_generated_receipts": [
+      "docs/D17_CONNECTED_CART_VALIDATION.json",
+      "docs/GRAND_POOL_SERVICE_CART_VALIDATION.json"
+    ],
+    "evidence": "docs/secondary_engineering_sign_correction/full111_failed_attempt001"
+  },
+  "cause": "Engineering D02 east-access aperture replaced the wall behind the existing sign at7.66,7.75,-432; actual old/new GLB and imported collision probes agree",
+  "correction": {
+    "node": "ForwardPublicCore_WIP/PrimaryDeckSign_02",
+    "from": [
+      7.66,
+      7.75,
+      -432
+    ],
+    "to": [
+      7.66,
+      7.75,
+      -436
+    ],
+    "preserved": [
+      "name/text/font/pixel_size/yaw",
+      "other16core signs",
+      "all16stairways/17stops",
+      "all old core/door scripts and assets",
+      "261compiled floors",
+      "guest aperture and loaded clearance"
+    ],
+    "full_label_bounds_xyz": [
+      7.66,
+      7.5825,
+      -437.8,
+      7.66,
+      7.9175,
+      -434.2
+    ],
+    "north_jamb_margin_m": 0.4,
+    "backing_surface": "SEC_CORE_OuterWall_01_1_N atX7.72",
+    "tested_full_label_rays": 30,
+    "clear_approach_rays": 4
+  },
+  "focused_rechecks": {
+    "forward_core_stairs": {
+      "passed": true,
+      "wall_seconds": 64.1519
+    },
+    "secondary_engineering_access": {
+      "passed": true,
+      "wall_seconds": 25.5472
+    },
+    "secondary_engineering_essentials": {
+      "passed": true,
+      "wall_seconds": 22.4832
+    }
+  },
+  "changed_source_files": {
+    "scripts/secondary_engineering_section.gd": {
+      "before": "3e483386be0e87ded03f41aea5db5a588e73795a6721cfc2393eefc7da1b5c5a",
+      "after": "1d2b03aa3ddd9ca501269b3267eaafc0510bd0aba3cc649ff80e689fd73a1a0e"
+    },
+    "tests/validate_forward_core_stairs.gd": {
+      "before": "ee159697684d6d2245589253174b07f51516f6a28a29b584fd66ceffc49de3cf",
+      "after": "882722a815fec78c3e59f52c11488de5ca37ee5a098812f6573cc87e9bce001c"
+    }
+  },
+  "full111_rerun": {
+    "passed": 111,
+    "total": 111,
+    "finished_utc": "2026-10-06T06:35:50.953697+00:00",
+    "source_drift": false,
+    "record": "docs/EXISTING_PROJECT_111_VALIDATION_20261006.json"
+  },
+  "visual_first_pass": "still rejected; this sign correction is not full architectural acceptance"
+}

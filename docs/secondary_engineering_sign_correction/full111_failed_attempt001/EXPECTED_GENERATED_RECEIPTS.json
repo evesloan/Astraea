@@ -1,0 +1,58 @@
+{
+  "scope": "Exactly these two documentation JSON files are generated outputs of unchanged standard tests, not frozen runtime inputs. Preserve raw snapshot/drift data; all other pins remain strict.",
+  "files": [
+    {
+      "path": "docs/D17_CONNECTED_CART_VALIDATION.json",
+      "writer": "tests/validate_d17_connected_cart.gd",
+      "writer_sha256": "8a3ec266c49d623d7de7f617569c2e51afe79a98e6407a7eda115d75d9776f8d",
+      "snapshot_sha256": "deb43a2a353a9eb9da885384cbff0c360993c8ab1c70196f6db3c09397eeb94e",
+      "current_output_sha256": "725639f2e2248b4caa7a6286687955ad28975868a6f71580d4eaa04ce83b946a",
+      "write_evidence": "Pinned test constant RECEIPT and FileAccess.open(RECEIPT,FileAccess.WRITE)",
+      "status": "PASS",
+      "test": "d17_connected_cart"
+    },
+    {
+      "path": "docs/GRAND_POOL_SERVICE_CART_VALIDATION.json",
+      "writer": "tests/validate_grand_pool_service_cart.gd",
+      "writer_sha256": "58bf813b38fe9a07e3b5d8e257f5ad9ed1c7799d35fbf77375584353a86ba416",
+      "snapshot_sha256": "c596920336578bd264fc26c49073c1360d763a969544060c1bc6c3b6f71946cd",
+      "current_output_sha256": "fa3c88f80e278e59fcdb1410d4f26f453169aa5d2f30d39c4d3c7e09a2f943ce",
+      "write_evidence": "Pinned test constant RECEIPT and FileAccess.open(RECEIPT,FileAccess.WRITE)",
+      "status": "PASS",
+      "test": "grand_pool_service_cart"
+    }
+  ],
+  "reader_writer_audit": {
+    "docs/D17_CONNECTED_CART_VALIDATION.json": {
+      "literal_references": [
+        {
+          "file": "tests/validate_d17_connected_cart.gd",
+          "line": 9,
+          "text": "const RECEIPT := \"res://docs/D17_CONNECTED_CART_VALIDATION.json\""
+        }
+      ],
+      "read_references_found": 0,
+      "writer_mode": "FileAccess.WRITE",
+      "frozen_writer_hash_verified": true
+    },
+    "docs/GRAND_POOL_SERVICE_CART_VALIDATION.json": {
+      "literal_references": [
+        {
+          "file": "tests/validate_grand_pool_service_cart.gd",
+          "line": 10,
+          "text": "const RECEIPT := \"res://docs/GRAND_POOL_SERVICE_CART_VALIDATION.json\""
+        }
+      ],
+      "read_references_found": 0,
+      "writer_mode": "FileAccess.WRITE",
+      "frozen_writer_hash_verified": true
+    }
+  },
+  "parent_confirmation": "Parent confirmed generated-output classification and zero-other-drift requirement2026-10-06T05:32:55Z",
+  "independent_backup_status_from_parent": {
+    "remote_main": "1e55d6f93164a4ef883e7a1d00ee589cb52bdb72",
+    "eligible_files_verified": 11054,
+    "watcher": "healthy advancing",
+    "verified_utc": "2026-10-06T05:28:00Z"
+  }
+}
