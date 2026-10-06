@@ -32,3 +32,6 @@ Owner direction reaffirmed 6 October 2026: every section on every deck must be r
 Reviewed source/spec section -> editable source and bounded derivatives -> source/export and preservation checks -> independent retention -> live integration -> actual capsule and loaded-cart/control checks -> normal-height in-game/reference review -> matching regression and recorded checkpoint.
 
 No stage implies the next stage passed. Source renders are labelled source-only. Do not claim completed rooms, operating engineering, water simulation, NPC use, target-GPU performance or continuous execution without matching evidence.
+
+## Map-first sequencing reaffirmed6 October2026
+Owner message Sentinel_0a0b79932af88191bbbf2552914ab1f5 explicitly sets the retro atrium image in docs/references/cruise_atrium_20261006/ as the eventual visual quality threshold, reached through repeated passes, while the entire map must be built and traversable first. Correct programme sections, floors, connected routes, openings, structural interfaces and safe boundaries take precedence over optional furnishing/material/lighting polish. A clearly labelled unfinished platform may retain visual issues; no unsafe shaft/edge or untested traversal is accepted by that prioritization. Preserve working systems and distinguish open architectural apertures/reservations from operational doors/lifts.

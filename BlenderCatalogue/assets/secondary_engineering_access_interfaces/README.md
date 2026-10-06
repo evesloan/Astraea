@@ -11,8 +11,8 @@ Existing-family representations only; new artistic design count zero. Not regist
 
 ## Stage gates
 
-Only generator and pure checks executed so far. No Blender, imports, renders or Godot. Actual new source/export hashes and actual new GLB triangle tests do not exist yet. Existing GLB triangles plus bounded upper-Y hypothesis are evidence for planning, not a substituted new-export acceptance.
+Parent ran source generation build001 successfully. Five pure prepared checks and actual generated-GLB triangle checks now pass. The actual export receipt binds all three completed source/export hashes. Exact original section triangles and nine markers, leaf roots and both call datums are preserved. Actual tall/open core and fitting prisms and all five travel fractions pass source contact checks. GLB float32 boundary tolerance is two micrometres. Independent editable-source reload, visual and runtime acceptance remain pending.
 
-The parent must allocate a Blender slot. Then run build_access_derivatives.py with --execute-in-parent-slot. It refuses to overwrite surviving derivative files. Independent source reload and exported triangle checks follow execution. Runtime adoption still requires the separate accepted tall profile with 2.65m leaf/seal contacts centred Y1.36, 2.86m safety sweep centred Y1.43, and obstruction tests in the added upper band. Legacy controllers are untouched.
+Do not repeat the completed build001. Any further Blender work requires a parent-allocated slot. It refuses to overwrite surviving derivative files. Independent source reload and exported triangle checks follow execution. Runtime adoption still requires the separate accepted tall profile with 2.65m leaf/seal contacts centred Y1.36, 2.86m safety sweep centred Y1.43, and obstruction tests in the added upper band. Legacy controllers are untouched.
 
 No runtime readiness, continuous route, loaded-cart traversal, lighting/visual acceptance, real regression or operating plant claimed.

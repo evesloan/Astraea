@@ -57,3 +57,7 @@ Full longitudinal end-return/miter contact, retained-neighbour mesh census, stru
 material_reuse_contract.json names ONLY retained ivory_enamel/champagne_metal/dark_rubber/gallery_glass, auditorium_amber_velvet and staff_bluegrey_paint from original ARC/CUL sources. No external palette or shared source modification. Future prepare_blender_source.py loads those datablocks and the untouched chair hierarchy, emits editable region meshes and2200 collection instances, and verifies the original chair hash. It has NOT run.
 
 Reproduce pure outputs with tools/build_geometry.py, screen_full_source.py, screen_geometry.py, screen_cart_routes.py, screen_headroom.py, screen_ramp_headroom.py and screen_ramp_grade.py. PACKAGE_RECEIPT.json pins owned artifacts and retained inputs. Parent reviews exact policy/height deltas and full shell/neighbour gate, then assigns serial Blender/export slot, verifies source/export preservation and independently retains before compiler/live integration.
+
+## Approved subsequent cruise-reference correction
+
+CRUISE_REFERENCE_APPLICATION.md records retained gallery_glass on unchanged static shaft side/rear volumes and retained warm_walnut on9022 unchanged lower gallery faces. Geometry, collision, source surfaces, IDs and chair bytes are identical. Solid1.3m jamb reserves do not prove real3.4m gate pocket storage; cabin/rail/gate source fitting and sweeps remain unbuilt. No extra thickness or stair/void changes.
