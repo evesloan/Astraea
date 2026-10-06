@@ -13,6 +13,8 @@ var floor_rays := 0
 var guard_rays := 0
 var interface_rays := 0
 var fixture_exits := 0
+var pinned_section_fixtures := 0
+var wet_receiver_anchors := 0
 var ship: Node3D
 var actor: CharacterBody3D
 var space: PhysicsDirectSpaceState3D
@@ -190,6 +192,45 @@ func check_source_contacts() -> void:
 	# The central upper void must remain open; no convex-hull floor bridge.
 	assert(ray(Vector3(-31,52.6,-432),Vector3(-31,52.4,-432)).is_empty())
 
+func check_section_fixture(light: Light3D, item: Dictionary) -> void:
+	var source := light as SpotLight3D
+	assert(source != null, "Source-authored pool fixtures must retain their spot cones")
+	assert(source.global_position.distance_to(xyz(item.position_xyz)) < .0001, "Fixture position differs from pinned source: " + str(item.name))
+	assert(absf(source.light_energy-float(item.suggested_energy)) < .00001, "Do not silently brighten source energy: " + str(item.name))
+	assert(absf(source.spot_angle-float(item.suggested_spot_angle_degrees)) < .00001, "Source cone angle changed: " + str(item.name))
+	assert((-source.global_basis.z).distance_to(xyz(item.direction).normalized()) < .00001, "Source cone direction changed: " + str(item.name))
+	var calibrated_ranges := {"pool_vault":22.0, "wet_terrace":14.0, "market_warm":11.0}
+	var expected_range := float(calibrated_ranges.get(str(item.profile), item.suggested_range_m))
+	assert(absf(source.spot_range-expected_range) < .00001, "Unexpected range outside bounded profile calibration")
+	assert(absf(source.spot_attenuation-1.0) < .00001, "The bounded trial did not authorize a distance-falloff change")
+	if item.profile == "wet_terrace":
+		assert(source.has_meta("illumination_anchor") and source.get_meta("illumination_anchor") is Vector3, "Wet fixture requires its supported receiver")
+		var receiver: Vector3 = source.get_meta("illumination_anchor")
+		var expected: Vector3 = xyz(item.position_xyz)
+		var surface_y := float(data.section.wet_deck_y)
+		if absf(expected.x+16.4) < .001 and absf(expected.z+442.0) < .001:
+			surface_y = float(data.section.arrival_y)
+		elif absf(expected.x+16.4) < .001 and absf(expected.z+456.0) < .001:
+			# Derive the support from the frozen source ramp, not a copied
+			# runtime magic height: this marker is over its sloping upper pan.
+			var ramp: Dictionary = data.accessible_ramp.upper_run
+			var begin: Vector3 = xyz(ramp.start_xyz)
+			var end: Vector3 = xyz(ramp.end_xyz)
+			var fraction := (expected.z-begin.z)/(end.z-begin.z)
+			surface_y = lerpf(begin.y,end.y,fraction)
+		expected.y = surface_y+.03
+		assert(receiver.distance_to(expected) < .001, "Wet anchor must stay 30 mm above the source-backed receiver")
+		var support := ray(receiver+Vector3.UP*.02,receiver-Vector3.UP*.08)
+		assert(not support.is_empty() and (floors.is_ancestor_of(support.collider) or shell.is_ancestor_of(support.collider)), "Wet receiver lacks actual compiled-floor or source-ramp support")
+		assert(absf(support.position.y-surface_y) < .002 and support.normal.y > .7, "Wet receiver landed on the wrong surface")
+		var to_receiver: Vector3 = receiver-source.global_position
+		assert(to_receiver.length() < source.spot_range and to_receiver.normalized().dot(-source.global_basis.z) >= cos(deg_to_rad(source.spot_angle)), "Receiver is outside the actual fixture cone/range")
+		assert(ray(source.global_position,receiver).is_empty(), "Wet source cannot illuminate its real receiver")
+		wet_receiver_anchors += 1
+	else:
+		assert(not source.has_meta("illumination_anchor"), "Only the eight wet-fixture receivers belong to this bounded trial")
+	pinned_section_fixtures += 1
+
 func check_lights_and_identities() -> void:
 	assert(built.get_meta("programme_keys") == data.programme_ids)
 	for item in [{"name":"GrandPoolProgramme", "key":"D08_directory_01", "alias":"D08_pool0"}, {"name":"OrchardMarketProgramme", "key":"D09_directory_01", "alias":"D09_market0"}]:
@@ -212,7 +253,16 @@ func check_lights_and_identities() -> void:
 		if representations.has(file): representations[file] += 1
 	assert(representations.values() == [1,1,0,1,0], "New and retained derivative representations must not be doubled")
 	var budget: Node = ship.get_node("ShipSystems/LocalShadowSourceBudget")
-	assert(budget.shadow_source_budget == 8)
+	assert(budget.shadow_source_budget == 8 and budget.get_script().resource_path == "res://scripts/lighting_budget.gd")
+	assert(budget.MAX_VISIBILITY_CANDIDATES == 32, "Keep the existing bounded shared selector")
+	assert(data.fixtures.size() == 25 and built.find_children("GrandPoolSource_*", "SpotLight3D", true, false).size() == 25)
+	var source_fixture_ids: Dictionary = {}
+	var source_profile_counts: Dictionary = {}
+	for item in data.fixtures:
+		assert(not source_fixture_ids.has(item.name), "Pinned fixture identifiers must be unique")
+		source_fixture_ids[item.name] = true
+		source_profile_counts[item.profile] = int(source_profile_counts.get(item.profile,0))+1
+	assert(source_profile_counts == {"market_warm":9,"pool_vault":6,"wet_terrace":8,"staff_work":2})
 	var staff_shell := ship.find_child("LowerStaffEnclosure", true, false) as Node3D
 	var fixture_records: Array = data.fixtures.duplicate()
 	fixture_records.append_array(data.staff.upper_light_markers)
@@ -226,9 +276,11 @@ func check_lights_and_identities() -> void:
 		for light in budget.sources:
 			if light.get_meta("source_marker", "") == item.name:
 				assert(light.global_position.distance_to(marker.global_position)<.001 and budget.requested_shadow[light.get_instance_id()])
+				if source_fixture_ids.has(item.name): check_section_fixture(light,item)
 				matching += 1
 		assert(matching == 1, "Exactly one budgeted source per fixture marker")
 		fixture_exits += 1
+	assert(pinned_section_fixtures == 25 and wet_receiver_anchors == 8, "Exactly 25 pinned source fixtures and 8 supported wet receivers")
 	for entry in data.door_fittings:
 		var door := door_for(str(entry.name))
 		assert(door.get_script().resource_path == "res://scripts/guest_entry_door.gd")
@@ -361,7 +413,7 @@ func run() -> void:
 	await walk_route(ceremonial)
 	await walk_route(ceremonial,true)
 	await walk_to(Vector3(-5.4,44,-432))
-	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across258 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
+	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across258 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; ",pinned_section_fixtures," pinned section lights and ",wet_receiver_anchors," supported receivers; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
 	main.queue_free()
 	await process_frame
 	quit(0)
