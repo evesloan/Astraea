@@ -1,14 +1,17 @@
 {
   "scope": "Parent-approved second integration exception: additive diagnostic capture points only; original byte pin retained in runtime contract",
   "original_sha256": "e6728a91361f7ece5d3e64ae5a932a970654c3810454971728c7d96c62721d99",
-  "integrated_sha256": "83cf52a52f99423411fbdf44f72d983650edddb411c3f6a0c3cf07d5b9f0f8f4",
+  "integrated_sha256": "c225697f5c5d59f0ece4e24eb17a2c46efa752cb17385c8cbcd1d56ce81377b8",
   "all_original_bytes_restored_by_reversing_exact_additions": true,
   "additions": {
     "capture_group": "secondary_engineering",
     "views": [
       "visitor eye12,7.65,-432",
       "maintenance diagnostic eye46,7.65,-439",
-      "workbay diagnostic eye30,7.65,-405"
+      "workbay diagnostic eye30,7.65,-405",
+      "control diagnostic eye30,7.65,-457.2",
+      "north guest side eye15.5,7.65,-444",
+      "south guest side eye15.5,7.65,-420"
     ],
     "preserved": "All existing points, renderer settings and source materials/collisions; staff camera placement is diagnostic not ship connection"
   },
@@ -28,6 +31,11 @@
     {
       "before": "\t\t\t\tif str(view.label).begins_with(\"grand_pool_\")",
       "after": "\t\t\t\tif str(view.label).begins_with(\"secondary_engineering_\") or str(view.label).begins_with(\"grand_pool_\")"
+    },
+    {
+      "before": "\t\t\tfor view in [{\"p\":Vector3(12,6.04,-432)",
+      "after": "\t\t\tfor view in [{\"p\":Vector3(30,6.04,-457.2),\"yaw\":.616,\"label\":\"secondary_engineering_control_diagnostic_\",\"pitch\":-.05},{\"p\":Vector3(15.5,6.04,-444),\"yaw\":-2.134,\"label\":\"secondary_engineering_guest_north_side_\",\"pitch\":.029},{\"p\":Vector3(15.5,6.04,-420),\"yaw\":-1.007,\"label\":\"secondary_engineering_guest_south_side_\",\"pitch\":.029},{\"p\":Vector3(12,6.04,-432)"
     }
-  ]
+  ],
+  "guest_side_views_require_capsule_walk": true
 }

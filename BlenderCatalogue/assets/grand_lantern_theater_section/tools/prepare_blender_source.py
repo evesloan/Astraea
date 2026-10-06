@@ -10,9 +10,12 @@ from mathutils import Vector
 
 R=Path(__file__).resolve().parents[1]
 CAT=Path('/workspace/shared/astraea-catalogue-continuation-20261002')
-p=argparse.ArgumentParser();p.add_argument('--output-name',default='AST-CUL-005.blend');a=p.parse_args(sys.argv[sys.argv.index('--')+1:]if'--'in sys.argv else[])
+p=argparse.ArgumentParser();p.add_argument('--output-name',default='AST-CUL-005.blend');p.add_argument('--report-name',default='editable_source_internal_report.json');a=p.parse_args(sys.argv[sys.argv.index('--')+1:]if'--'in sys.argv else[])
 assert Path(a.output_name).name==a.output_name and a.output_name.endswith('.blend')
 out=R/'source'/a.output_name
+assert Path(a.report_name).name==a.report_name and a.report_name.endswith('.json')
+report_path=R/'qa'/a.report_name
+if report_path.exists():raise RuntimeError('Preserve existing source QA report: choose a new explicit --report-name')
 if out.exists():raise RuntimeError('Preserve existing editable source: choose a new explicit --output-name; do not overwrite')
 def read(p):return json.loads(p.read_text())
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -41,8 +44,10 @@ for rel,names in mc['sources'].items():
    candidates=[name for name in [role,'ASTRAEA_'+role]if name in src.materials]
    assert len(candidates)==1,('Ambiguous or missing retained material datablock',rel,role,candidates)
    selected.append(candidates[0])
-  dst.materials=selected
- for role,source_name,mat in zip(names,selected,dst.materials):
+  selected_source_names=tuple(selected)  # Blender mutates the list assigned to dst.materials.
+  dst.materials=list(selected_source_names)
+ for role,source_name,mat in zip(names,selected_source_names,dst.materials):
+  assert isinstance(source_name,str),('Source material name must stay a string',type(source_name).__name__)
   assert mat is not None,('Could not append retained material',source_name)
   mats[role]=mat
   if role=='gallery_glass':
@@ -176,9 +181,14 @@ for mat in all_used_materials.values():
  material_texture_checks.append({'material':mat.name,'role':role,'is_retained_chair_material':mat.name in chair_material_names,'expected_texture_sha256':expected_texture_sha,'images':image_records})
 assert chair_fingerprint()==chair_appended_fingerprint,'Retained chair mesh/UV/transform/material slots changed'
 assert all(sha(Path(path))==expected for path,expected in pins['retained_inputs_sha256'].items()),'Retained input changed during Blender authoring'
+assert sha(chair_path)==chair_hash
+assert chair_fingerprint()==chair_appended_fingerprint
+report={'status':'Editable source internal construction verification only; not export/runtime/art acceptance','source_blend':str(out),'source_blend_sha256':None,'geometry_sha256':sha(R/'source/geometry.json'),'source_parts_preserved':len(parts),'authored_mesh_groups':len(groups),'mesh_reports':mesh_reports,'vertices':sum(x['vertices']for x in mesh_reports),'triangles':sum(x['triangles']for x in mesh_reports),'world_bounds':{'min':[min(v[k]for v in all_world)for k in range(3)],'max':[max(v[k]for v in all_world)for k in range(3)]},'chair_collection_members':chair_members,'unchanged_retained_chair_sha256':chair_hash,'chair_instances':2200,'chair_controller_created':False,'source_mount_markers':len(fixture_records),'packed_material_images':used_images,'material_load_and_tile_scales':material_load_records,'all_used_material_texture_checks':material_texture_checks,'retained_chair_appended_mesh_uv_transform_fingerprint':chair_appended_fingerprint,'retained_chair_materials_checked':sorted(chair_material_names),'maximum_material_scaled_uv_error':max(m['maximum_material_scaled_uv_error']for m in mesh_reports),'compiler_flat_or_foundation_meshes_authored':False,'new_runtime_lights':0,'new_export':False,'first_pass_complete':False,'not_accepted':['Source export equivalence','Full retained runtime-neighbour census','Runtime/capsule/loaded-cart/door/lift behavior','Normal-height visual review','First-pass furnishings and actual light coverage','Structural/pressure certification']}
+# Prove the complete report is JSON-safe BEFORE creating an irreversible build output.
+json.dumps(report,indent=2,allow_nan=False)
 bpy.ops.wm.save_as_mainfile(filepath=str(out))
 assert sha(chair_path)==chair_hash
 assert chair_fingerprint()==chair_appended_fingerprint
-report={'status':'Editable source internal construction verification only; not export/runtime/art acceptance','source_blend':str(out),'source_blend_sha256':sha(out),'geometry_sha256':sha(R/'source/geometry.json'),'source_parts_preserved':len(parts),'authored_mesh_groups':len(groups),'mesh_reports':mesh_reports,'vertices':sum(x['vertices']for x in mesh_reports),'triangles':sum(x['triangles']for x in mesh_reports),'world_bounds':{'min':[min(v[k]for v in all_world)for k in range(3)],'max':[max(v[k]for v in all_world)for k in range(3)]},'chair_collection_members':chair_members,'unchanged_retained_chair_sha256':chair_hash,'chair_instances':2200,'chair_controller_created':False,'source_mount_markers':len(fixture_records),'packed_material_images':used_images,'material_load_and_tile_scales':material_load_records,'all_used_material_texture_checks':material_texture_checks,'retained_chair_appended_mesh_uv_transform_fingerprint':chair_appended_fingerprint,'retained_chair_materials_checked':sorted(chair_material_names),'maximum_material_scaled_uv_error':max(m['maximum_material_scaled_uv_error']for m in mesh_reports),'compiler_flat_or_foundation_meshes_authored':False,'new_runtime_lights':0,'new_export':False,'first_pass_complete':False,'not_accepted':['Source export equivalence','Full retained runtime-neighbour census','Runtime/capsule/loaded-cart/door/lift behavior','Normal-height visual review','First-pass furnishings and actual light coverage','Structural/pressure certification']}
-(R/'qa/editable_source_internal_report.json').write_text(json.dumps(report,indent=2)+'\n')
+report['source_blend_sha256']=sha(out)
+with report_path.open('x')as file:file.write(json.dumps(report,indent=2,allow_nan=False)+'\n')
 print(json.dumps({k:report[k]for k in ['status','source_parts_preserved','authored_mesh_groups','vertices','triangles','chair_instances','source_mount_markers','first_pass_complete']}))

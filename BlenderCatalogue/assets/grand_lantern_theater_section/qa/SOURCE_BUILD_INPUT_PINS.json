@@ -13,7 +13,7 @@
     "qa/end_return_miter_screen.json": "714865da89cbb56414f49f4ca0430edeadb9cd33f71fe7815b7e04fe6bb5e0c7",
     "qa/compiler_floor_source_screen.json": "040eaba8cbfb8bdcbebbdf32ec09922ccef72b70f3afdaeb03f053aa9fc892f3",
     "qa/retained_source_neighbour_screen.json": "08990b61473cb42a5f7e6bd81ad0b83ea343cc9ec61e557f47a3aaa4f3a2a5f5",
-    "tools/prepare_blender_source.py": "b8efa85fa5140b21f642e90eaf4c180d6e766abd4b05661003515c337d17b45a",
+    "tools/prepare_blender_source.py": "e3b3b7cbff28468f84b07bc95ec62dee9383ba7bb528f1e0b1c277dfb86252ce",
     "qa/foundation_reservation_screen.json": "0ff9662d11778fb78c0118cf7af559f43be18a0a7354485ea22a969839cee8a5",
     "qa/PARENT_SOURCE_REVIEW_20261006.json": "ec5659ef2d8246a1b681806b334457acca177ada995128eefd9527b23e2eef8c"
   },
@@ -80,5 +80,13 @@
     "source_datablocks": "Bare ARC names and ASTRAEA_-prefixed CUL names resolved exactly; no replacement shader creation.",
     "chair_verification": "Original mesh/UV/transform/material-slot fingerprint unchanged; all chair material slots and recursively referenced texture images packed and checked against exact retained PNG hashes.",
     "binary_preflight": "Read-only PNG extraction from original Blend files confirmed expected retained texture hashes, including chair amber/navy/walnut/metal."
+  },
+  "serialization_correction": {
+    "failed_build_adapter_sha256": "b8efa85fa5140b21f642e90eaf4c180d6e766abd4b05661003515c337d17b45a",
+    "saved_blend_sha256": "c91193af1e4a14aac3a4e75c743e7c86b6a57a669981e9a7e7cfb0412e1cb5f5",
+    "exact_field": "material_load_and_tile_scales[*].source_datablock",
+    "cause": "Blender converted the mutable list assigned to dst.materials from source strings to Material objects. Reusing that list leaked Material into report.",
+    "future_fix": "Keep immutable source-name tuple; assign a separate list; assert strings and serialize complete report before saving a future separately named build.",
+    "surviving_blend_action": "Preserve existing file and independently reopen/measure; no rebuild or overwrite."
   }
 }

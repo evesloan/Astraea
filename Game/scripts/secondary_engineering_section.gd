@@ -17,6 +17,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	root.set_meta("first_pass_quality_accepted", false)
 	parent.add_child(root)
 	var shell: Node3D = ship.model(root, "AST-ENG-008_receiving_shoulders.glb", "SecondaryEngineeringArchitecture", Vector3.ZERO)
+	var essentials_trial: Dictionary = load("res://scripts/secondary_engineering_essentials.gd").build(root)
 	# Preserve frozen pressure-glass materials and pane collisions. No shader override.
 	assert(data.fixtures.size() == 9)
 	for item in data.fixtures:
@@ -33,6 +34,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.spot_angle = 76.0
 		light.shadow_enabled = true
 		light.set_meta("source_marker", str(item.name))
+		load("res://scripts/secondary_engineering_essentials.gd").apply_light_trial(light, str(item.name), essentials_trial)
 	# Ship's existing LocalShadowSourceBudget discovers these nine real sources.
 	# No added budget, neutral fill or unshadowed fallback.
 	assert(data.get("door_fittings", []).is_empty(), "Open-aperture platform installs no dynamic doors")
