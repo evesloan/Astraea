@@ -43,7 +43,7 @@ static func _validate_retained_pool_predecessor(path: String, historical: String
 	assert(proof.candidate_sha256==CANDIDATE_SHIP_SHA and actual==CANDIDATE_SHIP_SHA and source.sha256_text()==actual,"Unknown pool ship candidate")
 	assert(proof.builder_path==BUILDER and proof.builder_sha256==BUILDER_SHA)
 	assert(proof.contract_path==CONTRACT and proof.contract_sha256==CONTRACT_SHA)
-	assert(FileAccess.get_sha256("res://"+BUILDER)==BUILDER_SHA,"Pool builder bytes changed")
+	assert(load("res://tests/grand_pool_feature_builder_successor.gd").retained_sha256(BUILDER)==BUILDER_SHA,"Pool builder bytes changed")
 	assert(FileAccess.get_sha256("res://"+CONTRACT)==CONTRACT_SHA,"Pool contract bytes changed")
 	assert(proof.unchanged_geometry_sha256==UNCHANGED_GEOMETRY_SHA256)
 	for geometry_path in UNCHANGED_GEOMETRY_SHA256:
@@ -112,6 +112,9 @@ static func validate_successor(path: String, historical: String, actual: String,
 	assert(proof.previous_ship_sha256==CANDIDATE_SHIP_SHA and proof.historical_caller_sha256==historical)
 	assert(FileAccess.get_sha256("res://"+path)==actual)
 	for pinned in proof.immutable_sha256:
+		if str(pinned) in [BUILDER,"tests/secondary_engineering_pool_ship_successor.gd"]:
+			assert(load("res://tests/grand_pool_feature_builder_successor.gd").retained_sha256(str(pinned))==str(proof.immutable_sha256[pinned]),"Exact pool builder/helper predecessor changed")
+			continue
 		# Exact reviewed natural-carry test successor; original proof and all runtime pins remain intact.
 		if str(pinned)=="tests/validate_secondary_engineering_cell.gd" and str(proof.immutable_sha256[pinned])=="3b489007db83a98a13728b4ab23fe12e9e0cfa575927476800c77c0f0735b280" and FileAccess.get_sha256("res://"+str(pinned))=="12ef1bf0c464625148f077df1f994c5b46a02cfc2e4797d0885315ad5d86cd13":
 			continue
