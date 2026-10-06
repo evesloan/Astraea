@@ -1,0 +1,13 @@
+# Court A runtime export002: verified source/binary package
+
+Final source-only export of retained Court A 7456c069..., with exactly two GLBs. Actual job finished 2026-10-06 15:43:36 UTC: all three phases passed in 3.31 seconds, with every protected source input unchanged. Independent binary QA is 1ee9ef4f.... STATUS.json states the current result; old pending receipt fields remain untouched historical evidence.
+
+exports/ contains the final authored and prototype GLBs. witnesses/ contains exact source position/UV/corner-normal arrays. qa/ contains final independent QA and export receipt. history/ preserves the raw-export receipt; job/ preserves actual phase logs, gate and job receipt. tooling/ and plan/ preserve the executed scripts, frozen plan, preparation guards and independent source-retention evidence. SOURCE_REFERENCES.json pins the existing retained source/helper/QA inputs. No redundant Blend or old theater export is copied.
+
+The authored GLB has 123 localized batches (98 colliding,25 decorative) representing all157 new meshes. The prototype GLB has18 batches representing120 evaluated definition meshes, exported once across four definitions. There are24 exact placement matrices in the receipt and no placed duplicate prototypes in either GLB. Root translation is(-69.5,69.5,-138). All34 source materials and18 embedded image byte identities passed binary checks. No lights or old chairs/plants/usher were loaded/exported.
+
+This is not imported/native collision, visual, lighting, six-species or finished-art acceptance. Future sibling integration must preserve raw render arrays and use explicit raw vertex/index contact construction, separate actual collider checks, new-only compression-disabled imports and current native lighting without energy/exposure edits.
+
+The guarded copier defaults to preflight, writes only a wholly absent runtime_export002 directory and refuses existing/partial destinations. It verifies every payload and protected input before/after copying. It runs no engines, Git or publisher. Retain the generated receipt; independent remote retention of this export bundle is a later parent-owned step.
+
+Executed scripts and gate are historical evidence. They contain original paths and prior resource-slot authorization; they are not authority for another engine job. For regeneration, copy the reviewed scripts/plan into a new authorized scratch workspace and create a fresh gate/current source slot. Intermediate raw GLBs are deliberately omitted to retain exactly the two independently verified final GLBs; raw receipts and witnesses remain. No raw output can be silently substituted as final.

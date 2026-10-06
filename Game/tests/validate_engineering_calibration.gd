@@ -189,7 +189,11 @@ func exercise_control(control: Node3D, record: Dictionary) -> bool:
 	if not await tap_e(): return false
 	if not require(control.activation_count == before+1 and control.busy, "Original RMB/E did not start one control activation"): return false
 	if not require(control.get_interaction_label() == str(record.faux_status), "Brief authored status identity mismatch"): return false
-	if not require(not control.actuator.transform.is_equal_approx(home), "Actuator did not visibly move from its original rest pose"): return false
+	# Compare motion from rest, not relative tolerance on the ship's large world coordinates.
+	var translation_from_rest: Vector3 = control.actuator.transform.origin - home.origin
+	var rotation_from_rest: Basis = home.basis.inverse() * control.actuator.transform.basis
+	var early_source_displacement: float = control.last_motion_displacement
+	if not require(is_finite(early_source_displacement) and (not translation_from_rest.is_zero_approx() or not rotation_from_rest.is_equal_approx(Basis.IDENTITY)), "Actuator did not move relative to its source rest pose"): return false
 	key(KEY_E,true,true)
 	if not await advance(2): return false
 	key(KEY_E,false)
@@ -217,7 +221,8 @@ func exercise_control(control: Node3D, record: Dictionary) -> bool:
 	if not await seam_negative_cases(record): return false
 	records.append({"id":record.id,"source_marker":record.source_marker,"actual_feet_xyz":as_array(actor.global_position),
 		"actual_eye_xyz":as_array(actor.camera.global_position),"first_hit":"SourceCalibrationTarget","activations":control.activation_count-before,
-		"rest_exact":true,"first_hit_record":first_hit_evidence[str(record.id)],"audio_start_requested_and_accepted":control.last_audio_started})
+		"rest_exact":true,"first_hit_record":first_hit_evidence[str(record.id)],"audio_start_requested_and_accepted":control.last_audio_started,
+		"early_translation_from_rest_xyz":as_array(translation_from_rest),"early_rotation_from_rest_basis":[as_array(rotation_from_rest.x),as_array(rotation_from_rest.y),as_array(rotation_from_rest.z)],"early_source_displacement":early_source_displacement})
 	return true
 
 func occlusion_negative(control: Node3D, record: Dictionary) -> bool:
@@ -356,7 +361,7 @@ func active_motion_proof() -> bool:
 		if not require(is_instance_valid(control) and control.busy, "Active slot has no running source control"): return false
 		var record: Dictionary = control.record
 		var value: float = control.last_motion_displacement
-		if not require(value >= float(record.travel_limits[0])-.000001 and value <= float(record.travel_limits[1])+.000001, "Actuator exceeded authored travel"): return false
+		if not require(is_finite(value) and value >= float(record.travel_limits[0])-.000001 and value <= float(record.travel_limits[1])+.000001, "Actuator exceeded authored travel"): return false
 		var delta := Transform3D.IDENTITY
 		var axis := xyz(record.travel_axis_xyz)
 		if str(record.travel_type) == "rotation":
