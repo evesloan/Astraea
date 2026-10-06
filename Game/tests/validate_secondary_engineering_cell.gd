@@ -88,6 +88,11 @@ func write_receipt(status: String, detail: String = "") -> void:
 	}
 	if is_instance_valid(actor): record["actor_xyz"] = array_xyz(actor.global_position)
 	if is_instance_valid(cart): record["cart_xyz"] = array_xyz(cart.global_position)
+	if is_instance_valid(tool):
+		record["tool_xyz"] = array_xyz(tool.global_position)
+		record["tool_cart_local"] = array_xyz(cart.to_local(tool.global_position))
+		record["tool_held"] = tool.driver==actor
+		record["tool_velocity"] = array_xyz(tool.linear_velocity)
 	var file := FileAccess.open(RECEIPT, FileAccess.WRITE)
 	if file != null:
 		file.store_string(JSON.stringify(record, "  ") + "\n")
@@ -495,28 +500,69 @@ func triangle_clip_box(a: Vector3, b: Vector3, c: Vector3, box: AABB, inset: flo
 		doubled_area+=sqrt(pow(uy*vz-uz*vy,2)+pow(uz*vx-ux*vz,2)+pow(ux*vy-uy*vx,2))
 	return polygon if doubled_area>1e-12 else []
 
-func triangle_same_vertices(actual: Array[Vector3], expected: Array) -> bool:
+func float32_ulp(value: float) -> float:
+	if value==0.0: return pow(2.0,-149.0)
+	return pow(2.0,floor(log(absf(value))/log(2.0))-23.0)
+
+func triangle_same_vertices(actual: Array[Vector3], expected_face: Dictionary) -> bool:
+	var expected: Array=expected_face.source_triangle_vertices_xyz
 	if expected.size()!=3: return false
+	var normal := xyz(expected_face.outward_triangle_normal_xyz).abs()
+	var normal_axis := normal.max_axis_index()
+	if normal[normal_axis]<.999999: return false
 	var used: Dictionary = {}
 	for point in actual:
 		var match_index := -1
 		for index in range(3):
-			if not used.has(index) and point.distance_to(xyz(expected[index]))<=.000001:
+			if used.has(index): continue
+			var same := true
+			for axis in range(3):
+				var source_value := float(expected[index][axis])
+				# One representable import step only in the face's tangent axes.
+				# The actual normal plane and un-grown penetration gate remain <=1um.
+				var tolerance := .000001 if axis==normal_axis else maxf(.000001,float32_ulp(source_value))
+				if absf(float(point[axis])-source_value)>tolerance+1e-12: same=false
+			if same:
 				match_index=index
 				break
 		if match_index<0: return false
 		used[match_index]=true
 	return used.size()==3
 
-func clipped_inside_band(polygon: Array, band: Array) -> bool:
-	# Deliberately strict source-reference band check. At world Z about -406,
-	# actual imported pose/grow float32 endpoints can differ by several microns.
-	# Preserve any failed first run for bounded longitudinal reconciliation;
-	# never widen the actual X/Y bearing-plane penetration/tangency gate.
+func clipped_inside_band(polygon: Array, band: Dictionary) -> bool:
+	var limits: Array=band.margin_clipped_bounds_xyz
+	var normal_axis := int(band.get("plane_axis",band.get("contact_plane_axis",-1)))
+	if normal_axis<0: return false
 	for point in polygon:
 		for axis in range(3):
-			if float(point[axis])<float(band[axis])-.000001 or float(point[axis])>float(band[axis+3])+.000001: return false
+			# Tangential window endpoints are derived from real float32 poses/grow.
+			# Keep the physical bearing-plane normal bound strict and unchanged.
+			var tolerance := .000001 if axis==normal_axis else maxf(.000001,maxf(float32_ulp(float(limits[axis])),float32_ulp(float(limits[axis+3]))))
+			if float(point[axis])<float(limits[axis])-tolerance or float(point[axis])>float(limits[axis+3])+tolerance: return false
 	return true
+
+func dump_imported_source_geometry() -> void:
+	var values := PackedFloat32Array()
+	var records: Array=[]
+	for item in built.find_children("*","MeshInstance3D",true,false):
+		var mesh := item as MeshInstance3D
+		var first := values.size()/9
+		var faces := mesh.mesh.get_faces()
+		for vertex in faces:
+			var point: Vector3=mesh.global_transform*vertex
+			values.append(point.x);values.append(point.y);values.append(point.z)
+		var surfaces: Array=[]
+		for surface in range(mesh.mesh.get_surface_count()):
+			var arrays := mesh.mesh.surface_get_arrays(surface)
+			var count := (arrays[Mesh.ARRAY_INDEX] as PackedInt32Array).size() if arrays[Mesh.ARRAY_INDEX]!=null else (arrays[Mesh.ARRAY_VERTEX] as PackedVector3Array).size()
+			surfaces.append({"triangles":count/3,"material":str(mesh.get_active_material(surface).resource_name)})
+		records.append({"name":str(mesh.name),"triangle_offset":first,"triangles":faces.size()/3,"surfaces":surfaces})
+	var binary := FileAccess.open("res://artifacts/cell_imported_triangles.float32",FileAccess.WRITE)
+	assert(binary!=null)
+	binary.store_buffer(values.to_byte_array());binary.close()
+	var metadata := FileAccess.open("res://artifacts/cell_imported_triangles.json",FileAccess.WRITE)
+	assert(metadata!=null)
+	metadata.store_string(JSON.stringify({"model_sha256":data.model_sha256,"groups":records,"coordinate_order":"Godot world XYZ little-endian float32 triangles","triangles":values.size()/9},"  "));metadata.close()
 
 func classify_imported_gate_bearings() -> bool:
 	var proof: Dictionary = checks.gate_bearing_contact_proof
@@ -587,7 +633,7 @@ func classify_imported_gate_bearings() -> bool:
 				var match_index := -1
 				for expected_index in range(proof.exact_margin_candidate_faces.size()):
 					var expected: Dictionary=proof.exact_margin_candidate_faces[expected_index]
-					if str(mesh.name)==str(expected.export_group) and triangle_same_vertices(actual,expected.source_triangle_vertices_xyz):
+					if str(mesh.name)==str(expected.export_group) and triangle_same_vertices(actual,expected):
 						if not require(match_index<0, "Ambiguous reviewed bearing face identity"): return false
 						match_index=expected_index
 				if match_index<0 or matched_faces.has(match_index):
@@ -597,7 +643,7 @@ func classify_imported_gate_bearings() -> bool:
 				if not require(mesh.mesh.get_surface_count()==1 and str(mesh.get_active_material(0).resource_name)==str(expected.material), "Bearing face material/source group differs"): return false
 				var band_name := ""
 				for band in proof.reviewed_bearing_bands:
-					if str(band.source_part)==str(expected.source_part) and clipped_inside_band(clipped,band.margin_clipped_bounds_xyz): band_name=str(band.id)
+					if str(band.source_part)==str(expected.source_part) and clipped_inside_band(clipped,band): band_name=str(band.id)
 				if not require(not band_name.is_empty(), "Actual clipped contact leaves its precisely reviewed cap/lip bearing band"): return false
 				band_counts[band_name]=int(band_counts.get(band_name,0))+1
 				matched_faces[match_index]=true
@@ -860,13 +906,24 @@ func return_tool_to_cart() -> bool:
 	# Approach the empty tray slot, aim the ordinary 1.35 m physical tether,
 	# release with RMB/E, and demand a real stable four-product return.
 	var home: Vector3 = cart.global_transform * tool_home_local
-	var grip_y := home.y + .125
+	# Hold the real bottle above the1.01m tray rim, then release and let gravity
+	# seat it. Aiming directly at its resting point while the spring sags pushes
+	# the returning bottle into the solid rim instead of over the open mouth.
+	var grip_y := home.y + .125 + .30
 	var eye_y := 7.65
 	var horizontal := sqrt(maxf(0.0,1.35*1.35-pow(eye_y-grip_y,2)))
-	if not await walk_to(Vector2(home.x-horizontal,home.z)): return false
+	# The selected bottle's original slot is on the cart's far/east end.
+	# Walk around its actual body in the supported upper service square instead
+	# of asking the capsule to enter the cart from the west. No contact disabled.
+	if not await walk_path([Vector2(28.38,-403.65),Vector2(31.55,-403.65),Vector2(31.55,home.z),Vector2(home.x+horizontal,home.z)]): return false
+	# Do not reverse a held physical object180degrees in one frame through the
+	# original capsule. Turn on foot at the same bounded rate used on this route.
+	var toward_slot := Vector2(home.x-actor.global_position.x,home.z-actor.global_position.z)
+	if not await face_heading(atan2(-toward_slot.x,-toward_slot.y)): return false
 	aim(Vector3(home.x,grip_y,home.z))
 	if not await advance(100): return false
 	var local: Vector3 = cart.to_local(tool.global_position)
+	print("CELL_CART_RETURN_STATE:",JSON.stringify({"actor_xyz":array_xyz(actor.global_position),"tool_xyz":array_xyz(tool.global_position),"tool_cart_local":array_xyz(local),"home_xyz":array_xyz(home),"grip_aim_xyz":[home.x,grip_y,home.z],"tool_grip_xyz":array_xyz(tool.global_transform*tool.grip_local),"velocity":array_xyz(tool.linear_velocity),"tool_basis_y":array_xyz(tool.global_basis.y)}))
 	if not require(tool.driver==actor and absf(local.x)<.30 and absf(local.z)<.45 and local.y>.88 and local.y<1.35, "Original tether must place tool over the real tray before release"): return false
 	focus(true)
 	if not await tap_e(): return false
@@ -1092,6 +1149,7 @@ func run() -> void:
 	# move_and_slide externally, or change any shared input/controller setting.
 	if not require(actor.is_physics_processing(), "Production original-player physics must remain enabled"): return
 	if not mark("source groups, materials and exact contacts") or not mesh_and_contact_census(): return
+	dump_imported_source_geometry()
 	if not mark("exact imported full-sweep gate bearing face census") or not classify_imported_gate_bearings(): return
 	if not mark("compiler cut, lower slab, underside and stair contact") or not floor_topology_and_stair(): return
 	if not mark("preserved guest/internal engineering routes") or not await retained_routes(): return
