@@ -77,11 +77,16 @@ def run(args):
                 q=me.vertices[me.loops[li].vertex_index].co-origin
                 layer.data[li].uv=(q.dot(u)/tile[0],q.dot(v)/tile[1])
     def mesh(name,vs,fs,role,parent,sign_id,collision=True,origin=(0,0,0)):
-        me=bpy.data.meshes.new(name+'_EditableMesh');me.from_pydata([(v[0],-v[2],v[1]) for v in vs],[],fs);me.update()
+        # Keep small lettering in local coordinates. Baking it hundreds of metres
+        # from the origin rounds curve vertices together at float32 precision.
+        # This changes authorship coordinates, never the fitted world placement.
+        origin_b=(origin[0],-origin[2],origin[1])
+        local_vs=[(v[0]-origin[0],-v[2]+origin[2],v[1]-origin[1]) for v in vs]
+        me=bpy.data.meshes.new(name+'_EditableMesh');me.from_pydata(local_vs,[],fs);me.update()
         bm=bmesh.new();bm.from_mesh(me);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7)
         bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-9);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(me);bm.free()
-        me.update();me.materials.append(mats[role]);uv(me,role,origin)
-        o=bpy.data.objects.new(name,me);scene.collection.objects.link(o);o.parent=parent
+        me.update();me.materials.append(mats[role]);uv(me,role,(0,0,0))
+        o=bpy.data.objects.new(name,me);scene.collection.objects.link(o);o.parent=parent;o.location=origin_b
         o['catalogue_id']='AST-RES-001';o['source_family']='residential_wayfinding_bay';o['source_sign_id']=sign_id
         o['semantic_role']=role;o['collision_contract']='concave_static_surface' if collision else 'visual_only_glyph_or_fastener'
         o['wayfinding_export']=True;o['metric_uv']=True;parts.append(o);return o
