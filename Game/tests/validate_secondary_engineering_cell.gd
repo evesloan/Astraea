@@ -903,6 +903,53 @@ func held_priority_at_gate() -> bool:
 	if not await set_portable_pitch(portable_route_pitch): return false
 	return await advance(50)
 
+func align_tray_drop_on_foot(home: Vector3, grip_y: float) -> Vector3:
+	release_inputs()
+	Input.flush_buffered_events()
+	if not await face_heading(PI/2.0): return Vector3.ZERO
+	# Find a physically reachable point above the empty source tray slot.
+	# A standing capsule need not converge to one arbitrary millimetre pose.
+	for pulse in range(60):
+		var eye: Vector3 = actor.camera.global_position
+		var vertical := grip_y-eye.y
+		if not require(absf(vertical)<tool.hold_distance, "Actual tray region must be reachable by the original tether"): return Vector3.ZERO
+		var horizontal := sqrt(tool.hold_distance*tool.hold_distance-vertical*vertical)
+		var direction := Vector2(home.x-eye.x,home.z-eye.z).normalized()
+		var target := Vector3(eye.x+direction.x*horizontal,grip_y,eye.z+direction.y*horizontal)
+		var local_target: Vector3 = cart.to_local(target)
+		var local_home: Vector3 = cart.to_local(home)
+		if absf(local_target.x-local_home.x)<.08 and absf(local_target.z-local_home.z)<.08 and absf(local_target.x)<.20 and absf(local_target.z)<.36 and Vector2(actor.velocity.x,actor.velocity.z).length()<.06:
+			if actual_player_support() and held_tool_state(): return target
+			return Vector3.ZERO
+		var desired := Vector3(home.x+horizontal,actor.global_position.y,home.z)
+		var local_delta: Vector3 = actor.global_basis.inverse()*(desired-actor.global_position)
+		var step_key: Key
+		if absf(local_delta.x)>absf(local_delta.z): step_key=KEY_D if local_delta.x>0 else KEY_A
+		else: step_key=KEY_S if local_delta.z>0 else KEY_W
+		key(step_key,true)
+		Input.flush_buffered_events()
+		if not await advance(1) or not actual_player_support() or not held_tool_state(): return Vector3.ZERO
+		key(step_key,false)
+		Input.flush_buffered_events()
+		if not await advance(2) or not actual_player_support() or not held_tool_state(): return Vector3.ZERO
+		walked_frames += 3
+	release_inputs()
+	Input.flush_buffered_events()
+	require(false,"Ordinary supported approach did not reach the actual tray placement region")
+	return Vector3.ZERO
+
+func actual_bottle_tray_bounds(product: RigidBody3D) -> Dictionary:
+	var collision: CollisionShape3D
+	for child in product.get_children():
+		if child is CollisionShape3D and child.shape is CylinderShape3D: collision=child
+	if collision==null: return {}
+	var shape: CylinderShape3D=collision.shape
+	var center: Vector3=cart.to_local(collision.global_position)
+	var axis: Vector3=(cart.global_basis.inverse()*collision.global_basis.y).normalized()
+	var extent:=Vector3.ZERO
+	for coordinate in range(3): extent[coordinate]=absf(axis[coordinate])*shape.height*.5+shape.radius*sqrt(maxf(0.0,1.0-axis[coordinate]*axis[coordinate]))
+	return {"center":center,"extent":extent,"shape_margin":shape.margin}
+
 func return_tool_to_cart() -> bool:
 	# No product/cart transform, velocity, freeze or parent edits after parking.
 	# Approach the empty tray slot, aim the ordinary 1.35 m physical tether,
@@ -915,23 +962,25 @@ func return_tool_to_cart() -> bool:
 	# Hold the real bottle above the1.01m tray rim, then release and let gravity
 	# seat it. Aiming directly at its resting point while the spring sags pushes
 	# the returning bottle into the solid rim instead of over the open mouth.
-	var grip_y := home.y + .125 + .50
-	var eye_y := 7.65
-	var horizontal := sqrt(maxf(0.0,1.35*1.35-pow(eye_y-grip_y,2)))
-	# The selected bottle's original slot is on the cart's far/east end.
-	# Walk around its actual body in the supported upper service square instead
-	# of asking the capsule to enter the cart from the west. No contact disabled.
-	if not await walk_path([Vector2(28.38,-403.65),Vector2(31.55,-403.65),Vector2(31.55,home.z),Vector2(home.x+horizontal,home.z)]): return false
-	# Do not reverse a held physical object180degrees in one frame through the
-	# original capsule. Turn on foot at the same bounded rate used on this route.
-	var toward_slot := Vector2(home.x-actor.global_position.x,home.z-actor.global_position.z)
+	# Existing upper-rim top is1.01m. Aim the grip at1.34m; the real
+	# spring sag is then observed, not cancelled by a transform adjustment.
+	var grip_y := cart.global_position.y+1.34
+	if not await walk_path([Vector2(28.38,-403.65),Vector2(31.55,-403.65),Vector2(31.55,home.z)]): return false
+	var drop_target: Vector3 = await align_tray_drop_on_foot(home,grip_y)
+	if failed or drop_target==Vector3.ZERO: return false
+	var toward_slot := Vector2(drop_target.x-actor.global_position.x,drop_target.z-actor.global_position.z)
 	if not await face_heading(atan2(-toward_slot.x,-toward_slot.y)): return false
-	if not require(absf(actor.camera.global_position.distance_to(Vector3(home.x,grip_y,home.z))-tool.hold_distance)<.015,"Actual standing pose must place the drop target on the original physical tether reach sphere"): return false
-	aim(Vector3(home.x,grip_y,home.z))
+	if not require(absf(actor.camera.global_position.distance_to(drop_target)-tool.hold_distance)<.015,"Actual standing pose must place the drop target on the original physical tether reach sphere"): return false
+	aim(drop_target)
 	if not await advance(100): return false
 	var local: Vector3 = cart.to_local(tool.global_position)
-	print("CELL_CART_RETURN_STATE:",JSON.stringify({"actor_xyz":array_xyz(actor.global_position),"tool_xyz":array_xyz(tool.global_position),"tool_cart_local":array_xyz(local),"home_xyz":array_xyz(home),"grip_aim_xyz":[home.x,grip_y,home.z],"tool_grip_xyz":array_xyz(tool.global_transform*tool.grip_local),"velocity":array_xyz(tool.linear_velocity),"tool_basis_y":array_xyz(tool.global_basis.y)}))
+	print("CELL_CART_RETURN_STATE:",JSON.stringify({"actor_xyz":array_xyz(actor.global_position),"tool_xyz":array_xyz(tool.global_position),"tool_cart_local":array_xyz(local),"home_xyz":array_xyz(home),"grip_aim_xyz":array_xyz(drop_target),"tool_grip_xyz":array_xyz(tool.global_transform*tool.grip_local),"velocity":array_xyz(tool.linear_velocity),"tool_basis_y":array_xyz(tool.global_basis.y)}))
 	if not require(tool.driver==actor and absf(local.x)<.30 and absf(local.z)<.45 and local.y>.88 and local.y<1.35, "Original tether must place tool over the real tray before release"): return false
+	var physical:=actual_bottle_tray_bounds(tool)
+	if not require(not physical.is_empty(),"Actual returned bottle collider missing"): return false
+	var center: Vector3=physical.center
+	var extent: Vector3=physical.extent
+	if not require(absf(center.x)+extent.x<.33 and absf(center.z)+extent.z<.51 and center.y-extent.y>1.01,"Whole real bottle must clear the actual upper tray rim before release"): return false
 	focus(true)
 	if not await tap_e(): return false
 	if not require(actor.held_interaction==null and tool.driver==null, "Ordinary E must release returned tool"): return false
@@ -958,7 +1007,8 @@ func walk_aligned(destination: Vector2, yaw: float, input_key: Key) -> bool:
 	release_inputs()
 	if not await face_heading(yaw): return false
 	var delta := destination-Vector2(actor.global_position.x,actor.global_position.z)
-	var travel3: Vector3 = actor.global_basis * (Vector3.RIGHT if input_key == KEY_D else Vector3.BACK)
+	var local_travel := Vector3.RIGHT if input_key == KEY_D else Vector3.LEFT if input_key == KEY_A else Vector3.BACK
+	var travel3: Vector3 = actor.global_basis * local_travel
 	var travel := Vector2(travel3.x,travel3.z).normalized()
 	var allowance := ceili(delta.length()/3.1*60)+180
 	var reached := false
@@ -983,14 +1033,15 @@ func portable_tool_route() -> bool:
 	if not await walk_path([Vector2(20.85,-402.95),Vector2(28.38,-402.95),Vector2(28.38,-405)]): return false
 	if not await park_cart_once() or not await pickup_tool(): return false
 	if not await walk_to(Vector2(28.38,-402.95)): return false
-	# Clear the tray before lowering the carried object to stair-watching height.
-	if not await set_portable_pitch(-PI/6.0): return false
 	# The west wall ends at X20.18. X20.55 leaves a supported capsule setback.
-	# Face the upper room while sidestepping west, then back to the gate centre.
-	if not await walk_aligned(Vector2(20.55,-402.95),PI,KEY_D): return false
-	if not await walk_aligned(Vector2(20.55,-404.5),PI,KEY_S): return false
+	# Face ALONG the open upper corridor, not into its bench/instrument face.
+	# Walk backward west with the tool ahead; lower the view at the setback,
+	# then sidestep toward the aperture while keeping the bottle east-facing.
+	if not await walk_aligned(Vector2(20.55,-402.95),-PI/2.0,KEY_S): return false
+	if not await set_portable_pitch(-deg_to_rad(40.0)): return false
+	if not await walk_aligned(Vector2(20.55,-404.5),-PI/2.0,KEY_A): return false
 	if not await held_priority_at_gate(): return false
-	if not await set_portable_pitch(-PI/6.0): return false
+	if not await set_portable_pitch(-deg_to_rad(40.0)): return false
 	var prior_descent := descent_frames
 	var prior_ascent := ascent_frames
 	if not await walk_path([Vector2(23.3,-404.5),Vector2(24.5,-404.5)]): return false
@@ -998,8 +1049,9 @@ func portable_tool_route() -> bool:
 	if not await sample_lighting_view("lower_live", false): return false
 	# Back up the real steps facing the opening; no held-object reversal inside it.
 	if not await walk_aligned(Vector2(20.55,-404.5),-PI/2.0,KEY_S): return false
-	if not await walk_path([Vector2(20.55,-402.95),Vector2(28.38,-402.95),Vector2(28.38,-405)]): return false
+	if not await walk_aligned(Vector2(20.55,-402.95),-PI/2.0,KEY_D): return false
 	if not await set_portable_pitch(0.0): return false
+	if not await walk_path([Vector2(28.38,-402.95),Vector2(28.38,-405)]): return false
 	if not require(actor.held_interaction==tool and ascent_frames>prior_ascent+3 and absf(actor.global_position.y-6)<.08, "Actual carried tool did not return upstairs"): return false
 	return await return_tool_to_cart()
 
