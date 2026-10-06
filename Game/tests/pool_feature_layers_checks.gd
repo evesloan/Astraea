@@ -276,7 +276,11 @@ func inspect_actual_models() -> void:
 					assert(str(name).begins_with("DATUM_finish_light_"))
 					var light: SpotLight3D=candidate.get_node(NodePath("PoolFeature_"+str(name)))
 					assert(light.global_position.distance_to(node.global_position)<.00005)
-					assert((-light.global_basis.z).distance_to(v3(extra.direction_godot_xyz).normalized())<.000001)
+					# Node3D.look_at subtracts its rounded float32 world target at z≈-450m.
+					# Compare against that actual representation, keeping the1e-6 bound.
+					var ideal_direction: Vector3=v3(extra.direction_godot_xyz).normalized()
+					var native_direction: Vector3=((light.global_position+ideal_direction)-light.global_position).normalized()
+					assert((-light.global_basis.z).distance_to(native_direction)<.000001,"Light direction differs from source-derived native look_at representation")
 					assert(absf(light.light_energy-float(extra.suggested_energy))<.000001 and absf(light.spot_range-float(extra.suggested_range_m))<.000001 and absf(light.spot_angle-float(extra.suggested_spot_angle_degrees))<.000001)
 					assert(str(light.get_meta("source_marker"))==str(name) and bool(light.get_meta("fixture_powered")))
 					assert(light in budget.sources and budget.requested_shadow[light.get_instance_id()])
