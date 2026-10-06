@@ -17,6 +17,7 @@ commands=[('bridge_platform_structure',['--script','res://tests/validate_bridge_
 commands = [(name, ['--script', 'res://tests/validate_' + name + '.gd']) for name in ['upper_horizon_enclosure_structure','upper_horizon_enclosure_windows','aft_crown_platform_structure','aft_crown_platform_access','aft_crown_platform_cart','bridge_enclosure_structure','bridge_enclosure_windows','bridge_enclosure_access','bridge_enclosure_cart']] + commands
 commands = [('d17_connected_access', ['--script', 'res://tests/validate_d17_connected_access.gd']), ('d17_connected_cart', ['--script', 'res://tests/validate_d17_connected_cart.gd'])] + commands
 commands = [('lighting_budget', ['--script', 'res://tests/validate_lighting_budget.gd'])] + commands
+commands = [('grand_pool_access', ['--script', 'res://tests/validate_grand_pool_access.gd'])] + commands
 commands.sort(key=lambda entry: entry[0] != 'import')
 if '--only' in sys.argv:
     requested=sys.argv[sys.argv.index('--only')+1]
@@ -39,12 +40,13 @@ for label,args in commands:
     if label == 'aft_crown_platform_access': frame_budget='60000'
     if label == 'd17_connected_access': frame_budget='12000'
     if label == 'd17_connected_cart': frame_budget='24000'
+    if label == 'grand_pool_access': frame_budget='30000'
     # Fixed60 advances the same60Hz simulation without wall-clock waiting.
     # Import and graphical review retain their separate original workflows.
     clock_args=[] if realtime or label=='import' else ['--fixed-fps','60']
     started=time.perf_counter()
     process=subprocess.Popen(['godot','--headless','--path',str(root),'--quit-after',frame_budget,*clock_args,*args],env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
-    timeout=threading.Timer(240 if label=='d17_connected_cart' else 600 if label=='aft_crown_platform_cart' else 300 if label=='aft_crown_platform_access' else 900 if label=='bridge_enclosure_cart' else 240 if label=='bridge_enclosure_access' else 180 if label in ["star_atlas","bridge_platform_cart"] else 90,process.kill);timeout.daemon=True;timeout.start()
+    timeout=threading.Timer(240 if label in ['d17_connected_cart','grand_pool_access'] else 600 if label=='aft_crown_platform_cart' else 300 if label=='aft_crown_platform_access' else 900 if label=='bridge_enclosure_cart' else 240 if label=='bridge_enclosure_access' else 180 if label in ["star_atlas","bridge_platform_cart"] else 90,process.kill);timeout.daemon=True;timeout.start()
     lines=[];errors=[]
     for line in process.stdout:
         lines.append(line);print(line,end='',flush=True)
