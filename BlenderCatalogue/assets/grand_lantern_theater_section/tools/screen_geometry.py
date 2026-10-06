@@ -14,7 +14,7 @@ for s in seats:
  if s['tier']=='stalls':continue
  deck='D12' if s['tier']=='first_gallery' else 'D13'; x,y,z=s['position']
  hits=[p for f in sm['surfaces'] if f['deck']==deck for p in f['parts'] if contains(p['boundary_xz'],x,z)]
- if not any(abs(p['top_y']-y)<1e-5 for p in hits):support.append(dict(id=s['id'],position=s['position'],surface_top_y=sorted(set(p['top_y'] for p in hits)),reason='policy return clipping removes source rake support' if hits else 'no named surface at place centre'))
+ if not any(p['top_y'] is not None and abs(p['top_y']-y)<1e-5 for p in hits):support.append(dict(id=s['id'],position=s['position'],surface_top_y=sorted(set(p['top_y'] for p in hits)),reason='policy return clipping removes source rake support' if hits else 'no named surface at place centre'))
 # Geometry-only bounds, not body or collision acceptance
 outside=[]
 for o in g['objects']:

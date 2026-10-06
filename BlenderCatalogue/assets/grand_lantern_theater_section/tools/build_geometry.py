@@ -35,6 +35,25 @@ def subtract_rect(p,r):
   if q: pieces.append(q)
  return pieces
 
+def split_line(p,a,b,inside_sign,keep_inside):
+ out=[]
+ def val(v):return ((b[0]-a[0])*(v[1]-a[1])-(b[1]-a[1])*(v[0]-a[0]))*inside_sign
+ for u,v in zip(p,p[1:]+p[:1]):
+  du,dv=val(u),val(v); iu=du>=-1e-9 if keep_inside else du<=1e-9; iv=dv>=-1e-9 if keep_inside else dv<=1e-9
+  if iu:out.append(u)
+  if iu!=iv:
+   t=du/(du-dv);out.append([u[j]+t*(v[j]-u[j]) for j in range(2)])
+ return out if len(out)>2 and area(out)>1e-8 else []
+def subtract_convex(p,c):
+ signed=sum(c[i][0]*c[(i+1)%len(c)][1]-c[(i+1)%len(c)][0]*c[i][1] for i in range(len(c))); sign=1 if signed>0 else -1
+ pieces=[]; remain=p
+ for a,b in zip(c,c[1:]+c[:1]):
+  if not remain:break
+  q=split_line(remain,a,b,sign,False)
+  if q:pieces.append(q)
+  remain=split_line(remain,a,b,sign,True)
+ return pieces
+
 def rect(r): x0,z0,x1,z1=r; return [[x0,z0],[x1,z0],[x1,z1],[x0,z1]]
 def difference(ps,rs):
  for r in rs: ps=[q for p in ps for q in subtract_rect(p,r)]
@@ -66,20 +85,36 @@ for tier,deck,y,rows,rstart in [('stalls','D11',69.5,18,20),('first_gallery','D1
  radii=[19.5]+[rstart+1.5*i+0.75 for i in range(rows-1)]+[46.4]
  for row,(r0,r1) in enumerate(zip(radii,radii[1:])):
   for a in range(-54,54):
-   for j,p in enumerate(difference([ring(r0,r1,a,a+1)],returns if deck!='D11' else [])):
+   for j,p in enumerate([ring(r0,r1,a,a+1)]):
     names.append(prism(f'{sid}_r{row+1:02}_a{a+54:03}_{j}',p,y+row*.12,.45,'walkable_authored',surface=sid)); polys.append(dict(boundary_xz=p,top_y=y+row*.12))
  if deck!='D11': surfaces.append(dict(region_id=sid,deck=deck,absolute_floor_y=y,owner='grand_lantern_theater',kind='authored_theater_surface',provided_by_asset=True,parts=polys,objects=names))
  else: stalls_polys=polys
- for kind,ps in [('rear_public_returns',return_cells),('foyer_landings',difference([rect([-117,-153,-35,-116])],[[-59,-146,-50,-122],[-44.5,-124,-38.5,-118]])),('stair_upper_landing',[rect([-59,-123.8,-50,-122])])]:
+ fan_cut=[[-76,-238]]+[[-76+46.4*math.sin(math.radians(a)),-238+46.4*math.cos(math.radians(a))] for a in range(-54,55)]
+ rear_parts=[q for p in return_cells for q in subtract_convex(p,fan_cut)]
+ ramp_parts=[ring(46.4,69.44,a,a+1) for a in range(-3,3)]
+ for rp in ramp_parts:rear_parts=[q for p in rear_parts for q in subtract_convex(p,rp)]
+ for kind,ps in [('rear_public_returns',rear_parts),('foyer_landings',difference([rect([-117,-153,-35,-116])],[[-59,-146,-50,-122],[-44.5,-124,-38.5,-118]])),('stair_upper_landing',[rect([-59,-123.8,-50,-122])])]:
   if deck=='D11': continue
-  sid=f'{deck}_theater_{kind}'; names=[prism(f'{sid}_{i:03}',p,y,.45,'walkable_authored',surface=sid) for i,p in enumerate(ps)]
+  sid=f'{deck}_theater_{kind}'; 
+  if kind=='foyer_landings': ps=ps+[rect([-35,-128.6,-34,-123.4])]
+  names=[prism(f'{sid}_{i:03}',p,y,.45,'walkable_authored',surface=sid) for i,p in enumerate(ps)]
   surfaces.append(dict(region_id=sid,deck=deck,absolute_floor_y=y,owner='grand_lantern_theater',kind='authored_theater_surface',provided_by_asset=True,parts=[dict(boundary_xz=p,top_y=y) for p in ps],objects=names))
+
+ if deck!='D11':
+  f=next(f for f in surfaces if f['region_id']==f'{deck}_theater_rear_public_returns')
+  for i,p in enumerate(ramp_parts):
+   heights=[y+1.92-(math.hypot(x+76,z+238)-46.4)/12 for x,z in p]
+   name=f'{deck}_rear_access_ramp_{i}'
+   vs=[[x,h,z] for (x,z),h in zip(p,heights)]
+   objects.append(dict(name=name,vertices_world=vs,faces=[[0,2,1],[0,3,2]],role='walkable_authored',collision_owner='AST-CUL-005',surface_region=f['region_id'],material_family='hospitality_ivory'))
+   f['parts'].append(dict(boundary_xz=p,vertex_top_y=heights,top_y=None));f['objects'].append(name)
+
 # D11 compiler datum is deliberately not exported, solely diagnostic source preview.
 box('D11_COMPILER_PREVIEW_NOT_EXPORT',[-117,-263,-35,-116],69.5,.12,'preview_only')
 box('stage_36x14',[-94,-252,-58,-238],70.1,.6,'walkable_authored','dark_stage')
 # True incline stage access, kept in exact reservation
 objects.append(dict(name='stage_access_ramp_1_in_12',vertices_world=[[-55,69.5,-238.8],[-51,69.5,-238.8],[-51,70.1,-246],[-55,70.1,-246]],faces=[[0,2,1],[0,3,2]],role='walkable_authored',collision_owner='AST-CUL-005',material_family='hospitality_ivory'))
-for name,r in [('ramp_low_landing',[-55,-238.8,-51,-237]),('ramp_high_landing',[-55,-247.8,-51,-246])]: box(name,r,69.5 if 'low' in name else 70.1,.25,'walkable_authored')
+for name,r in [('ramp_low_landing',[-55,-238.8,-51,-237]),('ramp_high_landing',[-58,-249.4,-51,-246])]: box(name,r,69.5 if 'low' in name else 70.1,.25,'walkable_authored')
 # Deep proscenium: opening exact x[-94,-58], y[70.1,86.1].
 box('proscenium_port_reveal',[-96,-240,-94,-237.3],86.1,16,'static_structure','cultural_red')
 box('proscenium_starboard_reveal',[-58,-240,-56,-237.3],86.1,16,'static_structure','cultural_red')
@@ -95,10 +130,17 @@ for a in range(0,360,6):
 fixtures=[dict(id=f'lantern_sconce_{i:02}',position_world=[x,82 if i%2 else 74,-207 if i<4 else -155],family='AST-STF-006',aim_world=[0,-1,0],runtime_light='pending_source_export_and_lighting_review') for i,x in enumerate([-104,-48,-104,-48,-104,-48])]
 fixtures += [dict(id='stage_cue_worklight',position_world=[-54,71,-249],family='AST-CUL-004',aim_world=[0,-.3,-1],runtime_light='not_instantiated')]
 placements=proposal['seat_proposals']
+for seat in placements:
+ if seat['tier']=='first_gallery' and seat['kind']=='rear_transfer_replaceable_place':
+  seat['planning_original_position']=seat['position'][:]
+  seat['position'][2]=-163
+  seat['source_revision_reason']='Level rear viewing row relocated inside same return to avoid accessible ramp, exact IDs/capacity retained'
 assert len(placements)==2200 and len({s['id'] for s in placements})==2200
 assert len(surfaces)==8 and set(s['region_id'] for s in surfaces)==set(s['region_id'] for s in policy['whitelist'])
+from extend_architecture import extend
+extend(objects,surfaces,box,prism,write,ROOT)
 geometry=dict(schema=1,catalogue_id='AST-CUL-005',coordinate_system='world XYZ metres; Blender adapter maps (X,-Z,Y)',status='PURE_SOURCE_GEOMETRY_NO_ENGINE_ACCEPTANCE',objects=objects)
-write(ROOT/'source/geometry.json',geometry); write(ROOT/'contracts/surface_manifest.json',dict(schema=1,surfaces=surfaces,D11='Compiler owns flat base; preview excluded; asset owns rake/stage/ramp, compiler must partition base against those footprints'))
+write(ROOT/'source/geometry.json',geometry); write(ROOT/'contracts/surface_manifest.json',dict(schema=2,partition_policy='Parent approved source revision: return union subtracts actual fan rake and owns 1:12 rear ramp in its original bounds; eight IDs retained; shared compiler pending',surfaces=surfaces,D11='Compiler owns flat base; preview excluded; asset owns rake/stage/ramp, compiler must partition base against those footprints'))
 write(ROOT/'contracts/place_instances.json',dict(source_family='AST-CUL-003',source_sha256=chair_hash,instance_only=True,seat_use_controller=False,places=placements))
 write(ROOT/'contracts/fixture_markers.json',dict(fixtures=fixtures,not_runtime_lights=True))
 write(ROOT/'qa/source_geometry_receipt.json',dict(object_count=len(objects),surface_count=len(surfaces),place_count=2200,capacity=proposal['capacity'],chair_source_unchanged=sha(chair)==chair_hash,chair_source_sha256=chair_hash,geometry_sha256=sha(ROOT/'source/geometry.json'),surface_manifest_sha256=sha(ROOT/'contracts/surface_manifest.json'),not_run=['Blender','Godot','export','import','render','capsule','species','loaded_cart','runtime_routes']))
