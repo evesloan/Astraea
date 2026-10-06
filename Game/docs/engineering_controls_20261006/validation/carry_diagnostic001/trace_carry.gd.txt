@@ -1,0 +1,51 @@
+extends "res://tests/validate_secondary_engineering_cell.gd"
+# Diagnostic-only overlay: preserve all original assertions, routes and physics.
+var trace_rows: Array = []
+var trace_mode := "targets_on"
+var trace_peak := 0.0
+var trace_contacts_enabled := false
+var trace_last_forward := Vector3.ZERO
+var trace_target_rows: Array = []
+
+func _initialize() -> void:
+	if OS.get_cmdline_user_args().has("--disable-control-targets"): trace_mode = "targets_disabled_unsaved"
+	super._initialize()
+
+func mesh_and_contact_census() -> bool:
+	var control_bank := ship.find_child("EngineeringCalibrationBank",true,false)
+	assert(control_bank!=null)
+	for area in control_bank.find_children("SourceCalibrationTarget","Area3D",true,false):
+		trace_target_rows.append({"path":str(area.get_path()),"layer":area.collision_layer,"mask":area.collision_mask,"monitoring":area.monitoring,"monitorable":area.monitorable})
+		if trace_mode=="targets_disabled_unsaved": area.collision_layer=0
+	assert(trace_target_rows.size()==120)
+	return super.mesh_and_contact_census()
+
+func held_tool_state() -> bool:
+	if is_instance_valid(tool) and actor.held_interaction==tool:
+		if not trace_contacts_enabled:
+			tool.max_contacts_reported=maxi(tool.max_contacts_reported,32)
+			tool.contact_monitor=true
+			trace_contacts_enabled=true
+		var contacts: Array=[]
+		for body in tool.get_colliding_bodies(): contacts.append(str(body.get_path()))
+		var forward: Vector3=-actor.camera.global_basis.z
+		var camera_step := 0.0 if trace_last_forward==Vector3.ZERO else acos(clampf(trace_last_forward.dot(forward),-1,1))
+		trace_last_forward=forward
+		var row := {"frame":frames,"actor":array_xyz(actor.global_position),"camera_rotation":array_xyz(actor.camera.global_rotation),"camera_angle_step_rad":camera_step,"tool":array_xyz(tool.global_position),"velocity":array_xyz(tool.linear_velocity),"angular_velocity":array_xyz(tool.angular_velocity),"speed_mps":tool.linear_velocity.length(),"tool_basis_y":array_xyz(tool.global_basis.y),"grip":array_xyz(tool.global_transform*tool.grip_local),"hand_target":array_xyz(actor.camera.global_position+forward*tool.hold_distance),"contacts":contacts,"collision_layer":tool.collision_layer,"collision_mask":tool.collision_mask,"mass":tool.mass,"maximum_force":tool.maximum_force,"stiffness":tool.stiffness,"damping":tool.damping}
+		trace_rows.append(row)
+		if trace_rows.size()>360: trace_rows.pop_front()
+		trace_peak=maxf(trace_peak,tool.linear_velocity.length())
+		if tool.linear_velocity.length()>=7.5: save_trace("NEAR_LIMIT")
+	var ok := super.held_tool_state()
+	if not ok: save_trace("ORIGINAL_ASSERTION_FAILED")
+	return ok
+
+func write_receipt(status: String, detail := "") -> void:
+	super.write_receipt(status,detail)
+	save_trace(status)
+
+func save_trace(status: String) -> void:
+	var file := FileAccess.open("res://artifacts/carry_trace_"+trace_mode+".json",FileAccess.WRITE)
+	assert(file!=null)
+	file.store_string(JSON.stringify({"status":status,"mode":trace_mode,"checkpoint":checkpoint,"peak_sampled_speed_mps":trace_peak,"original_safety_limit_mps":8.0,"target_areas":trace_target_rows,"last360_held_samples":trace_rows,"scope":"Unsaved diagnostic overlay only. Original movement/tether/geometry/assertions unchanged; contact reporting enabled only on the carried body. Targets-disabled variant changes only new Area layers in this process."},"  ")+"\n")
+	file.close()

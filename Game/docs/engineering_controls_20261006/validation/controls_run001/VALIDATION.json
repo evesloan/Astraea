@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "check": "import",
+      "passed": true,
+      "exit_code": 0,
+      "errors": [],
+      "wall_seconds": 3.8163,
+      "clock_mode": "editor"
+    },
+    {
+      "check": "engineering_controls",
+      "passed": false,
+      "exit_code": -15,
+      "errors": [
+        "ERROR: CALIBRATION FAIL at ENG2_CONTROL_C1L_03: Actuator did not visibly move from its original rest pose"
+      ],
+      "wall_seconds": 32.6872,
+      "clock_mode": "fixed60"
+    }
+  ],
+  "wall_seconds": 36.5042,
+  "clock_mode": "fixed60",
+  "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+}

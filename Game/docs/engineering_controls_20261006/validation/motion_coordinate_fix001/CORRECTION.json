@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-06T15:45:26.883038+00:00",
+  "scope": "Test-only rest-relative motion predicate and evidence; actuator/controller/geometry/travel/range/actual source-pivot formula/exact return/all120two-cycle requirements unchanged.",
+  "pre_sha256": "4e2a23937e2379abaa36f9e27536dcb617892dd0dd4ada35362bf4fb7dd75e69",
+  "post_sha256": "35cce2fca5d0ebccd76e1b4230cb123798008f9709a53270580f8da03662c570",
+  "old_problem": "Transform3D.is_equal_approx uses component-relative tolerance; at Z462.595m this can treat millimetres of intended8mm button travel as unchanged.",
+  "Godot_source": "https://github.com/godotengine/godot/blob/4.6.3-stable/core/math/math_funcs.h#L503-L513",
+  "original_failure": "controls_run001: first two controls completed two cycles; third button failed the global-coordinate comparison while motion samples already covered its -8mm source limit.",
+  "actual_pose_match_tolerance_unchanged_m": 0.0002,
+  "all_runtime_sources_changed": false
+}

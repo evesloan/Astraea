@@ -1,0 +1,33 @@
+{
+  "status": "REPRODUCED_IDENTICAL_WITH_TARGETS_DISABLED",
+  "trace_samples_identical": true,
+  "peak_mps": 8.38626575469971,
+  "safety_limit_mps": 8.0,
+  "control_areas": 120,
+  "area_layers": [
+    2
+  ],
+  "area_masks": [
+    0
+  ],
+  "body_contact_owners": {
+    "/root/AstraeaPresentation/World360/Astraea/ShipSpace/Districts/SecondaryEngineeringSection_WIP/SecondaryEngineeringWorkbayCell/AuthoredWorkbaySection/SectionStatic_3_WORKBAY/StaticContact": 103,
+    "/root/AstraeaPresentation/World360/Astraea/ShipSpace/Districts/SecondaryEngineeringSection_WIP/SecondaryEngineeringWorkbayCell/AuthoredWorkbaySection/CONTACT_PROXY_CellGlass_S0/StaticContact": 165,
+    "/root/AstraeaPresentation/World360/Astraea/ShipSpace/Districts/SecondaryEngineeringSection_WIP/SecondaryEngineeringWorkbayCell/AuthoredWorkbaySection/CONTACT_PROXY_CellGlass_S1/StaticContact": 38,
+    "/root/AstraeaPresentation/World360/Astraea/ShipSpace/Districts/SecondaryEngineeringSection_WIP/SecondaryEngineeringWorkbayCell/AuthoredWorkbaySection/CONTACT_PROXY_CellGlass_S2/StaticContact": 33,
+    "/root/AstraeaPresentation/World360/Astraea/ShipSpace/Districts/SecondaryEngineeringSection_WIP/SecondaryEngineeringWorkbayCell/AuthoredWorkbaySection/SectionStatic_0_WORKBAY/StaticContact": 48
+  },
+  "max_camera_step_radians": 0.0200049726678808,
+  "last_contact_frame": 9642,
+  "over_limit_frames_observed": [
+    9645
+  ],
+  "spike_duration_limit": "One over-limit sample is observed; original safety assertion stops immediately. No longer duration inferred.",
+  "conclusion": "Disabling new interaction-only Area3D collision layers in the loaded scene leaves the trace and failure identical. The measured direct contacts are retained south panes/frame; the1.35m scripted hand arc traps the bottle before release acceleration. This identifies a route/contact failure mechanism, but is not a complete pre-controls source rollback comparison.",
+  "preserved_assertions": "8m/s speed,2.1m camera bound, retained floor/steps, original tether and capsule; no disabled runtime collider",
+  "source_records": {
+    "targets_on": "targets_on/carry_trace_targets_on.json",
+    "targets_disabled": "targets_disabled_unsaved/carry_trace_targets_disabled_unsaved.json"
+  },
+  "historical_uncertainty": "The original cell carry test passed before controls adoption. Both target-layer modes now fail identically; no matching full baseline scene with all controls code removed has been run. Preserve that distinction rather than calling the whole current cell passed."
+}

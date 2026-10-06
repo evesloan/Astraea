@@ -1,0 +1,45 @@
+{
+  "status": "EXACT_PARENT_REPORTED_THEATER_SUCCESSOR_REVIEWED",
+  "manifest_path": "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/runtime_stage01/stair_adoption017/frozen_candidate001/FINAL_APPLY_MANIFEST.json",
+  "manifest_sha256": "01755f275565a29dbfa3d34cd1ffeec75e5d1d9b464d1690ed22a7d2cace4161",
+  "post_run_audit_path": "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/runtime_stage01/stair_adoption017/frozen_candidate001/walk_run001/POST_RUN_AUDIT.json",
+  "post_run_audit_sha256": "fae97f8ad06bede701ebf8699edd510c74fe9a9aa65c6121e237ce03df4426c1",
+  "original_input_pins_path": "before_per_cue_revision/INPUT_PINS.json",
+  "original_input_pins_sha256": "633b2434cb1b699d888162aecde9331bbe8ce3ea0d0152fe3102d2b9ecd306aa",
+  "changed_old_pins": {
+    "tests/secondary_engineering_additive_guard.gd": {
+      "before": "c565cd15b9a613a8c67271574e58b3e1b7401b6f56d2bc525ffabfccd3c446fc",
+      "after": "54b2656bae899aca81027fa296b7a61bf0c97c46bdfd869ca06d299db1c1b16f"
+    },
+    "tools/validate.py": {
+      "before": "b34f650ab1c04e01ddd4459ec4ce5f7e6351701dfc2d45aa481601053307a5e8",
+      "after": "b0f4fb8b325016278a58f8be3b8054521af8eb8ec69e63679fe4242526473abc"
+    }
+  },
+  "new_theater_dependency_pins": {
+    "scripts/ship.gd": "9f3d443c6af4865f2cf9225e0ce84ac2be8b8d8817bf15b32dbdf2bf34eafe0a",
+    "scripts/theater_stair_walking_contacts.gd": "bb80abff9d94defe9228300f579243dd6057110da8668e85d8d353cf9796a70d",
+    "data/architecture/THEATER_STAIR_WALK_CONTACTS_011.json": "7c3616b677a4b9ca48ed1fa6b3e056dfd7a3bb5c1602494bd18d4df4cbe69ca0"
+  },
+  "ship_one_line_reversal_verified": true,
+  "guard_two_branch_reversal_verified": true,
+  "all_prior_118_validator_entries_budgets_timeouts_preserved": true,
+  "new_validator_entry": "theater_stair_walk",
+  "player_presentation_controls_listener_and_pcm_unchanged": true,
+  "engine_launch_by_this_lane": false,
+  "watch_scope_note": "Every original native pin remains. New live pins are limited to the three actual added stair runtime inputs (ship, builder, contract). The reviewed15-file theater manifest and full initial review are retained as provenance; unrelated QA-only helper/receipt changes do not become native-runtime launch gates.",
+  "full_initial_review_archive": "theater_review_full_scope_snapshot",
+  "full_initial_review_sha256": "b52f90070977b7748c9c4e0d7acbaacc3cf4a7c9b3c6d3430f61739f2c6a6980",
+  "reviewed_but_not_live_runtime_inputs": {
+    "docs/THEATER_STAIR_SHIP_SUCCESSOR_011.json": "63a0626beea724e41076e4a42a2211a21806106c38e1f5dae6017182c627e34a",
+    "docs/theater_stair_contacts011/CATALOGUE_SOURCE_RETENTION_MANIFEST.json": "d13bf64d6ee92487c533cd9b9630e9eaf24b5a7c8b85da2ca4cab8fbdfc7c378",
+    "docs/theater_stair_contacts011/REOPENED_CONTACTS.json": "8d19510a582274536b519209c30b30c36545d7db2fc1a3fd1729868d9f03d882",
+    "docs/theater_stair_contacts011/RUNTIME_VERTEX_EQUIVALENCE.json": "b2139256f9cea5834b9b8683ac21ee1fd1fb862f264a69e9919927b3099415d5",
+    "docs/theater_stair_contacts011/SOURCE_CHECKED_RUNTIME_CONTRACT.json": "ead6465390acc9e999ad7e0cacdb6a702b179c7b168c76609d219cf0558ca232",
+    "docs/theater_stair_contacts011/SOURCE_REOPEN_QA.json": "e138a1f176c0e3ee5bd690ae1615f88a843ff9bf474276901bf33ce6011286a7",
+    "docs/theater_stair_contacts011/SOURCE_RUN_RECEIPT.json": "3c4fad05b0ad59258797ee18e76aa2afdad874c2952d137b74704ebabab3a3dc",
+    "tests/fixtures/THEATER_STAIR_WALK_ROUTE_011.json": "e338ff35145c66d400f8566d1d141917114a153f92c949e6ae21c3aa4279dfbf",
+    "tests/theater_stair_ship_successor.gd": "509fcd766f18a7cd217f04a6980335b831a10f363d3f0242f207a25e93e22cb3",
+    "tests/validate_theater_stair_walk.gd": "4a0161bc18e58c68493b7d00b09fff874023cb72797d63ca030a3cbb549da090"
+  }
+}
