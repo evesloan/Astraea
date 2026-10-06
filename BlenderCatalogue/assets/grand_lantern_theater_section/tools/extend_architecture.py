@@ -2,12 +2,26 @@
 import math
 
 def extend(objects,surfaces,box,prism,write,root):
+ # Parent-approved narrow interface deltas, same eight IDs; never broadens full region rectangles.
+ for deck,y in [('D12',78),('D13',84)]:
+  for kind,name,r in [('rear_public_returns','secondary_exit_threshold',[-35,-172.7,-34,-169.3]),('foyer_landings','lift_fixed_gate_sill',[-43.2,-124,-39.8,-123.5])]:
+   p=[[r[0],r[1]],[r[2],r[1]],[r[2],r[3]],[r[0],r[3]]];sid=deck+'_theater_'+kind
+   n=prism(deck+'_'+name,p,y,.25,'walkable_authored',surface=sid)
+   f=next(f for f in surfaces if f['region_id']==sid);f['parts'].append(dict(boundary_xz=p,top_y=y,threshold_delta=name));f['objects'].append(n)
+ # Ground fixed sill is source-owned once; compiler excludes it and moving cabin footprint.
+ prism('D11_lift_fixed_gate_sill',[[-43.2,-124],[-39.8,-124],[-39.8,-123.5],[-43.2,-123.5]],69.5,.25,'walkable_authored',surface='D11_lift_gate_sill')
+ write(root/'contracts/exact_threshold_deltas.json',dict(main_upper_foyer=dict(rectangle=[-35,-128.6,-34,-123.4],decks=['D12','D13'],parent_approved=True),secondary_upper_returns=dict(rectangle=[-35,-172.7,-34,-169.3],decks=['D12','D13'],parent_approved=True),fixed_lift_gate_sills=dict(rectangle=[-43.2,-124,-39.8,-123.5],decks=['D11','D12','D13'],basis='Bounded internal threshold-gap permission; source fixed sill ends exactly at reserved dynamic5x5 platform front, no positive-area overlap',cabin_reserved_rectangle=[-44,-123.5,-39,-118.5],dynamic_cabin='Parent fitted derivative only; source floor not fabricated'),ground_compiler_threshold_extensions=[[-35,-128.6,-34,-123.4],[-35,-172.7,-34,-169.3],[-36,-258.7,-34,-255.3]],external_support='X>-34 remains parent owned and unbuilt; no source collision beyond allocation'))
  stair_records=[]
  def flight(name,x0,x1,z0,direction,nr,base,rise):
   run=(nr-1)*.32; top=base+rise
   for i in range(nr-1):
    z1=z0+direction*i*.32;z2=z0+direction*(i+1)*.32
    box(f'{name}_tread_{i+1:02}',[x0,min(z1,z2),x1,max(z1,z2)],base+(i+1)*rise/nr,.25,'stair_flight')
+  # Paired side stringers outside the clear tread width, tied into level landings.
+  for sx in [x0-.2,x1]:
+   ez=z0+direction*run;lo=base+rise/nr-.25;hi=top+rise/nr-.25
+   vs=[[sx,lo,z0],[sx+.2,lo,z0],[sx+.2,hi,ez],[sx,hi,ez],[sx,lo-.3,z0],[sx+.2,lo-.3,z0],[sx+.2,hi-.3,ez],[sx,hi-.3,ez]]
+   objects.append(dict(name=name+'_stringer_'+str(sx),vertices_world=vs,faces=[[0,1,2,3],[4,7,6,5],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]],role='static_stair_structure',collision_owner='AST-CUL-005',material_family='hospitality_bronze'))
   stair_records.append(dict(id=name,clear_x=[x0,x1],start_z=z0,end_z=z0+direction*run,risers=nr,riser=rise/nr,tread=.32,bottom_y=base,top_y=top,clear_width=x1-x0))
   # Side guards sit OUTSIDE genuine 3.2m tread clear width. Sloping upper/lower edges.
   for x in [x0-.18,x1+.03]:
@@ -32,13 +46,34 @@ def extend(objects,surfaces,box,prism,write,root):
   if i<3:
    box(f'D12_D13_turn_{i+1}',[-58.6,z,-55.4,z+1.8],y,.25,'stair_flight');z+=1.8
  assert abs(z+123.8)<1e-7 and abs(y-84)<1e-7
- write(root/'contracts/stair_source_contract.json',dict(flights=stair_records,landing_owner='AST-CUL-005 stair-flight assembly except exact eight-manifest upper landing planes',D11_D12_minimum_stacked_underside_clearance=4.0,D12_D13='Four sequential flights, no3m stacked ceiling pinch',guard_height_intent=1.2,guard_certification=False,headroom_scope='Stepwise lower pair to upper pair, shaft/roof clearance; species/live capsule/cart gate remains open'))
+ write(root/'contracts/stair_source_contract.json',dict(flights=stair_records,landing_owner='AST-CUL-005 stair-flight assembly except exact eight-manifest upper landing planes',D11_D12_conservative_stacked_stringer_clearance=3.55,D12_D13='Four sequential flights, no3m stacked ceiling pinch',guard_height_intent=1.2,guard_certification=False,headroom_scope='Stepwise lower pair to upper pair, shaft/roof clearance; species/live capsule/cart gate remains open'))
  # West acoustic liner remains wholly inward of pressure-wall0.8 normal reservation.
  box('west_acoustic_vertical_boundary',[-117.65,-263,-117.4,-116],87,17.5,'static_structure','cultural_red')
  slope=8.9/4.5
- objects.append(dict(name='west_acoustic_tapered_return',vertices_world=[[-117.65,87,-263],[-117.65,87,-116],[-117.65+slope*4.5,91.5,-116],[-117.65+slope*4.5,91.5,-263]],faces=[[0,1,2],[0,2,3]],role='acoustic_boundary_not_pressure_hull',collision_owner='AST-CUL-005',material_family='cultural_red'))
+ outer=[[-117.65,87,-263],[-117.65,87,-116],[-117.65+slope*4.5,91.5,-116],[-117.65+slope*4.5,91.5,-263]]
+ normal=math.hypot(1,slope);inner=[[x+.12/normal,y-.12*slope/normal,z] for x,y,z in outer]
+ objects.append(dict(name='west_acoustic_tapered_return',vertices_world=outer+inner,faces=[[0,1,2,3],[4,7,6,5],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]],role='acoustic_boundary_not_pressure_hull',collision_owner='AST-CUL-005',material_family='cultural_red',thickness_normal=.12))
+
+ # Continuous low-profile tier guard/fascia bands, kept out of chair bearings and3.4m side returns.
+ for deck,y,inner in [('D11',69.5,18),('D12',78,19.5),('D13',84,19.5)]:
+  if deck!='D11':
+   for a in range(-54,54,3):
+    p=[[-76+r*math.sin(math.radians(t)),-238+r*math.cos(math.radians(t))] for r,t in [(inner,a),(inner+.1,a),(inner+.1,a+3),(inner,a+3)]]
+    prism(f'{deck}_inner_balcony_guard_{a+54:03}',p,y+1.2,1.2,'guard_proposal','hospitality_bronze')
+  # Rear guard leaves a genuine6-degree ramp mouth; stalls exits remain parent source finishing.
+  if deck!='D11':
+   for a in list(range(-54,-3,3))+list(range(3,54,3)):
+    p=[[-76+r*math.sin(math.radians(t)),-238+r*math.cos(math.radians(t))] for r,t in [(46.4,a),(46.47,a),(46.47,a+3),(46.4,a+3)]]
+    prism(f'{deck}_rear_balcony_guard_{a+54:03}',p,y+1.92+1.2,1.2,'guard_proposal','hospitality_bronze')
+ # Explicit enclosed two-leaf acoustic pockets: leaves/behavior remain parent fitted derivative.
+ for deck,y in [('D11',69.5),('D12',78),('D13',84)]:
+  for side,a,b in [('fore',-131.3,-128.6),('aft',-123.4,-120.7)]:
+   box(f'{deck}_door_pocket_{side}_back',[-34.5,a,-34.35,b],y+3.4,3.4,'static_structure','hospitality_bronze')
+   box(f'{deck}_door_pocket_{side}_front',[-34.15,a,-34,b],y+3.4,3.4,'static_structure','hospitality_bronze')
+   box(f'{deck}_door_pocket_{side}_cap',[-34.5,a,-34,b],y+3.65,.25,'static_structure','hospitality_bronze')
+ write(root/'contracts/fitted_door_pocket_contract.json',dict(clear_main_aperture_z=[-128.6,-123.4],clear_width=5.2,clear_height=3.4,two_leaf_target_width=2.6,pocket_length=2.7,pocket_channel_x=[-34.35,-34.15],leaf_thickness_reservation=.12,remaining_channel_clearance=.08,door_owner='Parent fitted AST-DOR family derivative; no source leaf/controller authored',internal_turning='Main vestibule clear3.4m approach; lift boarding rectangle[-46.5,-130,-38.5,-124] remains clear of shaft/stairs',external_landing='X>-34 parent owned and unbuilt'))
  # East acoustic boundary split around six true doorway apertures, not decorative door dots.
- openings=[]
+ openings=[(-258.7,-255.3,69.5,72.9)]
  for y in [69.5,78,84]:
   openings += [(-128.6,-123.4,y,y+3.4),(-172.7,-169.3,y,y+3.4)]
  zs=sorted(set([-263,-116]+[q for a,b,y,t in openings for q in [a,b]]));ys=sorted(set([69.5,91.5]+[q for a,b,y,t in openings for q in [y,t]]))

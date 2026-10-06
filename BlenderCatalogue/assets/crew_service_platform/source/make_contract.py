@@ -45,6 +45,9 @@ for key,x,z in ports:
 # Gate pockets stay outside clear polygons; all named dynamic hardware remains reserved.
 parts=[]
 def add(name,bounds,role,kind='static_architecture'):
+ if kind=='ceiling_cap':
+  bounds=[round(v,8) for v in bounds]
+  if min(bounds[i+1]-bounds[i] for i in [0,2,4])<1e-8:return
  assert all(bounds[i+1]>bounds[i] for i in [0,2,4]);parts.append(dict(name=name,world_aabb=bounds,role=role,kind=kind,catalogue_id='AST-STF-010'))
 # Extract exact orthogonal boundary, with outside-only shells preserving TRUE 3.6 m clear.
 open_union=unary_union(openings)

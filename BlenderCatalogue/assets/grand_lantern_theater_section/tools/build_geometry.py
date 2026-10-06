@@ -82,7 +82,7 @@ def ring(r0,r1,a0,a1):
 for tier,deck,y,rows,rstart in [('stalls','D11',69.5,18,20),('first_gallery','D12',78,17,22),('crown_gallery','D13',84,17,22)]:
  sid=f'{deck}_theater_gallery_seating' if deck!='D11' else 'D11_theater_stalls_rake'; polys=[]; names=[]
  # 1 degree facets: chord departure at outer edge <=1.8mm
- radii=[19.5]+[rstart+1.5*i+0.75 for i in range(rows-1)]+[46.4]
+ radii=[18 if deck=='D11' else 19.5]+[rstart+1.5*i+0.75 for i in range(rows-1)]+[46.4]
  for row,(r0,r1) in enumerate(zip(radii,radii[1:])):
   for a in range(-54,54):
    for j,p in enumerate([ring(r0,r1,a,a+1)]):
@@ -91,7 +91,18 @@ for tier,deck,y,rows,rstart in [('stalls','D11',69.5,18,20),('first_gallery','D1
  else: stalls_polys=polys
  fan_cut=[[-76,-238]]+[[-76+46.4*math.sin(math.radians(a)),-238+46.4*math.cos(math.radians(a))] for a in range(-54,55)]
  rear_parts=[q for p in return_cells for q in subtract_convex(p,fan_cut)]
- ramp_parts=[ring(46.4,69.44,a,a+1) for a in range(-3,3)]
+ # Replace the cart crossing with a level3.4m plateau and two graded transverse approaches.
+ ramp_patches=[]
+ for a in range(-3,3):
+  def on_line(z,t):return [-76+(z+238)*math.tan(math.radians(t)),z]
+  inner0=[-76+46.4*math.sin(math.radians(a)),-238+46.4*math.cos(math.radians(a))]
+  inner1=[-76+46.4*math.sin(math.radians(a+1)),-238+46.4*math.cos(math.radians(a+1))]
+  ramp_patches.append(([inner0,on_line(-180.5,a),on_line(-180.5,a+1),inner1],[1.92,1,1,1.92],'upper_run'))
+  ramp_patches.append(([on_line(-180.5,a),on_line(-177.1,a),on_line(-177.1,a+1),on_line(-180.5,a+1)],[1,1,1,1],'cart_plateau'))
+  ramp_patches.append(([on_line(-177.1,a),on_line(-165.1,a),on_line(-165.1,a+1),on_line(-177.1,a+1)],[1,0,0,1],'lower_run'))
+ left0=on_line(-180.5,-3);left1=on_line(-177.1,-3);right0=on_line(-180.5,3);right1=on_line(-177.1,3)
+ ramp_patches += [([[-92,-180.5],left0,left1,[-92,-177.1]],[0,1,1,0],'port_cart_approach'),([right0,[-60,-180.5],[-60,-177.1],right1],[1,0,0,1],'starboard_cart_approach')]
+ ramp_parts=[p for p,h,k in ramp_patches]
  for rp in ramp_parts:rear_parts=[q for p in rear_parts for q in subtract_convex(p,rp)]
  for kind,ps in [('rear_public_returns',rear_parts),('foyer_landings',difference([rect([-117,-153,-35,-116])],[[-59,-146,-50,-122],[-44.5,-124,-38.5,-118]])),('stair_upper_landing',[rect([-59,-123.8,-50,-122])])]:
   if deck=='D11': continue
@@ -102,12 +113,12 @@ for tier,deck,y,rows,rstart in [('stalls','D11',69.5,18,20),('first_gallery','D1
 
  if deck!='D11':
   f=next(f for f in surfaces if f['region_id']==f'{deck}_theater_rear_public_returns')
-  for i,p in enumerate(ramp_parts):
-   heights=[y+1.92-(math.hypot(x+76,z+238)-46.4)/12 for x,z in p]
+  for i,(p,offsets,part_kind) in enumerate(ramp_patches):
+   heights=[y+h for h in offsets]
    name=f'{deck}_rear_access_ramp_{i}'
    vs=[[x,h,z] for (x,z),h in zip(p,heights)]
-   objects.append(dict(name=name,vertices_world=vs,faces=[[0,2,1],[0,3,2]],role='walkable_authored',collision_owner='AST-CUL-005',surface_region=f['region_id'],material_family='hospitality_ivory'))
-   f['parts'].append(dict(boundary_xz=p,vertex_top_y=heights,top_y=None));f['objects'].append(name)
+   objects.append(dict(name=name,vertices_world=vs,faces=[[0,2,1],[0,3,2]],role='walkable_authored',collision_owner='AST-CUL-005',surface_region=f['region_id'],material_family='hospitality_ivory',ramp_part_kind=part_kind))
+   f['parts'].append(dict(boundary_xz=p,vertex_top_y=heights,top_y=(heights[0] if len(set(heights))==1 else None),ramp_part_kind=part_kind));f['objects'].append(name)
 
 # D11 compiler datum is deliberately not exported, solely diagnostic source preview.
 box('D11_COMPILER_PREVIEW_NOT_EXPORT',[-117,-263,-35,-116],69.5,.12,'preview_only')

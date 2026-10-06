@@ -5,8 +5,8 @@ Bounded additive source package. No registry, runtime, master floor, material, p
 ## Deliverables
 - `source/make_contract.py`: deterministic editable pure-geometry authoring
 - `source/section_contract.json`: actual clear envelopes, aperture ownership, section, original compiler preview and separately gated support candidates
-- `source/geometry_parts.json`: 8,457 actual dimensioned source solids, not programme placeholders
-- `source/build_crew_service_platform.py`: Blender generator, not yet executed; explicit `--export` gate
+- `source/geometry_parts.json`: 8,407 actual dimensioned source solids, not programme placeholders
+- `source/build_crew_service_platform.py`: Blender generator, parent executed source-only build002; explicit `--export` gate
 - `qa/PURE_GEOMETRY_CHECKS.json`: reproducible measured bounds/overlap/turn checks
 
 Run the pure generator using the existing geometry dependency path: PYTHONPATH=/workspace/scratch/375c2e438292/geometry-deps python source/make_contract.py. No installation is needed. Blender and GLB must wait for the parent's serial slot. Python syntax compile passed; no Blender execution occurred.
@@ -34,3 +34,8 @@ Parent integration must open the retained source end cap at the port continuatio
 All 1,839 actual panel bases have positive-area full support coverage under the proposal. Upper-panel contacts, 437 cap-cell connected-component witnesses, positive wall-top contact, 332 hanger-to-cap/housing contacts, 166 opal-to-housing attachments and side-panel attachment areas are recorded individually. The witness counts are available in the JSON and should be taken from that file if the generator changes. These are geometric contacts, not span/load/structural certification.
 
 Candidate support at Y11.76–12 passes bank/child/public-core/void/hull checks, duplicates zero retained/reviewed floor, and intersects no retained AST-STF-009 solid in the slab interval. Eight parent programme contacts are explicitly listed as receiving/central-vestibule support that needs parent approval. Imported D02 plant/structure and exact runtime slab ownership still require the parent's serialized source/export survey before integration. Original home cover continues to supply home approach support; no home floor was added.
+
+Build001 non-engine QA found 50 float-grid cap slivers and missing fixture datum nodes. Cap coordinates are now snapped at1e-8m and the slivers removed; approved support JSON hash remains exactly444db8dacca332c763a43ca0a08dfe339cf83806ff539bd7c2e46e6a6e911acf. The generator now exports166 explicit light datums with downward direction, housing/support object provenance and lowest fixture height. Build002 is required before successful export QA can be claimed.
+
+## Source-only build002 export acceptance
+Parent executed Blender build002. Non-engine QA now passes8,407 exact source-plan/export solids,100,884 outward nondegenerate triangles,201,768 finite/unit-normal and metre-scaled UV vertices,10 gate datums and166 source-backed downward fixture datums. All five embedded PNGs match retained staff texture hashes. Maximum world bound error is14.65micrometres and maximum metre-scaled UV error is4.069010424245789e-05. All7,882 retained tracked Git blobs match83a9c87 exactly; catalogue remains169 entries including ENG008. No compiler floor exported. Source Blend internal object inspection, runtime import/door/capsule/cart and visual acceptance remain unpassed.
