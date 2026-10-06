@@ -1,0 +1,9 @@
+  File "/workspace/scratch/375c2e438292/engineering-west-fixture-candidate-20261006/qa/diagnose_donor_list.py", line 8
+    result={'original_requested_names':list(wanted),'requested_list_types_after_load':[type(x).__name__for x in names],'requested_list_values_after_load':[x.name if hasattr(x,'name')else x for x in names],'returned_names':[x.name if x else None for x in dst.objects],'exact_donors_present':sorted(x.name for x in dst.objects)==sorted(wanted),'source_unchanged':hashlib.sha256(P.read_bytes()).hexdigest()=='af5064eeeaccb436f1371ae43eca346f11f6f18fe3090e93a2a01a52c6cbfead','no_saved_source_or_export':not list((R/'source').glob('*.blend')) and not list((R/'exports').glob('*.glb'))}
+                                                                                                           ^
+SyntaxError: invalid syntax
+
+Error: script failed, file: '/workspace/scratch/375c2e438292/engineering-west-fixture-candidate-20261006/qa/diagnose_donor_list.py', exiting.
+Blender 4.3.2
+
+Blender quit
