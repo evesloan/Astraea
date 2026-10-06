@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_winding_readonly.py", line 534, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_winding_readonly.py", line 525, in main
+    try:check()
+        ~~~~~^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_winding_readonly.py", line 348, in check
+    require((provenance['source'],provenance['requested_datablock']) in matches,'retained_material_provenance_graph',[mat.name,provenance])
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_winding_readonly.py", line 35, in require
+    raise AssertionError(json.dumps({'gate': code, 'detail': detail}, default=str)[:1800])
+AssertionError: {"gate": "retained_material_provenance_graph", "detail": ["ASTRAEA_champagne_metal.002", {"source": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/furniture/AST-FUR-001_day_window_bench.blend", "source_sha256": "301d05d6ac0f8dfb7aafc3e45d7461082577b852fe8214b9ade8f76e8d1ebea0", "requested_datablock": "ASTRAEA_champagne_metal"}]}
+{"status": "FAIL_SOURCE_ONLY_CHECK", "detail": "{\"gate\": \"retained_material_provenance_graph\", \"detail\": [\"ASTRAEA_champagne_metal.002\", {\"source\": \"/workspace/shared/astraea-catalogue-continuation-20261002/assets/furniture/AST-FUR-001_day_window_bench.blend\", \"source_sha256\": \"301d05d6ac0f8dfb7aafc3e45d7461082577b852fe8214b9ade8f76e8d1ebea0\", \"requested_datablock\": \"ASTRAEA_champagne_metal\"}]}", "evidence": "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/REOPEN_FAILURE_1791295916596169785.json"}
+Blender 4.3.2
+Read blend: "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/winding_repair001/authored_source001/AST-CUL-005_arrival_court_A_004_winding001.blend"
+
+Blender quit

@@ -1,0 +1,31 @@
+{
+  "status": "FAILED_PRESERVED",
+  "started_utc": "2026-10-06T14:11:53.305566+00:00",
+  "threads": 2,
+  "original_source_sha256": "54433eb9a9efba6509e79e783deaf9a5fe27c43d449ee63ad1e1bad257c2be72",
+  "jobs": [
+    {
+      "job": "repair",
+      "script_sha256": "439ceda9ae088f6028f55c71be4b9a9cccda26c80299fccada89cf5919b75937",
+      "seconds": 1.669,
+      "returncode": 0,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "job": "reopen",
+      "script_sha256": "6df0377418129d03c52eabd4ccf3d7d7988aeb5670994eb100e95f01fe3b1863",
+      "seconds": 1.77,
+      "returncode": 0,
+      "errors": [
+        "Traceback (most recent call last):",
+        "    raise AssertionError(json.dumps({'gate': code, 'detail': detail}, default=str)[:1800])",
+        "AssertionError: {\"gate\": \"retained_material_provenance_graph\", \"detail\": [\"ASTRAEA_champagne_metal.002\", {\"source\": \"/workspace/shared/astraea-catalogue-continuation-20261002/assets/furniture/AST-FUR-001_day_window_bench.blend\", \"source_sha256\": \"301d05d6ac0f8dfb7aafc3e45d7461082577b852fe8214b9ade8f76e8d1ebea0\", \"requested_datablock\": \"ASTRAEA_champagne_metal\"}]}"
+      ],
+      "passed": false
+    }
+  ],
+  "original_source_unchanged": true,
+  "peak_child_rss_kib": 264668,
+  "report_sha256": null
+}

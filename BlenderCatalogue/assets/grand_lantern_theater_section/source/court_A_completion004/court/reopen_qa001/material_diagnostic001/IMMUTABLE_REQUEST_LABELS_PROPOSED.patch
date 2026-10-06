@@ -1,0 +1,15 @@
+--- reopen_court_A_winding_readonly.py
++++ reopen_court_A_winding_immutable_labels_readonly.py
+@@ -320,9 +320,9 @@
+     for path,pin in sorted(libraries.items()):
+         require(sha(path)==pin,'native_library_immutable_hash',path)
+         with bpy.data.libraries.load(path,link=False) as (src,dst):
+-            mat_names=list(src.materials); dst.materials=mat_names
+-            object_names=list(src.objects) if path in {r['source'] for r in contract['retained_instances']} else []
+-            dst.objects=object_names
++            mat_names=tuple(src.materials); dst.materials=list(mat_names)
++            object_names=tuple(src.objects) if path in {r['source'] for r in contract['retained_instances']} else ()
++            dst.objects=list(object_names)
+         require(len(dst.materials)==len(mat_names) and all(dst.materials),'native_material_append',path)
+         native_materials.extend((path,n,m,graph_record(m,material_record)) for n,m in zip(mat_names,dst.materials))
+         native_objects[path]=dict(zip(object_names,dst.objects))

@@ -1,0 +1,12 @@
+"""Append the verified standalone court into a NEW scratch review copy only."""
+from pathlib import Path
+import bpy,sys,json,hashlib
+R=Path(__file__).resolve().parent;W=R/'reopen_qa001/winding_repair001/authored_source001';P=Path('/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_lantern_theater_section');sys.path.insert(0,str(P/'source/firstpass_001'));from firstpass_common import baseline_snapshot,compare_subset
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();read=lambda p:json.loads(Path(p).read_text());gate=read(R/'PARENT_SOURCE_BUILD_GATE.json');assert gate['parent_authorized_scratch_source_job']and gate['source_job_slot_granted']and not gate['production_install_authorized']
+c=read(R/'COURT_A_GEOMETRY_CONTRACT.json');base=Path(c['base_source']);build=read(W/'BUILD_REPORT.json');source=Path(build['source']);reopen=read(W/'REOPEN_REPORT.json');assert reopen['status']=='PASS_SOURCE_ONLY'and reopen['sha256']==sha(source)==build['sha256'];assert sha(base)==c['base_source_sha256']
+out=R/'composed_review001';out.mkdir(exist_ok=False);target=out/'AST-CUL-005_court_A_composed_review_004.blend';bpy.ops.wm.open_mainfile(filepath=str(base),use_scripts=False);before=baseline_snapshot(bpy);chair_ids=sorted(o.name for o in bpy.context.scene.objects if o.get('existing_family')=='AST-CUL-003');assert len(chair_ids)==2200
+with bpy.data.libraries.load(str(source),link=False)as(src,dst):
+ assert'A4_COMPLETED_COURT'in src.collections;dst.collections=['A4_COMPLETED_COURT']
+addition=dst.collections[0];bpy.context.scene.collection.children.link(addition);errors=compare_subset(before,baseline_snapshot(bpy));assert not errors,errors[:10];assert chair_ids==sorted(o.name for o in bpy.context.scene.objects if o.get('existing_family')=='AST-CUL-003')
+bpy.context.preferences.filepaths.save_version=0;bpy.ops.wm.save_as_mainfile(filepath=str(target),compress=True);assert sha(base)==c['base_source_sha256']and sha(source)==build['sha256']
+report={'status':'SCRATCH_COMPOSITION_ONLY_VISUAL_REVIEW_PENDING','source':str(target),'sha256':sha(target),'base_source_sha256':sha(base),'standalone_source_sha256':sha(source),'standalone_reopen_report_sha256':sha(W/'REOPEN_REPORT.json'),'preserved_chairs':len(chair_ids),'preserved_base_snapshot':before,'old_snapshot_exact':True,'existing_lights_cameras_exposure_unchanged':True,'exported_or_installed':False};(out/'COMPOSITION_REPORT.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items()if k!='preserved_base_snapshot'}))

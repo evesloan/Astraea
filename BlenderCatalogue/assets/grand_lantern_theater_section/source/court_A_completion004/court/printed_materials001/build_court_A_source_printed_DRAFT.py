@@ -1,0 +1,170 @@
+"""Parent-coordinated standalone source adapter, NOT EXECUTED in preparation.
+
+python -B build_court_A_source_printed_DRAFT.py --inspect is safe pure JSON inspection.
+Blender --python ... -- --build requires a separately supplied parent gate and
+finished original artwork. This file never exports a GLB or touches Game.
+"""
+from pathlib import Path
+import argparse,json,hashlib,sys
+D=Path(__file__).resolve().parent
+R=D.parent # immutable geometry contract and original parent gate location
+C=Path('/workspace/shared/astraea-catalogue-continuation-20261002')
+P=C/'assets/grand_lantern_theater_section'
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+read=lambda p:json.loads(Path(p).read_text())
+
+def build():
+ contract=read(R/'COURT_A_GEOMETRY_CONTRACT.json');screen=read(R/'COURT_A_PURE_SCREEN.json')
+ assert screen['contract_sha256']==sha(R/'COURT_A_GEOMETRY_CONTRACT.json')
+ assert not screen['failures'] and not screen['warnings']
+ gate=read(R/'PARENT_SOURCE_BUILD_GATE.json')
+ assert gate['parent_authorized_scratch_source_job'] is True
+ assert gate['static_stage_checkpoint_verified'] is True
+ assert gate['source_job_slot_granted'] is True
+ assert gate['production_install_authorized'] is False
+ assert sha(contract['base_source'])==contract['base_source_sha256']
+ # Art must be prepared/reviewed as original work, not a fallback blank.
+ art=Path(gate['original_programme_png']).resolve()
+ assert art.is_relative_to(D) and sha(art)==gate['original_programme_png_sha256']
+ printed=read(D/'PRINTED_MATERIALS_CONTRACT.json')
+ pure=read(D/'PRINTED_MATERIALS_PURE_CHECK.json')
+ assert gate['original_programme_art_reviewed'] is True
+ assert sha(D/'PRINTED_MATERIALS_CONTRACT.json')==gate['printed_materials_contract_sha256']==pure['contract_sha256']
+ assert sha(D/'PRINTED_MATERIALS_PURE_CHECK.json')==gate['printed_materials_pure_check_sha256']
+ assert pure['status']=='PASS_PURE_PRINTED_MATERIALS_ONLY' and not pure['failures']
+ assert len(printed['stacks'])==3 and len(printed['pieces'])==9
+ for filename,pin in printed['source_inputs'].items():assert sha(R/filename)==pin
+ for filename,pin in pure['builder_dependency_sha256'].items():assert sha(D/filename)==pin
+ for role,spec in printed['materials'].items():
+  if spec.get('image'):assert sha(D/spec['image'])==spec['image_sha256']
+ assert art==D/printed['materials']['court_A_original_programme']['image']
+ cover_art=Path(gate['programme_cover_png']).resolve()
+ assert cover_art==D/printed['materials']['court_A_printed_paper']['image']
+ assert sha(cover_art)==gate['programme_cover_png_sha256']
+ outdir=D/'authored_preview001';outdir.mkdir(exist_ok=True)
+ output=outdir/contract['standalone_source_proposal']
+ report=outdir/'BUILD_REPORT.json'
+ assert not output.exists() and not report.exists()
+ import bpy
+ sys.path.insert(0,str(P/'source/firstpass_001'))
+ from firstpass_common import bvec,verify_new_geometry,mesh_record,material_record,digest
+ import build_firstpass_assembly as source_tools
+ bpy.ops.wm.read_factory_settings(use_empty=True)
+ scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1
+ collection=bpy.data.collections.new('A4_COMPLETED_COURT');scene.collection.children.link(collection)
+ root=bpy.data.objects.new('A4_SOURCE_ONLY',None);collection.objects.link(root)
+ root['catalogue_id']='AST-CUL-005';root['derivative_id']='arrival_court_A_004'
+ root['base_source_sha256']=contract['base_source_sha256'];root['standalone_addition']=True
+ root['visual_acceptance']=False;root['runtime_installed']=False
+ source_tools.ROOT=root;source_tools.BASE_MATS=[]
+ definitions={};definition_records=[]
+ measurements={r['asset']:{'source':str(Path(r['source']).relative_to(C)),'source_sha256':r['source_sha256'],'bounds_gltf':None}for r in contract['retained_instances']}
+ a=R.parents[1];measured=read(a.parent/'RETAINED_MODULE_MEASUREMENTS.json');measured.update(read(a/'RETAINED_FOCAL_ASSET_BOUNDS.json'))
+ for ident in sorted(measurements):
+  definitions[ident]=source_tools.load_definition(ident,measured);definition_records.append(definitions[ident][2])
+ # Append actual retained graphs, including packed images. No reconstructed
+ # substitute graph and no edits to material datablocks in other source files.
+ mat_sources=[C/'assets/furniture/AST-FUR-001_day_window_bench.blend',C/'assets/furniture/AST-FUR-002_day_reading_chair.blend',C/'assets/botanical_planter/AST-BOT-004.blend',C/'assets/botanical_understory/source/AST-BOT-002.blend']
+ mats={};material_provenance={}
+ def exact_material(role):
+  if role in mats:return mats[role]
+  for path in mat_sources:
+   with bpy.data.libraries.load(str(path),link=False)as(src,dst):
+    names=[n for n in src.materials if n in[role,'ASTRAEA_'+role]]
+    dst.materials=names[:1]
+   if names:
+    mat=dst.materials[0];assert mat and mat.get('astraea_material_role',role)==role
+    mats[role]=mat;material_provenance[role]={'source':str(path),'source_sha256':sha(path),'requested_datablock':names[0]};return mat
+  raise AssertionError('Retained material graph missing: '+role)
+ for role in contract['material_contracts']:exact_material(role)
+ # New paper is explicitly authored as matte paper, never a relabelled fabric.
+ # Only the two image-bearing materials load/pack images; edges and pages stay blank.
+ paper_image_records=[]
+ def linear(c):return c/12.92 if c<=.04045 else ((c+.055)/1.055)**2.4
+ for role,spec in printed['materials'].items():
+  assert spec['uses_retained_fabric'] is False
+  mat=bpy.data.materials.new(role);mat.use_nodes=True
+  mat['astraea_material_role']=role;mat['surface_kind']=spec['surface']
+  mat['original_paper_material']=True;mat['retained_fabric_relabelled']=False
+  bs=mat.node_tree.nodes.get('Principled BSDF')
+  h=spec['base_color_srgb_hex'].lstrip('#');rgba=[linear(int(h[i:i+2],16)/255)for i in (0,2,4)]+[1.]
+  bs.inputs['Base Color'].default_value=rgba;mat.diffuse_color=rgba
+  for key,target in [('roughness','Roughness'),('metallic','Metallic'),('coat_weight','Coat Weight'),('transmission_weight','Transmission Weight'),('emission_strength','Emission Strength')]:
+   assert target in bs.inputs,('Expected Principled socket',target)
+   bs.inputs[target].default_value=spec[key]
+  assert 'Specular IOR Level' in bs.inputs
+  bs.inputs['Specular IOR Level'].default_value=spec['specular_ior_level']
+  if spec.get('image'):
+   image_path=D/spec['image'];im=bpy.data.images.load(str(image_path),check_existing=False)
+   im.colorspace_settings.name='sRGB';im.pack()
+   assert im.packed_file and hashlib.sha256(im.packed_file.data).hexdigest()==spec['image_sha256']
+   node=mat.node_tree.nodes.new('ShaderNodeTexImage');node.name='OriginalPaperArtwork';node.image=im
+   node.extension='EXTEND';node.interpolation='Linear';mat.node_tree.links.new(node.outputs['Color'],bs.inputs['Base Color'])
+   paper_image_records.append({'material':role,'image':spec['image'],'packed_sha256':hashlib.sha256(im.packed_file.data).hexdigest(),'size':list(im.size)})
+  mats[role]=mat;material_provenance[role]={'kind':'new_original_matte_paper_recipe','recipe_sha256':digest(spec),'image_sha256':spec.get('image_sha256'),'retained_fabric_used':False}
+ names=[]
+ def mesh(name,vertices,faces,role,face_uv,properties,face_material_roles=None):
+  assert bpy.data.objects.get(name) is None
+  me=bpy.data.meshes.new(name+'_editable');me.from_pydata([bvec(v)for v in vertices],[],faces);me.update()
+  roles=list(dict.fromkeys(face_material_roles or [role]))
+  for item in roles:me.materials.append(exact_material(item))
+  if face_material_roles:
+   assert len(face_material_roles)==len(me.polygons)
+   for face,face_role in zip(me.polygons,face_material_roles):face.material_index=roles.index(face_role)
+  uv=me.uv_layers.new(name='MetricUV');uv.active_render=True
+  assert len(me.polygons)==len(face_uv)
+  for f,coords in zip(me.polygons,face_uv):
+   assert len(f.loop_indices)==len(coords)
+   for li,p in zip(f.loop_indices,coords):uv.data[li].uv=p
+  ob=bpy.data.objects.new(name,me);collection.objects.link(ob);ob.parent=root
+  for k,v in properties.items():ob[k]=v if isinstance(v,(str,int,float,bool))else json.dumps(v)
+  names.append(name);return ob
+ for row in contract['objects']:
+  mesh(row['name'],row['vertices_world'],row['faces'],row['material_family'],row['face_uv'],{k:v for k,v in row.items()if k not in['vertices_world','faces','face_uv']})
+ for row in contract['retained_instances']:
+  ob=source_tools.instance(definitions[row['asset']][0],row['id'],row['position_world'],row['yaw_radians'])
+  for col in list(ob.users_collection):col.objects.unlink(ob)
+  collection.objects.link(ob);ob['source_sha256']=row['source_sha256'];ob['retained_family']=row['asset'];ob['whole_plant_or_furniture_scale_unchanged']=True
+  if'root_receiver'in row:ob['root_receiver']=row['root_receiver'];ob['collides']=False
+ # Optional fuller mass is a Court-A-specific new derivative, never a loaded
+ # pool asset. Its own source reopen + material/soil test is still required.
+ fuller=None
+ if gate.get('include_fuller_rear_mass',False):
+  fuller=read(R/'FULLER_REAR_MASS_CANDIDATE.json');asset=fuller['asset'];origin=asset['position_xyz']
+  assert fuller['status']=='PASS_PURE_SOIL_FIT_ONLY_UNBUILT_UNRETAINED'
+  for p in asset['parts']:
+   verts=[[origin[0]+v[0],origin[1]+v[2],origin[2]-v[1]]for v in p['vertices']]
+   coords=[];i=0
+   for f in p['faces']:coords.append(p['loop_uvs'][i:i+len(f)]);i+=len(f)
+   mesh(p['name'],verts,p['faces'],p['material_role'],coords,{'collides':False,'material_family':p['material_role'],'surface_kind':p['surface_kind'],'source_method':'Retained BOT-002 formula; Court A fitted derivative','root_receiver':asset['support'],'shape_controls':p['shape_controls']})
+ # Closed printed plate and exactly three touching cover/pages/cover stacks.
+ # The upper cover alone uses the full cover image. +Z is the public reading edge.
+ printed_names=[]
+ for row in [printed['display_plate']]+printed['pieces']:
+  roles=row['face_material_roles']
+  properties={k:v for k,v in row.items()if k not in ['vertices_world','faces','face_uv','face_material_roles']}
+  properties['printed_materials_contract_sha256']=sha(D/'PRINTED_MATERIALS_CONTRACT.json')
+  if row['printed_face_index'] is not None:
+   properties['original_art_sha256']=printed['materials'][roles[row['printed_face_index']]]['image_sha256']
+  properties['visual_acceptance']=False;properties['source_retention_verified']=False
+  mesh(row['name'],row['vertices_world'],row['faces'],roles[0],row['face_uv'],properties,roles)
+  printed_names.append(row['name'])
+ assert len(printed_names)==10 # nine stack prisms plus the existing specified plate
+ scene['court_A_status']='Source-only additive draft; composed visual/native gates pending'
+ assert sha(contract['base_source'])==contract['base_source_sha256']
+ assert not any(o.get('existing_family')=='AST-CUL-003'for o in scene.objects)
+ # Verify closed architecture separately; botanical leaves are intentionally open.
+ checks=verify_new_geometry(bpy,[r['name']for r in contract['objects']]+printed_names)
+ signatures={o.name:digest(mesh_record(o.data))for o in collection.objects if o.type=='MESH'}
+ bpy.context.preferences.filepaths.save_version=0
+ bpy.ops.wm.save_as_mainfile(filepath=str(output),compress=True)
+ result={'status':'STANDALONE_SOURCE_BUILT_REOPEN_VISUAL_NATIVE_UNACCEPTED','source':str(output),'sha256':sha(output),'protected_base_sha256':sha(contract['base_source']),'geometry_checks':checks,'mesh_uv_fingerprints':signatures,'retained_definitions':definition_records,'material_provenance':material_provenance,'original_art_sha256':sha(art),'printed_materials_contract_sha256':sha(D/'PRINTED_MATERIALS_CONTRACT.json'),'printed_stack_count':3,'printed_stack_piece_count':9,'printed_closed_meshes':printed_names,'paper_image_records':paper_image_records,'paper_material_graphs':{role:material_record(mats[role])for role in printed['materials']},'fuller_mass_included':bool(fuller),'audience_chairs_rebuilt_or_exported':0,'runtime_exported':False}
+ report.write_text(json.dumps(result,indent=2)+'\n')
+
+def main():
+ parser=argparse.ArgumentParser();parser.add_argument('--inspect',action='store_true');parser.add_argument('--build',action='store_true')
+ args=parser.parse_args(sys.argv[sys.argv.index('--')+1:]if'--'in sys.argv else sys.argv[1:])
+ if args.build:build()
+ else:
+  c=read(R/'COURT_A_GEOMETRY_CONTRACT.json');print(json.dumps({'mode':'UNRUN_BUILDER_DRAFT_INSPECTION','objects':len(c['objects']),'retained_instances':len(c['retained_instances']),'requires':'Parent-coordinated source slot, static checkpoint, both original art PNGs, reviewed print contract and pure-check pins; scratch only','printed_stacks':3,'stack_prisms':9,'full_print_plate_front_only':True,'source_native_acceptance':False,'output':str(D/'authored_preview001'/c['standalone_source_proposal'])},indent=2))
+if __name__=='__main__':main()

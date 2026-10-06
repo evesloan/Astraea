@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_immutable_readonly.py", line 534, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_immutable_readonly.py", line 525, in main
+    try:check()
+        ~~~~~^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_immutable_readonly.py", line 395, in check
+    require(not actual.modifiers and not actual.constraints and actual.animation_data is None,'no_unevaluated_retained_geometry',[row['asset'],name])
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/reopen_court_A_immutable_readonly.py", line 35, in require
+    raise AssertionError(json.dumps({'gate': code, 'detail': detail}, default=str)[:1800])
+AssertionError: {"gate": "no_unevaluated_retained_geometry", "detail": ["AST-FUR-003", "DAY_TABLE_small_lower_book_shelf"]}
+{"status": "FAIL_SOURCE_ONLY_CHECK", "detail": "{\"gate\": \"no_unevaluated_retained_geometry\", \"detail\": [\"AST-FUR-003\", \"DAY_TABLE_small_lower_book_shelf\"]}", "evidence": "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/REOPEN_FAILURE_1791296550385383617.json"}
+Blender 4.3.2
+Read blend: "/workspace/scratch/375c2e438292/theater_resume/first_pass_plan/arrival_revision02/court_A_completion004/geometry_contract001/reopen_qa001/winding_repair001/authored_source001/AST-CUL-005_arrival_court_A_004_winding001.blend"
+
+Blender quit

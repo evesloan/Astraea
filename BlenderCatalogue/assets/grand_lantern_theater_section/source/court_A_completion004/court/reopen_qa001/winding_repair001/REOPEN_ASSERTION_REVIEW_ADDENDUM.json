@@ -1,0 +1,10 @@
+{
+  "status": "STATIC_REVIEW_ADDENDUM_REQUIRED_CANONICAL_JSON_COMPARISON",
+  "supersedes_known_additional_contract_mismatches_in": "REOPEN_ASSERTION_STATIC_REVIEW.json",
+  "finding": "The common helper returns material link tuples; BUILD_REPORT JSON reloads them as lists. Direct dict equality can falsely reject exact paper graphs.",
+  "required_change": "digest(material_record(mat)) == digest(build['paper_material_graphs'][role])",
+  "why_gate_is_equivalent": "The helper canonical JSON digest exactly preserves every node, value, link endpoint and image hash while normalizing tuple/list sequence representation.",
+  "patch_sha256": "816aa240b8c09b01df9eceb5c86f8bf7fa582fcfd21b80fe0b4b3ea415d8a1fd",
+  "checks": "Original QA and successor with this one-line patch both compile as Python; no Blender run",
+  "original_QA_script_preserved_sha256": "8303a281bbb9ae36824c928ddf93f5d8c1c10c9026e1b99e58ecc8080c27dfe1"
+}
