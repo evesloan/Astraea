@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-06T10:05:52.653615+00:00",
+  "status": "ENGINEERING_SOURCE_CONE_CONVERSION_CORRECT",
+  "source_builders": {
+    "engineering-dense-bays/qa/render_dense_bays.py": "e6a21aae1633a4b280fba57cd3b90cac8062a15de70d4b8800a730a6a463e377",
+    "engineering-dense-bays/sectional-proposal/source/build_section_study.py": "2d9b7e85a1fca1de2759c02e02ad896b2f3cf976afcff48f599f7fed20792c12",
+    "engineering-essentials/qa/render_candidate.py": "2b990a9dd186ae609d1b3ac456a55e182cc1975998e30445278da8479343411d"
+  },
+  "mapping": "Blender full cone radians equals twice Godot spot_angle angular radius in radians",
+  "evidence": [
+    "dense renderer explicitly uses half_cone_degrees*2",
+    "section study/refined builder explicitly uses cone*2",
+    "earlier essentials diagnostic uses130degrees full cone for65degree radius"
+  ],
+  "official_Godot_reference": "https://docs.godotengine.org/en/stable/classes/class_spotlight3d.html#class-spotlight3d-property-spot-angle",
+  "known_trial_difference": "Source threshold radius52degrees vs parent-approved runtime55degrees; source watts/falloff are not runtime energy equivalence",
+  "runtime_light_changes_made": false,
+  "appearance_authority": "Actual Godot captures, not Blender photometry acceptance"
+}

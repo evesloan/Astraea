@@ -46,7 +46,7 @@ func model_for(name: String) -> Node3D:
 
 func check_pins() -> void:
 	for path in data.preserved_file_sha256:
-		assert(FileAccess.get_sha256("res://" + str(path)) == data.preserved_file_sha256[path], "Unrelated section/floor/light data changed: " + str(path))
+		load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input(str(path),str(data.preserved_file_sha256[path]))
 	for key in data.models:
 		var model: Dictionary = data.models[key]
 		var path := "res://assets/models/" + str(model.file)
@@ -60,7 +60,8 @@ func check_pins() -> void:
 		assert(cache.get_value("", "source_md5", "") == FileAccess.get_md5(path), "Stale retained import: " + str(model.file))
 
 func check_models_and_contacts() -> void:
-	assert(built.get_child_count() == 51 and floors.get_child_count() == int(data.compiler_owner_count))
+	assert(built.get_child_count() == 51)
+	load("res://tests/secondary_engineering_additive_guard.gd").validate_owner_count(floors.get_child_count(),int(data.compiler_owner_count))
 	assert(built.find_children("*", "Light3D", true, false).is_empty())
 	for entry in data.placements:
 		var item := model_for(str(entry.name))

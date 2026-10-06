@@ -54,7 +54,7 @@ func pin_imports() -> void:
 			# Explicit parent-approved second integration exception, never a
 			# silent dropped byte pin. Retain and check the original pin too.
 			assert(str(data.preserved_runtime_pins[path]) == str(capture_audit.original_sha256))
-			assert(FileAccess.get_sha256("res://" + str(path)) == str(capture_audit.integrated_sha256))
+			load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input(str(path),str(capture_audit.integrated_sha256))
 		else:
 			assert(FileAccess.get_sha256("res://" + str(path)) == str(data.preserved_runtime_pins[path]), "Existing runtime bytes changed: " + str(path))
 
@@ -79,8 +79,8 @@ func floor_support(p: Vector3, expected_owner: String = "", barrier_bearing_prob
 func floor_and_cap() -> void:
 	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
-	assert(compiled.regions.size() == 261 and data.old_region_records.size() == 258)
-	assert(floors.get_child_count() == 261)
+	assert(compiled.regions.size() == 262 and data.old_region_records.size() == 258)
+	assert(floors.get_child_count() == 262)
 	var current: Dictionary = {}
 	for region in compiled.regions: current[str(region.id)] = region
 	for old in data.old_region_records:
@@ -101,7 +101,7 @@ func floor_and_cap() -> void:
 func source_and_lights() -> void:
 	assert(built.get_meta("first_pass_quality_accepted") == false)
 	assert(built.get_meta("guest_observation_connected") == true)
-	assert(data.door_fittings.is_empty(), "Construction candidate installs no dynamic doors")
+	assert(data.door_fittings.is_empty(), "Original open-aperture shell contract installs no dynamic doors; separate cell gate has its own contract")
 	for mesh in shell.find_children("*", "MeshInstance3D", true, false):
 		assert(mesh.get_node_or_null("StaticContact") != null, "Source contact removed: " + str(mesh.name))
 		assert(mesh.material_override == null, "Frozen pressure glass/material may not be replaced")

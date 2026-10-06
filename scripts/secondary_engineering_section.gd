@@ -19,6 +19,7 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	parent.add_child(root)
 	var shell: Node3D = ship.model(root, "AST-ENG-008_receiving_shoulders.glb", "SecondaryEngineeringArchitecture", Vector3.ZERO)
 	var essentials_trial: Dictionary = load("res://scripts/secondary_engineering_essentials.gd").build(root)
+	load("res://scripts/secondary_engineering_cell.gd").build(root,ship)
 	# Preserve frozen pressure-glass materials and pane collisions. No shader override.
 	assert(data.fixtures.size() == 9)
 	for item in data.fixtures:
@@ -57,8 +58,8 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		sign.position = Vector3(53.70, 7.65, float(closure.center_z))
 		sign.rotation.y = -PI / 2
 		barrier.add_child(sign)
-	# All internal apertures remain visibly unfinished/open. Existing legacy
-	# door/controller bytes are untouched; tall profile remains a separate gate.
+	# Original shell apertures remain unfinished/open. The separately sourced
+	# restricted workbay cell gate reuses the untouched service-door state controller.
 
 static func _seat_forward_d02_sign(ship: Node3D) -> void:
 	# The retained D02 east wall became the real engineering aperture. Keep

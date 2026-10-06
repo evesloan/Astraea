@@ -354,7 +354,7 @@ func validate_floors() -> void:
 	var old_hashes: Dictionary = JSON.parse_string(OLD_RECORD_HASHES_JSON)
 	var aft_hashes: Dictionary = JSON.parse_string(AFT_RECORD_HASHES_JSON)
 	var pool_floors: Dictionary = JSON.parse_string(GRAND_POOL_FLOORS_JSON)
-	check(generated.regions.size()==261 and engineering_floors.size()==3 and old_hashes.size()==245 and aft_hashes.size()==4 and pool_floors.size()==8,"Exactly261 owners: three engineering additions + unchanged245 + four retained aft floors + retained D17 + eight approved pool-market additions")
+	check(generated.regions.size()==262 and engineering_floors.size()==4 and old_hashes.size()==245 and aft_hashes.size()==4 and pool_floors.size()==8,"Exactly262 owners: four reviewed engineering owners + unchanged245 + four retained aft floors + retained D17 + eight approved pool-market additions")
 	var d17_owned: Array = layout.regions.filter(func(row:Dictionary)->bool:return str(row.get("authoring_owner",""))=="d17_connected_house")
 	if check(d17_owned.size()==1,"Exactly one approved authored D17 region required"):
 		check(str(d17_owned[0].id)==D17_FLOOR_ID and canonical(d17_owned[0]).sha256_text()==D17_LAYOUT_SHA,"Approved D17 layout identity changed")
@@ -440,7 +440,7 @@ func validate_floors() -> void:
 					check(hits.size()==1 and region_id(hits[0].collider)==id,"Duplicate/missing real compiled owner: "+id+" y"+str(y)+" actual owners "+str(owners))
 	for id in pool_floors:
 		check(seen.has(id) and pool_layout_seen.has(id),"Approved pool-market floor/layout identity missing: "+str(id))
-	check(floor_owners==261 and seen.size()==261 and seen.has(D17_FLOOR_ID) and absf(new_area-5517.2)<EPS,"All261 physical owners including exactly three engineering additions, retained D17, eight approved pool-market additions and unchanged5517.2m2 aft floor required")
+	check(floor_owners==262 and seen.size()==262 and seen.has(D17_FLOOR_ID) and absf(new_area-5517.2)<EPS,"All262 physical owners including exactly four reviewed engineering owners, retained D17, eight approved pool-market additions and unchanged5517.2m2 aft floor required")
 
 func validate_piers(data: Dictionary) -> void:
 	check(data.support.pier_centres_xz.size()==6,"Six approved piers required")
@@ -635,7 +635,10 @@ func validate_windows(data: Dictionary) -> void:
 
 func run() -> void:
 	for path in PINS:
-		check(FileAccess.get_sha256("res://"+str(path))==str(PINS[path]),"Reviewed final/preserved identity changed: "+str(path))
+		if str(path) in ["data/generated/structural_meshes.json","data/spatial_layout.json"]:
+			load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input(str(path),str(PINS[path]))
+		else:
+			check(FileAccess.get_sha256("res://"+str(path))==str(PINS[path]),"Reviewed final/preserved identity changed: "+str(path))
 	var preserved: Dictionary = JSON.parse_string(PRESERVED_HASHES_JSON)
 	for path in preserved:
 		check(FileAccess.get_sha256("res://"+str(path))==str(preserved[path]),"Protected core/programme identity changed: "+str(path))

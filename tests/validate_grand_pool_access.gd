@@ -61,8 +61,8 @@ func check_floor_owners() -> void:
 	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	var engineering_floors: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
 	var baseline: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://docs/GRAND_POOL_PRE_ADOPTION_MESHES.json"))
-	assert(compiled.regions.size() == 261 and engineering_floors.size() == 3 and baseline.count == 250)
-	assert(floors.get_child_count() == 261, "Exactly one main-scene node per compiler owner")
+	assert(compiled.regions.size() == 262 and engineering_floors.size() == 4 and baseline.count == 250)
+	assert(floors.get_child_count() == 262, "Exactly one main-scene node per compiler owner")
 	var expected: Dictionary = {}
 	for entry in data.floor_regions: expected[entry.id] = entry
 	assert(expected.size() == 8)
@@ -418,7 +418,7 @@ func run() -> void:
 	await walk_route(ceremonial)
 	await walk_route(ceremonial,true)
 	await walk_to(Vector3(-5.4,44,-432))
-	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across261 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; ",pinned_section_fixtures," pinned section lights and ",wet_receiver_anchors," supported receivers; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
+	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across262 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; ",pinned_section_fixtures," pinned section lights and ",wet_receiver_anchors," supported receivers; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
 	main.queue_free()
 	await process_frame
 	quit(0)

@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-06T09:20:26.768524+00:00",
+  "path": "/workspace/shared/astraea-godot-production-20261003/tests/validate_secondary_engineering_cell.gd",
+  "before_sha256": "4eab5cb1984ae3d68c40346dd425e75456c7421bb06aca49da9fa1d17b7df7da",
+  "after_sha256": "ee1e5460c24a540bd55c5faae1f29d9f47f5901de3a98b5e574cbaad3f3730fc",
+  "edits": [
+    [
+      "var delta := point - actor.camera.global_position",
+      "var delta: Vector3 = point - actor.camera.global_position"
+    ],
+    [
+      "var y := 6.0 - (x - 21.9) * .5",
+      "var y: float = 6.0 - (float(x) - 21.9) * .5"
+    ],
+    [
+      "var end := actor.global_position+offset",
+      "var end: Vector3 = actor.global_position+offset"
+    ]
+  ],
+  "scope": "Three explicit type annotations only; no changed assertion, source, controller or geometry"
+}

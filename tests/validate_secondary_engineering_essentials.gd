@@ -45,10 +45,12 @@ func walk_to(point: Vector2) -> void:
 	var hit := ray(Vector3(point.x,6.10,point.y),Vector3(point.x,5.90,point.y))
 	assert(not hit.is_empty() and floors.is_ancestor_of(hit.collider) and absf(hit.position.y-6)<.015)
 
-func actual_contact_triangle_hits(section: Node3D, start: Vector3, end: Vector3) -> Array:
+func actual_contact_triangle_hits(section: Node3D, start: Vector3, end: Vector3, exclude_cell_baseline: bool = false) -> Array:
 	var nearest_by_mesh: Dictionary = {}
 	for item in section.find_children("*", "CollisionShape3D", true, false):
 		var contact := item as CollisionShape3D
+		# This retained-source-only comparison is additional to the complete composed physics ray below.
+		if exclude_cell_baseline and "SecondaryEngineeringWorkbayCell" in str(contact.get_path()): continue
 		if contact.disabled or not contact.shape is ConcavePolygonShape3D: continue
 		var label := str(contact.get_parent().get_parent().name)
 		var faces := (contact.shape as ConcavePolygonShape3D).get_faces()
@@ -73,7 +75,7 @@ func run() -> void:
 	assert(import_settings.load("res://assets/models/"+str(data.model_file)+".import")==OK)
 	assert(import_settings.get_value("params","meshes/force_disable_compression",false)==true,"Preserve submillimetre layered receiver geometry on this new asset")
 	for path in data.retained_runtime_pins:
-		assert(FileAccess.get_sha256("res://"+str(path))==str(data.retained_runtime_pins[path]),"Retained runtime input changed: "+str(path))
+		load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input(str(path),str(data.retained_runtime_pins[path]))
 	assert(FileAccess.get_sha256("res://assets/models/"+str(data.model_file))==str(data.model_sha256))
 	var main := (load("res://scenes/main.tscn") as PackedScene).instantiate()
 	root.add_child(main)
@@ -83,7 +85,7 @@ func run() -> void:
 	actor.set_physics_process(false)
 	space = ship.get_world_3d().direct_space_state
 	floors = ship.find_child("CompiledStructuralFloors_NotFinishedRooms",true,false)
-	assert(floors.get_child_count()==261)
+	assert(floors.get_child_count()==262)
 	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
 	var root_section: Node3D = ship.find_child("SecondaryEngineeringSection_WIP",true,false)
@@ -131,12 +133,23 @@ func run() -> void:
 		var receiver := ray(light.global_position,target+direction*.15)
 		assert(not receiver.is_empty(),"Expected real source receiver absent")
 		var expected_point: Vector3 = SOURCE_RECEIVER_POINTS[name]
+		var expected_group := str(data.ray_first_contact_names[name])
+		var chain: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").section_proof()
+		if chain.receiver_successors.has(name):
+			var successor: Dictionary = chain.receiver_successors[name]
+			assert(expected_group==str(successor.historical_group) and expected_point.distance_to(xyz(successor.historical_point_xyz))<.000001)
+			var retained_hits := actual_contact_triangle_hits(root_section,light.global_position,target+direction*.15,true)
+			assert(not retained_hits.is_empty() and str(retained_hits[0].node)==expected_group)
+			assert(xyz(retained_hits[0].point_xyz).distance_to(expected_point)<.001,"Retained source receiver still required independently")
+			expected_point = xyz(successor.composed_point_xyz)
+			expected_group = str(successor.composed_group)
+			assert("SecondaryEngineeringWorkbayCell" in str(receiver.collider.get_path()),"New receiver requires exact cell ancestry")
 		assert(receiver.position.distance_to(expected_point)<.001,"Actual receiver position exceeds original1mm source/import geometry tolerance")
 		assert(absf(light.global_position.distance_to(receiver.position)-light.global_position.distance_to(expected_point))<.001,"Receiver distance exceeds1mm source tolerance")
 		var geometry_hits := actual_contact_triangle_hits(root_section,light.global_position,target+direction*.15)
 		print("IMPORTED CONTACT RECEIVER TRIANGLES:",JSON.stringify({"marker":name,"physics_node":str(receiver.collider.get_parent().name),"physics_point":[receiver.position.x,receiver.position.y,receiver.position.z],"triangles":geometry_hits}))
-		if str(receiver.collider.get_parent().name)!=str(data.ray_first_contact_names[name]):
-			receiver_failures.append({"marker":name,"expected":data.ray_first_contact_names[name],"actual":str(receiver.collider.get_parent().name),"physics_point_xyz":[receiver.position.x,receiver.position.y,receiver.position.z],"actual_contact_triangles":geometry_hits})
+		if str(receiver.collider.get_parent().name)!=expected_group:
+			receiver_failures.append({"marker":name,"expected":expected_group,"actual":str(receiver.collider.get_parent().name),"physics_point_xyz":[receiver.position.x,receiver.position.y,receiver.position.z],"actual_contact_triangles":geometry_hits})
 		records.append({"marker":name,"receiver":str(receiver.collider.get_path()),"point":str(receiver.position)})
 		tuned[name] = true
 	assert(tuned.size()==5)
