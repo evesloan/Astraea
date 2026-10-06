@@ -635,7 +635,10 @@ func validate_windows(data: Dictionary) -> void:
 
 func run() -> void:
 	for path in PINS:
-		check(FileAccess.get_sha256("res://"+str(path))==str(PINS[path]),"Reviewed final/preserved identity changed: "+str(path))
+		if str(path) in ["data/generated/structural_meshes.json","data/spatial_layout.json"]:
+			load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input(str(path),str(PINS[path]))
+		else:
+			check(FileAccess.get_sha256("res://"+str(path))==str(PINS[path]),"Reviewed final/preserved identity changed: "+str(path))
 	var preserved: Dictionary = JSON.parse_string(PRESERVED_HASHES_JSON)
 	for path in preserved:
 		check(FileAccess.get_sha256("res://"+str(path))==str(preserved[path]),"Protected core/programme identity changed: "+str(path))

@@ -62,8 +62,8 @@ func run() -> void:
 	for body in architecture.find_children("*", "StaticBody3D", true, false): floor_exclusions.append(body.get_rid())
 	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	var engineering_floors: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
-	assert(FileAccess.get_sha256("res://data/generated/structural_meshes.json") == COMPILED_SHA, "Retained 258 records plus the exact three engineering additions are required")
-	assert(FileAccess.get_sha256("res://data/spatial_layout.json") == LAYOUT_SHA, "Reviewed additive layout identity changed")
+	load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input("data/generated/structural_meshes.json",COMPILED_SHA)
+	load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input("data/spatial_layout.json",LAYOUT_SHA)
 	var pool_floors: Dictionary = JSON.parse_string(GRAND_POOL_FLOORS_JSON)
 	assert(compiled.regions.size() == 262 and engineering_floors.size() == 4 and pool_floors.size() == 8)
 	var seen: Dictionary = {}
