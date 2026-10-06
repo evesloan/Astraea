@@ -1,0 +1,19 @@
+{
+  "status": "MINIMAL_LIBRARY_NAME_MAPPING_CORRECTION_PREPARED_NOT_ENGINE_TESTED",
+  "failure_log": "failure001/combined_build001.log",
+  "failure_log_sha256": "ea1385abf81c4460993a1b57b510e87b31dc7636c3e33a0aabfd2dad45bd882d",
+  "source_qa": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/architectural_composition/feature_layers_next/planting/full_mass001/candidate_v001/qa/SOURCE_QA.json",
+  "source_qa_sha256": "4d7c7260448a08e87896f876ae07ecb09194189ddaa5d358d0e6eb30490032a9",
+  "source_qa_status": "PASS_SOURCE_QA_ONLY",
+  "source_verifier": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/architectural_composition/feature_layers_next/planting/full_mass001/verify_sources.py",
+  "source_verifier_sha256": "d3f554006dafe2d10d381805be72ec3437221b73dcc11fda74bf61c390e4954d",
+  "root_evidence": "verify_sources.py line52 asserts sc.objects[a[name]], parent=None and identity transform; source asset00 name is AST-BOT-002_pool_loggia_mass_00",
+  "cause": "Source requested-name list was reused after handing it to the Blender library transfer API; mutation can make dictionary keys datablocks instead of strings. Immutable tuple plus separate list removes the alias.",
+  "scope": [
+    "Object append name identity for four botanical sources and both signs",
+    "Display contained-object semantic lookup independent of local name suffixes"
+  ],
+  "geometry_or_material_changes": false,
+  "input_hashes_changed": false,
+  "engine_invoked": false
+}

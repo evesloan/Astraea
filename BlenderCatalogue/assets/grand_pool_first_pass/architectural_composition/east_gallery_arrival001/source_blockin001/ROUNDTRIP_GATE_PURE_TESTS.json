@@ -1,0 +1,67 @@
+{
+  "status": "PASS_PURE_ROUNDTRIP_HELPER_TESTS",
+  "scope": "Pure synthetic/canonical conversion tests only; no Blender source build or reopen executed",
+  "core_parts_checked": 29,
+  "core_vertices_checked": 1586,
+  "plan_explicitly_float32": true,
+  "exact_fields": [
+    "vertices_xyz",
+    "local_vertices_blender",
+    "matrix_world_blender",
+    "faces",
+    "evaluated_triangles",
+    "uv_loops",
+    "material_indices",
+    "material_states",
+    "source_transform"
+  ],
+  "negative_controls": [
+    {
+      "name": "changed_vertices_xyz",
+      "rejected": true
+    },
+    {
+      "name": "changed_local_vertices_blender",
+      "rejected": true
+    },
+    {
+      "name": "changed_matrix_world_blender",
+      "rejected": true
+    },
+    {
+      "name": "changed_faces",
+      "rejected": true
+    },
+    {
+      "name": "changed_evaluated_triangles",
+      "rejected": true
+    },
+    {
+      "name": "changed_uv_loops",
+      "rejected": true
+    },
+    {
+      "name": "changed_material_indices",
+      "rejected": true
+    },
+    {
+      "name": "changed_material_states",
+      "rejected": true
+    },
+    {
+      "name": "changed_source_transform",
+      "rejected": true
+    },
+    {
+      "name": "unexpected_transform_not_hidden_by_epsilon",
+      "rejected": true
+    },
+    {
+      "name": "one_nanometre_value_change_is_not_tolerated",
+      "rejected": true
+    }
+  ],
+  "combined_subset_accepts_extra_retained_objects": true,
+  "identity_transform_contract_only": true,
+  "contact_safety_unchanged": true
+}

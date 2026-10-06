@@ -1,0 +1,87 @@
+{
+  "status": "PASS_COMPOSED_SOURCE_BUILD_REOPEN_AND_FIT",
+  "started_utc": "2026-10-06T19:54:34.276383+00:00",
+  "processes": [
+    {
+      "label": "build001",
+      "command": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/combined_source002/build_composed.py"
+      ],
+      "started_utc": "2026-10-06T19:54:34.276616+00:00",
+      "timeout_s": 300,
+      "finished_utc": "2026-10-06T19:54:43.824706+00:00",
+      "elapsed_s": 9.547909338987665,
+      "exit_code": 0,
+      "log_sha256": "1ccb8ea3f7c891dbb79490b41f4a7c9ac85e4da28858e56dd0419c170466be97"
+    },
+    {
+      "label": "reopen001",
+      "command": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/combined_source002/reopen_composed.py"
+      ],
+      "started_utc": "2026-10-06T19:54:43.825190+00:00",
+      "timeout_s": 300,
+      "finished_utc": "2026-10-06T19:54:47.453900+00:00",
+      "elapsed_s": 3.6283345900010318,
+      "exit_code": 0,
+      "log_sha256": "548057dc8ad7d314dc3fb7ccf52c3457f072bdfd63a8653b9368840159eae4ec"
+    },
+    {
+      "label": "actual_core_fitting001",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/source_blockin001/review_core.py",
+        "--plan",
+        "/workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/combined_source002/qa/BUILD_EVALUATED_CORE.json",
+        "--output",
+        "/workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/combined_source002/qa/ACTUAL_CORE_FITTING.json"
+      ],
+      "started_utc": "2026-10-06T19:54:47.454317+00:00",
+      "timeout_s": 300,
+      "finished_utc": "2026-10-06T19:54:52.182745+00:00",
+      "elapsed_s": 4.727646463987185,
+      "exit_code": 0,
+      "log_sha256": "9c468a3a4511a8a54a6bb340e9db0004c6604bfcad205784bfbc11c8ec1b6b0f"
+    },
+    {
+      "label": "actual_fitting001",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/combined_source002/check_actual_programme.py"
+      ],
+      "started_utc": "2026-10-06T19:54:52.183155+00:00",
+      "timeout_s": 300,
+      "finished_utc": "2026-10-06T19:55:05.700228+00:00",
+      "elapsed_s": 13.516693964993465,
+      "exit_code": 0,
+      "log_sha256": "5aa0e363e98d7eb7c08272687af035a9411f2224ef10028b588c3ae92321efd5"
+    }
+  ],
+  "scope": "One complete source build, independent reopen, pure evaluated fitting. No export/render/Game/Catalogue mutation.",
+  "finished_utc": "2026-10-06T19:55:05.882811+00:00",
+  "inputs_unchanged": true,
+  "source_sha256": "9aa232ad30c515eabb128804b6d430ae2cfc3d76f93383a612165281620e6f05",
+  "pending": [
+    "Early source pixels",
+    "Independent retention",
+    "Exports and native-world acceptance"
+  ]
+}

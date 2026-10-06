@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/reference_programme001/check_programme.py", line 189, in <module>
+    r=run();(S/'PROGRAMME_REVIEW.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps({k:r[k]for k in ['status','programme_geometry_parts','triangles','issues']},indent=2));sys.exit(bool(r['issues']))
+      ^^^^^
+  File "/workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/reference_programme001/check_programme.py", line 61, in run
+    plan=verify_inputs();issues=[];warnings=[]
+         ^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/reference_programme001/programme_common.py", line 42, in verify_inputs
+    for p,h in pins['sha256'].items():assert sha(p)==h,'Pinned input changed: '+p
+                                             ^^^^^^^^^
+AssertionError: Pinned input changed: /workspace/scratch/375c2e438292/pool-opposite-gallery-proposal001/source_blockin001/CORE_REVIEW.json
