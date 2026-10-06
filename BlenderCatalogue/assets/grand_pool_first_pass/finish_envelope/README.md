@@ -1,5 +1,17 @@
 # Grand Pool connected finish source package
 
+## Current status, 2026-10-06
+
+The exact editable sources have passed independent reopen QA and remote-backed retention. All 26 new GLBs have passed independent evaluated-source/export equivalence. The runtime additions are installed. Import, actual model/support/crown checks, six stock approach walks and the original 51-furnishing and Grand Pool access checks pass. Thirteen new fixtures have been selected from sampled supported viewpoints; the strengthened all-14 selection gate still needs a useful viewpoint or measured local fix for RoofWash_451_Aft. Matched in-game visual review, cart/lift checks and the new full 112-check suite remain separate gates; final art and architectural completeness are not accepted.
+
+Source images show richer planting and purposeful housed displays, but the tall rear fan silhouette, dark plant variation, flat bay volume and coherent covered garden/storefront rhythm still need actual-world design review. The source render is progress evidence, not an in-game acceptance image.
+
+The first exports are intentionally retained. Their normal precision was rejected by the unchanged strict keeper. Revision-two exports use a process-local eight-decimal normal export setting, restored on exit; no installed exporter file, editable source, material graph or test tolerance changed. Authoritative exports are in exports_r002 (or the corresponding derivative package/candidate exports_r002), never the initial exports directory.
+
+The runtime uses the original source-backed fixture positions, cones, energy, range and shared eight-shadow-source budget. A 20 mm lightward visibility sample avoids treating a lamp's own physical receiver as an intervening obstruction; the physical receiver remains separately checked. Source geometry and the global light selector are unchanged.
+
+## Earlier source preparation and evidence (historical)
+
 This additive package is source-checked. Runtime installation and visual acceptance remain pending. It keeps the original section, retained families, 51 installed furnishings, floors, windows, controllers, material palette and shared renderer intact.
 
 ## Approved bounded contents
