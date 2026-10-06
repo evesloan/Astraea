@@ -45,10 +45,13 @@ var started_msec := 0
 var riding := false
 var maximum_route_error := 0.0
 var failure_recorded := false
+var prior_attempts: Array = []
 
 func _initialize() -> void:
 	started_msec = Time.get_ticks_msec()
 	probe.connect("failed", Callable(self, "record_failure"))
+	var saved: Variant = JSON.parse_string(FileAccess.get_file_as_string(RECEIPT))
+	if saved is Dictionary and saved.has("prior_attempts"): prior_attempts = saved.prior_attempts.duplicate()
 	call_deferred("run")
 
 func _process(_delta: float) -> bool:
@@ -78,7 +81,7 @@ func write_receipt(status: String, detail: String = "") -> void:
 	if failure_recorded and status != "FAIL": return
 	var result := {
 		"schema": 1, "test": "grand_pool_service_cart", "status": status,
-		"checkpoint": checkpoint, "detail": detail,
+		"checkpoint": checkpoint, "detail": detail, "prior_attempts": prior_attempts,
 		"test_sha256": FileAccess.get_sha256("res://tests/validate_grand_pool_service_cart.gd"),
 		"probe_sha256": FileAccess.get_sha256("res://tests/grand_pool_cart_probe.gd"),
 		"runtime_contract_sha256": CONTRACT_SHA, "source_pins": MODEL_PINS,
@@ -95,7 +98,12 @@ func write_receipt(status: String, detail: String = "") -> void:
 		"loose_products": 4, "initial_fixture_placements": 1,
 		"limits": "Scripted operator route plus bounded ordinary straight2m/s input; no freehand turning comfort, traffic/species fitting, water physics, stock, local public lift/full five-stop regression, visual acceptance or full programme completion is certified. Collisions, source fittings and the eight-light cap are unchanged."
 	}
-	if is_instance_valid(cart): result["cart_world"] = [cart.global_position.x, cart.global_position.y, cart.global_position.z]
+	if is_instance_valid(cart):
+		result["cart_world"] = [cart.global_position.x, cart.global_position.y, cart.global_position.z]
+		result["cart_rotation_radians"] = [cart.rotation.x, cart.rotation.y, cart.rotation.z]
+		result["cart_linear_velocity"] = [cart.linear_velocity.x, cart.linear_velocity.y, cart.linear_velocity.z]
+		result["cart_angular_velocity"] = [cart.angular_velocity.x, cart.angular_velocity.y, cart.angular_velocity.z]
+	if is_instance_valid(actor): result["operator_world"] = [actor.global_position.x, actor.global_position.y, actor.global_position.z]
 	var file := FileAccess.open(RECEIPT, FileAccess.WRITE)
 	require(file != null, "Grand Pool cart receipt must be writable")
 	file.store_string(JSON.stringify(result, "\t") + "\n")
@@ -278,7 +286,23 @@ func drive(path: Array[Vector3], label: String, at_lift := false) -> void:
 	light_cap()
 	print("GRAND POOL CART DRIVEN: ",label," cart:",cart.global_position," operator:",actor.global_position)
 
+func released_walk_preflight(target: Vector2) -> void:
+	# Use the actual parked cart/load transforms, not the ideal route endpoint.
+	# Only the current capsule is excluded. The parked cart and loose products,
+	# every door leaf/pocket and all walls/gates remain collision-query targets.
+	var start := Vector2(actor.global_position.x,actor.global_position.z)
+	var count := maxi(1,ceili(start.distance_to(target)/.05))
+	var capsule := CapsuleShape3D.new()
+	capsule.radius = .3
+	capsule.height = 1.8
+	var excluded: Array[RID] = [actor.get_rid()]
+	var space := ship.get_world_3d().direct_space_state
+	for index in range(count+1):
+		var p := start.lerp(target,float(index)/count)
+		probe.clear_shape(space,capsule,Transform3D(Basis.IDENTITY,Vector3(p.x,floor_y+.91,p.y)),excluded,"Released operator path at " + str(p))
+
 func walk(target: Vector2, at_lift := false) -> void:
+	released_walk_preflight(target)
 	var reached := false
 	var span := Vector2(actor.global_position.x,actor.global_position.z).distance_to(target)
 	var allowance := ceili(span/3.1*60) + 240
@@ -296,6 +320,7 @@ func walk(target: Vector2, at_lift := false) -> void:
 		state(false)
 		if walked_frames % 6 == 0: support(at_lift)
 	if not reached:
+		print("GRAND POOL RELEASED OPERATOR DIAGNOSIS: cart:",cart.global_transform," velocity:",cart.linear_velocity," operator_cart_local:",cart.to_local(actor.global_position))
 		for index in range(actor.get_slide_collision_count()): print("GRAND POOL RELEASED OPERATOR BLOCK: ",actor.get_slide_collision(index).get_collider().get_path())
 		write_receipt("FAIL", "Released operator stalled at%s toward%s" % [actor.global_position,target])
 	require(reached, "Released operator stalled at%s toward%s" % [actor.global_position,target])
@@ -362,8 +387,11 @@ func operate_door(opened: bool, held_yaw: float) -> void:
 	require(door.desired_open == before, "Held RMB/E must release rather than remotely toggle door")
 	var parked: Vector3 = cart.global_position
 	var behind := Vector2(actor.global_position.x,actor.global_position.z)
-	await walk(Vector2(behind.x,-462.25))
-	await walk(Vector2(-55.2,-462.25))
+	# Extra clearance for the actual0.185m northward parked-cart offset inRun001.
+	# Z-461.85 stays0.53m inside the retained upper-street north wall plane.
+	print("GRAND POOL DOOR WALK-AROUND: cart:",cart.global_transform," velocity:",cart.linear_velocity," operator:",actor.global_position)
+	await walk(Vector2(behind.x,-461.85))
+	await walk(Vector2(-55.2,-461.85))
 	await press(door,door_point(door),false)
 	require(door.desired_open == before, "Unfocused E must not operate service door")
 	await press(door,door_point(door))
@@ -380,7 +408,7 @@ func operate_door(opened: bool, held_yaw: float) -> void:
 			break
 	require(reached, "Service door failed bounded physical movement")
 	require(cart.global_position.distance_to(parked) < .20, "Released cart drifted during door control")
-	await walk(Vector2(behind.x,-462.25))
+	await walk(Vector2(behind.x,-461.85))
 	await walk(behind)
 	await grip(held_yaw)
 

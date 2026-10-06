@@ -74,6 +74,20 @@
       "path": "scripts/aquatic_section.gd",
       "locator": "build; GentleWatersArrival; ShallowWaterVisual_NoSwimmingYet",
       "sha256": "26d66d2ae519888beb4dd12678fe115a10d0b70b6f3781ac431afb17d666b244"
+    },
+    "aquatic_detailed": {
+      "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/15/image(20261001-035517).png",
+      "locator": "Detailed Swimming Area: floor plan D08 labels1\u20139; spa pod river lounge and bridge planting captions; section",
+      "pixels_inspected": true
+    },
+    "residential_current_reference": {
+      "paths": [
+        "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/44/image(20261002-000722).png",
+        "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/45/image(20261002-001051).png",
+        "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/46/image(20261002-001347).png"
+      ],
+      "locator": "sleeping social/dining and court/space view compositions",
+      "pixels_inspected": true
     }
   },
   "conflicts": [
@@ -559,7 +573,7 @@
         "scripts/ship.gd:_ready loads grand_pool_section.gd",
         "docs/GRAND_POOL_ACCESS_VALIDATION.json and docs/GRAND_POOL_ADOPTION.json: candidate capsule access passes; no completed waterpark"
       ],
-      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. Owner register predates installed pool/market candidate.",
+      "unresolved_mapping": "Installed Grand Pool / Orchard Market candidate overrides stale register pending/null-owner snapshot. Walking/capsule access passed; water physics slides lazy river market operation occupation final art and whole-waterpark completion remain open.",
       "required_count": null,
       "counts_as_additional_programme": false,
       "already_in_161_register": true
@@ -781,7 +795,7 @@
         "data/programme_ledger.json:D09_directory_01; required programme; architecture pending",
         "scripts/ship.gd:_ready loads orchard_exchange.gd and grand_pool_section.gd; partial installed market shell"
       ],
-      "unresolved_mapping": "Historical envelope is an allocation; does not establish finished room. Owner register predates installed pool/market candidate.",
+      "unresolved_mapping": "Installed Grand Pool / Orchard Market candidate overrides stale register pending/null-owner snapshot. Walking/capsule access passed; water physics slides lazy river market operation occupation final art and whole-waterpark completion remain open.",
       "required_count": null,
       "counts_as_additional_programme": false,
       "already_in_161_register": true
@@ -3959,12 +3973,579 @@
       "unresolved_mapping": "Embedded shared-space children rather than extra accommodations",
       "required_count": null,
       "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-180",
+      "name": "Spa pods",
+      "kind": "subspace",
+      "deck_or_span": "D08 or coordinated upper aquatic levels",
+      "parent_programme_keys": [
+        "D08_directory_02",
+        "D08_directory_03"
+      ],
+      "source_citations": [
+        "aquatic_detailed:floor plan labels 1\u20139; detail captions and section"
+      ],
+      "authority": "explicit_reference_composition",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Number and distinction from six thermal pools unresolved",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-181",
+      "name": "Aquatic lounge terraces and river lounge",
+      "kind": "subspace",
+      "deck_or_span": "D08 or coordinated upper aquatic levels",
+      "parent_programme_keys": [
+        "D08_directory_06",
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "aquatic_detailed:floor plan labels 1\u20139; detail captions and section"
+      ],
+      "authority": "explicit_reference_composition",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Captioned/plan-labelled terraces; exact allocation and all occupied upper levels unresolved",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-182",
+      "name": "Aquatic bridges",
+      "kind": "system",
+      "deck_or_span": "D08 or coordinated upper aquatic levels",
+      "parent_programme_keys": [
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "aquatic_detailed:floor plan labels 1\u20139; detail captions and section"
+      ],
+      "authority": "explicit_reference_composition",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Plan label 5; required crossing composition must fit real basin/loop without blocking 50 m lane; number not inferred",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-183",
+      "name": "Aquatic bar and refreshments",
+      "kind": "subspace",
+      "deck_or_span": "D08 or coordinated upper aquatic levels",
+      "parent_programme_keys": [
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "aquatic_detailed:floor plan labels 1\u20139; detail captions and section"
+      ],
+      "authority": "explicit_reference_composition",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Plan label 6 explicitly calls for bar/refreshments; no existing directory child crosswalk; coordinate with dining capacity",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-184",
+      "name": "Aquatic local stairs and elevators",
+      "kind": "system",
+      "deck_or_span": "D08 or coordinated upper aquatic levels",
+      "parent_programme_keys": [
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "aquatic_detailed:floor plan labels 1\u20139; detail captions and section"
+      ],
+      "authority": "explicit_reference_composition",
+      "status": "partial_architectural_only",
+      "current_evidence": [
+        "scripts/aquatic_section.gd and docs/AQUATIC_VERTICAL_COORDINATION.md: partial three-stop access"
+      ],
+      "unresolved_mapping": "Plan label 7; current 3-stop aquatic lift and switchbacks are partial infrastructure, not all reference levels",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-185",
+      "name": "Aquatic changing rooms",
+      "kind": "subspace",
+      "deck_or_span": "D08 or coordinated upper aquatic levels",
+      "parent_programme_keys": [
+        "D08_directory_07"
+      ],
+      "source_citations": [
+        "aquatic_detailed:floor plan labels 1\u20139; detail captions and section"
+      ],
+      "authority": "explicit_reference_composition",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Plan label 8; existing Universal changing broad heading needs privacy/sub-room resolution",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-186",
+      "name": "Aquatic planted islands and green zones",
+      "kind": "architectural_zone",
+      "deck_or_span": "D08 or coordinated upper aquatic levels",
+      "parent_programme_keys": [
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "aquatic_detailed:floor plan labels 1\u20139; detail captions and section"
+      ],
+      "authority": "explicit_reference_composition",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Plan label 9; architectural composition, not discrete mandatory room or exact island count",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-187",
+      "name": "Aquatic waterfall focal sequence",
+      "kind": "system",
+      "deck_or_span": "D08 or coordinated upper aquatic levels",
+      "parent_programme_keys": [
+        "D08_directory_08"
+      ],
+      "source_citations": [
+        "aquatic_detailed:floor plan labels 1\u20139; detail captions and section"
+      ],
+      "authority": "explicit_reference_composition",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Actual swimming reference section depicts upper water feature; coexistence with restaurant watercourse and atrium feature needs coordinated interpretation, not duplicated spectacle",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-188",
+      "name": "Aquatic habitat pods and water corridors",
+      "kind": "habitat_support",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet D07 aquatic/arboreal row; canonical residential decks D04/D13\u2013D17. Water rest accommodations/support must be reconciled against1000 units; not ordinary swimming-pool programme",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-189",
+      "name": "Arboreal perch habitats",
+      "kind": "habitat_support",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet D07 row. Rest support type is historical, not an extra species; map valid morphology/canonical six species before generation",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-190",
+      "name": "Thermal rest chambers",
+      "kind": "habitat_support",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet D08 row. Accommodation/rest family, not automatically a public thermal pool",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-191",
+      "name": "Low gravity suites and gravity modulation",
+      "kind": "habitat_support",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet D08 row and legend. Environmental support is part of existing units; no new population or speculative gravity simulator",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-192",
+      "name": "Species adapted suites",
+      "kind": "habitat_support",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet D08 row. Six current species supersede old imagery species/count assumptions",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-193",
+      "name": "Refuge rooms",
+      "kind": "subspace",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet D08 row; fixed units/day-support mapping unresolved. Printed20 cannot create extra hotel units or beds",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-194",
+      "name": "Pressure transition vestibules",
+      "kind": "subspace",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet D08 row. Habitat thresholds need mapping and actual environmental/support semantics",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-195",
+      "name": "Species specific bio sanitation nodes",
+      "kind": "system",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet D08 row; canonical current needs differ by species. Privacy/service interfaces belong with existing habitats, not invented unit increments",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-196",
+      "name": "Hydration feeding kiosks and biosanitation nodes",
+      "kind": "system",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet legend/standard/habitat rows. Distributed child support, no new accommodation count",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-197",
+      "name": "Multi environment garden lounges",
+      "kind": "subspace",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest sheet D07 Bionic lounge/life/terrarium garden labels; map residential shared spaces and botanical destinations without double counting",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-198",
+      "name": "Variable atmosphere and humidity temperature acoustic lighting support",
+      "kind": "system",
+      "deck_or_span": "D04/D13\u2013D17 mapping unresolved",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "guest_sheet:habitat rows/legend",
+        "master:chapter6 and chapter8; P497"
+      ],
+      "authority": "explicit_blueprint_requirement",
+      "status": "not_verified_built",
+      "current_evidence": [
+        "scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction"
+      ],
+      "unresolved_mapping": "Guest-sheet environmental zoning/legend. Values are historical illustrative ranges; preserve confirmed qualitative needs, decide numeric specs separately",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-199",
+      "name": "Private sleeping social dining and view zones inside guest units",
+      "kind": "architectural_zone",
+      "deck_or_span": "residential decks",
+      "parent_programme_keys": [],
+      "source_citations": [
+        "residential_current_reference:Uploaded46/44/45/46 actual pixels",
+        "master:chapter6; latest curated windows overlay"
+      ],
+      "authority": "explicit_reference_composition",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "scripts/residential_suite.gd; scripts/d17_connected_house.gd; docs/D17_CONNECTED_ADOPTION.json; unit790 lower only"
+      ],
+      "unresolved_mapping": "Images show supported sleeping, intimate seating/dining, framed internal court or external space view and profile/material hierarchy. These are room-family composition obligations inside the fixed1000units, not three extra rooms per unit. Partial D13 suites and D17 Royalty lower construction do not cover all instances.",
+      "required_count": null,
+      "counts_as_additional_programme": false
+    },
+    {
+      "id": "AME-200",
+      "name": "Port forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D04",
+      "parent_programme_keys": [
+        "D04_directory_01"
+      ],
+      "source_citations": [
+        "current_register:D04_directory_01",
+        "master:chapter4 D04 residential support / D18 command observation",
+        "data/reference/directory_allocations.json: atlas page 6"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D04_directory_01; source directory identity only",
+        "data/reference/directory_allocations.json: atlas page 6",
+        "scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction"
+      ],
+      "unresolved_mapping": "Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-201",
+      "name": "Starboard forward commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D04",
+      "parent_programme_keys": [
+        "D04_directory_02"
+      ],
+      "source_citations": [
+        "current_register:D04_directory_02",
+        "master:chapter4 D04 residential support / D18 command observation",
+        "data/reference/directory_allocations.json: atlas page 6"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D04_directory_02; source directory identity only",
+        "data/reference/directory_allocations.json: atlas page 6",
+        "scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction"
+      ],
+      "unresolved_mapping": "Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-202",
+      "name": "Port atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D04",
+      "parent_programme_keys": [
+        "D04_directory_03"
+      ],
+      "source_citations": [
+        "current_register:D04_directory_03",
+        "master:chapter4 D04 residential support / D18 command observation",
+        "data/reference/directory_allocations.json: atlas page 6"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D04_directory_03; source directory identity only",
+        "data/reference/directory_allocations.json: atlas page 6",
+        "scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction"
+      ],
+      "unresolved_mapping": "Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-203",
+      "name": "Starboard atrium commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D04",
+      "parent_programme_keys": [
+        "D04_directory_04"
+      ],
+      "source_citations": [
+        "current_register:D04_directory_04",
+        "master:chapter4 D04 residential support / D18 command observation",
+        "data/reference/directory_allocations.json: atlas page 6"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D04_directory_04; source directory identity only",
+        "data/reference/directory_allocations.json: atlas page 6",
+        "scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction"
+      ],
+      "unresolved_mapping": "Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-204",
+      "name": "Port aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D04",
+      "parent_programme_keys": [
+        "D04_directory_05"
+      ],
+      "source_citations": [
+        "current_register:D04_directory_05",
+        "master:chapter4 D04 residential support / D18 command observation",
+        "data/reference/directory_allocations.json: atlas page 6"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D04_directory_05; source directory identity only",
+        "data/reference/directory_allocations.json: atlas page 6",
+        "scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction"
+      ],
+      "unresolved_mapping": "Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-205",
+      "name": "Starboard aft commons",
+      "kind": "parent_programme",
+      "deck_or_span": "D04",
+      "parent_programme_keys": [
+        "D04_directory_06"
+      ],
+      "source_citations": [
+        "current_register:D04_directory_06",
+        "master:chapter4 D04 residential support / D18 command observation",
+        "data/reference/directory_allocations.json: atlas page 6"
+      ],
+      "authority": "explicit_requirement",
+      "status": "no_verified_current_programme_builder",
+      "current_evidence": [
+        "data/programme_ledger.json:D04_directory_06; source directory identity only",
+        "data/reference/directory_allocations.json: atlas page 6",
+        "scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction"
+      ],
+      "unresolved_mapping": "Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
+    },
+    {
+      "id": "AME-206",
+      "name": "Upper horizon",
+      "kind": "parent_programme",
+      "deck_or_span": "D18",
+      "parent_programme_keys": [
+        "D18_directory_09"
+      ],
+      "source_citations": [
+        "current_register:D18_directory_09",
+        "master:chapter4 D04 residential support / D18 command observation",
+        "data/reference/directory_allocations.json: atlas page 20"
+      ],
+      "authority": "explicit_requirement",
+      "status": "partial_current_construction",
+      "current_evidence": [
+        "data/programme_ledger.json:D18_directory_09; source directory identity only",
+        "data/reference/directory_allocations.json: atlas page 20",
+        "scripts/ship.gd:_ready loads aft_crown_platform.gd and upper_horizon_enclosure.gd",
+        "data/architecture/AFT_CROWN_PLATFORM_RUNTIME.json and UPPER_HORIZON_ENCLOSURE_RUNTIME.json",
+        "docs/UPPER_HORIZON_ENCLOSURE_FOCUSED_VALIDATION.json and docs/AFT_CROWN_PLATFORM_VALIDATION.json: partial installed foyer/observation geometry, not complete furnishing/occupation"
+      ],
+      "unresolved_mapping": "Installed partial Upper Horizon overrides stale ledger nullowner/pending status. Historical envelope is not a required finished footprint; onward closure furnishing lighting and guest use remain open.",
+      "required_count": null,
+      "counts_as_additional_programme": false,
+      "already_in_161_register": true
     }
   ],
   "counts": {
-    "audited_rows": 179,
-    "existing_directory_programmes": 105,
-    "child_or_system_rows": 74,
+    "audited_rows": 206,
+    "existing_directory_programmes": 112,
+    "child_or_system_rows": 94,
     "additional_programme_count_asserted": 0
   },
   "suggestions_not_promoted_to_requirements": [
@@ -3976,5 +4557,685 @@
     "No Godot runs/imports/builds; builder and retained geometry contracts inspected only.",
     "Current visual acceptance and every real room activity remain separate required evidence.",
     "Retained catalogue components not loaded by current builders are not current construction."
-  ]
+  ],
+  "reference_inspection_inventory": [
+    {
+      "reference_id": "REF-aa10009828",
+      "copies": [
+        "DesignArchive/References/Additional_Historical_References/image(20261002-002522).png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-f685af904b",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/1(1).png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "overview_contact_sheet_checked_only",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-e66ade3d9f",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/2(1).png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "overview_contact_sheet_checked_only",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-45bcf5b4f3",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/250d8f2d-6ef1-44c5-9009-67d50e20542f.png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-858525bb42",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/3(1).png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "overview_contact_sheet_checked_only",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-546a6287cb",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/981c332a-deb3-49bf-af73-86469b55f869.png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "overview_contact_sheet_checked_only",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-be035845a6",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/Futuristic Luxury Space Atrium Garden.png"
+      ],
+      "district_sets": [
+        "atrium_and_courts"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-15abcd5aa3",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/Futuristic Suite Overlooking a Garden Atrium.png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-82a66b7ffa",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/Luxury Space Cruise Suite with Planetary View.png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-b4f7c83f24",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/Retro-Futurist Suite Overlooking Atrium.png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-10dc8358ad",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-1(1).png"
+      ],
+      "district_sets": [
+        "shopping_promenade",
+        "guest_circulation"
+      ],
+      "this_audit_inspection": "overview_contact_sheet_checked_only",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-3f5de9e10f",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-1(2).png"
+      ],
+      "district_sets": [
+        "atrium_and_courts"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-419e1ed876",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-1(3).png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-344c7d2696",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-1.png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "overview_contact_sheet_checked_only",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-2122ff0b9a",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-2(1).png"
+      ],
+      "district_sets": [
+        "aquatic"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-c0d2dc2025",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-2(2).png"
+      ],
+      "district_sets": [
+        "shopping_promenade",
+        "guest_circulation"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-1a21aaa8f3",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-2(3).png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-6fdf9f5234",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-2.png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "overview_contact_sheet_checked_only",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-6c3a18ea3f",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-3(1).png"
+      ],
+      "district_sets": [
+        "performance"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-396d790bef",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-3(2).png"
+      ],
+      "district_sets": [
+        "aquatic"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-48fd2aa4fe",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-3.png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "overview_contact_sheet_checked_only",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-e3e8d05223",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-4(1).png"
+      ],
+      "district_sets": [
+        "shopping_promenade",
+        "guest_circulation"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-1284874dbe",
+      "copies": [
+        "DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-4.png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "overview_contact_sheet_checked_only",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-f34e721fb6",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/01/image.png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-3813a0ecc3",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/02/image(1).png",
+        "DesignArchive/References/Uploaded_46/39/981c332a-deb3-49bf-af73-86469b55f869(1).png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-90ba2f6d31",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/03/3.png",
+        "DesignArchive/References/Uploaded_46/36/3(2).png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-1d51d4a06e",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/04/2.png",
+        "DesignArchive/References/Uploaded_46/37/2(2).png",
+        "BlenderCatalogue/references/aquatic_program/public_blueprint.png",
+        "BlenderCatalogue/references/auditorium/public_blueprint.png",
+        "BlenderCatalogue/references/hospitality/public_reference.png",
+        "BlenderCatalogue/references/retail/public_blueprint.png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-6729d6150c",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/05/1.png",
+        "DesignArchive/References/Uploaded_46/38/1(2).png",
+        "BlenderCatalogue/references/engineering/technical_reference.png"
+      ],
+      "district_sets": [
+        "whole_ship_blueprints"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-f84205f20a",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/07/image(3).png",
+        "BlenderCatalogue/references/botanical/atrium_reference.png",
+        "BlenderCatalogue/references/salon/atrium_reference.png"
+      ],
+      "district_sets": [
+        "atrium_and_courts"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-72c49c565c",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/11/image(6).png"
+      ],
+      "district_sets": [
+        "viewing_dining_lounges"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-3c524e22a5",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/12/image(7).png"
+      ],
+      "district_sets": [
+        "viewing_dining_lounges"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-762f06b7c7",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/13/image(8).png"
+      ],
+      "district_sets": [
+        "atrium_and_courts"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-f80a4f58ec",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/14/image(20261001-035516).png",
+        "DesignArchive/References/Uploaded_46/43/image(20261001-213121).png",
+        "BlenderCatalogue/references/retail/promenade_reference.png"
+      ],
+      "district_sets": [
+        "shopping_promenade",
+        "guest_circulation"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-58874dc6da",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/15/image(20261001-035517).png",
+        "BlenderCatalogue/references/aquatic/image(20261001-035517).png"
+      ],
+      "district_sets": [
+        "aquatic"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-4f1d548bc8",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/16/image(20261001-035518).png",
+        "BlenderCatalogue/references/auditorium/theater_reference.png"
+      ],
+      "district_sets": [
+        "performance"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-240d196d5a",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/20/image(20261001-071306).png"
+      ],
+      "district_sets": [
+        "viewing_dining_lounges"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-bec8e6ecaa",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/21/image(20261001-071604).png"
+      ],
+      "district_sets": [
+        "viewing_dining_lounges"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-20281d3bb3",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/22/image(20261001-071704).png"
+      ],
+      "district_sets": [
+        "viewing_dining_lounges"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-0478dfabb9",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/23/image(20261001-072858).png",
+        "DesignArchive/References/Uploaded_46/42/image(20261001-213120).png"
+      ],
+      "district_sets": [
+        "library"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-a72a10a7d5",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/27/image(20261001-190511).png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-72e9a4a1d0",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/28/image(20261001-190512).png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-b74349b557",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/30/image(20261001-191914).png",
+        "BlenderCatalogue/references/library/image(20261001-191914).png"
+      ],
+      "district_sets": [
+        "library"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-bacc0c55bb",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/31/image(20261001-191915).png",
+        "BlenderCatalogue/references/library/image(20261001-191915).png"
+      ],
+      "district_sets": [
+        "library"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-980fe8b7e6",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/32/image(20261001-191916).png",
+        "BlenderCatalogue/references/library/image(20261001-191916).png"
+      ],
+      "district_sets": [
+        "library"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-4e1375543a",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/33/image(20261001-191917).png",
+        "BlenderCatalogue/references/library/image(20261001-191917).png"
+      ],
+      "district_sets": [
+        "library"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-b5f0c64e29",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/34/image(20261001-200233).png"
+      ],
+      "district_sets": [
+        "grand_arrivals",
+        "atrium_and_courts",
+        "guest_circulation"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-dbea2b3b3d",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/35/image(20261001-200235).png"
+      ],
+      "district_sets": [
+        "grand_arrivals",
+        "atrium_and_courts",
+        "guest_circulation"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-ab439aa6fa",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/40/image(20261001-213117).png"
+      ],
+      "district_sets": [
+        "grand_arrivals",
+        "atrium_and_courts"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-7ca7281301",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/41/image(20261001-213118).png"
+      ],
+      "district_sets": [
+        "grand_arrivals",
+        "atrium_and_courts"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-0328f70e49",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/44/image(20261002-000722).png",
+        "BlenderCatalogue/references/intimate/image(20261002-000722).png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-9c453f4498",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/45/image(20261002-001051).png",
+        "BlenderCatalogue/references/dense/image(20261002-001051).png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-0a92cd5adc",
+      "copies": [
+        "DesignArchive/References/Uploaded_46/46/image(20261002-001347).png",
+        "BlenderCatalogue/references/premium/image(20261002-001347).png"
+      ],
+      "district_sets": [
+        "guest_suites"
+      ],
+      "this_audit_inspection": "full_pixels_checked",
+      "consequence": "Remaining compositional sources must be reviewed before district construction; no assertion that all72 reference images are fully audited."
+    },
+    {
+      "reference_id": "REF-32858f7ec1",
+      "copies": [
+        "BlenderCatalogue/references/hospitality/vibe_dining_edge.jpg",
+        "BlenderCatalogue/references/salon/vibe_dining_edge.jpg"
+      ],
+      "district_sets": [
+        "viewing_dining_lounges"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-d0f54a5bb3",
+      "copies": [
+        "BlenderCatalogue/references/salon/vibe_observation_lounge.jpg"
+      ],
+      "district_sets": [
+        "viewing_dining_lounges"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-48cca6e8b3",
+      "copies": [
+        "BlenderCatalogue/references/salon/vibe_vertical_atrium.jpg"
+      ],
+      "district_sets": [
+        "atrium_and_courts"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    },
+    {
+      "reference_id": "REF-a2b1a7bd5c",
+      "copies": [
+        "BlenderCatalogue/references/residential_20261004/Luxury_single_space_view_8079.jpg"
+      ],
+      "district_sets": [
+        "guest_suites",
+        "viewing_dining_lounges"
+      ],
+      "this_audit_inspection": "composition_pixels_checked_at_contact_sheet_scale",
+      "consequence": "Composition checked for additional explicit room labels. District construction still requires full-size material/geometry comparison; no new mandatory room names inferred from furnishings."
+    }
+  ],
+  "gate_boundary": "All56 entries in this bounded amenity-related source inventory were visually checked: primary labelled sheets, detailed pool/theater/shopping images and selected residential sources at full image scale; remaining composition references and historical sheet variants at overview/contact-sheet scale. No known relevant source entry remains unread at scope-screening level. Full-size district design review remains required before authoring and this is not all72-reference or whole-ship acceptance.",
+  "composition_findings": [
+    "Remaining residential references repeat sleeping/social/dining/view composition or show modular wall/window/ceiling/furniture kits. They do not explicitly add private swimming pools or extra unit counts.",
+    "Library references show intimate reading alcoves, integrated shelving, overlook/stair/escalator relationships and viewing/study spaces; existing library/reading programmes must express these functions without copying a specific branded library.",
+    "Atrium references show grounded botanical/water focal sequence, active terraces, purposeful crossings/lifts and linked destinations. Exact illustrated number of trees/islands/terraces is not mandatory and cannot override16-level opening.",
+    "Shopping reference names Nexus/Terra&Tide/StellarFinds illustrate storefront identities; master architecture clause5 explicitly prohibits adding businesses or moving all100shops to ring. Preserve addressed100shop inventory separately from10directory retail headings.",
+    "No remaining composition image established VIP secondary-pool count/deck; latest user-required scope remains explicitly unresolved."
+  ],
+  "inspection_summary_counts": {
+    "composition_pixels_checked_at_contact_sheet_scale": 33,
+    "overview_contact_sheet_checked_only": 9,
+    "full_pixels_checked": 14
+  },
+  "combined_programme_coverage_verification": {
+    "canonical_register_keys": 161,
+    "amenity_associated_keys": 112,
+    "engineering_associated_keys": 51,
+    "union_canonical_keys": 161,
+    "missing_keys": [],
+    "outside_canonical_keys": [],
+    "overlapping_keys": [
+      "D10_directory_04",
+      "D10_directory_08"
+    ],
+    "non_additive_policy": "Parent associations prove inventory coverage only. Child/system overlap adds no programme and coverage does not establish construction or completion.",
+    "engineering_audit_sha256": "abe77c8ea9ea9f094e2e92e1a7077d83664e7ac500c1e5bdebc81f5f01345e2f"
+  }
 }

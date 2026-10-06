@@ -679,21 +679,88 @@ This pass inspects the authoritative master, its current-application overrides, 
 
 ## Source coverage and completion gate
 
-- Checked: authoritative v0.3 master relevant complete sections, tables and reference crosswalk
-- Checked: current-application overrides
-- Checked: technical_reference.png full sheet and enlarged emergency/service panel
-- Checked: shared_staff_room.png actual pixels
-- Checked: clinical and shared-crew programme handoffs
-- Checked: current programme ledger, whole-ship layout, D03 allocation metadata
-- Checked: arrivals/fusion, synthesis, lower staff network and Vesper finishing builders
+The previously listed relevant unexamined sources are now closed. Actual pixels were inspected for historical atlas printed page05 D03 and page07 D05, all five unique indexed staff/service images, habitat ASW-GV-02 and public ASW-GV-03 service labels. Byte-identical backup copies were deduplicated by SHA256; the JSON lists verified copies. No genuinely missing source remains within this bounded inventory. This is category coverage, not final room geometry/activity acceptance or an archive-wide unrelated-variant sweep.
 
-- Relevant not examined here: historical_atlas.pdf full medical and crew plan pixels (allocation metadata/handoffs only checked)
-- Relevant not examined here: public blueprint/public_reference.png and habitat blueprint pixels: separate amenity audit must reconcile any additional service labels
-- Relevant not examined here: staff_and_service style images REF-523733d277, REF-9e43a46063, REF-35f53a078f and staff_lift_reference_20261003.jpg: not inspected here; district-specific architectural comparison still required
-- Relevant not examined here: full remaining reference-index imagery beyond bounded technical and shared-crew sources
+Atlas page05 confirms historical200crew cabins/399beds plus separate400th employee berth; current shared-home direction supersedes that old separate-home arithmetic. Its detailed door/bed markers do not certify current housing. Page07 confirms the ten already recorded D05 programmes and service/staff-tagged clinic/lab access, with no new plant/category requirement.
 
-Complete bounded technical-sheet/master inventory, not confirmed exhaustive inventory of every retained image. Do not start a shipwide exhaustive-inventory claim until the listed relevant source gaps are closed or scoped by the parent.
+The compact personal-space image, two service-corridor photos, shared-room photograph and industrial-lift concept add functional architectural vocabulary: supported rest/storage/light, exposed but supported service runs, guarded lights, protective wall bands, utility doors and enclosed lift edges. They do not add new compulsory rooms, dimensions, crew jobs or machines.
+
+Habitat and public sheets add distributed med-support, biosanitation, pressure transition, refuge, hydration/feeding and environmental-control interfaces; kitchen/food supply routes, service lifts, galley/food-service, storage/backstage, first-aid and assembly/exit labels. The JSON records these separately without additive counts. Printed habitatD08 maps to specialized accommodation role, not current aquaticD08; printed habitatD10 maps to accommodation role, not current diningD10. Exact placement within D04/D13–D17 remains unresolved. The habitat crew inset actually prints80habitat specialists(decks7–8), not60. All its crew subtotals remain illustrative/overlapping and do not increase400crew.
 
 ## Actual crew living subspaces
 
 The inspected shared-room photograph visibly contains two-level rest supports, berth curtains, access ladder, individual lighting, shelves, wardrobe and drawers. Its layout is functional reference, not an approved stack height or ship-species dimension recipe. The shared-crew handoff confirms approved modest rest frame, curtain/track, accessible personal storage and individual task-light/shelf components, while explicitly leaving host room, roommate ID, berth-key migration and fit unresolved. Current master application additionally requires bathing/changing privacy. These are support subspaces/fixtures inside crew homes, not five extra rooms or five added berths. The JSON records each distinctly. Historical 199 doubles plus C036 single gave399 places, with separate employee berth giving400; shared-home integration must reconcile this stale private-player arithmetic without adding a401st person or duplicate berth.
+
+## Added public and habitat service interface inventory
+
+### ENGS-097 Guest-habitat med-support centers / kiosks
+
+- Source: /workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png — ASW-GV-02 printed D08 Med-support center and icon legend
+- Classification: distributed clinical support; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Printed D08 is specialized accommodation reference, not current aquatic D08. Canonical accommodation decks D04/D13–D17; specific host allocation unresolved.
+
+### ENGS-098 Species-specific biosanitation nodes
+
+- Source: /workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png — ASW-GV-02 printed D08 and icon legend
+- Classification: distributed sanitation support; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Canonical accommodation host unresolved; no unsafe biological processing gameplay implied.
+
+### ENGS-099 Pressure transition vestibules
+
+- Source: /workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png — ASW-GV-02 printed D08 and legend
+- Classification: threshold subspaces / environmental interfaces; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Retain architectural interface; quantitative pressure simulation not required. Amenity audit covers habitat threshold design, this audit retains service purpose.
+
+### ENGS-100 Refuge rooms in specialized habitats
+
+- Source: /workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png — ASW-GV-02 printed D08 Refuge rooms and legend
+- Classification: emergency support rooms; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Printed20(40) is historical occupancy arithmetic, not additional crew or guest units; host and emergency role unresolved.
+
+### ENGS-101 Hydration and feeding alcoves
+
+- Source: /workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png — ASW-GV-02 printed D10 Standard guest suites A; legend
+- Classification: distributed food / hydration support; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Current accommodation mapping D04/D13–D17, not literal D10 dining placement. Capacity and specialized diets remain unresolved.
+
+### ENGS-102 Local environmental control nodes
+
+- Source: /workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png — ASW-GV-02 environmental zoning and icon legend
+- Classification: distributed environmental system interface; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Atmosphere/humidity/temperature/light/gravity labels guide qualitative habitats. Printed numeric ranges are illustrative and not mandatory simulation constants.
+
+### ENGS-103 Public-deck kitchen / food supply service routes
+
+- Source: /workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png — ASW-GV-03 Circulation & Services legend
+- Classification: circulation / logistics network; current geometry/function unverified; distinct programme mapping unresolved
+- Open: No assigned widths, routes or throughput proven; separate from guest circulation.
+
+### ENGS-104 Public service elevators
+
+- Source: /workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png — ASW-GV-03 Deck Plan Symbols / service transport legend
+- Classification: vertical service circulation; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Duplicates technical service-lift category at interface level, not extra lift count.
+
+### ENGS-105 Public kitchen / galley and food service support
+
+- Source: /workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png — ASW-GV-03 Deck Plan Symbols Kitchen/Galley and Food Service Area
+- Classification: back-of-house rooms / subspaces; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Aggregates within dining destinations and finishing-galley requirement; no extra mandatory kitchen room count.
+
+### ENGS-106 Back-of-house storage / backstage
+
+- Source: /workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png — ASW-GV-03 Deck Plan Symbols Storage / Back of House
+- Classification: storage / performance support; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Storage support also distributed elsewhere; theater worker owns venue geometry. This is operational interface, not additional theater allocation.
+
+### ENGS-107 Public medical / first aid points
+
+- Source: /workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png — ASW-GV-03 Deck Plan Symbols Medical / First Aid
+- Classification: distributed care support; current geometry/function unverified; distinct programme mapping unresolved
+- Open: No independent allocation or staffed clinical routine proven; do not replace D05 healthcare.
+
+### ENGS-108 Public assembly points and emergency exits
+
+- Source: /workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png — ASW-GV-03 Circulation & Services and Deck Plan Symbols
+- Classification: emergency circulation / assembly support; current geometry/function unverified; distinct programme mapping unresolved
+- Open: Interface manifestation of existing escape-system scope; no additive emergency room count.

@@ -18,7 +18,7 @@ The theater remains 2,200 places (740/740/720) with six 200-place cinemas, not a
 
 ## Evidence and row inventory
 
-This finite audit records 179 rows: 105 existing directory headings and 74 child/system rows. These layers must not be summed into a claimed ship room count. No additional programme count is asserted. Exact source paths, hashes and unresolved mappings are in data/architecture/AMENITY_SCOPE_AUDIT.json.
+This finite audit records 206 rows: 112 existing directory headings and 94 child/system rows. These layers must not be summed into a claimed ship room count. No additional programme count is asserted. Exact source paths, hashes and unresolved mappings are in data/architecture/AMENITY_SCOPE_AUDIT.json.
 
 - master: docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx; chapter 4 table 2; chapters 5, 9, 19, 30 and 33; paragraph indices are zero-based python-docx paragraph positions
 - public_sheet: /workspace/shared/astraea-catalogue-continuation-20261002/references/aquatic_program/public_blueprint.png; ASW-GV-03 sheet 3 of 6: deck plans, aquatic inset and capacities
@@ -40,140 +40,140 @@ This finite audit records 179 rows: 105 existing directory headings and 74 child
 - Source: current_register:D06_directory_01; data/reference/directory_allocations.json: atlas page 8
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D06_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-002 The waterside grove
 - Type: parent_programme; deck/span: D06; parent: D06_directory_09
 - Source: current_register:D06_directory_09; data/reference/directory_allocations.json: atlas page 8
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D06_directory_09; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-003 Cloud conservatory
 - Type: parent_programme; deck/span: D06; parent: D06_directory_02
 - Source: current_register:D06_directory_02; data/reference/directory_allocations.json: atlas page 8
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D06_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-004 Sunset garden cafe
 - Type: parent_programme; deck/span: D06; parent: D06_directory_10
 - Source: current_register:D06_directory_10; data/reference/directory_allocations.json: atlas page 8
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D06_directory_10; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-005 Moss sanctuary
 - Type: parent_programme; deck/span: D06; parent: D06_directory_03
 - Source: current_register:D06_directory_03; data/reference/directory_allocations.json: atlas page 8
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D06_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-006 Botanical nursery
 - Type: parent_programme; deck/span: D06; parent: D06_directory_04
 - Source: current_register:D06_directory_04; data/reference/directory_allocations.json: atlas page 8
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D06_directory_04; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-007 Canopy terrace
 - Type: parent_programme; deck/span: D06; parent: D06_directory_05
 - Source: current_register:D06_directory_05; data/reference/directory_allocations.json: atlas page 8
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D06_directory_05; Partial authored architecture with route tests and visual review; full programme and final art unfinished; scripts/canopy_terrace.gd; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-008 Sheltered walk
 - Type: parent_programme; deck/span: D06; parent: D06_directory_06
 - Source: current_register:D06_directory_06; data/reference/directory_allocations.json: atlas page 8
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D06_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-009 Orchard gardens
 - Type: parent_programme; deck/span: D06; parent: D06_directory_07
 - Source: current_register:D06_directory_07; data/reference/directory_allocations.json: atlas page 8
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D06_directory_07; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-010 Fern cathedral
 - Type: parent_programme; deck/span: D06; parent: D06_directory_08
 - Source: current_register:D06_directory_08; data/reference/directory_allocations.json: atlas page 8
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D06_directory_08; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-011 Orbit full court
 - Type: parent_programme; deck/span: D07; parent: D07_directory_01
 - Source: current_register:D07_directory_01; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-012 Activity terrace
 - Type: parent_programme; deck/span: D07; parent: D07_directory_09
 - Source: current_register:D07_directory_09; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_09; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-013 Movement studio
 - Type: parent_programme; deck/span: D07; parent: D07_directory_02
 - Source: current_register:D07_directory_02; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-014 Sports care & changing
 - Type: parent_programme; deck/span: D07; parent: D07_directory_10
 - Source: current_register:D07_directory_10; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_10; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-015 Adaptive arena
 - Type: parent_programme; deck/span: D07; parent: D07_directory_03
 - Source: current_register:D07_directory_03; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-016 Sports viewing
 - Type: parent_programme; deck/span: D07; parent: D07_directory_04
 - Source: current_register:D07_directory_04; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_04; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-017 Training commons
 - Type: parent_programme; deck/span: D07; parent: D07_directory_05
 - Source: current_register:D07_directory_05; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_05; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-018 Simulation suites
 - Type: parent_programme; deck/span: D07; parent: D07_directory_06
 - Source: current_register:D07_directory_06; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-019 Gravity practice
 - Type: parent_programme; deck/span: D07; parent: D07_directory_07
 - Source: current_register:D07_directory_07; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_07; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-020 Team lounge
 - Type: parent_programme; deck/span: D07; parent: D07_directory_08
 - Source: current_register:D07_directory_08; data/reference/directory_allocations.json: atlas page 9
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D07_directory_08; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-021 The grand aquatic pool
 - Type: parent_programme; deck/span: D08; parent: D08_directory_01
@@ -187,63 +187,63 @@ This finite audit records 179 rows: 105 existing directory headings and 74 child
 - Source: current_register:D08_directory_09; data/reference/directory_allocations.json: atlas page 10
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D08_directory_09; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-023 Tidal thermal baths
 - Type: parent_programme; deck/span: D08; parent: D08_directory_02
 - Source: current_register:D08_directory_02; data/reference/directory_allocations.json: atlas page 10
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D08_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-024 Towels & care
 - Type: parent_programme; deck/span: D08; parent: D08_directory_10
 - Source: current_register:D08_directory_10; data/reference/directory_allocations.json: atlas page 10
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D08_directory_10; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-025 Mineral springs
 - Type: parent_programme; deck/span: D08; parent: D08_directory_03
 - Source: current_register:D08_directory_03; data/reference/directory_allocations.json: atlas page 10
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D08_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-026 Hushed grotto
 - Type: parent_programme; deck/span: D08; parent: D08_directory_04
 - Source: current_register:D08_directory_04; data/reference/directory_allocations.json: atlas page 10
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D08_directory_04; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-027 Wellness studio
 - Type: parent_programme; deck/span: D08; parent: D08_directory_05
 - Source: current_register:D08_directory_05; data/reference/directory_allocations.json: atlas page 10
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D08_directory_05; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-028 Relaxation gallery
 - Type: parent_programme; deck/span: D08; parent: D08_directory_06
 - Source: current_register:D08_directory_06; data/reference/directory_allocations.json: atlas page 10
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D08_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-029 Universal changing
 - Type: parent_programme; deck/span: D08; parent: D08_directory_07
 - Source: current_register:D08_directory_07; data/reference/directory_allocations.json: atlas page 10
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D08_directory_07; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-030 Gentle waters
 - Type: parent_programme; deck/span: D08; parent: D08_directory_08
 - Source: current_register:D08_directory_08; data/reference/directory_allocations.json: atlas page 10
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D08_directory_08; partial authored construction; capacity, activity and final architectural acceptance remain pending; scripts/aquatic_section.gd / partial Gentle Waters architecture and access; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-031 Orchard market
 - Type: parent_programme; deck/span: D09; parent: D09_directory_01
@@ -257,518 +257,518 @@ This finite audit records 179 rows: 105 existing directory headings and 74 child
 - Source: current_register:D09_directory_09; data/reference/directory_allocations.json: atlas page 11
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D09_directory_09; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-033 The copper kettle
 - Type: parent_programme; deck/span: D09; parent: D09_directory_02
 - Source: current_register:D09_directory_02; data/reference/directory_allocations.json: atlas page 11
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D09_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-034 Companion games
 - Type: parent_programme; deck/span: D09; parent: D09_directory_10
 - Source: current_register:D09_directory_10; data/reference/directory_allocations.json: atlas page 11
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D09_directory_10; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-035 Paper moon books
 - Type: parent_programme; deck/span: D09; parent: D09_directory_03
 - Source: current_register:D09_directory_03; data/reference/directory_allocations.json: atlas page 11
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D09_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-036 Thread & shell
 - Type: parent_programme; deck/span: D09; parent: D09_directory_04
 - Source: current_register:D09_directory_04; data/reference/directory_allocations.json: atlas page 11
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D09_directory_04; Partial authored architecture with route tests and visual review; full programme and final art unfinished; scripts/thread_shell.gd; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-037 Little makers gallery
 - Type: parent_programme; deck/span: D09; parent: D09_directory_05
 - Source: current_register:D09_directory_05; data/reference/directory_allocations.json: atlas page 11
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D09_directory_05; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-038 Conversation salon
 - Type: parent_programme; deck/span: D09; parent: D09_directory_06
 - Source: current_register:D09_directory_06; data/reference/directory_allocations.json: atlas page 11
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D09_directory_06; partial architecture; D09_salon5_initial_terrace; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-039 Post & parcels
 - Type: parent_programme; deck/span: D09; parent: D09_directory_07
 - Source: current_register:D09_directory_07; data/reference/directory_allocations.json: atlas page 11
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D09_directory_07; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-040 Living gifts
 - Type: parent_programme; deck/span: D09; parent: D09_directory_08
 - Source: current_register:D09_directory_08; data/reference/directory_allocations.json: atlas page 11
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D09_directory_08; partial authored construction; capacity, activity and final architectural acceptance remain pending; scripts/living_gifts.gd + scripts/aquatic_section.gd / partial florist and shared access; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-041 The shared table / 240
 - Type: parent_programme; deck/span: D10; parent: D10_directory_01
 - Source: current_register:D10_directory_01; data/reference/directory_allocations.json: atlas page 12
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D10_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-042 Moonfruit parlor / 160
 - Type: parent_programme; deck/span: D10; parent: D10_directory_09
 - Source: current_register:D10_directory_09; data/reference/directory_allocations.json: atlas page 12
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D10_directory_09; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-043 Sunward dining / 240
 - Type: parent_programme; deck/span: D10; parent: D10_directory_02
 - Source: current_register:D10_directory_02; data/reference/directory_allocations.json: atlas page 12
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D10_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-044 Observation cafe / 120
 - Type: parent_programme; deck/span: D10; parent: D10_directory_10
 - Source: current_register:D10_directory_10; data/reference/directory_allocations.json: atlas page 12
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D10_directory_10; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-045 Lantern restaurant / 240
 - Type: parent_programme; deck/span: D10; parent: D10_directory_03
 - Source: current_register:D10_directory_03; data/reference/directory_allocations.json: atlas page 12
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D10_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-046 Orchard food hall / 240
 - Type: parent_programme; deck/span: D10; parent: D10_directory_04
 - Source: current_register:D10_directory_04; data/reference/directory_allocations.json: atlas page 12
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D10_directory_04; Partial authored architecture with route tests and visual review; full programme and final art unfinished; scripts/orchard_foodhall.gd; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-047 Tide kitchen / 240
 - Type: parent_programme; deck/span: D10; parent: D10_directory_05
 - Source: current_register:D10_directory_05; data/reference/directory_allocations.json: atlas page 12
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D10_directory_05; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-048 Mineral broth hall / 240
 - Type: parent_programme; deck/span: D10; parent: D10_directory_06
 - Source: current_register:D10_directory_06; data/reference/directory_allocations.json: atlas page 12
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D10_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-049 The night table / 240
 - Type: parent_programme; deck/span: D10; parent: D10_directory_07
 - Source: current_register:D10_directory_07; data/reference/directory_allocations.json: atlas page 12
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D10_directory_07; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-050 Vesper dining / 240
 - Type: parent_programme; deck/span: D10; parent: D10_directory_08
 - Source: current_register:D10_directory_08; data/reference/directory_allocations.json: atlas page 12
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D10_directory_08; partial authored construction; capacity, activity and final architectural acceptance remain pending; scripts/vesper_dining.gd + scripts/vesper_service.gd + scripts/vesper_watercourse.gd / partial54-seat dining, finishing and visual water feature; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-051 Grand Lantern Theater / 2,200 seats
 - Type: parent_programme; deck/span: D11; parent: D11_directory_01
 - Source: current_register:D11_directory_01; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-052 Performers' commons
 - Type: parent_programme; deck/span: D11; parent: D11_directory_09
 - Source: current_register:D11_directory_09; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_09; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-053 Cinema 1 / 200 seats
 - Type: parent_programme; deck/span: D11; parent: D11_directory_02
 - Source: current_register:D11_directory_02; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-054 Games & companionship
 - Type: parent_programme; deck/span: D11; parent: D11_directory_10
 - Source: current_register:D11_directory_10; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_10; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-055 Cinema 2 / 200 seats
 - Type: parent_programme; deck/span: D11; parent: D11_directory_03
 - Source: current_register:D11_directory_03; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-056 Cultural gallery
 - Type: parent_programme; deck/span: D11; parent: D11_directory_11
 - Source: current_register:D11_directory_11; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_11; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-057 Cinema 3 / 200 seats
 - Type: parent_programme; deck/span: D11; parent: D11_directory_04
 - Source: current_register:D11_directory_04; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_04; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-058 Immersive sound
 - Type: parent_programme; deck/span: D11; parent: D11_directory_12
 - Source: current_register:D11_directory_12; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_12; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-059 Cinema 4 / 200 seats
 - Type: parent_programme; deck/span: D11; parent: D11_directory_05
 - Source: current_register:D11_directory_05; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_05; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-060 Backstage workshop
 - Type: parent_programme; deck/span: D11; parent: D11_directory_13
 - Source: current_register:D11_directory_13; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_13; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-061 Cinema 5 / 200 seats
 - Type: parent_programme; deck/span: D11; parent: D11_directory_06
 - Source: current_register:D11_directory_06; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-062 Cinema 6 / 200 seats
 - Type: parent_programme; deck/span: D11; parent: D11_directory_07
 - Source: current_register:D11_directory_07; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_07; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-063 The music room
 - Type: parent_programme; deck/span: D11; parent: D11_directory_08
 - Source: current_register:D11_directory_08; data/reference/directory_allocations.json: atlas page 13
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D11_directory_08; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-064 Horizon room
 - Type: parent_programme; deck/span: D12; parent: D12_directory_01
 - Source: current_register:D12_directory_01; data/reference/directory_allocations.json: atlas page 14
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D12_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-065 Vesper panorama
 - Type: parent_programme; deck/span: D12; parent: D12_directory_09
 - Source: current_register:D12_directory_09; data/reference/directory_allocations.json: atlas page 14
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D12_directory_09; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-066 The long library
 - Type: parent_programme; deck/span: D12; parent: D12_directory_02
 - Source: current_register:D12_directory_02; data/reference/directory_allocations.json: atlas page 14
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D12_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-067 Celestial lounge
 - Type: parent_programme; deck/span: D12; parent: D12_directory_10
 - Source: current_register:D12_directory_10; data/reference/directory_allocations.json: atlas page 14
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D12_directory_10; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-068 Listening salon
 - Type: parent_programme; deck/span: D12; parent: D12_directory_03
 - Source: current_register:D12_directory_03; data/reference/directory_allocations.json: atlas page 14
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D12_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-069 Grand theater / First gallery
 - Type: parent_programme; deck/span: D12; parent: D12_directory_11
 - Source: current_register:D12_directory_11; data/reference/directory_allocations.json: atlas page 14
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D12_directory_11; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-070 The stillroom
 - Type: parent_programme; deck/span: D12; parent: D12_directory_04
 - Source: current_register:D12_directory_04; data/reference/directory_allocations.json: atlas page 14
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D12_directory_04; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-071 Star atlas
 - Type: parent_programme; deck/span: D12; parent: D12_directory_05
 - Source: current_register:D12_directory_05; data/reference/directory_allocations.json: atlas page 14
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D12_directory_05; partial authored construction; capacity, activity and final architectural acceptance remain pending; scripts/star_atlas.gd + scripts/star_atlas_arrival.gd / partial library and connected court; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-072 Night garden
 - Type: parent_programme; deck/span: D12; parent: D12_directory_06
 - Source: current_register:D12_directory_06; data/reference/directory_allocations.json: atlas page 14
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D12_directory_06; Partial fitted architecture, vegetation and local lighting; final art and guest use incomplete; scripts/night_garden.gd / AST-GAR-006; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-073 Many worlds gallery
 - Type: parent_programme; deck/span: D12; parent: D12_directory_07
 - Source: current_register:D12_directory_07; data/reference/directory_allocations.json: atlas page 14
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D12_directory_07; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-074 Reading nooks
 - Type: parent_programme; deck/span: D12; parent: D12_directory_08
 - Source: current_register:D12_directory_08; data/reference/directory_allocations.json: atlas page 14
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D12_directory_08; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-075 Grand theater / Crown gallery
 - Type: parent_programme; deck/span: D13; parent: D13_directory_01
 - Source: current_register:D13_directory_01; data/reference/directory_allocations.json: atlas page 15
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D13_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-076 Port forward commons
 - Type: parent_programme; deck/span: D13; parent: D13_directory_02
 - Source: current_register:D13_directory_02; data/reference/directory_allocations.json: atlas page 15
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D13_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-077 Starboard forward commons
 - Type: parent_programme; deck/span: D13; parent: D13_directory_03
 - Source: current_register:D13_directory_03; data/reference/directory_allocations.json: atlas page 15
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D13_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-078 Port atrium commons
 - Type: parent_programme; deck/span: D13; parent: D13_directory_04
 - Source: current_register:D13_directory_04; data/reference/directory_allocations.json: atlas page 15
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D13_directory_04; partial authored construction; capacity, activity and final architectural acceptance remain pending; scripts/star_atlas.gd / partial shared study and connected court; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-079 Starboard atrium commons
 - Type: parent_programme; deck/span: D13; parent: D13_directory_05
 - Source: current_register:D13_directory_05; data/reference/directory_allocations.json: atlas page 15
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D13_directory_05; Partial connected two-level architecture with walkable stair and tested physical lift; final art, guest use and full access review incomplete; scripts/vertical_commons.gd + scripts/commons_lift.gd / AST-COM-001, AST-CIR-003, AST-DOR-003; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-080 Port aft commons
 - Type: parent_programme; deck/span: D13; parent: D13_directory_06
 - Source: current_register:D13_directory_06; data/reference/directory_allocations.json: atlas page 15
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D13_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-081 Starboard aft commons
 - Type: parent_programme; deck/span: D13; parent: D13_directory_07
 - Source: current_register:D13_directory_07; data/reference/directory_allocations.json: atlas page 15
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D13_directory_07; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-082 Port forward commons
 - Type: parent_programme; deck/span: D14; parent: D14_directory_01
 - Source: current_register:D14_directory_01; data/reference/directory_allocations.json: atlas page 16
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D14_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-083 Starboard forward commons
 - Type: parent_programme; deck/span: D14; parent: D14_directory_02
 - Source: current_register:D14_directory_02; data/reference/directory_allocations.json: atlas page 16
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D14_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-084 Port atrium commons
 - Type: parent_programme; deck/span: D14; parent: D14_directory_03
 - Source: current_register:D14_directory_03; data/reference/directory_allocations.json: atlas page 16
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D14_directory_03; partial authored construction; capacity, activity and final architectural acceptance remain pending; scripts/star_atlas.gd / partial conversation gallery and connected court; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-085 Starboard atrium commons
 - Type: parent_programme; deck/span: D14; parent: D14_directory_04
 - Source: current_register:D14_directory_04; data/reference/directory_allocations.json: atlas page 16
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D14_directory_04; Partial connected two-level architecture with walkable stair and tested physical lift; final art, guest use and full access review incomplete; scripts/vertical_commons.gd + scripts/commons_lift.gd / AST-COM-001, AST-CIR-003, AST-DOR-003; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-086 Port aft commons
 - Type: parent_programme; deck/span: D14; parent: D14_directory_05
 - Source: current_register:D14_directory_05; data/reference/directory_allocations.json: atlas page 16
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D14_directory_05; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-087 Starboard aft commons
 - Type: parent_programme; deck/span: D14; parent: D14_directory_06
 - Source: current_register:D14_directory_06; data/reference/directory_allocations.json: atlas page 16
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D14_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-088 Port forward commons
 - Type: parent_programme; deck/span: D15; parent: D15_directory_01
 - Source: current_register:D15_directory_01; data/reference/directory_allocations.json: atlas page 17
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D15_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-089 Starboard forward commons
 - Type: parent_programme; deck/span: D15; parent: D15_directory_02
 - Source: current_register:D15_directory_02; data/reference/directory_allocations.json: atlas page 17
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D15_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-090 Port atrium commons
 - Type: parent_programme; deck/span: D15; parent: D15_directory_03
 - Source: current_register:D15_directory_03; data/reference/directory_allocations.json: atlas page 17
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D15_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-091 Starboard atrium commons
 - Type: parent_programme; deck/span: D15; parent: D15_directory_04
 - Source: current_register:D15_directory_04; data/reference/directory_allocations.json: atlas page 17
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D15_directory_04; Partial connected D13-D17 house with local stairs, physical lift and authored resting edges; full neighbourhood and final art unfinished; scripts/vertical_commons.gd; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-092 Port aft commons
 - Type: parent_programme; deck/span: D15; parent: D15_directory_05
 - Source: current_register:D15_directory_05; data/reference/directory_allocations.json: atlas page 17
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D15_directory_05; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-093 Starboard aft commons
 - Type: parent_programme; deck/span: D15; parent: D15_directory_06
 - Source: current_register:D15_directory_06; data/reference/directory_allocations.json: atlas page 17
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D15_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-094 Port forward commons
 - Type: parent_programme; deck/span: D16; parent: D16_directory_01
 - Source: current_register:D16_directory_01; data/reference/directory_allocations.json: atlas page 18
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D16_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-095 Starboard forward commons
 - Type: parent_programme; deck/span: D16; parent: D16_directory_02
 - Source: current_register:D16_directory_02; data/reference/directory_allocations.json: atlas page 18
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D16_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-096 Port atrium commons
 - Type: parent_programme; deck/span: D16; parent: D16_directory_03
 - Source: current_register:D16_directory_03; data/reference/directory_allocations.json: atlas page 18
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D16_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-097 Starboard atrium commons
 - Type: parent_programme; deck/span: D16; parent: D16_directory_04
 - Source: current_register:D16_directory_04; data/reference/directory_allocations.json: atlas page 18
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D16_directory_04; Partial connected D13-D17 house with local stairs, physical lift and authored resting edges; full neighbourhood and final art unfinished; scripts/vertical_commons.gd; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-098 Port aft commons
 - Type: parent_programme; deck/span: D16; parent: D16_directory_05
 - Source: current_register:D16_directory_05; data/reference/directory_allocations.json: atlas page 18
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D16_directory_05; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-099 Starboard aft commons
 - Type: parent_programme; deck/span: D16; parent: D16_directory_06
 - Source: current_register:D16_directory_06; data/reference/directory_allocations.json: atlas page 18
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D16_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-100 Port forward commons
 - Type: parent_programme; deck/span: D17; parent: D17_directory_01
 - Source: current_register:D17_directory_01; data/reference/directory_allocations.json: atlas page 19
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D17_directory_01; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-101 Starboard forward commons
 - Type: parent_programme; deck/span: D17; parent: D17_directory_02
 - Source: current_register:D17_directory_02; data/reference/directory_allocations.json: atlas page 19
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D17_directory_02; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-102 Port atrium commons
 - Type: parent_programme; deck/span: D17; parent: D17_directory_03
 - Source: current_register:D17_directory_03; data/reference/directory_allocations.json: atlas page 19
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D17_directory_03; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-103 Starboard atrium commons
 - Type: parent_programme; deck/span: D17; parent: D17_directory_04
 - Source: current_register:D17_directory_04; data/reference/directory_allocations.json: atlas page 19
 - Status: partial_current_construction
 - Current evidence: data/programme_ledger.json:D17_directory_04; Partial connected D13-D17 house with local stairs, physical lift and authored resting edges; full neighbourhood and final art unfinished; scripts/vertical_commons.gd; loaded parent ship build calls checked, scope partial only
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-104 Port aft commons
 - Type: parent_programme; deck/span: D17; parent: D17_directory_05
 - Source: current_register:D17_directory_05; data/reference/directory_allocations.json: atlas page 19
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D17_directory_05; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-105 Starboard aft commons
 - Type: parent_programme; deck/span: D17; parent: D17_directory_06
 - Source: current_register:D17_directory_06; data/reference/directory_allocations.json: atlas page 19
 - Status: no_verified_current_programme_builder
 - Current evidence: data/programme_ledger.json:D17_directory_06; required programme; architecture pending
-- Mapping/boundary: Historical envelope is an allocation; does not establish finished room. 
+- Mapping/boundary: Historical envelope is an allocation; does not establish finished room.
 
 ### AME-106 50 m unobstructed main swimming lane
 - Type: subspace; deck/span: D08; parent: D08_directory_01
@@ -1293,3 +1293,269 @@ This finite audit records 179 rows: 105 existing directory headings and 74 child
 ## Limits and next acceptance
 
 Only read-only source inspection was performed. No imports, engine runs, builds, runtime edits, existing ledger edits or commits occurred. Allocation/floor overlap never proves finished architecture, routes, species support or activity. Catalogue presence never proves installation. Resolve explicit child mappings, then construct and verify each destination/child system against the current revision. Optional operational ideas such as an orchestra pit, ticket office, pool lifeguard room or extra dressing rooms remain suggestions unless sourced.
+
+## Additional detailed aquatic and habitat crosswalk
+
+### AME-180 Spa pods
+- Type: subspace; deck/span: D08 or coordinated upper aquatic levels; parent: D08_directory_02, D08_directory_03
+- Source: aquatic_detailed:floor plan labels 1–9; detail captions and section
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Number and distinction from six thermal pools unresolved
+
+### AME-181 Aquatic lounge terraces and river lounge
+- Type: subspace; deck/span: D08 or coordinated upper aquatic levels; parent: D08_directory_06, D08_directory_08
+- Source: aquatic_detailed:floor plan labels 1–9; detail captions and section
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Captioned/plan-labelled terraces; exact allocation and all occupied upper levels unresolved
+
+### AME-182 Aquatic bridges
+- Type: system; deck/span: D08 or coordinated upper aquatic levels; parent: D08_directory_08
+- Source: aquatic_detailed:floor plan labels 1–9; detail captions and section
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Plan label 5; required crossing composition must fit real basin/loop without blocking 50 m lane; number not inferred
+
+### AME-183 Aquatic bar and refreshments
+- Type: subspace; deck/span: D08 or coordinated upper aquatic levels; parent: D08_directory_08
+- Source: aquatic_detailed:floor plan labels 1–9; detail captions and section
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Plan label 6 explicitly calls for bar/refreshments; no existing directory child crosswalk; coordinate with dining capacity
+
+### AME-184 Aquatic local stairs and elevators
+- Type: system; deck/span: D08 or coordinated upper aquatic levels; parent: D08_directory_08
+- Source: aquatic_detailed:floor plan labels 1–9; detail captions and section
+- Status: partial_architectural_only
+- Evidence: scripts/aquatic_section.gd and docs/AQUATIC_VERTICAL_COORDINATION.md: partial three-stop access
+- Mapping/boundary: Plan label 7; current 3-stop aquatic lift and switchbacks are partial infrastructure, not all reference levels
+
+### AME-185 Aquatic changing rooms
+- Type: subspace; deck/span: D08 or coordinated upper aquatic levels; parent: D08_directory_07
+- Source: aquatic_detailed:floor plan labels 1–9; detail captions and section
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Plan label 8; existing Universal changing broad heading needs privacy/sub-room resolution
+
+### AME-186 Aquatic planted islands and green zones
+- Type: architectural_zone; deck/span: D08 or coordinated upper aquatic levels; parent: D08_directory_08
+- Source: aquatic_detailed:floor plan labels 1–9; detail captions and section
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Plan label 9; architectural composition, not discrete mandatory room or exact island count
+
+### AME-187 Aquatic waterfall focal sequence
+- Type: system; deck/span: D08 or coordinated upper aquatic levels; parent: D08_directory_08
+- Source: aquatic_detailed:floor plan labels 1–9; detail captions and section
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Actual swimming reference section depicts upper water feature; coexistence with restaurant watercourse and atrium feature needs coordinated interpretation, not duplicated spectacle
+
+### AME-188 Aquatic habitat pods and water corridors
+- Type: habitat_support; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet D07 aquatic/arboreal row; canonical residential decks D04/D13–D17. Water rest accommodations/support must be reconciled against1000 units; not ordinary swimming-pool programme
+
+### AME-189 Arboreal perch habitats
+- Type: habitat_support; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet D07 row. Rest support type is historical, not an extra species; map valid morphology/canonical six species before generation
+
+### AME-190 Thermal rest chambers
+- Type: habitat_support; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet D08 row. Accommodation/rest family, not automatically a public thermal pool
+
+### AME-191 Low gravity suites and gravity modulation
+- Type: habitat_support; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet D08 row and legend. Environmental support is part of existing units; no new population or speculative gravity simulator
+
+### AME-192 Species adapted suites
+- Type: habitat_support; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet D08 row. Six current species supersede old imagery species/count assumptions
+
+### AME-193 Refuge rooms
+- Type: subspace; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet D08 row; fixed units/day-support mapping unresolved. Printed20 cannot create extra hotel units or beds
+
+### AME-194 Pressure transition vestibules
+- Type: subspace; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet D08 row. Habitat thresholds need mapping and actual environmental/support semantics
+
+### AME-195 Species specific bio sanitation nodes
+- Type: system; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet D08 row; canonical current needs differ by species. Privacy/service interfaces belong with existing habitats, not invented unit increments
+
+### AME-196 Hydration feeding kiosks and biosanitation nodes
+- Type: system; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet legend/standard/habitat rows. Distributed child support, no new accommodation count
+
+### AME-197 Multi environment garden lounges
+- Type: subspace; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest sheet D07 Bionic lounge/life/terrarium garden labels; map residential shared spaces and botanical destinations without double counting
+
+### AME-198 Variable atmosphere and humidity temperature acoustic lighting support
+- Type: system; deck/span: D04/D13–D17 mapping unresolved; parent: unresolved
+- Source: guest_sheet:habitat rows/legend; master:chapter6 and chapter8; P497
+- Status: not_verified_built
+- Evidence: scripts/ship.gd: no dedicated loaded builder identified; allocation is not construction
+- Mapping/boundary: Guest-sheet environmental zoning/legend. Values are historical illustrative ranges; preserve confirmed qualitative needs, decide numeric specs separately
+
+### AME-199 Private sleeping social dining and view zones inside guest units
+- Type: architectural_zone; deck/span: residential decks; parent: unresolved
+- Source: residential_current_reference:Uploaded46/44/45/46 actual pixels; master:chapter6; latest curated windows overlay
+- Status: partial_current_construction
+- Evidence: scripts/residential_suite.gd; scripts/d17_connected_house.gd; docs/D17_CONNECTED_ADOPTION.json; unit790 lower only
+- Mapping/boundary: Images show supported sleeping, intimate seating/dining, framed internal court or external space view and profile/material hierarchy. These are room-family composition obligations inside the fixed1000units, not three extra rooms per unit. Partial D13 suites and D17 Royalty lower construction do not cover all instances.
+
+## Reference scope screening inventory
+
+All56 entries in this bounded amenity-related source inventory were visually checked: primary labelled sheets, detailed pool/theater/shopping images and selected residential sources at full image scale; remaining composition references and historical sheet variants at overview/contact-sheet scale. No known relevant source entry remains unread at scope-screening level. Full-size district design review remains required before authoring and this is not all72-reference or whole-ship acceptance.
+
+- REF-aa10009828: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Additional_Historical_References/image(20261002-002522).png
+- REF-f685af904b: overview_contact_sheet_checked_only; DesignArchive/References/Historical_Concepts_And_Blueprints/1(1).png
+- REF-e66ade3d9f: overview_contact_sheet_checked_only; DesignArchive/References/Historical_Concepts_And_Blueprints/2(1).png
+- REF-45bcf5b4f3: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/250d8f2d-6ef1-44c5-9009-67d50e20542f.png
+- REF-858525bb42: overview_contact_sheet_checked_only; DesignArchive/References/Historical_Concepts_And_Blueprints/3(1).png
+- REF-546a6287cb: overview_contact_sheet_checked_only; DesignArchive/References/Historical_Concepts_And_Blueprints/981c332a-deb3-49bf-af73-86469b55f869.png
+- REF-be035845a6: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/Futuristic Luxury Space Atrium Garden.png
+- REF-15abcd5aa3: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/Futuristic Suite Overlooking a Garden Atrium.png
+- REF-82a66b7ffa: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/Luxury Space Cruise Suite with Planetary View.png
+- REF-b4f7c83f24: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/Retro-Futurist Suite Overlooking Atrium.png
+- REF-10dc8358ad: overview_contact_sheet_checked_only; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-1(1).png
+- REF-3f5de9e10f: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-1(2).png
+- REF-419e1ed876: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-1(3).png
+- REF-344c7d2696: overview_contact_sheet_checked_only; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-1.png
+- REF-2122ff0b9a: full_pixels_checked; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-2(1).png
+- REF-c0d2dc2025: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-2(2).png
+- REF-1a21aaa8f3: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-2(3).png
+- REF-6fdf9f5234: overview_contact_sheet_checked_only; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-2.png
+- REF-6c3a18ea3f: full_pixels_checked; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-3(1).png
+- REF-396d790bef: full_pixels_checked; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-3(2).png
+- REF-48fd2aa4fe: overview_contact_sheet_checked_only; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-3.png
+- REF-e3e8d05223: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-4(1).png
+- REF-1284874dbe: overview_contact_sheet_checked_only; DesignArchive/References/Historical_Concepts_And_Blueprints/image-gen-4.png
+- REF-f34e721fb6: full_pixels_checked; DesignArchive/References/Uploaded_46/01/image.png
+- REF-3813a0ecc3: full_pixels_checked; DesignArchive/References/Uploaded_46/02/image(1).png
+- REF-90ba2f6d31: full_pixels_checked; DesignArchive/References/Uploaded_46/03/3.png
+- REF-1d51d4a06e: full_pixels_checked; DesignArchive/References/Uploaded_46/04/2.png
+- REF-6729d6150c: full_pixels_checked; DesignArchive/References/Uploaded_46/05/1.png
+- REF-f84205f20a: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/07/image(3).png
+- REF-72c49c565c: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/11/image(6).png
+- REF-3c524e22a5: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/12/image(7).png
+- REF-762f06b7c7: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/13/image(8).png
+- REF-f80a4f58ec: full_pixels_checked; DesignArchive/References/Uploaded_46/14/image(20261001-035516).png
+- REF-58874dc6da: full_pixels_checked; DesignArchive/References/Uploaded_46/15/image(20261001-035517).png
+- REF-4f1d548bc8: full_pixels_checked; DesignArchive/References/Uploaded_46/16/image(20261001-035518).png
+- REF-240d196d5a: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/20/image(20261001-071306).png
+- REF-bec8e6ecaa: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/21/image(20261001-071604).png
+- REF-20281d3bb3: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/22/image(20261001-071704).png
+- REF-0478dfabb9: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/23/image(20261001-072858).png
+- REF-a72a10a7d5: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/27/image(20261001-190511).png
+- REF-72e9a4a1d0: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/28/image(20261001-190512).png
+- REF-b74349b557: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/30/image(20261001-191914).png
+- REF-bacc0c55bb: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/31/image(20261001-191915).png
+- REF-980fe8b7e6: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/32/image(20261001-191916).png
+- REF-4e1375543a: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/33/image(20261001-191917).png
+- REF-b5f0c64e29: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/34/image(20261001-200233).png
+- REF-dbea2b3b3d: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/35/image(20261001-200235).png
+- REF-ab439aa6fa: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/40/image(20261001-213117).png
+- REF-7ca7281301: composition_pixels_checked_at_contact_sheet_scale; DesignArchive/References/Uploaded_46/41/image(20261001-213118).png
+- REF-0328f70e49: full_pixels_checked; DesignArchive/References/Uploaded_46/44/image(20261002-000722).png
+- REF-9c453f4498: full_pixels_checked; DesignArchive/References/Uploaded_46/45/image(20261002-001051).png
+- REF-0a92cd5adc: full_pixels_checked; DesignArchive/References/Uploaded_46/46/image(20261002-001347).png
+- REF-32858f7ec1: composition_pixels_checked_at_contact_sheet_scale; BlenderCatalogue/references/hospitality/vibe_dining_edge.jpg
+- REF-d0f54a5bb3: composition_pixels_checked_at_contact_sheet_scale; BlenderCatalogue/references/salon/vibe_observation_lounge.jpg
+- REF-48cca6e8b3: composition_pixels_checked_at_contact_sheet_scale; BlenderCatalogue/references/salon/vibe_vertical_atrium.jpg
+- REF-a2b1a7bd5c: composition_pixels_checked_at_contact_sheet_scale; BlenderCatalogue/references/residential_20261004/Luxury_single_space_view_8079.jpg
+
+## Final composition findings
+
+- Remaining residential references repeat sleeping/social/dining/view composition or show modular wall/window/ceiling/furniture kits. They do not explicitly add private swimming pools or extra unit counts.
+- Library references show intimate reading alcoves, integrated shelving, overlook/stair/escalator relationships and viewing/study spaces; existing library/reading programmes must express these functions without copying a specific branded library.
+- Atrium references show grounded botanical/water focal sequence, active terraces, purposeful crossings/lifts and linked destinations. Exact illustrated number of trees/islands/terraces is not mandatory and cannot override16-level opening.
+- Shopping reference names Nexus/Terra&Tide/StellarFinds illustrate storefront identities; master architecture clause5 explicitly prohibits adding businesses or moving all100shops to ring. Preserve addressed100shop inventory separately from10directory retail headings.
+- No remaining composition image established VIP secondary-pool count/deck; latest user-required scope remains explicitly unresolved.
+
+## Canonical parent coverage closure
+
+The amenity and engineering/service audit programme associations together cover all161canonical keys with zero missing or outside keys. Seven parent rows were added to close the earlier154-key union: all six D04habitat-neighbourhood commons and D18Upper Horizon. This is inventory closure, not architectural or functional acceptance. Parent and child overlap remains non-additive.
+
+### AME-200 Port forward commons
+- Programme: D04_directory_01; deck: D04
+- Source: current_register:D04_directory_01; master:chapter4 D04 residential support / D18 command observation; data/reference/directory_allocations.json: atlas page 6
+- Status: no_verified_current_programme_builder
+- Evidence: data/programme_ledger.json:D04_directory_01; source directory identity only; data/reference/directory_allocations.json: atlas page 6; scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction
+- Boundary: Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.
+
+### AME-201 Starboard forward commons
+- Programme: D04_directory_02; deck: D04
+- Source: current_register:D04_directory_02; master:chapter4 D04 residential support / D18 command observation; data/reference/directory_allocations.json: atlas page 6
+- Status: no_verified_current_programme_builder
+- Evidence: data/programme_ledger.json:D04_directory_02; source directory identity only; data/reference/directory_allocations.json: atlas page 6; scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction
+- Boundary: Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.
+
+### AME-202 Port atrium commons
+- Programme: D04_directory_03; deck: D04
+- Source: current_register:D04_directory_03; master:chapter4 D04 residential support / D18 command observation; data/reference/directory_allocations.json: atlas page 6
+- Status: no_verified_current_programme_builder
+- Evidence: data/programme_ledger.json:D04_directory_03; source directory identity only; data/reference/directory_allocations.json: atlas page 6; scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction
+- Boundary: Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.
+
+### AME-203 Starboard atrium commons
+- Programme: D04_directory_04; deck: D04
+- Source: current_register:D04_directory_04; master:chapter4 D04 residential support / D18 command observation; data/reference/directory_allocations.json: atlas page 6
+- Status: no_verified_current_programme_builder
+- Evidence: data/programme_ledger.json:D04_directory_04; source directory identity only; data/reference/directory_allocations.json: atlas page 6; scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction
+- Boundary: Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.
+
+### AME-204 Port aft commons
+- Programme: D04_directory_05; deck: D04
+- Source: current_register:D04_directory_05; master:chapter4 D04 residential support / D18 command observation; data/reference/directory_allocations.json: atlas page 6
+- Status: no_verified_current_programme_builder
+- Evidence: data/programme_ledger.json:D04_directory_05; source directory identity only; data/reference/directory_allocations.json: atlas page 6; scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction
+- Boundary: Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.
+
+### AME-205 Starboard aft commons
+- Programme: D04_directory_06; deck: D04
+- Source: current_register:D04_directory_06; master:chapter4 D04 residential support / D18 command observation; data/reference/directory_allocations.json: atlas page 6
+- Status: no_verified_current_programme_builder
+- Evidence: data/programme_ledger.json:D04_directory_06; source directory identity only; data/reference/directory_allocations.json: atlas page 6; scripts/ship.gd:_ready: no dedicated loaded builder identified for this D04 commons; residential unit allocation does not prove commons construction
+- Boundary: Existing habitat-neighbourhood commons heading inside the161programme total. Shared support must serve existing1000unit inventory; no additional homes/berths or mandatory subroom count inferred.
+
+### AME-206 Upper horizon
+- Programme: D18_directory_09; deck: D18
+- Source: current_register:D18_directory_09; master:chapter4 D04 residential support / D18 command observation; data/reference/directory_allocations.json: atlas page 20
+- Status: partial_current_construction
+- Evidence: data/programme_ledger.json:D18_directory_09; source directory identity only; data/reference/directory_allocations.json: atlas page 20; scripts/ship.gd:_ready loads aft_crown_platform.gd and upper_horizon_enclosure.gd; data/architecture/AFT_CROWN_PLATFORM_RUNTIME.json and UPPER_HORIZON_ENCLOSURE_RUNTIME.json; docs/UPPER_HORIZON_ENCLOSURE_FOCUSED_VALIDATION.json and docs/AFT_CROWN_PLATFORM_VALIDATION.json: partial installed foyer/observation geometry, not complete furnishing/occupation
+- Boundary: Installed partial Upper Horizon overrides stale ledger nullowner/pending status. Historical envelope is not a required finished footprint; onward closure furnishing lighting and guest use remain open.
+
+Grand Pool and Orchard Market parent rows explicitly record the installed walking-tested partial candidate rather than the stale pending register status. Upper Horizon is also installed partial via the aft-crown platform and enclosure runtime contracts, despite the stale owner field.

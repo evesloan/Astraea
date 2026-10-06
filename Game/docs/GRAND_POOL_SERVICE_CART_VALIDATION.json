@@ -1,150 +1,124 @@
 {
-  "schema": 1,
-  "status": "PREPARED_UNRUN",
-  "test": "grand_pool_service_cart",
-  "test_file": "tests/validate_grand_pool_service_cart.gd",
-  "test_sha256": "365fcd2b9aa0bd267a64fe0fe2fb65eb6f892fe068c38e0f2541f66b83c02029",
-  "probe_file": "tests/grand_pool_cart_probe.gd",
-  "probe_sha256": "9962a5a561522e17df9a072add9b02dd7a205f2a3bc23e97a8d166ca380cd5ee",
-  "runtime_contract_sha256": "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd",
-  "source_catalogue_commit": "c333b25",
-  "source_proxy": {
-    "qa_sha256": "457e35214b9d1c6bcbf92b95bf53ca5ab9048575d355e1c48d02db57e41a303e",
-    "retained_geometric_poses": 532,
-    "minimum_plan_clearance_m": 0.13951491439718214,
-    "scope": "Geometric source proof only, not force-driven proof"
-  },
-  "new_bounded_turn_source_check": {
-    "status": "SOURCE_GEOMETRY_ONLY",
-    "poses_per_floor": 405,
-    "floor_y": [
-      46.2,
-      52.5
-    ],
-    "minimum_plan_clearance_m": 0.1900061035156,
-    "source_solid_hits": 0,
-    "all_four_wheel_centres_and_operator_supported": true,
-    "scope": "Analytical source/floor check; engine not run"
-  },
-  "scope": [
-    "both upper staff streets and screened vestibules",
-    "actual wide service door focused release/control/regrip and unfocused rejection",
-    "ordinary held W2m/s smoke across each service door",
-    "1.4m mouth backing/forward recovery",
-    "bounded moving receiving turnaround and forward-facing return",
-    "actual curved staff-lift boarding and loaded upper up/down transfers",
-    "actual per-wheel/operator support and10mm retained sill bridge",
-    "same eight-light cap"
-  ],
-  "initial_fixture_placements": 1,
-  "frame_allowance": 60000,
-  "wall_watchdog_seconds": 1000,
-  "allowance_basis": "Approximately450m operator movement at1m/s plus~50s initial call, two6.3m transfers, released controls and settles, with bounded contact/route overhead",
-  "engine_run": false,
-  "limits": "No freehand comfort, full five-stop/local lift regression, water physics, traffic/species fitting, stock or visual acceptance is claimed",
-  "analytical_preflight": {
-    "status": "SOURCE_FLOOR_GEOMETRY_ONLY",
-    "route_floor_rows": [
-      {
-        "floor_y": 46.2,
-        "route": "street_out",
-        "poses": 1124,
-        "operator_metres": 84.4038,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 46.2,
-        "route": "street_return",
-        "poses": 1121,
-        "operator_metres": 84.4738,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 46.2,
-        "route": "vestibule_out",
-        "poses": 205,
-        "operator_metres": 13.107,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 46.2,
-        "route": "turnaround",
-        "poses": 223,
-        "operator_metres": 12.3615,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 46.2,
-        "route": "vestibule_return",
-        "poses": 217,
-        "operator_metres": 13.957,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 46.2,
-        "route": "short_backing",
-        "poses": 19,
-        "operator_metres": 1.4,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 46.2,
-        "route": "short_recover",
-        "poses": 19,
-        "operator_metres": 1.4,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 52.5,
-        "route": "street_out",
-        "poses": 1124,
-        "operator_metres": 84.4038,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 52.5,
-        "route": "street_return",
-        "poses": 1121,
-        "operator_metres": 84.4738,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 52.5,
-        "route": "vestibule_out",
-        "poses": 205,
-        "operator_metres": 13.107,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 52.5,
-        "route": "turnaround",
-        "poses": 223,
-        "operator_metres": 12.3615,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 52.5,
-        "route": "vestibule_return",
-        "poses": 217,
-        "operator_metres": 13.957,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 52.5,
-        "route": "short_backing",
-        "poses": 19,
-        "operator_metres": 1.4,
-        "unsupported_points": 0
-      },
-      {
-        "floor_y": 52.5,
-        "route": "short_recover",
-        "poses": 19,
-        "operator_metres": 1.4,
-        "unsupported_points": 0
-      }
-    ],
-    "scope": "Exact source floor polygons for all five planned support points, not engine or dynamic proof"
-  },
-  "failure_handling": "First failed assertion or probe emits a latched FAIL receipt and quits1; later checkpoints cannot overwrite FAIL"
+	"actual_loaded_upper_staff_lift_trips": 0,
+	"actual_wheel_operator_support_samples": 4520,
+	"cart_angular_velocity": [
+		0.000362105551175773,
+		0.00000981515586317983,
+		-0.0000799459157860838
+	],
+	"cart_linear_velocity": [
+		0.000051180824812036,
+		0.0000314306307700463,
+		0.0000330207039951347
+	],
+	"cart_rotation_radians": [
+		-0.00132689194288105,
+		-1.66397392749786,
+		-0.00100487528834492
+	],
+	"cart_world": [
+		-55.5652885437012,
+		46.1989250183105,
+		-462.815124511719
+	],
+	"checkpoint": "Y46.2 upper-street outbound",
+	"detail": "Actual operator envelope at Y46.2 upper-street outbound",
+	"driven_frames": 5062,
+	"initial_fixture_placements": 1,
+	"limits": "Scripted operator route plus bounded ordinary straight2m/s input; no freehand turning comfort, traffic/species fitting, water physics, stock, local public lift/full five-stop regression, visual acceptance or full programme completion is certified. Collisions, source fittings and the eight-light cap are unchanged.",
+	"loose_products": 4,
+	"maximum_cart_route_error_m": 0.4638671875,
+	"maximum_frames": 60000,
+	"moving_turn_pose_samples": 795,
+	"operator_world": [
+		-57.1308631896973,
+		46.2000503540039,
+		-463.01220703125
+	],
+	"ordinary_held_input_speed_mps": 2.0,
+	"ordinary_input_and_control_frames": 18,
+	"ordinary_input_peak_mps": 0.0,
+	"ordinary_service_door_smokes": 0,
+	"planned_live_compound_poses": 1718,
+	"planned_support_rays": 13110,
+	"prior_attempts": [
+		{
+			"actual_loaded_upper_staff_lift_trips": 0.0,
+			"actual_wheel_operator_support_samples": 4600.0,
+			"cart_world": [
+				-55.5652923583984,
+				46.1989707946777,
+				-462.815124511719
+			],
+			"checkpoint": "Y46.2 upper-street outbound",
+			"detail": "Released operator stalled at(-55.24421, 46.2001, -462.1105) toward(-55.2, -462.25) at Y46.2 upper-street outbound",
+			"driven_frames": 5062.0,
+			"initial_fixture_placements": 1.0,
+			"limits": "Scripted operator route plus bounded ordinary straight2m/s input; no freehand turning comfort, traffic/species fitting, water physics, stock, local public lift/full five-stop regression, visual acceptance or full programme completion is certified. Collisions, source fittings and the eight-light cap are unchanged.",
+			"loose_products": 4.0,
+			"maximum_cart_route_error_m": 0.4638671875,
+			"maximum_frames": 60000.0,
+			"moving_turn_pose_samples": 795.0,
+			"ordinary_held_input_speed_mps": 2.0,
+			"ordinary_input_and_control_frames": 9.0,
+			"ordinary_input_peak_mps": 0.0,
+			"ordinary_service_door_smokes": 0.0,
+			"planned_live_compound_poses": 1124.0,
+			"planned_support_rays": 10220.0,
+			"probe_sha256": "9962a5a561522e17df9a072add9b02dd7a205f2a3bc23e97a8d166ca380cd5ee",
+			"released_walk_frames": 293.0,
+			"runtime_contract_sha256": "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd",
+			"schema": 1.0,
+			"scripted_operator_route_metres": 84.3635259252042,
+			"scripted_operator_speed_limit_mps": 1.0,
+			"source_geometric_evidence": {
+				"catalogue_commit": "c333b25",
+				"minimum_proxy_clearance_m": 0.139514914397182,
+				"qa_sha256": "457e35214b9d1c6bcbf92b95bf53ca5ab9048575d355e1c48d02db57e41a303e",
+				"retained_poses": 532.0,
+				"scope": "Retained source geometric evidence only; not replayed or counted as force-driven proof"
+			},
+			"source_pins": {
+				"AST-AQU-016.glb": "95a72a20bd0ed653bb10622ff025b1003386020063587828b29efe5e8e40a481",
+				"AST-CIR-003_five_stop.glb": "6e2fa392f1cc84da8fa80e9b38ddf117a587fc4c4f4a47b631fd0143561eb19b",
+				"AST-CIR-005_forward_pool_market.glb": "538f8c6d1a3a075b48cdd63a8cb375c83b07f8100987e193b2efbfd39d134667",
+				"AST-DOR-002_wide.glb": "f57ceb601ee3c625b0b5953d9d449527a30216ac5671f184cb98fd727cf0c49e",
+				"AST-STF-009_pool_market.glb": "5e1995b9e0114e8a4f28d9cd5d9c00efbb44ff2fb504d8a965eba613b0e7467a"
+			},
+			"status": "FAIL",
+			"test": "grand_pool_service_cart",
+			"test_sha256": "365fcd2b9aa0bd267a64fe0fe2fb65eb6f892fe068c38e0f2541f66b83c02029",
+			"tracked_frames": 5529.0,
+			"verified_sill_bridge_rays": 0.0,
+			"waiting_frames": 165.0,
+			"wall_watchdog_seconds": 1000.0
+		}
+	],
+	"probe_sha256": "9962a5a561522e17df9a072add9b02dd7a205f2a3bc23e97a8d166ca380cd5ee",
+	"released_walk_frames": 120,
+	"runtime_contract_sha256": "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd",
+	"schema": 1,
+	"scripted_operator_route_metres": 84.3635259252042,
+	"scripted_operator_speed_limit_mps": 1.0,
+	"source_geometric_evidence": {
+		"catalogue_commit": "c333b25",
+		"minimum_proxy_clearance_m": 0.139514914397182,
+		"qa_sha256": "457e35214b9d1c6bcbf92b95bf53ca5ab9048575d355e1c48d02db57e41a303e",
+		"retained_poses": 532,
+		"scope": "Retained source geometric evidence only; not replayed or counted as force-driven proof"
+	},
+	"source_pins": {
+		"AST-AQU-016.glb": "95a72a20bd0ed653bb10622ff025b1003386020063587828b29efe5e8e40a481",
+		"AST-CIR-003_five_stop.glb": "6e2fa392f1cc84da8fa80e9b38ddf117a587fc4c4f4a47b631fd0143561eb19b",
+		"AST-CIR-005_forward_pool_market.glb": "538f8c6d1a3a075b48cdd63a8cb375c83b07f8100987e193b2efbfd39d134667",
+		"AST-DOR-002_wide.glb": "f57ceb601ee3c625b0b5953d9d449527a30216ac5671f184cb98fd727cf0c49e",
+		"AST-STF-009_pool_market.glb": "5e1995b9e0114e8a4f28d9cd5d9c00efbb44ff2fb504d8a965eba613b0e7467a"
+	},
+	"status": "FAIL",
+	"test": "grand_pool_service_cart",
+	"test_sha256": "b67551a644aaabd1185bbbc7440bed632636c06d78b2edf8eeb17e676dd8c274",
+	"tracked_frames": 5434,
+	"verified_sill_bridge_rays": 0,
+	"waiting_frames": 234,
+	"wall_watchdog_seconds": 1000
 }
