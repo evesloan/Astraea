@@ -50,7 +50,7 @@ var floor_owners := 0
 var maximum_floor_corner_error := 0.0
 var matched_floor_triangles := 0
 var bearing_witnesses := 0
-const PINS := {"assets/models/AST-CMD-002.glb":"3577d49136b0252f8eef677604ef85488b92913580c8f8a034b947120a70a0ea","data/generated/structural_meshes.json":"0bb8800201af76604a15b8ee3805b087eccf0fe01c7872a2d40af1950f58fed7","data/spatial_layout.json":"3be2dc8c0bac743eb36d55f116ee6c84b0227209f7cd56288b670f9c16181c00","docs/AFT_CROWN_PLATFORM_SOURCE_CONTACT_AUDIT.json":"02afb1e3ce0822a6620ef5f0f5602da206ada97e86eadd02056bb6983e40e9ad","data/architecture/UPPER_HORIZON_ENCLOSURE_RUNTIME.json":"08fac10329f0a58661daa5e69b1f345c58386be130e10d8c3e215d09a8bb5880","docs/UPPER_HORIZON_ENCLOSURE_SOURCE_CONTACTS.json":"09b9f786ccc57359cec19f183dcc1451cc85343d4714bc2853c78261f18a8398","docs/UPPER_HORIZON_ENCLOSURE_SOURCE_ROUNDTRIP.json":"2d1b9adcd64b827686099c2b283f9408c2a822c930b8f724e0cc8b866eef9c42","data/architecture/UPPER_HORIZON_ENCLOSURE_GEOMETRY_PARTS.json":"d070ab3cec5cb2b2563f08cb79a741be728dd66f93310338f36fccc5f588548e","assets/models/AST-CMD-005.glb":"323a26fe17cb9d6bd652309c0a4c99e4d1ce2d3316526b4d125d732dec0c0cf6","assets/models/AST-CMD-006.glb":"70fd0d75fba5a61f0f59dddc9a00e86fdb88828acf7379f7838e7e2db5fc1860","data/architecture/AFT_CROWN_PLATFORM_RUNTIME.json":"b6692962f2c4a477827acbb685542b79aa0e09ef513ee6445ed840aefbf79011"}
+const PINS := {"assets/models/AST-CMD-002.glb":"3577d49136b0252f8eef677604ef85488b92913580c8f8a034b947120a70a0ea","data/generated/structural_meshes.json":"646ee5875fd230be13f6553f36ae6dc05322b5848d42f5c725841dc9aee08a3a","data/spatial_layout.json":"d260d6c55397c822603fe88ea702fff2515eec13a1259ba607b57b85a1ffdc73","docs/AFT_CROWN_PLATFORM_SOURCE_CONTACT_AUDIT.json":"02afb1e3ce0822a6620ef5f0f5602da206ada97e86eadd02056bb6983e40e9ad","data/architecture/UPPER_HORIZON_ENCLOSURE_RUNTIME.json":"08fac10329f0a58661daa5e69b1f345c58386be130e10d8c3e215d09a8bb5880","docs/UPPER_HORIZON_ENCLOSURE_SOURCE_CONTACTS.json":"09b9f786ccc57359cec19f183dcc1451cc85343d4714bc2853c78261f18a8398","docs/UPPER_HORIZON_ENCLOSURE_SOURCE_ROUNDTRIP.json":"2d1b9adcd64b827686099c2b283f9408c2a822c930b8f724e0cc8b866eef9c42","data/architecture/UPPER_HORIZON_ENCLOSURE_GEOMETRY_PARTS.json":"d070ab3cec5cb2b2563f08cb79a741be728dd66f93310338f36fccc5f588548e","assets/models/AST-CMD-005.glb":"323a26fe17cb9d6bd652309c0a4c99e4d1ce2d3316526b4d125d732dec0c0cf6","assets/models/AST-CMD-006.glb":"70fd0d75fba5a61f0f59dddc9a00e86fdb88828acf7379f7838e7e2db5fc1860","data/architecture/AFT_CROWN_PLATFORM_RUNTIME.json":"b6692962f2c4a477827acbb685542b79aa0e09ef513ee6445ed840aefbf79011"}
 
 func _initialize() -> void:
 	call_deferred("run")
@@ -349,11 +349,12 @@ func floor_face_diagnostic(label: String,expected: PackedVector3Array,actual: Pa
 
 func validate_floors() -> void:
 	var generated := read_json("res://data/generated/structural_meshes.json")
+	var engineering_floors: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").validate(generated)
 	var layout := read_json("res://data/spatial_layout.json")
 	var old_hashes: Dictionary = JSON.parse_string(OLD_RECORD_HASHES_JSON)
 	var aft_hashes: Dictionary = JSON.parse_string(AFT_RECORD_HASHES_JSON)
 	var pool_floors: Dictionary = JSON.parse_string(GRAND_POOL_FLOORS_JSON)
-	check(generated.regions.size()==258 and old_hashes.size()==245 and aft_hashes.size()==4 and pool_floors.size()==8,"Exactly258 owners: unchanged245 + four retained aft floors + retained D17 + eight approved pool-market additions")
+	check(generated.regions.size()==261 and engineering_floors.size()==3 and old_hashes.size()==245 and aft_hashes.size()==4 and pool_floors.size()==8,"Exactly261 owners: three engineering additions + unchanged245 + four retained aft floors + retained D17 + eight approved pool-market additions")
 	var d17_owned: Array = layout.regions.filter(func(row:Dictionary)->bool:return str(row.get("authoring_owner",""))=="d17_connected_house")
 	if check(d17_owned.size()==1,"Exactly one approved authored D17 region required"):
 		check(str(d17_owned[0].id)==D17_FLOOR_ID and canonical(d17_owned[0]).sha256_text()==D17_LAYOUT_SHA,"Approved D17 layout identity changed")
@@ -383,6 +384,8 @@ func validate_floors() -> void:
 			check(canonical(region).sha256_text()==D17_FLOOR_SHA,"Approved additive D17 compiled record changed")
 			check(str(region.deck)=="D17" and absf(float(region.floor_y)-102.0)<EPS and absf(float(region.thickness)-0.24)<EPS,"Approved D17 slab deck/datum/thickness changed")
 			check(absf(float(region.structural_area_m2)-605.2)<EPS,"Approved D17 slab must retain605.2m2")
+		elif engineering_floors.has(id):
+			check(region==engineering_floors[id],"Exact approved engineering floor changed: "+id)
 		elif pool_floors.has(id):
 			var expected: Dictionary = pool_floors[id]
 			check(canonical(region).sha256_text()==str(expected.record_numeric9_sha256),"Approved additive pool-market compiled record changed: "+id)
@@ -437,7 +440,7 @@ func validate_floors() -> void:
 					check(hits.size()==1 and region_id(hits[0].collider)==id,"Duplicate/missing real compiled owner: "+id+" y"+str(y)+" actual owners "+str(owners))
 	for id in pool_floors:
 		check(seen.has(id) and pool_layout_seen.has(id),"Approved pool-market floor/layout identity missing: "+str(id))
-	check(floor_owners==258 and seen.size()==258 and seen.has(D17_FLOOR_ID) and absf(new_area-5517.2)<EPS,"All258 physical owners, retained D17, eight approved pool-market additions and unchanged5517.2m2 aft floor required")
+	check(floor_owners==261 and seen.size()==261 and seen.has(D17_FLOOR_ID) and absf(new_area-5517.2)<EPS,"All261 physical owners including exactly three engineering additions, retained D17, eight approved pool-market additions and unchanged5517.2m2 aft floor required")
 
 func validate_piers(data: Dictionary) -> void:
 	check(data.support.pier_centres_xz.size()==6,"Six approved piers required")

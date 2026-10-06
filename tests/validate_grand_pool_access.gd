@@ -4,6 +4,7 @@ extends SceneTree
 const CONTRACT := "res://data/architecture/GRAND_POOL_SECTION_RUNTIME.json"
 const CONTRACT_SHA := "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd"
 const MODEL_PINS := {
+	"AST-CIR-005_forward_pool_market_engineering_access.glb": "416ae10ac0e0cbf619e56233136150ded941c5f4c3299da1b95544433f65344b",
 	"AST-AQU-016.glb": "95a72a20bd0ed653bb10622ff025b1003386020063587828b29efe5e8e40a481",
 	"AST-CIR-005_forward_pool_market.glb": "538f8c6d1a3a075b48cdd63a8cb375c83b07f8100987e193b2efbfd39d134667",
 	"AST-STF-009_pool_market.glb": "5e1995b9e0114e8a4f28d9cd5d9c00efbb44ff2fb504d8a965eba613b0e7467a"
@@ -58,9 +59,10 @@ func check_import_pins() -> void:
 
 func check_floor_owners() -> void:
 	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var engineering_floors: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
 	var baseline: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://docs/GRAND_POOL_PRE_ADOPTION_MESHES.json"))
-	assert(compiled.regions.size() == 258 and baseline.count == 250)
-	assert(floors.get_child_count() == 258, "Exactly one main-scene node per compiler owner")
+	assert(compiled.regions.size() == 261 and engineering_floors.size() == 3 and baseline.count == 250)
+	assert(floors.get_child_count() == 261, "Exactly one main-scene node per compiler owner")
 	var expected: Dictionary = {}
 	for entry in data.floor_regions: expected[entry.id] = entry
 	assert(expected.size() == 8)
@@ -82,6 +84,9 @@ func check_floor_owners() -> void:
 				for weights in [Vector3(.34,.33,.33), Vector3(.6,.2,.2), Vector3(.2,.6,.2), Vector3(.2,.2,.6)]:
 					check_compiled_sample(region, triangle, weights)
 			added_found += 1
+		elif engineering_floors.has(region.id):
+			assert(region == engineering_floors[region.id], "Approved engineering floor changed")
+			check_compiled_sample(region, region.triangles[0], Vector3(.34,.33,.33))
 		else:
 			assert(baseline.record_sha256.has(region.id), "Unexpected old floor identity")
 			# Runtime support on every surviving old owner is separate from the
@@ -247,11 +252,11 @@ func check_lights_and_identities() -> void:
 	assert(staff.floor_heights == [0.0, 6.0, 12.0, 46.2, 52.5])
 	assert(staff.cabin_file == "AST-CIR-003_five_stop.glb" and "wet service" in str(staff.stop_names[3]))
 	assert(staff.landing_gates.size() == 5 and local.landing_gates.size() == 2)
-	var representations := {"AST-AQU-016.glb":0, "AST-STF-009_pool_market.glb":0, "AST-STF-009.glb":0, "AST-CIR-005_forward_pool_market.glb":0, "AST-CIR-005_forward_core.glb":0}
+	var representations := {"AST-AQU-016.glb":0, "AST-STF-009_pool_market.glb":0, "AST-STF-009.glb":0, "AST-CIR-005_forward_pool_market.glb":0, "AST-CIR-005_forward_core.glb":0, "AST-CIR-005_forward_pool_market_engineering_access.glb":0}
 	for node in ship.find_children("*", "Node3D", true, false):
 		var file: String = node.get_meta("catalogue_file", "")
 		if representations.has(file): representations[file] += 1
-	assert(representations.values() == [1,1,0,1,0], "New and retained derivative representations must not be doubled")
+	assert(representations.values() == [1,1,0,0,0,1], "New and retained derivative representations must not be doubled")
 	var budget: Node = ship.get_node("ShipSystems/LocalShadowSourceBudget")
 	assert(budget.shadow_source_budget == 8 and budget.get_script().resource_path == "res://scripts/lighting_budget.gd")
 	assert(budget.MAX_VISIBILITY_CANDIDATES == 32, "Keep the existing bounded shared selector")
@@ -413,7 +418,7 @@ func run() -> void:
 	await walk_route(ceremonial)
 	await walk_route(ceremonial,true)
 	await walk_to(Vector3(-5.4,44,-432))
-	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across258 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; ",pinned_section_fixtures," pinned section lights and ",wet_receiver_anchors," supported receivers; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
+	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across261 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; ",pinned_section_fixtures," pinned section lights and ",wet_receiver_anchors," supported receivers; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
 	main.queue_free()
 	await process_frame
 	quit(0)
