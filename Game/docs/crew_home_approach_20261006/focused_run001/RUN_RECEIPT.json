@@ -1,0 +1,63 @@
+{
+  "status": "FAILED_PRESERVE_EVIDENCE",
+  "started_utc": "2026-10-06T20:57:25.489329+00:00",
+  "checks": [
+    {
+      "check": "import",
+      "exit_code": 0,
+      "wall_seconds": 4.0826,
+      "validation": {
+        "checks": [
+          {
+            "check": "import",
+            "passed": true,
+            "exit_code": 0,
+            "errors": [],
+            "wall_seconds": 4.0097,
+            "clock_mode": "editor"
+          }
+        ],
+        "wall_seconds": 4.0102,
+        "clock_mode": "fixed60",
+        "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+      }
+    },
+    {
+      "check": "crew_home_approach",
+      "exit_code": 1,
+      "wall_seconds": 5.0856,
+      "validation": {
+        "checks": [
+          {
+            "check": "import",
+            "passed": true,
+            "exit_code": 0,
+            "errors": [],
+            "wall_seconds": 3.6306,
+            "clock_mode": "editor"
+          },
+          {
+            "check": "crew_home_approach",
+            "passed": false,
+            "exit_code": -15,
+            "errors": [
+              "SCRIPT ERROR: Assertion failed."
+            ],
+            "wall_seconds": 1.3989,
+            "clock_mode": "fixed60"
+          }
+        ],
+        "wall_seconds": 5.03,
+        "clock_mode": "fixed60",
+        "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+      }
+    }
+  ],
+  "manifest_sha256": "103a13fca3e69dbc72eeded768d4e6400b1d8f733102d96b2bae5f0d95a0f2db",
+  "source_pin_count": 4599,
+  "full_suite": false,
+  "failure": "('Focused gate failed', 'crew_home_approach')",
+  "finished_utc": "2026-10-06T20:57:36.397514+00:00",
+  "unexpected_source_drift": {},
+  "all_preexisting_source_files_unchanged": true
+}

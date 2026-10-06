@@ -1,0 +1,10 @@
+# Bounded home arrival acceptance
+
+Pending actual installed native views. No image here is a runtime acceptance claim.
+
+1. Standard focused home gate must first pass ordinary supported walking from the existing D03 staff-lift landing and back, both-side first-hit RMB/E, inherited leaf sequencing, fixed-geometry clearance, occupied-sweep refusal, directory pause/resume and actual source selection under the unchanged eight-source limit. The two edited legacy access gates and original lighting-budget smoke run serially afterward.
+2. Native capture uses the original player camera at its ordinary 1.65 m height and the existing presentation capture function. Begin at the same supported exterior pose as the reviewed source image, X−51.9/Z−432.8. Capture closed and genuinely opened states from that identical pose/aim. Reach the operating point by ordinary movement and use the original RMB/E path; do not assign the leaf pose directly.
+3. Walk through the actual opening to the supported private dogleg, then take one interior normal-eye view that shows the turn and mounted direction signs. Record physical support and selected fixture identities before every capture. Keep all architecture, lights, exposure, material and display profiles as installed. Existing normal processed and clear raw world outputs are both retained by presentation._capture.
+4. Parent visual review checks readable CREW LIVING / QUIET APPROACH and mounted wayfinding, plausible door scale, visible level/threshold continuity and a coherent colder staff route. This connected support approach does not add an occupied bedroom or population/berth assignment; those remain future neighborhood work. Carts remain at the six-metre receiving vestibule.
+
+Existing source image: revision002/qa/home_dogleg_readable_wayfinding.png in the retained home_dogleg_candidate_20261006 package. Normal-eye source composition is approved direction; Godot energy and actual native appearance remain to be reviewed. No full-suite restart for this increment.

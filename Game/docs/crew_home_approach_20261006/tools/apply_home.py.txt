@@ -1,0 +1,43 @@
+"""Exact reviewed ten-file home adoption. Default read-only; no engine, import, commit or publisher action."""
+from pathlib import Path,PurePosixPath
+import argparse,datetime,hashlib,json,os,shutil,subprocess,tempfile,time
+O=Path(__file__).resolve().parent;G=Path('/workspace/shared/astraea-godot-production-20261003');C=Path('/workspace/shared/astraea-catalogue-continuation-20261002');B=Path('/workspace/shared/astraea-github-backup');S=Path('/workspace/scratch/375c2e438292/github-backup-runtime');A=O/'FINAL_APPLY_ALLOWLIST.json';PIN='103a13fca3e69dbc72eeded768d4e6400b1d8f733102d96b2bae5f0d95a0f2db'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def save(p,x):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(x,indent=2)+'\n')
+def snapshot():return{str(p.relative_to(G)):sha(p)for p in sorted(G.rglob('*'))if p.is_file()and not{'.git','.godot','artifacts','__pycache__'}.intersection(p.relative_to(G).parts)}
+def check_idle():
+ for p in Path('/proc').iterdir():
+  if not p.name.isdigit():continue
+  try:n=(p/'comm').read_text().strip().lower()
+  except OSError:continue
+  assert not n.startswith('godot'),('Competing local Godot process',p.name)
+def main():
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--approved-ten-file-trial',action='store_true');ap.add_argument('--approved-game-boundary',action='store_true');ap.add_argument('--execute',action='store_true');args=ap.parse_args()
+ assert sha(A)==PIN;m=json.loads(A.read_text());assert len(m['files'])==10;assert subprocess.check_output(['git','-C',str(G),'rev-parse','HEAD'],text=True).strip()==m['expected_head']
+ for r in m['files']:
+  q=PurePosixPath(r['path']);assert not q.is_absolute()and'..'not in q.parts;source=O/r['source'];target=G/r['path'];assert not source.is_symlink()and sha(source)==r['sha256']and source.stat().st_size==r['bytes'];assert (sha(target)if target.exists()else None)==r['pre_sha256'],r['path']
+ for path,h in m['unchanged_runtime_pins'].items():assert sha(G/path)==h,path
+ for path,h in m['retained_catalogue_files'].items():
+  assert sha(C/path)==h,path
+  blob=subprocess.check_output(['git','-C',str(B),'show',m['retained_source_commit']+':BlenderCatalogue/'+path]);assert hashlib.sha256(blob).hexdigest()==h,('Exact independently confirmed retained source',path)
+ if not args.execute:print(json.dumps({'status':'READ_ONLY_PREFLIGHT_PASS','manifest_sha256':PIN,'paths':10,'new_floor_owners':0,'first_pass_accepted':False,'execute_requires_parent_approval_and_game_lease':True},indent=2));return
+ assert args.approved_ten_file_trial and args.approved_game_boundary;check_idle();run=O/'apply_run001';assert not run.exists(),'Existing attempt must remain intact; inspect before another apply'
+ # Existing publisher only. No new backup service, credential or permission action.
+ state=json.loads((S/'github_state.json').read_text());runner=json.loads((S/'github_runner.json').read_text());assert state['status']=='healthy';assert time.time()-float(state['last_verified_epoch'])<1800;os.kill(int(runner['pid']),0)
+ for r in m['files']:
+  if r['pre_sha256']is not None:assert sha(B/'Game'/r['path'])==r['pre_sha256'],('Current replacement preimage not retained in mirror',r['path'])
+ run.mkdir();before=snapshot();save(run/'SOURCE_BEFORE.json',before);save(run/'BACKUP_STATE_OBSERVED.json',state);report={'status':'APPLYING','started_utc':now(),'manifest_sha256':PIN,'expected_head':m['expected_head'],'preexisting_source_files':len(before),'engines_started':False,'commits_started':False}
+ try:
+  for r in m['files']:
+   target=G/r['path'];assert target.parent.is_dir();assert not target.is_symlink()
+   if target.exists():q=run/'preimages'/r['path'];q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(target,q)
+   fd,tmp=tempfile.mkstemp(prefix='.home_apply_',dir=target.parent)
+   with os.fdopen(fd,'wb')as f:f.write((O/r['source']).read_bytes())
+   os.chmod(tmp,target.stat().st_mode&0o777 if target.exists()else 0o644);os.replace(tmp,target);assert sha(target)==r['sha256']
+  after=snapshot();expected={r['path']:r['sha256']for r in m['files']};changed={p for p in set(before)|set(after)if before.get(p)!=after.get(p)};assert changed==set(expected);assert all(after[p]==h for p,h in expected.items());assert all(after[p]==h for p,h in before.items()if p not in expected);save(run/'SOURCE_AFTER.json',after)
+  report.update(status='APPLIED_EXACT_TEN_FILES',finished_utc=now(),changed_paths=sorted(changed),all_other_source_files_unchanged=True,import_and_focused_native_gate='PENDING',first_pass_accepted=False)
+ except Exception as exc:report.update(status='FAILED_PRESERVE_ATTEMPT',finished_utc=now(),failure=str(exc));raise
+ finally:save(run/'APPLY_RECEIPT.json',report)
+ print(json.dumps(report,indent=2))
+if __name__=='__main__':main()

@@ -1,0 +1,53 @@
+extends "res://tests/validate_crew_home_approach.gd"
+# QA-only normal-eye record. All motion after the supported initial arrival
+# uses the inherited original-input walking and real door interaction helpers.
+const NATIVE_OUT: String="/workspace/scratch/375c2e438292/crew-home-dogleg-runtime-draft-20261006/frozen_apply002/native_run001"
+var views: Array[Dictionary]=[]
+
+func capture_view(label: String,look: Vector3) -> bool:
+	release_inputs()
+	aim(look)
+	if not await advance(30): return false
+	if not require(support() and absf(camera.global_position.y-13.65)<.06,"Native camera must be at supported ordinary standing height"): return false
+	var selected: Array[String]=[]
+	var active: int=0
+	for value in budget.get("sources"):
+		var light: Light3D=value as Light3D
+		if light.visible and light.shadow_enabled:
+			active+=1
+			selected.append(str(light.get_path()))
+	if not require(active<=8,"Native source budget exceeded"): return false
+	var prefix: String="crew_home_native001_"+label+"_"
+	await main.call("_capture",prefix)
+	views.append({"label":label,"prefix":prefix,"eye_xyz":[camera.global_position.x,camera.global_position.y,camera.global_position.z],"foot_xyz":[actor.global_position.x,actor.global_position.y,actor.global_position.z],"door_fraction":float(door.get("open_fraction")),"desired_open":bool(door.get("desired_open")),"selected_source_paths":selected,"normal_height":true,"hidden_architecture":false})
+	return true
+
+func run() -> void:
+	data=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
+	main=(load("res://scenes/main.tscn") as PackedScene).instantiate()
+	root.add_child(main)
+	for frame in range(90): await physics_frame
+	ship=main.get_node("World360/Astraea") as Node3D
+	actor=ship.get_node("ShipSpace/PersistentActors/Player") as CharacterBody3D
+	camera=actor.get("camera") as Camera3D
+	home=ship.find_child("CrewHomeApproach_WIP",true,false) as Node3D
+	floors=ship.find_child("CompiledStructuralFloors_NotFinishedRooms",true,false) as Node3D
+	budget=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	door=home.find_child("HomeServiceDoor",true,false) as Node3D
+	main.call("set_world_resolution",1)
+	if not require(bool(ship.call("arrive_at",Vector3(-51.9,12.1,-432.8),0.0)),"Supported exterior camera arrival rejected"): return
+	if not await advance(30,false): return
+	if not await capture_view("arrival_closed",Vector3(-44.4,13.7,-431.3)): return
+	if not await walk(Vector2(-50.2,-432)) or not await operate(true): return
+	if not await walk(Vector2(-51.9,-432.8)): return
+	if not await capture_view("arrival_open",Vector3(-44.4,13.7,-431.3)): return
+	if not await walk_points([Vector2(-50.2,-432),Vector2(-45.2,-432),Vector2(-45.2,-428.8)]): return
+	if not await capture_view("private_dogleg",Vector3(-43.1,13.5,-424.8)): return
+	release_inputs()
+	var result: Dictionary={"status":"PASS_CAPTURE_REVIEW_PENDING","views":views,"capture_records":main.get("capture_records"),"ordinary_walk_frames":walked_frames,"support_samples":support_samples,"first_pass_accepted":false,"geometry_or_light_mutations":false}
+	var file: FileAccess=FileAccess.open(NATIVE_OUT+"/NATIVE_RECEIPT.json",FileAccess.WRITE)
+	file.store_string(JSON.stringify(result,"\t"))
+	print("CREW HOME NATIVE PASS:",JSON.stringify(result))
+	main.queue_free()
+	await process_frame
+	quit(0)

@@ -1,0 +1,41 @@
+"""One native installed-home review through the existing parent graphical session; no display/runner restart."""
+from pathlib import Path
+import argparse,datetime,hashlib,json,os,shutil,subprocess,time
+O=Path(__file__).resolve().parent;G=Path('/workspace/shared/astraea-godot-production-20261003');Q=Path('/workspace/shared/astraea-review-queue');SCRIPT='native_home.gd';SCRIPT_PIN='329c059b56562d4898e94b078c353e6a2132f099db62f03501b3df96df712805';PREFIXES=['crew_home_native001_'+x+'_'for x in ['arrival_closed','arrival_open','private_dogleg']];SUFFIXES=['world_capture.png','processed_world_capture.png','presentation_capture.png']
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def save(p,x):p.write_text(json.dumps(x,indent=2)+'\n')
+def snapshot():return{str(p.relative_to(G)):sha(p)for p in sorted(G.rglob('*'))if p.is_file()and not{'.git','.godot','artifacts','__pycache__'}.intersection(p.relative_to(G).parts)}
+def main():
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--approved-game-boundary',action='store_true');ap.add_argument('--execute',action='store_true');args=ap.parse_args();assert sha(O/SCRIPT)==SCRIPT_PIN;command=['godot','--path',str(G),'--rendering-method','gl_compatibility','--audio-driver','Dummy','--script',str(O/SCRIPT)]
+ if not args.execute:print(json.dumps({'status':'PREPARED_NOT_RUN','command':command,'views':3,'outputs_per_view':SUFFIXES,'current_player_camera_fov':72,'source_reference_fov':65,'note':'Retain original camera FOV; source/native views share supported pose and aim but are not pixel-equivalent'},indent=2));return
+ assert args.approved_game_boundary and os.environ.get('DISPLAY');assert not list(Q.glob('*.request')) and not(Q/'STOP').exists();assert json.loads((O/'affected_run003/RUN_RECEIPT.json').read_text())['status']=='PASS_FOCUSED_HOME_AND_AFFECTED_SMOKE'
+ for p in Path('/proc').iterdir():
+  if p.name.isdigit():
+   try:n=(p/'comm').read_text().strip().lower()
+   except OSError:continue
+   assert not n.startswith('godot'),('Competing local Godot',p.name)
+ pins=json.loads((O/'affected_run003/SOURCE_FINAL.json').read_text());assert snapshot()==pins,'Sources changed after focused native gate; explicitly rebase before another job'
+ run=O/'native_run001';assert not run.exists();run.mkdir();save(run/'SOURCE_START.json',pins)
+ for prefix in PREFIXES:
+  for suffix in SUFFIXES:assert not(G/'artifacts'/(prefix+suffix)).exists(),'Earlier output must remain intact'
+ settings=G/'artifacts/capture_settings.json';old_settings=settings.read_bytes()if settings.exists()else None
+ if old_settings is not None:(run/'CAPTURE_SETTINGS.preimage').write_bytes(old_settings)
+ report={'status':'RUNNING','started_utc':now(),'source_pins':len(pins),'command':command,'script_sha256':SCRIPT_PIN,'first_pass_accepted':False};save(run/'RUN_RECEIPT.json',report);began=time.monotonic()
+ try:
+  with(run/'engine.log').open('w')as log:r=subprocess.run(command,cwd=G,env=os.environ.copy(),stdout=log,stderr=subprocess.STDOUT,timeout=240)
+  errors=[x for x in(run/'engine.log').read_text().splitlines()if 'ERROR:'in x or 'Assertion failed'in x or 'Parse Error'in x];report.update(exit_code=r.returncode,errors=errors);assert r.returncode==0 and not errors
+  receipt=json.loads((run/'NATIVE_RECEIPT.json').read_text());assert receipt['status']=='PASS_CAPTURE_REVIEW_PENDING'and len(receipt['views'])==3
+  images=run/'images';images.mkdir();records=[]
+  for prefix in PREFIXES:
+   for suffix in SUFFIXES:
+    src=G/'artifacts'/(prefix+suffix);dst=images/src.name;shutil.copy2(src,dst);records.append({'path':str(dst),'sha256':sha(dst),'bytes':dst.stat().st_size})
+  shutil.copy2(settings,run/'NATIVE_CAPTURE_SETTINGS.json');report.update(status='PASS_CAPTURE_REVIEW_PENDING',images=records,visual_acceptance=False)
+ except Exception as exc:report.update(status='FAILED_PRESERVE_EVIDENCE',failure=str(exc));raise
+ finally:
+  if old_settings is not None:settings.write_bytes(old_settings)
+  final=snapshot();drift={p:{'old':pins.get(p),'new':final.get(p)}for p in set(pins)|set(final)if pins.get(p)!=final.get(p)};save(run/'SOURCE_DRIFT.json',drift);report.update(finished_utc=now(),wall_seconds=round(time.monotonic()-began,4),source_unchanged=not drift)
+  if drift:report.update(status='FAILED_PRESERVE_EVIDENCE',failure='Source drift during native capture')
+  save(run/'RUN_RECEIPT.json',report)
+ print(json.dumps({k:v for k,v in report.items()if k!='images'},indent=2));assert report['status']=='PASS_CAPTURE_REVIEW_PENDING'
+if __name__=='__main__':main()

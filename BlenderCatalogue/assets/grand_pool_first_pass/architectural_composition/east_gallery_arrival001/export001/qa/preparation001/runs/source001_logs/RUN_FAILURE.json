@@ -1,0 +1,41 @@
+{
+  "status": "FAILED_PRESERVE_ALL_OUTPUTS",
+  "stages": [
+    {
+      "stage": "pure_tests",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/375c2e438292/pool-east-gallery-export001/test_preparation.py"
+      ],
+      "timeout_s": 60,
+      "elapsed_s": 0.2647900369920535,
+      "exit_code": 0,
+      "log": "/workspace/scratch/375c2e438292/pool-east-gallery-export001/runs/source001_logs/pure_tests.log",
+      "log_sha256": "d32e122ffe790748a6fb1382a6a573b63904f2cadcea19c168e4a7e3c3139334"
+    },
+    {
+      "stage": "read_only_snapshot",
+      "command": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/375c2e438292/pool-east-gallery-export001/snapshot_east_gallery.py",
+        "--",
+        "--run",
+        "source001"
+      ],
+      "timeout_s": 300,
+      "elapsed_s": 2.4726097420061706,
+      "exit_code": 1,
+      "log": "/workspace/scratch/375c2e438292/pool-east-gallery-export001/runs/source001_logs/read_only_snapshot.log",
+      "log_sha256": "5a85090930670356506a679e001259401b9cb1a85cd6e2ccdc871ee8621fa875"
+    }
+  ],
+  "error": "AssertionError('Stage failed; preserve all output: read_only_snapshot')"
+}

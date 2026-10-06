@@ -1,0 +1,78 @@
+{
+  "status": "FAILED_PRESERVE_ALL_OUTPUTS",
+  "stages": [
+    {
+      "stage": "pure_tests",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/375c2e438292/pool-east-gallery-export002/test_preparation.py"
+      ],
+      "timeout_s": 60,
+      "elapsed_s": 0.2647226459957892,
+      "exit_code": 0,
+      "log": "/workspace/scratch/375c2e438292/pool-east-gallery-export002/runs/source002_logs/pure_tests.log",
+      "log_sha256": "8f155f0a65a4ebbb4742b58be8174cfcb713fb4c5b19232a187a45123fa0c63b"
+    },
+    {
+      "stage": "read_only_snapshot",
+      "command": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/375c2e438292/pool-east-gallery-export002/snapshot_east_gallery.py",
+        "--",
+        "--run",
+        "source002"
+      ],
+      "timeout_s": 300,
+      "elapsed_s": 3.224952677002875,
+      "exit_code": 0,
+      "log": "/workspace/scratch/375c2e438292/pool-east-gallery-export002/runs/source002_logs/read_only_snapshot.log",
+      "log_sha256": "641b26c24fe6c119b0e3127155acda77d06a177866dd609f783de3381479cda0"
+    },
+    {
+      "stage": "selected_glb_export",
+      "command": [
+        "/usr/bin/blender",
+        "--background",
+        "--factory-startup",
+        "--disable-autoexec",
+        "--threads",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/scratch/375c2e438292/pool-east-gallery-export002/export_east_gallery.py",
+        "--",
+        "--run",
+        "source002"
+      ],
+      "timeout_s": 300,
+      "elapsed_s": 2.772253011993598,
+      "exit_code": 0,
+      "log": "/workspace/scratch/375c2e438292/pool-east-gallery-export002/runs/source002_logs/selected_glb_export.log",
+      "log_sha256": "7087a8be3cf7a960dc9b2ee20b767ef16a8aed9c1b72c5cde789ab021096bb73"
+    },
+    {
+      "stage": "independent_equivalence",
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/scratch/375c2e438292/pool-east-gallery-export002/verify_east_gallery.py",
+        "--run",
+        "source002"
+      ],
+      "timeout_s": 300,
+      "elapsed_s": 1.016785357001936,
+      "exit_code": 1,
+      "log": "/workspace/scratch/375c2e438292/pool-east-gallery-export002/runs/source002_logs/independent_equivalence.log",
+      "log_sha256": "ef03dab6fb2bb1b34655d3a515a1b84900250dfba76dfc47ea3c4993bc30aa93"
+    }
+  ],
+  "error": "AssertionError('Stage failed; preserve all output: independent_equivalence')"
+}

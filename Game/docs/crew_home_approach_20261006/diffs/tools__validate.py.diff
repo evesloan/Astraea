@@ -1,0 +1,18 @@
+--- current/tools/validate.py
++++ candidate/tools/validate.py
+@@ -34,6 +34,7 @@
+ commands = [('grand_pool_architecture', ['--script', 'res://tests/validate_grand_pool_architecture.gd'])] + commands
+ commands = [('engineering_controls', ['--script', 'res://tests/validate_engineering_calibration.gd'])] + commands
+ commands = [('theater_stair_walk', ['--script', 'res://tests/validate_theater_stair_walk.gd'])] + commands
++commands += [('crew_home_approach', ['--script', 'res://tests/validate_crew_home_approach.gd'])]
+ commands.sort(key=lambda entry: entry[0] != 'import')
+ if '--only' in sys.argv:
+     requested=sys.argv[sys.argv.index('--only')+1]
+@@ -61,6 +62,7 @@
+     if label == 'grand_pool_finish': frame_budget='32000'
+     if label == 'grand_pool_architecture': frame_budget='12000'
+     if label == 'secondary_engineering_cell': frame_budget='30000'
++    if label == 'crew_home_approach': frame_budget='12000'
+     if label == 'engineering_controls': frame_budget='40000'
+     if label == 'secondary_engineering_access': frame_budget='16000'
+     if label == 'secondary_engineering_essentials': frame_budget='12000'
