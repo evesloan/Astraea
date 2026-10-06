@@ -1,13 +1,44 @@
 # Grand Pool connected finish source package
 
-Approved additive source work only. The original section/families,51 installed placements, Game runtime, floors, windows, controllers, materials and shared renderer remain unchanged.
+This additive package is source-checked. Runtime installation and visual acceptance remain pending. It keeps the original section, retained families, 51 installed furnishings, floors, windows, controllers, material palette and shared renderer intact.
 
-The envelope contract contains125 closed solids,2208 planned triangles and14 physically housed source markers:4 profiled central roof fields,3 complete market-bay treatments, the sheltered west wet edge, exposed arrival-face finishes,6 roof washes,6 display lights and2 wet-rest lights. The separate wayfinding package contains11 physically mounted boards; stock contains48 full-size retained additions for99 prospective instances.
+## Approved bounded contents
 
-Independent pure geometry QA passed for contract SHA25629702a5a8007a478724df342c3ebabdf7e65c0eda9c575b74e4457d611c8ba21. All125 supports are rooted, including32 positive-area roof attachments. No unapproved original/new geometry penetration remains. Retained25 fixture exits are not worsened; all14 new60mm source cones and32 actual receiver rays pass. One old market fixture cone already grazes GP_UpperPier_2 at its fringe; that source/geometry was not changed. Wet-rest rays intentionally end on the first visible head/back sling triangles, not an obscured pelvis.
+- Four profiled central roof fields, three complete market-bay treatments, the sheltered west wet edge and exposed arrival-face finishes.
+- 125 envelope mesh parts, 2,208 triangles and 14 physically housed source markers: six roof washes, six display lights and two wet-rest lights.
+- Eleven fitted AST-RES-001 wayfinding boards with physical frames, backing, lettering and mounts.
+- A separate placement contract for 48 full-size retained additions, including three more screened displays, for 99 prospective furnishing instances. No new floor or unique-design identifier is introduced.
 
-The original full-size stock and sign contracts retain their own source/floor/route/contact evidence. Pure checks are not engine walking/cart/light-selection or normal/effects-off visual acceptance.
+Reserved derivatives: AST-AQU-016_finish_envelope.glb and AST-RES-001_pool_wayfinding.glb. No export or runtime acceptance is implied by source QA.
 
-source/build_finish_envelope.py saves a new editable .blend only; source/verify_finish_source.py independently reopens it and checks evaluated geometry, UV coverage, material graphs and packed images. Export requires a passed exact-source report and a parent-issued independent-retention receipt. No render or Godot import is launched. Wayfinding authoring is a separate scheduled source job; its export has its own approval gate.
+## Envelope source evidence
 
-Exports reserved by the parent: AST-AQU-016_finish_envelope.glb and AST-RES-001_pool_wayfinding.glb, with no new unique-design IDs. Parent owns registry, runtime integration, retention and commit.
+Editable source: source/grand_pool_finish_envelope.blend
+
+SHA256: a752246f6532441dbf8348a075dc94e0c1eb0864d85760704d79119f0681b5f6
+
+Build 002 and independent reopening pass. The source has closed positive-volume geometry, metric UV coverage and exact retained material graphs with packed images. Maximum deviation from planned double-precision vertices is 0.01486 mm. The matching contract is 29702a5a8007a478724df342c3ebabdf7e65c0eda9c575b74e4457d611c8ba21.
+
+Independent pure geometry screening roots all 125 supports, including 32 positive-area roof contacts. It preserves the 25 old fixture exits and clears the 14 new source cones and 32 actual receiver rays. One existing market fixture cone already grazes GP_UpperPier_2 at its fringe; that pre-existing condition was not changed. Wet-rest rays terminate at the first visible head/back sling triangles.
+
+Rejected envelope build 001 remains preserved with its source, report and scripts. Its disconnected duplicate cap/side vertices were fixed through exact float32 coordinate indexing before mesh construction, without a broader distance weld or relaxed test.
+
+## Wayfinding source evidence
+
+Editable source: wayfinding/source/grand_pool_wayfinding.blend
+
+SHA256: 7652921a465623a450d14d567fd1c17575f200b419f608b49b60a2297a957420
+
+The authoritative report is wayfinding/qa/wayfinding_source_reopen004.json, paired with source_gate_004.json. Earlier failed reports remain historical evidence. The independent source reopen passes 1297 checks over 11 signs and 111 meshes. These check actual world bounds and fixed mounting contact, exact closed and consistently oriented components, positive solid volume, unmirrored text patterns, true cap height, route-arrow direction, metric UVs and packed retained textures. The smallest projected cap is 8.933 px at the declared 360-pixel-high / 72-degree vertical-FOV viewpoints. This is geometric evidence only, not a rendered readability pass.
+
+The raw built-in font produced four exactly collinear cap triangles in “Orchard Market”, before placement. Rejected sign builds 001 and 002 and the controlled 12-case diagnostic are retained. The final builder uses exact-identity glyph seam indexing and 68 recorded internal cap-diagonal flips. Vertex positions, contour boundaries and exact filled area are preserved. No text feature was discarded and the area gate remains 1e-12 square metres. Reference topology is measured from the actual font, including the separate stem/body of its lowercase k, rather than guessed from character count. The first actual reopen found three material-link checker failures caused by Python identity comparisons of Blender node wrappers. Reopen 004 uses underlying node identities and exact sockets, and also verifies the shader reaches the active material output; the saved source did not change.
+
+## Stock and fitting evidence
+
+The retained stock contract preserves all original 51 instances and caps additions at 48. Its reports cover real shelf/soil support, floor coverage, browsing approaches, retained access and conservative cart clearance. All 11 reserved sign envelopes are disjoint from all 125 finish-part bounds. These pure source checks do not replace engine contact or physical approach tests.
+
+## Open gates and ownership
+
+The parent must independently retain the exact passing editable sources before approving the separate exports. After export, verify evaluated-source equivalence and packed materials. Runtime adoption must retain the existing shadow budget and renderer, followed by fixture selection, floor/contact/route, doorway/lift/cart/towel checks and matched full regression. Inspect real normal and effects-off approach views, stock presentation, sign readability and the supplied references before first-pass acceptance. Final art is not accepted here.
+
+STAGED_SOURCE_HASHES.json and wayfinding/PACKAGE_HASHES.json are historical staging manifests. CURRENT_SOURCE_HASHES.json, when installed from the source handoff, is the current file inventory. Rejected evidence is intentional and must remain retained. Parent owns integration, source retention and commits.
