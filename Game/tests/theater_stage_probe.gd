@@ -382,7 +382,10 @@ func check_lights(label: String) -> void:
 	assert(budget.shadow_source_budget == 8 and load("res://scripts/lighting_budget.gd").MAX_VISIBILITY_CANDIDATES == 32)
 	var enabled: Dictionary = {}
 	for entry in data.fixtures:
-		if entry.enabled: enabled[str(entry.id)] = entry
+		if entry.enabled:
+			var identity := str(entry.id).validate_node_name()
+			assert(not enabled.has(identity), "Source fixture names must map bijectively to native node names")
+			enabled[identity] = entry
 	var actual := venue.find_children("*","Light3D",true,false)
 	assert(actual.size() == enabled.size())
 	for item in actual:
