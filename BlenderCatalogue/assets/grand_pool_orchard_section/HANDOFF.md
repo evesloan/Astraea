@@ -4,7 +4,7 @@
 
 ## Deliverables and placement
 
-- `exports/AST-AQU-016.glb`: new family `grand_pool_orchard_section`, authored in Godot world metres. Place at `(0,0,0)`, identity rotation/scale. The Blender source keeps 548 exported semantic pieces independently editable. Eight compiler-floor previews and four exact existing-family door-fitting previews are deliberately excluded from the export
+- `exports/AST-AQU-016.glb`: new family `grand_pool_orchard_section`, authored in Godot world metres. Place at `(0,0,0)`, identity rotation/scale. The Blender source keeps 562 exported semantic pieces independently editable. Eight compiler-floor previews and four exact existing-family door-fitting previews are deliberately excluded from the export
 - `exports/AST-CIR-005_forward_pool_market.glb`: replace only the existing `AST-CIR-005_forward_core.glb` representation at `(0,0,-432)`. It adds the D08 and D09 port portals. Four old wall/dado objects are replaced by ten fitted pieces; all 892 other original objects are identical. D01/D02 portals, all seventeen stops, stairs, guards and closed starboard walls remain intact
 - `exports/AST-STF-009_pool_market.glb`: replace the existing `AST-STF-009.glb`, world zero placement. The old `STF_ShaftTopCap` is removed in this derivative alone; all 1,708 other original objects are identical. The new shaft is blank through D04–D07, capped at Y55.60..55.74 and joins two screened upper service streets. Do not instance the original and derivative together
 
@@ -20,7 +20,7 @@ The terrace/perimeter transfers are Y43.76..45.96. Under-basin ribs are Y43.76..
 
 Five compact source-authored bearings reach the actual retained `HUL_KeelPan` top at Y−3.20. West seat X−61.4..−59.8 rectangles are at Z−454.2..−451.8, −433.2..−430.8 and −406.2..−403.8. East seat X−6.8..−5.2 rectangles are at Z−466.6..−464.2 and −405.2..−402.8. All fit within the actual keel polygon and avoid every lower compiled floor, D04 home and D01–D07 programme rectangle. They do not depend on an unbuilt upper hull. The west line clears the existing fusion service edge; the east fore transfer sits ahead of the ramp, not through it.
 
-`qa/source_contact_graph.json` uses actual source mesh contacts plus exact temporary compiler-floor solids and the retained keel mesh. All 557 nodes connect to the retained keel. These are geometric game-construction joints, not certified load capacities. The five indispensable lower bearing stems are part of this delivered connected shell; no separate hidden-frame milestone or further deep supports are proposed.
+`qa/source_contact_graph.json` uses actual source mesh contacts plus exact temporary compiler-floor solids and the retained keel mesh. All 571 nodes connect to the retained keel. These are geometric game-construction joints, not certified load capacities. The five indispensable lower bearing stems are part of this delivered connected shell; no separate hidden-frame milestone or further deep supports are proposed.
 
 The spatial architecture includes a compressed dry arrival, broad ceremonial rise, a genuinely supported visible switchback ramp, deep faceted gallery edges, sculpted piers, recessed orange upper frontage, built-in empty planting pockets, ceiling ribs, sealed wet/dry edges and actual fixture housings/lenses. Internal views are established; no exterior window or extra storey is claimed.
 
