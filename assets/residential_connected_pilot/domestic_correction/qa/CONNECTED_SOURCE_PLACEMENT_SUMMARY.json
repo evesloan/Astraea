@@ -1,0 +1,62 @@
+{
+  "status": "SOURCE_PLACEMENT_VERIFIED_PENDING_CONNECTED_VISUAL_REVIEW",
+  "correction": "Source append functions now link every object, evaluate the dependency graph, freeze all root transforms, apply the instance transform, then reevaluate and assert. Both room builder and room/court composer are corrected; the court builder independently uses the same ordering.",
+  "evidence": [
+    {
+      "path": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/qa/ASSEMBLY_COMPONENT_TRANSFORMS_r008.json",
+      "sha256": "b16850bb2f3c19e06256f394e5c958b8d0ee5216d53f6d148dfbcc7f366865bd"
+    },
+    {
+      "path": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/qa/R008_SHELL_EQUIVALENCE.json",
+      "sha256": "f5a2efd50838c874d018cab492a47f8343d14504e7151d5d186c776e5cf85d0e"
+    },
+    {
+      "path": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/bathroom_review/R007_ACTUAL_EXPORT_VERIFICATION.json",
+      "sha256": "6104f1a82e526b8cba212119b574760a3bc0a89f63ab4f014d06c152c4e4a872"
+    },
+    {
+      "path": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/qa/COURT_DOMESTIC_BROAD_CONTACTS_r007.json",
+      "sha256": "bd7a3b1de97ec9836400840f5f15c6a0b796c25305816d259a37c061aa8a720f"
+    },
+    {
+      "path": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/court_source/RETAINED_ASSET_PLACEMENT_CHECKS.json",
+      "sha256": "18ec5f64ce3678066c72203a7437a7b2419578c99c413c4402cb118bb83161e4"
+    },
+    {
+      "path": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/court_source/GEOMETRY_CHECKS.json",
+      "sha256": "aace62d49071652bbf0cf7e6d5a058bee0953601f2f3696f21dc33bb68412365"
+    },
+    {
+      "path": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/court_source/EXCHANGE_CHECKS.json",
+      "sha256": "b9d416e104879a372a6e9cff30816bb07456e97ed4829a4da0ca1386fb633bef"
+    },
+    {
+      "path": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/court_source/ROUTES.json",
+      "sha256": "deda804ddbde000662b358522f86b14d67033b942e02e2f6b19d8c73f579dc6a"
+    },
+    {
+      "path": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/court_source/CONTACTS.json",
+      "sha256": "332069ca963885bb9c659350155d4859966840d97de470929f62722f7c24903b"
+    }
+  ],
+  "scope": "Three corrected source candidate suites and their one proposed court. The previously retained r005 mass candidate is preserved as historical evidence, not silently updated or newly approved. No Game installation.",
+  "remaining_gates": [
+    "Inspect the corrected connected room/court image.",
+    "Native bathroom/entry operation, real player/cart approaches and runtime light behavior remain untested.",
+    "Court source geometric contacts are not structural certification.",
+    "The remaining house view families and the full 500-room map still need this correction propagated after the connected prototype review."
+  ],
+  "court_scoped_checks": {
+    "guest_programme_intersections": 0,
+    "geometric_contacts": 22,
+    "route_width_m": [
+      1.75,
+      1.7
+    ],
+    "route_headroom_m": 2.1,
+    "actual_floor_support_probes": 1655,
+    "asset_part_placement_matches": 10171,
+    "exported_source_part_matches": 11294,
+    "later_interface": "Four proposed D12 receiver shoes occupy the outer 0.30 m of the existing spine edge. Anchorage and D12 runtime route interface are not yet approved."
+  }
+}

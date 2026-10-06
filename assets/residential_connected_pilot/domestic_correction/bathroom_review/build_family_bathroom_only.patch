@@ -1,0 +1,35 @@
+--- a/source/build_family.py
++++ b/source/build_family.py
+@@ -7,6 +7,7 @@
+ from pathlib import Path
+ import sys, json, hashlib, math, argparse, os
+ import bpy, bmesh
++from bathroom_enclosure_patch import apply_bathroom_enclosure
+ from mathutils import Vector, Matrix
+ ROOT=Path(__file__).resolve().parents[1]
+ catalogue_candidates=[Path(os.environ['ASTRAEA_CATALOGUE_ROOT'])] if os.environ.get('ASTRAEA_CATALOGUE_ROOT') else []
+@@ -51,6 +52,7 @@
+           'right=[(3.50,.12),(3.50,2.8),(3.15,3.5),(2.78,4.2),(2.78,5.1),(3.05,6.2),(3.40,7.25),(3.50,8),(3.50,12.75)]')
+     ns={'__file__':str(ROOT/'inputs'/template),'CAT':CAT}
+     exec(compile(code,str(ROOT/'inputs'/template),'exec'),ns)
++    ns['bathroom_enclosure_contract'] = apply_bathroom_enclosure(ns)
+     mesh,wall,extrusion,datum=[ns[k] for k in ['mesh','wall','extrusion','datum']]
+     def remove_prefixes(prefixes):
+         for ob in list(bpy.context.scene.objects):
+@@ -179,7 +181,7 @@
+         add('assets/guest_wash/source/'+aid+'.blend',definition,tuple(marker(definition)))
+     add('assets/guest_entry_door/source/AST-DOR-002.blend','EntryDoor',(0,-.05,0))
+     # Same parent coordinate conversion as the current Godot bath adapter.
+-    add('assets/guest_privacy_door/source/AST-DOR-001.blend','BathroomDoor',(-.7,2.9,0),math.pi/2)
++    add('assets/guest_privacy_door/source/AST-DOR-001.blend','BathroomDoor',tuple(marker('bath_door')),math.pi/2)
+     # Layered original book-like possessions and folded textiles stay in bounded
+     # supports. No extra berths or capacity are created by these static props.
+     ex=ns['extrusion'];variant=cfg['occupant_props_variant']
+@@ -254,6 +256,7 @@
+       'source_frame':'Blender +X right, +Y inward, +Z up; origin is room entry-wall floor datum',
+       'source_origin_world_xyz':cfg['source_origin_world_xyz'],'source_yaw_godot':cfg['source_yaw_godot'],
+       'historical_bed_anchors':cfg['bed_anchors'],'shell_stats':shell_stats,'assembly_stats':assembly_stats,'placements':placements,
++      'bathroom_enclosure_contract':ns['bathroom_enclosure_contract'],
+       'files':{n:sha(dest/n) for n in ['shell.blend','shell.glb','assembly.blend']},
+       'status':'source-only representative candidate; geometry/visual/runtime review pending',
+       'game_writes':False,'catalogue_writes':False,'render_is_game_evidence':False,'handing_applied':False,
