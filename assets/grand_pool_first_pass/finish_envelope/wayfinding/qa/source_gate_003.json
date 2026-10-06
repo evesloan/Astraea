@@ -1,0 +1,87 @@
+{
+  "copies": {
+    "/workspace/scratch/375c2e438292/pool-finish-envelope-source/ACTUAL_GLYPH_REPAIR_PROOF.json": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/glyph_diagnostic/ACTUAL_GLYPH_REPAIR_PROOF.json",
+    "/workspace/scratch/375c2e438292/pool-finish-envelope-source/glyph_cap_retriangulate.py": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/glyph_cap_retriangulate.py",
+    "/workspace/scratch/375c2e438292/pool-finish-envelope-source/test_glyph_cap_retriangulate.py": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/test_glyph_cap_retriangulate.py",
+    "/workspace/scratch/375c2e438292/pool-wayfinding-source/glyph-diagnostic/GLYPH_DIAGNOSTIC_001.json": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/glyph_diagnostic/GLYPH_DIAGNOSTIC_001.json",
+    "/workspace/scratch/375c2e438292/pool-wayfinding-source/glyph-diagnostic/INDEPENDENT_CAP_REPAIR_REVIEW.json": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/glyph_diagnostic/INDEPENDENT_CAP_REPAIR_REVIEW.json",
+    "/workspace/scratch/375c2e438292/pool-wayfinding-source/glyph-diagnostic/ORCHARD_RAW_FONT_SHELLS.json": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/glyph_diagnostic/ORCHARD_RAW_FONT_SHELLS.json",
+    "/workspace/scratch/375c2e438292/pool-wayfinding-source/glyph-diagnostic/diagnose_wayfinding_glyphs.py": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/glyph_diagnostic/diagnose_wayfinding_glyphs.py"
+  },
+  "ended_utc": "2026-10-06T06:18:50.248273+00:00",
+  "jobs": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/test_glyph_cap_retriangulate.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "dd4602af45ce3e276ea4b26f71088b36b92a5f3d53b0e3ba764113e370e11663",
+      "name": "cap_repair_tests_003"
+    },
+    {
+      "command": [
+        "/usr/bin/blender",
+        "-b",
+        "-t",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/build_pool_wayfinding.py",
+        "--",
+        "--output-dir",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f4cfbdd3d7ef0b90cd9f6184e65a56eccd9d61864f650ccd23483f42e4322c4e",
+      "name": "build_003"
+    },
+    {
+      "command": [
+        "/usr/bin/blender",
+        "-b",
+        "-t",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/verify_wayfinding_source.py",
+        "--",
+        "--source",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/source/grand_pool_wayfinding.blend",
+        "--contract",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/wayfinding_contract.json",
+        "--report",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/wayfinding_source_reopen.json"
+      ],
+      "exit_code": 1,
+      "log_sha256": "ff0be2510ec7615ae3a7cd1dc2e33c0abcdd6230fc2f16dc0b2ac77f10a1e42e",
+      "name": "reopen_003"
+    }
+  ],
+  "no_export_render_or_runtime_edit": true,
+  "pins": {
+    "/workspace/scratch/375c2e438292/pool-finish-envelope-source/ACTUAL_GLYPH_REPAIR_PROOF.json": "ad98fad5c44f9938262fb7cd5e941119ffa314d8d91c24879c9a46cbd585ed4a",
+    "/workspace/scratch/375c2e438292/pool-finish-envelope-source/build_pool_wayfinding_build003.py": "9113f4209d77b1db60c1a8636300bc69d8b896d722a880bdb7d226362c4ab47c",
+    "/workspace/scratch/375c2e438292/pool-finish-envelope-source/glyph_cap_retriangulate.py": "3d3a6140a6e1cc83a2eb854b56134a6d7351405aa733043860e6c189ad069c7a",
+    "/workspace/scratch/375c2e438292/pool-finish-envelope-source/test_glyph_cap_retriangulate.py": "0be6b55dc8432d6754e2032a929b9111170987d1aa8c26fd1b499d36147a1a70",
+    "/workspace/scratch/375c2e438292/pool-wayfinding-source/glyph-diagnostic/GLYPH_DIAGNOSTIC_001.json": "46524ba03b7c5fa0d447df3b0f437f31aa55d5ac145118f7d98cb3103848b1ed",
+    "/workspace/scratch/375c2e438292/pool-wayfinding-source/glyph-diagnostic/INDEPENDENT_CAP_REPAIR_REVIEW.json": "8f40f39a8c0523f16b61bd55a186e1f17019ad1e53af1aaeabe48cb7c5a7ccd9",
+    "/workspace/scratch/375c2e438292/pool-wayfinding-source/glyph-diagnostic/ORCHARD_RAW_FONT_SHELLS.json": "da2d8d1d26716669d00ec1c468789ce48773c51f700c0a78f0c19a56f6190449",
+    "/workspace/scratch/375c2e438292/pool-wayfinding-source/glyph-diagnostic/diagnose_wayfinding_glyphs.py": "a9ed8110b4216f29ef27bfaed27ff365c53c8252bcdc0d69a5453ce1ed9ddec5",
+    "/workspace/scratch/375c2e438292/pool-wayfinding-source/verify_wayfinding_source.py": "8e7178647c28168757cd6c547c7d3b2075a97575382af408cdc21872742afecb",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/build_pool_wayfinding.py": "740acda6087a98a97f744049a5da9168a53acfee26c69451f48bb545fd6de3df",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/check_wayfinding.py": "49e475b57e3933ad2fe5168773b25f6b198481206963cb923764851e6088a900",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/build_001.log": "ff2f396d5247c8ad917d904dd71eade83528a140bb45e479105f7ce08fb7f917",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/build_002.log": "e3058579032c98c8f2af28acf738328fc4cd6b7460be5882216eaaee21729e52",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/source_gate_002.json": "575ec0e6620003b317aaef5a03504848f1688d7cdee24c8c9bc674fceb912d07",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/verify_wayfinding_source.py": "6032a80c7a86159f406341c5b92069efed3cc80b593d1a0b76fd42f009c32835",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/wayfinding_contract.json": "8daed84cca96bb151cdb27aa597d5b8d62caa10be7ce4e76ba04570a8af85c72",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/wayfinding_geometry.py": "91112795c6bb07744b8ff55773f367b112f0db20aef75dfbb03dd8348e199968"
+  },
+  "schema": "pool_wayfinding_source_gate_003",
+  "started_utc": "2026-10-06T06:18:41.956884+00:00",
+  "status": "failed_or_interrupted_review_required"
+}

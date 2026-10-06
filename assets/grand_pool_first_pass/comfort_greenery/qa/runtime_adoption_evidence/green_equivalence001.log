@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/375c2e438292/pool-comfort-greenery/greenery/verify_exported_sources.py", line 66, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/workspace/scratch/375c2e438292/pool-comfort-greenery/greenery/verify_exported_sources.py", line 62, in main
+    results.append(verify_one(a,source_qa[a['name']],g,package,candidate,specs,reader));print('GREENERY_GLB_EQUIVALENT',a['name'],flush=True)
+                   ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/pool-comfort-greenery/greenery/verify_exported_sources.py", line 42, in verify_one
+    eq=match_triangles(expected[role],actual[role]);mat=material_check(decoded,role,role_materials[role],material_specs[role]);reports.append(dict(material=mat,equivalence=eq));assert np.all(np.linalg.norm(np.cross(actual[role]['positions'][:,1]-actual[role]['positions'][:,0],actual[role]['positions'][:,2]-actual[role]['positions'][:,0]),axis=1)>1e-10),'Degenerate actual exported triangles'
+  File "/workspace/scratch/375c2e438292/pool-comfort-greenery/greenery/glb_equivalence.py", line 61, in match_triangles
+    assert match is not None,'No matching source triangle with equal winding, material, UV and normals at exported triangle '+str(ai)
+           ^^^^^^^^^^^^^^^^^
+AssertionError: No matching source triangle with equal winding, material, UV and normals at exported triangle 0
+
+Error: script failed, file: '/workspace/scratch/375c2e438292/pool-comfort-greenery/greenery/verify_exported_sources.py', exiting.
+Blender 4.3.2
+Read blend: "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/comfort_greenery/greenery/candidate_v001/source/AST-BOT-003_pool_basal_00.blend"
+
+Blender quit

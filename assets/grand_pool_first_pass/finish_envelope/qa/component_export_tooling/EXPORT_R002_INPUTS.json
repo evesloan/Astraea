@@ -1,0 +1,85 @@
+{
+  "tasks": [
+    {
+      "component": "envelope",
+      "script": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/source/build_finish_envelope.py",
+      "script_sha256": "ef5d07918f89de9f2a454e0a4dcd40221af8455d6c73d472e12dc9ccb69dd2d4",
+      "literal_replacements": [
+        [
+          "HERE/'exports/AST-AQU-016_finish_envelope.glb'",
+          "HERE/'exports_r002/AST-AQU-016_finish_envelope.glb'"
+        ],
+        [
+          "HERE/'qa/EXPORT_BATCHES.json'",
+          "HERE/'qa/EXPORT_BATCHES_r002.json'"
+        ]
+      ],
+      "args": [
+        "--export"
+      ],
+      "preserved": {
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/source/grand_pool_finish_envelope.blend": "a752246f6532441dbf8348a075dc94e0c1eb0864d85760704d79119f0681b5f6",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/exports/AST-AQU-016_finish_envelope.glb": "cfdc4fc45fe9986fe04871b0aea8343c053c3ee26ca12b4a6b614533602099b0"
+      },
+      "new_outputs": [
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/exports_r002/AST-AQU-016_finish_envelope.glb",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/qa/EXPORT_BATCHES_r002.json"
+      ]
+    },
+    {
+      "component": "wayfinding",
+      "script": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/build_pool_wayfinding.py",
+      "script_sha256": "9113f4209d77b1db60c1a8636300bc69d8b896d722a880bdb7d226362c4ab47c",
+      "literal_replacements": [
+        [
+          "out/'exports'/d['derivative_export']",
+          "out/'exports_r002'/d['derivative_export']"
+        ],
+        [
+          "out/'qa/wayfinding_export.json'",
+          "out/'qa/wayfinding_export_r002.json'"
+        ]
+      ],
+      "args": [
+        "--export-blend",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/source/grand_pool_wayfinding.blend",
+        "--export-approval",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/parent_export_approval.json",
+        "--output-dir",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding"
+      ],
+      "preserved": {
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/source/grand_pool_wayfinding.blend": "7652921a465623a450d14d567fd1c17575f200b419f608b49b60a2297a957420",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/exports/AST-RES-001_pool_wayfinding.glb": "18789fa3c0673cb7deb31fca1214dde05bde53fab74185c11559bb993151b871"
+      },
+      "new_outputs": [
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/exports_r002/AST-RES-001_pool_wayfinding.glb",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/finish_envelope/wayfinding/qa/wayfinding_export_r002.json"
+      ]
+    },
+    {
+      "component": "media",
+      "script": "/workspace/scratch/375c2e438292/pool-finish-runtime-adoption/export_pool_media.py",
+      "script_sha256": "ef357052e61445b23c4a3aa205b3e1b4b8f0772e7b8e6e6c24db68e496279943",
+      "literal_replacements": [
+        [
+          "M/'exports/AST-LIB-010_pool_leisure_displays.glb'",
+          "M/'exports_r002/AST-LIB-010_pool_leisure_displays.glb'"
+        ],
+        [
+          "M/'qa/EXPORT_001.json'",
+          "M/'qa/EXPORT_002.json'"
+        ]
+      ],
+      "args": [],
+      "preserved": {
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/comfort_greenery/media/source/AST-LIB-010_pool_leisure_displays.blend": "63a68558675f6c4f286a87499982c5c05230fe46e5a24c6d2426c879e974a1f2",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/comfort_greenery/media/exports/AST-LIB-010_pool_leisure_displays.glb": "9165447491c3a0568379c54641ae4b441f5211d5e4a522c7f9c3bf8a738056f8"
+      },
+      "new_outputs": [
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/comfort_greenery/media/exports_r002/AST-LIB-010_pool_leisure_displays.glb",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/comfort_greenery/media/qa/EXPORT_002.json"
+      ]
+    }
+  ]
+}

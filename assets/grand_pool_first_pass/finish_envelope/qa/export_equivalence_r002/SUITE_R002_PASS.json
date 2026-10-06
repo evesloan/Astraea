@@ -1,0 +1,57 @@
+{
+  "schema": "pool_source_glb_equivalence_suite/v1",
+  "status": "PASS",
+  "summary": "All 3 revised derivatives preserve every evaluated source triangle/corner, actual source PBR/image content, and requested hierarchy/marker/collision mappings. No source save or runtime edit by this checker.",
+  "checks": 17,
+  "files": {
+    "check_glb.py": "b292357cfd22198e63c696bd29bb7c1bc08fc5cae5314083af92e20a729e8d3c",
+    "snapshot_source.py": "3f6ad699342e6126f0bc2522b16df54923e0cb391703edc268fce8ea00a3106a",
+    "test_checker.py": "92cd110812c1bd7e9dbd3a80906317d5098f3d89825088fd775228f7e388f5de",
+    "checker_tests_r002.txt": "96ad10bb35b9ff47d7bae5eba56d128bdbf77270339d128795f3cdbea9742d3a",
+    "README.md": "0393f15755f630ce6cff21ccfdea7ef47fca55acac5301f3a8dc456ebf8fce24",
+    "envelope_equivalence_r002.json": "8f8d94779f3662f7fedb03807d3f07dad6cfaa43fe2d2e68fd0464fc2a90a532",
+    "wayfinding_equivalence_r002.json": "35bb7e6e2b6fadad3249ab33b2510b2e873ea0df3011c291e2b8277e15f94a14",
+    "media_equivalence_r002.json": "648af9d8d266980041d4483988855e579f867e90ddfdef7869bb15ee2ccda5cf"
+  },
+  "reports": [
+    {
+      "kind": "envelope",
+      "report": "/workspace/scratch/375c2e438292/pool-export-equivalence/envelope_equivalence_r002.json",
+      "source_sha256": "a752246f6532441dbf8348a075dc94e0c1eb0864d85760704d79119f0681b5f6",
+      "glb_sha256": "a7911c6cd967503ea7d039ec720e3b81ce0326413c16232fa7759c15c1d6c75a",
+      "triangles": 2208,
+      "export_mesh_nodes": 47,
+      "markers_and_roots": 14,
+      "material_count": 6,
+      "mapped_source_parts": 125,
+      "max_position_deviation_m": 0.0,
+      "max_normal_deviation": 8.429369486268605e-08
+    },
+    {
+      "kind": "wayfinding",
+      "report": "/workspace/scratch/375c2e438292/pool-export-equivalence/wayfinding_equivalence_r002.json",
+      "source_sha256": "7652921a465623a450d14d567fd1c17575f200b419f608b49b60a2297a957420",
+      "glb_sha256": "58e5980e62e2649e4a22589c2082b5c4d6505a0f7e7aacd09cf3ec65634003cc",
+      "triangles": 20796,
+      "export_mesh_nodes": 111,
+      "markers_and_roots": 34,
+      "material_count": 3,
+      "mapped_source_parts": 111,
+      "max_position_deviation_m": 0.0,
+      "max_normal_deviation": 8.447091816051459e-08
+    },
+    {
+      "kind": "media",
+      "report": "/workspace/scratch/375c2e438292/pool-export-equivalence/media_equivalence_r002.json",
+      "source_sha256": "63a68558675f6c4f286a87499982c5c05230fe46e5a24c6d2426c879e974a1f2",
+      "glb_sha256": "0a07e404d958aa01b7321883ab2e0386248be579b3d5c127973731875a313049",
+      "triangles": 13268,
+      "export_mesh_nodes": 99,
+      "markers_and_roots": 4,
+      "material_count": 9,
+      "mapped_source_parts": 99,
+      "max_position_deviation_m": 8.665472279902185e-06,
+      "max_normal_deviation": 1.7494507109777378e-07
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "status": "FAIL",
+  "error": "'local_positions'",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/375c2e438292/pool-export-equivalence/check_glb.py\", line 279, in main\n    try:r=run(a)\n          ^^^^^^\n  File \"/workspace/scratch/375c2e438292/pool-export-equivalence/check_glb.py\", line 248, in run\n    if o['type']=='MESH':require(node['mesh'] is not None,'Missing exported mesh');group(name,[name],node)\n                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/375c2e438292/pool-export-equivalence/check_glb.py\", line 206, in group\n    expected=concat([meshes[p] for p in parts]);actual=concat(node['primitives'])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/375c2e438292/pool-export-equivalence/check_glb.py\", line 163, in concat\n    return {k:np.concatenate([np.asarray(r[k],float) for r in rows],axis=0) for k in ['positions','local_positions','normals','uvs']}\n                                         ~^^^\nKeyError: 'local_positions'\n",
+  "glb_sha256": "18789fa3c0673cb7deb31fca1214dde05bde53fab74185c11559bb993151b871"
+}

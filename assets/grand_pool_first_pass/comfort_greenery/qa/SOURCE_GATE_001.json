@@ -1,0 +1,77 @@
+{
+  "ended_utc": "2026-10-06T07:16:19.107161+00:00",
+  "jobs": [
+    {
+      "command": [
+        "/usr/bin/blender",
+        "-b",
+        "-t",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/comfort_greenery/greenery/build_sources.py",
+        "--",
+        "--output",
+        "candidate_v001"
+      ],
+      "exit_code": 0,
+      "log_sha256": "3756361f215d197c266cba3b2ec542995c8cfeec02cd1f250e79343c54b0800b",
+      "name": "greenery_build_001"
+    },
+    {
+      "command": [
+        "/usr/bin/blender",
+        "-b",
+        "-t",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/comfort_greenery/greenery/verify_sources.py",
+        "--",
+        "--candidate",
+        "candidate_v001"
+      ],
+      "exit_code": 0,
+      "log_sha256": "eaf37a4d2ce8ba54fe29ed7495844da20b1e6aaac68183e004482a4087041e79",
+      "name": "greenery_reopen_001"
+    },
+    {
+      "command": [
+        "/usr/bin/blender",
+        "-b",
+        "-t",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/comfort_greenery/media/source/build_media_source.py",
+        "--",
+        "--allow-source-build"
+      ],
+      "exit_code": 0,
+      "log_sha256": "e204c9dbefdcb0b807053d4d491c98f0812919fd2b90d4a51f4180ea08a93156",
+      "name": "media_build_001"
+    },
+    {
+      "command": [
+        "/usr/bin/blender",
+        "-b",
+        "-t",
+        "2",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/comfort_greenery/media/qa/reopen_media_qa.py"
+      ],
+      "exit_code": 1,
+      "log_sha256": "63b18d8b108af28423d0664ddb3e5c5e4f1dfc6b344f62b68eb3cb2184983675",
+      "name": "media_reopen_001"
+    }
+  ],
+  "no_render_export_or_game_edit": true,
+  "original_static_package_sha256": "2184599f99798da53630040c0b64dc0c9d28f76968fda992762de980255add44",
+  "started_utc": "2026-10-06T07:15:54.634431+00:00",
+  "status": "failed_or_interrupted_review_required"
+}
