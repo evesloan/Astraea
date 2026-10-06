@@ -1,0 +1,78 @@
+{
+  "verified_utc": "2026-10-06T02:14:48.475638+00:00",
+  "scope": "Focused local pool two-stop and extended five-stop staff lift checks, not physical boarding or full regression",
+  "sequences": {
+    "grand_pool_local_lift": [
+      1,
+      0
+    ],
+    "forward_staff_extended_lift": [
+      1,
+      2,
+      3,
+      4,
+      3,
+      2,
+      1,
+      0
+    ]
+  },
+  "results": {
+    "grand_pool_local_lift": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.4439,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "grand_pool_local_lift",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 16.7437,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 20.1886,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "forward_staff_extended_lift": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 4.0009,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "forward_staff_extended_lift",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 27.6186,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 31.6205,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    }
+  },
+  "test_sha256": {
+    "tests/validate_commons_lift.gd": "7e5aedee00c104215954dd329b071d5eaa79d48bbc1ad9f367c6cdc762955408",
+    "tests/validate_grand_pool_local_lift.gd": "399b315ee0adc9da7358f11faa9f6cca87e1d5c54d0f44033602a823ea128036",
+    "tests/validate_forward_staff_extended_lift.gd": "334112386668d450b3f39af115bcf5609cae6b9b9e6567b2bf8a6b046a88ab9f"
+  },
+  "common_change": "Final carried-cart height compared to lift world datum with unchanged0.12m tolerance; all existing physical assertions retained",
+  "limits": [
+    "Fixture placed once inside stationary cabin; real route boarding tested separately",
+    "No save acceptance, final visuals, full-suite or hardware performance implied"
+  ]
+}

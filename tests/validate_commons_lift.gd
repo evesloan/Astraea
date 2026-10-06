@@ -99,7 +99,7 @@ func run() -> void:
 	for destination in test_stop_sequence:
 		await select_floor_by_focus(lift,actor,destination)
 		await wait_trip(lift,cart,actor,destination)
-		assert(abs(cart.global_position.y-lift.floor_heights[destination])<.12)
+		assert(abs(cart.global_position.y-lift.to_global(Vector3(lift.gate_origin_xz.x,lift.floor_heights[destination],lift.gate_origin_xz.y)).y)<.12)
 	# Obstruction of the actual threshold must hold departure.
 	var blocker:=RigidBody3D.new()
 	blocker.gravity_scale=0
