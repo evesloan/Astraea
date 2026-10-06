@@ -1,0 +1,68 @@
+--- original/domestic_correction/court_source/build_court.py
++++ portable/domestic_correction/court_source/build_court.py
+@@ -2,13 +2,11 @@
+ Global Blender coordinates=(world X,-world Z,world Y). Never writes Game/Catalogue.
+ Run only on the coordinated source authoring slot, Blender -b -t 2 --python.
+ """
+-import bpy,bmesh,json,math,hashlib,random
++import bpy,bmesh,json,math,hashlib,random,os,sys,argparse
+ from mathutils import Vector,Matrix
+ from pathlib import Path
+-OUT=Path(__file__).resolve().parent
+-CAT=Path('/workspace/shared/astraea-catalogue-continuation-20261002')
+-GAME=Path('/workspace/shared/astraea-godot-production-20261003')
+-REF=Path('/workspace/shared/astraea-recovery-20261005/DesignArchive/References')
++parser=argparse.ArgumentParser();parser.add_argument('--output-dir',required=True);args=parser.parse_args(sys.argv[sys.argv.index('--')+1:]);OUT=Path(args.output_dir).resolve();assert not OUT.exists(),'Fresh output directory required';OUT.mkdir(parents=True)
++CAT=Path(os.environ['ASTRAEA_CATALOGUE_ROOT']).resolve() if os.environ.get('ASTRAEA_CATALOGUE_ROOT') else next(p for p in Path(__file__).resolve().parents if (p/'catalogue_manifest.json').is_file())
+ random.seed(205)
+ bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
+ scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1
+--- original/domestic_correction/source/build_kitchenette.py
++++ portable/domestic_correction/source/build_kitchenette.py
+@@ -5,10 +5,10 @@
+ No catalogue ID is allocated and no Game/Catalogue files are changed.
+ """
+ from pathlib import Path
+-import bpy,bmesh,json,hashlib,math
++import bpy,bmesh,json,hashlib,math,os,sys,argparse
+ from mathutils import Vector
+-ROOT=Path(__file__).resolve().parents[1];BATCH=ROOT.parent;CAT=Path('/workspace/shared/astraea-catalogue-continuation-20261002')
+-OUT=ROOT/'outputs/kitchenette_r001';assert not OUT.exists();OUT.mkdir()
++ROOT=Path(__file__).resolve().parents[1];BATCH=ROOT.parent;CAT=Path(os.environ['ASTRAEA_CATALOGUE_ROOT']).resolve() if os.environ.get('ASTRAEA_CATALOGUE_ROOT') else next(p for p in Path(__file__).resolve().parents if (p/'catalogue_manifest.json').is_file())
++parser=argparse.ArgumentParser();parser.add_argument('--revision',required=True);args=parser.parse_args(sys.argv[sys.argv.index('--')+1:]);OUT=ROOT/'outputs'/args.revision;assert not OUT.exists(),'Fresh revision required';OUT.mkdir(parents=True)
+ text=(BATCH/'inputs/build_residential_suite.py').read_text().split('# Local +Y')[0]
+ text=text.replace("ROOT=Path(__file__).resolve().parents[1];CAT=ROOT.parents[1]","ROOT=CAT/'assets/residential_suite'")
+ ns={'__file__':__file__,'CAT':CAT};exec(compile(text,'retained_suite_primitives','exec'),ns)
+--- original/domestic_correction/source/verify_assembly_component_geometry.py
++++ portable/domestic_correction/source/verify_assembly_component_geometry.py
+@@ -1,8 +1,8 @@
+ """Prove actual appended source components retain the intended asset transforms."""
+ from pathlib import Path
+-import bpy,json,runpy,math,hashlib
++import bpy,json,runpy,math,hashlib,os
+ import numpy as np
+-ROOT=Path(__file__).resolve().parents[1];BATCH=ROOT.parent;CAT=Path('/workspace/shared/astraea-catalogue-continuation-20261002')
++ROOT=Path(__file__).resolve().parents[1];BATCH=ROOT.parent;CAT=Path(os.environ['ASTRAEA_CATALOGUE_ROOT']).resolve() if os.environ.get('ASTRAEA_CATALOGUE_ROOT') else next(p for p in Path(__file__).resolve().parents if (p/'catalogue_manifest.json').is_file())
+ decode=runpy.run_path(str(BATCH/'qa/independent_review/geometry_decode.py'))['decode'];cache={};rows=[]
+ for source in sorted((BATCH/'outputs/court_domestic_r008').glob('*/assembly.blend')):
+     before=hashlib.sha256(source.read_bytes()).hexdigest();bpy.ops.wm.open_mainfile(filepath=str(source));deps=bpy.context.evaluated_depsgraph_get();actual={}
+--- original/source/build_family.py
++++ portable/source/build_family.py
+@@ -13,7 +13,7 @@
+ catalogue_candidates += [ROOT.parents[1],Path('/workspace/shared/astraea-catalogue-continuation-20261002')]
+ CAT=next((p for p in catalogue_candidates if (p/'catalogue_manifest.json').is_file()),None)
+ assert CAT is not None,'Set ASTRAEA_CATALOGUE_ROOT to the retained catalogue root.'
+-inputs=json.loads((ROOT/'qa/INPUT_RETENTION.json').read_text())
++inputs=json.loads((ROOT/'qa/GENERATOR_INPUTS.json').read_text())
+ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+ def input_path(row):
+     if row['project']=='Blender':return CAT/row['checkpoint_relative']
+@@ -23,7 +23,7 @@
+ for row in inputs['files']:
+     assert sha(input_path(row))==row['sha256'], 'Source drift: '+str(input_path(row))
+ argv=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
+-parser=argparse.ArgumentParser();parser.add_argument('--samples',action='store_true');parser.add_argument('--addresses',nargs='*');parser.add_argument('--revision',default='r001');parser.add_argument('--render',action='store_true');parser.add_argument('--plan',default='NEIGHBORHOOD_PLAN.json');parser.add_argument('--domestic',action='store_true')
++parser=argparse.ArgumentParser();parser.add_argument('--samples',action='store_true');parser.add_argument('--addresses',nargs='*');parser.add_argument('--revision',default='r001');parser.add_argument('--render',action='store_true');parser.add_argument('--plan',default='COURT_PILOT_PLAN.json');parser.add_argument('--domestic',action='store_true')
+ args=parser.parse_args(argv)
+ plan_path=ROOT/args.plan;plan=json.loads(plan_path.read_text())
+ addresses=args.addresses or plan['representative_sample_addresses']
