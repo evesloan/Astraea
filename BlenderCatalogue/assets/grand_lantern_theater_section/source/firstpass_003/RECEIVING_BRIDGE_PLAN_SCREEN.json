@@ -1,0 +1,196 @@
+{
+  "status": "Proposed receiving bridge plan only; parent review and actual world/source contact checks required",
+  "source_sha256": {
+    "data/spatial_layout.json": "d260d6c55397c822603fe88ea702fff2515eec13a1259ba607b57b85a1ffdc73",
+    "data/whole_ship_layout.json": "d641e95cf82b5ddd19e9448dc5d029aef2123d32630a08810a2169c8979706d8",
+    "data/programme_ledger.json": "7ad90e3322ef4ce666262d0d27e191f85bf7480fc6e5f2c312f5574c69ca2366",
+    "data/reference/historical_guest_census.json": "9436f006b2e71f6ee5bda71cd8dc09d1c52f44844027fa7082e3b286a7215038",
+    "data/reference/historical_atlas_allocations.json": "deabb459263f09f342dc76b1d588105eb579d1eb60a0c658a6358f9ab8d1b063",
+    "data/hull_envelope.json": "8412bacc9253a967fda398c2b81c54f413079374edafbf3d4a3716c70c913f87"
+  },
+  "proposal": [
+    {
+      "deck": "D11",
+      "proposed_floor_polygon": [
+        [
+          -4.0,
+          -129.05
+        ],
+        [
+          -4.0,
+          -122.95
+        ],
+        [
+          -34.0,
+          -122.95
+        ],
+        [
+          -34.0,
+          -129.05
+        ]
+      ],
+      "clear_route_polygon": [
+        [
+          -4.0,
+          -128.6
+        ],
+        [
+          -4.0,
+          -123.4
+        ],
+        [
+          -34.0,
+          -123.4
+        ],
+        [
+          -34.0,
+          -128.6
+        ]
+      ],
+      "floor_area_m2": 183.00000000000026,
+      "clear_width_m": 5.2,
+      "side_bearing_allowance_m": 0.45,
+      "floor_to_plan_hull_boundary_min_m": 86.0,
+      "positive_area_conflicts": [],
+      "boundary_contacts": [
+        {
+          "kind": "programme",
+          "id": "D11_directory_01",
+          "length_m": 6.1000000000000085
+        },
+        {
+          "kind": "historical_atlas_allocation",
+          "id": 120,
+          "length_m": 6.1000000000000085
+        },
+        {
+          "kind": "retained_floor_region",
+          "id": "D11_fore_route",
+          "length_m": 6.1000000000000085
+        }
+      ]
+    },
+    {
+      "deck": "D12",
+      "proposed_floor_polygon": [
+        [
+          -4.0,
+          -129.05
+        ],
+        [
+          -4.0,
+          -122.95
+        ],
+        [
+          -34.0,
+          -122.95
+        ],
+        [
+          -34.0,
+          -129.05
+        ]
+      ],
+      "clear_route_polygon": [
+        [
+          -4.0,
+          -128.6
+        ],
+        [
+          -4.0,
+          -123.4
+        ],
+        [
+          -34.0,
+          -123.4
+        ],
+        [
+          -34.0,
+          -128.6
+        ]
+      ],
+      "floor_area_m2": 183.00000000000026,
+      "clear_width_m": 5.2,
+      "side_bearing_allowance_m": 0.45,
+      "floor_to_plan_hull_boundary_min_m": 86.0,
+      "positive_area_conflicts": [],
+      "boundary_contacts": [
+        {
+          "kind": "retained_floor_region",
+          "id": "D12_fore_route",
+          "length_m": 6.1000000000000085
+        },
+        {
+          "kind": "protected_void",
+          "id": "theater_upper_volume",
+          "length_m": 6.1000000000000085
+        }
+      ]
+    },
+    {
+      "deck": "D13",
+      "proposed_floor_polygon": [
+        [
+          -4.0,
+          -129.05
+        ],
+        [
+          -4.0,
+          -122.95
+        ],
+        [
+          -34.0,
+          -122.95
+        ],
+        [
+          -34.0,
+          -129.05
+        ]
+      ],
+      "clear_route_polygon": [
+        [
+          -4.0,
+          -128.6
+        ],
+        [
+          -4.0,
+          -123.4
+        ],
+        [
+          -34.0,
+          -123.4
+        ],
+        [
+          -34.0,
+          -128.6
+        ]
+      ],
+      "floor_area_m2": 183.00000000000026,
+      "clear_width_m": 5.2,
+      "side_bearing_allowance_m": 0.45,
+      "floor_to_plan_hull_boundary_min_m": 86.0,
+      "positive_area_conflicts": [],
+      "boundary_contacts": [
+        {
+          "kind": "retained_floor_region",
+          "id": "D13_fore_route",
+          "length_m": 6.1000000000000085
+        },
+        {
+          "kind": "protected_void",
+          "id": "theater_upper_volume",
+          "length_m": 6.1000000000000085
+        }
+      ]
+    }
+  ],
+  "first_stage_recommendation": "Author D11 only first: 30m span, 6.1m slab width, 5.2m clear route, 183m2 new floor. Existing internal theater stair reaches D12/D13; their external thresholds stay closed until separate receiving bridges pass.",
+  "required_before_adoption": [
+    "Parent reservation approval",
+    "Actual runtime neighbour census and exact retained triangles/hull at every relevant height",
+    "Source-backed fitted bearings/guardrails and head clearance; no floating deck or fabricated capacity certification",
+    "Imported strict floor/collision fidelity and continuous capsule/cart route",
+    "D11 main door open-pose/contact proof and deliberately locked safe state or tested controller",
+    "Closed secondary/staff exits and lift landings with physical source-derived collision"
+  ],
+  "no_runtime_or_compiler_change": true
+}

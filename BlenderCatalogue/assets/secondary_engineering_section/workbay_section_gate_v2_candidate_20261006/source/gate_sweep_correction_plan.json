@@ -1,0 +1,327 @@
+{
+  "scope": "Pure narrow gate-sweep correction; copied/frozen candidate stays immutable",
+  "input_hashes": {
+    "engineering-dense-bays/sectional-proposal/source/AST-ENG-008_workbay_section_final.blend": "fb251d356c93c27a4b19bb3eb877e9a45866c2cf94a0412f9f90829931f9a600",
+    "engineering-dense-bays/sectional-proposal/exports/AST-ENG-008_workbay_section.glb": "887f0f68604091c3600203cba42c1a371aef090c2be1419b3bbc185c99e5a041",
+    "/workspace/shared/astraea-catalogue-continuation-20261002/catalogue_manifest.json": "5ce505977612e68363e2b48fb8b348bdba3923d2182d5f345b4167ad56059d7b"
+  },
+  "family": "secondary_engineering_section",
+  "full_catalogue_entries_checked": 170,
+  "model_file": "AST-ENG-008_workbay_section_gate_v2.glb",
+  "source_file": "AST-ENG-008_workbay_section_gate_v2.blend",
+  "unchanged_gate": {
+    "persistent_id": "D02_secondary_engineering_workbay_cell_gate",
+    "source_node": "LEAF_WORKBAY_CELL",
+    "source_rest_marker": "DATUM_WORKBAY_CELL_GATE",
+    "closed_rest_pivot_xyz": [
+      21.8675,
+      6,
+      -404.5
+    ],
+    "opening_translation_xyz": [
+      0,
+      0,
+      -1.22
+    ],
+    "closed_leaf_bounds_xyz": [
+      21.84,
+      6.03,
+      -405.12,
+      21.895,
+      8.44,
+      -403.88
+    ],
+    "open_leaf_bounds_xyz": [
+      21.84,
+      6.03,
+      -406.34,
+      21.895,
+      8.44,
+      -405.1
+    ],
+    "clear_aperture": {
+      "axis": "x",
+      "plane": 21.96,
+      "z_range": [
+        -405.1,
+        -403.9
+      ],
+      "floor_y": 6,
+      "clear_height_m": 2.34
+    },
+    "north_horizontal_pocket_z": [
+      -406.36,
+      -405.1
+    ],
+    "reuse_state_base": "res://scripts/service_door.gd",
+    "required_local_overrides": [
+      "source-bound fitting _ready",
+      "single-leaf _apply_pose",
+      "actual leaf/pocket _sweep_occupied"
+    ],
+    "existing_guest_entry_door_is_not_drop_in": true,
+    "targets": [
+      {
+        "marker": "TARGET_CELL_GATE_OUTSIDE",
+        "mesh": "CellGateButtonOutside",
+        "position_xyz": [
+          21.764,
+          7.1,
+          -405.23
+        ],
+        "approach_xyz": [
+          20.85,
+          6,
+          -405.23
+        ],
+        "normal_xyz": [
+          -1,
+          0,
+          0
+        ]
+      },
+      {
+        "marker": "TARGET_CELL_GATE_INSIDE",
+        "mesh": "CellGateButtonInside",
+        "position_xyz": [
+          22.111,
+          6.86,
+          -403.78
+        ],
+        "approach_xyz": [
+          23.3,
+          5.55,
+          -404.5
+        ],
+        "normal_xyz": [
+          1,
+          0,
+          0
+        ]
+      }
+    ],
+    "guide_type": "open three-piece horizontal channel; two source-authored hanging rollers",
+    "actual_closed_leaf_bounds_xyz": [
+      21.84000015258789,
+      6.03000020980835,
+      -405.1199951171875,
+      21.895000457763672,
+      8.4399995803833,
+      -403.8800048828125
+    ],
+    "description": "SunCorp service cell gate"
+  },
+  "changes": [
+    {
+      "part": "CellGateOutsideHousing",
+      "translation_xyz": [
+        -0.11,
+        0,
+        0
+      ],
+      "new_bounds_xyz": [
+        21.68,
+        6.98,
+        -405.31,
+        21.806,
+        7.22,
+        -405.15
+      ]
+    },
+    {
+      "part": "CellGateButtonOutside",
+      "translation_xyz": [
+        -0.11,
+        0,
+        0
+      ]
+    },
+    {
+      "marker": "TARGET_CELL_GATE_OUTSIDE",
+      "translation_xyz": [
+        -0.11,
+        0,
+        0
+      ],
+      "new_position_xyz": [
+        21.654,
+        7.1,
+        -405.23
+      ],
+      "approach_xyz": [
+        20.85,
+        6,
+        -405.23
+      ]
+    },
+    {
+      "part": "CellStairHandrail-405.14",
+      "old_upper_endpoint": [
+        21.9,
+        6.95,
+        -405.14
+      ],
+      "new_upper_endpoint": [
+        21.96,
+        6.92,
+        -405.14
+      ],
+      "lower_endpoint": [
+        22.8,
+        6.5,
+        -405.14
+      ],
+      "radius_m": 0.027
+    },
+    {
+      "part": "CellStairHandrail-403.86",
+      "old_upper_endpoint": [
+        21.9,
+        6.95,
+        -403.86
+      ],
+      "new_upper_endpoint": [
+        21.96,
+        6.92,
+        -403.86
+      ],
+      "lower_endpoint": [
+        22.8,
+        6.5,
+        -403.86
+      ],
+      "radius_m": 0.027
+    },
+    {
+      "part": "CONTACT_CellStairFlight",
+      "change": "Keep exact inclined top quad and footprint; replace thin prism with a true nondegenerate triangular wedge bearing on lower floorY5.55",
+      "top_quad_xyz": [
+        [
+          21.9,
+          6,
+          -405.1
+        ],
+        [
+          21.9,
+          6,
+          -403.9
+        ],
+        [
+          22.8,
+          5.55,
+          -403.9
+        ],
+        [
+          22.8,
+          5.55,
+          -405.1
+        ]
+      ],
+      "new_bottom_y": 5.55,
+      "reason": "Close loose-prop side gap while compiler slab remains sole underside owner atY5.31"
+    }
+  ],
+  "new_supported_parts": [
+    {
+      "name": "CellGateOutsidePedestalFoot",
+      "bounds_xyz": [
+        21.63,
+        6,
+        -405.34,
+        21.81,
+        6.065,
+        -405.12
+      ],
+      "role": "staff_bluegrey_paint",
+      "bearing_owner": "D02_secondary_engineering_floor",
+      "bearing_y": 6
+    },
+    {
+      "name": "CellGateOutsidePedestalStem",
+      "bounds_xyz": [
+        21.68,
+        6.065,
+        -405.27,
+        21.76,
+        6.98,
+        -405.19
+      ],
+      "role": "staff_zinc",
+      "bearing_owner": "CellGateOutsidePedestalFoot",
+      "bearing_y": 6.065
+    }
+  ],
+  "swept_closed_box_xyz": [
+    21.84,
+    6.03,
+    -406.34,
+    21.895,
+    8.44,
+    -403.88
+  ],
+  "proof_requirement": "Clip all fixed static triangles against the complete continuous translational BoxShape swept prism, with existing tangent guide bearing distinguished from interior penetration. Include all intermediate opening fractions, physical mounting and both target rays.",
+  "no_Game_changes": true,
+  "engine_started": false,
+  "stair_contact_vertices_xyz": [
+    [
+      21.9,
+      6,
+      -405.1
+    ],
+    [
+      21.9,
+      6,
+      -403.9
+    ],
+    [
+      22.8,
+      5.55,
+      -403.9
+    ],
+    [
+      22.8,
+      5.55,
+      -405.1
+    ],
+    [
+      21.9,
+      5.55,
+      -405.1
+    ],
+    [
+      21.9,
+      5.55,
+      -403.9
+    ]
+  ],
+  "stair_contact_faces": [
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      4,
+      3,
+      2,
+      5
+    ],
+    [
+      0,
+      4,
+      5,
+      1
+    ],
+    [
+      0,
+      3,
+      4
+    ],
+    [
+      1,
+      5,
+      2
+    ]
+  ]
+}
