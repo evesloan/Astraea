@@ -46,6 +46,7 @@ var riding := false
 var maximum_route_error := 0.0
 var failure_recorded := false
 var prior_attempts: Array = []
+var ordinary_clearance_checks: Array = []
 
 func _initialize() -> void:
 	started_msec = Time.get_ticks_msec()
@@ -68,14 +69,17 @@ func record_failure(message: String) -> void:
 	push_error("Grand Pool service cart: " + message)
 	quit(1)
 
-func require(condition: bool, message: String = "Grand Pool assertion failed") -> void:
-	if condition: return
+func require(condition: bool, message: String = "Grand Pool assertion failed") -> bool:
+	# Every caller must return onfalse. A failed helper assertion does not
+	# unwind the caller and previously allowed a misleading PASS log line.
+	if condition: return true
 	record_failure(message)
-	assert(condition, message)
+	return false
 
 func tick() -> void:
+	if failure_recorded: return
 	frames += 1
-	require(frames < MAX_TRACKED_FRAMES, "Grand Pool cart exceeded derived frame allowance at " + checkpoint)
+	if not require(frames < MAX_TRACKED_FRAMES, "Grand Pool cart exceeded derived frame allowance at " + checkpoint): return
 
 func write_receipt(status: String, detail: String = "") -> void:
 	if failure_recorded and status != "FAIL": return
@@ -94,6 +98,7 @@ func write_receipt(status: String, detail: String = "") -> void:
 		"tracked_frames": frames, "maximum_frames": MAX_TRACKED_FRAMES, "wall_watchdog_seconds": 1000,
 		"scripted_operator_route_metres": route_operator_metres, "moving_turn_pose_samples": moving_turn_samples,
 		"ordinary_input_peak_mps": ordinary_peak_mps, "ordinary_service_door_smokes": ordinary_smokes,
+		"ordinary_actual_clearance_checks": ordinary_clearance_checks,
 		"actual_loaded_upper_staff_lift_trips": loaded_trips, "maximum_cart_route_error_m": maximum_route_error,
 		"loose_products": 4, "initial_fixture_placements": 1,
 		"limits": "Scripted operator route plus bounded ordinary straight2m/s input; no freehand turning comfort, traffic/species fitting, water physics, stock, local public lift/full five-stop regression, visual acceptance or full programme completion is certified. Collisions, source fittings and the eight-light cap are unchanged."
@@ -105,11 +110,12 @@ func write_receipt(status: String, detail: String = "") -> void:
 		result["cart_angular_velocity"] = [cart.angular_velocity.x, cart.angular_velocity.y, cart.angular_velocity.z]
 	if is_instance_valid(actor): result["operator_world"] = [actor.global_position.x, actor.global_position.y, actor.global_position.z]
 	var file := FileAccess.open(RECEIPT, FileAccess.WRITE)
-	require(file != null, "Grand Pool cart receipt must be writable")
+	if not require(file != null, "Grand Pool cart receipt must be writable"): return
 	file.store_string(JSON.stringify(result, "\t") + "\n")
 	file.close()
 
 func mark(label: String) -> void:
+	if failure_recorded: return
 	checkpoint = label
 	write_receipt("RUNNING")
 	print("GRAND POOL CART CHECKPOINT: ", label)
@@ -119,12 +125,12 @@ func append_pose(path: Array[Vector3], pose: Vector3) -> void:
 
 func line(path: Array[Vector3], a: Vector2, b: Vector2, backing := false) -> void:
 	var delta := b - a
-	require(delta.length() > .001)
+	if not require(delta.length() > .001): return
 	var yaw := atan2(-delta.x, -delta.y) + (PI if backing else 0.0)
 	if not path.is_empty():
 		var previous: Vector3 = path.back()
-		require(Vector2(previous.x, previous.y).distance_to(a) < .001, "Continuous Grand Pool cart route required")
-		require(absf(wrapf(previous.z - yaw, -PI, PI)) < .001, "No fixed-centre heading snap")
+		if not require(Vector2(previous.x, previous.y).distance_to(a) < .001, "Continuous Grand Pool cart route required"): return
+		if not require(absf(wrapf(previous.z - yaw, -PI, PI)) < .001, "No fixed-centre heading snap"): return
 	var count := maxi(1, ceili(delta.length() / .08))
 	for index in range(count + 1):
 		var p := a.lerp(b, float(index) / count)
@@ -139,8 +145,8 @@ func arc(path: Array[Vector3], centre: Vector2, radius: float, start: float, fin
 		var yaw := atan2(-direction.x, -direction.y)
 		if index == 0 and not path.is_empty():
 			var previous: Vector3 = path.back()
-			require(Vector2(previous.x, previous.y).distance_to(p) < .001)
-			require(absf(wrapf(previous.z - yaw, -PI, PI)) < .001)
+			if not require(Vector2(previous.x, previous.y).distance_to(p) < .001): return
+			if not require(absf(wrapf(previous.z - yaw, -PI, PI)) < .001): return
 		append_pose(path, Vector3(p.x, p.y, yaw))
 		if index > 0: moving_turn_samples += 1
 
@@ -204,23 +210,28 @@ func reversed_backing(path: Array[Vector3]) -> Array[Vector3]:
 	return result
 
 func check_load() -> void:
-	require(cart.products.size() == 4)
+	if failure_recorded: return
+	if not require(cart.products.size() == 4): return
 	for product in cart.products:
-		require(product.get_parent() == cart.get_parent(), "Loose products must stay independent of cart/lift")
+		if not require(product.get_parent() == cart.get_parent(), "Loose products must stay independent of cart/lift"): return
 		var p: Vector3 = cart.to_local(product.global_position)
-		require(p.is_finite() and p.y > .8 and p.y < 1.3 and absf(p.x) < .4 and absf(p.z) < .6, "Grand Pool loose product escaped tray: " + str(p))
+		if not require(p.is_finite() and p.y > .8 and p.y < 1.3 and absf(p.x) < .4 and absf(p.z) < .6, "Grand Pool loose product escaped tray: " + str(p)): return
 
 func state(held: bool) -> void:
-	require(cart.global_position.is_finite() and cart.linear_velocity.length() < 8)
-	require(cart.global_basis.y.dot(Vector3.UP) > .90, "Grand Pool cart tipped")
+	if failure_recorded: return
+	if not require(cart.global_position.is_finite() and cart.linear_velocity.length() < 8): return
+	if not require(cart.global_basis.y.dot(Vector3.UP) > .90, "Grand Pool cart tipped"): return
 	var expected_y: float = lift.cabin.global_position.y if riding else floor_y
-	require(absf(cart.global_position.y - expected_y) < .16 and absf(actor.global_position.y - expected_y) < .18, "Cart/operator left supported floor or actual lift: cart=%s actor=%s expectedY=%s checkpoint=%s" % [cart.global_position,actor.global_position,expected_y,checkpoint])
-	require(cart.get_parent().name == "PersistentActors")
-	if held: require(cart.driver == actor and actor.held_interaction == cart.interaction_owner, "Grand Pool physical tether lost")
-	else: require(cart.driver == null and actor.held_interaction == null, "Precise controls require handle release")
+	if not require(absf(cart.global_position.y - expected_y) < .16 and absf(actor.global_position.y - expected_y) < .18, "Cart/operator left supported floor or actual lift: cart=%s actor=%s expectedY=%s checkpoint=%s" % [cart.global_position,actor.global_position,expected_y,checkpoint]): return
+	if not require(cart.get_parent().name == "PersistentActors"): return
+	if held:
+		if not require(cart.driver == actor and actor.held_interaction == cart.interaction_owner, "Grand Pool physical tether lost"): return
+	else:
+		if not require(cart.driver == null and actor.held_interaction == null, "Precise controls require handle release"): return
 	check_load()
 
 func support(at_lift := false) -> void:
+	if failure_recorded: return
 	var space := ship.get_world_3d().direct_space_state
 	var excluded: Array[RID] = probe.controlled_exclusions(actor, cart)
 	var expected_y: float = lift.cabin.global_position.y if riding else floor_y
@@ -233,29 +244,37 @@ func support(at_lift := false) -> void:
 	support_samples += 1
 
 func light_cap() -> void:
+	if failure_recorded: return
 	var budget: Node = ship.get_node("ShipSystems/LocalShadowSourceBudget")
-	require(budget.shadow_source_budget == 8)
+	if not require(budget.shadow_source_budget == 8): return
 	budget.refresh()
 	var active := 0
 	for light in budget.sources:
 		if light.visible and light.shadow_enabled: active += 1
-	require(active <= 8, "Grand Pool service route must retain the existing eight-light cap")
+	if not require(active <= 8, "Grand Pool service route must retain the existing eight-light cap"): return
 
 func sweep(path: Array[Vector3], label: String, at_lift := false) -> void:
+	if failure_recorded: return
 	mark("Y%s %s geometric preflight" % [floor_y,label])
-	for pose in path: probe.check_pose(ship, actor, cart, Vector3(pose.x,floor_y+.03,pose.y), pose.z, floor_y, at_lift)
+	for pose in path:
+		probe.check_pose(ship, actor, cart, Vector3(pose.x,floor_y+.03,pose.y), pose.z, floor_y, at_lift)
+		if failure_recorded: return
 	print("GRAND POOL CART GEOMETRY: ", label, " poses:", path.size(), " all active contacts retained")
 
 func settle(count: int, held: bool, at_lift := false) -> void:
+	if failure_recorded: return
 	actor.velocity = Vector3.ZERO
 	for frame in range(count):
 		await physics_frame
+		if failure_recorded: return
 		waiting_frames += 1
 		tick()
 		state(held)
+		if failure_recorded: return
 		if frame % 6 == 0: support(at_lift)
 
 func drive(path: Array[Vector3], label: String, at_lift := false) -> void:
+	if failure_recorded: return
 	mark(label)
 	for pose in path:
 		var target := Vector3(pose.x,floor_y,pose.y) + Basis(Vector3.UP,pose.z) * Vector3(0,0,DRIVER_OFFSET)
@@ -273,24 +292,30 @@ func drive(path: Array[Vector3], label: String, at_lift := false) -> void:
 			actor.move_and_slide()
 			route_operator_metres += Vector2(actor.global_position.x-old_position.x,actor.global_position.z-old_position.z).length()
 			await physics_frame
+			if failure_recorded: return
 			driven_frames += 1
 			tick()
 			state(true)
+			if failure_recorded: return
 			maximum_route_error = maxf(maximum_route_error, Vector2(cart.global_position.x-pose.x,cart.global_position.z-pose.y).length())
 			if driven_frames % 6 == 0: support(at_lift)
 		if not reached:
 			for index in range(actor.get_slide_collision_count()): print("GRAND POOL CART DRIVER BLOCK: ",actor.get_slide_collision(index).get_collider().get_path())
 			write_receipt("FAIL", "%s driver stalled at%s toward%s; cart%s" % [label,actor.global_position,target,cart.global_position])
-		require(reached, "%s driver stalled at%s toward%s; cart%s" % [label,actor.global_position,target,cart.global_position])
+		if not require(reached, "%s driver stalled at%s toward%s; cart%s" % [label,actor.global_position,target,cart.global_position]): return
 	await settle(75,true,at_lift)
+	if failure_recorded: return
 	var end: Vector3 = path.back()
 	var error := Vector2(cart.global_position.x,cart.global_position.z).distance_to(Vector2(end.x,end.y))
-	require(error < .65, label + " cart missed actual endpoint; error=" + str(error))
+	if not require(error < .65, label + " cart missed actual endpoint; error=" + str(error)): return
 	support(at_lift)
+	if failure_recorded: return
 	light_cap()
+	if failure_recorded: return
 	print("GRAND POOL CART DRIVEN: ",label," cart:",cart.global_position," operator:",actor.global_position)
 
 func released_walk_preflight(target: Vector2) -> void:
+	if failure_recorded: return
 	# Use the actual parked cart/load transforms, not the ideal route endpoint.
 	# Only the current capsule is excluded. The parked cart and loose products,
 	# every door leaf/pocket and all walls/gates remain collision-query targets.
@@ -304,9 +329,12 @@ func released_walk_preflight(target: Vector2) -> void:
 	for index in range(count+1):
 		var p := start.lerp(target,float(index)/count)
 		probe.clear_shape(space,capsule,Transform3D(Basis.IDENTITY,Vector3(p.x,floor_y+.91,p.y)),excluded,"Released operator path at " + str(p))
+		if failure_recorded: return
 
 func walk(target: Vector2, at_lift := false) -> void:
+	if failure_recorded: return
 	released_walk_preflight(target)
+	if failure_recorded: return
 	var reached := false
 	var span := Vector2(actor.global_position.x,actor.global_position.z).distance_to(target)
 	var allowance := ceili(span/3.1*60) + 240
@@ -319,15 +347,17 @@ func walk(target: Vector2, at_lift := false) -> void:
 		actor.velocity = Vector3(speed.x,-.1 if actor.is_on_floor() else actor.velocity.y-9.8/60,speed.z)
 		actor.move_and_slide()
 		await physics_frame
+		if failure_recorded: return
 		walked_frames += 1
 		tick()
 		state(false)
+		if failure_recorded: return
 		if walked_frames % 6 == 0: support(at_lift)
 	if not reached:
 		print("GRAND POOL RELEASED OPERATOR DIAGNOSIS: cart:",cart.global_transform," velocity:",cart.linear_velocity," operator_cart_local:",cart.to_local(actor.global_position))
 		for index in range(actor.get_slide_collision_count()): print("GRAND POOL RELEASED OPERATOR BLOCK: ",actor.get_slide_collision(index).get_collider().get_path())
 		write_receipt("FAIL", "Released operator stalled at%s toward%s" % [actor.global_position,target])
-	require(reached, "Released operator stalled at%s toward%s" % [actor.global_position,target])
+	if not require(reached, "Released operator stalled at%s toward%s" % [actor.global_position,target]): return
 	actor.velocity = Vector3.ZERO
 
 func key(code: Key, pressed: bool) -> void:
@@ -352,16 +382,18 @@ func aim(point: Vector3) -> void:
 	actor.camera.rotation.x = actor.pitch
 
 func press(target: Node3D, point: Vector3, focused := true, held_release := false) -> void:
+	if failure_recorded: return
 	aim(point)
 	if not held_release:
 		if actor.target_from_view() != target: write_receipt("FAIL", "Precise RMB/E target unavailable: " + str(target.get_path()))
-		require(actor.target_from_view() == target, "Precise Grand Pool target unavailable: " + str(target.get_path()))
+		if not require(actor.target_from_view() == target, "Precise Grand Pool target unavailable: " + str(target.get_path())): return
 	actor.velocity = Vector3.ZERO
 	actor.set_physics_process(true)
 	focus(focused)
 	key(KEY_E,true)
 	for frame in range(3):
 		await physics_frame
+		if failure_recorded: return
 		input_frames += 1
 		tick()
 	key(KEY_E,false)
@@ -370,8 +402,10 @@ func press(target: Node3D, point: Vector3, focused := true, held_release := fals
 	actor.velocity = Vector3.ZERO
 
 func grip(yaw: float) -> void:
+	if failure_recorded: return
 	await press(cart.interaction_owner,cart.interaction_owner.global_position)
-	require(cart.driver == actor and actor.held_interaction == cart.interaction_owner)
+	if failure_recorded: return
+	if not require(cart.driver == actor and actor.held_interaction == cart.interaction_owner): return
 	actor.rotation.y = yaw
 	actor.pitch = 0
 	actor.camera.rotation.x = 0
@@ -383,40 +417,53 @@ func door_point(door: Node3D) -> Vector3:
 	return door.leaves[0].global_transform * Vector3(0,1.26,0)
 
 func operate_door(opened: bool, held_yaw: float) -> void:
+	if failure_recorded: return
 	var door := door_for()
-	require(door.visual_file == "AST-DOR-002_wide.glb")
+	if not require(door.visual_file == "AST-DOR-002_wide.glb"): return
 	var before: bool = door.desired_open
 	await press(door,door_point(door),true,true)
+	if failure_recorded: return
 	state(false)
-	require(door.desired_open == before, "Held RMB/E must release rather than remotely toggle door")
+	if failure_recorded: return
+	if not require(door.desired_open == before, "Held RMB/E must release rather than remotely toggle door"): return
 	var parked: Vector3 = cart.global_position
 	var behind := Vector2(actor.global_position.x,actor.global_position.z)
 	# Extra clearance for the actual0.185m northward parked-cart offset inRun001.
 	# Z-461.85 stays0.53m inside the retained upper-street north wall plane.
 	print("GRAND POOL DOOR WALK-AROUND: cart:",cart.global_transform," velocity:",cart.linear_velocity," operator:",actor.global_position)
 	await walk(Vector2(behind.x,-461.85))
+	if failure_recorded: return
 	await walk(Vector2(-55.2,-461.85))
+	if failure_recorded: return
 	await press(door,door_point(door),false)
-	require(door.desired_open == before, "Unfocused E must not operate service door")
+	if failure_recorded: return
+	if not require(door.desired_open == before, "Unfocused E must not operate service door"): return
 	await press(door,door_point(door))
-	require(door.desired_open == opened, "Released focused RMB/E must operate actual wide door")
+	if failure_recorded: return
+	if not require(door.desired_open == opened, "Released focused RMB/E must operate actual wide door"): return
 	var reached := false
 	for frame in range(180):
 		await physics_frame
+		if failure_recorded: return
 		waiting_frames += 1
 		tick()
 		state(false)
+		if failure_recorded: return
 		if frame % 6 == 0: support()
 		if (opened and door.open_fraction > .999) or (not opened and door.open_fraction < .001):
 			reached = true
 			break
-	require(reached, "Service door failed bounded physical movement")
-	require(cart.global_position.distance_to(parked) < .20, "Released cart drifted during door control")
+	if not require(reached, "Service door failed bounded physical movement"): return
+	if not require(cart.global_position.distance_to(parked) < .20, "Released cart drifted during door control"): return
 	await walk(Vector2(behind.x,-461.85))
+	if failure_recorded: return
 	await walk(behind)
+	if failure_recorded: return
 	await grip(held_yaw)
+	if failure_recorded: return
 
 func ordinary_door_smoke() -> void:
+	if failure_recorded: return
 	mark("Y%s ordinary2m/s W across actual wide service door" % floor_y)
 	actor.rotation.y = -PI/2
 	actor.pitch = 0
@@ -427,10 +474,13 @@ func ordinary_door_smoke() -> void:
 	var local_peak := 0.0
 	for frame in range(300):
 		await physics_frame
+		if failure_recorded: return
 		input_frames += 1
 		tick()
 		state(true)
+		if failure_recorded: return
 		support()
+		if failure_recorded: return
 		local_peak = maxf(local_peak,Vector2(actor.velocity.x,actor.velocity.z).length())
 		if actor.global_position.x >= -54.57:
 			reached = true
@@ -438,40 +488,63 @@ func ordinary_door_smoke() -> void:
 	key(KEY_W,false)
 	for frame in range(90):
 		await physics_frame
+		if failure_recorded: return
 		input_frames += 1
 		tick()
 		state(true)
+		if failure_recorded: return
 		if frame % 6 == 0: support()
 	actor.set_physics_process(false)
 	actor.velocity = Vector3.ZERO
-	require(reached, "Ordinary2m/s W stalled at actual wide service door")
-	require(local_peak > 1.95 and local_peak < 2.01, "Smoke must exercise real2m/s held-cart input")
-	require(cart.global_position.x > -53.15 and cart.global_position.x < -52.65, "Loaded cart must actually clear the open service door and stop before the baffle")
+	if not require(reached, "Ordinary2m/s W stalled at actual wide service door"): return
+	if not require(local_peak > 1.95 and local_peak < 2.01, "Smoke must exercise real2m/s held-cart input"): return
+	# Geometry, not an arbitrary cart-centre stopping window, decides clearance.
+	# Include every actual cart contact and all four independent product shapes.
+	var loaded_bounds: Vector2 = probe.actual_loaded_cart_x_bounds(cart)
+	var fitting_bounds: Vector2 = probe.collision_world_x_bounds(door_for())
+	var passed_door_clearance := loaded_bounds.x-fitting_bounds.y
+	var before_baffle_clearance := -51.2-loaded_bounds.y
+	ordinary_peak_mps = maxf(ordinary_peak_mps,local_peak)
+	ordinary_clearance_checks.append({"floor_y":floor_y,"peak_mps":local_peak,"loaded_world_x":[loaded_bounds.x,loaded_bounds.y],"actual_fitting_world_x":[fitting_bounds.x,fitting_bounds.y],"baffle_west_face_x":-51.2,"past_fitting_clearance_m":passed_door_clearance,"before_baffle_clearance_m":before_baffle_clearance,"required_query_margin_m":.001})
+	if not require(loaded_bounds.is_finite() and fitting_bounds.is_finite(), "Actual loaded-cart/fitting geometry bounds unavailable"): return
+	if not require(passed_door_clearance > .001 and before_baffle_clearance > .001, "Actual loaded cart/products must clear the complete door fitting and remain before the baffle: " + str(ordinary_clearance_checks.back())): return
 	ordinary_peak_mps = maxf(ordinary_peak_mps,local_peak)
 	ordinary_smokes += 1
 	print("GRAND POOL ORDINARY INPUT PASS: Y",floor_y," peak:",local_peak," cart:",cart.global_position)
 
 func service_round_trip(outgoing: Array[Vector3], returning: Array[Vector3], vestibule: Array[Vector3], back_home: Array[Vector3], turn: Array[Vector3]) -> void:
+	if failure_recorded: return
 	mark("Y%s upper-street outbound preflight" % floor_y)
 	sweep(outgoing,"upper-street outbound")
 	await drive(outgoing,"Y%s upper-street outbound" % floor_y)
+	if failure_recorded: return
 	await operate_door(true,-PI/2)
+	if failure_recorded: return
 	var backing: Array[Vector3] = []
 	line(backing,Vector2(-46.6,-458),Vector2(-48,-458),true)
 	var recovering: Array[Vector3] = []
 	line(recovering,Vector2(-48,-458),Vector2(-46.6,-458))
 	for entry in [[vestibule,"screened vestibule forward"],[backing,"1.4m backing recovery"],[recovering,"forward recovery"],[turn,"bounded programme turnaround"],[back_home,"screened vestibule forward return"],[returning,"upper-street forward return"]]: sweep(entry[0],entry[1])
 	await ordinary_door_smoke()
+	if failure_recorded: return
 	await drive(vestibule,"Y%s screened vestibule into actual programme" % floor_y)
+	if failure_recorded: return
 	await drive(backing,"Y%s 1.4m public-mouth backing recovery" % floor_y)
+	if failure_recorded: return
 	await drive(recovering,"Y%s public-mouth forward recovery" % floor_y)
+	if failure_recorded: return
 	await drive(turn,"Y%s bounded moving programme turnaround" % floor_y)
+	if failure_recorded: return
 	await drive(back_home,"Y%s screened vestibule forward return" % floor_y)
+	if failure_recorded: return
 	await operate_door(false,PI/2)
+	if failure_recorded: return
 	await drive(returning,"Y%s upper-street forward return to staff lift" % floor_y)
-	require(not door_for().desired_open and door_for().open_fraction < .001)
+	if failure_recorded: return
+	if not require(not door_for().desired_open and door_for().open_fraction < .001): return
 
 func wait_lift(goal: int, carrying: bool) -> void:
+	if failure_recorded: return
 	var travel: float = absf(lift.floor_heights[goal]-lift.cabin.position.y)
 	var allowance := ceili((travel/lift.maximum_speed + lift.maximum_speed/lift.acceleration + 2.0/.75 + 4.0)*60)
 	var reached := false
@@ -481,79 +554,107 @@ func wait_lift(goal: int, carrying: bool) -> void:
 		actor.set_physics_process(true)
 	for frame in range(allowance):
 		await physics_frame
+		if failure_recorded: return
 		waiting_frames += 1
 		tick()
 		state(false)
-		require(absf(lift.travel_velocity) <= lift.maximum_speed+.001)
+		if failure_recorded: return
+		if not require(absf(lift.travel_velocity) <= lift.maximum_speed+.001): return
 		if lift.phase == "moving":
-			require(lift.cabin_gate.open_fraction < .001)
-			for gate in lift.landing_gates: require(gate.open_fraction < .001, "All existing staff landing gates must stay closed during actual transfer")
-			require(absf(lift.travel_velocity-previous_speed) < .025)
+			if not require(lift.cabin_gate.open_fraction < .001): return
+			for gate in lift.landing_gates:
+				if not require(gate.open_fraction < .001, "All existing staff landing gates must stay closed during actual transfer"): return
+			if not require(absf(lift.travel_velocity-previous_speed) < .025): return
 		previous_speed = lift.travel_velocity
 		if frame % 6 == 0: support(carrying)
 		if lift.current_floor == goal and lift.phase == "idle":
 			reached = true
 			break
 	if not reached: write_receipt("FAIL", "Staff lift stalled: phase%s goal%s current%s" % [lift.phase,goal,lift.current_floor])
-	require(reached, "Staff lift failed bounded real call/loaded transfer")
+	if not require(reached, "Staff lift failed bounded real call/loaded transfer"): return
 	if carrying:
 		floor_y = lift.cabin.global_position.y
 		riding = false
 		actor.set_physics_process(false)
 		actor.velocity = Vector3.ZERO
 		loaded_trips += 1
-	require(lift.cabin_gate.open_fraction > .999 and lift.landing_gates[goal].open_fraction > .999)
+	if not require(lift.cabin_gate.open_fraction > .999 and lift.landing_gates[goal].open_fraction > .999): return
 
 func call_wet_staff_lift() -> void:
+	if failure_recorded: return
 	mark("Released precise D08_WET staff lift call")
 	var button: Node3D = lift.get_node("D08_WET_forward_staff_lift_call")
 	var old_goal: int = lift.destination_floor
 	await press(button,button.global_position,true,true)
+	if failure_recorded: return
 	state(false)
-	require(lift.destination_floor == old_goal, "Held RMB/E must release without remotely calling lift")
+	if failure_recorded: return
+	if not require(lift.destination_floor == old_goal, "Held RMB/E must release without remotely calling lift"): return
 	var parked: Vector3 = cart.global_position
 	var behind := Vector2(actor.global_position.x,actor.global_position.z)
 	await walk(Vector2(-22,-493.12))
+	if failure_recorded: return
 	await walk(Vector2(-22,-492.9))
+	if failure_recorded: return
 	await press(button,button.global_position,false)
-	require(lift.destination_floor == old_goal)
+	if failure_recorded: return
+	if not require(lift.destination_floor == old_goal): return
 	await press(button,button.global_position)
-	require(lift.destination_floor == 3)
+	if failure_recorded: return
+	if not require(lift.destination_floor == 3): return
 	await wait_lift(3,false)
-	require(cart.global_position.distance_to(parked) < .20, "Released cart moved during actual staff lift call")
+	if failure_recorded: return
+	if not require(cart.global_position.distance_to(parked) < .20, "Released cart moved during actual staff lift call"): return
 	await walk(Vector2(-22,-493.12))
+	if failure_recorded: return
 	await walk(behind)
+	if failure_recorded: return
 	await grip(PI)
+	if failure_recorded: return
 
 func upper_transfer(goal: int) -> void:
+	if failure_recorded: return
 	mark("Y%s actual loaded staff lift boarding/transfer to index%s" % [floor_y,goal])
-	require(lift.current_floor == (3 if floor_y < 50 else 4) and lift.phase == "idle")
+	if not require(lift.current_floor == (3 if floor_y < 50 else 4) and lift.phase == "idle"): return
 	var approach: Array[Vector3] = []
 	arc(approach,Vector2(-22.5,-491.5),1.5,0,PI/2)
 	line(approach,Vector2(-22.5,-490),Vector2(-25.6,-490))
 	var exiting := reversed_backing(approach)
 	sweep(approach,"actual staff lift curved boarding",true)
 	await drive(approach,"actual curved loaded staff lift boarding",true)
+	if failure_recorded: return
 	await press(cart.interaction_owner,cart.interaction_owner.global_position,true,true)
+	if failure_recorded: return
 	state(false)
-	require(not lift.cabin_gate.threshold_occupied() and not lift.landing_gates[lift.current_floor].threshold_occupied(), "Actual loose cart/operator must fully clear both gate planes before departure")
+	if failure_recorded: return
+	if not require(not lift.cabin_gate.threshold_occupied() and not lift.landing_gates[lift.current_floor].threshold_occupied(), "Actual loose cart/operator must fully clear both gate planes before departure"): return
 	var behind := Vector2(actor.global_position.x,actor.global_position.z)
 	var button: Node3D = lift.cabin.get_node("forward_staff_cabin_" + ("D09" if goal == 4 else "D08_WET"))
 	await walk(Vector2(behind.x,-491.10),true)
+	if failure_recorded: return
 	await walk(Vector2(button.global_position.x,-491.10),true)
+	if failure_recorded: return
 	await press(button,button.global_position,false)
-	require(lift.phase == "idle", "Unfocused E must not select upper staff destination")
+	if failure_recorded: return
+	if not require(lift.phase == "idle", "Unfocused E must not select upper staff destination"): return
 	await press(button,button.global_position)
-	require(lift.destination_floor == goal and lift.phase == "closing")
+	if failure_recorded: return
+	if not require(lift.destination_floor == goal and lift.phase == "closing"): return
 	await wait_lift(goal,true)
+	if failure_recorded: return
 	await walk(Vector2(behind.x,-491.10),true)
+	if failure_recorded: return
 	await walk(behind,true)
+	if failure_recorded: return
 	await grip(PI/2)
+	if failure_recorded: return
 	sweep(exiting,"actual loaded staff lift backing exit",true)
 	await drive(exiting,"actual loaded staff lift backing exit to supported upper lobby",true)
-	require(Vector2(cart.global_position.x+21,cart.global_position.z+491.5).length() < .65)
+	if failure_recorded: return
+	if not require(Vector2(cart.global_position.x+21,cart.global_position.z+491.5).length() < .65): return
 
 func lobby_handle_walkaround() -> void:
+	if failure_recorded: return
 	# Additional real handle-around reorientation after backing out of the cabin.
 	# The planned cart centre is stationary here, but the operator walks1.62m
 	# radius; no cart angle/position is assigned. This is not counted as a moving
@@ -562,10 +663,13 @@ func lobby_handle_walkaround() -> void:
 	for index in range(101): append_pose(path,Vector3(-21,-491.5,lerpf(PI,0,float(index)/100)))
 	sweep(path,"bounded physical lobby handle walk-around")
 	await drive(path,"bounded physical upper-lobby handle walk-around")
+	if failure_recorded: return
 
 func run() -> void:
-	require(FileAccess.get_sha256(CONTRACT) == CONTRACT_SHA)
-	for file in MODEL_PINS: require(FileAccess.get_sha256("res://assets/models/"+str(file)) == MODEL_PINS[file], "Frozen model pin changed: "+str(file))
+	if failure_recorded: return
+	if not require(FileAccess.get_sha256(CONTRACT) == CONTRACT_SHA): return
+	for file in MODEL_PINS:
+		if not require(FileAccess.get_sha256("res://assets/models/"+str(file)) == MODEL_PINS[file], "Frozen model pin changed: "+str(file)): return
 	var main: Node = (load("res://scenes/main.tscn") as PackedScene).instantiate()
 	root.add_child(main)
 	for frame in range(150): await physics_frame
@@ -574,12 +678,12 @@ func run() -> void:
 	cart = ship.find_child("CustodialCart",true,false)
 	lift = ship.find_child("ForwardStaffLift",true,false)
 	built = ship.find_child("GrandPoolOrchardSection_WIP",true,false)
-	require(lift.persistent_id == &"forward_staff_lift_001" and lift.floor_heights == [0.0,6.0,12.0,46.2,52.5])
-	require(lift.stop_ids == ["D01","D02","D03","D08_WET","D09"] and lift.cabin_file == "AST-CIR-003_five_stop.glb")
-	require(lift.current_floor == 0 and lift.phase == "idle")
+	if not require(lift.persistent_id == &"forward_staff_lift_001" and lift.floor_heights == [0.0,6.0,12.0,46.2,52.5]): return
+	if not require(lift.stop_ids == ["D01","D02","D03","D08_WET","D09"] and lift.cabin_file == "AST-CIR-003_five_stop.glb"): return
+	if not require(lift.current_floor == 0 and lift.phase == "idle"): return
 	var local_products: Array[Vector3] = []
 	for product in cart.products: local_products.append(cart.to_local(product.global_position))
-	require(local_products.size() == 4)
+	if not require(local_products.size() == 4): return
 	actor.set_physics_process(false)
 	# Sole initial fixture placement. Nothing below resets these rigid bodies.
 	cart.global_position = Vector3(-21,46.24,-491.5)
@@ -596,30 +700,45 @@ func run() -> void:
 	actor.rotation.y = 0
 	actor.velocity = Vector3.ZERO
 	await settle(90,false)
+	if failure_recorded: return
 	mark("Loaded wet-staff fixture settled once on real compiler floor")
 	light_cap()
+	if failure_recorded: return
 	var outgoing := street_outbound()
 	var returning := street_return()
 	var vestibule := vestibule_outbound()
 	var back_home := vestibule_return()
 	var turn := receiving_turn()
 	await press(cart.interaction_owner,cart.interaction_owner.global_position,false)
-	require(cart.driver == null, "Unfocused E must not grip cart")
+	if failure_recorded: return
+	if not require(cart.driver == null, "Unfocused E must not grip cart"): return
 	await grip(0)
+	if failure_recorded: return
 	await service_round_trip(outgoing,returning,vestibule,back_home,turn)
+	if failure_recorded: return
 	await call_wet_staff_lift()
+	if failure_recorded: return
 	await upper_transfer(4)
+	if failure_recorded: return
 	await lobby_handle_walkaround()
+	if failure_recorded: return
 	await service_round_trip(outgoing,returning,vestibule,back_home,turn)
+	if failure_recorded: return
 	await upper_transfer(3)
+	if failure_recorded: return
 	await press(cart.interaction_owner,cart.interaction_owner.global_position,true,true)
+	if failure_recorded: return
 	state(false)
+	if failure_recorded: return
 	support()
+	if failure_recorded: return
 	light_cap()
-	require(ordinary_smokes == 2 and loaded_trips == 2 and moving_turn_samples > 500)
+	if failure_recorded: return
+	if not require(ordinary_smokes == 2 and loaded_trips == 2 and moving_turn_samples > 500): return
 	checkpoint = "both upper service routes returned forward; actual loaded staff lift up/down complete"
 	write_receipt("PASS")
 	print("GRAND POOL SERVICE CART PASS: actual four-loose-product cart through both upper streets and screened vestibules; ordinary2m/s W across both wide service doors; precise RMB/E release/control/regrip;1.4m backing/forward recovery; bounded moving programme turn and forward-facing returns; physical curved boarding, two loaded staff-lift transfers and backing exits; ",support_samples," actual wheel/operator support samples. Scripted/freehand comfort and full programme acceptance remain separate.")
 	main.queue_free()
 	await process_frame
+	if failure_recorded: return
 	quit(0)

@@ -289,7 +289,11 @@
     "provided_by_asset": true,
     "void_exemption_required": false,
     "current_compiler_region_AABB_overlap_count": 0,
-    "required_next_evidence": "One source-owned ground surface, source/export manifest and collision ownership, or exactly one compiler ground-floor region; not both. Do not claim extant floor support."
+    "required_next_evidence": "One source-owned ground surface, source/export manifest and collision ownership, or exactly one compiler ground-floor region; not both. Do not claim extant floor support.",
+    "surface_partition_required": [
+      "Flat base must exclude coplanar portions of source rake/gangway footprint and raised stage/ramp surfaces as needed to avoid duplicate walkable slabs.",
+      "A retained substrate may remain structural only, never credited as a second accessible walkable floor below the authored seating surface."
+    ]
   },
   "source_boundary_note": "Shape rules define approved containment and floor-part partition, not mesh generation. Raked seat/gangway surfaces need true elevations and actual surface manifest; nominal datum region accounts ownership only and cannot certify inclined collisions."
 }

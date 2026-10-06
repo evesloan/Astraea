@@ -24,6 +24,7 @@ commands = [('d17_connected_access', ['--script', 'res://tests/validate_d17_conn
 commands = [('lighting_budget', ['--script', 'res://tests/validate_lighting_budget.gd'])] + commands
 commands = [('grand_pool_access', ['--script', 'res://tests/validate_grand_pool_access.gd'])] + commands
 commands = [('grand_pool_service_cart', ['--script', 'res://tests/validate_grand_pool_service_cart.gd'])] + commands
+commands += [('grand_pool_local_lift', ['--script', 'res://tests/validate_grand_pool_local_lift.gd']), ('forward_staff_extended_lift', ['--script', 'res://tests/validate_forward_staff_extended_lift.gd'])]
 commands.sort(key=lambda entry: entry[0] != 'import')
 if '--only' in sys.argv:
     requested=sys.argv[sys.argv.index('--only')+1]
@@ -48,12 +49,13 @@ for label,args in commands:
     if label == 'd17_connected_cart': frame_budget='24000'
     if label == 'grand_pool_access': frame_budget='30000'
     if label == 'grand_pool_service_cart': frame_budget='60000'
+    if label == 'forward_staff_extended_lift': frame_budget='12000'
     # Fixed60 advances the same60Hz simulation without wall-clock waiting.
     # Import and graphical review retain their separate original workflows.
     clock_args=[] if realtime or label=='import' else ['--fixed-fps','60']
     started=time.perf_counter()
     process=subprocess.Popen(['godot','--headless','--path',str(root),'--quit-after',frame_budget,*clock_args,*args],env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
-    timeout=threading.Timer(1000 if label=='grand_pool_service_cart' else 240 if label in ['d17_connected_cart','grand_pool_access'] else 600 if label=='aft_crown_platform_cart' else 300 if label=='aft_crown_platform_access' else 900 if label=='bridge_enclosure_cart' else 240 if label=='bridge_enclosure_access' else 180 if label in ["star_atlas","bridge_platform_cart"] else 90,process.kill);timeout.daemon=True;timeout.start()
+    timeout=threading.Timer(1000 if label=='grand_pool_service_cart' else 240 if label in ['d17_connected_cart','grand_pool_access'] else 600 if label=='aft_crown_platform_cart' else 300 if label=='aft_crown_platform_access' else 900 if label=='bridge_enclosure_cart' else 240 if label=='bridge_enclosure_access' else 180 if label in ["star_atlas","bridge_platform_cart","forward_staff_extended_lift"] else 90,process.kill);timeout.daemon=True;timeout.start()
     lines=[];errors=[]
     for line in process.stdout:
         lines.append(line);print(line,end='',flush=True)
