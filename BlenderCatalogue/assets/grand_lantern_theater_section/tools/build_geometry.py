@@ -116,8 +116,8 @@ for tier,deck,y,rows,rstart in [('stalls','D11',69.5,18,20),('first_gallery','D1
   for i,(p,offsets,part_kind) in enumerate(ramp_patches):
    heights=[y+h for h in offsets]
    name=f'{deck}_rear_access_ramp_{i}'
-   vs=[[x,h,z] for (x,z),h in zip(p,heights)]
-   objects.append(dict(name=name,vertices_world=vs,faces=[[0,2,1],[0,3,2]],role='walkable_authored',collision_owner='AST-CUL-005',surface_region=f['region_id'],material_family='hospitality_ivory',ramp_part_kind=part_kind))
+   vs=[[x,h,z] for (x,z),h in zip(p,heights)]+[[x,h-.25,z] for (x,z),h in zip(p,heights)]
+   objects.append(dict(name=name,vertices_world=vs,faces=[[0,2,1],[0,3,2],[4,5,6],[4,6,7],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]],role='walkable_authored',collision_owner='AST-CUL-005',surface_region=f['region_id'],material_family='hospitality_ivory',ramp_part_kind=part_kind))
    f['parts'].append(dict(boundary_xz=p,vertex_top_y=heights,top_y=(heights[0] if len(set(heights))==1 else None),ramp_part_kind=part_kind));f['objects'].append(name)
 
 # D11 compiler datum is deliberately not exported, solely diagnostic source preview.
@@ -138,8 +138,11 @@ for x in [-105,-47]:
 for a in range(0,360,6):
  p=[[-76+rx*math.sin(math.radians(t)),-207+rz*math.cos(math.radians(t))] for rx,rz,t in [(23,14,a),(24,15,a),(24,15,a+6),(23,14,a+6)]]
  prism(f'canopy_lantern_ring_{a:03}',p,91.35,.35,'static_structure','hospitality_bronze')
-fixtures=[dict(id=f'lantern_sconce_{i:02}',position_world=[x,82 if i%2 else 74,-207 if i<4 else -155],family='AST-STF-006',aim_world=[0,-1,0],runtime_light='pending_source_export_and_lighting_review') for i,x in enumerate([-104,-48,-104,-48,-104,-48])]
-fixtures += [dict(id='stage_cue_worklight',position_world=[-54,71,-249],family='AST-CUL-004',aim_world=[0,-.3,-1],runtime_light='not_instantiated')]
+fixtures=[]
+for i,(x,z,h) in enumerate([(-104.35,-160,74),(-47.65,-160,74),(-104.35,-160,82),(-47.65,-160,82),(-104.35,-149,74),(-47.65,-149,82)]):
+ box(f'lantern_fixture_mount_{i:02}',[x-.1,z-.12,x+.1,z+.12],h+.15,.3,'fixture_mount','hospitality_bronze')
+ fixtures.append(dict(id=f'lantern_sconce_{i:02}',position_world=[x,h,z],family='AST-STF-006',source_support=f'Face of rear lantern pier atZ{z}',aim_world=[0,-1,-.15],runtime_light='pending_source_export_and_lighting_review'))
+fixtures.append(dict(id='stage_cue_worklight',position_world=[-60,70.1,-250],family='AST-CUL-004',source_support='Stage top70.1',aim_world=[0,-.3,-1],runtime_light='not_instantiated'))
 placements=proposal['seat_proposals']
 for seat in placements:
  if seat['tier']=='first_gallery' and seat['kind']=='rear_transfer_replaceable_place':
@@ -150,6 +153,9 @@ assert len(placements)==2200 and len({s['id'] for s in placements})==2200
 assert len(surfaces)==8 and set(s['region_id'] for s in surfaces)==set(s['region_id'] for s in policy['whitelist'])
 from extend_architecture import extend
 extend(objects,surfaces,box,prism,write,ROOT)
+material_aliases={'hospitality_ivory':'ivory_enamel','hospitality_bronze':'champagne_metal','cultural_red':'auditorium_amber_velvet','dark_stage':'dark_rubber','suncorp_service':'staff_bluegrey_paint','gallery_glass':'gallery_glass'}
+for obj in objects: obj['material_family']=material_aliases[obj['material_family']]
+write(ROOT/'contracts/material_reuse_contract.json',dict(materials=material_aliases,sources={'terrace_architecture/source/AST-ARC-001.blend':['ivory_enamel','champagne_metal','dark_rubber','gallery_glass'],'auditorium_use/source/AST-CUL-003.blend':['auditorium_amber_velvet'],'auditorium_use/source/AST-CUL-004.blend':['staff_bluegrey_paint']},policy='Read retained material datablocks only; no new palette or shared edits. Verify source hashes before controlled Blender slot.'))
 geometry=dict(schema=1,catalogue_id='AST-CUL-005',coordinate_system='world XYZ metres; Blender adapter maps (X,-Z,Y)',status='PURE_SOURCE_GEOMETRY_NO_ENGINE_ACCEPTANCE',objects=objects)
 write(ROOT/'source/geometry.json',geometry); write(ROOT/'contracts/surface_manifest.json',dict(schema=2,partition_policy='Parent approved source revision: return union subtracts actual fan rake and owns 1:12 rear ramp in its original bounds; eight IDs retained; shared compiler pending',surfaces=surfaces,D11='Compiler owns flat base; preview excluded; asset owns rake/stage/ramp, compiler must partition base against those footprints'))
 write(ROOT/'contracts/place_instances.json',dict(source_family='AST-CUL-003',source_sha256=chair_hash,instance_only=True,seat_use_controller=False,places=placements))

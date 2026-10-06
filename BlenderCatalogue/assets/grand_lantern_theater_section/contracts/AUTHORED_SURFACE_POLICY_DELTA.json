@@ -1,0 +1,90 @@
+{
+  "status": "NEW_SOURCE_POLICY_DELTA_PARENT_APPROVED_IN_THREAD_NOT_SHARED_COMPILER",
+  "eight_ids": [
+    "D12_theater_gallery_seating",
+    "D12_theater_rear_public_returns",
+    "D12_theater_foyer_landings",
+    "D12_theater_stair_upper_landing",
+    "D13_theater_gallery_seating",
+    "D13_theater_rear_public_returns",
+    "D13_theater_foyer_landings",
+    "D13_theater_stair_upper_landing"
+  ],
+  "gallery_delta": "Keep actual stepped annular fan instead of subtracting rear return. Upper inner19.5 outer46.4 angles+-54.",
+  "return_delta": "Original union minus exact fan, minus real ramp/plateau/transverse approaches; insert matching elevated surfaces and narrow secondary thresholds.",
+  "foyer_delta": "Original foyer with full stair/shaft holes, plus narrow main threshold and fixed gate sill only.",
+  "upper_stair_landing_delta": "Unchanged exact original rectangle",
+  "thresholds": {
+    "main_upper_foyer": {
+      "rectangle": [
+        -35,
+        -128.6,
+        -34,
+        -123.4
+      ],
+      "decks": [
+        "D12",
+        "D13"
+      ],
+      "parent_approved": true
+    },
+    "secondary_upper_returns": {
+      "rectangle": [
+        -35,
+        -172.7,
+        -34,
+        -169.3
+      ],
+      "decks": [
+        "D12",
+        "D13"
+      ],
+      "parent_approved": true
+    },
+    "fixed_lift_gate_sills": {
+      "rectangle": [
+        -43.2,
+        -124,
+        -39.8,
+        -123.5
+      ],
+      "decks": [
+        "D11",
+        "D12",
+        "D13"
+      ],
+      "basis": "Bounded internal threshold-gap permission; source fixed sill ends exactly at reserved dynamic5x5 platform front, no positive-area overlap",
+      "cabin_reserved_rectangle": [
+        -44,
+        -123.5,
+        -39,
+        -118.5
+      ],
+      "dynamic_cabin": "Parent fitted derivative only; source floor not fabricated"
+    },
+    "ground_compiler_threshold_extensions": [
+      [
+        -35,
+        -128.6,
+        -34,
+        -123.4
+      ],
+      [
+        -35,
+        -172.7,
+        -34,
+        -169.3
+      ],
+      [
+        -35,
+        -258.7,
+        -34,
+        -255.3
+      ]
+    ],
+    "external_support": "X>-34 remains parent owned and unbuilt; no source collision beyond allocation"
+  },
+  "D11": "Compiler preview only for flat base; source rake/stage/ramp/stairs/sill ownership must be partitioned before integration.",
+  "full_source_manifest_sha256": "f215b6a1c3a586f8fd3a329bf852afd9b3fd291cda10aaac5260d62a7b270e33",
+  "geometry_sha256": "d2c7b91144628d5326b8e321666985b90d91db34e73b47ecfa69cc09d8d95234"
+}

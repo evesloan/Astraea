@@ -5,7 +5,8 @@ from mathutils import Vector
 R=Path(__file__).resolve().parents[1];D=json.loads((R/'review/RENDER_PLAN.json').read_text())
 for path,sha in D['frozen_inputs'].items():assert hashlib.sha256((R/path).read_bytes()).hexdigest()==sha,'Frozen input changed: '+path
 bpy.ops.wm.open_mainfile(filepath=str(R/'source/AST-STF-010.blend'))
-scene=bpy.context.scene;scene.render.engine='CYCLES';scene.cycles.device='CPU';scene.cycles.samples=32;scene.render.threads_mode='FIXED';scene.render.threads=2;scene.render.resolution_x=800;scene.render.resolution_y=500;scene.render.resolution_percentage=100;scene.render.image_settings.file_format='PNG';scene.render.film_transparent=False
+scene=bpy.context.scene;scene.render.engine='CYCLES';scene.cycles.device='CPU';scene.cycles.samples=32;scene.cycles.use_denoising=False;scene.render.threads_mode='FIXED';scene.render.threads=2;scene.render.resolution_x=800;scene.render.resolution_y=500;scene.render.resolution_percentage=100;scene.render.image_settings.file_format='PNG';scene.render.film_transparent=False
+for layer in scene.view_layers: layer.cycles.use_denoising=False
 # All original source geometry stays visible; no wall/roof removal for camera staging.
 source_meshes=[o for o in scene.objects if o.type=='MESH'];assert len(source_meshes)==8407
 for o in source_meshes:o.hide_render=False;o.hide_viewport=False;o.hide_set(False)
@@ -31,7 +32,8 @@ for datum in datums:
  lamp=bpy.data.objects.new(data.name,data);preview.objects.link(lamp);lamp.location=datum.location.copy();lamp.location.z=float(datum['lowest_fixture_y'])-.015;lamp.rotation_euler=(0,0,0);lamp['source_datum']=datum.name;lamp['source_housing']=datum['source_housing'];lamp['source_only']=True
 # Blender area light local-Z downward is Godot-world-Y downward.
 camdata=bpy.data.cameras.new('SOURCE_REVIEW_CAMERA');camdata.lens=25;camdata.clip_start=.08;camdata.clip_end=180;camera=bpy.data.objects.new(camdata.name,camdata);preview.objects.link(camera);scene.camera=camera
-scene.render.use_stamp=True;scene.render.use_stamp_note=True;scene.render.stamp_note='SOURCE ONLY | APPROVED SUPPORT PREVIEW | NO RUNTIME ADOPTION';scene.render.use_stamp_date=False;scene.render.use_stamp_time=False;scene.render.use_stamp_render_time=False;scene.render.use_stamp_frame=False;scene.render.use_stamp_scene=False;scene.render.use_stamp_camera=False;scene.render.use_stamp_filename=False;scene.render.stamp_font_size=12
+assert 'stamp_note_text' in scene.render.bl_rna.properties,'Current Blender RNA lacks verified stamp_note_text API'
+scene.render.use_stamp=True;scene.render.use_stamp_note=True;scene.render.stamp_note_text='SOURCE ONLY | APPROVED SUPPORT PREVIEW | NO RUNTIME ADOPTION';scene.render.use_stamp_date=False;scene.render.use_stamp_time=False;scene.render.use_stamp_render_time=False;scene.render.use_stamp_frame=False;scene.render.use_stamp_scene=False;scene.render.use_stamp_camera=False;scene.render.use_stamp_filename=False;scene.render.stamp_font_size=12
 for row in D['cameras']:
  x,y,z=row['eye_xyz'];tx,ty,tz=row['target_xyz'];camera.location=(x,-z,y);target=Vector((tx,-tz,ty));camera.rotation_euler=(target-camera.location).to_track_quat('-Z','Y').to_euler();scene.render.filepath=str(R/'review'/('SOURCE_ONLY_'+row['name']+'.png'));bpy.ops.render.render(write_still=True)
 # No save_as_mainfile or export call exists. Verify original frozen bytes survived the transient preview.

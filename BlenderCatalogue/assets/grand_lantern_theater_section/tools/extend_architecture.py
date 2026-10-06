@@ -10,7 +10,7 @@ def extend(objects,surfaces,box,prism,write,root):
    f=next(f for f in surfaces if f['region_id']==sid);f['parts'].append(dict(boundary_xz=p,top_y=y,threshold_delta=name));f['objects'].append(n)
  # Ground fixed sill is source-owned once; compiler excludes it and moving cabin footprint.
  prism('D11_lift_fixed_gate_sill',[[-43.2,-124],[-39.8,-124],[-39.8,-123.5],[-43.2,-123.5]],69.5,.25,'walkable_authored',surface='D11_lift_gate_sill')
- write(root/'contracts/exact_threshold_deltas.json',dict(main_upper_foyer=dict(rectangle=[-35,-128.6,-34,-123.4],decks=['D12','D13'],parent_approved=True),secondary_upper_returns=dict(rectangle=[-35,-172.7,-34,-169.3],decks=['D12','D13'],parent_approved=True),fixed_lift_gate_sills=dict(rectangle=[-43.2,-124,-39.8,-123.5],decks=['D11','D12','D13'],basis='Bounded internal threshold-gap permission; source fixed sill ends exactly at reserved dynamic5x5 platform front, no positive-area overlap',cabin_reserved_rectangle=[-44,-123.5,-39,-118.5],dynamic_cabin='Parent fitted derivative only; source floor not fabricated'),ground_compiler_threshold_extensions=[[-35,-128.6,-34,-123.4],[-35,-172.7,-34,-169.3],[-36,-258.7,-34,-255.3]],external_support='X>-34 remains parent owned and unbuilt; no source collision beyond allocation'))
+ write(root/'contracts/exact_threshold_deltas.json',dict(main_upper_foyer=dict(rectangle=[-35,-128.6,-34,-123.4],decks=['D12','D13'],parent_approved=True),secondary_upper_returns=dict(rectangle=[-35,-172.7,-34,-169.3],decks=['D12','D13'],parent_approved=True),fixed_lift_gate_sills=dict(rectangle=[-43.2,-124,-39.8,-123.5],decks=['D11','D12','D13'],basis='Bounded internal threshold-gap permission; source fixed sill ends exactly at reserved dynamic5x5 platform front, no positive-area overlap',cabin_reserved_rectangle=[-44,-123.5,-39,-118.5],dynamic_cabin='Parent fitted derivative only; source floor not fabricated'),ground_compiler_threshold_extensions=[[-35,-128.6,-34,-123.4],[-35,-172.7,-34,-169.3],[-35,-258.7,-34,-255.3]],external_support='X>-34 remains parent owned and unbuilt; no source collision beyond allocation'))
  stair_records=[]
  def flight(name,x0,x1,z0,direction,nr,base,rise):
   run=(nr-1)*.32; top=base+rise
@@ -59,12 +59,18 @@ def extend(objects,surfaces,box,prism,write,root):
   if deck!='D11':
    for a in range(-54,54,3):
     p=[[-76+r*math.sin(math.radians(t)),-238+r*math.cos(math.radians(t))] for r,t in [(inner,a),(inner+.1,a),(inner+.1,a+3),(inner,a+3)]]
-    prism(f'{deck}_inner_balcony_guard_{a+54:03}',p,y+1.2,1.2,'guard_proposal','hospitality_bronze')
+    prism(f'{deck}_inner_balcony_guard_{a+54:03}',p,y+1.2,1.2,'guard_proposal','gallery_glass')
   # Rear guard leaves a genuine6-degree ramp mouth; stalls exits remain parent source finishing.
   if deck!='D11':
    for a in list(range(-54,-3,3))+list(range(3,54,3)):
     p=[[-76+r*math.sin(math.radians(t)),-238+r*math.cos(math.radians(t))] for r,t in [(46.4,a),(46.47,a),(46.47,a+3),(46.4,a+3)]]
-    prism(f'{deck}_rear_balcony_guard_{a+54:03}',p,y+1.92+1.2,1.2,'guard_proposal','hospitality_bronze')
+    prism(f'{deck}_rear_balcony_guard_{a+54:03}',p,y+1.92+1.2,1.2,'guard_proposal','gallery_glass')
+ for deck,y in [('D12',78),('D13',84)]:
+  for side,x0,x1 in [('port',-107,-106.9),('starboard',-45.1,-45)]:
+   box(f'{deck}_royal_{side}_front_guard',[x0,-232,x1,-216],y+1.2,1.2,'guard_proposal','gallery_glass')
+  for side,x0,x1 in [('port',-113.6,-107),('starboard',-45,-38.4)]:
+   for end,z0,z1 in [('fore',-232.1,-232),('aft',-216,-215.9)]:
+    box(f'{deck}_royal_{side}_{end}_guard',[x0,z0,x1,z1],y+1.2,1.2,'guard_proposal','gallery_glass')
  # Explicit enclosed two-leaf acoustic pockets: leaves/behavior remain parent fitted derivative.
  for deck,y in [('D11',69.5),('D12',78),('D13',84)]:
   for side,a,b in [('fore',-131.3,-128.6),('aft',-123.4,-120.7)]:
@@ -110,7 +116,7 @@ def extend(objects,surfaces,box,prism,write,root):
     for label,a,b in [('fore',-250,-249.4),('aft',-246,-230)]:box('orchestra_'+name+'_'+side+'_'+label,[x,a,x+.25,b],74.3,4.8,'static_structure','cultural_red')
     box('orchestra_stage_acoustic_aperture_head',[x,-249.4,x+.25,-246],74.3,.8,'static_structure','cultural_red')
    else:box('orchestra_'+name+'_'+side,[x,-250,x+.25,-230],74.3,4.8,'static_structure','cultural_red')
-  box('orchestra_'+name+'_audience_screen',[x0,-230,x1,-229.75],74.3,4.8,'static_structure','cultural_red')
+  box('orchestra_'+name+'_audience_screen',[x0,-230.25,x1,-230],74.3,4.8,'static_structure','cultural_red')
   mid=(x0+x1)/2
   for part,a,b in [('left',x0,mid-1.7),('right',mid+1.7,x1)]:
    box('orchestra_'+name+'_rear_'+part,[a,-250.25,b,-250],74.3,4.8,'static_structure','cultural_red')
