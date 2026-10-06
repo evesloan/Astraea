@@ -918,7 +918,9 @@ func align_tray_drop_on_foot(home: Vector3, grip_y: float) -> Vector3:
 		var target := Vector3(eye.x+direction.x*horizontal,grip_y,eye.z+direction.y*horizontal)
 		var local_target: Vector3 = cart.to_local(target)
 		var local_home: Vector3 = cart.to_local(home)
-		if absf(local_target.x-local_home.x)<.08 and absf(local_target.z-local_home.z)<.08 and absf(local_target.x)<.20 and absf(local_target.z)<.36 and Vector2(actor.velocity.x,actor.velocity.z).length()<.06:
+		# Any bottle orientation can offset its origin by the real125mm grip arm.
+		var origin_reserve: float = tool.grip_local.length()+.01
+		if absf(local_target.x-local_home.x)<.08 and absf(local_target.z-local_home.z)<.08 and absf(local_target.x)<.30-origin_reserve and absf(local_target.z)<.45-origin_reserve and Vector2(actor.velocity.x,actor.velocity.z).length()<.06:
 			if actual_player_support() and held_tool_state(): return target
 			return Vector3.ZERO
 		var desired := Vector3(home.x+horizontal,actor.global_position.y,home.z)
@@ -954,10 +956,12 @@ func return_tool_to_cart() -> bool:
 	# No product/cart transform, velocity, freeze or parent edits after parking.
 	# Approach the empty tray slot, aim the ordinary 1.35 m physical tether,
 	# release with RMB/E, and demand a real stable four-product return.
-	# Return within the same empty slot, with a30mm inward aiming allowance
-	# from the real end rim. Keep the existing strict .45m pre-release bound.
+	# Use the inner portion of the emptied tray quarter, not the old loose
+	# bottle origin: it may have settled against a rim during earlier phases.
+	# The actual source opening isX±.33/Z±.51; retain the stricter origin bounds.
 	var safe_home := tool_home_local
-	safe_home.z = move_toward(safe_home.z,0.0,.03)
+	safe_home.x = clampf(safe_home.x,-.14,.14)
+	safe_home.z = clampf(safe_home.z,-.25,.25)
 	var home: Vector3 = cart.global_transform * safe_home
 	# Hold the real bottle above the1.01m tray rim, then release and let gravity
 	# seat it. Aiming directly at its resting point while the spring sags pushes
