@@ -1,7 +1,31 @@
 extends SceneTree
+# Grand Pool additive adoption: all 250 retained rows independently match Git
+# 16bf7ee and GRAND_POOL_PRE_ADOPTION_MESHES.json. Admit only these eight rows;
+# retain every original numeric pin and actual render/contact geometry check.
+const GRAND_POOL_FLOORS_JSON := """{"D08_grand_pool_base":{"deck":"D08","floor_y":44.0,"layout_numeric9_sha256":"f1d8276afbfc7810084879c390f40fb7401bc02b87a380a185d5094576e2827a","record_numeric9_sha256":"90bbdfee89300f0243aa75283b84e4633b9d49dc9c63eaf43c8fbbe7be204ea0","structural_area_m2":3128.0,"thickness":0.24},"D08_grand_pool_core_tongue":{"deck":"D08","floor_y":44.0,"layout_numeric9_sha256":"9dcbabeb9cf36404cd237f4e7dc3162b3b9c8d9866461d677e3cec616506c875","record_numeric9_sha256":"7ffba714b21a0aaa289238e2cd8246aecb6e6707c9f6e3f98b972a2be55a9804","structural_area_m2":1.2,"thickness":0.24},"D08_grand_pool_upper_staff":{"deck":"D08","floor_y":46.2,"layout_numeric9_sha256":"d58987acbca8d0eb8a5daaae8161a66b545cbaba00c6b4e2f7b0c85ec7e70bf4","record_numeric9_sha256":"483405dde91a65d4da07b0d114698eedcf33c294a2562b33426cdc2f7882fc2e","structural_area_m2":340.56,"thickness":0.24},"D08_grand_pool_wet":{"deck":"D08","floor_y":46.2,"layout_numeric9_sha256":"8203147f585fdbdf1603b3fe1ca4100847a7bab578670b98a2a8a59b8cc07aba","record_numeric9_sha256":"6dd8b47fee4f8c5b369d2bc3f62f358b52c18e3d61b164dde7de36ab0d5b6fc9","structural_area_m2":1849.862,"thickness":0.24},"D09_orchard_market_core_tongue":{"deck":"D09","floor_y":52.5,"layout_numeric9_sha256":"01cfd5b37bf5fc98d1de0d76777b9ac20c0338aaf728d557e6f3f7a051e14123","record_numeric9_sha256":"a903df9c096479bcafdc0ea720935a1504a0988ef17267ce967da45d0ab67bd9","structural_area_m2":1.2,"thickness":0.24},"D09_orchard_market_gallery":{"deck":"D09","floor_y":52.5,"layout_numeric9_sha256":"e6568210fea1b369c73d679230394ed53334bba7591643d20025560dfef05cf4","record_numeric9_sha256":"ae3ffbdb65ed498c6c324b94673280342fe4aa2e15ffe601c5ef6891f453a5f5","structural_area_m2":1551.43,"thickness":0.24},"D09_orchard_market_upper_staff":{"deck":"D09","floor_y":52.5,"layout_numeric9_sha256":"f08f94244c9b0bece254439105ab902bbd86f1d81cd5730e490d18fcc321374d","record_numeric9_sha256":"40d20051cd63322c5037194898a1d3ab2a849654daf0c0cc1134955211c51977","structural_area_m2":340.56,"thickness":0.24},"D10_shared_table_reserved_cap":{"deck":"D10","floor_y":61.0,"layout_numeric9_sha256":"5d53a425ba67115d340fadb56053f7d3da18781c708d15e9b580d8fa40ca7ae9","record_numeric9_sha256":"65594524b8366ab9dd9d6733d982484bab52fd9e5a23546e72dce64b27081627","structural_area_m2":3128.0,"thickness":0.24}}"""
+const COMPILED_SHA := "0bb8800201af76604a15b8ee3805b087eccf0fe01c7872a2d40af1950f58fed7"
+const LAYOUT_SHA := "3be2dc8c0bac743eb36d55f116ee6c84b0227209f7cd56288b670f9c16181c00"
 var walked_frames := 0
 func _initialize() -> void:
 	call_deferred("run")
+
+func canonical(value: Variant) -> String:
+	if value is Dictionary:
+		var keys: Array = value.keys()
+		keys.sort()
+		var fields := PackedStringArray()
+		for key in keys:
+			fields.append(JSON.stringify(str(key))+":"+canonical(value[key]))
+		return "{"+",".join(fields)+"}"
+	if value is Array:
+		var fields := PackedStringArray()
+		for item in value:
+			fields.append(canonical(item))
+		return "["+",".join(fields)+"]"
+	if value is float or value is int:
+		return "%.9f" % float(value)
+	return JSON.stringify(value)
+
 
 func walk(actor: CharacterBody3D, target: Vector2) -> void:
 	var reached := false
@@ -37,7 +61,23 @@ func run() -> void:
 	var floor_exclusions: Array[RID] = []
 	for body in architecture.find_children("*", "StaticBody3D", true, false): floor_exclusions.append(body.get_rid())
 	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
-	assert(compiled.regions.size() == 250)
+	assert(FileAccess.get_sha256("res://data/generated/structural_meshes.json") == COMPILED_SHA, "Retained 250 records plus the exact eight pool-market additions are required")
+	assert(FileAccess.get_sha256("res://data/spatial_layout.json") == LAYOUT_SHA, "Reviewed additive layout identity changed")
+	var pool_floors: Dictionary = JSON.parse_string(GRAND_POOL_FLOORS_JSON)
+	assert(compiled.regions.size() == 258 and pool_floors.size() == 8)
+	var seen: Dictionary = {}
+	var pool_seen: Dictionary = {}
+	for region in compiled.regions:
+		var id := str(region.id)
+		assert(not seen.has(id), "Duplicate floor identity: " + id)
+		seen[id] = true
+		if pool_floors.has(id):
+			var expected: Dictionary = pool_floors[id]
+			assert(canonical(region).sha256_text() == str(expected.record_numeric9_sha256), "Approved pool-market compiled record changed: " + id)
+			assert(str(region.deck) == str(expected.deck) and absf(float(region.floor_y) - float(expected.floor_y)) < .001 and absf(float(region.thickness) - float(expected.thickness)) < .001, "Approved pool-market slab deck/datum/thickness changed: " + id)
+			assert(absf(float(region.structural_area_m2) - float(expected.structural_area_m2)) < .001, "Approved pool-market slab area changed: " + id)
+			pool_seen[id] = true
+	assert(seen.size() == 258 and pool_seen.size() == 8, "Exactly eight approved additions must accompany all 250 retained owners")
 	var floor_rays := 0
 	for region in compiled.regions:
 		if region.id != "D17_connected_house_floor_00": continue
