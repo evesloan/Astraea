@@ -1,0 +1,285 @@
+{
+  "schema": "AST-ENG-008_workbay_section_v1",
+  "status": "source proposal, not installed",
+  "catalogue_id": "AST-ENG-008",
+  "family": "secondary_engineering_section",
+  "derivative": "dense_bays_section",
+  "model_file": "AST-ENG-008_workbay_section.glb",
+  "placement": {
+    "position_xyz": [
+      0,
+      0,
+      0
+    ],
+    "rotation_xyz": [
+      0,
+      0,
+      0
+    ],
+    "scale_xyz": [
+      1,
+      1,
+      1
+    ]
+  },
+  "replaces_unadopted_model": "AST-ENG-008_dense_bays.glb",
+  "retain_original_section_and_essentials": true,
+  "export_excludes": [
+    "all compiler preview floors",
+    "original section context",
+    "retained essentials context",
+    "old superseded west racks/filter placement",
+    "old west task proposal"
+  ],
+  "collision_contracts": {
+    "static_surface": "fixed exact surface contact",
+    "contact_only_glass_26mm": "hidden26mm pane proxy mesh with retained glass material; faithful source triangles or exact per-proxy box, never convex whole cell",
+    "visual_only_glass": "single visible sheet; no duplicate contact",
+    "moving_door_leaf": "one source leaf reparented to gate AnimatableBody; no static contact",
+    "actuator_no_body_contact": "120separate stable ACT_<id> meshes; distinct source target Areas only when bound",
+    "door_control_only": "two real gate button meshes; distinct source target Areas delegate to the one gate controller",
+    "visual_only_stair_tread": "source treads use exact named flight-contact prism via existing Grand Pool convention",
+    "none": "pigment/lens/other non-contact surfaces",
+    "stair_flight_contact": "one hidden source-authored inclined closed contact prism within the actual0.9x1.2m stair flight; use existing inclined stair-contact convention, no bridge over cell"
+  },
+  "floor": {
+    "upper_owner": "D02_secondary_engineering_floor",
+    "upper_y": 6.0,
+    "upper_thickness_m": 0.24,
+    "hole_xz": [
+      [
+        21.9,
+        -406.6
+      ],
+      [
+        27.1,
+        -406.6
+      ],
+      [
+        27.1,
+        -403.65
+      ],
+      [
+        21.9,
+        -403.65
+      ]
+    ],
+    "lower_owner_proposed": "D02_secondary_engineering_workbay_cell_lower",
+    "lower_y": 5.55,
+    "lower_thickness_m": 0.24,
+    "lower_underside_y": 5.31,
+    "D01_programme_below": "D01_directory_02 Cold provisions; architecture-pending, reserve headroom beneath5.31",
+    "upper_cut_must_not_remain_collidable": true
+  },
+  "stair_contact": {
+    "quad_xyz": [
+      [
+        21.9,
+        6,
+        -405.1
+      ],
+      [
+        21.9,
+        6,
+        -403.9
+      ],
+      [
+        22.8,
+        5.55,
+        -403.9
+      ],
+      [
+        22.8,
+        5.55,
+        -405.1
+      ]
+    ],
+    "thickness_m_proposed": 0.12,
+    "riser_count": 3,
+    "riser_m": 0.15,
+    "lower_landing_xyz_bounds": [
+      22.8,
+      5.55,
+      -405.1,
+      24.0,
+      5.55,
+      -403.9
+    ],
+    "ascent_descent_controller_proof_pending": true,
+    "source_contact_node": "CONTACT_CellStairFlight",
+    "source_marker": "DATUM_CELL_STAIR_FLIGHT"
+  },
+  "gate": {
+    "persistent_id": "D02_secondary_engineering_workbay_cell_gate",
+    "source_node": "LEAF_WORKBAY_CELL",
+    "source_rest_marker": "DATUM_WORKBAY_CELL_GATE",
+    "closed_rest_pivot_xyz": [
+      21.8675,
+      6,
+      -404.5
+    ],
+    "opening_translation_xyz": [
+      0,
+      0,
+      -1.22
+    ],
+    "closed_leaf_bounds_xyz": [
+      21.84,
+      6.03,
+      -405.12,
+      21.895,
+      8.44,
+      -403.88
+    ],
+    "open_leaf_bounds_xyz": [
+      21.84,
+      6.03,
+      -406.34,
+      21.895,
+      8.44,
+      -405.1
+    ],
+    "clear_aperture": {
+      "axis": "x",
+      "plane": 21.96,
+      "z_range": [
+        -405.1,
+        -403.9
+      ],
+      "floor_y": 6,
+      "clear_height_m": 2.34
+    },
+    "north_horizontal_pocket_z": [
+      -406.36,
+      -405.1
+    ],
+    "reuse_state_base": "res://scripts/service_door.gd",
+    "required_local_overrides": [
+      "source-bound fitting _ready",
+      "single-leaf _apply_pose",
+      "actual leaf/pocket _sweep_occupied"
+    ],
+    "existing_guest_entry_door_is_not_drop_in": true,
+    "targets": [
+      {
+        "marker": "TARGET_CELL_GATE_OUTSIDE",
+        "mesh": "CellGateButtonOutside",
+        "position_xyz": [
+          21.764,
+          7.1,
+          -405.23
+        ],
+        "approach_xyz": [
+          20.85,
+          6,
+          -405.23
+        ]
+      },
+      {
+        "marker": "TARGET_CELL_GATE_INSIDE",
+        "mesh": "CellGateButtonInside",
+        "position_xyz": [
+          22.111,
+          6.86,
+          -403.78
+        ],
+        "approach_xyz": [
+          23.3,
+          5.55,
+          -404.5
+        ]
+      }
+    ],
+    "guide_type": "open three-piece horizontal channel; two source-authored hanging rollers"
+  },
+  "fixture_proposals": [
+    {
+      "marker": "DATUM_CELL_LIGHT",
+      "position_xyz": [
+        24.8,
+        8.515,
+        -405.92
+      ],
+      "aim_xyz": [
+        24.8,
+        6.55,
+        -405.85
+      ],
+      "receivers": "lower twin-filter skid and staff service face"
+    },
+    {
+      "marker": "DATUM_CELL_THRESHOLD_LIGHT",
+      "position_xyz": [
+        22.025,
+        8.285,
+        -404.5
+      ],
+      "aim_xyz": [
+        22.45,
+        5.8,
+        -404.5
+      ],
+      "receivers": "three risers, lower landing and real west threshold"
+    },
+    {
+      "marker": "LIGHT_PROPOSAL_north_services",
+      "position_xyz": [
+        24.52,
+        8.66,
+        -408
+      ],
+      "aim_xyz": [
+        24.52,
+        7.31,
+        -408.58
+      ],
+      "receivers": "24north remote controls and service machinery"
+    },
+    {
+      "marker": "LIGHT_PROPOSAL_bench_task",
+      "position_xyz": [
+        26.43,
+        7.73,
+        -401.45
+      ],
+      "aim_xyz": [
+        26.1,
+        7.18,
+        -401.35
+      ],
+      "receivers": "retained supported repair work"
+    }
+  ],
+  "lighting": {
+    "old_glass_and_shared_profiles_unchanged": true,
+    "active_source_cap": 8,
+    "candidate_cap": 32,
+    "no_shared_selector_patch": true,
+    "source_watts_are_not_runtime_energy": true
+  },
+  "calibration_controls": {
+    "count": 120,
+    "control_mesh_prefix": "ACT_",
+    "target_prefix": "TARGET_ENG2_",
+    "source_manifest": "calibration_control_manifest.json",
+    "counts_by_bay": {
+      "CONTROL": 72,
+      "WORKBAY": 48
+    },
+    "real_gate_buttons_not_counted": 2
+  },
+  "clear_routes": {
+    "east_turn_xyz_bounds": [
+      28.2,
+      6,
+      -406.8,
+      31.8,
+      8.7,
+      -403.2
+    ],
+    "south_actual_pull_clearance_m": 1.53,
+    "north_approach_approx_m": 1.69,
+    "loaded_cart_descends_stairs": false
+  },
+  "no_Game_write_performed": true
+}

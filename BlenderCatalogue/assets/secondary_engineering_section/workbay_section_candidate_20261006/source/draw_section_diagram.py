@@ -1,0 +1,41 @@
+"""Data-based architectural plan/section, not a rendered game view."""
+from pathlib import Path
+from PIL import Image,ImageDraw,ImageFont
+import json
+R=Path(__file__).resolve().parents[1];s=json.loads((R/'source/section_plan.json').read_text());im=Image.new('RGB',(1250,1160),(240,240,232));d=ImageDraw.Draw(im);fp='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+font=lambda n:ImageFont.truetype(fp,n)
+def txt(p,text,n=16,fill=(30,47,51)):d.text(p,text,font=font(n),fill=fill)
+def plan(x,z):return (80+(x-20)*75,110+(z+409.4)*54)
+def rectxz(b,fill,outline=(55,74,78),width=2):d.rectangle([plan(b[0],b[1]),plan(b[2],b[3])],fill=fill,outline=outline,width=width)
+txt((80,25),'WORKBAY / REAL 0.45 m SECTION PROPOSAL',25);txt((80,60),'Unadopted source study. Exact floor cut preview; Game/compiler unchanged.',17)
+rectxz([20.18,-409.22,33.82,-400.18],(224,228,222),width=4)
+rectxz([21.55,-409.1,27.28,-408.29],(103,135,143));txt(plan(21.7,-408.95),'24 NORTH REMOTE CONTROLS / Y6',14,(245,245,233))
+rectxz([21,-402.12,27,-400.7],(103,135,143));txt(plan(21.2,-401.78),'RETAINED REPAIR BENCH / Y6',14,(245,245,233))
+rectxz([21.9,-406.6,27.1,-403.65],(186,193,180),outline=(40,100,120),width=5)
+txt(plan(22.8,-406.40),'GLAZED SUNCORP CELL',16);txt(plan(24.4,-404.30),'LOWER Y5.55',15)
+rectxz([23.85,-406.25,25.85,-405.5],(72,96,99));txt(plan(24.0,-406.14),'COMPACT SKID',13,(240,241,233))
+for i in range(3):rectxz([21.9+i*.3,-405.1,22.2+i*.3,-403.9],(173-i*12,182-i*9,179-i*8))
+rectxz([22.8,-405.1,24,-403.9],None,outline=(181,118,40),width=3)
+txt(plan(22.86,-404.96),'1.2 x 1.2 m',11);txt(plan(22.86,-404.70),'LANDING',12)
+rectxz([28.2,-406.8,31.8,-403.2],None,outline=(66,138,81),width=3);txt(plan(28.37,-406.55),'PRESERVED Y6',15);txt(plan(28.37,-406.15),'ENTRY / TURN',15)
+d.line([plan(30,-405),plan(27.7,-407.45),plan(21.22,-407.45),plan(21.22,-404.5),plan(23.35,-404.5),plan(24.5,-404.8)],fill=(194,107,40),width=4)
+for x,z in [(30,-405),(21.22,-404.5),(23.35,-404.5)]:
+ a,b=plan(x,z);d.ellipse((a-5,b-5,a+5,b+5),fill=(194,107,40))
+txt(plan(28.8,-402.65),'Cart stays upper.',15);txt(plan(28.8,-402.20),'Portable tools go',15);txt(plan(28.8,-401.80),'through real west gate.',15)
+txt(plan(22.8,-407.8),'~1.69 m clear north approach',14);txt(plan(21.0,-403.35),'1.53 m to actual drawer-pull fronts',14)
+txt((80,650),'SECTION THROUGH WEST STAIR / LOWER LANDING',22);txt((80,686),'Machinery is projected from its adjacent north service line; no circulation loop behind it is claimed.',14)
+def sec(x,y):return (80+(x-20)*75,1040-(y-5.0)*82)
+def rxy(x,y,X,Y,fill,outline=(55,74,78)):d.rectangle([sec(x,Y),sec(X,y)],fill=fill,outline=outline,width=2)
+rxy(20.18,5.76,21.9,6,(120,139,140));rxy(27.1,5.76,33.82,6,(120,139,140));rxy(21.9,5.31,27.1,5.55,(139,157,151))
+rxy(21.9,5.31,22.2,5.85,(120,133,132));rxy(22.2,5.31,22.5,5.7,(120,133,132));rxy(26.98,5.55,27.1,6.12,(87,112,117))
+for x in [21.96,27.04]:d.line([sec(x,6.13),sec(x,8.65)],fill=(87,158,174),width=3)
+d.line([sec(21.96,8.72),sec(27.04,8.72)],fill=(59,83,88),width=6)
+# Projected compact machinery, deliberately not mistaken for a sliced obstacle.
+for x in [24.3,25.2]:rxy(x-.25,5.8,x+.25,7.54,(175,185,170),outline=(114,128,119))
+txt(sec(24.0,7.9),'PROJECTED MACHINE',13)
+ey=sec(30,7.6501565);d.ellipse((ey[0]-6,ey[1]-6,ey[0]+6,ey[1]+6),fill=(35,100,149));txt((ey[0]+12,ey[1]-13),'Original eye Y7.65',15)
+for target in [(22.2,5.85),(23.4,5.55),(24.3,7.54)]:d.line([ey,sec(*target)],fill=(119,159,170),width=1)
+txt(sec(20.20,6.38),'UPPER Y6',14);txt(sec(23.35,5.18),'LOWER Y5.55 / UNDERSIDE5.31',14)
+txt(sec(27.4,6.30),'Continuous upper service route',14)
+txt((80,1100),'Three150mm risers. 0.9m descent zone including lower transition. Step/door/controller tests remain pending.',15)
+im.save(R/'views/workbay_recess_plan_section.png');print(R/'views/workbay_recess_plan_section.png')

@@ -241,7 +241,7 @@ func run() -> void:
 		sample_lights(str(path.display))
 		var reverse: Array=path.points_xyz.duplicate();reverse.reverse()
 		for p in reverse: await walk_to(xyz(p))
-	for p in [[-45.9,52.5,-445],[-45.9,52.5,-446],[-45.9,46.2,-451],[-45.9,46.2,-444],[-45.9,46.2,-433],[-45.9,46.2,-425],[-45.9,46.2,-416],[-45.9,52.5,-451],[-45.9,52.5,-433],[-45.9,52.5,-416]]:
+	for p in [[-20.5,46.2,-458],[-20.5,46.2,-450],[-45.9,52.5,-445],[-45.9,52.5,-446],[-45.9,46.2,-451],[-45.9,46.2,-444],[-45.9,46.2,-433],[-45.9,46.2,-425],[-45.9,46.2,-416],[-45.9,52.5,-451],[-45.9,52.5,-433],[-45.9,52.5,-416]]:
 		await settle(xyz(p));sample_lights(str(p))
 	assert(selected_new_sources.size()==14,"Some source-backed finish lights lack a useful tested route viewpoint: "+str(selected_new_sources.keys()))
 	pins()

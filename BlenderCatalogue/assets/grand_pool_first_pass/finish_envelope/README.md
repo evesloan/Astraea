@@ -2,7 +2,7 @@
 
 ## Current status, 2026-10-06
 
-The exact editable sources have passed independent reopen QA and remote-backed retention. All 26 new GLBs have passed independent evaluated-source/export equivalence. The runtime additions are installed. Import, actual model/support/crown checks, six stock approach walks and the original 51-furnishing and Grand Pool access checks pass. Thirteen new fixtures have been selected from sampled supported viewpoints; the strengthened all-14 selection gate still needs a useful viewpoint or measured local fix for RoofWash_451_Aft. Matched in-game visual review, cart/lift checks and the new full 112-check suite remain separate gates; final art and architectural completeness are not accepted.
+The exact editable sources have passed independent reopen QA and remote-backed retention. All 26 new GLBs have passed independent evaluated-source/export equivalence. The runtime additions are installed. Import, actual model/support/crown checks, six stock approach walks and the original 51-furnishing and Grand Pool access checks pass. The final strengthened focused check passes with all14new fixtures selected from genuinely supported viewpoints, including the east wet terrace for RoofWash_451_Aft. No light settings or shared selector change was required for that final source. Matched in-game visual review, cart/lift checks and the new full 112-check suite remain separate gates; final art and architectural completeness are not accepted.
 
 Source images show richer planting and purposeful housed displays, but the tall rear fan silhouette, dark plant variation, flat bay volume and coherent covered garden/storefront rhythm still need actual-world design review. The source render is progress evidence, not an in-game acceptance image.
 

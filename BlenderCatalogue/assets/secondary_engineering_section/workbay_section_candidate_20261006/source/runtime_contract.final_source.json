@@ -1,0 +1,2844 @@
+{
+  "schema": "AST-ENG-008_workbay_section_v1",
+  "status": "source proposal, not installed",
+  "catalogue_id": "AST-ENG-008",
+  "family": "secondary_engineering_section",
+  "derivative": "dense_bays_section",
+  "model_file": "AST-ENG-008_workbay_section.glb",
+  "placement": {
+    "position_xyz": [
+      0,
+      0,
+      0
+    ],
+    "rotation_xyz": [
+      0,
+      0,
+      0
+    ],
+    "scale_xyz": [
+      1,
+      1,
+      1
+    ]
+  },
+  "replaces_unadopted_model": "AST-ENG-008_dense_bays.glb",
+  "retain_original_section_and_essentials": true,
+  "export_excludes": [
+    "all compiler preview floors",
+    "original section context",
+    "retained essentials context",
+    "old superseded west racks/filter placement",
+    "old west task proposal"
+  ],
+  "collision_contracts": {
+    "static_surface": "fixed exact surface contact",
+    "contact_only_glass_26mm": "hidden26mm pane proxy mesh with retained glass material; faithful source triangles or exact per-proxy box, never convex whole cell",
+    "visual_only_glass": "single visible sheet; no duplicate contact",
+    "moving_door_leaf": "one source leaf reparented to gate AnimatableBody; no static contact",
+    "actuator_no_body_contact": "120separate stable ACT_<id> meshes; distinct source target Areas only when bound",
+    "door_control_only": "two real gate button meshes; distinct source target Areas delegate to the one gate controller",
+    "visual_only_stair_tread": "source treads use exact named flight-contact prism via existing Grand Pool convention",
+    "none": "pigment/lens/other non-contact surfaces",
+    "stair_flight_contact": "one hidden source-authored inclined closed contact prism within the actual0.9x1.2m stair flight; use existing inclined stair-contact convention, no bridge over cell"
+  },
+  "floor": {
+    "upper_owner": "D02_secondary_engineering_floor",
+    "upper_y": 6.0,
+    "upper_thickness_m": 0.24,
+    "hole_xz": [
+      [
+        21.9,
+        -406.6
+      ],
+      [
+        27.1,
+        -406.6
+      ],
+      [
+        27.1,
+        -403.65
+      ],
+      [
+        21.9,
+        -403.65
+      ]
+    ],
+    "lower_owner_proposed": "D02_secondary_engineering_workbay_cell_lower",
+    "lower_y": 5.55,
+    "lower_thickness_m": 0.24,
+    "lower_underside_y": 5.31,
+    "D01_programme_below": "D01_directory_02 Cold provisions; architecture-pending, reserve headroom beneath5.31",
+    "upper_cut_must_not_remain_collidable": true,
+    "hole_area_m2": 15.34
+  },
+  "stair_contact": {
+    "quad_xyz": [
+      [
+        21.9,
+        6,
+        -405.1
+      ],
+      [
+        21.9,
+        6,
+        -403.9
+      ],
+      [
+        22.8,
+        5.55,
+        -403.9
+      ],
+      [
+        22.8,
+        5.55,
+        -405.1
+      ]
+    ],
+    "thickness_m_proposed": 0.12,
+    "riser_count": 3,
+    "riser_m": 0.15,
+    "lower_landing_xyz_bounds": [
+      22.8,
+      5.55,
+      -405.1,
+      24.0,
+      5.55,
+      -403.9
+    ],
+    "ascent_descent_controller_proof_pending": true,
+    "source_contact_node": "CONTACT_CellStairFlight",
+    "source_marker": "DATUM_CELL_STAIR_FLIGHT"
+  },
+  "gate": {
+    "persistent_id": "D02_secondary_engineering_workbay_cell_gate",
+    "source_node": "LEAF_WORKBAY_CELL",
+    "source_rest_marker": "DATUM_WORKBAY_CELL_GATE",
+    "closed_rest_pivot_xyz": [
+      21.8675,
+      6,
+      -404.5
+    ],
+    "opening_translation_xyz": [
+      0,
+      0,
+      -1.22
+    ],
+    "closed_leaf_bounds_xyz": [
+      21.84,
+      6.03,
+      -405.12,
+      21.895,
+      8.44,
+      -403.88
+    ],
+    "open_leaf_bounds_xyz": [
+      21.84,
+      6.03,
+      -406.34,
+      21.895,
+      8.44,
+      -405.1
+    ],
+    "clear_aperture": {
+      "axis": "x",
+      "plane": 21.96,
+      "z_range": [
+        -405.1,
+        -403.9
+      ],
+      "floor_y": 6,
+      "clear_height_m": 2.34
+    },
+    "north_horizontal_pocket_z": [
+      -406.36,
+      -405.1
+    ],
+    "reuse_state_base": "res://scripts/service_door.gd",
+    "required_local_overrides": [
+      "source-bound fitting _ready",
+      "single-leaf _apply_pose",
+      "actual leaf/pocket _sweep_occupied"
+    ],
+    "existing_guest_entry_door_is_not_drop_in": true,
+    "targets": [
+      {
+        "marker": "TARGET_CELL_GATE_OUTSIDE",
+        "mesh": "CellGateButtonOutside",
+        "position_xyz": [
+          21.764,
+          7.1,
+          -405.23
+        ],
+        "approach_xyz": [
+          20.85,
+          6,
+          -405.23
+        ],
+        "normal_xyz": [
+          -1,
+          0,
+          0
+        ]
+      },
+      {
+        "marker": "TARGET_CELL_GATE_INSIDE",
+        "mesh": "CellGateButtonInside",
+        "position_xyz": [
+          22.111,
+          6.86,
+          -403.78
+        ],
+        "approach_xyz": [
+          23.3,
+          5.55,
+          -404.5
+        ],
+        "normal_xyz": [
+          1,
+          0,
+          0
+        ]
+      }
+    ],
+    "guide_type": "open three-piece horizontal channel; two source-authored hanging rollers",
+    "actual_closed_leaf_bounds_xyz": [
+      21.84000015258789,
+      6.03000020980835,
+      -405.1199951171875,
+      21.895000457763672,
+      8.4399995803833,
+      -403.8800048828125
+    ],
+    "description": "SunCorp service cell gate"
+  },
+  "fixture_proposals": [
+    {
+      "marker": "DATUM_CELL_LIGHT",
+      "position_xyz": [
+        24.8,
+        8.515,
+        -405.92
+      ],
+      "aim_xyz": [
+        24.8,
+        6.55,
+        -405.85
+      ],
+      "receivers": "lower twin-filter skid and staff service face"
+    },
+    {
+      "marker": "DATUM_CELL_THRESHOLD_LIGHT",
+      "position_xyz": [
+        22.025,
+        8.285,
+        -404.5
+      ],
+      "aim_xyz": [
+        22.45,
+        5.8,
+        -404.5
+      ],
+      "receivers": "three risers, lower landing and real west threshold"
+    },
+    {
+      "marker": "LIGHT_PROPOSAL_north_services",
+      "position_xyz": [
+        24.52,
+        8.66,
+        -408
+      ],
+      "aim_xyz": [
+        24.52,
+        7.31,
+        -408.58
+      ],
+      "receivers": "24north remote controls and service machinery"
+    },
+    {
+      "marker": "LIGHT_PROPOSAL_bench_task",
+      "position_xyz": [
+        26.43,
+        7.73,
+        -401.45
+      ],
+      "aim_xyz": [
+        26.1,
+        7.18,
+        -401.35
+      ],
+      "receivers": "retained supported repair work"
+    }
+  ],
+  "lighting": {
+    "old_glass_and_shared_profiles_unchanged": true,
+    "active_source_cap": 8,
+    "candidate_cap": 32,
+    "no_shared_selector_patch": true,
+    "source_watts_are_not_runtime_energy": true
+  },
+  "calibration_controls": {
+    "count": 120,
+    "control_mesh_prefix": "ACT_",
+    "target_prefix": "TARGET_ENG2_",
+    "source_manifest": "calibration_control_manifest.json",
+    "counts_by_bay": {
+      "CONTROL": 72,
+      "WORKBAY": 48
+    },
+    "real_gate_buttons_not_counted": 2
+  },
+  "clear_routes": {
+    "east_turn_xyz_bounds": [
+      28.2,
+      6,
+      -406.8,
+      31.8,
+      8.7,
+      -403.2
+    ],
+    "south_actual_pull_clearance_m": 1.53,
+    "north_approach_approx_m": 1.69,
+    "loaded_cart_descends_stairs": false
+  },
+  "no_Game_write_performed": true,
+  "source_blend": "source/AST-ENG-008_workbay_section_final.blend",
+  "source_sha256": "fb251d356c93c27a4b19bb3eb877e9a45866c2cf94a0412f9f90829931f9a600",
+  "model_sha256": "887f0f68604091c3600203cba42c1a371aef090c2be1419b3bbc185c99e5a041",
+  "source_triangles": 47910,
+  "source_status": "frozen candidate geometry, not runtime adopted",
+  "groups": {
+    "SectionStatic_0_WORKBAY": {
+      "triangles": 1748,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        21.114999771118164,
+        5.800000190734863,
+        -409.2099914550781,
+        33.755001068115234,
+        9.600000381469727,
+        -400.2250061035156
+      ],
+      "visible": true
+    },
+    "SectionStatic_1_WORKBAY": {
+      "triangles": 3288,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "bounds_xyz": [
+        20.575000762939453,
+        5.550000190734863,
+        -409.1499938964844,
+        33.689998626708984,
+        9.475000381469727,
+        -400.260009765625
+      ],
+      "visible": true
+    },
+    "SectionStatic_2_WORKBAY": {
+      "triangles": 1128,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        20.91200065612793,
+        7.581999778747559,
+        -408.7640075683594,
+        33.38800048828125,
+        9.372797966003418,
+        -400.968994140625
+      ],
+      "visible": true
+    },
+    "SectionStatic_3_WORKBAY": {
+      "triangles": 11044,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "bounds_xyz": [
+        20.479999542236328,
+        5.550000190734863,
+        -409.2200012207031,
+        33.70000076293945,
+        9.600000381469727,
+        -400.17999267578125
+      ],
+      "visible": true
+    },
+    "SectionStatic_4_WORKBAY": {
+      "triangles": 5280,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ],
+      "bounds_xyz": [
+        20.645000457763672,
+        6.0,
+        -409.1199951171875,
+        33.630001068115234,
+        9.375,
+        -400.57000732421875
+      ],
+      "visible": true
+    },
+    "SectionStatic_5_WORKBAY": {
+      "triangles": 24,
+      "collision_contract": "visual_only_stair_tread",
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "bounds_xyz": [
+        21.899999618530273,
+        5.309999942779541,
+        -405.1000061035156,
+        22.5,
+        5.849999904632568,
+        -403.8999938964844
+      ],
+      "visible": true
+    },
+    "SectionStatic_6_WORKBAY": {
+      "triangles": 36,
+      "collision_contract": "none",
+      "materials": [
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        21.899999618530273,
+        5.671999931335449,
+        -405.1000061035156,
+        22.502500534057617,
+        5.998000144958496,
+        -403.8999938964844
+      ],
+      "visible": true
+    },
+    "SectionStatic_7_WORKBAY": {
+      "triangles": 20,
+      "collision_contract": "visual_only_glass",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        21.959999084472656,
+        6.130000114440918,
+        -406.5400085449219,
+        27.040000915527344,
+        8.649999618530273,
+        -403.7099914550781
+      ],
+      "visible": true
+    },
+    "CONTACT_PROXY_CellGlass_N0": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        22.0049991607666,
+        6.130000114440918,
+        -406.5530090332031,
+        23.65999984741211,
+        8.649999618530273,
+        -406.5270080566406
+      ],
+      "visible": false
+    },
+    "CONTACT_PROXY_CellGlass_N1": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        23.739999771118164,
+        6.130000114440918,
+        -406.5530090332031,
+        25.290000915527344,
+        8.649999618530273,
+        -406.5270080566406
+      ],
+      "visible": false
+    },
+    "CONTACT_PROXY_CellGlass_N2": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        25.3700008392334,
+        6.130000114440918,
+        -406.5530090332031,
+        26.9950008392334,
+        8.649999618530273,
+        -406.5270080566406
+      ],
+      "visible": false
+    },
+    "CONTACT_PROXY_CellGlass_S0": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        22.0049991607666,
+        6.130000114440918,
+        -403.7229919433594,
+        23.65999984741211,
+        8.649999618530273,
+        -403.6969909667969
+      ],
+      "visible": false
+    },
+    "CONTACT_PROXY_CellGlass_S1": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        23.739999771118164,
+        6.130000114440918,
+        -403.7229919433594,
+        25.290000915527344,
+        8.649999618530273,
+        -403.6969909667969
+      ],
+      "visible": false
+    },
+    "CONTACT_PROXY_CellGlass_S2": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        25.3700008392334,
+        6.130000114440918,
+        -403.7229919433594,
+        26.9950008392334,
+        8.649999618530273,
+        -403.6969909667969
+      ],
+      "visible": false
+    },
+    "CONTACT_PROXY_CellGlass_E0": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        27.027000427246094,
+        6.130000114440918,
+        -406.4949951171875,
+        27.05299949645996,
+        8.649999618530273,
+        -405.17498779296875
+      ],
+      "visible": false
+    },
+    "CONTACT_PROXY_CellGlass_E1": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        27.027000427246094,
+        6.130000114440918,
+        -405.0950012207031,
+        27.05299949645996,
+        8.649999618530273,
+        -403.7550048828125
+      ],
+      "visible": false
+    },
+    "CONTACT_PROXY_CellGlass_WN": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        21.94700050354004,
+        6.130000114440918,
+        -406.4949951171875,
+        21.972999572753906,
+        8.649999618530273,
+        -405.1449890136719
+      ],
+      "visible": false
+    },
+    "CONTACT_PROXY_CellDoorTransom": {
+      "triangles": 12,
+      "collision_contract": "contact_only_glass_26mm",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass"
+      ],
+      "bounds_xyz": [
+        21.94700050354004,
+        8.40999984741211,
+        -405.1000061035156,
+        21.972999572753906,
+        8.649999618530273,
+        -403.8999938964844
+      ],
+      "visible": false
+    },
+    "LEAF_WORKBAY_CELL": {
+      "triangles": 150,
+      "collision_contract": "moving_door_leaf",
+      "materials": [
+        "ASTRAEA_bridge_pressure_glass",
+        "ASTRAEA_staff_zinc"
+      ],
+      "bounds_xyz": [
+        21.84000015258789,
+        6.03000020980835,
+        -405.1199951171875,
+        21.895000457763672,
+        8.4399995803833,
+        -403.8800048828125
+      ],
+      "visible": true
+    },
+    "CellGateButtonOutside": {
+      "triangles": 36,
+      "collision_contract": "door_control_only",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        21.764999389648438,
+        7.054999828338623,
+        -405.2727966308594,
+        21.791000366210938,
+        7.144999980926514,
+        -405.1872253417969
+      ],
+      "visible": true
+    },
+    "CellGateButtonInside": {
+      "triangles": 36,
+      "collision_contract": "door_control_only",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        22.083999633789062,
+        6.815000057220459,
+        -403.8227844238281,
+        22.110000610351562,
+        6.90500020980835,
+        -403.7372131347656
+      ],
+      "visible": true
+    },
+    "SectionStatic_21_WORKBAY": {
+      "triangles": 60,
+      "collision_contract": "none",
+      "materials": [
+        "ASTRAEA_staff_opal"
+      ],
+      "bounds_xyz": [
+        21.979999542236328,
+        7.745999813079834,
+        -408.1199951171875,
+        33.36000061035156,
+        8.694999694824219,
+        -401.3500061035156
+      ],
+      "visible": true
+    },
+    "CONTACT_CellStairFlight": {
+      "triangles": 12,
+      "collision_contract": "stair_flight_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "bounds_xyz": [
+        21.899999618530273,
+        5.429999828338623,
+        -405.1000061035156,
+        22.799999237060547,
+        6.0,
+        -403.8999938964844
+      ],
+      "visible": false
+    },
+    "SectionStatic_23_CONTROL": {
+      "triangles": 1396,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_bluegrey_paint"
+      ],
+      "bounds_xyz": [
+        20.344999313354492,
+        6.0,
+        -463.7799987792969,
+        33.16999816894531,
+        9.0600004196167,
+        -461.3900146484375
+      ],
+      "visible": true
+    },
+    "SectionStatic_24_CONTROL": {
+      "triangles": 1000,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        20.219999313354492,
+        6.099999904632568,
+        -463.67498779296875,
+        33.26499938964844,
+        8.819999694824219,
+        -461.81500244140625
+      ],
+      "visible": true
+    },
+    "SectionStatic_25_CONTROL": {
+      "triangles": 48,
+      "collision_contract": "none",
+      "materials": [
+        "ASTRAEA_dense_instrument_pigment"
+      ],
+      "bounds_xyz": [
+        20.479999542236328,
+        6.412499904632568,
+        -463.0929870605469,
+        33.005001068115234,
+        8.654999732971191,
+        -461.8580017089844
+      ],
+      "visible": true
+    },
+    "SectionStatic_26_CONTROL": {
+      "triangles": 7916,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_zinc"
+      ],
+      "bounds_xyz": [
+        20.290000915527344,
+        6.059999942779541,
+        -463.82000732421875,
+        33.19499969482422,
+        9.300000190734863,
+        -461.4429931640625
+      ],
+      "visible": true
+    },
+    "SectionStatic_27_CONTROL": {
+      "triangles": 4480,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_rubber"
+      ],
+      "bounds_xyz": [
+        20.2549991607666,
+        6.0,
+        -463.479736328125,
+        33.22999954223633,
+        8.97599983215332,
+        -461.5867614746094
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_01": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        22.148929595947266,
+        7.211230754852295,
+        -462.6026306152344,
+        22.185070037841797,
+        7.269999980926514,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_02": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        22.25200080871582,
+        7.202499866485596,
+        -462.5920104980469,
+        22.308000564575195,
+        7.258500099182129,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_03": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        22.36400032043457,
+        7.201499938964844,
+        -462.59051513671875,
+        22.422000885009766,
+        7.259500026702881,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_04": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        22.13800048828125,
+        7.314499855041504,
+        -462.59051513671875,
+        22.195999145507812,
+        7.372499942779541,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_05": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        22.246999740600586,
+        7.310500144958496,
+        -462.5920104980469,
+        22.312999725341797,
+        7.376500129699707,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_06": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        22.374929428100586,
+        7.324230670928955,
+        -462.6026306152344,
+        22.411069869995117,
+        7.382999897003174,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_07": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        22.138999938964844,
+        7.428500175476074,
+        -462.5920104980469,
+        22.19499969482422,
+        7.484499931335449,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_08": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        22.250999450683594,
+        7.427499771118164,
+        -462.59051513671875,
+        22.30900001525879,
+        7.485499858856201,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_09": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        22.374929428100586,
+        7.437231063842773,
+        -462.6026306152344,
+        22.411069869995117,
+        7.495999813079834,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_10": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        22.134000778198242,
+        7.536499977111816,
+        -462.5920104980469,
+        22.200000762939453,
+        7.602499961853027,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_11": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        22.261930465698242,
+        7.550230979919434,
+        -462.6026306152344,
+        22.298070907592773,
+        7.609000205993652,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1L_12": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        22.36400032043457,
+        7.540500164031982,
+        -462.59051513671875,
+        22.422000885009766,
+        7.598499774932861,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_01": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        23.588930130004883,
+        7.211230754852295,
+        -462.6026306152344,
+        23.625070571899414,
+        7.269999980926514,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_02": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        23.691999435424805,
+        7.202499866485596,
+        -462.5920104980469,
+        23.74799919128418,
+        7.258500099182129,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_03": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        23.804000854492188,
+        7.201499938964844,
+        -462.59051513671875,
+        23.86199951171875,
+        7.259500026702881,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_04": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        23.577999114990234,
+        7.314499855041504,
+        -462.59051513671875,
+        23.63599967956543,
+        7.372499942779541,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_05": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        23.687000274658203,
+        7.310500144958496,
+        -462.5920104980469,
+        23.753000259399414,
+        7.376500129699707,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_06": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        23.814929962158203,
+        7.324230670928955,
+        -462.6026306152344,
+        23.851070404052734,
+        7.382999897003174,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_07": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        23.57900047302246,
+        7.428500175476074,
+        -462.5920104980469,
+        23.635000228881836,
+        7.484499931335449,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_08": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        23.69099998474121,
+        7.427499771118164,
+        -462.59051513671875,
+        23.749000549316406,
+        7.485499858856201,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_09": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        23.814929962158203,
+        7.437231063842773,
+        -462.6026306152344,
+        23.851070404052734,
+        7.495999813079834,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_10": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        23.573999404907227,
+        7.536499977111816,
+        -462.5920104980469,
+        23.639999389648438,
+        7.602499961853027,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_11": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        23.701929092407227,
+        7.550230979919434,
+        -462.6026306152344,
+        23.738069534301758,
+        7.609000205993652,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C1R_12": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        23.804000854492188,
+        7.540500164031982,
+        -462.59051513671875,
+        23.86199951171875,
+        7.598499774932861,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "SectionStatic_52_CONTROL": {
+      "triangles": 336,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_cable_red"
+      ],
+      "bounds_xyz": [
+        20.588895797729492,
+        6.3520002365112305,
+        -463.4049987792969,
+        32.987998962402344,
+        8.925434112548828,
+        -461.5780029296875
+      ],
+      "visible": true
+    },
+    "SectionStatic_53_CONTROL": {
+      "triangles": 1004,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        21.11199951171875,
+        8.085000038146973,
+        -463.47601318359375,
+        32.987998962402344,
+        8.97599983215332,
+        -461.7179870605469
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_01": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.148929595947266,
+        7.211230754852295,
+        -462.6026306152344,
+        25.185070037841797,
+        7.269999980926514,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_02": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        25.25200080871582,
+        7.202499866485596,
+        -462.5920104980469,
+        25.308000564575195,
+        7.258500099182129,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_03": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.36400032043457,
+        7.201499938964844,
+        -462.59051513671875,
+        25.422000885009766,
+        7.259500026702881,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_04": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.13800048828125,
+        7.314499855041504,
+        -462.59051513671875,
+        25.195999145507812,
+        7.372499942779541,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_05": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        25.246999740600586,
+        7.310500144958496,
+        -462.5920104980469,
+        25.312999725341797,
+        7.376500129699707,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_06": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.374929428100586,
+        7.324230670928955,
+        -462.6026306152344,
+        25.411069869995117,
+        7.382999897003174,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_07": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        25.138999938964844,
+        7.428500175476074,
+        -462.5920104980469,
+        25.19499969482422,
+        7.484499931335449,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_08": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.250999450683594,
+        7.427499771118164,
+        -462.59051513671875,
+        25.30900001525879,
+        7.485499858856201,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_09": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.374929428100586,
+        7.437231063842773,
+        -462.6026306152344,
+        25.411069869995117,
+        7.495999813079834,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_10": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        25.134000778198242,
+        7.536499977111816,
+        -462.5920104980469,
+        25.200000762939453,
+        7.602499961853027,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_11": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.261930465698242,
+        7.550230979919434,
+        -462.6026306152344,
+        25.298070907592773,
+        7.609000205993652,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2L_12": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.36400032043457,
+        7.540500164031982,
+        -462.59051513671875,
+        25.422000885009766,
+        7.598499774932861,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_01": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        26.588930130004883,
+        7.211230754852295,
+        -462.6026306152344,
+        26.625070571899414,
+        7.269999980926514,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_02": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        26.691999435424805,
+        7.202499866485596,
+        -462.5920104980469,
+        26.74799919128418,
+        7.258500099182129,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_03": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        26.804000854492188,
+        7.201499938964844,
+        -462.59051513671875,
+        26.86199951171875,
+        7.259500026702881,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_04": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        26.577999114990234,
+        7.314499855041504,
+        -462.59051513671875,
+        26.63599967956543,
+        7.372499942779541,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_05": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        26.687000274658203,
+        7.310500144958496,
+        -462.5920104980469,
+        26.753000259399414,
+        7.376500129699707,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_06": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        26.814929962158203,
+        7.324230670928955,
+        -462.6026306152344,
+        26.851070404052734,
+        7.382999897003174,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_07": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        26.57900047302246,
+        7.428500175476074,
+        -462.5920104980469,
+        26.635000228881836,
+        7.484499931335449,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_08": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        26.69099998474121,
+        7.427499771118164,
+        -462.59051513671875,
+        26.749000549316406,
+        7.485499858856201,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_09": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        26.814929962158203,
+        7.437231063842773,
+        -462.6026306152344,
+        26.851070404052734,
+        7.495999813079834,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_10": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        26.573999404907227,
+        7.536499977111816,
+        -462.5920104980469,
+        26.639999389648438,
+        7.602499961853027,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_11": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        26.701929092407227,
+        7.550230979919434,
+        -462.6026306152344,
+        26.738069534301758,
+        7.609000205993652,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C2R_12": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_red"
+      ],
+      "bounds_xyz": [
+        26.80299949645996,
+        7.5395002365112305,
+        -462.5920104980469,
+        26.863000869750977,
+        7.5995001792907715,
+        -462.56201171875
+      ],
+      "visible": true
+    },
+    "SectionStatic_78_CONTROL": {
+      "triangles": 84,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_opal"
+      ],
+      "bounds_xyz": [
+        25.647499084472656,
+        8.085000038146973,
+        -463.0740051269531,
+        25.888500213623047,
+        8.274999618530273,
+        -463.05999755859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_01": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        28.148929595947266,
+        7.211230754852295,
+        -462.6026306152344,
+        28.185070037841797,
+        7.269999980926514,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_02": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        28.25200080871582,
+        7.202499866485596,
+        -462.5920104980469,
+        28.308000564575195,
+        7.258500099182129,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_03": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        28.36400032043457,
+        7.201499938964844,
+        -462.59051513671875,
+        28.422000885009766,
+        7.259500026702881,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_04": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        28.13800048828125,
+        7.314499855041504,
+        -462.59051513671875,
+        28.195999145507812,
+        7.372499942779541,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_05": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        28.246999740600586,
+        7.310500144958496,
+        -462.5920104980469,
+        28.312999725341797,
+        7.376500129699707,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_06": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        28.374929428100586,
+        7.324230670928955,
+        -462.6026306152344,
+        28.411069869995117,
+        7.382999897003174,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_07": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        28.138999938964844,
+        7.428500175476074,
+        -462.5920104980469,
+        28.19499969482422,
+        7.484499931335449,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_08": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        28.250999450683594,
+        7.427499771118164,
+        -462.59051513671875,
+        28.30900001525879,
+        7.485499858856201,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_09": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        28.374929428100586,
+        7.437231063842773,
+        -462.6026306152344,
+        28.411069869995117,
+        7.495999813079834,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_10": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        28.134000778198242,
+        7.536499977111816,
+        -462.5920104980469,
+        28.200000762939453,
+        7.602499961853027,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_11": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        28.261930465698242,
+        7.550230979919434,
+        -462.6026306152344,
+        28.298070907592773,
+        7.609000205993652,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3L_12": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        28.36400032043457,
+        7.540500164031982,
+        -462.59051513671875,
+        28.422000885009766,
+        7.598499774932861,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_01": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        29.588930130004883,
+        7.211230754852295,
+        -462.6026306152344,
+        29.625070571899414,
+        7.269999980926514,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_02": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        29.691999435424805,
+        7.202499866485596,
+        -462.5920104980469,
+        29.74799919128418,
+        7.258500099182129,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_03": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        29.804000854492188,
+        7.201499938964844,
+        -462.59051513671875,
+        29.86199951171875,
+        7.259500026702881,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_04": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        29.577999114990234,
+        7.314499855041504,
+        -462.59051513671875,
+        29.63599967956543,
+        7.372499942779541,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_05": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        29.687000274658203,
+        7.310500144958496,
+        -462.5920104980469,
+        29.753000259399414,
+        7.376500129699707,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_06": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        29.814929962158203,
+        7.324230670928955,
+        -462.6026306152344,
+        29.851070404052734,
+        7.382999897003174,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_07": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        29.57900047302246,
+        7.428500175476074,
+        -462.5920104980469,
+        29.635000228881836,
+        7.484499931335449,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_08": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        29.69099998474121,
+        7.427499771118164,
+        -462.59051513671875,
+        29.749000549316406,
+        7.485499858856201,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_09": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        29.814929962158203,
+        7.437231063842773,
+        -462.6026306152344,
+        29.851070404052734,
+        7.495999813079834,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_10": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        29.573999404907227,
+        7.536499977111816,
+        -462.5920104980469,
+        29.639999389648438,
+        7.602499961853027,
+        -462.5539855957031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_11": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        29.701929092407227,
+        7.550230979919434,
+        -462.6026306152344,
+        29.738069534301758,
+        7.609000205993652,
+        -462.531005859375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_CONTROL_C3R_12": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        29.804000854492188,
+        7.540500164031982,
+        -462.59051513671875,
+        29.86199951171875,
+        7.598499774932861,
+        -462.5635070800781
+      ],
+      "visible": true
+    },
+    "SectionStatic_103_WORKBAY": {
+      "triangles": 56,
+      "collision_contract": "none",
+      "materials": [
+        "ASTRAEA_dense_instrument_pigment"
+      ],
+      "bounds_xyz": [
+        21.81679916381836,
+        6.432499885559082,
+        -408.53900146484375,
+        33.584999084472656,
+        8.702500343322754,
+        -400.81201171875
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_01": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        24.910429000854492,
+        6.993230819702148,
+        -401.5830078125,
+        24.946569442749023,
+        7.052000045776367,
+        -401.5113830566406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_02": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        25.00349998474121,
+        6.984499931335449,
+        -401.55999755859375,
+        25.059499740600586,
+        7.040500164031982,
+        -401.5220031738281
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_03": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        24.899499893188477,
+        7.08650016784668,
+        -401.5505065917969,
+        24.957500457763672,
+        7.144499778747559,
+        -401.52349853515625
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_04": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        24.99850082397461,
+        7.082499980926514,
+        -401.55999755859375,
+        25.06450080871582,
+        7.148499965667725,
+        -401.5220031738281
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_05": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        24.90049934387207,
+        7.190499782562256,
+        -401.55999755859375,
+        24.956499099731445,
+        7.246500015258789,
+        -401.5220031738281
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_06": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.002500534057617,
+        7.189499855041504,
+        -401.5505065917969,
+        25.06049919128418,
+        7.247499942779541,
+        -401.52349853515625
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_07": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        24.89550018310547,
+        7.28849983215332,
+        -401.55999755859375,
+        24.96150016784668,
+        7.354499816894531,
+        -401.5220031738281
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_08": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.013429641723633,
+        7.3022308349609375,
+        -401.5830078125,
+        25.049570083618164,
+        7.361000061035156,
+        -401.5113830566406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_09": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        24.899499893188477,
+        7.395500183105469,
+        -401.5505065917969,
+        24.957500457763672,
+        7.453499794006348,
+        -401.52349853515625
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_10": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.013429641723633,
+        7.40523099899292,
+        -401.5830078125,
+        25.049570083618164,
+        7.464000225067139,
+        -401.5113830566406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_11": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        24.910429000854492,
+        7.508230686187744,
+        -401.5830078125,
+        24.946569442749023,
+        7.566999912261963,
+        -401.5113830566406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_SCOPE_12": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.002500534057617,
+        7.498499870300293,
+        -401.5505065917969,
+        25.06049919128418,
+        7.55649995803833,
+        -401.52349853515625
+      ],
+      "visible": true
+    },
+    "SectionStatic_116_WORKBAY": {
+      "triangles": 2048,
+      "collision_contract": "static_surface",
+      "materials": [
+        "ASTRAEA_staff_cable_red"
+      ],
+      "bounds_xyz": [
+        20.91200065612793,
+        6.994592189788818,
+        -408.70098876953125,
+        33.480953216552734,
+        9.275433540344238,
+        -400.968994140625
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_01": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        28.779430389404297,
+        6.958230972290039,
+        -401.5679931640625,
+        28.815570831298828,
+        7.017000198364258,
+        -401.4963684082031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_02": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        28.874500274658203,
+        6.94950008392334,
+        -401.5450134277344,
+        28.930500030517578,
+        7.005499839782715,
+        -401.5069885253906
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_03": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        28.76849937438965,
+        7.053500175476074,
+        -401.5354919433594,
+        28.826499938964844,
+        7.111499786376953,
+        -401.5085144042969
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_04": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        28.86949920654297,
+        7.049499988555908,
+        -401.5450134277344,
+        28.93549919128418,
+        7.115499973297119,
+        -401.5069885253906
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_05": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        28.769500732421875,
+        7.1595001220703125,
+        -401.5450134277344,
+        28.82550048828125,
+        7.2154998779296875,
+        -401.5069885253906
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_06": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        28.87350082397461,
+        7.1585001945495605,
+        -401.5354919433594,
+        28.931499481201172,
+        7.2164998054504395,
+        -401.5085144042969
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_07": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        28.76449966430664,
+        7.259500026702881,
+        -401.5450134277344,
+        28.83049964904785,
+        7.325500011444092,
+        -401.5069885253906
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_08": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        28.884429931640625,
+        7.273231029510498,
+        -401.5679931640625,
+        28.920570373535156,
+        7.331999778747559,
+        -401.4963684082031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_09": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        28.76849937438965,
+        7.368500232696533,
+        -401.5354919433594,
+        28.826499938964844,
+        7.426499843597412,
+        -401.5085144042969
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_10": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        28.884429931640625,
+        7.378231048583984,
+        -401.5679931640625,
+        28.920570373535156,
+        7.436999797821045,
+        -401.4963684082031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_11": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        28.779430389404297,
+        7.483231067657471,
+        -401.5679931640625,
+        28.815570831298828,
+        7.541999816894531,
+        -401.4963684082031
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_MORALE_12": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_red"
+      ],
+      "bounds_xyz": [
+        28.872499465942383,
+        7.472499847412109,
+        -401.5369873046875,
+        28.9325008392334,
+        7.53249979019165,
+        -401.5069885253906
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_01": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        23.481929779052734,
+        7.150731086730957,
+        -408.390625,
+        23.518070220947266,
+        7.209499835968018,
+        -408.3190002441406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_02": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        23.601999282836914,
+        7.142000198364258,
+        -408.3800048828125,
+        23.658000946044922,
+        7.197999954223633,
+        -408.3420104980469
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_03": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        23.731000900268555,
+        7.140999794006348,
+        -408.3785095214844,
+        23.788999557495117,
+        7.198999881744385,
+        -408.35150146484375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_04": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        23.481929779052734,
+        7.290730953216553,
+        -408.390625,
+        23.518070220947266,
+        7.3495001792907715,
+        -408.3190002441406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_05": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        23.601999282836914,
+        7.2820000648498535,
+        -408.3800048828125,
+        23.658000946044922,
+        7.3379998207092285,
+        -408.3420104980469
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_06": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        23.731000900268555,
+        7.281000137329102,
+        -408.3785095214844,
+        23.788999557495117,
+        7.339000225067139,
+        -408.35150146484375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_07": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        23.47100067138672,
+        7.421000003814697,
+        -408.3785095214844,
+        23.52899932861328,
+        7.479000091552734,
+        -408.35150146484375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_08": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        23.597000122070312,
+        7.416999816894531,
+        -408.3800048828125,
+        23.663000106811523,
+        7.482999801635742,
+        -408.3420104980469
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_09": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        23.74193000793457,
+        7.430730819702148,
+        -408.390625,
+        23.7780704498291,
+        7.489500045776367,
+        -408.3190002441406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_10": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        23.47100067138672,
+        7.560999870300293,
+        -408.3785095214844,
+        23.52899932861328,
+        7.61899995803833,
+        -408.35150146484375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_11": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        23.597000122070312,
+        7.557000160217285,
+        -408.3800048828125,
+        23.663000106811523,
+        7.623000144958496,
+        -408.3420104980469
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_12": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        23.74193000793457,
+        7.570730686187744,
+        -408.390625,
+        23.7780704498291,
+        7.629499912261963,
+        -408.3190002441406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_13": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        25.23200035095215,
+        7.142000198364258,
+        -408.3800048828125,
+        25.288000106811523,
+        7.197999954223633,
+        -408.3420104980469
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_14": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.361000061035156,
+        7.140999794006348,
+        -408.3785095214844,
+        25.41900062561035,
+        7.198999881744385,
+        -408.35150146484375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_15": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.501930236816406,
+        7.150731086730957,
+        -408.390625,
+        25.538070678710938,
+        7.209499835968018,
+        -408.3190002441406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_16": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        25.23200035095215,
+        7.2820000648498535,
+        -408.3800048828125,
+        25.288000106811523,
+        7.3379998207092285,
+        -408.3420104980469
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_17": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.361000061035156,
+        7.281000137329102,
+        -408.3785095214844,
+        25.41900062561035,
+        7.339000225067139,
+        -408.35150146484375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_18": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.501930236816406,
+        7.290730953216553,
+        -408.390625,
+        25.538070678710938,
+        7.3495001792907715,
+        -408.3190002441406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_19": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        25.226999282836914,
+        7.416999816894531,
+        -408.3800048828125,
+        25.292999267578125,
+        7.482999801635742,
+        -408.3420104980469
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_20": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.371929168701172,
+        7.430730819702148,
+        -408.390625,
+        25.408069610595703,
+        7.489500045776367,
+        -408.3190002441406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_21": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.490999221801758,
+        7.421000003814697,
+        -408.3785095214844,
+        25.548999786376953,
+        7.479000091552734,
+        -408.35150146484375
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_22": {
+      "triangles": 56,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_rubber",
+        "ASTRAEA_staff_label"
+      ],
+      "bounds_xyz": [
+        25.226999282836914,
+        7.557000160217285,
+        -408.3800048828125,
+        25.292999267578125,
+        7.623000144958496,
+        -408.3420104980469
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_23": {
+      "triangles": 64,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_zinc",
+        "ASTRAEA_staff_white_paint"
+      ],
+      "bounds_xyz": [
+        25.371929168701172,
+        7.570730686187744,
+        -408.390625,
+        25.408069610595703,
+        7.629499912261963,
+        -408.3190002441406
+      ],
+      "visible": true
+    },
+    "ACT_ENG2_WORKBAY_TEST_RACK_24": {
+      "triangles": 44,
+      "collision_contract": "actuator_no_body_contact",
+      "materials": [
+        "ASTRAEA_staff_cable_blue"
+      ],
+      "bounds_xyz": [
+        25.490999221801758,
+        7.560999870300293,
+        -408.3785095214844,
+        25.548999786376953,
+        7.61899995803833,
+        -408.35150146484375
+      ],
+      "visible": true
+    }
+  },
+  "mesh_group_count": 153,
+  "glass_material_exact_matches_original_export": true,
+  "required_glass_proxy_count": 10
+}

@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "status": "INSTALLED_FOCUSED_CHECKED_VISUAL_FIRST_PASS_UNFINISHED",
+  "recorded_utc": "2026-10-06T08:45:48.677421+00:00",
+  "source_export_equivalence": {
+    "greenery": {
+      "assets": 23,
+      "triangles": 77258,
+      "batches": 103,
+      "keeper_unchanged": true
+    },
+    "envelope": {
+      "source_meshes": 125,
+      "runtime_meshes": 47,
+      "triangles": 2208
+    },
+    "wayfinding": {
+      "boards": 11,
+      "meshes": 111,
+      "triangles": 20796
+    },
+    "leisure_displays": {
+      "assemblies": 4,
+      "meshes": 99,
+      "evaluated_triangles": 13268
+    },
+    "all_editable_source_bytes_unchanged": true,
+    "source_retained_commit": "1b0e0061e3763539e364d0c53de4160f3a662f69",
+    "preintegration_full_Game_retained_commit": "6da47fc28d37a5addd3fee0f166fef61a52e23e3",
+    "preintegration_Game_file_count_verified": 3027
+  },
+  "installed_furnishings": {
+    "original_preserved": 51,
+    "retained_stock_additions": 48,
+    "botanical_additions": 23,
+    "display_additions": 4,
+    "logical_total": 126
+  },
+  "focused_checks": [
+    {
+      "check": "grand_pool_finish",
+      "status": "PASS",
+      "receipt": "validation/grand_pool_finish_20261006/evidence/grand_pool_finish/validation_grand_pool_finish_fixed60.json",
+      "receipt_sha256": "28677960bfb3590962c0a81de9a8bee1ba119c06c6aaa9a8136dee5ecbd9bb7d",
+      "log": "validation/grand_pool_finish_20261006/evidence/grand_pool_finish/grand_pool_finish_005.log",
+      "log_sha256": "bc5faa87d6769d8505f3e6e943e2bab4a0de733cb2bc0e96e566741fb7b6975f",
+      "wall_seconds": 31.4634
+    },
+    {
+      "check": "grand_pool_first_pass",
+      "status": "PASS",
+      "receipt": "validation/grand_pool_finish_20261006/evidence/grand_pool_first_pass/grand_pool_first_pass_after_finish_001.json",
+      "receipt_sha256": "743c9462001e02df7cbc109b56e6e437e38974f9aaaf8442917d818508f8dc81",
+      "log": "validation/grand_pool_finish_20261006/evidence/grand_pool_first_pass/grand_pool_first_pass_after_finish_001.log",
+      "log_sha256": "12e516413283830fbdf4ed1a6cd71285194f306226945eae06395137610caeab",
+      "wall_seconds": 40.0542
+    },
+    {
+      "check": "grand_pool_access",
+      "status": "PASS",
+      "receipt": "validation/grand_pool_finish_20261006/evidence/grand_pool_access/grand_pool_access_after_finish_001.json",
+      "receipt_sha256": "5fb1f3f1e1eb337c503014fedf3311f1b3000a10f26e6aa4059a57a79c71c551",
+      "log": "validation/grand_pool_finish_20261006/evidence/grand_pool_access/grand_pool_access_after_finish_001.log",
+      "log_sha256": "9210d88b6df09e02127498d1c012c6eee5b2a693feafe4e19b93ca56418cb00a",
+      "wall_seconds": 47.8108
+    }
+  ],
+  "new_gate": {
+    "supported_exported_roots_and_feet": 2457,
+    "retained_crown_joints": 5,
+    "physical_crown_inside_samples": 70,
+    "walked_stock_approaches": 6,
+    "specific_sign_backing_sightlines": 11,
+    "housed_screen_images": 4,
+    "seated_screen_probes": 120,
+    "new_source_lights": 14,
+    "selected_new_source_lights": 14,
+    "unchanged_maximum_shadow_sources": 8,
+    "shared_renderer_changed": false
+  },
+  "actual_visual_review": {
+    "capture_run": "grand-pool-finish-002",
+    "capture_execution": "PASS, 125.48 seconds",
+    "images_inspected": [
+      {
+        "path": "validation/grand_pool_finish_20261006/evidence/capture002/grand_pool_market_bays_clear_world_capture.png",
+        "sha256": "a5f5038852c6726d7db89de1eda61fe8b0d60ca285758a9f0af0c0f3b71a95da",
+        "inspected": true
+      },
+      {
+        "path": "validation/grand_pool_finish_20261006/evidence/capture002/grand_pool_market_bays_presentation_capture.png",
+        "sha256": "42cf453bcdc0c89c0f2974c12073d79c5426f524c7c3a238a50246c08287ff09",
+        "inspected": true
+      },
+      {
+        "path": "validation/grand_pool_finish_20261006/evidence/capture002/grand_pool_long_view_clear_world_capture.png",
+        "sha256": "ed40a366b1f8e26a339936e13334b12cb3b399cd42e88287d857ab0a158bba52",
+        "inspected": true
+      },
+      {
+        "path": "validation/grand_pool_finish_20261006/evidence/capture002/grand_pool_long_view_presentation_capture.png",
+        "sha256": "fd6ac0583116455e8daf9c31ced4595e26c9783669b996aa01392dd46738f83b",
+        "inspected": true
+      }
+    ],
+    "findings": [
+      "Installed market bay now has real stocked shelving, a housed SunCorp display, fuller layered greenery and source-like materials.",
+      "Normal and effects-off long views still show broad flat gray wall/ceiling volumes, limited architectural hierarchy and weak focal composition.",
+      "Plant fullness improved but rear fan crowns are rigid and dark; palette-role variation and spatial composition need further authorship.",
+      "This is partial progress review. Other captured views, actual seated camera frames and final art are not accepted."
+    ],
+    "first_pass_accepted": false
+  },
+  "known_preserved_failures": [
+    "Initial normal rounding exports rejected; r002 fixes export precision without source/vendor-file/tolerance changes.",
+    "Initial focused test used conservative rotated AABB for tilted books; corrected to actual imported vertices.",
+    "Receiver rays initially hit their own intended physical terminal surfaces; free-space selection sample20mm lightward now separately checked.",
+    "Strengthenedall14lightselection test initially lacked east-terrace viewpoints; actual supported sampling proved finalfixtureworks; no light/budget change."
+  ],
+  "pending_gates": [
+    "grand_pool_local_lift after additions",
+    "grand_pool_service_cart after additions",
+    "lighting_budget focused rerun and full112check regression after coordinated engineering adoption",
+    "actual seated normal/effects-off display captures",
+    "all11 rendered sign readability acceptance",
+    "architectural composition and coherent first-pass material/light completion",
+    "target-platform performance"
+  ],
+  "full_suite_note": "Existing matched111receipt predates these pool additions and remains preserved; no full112pass claimed.",
+  "runtime_file_allowlist_sha256": "8d7d9649eaab755256ffd2b70898a97f5a9aa3bb9c715f78c164b018e6c800cc",
+  "source_file_allowlist_sha256": "4f6ab6a10c2b09019b184989231dc031aef5c1e90314cdfb920059491d646bc4",
+  "library_progress_image": "libfile_2b8690eff5ec81918ce217edc831d8a9",
+  "evidence_base": "res://docs/validation/grand_pool_finish_20261006"
+}
