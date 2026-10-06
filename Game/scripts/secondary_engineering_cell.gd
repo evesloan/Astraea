@@ -87,4 +87,5 @@ static func build(parent: Node3D, ship: Node3D) -> Dictionary:
 			light.set_meta("illumination_anchor",anchor)
 			# Existing selector admits only the independently proven real lit receiver.
 			# Source position/range remain exactly source-backed; no selector edit.
+	load("res://scripts/engineering_cell_signage.gd").build(wrapper,gate)
 	return data

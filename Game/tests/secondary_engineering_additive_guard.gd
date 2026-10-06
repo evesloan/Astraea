@@ -35,6 +35,9 @@ static func validate_pinned_input(path: String, historical_sha: String) -> void:
 		if previous.has("capture_audit_file"):
 			assert(FileAccess.get_sha256("res://"+str(previous.capture_audit_file))==str(previous.capture_audit_sha256))
 		return
+	if path=="scripts/presentation.gd":
+		assert(load("res://tests/engineering_signage_capture_successor.gd").validate_successor(path,historical_sha,actual,previous))
+		return
 	var successor := theater_successor()
 	assert(successor.explicit_runtime_pin_successors.has(path),"No exact theater input successor: "+path)
 	var input: Dictionary = successor.explicit_runtime_pin_successors[path]

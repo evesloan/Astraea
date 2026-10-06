@@ -166,6 +166,7 @@ func advance(count: int, inspect_leaf := true) -> bool:
 		frames += 1
 		if not require(frames <= MAX_FRAMES, "Derived 30000-frame route/control allowance exceeded"): return false
 		if inspect_leaf and is_instance_valid(gate) and not leaf_clear(): return false
+		if is_instance_valid(built) and not require(load("res://scripts/engineering_cell_signage.gd").live_binding_valid(built),"Exact additive sign/leaf binding changed during real gate route"): return false
 		if parked and not parked_cart_state(): return false
 	return true
 
@@ -202,7 +203,8 @@ func mesh_and_contact_census() -> bool:
 	# contract count and model hash, never a >= comparison or skipped group.
 	var source_triangles := int(data.source_triangles)
 	if not require(data.mesh_group_count == SOURCE_GROUPS and source_triangles > 0, "Frozen 153-group source census missing"): return false
-	var meshes := built.find_children("*", "MeshInstance3D", true, false)
+	var meshes: Array[MeshInstance3D] = load("res://scripts/engineering_cell_signage.gd").exact_core_meshes(built,data)
+	if not require(load("res://tests/engineering_signage_source_guard.gd").validate(built),"Actual additive signage backing/imported ink proof did not complete"): return false
 	if not require(meshes.size() == SOURCE_GROUPS, "Imported source group census differs from 153"): return false
 	var seen: Dictionary = {}
 	var triangles := 0
@@ -544,7 +546,7 @@ func clipped_inside_band(polygon: Array, band: Dictionary) -> bool:
 func dump_imported_source_geometry() -> void:
 	var values := PackedFloat32Array()
 	var records: Array=[]
-	for item in built.find_children("*","MeshInstance3D",true,false):
+	for item in load("res://scripts/engineering_cell_signage.gd").exact_core_meshes(built,data):
 		var mesh := item as MeshInstance3D
 		var first := values.size()/9
 		var faces := mesh.mesh.get_faces()
