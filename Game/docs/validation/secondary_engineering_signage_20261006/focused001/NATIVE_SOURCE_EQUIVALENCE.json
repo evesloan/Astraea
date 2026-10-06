@@ -1,0 +1,63 @@
+{
+  "status": "NATIVE_RENDER_SOURCE_EQUIVALENCE_PASS",
+  "source_sha256": "985fec01390bc3ccf3543df9062ce8ce448a99014e5a92695dea8390b1b990b1",
+  "native_input_sha256": {
+    "engineering_signage_imported_source.json": "31157e44585a80b2c7fef7a5a5ea4c1b63147fa88598bc5a03b6003b0a01aa1a",
+    "engineering_signage_triangles.float32": "f9401825e37fcf90be58c70aa90a7126de05b32b003b7b266a99c379c661512b",
+    "engineering_signage_uv.float32": "30edc76e1d6a31387611dafc8d4f36a9772cfb6baf5bccb33547d7fa013fc5ea"
+  },
+  "triangles": 6672,
+  "position_tolerance": "At most2float32ULPs independently per coordinate (floor1e-7m); source plane/UV/material/topology never substituted. Existing real collision and0.15\u20130.25mm ink gap gates remain separate.",
+  "uv_absolute_tolerance": 1e-06,
+  "winding_policy": "Only cyclic-equivalent Godot reversal (odd permutations) of each frozen glTF source triangle; isolated opposite winding is rejected.",
+  "engine_source": "https://github.com/godotengine/godot/blob/4.6.3-stable/modules/gltf/gltf_document.cpp",
+  "records": [
+    {
+      "node": "SIGN_FIXED_EAST_HEADER",
+      "material": "ASTRAEA_staff_label",
+      "triangles": 12,
+      "max_position_error_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_uv_error": 0.0,
+      "actual_corner_permutations": {
+        "(0, 2, 1)": 12
+      },
+      "every_source_triangle_used_once": true
+    },
+    {
+      "node": "SIGN_FIXED_EAST_HEADER",
+      "material": "ASTRAEA_staff_rubber",
+      "triangles": 3232,
+      "max_position_error_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_uv_error": 0.0,
+      "actual_corner_permutations": {
+        "(0, 2, 1)": 3232
+      },
+      "every_source_triangle_used_once": true
+    },
+    {
+      "node": "SIGN_MOVING_GLASS_LEAF",
+      "material": "ASTRAEA_staff_label",
+      "triangles": 3428,
+      "max_position_error_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_uv_error": 0.0,
+      "actual_corner_permutations": {
+        "(0, 2, 1)": 3428
+      },
+      "every_source_triangle_used_once": true
+    }
+  ],
+  "visual_readability_accepted": false,
+  "physics_scope": "Separate existing gate/steps/tools test; these native arrays are not collision proof."
+}

@@ -1,0 +1,57 @@
+{
+  "status": "PASS_POOL_FEATURE_FOCUSED_AFTER_CLASSIFIED_IMPORT002",
+  "started_utc": "2026-10-06T18:28:56.971931+00:00",
+  "manifest_sha256": "82ebeb5bd6440c2fabfd895386a5060e79f53ea8d1b8bbc686b8893eb88ba288",
+  "scope": "No re-import. Reuse classified import002 and unchanged asset/source pins; run registered pool architecture and unchanged lighting-budget smoke.",
+  "checks": [
+    {
+      "check": "grand_pool_architecture",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 32.2994,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--quit-after",
+        "12000",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/validate_grand_pool_architecture.gd"
+      ]
+    },
+    {
+      "check": "lighting_budget",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 27.7254,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--quit-after",
+        "2400",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/validate_lighting_budget.gd"
+      ]
+    }
+  ],
+  "full_suite": false,
+  "visual_acceptance": false,
+  "prior_import_receipt_sha256": "dea981d36bc58dc464f0ed09bb9f9b02d33503f57f34e7826f4bc158566ad616",
+  "direction_control_sha256": "b3c53da6ad3c214e872a514339f34b8b7ca7f7da127dd433966166dc8f9bba9e",
+  "installed_feature_physical_check": true,
+  "lighting_budget_smoke": true,
+  "aggregate_full_suite": false,
+  "finished_utc": "2026-10-06T18:29:59.450209+00:00",
+  "source_final_sha256": "b5a2f2f8fe40c787bdc6acdb1489aa6ddd232fc52499de44b7f01624a1f6caec",
+  "source_after_import_unchanged": true,
+  "head_and_index_unchanged": true
+}

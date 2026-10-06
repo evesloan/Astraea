@@ -1,0 +1,32 @@
+{
+  "status": "STOPPED_PRESERVE_FIRST_FAILURE",
+  "started_utc": "2026-10-06T18:17:19.476665+00:00",
+  "manifest_sha256": "82ebeb5bd6440c2fabfd895386a5060e79f53ea8d1b8bbc686b8893eb88ba288",
+  "scope": "One import; registered pool architecture with feature helper; unchanged lighting-budget smoke. Not a full suite.",
+  "checks": [
+    {
+      "check": "import",
+      "passed": false,
+      "returncode": -15,
+      "errors": [
+        "ERROR: Condition \"err != OK\" is true."
+      ],
+      "seconds": 3.0386,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--editor",
+        "--quit"
+      ]
+    }
+  ],
+  "full_suite": false,
+  "visual_acceptance": false,
+  "error": "RuntimeError('Stopped at first failed check: import')",
+  "finished_utc": "2026-10-06T18:17:23.026090+00:00",
+  "source_final_sha256": "1e60f84376482ca9ede7b8c2b0430e1094d9bcad104447549f272533128e8c82",
+  "source_after_import_unchanged": null,
+  "head_and_index_unchanged": true
+}

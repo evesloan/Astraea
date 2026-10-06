@@ -1,0 +1,11 @@
+--- approved_draft/tests/engineering_signage_capture_successor.gd
++++ trial_stage/tests/engineering_signage_capture_successor.gd
+@@ -1,7 +1,7 @@
+ extends RefCounted
+ # Signage capture only; no audio listener or blocked controls adoption.
+ const PROOF := "res://docs/ENGINEERING_SIGNAGE_CAPTURE_ADOPTION.json"
+-const PROOF_SHA := "07133315b0b07c5d37b333aff4793bf340a408e14d417d49c3599757a2baea5c"
++const PROOF_SHA := "1ecbca67f63b0c03322a9a003d68ebb550a0e5cec4a16c88c1e7d33bf18afb3a"
+ static func validate_successor(path: String, historical: String, actual: String, section: Dictionary) -> bool:
+ 	if path!="scripts/presentation.gd": return false
+ 	assert(FileAccess.get_sha256(PROOF)==PROOF_SHA)
