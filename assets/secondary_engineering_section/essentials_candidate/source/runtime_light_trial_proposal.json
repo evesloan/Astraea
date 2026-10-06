@@ -1,0 +1,101 @@
+{
+  "scope": "Proposed local instance settings only; never shared profile edits; requires actual Godot test and visual review",
+  "accepted": false,
+  "shadow_cap": 8,
+  "source_position_changes": false,
+  "preserve_glass_material_collision": true,
+  "new_sources": 0,
+  "lights": [
+    {
+      "marker": "DATUM_plant_inspection_n",
+      "expected_emitter_xyz": [
+        31,
+        10.145,
+        -437
+      ],
+      "aim_xyz": [
+        30,
+        8.5,
+        -432.9
+      ],
+      "range_m": 9,
+      "energy": 2,
+      "spot_angle": 65,
+      "shadow_enabled": true
+    },
+    {
+      "marker": "DATUM_plant_inspection_s",
+      "expected_emitter_xyz": [
+        38,
+        10.145,
+        -427
+      ],
+      "aim_xyz": [
+        39,
+        8.5,
+        -431.1
+      ],
+      "range_m": 9,
+      "energy": 2,
+      "spot_angle": 65,
+      "shadow_enabled": true
+    },
+    {
+      "marker": "DATUM_workbay_task",
+      "expected_emitter_xyz": [
+        27,
+        9.145,
+        -405
+      ],
+      "aim_xyz": [
+        26.5,
+        7,
+        -401.4
+      ],
+      "range_m": 8.5,
+      "energy": 1.6,
+      "spot_angle": 65,
+      "shadow_enabled": true
+    },
+    {
+      "marker": "DATUM_control_task",
+      "expected_emitter_xyz": [
+        26,
+        8.845,
+        -459
+      ],
+      "aim_xyz": [
+        26,
+        7.4,
+        -462.95
+      ],
+      "range_m": 7,
+      "energy": 1.4,
+      "spot_angle": 65,
+      "shadow_enabled": true
+    },
+    {
+      "marker": "DATUM_isolation_task",
+      "expected_emitter_xyz": [
+        36,
+        9.145,
+        -443
+      ],
+      "aim_xyz": [
+        36,
+        7.2,
+        -441.4
+      ],
+      "range_m": 6,
+      "energy": 1.2,
+      "spot_angle": 65,
+      "shadow_enabled": true
+    }
+  ],
+  "limits": [
+    "Both endcaps are self-occluded from existing inspection fixtures",
+    "Source Blender watts are not Godot light-energy calibration",
+    "Preserve global source selection and verify active lists during motion",
+    "No unexplained/unshadowed fill or renderer override"
+  ]
+}
