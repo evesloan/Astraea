@@ -349,11 +349,12 @@ func floor_face_diagnostic(label: String,expected: PackedVector3Array,actual: Pa
 
 func validate_floors() -> void:
 	var generated := read_json("res://data/generated/structural_meshes.json")
+	var engineering_floors: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").validate(generated)
 	var layout := read_json("res://data/spatial_layout.json")
 	var old_hashes: Dictionary = JSON.parse_string(OLD_RECORD_HASHES_JSON)
 	var aft_hashes: Dictionary = JSON.parse_string(AFT_RECORD_HASHES_JSON)
 	var pool_floors: Dictionary = JSON.parse_string(GRAND_POOL_FLOORS_JSON)
-	check(generated.regions.size()==258 and old_hashes.size()==245 and aft_hashes.size()==4 and pool_floors.size()==8,"Exactly258 owners: unchanged245 + four retained aft floors + retained D17 + eight approved pool-market additions")
+	check(generated.regions.size()==261 and engineering_floors.size()==3 and old_hashes.size()==245 and aft_hashes.size()==4 and pool_floors.size()==8,"Exactly261 owners: three engineering additions + unchanged245 + four retained aft floors + retained D17 + eight approved pool-market additions")
 	var d17_owned: Array = layout.regions.filter(func(row:Dictionary)->bool:return str(row.get("authoring_owner",""))=="d17_connected_house")
 	if check(d17_owned.size()==1,"Exactly one approved authored D17 region required"):
 		check(str(d17_owned[0].id)==D17_FLOOR_ID and canonical(d17_owned[0]).sha256_text()==D17_LAYOUT_SHA,"Approved D17 layout identity changed")
@@ -383,6 +384,8 @@ func validate_floors() -> void:
 			check(canonical(region).sha256_text()==D17_FLOOR_SHA,"Approved additive D17 compiled record changed")
 			check(str(region.deck)=="D17" and absf(float(region.floor_y)-102.0)<EPS and absf(float(region.thickness)-0.24)<EPS,"Approved D17 slab deck/datum/thickness changed")
 			check(absf(float(region.structural_area_m2)-605.2)<EPS,"Approved D17 slab must retain605.2m2")
+		elif engineering_floors.has(id):
+			check(region==engineering_floors[id],"Exact approved engineering floor changed: "+id)
 		elif pool_floors.has(id):
 			var expected: Dictionary = pool_floors[id]
 			check(canonical(region).sha256_text()==str(expected.record_numeric9_sha256),"Approved additive pool-market compiled record changed: "+id)
@@ -437,7 +440,7 @@ func validate_floors() -> void:
 					check(hits.size()==1 and region_id(hits[0].collider)==id,"Duplicate/missing real compiled owner: "+id+" y"+str(y)+" actual owners "+str(owners))
 	for id in pool_floors:
 		check(seen.has(id) and pool_layout_seen.has(id),"Approved pool-market floor/layout identity missing: "+str(id))
-	check(floor_owners==258 and seen.size()==258 and seen.has(D17_FLOOR_ID) and absf(new_area-5517.2)<EPS,"All258 physical owners, retained D17, eight approved pool-market additions and unchanged5517.2m2 aft floor required")
+	check(floor_owners==261 and seen.size()==261 and seen.has(D17_FLOOR_ID) and absf(new_area-5517.2)<EPS,"All261 physical owners including exactly three engineering additions, retained D17, eight approved pool-market additions and unchanged5517.2m2 aft floor required")
 
 func validate_piers(data: Dictionary) -> void:
 	check(data.support.pier_centres_xz.size()==6,"Six approved piers required")

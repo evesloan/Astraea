@@ -1,0 +1,111 @@
+Traceback (most recent call last):
+  File "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/source/verify_editable_assembly.py", line 45, in <module>
+    (HERE/'qa/editable_source_report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(dict(status=report['status'],placements=report['placements'],parts=report['mesh_parts'],images=len(images),issues=issues),indent=2));assert not issues,'Source QA issues remain'
+                                                                                                                                                                                                                                                      ^^^^^^^^^^
+AssertionError: Source QA issues remain
+
+Error: script failed, file: '/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/source/verify_editable_assembly.py', exiting.
+{
+  "status": "source_checks_failed",
+  "placements": 51,
+  "parts": 1633,
+  "images": 237,
+  "issues": [
+    {
+      "item": "wet_rest_448",
+      "source_vs_export_bounds_error_m": 0.002497863769534092
+    },
+    {
+      "item": "wet_rest_444",
+      "source_vs_export_bounds_error_m": 0.002497863769534092
+    },
+    {
+      "item": "wet_rest_440",
+      "source_vs_export_bounds_error_m": 0.002497863769534092
+    },
+    {
+      "item": "wet_rest_436",
+      "source_vs_export_bounds_error_m": 0.002497863769534092
+    },
+    {
+      "item": "wet_rest_429",
+      "source_vs_export_bounds_error_m": 0.002497863769534092
+    },
+    {
+      "item": "wet_rest_425",
+      "source_vs_export_bounds_error_m": 0.002497863769534092
+    },
+    {
+      "item": "wet_rest_421",
+      "source_vs_export_bounds_error_m": 0.002497863769534092
+    },
+    {
+      "item": "wet_table_446",
+      "source_vs_export_bounds_error_m": 0.2459976196289091
+    },
+    {
+      "item": "wet_table_438",
+      "source_vs_export_bounds_error_m": 0.2459976196289091
+    },
+    {
+      "item": "wet_table_427",
+      "source_vs_export_bounds_error_m": 0.2459976196289091
+    },
+    {
+      "item": "wet_table_423",
+      "source_vs_export_bounds_error_m": 0.2459976196289091
+    },
+    {
+      "item": "market_rest_0",
+      "source_vs_export_bounds_error_m": 1.1334991455078125
+    },
+    {
+      "item": "market_rest_1",
+      "source_vs_export_bounds_error_m": 1.1334991455078125
+    },
+    {
+      "item": "market_rest_2",
+      "source_vs_export_bounds_error_m": 1.1334991455078125
+    },
+    {
+      "item": "wet_end_rest",
+      "source_vs_export_bounds_error_m": 1.1334983825683622
+    },
+    {
+      "item": "wet_table_446",
+      "support_contact_error_m": 0.2459976196289091
+    },
+    {
+      "item": "wet_table_438",
+      "support_contact_error_m": 0.2459976196289091
+    },
+    {
+      "item": "wet_table_427",
+      "support_contact_error_m": 0.2459976196289091
+    },
+    {
+      "item": "wet_table_423",
+      "support_contact_error_m": 0.2459976196289091
+    },
+    {
+      "item": "market_rest_0",
+      "support_contact_error_m": 1.1334991455078125
+    },
+    {
+      "item": "market_rest_1",
+      "support_contact_error_m": 1.1334991455078125
+    },
+    {
+      "item": "market_rest_2",
+      "support_contact_error_m": 1.1334991455078125
+    },
+    {
+      "item": "wet_end_rest",
+      "support_contact_error_m": 1.1334983825683622
+    }
+  ]
+}
+Blender 4.3.2
+Read blend: "/workspace/shared/astraea-catalogue-continuation-20261002/assets/grand_pool_first_pass/source/grand_pool_first_pass_editable.blend"
+
+Blender quit

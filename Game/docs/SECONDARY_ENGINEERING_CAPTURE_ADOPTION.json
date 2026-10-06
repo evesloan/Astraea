@@ -1,0 +1,33 @@
+{
+  "scope": "Parent-approved second integration exception: additive diagnostic capture points only; original byte pin retained in runtime contract",
+  "original_sha256": "e6728a91361f7ece5d3e64ae5a932a970654c3810454971728c7d96c62721d99",
+  "integrated_sha256": "83cf52a52f99423411fbdf44f72d983650edddb411c3f6a0c3cf07d5b9f0f8f4",
+  "all_original_bytes_restored_by_reversing_exact_additions": true,
+  "additions": {
+    "capture_group": "secondary_engineering",
+    "views": [
+      "visitor eye12,7.65,-432",
+      "maintenance diagnostic eye46,7.65,-439",
+      "workbay diagnostic eye30,7.65,-405"
+    ],
+    "preserved": "All existing points, renderer settings and source materials/collisions; staff camera placement is diagnostic not ship connection"
+  },
+  "exact_replacements": [
+    {
+      "before": "\"d17_connected\",\"grand_pool_section\"]",
+      "after": "\"d17_connected\",\"grand_pool_section\",\"secondary_engineering\"]"
+    },
+    {
+      "before": "\t\t\tfor view in [{\"p\":Vector3(-9.4,44.1,-432)",
+      "after": "\t\t\tfor view in [{\"p\":Vector3(12,6.04,-432),\"yaw\":-PI/2,\"label\":\"secondary_engineering_visitor_\",\"pitch\":.0},{\"p\":Vector3(46,6.04,-439),\"yaw\":2.118,\"label\":\"secondary_engineering_maintenance_diagnostic_\",\"pitch\":.048,\"diagnostic\":false},{\"p\":Vector3(30,6.04,-405),\"yaw\":PI/2,\"label\":\"secondary_engineering_workbay_diagnostic_\",\"pitch\":.0,\"diagnostic\":false},{\"p\":Vector3(-9.4,44.1,-432)"
+    },
+    {
+      "before": "\t\t\t\tactor.set_physics_process(not view.get(\"diagnostic\",false))",
+      "after": "\t\t\t\tif requested_group == \"secondary_engineering\" and not str(view.label).begins_with(\"secondary_engineering_\"):\n\t\t\t\t\tcontinue\n\t\t\t\tactor.set_physics_process(not view.get(\"diagnostic\",false))"
+    },
+    {
+      "before": "\t\t\t\tif str(view.label).begins_with(\"grand_pool_\")",
+      "after": "\t\t\t\tif str(view.label).begins_with(\"secondary_engineering_\") or str(view.label).begins_with(\"grand_pool_\")"
+    }
+  ]
+}
