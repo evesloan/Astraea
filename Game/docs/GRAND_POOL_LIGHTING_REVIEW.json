@@ -1,0 +1,701 @@
+{
+  "schema": 1,
+  "review_date_utc": "2026-10-06",
+  "scope": "Bounded Grand Pool / Orchard Market runtime lighting trial on the existing 25 source-authored section fixtures. Geometry, shared controllers and the shared light-selection algorithm are outside this change.",
+  "status": "Partial lighting improvement; final lighting/art acceptance remains open",
+  "final_lighting_accepted": false,
+  "authorized_runtime_trial": {
+    "range_m_by_profile": {
+      "pool_vault": {
+        "initial_source": 16,
+        "runtime": 22,
+        "count": 6
+      },
+      "wet_terrace": {
+        "initial_source": 10,
+        "runtime": 14,
+        "count": 8
+      },
+      "market_warm": {
+        "initial_source": 7.5,
+        "runtime": 11,
+        "count": 9
+      },
+      "staff_work": {
+        "initial_source": 6,
+        "runtime": 6,
+        "count": 2
+      }
+    },
+    "energies_preserved": {
+      "pool_vault": 1.1,
+      "wet_terrace": 0.85,
+      "market_warm": 0.75,
+      "staff_work": 0.8
+    },
+    "positions_and_directions": "Unchanged from pinned source fixture records",
+    "spot_angle_degrees": 75,
+    "distance_attenuation": 1,
+    "wet_receiver_anchors": [
+      {
+        "source_marker": "DATUM_light_GP_WetGalleryLamp_-46.3_-456",
+        "receiver_surface_xyz": [
+          -46.3,
+          46.2,
+          -456
+        ],
+        "expected_anchor_xyz": [
+          -46.3,
+          46.230000000000004,
+          -456
+        ],
+        "expected_support": "D08_grand_pool_wet",
+        "source_derivation": "Frozen wet-deck datum",
+        "diagnostic_actual_downward_hit": [
+          -46.2999992370605,
+          46.1999969482422,
+          -456.0
+        ],
+        "evidence": "Existing diagnostic proves the downward surface; new focused assertions will independently verify runtime anchor metadata, its 30 mm offset and unobstructed source-to-anchor ray."
+      },
+      {
+        "source_marker": "DATUM_light_GP_WetGalleryLamp_-46.3_-442",
+        "receiver_surface_xyz": [
+          -46.3,
+          46.2,
+          -442
+        ],
+        "expected_anchor_xyz": [
+          -46.3,
+          46.230000000000004,
+          -442
+        ],
+        "expected_support": "D08_grand_pool_wet",
+        "source_derivation": "Frozen wet-deck datum",
+        "diagnostic_actual_downward_hit": [
+          -46.2999992370605,
+          46.1999969482422,
+          -442.0
+        ],
+        "evidence": "Existing diagnostic proves the downward surface; new focused assertions will independently verify runtime anchor metadata, its 30 mm offset and unobstructed source-to-anchor ray."
+      },
+      {
+        "source_marker": "DATUM_light_GP_WetGalleryLamp_-46.3_-430",
+        "receiver_surface_xyz": [
+          -46.3,
+          46.2,
+          -430
+        ],
+        "expected_anchor_xyz": [
+          -46.3,
+          46.230000000000004,
+          -430
+        ],
+        "expected_support": "D08_grand_pool_wet",
+        "source_derivation": "Frozen wet-deck datum",
+        "diagnostic_actual_downward_hit": [
+          -46.2999992370605,
+          46.1999969482422,
+          -430.0
+        ],
+        "evidence": "Existing diagnostic proves the downward surface; new focused assertions will independently verify runtime anchor metadata, its 30 mm offset and unobstructed source-to-anchor ray."
+      },
+      {
+        "source_marker": "DATUM_light_GP_WetGalleryLamp_-46.3_-405",
+        "receiver_surface_xyz": [
+          -46.3,
+          46.2,
+          -405
+        ],
+        "expected_anchor_xyz": [
+          -46.3,
+          46.230000000000004,
+          -405
+        ],
+        "expected_support": "D08_grand_pool_wet",
+        "source_derivation": "Frozen wet-deck datum",
+        "diagnostic_actual_downward_hit": [
+          -46.2999992370605,
+          46.1999969482422,
+          -405.0
+        ],
+        "evidence": "Existing diagnostic proves the downward surface; new focused assertions will independently verify runtime anchor metadata, its 30 mm offset and unobstructed source-to-anchor ray."
+      },
+      {
+        "source_marker": "DATUM_light_GP_WetGalleryLamp_-16.4_-456",
+        "receiver_surface_xyz": [
+          -16.4,
+          45.61666666666667,
+          -456
+        ],
+        "expected_anchor_xyz": [
+          -16.4,
+          45.64666666666667,
+          -456
+        ],
+        "expected_support": "GP_RampPan_Upper",
+        "source_derivation": "Linear height from frozen upper-ramp start/end",
+        "diagnostic_actual_downward_hit": [
+          -16.3999996185303,
+          45.6165771484375,
+          -456.0
+        ],
+        "evidence": "Existing diagnostic proves the downward surface; new focused assertions will independently verify runtime anchor metadata, its 30 mm offset and unobstructed source-to-anchor ray."
+      },
+      {
+        "source_marker": "DATUM_light_GP_WetGalleryLamp_-16.4_-442",
+        "receiver_surface_xyz": [
+          -16.4,
+          44,
+          -442
+        ],
+        "expected_anchor_xyz": [
+          -16.4,
+          44.03,
+          -442
+        ],
+        "expected_support": "D08_grand_pool_base",
+        "source_derivation": "Frozen dry-arrival datum",
+        "diagnostic_actual_downward_hit": [
+          -16.3999996185303,
+          44.0,
+          -442.0
+        ],
+        "evidence": "Existing diagnostic proves the downward surface; new focused assertions will independently verify runtime anchor metadata, its 30 mm offset and unobstructed source-to-anchor ray."
+      },
+      {
+        "source_marker": "DATUM_light_GP_WetGalleryLamp_-16.4_-430",
+        "receiver_surface_xyz": [
+          -16.4,
+          46.2,
+          -430
+        ],
+        "expected_anchor_xyz": [
+          -16.4,
+          46.230000000000004,
+          -430
+        ],
+        "expected_support": "D08_grand_pool_wet",
+        "source_derivation": "Frozen wet-deck datum",
+        "diagnostic_actual_downward_hit": [
+          -16.3999996185303,
+          46.1999969482422,
+          -430.0
+        ],
+        "evidence": "Existing diagnostic proves the downward surface; new focused assertions will independently verify runtime anchor metadata, its 30 mm offset and unobstructed source-to-anchor ray."
+      },
+      {
+        "source_marker": "DATUM_light_GP_WetGalleryLamp_-16.4_-405",
+        "receiver_surface_xyz": [
+          -16.4,
+          46.2,
+          -405
+        ],
+        "expected_anchor_xyz": [
+          -16.4,
+          46.230000000000004,
+          -405
+        ],
+        "expected_support": "D08_grand_pool_wet",
+        "source_derivation": "Frozen wet-deck datum",
+        "diagnostic_actual_downward_hit": [
+          -16.3999996185303,
+          46.1999969482422,
+          -405.0
+        ],
+        "evidence": "Existing diagnostic proves the downward surface; new focused assertions will independently verify runtime anchor metadata, its 30 mm offset and unobstructed source-to-anchor ray."
+      }
+    ],
+    "shared_shadow_cap": 8,
+    "shared_visibility_candidate_cap": 32,
+    "unchanged": "No ambient increase, extra source, geometry change, material change, energy boost, controller change or shared selector change belongs to this trial"
+  },
+  "measured_findings": [
+    "All 25 section fixtures retain their source positions, energies, down-facing axes and 75 degree cones. The 75 fixture-view records from 3 actual camera poses match the authorized range profiles.",
+    "Each pose stabilizes at 8 active shadowed sources. Arrival includes one existing public-core source; the other two viewpoints select only section sources.",
+    "Dry-arrival floor now has 1 active optically clear covering source; ramp-bottom has 1. The source review ranges previously left both probes outside every section light range.",
+    "At the central water receiver, the two nearby vault sources are now at distance/range 0.63664 instead of 0.87538 using the retained 16 m range. This is geometric reach, not a measured irradiance or brightness ratio.",
+    "At the market walkway, the nearest active bay source is at distance/range 0.66791 instead of 0.97960 using the retained 7.5 m range; three local bay sources geometrically cover that walkway.",
+    "Receiver metadata permits the west wet-gallery fixture atZ-405 and east wet-gallery fixture atZ-430 to participate in the long-view selection. Other visible receiver areas still compete within the unchanged 8 source cap.",
+    "Some geometrically eligible rays remain blocked by real architecture, including one ramp-bottom source, one near-east-wet source and one market-bay source. Those blocked cases are not counted as clear coverage."
+  ],
+  "diagnostic_run_002": {
+    "status": "Passed by parent engine runner",
+    "log": "/workspace/scratch/375c2e438292/grand-pool-lighting-diagnostic-002.log",
+    "log_sha256": "7012e6975ee12fa85bf7a18150ef7ab0f84ced87a5b6bec9618cc0fb3e24ffae",
+    "artifact": "artifacts/grand_pool_lighting_diagnostic.json",
+    "views": [
+      {
+        "capture_prefix": "grand_pool_arrival_clear_",
+        "camera_position": [
+          -9.39999961853027,
+          45.6500968933105,
+          -432.0
+        ],
+        "camera_rotation": [
+          0.0799999833106995,
+          1.57079637050629,
+          0.0
+        ],
+        "active_source_count": 8,
+        "selected_names": [
+          "PrimaryCoreLight_DATUM_light_07_1",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-451_-36",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-36",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-26",
+          "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-16_4_-456",
+          "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-16_4_-442",
+          "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-16_4_-430"
+        ],
+        "last_two_selection_passes_equal": true,
+        "receiver_probes": [
+          {
+            "name": "dry_arrival",
+            "point": [
+              -9.39999961853027,
+              44.0,
+              -432.0
+            ],
+            "geometrically_in_cone_and_range": 1,
+            "active_and_optically_clear": 1,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-16_4_-430"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.774998324257987
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance."
+          },
+          {
+            "name": "wet_reveal",
+            "point": [
+              -20.0,
+              46.2000007629395,
+              -432.0
+            ],
+            "geometrically_in_cone_and_range": 5,
+            "active_and_optically_clear": 4,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-26",
+              "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-16_4_-442",
+              "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-16_4_-430"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.935172514481978,
+              0.973068150607022,
+              0.866390568869455,
+              0.510721751621791
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance."
+          },
+          {
+            "name": "ramp_bottom",
+            "point": [
+              -12.0,
+              44.0,
+              -447.799987792969
+            ],
+            "geometrically_in_cone_and_range": 3,
+            "active_and_optically_clear": 1,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-16_4_-456"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.878664902278355
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance."
+          }
+        ]
+      },
+      {
+        "capture_prefix": "grand_pool_long_view_clear_",
+        "camera_position": [
+          -20.5,
+          47.8498954772949,
+          -405.0
+        ],
+        "camera_rotation": [
+          0.0299999937415123,
+          0.0,
+          0.0
+        ],
+        "active_source_count": 8,
+        "selected_names": [
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-451_-26",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-26",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-36",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-26",
+          "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-46_3_-405",
+          "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-16_4_-430",
+          "GrandPoolSource_DATUM_light_GP_WetGalleryLamp_-16_4_-405"
+        ],
+        "last_two_selection_passes_equal": true,
+        "receiver_probes": [
+          {
+            "name": "near_east_wet",
+            "point": [
+              -20.5,
+              46.2000007629395,
+              -415.0
+            ],
+            "geometrically_in_cone_and_range": 3,
+            "active_and_optically_clear": 2,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-36",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-26"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.917609041387385,
+              0.638844229958274
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance."
+          },
+          {
+            "name": "central_visual_water",
+            "point": [
+              -31.0,
+              46.0499992370605,
+              -432.0
+            ],
+            "geometrically_in_cone_and_range": 4,
+            "active_and_optically_clear": 4,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-26",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-36",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-26"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.636642932891846,
+              0.636642932891846,
+              0.965491381558505,
+              0.965491381558505
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance. Visual water deliberately has no physical support collider."
+          },
+          {
+            "name": "far_east_wet",
+            "point": [
+              -20.0,
+              46.2000007629395,
+              -451.0
+            ],
+            "geometrically_in_cone_and_range": 4,
+            "active_and_optically_clear": 1,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-451_-26"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.646479736674916
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance."
+          },
+          {
+            "name": "west_wet",
+            "point": [
+              -46.0,
+              46.2000007629395,
+              -432.0
+            ],
+            "geometrically_in_cone_and_range": 3,
+            "active_and_optically_clear": 1,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.743124181574041
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance."
+          }
+        ]
+      },
+      {
+        "capture_prefix": "grand_pool_market_overlook_clear_",
+        "camera_position": [
+          -45.9000015258789,
+          54.1500053405762,
+          -432.0
+        ],
+        "camera_rotation": [
+          -0.180000007152557,
+          -1.57079637050629,
+          0.0
+        ],
+        "active_source_count": 8,
+        "selected_names": [
+          "GrandPoolSource_DATUM_light_GP_MarketBayFixture_1_-440",
+          "GrandPoolSource_DATUM_light_GP_MarketBayFixture_1_-435_15",
+          "GrandPoolSource_DATUM_light_GP_MarketBayFixture_1_-430_3",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-451_-36",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-26",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-36",
+          "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-26"
+        ],
+        "last_two_selection_passes_equal": true,
+        "receiver_probes": [
+          {
+            "name": "market_walkway",
+            "point": [
+              -45.9000015258789,
+              52.5,
+              -432.0
+            ],
+            "geometrically_in_cone_and_range": 6,
+            "active_and_optically_clear": 6,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_MarketBayFixture_1_-440",
+              "GrandPoolSource_DATUM_light_GP_MarketBayFixture_1_-435_15",
+              "GrandPoolSource_DATUM_light_GP_MarketBayFixture_1_-430_3",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-26",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-36"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.975265069441362,
+              0.710084655068137,
+              0.667907931587913,
+              0.542613939805464,
+              0.954008622602983,
+              0.90625017339533
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance."
+          },
+          {
+            "name": "market_bay",
+            "point": [
+              -50.5999984741211,
+              52.5,
+              -435.149993896484
+            ],
+            "geometrically_in_cone_and_range": 4,
+            "active_and_optically_clear": 3,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_MarketBayFixture_1_-440",
+              "GrandPoolSource_DATUM_light_GP_MarketBayFixture_1_-435_15",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.658829212188721,
+              0.489545301957564,
+              0.734729506752708
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance."
+          },
+          {
+            "name": "east_gallery",
+            "point": [
+              -15.5,
+              52.5,
+              -432.0
+            ],
+            "geometrically_in_cone_and_range": 3,
+            "active_and_optically_clear": 3,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-26",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-26"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.97990556196733,
+              0.565437100150368,
+              0.920097090981223
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance."
+          },
+          {
+            "name": "central_visual_water",
+            "point": [
+              -31.0,
+              46.0499992370605,
+              -432.0
+            ],
+            "geometrically_in_cone_and_range": 4,
+            "active_and_optically_clear": 4,
+            "active_clear_source_names": [
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-36",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-433_-26",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-36",
+              "GrandPoolSource_DATUM_light_GP_VaultLamp_-416_-26"
+            ],
+            "active_clear_distance_range_ratios": [
+              0.636642932891846,
+              0.636642932891846,
+              0.965491381558505,
+              0.965491381558505
+            ],
+            "note": "Geometric coverage and the existing glass-aware selector ray only; not measured luminance. Visual water deliberately has no physical support collider."
+          }
+        ]
+      }
+    ]
+  },
+  "graphical_review": {
+    "capture_run": "002, completed by parent",
+    "reviewed_here": [
+      {
+        "image": "artifacts/grand_pool_arrival_clear_world_capture.png",
+        "record": {
+          "active_physics_objects": 6.0,
+          "adapter": "llvmpipe (LLVM 19.1.7, 256 bits)",
+          "camera_position": [
+            -9.39999961853027,
+            45.6500968933105,
+            -432.0
+          ],
+          "camera_rotation": [
+            0.0799999833106995,
+            1.57079637050629,
+            0.0
+          ],
+          "draw_calls": 610.0,
+          "effects_enabled": false,
+          "fov": 71.9999771118164,
+          "physics_seconds": 0.001366,
+          "prefix": "grand_pool_arrival_clear_",
+          "process_seconds": 0.462353,
+          "rendered_objects": 323.0,
+          "rendered_primitives": 22039.0,
+          "scope": "Single-capture engine observations on reported adapter; not a benchmark or target-platform performance acceptance",
+          "static_memory_bytes": 2568624388.0,
+          "world_resolution": [
+            1920,
+            1080
+          ]
+        }
+      },
+      {
+        "image": "artifacts/grand_pool_long_view_clear_world_capture.png",
+        "record": {
+          "active_physics_objects": 6.0,
+          "adapter": "llvmpipe (LLVM 19.1.7, 256 bits)",
+          "camera_position": [
+            -20.5,
+            47.8498954772949,
+            -405.0
+          ],
+          "camera_rotation": [
+            0.0299999937415123,
+            0.0,
+            0.0
+          ],
+          "draw_calls": 1295.0,
+          "effects_enabled": false,
+          "fov": 71.9999771118164,
+          "physics_seconds": 0.001061,
+          "prefix": "grand_pool_long_view_clear_",
+          "process_seconds": 0.272002,
+          "rendered_objects": 825.0,
+          "rendered_primitives": 34878.0,
+          "scope": "Single-capture engine observations on reported adapter; not a benchmark or target-platform performance acceptance",
+          "static_memory_bytes": 2568669608.0,
+          "world_resolution": [
+            1920,
+            1080
+          ]
+        }
+      },
+      {
+        "image": "artifacts/grand_pool_market_overlook_clear_world_capture.png",
+        "record": {
+          "active_physics_objects": 6.0,
+          "adapter": "llvmpipe (LLVM 19.1.7, 256 bits)",
+          "camera_position": [
+            -45.9000015258789,
+            54.1500053405762,
+            -432.0
+          ],
+          "camera_rotation": [
+            -0.179999992251396,
+            -1.57079637050629,
+            0.0
+          ],
+          "draw_calls": 1054.0,
+          "effects_enabled": false,
+          "fov": 71.9999771118164,
+          "physics_seconds": 0.00094,
+          "prefix": "grand_pool_market_overlook_clear_",
+          "process_seconds": 0.4494,
+          "rendered_objects": 715.0,
+          "rendered_primitives": 30591.0,
+          "scope": "Single-capture engine observations on reported adapter; not a benchmark or target-platform performance acceptance",
+          "static_memory_bytes": 2568687444.0,
+          "world_resolution": [
+            1920,
+            1080
+          ]
+        }
+      }
+    ],
+    "observations": [
+      "Arrival steps and nearby paving have readable local illumination, but the broad ceiling and distant market frontage remain flat and dim.",
+      "The long pool view has improved water and side-paving readability while the large roof, far walls and upper frontage remain visually underdeveloped.",
+      "The market overlook remains substantially darker and tinted through the continuous glazing; opposite gallery/stair detail is visible, but final spatial contrast and material/light balance are unresolved."
+    ],
+    "limit": "These are effects-off 1920 x 1080 software-rendered llvmpipe views. Capture completion and geometric coverage do not establish final visual quality, normal-display approval, target-GPU performance or whole-room completion."
+  },
+  "validation_state": {
+    "offline_artifact_checks": "Passed 75 fixture-view source/range/cone/energy checks;3 stable 8-source selections;8 source-derived receiver heights match actual downward diagnostic hits",
+    "new_focused_assertions": "Authored in tests/validate_grand_pool_access.gd; no engine run performed after this edit by the worker. Parent serial run pending.",
+    "new_assertion_scope": [
+      "Exactly 25 unique section fixture identities and the 9/6/8/2 profile roster",
+      "Position to 0.1 mm import tolerance, source energy, cone angle and world direction",
+      "Only approved 22/14/11 m profile ranges; staff 6 m and attenuation 1 unchanged",
+      "Exactly 8 wet anchors at source-backed heights plus 30 mm; actual unmodified floor/ramp support and source-to-anchor visibility",
+      "Existing shared 8 shadow-source cap and 32 candidate bound; all earlier access assertions retained"
+    ],
+    "prior_access_run_006": "Passed before these new assertions:638 floor samples/258 owners,333 glass/guard contacts,287 interfaces,45 fixture exits and 18796 walking frames. This prior pass is not a pass of the new lighting assertions.",
+    "engine_started_by_this_worker": false
+  },
+  "pending": [
+    "Parent execution of the extended focused access check",
+    "Matched full regression for the final candidate",
+    "Further deliberate ceiling/frontage/glazing/light composition and normal/effects-off visual review",
+    "Target-hardware performance and final-art acceptance",
+    "Loaded-cart and lift-interlock acceptance remain separately owned and are not inferred from lighting diagnostics"
+  ],
+  "evidence_sha256": {
+    "data/architecture/GRAND_POOL_SECTION_RUNTIME.json": "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd",
+    "scripts/grand_pool_section.gd": "5ab3ab12e66463e6232ae394c0913c1b6cb010a8ac00c29a24ba857f1ac8a6da",
+    "scripts/lighting_budget.gd": "73366f8831a591473355c9d15a5de8ae0e63c59bdf3b8cd1b1abe7663d1f7337",
+    "tests/validate_grand_pool_access.gd": "9d87613bcc347321beb22d5f4461118707cef6adc92907b5cf68146b58f2fb11",
+    "artifacts/grand_pool_lighting_diagnostic.json": "4bc680d2d161e31bf22c9b51d412d7784ac6287fa100942c5d528cc3f06b9d9f",
+    "artifacts/capture_settings.json": "0fce79864fb3ecdb9d2cc2dea7882acc6af04243d489fb61add88c742dc81d4b",
+    "artifacts/grand_pool_arrival_clear_world_capture.png": "a74bc347d4caabc02c5a1ebee994085e7cd0e1006d3df3dca58480b347655636",
+    "artifacts/grand_pool_long_view_clear_world_capture.png": "5bdcfc360483a2f849f5e73a592fd9e7d9c7de554e3748ef42ded38d23cdae99",
+    "artifacts/grand_pool_market_overlook_clear_world_capture.png": "96fb319629d380c8c7ed4b65562966b512e08d31d35c58d43125e2c4c6e61b1c"
+  },
+  "focused_runtime_confirmation": {
+    "verified_utc": "2026-10-06T02:09:35.164187+00:00",
+    "result": {
+      "checks": [
+        {
+          "check": "import",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 3.2466,
+          "clock_mode": "editor"
+        },
+        {
+          "check": "grand_pool_access",
+          "passed": true,
+          "exit_code": 0,
+          "errors": [],
+          "wall_seconds": 36.2595,
+          "clock_mode": "fixed60"
+        }
+      ],
+      "wall_seconds": 39.5066,
+      "clock_mode": "fixed60",
+      "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+    },
+    "log_sha256": "78ecf4b7806b56434d42161aa3444c7176c1b6009742adffca371a30762626cd",
+    "fixtures_checked": 25,
+    "supported_receivers_checked": 8,
+    "limits": "No loaded-cart, lift-interlock, full-suite, final-art or target-GPU acceptance implied"
+  }
+}

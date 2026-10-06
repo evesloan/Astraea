@@ -1,0 +1,742 @@
+{
+  "scope": "Exact polygon clipping of disjoint candidate route/3.6m corner-and-terminal-square union against compiledD02 triangles, applicable spatialvoids, core/riser lobby polygons, programme polygons and planhull",
+  "algorithm": "Axis-aligned cells form non-overlapping union; Sutherland-Hodgman polygon-to-rectangle clipping and shoelace area; no packages/engine jobs",
+  "inputs_sha256": {
+    "data/spatial_layout.json": "3be2dc8c0bac743eb36d55f116ee6c84b0227209f7cd56288b670f9c16181c00",
+    "data/generated/structural_meshes.json": "0bb8800201af76604a15b8ee3805b087eccf0fe01c7872a2d40af1950f58fed7",
+    "data/whole_ship_layout.json": "d641e95cf82b5ddd19e9448dc5d029aef2123d32630a08810a2169c8979706d8",
+    "data/hull_envelope.json": "8412bacc9253a967fda398c2b81c54f413079374edafbf3d4a3716c70c913f87"
+  },
+  "results": [
+    {
+      "route": "secondary_to_lower_staff",
+      "centerline_xz": [
+        [
+          -57,
+          -500
+        ],
+        [
+          57,
+          -500
+        ],
+        [
+          57,
+          -432
+        ],
+        [
+          54,
+          -432
+        ]
+      ],
+      "footprint_and_turning_squares": [
+        [
+          -57,
+          57,
+          -501.8,
+          -498.2
+        ],
+        [
+          55.2,
+          58.8,
+          -500,
+          -432
+        ],
+        [
+          54,
+          57,
+          -433.8,
+          -430.2
+        ],
+        [
+          -58.8,
+          -55.2,
+          -501.8,
+          -498.2
+        ],
+        [
+          55.2,
+          58.8,
+          -501.8,
+          -498.2
+        ],
+        [
+          55.2,
+          58.8,
+          -433.8,
+          -430.2
+        ],
+        [
+          52.2,
+          55.8,
+          -433.8,
+          -430.2
+        ]
+      ],
+      "union_plan_area_m2": 678.96,
+      "outside_plan_hull_m2": -0.0,
+      "compiled_floor_intersections": [
+        {
+          "id": "D02_fore_route",
+          "area_m2": 28.8,
+          "classification": "public_or_other_floor_requires_separation"
+        },
+        {
+          "id": "D02_port_forward_staff_floor_0",
+          "area_m2": 142.56,
+          "classification": "retained_staff_tee"
+        }
+      ],
+      "void_intersections": [],
+      "reservations": [],
+      "programme_intersections": [
+        {
+          "id": "D02_directory_02",
+          "area_m2": 6.48,
+          "note": "terminal turns must be trimmed at programme boundary and handed to programme floor owner"
+        }
+      ]
+    },
+    {
+      "route": "secondary_to_water_and_store_bypass",
+      "centerline_xz": [
+        [
+          57,
+          -432
+        ],
+        [
+          57,
+          -80
+        ],
+        [
+          102,
+          -80
+        ],
+        [
+          102,
+          80
+        ],
+        [
+          57,
+          80
+        ],
+        [
+          57,
+          290
+        ]
+      ],
+      "footprint_and_turning_squares": [
+        [
+          55.2,
+          58.8,
+          -432,
+          -80
+        ],
+        [
+          57,
+          102,
+          -81.8,
+          -78.2
+        ],
+        [
+          100.2,
+          103.8,
+          -80,
+          80
+        ],
+        [
+          57,
+          102,
+          78.2,
+          81.8
+        ],
+        [
+          55.2,
+          58.8,
+          80,
+          290
+        ],
+        [
+          55.2,
+          58.8,
+          -433.8,
+          -430.2
+        ],
+        [
+          55.2,
+          58.8,
+          -81.8,
+          -78.2
+        ],
+        [
+          100.2,
+          103.8,
+          -81.8,
+          -78.2
+        ],
+        [
+          100.2,
+          103.8,
+          78.2,
+          81.8
+        ],
+        [
+          55.2,
+          58.8,
+          78.2,
+          81.8
+        ],
+        [
+          55.2,
+          58.8,
+          288.2,
+          291.8
+        ]
+      ],
+      "union_plan_area_m2": 2936.16,
+      "outside_plan_hull_m2": -0.0,
+      "compiled_floor_intersections": [],
+      "void_intersections": [],
+      "reservations": [],
+      "programme_intersections": []
+    },
+    {
+      "route": "water_branch",
+      "centerline_xz": [
+        [
+          57,
+          -216
+        ],
+        [
+          54,
+          -216
+        ]
+      ],
+      "footprint_and_turning_squares": [
+        [
+          54,
+          57,
+          -217.8,
+          -214.2
+        ],
+        [
+          55.2,
+          58.8,
+          -217.8,
+          -214.2
+        ],
+        [
+          52.2,
+          55.8,
+          -217.8,
+          -214.2
+        ]
+      ],
+      "union_plan_area_m2": 23.76,
+      "outside_plan_hull_m2": -0.0,
+      "compiled_floor_intersections": [],
+      "void_intersections": [],
+      "reservations": [],
+      "programme_intersections": [
+        {
+          "id": "D02_directory_04",
+          "area_m2": 6.48,
+          "note": "terminal turns must be trimmed at programme boundary and handed to programme floor owner"
+        }
+      ]
+    },
+    {
+      "route": "life_support_branch",
+      "centerline_xz": [
+        [
+          57,
+          216
+        ],
+        [
+          54,
+          216
+        ]
+      ],
+      "footprint_and_turning_squares": [
+        [
+          54,
+          57,
+          214.2,
+          217.8
+        ],
+        [
+          55.2,
+          58.8,
+          214.2,
+          217.8
+        ],
+        [
+          52.2,
+          55.8,
+          214.2,
+          217.8
+        ]
+      ],
+      "union_plan_area_m2": 23.76,
+      "outside_plan_hull_m2": 0.0,
+      "compiled_floor_intersections": [],
+      "void_intersections": [],
+      "reservations": [],
+      "programme_intersections": [
+        {
+          "id": "D02_directory_08",
+          "area_m2": 6.48,
+          "note": "terminal turns must be trimmed at programme boundary and handed to programme floor owner"
+        }
+      ]
+    },
+    {
+      "route": "power_cross_ship_branch",
+      "centerline_xz": [
+        [
+          57,
+          290
+        ],
+        [
+          -57,
+          290
+        ],
+        [
+          -57,
+          216
+        ],
+        [
+          -54,
+          216
+        ]
+      ],
+      "footprint_and_turning_squares": [
+        [
+          -57,
+          57,
+          288.2,
+          291.8
+        ],
+        [
+          -58.8,
+          -55.2,
+          216,
+          290
+        ],
+        [
+          -57,
+          -54,
+          214.2,
+          217.8
+        ],
+        [
+          55.2,
+          58.8,
+          288.2,
+          291.8
+        ],
+        [
+          -58.8,
+          -55.2,
+          288.2,
+          291.8
+        ],
+        [
+          -58.8,
+          -55.2,
+          214.2,
+          217.8
+        ],
+        [
+          -55.8,
+          -52.2,
+          214.2,
+          217.8
+        ]
+      ],
+      "union_plan_area_m2": 700.56,
+      "outside_plan_hull_m2": 0.0,
+      "compiled_floor_intersections": [
+        {
+          "id": "D02_aft_midship_public_core_floor",
+          "area_m2": 56.16,
+          "classification": "public_or_other_floor_requires_separation"
+        }
+      ],
+      "void_intersections": [],
+      "reservations": [
+        {
+          "id": "aft_midship_vertical_core",
+          "group": "longitudinal_vertical_core_reservations",
+          "lobby_intersection_m2": 56.16
+        },
+        {
+          "id": "port_service_riser_4",
+          "group": "staff_riser_reservations",
+          "lobby_intersection_m2": 30.96
+        }
+      ],
+      "programme_intersections": [
+        {
+          "id": "D02_directory_07",
+          "area_m2": 6.48,
+          "note": "terminal turns must be trimmed at programme boundary and handed to programme floor owner"
+        }
+      ]
+    },
+    {
+      "route": "emergency_stores_branch",
+      "centerline_xz": [
+        [
+          102,
+          0
+        ],
+        [
+          98,
+          0
+        ]
+      ],
+      "footprint_and_turning_squares": [
+        [
+          98,
+          102,
+          -1.8,
+          1.8
+        ],
+        [
+          100.2,
+          103.8,
+          -1.8,
+          1.8
+        ],
+        [
+          96.2,
+          99.8,
+          -1.8,
+          1.8
+        ]
+      ],
+      "union_plan_area_m2": 27.36,
+      "outside_plan_hull_m2": -0.0,
+      "compiled_floor_intersections": [],
+      "void_intersections": [],
+      "reservations": [],
+      "programme_intersections": [
+        {
+          "id": "D02_directory_06",
+          "area_m2": 6.48,
+          "note": "terminal turns must be trimmed at programme boundary and handed to programme floor owner"
+        }
+      ]
+    },
+    {
+      "route": "revised_secondary_to_lower_staff",
+      "centerline_xz": [
+        [
+          -57,
+          -500
+        ],
+        [
+          -20,
+          -500
+        ],
+        [
+          -20,
+          -535
+        ],
+        [
+          20,
+          -535
+        ],
+        [
+          20,
+          -500
+        ],
+        [
+          57,
+          -500
+        ],
+        [
+          57,
+          -432
+        ],
+        [
+          54,
+          -432
+        ]
+      ],
+      "footprint_and_turning_squares": [
+        [
+          -57,
+          -20,
+          -501.8,
+          -498.2
+        ],
+        [
+          -21.8,
+          -18.2,
+          -535,
+          -500
+        ],
+        [
+          -20,
+          20,
+          -536.8,
+          -533.2
+        ],
+        [
+          18.2,
+          21.8,
+          -535,
+          -500
+        ],
+        [
+          20,
+          57,
+          -501.8,
+          -498.2
+        ],
+        [
+          55.2,
+          58.8,
+          -500,
+          -432
+        ],
+        [
+          54,
+          57,
+          -433.8,
+          -430.2
+        ],
+        [
+          -58.8,
+          -55.2,
+          -501.8,
+          -498.2
+        ],
+        [
+          -21.8,
+          -18.2,
+          -501.8,
+          -498.2
+        ],
+        [
+          -21.8,
+          -18.2,
+          -536.8,
+          -533.2
+        ],
+        [
+          18.2,
+          21.8,
+          -536.8,
+          -533.2
+        ],
+        [
+          18.2,
+          21.8,
+          -501.8,
+          -498.2
+        ],
+        [
+          55.2,
+          58.8,
+          -501.8,
+          -498.2
+        ],
+        [
+          55.2,
+          58.8,
+          -433.8,
+          -430.2
+        ],
+        [
+          52.2,
+          55.8,
+          -433.8,
+          -430.2
+        ]
+      ],
+      "union_plan_area_m2": 930.96,
+      "outside_plan_hull_m2": -0.0,
+      "compiled_floor_intersections": [
+        {
+          "id": "D02_port_forward_staff_floor_0",
+          "area_m2": 142.56,
+          "classification": "retained_staff_tee"
+        }
+      ],
+      "void_intersections": [],
+      "reservations": [],
+      "programme_intersections": [
+        {
+          "id": "D02_directory_02",
+          "area_m2": 6.48,
+          "note": "terminal turns must be trimmed at programme boundary and handed to programme floor owner"
+        }
+      ]
+    },
+    {
+      "route": "revised_power_end_around",
+      "centerline_xz": [
+        [
+          57,
+          290
+        ],
+        [
+          57,
+          500
+        ],
+        [
+          7.2,
+          500
+        ],
+        [
+          7.2,
+          532.5
+        ],
+        [
+          -7.2,
+          532.5
+        ],
+        [
+          -7.2,
+          500
+        ],
+        [
+          -57,
+          500
+        ],
+        [
+          -57,
+          216
+        ],
+        [
+          -54,
+          216
+        ]
+      ],
+      "footprint_and_turning_squares": [
+        [
+          55.2,
+          58.8,
+          290,
+          500
+        ],
+        [
+          7.2,
+          57,
+          498.2,
+          501.8
+        ],
+        [
+          5.4,
+          9.0,
+          500,
+          532.5
+        ],
+        [
+          -7.2,
+          7.2,
+          530.7,
+          534.3
+        ],
+        [
+          -9.0,
+          -5.4,
+          500,
+          532.5
+        ],
+        [
+          -57,
+          -7.2,
+          498.2,
+          501.8
+        ],
+        [
+          -58.8,
+          -55.2,
+          216,
+          500
+        ],
+        [
+          -57,
+          -54,
+          214.2,
+          217.8
+        ],
+        [
+          55.2,
+          58.8,
+          288.2,
+          291.8
+        ],
+        [
+          55.2,
+          58.8,
+          498.2,
+          501.8
+        ],
+        [
+          5.4,
+          9.0,
+          498.2,
+          501.8
+        ],
+        [
+          5.4,
+          9.0,
+          530.7,
+          534.3
+        ],
+        [
+          -9.0,
+          -5.4,
+          530.7,
+          534.3
+        ],
+        [
+          -9.0,
+          -5.4,
+          498.2,
+          501.8
+        ],
+        [
+          -58.8,
+          -55.2,
+          498.2,
+          501.8
+        ],
+        [
+          -58.8,
+          -55.2,
+          214.2,
+          217.8
+        ],
+        [
+          -55.8,
+          -52.2,
+          214.2,
+          217.8
+        ]
+      ],
+      "union_plan_area_m2": 2446.56,
+      "outside_plan_hull_m2": -0.0,
+      "compiled_floor_intersections": [],
+      "void_intersections": [],
+      "reservations": [],
+      "programme_intersections": [
+        {
+          "id": "D02_directory_07",
+          "area_m2": 6.48,
+          "note": "terminal turns must be trimmed at programme boundary and handed to programme floor owner"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "No constructed enclosed service route",
+    "No per-height hullsection acceptance",
+    "Terminal squares at existing programmes require ownership trimming",
+    "Compiledfloor contacts do not certify wall/door clearances"
+  ]
+}

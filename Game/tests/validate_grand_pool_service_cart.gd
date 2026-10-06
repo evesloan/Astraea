@@ -158,8 +158,8 @@ func street_return() -> Array[Vector3]:
 	var path: Array[Vector3] = []
 	# Park0.7m farther west than outbound so the released operator can close
 	# the real door while still safely outside its leaf/capsule sweep.
-	arc(path, Vector2(-56.2,-463.8), .8, PI/2, PI)
-	line(path, Vector2(-57,-463.8), Vector2(-57,-498.5))
+	arc(path, Vector2(-56.2,-464.6), .8, PI/2, PI)
+	line(path, Vector2(-57,-464.6), Vector2(-57,-498.5))
 	arc(path, Vector2(-55.5,-498.5), 1.5, PI, PI*1.5)
 	line(path, Vector2(-55.5,-500), Vector2(-22.5,-500))
 	arc(path, Vector2(-22.5,-498.5), 1.5, -PI/2, 0)
@@ -188,11 +188,14 @@ func receiving_turn() -> Array[Vector3]:
 
 func vestibule_return() -> Array[Vector3]:
 	var path: Array[Vector3] = []
-	line(path, Vector2(-49,-458), Vector2(-50.75,-458))
-	arc(path, Vector2(-50.75,-459.2), 1.2, PI/2, PI)
-	line(path, Vector2(-51.95,-459.2), Vector2(-51.95,-462))
-	arc(path, Vector2(-52.95,-462), 1.0, 0, -PI/2)
-	line(path, Vector2(-52.95,-463), Vector2(-56.2,-463))
+	# Forward return places the operator on the opposite side from outbound.
+	# Reversing the1m outbound bend made that capsule cross the privacy screen.
+	# This supported1.7m/4.1m pair keeps the actual operator envelope west of
+	# the baffle and crosses the real open service aperture, with no wall edits.
+	line(path, Vector2(-49,-458), Vector2(-50.25,-458))
+	arc(path, Vector2(-50.25,-459.7), 1.7, PI/2, PI)
+	arc(path, Vector2(-56.05,-459.7), 4.1, 0, -PI/2)
+	line(path, Vector2(-56.05,-463.8), Vector2(-56.2,-463.8))
 	return path
 
 func reversed_backing(path: Array[Vector3]) -> Array[Vector3]:
@@ -239,6 +242,7 @@ func light_cap() -> void:
 	require(active <= 8, "Grand Pool service route must retain the existing eight-light cap")
 
 func sweep(path: Array[Vector3], label: String, at_lift := false) -> void:
+	mark("Y%s %s geometric preflight" % [floor_y,label])
 	for pose in path: probe.check_pose(ship, actor, cart, Vector3(pose.x,floor_y+.03,pose.y), pose.z, floor_y, at_lift)
 	print("GRAND POOL CART GEOMETRY: ", label, " poses:", path.size(), " all active contacts retained")
 

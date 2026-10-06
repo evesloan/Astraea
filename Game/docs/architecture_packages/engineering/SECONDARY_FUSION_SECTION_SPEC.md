@@ -1,0 +1,86 @@
+# Secondary fusion and connected engineering service section
+
+Specification r01, 6 October 2026. **Unreviewed spec gate only. No source geometry authorised by this package; no geometry, engine, imports, integration, commits or backups performed.**
+
+## 1. Authority and inspected evidence
+
+Read architectural delivery rules, full-ship scope index, engineering/service scope audit and its JSON, authoritative master v0.3, current application overrides, current programme ledger, whole-ship layout, design contract, hull plan, arrivals/fusion section and lower staff network. The companion JSON records fresh file SHA256 values, rather than trusting stale audit fingerprints. Inspected actual technical_reference.png at its native full size: ASW-GV-04, Sheet 4 of 6, V1.0.3, 25.07.04. Pixel labels place paired fusion cores, engineering control, power distribution, life-support, environmental systems and workshops within an engineering department; orange service circulation is separated from blue guest circulation, red pressure/access thresholds and white bulkheads. The longitudinal section depicts tall supported machinery; the transverse section separates service edges from core lifts/guest circulation. These are architectural relationships, not measurable room geometry.
+
+Historical technical D04 maps to canonical D02, logistics D03 to D01 and crew D06 to D03; medical D05 remains D05. The sheet is not a licence to move current programme allocations. Master Table 2 establishes canonical roles; Table 3 requires D02 fusion galleries/control and excludes a detailed propulsion simulator. Paragraph locators in the audit are the authoritative zero-based OOXML-body convention; do not replace them with page numbers or a descendant-paragraph index.
+
+## 2. Fixed footprint and vertical ownership
+
+D02_directory_02 is X8..54, Z−466..−398, 46 × 68m, gross3128m², floor Y6. D01_directory_02 Cold provisions at Y0 occupies the same footprint below; D03_directory_02 Custodian breakroom at Y12 occupies it above. Primary fusion remains opposite, X−54..−8, with its own source and retained floors/lift. No secondary double-height void, pit into cold storage, opening into crew space or mirrored arrivals stair is allowed.
+
+Proposed secondary slab is0.24m, undersideY5.76. Opaque D03 slab undersideY11.76 and topY12; this matches the retained primary section's cap policy but remains a proposed secondary ownership contract, not a newly installed slab. Maximum raw clear storey is5.76m. Hall finish/structure tops atY11.52, hall clear undersideY11.1, occupied service soffit no lower thanY9.6. Control ceilingY9.3; visitor ceilingY9.6; neither reduces the plant volume. No service penetrations into cold stores or breakroom until those owners explicitly coordinate sealed shaft ownership.
+
+### Critical tall-reactor conflict and alternatives
+
+The reference's longitudinal tall-core illustration is incompatible with importing a tall vertical vessel through the protected Y12 ceiling. This specification **does not claim a reactor has been made to fit**. A single-storey operationally legible plant architecture is a conditional option: sealed low-profile fictional core, supported working manifolds, independent control, meaningful isolation boundaries, real maintenance reach and segmented replacement access. It needs a dedicated source/design review proving all machinery/support/removal clearances fit a4.4m-high machine enclosure. AST-ENG-007 is a curated instrument, not evidence of a full operational secondary reactor.
+
+- Option A: accept a source-backed low-profile secondary core adaptation while preserving plant/control/maintenance purpose, all neighbours and eighteen datums. Its16 ×16m reserved enclosure is a capacity reservation, not approved reactor geometry
+- Option B: preserve the tall technical silhouette in a separately reviewed existing unoccupied vertical engineering reservation, with explicit programme/core mapping and connected gallery/control. No such host is currently verified; no transfer or relocation is approved
+- Option C: change a protected section/neighbour allocation only after explicit reviewed resolution. This package grants none
+
+**Stop affected core and plant source authoring until A's real clearances are established or a reviewed alternative is selected.** Never non-uniformly squash a reactor or call scaled exhibit props an operating plant.
+
+## 3. Purposeful plan and connected volumes
+
+All coordinates are proposed design dimensions in metres, not measured blueprint values. Exterior wall reserve is0.30m. One contained secondary core is the intended programme requirement, distinct from two retained exhibit instances in the primary gallery. Local subspaces remain children of D02_directory_02; they add no directory headings or people.
+
+- Visitor observation gallery: X8.3..17, Z−447..−417, floorY6,3.6m clear. Entry centred(8,−432), from guest spine. A deep receiving threshold, inhabited pause edge and framed angled glazed sightline face meaningful enclosed plant. No exposed working route opens into it
+- Controlled transfer threshold: X17..21, Z−440..−424,3.2m clear. Visitor area never becomes a staff shortcut. Opaque return panels and a service-door dogleg prevent views into staging
+- Plant hall: octagonal/faceted outline (21,−445),(27,−451),(41.7,−451),(47.7,−445),(47.7,−419),(41.7,−413),(27,−413),(21,−419),5.1m clear. Six-metre corner facets shape structural buttresses, bus supports and deeper equipment reveals; this is a plant volume, not a rectangular exhibition shell with trim
+- Sealed core reservation: X27..43, Z−440..−424, top no higher thanY10.6; base not belowY6.24. The north/south/east maintenance ring is substantially wider than2.4m; west separation is6m at the straight hall face. Core enclosure isn't walkable floor credit
+- East cart street: X48..53.7, Z−465.7..−398.3,3.6m clear; preserve a continuous3.6m usable strip even after wall protection and fixtures
+- Secondary control: X20..34, Z−464..−454,14 ×10m,3.3m clear. Staff-accessible independent control faces plant through sealed internal glass; door/console placement preserves1.5m operating face and3.6m turning square. Proposed as one of two source-required engineering control rooms; other room's parent allocation remains unresolved
+- Technical staging: X35..47, Z−464..−454,3.3m clear. Spares/quarantine cabinet and segregated incoming cart park, not an automatically credited one-of-four technical store
+- Maintenance workbay: X20..34, Z−410..−400,3.6m clear. Local bench, supported instrument service and replacement-module staging; this is not a seventh engineering workshop
+- Clean return staging: X35..47, Z−410..−400,3.3m clear. Consumables and bagged returns separated by closed cabinets; no hazardous-material processing loop inferred
+
+North/south service strips connect control, staging, workbay and east street without threading between control desks or the guest area. All daily routes are levelY6. No gratuitous catwalk or mezzanine is added under a low ceiling. Service west face and two end faces remain opaque to the visitor viewpoint; glass encloses selected plant views only. Provide structural bearing ribs independently of glazing. Views are internal to plant: the allocation is not on the hull edge, so exterior windows cannot be fabricated through other volumes.
+
+## 4. Cart, maintenance and service interfaces
+
+Design envelope:1.2m-wide ×1.8m-long ×2.0m-high loaded cart. Target3.6m routes/turning squares;2.4m minimum maintenance passage; proposed2.4m clear doors ×2.7m clear height. These are design targets, not species or live-controller acceptance. A broad-body/cart review must verify exact catalogue frames, leaves, hinge arcs/pockets and collision. No existing lift cabin, persistent ID, controller or stop is changed.
+
+Two proposed utility thresholds at(54,−432) and(54,−404) connect to a new east service street centreX57. The second is a separated exit from the hall, but both lead to one unbuilt street, so this does not yet establish independent emergency refuge. Door leaves must occupy protected pockets or dedicated hinge zones outside the continuously clear cart strip. Segmented machine components use the3.6m removal path through east staging; the16m core cannot pass a2.4m door. Define replaceable module dimensions before authoring it.
+
+Candidate service route, width3.6m: existing port network tee(−57,−500) →(57,−500) →(57,−432) →secondary service interface(54,−432). It bypasses all D02 programme allocations and uses the existing network rather than pretending the unbuilt starboard riser is live. No public-spine crossing is required in plan; crossing the centreline atZ−500 still needs enclosure/guest/core reservation review. Existing port network source/lift forward_staff_lift_001 stays owned by its current builder. Riser reservations extend all eighteen decks but are not constructed routes; the current lift serves D01/D02/D03/D08/D09 only.
+
+Candidate departmental spine: X57 fromZ−432 to−80, then(102,−80) →(102,80) →(57,80) →(57,290). X102 bypass is necessary because Emergency stores occupiesX52..98 atZ−34..34. Branches meet Water recovery at(54,−216), Life support at(54,216), Emergency stores at(98,0). Power branch follows(57,290) →(−57,290) →(−57,216) →(−54,216). These are interfaces to later packages, not constructed metres or a finished engineering network.
+
+SERVICE_ROUTE_PLAN_CHECK.json tests axis-aligned flat-end3.6m segment rectangles against all current D02 allocation rectangles and hull-plan corner containment: no programme intersections or out-of-plan-hull corners found. This narrow numerical check excludes turning-square ownership, spatial floor reservations, risers, actual hull section, doors, runtime and machinery. It is not a route acceptance receipt. Other plant branches and workshop supply remain graph links pending route ownership; do not imply that the candidate is a complete service distribution system.
+
+## 5. Environmental and operational boundaries
+
+Use an enclosed, normally conditioned staff environment. Separate visitor/plant, control/plant, service/storage and electrical/wet utility boundaries visibly with substantial frames, sealed doors and supported penetrations. Plant containment remains sealed; staff maintain external instrument/manifold faces with observable isolation controls. No player enters a fictional hot core. Water utilities are segregated from power bus corridors; route serviceable pipes at protected edges, not over control panels. No quantitative radiation, harmful gas, pressure, fluid or propulsion simulation is introduced.
+
+Secondary control exposes qualitative state/maintenance/isolation information; control functionality is deferred, not claimed from screen art. D02 power distribution is a separate six-node system requirement; utility consoles aren't six finished nodes. Four atmosphere processors, four water-recovery plants, four life-support modules and four technical stores remain source constraints pending decomposition. Emergency stores and reserve power30-day claim do not automatically refer to the same room/equipment. Waste/matter recovery stays associated with D01_directory_07 until plant split is reviewed.
+
+Engineering supplies interface with D01 cargo, technical stores, D02 workshops and inspection dock; consumables/returns interface with custodial depot. D01 laundry/synthesis/docks/cold storage, D03 crew living and D05 care retain separate host geometry and quantities. The core's thermal/power feeds are architectural connections, not certification of real ship engineering.
+
+## 6. Reusable families and design language
+
+Preserve the current editable catalogue. Staff wall protection AST-STF-001/002/003, supported runs/junctions/guarded luminaires004/005/006, work cabinet007 and profiled threshold008 support SunCorp's painted white/blue-grey, zinc, rubber and opal utilitarian language. Threshold008 is draft; exact clear aperture and leaf sweep need review before adoption. ASTM naming is not added. Use existing utility pump/filter/control/pipe/elbow/valve AST-ENG-001..006 only for local service assemblies, not to inflate whole-plant counts. AST-ENG-007 contributes contained instrumentation and sculpted support language; secondary functional core source is a distinct unresolved design task. AST-STF-009 existing network remains untouched.
+
+Reuse ivory/enamel and restrained hospitality accents only on the visitor arrival edge; technical rooms retain readable guarded light and exposed but supported runs. Actual luminaire source markers are required at entry, control desks, isolation faces, maintenance work surface and cart corners. Lighting pass must validate labels and floor hazards at normal eye height. No generic dramatic strips, unanchored light sources or decorative machine clutter substitutes for plant purpose. New hull/core/architecture catalogue identities must be reserved with the parent before registration; no identity is registered here.
+
+## 7. All-eighteen-deck interface accounting
+
+JSON includes the complete18 canonical datums and roles. D01 supplies/cargo/recovery; D02 engineering; D03 crew; D04 and D13–17 accommodation/habitats; D05 medical; D06 botanical; D07 activity; D08 wet service; D09 retail/parcel/repair; D10 galley/food; D11 backstage; D12 observation/public support; D18 command/status. This package neither removes nor finishes their interfaces. Habitat local environmental nodes, pressure transitions, refuge/med support, feeding/hydration, biosanitation and public food/service/assembly interfaces remain source-explicit categories for their respective hosts. Historical habitatD08/D10 labels do not move plant into current aquatic/dining decks. No new cabins, berths, crew or passengers:1000 guest units,81 luxury within them,2000 admitted passengers and400 crew including player remain unchanged.
+
+## 8. Finite decisions and acceptance gate
+
+1. Resolve core vertical adaptation against actual editable machine/support/removal section. If it cannot fit, stop affected source authoring and choose a reviewed alternative; no neighbour relocation
+2. Confirm secondary visitor access and the exact X0..8 guest-spine floor/threshold owner. Existing primary floor ends atX0; do not mirror it into an unowned connection
+3. Map two engineering control rooms to real parent children; this spec proposes one here, does not claim the second built
+4. Resolve four technical stores, four life-support modules and medicalD05 distributed-control depiction without double plant counts
+5. Reconcile six engineering maintenance workshops versus four logistics repair workshops; local workbay is not additive
+6. Reconcile reserve power versus Emergency stores, and inspection-dock/cargo replacement handling
+7. Review proposed service spines and turning zones against full floor/core/void and per-height hull ownership; no public/service mixing or retained route obstruction
+8. Review environmental barriers, clearances, exact catalogue variants and source fixture anchors
+
+Compiler will own exactly one structuralY6 slab per walkable region and an opaque protectedY12 cap; asset visual floor skins have no duplicate collision. Core reservation contributes no walkable floor. Source owns facade/frame/soffit/equipment surfaces and threshold frames; dynamic doors and any future lift remain runtime-owned. Floors, cap and core are proposed responsibilities awaiting integration review, not existing records rewritten by this package.
+
+After spec acceptance: editable source and bounded derivatives; preservation/source/export checks; independent retention; coordinated live integration; capsule/loaded-cart/control-route tests; normal-height reference review; matching regression checkpoint. Furnishing, species fit, source machine design, operating control, staff routines, actual water/power behavior and final visual acceptance are all unfinished. Spec dimensions alone pass none of these stages.

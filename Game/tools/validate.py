@@ -1,5 +1,10 @@
 """Run bounded Godot checks; a printed PASS never overrides an engine/script error."""
 import os, pathlib, subprocess, json, sys, threading, time
+if "--help" in sys.argv or "-h" in sys.argv:
+    print("Usage: python tools/validate.py [--only CHECK] [--realtime]")
+    print("Default runs the full suite. --only runs one named check plus import.")
+    print("Help does not start Godot or modify validation receipts.")
+    sys.exit(0)
 root=pathlib.Path(__file__).resolve().parents[1]
 # Checks can emit receipts before the suite finishes, including on a fresh clone.
 (root/'artifacts').mkdir(exist_ok=True)

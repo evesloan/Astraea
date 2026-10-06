@@ -33,7 +33,7 @@ func clear_shape(space: PhysicsDirectSpaceState3D, shape: Shape3D, transform: Tr
 	query.exclude = excluded
 	var hits := space.intersect_shape(query, 128)
 	require(hits.size() < 128, "Unsaturated Grand Pool cart query required")
-	for hit in hits: print("GRAND POOL CART POSE BLOCK: ", label, " ", hit.collider.get_path())
+	for hit in hits: print("GRAND POOL CART POSE BLOCK: ", label, " query_origin:", transform.origin, " ", hit.collider.get_path())
 	require(hits.is_empty(), label)
 
 func raw_support(space: PhysicsDirectSpaceState3D, point: Vector3, floor_y: float, excluded: Array[RID]) -> Dictionary:
@@ -69,7 +69,7 @@ func check_pose(ship: Node3D, actor: CharacterBody3D, cart: RigidBody3D, positio
 	var capsule := CapsuleShape3D.new()
 	capsule.radius = .3
 	capsule.height = 1.8
-	clear_shape(space, capsule, Transform3D(basis, position + basis * Vector3(0, .91, 1.62)), excluded, "Actual operator envelope")
+	clear_shape(space, capsule, Transform3D(basis, position + basis * Vector3(0, .91, 1.62)), excluded, "Actual operator envelope at cart%s yaw%s" % [position,yaw])
 	for index in range(wheel_specs.size()):
 		var centre: Array = wheel_specs[index].center
 		floor_at(space, transform * Vector3(centre[0], 0, centre[2]), floor_y, excluded, "planned wheel " + str(index), at_lift)

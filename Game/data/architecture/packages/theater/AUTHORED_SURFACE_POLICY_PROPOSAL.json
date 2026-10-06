@@ -1,0 +1,295 @@
+{
+  "status": "Exact proposed compiler-interface contract; not installed; source surface hashes remain unavailable before source authoring",
+  "current_behavior": "compile_layout.py validates void_exemptions subset central_atrium, subtracts every applicable other void before provided_by_asset skip; empty theater surfaces vanish",
+  "minimal_change_proposal": {
+    "new_allowance": "theater_upper_volume only for exactly whitelisted static source-backed regions below",
+    "required_checks": [
+      "Reject any unknown region ID, owner, kind, deck, elevation or missing provided_by_asset",
+      "Require exact source surface boundary/holes manifest hash and source/export hash; validate geometry against declared shape rule; never approve by enclosing rectangle alone",
+      "Subtract every OTHER applicable void unconditionally",
+      "Retain protected theater_upper_volume subtraction for every generic and unlisted region, including D14",
+      "Run the normal coplanar priority and slab-overlap checks with actual asset surfaces included in owned shapes",
+      "Skip compiled triangles only after asset-owned shape participates in ownership checks",
+      "Compile/report separate theater_generic_void_preserved and theater_authored_surface_allowlist_verified assertions; replace blanket theater_void_not_exemptible claim with truthful bounded assertion"
+    ],
+    "disallowed": [
+      "D14 guest floor",
+      "D15 cut",
+      "Dynamic lift cabin as static floor",
+      "Generic floor exemption",
+      "Full 84x150 gallery rectangle",
+      "Broad owner-prefix exemption"
+    ]
+  },
+  "whitelist": [
+    {
+      "region_id": "D12_theater_gallery_seating",
+      "deck": "D12",
+      "absolute_floor_y": 78,
+      "owner": "grand_lantern_theater",
+      "kind": "authored_theater_surface",
+      "provided_by_asset_required": true,
+      "shape_rule": {
+        "annular_sector": {
+          "center_xz": [
+            -76,
+            -238
+          ],
+          "inner_radius": 19.5,
+          "outer_radius": 46.4,
+          "angles_degrees_from_positive_z": [
+            -54,
+            54
+          ]
+        },
+        "exclude_shapes": [
+          "rear_public_returns"
+        ]
+      },
+      "source_surface_manifest_required": true,
+      "source_manifest_sha256_required": true,
+      "compiled_triangles_allowed": false
+    },
+    {
+      "region_id": "D12_theater_rear_public_returns",
+      "deck": "D12",
+      "absolute_floor_y": 78,
+      "owner": "grand_lantern_theater",
+      "kind": "authored_theater_surface",
+      "provided_by_asset_required": true,
+      "shape_rule": {
+        "union_rectangles": [
+          [
+            -113.6,
+            -198,
+            -38.4,
+            -153
+          ],
+          [
+            -117,
+            -236,
+            -113.6,
+            -153
+          ],
+          [
+            -38.4,
+            -236,
+            -35,
+            -153
+          ],
+          [
+            -113.6,
+            -232,
+            -107,
+            -216
+          ],
+          [
+            -45,
+            -232,
+            -38.4,
+            -216
+          ]
+        ]
+      },
+      "source_surface_manifest_required": true,
+      "source_manifest_sha256_required": true,
+      "compiled_triangles_allowed": false
+    },
+    {
+      "region_id": "D12_theater_foyer_landings",
+      "deck": "D12",
+      "absolute_floor_y": 78,
+      "owner": "grand_lantern_theater",
+      "kind": "authored_theater_surface",
+      "provided_by_asset_required": true,
+      "shape_rule": {
+        "rectangle": [
+          -117,
+          -153,
+          -35,
+          -116
+        ],
+        "holes_rectangles": [
+          [
+            -59,
+            -146,
+            -50,
+            -122
+          ],
+          [
+            -44.5,
+            -124,
+            -38.5,
+            -118
+          ]
+        ]
+      },
+      "source_surface_manifest_required": true,
+      "source_manifest_sha256_required": true,
+      "compiled_triangles_allowed": false
+    },
+    {
+      "region_id": "D12_theater_stair_upper_landing",
+      "deck": "D12",
+      "absolute_floor_y": 78,
+      "owner": "grand_lantern_theater",
+      "kind": "authored_theater_surface",
+      "provided_by_asset_required": true,
+      "shape_rule": {
+        "rectangle": [
+          -59,
+          -123.8,
+          -50,
+          -122
+        ],
+        "not_flight_geometry": true
+      },
+      "source_surface_manifest_required": true,
+      "source_manifest_sha256_required": true,
+      "compiled_triangles_allowed": false
+    },
+    {
+      "region_id": "D13_theater_gallery_seating",
+      "deck": "D13",
+      "absolute_floor_y": 84,
+      "owner": "grand_lantern_theater",
+      "kind": "authored_theater_surface",
+      "provided_by_asset_required": true,
+      "shape_rule": {
+        "annular_sector": {
+          "center_xz": [
+            -76,
+            -238
+          ],
+          "inner_radius": 19.5,
+          "outer_radius": 46.4,
+          "angles_degrees_from_positive_z": [
+            -54,
+            54
+          ]
+        },
+        "exclude_shapes": [
+          "rear_public_returns"
+        ]
+      },
+      "source_surface_manifest_required": true,
+      "source_manifest_sha256_required": true,
+      "compiled_triangles_allowed": false
+    },
+    {
+      "region_id": "D13_theater_rear_public_returns",
+      "deck": "D13",
+      "absolute_floor_y": 84,
+      "owner": "grand_lantern_theater",
+      "kind": "authored_theater_surface",
+      "provided_by_asset_required": true,
+      "shape_rule": {
+        "union_rectangles": [
+          [
+            -113.6,
+            -198,
+            -38.4,
+            -153
+          ],
+          [
+            -117,
+            -236,
+            -113.6,
+            -153
+          ],
+          [
+            -38.4,
+            -236,
+            -35,
+            -153
+          ],
+          [
+            -113.6,
+            -232,
+            -107,
+            -216
+          ],
+          [
+            -45,
+            -232,
+            -38.4,
+            -216
+          ]
+        ]
+      },
+      "source_surface_manifest_required": true,
+      "source_manifest_sha256_required": true,
+      "compiled_triangles_allowed": false
+    },
+    {
+      "region_id": "D13_theater_foyer_landings",
+      "deck": "D13",
+      "absolute_floor_y": 84,
+      "owner": "grand_lantern_theater",
+      "kind": "authored_theater_surface",
+      "provided_by_asset_required": true,
+      "shape_rule": {
+        "rectangle": [
+          -117,
+          -153,
+          -35,
+          -116
+        ],
+        "holes_rectangles": [
+          [
+            -59,
+            -146,
+            -50,
+            -122
+          ],
+          [
+            -44.5,
+            -124,
+            -38.5,
+            -118
+          ]
+        ]
+      },
+      "source_surface_manifest_required": true,
+      "source_manifest_sha256_required": true,
+      "compiled_triangles_allowed": false
+    },
+    {
+      "region_id": "D13_theater_stair_upper_landing",
+      "deck": "D13",
+      "absolute_floor_y": 84,
+      "owner": "grand_lantern_theater",
+      "kind": "authored_theater_surface",
+      "provided_by_asset_required": true,
+      "shape_rule": {
+        "rectangle": [
+          -59,
+          -123.8,
+          -50,
+          -122
+        ],
+        "not_flight_geometry": true
+      },
+      "source_surface_manifest_required": true,
+      "source_manifest_sha256_required": true,
+      "compiled_triangles_allowed": false
+    }
+  ],
+  "D11_ground_floor_contract": {
+    "id": "D11_theater_base",
+    "deck": "D11",
+    "absolute_floor_y": 69.5,
+    "boundary_rectangle": [
+      -117,
+      -263,
+      -35,
+      -116
+    ],
+    "owner": "grand_lantern_theater",
+    "provided_by_asset": true,
+    "void_exemption_required": false,
+    "current_compiler_region_AABB_overlap_count": 0,
+    "required_next_evidence": "One source-owned ground surface, source/export manifest and collision ownership, or exactly one compiler ground-floor region; not both. Do not claim extant floor support."
+  },
+  "source_boundary_note": "Shape rules define approved containment and floor-part partition, not mesh generation. Raked seat/gangway surfaces need true elevations and actual surface manifest; nominal datum region accounts ownership only and cannot certify inclined collisions."
+}
