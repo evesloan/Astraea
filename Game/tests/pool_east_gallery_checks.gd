@@ -46,6 +46,18 @@ func clear_render_segment(a: Vector3,b: Vector3,except_name: String="") -> bool:
 		for i in range(0,faces.size(),3):
 			if Geometry3D.segment_intersects_triangle(x,y,faces[i],faces[i+1],faces[i+2])!=null:return false
 	return true
+func source_sampler(material: StandardMaterial3D,doc: Dictionary,ref: Dictionary) -> void:
+	# Exact Godot4.6.3 GLTFTextureSampler representation for these source samplers.
+	# Retained signs use nearest/mipmapped ink; the screen image clamps at its edges.
+	assert(int(ref.get("texCoord",0))==0 and not ref.has("extensions"))
+	var texture: Dictionary=doc.textures[int(ref.index)]
+	var sampler: Dictionary=doc.samplers[int(texture.sampler)] if texture.has("sampler") else {}
+	var mag: int=int(sampler.get("magFilter",9729));var minimum: int=int(sampler.get("minFilter",9987))
+	assert([mag,minimum] in [[9729,9987],[9728,9984]],"Unreviewed source filter pair")
+	var expected_filter: int=BaseMaterial3D.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS if minimum==9984 else BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	var wrap_s: int=int(sampler.get("wrapS",10497));var wrap_t: int=int(sampler.get("wrapT",10497))
+	assert([wrap_s,wrap_t] in [[10497,10497],[33071,33071]],"Unreviewed source wrapping pair")
+	assert(material.texture_filter==expected_filter and material.texture_repeat==(wrap_s==10497 and wrap_t==10497),"Imported sampler differs from the exact source declaration")
 func material_check(mesh: MeshInstance3D,si: int,p: Dictionary,doc: Dictionary,bin: PackedByteArray) -> void:
 	var mat:=mesh.get_active_material(si)as StandardMaterial3D
 	assert(mat!=null and mat==mesh.mesh.surface_get_material(si) and mesh.get_surface_override_material(si)==null)
@@ -62,7 +74,7 @@ func material_check(mesh: MeshInstance3D,si: int,p: Dictionary,doc: Dictionary,b
 	else:assert(not mat.emission_enabled)
 	for entry in [["baseColorTexture",pbr,mat.albedo_texture],["emissiveTexture",gm,mat.emission_texture]]:
 		if entry[1].has(entry[0]):
-			geo.texture_check(entry[2],doc,bin,entry[1][entry[0]]);geo.check_sampler(mat,doc,entry[1][entry[0]])
+			geo.texture_check(entry[2],doc,bin,entry[1][entry[0]]);source_sampler(mat,doc,entry[1][entry[0]])
 		else:assert(entry[2]==null)
 func geometry() -> void:
 	assert(FileAccess.get_sha256("res://tests/pool_feature_geometry.gd")==str(data.geometry_audit_helper_sha256))

@@ -1,0 +1,218 @@
+{
+  "status": "REVIEW_ONLY; no derivative authored or installed yet",
+  "parent_catalogue_id": "AST-CIR-005",
+  "parent_family": "primary_atrium_core",
+  "existing_runtime_export": "/workspace/shared/astraea-godot-production-20261003/assets/models/AST-CIR-005_forward_pool_market_engineering_access.glb",
+  "existing_export_sha256": "416ae10ac0e0cbf619e56233136150ded941c5f4c3299da1b95544433f65344b",
+  "existing_editable_source": "/workspace/shared/astraea-catalogue-continuation-20261002/assets/secondary_engineering_access_interfaces/source/AST-CIR-005_forward_pool_market_engineering_access.blend",
+  "existing_source_sha256": "aa83dd9e0dce36c329736647d3885a088e466fa9891e48bb700fb13c8938a02a",
+  "new_source_basename": "AST-CIR-005_forward_pool_market_engineering_medical_access.blend",
+  "new_export_basename": "AST-CIR-005_forward_pool_market_engineering_medical_access.glb",
+  "changed_existing_nodes": [
+    "CORE_OuterWall_04_-1",
+    "CORE_WallDado_04_-1"
+  ],
+  "new_parts": [
+    {
+      "name": "MED_D05_Port_OuterWall_Fore",
+      "world_bounds_xyz": {
+        "x": [
+          -7.88,
+          -7.72
+        ],
+        "y": [
+          21,
+          26.76
+        ],
+        "z": [
+          -445,
+          -433.8
+        ]
+      },
+      "retained_material_role": "ivory_enamel",
+      "source_role": "replacement limited to exact original node envelope"
+    },
+    {
+      "name": "MED_D05_Port_OuterWall_Aft",
+      "world_bounds_xyz": {
+        "x": [
+          -7.88,
+          -7.72
+        ],
+        "y": [
+          21,
+          26.76
+        ],
+        "z": [
+          -430.2,
+          -412
+        ]
+      },
+      "retained_material_role": "ivory_enamel",
+      "source_role": "replacement limited to exact original node envelope"
+    },
+    {
+      "name": "MED_D05_Port_WallDado_Fore",
+      "world_bounds_xyz": {
+        "x": [
+          -7.685,
+          -7.635
+        ],
+        "y": [
+          21.12,
+          21.78
+        ],
+        "z": [
+          -445,
+          -433.8
+        ]
+      },
+      "retained_material_role": "warm_walnut",
+      "source_role": "replacement limited to exact original node envelope"
+    },
+    {
+      "name": "MED_D05_Port_WallDado_Aft",
+      "world_bounds_xyz": {
+        "x": [
+          -7.685,
+          -7.635
+        ],
+        "y": [
+          21.12,
+          21.78
+        ],
+        "z": [
+          -430.2,
+          -412
+        ]
+      },
+      "retained_material_role": "warm_walnut",
+      "source_role": "replacement limited to exact original node envelope"
+    },
+    {
+      "name": "MED_D05_Port_Lintel",
+      "world_bounds_xyz": {
+        "x": [
+          -7.88,
+          -7.72
+        ],
+        "y": [
+          23.4,
+          26.76
+        ],
+        "z": [
+          -433.8,
+          -430.2
+        ]
+      },
+      "retained_material_role": "ivory_enamel",
+      "source_role": "real closure above the clear opening"
+    },
+    {
+      "name": "MED_D05_ReceivingGap_Fore",
+      "world_bounds_xyz": {
+        "x": [
+          -8,
+          -7.88
+        ],
+        "y": [
+          21,
+          25.2
+        ],
+        "z": [
+          -433.92,
+          -433.8
+        ]
+      },
+      "retained_material_role": "ivory_enamel",
+      "source_role": "0.12m joint return between medical source east face and retained core west face"
+    },
+    {
+      "name": "MED_D05_ReceivingGap_Aft",
+      "world_bounds_xyz": {
+        "x": [
+          -8,
+          -7.88
+        ],
+        "y": [
+          21,
+          25.2
+        ],
+        "z": [
+          -430.2,
+          -430.08
+        ]
+      },
+      "retained_material_role": "ivory_enamel",
+      "source_role": "0.12m joint return between medical source east face and retained core west face"
+    },
+    {
+      "name": "MED_D05_ReceivingGap_Header",
+      "world_bounds_xyz": {
+        "x": [
+          -8,
+          -7.88
+        ],
+        "y": [
+          23.4,
+          25.2
+        ],
+        "z": [
+          -433.8,
+          -430.2
+        ]
+      },
+      "retained_material_role": "ivory_enamel",
+      "source_role": "real overhead closure across the shell-to-core joint; no source slab"
+    }
+  ],
+  "clear_opening_world_xyz": {
+    "x": [
+      -8,
+      -7.635
+    ],
+    "y": [
+      21,
+      23.4
+    ],
+    "z": [
+      -433.8,
+      -430.2
+    ]
+  },
+  "core_root_world_xyz": [
+    0,
+    0,
+    -432
+  ],
+  "source_axis_mapping": "core Blender point=(worldX,-(worldZ+432),worldY); GLB Y-up follows actual native hierarchy",
+  "clear_height_m": 2.4,
+  "clear_width_m": 3.6,
+  "no_source_floor": true,
+  "floor_owner": "D05_forward_waiting_support_floor",
+  "joint_receiver_contacts": [
+    {
+      "face_x": -8,
+      "receiver": "medical006 admission enclosure east outer face",
+      "normal_world": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "face_x": -7.88,
+      "receiver": "retained forward core west outer face",
+      "normal_world": [
+        -1,
+        0,
+        0
+      ]
+    }
+  ],
+  "bearing_limit": "Jamb joint strips bridge0.12m between real full-height wall receivers; no structural load or clinical pressure certification. Check installed contact faces and seam support.",
+  "preserve_exactly": "Every unaffected editable object, source transform, mesh, UV, material graph/image, marker, all previous D01/D02/D08/D09 openings, D02 east opening, lift/stairs/gates and persistent identities. Keep old runtime GLB untouched.",
+  "unaffected_native_node_count": 905,
+  "unaffected_native_node_metadata_sha256": "3051fba6b8a573676f79e1f0fd9ba7382f268fd73ad19824caa4832ff3b2be76",
+  "adoption_atomicity": "Install receiving floor, core derivative and medical architecture as one reviewed main-scene change. Never open the core onto absent support. No new dynamic door is claimed."
+}
