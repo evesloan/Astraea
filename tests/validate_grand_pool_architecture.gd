@@ -300,6 +300,7 @@ func run() -> void:
 		for p in reverse: await walk_to(xyz(p))
 	pins()
 	await load("res://tests/pool_feature_layers_checks.gd").new().check(self,ship)
+	await load("res://tests/pool_east_gallery_checks.gd").new().check(self,ship)
 	print("POOL SOURCE TO RETAINED NATIVE SUPPORT REPRESENTATION MAX OFFSET M ",maximum_native_support_offset)
 	print("POOL SOURCE TO RETAINED IMPORTED PLANT ROOT MAX OFFSET M ",maximum_plant_source_offset)
 	print("GRAND POOL ARCHITECTURE PASS: three checked derivative assemblies, 451 source parts, 114 retained support roots, 12 soil-supported plant instances, three accessible pool-facing curved seats; original 126 programme preserved. Cart/lift, affected original checks and actual visual acceptance remain separate.")
