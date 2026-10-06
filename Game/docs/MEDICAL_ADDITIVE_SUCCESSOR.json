@@ -871,7 +871,7 @@
     "tests/validate_medical_cart.gd": "c7c27c0523c8d3b8cb29fec4acb4e7a53877ed6ed3c481f9ac94f1151ad9c78b",
     "tests/medical_test_scene.gd": "8b7b7fab22e8635e4c275550b32715b81e6a97aeb3d31a2548e450f47aa8f151",
     "tests/validate_medical_access.gd": "eab58da2af2182f8d798ad316189a1ff5c4f2d4b890f14c28920bce15ea97cea",
-    "tests/validate_medical_structure.gd": "3e0d0273544889ac6ab151c7c7380e6b5362cdcf29a9bae07a75ef6abb75f69f",
+    "tests/validate_medical_structure.gd": "785bc60655a960e836928aafcb330120a1f06d13ee25f32cc5bc05e3a9d4c756",
     "scripts/medical_welcome.gd": "0d0f85f60f7bb6b35e8d8e4563320e83568b2d4a2c83039da443996141dbe0a1",
     "tools/medical_incremental_preservation.py": "bdd02b066ba87d1dc317af3eec1c1b697bf0f39db8769ed3ac59372b937cd7e2",
     "assets/models/D05_forward_welcome_architecture_006.glb": "72e36d8e6ec0e89d0fdc783d5c54b785f31c9ef3bd57547bd7db04435ec2210a",
@@ -1387,5 +1387,12 @@
         "count": 1
       }
     ]
+  },
+  "test_codec_correction": {
+    "predecessor_test_sha256": "3e0d0273544889ac6ab151c7c7380e6b5362cdcf29a9bae07a75ef6abb75f69f",
+    "predecessor_proof_sha256": "f46bf75cc50acf221b6f46165e4390acb4ca74a93367e1f6035830fb6e8675af",
+    "diagnosis_sha256": "d582b23f205256eaeff8b47505a8f350f9f8b90631134d8f829948e3a55b8e1a",
+    "method": "Exact float32 vector-byte triangle multisets. Expected contacts pass through the same native ArrayMesh/TriangleMesh construction codec; actual render triangles use surface_get_arrays to avoid TriangleMesh snapping. No widened coordinate tolerance, runtime geometry or existing assertion removal.",
+    "scratch_actual_world_trial": "diagnose_nativepath002.log: PASS,36 contact triangles,14 render chunks,852 preserved meshes,12 open rays,3closure rays,123support rays,11fixture sources"
   }
 }
