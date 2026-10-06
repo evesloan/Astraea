@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "status": "SCRATCH_ONLY_ENGINEERING_REVIEW_DRAFT",
+  "scope": "Exact byte and record successor only. Does not claim engine, route, visual, load or finished-room acceptance.",
+  "previous_engineering_proof_sha256": "ee806149c47846c5d2a2374269615f2c13c681b949cea8f2ceb05ad81856e6cc",
+  "previous_engineering_contract_sha256": "bef8d64a2238d96a11907083c1ad68aa3db484f71e504299d0c0613ccd9606da",
+  "previous_engineering_chain_sha256": "e4315c57b22eb3c2a7629d7c32444632e488e5cbc9a108cd8dc318e97a2e8051",
+  "previous_engineering_guard_sha256": "71fbbeed165ed72f1949673142447109e800db075e472192f7099d961818113f",
+  "theater_proposal_path": "docs/THEATER_ADDITIVE_SUCCESSOR_PROPOSAL.json",
+  "theater_proposal_sha256": "1fa5809a6dfa77f77986a53a3e56f4fbfafdb7f5ab2d9ba1c40080bd6fe0d183",
+  "previous_layout_sha256": "587e2a0d618b4957eab68c5dd437fdfed93ef4c7dab138d9b62326a53d1d6da2",
+  "previous_compiled_sha256": "3322c84a8dc2d456c6652d641bc0e02a38b27ec1095b95d5d494a1456b14f52b",
+  "new_layout_sha256": "6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167",
+  "new_compiled_sha256": "4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91",
+  "previous_layout_count": 268,
+  "previous_compiled_count": 262,
+  "new_layout_count": 285,
+  "new_compiled_count": 271,
+  "original_compiled_count": 258,
+  "current_engineering_owner_count": 4,
+  "allowed_new_layout_ids": [
+    "D12_theater_gallery_seating",
+    "D12_theater_rear_public_returns",
+    "D12_theater_foyer_landings",
+    "D12_theater_stair_upper_landing",
+    "D13_theater_gallery_seating",
+    "D13_theater_rear_public_returns",
+    "D13_theater_foyer_landings",
+    "D13_theater_stair_upper_landing",
+    "D11_theater_flat_00",
+    "D11_theater_foundation_00",
+    "D11_theater_foundation_01",
+    "D11_theater_foundation_02",
+    "D11_theater_foundation_03",
+    "D11_theater_foundation_04",
+    "D11_theater_foundation_05",
+    "D11_theater_foundation_06",
+    "D11_theater_receiving_bridge"
+  ],
+  "allowed_new_compiled_ids": [
+    "D11_theater_flat_00",
+    "D11_theater_foundation_00",
+    "D11_theater_foundation_01",
+    "D11_theater_foundation_02",
+    "D11_theater_foundation_03",
+    "D11_theater_foundation_04",
+    "D11_theater_foundation_05",
+    "D11_theater_foundation_06",
+    "D11_theater_receiving_bridge"
+  ],
+  "retained_layout_path": "data/architecture/packages/theater/retained/spatial_layout.json",
+  "retained_compiled_path": "data/architecture/packages/theater/retained/structural_meshes.json",
+  "explicit_runtime_pin_successors": {
+    "data/spatial_layout.json": {
+      "historical_sha256": "d260d6c55397c822603fe88ea702fff2515eec13a1259ba607b57b85a1ffdc73",
+      "section_sha256": "587e2a0d618b4957eab68c5dd437fdfed93ef4c7dab138d9b62326a53d1d6da2",
+      "theater_sha256": "6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167"
+    },
+    "data/generated/structural_meshes.json": {
+      "historical_sha256": "646ee5875fd230be13f6553f36ae6dc05322b5848d42f5c725841dc9aee08a3a",
+      "section_sha256": "3322c84a8dc2d456c6652d641bc0e02a38b27ec1095b95d5d494a1456b14f52b",
+      "theater_sha256": "4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91"
+    },
+    "scripts/ship.gd": {
+      "historical_sha256": "792d5d4946d0d07f728f30a62883f958f71a10c6ff853e2771a1a0088fcb0ca1",
+      "section_sha256": "804becfaa65bab75ea57998b843865546d0bdccba99f1b57e11ee6df411af019",
+      "theater_sha256": "cd321b10dd1081fb9859b470f2499b6c09cf078b0b32d58cb4504819e669aef1"
+    }
+  },
+  "ship_exact_addition": "\tload(\"res://scripts/grand_lantern_theater_section.gd\").build($ShipSpace/Districts,self)",
+  "ship_delta_rule": "Exactly one added theater build call after the secondary-engineering build call and before the cleaning cart; all predecessor bytes remain unchanged.",
+  "ship_successor_pending": false,
+  "preservation": "All 268 prior whole layout records and 262 prior whole compiled records remain equal, in their original relative order. This includes exact original258 and current four engineering records.",
+  "validation_limits": [
+    "Pure Python record/hash model and source-diff checks only.",
+    "Godot parsing and runtime regressions must run after authorized adoption.",
+    "Foundation/public-walking policy remains owned by the separate theater builder review."
+  ]
+}

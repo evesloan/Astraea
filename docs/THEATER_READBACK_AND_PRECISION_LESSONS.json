@@ -1,0 +1,31 @@
+{
+  "status": "VERIFIED_ENGINE_BEHAVIOUR_AND_TEST_SCOPE",
+  "lessons": [
+    {
+      "finding": "Headless dummy MultiMesh getters return identity and empty buffers even for a one-box control.",
+      "policy": "Keep strict actual-renderer transform validation. A standard headless run may consume only hash-pinned native evidence with unchanged relevant inputs, while all CPU physics/identity/owner checks still run."
+    },
+    {
+      "finding": "Godot canonicalizes decimal points in node names; all139 source fixture IDs map bijectively,16 names change.",
+      "policy": "Validate exact native canonical names and preserve full source identities; do not treat normalized names as missing geometry."
+    },
+    {
+      "finding": "Source-floor centroid probes on triangulation seams can select an adjacent legitimate source batch after float/physics conversion.",
+      "policy": "Retain all6514 source-part probes, place each within its same exact polygon with bounded sub3mm shifts away from seams, keep original failures and unchanged tolerances."
+    },
+    {
+      "finding": "Godot JSON stores numeric counts as floats; whole Dictionary equality to integer literals can fail although scalar values agree.",
+      "policy": "Require the exact count keyset, numeric type and exact per-field values; no rounding or tolerance."
+    },
+    {
+      "finding": "Mesh.get_faces()/create_trimesh_shape use TriangleMesh data with engine snapping.",
+      "policy": "Use surface_get_arrays vertices/indices for raw render equivalence; verify actual collider/support behaviour separately. Theater import equivalence already uses raw arrays.",
+      "primary_sources": [
+        "https://github.com/godotengine/godot/blob/4.6.3-stable/scene/resources/mesh.cpp#L477",
+        "https://github.com/godotengine/godot/blob/4.6.3-stable/core/math/triangle_mesh.cpp#L127"
+      ]
+    }
+  ],
+  "visual_quality_accepted": false,
+  "full_project_regression_passed": false
+}

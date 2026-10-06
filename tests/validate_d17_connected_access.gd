@@ -65,9 +65,11 @@ func run() -> void:
 	load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input("data/generated/structural_meshes.json",COMPILED_SHA)
 	load("res://tests/secondary_engineering_additive_guard.gd").validate_pinned_input("data/spatial_layout.json",LAYOUT_SHA)
 	var pool_floors: Dictionary = JSON.parse_string(GRAND_POOL_FLOORS_JSON)
-	assert(compiled.regions.size() == 262 and engineering_floors.size() == 4 and pool_floors.size() == 8)
+	var theater_floors := validate_loaded_theater_roster(compiled, ship.find_child("CompiledStructuralFloors_NotFinishedRooms", true, false))
+	assert(compiled.regions.size() == 271 and engineering_floors.size() == 4 and pool_floors.size() == 8)
 	var seen: Dictionary = {}
 	var pool_seen: Dictionary = {}
+	var theater_seen: Dictionary = {}
 	for region in compiled.regions:
 		var id := str(region.id)
 		assert(not seen.has(id), "Duplicate floor identity: " + id)
@@ -78,7 +80,10 @@ func run() -> void:
 			assert(str(region.deck) == str(expected.deck) and absf(float(region.floor_y) - float(expected.floor_y)) < .001 and absf(float(region.thickness) - float(expected.thickness)) < .001, "Approved pool-market slab deck/datum/thickness changed: " + id)
 			assert(absf(float(region.structural_area_m2) - float(expected.structural_area_m2)) < .001, "Approved pool-market slab area changed: " + id)
 			pool_seen[id] = true
-	assert(seen.size() == 262 and pool_seen.size() == 8, "Exactly eight pool-market and four reviewed engineering owners must accompany all 250 prior owners")
+		elif theater_floors.has(id):
+			assert(region == theater_floors[id], "Approved whole theater record changed: " + id)
+			theater_seen[id] = true
+	assert(seen.size() == 271 and pool_seen.size() == 8 and theater_seen.size() == 9, "Exactly nine theater, eight pool-market and four reviewed engineering owners must accompany all 250 prior owners")
 	var floor_rays := 0
 	for region in compiled.regions:
 		if region.id != "D17_connected_house_floor_00": continue
@@ -127,3 +132,33 @@ func run() -> void:
 	main.queue_free()
 	await process_frame
 	quit()
+
+# Authenticate the reviewed nine-owner successor without weakening the old subset checks.
+# The existing guard.validate call above still proves all 262 pre-theater records.
+func validate_loaded_theater_roster(compiled: Dictionary, loaded_floors: Node) -> Dictionary:
+	var guard = load("res://tests/secondary_engineering_additive_guard.gd")
+	assert(FileAccess.get_sha256(guard.THEATER_PROPOSAL)==guard.THEATER_PROPOSAL_SHA)
+	var proposal: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(guard.THEATER_PROPOSAL))
+	var additions: Dictionary = proposal.new_compiled_records
+	var approved_ids: Array = guard.ALLOWED_THEATER_COMPILED_IDS.duplicate()
+	var added_ids: Array = additions.keys()
+	approved_ids.sort()
+	added_ids.sort()
+	assert(added_ids==approved_ids and additions.size()==9,"Exactly the authenticated nine theater owners required")
+	assert(loaded_floors!=null and compiled.regions.size()==271 and loaded_floors.get_child_count()==271,"Exact reviewed combined floor count required")
+	var current: Dictionary = {}
+	for row in compiled.regions:
+		assert(not current.has(str(row.id)),"Duplicate compiled owner")
+		current[str(row.id)] = row
+	for id in approved_ids:
+		assert(current.has(id) and current[id]==additions[id],"Whole theater record changed: "+str(id))
+	var loaded_ids: Array = []
+	for owner in loaded_floors.get_children():
+		var id := str(owner.name)
+		assert(current.has(id) and not loaded_ids.has(id),"Unknown or duplicate loaded floor owner: "+id)
+		loaded_ids.append(id)
+	var compiled_ids: Array = current.keys()
+	compiled_ids.sort()
+	loaded_ids.sort()
+	assert(loaded_ids==compiled_ids,"Every exact compiled owner must exist in the loaded world")
+	return additions

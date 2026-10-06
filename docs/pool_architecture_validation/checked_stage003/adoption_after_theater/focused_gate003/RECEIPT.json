@@ -1,0 +1,15 @@
+{
+  "status": "STOPPED_PRESERVE_LOGS",
+  "started_utc": "2026-10-06T12:15:31.467735+00:00",
+  "command": [
+    "python",
+    "tools/validate.py",
+    "--only",
+    "grand_pool_architecture"
+  ],
+  "full_suite": false,
+  "visual_acceptance": false,
+  "exact_repair_manifest_sha256": "a11f2897f7077389d98a17740fd8e8f1b08cdfd44919c6ac7e19296676cca5ab",
+  "returncode": 1,
+  "error": "{'checks': [{'check': 'import', 'passed': True, 'exit_code': 0, 'errors': [], 'wall_seconds': 3.8061, 'clock_mode': 'editor'}, {'check': 'grand_pool_architecture', 'passed': False, 'exit_code': -15, 'errors': ['SCRIPT ERROR: Assertion failed: Imported botanical root geometry is absent at its soil probe'], 'wall_seconds': 21.262, 'clock_mode': 'fixed60'}], 'wall_seconds': 25.0689, 'clock_mode': 'fixed60', 'scope': 'Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance'}"
+}

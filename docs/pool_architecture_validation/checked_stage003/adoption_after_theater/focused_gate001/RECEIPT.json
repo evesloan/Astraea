@@ -1,0 +1,14 @@
+{
+  "status": "STOPPED_PRESERVE_LOGS",
+  "started_utc": "2026-10-06T11:26:28.608182+00:00",
+  "command": [
+    "python",
+    "tools/validate.py",
+    "--only",
+    "grand_pool_architecture"
+  ],
+  "full_suite": false,
+  "visual_acceptance": false,
+  "returncode": 1,
+  "error": "{'checks': [{'check': 'import', 'passed': True, 'exit_code': 0, 'errors': [], 'wall_seconds': 3.8083, 'clock_mode': 'editor'}, {'check': 'grand_pool_architecture', 'passed': False, 'exit_code': -15, 'errors': ['SCRIPT ERROR: Assertion failed: Imported checked geometry drift'], 'wall_seconds': 20.7578, 'clock_mode': 'fixed60'}], 'wall_seconds': 24.5666, 'clock_mode': 'fixed60', 'scope': 'Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance'}"
+}

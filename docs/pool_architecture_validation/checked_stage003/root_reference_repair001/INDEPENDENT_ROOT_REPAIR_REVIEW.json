@@ -1,0 +1,33 @@
+{
+  "status": "APPROVED_SCOPED_STATIC_REPAIR_NATIVE_RUN_REQUIRED",
+  "reviewed_at_utc": "2026-10-06T12:25:48.481809+00:00",
+  "before_sha256": "e79a7ee025e7b2c6c61c7b171424387161e72cb23acdbda44bcfb362c2c75ca8",
+  "after_sha256": "3e239a6dc3ed7e609a70ec48232238f7b85e2c807b2903770d88cd261ae7959a",
+  "patch_sha256": "dea8b5addb83d949d90f7122899e36503c2f2797c304da1e8ed41d275f588d18",
+  "diagnostic_sha256": "24ff010eda1b15bf672d191fa4b948841ea32c2b3b73d78ffe3ef2477eeb2eaa",
+  "findings": [],
+  "verified": [
+    "Patch hashes, exact diff, live test preimage and all twelve retained plant import pins match.",
+    "Godot 4.6.3 quantizes each compressed local coordinate within its surface AABB using uint16 values over 0..65535; one full axis step is a conservative truncation bound before arithmetic rounding. The absolute basis-column transform produces a conservative componentwise world bound.",
+    "float32_ulp correctly extracts finite float32 exponent spacing, including subnormals; current root coordinates are finite normals.",
+    "All 639 existing diagnostic source/native pairs fit the proposed per-component bounds using the pinned source AABBs and current placements; minimum component slack is approximately 11.75 micrometres.",
+    "All 639 diagnostic nearest roots are distinct per plant. The minimum within-plant separation is approximately 29.38 millimetres, making nearest-neighbor correspondence unambiguous at these bounds.",
+    "All twelve GLBs have identity transforms on mesh nodes and their source ancestors; only the checked instance translation and yaw affect the roots.",
+    "The ideal soil ray remains below 50 micrometres. The added actual imported-root soil ray also remains below 50 micrometres and checks the expected soil owner/batch.",
+    "Per-plant distinct root counts, total 639 probes and one-to-one mapping are mandatory. The diagnostic reports correct owners for all 639 actual root contacts, maximum contact offset 3.814697265625 micrometres.",
+    "Strict uncompressed new-architecture geometry, retained support, eight floor records, seat pads, retained/new render views, approach/reverse paths and budget checks are unchanged.",
+    "No concrete GDScript type/API issue was found in the added declarations, bit operations, Basis arithmetic, packed-byte ULP conversion or Dictionary accesses."
+  ],
+  "primary_source": "https://github.com/godotengine/godot/blob/4.6.3-stable/servers/rendering/rendering_server.cpp",
+  "primary_source_sections": "Position encoding in _surface_set_data; decoded coordinates in mesh_create_arrays_from_surface_data/_get_array_from_surface.",
+  "scope_limits": [
+    "This is a scoped bound for the pinned source GLBs, import policies, engine version and current placements, not a universal proof covering arbitrary deep transforms, cancellation, nonfinite coordinates or changed assets.",
+    "The two-ULP world term is conservative for these translation-dominated coordinates; it should not be generalized as a complete bound for every floating-point intermediate.",
+    "The uniqueness key uses Vector3 string conversion. No collision risk is demonstrated for the present widely separated roots; a per-item Dictionary keyed directly by Vector3 would be more general.",
+    "The diagnostic provides existing native evidence; the revised script itself has not been compiled or run by this auditor."
+  ],
+  "actions_not_taken": [
+    "No engine, import, render, live source edit, Git mutation or application."
+  ],
+  "prior_reports_preserved": true
+}

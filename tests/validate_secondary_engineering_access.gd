@@ -79,8 +79,8 @@ func floor_support(p: Vector3, expected_owner: String = "", barrier_bearing_prob
 func floor_and_cap() -> void:
 	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
-	assert(compiled.regions.size() == 262 and data.old_region_records.size() == 258)
-	assert(floors.get_child_count() == 262)
+	assert(data.old_region_records.size() == 258)
+	validate_loaded_theater_roster(compiled)
 	var current: Dictionary = {}
 	for region in compiled.regions: current[str(region.id)] = region
 	for old in data.old_region_records:
@@ -322,3 +322,32 @@ func run() -> void:
 	main.queue_free()
 	await process_frame
 	quit()
+
+# The authenticated nine-record theater addition changes the global roster only.
+# validate(compiled) above still proves every old258/current engineering4 record.
+func validate_loaded_theater_roster(compiled: Dictionary) -> void:
+	var guard = load("res://tests/secondary_engineering_additive_guard.gd")
+	assert(FileAccess.get_sha256(guard.THEATER_PROPOSAL)==guard.THEATER_PROPOSAL_SHA)
+	var proposal: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(guard.THEATER_PROPOSAL))
+	var additions: Dictionary = proposal.new_compiled_records
+	var approved_ids: Array = guard.ALLOWED_THEATER_COMPILED_IDS.duplicate()
+	var added_ids: Array = additions.keys()
+	approved_ids.sort()
+	added_ids.sort()
+	assert(added_ids==approved_ids and additions.size()==9,"Exactly the authenticated nine theater owners required")
+	assert(compiled.regions.size()==271 and floors.get_child_count()==271,"Exact reviewed combined floor count required")
+	var current: Dictionary = {}
+	for row in compiled.regions:
+		assert(not current.has(str(row.id)),"Duplicate compiled owner")
+		current[str(row.id)] = row
+	for id in approved_ids:
+		assert(current.has(id) and current[id]==additions[id],"Whole theater record changed: "+str(id))
+	var loaded_ids: Array = []
+	for owner in floors.get_children():
+		var id := str(owner.name)
+		assert(current.has(id) and not loaded_ids.has(id),"Unknown or duplicate loaded floor owner: "+id)
+		loaded_ids.append(id)
+	var compiled_ids: Array = current.keys()
+	compiled_ids.sort()
+	loaded_ids.sort()
+	assert(loaded_ids==compiled_ids,"Every exact compiled owner must exist in the loaded world")

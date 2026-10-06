@@ -61,13 +61,14 @@ func check_floor_owners() -> void:
 	var compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	var engineering_floors: Dictionary = load("res://tests/secondary_engineering_additive_guard.gd").validate(compiled)
 	var baseline: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://docs/GRAND_POOL_PRE_ADOPTION_MESHES.json"))
-	assert(compiled.regions.size() == 262 and engineering_floors.size() == 4 and baseline.count == 250)
-	assert(floors.get_child_count() == 262, "Exactly one main-scene node per compiler owner")
+	var theater_floors := validate_loaded_theater_roster(compiled, floors)
+	assert(compiled.regions.size() == 271 and engineering_floors.size() == 4 and baseline.count == 250)
 	var expected: Dictionary = {}
 	for entry in data.floor_regions: expected[entry.id] = entry
 	assert(expected.size() == 8)
 	var prior_found := 0
 	var added_found := 0
+	var theater_found := 0
 	# Query exclusions only ignore intervening architecture, never change or
 	# disable a floor/contact. Walk tests below use every collision unchanged.
 	for region in compiled.regions:
@@ -87,13 +88,17 @@ func check_floor_owners() -> void:
 		elif engineering_floors.has(region.id):
 			assert(region == engineering_floors[region.id], "Approved engineering floor changed")
 			check_compiled_sample(region, region.triangles[0], Vector3(.34,.33,.33))
+		elif theater_floors.has(region.id):
+			assert(region == theater_floors[region.id], "Approved whole theater floor changed")
+			check_compiled_sample(region, region.triangles[0], Vector3(.34,.33,.33))
+			theater_found += 1
 		else:
 			assert(baseline.record_sha256.has(region.id), "Unexpected old floor identity")
 			# Runtime support on every surviving old owner is separate from the
 			# parent's exact Python-canonical 250-record preservation comparison.
 			check_compiled_sample(region, region.triangles[0], Vector3(.34,.33,.33))
 			prior_found += 1
-	assert(prior_found == 250 and added_found == 8)
+	assert(prior_found == 250 and added_found == 8 and theater_found == 9)
 
 func check_compiled_sample(region: Dictionary, triangle: Array, weights: Vector3) -> void:
 	var p := Vector3(float(triangle[0][0])*weights.x + float(triangle[1][0])*weights.y + float(triangle[2][0])*weights.z, float(region.floor_y), float(triangle[0][1])*weights.x + float(triangle[1][1])*weights.y + float(triangle[2][1])*weights.z)
@@ -418,7 +423,37 @@ func run() -> void:
 	await walk_route(ceremonial)
 	await walk_route(ceremonial,true)
 	await walk_to(Vector3(-5.4,44,-432))
-	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across262 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; ",pinned_section_fixtures," pinned section lights and ",wet_receiver_anchors," supported receivers; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
+	print("GRAND POOL ACCESS PASS: ",floor_rays," compiler floor samples across271 owners; ",guard_rays," source guard/glass contacts; ",interface_rays," wall/interface contacts; ",fixture_exits," budgeted fixture exits; ",pinned_section_fixtures," pinned section lights and ",wet_receiver_anchors," supported receivers; actual public-core/ramp/wet-circuit/closed-market-loop/stair/local-lift-approach round trip in ",walked_frames," walking frames. Loaded cart, lift interlocks, swimming and in-ship visual acceptance remain separate.")
 	main.queue_free()
 	await process_frame
 	quit(0)
+
+# Authenticate the reviewed nine-owner successor without weakening the old subset checks.
+# The existing guard.validate call above still proves all 262 pre-theater records.
+func validate_loaded_theater_roster(compiled: Dictionary, loaded_floors: Node) -> Dictionary:
+	var guard = load("res://tests/secondary_engineering_additive_guard.gd")
+	assert(FileAccess.get_sha256(guard.THEATER_PROPOSAL)==guard.THEATER_PROPOSAL_SHA)
+	var proposal: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(guard.THEATER_PROPOSAL))
+	var additions: Dictionary = proposal.new_compiled_records
+	var approved_ids: Array = guard.ALLOWED_THEATER_COMPILED_IDS.duplicate()
+	var added_ids: Array = additions.keys()
+	approved_ids.sort()
+	added_ids.sort()
+	assert(added_ids==approved_ids and additions.size()==9,"Exactly the authenticated nine theater owners required")
+	assert(loaded_floors!=null and compiled.regions.size()==271 and loaded_floors.get_child_count()==271,"Exact reviewed combined floor count required")
+	var current: Dictionary = {}
+	for row in compiled.regions:
+		assert(not current.has(str(row.id)),"Duplicate compiled owner")
+		current[str(row.id)] = row
+	for id in approved_ids:
+		assert(current.has(id) and current[id]==additions[id],"Whole theater record changed: "+str(id))
+	var loaded_ids: Array = []
+	for owner in loaded_floors.get_children():
+		var id := str(owner.name)
+		assert(current.has(id) and not loaded_ids.has(id),"Unknown or duplicate loaded floor owner: "+id)
+		loaded_ids.append(id)
+	var compiled_ids: Array = current.keys()
+	compiled_ids.sort()
+	loaded_ids.sort()
+	assert(loaded_ids==compiled_ids,"Every exact compiled owner must exist in the loaded world")
+	return additions

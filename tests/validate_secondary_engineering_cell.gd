@@ -289,10 +289,10 @@ func floor_topology_and_stair() -> bool:
 	# allow this caller to reach PASS, even if its internal assert aborts early.
 	var guard := load("res://tests/secondary_engineering_additive_guard.gd")
 	var preserved: Variant = guard.validate(compiled)
-	if not require(preserved is Dictionary and preserved.size() == 4 and preserved.has(LOWER_OWNER), "Exact old258/unchanged260/current262 preservation helper did not complete"): return false
+	if not require(preserved is Dictionary and preserved.size() == 4 and preserved.has(LOWER_OWNER), "Exact old258/unchanged260/current engineering four/theater271 preservation helper did not complete"): return false
 	var chain: Variant = guard.section_proof()
 	if not require(chain is Dictionary and chain.has("original_host_record"), "Reviewed floor successor proof is missing"): return false
-	if not require(compiled.regions.size() == 262 and floors.get_child_count() == 262, "Actual compiled/runtime floor owner counts differ"): return false
+	if not require(compiled.regions.size() == 271 and floors.get_child_count() == 271, "Actual compiled/runtime floor owner counts differ"): return false
 	var current: Dictionary = {}
 	for region in compiled.regions:
 		if not require(not current.has(str(region.id)), "Duplicate compiler owner"): return false

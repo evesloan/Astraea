@@ -1,0 +1,60 @@
+extends SceneTree
+# Actual installed ship, existing presentation pipeline; scratch outputs only.
+const OUT := "/workspace/scratch/375c2e438292/pool-architectural-composition/native_capture_run001"
+var records: Array = []
+func _initialize() -> void:
+	call_deferred("run")
+func run() -> void:
+	assert(not DirAccess.dir_exists_absolute(OUT))
+	assert(DirAccess.make_dir_recursive_absolute(OUT) == OK)
+	var main=(load("res://scenes/main.tscn")as PackedScene).instantiate()
+	root.add_child(main)
+	for frame in range(30): await physics_frame
+	var ship: Node3D=main.get_node("World360/Astraea")
+	var actor=ship.get_node("ShipSpace/PersistentActors/Player")
+	var budget=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	assert(ship.find_child("GrandPoolArchitecture_WIP",true,false)!=null)
+	assert(budget.shadow_source_budget==8)
+	actor.set_physics_process(false)
+	actor.set_controls_enabled(false)
+	var views := [
+		{"id":"wet_loggia_standing","eye":Vector3(-45.9,47.85,-438),"target":Vector3(-52,48.45,-442.2),"floor_y":46.2,"kind":"ordinary supported wet-route eye"},
+		{"id":"retained_long_view","eye":Vector3(-20.5,47.85,-405),"target":Vector3(-20.5,48.15,-415),"floor_y":46.2,"kind":"ordinary supported pool-route eye"},
+		{"id":"fore_focal_end","eye":Vector3(-31,47.85,-458.5),"target":Vector3(-31,48.65,-465.5),"floor_y":46.2,"kind":"ordinary supported fore-deck eye"},
+		{"id":"curved_seat_pool_view","eye":Vector3(-51.65,47.44,-442.2),"target":Vector3(-31,47.7,-433),"floor_y":46.2,"kind":"authored seated-eye camera diagnostic; no sitting-controller claim"}
+	]
+	for view in views:
+		actor.global_position=Vector3(view.eye.x,view.floor_y,view.eye.z)
+		actor.camera.position.y=view.eye.y-view.floor_y
+		actor.velocity=Vector3.ZERO
+		var direction: Vector3=view.target-view.eye
+		actor.rotation.y=atan2(-direction.x,-direction.z)
+		actor.pitch=atan2(direction.y,Vector2(direction.x,direction.z).length())
+		actor.camera.rotation.x=actor.pitch
+		assert(actor.camera.global_position.distance_to(view.eye)<.0001 and actor.camera.fov==72.0)
+		for effects_on in [true,false]:
+			main.set_world_resolution(0 if effects_on else 2)
+			main.effects=effects_on
+			main.post_pass.material.set_shader_parameter("enabled",effects_on)
+			ship.set_display_effects(effects_on)
+			for frame in range(20): await process_frame
+			budget.refresh()
+			var active: Array=[]
+			for light in budget.sources:
+				if not budget.requested_shadow[light.get_instance_id()]: continue
+				assert(light.visible==light.shadow_enabled)
+				if light.visible:
+					assert(budget._has_visible_sample(light))
+					active.append(str(light.get_path()))
+			assert(active.size()<=8)
+			await RenderingServer.frame_post_draw
+			var suffix := "native" if effects_on else "clear"
+			var file:=OUT+"/"+str(view.id)+"_"+suffix+".png"
+			var raw_file:=OUT+"/"+str(view.id)+"_"+suffix+"_raw.png"
+			assert(main.post_view.get_texture().get_image().save_png(file)==OK)
+			assert(main.world_view.get_texture().get_image().save_png(raw_file)==OK)
+			records.append({"view":view.id,"camera_kind":view.kind,"file":file,"sha256":FileAccess.get_sha256(file),"raw_file":raw_file,"raw_sha256":FileAccess.get_sha256(raw_file),"effects":effects_on,"eye":[view.eye.x,view.eye.y,view.eye.z],"target":[view.target.x,view.target.y,view.target.z],"actor_foot_y":view.floor_y,"camera_local_height":actor.camera.position.y,"vertical_fov":actor.camera.fov,"resolution":[main.world_view.size.x,main.world_view.size.y],"active_shadow_sources":active,"shadow_budget":budget.shadow_source_budget,"adapter":RenderingServer.get_video_adapter_name(),"scope":"Actual installed source-backed ship and unchanged presentation/lighting. Static camera evidence, not traversal, sitting interaction, hardware performance or final visual acceptance."})
+	var receipt:=FileAccess.open(OUT+"/CAPTURE_RECEIPT.json",FileAccess.WRITE)
+	receipt.store_string(JSON.stringify(records,"  "));receipt.close()
+	print("POOL ARCHITECTURE CAPTURE PASS: four actual ship views, normal and effects-off; pixel review pending")
+	quit(0)
