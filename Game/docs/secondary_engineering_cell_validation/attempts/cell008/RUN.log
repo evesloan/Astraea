@@ -1,0 +1,35 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SECONDARY ENGINEERING CELL CHECKPOINT: source groups, materials and exact contacts
+SECONDARY ENGINEERING CELL CHECKPOINT: exact imported full-sweep gate bearing face census
+SECONDARY ENGINEERING CELL CHECKPOINT: compiler cut, lower slab, underside and stair contact
+SECONDARY ENGINEERING CELL CHECKPOINT: preserved guest/internal engineering routes
+SECONDARY ENGINEERING CELL CHECKPOINT: both-side first-hit RMB/E, gate travel, pause and obstruction
+SECONDARY ENGINEERING CELL CHECKPOINT: actual loose cleaner cannot enter under-tread gap
+SECONDARY ENGINEERING CELL CHECKPOINT: source-backed emitter, actual receiver and opaque barrier proofs
+SECONDARY ENGINEERING CELL CHECKPOINT: upper/lower source selection on physical routes
+SECONDARY ENGINEERING CELL CHECKPOINT: upper parked cart, ordinary portable cleaner carry and return
+CELL_CART_RETURN_STATE:{"actor_xyz":[31.7651653289795,5.99966478347778,-405.196136474609],"grip_aim_xyz":[30.422477722168,7.33056812286377,-405.196655273438],"home_xyz":[30.422477722168,6.90556812286377,-405.196655273438],"tool_basis_y":[0.00175221683457494,0.998640894889832,-0.0520903505384922],"tool_cart_local":[-0.1719970703125,1.12039089202881,-0.450700759887695],"tool_grip_xyz":[30.4517402648926,7.23954248428345,-405.196624755859],"tool_xyz":[30.4515209197998,7.11471223831177,-405.190124511719],"velocity":[0.0000555268088646699,-0.000174041182617657,-0.000205837161047384]}
+ERROR: SECONDARY ENGINEERING CELL: Original tether must place tool over the real tray before release at upper parked cart, ordinary portable cleaner carry and return
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] require (res://tests/validate_secondary_engineering_cell.gd:69)
+       [1] return_tool_to_cart (res://tests/validate_secondary_engineering_cell.gd:931)
+       [2] advance (res://tests/validate_secondary_engineering_cell.gd:170)
+{"checks": 2, "passed": 1, "clock_mode": "fixed60", "wall_seconds": 41.6123, "failed": [{"check": "secondary_engineering_cell", "passed": false, "exit_code": -15, "errors": ["ERROR: SECONDARY ENGINEERING CELL: Original tether must place tool over the real tray before release at upper parked cart, ordinary portable cleaner carry and return"], "wall_seconds": 38.1686, "clock_mode": "fixed60"}]}
