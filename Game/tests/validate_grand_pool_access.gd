@@ -104,6 +104,17 @@ func check_compiled_sample(region: Dictionary, triangle: Array, weights: Vector3
 	assert(found, "Too many intervening contacts to establish actual compiler support")
 	floor_rays += 1
 
+func source_shell_ray(a: Vector3, b: Vector3, initial_exclusions: Array[RID]) -> Dictionary:
+	# Coincident core/staff/slab faces are valid assembly joints. Isolate the
+	# section's own actual collider without disabling or altering any body.
+	var excluded: Array[RID] = initial_exclusions.duplicate()
+	for crossing in range(16):
+		var hit := ray(a,b,excluded)
+		if hit.is_empty() or shell.is_ancestor_of(hit.collider): return hit
+		excluded.append(hit.collider.get_rid())
+	assert(false, "More than16 intervening bodies prevent source-shell contact proof")
+	return {}
+
 func check_source_contacts() -> void:
 	# The floor ownership/support checks above test these same bodies separately.
 	# Their coincident side faces must not hide the source wall at a real joint.
@@ -156,7 +167,7 @@ func check_source_contacts() -> void:
 		for fraction in [.1, .5, .9]:
 			for height in [.15, .5, .85]:
 				var p: Vector3 = a.lerp(b, float(fraction)) + up * float(height)
-				var hit := ray(p + normal*.08, p - normal*.08, floor_exclusions)
+				var hit := source_shell_ray(p + normal*.08, p - normal*.08, floor_exclusions)
 				if hit.is_empty() or not shell.is_ancestor_of(hit.collider):
 					print("GRAND POOL CONTACT FAILURE: ",name," point:",p," outward:",normal," hit:",hit," collider:",hit.collider.get_path() if not hit.is_empty() else "none")
 				assert(not hit.is_empty() and shell.is_ancestor_of(hit.collider), "Missing source guard/wall contact: %s at %s" % [name, p])
@@ -328,13 +339,14 @@ func run() -> void:
 	await walk_route(market)
 	await walk_route(market,true)
 	for entry in data.door_fittings: assert(door_for(str(entry.name)).open_fraction < .001, "Dry circuit must work with all environmental doors closed")
-	var upper_approach: Array = [[-15.5,52.5,-429.5],[-9.65,52.5,-429.5],[-9.65,52.5,-404.8],[-14.55,52.5,-404.8]]
+	# Turn aft of GP_UpperPier_5 (Z max -404.102), rather than through it.
+	var upper_approach: Array = [[-15.5,52.5,-429.5],[-9.65,52.5,-429.5],[-9.65,52.5,-403.4],[-14.55,52.5,-403.4]]
 	await walk_route(upper_approach)
 	await set_door("wet_market_lift",true)
 	var upper_lift: Array = [[-14.55,52.5,-408.3],[-12.5,52.5,-408.3],[-12.5,52.5,-412.4]]
 	await walk_route(upper_lift)
 	await walk_route(upper_lift,true)
-	await walk_to(Vector3(-14.55,52.5,-404.8))
+	await walk_to(Vector3(-14.55,52.5,-403.4))
 	await set_door("wet_market_lift",false)
 	await walk_route(upper_approach,true)
 	await walk_to(Vector3(-14.55,52.5,-429.5))
