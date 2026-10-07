@@ -2,7 +2,7 @@ extends RefCounted
 # Authenticated medical projection for unchanged historical assertions.
 # Every projected byte/owner is checked against the full current postimage first.
 const PROOF := "res://docs/MEDICAL_ADDITIVE_SUCCESSOR.json"
-const PROOF_SHA := "d4fc0e4b8f6f5c70452c4fa0d82512d8808660ae4353cca3d16528f8f3f724b7"
+const PROOF_SHA := "83702b3cce6e19373e44d4ff14d7489e8b82c5b566d711958ab1f62acd8ed971"
 const OWNER := "D05_forward_waiting_support_floor"
 const CURRENT_ONLY := ["docs/LAYOUT_COMPILE_CHECKS.json"]
 static var checked := false

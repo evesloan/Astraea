@@ -1,6 +1,7 @@
 extends RefCounted
 # One installed-area check. Reuses the already verified raw-array codec reader.
 const CONTRACT := "res://data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json"
+const REVIEWED_CONTRACT_SHA := "14aaaca21f264701cfe495f5064c5e493710cbf71d71628c3384b2b2555ac140"
 var tree: SceneTree
 var ship: Node3D
 var area: Node3D
@@ -105,7 +106,9 @@ func geometry() -> void:
 		assert(count==spec.meshes.size() and triangles==int(spec.triangles))
 		records.geometry.append({"asset":entry.asset,"meshes":count,"triangles":triangles,"exact_raw_position_uv_normal_codec":true,"source_materials":true,"native_node_mapping":binding.records})
 	for body in area.find_children("*","StaticBody3D",true,false):contacts.append(body.get_rid())
-	assert(meshes.size()==76 and area.get_child_count()==10)
+	var declared_mesh_count: int=0
+	for entry in data.assemblies:declared_mesh_count+=data.models[str(entry.asset)].meshes.size()
+	assert(meshes.size()==declared_mesh_count and area.get_child_count()==data.assemblies.size()+data.plants.size()+data.fixtures.size())
 func support() -> void:
 	var compilation: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	for expected in data.preserved_pool_floor_records:
@@ -205,6 +208,7 @@ func light_checks() -> void:
 	actor.global_transform=saved_transform;budget.refresh()
 func check(owner: SceneTree,world: Node3D) -> void:
 	tree=owner;ship=world;actor=ship.get_node("ShipSpace/PersistentActors/Player");space=ship.get_world_3d().direct_space_state
+	assert(FileAccess.get_sha256(CONTRACT)==REVIEWED_CONTRACT_SHA,"Approved gallery contract changed; omitted assemblies cannot pass a derived census")
 	data=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT));area=ship.find_child(str(data.root_name),true,false)
 	assert(area!=null);geometry();support();routes();sightlines();light_checks()
 	for path in data.walk_paths:

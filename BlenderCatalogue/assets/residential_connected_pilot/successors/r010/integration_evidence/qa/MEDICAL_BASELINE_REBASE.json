@@ -1,0 +1,86 @@
+{
+  "status": "PASS_CURRENT_MEDICAL_BASELINE_REBASE",
+  "observed_utc": "2026-10-06T23:28:00Z",
+  "current_game_head": "3d72dde43650871e044e8a415ef6da36f1cc152a",
+  "medical_proof": {
+    "path": "/workspace/shared/astraea-godot-production-20261003/data/architecture/packages/medical/MEDICAL_COMPILER_PROOF.json",
+    "sha256": "d635118faf4b48d27fc24f83fb09f6119910b363722c04d936faabfdfc549ba3"
+  },
+  "chain": [
+    {
+      "path": "/workspace/shared/astraea-godot-production-20261003/data/architecture/packages/medical/retained_current/data/spatial_layout.json",
+      "sha256": "6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167"
+    },
+    {
+      "path": "/workspace/shared/astraea-godot-production-20261003/data/spatial_layout.json",
+      "sha256": "68f7a29809a4e7daa8c2e91b6697d7931090add7553cd4770d6b6707e216de20"
+    },
+    {
+      "path": "/workspace/shared/astraea-godot-production-20261003/data/architecture/packages/medical/retained_current/data/generated/structural_meshes.json",
+      "sha256": "4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91"
+    },
+    {
+      "path": "/workspace/shared/astraea-godot-production-20261003/data/generated/structural_meshes.json",
+      "sha256": "0ed7436e0fc0bf64b7f26094e91881aba3bc75f8477a2360b773ccce6f7fd96d"
+    }
+  ],
+  "summaries": {
+    "data/spatial_layout.json": {
+      "old_sha256": "6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167",
+      "current_sha256": "68f7a29809a4e7daa8c2e91b6697d7931090add7553cd4770d6b6707e216de20",
+      "old_region_count": 285,
+      "current_region_count": 286,
+      "all_original_records_exact": true,
+      "added_ids": [
+        "D05_forward_waiting_support_floor"
+      ],
+      "D12_D13_D14_records_exact": true,
+      "voids_exact": true
+    },
+    "data/generated/structural_meshes.json": {
+      "old_sha256": "4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91",
+      "current_sha256": "0ed7436e0fc0bf64b7f26094e91881aba3bc75f8477a2360b773ccce6f7fd96d",
+      "old_region_count": 271,
+      "current_region_count": 272,
+      "all_original_records_exact": true,
+      "added_ids": [
+        "D05_forward_waiting_support_floor"
+      ],
+      "D12_D13_D14_records_exact": true,
+      "voids_exact": true
+    }
+  },
+  "only_new_floor": {
+    "id": "D05_forward_waiting_support_floor",
+    "deck": "D05",
+    "area_m2": 350.72
+  },
+  "current_totals": {
+    "layout_regions": 286,
+    "compiled_regions": 272,
+    "voids": 28
+  },
+  "source_receipts_and_frame_schedule_rewritten": false,
+  "unchanged_source_provenance": {
+    "frame_schedule_sha256": "394e60e82ecb205531a8de9c38627ad16f7d45e467524c062f115193c6e1f2b1",
+    "frame_receipt_sha256": "58351a33178d248b804651c39d98438afb97e68c357f57df686a4d9df11d04e2",
+    "original_layout_pin": "6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167",
+    "original_compiled_pin": "4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91"
+  },
+  "application": "Adoption and additive geometry checks bind to current medical baseline. Frame source receipts continue to describe the exact prior authored state. D12/D13/D14 receiving faces/floors are unchanged.",
+  "writes": "Scratch successor only; no Game/Catalogue writes or engine jobs",
+  "current_additive_geometry_recheck": {
+    "proof": "qa/ADDITIVE_FLOOR_OWNERSHIP.json",
+    "proof_sha256": "d9bb34b4c3d388815f0d0aef6a8c7c8502eff8e3a958b1505944e6b27436a399",
+    "recomputed_against_actual_medical_current_baseline": true,
+    "result_identical_to_prior_D14_proposal": true,
+    "new_link_area_m2": 272.24000000000063,
+    "existing_floor_guest_programme_void_overlap_m2": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "source_receiving_frame_pins_unchanged": true
+  }
+}

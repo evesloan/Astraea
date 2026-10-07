@@ -9,7 +9,7 @@ const FEATURE_INPUTS := {"scripts/grand_pool_feature_layers.gd":"9e629e04335f4e5
 # The east gallery is one exact later append; normalize it before the retained feature proof.
 const EAST_GALLERY_BUILDER_SHA := "2437bde87f2733636edb34f7e86cb2b11805e7693fc88566b1bdc345e7e495f4"
 const EAST_GALLERY_ADDED_LINE := "\tload(\"res://scripts/grand_pool_east_gallery.gd\").build(parent,ship)\n"
-const EAST_GALLERY_INPUTS := {"scripts/grand_pool_east_gallery.gd":"463fa8c443c6b1748e5cd6cc6f1194d171868b0d9aa9db5c98fcf8aa8d6f7882","data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json":"46480e3b5df4467b025bde38a36d73534c8079b668eef63d0437c226cae18cb4"}
+const EAST_GALLERY_INPUTS := {"scripts/grand_pool_east_gallery.gd":"463fa8c443c6b1748e5cd6cc6f1194d171868b0d9aa9db5c98fcf8aa8d6f7882","data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json":"14aaaca21f264701cfe495f5064c5e493710cbf71d71628c3384b2b2555ac140"}
 const POOL_HELPER := "tests/secondary_engineering_pool_ship_successor.gd"
 const PREVIOUS_HELPER_SHA := "07d0c1494b297763de23612ef9f7b6d9e145791a190c03a3be0bd9d4a7c72bd5"
 const CANDIDATE_HELPER_SHA := "c4e757ca80bc85e8fe4f7c41df5d3a3d1d2deb96ac0aa087760f30cf3cf4c241"

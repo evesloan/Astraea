@@ -1,0 +1,52 @@
+--- original/source/build_family.py
++++ portable/source/build_family.py
+@@ -10,10 +10,10 @@
+ from mathutils import Vector, Matrix
+ ROOT=Path(__file__).resolve().parents[1]
+ catalogue_candidates=[Path(os.environ['ASTRAEA_CATALOGUE_ROOT'])] if os.environ.get('ASTRAEA_CATALOGUE_ROOT') else []
+-catalogue_candidates += [ROOT.parents[1],Path('/workspace/shared/astraea-catalogue-continuation-20261002')]
++catalogue_candidates += list(ROOT.parents)
+ CAT=next((p for p in catalogue_candidates if (p/'catalogue_manifest.json').is_file()),None)
+ assert CAT is not None,'Set ASTRAEA_CATALOGUE_ROOT to the retained catalogue root.'
+-inputs=json.loads((ROOT/'qa/INPUT_RETENTION.json').read_text())
++inputs=json.loads((ROOT/'qa/GENERATOR_INPUTS.json').read_text())
+ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+ def input_path(row):
+     if row['project']=='Blender':return CAT/row['checkpoint_relative']
+@@ -23,7 +23,7 @@
+ for row in inputs['files']:
+     assert sha(input_path(row))==row['sha256'], 'Source drift: '+str(input_path(row))
+ argv=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
+-parser=argparse.ArgumentParser();parser.add_argument('--samples',action='store_true');parser.add_argument('--addresses',nargs='*');parser.add_argument('--revision',default='r001');parser.add_argument('--render',action='store_true');parser.add_argument('--plan',default='NEIGHBORHOOD_PLAN.json');parser.add_argument('--domestic',action='store_true')
++parser=argparse.ArgumentParser();parser.add_argument('--samples',action='store_true');parser.add_argument('--addresses',nargs='*');parser.add_argument('--revision',default='r001');parser.add_argument('--render',action='store_true');parser.add_argument('--plan',default='COURT_PILOT_PLAN.json');parser.add_argument('--domestic',action='store_true')
+ args=parser.parse_args(argv)
+ plan_path=ROOT/args.plan;plan=json.loads(plan_path.read_text())
+ addresses=args.addresses or plan['representative_sample_addresses']
+--- original/domestic_correction/source/build_receiving_frame.py
++++ portable/domestic_correction/source/build_receiving_frame.py
+@@ -5,13 +5,15 @@
+ 
+ ROOT=Path(__file__).resolve().parents[1]
+ BATCH=ROOT.parent
+-CAT=Path('/workspace/shared/astraea-catalogue-continuation-20261002')
++CAT=next(p for p in BATCH.parents if (p/'catalogue_manifest.json').is_file())
+ p=argparse.ArgumentParser();p.add_argument('--schedule',required=True);p.add_argument('--revision',required=True)
+ args=p.parse_args(sys.argv[sys.argv.index('--')+1:])
+ schedule=Path(args.schedule);data=json.loads(schedule.read_text())
+ sha=lambda path:hashlib.sha256(Path(path).read_bytes()).hexdigest()
++pin_map=json.loads((BATCH/'inputs/FRAME_SOURCE_PIN_MAP.json').read_text())
++def pinned_path(path):return (BATCH/pin_map[path]['relative']).resolve()
+ assert data['status']=='PASS_CONSERVATIVE_SOURCE_FIT_PROPOSAL'
+-assert all(sha(path)==digest for path,digest in data['source_pins'].items())
++assert all(sha(pinned_path(path))==digest for path,digest in data['source_pins'].items())
+ OUT=ROOT/'outputs'/args.revision;assert not OUT.exists();OUT.mkdir()
+ bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
+ scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1
+@@ -47,6 +49,6 @@
+ bpy.ops.export_scene.gltf(filepath=str(OUT/'receiving_frame.glb'),export_format='GLB',export_yup=True,export_extras=True)
+ receipt={'status':'PASS_AUTHORED_MEMBER_SCHEDULE_FIDELITY','source_schedule_path':str(schedule),'source_schedule_sha256':sha(schedule),'source_pins':data['source_pins'],'material_pins':material_pins,'source_sha256':sha(OUT/'receiving_frame.blend'),'glb_sha256':sha(OUT/'receiving_frame.glb'),'members':records,'member_count':len(records),'triangles':sum(r['triangles']for r in records),'limits':['Geometric contacts and lower-volume exclusions are the separate proposal checks, not structural capacity certification','Finite current shell heights do not prove unresolved specialty or luxury fit','Native imported geometry, contacts and player/cart routes remain untested']}
+ (OUT/'SOURCE_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
+-assert all(sha(path)==digest for path,digest in data['source_pins'].items())
++assert all(sha(pinned_path(path))==digest for path,digest in data['source_pins'].items())
+ assert all(sha(path)==digest for path,digest in material_pins.items())
+ print('RECEIVING_FRAME_SOURCE_READY',len(records),'members',receipt['triangles'],'triangles',flush=True)

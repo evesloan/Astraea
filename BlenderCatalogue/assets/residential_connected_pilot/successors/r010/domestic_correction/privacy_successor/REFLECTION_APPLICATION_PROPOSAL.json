@@ -1,0 +1,45 @@
+{
+  "status": "Bounded scratch implementation prepared under root approval; no engine parse, native appearance or Game adoption yet",
+  "reason": "Current ship.gd sets environment.reflected_light_source=REFLECTION_SOURCE_DISABLED. The existing opaque privacy profile therefore has direct highlights but cannot yet reflect the actual court.",
+  "scope": "One local actual-court reflection capture, applied only to residential exterior panes. No change to public/shower/rail glass, global sky, world ambient or eight-light budget.",
+  "parameters": {
+    "update_mode": "UPDATE_ONCE; never perpetual capture",
+    "interior": true,
+    "ambient_mode": "AMBIENT_DISABLED",
+    "box_projection": true,
+    "max_distance_m": 22,
+    "candidate_center_world": [
+      18.8,
+      88.35,
+      -320.5
+    ],
+    "candidate_size_m": [
+      23.4,
+      9.4,
+      26
+    ],
+    "receiver_layer": "One verified unused visual layer assigned only to exterior privacy child meshes; keep their original camera-visible layer as well",
+    "reflection_mask": "Only that exterior-pane layer",
+    "cull_mask": "Only the exact public court subtree and three opaque exterior coating meshes; private shells/furniture/lights/diagnostic targets excluded",
+    "capture_layer_bit": 18,
+    "receiver_layer_bit": 19,
+    "capture_trigger": "Once after player remains near the actual court0.5s and normal LightingBudget refreshes; manual review refresh only, never UPDATE_ALWAYS"
+  },
+  "capture_order": [
+    "Wait for the actual connected scene and normal LightingBudget selection to settle at the review location.",
+    "Capture the actual authored geometry once over the documented six frames. Do not substitute a generic cubemap or sky.",
+    "Freeze updates during diagnostic unshielded controls, then restore private geometry and refresh once before natural captures.",
+    "Re-run relevant exterior privacy comparisons with reflections enabled, including oblique views and bright rooms."
+  ],
+  "sources": [
+    "https://docs.godotengine.org/en/4.6/classes/class_reflectionprobe.html",
+    "https://docs.godotengine.org/en/4.6/about/list_of_features.html"
+  ],
+  "limits": [
+    "A box-projected static probe is an approximation, not ray-traced planar mirrors.",
+    "Two probes per mesh is the documented Compatibility limit; this court uses at most one.",
+    "Judge the current clear interior view and genuinely missing planting first; do not use this as a reason to enlarge the quiet court."
+  ],
+  "source_script": "scripts/residential_court_reflection.gd",
+  "source_script_sha256": "7843d4cd24b97cdf2641f530cc7a59f5a0f090ec3ac5bba04934571434c898c9"
+}

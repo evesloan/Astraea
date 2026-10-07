@@ -1,0 +1,54 @@
+{
+  "source_geometry_change": "Only existing source mullion widths0.09\u21920.13m. R009_MULLION_ONLY_DIFF.json proves all other geometry/placements unchanged.",
+  "old_fixture_result": "/workspace/scratch/375c2e438292/residential-batch-neighborhood-20261006/domestic_correction/privacy_fixture_r002/results/PRIVACY_PIXEL_RESULT.json",
+  "unchanged_valid_regressions": {
+    "exterior_camera_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "room_light_energies": [
+      1.0,
+      10.0
+    ],
+    "units": [
+      181,
+      205,
+      229
+    ],
+    "reverse_inside_unit": 205
+  },
+  "corrected_obstructed_controls": [
+    {
+      "camera_indices": [
+        5,
+        6
+      ],
+      "all_units": true,
+      "cause": "Grazing line intersected outer jamb/side return; zero unshielded control pixels",
+      "change": "EyeX28.9\u219228.7, sameZ\u00b18, same target"
+    },
+    {
+      "camera_indices": [
+        7,
+        8
+      ],
+      "all_units": true,
+      "cause": "Near-plane camera lay inside center mullion, zero unshielded control pixels",
+      "change": "Shift eye and target Z\u22121.65 into pane; X and near=.001 unchanged"
+    },
+    {
+      "direction": "inside_out",
+      "units": [
+        181,
+        229
+      ],
+      "cause": "Eye embedded in source retreat center divider; zero unshielded control pixels",
+      "change": "Shift eye and target Z\u22121.65;205 remains exact"
+    }
+  ],
+  "new_additional_cases": "All27exterior cameras also tested with room lights off(energy0); positive target remains unshaded",
+  "actual_resolution": "Each image result records actual native size, irrespective of requested window resolution"
+}

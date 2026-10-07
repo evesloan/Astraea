@@ -272,9 +272,9 @@
       "geometry_policy": "Raw GLB local arrays, exact uint16-octahedral native normals; source/export transformed-child arithmetic proof retained separately"
     },
     "AST-AQU-016_east_gallery_rest_bay": {
-      "file": "AST-AQU-016_east_gallery_rest_bay.glb",
-      "sha256": "f0b784e00f592b9adc0fccfd83b7fb114059f44ae8a1067b7fd087db2a0f50d0",
-      "source_sha256": "9aa232ad30c515eabb128804b6d430ae2cfc3d76f93383a612165281620e6f05",
+      "file": "AST-AQU-016_east_gallery_rest_bay_r02.glb",
+      "sha256": "da709021ca751a75ff291c40f285d12f34f9d456744b87b23fc24a38781a432b",
+      "source_sha256": "7dfce55242a651af80b59199217424470ed8d951ecb81eee68ac83539ea5fe14",
       "parent_design_id": "AST-AQU-016",
       "new_derivative": true,
       "attribute_compression": false,
@@ -510,7 +510,7 @@
           "gltf_local_transform": {
             "translation": [
               -10.042387962341309,
-              56.753578186035156,
+              56.062294006347656,
               -450.5
             ]
           },
@@ -525,7 +525,7 @@
               0.0,
               1.0,
               0.0,
-              56.753578186035156
+              56.062294006347656
             ],
             [
               0.0,
@@ -548,7 +548,7 @@
           "gltf_local_transform": {
             "translation": [
               -10.042387962341309,
-              56.72194290161133,
+              56.062294006347656,
               -448.25
             ]
           },
@@ -563,7 +563,7 @@
               0.0,
               1.0,
               0.0,
-              56.72194290161133
+              56.062294006347656
             ],
             [
               0.0,
@@ -645,6 +645,38 @@
         },
         {
           "source_name": "EAST_Bay_PaleFrontCanopy",
+          "parent_source_name": "",
+          "native_class": "MeshInstance3D",
+          "gltf_local_transform": {},
+          "gltf_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "source_name": "EAST_Bay_RearHeader",
           "parent_source_name": "",
           "native_class": "MeshInstance3D",
           "gltf_local_transform": {},
@@ -837,6 +869,38 @@
         },
         {
           "source_name": "EAST_Display_AngledReceiver",
+          "parent_source_name": "",
+          "native_class": "MeshInstance3D",
+          "gltf_local_transform": {},
+          "gltf_world_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "source_name": "EAST_Display_CommonMountRail",
           "parent_source_name": "",
           "native_class": "MeshInstance3D",
           "gltf_local_transform": {},
@@ -1194,6 +1258,16 @@
           ]
         },
         {
+          "source_name": "EAST_Bay_RearHeader",
+          "collision": "concave_static_surface",
+          "source_declared_collision": "concave_static_surface",
+          "cast_shadow": true,
+          "triangles": 72,
+          "materials": [
+            "ASTRAEA_retail_terracotta_enamel"
+          ]
+        },
+        {
           "source_name": "EAST_Bay_WarmRearCanopy",
           "collision": "concave_static_surface",
           "source_declared_collision": "concave_static_surface",
@@ -1251,6 +1325,16 @@
           "triangles": 12,
           "materials": [
             "ASTRAEA_warm_walnut"
+          ]
+        },
+        {
+          "source_name": "EAST_Display_CommonMountRail",
+          "collision": "concave_static_surface",
+          "source_declared_collision": "concave_static_surface",
+          "cast_shadow": true,
+          "triangles": 12,
+          "materials": [
+            "ASTRAEA_champagne_metal"
           ]
         },
         {
@@ -1324,7 +1408,7 @@
           ]
         }
       ],
-      "triangles": 2752,
+      "triangles": 2836,
       "geometry_policy": "Raw GLB local arrays, exact uint16-octahedral native normals; source/export transformed-child arithmetic proof retained separately"
     },
     "AST-RES-001_east_lift_wayfinding": {
@@ -4160,9 +4244,9 @@
       "physical_housing": "EAST_Bay_FixtureCup_0",
       "physical_lens": "EAST_Bay_OpalLens_0",
       "direction_xyz": [
-        0.28538917115733886,
-        -0.9530317585415353,
-        0.10140753520994385
+        0.16760823247717113,
+        -0.985853681032778,
+        0.0
       ],
       "profile": "guest_lounge",
       "energy": 0.55,
@@ -4189,9 +4273,9 @@
       "physical_housing": "EAST_Bay_FixtureCup_1",
       "physical_lens": "EAST_Bay_OpalLens_1",
       "direction_xyz": [
-        0.28404809229224653,
-        -0.9486705889734792,
-        -0.13907118638254026
+        0.16760823247717113,
+        -0.985853681032778,
+        0.0
       ],
       "profile": "guest_lounge",
       "energy": 0.55,
@@ -11551,15 +11635,31 @@
       "name": "EAST_Bay_WarmRearCanopy",
       "contact_rows": [
         {
-          "support": "GP_EastWall.002",
+          "support": "EAST_Bay_ForeSweptReturn",
           "touch": true,
           "penetration": false,
-          "triangle_pairs": 154,
+          "triangle_pairs": 62,
+          "near_surface_tolerance_m": 0
+        },
+        {
+          "support": "EAST_Bay_AftSweptReturn",
+          "touch": true,
+          "penetration": false,
+          "triangle_pairs": 81,
+          "near_surface_tolerance_m": 0
+        },
+        {
+          "support": "EAST_Bay_RearHeader",
+          "touch": true,
+          "penetration": false,
+          "triangle_pairs": 415,
           "near_surface_tolerance_m": 0
         }
       ],
       "verified_supports": [
-        "GP_EastWall.002"
+        "EAST_Bay_ForeSweptReturn",
+        "EAST_Bay_AftSweptReturn",
+        "EAST_Bay_RearHeader"
       ]
     },
     {
@@ -11569,12 +11669,20 @@
           "support": "EAST_Bay_WarmRearCanopy",
           "touch": true,
           "penetration": false,
-          "triangle_pairs": 966,
+          "triangle_pairs": 1444,
+          "near_surface_tolerance_m": 0
+        },
+        {
+          "support": "GP_EastWall.002",
+          "touch": true,
+          "penetration": false,
+          "triangle_pairs": 156,
           "near_surface_tolerance_m": 0
         }
       ],
       "verified_supports": [
-        "EAST_Bay_WarmRearCanopy"
+        "EAST_Bay_WarmRearCanopy",
+        "GP_EastWall.002"
       ]
     },
     {
@@ -11604,30 +11712,68 @@
       "name": "EAST_Display_Hanger_Fore",
       "contact_rows": [
         {
-          "support": "EAST_Bay_PaleFrontCanopy",
+          "support": "EAST_Display_CommonMountRail",
           "touch": true,
           "penetration": false,
-          "triangle_pairs": 12,
+          "triangle_pairs": 7,
           "near_surface_tolerance_m": 0
         }
       ],
       "verified_supports": [
-        "EAST_Bay_PaleFrontCanopy"
+        "EAST_Display_CommonMountRail"
       ]
     },
     {
       "name": "EAST_Display_Hanger_Aft",
       "contact_rows": [
         {
-          "support": "EAST_Bay_PaleFrontCanopy",
+          "support": "EAST_Display_CommonMountRail",
           "touch": true,
           "penetration": false,
-          "triangle_pairs": 8,
+          "triangle_pairs": 10,
           "near_surface_tolerance_m": 0
         }
       ],
       "verified_supports": [
-        "EAST_Bay_PaleFrontCanopy"
+        "EAST_Display_CommonMountRail"
+      ]
+    },
+    {
+      "name": "EAST_Bay_RearHeader",
+      "contact_rows": [
+        {
+          "support": "EAST_Bay_CurvedClayBack",
+          "touch": true,
+          "penetration": false,
+          "triangle_pairs": 588,
+          "near_surface_tolerance_m": 0
+        },
+        {
+          "support": "GP_EastWall.002",
+          "touch": true,
+          "penetration": false,
+          "triangle_pairs": 44,
+          "near_surface_tolerance_m": 0
+        }
+      ],
+      "verified_supports": [
+        "EAST_Bay_CurvedClayBack",
+        "GP_EastWall.002"
+      ]
+    },
+    {
+      "name": "EAST_Display_CommonMountRail",
+      "contact_rows": [
+        {
+          "support": "EAST_Bay_WarmRearCanopy",
+          "touch": true,
+          "penetration": false,
+          "triangle_pairs": 23,
+          "near_surface_tolerance_m": 0
+        }
+      ],
+      "verified_supports": [
+        "EAST_Bay_WarmRearCanopy"
       ]
     },
     {
@@ -11799,15 +11945,15 @@
       "name": "EAST_Bay_FixtureCup_0",
       "contact_rows": [
         {
-          "support": "EAST_Bay_PaleFrontCanopy",
+          "support": "EAST_Bay_WarmRearCanopy",
           "touch": true,
           "penetration": false,
-          "triangle_pairs": 54,
+          "triangle_pairs": 65,
           "near_surface_tolerance_m": 0
         }
       ],
       "verified_supports": [
-        "EAST_Bay_PaleFrontCanopy"
+        "EAST_Bay_WarmRearCanopy"
       ]
     },
     {
@@ -11829,15 +11975,15 @@
       "name": "EAST_Bay_FixtureCup_1",
       "contact_rows": [
         {
-          "support": "EAST_Bay_PaleFrontCanopy",
+          "support": "EAST_Bay_WarmRearCanopy",
           "touch": true,
           "penetration": false,
-          "triangle_pairs": 54,
+          "triangle_pairs": 64,
           "near_surface_tolerance_m": 0
         }
       ],
       "verified_supports": [
-        "EAST_Bay_PaleFrontCanopy"
+        "EAST_Bay_WarmRearCanopy"
       ]
     },
     {
@@ -12343,12 +12489,14 @@
     {
       "receiver": "fore_soil_visible_margin",
       "covering_fixtures": [
-        "EAST_Bay_LightReserve_0"
+        "EAST_Bay_LightReserve_0",
+        "EAST_Bay_LightReserve_1"
       ]
     },
     {
       "receiver": "aft_soil_visible_margin",
       "covering_fixtures": [
+        "EAST_Bay_LightReserve_0",
         "EAST_Bay_LightReserve_1"
       ]
     }
@@ -12421,9 +12569,9 @@
       "name": "fore_soil_visible_margin",
       "part": "EAST_ForeSoilBed_Soil",
       "point_xyz": [
-        -9.67,
+        -9.52,
         53.02000045776367,
-        -452.84999999999997
+        -451.88
       ]
     },
     {
@@ -13575,5 +13723,18 @@
       ],
       "floor_owner": "D09_orchard_market_gallery"
     }
-  ]
+  ],
+  "canopy_revision": {
+    "revision": "002",
+    "user_review_message": "Sentinel_27f9c99720c08191849173cc4d9837f6",
+    "reason": "Continuous readable soffit and real end/header/fixture/screen mounts replace disconnected-looking canopy composition.",
+    "source_sha256": "7dfce55242a651af80b59199217424470ed8d951ecb81eee68ac83539ea5fe14",
+    "previous_model_spec_sha256": "d75f984a0bb6524103247f200f9ab493ddbda1ff26eaaae3368d636007933fd1",
+    "original_model_file_retained": "AST-AQU-016_east_gallery_rest_bay.glb",
+    "export_equivalence_sha256": "3a5ce269122a235407642ecadd4b0da1201d7f0288415d04e5849e1d31772443",
+    "source_object_preservation_sha256": "c9f1ad112bb6499a42b1ad4cac5ca1fcceb5213124b8c864fa62ceb6553c42be",
+    "new_native_visual_acceptance": false,
+    "old_physical_passes_preserved_as_history": true,
+    "wider_gallery_expansion": "held"
+  }
 }
