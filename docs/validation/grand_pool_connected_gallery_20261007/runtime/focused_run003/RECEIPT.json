@@ -1,0 +1,94 @@
+{
+  "status": "STOPPED_PRESERVE_FIRST_FAILURE",
+  "started_utc": "2026-10-07T02:08:38.618003+00:00",
+  "checks": [
+    {
+      "check": "canopy_compatibility",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 0.352,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--script",
+        "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/runtime_draft001/check_compatibility.gd"
+      ]
+    },
+    {
+      "check": "grand_pool_architecture",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 37.8614,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--quit-after",
+        "12000",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/validate_grand_pool_architecture.gd"
+      ],
+      "reused_from_receipt": "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/runtime_draft001/focused_run002/RECEIPT.json",
+      "receipt_sha256": "54075033ccbb7f3e7e7b9cdde6df4a19048ecfccf57b739c78a6f5789ec79232",
+      "execution_stage": "prior_focused002_current_runtime_bytes_unchanged_test_only_successor"
+    },
+    {
+      "check": "lighting_budget",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 30.6155,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--quit-after",
+        "2400",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/validate_lighting_budget.gd"
+      ],
+      "reused_from_receipt": "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/runtime_draft001/focused_run002/RECEIPT.json",
+      "receipt_sha256": "54075033ccbb7f3e7e7b9cdde6df4a19048ecfccf57b739c78a6f5789ec79232",
+      "execution_stage": "prior_focused002_current_runtime_bytes_unchanged_test_only_successor"
+    },
+    {
+      "check": "grand_pool_access",
+      "passed": false,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 42.8846,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--quit-after",
+        "12000",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/validate_grand_pool_access.gd"
+      ]
+    }
+  ],
+  "no_import": true,
+  "prior_import_receipt_sha256": "85779c44a78c4f04f8b3ff146f54705e1e5baaeeccdefd4cbae623ebdac5814a",
+  "access_successor_manifest_sha256": "b5e62bc70e740e1be70652169f18cf1b6839cb0fa8a21b15ee154ecfbc71eafb",
+  "full_suite": false,
+  "visual_acceptance": false,
+  "error": "RuntimeError('Stopped at first failed check: grand_pool_access')",
+  "finished_utc": "2026-10-07T02:09:25.708261+00:00",
+  "source_final_sha256": "1c4a9d2a81faa99f7df878fa3a804af0c9008340cd25ed0c685031e572a7f25d",
+  "source_unchanged": true,
+  "head_and_index_unchanged": true
+}

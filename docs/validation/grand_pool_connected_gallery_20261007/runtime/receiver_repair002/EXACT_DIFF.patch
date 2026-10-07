@@ -1,0 +1,70 @@
+--- a/data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json
++++ b/data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json
+@@ -12161,16 +12161,16 @@
+       "range_m": 5.8,
+       "half_angle_degrees": 55,
+       "receiver_xyz": [
+-        -9.692591552734376,
+-        52.5,
+-        -440.1457358387609
++        -9.85409168243409,
++        53.45000076293945,
++        -440.11728997998586
+       ],
+       "visibility_sample_xyz": [
+-        -9.702642903955672,
+-        52.55912559541939,
+-        -440.14396544193295
++        -9.864143033655386,
++        53.50912635835884,
++        -440.11551958315783
+       ],
+-      "receiver_source_part": "COMPILER_FLOOR_D09_orchard_market_gallery",
++      "receiver_source_part": "CG_MarketCounter/west_reference_surface_01",
+       "provisional_native_trial_only": true,
+       "source_preview_watts_not_reused_as_native_energy": true,
+       "native_balance_accepted": false,
+--- a/tests/pool_east_gallery_checks.gd
++++ b/tests/pool_east_gallery_checks.gd
+@@ -1,7 +1,7 @@
+ extends RefCounted
+ # One installed-area check. Reuses the already verified raw-array codec reader.
+ const CONTRACT := "res://data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json"
+-const REVIEWED_CONTRACT_SHA := "36d40ddae3173bb5df688168cbf6a2c0b4054d10215de90875572e36f690d32c"
++const REVIEWED_CONTRACT_SHA := "ea1df244ad7e80fa45a471afda87a581a7cd923d3d50a1af403a828ece1d9dc7"
+ var tree: SceneTree
+ var ship: Node3D
+ var area: Node3D
+--- a/tests/grand_pool_feature_builder_successor.gd
++++ b/tests/grand_pool_feature_builder_successor.gd
+@@ -9,7 +9,7 @@
+ # The east gallery is one exact later append; normalize it before the retained feature proof.
+ const EAST_GALLERY_BUILDER_SHA := "2437bde87f2733636edb34f7e86cb2b11805e7693fc88566b1bdc345e7e495f4"
+ const EAST_GALLERY_ADDED_LINE := "\tload(\"res://scripts/grand_pool_east_gallery.gd\").build(parent,ship)\n"
+-const EAST_GALLERY_INPUTS := {"scripts/grand_pool_east_gallery.gd":"56ea19c414fca32277612583456fb9a8056ed2dc7ffefb842d4d2025b9c8b497","data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json":"36d40ddae3173bb5df688168cbf6a2c0b4054d10215de90875572e36f690d32c","scripts/grand_pool_connected_gallery_furniture.gd":"8266938a74f84e7feb037c228c6357bc0cf7eaf4d26325ed2d2a81a0e45a7149"}
++const EAST_GALLERY_INPUTS := {"scripts/grand_pool_east_gallery.gd":"56ea19c414fca32277612583456fb9a8056ed2dc7ffefb842d4d2025b9c8b497","data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json":"ea1df244ad7e80fa45a471afda87a581a7cd923d3d50a1af403a828ece1d9dc7","scripts/grand_pool_connected_gallery_furniture.gd":"8266938a74f84e7feb037c228c6357bc0cf7eaf4d26325ed2d2a81a0e45a7149"}
+ const POOL_HELPER := "tests/secondary_engineering_pool_ship_successor.gd"
+ const PREVIOUS_HELPER_SHA := "07d0c1494b297763de23612ef9f7b6d9e145791a190c03a3be0bd9d4a7c72bd5"
+ const CANDIDATE_HELPER_SHA := "c4e757ca80bc85e8fe4f7c41df5d3a3d1d2deb96ac0aa087760f30cf3cf4c241"
+--- a/docs/MEDICAL_ADDITIVE_SUCCESSOR.json
++++ b/docs/MEDICAL_ADDITIVE_SUCCESSOR.json
+@@ -864,7 +864,7 @@
+     "scripts/primary_atrium_core.gd": "be0343c75deb23f4de21cf76b59f6bad7d10b19c6ffdbd84485d1d5f0988324f",
+     "scripts/lighting_budget.gd": "73366f8831a591473355c9d15a5de8ae0e63c59bdf3b8cd1b1abe7663d1f7337",
+     "scripts/structural_floor_builder.gd": "449ab410664b83e243537a899ae46e658b9cd1b3f18de19b2e2690933854bf01",
+-    "tests/grand_pool_feature_builder_successor.gd": "e60f95ecb761f9c5249a75aca325b0a07c7b5da626133b9c0dc1b13d062efa5d",
++    "tests/grand_pool_feature_builder_successor.gd": "6377f61167457bce63c408fc19de8be16b8b3bb8198fd7a1b9dad46f495112a7",
+     "tools/theater_incremental_preservation.py": "ff1b2d55dc897943b68cad5dbeceae2f22c918e0fe9342665c244d008bc3ec91",
+     "tools/theater_surface_policy.py": "f396b6f92dc008d9d8d6ef2ad03103f622b631912658d3ad22e8267d649de2b1",
+     "tools/theater_source_volumes.py": "d6aa1c9c8e4db40358250041684713aee9274b10b729c7f1b4a2d74b656f9896",
+--- a/tests/medical_successor_guard.gd
++++ b/tests/medical_successor_guard.gd
+@@ -2,7 +2,7 @@
+ # Authenticated medical projection for unchanged historical assertions.
+ # Every projected byte/owner is checked against the full current postimage first.
+ const PROOF := "res://docs/MEDICAL_ADDITIVE_SUCCESSOR.json"
+-const PROOF_SHA := "3d9176e28f11847b5ffd99b2e89752ecaa03f4d41d881f679644eb3a150036a5"
++const PROOF_SHA := "d9a2f984fbcf831879628546a087e8fd7a790e4e313744b273d0a9bfed6d2637"
+ const OWNER := "D05_forward_waiting_support_floor"
+ const CURRENT_ONLY := ["docs/LAYOUT_COMPILE_CHECKS.json"]
+ static var checked := false
