@@ -1,0 +1,376 @@
+[
+  {
+    "path": "tests/medical_test_scene.gd",
+    "sha256": "ceeb6f7217927d706673b262a8b1d77693246aec57435dded147237499dd0ff8",
+    "changed": false,
+    "references": [
+      {
+        "line": 124,
+        "text": "\ttriage_proof=load(\"res://tests/medical_triage_successor_guard.gd\").validate_current(floors)"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_grand_pool_architecture.gd",
+    "sha256": "d0de4fca95f2d65554f56a0b99077d452a310a5883a639397f067a68aa8d4ff9",
+    "changed": false,
+    "references": [
+      {
+        "line": 79,
+        "text": "\tvar compilation: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(\"res://data/generated/structural_meshes.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_theater_structure.gd",
+    "sha256": "f7b5af399497223d09bb3459917156a0dcc0d89b7030672494827dd74f45fb4a",
+    "changed": false,
+    "references": [
+      {
+        "line": 20,
+        "text": "\tload(\"res://tests/secondary_engineering_additive_guard.gd\").validate(JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\")))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_aquatic_access.gd",
+    "sha256": "5da330233a07ca9adb1e7cd32ba341a7b8eefaddd463945305c838fc55f430e2",
+    "changed": false,
+    "references": [
+      {
+        "line": 59,
+        "text": "\tvar compiled:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(\"res://data/generated/structural_meshes.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/pool_east_gallery_checks.gd",
+    "sha256": "2cfce0e7fab2b8020a17e711bee43d778703d4756f977395525b9b773d68d864",
+    "changed": false,
+    "references": [
+      {
+        "line": 145,
+        "text": "\tvar compilation: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(\"res://data/generated/structural_meshes.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/secondary_engineering_pool_ship_successor.gd",
+    "sha256": "c4e757ca80bc85e8fe4f7c41df5d3a3d1d2deb96ac0aa087760f30cf3cf4c241",
+    "changed": false,
+    "references": [
+      {
+        "line": 14,
+        "text": "const UNCHANGED_GEOMETRY_SHA256 := {\"data/spatial_layout.json\": \"6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167\", \"data/generated/structural_meshes.json\": \"4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91\"}"
+      }
+    ]
+  },
+  {
+    "path": "tests/medical_successor_guard.gd",
+    "sha256": "2d5466a841d6c610b3c907d39e81280ea29bdd9b8015763682924821d814902b",
+    "changed": false,
+    "references": [
+      {
+        "line": 2,
+        "text": "const TRIAGE_RETAINED = preload(\"res://tests/medical_triage_successor_guard.gd\")"
+      },
+      {
+        "line": 8,
+        "text": "const CURRENT_ONLY := [\"docs/LAYOUT_COMPILE_CHECKS.json\"]"
+      },
+      {
+        "line": 104,
+        "text": "\tvar old_layout: Dictionary=JSON.parse_string(old_text[\"data/spatial_layout.json\"])"
+      },
+      {
+        "line": 105,
+        "text": "\tvar old_compiled: Dictionary=JSON.parse_string(old_text[\"data/generated/structural_meshes.json\"])"
+      },
+      {
+        "line": 106,
+        "text": "\tvar layout: Dictionary=JSON.parse_string(TRIAGE_RETAINED.retained_text(\"res://data/spatial_layout.json\"))"
+      },
+      {
+        "line": 107,
+        "text": "\tcurrent_compiled=JSON.parse_string(TRIAGE_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\"))"
+      },
+      {
+        "line": 110,
+        "text": "\tvar summary: Dictionary=JSON.parse_string(TRIAGE_RETAINED.retained_text(\"res://docs/LAYOUT_COMPILE_CHECKS.json\"))"
+      },
+      {
+        "line": 157,
+        "text": "\tvar prior: Dictionary=JSON.parse_string(old_text[\"data/generated/structural_meshes.json\"])"
+      }
+    ]
+  },
+  {
+    "path": "tests/theater_stage_probe.gd",
+    "sha256": "9002147b4a8719e901efde10db8b3d2d925d166696cb33ad16238b45b2f68436",
+    "changed": false,
+    "references": [
+      {
+        "line": 269,
+        "text": "\tvar layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(\"res://data/spatial_layout.json\"))"
+      },
+      {
+        "line": 274,
+        "text": "\tvar compiled: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(\"res://data/generated/structural_meshes.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_secondary_engineering_access.gd",
+    "sha256": "24410c8f08ba1a1c9a787415b35a84863a691a5cdce2c0906c4e2ec30bb7ca7e",
+    "changed": false,
+    "references": [
+      {
+        "line": 83,
+        "text": "\tvar compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_bridge_platform_structure.gd",
+    "sha256": "8d9ccb589e1a5bd25a9e4403b7abdbd9c68c89883bd49da0685e9142dd855f9e",
+    "changed": false,
+    "references": [
+      {
+        "line": 843,
+        "text": "\tvar layout := read_json(\"res://data/spatial_layout.json\")"
+      },
+      {
+        "line": 844,
+        "text": "\tvar generated := read_json(\"res://data/generated/structural_meshes.json\")"
+      },
+      {
+        "line": 1013,
+        "text": "\tvar layout := read_json(\"res://data/spatial_layout.json\")"
+      }
+    ]
+  },
+  {
+    "path": "tests/theater_stair_ship_successor.gd",
+    "sha256": "18bb798eaa160bbe3c5e91466546c0663aeee79a86a29449daa81f8d2690aacd",
+    "changed": false,
+    "references": [
+      {
+        "line": 15,
+        "text": "const UNCHANGED_GEOMETRY_SHA256 := {\"data/spatial_layout.json\": \"6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167\", \"data/generated/structural_meshes.json\": \"4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91\"}"
+      },
+      {
+        "line": 156,
+        "text": "\tvar compiled: Dictionary=JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\"))"
+      },
+      {
+        "line": 157,
+        "text": "\tvar layout: Dictionary=JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/spatial_layout.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_d17_connected_access.gd",
+    "sha256": "326ee5f81608d4af411cd482e4bbd5123291e7dc094a0275f33f56fd3fd52588",
+    "changed": false,
+    "references": [
+      {
+        "line": 64,
+        "text": "\tvar compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\"))"
+      },
+      {
+        "line": 66,
+        "text": "\tload(\"res://tests/secondary_engineering_additive_guard.gd\").validate_pinned_input(\"data/generated/structural_meshes.json\",COMPILED_SHA)"
+      },
+      {
+        "line": 67,
+        "text": "\tload(\"res://tests/secondary_engineering_additive_guard.gd\").validate_pinned_input(\"data/spatial_layout.json\",LAYOUT_SHA)"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_grand_pool_access.gd",
+    "sha256": "c67a3a65f5b44eba72dec4688567982b010febe506243fb654f0ba607f9d6d38",
+    "changed": false,
+    "references": [
+      {
+        "line": 63,
+        "text": "\tvar compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_aft_command_structure.gd",
+    "sha256": "6848d40ee5418b5739698fe5f7421055f98e102a1c8e8df1d801d47fddeeb49a",
+    "changed": false,
+    "references": [
+      {
+        "line": 1159,
+        "text": "\tvar layout := read_json(\"res://data/spatial_layout.json\")"
+      },
+      {
+        "line": 1160,
+        "text": "\tvar generated := read_json(\"res://data/generated/structural_meshes.json\")"
+      },
+      {
+        "line": 1384,
+        "text": "\tvar layout := read_json(\"res://data/spatial_layout.json\")"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_secondary_engineering_essentials.gd",
+    "sha256": "bf4f0fb229979e6b70db7051e102b1b5f26e5f33e5e18bf994ec8678e8616694",
+    "changed": false,
+    "references": [
+      {
+        "line": 89,
+        "text": "\tvar compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_crown_structure.gd",
+    "sha256": "90cac8ef34718727e4a08d28c8bc42d8f7f143a104bd9c1ce77931b5efa58525",
+    "changed": false,
+    "references": [
+      {
+        "line": 268,
+        "text": "\tvar layout: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(\"res://data/spatial_layout.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/medical_triage_successor_guard.gd",
+    "sha256": "5bbad02fe086eedca47b9db58b05bf717bb76ba06ceea87f3b7a9ec69d04f162",
+    "changed": true,
+    "references": [
+      {
+        "line": 46,
+        "text": "\tvar layout: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(\"res://data/spatial_layout.json\"))"
+      },
+      {
+        "line": 47,
+        "text": "\tvar old_layout: Dictionary=JSON.parse_string(str(old_text[\"data/spatial_layout.json\"]))"
+      },
+      {
+        "line": 48,
+        "text": "\tcurrent_compiled=JSON.parse_string(FileAccess.get_file_as_string(\"res://data/generated/structural_meshes.json\"))"
+      },
+      {
+        "line": 49,
+        "text": "\told_compiled=JSON.parse_string(str(old_text[\"data/generated/structural_meshes.json\"]))"
+      },
+      {
+        "line": 67,
+        "text": "\tvar summary: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(\"res://docs/LAYOUT_COMPILE_CHECKS.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_secondary_engineering_cell.gd",
+    "sha256": "fc801ec3b25b92282e3ca109772f4924018445ba0beb6a7d36c6765e5fb995c7",
+    "changed": false,
+    "references": [
+      {
+        "line": 291,
+        "text": "\tvar compiled: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\"))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_theater_stair_walk.gd",
+    "sha256": "2d58671726bf2ff0686a522e427560866be5824f6f7ab8d62b1e065f55f010d0",
+    "changed": false,
+    "references": [
+      {
+        "line": 138,
+        "text": "\tload(\"res://tests/secondary_engineering_additive_guard.gd\").validate(JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\")))"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_aft_crown_platform_structure.gd",
+    "sha256": "f995f7cb1e7319f23c018074ec9f3daf1b757dc4d73ec2a05be220d520a13b62",
+    "changed": false,
+    "references": [
+      {
+        "line": 407,
+        "text": "\tvar generated := MEDICAL_RETAINED.retained_json(\"res://data/generated/structural_meshes.json\")"
+      },
+      {
+        "line": 409,
+        "text": "\tvar layout := MEDICAL_RETAINED.retained_json(\"res://data/spatial_layout.json\")"
+      },
+      {
+        "line": 660,
+        "text": "\tvar layout := MEDICAL_RETAINED.retained_json(\"res://data/spatial_layout.json\")"
+      }
+    ]
+  },
+  {
+    "path": "tests/validate_upper_horizon_enclosure_structure.gd",
+    "sha256": "eb371c82ef056ccf51840076c50b8ca35091d7c5b46a38deead91264e6eaade6",
+    "changed": false,
+    "references": [
+      {
+        "line": 54,
+        "text": "const PINS := {\"assets/models/AST-CMD-002.glb\":\"3577d49136b0252f8eef677604ef85488b92913580c8f8a034b947120a70a0ea\",\"data/generated/structural_meshes.json\":\"646ee5875fd230be13f6553f36ae6dc05322b5848d42f5c725841dc9aee08a3a\",\"data/spatial_layou"
+      },
+      {
+        "line": 352,
+        "text": "\tvar generated := MEDICAL_RETAINED.retained_json(\"res://data/generated/structural_meshes.json\")"
+      },
+      {
+        "line": 354,
+        "text": "\tvar layout := MEDICAL_RETAINED.retained_json(\"res://data/spatial_layout.json\")"
+      },
+      {
+        "line": 490,
+        "text": "\tvar layout := MEDICAL_RETAINED.retained_json(\"res://data/spatial_layout.json\")"
+      },
+      {
+        "line": 644,
+        "text": "\t\tif str(path) in [\"data/generated/structural_meshes.json\",\"data/spatial_layout.json\"]:"
+      }
+    ]
+  },
+  {
+    "path": "tests/secondary_engineering_additive_guard.gd",
+    "sha256": "03123005aabc2672d9f1d8283add5e16c575271541aefd362e4c162b0b333f9d",
+    "changed": false,
+    "references": [
+      {
+        "line": 16,
+        "text": "const RETAINED_LAYOUT := \"data/architecture/packages/theater/retained/spatial_layout.json\""
+      },
+      {
+        "line": 17,
+        "text": "const RETAINED_COMPILED := \"data/architecture/packages/theater/retained/structural_meshes.json\""
+      },
+      {
+        "line": 20,
+        "text": "const THEATER_INPUT_PATHS := [\"data/spatial_layout.json\", \"data/generated/structural_meshes.json\", \"scripts/ship.gd\"]"
+      },
+      {
+        "line": 57,
+        "text": "\tvar preserved := validate(JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\")))"
+      },
+      {
+        "line": 79,
+        "text": "\tassert(compiled==JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\")),\"Caller compiled records must match pinned bytes\")"
+      },
+      {
+        "line": 95,
+        "text": "\tvar layout: Dictionary = JSON.parse_string(MEDICAL_RETAINED.retained_text(\"res://data/spatial_layout.json\"))"
+      },
+      {
+        "line": 144,
+        "text": "\tassert(successor.explicit_runtime_pin_successors[\"data/spatial_layout.json\"].theater_sha256==successor.new_layout_sha256)"
+      },
+      {
+        "line": 145,
+        "text": "\tassert(successor.explicit_runtime_pin_successors[\"data/generated/structural_meshes.json\"].theater_sha256==successor.new_compiled_sha256)"
+      }
+    ]
+  }
+]

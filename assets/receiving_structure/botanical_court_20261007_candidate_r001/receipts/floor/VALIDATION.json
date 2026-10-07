@@ -1,0 +1,94 @@
+{
+  "status": "PASS: bounded source/compiler geometry; runtime adoption HOLD",
+  "counts": {
+    "layout_before": 287,
+    "layout_after": 289,
+    "compiled_before": 273,
+    "compiled_after": 275,
+    "new_floor_area_m2": 240
+  },
+  "preserved_complete_layout_records": 287,
+  "preserved_complete_compiled_records": 273,
+  "source_inputs_hash_unchanged": 743,
+  "all_current_effective_owner_volume_hits": [],
+  "compiled_volume_hits": [],
+  "source_slab_aabb_hits": [],
+  "source_receiver_clear_volume_aabb_hits": [],
+  "source_object_counts": {
+    "WP10": 976,
+    "WP04": 1011
+  },
+  "source_glb_sha256": {
+    "WP10": "33fe0fddc60734cb401c16ec5e53664c948ff9d28d88b3f2384832898d211202",
+    "WP04": "d34662e5f1579e9f025f5dacf4967184ef1a71c7ecd5f23826bed74820e551fb"
+  },
+  "contact_seams": [
+    {
+      "owner": "D06_botanical_court_port_receiving_floor",
+      "axial_shared_edge_m": 30.0,
+      "level_delta_m": 0.0,
+      "duplicate_area_m2": 0.0
+    },
+    {
+      "owner": "D06_botanical_court_starboard_receiving_floor",
+      "axial_shared_edge_m": 30.0,
+      "level_delta_m": 0.0,
+      "duplicate_area_m2": 0.0
+    }
+  ],
+  "swept_floor_routes": [
+    {
+      "name": "port",
+      "clear_width_m": 2.4,
+      "footprint": "continuous square-cap/mitre 1.2m buffered route; conservative floor-support envelope only",
+      "centerline": [
+        [
+          0,
+          -240
+        ],
+        [
+          0,
+          -216
+        ],
+        [
+          -6.8,
+          -216
+        ]
+      ],
+      "supported": true
+    },
+    {
+      "name": "starboard",
+      "clear_width_m": 2.4,
+      "footprint": "continuous square-cap/mitre 1.2m buffered route; conservative floor-support envelope only",
+      "centerline": [
+        [
+          0,
+          -240
+        ],
+        [
+          0,
+          -216
+        ],
+        [
+          6.8,
+          -216
+        ]
+      ],
+      "supported": true
+    }
+  ],
+  "upper_axial_slab_underside_y": 35.26,
+  "upper_axial_floor_clearance_m": 8.259999999999998,
+  "new_upper_structures": 0,
+  "changed_or_removed_upper_structures": 0,
+  "limits": [
+    "No Godot/Blender run; no runtime physics or visual acceptance.",
+    "Whole room base floors are not present; this reaches package boundary, not supported interior journeys.",
+    "Open side-band end edges at Z-238 and Z-208 need receiving edge protection before public runtime use; no guard added outside scope.",
+    "Geometric floor contact is not structural load certification.",
+    "WP04 native/export identity discrepancy remains held; decoded retained export only.",
+    "Current laptop-owned source successors have not been inspected; rebase requires their issued bounds.",
+    "Existing medical_triage_successor_guard directly pins all four changed input files; proposed floor apply is held until exact predecessor recovery is integrated and engine regressions run."
+  ]
+}

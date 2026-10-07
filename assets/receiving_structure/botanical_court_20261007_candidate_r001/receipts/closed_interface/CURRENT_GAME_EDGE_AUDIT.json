@@ -1,0 +1,174 @@
+{
+  "status": "READ-ONLY CURRENT GAME SOURCE/COLLISION-OWNER AUDIT; no engine execution",
+  "edges": [
+    {
+      "side": "port",
+      "edge_x": -8,
+      "z_interval": [
+        -238,
+        -208
+      ],
+      "length_m": 30,
+      "installed_room_side_support_area_in_1m_strip_m2": 0,
+      "installed_room_side_enclosure_intervals": [],
+      "open_intervals": [
+        [
+          -238,
+          -208
+        ]
+      ],
+      "future_portal_z": [
+        -218.1,
+        -213.9
+      ]
+    },
+    {
+      "side": "starboard",
+      "edge_x": 8,
+      "z_interval": [
+        -238,
+        -208
+      ],
+      "length_m": 30,
+      "installed_room_side_support_area_in_1m_strip_m2": 0,
+      "installed_room_side_enclosure_intervals": [],
+      "open_intervals": [
+        [
+          -238,
+          -208
+        ]
+      ],
+      "future_portal_z": [
+        -219,
+        -213
+      ]
+    }
+  ],
+  "runtime_entry_chain": "presentation.gd -> scenes/ship.tscn -> ship.gd::_ready. No authored room loader interprets D06 directory reservations as runtime geometry.",
+  "source_meshes_are_not_adoption": "WP04/WP10 retained intake meshes are absent from the main-scene builder chain and receive no installed collision credit.",
+  "actual_collision_mechanisms": "structural_floor_builder builds compiled slab trimeshes. ship.model calls _static_contacts on visible meshes. build_structural_datums emits hull-outline datum beams, no directory room floors/enclosures.",
+  "nearby_runtime_models": [
+    {
+      "file": "AST-GAR-003.glb",
+      "sha256": "f0638922c0c4c51eeba6e232835d3b0c1dc39699419b94ff7b3779725a0bd3a7",
+      "placement_xyz": [
+        -39,
+        27,
+        -27
+      ],
+      "objects": 7,
+      "edge_collision_candidates": [],
+      "overall_min": [
+        -46.279439,
+        27.0,
+        -34.954594
+      ],
+      "overall_max": [
+        -37.1,
+        32.445,
+        -18.805483
+      ]
+    },
+    {
+      "file": "AST-GAR-004.glb",
+      "sha256": "58c48fd291dc11eb7c2b49cc9a5e1d4f60bf67cdbc4f0cdf7a6fbfb3203df042",
+      "placement_xyz": [
+        -52,
+        27,
+        0
+      ],
+      "objects": 7,
+      "edge_collision_candidates": [],
+      "overall_min": [
+        -80.238146,
+        26.76,
+        -15.230765
+      ],
+      "overall_max": [
+        -52.0,
+        33.68,
+        15.230765
+      ]
+    },
+    {
+      "file": "AST-GAR-005.glb",
+      "sha256": "664cf17e7ae0e84bbaab2689c1ac93917124170a53e8147443fa65e3710f9efa",
+      "placement_xyz": [
+        -52,
+        27,
+        0
+      ],
+      "objects": 5,
+      "edge_collision_candidates": [],
+      "overall_min": [
+        -52.018543,
+        27.0,
+        -4.49
+      ],
+      "overall_max": [
+        -45.686914,
+        31.98,
+        4.49
+      ]
+    },
+    {
+      "file": "AST-ATR-001.glb",
+      "sha256": "ece9c819bb2be240feee38ca026433b0ada10b04498ef1bd62e8960efdba0f47",
+      "placement_xyz": [
+        0,
+        0,
+        0
+      ],
+      "objects": 64,
+      "edge_collision_candidates": [],
+      "overall_min": [
+        -35.026196,
+        5.68,
+        -50.564259
+      ],
+      "overall_max": [
+        35.026196,
+        103.150002,
+        50.564259
+      ]
+    },
+    {
+      "file": "AST-CIR-005_spine_core.glb",
+      "sha256": "986fab07bb209f7d6d734b7c7d8ecde8fd9b26a53c07e21056da5b3671e0def2",
+      "placement_xyz": [
+        0,
+        0,
+        -272
+      ],
+      "objects": 4,
+      "edge_collision_candidates": [],
+      "overall_min": [
+        -7.88,
+        -0.24,
+        -285.04
+      ],
+      "overall_max": [
+        7.88,
+        105.900002,
+        -251.959999
+      ]
+    }
+  ],
+  "other_nearby_vertical_programs": "Thread/Shell and Orchard exchange at Y52.5; foodhall Y61; D05 installed medical welcome/triage is at forward core, not these Clinical Research/Pharmacy reservations. They provide no Y27 edge closure.",
+  "hashes": {
+    "scenes/main.tscn": "d8cb8e406affb855439d3e66fc6ebe49e1220ce4751487197b88a25e41ca849d",
+    "scenes/ship.tscn": "ab1ef4ceda717bbf12b10ae9742151e4774aafd7a13bf5217b49f2de2605b570",
+    "scripts/presentation.gd": "a63a5c72f76af86cb81d2bb7dcc2bf9330d0a0583862c2fea5e7f487f5628b1c",
+    "scripts/ship.gd": "c28a07bbc7ea4462295c401da4aa96fb02b6ac13a86bfb6bb5b60d830209641a",
+    "scripts/structural_floor_builder.gd": "449ab410664b83e243537a899ae46e658b9cd1b3f18de19b2e2690933854bf01",
+    "scripts/garden_overlook.gd": "8c3ed4dc68a5b66638d135f343f621de2a8da37a70b8a9967b1d057c8661ebe5",
+    "scripts/canopy_terrace.gd": "25550f3c41ab27c7cb726a4a022d747c10fb08ce424265486437cd2d34b5f109",
+    "scripts/primary_atrium_core.gd": "be0343c75deb23f4de21cf76b59f6bad7d10b19c6ffdbd84485d1d5f0988324f",
+    "scripts/medical_welcome.gd": "a020edf39e4f7a0f1bb14f9b1f0342f4f06c28567f39694e624f1a1cb4b006aa",
+    "data/architecture/FORE_MIDSHIP_PUBLIC_CORE.json": "0fdc932348a4da62142b5f34ee7fccb9a58318488122999708c254f932b521ca",
+    "data/generated/structural_meshes.json": "abeb58d10dfbd47286ee2538862ec066d85905609ce2fc69c98698f8ae96b340",
+    "data/spatial_layout.json": "1f6a002a3e706717249e60113ab616a3af33f94e31ecf048b88e7cd6d8db8e10"
+  },
+  "decision": "Close the entire 60m outer edge with supported fitted interim guards, including independently removable closure sections over future portal spans. Do not authorize room entry.",
+  "limits": "This authenticates source-defined installed ownership/placement, not an in-engine physics sweep or fresh import."
+}
