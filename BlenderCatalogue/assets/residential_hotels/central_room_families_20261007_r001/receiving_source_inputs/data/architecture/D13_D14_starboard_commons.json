@@ -1,0 +1,339 @@
+{
+  "schema": "astraea.authored_vertical_commons.v1",
+  "status": "Revised implementation contract; compiled geometry and in-engine acceptance pending",
+  "programme_keys": [
+    "D13_directory_05",
+    "D14_directory_04"
+  ],
+  "names": [
+    "Starboard atrium commons",
+    "Starboard atrium commons"
+  ],
+  "original_room_ids": [
+    null,
+    null
+  ],
+  "envelope_xz_m": [
+    [
+      63,
+      -14
+    ],
+    [
+      93,
+      -14
+    ],
+    [
+      97,
+      -10
+    ],
+    [
+      97,
+      10
+    ],
+    [
+      93,
+      14
+    ],
+    [
+      63,
+      14
+    ]
+  ],
+  "floors_y_m": [
+    84,
+    88.5
+  ],
+  "roof_top_y_m": 92.4,
+  "protected_above": "D15 commons datum93 retained; selective overhead apertures now coordinated by D13_D17_starboard_house_extension.json, without guest-envelope intrusion. Remaining lower roof and pendant bearing retained.",
+  "protected_below": "Built D12 Night garden, floor78, roof83.38; no lowering of the D13 structural floor",
+  "upper_main_void_xz_m": [
+    [
+      71,
+      -6
+    ],
+    [
+      76,
+      -8
+    ],
+    [
+      84,
+      -6
+    ],
+    [
+      87,
+      0
+    ],
+    [
+      84,
+      8
+    ],
+    [
+      75,
+      8
+    ],
+    [
+      70,
+      5
+    ]
+  ],
+  "upper_stair_void_xz_m": [
+    [
+      62.95,
+      -9.58
+    ],
+    [
+      69.4,
+      -9.58
+    ],
+    [
+      69.4,
+      -6
+    ],
+    [
+      73,
+      -6
+    ],
+    [
+      73,
+      -2.4
+    ],
+    [
+      62.95,
+      -2.4
+    ]
+  ],
+  "stair": {
+    "flight_width_m": 2.0,
+    "rise_per_flight_m": 2.25,
+    "steps_per_flight": 15,
+    "tread_m": 0.32,
+    "first_flight": {
+      "x": [
+        64.2,
+        66.2
+      ],
+      "z": [
+        -9.6,
+        -4.8
+      ],
+      "bottom_y": 84,
+      "top_y": 86.25
+    },
+    "middle_landing": {
+      "x": [
+        64.2,
+        69.2
+      ],
+      "z": [
+        -4.8,
+        -2.6
+      ],
+      "y": 86.25
+    },
+    "second_flight": {
+      "x": [
+        67.2,
+        69.2
+      ],
+      "z": [
+        -9.6,
+        -4.8
+      ],
+      "bottom_at_z": -4.8,
+      "bottom_y": 86.25,
+      "top_y": 88.5
+    },
+    "upper_landing": {
+      "x": [
+        63,
+        70.2
+      ],
+      "z": [
+        -14,
+        -9.6
+      ],
+      "y": 88.5
+    },
+    "collision": "Visible treads with a smooth matching walking ramp; verify headroom and real character traversal",
+    "underflight_policy": "Enclose low headroom below both flights and intermediate landing; no route through the 2.01m underside."
+  },
+  "lower_arrival_centerline_xz_m": [
+    [
+      50,
+      0
+    ],
+    [
+      54,
+      0
+    ],
+    [
+      63,
+      0
+    ]
+  ],
+  "upper_arrival_centerline_xz_m": [
+    [
+      50,
+      0
+    ],
+    [
+      54,
+      0
+    ],
+    [
+      59,
+      -11.8
+    ],
+    [
+      63,
+      -11.8
+    ]
+  ],
+  "arrival_width_m": 4.0,
+  "residential_street_connection_xz_m": [
+    [
+      84,
+      -26
+    ],
+    [
+      84,
+      -14
+    ]
+  ],
+  "lift": {
+    "center_xz_m": [
+      94,
+      0
+    ],
+    "platform_world_x_size_m": 3.6,
+    "platform_world_z_size_m": 4.0,
+    "clear_door_width_m": 2.4,
+    "cabin_clear_height_m": 2.8,
+    "floor_hole_xz_m": [
+      [
+        92.18,
+        -2.02
+      ],
+      [
+        95.82,
+        -2.02
+      ],
+      [
+        95.82,
+        2.02
+      ],
+      [
+        92.18,
+        2.02
+      ]
+    ],
+    "landing_gate_x_m": 92.08,
+    "gate_type": "Four telescoping panels in real double-depth pockets; no clipping through shaft walls",
+    "requirements": [
+      "Closed landing gates away from the cabin",
+      "Blocked thresholds inhibit movement",
+      "Bounded start/stop acceleration",
+      "Actual player, cart and loose-load carry test",
+      "RMB/E physical call and floor buttons"
+    ],
+    "fixed_sill_front_extent_x_m": [
+      92.1,
+      92.19
+    ],
+    "moving_platform_front_x_m": 92.2,
+    "minimum_platform_edge_gap_m": 0.02,
+    "threshold_interface": "Landing gate plane92.08 is on the structural approach floor. Fixed sill92.10\u201392.19 stops10mm short of the moving platform92.20. The header front92.185 clears the moving platform by15mm; cabin gate is independently positioned at92.32.",
+    "rear_strip_use": "Enclosed shaft/service zone; no guest route behind lift hole",
+    "cabin_roof_top_at_upper_m": 91.65,
+    "equipment_ceiling_limit_y_m": 92.16,
+    "level_approach_clear_m": 4.0,
+    "cabin_gate_x_m": 92.32,
+    "station_header_to_platform_gap_m": 0.015
+  },
+  "seating": {
+    "pit_approach": "Create a lower-feeling conversation centre by raising surrounding seating platforms, never by cutting into the Night garden below",
+    "maximum_local_platform_raise_m": 0.35,
+    "capacity_status": "Proposed furniture capacity only; not approved admission or berth changes"
+  },
+  "support_intent": {
+    "commons_piers_xz_m": [
+      [
+        71,
+        -12
+      ],
+      [
+        64,
+        12
+      ],
+      [
+        94,
+        -11.5
+      ],
+      [
+        94,
+        11.5
+      ]
+    ],
+    "offset_arrival_pier_xz_m": [
+      60,
+      -17
+    ],
+    "requirement": "Explicitly coordinate occupied D12 ceiling interfaces in the editable Night garden source: matching 0.72m apertures and collars around 0.64m shafts, including sloping rear shoulder. No new floor opening or route obstruction. Revalidate all garden routes, planting and conversation approaches. Until completed, support geometry is not approved for integration. Structural certification is not implied.",
+    "shaft_width_m": 0.64,
+    "ceiling_clearance_cutout_m": 0.72,
+    "bearing_bottom_y_m": 78,
+    "bearing_top_y_m": 92.16,
+    "arrival_transfer_arm": {
+      "from_xz_m": [
+        60,
+        -17
+      ],
+      "to_xz_m": [
+        60,
+        -11.8
+      ],
+      "underside_y_m": 87.66,
+      "top_y_m": 88.26,
+      "width_m": 0.56,
+      "reason": "Offset bearing clears upper arrival and protected D12 Z-15 garden approach; deeper visible transfer arm stays above D13 route headroom"
+    }
+  },
+  "capacity_policy": "Preserve the existing1000 guest envelopes,2000 passenger admission cap and400 crew berths. No residence, species allocation, VIP count or existing persistent identity is changed.",
+  "excluded_claims": [
+    "No recovered original Moonwell identity",
+    "No new exterior windows through interior rooms",
+    "No final species-body acceptance without approved dimensions",
+    "No final art or whole-ship completion claim"
+  ],
+  "revision": 5,
+  "arrival_authored_floor_width_m": 4.4,
+  "void_policy": "Union stair notch and main void before triangulation; remove narrow west and inter-void remnants. Never bridge holes with a convex collider.",
+  "residential_interface": {
+    "guard_plane_z_m": -26,
+    "clear_opening_x_m": [
+      82,
+      86
+    ],
+    "floor_extent_x_m": [
+      81.8,
+      86.2
+    ],
+    "rule": "Split existing solid guard only at this opening; finish guarded returns. Verify loaded cart and player at the joined seam."
+  },
+  "section": {
+    "slab_thickness_m": 0.24,
+    "roof_underside_y_m": 92.16,
+    "general_lower_clearance_m": 4.26,
+    "general_upper_clearance_m": 3.66,
+    "minimum_route_clearance_m": 2.4,
+    "rule": "Ceiling ribs/soffits require explicit route checks; retain continuous level access to conversation centre and lift."
+  },
+  "review_findings_resolved_in_contract": [
+    "Arrival now overlaps existing floor ending X51",
+    "Upper arrival and landing each reserve 4m clear width",
+    "Stair notch merges with main void, eliminating narrow strips",
+    "Residential guard split is explicit",
+    "Lift rear strip is enclosed",
+    "Bearing penetrations and collars are explicit source interfaces, not silent overlaps"
+  ]
+}

@@ -76,7 +76,7 @@
     "tests/medical_test_scene.gd": "ceeb6f7217927d706673b262a8b1d77693246aec57435dded147237499dd0ff8",
     "tests/validate_medical_access.gd": "0d717f2ece64a58bb7afddda62fea33b1a37afe406b6a16ba08ef6e628b9dd70",
     "tests/validate_medical_structure.gd": "f0bd215493bfde834d45b42d58f6804f6e677587f434b621ae6209e216af66b1",
-    "tests/medical_successor_guard.gd": "2ca97c5f65f73a9375faf3259a4274d5e92e6dd1a8dfa9838f3911f28c5c69be",
+    "tests/medical_successor_guard.gd": "2d5466a841d6c610b3c907d39e81280ea29bdd9b8015763682924821d814902b",
     "scripts/medical_welcome.gd": "a020edf39e4f7a0f1bb14f9b1f0342f4f06c28567f39694e624f1a1cb4b006aa",
     "docs/LAYOUT_COMPILE_CHECKS.json": "917215a7eb444b088ed13eb5d8ce008fbadac64c25c0e24f1bf3dd7cb2b21a35",
     "data/spatial_layout.json": "1f6a002a3e706717249e60113ab616a3af33f94e31ecf048b88e7cd6d8db8e10",
@@ -249,7 +249,7 @@
       },
       {
         "before": "static func retained_floor_children(floors: Node) -> Array:\n\t_ensure()\n\tif not checked: return []\n",
-        "after": "static func retained_floor_children(floors: Node) -> Array:\n\t_ensure()\n\tif not checked: return []\n\tvar current_owners: Array=TRIAGE_RETAINED.retained_floor_children(floors)\n",
+        "after": "static func retained_floor_children(floors: Node) -> Array:\n\t_ensure()\n\tif not checked: return []\n\tvar current_owners: Array[Node]=[]\n\tcurrent_owners.assign(TRIAGE_RETAINED.retained_floor_children(floors))\n",
         "count": 1
       },
       {
