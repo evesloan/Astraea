@@ -1,0 +1,157 @@
+{
+  "date_utc": "2026-10-07",
+  "scope": "Validation-only authored receiver-marker to visible modeled diffuser mapping; no ship construction geometry or gameplay edit",
+  "state": "Receiver validation successor verified; loaded triage-cart room-turn gate remains failed",
+  "recovered_checkpoint_main": "7e220d0ef7e03acafabecfbe34b0c277e94619c3",
+  "source_history_base": "72278108ec13262420f9397d7e861436e95dbe9f",
+  "protected_before_apply_remote_main": "0e3e880b827b7cfc939ac585a6e86507690abaee",
+  "engine": "Godot 4.6.3.stable.official.7d41c59c4",
+  "run_mode": "Serialized original registered tools/validate.py --only checks with editor import barrier and fixed60 simulation",
+  "patch_files": [
+    {
+      "destination": "tests/validate_medical_structure.gd",
+      "preimage_sha256": "40d7855b8962ead3fe511b61a409b272d34c162a2893c5cd917df41fbabd69a2",
+      "postimage_sha256": "ed41f93259c1dd589d6ce90a00d4c12d28191ff979b14d8c108066a9dcff66a5",
+      "source": "/workspace/scratch/375c2e438292/medical_receiver_validation_20261007_1232/postimages/tests/validate_medical_structure.gd"
+    },
+    {
+      "destination": "docs/MEDICAL_TRIAGE_ADDITIVE_SUCCESSOR.json",
+      "preimage_sha256": "16e64bd43e1ebfc76bc308b3d653a72b8dabdb1df57da27077c231c4e2c72fb5",
+      "postimage_sha256": "392ca67df45c8cd750e8ab308ac8d61d6aac02b31c45acb10efe65dbd824853e",
+      "source": "/workspace/scratch/375c2e438292/medical_receiver_validation_20261007_1232/postimages/docs/MEDICAL_TRIAGE_ADDITIVE_SUCCESSOR.json"
+    },
+    {
+      "destination": "tests/medical_triage_successor_guard.gd",
+      "preimage_sha256": "72070b7a79734eddf43d63c956d6993cc980ad604c5b61ae8c266005d0af20ec",
+      "postimage_sha256": "ee016b577b5326cc3009283c72cf847f9b886a0f493af10783da7c2ea198ce4a",
+      "source": "/workspace/scratch/375c2e438292/medical_receiver_validation_20261007_1232/postimages/tests/medical_triage_successor_guard.gd"
+    }
+  ],
+  "source_only_checks": {
+    "fixture_mappings": 23,
+    "marker_backed": 8,
+    "mesh_backed": 15,
+    "rejected_negative_source_cases": 7,
+    "correspondence_receipt": "SOURCE_RECEIVER_CHECK.json"
+  },
+  "runtime_checks": {
+    "medical_structure": {
+      "passed": true,
+      "exit_code": 0,
+      "check_wall_seconds": 29.6872,
+      "runner_total_wall_seconds": 57.2855,
+      "clock_mode": "fixed60",
+      "errors": [],
+      "receipt": "runs/medical_structure_receipt001.json",
+      "log": "runs/medical_structure_run001.log",
+      "attempt": "attempts/medical_structure_attempt_1791376736_16931_138.json"
+    },
+    "medical_access": {
+      "passed": true,
+      "exit_code": 0,
+      "check_wall_seconds": 50.1625,
+      "runner_total_wall_seconds": 53.9847,
+      "clock_mode": "fixed60",
+      "errors": [],
+      "receipt": "runs/medical_access_receipt001.json",
+      "log": "runs/medical_access_run001.log",
+      "attempt": "attempts/medical_access_attempt_1791376790_04478_122.json"
+    },
+    "medical_cart": {
+      "passed": false,
+      "exit_code": -15,
+      "check_wall_seconds": 61.5962,
+      "runner_total_wall_seconds": 65.439,
+      "clock_mode": "fixed60",
+      "errors": [
+        "ERROR: medical_cart: Actual cart did not complete the meaningful room turn"
+      ],
+      "receipt": "runs/medical_cart_failed_receipt001.json",
+      "log": "runs/medical_cart_run001.log",
+      "attempt": "attempts/medical_cart_attempt_1791376844_13593_176.json"
+    },
+    "lighting_budget": {
+      "passed": true,
+      "exit_code": 0,
+      "check_wall_seconds": 37.6851,
+      "runner_total_wall_seconds": 41.5088,
+      "clock_mode": "fixed60",
+      "errors": [],
+      "receipt": "runs/lighting_budget_receipt001.json",
+      "log": "runs/lighting_budget_run001.log"
+    }
+  },
+  "structure_metrics": {
+    "actual_clear_aperture_rays": 12,
+    "actual_closure_rays": 3,
+    "door_operation_accepted": false,
+    "exact_actual_contact_triangles": 36,
+    "exact_actual_render_chunks": 14,
+    "housed_sources": 34,
+    "source_room_mesh_bounds": 448,
+    "static_source_open_privacy_leaves": 16,
+    "triage_clear_aperture_rays": 81,
+    "triage_exact_actual_contact_triangles": 12,
+    "triage_exact_actual_render_chunks": 15,
+    "triage_housed_sources": 23,
+    "triage_marker_backed_sources": 8,
+    "triage_mesh_backed_sources": 15,
+    "triage_room_ids": [
+      "D05_directory_01_triage_pod_01",
+      "D05_directory_01_triage_pod_02",
+      "D05_directory_01_triage_pod_03",
+      "D05_directory_01_triage_pod_04",
+      "D05_directory_01_triage_pod_05",
+      "D05_directory_01_triage_pod_06",
+      "D05_directory_01_triage_pod_07",
+      "D05_directory_01_triage_pod_08"
+    ],
+    "unchanged_imported_core_meshes": 852
+  },
+  "access_metrics": {
+    "initial_supported_arrivals": 1,
+    "later_player_teleports": 0,
+    "ordinary_walking_frames": 8174,
+    "scope": "Ordinary player-input waiting/support round trip. Diagnostic cart turn and species/robot fit are separate.",
+    "triage_scope": "Same supported player walks all eight real source-open rooms and returns to the core; no later arrival or teleport.",
+    "triage_walked_room_ids": [
+      "D05_directory_01_triage_pod_01",
+      "D05_directory_01_triage_pod_05",
+      "D05_directory_01_triage_pod_02",
+      "D05_directory_01_triage_pod_06",
+      "D05_directory_01_triage_pod_03",
+      "D05_directory_01_triage_pod_07",
+      "D05_directory_01_triage_pod_04",
+      "D05_directory_01_triage_pod_08"
+    ],
+    "walked_metres": 371.75469284039
+  },
+  "cart_failure": {
+    "status": "FAIL",
+    "detail": "Actual cart did not complete the meaningful room turn",
+    "physics_frames": 8818,
+    "support_samples": 7471,
+    "failure_callsite": "tests/validate_medical_cart.gd:206 -> verify_actual_room_cart_pose:172, after requested quarter-turn",
+    "preceding_assertion": "Cart center within 0.45m of source room inside_xyz passed immediately before failed yaw-error <0.10rad assertion",
+    "room_id": "Not recorded by the original failed attempt; do not infer a specific pod",
+    "actual_pose": "Not recorded by the original failed attempt",
+    "next_gate": "Separate observation-only unchanged-test diagnostic is required before deciding route, source geometry or timing cause; original failure remains retained"
+  },
+  "input_preservation": {
+    "checked_files": 5163,
+    "unchanged_files": 5160,
+    "changed_files": 3,
+    "unexpected_or_missing": 0,
+    "receipt": "FINAL_SOURCE_PRESERVATION.json",
+    "recovered_wip_status_before_evidence_copy": "23 modified tracked paths and 241 untracked paths; no index entries"
+  },
+  "commit_scope_note": "All three production files already contained a recovered static-leaf metadata/scope correction before this receiver fix. Exact preimages and EXACT_DIFF.patch isolate the new change. A scoped commit of these files also records that pre-existing predecessor; leave the other 261 recovered WIP paths untouched and retain the whole-WIP checkpoint as the tested-tree identity.",
+  "historical_records": "MANIFEST.json records original patch preparation with production_applied false and engine_executed false; ROOT_APPLY_RECEIPT.json and this SUMMARY record subsequent root application and actual runtime results without rewriting those earlier records.",
+  "limits": [
+    "Focused checks only; no current full aggregate pass",
+    "Cart room-turn remains failed; no all-eight-room loaded-cart acceptance",
+    "Privacy leaves remain source-open and static; door operation is false",
+    "No new visual review, geometry/layout/controller/optics edits, medical gameplay, clinical capacity, species/robot fit, freehand comfort or target-GPU acceptance",
+    "Independent retention of the completed evidence package must be verified separately after publication"
+  ]
+}

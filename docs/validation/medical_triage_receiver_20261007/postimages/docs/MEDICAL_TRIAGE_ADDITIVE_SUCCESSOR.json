@@ -1,0 +1,1008 @@
+{
+  "schema": 1,
+  "owner_id": "D05_connected_triage_wing_floor",
+  "scope": "Bounded connected triage architecture. All old records/identities preserved; static source-open doors; no clinical capacity or gameplay.",
+  "predecessors": {
+    "tests/validate_medical_cart.gd": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/tests/validate_medical_cart.gd",
+      "sha256": "c7c27c0523c8d3b8cb29fec4acb4e7a53877ed6ed3c481f9ac94f1151ad9c78b"
+    },
+    "tests/medical_test_scene.gd": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/tests/medical_test_scene.gd",
+      "sha256": "8b7b7fab22e8635e4c275550b32715b81e6a97aeb3d31a2548e450f47aa8f151"
+    },
+    "tests/validate_medical_access.gd": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/tests/validate_medical_access.gd",
+      "sha256": "eab58da2af2182f8d798ad316189a1ff5c4f2d4b890f14c28920bce15ea97cea"
+    },
+    "tests/validate_medical_structure.gd": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/tests/validate_medical_structure.gd",
+      "sha256": "785bc60655a960e836928aafcb330120a1f06d13ee25f32cc5bc05e3a9d4c756"
+    },
+    "tests/medical_successor_guard.gd": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/tests/medical_successor_guard.gd",
+      "sha256": "482d1ab218cc4e1851ebb300a257e3b3773982cd72f8a1e2b5930ffb8b6a743a"
+    },
+    "scripts/medical_welcome.gd": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/scripts/medical_welcome.gd",
+      "sha256": "0d0f85f60f7bb6b35e8d8e4563320e83568b2d4a2c83039da443996141dbe0a1"
+    },
+    "docs/LAYOUT_COMPILE_CHECKS.json": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/docs/LAYOUT_COMPILE_CHECKS.json",
+      "sha256": "e282286c29c5d0391fc1513f0474252681a8147257297c1da5a141d466ab8dab"
+    },
+    "data/spatial_layout.json": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/data/spatial_layout.json",
+      "sha256": "68f7a29809a4e7daa8c2e91b6697d7931090add7553cd4770d6b6707e216de20"
+    },
+    "tools/compile_layout.py": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/tools/compile_layout.py",
+      "sha256": "56039837bf2fcf1cb446a4db9f3d4e41e8d1f0089f4a24714f9f6ac7cad46eff"
+    },
+    "data/generated/structural_meshes.json": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/data/generated/structural_meshes.json",
+      "sha256": "0ed7436e0fc0bf64b7f26094e91881aba3bc75f8477a2360b773ccce6f7fd96d"
+    },
+    "data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json",
+      "sha256": "7e3a101f9eb86cd0ed6aec041d48357974b0527b8106b78a2290d0b375f46dae"
+    },
+    "data/architecture/packages/medical/D05_MEDICAL_SECTION_PLAN.json": {
+      "retained_path": "data/architecture/packages/medical/triage010/retained_current/data/architecture/packages/medical/D05_MEDICAL_SECTION_PLAN.json",
+      "sha256": "5beec59019332bc5023ba4a6e58d0aaa5e19dbb64272eaffe4105ed12a5b222a"
+    }
+  },
+  "postimage_sha256": {
+    "docs/MEDICAL_ADDITIVE_SUCCESSOR.json": "c73c114a211a08da44c70385767dc5f278343a433cd18fd947c4bb4be78c7297",
+    "scripts/ship.gd": "c28a07bbc7ea4462295c401da4aa96fb02b6ac13a86bfb6bb5b60d830209641a",
+    "data/architecture/FORWARD_PUBLIC_CORE.json": "84362bc5de96690a166b475f639fb7707245aa38433a78ce4aeabf412043cb58",
+    "tools/validate.py": "401d94ed323d617fb81937620121bd2cd77b00d5fb8ef0bca33db23c53fa17ef",
+    "scripts/structural_floor_builder.gd": "449ab410664b83e243537a899ae46e658b9cd1b3f18de19b2e2690933854bf01",
+    "scripts/player.gd": "990e825c7cd08d2b26760be7436c342188a85fbe1cc60f704fd009ac1d71aaa3",
+    "scripts/physics_tether.gd": "8a721666a96b496e989687b8c98c6467db4bd74e2b25ecb06bb316f8d46aa2cb",
+    "scripts/cleaning_cart.gd": "f0d8e2aef841737eb80cd1f9cee1104fa91491a57ae881fa8bf7fbbee1e593b0",
+    "scripts/cleaning_bottle.gd": "30d0daaf512ee9b0a0979b2d9dc77b657378c88997aeaced4eeb1d906b62341f",
+    "scripts/commons_lift.gd": "e53ba41f6e066ff2454340d2b73ad405a2db301f8176046f7741b401fcc8e203",
+    "scripts/primary_atrium_core.gd": "be0343c75deb23f4de21cf76b59f6bad7d10b19c6ffdbd84485d1d5f0988324f",
+    "scripts/lighting_budget.gd": "73366f8831a591473355c9d15a5de8ae0e63c59bdf3b8cd1b1abe7663d1f7337",
+    "scripts/presentation.gd": "a63a5c72f76af86cb81d2bb7dcc2bf9330d0a0583862c2fea5e7f487f5628b1c",
+    "data/design_contract.json": "8790e9997fd39c6ddd8a494f665b2a438a7160ec31f343bd858ce5c036fa569a",
+    "data/programme_ledger.json": "7ad90e3322ef4ce666262d0d27e191f85bf7480fc6e5f2c312f5574c69ca2366",
+    "tools/medical_incremental_preservation.py": "bdd02b066ba87d1dc317af3eec1c1b697bf0f39db8769ed3ac59372b937cd7e2",
+    "data/architecture/packages/medical/MEDICAL_COMPILER_PROOF.json": "d635118faf4b48d27fc24f83fb09f6119910b363722c04d936faabfdfc549ba3",
+    "tests/grand_pool_feature_builder_successor.gd": "6377f61167457bce63c408fc19de8be16b8b3bb8198fd7a1b9dad46f495112a7",
+    "tests/theater_stair_ship_successor.gd": "18bb798eaa160bbe3c5e91466546c0663aeee79a86a29449daa81f8d2690aacd",
+    "tests/validate_medical_cart.gd": "e0aafd2a24a78629a599e4d452f0b810f5ee4f57850323d69a40900e5fc1fe60",
+    "tests/medical_test_scene.gd": "ceeb6f7217927d706673b262a8b1d77693246aec57435dded147237499dd0ff8",
+    "tests/validate_medical_access.gd": "0d717f2ece64a58bb7afddda62fea33b1a37afe406b6a16ba08ef6e628b9dd70",
+    "tests/validate_medical_structure.gd": "ed41f93259c1dd589d6ce90a00d4c12d28191ff979b14d8c108066a9dcff66a5",
+    "tests/medical_successor_guard.gd": "2d5466a841d6c610b3c907d39e81280ea29bdd9b8015763682924821d814902b",
+    "scripts/medical_welcome.gd": "a020edf39e4f7a0f1bb14f9b1f0342f4f06c28567f39694e624f1a1cb4b006aa",
+    "docs/LAYOUT_COMPILE_CHECKS.json": "917215a7eb444b088ed13eb5d8ce008fbadac64c25c0e24f1bf3dd7cb2b21a35",
+    "data/spatial_layout.json": "1f6a002a3e706717249e60113ab616a3af33f94e31ecf048b88e7cd6d8db8e10",
+    "tools/compile_layout.py": "4f1f5caa8b78c3db285f6f639c6b82676b1986d444bd8929c25b50eb7d913fa7",
+    "tools/medical_triage_incremental_preservation.py": "f8855058d04ddaf550798becae887c5f566522de85f0fd7dd0e6d0a53f6e9b21",
+    "tests/fixtures/medical_triage_010_expectations.json": "9ce224a8f0c660e7c72b4be7886164c9910791961d18a4869811852a6f495b3e",
+    "assets/models/D05_medical_connected_architecture_010.glb": "de676ccc9f1778ec4e1538f5a435542cc69981da9ee9aad4e6c6d294a09a38d0",
+    "data/generated/structural_meshes.json": "abeb58d10dfbd47286ee2538862ec066d85905609ce2fc69c98698f8ae96b340",
+    "data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json": "8ec50f1235c77d876a029fea3f2388572acde8fe6895fa285517aec945fee343",
+    "data/architecture/packages/medical/D05_MEDICAL_SECTION_PLAN.json": "6c884ff5461d8b88668f41d6bcee5ba49bddb5f4684c87c5fb47054a082fbae8",
+    "data/architecture/packages/medical/triage010/.gdignore": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/architecture/packages/medical/triage010/MEDICAL_TRIAGE_COMPILER_PROOF.json": "2d34c27e68d27c9dc5258e868d2d62ac3b55332103586003330379c69455bd3d",
+    "data/architecture/packages/medical/triage010/retained_current/tests/validate_medical_cart.gd": "c7c27c0523c8d3b8cb29fec4acb4e7a53877ed6ed3c481f9ac94f1151ad9c78b",
+    "data/architecture/packages/medical/triage010/retained_current/tests/medical_test_scene.gd": "8b7b7fab22e8635e4c275550b32715b81e6a97aeb3d31a2548e450f47aa8f151",
+    "data/architecture/packages/medical/triage010/retained_current/tests/validate_medical_access.gd": "eab58da2af2182f8d798ad316189a1ff5c4f2d4b890f14c28920bce15ea97cea",
+    "data/architecture/packages/medical/triage010/retained_current/tests/validate_medical_structure.gd": "785bc60655a960e836928aafcb330120a1f06d13ee25f32cc5bc05e3a9d4c756",
+    "data/architecture/packages/medical/triage010/retained_current/tests/medical_successor_guard.gd": "482d1ab218cc4e1851ebb300a257e3b3773982cd72f8a1e2b5930ffb8b6a743a",
+    "data/architecture/packages/medical/triage010/retained_current/scripts/medical_welcome.gd": "0d0f85f60f7bb6b35e8d8e4563320e83568b2d4a2c83039da443996141dbe0a1",
+    "data/architecture/packages/medical/triage010/retained_current/docs/LAYOUT_COMPILE_CHECKS.json": "e282286c29c5d0391fc1513f0474252681a8147257297c1da5a141d466ab8dab",
+    "data/architecture/packages/medical/triage010/retained_current/data/spatial_layout.json": "68f7a29809a4e7daa8c2e91b6697d7931090add7553cd4770d6b6707e216de20",
+    "data/architecture/packages/medical/triage010/retained_current/tools/compile_layout.py": "56039837bf2fcf1cb446a4db9f3d4e41e8d1f0089f4a24714f9f6ac7cad46eff",
+    "data/architecture/packages/medical/triage010/retained_current/data/generated/structural_meshes.json": "0ed7436e0fc0bf64b7f26094e91881aba3bc75f8477a2360b773ccce6f7fd96d",
+    "data/architecture/packages/medical/triage010/retained_current/data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json": "7e3a101f9eb86cd0ed6aec041d48357974b0527b8106b78a2290d0b375f46dae",
+    "data/architecture/packages/medical/triage010/retained_current/data/architecture/packages/medical/D05_MEDICAL_SECTION_PLAN.json": "5beec59019332bc5023ba4a6e58d0aaa5e19dbb64272eaffe4105ed12a5b222a"
+  },
+  "exact_patch_reversals": {
+    "tests/medical_test_scene.gd": [
+      {
+        "before": "var data: Dictionary\n",
+        "after": "var data: Dictionary\nvar triage_evidence: Dictionary\nvar triage_proof: Dictionary\n",
+        "count": 1
+      },
+      {
+        "before": "\tdata=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))\n",
+        "after": "\tdata=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))\n\tif not require(data.has(\"source_evidence_file\") and data.has(\"source_evidence_sha256\"),\"Pinned source010 test evidence required\"): return\n\tif not require(FileAccess.get_sha256(str(data.source_evidence_file))==str(data.source_evidence_sha256),\"Source010 expectations changed\"): return\n\ttriage_evidence=JSON.parse_string(FileAccess.get_file_as_string(str(data.source_evidence_file)))\n",
+        "count": 1
+      },
+      {
+        "before": "\tvar proof: Dictionary=load(\"res://tests/medical_successor_guard.gd\").validate_current(floors)\n",
+        "after": "\ttriage_proof=load(\"res://tests/medical_triage_successor_guard.gd\").validate_current(floors)\n\tif not require(bool(triage_proof.get(\"validation_completed\",false)),\"Authenticated complete triage successor proof did not complete\"): return\n\tvar proof: Dictionary=load(\"res://tests/medical_successor_guard.gd\").validate_current(floors)\n",
+        "count": 1
+      }
+    ],
+    "tests/validate_medical_structure.gd": [
+      {
+        "before": "\tmetrics[\"housed_sources\"]=lights.size()\n\treturn true\n",
+        "after": "\tmetrics[\"housed_sources\"]=lights.size()\n\tif not verify_connected_triage(): return false\n\treturn true\n\n\nfunc source_bounds(record: Dictionary) -> bool:\n\tvar node: MeshInstance3D=exact_node(built,str(record.name)) as MeshInstance3D\n\tif not require(node!=null and node.visible and node.mesh!=null,\"Source room mesh missing: \"+str(record.name)): return false\n\tvar actual: AABB=node.global_transform*node.get_aabb()\n\tvar lower: Vector3=xyz(record.bounds_world_xyz[0]);var upper: Vector3=xyz(record.bounds_world_xyz[1])\n\tif not require(actual.position.distance_to(lower)<.003 and actual.end.distance_to(upper)<.003,\"Actual source bounds changed: \"+str(record.name)): return false\n\treturn true\n\nfunc source_static_leaf(name: String) -> bool:\n\tvar node: MeshInstance3D=exact_node(built,name) as MeshInstance3D\n\tif not require(node!=null and node.get_script()==null,\"Static source-open leaf required: \"+name): return false\n\tvar source_scope: Dictionary=node.get_meta(\"extras\",{})\n\tif not require(str(source_scope.get(\"proposed_state\",\"\"))==\"source_open_inward\" and not bool(source_scope.get(\"operational_acceptance\",true)),\"Leaf operation scope changed: \"+name): return false\n\tif not require(node.get_meta(\"source_open_static\",false)==true and node.get_meta(\"operation_enabled\",true)==false and str(node.get_meta(\"programme_child\",\"\"))==str(source_scope.get(\"programme_child\",\"\")),\"Explicit runtime static leaf scope/child identity changed: \"+name): return false\n\tvar contacts: Array=node.find_children(\"*\",\"CollisionShape3D\",true,false)\n\tif not require(contacts.size()==1,\"Static leaf must retain one faithful contact: \"+name): return false\n\tvar contact: CollisionShape3D=contacts[0] as CollisionShape3D\n\tif not require(not contact.disabled and contact.get_parent() is StaticBody3D and contact.shape is ConcavePolygonShape3D,\"Leaf contact replaced or disabled: \"+name): return false\n\tvar body: StaticBody3D=contact.get_parent() as StaticBody3D\n\tif not require((body.collision_layer & 1)!=0,\"Static leaf must remain in the real world collision layer\"): return false\n\tvar expected: ConcavePolygonShape3D=node.mesh.create_trimesh_shape()\n\tif not require(triangle_multiset((contact.shape as ConcavePolygonShape3D).get_faces(),contact.global_transform)==triangle_multiset(expected.get_faces(),node.global_transform),\"Static leaf contact differs from its exact native triangles: \"+name): return false\n\treturn true\n\nfunc architecture_hit(a: Vector3,b: Vector3,label: String) -> bool:\n\tvar hit: Dictionary=ray(a,b,exclusions())\n\treturn require(not hit.is_empty() and built.is_ancestor_of(hit.collider),\"Missing actual medical closure/receiver: \"+label)\n\nfunc verify_connected_triage() -> bool:\n\tif not require(str(data.architecture_file)==str(triage_evidence.architecture_file) and FileAccess.get_sha256(\"res://assets/models/\"+str(data.architecture_file))==str(triage_evidence.architecture_sha256),\"Source010 architecture reference/hash changed\"): return false\n\tif not require(str(data.new_floor_owner)==\"D05_connected_triage_wing_floor\" and float(data.new_floor_area_m2)==544.0,\"Additive triage floor identity/area changed\"): return false\n\tif not require(str(data.floor_owner)==\"D05_forward_waiting_support_floor\" and float(data.floor_area_m2)==350.72,\"Retained welcome floor identity/area changed\"): return false\n\tvar baseline: Dictionary=load(\"res://tests/medical_successor_guard.gd\").validate_current(floors)\n\tif not require(baseline.new_compiled_record==triage_evidence.old_compiled_record,\"Every old welcome slab record field must remain exact\"): return false\n\tvar added: Dictionary=triage_proof.new_compiled_record\n\tif not require(str(added.id)==str(data.new_floor_owner) and float(added.structural_area_m2)==544.0 and float(added.floor_y)==21.0 and float(added.thickness)==.24,\"Authenticated added slab differs from source010 proposal\"): return false\n\tvar old_contact_count: Variant=metrics.exact_actual_contact_triangles\n\tvar old_chunk_count: Variant=metrics.exact_actual_render_chunks\n\tif not verify_actual_slab(added): return false\n\tmetrics[\"triage_exact_actual_contact_triangles\"]=metrics.exact_actual_contact_triangles\n\tmetrics[\"triage_exact_actual_render_chunks\"]=metrics.exact_actual_render_chunks\n\tmetrics[\"exact_actual_contact_triangles\"]=old_contact_count\n\tmetrics[\"exact_actual_render_chunks\"]=old_chunk_count\n\tif not require(str(data.root_name)==\"D05MedicalWelcome_WIP\" and str(data.persistent_id)==\"d05_forward_medical_welcome_001\" and str(built.get_meta(\"persistent_id\",\"\"))==str(data.persistent_id),\"Original persistent medical root identity changed\"): return false\n\tif not require(data.children.size()==10 and data.children.slice(0,2)==triage_evidence.baseline_children,\"Keep both old child identities before the exact eight added rooms\"): return false\n\tfor child in triage_evidence.baseline_children:\n\t\tif not require(data.children.has(child),\"Original medical child removed\"): return false\n\tfor record in triage_evidence.baseline_instances:\n\t\tvar expected: Dictionary=record\n\t\tfor successor in triage_evidence.waiting_pose_successors:\n\t\t\tif str(successor.name)==str(record.name):\n\t\t\t\tif not require(successor.before==record,\"Explicit source-pose predecessor changed\"): return false\n\t\t\t\texpected=successor.after\n\t\tif not require(data.instances.has(expected),\"Original component identity/record or explicitly source-pinned waiting pose changed\"): return false\n\tfor record in triage_evidence.baseline_fixtures:\n\t\tif not require(data.fixtures.has(record),\"Original housed source record changed\"): return false\n\tfor key in triage_evidence.baseline_routes:\n\t\tif not require(data.physical_test_routes[key]==triage_evidence.baseline_routes[key],\"Original passing route changed: \"+str(key)): return false\n\tif not require(data.instances.size()==74 and data.fixtures.size()==34 and data.rooms.size()==8 and data.door_sources.size()==8,\"Exact source010 room/assembly/source roster required\"): return false\n\tfor record in triage_evidence.admission_mesh_bounds:\n\t\tif not source_bounds(record): return false\n\tvar clear: int=0\n\tfor x in [-12.75,-11.0,-9.25]:\n\t\tfor y in [21.05,22.2,23.95]:\n\t\t\tif not require(ray(Vector3(x,y,-449.60),Vector3(x,y,-450.20),exclusions()).is_empty(),\"Former admission end wall still obstructs the real3.6x3.0 opening\"): return false\n\t\t\tclear+=1\n\tfor point in [Vector3(-13.4,22,-449.88),Vector3(-8.6,22,-449.88),Vector3(-11,24.6,-449.88)]:\n\t\tif not architecture_hit(point+Vector3.BACK*.35,point-Vector3.BACK*.35,\"admission shoulders/lintel\"): return false\n\tfor x in [-12.65,-11.0,-9.35]:\n\t\tfor i in range(51):\n\t\t\tvar z: float=-449.5-float(i)*.02\n\t\t\tvar owner: String=\"\" if absf(z+450.0)<.00001 else (str(data.floor_owner) if z> -450.0 else str(data.new_floor_owner))\n\t\t\tif not support_at(Vector3(x,21,z),owner): return false\n\tvar checked_ids: Dictionary={}\n\tvar mesh_count: int=0\n\tfor value in triage_evidence.rooms:\n\t\tvar room: Dictionary=value;var id: String=str(room.programme_child)\n\t\tif not require(not checked_ids.has(id) and data.children.has(id) and data.rooms.has(room.source_room) and data.door_sources.has(room.door_source),\"Exact source room/door identity changed: \"+id): return false\n\t\tchecked_ids[id]=true\n\t\tfor record in room.mesh_bounds:\n\t\t\tif not source_bounds(record): return false\n\t\t\tmesh_count+=1\n\t\tfor leaf in room.door_meshes:\n\t\t\tif not source_static_leaf(str(leaf)): return false\n\t\tvar portal: Vector3=xyz(room.portal_xyz)\n\t\tfor dx in [-1.74,0.0,1.74]:\n\t\t\tfor height in [.06,1.2,2.59]:\n\t\t\t\tvar p: Vector3=portal+Vector3(dx,height,0)\n\t\t\t\tif not require(ray(p+Vector3.BACK*.35,p-Vector3.BACK*.35,exclusions()).is_empty(),\"Source-open room portal obstructed: \"+id): return false\n\t\t\t\tclear+=1\n\t\tif not architecture_hit(portal+Vector3(0,3.0,.35),portal+Vector3(0,3.0,-.35),id+\" portal header\"): return false\n\t\tvar inside: Vector3=xyz(room.inside_xyz)\n\t\tif not support_at(inside,str(data.new_floor_owner)): return false\n\t\tif not architecture_hit(inside+Vector3.UP*3.9,inside+Vector3.UP*4.76,id+\" vault bearing\"): return false\n\t\t# The upper surface must stay below the actual D06 datum; roof geometry\n\t\t# must neither replace a compiler slab nor open a false inter-deck route.\n\t\tfor record in room.mesh_bounds:\n\t\t\tif not require(float(record.bounds_world_xyz[1][1])<=25.731,\"Medical source exceeds its reviewed roof envelope\"): return false\n\tvar marker_backed_sources: int=0\n\tvar mesh_backed_sources: int=0\n\tfor source in triage_evidence.new_fixture_sources:\n\t\tvar matches: Array=[]\n\t\tfor fixture in data.fixtures:\n\t\t\tif str(fixture.name)==str(source.name): matches.append(fixture)\n\t\tif not require(matches.size()==1,\"New fixture identity must resolve exactly once: \"+str(source.name)): return false\n\t\tvar fixture: Dictionary=matches[0]\n\t\tif not require(xyz(fixture.position_xyz).distance_to(xyz(source.position_xyz))<.001 and xyz(fixture.aim_xyz).distance_to(xyz(source.aim_xyz))<.001,\"New source exit/aim diverged from the fitted source: \"+str(source.name)): return false\n\t\tvar owner: Node3D=built.get_node_or_null(str(fixture.source_owner)) as Node3D\n\t\tif not require(owner!=null,\"Exact fixture owner missing: \"+str(fixture.name)): return false\n\t\tvar source_nodes: Array[Node3D]=[]\n\t\tfor candidate in owner.find_children(\"*\",\"Node3D\",true,false):\n\t\t\tif str(candidate.name)==str(fixture.source_node): source_nodes.append(candidate as Node3D)\n\t\tif not require(source_nodes.size()==1,\"Fixture source must resolve exactly once inside its owner: \"+str(fixture.name)): return false\n\t\tvar fixture_source: Node3D=source_nodes[0]\n\t\tvar receiver: MeshInstance3D=fixture_source as MeshInstance3D\n\t\tif receiver==null:\n\t\t\t# AST-GST-002 preserves its authored receiver marker separately from the\n\t\t\t# consolidated visible diffuser. Keep the marker as the light's source.\n\t\t\tif not require(str(fixture.source_node)==\"WALL_DIFFUSER\" and str(owner.get_meta(\"catalogue_id\",\"\"))==\"AST-GST-002\" and str(owner.get_meta(\"catalogue_file\",\"\"))==\"AST-GST-002.glb\",\"Only the authored sconce receiver marker may resolve to a separate mesh\"): return false\n\t\t\tvar marker: Dictionary=fixture_source.get_meta(\"extras\",{})\n\t\t\tif not require(str(marker.get(\"marker_kind\",\"\"))==\"physical_receiver\" and str(marker.get(\"physical_part\",\"\"))==\"wall_recessed_diffuser\",\"Exact physical receiver marker semantics required\"): return false\n\t\t\tvar candidates: Array[MeshInstance3D]=[]\n\t\t\tfor value in owner.find_children(\"*\",\"MeshInstance3D\",true,false):\n\t\t\t\tvar mesh: MeshInstance3D=value as MeshInstance3D\n\t\t\t\tvar extra: Dictionary=mesh.get_meta(\"extras\",{})\n\t\t\t\tvar parts: Variant=JSON.parse_string(str(extra.get(\"semantic_parts\",\"[]\")))\n\t\t\t\tif parts is Array and parts.has(str(marker.physical_part)): candidates.append(mesh)\n\t\t\tif not require(candidates.size()==1,\"Physical receiver part must resolve to exactly one modeled mesh\"): return false\n\t\t\treceiver=candidates[0]\n\t\t\tif not require(str(receiver.name)==\"AST-GST-002__oatmeal_weave\" and str(receiver.get_meta(\"extras\",{}).get(\"material_role\",\"\"))==\"oatmeal_weave\",\"Wrong authored sconce diffuser mesh\"): return false\n\t\t\tmarker_backed_sources+=1\n\t\telse:\n\t\t\tmesh_backed_sources+=1\n\t\tif not require(receiver!=null and receiver.is_visible_in_tree() and receiver.mesh!=null,\"Visible modeled fixture receiver missing\"): return false\n\t\tvar receiver_box: AABB=receiver.global_transform*receiver.get_aabb()\n\t\tif fixture_source!=receiver and not require(receiver_box.grow(.001).has_point(fixture_source.global_position),\"Receiver marker is detached from its authored visible diffuser\"): return false\n\t\tif not require(receiver_box.grow(.35).has_point(xyz(fixture.position_xyz)),\"Light floats away from its actual fixture housing\"): return false\n\t\tvar light: SpotLight3D=built.find_child((\"MedicalSource_\"+str(fixture.name)).validate_node_name(),true,false) as SpotLight3D\n\t\tif not require(light!=null and str(light.get_meta(\"source_node\",\"\"))==str(fixture_source.get_path()),\"Runtime light has the wrong authored source identity\"): return false\n\tif not require(marker_backed_sources==8 and mesh_backed_sources==15,\"Exact eight marker-backed and fifteen mesh-backed triage sources required\"): return false\n\tmetrics[\"triage_marker_backed_sources\"]=marker_backed_sources;metrics[\"triage_mesh_backed_sources\"]=mesh_backed_sources\n\t# Staff closure stays capped. Never turn a sign into an operational route.\n\tif not architecture_hit(Vector3(-42.3,22,-458),Vector3(-41.6,22,-458),\"west unconnected staff cap\"): return false\n\tmetrics[\"triage_room_ids\"]=checked_ids.keys();metrics[\"source_room_mesh_bounds\"]=mesh_count\n\tmetrics[\"static_source_open_privacy_leaves\"]=16;metrics[\"triage_clear_aperture_rays\"]=clear\n\tmetrics[\"triage_housed_sources\"]=23;metrics[\"door_operation_accepted\"]=false\n\treturn true\n",
+        "count": 1
+      }
+    ],
+    "tests/validate_medical_access.gd": [
+      {
+        "before": "\tmetrics[\"ordinary_walking_frames\"]=walked_frames;metrics[\"walked_metres\"]=travelled_m\n",
+        "after": "\tif not await walk_connected_triage(): return false\n\tmetrics[\"ordinary_walking_frames\"]=walked_frames;metrics[\"walked_metres\"]=travelled_m\n",
+        "count": 1
+      },
+      {
+        "before": "\tmetrics[\"scope\"]=\"Ordinary player-input waiting/support round trip. Diagnostic cart turn and species/robot fit are separate.\"\n\treturn true\n",
+        "after": "\tmetrics[\"scope\"]=\"Ordinary player-input waiting/support round trip. Diagnostic cart turn and species/robot fit are separate.\"\n\tmetrics[\"triage_scope\"]=\"Same supported player walks all eight real source-open rooms and returns to the core; no later arrival or teleport.\"\n\treturn true\n\n\nfunc walk_connected_triage() -> bool:\n\t# Continue from the original completed core/waiting/support round trip.\n\t# Every room visit uses the same production capsule and ordinary W input.\n\tif not await route([[-11,21,-432],[-11,21,-446],[-11,21,-458]]): return false\n\tvar seen: Array[String]=[]\n\tfor index in [0,4,1,5,2,6,3,7]:\n\t\tvar room: Dictionary=triage_evidence.rooms[index]\n\t\tif not await route([room.corridor_xyz,room.portal_xyz]): return false\n\t\tif not await route(room.walk_points_xyz): return false\n\t\tif not support_at(xyz(room.walk_points_xyz[-1]),str(data.new_floor_owner)): return false\n\t\tseen.append(str(room.programme_child))\n\t\tif not await route([room.portal_xyz,room.corridor_xyz]): return false\n\tif not await route([[-11,21,-458],[-11,21,-446],[-11,21,-432],[-5.4,21,-432]]): return false\n\tif not require(seen.size()==8,\"Walk every exact triage child before returning to the original core\"): return false\n\tmetrics[\"triage_walked_room_ids\"]=seen\n\treturn true\n",
+        "count": 1
+      }
+    ],
+    "tests/validate_medical_cart.gd": [
+      {
+        "before": "var turn_poses: int=0\n",
+        "after": "var turn_poses: int=0\nvar triage_cart_metrics: Dictionary={}\n",
+        "count": 1
+      },
+      {
+        "before": "\tif not await line_to(Vector2(-11,-446),-PI/2): return false\n",
+        "after": "\tif not await line_to(Vector2(-11,-446),-PI/2): return false\n\tif not await drive_connected_triage(): return false\n",
+        "count": 1
+      },
+      {
+        "before": "\treturn true\n",
+        "after": "\tmetrics.merge(triage_cart_metrics)\n\treturn true\n\n\nfunc verify_actual_room_cart_pose(room: Dictionary,yaw: float) -> bool:\n\tvar inside: Vector3=xyz(room.inside_xyz)\n\tif not require(Vector2(cart.global_position.x-inside.x,cart.global_position.z-inside.z).length()<.45,\"Original cart did not reach the actual room manoeuvre position\"): return false\n\tif not require(absf(wrapf(cart.global_rotation.y-yaw,-PI,PI))<.10,\"Actual cart did not complete the meaningful room turn\"): return false\n\tif not require(absf(cart.global_position.y-21.0)<.12 and cart.global_basis.y.dot(Vector3.UP)>.98,\"Original loaded cart tipped or left the room slab\"): return false\n\t# Keep the original probe30mm support clearance; X/Z and yaw are actual.\n\tprobe.check_pose(ship,actor,cart,Vector3(cart.global_position.x,21.03,cart.global_position.z),cart.global_rotation.y,21.0)\n\tif failed: return false\n\tfor wheel in probe.wheel_specs:\n\t\tvar q: Array=wheel.center\n\t\tvar foot: Vector3=cart.global_transform*Vector3(float(q[0]),0,float(q[2]))\n\t\tif not support_at(Vector3(foot.x,21,foot.z),str(data.new_floor_owner)): return false\n\tif not support_at(Vector3(actor.global_position.x,21,actor.global_position.z),str(data.new_floor_owner)): return false\n\treturn product_state()\n\nfunc drive_connected_triage() -> bool:\n\t# The same original loaded cart, products and production force/torque tether\n\t# detour from the existing admission junction, then resume its old return.\n\t# No second fixture placement or new supported arrival is introduced.\n\tif not require(cart.get(\"driver\")==actor,\"Preserved original tether required at the admission junction\"): return false\n\tif not await turn_to(0): return false\n\tif not await line_to(Vector2(-11,-458),0): return false\n\tif not await turn_to(PI/2): return false\n\tvar seen: Array[String]=[]\n\tvar actual_turns: Array=[]\n\tfor index in [0,4,1,5,2,6,3,7]:\n\t\tvar room: Dictionary=triage_evidence.rooms[index]\n\t\tvar corridor: Vector3=xyz(room.corridor_xyz);var inside: Vector3=xyz(room.inside_xyz)\n\t\tif not await line_to(Vector2(corridor.x,corridor.z),PI/2): return false\n\t\tvar yaw: float=float(room.inward_yaw)\n\t\tif not await turn_to(yaw): return false\n\t\tif not await line_to(Vector2(inside.x,inside.z),yaw): return false\n\t\tif not verify_actual_room_cart_pose(room,yaw): return false\n\t\tvar before_yaw: float=cart.global_rotation.y\n\t\t# Ninety degrees is a real room turn. A full in-place U-turn is not\n\t\t# claimed from the source's3.6m square: the operator needs3.84m diameter.\n\t\tif not await turn_to(yaw+PI/2): return false\n\t\tif not verify_actual_room_cart_pose(room,yaw+PI/2): return false\n\t\tvar turned: float=absf(wrapf(cart.global_rotation.y-before_yaw,-PI,PI))\n\t\tif not require(turned>deg_to_rad(80.0),\"Actual cart yaw changed less than eighty degrees inside room\"): return false\n\t\tactual_turns.append({\"room_id\":str(room.programme_child),\"actual_turn_radians\":turned,\"actual_position\":str(cart.global_position)})\n\t\tif not await turn_to(yaw): return false\n\t\tif not verify_actual_room_cart_pose(room,yaw): return false\n\t\t# Reverse out through the tested physical opening, still force-guided.\n\t\tif not await line_to(Vector2(corridor.x,corridor.z),yaw): return false\n\t\tif not await turn_to(PI/2): return false\n\t\tseen.append(str(room.programme_child))\n\tif not require(seen.size()==8,\"The original loaded cart must visit and turn inside all eight rooms\"): return false\n\tif not await line_to(Vector2(-11,-458),PI/2): return false\n\tif not await turn_to(PI): return false\n\tif not await line_to(Vector2(-11,-446),PI): return false\n\tif not await turn_to(-PI/2): return false\n\tif not product_state(): return false\n\ttriage_cart_metrics[\"triage_loaded_cart_room_ids\"]=seen;triage_cart_metrics[\"triage_actual_room_turns\"]=actual_turns\n\ttriage_cart_metrics[\"triage_door_operation_accepted\"]=false;triage_cart_metrics[\"triage_full_in_place_uturn_accepted\"]=false\n\ttriage_cart_metrics[\"triage_scope\"]=\"Same original four-product cart; actual ninety-degree room turn and back-out in each source-open room, followed by physical return to the core. No body/robot capacity or freehand comfort acceptance.\"\n\treturn true\n",
+        "count": 1,
+        "position": "file_suffix"
+      }
+    ],
+    "scripts/medical_welcome.gd": [
+      {
+        "before": "\tvar root: Node3D = Node3D.new()\n",
+        "after": "\tassert(data.floor_owners == [data.floor_owner,data.new_floor_owner])\n\tvar triage_floor: Node3D = ship.find_child(str(data.new_floor_owner),true,false) as Node3D\n\tassert(triage_floor!=null and str(triage_floor.get_meta(\"region_id\"))==str(data.new_floor_owner),\"Connected triage floor must exist before the admission wall is opened\")\n\tvar root: Node3D = Node3D.new()\n",
+        "count": 1
+      },
+      {
+        "before": "\troot.set_meta(\"floor_owner\",str(data.floor_owner))\n",
+        "after": "\troot.set_meta(\"floor_owner\",str(data.floor_owner))\n\troot.set_meta(\"triage_floor_owner\",str(data.new_floor_owner))\n\troot.set_meta(\"privacy_leaves_static\",true)\n",
+        "count": 1
+      },
+      {
+        "before": "Unfinished connected waiting/support approach; source furnishings and open architectural threshold only",
+        "after": "Unfinished connected waiting/support and eight-pod triage wing; static source-open privacy leaves, no clinical operation",
+        "count": 1
+      },
+      {
+        "before": "medical_forward_welcome_candidate_20261006/006",
+        "after": "medical_forward_welcome_candidate_20261006/triage010",
+        "count": 1
+      },
+      {
+        "before": "\tfor value in data.instances:\n",
+        "after": "\tfor value in data.door_sources:\n\t\tvar doorway: Dictionary = value\n\t\tvar number: String = str(doorway.programme_child).get_slice(\"_pod_\",1)\n\t\tfor side in [\"left\",\"right\"]:\n\t\t\tvar leaf: Node3D = exact_node(architecture,\"TRIAGE_\"+number+\"_privacy_leaf_\"+side)\n\t\t\tleaf.set_meta(\"programme_child\",str(doorway.programme_child))\n\t\t\tleaf.set_meta(\"source_open_static\",true)\n\t\t\tleaf.set_meta(\"operation_enabled\",false)\n\tfor value in data.instances:\n",
+        "count": 1
+      }
+    ],
+    "tools/compile_layout.py": [
+      {
+        "before": "from medical_incremental_preservation import preserve_medical_predecessor\n",
+        "after": "from medical_incremental_preservation import preserve_medical_predecessor\nfrom medical_triage_incremental_preservation import preserve_medical_triage_successor\n",
+        "count": 1
+      },
+      {
+        "before": "outputs,medical_preservation=preserve_medical_predecessor(root,layout,elevations,owned,outputs)\n",
+        "after": "outputs,medical_preservation,triage_preservation=preserve_medical_triage_successor(root,layout,elevations,owned,outputs,preserve_medical_predecessor)\n",
+        "count": 1
+      },
+      {
+        "before": "checks['medical_additive_preservation']=medical_preservation\n",
+        "after": "checks['medical_additive_preservation']=medical_preservation\nchecks['medical_triage_additive_preservation']=triage_preservation\n",
+        "count": 1
+      }
+    ],
+    "tests/medical_successor_guard.gd": [
+      {
+        "before": "extends RefCounted\n",
+        "after": "extends RefCounted\nconst TRIAGE_RETAINED = preload(\"res://tests/medical_triage_successor_guard.gd\")\n",
+        "count": 1
+      },
+      {
+        "before": "\tvar source := FileAccess.get_file_as_string(\"res://\"+relative)\n",
+        "after": "\tvar source := TRIAGE_RETAINED.retained_text(\"res://\"+relative)\n",
+        "count": 1
+      },
+      {
+        "before": "\treturn FileAccess.get_sha256(\"res://\"+relative)\n",
+        "after": "\treturn TRIAGE_RETAINED.retained_sha256(\"res://\"+relative)\n",
+        "count": 1
+      },
+      {
+        "before": "FileAccess.get_file_as_string(\"res://data/spatial_layout.json\")",
+        "after": "TRIAGE_RETAINED.retained_text(\"res://data/spatial_layout.json\")",
+        "count": 1
+      },
+      {
+        "before": "FileAccess.get_file_as_string(\"res://data/generated/structural_meshes.json\")",
+        "after": "TRIAGE_RETAINED.retained_text(\"res://data/generated/structural_meshes.json\")",
+        "count": 1
+      },
+      {
+        "before": "FileAccess.get_file_as_string(\"res://docs/LAYOUT_COMPILE_CHECKS.json\")",
+        "after": "TRIAGE_RETAINED.retained_text(\"res://docs/LAYOUT_COMPILE_CHECKS.json\")",
+        "count": 1
+      },
+      {
+        "before": "\treturn FileAccess.get_file_as_string(path if path.begins_with(\"res://\") else \"res://\"+path)\n",
+        "after": "\treturn TRIAGE_RETAINED.retained_text(path)\n",
+        "count": 1
+      },
+      {
+        "before": "\treturn FileAccess.get_sha256(path if path.begins_with(\"res://\") else \"res://\"+path)\n",
+        "after": "\treturn TRIAGE_RETAINED.retained_sha256(path)\n",
+        "count": 1
+      },
+      {
+        "before": "static func retained_compiled(value: Dictionary) -> Dictionary:\n\t_ensure()\n\tif not checked: return {}\n",
+        "after": "static func retained_compiled(value: Dictionary) -> Dictionary:\n\t_ensure()\n\tif not checked: return {}\n\tif TRIAGE_RETAINED.is_current_compiled(value): value=TRIAGE_RETAINED.retained_compiled(value)\n",
+        "count": 1
+      },
+      {
+        "before": "static func retained_floor_children(floors: Node) -> Array:\n\t_ensure()\n\tif not checked: return []\n",
+        "after": "static func retained_floor_children(floors: Node) -> Array:\n\t_ensure()\n\tif not checked: return []\n\tvar current_owners: Array[Node]=[]\n\tcurrent_owners.assign(TRIAGE_RETAINED.retained_floor_children(floors))\n",
+        "count": 1
+      },
+      {
+        "before": "if floors==null or floors.get_child_count()!=272:",
+        "after": "if floors==null or current_owners.size()!=272:",
+        "count": 1
+      },
+      {
+        "before": "for owner in floors.get_children():",
+        "after": "for owner in current_owners:",
+        "count": 1
+      }
+    ]
+  },
+  "new_layout_record": {
+    "id": "D05_connected_triage_wing_floor",
+    "authoring_owner": "medical_forward_welcome",
+    "deck": "D05",
+    "boundary": [
+      [
+        -42,
+        -466
+      ],
+      [
+        -8,
+        -466
+      ],
+      [
+        -8,
+        -450
+      ],
+      [
+        -42,
+        -450
+      ]
+    ],
+    "holes": [],
+    "thickness": 0.24,
+    "material_role": "guest_floor",
+    "status": "Proposed connected eight-pod source-only architecture; no clinical operation or capacity acceptance",
+    "priority": -12,
+    "render_cell_m": 8
+  },
+  "new_compiled_record": {
+    "id": "D05_connected_triage_wing_floor",
+    "deck": "D05",
+    "floor_y": 21.0,
+    "thickness": 0.24,
+    "triangles": [
+      [
+        [
+          -8.0,
+          -450.0
+        ],
+        [
+          -8.0,
+          -466.0
+        ],
+        [
+          -42.0,
+          -466.0
+        ]
+      ],
+      [
+        [
+          -42.0,
+          -466.0
+        ],
+        [
+          -42.0,
+          -450.0
+        ],
+        [
+          -8.0,
+          -450.0
+        ]
+      ]
+    ],
+    "rings": [
+      [
+        [
+          -8.0,
+          -450.0
+        ],
+        [
+          -42.0,
+          -450.0
+        ],
+        [
+          -42.0,
+          -466.0
+        ],
+        [
+          -8.0,
+          -466.0
+        ]
+      ]
+    ],
+    "structural_area_m2": 544.0,
+    "render_chunks": [
+      {
+        "id": "cell_-6_-59",
+        "triangles": [
+          [
+            [
+              -42.0,
+              -466.0
+            ],
+            [
+              -42.0,
+              -464.0
+            ],
+            [
+              -40.0,
+              -464.0
+            ]
+          ],
+          [
+            [
+              -40.0,
+              -464.0
+            ],
+            [
+              -40.0,
+              -466.0
+            ],
+            [
+              -42.0,
+              -466.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-6_-58",
+        "triangles": [
+          [
+            [
+              -42.0,
+              -456.0
+            ],
+            [
+              -40.0,
+              -456.0
+            ],
+            [
+              -40.0,
+              -464.0
+            ]
+          ],
+          [
+            [
+              -40.0,
+              -464.0
+            ],
+            [
+              -42.0,
+              -464.0
+            ],
+            [
+              -42.0,
+              -456.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-6_-57",
+        "triangles": [
+          [
+            [
+              -42.0,
+              -450.0
+            ],
+            [
+              -40.0,
+              -450.0
+            ],
+            [
+              -40.0,
+              -456.0
+            ]
+          ],
+          [
+            [
+              -40.0,
+              -456.0
+            ],
+            [
+              -42.0,
+              -456.0
+            ],
+            [
+              -42.0,
+              -450.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-5_-59",
+        "triangles": [
+          [
+            [
+              -40.0,
+              -466.0
+            ],
+            [
+              -40.0,
+              -464.0
+            ],
+            [
+              -32.0,
+              -464.0
+            ]
+          ],
+          [
+            [
+              -32.0,
+              -464.0
+            ],
+            [
+              -32.0,
+              -466.0
+            ],
+            [
+              -40.0,
+              -466.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-5_-58",
+        "triangles": [
+          [
+            [
+              -40.0,
+              -464.0
+            ],
+            [
+              -40.0,
+              -456.0
+            ],
+            [
+              -32.0,
+              -456.0
+            ]
+          ],
+          [
+            [
+              -32.0,
+              -456.0
+            ],
+            [
+              -32.0,
+              -464.0
+            ],
+            [
+              -40.0,
+              -464.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-5_-57",
+        "triangles": [
+          [
+            [
+              -32.0,
+              -450.0
+            ],
+            [
+              -32.0,
+              -456.0
+            ],
+            [
+              -40.0,
+              -456.0
+            ]
+          ],
+          [
+            [
+              -40.0,
+              -456.0
+            ],
+            [
+              -40.0,
+              -450.0
+            ],
+            [
+              -32.0,
+              -450.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-4_-59",
+        "triangles": [
+          [
+            [
+              -32.0,
+              -466.0
+            ],
+            [
+              -32.0,
+              -464.0
+            ],
+            [
+              -24.0,
+              -464.0
+            ]
+          ],
+          [
+            [
+              -24.0,
+              -464.0
+            ],
+            [
+              -24.0,
+              -466.0
+            ],
+            [
+              -32.0,
+              -466.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-4_-58",
+        "triangles": [
+          [
+            [
+              -32.0,
+              -464.0
+            ],
+            [
+              -32.0,
+              -456.0
+            ],
+            [
+              -24.0,
+              -456.0
+            ]
+          ],
+          [
+            [
+              -24.0,
+              -456.0
+            ],
+            [
+              -24.0,
+              -464.0
+            ],
+            [
+              -32.0,
+              -464.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-4_-57",
+        "triangles": [
+          [
+            [
+              -24.0,
+              -450.0
+            ],
+            [
+              -24.0,
+              -456.0
+            ],
+            [
+              -32.0,
+              -456.0
+            ]
+          ],
+          [
+            [
+              -32.0,
+              -456.0
+            ],
+            [
+              -32.0,
+              -450.0
+            ],
+            [
+              -24.0,
+              -450.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-3_-59",
+        "triangles": [
+          [
+            [
+              -24.0,
+              -466.0
+            ],
+            [
+              -24.0,
+              -464.0
+            ],
+            [
+              -16.0,
+              -464.0
+            ]
+          ],
+          [
+            [
+              -16.0,
+              -464.0
+            ],
+            [
+              -16.0,
+              -466.0
+            ],
+            [
+              -24.0,
+              -466.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-3_-58",
+        "triangles": [
+          [
+            [
+              -24.0,
+              -464.0
+            ],
+            [
+              -24.0,
+              -456.0
+            ],
+            [
+              -16.0,
+              -456.0
+            ]
+          ],
+          [
+            [
+              -16.0,
+              -456.0
+            ],
+            [
+              -16.0,
+              -464.0
+            ],
+            [
+              -24.0,
+              -464.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-3_-57",
+        "triangles": [
+          [
+            [
+              -16.0,
+              -450.0
+            ],
+            [
+              -16.0,
+              -456.0
+            ],
+            [
+              -24.0,
+              -456.0
+            ]
+          ],
+          [
+            [
+              -24.0,
+              -456.0
+            ],
+            [
+              -24.0,
+              -450.0
+            ],
+            [
+              -16.0,
+              -450.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-2_-59",
+        "triangles": [
+          [
+            [
+              -8.0,
+              -466.0
+            ],
+            [
+              -16.0,
+              -466.0
+            ],
+            [
+              -16.0,
+              -464.0
+            ]
+          ],
+          [
+            [
+              -16.0,
+              -464.0
+            ],
+            [
+              -8.0,
+              -464.0
+            ],
+            [
+              -8.0,
+              -466.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-2_-58",
+        "triangles": [
+          [
+            [
+              -8.0,
+              -464.0
+            ],
+            [
+              -16.0,
+              -464.0
+            ],
+            [
+              -16.0,
+              -456.0
+            ]
+          ],
+          [
+            [
+              -16.0,
+              -456.0
+            ],
+            [
+              -8.0,
+              -456.0
+            ],
+            [
+              -8.0,
+              -464.0
+            ]
+          ]
+        ]
+      },
+      {
+        "id": "cell_-2_-57",
+        "triangles": [
+          [
+            [
+              -8.0,
+              -456.0
+            ],
+            [
+              -16.0,
+              -456.0
+            ],
+            [
+              -16.0,
+              -450.0
+            ]
+          ],
+          [
+            [
+              -16.0,
+              -450.0
+            ],
+            [
+              -8.0,
+              -450.0
+            ],
+            [
+              -8.0,
+              -456.0
+            ]
+          ]
+        ]
+      }
+    ],
+    "status": "Proposed connected eight-pod source-only architecture; no clinical operation or capacity acceptance",
+    "material_role": "guest_floor"
+  },
+  "plan_revisions": {
+    "D05_directory_01_triage_pod_01": {
+      "before": {
+        "id": "D05_directory_01_triage_pod_01",
+        "role": "triage_pod",
+        "rect_x0_x1_z0_z1": [
+          -21.0,
+          -14.0,
+          -462.0,
+          -456.0
+        ],
+        "dimensions_m": [
+          7,
+          6
+        ],
+        "quantity_status": "accepted source-required architecture fit target, not built or occupancy capacity"
+      },
+      "after": {
+        "id": "D05_directory_01_triage_pod_01",
+        "role": "triage_pod",
+        "rect_x0_x1_z0_z1": [
+          -21.0,
+          -14.0,
+          -466.0,
+          -460.0
+        ],
+        "dimensions_m": [
+          7,
+          6
+        ],
+        "quantity_status": "accepted source-required architecture fit target, not built or occupancy capacity"
+      }
+    },
+    "D05_directory_01_triage_pod_02": {
+      "before": {
+        "id": "D05_directory_01_triage_pod_02",
+        "role": "triage_pod",
+        "rect_x0_x1_z0_z1": [
+          -28.0,
+          -21.0,
+          -462.0,
+          -456.0
+        ],
+        "dimensions_m": [
+          7,
+          6
+        ],
+        "quantity_status": "accepted source-required architecture fit target, not built or occupancy capacity"
+      },
+      "after": {
+        "id": "D05_directory_01_triage_pod_02",
+        "role": "triage_pod",
+        "rect_x0_x1_z0_z1": [
+          -28.0,
+          -21.0,
+          -466.0,
+          -460.0
+        ],
+        "dimensions_m": [
+          7,
+          6
+        ],
+        "quantity_status": "accepted source-required architecture fit target, not built or occupancy capacity"
+      }
+    },
+    "D05_directory_01_triage_pod_03": {
+      "before": {
+        "id": "D05_directory_01_triage_pod_03",
+        "role": "triage_pod",
+        "rect_x0_x1_z0_z1": [
+          -35.0,
+          -28.0,
+          -462.0,
+          -456.0
+        ],
+        "dimensions_m": [
+          7,
+          6
+        ],
+        "quantity_status": "accepted source-required architecture fit target, not built or occupancy capacity"
+      },
+      "after": {
+        "id": "D05_directory_01_triage_pod_03",
+        "role": "triage_pod",
+        "rect_x0_x1_z0_z1": [
+          -35.0,
+          -28.0,
+          -466.0,
+          -460.0
+        ],
+        "dimensions_m": [
+          7,
+          6
+        ],
+        "quantity_status": "accepted source-required architecture fit target, not built or occupancy capacity"
+      }
+    },
+    "D05_directory_01_triage_pod_04": {
+      "before": {
+        "id": "D05_directory_01_triage_pod_04",
+        "role": "triage_pod",
+        "rect_x0_x1_z0_z1": [
+          -42.0,
+          -35.0,
+          -462.0,
+          -456.0
+        ],
+        "dimensions_m": [
+          7,
+          6
+        ],
+        "quantity_status": "accepted source-required architecture fit target, not built or occupancy capacity"
+      },
+      "after": {
+        "id": "D05_directory_01_triage_pod_04",
+        "role": "triage_pod",
+        "rect_x0_x1_z0_z1": [
+          -42.0,
+          -35.0,
+          -466.0,
+          -460.0
+        ],
+        "dimensions_m": [
+          7,
+          6
+        ],
+        "quantity_status": "accepted source-required architecture fit target, not built or occupancy capacity"
+      }
+    }
+  },
+  "new_programme_metadata": {
+    "status": "Bounded architecture installation candidate; physical acceptance pending",
+    "source_manifest_sha256": "89537be6a54993f930e26769dd7a8fabd1d691a7586348e8c52362d6a170f10c",
+    "moved_unbuilt_children": [
+      "D05_directory_01_triage_pod_01",
+      "D05_directory_01_triage_pod_02",
+      "D05_directory_01_triage_pod_03",
+      "D05_directory_01_triage_pod_04"
+    ],
+    "cross_corridor_rect_x0_x1_z0_z1": [
+      -42,
+      -14,
+      -460,
+      -456
+    ],
+    "admission_extension_rect_x0_x1_z0_z1": [
+      -14,
+      -8,
+      -466,
+      -450
+    ],
+    "minimum_clear_route_m": 3.6,
+    "floor_owner": "D05_connected_triage_wing_floor",
+    "source_ceiling_top_y_m": 25.73,
+    "rear_staff_connection": "Physically capped; original clean/soiled decisions unchanged"
+  }
+}

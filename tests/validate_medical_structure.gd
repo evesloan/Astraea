@@ -148,7 +148,9 @@ func source_bounds(record: Dictionary) -> bool:
 func source_static_leaf(name: String) -> bool:
 	var node: MeshInstance3D=exact_node(built,name) as MeshInstance3D
 	if not require(node!=null and node.get_script()==null,"Static source-open leaf required: "+name): return false
-	if not require(str(node.get_meta("proposed_state",""))=="source_open_inward" and not bool(node.get_meta("operational_acceptance",true)),"Leaf operation scope changed: "+name): return false
+	var source_scope: Dictionary=node.get_meta("extras",{})
+	if not require(str(source_scope.get("proposed_state",""))=="source_open_inward" and not bool(source_scope.get("operational_acceptance",true)),"Leaf operation scope changed: "+name): return false
+	if not require(node.get_meta("source_open_static",false)==true and node.get_meta("operation_enabled",true)==false and str(node.get_meta("programme_child",""))==str(source_scope.get("programme_child","")),"Explicit runtime static leaf scope/child identity changed: "+name): return false
 	var contacts: Array=node.find_children("*","CollisionShape3D",true,false)
 	if not require(contacts.size()==1,"Static leaf must retain one faithful contact: "+name): return false
 	var contact: CollisionShape3D=contacts[0] as CollisionShape3D
@@ -233,6 +235,8 @@ func verify_connected_triage() -> bool:
 		# must neither replace a compiler slab nor open a false inter-deck route.
 		for record in room.mesh_bounds:
 			if not require(float(record.bounds_world_xyz[1][1])<=25.731,"Medical source exceeds its reviewed roof envelope"): return false
+	var marker_backed_sources: int=0
+	var mesh_backed_sources: int=0
 	for source in triage_evidence.new_fixture_sources:
 		var matches: Array=[]
 		for fixture in data.fixtures:
@@ -240,13 +244,40 @@ func verify_connected_triage() -> bool:
 		if not require(matches.size()==1,"New fixture identity must resolve exactly once: "+str(source.name)): return false
 		var fixture: Dictionary=matches[0]
 		if not require(xyz(fixture.position_xyz).distance_to(xyz(source.position_xyz))<.001 and xyz(fixture.aim_xyz).distance_to(xyz(source.aim_xyz))<.001,"New source exit/aim diverged from the fitted source: "+str(source.name)): return false
-		var owner: Node=built.get_node(str(fixture.source_owner))
-		var receiver: MeshInstance3D=exact_node(owner,str(fixture.source_node)) as MeshInstance3D
-		if not require(receiver!=null and receiver.visible and receiver.mesh!=null,"Visible modeled fixture receiver missing"): return false
+		var owner: Node3D=built.get_node_or_null(str(fixture.source_owner)) as Node3D
+		if not require(owner!=null,"Exact fixture owner missing: "+str(fixture.name)): return false
+		var source_nodes: Array[Node3D]=[]
+		for candidate in owner.find_children("*","Node3D",true,false):
+			if str(candidate.name)==str(fixture.source_node): source_nodes.append(candidate as Node3D)
+		if not require(source_nodes.size()==1,"Fixture source must resolve exactly once inside its owner: "+str(fixture.name)): return false
+		var fixture_source: Node3D=source_nodes[0]
+		var receiver: MeshInstance3D=fixture_source as MeshInstance3D
+		if receiver==null:
+			# AST-GST-002 preserves its authored receiver marker separately from the
+			# consolidated visible diffuser. Keep the marker as the light's source.
+			if not require(str(fixture.source_node)=="WALL_DIFFUSER" and str(owner.get_meta("catalogue_id",""))=="AST-GST-002" and str(owner.get_meta("catalogue_file",""))=="AST-GST-002.glb","Only the authored sconce receiver marker may resolve to a separate mesh"): return false
+			var marker: Dictionary=fixture_source.get_meta("extras",{})
+			if not require(str(marker.get("marker_kind",""))=="physical_receiver" and str(marker.get("physical_part",""))=="wall_recessed_diffuser","Exact physical receiver marker semantics required"): return false
+			var candidates: Array[MeshInstance3D]=[]
+			for value in owner.find_children("*","MeshInstance3D",true,false):
+				var mesh: MeshInstance3D=value as MeshInstance3D
+				var extra: Dictionary=mesh.get_meta("extras",{})
+				var parts: Variant=JSON.parse_string(str(extra.get("semantic_parts","[]")))
+				if parts is Array and parts.has(str(marker.physical_part)): candidates.append(mesh)
+			if not require(candidates.size()==1,"Physical receiver part must resolve to exactly one modeled mesh"): return false
+			receiver=candidates[0]
+			if not require(str(receiver.name)=="AST-GST-002__oatmeal_weave" and str(receiver.get_meta("extras",{}).get("material_role",""))=="oatmeal_weave","Wrong authored sconce diffuser mesh"): return false
+			marker_backed_sources+=1
+		else:
+			mesh_backed_sources+=1
+		if not require(receiver!=null and receiver.is_visible_in_tree() and receiver.mesh!=null,"Visible modeled fixture receiver missing"): return false
 		var receiver_box: AABB=receiver.global_transform*receiver.get_aabb()
+		if fixture_source!=receiver and not require(receiver_box.grow(.001).has_point(fixture_source.global_position),"Receiver marker is detached from its authored visible diffuser"): return false
 		if not require(receiver_box.grow(.35).has_point(xyz(fixture.position_xyz)),"Light floats away from its actual fixture housing"): return false
 		var light: SpotLight3D=built.find_child(("MedicalSource_"+str(fixture.name)).validate_node_name(),true,false) as SpotLight3D
-		if not require(light!=null and str(light.get_meta("source_node",""))==str(receiver.get_path()),"Runtime light has the wrong real receiver"): return false
+		if not require(light!=null and str(light.get_meta("source_node",""))==str(fixture_source.get_path()),"Runtime light has the wrong authored source identity"): return false
+	if not require(marker_backed_sources==8 and mesh_backed_sources==15,"Exact eight marker-backed and fifteen mesh-backed triage sources required"): return false
+	metrics["triage_marker_backed_sources"]=marker_backed_sources;metrics["triage_mesh_backed_sources"]=mesh_backed_sources
 	# Staff closure stays capped. Never turn a sign into an operational route.
 	if not architecture_hit(Vector3(-42.3,22,-458),Vector3(-41.6,22,-458),"west unconnected staff cap"): return false
 	metrics["triage_room_ids"]=checked_ids.keys();metrics["source_room_mesh_bounds"]=mesh_count
