@@ -1,7 +1,7 @@
 extends "res://tests/medical_test_scene.gd"
 # One explicit supported arrival, then original player input only. No cart driving.
 const FIXTURE := "res://tests/fixtures/sports_care_access005.json"
-const FIXTURE_SHA := "35a52d327558cd8648543658b8d27b0318b75f0640cd1b9cd6ebbc10a839e20d"
+const FIXTURE_SHA := "9345beba879ec99737f86981e8c1c07631b1e28449ca2f8c2a30708c8e0d2e55"
 const RUNTIME := "res://data/architecture/D07_SPORTS_CARE_RECEIVING.json"
 const INFORMATION := "res://data/architecture/packages/sports_care/INFORMATION_TARGETS.json"
 var room: Node3D
