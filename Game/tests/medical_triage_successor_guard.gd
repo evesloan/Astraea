@@ -153,7 +153,7 @@ static func validate_current(floors: Node) -> Dictionary:
 # BOTANICAL_EXACT_SECTION_BEGIN
 # One bounded extension of this existing consumer, not a new adapter chain.
 const BOTANICAL_PROOF := "res://data/architecture/packages/botanical_court/BOTANICAL_RUNTIME_PROOF.json"
-const BOTANICAL_PROOF_SHA := "5a83b6c7241d5087f44182980a8836e3faee668fb68d1f57c83df33c8339678e"
+const BOTANICAL_PROOF_SHA := "be4f1f97e4c573ce4f53ec29e1560ceaaea9c6447be6749e59b9cc02c38a8c1d"
 static var botanical_checked := false
 static var botanical_proof: Dictionary = {}
 static var botanical_predecessor_text: Dictionary = {}

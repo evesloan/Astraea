@@ -6,7 +6,8 @@
     "data/generated/structural_meshes.json",
     "docs/LAYOUT_COMPILE_CHECKS.json",
     "tools/compile_layout.py",
-    "scripts/ship.gd"
+    "scripts/ship.gd",
+    "tools/validate.py"
   ],
   "current_sha256": {
     "data/spatial_layout.json": "c9b14259376e81ceaae6e56f2d4303cac1a1d27d8af74739838df5da8d5b8039",
@@ -32,7 +33,11 @@
     "docs/MEDICAL_ADDITIVE_SUCCESSOR.json": "c73c114a211a08da44c70385767dc5f278343a433cd18fd947c4bb4be78c7297",
     "data/design_contract.json": "8790e9997fd39c6ddd8a494f665b2a438a7160ec31f343bd858ce5c036fa569a",
     "data/architecture/packages/botanical_court/BOTANICAL_IMPORT_NAME_MAP.json": "28382f64a8cdde3c9be6cc31d78264979f6a9b7a50e0caf1bee20264fc6f781e",
-    "assets/models/AST-ATR-001_botanical_receiving_closed002.glb.import": "e1707c8a048787c2474e592386deb928806010e3ed038979ecb9222e53db8a54"
+    "assets/models/AST-ATR-001_botanical_receiving_closed002.glb.import": "e1707c8a048787c2474e592386deb928806010e3ed038979ecb9222e53db8a54",
+    "tests/fixtures/botanical_receiving_acceptance010.json": "8b2f830ac96fc565bde7f17528471b45997e5c5cd18a1ae1c2e67f792e36d682",
+    "tests/validate_botanical_receiving_access.gd": "aff80220e54f4e8ac4f46d8c0d8f25f4951b3a40af00458545e5871a6476d3a1",
+    "tools/validate.py": "d790d51d974384a7ce208f1e25ead23cb78b45f1946733d834b264d8d9b8b1fc",
+    "data/architecture/packages/botanical_court/retained/validate_before_botanical_acceptance010.py": "401d94ed323d617fb81937620121bd2cd77b00d5fb8ef0bca33db23c53fa17ef"
   },
   "predecessors": {
     "data/spatial_layout.json": {
@@ -58,6 +63,10 @@
     "tests/medical_triage_successor_guard.gd": {
       "retained_path": "data/architecture/packages/botanical_court/retained/medical_triage_successor_guard.gd",
       "sha256": "5bbad02fe086eedca47b9db58b05bf717bb76ba06ceea87f3b7a9ec69d04f162"
+    },
+    "tools/validate.py": {
+      "retained_path": "data/architecture/packages/botanical_court/retained/validate_before_botanical_acceptance010.py",
+      "sha256": "401d94ed323d617fb81937620121bd2cd77b00d5fb8ef0bca33db23c53fa17ef"
     }
   },
   "added_owner_ids": [
@@ -446,6 +455,23 @@
       {
         "before": "\tload(\"res://scripts/structural_floor_builder.gd\").build($ShipSpace,stone,ivory,{\"staff_floor\":surface(\"staff_floor\",Color.WHITE)})",
         "after": "\tload(\"res://scripts/structural_floor_builder.gd\").build($ShipSpace,stone,ivory,{\"staff_floor\":surface(\"staff_floor\",Color.WHITE)})\n\tmodel($ShipSpace,\"AST-ATR-001_botanical_receiving_closed002.glb\",\"BotanicalCourtReceivingClosedInterim\",Vector3.ZERO)",
+        "count": 1
+      }
+    ],
+    "tools/validate.py": [
+      {
+        "before": "    if label in ['medical_structure','medical_access','medical_cart']:\n",
+        "after": "    if label in ['medical_structure','medical_access','medical_cart','botanical_receiving_access']:\n",
+        "count": 1
+      },
+      {
+        "before": "    if label == 'medical_cart': frame_budget='30000'\n",
+        "after": "    if label == 'medical_cart': frame_budget='30000'\n    if label == 'botanical_receiving_access': frame_budget='12000'\n",
+        "count": 1
+      },
+      {
+        "before": "commands.sort(key=lambda entry: entry[0] != 'import')\n",
+        "after": "commands += [('botanical_receiving_access', ['--script', 'res://tests/validate_botanical_receiving_access.gd'])]\ncommands.sort(key=lambda entry: entry[0] != 'import')\n",
         "count": 1
       }
     ]
