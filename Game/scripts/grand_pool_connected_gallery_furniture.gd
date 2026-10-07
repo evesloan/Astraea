@@ -19,3 +19,5 @@ static func build(parent: Node3D, ship: Node3D, data: Dictionary) -> void:
 		item.set_meta("static_service_fit_only", true)
 	parent.set_meta("scope", "Connected25.7m D09 gallery: orientation garden, curved rest group and market receiving; native art review pending")
 	assert(root.get_child_count() == 2)
+	load("res://scripts/grand_pool_receiving_stock.gd").build(root,ship,data)
+	load("res://scripts/grand_pool_gallery_floor_finish.gd").build(ship,data)

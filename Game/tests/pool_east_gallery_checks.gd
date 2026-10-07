@@ -1,7 +1,7 @@
 extends RefCounted
 # One installed-area check. Reuses the already verified raw-array codec reader.
 const CONTRACT := "res://data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json"
-const REVIEWED_CONTRACT_SHA := "ea1df244ad7e80fa45a471afda87a581a7cd923d3d50a1af403a828ece1d9dc7"
+const REVIEWED_CONTRACT_SHA := "82631987ecfe47a015a65134b0557bcd2781f1739e088d14bc0753c58c2b89d3"
 var tree: SceneTree
 var ship: Node3D
 var area: Node3D
@@ -111,7 +111,7 @@ func geometry() -> void:
 	assert(meshes.size()==declared_mesh_count and area.get_child_count()==data.assemblies.size()+data.plants.size()+data.fixtures.size()+1)
 func furniture() -> void:
 	var group := area.get_node("ConnectedGalleryFurniture") as Node3D
-	assert(group != null and group.get_child_count() == data.furniture.size())
+	assert(group != null and group.get_child_count() == data.furniture.size()+1)
 	for entry in data.furniture:
 		var spec: Dictionary = data.models[str(entry.asset)]
 		var path: String = "res://assets/models/"+str(spec.file)
@@ -243,6 +243,8 @@ func check(owner: SceneTree,world: Node3D) -> void:
 	assert(FileAccess.get_sha256(CONTRACT)==REVIEWED_CONTRACT_SHA,"Approved gallery contract changed; omitted assemblies cannot pass a derived census")
 	data=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT));area=ship.find_child(str(data.root_name),true,false)
 	assert(area!=null);geometry();furniture();support();routes();sightlines();light_checks()
+	load("res://tests/pool_receiving_finish_checks.gd").check(self)
+	load("res://tests/pool_gallery_floor_finish_checks.gd").check(self)
 	for path in data.walk_paths:
 		await owner.settle(v3(path.points_xyz[0]))
 		for point in path.points_xyz:await owner.walk_to(v3(point))
