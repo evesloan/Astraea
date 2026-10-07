@@ -1,0 +1,46 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SCRIPT ERROR: Assertion failed: Unreviewed triage postimage: tests/grand_pool_feature_builder_successor.gd
+          at: _ensure (res://tests/medical_triage_successor_guard.gd:19)
+          GDScript backtrace (most recent call first):
+              [0] _ensure (res://tests/medical_triage_successor_guard.gd:19)
+              [1] retained_sha256 (res://tests/medical_triage_successor_guard.gd:89)
+              [2] _d11_entry_medical_sha256 (res://tests/medical_successor_guard.gd:82)
+              [3] _ensure (res://tests/medical_successor_guard.gd:90)
+              [4] retained_text (res://tests/medical_successor_guard.gd:140)
+              [5] check_floor_owners (res://tests/validate_grand_pool_access.gd:63)
+              [6] run (res://tests/validate_grand_pool_access.gd:381)
+SCRIPT ERROR: Assertion failed: Unreviewed medical postimage: data/spatial_layout.json
+          at: _ensure (res://tests/medical_successor_guard.gd:90)
+          GDScript backtrace (most recent call first):
+              [0] _ensure (res://tests/medical_successor_guard.gd:90)
+              [1] retained_text (res://tests/medical_successor_guard.gd:140)
+              [2] check_floor_owners (res://tests/validate_grand_pool_access.gd:63)
+              [3] run (res://tests/validate_grand_pool_access.gd:381)
+ERROR: Parse JSON failed. Error at line 0: Unknown error getting token
+   at: parse_string (core/io/json.cpp:624)
+   GDScript backtrace (most recent call first):
+       [0] check_floor_owners (res://tests/validate_grand_pool_access.gd:63)
+       [1] run (res://tests/validate_grand_pool_access.gd:381)
+SCRIPT ERROR: Trying to assign value of type 'Nil' to a variable of type 'Dictionary'.
+          at: check_floor_owners (res://tests/validate_grand_pool_access.gd:63)
+          GDScript backtrace (most recent call first):
+              [0] check_floor_owners (res://tests/validate_grand_pool_access.gd:63)
+              [1] run (res://tests/validate_grand_pool_access.gd:381)
+{"checks": 2, "passed": 1, "clock_mode": "fixed60", "wall_seconds": 41.7938, "failed": [{"check": "grand_pool_access", "passed": false, "exit_code": -15, "errors": ["SCRIPT ERROR: Assertion failed: Unreviewed triage postimage: tests/grand_pool_feature_builder_successor.gd", "SCRIPT ERROR: Assertion failed: Unreviewed medical postimage: data/spatial_layout.json", "ERROR: Parse JSON failed. Error at line 0: Unknown error getting token", "SCRIPT ERROR: Trying to assign value of type 'Nil' to a variable of type 'Dictionary'."], "wall_seconds": 38.3514, "clock_mode": "fixed60"}]}

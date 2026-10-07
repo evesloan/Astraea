@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "check": "import",
+      "passed": true,
+      "exit_code": 0,
+      "errors": [],
+      "wall_seconds": 3.4418,
+      "clock_mode": "editor"
+    },
+    {
+      "check": "grand_pool_access",
+      "passed": false,
+      "exit_code": -15,
+      "errors": [
+        "SCRIPT ERROR: Assertion failed: Unreviewed triage postimage: tests/grand_pool_feature_builder_successor.gd",
+        "SCRIPT ERROR: Assertion failed: Unreviewed medical postimage: data/spatial_layout.json",
+        "ERROR: Parse JSON failed. Error at line 0: Unknown error getting token",
+        "SCRIPT ERROR: Trying to assign value of type 'Nil' to a variable of type 'Dictionary'."
+      ],
+      "wall_seconds": 38.3514,
+      "clock_mode": "fixed60"
+    }
+  ],
+  "wall_seconds": 41.7937,
+  "clock_mode": "fixed60",
+  "scope": "Simulation/assertion execution; not rendering performance, real-input latency or target-platform acceptance"
+}
