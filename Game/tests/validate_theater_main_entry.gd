@@ -173,7 +173,7 @@ func run() -> void:
 	if not await await_pose(false)or not closed_barrier():return
 	if not await call_button(1,true)or not await await_pose(true):return
 	# Walk through the supported existing opening to the interior control.
-	for point in [Vector2(-32.8,-126),Vector2(-36,-126),Vector2(-35.9,-130.8)]:
+	for point in [Vector2(-32.8,-126),Vector2(-36.4,-126),Vector2(-36.4,-127.8),Vector2(-39.2,-127.8),Vector2(-39.2,-130.8),Vector2(-35.9,-130.8)]:
 		if not await walk(point):return
 	if not await call_button(0,false):return
 	if not await advance(45):return
@@ -183,7 +183,7 @@ func run() -> void:
 	# Reversal and completed closure from the other source-backed control.
 	if not await call_button(0,false)or not await await_pose(false)or not closed_barrier():return
 	if not await call_button(0,true)or not await await_pose(true):return
-	for point in [Vector2(-36,-126),Vector2(-34.25,-126)]:
+	for point in [Vector2(-39.2,-130.8),Vector2(-39.2,-127.8),Vector2(-36.4,-127.8),Vector2(-36.4,-126),Vector2(-34.25,-126)]:
 		if not await walk(point):return
 	# Direct inherited interaction is a deliberate occupied-opening test, not a fake input claim.
 	door.interact(actor)
@@ -211,7 +211,7 @@ func run() -> void:
 	var grip: Vector3=cart.global_transform*Vector3(0,0,1.62)
 	if not await walk(Vector2(grip.x,grip.z)):return
 	if not await grip_cart(true)or not await drive_until(-36.4)or not await grip_cart(false):return
-	for point in [Vector2(-36.4,-128.0),Vector2(-35.9,-130.8)]:
+	for point in [Vector2(-36.4,-127.8),Vector2(-39.2,-127.8),Vector2(-39.2,-130.8),Vector2(-35.9,-130.8)]:
 		if not await walk(point):return
 	if not await call_button(0,false)or not await await_pose(false)or not closed_barrier():return
 	if not await call_button(0,true)or not await await_pose(true):return
