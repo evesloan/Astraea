@@ -1,7 +1,7 @@
 extends RefCounted
 # Authenticate a bounded byte-exact inverse before retaining historical proofs.
 const PROOF := "res://docs/GRAND_POOL_CONNECTED_FINISH_SUCCESSOR.json"
-const PROOF_SHA := "fe6b6567669581bd200ed0141ed152bd773d5d70121def3f25f5669415bc184b"
+const PROOF_SHA := "43fc79d9bf38f0b921eacf06a694dc95c5da72a1535a6a1cdcc8db37c4ef878c"
 static func retained_sha256(path: String) -> String:
 	assert(path in ["scripts/grand_pool_east_gallery.gd","data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json","scripts/grand_pool_connected_gallery_furniture.gd"])
 	assert(FileAccess.get_sha256(PROOF)==PROOF_SHA,"Finish inverse proof changed")
