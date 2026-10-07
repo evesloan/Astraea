@@ -1,0 +1,9 @@
+from pathlib import Path
+import json,numpy as np,hashlib
+R=Path(__file__).resolve().parents[1];D=R/'outputs/context_r002';d=json.loads((D/'ASSEMBLY_RECEIPT.json').read_text());p=json.loads((R/'QUIET_GROVE_83_CURRENT_APPLICATION.json').read_text());by={r['unit_id']:r for r in d['instances']};checks=[];sha=lambda f:hashlib.sha256(Path(f).read_bytes()).hexdigest()
+for u in p['units']:
+ m=np.array(by[u['address']]['matrix_world'])
+ for a in u['anchor_bindings']:
+  got=m@np.array(a['source_xyz']+[1]);x,y,z=a['world_xyz'];err=float(max(abs(got[:3]-[x,-z,y])));checks.append({'slot':a['unit_slot_key'],'world_instance_error_m':err,'pass':err<.0001})
+fixtures=d['source_fixture_lights'];report={'all_215_context_anchors_pass':all(x['pass']for x in checks),'slot_checks':checks,'fixture_count':len(fixtures),'all_authored_local_elevations_above_1_5m':all(x['local_blender'][2]>1.5 for x in fixtures),'local_fixture_elevation_range_m':[min(x['local_blender'][2]for x in fixtures),max(x['local_blender'][2]for x in fixtures)],'all_83_house_units_bound_to_current_prototypes':len(by)==83,'prototype_pins_match':all(sha(f)==h for f,h in d['prototype_pins'].items()),'retained_house_unchanged':sha(d['full_house_input'])==d['full_house_input_sha256'],'context_blend_hash_matches':sha(D/'quiet_grove_house_83.blend')==d['source_blend_sha256'],'source_only':True}
+(R/'qa/CONTEXT_TRANSFORMS.json').write_text(json.dumps(report,indent=2)+'\n');print('CONTEXT_83_AND_215_PASS',report['all_215_context_anchors_pass'],report['all_83_house_units_bound_to_current_prototypes'],'FIXTURES',len(fixtures),report['local_fixture_elevation_range_m']);assert all(report[k]for k in ['all_215_context_anchors_pass','all_authored_local_elevations_above_1_5m','all_83_house_units_bound_to_current_prototypes','prototype_pins_match','retained_house_unchanged','context_blend_hash_matches'])
