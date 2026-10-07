@@ -1,7 +1,7 @@
 extends RefCounted
 # Authenticate the whole connected triage addition before projecting its predecessor.
 const PROOF := "res://docs/MEDICAL_TRIAGE_ADDITIVE_SUCCESSOR.json"
-const PROOF_SHA := "47ee4a577df475fdd6873fb3f56cb422105167628e9b261169cc108ecfe36783"
+const PROOF_SHA := "8bf9546e0feaa40f0a858cff20b1809c6093e9193b9845eb59a709106d3fc0fc"
 const OWNER := "D05_connected_triage_wing_floor"
 static var checked := false
 static var proof: Dictionary = {}

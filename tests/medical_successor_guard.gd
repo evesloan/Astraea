@@ -163,7 +163,8 @@ static func retained_compiled(value: Dictionary) -> Dictionary:
 static func retained_floor_children(floors: Node) -> Array:
 	_ensure()
 	if not checked: return []
-	var current_owners: Array=TRIAGE_RETAINED.retained_floor_children(floors)
+	var current_owners: Array[Node]=[]
+	current_owners.assign(TRIAGE_RETAINED.retained_floor_children(floors))
 	if floors==null or current_owners.size()!=272:
 		push_error("Medical successor requires all272 actual owners")
 		return []

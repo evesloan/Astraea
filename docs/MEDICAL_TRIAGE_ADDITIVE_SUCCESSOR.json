@@ -76,16 +76,16 @@
     "tests/medical_test_scene.gd": "ceeb6f7217927d706673b262a8b1d77693246aec57435dded147237499dd0ff8",
     "tests/validate_medical_access.gd": "0d717f2ece64a58bb7afddda62fea33b1a37afe406b6a16ba08ef6e628b9dd70",
     "tests/validate_medical_structure.gd": "f0bd215493bfde834d45b42d58f6804f6e677587f434b621ae6209e216af66b1",
-    "tests/medical_successor_guard.gd": "2ca97c5f65f73a9375faf3259a4274d5e92e6dd1a8dfa9838f3911f28c5c69be",
+    "tests/medical_successor_guard.gd": "2d5466a841d6c610b3c907d39e81280ea29bdd9b8015763682924821d814902b",
     "scripts/medical_welcome.gd": "a020edf39e4f7a0f1bb14f9b1f0342f4f06c28567f39694e624f1a1cb4b006aa",
     "docs/LAYOUT_COMPILE_CHECKS.json": "917215a7eb444b088ed13eb5d8ce008fbadac64c25c0e24f1bf3dd7cb2b21a35",
     "data/spatial_layout.json": "1f6a002a3e706717249e60113ab616a3af33f94e31ecf048b88e7cd6d8db8e10",
     "tools/compile_layout.py": "4f1f5caa8b78c3db285f6f639c6b82676b1986d444bd8929c25b50eb7d913fa7",
     "tools/medical_triage_incremental_preservation.py": "f8855058d04ddaf550798becae887c5f566522de85f0fd7dd0e6d0a53f6e9b21",
-    "tests/fixtures/medical_triage_010_expectations.json": "916a02cec6b28076b9dc0e2475710ce11fb8dc7bc55a7538b5c5e3f8d2300c53",
+    "tests/fixtures/medical_triage_010_expectations.json": "9ce224a8f0c660e7c72b4be7886164c9910791961d18a4869811852a6f495b3e",
     "assets/models/D05_medical_connected_architecture_010.glb": "de676ccc9f1778ec4e1538f5a435542cc69981da9ee9aad4e6c6d294a09a38d0",
     "data/generated/structural_meshes.json": "abeb58d10dfbd47286ee2538862ec066d85905609ce2fc69c98698f8ae96b340",
-    "data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json": "c92eaa71c6d9afe33447b8009e88faa6aae79389bce2acd376e29946d06fcbdc",
+    "data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json": "8ec50f1235c77d876a029fea3f2388572acde8fe6895fa285517aec945fee343",
     "data/architecture/packages/medical/D05_MEDICAL_SECTION_PLAN.json": "6c884ff5461d8b88668f41d6bcee5ba49bddb5f4684c87c5fb47054a082fbae8",
     "data/architecture/packages/medical/triage010/.gdignore": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "data/architecture/packages/medical/triage010/MEDICAL_TRIAGE_COMPILER_PROOF.json": "2d34c27e68d27c9dc5258e868d2d62ac3b55332103586003330379c69455bd3d",
@@ -249,7 +249,7 @@
       },
       {
         "before": "static func retained_floor_children(floors: Node) -> Array:\n\t_ensure()\n\tif not checked: return []\n",
-        "after": "static func retained_floor_children(floors: Node) -> Array:\n\t_ensure()\n\tif not checked: return []\n\tvar current_owners: Array=TRIAGE_RETAINED.retained_floor_children(floors)\n",
+        "after": "static func retained_floor_children(floors: Node) -> Array:\n\t_ensure()\n\tif not checked: return []\n\tvar current_owners: Array[Node]=[]\n\tcurrent_owners.assign(TRIAGE_RETAINED.retained_floor_children(floors))\n",
         "count": 1
       },
       {
