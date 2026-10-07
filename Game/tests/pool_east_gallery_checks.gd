@@ -1,7 +1,7 @@
 extends RefCounted
 # One installed-area check. Reuses the already verified raw-array codec reader.
 const CONTRACT := "res://data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json"
-const REVIEWED_CONTRACT_SHA := "36d40ddae3173bb5df688168cbf6a2c0b4054d10215de90875572e36f690d32c"
+const REVIEWED_CONTRACT_SHA := "ea1df244ad7e80fa45a471afda87a581a7cd923d3d50a1af403a828ece1d9dc7"
 var tree: SceneTree
 var ship: Node3D
 var area: Node3D
