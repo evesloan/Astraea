@@ -170,10 +170,22 @@ const OPTIC_PROBE_NEW_BLOCK := "\t\t\t\tassert(actual != null)\n\t\t\t\tassert_t
 const OPTIC_PROBE_OLD_AIM := "\t\t\tassert((-light.global_basis.z).distance_to(xyz(entry.aim_world).normalized()) < .00001)\n"
 const OPTIC_PROBE_NEW_AIM := "\t\t\tassert((-light.global_basis.z).distance_to(OPTIC.expected_aim(light,entry)) < .00001)\n"
 
+# Exact D11 entry inverses run before the retained optic inverses below.
+const ENTRY_CALL := "\tload(\"res://scripts/theater_d11_entry.gd\").build(parent, _ship)\n"
+const ENTRY_COURT_PREVIOUS_SHA := "753f174f327693d5d96b5e1ea8110a58e65e237625c032f04c7f011ca17b81b3"
+const ENTRY_COURT_CANDIDATE_SHA := "8cbeaf8f9525f7dc8acb4b0d9326c4b09a8b2e08173863610dfe17c5f57bea00"
+const ENTRY_PROBE_PREVIOUS_SHA := "6b8fa8e2e9ce5c2d44c3828aa4c3a65157d59d690a81e6dee29eefdbf1158ee0"
+const ENTRY_PROBE_CANDIDATE_SHA := "9002147b4a8719e901efde10db8b3d2d925d166696cb33ad16238b45b2f68436"
+const ENTRY_PROBE_CHANGES := [{"previous": "const OPTIC = preload(\"res://tests/court_a_aimed_optic_probe.gd\")\n", "current": "const OPTIC = preload(\"res://tests/court_a_aimed_optic_probe.gd\")\nconst ENTRY = preload(\"res://tests/theater_d11_entry_probe.gd\")\n"}, {"previous": "\tOPTIC.check_installation(ship)\n", "current": "\tOPTIC.check_installation(ship)\n\tENTRY.check_installation(ship)\n"}, {"previous": "func check_motion_poses_and_barriers() -> void:\n\tassert(data.held_open_groups == [\"THEATER_D11_MAIN_LEAF_LEFT\",\"THEATER_D11_MAIN_LEAF_RIGHT\"])\n", "current": "func check_motion_poses_and_barriers() -> void:\n\tassert(data.held_open_groups == [\"THEATER_D11_MAIN_LEAF_LEFT\",\"THEATER_D11_MAIN_LEAF_RIGHT\"])\n\tENTRY.check_installation(ship)\n\tassert(data.motion_groups.size() == 39)\n\tvar fully_open := true\n\tvar active_groups := 0\n"}, {"previous": "\t\tif held: expected.origin += xyz(spec.axis_world) * float(spec.travel_m)\n", "current": "\t\tif held:\n\t\t\t# Only the two original D11 main groups are operational. The entry\n\t\t\t# probe verifies their six retained Mesh/Shape resources and carriers.\n\t\t\tvar fraction := float(node.get_meta(\"current_pose_fraction\"))\n\t\t\tassert(is_finite(fraction) and fraction >= 0.0 and fraction <= 1.0)\n\t\t\texpected.origin += xyz(spec.axis_world) * float(spec.travel_m) * fraction\n\t\t\tassert_transform(relative(node,motion),expected,str(identity))\n\t\t\tassert(node.get_meta(\"operation_enabled\") == true and not node.has_meta(\"locked_pose_fraction\"))\n\t\t\tassert(node.find_children(\"*\",\"Area3D\",true,false).is_empty())\n\t\t\tassert(identity not in data.visual_only_motion_groups)\n\t\t\tfully_open = fully_open and fraction == 1.0\n\t\t\tactive_groups += 1\n\t\t\tcontinue\n"}, {"previous": "\ttemplate.free()\n\tassert(motion.get_meta(\"cabin_static_floor_credit\") == false)\n\tclear_box(Vector3(-35.0,69.51,-128.59),Vector3(-33.95,72.50,-123.41),\"D11 5.2m held-open aperture and 3m route headroom\")\n", "current": "\ttemplate.free()\n\tassert(active_groups == 2)\n\tassert(motion.get_meta(\"cabin_static_floor_credit\") == false)\n\tif fully_open:\n\t\tclear_box(Vector3(-35.0,69.51,-128.59),Vector3(-33.95,72.50,-123.41),\"D11 5.2m held-open aperture and 3m route headroom\")\n"}]
+
 static func retained_court_source() -> String:
 	var source := MEDICAL_RETAINED.retained_text("res://scripts/court_a_increment004.gd")
 	var previous := str(COURT_INPUT_SHA256["scripts/court_a_increment004.gd"])
 	if source.sha256_text()==previous: return source
+	if source.sha256_text()==ENTRY_COURT_CANDIDATE_SHA:
+		assert(source.count(ENTRY_CALL)==1 and source.ends_with(OPTIC_CALL+ENTRY_CALL),"Exactly one D11 entry call must follow the retained optic call")
+		source=source.replace(ENTRY_CALL,"")
+		assert(source.sha256_text()==ENTRY_COURT_PREVIOUS_SHA,"Removing only the D11 entry call must recover every optic-era Court byte")
 	assert(source.count(OPTIC_CALL)==1 and source.ends_with(OPTIC_CALL_ANCHOR+OPTIC_CALL),"Exactly one appended optic builder call required")
 	source=source.replace(OPTIC_CALL,"")
 	assert(source.sha256_text()==previous,"Removing only the optic call must recover every prior Court builder byte")
@@ -184,6 +196,11 @@ static func retained_stage_probe_source() -> String:
 	var source := MEDICAL_RETAINED.retained_text("res://tests/theater_stage_probe.gd")
 	var previous := "0734d22c0cc70a34cd76c22f16919df312613badb4107b5581c256a007365501"
 	if source.sha256_text()==previous: return source
+	if source.sha256_text()==ENTRY_PROBE_CANDIDATE_SHA:
+		for replacement in ENTRY_PROBE_CHANGES:
+			assert(source.count(str(replacement.current))==1,"Exact D11 entry assertion successor required")
+			source=source.replace(str(replacement.current),str(replacement.previous))
+		assert(source.sha256_text()==ENTRY_PROBE_PREVIOUS_SHA,"Only two D11 groups may change; recover every optic-era probe byte before its inverse")
 	assert(source.count(OPTIC_PROBE_CONSTANT_PLACEMENT)==1 and source.count(OPTIC_PROBE_CALL_PLACEMENT)==1,"Optic checks must remain at their exact initialization anchors")
 	for added in [OPTIC_PROBE_ADDED_CONSTANT,OPTIC_PROBE_ADDED_CALL]:
 		assert(source.count(added)==1)

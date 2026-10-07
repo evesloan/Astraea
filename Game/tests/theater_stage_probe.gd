@@ -6,6 +6,7 @@ const FLOOR := 69.5
 const NATIVE_INSTANCE_QA := "res://docs/THEATER_NATIVE_INSTANCE_QA.json"
 const NATIVE_INSTANCE_QA_SHA := "59d8c3f4e4b2bf85ae82ab798088197b05c1baddd376f50a73fcb1f730f494ad"
 const OPTIC = preload("res://tests/court_a_aimed_optic_probe.gd")
+const ENTRY = preload("res://tests/theater_d11_entry_probe.gd")
 var data: Dictionary
 var fixture: Dictionary
 var ship: Node3D
@@ -47,6 +48,7 @@ func configure(current_ship: Node3D) -> void:
 	assert(budget.shadow_source_budget == 8)
 	assert(cart != null and cart.products.size() == 4)
 	OPTIC.check_installation(ship)
+	ENTRY.check_installation(ship)
 
 func xyz(a: Array) -> Vector3:
 	return Vector3(float(a[0]), float(a[1]), float(a[2]))
@@ -358,6 +360,10 @@ func check_floor_owners() -> void:
 
 func check_motion_poses_and_barriers() -> void:
 	assert(data.held_open_groups == ["THEATER_D11_MAIN_LEAF_LEFT","THEATER_D11_MAIN_LEAF_RIGHT"])
+	ENTRY.check_installation(ship)
+	assert(data.motion_groups.size() == 39)
+	var fully_open := true
+	var active_groups := 0
 	var template := (load("res://assets/models/" + str(data.moving_file)) as PackedScene).instantiate() as Node3D
 	for identity in data.motion_groups:
 		var spec: Dictionary = data.motion_groups[identity]
@@ -366,7 +372,19 @@ func check_motion_poses_and_barriers() -> void:
 		assert(node != null and original != null)
 		var expected := relative(original,template)
 		var held: bool = identity in data.held_open_groups
-		if held: expected.origin += xyz(spec.axis_world) * float(spec.travel_m)
+		if held:
+			# Only the two original D11 main groups are operational. The entry
+			# probe verifies their six retained Mesh/Shape resources and carriers.
+			var fraction := float(node.get_meta("current_pose_fraction"))
+			assert(is_finite(fraction) and fraction >= 0.0 and fraction <= 1.0)
+			expected.origin += xyz(spec.axis_world) * float(spec.travel_m) * fraction
+			assert_transform(relative(node,motion),expected,str(identity))
+			assert(node.get_meta("operation_enabled") == true and not node.has_meta("locked_pose_fraction"))
+			assert(node.find_children("*","Area3D",true,false).is_empty())
+			assert(identity not in data.visual_only_motion_groups)
+			fully_open = fully_open and fraction == 1.0
+			active_groups += 1
+			continue
 		assert_transform(relative(node,motion),expected,str(identity))
 		assert(node.get_meta("operation_enabled") == false and not node.has_method("interact"))
 		assert(float(node.get_meta("locked_pose_fraction")) == (1.0 if held else 0.0))
@@ -385,8 +403,10 @@ func check_motion_poses_and_barriers() -> void:
 				if node.is_ancestor_of(hit.collider): found = true
 			assert(found, "Closed retained exit/gate has no physical barrier: " + str(identity))
 	template.free()
+	assert(active_groups == 2)
 	assert(motion.get_meta("cabin_static_floor_credit") == false)
-	clear_box(Vector3(-35.0,69.51,-128.59),Vector3(-33.95,72.50,-123.41),"D11 5.2m held-open aperture and 3m route headroom")
+	if fully_open:
+		clear_box(Vector3(-35.0,69.51,-128.59),Vector3(-33.95,72.50,-123.41),"D11 5.2m held-open aperture and 3m route headroom")
 	clear_box(Vector3(-33.95,69.51,-128.59),Vector3(-4.01,72.50,-123.41),"Bridge full 5.2m clear lane and 3m headroom")
 
 func check_lights(label: String) -> void:

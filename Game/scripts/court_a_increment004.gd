@@ -192,3 +192,4 @@ static func build(parent: Node3D, _ship: Node3D) -> void:
 	source.free()
 	prototype.free()
 	load("res://scripts/court_a_aimed_optic008.gd").build(parent, _ship)
+	load("res://scripts/theater_d11_entry.gd").build(parent, _ship)

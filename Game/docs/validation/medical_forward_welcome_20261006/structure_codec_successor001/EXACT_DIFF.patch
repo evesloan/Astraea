@@ -1,0 +1,90 @@
+--- a/tests/validate_medical_structure.gd
++++ b/tests/validate_medical_structure.gd
+@@ -23,7 +23,7 @@
+ 		var vertices: Array[String]=[]
+ 		for j in range(3):
+ 			var point: Vector3=pose*faces[i+j]
+-			vertices.append("%.5f,%.5f,%.5f"%[point.x,point.y,point.z])
++			vertices.append(var_to_bytes(point).hex_encode())
+ 		vertices.sort()
+ 		var key: String="|".join(PackedStringArray(vertices))
+ 		result[key]=int(result.get(key,0))+1
+@@ -33,6 +33,17 @@
+ 	var result: PackedVector3Array=[]
+ 	for triangle in triangles:
+ 		for point in triangle: result.append(Vector3(float(point[0]),y,float(point[1])))
++	return result
++
++func render_input_faces(mesh: Mesh) -> PackedVector3Array:
++	var result: PackedVector3Array=[]
++	for surface in range(mesh.get_surface_count()):
++		var arrays: Array=mesh.surface_get_arrays(surface)
++		var vertices: PackedVector3Array=arrays[Mesh.ARRAY_VERTEX]
++		var indices: Variant=arrays[Mesh.ARRAY_INDEX]
++		if indices!=null and indices.size()>0:
++			for index in indices: result.append(vertices[index])
++		else: result.append_array(vertices)
+ 	return result
+ 
+ func verify_actual_slab(record: Dictionary) -> bool:
+@@ -53,14 +64,22 @@
+ 	var contact: CollisionShape3D=contacts[0] as CollisionShape3D
+ 	if not require(contact.shape is ConcavePolygonShape3D,"Medical floor must keep its faithful concave slab contact"): return false
+ 	var actual: PackedVector3Array=(contact.shape as ConcavePolygonShape3D).get_faces()
+-	if not require(triangle_multiset(actual,contact.global_transform)==triangle_multiset(complete),"Actual medical collision triangles differ from the complete compiled slab"): return false
++	# Production creates its contact through ArrayMesh/TriangleMesh. This exact
++	# native path has a float32 codec step; raw render inputs are checked separately.
++	var expected_arrays: Array=[];expected_arrays.resize(Mesh.ARRAY_MAX)
++	expected_arrays[Mesh.ARRAY_VERTEX]=complete
++	var expected_mesh: ArrayMesh=ArrayMesh.new()
++	expected_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,expected_arrays)
++	var expected_contact: ConcavePolygonShape3D=expected_mesh.create_trimesh_shape()
++	var native_expected: PackedVector3Array=expected_contact.get_faces()
++	if not require(triangle_multiset(actual,contact.global_transform)==triangle_multiset(native_expected),"Actual medical collision triangles differ from the complete compiled slab"): return false
+ 	var visuals: Array=owner.find_children("*","MeshInstance3D",true,false)
+ 	if not require(visuals.size()==record.render_chunks.size()+1,"Exact bounded render chunks and edge mesh required"): return false
+ 	for chunk in record.render_chunks:
+ 		var visual: MeshInstance3D=owner.get_node(str(chunk.id)) as MeshInstance3D
+-		if not require(triangle_multiset(visual.mesh.get_faces(),visual.global_transform)==triangle_multiset(record_top_faces(chunk.triangles,y)),"Actual render chunk differs from compiled triangles: "+str(chunk.id)): return false
++		if not require(triangle_multiset(render_input_faces(visual.mesh),visual.global_transform)==triangle_multiset(record_top_faces(chunk.triangles,y)),"Actual render chunk differs from compiled triangles: "+str(chunk.id)): return false
+ 	var side: MeshInstance3D=owner.get_node("StructuralSidesAndUnderside") as MeshInstance3D
+-	if not require(triangle_multiset(side.mesh.get_faces(),side.global_transform)==triangle_multiset(edges),"Actual underside/closure geometry differs from compiled slab"): return false
++	if not require(triangle_multiset(render_input_faces(side.mesh),side.global_transform)==triangle_multiset(edges),"Actual underside/closure geometry differs from compiled slab"): return false
+ 	metrics["exact_actual_contact_triangles"]=actual.size()/3
+ 	metrics["exact_actual_render_chunks"]=record.render_chunks.size()
+ 	return true
+--- a/docs/MEDICAL_ADDITIVE_SUCCESSOR.json
++++ b/docs/MEDICAL_ADDITIVE_SUCCESSOR.json
+@@ -871,7 +871,7 @@
+     "tests/validate_medical_cart.gd": "c7c27c0523c8d3b8cb29fec4acb4e7a53877ed6ed3c481f9ac94f1151ad9c78b",
+     "tests/medical_test_scene.gd": "8b7b7fab22e8635e4c275550b32715b81e6a97aeb3d31a2548e450f47aa8f151",
+     "tests/validate_medical_access.gd": "eab58da2af2182f8d798ad316189a1ff5c4f2d4b890f14c28920bce15ea97cea",
+-    "tests/validate_medical_structure.gd": "3e0d0273544889ac6ab151c7c7380e6b5362cdcf29a9bae07a75ef6abb75f69f",
++    "tests/validate_medical_structure.gd": "785bc60655a960e836928aafcb330120a1f06d13ee25f32cc5bc05e3a9d4c756",
+     "scripts/medical_welcome.gd": "0d0f85f60f7bb6b35e8d8e4563320e83568b2d4a2c83039da443996141dbe0a1",
+     "tools/medical_incremental_preservation.py": "bdd02b066ba87d1dc317af3eec1c1b697bf0f39db8769ed3ac59372b937cd7e2",
+     "assets/models/D05_forward_welcome_architecture_006.glb": "72e36d8e6ec0e89d0fdc783d5c54b785f31c9ef3bd57547bd7db04435ec2210a",
+@@ -1387,5 +1387,12 @@
+         "count": 1
+       }
+     ]
++  },
++  "test_codec_correction": {
++    "predecessor_test_sha256": "3e0d0273544889ac6ab151c7c7380e6b5362cdcf29a9bae07a75ef6abb75f69f",
++    "predecessor_proof_sha256": "f46bf75cc50acf221b6f46165e4390acb4ca74a93367e1f6035830fb6e8675af",
++    "diagnosis_sha256": "d582b23f205256eaeff8b47505a8f350f9f8b90631134d8f829948e3a55b8e1a",
++    "method": "Exact float32 vector-byte triangle multisets. Expected contacts pass through the same native ArrayMesh/TriangleMesh construction codec; actual render triangles use surface_get_arrays to avoid TriangleMesh snapping. No widened coordinate tolerance, runtime geometry or existing assertion removal.",
++    "scratch_actual_world_trial": "diagnose_nativepath002.log: PASS,36 contact triangles,14 render chunks,852 preserved meshes,12 open rays,3closure rays,123support rays,11fixture sources"
+   }
+ }
+--- a/tests/medical_successor_guard.gd
++++ b/tests/medical_successor_guard.gd
+@@ -2,7 +2,7 @@
+ # Authenticated medical projection for unchanged historical assertions.
+ # Every projected byte/owner is checked against the full current postimage first.
+ const PROOF := "res://docs/MEDICAL_ADDITIVE_SUCCESSOR.json"
+-const PROOF_SHA := "f46bf75cc50acf221b6f46165e4390acb4ca74a93367e1f6035830fb6e8675af"
++const PROOF_SHA := "d4fc0e4b8f6f5c70452c4fa0d82512d8808660ae4353cca3d16528f8f3f724b7"
+ const OWNER := "D05_forward_waiting_support_floor"
+ const CURRENT_ONLY := ["docs/LAYOUT_COMPILE_CHECKS.json"]
+ static var checked := false
