@@ -1,0 +1,91 @@
+{
+  "status": "SOURCE PILOT ONLY. Not installed, imported, or accepted in engine.",
+  "source_revision": "WP02_sports_care_suncorp_insert002.blend",
+  "candidate_glb": "WP02_sports_care_runtime_suncorp_insert002.glb",
+  "geometry_allowlist": {
+    "WP02N_0051": "CareInfoCopy: editable source text now SunCorp  |  CLOTHS / PADS",
+    "WP02N_0052": "CareInfoPlaque: eased 0.858 x 0.170 m enamel fascia face, 0.014 m deep",
+    "WP02N_0053": "CareInfoStand: repurposed as shallow eased bluegrey housing and folded shelf return; no pole, no new identity",
+    "WP02N_0054": "CareInfoTitle: same CARE STOCK copy, new position and shallow relief"
+  },
+  "host_unchanged": "StaffShallowStockShelf / WP02N_1411; existing shelf brackets unchanged",
+  "host_contact": {
+    "coordinates": "Godot package-local metres",
+    "folded_return_bounds_min": [
+      38.39,
+      2.024,
+      4.955
+    ],
+    "folded_return_bounds_max": [
+      39.25,
+      2.043,
+      5.08
+    ],
+    "shelf_bounds_min": [
+      36.5,
+      2.04,
+      4.98
+    ],
+    "shelf_bounds_max": [
+      39.5,
+      2.12,
+      5.36
+    ],
+    "intersection_dimensions_m": [
+      0.86,
+      0.003,
+      0.1
+    ],
+    "front_projection_from_shelf_edge_m": 0.047,
+    "note": "Folded return bridges the housing to the unmodified shelf underside. No carton access footprint above shelf is occupied. Visible eased front replaces the standalone pole/board."
+  },
+  "information_target_patch": {
+    "file": "data/architecture/packages/sports_care/INFORMATION_TARGETS.json",
+    "id": "WP02_info_care_01",
+    "visual_node": "WP02N_0052",
+    "focus_world_m": [
+      46.82,
+      37.463,
+      464.932
+    ],
+    "target_size_m": [
+      0.76,
+      0.12,
+      0.026
+    ],
+    "approach_feet_world_m": [
+      46.85,
+      35.5,
+      462.5
+    ],
+    "unchanged": [
+      "id",
+      "visual_node",
+      "action",
+      "label",
+      "information",
+      "access",
+      "approach_feet_world_m",
+      "source_visual_node"
+    ],
+    "information": "Clean cloths and pads are kept here. Used textiles have a separate return beside the staff threshold.",
+    "approach_eye_to_focus_distance_m": 2.452,
+    "player_existing_max_interaction_ray_m": 2.5,
+    "note": "Existing approach is near ray-range limit; verify actual obstruction/focus. A reachable nearer approach may be documented after engine test; do not extend controller range."
+  },
+  "adoption_required": [
+    "Root decides candidate use only after source image review. Retain originals and candidate independently before installed replacement.",
+    "Adopt bounded GLB and editable native with stable NODE_BIJECTION; no new node IDs or new global materials. The four-node export is a patch input, never the complete district replacement.",
+    "Update only this target's focus/size in INFORMATION_TARGETS, retaining unchanged prose and behavior. Do not keep the old floating target at z464.16.",
+    "Update narrowly scoped exact source/runtime hashes, label ledger and preservation guards, including SPORTS_CARE_RUNTIME_PROOF, as applicable; do not weaken global guards.",
+    "Run ordinary import/architecture checks and exact installed preservation audit, then 06/07 composition captures with default CRT and effects off, oblique close approach, and actual RMB/E open-close using existing player.",
+    "Check title recognition at ordinary 72-degree vertical-FOV, 360px world; close source render alone cannot prove runtime readability. Source review is not CRT acceptance.",
+    "Verify no unseen pole or old sign collision remains; target belongs to visible fascia; existing shelf fixtures/lights/cartons remain byte-semantically unchanged. No new invisible click plane or lighting."
+  ],
+  "materials": "All original shared material definitions unchanged. Frame reuses ASTRAEA_staff_bluegrey_paint; face WP02_ivory_enamel; letters WP02_dark. New plaque/housing meshes now have explicit UVMap, per-face box projection, 1 metre per tile, finite UV ranges. Revision001 preserved; only these two meshes UV fields differ from revision001.",
+  "limitations": [
+    "No Godot run/import, no CRT renderer, no runtime interaction test performed by source worker",
+    "Source staging renders retain original fixture lighting, with no render edits saved back to native",
+    "Revision001 context lens28mm is narrower than runtime. Separate source_normal_eye_vertical72_360p.png uses actual 72-degree vertical FOV and 1.65m eye height, but is noisy source Cycles lighting, not runtime CRT acceptance."
+  ]
+}

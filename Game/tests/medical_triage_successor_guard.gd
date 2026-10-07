@@ -1364,18 +1364,19 @@ static var sports_care_current_compiled: Dictionary = {}
 
 static func _sports_care_ensure() -> void:
 	if sports_care_checked: return
+	_sports_sign_ensure()
 	assert(FileAccess.get_sha256(SPORTS_CARE_PROOF)==SPORTS_CARE_PROOF_SHA,"Exact whole Team Lounge successor proof required")
 	sports_care_proof=JSON.parse_string(FileAccess.get_file_as_string(SPORTS_CARE_PROOF))
 	assert(sports_care_proof.schema==1 and sports_care_proof.programme_key=="D07_directory_10")
 	assert(sports_care_proof.added_owner_ids==["D07_sports_care_floor","D07_sports_care_entry"])
 	for path in sports_care_proof.current_sha256:
-		assert(FileAccess.get_sha256("res://"+str(path))==str(sports_care_proof.current_sha256[path]),"Unreviewed lounge postimage: "+str(path))
+		assert(_sports_sign_current_sha256("res://"+str(path))==str(sports_care_proof.current_sha256[path]),"Unreviewed lounge postimage: "+str(path))
 	for path in sports_care_proof.predecessors:
 		var spec: Dictionary=sports_care_proof.predecessors[path]
 		var retained: String="res://"+str(spec.retained_path)
 		assert(FileAccess.get_sha256(retained)==str(spec.sha256),"Lounge predecessor changed: "+str(path))
 		sports_care_predecessor_text[path]=FileAccess.get_file_as_string(retained)
-	var own_source := FileAccess.get_file_as_string("res://tests/medical_triage_successor_guard.gd")
+	var own_source := _sports_sign_current_text("res://tests/medical_triage_successor_guard.gd")
 	var begin: String="# SPORTS_CARE_EXACT_SECTION_"+"BEGIN\n"
 	var end: String="# SPORTS_CARE_EXACT_SECTION_"+"END\n"
 	assert(own_source.count(begin)==1 and own_source.count(end)==1)
@@ -1518,6 +1519,7 @@ static func _sports_care_validate_runtime(floors: Node) -> void:
 		assert(not bool(options.get_value("params","meshes/generate_lods",true)))
 		assert(str(options.get_value("params","nodes/root_type",""))=="Node3D")
 	_sports_care_model(room,str(d.model_file),1734)
+	_sports_sign_validate_unaffected(room)
 	_sports_care_model(guards,str(d.guard_file),20)
 	var identities: Array=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/packages/sports_care/NODE_BIJECTION.json"))
 	assert(identities.size()==1908)
@@ -1640,5 +1642,203 @@ static func _sports_care_validate_import(source: Node3D, filename: String, mesh_
 			if material_seen.has(material_index): assert(material_seen[material_index]==material)
 			else: material_seen[material_index]=material
 	assert(source_meshes==mesh_count)
-	assert(source_triangles==(66346 if mesh_count==1734 else 448))
+	assert(source_triangles==_sports_sign_expected_triangles(filename,mesh_count),"Exact filename-pinned triangle multiplicity, including every degenerate face")
 # SPORTS_CARE_EXACT_SECTION_END
+# SPORTS_SIGN_EXACT_SECTION_BEGIN
+# Exactly four stable source nodes, no owner/compiler or unrelated runtime exception.
+const SPORTS_SIGN_PROOF := "res://data/architecture/packages/sports_care/sign_insert002/SIGN_RUNTIME_PROOF.json"
+const SPORTS_SIGN_PROOF_SHA := "78dfaad2bfbfff34a2e71adf53fd42d8908270be90f65166e5f91c249424a74a"
+static var sports_sign_checked := false
+static var sports_sign_proof: Dictionary = {}
+static var sports_sign_predecessor_text: Dictionary = {}
+static var sports_sign_material_pairs: Dictionary = {}
+
+static func _sports_sign_ensure() -> void:
+	if sports_sign_checked: return
+	assert(FileAccess.get_sha256(SPORTS_SIGN_PROOF)==SPORTS_SIGN_PROOF_SHA)
+	sports_sign_proof=JSON.parse_string(FileAccess.get_file_as_string(SPORTS_SIGN_PROOF))
+	assert(sports_sign_proof.schema==1 and sports_sign_proof.allowed_nodes==["WP02N_0051","WP02N_0052","WP02N_0053","WP02N_0054"])
+	for path in sports_sign_proof.current_sha256:
+		assert(FileAccess.get_sha256("res://"+str(path))==str(sports_sign_proof.current_sha256[path]),"Unreviewed signage postimage: "+str(path))
+	for path in sports_sign_proof.predecessors:
+		var spec: Dictionary=sports_sign_proof.predecessors[path]
+		assert(FileAccess.get_sha256("res://"+str(spec.retained_path))==str(spec.sha256))
+		sports_sign_predecessor_text[path]=FileAccess.get_file_as_string("res://"+str(spec.retained_path))
+	var source:=FileAccess.get_file_as_string("res://tests/medical_triage_successor_guard.gd")
+	var first: String="# SPORTS_SIGN_EXACT_SECTION_"+"BEGIN\n"
+	var last: String="# SPORTS_SIGN_EXACT_SECTION_"+"END\n"
+	assert(source.count(first)==1 and source.count(last)==1)
+	var start:=source.find(first)
+	var end:=source.find(last)+last.length()
+	var block:=source.substr(start,end-start)
+	assert(block.count(SPORTS_SIGN_PROOF_SHA)==1)
+	assert(block.replace(SPORTS_SIGN_PROOF_SHA,"<PROOF_SHA>").sha256_text()==str(sports_sign_proof.block_normalized_sha256))
+	var recovered:=source.substr(0,start)+source.substr(end)
+	for edit in sports_sign_proof.guard_inverse_edits:
+		assert(recovered.count(str(edit.after))==int(edit.count))
+		recovered=recovered.replace(str(edit.after),str(edit.before))
+	assert(recovered==str(sports_sign_predecessor_text["tests/medical_triage_successor_guard.gd"]),"Every prior proof byte must survive the exact bounded successor")
+	var old_contract: Dictionary=JSON.parse_string(str(sports_sign_predecessor_text[str(sports_sign_proof.runtime_path)]))
+	var wanted_contract: Dictionary=old_contract.duplicate(true)
+	wanted_contract.model_file=sports_sign_proof.new_model_file
+	wanted_contract.model_sha256=sports_sign_proof.new_model_sha256
+	assert(JSON.parse_string(FileAccess.get_file_as_string("res://"+str(sports_sign_proof.runtime_path)))==wanted_contract,"Only model filename/hash may change in room contract")
+	var old_info: Dictionary=JSON.parse_string(str(sports_sign_predecessor_text[str(sports_sign_proof.information_path)]))
+	var wanted_info: Dictionary=old_info.duplicate(true)
+	var patched:=0
+	for target in wanted_info.candidates:
+		if str(target.id)=="WP02_info_care_01":
+			assert(target.visual_node=="WP02N_0052")
+			target.focus_world_m=sports_sign_proof.focus_world_m
+			target.target_size_m=sports_sign_proof.target_size_m
+			patched+=1
+	assert(patched==1 and JSON.parse_string(FileAccess.get_file_as_string("res://"+str(sports_sign_proof.information_path)))==wanted_info,"All target identity/prose/access/approach fields remain exact")
+	var old_labels: Array=JSON.parse_string(str(sports_sign_predecessor_text[str(sports_sign_proof.labels_path)]))
+	var wanted_labels: Array=old_labels.duplicate(true)
+	patched=0
+	for label in wanted_labels:
+		if str(label.name)=="CareInfoCopy": label.text="SunCorp  |  CLOTHS / PADS";patched+=1
+	assert(patched==1 and JSON.parse_string(FileAccess.get_file_as_string("res://"+str(sports_sign_proof.labels_path)))==wanted_labels)
+	var old_fixture: Dictionary=JSON.parse_string(str(sports_sign_predecessor_text[str(sports_sign_proof.fixture_path)]))
+	var wanted_fixture: Dictionary=old_fixture.duplicate(true)
+	wanted_fixture.runtime_sha256=sports_sign_proof.current_sha256[str(sports_sign_proof.runtime_path)]
+	wanted_fixture.information_manifest_sha256=sports_sign_proof.current_sha256[str(sports_sign_proof.information_path)]
+	assert(JSON.parse_string(FileAccess.get_file_as_string("res://"+str(sports_sign_proof.fixture_path)))==wanted_fixture,"All378 privacy rays, paths, interactions and input pins remain unchanged")
+	var runner:=FileAccess.get_file_as_string("res://"+str(sports_sign_proof.runner_path))
+	var runner_edit: Dictionary=sports_sign_proof.runner_hash_inverse
+	assert(runner.count(str(runner_edit.after))==1)
+	assert(runner.replace(str(runner_edit.after),str(runner_edit.before))==str(sports_sign_predecessor_text[str(sports_sign_proof.runner_path)]),"No acceptance assertion may change")
+	_sports_sign_validate_source_delta()
+	sports_sign_checked=true
+
+static func _sports_sign_current_text(path: String) -> String:
+	_sports_sign_ensure()
+	var relative:=_relative(path)
+	if sports_sign_predecessor_text.has(relative): return str(sports_sign_predecessor_text[relative])
+	return FileAccess.get_file_as_string("res://"+relative)
+
+static func _sports_sign_current_sha256(path: String) -> String:
+	_sports_sign_ensure()
+	var relative:=_relative(path)
+	if sports_sign_predecessor_text.has(relative): return str(sports_sign_predecessor_text[relative]).sha256_text()
+	return FileAccess.get_sha256("res://"+relative)
+
+static func _sports_sign_glb(filename: String) -> Dictionary:
+	var raw:=FileAccess.get_file_as_bytes("res://assets/models/"+filename)
+	assert(raw.decode_u32(0)==0x46546c67 and raw.decode_u32(4)==2 and raw.decode_u32(8)==raw.size())
+	var length:=int(raw.decode_u32(12))
+	assert(raw.decode_u32(16)==0x4e4f534a)
+	var at:=20+length
+	assert(raw.decode_u32(at+4)==0x004e4942 and at+8+int(raw.decode_u32(at))==raw.size())
+	return {"document":JSON.parse_string(raw.slice(20,at).get_string_from_utf8()),"binary":raw.slice(at+8)}
+
+static func _sports_sign_validate_source_delta() -> void:
+	var prior:=_sports_sign_glb(str(sports_sign_proof.old_model_file))
+	var current:=_sports_sign_glb(str(sports_sign_proof.new_model_file))
+	var old: Dictionary=prior.document
+	var now: Dictionary=current.document
+	var original: PackedByteArray=prior.binary
+	var actual: PackedByteArray=current.binary
+	assert(actual.slice(0,original.size())==original,"Original binary payload must remain verbatim")
+	assert(now.nodes.size()==old.nodes.size() and now.meshes.size()==old.meshes.size())
+	assert(now.accessors.slice(0,old.accessors.size())==old.accessors and now.bufferViews.slice(0,old.bufferViews.size())==old.bufferViews)
+	var mapping: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://"+str(sports_sign_proof.patch_map)))
+	assert(mapping.nodes.size()==4 and int(mapping.binary_append_offset)==original.size())
+	var repaired: Dictionary=now.duplicate(true)
+	var indices: Array=[]
+	var mesh_indices: Array=[]
+	var named: Array=[]
+	for spec in mapping.nodes:
+		var index:=int(spec.node_index)
+		var mi:=int(spec.mesh_index)
+		assert(not index in indices and not mi in mesh_indices)
+		indices.append(index);mesh_indices.append(mi);named.append(str(spec.runtime_name))
+		assert(old.nodes[index]==spec.old_node and now.nodes[index]==spec.new_node)
+		assert(old.meshes[mi]==spec.old_mesh and now.meshes[mi]==spec.new_mesh)
+		repaired.nodes[index]=old.nodes[index]
+		repaired.meshes[mi]=old.meshes[mi]
+		for primitive in now.meshes[mi].primitives:
+			assert(primitive.attributes.has("TEXCOORD_0") and int(primitive.indices)>=old.accessors.size())
+			assert(int(primitive.material)>=0 and int(primitive.material)<old.materials.size())
+			for key in primitive.attributes: assert(int(primitive.attributes[key])>=old.accessors.size())
+	assert(named==sports_sign_proof.allowed_nodes)
+	for index in range(old.nodes.size()):
+		if index not in indices: assert(int(old.nodes[index].get("mesh",-1)) not in mesh_indices,"A changed shared mesh may not affect another node")
+	repaired.accessors=repaired.accessors.slice(0,old.accessors.size())
+	repaired.bufferViews=repaired.bufferViews.slice(0,old.bufferViews.size())
+	repaired.buffers=old.buffers
+	assert(repaired==old,"Exact original reconstruction outside four named nodes/meshes required")
+	for index in range(old.bufferViews.size(),now.bufferViews.size()):
+		var view: Dictionary=now.bufferViews[index]
+		assert(int(view.buffer)==0 and int(view.get("byteOffset",0))>=original.size())
+		assert(int(view.get("byteOffset",0))+int(view.byteLength)<=actual.size())
+	for index in range(old.accessors.size(),now.accessors.size()): assert(int(now.accessors[index].bufferView)>=old.bufferViews.size())
+
+static func _sports_sign_expected_triangles(filename: String,mesh_count: int) -> int:
+	_sports_sign_ensure()
+	if filename==str(sports_sign_proof.new_model_file):
+		assert(mesh_count==1734)
+		return int(sports_sign_proof.new_source_triangle_count)
+	if filename==str(sports_sign_proof.old_model_file):
+		assert(mesh_count==1734)
+		return 66346
+	assert(filename==str(sports_sign_proof.guard_model_file) and mesh_count==20)
+	return 448
+
+static func _sports_sign_material_equal(a: Material,b: Material) -> void:
+	assert(a!=null and b!=null and a.get_class()==b.get_class())
+	var pair:=str(a.get_instance_id())+":"+str(b.get_instance_id())
+	if sports_sign_material_pairs.has(pair): return
+	assert(a.get_property_list()==b.get_property_list())
+	for spec in a.get_property_list():
+		var name_key:=str(spec.name)
+		# Imported resource locations/scene serialization IDs differ between new/old GLB containers.
+		# All material state and actual texture pixels remain strict.
+		if (int(spec.usage) & PROPERTY_USAGE_STORAGE)==0 or name_key in ["resource_path","resource_scene_unique_id"]: continue
+		var x=a.get(name_key)
+		var y=b.get(name_key)
+		if x is Texture2D:
+			assert(y is Texture2D and x.get_class()==y.get_class())
+			var xi: Image=x.get_image()
+			var yi: Image=y.get_image()
+			assert(xi.get_size()==yi.get_size() and xi.get_format()==yi.get_format() and xi.has_mipmaps()==yi.has_mipmaps() and xi.get_data()==yi.get_data(),"Unaffected material texture pixels changed")
+		else: assert(x==y,"Unaffected imported material property changed: "+name_key)
+	sports_sign_material_pairs[pair]=true
+
+static func _sports_sign_validate_unaffected(wrapper: Node3D) -> void:
+	_sports_sign_ensure()
+	var original: Node3D=(load("res://assets/models/"+str(sports_sign_proof.old_model_file)) as PackedScene).instantiate() as Node3D
+	var current: Node3D=(load("res://assets/models/"+str(sports_sign_proof.new_model_file)) as PackedScene).instantiate() as Node3D
+	var actual: Node3D=wrapper.get_node(NodePath(str(current.name))) as Node3D
+	var originals: Dictionary={}
+	var actuals: Dictionary={}
+	for node in original.find_children("*","Node3D",true,false):
+		assert(not originals.has(str(node.name)));originals[str(node.name)]=node
+	for node in current.find_children("*","Node3D",true,false):
+		assert(not actuals.has(str(node.name)))
+		actuals[str(node.name)]=actual.get_node(current.get_path_to(node))
+	assert(originals.size()==1908 and actuals.size()==1908)
+	var unchanged_nodes:=0
+	var unchanged_meshes:=0
+	for identity in originals:
+		var old: Node3D=originals[identity]
+		var live: Node3D=actuals[identity]
+		if identity in sports_sign_proof.allowed_nodes: continue
+		unchanged_nodes+=1
+		assert(live.get_class()==old.get_class() and live.get_script()==old.get_script() and live.transform==old.transform)
+		assert(live.get_meta_list()==old.get_meta_list())
+		for key in old.get_meta_list(): assert(live.get_meta(key)==old.get_meta(key))
+		assert(live.get_child_count()==old.get_child_count()+(1 if live is MeshInstance3D else 0))
+		if live is MeshInstance3D:
+			unchanged_meshes+=1
+			assert(live.visible and live.material_override==null and live.mesh.get_surface_count()==old.mesh.get_surface_count())
+			for surface in range(old.mesh.get_surface_count()):
+				assert(live.mesh.surface_get_arrays(surface)==old.mesh.surface_get_arrays(surface),"Any unrelated geometry/UV/normal/index change is forbidden")
+				assert(live.get_surface_override_material(surface)==null)
+				_sports_sign_material_equal(live.get_active_material(surface),old.get_active_material(surface))
+			var contact: CollisionShape3D=live.get_node("StaticContact/SharedShape") as CollisionShape3D
+			var original_contact: ConcavePolygonShape3D=old.mesh.create_trimesh_shape()
+			assert(contact!=null and contact.shape is ConcavePolygonShape3D and not contact.disabled and contact.shape.get_faces()==original_contact.get_faces(),"All unaffected actual contacts remain exact")
+	assert(unchanged_nodes==1904 and unchanged_meshes==1730)
+	original.free();current.free()
+# SPORTS_SIGN_EXACT_SECTION_END
