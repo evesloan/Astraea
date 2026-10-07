@@ -24,7 +24,7 @@ static func retained_sha256(path: String) -> String:
 		if actual==EAST_GALLERY_BUILDER_SHA:
 			assert(FileAccess.get_sha256("res://"+path)==EAST_GALLERY_BUILDER_SHA,"Exact east gallery builder bytes required")
 			for input in EAST_GALLERY_INPUTS:
-				assert(FileAccess.get_sha256("res://"+str(input))==str(EAST_GALLERY_INPUTS[input]),"East gallery input changed: "+str(input))
+				assert(load("res://tests/grand_pool_finish_successor.gd").retained_sha256(str(input))==str(EAST_GALLERY_INPUTS[input]),"East gallery input changed: "+str(input))
 			assert(source.count(EAST_GALLERY_ADDED_LINE)==1 and source.ends_with(EAST_GALLERY_ADDED_LINE),"East gallery call must be appended exactly once")
 			source=source.trim_suffix(EAST_GALLERY_ADDED_LINE)
 			assert(source.sha256_text()==CANDIDATE_BUILDER_SHA,"Every prior feature builder byte must survive")

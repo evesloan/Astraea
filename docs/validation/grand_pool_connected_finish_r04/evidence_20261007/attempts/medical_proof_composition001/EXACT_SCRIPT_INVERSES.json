@@ -1,0 +1,36 @@
+{
+  "tests/grand_pool_finish_successor.gd": [
+    {
+      "after_start": 256,
+      "after": "static func retained_text(path: String) -> String:\n\tassert(path in [\"scripts/grand_pool_east_gallery.gd\",\"data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json\",\"scripts/grand_pool_connected_gallery_furniture.gd\",\"tests/grand_pool_feature_builder_successor.gd\"])\n",
+      "before": "static func retained_sha256(path: String) -> String:\n\tassert(path in [\"scripts/grand_pool_east_gallery.gd\",\"data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json\",\"scripts/grand_pool_connected_gallery_furniture.gd\"])\n"
+    },
+    {
+      "after_start": 1529,
+      "after": "\treturn text\nstatic func retained_sha256(path: String) -> String:\n\treturn retained_text(path).sha256_text()\n",
+      "before": "\treturn text.sha256_text()\n"
+    }
+  ],
+  "tests/medical_triage_successor_guard.gd": [
+    {
+      "after_start": 574,
+      "after": "# One exact later pool-finish helper; every other triage input stays directly hashed.\nconst POOL_FINISH_HELPER := \"tests/grand_pool_feature_builder_successor.gd\"\nconst POOL_FINISH_GUARD := \"res://tests/grand_pool_finish_successor.gd\"\nconst POOL_FINISH_GUARD_SHA := \"ca9b3300e47a1c5413ecd43390e9e839a6d07acfab7b847c085f979b3cb0b596\"\nstatic func _pool_finish_text(path: String) -> String:\n\tvar relative := _relative(path)\n\tif relative != POOL_FINISH_HELPER: return FileAccess.get_file_as_string(\"res://\"+relative)\n\tassert(FileAccess.get_sha256(POOL_FINISH_GUARD)==POOL_FINISH_GUARD_SHA,\"Exact pool finish projection source required\")\n\treturn load(POOL_FINISH_GUARD).retained_text(relative)\nstatic func _pool_finish_sha256(path: String) -> String:\n\tvar relative := _relative(path)\n\tif relative == POOL_FINISH_HELPER: return _pool_finish_text(relative).sha256_text()\n\treturn FileAccess.get_sha256(\"res://\"+relative)\n",
+      "before": ""
+    },
+    {
+      "after_start": 1777,
+      "after": "\t\tassert(_pool_finish_sha256(str(path))==str(proof.postimage_sha256[path]),\"Unreviewed triage postimage: \"+str(path))\n",
+      "before": "\t\tassert(FileAccess.get_sha256(\"res://\"+str(path))==str(proof.postimage_sha256[path]),\"Unreviewed triage postimage: \"+str(path))\n"
+    },
+    {
+      "after_start": 6467,
+      "after": "\treturn _pool_finish_text(relative)\n",
+      "before": "\treturn FileAccess.get_file_as_string(\"res://\"+relative)\n"
+    },
+    {
+      "after_start": 6713,
+      "after": "\treturn _pool_finish_sha256(relative)\n",
+      "before": "\treturn FileAccess.get_sha256(\"res://\"+relative)\n"
+    }
+  ]
+}

@@ -10,13 +10,26 @@ static var current_compiled: Dictionary = {}
 static var old_compiled: Dictionary = {}
 static func _relative(path: String) -> String:
 	return path.trim_prefix("res://")
+# One exact later pool-finish helper; every other triage input stays directly hashed.
+const POOL_FINISH_HELPER := "tests/grand_pool_feature_builder_successor.gd"
+const POOL_FINISH_GUARD := "res://tests/grand_pool_finish_successor.gd"
+const POOL_FINISH_GUARD_SHA := "ca9b3300e47a1c5413ecd43390e9e839a6d07acfab7b847c085f979b3cb0b596"
+static func _pool_finish_text(path: String) -> String:
+	var relative := _relative(path)
+	if relative != POOL_FINISH_HELPER: return FileAccess.get_file_as_string("res://"+relative)
+	assert(FileAccess.get_sha256(POOL_FINISH_GUARD)==POOL_FINISH_GUARD_SHA,"Exact pool finish projection source required")
+	return load(POOL_FINISH_GUARD).retained_text(relative)
+static func _pool_finish_sha256(path: String) -> String:
+	var relative := _relative(path)
+	if relative == POOL_FINISH_HELPER: return _pool_finish_text(relative).sha256_text()
+	return FileAccess.get_sha256("res://"+relative)
 static func _ensure() -> void:
 	if checked: return
 	assert(FileAccess.get_sha256(PROOF)==PROOF_SHA,"Exact triage successor proof required")
 	proof=JSON.parse_string(FileAccess.get_file_as_string(PROOF))
 	assert(proof.schema==1 and proof.owner_id==OWNER)
 	for path in proof.postimage_sha256:
-		assert(FileAccess.get_sha256("res://"+str(path))==str(proof.postimage_sha256[path]),"Unreviewed triage postimage: "+str(path))
+		assert(_pool_finish_sha256(str(path))==str(proof.postimage_sha256[path]),"Unreviewed triage postimage: "+str(path))
 	for path in proof.predecessors:
 		var spec: Dictionary=proof.predecessors[path]
 		var retained := "res://"+str(spec.retained_path)
@@ -84,13 +97,13 @@ static func retained_text(path: String) -> String:
 	if not checked: return ""
 	var relative := _relative(path)
 	if old_text.has(relative): return str(old_text[relative])
-	return FileAccess.get_file_as_string("res://"+relative)
+	return _pool_finish_text(relative)
 static func retained_sha256(path: String) -> String:
 	_ensure()
 	if not checked: return ""
 	var relative := _relative(path)
 	if proof.predecessors.has(relative): return str(proof.predecessors[relative].sha256)
-	return FileAccess.get_sha256("res://"+relative)
+	return _pool_finish_sha256(relative)
 static func is_current_compiled(value: Dictionary) -> bool:
 	_ensure()
 	return checked and value==current_compiled

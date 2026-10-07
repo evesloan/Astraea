@@ -1,0 +1,34 @@
+--- a/docs/GRAND_POOL_CONNECTED_FINISH_SUCCESSOR.json
++++ b/docs/GRAND_POOL_CONNECTED_FINISH_SUCCESSOR.json
+@@ -3161,7 +3161,7 @@
+   "required_new_files": {
+     "shaders/connected_gallery_floor_finish.gdshader": "d3c9eaca97c765fda1dc395c47b3523a83cca48291774f9313a08045d98bd783",
+     "scripts/grand_pool_gallery_floor_finish.gd": "a03c02871d210fc1526851c940900b1864d2de79ec5ceaa8148c95081386b3d3",
+-    "scripts/grand_pool_receiving_stock.gd": "f7f08b6191f3e848aad84c11c33fcdea7a2feb7c580d4bcdb352be7ed182f93f",
++    "scripts/grand_pool_receiving_stock.gd": "6b788ab87fefbd3d3855b507615155f8577494c7958457a001c55bd9472eaca8",
+     "tests/pool_receiving_finish_checks.gd": "2724229a03da15d615788560d648022ff2d211279c0195ce5b2048b6e607e381",
+     "tests/pool_gallery_floor_finish_checks.gd": "2fc3f33ef7fef20884b04c96e8ce8b2ea078dc343f077e10c276a481cefbd4c5",
+     "docs/validation/grand_pool_connected_finish_r04/SOURCE_STAGE.json": "b5c0b2256de509756190000c6457fdd19839263ffe71b19aaa50bcfe2d6df91c",
+--- a/scripts/grand_pool_receiving_stock.gd
++++ b/scripts/grand_pool_receiving_stock.gd
+@@ -11,7 +11,8 @@
+ 		assert(FileAccess.get_sha256("res://assets/models/"+str(spec.file)) == str(spec.sha256))
+ 		var p: Array = entry.position_xyz
+ 		var item: Node3D = ship.model(root,str(spec.file),str(entry.name),Vector3(p[0],p[1],p[2]),float(entry.yaw_radians))
+-		assert(item.scale == Vector3.ONE and entry.scale_xyz == [1,1,1])
++		assert(item.scale == Vector3.ONE and entry.scale_xyz == [1.0,1.0,1.0])
++		assert(item.transform == Transform3D(Basis.from_euler(Vector3(0,float(entry.yaw_radians),0)),Vector3(p[0],p[1],p[2])), "Stock must retain its exact source-authored rigid transform")
+ 		item.set_meta("placement_support",entry.support_instance)
+ 		item.set_meta("parent_design_id",entry.asset)
+ 		item.set_meta("source_assembly_sha256",data.source_sha256)
+--- a/tests/grand_pool_finish_successor.gd
++++ b/tests/grand_pool_finish_successor.gd
+@@ -1,7 +1,7 @@
+ extends RefCounted
+ # Authenticate a bounded byte-exact inverse before retaining historical proofs.
+ const PROOF := "res://docs/GRAND_POOL_CONNECTED_FINISH_SUCCESSOR.json"
+-const PROOF_SHA := "fe6b6567669581bd200ed0141ed152bd773d5d70121def3f25f5669415bc184b"
++const PROOF_SHA := "43fc79d9bf38f0b921eacf06a694dc95c5da72a1535a6a1cdcc8db37c4ef878c"
+ static func retained_sha256(path: String) -> String:
+ 	assert(path in ["scripts/grand_pool_east_gallery.gd","data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json","scripts/grand_pool_connected_gallery_furniture.gd"])
+ 	assert(FileAccess.get_sha256(PROOF)==PROOF_SHA,"Finish inverse proof changed")
