@@ -112,7 +112,7 @@ func closed_barrier() -> bool:
 	for z in [-127.4,-124.6]:
 		for y in [70.0,71.2,72.35]:
 			var hit: Dictionary=stage.ray(Vector3(-33.75,y,z),Vector3(-34.75,y,z),[actor.get_rid(),cart.get_rid()])
-			if not require(not hit.is_empty() and hit.collider in door.leaves,"Closed source leaf failed barrier ray"):return false
+			if not require(not hit.is_empty() and (hit.collider==door.leaves[0] or hit.collider==door.leaves[1]),"Closed source leaf failed barrier ray"):return false
 	return true
 func grip_cart(expected: bool) -> bool:
 	release_inputs();aim(cart.global_transform*cart.grip_local)

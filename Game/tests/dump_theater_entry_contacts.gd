@@ -39,7 +39,7 @@ func run() -> void:
 	var fixed: Array=[]
 	for item in ship.find_children("*","StaticBody3D",true,false):
 		var body: StaticBody3D=item as StaticBody3D
-		if body in door.leaves or (body.collision_layer&1)==0:continue
+		if body==door.leaves[0] or body==door.leaves[1] or (body.collision_layer&1)==0:continue
 		for item_shape in body.find_children("*","CollisionShape3D",true,false):
 			var shape: CollisionShape3D=item_shape as CollisionShape3D
 			if shape.disabled or shape.shape==null:continue

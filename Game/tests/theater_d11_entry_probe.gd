@@ -146,7 +146,14 @@ static func check_external_geometry(ship: Node3D) -> Dictionary:
 		assert(material.cull_mode==(BaseMaterial3D.CULL_DISABLED if gm.get("doubleSided",false)else BaseMaterial3D.CULL_BACK))
 		var textures: Array=[]
 		if pbr.has("baseColorTexture"):
-			textures.append(helper.texture_check(material.albedo_texture,doc,bin,pbr.baseColorTexture));helper.check_sampler(material,doc,pbr.baseColorTexture)
+			textures.append(helper.texture_check(material.albedo_texture,doc,bin,pbr.baseColorTexture))
+			var ref: Dictionary=pbr.baseColorTexture
+			assert(int(ref.get("texCoord",0))==0 and not ref.has("extensions"))
+			var texture: Dictionary=doc.textures[int(ref.index)]
+			var sampler: Dictionary=doc.samplers[int(texture.sampler)]
+			assert(int(sampler.magFilter)==9728 and int(sampler.minFilter)==9984,"Retained theater closest/nearest-mipmap sampler changed")
+			assert(int(sampler.get("wrapS",10497))==10497 and int(sampler.get("wrapT",10497))==10497)
+			assert(material.texture_filter==BaseMaterial3D.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS and material.texture_repeat,"Native filter must match this exact theater source")
 		else:assert(material.albedo_texture==null)
 		if gm.has("emissiveFactor"):
 			var ef: Array=gm.emissiveFactor
