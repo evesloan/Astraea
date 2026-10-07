@@ -109,10 +109,11 @@ static func retained_sha256(path: String) -> String:
 	return _pool_finish_sha256(relative)
 static func is_current_compiled(value: Dictionary) -> bool:
 	_ensure()
-	return checked and (value==current_compiled or value==botanical_current_compiled or value==team_lounge_current_compiled or value==movement_current_compiled)
+	return checked and (value==current_compiled or value==botanical_current_compiled or value==team_lounge_current_compiled or value==movement_current_compiled or value==moss_current_compiled)
 static func retained_compiled(value: Dictionary) -> Dictionary:
 	_ensure()
 	if not checked: return {}
+	if value==moss_current_compiled: value=movement_current_compiled
 	if value==movement_current_compiled: value=team_lounge_current_compiled
 	if value==team_lounge_current_compiled: value=botanical_current_compiled
 	if value==botanical_current_compiled: value=current_compiled
@@ -168,7 +169,10 @@ static func _botanical_ensure() -> void:
 	botanical_proof=JSON.parse_string(FileAccess.get_file_as_string(BOTANICAL_PROOF))
 	assert(botanical_proof.schema==1 and botanical_proof.added_owner_ids.size()==2)
 	for path in botanical_proof.current_sha256:
-		assert(_team_lounge_current_sha256("res://"+str(path))==str(botanical_proof.current_sha256[path]),"Unreviewed botanical input: "+str(path))
+		var observed_sha: String=_team_lounge_current_sha256("res://"+str(path))
+		if str(path)=="tests/validate_botanical_receiving_access.gd":
+			observed_sha=_moss_current_sha256("res://"+str(path))
+		assert(observed_sha==str(botanical_proof.current_sha256[path]),"Unreviewed botanical input: "+str(path))
 	for path in botanical_proof.predecessors:
 		var spec: Dictionary=botanical_proof.predecessors[path]
 		var retained_path: String="res://"+str(spec.retained_path)
@@ -362,7 +366,7 @@ static func _botanical_validate_guards(floors: Node) -> void:
 		var name_key: String=str(import_names[imported_key])
 		assert(expected.objects.has(name_key) and not seen.has(name_key),"Unknown/duplicate guard mesh")
 		seen[name_key]=true
-		assert(mesh.visible and mesh.material_override==null and mesh.mesh!=null)
+		assert(mesh.visible==(not _moss_guard_is_open(name_key)) and mesh.material_override==null and mesh.mesh!=null)
 		var spec: Dictionary=expected.objects[name_key]
 		var reference: Dictionary={}
 		for triangle in spec.triangles:
@@ -373,7 +377,7 @@ static func _botanical_validate_guards(floors: Node) -> void:
 			reference[key]=int(reference.get(key,0))+1
 		assert(_botanical_guard_triangles(_botanical_faces(mesh.mesh),mesh.global_transform,spec)==reference,"Actual closed guard render no longer matches pinned export")
 		var contacts: Array=mesh.find_children("*","CollisionShape3D",true,false)
-		assert(contacts.size()==1 and not contacts[0].disabled and contacts[0].shape is ConcavePolygonShape3D)
+		assert(contacts.size()==1 and contacts[0].disabled==_moss_guard_is_open(name_key) and contacts[0].shape is ConcavePolygonShape3D)
 		var native_expected: ConcavePolygonShape3D=mesh.mesh.create_trimesh_shape()
 		assert(_botanical_triangles(contacts[0].shape.get_faces(),contacts[0].global_transform)==_botanical_triangles(native_expected.get_faces(),mesh.global_transform),"Actual closed guard contact differs from its source-matching render")
 		assert(contacts[0].get_parent() is StaticBody3D and contacts[0].get_parent().collision_layer==1 and contacts[0].get_parent().collision_mask==1)
@@ -812,18 +816,19 @@ static var movement_current_compiled: Dictionary = {}
 
 static func _movement_ensure() -> void:
 	if movement_checked: return
+	_moss_ensure()
 	assert(FileAccess.get_sha256(MOVEMENT_PROOF)==MOVEMENT_PROOF_SHA,"Exact whole Team Lounge successor proof required")
 	movement_proof=JSON.parse_string(FileAccess.get_file_as_string(MOVEMENT_PROOF))
 	assert(movement_proof.schema==1 and movement_proof.programme_key=="D07_directory_02")
 	assert(movement_proof.added_owner_ids==["D07_movement_studio_floor","D07_movement_studio_entry"])
 	for path in movement_proof.current_sha256:
-		assert(FileAccess.get_sha256("res://"+str(path))==str(movement_proof.current_sha256[path]),"Unreviewed lounge postimage: "+str(path))
+		assert(_moss_current_sha256("res://"+str(path))==str(movement_proof.current_sha256[path]),"Unreviewed lounge postimage: "+str(path))
 	for path in movement_proof.predecessors:
 		var spec: Dictionary=movement_proof.predecessors[path]
 		var retained: String="res://"+str(spec.retained_path)
 		assert(FileAccess.get_sha256(retained)==str(spec.sha256),"Lounge predecessor changed: "+str(path))
 		movement_predecessor_text[path]=FileAccess.get_file_as_string(retained)
-	var own_source := FileAccess.get_file_as_string("res://tests/medical_triage_successor_guard.gd")
+	var own_source := _moss_current_text("res://tests/medical_triage_successor_guard.gd")
 	var begin: String="# MOVEMENT_EXACT_SECTION_"+"BEGIN\n"
 	var end: String="# MOVEMENT_EXACT_SECTION_"+"END\n"
 	assert(own_source.count(begin)==1 and own_source.count(end)==1)
@@ -838,14 +843,14 @@ static func _movement_ensure() -> void:
 		recovered=recovered.replace(str(edit.after),str(edit.before))
 	assert(recovered==str(movement_predecessor_text["tests/medical_triage_successor_guard.gd"]),"Every preceding botanical, medical and pool consumer byte must survive")
 	for path in movement_proof.exact_inverse_edits:
-		var restored:=FileAccess.get_file_as_string("res://"+str(path))
+		var restored:=_moss_current_text("res://"+str(path))
 		for edit in movement_proof.exact_inverse_edits[path]:
 			assert(restored.count(str(edit.after))==int(edit.count),"Exact lounge source inverse cardinality")
 			restored=restored.replace(str(edit.after),str(edit.before))
 		assert(restored==str(movement_predecessor_text[path]),"Every preceding compiler/ship byte must survive: "+str(path))
-	var layout: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/spatial_layout.json"))
+	var layout: Dictionary=JSON.parse_string(_moss_current_text("res://data/spatial_layout.json"))
 	var prior_layout: Dictionary=JSON.parse_string(str(movement_predecessor_text["data/spatial_layout.json"]))
-	movement_current_compiled=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	movement_current_compiled=JSON.parse_string(_moss_current_text("res://data/generated/structural_meshes.json"))
 	var prior_compiled: Dictionary=JSON.parse_string(str(movement_predecessor_text["data/generated/structural_meshes.json"]))
 	for pair in [[layout,prior_layout,movement_proof.added_layout_records],[movement_current_compiled,prior_compiled,movement_proof.added_compiled_records]]:
 		var wanted: Array=pair[1].regions.duplicate(true)
@@ -864,7 +869,7 @@ static func _movement_ensure() -> void:
 	for key in ["regions","source_checks"]:
 		compiled_globals.erase(key);prior_compiled_globals.erase(key)
 	assert(compiled_globals==prior_compiled_globals,"Every non-summary compiler global must survive")
-	var summary: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://docs/LAYOUT_COMPILE_CHECKS.json"))
+	var summary: Dictionary=JSON.parse_string(_moss_current_text("res://docs/LAYOUT_COMPILE_CHECKS.json"))
 	assert(summary==movement_current_compiled.source_checks and summary==movement_proof.compile_summary)
 	assert(summary.movement_studio_additive_preservation.complete_old_records_preserved)
 	assert(movement_current_compiled.regions.size()==279 and prior_compiled.regions.size()==277)
@@ -888,12 +893,13 @@ static func _movement_current_sha256(path: String) -> String:
 
 static func _movement_floor_children(floors: Node) -> Array:
 	_movement_ensure()
-	assert(floors!=null and floors.get_child_count()==279,"Complete actual 279-owner roster required before predecessor projection")
+	var moss_predecessor_children: Array=_moss_floor_children(floors)
+	assert(floors!=null and moss_predecessor_children.size()==279,"Complete actual 279-owner roster required before predecessor projection")
 	var expected: Dictionary={}
 	for record in movement_current_compiled.regions: expected[str(record.id)]=record
 	var seen: Dictionary={}
 	var retained: Array=[]
-	var children: Array=floors.get_children()
+	var children: Array=moss_predecessor_children
 	for index in range(children.size()):
 		assert(children[index] is Node3D)
 		var owner: Node3D=children[index] as Node3D
@@ -1081,3 +1087,266 @@ static func _movement_validate_import(source: Node3D, filename: String, mesh_cou
 	assert(source_meshes==mesh_count)
 	if mesh_count==1290: assert(source_triangles==191456)
 # MOVEMENT_EXACT_SECTION_END
+# MOSS_EXACT_SECTION_BEGIN
+# Bounded 279-to-280 successor: authenticate the whole current world before projection.
+const MOSS_PROOF := "res://data/architecture/packages/moss_sanctuary/MOSS_RUNTIME_PROOF.json"
+const MOSS_PROOF_SHA := "3761cf9c92e86bfd5552e9dd6e5310913b7ba35cc342436d1922905520a1a1e6"
+static var moss_checked := false
+static var moss_proof: Dictionary = {}
+static var moss_predecessor_text: Dictionary = {}
+static var moss_current_compiled: Dictionary = {}
+
+static func _moss_ensure() -> void:
+	if moss_checked: return
+	assert(FileAccess.get_sha256(MOSS_PROOF)==MOSS_PROOF_SHA,"Exact whole Team Lounge successor proof required")
+	moss_proof=JSON.parse_string(FileAccess.get_file_as_string(MOSS_PROOF))
+	assert(moss_proof.schema==1 and moss_proof.programme_key=="D06_directory_03")
+	assert(moss_proof.added_owner_ids==["D06_moss_sanctuary_receiving_floor"])
+	for path in moss_proof.current_sha256:
+		assert(FileAccess.get_sha256("res://"+str(path))==str(moss_proof.current_sha256[path]),"Unreviewed lounge postimage: "+str(path))
+	for path in moss_proof.predecessors:
+		var spec: Dictionary=moss_proof.predecessors[path]
+		var retained: String="res://"+str(spec.retained_path)
+		assert(FileAccess.get_sha256(retained)==str(spec.sha256),"Lounge predecessor changed: "+str(path))
+		moss_predecessor_text[path]=FileAccess.get_file_as_string(retained)
+	var own_source := FileAccess.get_file_as_string("res://tests/medical_triage_successor_guard.gd")
+	var begin: String="# MOSS_EXACT_SECTION_"+"BEGIN\n"
+	var end: String="# MOSS_EXACT_SECTION_"+"END\n"
+	assert(own_source.count(begin)==1 and own_source.count(end)==1)
+	var start:=own_source.find(begin)
+	var finish:=own_source.find(end)+end.length()
+	var block:=own_source.substr(start,finish-start)
+	assert(block.count(MOSS_PROOF_SHA)==1)
+	assert(block.replace(MOSS_PROOF_SHA,"<PROOF_SHA>").sha256_text()==str(moss_proof.integration_block_normalized_sha256),"Exact lounge consumer implementation required")
+	var recovered:=own_source.substr(0,start)+own_source.substr(finish)
+	for edit in moss_proof.consumer_inverse_edits:
+		assert(recovered.count(str(edit.after))==int(edit.count),"Exact lounge consumer inverse cardinality")
+		recovered=recovered.replace(str(edit.after),str(edit.before))
+	assert(recovered==str(moss_predecessor_text["tests/medical_triage_successor_guard.gd"]),"Every preceding botanical, medical and pool consumer byte must survive")
+	for path in moss_proof.exact_inverse_edits:
+		var restored:=FileAccess.get_file_as_string("res://"+str(path))
+		for edit in moss_proof.exact_inverse_edits[path]:
+			assert(restored.count(str(edit.after))==int(edit.count),"Exact lounge source inverse cardinality")
+			restored=restored.replace(str(edit.after),str(edit.before))
+		assert(restored==str(moss_predecessor_text[path]),"Every preceding compiler/ship byte must survive: "+str(path))
+	var layout: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/spatial_layout.json"))
+	var prior_layout: Dictionary=JSON.parse_string(str(moss_predecessor_text["data/spatial_layout.json"]))
+	moss_current_compiled=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var prior_compiled: Dictionary=JSON.parse_string(str(moss_predecessor_text["data/generated/structural_meshes.json"]))
+	for pair in [[layout,prior_layout,moss_proof.added_layout_records],[moss_current_compiled,prior_compiled,moss_proof.added_compiled_records]]:
+		var wanted: Array=pair[1].regions.duplicate(true)
+		wanted.append_array(pair[2])
+		assert(pair[0].regions==wanted,"Every full preceding record/order plus exactly the two approved lounge records required")
+		var seen: Dictionary={}
+		for record in pair[0].regions:
+			assert(not seen.has(str(record.id)),"Duplicate current floor owner")
+			seen[str(record.id)]=true
+	var current_globals: Dictionary=layout.duplicate(true)
+	var prior_globals: Dictionary=prior_layout.duplicate(true)
+	current_globals.erase("regions");prior_globals.erase("regions")
+	assert(current_globals==prior_globals,"Every predecessor global/void record must survive")
+	var compiled_globals: Dictionary=moss_current_compiled.duplicate(true)
+	var prior_compiled_globals: Dictionary=prior_compiled.duplicate(true)
+	for key in ["regions","source_checks"]:
+		compiled_globals.erase(key);prior_compiled_globals.erase(key)
+	assert(compiled_globals==prior_compiled_globals,"Every non-summary compiler global must survive")
+	var summary: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://docs/LAYOUT_COMPILE_CHECKS.json"))
+	assert(summary==moss_current_compiled.source_checks and summary==moss_proof.compile_summary)
+	assert(summary.moss_sanctuary_additive_preservation.complete_old_records_preserved)
+	assert(moss_current_compiled.regions.size()==280 and prior_compiled.regions.size()==279)
+	for row in moss_proof.added_compiled_records:
+		assert(row.deck=="D06" and float(row.floor_y)==27 and float(row.thickness)==.24)
+	assert(float(moss_proof.added_compiled_records[0].structural_area_m2)==3128.0)
+	moss_checked=true
+
+static func _moss_current_text(path: String) -> String:
+	_moss_ensure()
+	var relative:=_relative(path)
+	if relative in moss_proof.projected_paths: return str(moss_predecessor_text[relative])
+	return FileAccess.get_file_as_string("res://"+relative)
+
+static func _moss_current_sha256(path: String) -> String:
+	_moss_ensure()
+	var relative:=_relative(path)
+	if relative in moss_proof.projected_paths: return _moss_current_text(relative).sha256_text()
+	return FileAccess.get_sha256("res://"+relative)
+
+static func _moss_floor_children(floors: Node) -> Array:
+	_moss_ensure()
+	assert(floors!=null and floors.get_child_count()==280,"Complete actual 280-owner roster required before predecessor projection")
+	var expected: Dictionary={}
+	for record in moss_current_compiled.regions: expected[str(record.id)]=record
+	var seen: Dictionary={}
+	var retained: Array=[]
+	var children: Array=floors.get_children()
+	for index in range(children.size()):
+		assert(children[index] is Node3D)
+		var owner: Node3D=children[index] as Node3D
+		var ident:=str(owner.name)
+		assert(expected.has(ident) and not seen.has(ident),"Unknown, duplicate or missing actual lounge-era owner")
+		assert(ident==str(moss_current_compiled.regions[index].id),"Complete owner order changed")
+		seen[ident]=true
+		_botanical_validate_slab(owner,expected[ident])
+		if ident not in moss_proof.added_owner_ids: retained.append(owner)
+	assert(seen.size()==280 and retained.size()==279)
+	_moss_validate_runtime(floors)
+	return retained
+
+static func _moss_v(value: Array) -> Vector3:
+	return Vector3(float(value[0]),float(value[1]),float(value[2]))
+
+static func _moss_guard_is_open(name_key: String) -> bool:
+	return name_key.begins_with("BOTCOURT_port_PORTAL_CLOSURE_")
+
+static func _moss_validate_runtime(floors: Node) -> void:
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://"+str(moss_proof.runtime_manifest)))
+	var space: Node=floors.get_parent()
+	var source: Node3D=space.get_node("D06_MossSanctuary_Receiving_WIP") as Node3D
+	assert(source.transform==Transform3D.IDENTITY and source.get_meta("programme_key","")=="D06_directory_03")
+	assert(source.get_meta("source_sha256","")==data.source_sha256)
+	assert(FileAccess.get_sha256(str(data.derivative_file))==data.derivative_sha256)
+	var options:=ConfigFile.new()
+	assert(options.load(str(data.derivative_file)+".import")==OK)
+	assert(bool(options.get_value("params","meshes/force_disable_compression",false)))
+	assert(not bool(options.get_value("params","meshes/generate_lods",true)))
+	assert(str(options.get_value("params","nodes/root_type",""))=="Node3D")
+	var nodes: Dictionary={}
+	for node in source.find_children("WP10_N*","Node3D",true,false):
+		assert(not nodes.has(str(node.name)));nodes[str(node.name)]=node
+	var template: Node3D=(load(str(data.derivative_file)) as PackedScene).instantiate()
+	var meshes:=0
+	for original in template.find_children("*","Node3D",true,false):
+		assert(nodes.has(str(original.name)))
+		var actual: Node3D=nodes[str(original.name)]
+		assert(actual.get_class()==original.get_class() and actual.transform==original.transform)
+		if not original is MeshInstance3D: continue
+		meshes+=1
+		var actual_mesh: MeshInstance3D=actual as MeshInstance3D
+		assert(actual_mesh.visible and actual_mesh.mesh==original.mesh)
+		var contacts: Array=actual.find_children("*","CollisionShape3D",false,false)
+		contacts=actual.find_children("ExactMeshLocalFaces","CollisionShape3D",true,false)
+		if str(actual.name)==str(data.water_node):
+			assert(contacts.is_empty() and actual.find_children("*","StaticBody3D",true,false).is_empty())
+			var water: ShaderMaterial=actual_mesh.material_override as ShaderMaterial
+			assert(water!=null and water.shader==load("res://shaders/flowing_water.gdshader") and is_equal_approx(float(water.get_shader_parameter("flow_speed")),.12))
+		else:
+			assert(actual_mesh.material_override==null and contacts.size()==1 and not contacts[0].disabled)
+			assert(contacts[0].shape is ConcavePolygonShape3D and contacts[0].get_parent().collision_layer==1 and contacts[0].get_parent().collision_mask==1)
+			var expected: ConcavePolygonShape3D=actual_mesh.mesh.create_trimesh_shape()
+			assert(contacts[0].shape.get_faces()==expected.get_faces())
+	assert(meshes==976 and source.find_children("*","StaticBody3D",true,false).size()==975)
+	template.free()
+	_moss_validate_import(source,str(data.derivative_file).get_file(),976)
+	assert(source.find_children("*","Light3D",true,false).size()==36)
+	for record in data.lights:
+		var parent: Node3D=nodes[str(record.runtime_name)]
+		var lamp: SpotLight3D=parent.get_node("PhysicalSource") as SpotLight3D
+		assert(lamp.transform==Transform3D.IDENTITY and lamp.get_meta("fixture_powered",false) and lamp.get_meta("source_fixture","")==record.source_name)
+		assert(lamp.get_meta("receiving_calibration_pending",false))
+		var wanted:=SpotLight3D.new()
+		wanted.light_energy=float(record.energy);wanted.spot_range=float(record.range_m);wanted.spot_angle=float(record.outer_angle_degrees)
+		assert(lamp.light_energy==wanted.light_energy and lamp.spot_range==wanted.spot_range and lamp.spot_angle==wanted.spot_angle)
+		assert(lamp.light_color==Color(record.color[0],record.color[1],record.color[2]))
+		wanted.free()
+	var info: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/moss_sanctuary/information_targets.json"))
+	for record in info.candidates:
+		var target: Node3D=source.get_node(NodePath(str(record.id)))
+		assert(target.get_script()==load("res://scripts/moss_sanctuary/amenity_information.gd"))
+		assert(target.candidate_id==str(record.id) and target.prompt==str(record.label) and target.information==str(record.information))
+		assert(target.global_position.distance_to(_moss_v(record.focus_world_m))<.00001)
+		var area: Area3D=target.get_node("AuthoredInformationTarget")
+		assert(area.collision_layer==2 and area.collision_mask==0 and not area.monitoring and not area.monitorable)
+		var shape: CollisionShape3D=area.get_child(0)
+		assert(not shape.disabled and shape.shape is BoxShape3D and shape.shape.size==_moss_v(record.target_size_m))
+	var owner: Node=floors.get_node(NodePath(str(data.floor_owner)))
+	var finished:=0
+	for key in data.finish_top_chunks:
+		var visual: MeshInstance3D=owner.get_node(NodePath(str(key)))
+		var material: ShaderMaterial=visual.get_surface_override_material(0)
+		assert(material!=null and material.shader==load(str(data.floor_shader)))
+		for texture in data.finish_textures: assert(material.get_shader_parameter(str(texture.role))==load(str(texture.file)))
+		finished+=1
+	assert(finished==moss_proof.added_compiled_records[0].render_chunks.size())
+	var wrapper: Node=space.get_node("BotanicalCourtReceivingClosedInterim")
+	var opened:=0
+	var closed:=0
+	for visual in wrapper.find_children("*","MeshInstance3D",true,false):
+		var contacts: Array=visual.find_children("*","CollisionShape3D",true,false)
+		assert(contacts.size()==1)
+		if str(visual.name) in data.opened_guard_names:
+			assert(not visual.visible and contacts[0].disabled and visual.get_meta("moss_supported_portal_open",false));opened+=1
+		else:
+			assert(visual.visible and not contacts[0].disabled and not visual.has_meta("moss_supported_portal_open"));closed+=1
+	assert(opened==14 and closed==122)
+	var budgets: Array=space.get_parent().find_children("LocalShadowSourceBudget","Node",true,false)
+	assert(budgets.size()==1 and budgets[0].shadow_source_budget==8 and budgets[0].MAX_VISIBILITY_CANDIDATES==32)
+
+static func _moss_validate_import(source: Node3D, filename: String, mesh_count: int) -> void:
+	var actual: Dictionary={}
+	for node in source.find_children("WP10_N*","Node3D",true,false):
+		assert(not actual.has(str(node.name)));actual[str(node.name)]=node
+	# Decode the pinned GLB independently; a second imported template alone cannot
+	# establish that the importer preserved the source's actual position/UV arrays.
+	var blob:=FileAccess.get_file_as_bytes("res://assets/models/"+filename)
+	assert(blob.decode_u32(0)==0x46546c67 and blob.decode_u32(4)==2 and blob.decode_u32(8)==blob.size())
+	var json_size:=int(blob.decode_u32(12))
+	assert(blob.decode_u32(16)==0x4e4f534a)
+	var document: Dictionary=JSON.parse_string(blob.slice(20,20+json_size).get_string_from_utf8())
+	var binary_start:=20+json_size
+	var binary_size:=int(blob.decode_u32(binary_start))
+	assert(blob.decode_u32(binary_start+4)==0x004e4942 and binary_start+8+binary_size==blob.size())
+	var binary:=blob.slice(binary_start+8)
+	assert(document.nodes.size()==actual.size())
+	var parents: Dictionary={}
+	for index in range(document.nodes.size()):
+		for child in document.nodes[index].get("children",[]):
+			assert(not parents.has(int(child)),"Derivative source must be a unique-parent tree")
+			parents[int(child)]=index
+	var source_triangles:=0
+	var source_meshes:=0
+	var material_seen: Dictionary={}
+	for index in range(document.nodes.size()):
+		var record: Dictionary=document.nodes[index]
+		var name_key:=str(record.name)
+		assert(actual.has(name_key),"Every original identity and generated batch must survive import")
+		var node: Node3D=actual[name_key] as Node3D
+		assert(node!=null)
+		var parent: Node=source if not parents.has(index) else actual[str(document.nodes[int(parents[index])].name)]
+		assert(node.get_parent()==parent,"Exact source parentage must survive import")
+		assert(node.position==_team_lounge_v(record.get("translation",[0,0,0])),"Exact source local translation must survive import")
+		if not record.has("mesh"): continue
+		assert(node is MeshInstance3D)
+		var visual: MeshInstance3D=node as MeshInstance3D
+		var expected_mesh: Dictionary=document.meshes[int(record.mesh)]
+		assert(visual.mesh.get_surface_count()==expected_mesh.primitives.size())
+		source_meshes+=1
+		for surface in range(expected_mesh.primitives.size()):
+			var primitive: Dictionary=expected_mesh.primitives[surface]
+			assert(int(primitive.get("mode",4))==4 and primitive.attributes.has("POSITION") and primitive.attributes.has("TEXCOORD_0"))
+			var position_accessor:=_team_lounge_accessor(document,binary,int(primitive.attributes.POSITION))
+			var uv_accessor:=_team_lounge_accessor(document,binary,int(primitive.attributes.TEXCOORD_0))
+			assert(position_accessor.type=="VEC3" and uv_accessor.type=="VEC2" and position_accessor.component_type==5126 and uv_accessor.component_type==5126)
+			assert(position_accessor.count==uv_accessor.count)
+			var positions: PackedFloat32Array=position_accessor.bytes.to_float32_array()
+			var uvs: PackedFloat32Array=uv_accessor.bytes.to_float32_array()
+			var indices:=_team_lounge_source_indices(document,binary,primitive,int(position_accessor.count))
+			assert(indices.size()%3==0)
+			var keys: Array[String]=[]
+			keys.resize(int(position_accessor.count))
+			for vertex in range(keys.size()): keys[vertex]=_team_lounge_corner_key(Vector3(positions[vertex*3],positions[vertex*3+1],positions[vertex*3+2]),Vector2(uvs[vertex*2],uvs[vertex*2+1]))
+			var expected: Dictionary={}
+			for start in range(0,indices.size(),3):
+				# glTF counter-clockwise winding is reversed by Godot's importer.
+				var corners: Array[String]=[keys[indices[start]],keys[indices[start+2]],keys[indices[start+1]]]
+				var key:=_team_lounge_oriented_triangle(corners)
+				expected[key]=int(expected.get(key,0))+1
+			assert(_team_lounge_import_surface(visual.mesh,surface)==expected,"Exact derivative position/UV/winding/multiplicity must survive; no degenerate-face exemption")
+			source_triangles+=int(indices.size()/3)
+			var material_index:=int(primitive.material)
+			var material: Material=visual.mesh.surface_get_material(surface)
+			assert(material!=null and material.resource_name==str(document.materials[material_index].name),"Exact source material assignment required")
+			if material_seen.has(material_index): assert(material_seen[material_index]==material)
+			else: material_seen[material_index]=material
+	assert(source_meshes==mesh_count)
+	assert(source_triangles==760942)
+# MOSS_EXACT_SECTION_END
