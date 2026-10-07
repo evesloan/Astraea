@@ -51,6 +51,7 @@ func _ready() -> void:
 	var lower_hull:=model($ShipSpace/Districts,"AST-HUL-001.glb","LowerHullBody_WIP",Vector3.ZERO)
 	lower_hull.set_meta("persistent_id","lower_hull_body_001")
 	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory,{"staff_floor":surface("staff_floor",Color.WHITE)})
+	model($ShipSpace,"AST-ATR-001_botanical_receiving_closed002.glb","BotanicalCourtReceivingClosedInterim",Vector3.ZERO)
 	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-28.623,deck_y[5],0),PI/2)
 	model($ShipSpace,"AST-ATR-001.glb","AuthoredAtriumGuards_All16Levels",Vector3.ZERO)
 	build_retail_terrace()
@@ -92,6 +93,7 @@ func _ready() -> void:
 	load("res://scripts/grand_lantern_theater_section.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/court_a_increment004.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/theater_stair_walking_contacts.gd").build($ShipSpace/Districts)
+	load("res://scripts/medical_welcome.gd").build($ShipSpace/Districts,self)
 	var cleaning_cart:RigidBody3D=(load("res://scripts/cleaning_cart.gd")as GDScript).new()
 	cleaning_cart.name="CustodialCart"
 	cleaning_cart.position=Vector3(85.2,84.04,-37.3)
@@ -105,6 +107,7 @@ func _ready() -> void:
 	lighting_budget.name = "LocalShadowSourceBudget"
 	lighting_budget.set_script(load("res://scripts/lighting_budget.gd"))
 	$ShipSystems.add_child(lighting_budget)
+	preload("res://scripts/team_lounge_receiving.gd").build(self)
 	lighting_budget.configure(self,player)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
