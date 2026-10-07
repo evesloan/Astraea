@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "floor_y": 27,
+  "scope": "Exact closed botanical predecessor plus only the supported Moss doorway, interior and return",
+  "floor_owners": {
+    "port": "D06_botanical_court_port_receiving_floor",
+    "starboard": "D06_botanical_court_starboard_receiving_floor"
+  },
+  "guard_root": "ShipSpace/BotanicalCourtReceivingClosedInterim",
+  "model_pins": {
+    "AST-ATR-001_botanical_receiving_closed002.glb": "7c16e244527be2e97b705db1e2b0f449ec3e04c74261b46232201f004b4609de"
+  },
+  "future_portals": [
+    {
+      "programme_id": "D06_directory_03",
+      "name": "Moss Sanctuary",
+      "edge_x": -8,
+      "floor_y": 27,
+      "center_z": -216,
+      "clear_width_m": 4.2,
+      "state": "OPEN"
+    },
+    {
+      "programme_id": "D06_directory_04",
+      "name": "Botanical Nursery",
+      "edge_x": 8,
+      "floor_y": 27,
+      "center_z": -216,
+      "clear_width_m": 6,
+      "state": "CLOSED"
+    }
+  ],
+  "unchanged_input_sha256": {
+    "scripts/player.gd": "990e825c7cd08d2b26760be7436c342188a85fbe1cc60f704fd009ac1d71aaa3",
+    "tests/medical_test_scene.gd": "ceeb6f7217927d706673b262a8b1d77693246aec57435dded147237499dd0ff8",
+    "tests/validate_medical_access.gd": "0d717f2ece64a58bb7afddda62fea33b1a37afe406b6a16ba08ef6e628b9dd70",
+    "scripts/structural_floor_builder.gd": "449ab410664b83e243537a899ae46e658b9cd1b3f18de19b2e2690933854bf01",
+    "scripts/static_contact_cache.gd": "d3440479423f19660a6e68af2f730549644eb9ff1f86ccf3254a4e0589c58e35",
+    "data/generated/structural_meshes.json": "b71de3e278399d4ad146cad01987645f4efb3a65f934ceb2847d3d8dd849a6d3",
+    "assets/models/AST-ATR-001_botanical_receiving_closed002.glb.import": "e1707c8a048787c2474e592386deb928806010e3ed038979ecb9222e53db8a54"
+  },
+  "movement_convention": "Same key/Input.parse_input_event and W-input braking formula as validate_medical_access; no movement/controller property modifications.",
+  "initial_verified_arrival_xyz": [
+    0,
+    27.1,
+    -250
+  ],
+  "later_actor_teleports_permitted": false,
+  "claims_excluded": [
+    "room entry",
+    "cart transfer",
+    "species fit",
+    "finished art",
+    "full ship acceptance"
+  ]
+}

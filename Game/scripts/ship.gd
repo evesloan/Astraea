@@ -109,6 +109,7 @@ func _ready() -> void:
 	$ShipSystems.add_child(lighting_budget)
 	preload("res://scripts/team_lounge_receiving.gd").build(self)
 	load("res://scripts/movement_studio_receiving.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/moss_sanctuary_receiving.gd").build(self)
 	lighting_budget.configure(self,player)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:

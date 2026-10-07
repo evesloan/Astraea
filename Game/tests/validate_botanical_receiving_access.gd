@@ -1,7 +1,7 @@
 extends "res://tests/medical_test_scene.gd"
 # Reuse existing input/ray/support helpers; only this bounded D06 exercise is new.
-const BOTANICAL_CONTRACT := "res://tests/fixtures/botanical_receiving_acceptance010.json"
-const BOTANICAL_CONTRACT_SHA := "8b2f830ac96fc565bde7f17528471b45997e5c5cd18a1ae1c2e67f792e36d682"
+const BOTANICAL_CONTRACT := "res://tests/fixtures/botanical_moss_receiving_acceptance011.json"
+const BOTANICAL_CONTRACT_SHA := "81c9f0364f49ec765dddcacf1e9eade05892d6f1be8f5777dfc68d3d743fe714"
 var walked_frames: int=0
 var travelled_m: float=0.0
 var guard_rays: int=0
@@ -12,6 +12,8 @@ var crossed_seams: Dictionary={}
 var track_motion: bool=false
 var guard_probe_exclusions: Array[RID]=[]
 var footprint_support_queries: int=0
+var moss_portal_crossings: int=0
+var moss_route_completed: bool=false
 
 func _initialize() -> void:
 	test_name="botanical_receiving_access"
@@ -21,7 +23,7 @@ func vec(value: Vector3) -> Array: return [value.x,value.y,value.z]
 
 func write_receipt(status: String,detail: String="") -> void:
 	if receipt_path.is_empty(): return
-	var out: Dictionary={"test":test_name,"status":status,"detail":detail,"physics_frames":frames,"support_samples":support_samples,"auxiliary_underlying_floor_footprint_queries":footprint_support_queries,"ordinary_walk_frames":walked_frames,"walked_metres":travelled_m,"guard_rays":guard_rays,"axial_clearance_queries":axial_clearance_queries,"completed_actual_player_bumps":completed_bumps,"seams_crossed_by_player":crossed_seams,"initial_verified_arrivals":1 if track_motion else 0,"later_teleports":0,"fixture_sha256":FileAccess.get_sha256(BOTANICAL_CONTRACT),"metrics":metrics,"scope":"Bounded installed D06 receiving floor/closed-guard player check. No room entry, cart/controller tuning, species acceptance, final art or all-ship claim."}
+	var out: Dictionary={"test":test_name,"status":status,"detail":detail,"physics_frames":frames,"support_samples":support_samples,"auxiliary_underlying_floor_footprint_queries":footprint_support_queries,"ordinary_walk_frames":walked_frames,"walked_metres":travelled_m,"guard_rays":guard_rays,"axial_clearance_queries":axial_clearance_queries,"completed_actual_player_bumps":completed_bumps,"seams_crossed_by_player":crossed_seams,"initial_verified_arrivals":1 if track_motion else 0,"later_teleports":0,"fixture_sha256":FileAccess.get_sha256(BOTANICAL_CONTRACT),"metrics":metrics,"moss_portal_crossings":moss_portal_crossings,"moss_route_completed":moss_route_completed,"scope":"Bounded actual unchanged-player Botanical receiving and Moss interior/return; cart/species, visuals and full ship acceptance remain separate."}
 	var file:=FileAccess.open(receipt_path,FileAccess.WRITE)
 	if file!=null: file.store_string(JSON.stringify(out,"  ")+"\n")
 
@@ -31,6 +33,7 @@ func advance(count: int,check_d06_support: bool=false) -> bool:
 		if not await super.advance(1,false): return false
 		if not track_motion: continue
 		if not require(actor.global_position.distance_to(before)<.25,"Unexpected player displacement; no post-start teleport/recovery allowed"): return false
+		if (before.x>-8 and actor.global_position.x<=-8) or (before.x<-8 and actor.global_position.x>=-8): moss_portal_crossings+=1
 		var was_x: float=before.x
 		var now_x: float=actor.global_position.x
 		if (was_x>-4 and now_x<=-4) or (was_x<-4 and now_x>=-4): crossed_seams["port"]=int(crossed_seams.get("port",0))+1
@@ -89,12 +92,20 @@ func static_interfaces() -> bool:
 		for index in range(59):
 			var z: float=-237.5+float(index)*.5
 			for y in [27.4,28.0]:
-				if not guard_contact(Vector3(float(side)*7.4,float(y),z),Vector3(float(side)*8.2,float(y),z),"closed outer edge"): return false
+				if side==-1 and z> -218.1 and z< -213.9:
+					if not require(ray(Vector3(-7.4,float(y),z),Vector3(-8.2,float(y),z),exclusions()).is_empty(),"Moss portal must now be clear"): return false
+				else:
+					if not guard_contact(Vector3(float(side)*7.4,float(y),z),Vector3(float(side)*8.2,float(y),z),"closed outer edge"): return false
 		for z_and_sign in [[-238.0,1.0],[-208.0,-1.0]]:
 			var z: float=float(z_and_sign[0]);var inward: float=float(z_and_sign[1])
 			for y in [27.4,28.0]:
 				if not guard_contact(Vector3(float(side)*6,float(y),z+inward*.7),Vector3(float(side)*6,float(y),z-inward*.2),"band end"): return false
 	for portal in data.future_portals:
+		if portal.programme_id=="D06_directory_03":
+			if not require(portal.state=="OPEN" and portal.floor_y==27 and portal.center_z==-216 and portal.edge_x==-8 and portal.clear_width_m==4.2,"Exact Moss portal identity/datum required"): return false
+			for x in [-7.98,-8.02,-8.5,-9.0,-10.0]:
+				if not support_at(Vector3(float(x),27,-216)): return false
+			continue
 		if not require(portal.state=="CLOSED" and portal.floor_y==27 and portal.center_z==-216,"Future portal identity/datum changed"): return false
 		var side: float=-1.0 if float(portal.edge_x)<0 else 1.0
 		for z in [float(portal.center_z)-float(portal.clear_width_m)/2+.25,float(portal.center_z),float(portal.center_z)+float(portal.clear_width_m)/2-.25]:
@@ -138,10 +149,13 @@ func exercise() -> bool:
 		if not await route([[x,-236.5],[x,-228],[x,-216],[x,-209.5]]): return false
 		if not await bump_guard(label+" aft end",Vector2(0,1)): return false
 		if not await route([[x,-209.5],[x,-216]]): return false
-		if not await bump_guard(label+" closed future portal",Vector2(float(side),0)): return false
+		if side==-1:
+			if not await moss_interior(): return false
+		else:
+			if not await bump_guard(label+" closed future portal",Vector2(float(side),0)): return false
 		if not await route([[x,-216],[x,-234],[0,-234]]): return false
 	if not await route([[0,-209.5],[0,-234],[0,-250]]): return false
-	if not require(completed_bumps.size()==6 and int(crossed_seams.get("port",0))>=2 and int(crossed_seams.get("starboard",0))>=2,"Both seams must be crossed out/back and all six actual barriers contacted"): return false
+	if not require(completed_bumps.size()==5 and moss_portal_crossings>=2 and moss_route_completed and int(crossed_seams.get("port",0))>=2 and int(crossed_seams.get("starboard",0))>=2,"Both seams and Moss doorway must be crossed out/back and all five retained actual barriers contacted"): return false
 	metrics["future_portals"]=data.future_portals
 	metrics["axial_strip_preserved_x_m"]=[-4,4]
 	metrics["capsule_radius_m"]=.3;metrics["capsule_height_m"]=1.8
@@ -178,5 +192,41 @@ func run() -> void:
 	if not await exercise(): return
 	if failed: return
 	release_inputs();write_receipt("PASS")
-	print(test_name.to_upper()," PASS: ordinary unchanged-player receiving check; ",walked_frames," walk frames, ",support_samples," support rays, ",guard_rays," guard rays, ",completed_bumps.size()," real player barrier contacts. No room entry or species acceptance.")
+	print(test_name.to_upper()," PASS: ordinary unchanged-player receiving check; ",walked_frames," walk frames, ",support_samples," support rays, ",guard_rays," guard rays, ",completed_bumps.size()," real retained barrier contacts plus Moss interior/return. No cart/species acceptance.")
 	main.queue_free();await process_frame;quit(0)
+
+# MOSS_ACCESS_EXACT_SECTION_BEGIN
+func moss_interior() -> bool:
+	# Source public route centre-lines, explicit original entry datum and dry garden loop.
+	if not await route([[-6,-216],[-10,-216],[-18,-216],[-18,-238],[-44,-238],[-44,-216],[-44,-188],[-18,-188],[-18,-216]]): return false
+	# The care route is source-authored, reached through its existing cross-path.
+	if not await route([[-44,-216],[-51,-216],[-51,-245],[-42.2,-245],[-42.2,-246.6]]): return false
+	if not await read_moss_information("WP10_info_care_01"): return false
+	if not await route([[-42.2,-245],[-51,-245],[-51,-216],[-44,-216],[-18,-216],[-18,-222.2],[-19.8,-222.2]]): return false
+	if not await read_moss_information("WP10_info_stream_01"): return false
+	if not await route([[-18,-222.2],[-18,-216],[-10,-216],[-6,-216]]): return false
+	moss_route_completed=true
+	return true
+
+func read_moss_information(identity: String) -> bool:
+	var target: Node3D=ship.get_node("ShipSpace/D06_MossSanctuary_Receiving_WIP/"+identity)
+	var delta: Vector3=target.global_position-actor.camera.global_position
+	actor.rotation.y=atan2(-delta.x,-delta.z)
+	var pitch: float=atan2(delta.y,Vector2(delta.x,delta.z).length())
+	actor.set("pitch",pitch);actor.camera.rotation.x=pitch
+	focus(true)
+	if not await advance(10,true): return false
+	if not require(not target.expanded,"Information starts closed"): return false
+	key(KEY_E,true)
+	if not await advance(1,true): return false
+	key(KEY_E,false)
+	if not await advance(5,true): return false
+	if not require(target.expanded,"Original RMB/E did not open "+identity): return false
+	key(KEY_E,true)
+	if not await advance(1,true): return false
+	key(KEY_E,false)
+	if not await advance(5,true): return false
+	if not require(not target.expanded,"Original RMB/E did not close "+identity): return false
+	focus(false)
+	return true
+# MOSS_ACCESS_EXACT_SECTION_END
