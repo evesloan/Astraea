@@ -153,7 +153,7 @@ static func validate_current(floors: Node) -> Dictionary:
 # BOTANICAL_EXACT_SECTION_BEGIN
 # One bounded extension of this existing consumer, not a new adapter chain.
 const BOTANICAL_PROOF := "res://data/architecture/packages/botanical_court/BOTANICAL_RUNTIME_PROOF.json"
-const BOTANICAL_PROOF_SHA := "047b69640d2ef0c6e51a94d4364325edc598841dc96f0b96cbc55d2b39e075d1"
+const BOTANICAL_PROOF_SHA := "5a83b6c7241d5087f44182980a8836e3faee668fb68d1f57c83df33c8339678e"
 static var botanical_checked := false
 static var botanical_proof: Dictionary = {}
 static var botanical_predecessor_text: Dictionary = {}
@@ -316,12 +316,35 @@ static func _botanical_guard_triangles(faces: PackedVector3Array, pose: Transfor
 		result[triangle_key]=int(result.get(triangle_key,0))+1
 	return result
 
+static func _botanical_import_names(expected_objects: Dictionary) -> Dictionary:
+	var mapping: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://"+str(botanical_proof.import_name_map_path)))
+	assert(mapping.schema==1 and mapping.mesh_count==136 and mapping.identity_name_count==130 and mapping.pairs.size()==6)
+	assert(str(mapping.source_export_sha256)==str(botanical_proof.current_sha256["assets/models/"+str(botanical_proof.guard_file)]))
+	assert(str(mapping.expected_geometry_sha256)==str(botanical_proof.current_sha256[str(botanical_proof.guard_geometry_path)]))
+	var source_to_import: Dictionary={}
+	var alias_targets: Dictionary={}
+	for pair in mapping.pairs:
+		var source_name: String=str(pair.source_name)
+		var imported_name: String=str(pair.imported_name)
+		assert(source_name!=imported_name and expected_objects.has(source_name) and not expected_objects.has(imported_name),"Alias must name one exact source mesh and a distinct imported spelling")
+		assert(not source_to_import.has(source_name) and not alias_targets.has(imported_name),"Import alias must be bijective")
+		source_to_import[source_name]=imported_name
+		alias_targets[imported_name]=true
+	var import_to_source: Dictionary={}
+	for source_name in expected_objects:
+		var imported_name: String=str(source_to_import.get(str(source_name),str(source_name)))
+		assert(not import_to_source.has(imported_name),"Alias collides with another expected imported name")
+		import_to_source[imported_name]=str(source_name)
+	assert(import_to_source.size()==136 and source_to_import.size()==6)
+	return import_to_source
+
 static func _botanical_validate_guards(floors: Node) -> void:
 	var wrapper: Node3D=floors.get_parent().get_node(NodePath(str(botanical_proof.guard_root))) as Node3D
 	assert(wrapper!=null and wrapper.global_transform==Transform3D.IDENTITY)
 	assert(wrapper.get_meta("catalogue_file","")==str(botanical_proof.guard_file))
 	assert(wrapper.get_child_count()==1,"Exactly one source guard assembly required")
 	var expected: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://"+str(botanical_proof.guard_geometry_path)))
+	var import_names: Dictionary=_botanical_import_names(expected.objects)
 	var visual_root: Node=wrapper.get_child(0)
 	var meshes: Array=visual_root.find_children("*","MeshInstance3D",true,false)
 	assert(meshes.size()==expected.objects.size())
@@ -331,7 +354,9 @@ static func _botanical_validate_guards(floors: Node) -> void:
 	var seen: Dictionary={}
 	for mesh_value in meshes:
 		var mesh: MeshInstance3D=mesh_value as MeshInstance3D
-		var name_key:=str(mesh.name)
+		var imported_key:=str(mesh.name)
+		assert(import_names.has(imported_key),"Unknown imported guard mesh name")
+		var name_key: String=str(import_names[imported_key])
 		assert(expected.objects.has(name_key) and not seen.has(name_key),"Unknown/duplicate guard mesh")
 		seen[name_key]=true
 		assert(mesh.visible and mesh.material_override==null and mesh.mesh!=null)
