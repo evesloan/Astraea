@@ -1,0 +1,1368 @@
+[
+  {
+    "package": "WP02_D07_directory_10",
+    "restored_dependency_count": 48,
+    "restored_dependency_bytes": 7263334,
+    "all_map_dependencies_verified": true,
+    "embedded_builder_gate_count": 8,
+    "embedded_builder_gate_failures": [],
+    "scripts": [
+      {
+        "file": "source/build_section.py",
+        "sha256": "3a7d8fc33d2546456bd9ed1ef65509f6a5ebac68f267d64ae7362776bacdf5df",
+        "syntax_pass": true,
+        "imports": [
+          "from pathlib import Path",
+          "import bpy, bmesh, math, json, hashlib, sys",
+          "from mathutils import Vector, Matrix"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 9,
+            "expression": "(ROOT / p).mkdir(exist_ok=True)"
+          },
+          {
+            "line": 10,
+            "expression": "json.loads((ROOT / 'docs/current_allocation.json').read_text(encoding='utf-8-sig'))"
+          },
+          {
+            "line": 10,
+            "expression": "(ROOT / 'docs/current_allocation.json').read_text(encoding='utf-8-sig')"
+          },
+          {
+            "line": 12,
+            "expression": "hashlib.sha256(p.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 12,
+            "expression": "p.read_bytes()"
+          },
+          {
+            "line": 15,
+            "expression": "bpy.ops.wm.read_factory_settings(use_empty=True)"
+          },
+          {
+            "line": 20,
+            "expression": "json.loads((ROOT / 'dependencies/materials/material_manifest.json').read_text())"
+          },
+          {
+            "line": 20,
+            "expression": "(ROOT / 'dependencies/materials/material_manifest.json').read_text()"
+          },
+          {
+            "line": 24,
+            "expression": "bpy.data.images.load(str(ROOT / 'dependencies/materials' / spec['base_color_file']))"
+          },
+          {
+            "line": 55,
+            "expression": "c.objects.unlink(o)"
+          },
+          {
+            "line": 66,
+            "expression": "bpy.data.libraries.load(str(ROOT / 'dependencies/assets' / f'{aid}.blend'), link=False)"
+          },
+          {
+            "line": 77,
+            "expression": "nd.image.reload()"
+          },
+          {
+            "line": 286,
+            "expression": "Path(bpy.path.abspath(im.filepath)).exists()"
+          },
+          {
+            "line": 286,
+            "expression": "bpy.path.abspath(im.filepath)"
+          },
+          {
+            "line": 288,
+            "expression": "bpy.ops.file.pack_all()"
+          },
+          {
+            "line": 289,
+            "expression": "bpy.ops.wm.save_as_mainfile(filepath=str(source))"
+          },
+          {
+            "line": 294,
+            "expression": "bpy.ops.export_scene.gltf(filepath=str(ROOT / 'exports/WP02_sports_care.glb'), export_format='GLB', use_selection=True, export_yup=True, export_extras=True, export_lights=True, export_cameras=False)"
+          },
+          {
+            "line": 295,
+            "expression": "(ROOT / path).write_text(json.dumps(obj, indent=2) + '\\n')"
+          }
+        ]
+      },
+      {
+        "file": "source/review_section.py",
+        "sha256": "3a2bbffca8661b6b29e3f792ff4d6dcb59f070b1c7c74d5bdafc9456547227ba",
+        "syntax_pass": true,
+        "imports": [
+          "from pathlib import Path",
+          "import bpy, json, struct, sys, argparse, hashlib",
+          "from mathutils import Vector, Matrix, Quaternion"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 11,
+            "expression": "bpy.ops.wm.open_mainfile(filepath=str(src))"
+          },
+          {
+            "line": 11,
+            "expression": "bpy.context.evaluated_depsgraph_get()"
+          },
+          {
+            "line": 15,
+            "expression": "o.evaluated_get(dg)"
+          },
+          {
+            "line": 21,
+            "expression": "glb.read_bytes()"
+          },
+          {
+            "line": 21,
+            "expression": "struct.unpack_from('<4sII', data, 0)"
+          },
+          {
+            "line": 24,
+            "expression": "struct.unpack_from('<II', data, pos)"
+          },
+          {
+            "line": 25,
+            "expression": "json.loads(chunk)"
+          },
+          {
+            "line": 30,
+            "expression": "struct.unpack_from('<' + 'f' * n, binary, off + i * stride)"
+          },
+          {
+            "line": 48,
+            "expression": "hashlib.sha256(src.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 48,
+            "expression": "src.read_bytes()"
+          },
+          {
+            "line": 49,
+            "expression": "(ROOT / 'qa/native_export_review.json').write_text(json.dumps(receipt, indent=2) + '\\n')"
+          },
+          {
+            "line": 51,
+            "expression": "args.render.split(',')"
+          },
+          {
+            "line": 52,
+            "expression": "bpy.ops.render.render(write_still=True)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "package": "WP03_D06_directory_02",
+    "restored_dependency_count": 20,
+    "restored_dependency_bytes": 4036449,
+    "all_map_dependencies_verified": true,
+    "embedded_builder_gate_count": 12,
+    "embedded_builder_gate_failures": [],
+    "scripts": [
+      {
+        "file": "source/build_conservatory.py",
+        "sha256": "5bd26aca68e8ec77d708243b8669a49f7c5b2d3471558e97574819845131e6d7",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, bmesh, json, math, hashlib, random",
+          "from pathlib import Path",
+          "from mathutils import Vector, Matrix"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 11,
+            "expression": "json.loads((P / 'assets/dependencies.json').read_text())"
+          },
+          {
+            "line": 11,
+            "expression": "(P / 'assets/dependencies.json').read_text()"
+          },
+          {
+            "line": 12,
+            "expression": "hashlib.sha256((P / record['file']).read_bytes()).hexdigest()"
+          },
+          {
+            "line": 12,
+            "expression": "(P / record['file']).read_bytes()"
+          },
+          {
+            "line": 19,
+            "expression": "json.loads((P / 'assets/materials/material_manifest.json').read_text())"
+          },
+          {
+            "line": 19,
+            "expression": "(P / 'assets/materials/material_manifest.json').read_text()"
+          },
+          {
+            "line": 23,
+            "expression": "bpy.data.images.load(str(P / 'assets/materials' / r['base_color_file']), check_existing=True)"
+          },
+          {
+            "line": 23,
+            "expression": "image.pack()"
+          },
+          {
+            "line": 35,
+            "expression": "soil_image.pack()"
+          },
+          {
+            "line": 103,
+            "expression": "bpy.data.libraries.load(str(P / 'assets/native' / f'{asset}.blend'), link=False)"
+          },
+          {
+            "line": 109,
+            "expression": "o.matrix_world.copy()"
+          },
+          {
+            "line": 114,
+            "expression": "s.collection.children.unlink(temp)"
+          },
+          {
+            "line": 114,
+            "expression": "bpy.data.collections.remove(temp)"
+          },
+          {
+            "line": 273,
+            "expression": "bpy.ops.file.pack_all()"
+          },
+          {
+            "line": 273,
+            "expression": "bpy.ops.wm.save_as_mainfile(filepath=str(native), compress=True)"
+          },
+          {
+            "line": 277,
+            "expression": "bpy.context.evaluated_depsgraph_get()"
+          },
+          {
+            "line": 280,
+            "expression": "ob.evaluated_get(deps)"
+          },
+          {
+            "line": 289,
+            "expression": "bpy.data.meshes.remove(me)"
+          },
+          {
+            "line": 296,
+            "expression": "s.collection.children.unlink(col)"
+          },
+          {
+            "line": 299,
+            "expression": "old.matrix_world.copy()"
+          },
+          {
+            "line": 301,
+            "expression": "bpy.data.objects.remove(old, do_unlink=True)"
+          },
+          {
+            "line": 309,
+            "expression": "bpy.ops.export_scene.gltf(filepath=str(P / 'exports/WP03_cloud_conservatory.glb'), export_format='GLB', use_selection=True, export_yup=True, export_apply=True, export_extras=True, export_lights=True, export_cameras=False)"
+          },
+          {
+            "line": 310,
+            "expression": "hashlib.sha256(native.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 310,
+            "expression": "hashlib.sha256((P / 'exports/WP03_cloud_conservatory.glb').read_bytes()).hexdigest()"
+          },
+          {
+            "line": 310,
+            "expression": "native.read_bytes()"
+          },
+          {
+            "line": 310,
+            "expression": "(P / 'exports/WP03_cloud_conservatory.glb').read_bytes()"
+          },
+          {
+            "line": 311,
+            "expression": "(P / 'qa/build_manifest.json').write_text(json.dumps(report, indent=2) + '\\n')"
+          }
+        ]
+      },
+      {
+        "file": "source/render_review.py",
+        "sha256": "2d7faa5b8733ac2b0d86360fa8123662aff669621e0891b741c9c27116e35ca3",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, sys",
+          "from pathlib import Path"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 5,
+            "expression": "bpy.ops.wm.open_mainfile(filepath=str(P / 'source/WP03_cloud_conservatory.blend'))"
+          },
+          {
+            "line": 15,
+            "expression": "bpy.ops.render.render(write_still=True)"
+          }
+        ]
+      },
+      {
+        "file": "tests/check_export.py",
+        "sha256": "32a075f738273968d5f8cf5bb087c966cb649c98183f3793b1e4dcf8817c471a",
+        "syntax_pass": true,
+        "imports": [
+          "import json, struct, hashlib, math",
+          "from pathlib import Path",
+          "from glb_reader import glb"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 6,
+            "expression": "path.read_bytes()"
+          },
+          {
+            "line": 6,
+            "expression": "json.loads(raw[20:20 + length])"
+          },
+          {
+            "line": 6,
+            "expression": "struct.unpack_from('<I', raw, 12)"
+          },
+          {
+            "line": 20,
+            "expression": "(P / 'qa/export_check.json').write_text(json.dumps(report, indent=2) + '\\n')"
+          }
+        ]
+      },
+      {
+        "file": "tests/check_native.py",
+        "sha256": "e0a8015f5c076a4faa178e0702c6443988e49a1b94fb8653821ad35270256260",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, json, hashlib",
+          "from pathlib import Path"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 5,
+            "expression": "json.loads((P / 'assets/dependencies.json').read_text())"
+          },
+          {
+            "line": 5,
+            "expression": "(P / 'assets/dependencies.json').read_text()"
+          },
+          {
+            "line": 5,
+            "expression": "hashlib.sha256((P / r['file']).read_bytes()).hexdigest()"
+          },
+          {
+            "line": 5,
+            "expression": "(P / r['file']).read_bytes()"
+          },
+          {
+            "line": 6,
+            "expression": "bpy.ops.wm.open_mainfile(filepath=str(P / 'source/WP03_cloud_conservatory.blend'))"
+          },
+          {
+            "line": 12,
+            "expression": "bpy.context.evaluated_depsgraph_get()"
+          },
+          {
+            "line": 22,
+            "expression": "bpy.data.meshes.remove(mesh)"
+          },
+          {
+            "line": 24,
+            "expression": "(P / 'qa/native_check.json').write_text(json.dumps(report, indent=2) + '\\n')"
+          }
+        ]
+      },
+      {
+        "file": "tests/glb_reader.py",
+        "sha256": "005c4b1fa3586688045f8600a27fdddc3cd595eed4dcb41e460ac99789040801",
+        "syntax_pass": true,
+        "imports": [
+          "import json, struct"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 3,
+            "expression": "path.read_bytes()"
+          },
+          {
+            "line": 3,
+            "expression": "json.loads(b[20:20 + n])"
+          },
+          {
+            "line": 3,
+            "expression": "struct.unpack_from('<I', b, 12)"
+          },
+          {
+            "line": 6,
+            "expression": "struct.unpack_from('<' + fmt * w, binary, start + j * stride)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "package": "WP04_D06_directory_04",
+    "restored_dependency_count": 25,
+    "restored_dependency_bytes": 3328112,
+    "all_map_dependencies_verified": true,
+    "embedded_builder_gate_count": 27,
+    "embedded_builder_gate_failures": [],
+    "scripts": [
+      {
+        "file": "source/build_nursery.py",
+        "sha256": "399c4fd4c7d542d892181c65107163d10ef3a7f8a7d20620970785a2e3b0c3d4",
+        "syntax_pass": true,
+        "imports": [
+          "from pathlib import Path",
+          "import bpy, math, json, hashlib, argparse, sys",
+          "from mathutils import Vector, Matrix"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 11,
+            "expression": "(P / d).mkdir(parents=True, exist_ok=True)"
+          },
+          {
+            "line": 12,
+            "expression": "json.loads((P / 'assets/intake_manifest.json').read_text())"
+          },
+          {
+            "line": 12,
+            "expression": "(P / 'assets/intake_manifest.json').read_text()"
+          },
+          {
+            "line": 16,
+            "expression": "hashlib.sha256((P / record['file']).read_bytes()).hexdigest()"
+          },
+          {
+            "line": 16,
+            "expression": "(P / record['file']).read_bytes()"
+          },
+          {
+            "line": 34,
+            "expression": "json.loads((P / 'assets/materials/material_manifest.json').read_text())"
+          },
+          {
+            "line": 34,
+            "expression": "(P / 'assets/materials/material_manifest.json').read_text()"
+          },
+          {
+            "line": 35,
+            "expression": "json.loads((P / 'assets/materials/botanical/manifest.json').read_text())"
+          },
+          {
+            "line": 35,
+            "expression": "(P / 'assets/materials/botanical/manifest.json').read_text()"
+          },
+          {
+            "line": 40,
+            "expression": "bpy.data.images.load(str(f), check_existing=True)"
+          },
+          {
+            "line": 40,
+            "expression": "im.pack()"
+          },
+          {
+            "line": 44,
+            "expression": "M[base].copy()"
+          },
+          {
+            "line": 102,
+            "expression": "bpy.data.libraries.load(str(P / 'assets/native' / f'{ident}.blend'), link=False)"
+          },
+          {
+            "line": 107,
+            "expression": "o.matrix_world.copy()"
+          },
+          {
+            "line": 111,
+            "expression": "bpy.data.objects.remove(o, do_unlink=True)"
+          },
+          {
+            "line": 122,
+            "expression": "src.copy()"
+          },
+          {
+            "line": 128,
+            "expression": "EXPORT.remove(floor)"
+          },
+          {
+            "line": 329,
+            "expression": "bpy.context.evaluated_depsgraph_get()"
+          },
+          {
+            "line": 332,
+            "expression": "o.evaluated_get(deps)"
+          },
+          {
+            "line": 339,
+            "expression": "(P / 'tests/source_geometry.json').write_text(json.dumps(report, indent=2) + '\\n')"
+          },
+          {
+            "line": 343,
+            "expression": "image.pack()"
+          },
+          {
+            "line": 346,
+            "expression": "bpy.data.objects.remove(o, do_unlink=True)"
+          },
+          {
+            "line": 350,
+            "expression": "bpy.ops.export_scene.gltf(filepath=str(P / 'exports/WP04_botanical_nursery.glb'), export_format='GLB', use_selection=True, export_apply=True, export_yup=True, export_extras=True, export_texcoords=True, export_normals=True, export_cameras=False, export_lights=False)"
+          },
+          {
+            "line": 352,
+            "expression": "bpy.ops.wm.save_as_mainfile(filepath=str(P / 'source/WP04_botanical_nursery.blend'), compress=True)"
+          },
+          {
+            "line": 354,
+            "expression": "(P / 'docs' / f'{name}.json').write_text(json.dumps(value, indent=2) + '\\n')"
+          },
+          {
+            "line": 355,
+            "expression": "hashlib.sha256((P / 'source/WP04_botanical_nursery.blend').read_bytes()).hexdigest()"
+          },
+          {
+            "line": 355,
+            "expression": "hashlib.sha256((P / 'exports/WP04_botanical_nursery.glb').read_bytes()).hexdigest()"
+          },
+          {
+            "line": 355,
+            "expression": "(P / 'source/WP04_botanical_nursery.blend').read_bytes()"
+          },
+          {
+            "line": 355,
+            "expression": "(P / 'exports/WP04_botanical_nursery.glb').read_bytes()"
+          },
+          {
+            "line": 356,
+            "expression": "(P / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\\n')"
+          }
+        ]
+      },
+      {
+        "file": "source/stage_inputs.py",
+        "sha256": "7d06299b3980923a91588296fe27e2e4b09a2badff8b43b7f2f466d236254bff",
+        "syntax_pass": true,
+        "imports": [
+          "from pathlib import Path",
+          "import hashlib, json, shutil"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 7,
+            "expression": "json.loads((S / 'coordination_snapshot.json').read_text())"
+          },
+          {
+            "line": 7,
+            "expression": "(S / 'coordination_snapshot.json').read_text()"
+          },
+          {
+            "line": 12,
+            "expression": "hashlib.sha256(src.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 12,
+            "expression": "src.read_bytes()"
+          },
+          {
+            "line": 14,
+            "expression": "dst.parent.mkdir(parents=True, exist_ok=True)"
+          },
+          {
+            "line": 14,
+            "expression": "shutil.copy2(src, dst)"
+          },
+          {
+            "line": 17,
+            "expression": "copy(R / 'BlenderCatalogue' / a['source'], P / 'assets/native' / f\"{a['id']}.blend\", a['source_sha256_current'])"
+          },
+          {
+            "line": 21,
+            "expression": "copy(f, P / 'assets/materials' / ('botanical' if folder.name == 'botanical' else '') / f.name)"
+          },
+          {
+            "line": 23,
+            "expression": "copy(S / 'current_inputs' / n, P / 'docs' / n)"
+          },
+          {
+            "line": 25,
+            "expression": "copy(S / 'section04_botanical_nursery' / n, P / 'docs/planning' / n)"
+          },
+          {
+            "line": 26,
+            "expression": "copy(S / 'coordination_snapshot.json', P / 'docs/coordination_snapshot.json')"
+          },
+          {
+            "line": 28,
+            "expression": "copy(f, P / 'docs/references' / f'{alias}{f.suffix}', snap['sources'][alias]['sha256'])"
+          },
+          {
+            "line": 29,
+            "expression": "(P / 'docs/current_row.json').write_text(json.dumps(row, indent=2) + '\\n')"
+          },
+          {
+            "line": 30,
+            "expression": "(P / 'assets/intake_manifest.json').write_text(json.dumps({'status': 'hash-verified package-local inputs', 'files': records}, indent=2) + '\\n')"
+          }
+        ]
+      },
+      {
+        "file": "tests/reload_and_export_check.py",
+        "sha256": "e1400d6295553f24ee6be9111835325738d63e1e700d6ec80549ec2d78b025ca",
+        "syntax_pass": true,
+        "imports": [
+          "from pathlib import Path",
+          "import bpy, json, math, hashlib",
+          "from mathutils import Vector"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 6,
+            "expression": "json.loads((P / 'manifest.json').read_text())"
+          },
+          {
+            "line": 6,
+            "expression": "(P / 'manifest.json').read_text()"
+          },
+          {
+            "line": 8,
+            "expression": "hashlib.sha256(blend.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 8,
+            "expression": "blend.read_bytes()"
+          },
+          {
+            "line": 9,
+            "expression": "hashlib.sha256(glb.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 9,
+            "expression": "glb.read_bytes()"
+          },
+          {
+            "line": 10,
+            "expression": "bpy.ops.wm.open_mainfile(filepath=str(blend))"
+          },
+          {
+            "line": 17,
+            "expression": "bpy.ops.wm.read_factory_settings(use_empty=True)"
+          },
+          {
+            "line": 18,
+            "expression": "bpy.ops.import_scene.gltf(filepath=str(glb))"
+          },
+          {
+            "line": 35,
+            "expression": "(P / 'tests/reload_export_receipt.json').write_text(json.dumps(result, indent=2) + '\\n')"
+          }
+        ]
+      },
+      {
+        "file": "tests/render_views.py",
+        "sha256": "5bf3d38b6c7dd1d84619a491bd4cf3b6a2f3683a7f7317c3ef8b2b2d32c1a00a",
+        "syntax_pass": true,
+        "imports": [
+          "from pathlib import Path",
+          "import bpy, sys, json, hashlib"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 8,
+            "expression": "bpy.ops.wm.open_mainfile(filepath=str(src))"
+          },
+          {
+            "line": 16,
+            "expression": "bpy.ops.render.render(write_still=True)"
+          },
+          {
+            "line": 17,
+            "expression": "hashlib.sha256(src.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 17,
+            "expression": "hashlib.sha256(Path(sc.render.filepath).read_bytes()).hexdigest()"
+          },
+          {
+            "line": 17,
+            "expression": "src.read_bytes()"
+          },
+          {
+            "line": 17,
+            "expression": "Path(sc.render.filepath).read_bytes()"
+          },
+          {
+            "line": 18,
+            "expression": "(P / 'tests/views' / f'{name}_receipt.json').write_text(json.dumps(receipt, indent=2) + '\\n')"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "package": "WP05_D10_directory_09",
+    "restored_dependency_count": 50,
+    "restored_dependency_bytes": 7315206,
+    "all_map_dependencies_verified": true,
+    "embedded_builder_gate_count": 10,
+    "embedded_builder_gate_failures": [],
+    "scripts": [
+      {
+        "file": "source/build_moonfruit.py",
+        "sha256": "b5edf3bc14a931f025948079dd2c08ba785180c3f7ceaff447350283069e93c4",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, math, json, hashlib, sys",
+          "from pathlib import Path",
+          "from mathutils import Matrix, Vector",
+          "from signage_spec import apply_signage"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 10,
+            "expression": "(P / folder).mkdir(exist_ok=True)"
+          },
+          {
+            "line": 11,
+            "expression": "json.loads((P / 'dependencies/receipt.json').read_text())"
+          },
+          {
+            "line": 11,
+            "expression": "(P / 'dependencies/receipt.json').read_text()"
+          },
+          {
+            "line": 12,
+            "expression": "hashlib.sha256((P / r['file']).read_bytes()).hexdigest()"
+          },
+          {
+            "line": 12,
+            "expression": "(P / r['file']).read_bytes()"
+          },
+          {
+            "line": 19,
+            "expression": "json.loads((P / 'dependencies/materials/material_manifest.json').read_text())"
+          },
+          {
+            "line": 19,
+            "expression": "(P / 'dependencies/materials/material_manifest.json').read_text()"
+          },
+          {
+            "line": 21,
+            "expression": "hashlib.sha256(p.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 21,
+            "expression": "p.read_bytes()"
+          },
+          {
+            "line": 29,
+            "expression": "bpy.data.images.load(str(P / 'dependencies/materials' / r['base_color_file']), check_existing=True)"
+          },
+          {
+            "line": 29,
+            "expression": "im.pack()"
+          },
+          {
+            "line": 84,
+            "expression": "json.loads((P / 'dependencies/receipt.json').read_text())"
+          },
+          {
+            "line": 84,
+            "expression": "(P / 'dependencies/receipt.json').read_text()"
+          },
+          {
+            "line": 86,
+            "expression": "bpy.data.libraries.load(str(P / receipt['file']), link=False)"
+          },
+          {
+            "line": 92,
+            "expression": "o.matrix_world.copy()"
+          },
+          {
+            "line": 96,
+            "expression": "scene.collection.children.unlink(col)"
+          },
+          {
+            "line": 100,
+            "expression": "im.filepath.replace('\\\\', '/').rsplit('/', 1)"
+          },
+          {
+            "line": 100,
+            "expression": "im.filepath.replace('\\\\', '/')"
+          },
+          {
+            "line": 104,
+            "expression": "im.reload()"
+          },
+          {
+            "line": 104,
+            "expression": "im.pack()"
+          },
+          {
+            "line": 109,
+            "expression": "proto.copy()"
+          },
+          {
+            "line": 112,
+            "expression": "json.loads((P / 'dependencies/receipt.json').read_text())"
+          },
+          {
+            "line": 112,
+            "expression": "(P / 'dependencies/receipt.json').read_text()"
+          },
+          {
+            "line": 260,
+            "expression": "sys.path.insert(0, str(P / 'source'))"
+          },
+          {
+            "line": 277,
+            "expression": "bpy.context.evaluated_depsgraph_get()"
+          },
+          {
+            "line": 280,
+            "expression": "o.evaluated_get(dg)"
+          },
+          {
+            "line": 284,
+            "expression": "(P / rel).write_text(json.dumps(data, indent=2) + '\\n')"
+          },
+          {
+            "line": 285,
+            "expression": "write('qa/source_geometry.json', {'scope': 'evaluated source geometry, not engine acceptance', 'objects': records, 'bounds_violation_ids': invalid, 'object_count': len(records), 'lights': len(lights)})"
+          },
+          {
+            "line": 286,
+            "expression": "write('exports/contact_markers.json', {'package': PK, 'programme': 'D10_directory_09', 'alias': 'D10_dessert8', 'frame': 'Blender Z-up local centered; glTF mapping(x,z,-y)', 'placement_world_xyz': [-31, 61, 432], 'markers': markers, 'lights': lights, 'tables': tables, 'seats': seats, 'settings': settings, 'instances': instances})"
+          },
+          {
+            "line": 287,
+            "expression": "write('exports/floor_proposal.json', {'status': 'receiver-owned structural floor proposal only', 'surface_y': 61, 'polygon_world_xz': [[-54, 398], [-8, 398], [-8, 466], [-54, 466]], 'floor_mesh_exported': False, 'collision_owner': 'Higgins_pending', 'external_receiver': '4m gap UNBUILT parent-owned', 'material_regions_uv': [{'u': [10.7, 21.9], 'v': [3, 63], 'role': 'clay_weave'}, {'u': [26.5, 43.5"
+          },
+          {
+            "line": 289,
+            "expression": "im.pack()"
+          },
+          {
+            "line": 290,
+            "expression": "bpy.ops.wm.save_as_mainfile(filepath=str(P / 'source/WP05_moonfruit.blend'))"
+          },
+          {
+            "line": 299,
+            "expression": "bpy.ops.export_scene.gltf(filepath=str(P / 'exports/WP05_moonfruit.glb'), export_format='GLB', use_selection=True, export_apply=True, export_yup=True, export_extras=True, export_lights=True, export_cameras=False)"
+          },
+          {
+            "line": 300,
+            "expression": "write('exports/manifest.json', {'package': PK, 'programme': 'D10_directory_09', 'historical_alias': 'D10_dessert8', 'source': 'source/WP05_moonfruit.blend', 'source_sha256': sha(P / 'source/WP05_moonfruit.blend'), 'glb': 'exports/WP05_moonfruit.glb', 'glb_sha256': sha(P / 'exports/WP05_moonfruit.glb'), 'generator_sha256': sha(Path(__file__)), 'placement_world_xyz': [-31, 61, 432], 'placement_rotat"
+          },
+          {
+            "line": 309,
+            "expression": "bpy.ops.render.render(write_still=True)"
+          }
+        ]
+      },
+      {
+        "file": "source/patch_preview_only.py",
+        "sha256": "972a8ab2c2d102b81fbc0819ef58964cff41379bf709d27bb9d50d4658525b08",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, json, hashlib",
+          "from pathlib import Path",
+          "from mathutils import Vector"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 9,
+            "expression": "hashlib.sha256(path.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 9,
+            "expression": "path.read_bytes()"
+          },
+          {
+            "line": 20,
+            "expression": "bpy.ops.wm.save_as_mainfile(filepath=str(source))"
+          },
+          {
+            "line": 22,
+            "expression": "json.loads(manifest_path.read_text())"
+          },
+          {
+            "line": 22,
+            "expression": "manifest_path.read_text()"
+          },
+          {
+            "line": 27,
+            "expression": "manifest_path.write_text(json.dumps(manifest, indent=2) + '\\n')"
+          },
+          {
+            "line": 28,
+            "expression": "(P / 'qa/preview_patch.json').write_text(json.dumps({'scope': 'SOURCE_PREVIEW_ONLY base floor and activity camera only; architecture GLB unchanged', 'source_before_sha256': before_source, 'source_after_sha256': sha(source), 'export_sha256_unchanged': before_export, 'base_floor_top_z': -0.01, 'inlay_top_z': 0, 'activity_camera_xyz': [4.6, -13.4, 1.65], 'live_scene_modified': False, 'review': 'fresh"
+          }
+        ]
+      },
+      {
+        "file": "source/patch_review.py",
+        "sha256": "aca9780f5031712ca419612625951117ed32cb88102266e2fce8d9e56eb77f30",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, json, hashlib, sys",
+          "from pathlib import Path",
+          "from mathutils import Vector",
+          "from signage_spec import apply_signage"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 6,
+            "expression": "hashlib.sha256(path.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 6,
+            "expression": "path.read_bytes()"
+          },
+          {
+            "line": 13,
+            "expression": "sys.path.insert(0, str(P / 'source'))"
+          },
+          {
+            "line": 15,
+            "expression": "bpy.context.evaluated_depsgraph_get()"
+          },
+          {
+            "line": 18,
+            "expression": "o.evaluated_get(dg)"
+          },
+          {
+            "line": 23,
+            "expression": "json.loads(geometry_path.read_text())"
+          },
+          {
+            "line": 23,
+            "expression": "geometry_path.read_text()"
+          },
+          {
+            "line": 24,
+            "expression": "geometry_path.write_text(json.dumps(geometry, indent=2) + '\\n')"
+          },
+          {
+            "line": 26,
+            "expression": "im.pack()"
+          },
+          {
+            "line": 27,
+            "expression": "bpy.ops.wm.save_as_mainfile(filepath=str(source))"
+          },
+          {
+            "line": 34,
+            "expression": "bpy.ops.export_scene.gltf(filepath=str(export), export_format='GLB', use_selection=True, export_apply=True, export_yup=True, export_extras=True, export_lights=True, export_cameras=False)"
+          },
+          {
+            "line": 35,
+            "expression": "json.loads(mp.read_text())"
+          },
+          {
+            "line": 35,
+            "expression": "mp.read_text()"
+          },
+          {
+            "line": 37,
+            "expression": "mp.write_text(json.dumps(manifest, indent=2) + '\\n')"
+          },
+          {
+            "line": 38,
+            "expression": "(P / 'qa/review_patch.json').write_text(json.dumps({'before': before, 'after': {'source': sha(source), 'export': sha(export)}, 'changed': 'Preview floor/camera; legible publicly facing finishing/drink/return/care/host signs with real backboards and column/wall/ceiling mounts', 'unchanged': 'All160 dining positions and route layout; no live ship edit', 'source_bounds_violations': invalid, 'rendered"
+          }
+        ]
+      },
+      {
+        "file": "source/patch_sign_contrast.py",
+        "sha256": "4d005b75a1f7dabc6acf599a6b97e4bbc8a67162365842238028805747146fb0",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, json, hashlib",
+          "from pathlib import Path"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 5,
+            "expression": "hashlib.sha256(p.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 5,
+            "expression": "p.read_bytes()"
+          },
+          {
+            "line": 13,
+            "expression": "bpy.context.evaluated_depsgraph_get()"
+          },
+          {
+            "line": 14,
+            "expression": "json.loads((P / 'qa/source_geometry.json').read_text())"
+          },
+          {
+            "line": 14,
+            "expression": "(P / 'qa/source_geometry.json').read_text()"
+          },
+          {
+            "line": 17,
+            "expression": "o.evaluated_get(dg)"
+          },
+          {
+            "line": 23,
+            "expression": "bpy.ops.wm.save_as_mainfile(filepath=str(source))"
+          },
+          {
+            "line": 30,
+            "expression": "bpy.ops.export_scene.gltf(filepath=str(export), export_format='GLB', use_selection=True, export_apply=True, export_yup=True, export_extras=True, export_lights=True, export_cameras=False)"
+          },
+          {
+            "line": 31,
+            "expression": "json.loads(mp.read_text())"
+          },
+          {
+            "line": 31,
+            "expression": "mp.write_text(json.dumps(manifest, indent=2) + '\\n')"
+          },
+          {
+            "line": 31,
+            "expression": "mp.read_text()"
+          },
+          {
+            "line": 32,
+            "expression": "(P / 'qa/sign_contrast_patch.json').write_text(json.dumps({'scope': 'Seven text material slots changed from champagne metal to approved ivory enamel; backboards/mounts, transforms, light output and layout unchanged', 'before': before, 'after': {'source': sha(source), 'export': sha(export)}, 'source_geometry_changed': changes, 'changed_text_objects': ['WP05_' + n for n in names], 'image_retention':"
+          }
+        ]
+      },
+      {
+        "file": "source/signage_spec.py",
+        "sha256": "d2b2efa0029898f7681f983589061c65b928fb96a52e793012088ffb4bbbad96",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, math"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 7,
+            "expression": "bpy.data.objects.remove(o, do_unlink=True)"
+          }
+        ]
+      },
+      {
+        "file": "tests/check_source.py",
+        "sha256": "1bb1c03c19db5ce788a671e3e1cfea8c467eb12c53ef4bfabcb3cc1b65553bc4",
+        "syntax_pass": true,
+        "imports": [
+          "import json, math, hashlib",
+          "from pathlib import Path",
+          "from collections import deque"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 8,
+            "expression": "json.loads((P / 'qa/source_geometry.json').read_text())"
+          },
+          {
+            "line": 8,
+            "expression": "(P / 'qa/source_geometry.json').read_text()"
+          },
+          {
+            "line": 9,
+            "expression": "json.loads((P / 'exports/contact_markers.json').read_text())"
+          },
+          {
+            "line": 9,
+            "expression": "(P / 'exports/contact_markers.json').read_text()"
+          },
+          {
+            "line": 80,
+            "expression": "hashlib.sha256((P / 'qa/source_geometry.json').read_bytes()).hexdigest()"
+          },
+          {
+            "line": 80,
+            "expression": "(P / 'qa/source_geometry.json').read_bytes()"
+          },
+          {
+            "line": 82,
+            "expression": "(P / 'qa/source_checks.json').write_text(json.dumps(report, indent=2) + '\\n')"
+          }
+        ]
+      },
+      {
+        "file": "tests/diagnose_routes.py",
+        "sha256": "0c1cd7e306df8599e8c788d3d951b10e59ba613f8a140aa0dc89cc7808dcc970",
+        "syntax_pass": true,
+        "imports": [
+          "from pathlib import Path",
+          "import json, math"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 6,
+            "expression": "(P / 'tests/check_source.py').read_text()"
+          },
+          {
+            "line": 7,
+            "expression": "exec(base[:base.index('nav_results={}')].replace('P=Path(__file__).resolve().parents[1]', 'P=Path(' + repr(str(P)) + ')'), ns)"
+          },
+          {
+            "line": 8,
+            "expression": "json.loads((P / 'qa/source_checks.json').read_text())"
+          },
+          {
+            "line": 8,
+            "expression": "(P / 'qa/source_checks.json').read_text()"
+          },
+          {
+            "line": 30,
+            "expression": "(P / 'qa/route_obstructions.json').write_text(json.dumps(result, indent=2) + '\\n')"
+          }
+        ]
+      },
+      {
+        "file": "tests/forecast_clearance_fix.py",
+        "sha256": "4594e2a4af54b0d71e560b077b7c7c4be655044cd5ec2a1e80c6766284f0703b",
+        "syntax_pass": true,
+        "imports": [
+          "import json, copy",
+          "from pathlib import Path"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 5,
+            "expression": "json.loads((P / 'qa/source_geometry.json').read_text())"
+          },
+          {
+            "line": 5,
+            "expression": "json.loads((P / 'exports/contact_markers.json').read_text())"
+          },
+          {
+            "line": 5,
+            "expression": "(P / 'qa/source_geometry.json').read_text()"
+          },
+          {
+            "line": 5,
+            "expression": "(P / 'exports/contact_markers.json').read_text()"
+          },
+          {
+            "line": 21,
+            "expression": "(P / 'tests/check_source.py').read_text().replace(\"geo=json.loads((P/'qa/source_geometry.json').read_text())\", 'geo=forecast_geo').replace(\"data=json.loads((P/'exports/contact_markers.json').read_text())\", 'data=forecast_data')"
+          },
+          {
+            "line": 21,
+            "expression": "(P / 'tests/check_source.py').read_text().replace(\"geo=json.loads((P/'qa/source_geometry.json').read_text())\", 'geo=forecast_geo')"
+          },
+          {
+            "line": 21,
+            "expression": "(P / 'tests/check_source.py').read_text()"
+          },
+          {
+            "line": 24,
+            "expression": "exec(code, ns)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "package": "WP07_D12_directory_03",
+    "restored_dependency_count": 11,
+    "restored_dependency_bytes": 1915963,
+    "all_map_dependencies_verified": true,
+    "embedded_builder_gate_count": 0,
+    "embedded_builder_gate_failures": [],
+    "scripts": [
+      {
+        "file": "source/build_listening_salon.py",
+        "sha256": "e7a09efeaddd3bbab7d1e58025f8dc4a064825d0332d2fd7f4650a94bf24833f",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, math, json, hashlib, sys",
+          "from pathlib import Path",
+          "from mathutils import Vector, Matrix"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 11,
+            "expression": "bpy.data.collections.remove(c)"
+          },
+          {
+            "line": 20,
+            "expression": "json.loads((P / 'dependencies/materials/material_manifest.json').read_text())"
+          },
+          {
+            "line": 20,
+            "expression": "(P / 'dependencies/materials/material_manifest.json').read_text()"
+          },
+          {
+            "line": 25,
+            "expression": "bpy.data.images.load(str(P / 'dependencies/materials' / r['base_color_file']), check_existing=True)"
+          },
+          {
+            "line": 25,
+            "expression": "im.pack()"
+          },
+          {
+            "line": 159,
+            "expression": "bpy.data.libraries.load(str(f), link=False)"
+          },
+          {
+            "line": 163,
+            "expression": "o.matrix_world.copy()"
+          },
+          {
+            "line": 165,
+            "expression": "scene.collection.objects.unlink(o)"
+          },
+          {
+            "line": 168,
+            "expression": "load_template('AST-FUR-002', 'AST-FUR-002_day_reading_chair.blend')"
+          },
+          {
+            "line": 169,
+            "expression": "load_template('AST-FUR-003', 'AST-FUR-003_day_table.blend')"
+          },
+          {
+            "line": 173,
+            "expression": "src.copy()"
+          },
+          {
+            "line": 289,
+            "expression": "im.pack()"
+          },
+          {
+            "line": 291,
+            "expression": "bpy.context.evaluated_depsgraph_get()"
+          },
+          {
+            "line": 294,
+            "expression": "o.evaluated_get(dg)"
+          },
+          {
+            "line": 300,
+            "expression": "(P / 'qa/source_geometry.json').write_text(json.dumps({'scope': 'source mesh bounds; no engine validation', 'bounds_violation_ids': invalid, 'objects': records, 'source_object_count': len(records), 'light_count': len(lights), 'seat_instance_count': len(seats), 'table_instance_count': len(tables)}, indent=2))"
+          },
+          {
+            "line": 301,
+            "expression": "(P / 'exports/contact_markers.json').write_text(json.dumps({'frame': 'Blender source and local glTF explicitly labelled', 'placement': [-31, 78, -324], 'markers': markers, 'lights': lights, 'seats': seats, 'tables': tables}, indent=2))"
+          },
+          {
+            "line": 302,
+            "expression": "(P / 'exports/floor_proposal.json').write_text(json.dumps({'programme': 'D12_directory_03', 'frame': 'engine Y-up world metres', 'surface_y': 78, 'polygon_xz': [[-54, -358], [-8, -358], [-8, -290], [-54, -290]], 'structural_floor_owner': 'receiver_pending', 'collision_owner': 'receiver_pending', 'package_visual_floor_exported': False, 'preview_only_slab': 'excluded from architecture GLB', 'externa"
+          },
+          {
+            "line": 303,
+            "expression": "bpy.ops.wm.save_as_mainfile(filepath=str(P / 'source/WP07_listening_salon.blend'))"
+          },
+          {
+            "line": 313,
+            "expression": "bpy.ops.export_scene.gltf(filepath=str(P / 'exports/WP07_listening_salon.glb'), export_format='GLB', use_selection=True, export_apply=True, export_yup=True, export_extras=True, export_lights=True, export_cameras=False, export_texcoords=True)"
+          },
+          {
+            "line": 321,
+            "expression": "bpy.ops.render.render(write_still=True)"
+          }
+        ]
+      },
+      {
+        "file": "source/render_review.py",
+        "sha256": "425c21a4982094c0a1b17266ddc0c4b751330b554d984eb358923915c233f441",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy, sys, json",
+          "from pathlib import Path"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 5,
+            "expression": "bpy.ops.wm.open_mainfile(filepath=str(P / 'source/WP07_listening_salon.blend'))"
+          },
+          {
+            "line": 16,
+            "expression": "bpy.ops.render.render(write_still=True)"
+          }
+        ]
+      },
+      {
+        "file": "source/repair_preview_floor.py",
+        "sha256": "cca0ac5a94656add1d5848f1a3311a69562d194601628f9592b018c6ee0a37d9",
+        "syntax_pass": true,
+        "imports": [
+          "import bpy",
+          "from pathlib import Path"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 8,
+            "expression": "bpy.ops.wm.open_mainfile(filepath=str(f))"
+          },
+          {
+            "line": 12,
+            "expression": "bpy.ops.wm.save_as_mainfile(filepath=str(f))"
+          }
+        ]
+      },
+      {
+        "file": "source/verify_package.py",
+        "sha256": "3326f8edd830b1576587beea4d9f057f6f15461cce83ed5e013b2973b23f4e9d",
+        "syntax_pass": true,
+        "imports": [
+          "import json, struct, hashlib, math",
+          "from pathlib import Path"
+        ],
+        "sensitive_calls": [
+          {
+            "line": 12,
+            "expression": "(P / 'exports/WP07_listening_salon.glb').read_bytes()"
+          },
+          {
+            "line": 12,
+            "expression": "struct.unpack_from('<III', raw)"
+          },
+          {
+            "line": 14,
+            "expression": "struct.unpack_from('<II', raw, 12)"
+          },
+          {
+            "line": 14,
+            "expression": "json.loads(raw[20:20 + jlen])"
+          },
+          {
+            "line": 14,
+            "expression": "struct.unpack_from('<II', raw, bo)"
+          },
+          {
+            "line": 18,
+            "expression": "struct.unpack_from('<fff', binary, start + i * stride)"
+          },
+          {
+            "line": 34,
+            "expression": "hashlib.sha256((P / 'dependencies/furniture' / f).read_bytes()).hexdigest()"
+          },
+          {
+            "line": 34,
+            "expression": "(P / 'dependencies/furniture' / f).read_bytes()"
+          },
+          {
+            "line": 36,
+            "expression": "(P / 'qa/glb_validation.json').write_text(json.dumps(report, indent=2))"
+          },
+          {
+            "line": 39,
+            "expression": "hashlib.sha256(f.read_bytes()).hexdigest()"
+          },
+          {
+            "line": 39,
+            "expression": "f.read_bytes()"
+          },
+          {
+            "line": 40,
+            "expression": "(P / 'manifest.json').write_text(json.dumps({'package': 'WP07_D12_directory_03', 'programme': 'D12_directory_03', 'alias': 'D12_listening2', 'status': 'source_export_candidate_pending_independent_visual_review', 'units': 'metres', 'source_axes': 'Blender Z-up', 'exchange_axes': 'glTF Y-up', 'source_to_exchange': '(x,y,z) -> (x,z,-y)', 'placement_engine_yup': [-31, 78, -324], 'rotation_degrees': [0"
+          }
+        ]
+      }
+    ]
+  }
+]

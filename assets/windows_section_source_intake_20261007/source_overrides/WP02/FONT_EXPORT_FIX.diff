@@ -1,0 +1,47 @@
+--- original/source/build_section.py
++++ successor/source/build_section.py
+@@ -288,6 +288,13 @@
+ bpy.ops.file.pack_all()
+ source=ROOT/'source/WP02_sports_care.blend';bpy.ops.wm.save_as_mainfile(filepath=str(source))
+ # Selection-based export definitively omits source-only floor/cameras; static light objects exported.
++# Preserve editable native FONT objects above, then turn lettering into real export meshes.
++# A receiving check requires every authored native sign name to survive in the GLB.
++bpy.ops.object.select_all(action='DESELECT')
++for o in list(COLL.objects):
++    if o.type=='FONT':
++        o.select_set(True);bpy.context.view_layer.objects.active=o
++        bpy.ops.object.convert(target='MESH');o.select_set(False)
+ bpy.ops.object.select_all(action='DESELECT')
+ for o in COLL.objects:
+     if o.type in {'MESH','CURVE','EMPTY','LIGHT'}:o.select_set(True)
+--- original/source/review_section.py
++++ successor/source/review_section.py
+@@ -10,8 +10,10 @@
+ src=ROOT/'source/WP02_sports_care.blend';glb=ROOT/'exports/WP02_sports_care.glb'
+ bpy.ops.wm.open_mainfile(filepath=str(src));bpy.context.view_layer.update();dg=bpy.context.evaluated_depsgraph_get()
+ pts=[]
++authored_signs=sorted(o.name for o in bpy.data.collections['WP02_ARCHITECTURE'].objects if o.type=='FONT')
++assert authored_signs,'No authored native signage found'
+ for o in bpy.data.collections['WP02_ARCHITECTURE'].objects:
+-    if o.type not in {'MESH','CURVE'}:continue
++    if o.type not in {'MESH','CURVE','FONT'}:continue
+     e=o.evaluated_get(dg);me=e.to_mesh()
+     for v in me.vertices:
+         q=e.matrix_world@v.co;pts.append((q.x,q.z,-q.y))
+@@ -41,11 +43,15 @@
+     for c in node.get('children',[]):visit(c,world)
+ for i in doc['scenes'][doc.get('scene',0)]['nodes']:visit(i,Matrix.Identity(4))
+ gb=bounds(gp);delta=max(abs(sb[k][i]-gb[k][i]) for k in (0,1) for i in range(3))
++exported_mesh_names={node.get('name','') for node in doc['nodes'] if 'mesh' in node}
++missing_authored_signs=sorted(set(authored_signs)-exported_mesh_names)
++signage_exported=not missing_authored_signs
++
+ inside=sb[0][0]>=-.003 and sb[1][0]<=46.003 and sb[0][2]>=-62.003 and sb[1][2]<=6.003 and sb[0][1]>=-.003 and sb[1][1]<=8.003
+ # Source y range[-6,62] maps GLB z[-62,6]. No outside guest link or extra floor exported.
+ floor_excluded=not any('SOURCE_PREVIEW_ONLY' in n for n in names)
+ images_ok=all(im.packed_file or im.source!='FILE' for im in bpy.data.images)
+-receipt={'scope':'source/native/export QA only','native_reopen':True,'blender_version':bpy.app.version_string,'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'glb_sha256':hashlib.sha256(data).hexdigest(),'source_glb_frame_bounds':sb,'actual_glb_bounds':gb,'bound_delta_m':delta,'within_allocation_and_single_deck':inside,'source_preview_floor_excluded_from_glb':floor_excluded,'all_native_file_images_packed':images_ok,'live_physics':False,'visual_acceptance':'pending human/parent inspection','passed':inside and floor_excluded and images_ok and delta<.003}
++receipt={'scope':'source/native/export QA only','native_reopen':True,'blender_version':bpy.app.version_string,'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'glb_sha256':hashlib.sha256(data).hexdigest(),'source_glb_frame_bounds':sb,'actual_glb_bounds':gb,'bound_delta_m':delta,'within_allocation_and_single_deck':inside,'source_preview_floor_excluded_from_glb':floor_excluded,'all_native_file_images_packed':images_ok,'live_physics':False,'visual_acceptance':'pending human/parent inspection','authored_native_signs':authored_signs,'missing_authored_glb_signs':missing_authored_signs,'all_authored_signage_exported':signage_exported,'passed':inside and floor_excluded and images_ok and delta<.003 and signage_exported}
+ (ROOT/'qa/native_export_review.json').write_text(json.dumps(receipt,indent=2)+'\n')
+ print(json.dumps(receipt),flush=True)
+ for camera in filter(None,args.render.split(',')):
