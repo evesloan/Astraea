@@ -107,6 +107,7 @@ func _ready() -> void:
 	lighting_budget.name = "LocalShadowSourceBudget"
 	lighting_budget.set_script(load("res://scripts/lighting_budget.gd"))
 	$ShipSystems.add_child(lighting_budget)
+	preload("res://scripts/team_lounge_receiving.gd").build(self)
 	lighting_budget.configure(self,player)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
