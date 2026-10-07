@@ -1,0 +1,141 @@
+{
+  "status": "PASS",
+  "failed_checks": [],
+  "scope": "Source candidate only; no Godot, species, loaded-cart, installed-room, capacity or certification acceptance",
+  "checks": [
+    {
+      "check": "Actual_GLB_mesh_count_matches_source",
+      "passed": true,
+      "mesh_count": 1307
+    },
+    {
+      "check": "All_authored_reserved_members_contained",
+      "passed": true,
+      "maximum_excess_m": 1.2207031204525265e-05
+    },
+    {
+      "check": "No_geometry_below_Sunward_boundary",
+      "passed": true,
+      "min_y": 69.26000213623047
+    },
+    {
+      "check": "No_root_geometry_enters_Library_walking_clearance",
+      "passed": true,
+      "max_y": 78.0
+    },
+    {
+      "check": "Every_exported_mesh_is_closed_and_finite",
+      "passed": true
+    },
+    {
+      "check": "All_recorded_internal_contacts_touch_actual_export",
+      "passed": true,
+      "count": 175,
+      "failed": []
+    },
+    {
+      "check": "Complete_finite_aperture_frustum_clear",
+      "passed": true,
+      "hits": [],
+      "scope": "All actual authored triangles clipped to convex optical frustum; not projector photometry or actor pose certification"
+    },
+    {
+      "check": "Optical_negative_control_detects_inserted_triangle",
+      "passed": true
+    },
+    {
+      "check": "All_198_chairs_and_2_bays_preserved_and_clear",
+      "passed": true,
+      "chairs": 198,
+      "bays": 2,
+      "roles": 200,
+      "chairhits": [],
+      "bayhits": []
+    },
+    {
+      "check": "Cinema_retained_route_envelopes_clear",
+      "passed": true,
+      "minimum_margin_m": 0.4399983215332032
+    },
+    {
+      "check": "Raised_Library_ramp_and_arrival_unintruded",
+      "passed": true,
+      "scope": "Receiving geometry stops at floor top78. Source ramp/terraces and old east-pier corrections remain WP06 work."
+    },
+    {
+      "check": "Fourteen_homes_and_thousand_record_ledger_preserved",
+      "passed": true,
+      "protected_home_count": 14,
+      "all1000_recount": {
+        "records": 1000,
+        "distinct_source_indices": 1000,
+        "distinct_proposed_or_existing_rebuild_identities": 1000,
+        "deck_counts": {
+          "D13": 160,
+          "D14": 240,
+          "D15": 180,
+          "D16": 200,
+          "D17": 100,
+          "D04": 120
+        },
+        "house_counts": {
+          "port_forward_upper_house": 148,
+          "port_central_upper_house": 148,
+          "port_aft_upper_house": 147,
+          "starboard_forward_upper_house": 147,
+          "starboard_central_upper_house": 145,
+          "starboard_aft_upper_house": 145,
+          "port_forward_lower_habitat_house": 20,
+          "port_central_lower_habitat_house": 20,
+          "port_aft_lower_habitat_house": 20,
+          "starboard_forward_lower_habitat_house": 20,
+          "starboard_central_lower_habitat_house": 20,
+          "starboard_aft_lower_habitat_house": 20
+        }
+      }
+    },
+    {
+      "check": "All_pinned_original_sources_unchanged",
+      "passed": true
+    }
+  ],
+  "route_results": [
+    {
+      "route": "arrival_to_foyer",
+      "minimum_horizontal_margin_m": 1.0061280987608332,
+      "radius": 0.57,
+      "sample_pitch_m": 0.025
+    },
+    {
+      "route": "west_level_to_front",
+      "minimum_horizontal_margin_m": 0.440000228881836,
+      "radius": 0.57,
+      "sample_pitch_m": 0.025
+    },
+    {
+      "route": "east_level_to_front",
+      "minimum_horizontal_margin_m": 0.4399983215332032,
+      "radius": 0.57,
+      "sample_pitch_m": 0.025
+    },
+    {
+      "route": "west_return_ramp",
+      "minimum_horizontal_margin_m": 5.740000228881836,
+      "radius": 0.57,
+      "sample_pitch_m": 0.025
+    },
+    {
+      "route": "care_approach",
+      "minimum_horizontal_margin_m": 7.94000418693625,
+      "radius": 0.57,
+      "sample_pitch_m": 0.025
+    },
+    {
+      "route": "projection_access",
+      "minimum_horizontal_margin_m": 22.192495508634124,
+      "radius": 0.35,
+      "sample_pitch_m": 0.025
+    }
+  ],
+  "source_only": true
+}
