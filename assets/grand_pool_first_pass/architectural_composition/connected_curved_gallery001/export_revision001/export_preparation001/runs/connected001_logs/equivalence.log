@@ -1,0 +1,18 @@
+PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE AST-AQU-016_east_gallery_rest_bay_r03
+PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE AST-AQU-016_connected_gallery_surroundings
+Traceback (most recent call last):
+  File "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/verify_east_gallery.py", line 103, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/verify_east_gallery.py", line 97, in main
+    r=next(x for x in er['assets'] if x['asset']==a['name']);report=verify_asset(g,a,s,r);p=dest/(a['name']+'.json');write_new(p,report)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/verify_east_gallery.py", line 69, in verify_asset
+    if key not in matreports:matreports[key]=material_check(s['materials'][mat],mi,d)
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/vendor/check_glb.py", line 164, in material_check
+    require(wrap is not None and sampler.get('wrapS',10497)==wrap and sampler.get('wrapT',10497)==wrap,'Image wrap changed')
+  File "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/vendor/check_glb.py", line 25, in require
+    if not ok:raise AssertionError(msg)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Image wrap changed

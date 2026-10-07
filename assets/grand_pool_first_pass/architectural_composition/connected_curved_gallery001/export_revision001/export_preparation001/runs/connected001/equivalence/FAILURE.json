@@ -1,0 +1,26 @@
+{
+  "status": "FAIL_PRESERVE_ALL_OUTPUTS",
+  "assets_completed": [
+    {
+      "asset": "AST-AQU-016_east_gallery_rest_bay_r03",
+      "status": "PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE",
+      "report": "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/runs/connected001/equivalence/AST-AQU-016_east_gallery_rest_bay_r03.json",
+      "report_sha256": "655c258a4bc79f26bf462713541c4833a7f0cbd51588bb1037f9624e96b5ce8a",
+      "meshes": 27,
+      "triangles": 3064,
+      "max_position_deviation_m": 0.0,
+      "max_normal_deviation": 8.429369277598202e-08
+    },
+    {
+      "asset": "AST-AQU-016_connected_gallery_surroundings",
+      "status": "PASS_ACTUAL_SELECTED_SOURCE_GLB_EQUIVALENCE",
+      "report": "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/runs/connected001/equivalence/AST-AQU-016_connected_gallery_surroundings.json",
+      "report_sha256": "ae86c1aa5814c15f6106b267350ecdac62dc395e665d84959b66f676ff82c089",
+      "meshes": 174,
+      "triangles": 4080,
+      "max_position_deviation_m": 0.0,
+      "max_normal_deviation": 8.433561385082143e-08
+    }
+  ],
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/verify_east_gallery.py\", line 97, in main\n    r=next(x for x in er['assets'] if x['asset']==a['name']);report=verify_asset(g,a,s,r);p=dest/(a['name']+'.json');write_new(p,report)\n                                                                    ^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/verify_east_gallery.py\", line 69, in verify_asset\n    if key not in matreports:matreports[key]=material_check(s['materials'][mat],mi,d)\n                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/vendor/check_glb.py\", line 164, in material_check\n    require(wrap is not None and sampler.get('wrapS',10497)==wrap and sampler.get('wrapT',10497)==wrap,'Image wrap changed')\n  File \"/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/export_preparation001/vendor/check_glb.py\", line 25, in require\n    if not ok:raise AssertionError(msg)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Image wrap changed\n"
+}
