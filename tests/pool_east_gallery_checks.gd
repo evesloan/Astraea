@@ -1,6 +1,7 @@
 extends RefCounted
 # One installed-area check. Reuses the already verified raw-array codec reader.
 const CONTRACT := "res://data/architecture/GRAND_POOL_EAST_GALLERY_RUNTIME.json"
+const REVIEWED_CONTRACT_SHA := "ea1df244ad7e80fa45a471afda87a581a7cd923d3d50a1af403a828ece1d9dc7"
 var tree: SceneTree
 var ship: Node3D
 var area: Node3D
@@ -10,7 +11,7 @@ var data: Dictionary
 var geo: RefCounted
 var meshes: Dictionary = {}
 var contacts: Array[RID] = []
-var records: Dictionary = {"geometry":[],"floor_bearing":[],"soil":[],"routes":[],"views":[],"lights":[]}
+var records: Dictionary = {"geometry":[],"floor_bearing":[],"soil":[],"routes":[],"views":[],"lights":[],"retained_furniture":[]}
 func v3(a: Array) -> Vector3: return Vector3(a[0],a[1],a[2])
 func vec(p: Vector3) -> Array: return [p.x,p.y,p.z]
 func ray(a: Vector3,b: Vector3,extra: Array[RID]=[]) -> Dictionary:
@@ -46,6 +47,18 @@ func clear_render_segment(a: Vector3,b: Vector3,except_name: String="") -> bool:
 		for i in range(0,faces.size(),3):
 			if Geometry3D.segment_intersects_triangle(x,y,faces[i],faces[i+1],faces[i+2])!=null:return false
 	return true
+func source_sampler(material: StandardMaterial3D,doc: Dictionary,ref: Dictionary) -> void:
+	# Exact Godot4.6.3 GLTFTextureSampler representation for these source samplers.
+	# Retained signs use nearest/mipmapped ink; the screen image clamps at its edges.
+	assert(int(ref.get("texCoord",0))==0 and not ref.has("extensions"))
+	var texture: Dictionary=doc.textures[int(ref.index)]
+	var sampler: Dictionary=doc.samplers[int(texture.sampler)] if texture.has("sampler") else {}
+	var mag: int=int(sampler.get("magFilter",9729));var minimum: int=int(sampler.get("minFilter",9987))
+	assert([mag,minimum] in [[9729,9987],[9728,9984]],"Unreviewed source filter pair")
+	var expected_filter: int=BaseMaterial3D.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS if minimum==9984 else BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	var wrap_s: int=int(sampler.get("wrapS",10497));var wrap_t: int=int(sampler.get("wrapT",10497))
+	assert([wrap_s,wrap_t] in [[10497,10497],[33071,33071]],"Unreviewed source wrapping pair")
+	assert(material.texture_filter==expected_filter and material.texture_repeat==(wrap_s==10497 and wrap_t==10497),"Imported sampler differs from the exact source declaration")
 func material_check(mesh: MeshInstance3D,si: int,p: Dictionary,doc: Dictionary,bin: PackedByteArray) -> void:
 	var mat:=mesh.get_active_material(si)as StandardMaterial3D
 	assert(mat!=null and mat==mesh.mesh.surface_get_material(si) and mesh.get_surface_override_material(si)==null)
@@ -62,7 +75,7 @@ func material_check(mesh: MeshInstance3D,si: int,p: Dictionary,doc: Dictionary,b
 	else:assert(not mat.emission_enabled)
 	for entry in [["baseColorTexture",pbr,mat.albedo_texture],["emissiveTexture",gm,mat.emission_texture]]:
 		if entry[1].has(entry[0]):
-			geo.texture_check(entry[2],doc,bin,entry[1][entry[0]]);geo.check_sampler(mat,doc,entry[1][entry[0]])
+			geo.texture_check(entry[2],doc,bin,entry[1][entry[0]]);source_sampler(mat,doc,entry[1][entry[0]])
 		else:assert(entry[2]==null)
 func geometry() -> void:
 	assert(FileAccess.get_sha256("res://tests/pool_feature_geometry.gd")==str(data.geometry_audit_helper_sha256))
@@ -93,7 +106,41 @@ func geometry() -> void:
 		assert(count==spec.meshes.size() and triangles==int(spec.triangles))
 		records.geometry.append({"asset":entry.asset,"meshes":count,"triangles":triangles,"exact_raw_position_uv_normal_codec":true,"source_materials":true,"native_node_mapping":binding.records})
 	for body in area.find_children("*","StaticBody3D",true,false):contacts.append(body.get_rid())
-	assert(meshes.size()==76 and area.get_child_count()==10)
+	var declared_mesh_count: int=0
+	for entry in data.assemblies:declared_mesh_count+=data.models[str(entry.asset)].meshes.size()
+	assert(meshes.size()==declared_mesh_count and area.get_child_count()==data.assemblies.size()+data.plants.size()+data.fixtures.size()+1)
+func furniture() -> void:
+	var group := area.get_node("ConnectedGalleryFurniture") as Node3D
+	assert(group != null and group.get_child_count() == data.furniture.size())
+	for entry in data.furniture:
+		var spec: Dictionary = data.models[str(entry.asset)]
+		var path: String = "res://assets/models/"+str(spec.file)
+		assert(FileAccess.get_sha256(path) == str(spec.sha256))
+		var cfg := ConfigFile.new()
+		assert(cfg.load(path+".import") == OK)
+		var remap: String = cfg.get_value("remap","path","")
+		var digest := ConfigFile.new()
+		assert(digest.load(remap.get_basename()+".md5") == OK and digest.get_value("","source_md5","") == FileAccess.get_md5(path))
+		var wrapper := group.get_node(NodePath(str(entry.name))) as Node3D
+		assert(wrapper.scale == Vector3.ONE and wrapper.position.distance_to(v3(entry.position_xyz)) < .00005)
+		assert(absf(wrapper.rotation.y-float(entry.yaw_radians)) < .000001)
+		var prototype := (load(path) as PackedScene).instantiate() as Node3D
+		var visual := wrapper.get_child(0) as Node3D
+		var count := 0
+		for mesh in visual.find_children("*","MeshInstance3D",true,false):
+			var retained := prototype.get_node(visual.get_path_to(mesh)) as MeshInstance3D
+			assert(retained != null and mesh.mesh == retained.mesh and mesh.transform == retained.transform)
+			assert(mesh.material_override == null and mesh.material_overlay == null)
+			var body := mesh.get_node("StaticContact") as StaticBody3D
+			assert(body != null and body.collision_layer == 1 and body.get_child_count() == 1)
+			var shape := body.get_child(0) as CollisionShape3D
+			assert(shape.shape is ConcavePolygonShape3D and not shape.disabled)
+			var expected_contact: ConcavePolygonShape3D = mesh.mesh.create_trimesh_shape() as ConcavePolygonShape3D
+			assert(expected_contact != null and shape.shape.get_faces() == expected_contact.get_faces(),"Retained furniture collider differs from the same native shape constructor")
+			count += 1
+		assert(count > 0)
+		prototype.free()
+		records.retained_furniture.append({"name":entry.name,"native_prototype_meshes":count,"same_retained_mesh_resources":true,"original_scale":true,"legacy_import_policy_preserved":true})
 func support() -> void:
 	var compilation: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
 	for expected in data.preserved_pool_floor_records:
@@ -145,7 +192,7 @@ func routes() -> void:
 	for row in data.route_sweeps:
 		var before: Dictionary=sweep(row,true);var after: Dictionary=sweep(row,false)
 		assert(before==after,"New gallery changed retained physical approach: "+str(row.name))
-		if str(row.name) in ["central_bench_approach","bench_return_to_apron","cleaning_cart_stop","cleaner_bench_stance","cleaner_table_stance","upper_apron"]:
+		if bool(row.get("must_be_clear",false)) or str(row.name) in ["central_bench_approach","bench_return_to_apron","cleaning_cart_stop","cleaner_bench_stance","cleaner_table_stance","upper_apron"]:
 			for segment in after.segments:
 				assert(float(segment.fraction[0])==1.0)
 				for names in segment.owners:assert(names.is_empty(),"Bay use approach is occupied")
@@ -182,7 +229,7 @@ func light_checks() -> void:
 		assert(budget._clear_sample(light.global_position,v3(fixture.visibility_sample_xyz)))
 		records.lights.append({"name":fixture.name,"physical_exit_clear":true,"actual_source_lens":fixture.physical_lens,"receiver_within_local_range_cone":true,"energy":light.light_energy,"native_balance_accepted":false})
 	var saved_transform: Transform3D=actor.global_transform
-	for pose in [[-14,54.15,-443.2],[-13.1,54.15,-449.8],data.seated_views[0].eye_xyz]:
+	for pose in [[-14,54.15,-443.2],[-13.1,54.15,-449.8],data.seated_views[0].eye_xyz,[-11.05,54.15,-458],[-11.5,54.15,-438.4],[-9.0,54.15,-438.8]]:
 		actor.global_position=v3(pose)-Vector3.UP*1.5;budget.refresh()
 		var selected: Array[String]=[]
 		for fixture in data.fixtures:
@@ -193,12 +240,13 @@ func light_checks() -> void:
 	actor.global_transform=saved_transform;budget.refresh()
 func check(owner: SceneTree,world: Node3D) -> void:
 	tree=owner;ship=world;actor=ship.get_node("ShipSpace/PersistentActors/Player");space=ship.get_world_3d().direct_space_state
+	assert(FileAccess.get_sha256(CONTRACT)==REVIEWED_CONTRACT_SHA,"Approved gallery contract changed; omitted assemblies cannot pass a derived census")
 	data=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT));area=ship.find_child(str(data.root_name),true,false)
-	assert(area!=null);geometry();support();routes();sightlines();light_checks()
+	assert(area!=null);geometry();furniture();support();routes();sightlines();light_checks()
 	for path in data.walk_paths:
 		await owner.settle(v3(path.points_xyz[0]))
 		for point in path.points_xyz:await owner.walk_to(v3(point))
-	print("GRAND POOL EAST GALLERY PASS: exact four imported derivatives/materials, rooted beds, retained supports/routes and ordinary rest-bay walk. Lighting balance and side-glance comfort remain native image review.")
+	print("GRAND POOL CONNECTED GALLERY PASS: current imported derivatives/materials, unchanged native furniture prototypes, rooted beds, retained floor/routes and ordinary gallery/service access. Actual light balance and complete composition remain native image review.")
 	var output: String=OS.get_environment("ASTRAEA_EAST_GALLERY_RECEIPT")
 	if not output.is_empty():
 		var file:=FileAccess.open(output,FileAccess.WRITE);assert(file!=null)

@@ -104,3 +104,4 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 		light.set_meta("fixture_powered", true)
 		# The unchanged selector discovers these sources after all builders finish.
 	assert(root.find_children("*", "Light3D", true, false).size() == data.fixtures.size())
+	load("res://scripts/grand_pool_connected_gallery_furniture.gd").build(root,ship,data)
