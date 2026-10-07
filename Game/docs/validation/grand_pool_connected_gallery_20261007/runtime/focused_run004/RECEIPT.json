@@ -1,0 +1,103 @@
+{
+  "status": "PASS_CONNECTED_CURVED_POOL_GALLERY_FOCUSED_RESUME",
+  "started_utc": "2026-10-07T02:11:15.268648+00:00",
+  "checks": [
+    {
+      "check": "canopy_compatibility",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 0.352,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--script",
+        "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/runtime_draft001/check_compatibility.gd"
+      ],
+      "reused_from_receipt": "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/runtime_draft001/focused_run003/RECEIPT.json",
+      "receipt_sha256": "bd6b66acf15e7fcc647c1fae5ab9c6a2a76f80b19677b2946269e6ad2b5e54d0",
+      "execution_stage": "prior_focused003_current_source_bytes_unchanged"
+    },
+    {
+      "check": "grand_pool_architecture",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 37.8614,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--quit-after",
+        "12000",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/validate_grand_pool_architecture.gd"
+      ],
+      "reused_from_receipt": "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/runtime_draft001/focused_run002/RECEIPT.json",
+      "receipt_sha256": "54075033ccbb7f3e7e7b9cdde6df4a19048ecfccf57b739c78a6f5789ec79232",
+      "execution_stage": "prior_focused002_current_runtime_bytes_unchanged_test_only_successor"
+    },
+    {
+      "check": "lighting_budget",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 30.6155,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--quit-after",
+        "2400",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/validate_lighting_budget.gd"
+      ],
+      "reused_from_receipt": "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/runtime_draft001/focused_run002/RECEIPT.json",
+      "receipt_sha256": "54075033ccbb7f3e7e7b9cdde6df4a19048ecfccf57b739c78a6f5789ec79232",
+      "execution_stage": "prior_focused002_current_runtime_bytes_unchanged_test_only_successor"
+    },
+    {
+      "check": "grand_pool_access",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 49.2028,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--quit-after",
+        "30000",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/validate_grand_pool_access.gd"
+      ]
+    }
+  ],
+  "no_import": true,
+  "prior_import_receipt_sha256": "85779c44a78c4f04f8b3ff146f54705e1e5baaeeccdefd4cbae623ebdac5814a",
+  "access_successor_manifest_sha256": "b5e62bc70e740e1be70652169f18cf1b6839cb0fa8a21b15ee154ecfbc71eafb",
+  "full_suite": false,
+  "visual_acceptance": false,
+  "runner_correction": "Only scratch --quit-after corrected from12000 to the registered grand_pool_access30000; same240s watchdog; no Game writes",
+  "standard_validator_sha256": "401d94ed323d617fb81937620121bd2cd77b00d5fb8ef0bca33db23c53fa17ef",
+  "installed_gallery_physical_check": true,
+  "lighting_budget_smoke": true,
+  "retained_pool_access": true,
+  "retained_previous_physical_and_lighting": true,
+  "changed_scope": "Only access test and authenticated proof/guard; runtime/source/models/floors/optics exact to focused002",
+  "finished_utc": "2026-10-07T02:12:07.105266+00:00",
+  "source_final_sha256": "1c4a9d2a81faa99f7df878fa3a804af0c9008340cd25ed0c685031e572a7f25d",
+  "source_unchanged": true,
+  "head_and_index_unchanged": true
+}

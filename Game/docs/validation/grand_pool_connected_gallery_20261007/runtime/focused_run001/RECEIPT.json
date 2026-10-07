@@ -1,0 +1,66 @@
+{
+  "status": "STOPPED_PRESERVE_FIRST_FAILURE",
+  "started_utc": "2026-10-07T01:46:23.401514+00:00",
+  "manifest_sha256": "e15ddd0611fd59ce133570b5ab0debdb799d3de42286c369366853523f844dae",
+  "scope": "One import; exact medical/pool file-chain compatibility; registered pool architecture, lighting smoke and retained pool access. No full suite or visual acceptance.",
+  "checks": [
+    {
+      "check": "import",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 4.9046,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--editor",
+        "--quit"
+      ]
+    },
+    {
+      "check": "canopy_compatibility",
+      "passed": true,
+      "returncode": 0,
+      "errors": [],
+      "seconds": 0.3536,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--script",
+        "/workspace/scratch/375c2e438292/pool-connected-gallery-curved001/runtime_draft001/check_compatibility.gd"
+      ]
+    },
+    {
+      "check": "grand_pool_architecture",
+      "passed": false,
+      "returncode": -15,
+      "errors": [
+        "SCRIPT ERROR: Assertion failed."
+      ],
+      "seconds": 33.5364,
+      "command": [
+        "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/workspace/shared/astraea-godot-production-20261003",
+        "--quit-after",
+        "12000",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/validate_grand_pool_architecture.gd"
+      ]
+    }
+  ],
+  "full_suite": false,
+  "visual_acceptance": false,
+  "error": "RuntimeError('Stopped at first failed check: grand_pool_architecture')",
+  "finished_utc": "2026-10-07T01:47:06.020640+00:00",
+  "source_final_sha256": "fd272c6c95db7369ecbc76085d1218d17e1190e74b59953f2a0973f8a8af3e8f",
+  "source_after_import_unchanged": true,
+  "head_and_index_unchanged": true
+}
