@@ -1,5 +1,15 @@
 # Astraea current production status
 
+## 7 October 2026, 17:56 UTC: receiving construction and whole-ship delivery priority
+
+- The restored project and source histories were hash-verified; the older recovery warning below is historical. The private GitHub publisher was restarted after an unowned-lock/private-remote/clean-mirror check. Checkpoint `9b9bc8653dfd53219bfa6461e7a1de080976ab3d` was verified at 17:48:51 UTC; all 5,404 Game and 12,186 Catalogue file hashes matched. Foreground watcher lifetime remains limited; verify current heartbeat and lock rather than this dated report.
+- Botanical receiving infrastructure is installed: two 120 m² floor bands, closed supported guard interfaces for the future Moss Sanctuary and Nursery entries, 275 compiled owners with predecessors preserved. Actual Godot import fidelity checks measured all 136 guard meshes with zero deviation after the bounded import/name corrections. Medical structure and existing pool access checks passed.
+- The botanical unchanged-player access test passed 4,545 walking frames, 4,974 support rays, 250 guard rays and six actual barrier contacts. Four graphical default-scene views were captured and inspected, with no source or cache byte changes. Main labels and guard/floor continuity are visible; subtitle lighting is dim and surrounding destinations are unfinished. The visible backdrop beyond inboard allocations does not prove hull frontage. No amenity interior, cart/species fit, final art or target-hardware acceptance is claimed. Exact evidence: `docs/validation/botanical_receiving_20261007/`.
+- Team Lounge source/derived render and shaped-floor candidates remain isolated. Runtime collision/lighting/loader implementation is underway; no Team Lounge live adoption is claimed. The original WP15 source is preserved.
+- The owner's next delivery priority is a fully traversable 18-deck ship with every intended section realized. Existing physical lift/stair coverage is being reconciled against end-to-end ordinary-input evidence. Complete destinations and their connections take priority over repeated local polish; empty shells and source catalogue counts do not count as realized sections.
+- Focused checks above do not replace the outstanding complete regression, full ship traversal, per-section visual/functional review or target hardware checks. Older entries remain historical evidence.
+
+
 Updated2026-10-06. Fresh Godot reconstruction; recovery of the original lost project remains unverified.
 
 ## Latest verified scope
