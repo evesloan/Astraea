@@ -24,7 +24,7 @@ Cloud reset can remove the running publisher and its sign-in. Remote checkpoints
 Older Library checkpoints remain retained. Automatic Workshop copies remain unverified. Do not claim zero-loss guarantees, perpetual execution or hardware performance validation.
 
 ## Publisher lifetime and reviewed recovery
-A single publisher is now hosted in a named foreground terminal on the cloud desktop, following the existing graphical-review runner's lifetime pattern. Its lock and fresh heartbeat must still be checked; an open terminal or stale healthy receipt is not evidence of current protection. Never start another publisher while the lock is owned.
+The recovered publisher currently runs in one foreground execution session. A persistent graphical-desktop watcher has not been established: that desktop could see the shared project but not the existing isolated authentication directory. Credentials were not copied or changed. Session lifetime can end, so the owned lock, fresh heartbeat and independently verified remote receipt must all be checked; an open terminal or stale healthy state is not evidence of current protection. Never start another publisher while the lock is owned.
 
 If a publisher has exited, first compare private destination identity, remote main, clean mirror HEAD and any pending upload. A bounded invocation of the same publisher is a permitted recovery path only after confirming no writer remains and resolving the recorded blocker. Do not reset a blocked state merely to retry. Unknown or divergent upload outcomes still stop publication.
 
