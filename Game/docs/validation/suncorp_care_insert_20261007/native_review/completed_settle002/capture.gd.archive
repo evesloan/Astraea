@@ -1,0 +1,169 @@
+extends "res://tests/validate_sports_care_access005.gd"
+# Short visual-only pilot: one previously tested care arrival, no long circuit/proof rerun.
+const REFERENCE := "/workspace/shared/sports_care_native_capture_20261007_prepared001/run001/output/CAPTURES.json"
+var output_dir: String
+var captures: Array = []
+var freeze_data: Dictionary
+var original_views: Dictionary = {}
+var interaction_opened := false
+var interaction_closed := false
+var release_settle_samples: Array = []
+func _initialize() -> void:
+	test_name="suncorp_care_sign_native_pilot"
+	output_dir=OS.get_environment("ASTRAEA_SIGN_CAPTURE_OUT")
+	if output_dir.is_empty() or DirAccess.dir_exists_absolute(output_dir): quit(1);return
+	if DirAccess.make_dir_recursive_absolute(output_dir)!=OK: quit(1);return
+	call_deferred("run")
+func vec(v: Vector3) -> Array: return [v.x,v.y,v.z]
+func write_json(name: String,value: Dictionary) -> bool:
+	var file:=FileAccess.open(output_dir+"/"+name,FileAccess.WRITE)
+	if not require(file!=null,"Cannot write capture evidence"): return false
+	file.store_string(JSON.stringify(value,"  ")+"\n");file.close();return true
+func validate_freeze() -> bool:
+	var path:=OS.get_environment("ASTRAEA_SIGN_CAPTURE_FREEZE")
+	if not require(not path.is_empty() and FileAccess.file_exists(path),"Root final freeze required"): return false
+	freeze_data=JSON.parse_string(FileAccess.get_file_as_string(path))
+	if not require(bool(freeze_data.get("approved_for_launch",false)),"Preparation is not launch authorization"): return false
+	if not require(FileAccess.get_sha256(get_script().resource_path)==str(freeze_data.capture_script_sha256),"Capture script changed"): return false
+	if not require(FileAccess.get_sha256(REFERENCE)==str(freeze_data.original_view_reference_sha256),"Original06/07 reference changed"): return false
+	for path_key in freeze_data.source_sha256:
+		if not require(FileAccess.get_sha256("res://"+str(path_key))==str(freeze_data.source_sha256[path_key]),"Frozen source changed: "+str(path_key)): return false
+	for receipt in freeze_data.receipts:
+		if not require(FileAccess.get_sha256(str(receipt.path))==str(receipt.sha256),"Passed receipt changed"): return false
+		var value: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(str(receipt.path)))
+		if str(receipt.kind)=="root_check":
+			if not require(bool(value.passed) and int(value.exit_code)==0 and value.errors.is_empty(),"Passing root receipt required"): return false
+		else:
+			if not require(str(value.status)=="PASS" and int(value.privacy_queries)==378 and int(value.information_read_close_cycles)==4,"Passing unchanged actual access receipt required"): return false
+	return true
+func lighting() -> Array:
+	var result: Array=[]
+	var budget: Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	for lamp in budget.sources:
+		if lamp.visible: result.append({"path":str(lamp.get_path()),"position":vec(lamp.global_position),"energy":lamp.light_energy,"shadows":lamp.shadow_enabled})
+	return result
+func aim(target: Vector3) -> bool:
+	release_inputs()
+	var delta: Vector3=target-actor.camera.global_position
+	actor.rotation.y=atan2(-delta.x,-delta.z)
+	actor.set("pitch",atan2(delta.y,Vector2(delta.x,delta.z).length()))
+	actor.camera.rotation.x=actor.get("pitch")
+	if not await advance(40): return false
+	return require(absf(actor.camera.fov-72)<.001 and absf(actor.camera.position.y-1.65)<.000001,"Ordinary unfocused FOV72/eye1.65 required")
+func effects(enabled: bool) -> bool:
+	if bool(main.effects)==enabled: return true
+	# Existing user F4 path only; also toggles its normal glow/SSAO presentation options.
+	key(KEY_F4,true)
+	if not await advance(1): return false
+	key(KEY_F4,false)
+	if not await advance(8): return false
+	for frame in range(4): await process_frame
+	return require(bool(main.effects)==enabled,"Original F4 effects toggle failed")
+func frame(name: String,purpose: String,window: bool=false) -> bool:
+	for i in range(6): await process_frame
+	await RenderingServer.frame_post_draw
+	var photo: Image=root.get_texture().get_image() if window else main.post_view.get_texture().get_image()
+	var path:=output_dir+"/"+name+".png"
+	if not require(photo!=null and not photo.is_empty() and photo.save_png(path)==OK,"Native framebuffer unavailable"): return false
+	var hint:=main.get("interaction_hint") as Label
+	captures.append({"view":name,"purpose":purpose,"file":path,"sha256":FileAccess.get_sha256(path),"size":[photo.get_width(),photo.get_height()],"buffer":"native_window_with_original_crisp_HUD" if window else "native360p_post_view","actual_actor_position":vec(actor.global_position),"eye":vec(actor.camera.global_position),"forward":vec(-actor.camera.global_basis.z),"fov":actor.camera.fov,"eye_height_m":actor.camera.position.y,"effects_enabled":main.effects,"RMB_focused":Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT),"HUD_text":hint.text if hint!=null else "","lighting":lighting(),"geometry_materials_lights_modified":false,"presentation_toggle_only":true,"later_teleports":0})
+	return write_json("CAPTURES.json",{"captures":captures,"count":captures.size(),"legibility_accepted":false,"scene_saved":false})
+func paired_original(view: String,stem: String) -> bool:
+	var reference: Dictionary=original_views[view]
+	if not require(actor.global_position.distance_to(xyz(reference.actual_actor_position))<.01,"Same original06/07 care stance required"): return false
+	if not await aim(xyz(reference.target)): return false
+	if not await effects(true): return false
+	var camera: Transform3D=actor.camera.global_transform
+	var lights: Array=lighting()
+	if not await frame(stem+"_default_CRT","Exact original"+view+" framing: whole useful fixture context, no zoom"): return false
+	if not await effects(false): return false
+	if not require(actor.camera.global_transform==camera and lighting()==lights,"Same-camera/light selection required for presentation pair"): return false
+	if not await frame(stem+"_effects_off","Same original"+view+" camera; existing F4 presentation diagnostic only"): return false
+	if not await effects(true): return false
+	return require(actor.camera.global_transform==camera and lighting()==lights,"Restore default presentation without camera/light change")
+func interact_capture() -> bool:
+	var target:=room.get_node("WP02_info_care_01") as Node3D
+	if not require(target!=null and not target.expanded,"Same closed care information identity required"): return false
+	if not await aim(target.global_position): return false
+	if not require(actor.target_from_view()==target,"Original2.5m ray must select new visible insert"): return false
+	focus(true)
+	if not await advance(36): return false
+	if not require(actor.interaction_target==target and actor.camera.fov<59,"Actual RMB focus required"): return false
+	if not await frame("06_RMB_focus_prompt","Actual original RMB focus/zoom and crispHUD; this is not ordinary72-degree legibility evidence",true): return false
+	key(KEY_E,true)
+	if not await advance(2): return false
+	key(KEY_E,false)
+	if not await advance(6): return false
+	var hint:=main.get("interaction_hint") as Label
+	if not require(target.expanded and hint!=null and hint.text==target.get_interaction_label(),"Original E must open unchanged information in actualHUD"): return false
+	interaction_opened=true
+	if not await frame("07_RMB_E_information_open","Actual E-open information on refitted visible insert; fullunchanged prose in originalHUD",true): return false
+	key(KEY_E,true)
+	if not await advance(2): return false
+	key(KEY_E,false)
+	if not await advance(6): return false
+	if not require(not target.expanded,"Original E must close"): return false
+	interaction_closed=true
+	focus(false)
+	return await wait_for_ordinary_view()
+func wait_for_ordinary_view() -> bool:
+	# player.gd: error multiplies by exp(-10*delta) each physics update.
+	# At60Hz,58->72 needs at least58ticks for the unchanged0.001degree criterion.
+	#120ticks is a bounded diagnostic budget, not a threshold or controller change.
+	release_settle_samples.clear()
+	for waited in range(121):
+		var target_path := str(actor.interaction_target.get_path()) if is_instance_valid(actor.interaction_target) else ""
+		var sample := {"waited_physics_frames":waited,"fov":actor.camera.fov,"absolute_error_from72":absf(actor.camera.fov-72),"target_is_null":actor.interaction_target==null,"target_path":target_path,"RMB_pressed":Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)}
+		release_settle_samples.append(sample)
+		if actor.interaction_target==null and absf(actor.camera.fov-72)<.001:
+			if not write_json("RMB_RELEASE_SETTLE.json",{"passed":true,"criterion":"target null and abs(FOV-72)<0.001; unchanged","max_wait_physics_frames":120,"samples":release_settle_samples}): return false
+			return true
+		if waited==120: break
+		if not await advance(1): return false
+	write_json("RMB_RELEASE_SETTLE.json",{"passed":false,"criterion":"target null and abs(FOV-72)<0.001; unchanged","max_wait_physics_frames":120,"samples":release_settle_samples})
+	return require(false,"RMB release failed unchanged ordinary-view criterion after120ticks; observed "+JSON.stringify(release_settle_samples[-1]))
+func run() -> void:
+	started=Time.get_ticks_msec()
+	if not require(DisplayServer.get_name()!="headless","Graphical capture required"): return
+	if not validate_freeze(): return
+	var reference: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(REFERENCE))
+	for row in reference.captures:
+		if str(row.view) in ["06_cool_care_stock_and_mounts","07_care_counter_cloths_bottles_notice"]: original_views[str(row.view)]=row
+	if not require(original_views.size()==2,"Original care views required"): return
+	data=JSON.parse_string(FileAccess.get_file_as_string(FIXTURE))
+	if not require(FileAccess.get_sha256(FIXTURE)==FIXTURE_SHA,"Final passed access fixture required"): return
+	main=(load("res://scenes/main.tscn") as PackedScene).instantiate();root.add_child(main)
+	for i in range(150): await physics_frame
+	ship=main.get_node("World360/Astraea") as Node3D
+	actor=ship.get_node("ShipSpace/PersistentActors/Player") as CharacterBody3D
+	cart=ship.find_child("CustodialCart",true,false) as RigidBody3D
+	floors=ship.find_child("CompiledStructuralFloors_NotFinishedRooms",true,false) as Node3D
+	built=ship.find_child("D07_SportsCare_Receiving_WIP",true,false) as Node3D
+	if not require(actor!=null and cart!=null and floors!=null and built!=null,"Actual installed source and original actors required"): return
+	room=built.get_node("WholeRetainedSportsCare") as Node3D
+	space=ship.get_world_3d().direct_space_state
+	if not require(actor.get_script().resource_path=="res://scripts/player.gd" and actor.gameplay_input_enabled and bool(main.effects),"Unchanged original player and default presentation required"): return
+	var start:=xyz(original_views["06_cool_care_stock_and_mounts"].actual_actor_position)
+	if not require(ship.arrive_at(start+Vector3.UP*.1,0),"One previously supported care stance arrival refused"): return
+	if not await advance(45): return
+	if not support_at(Vector3(start.x,35.5,start.z)): return
+	prior_position=actor.global_position;track_motion=true
+	if not await paired_original("06_cool_care_stock_and_mounts","01_original06"): return
+	if not await paired_original("07_care_counter_cloths_bottles_notice","03_original07"): return
+	# Capture real focus/read at the exact previously tested initial care stance before the oblique walk.
+	if not await interact_capture(): return
+	# Exact midpoint of the already source-screened care segment[44,459]→[46.85,462.5].
+	if not await walk(Vector2(45.425,460.75)): return
+	var target:=room.get_node("WP02_info_care_01") as Node3D
+	if not await aim(target.global_position): return
+	if not await frame("05_supported_oblique_default_CRT","Original route-segment midpoint, supported ordinary eye/FOV72; no free camera"): return
+	if not await walk(Vector2(start.x,start.z)): return
+	release_inputs()
+	if not require(captures.size()==7 and interaction_opened and interaction_closed and bool(main.effects),"Seven views, actual read-close and restored defaults required"): return
+	if not validate_freeze(): return
+	write_receipt("PASS")
+	print("SUNCORP CARE SIGN NATIVE PILOT PASS: paired original06/07, supported oblique and actualRMB/E. Legibility review remains open.")
+	main.queue_free();await process_frame;quit(0)
+func write_receipt(status: String,detail: String="") -> void:
+	if output_dir.is_empty() or not DirAccess.dir_exists_absolute(output_dir): return
+	write_json("CAPTURE_RUN.json",{"status":status,"detail":detail,"images":captures.size(),"initial_supported_arrivals":1,"later_teleports":0,"walked_m":walked_m,"walked_frames":walked_frames,"support_samples":support_samples,"interaction_opened":interaction_opened,"interaction_closed":interaction_closed,"release_settle_samples":release_settle_samples,"raw_proof_or_long_route_rerun":false,"default_effects_restored":bool(main.effects) if main!=null else false,"legibility_accepted":false})
