@@ -133,4 +133,123 @@ func exercise() -> bool:
 		var direction: Vector3=(xyz(item.aim_xyz)-light.global_position).normalized()
 		if not require(ray(light.global_position,light.global_position+direction*.04,exclusions()).is_empty(),"Modeled medical light exit is blocked"): return false
 	metrics["housed_sources"]=lights.size()
+	if not verify_connected_triage(): return false
+	return true
+
+
+func source_bounds(record: Dictionary) -> bool:
+	var node: MeshInstance3D=exact_node(built,str(record.name)) as MeshInstance3D
+	if not require(node!=null and node.visible and node.mesh!=null,"Source room mesh missing: "+str(record.name)): return false
+	var actual: AABB=node.global_transform*node.get_aabb()
+	var lower: Vector3=xyz(record.bounds_world_xyz[0]);var upper: Vector3=xyz(record.bounds_world_xyz[1])
+	if not require(actual.position.distance_to(lower)<.003 and actual.end.distance_to(upper)<.003,"Actual source bounds changed: "+str(record.name)): return false
+	return true
+
+func source_static_leaf(name: String) -> bool:
+	var node: MeshInstance3D=exact_node(built,name) as MeshInstance3D
+	if not require(node!=null and node.get_script()==null,"Static source-open leaf required: "+name): return false
+	if not require(str(node.get_meta("proposed_state",""))=="source_open_inward" and not bool(node.get_meta("operational_acceptance",true)),"Leaf operation scope changed: "+name): return false
+	var contacts: Array=node.find_children("*","CollisionShape3D",true,false)
+	if not require(contacts.size()==1,"Static leaf must retain one faithful contact: "+name): return false
+	var contact: CollisionShape3D=contacts[0] as CollisionShape3D
+	if not require(not contact.disabled and contact.get_parent() is StaticBody3D and contact.shape is ConcavePolygonShape3D,"Leaf contact replaced or disabled: "+name): return false
+	var body: StaticBody3D=contact.get_parent() as StaticBody3D
+	if not require((body.collision_layer & 1)!=0,"Static leaf must remain in the real world collision layer"): return false
+	var expected: ConcavePolygonShape3D=node.mesh.create_trimesh_shape()
+	if not require(triangle_multiset((contact.shape as ConcavePolygonShape3D).get_faces(),contact.global_transform)==triangle_multiset(expected.get_faces(),node.global_transform),"Static leaf contact differs from its exact native triangles: "+name): return false
+	return true
+
+func architecture_hit(a: Vector3,b: Vector3,label: String) -> bool:
+	var hit: Dictionary=ray(a,b,exclusions())
+	return require(not hit.is_empty() and built.is_ancestor_of(hit.collider),"Missing actual medical closure/receiver: "+label)
+
+func verify_connected_triage() -> bool:
+	if not require(str(data.architecture_file)==str(triage_evidence.architecture_file) and FileAccess.get_sha256("res://assets/models/"+str(data.architecture_file))==str(triage_evidence.architecture_sha256),"Source010 architecture reference/hash changed"): return false
+	if not require(str(data.new_floor_owner)=="D05_connected_triage_wing_floor" and float(data.new_floor_area_m2)==544.0,"Additive triage floor identity/area changed"): return false
+	if not require(str(data.floor_owner)=="D05_forward_waiting_support_floor" and float(data.floor_area_m2)==350.72,"Retained welcome floor identity/area changed"): return false
+	var baseline: Dictionary=load("res://tests/medical_successor_guard.gd").validate_current(floors)
+	if not require(baseline.new_compiled_record==triage_evidence.old_compiled_record,"Every old welcome slab record field must remain exact"): return false
+	var added: Dictionary=triage_proof.new_compiled_record
+	if not require(str(added.id)==str(data.new_floor_owner) and float(added.structural_area_m2)==544.0 and float(added.floor_y)==21.0 and float(added.thickness)==.24,"Authenticated added slab differs from source010 proposal"): return false
+	var old_contact_count: Variant=metrics.exact_actual_contact_triangles
+	var old_chunk_count: Variant=metrics.exact_actual_render_chunks
+	if not verify_actual_slab(added): return false
+	metrics["triage_exact_actual_contact_triangles"]=metrics.exact_actual_contact_triangles
+	metrics["triage_exact_actual_render_chunks"]=metrics.exact_actual_render_chunks
+	metrics["exact_actual_contact_triangles"]=old_contact_count
+	metrics["exact_actual_render_chunks"]=old_chunk_count
+	if not require(str(data.root_name)=="D05MedicalWelcome_WIP" and str(data.persistent_id)=="d05_forward_medical_welcome_001" and str(built.get_meta("persistent_id",""))==str(data.persistent_id),"Original persistent medical root identity changed"): return false
+	if not require(data.children.size()==10 and data.children.slice(0,2)==triage_evidence.baseline_children,"Keep both old child identities before the exact eight added rooms"): return false
+	for child in triage_evidence.baseline_children:
+		if not require(data.children.has(child),"Original medical child removed"): return false
+	for record in triage_evidence.baseline_instances:
+		var expected: Dictionary=record
+		for successor in triage_evidence.waiting_pose_successors:
+			if str(successor.name)==str(record.name):
+				if not require(successor.before==record,"Explicit source-pose predecessor changed"): return false
+				expected=successor.after
+		if not require(data.instances.has(expected),"Original component identity/record or explicitly source-pinned waiting pose changed"): return false
+	for record in triage_evidence.baseline_fixtures:
+		if not require(data.fixtures.has(record),"Original housed source record changed"): return false
+	for key in triage_evidence.baseline_routes:
+		if not require(data.physical_test_routes[key]==triage_evidence.baseline_routes[key],"Original passing route changed: "+str(key)): return false
+	if not require(data.instances.size()==74 and data.fixtures.size()==34 and data.rooms.size()==8 and data.door_sources.size()==8,"Exact source010 room/assembly/source roster required"): return false
+	for record in triage_evidence.admission_mesh_bounds:
+		if not source_bounds(record): return false
+	var clear: int=0
+	for x in [-12.75,-11.0,-9.25]:
+		for y in [21.05,22.2,23.95]:
+			if not require(ray(Vector3(x,y,-449.60),Vector3(x,y,-450.20),exclusions()).is_empty(),"Former admission end wall still obstructs the real3.6x3.0 opening"): return false
+			clear+=1
+	for point in [Vector3(-13.4,22,-449.88),Vector3(-8.6,22,-449.88),Vector3(-11,24.6,-449.88)]:
+		if not architecture_hit(point+Vector3.BACK*.35,point-Vector3.BACK*.35,"admission shoulders/lintel"): return false
+	for x in [-12.65,-11.0,-9.35]:
+		for i in range(51):
+			var z: float=-449.5-float(i)*.02
+			var owner: String="" if absf(z+450.0)<.00001 else (str(data.floor_owner) if z> -450.0 else str(data.new_floor_owner))
+			if not support_at(Vector3(x,21,z),owner): return false
+	var checked_ids: Dictionary={}
+	var mesh_count: int=0
+	for value in triage_evidence.rooms:
+		var room: Dictionary=value;var id: String=str(room.programme_child)
+		if not require(not checked_ids.has(id) and data.children.has(id) and data.rooms.has(room.source_room) and data.door_sources.has(room.door_source),"Exact source room/door identity changed: "+id): return false
+		checked_ids[id]=true
+		for record in room.mesh_bounds:
+			if not source_bounds(record): return false
+			mesh_count+=1
+		for leaf in room.door_meshes:
+			if not source_static_leaf(str(leaf)): return false
+		var portal: Vector3=xyz(room.portal_xyz)
+		for dx in [-1.74,0.0,1.74]:
+			for height in [.06,1.2,2.59]:
+				var p: Vector3=portal+Vector3(dx,height,0)
+				if not require(ray(p+Vector3.BACK*.35,p-Vector3.BACK*.35,exclusions()).is_empty(),"Source-open room portal obstructed: "+id): return false
+				clear+=1
+		if not architecture_hit(portal+Vector3(0,3.0,.35),portal+Vector3(0,3.0,-.35),id+" portal header"): return false
+		var inside: Vector3=xyz(room.inside_xyz)
+		if not support_at(inside,str(data.new_floor_owner)): return false
+		if not architecture_hit(inside+Vector3.UP*3.9,inside+Vector3.UP*4.76,id+" vault bearing"): return false
+		# The upper surface must stay below the actual D06 datum; roof geometry
+		# must neither replace a compiler slab nor open a false inter-deck route.
+		for record in room.mesh_bounds:
+			if not require(float(record.bounds_world_xyz[1][1])<=25.731,"Medical source exceeds its reviewed roof envelope"): return false
+	for source in triage_evidence.new_fixture_sources:
+		var matches: Array=[]
+		for fixture in data.fixtures:
+			if str(fixture.name)==str(source.name): matches.append(fixture)
+		if not require(matches.size()==1,"New fixture identity must resolve exactly once: "+str(source.name)): return false
+		var fixture: Dictionary=matches[0]
+		if not require(xyz(fixture.position_xyz).distance_to(xyz(source.position_xyz))<.001 and xyz(fixture.aim_xyz).distance_to(xyz(source.aim_xyz))<.001,"New source exit/aim diverged from the fitted source: "+str(source.name)): return false
+		var owner: Node=built.get_node(str(fixture.source_owner))
+		var receiver: MeshInstance3D=exact_node(owner,str(fixture.source_node)) as MeshInstance3D
+		if not require(receiver!=null and receiver.visible and receiver.mesh!=null,"Visible modeled fixture receiver missing"): return false
+		var receiver_box: AABB=receiver.global_transform*receiver.get_aabb()
+		if not require(receiver_box.grow(.35).has_point(xyz(fixture.position_xyz)),"Light floats away from its actual fixture housing"): return false
+		var light: SpotLight3D=built.find_child(("MedicalSource_"+str(fixture.name)).validate_node_name(),true,false) as SpotLight3D
+		if not require(light!=null and str(light.get_meta("source_node",""))==str(receiver.get_path()),"Runtime light has the wrong real receiver"): return false
+	# Staff closure stays capped. Never turn a sign into an operational route.
+	if not architecture_hit(Vector3(-42.3,22,-458),Vector3(-41.6,22,-458),"west unconnected staff cap"): return false
+	metrics["triage_room_ids"]=checked_ids.keys();metrics["source_room_mesh_bounds"]=mesh_count
+	metrics["static_source_open_privacy_leaves"]=16;metrics["triage_clear_aperture_rays"]=clear
+	metrics["triage_housed_sources"]=23;metrics["door_operation_accepted"]=false
 	return true

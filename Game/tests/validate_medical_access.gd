@@ -40,7 +40,27 @@ func exercise() -> bool:
 	var reverse: Array=branch.duplicate();reverse.reverse()
 	if not await route(reverse): return false
 	if not await route([[-18,21,-446],[-11,21,-446],[-11,21,-432],[-5.4,21,-432]]): return false
+	if not await walk_connected_triage(): return false
 	metrics["ordinary_walking_frames"]=walked_frames;metrics["walked_metres"]=travelled_m
 	metrics["initial_supported_arrivals"]=1;metrics["later_player_teleports"]=0
 	metrics["scope"]="Ordinary player-input waiting/support round trip. Diagnostic cart turn and species/robot fit are separate."
+	metrics["triage_scope"]="Same supported player walks all eight real source-open rooms and returns to the core; no later arrival or teleport."
+	return true
+
+
+func walk_connected_triage() -> bool:
+	# Continue from the original completed core/waiting/support round trip.
+	# Every room visit uses the same production capsule and ordinary W input.
+	if not await route([[-11,21,-432],[-11,21,-446],[-11,21,-458]]): return false
+	var seen: Array[String]=[]
+	for index in [0,4,1,5,2,6,3,7]:
+		var room: Dictionary=triage_evidence.rooms[index]
+		if not await route([room.corridor_xyz,room.portal_xyz]): return false
+		if not await route(room.walk_points_xyz): return false
+		if not support_at(xyz(room.walk_points_xyz[-1]),str(data.new_floor_owner)): return false
+		seen.append(str(room.programme_child))
+		if not await route([room.portal_xyz,room.corridor_xyz]): return false
+	if not await route([[-11,21,-458],[-11,21,-446],[-11,21,-432],[-5.4,21,-432]]): return false
+	if not require(seen.size()==8,"Walk every exact triage child before returning to the original core"): return false
+	metrics["triage_walked_room_ids"]=seen
 	return true

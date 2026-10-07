@@ -9,6 +9,8 @@ var floors: Node3D
 var built: Node3D
 var space: PhysicsDirectSpaceState3D
 var data: Dictionary
+var triage_evidence: Dictionary
+var triage_proof: Dictionary
 var failed: bool=false
 var frames: int=0
 var support_samples: int=0
@@ -106,6 +108,9 @@ func run() -> void:
 	started=Time.get_ticks_msec()
 	receipt_path="res://artifacts/"+test_name+"_attempt_"+str(Time.get_unix_time_from_system()).replace(".","_")+"_"+str(started)+".json"
 	data=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
+	if not require(data.has("source_evidence_file") and data.has("source_evidence_sha256"),"Pinned source010 test evidence required"): return
+	if not require(FileAccess.get_sha256(str(data.source_evidence_file))==str(data.source_evidence_sha256),"Source010 expectations changed"): return
+	triage_evidence=JSON.parse_string(FileAccess.get_file_as_string(str(data.source_evidence_file)))
 	main=(load("res://scenes/main.tscn") as PackedScene).instantiate();root.add_child(main)
 	for frame in range(150): await physics_frame
 	ship=main.get_node("World360/Astraea") as Node3D
@@ -116,6 +121,8 @@ func run() -> void:
 	space=ship.get_world_3d().direct_space_state
 	if not require(built!=null and floors!=null and cart!=null,"Installed medical root/floors/original cart required"): return
 	if not pin_imports(): return
+	triage_proof=load("res://tests/medical_triage_successor_guard.gd").validate_current(floors)
+	if not require(bool(triage_proof.get("validation_completed",false)),"Authenticated complete triage successor proof did not complete"): return
 	var proof: Dictionary=load("res://tests/medical_successor_guard.gd").validate_current(floors)
 	if not require(bool(proof.get("validation_completed",false)),"Authenticated medical predecessor/current-world proof did not complete"): return
 	if not await exercise(): return

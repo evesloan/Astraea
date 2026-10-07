@@ -8,6 +8,7 @@ var product_instances: Array[int]=[]
 var driven_frames: int=0
 var driven_metres: float=0
 var turn_poses: int=0
+var triage_cart_metrics: Dictionary={}
 
 func _initialize() -> void:
 	test_name="medical_cart";call_deferred("run")
@@ -153,6 +154,7 @@ func exercise() -> bool:
 	if not await raw_e_handle(true): return false
 	if not await turn_to(-PI/2): return false
 	if not await line_to(Vector2(-11,-446),-PI/2): return false
+	if not await drive_connected_triage(): return false
 	if not await turn_to(PI): return false
 	if not await line_to(Vector2(-11,-432),PI): return false
 	if not await turn_to(-PI/2): return false
@@ -160,4 +162,64 @@ func exercise() -> bool:
 	if not await raw_e_handle(false): return false
 	if not product_state(): return false
 	metrics={"initial_fixture_placements":1,"later_cart_or_product_transform_writes":0,"loaded_D05_lift_arrivals":1,"force_guided_frames":driven_frames,"operator_metres":driven_metres,"gradual_turn_poses":turn_poses,"compound_clearance_poses":probe.sampled_poses,"wheel_operator_support_samples":probe.floor_rays,"unchanged_loose_product_identities":4,"original_RMB_E_release_regrip":true,"diagnostic_privacy_dogleg_cart_acceptance":false,"scope":"Scripted production-physics waiting route and return, not freehand comfort, clinical/robot fit or diagnostic cart access. Current bottle script has no fill model; no fill-conservation claim."}
+	metrics.merge(triage_cart_metrics)
+	return true
+
+
+func verify_actual_room_cart_pose(room: Dictionary,yaw: float) -> bool:
+	var inside: Vector3=xyz(room.inside_xyz)
+	if not require(Vector2(cart.global_position.x-inside.x,cart.global_position.z-inside.z).length()<.45,"Original cart did not reach the actual room manoeuvre position"): return false
+	if not require(absf(wrapf(cart.global_rotation.y-yaw,-PI,PI))<.10,"Actual cart did not complete the meaningful room turn"): return false
+	if not require(absf(cart.global_position.y-21.0)<.12 and cart.global_basis.y.dot(Vector3.UP)>.98,"Original loaded cart tipped or left the room slab"): return false
+	# Keep the original probe30mm support clearance; X/Z and yaw are actual.
+	probe.check_pose(ship,actor,cart,Vector3(cart.global_position.x,21.03,cart.global_position.z),cart.global_rotation.y,21.0)
+	if failed: return false
+	for wheel in probe.wheel_specs:
+		var q: Array=wheel.center
+		var foot: Vector3=cart.global_transform*Vector3(float(q[0]),0,float(q[2]))
+		if not support_at(Vector3(foot.x,21,foot.z),str(data.new_floor_owner)): return false
+	if not support_at(Vector3(actor.global_position.x,21,actor.global_position.z),str(data.new_floor_owner)): return false
+	return product_state()
+
+func drive_connected_triage() -> bool:
+	# The same original loaded cart, products and production force/torque tether
+	# detour from the existing admission junction, then resume its old return.
+	# No second fixture placement or new supported arrival is introduced.
+	if not require(cart.get("driver")==actor,"Preserved original tether required at the admission junction"): return false
+	if not await turn_to(0): return false
+	if not await line_to(Vector2(-11,-458),0): return false
+	if not await turn_to(PI/2): return false
+	var seen: Array[String]=[]
+	var actual_turns: Array=[]
+	for index in [0,4,1,5,2,6,3,7]:
+		var room: Dictionary=triage_evidence.rooms[index]
+		var corridor: Vector3=xyz(room.corridor_xyz);var inside: Vector3=xyz(room.inside_xyz)
+		if not await line_to(Vector2(corridor.x,corridor.z),PI/2): return false
+		var yaw: float=float(room.inward_yaw)
+		if not await turn_to(yaw): return false
+		if not await line_to(Vector2(inside.x,inside.z),yaw): return false
+		if not verify_actual_room_cart_pose(room,yaw): return false
+		var before_yaw: float=cart.global_rotation.y
+		# Ninety degrees is a real room turn. A full in-place U-turn is not
+		# claimed from the source's3.6m square: the operator needs3.84m diameter.
+		if not await turn_to(yaw+PI/2): return false
+		if not verify_actual_room_cart_pose(room,yaw+PI/2): return false
+		var turned: float=absf(wrapf(cart.global_rotation.y-before_yaw,-PI,PI))
+		if not require(turned>deg_to_rad(80.0),"Actual cart yaw changed less than eighty degrees inside room"): return false
+		actual_turns.append({"room_id":str(room.programme_child),"actual_turn_radians":turned,"actual_position":str(cart.global_position)})
+		if not await turn_to(yaw): return false
+		if not verify_actual_room_cart_pose(room,yaw): return false
+		# Reverse out through the tested physical opening, still force-guided.
+		if not await line_to(Vector2(corridor.x,corridor.z),yaw): return false
+		if not await turn_to(PI/2): return false
+		seen.append(str(room.programme_child))
+	if not require(seen.size()==8,"The original loaded cart must visit and turn inside all eight rooms"): return false
+	if not await line_to(Vector2(-11,-458),PI/2): return false
+	if not await turn_to(PI): return false
+	if not await line_to(Vector2(-11,-446),PI): return false
+	if not await turn_to(-PI/2): return false
+	if not product_state(): return false
+	triage_cart_metrics["triage_loaded_cart_room_ids"]=seen;triage_cart_metrics["triage_actual_room_turns"]=actual_turns
+	triage_cart_metrics["triage_door_operation_accepted"]=false;triage_cart_metrics["triage_full_in_place_uturn_accepted"]=false
+	triage_cart_metrics["triage_scope"]="Same original four-product cart; actual ninety-degree room turn and back-out in each source-open room, followed by physical return to the core. No body/robot capacity or freehand comfort acceptance."
 	return true

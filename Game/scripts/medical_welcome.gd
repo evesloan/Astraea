@@ -29,6 +29,9 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	assert(str(core_contract.enclosure_file)==str(data.core_file),"Never install the medical approach through the retained solid core wall")
 	var floor_owner: Node3D = ship.find_child(str(data.floor_owner),true,false) as Node3D
 	assert(floor_owner!=null and str(floor_owner.get_meta("region_id"))==str(data.floor_owner),"Compiler receiving floor must exist before the aperture is opened")
+	assert(data.floor_owners == [data.floor_owner,data.new_floor_owner])
+	var triage_floor: Node3D = ship.find_child(str(data.new_floor_owner),true,false) as Node3D
+	assert(triage_floor!=null and str(triage_floor.get_meta("region_id"))==str(data.new_floor_owner),"Connected triage floor must exist before the admission wall is opened")
 	var root: Node3D = Node3D.new()
 	root.name=str(data.root_name)
 	root.set_meta("persistent_id",str(data.persistent_id))
@@ -36,12 +39,22 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	root.set_meta("first_pass_quality_accepted",false)
 	root.set_meta("clinical_operation_accepted",false)
 	root.set_meta("floor_owner",str(data.floor_owner))
-	root.set_meta("scope","Unfinished connected waiting/support approach; source furnishings and open architectural threshold only")
+	root.set_meta("triage_floor_owner",str(data.new_floor_owner))
+	root.set_meta("privacy_leaves_static",true)
+	root.set_meta("scope","Unfinished connected waiting/support and eight-pod triage wing; static source-open privacy leaves, no clinical operation")
 	parent.add_child(root)
 	root.position=xyz(data.origin_xyz)
 	var architecture: Node3D = ship.model(root,str(data.architecture_file),"AuthoredMedicalWelcome",Vector3.ZERO)
-	architecture.set_meta("source_package","medical_forward_welcome_candidate_20261006/006")
+	architecture.set_meta("source_package","medical_forward_welcome_candidate_20261006/triage010")
 	architecture.set_meta("catalogue_id_status","Unregistered architectural candidate; existing component identities retained")
+	for value in data.door_sources:
+		var doorway: Dictionary = value
+		var number: String = str(doorway.programme_child).get_slice("_pod_",1)
+		for side in ["left","right"]:
+			var leaf: Node3D = exact_node(architecture,"TRIAGE_"+number+"_privacy_leaf_"+side)
+			leaf.set_meta("programme_child",str(doorway.programme_child))
+			leaf.set_meta("source_open_static",true)
+			leaf.set_meta("operation_enabled",false)
 	for value in data.instances:
 		var item: Dictionary = value
 		var instance: Node3D = ship.model(root,str(item.file),str(item.name),xyz(item.local_xyz),float(item.yaw_radians))
