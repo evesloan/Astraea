@@ -1,0 +1,451 @@
+{
+  "schema": 1,
+  "scope": "Exact two botanical floors and closed interim guard addition; retain complete existing pool/medical proof chain",
+  "projected_paths": [
+    "data/spatial_layout.json",
+    "data/generated/structural_meshes.json",
+    "docs/LAYOUT_COMPILE_CHECKS.json",
+    "tools/compile_layout.py",
+    "scripts/ship.gd"
+  ],
+  "current_sha256": {
+    "data/spatial_layout.json": "c9b14259376e81ceaae6e56f2d4303cac1a1d27d8af74739838df5da8d5b8039",
+    "data/generated/structural_meshes.json": "db3fd256c0f6dfe01873930bdc1f57cbed770df4693c8a1afb89590cf4cd653a",
+    "docs/LAYOUT_COMPILE_CHECKS.json": "db1fa9c70ab005473550070e6e827a677bfe21312ec2a2fe3e9971ffbc28a02d",
+    "tools/compile_layout.py": "eebea0ae836ad8193953cca71ff85989d874246a9d6670332905a877fe8eb06e",
+    "tools/botanical_court_incremental_preservation.py": "01513837b5dd1c3e4af5eb57f79c35ce654d9f6be96a86362bef449055111639",
+    "data/architecture/packages/botanical_court/BOTANICAL_COURT_COMPILER_PROOF.json": "275e10007060fc9f24e744cf59e05f7e8b7b2039e5dcf4675921096f7f54e951",
+    "data/architecture/packages/botanical_court/retained/LAYOUT_COMPILE_CHECKS.json": "917215a7eb444b088ed13eb5d8ce008fbadac64c25c0e24f1bf3dd7cb2b21a35",
+    "data/architecture/packages/botanical_court/retained/compile_layout.py": "4f1f5caa8b78c3db285f6f639c6b82676b1986d444bd8929c25b50eb7d913fa7",
+    "data/architecture/packages/botanical_court/retained/spatial_layout.json": "1f6a002a3e706717249e60113ab616a3af33f94e31ecf048b88e7cd6d8db8e10",
+    "data/architecture/packages/botanical_court/retained/structural_meshes.json": "abeb58d10dfbd47286ee2538862ec066d85905609ce2fc69c98698f8ae96b340",
+    "scripts/ship.gd": "90849523ef4264dc85ebf41aa9d85eac8715a4a3cbe19b56976181b46d916436",
+    "data/architecture/packages/botanical_court/retained/ship.gd": "c28a07bbc7ea4462295c401da4aa96fb02b6ac13a86bfb6bb5b60d830209641a",
+    "assets/models/AST-ATR-001_botanical_receiving_closed002.glb": "7c16e244527be2e97b705db1e2b0f449ec3e04c74261b46232201f004b4609de",
+    "data/architecture/packages/botanical_court/BOTANICAL_GUARD_EXPORT_GEOMETRY.json": "de4fd2c4e52f93dc64d2acf330fc600d431ad248fc24ed39a0714fdd28fee964",
+    "scripts/structural_floor_builder.gd": "449ab410664b83e243537a899ae46e658b9cd1b3f18de19b2e2690933854bf01",
+    "scripts/static_contact_cache.gd": "d3440479423f19660a6e68af2f730549644eb9ff1f86ccf3254a4e0589c58e35",
+    "tests/grand_pool_finish_successor.gd": "ca9b3300e47a1c5413ecd43390e9e839a6d07acfab7b847c085f979b3cb0b596",
+    "tests/grand_pool_feature_builder_successor.gd": "7d7905f805d013665d981366fe8d09bc216cbc0d973dac658d8abd0254235ff8",
+    "tests/medical_successor_guard.gd": "2d5466a841d6c610b3c907d39e81280ea29bdd9b8015763682924821d814902b",
+    "docs/MEDICAL_TRIAGE_ADDITIVE_SUCCESSOR.json": "392ca67df45c8cd750e8ab308ac8d61d6aac02b31c45acb10efe65dbd824853e",
+    "docs/MEDICAL_ADDITIVE_SUCCESSOR.json": "c73c114a211a08da44c70385767dc5f278343a433cd18fd947c4bb4be78c7297",
+    "data/design_contract.json": "8790e9997fd39c6ddd8a494f665b2a438a7160ec31f343bd858ce5c036fa569a"
+  },
+  "predecessors": {
+    "data/spatial_layout.json": {
+      "retained_path": "data/architecture/packages/botanical_court/retained/spatial_layout.json",
+      "sha256": "1f6a002a3e706717249e60113ab616a3af33f94e31ecf048b88e7cd6d8db8e10"
+    },
+    "data/generated/structural_meshes.json": {
+      "retained_path": "data/architecture/packages/botanical_court/retained/structural_meshes.json",
+      "sha256": "abeb58d10dfbd47286ee2538862ec066d85905609ce2fc69c98698f8ae96b340"
+    },
+    "docs/LAYOUT_COMPILE_CHECKS.json": {
+      "retained_path": "data/architecture/packages/botanical_court/retained/LAYOUT_COMPILE_CHECKS.json",
+      "sha256": "917215a7eb444b088ed13eb5d8ce008fbadac64c25c0e24f1bf3dd7cb2b21a35"
+    },
+    "tools/compile_layout.py": {
+      "retained_path": "data/architecture/packages/botanical_court/retained/compile_layout.py",
+      "sha256": "4f1f5caa8b78c3db285f6f639c6b82676b1986d444bd8929c25b50eb7d913fa7"
+    },
+    "scripts/ship.gd": {
+      "retained_path": "data/architecture/packages/botanical_court/retained/ship.gd",
+      "sha256": "c28a07bbc7ea4462295c401da4aa96fb02b6ac13a86bfb6bb5b60d830209641a"
+    },
+    "tests/medical_triage_successor_guard.gd": {
+      "retained_path": "data/architecture/packages/botanical_court/retained/medical_triage_successor_guard.gd",
+      "sha256": "5bbad02fe086eedca47b9db58b05bf717bb76ba06ceea87f3b7a9ec69d04f162"
+    }
+  },
+  "added_owner_ids": [
+    "D06_botanical_court_port_receiving_floor",
+    "D06_botanical_court_starboard_receiving_floor"
+  ],
+  "added_layout_records": [
+    {
+      "id": "D06_botanical_court_port_receiving_floor",
+      "authoring_owner": "botanical_court_receiving",
+      "deck": "D06",
+      "boundary": [
+        [
+          -8,
+          -238
+        ],
+        [
+          -4,
+          -238
+        ],
+        [
+          -4,
+          -208
+        ],
+        [
+          -8,
+          -208
+        ]
+      ],
+      "thickness": 0.24,
+      "material_role": "guest_floor",
+      "status": "Bounded botanical receiving floor; room interiors, upper pavilion and runtime acceptance remain separate"
+    },
+    {
+      "id": "D06_botanical_court_starboard_receiving_floor",
+      "authoring_owner": "botanical_court_receiving",
+      "deck": "D06",
+      "boundary": [
+        [
+          4,
+          -238
+        ],
+        [
+          8,
+          -238
+        ],
+        [
+          8,
+          -208
+        ],
+        [
+          4,
+          -208
+        ]
+      ],
+      "thickness": 0.24,
+      "material_role": "guest_floor",
+      "status": "Bounded botanical receiving floor; room interiors, upper pavilion and runtime acceptance remain separate"
+    }
+  ],
+  "added_compiled_records": [
+    {
+      "id": "D06_botanical_court_port_receiving_floor",
+      "deck": "D06",
+      "floor_y": 27.0,
+      "thickness": 0.24,
+      "triangles": [
+        [
+          [
+            -8.0,
+            -238.0
+          ],
+          [
+            -8.0,
+            -208.0
+          ],
+          [
+            -4.0,
+            -208.0
+          ]
+        ],
+        [
+          [
+            -4.0,
+            -208.0
+          ],
+          [
+            -4.0,
+            -238.0
+          ],
+          [
+            -8.0,
+            -238.0
+          ]
+        ]
+      ],
+      "rings": [
+        [
+          [
+            -8.0,
+            -238.0
+          ],
+          [
+            -4.0,
+            -238.0
+          ],
+          [
+            -4.0,
+            -208.0
+          ],
+          [
+            -8.0,
+            -208.0
+          ]
+        ]
+      ],
+      "structural_area_m2": 120.0,
+      "render_chunks": [],
+      "status": "Bounded botanical receiving floor; room interiors, upper pavilion and runtime acceptance remain separate",
+      "material_role": "guest_floor"
+    },
+    {
+      "id": "D06_botanical_court_starboard_receiving_floor",
+      "deck": "D06",
+      "floor_y": 27.0,
+      "thickness": 0.24,
+      "triangles": [
+        [
+          [
+            4.0,
+            -238.0
+          ],
+          [
+            4.0,
+            -208.0
+          ],
+          [
+            8.0,
+            -208.0
+          ]
+        ],
+        [
+          [
+            8.0,
+            -208.0
+          ],
+          [
+            8.0,
+            -238.0
+          ],
+          [
+            4.0,
+            -238.0
+          ]
+        ]
+      ],
+      "rings": [
+        [
+          [
+            4.0,
+            -238.0
+          ],
+          [
+            8.0,
+            -238.0
+          ],
+          [
+            8.0,
+            -208.0
+          ],
+          [
+            4.0,
+            -208.0
+          ]
+        ]
+      ],
+      "structural_area_m2": 120.0,
+      "render_chunks": [],
+      "status": "Bounded botanical receiving floor; room interiors, upper pavilion and runtime acceptance remain separate",
+      "material_role": "guest_floor"
+    }
+  ],
+  "compile_summary": {
+    "source_sha256": "c9b14259376e81ceaae6e56f2d4303cac1a1d27d8af74739838df5da8d5b8039",
+    "shapely": "2.1.2",
+    "geos": "3.13.1",
+    "fully_superseded_regions": [
+      "D18_service_side"
+    ],
+    "regions": 275,
+    "triangles": 4474,
+    "polygon_validity": true,
+    "triangle_area_conservation": true,
+    "no_triangles_cross_applicable_voids": true,
+    "central_terrace_exemptions_explicit": true,
+    "theater_generic_void_preserved": true,
+    "theater_authored_surface_allowlist_verified": [
+      "D12_theater_foyer_landings",
+      "D12_theater_gallery_seating",
+      "D12_theater_rear_public_returns",
+      "D12_theater_stair_upper_landing",
+      "D13_theater_foyer_landings",
+      "D13_theater_gallery_seating",
+      "D13_theater_rear_public_returns",
+      "D13_theater_stair_upper_landing"
+    ],
+    "no_coplanar_region_overlap": true,
+    "no_intersecting_slab_volumes": true,
+    "ownership_uses_absolute_elevation": true,
+    "scope": "Structural geometry only; not finished rooms, route acceptance, or capacity acceptance",
+    "theater_source_part_vertical_guard": {
+      "geometry_sha256": "90406045c5c23e52af1850bba8ea3088cb672de072afa47a7f5e6feb39927429",
+      "source_part_count": 4564,
+      "source_depth_counts_m": {
+        "0.45": 4520,
+        "0.25": 44
+      },
+      "source_owner_y_bounds": {
+        "D12_theater_gallery_seating": [
+          77.55,
+          79.92
+        ],
+        "D12_theater_rear_public_returns": [
+          77.55,
+          79.92
+        ],
+        "D12_theater_foyer_landings": [
+          77.55,
+          78
+        ],
+        "D12_theater_stair_upper_landing": [
+          77.55,
+          78
+        ],
+        "D13_theater_gallery_seating": [
+          83.55,
+          85.92
+        ],
+        "D13_theater_rear_public_returns": [
+          83.55,
+          85.92
+        ],
+        "D13_theater_foyer_landings": [
+          83.55,
+          84
+        ],
+        "D13_theater_stair_upper_landing": [
+          83.55,
+          84
+        ]
+      },
+      "method": "Pinned per-part source-solid min/max Y envelopes and exact source footprints; conservative fail-closed guard",
+      "moving_cabin_credit": false
+    },
+    "theater_additive_preservation": {
+      "previous_layout_sha256": "587e2a0d618b4957eab68c5dd437fdfed93ef4c7dab138d9b62326a53d1d6da2",
+      "previous_compiled_sha256": "3322c84a8dc2d456c6652d641bc0e02a38b27ec1095b95d5d494a1456b14f52b",
+      "exact_retained_layout_records": 268,
+      "exact_retained_compiled_records": 262,
+      "new_compiled_records": 13,
+      "physically_equivalent_regeneration_differences": [
+        "D12_star_atlas_ground_0",
+        "D13_star_atlas_gallery_0",
+        "D13_star_atlas_lower_roof_0",
+        "D11_aquatic_cinema_interface",
+        "D11_aquatic_hall_cover"
+      ],
+      "effective_owned_shapes_exactly_equal": true,
+      "engineering_guard_update_required": true
+    },
+    "medical_additive_preservation": {
+      "proof_sha256": "d635118faf4b48d27fc24f83fb09f6119910b363722c04d936faabfdfc549ba3",
+      "retained_layout_records": 285,
+      "retained_compiled_records": 271,
+      "retained_void_records": 28,
+      "new_owner": "D05_forward_waiting_support_floor",
+      "new_area_m2": 350.72,
+      "equivalent_triangulation_reorders_restored": [],
+      "scope": "Exact structural preservation only; runtime access and visual acceptance remain separate"
+    },
+    "medical_triage_additive_preservation": {
+      "proof_sha256": "2d34c27e68d27c9dc5258e868d2d62ac3b55332103586003330379c69455bd3d",
+      "retained_layout_records": 286,
+      "retained_compiled_records": 272,
+      "retained_void_records": 28,
+      "new_owner": "D05_connected_triage_wing_floor",
+      "new_area_m2": 544,
+      "equivalent_triangulation_reorders_restored": [],
+      "complete_old_records_preserved": true,
+      "scope": "Structural proof only; no runtime route, clinical or capacity acceptance"
+    },
+    "botanical_court_additive_preservation": {
+      "proof_sha256": "275e10007060fc9f24e744cf59e05f7e8b7b2039e5dcf4675921096f7f54e951",
+      "retained_layout_records": 287,
+      "retained_compiled_records": 273,
+      "retained_void_records": 28,
+      "new_owners": [
+        "D06_botanical_court_port_receiving_floor",
+        "D06_botanical_court_starboard_receiving_floor"
+      ],
+      "new_area_m2": 240,
+      "complete_old_records_preserved": true,
+      "scope": "Structural source proof; engine and final room acceptance not run"
+    }
+  },
+  "guard_root": "BotanicalCourtReceivingClosedInterim",
+  "guard_file": "AST-ATR-001_botanical_receiving_closed002.glb",
+  "guard_geometry_path": "data/architecture/packages/botanical_court/BOTANICAL_GUARD_EXPORT_GEOMETRY.json",
+  "consumer_inverse_edits": [
+    {
+      "before": "\tfor owner in floors.get_children():",
+      "after": "\tfor owner in actual_owners:",
+      "count": 1
+    },
+    {
+      "before": "\tif floors.get_child_count()!=current_compiled.regions.size():",
+      "after": "\tvar actual_owners: Array=_botanical_floor_children(floors)\n\tif actual_owners.size()!=current_compiled.regions.size():",
+      "count": 1
+    },
+    {
+      "before": "\tif value!=current_compiled and value!=old_compiled:",
+      "after": "\tif value==botanical_current_compiled: value=current_compiled\n\tif value!=current_compiled and value!=old_compiled:",
+      "count": 1
+    },
+    {
+      "before": "return checked and value==current_compiled",
+      "after": "return checked and (value==current_compiled or value==botanical_current_compiled)",
+      "count": 1
+    },
+    {
+      "before": "FileAccess.get_file_as_string(\"res://docs/LAYOUT_COMPILE_CHECKS.json\")",
+      "after": "_botanical_current_text(\"res://docs/LAYOUT_COMPILE_CHECKS.json\")",
+      "count": 1
+    },
+    {
+      "before": "FileAccess.get_file_as_string(\"res://data/generated/structural_meshes.json\")",
+      "after": "_botanical_current_text(\"res://data/generated/structural_meshes.json\")",
+      "count": 1
+    },
+    {
+      "before": "FileAccess.get_file_as_string(\"res://data/spatial_layout.json\")",
+      "after": "_botanical_current_text(\"res://data/spatial_layout.json\")",
+      "count": 1
+    },
+    {
+      "before": "var restored := FileAccess.get_file_as_string(\"res://\"+str(path))",
+      "after": "var restored := _botanical_current_text(\"res://\"+str(path))",
+      "count": 1
+    },
+    {
+      "before": "static func _ensure() -> void:\n\tif checked: return",
+      "after": "static func _ensure() -> void:\n\tif checked: return\n\t_botanical_ensure()",
+      "count": 1
+    },
+    {
+      "before": "\treturn FileAccess.get_sha256(\"res://\"+relative)\nstatic func _ensure()",
+      "after": "\t_botanical_ensure()\n\tif relative in botanical_proof.projected_paths: return _botanical_current_text(relative).sha256_text()\n\treturn FileAccess.get_sha256(\"res://\"+relative)\nstatic func _ensure()",
+      "count": 1
+    },
+    {
+      "before": "if relative != POOL_FINISH_HELPER: return FileAccess.get_file_as_string(\"res://\"+relative)",
+      "after": "if relative != POOL_FINISH_HELPER: return _botanical_current_text(relative)",
+      "count": 1
+    }
+  ],
+  "integration_block_normalized_sha256": "9f1b6a9322b7b3e7724776ea76eefaa6e8be17d09de04a4d47e3998a697a37d9",
+  "exact_inverse_edits": {
+    "tools/compile_layout.py": [
+      {
+        "before": "checks['medical_triage_additive_preservation']=triage_preservation",
+        "after": "checks['medical_triage_additive_preservation']=triage_preservation\nchecks['botanical_court_additive_preservation']=botanical_preservation",
+        "count": 1
+      },
+      {
+        "before": "outputs,medical_preservation,triage_preservation=preserve_medical_triage_successor(root,layout,elevations,owned,outputs,preserve_medical_predecessor)",
+        "after": "outputs,medical_preservation,triage_preservation,botanical_preservation=preserve_botanical_court_successor(root,layout,elevations,owned,outputs,preserve_medical_triage_successor,preserve_medical_predecessor)",
+        "count": 1
+      },
+      {
+        "before": "from medical_triage_incremental_preservation import preserve_medical_triage_successor",
+        "after": "from medical_triage_incremental_preservation import preserve_medical_triage_successor\nfrom botanical_court_incremental_preservation import preserve_botanical_court_successor",
+        "count": 1
+      }
+    ],
+    "scripts/ship.gd": [
+      {
+        "before": "\tload(\"res://scripts/structural_floor_builder.gd\").build($ShipSpace,stone,ivory,{\"staff_floor\":surface(\"staff_floor\",Color.WHITE)})",
+        "after": "\tload(\"res://scripts/structural_floor_builder.gd\").build($ShipSpace,stone,ivory,{\"staff_floor\":surface(\"staff_floor\",Color.WHITE)})\n\tmodel($ShipSpace,\"AST-ATR-001_botanical_receiving_closed002.glb\",\"BotanicalCourtReceivingClosedInterim\",Vector3.ZERO)",
+        "count": 1
+      }
+    ]
+  }
+}

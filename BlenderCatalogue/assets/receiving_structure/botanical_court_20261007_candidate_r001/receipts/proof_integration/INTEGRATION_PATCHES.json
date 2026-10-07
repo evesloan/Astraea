@@ -1,0 +1,64 @@
+{
+  "source_before_sha256": "5bbad02fe086eedca47b9db58b05bf717bb76ba06ceea87f3b7a9ec69d04f162",
+  "source_after_sha256": "9ae36761236e3cfab0ddb9b2c0e5a60f1934ae7b039400acc7e7229628514a22",
+  "outside_edits": [
+    {
+      "before": "if relative != POOL_FINISH_HELPER: return FileAccess.get_file_as_string(\"res://\"+relative)",
+      "after": "if relative != POOL_FINISH_HELPER: return _botanical_current_text(relative)",
+      "count": 1
+    },
+    {
+      "before": "\treturn FileAccess.get_sha256(\"res://\"+relative)\nstatic func _ensure()",
+      "after": "\t_botanical_ensure()\n\tif relative in botanical_proof.projected_paths: return _botanical_current_text(relative).sha256_text()\n\treturn FileAccess.get_sha256(\"res://\"+relative)\nstatic func _ensure()",
+      "count": 1
+    },
+    {
+      "before": "static func _ensure() -> void:\n\tif checked: return",
+      "after": "static func _ensure() -> void:\n\tif checked: return\n\t_botanical_ensure()",
+      "count": 1
+    },
+    {
+      "before": "var restored := FileAccess.get_file_as_string(\"res://\"+str(path))",
+      "after": "var restored := _botanical_current_text(\"res://\"+str(path))",
+      "count": 1
+    },
+    {
+      "before": "FileAccess.get_file_as_string(\"res://data/spatial_layout.json\")",
+      "after": "_botanical_current_text(\"res://data/spatial_layout.json\")",
+      "count": 1
+    },
+    {
+      "before": "FileAccess.get_file_as_string(\"res://data/generated/structural_meshes.json\")",
+      "after": "_botanical_current_text(\"res://data/generated/structural_meshes.json\")",
+      "count": 1
+    },
+    {
+      "before": "FileAccess.get_file_as_string(\"res://docs/LAYOUT_COMPILE_CHECKS.json\")",
+      "after": "_botanical_current_text(\"res://docs/LAYOUT_COMPILE_CHECKS.json\")",
+      "count": 1
+    },
+    {
+      "before": "return checked and value==current_compiled",
+      "after": "return checked and (value==current_compiled or value==botanical_current_compiled)",
+      "count": 1
+    },
+    {
+      "before": "\tif value!=current_compiled and value!=old_compiled:",
+      "after": "\tif value==botanical_current_compiled: value=current_compiled\n\tif value!=current_compiled and value!=old_compiled:",
+      "count": 1
+    },
+    {
+      "before": "\tif floors.get_child_count()!=current_compiled.regions.size():",
+      "after": "\tvar actual_owners: Array=_botanical_floor_children(floors)\n\tif actual_owners.size()!=current_compiled.regions.size():",
+      "count": 1
+    },
+    {
+      "before": "\tfor owner in floors.get_children():",
+      "after": "\tfor owner in actual_owners:",
+      "count": 1
+    }
+  ],
+  "inline_section_normalized_sha256": "9f1b6a9322b7b3e7724776ea76eefaa6e8be17d09de04a4d47e3998a697a37d9",
+  "proof_sha256": "047b69640d2ef0c6e51a94d4364325edc598841dc96f0b96cbc55d2b39e075d1",
+  "all_original_consumer_bytes_recovered": true
+}
