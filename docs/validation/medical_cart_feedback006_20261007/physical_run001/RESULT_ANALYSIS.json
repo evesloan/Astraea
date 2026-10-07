@@ -1,0 +1,126 @@
+{
+  "status": "FAIL retained; three pod01 in-room goals achieved, backing-exit waypoint blocked before command execution",
+  "registered_medical_cart_acceptance": false,
+  "completed_room_circuits": 0,
+  "achieved_waypoints": [
+    {
+      "label": "rolling offset admission",
+      "position_error_m": 0.0126346228644252,
+      "yaw_error_degrees": 0.01117329818914492,
+      "frozen_input_settle_frames": 90,
+      "actual_cart_metres": 4.7781437546364
+    },
+    {
+      "label": "useful work-facing turn",
+      "position_error_m": 0.00433384906500578,
+      "yaw_error_degrees": 2.674378555607836,
+      "frozen_input_settle_frames": 90,
+      "actual_cart_metres": 0.0328410215952317
+    },
+    {
+      "label": "physical inward realignment",
+      "position_error_m": 0.00411854172125459,
+      "yaw_error_degrees": 2.62210321906555,
+      "frozen_input_settle_frames": 90,
+      "actual_cart_metres": 0.0390800628265424
+    }
+  ],
+  "actual_work_turn_degrees": 87.31444814620302,
+  "in_room_compound": {
+    "samples": 628,
+    "all_contained": true,
+    "minimum_clearance_m": 0.0825471878051758
+  },
+  "blocked_command": {
+    "frame": 10115,
+    "room_being_exited": "D05_directory_01_triage_pod_01",
+    "collider": "/root/AstraeaPresentation/World360/Astraea/ShipSpace/Districts/D05MedicalWelcome_WIP/AuthoredMedicalWelcome/D05_medical_connected_architecture_010/TRIAGE_05_portal_left_receiver/StaticContact",
+    "actual_cart_xyz": [
+      -16.5129203796387,
+      20.9988307952881,
+      -458.206970214844
+    ],
+    "actual_actor_xyz": [
+      -16.4997406005859,
+      21.0003509521484,
+      -456.383117675781
+    ],
+    "cart_goal_error_m": 0.0584229156374931,
+    "actor_velocity_xz_mps": [
+      0.124397,
+      0.531006
+    ],
+    "next_actor_yaw_rad": -0.0414487160742283,
+    "next_capsule_center_xyz": [
+      -16.497667317252564,
+      21.930350952148398,
+      -456.374267575781
+    ],
+    "capsule_radius_m": 0.3,
+    "capsule_height_m": 1.8,
+    "query_margin_m": 0.001,
+    "capsule_bottom_y": 21.0303509521484,
+    "world_floor_y": 21.0,
+    "receiver_world_min_xyz": [
+      -16.699999809265137,
+      21.0,
+      -456.07999992370605
+    ],
+    "receiver_world_max_xyz": [
+      -16.5,
+      23.72000002861023,
+      -455.73999977111816
+    ],
+    "nearest_verified_source_triangle_distance_m": 0.2944490161575513,
+    "nearest_verified_source_triangle_point_xyz": [
+      -16.508000373840332,
+      21.930350952148398,
+      -456.07999992370605
+    ],
+    "source_face_normal_toward_corridor_xyz": [
+      0,
+      0,
+      -1
+    ],
+    "engine_contact_normal_recorded": false,
+    "normal_caveat": "The native intersect_shape query returned collider/shape identity, not a contact normal. The listed normal is derived from the nearest triangle in the hash-pinned source GLB, whose architecture bounds were validated in the actual structure run.",
+    "interpretation": "Real prospective contact with the opposite pod05 portal receiver; not a floor contact and not a generic move_and_slide boolean. The command was rejected before moving the capsule. This does not prove the entire exit route or static waypoint impossible."
+  },
+  "target_feasibility": {
+    "original_cart_goal_xyz": [
+      -16.5,
+      21,
+      -458.15
+    ],
+    "neutral_operator_xyz": [
+      -16.5,
+      21,
+      -456.53
+    ],
+    "neutral_capsule_to_receiver_margin_m": 0.15000007629390666,
+    "retained_grip_backset_m": 0.67,
+    "retained_hand_hold_distance_m": 0.95,
+    "full_hand_lead_cap_m": 0.22,
+    "nominal_vertical_hand_offset_m": 0.02,
+    "maximum_horizontal_hand_lead_m": 0.21908902300206645,
+    "margin_with_full_forward_lead_and_query_margin_m": -0.0700889467081598,
+    "conclusion": "The original static corridor target is feasible at the neutral stance (about150mm clearance), but that target does not accommodate the full allowed backing hand-lead envelope toward the opposite receiver. The observed moving exit asks for the latter before attaining/settling at the target."
+  },
+  "bounded_spatial_plan": {
+    "state": "Proposal only; no new trial or source edit",
+    "principle": "Plan the corridor turn/exit for the full cart/operator/hand-lead envelope and stopping approach, rather than target neutral cart-center geometry alone. Preserve strict achieved pose and all collision/load/support checks.",
+    "candidate_common_setback_m": 0.25,
+    "pod01_candidate_corridor_turn_xyz": [
+      -16.5,
+      21,
+      -458.4
+    ],
+    "mirrored_south_candidate_corridor_turn_z": -457.6,
+    "derivation": "Move each original corridor staging point250mm toward its own room along the room inward direction. For pod01 this leaves about140mm longitudinal margin to the opposite receiver even with full horizontal hand lead, capsule radius,1mm query margin and40mm actual-cart position allowance.",
+    "pod01_full_envelope_margin_including40mm_position_allowance_m": 0.13991105329182574,
+    "route": "Back only to the earlier corridor staging region, then turn continuously to the corridor-facing direction and travel along the clear corridor. This replaces the old waypoint with a source-reviewed route decision; it does not accept a missed old target or relax its40mm gate.",
+    "required_next_evidence": "One source/native obstacle/support and full-envelope sweep of the common mirrored junction rule, including neighboring pod receivers, columns and the admission junction, before any further live8-room attempt. Do not declare the numeric candidate safe from this single-sided margin calculation alone.",
+    "controls_or_geometry_changes_required_by_current_evidence": false
+  },
+  "priority": "Whole-ship construction remains priority; no additional engine run or automatic tuning authorized."
+}

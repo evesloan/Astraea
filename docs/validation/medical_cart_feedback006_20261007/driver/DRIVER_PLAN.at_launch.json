@@ -1,0 +1,102 @@
+{
+  "state": "Pure helper compiled and negative suite passed226assertions; full-scene harness parsing/physical8-room execution remains unrun",
+  "scope": "Single shared bounded achieved-cart-state actor guidance; no production controller/source edit",
+  "scripts_sha256": {
+    "test_achieved_cart_guidance.gd": "feb2166350fdc896ed747101bc576f2a4cd7c4a9ac75fabdfb43e26f652d725f",
+    "diagnose_feedback_maneuver006.gd": "5742490bb72faf5c760ab14f66a4d5f18cae71ec12e8d034a246de48f608e481",
+    "achieved_cart_guidance.gd": "9fd1195f85aca26f22d9fd09c199ea92ba4016af42637068e1d22f9985f1e12f"
+  },
+  "current_input_sha256": {
+    "tests/validate_medical_cart.gd": "e0aafd2a24a78629a599e4d452f0b810f5ee4f57850323d69a40900e5fc1fe60",
+    "tests/medical_test_scene.gd": "ceeb6f7217927d706673b262a8b1d77693246aec57435dded147237499dd0ff8",
+    "tests/medical_triage_successor_guard.gd": "5bbad02fe086eedca47b9db58b05bf717bb76ba06ceea87f3b7a9ec69d04f162",
+    "docs/MEDICAL_TRIAGE_ADDITIVE_SUCCESSOR.json": "392ca67df45c8cd750e8ab308ac8d61d6aac02b31c45acb10efe65dbd824853e",
+    "scripts/cleaning_cart.gd": "f0d8e2aef841737eb80cd1f9cee1104fa91491a57ae881fa8bf7fbbee1e593b0",
+    "scripts/physics_tether.gd": "8a721666a96b496e989687b8c98c6467db4bd74e2b25ecb06bb316f8d46aa2cb",
+    "data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json": "8ec50f1235c77d876a029fea3f2388572acde8fe6895fa285517aec945fee343",
+    "tests/fixtures/medical_triage_010_expectations.json": "9ce224a8f0c660e7c72b4be7886164c9910791961d18a4869811852a6f495b3e",
+    "tests/grand_pool_finish_successor.gd": "ca9b3300e47a1c5413ecd43390e9e839a6d07acfab7b847c085f979b3cb0b596",
+    "docs/GRAND_POOL_CONNECTED_FINISH_SUCCESSOR.json": "43fc79d9bf38f0b921eacf06a694dc95c5da72a1535a6a1cdcc8db37c4ef878c"
+  },
+  "guidance_bounds": {
+    "reference_speed_mps": 0.65,
+    "reference_yaw_rate_rps": 0.45,
+    "maximum_actor_speed_mps": 1.0,
+    "maximum_actor_yaw_rate_rps": 1.0,
+    "maximum_hand_position_lead_m": 0.22,
+    "maximum_heading_lead_rad": 0.35,
+    "position_gate_m": 0.04,
+    "yaw_gate_rad": 0.1,
+    "actual_quiet_linear_speed_mps": 0.03,
+    "frozen_input_confirmation_frames": 90,
+    "actual_progress_stall_frames": 120,
+    "waypoint_frame_limit": 900,
+    "unchanged_registered_global_frame_limit": 30000,
+    "unchanged_registered_watchdog_seconds": 480,
+    "maximum_hand_position_lead_m_definition": "Full3D target/step hand distance from measured actual world-space cart grip, including reference lag, height difference, zone projection and rate limiting; frozen input also checked.",
+    "maximum_heading_lead_rad_definition": "Total commanded actor heading relative to observed actual cart yaw, including reference lag; also checked during frozen-input settle.",
+    "actual_quiet_linear_speed_mps_definition": "Full Vector3 linear velocity magnitude, including vertical motion.",
+    "actual_quiet_angular_speed_rps": 0.04,
+    "actual_quiet_angular_speed_rps_definition": "Full Vector3 angular velocity magnitude, including pitch and roll."
+  },
+  "guidance_rule": "Rate-limited cart reference; bounded proportional physical hand and heading lead from actual cart errors. Commands only actor heading/velocity and collision-respecting move_and_slide. No cart force, transform, velocity, mass, friction, torque, collision or controller writes. Operator command constrained to eroded authored source square during maneuver; blocked commands fail. Actual pose/velocity and90frozen-input frames decide completion. Leaving pose during settle fails, without a correction retry. Actual grip is global_transform * unchanged grip_local; actor position and quiet velocities use full3D observations. The final frozen command is rechecked before holding.",
+  "complete_route": "Original waiting/lift/core routine preserved. In each of all eight original rooms: physically achieved0.20moffset rolling admission, actual work-facing quarter-turn, physical inward realignment, same-portal backing exit. Same common guidance for32waypoints; no room-specific nudge cases. Originalactual>80degree turn,position/yaw,load/identity,support and body-containment gates retained.",
+  "negative_test_cases": [
+    "Actor reaches neutral target while actual cart remains150mm wrong: cannot pass and fails physical-progress bound",
+    "Actual cart yaw110mrad wrong cannot pass even if actor heading is correct",
+    "Actual correct quiet state cannot complete before90observed frozen-input settle frames",
+    "Leaving40mm achieved pose during settle fails immediately",
+    "Moving cart cannot begin settled completion",
+    "Hard waypoint frame cap still applies while physical progress occurs",
+    "Large advancing reference lag cannot expand total physical hand/heading command leads",
+    "Already excessive observed heading lead fails instead of requiring an instantaneous actor yaw snap",
+    "Vertical bounce and pitch/roll prevent settled completion; new roll motion during holding fails",
+    "Entering hold cannot discard a tiny corrective step needed by the hand-lead cap",
+    "Measured vertical grip displacement cannot evade the full3D lead cap"
+  ],
+  "static_source_review": {
+    "no_direct_cart_state_or_force_writes_in_new_scripts": true,
+    "actual_engine_compile_and_behavior": "Helper parsed and pure negative suite passed; full-scene diagnostic remains unparsed/unrun"
+  },
+  "root_execution_order": [
+    "When pool work releases the sole engine slot, run test_achieved_cart_guidance.gd first; a failure stops this request",
+    "Only after negative tests pass and root confirms current guarded source/protection, run diagnose_feedback_maneuver006.gd once with original30000frame/510sexternal cap",
+    "Keep any result scoped to scratch guided attainability. No registered-test or runtime change is authorized by a diagnostic pass; ordinary-input comfort remains separate."
+  ],
+  "peer_review_resolution": {
+    "total_reference_lag_caps": "Corrected to observed actual cart grip/heading, including rate-limited executable step and frozen-input hold",
+    "full_body_settling": "Corrected to full3D linear/angular velocity magnitudes",
+    "remaining_limit": "Revised code still not compiled or engine-run",
+    "freeze_transition": "Final frozen hand/heading commands must independently satisfy total caps before hold begins",
+    "measured_physical_grip": "Pass measured world-space grip and actor position, preserving existing hold geometry and including vertical lead"
+  },
+  "negative_test_execution": {
+    "attempt001": {
+      "status": "Launcher failed before tests; preserved",
+      "receipt": "NEGATIVE_TEST_ROOT_RECEIPT001.json",
+      "log": "negative_test_run001.log",
+      "cause": "Unwritable default Godot user directory reported by root; not a guidance-test assertion failure"
+    },
+    "attempt002": {
+      "status": "PASS",
+      "assertions": 226,
+      "receipt": "NEGATIVE_TEST_ROOT_RECEIPT002.json",
+      "log": "negative_test_run002.log",
+      "log_sha256": "1bdf32d5202d437eb9b15f7fafd6a6eeb1ca206735e7a038bb7941cd7169e0c3",
+      "wall_seconds": 0.5166458389976469,
+      "environment": "Root isolated writable XDG directories",
+      "scene_or_cart_state_access": false
+    },
+    "physical_harness": "Not run; pool validation has engine priority"
+  },
+  "input_context_successor": {
+    "path": "tests/medical_triage_successor_guard.gd",
+    "previous_sha256": "ee016b577b5326cc3009283c72cf847f9b886a0f493af10783da7c2ea198ce4a",
+    "current_sha256": "5bbad02fe086eedca47b9db58b05bf717bb76ba06ceea87f3b7a9ec69d04f162",
+    "reason": "Root-applied peer-reviewed exact pool helper projection; historical medical proofs remain unchanged",
+    "all_other_previously_pinned_inputs_unchanged": true,
+    "driver_scripts_unchanged": true,
+    "physical_cart_and_tether_unchanged": true,
+    "full_scene_validation": "Still pending root engine slot after pool work"
+  }
+}
