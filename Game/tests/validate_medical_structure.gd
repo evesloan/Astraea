@@ -148,7 +148,9 @@ func source_bounds(record: Dictionary) -> bool:
 func source_static_leaf(name: String) -> bool:
 	var node: MeshInstance3D=exact_node(built,name) as MeshInstance3D
 	if not require(node!=null and node.get_script()==null,"Static source-open leaf required: "+name): return false
-	if not require(str(node.get_meta("proposed_state",""))=="source_open_inward" and not bool(node.get_meta("operational_acceptance",true)),"Leaf operation scope changed: "+name): return false
+	var source_scope: Dictionary=node.get_meta("extras",{})
+	if not require(str(source_scope.get("proposed_state",""))=="source_open_inward" and not bool(source_scope.get("operational_acceptance",true)),"Leaf operation scope changed: "+name): return false
+	if not require(node.get_meta("source_open_static",false)==true and node.get_meta("operation_enabled",true)==false and str(node.get_meta("programme_child",""))==str(source_scope.get("programme_child","")),"Explicit runtime static leaf scope/child identity changed: "+name): return false
 	var contacts: Array=node.find_children("*","CollisionShape3D",true,false)
 	if not require(contacts.size()==1,"Static leaf must retain one faithful contact: "+name): return false
 	var contact: CollisionShape3D=contacts[0] as CollisionShape3D
