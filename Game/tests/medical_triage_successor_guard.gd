@@ -109,10 +109,11 @@ static func retained_sha256(path: String) -> String:
 	return _pool_finish_sha256(relative)
 static func is_current_compiled(value: Dictionary) -> bool:
 	_ensure()
-	return checked and (value==current_compiled or value==botanical_current_compiled or value==team_lounge_current_compiled or value==movement_current_compiled or value==moss_current_compiled)
+	return checked and (value==current_compiled or value==botanical_current_compiled or value==team_lounge_current_compiled or value==movement_current_compiled or value==moss_current_compiled or value==sports_care_current_compiled)
 static func retained_compiled(value: Dictionary) -> Dictionary:
 	_ensure()
 	if not checked: return {}
+	if value==sports_care_current_compiled: value=moss_current_compiled
 	if value==moss_current_compiled: value=movement_current_compiled
 	if value==movement_current_compiled: value=team_lounge_current_compiled
 	if value==team_lounge_current_compiled: value=botanical_current_compiled
@@ -1098,18 +1099,19 @@ static var moss_current_compiled: Dictionary = {}
 
 static func _moss_ensure() -> void:
 	if moss_checked: return
+	_sports_care_ensure()
 	assert(FileAccess.get_sha256(MOSS_PROOF)==MOSS_PROOF_SHA,"Exact whole Team Lounge successor proof required")
 	moss_proof=JSON.parse_string(FileAccess.get_file_as_string(MOSS_PROOF))
 	assert(moss_proof.schema==1 and moss_proof.programme_key=="D06_directory_03")
 	assert(moss_proof.added_owner_ids==["D06_moss_sanctuary_receiving_floor"])
 	for path in moss_proof.current_sha256:
-		assert(FileAccess.get_sha256("res://"+str(path))==str(moss_proof.current_sha256[path]),"Unreviewed lounge postimage: "+str(path))
+		assert(_sports_care_current_sha256("res://"+str(path))==str(moss_proof.current_sha256[path]),"Unreviewed lounge postimage: "+str(path))
 	for path in moss_proof.predecessors:
 		var spec: Dictionary=moss_proof.predecessors[path]
 		var retained: String="res://"+str(spec.retained_path)
 		assert(FileAccess.get_sha256(retained)==str(spec.sha256),"Lounge predecessor changed: "+str(path))
 		moss_predecessor_text[path]=FileAccess.get_file_as_string(retained)
-	var own_source := FileAccess.get_file_as_string("res://tests/medical_triage_successor_guard.gd")
+	var own_source := _sports_care_current_text("res://tests/medical_triage_successor_guard.gd")
 	var begin: String="# MOSS_EXACT_SECTION_"+"BEGIN\n"
 	var end: String="# MOSS_EXACT_SECTION_"+"END\n"
 	assert(own_source.count(begin)==1 and own_source.count(end)==1)
@@ -1124,14 +1126,14 @@ static func _moss_ensure() -> void:
 		recovered=recovered.replace(str(edit.after),str(edit.before))
 	assert(recovered==str(moss_predecessor_text["tests/medical_triage_successor_guard.gd"]),"Every preceding botanical, medical and pool consumer byte must survive")
 	for path in moss_proof.exact_inverse_edits:
-		var restored:=FileAccess.get_file_as_string("res://"+str(path))
+		var restored:=_sports_care_current_text("res://"+str(path))
 		for edit in moss_proof.exact_inverse_edits[path]:
 			assert(restored.count(str(edit.after))==int(edit.count),"Exact lounge source inverse cardinality")
 			restored=restored.replace(str(edit.after),str(edit.before))
 		assert(restored==str(moss_predecessor_text[path]),"Every preceding compiler/ship byte must survive: "+str(path))
-	var layout: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/spatial_layout.json"))
+	var layout: Dictionary=JSON.parse_string(_sports_care_current_text("res://data/spatial_layout.json"))
 	var prior_layout: Dictionary=JSON.parse_string(str(moss_predecessor_text["data/spatial_layout.json"]))
-	moss_current_compiled=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	moss_current_compiled=JSON.parse_string(_sports_care_current_text("res://data/generated/structural_meshes.json"))
 	var prior_compiled: Dictionary=JSON.parse_string(str(moss_predecessor_text["data/generated/structural_meshes.json"]))
 	for pair in [[layout,prior_layout,moss_proof.added_layout_records],[moss_current_compiled,prior_compiled,moss_proof.added_compiled_records]]:
 		var wanted: Array=pair[1].regions.duplicate(true)
@@ -1150,7 +1152,7 @@ static func _moss_ensure() -> void:
 	for key in ["regions","source_checks"]:
 		compiled_globals.erase(key);prior_compiled_globals.erase(key)
 	assert(compiled_globals==prior_compiled_globals,"Every non-summary compiler global must survive")
-	var summary: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://docs/LAYOUT_COMPILE_CHECKS.json"))
+	var summary: Dictionary=JSON.parse_string(_sports_care_current_text("res://docs/LAYOUT_COMPILE_CHECKS.json"))
 	assert(summary==moss_current_compiled.source_checks and summary==moss_proof.compile_summary)
 	assert(summary.moss_sanctuary_additive_preservation.complete_old_records_preserved)
 	assert(moss_current_compiled.regions.size()==280 and prior_compiled.regions.size()==279)
@@ -1173,12 +1175,13 @@ static func _moss_current_sha256(path: String) -> String:
 
 static func _moss_floor_children(floors: Node) -> Array:
 	_moss_ensure()
-	assert(floors!=null and floors.get_child_count()==280,"Complete actual 280-owner roster required before predecessor projection")
+	var sports_care_predecessor_children: Array=_sports_care_floor_children(floors)
+	assert(floors!=null and sports_care_predecessor_children.size()==280,"Complete actual 280-owner roster required before predecessor projection")
 	var expected: Dictionary={}
 	for record in moss_current_compiled.regions: expected[str(record.id)]=record
 	var seen: Dictionary={}
 	var retained: Array=[]
-	var children: Array=floors.get_children()
+	var children: Array=sports_care_predecessor_children
 	for index in range(children.size()):
 		assert(children[index] is Node3D)
 		var owner: Node3D=children[index] as Node3D
@@ -1350,3 +1353,292 @@ static func _moss_validate_import(source: Node3D, filename: String, mesh_count: 
 	assert(source_meshes==mesh_count)
 	assert(source_triangles==760942)
 # MOSS_EXACT_SECTION_END
+# SPORTS_CARE_EXACT_SECTION_BEGIN
+# Bounded 280-to-282 successor: authenticate the whole current world before projection.
+const SPORTS_CARE_PROOF := "res://data/architecture/packages/sports_care/SPORTS_CARE_RUNTIME_PROOF.json"
+const SPORTS_CARE_PROOF_SHA := "ae06c4068c7f379e5fbbdbfeac2e41feda8b8441cec69766a80c5c2c7358fad8"
+static var sports_care_checked := false
+static var sports_care_proof: Dictionary = {}
+static var sports_care_predecessor_text: Dictionary = {}
+static var sports_care_current_compiled: Dictionary = {}
+
+static func _sports_care_ensure() -> void:
+	if sports_care_checked: return
+	assert(FileAccess.get_sha256(SPORTS_CARE_PROOF)==SPORTS_CARE_PROOF_SHA,"Exact whole Team Lounge successor proof required")
+	sports_care_proof=JSON.parse_string(FileAccess.get_file_as_string(SPORTS_CARE_PROOF))
+	assert(sports_care_proof.schema==1 and sports_care_proof.programme_key=="D07_directory_10")
+	assert(sports_care_proof.added_owner_ids==["D07_sports_care_floor","D07_sports_care_entry"])
+	for path in sports_care_proof.current_sha256:
+		assert(FileAccess.get_sha256("res://"+str(path))==str(sports_care_proof.current_sha256[path]),"Unreviewed lounge postimage: "+str(path))
+	for path in sports_care_proof.predecessors:
+		var spec: Dictionary=sports_care_proof.predecessors[path]
+		var retained: String="res://"+str(spec.retained_path)
+		assert(FileAccess.get_sha256(retained)==str(spec.sha256),"Lounge predecessor changed: "+str(path))
+		sports_care_predecessor_text[path]=FileAccess.get_file_as_string(retained)
+	var own_source := FileAccess.get_file_as_string("res://tests/medical_triage_successor_guard.gd")
+	var begin: String="# SPORTS_CARE_EXACT_SECTION_"+"BEGIN\n"
+	var end: String="# SPORTS_CARE_EXACT_SECTION_"+"END\n"
+	assert(own_source.count(begin)==1 and own_source.count(end)==1)
+	var start:=own_source.find(begin)
+	var finish:=own_source.find(end)+end.length()
+	var block:=own_source.substr(start,finish-start)
+	assert(block.count(SPORTS_CARE_PROOF_SHA)==1)
+	assert(block.replace(SPORTS_CARE_PROOF_SHA,"<PROOF_SHA>").sha256_text()==str(sports_care_proof.integration_block_normalized_sha256),"Exact lounge consumer implementation required")
+	var recovered:=own_source.substr(0,start)+own_source.substr(finish)
+	for edit in sports_care_proof.consumer_inverse_edits:
+		assert(recovered.count(str(edit.after))==int(edit.count),"Exact lounge consumer inverse cardinality")
+		recovered=recovered.replace(str(edit.after),str(edit.before))
+	assert(recovered==str(sports_care_predecessor_text["tests/medical_triage_successor_guard.gd"]),"Every preceding botanical, medical and pool consumer byte must survive")
+	for path in sports_care_proof.exact_inverse_edits:
+		var restored:=FileAccess.get_file_as_string("res://"+str(path))
+		for edit in sports_care_proof.exact_inverse_edits[path]:
+			assert(restored.count(str(edit.after))==int(edit.count),"Exact lounge source inverse cardinality")
+			restored=restored.replace(str(edit.after),str(edit.before))
+		assert(restored==str(sports_care_predecessor_text[path]),"Every preceding compiler/ship byte must survive: "+str(path))
+	var layout: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/spatial_layout.json"))
+	var prior_layout: Dictionary=JSON.parse_string(str(sports_care_predecessor_text["data/spatial_layout.json"]))
+	sports_care_current_compiled=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var prior_compiled: Dictionary=JSON.parse_string(str(sports_care_predecessor_text["data/generated/structural_meshes.json"]))
+	for pair in [[layout,prior_layout,sports_care_proof.added_layout_records],[sports_care_current_compiled,prior_compiled,sports_care_proof.added_compiled_records]]:
+		var wanted: Array=pair[1].regions.duplicate(true)
+		wanted.append_array(pair[2])
+		assert(pair[0].regions==wanted,"Every full preceding record/order plus exactly the two approved lounge records required")
+		var seen: Dictionary={}
+		for record in pair[0].regions:
+			assert(not seen.has(str(record.id)),"Duplicate current floor owner")
+			seen[str(record.id)]=true
+	var current_globals: Dictionary=layout.duplicate(true)
+	var prior_globals: Dictionary=prior_layout.duplicate(true)
+	current_globals.erase("regions");prior_globals.erase("regions")
+	assert(current_globals==prior_globals,"Every predecessor global/void record must survive")
+	var compiled_globals: Dictionary=sports_care_current_compiled.duplicate(true)
+	var prior_compiled_globals: Dictionary=prior_compiled.duplicate(true)
+	for key in ["regions","source_checks"]:
+		compiled_globals.erase(key);prior_compiled_globals.erase(key)
+	assert(compiled_globals==prior_compiled_globals,"Every non-summary compiler global must survive")
+	var summary: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://docs/LAYOUT_COMPILE_CHECKS.json"))
+	assert(summary==sports_care_current_compiled.source_checks and summary==sports_care_proof.compile_summary)
+	assert(summary.sports_care_additive_preservation.complete_old_records_preserved)
+	assert(sports_care_current_compiled.regions.size()==282 and prior_compiled.regions.size()==280)
+	for row in sports_care_proof.added_compiled_records:
+		assert(row.deck=="D07" and float(row.floor_y)==35.5 and float(row.thickness)==.24)
+	assert(float(sports_care_proof.added_compiled_records[0].structural_area_m2)==3128.0)
+	assert(float(sports_care_proof.added_compiled_records[1].structural_area_m2)==32.0)
+	sports_care_checked=true
+
+static func _sports_care_current_text(path: String) -> String:
+	_sports_care_ensure()
+	var relative:=_relative(path)
+	if relative in sports_care_proof.projected_paths: return str(sports_care_predecessor_text[relative])
+	return FileAccess.get_file_as_string("res://"+relative)
+
+static func _sports_care_current_sha256(path: String) -> String:
+	_sports_care_ensure()
+	var relative:=_relative(path)
+	if relative in sports_care_proof.projected_paths: return _sports_care_current_text(relative).sha256_text()
+	return FileAccess.get_sha256("res://"+relative)
+
+static func _sports_care_floor_children(floors: Node) -> Array:
+	_sports_care_ensure()
+	assert(floors!=null and floors.get_child_count()==282,"Complete actual 282-owner roster required before predecessor projection")
+	var expected: Dictionary={}
+	for record in sports_care_current_compiled.regions: expected[str(record.id)]=record
+	var seen: Dictionary={}
+	var retained: Array=[]
+	var children: Array=floors.get_children()
+	for index in range(children.size()):
+		assert(children[index] is Node3D)
+		var owner: Node3D=children[index] as Node3D
+		var ident:=str(owner.name)
+		assert(expected.has(ident) and not seen.has(ident),"Unknown, duplicate or missing actual lounge-era owner")
+		assert(ident==str(sports_care_current_compiled.regions[index].id),"Complete owner order changed")
+		seen[ident]=true
+		_botanical_validate_slab(owner,expected[ident])
+		if ident not in sports_care_proof.added_owner_ids: retained.append(owner)
+	assert(seen.size()==282 and retained.size()==280)
+	_sports_care_validate_runtime(floors)
+	return retained
+
+static func _sports_care_v(a: Array) -> Vector3:
+	return Vector3(float(a[0]),float(a[1]),float(a[2]))
+
+static func _sports_care_model(wrapper: Node3D, filename: String, count: int) -> void:
+	var template: Node3D=(load("res://assets/models/"+filename) as PackedScene).instantiate() as Node3D
+	var actual: Node3D=wrapper.get_node(NodePath(str(template.name))) as Node3D
+	assert(actual!=null and actual.transform==template.transform)
+	var meshes:=0
+	var nodes: Array=[template]
+	nodes.append_array(template.find_children("*","Node",true,false))
+	for expected in nodes:
+		var node: Node=actual if expected==template else actual.get_node(template.get_path_to(expected))
+		assert(node.get_class()==expected.get_class() and node.get_script()==expected.get_script())
+		if node is Node3D: assert(node.transform==expected.transform,"Exact imported source pose changed")
+		if node is MeshInstance3D:
+			meshes+=1
+			assert(node.visible and node.material_override==null and node.mesh!=null)
+			assert(node.mesh.get_surface_count()==expected.mesh.get_surface_count())
+			for surface in range(node.mesh.get_surface_count()):
+				assert(node.mesh.surface_get_arrays(surface)==expected.mesh.surface_get_arrays(surface))
+				assert(node.get_surface_override_material(surface)==null and node.get_active_material(surface)==expected.get_active_material(surface))
+			var body: StaticBody3D=node.get_node("StaticContact") as StaticBody3D
+			assert(body!=null and body.transform==Transform3D.IDENTITY and body.get_child_count()==1)
+			assert(body.collision_layer==1 and body.collision_mask==1 and body.get_script()==null)
+			var contact: CollisionShape3D=body.get_node("SharedShape") as CollisionShape3D
+			assert(contact!=null and not contact.disabled and contact.transform==Transform3D.IDENTITY and contact.get_script()==null)
+			assert(contact.shape is ConcavePolygonShape3D)
+			var wanted: ConcavePolygonShape3D=expected.mesh.create_trimesh_shape()
+			assert(contact.shape.get_faces()==wanted.get_faces(),"Complete imported source contact faces changed")
+		assert(node.get_child_count()==expected.get_child_count()+(1 if node is MeshInstance3D else 0),"Unexpected source child")
+	_sports_care_validate_import(template,filename,count)
+	assert(meshes==count and actual.find_children("*","StaticBody3D",true,false).size()==count)
+	assert(actual.find_children("*","Light3D",true,false).is_empty())
+	template.free()
+
+static func _sports_care_validate_runtime(floors: Node) -> void:
+	var d: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://"+str(sports_care_proof.runtime_manifest)))
+	var ship: Node=floors.get_parent().get_parent()
+	var parent: Node=ship.get_node("ShipSpace/Districts")
+	var roots: Array=ship.find_children(str(d.root_name),"Node3D",true,false)
+	assert(roots.size()==1 and roots[0].get_parent()==parent)
+	var root: Node3D=roots[0] as Node3D
+	assert(root.transform==Transform3D.IDENTITY and root.get_child_count()==49 and root.get_script()==null)
+	assert(root.get_meta("programme_key","")=="D07_directory_10" and root.get_meta("persistent_id","")==str(d.persistent_id))
+	assert(root.get_meta("first_pass_quality_accepted",true)==false and root.get_meta("capacity_accepted",true)==false)
+	assert(root.get_meta("source_receiving_contract",{})==d)
+	var room: Node3D=root.get_node("WholeRetainedSportsCare") as Node3D
+	var guards: Node3D=root.get_node("SourceDerivedReceivingGuards") as Node3D
+	assert(room.transform==Transform3D(Basis.IDENTITY,_sports_care_v(d.placement)) and guards.transform==Transform3D.IDENTITY)
+	assert(room.get_child_count()==3 and guards.get_child_count()==1)
+	for pair in [[d.model_file,d.model_sha256],[d.guard_file,d.guard_sha256]]:
+		var path: String="res://assets/models/"+str(pair[0])
+		assert(FileAccess.get_sha256(path)==str(pair[1]))
+		var options:=ConfigFile.new()
+		assert(options.load(path+".import")==OK)
+		assert(bool(options.get_value("params","meshes/force_disable_compression",false)))
+		assert(not bool(options.get_value("params","meshes/generate_lods",true)))
+		assert(str(options.get_value("params","nodes/root_type",""))=="Node3D")
+	_sports_care_model(room,str(d.model_file),1734)
+	_sports_care_model(guards,str(d.guard_file),20)
+	var identities: Array=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/packages/sports_care/NODE_BIJECTION.json"))
+	assert(identities.size()==1908)
+	for spec in identities: assert(room.find_children(str(spec.runtime_name),"Node",true,false).size()==1)
+	assert(d.source_labels==79)
+	var labels: Array=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/packages/sports_care/ORIGINAL_LABELS.json"))
+	assert(labels.size()==79)
+	var source_names: Dictionary={}
+	for spec in identities: source_names[str(spec.source_name)]=str(spec.runtime_name)
+	for spec in labels:
+		assert(source_names.has(str(spec.name)))
+		assert(room.find_child(str(source_names[str(spec.name)]),true,false) is MeshInstance3D)
+	assert(d.lights.size()==47 and root.find_children("*","Light3D",true,false).size()==47)
+	for spec in d.lights:
+		var lamp: SpotLight3D=root.get_node(NodePath(str(spec.id))) as SpotLight3D
+		assert(lamp!=null and lamp.position==_sports_care_v(spec.world) and lamp.rotation==Vector3(-PI/2.0,0,0))
+		var expected_lamp:=SpotLight3D.new()
+		expected_lamp.spot_range=float(spec.spot_range);expected_lamp.spot_angle=float(spec.spot_angle_degrees);expected_lamp.light_energy=float(spec.spot_energy)
+		assert(lamp.spot_range==expected_lamp.spot_range and lamp.spot_angle==expected_lamp.spot_angle and lamp.light_energy==expected_lamp.light_energy)
+		expected_lamp.free()
+		assert(lamp.light_color==Color(float(spec.color[0]),float(spec.color[1]),float(spec.color[2])))
+		assert(lamp.get_meta("source_light_id","")==str(spec.source_id) and lamp.get_meta("fixture_node","")==str(spec.fixture_node))
+		assert(lamp.get_meta("receiving_calibration_unaccepted",false)==true and lamp.get_script()==null)
+		var fixture: MeshInstance3D=room.find_child(str(spec.fixture_node),true,false) as MeshInstance3D
+		var bounds: AABB=fixture.global_transform*fixture.get_aabb()
+		assert(lamp.global_position.y<bounds.position.y and bounds.position.y-lamp.global_position.y<0.12)
+	var info: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/packages/sports_care/INFORMATION_TARGETS.json"))
+	assert(info.candidates.size()==2)
+	for spec in info.candidates:
+		var target: Node3D=room.get_node(NodePath(str(spec.id))) as Node3D
+		assert(target.get_script()==load("res://scripts/sports_care/amenity_information.gd"))
+		assert(target.candidate_id==str(spec.id) and target.prompt==str(spec.label) and target.information==str(spec.information))
+		assert(target.global_position.distance_to(_sports_care_v(spec.focus_world_m))<0.00001 and target.get_child_count()==1)
+		var area: Area3D=target.get_node("AuthoredInformationTarget") as Area3D
+		assert(area.collision_layer==2 and area.collision_mask==0 and not area.monitoring and not area.monitorable and area.get_child_count()==1)
+		var shape: CollisionShape3D=area.get_child(0) as CollisionShape3D
+		assert(not shape.disabled and shape.shape is BoxShape3D and shape.shape.size==_sports_care_v(spec.target_size_m))
+	var owner: Node=floors.get_node(NodePath(str(d.floor_owners[0])))
+	var chunks:=0
+	for node in owner.find_children("cell_*","MeshInstance3D",true,false):
+		var material: ShaderMaterial=node.get_surface_override_material(0) as ShaderMaterial
+		assert(material!=null and material.shader==load(str(d.floor_shader)))
+		assert(material.get_shader_parameter("warm_stone_texture")==load("res://assets/models/WP02_receiving_warm_stone.png"))
+		assert(material.get_shader_parameter("oatmeal_texture")==load("res://assets/models/WP02_receiving_oatmeal_weave.png"))
+		assert(material.get_shader_parameter("enamel_texture")==load("res://assets/models/WP02_receiving_ivory_enamel.png"))
+		chunks+=1
+	assert(chunks==sports_care_proof.added_compiled_records[0].render_chunks.size())
+	var budgets: Array=ship.find_children("LocalShadowSourceBudget","Node",true,false)
+	assert(budgets.size()==1 and budgets[0].shadow_source_budget==8 and budgets[0].MAX_VISIBILITY_CANDIDATES==32)
+
+static func _sports_care_validate_import(source: Node3D, filename: String, mesh_count: int) -> void:
+	var actual: Dictionary={}
+	for node in source.find_children("*","Node3D",true,false):
+		assert(not actual.has(str(node.name)));actual[str(node.name)]=node
+	# Decode the pinned GLB independently; a second imported template alone cannot
+	# establish that the importer preserved the source's actual position/UV arrays.
+	var blob:=FileAccess.get_file_as_bytes("res://assets/models/"+filename)
+	assert(blob.decode_u32(0)==0x46546c67 and blob.decode_u32(4)==2 and blob.decode_u32(8)==blob.size())
+	var json_size:=int(blob.decode_u32(12))
+	assert(blob.decode_u32(16)==0x4e4f534a)
+	var document: Dictionary=JSON.parse_string(blob.slice(20,20+json_size).get_string_from_utf8())
+	var binary_start:=20+json_size
+	var binary_size:=int(blob.decode_u32(binary_start))
+	assert(blob.decode_u32(binary_start+4)==0x004e4942 and binary_start+8+binary_size==blob.size())
+	var binary:=blob.slice(binary_start+8)
+	assert(document.nodes.size()==actual.size())
+	var parents: Dictionary={}
+	for index in range(document.nodes.size()):
+		for child in document.nodes[index].get("children",[]):
+			assert(not parents.has(int(child)),"Derivative source must be a unique-parent tree")
+			parents[int(child)]=index
+	var source_triangles:=0
+	var source_meshes:=0
+	var material_seen: Dictionary={}
+	for index in range(document.nodes.size()):
+		var record: Dictionary=document.nodes[index]
+		var name_key:=str(record.name)
+		assert(actual.has(name_key),"Every original identity and generated batch must survive import")
+		var node: Node3D=actual[name_key] as Node3D
+		assert(node!=null)
+		var parent: Node=source if not parents.has(index) else actual[str(document.nodes[int(parents[index])].name)]
+		assert(node.get_parent()==parent,"Exact source parentage must survive import")
+		assert(node.position==_team_lounge_v(record.get("translation",[0,0,0])),"Exact source local translation must survive import")
+		assert(not record.has("matrix"),"Current Sports Care source is TRS-only; a changed transform format needs review")
+		var rotation_source: Array=record.get("rotation",[0,0,0,1])
+		var expected_basis:=Basis(Quaternion(float(rotation_source[0]),float(rotation_source[1]),float(rotation_source[2]),float(rotation_source[3])))
+		expected_basis=expected_basis.scaled(_team_lounge_v(record.get("scale",[1,1,1])))
+		for axis in range(3): assert(node.basis[axis].distance_to(expected_basis[axis])<0.000001,"Source TRS basis changed during import")
+		if not record.has("mesh"): continue
+		assert(node is MeshInstance3D)
+		var visual: MeshInstance3D=node as MeshInstance3D
+		var expected_mesh: Dictionary=document.meshes[int(record.mesh)]
+		assert(visual.mesh.get_surface_count()==expected_mesh.primitives.size())
+		source_meshes+=1
+		for surface in range(expected_mesh.primitives.size()):
+			var primitive: Dictionary=expected_mesh.primitives[surface]
+			assert(int(primitive.get("mode",4))==4 and primitive.attributes.has("POSITION") and primitive.attributes.has("TEXCOORD_0"))
+			var position_accessor:=_team_lounge_accessor(document,binary,int(primitive.attributes.POSITION))
+			var uv_accessor:=_team_lounge_accessor(document,binary,int(primitive.attributes.TEXCOORD_0))
+			assert(position_accessor.type=="VEC3" and uv_accessor.type=="VEC2" and position_accessor.component_type==5126 and uv_accessor.component_type==5126)
+			assert(position_accessor.count==uv_accessor.count)
+			var positions: PackedFloat32Array=position_accessor.bytes.to_float32_array()
+			var uvs: PackedFloat32Array=uv_accessor.bytes.to_float32_array()
+			var indices:=_team_lounge_source_indices(document,binary,primitive,int(position_accessor.count))
+			assert(indices.size()%3==0)
+			var keys: Array[String]=[]
+			keys.resize(int(position_accessor.count))
+			for vertex in range(keys.size()): keys[vertex]=_team_lounge_corner_key(Vector3(positions[vertex*3],positions[vertex*3+1],positions[vertex*3+2]),Vector2(uvs[vertex*2],uvs[vertex*2+1]))
+			var expected: Dictionary={}
+			for start in range(0,indices.size(),3):
+				# glTF counter-clockwise winding is reversed by Godot's importer.
+				var corners: Array[String]=[keys[indices[start]],keys[indices[start+2]],keys[indices[start+1]]]
+				var key:=_team_lounge_oriented_triangle(corners)
+				expected[key]=int(expected.get(key,0))+1
+			assert(_team_lounge_import_surface(visual.mesh,surface)==expected,"Exact derivative position/UV/winding/multiplicity must survive; no degenerate-face exemption")
+			source_triangles+=int(indices.size()/3)
+			var material_index:=int(primitive.material)
+			var material: Material=visual.get_active_material(surface)
+			assert(material!=null and material.resource_name==str(document.materials[material_index].name),"Exact source material assignment required")
+			if material_seen.has(material_index): assert(material_seen[material_index]==material)
+			else: material_seen[material_index]=material
+	assert(source_meshes==mesh_count)
+	assert(source_triangles==(66346 if mesh_count==1734 else 448))
+# SPORTS_CARE_EXACT_SECTION_END
