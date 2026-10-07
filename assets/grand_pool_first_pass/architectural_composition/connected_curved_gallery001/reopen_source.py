@@ -1,0 +1,7 @@
+from pathlib import Path
+import bpy,json,gzip,hashlib,importlib.util
+B=Path(__file__).parent;spec=importlib.util.spec_from_file_location('source_methods',B/'build_source.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);O=B/'source_build001';r=json.loads((O/'qa/BUILD_RECEIPT.json').read_text());p=Path(r['source']);assert m.sha(p)==r['sha256'];bpy.ops.wm.open_mainfile(filepath=str(p));plan=json.loads((B/'CORE_PLAN.json').read_text());actual=dict(plan,parts=m.core.snapshot(bpy.context.scene,plan));before=json.loads((O/'qa/BUILD_EVALUATED_CORE.json').read_text());assert actual==before,'Core source reopen differs'
+with gzip.open(O/'qa/BUILD_EVALUATED_NEW_PROGRAMME.json.gz','rt')as f:program=json.load(f)
+assert m.programme_snapshot()==program,'Retained new programme reopen differs'
+fp={o.name:m.retained.fingerprint(o)for o in bpy.context.scene.objects};expected=json.loads((O/'qa/OBJECT_PRESERVATION.json').read_text())['after'];assert fp==expected,'Source identity/material/UV/transform changed on reopen'
+m.newjson(O/'qa/INDEPENDENT_REOPEN.json',{'status':'PASS_EXACT_COMPLETE_SOURCE_REOPEN','source_sha256':m.sha(p),'source_objects':len(fp),'architectural_parts':len(plan['parts']),'new_programme_meshes':len(program),'geometry_material_uv_frames_exact':True,'Game_or_Catalogue_writes':False,'renders':[],'exports':[]});print('COMPLETE_CURVED_GALLERY_REOPEN_PASS',flush=True)
