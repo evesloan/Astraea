@@ -51,6 +51,7 @@ func _ready() -> void:
 	var lower_hull:=model($ShipSpace/Districts,"AST-HUL-001.glb","LowerHullBody_WIP",Vector3.ZERO)
 	lower_hull.set_meta("persistent_id","lower_hull_body_001")
 	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory,{"staff_floor":surface("staff_floor",Color.WHITE)})
+	model($ShipSpace,"AST-ATR-001_botanical_receiving_closed002.glb","BotanicalCourtReceivingClosedInterim",Vector3.ZERO)
 	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-28.623,deck_y[5],0),PI/2)
 	model($ShipSpace,"AST-ATR-001.glb","AuthoredAtriumGuards_All16Levels",Vector3.ZERO)
 	build_retail_terrace()
