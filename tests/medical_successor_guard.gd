@@ -1,4 +1,5 @@
 extends RefCounted
+const TRIAGE_RETAINED = preload("res://tests/medical_triage_successor_guard.gd")
 # Authenticated medical projection for unchanged historical assertions.
 # Every projected byte/owner is checked against the full current postimage first.
 const PROOF := "res://docs/MEDICAL_ADDITIVE_SUCCESSOR.json"
@@ -62,7 +63,7 @@ const D11_ENTRY_MEDICAL_INPUTS := {
 
 static func _d11_entry_medical_text(path: String) -> String:
 	var relative := _relative(path)
-	var source := FileAccess.get_file_as_string("res://"+relative)
+	var source := TRIAGE_RETAINED.retained_text("res://"+relative)
 	if not D11_ENTRY_MEDICAL_INPUTS.has(relative): return source
 	var spec: Dictionary=D11_ENTRY_MEDICAL_INPUTS[relative]
 	if source.sha256_text()==str(spec.preimage_sha256): return source
@@ -78,7 +79,7 @@ static func _d11_entry_medical_text(path: String) -> String:
 static func _d11_entry_medical_sha256(path: String) -> String:
 	var relative := _relative(path)
 	if D11_ENTRY_MEDICAL_INPUTS.has(relative): return _d11_entry_medical_text(relative).sha256_text()
-	return FileAccess.get_sha256("res://"+relative)
+	return TRIAGE_RETAINED.retained_sha256("res://"+relative)
 
 static func _ensure() -> void:
 	if checked: return
@@ -102,11 +103,11 @@ static func _ensure() -> void:
 		assert(restored.sha256_text()==str(proof.predecessors[path].sha256),"Every historical assertion/byte must survive: "+str(path))
 	var old_layout: Dictionary=JSON.parse_string(old_text["data/spatial_layout.json"])
 	var old_compiled: Dictionary=JSON.parse_string(old_text["data/generated/structural_meshes.json"])
-	var layout: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/spatial_layout.json"))
-	current_compiled=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	var layout: Dictionary=JSON.parse_string(TRIAGE_RETAINED.retained_text("res://data/spatial_layout.json"))
+	current_compiled=JSON.parse_string(TRIAGE_RETAINED.retained_text("res://data/generated/structural_meshes.json"))
 	assert(old_layout.regions.size()==285 and old_compiled.regions.size()==271 and old_layout.voids.size()==28)
 	assert(layout.regions.size()==286 and current_compiled.regions.size()==272 and layout.voids.size()==28)
-	var summary: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://docs/LAYOUT_COMPILE_CHECKS.json"))
+	var summary: Dictionary=JSON.parse_string(TRIAGE_RETAINED.retained_text("res://docs/LAYOUT_COMPILE_CHECKS.json"))
 	assert(summary==current_compiled.source_checks,"Compile receipt must equal the current actual compiled checks")
 	for pair in [[layout,old_layout,proof.new_layout_record],[current_compiled,old_compiled,proof.new_compiled_record]]:
 		var retained: Array=[]
@@ -140,18 +141,19 @@ static func retained_text(path: String) -> String:
 	if not checked: return ""
 	var relative := _relative(path)
 	if old_text.has(relative) and relative not in CURRENT_ONLY: return str(old_text[relative])
-	return FileAccess.get_file_as_string(path if path.begins_with("res://") else "res://"+path)
+	return TRIAGE_RETAINED.retained_text(path)
 
 static func retained_sha256(path: String) -> String:
 	_ensure()
 	if not checked: return ""
 	var relative := _relative(path)
 	if proof.predecessors.has(relative) and relative not in CURRENT_ONLY: return str(proof.predecessors[relative].sha256)
-	return FileAccess.get_sha256(path if path.begins_with("res://") else "res://"+path)
+	return TRIAGE_RETAINED.retained_sha256(path)
 
 static func retained_compiled(value: Dictionary) -> Dictionary:
 	_ensure()
 	if not checked: return {}
+	if TRIAGE_RETAINED.is_current_compiled(value): value=TRIAGE_RETAINED.retained_compiled(value)
 	var prior: Dictionary=JSON.parse_string(old_text["data/generated/structural_meshes.json"])
 	if value!=current_compiled and value!=prior:
 		push_error("Caller is neither authenticated full current nor exact retained predecessor")
@@ -161,14 +163,15 @@ static func retained_compiled(value: Dictionary) -> Dictionary:
 static func retained_floor_children(floors: Node) -> Array:
 	_ensure()
 	if not checked: return []
-	if floors==null or floors.get_child_count()!=272:
+	var current_owners: Array=TRIAGE_RETAINED.retained_floor_children(floors)
+	if floors==null or current_owners.size()!=272:
 		push_error("Medical successor requires all272 actual owners")
 		return []
 	var expected: Dictionary={}
 	for record in current_compiled.regions: expected[str(record.id)]=record
 	var seen: Dictionary={}
 	var retained: Array=[]
-	for owner in floors.get_children():
+	for owner in current_owners:
 		var id := str(owner.name)
 		if not expected.has(id) or seen.has(id):
 			push_error("Unknown or duplicate loaded owner")

@@ -1,0 +1,99 @@
+{
+  "source_sha256": "68f7a29809a4e7daa8c2e91b6697d7931090add7553cd4770d6b6707e216de20",
+  "shapely": "2.1.2",
+  "geos": "3.13.1",
+  "fully_superseded_regions": [
+    "D18_service_side"
+  ],
+  "regions": 272,
+  "triangles": 4468,
+  "polygon_validity": true,
+  "triangle_area_conservation": true,
+  "no_triangles_cross_applicable_voids": true,
+  "central_terrace_exemptions_explicit": true,
+  "theater_generic_void_preserved": true,
+  "theater_authored_surface_allowlist_verified": [
+    "D12_theater_foyer_landings",
+    "D12_theater_gallery_seating",
+    "D12_theater_rear_public_returns",
+    "D12_theater_stair_upper_landing",
+    "D13_theater_foyer_landings",
+    "D13_theater_gallery_seating",
+    "D13_theater_rear_public_returns",
+    "D13_theater_stair_upper_landing"
+  ],
+  "no_coplanar_region_overlap": true,
+  "no_intersecting_slab_volumes": true,
+  "ownership_uses_absolute_elevation": true,
+  "scope": "Structural geometry only; not finished rooms, route acceptance, or capacity acceptance",
+  "theater_source_part_vertical_guard": {
+    "geometry_sha256": "90406045c5c23e52af1850bba8ea3088cb672de072afa47a7f5e6feb39927429",
+    "source_part_count": 4564,
+    "source_depth_counts_m": {
+      "0.45": 4520,
+      "0.25": 44
+    },
+    "source_owner_y_bounds": {
+      "D12_theater_gallery_seating": [
+        77.55,
+        79.92
+      ],
+      "D12_theater_rear_public_returns": [
+        77.55,
+        79.92
+      ],
+      "D12_theater_foyer_landings": [
+        77.55,
+        78
+      ],
+      "D12_theater_stair_upper_landing": [
+        77.55,
+        78
+      ],
+      "D13_theater_gallery_seating": [
+        83.55,
+        85.92
+      ],
+      "D13_theater_rear_public_returns": [
+        83.55,
+        85.92
+      ],
+      "D13_theater_foyer_landings": [
+        83.55,
+        84
+      ],
+      "D13_theater_stair_upper_landing": [
+        83.55,
+        84
+      ]
+    },
+    "method": "Pinned per-part source-solid min/max Y envelopes and exact source footprints; conservative fail-closed guard",
+    "moving_cabin_credit": false
+  },
+  "theater_additive_preservation": {
+    "previous_layout_sha256": "587e2a0d618b4957eab68c5dd437fdfed93ef4c7dab138d9b62326a53d1d6da2",
+    "previous_compiled_sha256": "3322c84a8dc2d456c6652d641bc0e02a38b27ec1095b95d5d494a1456b14f52b",
+    "exact_retained_layout_records": 268,
+    "exact_retained_compiled_records": 262,
+    "new_compiled_records": 10,
+    "physically_equivalent_regeneration_differences": [
+      "D12_star_atlas_ground_0",
+      "D13_star_atlas_gallery_0",
+      "D13_star_atlas_lower_roof_0",
+      "D11_aquatic_cinema_interface",
+      "D11_aquatic_hall_cover"
+    ],
+    "effective_owned_shapes_exactly_equal": true,
+    "engineering_guard_update_required": true
+  },
+  "medical_additive_preservation": {
+    "proof_sha256": "d635118faf4b48d27fc24f83fb09f6119910b363722c04d936faabfdfc549ba3",
+    "retained_layout_records": 285,
+    "retained_compiled_records": 271,
+    "retained_void_records": 28,
+    "new_owner": "D05_forward_waiting_support_floor",
+    "new_area_m2": 350.72,
+    "equivalent_triangulation_reorders_restored": [],
+    "scope": "Exact structural preservation only; runtime access and visual acceptance remain separate"
+  }
+}
