@@ -1,0 +1,156 @@
+{
+  "package": "WP09",
+  "section": "Custodial depot",
+  "frame": "ship Godot X/Y/Z metres",
+  "world_origin": [
+    8,
+    0,
+    460
+  ],
+  "bounds_xz": [
+    8,
+    54,
+    398,
+    466
+  ],
+  "floor_y": 0,
+  "next_datum_y": 6,
+  "source_ceiling_top": 5.7,
+  "portal": [
+    8,
+    0,
+    460
+  ],
+  "portal_width": 4,
+  "portal_height": 3.5,
+  "floor_owner": "Higgins; preview floor excluded GLB",
+  "external_link_owner": "Higgins; X4..8 unbuilt",
+  "zones": [
+    {
+      "id": "arrival_dispatch",
+      "bounds_xz": [
+        8.4,
+        53.6,
+        454,
+        465.6
+      ],
+      "purpose": "deep threshold, dispatch desk, staging and crew briefing"
+    },
+    {
+      "id": "cart_work",
+      "bounds_xz": [
+        8.4,
+        22,
+        419,
+        454
+      ],
+      "purpose": "three recessed repair/restock bays plus empty inherited cart parking"
+    },
+    {
+      "id": "ready_stock",
+      "bounds_xz": [
+        30,
+        53.6,
+        420,
+        454
+      ],
+      "purpose": "stocked shelf ranges, retrieval aisles and issue counter"
+    },
+    {
+      "id": "used_textile_receive",
+      "bounds_xz": [
+        8.4,
+        22,
+        398.4,
+        419
+      ],
+      "purpose": "used-only carriers and separated sorting benches"
+    },
+    {
+      "id": "reserve_stock",
+      "bounds_xz": [
+        30,
+        53.6,
+        398.4,
+        419
+      ],
+      "purpose": "bulk reserve and checking bench"
+    },
+    {
+      "id": "cart_spine",
+      "bounds_xz": [
+        22,
+        30,
+        400,
+        454
+      ],
+      "purpose": "8m continuous aisle; 4m cross connections"
+    }
+  ],
+  "reserved_clear_routes": [
+    {
+      "id": "arrival",
+      "rect_xz": [
+        8,
+        30,
+        458,
+        462
+      ]
+    },
+    {
+      "id": "main_spine",
+      "rect_xz": [
+        23,
+        29,
+        400,
+        460
+      ]
+    },
+    {
+      "id": "fore_cross_aisle",
+      "rect_xz": [
+        10,
+        52,
+        400,
+        404
+      ]
+    },
+    {
+      "id": "stock_cross_aisle",
+      "rect_xz": [
+        29,
+        52,
+        417,
+        421
+      ]
+    }
+  ],
+  "asset_policy": {
+    "native_unscaled": [
+      "AST-STF-001",
+      "AST-STF-002",
+      "AST-STF-003",
+      "AST-STF-004",
+      "AST-STF-005",
+      "AST-STF-006",
+      "AST-STF-007",
+      "AST-STF-008",
+      "AST-HSK-003",
+      "AST-HSK-004"
+    ],
+    "clearance_only_no_geometry": [
+      "AST-HSK-005",
+      "AST-HSK-006"
+    ],
+    "HSK004": "used only; no clean stock in carriers"
+  },
+  "access": "staff workplace; no species gating; actor/accessibility fit pending actual runtime",
+  "ceiling": "opaque finished enclosure at5.5..5.7; visible perimeter bearings and beams at5.0..5.5; local workstation soffits3.6..3.8; fixtures mounted to physical soffit/bearer",
+  "claims_excluded": [
+    "runtime route/collision/control",
+    "hygiene or chemical compatibility",
+    "staff capacity",
+    "structural certification",
+    "live floor or receiver adoption"
+  ]
+}
