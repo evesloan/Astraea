@@ -5,6 +5,7 @@ const MEDICAL_RETAINED = preload("res://tests/medical_successor_guard.gd")
 const CONTRACT := "res://data/architecture/GRAND_POOL_SECTION_RUNTIME.json"
 const CONTRACT_SHA := "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd"
 const MODEL_PINS := {
+	"AST-CIR-005_forward_pool_market_engineering_medical_access.glb": "84bd89f1a4162576eb886e7534c4889a2302d9af226ecb2ee23b18799c982dd6",
 	"AST-CIR-005_forward_pool_market_engineering_access.glb": "416ae10ac0e0cbf619e56233136150ded941c5f4c3299da1b95544433f65344b",
 	"AST-AQU-016.glb": "95a72a20bd0ed653bb10622ff025b1003386020063587828b29efe5e8e40a481",
 	"AST-CIR-005_forward_pool_market.glb": "538f8c6d1a3a075b48cdd63a8cb375c83b07f8100987e193b2efbfd39d134667",
@@ -258,11 +259,11 @@ func check_lights_and_identities() -> void:
 	assert(staff.floor_heights == [0.0, 6.0, 12.0, 46.2, 52.5])
 	assert(staff.cabin_file == "AST-CIR-003_five_stop.glb" and "wet service" in str(staff.stop_names[3]))
 	assert(staff.landing_gates.size() == 5 and local.landing_gates.size() == 2)
-	var representations := {"AST-AQU-016.glb":0, "AST-STF-009_pool_market.glb":0, "AST-STF-009.glb":0, "AST-CIR-005_forward_pool_market.glb":0, "AST-CIR-005_forward_core.glb":0, "AST-CIR-005_forward_pool_market_engineering_access.glb":0, "AST-STF-009_pool_market_home.glb":0}
+	var representations := {"AST-AQU-016.glb":0, "AST-STF-009_pool_market.glb":0, "AST-STF-009.glb":0, "AST-CIR-005_forward_pool_market.glb":0, "AST-CIR-005_forward_core.glb":0, "AST-CIR-005_forward_pool_market_engineering_access.glb":0, "AST-STF-009_pool_market_home.glb":0, "AST-CIR-005_forward_pool_market_engineering_medical_access.glb":0}
 	for node in ship.find_children("*", "Node3D", true, false):
 		var file: String = node.get_meta("catalogue_file", "")
 		if representations.has(file): representations[file] += 1
-	assert(representations.values() == [1,0,0,0,0,1,1], "New and retained derivative representations must not be doubled")
+	assert(representations.values() == [1,0,0,0,0,0,1,1], "New and retained derivative representations must not be doubled")
 	assert(FileAccess.get_sha256("res://assets/models/AST-STF-009_pool_market_home.glb")=="ab47a5fe0cc1ba858777d8ac91ae8f7bf54729df19bfb6a9ec8af31beccff7b4","Exact retained-source home aperture derivative required")
 	var budget: Node = ship.get_node("ShipSystems/LocalShadowSourceBudget")
 	assert(budget.shadow_source_budget == 8 and budget.get_script().resource_path == "res://scripts/lighting_budget.gd")
