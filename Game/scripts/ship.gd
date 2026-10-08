@@ -84,6 +84,7 @@ func _ready() -> void:
 	load("res://scripts/upper_horizon_enclosure.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/arrivals_fusion.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/star_atlas.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/star_atlas_fitted_receiving.gd").build($ShipSpace/Districts/D12_D14_StarAtlas_WIP,self)
 	load("res://scripts/d17_connected_house.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/grand_pool_section.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/grand_pool_first_pass.gd").build($ShipSpace/Districts,self)
