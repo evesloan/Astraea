@@ -1,0 +1,202 @@
+{
+  "source_sha256": "c88ffea02cdaeff37c729d2fff91a429b55a184df95682745892a23e9d7b3111",
+  "shapely": "2.1.2",
+  "geos": "3.13.1",
+  "fully_superseded_regions": [
+    "D18_service_side"
+  ],
+  "regions": 286,
+  "triangles": 4994,
+  "polygon_validity": true,
+  "triangle_area_conservation": true,
+  "no_triangles_cross_applicable_voids": true,
+  "central_terrace_exemptions_explicit": true,
+  "theater_generic_void_preserved": true,
+  "theater_authored_surface_allowlist_verified": [
+    "D12_theater_foyer_landings",
+    "D12_theater_gallery_seating",
+    "D12_theater_rear_public_returns",
+    "D12_theater_stair_upper_landing",
+    "D13_theater_foyer_landings",
+    "D13_theater_gallery_seating",
+    "D13_theater_rear_public_returns",
+    "D13_theater_stair_upper_landing"
+  ],
+  "no_coplanar_region_overlap": true,
+  "no_intersecting_slab_volumes": true,
+  "ownership_uses_absolute_elevation": true,
+  "scope": "Structural geometry only; not finished rooms, route acceptance, or capacity acceptance",
+  "theater_source_part_vertical_guard": {
+    "geometry_sha256": "90406045c5c23e52af1850bba8ea3088cb672de072afa47a7f5e6feb39927429",
+    "source_part_count": 4564,
+    "source_depth_counts_m": {
+      "0.45": 4520,
+      "0.25": 44
+    },
+    "source_owner_y_bounds": {
+      "D12_theater_gallery_seating": [
+        77.55,
+        79.92
+      ],
+      "D12_theater_rear_public_returns": [
+        77.55,
+        79.92
+      ],
+      "D12_theater_foyer_landings": [
+        77.55,
+        78
+      ],
+      "D12_theater_stair_upper_landing": [
+        77.55,
+        78
+      ],
+      "D13_theater_gallery_seating": [
+        83.55,
+        85.92
+      ],
+      "D13_theater_rear_public_returns": [
+        83.55,
+        85.92
+      ],
+      "D13_theater_foyer_landings": [
+        83.55,
+        84
+      ],
+      "D13_theater_stair_upper_landing": [
+        83.55,
+        84
+      ]
+    },
+    "method": "Pinned per-part source-solid min/max Y envelopes and exact source footprints; conservative fail-closed guard",
+    "moving_cabin_credit": false
+  },
+  "theater_additive_preservation": {
+    "previous_layout_sha256": "587e2a0d618b4957eab68c5dd437fdfed93ef4c7dab138d9b62326a53d1d6da2",
+    "previous_compiled_sha256": "3322c84a8dc2d456c6652d641bc0e02a38b27ec1095b95d5d494a1456b14f52b",
+    "exact_retained_layout_records": 268,
+    "exact_retained_compiled_records": 262,
+    "new_compiled_records": 24,
+    "physically_equivalent_regeneration_differences": [
+      "D12_star_atlas_ground_0",
+      "D13_star_atlas_gallery_0",
+      "D13_star_atlas_lower_roof_0",
+      "D11_aquatic_cinema_interface",
+      "D11_aquatic_hall_cover",
+      "D10_thread_shell_cover",
+      "D10_shared_table_reserved_cap"
+    ],
+    "effective_owned_shapes_exactly_equal": true,
+    "engineering_guard_update_required": true
+  },
+  "medical_additive_preservation": {
+    "proof_sha256": "d635118faf4b48d27fc24f83fb09f6119910b363722c04d936faabfdfc549ba3",
+    "retained_layout_records": 285,
+    "retained_compiled_records": 271,
+    "retained_void_records": 28,
+    "new_owner": "D05_forward_waiting_support_floor",
+    "new_area_m2": 350.72,
+    "equivalent_triangulation_reorders_restored": [],
+    "scope": "Exact structural preservation only; runtime access and visual acceptance remain separate"
+  },
+  "medical_triage_additive_preservation": {
+    "proof_sha256": "2d34c27e68d27c9dc5258e868d2d62ac3b55332103586003330379c69455bd3d",
+    "retained_layout_records": 286,
+    "retained_compiled_records": 272,
+    "retained_void_records": 28,
+    "new_owner": "D05_connected_triage_wing_floor",
+    "new_area_m2": 544,
+    "equivalent_triangulation_reorders_restored": [],
+    "complete_old_records_preserved": true,
+    "scope": "Structural proof only; no runtime route, clinical or capacity acceptance"
+  },
+  "botanical_court_additive_preservation": {
+    "proof_sha256": "275e10007060fc9f24e744cf59e05f7e8b7b2039e5dcf4675921096f7f54e951",
+    "retained_layout_records": 287,
+    "retained_compiled_records": 273,
+    "retained_void_records": 28,
+    "new_owners": [
+      "D06_botanical_court_port_receiving_floor",
+      "D06_botanical_court_starboard_receiving_floor"
+    ],
+    "new_area_m2": 240,
+    "complete_old_records_preserved": true,
+    "scope": "Structural source proof; engine and final room acceptance not run"
+  },
+  "team_lounge_additive_preservation": {
+    "proof_sha256": "5d1aaf3c888822728b80de77b83e5ad30598b7aed23163d260b5e807b0016db0",
+    "retained_layout_records": 289,
+    "retained_compiled_records": 275,
+    "retained_void_records": 28,
+    "new_owners": [
+      "D07_team_lounge_receiving_floor",
+      "D07_team_lounge_axial_connector"
+    ],
+    "new_area_m2": 2493.7225461174385,
+    "complete_old_records_preserved": true,
+    "scope": "Exact structural preservation and source-foot support only; runtime and primary-deck bearing acceptance open"
+  },
+  "movement_studio_additive_preservation": {
+    "proof_sha256": "86c5fb7ae7dc4d5c79da913a27c81b0adf9052882b719dd50c079e0a9b9aa9dd",
+    "retained_layout_records": 291,
+    "retained_compiled_records": 277,
+    "retained_void_records": 28,
+    "new_owners": [
+      "D07_movement_studio_floor",
+      "D07_movement_studio_entry"
+    ],
+    "new_area_m2": 3160.0,
+    "complete_old_records_preserved": true,
+    "scope": "Exact structural preservation and source-foot support only; runtime and primary-deck bearing acceptance open"
+  },
+  "moss_sanctuary_additive_preservation": {
+    "proof_sha256": "91b18afbf31ee9679b3162a6b01fd94ac458a1f9e60dae8128fb119ded52a472",
+    "retained_layout_records": 293,
+    "retained_compiled_records": 279,
+    "retained_void_records": 28,
+    "new_owners": [
+      "D06_moss_sanctuary_receiving_floor"
+    ],
+    "new_area_m2": 3128.0,
+    "complete_old_records_preserved": true,
+    "scope": "Exact structural preservation and source-foot support only; runtime and primary-deck bearing acceptance open"
+  },
+  "sports_care_additive_preservation": {
+    "proof_sha256": "bebd1df58ae0746957667b3e19cac7d65da4fb8f1f9fa1cca0fa547cc1f37b9e",
+    "retained_layout_records": 294,
+    "retained_compiled_records": 280,
+    "retained_void_records": 28,
+    "new_owners": [
+      "D07_sports_care_floor",
+      "D07_sports_care_entry"
+    ],
+    "new_area_m2": 3160.0,
+    "complete_old_records_preserved": true,
+    "scope": "Exact structural preservation and source-foot support only; runtime and primary-deck bearing acceptance open"
+  },
+  "night_table_additive_preservation": {
+    "proof_sha256": "5c87fd6f0baf918d2bedefe3143532db4c004d3f5553403c0b79d4531c8481c9",
+    "retained_layout_records": 296,
+    "retained_compiled_records": 282,
+    "retained_void_records": 28,
+    "new_owners": [
+      "D10_night_table_floor",
+      "D10_night_table_entry"
+    ],
+    "new_area_m2": 3144.0,
+    "complete_old_records_preserved": true,
+    "scope": "Exact structural preservation and source-foot support only; runtime and primary-deck bearing acceptance open"
+  },
+  "laundry_additive_preservation": {
+    "proof_sha256": "4e0534f7a7607de45e573300ef3388aa272e3dbcce5a5eb182b9d0b1b41fe44e",
+    "retained_layout_records": 298,
+    "retained_compiled_records": 284,
+    "retained_void_records": 28,
+    "new_owners": [
+      "D01_laundry_floor",
+      "D01_laundry_entry"
+    ],
+    "new_area_m2": 3144.0,
+    "complete_old_records_preserved": true,
+    "scope": "Exact structural preservation and source-foot support only; runtime and primary-deck bearing acceptance open"
+  }
+}
