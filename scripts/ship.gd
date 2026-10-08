@@ -50,6 +50,8 @@ func _ready() -> void:
 	build_structural_datums()
 	var lower_hull:=model($ShipSpace/Districts,"AST-HUL-001.glb","LowerHullBody_WIP",Vector3.ZERO)
 	lower_hull.set_meta("persistent_id","lower_hull_body_001")
+	var upper_skin:=model($ShipSpace/Districts,"AST-HUL-002.glb","TheaterWestUpperHull_Skin_WIP",Vector3.ZERO)
+	upper_skin.set_meta("persistent_id","theater_west_upper_hull_skin_002")
 	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory,{"staff_floor":surface("staff_floor",Color.WHITE)})
 	model($ShipSpace,"AST-ATR-001_botanical_receiving_closed002.glb","BotanicalCourtReceivingClosedInterim",Vector3.ZERO)
 	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-28.623,deck_y[5],0),PI/2)
