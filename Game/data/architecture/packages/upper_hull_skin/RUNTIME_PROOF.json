@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "scope": "Add only bounded theater-west upper hull skin/frame. No floor ownership or old source changes.",
+  "predecessors": {
+    "scripts/ship.gd": {
+      "retained_path": "data/architecture/packages/upper_hull_skin/retained/scripts/ship.gd",
+      "sha256": "61890f6a452f61c1ce6c58d3a620309727865121df276c64821c9ef4053d20a9"
+    },
+    "tests/medical_triage_successor_guard.gd": {
+      "retained_path": "data/architecture/packages/upper_hull_skin/retained/tests/medical_triage_successor_guard.gd",
+      "sha256": "ae75a61cf702893b99c1b4b34953f1b55a1ff57d6a88b23243ed1d4ec00d3475"
+    }
+  },
+  "current_sha256": {
+    "scripts/ship.gd": "f245451c058b4cb33f2b7690ad8956f0774571446c96726823acc2166978631c",
+    "assets/models/AST-HUL-002.glb": "e8317f32719e2d7df83a35c49de0894bcc6a32a40f42e32de37894ef2db3f580"
+  },
+  "inverse_edits": {
+    "scripts/ship.gd": [
+      {
+        "before": "\tlower_hull.set_meta(\"persistent_id\",\"lower_hull_body_001\")\n",
+        "after": "\tlower_hull.set_meta(\"persistent_id\",\"lower_hull_body_001\")\n\tvar upper_skin:=model($ShipSpace/Districts,\"AST-HUL-002.glb\",\"TheaterWestUpperHull_Skin_WIP\",Vector3.ZERO)\n\tupper_skin.set_meta(\"persistent_id\",\"theater_west_upper_hull_skin_002\")\n",
+        "count": 1
+      }
+    ],
+    "tests/medical_triage_successor_guard.gd": [
+      {
+        "before": "\t_star_fitted_validate_runtime(floors.get_parent().get_parent())",
+        "after": "\t_upper_hull_validate_runtime(floors.get_parent().get_parent())\n\t_star_fitted_validate_runtime(floors.get_parent().get_parent())",
+        "count": 1
+      },
+      {
+        "before": "for path in star_fitted_proof.current_sha256: assert(FileAccess.get_sha256(\"res://\"+str(path))",
+        "after": "for path in star_fitted_proof.current_sha256: assert(_upper_hull_current_sha256(\"res://\"+str(path))",
+        "count": 1
+      },
+      {
+        "before": "var ship_source:=FileAccess.get_file_as_string(\"res://scripts/ship.gd\")",
+        "after": "var ship_source:=_upper_hull_current_text(\"res://scripts/ship.gd\")",
+        "count": 1,
+        "section_only": "STAR_FITTED"
+      },
+      {
+        "before": "var source:=FileAccess.get_file_as_string(\"res://tests/medical_triage_successor_guard.gd\")",
+        "after": "var source:=_upper_hull_current_text(\"res://tests/medical_triage_successor_guard.gd\")",
+        "count": 1,
+        "section_only": "STAR_FITTED"
+      }
+    ]
+  },
+  "block_normalized_sha256": "b126b6fe79708e873c04e9afb16a2535693d68da3290eb9a823f252d6f1c48bb"
+}

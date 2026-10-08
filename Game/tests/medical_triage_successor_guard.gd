@@ -151,6 +151,7 @@ static func retained_floor_children(floors: Node) -> Array:
 static func validate_current(floors: Node) -> Dictionary:
 	var retained: Array=retained_floor_children(floors)
 	if not checked or retained.size()!=old_compiled.regions.size(): return {}
+	_upper_hull_validate_runtime(floors.get_parent().get_parent())
 	_star_fitted_validate_runtime(floors.get_parent().get_parent())
 	var result: Dictionary=proof.duplicate(true)
 	result["validation_completed"]=true
@@ -1857,16 +1858,16 @@ static func _star_fitted_ensure() -> void:
 	star_fitted_proof=JSON.parse_string(FileAccess.get_file_as_string(STAR_FITTED_PROOF))
 	assert(star_fitted_proof.schema==1 and star_fitted_proof.old_floor_owner_count==282)
 	assert(star_fitted_proof.allowed_new_subtree=="StarAtlasFittedInteriors_Candidate")
-	for path in star_fitted_proof.current_sha256: assert(FileAccess.get_sha256("res://"+str(path))==str(star_fitted_proof.current_sha256[path]),"Changed fitted successor input: "+str(path))
+	for path in star_fitted_proof.current_sha256: assert(_upper_hull_current_sha256("res://"+str(path))==str(star_fitted_proof.current_sha256[path]),"Changed fitted successor input: "+str(path))
 	for path in star_fitted_proof.predecessors:
 		var spec: Dictionary=star_fitted_proof.predecessors[path]
 		assert(FileAccess.get_sha256("res://"+str(spec.retained_path))==str(spec.sha256))
 		star_fitted_predecessor_text[path]=FileAccess.get_file_as_string("res://"+str(spec.retained_path))
-	var ship_source:=FileAccess.get_file_as_string("res://scripts/ship.gd")
+	var ship_source:=_upper_hull_current_text("res://scripts/ship.gd")
 	var hook: Dictionary=star_fitted_proof.ship_inverse
 	assert(ship_source.count(str(hook.after))==1)
 	assert(ship_source.replace(str(hook.after),str(hook.before))==str(star_fitted_predecessor_text["scripts/ship.gd"]),"Only the one immediate post-Star-Atlas ship hook is allowed")
-	var source:=FileAccess.get_file_as_string("res://tests/medical_triage_successor_guard.gd")
+	var source:=_upper_hull_current_text("res://tests/medical_triage_successor_guard.gd")
 	var first: String="# STAR_FITTED_EXACT_SECTION_"+"BEGIN\n"
 	var last: String="# STAR_FITTED_EXACT_SECTION_"+"END\n"
 	assert(source.count(first)==1 and source.count(last)==1)
@@ -1950,3 +1951,61 @@ static func _star_fitted_validate_runtime(ship: Node) -> void:
 		if light.visible and light.shadow_enabled: active+=1
 	assert(active<=8,"New lights must obey the sole unchanged global budget")
 # STAR_FITTED_EXACT_SECTION_END
+# UPPER_HULL_EXACT_SECTION_BEGIN
+const UPPER_HULL_PROOF="res://data/architecture/packages/upper_hull_skin/RUNTIME_PROOF.json"
+const UPPER_HULL_PROOF_SHA="01a7d82c963fa035ef99e704af96ae28d4c1221aab1cdcb131a9566776b63a64"
+static var upper_hull_checked:=false
+static var upper_hull_old:Dictionary={}
+static func _upper_hull_ensure()->void:
+	if upper_hull_checked:return
+	assert(FileAccess.get_sha256(UPPER_HULL_PROOF)==UPPER_HULL_PROOF_SHA)
+	var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(UPPER_HULL_PROOF))
+	for path in p.predecessors:
+		var spec:Dictionary=p.predecessors[path]
+		assert(FileAccess.get_sha256("res://"+str(spec.retained_path))==str(spec.sha256))
+		upper_hull_old[path]=FileAccess.get_file_as_string("res://"+str(spec.retained_path))
+	for path in p.current_sha256:assert(FileAccess.get_sha256("res://"+str(path))==str(p.current_sha256[path]))
+	for path in p.inverse_edits:
+		var current:=FileAccess.get_file_as_string("res://"+str(path))
+		if str(path)=="tests/medical_triage_successor_guard.gd":
+			var a: String="# UPPER_HULL_EXACT_SECTION_"+"BEGIN\n"
+			var z: String="# UPPER_HULL_EXACT_SECTION_"+"END\n"
+			assert(current.count(a)==1 and current.count(z)==1)
+			var i:=current.find(a);var j:=current.find(z)+z.length()
+			assert(current.substr(i,j-i).replace(UPPER_HULL_PROOF_SHA,"<PROOF_SHA>").sha256_text()==str(p.block_normalized_sha256))
+			current=current.substr(0,i)+current.substr(j)
+		for edit in p.inverse_edits[path]:
+			if edit.has("section_only"):
+				var i:=current.find("# STAR_FITTED_EXACT_SECTION_"+"BEGIN")
+				var tail:=current.substr(i);assert(tail.count(str(edit.after))==1)
+				current=current.substr(0,i)+tail.replace(str(edit.after),str(edit.before))
+			else:
+				assert(current.count(str(edit.after))==int(edit.count));current=current.replace(str(edit.after),str(edit.before))
+		assert(current==str(upper_hull_old[path]),"Complete predecessor bytes must survive")
+	upper_hull_checked=true
+static func _upper_hull_current_text(path:String)->String:
+	_upper_hull_ensure()
+	var key:=path.trim_prefix("res://")
+	return str(upper_hull_old[key]) if upper_hull_old.has(key) else FileAccess.get_file_as_string(path)
+static func _upper_hull_current_sha256(path:String)->String:
+	_upper_hull_ensure()
+	var key:=path.trim_prefix("res://")
+	return str(upper_hull_old[key]).sha256_text() if upper_hull_old.has(key) else FileAccess.get_sha256(path)
+static func _upper_hull_validate_runtime(ship:Node)->void:
+	_upper_hull_ensure()
+	var root:Node3D=ship.get_node("ShipSpace/Districts/TheaterWestUpperHull_Skin_WIP")
+	assert(root.transform==Transform3D.IDENTITY and root.get_meta("persistent_id")=="theater_west_upper_hull_skin_002")
+	var original:Node3D=(load("res://assets/models/AST-HUL-002.glb")as PackedScene).instantiate()
+	assert(root.get_child_count()==1)
+	var visual:Node3D=root.get_child(0)
+	assert(visual.name==original.name and visual.transform==original.transform)
+	var count:=0
+	for mesh in original.find_children("*","MeshInstance3D",true,false):
+		var actual:MeshInstance3D=visual.get_node(original.get_path_to(mesh))
+		assert(actual.transform==mesh.transform and actual.mesh==mesh.mesh and actual.material_override==null)
+		var collision:CollisionShape3D=actual.get_node("StaticContact/SharedShape")
+		assert(collision.shape.get_faces()==mesh.mesh.create_trimesh_shape().get_faces())
+		count+=1
+	assert(count==74)
+	original.free()
+# UPPER_HULL_EXACT_SECTION_END
