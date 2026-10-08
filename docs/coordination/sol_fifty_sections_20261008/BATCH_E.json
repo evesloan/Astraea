@@ -1,0 +1,2135 @@
+{
+  "status": "proposal_for_root_reservation_only",
+  "batch": "E",
+  "shared_authority_file": "ALLOCATION_PROPOSAL.json",
+  "sections": [
+    {
+      "programme_key": "D06_directory_06",
+      "name": "Sheltered walk",
+      "deck": "D06",
+      "historical_room_id": null,
+      "verified_aliases": [],
+      "historical_envelope": {
+        "x": [
+          52.0,
+          98.0
+        ],
+        "z": [
+          -34.0,
+          34.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          54,
+          -34
+        ],
+        [
+          98,
+          -34
+        ],
+        [
+          98,
+          34
+        ],
+        [
+          54,
+          34
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 27,
+      "next_deck_floor_y": 35.5,
+      "maximum_source_roof_or_service_top_y": 34.95,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [
+        {
+          "id": "D06_atrium_circulation",
+          "overlap_m2": 136,
+          "authoring_owner": null,
+          "clipped_boundary": [
+            [
+              52,
+              -34
+            ],
+            [
+              54,
+              -34
+            ],
+            [
+              54,
+              34
+            ],
+            [
+              52,
+              34
+            ]
+          ],
+          "policy": "Exclude entire x52..54 historical allocation strip from source ownership; retain existing circulation"
+        }
+      ],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            54,
+            27,
+            0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              52,
+              -2
+            ],
+            [
+              56,
+              -2
+            ],
+            [
+              56,
+              2
+            ],
+            [
+              52,
+              2
+            ]
+          ],
+          "policy": "Keep threshold clear; root resolves external supported approach and shared portal; existing atrium edge stays unchanged."
+        }
+      ],
+      "neighbours": {
+        "above": [
+          {
+            "programme_key": "D07_directory_06",
+            "name": "Simulation suites",
+            "x": [
+              52.0,
+              98.0
+            ],
+            "z": [
+              -34.0,
+              34.0
+            ],
+            "floor_y": 35.5
+          }
+        ],
+        "below": [
+          {
+            "programme_key": "D05_directory_06",
+            "name": "Atmosphere research",
+            "x": [
+              52.0,
+              98.0
+            ],
+            "z": [
+              -34.0,
+              34.0
+            ],
+            "floor_y": 21.0
+          }
+        ],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D06_directory_05",
+            "name": "Canopy terrace",
+            "x": [
+              -98.0,
+              -52.0
+            ],
+            "z": [
+              -34.0,
+              34.0
+            ],
+            "minimum_plan_separation_m": 104.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D06_directory_04",
+            "name": "Botanical nursery",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              -250.0,
+              -182.0
+            ],
+            "minimum_plan_separation_m": 148.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D06_directory_08",
+            "name": "Fern cathedral",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "minimum_plan_separation_m": 148.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D06_directory_03",
+            "name": "Moss sanctuary",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              -250.0,
+              -182.0
+            ],
+            "minimum_plan_separation_m": 159.6997,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "D06_swept_edge_cut",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/botanical/atrium_reference.png",
+        "Game/scripts/canopy_terrace.gd",
+        "Game/scripts/garden_overlook.gd",
+        "BlenderCatalogue/assets/central_crown/qa/crown_tie_source_interfaces.json"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [
+        "Exclude x52..54,z\u221234..34 root-owned D06_atrium_circulation strip. Historical outer allocation does not authorize walls on the shared edge.",
+        "This is a new starboard Sheltered Walk interior. Existing Canopy Terrace source is instantiated at(-52,27,0) and Garden Overlook at(-39,27,-27), both port-side; leave those authored destinations unchanged.",
+        "Retained central-crown source survey reports35.800358m clearance to this allocation and no intersection; preserve current crown/support system.",
+        "No hull-frontage, exterior view or new atrium opening inferred. Establish sheltered walking route, quieter edge and maintainable service approach inside the bounded source."
+      ],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    },
+    {
+      "programme_key": "D10_directory_10",
+      "name": "Observation cafe / 120",
+      "deck": "D10",
+      "historical_room_id": "D10_stillroom9",
+      "verified_aliases": [
+        "D10_stillroom9"
+      ],
+      "historical_envelope": {
+        "x": [
+          8.0,
+          54.0
+        ],
+        "z": [
+          398.0,
+          466.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          8.0,
+          398.0
+        ],
+        [
+          54.0,
+          398.0
+        ],
+        [
+          54.0,
+          466.0
+        ],
+        [
+          8.0,
+          466.0
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 61.0,
+      "next_deck_floor_y": 69.5,
+      "maximum_source_roof_or_service_top_y": 68.95,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            8.0,
+            61.0,
+            432.0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              6.0,
+              430.0
+            ],
+            [
+              10.0,
+              430.0
+            ],
+            [
+              10.0,
+              434.0
+            ],
+            [
+              6.0,
+              434.0
+            ]
+          ],
+          "policy": "Keep threshold clear; root alone resolves and authors external approach, supporting floor and shared portal."
+        }
+      ],
+      "neighbours": {
+        "above": [
+          {
+            "programme_key": "D11_directory_07",
+            "name": "Cinema 6 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              396.0,
+              468.0
+            ],
+            "floor_y": 69.5
+          }
+        ],
+        "below": [
+          {
+            "programme_key": "D09_directory_10",
+            "name": "Companion games",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              398.0,
+              466.0
+            ],
+            "floor_y": 52.5
+          }
+        ],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D10_directory_09",
+            "name": "Moonfruit parlor / 160",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              398.0,
+              466.0
+            ],
+            "minimum_plan_separation_m": 16.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D10_directory_08",
+            "name": "Vesper dining / 240",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "minimum_plan_separation_m": 148.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D10_directory_07",
+            "name": "The night table / 240",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "minimum_plan_separation_m": 148.8624,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D10_directory_06",
+            "name": "Mineral broth hall / 240",
+            "x": [
+              52.0,
+              98.0
+            ],
+            "z": [
+              -34.0,
+              34.0
+            ],
+            "minimum_plan_separation_m": 364.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "aquatic_lift_D10",
+          "vesper_local_lift_D10",
+          "orchard_exchange_stair",
+          "orchard_exchange_lift",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/hospitality/public_reference.png",
+        "BlenderCatalogue/references/hospitality/vibe_dining_edge.jpg"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    },
+    {
+      "programme_key": "D10_directory_06",
+      "name": "Mineral broth hall / 240",
+      "deck": "D10",
+      "historical_room_id": "D10_mineral5",
+      "verified_aliases": [
+        "D10_mineral5"
+      ],
+      "historical_envelope": {
+        "x": [
+          52.0,
+          98.0
+        ],
+        "z": [
+          -34.0,
+          34.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          52.0,
+          -34.0
+        ],
+        [
+          98.0,
+          -34.0
+        ],
+        [
+          98.0,
+          34.0
+        ],
+        [
+          52.0,
+          34.0
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 61.0,
+      "next_deck_floor_y": 69.5,
+      "maximum_source_roof_or_service_top_y": 68.95,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            52.0,
+            61.0,
+            0.0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              50.0,
+              -2.0
+            ],
+            [
+              54.0,
+              -2.0
+            ],
+            [
+              54.0,
+              2.0
+            ],
+            [
+              50.0,
+              2.0
+            ]
+          ],
+          "policy": "Keep threshold clear; root alone resolves and authors external approach, supporting floor and shared portal."
+        }
+      ],
+      "neighbours": {
+        "above": [],
+        "below": [
+          {
+            "programme_key": "D09_directory_06",
+            "name": "Conversation salon",
+            "x": [
+              52.0,
+              98.0
+            ],
+            "z": [
+              -34.0,
+              34.0
+            ],
+            "floor_y": 52.5
+          }
+        ],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D10_directory_05",
+            "name": "Tide kitchen / 240",
+            "x": [
+              -98.0,
+              -52.0
+            ],
+            "z": [
+              -34.0,
+              34.0
+            ],
+            "minimum_plan_separation_m": 104.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D10_directory_04",
+            "name": "Orchard food hall / 240",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              -250.0,
+              -182.0
+            ],
+            "minimum_plan_separation_m": 148.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D10_directory_08",
+            "name": "Vesper dining / 240",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "minimum_plan_separation_m": 148.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D10_directory_03",
+            "name": "Lantern restaurant / 240",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              -250.0,
+              -182.0
+            ],
+            "minimum_plan_separation_m": 159.6997,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "aquatic_lift_D10",
+          "vesper_local_lift_D10",
+          "orchard_exchange_stair",
+          "orchard_exchange_lift",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/hospitality/public_reference.png",
+        "BlenderCatalogue/references/hospitality/vibe_dining_edge.jpg"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    },
+    {
+      "programme_key": "D11_directory_03",
+      "name": "Cinema 2 / 200 seats",
+      "deck": "D11",
+      "historical_room_id": "D11_cinema_2",
+      "verified_aliases": [
+        "D11_cinema_2"
+      ],
+      "historical_envelope": {
+        "x": [
+          11.0,
+          61.0
+        ],
+        "z": [
+          -316.0,
+          -244.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          11.0,
+          -316.0
+        ],
+        [
+          61.0,
+          -316.0
+        ],
+        [
+          61.0,
+          -244.0
+        ],
+        [
+          11.0,
+          -244.0
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 69.5,
+      "next_deck_floor_y": 78.0,
+      "maximum_source_roof_or_service_top_y": 77.45,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            11.0,
+            69.5,
+            -280.0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              9.0,
+              -282.0
+            ],
+            [
+              13.0,
+              -282.0
+            ],
+            [
+              13.0,
+              -278.0
+            ],
+            [
+              9.0,
+              -278.0
+            ]
+          ],
+          "policy": "Keep threshold clear; root alone resolves and authors external approach, supporting floor and shared portal."
+        }
+      ],
+      "neighbours": {
+        "above": [
+          {
+            "programme_key": "D12_directory_04",
+            "name": "The stillroom",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              -250.0,
+              -182.0
+            ],
+            "floor_y": 78.0
+          }
+        ],
+        "below": [
+          {
+            "programme_key": "D10_directory_04",
+            "name": "Orchard food hall / 240",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              -250.0,
+              -182.0
+            ],
+            "floor_y": 61.0
+          }
+        ],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D11_directory_08",
+            "name": "The music room",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              -384.0,
+              -316.0
+            ],
+            "minimum_plan_separation_m": 19.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_01",
+            "name": "Grand Lantern Theater / 2,200 seats",
+            "x": [
+              -118.0,
+              -34.0
+            ],
+            "z": [
+              -265.0,
+              -115.0
+            ],
+            "minimum_plan_separation_m": 45.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_02",
+            "name": "Cinema 1 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              -468.0,
+              -396.0
+            ],
+            "minimum_plan_separation_m": 80.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_04",
+            "name": "Cinema 3 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              -164.0,
+              -92.0
+            ],
+            "minimum_plan_separation_m": 80.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/auditorium/public_blueprint.png",
+        "BlenderCatalogue/references/auditorium/D11_programme_reference_handoff.json",
+        "BlenderCatalogue/references/auditorium/theater_reference.png"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [
+        "Preserve exactly200 cinema places in layout/accounting; no duplication of WP13 Cinema1 design identity. Keep projection/screen/service clearances within this single D11 source volume; no new D12 opening."
+      ],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    },
+    {
+      "programme_key": "D11_directory_04",
+      "name": "Cinema 3 / 200 seats",
+      "deck": "D11",
+      "historical_room_id": "D11_cinema_3",
+      "verified_aliases": [
+        "D11_cinema_3"
+      ],
+      "historical_envelope": {
+        "x": [
+          11.0,
+          61.0
+        ],
+        "z": [
+          -164.0,
+          -92.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          11.0,
+          -164.0
+        ],
+        [
+          61.0,
+          -164.0
+        ],
+        [
+          61.0,
+          -92.0
+        ],
+        [
+          11.0,
+          -92.0
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 69.5,
+      "next_deck_floor_y": 78.0,
+      "maximum_source_roof_or_service_top_y": 77.45,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            11.0,
+            69.5,
+            -128.0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              9.0,
+              -130.0
+            ],
+            [
+              13.0,
+              -130.0
+            ],
+            [
+              13.0,
+              -126.0
+            ],
+            [
+              9.0,
+              -126.0
+            ]
+          ],
+          "policy": "Keep threshold clear; root alone resolves and authors external approach, supporting floor and shared portal."
+        }
+      ],
+      "neighbours": {
+        "above": [],
+        "below": [],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D11_directory_01",
+            "name": "Grand Lantern Theater / 2,200 seats",
+            "x": [
+              -118.0,
+              -34.0
+            ],
+            "z": [
+              -265.0,
+              -115.0
+            ],
+            "minimum_plan_separation_m": 45.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_03",
+            "name": "Cinema 2 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              -316.0,
+              -244.0
+            ],
+            "minimum_plan_separation_m": 80.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_09",
+            "name": "Performers' commons",
+            "x": [
+              -98.0,
+              -52.0
+            ],
+            "z": [
+              -34.0,
+              34.0
+            ],
+            "minimum_plan_separation_m": 85.6329,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_13",
+            "name": "Backstage workshop",
+            "x": [
+              -98.0,
+              -52.0
+            ],
+            "z": [
+              46.0,
+              114.0
+            ],
+            "minimum_plan_separation_m": 151.7004,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/auditorium/public_blueprint.png",
+        "BlenderCatalogue/references/auditorium/D11_programme_reference_handoff.json",
+        "BlenderCatalogue/references/auditorium/theater_reference.png"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [
+        "Preserve exactly200 cinema places in layout/accounting; no duplication of WP13 Cinema1 design identity. Keep projection/screen/service clearances within this single D11 source volume; no new D12 opening."
+      ],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    },
+    {
+      "programme_key": "D11_directory_05",
+      "name": "Cinema 4 / 200 seats",
+      "deck": "D11",
+      "historical_room_id": "D11_cinema_4",
+      "verified_aliases": [
+        "D11_cinema_4"
+      ],
+      "historical_envelope": {
+        "x": [
+          11.0,
+          61.0
+        ],
+        "z": [
+          92.0,
+          164.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          11.0,
+          92.0
+        ],
+        [
+          61.0,
+          92.0
+        ],
+        [
+          61.0,
+          164.0
+        ],
+        [
+          11.0,
+          164.0
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 69.5,
+      "next_deck_floor_y": 78.0,
+      "maximum_source_roof_or_service_top_y": 77.45,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            11.0,
+            69.5,
+            128.0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              9.0,
+              126.0
+            ],
+            [
+              13.0,
+              126.0
+            ],
+            [
+              13.0,
+              130.0
+            ],
+            [
+              9.0,
+              130.0
+            ]
+          ],
+          "policy": "Keep threshold clear; root alone resolves and authors external approach, supporting floor and shared portal."
+        }
+      ],
+      "neighbours": {
+        "above": [],
+        "below": [],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D11_directory_10",
+            "name": "Games & companionship",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "minimum_plan_separation_m": 26.1725,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_13",
+            "name": "Backstage workshop",
+            "x": [
+              -98.0,
+              -52.0
+            ],
+            "z": [
+              46.0,
+              114.0
+            ],
+            "minimum_plan_separation_m": 63.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_06",
+            "name": "Cinema 5 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              244.0,
+              316.0
+            ],
+            "minimum_plan_separation_m": 80.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_09",
+            "name": "Performers' commons",
+            "x": [
+              -98.0,
+              -52.0
+            ],
+            "z": [
+              -34.0,
+              34.0
+            ],
+            "minimum_plan_separation_m": 85.6329,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/auditorium/public_blueprint.png",
+        "BlenderCatalogue/references/auditorium/D11_programme_reference_handoff.json",
+        "BlenderCatalogue/references/auditorium/theater_reference.png"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [
+        "Preserve exactly200 cinema places in layout/accounting; no duplication of WP13 Cinema1 design identity. Keep projection/screen/service clearances within this single D11 source volume; no new D12 opening."
+      ],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    },
+    {
+      "programme_key": "D11_directory_07",
+      "name": "Cinema 6 / 200 seats",
+      "deck": "D11",
+      "historical_room_id": "D11_cinema_6",
+      "verified_aliases": [
+        "D11_cinema_6"
+      ],
+      "historical_envelope": {
+        "x": [
+          11.0,
+          61.0
+        ],
+        "z": [
+          396.0,
+          468.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          11.0,
+          396.0
+        ],
+        [
+          61.0,
+          396.0
+        ],
+        [
+          61.0,
+          468.0
+        ],
+        [
+          11.0,
+          468.0
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 69.5,
+      "next_deck_floor_y": 78.0,
+      "maximum_source_roof_or_service_top_y": 77.45,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            11.0,
+            69.5,
+            432.0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              9.0,
+              430.0
+            ],
+            [
+              13.0,
+              430.0
+            ],
+            [
+              13.0,
+              434.0
+            ],
+            [
+              9.0,
+              434.0
+            ]
+          ],
+          "policy": "Keep threshold clear; root alone resolves and authors external approach, supporting floor and shared portal."
+        }
+      ],
+      "neighbours": {
+        "above": [
+          {
+            "programme_key": "D12_directory_10",
+            "name": "Celestial lounge",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              398.0,
+              466.0
+            ],
+            "floor_y": 78.0
+          }
+        ],
+        "below": [
+          {
+            "programme_key": "D10_directory_10",
+            "name": "Observation cafe / 120",
+            "x": [
+              8.0,
+              54.0
+            ],
+            "z": [
+              398.0,
+              466.0
+            ],
+            "floor_y": 61.0
+          }
+        ],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D11_directory_12",
+            "name": "Immersive sound",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              398.0,
+              466.0
+            ],
+            "minimum_plan_separation_m": 19.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_11",
+            "name": "Cultural gallery",
+            "x": [
+              -103.0,
+              -57.0
+            ],
+            "z": [
+              290.0,
+              358.0
+            ],
+            "minimum_plan_separation_m": 77.8974,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_06",
+            "name": "Cinema 5 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              244.0,
+              316.0
+            ],
+            "minimum_plan_separation_m": 80.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_10",
+            "name": "Games & companionship",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "minimum_plan_separation_m": 147.2311,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/auditorium/public_blueprint.png",
+        "BlenderCatalogue/references/auditorium/D11_programme_reference_handoff.json",
+        "BlenderCatalogue/references/auditorium/theater_reference.png"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [
+        "Preserve exactly200 cinema places in layout/accounting; no duplication of WP13 Cinema1 design identity. Keep projection/screen/service clearances within this single D11 source volume; no new D12 opening."
+      ],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    },
+    {
+      "programme_key": "D11_directory_10",
+      "name": "Games & companionship",
+      "deck": "D11",
+      "historical_room_id": "D11_arcade",
+      "verified_aliases": [
+        "D11_arcade"
+      ],
+      "historical_envelope": {
+        "x": [
+          -54.0,
+          -8.0
+        ],
+        "z": [
+          182.0,
+          250.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          -54.0,
+          182.0
+        ],
+        [
+          -8.0,
+          182.0
+        ],
+        [
+          -8.0,
+          250.0
+        ],
+        [
+          -54.0,
+          250.0
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 69.5,
+      "next_deck_floor_y": 78.0,
+      "maximum_source_roof_or_service_top_y": 77.45,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            -8.0,
+            69.5,
+            216.0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              -10.0,
+              214.0
+            ],
+            [
+              -6.0,
+              214.0
+            ],
+            [
+              -6.0,
+              218.0
+            ],
+            [
+              -10.0,
+              218.0
+            ]
+          ],
+          "policy": "Keep threshold clear; root alone resolves and authors external approach, supporting floor and shared portal."
+        }
+      ],
+      "neighbours": {
+        "above": [
+          {
+            "programme_key": "D12_directory_07",
+            "name": "Many worlds gallery",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "floor_y": 78.0
+          }
+        ],
+        "below": [
+          {
+            "programme_key": "D10_directory_07",
+            "name": "The night table / 240",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "floor_y": 61.0
+          }
+        ],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D11_directory_06",
+            "name": "Cinema 5 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              244.0,
+              316.0
+            ],
+            "minimum_plan_separation_m": 19.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_05",
+            "name": "Cinema 4 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              92.0,
+              164.0
+            ],
+            "minimum_plan_separation_m": 26.1725,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_11",
+            "name": "Cultural gallery",
+            "x": [
+              -103.0,
+              -57.0
+            ],
+            "z": [
+              290.0,
+              358.0
+            ],
+            "minimum_plan_separation_m": 40.1123,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_13",
+            "name": "Backstage workshop",
+            "x": [
+              -98.0,
+              -52.0
+            ],
+            "z": [
+              46.0,
+              114.0
+            ],
+            "minimum_plan_separation_m": 68.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/auditorium/public_blueprint.png",
+        "BlenderCatalogue/references/auditorium/D11_programme_reference_handoff.json",
+        "BlenderCatalogue/references/auditorium/theater_reference.png"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    },
+    {
+      "programme_key": "D11_directory_11",
+      "name": "Cultural gallery",
+      "deck": "D11",
+      "historical_room_id": "D11_gallery",
+      "verified_aliases": [
+        "D11_gallery"
+      ],
+      "historical_envelope": {
+        "x": [
+          -103.0,
+          -57.0
+        ],
+        "z": [
+          290.0,
+          358.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          -103.0,
+          290.0
+        ],
+        [
+          -57.0,
+          290.0
+        ],
+        [
+          -57.0,
+          358.0
+        ],
+        [
+          -103.0,
+          358.0
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 69.5,
+      "next_deck_floor_y": 78.0,
+      "maximum_source_roof_or_service_top_y": 77.45,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            -57.0,
+            69.5,
+            324.0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              -59.0,
+              322.0
+            ],
+            [
+              -55.0,
+              322.0
+            ],
+            [
+              -55.0,
+              326.0
+            ],
+            [
+              -59.0,
+              326.0
+            ]
+          ],
+          "policy": "Keep threshold clear; root alone resolves and authors external approach, supporting floor and shared portal."
+        }
+      ],
+      "neighbours": {
+        "above": [],
+        "below": [],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D11_directory_10",
+            "name": "Games & companionship",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "minimum_plan_separation_m": 40.1123,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_12",
+            "name": "Immersive sound",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              398.0,
+              466.0
+            ],
+            "minimum_plan_separation_m": 40.1123,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_06",
+            "name": "Cinema 5 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              244.0,
+              316.0
+            ],
+            "minimum_plan_separation_m": 68.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_07",
+            "name": "Cinema 6 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              396.0,
+              468.0
+            ],
+            "minimum_plan_separation_m": 77.8974,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/auditorium/public_blueprint.png",
+        "BlenderCatalogue/references/auditorium/D11_programme_reference_handoff.json",
+        "BlenderCatalogue/references/auditorium/theater_reference.png"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    },
+    {
+      "programme_key": "D11_directory_12",
+      "name": "Immersive sound",
+      "deck": "D11",
+      "historical_room_id": "D11_listening",
+      "verified_aliases": [
+        "D11_listening"
+      ],
+      "historical_envelope": {
+        "x": [
+          -54.0,
+          -8.0
+        ],
+        "z": [
+          398.0,
+          466.0
+        ]
+      },
+      "source_containment_boundary_xz": [
+        [
+          -54.0,
+          398.0
+        ],
+        [
+          -8.0,
+          398.0
+        ],
+        [
+          -8.0,
+          466.0
+        ],
+        [
+          -54.0,
+          466.0
+        ]
+      ],
+      "containment_policy": "Historical allocation is an outer limit, not prescribed box walls. Source scope excludes protected circulation, retained geometry and source interfaces even where their bounds overlap. No footprint expansion or hull frontage inferred.",
+      "floor_y": 69.5,
+      "next_deck_floor_y": 78.0,
+      "maximum_source_roof_or_service_top_y": 77.45,
+      "roof_datum_status": "Conservative isolated-source authoring ceiling, proposed for root reservation; not an approved shared roof or claim of actual structural soffit. Leave upper receiving layer root-owned.",
+      "floor_policy": "No common or preview floor in export. Root owns receiving slab, underside, supports and connections.",
+      "current_floor_overlap": [],
+      "portals": [
+        {
+          "kind": "proposed inward receiving portal",
+          "xyz": [
+            -8.0,
+            69.5,
+            432.0
+          ],
+          "clear_width_m": 3.6,
+          "clear_height_m": 2.65,
+          "status": "coordination proposal only; no existing opening or supported connection claimed",
+          "protected_keep_clear_xz": [
+            [
+              -10.0,
+              430.0
+            ],
+            [
+              -6.0,
+              430.0
+            ],
+            [
+              -6.0,
+              434.0
+            ],
+            [
+              -10.0,
+              434.0
+            ]
+          ],
+          "policy": "Keep threshold clear; root alone resolves and authors external approach, supporting floor and shared portal."
+        }
+      ],
+      "neighbours": {
+        "above": [
+          {
+            "programme_key": "D12_directory_09",
+            "name": "Vesper panorama",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              398.0,
+              466.0
+            ],
+            "floor_y": 78.0
+          }
+        ],
+        "below": [
+          {
+            "programme_key": "D10_directory_09",
+            "name": "Moonfruit parlor / 160",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              398.0,
+              466.0
+            ],
+            "floor_y": 61.0
+          }
+        ],
+        "same_deck_nearest": [
+          {
+            "programme_key": "D11_directory_07",
+            "name": "Cinema 6 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              396.0,
+              468.0
+            ],
+            "minimum_plan_separation_m": 19.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_11",
+            "name": "Cultural gallery",
+            "x": [
+              -103.0,
+              -57.0
+            ],
+            "z": [
+              290.0,
+              358.0
+            ],
+            "minimum_plan_separation_m": 40.1123,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_06",
+            "name": "Cinema 5 / 200 seats",
+            "x": [
+              11.0,
+              61.0
+            ],
+            "z": [
+              244.0,
+              316.0
+            ],
+            "minimum_plan_separation_m": 84.1724,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          },
+          {
+            "programme_key": "D11_directory_10",
+            "name": "Games & companionship",
+            "x": [
+              -54.0,
+              -8.0
+            ],
+            "z": [
+              182.0,
+              250.0
+            ],
+            "minimum_plan_separation_m": 148.0,
+            "status": "Neighbour allocation only; gap is not empty/available space or verified route"
+          }
+        ]
+      },
+      "protected_volumes": {
+        "global_file": "PROTECTED_VOLUMES.json",
+        "applicable_void_ids": [
+          "central_atrium",
+          "primary_atrium_core_lift",
+          "primary_atrium_core_stairs",
+          "forward_public_core_lift",
+          "forward_public_core_stairs",
+          "fore_midship_public_core_lift",
+          "fore_midship_public_core_stairs",
+          "aft_midship_public_core_lift",
+          "aft_midship_public_core_stairs",
+          "aft_public_core_lift",
+          "aft_public_core_stairs"
+        ],
+        "core_ids": [
+          "forward_vertical_core",
+          "fore_midship_vertical_core",
+          "atrium_threshold_vertical_core",
+          "aft_midship_vertical_core",
+          "aft_vertical_core"
+        ],
+        "crew_clear_polygons": [],
+        "crew_actual_architecture_aabbs": []
+      },
+      "source_reference_paths": [
+        "Game/data/reference/directory_allocations.json",
+        "Game/data/programme_ledger.json",
+        "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+        "BlenderCatalogue/references/auditorium/public_blueprint.png",
+        "BlenderCatalogue/references/auditorium/D11_programme_reference_handoff.json",
+        "BlenderCatalogue/references/auditorium/theater_reference.png"
+      ],
+      "master_chapters": [
+        4,
+        5,
+        7,
+        19,
+        21,
+        24,
+        30,
+        32
+      ],
+      "local_requirements": [],
+      "receiving_holds": [
+        "Root must reserve this proposal after current ownership check before worker dispatch.",
+        "No live runtime/export/registry/compiler/material/light/physics edits; isolated editable source and evidence only.",
+        "Receiving slab, structural support, adjacent roof/floor loads and actual hull section are unapproved unless explicitly pinned above.",
+        "Proposed portals are interface reservations only; root checks actual neighbour surfaces, support, approach and door/controller ownership before opening.",
+        "No new shared core, circulation opening, hull penetration or multi-deck void.",
+        "All runtime import/contact/traversal/cart/species/visual acceptance and final furnishing remain separate; source completeness is not ship completion."
+      ]
+    }
+  ],
+  "revision": 2,
+  "shared_authority_sha256": "b5e44d22c05880ac932e8c9eec08d463e6dd20b0160f6873c04e5b11a9af30e5"
+}
