@@ -1,0 +1,35 @@
+{
+  "status": "candidate_ready_for_serialized_root_engine_verification",
+  "files": [
+    {
+      "path": "data/architecture/star_atlas_fitted_interiors.json",
+      "operation": "add_new",
+      "live_preimage": null,
+      "candidate_sha256": "55f29cccdd6f9905868f85ff7f77dcd832d03e9bb4e9237535ba9d7e68c59a88",
+      "bytes": 38876
+    },
+    {
+      "path": "scripts/star_atlas_fitted_interiors.gd",
+      "operation": "add_new",
+      "live_preimage": null,
+      "candidate_sha256": "0c0c49f7117973812eba9698bb99c69583ebd1db2e5fc9368a382f5c8ae482c6",
+      "bytes": 4297
+    },
+    {
+      "path": "tests/validate_star_atlas_fitted_interiors.gd",
+      "operation": "add_new",
+      "live_preimage": null,
+      "candidate_sha256": "50f215028877dc9cd3a1b0d762ee271d8e6b3fd1cbe90006601b5f7d6bb2c418",
+      "bytes": 4929
+    }
+  ],
+  "root_owned_required_wiring": {
+    "path": "scripts/star_atlas.gd",
+    "live_preimage_sha256": "9cfc595f4e427edc342c6beaa98a7d1bba7750458f5451e89b312e1cea949e04",
+    "change": "Append load(\"res://scripts/star_atlas_fitted_interiors.gd\").build(district,ship) at end of existing build; no other changes"
+  },
+  "Catalogue_changes": [],
+  "engine_runs": 0,
+  "runtime_acceptance": false,
+  "visual_acceptance": false
+}

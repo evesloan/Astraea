@@ -151,6 +151,7 @@ static func retained_floor_children(floors: Node) -> Array:
 static func validate_current(floors: Node) -> Dictionary:
 	var retained: Array=retained_floor_children(floors)
 	if not checked or retained.size()!=old_compiled.regions.size(): return {}
+	_star_fitted_validate_runtime(floors.get_parent().get_parent())
 	var result: Dictionary=proof.duplicate(true)
 	result["validation_completed"]=true
 	return result
@@ -1391,7 +1392,7 @@ static func _sports_care_ensure() -> void:
 		recovered=recovered.replace(str(edit.after),str(edit.before))
 	assert(recovered==str(sports_care_predecessor_text["tests/medical_triage_successor_guard.gd"]),"Every preceding botanical, medical and pool consumer byte must survive")
 	for path in sports_care_proof.exact_inverse_edits:
-		var restored:=FileAccess.get_file_as_string("res://"+str(path))
+		var restored:=_star_fitted_current_text("res://"+str(path))
 		for edit in sports_care_proof.exact_inverse_edits[path]:
 			assert(restored.count(str(edit.after))==int(edit.count),"Exact lounge source inverse cardinality")
 			restored=restored.replace(str(edit.after),str(edit.before))
@@ -1655,16 +1656,17 @@ static var sports_sign_material_pairs: Dictionary = {}
 
 static func _sports_sign_ensure() -> void:
 	if sports_sign_checked: return
+	_star_fitted_ensure()
 	assert(FileAccess.get_sha256(SPORTS_SIGN_PROOF)==SPORTS_SIGN_PROOF_SHA)
 	sports_sign_proof=JSON.parse_string(FileAccess.get_file_as_string(SPORTS_SIGN_PROOF))
 	assert(sports_sign_proof.schema==1 and sports_sign_proof.allowed_nodes==["WP02N_0051","WP02N_0052","WP02N_0053","WP02N_0054"])
 	for path in sports_sign_proof.current_sha256:
-		assert(FileAccess.get_sha256("res://"+str(path))==str(sports_sign_proof.current_sha256[path]),"Unreviewed signage postimage: "+str(path))
+		assert(_star_fitted_current_sha256("res://"+str(path))==str(sports_sign_proof.current_sha256[path]),"Unreviewed signage postimage: "+str(path))
 	for path in sports_sign_proof.predecessors:
 		var spec: Dictionary=sports_sign_proof.predecessors[path]
 		assert(FileAccess.get_sha256("res://"+str(spec.retained_path))==str(spec.sha256))
 		sports_sign_predecessor_text[path]=FileAccess.get_file_as_string("res://"+str(spec.retained_path))
-	var source:=FileAccess.get_file_as_string("res://tests/medical_triage_successor_guard.gd")
+	var source:=_star_fitted_current_text("res://tests/medical_triage_successor_guard.gd")
 	var first: String="# SPORTS_SIGN_EXACT_SECTION_"+"BEGIN\n"
 	var last: String="# SPORTS_SIGN_EXACT_SECTION_"+"END\n"
 	assert(source.count(first)==1 and source.count(last)==1)
@@ -1721,7 +1723,7 @@ static func _sports_sign_current_sha256(path: String) -> String:
 	_sports_sign_ensure()
 	var relative:=_relative(path)
 	if sports_sign_predecessor_text.has(relative): return str(sports_sign_predecessor_text[relative]).sha256_text()
-	return FileAccess.get_sha256("res://"+relative)
+	return _star_fitted_current_sha256("res://"+relative)
 
 static func _sports_sign_glb(filename: String) -> Dictionary:
 	var raw:=FileAccess.get_file_as_bytes("res://assets/models/"+filename)
@@ -1842,3 +1844,109 @@ static func _sports_sign_validate_unaffected(wrapper: Node3D) -> void:
 	assert(unchanged_nodes==1904 and unchanged_meshes==1730)
 	original.free();current.free()
 # SPORTS_SIGN_EXACT_SECTION_END
+# STAR_FITTED_EXACT_SECTION_BEGIN
+const STAR_FITTED_PROOF := "res://data/architecture/packages/star_atlas_fitted/RUNTIME_PROOF.json"
+const STAR_FITTED_PROOF_SHA := "31d5677bee1282c257da564860a3169c50b33d43d4a6834bd82fe8f254930bf0"
+static var star_fitted_checked := false
+static var star_fitted_proof: Dictionary = {}
+static var star_fitted_predecessor_text: Dictionary = {}
+
+static func _star_fitted_ensure() -> void:
+	if star_fitted_checked: return
+	assert(FileAccess.get_sha256(STAR_FITTED_PROOF)==STAR_FITTED_PROOF_SHA)
+	star_fitted_proof=JSON.parse_string(FileAccess.get_file_as_string(STAR_FITTED_PROOF))
+	assert(star_fitted_proof.schema==1 and star_fitted_proof.old_floor_owner_count==282)
+	assert(star_fitted_proof.allowed_new_subtree=="StarAtlasFittedInteriors_Candidate")
+	for path in star_fitted_proof.current_sha256: assert(FileAccess.get_sha256("res://"+str(path))==str(star_fitted_proof.current_sha256[path]),"Changed fitted successor input: "+str(path))
+	for path in star_fitted_proof.predecessors:
+		var spec: Dictionary=star_fitted_proof.predecessors[path]
+		assert(FileAccess.get_sha256("res://"+str(spec.retained_path))==str(spec.sha256))
+		star_fitted_predecessor_text[path]=FileAccess.get_file_as_string("res://"+str(spec.retained_path))
+	var ship_source:=FileAccess.get_file_as_string("res://scripts/ship.gd")
+	var hook: Dictionary=star_fitted_proof.ship_inverse
+	assert(ship_source.count(str(hook.after))==1)
+	assert(ship_source.replace(str(hook.after),str(hook.before))==str(star_fitted_predecessor_text["scripts/ship.gd"]),"Only the one immediate post-Star-Atlas ship hook is allowed")
+	var source:=FileAccess.get_file_as_string("res://tests/medical_triage_successor_guard.gd")
+	var first: String="# STAR_FITTED_EXACT_SECTION_"+"BEGIN\n"
+	var last: String="# STAR_FITTED_EXACT_SECTION_"+"END\n"
+	assert(source.count(first)==1 and source.count(last)==1)
+	var start:=source.find(first)
+	var finish:=source.find(last)+last.length()
+	var block:=source.substr(start,finish-start)
+	assert(block.count(STAR_FITTED_PROOF_SHA)==1)
+	assert(block.replace(STAR_FITTED_PROOF_SHA,"<PROOF_SHA>").sha256_text()==str(star_fitted_proof.block_normalized_sha256))
+	var recovered:=source.substr(0,start)+source.substr(finish)
+	for edit in star_fitted_proof.guard_inverse_edits:
+		assert(recovered.count(str(edit.after))==int(edit.count))
+		recovered=recovered.replace(str(edit.after),str(edit.before))
+	assert(recovered==str(star_fitted_predecessor_text["tests/medical_triage_successor_guard.gd"]),"Complete previous nested guard bytes must survive")
+	var floors: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	assert(floors.regions.size()==282)
+	star_fitted_checked=true
+
+static func _star_fitted_current_text(path: String) -> String:
+	_star_fitted_ensure()
+	var relative:=_relative(path)
+	if star_fitted_predecessor_text.has(relative): return str(star_fitted_predecessor_text[relative])
+	return FileAccess.get_file_as_string("res://"+relative)
+
+static func _star_fitted_current_sha256(path: String) -> String:
+	_star_fitted_ensure()
+	var relative:=_relative(path)
+	if star_fitted_predecessor_text.has(relative): return str(star_fitted_predecessor_text[relative]).sha256_text()
+	return FileAccess.get_sha256("res://"+relative)
+
+static func _star_fitted_validate_runtime(ship: Node) -> void:
+	_star_fitted_ensure()
+	var district: Node3D=ship.get_node("ShipSpace/Districts/D12_D14_StarAtlas_WIP") as Node3D
+	var fitted: Node3D=district.get_node("StarAtlasFittedInteriors_Candidate") as Node3D
+	assert(district.get_meta("programme_keys")==["D12_directory_05","D13_directory_04","D14_directory_03"] and district.get_meta("historical_library_id")=="D12_stargazing4")
+	var witness: Dictionary=load("res://scripts/star_atlas_fitted_receiving.gd").validate(district)
+	assert(witness.passed and witness.old_state_before_sha256==witness.old_state_after_sha256 and witness.preserved_old_nodes>0)
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/star_atlas_fitted_interiors.json"))
+	assert(data.models.size()==105 and data.clusters.size()==24 and data.fixtures.size()==15 and data.labels.size()==5 and data.stock_profiles.size()==14)
+	assert(data.capacity_change==0 and data.new_floor_owners.is_empty())
+	assert(fitted.transform==Transform3D.IDENTITY and fitted.get_meta("authoring_owner")=="D12_D14_star_atlas" and fitted.get_meta("capacity_change")==0)
+	var ids: Dictionary={}
+	for item in data.models:
+		assert(not ids.has(str(item.id)));ids[str(item.id)]=true
+		var object: Node3D=fitted.get_node(NodePath(str(item.id))) as Node3D
+		assert(object.get_meta("catalogue_file")==item.file and object.get_meta("fitted_role")==item.role)
+		var expected:=Node3D.new()
+		expected.position=Vector3(float(item.position[0]),float(item.position[1]),float(item.position[2]));expected.rotation.y=float(item.yaw)
+		assert(object.transform==expected.transform);expected.free()
+		if item.has("support"): assert(object.get_meta("support_id")==item.support)
+		var settings:=ConfigFile.new()
+		var filename: String="res://assets/models/"+str(item.file)
+		assert(settings.load(filename+".import")==OK)
+		var remap:=str(settings.get_value("remap","path",""))
+		var md5:=ConfigFile.new()
+		assert(not remap.is_empty() and md5.load(remap.get_basename()+".md5")==OK and str(md5.get_value("","source_md5",""))==FileAccess.get_md5(filename),"Existing retained-model import must be fresh")
+	var budgets: Array=ship.find_children("LocalShadowSourceBudget","Node",true,false)
+	assert(budgets.size()==1 and budgets[0].shadow_source_budget==8 and budgets[0].MAX_VISIBILITY_CANDIDATES==32)
+	var budget: Node=budgets[0]
+	assert(fitted.find_children("*","Light3D",true,false).size()==15)
+	var switch_count:=0
+	for source in data.fixtures:
+		var lamp: SpotLight3D=fitted.get_node(NodePath(str(source.id)+"_OpticalSource")) as SpotLight3D
+		assert(lamp!=null and lamp in budget.sources and bool(budget.requested_shadow[lamp.get_instance_id()]))
+		assert(lamp.light_color==(Color(.82,.90,1.0) if str(source.id)=="D12_ReturnCare_Fixture" else Color(1,.94,.86)))
+		if source.type=="task":
+			assert(lamp.spot_range==2 and lamp.spot_angle==75 and is_equal_approx(lamp.light_energy,.35))
+			var control: Node3D=fitted.get_node(NodePath(str(source.id)+"_Switch")) as Node3D
+			assert(control.get_script()==load("res://scripts/fixture_switch.gd") and control.persistent_id==StringName("star_atlas_fitted_"+str(source.id)) and control.source==lamp)
+			switch_count+=1
+		else: assert(source.type=="floor" and lamp.spot_range==3 and lamp.spot_angle==65 and is_equal_approx(lamp.light_energy,.65))
+	assert(switch_count==10 and fitted.find_children("IntegratedCollectionLabel","Label3D",true,false).size()==5)
+	for spec in data.labels:
+		var label: Label3D=fitted.get_node(NodePath(str(spec.parent)+"/IntegratedCollectionLabel")) as Label3D
+		assert(label!=null and label.text==spec.text and label.font_size==32 and is_equal_approx(label.pixel_size,float(spec.pixel_size)) and not label.no_depth_test and label.outline_size==0)
+		assert(label.position==Vector3(float(spec.position[0]),float(spec.position[1]),float(spec.position[2])) and is_equal_approx(label.rotation.x,float(spec.rotation_x)))
+	var stock_groups:=0
+	for batch in fitted.find_children("FittedCollectionStock_*","MultiMeshInstance3D",false,false): stock_groups+=batch.multimesh.instance_count
+	assert(stock_groups==294)
+	var active:=0
+	for light in budget.sources:
+		if light.visible and light.shadow_enabled: active+=1
+	assert(active<=8,"New lights must obey the sole unchanged global budget")
+# STAR_FITTED_EXACT_SECTION_END

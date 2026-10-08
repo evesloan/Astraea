@@ -1,0 +1,56 @@
+extends "/workspace/shared/star_atlas_native_capture_20261008/ordinary_driver.gd"
+var output_dir:String
+var captures:Array=[]
+func _initialize()->void:
+ test_name="star_atlas_native_capture"
+ output_dir=OS.get_environment("ASTRAEA_MOVEMENT_CAPTURE_OUT")
+ if output_dir.is_empty() or DirAccess.dir_exists_absolute(output_dir):quit(1);return
+ if DirAccess.make_dir_recursive_absolute(output_dir)!=OK:quit(1);return
+ call_deferred("run")
+func save_capture(name:String,target:Vector3)->bool:
+ release_inputs()
+ var delta:Vector3=target-actor.camera.global_position
+ actor.rotation.y=atan2(-delta.x,-delta.z)
+ actor.set("pitch",atan2(delta.y,Vector2(delta.x,delta.z).length()))
+ actor.camera.rotation.x=actor.pitch
+ if not await advance(30):return false
+ for i in range(8):await process_frame
+ if not require(bool(main.effects) and absf(actor.camera.fov-72)<.001 and absf(actor.camera.position.y-1.65)<.000001,"Default view required"):return false
+ await RenderingServer.frame_post_draw
+ var photo:Image=main.post_view.get_texture().get_image()
+ var path:=output_dir+"/"+name+".png"
+ if not require(photo!=null and photo.save_png(path)==OK,"Save native framebuffer"):return false
+ captures.append({"view":name,"file":path,"sha256":FileAccess.get_sha256(path),"effects_default_enabled":true,"fov":actor.camera.fov,"eye_height_m":actor.camera.position.y,"geometry_or_material_modified":false,"lights_or_environment_modified":false,"later_teleports":0,"actual_position":[actor.position.x,actor.position.y,actor.position.z],"scope":"Three separately initialized deck circuits; same-deck movement uses W input."})
+ var f:=FileAccess.open(output_dir+"/CAPTURES.json",FileAccess.WRITE)
+ f.store_string(JSON.stringify({"captures":captures,"capture_count":captures.size(),"visual_acceptance":false},"  ")+"\n")
+ return true
+func write_receipt(status:String,detail:String="")->void:
+ if output_dir.is_empty():return
+ var f:=FileAccess.open(output_dir+"/CAPTURE_RUN.json",FileAccess.WRITE)
+ if f!=null:f.store_string(JSON.stringify({"status":status,"detail":detail,"initial_deck_arrivals":arrivals,"walked_m":travelled_m,"walked_frames":walked_frames,"images":captures.size()},"  ")+"\n")
+func run()->void:
+ started=Time.get_ticks_msec()
+ if not require(DisplayServer.get_name()!="headless" and FileAccess.get_sha256(DATA)==DATA_SHA,"Graphical engine and frozen layout required"):return
+ data=JSON.parse_string(FileAccess.get_file_as_string(DATA))
+ main=(load("res://scenes/main.tscn")as PackedScene).instantiate();root.add_child(main)
+ for i in range(150):await physics_frame
+ ship=main.get_node("World360/Astraea");actor=ship.get_node("ShipSpace/PersistentActors/Player")
+ cart=ship.find_child("CustodialCart",true,false);floors=ship.find_child("CompiledStructuralFloors_NotFinishedRooms",true,false);space=ship.get_world_3d().direct_space_state
+ var chosen:Dictionary={"D12_NorthAtlas":Vector3(-75,79.5,-29.8),"D12_SouthConversation":Vector3(-69,79.3,26),"D12_ReturnCare":Vector3(-65,79.1,11.5),"D13_CommonAtlasTable":Vector3(-85,85.2,12.45),"D13_WestJournal":Vector3(-94,85.2,10.5),"D14_QuietJournal":Vector3(-93,89.7,7)}
+ for y in [78.0,84.0,88.5]:
+  if not require(ship.arrive_at(Vector3(-50,y+.1,0),0),"Supported initial deck setup"):return
+  arrivals+=1
+  if not await advance(45):return
+  for cluster in data.clusters:
+   if float(cluster.origin[1])!=y or not chosen.has(cluster.id):continue
+   var points:Array[Vector2]=[Vector2(-50,0)]
+   for p in cluster.approach_route:points.append(Vector2(p[0],p[1]))
+   for point in points:
+    if not await walk(point,y):return
+   if not await save_capture(str(cluster.id),chosen[cluster.id]):return
+   points.reverse()
+   for point in points:
+    if not await walk(point,y):return
+ release_inputs();write_receipt("PASS")
+ print("STAR ATLAS NATIVE CAPTURE PASS: six default views; three separate deck setups")
+ main.queue_free();await process_frame;quit(0)
