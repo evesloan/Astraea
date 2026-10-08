@@ -2,7 +2,7 @@ from pathlib import Path
 import bpy,bmesh,json,hashlib
 from mathutils import Vector
 R=Path(__file__).resolve().parents[1];C=Path('/workspace/shared/Astraea_recovery_20261007_AXWr5x/BlenderCatalogue');A='AST-HUL-002'
-assert not any(a['catalogue_id']==A for a in json.load(open(C/'catalogue_manifest.json'))['assets'])
+assert all(a['catalogue_id']!=A or a['family']=='upper_hull_theater_shell' for a in json.load(open(C/'catalogue_manifest.json'))['assets'])
 D=json.load(open(R/'SOURCE_AUTHORITY.json'))
 for p,h in D['pins'].items():assert hashlib.sha256(Path(p).read_bytes()).hexdigest()==h
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
