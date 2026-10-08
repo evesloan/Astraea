@@ -1,0 +1,572 @@
+{
+  "schema": 1,
+  "status": "unfinished Solar preparation; not installed or runtime-tested",
+  "purpose": "Preservation handoff for parent takeover; integration stopped by owner",
+  "baseline_commit": "e95e732b7ab4a255bb31ddca9f862392e7d7504c",
+  "source_handoff_commit": "7667074ace2d325a336041f6e33887eeb709813e",
+  "source_archive_sha256": "4cd0ca850d7f000086abbe0223d368389bab01ebd74668c23a6e6af05f326c22",
+  "preimages": {
+    "data/spatial_layout.json": {
+      "retained_path": "data/architecture/packages/received_sections/retained_e95/data/spatial_layout.json",
+      "sha256": "587e08ac1f9b980254ff3832f9211bc72ebfa16b7f8fd14dbe3cd258a78b4ab5"
+    },
+    "data/generated/structural_meshes.json": {
+      "retained_path": "data/architecture/packages/received_sections/retained_e95/data/generated/structural_meshes.json",
+      "sha256": "2e19af837d635ccaf36788479b2d89fde648a1f823a8e2ead5c49a49d981faf3"
+    },
+    "docs/LAYOUT_COMPILE_CHECKS.json": {
+      "retained_path": "data/architecture/packages/received_sections/retained_e95/docs/LAYOUT_COMPILE_CHECKS.json",
+      "sha256": "cc07a157652b55158a081d01fef424ddd50472d192b14221014b21c6732cffeb"
+    },
+    "tools/compile_layout.py": {
+      "retained_path": "data/architecture/packages/received_sections/retained_e95/tools/compile_layout.py",
+      "sha256": "b4aa591f96a5fbff9e9d7a7f2b49894ef6222e4b87152b229de3ca5e9383b71c"
+    },
+    "scripts/ship.gd": {
+      "retained_path": "data/architecture/packages/received_sections/retained_e95/scripts/ship.gd",
+      "sha256": "dc203bf4f0371c8018cdf568a6684698b97add728f48277f2180d81c872e7bb7"
+    },
+    "data/whole_ship_layout.json": {
+      "retained_path": "data/architecture/packages/received_sections/retained_e95/data/whole_ship_layout.json",
+      "sha256": "d641e95cf82b5ddd19e9448dc5d029aef2123d32630a08810a2169c8979706d8"
+    }
+  },
+  "preimages_verified_exact_against_baseline": true,
+  "scope_review": {
+    "existing_preparation_files": 86,
+    "bytes": 18919794,
+    "catalogue_files": 74,
+    "unchanged_archive_members_verified": 74,
+    "secret_pattern_findings": 0,
+    "caches_or_archive_duplicates": 0
+  },
+  "unfinished_work": [
+    "Loader not called by ship.gd",
+    "Preservation helper not wired into compiler",
+    "Two floor records appended; compiler not run",
+    "No engine import, build, runtime tests, installed-section acceptance or watcher"
+  ],
+  "changed_files": [
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/README.md",
+      "status": "new",
+      "bytes": 521,
+      "sha256": "d70aac17766d58f5d1c067f9902dd6c16c2c1d2948ca9f50a921cd65e959f46f"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/SHA256SUMS.txt",
+      "status": "new",
+      "bytes": 4506,
+      "sha256": "c3987ac530edc682dceaf22d3a1ac1ea2c6e9a8c5882f6ed7a9b3ca567dd46b6"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/artifact_manifest.json",
+      "status": "new",
+      "bytes": 42200,
+      "sha256": "7c677965974009f4d1a333ddaab1cee35c8e0fb5f64e8a69904976d28fa8289e"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/docs/floor_proposal.json",
+      "status": "new",
+      "bytes": 1044,
+      "sha256": "eb4e2a6e1ef573cbaf915cb0515ac59920ab9be10918409852f3c92eec3d9872"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/docs/source_gate.json",
+      "status": "new",
+      "bytes": 1545,
+      "sha256": "69458695ce6638e7135b5aa00128ba9b21fc33be0bb95cc576a5cb6ac9fd1e44"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/docs/source_reference_application.md",
+      "status": "new",
+      "bytes": 1196,
+      "sha256": "39d00e24bae1a8cb8156c60d9e4023eb5de6f1874133341836ddcdac39ea2fc0"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/exports/section.glb",
+      "status": "new",
+      "bytes": 2095720,
+      "sha256": "e85cce8328b9889bac31d0040e5e7741519ee04736b3d1f2b616db6595e5afc3"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/placements.json",
+      "status": "new",
+      "bytes": 1426,
+      "sha256": "d1e68b393453a275e719f5021d41fe9e27c4c10cfab887a3c380ab10782c15cb"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/binary_normals.json",
+      "status": "new",
+      "bytes": 273,
+      "sha256": "4a35812d9baab52efa7da0895577fcea2a71e58e720afb856460836a874384d7"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/export_selection.json",
+      "status": "new",
+      "bytes": 34341,
+      "sha256": "0f3776b0a68e67f2b87bff4f7ebef074136ca184c70a75140c06446eab1b1e66"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/failed/initial_review/roundtrip.json",
+      "status": "new",
+      "bytes": 104105,
+      "sha256": "9a9ecdcace61facd43eaf0c66cc92a53dedc4d41fe81ba5179f2fba7929601f4"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/failed/initial_review/verify.log",
+      "status": "new",
+      "bytes": 13641,
+      "sha256": "673c722974da477bb976672cb5560256efdb76453129fbe665bf553c338cf81d"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/failed/initial_review/view_receipt.json",
+      "status": "new",
+      "bytes": 1740,
+      "sha256": "acdc9cdcfbfdf4380196f4d0807d4c5740898a855c887595c592ab6eca8feb7d"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/failed/initial_review/views/arrival.png",
+      "status": "new",
+      "bytes": 514731,
+      "sha256": "7a7df24aeadef6b222f47b7d31a8eb96bb3fdf7f5b2de8db3260b8553ee98800"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/failed/initial_review/views/care.png",
+      "status": "new",
+      "bytes": 533877,
+      "sha256": "422be9b8867ccb1045e25c2de257fa6dc9cb4991c2986badc7c213a999faefaa"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/failed/initial_review/views/collection.png",
+      "status": "new",
+      "bytes": 566772,
+      "sha256": "a1f7082fdf305edd1829dc6a1faf8bc975457ad44f214cf243d83c8f3c9c070d"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/failed/initial_review/views/consultation.png",
+      "status": "new",
+      "bytes": 519812,
+      "sha256": "eb2429770b03491b20d3137c067ceb625f2bd860e27b0f53fe89be093c9c8405"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/failed/initial_review/views/service.png",
+      "status": "new",
+      "bytes": 501589,
+      "sha256": "e1b8d11118aef511c62a777a2ee97e0c1769c60e0c6ca9c52cfc0bb0e96a019f"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/full.log",
+      "status": "new",
+      "bytes": 22851,
+      "sha256": "1f3924877eae89ed4da5faa187a172231933c8a0c854d2eecfecd282b56aed00"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/mutex_full.json",
+      "status": "new",
+      "bytes": 244,
+      "sha256": "d0b736f3723f98268dc178d26e8afd92d09728f103891990fe11b041bfd0943a"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/mutex_render_care.json",
+      "status": "new",
+      "bytes": 245,
+      "sha256": "91d06269704471ef46bd66e639058c97d8af66cb748e2e46b67abe20414ab7e8"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/mutex_verify.json",
+      "status": "new",
+      "bytes": 245,
+      "sha256": "c6296261b97072527b19217eaa805a8d640b6c0936d810916f0778c9eafddfbf"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/objects.json",
+      "status": "new",
+      "bytes": 78095,
+      "sha256": "2bf008acb9db70e1183d39e2f7933968e60e71f882bbcba3c0be159de4551054"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/protected_screen.json",
+      "status": "new",
+      "bytes": 53181,
+      "sha256": "2449459cab660d3c9f5c36bd0da5d5bc46c4b75af0b02cc18b659fb7da11ef94"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/render_care.log",
+      "status": "new",
+      "bytes": 659,
+      "sha256": "fcb23bac060e86da9dc3dda249ba6e12c1111a788f56a9422747347ab00142b8"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/render_used.py",
+      "status": "new",
+      "bytes": 23124,
+      "sha256": "e90b73b96de98a11cd36d3e4533cdb6e36dab4e52e9a5a6566a6ae0cc85e0de8"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/roundtrip.json",
+      "status": "new",
+      "bytes": 103976,
+      "sha256": "77b4474f88c84897832e3b2839255f984ba07bb9e3f75db9ace79cfb6b92f1c2"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/validation.json",
+      "status": "new",
+      "bytes": 1592,
+      "sha256": "ade73cde040e62944450321ba091c9b85a50839cb384c2e1ad1a9c2dc3dc4d59"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/verify.log",
+      "status": "new",
+      "bytes": 12919,
+      "sha256": "3496a57eb5b8becf86efd3c6bbf6d9d4ef127bd7f57c45ef3b9274f5d5df5b9a"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/verify_used.py",
+      "status": "new",
+      "bytes": 7779,
+      "sha256": "6998dc9a22e04a725d5ee0d04fdd8944889f66bf2a4a1a3dee87838eff9a7258"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/view_receipt.json",
+      "status": "new",
+      "bytes": 1740,
+      "sha256": "375812bb778b5cae8707112d1db07c5f1d13215fac13bceeca2dd9d594b08cc4"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/views/arrival.png",
+      "status": "new",
+      "bytes": 514731,
+      "sha256": "7a7df24aeadef6b222f47b7d31a8eb96bb3fdf7f5b2de8db3260b8553ee98800"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/views/care.png",
+      "status": "new",
+      "bytes": 527555,
+      "sha256": "b7019d7e42728bc3f9dd8af0e5a5e5526c4484374b5d93304df5ef01817d1363"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/views/collection.png",
+      "status": "new",
+      "bytes": 566772,
+      "sha256": "a1f7082fdf305edd1829dc6a1faf8bc975457ad44f214cf243d83c8f3c9c070d"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/views/consultation.png",
+      "status": "new",
+      "bytes": 519812,
+      "sha256": "eb2429770b03491b20d3137c067ceb625f2bd860e27b0f53fe89be093c9c8405"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/views/service.png",
+      "status": "new",
+      "bytes": 501589,
+      "sha256": "e1b8d11118aef511c62a777a2ee97e0c1769c60e0c6ca9c52cfc0bb0e96a019f"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/qa/visual_review.json",
+      "status": "new",
+      "bytes": 1867,
+      "sha256": "e03a8a741c4849a618657aa3592b67450385494a42db06d9789674ee323ee890"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/build_metadata.json",
+      "status": "new",
+      "bytes": 2154,
+      "sha256": "d533b1367676eba67bd2028363ae76b616c248c999ff1e4e67f34b215700ea84"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/build_used.py",
+      "status": "new",
+      "bytes": 23124,
+      "sha256": "0dbd33fdaaadc216b24ebfcea65417185b345459f7641ec422ab256c4be32d25"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/native.blend",
+      "status": "new",
+      "bytes": 2900652,
+      "sha256": "a292b0ba7b4c995cb6ec2f025d22e081fceab2371a297cb2e73a621e831c6ec1"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/profiles_used.json",
+      "status": "new",
+      "bytes": 746,
+      "sha256": "5a4b1488fe40d23a2df71ae7ad165b2c6c80576d15cbb957fb086f513f64edfb"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/rebuild/binary_normals.py",
+      "status": "new",
+      "bytes": 1913,
+      "sha256": "509bdccab3f4c749c42dfab4da2115e243c1a97bb7bf9f7362f01ba565b6afbf"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/rebuild/build_sections.py",
+      "status": "new",
+      "bytes": 23124,
+      "sha256": "0dbd33fdaaadc216b24ebfcea65417185b345459f7641ec422ab256c4be32d25"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/rebuild/heavy_job.py",
+      "status": "new",
+      "bytes": 3099,
+      "sha256": "a65a1b0acb032915620abbb51a6de38d12643f2d41b05bf6b2047811f4ebfd12"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/rebuild/protected_screen.py",
+      "status": "new",
+      "bytes": 1775,
+      "sha256": "7e7fd7cd761bf7bb5224d1c06ae20e112df379f5ec0d45e0a4f619c61a8f46af"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/rebuild/render_sections.py",
+      "status": "new",
+      "bytes": 23124,
+      "sha256": "e90b73b96de98a11cd36d3e4533cdb6e36dab4e52e9a5a6566a6ae0cc85e0de8"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/rebuild/route_witnesses.json",
+      "status": "new",
+      "bytes": 1978,
+      "sha256": "771ffceb35b6b5dc7288848f6f16ddc738f0181d5da5ebd6d428847d8afc2364"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/rebuild/section_gate.py",
+      "status": "new",
+      "bytes": 2262,
+      "sha256": "d88926bcc53dc403e930d31ae65575c9e71dd35d05a7d6f78bea10529d49ab7f"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/rebuild/section_profiles.json",
+      "status": "new",
+      "bytes": 746,
+      "sha256": "5a4b1488fe40d23a2df71ae7ad165b2c6c80576d15cbb957fb086f513f64edfb"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/01_solar_archive/source/rebuild/verify_sections.py",
+      "status": "new",
+      "bytes": 7779,
+      "sha256": "6998dc9a22e04a725d5ee0d04fdd8944889f66bf2a4a1a3dee87838eff9a7258"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/catalogue/assets/furniture/AST-FUR-001_day_window_bench.blend",
+      "status": "new",
+      "bytes": 1093888,
+      "sha256": "301d05d6ac0f8dfb7aafc3e45d7461082577b852fe8214b9ade8f76e8d1ebea0"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/catalogue/assets/furniture/AST-FUR-001_day_window_bench.manifest.json",
+      "status": "new",
+      "bytes": 21202,
+      "sha256": "ef23702f72fd71256fba931e1d2ced5661452ce21dae55c10e22dee4ae866b2b"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/catalogue/assets/furniture/AST-FUR-003_day_table.blend",
+      "status": "new",
+      "bytes": 750248,
+      "sha256": "1c61d8cbc18a2b92f31567b6b3bef5414d1ff49682a70e1407d24f8551ef5327"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/catalogue/assets/furniture/AST-FUR-003_day_table.manifest.json",
+      "status": "new",
+      "bytes": 11670,
+      "sha256": "e858ceee93dc2be26ab41155ffe04a135ab54bc40fba7b183a825f79bdc0a7d2"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/catalogue/assets/hospitality_lantern/AST-LGT-001.manifest.json",
+      "status": "new",
+      "bytes": 439,
+      "sha256": "353fe551c6a2624f6d1e14d2b520501a327be900278bf9c9425919dd5d879466"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/catalogue/assets/hospitality_lantern/source/AST-LGT-001.blend",
+      "status": "new",
+      "bytes": 706660,
+      "sha256": "e9720793c83b73fc708cffe9129b032274d7299200a002bf8698ce55d04f5a2f"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/catalogue/assets/staff_workbay/AST-STF-007_supply_work_cabinet.blend",
+      "status": "new",
+      "bytes": 831140,
+      "sha256": "b1705b3e5d7a48f4d28765a26b7c9f60fe4aa61df3b593ba4f35861125cf8edb"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/catalogue/assets/staff_workbay/AST-STF-007_supply_work_cabinet.manifest.json",
+      "status": "new",
+      "bytes": 46656,
+      "sha256": "9d9df53f43630d10ef25e4fd8605cb6ec52854d3861a477a4223b9e4b7a82c05"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/catalogue_manifest.json",
+      "status": "new",
+      "bytes": 177022,
+      "sha256": "13af951a067af46582fb9dfd895cf5cff5b4805609fdd24afaa62703f3ba5bc2"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/full_catalogue_intake.json",
+      "status": "new",
+      "bytes": 157425,
+      "sha256": "7de9a9a1821d6ebd24ac1bbdead5384eecb8f6f191d3517b68107e24525d20d9"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/champagne_metal.png",
+      "status": "new",
+      "bytes": 5262,
+      "sha256": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/clay_weave.png",
+      "status": "new",
+      "bytes": 16478,
+      "sha256": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/dark_rubber.png",
+      "status": "new",
+      "bytes": 1631,
+      "sha256": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/ivory_enamel.png",
+      "status": "new",
+      "bytes": 3464,
+      "sha256": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/oatmeal_weave.png",
+      "status": "new",
+      "bytes": 16827,
+      "sha256": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/staff_bluegrey_paint.png",
+      "status": "new",
+      "bytes": 6069,
+      "sha256": "53835adecbb840eabde9b446931baacd04fb81568edda851f598f7a8cd64576f"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/staff_opal.png",
+      "status": "new",
+      "bytes": 6219,
+      "sha256": "d1884536391beb3bbffbf8d5d9ecb40c678b810cf841c13b53f891594c5d086b"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/staff_white_paint.png",
+      "status": "new",
+      "bytes": 6159,
+      "sha256": "bae03b8e3118fea2611245d48ae225ecdd9bee686a469b5e73475f0af2428b88"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/staff_zinc.png",
+      "status": "new",
+      "bytes": 5827,
+      "sha256": "1fbd6ff060e727ed658520277b847ce0a5df0b751855f33190e5f64dc130536c"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/teal_weave.png",
+      "status": "new",
+      "bytes": 16512,
+      "sha256": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/warm_stone.png",
+      "status": "new",
+      "bytes": 10430,
+      "sha256": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/materials/warm_walnut.png",
+      "status": "new",
+      "bytes": 8275,
+      "sha256": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/pins.json",
+      "status": "new",
+      "bytes": 5190,
+      "sha256": "b9d5a93594c658118f21731873f7ff9775fa0e0720bdaf5b22c2261301efe19d"
+    },
+    {
+      "path": "BlenderCatalogue/assets/received_sections_20261008/B/dependencies/registry_pin_verification.json",
+      "status": "new",
+      "bytes": 1019,
+      "sha256": "762c09ed711538140c9b647306da8deac2a6c46c97ac2d9c1d28d09af9aa8d75"
+    },
+    {
+      "path": "Game/assets/models/SOL_D02_directory_09_source001.glb",
+      "status": "new",
+      "bytes": 2095720,
+      "sha256": "e85cce8328b9889bac31d0040e5e7741519ee04736b3d1f2b616db6595e5afc3"
+    },
+    {
+      "path": "Game/data/architecture/packages/received_sections/PREDECESSOR.json",
+      "status": "new",
+      "bytes": 3222,
+      "sha256": "3f1852a26b06ac49186b5ceef53f200cb5d78dd7e70da20f29e532f6fe37c661"
+    },
+    {
+      "path": "Game/data/architecture/packages/received_sections/retained_e95/data/generated/structural_meshes.json",
+      "status": "new",
+      "bytes": 860588,
+      "sha256": "2e19af837d635ccaf36788479b2d89fde648a1f823a8e2ead5c49a49d981faf3"
+    },
+    {
+      "path": "Game/data/architecture/packages/received_sections/retained_e95/data/spatial_layout.json",
+      "status": "new",
+      "bytes": 463403,
+      "sha256": "587e08ac1f9b980254ff3832f9211bc72ebfa16b7f8fd14dbe3cd258a78b4ab5"
+    },
+    {
+      "path": "Game/data/architecture/packages/received_sections/retained_e95/data/whole_ship_layout.json",
+      "status": "new",
+      "bytes": 215669,
+      "sha256": "d641e95cf82b5ddd19e9448dc5d029aef2123d32630a08810a2169c8979706d8"
+    },
+    {
+      "path": "Game/data/architecture/packages/received_sections/retained_e95/docs/LAYOUT_COMPILE_CHECKS.json",
+      "status": "new",
+      "bytes": 8264,
+      "sha256": "cc07a157652b55158a081d01fef424ddd50472d192b14221014b21c6732cffeb"
+    },
+    {
+      "path": "Game/data/architecture/packages/received_sections/retained_e95/scripts/ship.gd",
+      "status": "new",
+      "bytes": 19298,
+      "sha256": "dc203bf4f0371c8018cdf568a6684698b97add728f48277f2180d81c872e7bb7"
+    },
+    {
+      "path": "Game/data/architecture/packages/received_sections/retained_e95/tools/compile_layout.py",
+      "status": "new",
+      "bytes": 7941,
+      "sha256": "b4aa591f96a5fbff9e9d7a7f2b49894ef6222e4b87152b229de3ca5e9383b71c"
+    },
+    {
+      "path": "Game/data/architecture/received_sections.json",
+      "status": "new",
+      "bytes": 1391,
+      "sha256": "2615d8b831b6f11c20117c220020600135d0b930ae5d5512da4b3a2faaad677f"
+    },
+    {
+      "path": "Game/data/spatial_layout.json",
+      "status": "modified",
+      "bytes": 464912,
+      "sha256": "58d7df3b21130b7e2b7ea6b5066790a9b3072601457a2ab94aea2cde30092475"
+    },
+    {
+      "path": "Game/scripts/received_sections.gd",
+      "status": "new",
+      "bytes": 1117,
+      "sha256": "39f96ac96c3070a3a38ab99e7ebfde6b552fe6f6bd3cb910e304d747e6be9cdb"
+    },
+    {
+      "path": "Game/tools/received_section_incremental_preservation.py",
+      "status": "new",
+      "bytes": 2066,
+      "sha256": "932554ce1fc8db3b6cd6e027bfffb41ea537c699f753544f5b4c421595e081a3"
+    }
+  ],
+  "exclusions": [
+    "Library signed-transfer receipt and all credentials",
+    "Receiving ZIP archives already preserved on their handoff branches",
+    "Unrelated staging helpers and receipts"
+  ]
+}
