@@ -1,0 +1,3 @@
+# Night Table receiving preparation
+
+Uninstalled preparation only. Original WP12 source archive remains privately retained in Library and has been verified against its original SHA-256. This bundle retains compiler and runtime adapter preparation, source identity pins, preservation evidence and exact predecessor files. Runtime GLB is reproducible with prepare_runtime_binary.py from the pinned original; the binary itself is not duplicated here. Current tests establish compilation, mutation rejection and script parsing only. No installed room, full runtime, visual, operational or final art acceptance is claimed. Read PREPARATION_STATUS.json.
