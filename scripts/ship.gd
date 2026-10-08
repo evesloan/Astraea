@@ -116,6 +116,7 @@ func _ready() -> void:
 	load("res://scripts/sports_care_receiving.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/night_table_receiving.gd").build(self)
 	load("res://scripts/laundry_receiving.gd").build(self)
+	load("res://scripts/crew_batch_receiving.gd").build(self)
 	lighting_budget.configure(self,player)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
