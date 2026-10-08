@@ -1,0 +1,100 @@
+"""Prepared only unless --run. Root owns graphical launch; no import/editor/headless."""
+from pathlib import Path
+import argparse, datetime, hashlib, json, os, signal, subprocess, time
+S = Path(__file__).resolve().parent
+G = Path('/workspace/shared/Astraea_recovery_20261007_AXWr5x/Game')
+ENGINE = Path('/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64')
+ENGINE_SHA = 'f64d4ed19fc9df9440321653fcc80df8c6e365ba7b6de0a29e2cfa9fa71bfeb3'
+TIMEOUT = 900
+
+def sha(p):
+    h = hashlib.sha256()
+    with Path(p).open('rb') as f:
+        for block in iter(lambda: f.read(1024*1024), b''): h.update(block)
+    return h.hexdigest()
+
+def inventory():
+    result = {'source': {}, 'cache': {}}
+    for root, dirs, files in os.walk(G):
+        dirs[:] = sorted(d for d in dirs if d != '.git')
+        for name in sorted(files):
+            p = Path(root)/name
+            rel = str(p.relative_to(G))
+            kind = 'cache' if rel.startswith('.godot/') else 'source'
+            result[kind][rel] = {'sha256': sha(p), 'bytes': p.stat().st_size}
+    return result
+
+def write(p, data):
+    with Path(p).open('x') as f: json.dump(data, f, indent=2); f.write('\n')
+
+def need(ok, message):
+    if not ok: raise RuntimeError(message)
+
+def diff(before, after):
+    return {kind: [{'path': p, 'before': before[kind].get(p), 'after': after[kind].get(p)}
+                   for p in sorted(set(before[kind]) | set(after[kind]))
+                   if before[kind].get(p) != after[kind].get(p)] for kind in before}
+
+def main():
+    ap=argparse.ArgumentParser(); ap.add_argument('--run', action='store_true'); ap.add_argument('--release-reference'); args=ap.parse_args()
+    if not args.run:
+        print('PREPARED_ONLY: root graphical launch requires --run --release-reference <root engine-slot release>'); return
+    need(args.release_reference, 'Root engine-slot release reference required')
+    need(os.environ.get('DISPLAY') or os.environ.get('WAYLAND_DISPLAY'), 'Existing approved graphical display required')
+    freeze=json.loads((S/'FREEZE.json').read_text())
+    need(sha(ENGINE)==ENGINE_SHA, 'Pinned Godot 4.6.3 bytes changed')
+    for name, digest in freeze['prepared_files'].items(): need(sha(S/name)==digest, 'Prepared script changed: '+name)
+    for receipt in freeze['prior_proofs']:
+        need(sha(receipt['path'])==receipt['sha256'], 'Prior proof changed: '+receipt['path'])
+    before=inventory(); need(before==freeze['game_inventory'], 'Game bytes changed since preparation; do not launch stale freeze')
+    R=S/'run001'; output=R/'output'
+    need(not R.exists(), 'Preserve previous attempt: run001 already exists')
+    R.mkdir(); write(R/'GAME_BYTES_BEFORE.json', before)
+    env=os.environ.copy()
+    for key, sub in [('XDG_CONFIG_HOME','config'),('XDG_DATA_HOME','data'),('XDG_CACHE_HOME','cache'),('TMPDIR','tmp')]:
+        p=R/sub; p.mkdir(); env[key]=str(p)
+    env['TMP']=env['TMPDIR']; env['TEMP']=env['TMPDIR']; env['ASTRAEA_MOVEMENT_CAPTURE_OUT']=str(output)
+    command=[str(ENGINE),'--audio-driver','Dummy','--path',str(G),'--resolution','1280x720','--script',str(S/'capture.gd')]
+    status={'status':'RUNNING', 'started_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(), 'command':command, 'engine_sha256':ENGINE_SHA,
+            'timeout_seconds':TIMEOUT,'release_reference':args.release_reference,'freeze_sha256':sha(S/'FREEZE.json'),
+            'default_scene_effects_lighting_materials':True,'visual_acceptance':False,
+            'isolated_environment':{k:env[k] for k in ['XDG_CONFIG_HOME','XDG_DATA_HOME','XDG_CACHE_HOME','TMPDIR','TMP','TEMP']}}
+    write(R/'START.json',status); proc=None; start=time.monotonic(); error=None
+    try:
+        with (R/'engine.log').open('x') as log:
+            proc=subprocess.Popen(command, cwd=G, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+            try: proc.wait(timeout=TIMEOUT)
+            except subprocess.TimeoutExpired:
+                os.killpg(proc.pid,signal.SIGTERM)
+                try: proc.wait(timeout=5)
+                except subprocess.TimeoutExpired: os.killpg(proc.pid,signal.SIGKILL); proc.wait()
+                raise RuntimeError('Bounded graphical capture timeout; retain partial evidence')
+        log=(R/'engine.log').read_text(errors='replace')
+        need(proc.returncode==0 and not any(x in log for x in ['ERROR:', 'Parse Error', 'Assertion failed']), 'Engine reported failure; inspect log')
+        result=json.loads((output/'CAPTURES.json').read_text())
+        check=json.loads((output/'CAPTURE_RUN.json').read_text())
+        need(check['status']=='PASS', 'Capture exercise did not complete')
+        need(result['capture_count']==6 and len(result['captures'])==6, 'Exactly six native views required')
+        for row in result['captures']:
+            p=Path(row['file']); need(p.parent==output and sha(p)==row['sha256'], 'Image path/hash mismatch')
+            need(row['effects_default_enabled'] and row['fov']==62 and abs(row['eye_height_m']-1.65)<.00001, 'Ordinary player defaults changed')
+            need(not row['geometry_or_material_modified'] and not row['lights_or_environment_modified'] and row['later_teleports']==0, 'Capture scope violated')
+        status.update(status='SIX_NATIVE_DEFAULT_SCENE_VIEWS_CAPTURED_VISUAL_REVIEW_PENDING', captures_sha256=sha(output/'CAPTURES.json'))
+    except BaseException as exc:
+        error=exc; status.update(status='STOPPED_PRESERVE_EVIDENCE',error=repr(exc))
+    finally:
+        if proc is not None and proc.poll() is None:
+            os.killpg(proc.pid,signal.SIGKILL); proc.wait()
+        after=inventory(); changes=diff(before,after)
+        write(R/'GAME_BYTES_AFTER.json',after); write(R/'EXPLICIT_BYTE_DIFFS.json',changes)
+        unchanged=not any(changes.values())
+        status.update(finished_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(), seconds=round(time.monotonic()-start,3),
+                      returncode=proc.returncode if proc else None,all_source_cache_bytes_unchanged=unchanged,
+                      source_diff_count=len(changes['source']),cache_diff_count=len(changes['cache']))
+        if not unchanged: status['status']='STOPPED_UNEXPECTED_GAME_BYTE_MUTATION'
+        write(R/'RECEIPT.json',status)
+    print(json.dumps(status,indent=2))
+    if error: raise error
+    need(unchanged,'Game source/cache mutation; preserve evidence, no clean-capture claim')
+
+if __name__=='__main__': main()
