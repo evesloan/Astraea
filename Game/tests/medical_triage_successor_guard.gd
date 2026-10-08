@@ -1846,7 +1846,7 @@ static func _sports_sign_validate_unaffected(wrapper: Node3D) -> void:
 # SPORTS_SIGN_EXACT_SECTION_END
 # STAR_FITTED_EXACT_SECTION_BEGIN
 const STAR_FITTED_PROOF := "res://data/architecture/packages/star_atlas_fitted/RUNTIME_PROOF.json"
-const STAR_FITTED_PROOF_SHA := "e7d94968d562d3cdb32b168eaa31e422d5552ddf2acf1bbf22a5547f7cc8f99e"
+const STAR_FITTED_PROOF_SHA := "31d5677bee1282c257da564860a3169c50b33d43d4a6834bd82fe8f254930bf0"
 static var star_fitted_checked := false
 static var star_fitted_proof: Dictionary = {}
 static var star_fitted_predecessor_text: Dictionary = {}
