@@ -1,0 +1,56 @@
+from pathlib import Path
+import bpy,bmesh,json,hashlib
+from mathutils import Vector
+R=Path(__file__).resolve().parents[1];C=Path('/workspace/shared/Astraea_recovery_20261007_AXWr5x/BlenderCatalogue');A='AST-HUL-002'
+assert all(a['catalogue_id']!=A or a['family']=='upper_hull_theater_shell' for a in json.load(open(C/'catalogue_manifest.json'))['assets'])
+D=json.load(open(R/'SOURCE_AUTHORITY.json'))
+for p,h in D['pins'].items():assert hashlib.sha256(Path(p).read_bytes()).hexdigest()==h
+bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
+materials={}
+for role,f in [('skin','ivory_enamel.png'),('frame','staff/staff_zinc.png')]:
+ m=bpy.data.materials.new('upper_hull_'+role);m.use_nodes=True;nodes=m.node_tree.nodes;t=nodes.new('ShaderNodeTexImage');t.image=bpy.data.images.load(str(C/'materials'/f));t.interpolation='Closest';b=nodes.get('Principled BSDF');b.inputs['Roughness'].default_value=.82;m.node_tree.links.new(t.outputs['Color'],b.inputs['Base Color']);materials[role]=m
+objects=[]
+def box(name,lo,hi,role):
+ # world XYZ maps to Blender X,-Z,Y; no scaling at export.
+ x0,y0,z0=lo;x1,y1,z1=hi
+ w=[(x0,y0,z0),(x1,y0,z0),(x1,y1,z0),(x0,y1,z0),(x0,y0,z1),(x1,y0,z1),(x1,y1,z1),(x0,y1,z1)]
+ v=[(x,-z,y)for x,y,z in w];f=[(0,3,2,1),(4,5,6,7),(0,1,5,4),(3,7,6,2),(0,4,7,3),(1,2,6,5)]
+ me=bpy.data.meshes.new(name);me.from_pydata(v,[],f);me.update();bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));assert all(e.is_manifold for e in bm.edges);assert bm.calc_volume()>0;bm.to_mesh(me);bm.free();o=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(o);me.materials.append(materials[role]);uv=me.uv_layers.new(name='MetreScaled')
+ for face in me.polygons:
+  n=face.normal;u=Vector((0,1,0))if abs(n.x)>.9 else Vector((1,0,0));vv=n.cross(u)
+  for k in face.loop_indices:
+   q=me.vertices[me.loops[k].vertex_index].co;uv.data[k].uv=(q.dot(u),q.dot(vv))
+ o['world_bounds']=[*lo,*hi];o['source_role']=role;objects.append(o)
+# Full west shoulder surface, including both longitudinal transitions and top return.
+# Retain the previous internal frame in its proved band; no new room/floor source.
+ys=[61,69.5,87.5,92]
+zs=[-275,-265,-115,-105]
+xs=[[-120,-120,-120,-120],[-118.2,-118.5,-118.5,-118.2],[-111.4,-118.5,-118.5,-111.4],[-109.6,-109.6,-109.6,-109.6]]
+verts=[(xs[j][i],-z,ys[j])for j in range(4)for i,z in enumerate(zs)]
+faces=[]
+for j in range(3):
+ for i in range(3):
+  a=j*4+i;b=a+1;c=a+5;d=a+4
+  for f in [(a,b,c),(a,c,d)]:
+   n=(Vector(verts[f[1]])-Vector(verts[f[0]])).cross(Vector(verts[f[2]])-Vector(verts[f[0]]))
+   faces.append(f if n.x<0 else tuple(reversed(f)))
+me=bpy.data.meshes.new('HUL2_FullShoulderSkin');me.from_pydata(verts,[],faces);me.update();o=bpy.data.objects.new('HUL2_FullShoulderSkin',me);bpy.context.collection.objects.link(o);me.materials.append(materials['skin'])
+mod=o.modifiers.new('NormalShellThickness','SOLIDIFY');mod.thickness=.18;mod.offset=-1;mod.use_even_offset=True;mod.use_quality_normals=True;mod.solidify_mode='NON_MANIFOLD';mod.nonmanifold_thickness_mode='CONSTRAINTS';mod.nonmanifold_boundary_mode='FLAT'
+bpy.context.view_layer.objects.active=o;o.select_set(True);bpy.ops.object.modifier_apply(modifier=mod.name)
+me=o.data;uv=me.uv_layers.new(name='MetreScaled')
+for face in me.polygons:
+ for k in face.loop_indices:
+  q=me.vertices[me.loops[k].vertex_index].co;uv.data[k].uv=(q.y,q.z)
+objects.append(o)
+for i in range(19):
+ z=-250+i*5;a=max(-250,z-.09);b=min(-160,z+.09)
+ box('HUL2_InteriorRib_%02d'%i,[-118.32,74.5,a],[-118.10,87.5,b],'frame')
+for i,y in enumerate([74.5,81.0,87.5]):
+ lo=max(74.5,y-.08);hi=min(87.5,y+.08)
+ # Horizontal members segmented between ribs, touching but never overlapping.
+ for j in range(18):box('HUL2_CrossRail_%d_%02d'%(i,j),[-118.32,lo,-250+j*5+.09],[-118.10,hi,-245+j*5-.09],'frame')
+for name,pos in [('fore_seam',(-118.5,250,81)),('aft_seam',(-118.5,160,81)),('inspection_inner_limit',(-117.7,205,81))]:
+ o=bpy.data.objects.new('DATUM_'+name,None);bpy.context.collection.objects.link(o);o.location=pos
+bpy.context.scene.unit_settings.system='METRIC';bpy.context.scene.unit_settings.scale_length=1;bpy.ops.file.pack_all()
+source=R/'source'/(A+'.blend');out=R/'exports'/(A+'.glb');bpy.ops.wm.save_as_mainfile(filepath=str(source));bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True)
+r={'catalogue_id':A,'meshes':len(objects),'triangles':sum(len(p.vertices)-2 for o in objects for p in o.data.polygons),'native_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'world_bounds_note':'Decode actual exported geometry; solidified boundary rims require explicit fit review','inspection_band_unoccupied_x':[-118.1,-117.7],'scope':'170m theater-west shoulder source with fore/aft transitions and sloped top return; retained internal framing in original90m band. Source experiment pending actual normal-thickness and occupied-volume checks; not installed.','installed':False};(R/'SOURCE_BUILD.json').write_text(json.dumps(r,indent=2)+'\n');print(r)
