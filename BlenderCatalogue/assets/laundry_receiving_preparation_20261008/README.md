@@ -1,0 +1,3 @@
+# Laundry receiving preparation
+
+Uninstalled isolated candidate. Original WP08 source is preserved privately in Library and locally, pinned by NATIVE_INTAKE.json and GLB_INTAKE.json. This bundle retains names-only binary conversion, exact compiler predecessor proofs, source-derived floor finish and bounded mounted-light adaptation. No source geometry changed. New floor candidates preserve all 284 previous compiled owners; current-world slab contact census and negative mutation controls passed. Godot source proof passed, but installed runtime geometry, ordinary traversal, loaded cart, operation and visual acceptance remain open. Care cupboards are visibly empty in the frozen source and bay-end detail remains deferred; do not claim stocked care or finished art.
