@@ -1953,7 +1953,7 @@ static func _star_fitted_validate_runtime(ship: Node) -> void:
 # STAR_FITTED_EXACT_SECTION_END
 # UPPER_HULL_EXACT_SECTION_BEGIN
 const UPPER_HULL_PROOF="res://data/architecture/packages/upper_hull_skin/RUNTIME_PROOF.json"
-const UPPER_HULL_PROOF_SHA="01a7d82c963fa035ef99e704af96ae28d4c1221aab1cdcb131a9566776b63a64"
+const UPPER_HULL_PROOF_SHA="382c8325138ee5f73e5866dfec0bacec85167edf898b7251ac5c00885d6b3918"
 static var upper_hull_checked:=false
 static var upper_hull_old:Dictionary={}
 static func _upper_hull_ensure()->void:
