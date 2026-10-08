@@ -22,6 +22,7 @@ from team_lounge_incremental_preservation import preserve_team_lounge_successor
 from movement_studio_incremental_preservation import preserve_movement_studio_successor
 from moss_sanctuary_incremental_preservation import preserve_moss_sanctuary_successor
 from sports_care_incremental_preservation import preserve_sports_care_successor
+from night_table_incremental_preservation import preserve_night_table_successor, canonicalize_night_table_predecessor_chunks
 levels={item['id']:elevations[item['deck']]+item.get('offset_y',0) for item in layout['regions']}
 def coplanar(a,b):
     return abs(levels[a['id']]-levels[b['id']]) < 1e-6
@@ -80,8 +81,9 @@ for i,a in enumerate(layout['regions']):
             ay,by=levels[a['id']],levels[b['id']]
             slab_overlap=min(ay,by)-max(ay-a.get('thickness',.24),by-b.get('thickness',.24))
             assert slab_overlap<1e-6,('intersecting structural slabs',a['id'],b['id'])
+outputs=canonicalize_night_table_predecessor_chunks(root,layout,elevations,owned,outputs)
 outputs,preservation=preserve_prior_records(root,layout,elevations,owned,outputs)
-outputs,medical_preservation,triage_preservation,botanical_preservation,team_lounge_preservation,movement_preservation,moss_preservation,sports_care_preservation=preserve_sports_care_successor(root,layout,elevations,owned,outputs,preserve_moss_sanctuary_successor,preserve_movement_studio_successor,preserve_team_lounge_successor,preserve_botanical_court_successor,preserve_medical_triage_successor,preserve_medical_predecessor)
+outputs,medical_preservation,triage_preservation,botanical_preservation,team_lounge_preservation,movement_preservation,moss_preservation,sports_care_preservation,night_table_preservation=preserve_night_table_successor(root,layout,elevations,owned,outputs,preserve_sports_care_successor,preserve_moss_sanctuary_successor,preserve_movement_studio_successor,preserve_team_lounge_successor,preserve_botanical_court_successor,preserve_medical_triage_successor,preserve_medical_predecessor)
 checks={'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'shapely':shapely.__version__,'geos':shapely.geos_version_string,'fully_superseded_regions':superseded,'regions':len(outputs),'triangles':sum(len(x['triangles']) for x in outputs),'polygon_validity':True,'triangle_area_conservation':True,'no_triangles_cross_applicable_voids':True,'central_terrace_exemptions_explicit':True,'theater_generic_void_preserved':True,'theater_authored_surface_allowlist_verified':sorted(theater_ids),'no_coplanar_region_overlap':True,'no_intersecting_slab_volumes':True,'ownership_uses_absolute_elevation':True,'scope':'Structural geometry only; not finished rooms, route acceptance, or capacity acceptance'}
 checks['theater_source_part_vertical_guard']=source_volumes.receipt()
 checks['theater_additive_preservation']=preservation
@@ -92,6 +94,7 @@ checks['team_lounge_additive_preservation']=team_lounge_preservation
 checks['movement_studio_additive_preservation']=movement_preservation
 checks['moss_sanctuary_additive_preservation']=moss_preservation
 checks['sports_care_additive_preservation']=sports_care_preservation
+checks['night_table_additive_preservation']=night_table_preservation
 (root/'data/generated/structural_meshes.json').write_text(json.dumps({'source_checks':checks,'regions':outputs},separators=(',',':'))+'\n')
 (root/'docs/LAYOUT_COMPILE_CHECKS.json').write_text(json.dumps(checks,indent=2)+'\n')
 print(json.dumps(checks))
