@@ -34,5 +34,6 @@ static func build(ship: Node3D) -> Node3D:
 	load("res://scripts/tidal_specialty_batch.gd").build(ship)
 	load("res://scripts/tidal_aquatic_singles.gd").build(ship)
 	load("res://scripts/tidal_aquatic_double.gd").build(ship)
-	house.set_meta("installed_guest_units",101)
+	load("res://scripts/tidal_low_nest_singles.gd").build(ship)
+	house.set_meta("installed_guest_units",121)
 	return house
