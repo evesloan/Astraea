@@ -1,0 +1,20 @@
+"""Bounded manual checkpoint publisher. No watcher; never touches host Git or shared refs."""
+from pathlib import Path
+import subprocess,shutil,json,datetime,sys,hashlib
+P=Path(__file__).resolve().parents[1];G=P/'retention/git';BRANCH='handoff/aquatic-district-20261009';URL='https://github.com/evesloan/Astraea.git'
+def git(*a):
+ p=subprocess.run(['git','-C',str(G),*a],capture_output=True,text=True)
+ if p.returncode:raise RuntimeError('Git command failed: '+a[0]+'; '+p.stderr[:400])
+ return p.stdout.strip()
+phase=sys.argv[1] if len(sys.argv)>1 else 'construction';head=git('rev-parse','HEAD');remote=git('ls-remote',URL,'refs/heads/'+BRANCH).split()[0]
+assert head==remote,'Handoff ref changed; no push attempted.'
+D=G/'external_packages/aquatic_district_20261009'
+for f in P.rglob('*'):
+ rel=f.relative_to(P)
+ if not f.is_file() or 'retention' in rel.parts or '.godot' in rel.parts or '__pycache__' in rel.parts or f.suffix in ['.blend1','.pyc']:continue
+ assert f.stat().st_size<95*1024*1024,rel
+ t=D/rel;t.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(f,t)
+git('add','external_packages');git('-c','user.name=Codex','-c','user.email=codex@users.noreply.github.com','commit','-m','Aquatic bounded delivery checkpoint: '+phase)
+sha=git('rev-parse','HEAD');git('push',URL,'HEAD:refs/heads/'+BRANCH);confirmed=git('ls-remote',URL,'refs/heads/'+BRANCH).split()[0];assert confirmed==sha
+r={'phase':phase,'branch':BRANCH,'commit':sha,'remote_confirmed':confirmed,'parent_commit':head,'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'Only isolated aquatic directory; original working tree and shared branches unchanged','private_repo_verification':'GitHub connector visibility private; same authorized URL'}
+(P/'retention'/('receipt_'+phase+'.json')).write_text(json.dumps(r,indent=2));print(json.dumps(r))
