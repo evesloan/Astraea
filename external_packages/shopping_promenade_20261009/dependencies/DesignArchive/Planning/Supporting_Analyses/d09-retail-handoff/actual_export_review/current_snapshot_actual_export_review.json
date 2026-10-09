@@ -1,0 +1,2077 @@
+{
+  "schema": "astraea.d09_actual_export_bounded_review.v1",
+  "generated_utc": "2026-10-03T04:40:51.114711+00:00",
+  "status": "PASS for exact current snapshot; final production freeze not confirmed",
+  "scope": "Independent binary decode of four unique closed native GLBs, placed as six instances using plan.json. Historical R070 outer containment, two new clear bands, four new approach pads, source/ship orientation and preflight-bound comparison only.",
+  "input_hashes": {
+    "qa/batch18/assembly/plan.json": "b6d5a6071ce6eafd366e16783a1acf0d6101f5b983816e93eec439922aad8793",
+    "qa/batch18/assembly/source_preflight_r06/preflight.json": "a3a573095f2966b310f0f58ceef2cd127a045eb91be659f3ccb97865fba7eae8",
+    "/workspace/scratch/375c2e438292/district-layout-audit/d09-retail-handoff/D09_retail_programme_reference_handoff.json": "3ff2d0c60c7e2b6748aadbf947a369ef8978adc79c9dc4bdd03b5e4d82825dee",
+    "assets/retail_display/exports/AST-RTL-001.glb": "a9d6ab0144e5748c814fcecc1846d06b562236ce5ab5c29441fc8b6c6ef1de8d",
+    "assets/retail_display/exports/AST-RTL-002.glb": "03b435b05885bb27d56672311c98c6bdc8bc85b43e8b547b1c5bf9454387bd25",
+    "assets/retail_work/exports/AST-RTL-003.glb": "9915377c00afe2fd180f53e736d5c658a0591c6d889a1b722345e43fe61606d8",
+    "assets/retail_work/exports/AST-RTL-004.glb": "4d68339331c0c55ed42e787b012af005c65afaae4df93f7dafa14bdf1aee807a"
+  },
+  "inputs_unchanged_during_review": true,
+  "final_freeze_confirmed": false,
+  "historical_handoff_sha256_unchanged": "3ff2d0c60c7e2b6748aadbf947a369ef8978adc79c9dc4bdd03b5e4d82825dee",
+  "coordinate_method": {
+    "native_GLTF_to_source_formula": "source=(nativeX,-nativeZ,nativeY)",
+    "native_GLTF_to_source_matrix": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "source_to_ship_formula": "ship=(78-sourceY,52.5+sourceZ,236-sourceX)",
+    "source_to_ship_rotation": [
+      [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "source_to_ship_translation": [
+      78.0,
+      52.5,
+      236.0
+    ],
+    "node_processing": "Decode active scene hierarchy, each matrix or quaternion TRS, then actual POSITION and index accessors. Transform active referenced triangles in native GLB space, then native-to-source basis, then per-instance source Z rotation/translation, then proper source-to-ship basis. No source regeneration or render.",
+    "normal_transport": "All node and basis determinants are positive. Direction/normal transport uses the corresponding proper basis; winding is never reversed or sourceX silently mirrored. This is orientation verification, not a new shading-normal craft audit.",
+    "wall_front": "Local front -sourceY becomes +sourceX after +90 degrees, then -shipZ. Local left -X becomes -placedSourceY, toward the symbolic entrance datum.",
+    "bench_faces": "Public local -sourceY becomes +shipX; staff local +sourceY becomes -shipX.",
+    "door_side": "Placed source -Y faces +shipX, matching R070 historical +X entry edge."
+  },
+  "decoder": {
+    "uses_actual_binary_positions_and_indices": true,
+    "uses_accessor_min_max_as_geometry": false,
+    "supported": [
+      "GLB2 binary buffers",
+      "strided numeric accessors",
+      "active scene matrix/quaternion TRS nodes",
+      "indexed triangle primitives"
+    ],
+    "unsupported_inputs_fail_loudly": [
+      "sparse accessors",
+      "skins",
+      "morph targets",
+      "non-triangle primitive modes",
+      "primitive extensions or compression"
+    ],
+    "required_unsupported_inputs_encountered": false
+  },
+  "decoded_unique_exports": [
+    {
+      "file": "assets/retail_display/exports/AST-RTL-001.glb",
+      "sha256": "a9d6ab0144e5748c814fcecc1846d06b562236ce5ab5c29441fc8b6c6ef1de8d",
+      "bytes": 97064,
+      "active_scene": 0,
+      "scene_nodes": 16,
+      "scene_mesh_primitive_instances": 5,
+      "accessor_vertex_total": 1068,
+      "referenced_triangle_count": 552,
+      "all_scene_node_determinants_positive": true,
+      "node_transforms": [
+        {
+          "index": 15,
+          "name": "AST-RTL-001",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 0,
+          "name": "AST-RTL-001__champagne_metal",
+          "determinant": 1.0,
+          "mesh": 0
+        },
+        {
+          "index": 1,
+          "name": "AST-RTL-001__dark_rubber",
+          "determinant": 1.0,
+          "mesh": 1
+        },
+        {
+          "index": 2,
+          "name": "AST-RTL-001__ivory_enamel",
+          "determinant": 1.0,
+          "mesh": 2
+        },
+        {
+          "index": 3,
+          "name": "AST-RTL-001__retail_terracotta_enamel",
+          "determinant": 1.0,
+          "mesh": 3
+        },
+        {
+          "index": 4,
+          "name": "AST-RTL-001__warm_walnut",
+          "determinant": 1.0,
+          "mesh": 4
+        },
+        {
+          "index": 5,
+          "name": "ENTRY_FACING_REVEAL_BACK",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 6,
+          "name": "ENTRY_SILL_PATCH_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 7,
+          "name": "FLOOR_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 8,
+          "name": "FLOOR_ORIGIN",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 9,
+          "name": "LEFT_SHELF_PATCH_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 10,
+          "name": "LEFT_WALL_MOUNT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 11,
+          "name": "MAIN_DISPLAY_LEFT_PATCH_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 12,
+          "name": "MAIN_DISPLAY_RIGHT_PATCH_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 13,
+          "name": "RIGHT_SHELF_PATCH_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 14,
+          "name": "RIGHT_WALL_MOUNT",
+          "determinant": 1.0,
+          "mesh": null
+        }
+      ],
+      "mesh_primitives": [
+        {
+          "node": 0,
+          "mesh": 0,
+          "primitive": 0,
+          "vertices": 72,
+          "triangles": 36,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -1.5449999570846558,
+              0.8669999837875366,
+              -0.44999998807907104
+            ],
+            "max": [
+              1.5750000476837158,
+              2.0199999809265137,
+              0.44999998807907104
+            ]
+          }
+        },
+        {
+          "node": 1,
+          "mesh": 1,
+          "primitive": 0,
+          "vertices": 132,
+          "triangles": 76,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -1.649999976158142,
+              0.0,
+              -0.4000000059604645
+            ],
+            "max": [
+              1.649999976158142,
+              2.494999885559082,
+              0.3499999940395355
+            ]
+          }
+        },
+        {
+          "node": 2,
+          "mesh": 2,
+          "primitive": 0,
+          "vertices": 408,
+          "triangles": 208,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -1.7000000476837158,
+              0.03999999910593033,
+              -0.4300000071525574
+            ],
+            "max": [
+              1.7000000476837158,
+              2.9000000953674316,
+              0.44999998807907104
+            ]
+          }
+        },
+        {
+          "node": 3,
+          "mesh": 3,
+          "primitive": 0,
+          "vertices": 288,
+          "triangles": 144,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -1.7000000476837158,
+              0.18000000715255737,
+              -0.4000000059604645
+            ],
+            "max": [
+              1.3799999952316284,
+              2.569999933242798,
+              0.3100000023841858
+            ]
+          }
+        },
+        {
+          "node": 4,
+          "mesh": 4,
+          "primitive": 0,
+          "vertices": 168,
+          "triangles": 88,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -1.7000000476837158,
+              0.18000000715255737,
+              -0.3100000023841858
+            ],
+            "max": [
+              1.309999942779541,
+              2.494999885559082,
+              0.44699999690055847
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "assets/retail_display/exports/AST-RTL-002.glb",
+      "sha256": "03b435b05885bb27d56672311c98c6bdc8bc85b43e8b547b1c5bf9454387bd25",
+      "bytes": 73336,
+      "active_scene": 0,
+      "scene_nodes": 12,
+      "scene_mesh_primitive_instances": 5,
+      "accessor_vertex_total": 456,
+      "referenced_triangle_count": 256,
+      "all_scene_node_determinants_positive": true,
+      "node_transforms": [
+        {
+          "index": 11,
+          "name": "AST-RTL-002",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 0,
+          "name": "AST-RTL-002__champagne_metal",
+          "determinant": 1.0,
+          "mesh": 0
+        },
+        {
+          "index": 1,
+          "name": "AST-RTL-002__dark_rubber",
+          "determinant": 1.0,
+          "mesh": 1
+        },
+        {
+          "index": 2,
+          "name": "AST-RTL-002__ivory_enamel",
+          "determinant": 1.0,
+          "mesh": 2
+        },
+        {
+          "index": 3,
+          "name": "AST-RTL-002__retail_terracotta_enamel",
+          "determinant": 1.0,
+          "mesh": 3
+        },
+        {
+          "index": 4,
+          "name": "AST-RTL-002__warm_walnut",
+          "determinant": 1.0,
+          "mesh": 4
+        },
+        {
+          "index": 5,
+          "name": "FLOOR_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 6,
+          "name": "FLOOR_ORIGIN",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 7,
+          "name": "FRONT_RETRIEVAL_BACK",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 8,
+          "name": "FRONT_RETRIEVAL_FLOOR_PATCH_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 9,
+          "name": "HIGH_DISPLAY_PATCH_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 10,
+          "name": "LOW_FRONT_DISPLAY_PATCH_CONTACT",
+          "determinant": 1.0,
+          "mesh": null
+        }
+      ],
+      "mesh_primitives": [
+        {
+          "node": 0,
+          "mesh": 0,
+          "primitive": 0,
+          "vertices": 24,
+          "triangles": 12,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.3799999952316284,
+              0.8149999976158142,
+              -0.03500000014901161
+            ],
+            "max": [
+              0.6600000262260437,
+              0.8320000171661377,
+              -0.029999999329447746
+            ]
+          }
+        },
+        {
+          "node": 1,
+          "mesh": 1,
+          "primitive": 0,
+          "vertices": 72,
+          "triangles": 40,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.8100000023841858,
+              0.0,
+              -0.5600000023841858
+            ],
+            "max": [
+              0.8100000023841858,
+              0.6299999952316284,
+              0.5600000023841858
+            ]
+          }
+        },
+        {
+          "node": 2,
+          "mesh": 2,
+          "primitive": 0,
+          "vertices": 192,
+          "triangles": 108,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.8600000143051147,
+              0.03500000014901161,
+              -0.6399999856948853
+            ],
+            "max": [
+              0.8600000143051147,
+              0.7300000190734863,
+              0.6100000143051147
+            ]
+          }
+        },
+        {
+          "node": 3,
+          "mesh": 3,
+          "primitive": 0,
+          "vertices": 48,
+          "triangles": 28,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.5299999713897705,
+              0.7300000190734863,
+              -0.6000000238418579
+            ],
+            "max": [
+              0.8100000023841858,
+              0.9900000095367432,
+              -0.03500000014901161
+            ]
+          }
+        },
+        {
+          "node": 4,
+          "mesh": 4,
+          "primitive": 0,
+          "vertices": 120,
+          "triangles": 68,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.949999988079071,
+              0.18000000715255737,
+              -0.699999988079071
+            ],
+            "max": [
+              0.949999988079071,
+              1.0499999523162842,
+              0.699999988079071
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "assets/retail_work/exports/AST-RTL-003.glb",
+      "sha256": "9915377c00afe2fd180f53e736d5c658a0591c6d889a1b722345e43fe61606d8",
+      "bytes": 107992,
+      "active_scene": 0,
+      "scene_nodes": 17,
+      "scene_mesh_primitive_instances": 5,
+      "accessor_vertex_total": 1440,
+      "referenced_triangle_count": 696,
+      "all_scene_node_determinants_positive": true,
+      "node_transforms": [
+        {
+          "index": 16,
+          "name": "AST-RTL-003",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 0,
+          "name": "AST-RTL-003__ownership_carrier",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 14,
+          "name": "AST-RTL-003__ownership_fixed",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 1,
+          "name": "AST-RTL-003__fixed__champagne_metal",
+          "determinant": 1.0,
+          "mesh": 0
+        },
+        {
+          "index": 2,
+          "name": "AST-RTL-003__fixed__dark_rubber",
+          "determinant": 1.0,
+          "mesh": 1
+        },
+        {
+          "index": 3,
+          "name": "AST-RTL-003__fixed__ivory_enamel",
+          "determinant": 1.0,
+          "mesh": 2
+        },
+        {
+          "index": 4,
+          "name": "AST-RTL-003__fixed__retail_terracotta_enamel",
+          "determinant": 1.0,
+          "mesh": 3
+        },
+        {
+          "index": 5,
+          "name": "AST-RTL-003__fixed__warm_walnut",
+          "determinant": 1.0,
+          "mesh": 4
+        },
+        {
+          "index": 6,
+          "name": "FLOOR_ORIGIN",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 7,
+          "name": "INNER_FLOOR",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 8,
+          "name": "OUTER_FLOOR",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 9,
+          "name": "PARCEL_REST",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 10,
+          "name": "SERVICE_IDENTITY_FACE",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 11,
+          "name": "STAFF_APPROACH",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 12,
+          "name": "WING_FLOOR",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 13,
+          "name": "WRAPPING_SURFACE",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 15,
+          "name": "AST-RTL-003__ownership_lid",
+          "determinant": 1.0,
+          "mesh": null
+        }
+      ],
+      "mesh_primitives": [
+        {
+          "node": 1,
+          "mesh": 0,
+          "primitive": 0,
+          "vertices": 168,
+          "triangles": 84,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.6494999527931213,
+              0.7005000114440918,
+              0.3779999911785126
+            ],
+            "max": [
+              -0.4555000066757202,
+              0.8544999957084656,
+              0.38100001215934753
+            ]
+          }
+        },
+        {
+          "node": 2,
+          "mesh": 1,
+          "primitive": 0,
+          "vertices": 288,
+          "triangles": 144,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.8899999856948853,
+              0.0,
+              -0.39500001072883606
+            ],
+            "max": [
+              0.8849999904632568,
+              0.9649999737739563,
+              0.4050000011920929
+            ]
+          }
+        },
+        {
+          "node": 3,
+          "mesh": 2,
+          "primitive": 0,
+          "vertices": 432,
+          "triangles": 200,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.875,
+              0.04500000178813934,
+              -0.3700000047683716
+            ],
+            "max": [
+              0.8600000143051147,
+              1.149999976158142,
+              0.3700000047683716
+            ]
+          }
+        },
+        {
+          "node": 4,
+          "mesh": 3,
+          "primitive": 0,
+          "vertices": 96,
+          "triangles": 48,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.7900000214576721,
+              0.054999999701976776,
+              -0.37400001287460327
+            ],
+            "max": [
+              0.7749999761581421,
+              1.024999976158142,
+              0.375
+            ]
+          }
+        },
+        {
+          "node": 5,
+          "mesh": 4,
+          "primitive": 0,
+          "vertices": 456,
+          "triangles": 220,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.8999999761581421,
+              0.14800000190734863,
+              -0.4300000071525574
+            ],
+            "max": [
+              0.8999999761581421,
+              1.0750000476837158,
+              0.44999998807907104
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "assets/retail_work/exports/AST-RTL-004.glb",
+      "sha256": "4d68339331c0c55ed42e787b012af005c65afaae4df93f7dafa14bdf1aee807a",
+      "bytes": 138556,
+      "active_scene": 0,
+      "scene_nodes": 23,
+      "scene_mesh_primitive_instances": 10,
+      "accessor_vertex_total": 2184,
+      "referenced_triangle_count": 1056,
+      "all_scene_node_determinants_positive": true,
+      "node_transforms": [
+        {
+          "index": 22,
+          "name": "AST-RTL-004",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 6,
+          "name": "AST-RTL-004__ownership_carrier",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 0,
+          "name": "AST-RTL-004__carrier__champagne_metal",
+          "determinant": 1.0,
+          "mesh": 0
+        },
+        {
+          "index": 1,
+          "name": "AST-RTL-004__carrier__warm_walnut",
+          "determinant": 1.0,
+          "mesh": 1
+        },
+        {
+          "index": 2,
+          "name": "CARRIER_FRONT_GRIP",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 3,
+          "name": "CARRIER_LEFT_LOAD",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 4,
+          "name": "CARRIER_REAR_GRIP",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 5,
+          "name": "CARRIER_RIGHT_LOAD",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 15,
+          "name": "AST-RTL-004__ownership_fixed",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 7,
+          "name": "AST-RTL-004__fixed__champagne_metal",
+          "determinant": 1.0,
+          "mesh": 2
+        },
+        {
+          "index": 8,
+          "name": "AST-RTL-004__fixed__dark_rubber",
+          "determinant": 1.0,
+          "mesh": 3
+        },
+        {
+          "index": 9,
+          "name": "AST-RTL-004__fixed__ivory_enamel",
+          "determinant": 1.0,
+          "mesh": 4
+        },
+        {
+          "index": 10,
+          "name": "AST-RTL-004__fixed__retail_terracotta_enamel",
+          "determinant": 1.0,
+          "mesh": 5
+        },
+        {
+          "index": 11,
+          "name": "CASE_FLOOR",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 12,
+          "name": "CASE_LOAD_FLOOR",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 13,
+          "name": "CLOSED_LID_SEAT",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 14,
+          "name": "FLOOR_ORIGIN",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 21,
+          "name": "AST-RTL-004__ownership_lid",
+          "determinant": 1.0,
+          "mesh": null
+        },
+        {
+          "index": 16,
+          "name": "AST-RTL-004__lid__champagne_metal",
+          "determinant": 1.0,
+          "mesh": 6
+        },
+        {
+          "index": 17,
+          "name": "AST-RTL-004__lid__dark_rubber",
+          "determinant": 1.0,
+          "mesh": 7
+        },
+        {
+          "index": 18,
+          "name": "AST-RTL-004__lid__ivory_enamel",
+          "determinant": 1.0,
+          "mesh": 8
+        },
+        {
+          "index": 19,
+          "name": "AST-RTL-004__lid__warm_walnut",
+          "determinant": 1.0,
+          "mesh": 9
+        },
+        {
+          "index": 20,
+          "name": "LID_LIFT_GRIP",
+          "determinant": 1.0,
+          "mesh": null
+        }
+      ],
+      "mesh_primitives": [
+        {
+          "node": 0,
+          "mesh": 0,
+          "primitive": 0,
+          "vertices": 288,
+          "triangles": 136,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.07000000029802322,
+              0.19200000166893005,
+              -0.12700000405311584
+            ],
+            "max": [
+              0.07000000029802322,
+              0.23399999737739563,
+              0.12700000405311584
+            ]
+          }
+        },
+        {
+          "node": 1,
+          "mesh": 1,
+          "primitive": 0,
+          "vertices": 264,
+          "triangles": 136,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.1899999976158142,
+              0.11900000274181366,
+              -0.12399999797344208
+            ],
+            "max": [
+              0.1899999976158142,
+              0.19200000166893005,
+              0.12399999797344208
+            ]
+          }
+        },
+        {
+          "node": 7,
+          "mesh": 2,
+          "primitive": 0,
+          "vertices": 48,
+          "triangles": 24,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.21400000154972076,
+              0.10700000077486038,
+              -0.11800000071525574
+            ],
+            "max": [
+              0.21400000154972076,
+              0.11900000274181366,
+              0.11800000071525574
+            ]
+          }
+        },
+        {
+          "node": 8,
+          "mesh": 3,
+          "primitive": 0,
+          "vertices": 48,
+          "triangles": 28,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.20499999821186066,
+              0.0,
+              -0.14000000059604645
+            ],
+            "max": [
+              0.20499999821186066,
+              0.012000000104308128,
+              0.14000000059604645
+            ]
+          }
+        },
+        {
+          "node": 9,
+          "mesh": 4,
+          "primitive": 0,
+          "vertices": 768,
+          "triangles": 352,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.15700000524520874,
+              0.04500000178813934,
+              -0.17100000381469727
+            ],
+            "max": [
+              0.15700000524520874,
+              0.21899999678134918,
+              0.17100000381469727
+            ]
+          }
+        },
+        {
+          "node": 10,
+          "mesh": 5,
+          "primitive": 0,
+          "vertices": 240,
+          "triangles": 124,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.23000000417232513,
+              0.012000000104308128,
+              -0.16500000655651093
+            ],
+            "max": [
+              0.23000000417232513,
+              0.25,
+              0.16500000655651093
+            ]
+          }
+        },
+        {
+          "node": 16,
+          "mesh": 6,
+          "primitive": 0,
+          "vertices": 48,
+          "triangles": 24,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.08299999684095383,
+              0.2720000147819519,
+              -0.017999999225139618
+            ],
+            "max": [
+              0.08299999684095383,
+              0.2980000078678131,
+              0.017999999225139618
+            ]
+          }
+        },
+        {
+          "node": 17,
+          "mesh": 7,
+          "primitive": 0,
+          "vertices": 192,
+          "triangles": 96,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.20800000429153442,
+              0.23499999940395355,
+              -0.14300000667572021
+            ],
+            "max": [
+              0.20800000429153442,
+              0.25,
+              0.14300000667572021
+            ]
+          }
+        },
+        {
+          "node": 18,
+          "mesh": 8,
+          "primitive": 0,
+          "vertices": 192,
+          "triangles": 92,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.23399999737739563,
+              0.25,
+              -0.16899999976158142
+            ],
+            "max": [
+              0.23399999737739563,
+              0.2720000147819519,
+              0.16899999976158142
+            ]
+          }
+        },
+        {
+          "node": 19,
+          "mesh": 9,
+          "primitive": 0,
+          "vertices": 96,
+          "triangles": 44,
+          "native_bounds_from_referenced_vertices": {
+            "min": [
+              -0.08299999684095383,
+              0.2980000078678131,
+              -0.017999999225139618
+            ],
+            "max": [
+              0.08299999684095383,
+              0.3160000145435333,
+              0.017999999225139618
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "instances": [
+    {
+      "key": "wall_bay",
+      "asset_id": "AST-RTL-001",
+      "export_sha256": "a9d6ab0144e5748c814fcecc1846d06b562236ce5ab5c29441fc8b6c6ef1de8d",
+      "source_origin_m": [
+        -4.85,
+        3.5,
+        0.0
+      ],
+      "source_z_rotation_deg": 90,
+      "native_scene_bounds_m": {
+        "min": [
+          -1.7000000476837158,
+          0.0,
+          -0.44999998807907104
+        ],
+        "max": [
+          1.7000000476837158,
+          2.9000000953674316,
+          0.44999998807907104
+        ]
+      },
+      "independently_decoded_source_bounds_m": {
+        "min": [
+          -5.299999988079071,
+          1.7999999523162842,
+          0.0
+        ],
+        "max": [
+          -4.400000011920929,
+          5.200000047683716,
+          2.9000000953674316
+        ]
+      },
+      "independently_decoded_ship_bounds_m": {
+        "min": [
+          72.79999995231628,
+          52.5,
+          240.40000001192092
+        ],
+        "max": [
+          76.20000004768372,
+          55.40000009536743,
+          241.29999998807907
+        ]
+      },
+      "referenced_triangles": 552,
+      "source_preflight_bound_max_abs_difference_m": 3.9339065516230676e-07,
+      "ship_preflight_bound_max_abs_difference_m": 6.115436548270736e-06,
+      "source_preflight_source_transform_max_abs_difference": 7.549790120281098e-08,
+      "contained_in_historical_outer_plan": true,
+      "historical_outer_plan_margins_m": {
+        "source_X_negative": 0.7000000119209293,
+        "source_X_positive": 10.400000011920929,
+        "source_Y_front": 1.7999999523162842,
+        "source_Y_rear": 6.799999952316284
+      },
+      "front_vector_source": [
+        1.0,
+        -6.123233995736766e-17,
+        0.0
+      ],
+      "front_vector_ship": [
+        6.123233995736766e-17,
+        0.0,
+        -1.0
+      ],
+      "native_to_source_det": 1.0,
+      "placed_source_to_ship_det": 1.0,
+      "nominal_bounds_delta_m": {
+        "min": [
+          1.1920929132713809e-08,
+          -4.768371586472142e-08,
+          0.0
+        ],
+        "max": [
+          -1.192092824453539e-08,
+          4.7683715642676816e-08,
+          9.536743172944284e-08
+        ]
+      },
+      "height_vs_deck_allowance_report_only": {
+        "source_top_m": 2.9000000953674316,
+        "below_recorded_8_25m_allowance_by_m": 5.349999904632568,
+        "actual_local_ceiling_fit": false
+      }
+    },
+    {
+      "key": "island",
+      "asset_id": "AST-RTL-002",
+      "export_sha256": "03b435b05885bb27d56672311c98c6bdc8bc85b43e8b547b1c5bf9454387bd25",
+      "source_origin_m": [
+        3.2,
+        4.2,
+        0.0
+      ],
+      "source_z_rotation_deg": 0,
+      "native_scene_bounds_m": {
+        "min": [
+          -0.949999988079071,
+          0.0,
+          -0.699999988079071
+        ],
+        "max": [
+          0.949999988079071,
+          1.0499999523162842,
+          0.699999988079071
+        ]
+      },
+      "independently_decoded_source_bounds_m": {
+        "min": [
+          2.250000011920929,
+          3.500000011920929,
+          0.0
+        ],
+        "max": [
+          4.149999988079071,
+          4.899999988079071,
+          1.0499999523162842
+        ]
+      },
+      "independently_decoded_ship_bounds_m": {
+        "min": [
+          73.10000001192093,
+          52.5,
+          231.85000001192094
+        ],
+        "max": [
+          74.49999998807907,
+          53.549999952316284,
+          233.74999998807908
+        ]
+      },
+      "referenced_triangles": 256,
+      "source_preflight_bound_max_abs_difference_m": 3.6954879778505756e-07,
+      "ship_preflight_bound_max_abs_difference_m": 6.091594684676238e-06,
+      "source_preflight_source_transform_max_abs_difference": 0.0,
+      "contained_in_historical_outer_plan": true,
+      "historical_outer_plan_margins_m": {
+        "source_X_negative": 8.250000011920928,
+        "source_X_positive": 1.8500000119209288,
+        "source_Y_front": 3.500000011920929,
+        "source_Y_rear": 7.100000011920929
+      },
+      "front_vector_source": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "front_vector_ship": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "native_to_source_det": 1.0,
+      "placed_source_to_ship_det": 1.0,
+      "nominal_bounds_delta_m": {
+        "min": [
+          1.1920929132713809e-08,
+          1.1920929132713809e-08,
+          0.0
+        ],
+        "max": [
+          -1.1920929132713809e-08,
+          -1.1920929132713809e-08,
+          -4.768371586472142e-08
+        ]
+      },
+      "height_vs_deck_allowance_report_only": {
+        "source_top_m": 1.0499999523162842,
+        "below_recorded_8_25m_allowance_by_m": 7.200000047683716,
+        "actual_local_ceiling_fit": false
+      }
+    },
+    {
+      "key": "workbench",
+      "asset_id": "AST-RTL-003",
+      "export_sha256": "9915377c00afe2fd180f53e736d5c658a0591c6d889a1b722345e43fe61606d8",
+      "source_origin_m": [
+        3.2,
+        8.9,
+        0.0
+      ],
+      "source_z_rotation_deg": 0,
+      "native_scene_bounds_m": {
+        "min": [
+          -0.8999999761581421,
+          0.0,
+          -0.4300000071525574
+        ],
+        "max": [
+          0.8999999761581421,
+          1.149999976158142,
+          0.44999998807907104
+        ]
+      },
+      "independently_decoded_source_bounds_m": {
+        "min": [
+          2.300000023841858,
+          8.45000001192093,
+          0.0
+        ],
+        "max": [
+          4.099999976158142,
+          9.330000007152558,
+          1.149999976158142
+        ]
+      },
+      "independently_decoded_ship_bounds_m": {
+        "min": [
+          68.66999999284744,
+          52.5,
+          231.90000002384187
+        ],
+        "max": [
+          69.54999998807907,
+          53.64999997615814,
+          233.69999997615815
+        ]
+      },
+      "referenced_triangles": 696,
+      "source_preflight_bound_max_abs_difference_m": 2.026557925915995e-07,
+      "ship_preflight_bound_max_abs_difference_m": 6.12735749427884e-06,
+      "source_preflight_source_transform_max_abs_difference": 0.0,
+      "contained_in_historical_outer_plan": true,
+      "historical_outer_plan_margins_m": {
+        "source_X_negative": 8.300000023841857,
+        "source_X_positive": 1.9000000238418577,
+        "source_Y_front": 8.45000001192093,
+        "source_Y_rear": 2.6699999928474423
+      },
+      "front_vector_source": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "front_vector_ship": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "native_to_source_det": 1.0,
+      "placed_source_to_ship_det": 1.0,
+      "nominal_bounds_delta_m": {
+        "min": [
+          2.3841858265427618e-08,
+          1.1920930020892229e-08,
+          0.0
+        ],
+        "max": [
+          -2.3841857377249198e-08,
+          -0.019999992847441916,
+          -2.3841857821338408e-08
+        ]
+      },
+      "height_vs_deck_allowance_report_only": {
+        "source_top_m": 1.149999976158142,
+        "below_recorded_8_25m_allowance_by_m": 7.100000023841858,
+        "actual_local_ceiling_fit": false
+      }
+    },
+    {
+      "key": "bay_case",
+      "asset_id": "AST-RTL-004",
+      "export_sha256": "4d68339331c0c55ed42e787b012af005c65afaae4df93f7dafa14bdf1aee807a",
+      "source_origin_m": [
+        -4.79,
+        3.15,
+        0.95
+      ],
+      "source_z_rotation_deg": 90,
+      "native_scene_bounds_m": {
+        "min": [
+          -0.23399999737739563,
+          0.0,
+          -0.17100000381469727
+        ],
+        "max": [
+          0.23399999737739563,
+          0.3160000145435333,
+          0.17100000381469727
+        ]
+      },
+      "independently_decoded_source_bounds_m": {
+        "min": [
+          -4.961000003814697,
+          2.9160000026226043,
+          0.95
+        ],
+        "max": [
+          -4.618999996185303,
+          3.3839999973773955,
+          1.2660000145435333
+        ]
+      },
+      "independently_decoded_ship_bounds_m": {
+        "min": [
+          74.6160000026226,
+          53.45,
+          240.6189999961853
+        ],
+        "max": [
+          75.08399999737739,
+          53.766000014543536,
+          240.9610000038147
+        ]
+      },
+      "referenced_triangles": 1056,
+      "source_preflight_bound_max_abs_difference_m": 1.2516975411713815e-07,
+      "ship_preflight_bound_max_abs_difference_m": 3.2997131427237036e-06,
+      "source_preflight_source_transform_max_abs_difference": 7.549790120281098e-08,
+      "contained_in_historical_outer_plan": true,
+      "historical_outer_plan_margins_m": {
+        "source_X_negative": 1.0389999961853027,
+        "source_X_positive": 10.618999996185302,
+        "source_Y_front": 2.9160000026226043,
+        "source_Y_rear": 8.616000002622604
+      },
+      "front_vector_source": [
+        1.0,
+        -6.123233995736766e-17,
+        0.0
+      ],
+      "front_vector_ship": [
+        6.123233995736766e-17,
+        0.0,
+        -1.0
+      ],
+      "native_to_source_det": 1.0,
+      "placed_source_to_ship_det": 1.0,
+      "nominal_bounds_delta_m": null,
+      "height_vs_deck_allowance_report_only": {
+        "source_top_m": 1.2660000145435333,
+        "below_recorded_8_25m_allowance_by_m": 6.9839999854564665,
+        "actual_local_ceiling_fit": false
+      }
+    },
+    {
+      "key": "island_case",
+      "asset_id": "AST-RTL-004",
+      "export_sha256": "4d68339331c0c55ed42e787b012af005c65afaae4df93f7dafa14bdf1aee807a",
+      "source_origin_m": [
+        3.25,
+        3.88,
+        0.69
+      ],
+      "source_z_rotation_deg": 0,
+      "native_scene_bounds_m": {
+        "min": [
+          -0.23399999737739563,
+          0.0,
+          -0.17100000381469727
+        ],
+        "max": [
+          0.23399999737739563,
+          0.3160000145435333,
+          0.17100000381469727
+        ]
+      },
+      "independently_decoded_source_bounds_m": {
+        "min": [
+          3.0160000026226044,
+          3.7089999961853026,
+          0.69
+        ],
+        "max": [
+          3.4839999973773956,
+          4.051000003814697,
+          1.0060000145435333
+        ]
+      },
+      "independently_decoded_ship_bounds_m": {
+        "min": [
+          73.94899999618531,
+          53.19,
+          232.5160000026226
+        ],
+        "max": [
+          74.2910000038147,
+          53.50600001454353,
+          232.9839999973774
+        ]
+      },
+      "referenced_triangles": 1056,
+      "source_preflight_bound_max_abs_difference_m": 1.1444091807533141e-07,
+      "ship_preflight_bound_max_abs_difference_m": 6.467103958129883e-06,
+      "source_preflight_source_transform_max_abs_difference": 0.0,
+      "contained_in_historical_outer_plan": true,
+      "historical_outer_plan_margins_m": {
+        "source_X_negative": 9.016000002622604,
+        "source_X_positive": 2.5160000026226044,
+        "source_Y_front": 3.7089999961853026,
+        "source_Y_rear": 7.948999996185303
+      },
+      "front_vector_source": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "front_vector_ship": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "native_to_source_det": 1.0,
+      "placed_source_to_ship_det": 1.0,
+      "nominal_bounds_delta_m": null,
+      "height_vs_deck_allowance_report_only": {
+        "source_top_m": 1.0060000145435333,
+        "below_recorded_8_25m_allowance_by_m": 7.243999985456467,
+        "actual_local_ceiling_fit": false
+      }
+    },
+    {
+      "key": "bench_case",
+      "asset_id": "AST-RTL-004",
+      "export_sha256": "4d68339331c0c55ed42e787b012af005c65afaae4df93f7dafa14bdf1aee807a",
+      "source_origin_m": [
+        2.67,
+        8.85,
+        1.075
+      ],
+      "source_z_rotation_deg": 0,
+      "native_scene_bounds_m": {
+        "min": [
+          -0.23399999737739563,
+          0.0,
+          -0.17100000381469727
+        ],
+        "max": [
+          0.23399999737739563,
+          0.3160000145435333,
+          0.17100000381469727
+        ]
+      },
+      "independently_decoded_source_bounds_m": {
+        "min": [
+          2.4360000026226043,
+          8.678999996185302,
+          1.075
+        ],
+        "max": [
+          2.9039999973773956,
+          9.021000003814697,
+          1.3910000145435333
+        ]
+      },
+      "independently_decoded_ship_bounds_m": {
+        "min": [
+          68.97899999618531,
+          53.575,
+          233.09600000262262
+        ],
+        "max": [
+          69.3210000038147,
+          53.891000014543536,
+          233.5639999973774
+        ]
+      },
+      "referenced_triangles": 1056,
+      "source_preflight_bound_max_abs_difference_m": 8.583068851208964e-07,
+      "ship_preflight_bound_max_abs_difference_m": 6.960630429375669e-06,
+      "source_preflight_source_transform_max_abs_difference": 0.0,
+      "contained_in_historical_outer_plan": true,
+      "historical_outer_plan_margins_m": {
+        "source_X_negative": 8.436000002622604,
+        "source_X_positive": 3.0960000026226044,
+        "source_Y_front": 8.678999996185302,
+        "source_Y_rear": 2.978999996185303
+      },
+      "front_vector_source": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "front_vector_ship": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "native_to_source_det": 1.0,
+      "placed_source_to_ship_det": 1.0,
+      "nominal_bounds_delta_m": null,
+      "height_vs_deck_allowance_report_only": {
+        "source_top_m": 1.3910000145435333,
+        "below_recorded_8_25m_allowance_by_m": 6.8589999854564665,
+        "actual_local_ceiling_fit": false
+      }
+    }
+  ],
+  "region_test_method": {
+    "numerical_boundary_tolerance_m": 1e-06,
+    "maximum_preflight_source_bound_tolerance_m": 1e-06,
+    "maximum_preflight_ship_bound_tolerance_m": 1e-05,
+    "six_region_plan_bounds_match_prior_nominal_handoff_xy": true,
+    "method": "Actual transformed triangle AABBs against each box contracted by 1 micrometre, with 13-axis triangle-box SAT for candidate overlaps. This rejects finite interior intrusion and separately reports boundary contact. The microscopic inset is numerical tolerance, not permitted construction clearance.",
+    "region_scope": "Full sourceZ -0.001..10 vertical volumes as declared by the plan; all four proposed pads and both clear bands checked for all six instances.",
+    "solid_scope": "Surface triangle screen and actual decoded bounds. Not a physics collision/occupancy/closed-volume proof; here all region pairs are separated in decoded AABB projection or only touch within numeric tolerance."
+  },
+  "region_checks": [
+    {
+      "instance": "wall_bay",
+      "region": "arrival_band",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 552,
+      "max_separating_axis_m_raw": 0.2999999523162842,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "wall_bay",
+      "region": "central_test_strip",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 552,
+      "max_separating_axis_m_raw": 3.2000000119209284,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "wall_bay",
+      "region": "wall_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 552,
+      "max_separating_axis_m_raw": 1.192092824453539e-08,
+      "separating_axis": "X",
+      "classification": "boundary_contact_within_numerical_tolerance",
+      "passed": true
+    },
+    {
+      "instance": "wall_bay",
+      "region": "island_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 552,
+      "max_separating_axis_m_raw": 6.650000011920929,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "wall_bay",
+      "region": "public_parcel_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 552,
+      "max_separating_axis_m_raw": 6.500000011920928,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "wall_bay",
+      "region": "staff_work_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 552,
+      "max_separating_axis_m_raw": 6.500000011920928,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island",
+      "region": "arrival_band",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 256,
+      "max_separating_axis_m_raw": 2.000000011920929,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island",
+      "region": "central_test_strip",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 256,
+      "max_separating_axis_m_raw": 1.0500000119209292,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island",
+      "region": "wall_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 256,
+      "max_separating_axis_m_raw": 5.150000011920929,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island",
+      "region": "island_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 256,
+      "max_separating_axis_m_raw": 1.1920929132713809e-08,
+      "separating_axis": "Y",
+      "classification": "boundary_contact_within_numerical_tolerance",
+      "passed": true
+    },
+    {
+      "instance": "island",
+      "region": "public_parcel_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 256,
+      "max_separating_axis_m_raw": 2.1500000119209286,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island",
+      "region": "staff_work_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 256,
+      "max_separating_axis_m_raw": 4.450000011920928,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "workbench",
+      "region": "arrival_band",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 696,
+      "max_separating_axis_m_raw": 6.950000011920929,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "workbench",
+      "region": "central_test_strip",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 696,
+      "max_separating_axis_m_raw": 1.1000000238418581,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "workbench",
+      "region": "wall_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 696,
+      "max_separating_axis_m_raw": 5.2000000238418576,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "workbench",
+      "region": "island_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 696,
+      "max_separating_axis_m_raw": 4.950000011920929,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "workbench",
+      "region": "public_parcel_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 696,
+      "max_separating_axis_m_raw": 1.1920930020892229e-08,
+      "separating_axis": "Y",
+      "classification": "boundary_contact_within_numerical_tolerance",
+      "passed": true
+    },
+    {
+      "instance": "workbench",
+      "region": "staff_work_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 696,
+      "max_separating_axis_m_raw": 0.019999992847441916,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bay_case",
+      "region": "arrival_band",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 1.4160000026226043,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bay_case",
+      "region": "central_test_strip",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 3.4189999961853026,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bay_case",
+      "region": "wall_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 0.21899999618530241,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bay_case",
+      "region": "island_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 6.868999996185303,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bay_case",
+      "region": "public_parcel_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 6.718999996185303,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bay_case",
+      "region": "staff_work_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 6.718999996185303,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island_case",
+      "region": "arrival_band",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 2.2089999961853026,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island_case",
+      "region": "central_test_strip",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 1.8160000026226044,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island_case",
+      "region": "wall_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 5.916000002622605,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island_case",
+      "region": "island_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 0.20899999618530263,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island_case",
+      "region": "public_parcel_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 2.9989999961853027,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "island_case",
+      "region": "staff_work_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 5.2989999961853025,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bench_case",
+      "region": "arrival_band",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 7.178999996185302,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bench_case",
+      "region": "central_test_strip",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 1.2360000026226043,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bench_case",
+      "region": "wall_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 5.336000002622605,
+      "separating_axis": "X",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bench_case",
+      "region": "island_browse_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 5.178999996185302,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bench_case",
+      "region": "public_parcel_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 0.2289999961853031,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    },
+    {
+      "instance": "bench_case",
+      "region": "staff_work_pad",
+      "strict_interior_triangle_hits": 0,
+      "hit_triangle_indices": [],
+      "aabb_candidates_after_numerical_inset": 0,
+      "triangles_checked_by_aabb": 1056,
+      "max_separating_axis_m_raw": 0.32899999618530273,
+      "separating_axis": "Y",
+      "classification": "positive_arithmetic_separation",
+      "passed": true
+    }
+  ],
+  "positive_controls": [
+    {
+      "instance": "wall_bay",
+      "triangle_index": 64,
+      "control_center_source_m": [
+        -5.160000002384185,
+        3.9666666189829507,
+        0.8366667032241821
+      ],
+      "control_box_half_extent_m": 0.0001,
+      "real_geometry_intersection_detected": true
+    },
+    {
+      "instance": "island",
+      "triangle_index": 204,
+      "control_center_source_m": [
+        2.883333337306977,
+        4.366666666666667,
+        0.6299999952316284
+      ],
+      "control_box_half_extent_m": 0.0001,
+      "real_geometry_intersection_detected": true
+    },
+    {
+      "instance": "workbench",
+      "triangle_index": 611,
+      "control_center_source_m": [
+        3.361942804853122,
+        9.0426666478316,
+        0.949999988079071
+      ],
+      "control_box_half_extent_m": 0.0001,
+      "real_geometry_intersection_detected": true
+    },
+    {
+      "instance": "bay_case",
+      "triangle_index": 938,
+      "control_center_source_m": [
+        -4.7340000007549925,
+        3.2158619304498033,
+        1.2220000147819519
+      ],
+      "control_box_half_extent_m": 0.0001,
+      "real_geometry_intersection_detected": true
+    },
+    {
+      "instance": "island_case",
+      "triangle_index": 938,
+      "control_center_source_m": [
+        3.315861930449804,
+        3.8240000007549924,
+        0.9620000147819519
+      ],
+      "control_box_half_extent_m": 0.0001,
+      "real_geometry_intersection_detected": true
+    },
+    {
+      "instance": "bench_case",
+      "triangle_index": 938,
+      "control_center_source_m": [
+        2.7358619304498037,
+        8.794000000754991,
+        1.3470000147819519
+      ],
+      "control_box_half_extent_m": 0.0001,
+      "real_geometry_intersection_detected": true
+    }
+  ],
+  "measured_arithmetic_margins_m": {
+    "wall_to_arrival_band_m": 0.2999999523162842,
+    "wall_to_negative_allocation_edge_m": 0.7000000119209293,
+    "wall_to_central_strip_m": 3.2000000119209284,
+    "island_to_central_strip_m": 1.0500000119209292,
+    "bench_to_central_strip_m": 1.1000000238418581,
+    "bench_rear_to_staff_pad_m": 0.019999992847441916,
+    "wall_bay_front_to_browse_pad_m_raw": 1.192092824453539e-08,
+    "island_front_to_browse_pad_m_raw": 1.1920929132713809e-08,
+    "bench_front_to_public_pad_m_raw": 1.1920930020892229e-08
+  },
+  "summary": {
+    "unique_designs": 4,
+    "placed_instances": 6,
+    "closed_container_instances": 3,
+    "empty_region_pair_checks": 36,
+    "empty_region_pair_checks_passed": 36,
+    "outer_containment_instances_passed": 6,
+    "all_preflight_GLB_hashes_match": true,
+    "plan_matches_preflight_hash": true,
+    "maximum_source_bound_difference_from_preflight_m": 8.583068851208964e-07,
+    "maximum_ship_bound_difference_from_preflight_m": 6.960630429375669e-06,
+    "proper_handedness_no_reflection": true,
+    "no_new_registered_places": true
+  },
+  "material_findings": [
+    "Wall, island and workbench nominal extents are met within numerical precision except the actual workbench is 0.020 m shallower at its rear than the nominal box.",
+    "Wall-browse, island-browse and public parcel-pad boundaries have essentially zero geometric gap at the nominal fixture faces. These are boundary contacts, not positive safety clearance or actor-space guarantees.",
+    "Workbench rear has approximately 0.020 m arithmetic separation from the proposed staff-pad front. This is not an ergonomic or moving-component reserve.",
+    "All three closed containers remain in the outer allocation and clear of the six proposed empty regions. Support/contact validity and unsupported/handling states are left to the component reviewer.",
+    "This snapshot can support the bounded arrangement review. Any changed GLB, plan, state, fixture movement or protrusion invalidates the affected hashes/checks until reviewed again."
+  ],
+  "not_granted": [
+    "actual R070 finished room fit",
+    "door aperture/pocket/head or moving-door clearance",
+    "host floor/wall/ceiling support",
+    "facility slot transforms, exclusivity or ownership migration",
+    "six-species/cart/actor approach",
+    "contents compatibility or inventory",
+    "support/contact/load acceptance",
+    "body/collision proxy acceptance",
+    "final visual approval",
+    "render/camera acceptance",
+    "final production freeze"
+  ],
+  "read_only_guarantee": "Only this actual_export_review directory was written. Historical handoff, catalogue, exports, plan, preflight, sources and runtime were not edited."
+}

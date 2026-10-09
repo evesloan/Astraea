@@ -1,0 +1,26 @@
+# Thread & Shell construction, 2026-10-05
+
+The existing D09_tailor3 / D09_directory_04 allocation now contains a partial boutique connected to the promenade and a separate staff return. Its shaped floor remains below the D10 Orchard food-hall allocation; that cover is a substrate, not an implemented restaurant. Protected guest envelopes and deck datums remain unchanged.
+
+Two original editable Blender designs were added: AST-RTL-007 architecture and AST-RTL-008 draped textile sample. Two textile material exports and a 2.4metre clear-opening derivative of AST-DOR-002 are variants, not extra unique designs. Source/export roundtrip bounds match exactly; respective triangle counts are4024,1048 and296.
+
+The focused Thread & Shell test passes actual player routes through promenade, public shop, two private fitting bays and staff return; exterior/interior RMB/E door operation; closed-door privacy rays;800 door-motion frames;9 fixture exits;10 hanger supports;157 geometric cart/operator poses. This does not establish physical cart-driving through the shop, all-species fit, sales, inventory, NPC use or saved state.
+
+Normal and effects-off player-height captures from thread-shell-vault-correction-002 were reviewed. The exposed black upper gap and cloth/support-post conflict have been corrected. The current broad, under-furnished field and weak ceiling/light hierarchy remain visually unfinished. Next architectural refinement should organize browsing and fitting approaches into readable occupied zones while preserving tested movement lanes, rather than scatter generic stock or call the shop complete.
+
+Full regression and checkpoint verification are recorded separately. This file does not imply final visual acceptance.
+
+Full regression:49/49 checks passed, fixed60,160.3309seconds. Main-scene adoption:100 of153 designs present,1162 instances; presence is not finish acceptance.
+
+## Work-bay scale refinement
+The consultation counter now sits under a lower canopy tied into the fitting roofs by bearing webs and the rear screen. Nine folded samples rest on three shelves serving that counter, and a flush floor inset groups the work/fitting zone. The central public and service paths remain unchanged. Nine support rays were added; an initial test ray started inside the shelf and returned no hit, so the corrected test starts above its surface and excludes only the samples themselves.
+
+Final49/49 regression passed167.6647seconds fixed60 after the bearing-web revision. Normal and clear work-bay captures were inspected; this gives the counter a more intimate setting but does not resolve the broader sparse shop composition or final lighting. The next pass should address the browsing groups and public threshold.
+
+## Textile-bank lighting
+Two long faceted pendants now follow the sample banks, suspended from the real ceiling. Their authored downward and upward opal faces correspond to the runtime sources; the upper exit and actual ceiling receiver are tested.49/49 checks pass167.0424seconds fixed60 after the final revision. Normal and clear arrival views were reviewed after batch006. The pendants make the browsing banks more legible, but the entrance view still has broad plain areas and is not accepted as finished architecture. Source/export AST-RTL-007 now4400 triangles with0.0m bounds deviation.
+
+The pendant upper faces now declare real ceiling receiver markers to the existing visibility-aware source budget. The fixture may face away from the camera while its receiver is visible. Both remain eligible and actually active at the browsing position in a direct runtime diagnostic; the eight-shadow-source limit is unchanged. Final49/49 regression passed164.1809seconds fixed60; graphical batch007 completed and its normal browsing view was inspected. No general exposure increase or performance acceptance is claimed.
+
+## Physical cleaning access
+A separate real-physics test now pushes and reverses the tethered loaded cart from the promenade, through two curved turns and the first wide fitting door, ending inside the bay. Four loose products remain aboard in both directions. Only initial placement is assigned; travel uses actual capsule motion, forces and torque.50/50 current regression checks pass167.4328seconds fixed60. This covers one scripted1m/s route, not freehand handling, every shop route or all species. The earlier statement that physical shop driving remained wholly untested is superseded by this bounded result.
