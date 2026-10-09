@@ -4,6 +4,7 @@ static func build(ship:Node3D)->Node3D:
 	if OS.get_environment("ASTRAEA_QUIET_CANDIDATE_ISOLATION")=="1":return null
 	var house:Node3D=load("res://scripts/quiet_grove_receiving.gd").build(ship)
 	house.set_meta("persistent_id","quiet_grove_house_001")
+	load("res://scripts/quiet_grove_lift.gd").build(house)
 	house.set_meta("acceptance","installed_construction_wip")
 	house.set_meta("receiving_exception","current_library_roof_composite_successor")
 	var support:=Node3D.new()
