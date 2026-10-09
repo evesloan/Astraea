@@ -1,3 +1,7 @@
+## 09 October 2026, 15:18 UTC: Family Terrace rooms integrated; receiving frame unfinished
+
+82 retained furnished homes, 214 rest anchors and 157 landscape/seating instances are registered as construction WIP. All 164 interior/street floor checks pass. The source receiving hold remains OPEN: actual aft subframe/foundation construction is still required under the principal court and remaining base. No invented columns or support certification. Residency includes 313 room/home identities. New Family lift, service connections, privacy, occupancy, visual and detailed traversal acceptance remain unfinished.
+
 ## 09 October 2026, 14:56 UTC: Quiet Grove source interiors installed
 
 83 retained furnished homes,215 rest anchors,250 landscape/seating instances and143 additive roof-composite members are installed as construction WIP. Library source remains unchanged; rejected R1 piers are absent. Main registration, unique identity and166 interior/street floor checks pass. Residency now includes231room/home identities. Retained stairs are present; new Quiet passenger lift, complete service/hull/support, privacy, occupancy, graphical and full traversal acceptance remain unfinished.

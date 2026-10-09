@@ -22,7 +22,7 @@ func setup(ship:Node3D)->void:
 	for name in ["ListeningSalonReceiving_WIP","StillroomReceiving_WIP","Cinema5Receiving_WIP","CustodialDepotReceiving_WIP","EquipmentDepotReceiving_WIP"]:
 		var room:=ship.get_node_or_null("ShipSpace/Districts/"+name)
 		if room!=null:candidates.append(room)
-	for home_root in ["TidalRoomCandidates","QuietGroveRoomCandidates"]:
+	for home_root in ["TidalRoomCandidates","QuietGroveRoomCandidates","FamilyTerraceRoomCandidates"]:
 		var homes:=ship.get_node_or_null("ShipSpace/Districts/"+home_root)
 		if homes!=null:candidates.append_array(homes.get_children())
 	for room:Node3D in candidates:
@@ -41,7 +41,7 @@ func setup(ship:Node3D)->void:
 		var entry:Dictionary={"room":room,"parent":room.get_parent(),"bounds":bounds,"witness":witness,"attached":true,"hidden_seconds":0.0,"meshes":room.find_children("*","MeshInstance3D",true,false).size()}
 		entries.append(entry)
 		witness.screen_entered.connect(_on_screen_entered.bind(entry))
-	set_meta("scope","Received sources, Tidal and Quiet homes; exact nodes and door states cached, not destroyed; independent floors/occluders remain resident; no RAM-unload claim")
+	set_meta("scope","Received sources, Tidal, Quiet and Family homes; exact nodes and door states cached, not destroyed; independent floors/occluders remain resident; no RAM-unload claim")
 func _on_screen_entered(entry:Dictionary)->void:
 	# React at the next safe main-thread point, not the 0.2 second polling boundary.
 	_attach_visible_room.call_deferred(entry)
