@@ -1,3 +1,7 @@
+## 09 October 2026, 15:28 UTC: Sunset Conservatory rooms integrated; receiving frame unfinished
+
+83 retained furnished homes, 215 rest anchors and 133 landscape/seating instances are registered as construction WIP. All 166 interior/street floor checks pass. The source receiving hold remains OPEN: actual aft subframe/foundation construction is still required under the principal court and remaining base. No invented columns or support certification. Residency includes 396 room/home identities. New Family lift, service connections, privacy, occupancy, visual and detailed traversal acceptance remain unfinished.
+
 ## 09 October 2026, 15:18 UTC: Family Terrace rooms integrated; receiving frame unfinished
 
 82 retained furnished homes, 214 rest anchors and 157 landscape/seating instances are registered as construction WIP. All 164 interior/street floor checks pass. The source receiving hold remains OPEN: actual aft subframe/foundation construction is still required under the principal court and remaining base. No invented columns or support certification. Residency includes 313 room/home identities. New Family lift, service connections, privacy, occupancy, visual and detailed traversal acceptance remain unfinished.

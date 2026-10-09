@@ -31,7 +31,7 @@ func run()->void:
 			if hit.is_empty() or absf(hit.position.y-p.y)>.04:errors.append({"room":str(room.name),"kind":"interior_floor" if local_z<0 else "street_floor","expected":str(p),"hit":str(hit.get("position","none"))})
 			checks+=1
 	assert(anchors==214)
-	assert(ship.get_node("ShipSystems/ReceivedRoomResidency").entries.size()==313)
+	assert(ship.get_node("ShipSystems/ReceivedRoomResidency").entries.size()==396)
 	var result:Dictionary={"status":"PASS" if errors.is_empty() else "FAIL","installed_source_units":82,"rest_anchors":anchors,"landscape_instances":157,"receiving_structure_accepted":false,"open_construction_hold":"FT_BASE_RECEIVING_HOLD","library_source_unchanged":true,"entrance_pair_checks":checks,"interior_floor_checks":82,"street_floor_checks":82,"unique_with_existing_homes":true,"errors":errors,"scope":"Actual main registration, source identities and bounded entrance-floor checks. Retained stairs present; new passenger lift, full service/hull/support, privacy, occupancy, visual and full traversal acceptance remain unfinished."}
 	FileAccess.open("res://artifacts/family_default_adoption.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
 	print("FAMILY_DEFAULT_ADOPTION ",JSON.stringify(result))
