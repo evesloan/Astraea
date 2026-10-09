@@ -1,0 +1,6 @@
+Foundation contacts: 51 passed: False
+Traceback (most recent call last):
+  File "C:\Users\cered\Dolphin\AstraeaShip\external_packages\aquatic_district_20261009\source\verify_supports.py", line 25, in <module>
+    (P/'qa/support_contact_checks.json').write_text(json.dumps(report,indent=2));print('Foundation contacts:',len(rows),'passed:',report['passed']);assert report['passed'],[q for q in rows if not q['pass']]
+                                                                                                                                                           ~~~~~~^^^^^^^^^^
+AssertionError: [{'part': 'AQD__bearing_foot_3', 'bearing_top_y': 44.0, 'as_built_bottom_y': 44.0, 'vertical_error_m': 0.0, 'bearing_footprint_covered': False, 'pass': False}, {'part': 'AQD__fixed_seat_mount_north_-0.28', 'bearing_top_y': 45.45, 'as_built_bottom_y': 45.45000457763672, 'vertical_error_m': 4.577636715907829e-06, 'bearing_footprint_covered': False, 'pass': False}, {'part': 'AQD__fixed_seat_mount_north_0.28', 'bearing_top_y': 45.45, 'as_built_bottom_y': 45.45000457763672, 'vertical_error_m': 4.577636715907829e-06, 'bearing_footprint_covered': False, 'pass': False}]

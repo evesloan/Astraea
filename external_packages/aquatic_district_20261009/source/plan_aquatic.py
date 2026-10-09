@@ -1,7 +1,7 @@
 """Deterministic bounded aquatic section/floor planner. Requires Shapely 2.1.2."""
 import json,math,hashlib,sys
 from pathlib import Path
-P=Path(__file__).resolve().parents[1];R=P.parents[1]
+P=Path(__file__).resolve().parents[1];R=P.parents[1];INPUT=R if (R/'Game/data/spatial_layout.json').exists() else P/'dependencies'
 # Existing installed dependency, no download or modification.
 sys.path.insert(0,str(R.parent/'AstraeaTools/pythondeps'))
 from shapely.geometry import Polygon,LineString,Point,box
@@ -48,10 +48,11 @@ for i,cx in enumerate([72,85.5]):
 lights=[]
 for i,(x,z) in enumerate([(60,234),(63,186),(94,186),(97,234),(94,246),(79,247),(59,211),(97,209),(73,214),(77,230),(70,196),(88,196)]):
  lights.append({'id':'AQD_fixture_'+str(i),'xyz':[x,48.5 if x not in [73,77] else 48.0,z],'receiver_xyz':[x,45.45,z],'energy':1.2,'range_m':7,'role':'warm_guest_source','fixture':'modeled pendant on actual overhead bearing'})
+for i,cx in enumerate([72,85.5]):lights.append({'id':'launch_task_'+str(i),'xyz':[cx,51.1,194.4],'receiver_xyz':[cx,49.35,194.4],'energy':1.2,'range_m':5,'role':'launch_task_source','fixture':'modeled pendant on actual roof bearing'})
 plan={'schema':1,'status':'bounded construction delivery; host adoption pending','programme_key':'D08_directory_08','catalogue_registration':'Root must reserve identities; AQD names are package-local only. No catalogue changes.','coordinate_system':'Godot world XYZ metres; Blender=(X,-Z,Y); origin0, identity GLB placement',
  'annex_boundary':coords(outer),'no_material_below_y':43.76,'maximum_top_y':51.95,'protected_next_deck_datum_y':52.5,'floor_records':floors,'ramps':ramps,'plinth_closure_segments_xz':[[list(a),list(b)] for line in lines(wet.boundary.difference(outer.boundary).difference(river_outer.boundary).difference(unary_union([q.boundary for q in runouts]))) for a,b in zip(list(line.coords),list(line.coords)[1:])],
  'river':{'centerline_xyz':[[x,45.25,z] for x,z in center]+[[center[0][0],45.25,center[0][1]]],'length_m':loop.length,'clear_width_m':3.6,'bottom_y':44.3,'water_y':45.25,'rim_y':45.45,'bed_polygons':floors[-1]['boundary_polygons_xz'],'outer_xz':coords(river_outer),'island_xz':coords(island),'AFK':'closed topology reserved; no current, buoyancy, float mount, pause, save or recovery logic implemented'},
- 'boarding':[{'id':'south_board','bank_xyz':[78,45.45,240.6],'water_xyz':[78,45.25,237.4],'transfer_xyz':[76,45.45,240.0],'recovery':True},{'id':'north_recovery','bank_xyz':[78,45.45,191.7],'water_xyz':[78,45.25,195.3],'transfer_xyz':[75,45.45,191.0],'recovery':True}],
+ 'boarding':[{'id':'south_board','bank_xyz':[78,45.45,240.6],'water_xyz':[78,45.25,237.4],'transfer_xyz':[76,45.45,240.0],'recovery':True},{'id':'north_recovery','bank_xyz':[75,45.45,193.5],'water_xyz':[75,45.25,195.3],'transfer_xyz':[73.5,45.45,193.5],'recovery':True}],
  'slides':slides,'new_thermal_spa_pools':[{'id':'AQD_spa_5' if i==0 else 'AQD_spa_6','center_xz':list(c),'radius_m':2.6,'bottom_y':44.4,'water_y':45.05,'rim_y':45.45,'parent_programme':'D08_directory_08','gravity_adaptive_reservation':True} for i,c in enumerate(spa_centers)],
  'thermal_count_reconciliation':{'target':6,'retained':[{'parent':'D08_directory_02','source':'sol_entry_successors_20261008/D/D08_directory_02','basins':['bath_basin_bottom0','bath_basin_bottom1']},{'parent':'D08_directory_03','source':'sol_entry_successors_20261008/D/D08_directory_03','basins':['mineral_court_bottom','quiet_court_bottom']}],'new':2,'extra_directory_rooms':0,'gravity_physics':'not_implemented; handholds/transfer equipment and service/control reservations only; parameters undecided'},
  'lights':lights,'retained_cascade_interface':{'original_center_xz':[25,215],'original_radius':1.4,'original_bottom_y':42.8,'maintenance_deck_rect_xz':[21.0,23.0,214.3,215.7],'maintenance_top_y':44,'splash_screen_half_arc':'east half at radius2.2, bottom42.8, top45.4; leaves western maintainable side and falling stream clear','acoustic':'physical absorptive canopy/reveals only; no audio processing or hydraulic response'},
@@ -59,8 +60,8 @@ plan={'schema':1,'status':'bounded construction delivery; host adoption pending'
  'retained_vs_new':{'retained':['50x18m Grand Pool and Orchard section','Gentle Waters basin and retreat','Vesper watercourse receiver/stream/support/guards','D08-D10 aquatic lift and stairs','Living Gifts and Vesper floors/programmes','Eight delivered bath/wellness/changing/towel destination parents'],'new':['closed lazy-river shell and water visual','boarding/recovery/physical tubes','two helical slides with isolated runouts','step-free launch route and gallery','step-free island bridge','two complementary spa pools','splash/maintenance interfaces','wet support pavilions and real fixtures','new annex floor proposals']},
  'later_interfaces':['Water/swimming volumes and oxygen-independent recovery rules','Tube attachment/buoyancy/current and AFK safe interruption','Slide admission/start/exit/ride transfer','Pool temperature/gravity controls and gravity-safe failure state','Privacy door controllers and towel stock persistence','Service logistics, NPC reservations/body fit','Host floor compiler/collision/light-budget adoption']}
 # Binding coarse fit checks: actual current regions and plan-hull; includes all D08 programme rectangles.
-hull=Polygon(json.loads((R/'Game/data/hull_envelope.json').read_text())['plan_xz_m']);assert hull.contains(outer)
-layout=json.loads((R/'Game/data/spatial_layout.json').read_text());overlap=[]
+hull=Polygon(json.loads((INPUT/'Game/data/hull_envelope.json').read_text())['plan_xz_m']);assert hull.contains(outer)
+layout=json.loads((INPUT/'Game/data/spatial_layout.json').read_text());overlap=[]
 for a in layout['regions']:
  if a.get('deck')!='D08':continue
  q=Polygon(a['boundary'],a.get('holes',[]));area=q.intersection(outer).area
