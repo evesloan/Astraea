@@ -1,3 +1,5 @@
+> Historical source-audit checkpoint at 574b98a. Root has since authorized construction; see ROOT_SCOPE_DECISION_20261009.json and GALLERY_PLACEMENT_AND_INTERFACES.json for current scope and constructed work. The audit below records its earlier stage.
+
 # Group 7 source audit and boundary request
 
 This is an input, retention and interface checkpoint. **Group 7 construction is incomplete. No new architectural batch or production GLB has been authored.** Root owns integration. The package is isolated from the live dirty checkout and other helpers.
@@ -10,7 +12,7 @@ Actual file access works on MousyLaptop at `C:\Users\cered\Dolphin\AstraeaShip`.
 |---|---|---|
 | Middle exterior | Close real exterior between Y16.5 lower-hull seam and Y61 shoulder datum, with genuine room-side apertures and inspection provision | AST-HUL-001 lower hull; Group3 service aperture/route owners; actual room walls |
 | Upper exterior and roofs | Occupancy-responsive upper skin and terminal cutbacks, supported roof seams | Global taper A is unadopted and clips retained geometry; house and luxury source walls/roofs control |
-| Theater connection | Join wider exterior at Y61/92 and Zâˆ’275/âˆ’105 | Full 170 m AST-HUL-002 shoulder already exists. Its 0.18 m minimum skin and bounded normal reservation remain |
+| Theater connection | Join wider exterior at Y61/92 and ZÃ¢Ë†â€™275/Ã¢Ë†â€™105 | Full 170 m AST-HUL-002 shoulder already exists. Its 0.18 m minimum skin and bounded normal reservation remain |
 | Crown/luxury interfaces | Reconcile seams and maintenance interfaces around source-owned roofs | Crown max Y114.4499969 leaves only 0.05 m; another 0.18 m skin cannot be overlaid. Group2 owns private pavilions/windows/lifts |
 | Windows | Actual hull-facing or court-facing room interfaces with glass, frames and practical access | No forced opening through another occupied room; private views/privacy and deliberate windowless rooms remain |
 | Atrium hierarchy | Purposeful remaining destinations, supported soffits and real fixtures on principal and quieter galleries | D02 garden, all 16 levels, guard/fascia network, 32 lantern/bearing stations, covers and existing gallery destinations remain |
@@ -28,7 +30,7 @@ The latest assignment explicitly requires coordination before authoring shared-b
 
 ## First bounded gallery proposals, unbuilt
 
-Each candidate occupies X43â€¦46.5 / Zâˆ’25â€¦âˆ’19 on its existing authored terrace. Feet would contact Y27 / 52.5 / 78 / 97.5 on D06 / D09 / D12 / D16 respectively. Candidate top is floor+2.1 m; no new slab, cap, guard or fascia is proposed. The uses differ: botanical interpretation, tactile craft/social pause without a retail address, quiet sky-reading, and sheltered orientation/refuge without a guest unit.
+Each candidate occupies X43Ã¢â‚¬Â¦46.5 / ZÃ¢Ë†â€™25Ã¢â‚¬Â¦Ã¢Ë†â€™19 on its existing authored terrace. Feet would contact Y27 / 52.5 / 78 / 97.5 on D06 / D09 / D12 / D16 respectively. Candidate top is floor+2.1 m; no new slab, cap, guard or fascia is proposed. The uses differ: botanical interpretation, tactile craft/social pause without a retail address, quiet sky-reading, and sheltered orientation/refuge without a guest unit.
 
 Actual compiled triangle unions cover the complete candidate footprints: missing support area is zero. All 64 current column/fan bounds give zero AABB overlap candidates. Each proposal clears the historical 4 m tram strip at X40 by 1 m. **That clearance does not certify Group4's current proposed route or a full neighboring mesh census.** Exact owner IDs and contact coordinates are in `qa/gallery_proposal_floor_contacts.json`. These are reviewable proposals, not constructed destinations.
 

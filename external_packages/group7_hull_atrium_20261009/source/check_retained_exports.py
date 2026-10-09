@@ -26,24 +26,27 @@ def nodes(d):
   if 'mesh' in n:yield n,m
   for c in n.get('children',[]):yield from visit(c,m)
  for i in d['scenes'][d.get('scene',0)]['nodes']:yield from visit(i,np.eye(4))
-rows=[]
-for r in json.loads((P/'qa/retained_native_census.json').read_text())['natives']:
- source=D/r['source'];f=source.parents[1]/'exports'/source.with_suffix('.glb').name
- d,b=read(f);points=[];triangles=0;count=0;external=[]
- for im in d.get('images',[]):
-  if 'uri' in im:external.append(im['uri'])
-  else:assert 'bufferView' in im
- for n,m in nodes(d):
-  count+=1
-  for q in d['meshes'][n['mesh']]['primitives']:
-   assert q.get('mode',4)==4
-   a=acc(d,b,q['attributes']['POSITION']);assert np.isfinite(a).all();a=(np.c_[a,np.ones(len(a))]@m.T)[:,:3];points.extend(a)
-   idx=acc(d,b,q['indices']).ravel();assert len(idx)%3==0 and idx.max()<len(a);triangles+=len(idx)//3
-   for k in ['NORMAL','TEXCOORD_0']:
-    if k in q['attributes']:assert np.isfinite(acc(d,b,q['attributes'][k])).all()
- a=np.array(points);bounds=[a.min(axis=0).tolist(),a.max(axis=0).tolist()]
- delta=float(np.max(np.abs(np.array(bounds)-np.array(r['source_y_up_bounds']))))
- assert triangles==r['evaluated_triangles'] and delta<1e-4 and not external
- rows.append({'export':f.relative_to(D).as_posix(),'sha256':hashlib.sha256(f.read_bytes()).hexdigest(),'mesh_nodes':count,'triangles':triangles,'local_y_up_bounds':bounds,'native_bound_max_error_m':delta,'external_image_dependencies':external})
-out={'passed':True,'scope':'Seven retained native/export pairs: binary structure, indices, finite attributes, embedded images, evaluated triangle totals and transformed bounds. Bounds/count equivalence is not full vertex/physics or whole-ship overlap acceptance.','engine_import_run':False,'exports':rows}
-(P/'qa/retained_export_checks.json').write_text(json.dumps(out,indent=2)+'\n');print('RETAINED_EXPORT_CHECKS',len(rows),max(r['native_bound_max_error_m'] for r in rows))
+def main():
+ rows=[]
+ for r in json.loads((P/'qa/retained_native_census.json').read_text())['natives']:
+  source=D/r['source'];f=source.parents[1]/'exports'/source.with_suffix('.glb').name
+  d,b=read(f);points=[];triangles=0;count=0;external=[]
+  for im in d.get('images',[]):
+   if 'uri' in im:external.append(im['uri'])
+   else:assert 'bufferView' in im
+  for n,m in nodes(d):
+   count+=1
+   for q in d['meshes'][n['mesh']]['primitives']:
+    assert q.get('mode',4)==4
+    a=acc(d,b,q['attributes']['POSITION']);assert np.isfinite(a).all();a=(np.c_[a,np.ones(len(a))]@m.T)[:,:3];points.extend(a)
+    idx=acc(d,b,q['indices']).ravel();assert len(idx)%3==0 and idx.max()<len(a);triangles+=len(idx)//3
+    for k in ['NORMAL','TEXCOORD_0']:
+     if k in q['attributes']:assert np.isfinite(acc(d,b,q['attributes'][k])).all()
+  a=np.array(points);bounds=[a.min(axis=0).tolist(),a.max(axis=0).tolist()]
+  delta=float(np.max(np.abs(np.array(bounds)-np.array(r['source_y_up_bounds']))))
+  assert triangles==r['evaluated_triangles'] and delta<1e-4 and not external
+  rows.append({'export':f.relative_to(D).as_posix(),'sha256':hashlib.sha256(f.read_bytes()).hexdigest(),'mesh_nodes':count,'triangles':triangles,'local_y_up_bounds':bounds,'native_bound_max_error_m':delta,'external_image_dependencies':external})
+ out={'passed':True,'scope':'Seven retained native/export pairs: binary structure, indices, finite attributes, embedded images, evaluated triangle totals and transformed bounds. Bounds/count equivalence is not full vertex/physics or whole-ship overlap acceptance.','engine_import_run':False,'exports':rows}
+ (P/'qa/retained_export_checks.json').write_text(json.dumps(out,indent=2)+'\n');print('RETAINED_EXPORT_CHECKS',len(rows),max(r['native_bound_max_error_m'] for r in rows))
+
+if __name__=="__main__":main()
