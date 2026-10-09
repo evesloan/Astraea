@@ -20,8 +20,10 @@ static func build(ship:Node3D)->Node3D:
 	var d:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(DATA))
 	var parent:=Node3D.new();parent.name="SpecialtyHomeCandidates"
 	ship.get_node("ShipSpace/Districts").add_child(parent)
+	return build_unit(parent,d)
+static func build_unit(parent:Node3D,d:Dictionary)->Node3D:
 	var room:=Node3D.new();room.name=str(d.allocation.proposed_runtime_id);parent.add_child(room)
-	room.set_meta("census_source_index",102)
+	room.set_meta("census_source_index",int(d.allocation.source_envelope_index))
 	room.set_meta("source_identity_status",d.allocation.runtime_id_status)
 	room.set_meta("habitat_profile","new_quiet_cocoon_candidate")
 	room.set_meta("species_assignment","")

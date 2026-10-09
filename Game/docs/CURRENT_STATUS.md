@@ -1,3 +1,7 @@
+## 09 October 2026, 20:41 UTC: Tidal D13 ten single specialty interiors installed
+
+Nine additional retained D13 allocations join unchanged102, using three source compositions and the reviewed cocoon component. Ten original single reservation IDs retained; no new units or species quotas.40 actual-main floor/capsule witnesses,10 membrane contacts and20 door close/open cycles pass;85 ordinary homes remain unchanged. Editable Blender variants and bounded frontage patches are retained. Other36 Tidal specialty allocations, service, final species/body/pose and in-engine visual acceptance remain unfinished within Group1.
+
 ## 09 October 2026, 20:31 UTC: First Tidal specialty home installed
 
 Retained D13 allocation102 now has a source-authored quiet-cocoon construction interior, one actual membrane support and its unchanged single reservation ID.51 shell/furnishing parts, editable96-mesh cocoon, wash fixtures, existing E-operated doors and bounded guard/infill opening are installed.11 actual-main floor/capsule witnesses and one support-surface check pass;85 ordinary homes remain unchanged. Source composition reviewed in Blender; actual species/body/pose fit, final in-engine visuals, environmental/service functions and full traversal remain unfinished. This does not complete Tidal or Group1.
