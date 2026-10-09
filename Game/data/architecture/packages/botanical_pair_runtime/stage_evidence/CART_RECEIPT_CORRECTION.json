@@ -1,0 +1,26 @@
+{
+  "target": "tests/validate_botanical_pair_cart.gd",
+  "base_sha256": "ea10bb8e629174c4da7b4f9601d7e4384f37b22fb9433250f11ae1c76b710dbe",
+  "postimage_sha256": "3367c087164c938ece4fee096a21be5aeb9f4018125d0c47604920d411ffc559",
+  "edits": [
+    {
+      "before": "var track_cart: bool=false",
+      "after": "var track_cart: bool=false\nvar initial_fixture_placed: bool=false",
+      "count": 1
+    },
+    {
+      "before": "1 if track_cart else 0",
+      "after": "1 if initial_fixture_placed else 0",
+      "count": 2
+    },
+    {
+      "before": "\tif not await advance(60,false): return",
+      "after": "\tinitial_fixture_placed=true\n\tif not await advance(60,false): return",
+      "count": 1
+    }
+  ],
+  "reason": "A failed initial settle must still report the initial fixture placement that already occurred. No route, physics or controller behavior changed.",
+  "runtime": "NOT_RUN",
+  "activation_ready": false,
+  "sealed_base_unchanged": true
+}

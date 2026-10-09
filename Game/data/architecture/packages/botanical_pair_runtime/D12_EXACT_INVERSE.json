@@ -1,0 +1,32 @@
+{
+  "path": "tests/d12_pair_successor_guard.gd",
+  "before_sha256": "340082af7d56996007cc9c6bd23c228b12866566b8446938f90d84f7cbc8e973",
+  "after_sha256": "00b05fc8c95ff405552e55502ac95fb52f9c42692736aa1bc47765b1637a7a30",
+  "inverse_edits": [
+    {
+      "before": "  var text:=load(\"res://tests/botanical_pair_successor_guard.gd\").current_text(",
+      "after": "  var text:String=load(\"res://tests/botanical_pair_successor_guard.gd\").current_text(",
+      "count": 1
+    },
+    {
+      "before": "FileAccess.get_sha256(",
+      "after": "load(\"res://tests/botanical_pair_successor_guard.gd\").current_sha256(",
+      "count": 5
+    },
+    {
+      "before": "FileAccess.get_file_as_string(",
+      "after": "load(\"res://tests/botanical_pair_successor_guard.gd\").current_text(",
+      "count": 8
+    },
+    {
+      "before": "static func project_compiled(value:Dictionary)->Dictionary:\n ensure()",
+      "after": "static func project_compiled(value:Dictionary)->Dictionary:\n value=load(\"res://tests/botanical_pair_successor_guard.gd\").project_compiled(value)\n ensure()",
+      "count": 1
+    },
+    {
+      "before": " ensure();assert(floors!=null and floors.get_child_count()==300)\n var children:=floors.get_children();var retained:Array=[]",
+      "after": " ensure()\n var children:Array=load(\"res://tests/botanical_pair_successor_guard.gd\").floor_children(floors)\n assert(floors!=null and children.size()==300)\n var retained:Array=[]",
+      "count": 1
+    }
+  ]
+}

@@ -1,5 +1,78 @@
 # Astraea current production status
 
+## 9 October 2026, 07:06 UTC: All23 remaining helper destinations installed
+
+All23 new helper packages have receiving installations, bringing received section keys to83 including the preserved60. Exact recovered Cinema1/Long Library sources are used. Botanical, dining, sports/performance and medical additions have missing-only floors and connections. Eight retained triage pods remain unchanged; only the legacy admission cap has a three-part reversible opening. All18 bulk imports pass exact mesh/light counts and hashes. The actual main scene loads with all18 registered for nearby-room loading, in addition to five earlier individually installed sections. A prior eager full-load attempt was killed with exit137; the retained global floors and nearby source loading avoid that initial all-interior load. Detailed movement, carts/species, gameplay, final visual polish and target hardware remain deferred/unaccepted. Current additions await consolidated publication; do not infer main has been updated until a remote receipt exists.
+
+## 9 October 2026, 06:51 UTC: Cinema1 and Long Library installed
+
+Exact recovered source packages are now installed in the default ship, bringing received construction sections to67. Additive floors and connections compile without owner/slab/void overlap; all source meshes and bounded light registrations load in the actual main scene. No new exhaustive traversal or graphical pass was run, following the user direction. Library interaction, cinema playback, furnishings/lighting polish, detailed movement and cart/species acceptance remain unfinished. Latest independent checkpoint remains fe0118d; these latest three sections await the next batch checkpoint.
+
+## 9 October 2026, 06:47 UTC: Equipment Depot installed; faster receiving policy
+
+Equipment Depot is installed with its exact source, 2720 m² missing-only floor and a local four-solid opening through the retained service cap. The new editable network variant preserves 1899 unrelated native objects and all 126 retained datum markers. No controller or second cart was created. 54 source support probes and 785 static samples passed; ordinary player input covered 275.799 m before the user changed validation priorities. Five bounded Godot views reviewed, with 19 physical-fixture lights sharing the existing budget. Appearance remains sparse; stock gameplay and final polish are unfinished. Installed received keys: 65. Latest independent checkpoint remains fe0118d pending the next batch checkpoint.
+
+User direction at 06:46 UTC: prioritize full construction; defer exhaustive route/movement/cart checks and detailed traversal to user review. Keep quick missing-floor, major-overlap and broken-import checks. Exact Cinema1 and Long Library packages recovered through supported Library access at06:41 UTC; both match recorded archive hashes and are ready for receiving, not yet installed.
+
+## 9 October 2026, 06:31 UTC: Custodial Depot installed
+
+Custodial Depot D01_directory_10 is installed in the default ship, bringing received construction sections to64. The retained native remains unchanged; the corrected export preserves7376 old meshes and35 lights and adds24 readable font meshes. Translation[8,0,460] is explicit. Additive staff-finished floors cover3128m² plus16m² connector, preserving all425 preceding owners. No second player cart or inventory controller was created.
+
+All292 proposal-derived floor-support probes and427 static route samples pass. The unchanged player walked208.039m on4197 ordinary input frames through arrival, stock, work-bay and used-carrier approaches and back. The prior58-section combined4348samples still pass. All35 original point lights are preserved but quarantined; bounded replacements use the single8-active/32-candidate production manager. Five bounded Godot views were reviewed. Distant-light continuity and fine signage remain visual work; loaded-cart/species, real stock/restocking, maintenance/dispatch, save and hardware acceptance remain open.
+
+The independent geometry audit also verifies229 actual GLB datum-contact nodes are supported. The80 source meshes marked body_candidate_retained=false refer to an optional simplified-body subset. They are not explicit collision exclusions; precise static geometry remains intact, unlike Cinema5's explicitly visual-only transfer markings. Source-only sweep checks up to0.65m radius pass;1.7m radius fails the work-bay and used-carrier turns, so no broad-fit claim is made. The retained D02 inspection floor underside clears the source roof by0.06m.
+
+
+## 9 October 2026, 06:18 UTC: Cinema5 installed
+
+Cinema5 D11_directory_06 is installed in the default ship, bringing received construction sections to63. Its exact1469-mesh source,198 physical seats and2 replacement transfer-place identities are retained. The258m² aquatic cover remains untouched;3342m² missing room floor and79.8m² dogleg connector are additive. The connector uses the existing core's aft opening rather than cutting its closed side wall. Its narrowed throat does not establish1.7m-radius species/cart acceptance. The unsupported east opening has a reversible solid receiving closure.
+
+All106 source datum contacts and1018 static route samples pass. The unchanged player walked397.538m over8081 ordinary input frames, through the aft-core dogleg, level transfer places, screen-service and projection approaches and back. Two1mm transfer-place floor markings are visibly preserved and excluded from collision according to exact source metadata; the original failed player receipt is retained. The original58-section combined4348samples still pass. Imported25 lights are quarantined and25 bounded replacements use the existing8-active/32-candidate manager. Five bounded Godot views were inspected; they are not full-ship graphical or final-art approval. Seating rakes, loaded cart/species, movie/audio/controls, final polish, save and target hardware remain unfinished.
+
+Evidence: docs/REMAINING_SECTION_INSTALLATIONS.json, artifacts/cinema5_candidate.json, artifacts/cinema5_player_access.json, artifacts/received_sections_combined.json. Read-only source audit predates the final slit fill and collision-policy repair; this receipt supersedes its pending implementation notes.
+
+
+## 9 October 2026, 06:05 UTC: Stillroom installed
+
+Stillroom D12_directory_04 is installed in the default ship, bringing received construction sections to62. Its exact234-mesh source and editable native are retained; two additive floor owners cover3090.143m² and a16.08m² spine connector. The source centerline-only floor proposal missed31.582m² of perimeter wall contacts; the receiving footprint is buffered0.18m and preserves303 original+116 prior+2Salon owners.
+
+All161 floor contacts and520 static route samples pass. The unchanged player walked249.914m on5,223 ordinary input frames through public, quiet, care and stock approaches and returned to the spine. Salon429contacts/302route samples pass after extracting its existing bounded-light policy into a shared source-light adapter; prior58-section combined4,348samples still pass. All12 raw Stillroom point lights are quarantined; bounded replacements join the same8-active/32-candidate manager. Four bounded Godot views were inspected. Dark coves/ceiling, spare furnishings, unfinished floor zoning and fine signage remain quality work, not final acceptance. Loaded cart/species, interaction/acoustics, save and hardware tests remain open.
+
+Five source helpers have now reported21/23 deliveries at their recorded commits. Cinema1 and exact LongLibrary revision remain recovery-blocked; no substitute is claimed. Cinema5 archive received and independently hash-verified for read-only receiving audit. No Cinema5 installation yet. Root continues integration before polish.
+
+
+## 9 October 2026, 05:49 UTC: Listening Salon installed
+
+Listening Salon D12_directory_03 is installed in the actual default main ship through the receiving bootstrap. Its exact3,214-mesh export and editable native source are preserved, with two disjoint receiving floor owners (3,128m² room and16m² connector). All303 original and116 previous receiving owners remain unchanged. The original60 received keys plus Salon total61 installed construction sections.
+
+All429 source floor contacts and302 dogleg-route capsule/support samples passed. The unchanged player walked146.45m on ordinary W input,3,016 frames, through arrival, activity/care approaches and back to the spine. The preceding58-section combined check still passes4,348 samples with zero failures. Imported42 lights are quarantined;42 bounded sources join the existing8-active/32-candidate manager without a second manager. Four bounded Godot views were reviewed, all with8 active sources; they are not full-ship graphical or final-art approval. Structural floor finish still lacks source teal/walnut zoning. Loaded cart/species/audio/save/performance and Tidal overhead load transfer remain open.
+
+Evidence: docs/REMAINING_SECTION_INSTALLATIONS.json, artifacts/listening_salon_candidate.json, artifacts/listening_salon_player_access.json, artifacts/received_sections_combined.json. Original Salon source is independently retained on handoff/remaining-e-20261009 at b242f3eeb82ff3f17b7df162fec55d0ae648a273.
+
+## 9 October 2026, 04:46 UTC: Tidal five-stop lift candidate
+
+Tidal's retained source successor now has a local shaft-base recess, fitted portal frames and trimmed entrance-crossing guards. It preserves9,292 other source parts and reuses the existing five-stop cabin/controller. The test-only candidate passed actual RMB/E floor selection, physical capsule/cart/four-bottle carry through D13–D17 and return, per-frame cabin/static-structure clearance, closed travel gates and obstruction/cancellation checks. Across six landings378 support/capsule boarding samples passed. With all85 candidate interiors,1,105 entry samples and2,630 shared-route samples still pass.
+
+This remains explicitly invoked validation work, not default-scene installation or final visual acceptance. Cart boarding turns, save/load, fresh graphical review, Listening support and neighbourhood acceptance remain open. Original sources and previously installed sections are preserved. Evidence: artifacts/tidal_lift_candidate.json, artifacts/tidal_rooms_with_lift_candidate.json, and BlenderCatalogue/assets/tidal_lift_receiving_20261009/. Meaningful manual GitHub checkpoints remain the authorized retention workflow.
+
+## 9 October 2026, 03:26 UTC: approved remaining wave and Tidal receiving
+
+The owner confirmed the complete remaining-work checklist. Five existing helpers received 23 disjoint missing/source-continuation destinations; assignments are recorded in `docs/coordination/remaining_sections_20261009/ASSIGNMENTS.json`. Original 60 received installations remain preserved. Root owns connected infrastructure and integration; final polish follows construction.
+
+Tidal Garden retained architecture is under receiving validation, not installed in the default scene. Its 27 source floor regions have no coplanar overlap with the existing compiler owners. The first actual-world candidate check exposed inverted floor surfaces; a new editable architecture derivative restores explicit source-PLAN winding on 45 floor/landing parts without moving vertices or changing their UV correspondences. The unchanged route test now passes 2,603 static support/capsule samples, all nine source routes, with 339 source batches and 301 collision batches. No guest units were installed. Adjacent support transfer, interiors, operating lift, full traversal/cart/species and visual/quality acceptance remain open. See `BlenderCatalogue/assets/tidal_garden_receiving_successor_20261009/` and `artifacts/tidal_receiving_candidate.json`.
+
+
+## 9 October 2026, 02:16 UTC: received backlog integrated
+
+All 60 received section keys are installed: 58 additive installations and the two existing D12 Gallery/Reading installations preserved. The receiving owner ledger is `data/architecture/received_sections.json`; consult it alongside the older whole-ship layout so these sections are not reconstructed again. The original 303 compiled floor owners remain byte-exact; 116 receiving records are additive.
+
+All 58 new sections have exact-source focused entry/return walking receipts. The combined actual default main scene passed 4,348 static support/capsule entry samples with zero blocked sections, exact source mesh counts/placements/pins and shared-builder slab checks. Full-room traversal, cart/species, the entire legacy regression suite, fresh graphical review and target-device performance remain open. Furnishing and final art are unfinished.
+
+The full scene initially spent over 25 minutes in startup. Periodic expired-weak-reference cleanup removed the repeated full-cache scan: the focused 5,000-mesh lifecycle test improved from 1.955 to 0.170 seconds with identical triangle geometry, resource reuse and reclamation checks. The corrected main scene became ready in 28.572 seconds; the combined check finished in 30.007 seconds. These are test timings, not game FPS. The medical runtime contract pins the preserved-opening forward-core successor; its original exact-file guard and prior model pins remain intact.
+
+Evidence and exact current source pins: `docs/RECEIVED_SECTION_INTEGRATION_COMPLETION.json`, `artifacts/received_sections_combined.json`, and `data/architecture/packages/received_sections/cache_cleanup_successor/FOCUSED_RESULT.json`. Original editable sources are retained in their pinned GitHub handoff archives; all root-created doorway derivatives remain editable. The completed installation checkpoint is on `checkpoint/direct-integration-20261009` at `80bae0c023e0f280d90e2583bfa85f33979b896b`, including the medical successor delta. The small cache-fix and validation-results checkpoint follows separately. Main's older timestamp refers to the retained baseline, not these supplemental checkpoints. Automatic watcher remains off; meaningful manual GitHub checkpoints are the current authorized workflow.
+
+
 ## 7 October 2026, 17:56 UTC: receiving construction and whole-ship delivery priority
 
 - The restored project and source histories were hash-verified; the older recovery warning below is historical. The private GitHub publisher was restarted after an unowned-lock/private-remote/clean-mirror check. Checkpoint `9b9bc8653dfd53219bfa6461e7a1de080976ab3d` was verified at 17:48:51 UTC; all 5,404 Game and 12,186 Catalogue file hashes matched. Foreground watcher lifetime remains limited; verify current heartbeat and lock rather than this dated report.

@@ -53,7 +53,10 @@ func _ready() -> void:
 	var upper_skin:=model($ShipSpace/Districts,"AST-HUL-002.glb","TheaterWestUpperHull_Skin_WIP",Vector3.ZERO)
 	upper_skin.set_meta("persistent_id","theater_west_upper_hull_skin_002")
 	load("res://scripts/structural_floor_builder.gd").build($ShipSpace,stone,ivory,{"staff_floor":surface("staff_floor",Color.WHITE)})
-	model($ShipSpace,"AST-ATR-001_botanical_receiving_closed002.glb","BotanicalCourtReceivingClosedInterim",Vector3.ZERO)
+	if not load("res://scripts/botanical_pair_receiving.gd").validate_inputs():
+		push_error("Botanical receiving successor inputs are not finalized")
+		return
+	model($ShipSpace,"AST-ATR-001_botanical_nursery_open001.glb","BotanicalCourtReceivingClosedInterim",Vector3.ZERO)
 	model($ShipSpace,"AST-ARC-001.glb","D06_SweptGalleryBay_Draft",Vector3(-28.623,deck_y[5],0),PI/2)
 	model($ShipSpace,"AST-ATR-001.glb","AuthoredAtriumGuards_All16Levels",Vector3.ZERO)
 	build_retail_terrace()
@@ -117,6 +120,8 @@ func _ready() -> void:
 	load("res://scripts/night_table_receiving.gd").build(self)
 	load("res://scripts/laundry_receiving.gd").build(self)
 	load("res://scripts/crew_batch_receiving.gd").build(self)
+	load("res://scripts/d12_pair_receiving.gd").build(self)
+	load("res://scripts/botanical_pair_receiving.gd").build(self)
 	lighting_budget.configure(self,player)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:

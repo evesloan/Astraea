@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/received_sections_bootstrap.gd" id="2"]
 [sub_resource type="Environment" id="Environment_ship"]
 background_mode = 1
 background_color = Color(0.025, 0.034, 0.046, 1)
@@ -11,3 +12,5 @@ environment = SubResource("Environment_ship")
 [node name="Districts" type="Node3D" parent="ShipSpace"]
 [node name="PersistentActors" type="Node3D" parent="ShipSpace"]
 [node name="ShipSystems" type="Node" parent="."]
+[node name="ReceivedSectionInstallation" type="Node" parent="."]
+script = ExtResource("2")

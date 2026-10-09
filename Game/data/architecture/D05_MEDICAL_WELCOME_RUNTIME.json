@@ -24,8 +24,8 @@
     21,
     -446
   ],
-  "architecture_file": "D05_medical_connected_architecture_010.glb",
-  "core_file": "AST-CIR-005_forward_pool_market_engineering_medical_access.glb",
+  "architecture_file": "D05_medical_remaining_architecture.glb",
+  "core_file": "AST-CIR-005_forward_breakroom_d03.glb",
   "core_root_name": "ForwardPublicCore_WIP",
   "core_identity": "forward_public_core_001",
   "model_pins": {
@@ -40,7 +40,9 @@
     "D05_medical_connected_architecture_010.glb": "de676ccc9f1778ec4e1538f5a435542cc69981da9ee9aad4e6c6d294a09a38d0",
     "AST-BOT-003.glb": "4f00da3d8714710f819af566d88ba6b7fa68a17b5ab56375e16e32f4c4d558d5",
     "AST-BOT-007.glb": "467d00e588c9de6a08222d265bc0e5801fd2d9f2a1e8a932c0ce50dfeb0987d5",
-    "AST-BOT-002.glb": "3ba7d02e977877a729a2b57aa11d3a34cb9afe5665a9317c6a1d9b9ad3e84060"
+    "AST-BOT-002.glb": "3ba7d02e977877a729a2b57aa11d3a34cb9afe5665a9317c6a1d9b9ad3e84060",
+    "AST-CIR-005_forward_breakroom_d03.glb": "dd79daa1dc24e5524cebf6ba32778eee9f1b39ef6ad02fbd4e07336d3a0191de",
+    "D05_medical_remaining_architecture.glb": "c7cfb577d2bbc01c6058d77a02a87b6087b45c53022f568e9145f595d918e742"
   },
   "new_asset_import_policy": {
     "D05_forward_welcome_architecture_006.glb": {
@@ -78,6 +80,12 @@
     },
     "AST-BOT-002.glb": {
       "meshes/force_disable_compression": false
+    },
+    "AST-CIR-005_forward_breakroom_d03.glb": {
+      "meshes/force_disable_compression": true
+    },
+    "D05_medical_remaining_architecture.glb": {
+      "meshes/force_disable_compression": true
     }
   },
   "floor_owner": "D05_forward_waiting_support_floor",
@@ -2664,5 +2672,11 @@
       }
     ]
   },
-  "triage_robot_transport": "3.6 m routes reserved; actual robot/workshop envelopes and transport tests pending. No repair gameplay."
+  "triage_robot_transport": "3.6 m routes reserved; actual robot/workshop envelopes and transport tests pending. No repair gameplay.",
+  "receiving_successor": {
+    "preserved_original": "D05_medical_connected_architecture_010.glb",
+    "cap_only_opening": "ADMISSION_south_end",
+    "retained_export_meshes": 781,
+    "native_objects_preserved": 3910
+  }
 }

@@ -1,0 +1,203 @@
+{
+  "status": "PASS_WITH_EXPLICIT_INHERITED_EXCEPTIONS",
+  "pure_python_read_only_verification": true,
+  "live_files_written": false,
+  "engines_compilers_importers_executed": false,
+  "generated_exports": {
+    "AST-RCV-D06-CLOUD-LINK-001.glb": {
+      "sha256": "1750017ec2302c8ed36d300b20996917487a04585f42725b2217af3826a24003",
+      "bytes": 79076
+    },
+    "AST-ATR-001_botanical_nursery_open001.glb": {
+      "sha256": "0b5777db94e1f035bf36cc7afb85fece8a734e4ac22c759a2c83711c6ed68573",
+      "bytes": 544576
+    }
+  },
+  "native_export_parity": {
+    "cloud_meshes": 44,
+    "cloud_triangles": 528,
+    "nursery_meshes": 120,
+    "nursery_triangles": 9392,
+    "position_max_delta_m": 3.393151271069428e-08,
+    "normal_max_delta": 5.914596382394777e-05,
+    "uv_max_delta": 0
+  },
+  "source_preservation": {
+    "exact_removed_closure_meshes": 16,
+    "world_transform_only_changed_mesh": "BOTCOURT_starboard_EDGE_1_Post_3",
+    "world_z_delta_m": 0.05,
+    "all_other_119_world_meshes_exact": true,
+    "all_120_position_normal_uv_accessor_arrays_indices_materials_extras_exact": true,
+    "all_nursery_embedded_image_bytes_textures_samplers_retained": true,
+    "cloud_exported_images_match_native_packed_bytes": true
+  },
+  "support_and_contacts": {
+    "guard_footprint_uncovered_area_m2": 0,
+    "cloud_all44_floor_connected": true,
+    "cloud_face_contacts": 80,
+    "cloud_all_height_continuous_x": [
+      4,
+      8
+    ],
+    "cloud_terminal_actual_source_face_contacts": {
+      "WP03Link_forward_Foot3": 0.0001999590817263197,
+      "WP03Link_forward_Post3": 0.020593816669133957,
+      "WP03Link_forward_Cap3": 0.001599520111540187,
+      "WP03Link_aft_Foot3": 0.001200236141357891,
+      "WP03Link_aft_Post3": 0.12361250532558188,
+      "WP03Link_aft_Cap3": 0.009600973509805044
+    },
+    "nursery_all118_closed_solids_floor_connected": true,
+    "nursery_actual_contact_graph_edges": 336,
+    "nursery_moved_post_actual_plinth_rail_and_seat_contact": true,
+    "nursery_post_six_metre_aperture_clearance_m": 0.00669555738568306
+  },
+  "sweeps": [
+    {
+      "label": "Cloud link guards",
+      "lo": [
+        4,
+        27.02,
+        -458
+      ],
+      "hi": [
+        16,
+        29.4,
+        -454
+      ],
+      "strict_interior_epsilon_m": 1e-07,
+      "positive_interior_triangle_hits": [],
+      "inclusive_boundary_hits": []
+    },
+    {
+      "label": "Cloud room source",
+      "lo": [
+        4,
+        27.02,
+        -458
+      ],
+      "hi": [
+        16,
+        29.4,
+        -454
+      ],
+      "strict_interior_epsilon_m": 1e-07,
+      "positive_interior_triangle_hits": [],
+      "inclusive_boundary_hits": []
+    },
+    {
+      "label": "Nursery open court",
+      "lo": [
+        4,
+        27.02,
+        -219
+      ],
+      "hi": [
+        16,
+        29.4,
+        -213
+      ],
+      "strict_interior_epsilon_m": 1e-07,
+      "positive_interior_triangle_hits": [],
+      "inclusive_boundary_hits": [
+        {
+          "name": "BOTCOURT_starboard_EDGE_1_GuardPlinth",
+          "intersecting_triangles": 4
+        },
+        {
+          "name": "BOTCOURT_starboard_EDGE_1_Handrail",
+          "intersecting_triangles": 6
+        },
+        {
+          "name": "BOTCOURT_starboard_EDGE_1_RailSeat",
+          "intersecting_triangles": 2
+        },
+        {
+          "name": "BOTCOURT_starboard_EDGE_3_GuardPlinth",
+          "intersecting_triangles": 4
+        },
+        {
+          "name": "BOTCOURT_starboard_EDGE_3_Handrail",
+          "intersecting_triangles": 6
+        },
+        {
+          "name": "BOTCOURT_starboard_EDGE_3_RailSeat",
+          "intersecting_triangles": 2
+        }
+      ]
+    },
+    {
+      "label": "Nursery room source 4m",
+      "lo": [
+        4,
+        27.02,
+        -218
+      ],
+      "hi": [
+        16,
+        29.4,
+        -214
+      ],
+      "strict_interior_epsilon_m": 1e-07,
+      "positive_interior_triangle_hits": [],
+      "inclusive_boundary_hits": []
+    }
+  ],
+  "movement_static_clearance": {
+    "exact_prior_pins": true,
+    "fresh_source_slab_triangle_screen_clear": true,
+    "nominal_roof_slab_gap_m": 0.06000075697898666
+  },
+  "inherited_exceptions": [
+    {
+      "name": "BOTCOURT_port_PORTAL_CLOSURE_Label",
+      "nonmanifold_unchanged_decoration": true,
+      "exact_preserved_zero_area_export_triangles": 4
+    },
+    {
+      "name": "BOTCOURT_port_PORTAL_CLOSURE_Label.001",
+      "nonmanifold_unchanged_decoration": true,
+      "exact_preserved_zero_area_export_triangles": 8
+    }
+  ],
+  "failed_evidence": [
+    {
+      "file": "seal_proof_001.log",
+      "reason": "Sealing helper loaded a default EPS argument before defining it; ordering corrected before any tests or seal were produced."
+    },
+    {
+      "file": "verify_export_001.log",
+      "reason": "Local diagnostic inspect.py shadowed Python standard-library inspect during SciPy import; renamed inspect_assets.py. No geometry evaluated in that failed attempt."
+    },
+    {
+      "file": "verify_export_002.log",
+      "reason": "Blanket nondegeneracy requirement rejected exactly retained original text-label triangles. Only the two named inherited labels are excepted; all their source/export arrays remain exact."
+    },
+    {
+      "file": "verify_geometry_001.log",
+      "reason": "Invalid global-convex assumption for the stepped/tapered moved post; actual volume differs from convex hull. No hull-based contact claim retained."
+    },
+    {
+      "file": "verify_geometry_002.log",
+      "reason": "Piecewise-convex proof rejected noncoplanar exported tapered quad facets; no tolerance relaxation used. Replaced by actual closed-mesh winding and triangle-distance proof."
+    }
+  ],
+  "open_limits": [
+    "No Godot/import/runtime/controller/cart or visual acceptance performed.",
+    "Nursery 6m is the court-release aperture; the WP04 source-room clear sweep remains its documented 4m opening.",
+    "Contact and floor coverage do not certify structural load paths, construction, acoustic/fire separation or 60mm service-space sufficiency.",
+    "The two inherited port/Moss text decorations are unchanged nonmanifold meshes and excluded from the 118-solid floor graph."
+  ],
+  "rechecked_original_pins": 138,
+  "negative_controls": [
+    "original_closed_nursery_rejected",
+    "cloud_terminal_1mm_wall_penetration_rejected",
+    "deleted_panel_barrier_rejected",
+    "native_export_uv_change_rejected"
+  ],
+  "cloud_material_placement_parity": {
+    "all44_native_and_export_world_transforms_identity": true,
+    "native_export_metallic_roughness_roles_uv_scale_revision_and_texture_assignment_exact": true,
+    "evidence": "CLOUD_MATERIAL_AND_PLACEMENT_PARITY.json"
+  }
+}

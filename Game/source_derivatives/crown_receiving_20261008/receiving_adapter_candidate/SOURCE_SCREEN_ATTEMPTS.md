@@ -1,0 +1,1 @@
+The initial source-screen attempt stopped at the unavailable optional shapely import after archive checks. No dependency was installed. The final screen checks exact floor-owner existence/datum and pins the independent receiving audit; it does not claim to rerun its coverage geometry. Final successful output is SOURCE_SCREEN_RESULT.json. No Godot or Blender attempt occurred.

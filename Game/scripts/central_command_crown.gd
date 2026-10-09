@@ -6,7 +6,7 @@ static func build(parent:Node3D,ship:Node3D)->void:
 	root.name="CentralCommandCrown_WIP"
 	root.set_meta("persistent_id","D18_central_crown_001")
 	parent.add_child(root)
-	var shell:Node3D=ship.model(root,"AST-CMD-001.glb","CentralCrownArchitecture",Vector3.ZERO)
+	var shell:Node3D=ship.model(root,str(data.runtime_model_file),"CentralCrownArchitecture",Vector3.ZERO)
 	var glass:=ShaderMaterial.new()
 	glass.shader=load("res://shaders/hospitality_glass.gdshader")
 	for mesh in shell.find_children("*","MeshInstance3D",true,false):
@@ -48,3 +48,5 @@ static func build(parent:Node3D,ship:Node3D)->void:
 		light.spot_angle=float(item.get("suggested_spot_angle_degrees",76.0))
 		light.rotation.x=-PI/2
 		light.shadow_enabled=true
+	# Additive source receiving; no new floor, door or light owners.
+	load("res://scripts/crown_batch_receiving.gd").build(root,ship)

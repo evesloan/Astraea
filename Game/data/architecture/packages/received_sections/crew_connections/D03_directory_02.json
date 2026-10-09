@@ -1,0 +1,67 @@
+{
+  "programme_key": "D03_directory_02",
+  "folder": "06_custodian_breakroom",
+  "floor_prefix": "D03_directory_02",
+  "portal_xyz": [
+    8,
+    12,
+    -432
+  ],
+  "approach_start_xyz": [
+    6,
+    12,
+    -432
+  ],
+  "connections": [
+    {
+      "owner": "D03_forward_public_core_floor",
+      "boundary": [
+        [
+          7.8,
+          -434
+        ],
+        [
+          8,
+          -434
+        ],
+        [
+          8,
+          -430
+        ],
+        [
+          7.8,
+          -430
+        ]
+      ]
+    }
+  ],
+  "portal_basis": "Root primary connection uses the retained source open inboard portal at local u=0,v=34 and authored floor inlet. The separately reserved outer staff interface remains unchanged.",
+  "retained_external_gate": [
+    {
+      "kind": "existing source-platform receiving interface",
+      "xyz": [
+        50.2,
+        12.0,
+        -420
+      ],
+      "source_gate_reservation": {
+        "parent": "D03_directory_02",
+        "xz": [
+          54,
+          -420
+        ],
+        "floor_y": 12,
+        "approach_gross_width": 3.6,
+        "status": "Source-authoring target only; actual fixture/door/cart sequence untested",
+        "clear_width_m": 3.6,
+        "clear_height_m": 2.65,
+        "owner": "parent existing-family door integration",
+        "controller_created": false
+      },
+      "status": "source-authored interface; receiving floor/door/runtime still root-held",
+      "clear_width_m": 3.6,
+      "clear_height_m": 2.65
+    }
+  ],
+  "reuse_source_floor_owner": "D03_secondary_engineering_cap"
+}

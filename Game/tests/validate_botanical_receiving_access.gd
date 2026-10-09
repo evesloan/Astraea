@@ -1,7 +1,7 @@
 extends "res://tests/medical_test_scene.gd"
 # Reuse existing input/ray/support helpers; only this bounded D06 exercise is new.
-const BOTANICAL_CONTRACT := "res://tests/fixtures/botanical_moss_receiving_acceptance011.json"
-const BOTANICAL_CONTRACT_SHA := "81c9f0364f49ec765dddcacf1e9eade05892d6f1be8f5777dfc68d3d743fe714"
+const BOTANICAL_CONTRACT := "res://tests/fixtures/botanical_pair_receiving_acceptance012.json"
+const BOTANICAL_CONTRACT_SHA := "10be9972acd149993863d7c9c86922270d8908925a53e6e66c440d06711989ca"
 var walked_frames: int=0
 var travelled_m: float=0.0
 var guard_rays: int=0
@@ -14,6 +14,12 @@ var guard_probe_exclusions: Array[RID]=[]
 var footprint_support_queries: int=0
 var moss_portal_crossings: int=0
 var moss_route_completed: bool=false
+var nursery_route_completed: bool=false
+var nursery_entry_crossings: Dictionary={"out":0,"back":0}
+var pair_geometry_proof: Dictionary={}
+var pair_clearance_queries: int=0
+var pair_initialization_started_msec: int=0
+var pair_initialization_msec: int=0
 
 func _initialize() -> void:
 	test_name="botanical_receiving_access"
@@ -22,8 +28,10 @@ func _initialize() -> void:
 func vec(value: Vector3) -> Array: return [value.x,value.y,value.z]
 
 func write_receipt(status: String,detail: String="") -> void:
+	metrics["initialization_wall_msec"]=pair_initialization_msec
+	metrics["exercise_wall_msec"]=Time.get_ticks_msec()-started if started>0 else 0
 	if receipt_path.is_empty(): return
-	var out: Dictionary={"test":test_name,"status":status,"detail":detail,"physics_frames":frames,"support_samples":support_samples,"auxiliary_underlying_floor_footprint_queries":footprint_support_queries,"ordinary_walk_frames":walked_frames,"walked_metres":travelled_m,"guard_rays":guard_rays,"axial_clearance_queries":axial_clearance_queries,"completed_actual_player_bumps":completed_bumps,"seams_crossed_by_player":crossed_seams,"initial_verified_arrivals":1 if track_motion else 0,"later_teleports":0,"fixture_sha256":FileAccess.get_sha256(BOTANICAL_CONTRACT),"metrics":metrics,"moss_portal_crossings":moss_portal_crossings,"moss_route_completed":moss_route_completed,"scope":"Bounded actual unchanged-player Botanical receiving and Moss interior/return; cart/species, visuals and full ship acceptance remain separate."}
+	var out: Dictionary={"test":test_name,"status":status,"detail":detail,"physics_frames":frames,"support_samples":support_samples,"auxiliary_underlying_floor_footprint_queries":footprint_support_queries,"ordinary_walk_frames":walked_frames,"walked_metres":travelled_m,"guard_rays":guard_rays,"axial_clearance_queries":axial_clearance_queries,"completed_actual_player_bumps":completed_bumps,"seams_crossed_by_player":crossed_seams,"initial_verified_arrivals":1 if track_motion else 0,"later_teleports":0,"fixture_sha256":FileAccess.get_sha256(BOTANICAL_CONTRACT),"metrics":metrics,"moss_portal_crossings":moss_portal_crossings,"moss_route_completed":moss_route_completed,"nursery_route_completed":nursery_route_completed,"nursery_entry_crossings":nursery_entry_crossings,"pair_clearance_queries":pair_clearance_queries,"pair_geometry_runtime":pair_geometry_proof,"scope":"Bounded actual unchanged-player Botanical receiving and unchanged Moss loop with the successor Nursery static aperture checks. Actual Nursery, Cloud and loaded-cart routes are separate bounded invocations; species, visuals and full-ship acceptance remain gates."}
 	var file:=FileAccess.open(receipt_path,FileAccess.WRITE)
 	if file!=null: file.store_string(JSON.stringify(out,"  ")+"\n")
 
@@ -94,8 +102,15 @@ func static_interfaces() -> bool:
 			for y in [27.4,28.0]:
 				if side==-1 and z> -218.1 and z< -213.9:
 					if not require(ray(Vector3(-7.4,float(y),z),Vector3(-8.2,float(y),z),exclusions()).is_empty(),"Moss portal must now be clear"): return false
+				elif side==1 and z> -219 and z< -213:
+					# Six metres belongs to the court only. Stop west of the source wall;
+					# the distinct four-metre source throat is checked below.
+					if not require(ray(Vector3(7.4,float(y),z),Vector3(7.995,float(y),z),exclusions()).is_empty(),"Nursery six-metre court aperture is blocked"): return false
 				else:
-					if not guard_contact(Vector3(float(side)*7.4,float(y),z),Vector3(float(side)*8.2,float(y),z),"closed outer edge"): return false
+					var guarded_z: float=z
+					if side==1 and is_equal_approx(z,-219): guarded_z-=.25
+					if side==1 and is_equal_approx(z,-213): guarded_z+=.25
+					if not guard_contact(Vector3(float(side)*7.4,float(y),guarded_z),Vector3(float(side)*8.2,float(y),guarded_z),"retained outer edge"): return false
 		for z_and_sign in [[-238.0,1.0],[-208.0,-1.0]]:
 			var z: float=float(z_and_sign[0]);var inward: float=float(z_and_sign[1])
 			for y in [27.4,28.0]:
@@ -106,10 +121,8 @@ func static_interfaces() -> bool:
 			for x in [-7.98,-8.02,-8.5,-9.0,-10.0]:
 				if not support_at(Vector3(float(x),27,-216)): return false
 			continue
-		if not require(portal.state=="CLOSED" and portal.floor_y==27 and portal.center_z==-216,"Future portal identity/datum changed"): return false
-		var side: float=-1.0 if float(portal.edge_x)<0 else 1.0
-		for z in [float(portal.center_z)-float(portal.clear_width_m)/2+.25,float(portal.center_z),float(portal.center_z)+float(portal.clear_width_m)/2-.25]:
-			if not guard_contact(Vector3(side*7.4,27.6,z),Vector3(side*8.2,27.6,z),str(portal.programme_id)+" deliberately closed"): return false
+		if not require(portal.programme_id=="D06_directory_04" and portal.state=="OPEN" and portal.floor_y==27 and portal.center_z==-216 and portal.edge_x==8 and portal.clear_width_m==6 and portal.source_throat_clear_width_m==4,"Exact Nursery court/source aperture identities required"): return false
+		if not pair_entry_checks(data.rooms.nursery): return false
 	# An almost full-width continuous axial box; query margins do not alter production collision.
 	var shape:=BoxShape3D.new();shape.size=Vector3(7.98,3.58,2.8);shape.margin=.001
 	for z in [-237.0,-234.0,-231.0,-228.0,-225.0,-222.0,-219.0,-216.0,-213.0,-210.0]:
@@ -152,23 +165,32 @@ func exercise() -> bool:
 		if side==-1:
 			if not await moss_interior(): return false
 		else:
-			if not await bump_guard(label+" closed future portal",Vector2(float(side),0)): return false
+			# The former closed Nursery bump is superseded. Its actual entry/return
+			# has a distinct bounded invocation; the historical Moss cap is intact.
+			if not pair_entry_checks(data.rooms.nursery): return false
 		if not await route([[x,-216],[x,-234],[0,-234]]): return false
 	if not await route([[0,-209.5],[0,-234],[0,-250]]): return false
-	if not require(completed_bumps.size()==5 and moss_portal_crossings>=2 and moss_route_completed and int(crossed_seams.get("port",0))>=2 and int(crossed_seams.get("starboard",0))>=2,"Both seams and Moss doorway must be crossed out/back and all five retained actual barriers contacted"): return false
+	var bump_names: Array=[]
+	for bump in completed_bumps: bump_names.append(str(bump.name))
+	if not require(bump_names==data.retained_bump_names and moss_portal_crossings>=2 and moss_route_completed and int(crossed_seams.get("port",0))>=2 and int(crossed_seams.get("starboard",0))>=2,"Retain all four actual end bumps and the complete unchanged Moss loop; Nursery traversal is a separate gate"): return false
 	metrics["future_portals"]=data.future_portals
 	metrics["axial_strip_preserved_x_m"]=[-4,4]
 	metrics["capsule_radius_m"]=.3;metrics["capsule_height_m"]=1.8
 	return true
 
 func run() -> void:
-	started=Time.get_ticks_msec()
+	pair_initialization_started_msec=Time.get_ticks_msec()
+	started=0 # Original exercise watchdog starts after synchronous main construction.
 	receipt_path="res://artifacts/"+test_name+"_attempt_"+str(Time.get_unix_time_from_system()).replace(".","_")+"_"+str(started)+".json"
 	if not require(FileAccess.get_sha256(BOTANICAL_CONTRACT)==BOTANICAL_CONTRACT_SHA,"Exact botanical acceptance fixture required"): return
 	data=JSON.parse_string(FileAccess.get_file_as_string(BOTANICAL_CONTRACT))
 	for path in data.unchanged_input_sha256:
 		if not require(FileAccess.get_sha256("res://"+str(path))==str(data.unchanged_input_sha256[path]),"Changed retained movement/support input: "+str(path)): return
+	if not pair_source_preflight(): return
 	main=(load("res://scenes/main.tscn") as PackedScene).instantiate();root.add_child(main)
+	pair_initialization_msec=Time.get_ticks_msec()-pair_initialization_started_msec
+	started=Time.get_ticks_msec()
+	print("BOTANICAL_MAIN_READY initialization_msec=",pair_initialization_msec," exercise_watchdog_msec=480000")
 	for frame in range(150): await physics_frame
 	ship=main.get_node("World360/Astraea") as Node3D
 	actor=ship.get_node("ShipSpace/PersistentActors/Player") as CharacterBody3D
@@ -177,10 +199,12 @@ func run() -> void:
 	built=ship.get_node(NodePath(str(data.guard_root))) as Node3D
 	space=ship.get_world_3d().direct_space_state
 	for body in built.find_children("*","StaticBody3D",true,false): guard_probe_exclusions.append(body.get_rid())
-	if not require(actor!=null and cart!=null and floors!=null and built!=null,"Actual main-scene player/floors/closed guards required"): return
+	if not require(actor!=null and cart!=null and floors!=null and built!=null,"Actual main-scene player/floors/retained guards required"): return
 	if not pin_imports(): return
 	loaded_proof=load("res://tests/medical_triage_successor_guard.gd").validate_current(floors)
 	if not require(bool(loaded_proof.get("validation_completed",false)),"Complete installed botanical/medical source and contact proof failed"): return
+	if not require(load("res://tests/botanical_pair_court_guard.gd").physical_validation_succeeded(),"Actual court and Moss physical successor validation did not finish"): return
+	if not pair_runtime_geometry(): return
 	if not require(actor.get_script().resource_path=="res://scripts/player.gd" and actor.gameplay_input_enabled,"Unchanged active production player required"): return
 	var shapes: Array=actor.find_children("*","CollisionShape3D",true,false)
 	if not require(shapes.size()==1 and shapes[0].shape is CapsuleShape3D and absf(shapes[0].shape.radius-.3)<.000001 and absf(shapes[0].shape.height-1.8)<.000001 and absf(actor.camera.position.y-1.65)<.000001,"Original capsule and ordinary eye height required"): return
@@ -192,7 +216,7 @@ func run() -> void:
 	if not await exercise(): return
 	if failed: return
 	release_inputs();write_receipt("PASS")
-	print(test_name.to_upper()," PASS: ordinary unchanged-player receiving check; ",walked_frames," walk frames, ",support_samples," support rays, ",guard_rays," guard rays, ",completed_bumps.size()," real retained barrier contacts plus Moss interior/return. No cart/species acceptance.")
+	print(test_name.to_upper()," PASS: ordinary unchanged-player receiving check; ",walked_frames," walk frames, ",support_samples," support rays, ",guard_rays," guard rays, ",completed_bumps.size()," real retained barrier contacts plus unchanged Moss interior/return. Separate Nursery, Cloud and cart gates.")
 	main.queue_free();await process_frame;quit(0)
 
 # MOSS_ACCESS_EXACT_SECTION_BEGIN
@@ -230,3 +254,57 @@ func read_moss_information(identity: String) -> bool:
 	focus(false)
 	return true
 # MOSS_ACCESS_EXACT_SECTION_END
+
+# BOTANICAL_PAIR_ACCESS_ADDITIVE_BEGIN
+func pair_source_preflight() -> bool:
+	var outer=load(str(data.successor_guard))
+	if not require(outer!=null,"Authenticated D06 outer guard is missing"): return false
+	outer.ensure()
+	for path in data.projected_input_sha256:
+		if not require(outer.current_sha256("res://"+str(path))==str(data.projected_input_sha256[path]),"Exact authenticated predecessor input projection required: "+str(path)): return false
+	var configuration=JSON.parse_string(FileAccess.get_file_as_string(str(data.runtime_manifest)))
+	if not require(configuration is Dictionary and bool(configuration.get("activation_ready",false)),"D06 source candidate remains inactive; runtime import/contact gates are not ready"): return false
+	return true
+
+func pair_runtime_geometry() -> bool:
+	# Complete live imports/contacts must be authenticated in addition to source pins.
+	# No fallback to historical receipts or reconstructed miniature scenes.
+	if not require(ResourceLoader.exists(str(data.geometry_guard)),"Actual D06 room/import geometry guard is missing"): return false
+	var guard=load(str(data.geometry_guard))
+	guard.validate_pair_sources()
+	if not require(guard.validation_succeeded(),"Scoped D06 source/import geometry validation did not finish"): return false
+	pair_geometry_proof=load(str(data.live_contact_guard)).validate_current(ship,data)
+	return require(bool(pair_geometry_proof.get("validation_completed",false)),"Complete actual D06 room and Cloud-link contact correspondence required")
+
+func pair_entry_checks(room: Dictionary) -> bool:
+	var z: float=float(room.center_z)
+	for x in [3.98,4.02,6.0,7.98,8.02,10.0,14.0]:
+		var owner: String="D06_fore_route" if x<4 else (str(room.link_owner) if x<8 else str(room.floor_owner))
+		for dz in [-1.65,0.0,1.65]:
+			if not support_at(Vector3(float(x),27,z+float(dz)),owner): return false
+	# A full-height, nearly four-metre throat query uses all actual scene contacts.
+	# The 2 cm boundary inset is declared, never promoted to an exact-width proof.
+	# Exact source widths and contact meshes are independently checked by the guard.
+	var throat:=BoxShape3D.new();throat.size=Vector3(11.96,2.36,3.96);throat.margin=.001
+	var query:=PhysicsShapeQueryParameters3D.new();query.shape=throat;query.collision_mask=1;query.exclude=exclusions();query.transform.origin=Vector3(10,28.21,z)
+	if not require(space.intersect_shape(query,128).is_empty(),"Actual source four-metre entry route is blocked: "+str(room.programme)): return false
+	pair_clearance_queries+=1
+	if str(room.programme)=="D06_directory_04":
+		var court:=BoxShape3D.new();court.size=Vector3(3.93,2.36,5.96);court.margin=.001
+		query.shape=court;query.transform.origin=Vector3(6.025,28.21,z)
+		if not require(space.intersect_shape(query,128).is_empty(),"Actual court six-metre opening is blocked before the distinct source throat"): return false
+		pair_clearance_queries+=1
+	return true
+
+func nursery_interior() -> bool:
+	var room: Dictionary=data.rooms.nursery
+	for point in room.entry_return_route:
+		var before: Vector3=actor.global_position
+		if not await walk(Vector2(float(point[0]),float(point[1]))): return false
+		var after: Vector3=actor.global_position
+		if before.x<8 and after.x>=8: nursery_entry_crossings.out+=1
+		if before.x>8 and after.x<=8: nursery_entry_crossings.back+=1
+		if after.x>8 and not support_at(Vector3(after.x,27,after.z),str(room.floor_owner)): return false
+	nursery_route_completed=true
+	return true
+# BOTANICAL_PAIR_ACCESS_ADDITIVE_END

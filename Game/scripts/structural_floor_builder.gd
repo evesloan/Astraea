@@ -2,10 +2,13 @@ extends RefCounted
 
 static func build(parent: Node3D, top_material: Material, side_material: Material, materials: Dictionary = {}) -> Node3D:
 	var definition: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	return build_regions(parent, top_material, side_material, definition.regions, materials)
+
+static func build_regions(parent: Node3D, top_material: Material, side_material: Material, regions: Array, materials: Dictionary = {}, group_name: String = "CompiledStructuralFloors_NotFinishedRooms") -> Node3D:
 	var group := Node3D.new()
-	group.name = "CompiledStructuralFloors_NotFinishedRooms"
+	group.name = group_name
 	parent.add_child(group)
-	for region in definition.regions:
+	for region in regions:
 		var y := float(region.floor_y)
 		var thickness := float(region.thickness)
 		var top := SurfaceTool.new()

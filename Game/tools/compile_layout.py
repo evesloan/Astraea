@@ -83,9 +83,15 @@ for i,a in enumerate(layout['regions']):
             ay,by=levels[a['id']],levels[b['id']]
             slab_overlap=min(ay,by)-max(ay-a.get('thickness',.24),by-b.get('thickness',.24))
             assert slab_overlap<1e-6,('intersecting structural slabs',a['id'],b['id'])
-outputs=canonicalize_crew_batch_predecessor_chunks(root,layout,elevations,owned,outputs)
-outputs,preservation=preserve_prior_records(root,layout,elevations,owned,outputs)
-outputs,medical_preservation,triage_preservation,botanical_preservation,team_lounge_preservation,movement_preservation,moss_preservation,sports_care_preservation,night_table_preservation,laundry_preservation,crew_batch_preservation=preserve_crew_batch_successor(root,layout,elevations,owned,outputs,preserve_laundry_successor,preserve_night_table_successor,preserve_sports_care_successor,preserve_moss_sanctuary_successor,preserve_movement_studio_successor,preserve_team_lounge_successor,preserve_botanical_court_successor,preserve_medical_triage_successor,preserve_medical_predecessor)
+from botanical_pair_incremental_preservation import prepare_projection as prepare_botanical_pair, finish_projection as finish_botanical_pair
+botanical_prior_layout,botanical_prior_owned,botanical_prior_outputs,botanical_new_outputs=prepare_botanical_pair(root,layout,elevations,owned,outputs)
+from d12_pair_incremental_preservation import prepare_projection, finish_projection
+prior_layout,prior_owned,prior_outputs,d12_new_outputs=prepare_projection(root,botanical_prior_layout,elevations,botanical_prior_owned,botanical_prior_outputs)
+prior_outputs=canonicalize_crew_batch_predecessor_chunks(root,prior_layout,elevations,prior_owned,prior_outputs)
+prior_outputs,preservation=preserve_prior_records(root,prior_layout,elevations,prior_owned,prior_outputs)
+prior_outputs,medical_preservation,triage_preservation,botanical_preservation,team_lounge_preservation,movement_preservation,moss_preservation,sports_care_preservation,night_table_preservation,laundry_preservation,crew_batch_preservation=preserve_crew_batch_successor(root,prior_layout,elevations,prior_owned,prior_outputs,preserve_laundry_successor,preserve_night_table_successor,preserve_sports_care_successor,preserve_moss_sanctuary_successor,preserve_movement_studio_successor,preserve_team_lounge_successor,preserve_botanical_court_successor,preserve_medical_triage_successor,preserve_medical_predecessor)
+outputs,d12_receipt=finish_projection(root,prior_outputs,d12_new_outputs)
+outputs,botanical_pair_receipt=finish_botanical_pair(root,outputs,botanical_new_outputs)
 checks={'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'shapely':shapely.__version__,'geos':shapely.geos_version_string,'fully_superseded_regions':superseded,'regions':len(outputs),'triangles':sum(len(x['triangles']) for x in outputs),'polygon_validity':True,'triangle_area_conservation':True,'no_triangles_cross_applicable_voids':True,'central_terrace_exemptions_explicit':True,'theater_generic_void_preserved':True,'theater_authored_surface_allowlist_verified':sorted(theater_ids),'no_coplanar_region_overlap':True,'no_intersecting_slab_volumes':True,'ownership_uses_absolute_elevation':True,'scope':'Structural geometry only; not finished rooms, route acceptance, or capacity acceptance'}
 checks['theater_source_part_vertical_guard']=source_volumes.receipt()
 checks['theater_additive_preservation']=preservation
@@ -99,6 +105,8 @@ checks['sports_care_additive_preservation']=sports_care_preservation
 checks['night_table_additive_preservation']=night_table_preservation
 checks['laundry_additive_preservation']=laundry_preservation
 checks['crew_batch_additive_preservation']=crew_batch_preservation
+checks['d12_pair_additive_preservation']=d12_receipt
+checks['botanical_pair_additive_preservation']=botanical_pair_receipt
 (root/'data/generated/structural_meshes.json').write_text(json.dumps({'source_checks':checks,'regions':outputs},separators=(',',':'))+'\n')
 (root/'docs/LAYOUT_COMPILE_CHECKS.json').write_text(json.dumps(checks,indent=2)+'\n')
 print(json.dumps(checks))

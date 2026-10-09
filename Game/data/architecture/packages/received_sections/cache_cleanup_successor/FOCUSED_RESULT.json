@@ -1,0 +1,32 @@
+{
+  "created_utc": "2026-10-09T02:14:57.369412+00:00",
+  "scope": "Focused immutable-contact cache construction and weak-reference lifecycle; not game FPS or combined world acceptance.",
+  "preimage_sha256": "d3440479423f19660a6e68af2f730549644eb9ff1f86ccf3254a4e0589c58e35",
+  "postimage_sha256": "ac5535a9a1915c4cfb703259f0375a01642f3c40047207a34b96fc0c2ff3701a",
+  "change": "Sweep expired weak references every 256 attachments above 4096 cache entries, instead of on every attachment. Geometry creation, shape reuse, static bodies and collision flags unchanged.",
+  "before": {
+    "build_us": 1954862,
+    "cache_script": "res://data/architecture/packages/received_sections/cache_cleanup_successor/static_contact_cache_preimage.gd",
+    "contacts_created": 5258,
+    "exact_triangle_geometry": true,
+    "live_shapes": 2501,
+    "retired_entries": 2500,
+    "same_mesh_shape_reuse": true,
+    "shapes_reused": 257,
+    "status": "PASS",
+    "unique_meshes": 5000
+  },
+  "after": {
+    "build_us": 170360,
+    "cache_script": "res://scripts/static_contact_cache.gd",
+    "contacts_created": 5258,
+    "exact_triangle_geometry": true,
+    "live_shapes": 2501,
+    "retired_entries": 2500,
+    "same_mesh_shape_reuse": true,
+    "shapes_reused": 257,
+    "status": "PASS",
+    "unique_meshes": 5000
+  },
+  "focused_speedup": 11.474888471472177
+}

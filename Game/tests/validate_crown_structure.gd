@@ -2,8 +2,8 @@ extends SceneTree
 # Actual main-scene construction contacts, not structural/load certification.
 # Imported parts are material/spatial batches; ties are identified by real triangles.
 const CONTRACT := "res://data/architecture/CENTRAL_CROWN_RUNTIME.json"
-const ASSET := "res://assets/models/AST-CMD-001.glb"
-const SOURCE_EXPORT_SHA256 := "83896d8b9bcba699491cfbe13c966d6dd610edac103b0713543895f0896bfea1"
+const ASSET := "res://assets/models/AST-CMD-001_crown_fixture_relocation_20261008_r002.glb"
+const SOURCE_EXPORT_SHA256 := "f53715d135a96da5a74231221745801242f4055938be858965244084aae9246c"
 const MAX_RESULTS := 256
 const EPS := 0.001
 var failures: Array[String] = []
@@ -58,12 +58,71 @@ func contract_box(values: Array) -> AABB:
 	return AABB(Vector3(values[0], values[2], values[4]),
 		Vector3(values[1] - values[0], values[3] - values[2], values[5] - values[4]))
 
+func authenticated_import_identity_map() -> Dictionary:
+	const MAP := "res://data/architecture/crown_batch/COMMON_IMPORT_IDENTITY_MAP.json"
+	check(FileAccess.get_sha256(MAP) == "954fac72be98da724340e1b85bbeabfc721e74b22c1bd6c0b07579518916ce15", "Exact reviewed common identity map required")
+	var mapping: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(MAP))
+	check(str(mapping.source_sha256) == SOURCE_EXPORT_SHA256 and int(mapping.source_node_count) == 749 and int(mapping.active_mesh_count) == 651, "Identity map source/count pin")
+	var aliases: Dictionary = mapping.source_to_runtime
+	check(aliases.size() == 10, "Exactly ten mandatory sanitized fixture identities")
+	var bytes := FileAccess.get_file_as_bytes(ASSET)
+	var document: Dictionary = JSON.parse_string(bytes.slice(20,20+bytes.decode_u32(12)).get_string_from_utf8())
+	check(document.nodes.size() == 749, "All 749 source identities remain present")
+	var imported: Node3D = (load(ASSET) as PackedScene).instantiate()
+	var imported_nodes := imported.find_children("*", "Node3D", true, false)
+	check(imported_nodes.size() == 749, "All 749 imported identities remain present")
+	var expected: Dictionary = {}
+	var observed: Dictionary = {}
+	var mapped := 0
+	var active := 0
+	var relocated := 0
+	var visual: Node3D = shell.get_child(0)
+	check(visual.transform == imported.transform, "Common source root transform preserved")
+	for record in document.nodes:
+		var original := str(record.name)
+		var runtime := str(aliases.get(original,original))
+		if aliases.has(original):
+			check(original.begins_with("CMD_FIXTURE_RELOC_") and original.ends_with(".001") and runtime == original.replace(".001","_001"), "Exact enumerated mandatory sanitization only")
+			mapped += 1
+		check(not expected.has(runtime), "Injective common identity mapping required: " + runtime)
+		expected[runtime] = original
+		var template := imported.find_child(runtime,true,false)
+		if not check(template != null, "Missing mapped source identity: " + original): continue
+		var installed := visual.get_node_or_null(imported.get_path_to(template)) as Node3D
+		if not check(installed != null, "Installed common node path missing: " + original): continue
+		check(installed.transform == template.transform, "Installed common node transform differs: " + original)
+		check((template is MeshInstance3D) == record.has("mesh") and (installed is MeshInstance3D) == record.has("mesh"), "Exact active/retired mesh ownership: " + original)
+		if record.has("mesh"):
+			active += 1
+			if original.begins_with("CMD_FIXTURE_RELOC_"): relocated += 1
+			check(installed.mesh == template.mesh, "Installed common source mesh differs: " + original)
+	for node in imported_nodes:
+		check(not observed.has(str(node.name)), "Duplicate imported common identity")
+		observed[str(node.name)] = true
+		check(expected.has(str(node.name)), "Unexpected imported common identity: " + str(node.name))
+	check(mapped == 10 and expected.size() == 749 and observed.size() == 749 and active == 651 and relocated == 20, "Complete identity bijection and active fixture roster required")
+	imported.free()
+	return aliases
+
 func validate_meshes() -> void:
 	var minimum := Vector3(INF, INF, INF)
 	var maximum := Vector3(-INF, -INF, -INF)
 	var triangle_count := 0
 	var meshes := shell.find_children("CMD_CELL_*", "MeshInstance3D", true, false)
-	check(meshes.size() == 634, "Expected 634 source/export-verified architecture batches")
+	check(meshes.size() == 631, "Expected 631 retained active CMD_CELL batches")
+	var relocated := shell.find_children("CMD_FIXTURE_RELOC_*", "MeshInstance3D", true, false)
+	check(relocated.size() == 20, "Expected 20 independently reviewed relocated fixture batches")
+	meshes.append_array(relocated)
+	check(meshes.size() == 651, "Expected all 651 active common meshes")
+	check(shell.find_children("*", "MeshInstance3D", true, false).size() == 651, "No active common mesh omitted")
+	var roster: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/crown_batch/COMMON_MESH_ROSTER.json"))
+	var identity_map := authenticated_import_identity_map()
+	for expected in roster.retained_cell_meshes + roster.relocated_fixture_meshes:
+		var runtime_name := str(identity_map.get(str(expected),str(expected)))
+		check(shell.find_child(runtime_name,true,false) is MeshInstance3D, "Missing exact mapped active mesh identity: " + str(expected))
+	for expected in roster.retired_mesh_bindings_nodes_preserved:
+		var historic := shell.find_child(str(expected),true,false)
+		check(historic != null and not historic is MeshInstance3D, "Retired mesh binding must remain a non-mesh identity: " + str(expected))
 	for node in meshes:
 		var mesh := node as MeshInstance3D
 		if not check(mesh.mesh != null and mesh.is_visible_in_tree(), "Missing/hidden batch " + str(mesh.name)):
@@ -71,6 +130,7 @@ func validate_meshes() -> void:
 		var local_faces := mesh.mesh.get_faces()
 		var faces := PackedVector3Array()
 		var bounds: AABB = mesh.global_transform * mesh.get_aabb()
+		check(maxf(bounds.size.x,maxf(bounds.size.y,bounds.size.z)) < 16.001, "Unchanged spatial batch extent gate: " + str(mesh.name))
 		for vertex in local_faces:
 			var world_vertex: Vector3 = mesh.global_transform * vertex
 			faces.append(world_vertex)

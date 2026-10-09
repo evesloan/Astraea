@@ -1,0 +1,10 @@
+{
+  "path": "tests/validate_botanical_pair_geometry.gd",
+  "pre_sha256": "53ac2687a874b783677f80fb031096dab1bf4488d5c2d36c80b4792d7c2b9d68",
+  "post_sha256": "8b5b484a15e8606027ac6a718dde1e4d4d9a5cd69cfc06a40750a598da8e0ba8",
+  "before": " # glTF T*R*S scales basis columns, not world-space rows.\n basis.x*=scale_data.x\n basis.y*=scale_data.y\n basis.z*=scale_data.z",
+  "after": " # Exact Godot 4.6 GLTFDocument TRS setter order: set_rotation, then\n # GLTFNode.set_scale orthonormalizes before multiplying Basis.from_scale.\n # Derive solely from raw source values; retain exact Transform3D equality.\n # https://github.com/godotengine/godot/blob/4.6/modules/gltf/structures/gltf_node.cpp\n if record.has(\"scale\"):\n  basis=basis.orthonormalized()*Basis.from_scale(scale_data)",
+  "scope": "Raw-source-derived exact importer TRS evaluation; no tolerance or geometry changes",
+  "diagnostic": "TRANSFORM_NURSERY_SETTER_ORDER.json",
+  "source": "https://github.com/godotengine/godot/blob/4.6/modules/gltf/structures/gltf_node.cpp#L159-L161"
+}

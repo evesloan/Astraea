@@ -13,7 +13,7 @@ class CentralCrown(unittest.TestCase):
   cls.ledger={r['programme_key']:r for r in json.loads((R/'data/programme_ledger.json').read_text())['destinations']}
  def test_exact_six_programmes_and_export(self):
   self.assertEqual({r['programme_key'] for r in self.c['programmes']},{f'D18_directory_{i:02}'for i in range(2,8)})
-  self.assertEqual(hashlib.sha256((R/'assets/models/AST-CMD-001.glb').read_bytes()).hexdigest(),self.c['export_sha256'])
+  self.assertEqual(hashlib.sha256((R/'assets/models'/self.c['runtime_model_file']).read_bytes()).hexdigest(),self.c['export_sha256'])
   self.assertEqual(len(self.ledger),161)
  def test_existing_floor_support_and_area(self):
   compiled=json.loads((R/'data/generated/structural_meshes.json').read_text())

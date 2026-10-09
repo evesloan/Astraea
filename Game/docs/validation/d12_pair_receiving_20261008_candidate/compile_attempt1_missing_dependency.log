@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/375c2e438292/d12_pair_integration_candidate_20261008/isolated/Game/tools/compile_layout.py", line 14, in <module>
+    theater_ids=verify_theater_surfaces(root,layout,elevations)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/375c2e438292/d12_pair_integration_candidate_20261008/isolated/Game/tools/theater_surface_policy.py", line 20, in verify_theater_surfaces
+    assert hashlib.sha256(mesh.read_bytes()).hexdigest()==EXPORT_SHA,'Theater static export changed'
+                          ^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/scratch/375c2e438292/d12_pair_integration_candidate_20261008/isolated/Game/assets/models/AST-CUL-005_static_003.glb'

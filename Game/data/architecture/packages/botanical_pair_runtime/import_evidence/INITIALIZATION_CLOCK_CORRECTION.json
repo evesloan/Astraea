@@ -1,0 +1,99 @@
+{
+  "scope": "Separate synchronous main construction from unchanged480-second exercise watchdog. Same6000new-route and12000historical frame caps, same60Hz physics/assertions.",
+  "files": {
+    "tests/validate_botanical_receiving_access.gd": {
+      "pre_sha256": "eff57d715edb72b090d991e5ce91c2b0199f0a980e7a49ee7f3bdf89038e8646",
+      "post_sha256": "5ea8b88e8a851a564ad929a58866e57850f453be11a36c1c0f2fdfe6e4b40c52",
+      "inverse_edits": [
+        {
+          "before": "func write_receipt(status: String,detail: String=\"\") -> void:",
+          "after": "func write_receipt(status: String,detail: String=\"\") -> void:\n\tmetrics[\"initialization_wall_msec\"]=pair_initialization_msec\n\tmetrics[\"exercise_wall_msec\"]=Time.get_ticks_msec()-started if started>0 else 0",
+          "count": 1
+        },
+        {
+          "before": "\tmain=(load(\"res://scenes/main.tscn\") as PackedScene).instantiate();root.add_child(main)",
+          "after": "\tmain=(load(\"res://scenes/main.tscn\") as PackedScene).instantiate();root.add_child(main)\n\tpair_initialization_msec=Time.get_ticks_msec()-pair_initialization_started_msec\n\tstarted=Time.get_ticks_msec()\n\tprint(\"BOTANICAL_MAIN_READY initialization_msec=\",pair_initialization_msec,\" exercise_watchdog_msec=480000\")",
+          "count": 1
+        },
+        {
+          "before": "\tstarted=Time.get_ticks_msec()",
+          "after": "\tpair_initialization_started_msec=Time.get_ticks_msec()\n\tstarted=0 # Original exercise watchdog starts after synchronous main construction.",
+          "count": 1
+        },
+        {
+          "before": "var pair_clearance_queries: int=0",
+          "after": "var pair_clearance_queries: int=0\nvar pair_initialization_started_msec: int=0\nvar pair_initialization_msec: int=0",
+          "count": 1
+        }
+      ]
+    },
+    "tests/validate_botanical_nursery_access.gd": {
+      "pre_sha256": "eb722ae79abbfbd7d2ffa34752535fb63b7e5d2d1dc3e4facfd93ffae7ad9a8a",
+      "post_sha256": "2f6451089cd5f637220160dea04ba98662fe1fdecf867cadebdb1f9fceea9687",
+      "inverse_edits": [
+        {
+          "before": "\"physics_frames\":frames,",
+          "after": "\"metrics\":metrics,\"physics_frames\":frames,",
+          "count": 1
+        },
+        {
+          "before": "func write_receipt(status: String,detail: String=\"\") -> void:",
+          "after": "func write_receipt(status: String,detail: String=\"\") -> void:\n\tmetrics[\"initialization_wall_msec\"]=pair_initialization_msec\n\tmetrics[\"exercise_wall_msec\"]=Time.get_ticks_msec()-started if started>0 else 0",
+          "count": 1
+        },
+        {
+          "before": "\tmain=(load(\"res://scenes/main.tscn\") as PackedScene).instantiate();root.add_child(main)",
+          "after": "\tmain=(load(\"res://scenes/main.tscn\") as PackedScene).instantiate();root.add_child(main)\n\tpair_initialization_msec=Time.get_ticks_msec()-pair_initialization_started_msec\n\tstarted=Time.get_ticks_msec()\n\tprint(\"BOTANICAL_MAIN_READY initialization_msec=\",pair_initialization_msec,\" exercise_watchdog_msec=480000\")",
+          "count": 1
+        },
+        {
+          "before": "\tstarted=Time.get_ticks_msec()",
+          "after": "\tpair_initialization_started_msec=Time.get_ticks_msec()\n\tstarted=0 # Original exercise watchdog starts after synchronous main construction.",
+          "count": 1
+        }
+      ]
+    },
+    "tests/validate_botanical_cloud_access.gd": {
+      "pre_sha256": "20f4025b4dda0c995b690074ba4f611cb9b8791c5ff415e5141387ce747d5e00",
+      "post_sha256": "20127a05868f73d03965e7b03665d7e57ec860c43e000e586d28776a58a0e80a",
+      "inverse_edits": [
+        {
+          "before": "func write_receipt(status: String,detail: String=\"\") -> void:",
+          "after": "func write_receipt(status: String,detail: String=\"\") -> void:\n\tmetrics[\"initialization_wall_msec\"]=pair_initialization_msec\n\tmetrics[\"exercise_wall_msec\"]=Time.get_ticks_msec()-started if started>0 else 0",
+          "count": 1
+        },
+        {
+          "before": "\tmain=(load(\"res://scenes/main.tscn\") as PackedScene).instantiate();root.add_child(main)",
+          "after": "\tmain=(load(\"res://scenes/main.tscn\") as PackedScene).instantiate();root.add_child(main)\n\tpair_initialization_msec=Time.get_ticks_msec()-pair_initialization_started_msec\n\tstarted=Time.get_ticks_msec()\n\tprint(\"BOTANICAL_MAIN_READY initialization_msec=\",pair_initialization_msec,\" exercise_watchdog_msec=480000\")",
+          "count": 1
+        },
+        {
+          "before": "\tstarted=Time.get_ticks_msec()",
+          "after": "\tpair_initialization_started_msec=Time.get_ticks_msec()\n\tstarted=0 # Original exercise watchdog starts after synchronous main construction.",
+          "count": 1
+        }
+      ]
+    },
+    "tests/validate_botanical_pair_cart.gd": {
+      "pre_sha256": "3367c087164c938ece4fee096a21be5aeb9f4018125d0c47604920d411ffc559",
+      "post_sha256": "3479f0c1f2900fcac30d06bdcb18e7fb6de45d95d0bc721ce2b00f7167bad866",
+      "inverse_edits": [
+        {
+          "before": "func write_receipt(status: String,detail: String=\"\") -> void:",
+          "after": "func write_receipt(status: String,detail: String=\"\") -> void:\n\tmetrics[\"initialization_wall_msec\"]=pair_initialization_msec\n\tmetrics[\"exercise_wall_msec\"]=Time.get_ticks_msec()-started if started>0 else 0",
+          "count": 1
+        },
+        {
+          "before": "\tmain=(load(\"res://scenes/main.tscn\") as PackedScene).instantiate();root.add_child(main)",
+          "after": "\tmain=(load(\"res://scenes/main.tscn\") as PackedScene).instantiate();root.add_child(main)\n\tpair_initialization_msec=Time.get_ticks_msec()-pair_initialization_started_msec\n\tstarted=Time.get_ticks_msec()\n\tprint(\"BOTANICAL_MAIN_READY initialization_msec=\",pair_initialization_msec,\" exercise_watchdog_msec=480000\")",
+          "count": 1
+        },
+        {
+          "before": "\tstarted=Time.get_ticks_msec()",
+          "after": "\tpair_initialization_started_msec=Time.get_ticks_msec()\n\tstarted=0 # Original exercise watchdog starts after synchronous main construction.",
+          "count": 1
+        }
+      ]
+    }
+  }
+}

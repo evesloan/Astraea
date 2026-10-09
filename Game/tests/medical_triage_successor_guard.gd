@@ -108,9 +108,11 @@ static func retained_sha256(path: String) -> String:
 	if proof.predecessors.has(relative): return str(proof.predecessors[relative].sha256)
 	return _pool_finish_sha256(relative)
 static func is_current_compiled(value: Dictionary) -> bool:
+	value=load("res://tests/d12_pair_successor_guard.gd").project_compiled(value)
 	_ensure()
 	return checked and (value==current_compiled or value==botanical_current_compiled or value==team_lounge_current_compiled or value==movement_current_compiled or value==moss_current_compiled or value==sports_care_current_compiled or value==night_current_compiled or value==laundry_current_compiled or value==crew_current_compiled)
 static func retained_compiled(value: Dictionary) -> Dictionary:
+	value=load("res://tests/d12_pair_successor_guard.gd").project_compiled(value)
 	_ensure()
 	if not checked: return {}
 	if value==crew_current_compiled: value=laundry_current_compiled
@@ -355,6 +357,9 @@ static func _botanical_import_names(expected_objects: Dictionary) -> Dictionary:
 	return import_to_source
 
 static func _botanical_validate_guards(floors: Node) -> void:
+	load("res://tests/botanical_pair_court_guard.gd").validate(floors,botanical_proof)
+
+static func _botanical_validate_guards_pre_d06(floors: Node) -> void:
 	var wrapper: Node3D=floors.get_parent().get_node(NodePath(str(botanical_proof.guard_root))) as Node3D
 	assert(wrapper!=null and wrapper.global_transform==Transform3D.IDENTITY)
 	assert(wrapper.get_meta("catalogue_file","")==str(botanical_proof.guard_file))
@@ -497,12 +502,14 @@ static func _team_lounge_ensure() -> void:
 static func _team_lounge_current_text(path: String) -> String:
 	_team_lounge_ensure()
 	var relative:=_relative(path)
+	if relative=="tools/validate.py":return load("res://tests/d12_pair_successor_guard.gd").current_text("res://"+relative)
 	if relative in team_lounge_proof.projected_paths: return str(team_lounge_predecessor_text[relative])
 	return FileAccess.get_file_as_string("res://"+relative)
 
 static func _team_lounge_current_sha256(path: String) -> String:
 	_team_lounge_ensure()
 	var relative:=_relative(path)
+	if relative=="tools/validate.py":return load("res://tests/d12_pair_successor_guard.gd").current_sha256("res://"+relative)
 	if relative in team_lounge_proof.projected_paths: return _team_lounge_current_text(relative).sha256_text()
 	return FileAccess.get_sha256("res://"+relative)
 
@@ -1288,7 +1295,7 @@ static func _moss_validate_runtime(floors: Node) -> void:
 			assert(not visual.visible and contacts[0].disabled and visual.get_meta("moss_supported_portal_open",false));opened+=1
 		else:
 			assert(visual.visible and not contacts[0].disabled and not visual.has_meta("moss_supported_portal_open"));closed+=1
-	assert(opened==14 and closed==122)
+	load("res://tests/botanical_pair_court_guard.gd").validate_moss_roster(wrapper,opened,closed,data.opened_guard_names)
 	var budgets: Array=space.get_parent().find_children("LocalShadowSourceBudget","Node",true,false)
 	assert(budgets.size()==1 and budgets[0].shadow_source_budget==8 and budgets[0].MAX_VISIBILITY_CANDIDATES==32)
 
@@ -1438,12 +1445,14 @@ static func _sports_care_ensure() -> void:
 static func _sports_care_current_text(path: String) -> String:
 	_sports_care_ensure()
 	var relative:=_relative(path)
+	if relative=="tests/validate_botanical_receiving_access.gd":return load("res://tests/botanical_pair_successor_guard.gd").current_text("res://"+relative)
 	if relative in sports_care_proof.projected_paths: return str(sports_care_predecessor_text[relative])
 	return FileAccess.get_file_as_string("res://"+relative)
 
 static func _sports_care_current_sha256(path: String) -> String:
 	_sports_care_ensure()
 	var relative:=_relative(path)
+	if relative=="tests/validate_botanical_receiving_access.gd":return load("res://tests/botanical_pair_successor_guard.gd").current_sha256("res://"+relative)
 	if relative in sports_care_proof.projected_paths: return _sports_care_current_text(relative).sha256_text()
 	return FileAccess.get_sha256("res://"+relative)
 
@@ -2164,7 +2173,7 @@ static func _laundry_current_sha256(path:String)->String:
 	return _laundry_current_text(path).sha256_text() if laundry_old.has(path.trim_prefix("res://")) else _crew_current_sha256(path)
 static func _laundry_floor_children(floors:Node)->Array:
 	_laundry_ensure()
-	assert(floors!=null and floors.get_child_count()==296)
+	assert(floors!=null and load("res://tests/d12_pair_successor_guard.gd").floor_children(floors).size()==296)
 	var children:=_crew_floor_children(floors);var retained:Array=[]
 	for i in range(children.size()):
 		var row:Dictionary=laundry_current_compiled.regions[i]
@@ -2207,17 +2216,17 @@ static var crew_current_compiled:Dictionary={}
 static var crew_proof:Dictionary={}
 static func _crew_ensure()->void:
 	if crew_checked:return
-	assert(FileAccess.get_sha256(CREW_PROOF)==CREW_PROOF_SHA)
-	crew_proof=JSON.parse_string(FileAccess.get_file_as_string(CREW_PROOF))
+	assert(load("res://tests/d12_pair_successor_guard.gd").current_sha256(CREW_PROOF)==CREW_PROOF_SHA)
+	crew_proof=JSON.parse_string(load("res://tests/d12_pair_successor_guard.gd").current_text(CREW_PROOF))
 	for path in crew_proof.predecessors:
 		var spec:Dictionary=crew_proof.predecessors[path]
 		var file:String="res://"+str(spec.retained_path)
-		assert(FileAccess.get_sha256(file)==str(spec.sha256))
-		crew_old[path]=FileAccess.get_file_as_string(file)
+		assert(load("res://tests/d12_pair_successor_guard.gd").current_sha256(file)==str(spec.sha256))
+		crew_old[path]=load("res://tests/d12_pair_successor_guard.gd").current_text(file)
 	for path in crew_proof.current_sha256:
-		assert(FileAccess.get_sha256("res://"+str(path))==str(crew_proof.current_sha256[path]))
+		assert(load("res://tests/d12_pair_successor_guard.gd").current_sha256("res://"+str(path))==str(crew_proof.current_sha256[path]))
 	for path in crew_proof.inverse_edits:
-		var current:=FileAccess.get_file_as_string("res://"+str(path))
+		var current:String=load("res://tests/d12_pair_successor_guard.gd").current_text("res://"+str(path))
 		if str(path)=="tests/medical_triage_successor_guard.gd":
 			var a:String="# CREW_EXACT_SECTION_"+"BEGIN\n"
 			var z:String="# CREW_EXACT_SECTION_"+"END\n"
@@ -2229,9 +2238,9 @@ static func _crew_ensure()->void:
 			assert(current.count(str(edit.after))==int(edit.count))
 			current=current.replace(str(edit.after),str(edit.before))
 		assert(current==str(crew_old[path]),"Laundry must preserve every predecessor byte")
-	var layout:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/spatial_layout.json"))
+	var layout:Dictionary=JSON.parse_string(load("res://tests/d12_pair_successor_guard.gd").current_text("res://data/spatial_layout.json"))
 	var old_layout:Dictionary=JSON.parse_string(str(crew_old["data/spatial_layout.json"]))
-	crew_current_compiled=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+	crew_current_compiled=JSON.parse_string(load("res://tests/d12_pair_successor_guard.gd").current_text("res://data/generated/structural_meshes.json"))
 	var old_compiled_n:Dictionary=JSON.parse_string(str(crew_old["data/generated/structural_meshes.json"]))
 	for pair in [[layout,old_layout,crew_proof.added_layout],[crew_current_compiled,old_compiled_n,crew_proof.added_compiled]]:
 		var wanted:Array=pair[1].regions.duplicate(true);wanted.append_array(pair[2])
@@ -2243,20 +2252,21 @@ static func _crew_ensure()->void:
 	a=crew_current_compiled.duplicate(true);b=old_compiled_n.duplicate(true)
 	for key in ["regions","source_checks"]:a.erase(key);b.erase(key)
 	assert(a==b)
-	assert(crew_current_compiled.source_checks==JSON.parse_string(FileAccess.get_file_as_string("res://docs/LAYOUT_COMPILE_CHECKS.json")))
+	assert(crew_current_compiled.source_checks==JSON.parse_string(load("res://tests/d12_pair_successor_guard.gd").current_text("res://docs/LAYOUT_COMPILE_CHECKS.json")))
 	assert(crew_current_compiled.regions.size()==296 and old_compiled_n.regions.size()==286)
 	crew_checked=true
 static func _crew_current_text(path:String)->String:
 	_crew_ensure()
 	var key:=path.trim_prefix("res://")
-	return str(crew_old[key]) if crew_old.has(key) else FileAccess.get_file_as_string(path)
+	return str(crew_old[key]) if crew_old.has(key) else load("res://tests/d12_pair_successor_guard.gd").current_text(path)
 static func _crew_current_sha256(path:String)->String:
 	_crew_ensure()
-	return _crew_current_text(path).sha256_text() if crew_old.has(path.trim_prefix("res://")) else FileAccess.get_sha256(path)
+	return _crew_current_text(path).sha256_text() if crew_old.has(path.trim_prefix("res://")) else load("res://tests/d12_pair_successor_guard.gd").current_sha256(path)
 static func _crew_floor_children(floors:Node)->Array:
 	_crew_ensure()
-	assert(floors!=null and floors.get_child_count()==296)
-	var children:=floors.get_children();var retained:Array=[]
+	assert(floors!=null)
+	var children:Array=load("res://tests/d12_pair_successor_guard.gd").floor_children(floors);assert(children.size()==296)
+	var retained:Array=[]
 	for i in range(children.size()):
 		var row:Dictionary=crew_current_compiled.regions[i]
 		assert(str(children[i].name)==str(row.id))
@@ -2276,7 +2286,7 @@ static func _crew_validate_model(wrapper:Node3D,file:String,expected_meshes:int)
 	assert(count==expected_meshes);original.free()
 static func _crew_validate_runtime(ship:Node)->void:
 	_crew_ensure()
-	var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/crew_batch/runtime_manifest.json"))
+	var data:Dictionary=JSON.parse_string(load("res://tests/d12_pair_successor_guard.gd").current_text("res://data/architecture/crew_batch/runtime_manifest.json"))
 	var root:Node3D=ship.get_node("ShipSpace/"+str(data.root_name))
 	assert(root.transform==Transform3D.IDENTITY and root.get_child_count()==5 and root.get_meta("operational_acceptance")==false)
 	var counts:Dictionary={"D03_directory_05":555,"D03_directory_06":576,"D03_directory_07":403,"D03_directory_08":346,"D03_directory_10":817}

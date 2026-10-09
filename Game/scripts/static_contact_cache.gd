@@ -12,7 +12,9 @@ static func attach(instance: MeshInstance3D) -> void:
 		shape = instance.mesh.create_trimesh_shape()
 		shapes[key] = weakref(shape)
 	else: shapes_reused += 1
-	if shapes.size() > 4096:
+	# Expired WeakRefs do not own collision resources. Sweep periodically instead
+	# of rescanning every live shape for every attached ship mesh.
+	if shapes.size() > 4096 and contacts_created % 256 == 0:
 		for old_key in shapes.keys():
 			if shapes[old_key].get_ref() == null: shapes.erase(old_key)
 	var body := StaticBody3D.new()
