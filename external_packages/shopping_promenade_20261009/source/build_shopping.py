@@ -46,7 +46,9 @@ def chunk(row):
  global ROOT,COL,CURRENT
  CURRENT=row;ident=row['chunk_id'];COL=bpy.data.collections.new(ident);bpy.context.scene.collection.children.link(COL);ROOT=bpy.data.objects.new(ident,None);COL.objects.link(ROOT);ROOT.location=(row['position'][0],-row['position'][2],0);ROOT['chunk_id']=ident;ROOT['room_id']=row.get('stable_room_id') or '';ROOT['proposed_room_id']=row.get('proposed_room_id') or '';ROOT['identity_status']=row.get('identity_status','architectural_circulation');ROOT['datum_world_y']=52.5;ROOT['source_frame']='Blender XYZ m Z up; GLB native Y up';ROOT['render_scope']='This bounded chunk only'
 def mesh(name,verts,faces,role,layer='fitout',opaque=False):
- name=CURRENT['chunk_id']+'__'+name;me=bpy.data.meshes.new(name);me.from_pydata(verts,[],faces);me.update();bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(me);bm.free();me.update();me.materials.append(M[role]);uv=me.uv_layers.new(name='metric_material_uv');sc=M[role].get('meters_per_tile_uv',[1,1])
+ name=CURRENT['chunk_id']+'__'+name;me=bpy.data.meshes.new(name);me.from_pydata(verts,[],faces);me.update();bm=bmesh.new();bm.from_mesh(me)
+ if layer=='floor':bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-7)
+ bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(me);bm.free();me.update();me.materials.append(M[role]);uv=me.uv_layers.new(name='metric_material_uv');sc=M[role].get('meters_per_tile_uv',[1,1])
  for f in me.polygons:
   axis=max(range(3),key=lambda a:abs(f.normal[a]));axes=[a for a in range(3) if a!=axis]
   for li in f.loop_indices:
@@ -194,7 +196,7 @@ def room_fitout(r):
   for u in [-3.4,3.1]:native_asset('AST-RTL-003',u,-.1,0,-.1 if u<0 else .1,'parcel_public_'+str(u))
   shelving('parcel_cubbies',-3.1,1.7,3.3,.8,2.4);native_asset('AST-RTL-002',3.3,-2.5,0,0,'parcel_landing');display_goods('parcel_samples',3.2,-2.8,.69,2)
  elif f==4:
-  bench('soft_curve',[(-4.3,-2.5),(-3.1,-2.3),(-2.6,-1.4),(-2.7,.4),(-3.5,1.0)],'oatmeal_weave');bench('soft_wall',[(3.6,-2.5),(4.6,-.2)],'teal_weave');native_asset('AST-RTL-002',2.8,.5,0,.25,'soft_samples');native_asset('AST-RTL-008',-4.9,1.8,2.2,0,'soft_hanging_sample');planter('soft_green',-4.8,-3.8,.4)
+  bench('soft_curve',[(-4.3,-2.5),(-3.1,-2.3),(-2.6,-1.4),(-2.7,.4),(-3.5,1.0)],'oatmeal_weave');bench('soft_wall',[(3.6,-2.5),(4.6,-.2)],'teal_weave');native_asset('AST-RTL-002',2.8,.5,0,.25,'soft_samples');native_asset('AST-RTL-008',-4.9,1.8,2.2,0,'soft_hanging_sample');planter('soft_green',-3.3,-4.5,.4)
  elif f==5:
   for u in [-3.5,3.5]:
    native_asset('AST-RTL-001',u,.65,0,-.2 if u<0 else .2,'paper_library_'+str(u));display_goods('paper_stack_'+str(u),u,.4,.95,1)
@@ -210,7 +212,7 @@ def room_fitout(r):
   for j in range(10):disk('button_sample_'+str(j),-4.6+j*.24,1.2,.062,1.1,1.13,C if j%2 else T,12)
  elif f==9:
   for u,v in [(-3.4,-2.1),(3.3,-.4)]:native_asset('AST-RTL-002',u,v,0,(variant%3)*.18,'curio_'+str(u));display_goods('curio_sample_'+str(u),u,v-.25,.69,0)
-  native_asset('AST-RTL-003',-3.0,1.7,0,0,'curio_care');planter('curio_green',4.8,-3.5,.4)
+  native_asset('AST-RTL-003',-3.0,1.7,0,0,'curio_care');planter('curio_green',3.4,-4.5,.4)
  # Low paired surface gives an inclusive resting/reach alternative without claiming species fit.
  cube('low_contact_surface_foot',(-4.9,-4.8,0),(-4.5,-4.2,.43),W);cube('low_contact_surface',(-5.0,-4.9,.43),(-4.35,-4.1,.50),O)
  mark('accessible_low_surface',-4.65,-4.5,.50,'reserved_low_support');mark('work_surface',1.68,3.75,.95,'wrapping_support');mark('persistent_goods_socket',3.0,1.9,1.0,'future_owned_merchandise_anchor')

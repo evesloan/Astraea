@@ -46,7 +46,9 @@ for r in PLAN['rooms']+PLAN['chunks']:
       assert 'TEXCOORD_0' in p['attributes'];uv=accessor(d,b,p['attributes']['TEXCOORD_0']);assert np.isfinite(uv).all();image=d['images'][d['textures'][tex['index']]['source']];assert 'bufferView' in image and 'uri' not in image
      ind=accessor(d,b,p['indices']).ravel().astype(int);assert np.max(ind)<len(pos);assert len(ind)%3==0;tri=pos[ind].reshape(-1,3,3);triangles+=len(tri)
      if layer=='floor':
-      top=tri[np.max(np.abs(tri[:,:,1]),axis=1)<1e-5];area+=float(np.sum(np.abs(np.cross(top[:,1,[0,2]]-top[:,0,[0,2]],top[:,2,[0,2]]-top[:,0,[0,2]]))*.5)) if len(top) else 0
+      top=tri[np.max(np.abs(tri[:,:,1]),axis=1)<1e-5]
+      if len(top):
+       aa=top[:,1][:,[0,2]]-top[:,0][:,[0,2]];bb=top[:,2][:,[0,2]]-top[:,0][:,[0,2]];area+=float(np.sum(np.abs(aa[:,0]*bb[:,1]-aa[:,1]*bb[:,0]))*.5)
    source=np.array([p for row in SOURCE[r['chunk_id']+'__'+layer] for p in row['vertices_xyz']]);actual=np.array(pts)
    err=max(match(actual,source),match(source,actual));maxerror=max(maxerror,err);all_bounds[r['chunk_id']+'__'+layer]={'min':actual.min(axis=0).tolist(),'max':actual.max(axis=0).tolist()}
    if layer=='floor':

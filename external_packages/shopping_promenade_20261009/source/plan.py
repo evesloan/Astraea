@@ -63,7 +63,7 @@ for side in [-1,1]:
     geom=box(min(side*x0,side*x1),a,max(side*x0,side*x1),b);floor(key,geom,'service_street')
     chunks.append({'chunk_id':key,'kind':'service','position':[side*(x0+x1)/2,52.5,(a+b)/2],'bounds_xz':[[min(side*x0,side*x1),max(side*x0,side*x1)],[a,b]],'exports':{k:'exports/'+key+'__'+k+'.glb' for k in ['floor','shell']},'purpose':['Continuous rear stock/repair/delivery access','Opaque service edge and seated roof','No operational stocking or staff permissions implemented']})
  # Public links cross only empty gaps between allocated buildings and large rooms.
- for z,label in [(-379,'Orchard approach'),(-275,'Orchard Exchange and Food Hall'),(-145,'Forward shops'),(-69,'Atrium fore'),(69,'Atrium aft'),(145,'Aft shops'),(275,'Post parcels and Living Gifts'),(379,'Bakery and Companion Games approach')]:
+ for z,label in [(-379,'Orchard approach'),(-301,'Orchard Exchange and Food Hall'),(-145,'Forward shops'),(-69,'Atrium fore'),(69,'Atrium aft'),(145,'Aft shops'),(301,'Post parcels and Living Gifts'),(379,'Bakery and Companion Games approach')]:
   endz=372 if z==379 else z
   pts=[(side*4,z),(side*86,z)]
   if z==379:pts.append((side*86,endz))
