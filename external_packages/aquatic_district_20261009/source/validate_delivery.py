@@ -41,8 +41,13 @@ if __name__=='__main__':
    expected=np.concatenate([np.array(source[n]['world_vertices_xyz']) for n in names]);actual=a['positions'];assert np.all(np.isfinite(actual))
    # glTF UV/normal seams duplicate vertices; compare unique positions in both directions.
    def mismatch(v,w):
-    w=np.unique(np.round(w,6),axis=0);v=np.unique(np.round(v,6),axis=0);keys={tuple(q) for q in np.round(w,3)};miss=[q for q in v if tuple(np.round(q,3)) not in keys];err=0
-    for q in miss:err=max(err,float(np.min(np.linalg.norm(w-q,axis=1))))
+    w=np.unique(np.round(w,7),axis=0);v=np.unique(np.round(v,7),axis=0);bins={}
+    for q in w:bins.setdefault(tuple(np.round(q,3)),[]).append(q)
+    err=0
+    for q in v:
+     candidates=bins.get(tuple(np.round(q,3)))
+     near=np.array(candidates) if candidates else w
+     err=max(err,float(np.min(np.linalg.norm(near-q,axis=1))))
     return err
    err=max(mismatch(actual,expected),mismatch(expected,actual));maxerr=max(maxerr,err);assert err<1e-4,(key,err)
    assert np.max(np.abs(actual.min(axis=0)-expected.min(axis=0)))<1e-4
@@ -59,7 +64,7 @@ if __name__=='__main__':
   if 'cascade_' in n:continue
   if a['bounds_min'][1]<43.7599 or a['bounds_max'][1]>51.9501:bad.append(n)
  assert not bad,bad
- report={'passed':True,'source_meshes_covered':len(covered),'max_checked_vertex_position_error_m':maxerr,'embedded_resources_and_UVs':True,'exports':out,'retained_input_files_unchanged':len(baseline),'annex_vertical_bounds_pass':True,'scope':'Actual source/world-GLB geometry, embedded resources, vertical bounds and retained bytes. No runtime navigation, pressure/load, ride physics, broad-body or final-art acceptance.'}
+ report={'passed':True,'source_meshes_covered':len(covered),'max_checked_vertex_position_error_m':maxerr,'position_check':'Bidirectional nearest-position distances for every unique evaluated source and world GLB vertex; 0.1mm tolerance. Spatial bins accelerate matching but do not substitute rounded-key equality.','embedded_resources_and_UVs':True,'exports':out,'retained_input_files_unchanged':len(baseline),'annex_vertical_bounds_pass':True,'scope':'Actual source/world-GLB geometry, embedded resources, vertical bounds and retained bytes. No runtime navigation, pressure/load, ride physics, broad-body or final-art acceptance.'}
  (P/'qa/source_export_validation.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2))
  # Read actual retained runtime exports as source baseline; no import or mutation.
  retained={}
