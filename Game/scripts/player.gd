@@ -8,6 +8,8 @@ var interaction_target: Node
 var interaction_requested := false
 var held_interaction:Node
 var gameplay_input_enabled:=true
+@export var jump_speed := 3.6
+var jump_requested := false
 
 func _ready() -> void:
 	name = "Player"
@@ -31,9 +33,12 @@ func set_controls_enabled(enabled:bool) -> void:
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED if enabled else Input.MOUSE_MODE_VISIBLE
 	if not enabled:
 		interaction_requested=false
+		jump_requested=false
 		if is_instance_valid(held_interaction):held_interaction.interact(self)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if gameplay_input_enabled and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_SPACE:
+		jump_requested = true
 	if gameplay_input_enabled and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_E:
 		interaction_requested = true
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
@@ -55,7 +60,9 @@ func _physics_process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, wish.x, delta * 16.0)
 	velocity.z = move_toward(velocity.z, wish.z, delta * 16.0)
 	if not is_on_floor(): velocity.y -= 9.8 * delta
+	elif gameplay_input_enabled and jump_requested: velocity.y = jump_speed
 	else: velocity.y = 0.0
+	jump_requested = false
 	move_and_slide()
 	interaction_target = (held_interaction if is_instance_valid(held_interaction) else target_from_view()) if gameplay_input_enabled and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) else null
 	if interaction_requested:

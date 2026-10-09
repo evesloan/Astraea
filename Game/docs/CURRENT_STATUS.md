@@ -1,3 +1,7 @@
+## 9 October 2026, 13:34 UTC: Published 83-section checkpoint and player jump
+
+Main and integration branch were verified at 61d08dc0c1f27226df961aa43327a60f81bace77 (13:31 UTC). All 83 installed section keys are protected, with later editable sources indexed. Space now produces a grounded 0.66 m hop, rejects repeat/airborne input and preserves WASD, RMB focus and E interaction. Thirteen bounded production-controller checks pass, followed by actual main-scene load/18 bulk registrations. This controls successor awaits its own publication. Windows execution, full traversal, cart jumping and final art are not accepted. Aquatic package 014bc41 is source-delivered but not installed.
+
 # Astraea current production status
 
 ## 9 October 2026, 07:06 UTC: All23 remaining helper destinations installed

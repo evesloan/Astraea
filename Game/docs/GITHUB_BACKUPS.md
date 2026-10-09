@@ -1,3 +1,7 @@
+## Current cloud protection, 9 October 2026
+
+The previous watcher is not verified running. Current approved operation uses meaningful published checkpoints through the working GitHub connection. Main is canonical. Commit 61d08dc0c1f27226df961aa43327a60f81bace77 independently protects all 83 installed sections and indexed editable sources. Historical source branches and Library checkpoints remain retained. Later sections below describe the earlier watcher, not proof of its present operation.
+
 # GitHub checkpoint protection
 
 Destination: private https://github.com/evesloan/Astraea
