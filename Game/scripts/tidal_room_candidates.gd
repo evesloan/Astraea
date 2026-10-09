@@ -12,11 +12,13 @@ static func build(ship: Node3D) -> Node3D:
 	parent.add_child(root)
 	var prototypes: Dictionary = {}
 	var scenes: Dictionary = {}
+	var local_bounds:Dictionary={}
 	for prototype in definition.prototypes:
 		var path := "res://assets/models/"+str(prototype.model_file)
 		assert(FileAccess.get_sha256(path)==str(prototype.sha256))
 		prototypes[str(prototype.key)] = prototype
 		scenes[str(prototype.key)] = load(path) as PackedScene
+		local_bounds[str(prototype.key)]=load("res://scripts/deferred_home_visual.gd").bounds(scenes[str(prototype.key)])
 	var indices: Dictionary = {}
 	var identities: Dictionary = {}
 	var rest_slots := 0
@@ -36,12 +38,10 @@ static func build(ship: Node3D) -> Node3D:
 		room.set_meta("finished",false)
 		root.add_child(room)
 		var prototype: Dictionary = prototypes[str(unit.source_recipe_key)]
-		var visual: Node3D = (scenes[str(unit.source_recipe_key)] as PackedScene).instantiate()
-		room.add_child(visual)
-		var meshes := visual.find_children("*","MeshInstance3D",true,false)
-		assert(meshes.size()==int(prototype.mesh_batches))
-		for mesh: MeshInstance3D in meshes:
-			load("res://scripts/static_contact_cache.gd").attach(mesh)
+		room.set_meta("deferred_visual_scene",scenes[str(unit.source_recipe_key)])
+		load("res://scripts/deferred_home_visual.gd").install_occluder(ship,room,scenes[str(unit.source_recipe_key)])
+		room.set_meta("deferred_visual_bounds",local_bounds[str(unit.source_recipe_key)])
+		room.set_meta("deferred_visual_meshes",int(prototype.mesh_batches))
 		for binding in prototype.doors:
 			var entry := str(binding.label)=="EntryDoor"
 			assert(str(binding.catalogue_source).ends_with("AST-DOR-002.blend") if entry else str(binding.catalogue_source).ends_with("AST-DOR-001.blend"))

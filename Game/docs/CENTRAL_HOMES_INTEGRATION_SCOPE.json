@@ -1,0 +1,35 @@
+{
+  "status": "installed_floor_checks_pass_residency_validation_in_progress",
+  "source_units": {
+    "StarAtlas": 85,
+    "NightGarden": 80
+  },
+  "rest_anchors": 431,
+  "preserved_existing_pilots": 2,
+  "street_source": "BlenderCatalogue/assets/central_residential_streets_20261009",
+  "street_regions": 15,
+  "exposed_guard_segments": 224,
+  "source_review": "PASS:valid winding, exact triangulation coverage, zero retained floor/room overlap, guard boundaries exclude room allocations and existing floor joins",
+  "pilot_guard_change": "Only obsolete temporary edges8-10 opened for new north continuation, crosslink and two outer entries. Remaining edges and rooms preserved.",
+  "limits": [
+    "Receiving support frames",
+    "Wintergardens and privacy treatment",
+    "Passenger lifts and complete service routes",
+    "Remaining specialty/VIP/D17 rooms",
+    "Final visual/furnishing/light acceptance",
+    "Occupancy and full traversal acceptance",
+    "Target GPU FPS"
+  ],
+  "startup_diagnostic": {
+    "first_tests": "Externally killed with SIGKILL; instrumented peak around6,944,900KiB after base residential+received cinema assembly, before global occlusion",
+    "response": "On-demand immutable interior instances across all498 retained homes; original room and moving-door nodes preserved; independent opaque occluders remain resident. Exact opaque room triangles share one prototype contact; transparent material contacts retain mesh-parent identification. Validation in progress.",
+    "validated_floor_run": {
+      "exit": 0,
+      "peak_rss_kib": 6700232,
+      "seconds": 175.584,
+      "checks": 1012,
+      "errors": 0,
+      "notes": "Staged same-call contacts across498homes; no GPU performance measurement"
+    }
+  }
+}

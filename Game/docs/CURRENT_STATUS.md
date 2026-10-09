@@ -1,3 +1,7 @@
+## 09 October 2026, 15:58 UTC: Star Atlas and Night Garden retained interiors integrated
+
+165 additional interiors with431 rest anchors,15 missing-only street floor polygons and224 exposed edge guards. Two original pilots retained. Bounded floor and temporary guard-seam checks pass. All498 retained new residential interiors are now registered across six houses; specialty/VIP/D17 programmes and full frames, gardens, lifts, service, privacy and final acceptance remain unfinished. Residency registry561.
+
 ## 09 October 2026, 15:28 UTC: Sunset Conservatory rooms integrated; receiving frame unfinished
 
 83 retained furnished homes, 215 rest anchors and 133 landscape/seating instances are registered as construction WIP. All 166 interior/street floor checks pass. The source receiving hold remains OPEN: actual aft subframe/foundation construction is still required under the principal court and remaining base. No invented columns or support certification. Residency includes 396 room/home identities. New Family lift, service connections, privacy, occupancy, visual and detailed traversal acceptance remain unfinished.

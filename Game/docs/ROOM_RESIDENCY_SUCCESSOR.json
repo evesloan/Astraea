@@ -1,31 +1,36 @@
 {
-  "created_utc": "2026-10-09T14:42:54.780663+00:00",
+  "created_utc": "2026-10-09T15:58:57.520330+00:00",
   "status": "headless_residency_correctness_pass",
   "tested_result": {
-    "after_hidden_room_detachment": 233533,
-    "independent_occluders_retained": 1142,
-    "initial_live_nodes": 420053,
+    "after_hidden_room_detachment": 239782,
+    "deferred_arrival_immediate_collision": true,
+    "deferred_door_identity_and_state_preserved": true,
+    "deferred_geometry_recreated": true,
+    "independent_occluders_retained": 1655,
+    "initial_live_nodes": 354906,
     "paused_arrival_immediate_collision": true,
-    "reduction": 186520,
+    "reduction": 115124,
     "remote_loose_body_pins_room": true,
     "same_node_identity_after_restore": true,
-    "scope": "Headless near/hidden residency, same cached source identity, grace and arrival preparation. RAM is retained; graphical notifier behavior and target FPS unverified.",
+    "scope": "Headless near/hidden residency, same cached source identity, grace and arrival preparation. Received-section cache and prototype resources are retained; immutable home instances are released/recreated. Graphical notifier behavior and target FPS unverified.",
     "status": "PASS",
     "steady_state": {
-      "active_meshes": 4127,
-      "active_rooms": 7,
-      "cached_detached_meshes": 55242,
-      "registered_rooms": 396,
+      "active_meshes": 5977,
+      "active_rooms": 31,
+      "cached_detached_meshes": 38426,
+      "deferred_visual_rooms": 474,
+      "registered_rooms": 561,
       "resources_freed": false,
-      "transitions": 389
+      "transitions": 530,
+      "uninstantiated_meshes": 27585
     },
     "visibility_signal_restore": true
   },
-  "design": "Exact source rooms cached outside scene tree when hidden and distant; engine occlusion-aware notifiers preserve long views; retained source identity, doors, floors and occluders survive. This does not free RAM or reduce initial load yet.",
+  "design": "63 received-section nodes remain cached outside scene tree. All498 retained homes keep stable room and door nodes while immutable interior instances are created near/visible/arriving and freed on hidden detachment. Prototype resources remain cached. Independent exact opaque home occluders stay resident. Startup detaches distant rooms before first physics frame.",
   "remaining": [
     "Windows GPU measurements",
     "Graphical notifier/window/atrium acceptance",
-    "True background resource streaming and startup optimization"
+    "Background disk/resource streaming; retained prototype resources are not unloaded"
   ],
-  "scope": "Received sections plus four retained residential source houses; 396 room/home identities"
+  "scope": "561 room/home identities:63 received sections and498 retained homes"
 }
