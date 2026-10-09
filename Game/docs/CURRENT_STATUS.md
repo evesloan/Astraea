@@ -1,3 +1,7 @@
+## 09 October 2026, 21:12 UTC: Tidal D14 two-place aquatic interior installed
+
+Bespoke394 layout preserves both proposed rest reservations, with two fitted aquatic supports, separate transfer/service approaches, narrowed washroom, storage and north activity edge. Existing85 ordinary homes and15 prior specialty interiors are retained. Six D14 aquatic rooms provide seven reserved rest places. Actual-main bounded contacts and existing door controllers checked; source composition reviewed. Water remains visual-only; species/body/environment/final visuals remain open.30 D15 Tidal specialty allocations remain within unfinished Group1.
+
 ## 09 October 2026, 20:57 UTC: Five Tidal D14 aquatic single interiors installed
 
 Five retained single reservations now have fitted aquatic cradle shells, storage, wash facilities, entry/privacy doors and visual-only water. Ten D13 cocoon reservations and85 ordinary homes are retained. Native source assemblies reviewed; actual-main bounded contacts and door checks recorded. No new guest capacity or species assignment. The D14 double and30 D15 specialty allocations remain, along with residential services and final acceptance.
