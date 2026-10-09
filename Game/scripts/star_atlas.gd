@@ -43,3 +43,5 @@ static func build(parent:Node3D,ship:Node3D) -> void:
 	load("res://scripts/star_atlas_commons.gd").build(district,ship)
 
 	load("res://scripts/star_atlas_arrival.gd").build(district,ship)
+
+	load("res://scripts/star_atlas_upper.gd").build(parent,ship)

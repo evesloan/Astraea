@@ -1,3 +1,7 @@
+## 09 October 2026, 19:50 UTC: Star Atlas D15–D17 commons installed
+
+514 additive source parts provide upper commons, distinct gallery openings, guarded stairs, ring connections and D16 home-street joins. D15 protected cover is reused without cuts or duplicate floor.27 bounded actual-main floor/clearance points pass;85 registered homes and lower three-stop library lift remain unchanged. Editable Blender and existing catalogue textures retained. Three programme ledger entries now bind the upper installation. Full furnishing, service completion, detailed traversal and final visual review remain open within unfinished Group1.
+
 ## 09 October 2026, 19:31 UTC: Family Celestial roof and inner receiver installed
 
 43 additive members now connect the retained Celestial roof, one inner task receiver, inner garden and paired street to the court frame.25 plane-matched pads contact eight source roof faces. All four source pins remain unchanged; actual-main retained ceiling/floor checks pass. The missing-receiver geometry hold advances to FT_RECEIVING_REVIEW_HOLD. Group1, final receiving/visual review, primary hull/capacity and full traversal remain unfinished.
