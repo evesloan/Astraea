@@ -1,0 +1,11 @@
+# Source scope and retained references
+
+Read complete text/tables in master chapters 4, 5, 7, 8, 19, 21, 23, 24, 27, 28, 30, 32 and 33 as directed by MASTER_FULL_CONTENT_INDEX and the application overlay. Applied current species/1000-unit allocation, canonical 18 deck datums, D08 aquatic programme and later waterpark AFK expansion. Read design contract, programme ledger, whole_ship_layout, spatial_layout, hull envelope, aquatic_section data, actual aquatic_section.gd and vesper_watercourse.gd.
+
+Read AQUATIC_VERTICAL_COORDINATION, VESPER_WATERCOURSE, ARCHITECTURAL_DELIVERY_RULES, WHOLE_SHIP_SECTION_COORDINATION, GRAND_POOL_CONNECTED_SECTION, BLUEPRINT_AMENITY_SCOPE_AUDIT, relevant local scope/backup/current/master docs, Game AGENTS.md and native aquatic builders. No applicable .agents/skills existed at inspected workspace/user paths. Existing Codex memory was consulted as historical project pointers only.
+
+Viewed actual pixels of BlenderCatalogue/references/aquatic/image(20261001-035517).png and aquatic_program/public_blueprint.png, plus the owner's new lazy-river photo. Preserve curved multilevel water, planted islands, spa support and purposeful column/terrace relations. The historic blueprint D09 label is mapped to canonical D08 and cannot override real deck datums. The retained 50 m lane is already fulfilled in Grand Pool; do not duplicate it.
+
+Inspected five actual retained native assemblies read-only: Grand Pool AST-AQU-016, aquatic arrival AST-AQU-014, Vesper receiver AST-AQU-015, Tidal Baths and Mineral Baths. Read actual source of all installed aquatic/wellness/changing/towel helpers under sol_entry_successors_20261008/D. Inspected actual retained GLB bytes separately. The whole_ship_layout statuses lag some installed helper floors; source objects and spatial regions were used to avoid duplicating parents.
+
+Local origin/HEAD, dirty recorded working state, worktree inventory and active processes were inspected first. No builder/import/backup process was active at initial inspection. Every new build/import/render in this package was serialized. Local ordinary sandbox setup failed before the shell; auto-reviewed elevated execution permitted bounded read and source work. Credentials/permissions were not changed.

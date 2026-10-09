@@ -1,0 +1,20 @@
+C:\Users\cered\Dolphin\AstraeaShip\external_packages\aquatic_district_20261009\source\build_aquatic.py:107: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new('AQD_'+name);mat.use_nodes=True;bs=mat.node_tree.nodes.get('Principled BSDF');bs.inputs['Base Color'].default_value=color;bs.inputs['Roughness'].default_value=.3
+01:32:03 | INFO: Data are loaded, start creating Blender stuff
+01:32:03 | INFO: Blender create Mesh node continuous_oval_hull_with_raised_back_cradle_editable.001
+01:32:03 | INFO: Blender create Mesh node rear_pearl_headrest_crescent_editable.001
+01:32:03 | INFO: Blender create Mesh node recessed_tensioned_seat_membrane_with_drain_aperture_editab
+01:32:03 | INFO: Blender create Mesh node soft_bound_central_drain_aperture_editable.001
+01:32:03 | INFO: glTF import finished in 0.17s
+Traceback (most recent call last):
+  File "C:\Users\cered\Dolphin\AstraeaShip\external_packages\aquatic_district_20261009\source\build_aquatic.py", line 265, in <module>
+    if __name__=='__main__':build()
+                            ~~~~~^^
+  File "C:\Users\cered\Dolphin\AstraeaShip\external_packages\aquatic_district_20261009\source\build_aquatic.py", line 242, in build
+    exchange=bpy.data.scenes.new('Exchange_'+filename);bpy.context.window.scene=exchange;groups={};datums=[];dg=native_scene.evaluated_depsgraph_get()
+                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Scene' object has no attribute 'evaluated_depsgraph_get'
+Info: Saved as "aquatic_district.blend"
+Blender 5.1.2 (hash ec6e62d40fa9 built 2026-05-19 01:37:34)
+
+Blender quit

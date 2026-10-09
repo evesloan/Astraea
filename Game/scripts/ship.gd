@@ -61,6 +61,7 @@ func _ready() -> void:
 	model($ShipSpace,"AST-ATR-001.glb","AuthoredAtriumGuards_All16Levels",Vector3.ZERO)
 	build_retail_terrace()
 	load("res://scripts/aquatic_section.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/aquatic_annex_receiving.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/staff_section.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/lower_staff_network.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/atrium_lighting.gd").build($ShipSpace/Districts,self)

@@ -1,3 +1,7 @@
+## 9 October 2026, 13:44 UTC: Aquatic river-and-slide annex installed as WIP
+
+Exact verified aquatic handoff 014bc41 is now registered in the main ship at world identity under D08 directory08. It adds the 102.52m closed river geometry, two slides/runouts, eight static floats, support/gallery/spa geometry, four separately owned slabs and fourteen bounded lights while preserving existing aquatic parents. The actual main scene and seventeen stationary floor/clearance probes pass; 79 architectural mesh nodes and contact categories verified. Final visual acceptance, full traversal, water/ride gameplay, onward service connection and per-height hull/full-mesh fit remain open. This annex is not in the already delivered 83-section Windows preview. Received destination count remains83: this is child construction of existing D08 directory08.
+
 ## 9 October 2026, 13:34 UTC: Published 83-section checkpoint and player jump
 
 Main and integration branch were verified at 61d08dc0c1f27226df961aa43327a60f81bace77 (13:31 UTC). All 83 installed section keys are protected, with later editable sources indexed. Space now produces a grounded 0.66 m hop, rejects repeat/airborne input and preserves WASD, RMB focus and E interaction. Thirteen bounded production-controller checks pass, followed by actual main-scene load/18 bulk registrations. This controls successor awaits its own publication. Windows execution, full traversal, cart jumping and final art are not accepted. Aquatic package 014bc41 is source-delivered but not installed.
