@@ -2,6 +2,7 @@ extends "res://tests/medical_test_scene.gd"
 var travelled_m := 0.0
 var walked_frames := 0
 func _initialize() -> void:
+	OS.set_environment("ASTRAEA_TIDAL_CANDIDATE_ISOLATION", "1")
 	test_name="listening_salon_player_access"
 	call_deferred("run")
 func write_receipt(status: String,detail: String="") -> void:

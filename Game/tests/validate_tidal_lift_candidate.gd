@@ -1,6 +1,7 @@
 extends "res://tests/validate_commons_lift.gd"
 # Reuses original physical cart, gate and ordinary-input assertions.
 func run() -> void:
+	OS.set_environment("ASTRAEA_TIDAL_CANDIDATE_ISOLATION", "1")
 	var main:Node=(load("res://scenes/main.tscn")as PackedScene).instantiate()
 	root.add_child(main)
 	for frame in range(120):await physics_frame

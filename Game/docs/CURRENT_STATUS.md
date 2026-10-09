@@ -1,3 +1,7 @@
+## 9 October 2026, 13:59 UTC: Tidal Garden adopted into default ship
+
+85 retained source interiors,221 rest anchors,81 landscape/seating instances and five-stop lift installed as construction WIP. Thirteen named hidden composite-cap receiving members complete the Salon interface without replacing its visible source. Main-scene registration and85 entrance-floor checks pass. Protected pilots remain. Full traversal,visual review,privacy,occupancy,remaining specialty/VIP interiors and broader service/hull acceptance remain open. Latest delivered Windows ZIP predates this addition. This change awaits its own published checkpoint.
+
 ## 9 October 2026, 13:44 UTC: Aquatic river-and-slide annex installed as WIP
 
 Exact verified aquatic handoff 014bc41 is now registered in the main ship at world identity under D08 directory08. It adds the 102.52m closed river geometry, two slides/runouts, eight static floats, support/gallery/spa geometry, four separately owned slabs and fourteen bounded lights while preserving existing aquatic parents. The actual main scene and seventeen stationary floor/clearance probes pass; 79 architectural mesh nodes and contact categories verified. Final visual acceptance, full traversal, water/ride gameplay, onward service connection and per-height hull/full-mesh fit remain open. This annex is not in the already delivered 83-section Windows preview. Received destination count remains83: this is child construction of existing D08 directory08.

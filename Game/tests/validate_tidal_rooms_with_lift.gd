@@ -6,6 +6,7 @@ func _initialize() -> void:
 	call_deferred("run")
 
 func run() -> void:
+	OS.set_environment("ASTRAEA_TIDAL_CANDIDATE_ISOLATION", "1")
 	var main: Node = load("res://scenes/main.tscn").instantiate()
 	root.add_child(main)
 	var ship := main.get_node("World360/Astraea") as Node3D

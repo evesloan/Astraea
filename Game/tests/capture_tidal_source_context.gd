@@ -3,6 +3,7 @@ extends SceneTree
 # Bounded source-context visual QA only. This does not replace default-ship
 # graphical acceptance; the full graphical run terminated before capture.
 func _initialize() -> void:
+	OS.set_environment("ASTRAEA_TIDAL_CANDIDATE_ISOLATION", "1")
 	root.size = Vector2i(1280,720)
 	call_deferred("run")
 
