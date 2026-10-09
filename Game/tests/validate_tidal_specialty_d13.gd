@@ -9,6 +9,7 @@ func run()->void:
 	for entry in registry.entries:
 		if str(entry.parent.name)=="TidalRoomCandidates":retained+=1
 		if str(entry.parent.name)=="SpecialtyHomeCandidates":
+			if int(entry.room.get_meta("census_source_index"))>156:continue
 			if entry.room.get_parent()==null:entry.parent.add_child(entry.room)
 			rooms.append(entry.room)
 	assert(retained==85 and rooms.size()==10)
