@@ -1,0 +1,45 @@
+{
+  "revision": "coordinate-compatibility-02",
+  "scope": "Historical interpretation for archived pre-revision assets; the current cabinet contains explicit frame metadata and does not depend on this erratum",
+  "overrides": [
+    {
+      "catalogue_id": "AST-STF-007",
+      "legacy_field": "hinge pivot node extras.axis",
+      "legacy_text": "Local +Z, negative rotation opens outward",
+      "legacy_text_frame": "Blender source local frame",
+      "source_axis": [
+        0,
+        0,
+        1
+      ],
+      "glb_axis": [
+        0,
+        1,
+        0
+      ],
+      "source_pivot_m": [
+        -0.837,
+        -0.317,
+        0.2
+      ],
+      "glb_pivot_m": [
+        -0.837,
+        0.2,
+        0.317
+      ],
+      "rotation_sense": "negative about the stated axis opens outward in either correctly transformed basis",
+      "authority": "Explicit asset coordinate manifest and actual exported node hierarchy; human-readable source extras do not override them",
+      "archived_versions_only": true,
+      "current_asset_metadata_revision": "hinge-frame-metadata-02",
+      "current_explicit_fields": [
+        "hinge_axis_blender_source",
+        "hinge_axis_gltf_yup",
+        "hinge_pivot_blender_source_m",
+        "hinge_pivot_gltf_yup_m"
+      ],
+      "modification_scope": "Current source/export custom properties only; archived versions and all geometry preserved",
+      "historical_backup_bytes_modified": false,
+      "current_asset_metadata_revised": true
+    }
+  ]
+}

@@ -14,7 +14,7 @@ func run()->void:
 	assert(after<before)
 	assert(ship.find_children("*","OccluderInstance3D",true,false).size()==floors)
 	var stats:Dictionary=manager.statistics()
-	assert(stats.registered_rooms==561)
+	assert(stats.registered_rooms==738)
 	var target:Dictionary={}
 	for e in manager.entries:
 		if not e.attached:
@@ -88,8 +88,25 @@ func run()->void:
 	var floor_hit:Dictionary=state.intersect_ray(PhysicsRayQueryParameters3D.create(floor_point+Vector3.UP*.15,floor_point-Vector3.UP*.4))
 	assert(not floor_hit.is_empty() and absf(floor_hit.position.y-floor_point.y)<.04)
 	assert(ship.find_children("*","OccluderInstance3D",true,false).size()==floors)
+	var shopping:Dictionary={}
+	for entry in manager.entries:
+		if str(entry.parent.name)=="ShoppingPromenadeChunks":
+			shopping=entry
+			break
+	assert(not shopping.is_empty())
+	manager.prepare_position(shopping.bounds.get_center())
+	var shop:Node3D=shopping.room
+	var shop_id:int=shop.get_instance_id()
+	var shop_visual:Node3D=shop.get_meta("resident_visual")
+	manager.refresh(9.0)
+	assert(not shopping.attached and not shop.has_meta("resident_visual"))
+	assert(not is_instance_valid(shop_visual))
+	manager.prepare_position(shopping.bounds.get_center())
+	assert(shop.get_instance_id()==shop_id and shop.has_meta("resident_visual"))
+	var shopping_collision:Dictionary=_collision_witness(shop,state)
+	assert(not shopping_collision.is_empty())
 	paused=false
-	var result:Dictionary={"status":"PASS","deferred_geometry_recreated":true,"deferred_door_identity_and_state_preserved":true,"deferred_arrival_immediate_collision":true,"initial_live_nodes":before,"after_hidden_room_detachment":after,"reduction":before-after,"steady_state":stats,"same_node_identity_after_restore":true,"remote_loose_body_pins_room":true,"paused_arrival_immediate_collision":true,"visibility_signal_restore":true,"independent_occluders_retained":floors,"scope":"Headless near/hidden residency, same cached source identity, grace and arrival preparation. Received-section cache and prototype resources are retained; immutable home instances are released/recreated. Graphical notifier behavior and target FPS unverified."}
+	var result:Dictionary={"status":"PASS","shopping_cold_load_release_reload":true,"deferred_geometry_recreated":true,"deferred_door_identity_and_state_preserved":true,"deferred_arrival_immediate_collision":true,"initial_live_nodes":before,"after_hidden_room_detachment":after,"reduction":before-after,"steady_state":stats,"same_node_identity_after_restore":true,"remote_loose_body_pins_room":true,"paused_arrival_immediate_collision":true,"visibility_signal_restore":true,"independent_occluders_retained":floors,"scope":"Headless near/hidden residency, same cached source identity, grace and arrival preparation. Received-section cache and prototype resources are retained; immutable home instances are released/recreated. Graphical notifier behavior and target FPS unverified."}
 	FileAccess.open("res://artifacts/received_room_residency.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
 	print("RECEIVED_ROOM_RESIDENCY ",JSON.stringify(result))
 	quit()

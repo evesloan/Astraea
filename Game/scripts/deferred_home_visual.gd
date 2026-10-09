@@ -1,7 +1,7 @@
 extends RefCounted
 # Retain room/door identities; instantiate immutable interior geometry only while resident.
 static var occluders:Dictionary={}
-static func bounds(scene:PackedScene)->AABB:
+static func bounds(scene:PackedScene,policy:Dictionary={})->AABB:
 	var visual:Node3D=scene.instantiate()
 	var box:=AABB()
 	var first:=true
@@ -19,6 +19,7 @@ static func bounds(scene:PackedScene)->AABB:
 		for surface in range(mesh.mesh.get_surface_count()):
 			var material:Material=mesh.get_active_material(surface)
 			if not material is BaseMaterial3D or material.transparency!=BaseMaterial3D.TRANSPARENCY_DISABLED or material.albedo_color.a<.999:opaque=false
+		if policy.has(str(mesh.name)):opaque=opaque and bool(policy[str(mesh.name)].opaque)
 		if opaque:
 			var faces:PackedVector3Array=mesh.mesh.get_faces()
 			for i in range(0,faces.size()-2,3):
@@ -43,14 +44,19 @@ static func install_occluder(ship:Node3D,room:Node3D,scene:PackedScene)->void:
 	witness.global_transform=room.global_transform
 
 static func ensure(room:Node3D)->void:
-	if not room.has_meta("deferred_visual_scene") or room.has_meta("resident_visual"):return
-	var scene:PackedScene=room.get_meta("deferred_visual_scene")
+	if (not room.has_meta("deferred_visual_scene") and not room.has_meta("deferred_visual_path")) or room.has_meta("resident_visual"):return
+	var scene:PackedScene=room.get_meta("deferred_visual_scene") if room.has_meta("deferred_visual_scene") else load(str(room.get_meta("deferred_visual_path")))
 	var visual:Node3D=scene.instantiate()
 	visual.name="ResidentAuthoredInterior"
 	room.add_child(visual)
 	var meshes:=visual.find_children("*","MeshInstance3D",true,false)
 	assert(meshes.size()==int(room.get_meta("deferred_visual_meshes")))
-	load("res://scripts/static_contact_cache.gd").attach_group(visual,meshes)
+	var policy:Dictionary=room.get_meta("deferred_visual_collision_policy",{})
+	var collidable:Array[Node]=[]
+	for mesh in meshes:
+		if not policy.is_empty():assert(policy.has(str(mesh.name)))
+		if policy.is_empty() or bool(policy[str(mesh.name)].collide):collidable.append(mesh)
+	load("res://scripts/static_contact_cache.gd").attach_group(visual,collidable)
 	for body:Node3D in visual.find_children("*","StaticBody3D",true,false):body.force_update_transform()
 	room.set_meta("resident_visual",visual)
 static func release(room:Node3D)->void:

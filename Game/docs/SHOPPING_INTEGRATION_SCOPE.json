@@ -1,0 +1,41 @@
+{
+  "source_commit": "1d880faf74768163c4b370c122662edf998cf6fd",
+  "canonical_base_commit": "fd63257d95fca730a80ae0d9a7e2c85948e353d7",
+  "status": "integrated_construction_wip",
+  "source_chunks": 177,
+  "new_shops": 99,
+  "retained_shop": "R070",
+  "new_canonical_room_ids": 15,
+  "unresolved_address_joins": 84,
+  "identity_policy": "Install immutable footprint chunk keys. Preserve stable_room_id null on84 proposals. Do not use proposed fascia addresses for saved room, stock, NPC or inventory identity. No existing registry overwritten.",
+  "floor_policy": "Compile 204 retained polygon owners with continuous collision and 867 bounded 16 m render cells. Source floor GLBs remain retained but are not instantiated; no duplicate floor layer.",
+  "source_hashes_before_integration": {
+    "Game/data/generated/structural_meshes.json": "e7cd0cc1c3892a99cf75f2dab4c852f3e1c1864a13b81f828e2a2f93cf239e92",
+    "Game/data/generated/received_structural_meshes.json": "e05fd27b14d97d5bdf37a6ac94bb80b1c009342d69ff90142579fe692af3a59b",
+    "Game/scripts/retail_curios.gd": "aea45c4b4738789d64b5053f2162e3f18812f762fc46abda0d13b416cb61125b",
+    "Game/assets/models/AST-RTL-005.glb": "dda0ea75fa8d2363ac4f61292018271f2032b896d0669eccc097d58017e45497"
+  },
+  "source_layout_proof": "Historical atlas unlabeled allocations and16 detailed inset address joins; missing mapping remains explicit.",
+  "pinned_parent_currentness": "Both current spatial_layout.json and received_section_floors.json exactly match helper pinned source after adding the helper's single extra trailing LF. No semantic parent layout/floor drift.",
+  "source_visual_review": {
+    "reviewed_utc": "2026-10-09T16:25:08.234690+00:00",
+    "views": [
+      "source_public_street.png",
+      "source_parcel_entry.png"
+    ],
+    "observations": [
+      "Profiled pale columns and recessed orange shopfronts visible",
+      "Parcel handoff counters, shelving and back-room opening visible",
+      "Source lighting remains dim; later full visual polish required"
+    ],
+    "scope": "Two saved Blender source renders inspected; not a rendered Godot acceptance pass"
+  },
+  "resource_policy": "177 visual scenes load on demand from retained paths. Their instances are released when hidden; stable chunk nodes, lights, exact source occluders and floors remain independently owned.",
+  "limitations": [
+    "84 historical room address joins unresolved; stable IDs remain null",
+    "99 storefront glass meshes are noncolliding per source policy",
+    "Commerce, NPC stock and persistence unfinished",
+    "Shared staff riser joins and hull acceptance unfinished",
+    "Godot visual quality, full traversal and GPU FPS unverified"
+  ]
+}

@@ -21,6 +21,7 @@ func _ready() -> void:
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/equipment_depot_candidate.gd).build(ship)")
 	load("res://scripts/remaining_batch_receiving.gd").build(ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/remaining_batch_receiving.gd).build(ship)")
+	load("res://scripts/shopping_promenade_adoption.gd").build(ship)
 	var occlusion: Dictionary = load("res://scripts/static_room_occlusion.gd").install(ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP var occlusion: Dictionary = load(res://scripts/static_room_occlusion.gd).install(ship)")
 	set_meta("static_room_occlusion",occlusion)

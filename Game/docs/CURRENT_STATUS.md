@@ -1,3 +1,7 @@
+## 09 October 2026, 16:32 UTC: Shopping promenade construction integrated
+
+99 new shops and78 connecting chunks installed; R070 and10 major venues retained. 402 floor checks and99 stationary thresholds pass. 204 continuous floor owners use867 bounded render cells. Residency registry738 includes shopping on-demand load/release/reload. 84 historical address joins remain unresolved, with stable IDs null; commerce, staff riser joins, hull acceptance, visual polish and GPU performance unfinished.
+
 ## 09 October 2026, 15:58 UTC: Star Atlas and Night Garden retained interiors integrated
 
 165 additional interiors with431 rest anchors,15 missing-only street floor polygons and224 exposed edge guards. Two original pilots retained. Bounded floor and temporary guard-seam checks pass. All498 retained new residential interiors are now registered across six houses; specialty/VIP/D17 programmes and full frames, gardens, lifts, service, privacy and final acceptance remain unfinished. Residency registry561.
