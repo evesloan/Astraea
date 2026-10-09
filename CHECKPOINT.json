@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "created_utc": "2026-10-09T18:40:44.442750+00:00",
+  "created_utc": "2026-10-09T18:53:04.055925+00:00",
   "scope": "Current Godot working source plus retained baseline BlenderCatalogue and indexed later editable source archives. Construction WIP, not final-art release.",
   "canonical_ref": "main",
   "integration_ref": "checkpoint/direct-integration-20261009",
@@ -8,10 +8,10 @@
     "Godot": {
       "storage_ref": "main",
       "prefix": "Game",
-      "git_tree": "962f9e5f9fc735d307ce4185b03da230b9b3d91b",
+      "git_tree": "578f47914c36ae4667793e843fa8022ed5ba539f",
       "work_in_progress": true,
       "signature_algorithm": "sha256 of canonical sorted JSON path-to-sha256 map",
-      "signature": "a6d834be61dac937ec72522a5a8f0012e5fe4188fada7f24b91b88cf30e7360b",
+      "signature": "6127957be54c52d9fb5048252ce510ac900c6e9e83bba5b63a117a36ccf1890e",
       "files": {
         ".gitignore": "908eb26b322788ca6c867a83e97d618d6dcbc7667590021eb38aa8d99578a042",
         "AGENTS.md": "6d7714fd6b19bde8b9c221320416b24290a05c6dd9de384f3c165f5e7c7cec1b",
@@ -28,6 +28,7 @@
         "artifacts/static_room_occlusion.json": "d01927110d3539ccc2ecda39af15d481c8a05c2642bac081a3baec77d3a4a0f8",
         "artifacts/sunset_default_adoption.json": "019e6c6d3a40403228b7fd74f2e693a9b0ea9f71d023afd5a85b0d91f1253f25",
         "artifacts/sunset_lift.json": "b7594ee3dad95047844c16d792dbddf2b5deee0dcb75c95f64cf743ab2c3fb84",
+        "artifacts/sunset_receiving_frame.json": "36e0c612f5548add9dd9dfea000d366604a2da28533859e483af05f2a97eadce",
         "artifacts/tidal_default_adoption.json": "fb4c99a944e55f2cf64331836ad63ca5ea614e50523b813212bc72f0de736bba",
         "assets/audio/engineering_calibration/courtesy_chirp.wav": "d728478f5f83d26f567dd8131f9759c68d42406b2e52b99f12d47cce6414e70f",
         "assets/audio/engineering_calibration/courtesy_chirp.wav.import": "5ae9b7b01a7ff8a8e3156e0190647a1253844001b5f6cc7a8ac889dff562048f",
@@ -5989,6 +5990,8 @@
         "assets/models/SUNSET_ARCHITECTURE_r002_warm_stone.png.import": "e2ef5d9ad256feb9cf046d750aa94e370338605714f3fbfbe89193395d3b1e68",
         "assets/models/SUNSET_ARCHITECTURE_r002_warm_walnut.png": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
         "assets/models/SUNSET_ARCHITECTURE_r002_warm_walnut.png.import": "c8470897ec628bfa14fce5401a60161d33207523c019b17f104b908d20c613c9",
+        "assets/models/SUNSET_RECEIVING_FRAME_r001.glb": "60720c9102df91cb054824798da9fc216af2179f81a37e3dfc5c16b411a8895e",
+        "assets/models/SUNSET_RECEIVING_FRAME_r001.glb.import": "ab69ad59944a4af8ffb404b69a114e38e5967822c0b5cd01a55eef3af9549fda",
         "assets/models/SUNSET_ROOM_01_r001.glb": "fd01bb5e68cd2f062bb3479d3a8b5518fe4220a25b17486c0ecd5d7826503478",
         "assets/models/SUNSET_ROOM_01_r001.glb.import": "e6d4b17b6a2a07891e7a6c6b3bb888b719456fd80c6f542beaa08e72847926d7",
         "assets/models/SUNSET_ROOM_01_r001_champagne_metal.png": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
@@ -10625,6 +10628,7 @@
         "data/architecture/STILLROOM_FLOOR_CONTACTS_CANDIDATE.json": "a35ef1c74d756b88716dea975e4df77f54b8617ab5d4555b00a2a303a7631ca4",
         "data/architecture/STILLROOM_RECEIVING_FLOORS_CANDIDATE.json": "704c3cbc430dde93deee14d33f12c0220d5647183019b7e43c4c1ffec79d2755",
         "data/architecture/SUNSET_RECEIVING.json": "a3a1b9d6b23e511cfafa90f560b8dac0933dd044aa7a5c7bf3b574fbd81f0e75",
+        "data/architecture/SUNSET_RECEIVING_FRAME.json": "45f95afb6097726d0cfc869dc8e1ebfbe73af44596d1c52ef427b35c27dd93c5",
         "data/architecture/SUNSET_UNITS.json": "b3080c6bf83becc6ac3db90fc4fa41b2620061e6c3053f730162726f03dc1b46",
         "data/architecture/THEATER_D11_MAIN_ENTRY023.json": "ffe9a1bb56144b3d19e4c5c7d70a80544793acb9aa706a4955a7118ffac17097",
         "data/architecture/THEATER_RUNTIME_STAGE001.json": "82cef4249e8247a4e6048e6aa3fc716189fc5c42c2a6e764a013dd92d8018a7b",
@@ -11185,7 +11189,7 @@
         "docs/CREW_BATCH_CHUNK_CANONICALIZATION.json": "712dbe46c1a9d4e823351944aafa103746d89fc4c3c9498916ca2407966e7076",
         "docs/CROWN_PIER_RUNTIME_AUDIT.json": "3b7c206eaf2491ce9da027884c0caa60d0eb4eb1781912e9e74445918d581633",
         "docs/CROWN_SKY_LIGHTING_COMPARISON.json": "da6069c330b0e45b3767172d9d17460fb02c0240c316456379c33aca5df27149",
-        "docs/CURRENT_STATUS.md": "dc16e58971e7c770a74ebe436464f31688d62519255bac95323d097282113531",
+        "docs/CURRENT_STATUS.md": "fc9096a16f90eef2e6422c0e427604d5387177d0f715173ebbbbbd5c735397a8",
         "docs/D06_CANOPY_TERRACE.md": "b6f3bf94fcb7b8d8d9f3d0a4c423b40693e44d814f776f42a1090beaeb90f586",
         "docs/D06_GARDEN_OVERLOOK.md": "121b9dcaaa405e2271b4963c9da522cc9b6831a2b1f31981d034f3cfc2079209",
         "docs/D09_SALON_ARCHITECTURE.md": "e61c91eee95346cf2238b78c1ebf86b368dcf7ac6b655f8eac02e5cf3d6558e1",
@@ -11326,6 +11330,7 @@
         "docs/SUNSET_DEFAULT_ADOPTION.json": "3a93f7474826f340e38cac7ff5439e1522404c13ea6c12349aa711ab2f1c3a64",
         "docs/SUNSET_INTEGRATION_SCOPE.json": "e5e2167d017040682b3dd3833c0235bd4c89e03edc6f80a22cb7a50b238d4031",
         "docs/SUNSET_LIFT_ADOPTION.json": "5e60d866753381be1a3326f101d9aa9798577e32b5f4ccdec1c58a1957eb8f52",
+        "docs/SUNSET_RECEIVING_FRAME_ADOPTION.json": "9466fca2ce3ee98226038235b36720212fd0cbef38809c5dfb28258230a6fbfe",
         "docs/TERRACE_ASSET_DRAFT.json": "21768dac4950f9342b1572665ec195ccc9fba9fbcf616920d56e5e4567e0c161",
         "docs/THEATER_ADDITIVE_SUCCESSOR_PROPOSAL.json": "1fa5809a6dfa77f77986a53a3e56f4fbfafdb7f5ab2d9ba1c40080bd6fe0d183",
         "docs/THEATER_COURT_A_ADOPTION_004.json": "b5f41a4e1ade8059c7fb8c35f446288f044faf8766c98770a2cd98f1b5ae3d56",
@@ -14046,12 +14051,14 @@
         "scripts/stillroom_candidate.gd.uid": "dde5bff45162c4a92905431c8c606fda048dac14a175385ac663e1b86f4e9117",
         "scripts/structural_floor_builder.gd": "d322e784d268ff22035649f6fe3dd8325ef6600407c018a83557c4376f234b4f",
         "scripts/structural_floor_builder.gd.uid": "b0672dc059e2767974f003f3e3819f1f8218ad2863cb784776417d02c32766a9",
-        "scripts/sunset_adoption.gd": "2c726dbc11638d52af5b69d125d206216f12703ca7797bd155ee4144b9d5e1d5",
+        "scripts/sunset_adoption.gd": "7d26662c12908036339f52365f018eb1e8c6fa6beafec68135bdc164a154d309",
         "scripts/sunset_adoption.gd.uid": "3dfdbe7c60d063e3de40ce68421335aa67fd27dc366bb69b3f0dca9ea3b69b47",
         "scripts/sunset_lift.gd": "654f33249057a0ae81b3de9d1573e8cef59687a44718539826a8b3e711f61ffb",
         "scripts/sunset_lift.gd.uid": "7e7c03dc6840e4de34f71653c3976d11688d7a45e606bad70b91235bd48733ef",
         "scripts/sunset_receiving.gd": "012a900879716f6ade71a00ab1ce4a4b1b0acafb276832bddf5b57e11dc80856",
         "scripts/sunset_receiving.gd.uid": "89f6a40292dd6f9b5f5bcf5f6de111d93ebf042e991ab62a44c4a813728e9bf6",
+        "scripts/sunset_receiving_frame.gd": "e4f6adee0802b3b7abd32ad1c4562e479896e6af1a16a288f9f5c8c8350ffed7",
+        "scripts/sunset_receiving_frame.gd.uid": "8692ab74513fa7895a8d888aaa8446817b40ed29ec82167de24ad1b3768dc013",
         "scripts/sunset_rooms.gd": "93c9f681d5be61a1a7c6cf343e0ad1406d63068c44df41d38a88b8c7a4a33228",
         "scripts/sunset_rooms.gd.uid": "ef1d319d9b215f8e4dd629ccf351e8d85c6505d69575d02634b0703c2c769085",
         "scripts/team_lounge_receiving.gd": "a4111d6afb4581135fb2d85aaa6f6cd80953a1e6f4c5a3bae03f26116f1b0642",
@@ -14820,6 +14827,8 @@
         "tests/validate_sunset_lift.gd": "e8f41fa816d820561c1dfabdf36a35cd579079dd15bf817d097800c02bf02801",
         "tests/validate_sunset_lift.gd.uid": "4010345da88fc2e3df4cbb8171122439f5f37e2a812e5cd58753412b92ba8dcb",
         "tests/validate_sunset_lift_metadata.gd": "27f71e2e94323ba07a4ac892f097593138caadaa3193f8ceff9ca1272964010a",
+        "tests/validate_sunset_receiving_frame.gd": "bd21d8f709a76bf8bbe649c27809a3114cb27e8b36d79697699d059a30de2ac7",
+        "tests/validate_sunset_receiving_frame.gd.uid": "02bdef3b164a7ed6280b6050e6a0281f561c498d76284c4b8ce7ad44d7180838",
         "tests/validate_team_lounge_access.gd": "105eb7807050f26d5abe6efca40020cd048ce6ecd453f01dab2e5adf1b24e522",
         "tests/validate_team_lounge_access.gd.uid": "e7779537de90f940ca5fbd682e5a6205262b5133ca52f0c19211b6eb4ce21715",
         "tests/validate_theater_access.gd": "4e586980bb768c17e76ed513b21d6fdc6ee5db4ad487fc081fd52a360c3741cf",
@@ -15016,7 +15025,7 @@
     },
     "Blender": {
       "head": "6a7a4cfd44e8b174ddf4d3a9987cc0c29741ffbc",
-      "signature": "84ee28789aec498f995a3e59d68806db94786c40d815f9003a6726c216ef85c5",
+      "signature": "511b788b44fc0fef40b77395472f77ce41b8639c8e298975de9289c045634640",
       "work_in_progress": true,
       "prefix": "BlenderCatalogue",
       "files": {
@@ -24349,6 +24358,15 @@
         "assets/sunset_lift_receiving_20261009/source/architecture_lift_fit.blend": "630615777cc9aea3b09910d77471bf4f15d48484f365f917c0f80da6a841da7d",
         "assets/sunset_lift_receiving_20261009/source/build_lift_geometry.py": "0da9671ac3540157d59bf4d7b9f97e2abbf0418bb5d534df12cb71d1c1b28b89",
         "assets/sunset_lift_receiving_20261009/source/prepare_lift_geometry.py": "ff848a7ecedd69280d1081de614843481e4daaefc6a5b3bf5f5eaa74d832ad66",
+        "assets/sunset_receiving_frame_20261009/CONTACT_REVIEW.json": "431ed7925da3005191fa29f8c3f1aad56d74810c71094dfca0643a3416edfe6f",
+        "assets/sunset_receiving_frame_20261009/README.md": "8fa35b55ee393478c2f741211d1d5898c9ace24abf06669d72ddcf35b8e90eb0",
+        "assets/sunset_receiving_frame_20261009/RECEIVING_PLAN.json": "0af320b67dcc239771ba546d8a94ef556fae83caf11686202b9fce6d63b7afbb",
+        "assets/sunset_receiving_frame_20261009/RUNTIME_CHECKS.json": "1e3ebcd409322e7e451063530622bdccc73a5e68ca826f5dc959f2475bb56b72",
+        "assets/sunset_receiving_frame_20261009/SOURCE_RECEIPT.json": "fd3d4ad114ee178c7bebeccc2cf3c5cae3128bb63e69d339a1a3aa94583f8d3e",
+        "assets/sunset_receiving_frame_20261009/exports/SunsetReceivingFrame.glb": "60720c9102df91cb054824798da9fc216af2179f81a37e3dfc5c16b411a8895e",
+        "assets/sunset_receiving_frame_20261009/source/SunsetReceivingFrame.blend": "cd12a6cbdf7eba85282f940dfbc634fd61645ed1a3ac761559faa328730431d0",
+        "assets/sunset_receiving_frame_20261009/source/build_frame.py": "09ec9ef5e0cd895c63744e1c592fdc9c98f2847128cc02d54c8b60389e7c73c6",
+        "assets/sunset_receiving_frame_20261009/source/prepare_frame.py": "3f104073c1644f4da828f6ad4c35085d1c4d764bff020532098161300e7cd43b",
         "assets/sunset_receiving_successor_20261009/floor_winding_receipt.json": "68aa86de83264e5bc85c42bd77e3d874121b2ea2e40cff534770c3a8110038e7",
         "assets/sunset_receiving_successor_20261009/repair_floor_top_winding.py": "f3dcd0a4cc096c991d9be53d94a37bf93ca9daf973dc90e2f0c4a1981bb7d816",
         "assets/sunset_room_runtime_20261009/INPUT_CONTRACT.json": "48c78a2f5ec566aacd68e482aedfbf2774ce98a85db64b93982f3105e23abd4f",
@@ -28470,8 +28488,8 @@
       "historical_source_head": "6a7a4cfd44e8b174ddf4d3a9987cc0c29741ffbc",
       "baseline_only": false,
       "current_sources_index": "SOURCE_ARCHIVE_INDEX.json",
-      "note": "Retained baseline plus installed residential/shopping/crew sources and Quiet lift native successor; earlier archives retained.",
-      "git_tree": "54bed5d314cd6c48187399c29fe396f689a374fc"
+      "note": "Retained baseline plus installed residential/shopping/crew sources and residential lifts/court receiving frame sources; earlier archives retained.",
+      "git_tree": "6b7176b475ecea458fec773f4151f4872340c93b"
     }
   },
   "source_archives": {
@@ -29379,6 +29397,30 @@
       "final_acceptance": false,
       "open_construction_hold": "SUNSET_BASE_RECEIVING_HOLD",
       "limits": "Full traversal, cart/species transport, structural capacity and final visual acceptance remain unfinished."
+    },
+    "sunset_receiving_frame": {
+      "created_utc": "2026-10-09T18:53:04.055925+00:00",
+      "status": "integrated_construction_wip",
+      "runtime_checks": {
+        "axial_and_cabin_clearance_points": 15,
+        "frame_parts": 391,
+        "geometric_source_reaction_feet": 40,
+        "held_reactions": [
+          "SC_InnerTrellis_403_0",
+          "SC_InnerTrellis_463_0"
+        ],
+        "retained_homes": 83,
+        "retained_landscape": 133,
+        "retained_source_pins": 3,
+        "scope": "Actual main installation, source preservation and bounded floor/clearance tests. Geometric receiving contacts do not establish primary hull load path or capacity. Inner Vesper receiving, full traversal and final visual review remain unfinished.",
+        "status": "PASS",
+        "whole_base_hold_closed": false
+      },
+      "source_derivative": "BlenderCatalogue/assets/sunset_receiving_frame_20261009",
+      "group_1_complete": false,
+      "final_acceptance": false,
+      "open_construction_hold": "SUNSET_BASE_RECEIVING_HOLD",
+      "limits": "Full traversal, cart/species transport, structural capacity and final visual acceptance remain unfinished."
     }
   },
   "checks": {
@@ -29397,12 +29439,13 @@
     "shopping_promenade": "PASS:402 floors,99 stationary thresholds,177 chunks, preserved R070; final acceptance pending",
     "shared_crew_home": "PASS:actual main, bounded floor/clearance checks, physical rest surfaces, retained source pins; no population migration or final acceptance",
     "quiet_lift": "PASS:actual main, five stops and bounded boarding/gate checks; no final visual or structural acceptance",
-    "sunset_lift": "PASS:actual main, five stops and bounded boarding/gate checks; no final visual or structural acceptance"
+    "sunset_lift": "PASS:actual main, five stops and bounded boarding/gate checks; no final visual or structural acceptance",
+    "sunset_receiving_frame": "PASS:15 actual-main floor/clearance points, source preservation,40 geometric bearing contacts and14 axial slab contacts; remaining Vesper/full-base hold open"
   },
   "protection": {
     "mode": "published meaningful checkpoints",
     "automatic_watcher_running_verified": false,
     "workshop_copy_verified": false
   },
-  "base_checkpoint_commit": "d09db37f8afd31c89fa7749dc6de09ed50902071"
+  "base_checkpoint_commit": "7df48577c12bdeee03f7443cd093d7762c1ef183"
 }
