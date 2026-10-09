@@ -1,5 +1,5 @@
 """Original four approved gallery compositions. No shared or retained source writes."""
-import bpy,bmesh,json,math,hashlib
+import bpy,bmesh,json,math,hashlib,sys
 from pathlib import Path
 from mathutils import Vector
 P=Path(__file__).resolve().parents[1];D=P/'dependencies/canonical_9d6f85'
@@ -78,6 +78,29 @@ def build(deck,y,kind):
   for i,z in enumerate([1.4,4.45]):cylinder('Craft_stool_'+str(i),1.30,z,.28,.39,.48,'teal');cylinder('Craft_stool_post_'+str(i),1.3,z,.10,0,.39,'metal')
   for i in range(5):cylinder('Tactile_material_sample_'+str(i),2.55,1.10+i*.18,.055,.87,.94,['stone','metal','teal','wood','ivory'][i],8,'visual_sample')
   screen('Craft_guide',3.08,3.05,1.12,.66,1.02);cylinder('Craft_guide_receiver',3.14,3.05,.035,0,1.03,'metal',8)
+ elif kind.startswith('quiet_'):
+  # Quieter levels are open, modest fittings, with distinct support/composition.
+  # Every piece stays on the already approved margin-side floor zone.
+  variant=int(kind.split('_')[1]);purpose=kind.split('_',2)[2]
+  if variant%4==0:
+   band(purpose+'_angled_rest',2.72,3.0,.67,1.25,.43,math.pi*.55,math.pi*1.45,.40,.49,'teal',10);bench_supports(purpose+'_bearing',2.27,2.03,3.97)
+   band(purpose+'_back',2.81,3.0,.73,1.30,.10,math.pi*.55,math.pi*1.45,.49,.87,'wood',10)
+   rect(purpose+'_side_table',2.30,3.06,4.65,5.12,.64,.72,'stone');rect(purpose+'_table_bearing',2.61,2.77,4.80,4.96,0,.64,'metal')
+  elif variant%4==1:
+   for i,z in enumerate([2.0,4.0]):
+    prism(purpose+'_rest_'+str(i),[(2.08,z-.45),(2.91,z-.45),(3.13,z),(2.91,z+.45),(2.08,z+.45)],.40,.49,'wood');bench_supports(purpose+'_bearing_'+str(i),2.45,z-.27,z+.27)
+   rect(purpose+'_accessible_shelf',2.14,3.15,2.80,3.20,.72,.79,'stone');rect(purpose+'_shelf_bearing',2.86,3.03,2.93,3.07,0,.72,'metal')
+  elif variant%4==2:
+   rect(purpose+'_rest',2.28,3.12,2.0,4.0,.40,.49,'teal');bench_supports(purpose+'_bearing',2.70,2.25,3.75)
+   for i,z in enumerate([2.25,3.75]):stem(purpose+'_baffle_receiver_'+str(i),(3.15,0,z),(3.15,1.55,z),.045,'metal')
+   for i,h in enumerate([.63,1.53]):rect(purpose+'_baffle_rail_'+str(i),3.075,3.12,1.94,4.06,h,h+.055,'metal')
+   for i,z in enumerate([2.0+j*.20 for j in range(11)]):rect(purpose+'_acoustic_blade_'+str(i),3.04,3.12,z-.055,z+.055,.63,1.60,'wood')
+  else:
+   prism(purpose+'_standing_worktop',[(2.12,1.95),(2.86,1.75),(3.15,2.0),(3.15,4.0),(2.86,4.25),(2.12,4.05)],.94,1.02,'wood')
+   for i,z in enumerate([2.12,3.88]):rect(purpose+'_bearing_'+str(i),2.69,2.93,z-.12,z+.12,0,.94,'ivory')
+   rect(purpose+'_lower_shelf',1.92,2.89,2.60,3.40,.72,.79,'stone')
+  sx,sz,sy=(2.42,5.15,.85) if variant%4==2 else (3.12,3.0,1.12)
+  screen(purpose+'_orientation',sx,sz,.78,.52,sy);cylinder(purpose+'_orientation_bearing',sx+.06,sz,.028,0,sy+.01,'metal',8)
  elif kind=='sky_reading':
   for i,z in enumerate([1.65,4.15]):
    band('Sky_reading_crescent_'+str(i),2.85,z,.87,.73,.45,math.pi*.65,math.pi*1.35,.40,.49,'teal',10)
@@ -120,5 +143,9 @@ def build(deck,y,kind):
  out=P/f'exports/gallery/G7_Gallery_{deck}_r001.glb';bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_yup=True,export_extras=True,export_lights=False,export_cameras=False)
  row={'id':'G7_Gallery_'+deck+'_r001','deck':deck,'purpose':kind,'origin_world_xyz':[43,y,-25],'rotation_y':0,'scale':[1,1,1],'bounds_world_xyz':[[43,y,-25],[46.5,y+2.1,-19]],'source':native.relative_to(P).as_posix(),'export':out.relative_to(P).as_posix(),'native_sha256':hashlib.sha256(native.read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'semantic_parts':len(geometry),'triangles':sum(o['triangles'] for o in geometry),'foot_contacts':footprints,'lights':lights,'new_floor_area_m2':0,'retained_floor_owner':deck+'_authored_atrium_terrace','collision_rule':'solid contact-category meshes only; foliage/lens/marks/samples excluded. Root adopts static contact cache, existing light budget and residency.','status':'Constructed first source batch, uninstalled; no operational display/audio/species-fit/final-art acceptance'}
  (P/f'qa/gallery_geometry_{deck}.json').write_text(json.dumps(geometry,indent=2)+'\n');rows.append(row)
-for deck,y,kind in [('D06',27,'botanical'),('D09',52.5,'craft'),('D12',78,'sky_reading'),('D16',97.5,'refuge')]:build(deck,y,kind)
-(P/'docs/GALLERY_PLACEMENT_AND_INTERFACES.json').write_text(json.dumps({'canonical_ownership_baseline':'9d6f8518f9ddbe5892711ca4eb4849a46fbd32be','approved_central_bypass':[[0,-72],[0,-56],[40,-52],[40,52],[0,56],[0,72]],'protected_strip_x':[38,42],'preserved_margin_x':[42,43],'rooms':rows,'root_integration':'Add four models at exact origins; no new floor/cap/guard or global shared files here. Catalogue identities are pending root registration.'},indent=2)+'\n');print('GALLERY_BATCH_CONSTRUCTED',len(rows))
+if __name__=='__main__':
+ quiet='--quiet' in sys.argv
+ batch=[('D03',12,'quiet_0_lower_arrival'),('D04',16.5,'quiet_1_common_pause'),('D05',21,'quiet_2_care_refuge'),('D07',35.5,'quiet_3_garden_fieldnote'),('D08',44,'quiet_4_water_orientation'),('D10',61,'quiet_5_exhibition_rest'),('D11',69.5,'quiet_6_theater_pause'),('D13',84,'quiet_7_house_orientation'),('D14',88.5,'quiet_8_evening_rest'),('D15',93,'quiet_9_tidal_orientation'),('D17',102,'quiet_10_upper_house_pause')] if quiet else [('D06',27,'botanical'),('D09',52.5,'craft'),('D12',78,'sky_reading'),('D16',97.5,'refuge')]
+ for deck,y,kind in batch:build(deck,y,kind)
+ name='QUIETER_GALLERY_PLACEMENT_AND_INTERFACES.json' if quiet else 'GALLERY_PLACEMENT_AND_INTERFACES.json'
+ (P/'docs'/name).write_text(json.dumps({'canonical_ownership_baseline':'9d6f8518f9ddbe5892711ca4eb4849a46fbd32be','approved_central_bypass':[[0,-72],[0,-56],[40,-52],[40,52],[0,56],[0,72]],'protected_strip_x':[38,42],'preserved_margin_x':[42,43],'rooms':rows,'root_integration':'Add bounded open fittings at exact origins; no new floor/cap/guard/room allocations. D02 retained garden supplies its quieter-level destination. Catalogue identities and adoption pending root registration.','ownership':'General remaining atrium fit-out authorized by ROOT_SCOPE_DECISION_20261009; quieter levels use the same bounded XY zone subject to actual floor/neighbor checks, not a new route contract.'},indent=2)+'\n');print('GALLERY_BATCH_CONSTRUCTED',len(rows))

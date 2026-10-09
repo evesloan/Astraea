@@ -7,7 +7,7 @@ from shapely.geometry import Polygon
 from shapely.ops import unary_union
 from check_retained_exports import read,acc,nodes
 P=Path(__file__).resolve().parents[1];D=P/'dependencies/canonical_77a745';LATEST=P/'dependencies/canonical_9d6f85'
-plan=json.loads((P/'docs/GALLERY_PLACEMENT_AND_INTERFACES.json').read_text());floors=json.loads((D/'Game/data/generated/structural_meshes.json').read_text())['regions'];retained=[]
+quiet='--quiet' in sys.argv;plan=json.loads((P/'docs'/('QUIETER_GALLERY_PLACEMENT_AND_INTERFACES.json' if quiet else 'GALLERY_PLACEMENT_AND_INTERFACES.json')).read_text());floors=json.loads((D/'Game/data/generated/structural_meshes.json').read_text())['regions'];retained=[]
 def decode(path):
  d,b=read(path);pts=[];tris=0;names=[]
  for im in d.get('images',[]):assert 'bufferView' in im and 'uri' not in im
@@ -57,4 +57,4 @@ for r in plan['rooms']:
  assert hashlib.sha256((P/r['source']).read_bytes()).hexdigest()==r['native_sha256'];assert hashlib.sha256((P/r['export']).read_bytes()).hexdigest()==r['export_sha256']
  rows.append({'id':r['id'],'mesh_nodes':len(names),'triangles':tris,'source_export_bidirectional_vertex_max_error_m':error,'world_actual_bounds':[lo.tolist(),hi.tolist()],'floor_contacts':len(r['foot_contacts']),'footprint_sum_area_m2':foot_area,'missing_floor_area_m2':0,'retained_neighbor_triangle_AABB_candidates':candidates,'protected_strip_furniture_margin_min_m':float(lo[0]-42),'light_cones_inside_approved_footprint':True,'export_bytes':(P/r['export']).stat().st_size})
 out={'passed':True,'source_baseline':'9d6f8518f9ddbe5892711ca4eb4849a46fbd32be','checked_neighbor_bounds':len(retained),'rooms':rows,'limitations':'No engine/import, species pose, full movement/cart, display/audio interactions or final art acceptance. No triangle-AABB candidates (refined from whole-model bounds) proves exclusion only for listed neighboring sources, not all dynamic props. Existing slab thickness/headroom remains source-owned.'}
-(P/'qa/gallery_batch_checks.json').write_text(json.dumps(out,indent=2)+'\n');print('GALLERY_BATCH_CHECKS',len(rows),sum(x['triangles'] for x in rows),'triangles',sum(x['export_bytes'] for x in rows),'bytes')
+(P/'qa'/('quieter_gallery_batch_checks.json' if quiet else 'gallery_batch_checks.json')).write_text(json.dumps(out,indent=2)+'\n');print('GALLERY_BATCH_CHECKS',len(rows),sum(x['triangles'] for x in rows),'triangles',sum(x['export_bytes'] for x in rows),'bytes')
