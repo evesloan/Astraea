@@ -22,7 +22,7 @@ func setup(ship:Node3D)->void:
 	for name in ["ListeningSalonReceiving_WIP","StillroomReceiving_WIP","Cinema5Receiving_WIP","CustodialDepotReceiving_WIP","EquipmentDepotReceiving_WIP"]:
 		var room:=ship.get_node_or_null("ShipSpace/Districts/"+name)
 		if room!=null:candidates.append(room)
-	for home_root in ["TidalRoomCandidates","QuietGroveRoomCandidates","FamilyTerraceRoomCandidates","SunsetRoomCandidates","StarAtlasRoomCandidates","NightGardenRoomCandidates","ShoppingPromenadeChunks"]:
+	for home_root in ["TidalRoomCandidates","QuietGroveRoomCandidates","FamilyTerraceRoomCandidates","SunsetRoomCandidates","StarAtlasRoomCandidates","NightGardenRoomCandidates","ShoppingPromenadeChunks","SpecialtyHomeCandidates"]:
 		var homes:=ship.get_node_or_null("ShipSpace/Districts/"+home_root)
 		if homes!=null:candidates.append_array(homes.get_children())
 	for room:Node3D in candidates:

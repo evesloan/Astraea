@@ -30,5 +30,6 @@ static func build(ship: Node3D) -> Node3D:
 	units.set_meta("default_scene_enabled",true)
 	units.set_meta("installed_source_units",85)
 	units.set_meta("occupied_capacity_accepted",false)
-	house.set_meta("installed_guest_units",85)
+	load("res://scripts/tidal_specialty.gd").build(ship)
+	house.set_meta("installed_guest_units",86)
 	return house

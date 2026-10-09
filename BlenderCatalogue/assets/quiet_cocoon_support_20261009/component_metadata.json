@@ -1,0 +1,164 @@
+{
+  "schema": "astraea.single_component.v1",
+  "asset_id": "AST-RST-QC-001",
+  "name": "Open Quiet Cocoon Rest Support",
+  "family": "quiet_cocoon_support_20261009",
+  "scope": "One original rest-support fixture. No room, adoption, occupancy, biological fit or acoustic certification.",
+  "coordinates": {
+    "units": "metres",
+    "metadata_frame": "Godot/glTF Y-up",
+    "front": [
+      0,
+      0,
+      -1
+    ],
+    "blender_front": [
+      0,
+      1,
+      0
+    ],
+    "source_to_export": "(x,y,z) -> (x,z,-y)",
+    "datum": "floor origin"
+  },
+  "bounds_gltf": {
+    "min": [
+      -1.1914433240890503,
+      0.0,
+      -1.4445947408676147
+    ],
+    "max": [
+      1.1914433240890503,
+      2.351530075073242,
+      1.5110000371932983
+    ],
+    "size": [
+      2.3828866481781006,
+      2.351530075073242,
+      2.955594778060913
+    ]
+  },
+  "target_max_dimensions_xyz_m": [
+    2.4,
+    2.4,
+    3.2
+  ],
+  "support": {
+    "object": "Concave stretched rest membrane",
+    "type": "concave stretched membrane with edge tension rails",
+    "x_extent_m": [
+      -0.8634270947210074,
+      0.8634270947210074
+    ],
+    "z_extent_m": [
+      -1.24,
+      1.24
+    ],
+    "central_height_m": 0.6096874999999999,
+    "front_center_height_m": 0.635,
+    "rear_center_height_m": 0.72,
+    "top_function": "height(v,z)=0.600+0.170*v^2+0.035*(1-t)^4+0.120*t^4; t=(z+1.24)/2.48; x=v*(0.72+0.155*sin(pi*t)-0.105*t^3); -1<=v<=1",
+    "sample_contacts": [
+      {
+        "name": "RestContact_Center",
+        "position": [
+          0.0,
+          0.6096875071525574,
+          -0.0
+        ]
+      },
+      {
+        "name": "RestContact_Front",
+        "position": [
+          0.0,
+          0.6250085830688477,
+          -1.0399999618530273
+        ]
+      },
+      {
+        "name": "RestContact_Rear",
+        "position": [
+          0.0,
+          0.6798699498176575,
+          1.0
+        ]
+      },
+      {
+        "name": "Transfer_Lip",
+        "position": [
+          0.0,
+          0.6349999904632568,
+          -1.2400000095367432
+        ]
+      }
+    ]
+  },
+  "approach": {
+    "direction": [
+      0,
+      0,
+      1
+    ],
+    "external_floor_rectangle_xz_m": [
+      [
+        -0.7,
+        -2.54
+      ],
+      [
+        0.7,
+        -1.5
+      ]
+    ],
+    "internal_front_clear_prism": {
+      "min": [
+        -0.67,
+        0.045,
+        -1.5
+      ],
+      "max": [
+        0.67,
+        1.9,
+        -1.27
+      ]
+    },
+    "no_front_bar": true,
+    "transfer_opening_width_m": 1.34,
+    "contact_lip_height_m": 0.635,
+    "note": "Open front approach and low transfer edge only; not a walk-through enclosure or certified wheelchair/species access."
+  },
+  "proposed_room_reservation_gltf": {
+    "min": [
+      -1.2,
+      0,
+      -2.54
+    ],
+    "max": [
+      1.2,
+      2.4,
+      1.6
+    ]
+  },
+  "geometry": {
+    "native_mesh_objects": 96,
+    "triangles": 7664,
+    "materials": 9,
+    "external_textures": 0,
+    "native_mesh_vertices": 4024
+  },
+  "species_assignment": null,
+  "support_pose_status": "Requires actual actor/body and animation fit review",
+  "acoustics_status": "Visual absorption/diffusion intent; no simulation or measurable attenuation claimed",
+  "source_read": [
+    "Game/docs/master_source/MASTER_CURRENT_APPLICATION.json",
+    "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json chapters 6 and 8",
+    "BlenderCatalogue/standards/COORDINATE_CONTRACT.md"
+  ],
+  "reference_inspected": "BlenderCatalogue/references/intimate/image(20261002-000722).png; warm ivory/wood/teal material and resort scale cues only; new fixture silhouette",
+  "validation_limits": [
+    "No full Game import or tests",
+    "No in-engine collision, actor, animation, acoustic, hardware or final art acceptance",
+    "No structural engineering or load rating",
+    "No species mapping or berth capacity changes",
+    "Component preview lighting only; no lamp nodes exported"
+  ],
+  "authoring": "Original deterministic Python mesh recipe; native separate meshes/materials; no downloaded assets, paid services or generated textures"
+}
