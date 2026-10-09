@@ -14,4 +14,6 @@ func _ready() -> void:
 	load("res://scripts/custodial_depot_candidate.gd").build(ship)
 	load("res://scripts/equipment_depot_candidate.gd").build(ship)
 	load("res://scripts/remaining_batch_receiving.gd").build(ship)
+	var occlusion: Dictionary = load("res://scripts/static_room_occlusion.gd").install(ship)
+	set_meta("static_room_occlusion",occlusion)
 	set_meta("installation_ready", true)

@@ -68,6 +68,9 @@ func _ready() -> void:
 	interaction_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	interaction_hint.add_theme_font_size_override("font_size",16)
 	add_child(interaction_hint)
+	var metrics:Label=load("res://scripts/performance_hud.gd").new()
+	metrics.name="LivePerformanceReadout"
+	add_child(metrics)
 	_build_directory()
 	if "--capture-validation" in OS.get_cmdline_user_args():
 		await get_tree().create_timer(2.0).timeout

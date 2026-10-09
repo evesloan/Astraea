@@ -1,0 +1,29 @@
+{
+  "created_utc": "2026-10-09T14:15:52.802211+00:00",
+  "status": "headless_correctness_pass_target_performance_unverified",
+  "reported_problem": "User reports extreme lag in delivered Windows preview",
+  "baseline_inventory": {
+    "mesh_instances": 113211,
+    "nodes": 344537,
+    "occluders": 469,
+    "lights": 1886
+  },
+  "changes": [
+    "Exact large opaque static triangles form600additionalocclusioncells; doors,glass,dynamicobjects and existing slab owners excluded",
+    "Bounded top32lightcandidate selection preserves8shadow maximum",
+    "Existing18roomstreamer now uses55mretention/35mentry hysteresis",
+    "F9live FPS/frame p95/process/physics/drawcalls/primitives/node/memory readout"
+  ],
+  "test": "artifacts/static_room_occlusion.json",
+  "remaining": [
+    "Actual Windows GPU before/after measurements",
+    "Scene/resource residency reduction and paced background loading",
+    "Visual review across atrium, windows and openings",
+    "This first correction does not establish acceptable FPS or complete streaming"
+  ],
+  "references": [
+    "https://docs.godotengine.org/en/4.6/tutorials/3d/occlusion_culling.html",
+    "https://docs.godotengine.org/en/4.6/tutorials/3d/visibility_ranges.html",
+    "https://docs.godotengine.org/en/4.6/tutorials/io/background_loading.html"
+  ]
+}

@@ -7,6 +7,7 @@ var actor: Node3D
 var sources: Array[Light3D] = []
 var requested_shadow: Dictionary = {}
 var elapsed := 0.0
+var previously_active: Array[Light3D] = []
 func configure(ship: Node3D, player: Node3D) -> void:
 	actor = player
 	for light in ship.find_children("*","Light3D",true,false):
@@ -33,8 +34,23 @@ func refresh() -> void:
 		var distance := actor.global_position.distance_to(light.global_position)
 		# Normalize for source reach; retain a small preference to avoid boundary flicker.
 		var score := distance/maxf(reach,1.0)-(0.08 if light.visible else 0.0)
-		ranked.append({"light":light,"score":score})
-	ranked.sort_custom(func(a,b): return a.score < b.score)
+		# Keep only the nearest visibility candidates; avoid sorting every ship light.
+		if ranked.size() == MAX_VISIBILITY_CANDIDATES and score >= float(ranked[-1].score): continue
+		var insert_at := ranked.size()
+		while insert_at > 0 and score < float(ranked[insert_at-1].score): insert_at -= 1
+		ranked.insert(insert_at,{"light":light,"score":score})
+		if ranked.size() > MAX_VISIBILITY_CANDIDATES: ranked.pop_back()
+	for old in previously_active:
+		if not is_instance_valid(old): continue
+		var retained := false
+		for row in ranked:
+			if row.light == old:
+				retained = true
+				break
+		if not retained:
+			old.visible = false
+			old.shadow_enabled = false
+	previously_active.clear()
 	# Visibility is required, not a penalty: hidden/untested sources cannot fill slots.
 	# Eight extra candidates avoid newly fitted decks starving nearby room fixtures.
 	# Stop once the budget is full; visibility work stays independent of ship size.
@@ -43,7 +59,9 @@ func refresh() -> void:
 		var light: Light3D = ranked[i].light
 		# A shadowed fixture is never silently converted to a wall-leaking unshadowed lamp.
 		var active := i < MAX_VISIBILITY_CANDIDATES and active_sources < shadow_source_budget and _has_visible_sample(light)
-		if active: active_sources += 1
+		if active:
+			active_sources += 1
+			previously_active.append(light)
 		if light.visible != active: light.visible = active
 		if light.shadow_enabled != active: light.shadow_enabled = active
 

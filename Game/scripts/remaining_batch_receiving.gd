@@ -43,9 +43,12 @@ func refresh()->void:
 	for item in entries:
 		var lo:Array=item.bounds_min
 		var hi:Array=item.bounds_max
-		var close:=pos.y>=float(lo[1])-1.0 and pos.y<=float(hi[1])+.5 and pos.x>=float(lo[0])-35.0 and pos.x<=float(hi[0])+35.0 and pos.z>=float(lo[2])-35.0 and pos.z<=float(hi[2])+35.0
 		var room:Node3D=rooms[str(item.key)]
 		var loaded:bool=room.get_meta("stream_loaded",false)
+		# Wider retention boundary prevents repeated unload/reload at door thresholds.
+		var margin:float=55.0 if loaded else 35.0
+		var y_margin:float=3.0 if loaded else 1.0
+		var close:=pos.y>=float(lo[1])-y_margin and pos.y<=float(hi[1])+y_margin and pos.x>=float(lo[0])-margin and pos.x<=float(hi[0])+margin and pos.z>=float(lo[2])-margin and pos.z<=float(hi[2])+margin
 		if close and not loaded:pending.append(item)
 		elif not close and loaded:
 			var budget:=host.get_node("ShipSystems/LocalShadowSourceBudget")
@@ -74,6 +77,7 @@ static func install(ship:Node3D,item:Dictionary,room:Node3D)->Node3D:
 		if visual_border:
 			mesh.set_meta("receiving_collision_policy","visual bay border")
 		else:load("res://scripts/static_contact_cache.gd").attach(mesh)
+	load("res://scripts/static_room_occlusion.gd").install(source)
 	var lights:Array[Light3D]=load("res://scripts/receiving_source_lights.gd").normalize(source,int(item.lights))
 
 	for fixture in item.get("fixture_lights",[]):

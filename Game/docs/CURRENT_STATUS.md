@@ -1,3 +1,7 @@
+## 9 October 2026, 14:15 UTC: First performance correction, GPU acceptance pending
+
+User reports severe Windows lag. Actual current inventory is113211meshes/344537nodes. Added600exactopaque-face occlusion cells (81307triangles), bounded top32light selection, existing18room streaming hysteresis and F9live metrics. Actual main load, aperture/glass witness,idempotency and shadow-budget checks pass. No Windows/GPU speedup measured. Most legacy and received source remains resident; broad resource streaming and node batching remain important. Quiet Grove83sources exported but not adopted pending actual Library counterpart revision.
+
 ## 9 October 2026, 13:59 UTC: Tidal Garden adopted into default ship
 
 85 retained source interiors,221 rest anchors,81 landscape/seating instances and five-stop lift installed as construction WIP. Thirteen named hidden composite-cap receiving members complete the Salon interface without replacing its visible source. Main-scene registration and85 entrance-floor checks pass. Protected pilots remain. Full traversal,visual review,privacy,occupancy,remaining specialty/VIP interiors and broader service/hull acceptance remain open. Latest delivered Windows ZIP predates this addition. This change awaits its own published checkpoint.
