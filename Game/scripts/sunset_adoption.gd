@@ -5,6 +5,7 @@ static func build(ship:Node3D)->Node3D:
 	if OS.get_environment("ASTRAEA_SUNSET_CANDIDATE_ISOLATION")=="1":return null
 	var house:Node3D=load("res://scripts/sunset_receiving.gd").build(ship)
 	house.set_meta("persistent_id","sunset_house_001")
+	load("res://scripts/sunset_lift.gd").build(house)
 	house.set_meta("acceptance","integrated_construction_wip")
 	house.set_meta("receiving_structure_accepted",false)
 	house.set_meta("open_construction_hold","SUNSET_BASE_RECEIVING_HOLD")

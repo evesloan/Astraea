@@ -1,3 +1,7 @@
+## 09 October 2026, 18:40 UTC: Sunset Conservatory five-stop lift installed
+
+Existing reserved bay now has five operating landings/gates using the retained passenger controller. One23.92m² base recess preserves four existing upper apertures,83 homes,133 landscape placements and protected Vesper source. Actual-main bounded boarding/gate checks pass. SUNSET_BASE_RECEIVING_HOLD remains open: actual foundation/frame is immediate Group1 work, not deferred to Group7. Full traversal, cart/species, structure and final visual acceptance remain unfinished.
+
 ## 09 October 2026, 18:27 UTC: Quiet Grove five-stop lift installed
 
 Southern commons shaft, five fitted landings/gates, pit and receiving crossbearers connect D13–D17 using the existing passenger controller. Five23m² slab recesses preserve retained stair apertures,83 homes,250 landscape placements and143 Library members. Actual-main bounded boarding/gate tests pass. Group1 remains open, including other lifts, homes, commons, service and structural/enclosure work. Full traversal, cart/species, structural capacity and final visual acceptance remain unfinished.
