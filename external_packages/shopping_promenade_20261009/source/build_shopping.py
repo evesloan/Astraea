@@ -83,7 +83,7 @@ def fixture(n,u,v,h=4.5,layer='shell'):
  disk(n+'_shade',u,v,.32,h,h+.14,W,16,layer);disk(n+'_lens',u,v,.23,h-.016,h,E,16,layer);mark(n,u,v,h-.02,'reserved_downlight')
  p=coord(u,v,h-.02);LIGHTS.append({'chunk_id':CURRENT['chunk_id'],'id':CURRENT['chunk_id']+'_'+n,'local_xyz':[p[0],p[2],-p[1]],'position_world':[p[0]+CURRENT['position'][0],52.5+p[2],-p[1]+CURRENT['position'][2]],'kind':'SpotLight3D','direction':[0,-1,0],'range_m':7,'angle_deg':70,'energy':.9,'colour':[1,.95,.86],'root_budget':'Enable only active room/court fixture budget; no whole-promenade all-lights-on acceptance'})
 def textface(n,text,u,v,h,size=.25,layer='shell'):
- font=bpy.data.curves.new(n,'FONT');font.body=text;font.size=size;font.align_x='CENTER';font.extrude=.003;font.resolution_u=2;o=bpy.data.objects.new(n,font);COL.objects.link(o);bpy.context.view_layer.update();me=bpy.data.meshes.new_from_object(o.evaluated_get(bpy.context.evaluated_depsgraph_get()));verts=[coord(u+p.co.x,v-p.co.z,h+p.co.y) for p in me.vertices];faces=[tuple(f.vertices) for f in me.polygons];bpy.data.objects.remove(o,do_unlink=True);return mesh(n,verts,faces,C,layer)
+ font=bpy.data.curves.new(n,'FONT');font.body=text;font.size=size;font.align_x='CENTER';font.extrude=.003;font.resolution_u=2;o=bpy.data.objects.new(n,font);COL.objects.link(o);bpy.context.view_layer.update();me=bpy.data.meshes.new_from_object(o.evaluated_get(bpy.context.evaluated_depsgraph_get()));verts=[coord(u+(-p.co.x if layer=='shell' and CURRENT.get('front_sign_x',1)==1 else p.co.x),v-p.co.z,h+p.co.y) for p in me.vertices];faces=[tuple(reversed(f.vertices)) if layer=='shell' and CURRENT.get('front_sign_x',1)==1 else tuple(f.vertices) for f in me.polygons];bpy.data.objects.remove(o,do_unlink=True);return mesh(n,verts,faces,C,layer)
 def opaque_quad(n,verts):
  ps=[coord(*p) for p in verts];OCC.append({'chunk_id':CURRENT['chunk_id'],'surface':n,'local_vertices_godot':[[p[0],p[2],-p[1]] for p in ps],'triangles':[0,1,2,0,2,3],'scope':'Literal solid wall face. Portal/window/service aperture regions omitted.'})
 def wall(n,u0,u1,v0,v1,h0,h1,r=W):
@@ -182,7 +182,7 @@ def room_fitout(r):
  if f==0:
   for u,v in [(-3.4,-1.9),(3.2,-.6)]:
    native_asset('AST-RTL-002',u,v,0,variant*.12,'orbit_'+str(u));display_goods('orbit_sample_'+str(u),u,v-.30,.69,f)
-  bench('orbit_rest',[(-4.5,.5),(-4,1.6),(-2.8,2.0)]);disk('orbit_display_ring',-3.7,.9,.62,.50,.59,C);planter('orbit_green',4.6,.3,.4)
+  bench('orbit_rest',[(-1.7,.5),(-1.2,1.6),(0,2.0)]);disk('orbit_display_ring',-3.7,.9,.62,.50,.59,C);planter('orbit_green',4.6,.3,.4)
  elif f==1:
   for u in [-3.6,3.4]:
    shelving('textile_sample_wall_'+str(u),u,.5,1.2,.7,2.25)
@@ -194,7 +194,7 @@ def room_fitout(r):
   shelving('garden_care_niche',-3.6,1.7,2.4,.6,2.1);display_goods('care_trays',-3.6,1.55,1.10,2);bench('garden_pause',[(2.7,-3.7),(4.7,-3.5)])
  elif f==3:
   for u in [-3.4,3.1]:native_asset('AST-RTL-003',u,-.1,0,-.1 if u<0 else .1,'parcel_public_'+str(u))
-  shelving('parcel_cubbies',-3.1,1.7,3.3,.8,2.4);native_asset('AST-RTL-002',3.3,-2.5,0,0,'parcel_landing');display_goods('parcel_samples',3.2,-2.8,.69,2)
+  shelving('parcel_cubbies',0,1.7,3.3,.8,2.4);native_asset('AST-RTL-002',3.3,-2.5,0,0,'parcel_landing');display_goods('parcel_samples',3.2,-2.8,.69,2)
  elif f==4:
   bench('soft_curve',[(-4.3,-2.5),(-3.1,-2.3),(-2.6,-1.4),(-2.7,.4),(-3.5,1.0)],'oatmeal_weave');bench('soft_wall',[(3.6,-2.5),(4.6,-.2)],'teal_weave');native_asset('AST-RTL-002',2.8,.5,0,.25,'soft_samples');native_asset('AST-RTL-008',-4.9,1.8,2.2,0,'soft_hanging_sample');planter('soft_green',-3.3,-4.5,.4)
  elif f==5:
@@ -212,7 +212,7 @@ def room_fitout(r):
   for j in range(10):disk('button_sample_'+str(j),-4.6+j*.24,1.2,.062,1.1,1.13,C if j%2 else T,12)
  elif f==9:
   for u,v in [(-3.4,-2.1),(3.3,-.4)]:native_asset('AST-RTL-002',u,v,0,(variant%3)*.18,'curio_'+str(u));display_goods('curio_sample_'+str(u),u,v-.25,.69,0)
-  native_asset('AST-RTL-003',-3.0,1.7,0,0,'curio_care');planter('curio_green',3.4,-4.5,.4)
+  native_asset('AST-RTL-003',0,1.7,0,0,'curio_care');planter('curio_green',3.4,-4.5,.4)
  # Low paired surface gives an inclusive resting/reach alternative without claiming species fit.
  cube('low_contact_surface_foot',(-4.9,-4.8,0),(-4.5,-4.2,.43),W);cube('low_contact_surface',(-5.0,-4.9,.43),(-4.35,-4.1,.50),O)
  mark('accessible_low_surface',-4.65,-4.5,.50,'reserved_low_support');mark('work_surface',1.68,3.75,.95,'wrapping_support');mark('persistent_goods_socket',3.0,1.9,1.0,'future_owned_merchandise_anchor')

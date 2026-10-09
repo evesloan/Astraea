@@ -20,9 +20,11 @@ else:
 head=None if initial else git('rev-parse','HEAD');D=G/PREFIX
 for f in P.rglob('*'):
  rel=f.relative_to(P)
+ if rel.parts[:2]==('preview','exports'):continue
  if not f.is_file() or any(k in rel.parts for k in ['retention','.godot','__pycache__']) or f.suffix in ['.blend1','.pyc','.import']:continue
  assert f.stat().st_size<95*1024*1024,rel
  t=D/rel;t.parent.mkdir(parents=True,exist_ok=True);h=hashlib.sha256(f.read_bytes()).hexdigest();shutil.copyfile(f,t);assert h==hashlib.sha256(t.read_bytes()).hexdigest()==hashlib.sha256(f.read_bytes()).hexdigest()
+if git('ls-files',PREFIX+'/preview/exports'):git('rm','-r','--cached','--',PREFIX+'/preview/exports')
 git('add',PREFIX);git('add','--renormalize',PREFIX);phase=sys.argv[1] if len(sys.argv)>1 else 'construction'
 git('-c','user.name=Codex','-c','user.email=codex@users.noreply.github.com','commit','-m','Bounded shopping delivery: '+phase)
 manifest=json.loads((P/'RESOURCE_HASHES.json').read_text());check=dict(manifest['files']);check['RESOURCE_HASHES.json']={'sha256':hashlib.sha256((P/'RESOURCE_HASHES.json').read_bytes()).hexdigest()}
