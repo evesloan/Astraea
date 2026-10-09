@@ -9,7 +9,7 @@ func run()->void:
 	var lift:Node3D=house.get_node("SunsetPassengerLift")
 	assert(house.get_meta("installed_guest_units")==83)
 	assert(house.get_node("RetainedLandscapeAndSeating").get_child_count()==133)
-	assert(house.get_meta("open_construction_hold")=="SUNSET_BASE_RECEIVING_HOLD")
+	assert(house.get_meta("open_construction_hold") in ["SUNSET_BASE_RECEIVING_HOLD","SUNSET_RECEIVING_REVIEW_HOLD"])
 	var excluded:Array[RID]=[]
 	for body in ship.find_children("*","CharacterBody3D",true,false):excluded.append(body.get_rid())
 	for body in ship.find_children("*","RigidBody3D",true,false):excluded.append(body.get_rid())

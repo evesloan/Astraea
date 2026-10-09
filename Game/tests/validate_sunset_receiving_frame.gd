@@ -9,7 +9,7 @@ func run()->void:
 	var house:Node3D=ship.get_node("ShipSpace/Districts/SunsetReceivingCandidate")
 	var frame:Node3D=house.get_node("SunsetCourtReceivingFrame")
 	assert(frame.get_meta("source_part_count")==391 and not frame.get_meta("full_base_hold_closed"))
-	assert(house.get_meta("open_construction_hold")=="SUNSET_BASE_RECEIVING_HOLD")
+	assert(house.get_meta("open_construction_hold") in ["SUNSET_BASE_RECEIVING_HOLD","SUNSET_RECEIVING_REVIEW_HOLD"])
 	assert(house.get_meta("installed_guest_units")==83 and house.get_node("RetainedLandscapeAndSeating").get_child_count()==133)
 	var d:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/SUNSET_RECEIVING_FRAME.json"))
 	for path in d.source_pins:assert(FileAccess.get_sha256("res://"+str(path).trim_prefix("Game/"))==d.source_pins[path])

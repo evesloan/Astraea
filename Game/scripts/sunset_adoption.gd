@@ -1,5 +1,5 @@
 extends RefCounted
-# Integrate retained construction first; receiving-frame hold remains open under hull work.
+# Retained residential construction; remaining receiving review stays in Group 1.
 # This is not structural, visual, occupancy or traversal acceptance.
 static func build(ship:Node3D)->Node3D:
 	if OS.get_environment("ASTRAEA_SUNSET_CANDIDATE_ISOLATION")=="1":return null
@@ -10,6 +10,7 @@ static func build(ship:Node3D)->Node3D:
 	house.set_meta("receiving_structure_accepted",false)
 	house.set_meta("open_construction_hold","SUNSET_BASE_RECEIVING_HOLD")
 	load("res://scripts/sunset_receiving_frame.gd").build(house)
+	load("res://scripts/sunset_vesper_receiver.gd").build(house)
 	var homes:Node3D=load("res://scripts/sunset_rooms.gd").build(ship)
 	homes.set_meta("default_scene_enabled",true)
 	homes.set_meta("installed_source_units",83)
