@@ -1,3 +1,7 @@
+## 09 October 2026, 19:18 UTC: Family Terrace five-stop lift installed
+
+Existing reserved bay now has five operating landings/gates using the retained passenger controller. One23.46m² base recess preserves four existing upper apertures,82 homes,157 landscape placements and protected Celestial lounge/Reading nooks sources. Actual-main bounded boarding/gate checks pass. FT_BASE_RECEIVING_HOLD remains open: actual foundation/frame is immediate Group1 work, not deferred to Group7. Full traversal, cart/species, structure and final visual acceptance remain unfinished.
+
 ## 09 October 2026, 19:08 UTC: Sunset Vesper roof and inner receiver installed
 
 129 additive members now connect the retained Vesper roof, two inner trellis reactions, inner garden and paired street to the court frame.47 plane-matched pads contact eight source roof faces. All five source pins remain unchanged; actual-main retained ceiling/floor checks pass. The missing-receiver geometry hold advances to SUNSET_RECEIVING_REVIEW_HOLD. Group1, final receiving/visual review, primary hull/capacity and full traversal remain unfinished.
