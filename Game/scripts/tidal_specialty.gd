@@ -15,6 +15,7 @@ static func patch_frontage(visual:Node3D)->void:
 	patch.free()
 static func _contacts(node:Node3D)->void:
 	for mesh:MeshInstance3D in node.find_children("*","MeshInstance3D",true,false):
+		if str(mesh.get_meta("extras",{}).get("collision_policy","")) in ["NO_SOLID_COLLISION","no_collision_detail"]:continue
 		load("res://scripts/static_contact_cache.gd").attach(mesh)
 static func build(ship:Node3D)->Node3D:
 	var d:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(DATA))
@@ -25,7 +26,7 @@ static func build_unit(parent:Node3D,d:Dictionary)->Node3D:
 	var room:=Node3D.new();room.name=str(d.allocation.proposed_runtime_id);parent.add_child(room)
 	room.set_meta("census_source_index",int(d.allocation.source_envelope_index))
 	room.set_meta("source_identity_status",d.allocation.runtime_id_status)
-	room.set_meta("habitat_profile","new_quiet_cocoon_candidate")
+	room.set_meta("habitat_profile",d.get("habitat_profile","new_quiet_cocoon_candidate"))
 	room.set_meta("species_assignment","")
 	room.set_meta("finished",false)
 	room.set_meta("source_rest_slots",d.allocation.proposed_rest_slot_ids)
@@ -40,11 +41,14 @@ static func build_unit(parent:Node3D,d:Dictionary)->Node3D:
 		if bool(extra.runtime_collision):load("res://scripts/static_contact_cache.gd").attach(mesh)
 	var component_path:String="res://assets/models/"+str(d.component_model)
 	assert(FileAccess.get_sha256(component_path)==d.component_sha256)
-	var support:Node3D=load(component_path).instantiate();support.name="QuietCocoonSupport";room.add_child(support)
-	support.position=Vector3(d.component.world_origin[0],d.component.world_origin[1],d.component.world_origin[2]);support.rotation.y=float(d.component.godot_yaw)
-	_contacts(support)
-	var rest:=Marker3D.new();rest.name="ReservedRestPlace";support.add_child(rest);rest.position=Vector3(0,.6096875,0)
-	rest.set_meta("rest_slot_id",d.allocation.proposed_rest_slot_ids[0]);rest.set_meta("body_pose_accepted",false)
+	var bindings:Array=d.get("components",[d.get("component",{})])
+	for binding in bindings:
+		var support:Node3D=load(component_path).instantiate();support.name=str(binding.get("name","QuietCocoonSupport"));room.add_child(support)
+		support.position=Vector3(binding.world_origin[0],binding.world_origin[1],binding.world_origin[2]);support.rotation.y=float(binding.godot_yaw)
+		_contacts(support)
+		var contact:Array=d.get("support_contact",[0,.6096875,0])
+		var rest:=Marker3D.new();rest.name="ReservedRestPlace";support.add_child(rest);rest.position=Vector3(contact[0],contact[1],contact[2])
+		rest.set_meta("rest_slot_id",binding.get("rest_slot_id",d.allocation.proposed_rest_slot_ids[0]));rest.set_meta("body_pose_accepted",false)
 	for item in d.fixtures:
 		var fixture:Node3D=load("res://assets/models/"+str(item.catalogue_id)+".glb").instantiate();fixture.name=str(item.catalogue_id);room.add_child(fixture)
 		fixture.position=Vector3(item.origin[0],item.origin[1],item.origin[2]);fixture.rotation.y=float(item.yaw);_contacts(fixture)

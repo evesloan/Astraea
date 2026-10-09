@@ -19,6 +19,7 @@ static func build(ship: Node3D, definition_path: String = "res://data/architectu
 	house.add_child(visual)
 	if OS.get_environment("ASTRAEA_TIDAL_CANDIDATE_ISOLATION")!="1":load("res://scripts/tidal_specialty.gd").patch_frontage(visual)
 	if OS.get_environment("ASTRAEA_TIDAL_CANDIDATE_ISOLATION")!="1":load("res://scripts/tidal_specialty_batch.gd").patch_frontage(visual)
+	if OS.get_environment("ASTRAEA_TIDAL_CANDIDATE_ISOLATION")!="1":load("res://scripts/tidal_aquatic_singles.gd").patch_frontage(visual)
 	var meshes := visual.find_children("*", "MeshInstance3D", true, false)
 	assert(meshes.size() == int(definition.mesh_count))
 	var contacts := 0

@@ -1,0 +1,259 @@
+{
+  "schema": "astraea.single_component.v1",
+  "catalogue_id_check": {
+    "complete_manifest_checked": true,
+    "unused_on_initial_authoring": true,
+    "manifest_sha256_at_build": "24aa86a36c9786cdaf8126e187cfd92cd4e698569fc2235b4ad36dc749dd0302",
+    "current_registration": "not registered"
+  },
+  "asset_id": "AST-RST-AQ-001",
+  "family": "aquatic_rest_cradle_20261009",
+  "name": "Lagoon Immersed Rest Cradle",
+  "scope": "One original proposed aquatic rest component. No recovered assignment, occupancy or biological certification.",
+  "coordinates": {
+    "units": "metres",
+    "metadata_frame": "Godot/glTF Y-up",
+    "front": [
+      0,
+      0,
+      -1
+    ],
+    "blender_front": [
+      0,
+      1,
+      0
+    ],
+    "source_to_export": "(x,y,z) -> (x,z,-y)",
+    "datum": "floor origin"
+  },
+  "bounds_gltf": {
+    "min": [
+      -1.4426565170288086,
+      0.0,
+      -2.072000026702881
+    ],
+    "max": [
+      1.559999942779541,
+      1.2357951402664185,
+      1.9070000648498535
+    ],
+    "size": [
+      3.0026564598083496,
+      1.2357951402664185,
+      3.9790000915527344
+    ]
+  },
+  "target_max_dimensions_xyz_m": [
+    3.6,
+    1.6,
+    4.2
+  ],
+  "basin": {
+    "shell_object": "Hollow continuous basin shell with interior floor",
+    "interior_floor_height_m": 0.16,
+    "interior_floor_extent_approx_xz_m": [
+      2.1,
+      2.9
+    ],
+    "wall_horizontal_thickness_at_rim_m": [
+      0.23,
+      0.24
+    ],
+    "minimum_front_rim_height_m": 0.635,
+    "rear_rim_height_m": 1.115,
+    "shell_is_open_cavity_closed_material": true
+  },
+  "support": {
+    "object": "Contoured broad immersed rest support",
+    "type": "wide concave immersed support with rising rear and raised lateral contours",
+    "z_extent_m": [
+      -1.37,
+      1.35
+    ],
+    "width_range_m": [
+      1.28,
+      1.9651214110690705
+    ],
+    "central_height_m": 0.24125000000000002,
+    "front_center_height_m": 0.27,
+    "rear_center_height_m": 0.7,
+    "top_function": "t=(z+1.37)/2.72; width_half=.76+.25*sin(pi*t)-.12*t*t; x=u*width_half; y=.22+.135*u*u+.05*(1-t)^3+.48*t^5; -1<=u<=1",
+    "material_thickness_m": 0.065,
+    "sample_contacts": [
+      {
+        "name": "RestContact_Front",
+        "position": [
+          0.0,
+          0.25559578970071994,
+          -1.0785714285714287
+        ]
+      },
+      {
+        "name": "RestContact_Center",
+        "position": [
+          0.0,
+          0.24125000000000002,
+          -0.010000000000000009
+        ]
+      },
+      {
+        "name": "RestContact_Rear",
+        "position": [
+          0.0,
+          0.4422246682929731,
+          0.9614285714285713
+        ]
+      },
+      {
+        "name": "RestContact_Left",
+        "position": [
+          -0.588,
+          0.28985,
+          -0.010000000000000009
+        ]
+      },
+      {
+        "name": "RestContact_Right",
+        "position": [
+          0.588,
+          0.28985,
+          -0.010000000000000009
+        ]
+      }
+    ],
+    "immersion_note": "Most of the central/lateral support is below proposed waterline; rear slope emerges. This is not a solved body pose."
+  },
+  "water": {
+    "object": "WaterSurface_VisualOnly",
+    "level_y_m": 0.57,
+    "surface_bounds_xz_m": [
+      [
+        -1.14121711,
+        -1.60939525
+      ],
+      [
+        1.14121711,
+        1.52826087
+      ]
+    ],
+    "level_above_basin_floor_m": 0.4099999999999999,
+    "central_support_submergence_m": 0.32874999999999993,
+    "minimum_front_freeboard_m": 0.06500000000000006,
+    "closed_volume": false,
+    "proposed_fluid_broadphase_only_bounds": {
+      "min": [
+        -1.14121711,
+        0.16,
+        -1.60939525
+      ],
+      "max": [
+        1.14121711,
+        0.57,
+        1.52826087
+      ],
+      "meaning": "AABB for planning only; actual future fluid must be bounded by cavity and exclude support material. No closed water-volume mesh or physics supplied."
+    },
+    "collision_policy": "NO_SOLID_COLLISION; exclude WaterSurface_VisualOnly and all ripple ribbons from any static collision generation",
+    "surface_construction": "original planar radial mesh with exact convex-polygon subtraction of raised source support triangles; translucent material plus six authored ripple ribbons",
+    "simulation": "absent: no buoyancy, water quantity, flow, splash, thermal/chemical/environmental regulation or save state"
+  },
+  "approach": {
+    "external_clear_prism": {
+      "min": [
+        -0.67,
+        0.005,
+        -3.15
+      ],
+      "max": [
+        0.67,
+        1.75,
+        -2.08
+      ]
+    },
+    "transfer_width_m": 1.24,
+    "transfer_height_m": 0.672,
+    "foot_ledge_height_m": 0.2,
+    "transfer_direction": [
+      0,
+      0,
+      1
+    ],
+    "no_centre_front_bar": true,
+    "note": "Low transfer edge only, not a walk-through opening, ramp or certified accessible facility."
+  },
+  "service": {
+    "control_mount_position": [
+      1.355,
+      0.92,
+      -0.5
+    ],
+    "access_stance_position": [
+      2.05,
+      0,
+      -0.47
+    ],
+    "external_clear_prism": {
+      "min": [
+        1.59,
+        0.005,
+        -0.95
+      ],
+      "max": [
+        2.49,
+        1.75,
+        0.01
+      ]
+    },
+    "mounting_status": "nonfunctional visible service/control interfaces; actual UI, plumbing and cleaning interaction pending"
+  },
+  "collision": {
+    "status": "proposal only; no physics bodies exported",
+    "shell": "static concave triangle surface or validated multi-convex decomposition preserving cavity; NEVER one convex hull over entire basin",
+    "support": "static concave candidate; exact contoured top is actual contact surface",
+    "water_and_ripples": "NO_SOLID_COLLISION",
+    "decorative_detail": "exclude no_collision_detail meshes from collision",
+    "future_water_detection": "separate nonblocking Area3D volume must be authored/tested during integration",
+    "all_nodes_have_explicit_collision_policy": true
+  },
+  "geometry": {
+    "native_mesh_objects": 62,
+    "native_mesh_vertices": 5677,
+    "triangles": 10415,
+    "materials": 12,
+    "external_textures": 0
+  },
+  "proposed_room_reservation_gltf": {
+    "min": [
+      -1.48,
+      0,
+      -3.15
+    ],
+    "max": [
+      2.49,
+      1.75,
+      1.9
+    ]
+  },
+  "species_assignment": null,
+  "fixed_species_quota": null,
+  "recovered_room_assignment": null,
+  "body_fit_and_animation": "pending original actor dimensions, rest transitions, transfers and actual contact tests",
+  "reference_inspected": [
+    "BlenderCatalogue/references/intimate/image(20261002-000722).png",
+    "BlenderCatalogue/references/aquatic/image(20261001-035517).png",
+    "BlenderCatalogue/assets/quiet_cocoon_support_20261009/preview_front_threequarter.png"
+  ],
+  "source_read": [
+    "Game/docs/master_source/MASTER_CURRENT_APPLICATION.json (complete)",
+    "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json chapters 6 and 8 (complete)",
+    "BlenderCatalogue/standards/COORDINATE_CONTRACT.md"
+  ],
+  "validation_limits": [
+    "Component source/export geometry and preview only; no Game import",
+    "No species compatibility, live water, body fit, rest animation, accessibility, environmental or structural load certification",
+    "No room layout or clearance outside stated reservation verified",
+    "No occupancy/berth changes, catalogue registration, backups or publication",
+    "Preview studio excluded from GLB; no exported lights"
+  ],
+  "authoring": "Original deterministic Python meshes and simple materials. No downloads, image textures, fees or external asset service."
+}
