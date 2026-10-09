@@ -124,6 +124,7 @@ func _ready() -> void:
 	load("res://scripts/d12_pair_receiving.gd").build(self)
 	load("res://scripts/botanical_pair_receiving.gd").build(self)
 	load("res://scripts/tidal_garden_adoption.gd").build(self)
+	load("res://scripts/quiet_grove_adoption.gd").build(self)
 	lighting_budget.configure(self,player)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:

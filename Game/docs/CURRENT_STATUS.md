@@ -1,3 +1,7 @@
+## 09 October 2026, 14:56 UTC: Quiet Grove source interiors installed
+
+83 retained furnished homes,215 rest anchors,250 landscape/seating instances and143 additive roof-composite members are installed as construction WIP. Library source remains unchanged; rejected R1 piers are absent. Main registration, unique identity and166 interior/street floor checks pass. Residency now includes231room/home identities. Retained stairs are present; new Quiet passenger lift, complete service/hull/support, privacy, occupancy, graphical and full traversal acceptance remain unfinished.
+
 ## 09 October 2026, 14:42 UTC: Visibility-aware cached room residency
 
 148 received-room/home identities use conservative visible-or-near scene residency. The final headless receipt records 120236 fewer active scene nodes, retained exact node identities, independent occluders, loose-body contact pinning and paused arrival collision readiness. Resources remain cached in RAM and initial construction load is unchanged. Graphical notifier behavior and target-hardware FPS remain unverified.

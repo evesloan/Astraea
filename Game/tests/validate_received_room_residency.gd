@@ -14,7 +14,7 @@ func run()->void:
 	assert(after<before)
 	assert(ship.find_children("*","OccluderInstance3D",true,false).size()==floors)
 	var stats:Dictionary=manager.statistics()
-	assert(stats.registered_rooms==148)
+	assert(stats.registered_rooms==231)
 	var target:Dictionary={}
 	for e in manager.entries:
 		if not e.attached:
