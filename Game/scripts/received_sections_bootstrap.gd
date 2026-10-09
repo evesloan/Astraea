@@ -16,4 +16,8 @@ func _ready() -> void:
 	load("res://scripts/remaining_batch_receiving.gd").build(ship)
 	var occlusion: Dictionary = load("res://scripts/static_room_occlusion.gd").install(ship)
 	set_meta("static_room_occlusion",occlusion)
+	var residency:Node=load("res://scripts/received_room_residency.gd").new()
+	residency.name="ReceivedRoomResidency"
+	ship.get_node("ShipSystems").add_child(residency)
+	residency.setup(ship)
 	set_meta("installation_ready", true)

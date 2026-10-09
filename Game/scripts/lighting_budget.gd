@@ -24,7 +24,7 @@ func refresh() -> void:
 	if not is_instance_valid(actor): return
 	var ranked: Array = []
 	for light in sources:
-		if not is_instance_valid(light): continue
+		if not is_instance_valid(light) or not light.is_inside_tree(): continue
 		if not light.get_meta("fixture_powered",true):
 			if light.visible: light.visible = false
 			if light.shadow_enabled: light.shadow_enabled = false

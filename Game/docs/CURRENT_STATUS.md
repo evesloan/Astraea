@@ -1,3 +1,7 @@
+## 09 October 2026, 14:42 UTC: Visibility-aware cached room residency
+
+148 received-room/home identities use conservative visible-or-near scene residency. The final headless receipt records 120236 fewer active scene nodes, retained exact node identities, independent occluders, loose-body contact pinning and paused arrival collision readiness. Resources remain cached in RAM and initial construction load is unchanged. Graphical notifier behavior and target-hardware FPS remain unverified.
+
 ## 9 October 2026, 14:15 UTC: First performance correction, GPU acceptance pending
 
 User reports severe Windows lag. Actual current inventory is113211meshes/344537nodes. Added600exactopaque-face occlusion cells (81307triangles), bounded top32light selection, existing18room streaming hysteresis and F9live metrics. Actual main load, aperture/glass witness,idempotency and shadow-budget checks pass. No Windows/GPU speedup measured. Most legacy and received source remains resident; broad resource streaming and node batching remain important. Quiet Grove83sources exported but not adopted pending actual Library counterpart revision.

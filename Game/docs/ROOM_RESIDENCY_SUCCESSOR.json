@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-10-09T14:42:54.780663+00:00",
+  "status": "headless_residency_correctness_pass",
+  "tested_result": {
+    "after_hidden_room_detachment": 225052,
+    "independent_occluders_retained": 1069,
+    "initial_live_nodes": 345288,
+    "paused_arrival_immediate_collision": true,
+    "reduction": 120236,
+    "remote_loose_body_pins_room": true,
+    "same_node_identity_after_restore": true,
+    "scope": "Headless near/hidden residency, same cached source identity, grace and arrival preparation. RAM is retained; graphical notifier behavior and target FPS unverified.",
+    "status": "PASS",
+    "steady_state": {
+      "active_meshes": 4127,
+      "active_rooms": 7,
+      "cached_detached_meshes": 38129,
+      "registered_rooms": 148,
+      "resources_freed": false,
+      "transitions": 141
+    },
+    "visibility_signal_restore": true
+  },
+  "design": "Exact source rooms cached outside scene tree when hidden and distant; engine occlusion-aware notifiers preserve long views; retained source identity, doors, floors and occluders survive. This does not free RAM or reduce initial load yet.",
+  "remaining": [
+    "Windows GPU measurements",
+    "Graphical notifier/window/atrium acceptance",
+    "True background resource streaming and startup optimization"
+  ]
+}
