@@ -9,6 +9,7 @@ static func build(ship:Node3D)->Node3D:
 	house.set_meta("acceptance","integrated_construction_wip")
 	house.set_meta("receiving_structure_accepted",false)
 	house.set_meta("open_construction_hold","FT_BASE_RECEIVING_HOLD")
+	load("res://scripts/family_receiving_frame.gd").build(house)
 	var homes:Node3D=load("res://scripts/family_terrace_rooms.gd").build(ship)
 	homes.set_meta("default_scene_enabled",true)
 	homes.set_meta("installed_source_units",82)
