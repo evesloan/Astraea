@@ -1,0 +1,223 @@
+{
+  "schema": "astraea.theater.d11.main_entry023",
+  "status": "SOURCE_BOUND_D11_ENTRY_FITTING",
+  "persistent_id": "THEATER_D11_MAIN_ENTRY",
+  "master_reference_use_sha256": "c12b37a7d26168e60063469ea9291bb110b17e95541b85d4282e3b490f3f7a18",
+  "original_moving_asset": "res://assets/models/AST-CUL-005_moving_003.glb",
+  "original_moving_sha256": "7a622417f104f169bf9088008019c2aab45dde71186fabe41f23f198d16cb3d8",
+  "groups": [
+    {
+      "id": "THEATER_D11_MAIN_LEAF_LEFT",
+      "node": "C005_M00",
+      "body_name": "MovingLeftLeaf",
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "closed_source_pivot": [
+        -34.25,
+        69.5,
+        -127.31
+      ],
+      "mesh_nodes": [
+        "C005_M_0771",
+        "C005_M_0772",
+        "C005_M_0773"
+      ],
+      "triangles": 368
+    },
+    {
+      "id": "THEATER_D11_MAIN_LEAF_RIGHT",
+      "node": "C005_M01",
+      "body_name": "MovingRightLeaf",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "closed_source_pivot": [
+        -34.25,
+        69.5,
+        -124.69
+      ],
+      "mesh_nodes": [
+        "C005_M_0774",
+        "C005_M_0775",
+        "C005_M_0776"
+      ],
+      "triangles": 356
+    }
+  ],
+  "travel_m": 2.65,
+  "maximum_leaf_speed_m_s": 1.0,
+  "default_open": true,
+  "swept_bounds_native": [
+    [
+      -34.31999969482422,
+      69.53500366210938,
+      -131.26000061035157
+    ],
+    [
+      -34.18000030517578,
+      73.06999969482422,
+      -120.73999938964843
+    ]
+  ],
+  "occupancy_reserve_m": 0.18,
+  "controls": [
+    {
+      "id": "InsideCall",
+      "physical_source": "THEATER_D11_MAIN_call_lens",
+      "target_native": [
+        -34.796998168945315,
+        70.71000289916992,
+        -130.79999542236328
+      ],
+      "target_box_size": [
+        0.003,
+        0.1798,
+        0.1398
+      ],
+      "stance_native": [
+        -35.9,
+        69.5,
+        -130.8
+      ],
+      "expected_floor_owner": "D11_theater_flat_00"
+    },
+    {
+      "id": "OutsideCall",
+      "physical_source": "D11_MAIN_EXTERIOR_CALL_LENS",
+      "target_native": [
+        -33.953001831054685,
+        71.10000137239695,
+        -128.82001189887524
+      ],
+      "target_box_size": [
+        0.003,
+        0.1798,
+        0.1398
+      ],
+      "stance_native": [
+        -32.8,
+        69.5,
+        -128.05
+      ],
+      "expected_floor_owner": "D11_theater_receiving_bridge"
+    }
+  ],
+  "exterior_call": {
+    "asset_path": "res://assets/models/AST-CUL-005_D11_exterior_call_024.glb",
+    "asset_sha256": "085747143aee312e72362d24666e584b9d642bb910f71c5fd4667d9f4aa1b17a",
+    "source_sha256": "026d9924b080c55ea82d0c119e199190888b3d48455819e8249a1590609ad731",
+    "mesh_nodes": [
+      "D11_MAIN_EXTERIOR_CALL_PLATE",
+      "D11_MAIN_EXTERIOR_CALL_LENS"
+    ],
+    "source_marker": "D11_MAIN_EXTERIOR_CALL_TARGET",
+    "triangles": 24,
+    "native_root": [
+      -34,
+      71.1,
+      -128.82
+    ],
+    "parts": [
+      {
+        "node": "D11_MAIN_EXTERIOR_CALL_LENS",
+        "triangles": 12,
+        "position_error_m": 0.0,
+        "uv_storage_error": 0.0,
+        "normal_error": 5.960464477539063e-08,
+        "bounds_native": [
+          [
+            -33.96500015258789,
+            71.01000121980906,
+            -128.89001159369946
+          ],
+          [
+            -33.95500183105469,
+            71.19000152498484,
+            -128.75001220405102
+          ]
+        ]
+      },
+      {
+        "node": "D11_MAIN_EXTERIOR_CALL_PLATE",
+        "triangles": 12,
+        "position_error_m": 0.0,
+        "uv_storage_error": 0.0,
+        "normal_error": 5.960464477539063e-08,
+        "bounds_native": [
+          [
+            -34.0,
+            70.90999512374401,
+            -128.93000487983227
+          ],
+          [
+            -33.96500015258789,
+            71.30999664962292,
+            -128.71000365912914
+          ]
+        ]
+      }
+    ]
+  },
+  "protected_runtime_sha256": {
+    "assets/models/AST-CUL-005_moving_003.glb": "7a622417f104f169bf9088008019c2aab45dde71186fabe41f23f198d16cb3d8",
+    "assets/models/AST-CUL-005_static_003.glb": "fa056d66c1064cb6ee917f0fcae7d6ffccbd9426118a95c8a09f1e8b23457947",
+    "assets/models/AST-CUL-005_bridge_002.glb": "908627cecfb8f61d37433ddc12b7fd7ac855441ed701c130003015d244368f9b"
+  },
+  "retained_inactive_groups": [
+    "THEATER_D12_MAIN_LEAF_LEFT",
+    "THEATER_D12_MAIN_LEAF_RIGHT",
+    "THEATER_D13_MAIN_LEAF_LEFT",
+    "THEATER_D13_MAIN_LEAF_RIGHT",
+    "THEATER_LIFT_CABIN",
+    "THEATER_CABIN_GATE_LEAF_LEFT_INNER",
+    "THEATER_CABIN_GATE_LEAF_RIGHT_INNER",
+    "THEATER_CABIN_GATE_LEAF_LEFT_OUTER",
+    "THEATER_CABIN_GATE_LEAF_RIGHT_OUTER",
+    "THEATER_D11_LANDING_GATE_LEAF_LEFT_INNER",
+    "THEATER_D11_LANDING_GATE_LEAF_RIGHT_INNER",
+    "THEATER_D11_LANDING_GATE_LEAF_LEFT_OUTER",
+    "THEATER_D11_LANDING_GATE_LEAF_RIGHT_OUTER",
+    "THEATER_D12_LANDING_GATE_LEAF_LEFT_INNER",
+    "THEATER_D12_LANDING_GATE_LEAF_RIGHT_INNER",
+    "THEATER_D12_LANDING_GATE_LEAF_LEFT_OUTER",
+    "THEATER_D12_LANDING_GATE_LEAF_RIGHT_OUTER",
+    "THEATER_D13_LANDING_GATE_LEAF_LEFT_INNER",
+    "THEATER_D13_LANDING_GATE_LEAF_RIGHT_INNER",
+    "THEATER_D13_LANDING_GATE_LEAF_LEFT_OUTER",
+    "THEATER_D13_LANDING_GATE_LEAF_RIGHT_OUTER",
+    "THEATER_D11_guest_secondary_171_LEAF_LEFT_INNER",
+    "THEATER_D11_guest_secondary_171_LEAF_RIGHT_INNER",
+    "THEATER_D11_guest_secondary_171_LEAF_LEFT_OUTER",
+    "THEATER_D11_guest_secondary_171_LEAF_RIGHT_OUTER",
+    "THEATER_D12_guest_secondary_171_LEAF_LEFT_INNER",
+    "THEATER_D12_guest_secondary_171_LEAF_RIGHT_INNER",
+    "THEATER_D12_guest_secondary_171_LEAF_LEFT_OUTER",
+    "THEATER_D12_guest_secondary_171_LEAF_RIGHT_OUTER",
+    "THEATER_D13_guest_secondary_171_LEAF_LEFT_INNER",
+    "THEATER_D13_guest_secondary_171_LEAF_RIGHT_INNER",
+    "THEATER_D13_guest_secondary_171_LEAF_LEFT_OUTER",
+    "THEATER_D13_guest_secondary_171_LEAF_RIGHT_OUTER",
+    "THEATER_D11_staff_secondary_257_LEAF_LEFT_INNER",
+    "THEATER_D11_staff_secondary_257_LEAF_RIGHT_INNER",
+    "THEATER_D11_staff_secondary_257_LEAF_LEFT_OUTER",
+    "THEATER_D11_staff_secondary_257_LEAF_RIGHT_OUTER"
+  ],
+  "source_chairs_preserved": 2200,
+  "door_operation_or_broad_body_acceptance": false,
+  "save_state_acceptance": false,
+  "review_input_sha256": {
+    "scripts/service_door.gd": "b9d33fc3e11311ccebd3de36812ba42436523616a4ab655cf50df38e35cc57f1",
+    "scripts/player.gd": "990e825c7cd08d2b26760be7436c342188a85fbe1cc60f704fd009ac1d71aaa3",
+    "scripts/grand_lantern_theater_section.gd": "0b287238e1ab8bf5778e3c7154b9a6f44fd726f62575b7de16236f9d2eac7be8",
+    "data/architecture/THEATER_RUNTIME_STAGE001.json": "82cef4249e8247a4e6048e6aa3fc716189fc5c42c2a6e764a013dd92d8018a7b"
+  },
+  "scope": "Authored immutable source fitting. Controller and whole-project preservation belong to adoption/review preconditions, not a new permanent runtime lock on unrelated files.",
+  "occupancy_reserve_scope": "Conservative local query padding only. 0.18 m exceeds one 60 Hz tick of 9 m/s relative motion. Actual acceptance is limited to tested player approach and loaded cart; arbitrary thrown-body speed is not certified.",
+  "acceptance_record": "Actual installation, operation, contact and native-view results are separate dated evidence; this source fitting is not acceptance.",
+  "floor_layout_or_shared_controller_changes": false
+}
