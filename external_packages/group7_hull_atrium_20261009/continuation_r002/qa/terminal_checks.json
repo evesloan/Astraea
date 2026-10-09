@@ -25,6 +25,7 @@
       "upper_wall_and_guard_floor_contacts_checked": 554,
       "missing_contacts": [],
       "retained_floor_positive_volume_overlaps": [],
+      "all_source_part_retained_slab_overlap_candidates": [],
       "retained_frame_lower_seam_contacts": [
         {
           "part": "G7C2_Fore_LowerSeam_E00",
@@ -106,6 +107,7 @@
       "upper_wall_and_guard_floor_contacts_checked": 458,
       "missing_contacts": [],
       "retained_floor_positive_volume_overlaps": [],
+      "all_source_part_retained_slab_overlap_candidates": [],
       "retained_frame_lower_seam_contacts": [
         {
           "part": "G7C2_Aft_LowerSeam_E06",
@@ -166,7 +168,7 @@
       "min_absolute_z": 509.20001220703125
     }
   ],
-  "checks": "Binary structure, embedded material images, UV/normals, finite vertices, indices, nondegenerate triangles, full source/export vertices, true-normal depth, actual exported roof top triangle footprint, upper wall/guard/door floor contact and first-frame lower seam bearing. New source z>=509.2 is clear of protected atrium z<=64, current bounded occupied upper models z<=467.98 and Group2 private keepouts z<=459. Not a whole model census.",
+  "checks": "Binary structure, embedded material images, UV/normals, finite vertices, indices, nondegenerate triangles, full source/export vertices, true-normal depth, actual exported roof top triangle footprint, upper wall/guard/door floor contact and first-frame lower seam bearing. Every other solid source part is conservatively sliced at retained slab heights. Concave roofs/bridge slabs use the exact exported roof triangle projection, not a convex hull that would fill the deliberate route notch. New source z>=509.2 is clear of protected atrium z<=64, current bounded occupied upper models z<=467.98 and Group2 private keepouts z<=459. Not a whole model census.",
   "engine_run": false,
   "exhaustive_movement_or_carts": false,
   "engineering_load_pressure_certification": false

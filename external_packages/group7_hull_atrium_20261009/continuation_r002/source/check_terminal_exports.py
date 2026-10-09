@@ -84,6 +84,29 @@ for row,term in zip(delivery['assemblies'],plan['terms']):
   doorrows.append({'id':door['id'],'triangles':dnt,'source_export_max_vertex_error_m':dd,'foot_y':float(y),'source_floor_contact':True,'world_bounds':[da.min(axis=0).tolist(),da.max(axis=0).tolist()]})
  # New footprint is outside the void, bounded occupied models and all private houses.
  zmin=float(np.min(np.abs(a[:,2])));assert zmin>=509.1999
- rows.append({'id':row['id'],'export_sha256':hashlib.sha256((P/row['export']).read_bytes()).hexdigest(),'triangles':nt,'source_export_bidirectional_max_vertex_error_m':delta,'true_normal_material_depth_max_error_m':normal_error,'world_bounds':[a.min(axis=0).tolist(),a.max(axis=0).tolist()],'exported_roof_area_m2':support.area,'upper_wall_and_guard_floor_contacts_checked':len(contact),'missing_contacts':failed,'retained_floor_positive_volume_overlaps':conflicts,'retained_frame_lower_seam_contacts':lower,'doors':doorrows,'min_absolute_z':zmin})
-out={'passed':True,'first_delivery_untouched':True,'retained_floor_regions_screened':all_floor_count,'assemblies':rows,'checks':'Binary structure, embedded material images, UV/normals, finite vertices, indices, nondegenerate triangles, full source/export vertices, true-normal depth, actual exported roof top triangle footprint, upper wall/guard/door floor contact and first-frame lower seam bearing. New source z>=509.2 is clear of protected atrium z<=64, current bounded occupied upper models z<=467.98 and Group2 private keepouts z<=459. Not a whole model census.','engine_run':False,'exhaustive_movement_or_carts':False,'engineering_load_pressure_certification':False}
+ # Conservative additional screen of every source part at each retained slab's
+ # actual height. Roof footprints above are exact; convex part slices below are
+ # candidates requiring local receiver ownership, never a whole-engine result.
+ floor_polys=[(r,unary_union([Polygon(q) for q in r['triangles']])) for r in floors]
+ part_candidates=[]
+ for g in source:
+  if g['contact_category'] in ['visual_lens','solid_roof']:continue
+  v=np.array(g['vertices_world_xyz']);vmn,vmx=v.min(axis=0),v.max(axis=0)
+  for r,q in floor_polys:
+   ya,yb=max(vmn[1],r['floor_y']-r['thickness']),min(vmx[1],r['floor_y'])
+   if yb-ya<1e-5:continue
+   if box(vmn[0],vmn[2],vmx[0],vmx[2]).intersection(q).area<1e-7:continue
+   clipped=[p for p in v if ya-1e-6<=p[1]<=yb+1e-6]
+   for i,p in enumerate(v):
+    for pp in v[i+1:]:
+     if abs(pp[1]-p[1])<1e-9:continue
+     for y in [ya,yb]:
+      tt=(y-p[1])/(pp[1]-p[1])
+      if 0<=tt<=1:clipped.append(p+tt*(pp-p))
+   if len(clipped)<3:continue
+   area=MultiPoint(np.array(clipped)[:,[0,2]]).convex_hull.intersection(q).area
+   if area>1e-6:part_candidates.append({'part':g['object'],'retained_floor':r['id'],'height_interval_m':[float(ya),float(yb)],'conservative_intersection_area_m2':area})
+ assert not part_candidates,part_candidates
+ rows.append({'id':row['id'],'export_sha256':hashlib.sha256((P/row['export']).read_bytes()).hexdigest(),'triangles':nt,'source_export_bidirectional_max_vertex_error_m':delta,'true_normal_material_depth_max_error_m':normal_error,'world_bounds':[a.min(axis=0).tolist(),a.max(axis=0).tolist()],'exported_roof_area_m2':support.area,'upper_wall_and_guard_floor_contacts_checked':len(contact),'missing_contacts':failed,'retained_floor_positive_volume_overlaps':conflicts,'all_source_part_retained_slab_overlap_candidates':part_candidates,'retained_frame_lower_seam_contacts':lower,'doors':doorrows,'min_absolute_z':zmin})
+out={'passed':True,'first_delivery_untouched':True,'retained_floor_regions_screened':all_floor_count,'assemblies':rows,'checks':'Binary structure, embedded material images, UV/normals, finite vertices, indices, nondegenerate triangles, full source/export vertices, true-normal depth, actual exported roof top triangle footprint, upper wall/guard/door floor contact and first-frame lower seam bearing. Every other solid source part is conservatively sliced at retained slab heights. Concave roofs/bridge slabs use the exact exported roof triangle projection, not a convex hull that would fill the deliberate route notch. New source z>=509.2 is clear of protected atrium z<=64, current bounded occupied upper models z<=467.98 and Group2 private keepouts z<=459. Not a whole model census.','engine_run':False,'exhaustive_movement_or_carts':False,'engineering_load_pressure_certification':False}
 (P/'qa/terminal_checks.json').write_text(json.dumps(out,indent=2)+'\n');print('TERMINAL_CHECKS',[(r['id'],r['source_export_bidirectional_max_vertex_error_m'],r['upper_wall_and_guard_floor_contacts_checked']) for r in rows])
