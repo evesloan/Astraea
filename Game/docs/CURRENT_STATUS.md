@@ -1,3 +1,7 @@
+## 09 October 2026, 17:21 UTC: Shared crew home construction installed
+
+Two retained rest frames, curtains, personal stores and mounted reading shelves now occupy the employee home. Additive room/annex enclosure and north/east return preserve the existing dogleg and door. Linen shelves and wash basin installed. Existing D03 protected slab supplies all floors; zero duplicate owners. Actual-main bounded floor/capsule and rest-surface checks pass. No C036 person/berth migration, completed400-berth district, fixture interaction, full wet facilities or final visual acceptance claimed.
+
 ## 09 October 2026, 16:32 UTC: Shopping promenade construction integrated
 
 99 new shops and78 connecting chunks installed; R070 and10 major venues retained. 402 floor checks and99 stationary thresholds pass. 204 continuous floor owners use867 bounded render cells. Residency registry738 includes shopping on-demand load/release/reload. 84 historical address joins remain unresolved, with stable IDs null; commerce, staff riser joins, hull acceptance, visual polish and GPU performance unfinished.
