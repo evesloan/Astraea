@@ -1,3 +1,7 @@
+## 10 October 2026: Forward staff ten-stop panel/controller slice
+
+Editable ten-stop cabin panel and bounded compatible controller are retained for the forward staff extension. The original five-stop production binding, lower cap and D13–D17 shaft closures remain intact; upper travel stays disabled. Continuous upper shaft installation, exact reversible cap derivative and five support/sill/gate joins remain blockers. See FORWARD_STAFF_TEN_STOP_PANEL.md and INTERFACE_SURVEY.json for the next physical interfaces.
+
 ## 10 October 2026: Bounded Tidal D17 service receiver
 
 D17 now joins its actual inner dry promenade to the retained east service stub with an11.56m dogleg,91 source meshes, four named derivatives and nine lights. Four full-toe supports contact the retained D16 roof/floor; primary load capacity remains unaccepted. Editable native sources and exact preimage receipts are retained. D13–D16 installations, homes, IDs and lift stops remain preserved; unfinished upper shaft stays closed. Sequential sealed-load use only. Group1, service operations, structural capacity and final visuals remain unfinished. See TIDAL_D17_SERVICE_RECEIVING.md for exact scope and evidence.
