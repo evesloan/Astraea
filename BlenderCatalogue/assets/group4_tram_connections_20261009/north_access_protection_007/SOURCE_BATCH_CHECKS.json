@@ -1,0 +1,153 @@
+{
+  "schema": "astraea.group4.bounded_access_receipt.v1",
+  "status": "NORTH_FIXED_LOW_POCKET_AND_LOWER_EDGE_SOURCE_PASS",
+  "source_only": true,
+  "whole_group_complete": false,
+  "runtime_changed": false,
+  "native_export": {
+    "status": "NORTH_ACCESS_NATIVE_REOPEN_IDENTICAL_EXPORT_BOUNDS_PASS",
+    "blender_version": "4.3.2",
+    "native": "Group4_North_Access_007.blend",
+    "native_sha256": "b1d613c3e849818e30b44c7dff720e46441636cc320016d6b167b212647073c7",
+    "export": "AST-TRM-G4-022_north_access_protection.glb",
+    "export_sha256": "0daa0b7b1ffb784bfd9dd48d7a8373d0d8b4448ac42d9228511a3f9a06ea0d60",
+    "repeat_export_sha256": "0daa0b7b1ffb784bfd9dd48d7a8373d0d8b4448ac42d9228511a3f9a06ea0d60",
+    "editable_meshes": 48,
+    "triangles": 576,
+    "degenerate_triangles": 0,
+    "packed_verified_images": 5,
+    "actual_export_recipe_bounds_match": true,
+    "original_native_and_export_unchanged": true
+  },
+  "bounded_geometry_summary": {
+    "new_members": 48,
+    "triangles": 576,
+    "retained_instances_screened": 8,
+    "unexpected_exact_triangle_contacts": 0,
+    "explicit_named_retained_receiver_contacts": 65,
+    "ordinary_adult_stationary_probes": 6,
+    "ordinary_adult_probe_width_depth_m": 0.36,
+    "ordinary_adult_probe_height_m": 1.8,
+    "positive_new_floor_anchor_parts": 40,
+    "positive_floor_embed_depth_m": 0.02,
+    "guard_rail_infill_groups_with_multiple_positive_post_receivers": 8,
+    "guard_height_m": 1.25,
+    "maximum_post_spacing_m": 2.8,
+    "maximum_actual_export_vertex_error_m": 1.464843751364242e-05,
+    "actual_recipe_match_tolerance_m": 0.0001
+  },
+  "nominal_core_wall_face_seal": {
+    "new_mesh": "N007_ForeEdgeToCoreWallSeal",
+    "wall_source_mesh": "CORE_BATCH_ivory_enamel",
+    "nominal_wall_face_x": -7.88,
+    "actual_retained_wall_face_x": -7.880000114440918,
+    "nominal_contact_area_m2": 0.1,
+    "world_tolerance_m": 1e-05,
+    "protected_wall_cut_or_changed": false
+  },
+  "protected_interval_evidence": {
+    "unchanged_lower_axial_route_x": [
+      -2,
+      2
+    ],
+    "new_protection_max_x": -4.0,
+    "unchanged_port_trunk_protected_strip_x": [
+      -7.6,
+      -3.6
+    ],
+    "new_parts_above_guard_y_max_x": -7.96,
+    "new_guard_top_y": 53.75,
+    "retained_actual_wheel_min_y": 55.74,
+    "guard_to_wheel_vertical_separation_m": 1.99
+  },
+  "retained_core_transfer_caveat": {
+    "retained_core_west_wall_x": [
+      -7.88,
+      -7.72
+    ],
+    "retained_core_west_wall_z": [
+      -285,
+      -252
+    ],
+    "below_floor_wall_y": [
+      44,
+      52.26
+    ],
+    "above_floor_wall_y": [
+      52.5,
+      60.76
+    ],
+    "through_wall_opening_proposed": false,
+    "route_interface": "Use the existing axial approach around the retained core wall south of Z−252, joining the unguarded X−4 route-floor seam. The structural floor adjacency is not a proposed walk-through portal.",
+    "root_gate": "Root adopts or rejects physical docking −241 and binds arrival/wayfinding through the existing axial approach; source-only geometry does not adopt the stop."
+  },
+  "all_six_prior_frozen_slices_unchanged": true,
+  "native_and_glb_unchanged_after_unsaved_source_views": true,
+  "correction_history": [
+    {
+      "stage": "initial owned recipe screen",
+      "unexpected_pairs": 34,
+      "finding": "27 skirt-cap/tread pairs from nominal 0.5 slope instead of the actual retained 1.77/3.6 profile; three interflight closure/handrail pairs; four fore-edge guard/core-wall pairs."
+    },
+    {
+      "stage": "bounded actual-profile preserved-source correction",
+      "unexpected_pairs": 0,
+      "finding": "Only new uninstalled007 geometry changed: actual stringer slope with 5mm cap embed, narrower interflight seal and shortened fore-edge endpoint with nominal face seal. Retained005/006 stair, floor, core, receiver, tram and controller sources remain unchanged."
+    }
+  ],
+  "protected_central_polyline_xz": [
+    [
+      0,
+      -72
+    ],
+    [
+      0,
+      -56
+    ],
+    [
+      40,
+      -52
+    ],
+    [
+      40,
+      52
+    ],
+    [
+      0,
+      56
+    ],
+    [
+      0,
+      72
+    ]
+  ],
+  "gallery_reservations_preserved": {
+    "x": [
+      43,
+      46.5
+    ],
+    "z": [
+      -25,
+      -19
+    ],
+    "floor_y": [
+      27,
+      52.5,
+      78,
+      97.5
+    ],
+    "top_above_floor_m": 2.1,
+    "central_bypass_x": [
+      38,
+      42
+    ],
+    "separation_m": 1
+  },
+  "protected_route_and_source_unchanged": true,
+  "limits": [
+    "Eight local retained instances including one actual lower cabin pose and six stationary ordinary-adult probes. No dynamic stair traversal, all-species, route audit, Godot, live gates or whole-world acceptance.",
+    "Positive receiver volumes and nominal wall-face contact are geometric evidence only. Structural/mechanical capacity and primary-hull transfer remain open.",
+    "North physical docking −241 remains an unadopted proposal preserving FORE_MIDSHIP/master catchment −216. Original −216 source remains preserved and held against Paper Moon.",
+    "No floor aperture, receiving register, architecture, service-room allocation or operating controller was edited. Parent must decide station/floor adoption and normal-world collision/receiving."
+  ]
+}
