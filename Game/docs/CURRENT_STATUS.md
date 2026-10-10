@@ -1,3 +1,7 @@
+## 10 October 2026: Second Star Atlas specialty candidate batch
+
+Four more retained D15 reservation proposals now have two aquatic and two low-rest physical candidate layouts, with121.36m² of missing-only street extension and always-present receiving independent of four more culled lower interiors. Physical candidates total8 of46;38 remain unbuilt, and zero are species-ready. Original source geometry/owners, prior interiors and allocation/rest proposal IDs remain retained. Supported geometric framing is distinct from structural capacity and habitat/operation/visual acceptance, which stay held. See STAR_ATLAS_SPECIALTY_SECOND.md and scoped source/actual-main receipts. Manual independent retention continues; no watcher is claimed.
+
 ## 10 October 2026: Star Atlas specialty receiving correction
 
 The first four unassigned physical candidates now have persistent structural contacts and explicit floor/bridge framing independent of lower-interior residency. Actual-main checking keeps culling enabled and all four lower interiors culled:16 persistent roof contacts,32 floor-owner witnesses,eight clear street stances and eight existing-controller closures pass.88 retained structural objects match1,056 original triangles. The protected sources/owners and85 prior homes remain unchanged. Species/environment allocations and historical saved identities are explicitly unset; zero species-ready rooms are claimed. Structural capacity and habitat/operation/visual acceptance remain held. See STAR_ATLAS_SPECIALTY_STRUCTURAL_RECEIVING.md.
