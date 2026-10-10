@@ -1,0 +1,32 @@
+{
+  "status": "RUNNING_OR_FAILED",
+  "steps": [
+    {
+      "step": "import",
+      "exit_code": 0,
+      "passed": true,
+      "timed_out": false,
+      "errors": [],
+      "wall_seconds": 4.229,
+      "child_peak_rss_kib": 725908,
+      "clock_mode": "editor",
+      "log": "ENGINE_import.log"
+    },
+    {
+      "step": "actual_main_bounded",
+      "exit_code": 1,
+      "passed": false,
+      "timed_out": false,
+      "errors": [
+        "SCRIPT ERROR: Parse Error: There is already a variable named \"previous\" declared in this scope.",
+        "ERROR: Failed to load script \"res://tests/validate_forward_staff_upper_operation.gd\" with error \"Parse error\"."
+      ],
+      "wall_seconds": 0.164,
+      "child_peak_rss_kib": 725908,
+      "clock_mode": "fixed60",
+      "log": "ENGINE_actual_main_bounded.log"
+    }
+  ],
+  "full_suite_run": false,
+  "scope": "One import barrier and bounded actual-main original/added travel, passenger/load carry, moving gate contacts and interlocks; no exhaustive route audit."
+}

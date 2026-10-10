@@ -47,5 +47,6 @@ static func build(root: Node3D,ship: Node3D) -> Node3D:
 	group.set_meta("upper_gate_count",5)
 	group.set_meta("envelope_mesh_count",43)
 	group.set_meta("old_cap_triangle_count_removed",12)
-	assert(root.get_node("ForwardStaffLift").floor_heights.size() == 5)
+	var lift := root.get_node_or_null("ForwardStaffLift")
+	if lift != null: assert(lift.floor_heights.slice(0,5) == [0.0,6.0,12.0,46.2,52.5])
 	return group

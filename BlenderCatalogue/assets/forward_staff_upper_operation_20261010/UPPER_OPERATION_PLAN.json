@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "base_commit": "8b5fd7cf0ffb224d3fc3e310a55b69ca97853fa3",
+  "source_pins": {
+    "Game/scripts/commons_lift.gd": "65b293ea3be0428e59dd6636640132b41671a73f87cf782422850a557737e718",
+    "Game/scripts/lower_staff_network.gd": "cba7c3abb0a7dc91114de8f2949afe335b54be55ce09874dd77311ffd65f0f6e",
+    "Game/scripts/forward_staff_upper_interfaces.gd": "6a6cf509afc7d6fcf7518dbd273d48e144b1e7bca427413d7347f34018728a37",
+    "Game/scripts/tidal_garden_adoption.gd": "9b9639dc46fa1fef6f3e967376f8a3a7f4db3e764430d8c561f2818273845102",
+    "Game/scripts/star_atlas_fitted_receiving.gd": "68605ba06a6243e9c940a66c08a2f0edec121eb534e301725f65b7749fa830f8",
+    "Game/scripts/lift_gate.gd": "6fed4a61a70245010ae8b60fceb586fb6bd2e093e48dd208367bf266b0467ef3",
+    "Game/assets/models/AST-CIR-003_ten_stop.glb": "c24764112075c04f94f534b6513c67742a91c330f6e6dcea30964b539e890f65",
+    "Game/assets/models/AST-DOR-003.glb": "975cec2ac763de60279d0e37d32060f909a267cb139954104ca0f8e4b91bade5",
+    "Game/data/architecture/FORWARD_STAFF_UPPER_INTERFACES.json": "6ed49dc9c0dcbec22e5e33f65e51bb6c9cbf80302f91c26963ad4b7fb6c3edc1",
+    "Game/data/architecture/TIDAL_D13_SERVICE_RECEIVING.json": "0092f184766edba8c37937b4d2f9a47b7977031859150cbb8513e4fdbefa86fe",
+    "Game/assets/models/AST-RES-TIDAL_D13_service_receiving_r001.glb": "88f9e21c1a0637f5f91adf24160fa50b9b695a16e4457f3a019bdc8cf169cb47",
+    "BlenderCatalogue/assets/tidal_d13_service_receiving_20261010/TidalD13ServiceReceiving.blend": "1dba98ebdcbf2be07ebc9c461bafb1fe835727ac19b3006d63703903b4de2830",
+    "Game/data/architecture/TIDAL_D14_SERVICE_RECEIVING.json": "1094637055687f1e8fddd93417fa5502361dcdbe4a833185d86cd524754f00e1",
+    "Game/assets/models/AST-RES-TIDAL_D14_service_corridor_r001.glb": "79c14aeddbe7b95b1915ce58ccd843392297c99f4eaaefb5c6387c9e267f46d9",
+    "BlenderCatalogue/assets/tidal_d14_service_integration_20261010/TidalD14ServiceCorridor.blend": "8e400918f8022be54139beca991639ab8598b751626e2f62057b3c89bec35be5",
+    "Game/data/architecture/TIDAL_D15_SERVICE_RECEIVING.json": "6ee62e878bbc28ea543e36472490e4c9573aa5f6b0ac5e6ea9a5a4d277ca5cf7",
+    "Game/assets/models/AST-RES-TIDAL_D15_service_receiving_r001.glb": "8f17ec77ac9d8b233f44174aee061ca70f31f93d1e4199a456a782ea2063f595",
+    "BlenderCatalogue/assets/tidal_d15_service_receiving_20261010/TidalD15ServiceReceiver.blend": "478aa3e37ce5d3563cda8be6adbee1645a33d5b95b65a7681177a3d74098658a",
+    "Game/data/architecture/TIDAL_D16_SERVICE_RECEIVING.json": "9498e9fdb21816ac4e3f1ba522a570a5f8d778c7604fd3ea899cb58bc5a3cc61",
+    "Game/assets/models/AST-RES-TIDAL_D16_service_receiving_r001.glb": "85020955f78c7d74ed526f27765c363bc3c99861f3b0fb93cb659488e527203d",
+    "BlenderCatalogue/assets/tidal_d16_service_receiving_20261010/TidalD16ServiceReceiver.blend": "f9a2c70ead94dc0a994a282c932a49ba42daeb42cd360cfc2de85b2ff5c461a0",
+    "Game/data/architecture/TIDAL_D17_SERVICE_RECEIVING.json": "0b52ff5bdd3d2fee1f601ce5b0b3b62b86e1d08669a9b18f6a6d7088cc9a97df",
+    "Game/assets/models/AST-RES-TIDAL_D17_service_receiving_r001.glb": "af0c6ca72be545bcf891ea16cd52e0507ec049a9ce1fd38b194be57a9d3e1f29",
+    "BlenderCatalogue/assets/tidal_d17_service_receiving_20261010/TidalD17ServiceReceiver.blend": "585f82bf5d43001bde7b3fd94b2536730f1b470fb95395eb465b9e4be73e97e0",
+    "Game/tests/validate_forward_staff_extended_lift.gd": "334112386668d450b3f39af115bcf5609cae6b9b9e6567b2bf8a6b046a88ab9f",
+    "Game/tests/validate_grand_pool_access.gd": "c67a3a65f5b44eba72dec4688567982b010febe506243fb654f0ba607f9d6d38",
+    "Game/tests/validate_grand_pool_service_cart.gd": "58bf813b38fe9a07e3b5d8e257f5ad9ed1c7799d35fbf77375584353a86ba416",
+    "Game/tools/validate.py": "bc51129177f8f268805e30efe7e4634f2feb644699c65e2ebf1a2487f5b3fbc8"
+  },
+  "receiving_reconciliations": [
+    {
+      "deck": 13,
+      "old_export": "AST-RES-TIDAL_D13_service_receiving_r001.glb",
+      "old_native": "BlenderCatalogue/assets/tidal_d13_service_receiving_20261010/TidalD13ServiceReceiving.blend",
+      "old_mesh_count": 73,
+      "closure_mesh": "D13_UnfinishedShaftPhysicalClosure",
+      "new_native": "TidalD13GuardedShaftReceiving.blend",
+      "new_export": "AST-RES-TIDAL_D13_guarded_shaft_receiving_r001.glb",
+      "bounds_min": [
+        -23.18000030517578,
+        84.0,
+        -492.20001220703125
+      ],
+      "bounds_max": [
+        -23.020000457763672,
+        87.33999633789062,
+        -487.79998779296875
+      ]
+    },
+    {
+      "deck": 14,
+      "old_export": "AST-RES-TIDAL_D14_service_corridor_r001.glb",
+      "old_native": "BlenderCatalogue/assets/tidal_d14_service_integration_20261010/TidalD14ServiceCorridor.blend",
+      "old_mesh_count": 65,
+      "closure_mesh": "D14_UnfinishedShaftPhysicalClosure",
+      "new_native": "TidalD14GuardedShaftReceiving.blend",
+      "new_export": "AST-RES-TIDAL_D14_guarded_shaft_receiving_r001.glb",
+      "bounds_min": [
+        -23.18000030517578,
+        88.5,
+        -492.20001220703125
+      ],
+      "bounds_max": [
+        -23.020000457763672,
+        91.83999633789062,
+        -487.79998779296875
+      ]
+    },
+    {
+      "deck": 15,
+      "old_export": "AST-RES-TIDAL_D15_service_receiving_r001.glb",
+      "old_native": "BlenderCatalogue/assets/tidal_d15_service_receiving_20261010/TidalD15ServiceReceiver.blend",
+      "old_mesh_count": 86,
+      "closure_mesh": "D15_UnfinishedShaftPhysicalClosure",
+      "new_native": "TidalD15GuardedShaftReceiving.blend",
+      "new_export": "AST-RES-TIDAL_D15_guarded_shaft_receiving_r001.glb",
+      "bounds_min": [
+        -23.18000030517578,
+        93.0,
+        -492.20001220703125
+      ],
+      "bounds_max": [
+        -23.020000457763672,
+        96.33999633789062,
+        -487.79998779296875
+      ]
+    },
+    {
+      "deck": 16,
+      "old_export": "AST-RES-TIDAL_D16_service_receiving_r001.glb",
+      "old_native": "BlenderCatalogue/assets/tidal_d16_service_receiving_20261010/TidalD16ServiceReceiver.blend",
+      "old_mesh_count": 86,
+      "closure_mesh": "D16_UnfinishedShaftPhysicalClosure",
+      "new_native": "TidalD16GuardedShaftReceiving.blend",
+      "new_export": "AST-RES-TIDAL_D16_guarded_shaft_receiving_r001.glb",
+      "bounds_min": [
+        -23.18000030517578,
+        97.5,
+        -492.20001220703125
+      ],
+      "bounds_max": [
+        -23.020000457763672,
+        100.83999633789062,
+        -487.79998779296875
+      ]
+    },
+    {
+      "deck": 17,
+      "old_export": "AST-RES-TIDAL_D17_service_receiving_r001.glb",
+      "old_native": "BlenderCatalogue/assets/tidal_d17_service_receiving_20261010/TidalD17ServiceReceiver.blend",
+      "old_mesh_count": 91,
+      "closure_mesh": "D17_UnfinishedShaftPhysicalClosure",
+      "new_native": "TidalD17GuardedShaftReceiving.blend",
+      "new_export": "AST-RES-TIDAL_D17_guarded_shaft_receiving_r001.glb",
+      "bounds_min": [
+        -23.18000030517578,
+        102.0,
+        -492.20001220703125
+      ],
+      "bounds_max": [
+        -23.020000457763672,
+        105.33999633789062,
+        -487.79998779296875
+      ]
+    }
+  ],
+  "stop_ids": [
+    "D01",
+    "D02",
+    "D03",
+    "D08_WET",
+    "D09",
+    "D13",
+    "D14",
+    "D15",
+    "D16",
+    "D17"
+  ],
+  "heights": [
+    0,
+    6,
+    12,
+    46.2,
+    52.5,
+    84,
+    88.5,
+    93,
+    97.5,
+    102
+  ],
+  "original_five_gate_sill_button_ids_preserved": true,
+  "upper_gates_reused": 5,
+  "duplicate_sills_created": false,
+  "activation_gate": "All source hashes verified; ten-stop cabin and existing five upper gate identities bound; all upper gates closed/not present; remove only five declared whole closure meshes; enable existing controller; focused travel/gate/obstruction checks required before checkpoint",
+  "structural_capacity_accepted": false
+}

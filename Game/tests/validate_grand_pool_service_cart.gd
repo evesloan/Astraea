@@ -703,8 +703,8 @@ func run() -> void:
 	cart = ship.find_child("CustodialCart",true,false)
 	lift = ship.find_child("ForwardStaffLift",true,false)
 	built = ship.find_child("GrandPoolOrchardSection_WIP",true,false)
-	if not require(lift.persistent_id == &"forward_staff_lift_001" and lift.floor_heights == [0.0,6.0,12.0,46.2,52.5]): return
-	if not require(lift.stop_ids == ["D01","D02","D03","D08_WET","D09"] and lift.cabin_file == "AST-CIR-003_five_stop.glb"): return
+	if not require(lift.persistent_id == &"forward_staff_lift_001" and lift.floor_heights.slice(0,5) == [0.0,6.0,12.0,46.2,52.5]): return
+	if not require(lift.stop_ids.slice(0,5) == ["D01","D02","D03","D08_WET","D09"] and lift.cabin_file == "AST-CIR-003_ten_stop.glb"): return
 	if not require(lift.current_floor == 0 and lift.phase == "idle"): return
 	var local_products: Array[Vector3] = []
 	for product in cart.products: local_products.append(cart.to_local(product.global_position))

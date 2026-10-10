@@ -1,0 +1,711 @@
+{
+  "schema": "astraea.tidal.d13_service_receiving.v1",
+  "root_name": "TidalD13ServiceReceiving",
+  "persistent_id": "tidal_d13_service_receiving_001",
+  "model_file": "AST-RES-TIDAL_D13_service_receiving_r001.glb",
+  "model_sha256": "88f9e21c1a0637f5f91adf24160fa50b9b695a16e4457f3a019bdc8cf169cb47",
+  "mesh_count": 73,
+  "retained_parts": 64,
+  "additive_parts": 9,
+  "fixture_count": 7,
+  "fixtures": [
+    {
+      "name": "TidalStaffLight_D13_0",
+      "position": [
+        -21,
+        86.995,
+        -490
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7.5,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "TidalStaffLight_D13_1",
+      "position": [
+        -21,
+        86.995,
+        -498
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7.5,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "TidalStaffLight_D13_2",
+      "position": [
+        -33,
+        86.995,
+        -500
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7.5,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "TidalStaffLight_D13_3",
+      "position": [
+        -45,
+        86.995,
+        -500
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7.5,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "TidalStaffLight_D13_4",
+      "position": [
+        -58,
+        86.995,
+        -500
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7.5,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "TidalStaffLight_D13_5",
+      "position": [
+        -61,
+        86.995,
+        -493
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7.5,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "TidalStaffLight_D13_6",
+      "position": [
+        -61,
+        86.995,
+        -487
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7.5,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    }
+  ],
+  "doors": [
+    {
+      "name": "D13_CleanSupplyDoor",
+      "persistent_id": "tidal_d13_clean_supply_door_001",
+      "role": "clean_linen_supply",
+      "position": [
+        -63.16,
+        84,
+        -493
+      ],
+      "yaw": 1.5707963267948966,
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "source_file": "AST-STF-008.glb",
+      "gross_group3_mouth_m": 3.6,
+      "actual_fixed_jamb_clear_width_m": 2.3,
+      "actual_fixed_header_clear_height_m": 2.54,
+      "overall_existing_frame_width_m": 2.76,
+      "swing_into": "existing principal court, not private verge",
+      "actual_open_leaf_hardware_clear_width_m": 2.168,
+      "conservative_open_collision_gap_after_1mm_margin_each_m": 2.166,
+      "usable_clearance_basis": "Existing leaf push hardware reaches66mm inward from each \u00b11.15m hinge when fully open; no scale or controller changes. This dimensional bound is not loaded-cart/species acceptance."
+    },
+    {
+      "name": "D13_SealedReturnsDoor",
+      "persistent_id": "tidal_d13_sealed_returns_door_001",
+      "role": "sealed_soiled_waste",
+      "position": [
+        -63.16,
+        84,
+        -487
+      ],
+      "yaw": 1.5707963267948966,
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "source_file": "AST-STF-008.glb",
+      "gross_group3_mouth_m": 3.6,
+      "actual_fixed_jamb_clear_width_m": 2.3,
+      "actual_fixed_header_clear_height_m": 2.54,
+      "overall_existing_frame_width_m": 2.76,
+      "swing_into": "existing principal court, not private verge",
+      "actual_open_leaf_hardware_clear_width_m": 2.168,
+      "conservative_open_collision_gap_after_1mm_margin_each_m": 2.166,
+      "usable_clearance_basis": "Existing leaf push hardware reaches66mm inward from each \u00b11.15m hinge when fully open; no scale or controller changes. This dimensional bound is not loaded-cart/species acceptance."
+    }
+  ],
+  "guard_patch_file": "TidalD13ServiceGuardPatch.glb",
+  "guard_patch_sha256": "c8bdee6010805c17bc912a1ac9da6af793ed6fdb99d70880ca6d40ea3e2b52a2",
+  "guard_replacement_map": [
+    {
+      "batch": "TG_Batch_144",
+      "triangles_before": 2040,
+      "triangles_after": 1988,
+      "original_triangles_affected": 92,
+      "unaffected_original_triangles_retained": 1948
+    },
+    {
+      "batch": "TG_Batch_145",
+      "triangles_before": 60,
+      "triangles_after": 92,
+      "original_triangles_affected": 8,
+      "unaffected_original_triangles_retained": 52
+    }
+  ],
+  "original_house_sha256": "eedf652f8af8e34666123418b5654f15e2800b33e57bf85a7b87f7b1964ed8ad",
+  "floor_regions": [
+    {
+      "id": "TIDAL_D13_ServiceApproach_0",
+      "deck": "D13",
+      "floor_y": 84,
+      "thickness": 0.24,
+      "material_role": "staff_floor",
+      "source_role": "missing-only approach",
+      "rings": [
+        [
+          [
+            -59.06,
+            -498.06
+          ],
+          [
+            -22.94,
+            -498.06
+          ],
+          [
+            -22.94,
+            -496.14
+          ],
+          [
+            -23.32,
+            -496.14
+          ],
+          [
+            -23.32,
+            -492.2
+          ],
+          [
+            -23.18,
+            -492.2
+          ],
+          [
+            -23.18,
+            -487.8
+          ],
+          [
+            -23.32,
+            -487.8
+          ],
+          [
+            -23.32,
+            -483.86
+          ],
+          [
+            -18.66,
+            -483.86
+          ],
+          [
+            -18.66,
+            -496.14
+          ],
+          [
+            -19.06,
+            -496.14
+          ],
+          [
+            -19.06,
+            -501.94
+          ],
+          [
+            -62.94,
+            -501.94
+          ],
+          [
+            -62.94,
+            -483.86
+          ],
+          [
+            -59.06,
+            -483.86
+          ]
+        ]
+      ],
+      "triangles": [
+        [
+          [
+            -23.18,
+            -492.2
+          ],
+          [
+            -23.32,
+            -496.14
+          ],
+          [
+            -23.32,
+            -492.2
+          ]
+        ],
+        [
+          [
+            -23.18,
+            -487.8
+          ],
+          [
+            -23.32,
+            -487.8
+          ],
+          [
+            -23.32,
+            -483.86
+          ]
+        ],
+        [
+          [
+            -23.18,
+            -487.8
+          ],
+          [
+            -18.66,
+            -483.86
+          ],
+          [
+            -18.66,
+            -496.14
+          ]
+        ],
+        [
+          [
+            -59.06,
+            -498.06
+          ],
+          [
+            -62.94,
+            -483.86
+          ],
+          [
+            -59.06,
+            -483.86
+          ]
+        ],
+        [
+          [
+            -23.32,
+            -496.14
+          ],
+          [
+            -23.18,
+            -492.2
+          ],
+          [
+            -22.94,
+            -496.14
+          ]
+        ],
+        [
+          [
+            -18.66,
+            -483.86
+          ],
+          [
+            -23.18,
+            -487.8
+          ],
+          [
+            -23.32,
+            -483.86
+          ]
+        ],
+        [
+          [
+            -62.94,
+            -483.86
+          ],
+          [
+            -59.06,
+            -498.06
+          ],
+          [
+            -62.94,
+            -501.94
+          ]
+        ],
+        [
+          [
+            -18.66,
+            -496.14
+          ],
+          [
+            -23.18,
+            -492.2
+          ],
+          [
+            -23.18,
+            -487.8
+          ]
+        ],
+        [
+          [
+            -23.18,
+            -492.2
+          ],
+          [
+            -18.66,
+            -496.14
+          ],
+          [
+            -19.06,
+            -496.14
+          ]
+        ],
+        [
+          [
+            -22.94,
+            -498.06
+          ],
+          [
+            -62.94,
+            -501.94
+          ],
+          [
+            -59.06,
+            -498.06
+          ]
+        ],
+        [
+          [
+            -23.18,
+            -492.2
+          ],
+          [
+            -19.06,
+            -496.14
+          ],
+          [
+            -22.94,
+            -496.14
+          ]
+        ],
+        [
+          [
+            -62.94,
+            -501.94
+          ],
+          [
+            -22.94,
+            -498.06
+          ],
+          [
+            -19.06,
+            -501.94
+          ]
+        ],
+        [
+          [
+            -22.94,
+            -498.06
+          ],
+          [
+            -22.94,
+            -496.14
+          ],
+          [
+            -19.06,
+            -496.14
+          ]
+        ],
+        [
+          [
+            -19.06,
+            -496.14
+          ],
+          [
+            -19.06,
+            -501.94
+          ],
+          [
+            -22.94,
+            -498.06
+          ]
+        ]
+      ],
+      "area_m2": 289.4087999999997
+    },
+    {
+      "id": "TIDAL_D13_clean_linen_supply_MissingThreshold_0",
+      "deck": "D13",
+      "floor_y": 84,
+      "thickness": 0.24,
+      "material_role": "staff_floor",
+      "source_role": "missing-only threshold collar",
+      "rings": [
+        [
+          [
+            -62.94,
+            -491.2
+          ],
+          [
+            -62.94,
+            -494.8
+          ],
+          [
+            -63.0,
+            -494.8
+          ],
+          [
+            -63.0,
+            -491.2
+          ]
+        ]
+      ],
+      "triangles": [
+        [
+          [
+            -62.94,
+            -491.2
+          ],
+          [
+            -62.94,
+            -494.8
+          ],
+          [
+            -63.0,
+            -494.8
+          ]
+        ],
+        [
+          [
+            -63.0,
+            -494.8
+          ],
+          [
+            -63.0,
+            -491.2
+          ],
+          [
+            -62.94,
+            -491.2
+          ]
+        ]
+      ],
+      "area_m2": 0.21600000000000955
+    },
+    {
+      "id": "TIDAL_D13_sealed_soiled_waste_MissingThreshold_0",
+      "deck": "D13",
+      "floor_y": 84,
+      "thickness": 0.24,
+      "material_role": "staff_floor",
+      "source_role": "missing-only threshold collar",
+      "rings": [
+        [
+          [
+            -62.94,
+            -485.2
+          ],
+          [
+            -62.94,
+            -488.8
+          ],
+          [
+            -63.0,
+            -488.8
+          ],
+          [
+            -63.0,
+            -485.2
+          ]
+        ]
+      ],
+      "triangles": [
+        [
+          [
+            -62.94,
+            -485.2
+          ],
+          [
+            -62.94,
+            -488.8
+          ],
+          [
+            -63.0,
+            -488.8
+          ]
+        ],
+        [
+          [
+            -63.0,
+            -488.8
+          ],
+          [
+            -63.0,
+            -485.2
+          ],
+          [
+            -62.94,
+            -485.2
+          ]
+        ]
+      ],
+      "area_m2": 0.21600000000000955
+    }
+  ],
+  "floor_reconciliation": {
+    "compiled_and_received_floor_owners_checked": [
+      "D13_fore_route",
+      "D13_aft_route",
+      "D13_fore_apron",
+      "D13_aft_apron",
+      "D13_atrium_circulation",
+      "D13_authored_atrium_terrace",
+      "D13_residential_street_connection",
+      "D13_residential_street_pilot",
+      "D13_window_terrace",
+      "D13_starboard_commons_authored",
+      "D13_star_atlas_gallery_0",
+      "D13_star_atlas_lower_roof_0",
+      "D13_primary_atrium_core_floor",
+      "D13_forward_public_core_floor",
+      "D13_fore_midship_public_core_floor",
+      "D13_aft_midship_public_core_floor",
+      "D13_aft_public_core_floor"
+    ],
+    "actual_imported_house_floor_meshes_checked": [
+      "TG_Batch_0",
+      "TG_Batch_1",
+      "TG_Batch_2",
+      "TG_Batch_3",
+      "TG_Batch_6",
+      "TG_Batch_7",
+      "TG_Batch_13",
+      "TG_Batch_14",
+      "TG_Batch_18",
+      "TG_Batch_47",
+      "TG_Batch_100",
+      "TG_Batch_101",
+      "TG_Batch_105",
+      "TG_Batch_106",
+      "TG_Batch_110",
+      "TG_Batch_111",
+      "TG_Batch_115",
+      "TG_Batch_116",
+      "TG_Batch_118",
+      "TG_Batch_119",
+      "TG_Batch_123",
+      "TG_Batch_144",
+      "TG_Batch_146",
+      "TG_Batch_147",
+      "TG_Batch_149",
+      "TG_Batch_150",
+      "TG_Batch_152",
+      "TG_Batch_153",
+      "TG_Batch_154",
+      "TG_Batch_155",
+      "TG_Batch_229",
+      "TG_Batch_234",
+      "TG_Batch_239",
+      "TG_Batch_248",
+      "TG_Batch_253",
+      "TG_Batch_258",
+      "TG_Batch_263",
+      "TG_Batch_308",
+      "TG_Batch_313",
+      "TG_Batch_318",
+      "TG_Batch_323"
+    ],
+    "proposed_approach_area_m2": 289.4087999999997,
+    "approach_existing_floor_overlap_m2": 0.0,
+    "missing_only_approach_area_m2": 289.4087999999997,
+    "collars": [
+      {
+        "role": "clean_linen_supply",
+        "gross_bounds_xz": [
+          -63.34,
+          -494.8,
+          -62.8,
+          -491.2
+        ],
+        "gross_area_m2": 1.9440000000000348,
+        "existing_imported_court_area_m2": 1.22400000000002,
+        "already_proposed_approach_area_m2": 0.5040000000000052,
+        "new_missing_only_area_m2": 0.21600000000000955
+      },
+      {
+        "role": "sealed_soiled_waste",
+        "gross_bounds_xz": [
+          -63.34,
+          -488.8,
+          -62.8,
+          -485.2
+        ],
+        "gross_area_m2": 1.9440000000000348,
+        "existing_imported_court_area_m2": 1.22400000000002,
+        "already_proposed_approach_area_m2": 0.5040000000000052,
+        "new_missing_only_area_m2": 0.21600000000000955
+      }
+    ],
+    "total_new_floor_area_m2": 289.8407999999997,
+    "existing_floor_duplicate_area_m2": 0.0,
+    "private_verge_overlap_m2": 0.0,
+    "private_verge_first_z": -482.2,
+    "service_route_end_z": -483.86
+  },
+  "unfinished_shaft_closed": true,
+  "preserved_staff_lift_stops_y": [
+    0,
+    6,
+    12,
+    46.2,
+    52.5
+  ],
+  "preserved_staff_shaft_cap_y": [
+    55.6,
+    55.74
+  ],
+  "upper_d14_d17_held": true,
+  "no_new_guest_units": true,
+  "unfinished": [
+    "Continuous upper staff lift and D14-D17 joins remain held",
+    "Whole-species/loaded-cart/full traversal and final Godot/CRT art",
+    "Local stock, returns cupboards and cart parking; no stock/inventory operation added",
+    "Primary-hull load transfer and structural capacity remain uncertified"
+  ]
+}

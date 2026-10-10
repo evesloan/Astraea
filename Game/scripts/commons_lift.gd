@@ -22,6 +22,8 @@ var phase:="opening"
 var travel_velocity:=0.0
 var maximum_speed:=1.1
 var acceleration:=.65
+var retained_upper_gates:Dictionary={}
+var operation_ready:=true
 var button_script=preload("res://scripts/lift_button.gd")
 func _stop_id(index:int) -> String:
 	return stop_ids[index] if not stop_ids.is_empty() else "D"+str(deck_numbers[index])
@@ -36,16 +38,28 @@ func _ready() -> void:
 		identities[_stop_id(i)]=true
 	for i in range(1,floor_heights.size()):assert(floor_heights[i]>floor_heights[i-1])
 	process_physics_priority=-20
+	if not retained_upper_gates.is_empty(): assert(floor_heights.size()==10 and retained_upper_gates.size()==5)
 	for i in range(floor_heights.size()):
-		var gate:Node3D=load("res://scripts/lift_gate.gd").new()
+		var expected_position:=Vector3(gate_origin_xz.x-.12,floor_heights[i],gate_origin_xz.y)
+		var identity:=StringName(_stop_id(i)+"_"+identity_prefix+"_lift_gate")
+		var gate:Node3D
+		if retained_upper_gates.has(_stop_id(i)):
+			assert(i>=5)
+			gate=retained_upper_gates[_stop_id(i)]
+			assert(gate.persistent_id==identity and not gate.cabin_present_and_stopped and gate.open_fraction==0.0)
+			gate.reparent(self,true)
+			assert(gate.position.is_equal_approx(expected_position))
+		else:
+			gate=load("res://scripts/lift_gate.gd").new()
+			gate.persistent_id=identity
+			gate.position=expected_position
+			gate.rotation.y=PI/2
+			add_child(gate)
 		gate.name="LandingGate_"+_stop_id(i)
-		gate.persistent_id=StringName(_stop_id(i)+"_"+identity_prefix+"_lift_gate")
-		gate.position=Vector3(gate_origin_xz.x-.12,floor_heights[i],gate_origin_xz.y)
-		gate.rotation.y=PI/2
-		add_child(gate)
 		landing_gates.append(gate)
 		_button(self,Vector3(gate_origin_xz.x-.34,floor_heights[i]+1.3,gate_origin_xz.y+1.65),i,_stop_id(i)+"_"+identity_prefix+"_lift_call")
-		_box(self,Vector3(gate_origin_xz.x-.055,floor_heights[i]-.055,gate_origin_xz.y),Vector3(.09,.11,2.4),"FixedSill_"+_stop_id(i))
+		if not retained_upper_gates.has(_stop_id(i)):
+			_box(self,Vector3(gate_origin_xz.x-.055,floor_heights[i]-.055,gate_origin_xz.y),Vector3(.09,.11,2.4),"FixedSill_"+_stop_id(i))
 	cabin=AnimatableBody3D.new()
 	cabin.name="Moving"+district_label+"Cabin"
 	cabin.set_meta("persistent_id",identity_prefix+"_lift_cabin_001")
@@ -150,6 +164,7 @@ func _button(parent:Node3D,pos:Vector3,index:int,identity:String) -> void:
 	button.rotation.y=-PI/2
 	parent.add_child(button)
 func request_floor(index:int) -> bool:
+	if not operation_ready:return false
 	if index<0 or index>=floor_heights.size():return false
 	if phase=="moving":
 		queued_floor=index
@@ -171,6 +186,7 @@ func _set_present() -> void:
 		if i==current_floor:landing_gates[i].request_open()
 		else:landing_gates[i].request_close()
 func _physics_process(delta:float) -> void:
+	if not operation_ready:return
 	if phase=="opening":
 		if cabin_gate.open_fraction>.999 and landing_gates[current_floor].open_fraction>.999:
 			phase="idle"

@@ -2,7 +2,7 @@ extends RefCounted
 # Exact synchronous insertion witness. Original district and candidate builders stay unchanged.
 const CHILD := "StarAtlasFittedInteriors_Candidate"
 const LEGACY_QUEUED_CONTACTS: Array[String] = ["StarAtlasPassengerLift/CabinGate/AST-DOR-003/LIFT_fixed_ivory_enamel/StaticContact", "StarAtlasPassengerLift/CabinGate/AST-DOR-003/LIFT_fixed_champagne_metal/StaticContact", "StarAtlasPassengerLift/CabinGate/AST-DOR-003/LIFT_fixed_warm_walnut/StaticContact"]
-const LEGACY_LIFT_SHA := "65b293ea3be0428e59dd6636640132b41671a73f87cf782422850a557737e718"
+const LEGACY_LIFT_SHA := "174813072483ea3808b8a529fd4bb6ecaf70ef2ea865486a268384dbc7b9d4a4"
 static var receipts: Dictionary = {}
 
 static func audit_enabled() -> bool:

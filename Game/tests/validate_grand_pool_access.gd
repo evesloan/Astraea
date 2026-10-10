@@ -255,10 +255,10 @@ func check_lights_and_identities() -> void:
 	assert(local.global_position.distance_to(Vector3(-15.4,46.2,-412.4)) < .001 and absf(absf(local.rotation.y)-PI)<.001)
 	var staff: Node3D = ship.find_child("ForwardStaffLift", true, false)
 	assert(staff.persistent_id == &"forward_staff_lift_001")
-	assert(staff.stop_ids == ["D01", "D02", "D03", "D08_WET", "D09"])
-	assert(staff.floor_heights == [0.0, 6.0, 12.0, 46.2, 52.5])
-	assert(staff.cabin_file == "AST-CIR-003_five_stop.glb" and "wet service" in str(staff.stop_names[3]))
-	assert(staff.landing_gates.size() == 5 and local.landing_gates.size() == 2)
+	assert(staff.stop_ids.slice(0,5) == ["D01", "D02", "D03", "D08_WET", "D09"])
+	assert(staff.floor_heights.slice(0,5) == [0.0, 6.0, 12.0, 46.2, 52.5])
+	assert(staff.cabin_file == "AST-CIR-003_ten_stop.glb" and "wet service" in str(staff.stop_names[3]))
+	assert(staff.landing_gates.size() == 10 and local.landing_gates.size() == 2)
 	var representations := {"AST-AQU-016.glb":0, "AST-STF-009_pool_market.glb":0, "AST-STF-009.glb":0, "AST-CIR-005_forward_pool_market.glb":0, "AST-CIR-005_forward_core.glb":0, "AST-CIR-005_forward_pool_market_engineering_access.glb":0, "AST-STF-009_pool_market_home.glb":0, "AST-CIR-005_forward_pool_market_engineering_medical_access.glb":0}
 	for node in ship.find_children("*", "Node3D", true, false):
 		var file: String = node.get_meta("catalogue_file", "")

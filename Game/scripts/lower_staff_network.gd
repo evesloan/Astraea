@@ -35,19 +35,23 @@ static func build(parent:Node3D,ship:Node3D)->void:
 		light.spot_angle=75
 		light.shadow_enabled=true
 		light.set_meta("source_marker",str(item.name))
+	var upper_interfaces:Node3D=load("res://scripts/forward_staff_upper_interfaces.gd").build(root,ship)
 	var lift:Node3D=load("res://scripts/commons_lift.gd").new()
 	lift.name="ForwardStaffLift"
 	lift.position=Vector3(-25,0,-490)
 	lift.rotation.y=PI
-	lift.floor_heights.assign(upper.proposed_all_stops_y)
-	lift.deck_numbers.assign(upper.proposed_deck_numbers)
-	lift.stop_ids.assign(upper.proposed_stop_ids)
-	lift.stop_names.assign(["Synthesis service","Fusion maintenance","Crew and depot thresholds","D08 wet service","D09 market service"])
-	lift.stop_codes.assign(["01","02","03","08W","09"])
+	lift.floor_heights.assign(upper.proposed_all_stops_y+[84.0,88.5,93.0,97.5,102.0])
+	lift.deck_numbers.assign(upper.proposed_deck_numbers+[13,14,15,16,17])
+	lift.stop_ids.assign(upper.proposed_stop_ids+["D13","D14","D15","D16","D17"])
+	lift.stop_names.assign(["Synthesis service","Fusion maintenance","Crew and depot thresholds","D08 wet service","D09 market service","D13 Tidal service","D14 Tidal service","D15 Tidal service","D16 Tidal service","D17 Tidal service"])
+	lift.stop_codes.assign(["01","02","03","08W","09","13","14","15","16","17"])
 	lift.gate_origin_xz=Vector2(-1.8,0)
 	lift.identity_prefix="forward_staff"
 	lift.district_label="Forward staff"
-	lift.cabin_file=str(upper.cabin_file)
+	lift.cabin_file="AST-CIR-003_ten_stop.glb"
+	lift.operation_ready=false
+	for deck in range(13,18):
+		lift.retained_upper_gates["D"+str(deck)]=upper_interfaces.get_node("HeldLandingGate_D"+str(deck))
 	lift.persistent_id=&"forward_staff_lift_001"
 	root.add_child(lift)
 	for light in lift.find_children("*","Light3D",true,false):light.light_color=Color(.82,.90,1.0)
@@ -69,4 +73,3 @@ static func build(parent:Node3D,ship:Node3D)->void:
 		sign.rotation.y=-PI/2
 		root.add_child(sign)
 	load("res://scripts/crew_home_approach.gd").build(root,ship)
-	load("res://scripts/forward_staff_upper_interfaces.gd").build(root,ship)

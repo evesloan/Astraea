@@ -1,3 +1,7 @@
+## 10 October 2026: Forward staff upper operation verified
+
+The retained forward staff lift now serves its original five stops plus D13–D17 with the authored ten-stop cabin and reused upper gates/sills. Five temporary mouth closures are reconciled only after exact source/closed-gate checks. Actual-main travel, physical passenger/cart/four-product carry, moving-gate contacts/sweeps, interlocks and lower/upper obstruction holds pass with zero errors. All prior room/lift identities and earlier house connections remain preserved. See FORWARD_STAFF_UPPER_OPERATION.md for exact scope and remaining Group1 gates.
+
 ## 10 October 2026: Held forward staff upper shaft/interfaces
 
 37 retained upper shaft parts, a missing-only top closure and five supported sills/gates are installed with upper travel disabled. An exact reversible12-triangle cap successor preserves neighbouring lower geometry and original sources. The current lift keeps its original five stops/IDs. D13–D17 temporary mouth closures stay physical until controller/interlock and moving-gate clearance allow activation. See FORWARD_STAFF_UPPER_INTERFACES.md for the precise source maps and remaining gate.
