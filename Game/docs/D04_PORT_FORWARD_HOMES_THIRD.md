@@ -1,0 +1,7 @@
+# D04 final southern double pair — source construction WIP
+
+The unchanged976/988 double allocations preserve four exact rest-slot reservations.976 proposes two original quiet cocoon fittings with a separating privacy fin and gallery;988 proposes two original aquatic cradles with separate receiving edges and a southern dry care/activity edge. Each has a contained planted outlook;52.56m² of courts consume no accommodation allocation.
+
+Actual-main source preimages pass72 exact-owner slab witnesses, eight clear columns, six existing guard bounds, six exact original receiving-frame joints and six clear proposed transfer-frame volumes. All64 source pins, the existing eight home proposals, SharedCrewHome/CrewHomeApproach and GrandPool remain intact. No new runtime geometry or open entrances are installed at this checkpoint.
+
+Live coverage stays8/20 proposals and eight reserved rests;12 interiors and17 reserved rest proposals remain. The planned pair would bring coverage to10/20 and12 reserved rests after its own source/runtime/entry gate; ten northern interiors and13 rests would still remain. No additive capacity, occupant assignment or species-ready claim. Full commons/service/environment/biology, primary load sizing, cart-safe vertical access, D17 and all eight groups remain construction. Native/source and ordinary Godot/CRT/hardware review remain separate gates. No watcher enabled.
