@@ -32,10 +32,12 @@ static func build(ship:Node3D)->Node3D:
 	for room in p.rooms:
 		assert(FileAccess.get_sha256("res://assets/models/"+str(room.model_file))==room.model_sha256)
 		var home:=Node3D.new();home.name=room.allocation.proposed_runtime_id;root.add_child(home)
+		home.set_meta("candidate_state","unassigned_environment_candidate");home.set_meta("species_ready",false);home.set_meta("historical_save_identity_recovered",false)
 		home.set_meta("allocation_sha256",room.allocation.allocation_sha256);home.set_meta("rest_slot_ids",room.allocation.proposed_rest_slot_ids);home.set_meta("species_assignment",null)
 		contact_visual(home,room.model_file)
 		for d in room.doors:
 			var door:Node3D=load("res://scripts/"+str(d.controller)).new();door.name=d.name;door.persistent_id=d.persistent_id;door.position=Vector3(d.position[0],d.position[1],d.position[2]);door.rotation.y=d.yaw;home.add_child(door)
 		for item in room.lights:
 			var light:=SpotLight3D.new();light.name=item.name;light.position=Vector3(item.position[0],item.position[1],item.position[2]);light.rotation.x=-PI/2;light.light_color=Color(1,.93,.8);light.light_energy=item.energy;light.spot_range=item.range;light.spot_angle=70;light.shadow_enabled=false;home.add_child(light)
+	load("res://scripts/star_atlas_specialty_structural_receiving.gd").build(ship)
 	return root

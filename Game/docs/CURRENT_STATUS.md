@@ -1,3 +1,7 @@
+## 10 October 2026: Star Atlas specialty receiving correction
+
+The first four unassigned physical candidates now have persistent structural contacts and explicit floor/bridge framing independent of lower-interior residency. Actual-main checking keeps culling enabled and all four lower interiors culled:16 persistent roof contacts,32 floor-owner witnesses,eight clear street stances and eight existing-controller closures pass.88 retained structural objects match1,056 original triangles. The protected sources/owners and85 prior homes remain unchanged. Species/environment allocations and historical saved identities are explicitly unset; zero species-ready rooms are claimed. Structural capacity and habitat/operation/visual acceptance remain held. See STAR_ATLAS_SPECIALTY_STRUCTURAL_RECEIVING.md.
+
 ## 10 October 2026: First Star Atlas specialty interior batch
 
 Four D15 specialty reservation candidates now have editable varied physical interiors and missing-only street/commons joins. The other42 specialty reservations remain unbuilt. Exact lower-source roof contacts and reused doors are bounded witnesses; species assignments, habitat fit, structural capacity, water operation, full dynamic routes, occupancy/save and runtime visual acceptance remain held. See STAR_ATLAS_SPECIALTY_FIRST.md and its source/runtime receipts. Manual independent checkpoints continue; no watcher is claimed.
