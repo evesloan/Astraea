@@ -141,3 +141,7 @@ VIP pool number/location, conflicting printed workshop/lifeboat/crew quantities,
 
 ### Next coordinated work
 Separate bounded packages for the grand theater, engineering/service plant, crew living/service distribution and upper-deck VIP amenity/space resolution. Each starts by resolving its complete section and interfaces under the shared rules. Source geometry is accepted only after that package's dimensions, protected neighbours and unresolved specifications are checked. Existing pool integration and validation continue independently.
+
+### D04 southern double-pair sealed checkpoint
+
+Eight connected home proposals plus native/sealed976/988 preserve10 physical proposals and12 reserved rest positions across the exact20-unit/25-rest house. Pair connections remain gated:12 interiors/17rests still unconnected, including10 northern interiors/13rests.152 sealed checks,64 pins,85 export guards and seven source views pass. Complete commons/service/environment/biology/engineering, cart-safe vertical access, D17, other neighborhoods and all8groups remain construction. See D04_PORT_FORWARD_HOMES_THIRD.md.

@@ -4,7 +4,12 @@ from mathutils import Vector,Matrix
 W=Path(__file__).resolve().parent;R=W.parents[2]
 B=lambda p:(p[0],-p[2],p[1]);sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 P=json.loads((W/'PLAN.json').read_text());images=[]
-files=[W/('D04Home_'+str(r['source_index'])+'.blend')for r in P['rooms']]+[W/'D04ThirdHomesReceivingAndCourts.blend',R/'BlenderCatalogue/assets/d04_port_forward_receiving_20261010/D04PortForwardReceiving.blend',R/'BlenderCatalogue/assets/guest_entry_door/source/AST-DOR-002.blend',R/'BlenderCatalogue/assets/d04_port_forward_homes_first_20261010/D04HomesReceivingAndCommons.blend']
+room_files=[W/('D04Home_'+str(r['source_index'])+'.blend')for r in P['rooms']]
+receiving=W/'D04ThirdHomesReceivingAndCourts.blend'
+prior=R/'BlenderCatalogue/assets/d04_port_forward_receiving_20261010/D04PortForwardReceiving.blend'
+first=R/'BlenderCatalogue/assets/d04_port_forward_homes_first_20261010/D04HomesReceivingAndCommons.blend'
+second=R/'BlenderCatalogue/assets/d04_port_forward_homes_second_20261010/D04SecondHomesReceivingAndCourts.blend'
+files=room_files+[receiving,prior,first,second]
 pins={str(p.relative_to(R)):sha(p)for p in files}
 def append(path):
  with bpy.data.libraries.load(str(path),link=False)as(a,b):b.objects=a.objects
@@ -23,8 +28,8 @@ def view(name,p,target,lens=24,ortho=None):
  bpy.ops.object.camera_add(location=B(p));o=bpy.context.object;o.data.lens=lens
  if ortho:o.data.type='ORTHO';o.data.ortho_scale=ortho
  o.rotation_euler=(Vector(B(target))-o.location).to_track_quat('-Z','Y').to_euler();bpy.context.scene.camera=o;bpy.context.scene.render.filepath=str(W/name);bpy.ops.render.render(write_still=True);images.append(name)
-bpy.ops.wm.open_mainfile(filepath=str(files[4]))
-for p in files[:4]+[files[5],files[7]]:append(p)
+bpy.ops.wm.open_mainfile(filepath=str(prior))
+for p in room_files+[receiving,first,second]:append(p)
 # Full native rooms and receiving source intentionally share structural parts.
 # Hide only redundant unsaved diagnostic copies, preserving each actual part.
 for o in bpy.data.objects:
@@ -38,6 +43,9 @@ for at in[[-65,19.5,-374],[-65,19.5,-366],[-44,19.5,-412],[-44,19.5,-420]]:light
 for r in P['rooms']:
  west=r['court_side']=='west';a=r['allocation'];cz=r['entry']['origin'][2];front=a['allocation_x'][1]if west else a['allocation_x'][0]
  view('SOURCE_HOME_'+str(r['source_index'])+'_ACTIVITY_GALLERY.png',[front+(-3.2 if west else 3.2),18.15,cz+1.3],[a['allocation_x'][0]+(3.1 if west else 9.5),17.8,cz],24)
-view('SOURCE_NEW_STREET_ENTRIES.png',[-44,18.15,-429],[-44,18.15,-438],24)
+for r in P['rooms']:
+ a=r['allocation'];cz=r['entry']['origin'][2];west=r['court_side']=='west';front=a['allocation_x'][1]if west else a['allocation_x'][0]
+ view('SOURCE_HOME_'+str(r['source_index'])+'_PAIRED_REST_AND_CARE.png',[front+(-4.8 if west else 4.8),18.5,a['allocation_z'][0]+1.2],[a['allocation_x'][0]+(3.2 if west else 7.0),17.8,a['allocation_z'][1]-2.6],21)
+view('SOURCE_SOUTHERN_STREET_CONTEXT.png',[-44,18.15,-437.2],[-44,18.15,-444],24)
 for p,h in pins.items():assert sha(R/p)==h,p
 (W/'SOURCE_VIEW_RUN.json').write_text(json.dumps({'status':'PASS','images':images,'native_pins_unchanged':pins,'source_only':True,'diagnostic_fill':True,'redundant_structure_copies_hidden':True,'final_graphical_CRT_hardware_acceptance':False},indent=2)+'\n')
