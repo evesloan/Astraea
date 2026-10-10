@@ -1,3 +1,17 @@
+## 10 October 2026: Current summary and documentation reconciliation
+
+[FULL_SHIP_SCOPE_INDEX.md](FULL_SHIP_SCOPE_INDEX.md) is the central readable entry to the governing master, eight construction groups, existing evidence and unfinished work. This summary reconciles recorded progress through the 9 October 22:47 gallery installation and later retained source handoffs; no new build, import, geometry review or runtime test was performed for this documentation update.
+
+- Installed construction WIP includes 83 received section keys; 498 additional ordinary/family interiors with two protected pilots; all 46 retained Tidal specialty allocations; residential lifts and bounded receiving additions; 99 new shops with R070 preserved; the aquatic annex; shared crew-home fittings; and 15 gallery assemblies. These overlapping measures are not room-completion or capacity totals. No group or whole-ship acceptance is claimed.
+- Group3 crew/service and Group4 tram successors remain source-only work awaiting integration. Group7 hull/upper-closure handoff `7f9f4777a4ae93884282155ea9d05b6ff125bd57` is separate source-only continuation. Preserve installed work and use each package's actual dependency/supersession rules.
+- Main is last verified at `9311ce52e625a5ef797770931a598dd78fb3c66e`. Later gallery work and frozen Group3 batches002–004 / Group4 batches002–003 are protected by Library delta `libfile_2cbcebe8cbbc8191a00d11ff8abe7dbe`; consolidated GitHub publication remains pending. These new documentation edits require their own external retention receipt. A local ZIP or earlier watcher description is not proof of current independent retention or a running watcher.
+- The 31/130 scope counts and morning 132/29 named-construction snapshot are historical. Received-section owner cross-references in the programme ledger remain unresolved; no IDs, boundaries or ownership were changed. Historical receipt hash/pin drift is not a newly demonstrated failure or fresh acceptance. See the scope index for the precise reconciliation limits.
+- Continue unfinished architecture and service connections while retaining master requirements. Gameplay, people/species, persistence, sound, full traversal, final visuals and target-hardware performance remain separate open gates. Older entries below are preserved unchanged as dated history; read their later successors before treating an old hold as current.
+
+## 9 October 2026, 22:47 UTC: Fifteen atrium gallery fittings integrated
+
+15 gallery assemblies and30 source lights now use retained contact, light-budget and residency systems. Actual-main check passed45 floor/capsule points and121 bearing probes,90 solid meshes and30 registered lights. Source views reviewed; final in-engine visual and interaction acceptance remain open. Group7 is unfinished; hull/upper closure delivery is separate.
+
 ## 09 October 2026, 21:35 UTC: All46 Tidal specialty allocation interiors installed
 
 Ten paired quiet-cocoon D15 interiors complete installation of all46 retained Tidal specialty allocations and57 proposed rest reservations.85 ordinary homes remain unchanged.225 actual-main floor/capsule points,57 support contacts and92 door cycles pass. Native paired-room source views reviewed. This completes the specialty installation batch, not Tidal or Group1 acceptance: body/species/environmental services, residential service connections and final in-engine/CRT quality remain open.

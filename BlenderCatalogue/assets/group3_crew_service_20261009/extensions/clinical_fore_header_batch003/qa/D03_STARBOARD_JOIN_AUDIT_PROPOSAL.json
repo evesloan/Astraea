@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "status": "Explicit integration conflict; both standalone sources remain preserved",
+  "new_or_protected_source_edited": false,
+  "input_sha256": {
+    "BlenderCatalogue/assets/group3_crew_service_20261009/source/CREW_STREETS.json": "98d3f31577ba8cae99b30d058acbdf2a08b4e7d9e0ef5ff293a9874711759008",
+    "BlenderCatalogue/assets/group3_crew_service_20261009/source/STARBOARD_FORWARD_STAFF_RISER.json": "710d8646133b1d6d3d2c1fe2f9359ac4891a56e2fe343224dddfc16805b4eb09",
+    "BlenderCatalogue/assets/group3_crew_service_20261009/exports/AST-STF-G3-001.glb": "382a8dbf34add5fdda0b95900d39cabf0115b0f540e27d992f4bc05b07db87e9",
+    "BlenderCatalogue/assets/group3_crew_service_20261009/exports/AST-STF-G3-002.glb": "a29838d0c6f8f872304f3ee38e9f56b0b11e0c708db334459321c31ecf86045b"
+  },
+  "method": "Exact proposed source polygon intersections; this is not an actual-main or moving-capsule test",
+  "D03_lobby_mask_xz": [
+    18.8,
+    -496,
+    23.18,
+    -484
+  ],
+  "crew_parts_in_reserved_lobby": [
+    {
+      "name": "StreetWallLow_2_-62_0",
+      "category": "screen_wall",
+      "height_y": [
+        12,
+        13.02
+      ],
+      "lobby_overlap_area_m2": 0.8596000000000016,
+      "boarding_proxy_overlap_area_m2": 0.05879999999999451,
+      "original_source_part_area_m2": 0.8596000000000016,
+      "fully_contained_in_lobby_mask": true
+    },
+    {
+      "name": "StreetWallLow_2_-62_1",
+      "category": "screen_wall",
+      "height_y": [
+        12,
+        13.02
+      ],
+      "lobby_overlap_area_m2": 0.8596000000000016,
+      "boarding_proxy_overlap_area_m2": 0.0,
+      "original_source_part_area_m2": 0.8596000000000016,
+      "fully_contained_in_lobby_mask": true
+    },
+    {
+      "name": "StreetWallHigh_2_-62_0",
+      "category": "screen_wall",
+      "height_y": [
+        13.02,
+        15.2
+      ],
+      "lobby_overlap_area_m2": 0.8596000000000016,
+      "boarding_proxy_overlap_area_m2": 0.05879999999999451,
+      "original_source_part_area_m2": 0.8596000000000016,
+      "fully_contained_in_lobby_mask": true
+    },
+    {
+      "name": "StreetWallHigh_2_-62_1",
+      "category": "screen_wall",
+      "height_y": [
+        13.02,
+        15.2
+      ],
+      "lobby_overlap_area_m2": 0.8596000000000016,
+      "boarding_proxy_overlap_area_m2": 0.0,
+      "original_source_part_area_m2": 0.8596000000000016,
+      "fully_contained_in_lobby_mask": true
+    },
+    {
+      "name": "StreetCeiling_2_-62_0",
+      "category": "overhead",
+      "height_y": [
+        15.2,
+        15.34
+      ],
+      "lobby_overlap_area_m2": 21.60000000000001,
+      "boarding_proxy_overlap_area_m2": 0.0,
+      "original_source_part_area_m2": 21.60000000000001,
+      "fully_contained_in_lobby_mask": true
+    }
+  ],
+  "crew_and_riser_floor_proposal_overlap_m2": 23.823199999999964,
+  "proposed_root_derivative": {
+    "source": "AST-STF-G3-001 crew streets only",
+    "remove_only": "Clip screen_wall and overhead polygons inside the exact D03 starboard lobby mask at their existing heights. Keep all source geometry outside this mask and all semantic identities.",
+    "riser": "Retain AST-STF-G3-002 lobby, fixed shaft, sill, fore opening, light and gate datums unchanged.",
+    "general_floor": "Union the two missing-only source proposals against exact current D03 slabs. Do not overlay both proposal slabs.",
+    "boarding_path_after_cut_requires_native_and_runtime_evidence": true,
+    "exact_bounded_removal": "All five affected semantic source parts are wholly inside the lobby mask. They form exactly three runtime batches listed here. A source derivative can omit those five source parts before export, preserving every other part and all existing IDs; omit the corresponding three native meshes only after confirming their bounds/ownership and before collision construction."
+  },
+  "scope": "This surgical source-join proposal resolves the already-disclosed D03 fore arrival gate. It does not alter either frozen file or claim a completed crew network.",
+  "whole_runtime_batch_candidates": [
+    {
+      "name": "overhead_staff_bluegrey_paint_2_-62",
+      "category": "overhead",
+      "role": "staff_bluegrey_paint",
+      "batch_cell": "2_-62"
+    },
+    {
+      "name": "screen_wall_staff_bluegrey_paint_2_-62",
+      "category": "screen_wall",
+      "role": "staff_bluegrey_paint",
+      "batch_cell": "2_-62"
+    },
+    {
+      "name": "screen_wall_staff_white_paint_2_-62",
+      "category": "screen_wall",
+      "role": "staff_white_paint",
+      "batch_cell": "2_-62"
+    }
+  ],
+  "all_affected_semantic_parts_fully_inside_mask": true
+}
