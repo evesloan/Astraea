@@ -1,0 +1,7 @@
+"""Inspect actual saved editable signage and its actual export counterpart."""
+import bpy,pathlib,json,sys,hashlib
+R=pathlib.Path(__file__).resolve().parent;sys.path.insert(0,str(R));from glb_tools import read_glb
+house=sys.argv[sys.argv.index('--')+1];O=R/'facilities'/house;c=json.loads((O/'SECTION_CONTRACT.json').read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();native=O/'house_adjunct.blend';export=O/'house_adjunct.glb'
+assert sha(native)==c['native_sha256'] and sha(export)==c['export_sha256'];bpy.ops.wm.open_mainfile(filepath=str(native));_,nodes=read_glb(export)
+texts=[{'name':o.name,'editable_body':o.data.body,'actual_export_mesh_present':o.name in {n['name'] for n in nodes}} for o in bpy.context.scene.objects if o.type=='FONT'];assert len(texts)==1 and texts[0]['editable_body']==house.replace('_upper_house','').replace('_',' ').title() and texts[0]['actual_export_mesh_present']
+out=O/'EDITABLE_TEXT_PARITY.json';out.write_text(json.dumps({'status':'PASS','native_sha256':sha(native),'export_sha256':sha(export),'actual_saved_native_text':texts,'native_and_export_unchanged':True},indent=2));c.setdefault('additional_source_files',{})[out.relative_to(R).as_posix()]=sha(out);c['additional_source_files']['verify_house_text.py']=sha(pathlib.Path(__file__));(O/'SECTION_CONTRACT.json').write_text(json.dumps(c,indent=2));print('ACTUAL HOUSE EDITABLE TEXT PASS',house)
