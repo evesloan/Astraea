@@ -1,0 +1,8 @@
+from pathlib import Path
+import bpy,json,hashlib
+W=Path(__file__).resolve().parent;d=json.loads((W/'MODULE_INTERFACE.json').read_text());native=W/d['native'];export=W/d['asset'];nh=hashlib.sha256(native.read_bytes()).hexdigest();eh=hashlib.sha256(export.read_bytes()).hexdigest();bpy.ops.wm.open_mainfile(filepath=str(native));co=bpy.data.collections['CENTRAL_STAIR_RECEIVING_SOURCE'];meshes=[o for o in co.objects if o.type=='MESH'];datums=[o for o in co.objects if o.type=='EMPTY'];assert len(meshes)==52 and len(datums)==20;images=[i for i in bpy.data.images if i.source=='FILE'];assert len(images)==5 and all(i.packed_file and i.size[0]>0 for i in images)
+bpy.ops.object.select_all(action='DESELECT')
+for o in co.objects:o.select_set(True)
+bpy.context.view_layer.objects.active=meshes[0];p=W/'OWNED_TRANSIENT_repeat_export.glb';bpy.ops.export_scene.gltf(filepath=str(p),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False,export_animations=False,export_materials='EXPORT');h=hashlib.sha256(p.read_bytes()).hexdigest();assert h==eh,(h,eh);p.unlink();assert hashlib.sha256(native.read_bytes()).hexdigest()==nh and hashlib.sha256(export.read_bytes()).hexdigest()==eh
+rep={'status':'NATIVE_REOPEN_AND_BYTE_IDENTICAL_REEXPORT_PASS','native_sha256':nh,'export_sha256':eh,'repeat_export_sha256':h,'editable_meshes':len(meshes),'receiver_datums':len(datums),'packed_verified_images':len(images),'original_native_and_export_unchanged':True,'blender_version':bpy.app.version_string,'transient_repeat_removed':True}
+(W/'NATIVE_PORTABILITY_CHECK.json').write_text(json.dumps(rep,indent=2)+'\n');print(rep['status'])
