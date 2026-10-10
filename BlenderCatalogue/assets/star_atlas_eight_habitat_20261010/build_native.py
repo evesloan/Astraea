@@ -2,6 +2,14 @@ from pathlib import Path
 import bpy,json,math,hashlib,shutil,bmesh
 from mathutils import Vector
 W=Path(__file__).resolve().parent;R=W.parents[2];P=json.load(open(W/'PHYSICAL_PLAN.json'));sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();B=lambda v:(v[0],-v[2],v[1]);records=[]
+current=json.load(open(W/'ALLOCATION_PROPOSAL.json'))
+for room in P['rooms']:
+ revised=next(r for r in current['rooms']if r['source_envelope_index']==room['source_envelope_index'])
+ for key in ['proposed_design_species','design_species_assignment','design_choice_status','alien_body_compatibility_accepted']:
+  if key in revised:room[key]=revised[key]
+for ref in P['references']:
+ if ref['key']=='AST-RST-LN-001':ref['proposed_design_species']='';ref['status']='Generic measured low-rest construction reference; canonical species and alien compatibility unassigned'
+P['proposed_choices']=current['proposed_choices'];P['allocation_reconciliation']=current['allocation_reconciliation']
 for k,h in P['source_pins'].items():assert sha(R/'Game/assets/models'/(k+'.glb'))==h
 manifest=json.load(open(R/'BlenderCatalogue/catalogue_manifest.json'))
 for k in P['source_pins']:assert sum(a.get('catalogue_id')==k for a in manifest['assets'])==1
