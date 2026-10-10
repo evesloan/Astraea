@@ -55,6 +55,7 @@ commands += [('star_atlas_low_rest_adaptation', ['--script', 'res://tests/valida
 commands.append(('star_atlas_specialty_ninth',['--script','res://tests/validate_star_atlas_specialty_ninth.gd']))
 commands.append(('star_atlas_specialty_tenth',['--script','res://tests/validate_star_atlas_specialty_tenth.gd']))
 commands.append(('star_atlas_specialty_eleventh',['--script','res://tests/validate_star_atlas_specialty_eleventh.gd']))
+commands.append(('star_atlas_specialty_twelfth',['--script','res://tests/validate_star_atlas_specialty_twelfth.gd']))
 if '--only' in sys.argv:
     requested=sys.argv[sys.argv.index('--only')+1]
     commands=[entry for entry in commands if entry[0]==requested]
