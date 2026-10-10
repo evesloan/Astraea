@@ -1,0 +1,47 @@
+{
+  "schema": "astraea.group4.source_review.v1",
+  "status": "THREE_ACTUAL_SOURCE_VIEWS_REVIEWED_LIMITED_PASS",
+  "source_only": true,
+  "whole_group_complete": false,
+  "images": [
+    {
+      "file": "SOURCE_REVIEW_bridge_deployed.png",
+      "sha256": "6441ba58e54ae44e8afb0a0043eb8626a2d754f0338b64ad6ff544cea6b579d7",
+      "resolution": [
+        640,
+        480
+      ],
+      "pixels_viewed": true,
+      "finding": "Actual central station/car context: deployed plate visibly spans the portal gap, grip strips remain readable, and the 20 mm cabin tongue reaches the actual floor. Source hardware review only."
+    },
+    {
+      "file": "SOURCE_REVIEW_bridge_stowed.png",
+      "sha256": "413a9fefa93437aa9015a8c2833b613c7422c042dc76bd7116d443125a78a875",
+      "resolution": [
+        640,
+        480
+      ],
+      "pixels_viewed": true,
+      "finding": "Same actual central context: moving panel stands upright at the station edge with the gap and cabin portal visible. No obvious clipping in this source view; live interlock and gate function remain open."
+    },
+    {
+      "file": "SOURCE_REVIEW_north_station_context.png",
+      "sha256": "112bc60e8a634da9affbe8df9725e63ece12fe016b6ff07f3baddc3a4db4ed45",
+      "resolution": [
+        640,
+        480
+      ],
+      "pixels_viewed": true,
+      "finding": "Actual Paper Moon and fore-midship core plus retained floor-top context: source station canopy, outer edge and three below-wheel-depth cantilevers are visibly separated from the foreground retained destination wall. The deck underside/stairs are partly occluded, so this view does not establish complete stair/lift or whole-world visual acceptance."
+    }
+  ],
+  "renderer": "Existing Blender 4.3.2 Cycles source review; 24 samples at 640 × 480. Existing native engine and project engine unchanged.",
+  "native_review": "BOTH_NATIVE_REOPENS_AND_BYTE_IDENTICAL_REEXPORT_PASS",
+  "native_and_glb_unchanged_after_unsaved_context_views": true,
+  "context_policy": "Retained GLBs and actual current floor-top triangles are imported only into unsaved display context; context, camera and lights are not saved into deliverable natives or exported. No proposed annex floor is drawn or supplied.",
+  "review_limit": "Review is bounded construction-source evidence. Final materials/CRT lighting, all species, main-world traversal, load/carry and performance remain open.",
+  "correction_history": [
+    "First north context view was roof-obscured. Camera was moved below the roof sightline for one useful retained-wall/station/cantilever context view; native and GLB geometry unchanged.",
+    "The first bridge check found 16 intermediate 45-degree moving collar/platform contact pairs across four stations. Only the owned moving collar profile was corrected to its forward quadrant. Final 0/45/90-degree checks have zero unexpected contacts."
+  ]
+}

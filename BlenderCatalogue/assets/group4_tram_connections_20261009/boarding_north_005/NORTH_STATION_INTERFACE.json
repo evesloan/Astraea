@@ -1,0 +1,2233 @@
+{
+  "schema": "astraea.group4.foremid.north_candidate.v1",
+  "status": "UNADOPTED_SOURCE_PROPOSAL",
+  "catalogue_id": "AST-TRM-G4-020",
+  "family": "group4_foremid_north_candidate_005",
+  "retained_station_identity": "FORE_MIDSHIP",
+  "master_catchment_z": -216,
+  "old_physical_boarding_z": -216,
+  "proposed_physical_boarding_z": -241,
+  "proposed_stop_delta_z_m": -25,
+  "actual_core_z": -272,
+  "proposed_platform_xz": [
+    -13.2,
+    -251,
+    -7.8,
+    -229
+  ],
+  "proposed_lift_root_xyz": [
+    -11.2,
+    0,
+    -225
+  ],
+  "proposed_lift_yaw_rad": -1.5707963267948966,
+  "proposed_local_lift_stop_ids": [
+    "G4_FORE_MIDSHIP_LOWER",
+    "G4_FORE_MIDSHIP_BOARDING"
+  ],
+  "floor_heights": [
+    52.5,
+    56.1
+  ],
+  "proposed_lift_recess_xz": [
+    -13.4,
+    -225.2,
+    -9,
+    -221.2
+  ],
+  "proposed_new_lower_annex_xz": [
+    -13.6,
+    -265.5,
+    -4,
+    -221.2
+  ],
+  "stair_change": "Exact frozen2.4m flights, risers, stringers and landings shiftedZ\u221225/X\u22120.15;2m upper return added. No existing core geometry changes.",
+  "platform_change": "22m island shortened at north end; canopy/fittings coordinated. Source coordinates remain a proposal.",
+  "discarded_uninstalled_local_frame": "Old fore-midship axial source frames are omitted from this separate candidate, replaced by three explicitly lower under-wheel-depth cantilevers. Original files remain untouched.",
+  "root_binding_changes_required": [
+    "Keep master catchment/FORE_MIDSHIP identity while explicitly deciding whether the physical docking target may move\u2212216\u2192\u2212241.",
+    "Root route docking, destination arrival/wayfinding, new two-stop lift root and persistent IDs must bind the proposed new coordinates if accepted.",
+    "No runtime stop, controller, lift, route point or protected allocation changes are made by this source proposal."
+  ],
+  "root_receiving_open": [
+    "New missing-only lower annex/floor and17.6m\u00b2 wholly new lift recess; retain all actual generic and received floor owners.",
+    "Secondary stairs, upper return and lift frame still require physical lower-annex receivers; no capacity or runtime acceptance."
+  ],
+  "member_count": 173,
+  "part_recipes": [
+    {
+      "name": "N005_V2__Boarding_Island_24m",
+      "retained_source_mesh": "V2__Boarding_Island_24m",
+      "material": "warm_stone",
+      "role": "station top56.1",
+      "changes": [
+        "Z\u221225m",
+        "north-end trim toZ\u2212251"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Platform_OuterSoffit",
+      "retained_source_mesh": "V2__Platform_OuterSoffit",
+      "material": "ivory_enamel",
+      "role": "thick profiled platform edge",
+      "changes": [
+        "Z\u221225m",
+        "north-end trim toZ\u2212251"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Platform_InnerFascia",
+      "retained_source_mesh": "V2__Platform_InnerFascia",
+      "material": "original_coral_enamel",
+      "role": "tram-facing station fascia",
+      "changes": [
+        "Z\u221225m",
+        "north-end trim toZ\u2212251"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Port_Edge_foot",
+      "retained_source_mesh": "V2__Port_Edge_foot",
+      "material": "ivory_enamel",
+      "role": "guard base",
+      "changes": [
+        "Z\u221225m",
+        "north-end trim toZ\u2212251"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Port_Edge_infill",
+      "retained_source_mesh": "V2__Port_Edge_infill",
+      "material": "station_guard_preview",
+      "role": "guard infill",
+      "changes": [
+        "Z\u221225m",
+        "north-end trim toZ\u2212251"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Port_Edge_rail",
+      "retained_source_mesh": "V2__Port_Edge_rail",
+      "material": "champagne_metal",
+      "role": "handrail",
+      "changes": [
+        "Z\u221225m",
+        "north-end trim toZ\u2212251"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Port_Edge_post_-228",
+      "retained_source_mesh": "V2__Port_Edge_post_-228",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "north end fitting moved+2m within trimmed deck"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Port_Edge_post_-204",
+      "retained_source_mesh": "V2__Port_Edge_post_-204",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_NorthGuard_foot",
+      "retained_source_mesh": "V2__Tram_NorthGuard_foot",
+      "material": "ivory_enamel",
+      "role": "guard base",
+      "changes": [
+        "Z\u221225m",
+        "north guard shortened toZ\u2212251"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_NorthGuard_infill",
+      "retained_source_mesh": "V2__Tram_NorthGuard_infill",
+      "material": "station_guard_preview",
+      "role": "guard infill",
+      "changes": [
+        "Z\u221225m",
+        "north guard shortened toZ\u2212251"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_NorthGuard_rail",
+      "retained_source_mesh": "V2__Tram_NorthGuard_rail",
+      "material": "champagne_metal",
+      "role": "handrail",
+      "changes": [
+        "Z\u221225m",
+        "north guard shortened toZ\u2212251"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_NorthGuard_post_-228",
+      "retained_source_mesh": "V2__Tram_NorthGuard_post_-228",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "north end fitting moved+2m within trimmed deck"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_NorthGuard_post_-217.2",
+      "retained_source_mesh": "V2__Tram_NorthGuard_post_-217.2",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_SouthGuard_foot",
+      "retained_source_mesh": "V2__Tram_SouthGuard_foot",
+      "material": "ivory_enamel",
+      "role": "guard base",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_SouthGuard_infill",
+      "retained_source_mesh": "V2__Tram_SouthGuard_infill",
+      "material": "station_guard_preview",
+      "role": "guard infill",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_SouthGuard_rail",
+      "retained_source_mesh": "V2__Tram_SouthGuard_rail",
+      "material": "champagne_metal",
+      "role": "handrail",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_SouthGuard_post_-214.8",
+      "retained_source_mesh": "V2__Tram_SouthGuard_post_-214.8",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Tram_SouthGuard_post_-204",
+      "retained_source_mesh": "V2__Tram_SouthGuard_post_-204",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Boarding_Portal_Post_-217.2",
+      "retained_source_mesh": "V2__Boarding_Portal_Post_-217.2",
+      "material": "ivory_enamel",
+      "role": "boarding frame",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Portal_Coral_Reveal_-217.2",
+      "retained_source_mesh": "V2__Portal_Coral_Reveal_-217.2",
+      "material": "original_coral_enamel",
+      "role": "portal reveal",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Boarding_Portal_Post_-214.8",
+      "retained_source_mesh": "V2__Boarding_Portal_Post_-214.8",
+      "material": "ivory_enamel",
+      "role": "boarding frame",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Portal_Coral_Reveal_-214.8",
+      "retained_source_mesh": "V2__Portal_Coral_Reveal_-214.8",
+      "material": "original_coral_enamel",
+      "role": "portal reveal",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Boarding_Portal_Header",
+      "retained_source_mesh": "V2__Boarding_Portal_Header",
+      "material": "champagne_metal",
+      "role": "boarding frame",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Station_Canopy_Pier_-226.8",
+      "retained_source_mesh": "V2__Station_Canopy_Pier_-226.8",
+      "material": "ivory_enamel",
+      "role": "canopy support",
+      "changes": [
+        "Z\u221225m",
+        "north end fitting moved+2m within trimmed deck"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Station_Canopy_Arm_-226.8",
+      "retained_source_mesh": "V2__Station_Canopy_Arm_-226.8",
+      "material": "champagne_metal",
+      "role": "canopy crossbeam",
+      "changes": [
+        "Z\u221225m",
+        "north end fitting moved+2m within trimmed deck"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Station_Canopy_Pier_-205.2",
+      "retained_source_mesh": "V2__Station_Canopy_Pier_-205.2",
+      "material": "ivory_enamel",
+      "role": "canopy support",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Station_Canopy_Arm_-205.2",
+      "retained_source_mesh": "V2__Station_Canopy_Arm_-205.2",
+      "material": "champagne_metal",
+      "role": "canopy crossbeam",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Canopy_Profiled_Crown",
+      "retained_source_mesh": "V2__Canopy_Profiled_Crown",
+      "material": "ivory_enamel",
+      "role": "local station roof; independent no borrowed D10 slab",
+      "changes": [
+        "Z\u221225m",
+        "canopy north end shortened toZ\u2212251.05"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Canopy_Recessed_Coral_Band",
+      "retained_source_mesh": "V2__Canopy_Recessed_Coral_Band",
+      "material": "original_coral_enamel",
+      "role": "recessed layered ceiling",
+      "changes": [
+        "Z\u221225m",
+        "canopy north end shortened toZ\u2212251.05"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Source_Lamp_Backplate_-225",
+      "retained_source_mesh": "V2__Source_Lamp_Backplate_-225",
+      "material": "champagne_metal",
+      "role": "physical lamp fitting",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Source_Lamp_Opal_-225",
+      "retained_source_mesh": "V2__Source_Lamp_Opal_-225",
+      "material": "ivory_enamel",
+      "role": "physical lens",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Source_Lamp_Backplate_-218",
+      "retained_source_mesh": "V2__Source_Lamp_Backplate_-218",
+      "material": "champagne_metal",
+      "role": "physical lamp fitting",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Source_Lamp_Opal_-218",
+      "retained_source_mesh": "V2__Source_Lamp_Opal_-218",
+      "material": "ivory_enamel",
+      "role": "physical lens",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Source_Lamp_Backplate_-211",
+      "retained_source_mesh": "V2__Source_Lamp_Backplate_-211",
+      "material": "champagne_metal",
+      "role": "physical lamp fitting",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Source_Lamp_Opal_-211",
+      "retained_source_mesh": "V2__Source_Lamp_Opal_-211",
+      "material": "ivory_enamel",
+      "role": "physical lens",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Source_Lamp_Backplate_-205",
+      "retained_source_mesh": "V2__Source_Lamp_Backplate_-205",
+      "material": "champagne_metal",
+      "role": "physical lamp fitting",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Source_Lamp_Opal_-205",
+      "retained_source_mesh": "V2__Source_Lamp_Opal_-205",
+      "material": "ivory_enamel",
+      "role": "physical lens",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Quiet_Perch_Base_-225.8",
+      "retained_source_mesh": "V2__Quiet_Perch_Base_-225.8",
+      "material": "warm_walnut",
+      "role": "local rest perch",
+      "changes": [
+        "Z\u221225m",
+        "north perch moved+0.6m within trimmed deck"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Quiet_Perch_Cushion_-225.8",
+      "retained_source_mesh": "V2__Quiet_Perch_Cushion_-225.8",
+      "material": "original_coral_enamel",
+      "role": "rest perch surface",
+      "changes": [
+        "Z\u221225m",
+        "north perch moved+0.6m within trimmed deck"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Quiet_Perch_Base_-206.2",
+      "retained_source_mesh": "V2__Quiet_Perch_Base_-206.2",
+      "material": "warm_walnut",
+      "role": "local rest perch",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Quiet_Perch_Cushion_-206.2",
+      "retained_source_mesh": "V2__Quiet_Perch_Cushion_-206.2",
+      "material": "original_coral_enamel",
+      "role": "rest perch surface",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step00",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step00",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_00",
+      "retained_source_mesh": "V2__Emergency_Nosing0_00",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step01",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step01",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_01",
+      "retained_source_mesh": "V2__Emergency_Nosing0_01",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step02",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step02",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_02",
+      "retained_source_mesh": "V2__Emergency_Nosing0_02",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step03",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step03",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_03",
+      "retained_source_mesh": "V2__Emergency_Nosing0_03",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step04",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step04",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_04",
+      "retained_source_mesh": "V2__Emergency_Nosing0_04",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step05",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step05",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_05",
+      "retained_source_mesh": "V2__Emergency_Nosing0_05",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step06",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step06",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_06",
+      "retained_source_mesh": "V2__Emergency_Nosing0_06",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step07",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step07",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_07",
+      "retained_source_mesh": "V2__Emergency_Nosing0_07",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step08",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step08",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_08",
+      "retained_source_mesh": "V2__Emergency_Nosing0_08",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step09",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step09",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_09",
+      "retained_source_mesh": "V2__Emergency_Nosing0_09",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step10",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step10",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_10",
+      "retained_source_mesh": "V2__Emergency_Nosing0_10",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight0_Step11",
+      "retained_source_mesh": "V2__Emergency_Flight0_Step11",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing0_11",
+      "retained_source_mesh": "V2__Emergency_Nosing0_11",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Rail0_-7.54",
+      "retained_source_mesh": "V2__Emergency_Rail0_-7.54",
+      "material": "champagne_metal",
+      "role": "stair handrail",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost0_-7.54_0",
+      "retained_source_mesh": "V2__Emergency_RailPost0_-7.54_0",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost0_-7.54_0.5",
+      "retained_source_mesh": "V2__Emergency_RailPost0_-7.54_0.5",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost0_-7.54_1",
+      "retained_source_mesh": "V2__Emergency_RailPost0_-7.54_1",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Rail0_-4.96",
+      "retained_source_mesh": "V2__Emergency_Rail0_-4.96",
+      "material": "champagne_metal",
+      "role": "stair handrail",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost0_-4.96_0",
+      "retained_source_mesh": "V2__Emergency_RailPost0_-4.96_0",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost0_-4.96_0.5",
+      "retained_source_mesh": "V2__Emergency_RailPost0_-4.96_0.5",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost0_-4.96_1",
+      "retained_source_mesh": "V2__Emergency_RailPost0_-4.96_1",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Profiled_Stringer0",
+      "retained_source_mesh": "V2__Emergency_Profiled_Stringer0",
+      "material": "ivory_enamel",
+      "role": "closed inclined stair support",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step00",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step00",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_00",
+      "retained_source_mesh": "V2__Emergency_Nosing1_00",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step01",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step01",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_01",
+      "retained_source_mesh": "V2__Emergency_Nosing1_01",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step02",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step02",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_02",
+      "retained_source_mesh": "V2__Emergency_Nosing1_02",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step03",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step03",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_03",
+      "retained_source_mesh": "V2__Emergency_Nosing1_03",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step04",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step04",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_04",
+      "retained_source_mesh": "V2__Emergency_Nosing1_04",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step05",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step05",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_05",
+      "retained_source_mesh": "V2__Emergency_Nosing1_05",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step06",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step06",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_06",
+      "retained_source_mesh": "V2__Emergency_Nosing1_06",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step07",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step07",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_07",
+      "retained_source_mesh": "V2__Emergency_Nosing1_07",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step08",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step08",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_08",
+      "retained_source_mesh": "V2__Emergency_Nosing1_08",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step09",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step09",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_09",
+      "retained_source_mesh": "V2__Emergency_Nosing1_09",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step10",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step10",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_10",
+      "retained_source_mesh": "V2__Emergency_Nosing1_10",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Flight1_Step11",
+      "retained_source_mesh": "V2__Emergency_Flight1_Step11",
+      "material": "warm_stone",
+      "role": "stair tread; actual top",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Nosing1_11",
+      "retained_source_mesh": "V2__Emergency_Nosing1_11",
+      "material": "champagne_metal",
+      "role": "stair nosing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "no_collision_detail"
+    },
+    {
+      "name": "N005_V2__Emergency_Rail1_-4.84",
+      "retained_source_mesh": "V2__Emergency_Rail1_-4.84",
+      "material": "champagne_metal",
+      "role": "stair handrail",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost1_-4.84_0",
+      "retained_source_mesh": "V2__Emergency_RailPost1_-4.84_0",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost1_-4.84_0.5",
+      "retained_source_mesh": "V2__Emergency_RailPost1_-4.84_0.5",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost1_-4.84_1",
+      "retained_source_mesh": "V2__Emergency_RailPost1_-4.84_1",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Rail1_-2.26",
+      "retained_source_mesh": "V2__Emergency_Rail1_-2.26",
+      "material": "champagne_metal",
+      "role": "stair handrail",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost1_-2.26_0",
+      "retained_source_mesh": "V2__Emergency_RailPost1_-2.26_0",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost1_-2.26_0.5",
+      "retained_source_mesh": "V2__Emergency_RailPost1_-2.26_0.5",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_RailPost1_-2.26_1",
+      "retained_source_mesh": "V2__Emergency_RailPost1_-2.26_1",
+      "material": "champagne_metal",
+      "role": "stair rail post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Profiled_Stringer1",
+      "retained_source_mesh": "V2__Emergency_Profiled_Stringer1",
+      "material": "ivory_enamel",
+      "role": "closed inclined stair support",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding",
+      "retained_source_mesh": "V2__Emergency_MidLanding",
+      "material": "warm_stone",
+      "role": "supported switchback half landing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_UpperLanding",
+      "retained_source_mesh": "V2__Emergency_UpperLanding",
+      "material": "warm_stone",
+      "role": "upper return landing",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_TopApproach",
+      "retained_source_mesh": "V2__Emergency_TopApproach",
+      "material": "warm_stone",
+      "role": "stair to boarding island",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Outer_foot",
+      "retained_source_mesh": "V2__Upper_Approach_Outer_foot",
+      "material": "ivory_enamel",
+      "role": "guard base",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Outer_infill",
+      "retained_source_mesh": "V2__Upper_Approach_Outer_infill",
+      "material": "station_guard_preview",
+      "role": "guard infill",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Outer_rail",
+      "retained_source_mesh": "V2__Upper_Approach_Outer_rail",
+      "material": "champagne_metal",
+      "role": "handrail",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Outer_post_-232.6",
+      "retained_source_mesh": "V2__Upper_Approach_Outer_post_-232.6",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Outer_post_-228",
+      "retained_source_mesh": "V2__Upper_Approach_Outer_post_-228",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Inner_foot",
+      "retained_source_mesh": "V2__Upper_Approach_Inner_foot",
+      "material": "ivory_enamel",
+      "role": "guard base",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Inner_infill",
+      "retained_source_mesh": "V2__Upper_Approach_Inner_infill",
+      "material": "station_guard_preview",
+      "role": "guard infill",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Inner_rail",
+      "retained_source_mesh": "V2__Upper_Approach_Inner_rail",
+      "material": "champagne_metal",
+      "role": "handrail",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Inner_post_-232.6",
+      "retained_source_mesh": "V2__Upper_Approach_Inner_post_-232.6",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Upper_Approach_Inner_post_-228",
+      "retained_source_mesh": "V2__Upper_Approach_Inner_post_-228",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-7.53_foot",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-7.53_foot",
+      "material": "ivory_enamel",
+      "role": "guard base",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-7.53_infill",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-7.53_infill",
+      "material": "station_guard_preview",
+      "role": "guard infill",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-7.53_rail",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-7.53_rail",
+      "material": "champagne_metal",
+      "role": "handrail",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-7.53_post_-240.4",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-7.53_post_-240.4",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-7.53_post_-238.6",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-7.53_post_-238.6",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-2.27_foot",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-2.27_foot",
+      "material": "ivory_enamel",
+      "role": "guard base",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-2.27_infill",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-2.27_infill",
+      "material": "station_guard_preview",
+      "role": "guard infill",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-2.27_rail",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-2.27_rail",
+      "material": "champagne_metal",
+      "role": "handrail",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-2.27_post_-240.4",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-2.27_post_-240.4",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_Side_-2.27_post_-238.6",
+      "retained_source_mesh": "V2__Emergency_MidLanding_Side_-2.27_post_-238.6",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_NorthInfill",
+      "retained_source_mesh": "V2__Emergency_MidLanding_NorthInfill",
+      "material": "station_guard_preview",
+      "role": "midlanding guarded back",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_MidLanding_NorthRail",
+      "retained_source_mesh": "V2__Emergency_MidLanding_NorthRail",
+      "material": "champagne_metal",
+      "role": "midlanding rear handrail",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Inclined_Guard_0_-7.54",
+      "retained_source_mesh": "V2__Emergency_Inclined_Guard_0_-7.54",
+      "material": "station_guard_preview",
+      "role": "faithful inclined guard; no open underrail gap",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Inclined_Guard_0_-4.96",
+      "retained_source_mesh": "V2__Emergency_Inclined_Guard_0_-4.96",
+      "material": "station_guard_preview",
+      "role": "faithful inclined guard; no open underrail gap",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Inclined_Guard_1_-4.84",
+      "retained_source_mesh": "V2__Emergency_Inclined_Guard_1_-4.84",
+      "material": "station_guard_preview",
+      "role": "faithful inclined guard; no open underrail gap",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Emergency_Inclined_Guard_1_-2.26",
+      "retained_source_mesh": "V2__Emergency_Inclined_Guard_1_-2.26",
+      "material": "station_guard_preview",
+      "role": "faithful inclined guard; no open underrail gap",
+      "changes": [
+        "Z\u221225m",
+        "stair/approach X\u22120.15m, preserving actual core wall"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__BoardingLift_HousingSide_-7.7",
+      "retained_source_mesh": "V2__BoardingLift_HousingSide_-7.7",
+      "material": "ivory_enamel",
+      "role": "lift enclosure side",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__BoardingLift_HousingSide_-3.5",
+      "retained_source_mesh": "V2__BoardingLift_HousingSide_-3.5",
+      "material": "ivory_enamel",
+      "role": "lift enclosure side",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__BoardingLift_Rear",
+      "retained_source_mesh": "V2__BoardingLift_Rear",
+      "material": "ivory_enamel",
+      "role": "lift enclosure rear",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__BoardingLift_Header",
+      "retained_source_mesh": "V2__BoardingLift_Header",
+      "material": "champagne_metal",
+      "role": "lift top cap",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__BoardingLift_PitPan",
+      "retained_source_mesh": "V2__BoardingLift_PitPan",
+      "material": "champagne_metal",
+      "role": "pit source; bounded lower recess required",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__BoardingLift_UpperLanding",
+      "retained_source_mesh": "V2__BoardingLift_UpperLanding",
+      "material": "warm_stone",
+      "role": "level accessible upper landing to platform",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-7.74_foot",
+      "retained_source_mesh": "V2__LiftApproach_-7.74_foot",
+      "material": "ivory_enamel",
+      "role": "guard base",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-7.74_infill",
+      "retained_source_mesh": "V2__LiftApproach_-7.74_infill",
+      "material": "station_guard_preview",
+      "role": "guard infill",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-7.74_rail",
+      "retained_source_mesh": "V2__LiftApproach_-7.74_rail",
+      "material": "champagne_metal",
+      "role": "handrail",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-7.74_post_-204",
+      "retained_source_mesh": "V2__LiftApproach_-7.74_post_-204",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-7.74_post_-200",
+      "retained_source_mesh": "V2__LiftApproach_-7.74_post_-200",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-3.46_foot",
+      "retained_source_mesh": "V2__LiftApproach_-3.46_foot",
+      "material": "ivory_enamel",
+      "role": "guard base",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-3.46_infill",
+      "retained_source_mesh": "V2__LiftApproach_-3.46_infill",
+      "material": "station_guard_preview",
+      "role": "guard infill",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-3.46_rail",
+      "retained_source_mesh": "V2__LiftApproach_-3.46_rail",
+      "material": "champagne_metal",
+      "role": "handrail",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-3.46_post_-204",
+      "retained_source_mesh": "V2__LiftApproach_-3.46_post_-204",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__LiftApproach_-3.46_post_-200",
+      "retained_source_mesh": "V2__LiftApproach_-3.46_post_-200",
+      "material": "champagne_metal",
+      "role": "guard post",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Guest_Waiting_Screen",
+      "retained_source_mesh": "V2__Guest_Waiting_Screen",
+      "material": "ivory_enamel",
+      "role": "screened guest vestibule edge",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_V2__Guest_Waiting_Seat",
+      "retained_source_mesh": "V2__Guest_Waiting_Seat",
+      "material": "warm_walnut",
+      "role": "guest waiting edge",
+      "changes": [
+        "Z\u221225m"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_StairUpperReturn",
+      "retained_source_mesh": null,
+      "material": "warm_stone",
+      "role": "2m level return between source-preserved upper stair approach and trimmed platform",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_ReturnGuardFoot_-13.29",
+      "retained_source_mesh": null,
+      "material": "ivory_enamel",
+      "role": "short return guard base",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_ReturnGuardInfill_-13.29",
+      "retained_source_mesh": null,
+      "material": "station_guard_preview",
+      "role": "short return infill",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_ReturnGuardRail_-13.29",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "short return guard rail",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_ReturnGuardFoot_-8.01",
+      "retained_source_mesh": null,
+      "material": "ivory_enamel",
+      "role": "short return guard base",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_ReturnGuardInfill_-8.01",
+      "retained_source_mesh": null,
+      "material": "station_guard_preview",
+      "role": "short return infill",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_ReturnGuardRail_-8.01",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "short return guard rail",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_AxialPad_0",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "positive current D09_fore_route floor receiver",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_AxialPier_0",
+      "retained_source_mesh": null,
+      "material": "ivory_enamel",
+      "role": "axial pier outside protected lower4m route",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_PlatformCantilever_0",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "under-wheel-depth cantilever; capacity not accepted",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_PlatformReceivingShoe_0",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "positive shifted island underside receiver",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_AxialPad_1",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "positive current D09_fore_route floor receiver",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_AxialPier_1",
+      "retained_source_mesh": null,
+      "material": "ivory_enamel",
+      "role": "axial pier outside protected lower4m route",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_PlatformCantilever_1",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "under-wheel-depth cantilever; capacity not accepted",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_PlatformReceivingShoe_1",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "positive shifted island underside receiver",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_AxialPad_2",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "positive current D09_fore_route floor receiver",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_AxialPier_2",
+      "retained_source_mesh": null,
+      "material": "ivory_enamel",
+      "role": "axial pier outside protected lower4m route",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_PlatformCantilever_2",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "under-wheel-depth cantilever; capacity not accepted",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    },
+    {
+      "name": "N005_PlatformReceivingShoe_2",
+      "retained_source_mesh": null,
+      "material": "champagne_metal",
+      "role": "positive shifted island underside receiver",
+      "changes": [
+        "new additive source connector/receiver"
+      ],
+      "policy": "static_trimesh_candidate"
+    }
+  ],
+  "new_boxes": [
+    {
+      "name": "N005_StairUpperReturn",
+      "center": [
+        -10.65,
+        55.975,
+        -252.0
+      ],
+      "size": [
+        5.4,
+        0.25,
+        2.0
+      ],
+      "role": "2m level return between source-preserved upper stair approach and trimmed platform",
+      "material": "warm_stone",
+      "receiver": null
+    },
+    {
+      "name": "N005_ReturnGuardFoot_-13.29",
+      "center": [
+        -13.29,
+        56.21,
+        -252.0
+      ],
+      "size": [
+        0.1,
+        0.22,
+        2.0
+      ],
+      "role": "short return guard base",
+      "material": "ivory_enamel",
+      "receiver": null
+    },
+    {
+      "name": "N005_ReturnGuardInfill_-13.29",
+      "center": [
+        -13.29,
+        56.76,
+        -252.0
+      ],
+      "size": [
+        0.06,
+        0.82,
+        2.0
+      ],
+      "role": "short return infill",
+      "material": "station_guard_preview",
+      "receiver": null
+    },
+    {
+      "name": "N005_ReturnGuardRail_-13.29",
+      "center": [
+        -13.29,
+        57.23,
+        -252.0
+      ],
+      "size": [
+        0.1,
+        0.1,
+        2.0
+      ],
+      "role": "short return guard rail",
+      "material": "champagne_metal",
+      "receiver": null
+    },
+    {
+      "name": "N005_ReturnGuardFoot_-8.01",
+      "center": [
+        -8.01,
+        56.21,
+        -252.0
+      ],
+      "size": [
+        0.1,
+        0.22,
+        2.0
+      ],
+      "role": "short return guard base",
+      "material": "ivory_enamel",
+      "receiver": null
+    },
+    {
+      "name": "N005_ReturnGuardInfill_-8.01",
+      "center": [
+        -8.01,
+        56.76,
+        -252.0
+      ],
+      "size": [
+        0.06,
+        0.82,
+        2.0
+      ],
+      "role": "short return infill",
+      "material": "station_guard_preview",
+      "receiver": null
+    },
+    {
+      "name": "N005_ReturnGuardRail_-8.01",
+      "center": [
+        -8.01,
+        57.23,
+        -252.0
+      ],
+      "size": [
+        0.1,
+        0.1,
+        2.0
+      ],
+      "role": "short return guard rail",
+      "material": "champagne_metal",
+      "receiver": null
+    },
+    {
+      "name": "N005_AxialPad_0",
+      "center": [
+        -2.4,
+        52.54,
+        -249.0
+      ],
+      "size": [
+        0.42,
+        0.08,
+        0.75
+      ],
+      "role": "positive current D09_fore_route floor receiver",
+      "material": "champagne_metal",
+      "receiver": "D09_fore_route"
+    },
+    {
+      "name": "N005_AxialPier_0",
+      "center": [
+        -2.4,
+        54.075,
+        -249.0
+      ],
+      "size": [
+        0.3,
+        2.990000000000002,
+        0.4
+      ],
+      "role": "axial pier outside protected lower4m route",
+      "material": "ivory_enamel",
+      "receiver": null
+    },
+    {
+      "name": "N005_PlatformCantilever_0",
+      "center": [
+        -7.795,
+        55.63,
+        -249.0
+      ],
+      "size": [
+        10.79,
+        0.16,
+        0.4
+      ],
+      "role": "under-wheel-depth cantilever; capacity not accepted",
+      "material": "champagne_metal",
+      "receiver": null
+    },
+    {
+      "name": "N005_PlatformReceivingShoe_0",
+      "center": [
+        -10.45,
+        55.78,
+        -249.0
+      ],
+      "size": [
+        5.5,
+        0.18,
+        0.4
+      ],
+      "role": "positive shifted island underside receiver",
+      "material": "champagne_metal",
+      "receiver": null
+    },
+    {
+      "name": "N005_AxialPad_1",
+      "center": [
+        -2.4,
+        52.54,
+        -241.0
+      ],
+      "size": [
+        0.42,
+        0.08,
+        0.75
+      ],
+      "role": "positive current D09_fore_route floor receiver",
+      "material": "champagne_metal",
+      "receiver": "D09_fore_route"
+    },
+    {
+      "name": "N005_AxialPier_1",
+      "center": [
+        -2.4,
+        54.075,
+        -241.0
+      ],
+      "size": [
+        0.3,
+        2.990000000000002,
+        0.4
+      ],
+      "role": "axial pier outside protected lower4m route",
+      "material": "ivory_enamel",
+      "receiver": null
+    },
+    {
+      "name": "N005_PlatformCantilever_1",
+      "center": [
+        -7.795,
+        55.63,
+        -241.0
+      ],
+      "size": [
+        10.79,
+        0.16,
+        0.4
+      ],
+      "role": "under-wheel-depth cantilever; capacity not accepted",
+      "material": "champagne_metal",
+      "receiver": null
+    },
+    {
+      "name": "N005_PlatformReceivingShoe_1",
+      "center": [
+        -10.45,
+        55.78,
+        -241.0
+      ],
+      "size": [
+        5.5,
+        0.18,
+        0.4
+      ],
+      "role": "positive shifted island underside receiver",
+      "material": "champagne_metal",
+      "receiver": null
+    },
+    {
+      "name": "N005_AxialPad_2",
+      "center": [
+        -2.4,
+        52.54,
+        -233.0
+      ],
+      "size": [
+        0.42,
+        0.08,
+        0.75
+      ],
+      "role": "positive current D09_fore_route floor receiver",
+      "material": "champagne_metal",
+      "receiver": "D09_fore_route"
+    },
+    {
+      "name": "N005_AxialPier_2",
+      "center": [
+        -2.4,
+        54.075,
+        -233.0
+      ],
+      "size": [
+        0.3,
+        2.990000000000002,
+        0.4
+      ],
+      "role": "axial pier outside protected lower4m route",
+      "material": "ivory_enamel",
+      "receiver": null
+    },
+    {
+      "name": "N005_PlatformCantilever_2",
+      "center": [
+        -7.795,
+        55.63,
+        -233.0
+      ],
+      "size": [
+        10.79,
+        0.16,
+        0.4
+      ],
+      "role": "under-wheel-depth cantilever; capacity not accepted",
+      "material": "champagne_metal",
+      "receiver": null
+    },
+    {
+      "name": "N005_PlatformReceivingShoe_2",
+      "center": [
+        -10.45,
+        55.78,
+        -233.0
+      ],
+      "size": [
+        5.5,
+        0.18,
+        0.4
+      ],
+      "role": "positive shifted island underside receiver",
+      "material": "champagne_metal",
+      "receiver": null
+    }
+  ],
+  "source_only": true,
+  "whole_group_complete": false,
+  "asset": "AST-TRM-G4-020_foremid_north_candidate.glb",
+  "native": "Group4_Foremid_North_Proposal_005.blend",
+  "source_material_pins": {
+    "BlenderCatalogue/materials/warm_stone.png": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
+    "BlenderCatalogue/materials/ivory_enamel.png": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
+    "BlenderCatalogue/materials/champagne_metal.png": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
+    "BlenderCatalogue/materials/warm_walnut.png": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
+    "BlenderCatalogue/materials/dark_rubber.png": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3"
+  },
+  "retained_source_pins": {
+    "Game/assets/models/SOL_D09_directory_03_source001.glb": "4f2b877767a5ac84fb4c50204a2c5ed6fceb2c637d6b32bad155172a9330d4cc",
+    "Game/assets/models/AST-CIR-005_fore_midship_cinema2_d11.glb": "29ad1d35569bfb4e99b544717a0257966b791ce9fbfc333af8deaa05f2e4d5cd",
+    "Game/assets/models/AST-CIR-001.glb": "b215dacad09c758d99328702bc69047ecaff70906d39087f2a8dbd301955ac2b",
+    "Game/assets/models/AST-RTL-009.glb": "0bc41337cb08deb0648c425fd686a1df3f5cca5988b341e2077929be99338518",
+    "Game/assets/models/AST-RTL-007.glb": "90625dda129fa2ea27ba675137e12d76adab055cea2ec972723dd8d1d787184d",
+    "BlenderCatalogue/assets/group4_tram_connections_20261009/port_successor_002/AST-TRM-G4-011_cart_tram_component.glb": "39e3b379b38f75237cf5638f48d01dcdd10450970c82806896202ce66234bc40",
+    "Game/data/generated/structural_meshes.json": "e7cd0cc1c3892a99cf75f2dab4c852f3e1c1864a13b81f828e2a2f93cf239e92",
+    "Game/data/generated/received_structural_meshes.json": "e05fd27b14d97d5bdf37a6ac94bb80b1c009342d69ff90142579fe692af3a59b",
+    "Game/data/architecture/received_sections.json": "6ad8b18dff427f2540c9dccef8b88bec2341ea7256f801ae177d869e65e05cfd",
+    "Game/data/architecture/received_section_floors.json": "c52fd9f6d9cdab206579afcc250a83662166e6ce32ed6afc8854905a33a7c86f",
+    "BlenderCatalogue/assets/group4_tram_connections_20261009/port_successor_002/AST-TRM-G4-010_fore_midship_source.glb": "5674d168e605d15522603f45c94112500570a445bf426bda4e40f95b1da37c5d"
+  },
+  "lower_floor_exported": false,
+  "structural_gate": "Three source cantilevers received by actual D09_fore_route floor; lower-annex, secondary stair/return and lift receiving still open. No capacity acceptance."
+}

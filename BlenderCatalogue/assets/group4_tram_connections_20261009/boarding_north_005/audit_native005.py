@@ -1,0 +1,8 @@
+from pathlib import Path
+import bpy,json,hashlib
+W=Path(__file__).resolve().parent;results=[]
+for meta_name,collection,count in [('BRIDGE_INTERFACE.json','BOARDING_BRIDGE_SOURCE',44),('NORTH_STATION_INTERFACE.json','NORTH_FOREMID_STATION_SOURCE',173)]:
+ d=json.loads((W/meta_name).read_text());n=W/d['native'];a=W/d['asset'];nh=hashlib.sha256(n.read_bytes()).hexdigest();ah=hashlib.sha256(a.read_bytes()).hexdigest();bpy.ops.wm.open_mainfile(filepath=str(n));co=bpy.data.collections[collection];meshes=[o for o in co.objects if o.type=='MESH'];images=[i for i in bpy.data.images if i.source=='FILE'];assert len(meshes)==count and len(images)==5 and all(i.packed_file and i.size[0]>0 for i in images);bpy.ops.object.select_all(action='DESELECT')
+ for ob in co.objects:ob.select_set(True)
+ bpy.context.view_layer.objects.active=meshes[0];p=W/'OWNED_TRANSIENT_repeat.glb';bpy.ops.export_scene.gltf(filepath=str(p),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False,export_animations=False,export_materials='EXPORT');rh=hashlib.sha256(p.read_bytes()).hexdigest();assert rh==ah,(meta_name,rh,ah);p.unlink();assert hashlib.sha256(n.read_bytes()).hexdigest()==nh and hashlib.sha256(a.read_bytes()).hexdigest()==ah;results.append({'native':d['native'],'native_sha256':nh,'export':d['asset'],'export_sha256':ah,'repeat_export_sha256':rh,'editable_meshes':count,'packed_verified_images':5,'original_native_and_export_unchanged':True})
+(W/'NATIVE_PORTABILITY_CHECK.json').write_text(json.dumps({'status':'BOTH_NATIVE_REOPENS_AND_BYTE_IDENTICAL_REEXPORT_PASS','blender_version':bpy.app.version_string,'checks':results},indent=2)+'\n');print('BOTH_NATIVE_REOPEN_AND_IDENTICAL_REEXPORT_PASS')
