@@ -126,6 +126,14 @@ func run()->void:
 			record("contained_court_floor_"+str(i)+"_"+str(dz),not h.is_empty()and structure.is_ancestor_of(h.collider)and str(h.collider.get_parent().name)=="D04HC_"+str(p.courts[i].side)+"_Floor"and absf(h.position.y-16.5)<.002)
 	var original:Node3D=ship.find_child("D04PortForwardReceiving",true,false).get_node("ReceivedSourceGeometry")
 	for g in p.guard_preimages:record("original_guard_gate_"+str(g.name),(original.find_child(str(g.name),true,false)==null)==bool(p.open_room_entries))
+	# Recheck the existing public arrival and staff upper landing into the
+	# fuller commons; do not move the public core or claim cart-safe stairs.
+	var arrival_walks:Array=[]
+	if p.open_room_entries:
+		for route in[[Vector3(-1.5,16.53,-405.2),Vector3(-8.5,16.5,-405.2)],[Vector3(-60.05,16.53,-369.5),Vector3(-66.4,16.5,-369.5)]]:
+			player.global_position=route[0];player.velocity=Vector3.ZERO;ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position)
+			for i in range(10):await physics_frame
+			var walk:Dictionary=await walk_to(player,route[1]);arrival_walks.append(walk);record("retained_public_staff_arrival_"+str(arrival_walks.size()),walk.reached and walk.floor_contact)
 	var old:Node3D=ship.find_child("StarAtlasRoomCandidates",true,false)
 	record("original85_homes",int(old.get_meta("source_candidate_units",0))==85);record("original221_anchors",int(old.get_meta("source_rest_slots",0))==221)
 	record("culling_preserved",ship.get_node("ShipSystems/ReceivedRoomResidency").enabled)
@@ -133,5 +141,5 @@ func run()->void:
 	record("species_acceptance_held",int(homes.get_meta("species_ready_rooms",-1))==0 and not structure.get_meta("primary_load_accepted",true))
 	var directory:Label3D=structure.get_node("PortForwardHouseDirectory");record("directory_on_retained_board",directory.position.distance_to(Vector3(-69.54,18.3,-370))<.001 and not directory.no_depth_test)
 	physical_key(false)
-	var result={"status":"PASS"if errors.is_empty()else"FAIL","stage":"connected"if p.open_room_entries else"sealed","model_pins":p.model_pins,"checks":checks,"check_count":checks.size(),"errors":errors,"existing_player_walks":walks,"ray_excludes":0,"bearing_samples":144,"rest_reference_samples":18,"primary_load_accepted":false,"species_ready_rooms":0,"cart_safe_vertical_accepted":false,"ordinary_graphics_review":false,"retained_rest_markers_unchanged":true,"source_trim_surface_offset_disclosed":true}
+	var result={"status":"PASS"if errors.is_empty()else"FAIL","stage":"connected"if p.open_room_entries else"sealed","model_pins":p.model_pins,"checks":checks,"check_count":checks.size(),"errors":errors,"existing_player_walks":walks,"ray_excludes":0,"bearing_samples":144,"rest_reference_samples":18,"primary_load_accepted":false,"species_ready_rooms":0,"cart_safe_vertical_accepted":false,"ordinary_graphics_review":false,"retained_rest_markers_unchanged":true,"source_trim_surface_offset_disclosed":true,"retained_public_staff_arrival_walks":arrival_walks}
 	FileAccess.open("res://artifacts/d04_port_forward_homes_connected.json"if p.open_room_entries else"res://artifacts/d04_port_forward_homes_sealed.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":checks.size(),"errors":errors}));quit(0 if errors.is_empty()else 1)
