@@ -1,0 +1,56 @@
+{
+  "status": "NORTH_LIFT_TWO_STATIONARY_POSES_SOURCE_PASS",
+  "source_only": true,
+  "runtime_changed": false,
+  "existing_controller": {
+    "script": "commons_lift.gd",
+    "root_xyz": [
+      -11.2,
+      0,
+      -225
+    ],
+    "root_yaw_rad": -1.5707963267948966,
+    "gate_origin_xz": [
+      0,
+      0
+    ],
+    "script_relative_cabin_yaw_rad": -1.5707963267948966,
+    "net_cabin_yaw_rad": -3.141592653589793,
+    "stop_ids": [
+      "G4_FORE_MIDSHIP_LOWER",
+      "G4_FORE_MIDSHIP_BOARDING"
+    ],
+    "floor_heights": [
+      52.5,
+      56.1
+    ]
+  },
+  "actual_cabin_stationary_poses": [
+    {
+      "floor_y": 52.5,
+      "unexpected_contacts": []
+    },
+    {
+      "floor_y": 56.1,
+      "unexpected_contacts": []
+    }
+  ],
+  "unexpected_contacts": [],
+  "lower_threshold_fixed_sill_overlap_volume_m3": 0.005279999999995167,
+  "lower_threshold_fixed_sill_bearing_area_m2": 0.047999999999956314,
+  "lower_threshold_top_step_m": 0.001,
+  "lower_floor_to_sill_gap_without_new_tongue_m": 0.1,
+  "retained_pit_pan_to_actual_lower_cabin_floor_clearance_m": 0.04,
+  "retained_housing_side_rear_to_actual_cabin_clearance_m": 0.04,
+  "upper_cabin_roof_to_retained_top_cap_clearance_m": 0.26,
+  "source_pins": {
+    "Game/scripts/commons_lift.gd": "e53ba41f6e066ff2454340d2b73ad405a2db301f8176046f7741b401fcc8e203",
+    "Game/scripts/lift_gate.gd": "6fed4a61a70245010ae8b60fceb586fb6bd2e093e48dd208367bf266b0467ef3",
+    "Game/assets/models/AST-CIR-003.glb": "4123e1ad0ab64fee2ee16bcd753f537b60211de28521c416e1da853973f239b9"
+  },
+  "limits": [
+    "Two stationary actual visual cabin poses only, not travel, live collision/carry, controls/rays, gate-leaf sweep or full boarding.",
+    "Threshold is separate fixed hardware crossing the front border of an unchanged uncut17.6m\u00b2 floor-aperture proposal; no current floor is cut.",
+    "Root stop/route/lift/arrival adoption, normal-world receiving and capacity remain open."
+  ]
+}

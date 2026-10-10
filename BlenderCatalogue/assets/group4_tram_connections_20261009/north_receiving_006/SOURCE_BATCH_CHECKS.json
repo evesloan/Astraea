@@ -1,0 +1,94 @@
+{
+  "schema": "astraea.group4.bounded_receiving_receipt.v1",
+  "status": "NORTH_BRIDGE_FLOOR_FRAME_LIFT_SOURCE_PASS",
+  "source_only": true,
+  "whole_group_complete": false,
+  "runtime_changed": false,
+  "native_export": {
+    "status": "NORTH_NATIVE_REOPENS_BYTE_IDENTICAL_REEXPORT_ACTUAL_BOUNDS_PASS",
+    "blender_version": "4.3.2",
+    "native": "Group4_North_Receiving_006.blend",
+    "native_sha256": "959abb17e2b16dbf6ec0d2a1bbb5b173622051a83b6766c69c3de3240088f194",
+    "export": "AST-TRM-G4-021_north_missing_only_receiving.glb",
+    "export_sha256": "ea1d4c682030e5dee4bec3040723f9d2702eb7a555bc3ce2ce68724d1e89f7ac",
+    "repeat_export_sha256": "ea1d4c682030e5dee4bec3040723f9d2702eb7a555bc3ce2ce68724d1e89f7ac",
+    "editable_meshes": 63,
+    "triangles": 756,
+    "degenerate_triangles": 0,
+    "packed_verified_images": 5,
+    "actual_export_recipe_bounds_match": true,
+    "original_native_and_export_unchanged": true
+  },
+  "receiving_summary": {
+    "new_members": 63,
+    "triangles": 756,
+    "new_missing_only_floor_panels": 4,
+    "new_missing_only_floor_area_m2": 356.38,
+    "current_floor_owner_duplicate_area_m2": 0,
+    "excluded_existing_core_floor_area_m2": 51.3,
+    "unchanged_uncut_pit_aperture_area_m2": 17.6,
+    "full_named_existing_slab_pads": 10,
+    "pad_area_each_m2": 0.2816,
+    "positive_new_member_joints": 45,
+    "retained_station_underside_bearings": 7,
+    "unexpected_exact_local_contacts": 0
+  },
+  "north_bridge_stationary_pose_count": 3,
+  "actual_lift_stationary_pose_count": 2,
+  "all_five_prior_frozen_slices_unchanged": true,
+  "native_and_glb_unchanged_after_unsaved_source_views": true,
+  "correction_history": [
+    {
+      "stage": "initial receiving geometry",
+      "unexpected_pairs": 5,
+      "finding": "Two core-end underfloor beams crossed the retained batched below-floor core perimeter wall; one ordinary south beam crossed both retained housing sides and pit pan."
+    },
+    {
+      "stage": "first bounded correction",
+      "unexpected_pairs": 2,
+      "finding": "Pit row was split into left/right ring wings. Lowering core-end beam tops did not clear a retained wall running Y44..52.26."
+    },
+    {
+      "stage": "final preserved-source correction",
+      "unexpected_pairs": 0,
+      "finding": "New core-end beams stop at X−7.9 outside the retained wall X−7.88..−7.72, with thin Y52.27..52.31 overcrest straps connecting inside floor depth. Ring wings and below-pan beams keep exact pit floor aperture unchanged."
+    },
+    {
+      "stage": "lower threshold receiving",
+      "unexpected_pairs": 0,
+      "finding": "Existing-script mapped sill leaves a 0.10m floor-to-sill gap. One separate fixed tongue supplies 20mm floor and sill bearings with 1mm top step, staying outside both actual cabin poses."
+    }
+  ],
+  "protected_central_polyline_xz": [
+    [
+      0,
+      -72
+    ],
+    [
+      0,
+      -56
+    ],
+    [
+      40,
+      -52
+    ],
+    [
+      40,
+      52
+    ],
+    [
+      0,
+      56
+    ],
+    [
+      0,
+      72
+    ]
+  ],
+  "protected_route_and_source_unchanged": true,
+  "limits": [
+    "Three stationary bridge poses at the one proposed north datum and two actual visual cabin poses only; no route audit, Godot import, travel/carry or gate-leaf sweep.",
+    "Floor rectangles are missing-only uninstalled proposals with unchanged named current floor owners. Threshold is hardware across the front border of the same17.6m² aperture, not a filled/cut floor region.",
+    "Source slab/internal/pan contacts establish local geometry only. Primary-hull transfer, mechanical/structural capacity, deflection/vibration, edge/low-headroom protection, root operating adoption and main-world acceptance remain open."
+  ]
+}
