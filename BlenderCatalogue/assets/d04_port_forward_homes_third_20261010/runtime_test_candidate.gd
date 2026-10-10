@@ -189,6 +189,43 @@ func run()->void:
 		for i in range(100):await physics_frame
 		record("protected_crew_door_roundtrip",not crew_door.desired_open and crew_door.open_fraction<.001)
 
+	# Read-only northern source survey shares the loaded actual main. It records
+	# missing bearing without treating that missing construction as pair success.
+	if p.open_room_entries:
+		var repo_root:String="/workspace/astraea-recovered-532087b9-20261010T083844Z/"
+		var northern_path:String=repo_root+"BlenderCatalogue/assets/d04_port_forward_northern_receiving_20261010/PLAN.json"
+		var northern:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(northern_path))
+		var pin_errors:Array=[]
+		for path in northern.source_pins:
+			if FileAccess.get_sha256(repo_root+str(path))!=northern.source_pins[path]:pin_errors.append(path)
+		ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(Vector3(-44,12.02,-324.5))
+		for i in range(2):await physics_frame
+		paused=true
+		var bearing_rows:Array=[];var volume_rows:Array=[];var hits_expected:int=0
+		for foot in northern.candidate_bearing_points_for_readonly_survey:
+			var owner:Node=ship.find_child(str(foot.expected_owner),true,false)
+			for dx in[-.1,0,.1]:
+				for dz in[-.1,0,.1]:
+					var at:=Vector3(foot.x+dx,foot.y,foot.z+dz)
+					var hit:=ray(space,at+Vector3.UP*.035,at-Vector3.UP*.275)
+					var expected:bool=not hit.is_empty() and owner!=null and owner.is_ancestor_of(hit.collider)
+					if expected:hits_expected+=1
+					bearing_rows.append({"room":foot.room_index,"at":str(at),"expected_owner":foot.expected_owner,"expected_owner_hit":expected,"hit_path":""if hit.is_empty()else str(hit.collider.get_path()),"hit_position":""if hit.is_empty()else str(hit.position)})
+			var shape:=BoxShape3D.new();shape.size=Vector3(.28,4.48,.28);shape.margin=.001
+			var q:=PhysicsShapeQueryParameters3D.new();q.shape=shape;q.transform=Transform3D(Basis.IDENTITY,Vector3(foot.x,14.01,foot.z))
+			var contacts:Array=[]
+			for h in space.intersect_shape(q,128):contacts.append(str(h.collider.get_path()))
+			volume_rows.append({"room":foot.room_index,"foot":str(Vector3(foot.x,foot.y,foot.z)),"contacts":contacts,"column_approved":false})
+		var floor_rows:Array=[]
+		var probe_points:Array=[northern.current_receiving_connection_probe]+northern.northern_walkway_probes
+		for point in probe_points:
+			var at:=vec(point);var hit:=ray(space,at+Vector3.UP*.035,at-Vector3.UP*.035)
+			floor_rows.append({"at":str(at),"hit_path":""if hit.is_empty()else str(hit.collider.get_path()),"hit_position":""if hit.is_empty()else str(hit.position),"floor_present":not hit.is_empty()})
+		var survey={"status":"UNFINISHED"if pin_errors.is_empty()else"BLOCKED_SOURCE_PIN","gate":"LOWER_BEARING_REQUIRED","plan_sha256":FileAccess.get_sha256(northern_path),"source_pin_errors":pin_errors,"source_pins_verified":northern.source_pins.size(),"pair_model_pins":p.model_pins,"first_bounded_source_indices":northern.first_bounded_source_indices,"candidate_bearing_samples":bearing_rows.size(),"expected_owner_hits":hits_expected,"missing_or_wrong_owner":bearing_rows.size()-hits_expected,"bearing_rows":bearing_rows,"column_volume_rows":volume_rows,"floor_rows":floor_rows,"ray_excludes":0,"candidate_pattern_approved":false,"new_runtime_installed":false,"new_native_models":0,"all10_allocations_and13_reserved_rests_unchanged":true,"limits":["Copied southern support pattern is a survey candidate only","Original narrow staff floor/ceiling and all protected crew homes must remain intact","Verified lower bearing and transfer construction required before northern receiving/rooms"]}
+		FileAccess.open("res://artifacts/d04_port_forward_northern_receiving_survey.json",FileAccess.WRITE).store_string(JSON.stringify(survey,"  "))
+		print(JSON.stringify({"northern_source_survey":survey.gate,"samples":bearing_rows.size(),"expected_owner_hits":hits_expected,"source_pin_errors":pin_errors}))
+		paused=false
+
 	physical_key(false)
 	var result={"status":"PASS"if errors.is_empty()else"FAIL","stage":"connected"if p.open_room_entries else"sealed","model_pins":p.model_pins,"checks":checks,"check_count":checks.size(),"errors":errors,"existing_player_walks":walks,"ray_excludes":0,"bearing_samples":72,"rest_reference_samples":18,"primary_load_accepted":false,"species_ready_rooms":0,"cart_safe_vertical_accepted":false,"ordinary_graphics_review":false,"retained_rest_markers_unchanged":true,"source_trim_surface_offset_disclosed":true,"retained_public_staff_arrival_walks":arrival_walks,"protected_crew_actual_walks":crew_walks,"prior_physical_proposals_preserved":8,"physical_proposals_after_batch":10,"remaining_interiors":10}
 	FileAccess.open("res://artifacts/d04_port_forward_homes_third_connected.json"if p.open_room_entries else"res://artifacts/d04_port_forward_homes_third_sealed.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":checks.size(),"errors":errors}));quit(0 if errors.is_empty()else 1)
