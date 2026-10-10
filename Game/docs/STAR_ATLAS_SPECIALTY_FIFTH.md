@@ -1,0 +1,9 @@
+# Star Atlas fifth specialty batch
+
+Four retained west/outer D15 single allocations401/407/425/431 receive one reserved rest each.401/431 are proposed Baelin aquatic layouts;407/425 are proposed Mantelid quiet layouts. They remain physical candidates with species_ready=false. No allocations or IDs were invented.
+
+The four layouts face the existing shared street. Two original receiving guard meshes are replaced at runtime by six contained guard segments, preserving guard volume outside four3.48m entry spans. No new street floor or pier is introduced.52 frame members connect20 source frame joints,16 roof contacts and12 existing D13 foundation toes.88 source lower structural meshes and60 wall-base rails persist outside culled interiors.
+
+The focused actual-main test passes24 actual reference rest contacts,4 approaches,2 aquatic service stances,462 wet cells,10 controller roundtrips,6 retained-guard rays,12 unrestricted clear preview-height probes and2 unrestricted intended-floor hits. All28 active specialty production exports pass the presentation guard. Editable sources, initial431 preparation, repeat exports and six inspected source views are retained in BlenderCatalogue/assets/star_atlas_specialty_fifth_20261010.
+
+Current specialty coverage is20/46 physical candidates with26 reserved rests;26 interiors remain unbuilt.85 original homes and three unassigned low-rest units remain.10 D17 standard and7 VIP holds are outside this batch. Group1 is incomplete. Historical save identities, canonical bodies/rigs/animation, habitat operations, structural load/cantilever capacity and final graphical Godot/CRT/hardware acceptance remain held. Full validation remains blocked by historical sealed Botanical proof pins. Fixed60Hz test time is not a measured frame rate. No automatic watcher is enabled.

@@ -32,8 +32,9 @@ def validate_and_copy(source,destination):
 
 def star_atlas_files(game):
     paths=set();architecture=Path(game)/'data/architecture'
-    for batch in ('FIRST','SECOND','THIRD','FOURTH'):
-        p=json.loads((architecture/f'STAR_ATLAS_SPECIALTY_{batch}.json').read_text())
+    for filename in sorted(architecture.glob('STAR_ATLAS_SPECIALTY_*.json')):
+        p=json.loads(filename.read_text())
+        if not ('rooms' in p and 'receiving' in p):continue
         paths.update(r['model_file']for r in p['rooms'])
         paths.add(p['receiving']['model_file'])
         if p['receiving'].get('commons_patch_file'):paths.add(p['receiving']['commons_patch_file'])
