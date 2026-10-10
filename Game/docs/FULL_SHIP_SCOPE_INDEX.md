@@ -1,3 +1,5 @@
+**D04 northern first-four continuation:** 886/898/910/922 connected after independently verified sealed gate. House14/20 architectural proposals and16/25 physical existing rests;665 connected+46 receiving checks PASS. Original allocations/IDs/source models/crew/pool/routes/privacy preserved;9 source views. Six interiors/nine rests, full neighborhood commons/service/activities/environment, biology, primary engineering, cart-safe vertical and final ordinary in-game/CRT/hardware acceptance remain UNFINISHED.
+
 **D04 northern receiving connected continuation:** bounded actual-main gate PASS599 after sealed PASS581; 12 actual-player routes, 4 staff routes, 2 original arrivals. 34 keel piers/29 braces/177 owned solids; original layouts/25 reserved rests/200 crew proposals/source exports preserved. Five source diagnostics reviewed. Ten northern interiors/thirteen rests and the full commons/service/environment/engineering/vertical/final graphics scope remain UNFINISHED.
 
 # Full ship requirement inventory
