@@ -1,0 +1,123 @@
+extends SceneTree
+var errors:Array=[]
+func _initialize()->void:call_deferred("run")
+func vec(v:Array)->Vector3:return Vector3(v[0],v[1],v[2])
+func run()->void:
+	var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
+	for i in range(90):await physics_frame
+	var ship:Node3D=main.get_node("World360/Astraea")
+	var districts:Node3D=ship.get_node("ShipSpace/Districts")
+	var fitted:Node3D=districts.get_node("StarAtlasEightHabitatFittings")
+	var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/STAR_ATLAS_EIGHT_HABITATS.json"))
+	assert(load("res://scripts/star_atlas_eight_habitats.gd").build(ship)==fitted)
+	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
+	for room in p.rooms:
+		var home:Node3D=districts.find_child(str(room.unit_proposal_id),true,false)
+		for name in ["EntryDoor","WashDoor"]:home.get_node(name).interact(actor)
+		if room.has("privacy_door"):districts.find_child(str(room.unit_proposal_id),true,false).get_node("CocoonPrivacyDoor").interact(actor)
+	for i in range(100):await physics_frame
+	paused=true
+	var space:=ship.get_world_3d().direct_space_state
+	var measured:Array=[]
+	for ref in p.references:
+		assert(FileAccess.get_sha256("res://assets/models/"+str(ref.model_file))==ref.model_sha256)
+		var visual:Node3D=load("res://assets/models/"+str(ref.model_file)).instantiate();root.add_child(visual)
+		var lo:=Vector3(INF,INF,INF);var hi:=Vector3(-INF,-INF,-INF);var vertices:=0
+		for mesh:MeshInstance3D in visual.find_children("*","MeshInstance3D",true,false):
+			for surface in range(mesh.mesh.get_surface_count()):
+				for v:Vector3 in mesh.mesh.surface_get_arrays(surface)[Mesh.ARRAY_VERTEX]:
+					var at:Vector3=mesh.global_transform*v;lo=lo.min(at);hi=hi.max(at);vertices+=1
+		if lo.distance_to(vec(ref.bounds_min))>.0001 or hi.distance_to(vec(ref.bounds_max))>.0001:errors.append({"kind":"reference_import_bounds","key":ref.key,"lo":str(lo),"hi":str(hi)})
+		measured.append({"key":ref.key,"dimensions_xyz_m":str(hi-lo),"imported_vertices":vertices,"status":"proposed construction reference; no canonical species rig/animation acceptance"});visual.free()
+	var contacts:=0;var approaches:=0;var wet_points:=0;var dry_points:=0;var privacy_rays:=0;var closed_doors:=0;var quiet_points:=0
+	for room in p.rooms:
+		var home:=districts.find_child(str(room.unit_proposal_id),true,false) as Node3D
+		assert(home.get_meta("rest_slot_ids")==room.rest_slot_ids and home.get_meta("proposed_design_species")==room.proposed_design_species)
+		assert(not home.get_meta("species_ready") and not home.has_meta("species_assignment") and not home.get_meta("canonical_body_accepted") and not home.get_meta("environment_operations_accepted"))
+		for point in room.rest_contacts_world:
+			var at:=vec(point);var q:=PhysicsRayQueryParameters3D.create(at+Vector3.UP*.015,at-Vector3.UP*.025);q.hit_back_faces=true;var hit:=space.intersect_ray(q)
+			if hit.is_empty() or absf(hit.position.y-(at.y-.005))>.002:errors.append({"kind":"measured_reference_bottom_support","room":room.source_envelope_index,"point":str(at),"hit":str(hit.get("position","none"))})
+			contacts+=1
+		var stance:=PhysicsShapeQueryParameters3D.new();var capsule:=CapsuleShape3D.new();capsule.radius=.3;capsule.height=1.8;stance.shape=capsule;stance.transform.origin=vec(room.approach_world)+Vector3.UP*.925;stance.margin=.001
+		if not space.intersect_shape(stance,16).is_empty():errors.append({"kind":"player_service_approach","room":room.source_envelope_index,"point":str(stance.transform.origin)})
+		approaches+=1
+		if room.has("privacy_door"):
+			var door:Node3D=home.get_node("CocoonPrivacyDoor");assert(door.open_fraction<.001 and door.leaves.size()==1);closed_doors+=1
+			var frame:=Transform3D(Basis(Vector3.UP,room.rest_source.yaw),vec(room.rest_source.position))
+			for ray in [[Vector3(0,1,-2),Vector3(0,1,-1.3)],[Vector3(-1.4,1,0),Vector3(0,1,0)],[Vector3(1.4,1,0),Vector3(0,1,0)],[Vector3(0,1,1.8),Vector3(0,1,0)],[Vector3(0,2.6,0),Vector3(0,1,0)]]:
+				if space.intersect_ray(PhysicsRayQueryParameters3D.create(frame*ray[0],frame*ray[1])).is_empty():errors.append({"kind":"closed_cocoon_privacy_shell","room":room.source_envelope_index})
+				privacy_rays+=1
+			var query:=PhysicsPointQueryParameters3D.new();query.position=frame*Vector3(0,1,0);query.collide_with_areas=true;query.collide_with_bodies=false;query.collision_mask=512
+			if space.intersect_point(query,4).is_empty():errors.append({"kind":"quiet_enclosure_detection","room":room.source_envelope_index})
+			quiet_points+=1
+		if room.has("wet_cells_local"):
+			var wet:Area3D=fitted.get_node("ContainedWetRegion_"+str(int(room.source_envelope_index)));assert(wet.get_children().size()==room.wet_cells_local.size() and wet.collision_layer==256)
+			for point in room.wet_probes_world:
+				var query:=PhysicsPointQueryParameters3D.new();query.position=vec(point);query.collide_with_areas=true;query.collide_with_bodies=false;query.collision_mask=256
+				if space.intersect_point(query,4).is_empty():errors.append({"kind":"actual_reference_immersed_mesh_vertex","room":room.source_envelope_index,"point":str(query.position)})
+				wet_points+=1
+			for local in [Vector3(0,.7,0),Vector3(0,.1,0),Vector3(1.5,.4,0),Vector3(0,.4,-2)]:
+				var query:=PhysicsPointQueryParameters3D.new();query.position=wet.global_transform*local;query.collide_with_areas=true;query.collide_with_bodies=false;query.collision_mask=256
+				if not space.intersect_point(query,4).is_empty():errors.append({"kind":"contained_wet_region_leak","room":room.source_envelope_index})
+				dry_points+=1
+		for name in room.get("remove_source_meshes",[]):assert(home.find_child(str(name),true,false)==null)
+	var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");assert(residency.enabled)
+	var retained:=0
+	for entry in residency.entries:
+		if str(entry.parent.name)=="StarAtlasRoomCandidates":retained+=1
+	assert(retained==85 and p.reservation_total==8 and p.new_allocations==0)
+	var report={"status":"PASS" if errors.is_empty() else "FAIL","physical_candidates":8,"unchanged_reserved_rests":8,"new_allocations":0,"body_references":measured,"measured_reference_bottom_contacts":contacts,"player_approaches":approaches,"actual_reference_immersed_vertices":wet_points,"dry_containment_witnesses":dry_points,"wet_cells_per_basin":p.wet_cell_count,"source_derived_wet_volume_m3_per_basin":p.wet_volume_m3,"closed_reused_cocoon_doors":closed_doors,"privacy_shell_rays":privacy_rays,"quiet_enclosure_detections":quiet_points,"retained_original_homes":retained,"culling_enabled":residency.enabled,"canonical_species_ready_rooms":0,"errors":errors,"limits":"Proposed reference rest poses and physical environments only. Canonical species/body/rig/animation, acoustic attenuation, water controls/fluid behavior, biological needs, cleaning/molting, occupants/stock/save, structural loads and final runtime visuals remain held."}
+	var phase:=OS.get_cmdline_user_args()[0] if not OS.get_cmdline_user_args().is_empty() else "before"
+	var preview_meshes:=0;var specialty_rooms:=0
+	for name in ["StarAtlasSpecialtyCandidates","StarAtlasSpecialtySecondCandidates","StarAtlasSpecialtyThirdCandidates","StarAtlasSpecialtyFourthCandidates","StarAtlasEightHabitatFittings","StarAtlasSpecialtyStructuralReceiving","StarAtlasSpecialtySecondReceiving","StarAtlasSpecialtyThirdReceiving","StarAtlasSpecialtyFourthReceiving"]:
+		var branch:Node3D=districts.get_node(name)
+		for mesh:MeshInstance3D in branch.find_children("*","MeshInstance3D",true,false):
+			if "Preview_Ground" in str(mesh.name):preview_meshes+=1
+	assert(preview_meshes==(5 if phase=="before" else 0))
+	var unrestricted:Array=[]
+	for x in [-20.0,-10.0,0.0,10.0]:
+		for z in [-10.0,0.0,10.0]:
+			var q:=PhysicsRayQueryParameters3D.create(Vector3(x,92.997,z),Vector3(x,92.993,z));q.hit_back_faces=true
+			var h:=space.intersect_ray(q)
+			if (not h.is_empty())!=(phase=="before"):errors.append({"kind":"unrestricted_preview_height_probe","phase":phase,"point":str(Vector3(x,92.995,z)),"owner":str(h.collider.get_path())if not h.is_empty()else "none"})
+			unrestricted.append({"point":str(Vector3(x,92.995,z)),"exclude_count":q.exclude.size(),"hit":not h.is_empty(),"hit_y":h.get("position",Vector3.ZERO).y,"collider":str(h.collider.get_path())if not h.is_empty()else "none"})
+	var retained_floor_rays:Array=[]
+	for x in [-40.0,-60.0]:
+		var q:=PhysicsRayQueryParameters3D.create(Vector3(x,93.02,0),Vector3(x,92.97,0));q.hit_back_faces=true;var h:=space.intersect_ray(q)
+		if h.is_empty()or absf(h.position.y-93)>.001:errors.append({"kind":"intended_unrestricted_D15_floor","x":x})
+		retained_floor_rays.append({"x":x,"hit_y":h.get("position",Vector3.ZERO).y,"owner":str(h.collider.get_path())if not h.is_empty()else "none"})
+	var roof_contacts:=0;var lower_culled:=0;var source_floor_contacts:=0
+	for filename in ["STAR_ATLAS_SPECIALTY_STRUCTURAL_RECEIVING.json","STAR_ATLAS_SPECIALTY_SECOND.json"]:
+		var q:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/"+filename));q=q.get("receiving",q)
+		for lower in q.lower_structural_owners:
+			for entry in residency.entries:
+				if str(entry.room.name)==str(lower.owner):assert(not entry.room.is_inside_tree());lower_culled+=1
+			for toe in lower.contacts:
+				var at:=vec(toe.position);var rq:=PhysicsRayQueryParameters3D.create(at+Vector3.UP*.025,at-Vector3.UP*.025);rq.hit_back_faces=true;var h:=space.intersect_ray(rq)
+				if h.is_empty()or absf(h.position.y-at.y)>.003:errors.append({"kind":"persistent_earlier_roof_contact","owner":lower.owner,"point":str(at)})
+				roof_contacts+=1
+		for toe in q.support_toes:
+			var at:=vec(toe.position);var rq:=PhysicsRayQueryParameters3D.create(at+Vector3.UP*.025,at-Vector3.UP*.025);rq.hit_back_faces=true;var h:=space.intersect_ray(rq)
+			if h.is_empty()or absf(h.position.y-at.y)>.003:errors.append({"kind":"retained_source_floor_toe","point":str(at)})
+			source_floor_contacts+=1
+	assert(lower_culled==8)
+	var controllers:Array[Node3D]=[]
+	for room in p.rooms:
+		var home:Node3D=districts.find_child(str(room.unit_proposal_id),true,false)
+		for door:Node3D in home.find_children("*Door*","Node3D",true,false):
+			if door.has_method("interact"):assert(door.open_fraction<.001);controllers.append(door)
+	assert(controllers.size()==p.rooms.size()*2+closed_doors)
+	if phase=="after":
+		paused=false
+		for door in controllers:door.interact(actor)
+		for i in range(100):await physics_frame
+		for door in controllers:
+			if door.open_fraction<.999 or not door.desired_open:errors.append({"kind":"controller_open_roundtrip","door":str(door.get_path())})
+		for door in controllers:door.interact(actor)
+		for i in range(100):await physics_frame
+		for door in controllers:
+			if door.open_fraction>.001 or door.desired_open:errors.append({"kind":"controller_close_roundtrip","door":str(door.get_path())})
+		paused=true
+		report["controller_open_close_roundtrips"]=controllers.size()
+	report["phase"]=phase;report["runtime_preview_meshes"]=preview_meshes;report["unrestricted_preview_height_probes"]=unrestricted;report["intended_floor_rays"]=retained_floor_rays;report["persistent_roof_contacts"]=roof_contacts;report["source_floor_toes"]=source_floor_contacts;report["lower_interiors_culled"]=lower_culled;report["unchanged_closed_controllers"]=controllers.size();report["errors"]=errors;report["status"]="PASS" if errors.is_empty()else "FAIL"
+	FileAccess.open("res://artifacts/star_atlas_legacy_preview_"+phase+".json",FileAccess.WRITE).store_string(JSON.stringify(report,"  "));print("PASS: STAR_ATLAS_LEGACY_PREVIEW " if errors.is_empty() else "FAIL: STAR_ATLAS_LEGACY_PREVIEW ",JSON.stringify(report));quit(0 if errors.is_empty() else 1)

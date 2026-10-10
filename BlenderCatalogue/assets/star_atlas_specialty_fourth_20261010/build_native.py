@@ -1,7 +1,8 @@
 from pathlib import Path
-import bpy,json,math,hashlib,shutil
+import bpy,json,math,hashlib,shutil,sys
 from mathutils import Vector
 W=Path(__file__).resolve().parent;R=W.parents[2];P=json.loads((W/'PLAN.json').read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();B=lambda p:(p[0],-p[2],p[1]);records=[];palette={'warm_stone':(.58,.54,.45,1),'warm_walnut':(.25,.12,.065,1),'ivory_enamel':(.78,.73,.63,1),'champagne_metal':(.46,.4,.27,1),'teal_weave':(.09,.25,.23,1),'hospitality_glass':(.22,.4,.44,.4),'opal_glow':(1,.87,.65,1)}
+sys.path.insert(0,str(R/'Game/tools'));from validate_production_glb import validate_and_copy
 for room in P['rooms']:
  idx=room['allocation']['source_envelope_index'];bpy.ops.wm.read_factory_settings(use_empty=True);mats={}
  for part in room['parts']:
@@ -32,6 +33,6 @@ for room in P['rooms']:
     o['retained_component_id']=a['catalogue_id'];o['retained_component_source_sha256']=a['source_sha256']
   root.location=B(binding['position']);root.rotation_euler.z=binding['yaw'];root['role']=binding['name'];root['operation_hold']=True
  bpy.ops.file.pack_all();native=W/f'StarAtlasSpecialty_{idx}.blend';out=W/room['model_file'];bpy.ops.wm.save_as_mainfile(filepath=str(native));bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_extras=True,export_yup=True,export_apply=True);first=sha(out);bpy.ops.wm.open_mainfile(filepath=str(native));bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_extras=True,export_yup=True,export_apply=True);assert sha(out)==first
- record={'source_index':idx,'native':native.name,'native_sha256':sha(native),'export':out.name,'export_sha256':sha(out),'mesh_count':sum(o.type=='MESH'for o in bpy.data.objects),'fresh_native_repeat_identical':True};records.append(record);room.update(model_sha256=record['export_sha256'],mesh_count=record['mesh_count']);shutil.copy2(out,R/'Game/assets/models'/out.name);print('EXPORTED',idx,record['mesh_count'],flush=True)
+ record={'source_index':idx,'native':native.name,'native_sha256':sha(native),'export':out.name,'export_sha256':sha(out),'mesh_count':sum(o.type=='MESH'for o in bpy.data.objects),'fresh_native_repeat_identical':True};records.append(record);room.update(model_sha256=record['export_sha256'],mesh_count=record['mesh_count']);validate_and_copy(out,R/'Game/assets/models'/out.name);print('EXPORTED',idx,record['mesh_count'],flush=True)
 P['native_export_records']=records;P['status']='authored_fourth_four_proposed_specialty_habitats_pending_actual_main';(W/'RUNTIME_PLAN.json').write_text(json.dumps(P,indent=2)+'\n');(W/'NATIVE_EXPORT_CHECK.json').write_text(json.dumps({'status':'PASS','blender_version':bpy.app.version_string,'rooms':records,'original_sources_unchanged':True},indent=2)+'\n')
 for a in P['sources']:assert sha(R/'BlenderCatalogue'/a['source'])==a['source_sha256'] and sha(R/'BlenderCatalogue'/a['export'])==a['export_sha256']
