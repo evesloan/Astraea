@@ -52,6 +52,7 @@ commands.append(('star_atlas_specialty_structural_receiving',['--script','res://
 commands.append(('star_atlas_specialty_second',['--script','res://tests/validate_star_atlas_specialty_second.gd']))
 commands.sort(key=lambda entry: entry[0] != 'import')
 commands += [('star_atlas_low_rest_adaptation', ['--script', 'res://tests/validate_star_atlas_low_rest_adaptation.gd'])]
+commands.append(('star_atlas_specialty_ninth',['--script','res://tests/validate_star_atlas_specialty_ninth.gd']))
 if '--only' in sys.argv:
     requested=sys.argv[sys.argv.index('--only')+1]
     commands=[entry for entry in commands if entry[0]==requested]
