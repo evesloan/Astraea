@@ -45,7 +45,10 @@ for room in P['rooms']:
 for item in json.load(open(R/'BlenderCatalogue/assets/d04_port_forward_northern_receiving_20261010/BUILD_PLAN.json'))['lights']:light(item['at'],200,2)
 for r in P['rooms']:
  west=r['court_side']=='west';a=r['allocation'];cz=r['entry']['origin'][2];front=a['allocation_x'][1]if west else a['allocation_x'][0]
- view('SOURCE_HOME_'+str(r['source_index'])+'_ACTIVITY_GALLERY.png',[front+(-3.2 if west else 3.2),18.15,cz+1.3],[a['allocation_x'][0]+(3.1 if west else 9.5),17.8,cz],24)
+ if r['allocation']['proposed_rest_place_count']==2 and not west:
+  view('SOURCE_HOME_'+str(r['source_index'])+'_ACTIVITY_GALLERY.png',[front+1.5,18.15,cz-.1],[a['allocation_x'][1]-4.2,17.8,cz+1.95],24)
+ else:
+  view('SOURCE_HOME_'+str(r['source_index'])+'_ACTIVITY_GALLERY.png',[front+(-3.2 if west else 3.2),18.15,cz+1.3],[a['allocation_x'][0]+(3.1 if west else 9.5),17.8,cz],24)
 view('SOURCE_NORTHERN_HOME_STREET.png',[-44,18.15,-318],[-44,18.15,-295.8],24)
 door_instances={}
 for r in [q for q in P['rooms']if q['source_index']in[970,982]]:
@@ -67,4 +70,4 @@ for idx in[970,982]:
  bpy.context.view_layer.update();r=next(r for r in P['rooms']if r['source_index']==idx);cz=r['entry']['origin'][2]
  view('SOURCE_ENTRY_'+str(idx)+'_OPEN.png',[-44,18.15,cz+.6],[r['entry']['origin'][0],17.75,cz],24)
 for p,h in pins.items():assert sha(R/p)==h,p
-(W/'SOURCE_VIEW_RUN.json').write_text(json.dumps({'status':'PASS','images':images,'native_pins_unchanged':pins,'source_only':True,'diagnostic_fill':True,'redundant_structure_copies_hidden':True,'current_two_guard_layers_composed_unsaved':True,'original_registered_doors_rigid_instances':True,'two_open_source_leaf_poses_unsaved':True,'final_graphical_CRT_hardware_acceptance':False},indent=2)+'\n')
+(W/'SOURCE_VIEW_RUN.json').write_text(json.dumps({'status':'PASS','images':images,'native_pins_unchanged':pins,'source_only':True,'diagnostic_fill':True,'redundant_structure_copies_hidden':True,'current_three_guard_layers_composed_unsaved':True,'original_registered_doors_rigid_instances':True,'two_open_source_leaf_poses_unsaved':True,'final_graphical_CRT_hardware_acceptance':False},indent=2)+'\n')
