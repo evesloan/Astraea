@@ -1,0 +1,51 @@
+{
+  "status": "CORRECTED_SOURCE_AND_ACTUAL_MAIN_PASS",
+  "issue": "Verifier adaptation incorrectly changed the rectangular roof toe vertex count when updating six-rest capacity",
+  "change": "Keep four bottom vertices per receiving toe; reserve six rest slots independently",
+  "source_geometry_unchanged": true,
+  "failed_evidence": [
+    "FAILED_INITIAL_SOURCE_VERIFIER.py.txt"
+  ],
+  "privacy_witness_correction": {
+    "issue": "Low entry-to-basin rays correctly hit source study fixture / wash enclosure before the expected privacy screens",
+    "change": "Check exact entry occlusion at1.6m eye height, then each screen independently from its transfer side; no geometry changed",
+    "failed_evidence": [
+      "FAILED_INITIAL_PRIVACY_MAIN.log",
+      "FAILED_INITIAL_PRIVACY_MAIN.json",
+      "FAILED_INITIAL_PRIVACY_WITNESS.gd.txt"
+    ]
+  },
+  "context_path_correction": {
+    "issue": "Context reader assumed the legacy assembly filename for third-batch native production sources",
+    "change": "Use exact retained StarAtlasSpecialty_509/533_Production.blend successors recorded in the third correction receipt",
+    "source_geometry_unchanged": true,
+    "failed_evidence": [
+      "FAILED_INITIAL_CONTEXT_READER.py.txt",
+      "FAILED_INITIAL_SOURCE_CONTEXT.log",
+      "RETAINED_INITIAL_AQUATIC497_CONTEXT.png"
+    ]
+  },
+  "grouped_contact_witness_correction": {
+    "issue": "Opaque meshes deliberately share RoomStaticContacts; individual collider parent names cannot identify their source mesh",
+    "change": "Require own-room collider and exact expected authored-mesh world bounds; direct-screen hit additionally requires exact screen plane position",
+    "source_geometry_unchanged": true,
+    "physics_grouping_unchanged": true,
+    "failed_evidence": [
+      "FAILED_GROUPED_COLLIDER_NAME_MAIN.log",
+      "FAILED_GROUPED_COLLIDER_NAME_MAIN.json",
+      "FAILED_GROUPED_COLLIDER_NAME_WITNESS.gd.txt"
+    ]
+  },
+  "json_index_name_correction": {
+    "issue": "JSON indices parse as floats;str(497.0) does not match the authored SA497 mesh name",
+    "change": "Convert the preserved numeric source index to integer only for mesh-name lookup",
+    "source_geometry_unchanged": true,
+    "allocation_identity_unchanged": true,
+    "failed_evidence": [
+      "FAILED_JSON_FLOAT_NAME_MAIN.log",
+      "FAILED_JSON_FLOAT_NAME_MAIN.json",
+      "FAILED_JSON_FLOAT_NAME_WITNESS.gd.txt",
+      "GROUPED_CONTACT_NAME_DIAGNOSTIC_FINAL.log"
+    ]
+  }
+}
