@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "batch": "group3_port2_clinical_batch006",
+  "frozen_utc": "2026-10-10T05:45:49.120068+00:00",
+  "parent_retained_baseline": "d00cf8e20282b84872555a45502f391c45a8dd1e",
+  "state": "Source-only bounded construction successor; ready for parent independent retention; Group 3 unfinished",
+  "assets": [
+    {
+      "asset_or_successor": "AST-STF-G3-006",
+      "parts": 265,
+      "runtime_meshes": 95,
+      "source_spec": "source/PORT_SECOND_STAFF_RISER.json",
+      "source_spec_sha256": "a329d75088700e5ff902ad045d837d1a361b4b3137a7f9f787c892d06fe94ce9",
+      "source_blend": "source/AST-STF-G3-006.blend",
+      "source_blend_sha256": "492e63f5d9933d036203670d8ceb7701cf5068c2ffc876ae660bbfc17d635bd7",
+      "runtime_export": "exports/AST-STF-G3-006.glb",
+      "runtime_export_sha256": "6d549206930c6f911468beaaa4c71669146720e9545397d699abdd4522aa7b5d"
+    },
+    {
+      "asset_or_successor": "AST-MED-G3-004",
+      "parts": 57,
+      "runtime_meshes": 21,
+      "source_spec": "source/PORT2_CLINICAL_HEADER.json",
+      "source_spec_sha256": "4a0a1f55fa10087c515b799d8d80c67c8d22ec87f6b249b99964f2ebb05ffb4b",
+      "source_blend": "source/AST-MED-G3-004.blend",
+      "source_blend_sha256": "062d13bf49a772e7278ccdab37f3a00b249ffaec69dceaffaea227f39a18a7a1",
+      "runtime_export": "exports/AST-MED-G3-004.glb",
+      "runtime_export_sha256": "8428d73db80d73f65265a99b46b90fdf888267bbddc1847fdd4292607af251e4"
+    },
+    {
+      "asset_or_successor": "AST-MED-G3-002_port2_receiver_patch",
+      "parts": 19,
+      "runtime_meshes": 2,
+      "source_spec": "source/CLINICAL_PORT2_RECEIVER_PATCH.json",
+      "source_spec_sha256": "7fe014b76ae2e05f590871f758a7369e44e40a75e7d8872c8a898fc274d6f427",
+      "source_blend": "source/AST-MED-G3-002_port2_receiver_patch.blend",
+      "source_blend_sha256": "91b3b489657e82535c188168bb754d6c2e19252dd1996f5cbd8cb6fb5b2eba2c",
+      "runtime_export": "exports/AST-MED-G3-002_port2_receiver_patch.glb",
+      "runtime_export_sha256": "a8c79030dd8206a798936326fc3d2149134dedd45dfbb3168c9f5057a406b6d7"
+    }
+  ],
+  "dependencies": {
+    "frozen_first_family": "BlenderCatalogue/assets/group3_crew_service_20261009",
+    "required_clinical_predecessor": "extensions/clinical_streets_batch002",
+    "port2_reservation": "port_service_riser_2 at [-25,-283]",
+    "existing_cabin": "AST-CIR-003_seventeen_stop.glb; exact hash and numeric marker mapping in qa/CABIN_BINDING_AUDIT.json",
+    "existing_controllers": [
+      "commons_lift.gd",
+      "service_door.gd",
+      "receiving_source_lights.gd",
+      "lighting_budget.gd"
+    ],
+    "exact_input_hash_pins": [
+      "source/PORT_SECOND_STAFF_RISER.json:source_pins",
+      "source/PORT2_CLINICAL_HEADER.json:source_pins",
+      "qa/CABIN_BINDING_AUDIT.json",
+      "qa/PORT2_LOCAL_CART_PROXY_CHECKS.json",
+      "qa/REPRODUCTION_INPUT_PINS.json"
+    ]
+  },
+  "adoption": {
+    "automatic": false,
+    "omit_only_clinical_native_nodes": [
+      "screen_wall_staff_bluegrey_paint_-3_-13",
+      "screen_wall_staff_white_paint_-3_-13"
+    ],
+    "substitute_export": "exports/AST-MED-G3-002_port2_receiver_patch.glb",
+    "other_original_clinical_meshes_preserved": 566,
+    "retained_clinical_junctions_preserved": 10,
+    "new_held_crossing_proposals": 1,
+    "new_crossing_operationally_accepted": false,
+    "controller_binding_correction_for_frozen_first_starboard": "qa/CABIN_BINDING_AUDIT.json:separate_first_starboard_correction_proposal",
+    "first_starboard_frozen_source_modified": false,
+    "port2_identity_fields_held": [
+      "persistent_id",
+      "identity_prefix",
+      "district_label"
+    ],
+    "floor_proposals_only_m2": {
+      "seventeen_port2_lobbies": 893.52,
+      "additional_D05_header": 288.284
+    },
+    "existing_shaft_floor_cuts_required_m2": 0,
+    "D18_stop_created": false,
+    "protected_fore_port_blank_D04_D07_and_five_stops_preserved": true,
+    "protected_fore_port_wet_datum_m": 46.2
+  },
+  "qa": {
+    "source_plan": "PASS",
+    "cabin_marker_count": 17,
+    "cabin_marker_numeric_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "canonical_deck_order": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D06",
+      "D07",
+      "D08",
+      "D09",
+      "D10",
+      "D11",
+      "D12",
+      "D13",
+      "D14",
+      "D15",
+      "D16",
+      "D17"
+    ],
+    "fresh_native_stationary_clearance_witnesses": 22,
+    "native_sill_surface_contacts": 6,
+    "native_housing_roof_contacts": 7,
+    "proposed_floor_stationary_footprint_witnesses": 17,
+    "actual_compiled_supported_stationary_footprints": 0,
+    "bounded_local_cart_body_contact_driver_poses": 12,
+    "minimum_cart_source_proxy_gap_m": 0.8581923456243525,
+    "repeat_native_exports": "All three GLBs byte-identical",
+    "source_views_inspected": 4,
+    "actual_main_or_full_route_tested": false
+  },
+  "unchanged_predecessor_manifest_receipts": [
+    {
+      "batch": "BlenderCatalogue/assets/group3_crew_service_20261009",
+      "manifest_sha256": "d3a6b45afd1d2ebccef7aaf1b1474d5ffafefed639687f0a26b63c51ffc26723",
+      "listed_files": 51,
+      "all_file_hashes_unchanged": true,
+      "mismatches": []
+    },
+    {
+      "batch": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/clinical_streets_batch002",
+      "manifest_sha256": "016c4f3abf46b2915c7cafdc67f9d0f6f5baf49c09f163040dd5f4faff7a1787",
+      "listed_files": 17,
+      "all_file_hashes_unchanged": true,
+      "mismatches": []
+    },
+    {
+      "batch": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/clinical_fore_header_batch003",
+      "manifest_sha256": "374e65af26d8637487947e2db7b0c259a070a3426f828a8800ca3352e429416e",
+      "listed_files": 19,
+      "all_file_hashes_unchanged": true,
+      "mismatches": []
+    },
+    {
+      "batch": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/service_receiving_batch004",
+      "manifest_sha256": "7328e798bb7a58f8812f7bc0982601a72a3aee326fd9b661f5da4920b37a61fd",
+      "listed_files": 31,
+      "all_file_hashes_unchanged": true,
+      "mismatches": []
+    },
+    {
+      "batch": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/depot_receiving_batch005",
+      "manifest_sha256": "1bcccd73e92b059de4ed5d5e352d9fc34bdd1c757fc971cd26635069ebbc2e56",
+      "listed_files": 24,
+      "all_file_hashes_unchanged": true,
+      "mismatches": []
+    }
+  ],
+  "zero_people_berths_live_keys_or_new_controllers_registered": true,
+  "no_game_shared_manifest_global_ledger_git_backup_or_upload_edits": true,
+  "all_existing_work_preserved": true,
+  "remaining_group3_obligations": [
+    "400 existing crew berth key reconciliation including player and colleague; explicit non-destructive C036 proposal and held inferred placements; preserve installed shared home",
+    "Real D03 room/threshold/floor/source construction, screened streets and shared bathing/changing, break/meal/depot/care destinations",
+    "Working integration of first starboard and port2 source lifts; seven other retained staff-riser reservations; sixteen other port2 district receivers and D18/crown receiving",
+    "Exact clinical street/header/receiving adoption, ten retained junctions, held new port2 crossing gates/frame/swing/support and clean/soiled dispatch acceptance",
+    "Distributed clean linen/supply, sealed used/waste, maintenance access and cart parking at every major district; D01 processing/stores, food dirty-return, wet and aquatic edges",
+    "Root-owned residential joins including purposeful supported Tidal upper receivers; no routes through homes, commons allocations or private window verge",
+    "Existing controller/interaction/cart/stock/light/residency binding, loaded-cart and species clearances, actual floors/structure/environmental support and ordinary arrival",
+    "Persistence/stock conservation/crew autonomous life plus full in-engine CRT and effects-off visuals, acoustics, final material/light/signage and target-hardware acceptance"
+  ],
+  "next_gate": "Parent independent Library/checkpoint retention and root review before expanding source construction"
+}
