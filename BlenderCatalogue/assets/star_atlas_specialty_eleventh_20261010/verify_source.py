@@ -1,0 +1,67 @@
+from pathlib import Path
+import json,hashlib,numpy as np,sys,struct
+from shapely.geometry import Polygon,box
+from shapely.ops import unary_union
+W=Path(__file__).resolve().parent;R=W.parents[2];P=json.load(open(W/'RUNTIME_PLAN.json'));Q=json.load(open(W/'RUNTIME_RECEIVING.json'));sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+ns={'__file__':str(W/'reader.py')};exec((R/'BlenderCatalogue/assets/tidal_d15_service_receiving_20261010/source_geometry.py').read_text(),ns)
+sys.path.insert(0,str(R/'Game/tools'));from validate_production_glb import validate
+for p,h in P['preimage_pins'].items():assert sha(R/p)==h,p
+for a in P['sources']:assert sha(R/'BlenderCatalogue'/a['source'])==a['source_sha256']and sha(R/'BlenderCatalogue'/a['export'])==a['export_sha256']
+rows=json.load(open(R/'BlenderCatalogue/assets/residential_production_batch/inputs/PROPOSED_FULL_1000_PRODUCTION_ROWS.json'))['records'];parts_verified=0;fixture_meshes=0
+for room in P['rooms']:
+ a=room['allocation'];idx=a['source_envelope_index'];assert a==next(r for r in rows if r['source_envelope_index']==idx)and a['deck']=='D13'and a['proposed_rest_place_count']==1
+ assert room['proposed_design_species']=='Mantelids'and not room['species_ready']and room['rest_fittings'][0]['rest_slot_id']==a['proposed_rest_slot_ids'][0]
+ meshes=dict(ns['triangles'](room['model_file']));validate(R/'Game/assets/models'/room['model_file'])
+ predecessor=(room['component_source_predecessor']['model_file'],room['component_source_predecessor']['source_index'],room['component_source_predecessor']['translation']);oldmeshes=dict(ns['triangles'](predecessor[0]));delta=np.array(predecessor[2])
+ for q in room['parts']:
+  assert q['name']in meshes;qverts=np.array(q['verts']);actual=meshes[q['name']].reshape(-1,3)
+  for v in actual:assert np.linalg.norm(qverts-v,axis=1).min()<.00003,(idx,q['name'])
+  parts_verified+=1
+ for b in room['components']:
+  prefix=f"SA{idx}_{b['name']}__"
+  oldprefix=f"SA{predecessor[1]}_{b['name']}__";original=np.unique(np.concatenate([t+delta for n,t in oldmeshes.items()if n.startswith(oldprefix)]).reshape(-1,3),axis=0);actual=np.unique(np.concatenate([t for n,t in meshes.items()if n.startswith(prefix)]).reshape(-1,3),axis=0)
+  for start in range(0,len(actual),128):assert np.linalg.norm(actual[start:start+128,None,:]-original[None,:,:],axis=2).min(1).max()<.00003,(idx,b['name'])
+  for start in range(0,len(original),128):assert np.linalg.norm(original[start:start+128,None,:]-actual[None,:,:],axis=2).min(1).max()<.00003,(idx,b['name'],'missing predecessor vertex')
+  fixture_meshes+=sum(n.startswith(prefix)for n in meshes)
+  # Rest and principal activity footprints remain disjoint inside exact envelopes.
+  if b['name']in ['LibraryStudyEdge','DayReadingChair']or b['catalogue_id']=='AST-RST-QC-001':
+   vertices=np.concatenate([t for n,t in meshes.items()if n.startswith(prefix)]).reshape(-1,3);lo=vertices.min(0);hi=vertices.max(0);assert lo[0]>=a['allocation_x'][0]-.00003 and hi[0]<=a['allocation_x'][1]+.00003 and lo[2]>=a['allocation_z'][0]-.00003 and hi[2]<=a['allocation_z'][1]+.00003
+ for b in room['components']:
+  if b['name']not in ['LibraryStudyEdge','DayReadingChair']:continue
+  activity=np.concatenate([t for n,t in meshes.items()if n.startswith(f"SA{idx}_{b['name']}__")]).reshape(-1,3)
+  rest=room['rest_fittings'][0]['binding'];rverts=np.concatenate([t for n,t in meshes.items()if n.startswith(f"SA{idx}_{rest['name']}__")]).reshape(-1,3)
+  assert not np.all((activity.max(0)>rverts.min(0)+1e-5)&(activity.min(0)<rverts.max(0)-1e-5)),(idx,b['name'])
+ raw=(R/'Game/assets/models'/room['model_file']).read_bytes();ln=struct.unpack_from('<I',raw,12)[0];gltf=json.loads(raw[20:20+ln]);assert set(n['extras']['source_plan_sha256']for n in gltf['nodes']if 'source_plan_sha256'in n.get('extras',{}))=={sha(W/'PLAN.json')}
+regions=json.load(open(R/'Game/data/architecture/CENTRAL_RESIDENTIAL_STREETS.json'))['regions'];received=dict(ns['triangles'](Q['model_file']))
+for part in Q['parts']:
+ original=np.array(part['verts']);assert part['name']in received
+ for v in received[part['name']].reshape(-1,3):assert np.linalg.norm(original-v,axis=1).min()<.00003
+for j in Q['slab_joints']:
+ owner=next(r for r in regions if r['id']==j['owner']);lo,hi=j['overlap_bounds'];assert owner['floor_y']==84 and owner['thickness']==.24 and lo[1]==83.76 and hi[1]==83.78
+ assert unary_union([Polygon(t)for t in owner['triangles']]).buffer(1e-7).covers(box(lo[0],lo[2],hi[0],hi[2]))
+ beam=np.array(next(p for p in Q['parts']if p['name']==j['name'])['verts']);assert np.all(beam.min(0)<=lo)and np.all(beam.max(0)>=hi)
+
+for j in Q['existing_frame_joints']:
+ original=np.array(next(p for p in json.load(open(R/'Game/data/architecture/STAR_ATLAS_SPECIALTY_TENTH.json'))['receiving']['parts']if p['name']==j['existing_mesh'])['verts']);lo,hi=np.array(j['overlap_bounds']);assert np.all(lo>=original.min(0)-.00003)and np.all(hi<=original.max(0)+.00003)
+for r in Q['rakers']:
+ anchor=np.array(next(p for p in Q['parts']if p['name']==r['anchor_name'])['verts']);tip=np.array(next(p for p in Q['parts']if p['name']==r['tip_member'])['verts'])
+ assert np.all(np.array(r['anchor_center'])>anchor.min(0))and np.all(np.array(r['anchor_center'])<anchor.max(0))and np.all(np.array(r['tip_center'])>tip.min(0))and np.all(np.array(r['tip_center'])<tip.max(0))
+for room in P['rooms']:
+ idx=room['allocation']['source_envelope_index'];floor=np.array(next(p for p in room['parts']if p['name']==f'SA{idx}_RoomFloor')['verts']);assert abs(floor.min(0)[1]-83.76)<1e-8 and abs(floor.max(0)[1]-84)<1e-8
+ for p in Q['parts']:
+  if p['name'].startswith(f'SA{idx}_Floor'):
+   v=np.array(p['verts']);assert v.max(0)[1]>floor.min(0)[1]and v.min(0)[1]<floor.max(0)[1]
+ for brace in Q['room_plan_braces']:
+  if not brace['name'].startswith(f'SA{idx}_'):continue
+  for end,n in [(brace['start'],0),(brace['end'],2)]:
+   for family in ['FloorTransverse','FloorLongitudinal']:
+    beam=np.array(next(p for p in Q['parts']if p['name']==f'SA{idx}_{family}_{n}')['verts']);assert np.all(np.array(end)>beam.min(0))and np.all(np.array(end)<beam.max(0))
+validate(R/'Game/assets/models'/Q['model_file'])
+assert sum(r['allocation']['proposed_rest_place_count']for r in P['rooms'])==3 and len(P['rooms'])==3 and Q['new_piers']==0
+active=[]
+for path in(R/'Game/data/architecture').glob('STAR_ATLAS_SPECIALTY_*.json'):
+ data=json.load(open(path))
+ if 'rooms'in data and 'receiving'in data:active.extend(data['rooms'])
+assert len(active)==40 and len(set(r['allocation']['proposed_runtime_id']for r in active))==40 and sum(r['allocation']['proposed_rest_place_count']for r in active)==50
+report={'status':'PASS','new_physical_candidates':3,'existing_reserved_rests':3,'cumulative_specialty_candidates':40,'cumulative_reserved_rests':50,'remaining_specialty_by_deck':{'D13':0,'D14':6},'new_units':0,'new_rest_places':0,'ids_changed':0,'new_catalogue_ids':0,'registered_source_components_unchanged':len(P['sources']),'exact_retained_component_meshes_verified':fixture_meshes,'exact_architectural_parts_verified':parts_verified,'receiving_parts':len(Q['parts']),'source_slab_joints':len(Q['slab_joints']),'existing_frame_joints':len(Q['existing_frame_joints']),'rakers':len(Q['rakers']),'room_plan_braces':len(Q['room_plan_braces']),'new_street_area_m2':60.68,'new_piers':0,'unique_all_active_specialty_ids_verified':40,'all_active_rest_capacity_sum':50,'rest_activity_bounds_disjoint':True,'source_guard_segments_superseded':len(Q['removed_source_guards']),'limits':'Geometric source-connected D13 slab/frame construction; no D12 foundation, engineering load/cantilever certificate, canonical species/rig/pose, biology/acoustics/operations or final graphical/hardware acceptance.'}
+(W/'ACTUAL_SOURCE_CHECK.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))

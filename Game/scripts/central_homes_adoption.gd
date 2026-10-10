@@ -18,3 +18,4 @@ static func build(ship:Node3D)->void:
 	load("res://scripts/star_atlas_specialty_eighth.gd").build(ship)
 	load("res://scripts/star_atlas_specialty_ninth.gd").build(ship)
 	load("res://scripts/star_atlas_specialty_tenth.gd").build(ship)
+	load("res://scripts/star_atlas_specialty_eleventh.gd").build(ship)
