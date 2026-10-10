@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "batch": "group3_D03_port2_branch_batch007",
+  "frozen_utc": "2026-10-10T06:04:01.643264+00:00",
+  "parent_retained_baseline": "63b5fa56a20a588ffee57f716362fc3599b28978",
+  "status": "Source-only bounded branch and exact retained receiver successor; Group3 unfinished",
+  "assets": [
+    {
+      "asset": "AST-STF-G3-007",
+      "parts": 29,
+      "runtime_meshes": 15,
+      "source_spec": "source/D03_PORT2_BRANCH.json",
+      "source_spec_sha256": "3314e18304d5951ab365a4f313e19f31209d176825a47f8a05f23702a6af592f",
+      "editable_source": "source/AST-STF-G3-007.blend",
+      "editable_source_sha256": "fa4bef21e4a7863bc5630d7c5753a1e7d7065af01388bbcffc68bbdb10c7ce17",
+      "runtime_export": "exports/AST-STF-G3-007.glb",
+      "runtime_export_sha256": "0a7fe2e63a2084a3ea88b1519bd25d8073ba35ad75ae51023155e69542e6b43e"
+    },
+    {
+      "asset": "AST-STF-G3-008",
+      "parts": 27,
+      "runtime_meshes": 4,
+      "source_spec": "source/D03_SPINE_RECEIVER_PATCH.json",
+      "source_spec_sha256": "46c24b1cc6a6c1116e9bae7aff75eb8647b9fd50057157f2d4e1e7cb78cabd9b",
+      "editable_source": "source/AST-STF-G3-008.blend",
+      "editable_source_sha256": "9fec3509219a97963b8f8705d0f896775b5e95ff1a94937f04cffc4fbe8559cc",
+      "runtime_export": "exports/AST-STF-G3-008.glb",
+      "runtime_export_sha256": "f3e60e565fbf88eb4bfadfab96484d48a02d7cb355007b07f43452b6a32de640"
+    }
+  ],
+  "dependencies": [
+    "Frozen port2_clinical_batch006/source/PORT_SECOND_STAFF_RISER.json and exact shaft export",
+    "Retained AST-STF-009 lower staff spine; precise four cell-role replacements only",
+    "Frozen depot_receiving_batch005 retained receiver and unchanged furniture",
+    "Existing commons_lift, lower_staff_network, service_door, receiving_source_lights and lighting_budget controllers; root binding only"
+  ],
+  "adoption": {
+    "automatic": false,
+    "native_spine_nodes_to_omit": [
+      "STF_CELL_D03_X-3_Z-15_ASTRAEA_staff_bluegrey_paint",
+      "STF_CELL_D03_X-3_Z-15_ASTRAEA_staff_white_paint",
+      "STF_CELL_D03_X-3_Z-15_ASTRAEA_staff_rubber",
+      "STF_CELL_D03_X-3_Z-15_ASTRAEA_staff_zinc"
+    ],
+    "replacement_export": "exports/AST-STF-G3-008.glb",
+    "other_original_spine_meshes_preserved": 277,
+    "old_semantic_parts_in_four_cells": 23,
+    "original_semantic_parts_changed": [
+      "STF_D03_Wall_00_17_00_Wainscot.007",
+      "STF_D03_Wall_00_17_00_Enamel.007",
+      "STF_D03_Wall_00_17_00_CartBumper.007",
+      "STF_D03_Wall_00_17_00_PanelJoint.041"
+    ],
+    "opening_xz_y": {
+      "wall_and_trim_x": [
+        -55.345,
+        -55.2
+      ],
+      "z": [
+        -294.8,
+        -291.2
+      ],
+      "clear_y": [
+        12,
+        14.8
+      ],
+      "lintel_top_y": 15.2
+    },
+    "additional_missing_only_D03_branch_floor_m2": 148.216,
+    "general_floor_installed_or_exported": false,
+    "new_longitudinal_street_authored": false,
+    "existing_depot_receiver": [
+      -54,
+      12,
+      -216
+    ],
+    "depot_east_closure_preserved": true,
+    "protected_fore_port_blank_D04_D07_and_five_stops_preserved": true,
+    "protected_fore_port_wet_datum_m": 46.2
+  },
+  "qa": {
+    "final_plan": "PASS",
+    "source_patch_material_height_cross_sections": 28,
+    "stationary_native_clearance_witnesses": 13,
+    "preserved_native_wall_lintel_joint_surfaces": 14,
+    "real_native_opening_witnesses": 3,
+    "branch_to_patch_native_edge_contacts": 4,
+    "fixture_roof_native_contacts": 4,
+    "local_floor_footprints": 13,
+    "actual_compiled_supported_footprints": 6,
+    "stationary_local_cart_body_contact_driver_poses": 11,
+    "minimum_cart_source_proxy_gap_m": 0.8581923456243525,
+    "final_runtime_repeat_exports": "Both byte-identical",
+    "source_views_inspected": 4,
+    "initial_failed_review_preserved": "qa/D03_BRANCH_NATIVE_FAILED_INITIAL.json and native_review_failed_initial.log; start cap corrected before final verification",
+    "actual_main_or_full_route_accepted": false
+  },
+  "frozen_predecessors_verified_unchanged": [
+    {
+      "path": "BlenderCatalogue/assets/group3_crew_service_20261009",
+      "manifest_sha256": "d3a6b45afd1d2ebccef7aaf1b1474d5ffafefed639687f0a26b63c51ffc26723",
+      "listed_files_unchanged": 51,
+      "all_hashes_verified": true
+    },
+    {
+      "path": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/clinical_streets_batch002",
+      "manifest_sha256": "016c4f3abf46b2915c7cafdc67f9d0f6f5baf49c09f163040dd5f4faff7a1787",
+      "listed_files_unchanged": 17,
+      "all_hashes_verified": true
+    },
+    {
+      "path": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/clinical_fore_header_batch003",
+      "manifest_sha256": "374e65af26d8637487947e2db7b0c259a070a3426f828a8800ca3352e429416e",
+      "listed_files_unchanged": 19,
+      "all_hashes_verified": true
+    },
+    {
+      "path": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/service_receiving_batch004",
+      "manifest_sha256": "7328e798bb7a58f8812f7bc0982601a72a3aee326fd9b661f5da4920b37a61fd",
+      "listed_files_unchanged": 31,
+      "all_hashes_verified": true
+    },
+    {
+      "path": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/depot_receiving_batch005",
+      "manifest_sha256": "1bcccd73e92b059de4ed5d5e352d9fc34bdd1c757fc971cd26635069ebbc2e56",
+      "listed_files_unchanged": 24,
+      "all_hashes_verified": true
+    },
+    {
+      "path": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/port2_clinical_batch006",
+      "manifest_sha256": "61b5aa26c6d5090e5bd1e3f1c058ad02ad11e9e96a89e96a748673694acdd1ab",
+      "listed_files_unchanged": 51,
+      "all_hashes_verified": true
+    }
+  ],
+  "no_game_catalogue_global_ledger_git_backup_or_upload_edits": true,
+  "no_live_stock_people_berths_cart_lift_or_save_keys_created_or_reassigned": true,
+  "remaining_full_group3_obligations": [
+    "400 existing crew berth key reconciliation including player and colleague; explicit non-destructive C036 proposal and held inferred placements; preserve installed shared home",
+    "Real D03 room/threshold/floor/source construction, screened streets and shared bathing/changing, break/meal/depot/care destinations",
+    "Working integration of first-starboard and port2 source lifts; seven other retained staff-riser reservations; fifteen other port2 district receivers beyond the held D03/D05 proposals and D18/crown receiving",
+    "Exact clinical street/header/receiving adoption, ten retained junctions, held new port2 crossing gates/frame/swing/support and clean/soiled dispatch acceptance",
+    "Distributed clean linen/supply, sealed used/waste, maintenance access and cart parking at every major district; D01 processing/stores, food dirty-return, wet and aquatic edges",
+    "Root-owned residential joins including purposeful supported Tidal upper receivers; no routes through homes, commons allocations or private window verge",
+    "Existing controller/interaction/cart/stock/light/residency binding, loaded-cart and species clearances, actual floors/structure/environmental support and ordinary arrival",
+    "Persistence/stock conservation/crew autonomous life plus full in-engine CRT and effects-off visuals, acoustics, final material/light/signage and target-hardware acceptance"
+  ],
+  "next_gate": "Parent independent checkpoint retention and exact root adoption review before further source construction"
+}
