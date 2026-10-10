@@ -119,5 +119,8 @@ for p,h in P['source_pins'].items():assert sha(R/p)==h,p
 sys.path.insert(0,str(R/'Game/tools'));from validate_production_glb import validate_and_copy
 for q in [receiving,patch]:validate_and_copy(W/q['export'],R/'Game/assets/models'/q['export'])
 runtime={**P,'model_file':receiving['export'],'model_sha256':receiving['export_sha256'],'native_sha256':receiving['native_sha256'],'staff_patch_model':patch['export'],'staff_patch_sha256':patch['export_sha256'],'open_staff_gateway':False,'source_fittings':instances}
+survey=json.load(open(W/'PREIMAGE_SURVEY.json'));assert survey['status']=='SURVEY_ONLY'and survey['baseline_commit']==P['baseline_commit']
+runtime['wall_preimage_bounds']={m['name']:{'min':m['min'],'max':m['max']}for m in survey['mesh_bounds']if m['name']in cut['meshes']}
+assert set(runtime['wall_preimage_bounds'])==set(cut['meshes'])
 (W/'RUNTIME_RECEIVING.json').write_text(json.dumps(runtime,indent=2)+'\n')
 rec={'status':'PASS','blender_version':bpy.app.version_string,'receiving':receiving,'staff_patch':patch,'source_instances':instances,'original_wall_batches':changes,'source_pins_unchanged':len(P['source_pins']),'original_models_modified':False,'rooms_adopted':0,'open_staff_gateway_at_build':False,'primary_load_accepted':False};(W/'NATIVE_EXPORT_CHECK.json').write_text(json.dumps(rec,indent=2)+'\n');print(json.dumps({'status':'PASS','receiving_meshes':receiving['mesh_count'],'patch_batches':patch['mesh_count']}))

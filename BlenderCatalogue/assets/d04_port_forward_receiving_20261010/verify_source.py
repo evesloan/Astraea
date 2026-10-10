@@ -22,7 +22,7 @@ for y in [12.15,12.79,13.3,14.3]:
   names=[n for n,t in patch if ray_hits(t,np.array([-59.12,y,z]),np.array([-58.3,y,z])).any()];probes.append({'y':y,'z':z,'hits':names})
   if names:errors.append({'kind':'staff_aperture_residual','y':y,'z':z,'meshes':names})
 for p,h in P['source_pins'].items():assert sha(R/p)==h,p
-# Boolean export may retriangulate unchanged quads. Compare oriented planar
+# Clipping/export may retriangulate unchanged quads. Compare oriented planar
 # surface unions outside the exact cutter, in both directions, rather than
 # treating a different diagonal as missing geometry.
 from shapely.geometry import Polygon

@@ -63,9 +63,15 @@ for i,z in enumerate([-442.,-424.,-406.,-388.,-370.]):
 for x in [-45.8,-42.2]:cube('D04PF_StreetLong_'+str(x),[x-.14,15.98,-445.2],[x+.14,16.3,-366])
 for z in [-406.65,-403.75]:cube('D04PF_PublicLong_'+str(z),[-44,15.98,z-.14],[-4,16.3,z+.14])
 for i,x in enumerate([-43.7,-32,-20,-8.5]):cube(f'D04PF_PublicCross_{i}',[x-.14,15.98,-406.9],[x+.14,16.3,-403.5])
+# Preserve the actual stair void through the receiving frame as well as slab.
+# The rejected low rakers crossed head/leaf envelopes; only the south brace
+# remains, attached above the door head to the received slab-bearing pier.
 for z in [-373.5,-367.5]:
- cube('D04PF_CommonsTransfer_'+str(z),[-70,15.98,z-.14],[-44,16.3,z+.14])
- segment('D04PF_CommonsRaker_'+str(z),[-58.62,12.1,z],[-69.6,16.14,z],.2,.2)
+ if z==-373.5:
+  cube('D04PF_CommonsTransferWest_'+str(z),[-70,15.98,z-.14],[-64.8,16.3,z+.14])
+  cube('D04PF_CommonsTransferEast_'+str(z),[-58.8,15.98,z-.14],[-44,16.3,z+.14])
+ else:cube('D04PF_CommonsTransfer_'+str(z),[-70,15.98,z-.14],[-44,16.3,z+.14])
+segment('D04PF_CommonsRakerSouth',[-58.62,14.8,-367.5],[-69.6,16.14,-367.5],.2,.2)
 for x in [-69.7,-63.3]:cube('D04PF_BayLong_'+str(x),[x-.14,15.98,-376],[x+.14,16.3,-364])
 for z in [-379.5,-373.5,-367.5]:
  cube('D04PF_LowerLandingTransfer_'+str(z),[-65.1,11.48,z-.14],[-55.24,11.8,z+.14])

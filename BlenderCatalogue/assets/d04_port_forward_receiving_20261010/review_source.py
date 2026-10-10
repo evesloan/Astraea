@@ -56,14 +56,21 @@ view('SOURCE_COMMONS_ENTRY.png',[-65.5,18.1,-367.8],[-69,17.5,-371],24)
 view('SOURCE_STAIR_FROM_UPPER.png',[-60,18.15,-368],[-61.8,15,-379.8],24)
 view('SOURCE_STAFF_DOOR_CLOSED.png',[-61,13.65,-367],[-58.8,13.3,-369],24)
 for o in doors:
- if o.name.endswith('LEAF_LEFT'):o.location.x-=.84
- if o.name.endswith('LEAF_RIGHT'):o.location.x+=.84
+ if o.name.endswith('LEAF_LEFT'):o.matrix_world.translation+=T.to_3x3()@Vector((-.84,0,0))
+ if o.name.endswith('LEAF_RIGHT'):o.matrix_world.translation+=T.to_3x3()@Vector((.84,0,0))
 bpy.context.view_layer.update()
 view('SOURCE_STAFF_DOOR_OPEN.png',[-61,13.65,-367],[-58.8,13.3,-369],24)
 hidden=[]
 for o in bpy.data.objects:
- if o.get('category','')in ['roof','roof_frame']or 'Roof'in o.name:
+ if o.get('category','')in ['roof','roof_frame']or 'Roof'in o.name or o.name.startswith('D04PF_UpperStairTransfer'):
   if not o.hide_render:o.hide_render=True;hidden.append(o.name)
-view('SOURCE_FOUNDATION_CONNECTION.png',[-82,20,-418],[-40,14,-406],25)
+view('SOURCE_STAIR_CUTAWAY.png',[-62,27,-376],[-62,12,-376],ortho=18)
+# Remove only unsaved original wall/ceiling context for the foundation review;
+# retain the independently witnessed original slab rectangles and all new frames.
+foundation_context_hidden=[]
+for name in staff:
+ o=bpy.data.objects.get(name)
+ if o and not o.hide_render:o.hide_render=True;foundation_context_hidden.append(name)
+view('SOURCE_FOUNDATION_CONNECTION.png',[-70,14.5,-411],[-28,14,-405],25)
 for p,h in pins.items():assert sha(R/p)==h,p
-(W/'SOURCE_VIEW_RUN.json').write_text(json.dumps({'status':'PASS','images':images,'native_pins_unchanged':pins,'source_only':True,'diagnostic_fill':True,'unsaved_context':True,'original_staff_context_meshes':staff,'local_original_slab_context':contexts,'door_pose_from_runtime_plan':P['staff_door'],'door_opened_unsaved_for_review':True,'unsaved_roof_cutaway_hidden':hidden,'rooms_adopted':0,'final_graphical_CRT_hardware_acceptance':False},indent=2)+'\n')
+(W/'SOURCE_VIEW_RUN.json').write_text(json.dumps({'status':'PASS','images':images,'native_pins_unchanged':pins,'source_only':True,'diagnostic_fill':True,'unsaved_context':True,'original_staff_context_meshes':staff,'local_original_slab_context':contexts,'door_pose_from_runtime_plan':P['staff_door'],'door_opened_unsaved_for_review':True,'unsaved_roof_cutaway_hidden':hidden,'foundation_only_original_wall_ceiling_context_hidden':foundation_context_hidden,'rooms_adopted':0,'final_graphical_CRT_hardware_acceptance':False},indent=2)+'\n')

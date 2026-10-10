@@ -33,16 +33,17 @@ func physical_key(down:bool)->void:
 func walk_to(player:CharacterBody3D,goal:Vector3)->Dictionary:
 	var start:=player.global_position;var delta:=goal-start;delta.y=0
 	player.rotation.y=atan2(-delta.x,-delta.z);physical_key(true)
-	var budget:=int(delta.length()/3.1*60)+150;var frames:=0;var reached:=false
+	var budget:=int(delta.length()/3.1*60)+150;var frames:=0;var reached:=false;var route_contacts:Dictionary={}
 	for i in range(budget):
 		await physics_frame;frames+=1
+		for j in range(player.get_slide_collision_count()):route_contacts[str(player.get_slide_collision(j).get_collider().get_path())]=true
 		var now:=goal-player.global_position;now.y=0
 		if now.dot(delta.normalized())<.16:reached=true;break
 	physical_key(false)
 	for i in range(20):await physics_frame
 	var contacts:Array=[]
 	for i in range(player.get_slide_collision_count()):contacts.append(str(player.get_slide_collision(i).get_collider().get_path()))
-	if not reached:print("WALK_BLOCKED_CONTACTS ",contacts)
+	if not reached:print("WALK_BLOCKED_CONTACTS ",contacts," ALL ",route_contacts.keys())
 	var at:=player.global_position;var horizontal:=Vector2(at.x-goal.x,at.z-goal.z).length()
 	return {"reached":reached and horizontal<.55 and absf(at.y-goal.y)<.12,"frames":frames,"start":str(start),"goal":str(goal),"final":str(at),"floor_contact":player.is_on_floor(),"existing_player_controller":true}
 func _initialize()->void:call_deferred("run")
