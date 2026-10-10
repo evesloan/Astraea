@@ -1,0 +1,38 @@
+{
+  "status": "RUNNING_OR_FAILED",
+  "steps": [
+    {
+      "step": "import",
+      "exit_code": 0,
+      "passed": true,
+      "timed_out": false,
+      "errors": [],
+      "wall_seconds": 3.474,
+      "child_peak_rss_kib": 695024,
+      "clock_mode": "editor",
+      "log": "ENGINE_import.log"
+    },
+    {
+      "step": "actual_main_bounded",
+      "exit_code": 0,
+      "passed": false,
+      "timed_out": false,
+      "errors": [
+        "SCRIPT ERROR: Assertion failed: Blocked stance: (-62.6, 88.5, -493.0)",
+        "SCRIPT ERROR: Assertion failed: Blocked stance: (-62.6, 88.5, -487.0)",
+        "SCRIPT ERROR: Assertion failed: Blocked stance: (-62.6, 93.0, -493.0)",
+        "SCRIPT ERROR: Assertion failed: Blocked stance: (-62.6, 93.0, -487.0)",
+        "SCRIPT ERROR: Assertion failed: Blocked stance: (-62.6, 97.5, -493.0)",
+        "SCRIPT ERROR: Assertion failed: Blocked stance: (-62.6, 97.5, -487.0)",
+        "SCRIPT ERROR: Assertion failed: Blocked stance: (-62.6, 102.0, -493.0)",
+        "SCRIPT ERROR: Assertion failed: Blocked stance: (-62.6, 102.0, -487.0)"
+      ],
+      "wall_seconds": 41.992,
+      "child_peak_rss_kib": 7066128,
+      "clock_mode": "fixed60",
+      "log": "ENGINE_actual_main_bounded.log"
+    }
+  ],
+  "full_suite_run": false,
+  "scope": "One import barrier and bounded D14-D17 local fitting/parking primary fit and stationary stances; no exhaustive routes or performance acceptance."
+}

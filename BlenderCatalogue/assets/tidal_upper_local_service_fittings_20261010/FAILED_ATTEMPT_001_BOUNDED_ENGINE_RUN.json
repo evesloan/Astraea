@@ -1,0 +1,34 @@
+{
+  "status": "RUNNING_OR_FAILED",
+  "steps": [
+    {
+      "step": "import",
+      "exit_code": 0,
+      "passed": true,
+      "timed_out": false,
+      "errors": [],
+      "wall_seconds": 5.28,
+      "child_peak_rss_kib": 741696,
+      "clock_mode": "editor",
+      "log": "ENGINE_import.log"
+    },
+    {
+      "step": "actual_main_bounded",
+      "exit_code": 0,
+      "passed": false,
+      "timed_out": false,
+      "errors": [
+        "SCRIPT ERROR: Assertion failed.",
+        "ERROR: Node not found: \"TidalUpperLocalServiceFittings\" (relative to \"/root/AstraeaPresentation/World360/Astraea/ShipSpace/Districts/TidalGardenReceivingCandidate\").",
+        "SCRIPT ERROR: Assertion failed.",
+        "SCRIPT ERROR: Cannot call method 'get_meta' on a null value."
+      ],
+      "wall_seconds": 41.791,
+      "child_peak_rss_kib": 6992640,
+      "clock_mode": "fixed60",
+      "log": "ENGINE_actual_main_bounded.log"
+    }
+  ],
+  "full_suite_run": false,
+  "scope": "One import barrier and bounded D14-D17 local fitting/parking primary fit and stationary stances; no exhaustive routes or performance acceptance."
+}

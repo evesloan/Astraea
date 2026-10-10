@@ -1,0 +1,1857 @@
+{
+  "schema": "astraea.tidal.upper.local_service_fittings.v1",
+  "base_commit": "5e8b1f22b4ae29958b053500daea65f26209fb2b",
+  "root_name": "TidalUpperLocalServiceFittings",
+  "persistent_id": "tidal_upper_local_service_fittings_001",
+  "model_file": "TidalUpperLocalServiceFittings.glb",
+  "sources": [
+    {
+      "catalogue_id": "AST-STF-007",
+      "name": "Astraea Staff Supply / Work Cabinet",
+      "family": "staff_work_cabinet",
+      "source": "assets/staff_workbay/AST-STF-007_supply_work_cabinet.blend",
+      "export": "assets/staff_workbay/AST-STF-007_supply_work_cabinet.glb",
+      "manifest": "assets/staff_workbay/AST-STF-007_supply_work_cabinet.manifest.json",
+      "dimensions_blender_xyz_m": [
+        1.7999999523162842,
+        0.6649999916553497,
+        1.149999976158142
+      ],
+      "evaluated_triangles": 11060,
+      "batch": "03",
+      "adopted_game_instances": 1,
+      "source_sha256": "b1705b3e5d7a48f4d28765a26b7c9f60fe4aa61df3b593ba4f35861125cf8edb",
+      "export_sha256": "1cdff25f6bd41dc4ecb850d5c9f70394a303ce667ba65ea0322199ba63e17d56",
+      "metadata_revision": "hinge-frame-metadata-02",
+      "last_metadata_revision_batch": "05",
+      "geometry_revision": "Original Batch03 geometry preserved",
+      "metadata_evidence": "qa/batch05/cabinet_metadata_revision/",
+      "interface_record_id": "AST-STF-007"
+    },
+    {
+      "catalogue_id": "AST-AQU-007",
+      "name": "Protected dry towel and supply niche",
+      "family": "aquatic_towel_use",
+      "source": "assets/aquatic_towel_use/source/AST-AQU-007.blend",
+      "export": "assets/aquatic_towel_use/exports/AST-AQU-007.glb",
+      "manifest": "assets/aquatic_towel_use/AST-AQU-007.manifest.json",
+      "dimensions_blender_xyz_m": [
+        1.340000033378601,
+        0.6200000047683716,
+        1.8200000524520874
+      ],
+      "evaluated_triangles": 6900,
+      "batch": "14",
+      "adopted_game_instances": 0,
+      "source_sha256": "ce94623660fd59f6a1ad8e1d22423e025fb6445f91815aae72b68629d47b8653",
+      "export_sha256": "d9047cc74ebeb222fa0e6b4313b8947f7e245e95ee45a77c84e03248bc2ab126",
+      "interface_record_id": "AST-AQU-007"
+    }
+  ],
+  "preimage_pins": {
+    "BlenderCatalogue/catalogue_manifest.json": "1d79b82cefaf612f6557954695dc63f265adf5b863f795dfca6ae877cd1e985e",
+    "Game/scripts/commons_lift.gd": "174813072483ea3808b8a529fd4bb6ecaf70ef2ea865486a268384dbc7b9d4a4",
+    "Game/scripts/service_door.gd": "b9d33fc3e11311ccebd3de36812ba42436523616a4ab655cf50df38e35cc57f1",
+    "Game/assets/models/AST-RES-TIDAL_lift_fit_r003.glb": "eedf652f8af8e34666123418b5654f15e2800b33e57bf85a7b87f7b1964ed8ad",
+    "Game/data/architecture/TIDAL_D13_LOCAL_SERVICE_FITTINGS.json": "5ca4be04f243f4c077c86620fab2b6c682fde4cc127f9e3983d7dfaf37e0fa82",
+    "Game/data/architecture/TIDAL_D14_SERVICE_RECEIVING.json": "1094637055687f1e8fddd93417fa5502361dcdbe4a833185d86cd524754f00e1",
+    "Game/assets/models/AST-RES-TIDAL_D14_service_corridor_r001.glb": "79c14aeddbe7b95b1915ce58ccd843392297c99f4eaaefb5c6387c9e267f46d9",
+    "Game/data/architecture/TIDAL_D15_SERVICE_RECEIVING.json": "6ee62e878bbc28ea543e36472490e4c9573aa5f6b0ac5e6ea9a5a4d277ca5cf7",
+    "Game/assets/models/AST-RES-TIDAL_D15_service_receiving_r001.glb": "8f17ec77ac9d8b233f44174aee061ca70f31f93d1e4199a456a782ea2063f595",
+    "Game/data/architecture/TIDAL_D16_SERVICE_RECEIVING.json": "9498e9fdb21816ac4e3f1ba522a570a5f8d778c7604fd3ea899cb58bc5a3cc61",
+    "Game/assets/models/AST-RES-TIDAL_D16_service_receiving_r001.glb": "85020955f78c7d74ed526f27765c363bc3c99861f3b0fb93cb659488e527203d",
+    "Game/data/architecture/TIDAL_D17_SERVICE_RECEIVING.json": "0b52ff5bdd3d2fee1f601ce5b0b3b62b86e1d08669a9b18f6a6d7088cc9a97df",
+    "Game/assets/models/AST-RES-TIDAL_D17_service_receiving_r001.glb": "af0c6ca72be545bcf891ea16cd52e0507ec049a9ce1fd38b194be57a9d3e1f29"
+  },
+  "decks": [
+    {
+      "deck": 14,
+      "floor_y": 88.5,
+      "receiver_persistent_id": "tidal_d14_service_receiving_001",
+      "shared_door": {
+        "name": "D14_SharedServiceDoor",
+        "persistent_id": "tidal_d14_shared_service_door_001",
+        "source": "AST-STF-008.glb",
+        "controller": "service_door.gd",
+        "position": [
+          -44,
+          88.5,
+          -493.6
+        ],
+        "yaw": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "fixed_jamb_clear_width_m": 2.3,
+        "fully_open_hardware_clear_width_m": 2.168,
+        "conservative_open_clear_width_m": 2.166,
+        "fixed_header_clear_height_m": 2.54,
+        "swing_side": "into proposed receiver link, toward negativeZ"
+      },
+      "assemblies": [
+        {
+          "name": "D14_CleanProductWorkCupboard",
+          "catalogue_id": "AST-STF-007",
+          "position": [
+            -59.7,
+            88.5,
+            -493
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d14_clean_product_cupboard_001",
+          "role": "clean_product_work_cupboard"
+        },
+        {
+          "name": "D14_CleanLinenNiche",
+          "catalogue_id": "AST-AQU-007",
+          "position": [
+            -59.7,
+            88.5,
+            -490
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d14_dry_linen_niche_001",
+          "role": "dry_clean_linen_niche"
+        },
+        {
+          "name": "D14_ClosedReturnsHoldingCupboard",
+          "catalogue_id": "AST-STF-007",
+          "position": [
+            -59.7,
+            88.5,
+            -487
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d14_vented_returns_cupboard_001",
+          "role": "vented_returns_left_compartment_open_preparation_right"
+        }
+      ],
+      "parking": {
+        "persistent_id": "tidal_d14_empty_cart_parking_bay_001",
+        "bounds_xz": [
+          -61.7,
+          -486.2,
+          -60.3,
+          -484.5
+        ],
+        "entry": "south",
+        "empty": true,
+        "capacity_accepted": false
+      },
+      "independent_survey": {
+        "actual_corridor_file": "AST-RES-TIDAL_D14_service_corridor_r001.glb",
+        "actual_corridor_sha256": "79c14aeddbe7b95b1915ce58ccd843392297c99f4eaaefb5c6387c9e267f46d9",
+        "actual_west_bay_meshes": [
+          {
+            "mesh": "TidalStaffWallLow_D14_-8_-63_0",
+            "min": [
+              -59.20000076293945,
+              88.5,
+              -498.20001220703125
+            ],
+            "max": [
+              -56.0,
+              89.5199966430664,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallLow_D14_-8_-63_1",
+            "min": [
+              -62.939998626708984,
+              88.5,
+              -501.94000244140625
+            ],
+            "max": [
+              -56.0,
+              89.5199966430664,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallLow_D14_-8_-62_0",
+            "min": [
+              -59.20000076293945,
+              88.5,
+              -496.0
+            ],
+            "max": [
+              -59.060001373291016,
+              89.5199966430664,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D14_-8_-62_1",
+            "min": [
+              -62.939998626708984,
+              88.5,
+              -496.0
+            ],
+            "max": [
+              -62.79999923706055,
+              89.5199966430664,
+              -494.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D14_-8_-62_2",
+            "min": [
+              -62.939998626708984,
+              88.5,
+              -491.20001220703125
+            ],
+            "max": [
+              -62.79999923706055,
+              89.5199966430664,
+              -488.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D14_-8_-61_0",
+            "min": [
+              -62.939998626708984,
+              88.5,
+              -488.0
+            ],
+            "max": [
+              -59.060001373291016,
+              89.5199966430664,
+              -483.8599853515625
+            ],
+            "triangles": 28
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D14_-8_-63_0",
+            "min": [
+              -59.20000076293945,
+              89.5199966430664,
+              -498.20001220703125
+            ],
+            "max": [
+              -56.0,
+              91.69999694824219,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D14_-8_-63_1",
+            "min": [
+              -62.939998626708984,
+              89.5199966430664,
+              -501.94000244140625
+            ],
+            "max": [
+              -56.0,
+              91.69999694824219,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D14_-8_-62_0",
+            "min": [
+              -59.20000076293945,
+              89.5199966430664,
+              -496.0
+            ],
+            "max": [
+              -59.060001373291016,
+              91.69999694824219,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D14_-8_-62_1",
+            "min": [
+              -62.939998626708984,
+              89.5199966430664,
+              -496.0
+            ],
+            "max": [
+              -62.79999923706055,
+              91.69999694824219,
+              -494.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D14_-8_-62_2",
+            "min": [
+              -62.939998626708984,
+              89.5199966430664,
+              -491.20001220703125
+            ],
+            "max": [
+              -62.79999923706055,
+              91.69999694824219,
+              -488.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D14_-8_-61_0",
+            "min": [
+              -62.939998626708984,
+              89.5199966430664,
+              -488.0
+            ],
+            "max": [
+              -59.060001373291016,
+              91.69999694824219,
+              -483.8599853515625
+            ],
+            "triangles": 28
+          },
+          {
+            "mesh": "TidalStaffRoof_D14_-8_-63_0",
+            "min": [
+              -62.79999923706055,
+              91.69999694824219,
+              -501.79998779296875
+            ],
+            "max": [
+              -56.0,
+              91.83999633789062,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffRoof_D14_-8_-62_0",
+            "min": [
+              -62.79999923706055,
+              91.69999694824219,
+              -496.0
+            ],
+            "max": [
+              -59.20000076293945,
+              91.83999633789062,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffRoof_D14_-8_-61_0",
+            "min": [
+              -62.79999923706055,
+              91.69999694824219,
+              -488.0
+            ],
+            "max": [
+              -59.20000076293945,
+              91.83999633789062,
+              -484.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalReceiverLintel_D14_clean_linen_supply",
+            "min": [
+              -62.939998626708984,
+              91.30000305175781,
+              -494.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              91.69999694824219,
+              -491.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalReceiverLintel_D14_sealed_soiled_waste",
+            "min": [
+              -62.939998626708984,
+              91.30000305175781,
+              -488.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              91.69999694824219,
+              -485.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightHousing_D14_5",
+            "min": [
+              -61.400001525878906,
+              91.54000091552734,
+              -493.1300048828125
+            ],
+            "max": [
+              -60.599998474121094,
+              91.69999694824219,
+              -492.8699951171875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightDiffuser_D14_5",
+            "min": [
+              -61.349998474121094,
+              91.51499938964844,
+              -493.1000061035156
+            ],
+            "max": [
+              -60.650001525878906,
+              91.54000091552734,
+              -492.8999938964844
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightHousing_D14_6",
+            "min": [
+              -61.400001525878906,
+              91.54000091552734,
+              -487.1300048828125
+            ],
+            "max": [
+              -60.599998474121094,
+              91.69999694824219,
+              -486.8699951171875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightDiffuser_D14_6",
+            "min": [
+              -61.349998474121094,
+              91.51499938964844,
+              -487.1000061035156
+            ],
+            "max": [
+              -60.650001525878906,
+              91.54000091552734,
+              -486.8999938964844
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "D14_AbandonedCleanWestMouthPhysicalClosure",
+            "min": [
+              -62.939998626708984,
+              88.5,
+              -494.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              91.30000305175781,
+              -491.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "D14_AbandonedReturnsWestMouthPhysicalClosure",
+            "min": [
+              -62.939998626708984,
+              88.5,
+              -488.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              91.30000305175781,
+              -485.20001220703125
+            ],
+            "triangles": 12
+          }
+        ],
+        "floor_owner_regions": [
+          "TIDAL_D14_ServiceApproach_0"
+        ],
+        "fitting_footprint_coverage": [
+          {
+            "assembly": "D14_CleanProductWorkCupboard",
+            "bounds_xz": [
+              -60.055,
+              -493.9,
+              -59.39,
+              -492.1
+            ],
+            "footprint_area_m2": 1.1969999999999683,
+            "unsupported_area_m2": 0.0
+          },
+          {
+            "assembly": "D14_CleanLinenNiche",
+            "bounds_xz": [
+              -60.01,
+              -490.67,
+              -59.39,
+              -489.33
+            ],
+            "footprint_area_m2": 0.8308000000000163,
+            "unsupported_area_m2": 0.0
+          },
+          {
+            "assembly": "D14_ClosedReturnsHoldingCupboard",
+            "bounds_xz": [
+              -60.055,
+              -487.9,
+              -59.39,
+              -486.1
+            ],
+            "footprint_area_m2": 1.1969999999999683,
+            "unsupported_area_m2": 0.0
+          }
+        ],
+        "parking_unsupported_area_m2": 0.0,
+        "house_entry": [
+          -44,
+          88.5,
+          -493.6
+        ],
+        "placement_reason": "Existing screened west service dead end; keep shared house portal and central/east approach entirely free. Abandoned west mouth closures remain intact; these fittings are approached within the corridor, not through the closed west mouths."
+      }
+    },
+    {
+      "deck": 15,
+      "floor_y": 93,
+      "receiver_persistent_id": "tidal_d15_service_receiving_001",
+      "shared_door": {
+        "name": "D15_SharedServiceDoor",
+        "persistent_id": "tidal_d15_shared_service_door_001",
+        "position": [
+          -44,
+          93,
+          -482.2
+        ],
+        "yaw": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblies": [
+        {
+          "name": "D15_CleanProductWorkCupboard",
+          "catalogue_id": "AST-STF-007",
+          "position": [
+            -59.7,
+            93,
+            -493
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d15_clean_product_cupboard_001",
+          "role": "clean_product_work_cupboard"
+        },
+        {
+          "name": "D15_CleanLinenNiche",
+          "catalogue_id": "AST-AQU-007",
+          "position": [
+            -59.7,
+            93,
+            -490
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d15_dry_linen_niche_001",
+          "role": "dry_clean_linen_niche"
+        },
+        {
+          "name": "D15_ClosedReturnsHoldingCupboard",
+          "catalogue_id": "AST-STF-007",
+          "position": [
+            -59.7,
+            93,
+            -487
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d15_vented_returns_cupboard_001",
+          "role": "vented_returns_left_compartment_open_preparation_right"
+        }
+      ],
+      "parking": {
+        "persistent_id": "tidal_d15_empty_cart_parking_bay_001",
+        "bounds_xz": [
+          -61.7,
+          -486.2,
+          -60.3,
+          -484.5
+        ],
+        "entry": "south",
+        "empty": true,
+        "capacity_accepted": false
+      },
+      "independent_survey": {
+        "actual_corridor_file": "AST-RES-TIDAL_D15_service_receiving_r001.glb",
+        "actual_corridor_sha256": "8f17ec77ac9d8b233f44174aee061ca70f31f93d1e4199a456a782ea2063f595",
+        "actual_west_bay_meshes": [
+          {
+            "mesh": "TidalStaffWallLow_D15_-8_-63_0",
+            "min": [
+              -59.20000076293945,
+              93.0,
+              -498.20001220703125
+            ],
+            "max": [
+              -56.0,
+              94.0199966430664,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallLow_D15_-8_-63_1",
+            "min": [
+              -62.939998626708984,
+              93.0,
+              -501.94000244140625
+            ],
+            "max": [
+              -56.0,
+              94.0199966430664,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallLow_D15_-8_-62_0",
+            "min": [
+              -59.20000076293945,
+              93.0,
+              -496.0
+            ],
+            "max": [
+              -59.060001373291016,
+              94.0199966430664,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D15_-8_-62_1",
+            "min": [
+              -62.939998626708984,
+              93.0,
+              -496.0
+            ],
+            "max": [
+              -62.79999923706055,
+              94.0199966430664,
+              -494.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D15_-8_-62_2",
+            "min": [
+              -62.939998626708984,
+              93.0,
+              -491.20001220703125
+            ],
+            "max": [
+              -62.79999923706055,
+              94.0199966430664,
+              -488.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D15_-8_-61_0",
+            "min": [
+              -62.939998626708984,
+              93.0,
+              -488.0
+            ],
+            "max": [
+              -59.060001373291016,
+              94.0199966430664,
+              -483.8599853515625
+            ],
+            "triangles": 28
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D15_-8_-63_0",
+            "min": [
+              -59.20000076293945,
+              94.0199966430664,
+              -498.20001220703125
+            ],
+            "max": [
+              -56.0,
+              96.19999694824219,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D15_-8_-63_1",
+            "min": [
+              -62.939998626708984,
+              94.0199966430664,
+              -501.94000244140625
+            ],
+            "max": [
+              -56.0,
+              96.19999694824219,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D15_-8_-62_0",
+            "min": [
+              -59.20000076293945,
+              94.0199966430664,
+              -496.0
+            ],
+            "max": [
+              -59.060001373291016,
+              96.19999694824219,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D15_-8_-62_1",
+            "min": [
+              -62.939998626708984,
+              94.0199966430664,
+              -496.0
+            ],
+            "max": [
+              -62.79999923706055,
+              96.19999694824219,
+              -494.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D15_-8_-62_2",
+            "min": [
+              -62.939998626708984,
+              94.0199966430664,
+              -491.20001220703125
+            ],
+            "max": [
+              -62.79999923706055,
+              96.19999694824219,
+              -488.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D15_-8_-61_0",
+            "min": [
+              -62.939998626708984,
+              94.0199966430664,
+              -488.0
+            ],
+            "max": [
+              -59.060001373291016,
+              96.19999694824219,
+              -483.8599853515625
+            ],
+            "triangles": 28
+          },
+          {
+            "mesh": "TidalStaffRoof_D15_-8_-63_0",
+            "min": [
+              -62.79999923706055,
+              96.19999694824219,
+              -501.79998779296875
+            ],
+            "max": [
+              -56.0,
+              96.33999633789062,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffRoof_D15_-8_-62_0",
+            "min": [
+              -62.79999923706055,
+              96.19999694824219,
+              -496.0
+            ],
+            "max": [
+              -59.20000076293945,
+              96.33999633789062,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffRoof_D15_-8_-61_0",
+            "min": [
+              -62.79999923706055,
+              96.19999694824219,
+              -488.0
+            ],
+            "max": [
+              -59.20000076293945,
+              96.33999633789062,
+              -484.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalReceiverLintel_D15_clean_linen_supply",
+            "min": [
+              -62.939998626708984,
+              95.80000305175781,
+              -494.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              96.19999694824219,
+              -491.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalReceiverLintel_D15_sealed_soiled_waste",
+            "min": [
+              -62.939998626708984,
+              95.80000305175781,
+              -488.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              96.19999694824219,
+              -485.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightHousing_D15_5",
+            "min": [
+              -61.400001525878906,
+              96.04000091552734,
+              -493.1300048828125
+            ],
+            "max": [
+              -60.599998474121094,
+              96.19999694824219,
+              -492.8699951171875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightDiffuser_D15_5",
+            "min": [
+              -61.349998474121094,
+              96.01499938964844,
+              -493.1000061035156
+            ],
+            "max": [
+              -60.650001525878906,
+              96.04000091552734,
+              -492.8999938964844
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightHousing_D15_6",
+            "min": [
+              -61.400001525878906,
+              96.04000091552734,
+              -487.1300048828125
+            ],
+            "max": [
+              -60.599998474121094,
+              96.19999694824219,
+              -486.8699951171875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightDiffuser_D15_6",
+            "min": [
+              -61.349998474121094,
+              96.01499938964844,
+              -487.1000061035156
+            ],
+            "max": [
+              -60.650001525878906,
+              96.04000091552734,
+              -486.8999938964844
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "D15_AbandonedCleanWestMouthPhysicalClosure",
+            "min": [
+              -62.939998626708984,
+              93.0,
+              -494.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              95.80000305175781,
+              -491.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "D15_AbandonedReturnsWestMouthPhysicalClosure",
+            "min": [
+              -62.939998626708984,
+              93.0,
+              -488.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              95.80000305175781,
+              -485.20001220703125
+            ],
+            "triangles": 12
+          }
+        ],
+        "floor_owner_regions": [
+          "TIDAL_D15_MissingOnlyServiceFloor_0"
+        ],
+        "fitting_footprint_coverage": [
+          {
+            "assembly": "D15_CleanProductWorkCupboard",
+            "bounds_xz": [
+              -60.055,
+              -493.9,
+              -59.39,
+              -492.1
+            ],
+            "footprint_area_m2": 1.1969999999999683,
+            "unsupported_area_m2": 0.0
+          },
+          {
+            "assembly": "D15_CleanLinenNiche",
+            "bounds_xz": [
+              -60.01,
+              -490.67,
+              -59.39,
+              -489.33
+            ],
+            "footprint_area_m2": 0.8308000000000163,
+            "unsupported_area_m2": 0.0
+          },
+          {
+            "assembly": "D15_ClosedReturnsHoldingCupboard",
+            "bounds_xz": [
+              -60.055,
+              -487.9,
+              -59.39,
+              -486.1
+            ],
+            "footprint_area_m2": 1.1969999999999683,
+            "unsupported_area_m2": 0.0
+          }
+        ],
+        "parking_unsupported_area_m2": 0.0,
+        "house_entry": [
+          -44,
+          93,
+          -482.2
+        ],
+        "placement_reason": "Existing screened west service dead end; keep shared house portal and central/east approach entirely free. Abandoned west mouth closures remain intact; these fittings are approached within the corridor, not through the closed west mouths."
+      }
+    },
+    {
+      "deck": 16,
+      "floor_y": 97.5,
+      "receiver_persistent_id": "tidal_d16_service_receiving_001",
+      "shared_door": {
+        "name": "D16_SharedServiceDoor",
+        "persistent_id": "tidal_d16_shared_service_door_001",
+        "position": [
+          -44,
+          97.5,
+          -482.2
+        ],
+        "yaw": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblies": [
+        {
+          "name": "D16_CleanProductWorkCupboard",
+          "catalogue_id": "AST-STF-007",
+          "position": [
+            -59.7,
+            97.5,
+            -493
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d16_clean_product_cupboard_001",
+          "role": "clean_product_work_cupboard"
+        },
+        {
+          "name": "D16_CleanLinenNiche",
+          "catalogue_id": "AST-AQU-007",
+          "position": [
+            -59.7,
+            97.5,
+            -490
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d16_dry_linen_niche_001",
+          "role": "dry_clean_linen_niche"
+        },
+        {
+          "name": "D16_ClosedReturnsHoldingCupboard",
+          "catalogue_id": "AST-STF-007",
+          "position": [
+            -59.7,
+            97.5,
+            -487
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d16_vented_returns_cupboard_001",
+          "role": "vented_returns_left_compartment_open_preparation_right"
+        }
+      ],
+      "parking": {
+        "persistent_id": "tidal_d16_empty_cart_parking_bay_001",
+        "bounds_xz": [
+          -61.7,
+          -486.2,
+          -60.3,
+          -484.5
+        ],
+        "entry": "south",
+        "empty": true,
+        "capacity_accepted": false
+      },
+      "independent_survey": {
+        "actual_corridor_file": "AST-RES-TIDAL_D16_service_receiving_r001.glb",
+        "actual_corridor_sha256": "85020955f78c7d74ed526f27765c363bc3c99861f3b0fb93cb659488e527203d",
+        "actual_west_bay_meshes": [
+          {
+            "mesh": "TidalStaffWallLow_D16_-8_-63_0",
+            "min": [
+              -59.20000076293945,
+              97.5,
+              -498.20001220703125
+            ],
+            "max": [
+              -56.0,
+              98.5199966430664,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallLow_D16_-8_-63_1",
+            "min": [
+              -62.939998626708984,
+              97.5,
+              -501.94000244140625
+            ],
+            "max": [
+              -56.0,
+              98.5199966430664,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallLow_D16_-8_-62_0",
+            "min": [
+              -59.20000076293945,
+              97.5,
+              -496.0
+            ],
+            "max": [
+              -59.060001373291016,
+              98.5199966430664,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D16_-8_-62_1",
+            "min": [
+              -62.939998626708984,
+              97.5,
+              -496.0
+            ],
+            "max": [
+              -62.79999923706055,
+              98.5199966430664,
+              -494.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D16_-8_-62_2",
+            "min": [
+              -62.939998626708984,
+              97.5,
+              -491.20001220703125
+            ],
+            "max": [
+              -62.79999923706055,
+              98.5199966430664,
+              -488.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D16_-8_-61_0",
+            "min": [
+              -62.939998626708984,
+              97.5,
+              -488.0
+            ],
+            "max": [
+              -59.060001373291016,
+              98.5199966430664,
+              -483.8599853515625
+            ],
+            "triangles": 28
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D16_-8_-63_0",
+            "min": [
+              -59.20000076293945,
+              98.5199966430664,
+              -498.20001220703125
+            ],
+            "max": [
+              -56.0,
+              100.69999694824219,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D16_-8_-63_1",
+            "min": [
+              -62.939998626708984,
+              98.5199966430664,
+              -501.94000244140625
+            ],
+            "max": [
+              -56.0,
+              100.69999694824219,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D16_-8_-62_0",
+            "min": [
+              -59.20000076293945,
+              98.5199966430664,
+              -496.0
+            ],
+            "max": [
+              -59.060001373291016,
+              100.69999694824219,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D16_-8_-62_1",
+            "min": [
+              -62.939998626708984,
+              98.5199966430664,
+              -496.0
+            ],
+            "max": [
+              -62.79999923706055,
+              100.69999694824219,
+              -494.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D16_-8_-62_2",
+            "min": [
+              -62.939998626708984,
+              98.5199966430664,
+              -491.20001220703125
+            ],
+            "max": [
+              -62.79999923706055,
+              100.69999694824219,
+              -488.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D16_-8_-61_0",
+            "min": [
+              -62.939998626708984,
+              98.5199966430664,
+              -488.0
+            ],
+            "max": [
+              -59.060001373291016,
+              100.69999694824219,
+              -483.8599853515625
+            ],
+            "triangles": 28
+          },
+          {
+            "mesh": "TidalStaffRoof_D16_-8_-63_0",
+            "min": [
+              -62.79999923706055,
+              100.69999694824219,
+              -501.79998779296875
+            ],
+            "max": [
+              -56.0,
+              100.83999633789062,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffRoof_D16_-8_-62_0",
+            "min": [
+              -62.79999923706055,
+              100.69999694824219,
+              -496.0
+            ],
+            "max": [
+              -59.20000076293945,
+              100.83999633789062,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffRoof_D16_-8_-61_0",
+            "min": [
+              -62.79999923706055,
+              100.69999694824219,
+              -488.0
+            ],
+            "max": [
+              -59.20000076293945,
+              100.83999633789062,
+              -484.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalReceiverLintel_D16_clean_linen_supply",
+            "min": [
+              -62.939998626708984,
+              100.30000305175781,
+              -494.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              100.69999694824219,
+              -491.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalReceiverLintel_D16_sealed_soiled_waste",
+            "min": [
+              -62.939998626708984,
+              100.30000305175781,
+              -488.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              100.69999694824219,
+              -485.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightHousing_D16_5",
+            "min": [
+              -61.400001525878906,
+              100.54000091552734,
+              -493.1300048828125
+            ],
+            "max": [
+              -60.599998474121094,
+              100.69999694824219,
+              -492.8699951171875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightDiffuser_D16_5",
+            "min": [
+              -61.349998474121094,
+              100.51499938964844,
+              -493.1000061035156
+            ],
+            "max": [
+              -60.650001525878906,
+              100.54000091552734,
+              -492.8999938964844
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightHousing_D16_6",
+            "min": [
+              -61.400001525878906,
+              100.54000091552734,
+              -487.1300048828125
+            ],
+            "max": [
+              -60.599998474121094,
+              100.69999694824219,
+              -486.8699951171875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightDiffuser_D16_6",
+            "min": [
+              -61.349998474121094,
+              100.51499938964844,
+              -487.1000061035156
+            ],
+            "max": [
+              -60.650001525878906,
+              100.54000091552734,
+              -486.8999938964844
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "D16_AbandonedCleanWestMouthPhysicalClosure",
+            "min": [
+              -62.939998626708984,
+              97.5,
+              -494.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              100.30000305175781,
+              -491.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "D16_AbandonedReturnsWestMouthPhysicalClosure",
+            "min": [
+              -62.939998626708984,
+              97.5,
+              -488.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              100.30000305175781,
+              -485.20001220703125
+            ],
+            "triangles": 12
+          }
+        ],
+        "floor_owner_regions": [
+          "TIDAL_D16_MissingOnlyServiceFloor_0"
+        ],
+        "fitting_footprint_coverage": [
+          {
+            "assembly": "D16_CleanProductWorkCupboard",
+            "bounds_xz": [
+              -60.055,
+              -493.9,
+              -59.39,
+              -492.1
+            ],
+            "footprint_area_m2": 1.1969999999999683,
+            "unsupported_area_m2": 0.0
+          },
+          {
+            "assembly": "D16_CleanLinenNiche",
+            "bounds_xz": [
+              -60.01,
+              -490.67,
+              -59.39,
+              -489.33
+            ],
+            "footprint_area_m2": 0.8308000000000163,
+            "unsupported_area_m2": 0.0
+          },
+          {
+            "assembly": "D16_ClosedReturnsHoldingCupboard",
+            "bounds_xz": [
+              -60.055,
+              -487.9,
+              -59.39,
+              -486.1
+            ],
+            "footprint_area_m2": 1.1969999999999683,
+            "unsupported_area_m2": 0.0
+          }
+        ],
+        "parking_unsupported_area_m2": 0.0,
+        "house_entry": [
+          -44,
+          97.5,
+          -482.2
+        ],
+        "placement_reason": "Existing screened west service dead end; keep shared house portal and central/east approach entirely free. Abandoned west mouth closures remain intact; these fittings are approached within the corridor, not through the closed west mouths."
+      }
+    },
+    {
+      "deck": 17,
+      "floor_y": 102,
+      "receiver_persistent_id": "tidal_d17_service_receiving_001",
+      "shared_door": {
+        "name": "D17_SharedServiceDoor",
+        "persistent_id": "tidal_d17_shared_service_door_001",
+        "position": [
+          -10.5,
+          102,
+          -482.2
+        ],
+        "yaw": 0,
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "assemblies": [
+        {
+          "name": "D17_CleanProductWorkCupboard",
+          "catalogue_id": "AST-STF-007",
+          "position": [
+            -59.7,
+            102,
+            -493
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d17_clean_product_cupboard_001",
+          "role": "clean_product_work_cupboard"
+        },
+        {
+          "name": "D17_CleanLinenNiche",
+          "catalogue_id": "AST-AQU-007",
+          "position": [
+            -59.7,
+            102,
+            -490
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d17_dry_linen_niche_001",
+          "role": "dry_clean_linen_niche"
+        },
+        {
+          "name": "D17_ClosedReturnsHoldingCupboard",
+          "catalogue_id": "AST-STF-007",
+          "position": [
+            -59.7,
+            102,
+            -487
+          ],
+          "yaw": -1.5707963267948966,
+          "persistent_id": "tidal_d17_vented_returns_cupboard_001",
+          "role": "vented_returns_left_compartment_open_preparation_right"
+        }
+      ],
+      "parking": {
+        "persistent_id": "tidal_d17_empty_cart_parking_bay_001",
+        "bounds_xz": [
+          -61.7,
+          -486.2,
+          -60.3,
+          -484.5
+        ],
+        "entry": "south",
+        "empty": true,
+        "capacity_accepted": false
+      },
+      "independent_survey": {
+        "actual_corridor_file": "AST-RES-TIDAL_D17_service_receiving_r001.glb",
+        "actual_corridor_sha256": "af0c6ca72be545bcf891ea16cd52e0507ec049a9ce1fd38b194be57a9d3e1f29",
+        "actual_west_bay_meshes": [
+          {
+            "mesh": "TidalStaffWallLow_D17_-8_-63_0",
+            "min": [
+              -59.20000076293945,
+              102.0,
+              -498.20001220703125
+            ],
+            "max": [
+              -56.0,
+              103.0199966430664,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallLow_D17_-8_-63_1",
+            "min": [
+              -62.939998626708984,
+              102.0,
+              -501.94000244140625
+            ],
+            "max": [
+              -56.0,
+              103.0199966430664,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallLow_D17_-8_-62_0",
+            "min": [
+              -59.20000076293945,
+              102.0,
+              -496.0
+            ],
+            "max": [
+              -59.060001373291016,
+              103.0199966430664,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D17_-8_-62_1",
+            "min": [
+              -62.939998626708984,
+              102.0,
+              -496.0
+            ],
+            "max": [
+              -62.79999923706055,
+              103.0199966430664,
+              -494.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D17_-8_-62_2",
+            "min": [
+              -62.939998626708984,
+              102.0,
+              -491.20001220703125
+            ],
+            "max": [
+              -62.79999923706055,
+              103.0199966430664,
+              -488.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallLow_D17_-8_-61_0",
+            "min": [
+              -62.939998626708984,
+              102.0,
+              -488.0
+            ],
+            "max": [
+              -59.060001373291016,
+              103.0199966430664,
+              -483.8599853515625
+            ],
+            "triangles": 28
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D17_-8_-63_0",
+            "min": [
+              -59.20000076293945,
+              103.0199966430664,
+              -498.20001220703125
+            ],
+            "max": [
+              -56.0,
+              105.19999694824219,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D17_-8_-63_1",
+            "min": [
+              -62.939998626708984,
+              103.0199966430664,
+              -501.94000244140625
+            ],
+            "max": [
+              -56.0,
+              105.19999694824219,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D17_-8_-62_0",
+            "min": [
+              -59.20000076293945,
+              103.0199966430664,
+              -496.0
+            ],
+            "max": [
+              -59.060001373291016,
+              105.19999694824219,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D17_-8_-62_1",
+            "min": [
+              -62.939998626708984,
+              103.0199966430664,
+              -496.0
+            ],
+            "max": [
+              -62.79999923706055,
+              105.19999694824219,
+              -494.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D17_-8_-62_2",
+            "min": [
+              -62.939998626708984,
+              103.0199966430664,
+              -491.20001220703125
+            ],
+            "max": [
+              -62.79999923706055,
+              105.19999694824219,
+              -488.79998779296875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffWallHigh_D17_-8_-61_0",
+            "min": [
+              -62.939998626708984,
+              103.0199966430664,
+              -488.0
+            ],
+            "max": [
+              -59.060001373291016,
+              105.19999694824219,
+              -483.8599853515625
+            ],
+            "triangles": 28
+          },
+          {
+            "mesh": "TidalStaffRoof_D17_-8_-63_0",
+            "min": [
+              -62.79999923706055,
+              105.19999694824219,
+              -501.79998779296875
+            ],
+            "max": [
+              -56.0,
+              105.33999633789062,
+              -496.0
+            ],
+            "triangles": 20
+          },
+          {
+            "mesh": "TidalStaffRoof_D17_-8_-62_0",
+            "min": [
+              -62.79999923706055,
+              105.19999694824219,
+              -496.0
+            ],
+            "max": [
+              -59.20000076293945,
+              105.33999633789062,
+              -488.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffRoof_D17_-8_-61_0",
+            "min": [
+              -62.79999923706055,
+              105.19999694824219,
+              -488.0
+            ],
+            "max": [
+              -59.20000076293945,
+              105.33999633789062,
+              -484.0
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalReceiverLintel_D17_clean_linen_supply",
+            "min": [
+              -62.939998626708984,
+              104.80000305175781,
+              -494.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              105.19999694824219,
+              -491.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalReceiverLintel_D17_sealed_soiled_waste",
+            "min": [
+              -62.939998626708984,
+              104.80000305175781,
+              -488.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              105.19999694824219,
+              -485.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightHousing_D17_5",
+            "min": [
+              -61.400001525878906,
+              105.04000091552734,
+              -493.1300048828125
+            ],
+            "max": [
+              -60.599998474121094,
+              105.19999694824219,
+              -492.8699951171875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightDiffuser_D17_5",
+            "min": [
+              -61.349998474121094,
+              105.01499938964844,
+              -493.1000061035156
+            ],
+            "max": [
+              -60.650001525878906,
+              105.04000091552734,
+              -492.8999938964844
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightHousing_D17_6",
+            "min": [
+              -61.400001525878906,
+              105.04000091552734,
+              -487.1300048828125
+            ],
+            "max": [
+              -60.599998474121094,
+              105.19999694824219,
+              -486.8699951171875
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "TidalStaffLightDiffuser_D17_6",
+            "min": [
+              -61.349998474121094,
+              105.01499938964844,
+              -487.1000061035156
+            ],
+            "max": [
+              -60.650001525878906,
+              105.04000091552734,
+              -486.8999938964844
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "D17_AbandonedCleanWestMouthPhysicalClosure",
+            "min": [
+              -62.939998626708984,
+              102.0,
+              -494.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              104.80000305175781,
+              -491.20001220703125
+            ],
+            "triangles": 12
+          },
+          {
+            "mesh": "D17_AbandonedReturnsWestMouthPhysicalClosure",
+            "min": [
+              -62.939998626708984,
+              102.0,
+              -488.79998779296875
+            ],
+            "max": [
+              -62.79999923706055,
+              104.80000305175781,
+              -485.20001220703125
+            ],
+            "triangles": 12
+          }
+        ],
+        "floor_owner_regions": [
+          "TIDAL_D17_MissingOnlyServiceFloor_0"
+        ],
+        "fitting_footprint_coverage": [
+          {
+            "assembly": "D17_CleanProductWorkCupboard",
+            "bounds_xz": [
+              -60.055,
+              -493.9,
+              -59.39,
+              -492.1
+            ],
+            "footprint_area_m2": 1.1969999999999683,
+            "unsupported_area_m2": 0.0
+          },
+          {
+            "assembly": "D17_CleanLinenNiche",
+            "bounds_xz": [
+              -60.01,
+              -490.67,
+              -59.39,
+              -489.33
+            ],
+            "footprint_area_m2": 0.8308000000000163,
+            "unsupported_area_m2": 0.0
+          },
+          {
+            "assembly": "D17_ClosedReturnsHoldingCupboard",
+            "bounds_xz": [
+              -60.055,
+              -487.9,
+              -59.39,
+              -486.1
+            ],
+            "footprint_area_m2": 1.1969999999999683,
+            "unsupported_area_m2": 0.0
+          }
+        ],
+        "parking_unsupported_area_m2": 0.0,
+        "house_entry": [
+          -10.5,
+          102,
+          -482.2
+        ],
+        "placement_reason": "Existing screened west service dead end; keep shared house portal and central/east approach entirely free. Abandoned west mouth closures remain intact; these fittings are approached within the corridor, not through the closed west mouths."
+      }
+    }
+  ],
+  "derivative_counts_as_new_catalogue_design": false,
+  "operations": "physical_fittings_only_stock_returns_save_on_hold",
+  "shared_flow": "sequential_sealed_load_only_unaccepted_hygiene",
+  "reference": "BlenderCatalogue/references/landings/staff_corridor_services.png",
+  "constraints": [
+    "No new cart, room, floor or controller",
+    "Vented returns left compartment plus open preparation shelves: no sealing/hygiene claim",
+    "Do not alter any service mouth closure, door swing or lift",
+    "Full routes, boarding and loaded cart/species turns deferred"
+  ]
+}

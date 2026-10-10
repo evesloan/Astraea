@@ -29,6 +29,7 @@ commands = [('grand_pool_service_cart', ['--script', 'res://tests/validate_grand
 commands += [('grand_pool_local_lift', ['--script', 'res://tests/validate_grand_pool_local_lift.gd']), ('forward_staff_extended_lift', ['--script', 'res://tests/validate_forward_staff_extended_lift.gd'])]
 commands += [('forward_staff_upper_operation', ['--script', 'res://tests/validate_forward_staff_upper_operation.gd'])]
 commands += [('tidal_d13_local_service_fittings', ['--script', 'res://tests/validate_tidal_d13_local_service_fittings.gd'])]
+commands += [('tidal_upper_local_service_fittings', ['--script', 'res://tests/validate_tidal_upper_local_service_fittings.gd'])]
 commands = [('secondary_engineering_access', ['--script', 'res://tests/validate_secondary_engineering_access.gd'])] + commands
 commands = [('grand_pool_first_pass', ['--script', 'res://tests/validate_grand_pool_first_pass.gd'])] + commands
 commands = [('secondary_engineering_essentials', ['--script', 'res://tests/validate_secondary_engineering_essentials.gd'])] + commands
