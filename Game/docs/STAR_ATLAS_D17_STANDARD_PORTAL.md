@@ -1,3 +1,5 @@
+Current update: the descendant receiving batch supplies the onward floor, guarded geometric support and shared doorway connection after77 sealed-stage and123 connected checks. Room823 has a contained entry source fitting, but remains unadopted. See [D17 receiving branch](STAR_ATLAS_D17_RECEIVING_FIRST.md) for current scope and held engineering/room/graphical acceptance. The text below records the historical source-only checkpointc1942ee.
+
 # D17 standard-house receiving doorway source
 
 The ten recorded port-central D17 standard doubles remain unbuilt conditional fits, with their20 rest reservations and exact allocation/proposal IDs preserved. All seven VIP allocations remain held. Their actual receiving geometry is a dependency: the retained upper commons terminates at a full-height wall along Z13.78..14.0, and no onward floor exists at the candidate exit. The connected Royalty platform belongs to the opposite house and supplies no support here. Existing D12–D14 courts and lift do not authorize a D15–D17 void extension.
