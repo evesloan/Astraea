@@ -15,7 +15,13 @@ for role,color in palette.items():
  if role=='opal_glow':bs.inputs['Emission Color'].default_value=color;bs.inputs['Emission Strength'].default_value=1.2
  mats[role]=m
 for p in P['parts']:
- me=bpy.data.meshes.new(p['name']);me.from_pydata([B(v)for v in p['verts']],[],p['faces']);me.update();bm=bmesh.new();bm.from_mesh(me);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=.000001);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(me);bm.free();me.materials.append(mats[p['role']]);uv=me.uv_layers.new(name='MetreScaled')
+ lookup={};verts=[];index_map=[]
+ for vertex in p['verts']:
+  key=tuple(round(float(x),9)for x in vertex)
+  if key not in lookup:lookup[key]=len(verts);verts.append(B(vertex))
+  index_map.append(lookup[key])
+ faces=[[index_map[i]for i in f]for f in p['faces']]
+ me=bpy.data.meshes.new(p['name']);me.from_pydata(verts,[],faces);me.update();bm=bmesh.new();bm.from_mesh(me);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=.000001);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));assert all(e.is_manifold for e in bm.edges),(p['name'],'nonmanifold owned solid');assert bm.calc_volume(signed=True)>0,(p['name'],'nonpositive owned volume');bm.to_mesh(me);bm.free();me.materials.append(mats[p['role']]);uv=me.uv_layers.new(name='MetreScaled')
  for f in me.polygons:
   n=f.normal;u=Vector((1,0,0))if abs(n.z)>.7 else Vector((-n.y,n.x,0)).normalized();v=n.cross(u)
   for li in f.loop_indices:co=me.vertices[me.loops[li].vertex_index].co;uv.data[li].uv=(co.dot(u),co.dot(v))
