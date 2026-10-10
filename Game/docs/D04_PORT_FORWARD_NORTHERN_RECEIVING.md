@@ -1,3 +1,11 @@
+# D04 northern receiving — connected construction checkpoint
+
+The owned northern street and care pocket now connect to the retained street. Exactly three original end-guard nodes are removed at runtime only after the retained sealed receipt is verified; lateral guards and original exports remain intact. All 599 bounded actual-main checks pass: 12 real player walks, four northern staff walks and both retained public/staff arrivals. The sealed stage passed 581 checks and was independently retained at c89bc3cc7791c81d3de9872bc37a98c992ab795f before connection. Five source views have been inspected, including the connected threshold.
+
+This adds 405.67 m² of missing-only floor/care pocket, 34 original-keel foundation piers, 29 braces and 177 owned closed solids. The original 20 allocations and 25 reserved rests remain unchanged; ten northern interiors and thirteen rest positions remain unbuilt. These geometry tests do not certify primary engineering, cart-safe vertical circulation, species capacity, final gameplay or ordinary Godot/CRT/hardware graphics. Full commons, service, activity and environment work remains.
+
+## Retained sealed-stage evidence and survey history
+
 # D04 northern receiving — sealed construction WIP
 
 The retained D03-only survey found36/144 expected bearing hits and108 missing supports; the broad southern cover does not exist under the ten northern allocations. That exact survey remains historical evidence. The current receiving establishes a new explicit geometric path to the unchanged HUL_KeelPan at y−3.2 instead of substituting a missing D03 slab:34 foundation shoes/piers,29 longitudinal braces and transfer members at15.4–16.26. They remain outside the original staff route and all200 crew proposals, above its15.34m ceiling.306 exact top-contact preimage samples and306 front-face underside runtime witnesses pass. No primary load, buckling, torsion or pressure engineering certification is claimed.

@@ -1,3 +1,5 @@
+**D04 northern receiving connected continuation:** bounded actual-main gate PASS599 after sealed PASS581; 12 actual-player routes, 4 staff routes, 2 original arrivals. 34 keel piers/29 braces/177 owned solids; original layouts/25 reserved rests/200 crew proposals/source exports preserved. Five source diagnostics reviewed. Ten northern interiors/thirteen rests and the full commons/service/environment/engineering/vertical/final graphics scope remain UNFINISHED.
+
 # Full ship requirement inventory
 
 ## Current entry point: 10 October 2026
