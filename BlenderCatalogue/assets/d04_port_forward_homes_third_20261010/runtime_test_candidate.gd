@@ -108,8 +108,14 @@ func run()->void:
 						record("leaf_sweep_"+idx+"_"+str(frame)+"_"+str(leaf.name),foreign.is_empty())
 						if not foreign.is_empty():print("FOREIGN_LEAF ",idx," ",foreign)
 			record("door_open_"+idx,door.open_fraction>.999)
-			for goal in[foyer,Vector3(foyer.x,16.5,cz+1.3),Vector3(care.x,16.5,cz+1.3),care]:
+			var goals:Array=[foyer,Vector3(foyer.x,16.5,cz+1.3),Vector3(care.x,16.5,cz+1.3),care]
+			if r.has("entry_to_care_waypoints"):goals=r.entry_to_care_waypoints.map(func(a):return vec(a))
+			for goal in goals:
 				var result:Dictionary=await walk_to(player,goal);result.room=r.source_index;walks.append(result);record("actual_home_walk_"+str(walks.size()),result.reached and result.floor_contact)
+				if not result.reached:break
+			var rest_goals:Array=r.rest_approach_waypoints.map(func(a):return vec(a)) if r.has("rest_approach_waypoints") else r.rest_approach_worlds.map(func(a):return vec(a.position))
+			for goal in rest_goals:
+				var result:Dictionary=await walk_to(player,goal);result.room=r.source_index;result.scope="individual_rest_approach";walks.append(result);record("actual_home_walk_"+str(walks.size()),result.reached and result.floor_contact)
 				if not result.reached:break
 			door.interact(null)
 			for i in range(100):await physics_frame

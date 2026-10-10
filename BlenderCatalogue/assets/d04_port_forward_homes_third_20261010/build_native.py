@@ -2,6 +2,8 @@ from pathlib import Path
 import bpy,json,hashlib,sys,math
 from mathutils import Vector,Matrix
 W=Path(__file__).resolve().parent;R=W.parents[2];P=json.load(open(W/'PLAN.json'))
+if (W/'PLAN.json').exists() and json.load(open(W/'PLAN.json')).get('aquatic_circulation_refinement'):
+ raise SystemExit('Refined PLAN.json is retained; use build_refined_aquatic.py. Initial whole-pair generator remains historical.')
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();B=lambda p:(p[0],-p[2],p[1])
 assert json.load(open(W/'PREIMAGE_SUPPORT.json'))['status']=='PASS'
 for p,h in P['source_pins'].items():assert sha(R/p)==h,p

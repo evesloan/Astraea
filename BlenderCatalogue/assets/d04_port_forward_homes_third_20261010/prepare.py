@@ -5,6 +5,8 @@ from shapely.geometry.polygon import orient
 from shapely import constrained_delaunay_triangles
 from shapely.ops import unary_union
 R=Path(__file__).resolve().parents[3];W=Path(__file__).resolve().parent
+if (W/'PLAN.json').exists() and json.load(open(W/'PLAN.json')).get('aquatic_circulation_refinement'):
+ raise SystemExit('Refined PLAN.json is retained; use build_refined_aquatic.py. Initial whole-pair generator remains historical.')
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 parts=[]
 faces=[[0,3,2,1],[4,5,6,7],[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]]
