@@ -56,9 +56,10 @@ for idx in [880,892,904,916]:
  prism(prefix+'Floor',poly,16.26,16.5);prism(prefix+'Roof',poly,20.46,20.66,role='ivory_enamel',category='roof')
  # Faceted shell, rear outlook and contained entry enclosure; front/window
  # spans are built separately so no solid wall fills either actual opening.
- for j,(a0,a1)in enumerate(zip(list(poly.exterior.coords)[:-1],list(poly.exterior.coords)[1:])):
-  if abs(a0[0]-a1[0])<1e-8 and a0[0]in[x0,x1]:continue
-  segment(prefix+'Shell_'+str(j),[a0[0],18.48,a0[1]],[a1[0],18.48,a1[1]],.18,3.96,role='ivory_enamel',category='shell')
+ wall_line=poly.buffer(-.09,join_style=2)
+ for j,(a0,a1)in enumerate(zip(list(wall_line.exterior.coords)[:-1],list(wall_line.exterior.coords)[1:])):
+  if abs(a0[0]-a1[0])<1e-8 and min(abs(a0[0]-x0),abs(a0[0]-x1))<.11:continue
+  segment(prefix+'Shell_'+str(j),[a0[0],18.48,a0[1]],[a1[0],18.48,a1[1]],3.96,.18,role='ivory_enamel',category='shell')
  front=x1 if west else x0;rear=x0 if west else x1;doorx=front+(-.175 if west else .175);yaw=math.pi/2 if west else-math.pi/2
  # Keep whole3.48m pocket profile received inside the historical polygon.
  frontlo,fronthi=(front-.18,front)if west else(front,front+.18)
@@ -70,7 +71,7 @@ for idx in [880,892,904,916]:
  cube(prefix+'GardenHead',[rearlo,19.75,z0+chamfer],[rearhi,20.46,z1-chamfer],role='ivory_enamel',category='shell')
  for k,z in enumerate([z0+chamfer,(z0+z1)/2,z1-chamfer]):cube(prefix+'WindowMullion_'+str(k),[rearlo-.025,17.6,z-.055],[rearhi+.025,19.8,z+.055],category='window_frame')
  # Source fixtures and a screened wet/service corner, separated from entry.
- bathx=(x1-4.2)if west else(x0+1.0);bathz=z0+.8
+ bathx=(x1-4.2)if west else(x0+2.0);bathz=z0+.8
  cube(prefix+'BathScreen',[bathx+(1.45 if west else 0),16.5,bathz+3.05],[bathx+(2.9 if west else 1.45),19.0,bathz+3.23],role='ivory_enamel',category='privacy_screen')
  cube(prefix+'BathDogleg',[bathx+(2.72 if west else-.18),16.5,bathz],[bathx+(2.90 if west else 0),19.0,bathz+3.23],role='ivory_enamel',category='privacy_screen')
  cube(prefix+'VanityMountWall',[bathx+.74,16.5,bathz-.10],[bathx+.84,19.0,bathz+1.20],role='ivory_enamel',category='fixture_support')
@@ -103,7 +104,7 @@ for idx in [880,892,904,916]:
   for j,g in enumerate([water]if water.geom_type=='Polygon'else water.geoms):
    prism(prefix+'Water_'+str(j),g,17.02,17.025,role='water',category='water');parts[-1]['runtime_collision']=False
   components.extend([{'catalogue_id':'AST-FUR-002','name':'DryTransferChair','position':[x0+2.5,16.5,z1-1.4],'yaw':math.pi/2},{'catalogue_id':'AST-FUR-003','name':'DryActivityTable','position':[x0+4.0,16.5,z1-1.35],'yaw':0}])
-  approach=[restx-3.1,16.5,restz]
+  approach=[restx-3.6,16.5,restz]
  # Two source-bound ceiling lamps and a lower activity light; no ambient rescue.
  lights=[]
  for k,(lx,lz)in enumerate([(cx,cz),(front+(-2.0 if west else 2.0),cz),(rear+(1.0 if west else-1.0),z1-1.8)]):
@@ -113,7 +114,10 @@ for idx in [880,892,904,916]:
   for z in [z0+.4,z1-.4]:
    fx=-44.3 if idx==916 and x==x0+.30 and z==z0+.4 else x
    f={'x':fx,'z':z,'y':12,'owner':'D03_port_forward_staff_floor_0'if x<-55.2 else'D03_protected_crew_cover','wall_contact_allowed':x<-55.2,'room_index':idx};feet.append(f)
-   cube(prefix+'Pier_'+str(len(feet)),[fx-.14,12,z-.14],[fx+.14,16.3,z+.14]);cube(prefix+'FloorCross_'+str(len(feet)),[min(x0-(3.65 if west else 0),fx-.14),15.98,z-.14],[x1+(0 if west else 3.65),16.3,z+.14])
+   cube(prefix+'Pier_'+str(len(feet)),[fx-.14,12,z-.14],[fx+.14,16.3,z+.14])
+ for j,z in enumerate([z0+.4,z1-.4]):
+  support_x=min(f['x']-.14 for f in feet if f['room_index']==idx and abs(f['z']-z)<1e-7)
+  cube(prefix+'FloorCross_'+str(j),[min(x0-(3.65 if west else 0),support_x),15.98,z-.14],[x1+(0 if west else 3.65),16.3,z+.14])
  for x in [x0+.3,x1-.3]:cube(prefix+'Long_'+str(x),[x-.14,15.98,z0],[x+.14,16.3,z1])
  rooms.append({'allocation':a,'source_index':idx,'proposed_design_species':'Mantelids'if west else'Baelins','design_assignment_status':'ordinary architectural proposal, not recovered species/home assignment','species_ready':False,'profile_proposal':('garden_cocoon_folio'if not variant else'offset_quiet_care_retreat')if west else('aquatic_garden_bath'if not variant else'offset_aquatic_dry_gallery'),'parts':parts,'components':components,'floor_geometry':mapping(poly),'floor_y':16.5,'entry':{'origin':[doorx,16.5,cz],'yaw':yaw,'persistent_id':a['proposed_runtime_id']+':entry'},'approach_world':approach,'water_geometry':mapping(pool)if pool else None,'water_level_proposed':17.025 if pool else None,'lights':lights,'model_file':f'D04_PORT_FORWARD_HOME_{idx}_r001.glb','court_side':'west'if west else'east'})
 parts=[];courts=[]
@@ -122,7 +126,7 @@ for side,(x0,x1)in [('west',(-62.6,-58.95)),('east',(-29.05,-25.4)),('commons',(
  outside=x0 if side!='east'else x1;lo,hi=(outside,outside+.18)if side!='east'else(outside-.18,outside)
  cube(prefix+'PrivacyScreen',[lo,16.5,z0],[hi,18.45,z1],role='ivory_enamel',category='privacy_screen')
  cube(prefix+'GlassUpper',[lo,18.45,z0],[hi,20.46,z1],role='hospitality_glass',category='window')
- for j,z in enumerate([z0,z1]):cube(prefix+'End',[x0,16.5,z-.09],[x1,20.46,z+.09],role='ivory_enamel',category='shell')
+ for j,z in enumerate([z0,z1]):cube(prefix+'End_'+str(j),[x0,16.5,z-.09],[x1,20.46,z+.09],role='ivory_enamel',category='shell')
  # Purposeful planted pockets, not random decoration; plants remain static
  # fictional garden assets and imply no life-support simulation.
  for j,z in enumerate([z0+1.5,(z0+z1)/2,z1-1.5]):
@@ -132,7 +136,8 @@ for side,(x0,x1)in [('west',(-62.6,-58.95)),('east',(-29.05,-25.4)),('commons',(
  # Missing-only court support spans meet selected room floor cross beams or
  # original commons transfer members. No new imaginary lower slab is used.
  zs=[-422.6,-416.2,-415.2,-408.8]if side!='commons'else[-373.5,-367.5]
- for j,z in enumerate(zs):cube(prefix+'Transfer_'+str(j),[x0,15.98,z-.12],[x1,16.3,z+.12])
+ if side=='commons':
+  for j,z in enumerate(zs):cube(prefix+'Transfer_'+str(j),[x0,15.98,z-.12],[x1+.2,16.3,z+.12])
 commonsparts=[]
 for q in parts:commonsparts.append(q)
 parts=[]

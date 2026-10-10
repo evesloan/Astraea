@@ -146,6 +146,7 @@ func _ready() -> void:
 	load("res://scripts/medical_welcome.gd").build($ShipSpace/Districts,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/medical_welcome.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/d04_port_forward_receiving.gd").build(self)
+	load("res://scripts/d04_port_forward_homes_first.gd").build(self)
 	var cleaning_cart:RigidBody3D=(load("res://scripts/cleaning_cart.gd")as GDScript).new()
 	cleaning_cart.name="CustodialCart"
 	cleaning_cart.position=Vector3(85.2,84.04,-37.3)
