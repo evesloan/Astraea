@@ -1,3 +1,11 @@
+# D04 final six homes — connected construction checkpoint
+
+Allocations 934/946/958/970/982/994 now connect through their six registered entry proposals. Exactly two pinned fourth-batch guard meshes are replaced at runtime by eight contained successors preserving all source intervals outside the six entry cuts. Source originals stay unchanged. The sealed stage was independently verified at 57b5bb019c82561fc6f3fce874ed8cfb00af9857 before opening. All 949 connected actual-main checks pass: 72 unrestricted moving-leaf samples, 36 real-player room and individual-rest waypoints, four protected crew-home route legs and both retained arrivals. A separate 46-check receiving regression passes street/care cart and capsule stations, two northern street walks and the full northern staff-corridor walk.
+
+House physical coverage now comprises twenty connected architectural proposals and twenty-five original rest positions. All twenty polygons/IDs and twenty-five reservation IDs remain exact; no unit, rest reservation or species-ready capacity is added. Thirteen source diagnostics show the six interiors, both aquatic pairs, original doors and northern street. The failed care-station camera views remain archived. Full commons/service/activity is the next separately scoped construction task; environment/biology/operations, primary engineering, cart-safe vertical access and final ordinary in-game/CRT/hardware acceptance remain unfinished.
+
+## Retained sealed-stage evidence
+
 # D04 final six homes — sealed construction WIP
 
 Allocations 934/946/958/970/982/994 retain three single and three double architectural proposals with nine exact existing rest reservations. All twenty house polygons/IDs and twenty-five rest reservations remain unchanged. Original quiet-cocoon and aquatic components provide 39 rigid bindings; 235 owned parts include 134.2 m² of enclosed private planted courts. No unit, rest reservation or species-ready capacity is added.
