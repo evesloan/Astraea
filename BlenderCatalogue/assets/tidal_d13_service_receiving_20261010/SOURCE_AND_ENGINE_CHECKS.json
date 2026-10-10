@@ -1,0 +1,242 @@
+{
+  "schema": "astraea.tidal.d13_bounded_receipt.v1",
+  "status": "NATIVE_EXPORT_AND_BOUNDED_ACTUAL_MAIN_PASS",
+  "whole_group1_complete": false,
+  "whole_group3_complete": false,
+  "no_upper_staff_lift_acceptance": true,
+  "native_export": {
+    "blender_version": "4.3.2",
+    "derivative_native": "TidalD13ServiceReceiving.blend",
+    "derivative_native_sha256": "1dba98ebdcbf2be07ebc9c461bafb1fe835727ac19b3006d63703903b4de2830",
+    "derivative_export": "AST-RES-TIDAL_D13_service_receiving_r001.glb",
+    "derivative_export_sha256": "88f9e21c1a0637f5f91adf24160fa50b9b695a16e4457f3a019bdc8cf169cb47",
+    "retained_editable_parts": 64,
+    "additive_parts": 9,
+    "editable_meshes": 73,
+    "retained_fixture_markers": 7,
+    "repeat_export_byte_identical": true,
+    "guard_patch_native": "TidalD13ServiceGuardPatch.blend",
+    "guard_patch_native_sha256": "59b846f989e953117c902f7461c04f554faa2b8f2f8a632768d8218786d86ce8",
+    "guard_patch_export": "TidalD13ServiceGuardPatch.glb",
+    "guard_patch_export_sha256": "c8bdee6010805c17bc912a1ac9da6af793ed6fdb99d70880ca6d40ea3e2b52a2",
+    "guard_repeat_export_byte_identical": true,
+    "named_guard_replacements": [
+      {
+        "batch": "TG_Batch_144",
+        "triangles_before": 2040,
+        "triangles_after": 1988,
+        "original_triangles_affected": 92,
+        "unaffected_original_triangles_retained": 1948
+      },
+      {
+        "batch": "TG_Batch_145",
+        "triangles_before": 60,
+        "triangles_after": 92,
+        "original_triangles_affected": 8,
+        "unaffected_original_triangles_retained": 52
+      }
+    ],
+    "source_originals_unchanged": true
+  },
+  "actual_export": {
+    "status": "PASS",
+    "guard_replacement_triangles": [
+      {
+        "batch": "TG_Batch_144",
+        "original_triangles": 2040,
+        "patch_triangles": 1988,
+        "unaffected_original_triangles_screened": 1948,
+        "all_unaffected_triangle_point_sets_retained_within_m": 0.0001,
+        "round5_exact_matches": 1948
+      },
+      {
+        "batch": "TG_Batch_145",
+        "original_triangles": 60,
+        "patch_triangles": 92,
+        "unaffected_original_triangles_screened": 52,
+        "all_unaffected_triangle_point_sets_retained_within_m": 0.0001,
+        "round5_exact_matches": 52
+      }
+    ],
+    "actual_receiving_meshes": 73,
+    "actual_receiving_triangles": 1076,
+    "source_originals_unchanged": true,
+    "limits": "Bounded actual-source triangle preservation and recipe identities; live door/floor/collision acceptance checked separately."
+  },
+  "actual_main": {
+    "actual_main_loaded": true,
+    "actual_registered_fixture_lights": 7,
+    "capsule_checks": 48,
+    "closed_guard_rays": 6,
+    "door_close_open_cycles": 2,
+    "errors": [],
+    "external_door_sweep_shape_queries": 2000,
+    "floor_checks": 48,
+    "lights_registered_exactly_once": true,
+    "limits": "Bounded actual-main source receiving, stationary ordinary capsules and controller cycles only. Factory rebate contacts excluded from external architecture sweep. No exhaustive traversal, loaded-cart/species/upper lift/stock operation, final visual or target-hardware acceptance.",
+    "new_missing_only_floor_area_m2": 289.8408,
+    "obstruction_checks": 2,
+    "public_passenger_lift_unchanged": true,
+    "receiving_meshes": 73,
+    "retained_ordinary_homes": 85,
+    "retained_physical_cabin_buttons": 5,
+    "retained_salon_members": 13,
+    "retained_specialty_homes": 46,
+    "retained_staff_cap_top_y": 55.7399978637695,
+    "retained_staff_stops": 5,
+    "status": "PASS",
+    "unfinished_shaft_physically_closed": true,
+    "unique_installation": true
+  },
+  "engine_run": {
+    "status": "PASS",
+    "steps": [
+      {
+        "step": "import",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "errors": [],
+        "wall_seconds": 4.478,
+        "child_peak_rss_kib": 694948,
+        "clock_mode": "editor",
+        "log": "ENGINE_import.log"
+      },
+      {
+        "step": "actual_main_bounded",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "errors": [],
+        "wall_seconds": 45.302,
+        "child_peak_rss_kib": 6965300,
+        "clock_mode": "fixed60",
+        "log": "ENGINE_actual_main_bounded.log"
+      }
+    ],
+    "full_suite_run": false,
+    "scope": "One import barrier and one bounded actual-main D13 receiving check; not whole-ship route audit or performance acceptance."
+  },
+  "floor_reconciliation": {
+    "compiled_and_received_floor_owners_checked": [
+      "D13_fore_route",
+      "D13_aft_route",
+      "D13_fore_apron",
+      "D13_aft_apron",
+      "D13_atrium_circulation",
+      "D13_authored_atrium_terrace",
+      "D13_residential_street_connection",
+      "D13_residential_street_pilot",
+      "D13_window_terrace",
+      "D13_starboard_commons_authored",
+      "D13_star_atlas_gallery_0",
+      "D13_star_atlas_lower_roof_0",
+      "D13_primary_atrium_core_floor",
+      "D13_forward_public_core_floor",
+      "D13_fore_midship_public_core_floor",
+      "D13_aft_midship_public_core_floor",
+      "D13_aft_public_core_floor"
+    ],
+    "actual_imported_house_floor_meshes_checked": [
+      "TG_Batch_0",
+      "TG_Batch_1",
+      "TG_Batch_2",
+      "TG_Batch_3",
+      "TG_Batch_6",
+      "TG_Batch_7",
+      "TG_Batch_13",
+      "TG_Batch_14",
+      "TG_Batch_18",
+      "TG_Batch_47",
+      "TG_Batch_100",
+      "TG_Batch_101",
+      "TG_Batch_105",
+      "TG_Batch_106",
+      "TG_Batch_110",
+      "TG_Batch_111",
+      "TG_Batch_115",
+      "TG_Batch_116",
+      "TG_Batch_118",
+      "TG_Batch_119",
+      "TG_Batch_123",
+      "TG_Batch_144",
+      "TG_Batch_146",
+      "TG_Batch_147",
+      "TG_Batch_149",
+      "TG_Batch_150",
+      "TG_Batch_152",
+      "TG_Batch_153",
+      "TG_Batch_154",
+      "TG_Batch_155",
+      "TG_Batch_229",
+      "TG_Batch_234",
+      "TG_Batch_239",
+      "TG_Batch_248",
+      "TG_Batch_253",
+      "TG_Batch_258",
+      "TG_Batch_263",
+      "TG_Batch_308",
+      "TG_Batch_313",
+      "TG_Batch_318",
+      "TG_Batch_323"
+    ],
+    "proposed_approach_area_m2": 289.4087999999997,
+    "approach_existing_floor_overlap_m2": 0.0,
+    "missing_only_approach_area_m2": 289.4087999999997,
+    "collars": [
+      {
+        "role": "clean_linen_supply",
+        "gross_bounds_xz": [
+          -63.34,
+          -494.8,
+          -62.8,
+          -491.2
+        ],
+        "gross_area_m2": 1.9440000000000348,
+        "existing_imported_court_area_m2": 1.22400000000002,
+        "already_proposed_approach_area_m2": 0.5040000000000052,
+        "new_missing_only_area_m2": 0.21600000000000955
+      },
+      {
+        "role": "sealed_soiled_waste",
+        "gross_bounds_xz": [
+          -63.34,
+          -488.8,
+          -62.8,
+          -485.2
+        ],
+        "gross_area_m2": 1.9440000000000348,
+        "existing_imported_court_area_m2": 1.22400000000002,
+        "already_proposed_approach_area_m2": 0.5040000000000052,
+        "new_missing_only_area_m2": 0.21600000000000955
+      }
+    ],
+    "total_new_floor_area_m2": 289.8407999999997,
+    "existing_floor_duplicate_area_m2": 0.0,
+    "private_verge_overlap_m2": 0.0,
+    "private_verge_first_z": -482.2,
+    "service_route_end_z": -483.86
+  },
+  "correction_history": [
+    {
+      "kind": "test_fixture",
+      "attempt": "FAILED_ATTEMPT_001_BOUNDED_ENGINE_RUN.json",
+      "finding": "Temporary obstruction blocker was attached to the outer SceneTree viewport, outside the ship World360 physics world. The run failed its assertion and produced no passing receiving receipt.",
+      "correction": "Attach only the test blocker to the existing ShipSpace/PersistentActors parent. Repeat the same bounded import/main check; final48 floor/capsule points,2000 external sweep queries,2 cycles,6 closed-guard rays and2 obstruction checks pass."
+    },
+    {
+      "kind": "source_view_pose",
+      "finding": "Imported hinge parent basis made the first display-only local-axis open pose incorrect.",
+      "correction": "Apply world vertical pivot to that unsaved view only; native/exports unchanged."
+    }
+  ],
+  "protected_private_verge_and_staff_cap_unchanged": true,
+  "all_source_pins_unchanged": true,
+  "remaining": [
+    "Continuous upper staff lift and D14-D17 joins remain held",
+    "Whole-species/loaded-cart/full traversal and final Godot/CRT art",
+    "Local stock, returns cupboards and cart parking; no stock/inventory operation added",
+    "Primary-hull load transfer and structural capacity remain uncertified"
+  ],
+  "limits": "Bounded actual-main source receiving, stationary ordinary capsules and controller cycles only. Factory rebate contacts excluded from external architecture sweep. No exhaustive traversal, loaded-cart/species/upper lift/stock operation, final visual or target-hardware acceptance."
+}
