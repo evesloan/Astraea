@@ -43,4 +43,5 @@ static func build(ship: Node3D) -> Node3D:
 	load("res://scripts/tidal_d16_service_receiving.gd").build(ship,house)
 	load("res://scripts/tidal_d17_service_receiving.gd").build(ship,house)
 	load("res://scripts/forward_staff_upper_operation.gd").build(ship,house)
+	load("res://scripts/tidal_d13_local_service_fittings.gd").build(ship,house)
 	return house

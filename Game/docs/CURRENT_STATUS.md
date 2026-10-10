@@ -1,3 +1,7 @@
+## 10 October 2026: Tidal D13 local service fittings
+
+Three source-derived physical fittings now occupy the retained screened D13 service edge: clean product/work cupboard, dry linen niche and separate returns holding cupboard, plus an empty dead-end cart-parking bay. No cart, room, floor or stock/save controller is added. Exact editable sources and29,020 retained triangle point sets are preserved; final actual-main primary fit and eight stationary stance checks pass. Stock/collection/cupboard operation and hygiene acceptance remain held. D14–D17 local fittings, other housing obligations and Group1 acceptance remain unfinished. See TIDAL_D13_LOCAL_SERVICE_FITTINGS.md and its source/check receipts. Manual independently verified Git checkpoints protect this work; no automatic watcher is claimed.
+
 ## 10 October 2026: Forward staff upper operation verified
 
 The retained forward staff lift now serves its original five stops plus D13–D17 with the authored ten-stop cabin and reused upper gates/sills. Five temporary mouth closures are reconciled only after exact source/closed-gate checks. Actual-main travel, physical passenger/cart/four-product carry, moving-gate contacts/sweeps, interlocks and lower/upper obstruction holds pass with zero errors. All prior room/lift identities and earlier house connections remain preserved. See FORWARD_STAFF_UPPER_OPERATION.md for exact scope and remaining Group1 gates.

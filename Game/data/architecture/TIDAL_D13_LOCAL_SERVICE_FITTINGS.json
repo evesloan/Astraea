@@ -1,0 +1,126 @@
+{
+  "schema": "astraea.tidal.d13.local_service_fittings.v1",
+  "parent_receiving_identity": "tidal_d13_service_receiving_001",
+  "derivative_counts_as_new_catalogue_design": false,
+  "base_commit": "d1473f8429336275fae724e618f2c8f7dd7a68a0",
+  "sources": [
+    {
+      "catalogue_id": "AST-STF-007",
+      "name": "Astraea Staff Supply / Work Cabinet",
+      "family": "staff_work_cabinet",
+      "source": "assets/staff_workbay/AST-STF-007_supply_work_cabinet.blend",
+      "export": "assets/staff_workbay/AST-STF-007_supply_work_cabinet.glb",
+      "manifest": "assets/staff_workbay/AST-STF-007_supply_work_cabinet.manifest.json",
+      "dimensions_blender_xyz_m": [
+        1.7999999523162842,
+        0.6649999916553497,
+        1.149999976158142
+      ],
+      "evaluated_triangles": 11060,
+      "batch": "03",
+      "adopted_game_instances": 1,
+      "source_sha256": "b1705b3e5d7a48f4d28765a26b7c9f60fe4aa61df3b593ba4f35861125cf8edb",
+      "export_sha256": "1cdff25f6bd41dc4ecb850d5c9f70394a303ce667ba65ea0322199ba63e17d56",
+      "metadata_revision": "hinge-frame-metadata-02",
+      "last_metadata_revision_batch": "05",
+      "geometry_revision": "Original Batch03 geometry preserved",
+      "metadata_evidence": "qa/batch05/cabinet_metadata_revision/",
+      "interface_record_id": "AST-STF-007"
+    },
+    {
+      "catalogue_id": "AST-AQU-007",
+      "name": "Protected dry towel and supply niche",
+      "family": "aquatic_towel_use",
+      "source": "assets/aquatic_towel_use/source/AST-AQU-007.blend",
+      "export": "assets/aquatic_towel_use/exports/AST-AQU-007.glb",
+      "manifest": "assets/aquatic_towel_use/AST-AQU-007.manifest.json",
+      "dimensions_blender_xyz_m": [
+        1.340000033378601,
+        0.6200000047683716,
+        1.8200000524520874
+      ],
+      "evaluated_triangles": 6900,
+      "batch": "14",
+      "adopted_game_instances": 0,
+      "source_sha256": "ce94623660fd59f6a1ad8e1d22423e025fb6445f91815aae72b68629d47b8653",
+      "export_sha256": "d9047cc74ebeb222fa0e6b4313b8947f7e245e95ee45a77c84e03248bc2ab126",
+      "interface_record_id": "AST-AQU-007"
+    }
+  ],
+  "preimage_pins": {
+    "Game/assets/models/AST-RES-TIDAL_lift_fit_r003.glb": "eedf652f8af8e34666123418b5654f15e2800b33e57bf85a7b87f7b1964ed8ad",
+    "Game/assets/models/AST-RES-TIDAL_D13_service_receiving_r001.glb": "88f9e21c1a0637f5f91adf24160fa50b9b695a16e4457f3a019bdc8cf169cb47",
+    "Game/data/architecture/TIDAL_D13_SERVICE_RECEIVING.json": "0092f184766edba8c37937b4d2f9a47b7977031859150cbb8513e4fdbefa86fe",
+    "Game/scripts/commons_lift.gd": "174813072483ea3808b8a529fd4bb6ecaf70ef2ea865486a268384dbc7b9d4a4",
+    "Game/scripts/service_door.gd": "b9d33fc3e11311ccebd3de36812ba42436523616a4ab655cf50df38e35cc57f1",
+    "BlenderCatalogue/catalogue_manifest.json": "1d79b82cefaf612f6557954695dc63f265adf5b863f795dfca6ae877cd1e985e"
+  },
+  "assemblies": [
+    {
+      "name": "D13_CleanProductWorkCupboard",
+      "catalogue_id": "AST-STF-007",
+      "position": [
+        -59.7,
+        84,
+        -493
+      ],
+      "yaw": -1.5707963267948966,
+      "persistent_id": "tidal_d13_clean_product_cupboard_001",
+      "role": "clean_product_work_cupboard"
+    },
+    {
+      "name": "D13_CleanLinenNiche",
+      "catalogue_id": "AST-AQU-007",
+      "position": [
+        -59.7,
+        84,
+        -490
+      ],
+      "yaw": -1.5707963267948966,
+      "persistent_id": "tidal_d13_clean_linen_niche_001",
+      "role": "dry_clean_linen_niche"
+    },
+    {
+      "name": "D13_ClosedReturnsHoldingCupboard",
+      "catalogue_id": "AST-STF-007",
+      "position": [
+        -59.7,
+        84,
+        -487
+      ],
+      "yaw": -1.5707963267948966,
+      "persistent_id": "tidal_d13_closed_returns_cupboard_001",
+      "role": "closed_returns_holding_cupboard"
+    }
+  ],
+  "parking": {
+    "persistent_id": "tidal_d13_empty_cart_parking_bay_001",
+    "bounds_xz": [
+      -61.7,
+      -486.2,
+      -60.3,
+      -484.5
+    ],
+    "entry": "south",
+    "empty": true,
+    "capacity_accepted": false
+  },
+  "floor_y": 84,
+  "model_file": "TidalD13LocalServiceFittings.glb",
+  "root_name": "TidalD13LocalServiceFittings",
+  "persistent_id": "tidal_d13_local_service_fittings_001",
+  "operations": "physical_fittings_only_stock_returns_save_on_hold",
+  "shared_flow": "sequential_sealed_load_only_unaccepted_hygiene",
+  "reference": "BlenderCatalogue/references/landings/staff_corridor_services.png",
+  "reference_application": "Retained washable work/cupboard families; compact practical fittings within screened service edge, visible hardware, no guest recolor scheme",
+  "unchanged_floor_owner": "Existing D13MissingOnlyApproachAndThresholds; no new slab",
+  "constraints": [
+    "Keep existing door swing on court side unchanged",
+    "No new cart or room",
+    "No inventory, dispense, collection or save semantics",
+    "D14-D17 local fittings remain unfinished",
+    "Full route/species/load/final CRT review deferred"
+  ],
+  "model_sha256": "eecd227381ca24ee9f100b710e0f124b77237203124137f841b8bd53f668aabc",
+  "mesh_count": 173
+}
