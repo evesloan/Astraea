@@ -1,3 +1,9 @@
+## 10 October 2026: Bounded Tidal D15 service receiver
+
+The exact 15.86 m link connects the retained D15 street at Z -482.2 to the service crossbar at Z -498.06. Editable source, missing-only floors, eight receiving posts, one retained service door and nine fixture lights are installed as construction WIP. Actual-main check passes 65 floor/capsule points, eight receiving rays, two door cycles and 2,000 external door-shape queries with zero engine/script errors. D13/D14, 85 ordinary and 46 specialty homes, existing IDs, five-stop staff lift/cabin/buttons and public lift remain preserved. Upper staff shaft and abandoned west mouths remain physically closed. Whole Group1, hygiene/cart/species, structural capacity and final ordinary Godot/CRT acceptance remain open. See TIDAL_D15_SERVICE_RECEIVING.md.
+
+A cold-import timeout and a later actual-main run with missing historical furniture aliases are preserved as failed attempts. Three exact short-name furniture aliases were restored from existing catalogue exports matching every required SHA256; existing receiving definitions, IDs and originals were unchanged. No substituted or regenerated asset. Manual checkpoint protection is used; no automatic watcher was started.
+
 ## 10 October 2026: Current summary and documentation reconciliation
 
 [FULL_SHIP_SCOPE_INDEX.md](FULL_SHIP_SCOPE_INDEX.md) is the central readable entry to the governing master, eight construction groups, existing evidence and unfinished work. This summary reconciles recorded progress through the 9 October 22:47 gallery installation and later retained source handoffs; no new build, import, geometry review or runtime test was performed for this documentation update.

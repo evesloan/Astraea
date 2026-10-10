@@ -1,0 +1,13 @@
+# Tidal D15 service receiving construction
+
+Bounded Group1 installation connects the actual D15 street end at Z -482.2 to the retained service crossbar edge at Z -498.06, along X -44. The 15.86 m covered link uses 343.3327585 m² of missing-only approach/link floors; exact existing floors are subtracted. No existing floor or home allocation is cut.
+
+The compact editable derivative retains 64 D15 source parts, joins four parts into two exact patch-target batches, adds 20 closure/receiving parts and four fixture parts: 86 fixed meshes, nine actual fixture lights. Two Group3 wall batches and only TG_Batch_183 guard / TG_Batch_185 glass receive bounded, named source successors. 606 outside-cut original triangle point sets and all original GLB bytes remain retained. D13/D14 source and native derivatives are unchanged.
+
+Six lower link posts meet the installed D14 street, with full 0.04 m² toes. Two service-end posts start at Y91.84 on the existing D14 link roof rather than piercing it. Eight receiving contacts have no positive old-source surface intersections above their contact plane. Physical source contact is not primary reaction or load-capacity certification. The retained roof load path still requires engineering acceptance.
+
+One unscaled AST-STF-008 / service_door.gd door is rooted at (-44,93,-482.2), with new identity tidal_d15_shared_service_door_001. Sequential sealed-load clean/returns use follows the established shared-portal proposal; simultaneous hygiene segregation is not accepted. Both abandoned west mouths and the D15 staff landing are physically closed. D13/D14 closures, lower cap and five-stop staff lift/cabin/buttons are unchanged. No upper shaft, upper cabin or additional lift stops are enabled.
+
+Editable native files, deterministic reopen/export checks, source plan, source hashes, named derivative evidence and bounded actual-main test live under BlenderCatalogue/assets/tidal_d15_service_receiving_20261010. The only edited existing runtime script is the additive D15 call in tidal_garden_adoption.gd, whose exact predecessor is retained. Import sidecars are retained; engine caches are excluded.
+
+Actual-main test result is recorded in ACTUAL_MAIN_CHECK.json and BOUNDED_ENGINE_RUN.json after execution. Stationary ordinary-capsule/floor checks, source receiving rays, retained door cycles and external sweeps are bounded construction evidence, not exhaustive walking, loaded-cart/species or hygiene acceptance. Whole Group1/ship completion, local stock/returns cupboards and cart parking, stock routines, upper staff lift, D16/D17 joins, primary structure/load capacity and final ordinary Godot/CRT/target-hardware review remain open.
