@@ -9,3 +9,4 @@ static func build(ship:Node3D)->void:
 		homes.set_meta("occupied_capacity_accepted",false)
 	load("res://scripts/star_atlas_specialty_first.gd").build(ship)
 	load("res://scripts/star_atlas_specialty_second.gd").build(ship)
+	load("res://scripts/star_atlas_eight_habitats.gd").build(ship)

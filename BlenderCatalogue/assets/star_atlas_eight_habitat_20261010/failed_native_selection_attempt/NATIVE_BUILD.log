@@ -1,0 +1,50 @@
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/agent/.config/blender/4.3/extensions').
+Info: No new files have been packed
+Info: Saved "StarAtlasEightHabitatFittings.blend"
+ERROR Draco mesh compression is not available because library could not be found at /usr/bin/4.3/python/lib/python3.13/site-packages/libextern_draco.so
+12:39:48 | INFO: Starting glTF 2.0 export
+12:39:48 | INFO: Extracting primitive: SA413_Cocoon_LeftLiner
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA413_Cocoon_RightLiner
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA413_Cocoon_RearLiner
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA413_Cocoon_Roof
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA413_Cocoon_FrontLeftJamb
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA413_Cocoon_FrontRightJamb
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA413_Cocoon_DoorHeader
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA437_Cocoon_LeftLiner
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA437_Cocoon_RightLiner
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA437_Cocoon_RearLiner
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA437_Cocoon_Roof
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA437_Cocoon_FrontLeftJamb
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA437_Cocoon_FrontRightJamb
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Extracting primitive: SA437_Cocoon_DoorHeader
+12:39:48 | INFO: Primitives created: 1
+12:39:48 | INFO: Finished glTF 2.0 export in 0.029747962951660156 s
+
+12:39:48 | INFO: Starting glTF 2.0 export
+12:39:48 | INFO: Finished glTF 2.0 export in 0.0005903244018554688 s
+Traceback (most recent call last):
+  File "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/star_atlas_eight_habitat_20261010/build_native.py", line 29, in <module>
+    bpy.ops.wm.read_factory_settings(use_empty=True);shells=[mesh(q)for q in P['parts']];records.append(export('StarAtlasEightHabitatFittings',shells))
+                                                                                                        ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/star_atlas_eight_habitat_20261010/build_native.py", line 28, in export
+    bpy.ops.export_scene.gltf(filepath=str(glb),export_format='GLB',export_extras=True,use_selection=objs is not None);first=sha(glb);bpy.ops.wm.open_mainfile(filepath=str(native));bpy.ops.export_scene.gltf(filepath=str(glb),export_format='GLB',export_extras=True,use_selection=objs is not None);assert first==sha(glb);shutil.copy2(glb,R/'Game/assets/models'/glb.name);return {'native':native.name,'native_sha256':sha(native),'export':glb.name,'export_sha256':first,'fresh_native_repeat_identical':True}
+                                                                                                                                                                                                                                                                                                               ^^^^^^^^^^^^^^^
+AssertionError
+
+Blender 4.3.2
+Read blend: "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/star_atlas_eight_habitat_20261010/StarAtlasEightHabitatFittings.blend"
+
+Blender quit

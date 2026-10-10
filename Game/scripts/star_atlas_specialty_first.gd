@@ -7,7 +7,7 @@ static func contact_visual(parent:Node3D,file:String)->Node3D:
 		var extra:Dictionary=mesh.get_meta("extras",{})
 		if str(extra.get("material_role",""))=="hospitality_glass":
 			var glass:=ShaderMaterial.new();glass.shader=load("res://shaders/hospitality_glass.gdshader");mesh.material_override=glass
-		if bool(extra.get("runtime_collision",false)):solids.append(mesh)
+		if bool(extra.get("runtime_collision",false)) and str(extra.get("collision_policy",""))!="no_collision_detail":solids.append(mesh)
 	load("res://scripts/static_contact_cache.gd").attach_group(visual,solids)
 	return visual
 static func build(ship:Node3D)->Node3D:
