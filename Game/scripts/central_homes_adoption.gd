@@ -7,3 +7,4 @@ static func build(ship:Node3D)->void:
 		homes.set_meta("acceptance","integrated_construction_wip")
 		homes.set_meta("receiving_structure_accepted",false)
 		homes.set_meta("occupied_capacity_accepted",false)
+	load("res://scripts/star_atlas_specialty_first.gd").build(ship)

@@ -47,6 +47,7 @@ commands += [('botanical_receiving_access', ['--script', 'res://tests/validate_b
 commands += [('botanical_nursery_access', ['--script', 'res://tests/validate_botanical_nursery_access.gd']), ('botanical_cloud_access', ['--script', 'res://tests/validate_botanical_cloud_access.gd']), ('botanical_nursery_cart', ['--script', 'res://tests/validate_botanical_pair_cart.gd', '--', '--botanical-cart-room=nursery']), ('botanical_cloud_cart', ['--script', 'res://tests/validate_botanical_pair_cart.gd', '--', '--botanical-cart-room=cloud'])]
 commands += [('botanical_pair_geometry', ['--script', 'res://tests/validate_botanical_pair_geometry.gd'])]
 commands += [(name, ['--script', 'res://tests/validate_' + name + '.gd']) for name in ['d12_pair_geometry','d12_pair_access']]
+commands.append(('star_atlas_specialty_first',['--script','res://tests/validate_star_atlas_specialty_first.gd']))
 commands.sort(key=lambda entry: entry[0] != 'import')
 if '--only' in sys.argv:
     requested=sys.argv[sys.argv.index('--only')+1]
