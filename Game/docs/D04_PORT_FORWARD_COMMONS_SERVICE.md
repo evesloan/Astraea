@@ -1,0 +1,7 @@
+# D04 commons service/activity band — source plan WIP
+
+The adopted twenty home proposals are entry-connected with twenty-five unchanged rest reservations. Gameplay, species and operational acceptance remain held. The next bounded slice extends the retained commons by 170.82 m² inside D04_directory_01, keeping its planted outlook and walking staff stair unchanged. A quiet reading/activity nook, distinct clean-stock/linen and closed textile/ordinary-waste return bays, and a 3.7 m shared gallery are proposed. Shared clean/soiled crossing operation and stock/refill/save behavior remain held; separate bays do not certify an operational sanitation network.
+
+The actual main preimage passes 344 checks, including 108 unchanged-keel top witnesses and all source pins. Twelve bearing shoes sit inside the tapering source keel; the western floor projects 1.9 m from its outer pier center. This is geometric support evidence, not primary/cantilever/load engineering acceptance. Six exact receiving enclosure/guard meshes have fourteen contained successors preserving source intervals outside one 3.6 m aperture. Source-derived original corner-joint proofs qualify inherited contacts. Rejected receipts and rack-contact revisions remain retained.
+
+Full commons/service/activity construction, enclosure/maintenance and private-court horticultural service still need continuation. The complete 34 × 28 m programme is not claimed finished. Operational biology, cart-safe vertical travel and final ordinary in-game/CRT/hardware acceptance remain explicit holds.
