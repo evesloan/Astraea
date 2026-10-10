@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/forward_staff_shaft_interfaces_20261010/check_source.py", line 21, in <module>
+    d=json.load(open(R/f"Game/data/architecture/TIDAL_D{q['deck']}_SERVICE_RECEIVING.json"));floors=unary_union([Polygon(r['rings'][0],r['rings'][1:])for r in d['floor_regions']]);b=q['aabb'];a=box(b[0],b[4],b[1],b[5]);toe=float(a.intersection(floors).area);assert abs(toe-.192)<1e-6,(q['deck'],toe);contacts.append({'deck':q['deck'],'sill_to_existing_floor_contact_area_m2':toe,'gap_bridge_overhang_m':.01,'load_capacity_accepted':False})
+                                                                                                                                                               ~^^^^^^^^^^^^^^^^^
+KeyError: 'floor_regions'

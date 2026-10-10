@@ -69,3 +69,4 @@ static func build(parent:Node3D,ship:Node3D)->void:
 		sign.rotation.y=-PI/2
 		root.add_child(sign)
 	load("res://scripts/crew_home_approach.gd").build(root,ship)
+	load("res://scripts/forward_staff_upper_interfaces.gd").build(root,ship)

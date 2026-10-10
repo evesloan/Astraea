@@ -1,0 +1,32 @@
+{
+  "status": "RUNNING_OR_FAILED",
+  "steps": [
+    {
+      "step": "import",
+      "exit_code": 0,
+      "passed": true,
+      "timed_out": false,
+      "errors": [],
+      "wall_seconds": 5.381,
+      "child_peak_rss_kib": 727040,
+      "clock_mode": "editor",
+      "log": "ENGINE_import.log"
+    },
+    {
+      "step": "actual_main_bounded",
+      "exit_code": 0,
+      "passed": false,
+      "timed_out": false,
+      "errors": [
+        "ERROR: Node not found: \"HeldLandingGate_D13\" (relative to \"/root/AstraeaPresentation/World360/Astraea/ShipSpace/Districts/LowerStaffNetwork_WIP/ForwardStaffUpperInterfaces\").",
+        "SCRIPT ERROR: Invalid access to property or key 'persistent_id' on a base object of type 'null instance'."
+      ],
+      "wall_seconds": 46.463,
+      "child_peak_rss_kib": 6968232,
+      "clock_mode": "fixed60",
+      "log": "ENGINE_actual_main_bounded.log"
+    }
+  ],
+  "full_suite_run": false,
+  "scope": "One import barrier and bounded actual-main held upper envelope/gate/sill interfaces plus D13-D17 preservation; no upper travel or full ship audit."
+}

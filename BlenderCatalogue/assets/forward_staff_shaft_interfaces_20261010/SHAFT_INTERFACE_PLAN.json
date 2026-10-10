@@ -1,0 +1,781 @@
+{
+  "schema": 1,
+  "base_commit": "36b21a7b4ac26e6a3db3b1d8b58572de27b38654",
+  "source_pins": {
+    "Game/scripts/lower_staff_network.gd": "3382af9170eb76725ac7645ecd73cf9f53264e78cd1015215e9684d27ebab3d8",
+    "Game/scripts/commons_lift.gd": "65b293ea3be0428e59dd6636640132b41671a73f87cf782422850a557737e718",
+    "Game/assets/models/AST-STF-009_pool_market_home_equipment.glb": "35b475e11533aa7f9cbe87ef02643e980a22b502ab8defeee797ddfeee3e4bb4",
+    "BlenderCatalogue/assets/crew_service_platform/home_dogleg_candidate_20261006/source/AST-STF-009_pool_market_home.blend": "05bf7bd06e7df2d280744d8621d5b3ae8900c1d2225e54074b736e12af4beb64",
+    "BlenderCatalogue/assets/group3_crew_service_20261009/source/TIDAL_STAFF_INTERFACE.json": "793d589182dc823a68a2ef73760ab5101de02e7c92703751cf87e86c7f10ed9c",
+    "BlenderCatalogue/assets/group3_crew_service_20261009/source/AST-STF-G3-003.blend": "4418b291bc029fea04461d644fa3bf9e73d70e74d6ab4c2aef9a49b9c32e621d",
+    "BlenderCatalogue/assets/group3_crew_service_20261009/exports/AST-STF-G3-003.glb": "fbd04eb4c57c23c166c5d65a032c181b6c5262dadcb1b61de81110118d632392",
+    "Game/data/architecture/TIDAL_D13_SERVICE_RECEIVING.json": "0092f184766edba8c37937b4d2f9a47b7977031859150cbb8513e4fdbefa86fe",
+    "Game/data/architecture/TIDAL_D14_SERVICE_RECEIVING.json": "1094637055687f1e8fddd93417fa5502361dcdbe4a833185d86cd524754f00e1",
+    "Game/data/architecture/TIDAL_D15_SERVICE_RECEIVING.json": "6ee62e878bbc28ea543e36472490e4c9573aa5f6b0ac5e6ea9a5a4d277ca5cf7",
+    "Game/data/architecture/TIDAL_D16_SERVICE_RECEIVING.json": "9498e9fdb21816ac4e3f1ba522a570a5f8d778c7604fd3ea899cb58bc5a3cc61",
+    "Game/data/architecture/TIDAL_D17_SERVICE_RECEIVING.json": "0b52ff5bdd3d2fee1f601ce5b0b3b62b86e1d08669a9b18f6a6d7088cc9a97df",
+    "Game/assets/models/AST-DOR-003.glb": "975cec2ac763de60279d0e37d32060f909a267cb139954104ca0f8e4b91bade5",
+    "Game/scripts/lift_gate.gd": "6fed4a61a70245010ae8b60fceb586fb6bd2e093e48dd208367bf266b0467ef3",
+    "Game/assets/models/AST-RES-TIDAL_D17_service_receiving_r001.glb": "af0c6ca72be545bcf891ea16cd52e0507ec049a9ce1fd38b194be57a9d3e1f29"
+  },
+  "retained_shaft_parts": [
+    {
+      "name": "PortUpperRear_0",
+      "aabb": [
+        -27.12,
+        -26.96,
+        55.6,
+        64,
+        -492.2,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y6"
+    },
+    {
+      "name": "PortUpperFore_0",
+      "aabb": [
+        -26.96,
+        -22.84,
+        55.6,
+        64,
+        -492.2,
+        -492.04
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y6"
+    },
+    {
+      "name": "PortUpperAft_0",
+      "aabb": [
+        -26.96,
+        -22.84,
+        55.6,
+        64,
+        -487.96,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y6"
+    },
+    {
+      "name": "PortUpperRear_1",
+      "aabb": [
+        -27.12,
+        -26.96,
+        64,
+        72,
+        -492.2,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y8"
+    },
+    {
+      "name": "PortUpperFore_1",
+      "aabb": [
+        -26.96,
+        -22.84,
+        64,
+        72,
+        -492.2,
+        -492.04
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y8"
+    },
+    {
+      "name": "PortUpperAft_1",
+      "aabb": [
+        -26.96,
+        -22.84,
+        64,
+        72,
+        -487.96,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y8"
+    },
+    {
+      "name": "PortUpperRear_2",
+      "aabb": [
+        -27.12,
+        -26.96,
+        72,
+        80,
+        -492.2,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y9"
+    },
+    {
+      "name": "PortUpperFore_2",
+      "aabb": [
+        -26.96,
+        -22.84,
+        72,
+        80,
+        -492.2,
+        -492.04
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y9"
+    },
+    {
+      "name": "PortUpperAft_2",
+      "aabb": [
+        -26.96,
+        -22.84,
+        72,
+        80,
+        -487.96,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y9"
+    },
+    {
+      "name": "PortUpperRear_3",
+      "aabb": [
+        -27.12,
+        -26.96,
+        80,
+        88,
+        -492.2,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y10"
+    },
+    {
+      "name": "PortUpperFore_3",
+      "aabb": [
+        -26.96,
+        -22.84,
+        80,
+        88,
+        -492.2,
+        -492.04
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y10"
+    },
+    {
+      "name": "PortUpperAft_3",
+      "aabb": [
+        -26.96,
+        -22.84,
+        80,
+        88,
+        -487.96,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y10"
+    },
+    {
+      "name": "PortUpperRear_4",
+      "aabb": [
+        -27.12,
+        -26.96,
+        88,
+        96,
+        -492.2,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y11"
+    },
+    {
+      "name": "PortUpperFore_4",
+      "aabb": [
+        -26.96,
+        -22.84,
+        88,
+        96,
+        -492.2,
+        -492.04
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y11"
+    },
+    {
+      "name": "PortUpperAft_4",
+      "aabb": [
+        -26.96,
+        -22.84,
+        88,
+        96,
+        -487.96,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y11"
+    },
+    {
+      "name": "PortUpperRear_5",
+      "aabb": [
+        -27.12,
+        -26.96,
+        96,
+        104,
+        -492.2,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y12"
+    },
+    {
+      "name": "PortUpperFore_5",
+      "aabb": [
+        -26.96,
+        -22.84,
+        96,
+        104,
+        -492.2,
+        -492.04
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y12"
+    },
+    {
+      "name": "PortUpperAft_5",
+      "aabb": [
+        -26.96,
+        -22.84,
+        96,
+        104,
+        -487.96,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y12"
+    },
+    {
+      "name": "PortUpperRear_6",
+      "aabb": [
+        -27.12,
+        -26.96,
+        104,
+        105.2,
+        -492.2,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y13"
+    },
+    {
+      "name": "PortUpperFore_6",
+      "aabb": [
+        -26.96,
+        -22.84,
+        104,
+        105.2,
+        -492.2,
+        -492.04
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y13"
+    },
+    {
+      "name": "PortUpperAft_6",
+      "aabb": [
+        -26.96,
+        -22.84,
+        104,
+        105.2,
+        -487.96,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y13"
+    },
+    {
+      "name": "PortUpperBlankFront_D10_D12",
+      "aabb": [
+        -23,
+        -22.84,
+        55.6,
+        84,
+        -492.2,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y6"
+    },
+    {
+      "name": "PortFrontFore_D13",
+      "aabb": [
+        -23,
+        -22.84,
+        84,
+        88.5,
+        -492.2,
+        -491.9
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y10"
+    },
+    {
+      "name": "PortFrontAft_D13",
+      "aabb": [
+        -23,
+        -22.84,
+        84,
+        88.5,
+        -488.1,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y10"
+    },
+    {
+      "name": "PortFrontHeader_D13",
+      "aabb": [
+        -23,
+        -22.84,
+        86.85,
+        88.5,
+        -491.9,
+        -488.1
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y10"
+    },
+    {
+      "name": "PortFrontFore_D14",
+      "aabb": [
+        -23,
+        -22.84,
+        88.5,
+        93,
+        -492.2,
+        -491.9
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y11"
+    },
+    {
+      "name": "PortFrontAft_D14",
+      "aabb": [
+        -23,
+        -22.84,
+        88.5,
+        93,
+        -488.1,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y11"
+    },
+    {
+      "name": "PortFrontHeader_D14",
+      "aabb": [
+        -23,
+        -22.84,
+        91.35,
+        93,
+        -491.9,
+        -488.1
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y11"
+    },
+    {
+      "name": "PortFrontFore_D15",
+      "aabb": [
+        -23,
+        -22.84,
+        93,
+        97.5,
+        -492.2,
+        -491.9
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y11"
+    },
+    {
+      "name": "PortFrontAft_D15",
+      "aabb": [
+        -23,
+        -22.84,
+        93,
+        97.5,
+        -488.1,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y11"
+    },
+    {
+      "name": "PortFrontHeader_D15",
+      "aabb": [
+        -23,
+        -22.84,
+        95.85,
+        97.5,
+        -491.9,
+        -488.1
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y11"
+    },
+    {
+      "name": "PortFrontFore_D16",
+      "aabb": [
+        -23,
+        -22.84,
+        97.5,
+        102,
+        -492.2,
+        -491.9
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y12"
+    },
+    {
+      "name": "PortFrontAft_D16",
+      "aabb": [
+        -23,
+        -22.84,
+        97.5,
+        102,
+        -488.1,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y12"
+    },
+    {
+      "name": "PortFrontHeader_D16",
+      "aabb": [
+        -23,
+        -22.84,
+        100.35,
+        102,
+        -491.9,
+        -488.1
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y12"
+    },
+    {
+      "name": "PortFrontFore_D17",
+      "aabb": [
+        -23,
+        -22.84,
+        102,
+        105.2,
+        -492.2,
+        -491.9
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y12"
+    },
+    {
+      "name": "PortFrontAft_D17",
+      "aabb": [
+        -23,
+        -22.84,
+        102,
+        105.2,
+        -488.1,
+        -487.8
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y12"
+    },
+    {
+      "name": "PortFrontHeader_D17",
+      "aabb": [
+        -23,
+        -22.84,
+        104.85,
+        105.2,
+        -491.9,
+        -488.1
+      ],
+      "role": "staff_bluegrey_paint",
+      "category": "upper_shaft",
+      "batch_cell": "y13"
+    }
+  ],
+  "new_missing_only_top_cap": {
+    "name": "ForwardStaffUpperMissingOnlyTopCap",
+    "aabb": [
+      -27.12,
+      -23.18,
+      105.2,
+      105.34,
+      -492.2,
+      -487.8
+    ],
+    "existing_adjacent_owner": "D17 retained service stub roof begins at X-23.18",
+    "capacity_certified": false
+  },
+  "cap_predecessor_object": {
+    "name": "GPM_STF_NewCap",
+    "min": [
+      -27.1200008392334,
+      55.599998474121094,
+      -492.20001220703125
+    ],
+    "max": [
+      -22.84000015258789,
+      55.7400016784668,
+      -487.79998779296875
+    ],
+    "vertices": 8,
+    "polygons": 6
+  },
+  "cap_exact_triangle_removals": [
+    {
+      "mesh": "HOME_BATCH_062_ASTRAEA_staff_bluegrey_paint",
+      "triangle_indices": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "removed_triangles": 12
+    }
+  ],
+  "cap_six_face_area_checks": {
+    "0:-1": {
+      "area_m2": 0.6160175171680748,
+      "expected_m2": 0.6160175171680748
+    },
+    "0:1": {
+      "area_m2": 0.6160175171680748,
+      "expected_m2": 0.6160175171680748
+    },
+    "1:-1": {
+      "area_m2": 18.832107513444498,
+      "expected_m2": 18.832107513444498
+    },
+    "1:1": {
+      "area_m2": 18.832107513444498,
+      "expected_m2": 18.832107513444498
+    },
+    "2:-1": {
+      "area_m2": 0.5992138107321807,
+      "expected_m2": 0.5992138107321807
+    },
+    "2:1": {
+      "area_m2": 0.5992138107321807,
+      "expected_m2": 0.5992138107321807
+    }
+  },
+  "sill_gate_interfaces": [
+    {
+      "name": "ForwardStaffFixedSill_D13",
+      "aabb": [
+        -23.19,
+        -23.1,
+        83.89,
+        84.0,
+        -491.2,
+        -488.8
+      ],
+      "floor_y": 84.0,
+      "deck": 13,
+      "gate_center": [
+        -23.08,
+        84.0,
+        -490
+      ],
+      "gate_yaw": -1.5707963267948966,
+      "gate_id": "D13_forward_staff_lift_gate",
+      "call_id": "D13_forward_staff_lift_call",
+      "source_floor_toe_area_m2": 0.192,
+      "sill_footprint_m2": 0.216,
+      "toe_overlap_bounds_xz": [
+        -23.18,
+        -23.1,
+        -491.2,
+        -488.8
+      ],
+      "gap_bridge_overhang_m": 0.01,
+      "capacity_certified": false
+    },
+    {
+      "name": "ForwardStaffFixedSill_D14",
+      "aabb": [
+        -23.19,
+        -23.1,
+        88.39,
+        88.5,
+        -491.2,
+        -488.8
+      ],
+      "floor_y": 88.5,
+      "deck": 14,
+      "gate_center": [
+        -23.08,
+        88.5,
+        -490
+      ],
+      "gate_yaw": -1.5707963267948966,
+      "gate_id": "D14_forward_staff_lift_gate",
+      "call_id": "D14_forward_staff_lift_call",
+      "source_floor_toe_area_m2": 0.192,
+      "sill_footprint_m2": 0.216,
+      "toe_overlap_bounds_xz": [
+        -23.18,
+        -23.1,
+        -491.2,
+        -488.8
+      ],
+      "gap_bridge_overhang_m": 0.01,
+      "capacity_certified": false
+    },
+    {
+      "name": "ForwardStaffFixedSill_D15",
+      "aabb": [
+        -23.19,
+        -23.1,
+        92.89,
+        93.0,
+        -491.2,
+        -488.8
+      ],
+      "floor_y": 93.0,
+      "deck": 15,
+      "gate_center": [
+        -23.08,
+        93.0,
+        -490
+      ],
+      "gate_yaw": -1.5707963267948966,
+      "gate_id": "D15_forward_staff_lift_gate",
+      "call_id": "D15_forward_staff_lift_call",
+      "source_floor_toe_area_m2": 0.192,
+      "sill_footprint_m2": 0.216,
+      "toe_overlap_bounds_xz": [
+        -23.18,
+        -23.1,
+        -491.2,
+        -488.8
+      ],
+      "gap_bridge_overhang_m": 0.01,
+      "capacity_certified": false
+    },
+    {
+      "name": "ForwardStaffFixedSill_D16",
+      "aabb": [
+        -23.19,
+        -23.1,
+        97.39,
+        97.5,
+        -491.2,
+        -488.8
+      ],
+      "floor_y": 97.5,
+      "deck": 16,
+      "gate_center": [
+        -23.08,
+        97.5,
+        -490
+      ],
+      "gate_yaw": -1.5707963267948966,
+      "gate_id": "D16_forward_staff_lift_gate",
+      "call_id": "D16_forward_staff_lift_call",
+      "source_floor_toe_area_m2": 0.192,
+      "sill_footprint_m2": 0.216,
+      "toe_overlap_bounds_xz": [
+        -23.18,
+        -23.1,
+        -491.2,
+        -488.8
+      ],
+      "gap_bridge_overhang_m": 0.01,
+      "capacity_certified": false
+    },
+    {
+      "name": "ForwardStaffFixedSill_D17",
+      "aabb": [
+        -23.19,
+        -23.1,
+        101.89,
+        102.0,
+        -491.2,
+        -488.8
+      ],
+      "floor_y": 102.0,
+      "deck": 17,
+      "gate_center": [
+        -23.08,
+        102.0,
+        -490
+      ],
+      "gate_yaw": -1.5707963267948966,
+      "gate_id": "D17_forward_staff_lift_gate",
+      "call_id": "D17_forward_staff_lift_call",
+      "source_floor_toe_area_m2": 0.192,
+      "sill_footprint_m2": 0.216,
+      "toe_overlap_bounds_xz": [
+        -23.18,
+        -23.1,
+        -491.2,
+        -488.8
+      ],
+      "gap_bridge_overhang_m": 0.01,
+      "capacity_certified": false
+    }
+  ],
+  "upper_operation_enabled": false,
+  "temporary_landing_closures_retained": true,
+  "original_five_stop_binding_retained": true,
+  "remaining_gates": [
+    "Bounded actual-main swept cabin/gate volume verification",
+    "Controller ten-stop binding must reuse these five upper gates/sills and preserve old five identities",
+    "Temporary shaft mouths remain until safe activation; no calls/buttons enabled above D09",
+    "Load capacity, full travel/obstruction and final visuals not accepted"
+  ]
+}

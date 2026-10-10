@@ -1,3 +1,7 @@
+## 10 October 2026: Held forward staff upper shaft/interfaces
+
+37 retained upper shaft parts, a missing-only top closure and five supported sills/gates are installed with upper travel disabled. An exact reversible12-triangle cap successor preserves neighbouring lower geometry and original sources. The current lift keeps its original five stops/IDs. D13–D17 temporary mouth closures stay physical until controller/interlock and moving-gate clearance allow activation. See FORWARD_STAFF_UPPER_INTERFACES.md for the precise source maps and remaining gate.
+
 ## 10 October 2026: Forward staff ten-stop panel/controller slice
 
 Editable ten-stop cabin panel and bounded compatible controller are retained for the forward staff extension. The original five-stop production binding, lower cap and D13–D17 shaft closures remain intact; upper travel stays disabled. Continuous upper shaft installation, exact reversible cap derivative and five support/sill/gate joins remain blockers. See FORWARD_STAFF_TEN_STOP_PANEL.md and INTERFACE_SURVEY.json for the next physical interfaces.
