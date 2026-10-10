@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/tmp/astraea_tidal_d14_receiver_20261010/check_d14_export.py", line 24, in <module>
+    file='AST-STF-G3-003.glb'if spec['source_family']=='group3'else street;old=dict(u['triangles'](file))[spec['mesh']];new=patch[spec['mesh']];keys={tri_key(t)for t in new};lo=np.array(spec['cut']['min']);hi=np.array(spec['cut']['max']);uncut=[t for t in old if hit(np.array([t]),lo,hi)[0]==0];assert all(tri_key(t)in keys for t in uncut),spec['mesh'];matches.append({'mesh':spec['mesh'],'unaffected_actual_original_triangles_matched':len(uncut),'comparison_round_m':.00001,'export_triangles':len(new)})
+                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: D14_SouthStreetEndGuard
