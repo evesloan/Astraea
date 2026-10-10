@@ -1,3 +1,5 @@
+**D04 northern first-four sealed WIP:** 886/898/910/922 now have 4 preserved single-rest architectural proposals, 89.06 m² private planted courts, 166 owned parts and 24 rigid original bindings. 626 preimage/573 sealed actual-main checks PASS, 378 top/378 underside transfer witnesses and18 exact rest contacts. 100 source pins,92 guarded exports and9 source diagnostics retained. Original entries sealed pending independent retention/controller gate. Six physical interiors/nine rests and complete commons/service/environment/biology/engineering/vertical/final graphics remain.
+
 **D04 northern receiving connected WIP:** 599 actual-main checks PASS (12 new-street/care player walks, 4 protected staff walks, 2 retained arrivals), following independently retained 581-check sealed stage. 34 piers/29 braces/177 owned solids and 405.67 m² missing-only floor; 51 original source pins unchanged; 5 source views inspected. Exactly 3 end-guard nodes removed at runtime. Ten northern interiors/thirteen rests and full commons/service/environment/engineering/cart-safe vertical/final graphics remain.
 
 ## 10 October2026: D04 northern receiving native and sealed gate

@@ -150,6 +150,7 @@ func _ready() -> void:
 	load("res://scripts/d04_port_forward_homes_second.gd").build(self)
 	load("res://scripts/d04_port_forward_homes_third.gd").build(self)
 	load("res://scripts/d04_port_forward_northern_receiving.gd").build(self)
+	load("res://scripts/d04_port_forward_homes_fourth.gd").build(self)
 	var cleaning_cart:RigidBody3D=(load("res://scripts/cleaning_cart.gd")as GDScript).new()
 	cleaning_cart.name="CustodialCart"
 	cleaning_cart.position=Vector3(85.2,84.04,-37.3)
