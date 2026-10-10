@@ -1,0 +1,33 @@
+{
+  "status": "RUNNING_OR_FAILED",
+  "steps": [
+    {
+      "step": "import",
+      "exit_code": 0,
+      "passed": true,
+      "timed_out": false,
+      "errors": [],
+      "wall_seconds": 5.732,
+      "child_peak_rss_kib": 727028,
+      "clock_mode": "editor",
+      "log": "ENGINE_import.log"
+    },
+    {
+      "step": "actual_main_bounded",
+      "exit_code": 0,
+      "passed": false,
+      "timed_out": false,
+      "errors": [
+        "SCRIPT ERROR: Assertion failed.",
+        "ERROR: The object does not have any 'meta' values with the key 'corridor_mesh_count'.",
+        "SCRIPT ERROR: Assertion failed."
+      ],
+      "wall_seconds": 48.318,
+      "child_peak_rss_kib": 6965220,
+      "clock_mode": "fixed60",
+      "log": "ENGINE_actual_main_bounded.log"
+    }
+  ],
+  "full_suite_run": false,
+  "scope": "One import barrier and one bounded actual-main D17 receiving / D13 preservation check; not whole-ship route audit or performance acceptance."
+}
