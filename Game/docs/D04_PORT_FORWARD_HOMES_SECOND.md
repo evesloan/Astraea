@@ -1,0 +1,13 @@
+# D04 second home batch:928/940/952/964
+
+Four existing single-rest reservations receive distinct quiet-cocoon and aquatic architectural proposals. All20 house polygons, proposed IDs and25 rests remain unchanged:15 singles/5 doubles. Four prior physical proposals remain preserved, bringing architectural coverage to8/20 and eight proposed rests;12 interiors/17 rests remain. No additive capacity, recovered addresses/occupants or species-ready rooms are claimed.
+
+Actual source checks precede authoring:144 exact D03 slab witnesses,16 column volumes, six preceding guard preimages and five retained receiving-frame joints. Columns are relocated away from CrewHomeApproach; transfer framing crosses above its retained enclosure without modifying it. The western court is a0.75m planted lightwell after rejecting a wider court that intersected the GrandPool tower. The eastern garden remains3.65m deep.64.24m² of planted outlook remains contained and outside all1000 allocation polygons. Primary span/load/cantilever sizing and horticultural service remain unfinished.
+
+Four native room files, native receiving/courts and bounded guard fragments retain editable sources;209 owned parts,24 exact rigid catalogue bindings,49 source pins and81 selected production exports pass source checks. Original cocoon/aquatic contact markers are unchanged; exact exported collision faces account for retained liner/piping above the cocoon membrane.18 unrestricted actual-scene contact probes use those exact faces.
+
+241 sealed actual-main checks pass, including privacy, dry outlook, care-cart stations, original85 homes/221 anchors, prior four physical proposals and retained D03 crew-approach capsule/cart stations. New entrances remain behind the six exact preceding guard nodes until the sealed receipt is pinned to the six exact new exports. Controllers are the existing original3.48m sliding fitting, initialized closed. Door/player routes are unfinished at this native checkpoint.
+
+Source-only interior views were inspected against the retained residential, aquatic and intimate references. Low-sample diagnostic fill and uncut historical street context do not establish ordinary Godot/CRT/hardware review. All failed source plans/native attempts and receipts remain under `BlenderCatalogue/assets/d04_port_forward_homes_second_20261010`.
+
+The full20-room neighborhood, northern source-derived receiving, complete commons/service/environmental/biology/engineering/identity work, cart-safe vertical access, remaining D17 work and all eight ship groups remain construction. No watcher enabled; manual independently verified checkpoints continue.

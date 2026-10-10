@@ -190,7 +190,7 @@ for p in previous['guard_successor_parts']:
     if h>high:new.append((high,h))
   ranges=new
  for j,(l,h)in enumerate(ranges):
-  part=copy.deepcopy(p);part['name']='D04H2_GuardSuccessor_'+p['name']+'_'+str(j)
+  part=copy.deepcopy(p);part['name']='D04H2_'+p['name'].removeprefix('D04H_GuardSuccessor_')+'_'+str(j)
   for v in part['verts']:v[2]=l if abs(v[2]-z0)<1e-6 else h
   successor.append(part)
 assert len(removed)==6 and len(successor)==18
