@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "batch": "group3_briefing_receiving_batch012",
+  "frozen_utc": "2026-10-10T07:53:22.380475+00:00",
+  "parent_retained_baseline": "73ef95789e156d64dc091277c67aff1e220b8167",
+  "intended_parent_directory": "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/briefing_receiving_batch012",
+  "status": "Source-only missing briefing receiver and four exact street wall successors; original room/frame preserved; Group3 unfinished",
+  "assets": [
+    {
+      "asset": "AST-STF-G3-020",
+      "parts": 16,
+      "runtime_meshes": 8,
+      "source_spec": "source/BRIEFING_RECEIVER.json",
+      "source_spec_sha256": null,
+      "editable_source": "source/AST-STF-G3-020.blend",
+      "editable_source_sha256": null,
+      "runtime_export": "exports/AST-STF-G3-020.glb",
+      "runtime_export_sha256": null
+    },
+    {
+      "asset": "AST-STF-G3-021",
+      "parts": 4,
+      "runtime_meshes": 4,
+      "source_spec": "source/CREW_STREET_BRIEFING_PATCH.json",
+      "source_spec_sha256": null,
+      "editable_source": "source/AST-STF-G3-021.blend",
+      "editable_source_sha256": null,
+      "runtime_export": "exports/AST-STF-G3-021.glb",
+      "runtime_export_sha256": null
+    }
+  ],
+  "dependency_manifest": "source/SOURCE_DEPENDENCIES.json",
+  "adoption": {
+    "automatic": false,
+    "placement": "World identity; existing briefing room stays at identity",
+    "retained_room_mesh_count": 346,
+    "retained_source_and_runtime_binary_geometry_identical": true,
+    "full_staff_platform_adoption": false,
+    "old_platform_briefing_branch_geometry_reused": 0,
+    "old_platform_briefing_branch_omitted_from_adoption": {
+      "source_port_xz": [
+        50.2,
+        216
+      ],
+      "reason": "Shifted terminal bay and room-side branch cross the existing east frame, ceiling and room. Use only the missing gap to the exact original doorway; retain the original platform source unchanged."
+    },
+    "native_first_street_meshes_to_omit": [
+      "screen_wall_staff_bluegrey_paint_6_26",
+      "screen_wall_staff_bluegrey_paint_6_27",
+      "screen_wall_staff_white_paint_6_26",
+      "screen_wall_staff_white_paint_6_27"
+    ],
+    "replacement_export": "exports/AST-STF-G3-021.glb",
+    "other_first_street_native_meshes_preserved": 2795,
+    "street_side_gross_clear_z": [
+      214.2,
+      217.8
+    ],
+    "original_gate_piers_header_reveals_roof_room_and_furniture_preserved": true,
+    "rounded_roof_edge_profile": "Two exact native-profile empty-corner complements; no original roof geometry replacement or cross-section overlap",
+    "additional_missing_floor_m2": 4.427888078423388,
+    "actual_floor_overlap_m2": 1.0821535178638038,
+    "prior_proposed_only_street_floor_overlap_m2": 0.548289750256448,
+    "floor_proposal": "source/BRIEFING_MISSING_SUPPORT_PROPOSAL.json",
+    "controllers": "Existing received/staff, service door, source-light budget and cart/stock infrastructure; root binding only",
+    "gate_width_and_sweep_hold": "Existing controller currently has two 1.13 m leaves and a 2.5 x2.65 m sweep; 3.6 m reservation is metadata, not an operating door binding."
+  },
+  "qa": {
+    "plan": "PASS",
+    "material_height_cell_cross_sections": 24,
+    "derived_editable_component_bounds": 20,
+    "stationary_native_capsules": 6,
+    "actual_native_contacts": 13,
+    "exact_rounded_roof_profile_points": 6,
+    "preserved_street_surface_points": 4,
+    "opening_points": 5,
+    "supported_hanger_contacts": 2,
+    "verified_source_only_fixture_datums": 1,
+    "stationary_cart_contact_driver_poses": 6,
+    "minimum_cart_proxy_gap_m": 0.22999999999999687,
+    "compact_runtime_triangles": 240,
+    "runtime_mesh_batches": 12,
+    "native_repeat_exports_byte_identical": true,
+    "source_views_reviewed": 3,
+    "all_original_members_of_replaced_native_batches_checked": true,
+    "first_oblique_camera_review_retained": true
+  },
+  "explicit_open_gates": [
+    "Real floor/support adoption and structural bearing",
+    "Existing gate/frame/controller fitting and sweep",
+    "Continuous loaded cart/species movement, original cupboard access and normal arrivals",
+    "Stocking, operational service/privacy/acoustics and persistence",
+    "Final light/CRT/game appearance and target-hardware acceptance",
+    "Complete Group3 checklist retained in README.md"
+  ],
+  "new_berth_stock_stop_cart_room_or_save_identities": 0,
+  "original_files_changed": false,
+  "game_or_global_ledger_edits": false,
+  "remaining_checklist": "README.md complete remaining Group3 obligations",
+  "next_candidate_held_until_independent_retention": "Lightweight survey only of the remaining retained D03 programme receivers, especially uniforms/lockers; no new geometry before parent retention."
+}

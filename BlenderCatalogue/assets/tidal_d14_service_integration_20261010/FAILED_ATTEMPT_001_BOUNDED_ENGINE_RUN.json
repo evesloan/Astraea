@@ -1,0 +1,32 @@
+{
+  "status": "RUNNING_OR_FAILED",
+  "steps": [
+    {
+      "step": "import",
+      "exit_code": 0,
+      "passed": true,
+      "timed_out": false,
+      "errors": [],
+      "wall_seconds": 5.33,
+      "child_peak_rss_kib": 728336,
+      "clock_mode": "editor",
+      "log": "ENGINE_import.log"
+    },
+    {
+      "step": "actual_main_bounded",
+      "exit_code": 1,
+      "passed": false,
+      "timed_out": false,
+      "errors": [
+        "SCRIPT ERROR: Parse Error: Cannot infer the type of \"lights\" variable because the value doesn't have a set type.",
+        "ERROR: Failed to load script \"res://tests/validate_tidal_d14_service_receiving.gd\" with error \"Parse error\"."
+      ],
+      "wall_seconds": 0.165,
+      "child_peak_rss_kib": 728336,
+      "clock_mode": "fixed60",
+      "log": "ENGINE_actual_main_bounded.log"
+    }
+  ],
+  "full_suite_run": false,
+  "scope": "One import barrier and one bounded actual-main D14 receiving / D13 preservation check; not whole-ship route audit or performance acceptance."
+}
