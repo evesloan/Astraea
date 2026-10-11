@@ -1,3 +1,19 @@
+# D04 starboard-aft receiving and court routes
+
+Two enclosed perimeter branches now serve nine broad starboard-aft courts through full-size private staff fittings, controlled by two normal receiving-street staff portals. The 0.75m outer court stays sealed without entry/work-reach acceptance. Existing receiving, commons and lower staff approaches remain shared; full clean/used segregation remains unfinished. Port-aft is the next missing court/receiving package; its wider north platform requires a different source-fit connection design.
+
+The package adds 588.10m² of missing floor with zero duplicate public/commons walking area. All floor framing stays above Y16.26, above the protected D03 Uniforms & Lockers occupied top Y16.25. No lower columns or ceiling cuts are added. There are 108 exact court-floor side joints and 40 exact end-floor joints; source-floor capacity, steel sizing and cantilever engineering remain held.
+
+Essential checks pass: 15,583 geometry checks, 6,514 exact affected/protected original meshes, 30 exact runtime preimages, 440 original-controller poses and 136 worker capsules. The programme audit passes 44,597 checks across 161 programmes without conflicts. Connection passes 173 checks and 75 actual-player walking legs, using one original receiving fixture and no route teleports. Normal RMB/E controls operate all thresholds with temporary known private visits; every new gate ends closed with visits cleared. No production permission/provider is invented.
+
+All 4,396 previous managed native/export files remain byte-identical. Two editable native revisions have byte-identical fresh repeat exports. The 55 fitting copies and ten rigid planter/soil/foliage meshes preserve exact local geometry, UVs, packed texture bytes, roughness and links. Twenty bounded cut successors preserve 98 outside triangles and original UVs. Inactive geometry was independently retained at `932fded11a583e3b30b85b50839ba4aa54b1c400` before the exact one-line integration.
+
+Three 64-sample Blender source views show the receiving threshold, short-court threshold and cross passage with original homes/commons/floors/roofs. Diagnostic fill and partial neighborhood context remain explicit; these are not Godot, full-ship, CRT or target-hardware screenshots and do not approve final visuals. The denoising failure and earlier source images remain retained. Library photo delivery failed before bytes with a hosted-app network error; the parent delivered earlier progress images separately.
+
+Original room IDs, 120 allocations/150 reserved rests, public routes, previous staff packages, D05 datums and the approved port-central commons remain intact. Habitat/biology, consent/vacancy/provider, stock/refill/save/inventory/operational returns, loaded-cart vertical, engineering and final visuals remain unfinished. Both earlier narrow starboard-forward/central courts also stay sealed; two historical unpublished native byte versions remain unavailable. All eight construction groups remain unfinished; see FULL_SHIP_SCOPE_INDEX.md for their full obligations. Manual independently verified checkpoints continue with no watcher/credential/network changes.
+
+---
+
 # D04 starboard-central receiving and court loops
 
 The north and south receiving-street ends now connect to enclosed perimeter loops serving all nine broad courts through full-size private staff fittings. Two normal staff portals control receiving access. The 0.75 m eastern court stays sealed with no entry or work-reach acceptance. Original public receiving, commons and stock/returns approaches remain shared; no dedicated lower vertical or complete clean/used network is claimed.
