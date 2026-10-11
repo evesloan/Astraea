@@ -21,9 +21,12 @@ func run()->void:
  if n==null:quit(1);return
  record("geometry_seal",FileAccess.get_sha256("res://artifacts/d04_port_central_staff_riser_geometry.json")==p.sealed_receipt_sha256)
  var lift:Node3D=n.get_node("PortCentralStaffLift");record("actual_two_stop_lift",lift.deck_numbers==[1,4]and lift.floor_heights==[0.0,16.5]);record("old_forward_lift_still_blank_D04_D07",ship.find_child("ForwardStaffLift",true,false).deck_numbers==[1,2,3,8,9,13,14,15,16,17])
- for name in ["D04PortForwardHabitatNeighborhood","D04StarboardForwardHabitatNeighborhood","D04PortAftHabitatNeighborhood","D04StarboardAftHabitatNeighborhood","D04PortCentralHabitatNeighborhood","D04StarboardCentralHabitatNeighborhood"]:
+ for name in ["D04PortAftHabitatNeighborhood","D04StarboardAftHabitatNeighborhood","D04PortCentralHabitatNeighborhood","D04StarboardCentralHabitatNeighborhood"]:
   var house:Node3D=ship.find_child(name,true,false);record("retained_house_"+name,house!=null)
   if house!=null:record("retained_capacity_"+name,house.get_meta("preserved_home_allocations")==20 and house.get_meta("preserved_reserved_rests")==25)
+ for name in ["D04PortForwardFifthHomeCandidates","D04StarboardSouthHomeCandidates"]:
+  var house:Node3D=ship.find_child(name,true,false);record("retained_forward_house_"+name,house!=null)
+  if house!=null:record("retained_forward_capacity_"+name,house.get_meta("total_house_reservation_count")==20 and house.get_meta("capacity_preserved")==25)
  for item in p.service_doors:n.get_node(item.name).interact(null)
  for i in range(100):await physics_frame
  actor.global_position=Vector3(-57,.03,-105);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(actor.global_position)
