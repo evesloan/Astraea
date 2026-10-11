@@ -188,6 +188,7 @@ func _ready() -> void:
 	load("res://scripts/d04_commons_ceiling_junctions.gd").build(self)
 	load("res://scripts/d04_port_aft_court_routes.gd").build(self)
 	load("res://scripts/lower_shared_aft_staff_route.gd").build(self)
+	load("res://scripts/d04_starboard_aft_commons_enclosure.gd").build(self)
 	var lighting_budget := Node.new()
 	lighting_budget.name = "LocalShadowSourceBudget"
 	lighting_budget.set_script(load("res://scripts/lighting_budget.gd"))
