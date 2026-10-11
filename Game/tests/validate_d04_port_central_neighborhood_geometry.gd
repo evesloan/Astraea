@@ -45,6 +45,18 @@ func run()->void:
   if toe.category!="bearing_toe":continue
   for index in [0,1,4,5]:
    var at:=vec(toe.verts[index]);var q:=PhysicsRayQueryParameters3D.create(at+Vector3.UP*.04,at-Vector3.UP*.04);q.exclude=own;var h:=space.intersect_ray(q);record("actual_source_bearing_corner_"+str(bearings),not h.is_empty()and str(h.collider.get_parent().get_path())==toe.source_bearing_preimage.bearing_source_node and absf(h.position.y-at.y)<.003);bearings+=1
+ var fitting_rids:Array[RID]=[]
+ for binding in p.bindings.CO:
+  var node:Node3D=district.find_child("PCC_"+binding.name,true,false)
+  for body:StaticBody3D in node.find_children("*","StaticBody3D",true,false):fitting_rids.append(body.get_rid())
+ var fitting_only_excludes:Array[RID]=[]
+ for body:CollisionObject3D in ship.find_children("*","CollisionObject3D",true,false):
+  if body.get_rid()not in fitting_rids:fitting_only_excludes.append(body.get_rid())
+ var pier_fixture_checks:=0
+ for part in parts:
+  if part.category!="roof_pier":continue
+  var mesh:MeshInstance3D=district.find_child(str(part.name).replace(".","_"),true,false);var b:AABB=mesh.global_transform*mesh.get_aabb();var sh:=BoxShape3D.new();sh.size=b.size-Vector3.ONE*.006;sh.margin=.001;var q:=PhysicsShapeQueryParameters3D.new();q.shape=sh;q.exclude=fitting_only_excludes;q.transform=Transform3D(Basis.IDENTITY,b.get_center());var hits:=space.intersect_shape(q,32);record("own_roof_pier_rigid_fitting_clear_"+part.name,hits.is_empty());pier_fixture_checks+=1
+  for h in hits:conflicts.append({"part":part.name,"rigid_fitting":str(h.collider.get_path())})
  var roof_contacts:=0;var floor_only_excludes:Array[RID]=[];var roof_only_excludes:Array[RID]=[]
  for body:StaticBody3D in district.find_children("*","StaticBody3D",true,false):
   var n:String=str(body.get_parent().name)
@@ -89,7 +101,7 @@ func run()->void:
    for x in [b.position.x+.002,b.end.x-.002]:
     for z in [b.position.z+.002,b.end.z-.002]:
      var at:=Vector3(x,binding.position[1],z);var q:=PhysicsRayQueryParameters3D.create(at+Vector3.UP*.03,at-Vector3.UP*.03);q.exclude=excluded;var h:=space.intersect_ray(q);record("commons_fitting_supported_"+str(support_contacts),not h.is_empty()and district.is_ancestor_of(h.collider)and absf(h.position.y-at.y)<.003);support_contacts+=1
- for at in [Vector3(-50.9,16.5,-32),Vector3(-50.9,16.5,0),Vector3(-50.9,16.5,32),Vector3(-70,16.5,-32),Vector3(-70,16.5,32),Vector3(-84,16.5,-42),Vector3(-84,16.5,42),Vector3(-84,16.5,0),Vector3(-66,16.5,0),Vector3(-75,16.5,0),Vector3(-90,16.5,7),Vector3(-74.4,16.5,-4.3),Vector3(-71,16.5,-4.3)]:
+ for at in [Vector3(-50.9,16.5,-32),Vector3(-50.9,16.5,0),Vector3(-50.9,16.5,32),Vector3(-70,16.5,-32),Vector3(-70,16.5,32),Vector3(-84,16.5,-42),Vector3(-84,16.5,42),Vector3(-84,16.5,0),Vector3(-66,16.5,0),Vector3(-75,16.5,0),Vector3(-90,16.5,7),Vector3(-75,16.5,-4.3),Vector3(-71,16.5,-4.3)]:
   var h:=ray(space,at+Vector3.UP*.03,at-Vector3.UP*.03);record("connected_floor_"+str(at),not h.is_empty()and absf(h.position.y-at.y)<.003);record("connected_capsule_"+str(at),capsule_clear(space,at))
  var staff:Node3D=ship.find_child("ForwardStaffLift",true,false);record("forward_D04_D07_blank",staff.deck_numbers==[1,2,3,8,9,13,14,15,16,17]);record("exact20_25",p.rooms.size()==20 and rests==25)
- var result={"status":"PASS"if errors.is_empty()else"FAIL","checks":checks.size(),"errors":errors,"baseline_conflicts":conflicts,"model_pins":p.model_pins,"owned_parts":parts.size(),"plate_triangles":triangles,"actual_source_bearing_corners":bearings,"original_fixture_meshes_in_allocations":fixture_meshes,"commons_fitting_support_contacts":support_contacts,"actual_roof_pier_four_corner_contacts":roof_contacts,"retained_outlook_metadata_count":p.rooms.filter(func(r):return r.has("outlook_world")).size(),"outlook_source_metadata_missing_indices":p.rooms.filter(func(r):return not r.has("outlook_world")).map(func(r):return int(r.source_index)),"physical_home_proposals":20,"original_reserved_rests":rests,"production_active":p.active,"dedicated_network_cart_vertical_gameplay_engineering_final_accepted":false};FileAccess.open("res://artifacts/d04_port_central_neighborhood_geometry.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":checks.size(),"errors":errors}));quit(0 if errors.is_empty()else 1)
+ var result={"status":"PASS"if errors.is_empty()else"FAIL","checks":checks.size(),"errors":errors,"baseline_conflicts":conflicts,"model_pins":p.model_pins,"owned_parts":parts.size(),"plate_triangles":triangles,"actual_source_bearing_corners":bearings,"original_fixture_meshes_in_allocations":fixture_meshes,"commons_fitting_support_contacts":support_contacts,"actual_roof_pier_four_corner_contacts":roof_contacts,"own_roof_pier_rigid_fitting_clearance_checks":pier_fixture_checks,"retained_outlook_metadata_count":p.rooms.filter(func(r):return r.has("outlook_world")).size(),"outlook_source_metadata_missing_indices":p.rooms.filter(func(r):return not r.has("outlook_world")).map(func(r):return int(r.source_index)),"physical_home_proposals":20,"original_reserved_rests":rests,"production_active":p.active,"dedicated_network_cart_vertical_gameplay_engineering_final_accepted":false};FileAccess.open("res://artifacts/d04_port_central_neighborhood_geometry.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":checks.size(),"errors":errors}));quit(0 if errors.is_empty()else 1)

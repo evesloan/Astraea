@@ -73,8 +73,8 @@ for i,(a,b)in enumerate(zip(list(floor.exterior.coords),list(floor.exterior.coor
 for z in [-13,13]:cube(f'PCC_StreetPortalHead{z}',[-86.05,19.2,z-.12],[-81.95,20.4,z+.12],'ivory_enamel','portal')
 cube('PCC_QuietScreen',[-89.12,16.5,3],[-88.96,18.65,5.0],'warm_walnut','privacy_screen');cube('PCC_QuietScreenBack',[-89.12,16.5,9],[-88.96,18.65,11.0],'warm_walnut','privacy_screen')
 # Separate stock/closed-return compartments, both reached from the social floor.
-for name,lo,hi in [('ServiceWest',[-76.0,16.5,-12],[-75.84,19.15,-3.4]),('ServiceEast',[-69.3,16.5,-8],[-69.14,19.15,-3.4]),('ServiceNorth',[-76,16.5,-12],[-74.4,19.15,-11.84]),('ServiceDivider',[-72.8,16.5,-11],[-72.64,19.15,-5]),('ReturnFrontL',[-75.84,16.5,-3.56],[-75.4,19.15,-3.4]),('ReturnFrontR',[-73.4,16.5,-3.56],[-72.8,19.15,-3.4]),('StockFrontL',[-72.64,16.5,-3.56],[-72.2,19.15,-3.4]),('StockFrontR',[-69.9,16.5,-3.56],[-69.3,19.15,-3.4]),('ReturnHead',[-75.4,18.8,-3.56],[-73.4,19.15,-3.4]),('StockHead',[-72.2,18.8,-3.56],[-69.9,19.15,-3.4])]:cube('PCC_'+name,lo,hi,'staff_panel','wall')
-stock_transform=lambda v:[v[0]-1.6,v[1],v[2]+350.0]
+for name,lo,hi in [('ServiceWest',[-76.0,16.5,-12],[-75.84,19.15,-3.4]),('ServiceEast',[-69.3,16.5,-8],[-69.14,19.15,-3.4]),('ServiceNorth',[-76,16.5,-12],[-74.4,19.15,-11.84]),('ServiceDivider',[-74.2,16.5,-11],[-74.04,19.15,-5]),('ReturnFrontL',[-75.84,16.5,-3.56],[-75.5,19.15,-3.4]),('ReturnFrontR',[-74.5,16.5,-3.56],[-74.2,19.15,-3.4]),('StockFrontL',[-74.04,16.5,-3.56],[-73.5,19.15,-3.4]),('StockFrontR',[-70.1,16.5,-3.56],[-69.3,19.15,-3.4]),('ReturnHead',[-75.5,18.8,-3.56],[-74.5,19.15,-3.4]),('StockHead',[-73.5,18.8,-3.56],[-70.1,19.15,-3.4])]:cube('PCC_'+name,lo,hi,'staff_panel','wall')
+stock_transform=lambda v:[v[0]-142.2,v[1],v[2]+350.0]
 for a in CO['parts']:
  if 'StockShelf'in a['name']:q=copy.deepcopy(a);q['name']='PCC_'+a['name'];q['verts']=[stock_transform(v)for v in a['verts']];parts.append(q)
 for i,x in enumerate([-75,-73.8]):
@@ -87,6 +87,9 @@ for i,(x,z)in enumerate([(-92,-7),(-92,7),(-87,-10),(-87,10),(-78,-10),(-78,10),
 for i,z in enumerate([-6,6]):cube(f'PCC_UpperTransfer{i}',[-94,15.98,z-.14],[-69.5,16.3,z+.14]);cube(f'PCC_RoofTransfer{i}',[-94,20.08,z-.14],[-69.5,20.4,z+.14],'warm_walnut','frame')
 for i,x in enumerate([-92,-87,-78,-70]):cube(f'PCC_UpperLong{i}',[x-.14,15.98,-11],[x+.14,16.3,11])
 for i,(x,y,z,staff)in enumerate([(-78.3,20.4,0,False),(-86.5,20.4,0,False),(-92,19.35,7,False),(-92,20.4,-6,False),(-74.5,19.15,-6,True),(-71,19.15,-6,True),(-65,20.4,0,False)]):lamp('PCC_Lamp'+str(i),x,y,z,staff)
+for q in parts:
+ if q['name'].startswith('PCC_ReturnBin')and q['name'].endswith('1'):
+  for v in q['verts']:v[0]-=1.2;v[2]+=1.9
 assemblies['CO']=parts;bindings={'CO':[]};byname={a['name']:a for a in CO['rigid_bindings']}
 def bind(name,position,yaw):q=copy.deepcopy(byname[name]);q.update(position=position,yaw=yaw);bindings['CO'].append(q)
 bind('SharedActivityTable',[-78.3,16.5,0],0)
@@ -97,6 +100,10 @@ for r in rooms:
  for q in r['parts']:
   if q['name']in['PC929_D04H928_Pier_3','PC929_D04H928_Pier_4']:
    for v in q['verts']:v[0]-=.2
+for q in assemblies['CO']:
+ if q['name']in ['PCC_UpperRoofPier1','PCC_UpperRoofPier6']:
+  dx,dz=(-2,1)if q['name'].endswith('1')else(0,1.6)
+  for v in q['verts']:v[0]+=dx;v[2]+=dz
 allparts=[a for rows in assemblies.values()for a in rows]+[a for r in rooms for a in r['parts']];feet=[]
 for a in allparts:
  lo=[min(v[i]for v in a['verts'])for i in range(3)];hi=[max(v[i]for v in a['verts'])for i in range(3)]
