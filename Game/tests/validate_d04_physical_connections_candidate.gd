@@ -20,7 +20,9 @@ func route(player:CharacterBody3D,goals:Array,label:String)->Array:
 func carry_route(player:CharacterBody3D,item:RigidBody3D,goals:Array,label:String)->Array:
 	var results:Array=[]
 	for goal in goals:
-		var w:Dictionary=await walk_to(player,vec(goal));w["original_physics_tether_held"]=item.driver==player and player.held_interaction==item;w["actual_item_position"]=str(item.global_position);w["no_item_pose_or_velocity_write_during_leg"]=true;results.append(w);record(label+"_"+str(results.size()),w.reached and w.floor_contact and w.original_physics_tether_held)
+		var w:Dictionary=await walk_to(player,vec(goal))
+		for i in range(45):await physics_frame
+		w["original_physics_tether_held"]=item.driver==player and player.held_interaction==item;w["actual_item_position"]=str(item.global_position);w["no_item_pose_or_velocity_write_during_leg"]=true;results.append(w);record(label+"_"+str(results.size()),w.reached and w.floor_contact and w.original_physics_tether_held)
 	return results
 func run()->void:
 	var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D04_PHYSICAL_CONNECTIONS_CANDIDATE.json"));var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
@@ -118,7 +120,7 @@ func run()->void:
 		if not gate.desired_open:gate.interact(player)
 	for i in range(100):await physics_frame
 	player.global_position=Vector3(-34.7,12.03,-445.7);player.velocity=Vector3.ZERO
-	var bottle:RigidBody3D=load("res://scripts/cleaning_bottle.gd").new();bottle.persistent_id=&"D04PC_clean_supply_validation";built.owner.add_child(bottle);bottle.global_position=Vector3(-34.7,12.94,-444.9)
+	var bottle:RigidBody3D=load("res://scripts/cleaning_bottle.gd").new();bottle.persistent_id=&"D04PC_clean_supply_validation";bottle.contact_monitor=true;bottle.max_contacts_reported=16;built.owner.add_child(bottle);bottle.global_position=Vector3(-34.7,12.94,-444.9)
 	for i in range(25):await physics_frame
 	await aim(player,bottle.global_position+Vector3.UP*.13);record("normal_clean_product_target",player.interaction_target==bottle);await key_e();record("normal_clean_product_pickup",bottle.driver==player);player.camera.rotation.x=0
 	for i in range(30):await physics_frame
@@ -128,25 +130,32 @@ func run()->void:
 	for i in range(90):await physics_frame
 	await key_e()
 	for i in range(90):await physics_frame
-	record("clean_product_release",bottle.driver==null);var contact:=ray(space,bottle.global_position+Vector3.UP*.005,bottle.global_position-Vector3.UP*.02);record("clean_product_return_supported",not contact.is_empty());bottle.free()
+	record("clean_product_release",bottle.driver==null);var clean_support:=false;var clean_support_names:Array=[]
+	for body in bottle.get_colliding_bodies():
+		var n:=str(body.get_parent().name);clean_support_names.append(n)
+		if n.begins_with("D04PC_CleanTray") or n=="D03_protected_crew_cover":clean_support=true
+	record("clean_product_return_supported",clean_support);bottle.free()
 	player.global_position=vec(p.used_bay_approach)+Vector3.UP*.03;player.velocity=Vector3.ZERO
 	var used:RigidBody3D=load("res://scripts/d04_closed_used_container.gd").new();used.persistent_id=&"D04PC_closed_used_validation";used.authored_visual=built.owned;used.authored_prefix="D04PC_ClosedUsed_1_";used.position=Vector3(-34.3,12,-451);built.owner.add_child(used)
 	for i in range(20):await physics_frame
 	await aim(player,used.global_position+Vector3.UP*.6);record("normal_closed_used_target",player.interaction_target==used);await key_e();record("normal_closed_used_pickup",used.driver==player);player.camera.rotation.x=0
 	for i in range(40):await physics_frame
 	var used_carry:Array=await carry_route(player,used,[[-34.4,12,-449],[-53,12,-449],[-57.3,12,-449],[-53,12,-449],[-34.4,12,-449],[-34.4,12,-450.25]],"closed_used_actual_carry")
-	await aim(player,used.global_position+Vector3.UP*.6);await key_e()
+	await aim(player,Vector3(-34.3,12.6,-451))
 	for i in range(120):await physics_frame
-	record("closed_used_release",used.driver==null);var supported:=false
+	await key_e()
+	for i in range(180):await physics_frame
+	record("closed_used_release",used.driver==null);var supported:=false;var used_support_names:Array=[]
 	for body in used.get_colliding_bodies():
-		if str(body.get_parent().name)=="D03_protected_crew_cover":supported=true
+		var support_name:=str(body.get_parent().name);used_support_names.append(support_name)
+		if support_name=="D03_protected_crew_cover":supported=true
 	record("closed_used_destination_floor",supported);used.free()
 	player.global_position=Vector3(-43.8,16.53,-331.7);player.velocity=Vector3.ZERO
 	for i in range(10):await physics_frame
 	# Maintenance reach uses the rigid native three-stage tube: hand origin from
 	# a full worker stance, no scale and <=1.1m slide per joint. Contact may occur
 	# only on the intended native foliage, never through glass/walls/furniture.
-	var reaches:Array=[]
+	var reaches:Array=[];var reach_blockers:Dictionary={};var stance_cache:Dictionary={}
 	var tool:Node3D=load("res://assets/models/"+str(p.reach_tool.model)).instantiate();built.owner.add_child(tool);tool.visible=false;var tool_parts:Array=[]
 	for member in p.reach_tool.members:
 		var mesh:MeshInstance3D=tool.find_child(str(member.name),true,false);var shape:=mesh.mesh.create_convex_shape();shape.margin=.0001;tool_parts.append({"shape":shape,"native_pose":mesh.global_transform})
@@ -166,42 +175,65 @@ func run()->void:
 			var shape:=CapsuleShape3D.new();shape.radius=.3;shape.height=1.8;shape.margin=.001;var query:=PhysicsShapeQueryParameters3D.new();query.shape=shape;query.transform=Transform3D(Basis.IDENTITY,Vector3(-58.98,17.425,z));var fixed_block:=false
 			for hit in space.intersect_shape(query,64):
 				var name:=str(hit.collider.get_parent().name)
-				if name.begins_with("D04PC_FixedToolBarrier_") or name.ends_with("_FixedHead") or (name.begins_with("D04PC_Successor_D04H") and (name.ends_with("_GardenGlass") or name.ends_with("_GardenDado"))):fixed_block=true
+				if name.begins_with("D04PC_FixedToolBarrier_") or name.begins_with("D04PC_FixedEndToolBarrier_") or name.ends_with("_FixedHead") or (name.begins_with("D04PC_Successor_D04H") and (name.ends_with("_GardenGlass") or name.ends_with("_GardenDado"))):fixed_block=true
 			record("fixed_person_barrier_"+str(person_barrier_samples),fixed_block);person_barrier_samples+=1;z+=.1
 	for planter in range(3):
 		var centres:Array=[-436.3,-430.5,-424.7];var cz:float=centres[planter]
 		for leaf in range(3):
 			var name:="D04HC2_west_LeafMass_"+str(planter)+"_"+str(leaf);var mesh:MeshInstance3D=ship.find_child(name,true,false);var bounds:AABB=mesh.global_transform*mesh.get_aabb();var z:float=cz+[-.5,.15,.6][leaf]
 			for height in [bounds.position.y+.04,bounds.get_center().y,bounds.end.y-.02]:
-				var target:=Vector3(bounds.end.x-.025,height,z);var found:=false;var evidence:Dictionary={}
-				for hatch in hatches:
-					var hs:Dictionary=hatch.spec;var zs:Array=hs.service_opening_z
-					if (planter==0 and int(hs.home_index)!=952) or (planter==2 and int(hs.home_index)!=928):continue
-					for x in [-58.25,-57.95,-57.55,-57.15]:
-						if found:continue
-						for Z in [float(zs[0])-1,float(zs[0])-.7,float(zs[0])+.25,float(zs[0])+.5,(float(zs[0])+float(zs[1]))/2,float(zs[1])-.5,float(zs[1])-.25,float(zs[1])+.7,float(zs[1])+1,float(zs[1])+1.4]:
+				var found:=false;var evidence:Dictionary={};var blocked:Dictionary={}
+				var target_zs:Array=[z,bounds.position.z+.04,bounds.end.z-.04,bounds.get_center().z]
+				for target_z in target_zs:
+					if found:continue
+					var target:=Vector3(bounds.end.x-.025,height,target_z)
+					for hatch in hatches:
+						var hs:Dictionary=hatch.spec;var zs:Array=hs.service_opening_z
+						if (planter==0 and int(hs.home_index)!=952) or (planter==2 and int(hs.home_index)!=928):continue
+						for x in [-58.25,-57.95,-57.55,-57.15]:
 							if found:continue
-							var at:=Vector3(x,16.5,Z)
-							if not capsule_clear(space,at) or ray(space,at+Vector3.UP*.02,at-Vector3.UP*.02).is_empty():continue
-							for hand_y in [17.05,17.2,17.35,17.5,17.65,17.75,17.9,18.05]:
+							var sampled_z:Array=[];var next_z:float=float(zs[0])-1
+							while next_z<float(zs[1])+1.401:sampled_z.append(next_z);next_z+=.15
+							for Z in sampled_z:
 								if found:continue
-								var hand:=Vector3(x-.45,hand_y,Z);var length:float=hand.distance_to(target)
-								if length>3.4 or length<1.2:continue
-								var hit:=ray(space,hand,target)
-								if not hit.is_empty() and str(hit.collider.get_parent().name)==name and hand.distance_to(hit.position)>=1.2:
-									var tube_clear:=true;var direction:Vector3=(hit.position-hand).normalized();var axis:=direction.cross(Vector3.UP).normalized();var vertical:=direction.cross(axis).normalized()
-									for offset in [axis*.012,-axis*.012,vertical*.012,-vertical*.012]:
-										var side:=ray(space,hand+offset,hit.position+offset-direction*.015)
-										if not side.is_empty() and str(side.collider.get_parent().name)!=name:tube_clear=false
-									length=hand.distance_to(hit.position);var slide:float=maxf(0,(length-1.2)/2)
-									if tube_clear and not found:
-										var pose:=Transform3D(Basis.looking_at(-direction,Vector3.UP),hand)
-										for k in range(tool_parts.size()):
-											var query:=PhysicsShapeQueryParameters3D.new();query.shape=tool_parts[k].shape;query.transform=pose*Transform3D(Basis.IDENTITY,Vector3(0,0,k*slide))*tool_parts[k].native_pose;var contacts:=space.intersect_shape(query,64)
-											if contacts.size()>=64:tube_clear=false
-											for tool_contact in contacts:
-												if str(tool_contact.collider.get_parent().name)!=name or absf(1.2+k*slide-length)>.02:tube_clear=false
-									if tube_clear and not found:found=true;evidence={"plant":name,"height":height,"worker_stance":str(at),"hand":str(hand),"first_contact":str(hit.position),"length":length,"hatch":hs.name,"native_rigid_tubes":3,"exact_native_tool_convex_shapes_checked":3,"joint_slide":slide,"person_access":false,"hand_extension_m":.45,"terminal_native_foliage_contact_test_only":true}
-				var key:="maintenance_reach_"+str(planter)+"_"+str(leaf)+"_"+str(height);record(key,found);reaches.append(evidence)
-	var result:Dictionary={"status":"PASS"if errors.is_empty()else"FAIL","checks":checks,"check_count":checks.size(),"errors":errors,"operations":operations,"fitting_pose_samples":fitting_samples,"whole_staff_incoming":incoming,"whole_court_out_back":courts,"whole_staff_return":returning,"clean_product_carry":clean_carry,"closed_used_carry":used_carry,"maintenance_reach":reaches,"fixed_person_barrier_samples":person_barrier_samples,"production_active":false,"temporary_visit_only":true,"provider_available":false,"physical_carry_transfer_proved":errors.is_empty(),"full_commons_stock_return_network":false,"cart_safe_vertical":false}
+								var at:=Vector3(x,16.5,Z)
+								var stance_key:=str(at)
+								if not stance_cache.has(stance_key):stance_cache[stance_key]=capsule_clear(space,at) and not ray(space,at+Vector3.UP*.02,at-Vector3.UP*.02).is_empty()
+								if not stance_cache[stance_key]:continue
+								for hand_y in [17.05,17.2,17.35,17.5,17.65,17.75,17.9,18.05]:
+									if found:continue
+									var hand:=Vector3(x-.45,hand_y,Z);var length:float=hand.distance_to(target)
+									if length>3.4 or length<1.2:continue
+									var hit:=ray(space,hand,target)
+									if not hit.is_empty():
+										var blocker:=str(hit.collider.get_parent().name);blocked[blocker]=int(blocked.get(blocker,0))+1
+									if not hit.is_empty() and str(hit.collider.get_parent().name)==name and hand.distance_to(hit.position)>=1.2:
+										var tube_clear:=true;var direction:Vector3=(hit.position-hand).normalized();var axis:=direction.cross(Vector3.UP).normalized();var vertical:=direction.cross(axis).normalized()
+										for offset in [axis*.012,-axis*.012,vertical*.012,-vertical*.012]:
+											var side:=ray(space,hand+offset,hit.position+offset-direction*.015)
+											if not side.is_empty() and str(side.collider.get_parent().name)!=name:
+												var bn:="shaft_ray_"+str(side.collider.get_parent().name);blocked[bn]=int(blocked.get(bn,0))+1;tube_clear=false
+										length=hand.distance_to(hit.position);var slide:float=maxf(0,(length-1.2)/2)
+										if tube_clear and not found:
+											var pose:=Transform3D(Basis.looking_at(-direction,Vector3.UP),hand)
+											for k in range(tool_parts.size()):
+												var query:=PhysicsShapeQueryParameters3D.new();query.shape=tool_parts[k].shape;query.transform=pose*Transform3D(Basis.IDENTITY,Vector3(0,0,k*slide))*tool_parts[k].native_pose;var contacts:=space.intersect_shape(query,64)
+												if contacts.size()>=64:tube_clear=false
+												for tool_contact in contacts:
+													if str(tool_contact.collider.get_parent().name)!=name or absf(1.2+k*slide-length)>.02:
+														var bn:="native_tube_"+str(k)+"_"+str(tool_contact.collider.get_parent().name);blocked[bn]=int(blocked.get(bn,0))+1;tube_clear=false
+										if tube_clear and not found:
+											found=true;var wall_points:Array=[];var actual_openings:Array=[]
+											for X in [-58.77,-58.95]:
+												var point:Vector3=hand+(hit.position-hand)*((X-hand.x)/(hit.position.x-hand.x));wall_points.append(str(point))
+											for opening in p.gates:
+												if not opening.has("home_index"):continue
+												var contains:=true
+												for X in [-58.77,-58.95]:
+													var point:Vector3=hand+(hit.position-hand)*((X-hand.x)/(hit.position.x-hand.x))
+													if point.y<opening.leaf_min[1]-.03 or point.y>opening.leaf_max[1]+.03 or point.z<opening.service_opening_z[0] or point.z>opening.service_opening_z[1]:contains=false
+												if contains:actual_openings.append(opening.name)
+											evidence={"plant":name,"height":height,"requested_native_target":str(target),"worker_stance":str(at),"hand":str(hand),"first_contact":str(hit.position),"length":length,"fixture_generator":hs.name,"actual_opening_gates":actual_openings,"source_wall_entry_exit":wall_points,"native_rigid_tubes":3,"exact_native_tool_convex_shapes_checked":3,"joint_slide":slide,"person_access":false,"hand_extension_m":.45,"terminal_native_foliage_contact_test_only":true}
+				var key:="maintenance_reach_"+str(planter)+"_"+str(leaf)+"_"+str(height);record(key,found);reaches.append(evidence);reach_blockers[key]=blocked if not found else {}
+	var result:Dictionary={"status":"PASS"if errors.is_empty()else"FAIL","checks":checks,"check_count":checks.size(),"errors":errors,"operations":operations,"fitting_pose_samples":fitting_samples,"whole_staff_incoming":incoming,"whole_court_out_back":courts,"whole_staff_return":returning,"clean_product_carry":clean_carry,"clean_product_support_contacts":clean_support_names,"closed_used_carry":used_carry,"closed_used_support_contacts":used_support_names,"maintenance_reach":reaches,"reach_blockers":reach_blockers,"fixed_person_barrier_samples":person_barrier_samples,"production_active":false,"temporary_visit_only":true,"provider_available":false,"physical_carry_transfer_proved":errors.is_empty(),"full_commons_stock_return_network":false,"cart_safe_vertical":false,"model_pins":p.model_pins,"runtime_plan_sha256":FileAccess.get_sha256("res://data/architecture/D04_PHYSICAL_CONNECTIONS_CANDIDATE.json"),"test_source_sha256":FileAccess.get_sha256("res://tests/validate_d04_physical_connections_candidate.gd")}
 	FileAccess.open("res://artifacts/d04_physical_connections_candidate.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":checks.size(),"errors":errors}));quit(0 if errors.is_empty()else 1)

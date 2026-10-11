@@ -33,11 +33,13 @@ def open_gate(spec):
 for gate in P['gates']:open_gate(gate)
 view('SOURCE_STAFF_PORTALS_OPEN.png',[-57.3,13.65,-447],[-52.5,13,-447])
 view('SOURCE_FOURTH_COURT_THRESHOLD.png',[-28.1,18.1,-446.8],[-28.1,17.5,-443.5])
-proof=json.load(open(R/'Game/artifacts/d04_physical_connections_candidate.json'));reach=next((q for q in proof['maintenance_reach']if q and q['plant']=='D04HC2_west_LeafMass_1_0'),None)
+proof=json.load(open(W/'SOURCE_VIEW_ENGINE_RECEIPT.json'));reach=next((q for q in proof['maintenance_reach']if q and q['plant']=='D04HC2_west_LeafMass_1_1'),None)
 if reach:
  hand=ast.literal_eval(reach['hand']);tip=ast.literal_eval(reach['first_contact']);f=R/'Game/assets/models'/P['reach_tool']['model'];pins[str(f.relative_to(R))]=sha(f);bpy.ops.import_scene.gltf(filepath=str(f));direction=Vector(B(tip))-Vector(B(hand));basis=direction.to_track_quat('-Y','Z').to_matrix().to_4x4();T=Matrix.Translation(Vector(B(hand)))@basis
  for i in range(3):
   ob=bpy.data.objects['D04PC_CareTube_'+str(i)];ob.matrix_world=T@Matrix.Translation(Vector((0,-i*reach['joint_slide'],0)))@ob.matrix_world
- view('SOURCE_LIGHTWELL_REACH_ONLY.png',[-56.75,18.1,-428.4],[-59.1,17.3,-430.25])
+ bpy.ops.object.light_add(type='AREA',location=B([hand[0]+.25,19,hand[2]]));bpy.context.object.data.energy=400;bpy.context.object.data.size=1.5
+ bpy.ops.object.light_add(type='AREA',location=B([-59.2,19,tip[2]]));bpy.context.object.data.energy=300;bpy.context.object.data.size=1
+ view('SOURCE_LIGHTWELL_REACH_ONLY.png',[hand[0]+.5,hand[1]+.35,hand[2]],tip)
 for f,h in pins.items():assert sha(R/f)==h,f
 (W/'SOURCE_VIEW_RUN.json').write_text(json.dumps({'status':'PASS','images':images,'model_pins_unchanged':pins,'diagnostic_fill':True,'production_active':False,'reach_source':reach},indent=2)+'\n')
