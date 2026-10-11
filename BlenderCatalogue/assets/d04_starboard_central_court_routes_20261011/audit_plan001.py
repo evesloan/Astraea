@@ -4,7 +4,7 @@ from shapely.geometry import box,shape
 W=Path(__file__).resolve().parent;R=W.parents[2];P=json.load(open(W/'PLAN.json'));L=json.load(open(R/'Game/data/whole_ship_layout.json'));ys=sorted({q['floor_y']for q in L['decks']});conflicts=[];checks=0
 for q in L['programmes']:
  y=q['floor_y'];top=next((Y-.25 for Y in ys if Y>y),y+4);alloc=box(q['allocation_x'][0],q['allocation_z'][0],q['allocation_x'][1],q['allocation_z'][1])
- for part in P['parts']+P['copied_gate_parts']:
+ for part in P['parts']+P['copied_gate_parts']+[{**q['preimage'],'verts':[[v[i]+q['delta'][i]for i in range(3)]for v in q['preimage']['verts']]}for q in P['moves']]:
   v=part['verts'];lo=[min(a[i]for a in v)for i in range(3)];hi=[max(a[i]for a in v)for i in range(3)];checks+=1
   if min(hi[1],top)-max(lo[1],y)<.001:continue
   overlap=alloc.intersection(box(lo[0],lo[2],hi[0],hi[2]))
