@@ -8,6 +8,7 @@ var ship:Node3D
 var actor:CharacterBody3D
 var additions:Node3D
 var plan:Dictionary
+var include_upper_horizon:=true
 
 func _initialize()->void:call_deferred("run")
 
@@ -67,10 +68,18 @@ func run()->void:
 	ship=main.get_node("World360/Astraea");actor=ship.get_node("ShipSpace/PersistentActors/Player")
 	actor.set_physics_process(false)
 	plan=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group8/crown_interiors.json"))
+	include_upper_horizon=OS.get_environment("G8_OMIT_UPPER_HORIZON")!="1"
+	if not include_upper_horizon:
+		check(ship.has_node("ShipSpace/Districts/AftCrownFoyerWaitingEdges"),"Four-interior integration mode requires retained current Group1 foyer")
+		for key in ["runtime_batches","meshes","lights","labels"]:
+			var retained:Array=[]
+			for row in plan[key]:
+				if str(row.programme_key)!="D18_directory_09":retained.append(row)
+			plan[key]=retained
 	var original_doors:Dictionary={}
 	for d in ship.find_children("*","Node3D",true,false):
 		if d.get_script()==load("res://scripts/service_door.gd"):original_doors[str(d.get_path())]=str(d.persistent_id)
-	additions=load("res://scripts/group8/crown_interiors.gd").build(ship)
+	additions=load("res://scripts/group8/crown_interiors.gd").build(ship,include_upper_horizon)
 	for frame in range(10):await physics_frame
 	check(additions.get_meta("new_floor_owners")==0 and additions.get_meta("new_capacity")==0,"No new allocation/capacity")
 	var meshes:=additions.find_children("*","MeshInstance3D",true,false)
@@ -92,7 +101,7 @@ func run()->void:
 	# New fittings cannot intrude into any retained D18 shell/platform or core.
 	# Shrink by 0.4mm to distinguish intentional floor support from positive intrusion.
 	var retained_roots:Array=[]
-	for name in ["BridgeEnclosure_WIP","BridgePlatform_WIP","CentralCommandCrown_WIP","AftCommandCrown_WIP","AftCrownPlatform_WIP","UpperHorizonEnclosure_WIP","PrimaryAtriumCore_WIP",str(JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/AFT_CROWN_LINK.json")).root_name),"AftCrownSittingBays"]:
+	for name in ["BridgeEnclosure_WIP","BridgePlatform_WIP","CentralCommandCrown_WIP","AftCommandCrown_WIP","AftCrownPlatform_WIP","UpperHorizonEnclosure_WIP","PrimaryAtriumCore_WIP",str(JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/AFT_CROWN_LINK.json")).root_name),"AftCrownSittingBays","AftCrownFoyerWaitingEdges"]:
 		var context:Node=ship.get_node_or_null("ShipSpace/Districts/"+name)
 		if context!=null:retained_roots.append(context)
 	for row in plan.meshes:
@@ -122,13 +131,23 @@ func run()->void:
 	await enter("AftCommandCrown_WIP/AftCommandDoor_D18_directory_08_entry",Vector2(-7.5,82),[[-13,82],[-30,82],[-30,87],[-23,87],[-23,82],[-13,82]])
 	await walk(Vector2(-7.5,99))
 	await operate(door("AftCommandCrown_WIP/AftCommandDoor_aft_command_port_exit"))
-	await walk(Vector2(-7.5,104));await walk(Vector2(7.5,104))
+	# The retained platform's centre guard separates the two staff L-routes.
+	# Cross through the actual receiving crosslink and its existing thresholds.
+	await walk(Vector2(-7.5,104));await walk(Vector2(-32,104))
+	await operate(door("AftCrownPlatform_WIP/AftPlatformDoor_aft_platform_port_service_exit"))
+	await walk(Vector2(-32,145));await walk(Vector2(32,145))
+	await operate(door("AftCrownPlatform_WIP/AftPlatformDoor_aft_platform_starboard_service_exit"))
+	await walk(Vector2(32,104));await walk(Vector2(7.5,104))
 	await operate(door("AftCommandCrown_WIP/AftCommandDoor_aft_command_starboard_exit"))
 	await walk(Vector2(7.5,82))
 	await enter("AftCommandCrown_WIP/AftCommandDoor_D18_directory_10_entry",Vector2(7.5,82),[[13,82],[30,82],[30,87],[23,87],[23,82],[13,82]])
-	await walk(Vector2(7.5,99));await walk(Vector2(7.5,104));await walk(Vector2(0,104));await walk(Vector2(0,108))
-	await walk(Vector2(5.5,108));await walk(Vector2(5.5,137));await walk(Vector2(0,137));await walk(Vector2(0,142));await walk(Vector2(-16,142));await walk(Vector2(-16,128));await walk(Vector2(-27,128));await walk(Vector2(-16,128));await walk(Vector2(-16,112));await walk(Vector2(-16,142));await walk(Vector2(16,142));await walk(Vector2(16,128));await walk(Vector2(27,128));await walk(Vector2(16,128));await walk(Vector2(16,112));await walk(Vector2(16,142));await walk(Vector2(0,142));await walk(Vector2(0,137));await walk(Vector2(5.5,137));await walk(Vector2(5.5,108));await walk(Vector2(0,108))
-	var report:={"status":"PASS","checks":checks,"runtime_batches":meshes.size(),"fixture_lights":plan.lights.size(),"original_service_door_identities_preserved":original_doors.size(),"original_player_walking_legs":walks,"ordinary_walk_frames":walk_frames,"distance_m":distance,"maximum_step_m":maximum_step,"setup_placements":1,"subsequent_route_teleports":0,"runtime_sha256":plan.model_sha256,"source_native_sha256":plan.native_sha256,"operational_and_final_acceptance":false}
+	await walk(Vector2(7.5,99));await walk(Vector2(7.5,104));await walk(Vector2(32,104));await walk(Vector2(32,145));await walk(Vector2(0,145))
+	await walk(Vector2(-16,145));await walk(Vector2(-16,128))
+	if include_upper_horizon:await walk(Vector2(-27,128));await walk(Vector2(-16,128))
+	await walk(Vector2(-16,112));await walk(Vector2(-16,142));await walk(Vector2(16,142));await walk(Vector2(16,128))
+	if include_upper_horizon:await walk(Vector2(27,128));await walk(Vector2(16,128))
+	await walk(Vector2(16,112));await walk(Vector2(16,142));await walk(Vector2(0,142));await walk(Vector2(0,137));await walk(Vector2(5.5,137));await walk(Vector2(5.5,108));await walk(Vector2(0,108));await walk(Vector2(0,95))
+	var report:={"status":"PASS","checks":checks,"upper_horizon_component_enabled":include_upper_horizon,"runtime_batches":meshes.size(),"fixture_lights":plan.lights.size(),"original_service_door_identities_preserved":original_doors.size(),"original_player_walking_legs":walks,"ordinary_walk_frames":walk_frames,"distance_m":distance,"maximum_step_m":maximum_step,"setup_placements":1,"subsequent_route_teleports":0,"runtime_sha256":plan.model_sha256,"source_native_sha256":plan.native_sha256,"operational_and_final_acceptance":false}
 	var file:=FileAccess.open("res://data/architecture/group8/RUNTIME_VALIDATION.json",FileAccess.WRITE);file.store_string(JSON.stringify(report,"\t")+"\n");file.close()
 	print("GROUP8 CROWN PASS: ",JSON.stringify(report))
 	main.queue_free();for frame in range(4):await process_frame

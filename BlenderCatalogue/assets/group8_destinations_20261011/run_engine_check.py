@@ -2,8 +2,9 @@ from pathlib import Path
 import subprocess,json,time,sys
 W=Path(__file__).resolve().parent;R=W.parents[2]
 attempt=sys.argv[1] if len(sys.argv)>1 else '001'
+project=Path(sys.argv[2]) if len(sys.argv)>2 else R/'Game'
 log=W/('RUNTIME'+attempt+'.log');started=time.perf_counter()
-process=subprocess.Popen(['godot','--headless','--path',str(R/'Game'),'--fixed-fps','60','--quit-after','60000','--script','res://tests/group8/validate_crown_interiors.gd'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+process=subprocess.Popen(['godot','--headless','--path',str(project),'--fixed-fps','60','--quit-after','60000','--script','res://tests/group8/validate_crown_interiors.gd'],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
 errors=[];passed=False
 with log.open('w')as out:
     for line in process.stdout:

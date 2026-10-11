@@ -1,0 +1,47 @@
+{
+  "status": "OVERLAP_HELD_WITH_SAFE_FOUR_INTERIOR_VARIANT",
+  "current_main": "bc731d6d6d54bb2595331ee2f4368558d4d24fda",
+  "group1_manifest_path": "Game/data/architecture/AFT_CROWN_FOYER_WAITING_EDGES.json",
+  "group1_manifest_sha256": "e416fb1a5548f84284b5f0545f737bac6843e70369405abefe57fcd6a95c23b9",
+  "group1_interface_path": "BlenderCatalogue/assets/aft_crown_foyer_waiting_edges_20261011/CROSS_GROUP_INTERFACES.json",
+  "group1_interface_sha256": "c7f9891065a5d438812f0e7f017fea2ab58e1360d00b775dd2495950aa7225a9",
+  "group1_source_runtime_pins": {
+    "AFT_CROWN_FOYER_WAITING_EDGES_r001.glb": "aeb9c938f280d08187ffd2b71212f0d88d5a9921180062b287bd582a91e494c7"
+  },
+  "conservative_native_aabb_conflict_pairs": 2,
+  "affected_programmes": [
+    "D18_directory_09"
+  ],
+  "independent_programmes": [
+    "D18_directory_01",
+    "D18_directory_03",
+    "D18_directory_08",
+    "D18_directory_10"
+  ],
+  "adoption_contract": "Retain Group1 canonical waiting edges;build(self,false) excludes all70 Group8 Upper Horizon mesh/collision batches, two task lights and its label before first physics frame. Retain the exact candidate native/export for future coordinated reconciliation; do not install both foyer components.",
+  "four_interior_runtime_batches": 366,
+  "four_interior_lights": 10,
+  "conflicts": [
+    {
+      "group8_mesh": "G8_D18_directory_09_HorizonFieldRecords-1_Plinth",
+      "group8_programme": "D18_directory_09",
+      "group1_mesh": "ACFW_PortEdge5Dado",
+      "positive_aabb_overlap_m": [
+        0.004999999999999005,
+        0.1599999999999966,
+        3.319999999999993
+      ]
+    },
+    {
+      "group8_mesh": "G8_D18_directory_09_HorizonFieldRecords1_Plinth",
+      "group8_programme": "D18_directory_09",
+      "group1_mesh": "ACFW_StarboardEdge5Dado",
+      "positive_aabb_overlap_m": [
+        0.004999999999999005,
+        0.1599999999999966,
+        3.319999999999993
+      ]
+    }
+  ],
+  "limits": "AABB conflicts are conservative evidence, not exact penetration volumes; no current Group1 source or scene altered"
+}
