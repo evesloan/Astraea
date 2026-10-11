@@ -1,0 +1,167 @@
+{
+  "owner_thread": "01a11d7f-8ef6-70bc-858d-bdf8deb7000b",
+  "group": "Group4",
+  "branch": "handoff/group4-completion-20261011",
+  "baseline": "affc5c807087ff87da29f3642c2d6e418241b896",
+  "prior_commit": "02a25202c1331f7db0ea9834ccec468b12ba5fbb",
+  "prior_tree": "2cd9adda88ed2138987c565150e39cd83c6862e7",
+  "shared_preimages_baseline_sha256": {
+    "Game/scripts/ship.gd": "1db52874ae9f7b73584a93319cf2a11e1b31b603eaa02facb0e1822a77cf4960",
+    "Game/scripts/lift_gate.gd": "6fed4a61a70245010ae8b60fceb586fb6bd2e093e48dd208367bf266b0467ef3",
+    "Game/scripts/commons_lift.gd": "174813072483ea3808b8a529fd4bb6ecaf70ef2ea865486a268384dbc7b9d4a4",
+    "Game/scripts/static_contact_cache.gd": "4ebe68081d5bf1d0b433ce93c4cb2d9c8bca0192a301fa11a0c2b58d5a86b049",
+    "Game/scripts/lighting_budget.gd": "99a1b9c1e986acc11c9b03a9a65515108e38a217a58a648b21cc68abac9d4c3a",
+    "Game/scripts/player.gd": "f1bd92d00ad355d5d3c87b57da5ff0e3aa76f9d48776a58f3515932c017a9566",
+    "Game/data/architecture/received_sections.json": "6ad8b18dff427f2540c9dccef8b88bec2341ea7256f801ae177d869e65e05cfd",
+    "Game/data/architecture/received_section_floors.json": "c52fd9f6d9cdab206579afcc250a83662166e6ce32ed6afc8854905a33a7c86f",
+    "Game/data/architecture/cleaning_cart_contacts.json": "30a5de9043d6cbfdef2c75e471ec1ffa73c64500065e4af6093c0120aa04ad37",
+    "Game/assets/models/AST-DOR-003.glb": "975cec2ac763de60279d0e37d32060f909a267cb139954104ca0f8e4b91bade5"
+  },
+  "current_shared_root_instruction": "ship.gd advanced externally; verify current exact preimages and derive current insertion. Never replace shared root with this baseline. All worker changes are additions.",
+  "selected_models": [
+    {
+      "role": "vehicle",
+      "file": "AST-TRM-G4-024_powered_portal_body_r001.glb",
+      "sha256": "dbbead1ab14e74096696abac71280b3e3ce4133f168d634d6858849110949349"
+    },
+    {
+      "role": "barrier_receivers",
+      "file": "AST-TRM-G4-025_boarding_barrier_receivers_r003.glb",
+      "sha256": "5d6724feb50c8cdf9c7abecc935d1af5d6fbf1cf2a5421afdfa0e164cc326c14"
+    },
+    {
+      "role": "restraint",
+      "file": "AST-TRM-G4-026_cart_restraint_hardware_r003.glb",
+      "sha256": "7093b25a985efddf76bcc992dde175d3fba926610959cdd7096e4878383dc431"
+    },
+    {
+      "role": "terminals",
+      "file": "AST-TRM-G4-027_terminal_branch_edges_r001.glb",
+      "sha256": "45c26591d42cdd87d3ef48a69ee1ce55744a018673b53fbfb57b6330fd43decc"
+    }
+  ],
+  "reserved_unregistered_source_ids": [
+    "AST-TRM-G4-024",
+    "AST-TRM-G4-025",
+    "AST-TRM-G4-026",
+    "AST-TRM-G4-027"
+  ],
+  "production_active": false,
+  "terminal_active": false,
+  "whole_group_complete": false,
+  "terminal_adoption": {
+    "independent_of_tram_pits": true,
+    "call": "load(\"res://scripts/group4_boarding_safety.gd\").build_terminals($ShipSpace/Districts)",
+    "before": "existing lighting_budget.configure(self,player)",
+    "new_floor_m2": 8,
+    "duplicate_generic_floor_permitted": false,
+    "protected_clear_route_width_m": 4,
+    "stable_programme_keys": [
+      "D09_directory_03",
+      "D09_directory_07"
+    ],
+    "stable_room_ids": [
+      "D09_books2",
+      "D09_parcel6"
+    ],
+    "ordinary_player_legs_tested": 12,
+    "current_scene_readmission_required": true
+  },
+  "boarding_adoption": {
+    "depends_on_prior_pit_cuts_m2": 24.8,
+    "depends_on_explicit_north_stop_adoption": true,
+    "catchment_z_retained": -216,
+    "candidate_physical_dock_z": -241,
+    "existing_base": "group4_completion.gd exact adopted base",
+    "vehicle": "Exactly one shared root-owned AnimatableBody3D with024 visual/source-exact cell contacts and source_vehicle_model metadata",
+    "call": "group4_boarding_safety.gd.build(parent,base,vehicle)",
+    "test_factory_production_motor": false,
+    "control_path": "Existing E/RMB/root calls request_boarding and request_secure; no added input controller",
+    "sequence": "closed portals -> deployed bridge -> dock-side portals open -> clear portals closed -> bridge stowed",
+    "root_motor_authority": "Root must inhibit its single tram motor for the whole sequence; unloaded_clear_to_depart is not loaded clearance",
+    "persistent_ids": "Resolve all new _proposal component identities through existing state; no original IDs changed"
+  },
+  "cart_hold": {
+    "original_cart_id": "custodian_cart_001",
+    "original_product_ids": [
+      "cart_001_product_00",
+      "cart_001_product_01",
+      "cart_001_product_02",
+      "cart_001_product_03"
+    ],
+    "empty_clamp_strokes_tested": 4,
+    "physical_cart_joint_supplied": false,
+    "loaded_cart_motion_tested": false,
+    "consumption_provider_supplied": false,
+    "physics_fill_property_exists": false,
+    "next": "Root adds actual source-compatible restraint joint, loaded motion, release and save/stock/consumption continuity using original cart/products."
+  },
+  "cross_group_overlap": {
+    "Group1": "Homes/courts and shared roots protected; Group4 owns route joins to actual receiving interfaces.",
+    "Group3": "Staff lanes protected; request receiving contract before service links.",
+    "Group7": "Hull/gallery reservations protected; no source loads or columns silently added.",
+    "Group8": "Theater/cinema interiors owned by Group8; Group4 still owns exterior approach and transfer route. Await actual receiver coordinates/IDs before crossing boundary."
+  },
+  "unaccepted": [
+    "normal five-station main integration",
+    "north physical stop adoption",
+    "root motor/bogies/full-line travel",
+    "loaded cart restraint/carry/release",
+    "ordinary E/RMB boarding",
+    "pause/save/consumption continuity",
+    "159 remaining programme route reviews/construction",
+    "exterior theater/neighborhood/service joins",
+    "finite-time NPC transit/queues",
+    "whole-species/emergency stairs",
+    "structural/mechanical/hull capacity",
+    "ordinary in-game lighting/CRT/performance/hardware/final art"
+  ],
+  "source_cell_policy": "88 touching closed convex prism cells; zero positive cell overlap; internal interface faces retained/disclosed. Failed consolidated surface not selected. Not mechanical or final-art acceptance.",
+  "independent_checkpoint_rule": "Read exact remote commit/tree and delta blob hashes through GitHub connector, plus manifest and selected native/runtime byte hashes; receipt outside self-hashed commit.",
+  "external_main_at_preflight": "bc731d6d6d54bb2595331ee2f4368558d4d24fda",
+  "current_shared_preflight": {
+    "Game/scripts/ship.gd": {
+      "current_sha256": "a41443e83359b1a2d9642d178faf804dbcdaf6ed5e0ca715ea98ab53967aff24",
+      "unchanged_since_baseline": false
+    },
+    "Game/scripts/lift_gate.gd": {
+      "current_sha256": "6fed4a61a70245010ae8b60fceb586fb6bd2e093e48dd208367bf266b0467ef3",
+      "unchanged_since_baseline": true
+    },
+    "Game/scripts/commons_lift.gd": {
+      "current_sha256": "174813072483ea3808b8a529fd4bb6ecaf70ef2ea865486a268384dbc7b9d4a4",
+      "unchanged_since_baseline": true
+    },
+    "Game/scripts/static_contact_cache.gd": {
+      "current_sha256": "4ebe68081d5bf1d0b433ce93c4cb2d9c8bca0192a301fa11a0c2b58d5a86b049",
+      "unchanged_since_baseline": true
+    },
+    "Game/scripts/lighting_budget.gd": {
+      "current_sha256": "99a1b9c1e986acc11c9b03a9a65515108e38a217a58a648b21cc68abac9d4c3a",
+      "unchanged_since_baseline": true
+    },
+    "Game/scripts/player.gd": {
+      "current_sha256": "f1bd92d00ad355d5d3c87b57da5ff0e3aa76f9d48776a58f3515932c017a9566",
+      "unchanged_since_baseline": true
+    },
+    "Game/data/architecture/received_sections.json": {
+      "current_sha256": "6ad8b18dff427f2540c9dccef8b88bec2341ea7256f801ae177d869e65e05cfd",
+      "unchanged_since_baseline": true
+    },
+    "Game/data/architecture/received_section_floors.json": {
+      "current_sha256": "c52fd9f6d9cdab206579afcc250a83662166e6ce32ed6afc8854905a33a7c86f",
+      "unchanged_since_baseline": true
+    },
+    "Game/data/architecture/cleaning_cart_contacts.json": {
+      "current_sha256": "30a5de9043d6cbfdef2c75e471ec1ffa73c64500065e4af6093c0120aa04ad37",
+      "unchanged_since_baseline": true
+    },
+    "Game/assets/models/AST-DOR-003.glb": {
+      "current_sha256": "975cec2ac763de60279d0e37d32060f909a267cb139954104ca0f8e4b91bade5",
+      "unchanged_since_baseline": true
+    }
+  },
+  "additive_file_collisions_with_current_main": [],
+  "unrelated_generated_file_left_unstaged": "Game/tests/validate_lighting_unbounded_range.gd.uid",
+  "unrelated_file_already_present_in_current_main": true
+}

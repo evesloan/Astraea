@@ -1,0 +1,83 @@
+"""Preserved car successor with bounded slots and original-face UV interpolation."""
+from pathlib import Path
+import bpy,bmesh,json,hashlib,sys
+import numpy as np
+W=Path(__file__).resolve().parent;R=W.parents[3]
+P=json.loads((W/'SAFETY_PLAN.json').read_text());pro=json.loads((W/'PRIOR_CHECKPOINT_PROVENANCE.json').read_text())
+assert all(hashlib.sha256((R/n).read_bytes()).hexdigest()==h for n,h in pro['source_pins'].items())
+native=R/'BlenderCatalogue/assets/group4_tram_connections_20261009/port_successor_002/Group4_Port_Successor_002.blend'
+bpy.context.preferences.filepaths.save_version=0
+bpy.ops.wm.open_mainfile(filepath=str(native))
+keep=list(bpy.data.collections['TRAM_EDITABLE_COMPONENT'].objects)
+for ob in list(bpy.data.objects):
+ if ob not in keep:bpy.data.objects.remove(ob,do_unlink=True)
+for c in list(bpy.data.collections):
+ if c.name!='TRAM_EDITABLE_COMPONENT':bpy.data.collections.remove(c)
+B=lambda p:(p[0],-p[2],p[1]);G=lambda p:(p[0],p[2],-p[1])
+cuts={q['mesh']:q for q in P['vehicle_cuts']};audit=[]
+def subtract_box(ob,q):
+ old=ob.data;pts=np.array([G(ob.matrix_world@v.co) for v in old.vertices]);lo=pts.min(axis=0);hi=pts.max(axis=0)
+ assert len(old.vertices)==8 and len(old.polygons)==6,ob.name+' not a source box'
+ planes={}
+ for face in old.polygons:
+  pp=np.array([ob.matrix_world@old.vertices[old.loops[i].vertex_index].co for i in face.loop_indices]);axis=int(np.argmax(abs(np.array(face.normal))))
+  axes=[i for i in range(3) if i!=axis];uv=np.array([old.uv_layers.active.data[i].uv[:] for i in face.loop_indices]);co=np.linalg.lstsq(np.column_stack([pp[:,axes],np.ones(len(pp))]),uv,rcond=None)[0]
+  planes[(axis,round(float(pp[0,axis]),6))]=(axes,co)
+ grid=[]
+ for axis in range(3):
+  vals=[lo[axis],hi[axis]]
+  for c in q['slot_boxes_xyz']:
+   vals.extend(v for v in [c[axis],c[axis+3]] if lo[axis]+1e-7<v<hi[axis]-1e-7)
+  grid.append(sorted(set(round(float(v),9) for v in vals)))
+ active=set();removed=0.0
+ for i in range(len(grid[0])-1):
+  for j in range(len(grid[1])-1):
+   for k in range(len(grid[2])-1):
+    key=(i,j,k);a=np.array([grid[d][key[d]] for d in range(3)]);b=np.array([grid[d][key[d]+1] for d in range(3)]);c=(a+b)/2
+    inside=any(all(c[d]>v[d]-1e-8 and c[d]<v[d+3]+1e-8 for d in range(3)) for v in q['slot_boxes_xyz'])
+    if inside:removed+=float(np.prod(b-a))
+    else:active.add(key)
+ vlist=[];faces=[];index={};exterior_area=0.;uv_error=0.;face_proof=[]
+ for key in sorted(active):
+  for axis in range(3):
+   axes=[d for d in range(3) if d!=axis]
+   for sign in [-1,1]:
+    neighbor=list(key);neighbor[axis]+=sign
+    if tuple(neighbor) in active:continue
+    level=grid[axis][key[axis]+(1 if sign>0 else 0)]
+    loop=[]
+    for u,v in [(0,0),(1,0),(1,1),(0,1)]:
+     p=[0.,0.,0.];p[axis]=level;p[axes[0]]=grid[axes[0]][key[axes[0]]+u];p[axes[1]]=grid[axes[1]][key[axes[1]]+v]
+     bp=tuple(B(p))
+     if bp not in index:index[bp]=len(vlist);vlist.append(bp)
+     loop.append(index[bp])
+    faces.append(loop)
+ me=bpy.data.meshes.new(ob.name+' bounded twin-slot successor');me.from_pydata(vlist,[],faces);me.materials.append(old.materials[0]);me.update()
+ bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(me);bm.free()
+ uv=me.uv_layers.new(name=old.uv_layers.active.name)
+ for face in me.polygons:
+  axis=int(np.argmax(abs(np.array(face.normal))));p=me.vertices[face.vertices[0]].co;plane=planes.get((axis,round(float(p[axis]),6)))
+  axes=[d for d in range(3) if d!=axis]
+  if plane:exterior_area+=face.area
+  for li in face.loop_indices:
+   bp=me.vertices[me.loops[li].vertex_index].co
+   value=np.array([bp[d] for d in axes])*.7 if plane is None else np.array([bp[plane[0][0]],bp[plane[0][1]],1.])@plane[1]
+   uv.data[li].uv=tuple(value)
+   if plane:uv_error=max(uv_error,float(np.linalg.norm(np.array(uv.data[li].uv[:])-value)))
+  face_proof.append({'face':face.index,'retained_exterior_plane':plane is not None,'area':face.area})
+ ob.data=me;ob.matrix_world.identity();ob['bounded_channel_successor_of']=q['mesh'];ob['channel_boxes_game_xyz']=json.dumps(q['slot_boxes_xyz'])
+ audit.append(dict(mesh=ob.name,original_volume_m3=float(np.prod(hi-lo)),removed_channel_volume_m3=removed,
+                   remaining_volume_m3=float(np.prod(hi-lo))-removed,exterior_surface_area_m2=exterior_area,
+                   maximum_exterior_uv_error=uv_error,vertices=len(me.vertices),faces=len(me.polygons),face_proof=face_proof))
+for ob in keep:
+ if ob.type=='MESH' and ob.name in cuts:subtract_box(ob,cuts[ob.name])
+assert len(audit)==8 and all(q['maximum_exterior_uv_error']<1e-5 for q in audit)
+for im in bpy.data.images:
+ if im.source=='FILE' and im.size[0]>0 and not im.packed_file:im.pack()
+bpy.ops.object.select_all(action='DESELECT')
+for o in keep:o.select_set(True)
+bpy.context.view_layer.objects.active=next(o for o in keep if o.type=='MESH')
+asset=W/P['vehicle_successor'];bpy.ops.export_scene.gltf(filepath=str(asset),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False,export_animations=False,export_materials='EXPORT')
+new_native=W/'Group4_Powered_Portal_Body_r001.blend';bpy.ops.wm.save_as_mainfile(filepath=str(new_native),compress=True)
+(W/'VEHICLE_CHANNEL_BUILD.json').write_text(json.dumps({'status':'SOURCE_BUILT_REQUIRES_AUDIT','changed_members':audit,'unchanged_meshes':31,'original_native_sha256':hashlib.sha256(native.read_bytes()).hexdigest(),'new_native':new_native.name,'new_asset':asset.name,'original_body_unchanged':True},indent=2)+'\n')
+print('VEHICLE_SUCCESSOR_BUILT eight bounded channels;31 original meshes retained')

@@ -1,0 +1,91 @@
+from pathlib import Path
+import json,numpy as np
+from shapely.geometry import MultiPoint,Polygon,box
+from shapely.ops import triangulate
+W=Path(__file__).resolve().parent
+P=json.loads((W/'SAFETY_PLAN.json').read_text())
+inputs=json.loads((W/'SOURCE_PRISM_INPUTS.json').read_text())
+B=lambda p:(p[0],-p[2],p[1]);G=lambda p:(p[0],p[2],-p[1])
+def polygons(g):return [] if g.is_empty else list(g.geoms) if hasattr(g,'geoms') else [g]
+recipes=[]
+for row in inputs['meshes']:
+ name=row['name'];q=next(q for q in P['vehicle_cuts'] if q['mesh']==name)
+ bpts=np.array(row['points_blender_xyz']);pts=np.array([G(v) for v in bpts]);lo=pts.min(axis=0);hi=pts.max(axis=0)
+ assert all(min(abs(v[1]-lo[1]),abs(v[1]-hi[1]))<1e-6 for v in pts),name+' not a vertical prism'
+ profile=MultiPoint(pts[:,[0,2]]).convex_hull;planes=[]
+ for f in row['faces']:
+  pp=bpts[f['indices']];normal=np.array(f['normal']);axis=int(np.argmax(abs(normal)));axes=[i for i in range(3) if i!=axis]
+  coeff=np.linalg.lstsq(np.column_stack([pp[:,axes],np.ones(len(pp))]),np.array(f['uv']),rcond=None)[0]
+  planes.append({'normal':normal.tolist(),'distance':float(normal@pp[0]),'axes':axes,'coefficients':coeff.tolist()})
+ ys=sorted(set([float(lo[1]),float(hi[1])]+[v for cut in q['slot_boxes_xyz'] for v in [cut[1],cut[4]] if lo[1]+1e-7<v<hi[1]-1e-7]))
+ sections=[];volume=0.
+ for a,b in zip(ys,ys[1:]):
+  shape=profile;mid=(a+b)/2
+  for c in q['slot_boxes_xyz']:
+   if c[1]-1e-8<mid<c[4]+1e-8:shape=shape.difference(box(c[0],c[2],c[3],c[5]))
+  sections.append(shape);volume+=shape.area*(b-a)
+ caps=[]
+ for i,y in enumerate(ys):
+  below=sections[i-1] if i else Polygon();above=sections[i] if i<len(sections) else Polygon()
+  caps.extend([(y,below.difference(above),1),(y,above.difference(below),-1)])
+ all_points=[]
+ for shape in sections+[c[1] for c in caps]:
+  for p in polygons(shape):
+   for ring in [p.exterior,*p.interiors]:all_points.extend(tuple(v) for v in list(ring.coords)[:-1])
+ all_points=sorted(set(all_points))
+ def split_ring(coords):
+  out=[]
+  for a,b in zip(coords,coords[1:]+coords[:1]):
+   a=np.array(a);b=np.array(b);d=b-a;den=float(d@d);on=[]
+   for p in all_points:
+    v=np.array(p);t=float((v-a)@d)/den
+    if -1e-8<=t<1-1e-8 and np.linalg.norm(a+t*d-v)<1e-7:on.append((t,p))
+   out.extend(p for t,p in sorted(on))
+  return out
+ vertices=[];faces=[];index={}
+ def face(points):
+  verts=[]
+  for p in points:
+   bp=tuple(B(p));key=tuple(round(float(v),7) for v in bp)
+   if key not in index:index[key]=len(vertices);vertices.append(bp)
+   verts.append(index[key])
+  if len(set(verts))>=3:faces.append(verts)
+ for i,(a,b) in enumerate(zip(ys,ys[1:])):
+  for p in polygons(sections[i]):
+   for ring in [p.exterior,*p.interiors]:
+    coords=split_ring(list(ring.coords)[:-1])
+    for u,v in zip(coords,coords[1:]+coords[:1]):face([(u[0],a,u[1]),(v[0],a,v[1]),(v[0],b,v[1]),(u[0],b,u[1])])
+ for y,shape,sign in caps:
+  for p in polygons(shape):
+   p=Polygon(split_ring(list(p.exterior.coords)[:-1]),[split_ring(list(r.coords)[:-1]) for r in p.interiors])
+   for tr in [t for t in triangulate(p) if t.difference(p).area<1e-12]:face([(x,y,z) for x,z in list(tr.exterior.coords)[:-1]])
+ # Match side-wall/cap boundary vertices even when triangulation removes collinear ring points.
+ normalized=[]
+ for f in faces:
+  expanded=[]
+  for a,b in zip(f,f[1:]+f[:1]):
+   aa=np.array(vertices[a]);bb=np.array(vertices[b]);dd=bb-aa;den=float(dd@dd);on=[(0.,a)]
+   for j,v in enumerate(vertices):
+    if j in [a,b]:continue
+    vv=np.array(v);tt=float((vv-aa)@dd)/den
+    if 1e-7<tt<1-1e-7 and np.linalg.norm(aa+tt*dd-vv)<1e-7:on.append((tt,j))
+   expanded.extend(j for tt,j in sorted(on))
+  normalized.append(expanded)
+ faces=[]
+ for loop in normalized:
+  clean=list(dict.fromkeys(loop))
+  pp=np.array([vertices[i] for i in clean],dtype=np.float32)
+  normal=sum((np.cross(a,b) for a,b in zip(pp,np.roll(pp,-1,axis=0))),start=np.zeros(3))
+  if len(clean)>=3 and np.linalg.norm(normal)>1e-8:faces.append(clean)
+ prisms=[]
+ for i,(a,b) in enumerate(zip(ys,ys[1:])):
+  for p in polygons(sections[i]):
+   for tr in [t for t in triangulate(p) if t.difference(p).area<1e-12]:
+    prisms.append({'y':[a,b],'triangle_xz':[list(v) for v in list(tr.exterior.coords)[:-1]]})
+ assert abs(sum(Polygon(q['triangle_xz']).area*(q['y'][1]-q['y'][0]) for q in prisms)-volume)<1e-8
+ recipes.append({'mesh':name,'vertices_blender':vertices,'faces':faces,'uv_name':row['uv_name'],'original_planes':planes,
+ 'original_footprint_xz':list(profile.exterior.coords),'original_volume_m3':profile.area*(hi[1]-lo[1]),'remaining_volume_m3':volume,
+ 'removed_channel_volume_m3':profile.area*(hi[1]-lo[1])-volume,'convex_prisms':prisms})
+(W/'VEHICLE_CHANNEL_RECIPES.json').write_text(json.dumps({'source_native_sha256':inputs['source_native_sha256'],'members':recipes,'geometry_from_actual_native':True},indent=2)+'\n')
+(W/'VEHICLE_COLLISION_PROPOSAL.json').write_text(json.dumps({'modified_members':{q['mesh']:q['convex_prisms'] for q in recipes},'unchanged_members_policy':'one actual convex source mesh each','convex_prisms':sum(len(q['convex_prisms']) for q in recipes),'no_hollow_channel_filled':True},indent=2)+'\n')
+print('SOURCE_RECIPES',len(recipes),'members;',sum(len(q['convex_prisms']) for q in recipes),'actual convex prisms')
