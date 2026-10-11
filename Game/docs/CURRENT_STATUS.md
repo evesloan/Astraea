@@ -1,3 +1,9 @@
+## Latest partial construction: aft crown foyer waiting edges
+
+Two open clipped-corner waiting edges, 12 original furnishings and eight fitted original lanterns now connect to the current ship on 328 m² of retained floor. Native audit: 1,364 checks; connected runtime: 1,227 checks and 14 actual player route legs. No new floor, room address, programme or berth. Whole foyer, pressure continuity, structural capacity and final visuals remain open; all eight groups remain unfinished. See AFT_CROWN_FOYER_WAITING_EDGES.md.
+
+Finish this pre-assignment package at a retained boundary; future work by this executor is Group1 residential and sole shared Godot integration. Groups2–8 isolated workers and canonical adoption are parent-owned.
+
 # Aft crown sitting bays: ordinary lighting construction
 
 Eight original opal hospitality lanterns are fitted to the eight retained bay piers. Each has a small profiled mounting plate with15mm positive contact into its original pier; fixture bottoms remain2.21m above the supported platform floor. All64 lantern meshes are exact rigid copies of AST-LGT-001, retaining original faces, UVs, materials, texture bytes and source exit markers. Eight mounts and64 fixture meshes form one new editable source and its verified export. Eight exact-source backplates overlap their mounts positively,completing the fixture-to-mount-to-pier chain. All4,441 prior native/export files are unchanged, including the original eight benches, four tables, glazing, roofs, platform and source variants. No new floor, room address, programme or berth. The two3m portals and public/staff routes remain unchanged.

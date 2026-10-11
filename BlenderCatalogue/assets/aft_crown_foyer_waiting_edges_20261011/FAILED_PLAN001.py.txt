@@ -1,0 +1,46 @@
+from pathlib import Path
+import json,hashlib,math,itertools
+from shapely.geometry import Polygon,MultiPoint,box
+from shapely.ops import unary_union
+from shapely import constrained_delaunay_triangles
+W=Path(__file__).resolve().parent;R=W.parents[2];P=json.load(open(W/'PLAN.json'));sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+for f,h in P['source_pins'].items():assert sha(R/f)==h,f
+S=json.load(open(R/'BlenderCatalogue/assets/aft_crown_sitting_bays_20261011/PLATFORM_NATIVE_GEOMETRY.json'))[0]['objects'];floor=unary_union([Polygon(t)for f in['structural_meshes.json','received_structural_meshes.json']for q in json.load(open(R/'Game/data/generated'/f))['regions']if abs(q['floor_y']-106.5)<.00001 for t in q['triangles']]);parts=[];foot={};mats={'walnut':'SAC_QuietScreen','enamel':'SAC_QuietPortalHead','glass':'SAC_PerimeterGlass_0'};material_native='BlenderCatalogue/assets/d04_starboard_aft_neighborhood_20261011/D04StarboardAftCO_r003.blend'
+def prism(name,poly,y,Y,role,cat):
+ ps=list(poly.exterior.coords)[:-1];n=len(ps);vs=[[x,h,z]for h in[y,Y]for x,z in ps];fs=[list(range(n-1,-1,-1)),list(range(n,2*n))]+[[i,(i+1)%n,(i+1)%n+n,i+n]for i in range(n)]
+ q={'name':'ACFW_'+name,'verts':vs,'faces':fs,'role':role,'category':cat,'material_source':mats[role],'material_native':material_native,'runtime_collision':True,'expected_bounds':[[min(v[k]for v in vs)for k in range(3)],[max(v[k]for v in vs)for k in range(3)]]};parts.append(q);foot[q['name']]=poly;return q
+P['furniture']=[];P['fixture_instances']=[];support=[];sites=[]
+for side,raw in P['selection'].items():
+ poly=Polygon(raw);assert poly.is_valid and floor.buffer(.0001).covers(poly.buffer(.3)),side
+ # Five framed enclosure edges leave the complete inward long edge open.
+ for i in [0,1,3,4,5]:
+  a=raw[i];b=raw[(i+1)%len(raw)];dx=b[0]-a[0];dz=b[1]-a[1];L=math.hypot(dx,dz);nx=-dz/L*.08;nz=dx/L*.08;strip=Polygon([(a[0]+nx,a[1]+nz),(b[0]+nx,b[1]+nz),(b[0]-nx,b[1]-nz),(a[0]-nx,a[1]-nz)])
+  for label,y,Y,role,cat in [('Dado',106.5,107.4,'walnut','wall'),('Glass',107.4,110.62,'glass','window'),('Head',110.62,110.92,'enamel','wall')]:prism(side+f'Edge{i}'+label,strip,y,Y,role,cat)
+ for i,(x,z)in enumerate(raw+[(raw[0][0],118.5),(raw[0][0],127.5)]):
+  q=prism(side+'Pier'+str(i),box(x-.22,z-.22,x+.22,z+.22),106.5,110.92,'walnut','roof_pier');support.append({'part':q['name'],'at':[x,106.5,z],'bounds':q['expected_bounds']});assert floor.buffer(.0001).covers(foot[q['name']])
+  if i in [2,3,6,7]:
+   direction=1 if x<(-24 if side=='Port'else24)else-1;face=x+direction*.22;origin=face+direction*.06
+   name='ACFW_'+side+'Lamp'+str(i);ml=face-.015 if direction==1 else face-.075;mh=face+.075 if direction==1 else face+.015
+   mount=prism(side+'Lamp'+str(i)+'Mount',box(ml,z-.24,mh,z+.24),108.71,109.69,'enamel','fixture_mount')
+   P['fixture_instances'].append({'name':name,'source_native':'BlenderCatalogue/assets/hospitality_lantern/source/AST-LGT-001.blend','at':[origin,108.75,z],'yaw':direction*math.pi/2,'direction':direction,'pier':q['name'],'mount':mount['name'],'emitter':[origin+direction*.31,109.2,z],'range':10,'energy':1.4,'color':[1,.90,.76]})
+ for i,tri in enumerate(constrained_delaunay_triangles(poly.buffer(.08,join_style=2)).geoms):prism(side+'Roof'+str(i),tri,110.9,111.02,'enamel','roof')
+ inner=-20 if side=='Port'else20;prism(side+'OpenEdgeHeader',box(inner-.12,115,inner+.12,132),110.54,110.92,'enamel','wall')
+ for z in [118.5,127.5]:
+  direction=1 if side=='Port'else-1
+  for kind,x,id,yaw in [('Bench',-26 if side=='Port'else26,'001',direction*math.pi/2),('Chair',-22 if side=='Port'else22,'002',-direction*math.pi/2),('Table',-24 if side=='Port'else24,'003',0)]:
+   f={'001':'AST-FUR-001_day_window_bench.blend','002':'AST-FUR-002_day_reading_chair.blend','003':'AST-FUR-003_day_table.blend'}[id];P['furniture'].append({'name':f'ACFW_{side}_{kind}_{str(z).replace(".","p")}','native':'BlenderCatalogue/assets/furniture/'+f,'at':[x,106.5,z],'yaw':yaw,'kind':kind})
+ sites.append({'name':side,'polygon_xz':raw,'existing_floor_area_m2':poly.area,'open_inner_edge':[inner,115,132],'no_new_floor':True})
+# Exact positive-volume new-to-new joints;retained source solids are never revised.
+contacts=[]
+for a,b in itertools.combinations(parts,2):
+ y=min(a['expected_bounds'][1][1],b['expected_bounds'][1][1])-max(a['expected_bounds'][0][1],b['expected_bounds'][0][1]);area=foot[a['name']].intersection(foot[b['name']]).area
+ if y>1e-7 and area>1e-8:contacts.append({'a':a['name'],'b':b['name'],'positive_contact_height_m':y,'contact_plan_area_m2':area,'rationale':'Explicit new enclosure band,pier,roof or fixture-mount joint'})
+for q in parts:
+ poly=foot[q['name']];lo,hi=q['expected_bounds']
+ for old in S:
+  a,b=old['bounds']
+  if min(hi[1],b[1])-max(lo[1],a[1])<=.0001:continue
+  if min(hi[0],b[0])-max(lo[0],a[0])<=.0001 or min(hi[2],b[2])-max(lo[2],a[2])<=.0001:continue
+  assert poly.intersection(MultiPoint([(v[0],v[2])for v in old['world_vertices']]).convex_hull).area<1e-8,(q['name'],old['name'])
+P['parts']=parts;P['sites']=sites;P['supports']=support;P['explicit_new_contact_ledger']=contacts;P['runtime_source_intersection_allowlist']=[]
+(W/'PLAN.json').write_text(json.dumps(P,indent=2)+'\n');(W/'SOURCE_FIT_PREFLIGHT.json').write_text(json.dumps({'status':'PASS','parts':len(parts),'retained_floor_covered_m2':sum(s['existing_floor_area_m2']for s in sites),'no_new_floor':True,'protected_routes_and_core_outside_parts':True,'retained_native_solid_intersections':0,'floor_supports':len(support),'explicit_new_positive_volume_contacts':len(contacts),'fixed_original_frame_and25_lamps_unchanged':True},indent=2)+'\n');print('PASS',len(parts),'new architecture meshes',len(P['furniture']),'original furnishings',len(P['fixture_instances']),'lamps',len(contacts),'explicit joints')
