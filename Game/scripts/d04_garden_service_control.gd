@@ -20,8 +20,15 @@ func occupied()->bool:
 			if h.collider is CharacterBody3D or h.collider is RigidBody3D:return true
 	return false
 func _physics_process(delta:float)->void:
+	if obstructed and not occupied():obstructed=false
 	var target:=1.0 if desired_open else 0.0
-	if is_equal_approx(open_fraction,target):return
-	if occupied():obstructed=true;return
-	obstructed=false;open_fraction=move_toward(open_fraction,target,delta*.75)
-	for leaf in leaves:leaf.rotation.x=deg_to_rad(60)*open_fraction
+	if not is_equal_approx(open_fraction,target):
+		if occupied():obstructed=true
+		else:
+			obstructed=false;open_fraction=move_toward(open_fraction,target,delta*.75)
+	# Supply the complete authored hinge pose during physics synchronization.
+	# Updating rotation alone can let a newly created animatable body's initial
+	# server transform restore an identity origin on its first moving frame.
+	for j in range(leaves.size()):
+		var s:Dictionary=specs[j]
+		leaves[j].transform=Transform3D(Basis(Vector3.RIGHT,deg_to_rad(60)*open_fraction),Vector3(s.pivot[0],s.pivot[1],s.pivot[2]))
