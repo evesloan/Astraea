@@ -33,7 +33,16 @@ func run():
  await key_e();record("revoked_visit_outside_reentry_denied",south.open_fraction==0 and not south.desired_open)
  var used:Node3D=fore.get_node("D04PC_StaffUsed");used.interact(player)
  for i in range(100):await physics_frame
- await route(player,[[-28.25,14.25,-456.3],[-31.75,14.25,-456.3],[-31.75,14.25,-455.4],[-31.75,12,-446.8],[-34,12,-447],[-34,12,-449],[-53,12,-449],[-57.3,12,-449]],"fore_staff_used_return")
+ await route(player,[[-28.25,14.25,-456.3],[-31.75,14.25,-456.3],[-31.75,14.25,-455.4],[-31.75,12,-446.8],[-34,12,-447],[-53,12,-447],[-57.3,12,-447]],"fore_staff_return_shared_clean_lane")
+ # Independent used-lane fixture. No continuous court-to-used/stair separation claim.
+ player.global_position=Vector3(-34,12.03,-449);player.velocity=Vector3.ZERO;ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position)
+ for i in range(15):await physics_frame
+ await route(player,[[-53,12,-449],[-57.3,12,-449]],"independent_used_lane_to_original_staff")
+ await aim(player,vec(p.fore_new_gates[0].control_at));record("normal_staff_used_control_target",player.interaction_target==used);await key_e()
+ for i in range(100):await physics_frame
+ record("normal_staff_used_controller_closed",used.open_fraction==0);await key_e()
+ for i in range(100):await physics_frame
+ record("normal_staff_used_controller_open",used.open_fraction==1)
  for at in [[-34.4,12,-445.7],[-34.4,12,-450.25]]:record("local_staging_worker_"+str(at),capsule_clear(space,vec(at)))
  player.global_position=Vector3(-57,12.03,-459);player.velocity=Vector3.ZERO;ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position)
  for i in range(15):await physics_frame
@@ -52,4 +61,4 @@ func run():
  for i in range(15):await physics_frame
  await route(player,[[-71.8,16.5,-5],[-71.8,16.5,-2]],"inactive_stock_short_profile_test")
  physical_key(false)
- var result={"status":"PASS"if errors.is_empty()else"HOLD","checks":checks.size(),"errors":errors,"checks_detail":checks,"controller_legs":legs,"private_court_thresholds_traversed":4,"temporary_known_private_visits_test_only":true,"production_private_consent_provider_available":false,"home_hatches_panes_tools_installed":false,"new_floor_m2":p.new_floor_m2,"commons_candidate_production_active":false,"commons_candidate_worker_traversal_test_only":true,"continuous_separated_commons_rear_route_accepted":false,"separate_upstream_clean_used_complete":false,"cart_safe_vertical_accepted":false,"ordinary_game_visual_CRT_hardware_accepted":false,"model_pins":p.model_pins,"limits":p.limits};FileAccess.open("res://artifacts/d04_commons_transition_fore_staff_connection.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":result.checks,"errors":errors}));quit(0 if errors.is_empty()else 1)
+ var result={"status":"PASS"if errors.is_empty()else"HOLD","checks":checks.size(),"errors":errors,"checks_detail":checks,"controller_legs":legs,"private_court_thresholds_traversed":4,"temporary_known_private_visits_test_only":true,"production_private_consent_provider_available":false,"home_hatches_panes_tools_installed":false,"new_floor_m2":p.new_floor_m2,"commons_candidate_production_active":false,"commons_candidate_worker_traversal_test_only":true,"continuous_separated_commons_rear_route_accepted":false,"separate_upstream_clean_used_complete":false,"used_lane_walk_is_independent_fixture":true,"continuous_court_to_used_return_accepted":false,"cart_safe_vertical_accepted":false,"ordinary_game_visual_CRT_hardware_accepted":false,"model_pins":p.model_pins,"limits":p.limits};FileAccess.open("res://artifacts/d04_commons_transition_fore_staff_connection.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":result.checks,"errors":errors}));quit(0 if errors.is_empty()else 1)
