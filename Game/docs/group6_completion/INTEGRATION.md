@@ -6,8 +6,8 @@ the shared integration owner, construction thread `01a11d7f-8ef6-70bc-858d-bdf8d
 It does not modify `ship.gd`, floor registries, programme/capacity ledgers,
 catalogue registries, master sources, main, or checkpoint references.
 
-The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r010.blend`.
-Its runtime export is `Game/assets/models/AquaticCompletion_r010.glb`.
+The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r013.blend`.
+Its runtime export is `Game/assets/models/AquaticCompletion_r013.glb`.
 The adapter consumes `Game/data/architecture/group6_completion/FIT_CONTRACT.json`
 and `COLLISION_POLICY.json`. The source audit preserves all 1,640 original mesh
 definitions/transforms/UVs/material assignments/modifiers and 16 packed image
@@ -32,7 +32,7 @@ resources. The immutable original native and original runtime GLB remain unchang
    fourteen light sources, public seam, parent aquatic rooms, lift, stairs,
    Grand Pool, Vesper cascade and all shared builders. It asserts single application
    and an exact export hash. It supplies four moving half-leaves, two privacy
-   door identities and thirteen new mounted sources. The existing `service_door.gd`
+   door identities and fifteen new mounted sources. The existing `service_door.gd`
    state machine and player RMB/E interface own motion and input.
 5. Refresh imports with the pinned Godot 4.6.3 and run the candidate test. That test
    adds the adapter to the actual main scene and registers its new lights late only
@@ -44,9 +44,11 @@ resources. The immutable original native and original runtime GLB remain unchang
 
 Two original continuous slide-runout north wall members are excluded from the
 successor exchange and replaced by side jambs around west-offset recovery stair flights. Eight original
-exit tread members are retained in the native but excluded from exchange. Twelve
-new step blocks create six 0.18 m risers per flight, clear of the original recovery
-seats and their mounts; the parked seats and hoists remain unchanged. They remain untouched in the original native and retained in the
+exit tread members are retained in the native but excluded from exchange. The retained sharp and rounded-riser attempts could not be climbed by the original
+controller. The selected source supplies two visible continuous recovery ramps,
+clear of the original recovery seats and flume ends; the parked seats and hoists
+remain unchanged. The ramps themselves own faithful source contact. No controller
+or collision-mask change, hidden walk surface or teleport is supplied. They remain untouched in the original native and retained in the
 successor native. Two original full-width fixed rinse leaves are similarly retained
 but excluded from exchange. Four native half-leaf derivatives split those original
 meshes at their centre planes, retain their materials and outer outline, and add
@@ -103,3 +105,37 @@ The shared ship root changed on concurrent main while this branch was being buil
 path; the annex builders, player, original exports, master and ledgers matched that
 read-only comparison. Adopt the scoped package into the integrator's current root;
 do not restore this branch's old `ship.gd`.
+
+## r013 continuation into an already routed r010 handoff
+
+Adopt the next commit as a scoped fast-forward/cherry-pick into the integration
+owner's branch. Original r010 source and runtime files are retained; select only
+`AquaticCompletion_r013.glb` through the same adapter/contract paths. Restart the
+scene after changing the selected source; do not call the adapter twice on an
+already constructed `Group6Completion` root. The original privacy persistent IDs,
+annex programme identity, compiler floor owners, public/service boundaries and
+existing adapter call interface are unchanged.
+
+Six west wall segments, four old overlapping treads and the obstructing west
+adaptive handhold are excluded for each retained spa5/spa6. Every original remains
+unchanged in the native. Curved source bank joins match the exact protected island
+floor-hole polygon. Two visible 1.6 m entry surfaces descend to the original basin
+bed, with side rails, suspended quiet canopies/screens, reachable dry support bays
+and two additional task fixtures. Original seats, hoists and east handholds remain.
+Two retained rinse interiors gain mounted handset/hose/grab/control hardware;
+water/temperature/gravity/hoist/inventory operation is still unimplemented.
+
+`FOLLOWUP_MAIN001.json` records 52 focused actual-main checks/24 original-player
+legs with four declared independent supported fixture starts. Per-frame witnesses
+record continuous movement, no traversal position/velocity writes and no fallback
+recovery. The historical r010 121-check/87-leg route is not a fresh full r013 gate.
+`THERMAL001.json` separates 1.5 m dry-turn proposal geometry from wheelchair/species
+acceptance. `RECOVERY005.json` proves the source-ground recovery route, not swimming
+or a slide ride. `LOCAL007.json` retests rinse operation after the hardware changes.
+The integrator remains responsible for current-root adoption and broader final
+integration gates. No production activation, catalogue registration or shared
+registry/root modification occurs in this handoff.
+
+The existing route helper sets facing yaw per leg. Movement uses the original
+player and KEY_W; no positional relocation or velocity assignment occurs during
+traversal. The raw followup receipt's transform wording refers to translation.

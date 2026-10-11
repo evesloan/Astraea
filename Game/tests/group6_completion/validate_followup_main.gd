@@ -1,0 +1,57 @@
+extends "res://tests/group6_completion/validate_thermal.gd"
+class MotionWitness:
+	extends Node
+	var actor:CharacterBody3D
+	var previous:Vector3
+	var samples:=0
+	var maximum_step:=0.0
+	var minimum_y:=INF
+	var active:=false
+	func reset(body:CharacterBody3D)->void:
+		actor=body;previous=actor.global_position;samples=0;maximum_step=0;minimum_y=actor.global_position.y;active=true
+	func _physics_process(_delta:float)->void:
+		if not active:return
+		var at:=actor.global_position;maximum_step=maxf(maximum_step,at.distance_to(previous));minimum_y=minf(minimum_y,at.y);previous=at;samples+=1
+func run()->void:
+	var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
+	for i in range(20):await physics_frame
+	var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var actor_id:=actor.get_instance_id()
+	var annex:Node3D=ship.get_node("ShipSpace/Districts/AquaticRiverSlideAnnex_WIP");var floors:Node3D=annex.get_node("AquaticAnnexOwnedSlabs");var floor_id:=floors.get_instance_id();var old_lights:Array=annex.find_children("*","OmniLight3D",true,false)
+	var addition:Node3D=load("res://scripts/group6_completion/completion.gd").build(annex,ship)
+	record("same_four_floor_owners",floors.get_instance_id()==floor_id and floors.get_child_count()==4)
+	record("stable_programme",annex.get_meta("programme_key")=="D08_directory_08")
+	record("water_gameplay_remains_separate",not addition.get_meta("water_gameplay_implemented"))
+	for light in old_lights:record("original_light_retained_"+str(light.name),is_instance_valid(light))
+	var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	for light:Light3D in addition.find_children("*","Light3D",true,false):
+		budget.sources.append(light);budget.requested_shadow[light.get_instance_id()]=true;light.visible=false;light.shadow_enabled=false
+	var witness:=MotionWitness.new();witness.process_physics_priority=1000;root.add_child(witness)
+	var fixture_evidence:Array=[]
+	for x in [64.0,77.5]:
+		actor.global_position=Vector3(x,44.5,192.92);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(actor.global_position)
+		for i in range(20):await physics_frame
+		record("recovery_supported_start_"+str(x),actor.is_on_floor() and actor.position.y>=44.479 and actor.position.y<=44.67 and Vector2(actor.position.x-x,actor.position.z-192.92).length()<.2)
+		witness.reset(actor)
+		for goal in [Vector3(x,45.45,190.2),Vector3(x,44.48,192.9)]:
+			var w:Dictionary=await walk_to(actor,goal);legs.append(w);record("recovery_leg_"+str(legs.size()),w.reached and w.floor_contact)
+		witness.active=false;record("recovery_continuous_motion_"+str(x),witness.samples>60 and witness.maximum_step<.12 and witness.minimum_y>44.25)
+		fixture_evidence.append({"id":"recovery_"+str(x),"normal_physics_samples":witness.samples,"maximum_frame_motion_m":witness.maximum_step,"minimum_y":witness.minimum_y})
+	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/FIT_CONTRACT.json"))
+	for court in plan.thermal_entry_courts:
+		var z:float=float(court.center_xz[1]);var id:String=str(court.source_id)
+		actor.global_position=Vector3(75.2,45.48,z-2.7);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(actor.global_position)
+		for i in range(20):await physics_frame
+		record(id+"_supported_start",actor.is_on_floor() and absf(actor.position.y-45.45)<.01)
+		witness.reset(actor)
+		for goal in thermal_route(z):
+			var w:Dictionary=await walk_to(actor,goal);legs.append(w);record(id+"_leg_"+str(legs.size()),w.reached and w.floor_contact)
+			if not errors.is_empty():break
+		witness.active=false;record(id+"_continuous_motion",witness.samples>60 and witness.maximum_step<.12 and witness.minimum_y>44.35)
+		fixture_evidence.append({"id":id,"normal_physics_samples":witness.samples,"maximum_frame_motion_m":witness.maximum_step,"minimum_y":witness.minimum_y})
+		if not errors.is_empty():break
+	record("same_original_persistent_player",actor.get_instance_id()==actor_id)
+	for name in ["GentleWaters_LivingGifts_Vesper_Section_WIP","GrandPoolOrchardSection_WIP"]:record("retained_parent_"+name,ship.find_child(name,true,false)!=null)
+	physical_key(false)
+	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"fixture_evidence":fixture_evidence,"supported_fixture_seeds":4,"route_position_or_velocity_writes":0,"persistent_original_player":true,"mode":"focused headless fixed60, not full-suite or performance acceptance","scope":"Actual main scene, changed recovery paths and thermal support/entry/bed/return. Supported independent fixture starts only; all traversal uses original input/controller/contact without a replacement controller or teleport. Swimming, slide riding, gravity, hoists, broad species, wheelchair and final art remain separate."}
+	FileAccess.open("res://docs/group6_completion/FOLLOWUP_MAIN002.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	print("GROUP6 FOLLOWUP MAIN ",result.status," ",errors," LEGS ",legs.size());quit(0 if errors.is_empty() else 1)

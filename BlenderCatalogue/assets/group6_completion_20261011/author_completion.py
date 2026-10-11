@@ -8,6 +8,7 @@ from mathutils import Vector
 
 P=Path(__file__).resolve().parent; R=P.parents[2]
 ORIGINAL=R/'external_packages/aquatic_district_20261009/source/aquatic_district.blend'
+assert not (P/'AquaticCompletion_r013.blend').exists(), 'Choose a new unique revision before authoring; retained natives are immutable'
 assert hashlib.sha256(ORIGINAL.read_bytes()).hexdigest()=='80c7c1756d4bbe9e74b37e150797115eff5f200977718b4f661f50a3849c9a28'
 bpy.ops.wm.open_mainfile(filepath=str(ORIGINAL))
 S=bpy.context.scene
@@ -65,9 +66,14 @@ for i,x in enumerate([64,77.5],1):
         old='AQD__AQD_slide_'+str(i)+'_exit_tread_'+str(j);assert old in bpy.data.objects
         bpy.data.objects[old]['group6_exchange_excluded']='replaced by six-riser recovery flight clear of original seat'
         bpy.data.objects[old].hide_render=True;excluded.append(old)
-    for j in range(6):
-        a=191+j*.35;top=45.38-j*.18
-        box('slide_'+str(i)+'_recovery_tread_'+str(j),(x,(44.3+top)/2,a+.175),(1.4,top-44.3,.35),'stone','basin_entry',0)
+    # A visibly continuous wet recovery surface supports ordinary controller motion.
+    # Original steps remain preserved in the native and failed revisions remain intact.
+    front=191.25;back=193.1;top=45.45;low=44.35
+    vs=[(x-.7,44.3,front),(x+.7,44.3,front),(x+.7,44.3,back),(x-.7,44.3,back),(x-.7,top,front),(x+.7,top,front),(x+.7,low,back),(x-.7,low,back)]
+    mesh('slide_'+str(i)+'_continuous_recovery_path',vs,[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],'stone','basin_entry')
+    for j in range(9):
+        z=front+.18+j*.20;y=top-(top-low)*(z-front)/(back-front)
+        mesh('slide_'+str(i)+'_recovery_grip_'+str(j),[(x+dx,top-(top-low)*(zz-front)/(back-front)+.002,zz) for dx,zz in [(-.625,z-.0325),(.625,z-.0325),(.625,z+.0325),(-.625,z+.0325)]],[(0,1,2,3)],'grip','finish_visual')
     for label,a,b in [('west',x-1,x-.9),('east',x+.9,x+5)]:
         box('slide_'+str(i)+'_exit_jamb_'+label,((a+b)/2,44.875,191.25),(b-a,1.15,.16))
     for side in [-1,1]:
@@ -179,6 +185,91 @@ for n,z,role in [('clean_linen',218,'oat'),('used_linen',221.2,'clay')]:
     box(n+'_handle',(97.90,46.45,z),(.11,.09,.38),'metal')
     box(n+'_cap',(98.6,46.96,z),(1.25,.1,1.25),'wood')
 
+# Thermal entry courts use the two original basins; no new parent or water target.
+THERMAL=[]
+for i,cz in [(5,211.5),(6,223.5)]:
+    prefix='AQD__AQD_spa_'+str(i)
+    for j in range(21,27):
+        old=prefix+'_wall_'+str(j);assert old in bpy.data.objects
+        bpy.data.objects[old].hide_render=True;excluded.append(old)
+        bpy.data.objects[old]['group6_exchange_excluded']='west entry opening retains basin identity and original water boundary'
+    for j in range(4):
+        old=prefix+'_wet_tread_'+str(j);assert old in bpy.data.objects
+        bpy.data.objects[old].hide_render=True;excluded.append(old)
+        bpy.data.objects[old]['group6_exchange_excluded']='continuous visible entry surface replaces overlapping original tread boxes'
+    old=prefix+'_adaptive_handhold_-1';assert old in bpy.data.objects
+    bpy.data.objects[old].hide_render=True;excluded.append(old)
+    bpy.data.objects[old]['group6_exchange_excluded']='side handholds keep the actual entry clear'
+    # 1.6 m wide, real sloped slab inside the retained basin. The bank is flush.
+    a=78.90;b=81.10;top=45.45;low=44.40
+    # The bank join follows the exact retained island-floor hole, not a straight
+    # slab crossing its curved boundary and creating another raised lip.
+    plan_path=R/'Game/data/architecture/AQUATIC_ANNEX_PLAN.json'
+    assert hashlib.sha256(plan_path.read_bytes()).hexdigest()=='7609dc6ef9f2e564713ba8bcc5a5030a305eba12e7a8401ad16be3fd7283e836'
+    island=next(q for q in json.loads(plan_path.read_text())['floor_records'] if q['id']=='AQD_island_terrace')
+    holes=[h for poly in island['boundary_polygons_xz'] for h in poly['holes']]
+    hole=min(holes,key=lambda h:abs(sum(q[1] for q in h)/len(h)-cz))
+    def bank_at(z):
+        hits=[]
+        for p0,p1 in zip(hole,hole[1:]+hole[:1]):
+            if abs(p1[1]-p0[1])<1e-8:continue
+            if min(p0[1],p1[1])-1e-7<=z<=max(p0[1],p1[1])+1e-7:
+                t=(z-p0[1])/(p1[1]-p0[1]);hits.append(p0[0]+t*(p1[0]-p0[0]))
+        assert hits
+        return min(hits)
+    rows=[cz-.8+j*.2 for j in range(9)];vs=[]
+    for z in rows:
+        ax=bank_at(z);vs.extend([(ax,44.4,z),(b,44.4,z),(ax,top,z),(b,low,z)])
+    fs=[]
+    for j in range(8):
+        q=j*4;r=q+4;fs += [(q,r,r+1,q+1),(q+2,q+3,r+3,r+2),(q,q+2,r+2,r),(q+1,r+1,r+3,q+3)]
+    fs += [(0,1,3,2),(32,34,35,33)]
+    mesh('spa_'+str(i)+'_continuous_entry_surface',vs,fs,'stone','basin_entry')
+    for j in range(10):
+        vs=[]
+        for z in [cz-.725+k*.18125 for k in range(9)]:
+            ax=bank_at(z)
+            for t in [(j+.32)/10,(j+.68)/10]:vs.append((ax+t*(b-ax),top-(top-low)*t+.002,z))
+        mesh('spa_'+str(i)+'_entry_grip_'+str(j),vs,[(k*2,k*2+1,k*2+3,k*2+2) for k in range(8)],'grip','finish_visual')
+    for side in [-1,1]:
+        rod('spa_'+str(i)+'_entry_rail_'+str(side),(78.85,46.55,cz+side*.87),(80.95,45.55,cz+side*.87),.035)
+        for x,y in [(78.85,45.45),(80.95,44.4)]:rod('spa_'+str(i)+'_rail_bearing_'+str((side,x)),(x,y,cz+side*.87),(x,y+1.1,cz+side*.87),.035)
+    # Two distinguishable quiet courts, suspended canopies without route columns.
+    role='teal' if i==5 else 'clay'
+    band('spa_'+str(i)+'_quiet_canopy',(81.5,cz),3.0,2.9,-math.pi/3,math.pi*5/3,.38,48.72,48.9,'ivory')
+    for angle in [math.pi/2,math.pi,3*math.pi/2]:
+        x=81.5+3*math.cos(angle);z=cz+2.9*math.sin(angle)
+        rod('spa_'+str(i)+'_canopy_hanger_'+str(angle),(x,51.7,z),(x,48.9,z),.028)
+    band('spa_'+str(i)+'_quiet_backdrop',(81.5,cz),2.92,2.92,-math.pi/3,math.pi/3,.10,45.70,48.35,role)
+    for angle in [-math.pi/3,0,math.pi/3]:
+        x=81.5+2.92*math.cos(angle);z=cz+2.92*math.sin(angle)
+        rod('spa_'+str(i)+'_backdrop_hanger_'+str(angle),(x,48.35,z),(x,48.72,z),.028)
+    # Physical dry support edge north-west of entry, clear of transfer equipment.
+    box('spa_'+str(i)+'_support_base',(76.2,45.79,cz-2.7),(.7,.68,.65),'wood')
+    box('spa_'+str(i)+'_support_counter',(76.2,46.15,cz-2.7),(.85,.12,.8),'stone')
+    box('spa_'+str(i)+'_closed_linen',(76.2,46.45,cz-2.7),(.64,.48,.55),role,'stock_asset')
+    box('spa_'+str(i)+'_support_handle',(75.835,46.48,cz-2.7),(.07,.09,.30),'metal')
+    rod('spa_'+str(i)+'_support_task_bearing',(76.2,51.7,cz-2.7),(76.2,48.3,cz-2.7),.025)
+    box('spa_'+str(i)+'_support_task_hood',(76.2,48.15,cz-2.7),(.45,.18,.45),'metal','fixture_mount')
+    box('spa_'+str(i)+'_support_task_lens',(76.2,48.04,cz-2.7),(.34,.04,.34),'lens','fixture_lens')
+    LIGHTS.append({'id':'spa_'+str(i)+'_support_task','xyz':[76.2,47.98,cz-2.7],'range_m':5,'energy':1.2,'receiver_xyz':[76.2,45.48,cz-2.7]})
+    THERMAL.append({'source_id':'AQD_spa_'+str(i),'center_xz':[81.5,cz],'west_opening_wall_segments':list(range(21,27)),'entry_surface_x':[a,b],'clear_width_m':1.6,'floor_top_range':[top,low],'dry_turn_center_xyz':[77.0,45.45,cz-1.5],'dry_turn_proposal_diameter_m':1.5,'support_approach_xyz':[75.2,45.45,cz-2.7],'original_seat_hoist_and_east_adaptive_handhold_preserved':True,'gravity_and_water_control_operation_implemented':False,'wheelchair_broad_species_or_loaded_cart_accepted':False})
+
+# Real handset, grab bars and hardware complete the two retained rinse interiors.
+for i,z in enumerate([231,233.6]):
+    rod('rinse_'+str(i)+'_vertical_grab',(57.30,46.25,z-.7),(57.30,47.25,z-.7),.033)
+    for y in [46.25,47.25]:rod('rinse_'+str(i)+'_grab_standoff_'+str(y),(57.18,y,z-.7),(57.30,y,z-.7),.035)
+    box('rinse_'+str(i)+'_handset_mount',(57.23,47.28,z+.6),(.08,.20,.20),'metal')
+    rod('rinse_'+str(i)+'_handset_stem',(57.35,47.20,z+.6),(57.65,47.55,z+.6),.035)
+    box('rinse_'+str(i)+'_handset_head',(57.68,47.56,z+.6),(.24,.11,.32),'ivory')
+    for j in range(7):
+        a=j/7;b=(j+1)/7
+        p0=(57.35+.25*math.sin(a*math.pi),47.20-1.05*a,z+.6)
+        p1=(57.35+.25*math.sin(b*math.pi),47.20-1.05*b,z+.6)
+        rod('rinse_'+str(i)+'_hose_segment_'+str(j),p0,p1,.018)
+    box('rinse_'+str(i)+'_water_control_hardware',(57.23,46.2,z+.6),(.12,.32,.32),'metal')
+    box('rinse_'+str(i)+'_low_control_paddle',(57.36,46.2,z+.6),(.14,.08,.2),'ivory')
+
 # Discreet pool/spa handrail lighting below the original crossing soffit.
 for i,(x,z) in enumerate([(82.6,211.5),(82.6,223.5),(78,239),(63.5,216),(86,217)]):lamp('wet_edge_'+str(i),x,48.45,z,51.7,7)
 
@@ -187,8 +278,8 @@ assert all(digest(bpy.data.objects[n])==d for n,d in before.items()),'Original o
 assert all(hashlib.sha256(bpy.data.images[n].packed_file.data).hexdigest()==h for n,h in packed.items())
 audit={'status':'PASS','original_native_sha256':hashlib.sha256(ORIGINAL.read_bytes()).hexdigest(),'original_meshes_preserved':len(before),'original_mesh_semantics_sha256':hashlib.sha256(json.dumps(before,sort_keys=True,separators=(',',':')).encode()).hexdigest(),'packed_images_preserved':packed,'original_mesh_hashes':before,'exchange_exclusions':excluded,'added_meshes':len(NEW),'added_light_fittings':len(LIGHTS),'native_engine':'Blender '+bpy.app.version_string,'geometry_transform_uv_material_modifiers_preserved':True}
 (P/'NATIVE_AUDIT.json').write_text(json.dumps(audit,indent=2)+'\n')
-(P/'FIT_CONTRACT.json').write_text(json.dumps({'schema':1,'status':'inactive Group6 handoff','programme_key':'D08_directory_08','doors':DOORS,'additional_lights':LIGHTS,'exclusions':excluded,'original_source':str(ORIGINAL.relative_to(R)),'new_floor_area_m2':0,'new_capacity':0},indent=2)+'\n')
-bpy.ops.wm.save_as_mainfile(filepath=str(P/'AquaticCompletion_r010.blend'))
+(P/'FIT_CONTRACT.json').write_text(json.dumps({'schema':1,'status':'inactive Group6 handoff','programme_key':'D08_directory_08','doors':DOORS,'additional_lights':LIGHTS,'exclusions':excluded,'original_source':str(ORIGINAL.relative_to(R)),'new_floor_area_m2':0,'new_capacity':0,'thermal_entry_courts':THERMAL},indent=2)+'\n')
+bpy.ops.wm.save_as_mainfile(filepath=str(P/'AquaticCompletion_r013.blend'))
 
 # Exchange has explicit roles; originals and new meshes share unchanged materials.
 dg=bpy.context.evaluated_depsgraph_get();exchange=bpy.data.scenes.new('Group6Exchange');bpy.context.window.scene=exchange;groups={};policy={};parts={}
@@ -206,6 +297,6 @@ for key,obs in groups.items():
     role='privacy_leaf' if 'privacy_leaf' in key else obs[0][2]
     q['kind']=role;parts[key]=names;policy[key]=role
 bpy.ops.object.select_all(action='SELECT')
-bpy.ops.export_scene.gltf(filepath=str(P/'AquaticCompletion_r010.glb'),export_format='GLB',use_selection=True,use_active_scene=True,export_apply=True,export_extras=True,export_lights=False,export_cameras=False)
+bpy.ops.export_scene.gltf(filepath=str(P/'AquaticCompletion_r013.glb'),export_format='GLB',use_selection=True,use_active_scene=True,export_apply=True,export_extras=True,export_lights=False,export_cameras=False)
 (P/'EXCHANGE_PARTS.json').write_text(json.dumps(parts,indent=2)+'\n');(P/'COLLISION_POLICY.json').write_text(json.dumps(policy,indent=2)+'\n')
 print('GROUP6 SOURCE PASS',audit['original_meshes_preserved'],audit['added_meshes'],len(policy))

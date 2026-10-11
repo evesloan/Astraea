@@ -1,42 +1,48 @@
-# Group 6 construction milestone — r010
+# Group 6 construction continuation — r013
 
-Inactive handoff from verified retained baseline `affc5c807087ff87da29f3642c2d6e418241b896`. The package
-preserves all 1,640 original source meshes and 16 packed images, and adds 169 meshes,
-13 mounted light fittings, two operating privacy pairs, supported furnishings,
-recovery flights and source fixes for flush ramp joins and a continuous guarded
-gallery. Original 4 slab owners, room IDs and capacity ledgers remain unchanged.
+Recovery traversal is now PASS in the original controller. Visible continuous
+source ramps replace the held recovery flights within the same two runouts. The
+sharp and rounded-riser attempts remain in their immutable source revisions and
+receipts. No controller, collision mask, teleport, scripted lift or invisible walk
+surface was added to make the test pass.
 
-**Implemented:** coherent editable whole-annex successor with explicit contact
-roles, two source-derived privacy pairs, new wet/dry/rest/linen/recovery fittings,
-slide openings/flights, flush upper landing/island bridge and open gallery junction.
-50 m lane, six thermal targets, cascade/overlook/lift/stair interfaces are retained
-and separately contracted; no additional parent rooms or admission are created.
+Two retained thermal basins now have west openings, curved bank joins, real descent
+surfaces, side handrails, paired quiet canopies/privacy screens, dry support bays
+and task sources. The two existing rinse interiors gain mounted handset, hose,
+control and grab hardware. Original seats, hoists, basin/water identity and thermal
+six-target reconciliation are preserved. There is no new destination, capacity or
+compiler-owned floor. Selected source is `AquaticCompletion_r013.blend`, export
+`AquaticCompletion_r013.glb`; all 1,640 original source meshes and 16 packed images
+remain intact, with 271 new meshes and 15 additional mounted sources.
 
-**Tested:** final native audit and byte-identical fresh export PASS. 118 furnishing
-support points and37,024 conservative
-furnishing/original-solid separation comparisons PASS. Final local route PASS 64
-original-controller legs. Local privacy PASS 28 checks including two obstruction
-rejections. Actual-main candidate PASS 121 checks and87 original-player
-route/door/return legs, with one supported seam seed and no route position writes.
-These are focused checks against pinned Godot 4.6.3, not the full suite, game FPS,
-engineering, species or final-art acceptance.
+Focused actual-main validation passes 52 checks and 24 original persistent-player
+legs across four explicitly supported independent fixture starts. A witness logs
+1,609 physics samples; maximum observed per-frame displacement is 0.061 m. No
+position or velocity writes occur during traversal. Local recovery passes six
+checks/four legs; thermal courts pass 54 checks/20 legs, including two proposed
+1.5 m dry turning envelopes and 32 floor rays. Related rinse operation passes
+28 checks/14 legs after the hardware changes. The prior r010 full route remains
+historical evidence; it was not repeated or promoted to a full r013 route result.
 
-**Visually reviewed:** actual saved native r010 source views. The wide screenshot
-shows the annex in context under neutral Workbench studio light. Cutaway staging
-is recorded and was not saved back to the native. No game-light/texture/CRT/hardware
-or final-art claim follows from that source image.
+Fresh saved-native verification passes original hashes, 126 furnishing support
+points, 47,668 conservative furniture/original-solid comparisons, 14 actual
+roof/canopy mounting contacts and byte-identical repeat export. The clear wide
+photograph is actual saved source under neutral Workbench light. Thermal detail
+views record roof/water cutaway staging; the roof-occluded camera attempt remains.
+These are source and focused physics checks, not game-light, texture, CRT,
+engineering, swimming, wheelchair, broad-species or final-art acceptance.
 
-**Held:** the final separate stair test retains supported physical starts but the
-original player cannot climb the solid recovery risers normally. Swimming,
-buoyancy, AFK/slide/hoist operation, water/thermal/gravity systems, stock/occupation/save,
-shared service and Universal Changing connections, cascade operation, broad species,
-engineering and final art remain open. **Group 6 is not accepted as a whole.**
+Use `INTEGRATION.md` to update the inactive handoff into Group1's current integration
+branch. The adapter interface and privacy IDs remain stable; do not apply it twice.
+The shared ship root/registries, original assets and main/checkpoint refs remain
+untouched by Group6. Swimming/buoyancy/AFK/slide/hoist/water/gravity/inventory/save,
+shared routes and final acceptance remain open. **Group6 is not accepted as a whole.**
 
-Adopt only the selected Group 6 paths using `INTEGRATION.md`. The shared integration
-owner must add the adapter call after the original annex builder and before light
-budget setup. Concurrent main changed `Game/scripts/ship.gd`; do not restore the old
-root. No shared registry/root or main/checkpoint reference was changed by this group.
+Prior checkpoint compact manifest SHA256:
+`5ea7eb929f817f17b973f003fb7932d2d624361caf16ffa50c559f787f3c1cde`.
+The new `COMPACT_MANIFEST.json` and independent readback provide exact next-checkpoint
+hashes, commit and tree without changing immutable source after publication.
 
-All failed source revisions, authoring/import exceptions and physics attempts are
-retained. `COMPACT_MANIFEST.json` hashes the package. Independent published readback
-provides the exact commit/tree and every-file SHA256 outside the immutable commit.
+The existing route helper sets facing yaw per leg. Movement uses the original
+player and KEY_W; no positional relocation or velocity assignment occurs during
+traversal. The raw followup receipt's transform wording refers to translation.

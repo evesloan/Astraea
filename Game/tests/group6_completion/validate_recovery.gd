@@ -12,6 +12,6 @@ func run()->void:
 		actor.queue_free()
 		for i in range(3):await physics_frame
 	physical_key(false)
-	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"supported_fixture_seeds":2,"scope":"Separate physical recovery stair construction with original player; supported last-tread seeds, no swimming, buoyancy, slide ride or hoist operation."}
-	FileAccess.open("res://docs/group6_completion/RECOVERY003.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"supported_fixture_seeds":2,"scope":"Separate physical source-ground recovery construction with original player; supported low-path seeds, no swimming, buoyancy, slide ride or hoist operation."}
+	FileAccess.open("res://docs/group6_completion/RECOVERY005.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
 	print("GROUP6 RECOVERY ",result.status," ",errors);quit(0 if errors.is_empty() else 1)

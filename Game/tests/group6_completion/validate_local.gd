@@ -40,5 +40,5 @@ func run()->void:
 			var w:Dictionary=await walk_to(actor,goal);legs.append(w);record("rinse_return_leg_"+str(legs.size()),w.reached and w.floor_contact)
 	physical_key(false)
 	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"original_player_legs":legs,"single_supported_seed":true,"scope":"Local annex's exact original floor builder, native export, original player and shared door state machine. Parent ship and all onward connections are separate actual-main gates."}
-	FileAccess.open("res://docs/group6_completion/LOCAL006.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	FileAccess.open("res://docs/group6_completion/LOCAL007.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
 	print("GROUP6 LOCAL ",result.status," ",errors);quit(0 if errors.is_empty() else 1)

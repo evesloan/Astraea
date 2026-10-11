@@ -4,10 +4,10 @@ static func build(annex:Node3D,ship:Node3D)->Node3D:
 	assert(annex.name=="AquaticRiverSlideAnnex_WIP")
 	assert(annex.get_node_or_null("Group6Completion")==null,"Group 6 adapter must be applied exactly once")
 	var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
-	assert(FileAccess.get_sha256("res://assets/models/AquaticCompletion_r010.glb")==str(p.export_sha256))
+	assert(FileAccess.get_sha256("res://assets/models/AquaticCompletion_r013.glb")==str(p.export_sha256))
 	var previous:Node3D=annex.get_node("ExactAquaticArchitecture")
 	previous.free() # Runtime replacement only; original source/export stays immutable.
-	var visual:Node3D=load("res://assets/models/AquaticCompletion_r010.glb").instantiate()
+	var visual:Node3D=load("res://assets/models/AquaticCompletion_r013.glb").instantiate()
 	visual.name="ExactAquaticArchitecture";annex.add_child(visual)
 	var root:=Node3D.new();root.name="Group6Completion";annex.add_child(root)
 	root.set_meta("persistent_id","group6_aquatic_construction_successor_001")
