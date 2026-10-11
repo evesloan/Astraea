@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_port_central_commons_recomposition_20261011/audit_native001.py", line 12, in <module>
+    old=s[q['name']];new=actual[q['name']];assert old['payload']==new['payload'],q['name']+' local payload';d=q['delta'];delta=Vector((d[0],-d[2],d[1]));err=max((Vector(b)-Vector(a)-delta).length for a,b in zip(old['world'],new['world']));bound=max(abs(t)for v in old['world']for t in v)/2**23*4+1e-6;assert err<=bound,(q['name'],err,bound);rows.append({'name':q['name'],'exact_local_geometry_faces_UVs_materials':True,'world_translation_max_error_m':err,'float32_roundoff_bound_m':bound})
+                                                                                                                                                                                                                                                                                                                    ^^^^^^^^^^
+AssertionError: ('PCC_QuietChair0__DAY_CHAIR_front_continuous_cross_rail', 94.19870027751003, 4.5061423977836964e-05)
+
+Error: script failed, file: '/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_port_central_commons_recomposition_20261011/audit_native001.py', exiting.
+Blender 4.3.2
+Read blend: "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_port_central_neighborhood_20261011/D04PortCentralCO_r003.blend"
+Read blend: "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_port_central_commons_recomposition_20261011/D04PortCentralCommonsPatch_r001.blend"
+
+Blender quit
