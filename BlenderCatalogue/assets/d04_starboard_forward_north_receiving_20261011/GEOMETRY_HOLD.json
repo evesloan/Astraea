@@ -1,0 +1,19 @@
+{
+  "status": "HOLD_GEOMETRY_QUERY_CORRECTION",
+  "failed_result_retained": "BlenderCatalogue/assets/d04_starboard_forward_north_receiving_20261011/geometry_attempt001_query_errors/result.json",
+  "failed_checks": 46,
+  "recorded_total_checks": 642,
+  "issues": [
+    "Expected dotted source names were not normalized to actual Godot underscore names: affected members were not checked",
+    "Four thin cabinet-rivet BoxShape queries received negative dimensions and fell back to unsuitable query bounds; reported clashes are unresolved until correct queries run"
+  ],
+  "passing_scoped_evidence": {
+    "keel_shoe_corner_bearings": 96,
+    "receiving_floor_samples": 13,
+    "source_preflight_point_bearings_and_column_volumes": 24
+  },
+  "native_geometry_changed_to_fix_queries": false,
+  "runtime_active": false,
+  "no_extra_engine_run_for_hourly_report": true,
+  "next_safe_action": "Normalize names and use positive bounded shrink-box dimensions, then run essential geometry gate once; activate only after it passes and retain native gate, followed by one bounded changed-route controller smoke"
+}
