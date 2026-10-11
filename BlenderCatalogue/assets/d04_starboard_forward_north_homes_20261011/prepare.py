@@ -26,7 +26,10 @@ for batch in ['fourth','fifth']:
   for c in r['components']:
    c['position']=reflect(c['position']);c['yaw']=-c['yaw']
    if 'rest_slot_id'in c:c['rest_slot_id']=slots[c['rest_slot_id']]
-  for k in ['approach_world','outlook_world']:r[k]=reflect(r[k])
+  for k in ['approach_world','outlook_world','care_station_world']:
+   if k in r:r[k]=reflect(r[k])
+  for k in ['entry_to_care_waypoints','rest_approach_waypoints']:
+   if k in r:r[k]=[reflect(v)for v in r[k]]
   for k in ['floor_geometry','water_geometry']:r[k]=geom(r[k])
   r['entry']['origin']=reflect(r['entry']['origin']);r['entry']['yaw']=-r['entry']['yaw'];r['entry']['persistent_id']=a['proposed_runtime_id']+':entry'
   for t in r['lights']:t['name']=t['name'].replace(f'D04H{old}_',f'D04SH{new}_');t['at']=reflect(t['at'])

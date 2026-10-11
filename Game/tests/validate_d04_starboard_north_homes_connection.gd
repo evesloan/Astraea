@@ -16,6 +16,7 @@ func run()->void:
   var door:Node3D=home.get_node("HomeEntry");door.interact(null)
   for i in range(100):await physics_frame
   var goals:Array=[foyer,Vector3(foyer.x,16.5,cz+1.3),Vector3(care.x,16.5,cz+1.3),care]
+  if r.has("entry_to_care_waypoints"):goals=r.entry_to_care_waypoints.map(func(a):return vec(a))
   for target in goals:
    var walk:Dictionary=await walk_to(actor,target);walk.room=int(r.source_index);legs.append(walk);record("home_controller_leg_"+str(legs.size()),walk.reached and walk.floor_contact)
    if not walk.reached:break
