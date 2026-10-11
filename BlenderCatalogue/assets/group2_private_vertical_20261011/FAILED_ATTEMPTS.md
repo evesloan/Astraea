@@ -11,3 +11,5 @@ Failed and superseded attempts remain retained. None is whole-group acceptance.
 - Testing waypoints were added after conversation native authoring. The exact authoring preimage and a hash-verified metadata-only successor receipt preserve that distinction; no geometry/export revision was disguised.
 
 Native originals, the prior checkpoint and all protected routes/IDs/capacity remain unchanged. Earlier source-generation failures remain available in the pinned prior archives and first handoff.
+
+The first local successor commit e31daf115ff32e718ff4a6bb601a8eb7670ed8ba was made while the preservation audit was still finishing. A staging count check had rejected the stale manifest, but the shell continued to the commit. Nothing was published at that boundary. The audit then passed all43,483 baseline and1,379 sealed-parent files. The unpublished commit is preserved, and the final metadata correction is committed separately after the completed manifest is checked. Integration uses the full range after7506831, not just the correction commit.

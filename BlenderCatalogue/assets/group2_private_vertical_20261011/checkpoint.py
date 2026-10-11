@@ -15,7 +15,7 @@ def only_additions(lines):
  return all(line.startswith('A\t')and any(line[2:].startswith(p+'/')for p in OWNED)for line in lines)
 
 def make():
- assert git('rev-parse','HEAD')==PARENT
+ subprocess.run(['git','merge-base','--is-ancestor',PARENT,'HEAD'],cwd=ROOT,check=True)
  assert only_additions(git('diff','--name-status',PARENT).splitlines())
  prior=ROOT/'BlenderCatalogue/assets/group2_completion_20261011/MANIFEST.json'
  assert sha(prior)=='fd5042631e8801750564025411fb6a62da5d92135120ed3ff461bab903d473f5'
@@ -47,6 +47,11 @@ def make():
   'baseline_files_unchanged':count,'original_checkout_head_unchanged':original_head,
   'all_five_native_and_runtime_originals_unchanged':True,'registered_dependency_pins_unchanged':True,
   'only_additive_owned_paths':OWNED,'790_excluded':True,'whole_Group2_accepted':False})
+ make_manifest()
+def make_manifest():
+ assert only_additions(git('diff','--name-status',PARENT,'HEAD').splitlines())
+ assert all(any(path.startswith(p+'/')for p in OWNED)for path in git('diff','--name-only','HEAD').splitlines())
+ audit=json.loads((P/'evidence/PRESERVATION_AUDIT.json').read_text());assert audit['pass']and audit['sealed_parent']==PARENT
  files=[];manifest=P/'MANIFEST.json'
  for prefix in OWNED:
   for path in sorted((ROOT/prefix).rglob('*')):
@@ -58,7 +63,7 @@ def make():
   'files':files,'file_count':len(files),'bytes':sum(r['bytes']for r in files),'signature':signature,
   'signature_algorithm':"SHA256 of UTF-8 json.dumps(files,sort_keys=True,separators=(',',':'))",'self_excluded':True,
   'status':'Scoped source construction verified; shared adoption and whole Group2 unfinished'})
- print(json.dumps({'pass':True,'prior_files_preserved':len(old['files'])+1,'baseline_files_preserved':count,
+ print(json.dumps({'pass':True,'prior_files_preserved':audit['all_parent_manifest_files_unchanged'],'baseline_files_preserved':audit['baseline_files_unchanged'],
                   'new_files_including_manifest':len(files)+1,'manifest_sha256':sha(manifest),'signature':signature}))
 
 def verify(output):
@@ -77,6 +82,7 @@ def verify(output):
   'method':'Fresh independent GitHub clone, no local object alternates, all owned bytes read back'})
  print(output.read_text())
 if __name__=='__main__':
- parser=argparse.ArgumentParser();parser.add_argument('--verify-output',type=pathlib.Path);args=parser.parse_args()
+ parser=argparse.ArgumentParser();parser.add_argument('--verify-output',type=pathlib.Path);parser.add_argument('--manifest-only',action='store_true');args=parser.parse_args()
  if args.verify_output:verify(args.verify_output)
+ elif args.manifest_only:make_manifest()
  else:make()
