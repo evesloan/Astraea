@@ -10,6 +10,10 @@ Group5 only; branch `handoff/group5-completion-20261011`, workspace `/workspace/
 - Ten derived garden fit-outs rotate each complete 11-part care shelving unit and its trays onto the original inner side-wall. All other vertices, topology, UVs, material batches, item counts and programmes remain unchanged. Selected r002 layouts clear both the worker stance and moving-panel pockets. Original natives, exports and scene files are immutable.
 - Seven hardware natives contain 157 source meshes, repeated into 13,545 hardware mesh instances. Ten garden variants preserve the original bounded material batches. The original ten fit-out families, all 100 small shops including R070, 78 connections, 507 lights and ten separate large venues remain preserved.
 
+## Subsequent five-venue lighting package
+
+The retained construction continues with 109 first-pass fixture sources in Copper Kettle, Paper Moon, Post & Parcels, Starlight Bakery and Companion Games. Twelve original fixtures intersected their ceiling ribs; three separate editable derivatives lower those complete lamps and extend their original suspension rods, preserving every original source file and all unselected runtime meshes. See [LARGE_VENUE_LIGHTING_HANDOFF.md](LARGE_VENUE_LIGHTING_HANDOFF.md) for evidence, alternate exact-preimage startup patches and retained acceptance criteria. The prior small-shop staff audit is retained without repetition. The existing wide promenade source view is saved in Library as `libfile_387bbde4173c81919549b74db4ea4780`.
+
 ## Evidence and limits
 
 `ACCEPTANCE.json` preserves the criteria in FULL_SHIP_SCOPE_INDEX section5 and the authoritative master design v0.3, and separates implementation, testing, source visual review and unfinished acceptance.

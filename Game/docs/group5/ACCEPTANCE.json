@@ -9,7 +9,7 @@
     "new_operating_doors": 297,
     "new_fixed_controls": 594,
     "new_two_sided_guides": 18,
-    "new_selected_saved_natives": 18,
+    "new_selected_saved_natives": 21,
     "new_selected_source_meshes": 157,
     "new_repeated_source_mesh_instances": 13545,
     "existing_connection_chunks_preserved": 78,
@@ -21,7 +21,12 @@
     "relocated_existing_garden_components": 110,
     "recovered_immutable_venue_natives": 6,
     "exact_archived_exports_matching_current_runtime": 5,
-    "explicit_current_maker_editable_counterpart": 1
+    "explicit_current_maker_editable_counterpart": 1,
+    "additional_large_venue_light_sources": 109,
+    "large_venues_with_source_lighting": 5,
+    "additional_fixture_derivative_natives": 3,
+    "below_rib_fixture_assemblies": 12,
+    "additional_fixture_source_meshes": 36
   },
   "tested": {
     "all297_actual_main_cycles": "PASS:qa/full297_cycles_before_care_revisions.json;all297 original hardware cycles;30 changed-shop cycles revalidated afterward in Game/artifacts/group5_completion.json",
@@ -35,7 +40,12 @@
     "retained_originals": "PASS:43483 SHA256 hashes;no changed original tracked paths",
     "venue_source_backup": "PASS:six checkpoint-pinned ZIP blobs independently fetched from GitHub before extraction;all six original native/export hash pairs match archived roundtrip records;read-only native inspection proves no mutation or external dependencies",
     "maker_counterpart": "PASS:explicit derived current geometry counterpart;108 mesh names,geometry error below0.01mm,source and current runtime immutable;original correction-native still unrecovered",
-    "isolated_startup_integration": "PASS:qa/ISOLATED_STARTUP_INTEGRATION.json;exact proposed single-call patch applied to an isolated bootstrap copy;actual main startup attaches builder once and all interface checks pass without engine errors;combined multi-group integration remains held"
+    "isolated_startup_integration": "PASS:qa/ISOLATED_STARTUP_INTEGRATION.json;exact proposed single-call patch applied to an isolated bootstrap copy;actual main startup attaches builder once and all interface checks pass without engine errors;combined multi-group integration remains held",
+    "five_large_venue_lighting": "PASS:Game/artifacts/group5_large_venue_lighting.json;1290 checks,109 fixture contacts,545 receiver rays,15 explicit optical fixtures reached by unobstructed active shadowed sources,three derivative pins/unchanged unselected mesh sets,twelve30mm rib clearances,five cached detach/returns;optical placement is not traversal,pixel-lighting or hardware acceptance",
+    "fixture_derivative_repeat_exports": "PASS:docs/VENUE_FIXTURE_CLEARANCE.json;three fresh native reads reexport byte-identically;36 original mesh vertex/face/UV/material records unchanged;housing/lens rigid drops and suspension transforms only",
+    "prior_group5_assets": "PASS:qa/RETAINED_GROUP5_ASSET_INTEGRITY_002.json;all293 prior native,GLB,PNG and recovered archive members match independently retained checkpoint e18919de",
+    "combined_group5_lighting_startup": "PASS:qa/ISOLATED_LARGE_VENUE_STARTUP_INTEGRATION.json;earlier Group5 construction plus new source-lighting call applied to an isolated copy of actual bootstrap;all1290 checks pass with startup attachment and zero engine errors;other-group integration remains unaccepted",
+    "exported_fixture_mechanical_contacts": "PASS:qa/LARGE_VENUE_SOURCE_LIGHTING.json;12 derivative exported ceiling endpoints preserved within30micrometres,40mm positive rod/housing overlaps and at least30mm original exported-rib clearances;no structural sizing or load acceptance"
   },
   "visually_reviewed": {
     "views": [
@@ -45,16 +55,18 @@
       "qa/SOURCE_GARDEN_ENTRY012.png"
     ],
     "review": "actual retained source-export geometry plus new native/export hardware;clear neutral Workbench source views,correct runtime yaw and two-sided directory",
-    "limitations": "original material palette colors;no texture/glass/Godot/CRT shading,no hardware or final-art acceptance"
+    "limitations": "original material palette colors;no texture/glass/Godot/CRT shading,no hardware or final-art acceptance",
+    "large_venue_geometry_context": "qa/SOURCE_PARCEL_LIGHTING_WIDE004.png;clear neutral source geometry with actual current-export mean palette;fixture and stock/work layout inspection only;current native/export material multiplier discrepancy remains held"
   },
   "unfinished": {
     "authority": "84 actual room-address joins remain null;no invented IDs",
-    "large_venues": "All10 complete fit-outs/operations remain held.Five exact archived native/export authorities are recovered.One earlier maker archive is recovered,and a new explicit current geometry counterpart is available;the original documented correction-native and procedural/font authoring remain unrecovered.Shared metadata pointers require integration-owner review.",
+    "large_venues": "All10 complete fit-outs/operations remain held.Five exact archived native/export authorities are recovered and now have109 first-pass source lights;12 original fixture/rib intersections receive separate source derivatives.One earlier maker archive is recovered,and an explicit current geometry counterpart is available;the original correction-native and procedural/font authoring remain unrecovered.Shared metadata and combined integration require owner review.",
     "shared_interfaces": "four staff circuits need Group3/integration shared risers;Group6 Orchard/Pool,Group8 FoodHall and Group7 hull/service interfaces remain",
     "gameplay": "commerce,inventory/refill/returns,ambient staff/guests,ownership/decoration,save/load and staff-role/pressure policies",
     "physics": "Connected shipwide/public walking,shared staff-riser joins,largest species,loaded cart and complete hull/support engineering;all99 local staff entry/workbay/return routes now pass.",
     "final_art": "fullshop/largevenue fit-out acceptance,architectural lighting rendered review,acoustics,normal Godot/CRT,targetGPU performance",
     "integration": "shared bootstrap/registries unchanged;patch provided for Group1,combined integration must be tested",
-    "full_validation_suite": "not run;scoped essential changed-work tests only"
+    "full_validation_suite": "not run;scoped essential changed-work tests only",
+    "large_venue_material_fidelity": "qa/VENUE_MATERIAL_FIDELITY_HOLD.json: current matching GLB omits original native B_orange Mix multiplier;inspect five native graphs and provide exact-source derivative factors next;no original models/source overwritten."
   }
 }

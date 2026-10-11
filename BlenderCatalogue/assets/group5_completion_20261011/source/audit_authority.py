@@ -36,6 +36,14 @@ if counterpart_path.exists():
     row=next(r for r in rows if r['programme_key']==counterpart['programme_key'])
     assert row['current_runtime_sha256']==counterpart['current_runtime_sha256']
     row.update(explicit_current_editable_counterpart='BlenderCatalogue/assets/group5_completion_20261011/'+counterpart['native'],counterpart_native_sha256=counterpart['native_sha256'],counterpart_geometry_error_m=counterpart['geometry_max_bidirectional_vertex_error_m'],counterpart_role='explicit derived current geometry/material source;original correction-native and procedural/font authoring held')
+lighting_path=ROOT/'Game/data/architecture/group5/LARGE_VENUE_LIGHTING.json'
+if lighting_path.exists():
+    lighting={r['programme_key']:r for r in json.loads(lighting_path.read_text())['venues']}
+    for row in rows:
+        if row['programme_key'] not in lighting:continue
+        r=lighting[row['programme_key']]
+        row.update(first_pass_light_sources=len(r['fixtures']),lighting_contract='Game/data/architecture/group5/LARGE_VENUE_LIGHTING.json',pixel_lighting_and_hardware_accepted=False)
+        if r.get('fixture_clearance'):row['selected_fixture_derivative']=r['fixture_clearance']
 write('TEN_LARGE_VENUES.json',{'status':'preserved_current_construction_WIP','venues':sorted(rows,key=lambda r:r['programme_key']),'count':10,'distinct_from_small_shops':True,'cross_group_interfaces':{'Orchard_Market':'Group6 Grand Pool/Orchard shared source and hull interfaces; do not duplicate or overwrite','Orchard_Food_Hall':'Group8 D10_directory_04, existing orchard_exchange_lift_001 and switchback; preserve D09_directory_04 link','shared_staff_risers':'Group3 and integration owner; four existing district circuits have no completed shared-riser adoption'},'final_art_or_gameplay_accepted':False})
 geometry=read('BlenderCatalogue/assets/shopping_promenade_20261009/qa/source_geometry.json')
 lights=read('BlenderCatalogue/assets/shopping_promenade_20261009/docs/LIGHT_SOURCES.json');proof=[]

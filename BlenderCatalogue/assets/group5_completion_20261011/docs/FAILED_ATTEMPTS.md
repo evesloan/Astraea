@@ -21,3 +21,19 @@
 - The first isolated startup fixture omitted original sealed-stage artifacts needed by unrelated retained home/riser builders. Group5 checks passed,but that incomplete main fixture was held. The retained log/partial receipt show those errors. The corrected fixture reads every original startup artifact through read-only links and isolates its own Group5 output;shared source and registry files remain unchanged.
 
 18. The staged whitespace check reported original CRLF in byte-preserved recovered archive JSON and lacked explicit binary classification for compressed Blender files. Scoped package attributes preserve archival bytes and classify binary assets; authored code and docs retain normal whitespace checks. No archive member was normalized.
+
+19. The first five-venue lighting actual-main check held. Fifteen budget samples and cached room returns passed, but twelve upward lens-contact rays hit unexpected contacts, and the universal 5m receiver rays did not reach floors beneath higher ceiling lamps. The exact result and log are retained; physical contact diagnostics and per-source bounded receiver rays are required before acceptance.
+
+20. Per-source bounded receiver rays pass all545 samples. Exact runtime contact diagnostics identify twelve original Room_*_39 fixture/emitter assemblies embedded in their original Rib_*_3 beams in Copper Kettle, Post & Parcels and Starlight Bakery. This is an actual source construction issue; source-pinned derived fixture drops with extended original suspensions are required. All other fixtures, original models/natives and beams remain immutable.
+
+21. The first real parcel-source Cycles photograph failed because this Blender build lacks OpenImageDenoise. The exact source script and log are retained. Disable unsupported denoising and increase actual samples;original native/source geometry remains unchanged. No failed frame is delivered as a reviewed milestone.
+
+22. A tighter analytic optical check found five of15 retained viewing fixtures beyond every original10m range despite source admission. Earlier PASS receipts retain their admission/contact/residency scope. Primary source ranges in this new package are bounded at14m;task/close profiles and the shared eight-source/32-candidate budget remain unchanged. The final engine test additionally requires an active shadowed source to reach an unobstructed actual viewer sample at all15 placements.
+
+23. The additional exported mechanical-contact audit held on an unnecessary30.1mm maximum: evaluated beveled beam corners give30.42mm clearance from a planned conservative native30mm gap. Retain the minimum30mm rule, unchanged ceiling endpoint and40mm rod/housing overlap;remove the unintended maximum. The runtime definition and geometry remain unchanged.
+
+24. The64-sample Cycles source photograph completed but visible Monte Carlo grain failed the requested clear milestone criterion. Its image,receipt and log remain retained with visual HOLD. A neutral Workbench view of the same real geometry is required for clear source delivery;it does not claim rendered Godot lighting or calibration.
+
+25. The first neutral Workbench view was clear but selected unused shader default white instead of the actual texture-driven base colors. Image and receipt remain retained as a palette HOLD. The next source view uses each original base-color texture mean as its neutral viewport palette;no texture file or source geometry is edited.
+
+26. Direct image-node palette lookup still missed the original procedural B_* checker materials. The source image and receipt remain retained. Use the actual matching original GLB baked base-color texture means for the neutral palette;this restores original color identity without changing source textures,geometry or game materials.
