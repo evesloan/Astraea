@@ -32,7 +32,7 @@ assert audit['status']==check['status']=='PASS'and check['source_model_pins']==p
 q=p['structure'];assert sha(W/q['native'])==q['native_sha256']and sha(W/q['export'])==sha(R/'Game/assets/models'/q['export'])==q['export_sha256']and q['fresh_native_repeat_identical']
 original=(W/'PREIMAGE_ship.gd.txt').read_bytes();current=(R/'Game/scripts/ship.gd').read_bytes();line=b'\tload("res://scripts/aft_crown_sitting_lighting.gd").build(self)\n';assert current.count(line)==1 and current.replace(line,b'')==original and sha(W/'PREIMAGE_ship.gd.txt')==p['source_pins']['Game/scripts/ship.gd']
 assert json.load(open(W/'LIBRARY_PHOTO_DELIVERY.json'))['status']=='CONFIRMED_LIBRARY_CREATE_AND_LOCAL_METADATA'
-assert sha(W/'PREIMAGE_lighting_budget.gd.txt')==p['source_pins']['Game/scripts/lighting_budget.gd','Game/data/architecture/botanical_pair/runtime_manifest.json','Game/data/architecture/ENGINEERING_CALIBRATION_DRAFT.json']
+assert sha(W/'PREIMAGE_lighting_budget.gd.txt')==p['source_pins']['Game/scripts/lighting_budget.gd']
 assert json.load(open(R/'Game/artifacts/lighting_unbounded_range.json'))['status']=='PASS'
 assert 'LIGHT BUDGET PASS:'in(W/'SELECTOR_REGRESSION001.log').read_text()
 for logfile in ['CONNECTED007.log','SELECTOR_REGRESSION001.log','UNBOUNDED_REGRESSION001.log']:
