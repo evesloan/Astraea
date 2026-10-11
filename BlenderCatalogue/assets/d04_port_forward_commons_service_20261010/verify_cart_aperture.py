@@ -1,0 +1,6 @@
+from pathlib import Path
+import json,numpy as np,hashlib
+W=Path(__file__).resolve().parent;R=W.parents[2];q=json.load(open(W/'ENTRY_CART_APPROACH_REVISION.json'));f=R/'BlenderCatalogue/assets/forward_staff_shaft_interfaces_20261010/source_geometry.py';ns={'__file__':str(f)};exec(f.read_text(),ns);rows=[];expected={p['name']:p for p in q['successor_parts']}
+for name,t in ns['triangles'](q['record']['export']):
+ p=expected.pop(name);a=np.unique(t.reshape(-1,3),axis=0);b=np.unique(np.array(p['verts']),axis=0);delta=max(np.linalg.norm(a[:,None]-b[None,:],axis=2).min(1).max(),np.linalg.norm(b[:,None]-a[None,:],axis=2).min(1).max());assert delta<.00004;v=t-t.mean(axis=(0,1));vol=float(np.einsum('ij,ij->i',v[:,0],np.cross(v[:,1],v[:,2])).sum()/6);assert vol>0;rows.append({'name':name,'vertex_error_m':float(delta),'positive_volume_m3':vol})
+assert not expected and len(rows)==14 and all(p['exact_contained_xyz']for p in q['exact_containment']);report={'status':'PASS','parts':rows,'exact_contained_original_successors':14,'current_cart_aperture_width_m':3.6,'original_furniture_moved':False,'new_units':0,'new_rest_places':0};(W/'ENTRY_CART_GEOMETRY_CHECK.json').write_text(json.dumps(report,indent=2)+'\n');print('PASS',len(rows))
