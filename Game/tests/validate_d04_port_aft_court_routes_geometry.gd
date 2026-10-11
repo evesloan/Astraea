@@ -55,7 +55,10 @@ func plane_contains(mesh:MeshInstance3D,point:Vector3)->bool:
   var ab:=Vector2(B.x-A.x,B.z-A.z);var ac:=Vector2(C.x-A.x,C.z-A.z);var ap:=Vector2(point.x-A.x,point.z-A.z);var det:=ab.cross(ac)
   if abs(det)<.00000001:continue
   var u:=ap.cross(ac)/det;var t:=ab.cross(ap)/det
-  if u>=-.00001 and t>=-.00001 and u+t<=1.00001:return true
+  if u>=0 and t>=0 and u+t<=1:return true
+  var pt:=Vector2(point.x,point.z)
+  for edge in [[Vector2(A.x,A.z),Vector2(B.x,B.z)],[Vector2(B.x,B.z),Vector2(C.x,C.z)],[Vector2(C.x,C.z),Vector2(A.x,A.z)]]:
+   if pt.distance_to(Geometry2D.get_closest_point_to_segment(pt,edge[0],edge[1]))<=.001:return true
  return false
 func _initialize():call_deferred("run")
 func run():
