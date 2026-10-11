@@ -2,8 +2,11 @@ from pathlib import Path
 import bpy,json,hashlib,math,sys
 from mathutils import Vector,Matrix
 W=Path(__file__).resolve().parent;R=W.parents[2];P=json.load(open(W/'PLAN.json'));sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();B=lambda p:(p[0],-p[2],p[1])
+sys.path.insert(0,str(W));from immutable_revision import require_new,export_native
+revision=P.get('revision','r001')
+require_new([W/('D04PhysicalFittings_'+revision+'.blend'),W/('D04_PHYSICAL_FITTINGS_'+revision+'.glb'),R/'Game/assets/models'/('D04_PHYSICAL_FITTINGS_'+revision+'.glb'),W/('D04BoundedPhysicalCuts_'+revision+'.blend'),W/('D04_BOUNDED_PHYSICAL_CUTS_'+revision+'.glb'),R/'Game/assets/models'/('D04_BOUNDED_PHYSICAL_CUTS_'+revision+'.glb')])
 for f,h in P['source_pins'].items():assert sha(R/f)==h,f
-F=R/'BlenderCatalogue/assets/d04_port_forward_homes_first_20261010';ns={'__file__':str(F/'build_native.py')};s=(F/'build_native.py').read_text();exec(s[:s.index('\nrecords=[];structure=[]')],ns);ns.update(W=W,R=R,P=P);mats=ns['start']();ns['add_parts'](P['parts'],mats)
+F=R/'BlenderCatalogue/assets/d04_port_forward_homes_first_20261010';ns={'__file__':str(F/'build_native.py')};s=(F/'build_native.py').read_text();exec(s[:s.index('\nrecords=[];structure=[]')],ns);ns.update(W=W,R=R,P=P);ns['export']=lambda native,file,exclude_structure=False:export_native(bpy,W,R,native,file,exclude_structure);mats=ns['start']();ns['add_parts'](P['parts'],mats)
 revision=P.get('revision','r001');owned=ns['export']('D04PhysicalFittings_'+revision+'.blend','D04_PHYSICAL_FITTINGS_'+revision+'.glb')
 ns['start']();changes=[]
 def clip(poly,axis,bound,greater):

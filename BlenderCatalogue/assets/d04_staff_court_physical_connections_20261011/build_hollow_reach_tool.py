@@ -1,6 +1,8 @@
 from pathlib import Path
 import json,hashlib,bpy,sys,math
 W=Path(__file__).resolve().parent;R=W.parents[2];P=json.load(open(W/'RUNTIME_PLAN.json'));sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();B=lambda p:(p[0],-p[2],p[1])
+sys.path.insert(0,str(W));from immutable_revision import require_new
+require_new([W/'D04CareReachTool_r002.blend',W/'D04_CARE_REACH_TOOL_r002.glb',R/'Game/assets/models/D04_CARE_REACH_TOOL_r002.glb'])
 bpy.ops.wm.read_factory_settings(use_empty=True);bpy.context.preferences.filepaths.save_version=0
 mat=bpy.data.materials.new('D04CareToolChampagne');mat.diffuse_color=(.46,.40,.27,1);mat.use_nodes=True;bs=mat.node_tree.nodes['Principled BSDF'];bs.inputs['Base Color'].default_value=mat.diffuse_color;bs.inputs['Metallic'].default_value=.6;bs.inputs['Roughness'].default_value=.45
 members=[]
