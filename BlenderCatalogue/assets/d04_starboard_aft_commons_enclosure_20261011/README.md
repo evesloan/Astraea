@@ -1,0 +1,9 @@
+# D04 starboard-aft commons enclosure
+
+Inactive additive candidate at five actual native sites: quiet privacy wall and portal head to retained main roof, and west/north/east service ceiling edge fits. Twenty fitted triangular prisms subtract the exact retained low canopy and diagonal glazing. North edge owns the shared corner. Original objects, deliberate quiet entrance, open service canopy front, furniture, room IDs,20 homes/25 rests and protected D03 Uniforms/Lockers remain unchanged. No new floor, capacity, door, shaft, programme or provider.
+
+The source material audit checks packed texture bytes,roughness and links. Saved native freshly re-exports identically. Runtime candidate gate passes6,206 checks; local coverage proof closes all intended bands without gaps or duplicate retained volumes. Three canopy edge contacts use actual native geometry at0.1mm tolerance. Contact checks do not establish structural engineering acceptance. First authoring crash requested a duplicate material object; its script,log and crash record are preserved. Corrected material append list is unique. No final output existed before correction.
+
+SOURCE_STARBOARD_AFT_COMMONS_WIDE001.png is a clear neutral Blender Workbench source view of the actual source and additive native. Walls,roof,furnishings and open portal remain visible. Material colors shown; original textures,glass shading,game lighting and wider ship omitted. This is not Godot,CRT,hardware or final visual acceptance. Library identity retained in LIBRARY_PHOTO_DELIVERY.json.
+
+Connection remains pending until independent inactive retention. All eight groups,clean/used segregation,engineering,biology,permissions,stock/refill/save/inventory and final visuals remain unfinished. Concourse editable source reference is unresolved; no substitute or modification. Two historical native byte versions remain unavailable. Manual verified checkpoints;no workers or watchers.
