@@ -25,6 +25,16 @@ for f,h in protected.items():assert sha(R/f)==h,f
 for f,h in p['source_pins'].items():
  if phase=='connected'and f=='Game/scripts/ship.gd':continue
  assert sha(R/f)==h,f
+if phase!='survey':
+ assert p==json.load(open(W/'RUNTIME_PLAN.json'))==json.load(open(R/'Game/data/architecture/LOWER_SHARED_AFT_STAFF_ROUTE.json'))
+ assert p['active']==(phase=='connected')
+ geom=json.load(open(R/'Game/artifacts/lower_shared_aft_staff_route_geometry.json'));assert geom['status']=='PASS'and geom['model_pins']==p['model_pins']and p['sealed_receipt_sha256']==sha(R/'Game/artifacts/lower_shared_aft_staff_route_geometry.json')
+ assert json.load(open(W/'EXACT_NATIVE_SOURCE_AUDIT.json'))['status']=='PASS'and json.load(open(W/'PROGRAMME_AND_FLOOR_PREFLIGHT.json'))['status']=='PASS'
+ for q in p['retained_superseded_native_export_records']+p['native_export_records']:assert sha(W/q['native'])==q['native_sha256']and sha(W/q['export'])==sha(R/'Game/assets/models'/q['export'])==q['export_sha256']and q['fresh_native_repeat_identical']
+if phase=='connected':
+ conn=json.load(open(R/'Game/artifacts/lower_shared_aft_staff_route_connection.json'));assert conn['status']=='PASS'and conn['model_pins']==p['model_pins']and conn['geometry_seal_sha256']==p['sealed_receipt_sha256']
+ original=(W/'INTEGRATION_PREIMAGE_ship.gd').read_text();current=(R/'Game/scripts/ship.gd').read_text();line='\tload("res://scripts/lower_shared_aft_staff_route.gd").build(self)\n';assert current.count(line)==1 and current.replace(line,'')==original and sha(W/'INTEGRATION_PREIMAGE_ship.gd')==p['source_pins']['Game/scripts/ship.gd']
+ assert p['independently_retained_inactive_geometry_commit']==base
 inventory=json.load(open(W/(phase.upper()+'_CHANGED_FILES.json')));assert inventory['base_commit']==base
 changed=G('diff','--name-only',base,head).splitlines();rel=str(W.relative_to(R))
 assert set(inventory['files'])==(set(changed)|set(p['phase_evidence'][phase]))-{'CHECKPOINT.json','BACKUP_STATUS.json',rel+'/'+phase.upper()+'_CHANGED_FILES.json'}
