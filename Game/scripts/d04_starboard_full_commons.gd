@@ -8,6 +8,8 @@ static func build(ship:Node3D,candidate_only:bool=false)->Node3D:
  if p.active:
   assert(FileAccess.get_sha256("res://artifacts/d04_starboard_full_commons_geometry.json")==p.sealed_receipt_sha256)
   var gate:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://artifacts/d04_starboard_full_commons_geometry.json"));assert(gate.status=="PASS"and gate.model_pins==p.model_pins)
+  assert(FileAccess.get_sha256("res://artifacts/d04_starboard_full_commons_plates.json")==p.sealed_plates_sha256)
+  var plates:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://artifacts/d04_starboard_full_commons_plates.json"));assert(plates.status=="PASS"and plates.model_pins==p.model_pins)
  var original:Node3D=districts.get_node("D04StarboardSouthHomeCandidates/ReceivingFrame")
  assert(FileAccess.get_sha256("res://assets/models/D04_STARBOARD_SOUTH_RECEIVING_r003.glb")==p.source_pins["Game/assets/models/D04_STARBOARD_SOUTH_RECEIVING_r003.glb"])
  for pre in p.preimages:
@@ -18,6 +20,11 @@ static func build(ship:Node3D,candidate_only:bool=false)->Node3D:
  var root:=Node3D.new();root.name="D04StarboardFullCommons";districts.add_child(root)
  assert(FileAccess.get_sha256("res://assets/models/"+p.structure.model_file)==p.structure.model_sha256)
  load("res://scripts/d04_port_forward_homes_fifth.gd").visual(root,p.structure.model_file,p.structure.collision_policy)
+ if p.has("walking_contacts"):
+  for quad in p.walking_contacts:
+   var points:Array[Vector3]=[]
+   for at in quad:points.append(vec(at))
+   load("res://scripts/aquatic_section.gd")._contact(root,points)
  for item in p.lights:
   var mesh:MeshInstance3D=root.find_child(str(item.name).replace(".","_"),true,false);assert(mesh!=null);mesh.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
   var light:=SpotLight3D.new();light.name=item.name+"_Light";root.add_child(light);light.position=vec(item.at);light.rotation.x=-PI/2;light.light_color=Color(.86,.93,1)if item.staff else Color(1,.92,.81);light.light_energy=.8;light.spot_range=7;light.spot_angle=75;light.shadow_enabled=false
