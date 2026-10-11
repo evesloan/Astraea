@@ -51,16 +51,16 @@ func run()->void:
   for goal in [Vector3(-44,16.5,405.2),Vector3(-44,16.5,369),Vector3(-44,16.5,340),Vector3(-44,16.5,310),Vector3(-44,16.5,288.7),Vector3(-23.2,16.5,288.7)]:
    if not await leg(actor,goal,"retained public receiving and wide north platform"):break
  if errors.is_empty() and await operate(actor,n,p,10,true):
-  await leg(actor,Vector3(-23.5,16.5,292.75),"distinct north east arrival-edge staff entry");await operate(actor,n,p,10,false);await leg(actor,Vector3(-23.2,16.5,295),"north east corridor");await courts(actor,n,p,"north",-23.2,290.8);await leg(actor,Vector3(-23.5,16.5,292.75),"north east artery return")
+  await leg(actor,Vector3(-23.0,16.5,292.65),"distinct north east arrival-edge staff entry");await operate(actor,n,p,10,false);await leg(actor,Vector3(-23.2,16.5,295),"north east corridor");await courts(actor,n,p,"north",-23.2,290.8);await leg(actor,Vector3(-22.65,16.5,292.85),"north east artery return and outside unchanged conservative guard")
   if errors.is_empty():await operate(actor,n,p,10,true);await leg(actor,Vector3(-23.2,16.5,288.7),"return to unchanged public platform");await operate(actor,n,p,10,false)
  if errors.is_empty():
   for goal in [Vector3(-44,16.5,288.7),Vector3(-44,16.5,287.4),Vector3(-49.3,16.5,287.4),Vector3(-55.7,16.5,287.4),Vector3(-55.7,16.5,291.4),Vector3(-56.8,16.5,291.4)]:
    if not await leg(actor,goal,"actual existing service access retains stocks and closed returns"):break
  if errors.is_empty() and await operate(actor,n,p,9,true):
-  await leg(actor,Vector3(-60.95,16.5,291.7),"distinct north west service wall entry");await operate(actor,n,p,9,false);await leg(actor,Vector3(-65,16.5,291.4),"new west connector");await courts(actor,n,p,"north",-65,291.4);await leg(actor,Vector3(-65,16.5,291.4),"west artery return");await leg(actor,Vector3(-60.95,16.5,291.7),"west staff control stance")
+  await leg(actor,Vector3(-60.85,16.5,291.5),"distinct north west service wall entry");await operate(actor,n,p,9,false);await leg(actor,Vector3(-65,16.5,291.4),"new west connector");await courts(actor,n,p,"north",-65,291.4);await leg(actor,Vector3(-65,16.5,291.4),"west artery return");await leg(actor,Vector3(-61.15,16.5,291.5),"west staff control stance outside unchanged guard")
   if errors.is_empty():await operate(actor,n,p,9,true);await leg(actor,Vector3(-56.8,16.5,291.4),"original service bay egress");await operate(actor,n,p,9,false)
  if errors.is_empty():
-  for goal in [Vector3(-55.7,16.5,291.4),Vector3(-55.7,16.5,287.4),Vector3(-44,16.5,287.4),Vector3(-44,16.5,310),Vector3(-44,16.5,340),Vector3(-44,16.5,369.9),Vector3(-65,16.5,369.9),Vector3(-69,16.5,369.9),Vector3(-65,16.5,369.9),Vector3(-44,16.5,369.9),Vector3(-44,16.5,405.2),Vector3(-8,16.5,405.2)]:
+  for goal in [Vector3(-55.7,16.5,291.4),Vector3(-55.7,16.5,287.4),Vector3(-44,16.5,287.4),Vector3(-44,16.5,310),Vector3(-44,16.5,340),Vector3(-44,16.5,369.0),Vector3(-47,16.5,369.0),Vector3(-47,16.5,369.9),Vector3(-65,16.5,369.9),Vector3(-69,16.5,369.9),Vector3(-65,16.5,369.9),Vector3(-47,16.5,369.9),Vector3(-47,16.5,369.0),Vector3(-44,16.5,369.0),Vector3(-44,16.5,405.2),Vector3(-8,16.5,405.2)]:
    if not await leg(actor,goal,"retained public interfaces and commons guest arrival"):break
  record("narrow_west_court_retained_sealed",home.find_child("PASH_D04SFH_D04HC2_west_PrivacyScreen",true,false)!=null and home.find_child("PASH_D04SFH_D04HC2_west_GlassUpper",true,false)!=null)
  for spec in p.gates:
