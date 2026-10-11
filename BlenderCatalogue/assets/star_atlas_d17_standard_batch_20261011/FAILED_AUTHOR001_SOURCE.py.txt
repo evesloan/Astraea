@@ -1,0 +1,44 @@
+from pathlib import Path
+import bpy,bmesh,json,hashlib,sys,ast
+from mathutils import Vector,Matrix
+W=Path(__file__).resolve().parent;R=W.parents[2];P=json.load(open(W/'PLAN.json'));sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+for f,h in P['source_pins'].items():assert sha(R/f)==h,f
+catalog=json.load(open(R/'BlenderCatalogue/catalogue_manifest.json'));assert all(not P['structure_file']in str(q)for q in catalog['assets'])
+for id,native in [('AST-FUR-001','assets/furniture/AST-FUR-001_day_window_bench.blend'),('AST-FUR-002','assets/furniture/AST-FUR-002_day_reading_chair.blend'),('AST-FUR-003','assets/furniture/AST-FUR-003_day_table.blend'),('AST-LGT-001','assets/hospitality_lantern/source/AST-LGT-001.blend')]:
+ match=[q for q in catalog['assets']if q.get('catalogue_id')==id];assert len(match)==1 and match[0]['source']==native
+bpy.ops.wm.read_factory_settings(use_empty=True);loaded=[];materials={};sources={}
+for file in sorted({q['material_native']for q in P['parts']}):
+ names=sorted({q['material_source']for q in P['parts']if q['material_native']==file})
+ with bpy.data.libraries.load(str(R/file),link=False)as(src,dst):dst.objects=names
+ for o in dst.objects:bpy.context.collection.objects.link(o);loaded.append(o);materials[o.name]=o
+copies=[dict(q,kind='furniture')for q in P['furniture']]+[{'name':q['name'],'native':q['source_native'],'at':q['at'],'yaw':q['yaw'],'kind':'fixture'}for q in P['fixture_instances']]
+for file in sorted({q['native']for q in copies}):
+ with bpy.data.libraries.load(str(R/file),link=False)as(src,dst):dst.objects=src.objects
+ sources[file]=[]
+ for o in dst.objects:
+  if o:bpy.context.collection.objects.link(o);loaded.append(o);sources[file].append(o)
+bpy.context.view_layer.update()
+for q in P['parts']:
+ me=bpy.data.meshes.new(q['name']);me.from_pydata([(v[0],-v[2],v[1])for v in q['verts']],[],q['faces']);me.update();bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));assert all(e.is_manifold for e in bm.edges),q['name'];bm.to_mesh(me);bm.free()
+ for m in materials[q['material_source']].data.materials:me.materials.append(m)
+ uv=me.uv_layers.new(name='MetricWorldProjection')
+ for face in me.polygons:
+  axis=max(range(3),key=lambda i:abs(face.normal[i]));axes=[i for i in range(3)if i!=axis]
+  for k in face.loop_indices:v=me.vertices[me.loops[k].vertex_index].co;uv.data[k].uv=(v[axes[0]],v[axes[1]])
+ o=bpy.data.objects.new(q['name'],me);bpy.context.collection.objects.link(o);o['category']=q['category'];o['role']=q['role'];o['runtime_collision']=True
+ if q['category']=='fixture_mount':m=o.modifiers.new('Profiled mounting edge','BEVEL');m.width=.012;m.segments=2
+rows=[]
+for q in copies:
+ T=Matrix.Translation(Vector((q['at'][0],-q['at'][2],q['at'][1])))@Matrix.Rotation(q['yaw'],4,'Z')
+ for original in sources[q['native']]:
+  if original.type!='MESH':continue
+  o=original.copy();o.data=original.data.copy();o.parent=None;o.name=q['name']+'__'+original.name;o.matrix_world=T@original.matrix_world;bpy.context.collection.objects.link(o);o['category']='light_source'if q['kind']=='fixture'and'OpalDiffuser'in original.name else'source_fixture'if q['kind']=='fixture'else'source_furniture';o['role']='original_source';o['runtime_collision']=q['kind']=='furniture'
+  rows.append({'name':o.name,'source_name':original.name,'source_native':q['native'],'placement':q,'source_world_matrix':[list(v)for v in original.matrix_world]})
+for q in P['fixture_instances']:
+ marker=bpy.data.objects.new(q['name']+'__LightExit',None);bpy.context.collection.objects.link(marker);marker.location=(q['emitter'][0],-q['emitter'][2],q['emitter'][1]);marker['source_datum']='AST-LGT-001/DATUM_light_exit'
+for o in loaded:bpy.data.objects.remove(o,do_unlink=True)
+sys.path.insert(0,str(R/'BlenderCatalogue/assets/d04_staff_court_physical_connections_20261011'));from immutable_revision import export_native
+rec=export_native(bpy,W,R,'StarAtlasD17StandardBatchFrame_r001.blend',P['structure_file']);P['structure']=rec;P['source_copies']=rows;P['model_pins']={rec['export']:rec['export_sha256']}
+for f,h in P['protected_native_exports'].items():assert sha(R/f)==h,f
+for f in [W/'PLAN.json',R/'Game/data/architecture/STAR_ATLAS_D17_STANDARD_BATCH.json']:f.write_text(json.dumps(P,indent=2)+'\n')
+print('PASS immutable native/export',len(P['parts']),'architectural meshes',len(rows),'rigid original meshes')

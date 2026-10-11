@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/star_atlas_d17_standard_batch_20261011/author_native.py", line 22, in <module>
+    me=bpy.data.meshes.new(q['name']);me.from_pydata([(v[0],-v[2],v[1])for v in q['verts']],[],q['faces']);me.update();bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));assert all(e.is_manifold for e in bm.edges),q['name'];bm.to_mesh(me);bm.free()
+                                                                                                                                                                                                                     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: SAB_North_D17R_ReceivedRoof
+
+Error: script failed, file: '/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/star_atlas_d17_standard_batch_20261011/author_native.py', exiting.
+Blender 4.3.2
+
+Blender quit
