@@ -1,0 +1,14 @@
+extends "res://tests/group6_completion/validate_local.gd"
+func run()->void:
+	var host:=LocalHost.new();root.add_child(host)
+	var annex:Node3D=load("res://scripts/aquatic_annex_receiving.gd").build(host,host)
+	load("res://scripts/group6_completion/completion.gd").build(annex,host)
+	var actor:CharacterBody3D=load("res://scripts/player.gd").new();actor.spawn_position=Vector3(54,44.03,240);host.add_child(actor);actor.global_position=actor.spawn_position;actor.set_controls_enabled(true)
+	for i in range(20):await physics_frame
+	for goal in construction_route():
+		var w:Dictionary=await walk_to(actor,goal);legs.append(w);record("route_leg_"+str(legs.size()),w.reached and w.floor_contact)
+		if not errors.is_empty():break
+	physical_key(false)
+	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"single_supported_seed":true,"scope":"Original annex's exact floor builder, source-derived export and original player; onward ship interfaces and actual-main gate remain separate."}
+	FileAccess.open("res://docs/group6_completion/ROUTE_LOCAL005.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	print("GROUP6 LOCAL ROUTE ",result.status," ",errors," LEGS ",legs.size());quit(0 if errors.is_empty() else 1)

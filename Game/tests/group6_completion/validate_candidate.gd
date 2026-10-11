@@ -1,0 +1,72 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+var legs:Array=[]
+func key_e()->void:
+	var e:=InputEventKey.new();e.keycode=KEY_E;e.physical_keycode=KEY_E;e.pressed=true;Input.parse_input_event(e);await physics_frame;e.pressed=false;Input.parse_input_event(e)
+	for i in range(3):await physics_frame
+func aim(player:CharacterBody3D,at:Vector3)->void:
+	var d:Vector3=at-player.camera.global_position;player.rotation.y=atan2(-d.x,-d.z);player.camera.rotation.x=atan2(d.y,Vector2(d.x,d.z).length())
+	var e:=InputEventMouseButton.new();e.button_index=MOUSE_BUTTON_RIGHT;e.pressed=true;Input.parse_input_event(e)
+	for i in range(5):await physics_frame
+func construction_route()->Array:
+	return [Vector3(60.6,44,240),Vector3(60.6,44,245.9),Vector3(61,44,245.9),Vector3(78.4,45.45,245.9),Vector3(80,45.45,245.9),Vector3(80,45.45,244),Vector3(89.5,45.45,244),Vector3(89.5,45.45,244.7),Vector3(92.4,45.45,244.7),Vector3(92.4,45.45,244),Vector3(92.4,47.4,220.6),Vector3(92.4,47.4,219.4),Vector3(95.2,47.4,219.4),Vector3(95.2,47.4,220.6),Vector3(95.2,49.35,244),Vector3(95.2,49.35,245.2),Vector3(97.3,49.35,244.5),Vector3(98.2,49.35,243.6),Vector3(98.2,49.35,196.2),Vector3(85.5,49.35,196.2),Vector3(72,49.35,196.2),Vector3(98.2,49.35,196.2),Vector3(98.2,49.35,243.6),Vector3(97.3,49.35,244.5),Vector3(95.2,49.35,245.2),Vector3(95.2,49.35,244),Vector3(95.2,47.4,220.6),Vector3(95.2,47.4,219.4),Vector3(92.4,47.4,219.4),Vector3(92.4,47.4,220.6),Vector3(92.4,45.45,244),Vector3(92.4,45.45,244.7),Vector3(89.5,45.45,244.7),Vector3(89.5,45.45,244),Vector3(89.5,45.45,239.6),Vector3(76,45.45,239.6),Vector3(64,45.45,239.6),Vector3(64,45.45,229),Vector3(64,45.45,230.3),Vector3(60.5,45.45,230.3),Vector3(60.5,45.45,229),Vector3(60.5,47.7,202),Vector3(60.5,47.7,201.3),Vector3(73.4,47.7,201.3),Vector3(73.4,47.7,202),Vector3(73.4,45.45,229),Vector3(77.5,45.45,230.5),Vector3(80,45.45,230.5),Vector3(85,45.45,226.5),Vector3(85,45.45,224),Vector3(85,45.45,216),Vector3(85,45.45,224),Vector3(85,45.45,226.5),Vector3(80,45.45,230.5),Vector3(77.5,45.45,230.5),Vector3(73.4,45.45,229),Vector3(73.4,47.7,202),Vector3(73.4,47.7,201.3),Vector3(60.5,47.7,201.3),Vector3(60.5,47.7,202),Vector3(60.5,45.45,229),Vector3(60.5,45.45,230.3),Vector3(64,45.45,230.3),Vector3(64,45.45,229)]
+func run()->void:
+	var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
+	for i in range(20):await physics_frame
+	var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
+	var annex:Node3D=ship.get_node("ShipSpace/Districts/AquaticRiverSlideAnnex_WIP")
+	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/FIT_CONTRACT.json"))
+	record("baseline_architecture_before_candidate",annex.get_node("ExactAquaticArchitecture").find_children("*","MeshInstance3D",true,false).size()==79)
+	var floor:Node3D=annex.get_node("AquaticAnnexOwnedSlabs");var before_floor:=floor.get_instance_id()
+	var old_lights:Array=annex.find_children("*","OmniLight3D",true,false)
+	var addition:Node3D=load("res://scripts/group6_completion/completion.gd").build(annex,ship)
+	record("original_floor_owner_exact",floor.get_instance_id()==before_floor and floor.get_child_count()==4)
+	record("stable_room_id",annex.get_meta("programme_key")=="D08_directory_08")
+	record("water_gameplay_truthful",not addition.get_meta("water_gameplay_implemented"))
+	for light in old_lights:record("original_light_retained_"+str(light.name),is_instance_valid(light))
+	var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	for light:Light3D in addition.find_children("*","Light3D",true,false):
+		budget.sources.append(light);budget.requested_shadow[light.get_instance_id()]=true;light.visible=false;light.shadow_enabled=false
+	for i in range(5):await physics_frame
+	actor.global_position=Vector3(54,44.03,240);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true)
+	ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(actor.global_position)
+	for i in range(20):await physics_frame
+	# One original supported seam seed. All remaining legs use the original controller.
+	var route:Array=construction_route()
+	for goal in route:
+		var w:Dictionary=await walk_to(actor,goal);legs.append(w);record("actual_controller_leg_"+str(legs.size()),w.reached and w.floor_contact)
+		if not errors.is_empty():break
+	var space:=ship.get_world_3d().direct_space_state
+	for fitting in plan.doors:
+		var door:Node3D=addition.get_node(str(fitting.id));record("privacy_starts_closed_"+str(door.name),door.open_fraction==0 and not door.desired_open)
+	if errors.is_empty():
+		for fitting in plan.doors:
+			var door:Node3D=addition.get_node(str(fitting.id));var z:float=float(fitting.center_z)
+			for goal in [Vector3(64,45.45,230.3),Vector3(61.6,45.45,230.3),Vector3(61.6,45.45,z)]:
+				var w:Dictionary=await walk_to(actor,goal);legs.append(w);record("door_approach_leg_"+str(legs.size()),w.reached and w.floor_contact)
+			await aim(actor,Vector3(60.46,46.65,z+.85));record("outside_RMB_target_"+str(door.name),actor.interaction_target==door)
+			await key_e()
+			for i in range(90):await physics_frame
+			record("outside_E_opens_"+str(door.name),door.open_fraction>.999 and door.desired_open)
+			var incoming:Dictionary=await walk_to(actor,Vector3(59.4,45.45,z));legs.append(incoming);record("actual_rinse_entry_"+str(door.name),incoming.reached and incoming.floor_contact)
+			await aim(actor,Vector3(59.76,46.65,z+.85));record("inside_RMB_target_"+str(door.name),actor.interaction_target==door);await key_e()
+			for i in range(90):await physics_frame
+			record("inside_E_privacy_closes_"+str(door.name),door.open_fraction<.001 and not door.desired_open)
+			await key_e()
+			for i in range(90):await physics_frame
+			record("inside_E_egress_opens_"+str(door.name),door.open_fraction>.999)
+			var outgoing:Dictionary=await walk_to(actor,Vector3(61.6,45.45,z));legs.append(outgoing);record("actual_rinse_egress_"+str(door.name),outgoing.reached and outgoing.floor_contact)
+			await aim(actor,Vector3(60.46,46.65,z+.85));await key_e()
+			for i in range(90):await physics_frame
+			record("privacy_ends_closed_"+str(door.name),door.open_fraction<.001 and not door.desired_open)
+			for goal in [Vector3(61.6,45.45,230.3),Vector3(64,45.45,230.3)]:
+				var w:Dictionary=await walk_to(actor,goal);legs.append(w);record("rinse_return_leg_"+str(legs.size()),w.reached and w.floor_contact)
+			if not errors.is_empty():break
+	if errors.is_empty():
+		for goal in [Vector3(64,45.45,239.6),Vector3(76,45.45,239.6),Vector3(80,45.45,244),Vector3(80,45.45,245.9),Vector3(78.4,45.45,245.9),Vector3(61,44,245.9),Vector3(60.6,44,245.9),Vector3(60.6,44,240),Vector3(54,44,240)]:
+			var w:Dictionary=await walk_to(actor,goal);legs.append(w);record("actual_return_leg_"+str(legs.size()),w.reached and w.floor_contact)
+			if not errors.is_empty():break
+	for name in ["GentleWaters_LivingGifts_Vesper_Section_WIP","GrandPoolOrchardSection_WIP"]:record("retained_district_"+name,ship.find_child(name,true,false)!=null)
+	physical_key(false)
+	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"actual_original_controller_legs":legs,"route_teleports":0,"single_supported_seed":true,"production_active":false,"full_swimming_buoyancy_AFK_slide_species_hardware_or_final_art_acceptance":false}
+	FileAccess.open("res://docs/group6_completion/CANDIDATE005.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	print("GROUP6 CANDIDATE ",result.status," ",errors," LEGS ",legs.size());quit(0 if errors.is_empty() else 1)
