@@ -1,0 +1,15 @@
+from pathlib import Path
+import json,hashlib,struct,collections
+from shapely.geometry import shape,box
+from shapely.ops import unary_union
+from shapely import constrained_delaunay_triangles
+W=Path('/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_starboard_forward_work_branches_20261011');R=W.parents[2];P=json.load(open(W/'PLAN.json'));(W/'FAILED_NATIVE001_INPUT_PLAN.json').write_text(json.dumps(P,indent=2)+'\n');floor=shape(P['floor_geometry']);roof=unary_union([box(q['lo'][0],q['lo'][1],q['hi'][0],q['hi'][1])for q in P['floor_rectangles'][:3]])
+for name,geo in [('Floor',floor),('Roof',roof)]:
+ for i,poly in enumerate(geo.geoms):
+  q=next(q for q in P['parts']if q['name']=='SFW_'+name+str(i));pts=list(poly.exterior.coords)[:-1];idx={tuple(v):j for j,v in enumerate(pts)};n=len(pts);fs=[]
+  for t in constrained_delaunay_triangles(poly).geoms:
+   js=[idx[tuple(v)]for v in list(t.exterior.coords)[:-1]];fs.extend([list(reversed(js)),[j+n for j in js]])
+  fs += [[j,(j+1)%n,(j+1)%n+n,j+n]for j in range(n)];q['faces']=fs;c=collections.Counter(tuple(sorted((a,b)))for f in fs for a,b in zip(f,f[1:]+f[:1]));assert all(v==2 for v in c.values());assert abs(sum(t.area for t in constrained_delaunay_triangles(poly).geoms)-poly.area)<1e-8
+P['structure_file']='D04_STARBOARD_FORWARD_WORK_BRANCHES_r002.glb';P['own_failed_native_attempt_preserved']=True;(W/'PLAN.json').write_text(json.dumps(P,indent=2)+'\n')
+f=W/P['patch_file'];raw=f.read_bytes();n=struct.unpack_from('<I',raw,12)[0];doc=json.loads(raw[20:20+n]);policy={q['name'].replace('.','_'):{'collide':q.get('extras',{}).get('runtime_collision',True),'opaque':q.get('extras',{}).get('role','')not in ['water','hospitality_glass'],'role':q.get('extras',{}).get('role',''),'category':q.get('extras',{}).get('category','')}for q in doc['nodes']if'mesh'in q};stage=Path('/tmp/astraea_immutable_native_wcdxtua6');assert (stage/'first'/f.name).read_bytes()==(stage/'repeat'/f.name).read_bytes()==raw;native='D04StarboardForwardWorkPatch_r001.blend';assert (W/native).read_bytes()==(stage/native).read_bytes();h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();rec={'native':native,'native_sha256':h(W/native),'export':f.name,'export_sha256':h(f),'mesh_count':len(policy),'collision_policy':policy,'fresh_native_repeat_identical':True,'immutable_revision':True,'disposable_repeat_export_staging':str(stage)};(W/'PARTIAL_NATIVE_PATCH_RECEIPT001.json').write_text(json.dumps(rec,indent=2)+'\n')
+s=(W/'author_native001.py').read_text().replace("patch=export_native(bpy,W,R,'D04StarboardForwardWorkPatch_r001.blend',P['patch_file'])","patch=json.load(open(W/'PARTIAL_NATIVE_PATCH_RECEIPT001.json'));assert sha(W/patch['native'])==patch['native_sha256']and sha(W/patch['export'])==patch['export_sha256']").replace('D04StarboardForwardWorkBranches_r001','D04StarboardForwardWorkBranches_r002');(W/'author_native002.py').write_text(s);(W/'repair_slab002.py').write_bytes(Path(__file__).read_bytes());print('Constrained slab triangles: exact area and closed manifold edge topology PASS')
