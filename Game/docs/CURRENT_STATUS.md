@@ -1,3 +1,17 @@
+# D04 commons ceiling junction correction
+
+The quiet panels and new rear boundaries stopped 0.70m below their actual ceilings; the raised service canopy left 0.20m above retained service walls. The source calls the quiet panels privacy screens, but no specific approved open-head mandate was found. The selected commons patch actually translates +2.8m in X despite older +4m descriptive metadata. User feedback prompted this correction.
+
+Fifteen wall sites now meet their actual local ceilings through 60 fitted additive prisms. Exact retained beams, adjoining walls and light housings occupy subtracted portions of the closure volumes; no original members were moved. Deliberate entrances and quiet-screen circulation gaps remain open. The court already has upper glazing reaching its roof: the confusing old image was tightly aimed at the original planter and cropped away room, ceiling and route context. That glazing remains unchanged.
+
+Essential validation passes: 6,008 geometry checks, 5,733 exact retained original meshes, complete closure coverage, 80 connection checks and 43 original-player walking legs with zero route teleports. All 4,402 prior native/export files remain byte-identical. The four native/export correction variants and failed attempts remain retained. Selected revision r004 freshly re-exports identically and preserves source packed textures, UVs and material links. Inactive geometry was independently retained at 29dec525fb8f9e290246b2b5a6ddacad07cf276c before the one-line runtime integration.
+
+The wider SOURCE_COMMONS_WIDE_CONTEXT004.png is confirmed in Library as libfile_70a3b6c5a8b88191a52b44812fccee78. It uses neutral Blender Workbench lighting and actual source geometry, showing the corrected quiet, main and service junctions with floor context. Textures, glass shading, game lighting and wider ship context are omitted; it is not final visual acceptance or a Godot/CRT/hardware image.
+
+All eight groups remain unfinished. Port-aft receiving/court routes remain next, using the actual wider north platform and protecting D03 Crew Care. Shared lower approaches, clean/used segregation, engineering, consent/provider/vacancy, habitat/biology, stock/refill/save/inventory, operational returns and final visuals remain held. Two historical unpublished native byte versions remain unavailable. Manual verified checkpoints continue; no watchers, workers or credential/network/permission changes.
+
+---
+
 # D04 starboard-aft receiving and court routes
 
 Two enclosed perimeter branches now serve nine broad starboard-aft courts through full-size private staff fittings, controlled by two normal receiving-street staff portals. The 0.75m outer court stays sealed without entry/work-reach acceptance. Existing receiving, commons and lower staff approaches remain shared; full clean/used segregation remains unfinished. Port-aft is the next missing court/receiving package; its wider north platform requires a different source-fit connection design.
