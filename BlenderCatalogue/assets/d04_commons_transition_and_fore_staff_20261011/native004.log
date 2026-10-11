@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_commons_transition_and_fore_staff_20261011/author_native004.py", line 28, in <module>
+    assert ob.type=='MESH';pose=ob.matrix_world.copy();before=payload(ob);ob.parent=None;ob.matrix_world=pose;bpy.context.collection.objects.link(ob);mapping.append({'name':ob.name,'normalized_name':key,'native_source':str(source.relative_to(R)),'native_sha256':sha(source),'payload_sha256':hashlib.sha256(json.dumps(before,sort_keys=True).encode()).hexdigest(),'payload':before});matched.add(key)
+                                                                                                                                                      ^^^^^^^
+NameError: name 'mapping' is not defined
+
+Error: script failed, file: '/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_commons_transition_and_fore_staff_20261011/author_native004.py', exiting.
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/agent/.config/blender/4.3/extensions').
+Blender 4.3.2
+
+Blender quit
