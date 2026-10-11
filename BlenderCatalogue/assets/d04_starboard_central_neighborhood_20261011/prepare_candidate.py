@@ -32,7 +32,7 @@ for u in units:
   if k in r:r[k]=[transform(v)for v in r[k]]
  for k in ['floor_geometry','water_geometry']:r[k]=geom(r[k])
  r['entry']['origin']=transform(r['entry']['origin']);r['entry']['persistent_id']=u['proposed_runtime_id']+':entry'
- for a in r['lights']:a['name']=f'SC{idx}_'+a['name'];a['at']=transform(a['at'])
+ for a in r['lights']:a['name']=f'SC{idx}_'+a['name'].split('_',1)[1];a['at']=transform(a['at'])
  for a in r.get('rest_approach_worlds',[]):a['position']=transform(a['position']);a['rest_slot_id']=slots[a['rest_slot_id']]
  assert shape(r['floor_geometry']).difference(box(u['allocation_x'][0],u['allocation_z'][0],u['allocation_x'][1],u['allocation_z'][1])).area<1e-7
  rooms.append(r);mapping_records.append({'target_index':idx,'compatible_source_template_index':template['source_index'],'rests':u['proposed_rest_place_count'],'rigid_translation_xyz':[40,0,-370]})

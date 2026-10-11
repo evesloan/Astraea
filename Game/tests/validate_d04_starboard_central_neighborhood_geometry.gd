@@ -3,6 +3,8 @@ func run()->void:
  var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
  for i in range(120):await physics_frame
  var ship:Node3D=main.get_node("World360/Astraea");var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D04_STARBOARD_CENTRAL_NEIGHBORHOOD.json"));var space:=ship.get_world_3d().direct_space_state;var district:Node3D=load("res://scripts/d04_starboard_central_neighborhood.gd").build(ship,true)
+ if district==null:
+  push_error("Candidate build returned null; inspect preceding assertion");quit(1);return
  for i in range(5):await physics_frame
  for f in p.model_pins:record("model_pin_"+f,FileAccess.get_sha256("res://assets/models/"+f)==p.model_pins[f])
  for f in p.source_pins:record("source_pin_"+f,FileAccess.get_sha256("/workspace/astraea-recovered-532087b9-20261010T083844Z/"+f)==p.source_pins[f])
