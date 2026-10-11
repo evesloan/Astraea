@@ -65,6 +65,12 @@ def lamp(name,x,y,z,staff=False):
  cube(name+'_Housing',[x-.32,y-.30,z-.26],[x+.32,y,z+.26],'champagne_metal','fitting');cube(name+'_Lens',[x-.27,y-.33,z-.21],[x+.27,y-.30,z+.21],'opal_glow','light_fixture');lights.append({'name':name+'_Lens','at':[x,y-.35,z],'staff':staff})
 for i,z in enumerate([298.4,313.2,328,344,359,374,389,405.2,419.4,434.2,442]):lamp('SA_StreetLamp'+str(i),44,20.48,z)
 for i,x in enumerate([10,22,34]):lamp('SA_PublicArrivalLamp'+str(i),x,20.48,405.2)
+for z in [403.65,406.75]:
+ cube(f'SA_PublicArrivalRoofBeam_{z}',[4,20.18,z-.12],[44,20.48,z+.12])
+ for i,x in enumerate([8.5,20,32]):cube(f'SA_PublicArrivalRoofPier_{z}_{i}',[x-.12,16.5,z-.12],[x+.12,20.48,z+.12],'warm_walnut','roof_pier')
+for z in [367.35,372.45]:
+ cube(f'SA_CommonsLinkRoofBeam_{z}',[44,20.18,z-.12],[63,20.48,z+.12])
+ for i,x in enumerate([50,56,62.6]):cube(f'SA_CommonsLinkRoofPier_{z}_{i}',[x-.12,16.5,z-.12],[x+.12,20.48,z+.12],'warm_walnut','roof_pier')
 assemblies={'Receiving':parts+courtparts};parts=[]
 # Authored asymmetric twin-bay commons: stepped reading volume, low screened quiet bay, separate service edge.
 main=Polygon([(70,360.2),(73,357.8),(82.4,357.8),(85,360.4),(85,378.8),(82,381.8),(72.6,381.8),(70,379.2)]);service=box(63,356.2,71.4,367.2);entry=box(63,367.2,73,372.2);floor=unary_union([main,service,entry]);roof=floor.union(box(63,367.2,71.4,383.4));quiet=main.intersection(box(76.8,357.8,85,363.1));staff=unary_union([box(4,379,60,383.4),box(60,367.8,69.4,383.4)]);stair_void=box(63.2,372.2,69.2,382.9)
@@ -75,7 +81,7 @@ for i,(a,b)in enumerate(zip(list(main.exterior.coords),list(main.exterior.coords
  if a[0]==b[0]==70:
   for j,(z0,z1)in enumerate([(360.2,367.2),(372.2,379.2)]):cube(f'SAC_WestWall_{j}',[69.88,16.5,z0],[70,20.48,z1],'ivory_enamel','wall')
  else:
-  segment(f'SAC_PerimeterDado_{i}',[a[0],17.1,a[1]],[b[0],17.1,b[1]],.16,1.2,'warm_walnut','wall');segment(f'SAC_PerimeterGlass_{i}',[a[0],18.45,a[1]],[b[0],18.45,b[1]],.16,1.5,'hospitality_glass','window');segment(f'SAC_PerimeterHead_{i}',[a[0],20.065,a[1]],[b[0],20.065,b[1]],.16,.83,'ivory_enamel','wall')
+  segment(f'SAC_PerimeterDado_{i}',[a[0],17.1,a[1]],[b[0],17.1,b[1]],1.2,.16,'warm_walnut','wall');segment(f'SAC_PerimeterGlass_{i}',[a[0],18.675,a[1]],[b[0],18.675,b[1]],1.95,.16,'hospitality_glass','window');segment(f'SAC_PerimeterHead_{i}',[a[0],20.065,a[1]],[b[0],20.065,b[1]],.83,.16,'ivory_enamel','wall')
 # Quiet bay has a real sectional/threshold change; opening X79.2..83.5 leads to original seated cluster.
 cube('SAC_QuietScreen',[73.2,16.5,362.96],[79.2,18.8,363.12],'warm_walnut','privacy_screen');cube('SAC_QuietPortalHead',[79.2,19.0,362.92],[83.5,19.3,363.18],'ivory_enamel','portal')
 # Stock and closed-return cells are distinct, accessible apertures; cabinet and shelf are exact rigid source derivatives below.
@@ -101,7 +107,7 @@ for x in [8.5,20,32,44,56,61.4]:
 for z in [379.25,383.15]:cube(f'SAC_LowerTransfer_{z}',[4,11.48,z-.14],[69.4,11.8,z+.14])
 for i,(a,b)in enumerate(zip(list(staff.exterior.coords),list(staff.exterior.coords)[1:])):
  if a[0]==b[0]==4:continue
- segment(f'SAC_LowerScreen_{i}',[a[0],13.6,a[1]],[b[0],13.6,b[1]],.12,3.2,'staff_panel','wall')
+ segment(f'SAC_LowerScreen_{i}',[a[0],13.6,a[1]],[b[0],13.6,b[1]],3.2,.12,'staff_panel','wall')
 # Floor-supported roof piers flank the activity and quiet thresholds.
 for i,(x,z)in enumerate([(70.7,365.5),(70.7,374.8),(80.1,365.5),(80.1,378.5)]):cube(f'SAC_ReadingRoofPier{i}',[x-.16,16.5,z-.16],[x+.16,20.48,z+.16],'warm_walnut','roof_pier')
 for i,(x,y,z)in enumerate([(74.2,20.48,370),(80.3,20.48,374.5),(80.5,19.3,359.8),(64.5,19.05,360),(68.4,19.05,360),(66,20.48,369.5),(22,15.2,381.2),(44,15.2,381.2),(61.6,15.2,371.3)]):lamp('SAC_Lamp'+str(i),x,y,z,y<16)
