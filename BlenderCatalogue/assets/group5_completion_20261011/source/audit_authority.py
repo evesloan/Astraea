@@ -22,6 +22,20 @@ for key,name,script,model in [('D09_directory_01','Orchard Market','grand_pool_s
     else:row['source_manifest']='Game/data/architecture/GRAND_POOL_SECTION_RUNTIME.json'
     rows.append(row)
 assert len(rows)==10 and len({r['programme_key'] for r in rows})==10
+recovery_path=P/'qa/VENUE_SOURCE_RECOVERY.json'
+if recovery_path.exists():
+    recovered={r['programme_key']:r for r in json.loads(recovery_path.read_text())['rows']}
+    for row in rows:
+        if row['programme_key'] not in recovered:continue
+        r=recovered[row['programme_key']]
+        row.update(recovered_native='BlenderCatalogue/assets/group5_completion_20261011/'+r['native']['recovered_path'],recovered_native_sha256=r['native']['sha256'],recovered_archive_sha256=r['archive_sha256'],recovered_export_matches_current_runtime=r['archived_export_matches_current_runtime'],source_provenance='exact matching archived source/export recovered' if r['archived_export_matches_current_runtime'] else 'archived original recovered;later current entry-correction source still held')
+        row['scope']='Current source/export provenance audited;original metadata left unchanged;no venue fit-out or operational acceptance.'
+counterpart_path=P/'docs/CURRENT_MAKER_COUNTERPART.json'
+if counterpart_path.exists():
+    counterpart=json.loads(counterpart_path.read_text())
+    row=next(r for r in rows if r['programme_key']==counterpart['programme_key'])
+    assert row['current_runtime_sha256']==counterpart['current_runtime_sha256']
+    row.update(explicit_current_editable_counterpart='BlenderCatalogue/assets/group5_completion_20261011/'+counterpart['native'],counterpart_native_sha256=counterpart['native_sha256'],counterpart_geometry_error_m=counterpart['geometry_max_bidirectional_vertex_error_m'],counterpart_role='explicit derived current geometry/material source;original correction-native and procedural/font authoring held')
 write('TEN_LARGE_VENUES.json',{'status':'preserved_current_construction_WIP','venues':sorted(rows,key=lambda r:r['programme_key']),'count':10,'distinct_from_small_shops':True,'cross_group_interfaces':{'Orchard_Market':'Group6 Grand Pool/Orchard shared source and hull interfaces; do not duplicate or overwrite','Orchard_Food_Hall':'Group8 D10_directory_04, existing orchard_exchange_lift_001 and switchback; preserve D09_directory_04 link','shared_staff_risers':'Group3 and integration owner; four existing district circuits have no completed shared-riser adoption'},'final_art_or_gameplay_accepted':False})
 geometry=read('BlenderCatalogue/assets/shopping_promenade_20261009/qa/source_geometry.json')
 lights=read('BlenderCatalogue/assets/shopping_promenade_20261009/docs/LIGHT_SOURCES.json');proof=[]

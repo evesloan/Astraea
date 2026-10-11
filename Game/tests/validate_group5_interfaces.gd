@@ -1,6 +1,6 @@
 extends SceneTree
 var errors:Array=[]
-var counts:Dictionary={"control_source_pins":0,"physical_control_rays":0,"guide_instances":0,"guide_source_pins":0,"cached_state_returns":0}
+var counts:Dictionary={"control_source_pins":0,"physical_control_rays":0,"guide_instances":0,"guide_source_pins":0,"cached_state_returns":0,"fitout_source_pins":0,"care_back_contacts":0}
 func _initialize()->void:call_deferred("run")
 func check(label:String,condition:bool)->void:
 	if not condition:errors.append(label)
@@ -18,7 +18,8 @@ func run()->void:
 	var manager:Node=ship.get_node("ShipSystems/ReceivedRoomResidency")
 	manager.enabled=false
 	actor.set_controls_enabled(false)
-	load("res://scripts/group5_completion.gd").build(ship)
+	var startup_attached:bool=ship.get_node("ShipSpace/Districts/ShoppingPromenadeChunks").has_meta("group5_completion_attached")
+	if not startup_attached:load("res://scripts/group5_completion.gd").build(ship)
 	var definition:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group5/CONSTRUCTION.json"))
 	var shopping:Node3D=ship.get_node("ShipSpace/Districts/ShoppingPromenadeChunks")
 	var state:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state
@@ -39,6 +40,20 @@ func run()->void:
 			var hit:Dictionary=state.intersect_ray(ray)
 			check(str(row.physical_id)+" "+str(spec.id)+" actual contact/ancestor",not hit.is_empty() and contains(pod,hit.collider) and contains(door,hit.collider))
 			counts.physical_control_rays+=1
+	for revision in definition.get("fitout_revisions",[]):
+		var chunk:Node3D=load("res://scripts/group5_completion.gd")._chunk(ship,shopping,str(revision.chunk_id))
+		actor.global_position=chunk.position+Vector3(0,.03,0)
+		manager.prepare_position(actor.global_position)
+		manager.refresh(9.0)
+		for i in range(3):await physics_frame
+		check(str(revision.chunk_id)+" pinned adopted revision",str(chunk.get_meta("group5_fitout_revision"))==str(revision.model_sha256) and FileAccess.get_sha256(str(revision.model_path))==str(revision.model_sha256) and FileAccess.get_sha256(str(revision.scene_path))==str(revision.scene_sha256))
+		counts.fitout_source_pins+=1
+		var s:float=1.0 if float(revision.godot_matrix_rows[0][2])<0 else -1.0
+		var from:Vector3=chunk.to_global(Vector3(-s*1.1,1.0,-5.25))
+		var to:Vector3=chunk.to_global(Vector3(-s*1.1,1.0,-5.6))
+		var hit:Dictionary=state.intersect_ray(PhysicsRayQueryParameters3D.create(from,to))
+		check(str(revision.chunk_id)+" actual rotated care back",not hit.is_empty() and absf(chunk.to_local(hit.position).z+5.52)<.002)
+		counts.care_back_contacts+=1
 	for spec in definition.wayfinding:
 		var chunk:Node3D=load("res://scripts/group5_completion.gd")._chunk(ship,shopping,str(spec.chunk_id))
 		manager.prepare_position(chunk.position)
@@ -48,7 +63,7 @@ func run()->void:
 		counts.guide_source_pins+=1
 	# Exercise the existing cached residency owner with one actual opened public
 	# door in each bank. This fixture relocation tests caching, not a walking route.
-	for key in ["SHOP_D09_P72_F314","SHOP_D09_P100_F184","SHOP_D09_S72_A080","SHOP_D09_S100_A210"]:
+	for key in ["SHOP_D09_P72_F340","SHOP_D09_P100_F210","SHOP_D09_S72_F340","SHOP_D09_S100_F210"]:
 		var chunk:Node3D=load("res://scripts/group5_completion.gd")._chunk(ship,shopping,key)
 		actor.global_position=chunk.position+Vector3(0,.03,0)
 		manager.prepare_position(actor.global_position)
@@ -68,7 +83,7 @@ func run()->void:
 		for i in range(3):await physics_frame
 		check(key+" same state returned",chunk.is_inside_tree() and door.get_instance_id()==original_instance and door.desired_open and door.fraction==1)
 		counts.cached_state_returns+=1
-	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","counts":counts,"errors":errors,"fixture":"actual production main.tscn plus scoped builder and original cached residency manager","scope":"All fixed control contact rays/source pins, guide instances and four public-door state returns through actual residency detach/release/prepare. Fixture relocations are explicit; no walking, save/load, graphical lighting or combined shared-integration acceptance.","whole_group_accepted":false}
+	var result:Dictionary={"builder_attached_during_main_startup":startup_attached,"status":"PASS" if errors.is_empty() else "HOLD","counts":counts,"errors":errors,"fixture":"actual production main.tscn plus scoped builder and original cached residency manager","scope":"All fixed control contact rays/source pins, guide instances,ten rotated care-back contacts/revision pins and four garden-shop public-door state returns through actual residency detach/release/prepare. Fixture relocations are explicit; no walking, save/load, graphical lighting or combined shared-integration acceptance.","whole_group_accepted":false}
 	FileAccess.open("res://artifacts/group5_interfaces.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
 	print("GROUP5_INTERFACES ",JSON.stringify(result))
 	quit(0 if errors.is_empty() else 1)

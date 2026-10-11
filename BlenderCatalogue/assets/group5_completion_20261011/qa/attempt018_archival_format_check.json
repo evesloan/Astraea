@@ -1,0 +1,7 @@
+{
+  "status": "RETAINED_ARCHIVAL_FORMAT_CHECK",
+  "attempt": 18,
+  "check": "git diff --cached --check",
+  "finding": "Byte-identical recovered archive JSON members retain original CRLF, reported as trailing whitespace;compressed Blender natives also need explicit binary classification.",
+  "resolution": "Scoped package .gitattributes preserves recovered archival bytes and classifies native/GLB/PNG binaries;authored Python/GDScript/docs remain subject to normal checks. No recovered archive member was normalized or changed."
+}

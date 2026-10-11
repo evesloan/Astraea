@@ -3,11 +3,13 @@ from pathlib import Path
 import bpy,json,hashlib
 P=Path(__file__).resolve().parents[1];OUT=Path('/tmp/group5-repeat-exports');OUT.mkdir(exist_ok=True)
 components=json.loads((P/'docs/COMPONENTS.json').read_text())
-names=[Path(r['native']).stem for r in components]+[r['variant'] for r in json.loads((P/'docs/WAYFINDING_VARIANTS.json').read_text())]
-names.append('retail_door_control_r001')
+paths=[(P/r['native'],P/r['export']) for r in components]
+paths.extend((P/'source'/(r['variant']+'.blend'),P/'exports'/(r['variant']+'.glb')) for r in json.loads((P/'docs/WAYFINDING_VARIANTS.json').read_text()))
+paths.append((P/'source/retail_door_control_r001.blend',P/'exports/retail_door_control_r001.glb'))
+if (P/'docs/FITOUT_CLEARANCE.json').exists():paths.extend((P/r['native'],P/r['export']) for r in json.loads((P/'docs/FITOUT_CLEARANCE.json').read_text())['rows'])
 records=[]
-for name in names:
-    native=P/'source'/(name+'.blend');original=P/'exports'/(name+'.glb')
+for native,original in paths:
+    name=native.stem
     before=hashlib.sha256(native.read_bytes()).hexdigest()
     bpy.ops.wm.open_mainfile(filepath=str(native))
     out=OUT/(name+'.glb')

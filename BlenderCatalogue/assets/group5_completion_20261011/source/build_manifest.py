@@ -10,6 +10,7 @@ PREFIXES = [
     'Game/assets/models/group5/',
     'Game/data/architecture/group5/',
     'Game/docs/group5/',
+    'Game/scenes/group5/',
 ]
 EXPLICIT = {
     'Game/scripts/group5_completion.gd',

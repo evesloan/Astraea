@@ -13,10 +13,15 @@ func run()->void:
 	var manager:Node=ship.get_node("ShipSystems/ReceivedRoomResidency")
 	manager.enabled=false
 	actor.set_controls_enabled(false)
-	load("res://scripts/group5_completion.gd").build(ship)
+	var startup_attached:bool=ship.get_node("ShipSpace/Districts/ShoppingPromenadeChunks").has_meta("group5_completion_attached")
+	if not startup_attached:load("res://scripts/group5_completion.gd").build(ship)
 	var d:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group5/CONSTRUCTION.json"))
 	var state:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state
+	var changed_only:bool=OS.get_environment("ASTRAEA_GROUP5_CHANGED_FITOUT_ONLY")=="1"
+	var revised_keys:Array=[]
+	for revision in d.get("fitout_revisions",[]):revised_keys.append(str(revision.chunk_id))
 	for row in d.doors:
+		if changed_only and str(row.chunk_id) not in revised_keys:continue
 		var chunk:Node3D=load("res://scripts/group5_completion.gd")._chunk(ship,ship.get_node("ShipSpace/Districts/ShoppingPromenadeChunks"),str(row.chunk_id))
 		actor.global_position=chunk.position+Vector3(0,.03,0)
 		manager.prepare_position(actor.global_position)
@@ -74,9 +79,10 @@ func run()->void:
 		counts.operating_cycles+=1
 		if counts.doors%30==0:print("GROUP5_PROGRESS ",counts.doors," errors ",errors.size())
 		if not errors.is_empty():break
+	check("expected cycle fixture count",counts.doors==(revised_keys.size()*3 if changed_only else 297))
 	check("preserved original R070",FileAccess.get_sha256("res://assets/models/AST-RTL-005.glb")=="dda0ea75fa8d2363ac4f61292018271f2032b896d0669eccc097d58017e45497")
 	check("identity joins remain unresolved",d.unresolved_address_joins==84)
-	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","counts":counts,"errors":errors,"source_door_controller":"group5_retail_slider.gd","fixture":"actual production main.tscn plus exact scoped group5 builder; shared root files unchanged","scope":"Actual main floor contacts, stationary worker thresholds, animatable-panel operating cycles and source pins. Not normal-input walking, largest-species, cart, save/load, permissions, structural or final visual acceptance.","whole_group_accepted":false}
+	var result:Dictionary={"builder_attached_during_main_startup":startup_attached,"status":"PASS" if errors.is_empty() else "HOLD","counts":counts,"errors":errors,"changed_fitout_only":changed_only,"source_door_controller":"group5_retail_slider.gd","fixture":"actual production main.tscn plus exact scoped group5 builder; shared root files unchanged","scope":"Actual main floor contacts, stationary worker thresholds, animatable-panel operating cycles and source pins. Not normal-input walking, largest-species, cart, save/load, permissions, structural or final visual acceptance.","whole_group_accepted":false}
 	FileAccess.open("res://artifacts/group5_completion.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
 	print("PASS: Group5 completion" if errors.is_empty() else "HOLD: Group5 completion",JSON.stringify(result))
 	quit(0 if errors.is_empty() else 1)

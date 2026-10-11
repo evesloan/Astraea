@@ -33,7 +33,9 @@ for row in d['chunks']:
     side='starboard' if px>0 else 'port';end='forward' if pz<0 else 'aft'
     guide_name='guide_'+side+'_'+end+'_r003.glb'
     signs.append({'id':row['chunk_id']+'__DistrictGuide','chunk_id':row['chunk_id'],'local_xyz':[x-px,0,z-pz],'rotation_y':0 if px>0 else math.pi,'model_path':'res://assets/models/group5/guide_'+side+'_'+end+'_r003.glb','model_sha256':hashlib.sha256((P/'exports'/guide_name).read_bytes()).hexdigest(),'readable_faces':2,'district':side+' '+end,'room_ids':None,'policy':'orientation and original venue names only; no unrecovered R-addresses'})
-construction={'schema':'astraea.group5.completion.v1','baseline':'affc5c807087ff87da29f3642c2d6e418241b896','doors':doors,'wayfinding':signs,'control_model':'res://assets/models/group5/retail_door_control_r001.glb','existing_light_sources':len(live['lights']),'stock_routes':'retained 36 service streets + 8 side-local staff links; survey below','preserved_R070':True,'unresolved_address_joins':84,'new_floor':False,'whole_group_accepted':False}
+fitout_path=P/'docs/FITOUT_CLEARANCE.json'
+fitout_revisions=json.loads(fitout_path.read_text())['rows'] if fitout_path.exists() else []
+construction={'fitout_revisions':fitout_revisions,'schema':'astraea.group5.completion.v1','baseline':'affc5c807087ff87da29f3642c2d6e418241b896','doors':doors,'wayfinding':signs,'control_model':'res://assets/models/group5/retail_door_control_r001.glb','existing_light_sources':len(live['lights']),'stock_routes':'retained 36 service streets + 8 side-local staff links; survey below','preserved_R070':True,'unresolved_address_joins':84,'new_floor':False,'whole_group_accepted':False}
 write(ROOT/'Game/data/architecture/group5/CONSTRUCTION.json',construction)
 floors={}
 for row in d['floor_proposals']:floors.setdefault(row['chunk_id'],[]).append(Polygon(row['boundary'],row['holes']))

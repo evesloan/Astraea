@@ -24,7 +24,8 @@ func run()->void:
 	var ship:Node3D=main.get_node("World360/Astraea")
 	var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
 	var manager:Node=ship.get_node("ShipSystems/ReceivedRoomResidency")
-	load("res://scripts/group5_completion.gd").build(ship)
+	var startup_attached:bool=ship.get_node("ShipSpace/Districts/ShoppingPromenadeChunks").has_meta("group5_completion_attached")
+	if not startup_attached:load("res://scripts/group5_completion.gd").build(ship)
 	var records:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/SHOPPING_PROMENADE.json"))
 	var keys:Array=["SHOP_D09_P72_F314","SHOP_D09_P100_F184","SHOP_D09_S72_A080","SHOP_D09_S100_A210"]
 	var all_shops:bool=OS.get_environment("ASTRAEA_GROUP5_WALK_ALL")=="1"
@@ -74,7 +75,7 @@ func run()->void:
 		if not errors.is_empty():break
 	physical_key(false)
 	if all_shops:record("all99_local_staff_routes_completed",routes_completed==99)
-	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks.size(),"errors":errors,"original_player_legs":legs,"normal_RMB_E_operations":operations,"initial_supported_fixtures":fixtures_started,"local_routes_completed":routes_completed,"requested_all99":all_shops,"teleports_inside_each_route":0,"scope":"Local shop staff entry/workbay/egress routes in actual main, using original player and normal RMB/E; read exact fixtures/completion counts and all99 flag. One supported relocation between fixtures; none within a route. Not connected shipwide/public walking routes, cart/species, pressure/permission, stock operations/save, engineering or final visuals.","whole_group_accepted":false}
+	var result:Dictionary={"builder_attached_during_main_startup":startup_attached,"status":"PASS" if errors.is_empty() else "HOLD","checks":checks.size(),"errors":errors,"original_player_legs":legs,"normal_RMB_E_operations":operations,"initial_supported_fixtures":fixtures_started,"local_routes_completed":routes_completed,"requested_all99":all_shops,"teleports_inside_each_route":0,"scope":"Local shop staff entry/workbay/egress routes in actual main, using original player and normal RMB/E; read exact fixtures/completion counts and all99 flag. One supported relocation between fixtures; none within a route. Not connected shipwide/public walking routes, cart/species, pressure/permission, stock operations/save, engineering or final visuals.","whole_group_accepted":false}
 	FileAccess.open("res://artifacts/group5_staff_walk.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
 	print("PASS: Group5 staff walking" if errors.is_empty() else "HOLD: Group5 staff walking",JSON.stringify({"checks":checks.size(),"legs":legs.size(),"operations":operations.size(),"errors":errors}))
 	quit(0 if errors.is_empty() else 1)

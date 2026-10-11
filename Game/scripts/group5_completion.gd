@@ -5,6 +5,19 @@ static func build(ship:Node3D)->void:
 	var root:Node3D=ship.get_node("ShipSpace/Districts/ShoppingPromenadeChunks")
 	assert(not root.has_meta("group5_completion_attached"))
 	var definition:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group5/CONSTRUCTION.json"))
+	for revision in definition.get("fitout_revisions",[]):
+		assert(FileAccess.get_sha256(str(revision.original_model))==str(revision.original_sha256))
+		assert(FileAccess.get_sha256(str(revision.model_path))==str(revision.model_sha256))
+		assert(FileAccess.get_sha256(str(revision.scene_path))==str(revision.scene_sha256))
+		var chunk:Node3D=_chunk(ship,root,str(revision.chunk_id))
+		assert(str(chunk.get_meta("deferred_visual_path"))==str(revision.original_scene))
+		var was_resident:bool=chunk.has_meta("resident_visual")
+		load("res://scripts/deferred_home_visual.gd").release(chunk)
+		chunk.set_meta("deferred_visual_path",str(revision.scene_path))
+		chunk.set_meta("group5_fitout_revision",str(revision.model_sha256))
+		# Original bounded material batches, mesh policy, shell, floor, lights and
+		# shell-only occluder remain owned by this same retained room.
+		if was_resident:load("res://scripts/deferred_home_visual.gd").ensure(chunk)
 	var count:=0
 	for row in definition.doors:
 		var chunk:Node3D=_chunk(ship,root,str(row.chunk_id))
