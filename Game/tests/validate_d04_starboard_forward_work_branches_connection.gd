@@ -11,7 +11,7 @@ func open_normal(player:CharacterBody3D,gate:Node3D,label:String):
  for i in range(100):await physics_frame
  record(label+"_normal_controller_open",gate.open_fraction==1)
 func court_visit(player:CharacterBody3D,gate:Node3D,label:String):
- var g:Dictionary=gate.fitting;var outside:Array=[64.4 if g.branch=="south"else 64.1,16.5,g.z]
+ var g:Dictionary=gate.fitting;var outside:Array=[64.7 if g.branch=="south"else 64.1,16.5,g.z]
  await route(player,[outside],label+"_staff_stance");await aim(player,vec(g.control_at));record(label+"_normal_private_target",player.interaction_target==gate);await key_e();record(label+"_unknown_private_closed",gate.access_refused and not gate.desired_open)
  known(gate,player);await key_e()
  for i in range(100):await physics_frame
@@ -20,10 +20,11 @@ func court_visit(player:CharacterBody3D,gate:Node3D,label:String):
  for i in range(100):await physics_frame
  record(label+"_revoked_inside_closes",gate.open_fraction==0);await key_e()
  for i in range(100):await physics_frame
- record(label+"_revoked_inside_exit_opens",gate.open_fraction==1);await route(player,[outside,[g.lane_x,16.5,g.z]],label+"_revoked_private_exit")
+ record(label+"_revoked_inside_exit_opens",gate.open_fraction==1);await route(player,[outside],label+"_revoked_private_exit")
  await aim(player,vec(g.control_at));await key_e()
  for i in range(100):await physics_frame
  await key_e();record(label+"_revoked_outside_reentry_denied",gate.open_fraction==0 and not gate.desired_open)
+ await route(player,[[g.lane_x,16.5,g.z]],label+"_return_to_lane")
 func run():
  var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D04_STARBOARD_FORWARD_WORK_BRANCHES.json"));var main=load("res://scenes/main.tscn").instantiate();root.add_child(main)
  for i in range(120):await physics_frame
