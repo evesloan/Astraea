@@ -1,0 +1,13 @@
+Blender 4.3.2
+Error: Cannot read blend file '/workspace/Astraea-group5/BlenderCatalogue/assets/shopping_promenade_20261009/source/natives/D09_shops_S72.blend', incomplete header, may be from a newer version of Blender
+Traceback (most recent call last):
+  File "/workspace/Astraea-group5/BlenderCatalogue/assets/group5_completion_20261011/source/render_context.py", line 14, in <module>
+    for name in ['D09_shops_S72.blend','D09_shops_S100.blend','D09_courts_and_services.blend']:append(old/'source/natives'/name)
+                                                                                               ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraea-group5/BlenderCatalogue/assets/group5_completion_20261011/source/render_context.py", line 9, in append
+    with bpy.data.libraries.load(str(path),link=False) as (a,d):d.objects=a.objects
+         ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+OSError: Error: Cannot read blend file '/workspace/Astraea-group5/BlenderCatalogue/assets/shopping_promenade_20261009/source/natives/D09_shops_S72.blend', incomplete header, may be from a newer version of Blender
+
+
+Blender quit

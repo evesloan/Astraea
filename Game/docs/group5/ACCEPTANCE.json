@@ -1,0 +1,49 @@
+{
+  "schema": "astraea.group5.acceptance.v1",
+  "whole_group_accepted": false,
+  "implemented": {
+    "small_shop_total_preserved": 100,
+    "new_shops_already_installed": 99,
+    "R070_untouched": true,
+    "large_venues_separate_preserved": 10,
+    "new_operating_doors": 297,
+    "new_fixed_controls": 594,
+    "new_two_sided_guides": 18,
+    "new_selected_saved_natives": 7,
+    "new_selected_source_meshes": 157,
+    "new_repeated_source_mesh_instances": 13545,
+    "existing_connection_chunks_preserved": 78,
+    "existing_lights_preserved": 507,
+    "new_registered_room_ids": 0,
+    "address_nulls_retained": 84
+  },
+  "tested": {
+    "all297_actual_main_cycles": "PASS: Game/artifacts/group5_completion.json",
+    "all594_physical_controls_and18_guides": "PASS: Game/artifacts/group5_interfaces.json",
+    "four_actual_cached_state_returns": "PASS: Game/artifacts/group5_interfaces.json",
+    "four_bank_staff_walking": "PASS: qa/four_bank_staff_walk_pass.json;20 legs,24 operations,4 occupied-guard attempts",
+    "all99_local_staff_walking": "RUNNING separately;not claimed in this checkpoint",
+    "native_repeat_export": "PASS:7 byte-identical saved-native reexports",
+    "literal_source_pose_fit": "PASS:24948 poses,5071500 source bounds,zero contacts",
+    "source_mount_and_guide_footprints": "PASS:594 control bases,198 brackets,18 guide footprints",
+    "retained_originals": "PASS:43483 SHA256 hashes;no changed original tracked paths"
+  },
+  "visually_reviewed": {
+    "views": [
+      "qa/SOURCE_EXPORT_GROUP5_WIDE009.png",
+      "qa/SOURCE_EXPORT_GROUP5_ENTRY010.png"
+    ],
+    "review": "actual retained source-export geometry plus new native/export hardware;clear neutral Workbench source views,correct runtime yaw and two-sided directory",
+    "limitations": "original material palette colors;no texture/glass/Godot/CRT shading,no hardware or final-art acceptance"
+  },
+  "unfinished": {
+    "authority": "84 actual room-address joins remain null;no invented IDs",
+    "large_venues": "all10 full fit-outs/operations held;six absent historical native metadata paths require provenance resolution",
+    "shared_interfaces": "four staff circuits need Group3/integration shared risers;Group6 Orchard/Pool,Group8 FoodHall and Group7 hull/service interfaces remain",
+    "gameplay": "commerce,inventory/refill/returns,ambient staff/guests,ownership/decoration,save/load and staff-role/pressure policies",
+    "physics": "connected shipwide/public walking,largest species,loaded cart and complete hull/support engineering",
+    "final_art": "fullshop/largevenue fit-out acceptance,architectural lighting rendered review,acoustics,normal Godot/CRT,targetGPU performance",
+    "integration": "shared bootstrap/registries unchanged;patch provided for Group1,combined integration must be tested",
+    "full_validation_suite": "not run;scoped essential changed-work tests only"
+  }
+}
