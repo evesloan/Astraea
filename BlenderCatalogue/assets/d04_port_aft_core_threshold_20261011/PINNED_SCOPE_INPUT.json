@@ -1,0 +1,129 @@
+{
+  "status": "IDENTIFIED_NEXT_PHYSICAL_PACKAGE_NOT_BUILT",
+  "package": "Port-aft northern D04 lateral threshold to original aft-midship public core",
+  "source_pins": {
+    "Game/data/architecture/AFT_MIDSHIP_PUBLIC_CORE.json": "78f092f8e0168e65f9bc49ed55bd0d25147be519960ab6583624bfa91f7ac317",
+    "Game/scripts/primary_atrium_core.gd": "be0343c75deb23f4de21cf76b59f6bad7d10b19c6ffdbd84485d1d5f0988324f",
+    "Game/assets/models/AST-CIR-005_spine_core.glb": "986fab07bb209f7d6d734b7c7d8ecde8fd9b26a53c07e21056da5b3671e0def2",
+    "BlenderCatalogue/assets/primary_atrium_core/source/AST-CIR-005_spine_core.blend": "b9c89dddc6087e54346a0414d52055781fec0507ee9aa035c899827ad2b9737e",
+    "BlenderCatalogue/assets/primary_atrium_core/AST-CIR-005_spine_core.manifest.json": "4ff6a849d5540a74a8b3d047064ebb5aa437df5049655ea07008e637f654a592",
+    "BlenderCatalogue/assets/primary_atrium_core/source/spine_core_section_contract.json": "894aab277526113e7b9d2ba3fcf8a47f7e61fc5f64e5afa4a7263fb3f4711143",
+    "BlenderCatalogue/assets/primary_atrium_core/source/build_spine_atrium_core.py": "52abfb8bbf5615d95dacdd050e21453712a05d366cd1e3214717cbf56185634b",
+    "BlenderCatalogue/assets/d04_port_aft_neighborhood_20261011/PLAN.json": "7321fc36aae5641938134815ba0ad8a6c2bf866ce975ad0c46a72761b0e9b172",
+    "BlenderCatalogue/assets/d04_port_aft_neighborhood_20261011/CORE_BOUNDARY_PROBE.json": "e190bd4cc482b619f58b4f422d4d03c56d169fa03e28b68dd6a22840463c7bc9"
+  },
+  "reason": "All six D04 neighborhood physical proposals can reach a protected boundary while this original northern port-aft stub remains guarded against the closed core sidewall. It is a bounded public circulation construction package.",
+  "existing_core": {
+    "id": "aft_midship_public_core",
+    "persistent_id": "aft_midship_public_core_001",
+    "root_name": "AftMidshipPublicCore_WIP",
+    "origin": [
+      0,
+      0,
+      272
+    ],
+    "floor_y": [
+      0.0,
+      6.0,
+      12.0,
+      16.5,
+      21.0,
+      27.0,
+      35.5,
+      44.0,
+      52.5,
+      61.0,
+      69.5,
+      78.0,
+      84.0,
+      88.5,
+      93.0,
+      97.5,
+      102.0
+    ],
+    "stair_opening": [
+      [
+        3.1,
+        276.0
+      ],
+      [
+        3.1,
+        286.7
+      ],
+      [
+        -3.1,
+        286.7
+      ],
+      [
+        -3.1,
+        276.0
+      ]
+    ],
+    "lift": {
+      "name": "AftMidshipPublicLift",
+      "identity_prefix": "aft_midship_public_core",
+      "district_label": "Aft midship",
+      "gate_origin_xz": [
+        -1.8,
+        266
+      ],
+      "shaft_outer_x": [
+        -2,
+        2
+      ],
+      "shaft_outer_z": [
+        263.8,
+        268.2
+      ],
+      "pit_pan_y": [
+        -0.24,
+        -0.2
+      ],
+      "cap_y": [
+        105.78,
+        105.9
+      ],
+      "cabin_file": "AST-CIR-003_seventeen_stop.glb"
+    },
+    "lateral_portal_decks": []
+  },
+  "observed_interface": {
+    "deck_y": 16.5,
+    "port_platform_end_x": -8,
+    "original_core_wall_outer_x": -7.88000011444092,
+    "stub_z_range": [
+      286.6,
+      290.8
+    ],
+    "closed_guard_x_range": [
+      -8.08,
+      -8
+    ],
+    "nearby_stair_void_z_end": 286.7
+  },
+  "native_source_audit": {
+    "original_builder_closed_sidewall": "CORE_OuterWall_03_-1 at original local x[-7.88,-7.72], original authored z[-113,-80]; runtime offset372 places world z[259,292]",
+    "export_material_batched": true,
+    "shared_source_preservation": "Create isolated immutable derivative for this placed core only; original shared .blend/.glb and all other placed core variants must remain intact.",
+    "stock_portal_recipe_not_compatible": "Existing builder portal recipe local z[-103,-97] maps to world269..275, outside retained north stub286.6..290.8. Derive a real bounded aperture from exact authored meshes and landing geometry; do not enable stock portal metadata blindly."
+  },
+  "bounded_next_steps": [
+    "Reopen governing circulation/architecture chapters and actual references, inspect native meshes and clearances at D04 port wall.",
+    "Derive exact D04 aperture/jamb/header/guard-end revision and supported collar across platform-to-core gap; preserve source triangles elsewhere and other decks.",
+    "Keep original floor, lift/stair openings, controllers, deck datums and persistent IDs unchanged. Retain original public floors once.",
+    "Verify geometric support, actual floor/roof bearing and existing-controller route from port north street through threshold into original core floor, with immutable native authoring/geometry/connected checkpoints.",
+    "Review partial source views honestly; ordinary-game/CRT/hardware and engineering/load acceptance remain held."
+  ],
+  "separate_unbuilt_packages": [
+    "Dedicated lower staff-network crossing/apertures and clean/used links",
+    "Port-central dedicated physical vertical service",
+    "Starboard-central dedicated staff approach/service connection"
+  ],
+  "scope_exclusions": [
+    "No gameplay/cart/tool changes",
+    "No loaded vertical operation acceptance",
+    "No new capacity or programme allocation",
+    "No next-package construction in current phase"
+  ],
+  "automatic_watcher_or_credentials_changes": false
+}
