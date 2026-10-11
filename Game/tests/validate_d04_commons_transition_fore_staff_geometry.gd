@@ -74,6 +74,8 @@ func run():
   var lo:=Vector3(INF,INF,INF);var hi:=-lo
   for at in part.verts:lo=lo.min(v(at));hi=hi.max(v(at))
   var a:AABB=mesh.global_transform*mesh.get_aabb();ck(a.position.distance_to(lo)<.001 and a.end.distance_to(hi)<.001,"short-profile native dimensions "+part.name);ck(a.end.y<18.8,"distinct profile beneath retained2.30m entry header "+part.name)
+ for name in ["D04PC_StaffUsed_Control","D04PC_StaffClean_Control"]:
+  var control:MeshInstance3D=fore.find_child(name,true,false);var a:AABB=control.global_transform*control.get_aabb();ck(a.end.x< -55.4 and abs(a.end.x+55.405)<.0001,"fixed control mounted beyond retained staff wall face "+name)
  for spec in p.commons_gates:await gate_poses(common.get_node(spec.name),actor,space,false)
  for spec in p.fore_new_gates:await gate_poses(fore.get_node(spec.name),actor,space,spec.requires_visit)
  for i in range(3):await gate_poses(fore.get_node("PriorCourtGate_"+str(i)),actor,space,true)

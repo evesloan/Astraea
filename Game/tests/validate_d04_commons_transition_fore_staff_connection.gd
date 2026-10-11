@@ -4,18 +4,18 @@ func known(gate:Node3D,player:CharacterBody3D):
  var x:RefCounted=load("res://scripts/d04_court_service_visit.gd").new();x.actor=weakref(player);x.request_id=&"fore_staff_connection_explicit_test_visit";x.court_ids.assign([gate.persistent_id]);x.active=true;x.consent_known=true;x.consent_allowed=true;gate.visit=x
 func route(player:CharacterBody3D,goals:Array,label:String):
  for goal in goals:
-  var row:Dictionary=await walk_to(player,vec(goal));row.label=label+"_"+str(legs.size()+1);legs.append(row);record(row.label,row.reached and row.floor_contact)
+  var row:Dictionary=await walk_to(player,vec(goal));row.label=label+"_"+str(legs.size()+1);legs.append(row);record(row.label,row.reached and row.floor_contact);print("WALK ",row.label," ",JSON.stringify(row))
 func run():
  var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D04_COMMONS_TRANSITION_AND_FORE_STAFF.json"));var main=load("res://scenes/main.tscn").instantiate();root.add_child(main)
  for i in range(120):await physics_frame
  var ship:Node3D=main.get_node("World360/Astraea");var player:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var fore:Node3D=ship.get_node("D04PortForwardStaffCourtConnection");var space=ship.get_world_3d().direct_space_state
  record("production_fore_active",p.active and fore!=null);record("commons_candidate_absent_from_production",ship.find_child("D04CommonsShortTransitionsTestOnly",true,false)==null and not p.commons_candidate_active)
- player.global_position=Vector3(-57.3,12.03,-447);player.velocity=Vector3.ZERO;player.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position)
+ player.global_position=Vector3(-57.0,12.03,-447);player.velocity=Vector3.ZERO;player.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position)
  for i in range(15):await physics_frame
  for j in range(3):
   var gate:Node3D=fore.get_node("PriorCourtGate_"+str(j));gate.interact(player);record("original_private_gate_unknown_visit_closed_"+str(j),gate.access_refused and not gate.desired_open);known(gate,player);gate.interact(player)
  var south:Node3D=fore.get_node("D04PC_CourtSouth");south.interact(player);record("fourth_private_gate_unknown_visit_closed",south.access_refused and not south.desired_open);known(south,player)
- var clean:Node3D=fore.get_node("D04PC_StaffClean");await aim(player,vec(p.fore_new_gates[1].control_at));record("normal_staff_clean_target",player.interaction_target==clean);await key_e()
+ var clean:Node3D=fore.get_node("D04PC_StaffClean");await aim(player,vec(p.fore_new_gates[1].control_at));print("STAFF_TARGET ",player.interaction_target.get_path()if player.interaction_target!=null else"null"," point=",p.fore_new_gates[1].control_at);record("normal_staff_clean_target",player.interaction_target==clean);await key_e()
  for i in range(100):await physics_frame
  record("staff_clean_original_controller_open",clean.open_fraction==1)
  await route(player,[[-53,12,-447],[-34,12,-447],[-31.75,12,-446.8],[-31.75,14.25,-455.4],[-31.75,14.25,-456.3],[-28.25,14.25,-456.3],[-28.25,16.5,-447.35]],"fore_staff_to_court")
@@ -43,11 +43,11 @@ func run():
  await route(player,[[-43.8,16.5,-331.7]],"protected_original_public_street")
  # Test-only short fittings inserted after the production and protected route checks.
  var common:Node3D=load("res://scripts/d04_commons_transition_fore_staff.gd").commons_candidate(ship)
- player.global_position=Vector3(-75,16.53,-2);player.velocity=Vector3.ZERO;ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position)
+ player.global_position=Vector3(-75,16.53,-1);player.velocity=Vector3.ZERO;ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position)
  for gate:Node3D in common.get_children():
   if gate.get_script()==load("res://scripts/d04_physical_service_fitting.gd"):gate.interact(player)
  for i in range(100):await physics_frame
- await route(player,[[-75,16.5,-5],[-75,16.5,-2]],"inactive_return_short_profile_test")
+ await route(player,[[-75,16.5,-5],[-75,16.5,-1]],"inactive_return_short_profile_test")
  player.global_position=Vector3(-71.8,16.53,-2);player.velocity=Vector3.ZERO
  for i in range(15):await physics_frame
  await route(player,[[-71.8,16.5,-5],[-71.8,16.5,-2]],"inactive_stock_short_profile_test")
