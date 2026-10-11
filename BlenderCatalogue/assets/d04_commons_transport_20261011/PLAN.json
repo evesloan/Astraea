@@ -181,6 +181,18 @@
     "interfaces": [
       "Game/artifacts/d04_commons_vertical_route_probe001.json",
       "Game/artifacts/d04_commons_vertical_route_probe002.json"
+    ],
+    "sealed": [
+      "Game/artifacts/d04_commons_vertical_route_probe006.json",
+      "BlenderCatalogue/assets/d04_commons_transport_20261011/NATIVE_EXPORT_CHECK.json",
+      "BlenderCatalogue/assets/d04_commons_transport_20261011/SOURCE_VIEW_REVIEW.json",
+      "Game/tests/validate_d04_commons_loaded_vertical.gd",
+      "Game/data/architecture/D04_COMMONS_TRANSPORT_ROUTE.json",
+      "Game/artifacts/d04_commons_transport_chair_sealed_r002.json",
+      "Game/tests/validate_d04_commons_transport_chair.gd",
+      "BlenderCatalogue/assets/d04_commons_transport_20261011/SOURCE_SOUTH_ACTIVITY_REVISION_r002.png",
+      "BlenderCatalogue/assets/d04_commons_transport_20261011/D04CommonsSouthChairRouting_r002.blend",
+      "Game/assets/models/D04_COMMONS_SOUTH_CHAIR_ROUTING_r002.glb"
     ]
   },
   "interface_findings": {
@@ -190,5 +202,75 @@
     "central_spine": "All nominated straight spine/core-bypass legs pass existing cart/operator/five-support-point samples; corners and dynamic operation remain unproved.",
     "clean_used": "Both local bays distinct; commons gallery, receiving street and public spine shared. Full dedicated service segregation remains unproved and requires programme/layout resolution, not labels.",
     "forward_shaft": "No D04-D07 stop or geometry change permitted."
+  },
+  "sources": [
+    {
+      "catalogue_id": "AST-FUR-002",
+      "name": "Astraea Day Reading Chair",
+      "family": "view_day_furniture",
+      "source": "assets/furniture/AST-FUR-002_day_reading_chair.blend",
+      "export": "assets/furniture/AST-FUR-002_day_reading_chair.glb",
+      "manifest": "assets/furniture/AST-FUR-002_day_reading_chair.manifest.json",
+      "dimensions_blender_xyz_m": [
+        0.9399999976158142,
+        0.9292919337749481,
+        0.9971818923950195
+      ],
+      "evaluated_triangles": 3872,
+      "adopted_game_instances": 38,
+      "source_sha256": "d57540d49e130571e7a9c2f3882bae4ac6dd83daf763249e84c00d8e6fc8c96b",
+      "export_sha256": "4652e7887de85b982a8fc56a429663fd20752ad967d572f14404ab2b2be24863",
+      "batch": "01",
+      "interface_record_id": "AST-FUR-002"
+    }
+  ],
+  "chair_revision": {
+    "node": "D04Commons_CommonsSouthChair",
+    "original_catalogue_id": "AST-FUR-002",
+    "preimage_position": [
+      -64.6,
+      16.5,
+      -365.7
+    ],
+    "preimage_yaw": -1.5707963267948966,
+    "position": [
+      -68.1,
+      16.5,
+      -367.1
+    ],
+    "yaw": 1.5707963267948966,
+    "active": false,
+    "source_native_bytes_changed": false,
+    "scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  "reference_image_inspected": "BlenderCatalogue/assets/d04_port_forward_homes_first_20261010/SOURCE_COMMONS_SOUTH_ACTIVITY.png",
+  "candidate_static_gate": {
+    "status": "PASS_STATIC_POSE_SWEEPS",
+    "poses": 32,
+    "samples": 4693,
+    "five_point_floor_samples": 23465,
+    "source_geometry_changes": "One rigid original south-chair relocation/half-turn in candidate fixture; no native bytes changed yet",
+    "physical_lift_not_yet_proved": true
+  },
+  "failed_native_placement_revisions": [
+    {
+      "native": "D04CommonsSouthChairRouting_r001.blend",
+      "status": "FAIL",
+      "evidence": "BlenderCatalogue/assets/d04_commons_transport_20261011/chair_r001_bench_clash/result.json",
+      "reason": "Eight part overlaps with retained south bench"
+    }
+  ],
+  "active_native_revision": "r002",
+  "sealed_placement_gate": {
+    "status": "PASS",
+    "checks": 203,
+    "bounded_changed_entry_poses": 49,
+    "original_mesh_ids_preserved": 30,
+    "actual_floor_bearing_samples": 8,
+    "production_active": false
   }
 }
