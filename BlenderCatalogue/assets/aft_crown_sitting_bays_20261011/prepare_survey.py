@@ -1,0 +1,15 @@
+from pathlib import Path
+import json,hashlib,subprocess
+W=Path(__file__).resolve().parent;R=W.parents[2];sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest();base='8c7a827351038ba40e2f29e6d3c0451d31ea1350';assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()==base
+c=json.load(open(R/'CHECKPOINT.json'));protected={};counts={};checked=0
+for k,d in c['projects'].items():
+ for f,h in d['files'].items():
+  p=R/d['prefix']/f;assert sha(p)==h,f;checked+=1
+  if f.endswith(('.blend','.glb')):protected[str(p.relative_to(R))]=h
+ counts[k]=len(d['files'])
+inputs=[]
+for district,native,root,model in [('port_aft','d04_port_aft_neighborhood_20261011/D04PortAftCO_r001.blend','D04PortAftHabitatNeighborhood','D04_PORT_AFT_CO_r001.glb'),('starboard_central','d04_starboard_central_neighborhood_20261011/D04StarboardCentralCO_r001.blend','D04StarboardCentralHabitatNeighborhood','D04_STARBOARD_CENTRAL_CO_r001.glb'),('starboard_forward','d04_starboard_full_commons_20261011/D04StarboardFullCommons_r002.blend','D04StarboardFullCommons','D04_STARBOARD_FULL_COMMONS_r002.glb'),('port_forward','d04_port_forward_commons_service_20261010/D04CommonsServiceActivity.blend','D04PortForwardCommonsServiceActivity','D04_PORT_FORWARD_COMMONS_SERVICE_r001.glb')]:
+ inputs.append({'district':district,'native':'BlenderCatalogue/assets/'+native,'root':root,'model':model})
+pins={str(f.relative_to(R)):sha(f)for f in [R/'Game/scripts/ship.gd',R/'BlenderCatalogue/catalogue_manifest.json',R/'Game/data/whole_ship_layout.json',R/'Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json',R/'Game/docs/master_source/MASTER_CURRENT_APPLICATION.json',R/'BlenderCatalogue/references/crew_rest/shared_staff_room.png']+[R/q['native']for q in inputs]+[R/'Game/assets/models'/q['model']for q in inputs]+[R/'Game/data/architecture'/q for q in ['D04_PORT_AFT_NEIGHBORHOOD.json','D04_STARBOARD_CENTRAL_NEIGHBORHOOD.json','D04_STARBOARD_FULL_COMMONS.json','D04_PORT_FORWARD_COMMONS_SERVICE.json']]}
+P={'schema':'astraea_coordinated_commons_enclosure_v1','active':False,'base_commit':base,'source_pins':pins,'source_protected_native_exports':protected,'survey_inputs':inputs,'closure_sites':[],'fit_sites':[],'parts':[],'phase_evidence':{'authored':[],'connected':[]},'new_floor_m2':0,'new_units':0,'new_rest_places':0,'master_chapters_reviewed':[5,6,7,21,32],'limits':['All eight ship groups unfinished','Existing purposeful openings,routes,source assets and protected programmes retained','Contact geometry is not engineering or final visual acceptance','No new permissions,stock operations,loaded-cart,historical native substitutes or concourse authoring']}
+(W/'PLAN.json').write_text(json.dumps(P,indent=2)+'\n');(W/'PROTECTED_NATIVE_EXPORT_PREIMAGES.json').write_text(json.dumps(protected,indent=2)+'\n');(W/'BASELINE_VERIFICATION.json').write_text(json.dumps({'status':'PASS','base_commit':base,'managed_files':checked,'counts':counts,'protected_native_exports':len(protected)},indent=2)+'\n');print('PASS',checked,'managed files',len(protected),'native/exports')

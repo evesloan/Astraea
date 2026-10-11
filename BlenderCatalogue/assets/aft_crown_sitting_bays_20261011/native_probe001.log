@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_coordinated_commons_enclosure_20261011/probe_native001.py", line 8, in <module>
+    vs=[o.matrix_world*v.co for v in o.data.vertices];vertices=[[v.x,v.z,-v.y]for v in vs];objects.append({'name':o.name,'bounds':[[min(v[k]for v in vertices)for k in range(3)],[max(v[k]for v in vertices)for k in range(3)]],'world_vertices':vertices,'role':o.get('role',''),'category':o.get('category','')})
+        ~~~~~~~~~~~~~~^~~~~
+TypeError: Element-wise multiplication: not supported between 'Matrix' and 'Vector' types
+
+Error: script failed, file: '/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_coordinated_commons_enclosure_20261011/probe_native001.py', exiting.
+Blender 4.3.2
+Read blend: "/workspace/astraea-recovered-532087b9-20261010T083844Z/BlenderCatalogue/assets/d04_port_aft_neighborhood_20261011/D04PortAftCO_r001.blend"
+
+Blender quit
