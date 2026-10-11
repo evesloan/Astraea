@@ -2,50 +2,50 @@ extends SceneTree
 var checks:Dictionary={}
 var errors:Array=[]
 func record(key:String,ok:bool)->void:
-	checks[key]=ok
-	if not ok:errors.append(key)
+ checks[key]=ok
+ if not ok:errors.append(key)
 func vec(a:Array)->Vector3:return Vector3(a[0],a[1],a[2])
 func ray(space:PhysicsDirectSpaceState3D,a:Vector3,b:Vector3)->Dictionary:
-	return space.intersect_ray(PhysicsRayQueryParameters3D.create(a,b))
+ return space.intersect_ray(PhysicsRayQueryParameters3D.create(a,b))
 func capsule_clear(space:PhysicsDirectSpaceState3D,at:Vector3)->bool:
-	var q:=PhysicsShapeQueryParameters3D.new();var shape:=CapsuleShape3D.new();shape.radius=.3;shape.height=1.8;shape.margin=.001
-	q.shape=shape;q.transform=Transform3D(Basis.IDENTITY,at+Vector3.UP*.925)
-	if not space.intersect_shape(q,32).is_empty():return false
-	# Opposite cross-rays also catch a stance placed wholly inside an opaque
-	# closed mesh; concave surface queries alone can miss that case.
-	for delta in [Vector3(.3,0,0),Vector3(0,0,.3)]:
-		if not ray(space,at+Vector3.UP-delta,at+Vector3.UP+delta).is_empty():return false
-	return true
+ var q:=PhysicsShapeQueryParameters3D.new();var shape:=CapsuleShape3D.new();shape.radius=.3;shape.height=1.8;shape.margin=.001
+ q.shape=shape;q.transform=Transform3D(Basis.IDENTITY,at+Vector3.UP*.925)
+ if not space.intersect_shape(q,32).is_empty():return false
+ # Opposite cross-rays also catch a stance placed wholly inside an opaque
+ # closed mesh; concave surface queries alone can miss that case.
+ for delta in [Vector3(.3,0,0),Vector3(0,0,.3)]:
+  if not ray(space,at+Vector3.UP-delta,at+Vector3.UP+delta).is_empty():return false
+ return true
 func cart_clear(space:PhysicsDirectSpaceState3D,at:Vector3,yaw:float)->bool:
-	var d:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/cleaning_cart_contacts.json"))
-	var pose:=Transform3D(Basis(Vector3.UP,yaw),at+Vector3.UP*.005)
-	for item in d.boxes:
-		var shape:=BoxShape3D.new();shape.size=vec(item.size);shape.margin=.001
-		var q:=PhysicsShapeQueryParameters3D.new();q.shape=shape;q.transform=pose*Transform3D(Basis.IDENTITY,vec(item.center))
-		if not space.intersect_shape(q,32).is_empty():return false
-	for item in d.wheel_contacts:
-		var shape:=SphereShape3D.new();shape.radius=float(item.radius);shape.margin=.001
-		var q:=PhysicsShapeQueryParameters3D.new();q.shape=shape;q.transform=pose*Transform3D(Basis.IDENTITY,vec(item.center))
-		if not space.intersect_shape(q,32).is_empty():return false
-	return true
+ var d:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/cleaning_cart_contacts.json"))
+ var pose:=Transform3D(Basis(Vector3.UP,yaw),at+Vector3.UP*.005)
+ for item in d.boxes:
+  var shape:=BoxShape3D.new();shape.size=vec(item.size);shape.margin=.001
+  var q:=PhysicsShapeQueryParameters3D.new();q.shape=shape;q.transform=pose*Transform3D(Basis.IDENTITY,vec(item.center))
+  if not space.intersect_shape(q,32).is_empty():return false
+ for item in d.wheel_contacts:
+  var shape:=SphereShape3D.new();shape.radius=float(item.radius);shape.margin=.001
+  var q:=PhysicsShapeQueryParameters3D.new();q.shape=shape;q.transform=pose*Transform3D(Basis.IDENTITY,vec(item.center))
+  if not space.intersect_shape(q,32).is_empty():return false
+ return true
 func physical_key(down:bool)->void:
-	var e:=InputEventKey.new();e.keycode=KEY_W;e.physical_keycode=KEY_W;e.pressed=down;Input.parse_input_event(e)
+ var e:=InputEventKey.new();e.keycode=KEY_W;e.physical_keycode=KEY_W;e.pressed=down;Input.parse_input_event(e)
 func walk_to(player:CharacterBody3D,goal:Vector3)->Dictionary:
-	var start:=player.global_position;var delta:=goal-start;delta.y=0
-	player.rotation.y=atan2(-delta.x,-delta.z);physical_key(true)
-	var budget:=int(delta.length()/3.1*60)+150;var frames:=0;var reached:=false;var route_contacts:Dictionary={}
-	for i in range(budget):
-		await physics_frame;frames+=1
-		for j in range(player.get_slide_collision_count()):route_contacts[str(player.get_slide_collision(j).get_collider().get_path())]=true
-		var now:=goal-player.global_position;now.y=0
-		if now.dot(delta.normalized())<.16:reached=true;break
-	physical_key(false)
-	for i in range(20):await physics_frame
-	var contacts:Array=[]
-	for i in range(player.get_slide_collision_count()):contacts.append(str(player.get_slide_collision(i).get_collider().get_path()))
-	if not reached:print("WALK_BLOCKED_CONTACTS ",contacts," ALL ",route_contacts.keys())
-	var at:=player.global_position;var horizontal:=Vector2(at.x-goal.x,at.z-goal.z).length()
-	return {"reached":reached and horizontal<.55 and absf(at.y-goal.y)<.12,"frames":frames,"start":str(start),"goal":str(goal),"final":str(at),"floor_contact":player.is_on_floor(),"existing_player_controller":true}
+ var start:=player.global_position;var delta:=goal-start;delta.y=0
+ player.rotation.y=atan2(-delta.x,-delta.z);physical_key(true)
+ var budget:=int(delta.length()/3.1*60)+150;var frames:=0;var reached:=false;var route_contacts:Dictionary={}
+ for i in range(budget):
+  await physics_frame;frames+=1
+  for j in range(player.get_slide_collision_count()):route_contacts[str(player.get_slide_collision(j).get_collider().get_path())]=true
+  var now:=goal-player.global_position;now.y=0
+  if now.dot(delta.normalized())<.16:reached=true;break
+ physical_key(false)
+ for i in range(20):await physics_frame
+ var contacts:Array=[]
+ for i in range(player.get_slide_collision_count()):contacts.append(str(player.get_slide_collision(i).get_collider().get_path()))
+ if not reached:print("WALK_BLOCKED_CONTACTS ",contacts," ALL ",route_contacts.keys())
+ var at:=player.global_position;var horizontal:=Vector2(at.x-goal.x,at.z-goal.z).length()
+ return {"reached":reached and horizontal<.55 and absf(at.y-goal.y)<.12,"frames":frames,"start":str(start),"goal":str(goal),"final":str(at),"floor_contact":player.is_on_floor(),"existing_player_controller":true}
 func _initialize()->void:call_deferred("run")
 func run()->void:
  var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D04_SOCIAL_DAYROOM.json"))
@@ -61,7 +61,7 @@ func run()->void:
  var owner:Node3D=ship.find_child("D04SocialDayroom",true,false)
  record("capacity_preserved",p.units.size()==20 and p.new_rest_places==0)
  for part in p.parts:
-  var mesh:MeshInstance3D=owner.find_child(str(part.name),true,false);record("owned_mesh_"+str(part.name),mesh!=null)
+  var mesh:MeshInstance3D=owner.find_child(str(part.name).replace(".","_"),true,false);record("owned_mesh_"+str(part.name),mesh!=null)
   if mesh!=null:
    var lo:=Vector3(INF,INF,INF);var hi:=-lo
    for v in part.verts:lo=lo.min(vec(v));hi=hi.max(vec(v))

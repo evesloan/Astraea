@@ -19,6 +19,6 @@ Source reservation: programme ledger `D04_directory_01`, X[-97,-63], Z[-384,-356
 
 Floor union inside reservation: **280.86 m² before;421.28 m² after;140.42 m² new**, with no duplicate floor. The **530.72 m² remainder** is not claimed built, reconciled or necessarily fillable. It includes18.9 m² of retained staff-stair void; hull setbacks/negative volume and remaining function allocations require explicit reconciliation. The original source does not prescribe a local production kitchen or extra beds; none were invented.
 
-The dayroom reuses the retained garden's1.95 m privacy screen and upper glazing. This supports standing upper views, **not seated garden outlook**; planters on the far side are retained originals. No hull window claim. No new homes, rest places, species parameters or admissions.
+The dayroom reuses the retained garden's1.95 m privacy screen and upper glazing. Normal1.8 m worker eye height and the low foliage are below the screen top, so **usable planted outlook is not accepted**; planters on the far side are retained originals. No hull window claim. No new homes, rest places, species parameters or admissions.
 
 Next useful closures: join clean/closed-used commons destinations to real staff service approaches; reconcile the remaining reservation by function/negative volume; then close loaded cart docking/vertical movement and service task persistence. Do not extend inactive static reach proof as a substitute. Other neighborhoods and all-eight-group whole-ship acceptance remain unfinished.
