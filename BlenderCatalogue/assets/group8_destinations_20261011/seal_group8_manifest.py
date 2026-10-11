@@ -5,7 +5,7 @@ W=Path(__file__).resolve().parent;R=W.parents[2]
 baseline='affc5c807087ff87da29f3642c2d6e418241b896'
 manifest_path=W/'GROUP8_MANIFEST.json'
 relative_manifest=manifest_path.relative_to(R).as_posix()
-prefixes=('BlenderCatalogue/assets/group8_destinations_20261011/','Game/data/architecture/group8/','Game/scripts/group8/','Game/tests/group8/','Game/docs/group8/','Game/assets/models/G8_CROWN_INTERIORS_r006')
+prefixes=('BlenderCatalogue/assets/group8_destinations_20261011/','BlenderCatalogue/assets/group8_orchard_service_20261011/','Game/data/architecture/group8/','Game/scripts/group8/','Game/tests/group8/','Game/docs/group8/','Game/assets/models/G8_CROWN_INTERIORS_r006','Game/assets/models/G8_ORCHARD_SERVICE_r004')
 def git(*args):return subprocess.check_output(['git','-C',str(R),*args]).decode()
 changes=git('diff','--name-status',baseline).splitlines()
 owned=set()
