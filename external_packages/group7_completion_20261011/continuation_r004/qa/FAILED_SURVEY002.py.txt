@@ -1,0 +1,33 @@
+"""Read actual retained native boundary meshes; never resave an input."""
+import bpy,json,hashlib
+from pathlib import Path
+import numpy as np
+
+P=Path(__file__).resolve().parents[1];C=P.parent;R=C.parents[1]
+OLD=C.parent/'group7_hull_atrium_20261009/continuation_r002'
+inputs=[C/'source/natives/G7_Completion_r003.blend',OLD/'source/natives/G7C2_Fore_Terminal_r002.blend',OLD/'source/natives/G7C2_Aft_Terminal_r002.blend']
+rows=[];pins={}
+for file in inputs:
+    before=hashlib.sha256(file.read_bytes()).hexdigest();pins[file.relative_to(R).as_posix()]=before
+    bpy.ops.wm.open_mainfile(filepath=str(file))
+    for ob in bpy.context.scene.objects:
+        if ob.type!='MESH':continue
+        category=ob.get('contact_category','')
+        if not category.startswith('solid_'):continue
+        pts=[ob.matrix_world@q.co for q in ob.data.vertices]
+        a=np.array([(q.x,q.z,-q.y)for q in pts]);lo=a.min(axis=0);hi=a.max(axis=0)
+        if not any(lo[2]<=z+.85 and hi[2]>=z-.85 for z in [-510,510]):continue
+        if hi[1]<60.8 or lo[1]>110.8:continue
+        term='Fore'if (lo[2]+hi[2])<0 else'Aft'
+        end=65 if term=='Fore' else 49;start=70.92 if term=='Fore' else 54.175
+        width=start+(end-start)*(min(106.5,max(69.5,hi[1]))-69.5)/37
+        is_corner=max(abs(lo[0]),abs(hi[0]))>=width-1.5
+        is_foot=lo[1]<69.8 and hi[1]>69.35
+        is_head=lo[1]<106.8 and hi[1]>106.2
+        is_neck=lo[0]<7.25 and hi[0]>-7.25 and hi[1]>106.2
+        if not (is_corner or is_foot or is_head or is_neck):continue
+        rows.append({'native':file.relative_to(R).as_posix(),'name':ob.name,'terminal':term,'category':category,'vertices_world_xyz':a.tolist(),'faces':[list(f.vertices)for f in ob.data.polygons],'minimum':lo.tolist(),'maximum':hi.tolist()})
+    assert hashlib.sha256(file.read_bytes()).hexdigest()==before
+report={'status':'ACTUAL_NATIVE_BOUNDARY_RECEIVERS_READ_ONLY','source_pins':pins,'receiver_parts':rows,'retained_native_resaves':0,'pressure_or_capacity_accepted':False}
+(P/'qa/ACTUAL_RECEIVERS.json').write_text(json.dumps(report,separators=(',',':'))+'\n')
+print('G7_R004_ACTUAL_NATIVE_RECEIVERS',len(rows),'pins',pins)

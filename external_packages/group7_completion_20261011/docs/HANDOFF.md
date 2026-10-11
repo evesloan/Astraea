@@ -2,6 +2,8 @@
 
 This opt-in package continues hull/atrium/support from retained main `affc5c807087ff87da29f3642c2d6e418241b896` and Group 7 handoff `7f9f4777a4ae93884282155ea9d05b6ff125bd57`. The original saved checkout is untouched. Neither main nor checkpoint references are publication targets. No shared root, registry, existing source, room ID, capacity, protected route or luxury roof is changed. Existing aft crown sitting bays and their lights remain present.
 
+The finite terminal/body continuation is in [continuation_r004/docs/HANDOFF.md](../continuation_r004/docs/HANDOFF.md). It adds four models and64 parts to this opt-in package (78 selected models total), preserving all74 previous definitions, doors and lights. The sections below document the retained R003 construction and its original test scope; the continuation carries its own source/contact/runtime checks and open acceptance.
+
 ## Implemented
 
 - An editable compressed Blender r003 native and 40 spatial/material export cells, with 25,730 authored parts and 294,536 exported triangles. Rigid original plant/bench families provide 33 source bindings; they are not deformed to fit sockets.

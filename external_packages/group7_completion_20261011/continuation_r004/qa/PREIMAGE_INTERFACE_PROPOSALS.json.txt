@@ -1,0 +1,87 @@
+{
+  "schema": "astraea.group7.interface-proposals.v1",
+  "baseline": "affc5c807087ff87da29f3642c2d6e418241b896",
+  "integration_owner": "01a11d7f-8ef6-70bc-858d-bdf8deb7000b",
+  "shared_root_edited": false,
+  "protected_luxury_roofs_edited": false,
+  "interfaces": [
+    {
+      "id": "G7_D18_FORE_NECK",
+      "owner": "Group7 + shared integration",
+      "status": "SOURCE_BUILT_SCOPED_RUNTIME_TESTED_ADOPTION_OPEN",
+      "body_seam_z": -510,
+      "neck_x_bounds": [
+        -6.8,
+        6.8
+      ],
+      "end_z": -531.5,
+      "existing_floor_y": 106.5,
+      "new_roof_underside_y": 110.5,
+      "lowest_test_threshold_y": 110.1,
+      "protected_route_x": [
+        -4,
+        4
+      ],
+      "proposal": "Retain immutable r002 terminal walls to Y106.5 and add this new neck above them. Reconcile exact end/headwall and main-body receiver faces at Z-510; do not lower the D18 route or cut pavilion roofs."
+    },
+    {
+      "id": "G7_D18_AFT_NECK",
+      "owner": "Group7 + shared integration",
+      "status": "SOURCE_BUILT_SCOPED_RUNTIME_TESTED_ADOPTION_OPEN",
+      "body_seam_z": 510,
+      "neck_x_bounds": [
+        -6.8,
+        6.8
+      ],
+      "end_z": 531.5,
+      "existing_floor_y": 106.5,
+      "new_roof_underside_y": 110.5,
+      "lowest_test_threshold_y": 110.1,
+      "protected_route_x": [
+        -4,
+        4
+      ],
+      "proposal": "Same additive neck contract as fore. Preserve aft crown sitting bays and their architectural lights. Main-body receiver join remains open."
+    },
+    {
+      "id": "G7_BODY_OCCUPIED_SHOULDERS",
+      "owner": "Group7 + Group1/Group2 + shared integration",
+      "status": "HELD_TRUE_FACE_RECEIVERS",
+      "width_hold_count": 294,
+      "theatre_facade_exclusion_count": 155,
+      "source_triangle_exclusion_count": 2134,
+      "evidence": [
+        "docs/PLAN.json",
+        "qa/OMITTED_SOURCE_FIELDS.json",
+        "qa/RETAINED_RUNTIME_CENSUS.json"
+      ],
+      "proposal": "Keep existing room, house and theatre geometry. For each held receiver, establish its true face and support/roof ownership before adding local source collars or changing this shell field. Conservative AABBs are not a proved clash; do not treat the omitted fields as enclosed."
+    },
+    {
+      "id": "G7_ROOF_HEAD_BAND",
+      "owner": "Group7 + Group1/Group2 + shared integration",
+      "status": "NARROW_SOURCE_BUILT_INTERIOR_JOINS_OPEN",
+      "selected_area_m2": 3208.559592030025,
+      "proposal": "Adopt only the 2m exterior head band and raised terminal caps. Retain exact existing crown/pavilion roof and route voids. Interior open roof transitions require owner-reviewed local source joints and support; the rejected global cap is excluded."
+    },
+    {
+      "id": "G7_COURT_RECEIVERS",
+      "owner": "Group7 + retained destination owners",
+      "status": "11_FIRST_PASS_POCKETS_BUILT_ONE_HELD",
+      "evidence": [
+        "docs/PLAN.json",
+        "qa/RUNTIME_CHECK.json"
+      ],
+      "proposal": "Retain existing floor triangles and all prior garden/guard routes. Court bypasses pass worker capsule probes. Resolve the D06 west/front receiver through the existing garden owner; do not overlap it. Further district botanical/court forms and actual complete load paths remain work."
+    },
+    {
+      "id": "G7_MAINTENANCE_NETWORK",
+      "owner": "Groups3/4 + shared integration",
+      "status": "FOUR_DOORS_OPERATE_COMPLETE_LINKS_OPEN",
+      "proposal": "Reuse unchanged AST-STF-008 and service_door.gd with stable G7C2 IDs. Door opening/closing and terminal walking pass; complete room/service network connectivity, admissions and largest-species/cart routes remain separate acceptance."
+    }
+  ],
+  "registration_contract": "Opt-in group7_completion.gd only. No programme/capacity delta, shared registry edit or duplicate compiler slab. Existing 15 gallery fittings/lights are excluded from module.",
+  "nominal_terminal_width_test": "qa/TERMINAL_NOMINAL_INTERFACE_CHECK.json",
+  "nominal_widths_match_does_not_accept_seam_sealing": true
+}
