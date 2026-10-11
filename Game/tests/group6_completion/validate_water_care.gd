@@ -1,0 +1,70 @@
+extends "res://tests/group6_completion/validate_followup_main.gd"
+var care_motion:Dictionary={}
+func care_walk(actor:CharacterBody3D,goal:Vector3,label:String)->void:
+	var w:Dictionary=await walk_to(actor,goal);legs.append(w);record(label,w.reached and w.floor_contact)
+func obstruction(host:Node3D)->RigidBody3D:
+	var body:=RigidBody3D.new();body.freeze=true;var contact:=CollisionShape3D.new();var shape:=BoxShape3D.new();shape.size=Vector3(.4,.8,.4);contact.shape=shape;body.add_child(contact);host.add_child(body);body.global_position=Vector3(95.3,45.85,210.6);return body
+func care_checks(host:Node3D,addition:Node3D,actor:CharacterBody3D)->void:
+	var gate:Node3D=addition.get_node("aquatic_water_care_gate_001")
+	var witness:=MotionWitness.new();witness.process_physics_priority=1000;root.add_child(witness);witness.reset(actor)
+	record("gate_starts_closed",gate.open_fraction<.001 and not gate.desired_open)
+	await aim(actor,Vector3(94.76,46.65,210.6));record("outside_original_RMB_target",actor.interaction_target==gate)
+	var blocker:=obstruction(host)
+	for i in range(3):await physics_frame
+	await key_e();record("opening_obstruction_rejected",gate.open_fraction<.001 and not gate.desired_open and gate.obstructed)
+	blocker.queue_free()
+	for i in range(3):await physics_frame
+	await key_e()
+	for i in range(90):await physics_frame
+	record("outside_E_opens",gate.open_fraction>.999)
+	await care_walk(actor,Vector3(96.8,45.45,210.6),"original_player_gate_entry")
+	await aim(actor,Vector3(95.35,46.65,209.43));record("inside_original_RMB_target",actor.interaction_target==gate)
+	blocker=obstruction(host)
+	for i in range(3):await physics_frame
+	await key_e();record("closing_obstruction_rejected",gate.open_fraction>.999 and gate.desired_open and gate.obstructed)
+	blocker.queue_free()
+	for i in range(3):await physics_frame
+	await key_e()
+	for i in range(90):await physics_frame
+	record("inside_E_closes",gate.open_fraction<.001)
+	for i in range(2):
+		var z:float=209.4 if i==0 else 211.7
+		await care_walk(actor,Vector3(96.8,45.45,z),"isolator_approach_"+str(i))
+		var valve:Node3D=addition.get_node("aquatic_water_care_isolator_"+str(i)+"_001")
+		await aim(actor,Vector3(97.592,46.84,z))
+		record("isolator_RMB_target_"+str(i),actor.interaction_target==valve)
+		var before:Transform3D=valve.source_mesh.global_transform
+		await key_e()
+		for frame in range(60):await physics_frame
+		record("isolator_E_turns_"+str(i),valve.open_fraction>.999 and absf(valve.body.rotation.x-PI/2)<.001)
+		record("isolator_source_moves_"+str(i),not valve.source_mesh.global_transform.is_equal_approx(before))
+		record("isolator_no_fluid_claim_"+str(i),not valve.get_meta("water_operation_implemented"))
+		await key_e()
+		for frame in range(60):await physics_frame
+		record("isolator_E_returns_"+str(i),valve.open_fraction<.001 and valve.source_mesh.global_transform.is_equal_approx(before))
+	await care_walk(actor,Vector3(96.8,45.45,210.6),"return_to_cell_aisle")
+	await care_walk(actor,Vector3(99.2,45.45,210.6),"internal_onward_portal_approach")
+	await care_walk(actor,Vector3(96.8,45.45,210.6),"internal_portal_return")
+	await aim(actor,Vector3(94.85,46.65,210.6));record("inside_closed_gate_target",actor.interaction_target==gate);await key_e()
+	for i in range(90):await physics_frame
+	record("inside_E_opens_for_egress",gate.open_fraction>.999)
+	await care_walk(actor,Vector3(93.7,45.45,210.6),"original_player_gate_egress")
+	await aim(actor,Vector3(95.35,46.65,209.43));record("outside_open_gate_target",actor.interaction_target==gate);await key_e()
+	for i in range(90):await physics_frame
+	record("gate_ends_closed",gate.open_fraction<.001)
+	for pair in [[Vector3(93.7,45.45,213.5),"south_bypass"],[Vector3(97,45.45,213.5),"stock_lane"],[Vector3(97,45.45,214.5),"original_stock_approach"],[Vector3(97,45.45,213.5),"stock_return"],[Vector3(93.7,45.45,213.5),"south_bypass_return"],[Vector3(93.7,45.45,207.6),"north_bypass"],[Vector3(96.1,45.45,207.6),"refreshment_lane"],[Vector3(96.1,45.45,205.5),"original_refreshment_approach"],[Vector3(96.1,45.45,207.6),"refreshment_return"],[Vector3(93.7,45.45,207.6),"north_bypass_return"],[Vector3(93.7,45.45,210.6),"fixture_round_trip"]]:await care_walk(actor,pair[0],pair[1])
+	witness.active=false;record("continuous_original_motion",witness.maximum_step<.12 and witness.minimum_y>45.3 and witness.samples>300)
+	care_motion={"physics_samples":witness.samples,"maximum_frame_motion_m":witness.maximum_step,"minimum_y":witness.minimum_y}
+	witness.queue_free();physical_key(false)
+func run()->void:
+	var host:=LocalHost.new();root.add_child(host)
+	var annex:Node3D=load("res://scripts/aquatic_annex_receiving.gd").build(host,host)
+	var addition:Node3D=load("res://scripts/group6_completion/completion.gd").build(annex,host)
+	var actor:CharacterBody3D=load("res://scripts/player.gd").new();actor.spawn_position=Vector3(93.7,45.48,210.6);host.add_child(actor);actor.global_position=actor.spawn_position;actor.set_controls_enabled(true)
+	for i in range(20):await physics_frame
+	record("candidate_build_succeeded",addition!=null)
+	if addition!=null:await care_checks(host,addition,actor)
+	record("all_traversal_cases_exercised",legs.size()==18)
+	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"motion":care_motion,"supported_fixture_starts":1,"traversal_position_or_velocity_writes":0,"scope":"Local original-annex floor/export context; registered service-door motion and original player/RMB/E. Gate, mechanical wheels and unchanged stock/refreshment access only. Pump/filter/flow/pressure/temperature, permissions, save, outside X100 route, cascade, species/chair and final art remain unaccepted."}
+	FileAccess.open("res://docs/group6_completion/WATER_CARE005.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	print("GROUP6 WATER CARE ",result.status," ",errors," LEGS ",legs.size());quit(0 if errors.is_empty() else 1)

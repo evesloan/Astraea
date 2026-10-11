@@ -6,8 +6,8 @@ the shared integration owner, construction thread `01a11d7f-8ef6-70bc-858d-bdf8d
 It does not modify `ship.gd`, floor registries, programme/capacity ledgers,
 catalogue registries, master sources, main, or checkpoint references.
 
-The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r013.blend`.
-Its runtime export is `Game/assets/models/AquaticCompletion_r013.glb`.
+The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r015.blend`.
+Its runtime export is `Game/assets/models/AquaticCompletion_r015.glb`.
 The adapter consumes `Game/data/architecture/group6_completion/FIT_CONTRACT.json`
 and `COLLISION_POLICY.json`. The source audit preserves all 1,640 original mesh
 definitions/transforms/UVs/material assignments/modifiers and 16 packed image
@@ -32,7 +32,7 @@ resources. The immutable original native and original runtime GLB remain unchang
    fourteen light sources, public seam, parent aquatic rooms, lift, stairs,
    Grand Pool, Vesper cascade and all shared builders. It asserts single application
    and an exact export hash. It supplies four moving half-leaves, two privacy
-   door identities and fifteen new mounted sources. The existing `service_door.gd`
+   door identities and seventeen new mounted sources. The existing `service_door.gd`
    state machine and player RMB/E interface own motion and input.
 5. Refresh imports with the pinned Godot 4.6.3 and run the candidate test. That test
    adds the adapter to the actual main scene and registers its new lights late only
@@ -110,7 +110,7 @@ do not restore this branch's old `ship.gd`.
 
 Adopt the next commit as a scoped fast-forward/cherry-pick into the integration
 owner's branch. Original r010 source and runtime files are retained; select only
-`AquaticCompletion_r013.glb` through the same adapter/contract paths. Restart the
+`AquaticCompletion_r015.glb` through the same adapter/contract paths. Restart the
 scene after changing the selected source; do not call the adapter twice on an
 already constructed `Group6Completion` root. The original privacy persistent IDs,
 annex programme identity, compiler floor owners, public/service boundaries and
@@ -139,3 +139,30 @@ registry/root modification occurs in this handoff.
 The existing route helper sets facing yaw per leg. Movement uses the original
 player and KEY_W; no positional relocation or velocity assignment occurs during
 traversal. The raw followup receipt's transform wording refers to translation.
+
+## r015 internal care-bay continuation
+
+Select r015 through the unchanged adapter call. The registered AST-STF-008 gate
+asset is reused by hash and original service-door motion. The native contains an
+exact source-only reference; it is excluded from the main export to prevent a
+second static gate. The new gate adds a scoped label and fail-closed saturated
+obstruction query. Two separately exported handwheel meshes use group-local
+bounded object motion and the original player RMB/E interface. No player, shared
+controller, collision mask, registry or water-state service is modified.
+
+`WATER_CARE_MAIN001.json` passes 59 checks/18 legs with one declared supported
+fixture start. It covers gate entry/exit, opening/closing obstruction rejection,
+inside/outside controls, both mechanical isolators, the internal X99.2 approach,
+and unchanged stock/refreshment stances. The X100 onward route remains untouched.
+The initial zero-case raw PASS is HOLD because the engine assertion overrides it;
+its interpretation/log/receipt and subsequent targeting failures remain archived.
+Use `WATER_SERVICE_INTERFACE.json` for Group1/3/4/8 coordination. Supply and return
+flanges end inside the original portal; pumping/filter/pressure/temperature and
+cascade hydraulics are not implemented or accepted. Do not advertise their
+mechanical handwheel state as a fluid simulation.
+
+Library image identity is unchanged at version4, source r015/WIDE015. Caption:
+“Astraea Group 6 r015 — actual saved-source annex overview with internal water-care
+bay, service gate and mechanical isolators; neutral studio cutaway, fluid gameplay
+unaccepted.” Version3 remains the older r013/WIDE010 view. The gallery/roof/near-wall
+cutaway detail is staged only for source review, never saved back into the native.

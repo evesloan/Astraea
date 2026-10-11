@@ -4,10 +4,10 @@ static func build(annex:Node3D,ship:Node3D)->Node3D:
 	assert(annex.name=="AquaticRiverSlideAnnex_WIP")
 	assert(annex.get_node_or_null("Group6Completion")==null,"Group 6 adapter must be applied exactly once")
 	var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
-	assert(FileAccess.get_sha256("res://assets/models/AquaticCompletion_r013.glb")==str(p.export_sha256))
+	assert(FileAccess.get_sha256("res://assets/models/AquaticCompletion_r015.glb")==str(p.export_sha256))
 	var previous:Node3D=annex.get_node("ExactAquaticArchitecture")
 	previous.free() # Runtime replacement only; original source/export stays immutable.
-	var visual:Node3D=load("res://assets/models/AquaticCompletion_r013.glb").instantiate()
+	var visual:Node3D=load("res://assets/models/AquaticCompletion_r015.glb").instantiate()
 	visual.name="ExactAquaticArchitecture";annex.add_child(visual)
 	var root:=Node3D.new();root.name="Group6Completion";annex.add_child(root)
 	root.set_meta("persistent_id","group6_aquatic_construction_successor_001")
@@ -16,7 +16,7 @@ static func build(annex:Node3D,ship:Node3D)->Node3D:
 	for mesh:MeshInstance3D in visual.find_children("*","MeshInstance3D",true,false):
 		assert(policy.has(str(mesh.name)),"Unreviewed Group 6 contact "+str(mesh.name))
 		var role:String=policy[str(mesh.name)];mesh.set_meta("aquatic_contact_role",role)
-		if role not in ["water_visual","tube_static_visual","plant_static","fixture_lens","finish_visual","privacy_leaf","privacy_door_proposal"]:load("res://scripts/static_contact_cache.gd").attach(mesh)
+		if role not in ["water_visual","tube_static_visual","plant_static","fixture_lens","finish_visual","privacy_leaf","privacy_door_proposal","valve_wheel"]:load("res://scripts/static_contact_cache.gd").attach(mesh)
 		if role=="fixture_lens":mesh.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	for fitting in p.doors:
 		var door:Node3D=load("res://scripts/group6_completion/privacy_leaf.gd").new()
@@ -26,6 +26,17 @@ static func build(annex:Node3D,ship:Node3D)->Node3D:
 		for name in fitting.control_names:
 			var control:Node=visual.find_child(str(name),true,false);assert(control!=null);door.fixed_controls.append(control)
 		door.open_fraction=0;door.desired_open=false;root.add_child(door)
+	if p.has("water_care_cell"):
+		var spec:Dictionary=p.water_care_cell.gate
+		assert(FileAccess.get_sha256("res://assets/models/"+str(spec.source_asset))==str(spec.source_sha256))
+		var gate:Node3D=load("res://scripts/group6_completion/wet_service_gate.gd").new()
+		gate.name=str(spec.id);gate.persistent_id=StringName(spec.id);gate.position=Vector3(spec.xyz[0],spec.xyz[1],spec.xyz[2]);gate.rotation.y=float(spec.yaw_radians)
+		gate.open_fraction=0;gate.desired_open=false;root.add_child(gate)
+		for fitting in p.water_care_cell.valves:
+			var control:Node3D=load("res://scripts/group6_completion/valve_control.gd").new()
+			control.name=str(fitting.id);control.fitting=fitting
+			control.source_mesh=visual.find_child(str(fitting.mesh),true,false);assert(control.source_mesh!=null)
+			root.add_child(control)
 	for fitting in p.additional_lights:
 		var light:=OmniLight3D.new();light.name=str(fitting.id)+"_PhysicalSource";root.add_child(light)
 		light.position=Vector3(fitting.xyz[0],fitting.xyz[1],fitting.xyz[2]);light.light_energy=float(fitting.energy)

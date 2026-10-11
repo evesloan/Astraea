@@ -4,11 +4,11 @@ excluded from exchange in favour of precisely bounded exit jambs.
 """
 import bpy, bmesh, math, json, hashlib, importlib.util
 from pathlib import Path
-from mathutils import Vector
+from mathutils import Vector,Matrix
 
 P=Path(__file__).resolve().parent; R=P.parents[2]
 ORIGINAL=R/'external_packages/aquatic_district_20261009/source/aquatic_district.blend'
-assert not (P/'AquaticCompletion_r013.blend').exists(), 'Choose a new unique revision before authoring; retained natives are immutable'
+assert not (P/'AquaticCompletion_r015.blend').exists(), 'Choose a new unique revision before authoring; retained natives are immutable'
 assert hashlib.sha256(ORIGINAL.read_bytes()).hexdigest()=='80c7c1756d4bbe9e74b37e150797115eff5f200977718b4f661f50a3849c9a28'
 bpy.ops.wm.open_mainfile(filepath=str(ORIGINAL))
 S=bpy.context.scene
@@ -270,6 +270,85 @@ for i,z in enumerate([231,233.6]):
     box('rinse_'+str(i)+'_water_control_hardware',(57.23,46.2,z+.6),(.12,.32,.32),'metal')
     box('rinse_'+str(i)+'_low_control_paddle',(57.36,46.2,z+.6),(.14,.08,.2),'ivory')
 
+# Internal water-care cell: under the retained gallery, between unchanged
+# refreshments and wet-service stock. The X100 onward interface remains shared.
+PLANT_GATE={'id':'aquatic_water_care_gate_001','xyz':[94.8,45.45,210.6],'yaw_radians':-math.pi/2,'source_asset':'AST-STF-008.glb','source_sha256':'d3ab5143760df1d68958cf063cc1b57ff3e4988cbea8d0a632757a5102a1da97','mechanical_gate_only':True,'permissions_and_persistence_implemented':False}
+VALVES=[]
+# Enclosure is deliberately technical: inspection aisle and visible working edge.
+for tag,z in [('north',208.6),('south',212.6)]:
+    box('water_care_'+tag+'_wall',(97.3,47.02,z),(5.0,3.14,.16),'ivory')
+for tag,a,b in [('north',208.6,209.18),('south',212.02,212.6)]:
+    box('water_care_front_'+tag,(94.8,47.02,(a+b)/2),(.16,3.14,b-a),'wood')
+for z in [209.2,212.0]:rod('water_care_gate_reveal_'+str(z),(94.8,45.45,z),(94.8,48.59,z),.042,'wood')
+box('water_care_gate_header',(94.8,48.34,210.6),(.2,.14,2.9),'wood')
+box('water_care_ceiling',(97.285,48.50,210.6),(4.97,.18,4.0),'ivory')
+# Slotted floor finish is flush with the original owner; it adds no floor collider.
+for j in range(12):box('water_care_drain_'+str(j),(96.8,45.454,209.0+j*.25),(1.7,.008,.05),'grip','finish_visual',0)
+# Two vessels, two separate headers, formed elbows, saddles and readable gauges.
+def vessel(n,x,z):
+    box(n+'_skid',(x,45.575,z),(1.05,.25,1.15),'metal')
+    vs=[];fs=[];rings=[(45.70,.36),(45.85,.48),(47.18,.48),(47.42,.32),(47.51,.13)]
+    for y,r in rings:
+        for k in range(16):
+            a=k*math.tau/16;vs.append((x+r*math.cos(a),y,z+r*math.sin(a)))
+    for j in range(4):
+        for k in range(16):fs.append((j*16+k,j*16+(k+1)%16,(j+1)*16+(k+1)%16,(j+1)*16+k))
+    fs += [tuple(range(15,-1,-1)),tuple(range(64,80))]
+    mesh(n+'_housing',vs,fs,'ivory')
+    for y in [46.0,47.05]:
+        band(n+'_collar_'+str(y),(x,z),.49,.49,0,math.tau,.045,y-.025,y+.025,'metal')
+    box(n+'_drain_port',(x-.56,45.92,z),(.18,.16,.16),'metal')
+    rod(n+'_gauge_stem',(x-.49,47.0,z),(x-.70,47.0,z),.035)
+    # West-facing gauge body is a real cylinder and pointer, no fluid reading claim.
+    rod(n+'_gauge',(x-.70,47.0,z),(x-.77,47.0,z),.13,'ivory')
+    rod(n+'_gauge_pointer',(x-.779,47.0,z),(x-.779,47.08,z+.05),.013,'metal')
+for i,z in enumerate([209.4,211.7]):vessel('water_care_filter_'+str(i),98.6,z)
+for n,z in [('supply',208.87),('return',212.32)]:
+    rod('water_care_'+n+'_header',(95.3,47.90,z),(99.65,47.90,z),.065)
+    for x in [95.5,97.2,99.3]:
+        rod('water_care_'+n+'_wall_bearing_'+str(x),(x,47.90,z),(x,47.90,208.68 if n=='supply' else 212.52),.035)
+for i,z in enumerate([209.4,211.7]):
+    # Pipe joints avoid a fictional continuous network beyond the annex.
+    rod('water_care_filter_'+str(i)+'_riser',(98.6,47.51,z),(98.6,47.90,z),.06)
+    rod('water_care_filter_'+str(i)+'_elbow',(98.6,47.90,z),(98.6,47.90,208.87 if i==0 else 212.32),.06)
+    rod('water_care_filter_'+str(i)+'_valve_branch',(98.10,46.65,z),(97.65,46.65,z),.06)
+    center=(97.62,46.65,z);radius=.19;vs=[];fs=[]
+    for x in [center[0]-.028,center[0]+.028]:
+        for k in range(16):
+            a=k*math.tau/16
+            for r in [radius-.028,radius+.028]:vs.append((x,center[1]+r*math.cos(a),center[2]+r*math.sin(a)))
+    for k in range(16):
+        a=k*2;b=((k+1)%16)*2;fs += [(a,b,b+1,a+1),(a+32,a+33,b+33,b+32),(a,a+32,b+32,b),(a+1,b+1,b+33,a+33)]
+    # An asymmetric spoke/pointer makes the bounded mechanical turn visible.
+    a=len(vs);vs += [(center[0]-.03,center[1]-.13,center[2]-.022),(center[0]-.03,center[1]+.13,center[2]-.022),(center[0]-.03,center[1]+.13,center[2]+.022),(center[0]-.03,center[1]-.13,center[2]+.022)];fs.append((a,a+1,a+2,a+3))
+    mesh('water_care_valve_'+str(i)+'_handwheel_source',vs,fs,'metal','valve_wheel')
+    rod('water_care_valve_'+str(i)+'_hub',(97.57,46.65,z),(97.68,46.65,z),.055)
+    VALVES.append({'id':'aquatic_water_care_isolator_'+str(i)+'_001','mesh':'G6_AQ6__water_care_valve_'+str(i)+'_handwheel_source','pivot_xyz':list(center),'axis':'x','travel_radians':math.pi/2,'circuit':'supply' if i==0 else 'return','mechanical_only':True,'water_flow_pressure_or_temperature_implemented':False})
+# Local tool/closed-ordinary-return edge stays distinct from retained clean stock.
+box('water_care_tool_back',(95.48,46.75,212.45),(.85,1.8,.12),'wood')
+for j in range(3):
+    rod('water_care_tool_hook_'+str(j),(95.25+j*.23,46.75,212.31),(95.25+j*.23,46.9,212.31),.02)
+    rod('water_care_tool_handle_'+str(j),(95.25+j*.23,46.1,212.30),(95.25+j*.23,46.72,212.30),.025)
+box('water_care_closed_return',(95.8,45.84,212.06),(.65,.78,.60),'clay','stock_asset')
+for i,z in enumerate([209.35,211.35]):lamp('water_care_task_'+str(i),96.8,48.05,z,48.41,5)
+# Source-only native reference uses the exact registered door. Runtime reuses the
+# same asset/state machine rather than exporting a second static door copy.
+asset=R/'Game/assets/models/AST-STF-008.glb';assert hashlib.sha256(asset.read_bytes()).hexdigest()==PLANT_GATE['source_sha256']
+before_import=set(S.objects);bpy.ops.import_scene.gltf(filepath=str(asset));imported=set(S.objects)-before_import
+transform=Matrix.Translation(xyz(PLANT_GATE['xyz']))@Matrix.Rotation(PLANT_GATE['yaw_radians'],4,'Z')
+for o in imported:
+    if o.parent not in imported:o.matrix_world=transform@o.matrix_world
+bpy.context.view_layer.update()
+reference={}
+for i,o in enumerate(sorted([o for o in imported if o.type=='MESH'],key=lambda o:o.name)):
+    o.name='AQ6__water_care_gate_reference_'+str(i);o['kind']='runtime_service_gate_reference';o['source_asset']='AST-STF-008.glb';NEW.append(o);reference[o.name]=digest(o)
+# Both future circuit flanges terminate inside the original 2.4m portal.
+for circuit,z0,z1 in [('supply',208.87,209.10),('return',212.32,210.90)]:
+    rod('water_care_'+circuit+'_portal_elbow',(99.45,47.90,z0),(99.45,47.90,z1),.065)
+    rod('water_care_'+circuit+'_portal_terminal',(99.45,47.90,z1),(99.65,47.90,z1),.065)
+    rod('water_care_'+circuit+'_terminal_flange',(99.60,47.90,z1),(99.67,47.90,z1),.10)
+WATER_CARE={'id':'aquatic_water_care_cell_001','bounds_xz':[94.8,99.77,208.6,212.6],'floor_y':45.45,'clear_ceiling_y':48.41,'gate':PLANT_GATE,'valves':VALVES,'native_registered_gate_reference_mesh_hashes':reference,'pipe_interfaces':[{'circuit':'supply','terminal_xyz':[99.67,47.90,209.10],'radius_m':.10},{'circuit':'return','terminal_xyz':[99.67,47.90,210.90],'radius_m':.10}],'onward_service_portal_xyz':[100,45.45,210],'onward_route_or_fluid_network_implemented':False,'restaurant_cascade_connection_owned_here':False}
+
 # Discreet pool/spa handrail lighting below the original crossing soffit.
 for i,(x,z) in enumerate([(82.6,211.5),(82.6,223.5),(78,239),(63.5,216),(86,217)]):lamp('wet_edge_'+str(i),x,48.45,z,51.7,7)
 
@@ -278,15 +357,15 @@ assert all(digest(bpy.data.objects[n])==d for n,d in before.items()),'Original o
 assert all(hashlib.sha256(bpy.data.images[n].packed_file.data).hexdigest()==h for n,h in packed.items())
 audit={'status':'PASS','original_native_sha256':hashlib.sha256(ORIGINAL.read_bytes()).hexdigest(),'original_meshes_preserved':len(before),'original_mesh_semantics_sha256':hashlib.sha256(json.dumps(before,sort_keys=True,separators=(',',':')).encode()).hexdigest(),'packed_images_preserved':packed,'original_mesh_hashes':before,'exchange_exclusions':excluded,'added_meshes':len(NEW),'added_light_fittings':len(LIGHTS),'native_engine':'Blender '+bpy.app.version_string,'geometry_transform_uv_material_modifiers_preserved':True}
 (P/'NATIVE_AUDIT.json').write_text(json.dumps(audit,indent=2)+'\n')
-(P/'FIT_CONTRACT.json').write_text(json.dumps({'schema':1,'status':'inactive Group6 handoff','programme_key':'D08_directory_08','doors':DOORS,'additional_lights':LIGHTS,'exclusions':excluded,'original_source':str(ORIGINAL.relative_to(R)),'new_floor_area_m2':0,'new_capacity':0,'thermal_entry_courts':THERMAL},indent=2)+'\n')
-bpy.ops.wm.save_as_mainfile(filepath=str(P/'AquaticCompletion_r013.blend'))
+(P/'FIT_CONTRACT.json').write_text(json.dumps({'schema':1,'status':'inactive Group6 handoff','programme_key':'D08_directory_08','doors':DOORS,'additional_lights':LIGHTS,'exclusions':excluded,'original_source':str(ORIGINAL.relative_to(R)),'new_floor_area_m2':0,'new_capacity':0,'thermal_entry_courts':THERMAL,'water_care_cell':WATER_CARE},indent=2)+'\n')
+bpy.ops.wm.save_as_mainfile(filepath=str(P/'AquaticCompletion_r015.blend'))
 
 # Exchange has explicit roles; originals and new meshes share unchanged materials.
 dg=bpy.context.evaluated_depsgraph_get();exchange=bpy.data.scenes.new('Group6Exchange');bpy.context.window.scene=exchange;groups={};policy={};parts={}
 for o in list(S.objects):
-    if o.type!='MESH' or not o.name.startswith(('AQD__','AQ6__')) or o.name in excluded or o.get('kind')=='compiler_floor_proposal':continue
+    if o.type!='MESH' or not o.name.startswith(('AQD__','AQ6__')) or o.name in excluded or o.get('kind') in ['compiler_floor_proposal','runtime_service_gate_reference']:continue
     kind=o.get('kind','architecture');material=o.data.materials[0].name if o.data.materials else 'none'
-    key='G6_'+o.name if kind in ['water_visual','tube_static_visual','privacy_door_proposal','door_control'] else 'AQ6_BATCH_'+str(kind)+'_'+material
+    key='G6_'+o.name if kind in ['water_visual','tube_static_visual','privacy_door_proposal','door_control','valve_wheel'] else 'AQ6_BATCH_'+str(kind)+'_'+material
     me=bpy.data.meshes.new_from_object(o.evaluated_get(dg),preserve_all_data_layers=True,depsgraph=dg);q=bpy.data.objects.new('EX_'+o.name,me);q.matrix_world=o.matrix_world.copy();exchange.collection.objects.link(q);groups.setdefault(key,[]).append((q,o.name,kind))
 for key,obs in groups.items():
     bpy.ops.object.select_all(action='DESELECT')
@@ -297,6 +376,6 @@ for key,obs in groups.items():
     role='privacy_leaf' if 'privacy_leaf' in key else obs[0][2]
     q['kind']=role;parts[key]=names;policy[key]=role
 bpy.ops.object.select_all(action='SELECT')
-bpy.ops.export_scene.gltf(filepath=str(P/'AquaticCompletion_r013.glb'),export_format='GLB',use_selection=True,use_active_scene=True,export_apply=True,export_extras=True,export_lights=False,export_cameras=False)
+bpy.ops.export_scene.gltf(filepath=str(P/'AquaticCompletion_r015.glb'),export_format='GLB',use_selection=True,use_active_scene=True,export_apply=True,export_extras=True,export_lights=False,export_cameras=False)
 (P/'EXCHANGE_PARTS.json').write_text(json.dumps(parts,indent=2)+'\n');(P/'COLLISION_POLICY.json').write_text(json.dumps(policy,indent=2)+'\n')
 print('GROUP6 SOURCE PASS',audit['original_meshes_preserved'],audit['added_meshes'],len(policy))

@@ -1,48 +1,47 @@
-# Group 6 construction continuation — r013
+# Group 6 continuation — r015 water-care construction
 
-Recovery traversal is now PASS in the original controller. Visible continuous
-source ramps replace the held recovery flights within the same two runouts. The
-sharp and rounded-riser attempts remain in their immutable source revisions and
-receipts. No controller, collision mask, teleport, scripted lift or invisible walk
-surface was added to make the test pass.
+The annex now has an enclosed internal water-care bay, two vessel housings,
+separate headers/formed joints/supports, physical gauges, tools/closed-return edge,
+two task fixtures and an operating gate made from the exact registered
+AST-STF-008 staff threshold. Two source handwheels operate through normal RMB/E,
+with bounded mechanical rotation and return. Pumping, filtration, flow, pressure,
+temperature, permissions and save operation are not implemented or accepted.
 
-Two retained thermal basins now have west openings, curved bank joins, real descent
-surfaces, side handrails, paired quiet canopies/privacy screens, dry support bays
-and task sources. The two existing rinse interiors gain mounted handset, hose,
-control and grab hardware. Original seats, hoists, basin/water identity and thermal
-six-target reconciliation are preserved. There is no new destination, capacity or
-compiler-owned floor. Selected source is `AquaticCompletion_r013.blend`, export
-`AquaticCompletion_r013.glb`; all 1,640 original source meshes and 16 packed images
-remain intact, with 271 new meshes and 15 additional mounted sources.
+Focused actual-main validation passes 59 checks/18 original persistent-player
+legs. Local validation passes 42 checks/18 legs. Gate opening/closing obstruction
+rejection, inside/outside operation, both isolators and retained stock/refreshment
+access are covered. One supported fixture seed precedes all traversal. The witness
+records 1,995 physics samples, maximum frame movement 0.052 m, minimum Y45.45 and
+no route position/velocity writes. The existing helper sets facing yaw per leg.
 
-Focused actual-main validation passes 52 checks and 24 original persistent-player
-legs across four explicitly supported independent fixture starts. A witness logs
-1,609 physics samples; maximum observed per-frame displacement is 0.061 m. No
-position or velocity writes occur during traversal. Local recovery passes six
-checks/four legs; thermal courts pass 54 checks/20 legs, including two proposed
-1.5 m dry turning envelopes and 32 floor rays. Related rinse operation passes
-28 checks/14 legs after the hardware changes. The prior r010 full route remains
-historical evidence; it was not repeated or promoted to a full r013 route result.
+Fresh native checks preserve all 1,640 original meshes/16 packed images and the
+exact registered gate source. 138 floor-support points, 54,678 conservative
+furniture/original-solid comparisons, 16 real mounting contacts and 12 registered
+reference mesh hashes pass; repeat export is byte identical. The native contains
+345 new authored meshes plus 12 registered reference meshes and 17 added mounted
+sources. No floor owner, destination, capacity, shared registry/root or
+main/checkpoint ref is changed. Prior recovery/thermal/privacy construction and
+failed stair evidence are retained.
 
-Fresh saved-native verification passes original hashes, 126 furnishing support
-points, 47,668 conservative furniture/original-solid comparisons, 14 actual
-roof/canopy mounting contacts and byte-identical repeat export. The clear wide
-photograph is actual saved source under neutral Workbench light. Thermal detail
-views record roof/water cutaway staging; the roof-occluded camera attempt remains.
-These are source and focused physics checks, not game-light, texture, CRT,
-engineering, swimming, wheelchair, broad-species or final-art acceptance.
+The initial care test's reserved-name import assertion produced a false zero-case
+PASS. `WATER_CARE001_INTERPRETATION.json` records it as HOLD; raw evidence remains.
+The motion-body origin/target failure is also retained. Final checks require all
+18 traversal cases, and engine/script errors override any printed PASS.
 
-Use `INTEGRATION.md` to update the inactive handoff into Group1's current integration
-branch. The adapter interface and privacy IDs remain stable; do not apply it twice.
-The shared ship root/registries, original assets and main/checkpoint refs remain
-untouched by Group6. Swimming/buoyancy/AFK/slide/hoist/water/gravity/inventory/save,
-shared routes and final acceptance remain open. **Group6 is not accepted as a whole.**
+The current Library image remains the same identity at **version4**, caption:
+“Astraea Group 6 r015 — actual saved-source annex overview with internal water-care
+bay, service gate and mechanical isolators; neutral studio cutaway, fluid gameplay
+unaccepted.” Version3 was r013/WIDE010 and must retain that older caption. The wide
+and care-detail images are actual source views; roof/gallery/near-wall staging is
+recorded and never saved into the native.
 
-Prior checkpoint compact manifest SHA256:
-`5ea7eb929f817f17b973f003fb7932d2d624361caf16ffa50c559f787f3c1cde`.
-The new `COMPACT_MANIFEST.json` and independent readback provide exact next-checkpoint
-hashes, commit and tree without changing immutable source after publication.
+`WATER_SERVICE_INTERFACE.json` contracts two flanges inside the original X100
+portal and preserves the restaurant cascade interface for Group1/3/4/8. No outside
+service floor, restaurant receiver, stream or shared root is edited. Integration
+uses the same adapter once, before the existing light budget, selecting r015.
+Prior broad routes are historical, not fresh full r015 acceptance.
 
-The existing route helper sets facing yaw per leg. Movement uses the original
-player and KEY_W; no positional relocation or velocity assignment occurs during
-traversal. The raw followup receipt's transform wording refers to translation.
+This is a verified checkpoint, not a stopping point. River boarding/disembarkation
+is the next independent construction slice. Swimming/buoyancy/AFK/slide/hoist,
+shared routes, fluid/thermal/gravity/species operation, engineering and final art
+remain open. **Group6 is not accepted as a whole.**
