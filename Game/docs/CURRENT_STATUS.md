@@ -1,3 +1,19 @@
+# Current D04 starboard-forward remaining-court connection
+
+The remaining six starboard-forward court approaches are now addressed as one circulation package: five western private thresholds in two enclosed receiving branches, plus an exterior stance at the unchanged sealed0.75m eastern court. Nine broad court thresholds now exist across the two packages. The narrow court has no admitted entry or accepted work reach. All eight groups remain unfinished.
+
+The package adds201.65m2 of missing-only floor,17 bounded source aperture successors and one intact five-mesh planting move within the original short western court. Its two staff portals join the original cross passages and shared public spine,commons and stair. Existing room identities,120 home allocations/150 reserved rests,public routes,floors/roofs,commons/stair and capacities remain unchanged. The eastern spur is a bounded opening in the prior east-lane wall and ends at the original opaque private boundary.
+
+The southern lane uses nine floor-edge ledger joints and36 exact contacts to unchanged source court floor faces,with framing entirely above the protected D03room volume. It adds no columns through D01–D03 programmes. The northern lane/eastern spur have18 source keel supports and72 exact contacts. The161-programme audit passed28,014 checks without unexplained overlaps. Cantilever,existing court-floor load capacity,steel sizing/buckling and primary engineering remain held.
+
+Essential checks passed: 58195 geometry checks,28,269 exact surrounding meshes,280 original-controller opening/closing poses,78 capsule samples; 115 connection checks and 63 actual original-player walking legs. All five new private gates test unknown-visit denial,temporary known-visit entry and revoked inside egress/outside reentry denial. The four earlier eastern private gates preserve IDs and deny unknown visits. The production provider remains absent and private gates default closed.
+
+All4,357 prior native/export files are byte-identical. Two new editable native revisions produce exact fresh repeat exports;35 copied fitting meshes and five moved planting meshes preserve exact local geometry,UVs and materials. The inactive geometry checkpoint is `db1079c4a465ccbd4f7782aa4c8cf8ca62bd9d20`. A transient provisioned Git read failure is retained; unchanged transport recovered without credentials,network or permission changes.
+
+Source views show the enclosed western interfaces and sealed eastern edge but are dark,grainy,partial diagnostics with fill. Original home facade/full ship context and live-game capture are absent; final visual/CRT/hardware acceptance is held. Shared public circulation does not establish full clean/used separation. Narrow-court entry/reach,provider/vacancy,stock/refill/save,operational returns,loaded/cart vertical,habitat/biology,primary engineering and two historical native byte losses remain open. Port-central commons candidates are inactive and unchanged.
+
+The next broad construction scope is the starboard-central staff receiving/private-court catchment connection. Its source has ten private courts and no local staff vertical route; the original D03 Staff administration ceiling must be preserved. See NEXT_BROAD_NEIGHBORHOOD.json for the source pin and constraint. No construction has started there.
+
 # Current D04 starboard-forward construction milestone
 
 D04 starboard-forward has four broad eastern private court work thresholds and two enclosed receiving branches connected through the existing shared commons and original stair approach. Six other courts, including the retained 0.75m eastern court, remain held. This is an unfinished neighborhood connection; all eight ship groups remain unfinished.
