@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/Astraea-group8/BlenderCatalogue/assets/group8_arrivals_service_20261011/verify_arrivals_source.py", line 87, in <module>
+    assert any(retained['name'].startswith(q)for q in row.get('permitted_retained_context',[])),(row['name'],'unpermitted original-context intrusion',retained['name'],overlap)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('G8A_BaggageEnclosure_FrontSolid_-465.75', 'unpermitted original-context intrusion', 'ARR_EndWainscot_-465.85', [0.20000000000000284, 1.1500000469386578, 0.024993896484375])
