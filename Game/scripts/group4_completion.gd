@@ -1,0 +1,59 @@
+extends RefCounted
+# Group-owned inactive package. The shared owner confirms receiver cuts before building lifts.
+const DATA := "res://data/architecture/GROUP4_COMPLETION_CANDIDATE.json"
+const MODELS := "res://source_derivatives/group4_completion_20261011/"
+static func build(parent:Node3D, candidate_only:bool=false, receivers_confirmed:bool=false)->Node3D:
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(DATA))
+ if not p.active and not candidate_only:return null
+ assert(receivers_confirmed,"Group4 requires exact shared pit receiving and north adoption; default main is inactive")
+ assert(not parent.has_node("Group4Completion"),"One Group4 assembly per world")
+ var n:=Node3D.new();n.name="Group4Completion";parent.add_child(n)
+ n.set_meta("candidate_only",candidate_only)
+ for item in p.models:
+  assert(FileAccess.get_sha256(MODELS+item.file)==item.sha256,"Group4 original model pin changed")
+  if item.role in ["bridge_component","vehicle_component"]:continue
+  visual(n,item.file,item.policies)
+ for st in p.stations:
+  var lift:Node3D=load("res://scripts/commons_lift.gd").new()
+  lift.name="Group4Lift_"+st.label
+  lift.floor_heights.assign(st.floor_heights);lift.deck_numbers.assign(st.deck_numbers)
+  lift.stop_ids.assign(st.stop_ids);lift.stop_names.assign(st.stop_names);lift.stop_codes.assign(st.stop_codes)
+  lift.gate_origin_xz=Vector2.ZERO;lift.identity_prefix=st.identity_prefix
+  lift.persistent_id=StringName(st.persistent_id);lift.district_label=st.label.replace("_"," ").capitalize()+" Townline"
+  lift.position=Vector3(st.lift_root[0],0,st.lift_root[2]);lift.rotation.y=st.lift_yaw_rad
+  n.add_child(lift)
+  # The bridge adapter receives docking authority; it has no independent input controller.
+  var bridge:Node3D=load("res://scripts/group4_boarding_bridge.gd").new()
+  bridge.name="Group4Bridge_"+st.label
+  bridge.model_path=MODELS+"AST-TRM-G4-019_boarding_bridge.glb"
+  bridge.position=Vector3(st.boarding_edge_x,56.1,st.physical_docking_z)
+  bridge.rotation.y=0.0 if st.vehicle_door_side=="port" else PI
+  n.add_child(bridge)
+ for item in p.lights:
+  var light:=OmniLight3D.new();light.name=item.name+"_OperatingLight";n.add_child(light)
+  light.position=Vector3(item.xyz[0],item.xyz[1],item.xyz[2]);light.omni_range=item.range
+  light.light_energy=item.energy;light.light_color=Color(item.color[0],item.color[1],item.color[2])
+  light.shadow_enabled=true;light.visible=false;light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE
+  light.set_meta("source_fixture",item.name);light.set_meta("fixture_powered",true)
+ n.set_meta("operating_scope","Five original two-stop lift bindings; source bridge adapter. No operating tram travel or cart restraint")
+ return n
+static func visual(parent:Node3D,file:String,policies:Dictionary)->Node3D:
+ var instance:Node3D=(load(MODELS+file) as PackedScene).instantiate()
+ instance.name=file.get_basename();parent.add_child(instance)
+ var meshes:Array[Node]=[]
+ var imported_policies:Dictionary={}
+ for source_name:String in policies:
+  var key:String=source_name.validate_node_name()
+  assert(not imported_policies.has(key),"Source identities collide after Godot node-name sanitization")
+  imported_policies[key]=policies[source_name]
+ var imported_count:=0
+ for mesh:MeshInstance3D in instance.find_children("*","MeshInstance3D",true,false):
+  imported_count+=1
+  assert(imported_policies.has(str(mesh.name)),"Every imported source member needs a collision policy: "+str(mesh.name))
+  if imported_policies[str(mesh.name)]=="no_collision_detail":continue
+  meshes.append(mesh)
+ assert(imported_count==imported_policies.size(),"Every source member must survive import")
+ instance.set_meta("verified_source_members",imported_count)
+ instance.set_meta("collision_members",meshes.size())
+ load("res://scripts/static_contact_cache.gd").attach_group(instance,meshes)
+ return instance

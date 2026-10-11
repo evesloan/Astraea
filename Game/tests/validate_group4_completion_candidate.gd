@@ -1,0 +1,88 @@
+extends SceneTree
+# Isolated source-receiving fixture. No main-world integration or real cart is implied.
+class CarryProbe extends CharacterBody3D:
+ func _physics_process(delta:float)->void:
+  velocity.x=0;velocity.z=0
+  if not is_on_floor():velocity.y-=9.8*delta
+  else:velocity.y=0
+  move_and_slide()
+var checks:=0
+var errors:Array[String]=[]
+var observations:Array[Dictionary]=[]
+func _initialize()->void:call_deferred("run")
+func check(value:bool,message:String)->void:
+ checks+=1
+ if not value:errors.append(message);push_error(message)
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func idle(lift:Node3D,index:int)->bool:
+ for i in range(900):
+  await physics_frame
+  if lift.phase=="idle" and lift.current_floor==index:return true
+ return false
+func fixture_floor(parent:Node3D)->void:
+ var p:Array=JSON.parse_string(FileAccess.get_file_as_string("res://source_derivatives/group4_completion_20261011/CANDIDATE_FLOOR_FIXTURE.json"))
+ for region in p:
+  var faces:=PackedVector3Array()
+  for t in region.triangles:
+   var a:=Vector3(t[0][0],region.floor_y,t[0][1]);var b:=Vector3(t[1][0],region.floor_y,t[1][1]);var c:=Vector3(t[2][0],region.floor_y,t[2][1])
+   if (b-a).cross(c-a).y>0:faces.append_array([a,c,b])
+   else:faces.append_array([a,b,c])
+  var body:=StaticBody3D.new();body.name=region.id;parent.add_child(body)
+  var col:=CollisionShape3D.new();var shape:=ConcavePolygonShape3D.new();shape.set_faces(faces);col.shape=shape;body.add_child(col)
+func run()->void:
+ var world:=Node3D.new();world.name="Group4CandidateReceivingFixture";root.add_child(world)
+ fixture_floor(world)
+ var assembly:Node3D=load("res://scripts/group4_completion.gd").build(world,true,true)
+ await frames(120)
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_COMPLETION_CANDIDATE.json"))
+ check(not p.active,"Candidate must remain inactive in production")
+ for item in p.models:
+  if item.role in ["bridge_component","vehicle_component"]:continue
+  var model:Node3D=assembly.get_node(item.file.get_basename())
+  check(model.get_meta("verified_source_members",0)==item.policies.size(),item.file+" every actual imported source member bound")
+ check(assembly.find_children("Group4Lift_*","Node3D",false,false).size()==5,"Five local lift bindings")
+ check(assembly.find_children("Group4Bridge_*","Node3D",false,false).size()==5,"Five retained bridge assemblies")
+ for st in p.stations:
+  var lift:Node3D=assembly.get_node("Group4Lift_"+st.label)
+  check(await idle(lift,0),st.label+" lower idle")
+  var actor:=CarryProbe.new();actor.name="UnloadedCarryProbe_"+st.label
+  var col:=CollisionShape3D.new();var capsule:=CapsuleShape3D.new();capsule.radius=.3;capsule.height=1.8;col.shape=capsule;col.position.y=.9;actor.add_child(col)
+  world.add_child(actor);actor.global_position=lift.to_global(Vector3(1.8,52.57,0));await frames(90)
+  check(actor.is_on_floor(),st.label+" cabin floor contact")
+  var local_before:Vector3=lift.to_local(actor.global_position)
+  check(abs(local_before.y-52.5)<.05,st.label+" lower floor y")
+  check(not lift.cabin_gate.threshold_occupied(),st.label+" cleared cabin threshold")
+  check(lift.request_floor(1),st.label+" original lift accepts upper request")
+  await frames(180)
+  var stopped:Vector3=actor.global_position;var height:float=lift.cabin.position.y
+  paused=true;await create_timer(.05,true,false,true).timeout
+  check(actor.global_position.distance_to(stopped)<.001 and abs(lift.cabin.position.y-height)<.001,st.label+" pause freezes cabin and carried probe")
+  paused=false
+  check(await idle(lift,1),st.label+" actual upper arrival")
+  var local_upper:Vector3=lift.to_local(actor.global_position)
+  check(abs(local_upper.y-56.1)<.08,st.label+" unloaded capsule carried 3.6m")
+  check(lift.landing_gates[0].open_fraction<.0001 and not lift.landing_gates[0].cabin_present_and_stopped,st.label+" lower gate closed while absent")
+  check(not lift.landing_gates[0].request_open(),st.label+" absent-cabin opening refused")
+  check(lift.request_floor(0),st.label+" original lift accepts return")
+  check(await idle(lift,0),st.label+" actual lower return")
+  check(abs(lift.to_local(actor.global_position).y-52.5)<.08,st.label+" unloaded carry return")
+  observations.append({"station":st.label,"initial_local":local_before,"upper_local":local_upper,"repeated_original_controller_rides":2})
+  actor.queue_free();await frames(3)
+  var bridge:Node3D=assembly.get_node("Group4Bridge_"+st.label)
+  check(not bridge.request_deploy(),st.label+" bridge refuses undocked deployment")
+  bridge.dock_authorized=true;check(bridge.request_deploy(),st.label+" authorized bridge deployment")
+  await frames(150);check(bridge.fraction>.999,st.label+" actual deployed pose")
+  # Physics occupancy blocks stow; no proxy teleports during the occupied hold.
+  var blocker:=CharacterBody3D.new();var blocker_col:=CollisionShape3D.new();var block_shape:=CapsuleShape3D.new();block_shape.radius=.3;block_shape.height=1.8
+  blocker_col.shape=block_shape;blocker_col.position.y=.9;blocker.add_child(blocker_col);world.add_child(blocker)
+  blocker.global_position=bridge.to_global(Vector3(.55,.02,0));await frames(3)
+  check(bridge.threshold_occupied(),st.label+" physical bridge threshold sensor")
+  bridge.request_stow();await frames(30)
+  check(bridge.fraction>.999,st.label+" occupied bridge prevents stow")
+  blocker.queue_free();await frames(150)
+  check(bridge.safe_to_depart(),st.label+" cleared bridge returns to actual stowed pose")
+ var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"observations":observations,"floor_scope":"Exact retained D09 floor fixture with proposed four pit subtractions; candidate sources only","original_player_tested":false,"cart_or_stock_tested":false,"tram_travel_tested":false,"main_world_integrated":false,"limits":"Unloaded capsule live carry, original lift gates, pause and bridge adapter only. Full boarding/walking, real cart/stock, dock/door interlock, species, receiving/engineering and visual acceptance open."}
+ var file:=FileAccess.open("res://artifacts/group4_completion_candidate.json",FileAccess.WRITE);file.store_string(JSON.stringify(result," "));file.close()
+ print("GROUP4 CANDIDATE ",result.status,": ",checks," checks; five original lifts, ten unloaded rides, five bridge occupancy cycles")
+ world.queue_free();await process_frame;quit(0 if errors.is_empty() else 1)

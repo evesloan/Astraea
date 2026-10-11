@@ -1,0 +1,91 @@
+"""Missing-only station receiving successors. Never writes retained inputs."""
+from pathlib import Path
+import json, hashlib
+from shapely.geometry import Polygon, box
+from shapely.ops import unary_union, triangulate
+
+W=Path(__file__).resolve().parent
+R=W.parents[2]
+F=R/'BlenderCatalogue/assets/group4_tram_connections_20261009'
+assert json.loads((W/'BASELINE_VERIFICATION.json').read_text())['status']=='PASS'
+meta=json.loads((F/'port_successor_002/SUCCESSOR_INTERFACE.json').read_text())
+regions=[]
+pins={}
+for n in ['structural_meshes.json','received_structural_meshes.json']:
+    p=R/'Game/data/generated'/n
+    pins[str(p.relative_to(R))]=hashlib.sha256(p.read_bytes()).hexdigest()
+    regions.extend(json.loads(p.read_text())['regions'])
+existing=unary_union([Polygon(t) for r in regions if r['floor_y']==52.5 for t in r['triangles']])
+parts=[]; stations=[]; cuts=[]
+def member(name,lo,hi,role,material='champagne_metal',receiver=None):
+    parts.append(dict(name=name,min=lo,max=hi,role=role,material=material,receiver=receiver))
+for q0 in meta['stations']:
+    q=dict(q0); label=q['label']
+    if label=='FORE_MIDSHIP':
+        q.update(asset='AST-TRM-G4-020_foremid_north_candidate.glb',physical_docking_z=-241,
+                 lift_root=[-11.2,0,-225],lower_lift_recess_xz=[-13.4,-225.2,-9,-221.2],
+                 lower_missing_only_strip_xz=[-13.6,-265.5,-4,-221.2],
+                 station_source='boarding_north_005',receiving_source='north_receiving_006',
+                 physical_stop_adoption_required=True)
+    else:
+        q.update(physical_docking_z=q['catchment_z'],station_source='port_successor_002',
+                 physical_stop_adoption_required=False)
+    pit=box(*q['lower_lift_recess_xz'])
+    overlap=pit.intersection(existing)
+    if overlap.area>1e-7:
+        owners=[r['id'] for r in regions if r['floor_y']==52.5 and
+                unary_union([Polygon(t) for t in r['triangles']]).intersection(pit).area>1e-7]
+        cuts.append(dict(station=label,bounds_xz=q['lower_lift_recess_xz'],
+                         owners=owners,area_m2=overlap.area,apply_by='shared integration owner',
+                         protected_four_metre_axis_affected=False))
+    if label!='FORE_MIDSHIP' and q.get('lower_missing_only_strip_xz'):
+        shape=box(*q['lower_missing_only_strip_xz']).difference(existing).difference(pit)
+        polygons=list(shape.geoms) if hasattr(shape,'geoms') else [shape]
+        floor_triangles=[]
+        for polygon in polygons:
+            for t in triangulate(polygon):
+                if polygon.covers(t.representative_point()):
+                    assert t.difference(polygon).area<1e-8
+                    floor_triangles.append([list(p) for p in list(t.exterior.coords)[:3]])
+        assert abs(sum(Polygon(t).area for t in floor_triangles)-shape.area)<1e-7
+        q['missing_only_floor_m2']=shape.area
+        q['floor_triangles_xz']=floor_triangles
+        q['original_floor_overlap_m2']=shape.intersection(existing).area
+        q['pit_overlap_m2']=shape.intersection(pit).area
+        # Lap-ledger receivers stay inside the floor-depth band; no lower programme column.
+        # Each bears the current 8m axial slab and the proposed annex. Pit intervals omitted.
+        zlo,zhi=q['lower_missing_only_strip_xz'][1::2]
+        stations_z=[zlo+1.0+i*(zhi-zlo-2.0)/6 for i in range(7)]
+        for i,z in enumerate(stations_z):
+            if pit.intersects(box(3.4,z-.15,7.7,z+.15)):continue
+            footprint=box(3.65,z-.15,7.7,z+.15)
+            witness=footprint.intersection(existing)
+            if witness.area<.05:continue
+            member(f'{label}_AnnexLapLedger_{i}',[3.65,52.28,z-.15],[7.7,52.36,z+.15],
+                   'annex-to-retained-axial-slab lap ledger; geometry only',receiver=q['retained_lower_floor_owners'])
+        # Threshold tongue follows the actual script fixed sill at local x=-.055.
+        root=q['lift_root']; yaw=q['lift_yaw_rad']
+        sign=-1 if yaw>0 else 1
+        zz=root[2]+sign*.15
+        member(label+'_LowerSillTongue',[root[0]-1.2,52.43,zz-.07],
+               [root[0]+1.2,52.501,zz+.07],'14cm fixed threshold tongue; 1mm top step','warm_stone')
+    q['identity_prefix']='group4_'+label.lower()
+    q['persistent_id']='group4_'+label.lower()+'_boarding_lift_001'
+    q['stop_names']=[label.replace('_',' ').title()+' promenade',label.replace('_',' ').title()+' tram platform']
+    q['stop_codes']=['09','TL']
+    stations.append(q)
+
+# Derive coverage by retained programme identity; this is a connection index, not new rooms.
+ledger=json.loads((R/'Game/data/programme_ledger.json').read_text())
+pins['Game/data/programme_ledger.json']=hashlib.sha256((R/'Game/data/programme_ledger.json').read_bytes()).hexdigest()
+plan=dict(schema='astraea.group4.completion.receiving.v1',active=False,whole_group_complete=False,
+          baseline='affc5c807087ff87da29f3642c2d6e418241b896',stations=stations,new_members=parts,
+          required_shared_floor_cuts=cuts,source_pins=pins,
+          new_floor_area_m2=sum(q.get('missing_only_floor_m2',0) for q in stations),
+          preserved_catchments=[-432,-216,-72,216,432],
+          protected_polyline_xz=meta['protected_polyline_xz'],
+          selected_north_proposal='005+006+007; original −216 source remains immutable and held',
+          support_limit='lap contacts do not establish load, deflection, original slab capacity or hull transfer',
+          integration_limit='shared owner must adopt north docking and compile four bounded pit cuts before activation')
+(W/'RECEIVING_PLAN.json').write_text(json.dumps(plan,indent=2)+'\n')
+print('PLANNED',len(parts),'receivers;',plan['new_floor_area_m2'],'m2 new-only floor;',[(c['station'],c['area_m2']) for c in cuts])
