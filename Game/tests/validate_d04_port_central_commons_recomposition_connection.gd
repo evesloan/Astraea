@@ -3,7 +3,7 @@ var legs:Array=[]
 func leg(actor:CharacterBody3D,goal:Vector3,label:String)->bool:
  var w:Dictionary=await walk_to(actor,goal);w.scope=label;legs.append(w);record("original_player_leg_"+str(legs.size()),w.reached and w.floor_contact);return w.reached
 func operate(actor:CharacterBody3D,n:Node3D,p:Dictionary,index:int,want:bool)->bool:
- var spec:Dictionary=p.gates[index];var gate:Node3D=n.get_node(spec.name);await aim(actor,vec(spec.control_at));record("normal_control_targets_"+str(index)+"_"+str(legs.size()),actor.interaction_target()==gate);await key_e()
+ var spec:Dictionary=p.gates[index];var gate:Node3D=n.get_node(spec.name);await aim(actor,vec(spec.control_at));record("normal_control_targets_"+str(index)+"_"+str(legs.size()),actor.interaction_target==gate);await key_e()
  for i in range(100):await physics_frame
  record("original_staff_controller_endpoint_"+str(index)+"_"+str(legs.size()),gate.open_fraction==(1.0 if want else 0.0)and gate.desired_open==want);return gate.open_fraction==(1.0 if want else 0.0)
 func run()->void:
@@ -24,7 +24,7 @@ func run()->void:
   if not errors.is_empty()or not await leg(actor,goal,"continuous staff-only rear route behind relocated quiet and service bays"):break
  for index in [1,2]:
   if not errors.is_empty():break
-  var x:float=-89.976 if index==1 else -87.476
+  var x:float=p.gates[index].closed_center[0]
   if not await leg(actor,Vector3(x,16.5,1.5),"enclosed receiving hall at retained return/stock function"):break
   if not await operate(actor,n,p,index,true):break
   if not await leg(actor,Vector3(x,16.5,-2.1),"full-size original fitting and source room threshold"):break
@@ -45,7 +45,7 @@ func run()->void:
  if errors.is_empty():
   actor.global_position=Vector3(-52,16.53,-32);actor.velocity=Vector3.ZERO;ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(actor.global_position)
   for i in range(20):await physics_frame
-  for goal in [Vector3(-84,16.5,-32),Vector3(-84,16.5,-13),Vector3(-84,16.5,-10.5),Vector3(-82,16.5,-10.5),Vector3(-82,16.5,0),Vector3(-70,16.5,0),Vector3(-52,16.5,0),Vector3(-70,16.5,0),Vector3(-82,16.5,0),Vector3(-82,16.5,7),Vector3(-85.8,16.5,7),Vector3(-86.4,16.5,7),Vector3(-82,16.5,7),Vector3(-82,16.5,10.5),Vector3(-84,16.5,10.5),Vector3(-84,16.5,13),Vector3(-84,16.5,32),Vector3(-52,16.5,32)]:
+  for goal in [Vector3(-84,16.5,-32),Vector3(-84,16.5,-13),Vector3(-84,16.5,0),Vector3(-84,16.5,-3.3),Vector3(-70,16.5,-3.3),Vector3(-70,16.5,0),Vector3(-52,16.5,0),Vector3(-70,16.5,0),Vector3(-70,16.5,-3.3),Vector3(-84,16.5,-3.3),Vector3(-84,16.5,0),Vector3(-84,16.5,7),Vector3(-87,16.5,7),Vector3(-87.4,16.5,7),Vector3(-84,16.5,7),Vector3(-84,16.5,13),Vector3(-84,16.5,32),Vector3(-52,16.5,32)]:
    if not await leg(actor,goal,"original public receiving entrances and bounded recomposed guest arrival paths"):break
  for spec in p.gates:
   var gate:Node3D=n.get_node(spec.name);record("all_new_staff_gates_end_closed_"+spec.name,gate.open_fraction==0 and not gate.desired_open and String(gate.persistent_id)==spec.id)

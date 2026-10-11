@@ -16,6 +16,13 @@ for q in L['programmes']:
    if q['programme_key']=='D04_directory_03':interfaces.append(row)
    else:conflicts.append(row)
 assert not conflicts,conflicts
+street=box(-86.05,-13,-81.95,13);street_conflicts=[]
+for part in parts:
+ v=part['verts'];lo=[min(a[i]for a in v)for i in range(3)];hi=[max(a[i]for a in v)for i in range(3)]
+ if min(hi[1],19.2)-max(lo[1],16.5)<.001:continue
+ area=street.intersection(box(lo[0],lo[2],hi[0],hi[2])).area
+ if area>.000001:street_conflicts.append({'part':part['name'],'area_m2':area})
+assert not street_conflicts,street_conflicts
 original=json.load(open(R/'Game/data/architecture/D04_PORT_CENTRAL_NEIGHBORHOOD.json'));bridge=box(-103,-1,-96,1);assert bridge.intersection(shape(original['commons_floor_geometry'])).area==0;assert bridge.intersection(box(-105,-101.4,-103,79)).area==0
 for f,h in P['source_pins'].items():assert hashlib.sha256((R/f).read_bytes()).hexdigest()==h,f
-result={'status':'PASS','programme_allocations':len(L['programmes']),'conservative_part_programme_volume_checks':checks,'unexplained_conflicts':conflicts,'approved_bounded_commons_recomposition_interfaces':interfaces,'new_floor_m2':bridge.area,'original_commons_floor_duplication_m2':0,'original_staff_circuit_floor_duplication_m2':0,'original_layout_sha256':hashlib.sha256((R/'Game/data/whole_ship_layout.json').read_bytes()).hexdigest(),'new_capacity':0,'Training_ceiling_and_D05_datums_unchanged':True,'engineering_or_load_sizing_accepted':False};(W/'PROGRAMME_VOLUME_PREFLIGHT001.json').write_text(json.dumps(result,indent=2)+'\n');(W/'audit_programme001.py').write_bytes(Path(__file__).read_bytes());print('PROGRAMME_PASS',checks,len(interfaces))
+result={'status':'PASS','programme_allocations':len(L['programmes']),'conservative_part_programme_volume_checks':checks,'unexplained_conflicts':conflicts,'approved_bounded_commons_recomposition_interfaces':interfaces,'new_floor_m2':bridge.area,'original_commons_floor_duplication_m2':0,'original_staff_circuit_floor_duplication_m2':0,'original_layout_sha256':hashlib.sha256((R/'Game/data/whole_ship_layout.json').read_bytes()).hexdigest(),'original_house_street_4_1m_clear':True,'new_owned_or_relocated_obstructions_in_original_2_7m_clear_street':street_conflicts,'new_capacity':0,'Training_ceiling_and_D05_datums_unchanged':True,'engineering_or_load_sizing_accepted':False};(W/'PROGRAMME_VOLUME_PREFLIGHT001.json').write_text(json.dumps(result,indent=2)+'\n');(W/'audit_programme001.py').write_bytes(Path(__file__).read_bytes());print('PROGRAMME_PASS',checks,len(interfaces))
