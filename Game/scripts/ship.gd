@@ -222,6 +222,7 @@ func _ready() -> void:
 	load("res://scripts/sunset_adoption.gd").build(self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/sunset_adoption.gd).build(self)")
 	load("res://scripts/central_homes_adoption.gd").build(self)
+	load("res://scripts/star_atlas_d17_standard823.gd").build(self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/central_homes_adoption.gd).build(self)")
 	load("res://scripts/atrium_gallery_receiving.gd").build(self)
 	lighting_budget.configure(self,player)

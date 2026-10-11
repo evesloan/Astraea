@@ -20,6 +20,8 @@ func run()->void:
 	var room:Node3D=n.get_node("RetainedStandard823Interior");var space:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state
 	record("original_candidate_export_unchanged",FileAccess.get_sha256("res://assets/models/"+str(p.room_model))==p.room_model_sha256)
 	record("original405_runtime_room_meshes",room.find_children("*","MeshInstance3D",true,false).size()==405)
+	if p.active:record("receiving_physical_candidate_metadata",prior.get_meta("first_room_adopted") and prior.get_meta("first_room_physical_candidate_only"))
+	var old_homes:Node3D=ship.find_child("StarAtlasRoomCandidates",true,false);record("prior85_homes221_anchors",old_homes.get_meta("source_candidate_units")==85 and old_homes.get_meta("source_rest_slots")==221)
 	record("two_original_reservation_ids",n.get_meta("rest_slot_ids")==p.room_preimage.allocation.proposed_rest_slot_ids and n.get_meta("rest_slot_ids").size()==2)
 	record("allocation_identity_preserved",n.get_meta("allocation_sha256")==p.room_preimage.allocation.allocation_sha256)
 	for f in p.source_pins:

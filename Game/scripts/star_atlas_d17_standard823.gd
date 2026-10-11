@@ -12,6 +12,7 @@ static func build(ship:Node3D,validation_only:bool=false)->Node3D:
 		assert(FileAccess.get_sha256("res://artifacts/star_atlas_d17_standard823_sealed.json")==p.sealed_receipt_sha256)
 		assert(JSON.parse_string(FileAccess.get_file_as_string("res://artifacts/star_atlas_d17_standard823_sealed.json")).status=="PASS")
 	var prior:Node3D=ship.find_child("StarAtlasD17ReceivingFirst",true,false)
+	assert(prior!=null,"Central-house receiving must be built before room823")
 	assert(FileAccess.get_sha256("res://assets/models/STAR_ATLAS_D17_RECEIVING_FIRST_r001.glb")==p.source_pins["Game/assets/models/STAR_ATLAS_D17_RECEIVING_FIRST_r001.glb"])
 	for record in p.guard_preimages:
 		var mesh:MeshInstance3D=prior.find_child(record.name,true,false);assert(mesh!=null)
@@ -27,4 +28,5 @@ static func build(ship:Node3D,validation_only:bool=false)->Node3D:
 	for item in p.fixture_instances:
 		var marker:Node3D=n.find_child(item.name+"__LightExit",true,false);assert(marker!=null)
 		var lamp:=OmniLight3D.new();lamp.name=item.name+"__Light";n.add_child(lamp);lamp.global_position=marker.global_position;lamp.light_color=Color(item.color[0],item.color[1],item.color[2]);lamp.light_energy=item.energy;lamp.omni_range=item.range;lamp.visible=false;lamp.shadow_enabled=true;lamp.omni_shadow_mode=OmniLight3D.SHADOW_CUBE;lamp.shadow_bias=.03;lamp.shadow_normal_bias=.3;lamp.set_meta("fixture_powered",true);lamp.set_meta("source_fixture",item.name)
+	if not validation_only:prior.set_meta("first_room_adopted",true);prior.set_meta("first_room_physical_candidate_only",true)
 	return n

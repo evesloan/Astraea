@@ -1,3 +1,9 @@
+## Latest partial Group1 construction: D17 standard823
+
+One retained standard-double physical proposal now receives seven source-rooted underfloor strongbacks and three original fitted opal lanterns, using its unchanged furnished interior and two original proposed rest reservations. The connected production gate passes 148 checks and 17 actual player-controller legs. The sealed geometry stage is independently retained at 8ca08ead6d87d8a285b5af937599f29820700913; its 148 checks include 17 actual player-controller legs and both rest approaches. This advances one of ten D17 standard doubles; nine standard doubles and seven VIP allocations remain held. No room/rest allocation or species-ready capacity is added.
+
+The new frame joins the exact existing hanging-street members. Its 13.2 m outboard extent remains a Group7 primary transfer/cantilever/buckling review dependency; rejected new pier stations had no actual lower slab. Group8 outer/pressure continuity and Group3 staff/service operation remain interfaces. Whole-house garden/environment, occupancy/save and final Godot/CRT/hardware acceptance remain open. See STAR_ATLAS_D17_STANDARD823.md and the package INTERFACE_HANDOFF.json.
+
 ## Latest partial construction: aft crown foyer waiting edges
 
 Two open clipped-corner waiting edges, 12 original furnishings and eight fitted original lanterns now connect to the current ship on 328 m² of retained floor. Native audit: 1,364 checks; connected runtime: 1,227 checks and 14 actual player route legs. No new floor, room address, programme or berth. Whole foyer, pressure continuity, structural capacity and final visuals remain open; all eight groups remain unfinished. See AFT_CROWN_FOYER_WAITING_EDGES.md.
