@@ -1,21 +1,17 @@
 {
-  "bounded_gate": "IN_PROGRESS",
+  "bounded_gate": "PASS",
   "native_source_gate": "PASS",
-  "phase": "physical_connections_r010_unfinished_WIP",
+  "phase": "physical_connections_r010_with_angled_terminal_r001_native_scoped_PASS",
   "production_active": false,
   "protected_source_pins": 200,
   "owned_parts": 101,
   "exact_preimages": 10,
-  "native_files_retained_current_digests": 22,
-  "latest_completed_engine_revision": "r010",
-  "latest_completed_engine_status": "FAIL",
-  "latest_completed_checks": 1399,
-  "latest_completed_errors": [
-    "maintenance_reach_1_1_17.0899992370605",
-    "maintenance_reach_1_1_17.5750007629395",
-    "maintenance_reach_1_1_18.0800003814697"
-  ],
-  "maintenance_reach_proved": 24,
+  "native_files_retained_current_digests": 23,
+  "latest_completed_engine_revision": "r010_with_terminal_r001",
+  "latest_completed_engine_status": "PASS",
+  "latest_completed_checks": 1400,
+  "latest_completed_errors": [],
+  "maintenance_reach_proved": 27,
   "maintenance_reach_targets": 27,
   "fitting_motion_samples": 220,
   "fixed_person_barrier_samples": 104,
@@ -27,33 +23,43 @@
   "closed_used_support_contacts": [
     "D03_protected_crew_cover"
   ],
-  "source_views_pending": true,
+  "source_views_pending": false,
   "old_ship_gd_unchanged": true,
   "new_floor_m2": 0,
   "homes_preserved": 20,
   "rests_preserved": 25,
   "local_unpublished_r004_native_digest_gap_declared": true,
-  "exact_blocker": "Three representative heights on D04HC2_west_LeafMass_1_1: straight native shaft/convex segments meet retained D04H952_Shell_2; alternate home928 paths meet hatch/pane jamb/header. Retained shell, cocoon and source geometry stay unchanged. A contained articulated terminal/angled tool solution needs native authoring and independent contact validation.",
   "proof_receipt_sha256": {
-    "SOURCE_GEOMETRY_CHECK.json": "9ee96fcaba76361b0b82ec769ae5ee828ffd1100b81d7d17d7235d19dd2eaec7",
-    "RUNTIME_PLAN.json": "848dbb96404bb2e19cc5b232b2089e1dad28a7c4ccebc7aa56240a54ecfe9307",
-    "NATIVE_EXPORT_CHECK.json": "5c02f77e7d7d320f19ef819b716032c11b2c6d3a06bbc5ca64c2c1ac16959d3f",
-    "SOURCE_VIEW_REVIEW.json": "3f5ce5f545ba53d35b184b01aace91a0485c3e50bec8dec38055903a20550b22",
-    "REACH_TOOL_NATIVE_CHECK_r002.json": "937cfa984fb4577c12a0b7dc3aee9a47c8cbb86b1083764a99196028a844649d",
+    "SOURCE_GEOMETRY_CHECK.json": "5ebc8a919061912642c7096b4cf675b6c86a7c104b02c23839053943d360c616",
+    "RUNTIME_PLAN.json": "4887d7f39b2d19b6e1619fa68f18e0f170083872851945b85409fd7fd38dfea8",
+    "NATIVE_EXPORT_CHECK.json": "54fccec4aafd113556da1ba3259b4bb5921606f32296399f7a051a010b645460",
+    "SOURCE_VIEW_REVIEW.json": "b3fa059510a3e306e35750ff68a84ea6a30f1cc70da6d4c0dfdbace92e36310a",
+    "SOURCE_TERMINAL_VIEW_RUN_r002.json": "163b89b6bb4021dffd57c34853b7115341a1d9e32bd31ad0d61fac17926f3179",
+    "ANGLED_TERMINAL_NATIVE_CHECK_r001.json": "99fcf815b7cafbe9738ebcb452c0fb621bbacb5648c1bb6fdd1217b9f15ce216",
+    "REVISION_IMMUTABILITY_GUARD_CHECK.json": "23064fb02364d45d44dbb333c53cbaff673f53f92207de03a8a9d3a1a974feb8",
+    "STAFF_COURT_VIEW_GEOMETRY_CONTINUITY.json": "e9b17a1f0ffaf4466e11c3dc09573d13183b5e70ede4aaf1feaf654d94fba243",
     "attempt07_revision_preparation_parse/DUPLICATE_UNPUBLISHED_BUILD.json": "1615693bee04fa8c59ac61a2aec1da9b8b13b5b695e39431530465b8e70f15a9",
-    "attempt13_r008_reflection_winding/SOURCE_REJECTION.json": "ddfb2c55120a6598aa6c7cee22176901f3a8966d872751b02ed55b1589f6d525",
-    "REVISION_IMMUTABILITY_GUARD_CHECK.json": "8072e9ba278c33c8d553fa5e7a68f4d814e127e5e2eebd05b888e339dde972e6"
+    "attempt13_r008_reflection_winding/SOURCE_REJECTION.json": "ddfb2c55120a6598aa6c7cee22176901f3a8966d872751b02ed55b1589f6d525"
   },
   "actual_main_receipt_sha256": {
-    "d04_physical_connections_candidate.json": "fb919a253415f66e06d8425149b0e71d399550d62665157de9c4217a872a07f1"
+    "d04_physical_connections_candidate.json": "81ecb93bd563279602c0d8611403e12b74439021c9494ad401a43b8deb863b23",
+    "d04_care_terminal_candidate.json": "abafd9a80558357a540a51f18fa3bdf0a059aa211e512fe10ca181865ef9d51d"
   },
   "remaining": [
-    "Candidate exact physical connections; live consent/vacancy/dispatch/save absent: all private controls remain closed in production.",
-    "Physical local clean/closed-used destinations on unchanged floor; full commons transfer network/traffic/cart vertical held.",
-    "Reach-only low service hatches retain fixed upper glass and every original planter/plant; no person access or biology/task-completion credit.",
-    "Other west/north courts, full commons/engineering/species/final normal-game/CRT/hardware remain unfinished."
+    "Production private access requires real known consent/vacancy, service-request ownership, lifetime/persistence; unknown stays closed.",
+    "Tool deployment/retraction, care operation and provider-controlled use are not proved by the static native contact poses.",
+    "Join local clean/closed-used lanes to real commons stock/return destinations; stock/refill/save, traffic, cart docking and cart-safe vertical remain held.",
+    "Continue the full952m\u00b2 commons programme, other western/northern courts, habitat/body/biology/activity/privacy/save, primary engineering and final ordinary-game/CRT/hardware review."
   ],
   "recovery_workflow_stopped": true,
   "revision_saving_guard_verified": true,
-  "existing_native_export_files_unchanged_by_guard": 44
+  "existing_native_export_files_unchanged_by_guard": 44,
+  "source_view_gate": "PASS_SCOPED_DIAGNOSTIC",
+  "angled_terminal_targets": 3,
+  "terminal_native_parts": 3,
+  "total_native_tool_shape_queries_per_angled_pose": 6,
+  "tool_deployment_sequence_proved": false,
+  "maintenance_tasks_or_operations_proved": false,
+  "blender_launcher_failure_exit_verified": true,
+  "resolved_blocker": "All three representative central-middle native foliage heights clear using an unscaled telescoping shaft,1.1m offset arm and0.3m hinged tip. All six actual native hulls are queried against original geometry; full worker stance and<=3.4m total native path. Original shells, home geometry and plants unchanged."
 }
