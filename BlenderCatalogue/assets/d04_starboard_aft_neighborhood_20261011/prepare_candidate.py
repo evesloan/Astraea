@@ -100,7 +100,7 @@ for i,z in enumerate([366.4,370.9,375.4]):
 # Original hull/floor bearing positions will be resolved in the actual source before export.
 for x in [63.6,70.5,77.4,82.45]:
  for z in [356.7,363.5,369.9,375.5,383.4]:cube(f'SAC_UpperBearing_{x}_{z}',[x-.14,-3.2,z-.14],[x+.14,16.3,z+.14])
-for z in [356.7,363.5,369.9,375.5,383.4]:cube(f'SAC_UpperTransfer_{z}',[63.2,15.98,z-.14],[84.7,16.3,z+.14])
+for z in [356.7,363.5,369.9,375.5,383.4]:cube(f'SAC_UpperTransfer_{z}',[69.2 if z==375.5 else 63.2,15.98,z-.14],[84.7,16.3,z+.14])
 for x in [63.6,70.5,77.4,82.45]:cube(f'SAC_UpperLong_{x}',[x-.14,15.98,356.2],[x+.14,16.3,383.4])
 for x in [8.5,20,32,44,56,61.4]:
  for z in [379.25,383.15]:cube(f'SAC_LowerBearing_{x}_{z}',[x-.14,-3.2,z-.14],[x+.14,11.8,z+.14])
