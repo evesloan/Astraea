@@ -59,7 +59,7 @@ patch=export_native(bpy,W,R,'D04StarboardAftCourtPatch_r001.blend',P['patch_file
 materials={}
 def mat(role):
  if role in materials:return materials[role]
- m=bpy.data.materials.new('SCR_'+role);m.use_nodes=True;bs=m.node_tree.nodes['Principled BSDF'];bs.inputs['Roughness'].default_value=.78;im=bpy.data.images.load(str(R/'BlenderCatalogue/materials'/('staff/staff_opal.png'if role=='opal_glow'else ('staff/'+role+'.png'if role.startswith('staff_')else role+'.png'))));im.pack();n=m.node_tree.nodes.new('ShaderNodeTexImage');n.image=im;n.interpolation='Closest';m.node_tree.links.new(n.outputs['Color'],bs.inputs['Base Color'])
+ m=bpy.data.materials.new('SAR_'+role);m.use_nodes=True;bs=m.node_tree.nodes['Principled BSDF'];bs.inputs['Roughness'].default_value=.78;im=bpy.data.images.load(str(R/'BlenderCatalogue/materials'/('staff/staff_opal.png'if role=='opal_glow'else ('staff/'+role+'.png'if role.startswith('staff_')else role+'.png'))));im.pack();n=m.node_tree.nodes.new('ShaderNodeTexImage');n.image=im;n.interpolation='Closest';m.node_tree.links.new(n.outputs['Color'],bs.inputs['Base Color'])
  if role=='opal_glow':m.node_tree.links.new(n.outputs['Color'],bs.inputs['Emission Color']);bs.inputs['Emission Strength'].default_value=.6
  materials[role]=m;return m
 for p in P['parts']:
@@ -77,7 +77,7 @@ source_objects={o.name:o for o in dst.objects if o};s=P['gate_source']['source_p
 for i,g in enumerate(P['gates']):
  t=g['pivot'];T=Matrix.Translation(Vector((t[0],-t[2],t[1])))@Matrix.Rotation(math.radians(g['source_rotation_y_degrees']),4,'Z')@Matrix.Translation(-s)
  for name in P['gate_source']['members']+P['gate_source']['control_members']:
-  old=source_objects[name];ob=old.copy();ob.data=old.data.copy();ob.name='SCR_G'+str(i)+'_'+name;bpy.context.collection.objects.link(ob);ob.parent=None;ob.matrix_world=T@old.matrix_world
+  old=source_objects[name];ob=old.copy();ob.data=old.data.copy();ob.name='SAR_G'+str(i)+'_'+name;bpy.context.collection.objects.link(ob);ob.parent=None;ob.matrix_world=T@old.matrix_world
   if name.endswith('_Control')and i>=9:
    d=g['fixed_control_delta'];ob.location+=Vector((d[0],-d[2],d[1]))
   mapping_records.append({'name':ob.name,'source':name,'rotation_godot_y_degrees':g['source_rotation_y_degrees'],'new_pivot':g['pivot'],'geometry_UVs_materials_unchanged':True})

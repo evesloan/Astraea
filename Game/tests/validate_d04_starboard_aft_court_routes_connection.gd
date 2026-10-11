@@ -16,30 +16,30 @@ func run()->void:
  record("production_connected_once",n!=null and ship.find_children("D04StarboardAftCourtRoutes","Node3D",true,false).size()==1)
  if n==null:quit(1);return
  record("sealed_geometry",p.sealed_receipt_sha256==FileAccess.get_sha256("res://artifacts/d04_starboard_aft_court_routes_geometry.json"));var home=ship.find_child("D04StarboardAftHabitatNeighborhood",true,false);record("original_twenty_homes_twentyfive_rests",home.get_meta("preserved_home_allocations")==20 and home.get_meta("preserved_reserved_rests")==25)
- actor.global_position=Vector3(52,16.53,-32);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(actor.global_position)
+ actor.global_position=Vector3(8,16.53,405.2);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(actor.global_position)
  for i in range(20):await physics_frame
- for goal in [Vector3(84,16.5,-32),Vector3(84,16.5,-73.2)]:
+ for goal in [Vector3(44,16.5,405.2),Vector3(44,16.5,443.2)]:
   if not await leg(actor,goal,"original atrium receiving to south staff threshold"):break
  # One original receiving seed only; both loops and public connections are walked.
  for branch in ["south","north"]:
   if not errors.is_empty():break
-  var sign_value:float=-1 if branch=="south"else 1;var entry:int=10 if branch=="south"else 9
+  var end_z:float=445.4 if branch=="south"else 294.6;var direction:float=1 if branch=="south"else -1;var cross_z:float=end_z+direction*1.2;var inside_z:float=end_z+direction*1.95;var public_z:float=end_z-direction*2.2;var entry:int=10 if branch=="south"else 9
   if branch=="north":
-   for goal in [Vector3(84,16.5,-32),Vector3(84,16.5,0),Vector3(84,16.5,32),Vector3(84,16.5,73.2)]:
+   for goal in [Vector3(44,16.5,405.2),Vector3(44,16.5,369),Vector3(44,16.5,340),Vector3(44,16.5,296.8)]:
     if not await leg(actor,goal,"unchanged public house street and commons through route"):break
   if not errors.is_empty():break
   if not await operate(actor,n,p,entry,true):break
-  if not await leg(actor,Vector3(84.3,16.5,sign_value*77.35),"normal staff portal entry to source-supported cross passage"):break
+  if not await leg(actor,Vector3(44.3,16.5,inside_z),"normal staff portal entry to source-supported cross passage"):break
   if not await operate(actor,n,p,entry,false):break
   for side in ["west","east"]:
-   var lane:float=63.2 if side=="west"else 105
-   if not await leg(actor,Vector3(lane,16.5,sign_value*76.6),"enclosed cross passage to outer court artery"):break
+   var lane:float=23.2 if side=="west"else 65
+   if not await leg(actor,Vector3(lane,16.5,cross_z),"enclosed cross passage to outer court artery"):break
    var indices:Array=[]
    for i in range(9):
     var g:Dictionary=p.gates[i]
     if g.branch==branch and abs(float(g.lane_x)-lane)<.01:indices.append(i)
    # Move along the artery from the end towards the original receiving side.
-   indices.sort_custom(func(a,b):return abs(float(p.gates[a].z))>abs(float(p.gates[b].z)))
+   indices.sort_custom(func(a,b):return abs(float(p.gates[a].z)-end_z)<abs(float(p.gates[b].z)-end_z))
    for i in indices:
     var g:Dictionary=p.gates[i];var gate:Node3D=n.get_node(g.name);var outside:float=g.wall_x-2.2 if side=="west"else g.wall_x+2.2
     if not await leg(actor,Vector3(lane,16.5,g.z),"continuous enclosed artery to private work threshold"):break
@@ -54,15 +54,15 @@ func run()->void:
     gate.visit.active=false;gate.visit=null
     if not await leg(actor,Vector3(lane,16.5,g.z),"return from control stance to enclosed artery"):break
    if not errors.is_empty():break
-   if side=="east"and branch=="north":record("narrow_court_remains_sealed",home.find_child("SCK_D04HC2_west_PrivacyScreen",true,false)!=null and home.find_child("SCK_D04HC2_west_GlassUpper",true,false)!=null)
-   if not await leg(actor,Vector3(lane,16.5,sign_value*76.6),"return along retained enclosed court artery"):break
-   if not await leg(actor,Vector3(84.3,16.5,sign_value*77.35),"cross passage return to normal receiving portal"):break
+   if side=="east"and branch=="south":record("narrow_court_remains_sealed",home.find_child("SAK_D04HC2_west_PrivacyScreen",true,false)!=null and home.find_child("SAK_D04HC2_west_GlassUpper",true,false)!=null)
+   if not await leg(actor,Vector3(lane,16.5,cross_z),"return along retained enclosed court artery"):break
+   if not await leg(actor,Vector3(44.3,16.5,inside_z),"cross passage return to normal receiving portal"):break
   if not errors.is_empty():break
   if not await operate(actor,n,p,entry,true):break
-  if not await leg(actor,Vector3(84,16.5,sign_value*73.2),"normal staff portal egress to original public receiving"):break
+  if not await leg(actor,Vector3(44,16.5,public_z),"normal staff portal egress to original public receiving"):break
   if not await operate(actor,n,p,entry,false):break
  if errors.is_empty():
-  for goal in [Vector3(84,16.5,32),Vector3(52,16.5,32),Vector3(84,16.5,32),Vector3(84,16.5,0),Vector3(52,16.5,0)]:
+  for goal in [Vector3(44,16.5,340),Vector3(44,16.5,369.9),Vector3(65,16.5,369.9),Vector3(69,16.5,369.9),Vector3(65,16.5,369.9),Vector3(44,16.5,369.9),Vector3(44,16.5,405.2),Vector3(8,16.5,405.2)]:
    if not await leg(actor,goal,"original receiving interfaces and commons guest arrival preserved"):break
  for spec in p.gates:
   var gate:Node3D=n.get_node(spec.name);record("all_new_gates_end_closed_"+spec.name,gate.open_fraction==0 and not gate.desired_open and gate.visit==null and String(gate.persistent_id)==spec.id)

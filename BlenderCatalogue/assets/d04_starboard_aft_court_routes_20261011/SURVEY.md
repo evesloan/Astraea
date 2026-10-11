@@ -7,3 +7,14 @@ The 0.75m starboard-aft court remains sealed, with no entry/work-reach acceptanc
 Complete master chapters 5,6,7,11,21,32 and the existing staff corridor reference were reviewed. Original low-poly material/fixture families and original fitting/controller are reused. Partial source views are diagnostics; ordinary-game/CRT/hardware/final visual acceptance remains open. Private consent/provider, habitat biology, stock/refill/save/inventory/operational returns and loaded-cart vertical remain open. All eight construction groups remain unfinished, as recorded in Game/docs/FULL_SHIP_SCOPE_INDEX.md; no catalogue coverage is completion. Two historical unpublished native byte versions remain unavailable.
 
 Manual independently read-back Git checkpoints follow the owner's latest instruction. No watcher or credentials are changed.
+
+## Eight existing construction groups — all unfinished
+
+- 1. Residential districts, homes and commons — unfinished.
+- 2. Luxury homes and shared family/VIP facilities — unfinished.
+- 3. Crew housing and shipwide service network — unfinished.
+- 4. Townline tram, stations and destination circulation — unfinished.
+- 5. Shopping promenade and 100 small shops — unfinished.
+- 6. Waterpark, lazy river, slides and restaurant cascade — unfinished.
+- 7. Whole upper hull, roofs, atrium and receiving structure — unfinished.
+- 8. Unfinished construction inside existing destination headings — unfinished.

@@ -15,7 +15,7 @@ for i,g in enumerate(P['gates']):
  t=g['pivot'];T=Matrix.Translation(Vector((t[0],-t[2],t[1])))@Matrix.Rotation(math.radians(g['source_rotation_y_degrees']),4,'Z')@Matrix.Translation(-s)
  for n,q in src.items():
   if n in P['closed_staging_source_members']:continue
-  ob=bpy.data.objects['SCR_G'+str(i)+'_'+n];assert payload(ob)==q['data'],n
+  ob=bpy.data.objects['SAR_G'+str(i)+'_'+n];assert payload(ob)==q['data'],n
   d=g.get('fixed_control_delta',[0,0,0])if n.endswith('_Control')and i>=9 else[0,0,0]
   delta=Vector((d[0],-d[2],d[1]))
   for v in ob.data.vertices:error=max(error,(ob.matrix_world@v.co-T@q['matrix']@v.co-delta).length)
