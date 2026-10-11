@@ -1,0 +1,22 @@
+from pathlib import Path
+import bpy,json,hashlib
+from mathutils import Vector
+W=Path(__file__).resolve().parent;R=W.parents[2];P=json.load(open(W/'RUNTIME_PLAN.json'));B=lambda p:(p[0],-p[2],p[1]);sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();pins={a['native']:sha(W/a['native'])for a in P['native_export_records']};records=[]
+def append(native):
+ with bpy.data.libraries.load(str(W/native),link=False)as(src,dst):dst.objects=src.objects
+ for obj in dst.objects:
+  if obj:bpy.context.collection.objects.link(obj)
+for native,name,at,target,idx in [('D04StarboardSouthReceiving_r003.blend','SOURCE_SOUTH_RECEIVING.png',[8,18.15,-405.2],[44,17.75,-405.2],None),('D04StarboardHome_991_r001.blend','SOURCE_SOUTH_PAIRED_AQUATIC_991.png',[41,18.15,-441.6],[34.7,17.4,-439.65],991)]:
+ bpy.ops.wm.open_mainfile(filepath=str(W/native));append('D04StarboardSouthCourtsAndTransfer_r001.blend')
+ if idx is None:
+  for r in P['rooms']:append(f"D04StarboardHome_{r['source_index']}_r001.blend")
+  append('D04StarboardSouthEntryGuardSuccessors_r001.blend')
+  for pre in P['guard_preimages']:
+   obj=bpy.data.objects.get(pre['name']);assert obj;bpy.data.objects.remove(obj,do_unlink=True)
+ s=bpy.context.scene;s.render.engine='CYCLES';s.cycles.samples=8;s.cycles.use_denoising=False;s.render.threads_mode='FIXED';s.render.threads=3;s.render.resolution_x=960;s.render.resolution_y=640;s.render.resolution_percentage=100;s.render.image_settings.file_format='PNG';s.view_settings.view_transform='AgX';s.view_settings.exposure=-1;s.world=bpy.data.worlds.new('NativeDiagnostic');s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs[0].default_value=(.24,.27,.32,1);s.world.node_tree.nodes['Background'].inputs[1].default_value=.35
+ lights=P['receiving_lights']if idx is None else next(r for r in P['rooms']if r['source_index']==idx)['lights']
+ for item in lights:
+  bpy.ops.object.light_add(type='AREA',location=B(item['at']));bpy.context.object.data.energy=160;bpy.context.object.data.size=1.2
+ assert not(W/name).exists();bpy.ops.object.camera_add(location=B(at));o=bpy.context.object;o.data.lens=23;o.rotation_euler=(Vector(B(target))-o.location).to_track_quat('-Z','Y').to_euler();s.camera=o;s.render.filepath=str(W/name);bpy.ops.render.render(write_still=True);records.append(name)
+for f,h in pins.items():assert sha(W/f)==h
+(W/'SOURCE_VIEW_RUN.json').write_text(json.dumps({'status':'PASS_NATIVE_UNCHANGED','images':records,'native_pins_unchanged':pins,'eye_height_m':1.65,'diagnostic_fill':True,'moving_runtime_doors_not_in_source_view':True,'ordinary_game_CRT_hardware_accepted':False},indent=2)+'\n')
