@@ -89,6 +89,15 @@ func run():
   var lo:=Vector3(INF,INF,INF);var hi:=-lo
   for at in part.verts:lo=lo.min(v(at));hi=hi.max(v(at))
   var a:AABB=mesh.global_transform*mesh.get_aabb();ck(a.position.distance_to(lo)<.001 and a.end.distance_to(hi)<.001,"actual native bounds "+part.name)
+ for part in p.parts:
+  if not str(part.name).begins_with("PAR_CourtHeader"):continue
+  var mesh:MeshInstance3D=n.find_child(part.name,true,false);var center:=Vector3.ZERO
+  for at in part.verts:center+=v(at)
+  center/=part.verts.size();var points:=PackedVector3Array()
+  for at in part.verts:points.append(center+(v(at)-center)*.98)
+  var shape:=ConvexPolygonShape3D.new();shape.points=points;shape.margin=.0001;var query:=PhysicsShapeQueryParameters3D.new();query.shape=shape;query.transform=Transform3D.IDENTITY;query.exclude=rids(mesh)
+  var hits:=space.intersect_shape(query,64);ck(hits.is_empty(),"fitted header interior does not duplicate retained glass or source members "+part.name)
+  if not hits.is_empty():print("HEADER_CONTACT ",part.name," ",hits.map(func(row):return str(row.collider.get_path())))
  var exclude:=rids(n);var bearing_count:=0
  for s in p.support_preimages:
   for c in s.corners:
