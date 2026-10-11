@@ -177,6 +177,7 @@ func _ready() -> void:
 	$ShipSpace/PersistentActors.add_child(player)
 	player.spawn_position = Vector3(63.0,d09_y+0.1,-20.5)
 	player.position = player.spawn_position
+	load("res://scripts/d04_port_central_court_work_links.gd").build(self)
 	var lighting_budget := Node.new()
 	lighting_budget.name = "LocalShadowSourceBudget"
 	lighting_budget.set_script(load("res://scripts/lighting_budget.gd"))
