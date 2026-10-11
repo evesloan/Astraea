@@ -13,7 +13,9 @@ func configure(ship: Node3D, player: Node3D) -> void:
 	for light in ship.find_children("*","Light3D",true,false):
 		sources.append(light)
 		requested_shadow[light.get_instance_id()] = light.shadow_enabled
-		if light.shadow_enabled: light.shadow_enabled = false
+		if light.shadow_enabled:
+			light.shadow_enabled = false
+			light.visible = false
 	refresh()
 func _process(delta: float) -> void:
 	elapsed += delta
@@ -32,8 +34,10 @@ func refresh() -> void:
 		if not requested_shadow[light.get_instance_id()]: continue
 		var reach: float = light.spot_range if light is SpotLight3D else (light.omni_range if light is OmniLight3D else 120.0)
 		var distance := actor.global_position.distance_to(light.global_position)
-		# Normalize for source reach; retain a small preference to avoid boundary flicker.
-		var score := distance/maxf(reach,1.0)-(0.08 if light.visible else 0.0)
+		# Bound local ranking reach; imported unbounded-range lights must not
+		# crowd every local fixture out of the 32 visibility candidates.
+		# Actual illumination ranges remain unchanged. Retain the existing hysteresis.
+		var score := distance/clampf(reach,1.0,32.0)-(0.08 if light.visible else 0.0)
 		# Keep only the nearest visibility candidates; avoid sorting every ship light.
 		if ranked.size() == MAX_VISIBILITY_CANDIDATES and score >= float(ranked[-1].score): continue
 		var insert_at := ranked.size()

@@ -1,0 +1,64 @@
+extends SceneTree
+var checks:Array=[]
+var errors:Array=[]
+func record(label:String,ok:bool)->void:
+ checks.append({"label":label,"pass":ok})
+ if not ok:errors.append(label)
+func vec(a:Array)->Vector3:return Vector3(a[0],a[1],a[2])
+func _initialize()->void:call_deferred("run")
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
+ for i in range(120):await physics_frame
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/AFT_CROWN_SITTING_LIGHTING.json"));var n:Node3D=ship.find_child("AftCrownSittingLighting",true,false);var bays:Node3D=ship.find_child("AftCrownSittingBays",true,false);var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+ record("installed_once",n!=null and ship.find_children("AftCrownSittingLighting","Node3D",true,false).size()==1)
+ record("existing_bays_retained",bays!=null);record("budget_unchanged",budget.shadow_source_budget==8)
+ if n==null:quit(1);return
+ record("idempotent",load("res://scripts/aft_crown_sitting_lighting.gd").build(ship)==n)
+ for f in p.model_pins:record("new_model_hash_"+f,FileAccess.get_sha256("res://assets/models/"+f)==p.model_pins[f])
+ var lights:Array=[]
+ for item in p.fixture_instances:
+  var lamp:OmniLight3D=n.get_node(item.name+"__Light");lights.append(lamp)
+  record("actual_exported_exit_"+item.name,lamp.global_position.distance_to(vec(item.emitter))<.00003)
+  record("registered_shadow_source_"+item.name,budget.sources.has(lamp)and budget.requested_shadow[lamp.get_instance_id()])
+  record("supported_cubemap_"+item.name,lamp.omni_shadow_mode==OmniLight3D.SHADOW_CUBE)
+  record("range_and_energy_"+item.name,lamp.omni_range==10 and absf(lamp.light_energy-1.4)<.00001)
+  record("opal_does_not_self_shadow_"+item.name,(n.find_child(item.name+"__LANTERN_OpalDiffuser",true,false)as MeshInstance3D).cast_shadow==GeometryInstance3D.SHADOW_CASTING_SETTING_OFF)
+  var mount:MeshInstance3D=n.find_child(item.name+"__PierMount",true,false);var pier:MeshInstance3D=bays.find_child(item.pier,true,false)
+  record("mount_and_original_pier_"+item.name,mount!=null and pier!=null)
+  if mount!=null and pier!=null:
+   var b:AABB=mount.global_transform*mount.get_aabb();var a:AABB=pier.global_transform*pier.get_aabb();var overlap:=b.intersection(a)
+   record("actual_mount_positive_overlap_"+item.name,overlap.size.x>.01 and overlap.size.y>.9 and overlap.size.z>.19)
+   record("mount_above_worker_envelope_"+item.name,b.position.y>108.7)
+ actor.set_physics_process(false);budget.set_process(false)
+ var samples:Array=[]
+ for at in [Vector3(-23,106.53,159.5),Vector3(-20,106.53,161.5),Vector3(23,106.53,159.5),Vector3(20,106.53,161.5)]:
+  actor.global_position=at;actor.velocity=Vector3.ZERO;actor.set_controls_enabled(false);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(at)
+  for i in range(20):await physics_frame
+  budget.refresh()
+  var ranked:Array=[]
+  for light in budget.sources:
+   if not is_instance_valid(light)or not light.is_inside_tree()or not budget.requested_shadow[light.get_instance_id()]:continue
+   var reach:float=light.spot_range if light is SpotLight3D else light.omni_range if light is OmniLight3D else 120.0
+   ranked.append({"name":light.name,"score":actor.global_position.distance_to(light.global_position)/maxf(reach,1)-(.08 if light.visible else 0),"clear":budget._has_visible_sample(light),"range":reach,"distance":actor.global_position.distance_to(light.global_position)})
+  ranked.sort_custom(func(a,b):return a.score<b.score)
+  print("LIGHT_DIAGNOSTIC ",JSON.stringify({"actor_actual":[actor.global_position.x,actor.global_position.y,actor.global_position.z],"budget_actor_is_original":budget.actor==actor,"ranked":ranked.slice(0,34)}))
+  var active:=0;var new_active:=0
+  for light in budget.sources:
+   if light.visible and light.shadow_enabled:active+=1
+  for lamp in lights:
+   if lamp.visible and lamp.shadow_enabled:new_active+=1
+   record("no_unshadowed_wall_leak_"+str(samples.size())+lamp.name,not lamp.visible or lamp.shadow_enabled)
+  record("bounded_global_sources_"+str(samples.size()),active<=8)
+  record("bay_fixture_illumination_admitted_"+str(samples.size()),new_active>=2)
+  samples.append({"at":[at.x,at.y,at.z],"active_global_shadow_sources":active,"active_new_fixture_sources":new_active})
+ # Simple actual floor/receiver ray proof complements light-budget line-of-sight.
+ var space:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state
+ for item in p.fixture_instances:
+  var start:=vec(item.emitter);var target:=Vector3(-23 if item.bay=="Port"else 23,106.52,159.5 if item.origin[2]<160 else 163.5)
+  var lamp:OmniLight3D=n.get_node(item.name+"__Light")
+  record("receiver_within_authored_range_"+item.name,start.distance_to(target)<lamp.omni_range)
+  var hit:=space.intersect_ray(PhysicsRayQueryParameters3D.create(start,target))
+  record("source_pool_receiver_ray_clear_"+item.name,hit.is_empty())
+  if not hit.is_empty():print("RECEIVER_CONTACT ",item.name," ",hit.position," ",hit.collider.get_parent().name)
+ var out={"status":"PASS"if errors.is_empty()else"HOLD","checks":checks.size(),"errors":errors,"samples":samples,"new_source_count":lights.size(),"source_model_pins":p.model_pins,"mount_contacts":8,"original_fixture_meshes":64,"global_shadow_budget":8,"test_scope":"Connected current ship,fixture-marker placement,mount contact,self-shadow policy,global budget and actual receiver rays;optical sample seeds are not traversal claims","pixel_lighting_or_hardware_acceptance":false}
+ FileAccess.open("res://artifacts/aft_crown_sitting_lighting.json",FileAccess.WRITE).store_string(JSON.stringify(out,"  "));print(JSON.stringify(out));quit(0 if errors.is_empty()else 1)

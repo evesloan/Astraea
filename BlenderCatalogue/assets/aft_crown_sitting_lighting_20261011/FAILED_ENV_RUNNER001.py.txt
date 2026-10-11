@@ -1,0 +1,16 @@
+from pathlib import Path
+import subprocess,json,sys,datetime,signal
+W=Path(__file__).resolve().parent
+active=[q for q in subprocess.check_output(['ps','-eo','pid,comm'],text=True).splitlines()[1:]if q.split()[1]in ['godot','blender']];assert not active,active
+label=sys.argv[1];cmd=sys.argv[2:];assert label and cmd and not(W/(label+'.log')).exists()
+with open(W/(label+'.log'),'xb')as log:
+ p=subprocess.Popen(cmd,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+ (W/(label+'_PROCESS.json')).write_text(json.dumps({'pid':p.pid,'command':cmd,'owned_by_single_executor':True,'no_preexisting_engine_or_blender':True,'start_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()},indent=2)+'\n')
+ try:code=p.wait(timeout=240)
+ except subprocess.TimeoutExpired:
+  p.terminate()
+  try:p.wait(timeout=10)
+  except subprocess.TimeoutExpired:p.kill();p.wait()
+  raise RuntimeError('Owned process timed out and was stopped;no retry launched')
+print((W/(label+'.log')).read_text()[-2800:]);assert code==0,code
+assert not[ q for q in subprocess.check_output(['ps','-eo','pid,comm'],text=True).splitlines()[1:]if q.split()[1]in ['godot','blender']]
