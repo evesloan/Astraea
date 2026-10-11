@@ -1,3 +1,11 @@
+# D04 commons service/activity band — connected WIP
+
+**D04 connected commons/service/activity WIP:** The new 170.82 m² enclosed band connects to the retained arrival and all20 home proposals/25 unchanged rest reservations. Quiet reading/activity, planted outlook, clean-stock/linen and closed textile/ordinary-waste return bays now have tested access. Original furniture remains in place; four original capped bottles contact the measured interior cabinet deck. Independently retained sealed checkpoint1a758b03 precedes this connection. 458 sealed +884 connected +46 protected receiving checks PASS:16 actual-player traversals,82 retained-cart maneuver poses including every turn,328 wheel-floor samples,54 gallery/service turn poses and96 sweeps. These are contact/clearance checks; actual pushed-cart operation remains held. 126 owned parts/eight rigid original bindings,130 protected pins,105 guarded exports and six inspected source views are preserved. Full commons programme, horticultural service, controlled clean/soiled crossings, stock/refill/save, environmental/species biology, primary engineering, cart-safe vertical access and final ordinary in-game/CRT/hardware acceptance remain UNFINISHED. No whole-neighborhood, capacity or all-eight-group completion is claimed. See [scope](D04_PORT_FORWARD_COMMONS_SERVICE.md).
+
+The east-side cart passage uses a source-derived 80 mm westward alignment before the new wall and a sampled gallery turn. All cart body/wheel profiles, collision margins, original furniture and source aperture geometry remain unchanged. The failed approaches and the passing intermediate are retained. This does not certify cart handling, stock operations or segregated gallery traffic.
+
+## Retained sealed native evidence
+
 # D04 commons service/activity band — sealed native WIP
 
 The 170.82 m² enclosed band now contains a quiet reading/activity table with original chairs, a planted lightwell, distinct clean-stock/linen and closed textile/ordinary-waste return bays, visible fixtures and a 3.7 m gallery. Four original capped bottles contact the original cabinet's measured 17.009 m interior shelf deck; its 17.025 m rolled rim stays intact. Separate bays do not certify operational sanitation: shared-gallery clean/soiled crossings and product/refill/save operation remain held.

@@ -86,12 +86,19 @@ func run()->void:
 	var segments:Array=[]
 	for i in range(p.gallery_route.size()-1):segments.append([p.gallery_route[i],p.gallery_route[i+1]])
 	segments.append([p.gallery_route[1],p.soiled_return_cart_station]);segments.append([p.gallery_route[2],p.clean_stock_cart_station])
-	if p.open_receiving_connection:
-		for i in range(p.public_cart_arrival_route.size()-1):segments.append([p.public_cart_arrival_route[i],p.public_cart_arrival_route[i+1]])
 	var sweep_count:=0
 	for segment in segments:
 		var a:=vec(segment[0]);var b:=vec(segment[1]);var delta:=b-a;var yaw:=atan2(-delta.x,-delta.z);var steps:=int(ceil(delta.length()/.25))
 		for i in range(steps+1):record("retained_cart_sweep_"+str(sweep_count),cart_clear(space,a.lerp(b,float(i)/steps),yaw));sweep_count+=1
+	var public_cart_poses:=0
+	var wheel_floor_samples:=0
+	if p.open_receiving_connection:
+		var cart_data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/cleaning_cart_contacts.json"))
+		for item in p.public_cart_arrival_maneuver_poses:
+			var at:=vec(item.position);var basis:=Basis(Vector3.UP,float(item.yaw));record("public_cart_maneuver_"+str(public_cart_poses),cart_clear(space,at,float(item.yaw)))
+			for wheel in cart_data.wheel_contacts:
+				var contact:=at+basis*vec(wheel.center)-Vector3.UP*float(wheel.radius);var h:=ray(space,contact+Vector3.UP*.02,contact-Vector3.UP*.02);record("public_cart_wheel_floor_"+str(wheel_floor_samples),not h.is_empty() and str(h.collider.get_parent().name) in ["D04CS_Floor","D04PF_ReceivedFloor"] and absf(h.position.y-16.5)<.002);wheel_floor_samples+=1
+			public_cart_poses+=1
 	# Opaque partition physically separates clean and return stances; no dirty-route operation is inferred.
 	var h:=ray(space,vec(p.clean_stock_cart_station)+Vector3.UP,vec(p.soiled_return_cart_station)+Vector3.UP);record("clean_return_partition",not h.is_empty() and str(h.collider.get_parent().name)=="D04CS_CellPartition_1")
 	var stock:=commons.find_child("D04CS_CleanStockCabinet__*",true,false);record("original_stock_cabinet_present",stock!=null)
@@ -114,5 +121,5 @@ func run()->void:
 			var q:Dictionary=await walk_to(player,goal);walks.append(q);record("actual_player_walk_"+str(walks.size()),q.reached and q.floor_contact)
 			if not q.reached:break
 	physical_key(false)
-	var result={"status":"PASS"if errors.is_empty()else"FAIL","stage":"connected"if p.open_receiving_connection else"sealed","check_count":checks.size(),"checks":checks,"errors":errors,"model_pins":p.model_pins,"existing_player_walks":walks,"retained_cart_sweep_samples":sweep_count,"cart_turn_samples":54,"keel_underside_samples":108,"ray_excludes":0,"primary_load_accepted":false,"cart_safe_vertical_accepted":false,"stock_refill_save_operation_accepted":false,"shared_clean_soiled_crossing_operation_accepted":false,"ordinary_graphics_CRT_hardware_accepted":false,"all20_connected_home_proposals_and25_existing_rests_preserved":true}
+	var result={"status":"PASS"if errors.is_empty()else"FAIL","stage":"connected"if p.open_receiving_connection else"sealed","check_count":checks.size(),"checks":checks,"errors":errors,"model_pins":p.model_pins,"existing_player_walks":walks,"retained_cart_sweep_samples":sweep_count,"public_cart_maneuver_poses":public_cart_poses,"public_cart_wheel_floor_samples":wheel_floor_samples,"cart_turn_samples":54,"keel_underside_samples":108,"ray_excludes":0,"primary_load_accepted":false,"cart_safe_vertical_accepted":false,"stock_refill_save_operation_accepted":false,"shared_clean_soiled_crossing_operation_accepted":false,"ordinary_graphics_CRT_hardware_accepted":false,"all20_connected_home_proposals_and25_existing_rests_preserved":true}
 	FileAccess.open("res://artifacts/d04_port_forward_commons_service_connected.json"if p.open_receiving_connection else"res://artifacts/d04_port_forward_commons_service_sealed.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":checks.size(),"errors":errors}));quit(0 if errors.is_empty()else 1)
