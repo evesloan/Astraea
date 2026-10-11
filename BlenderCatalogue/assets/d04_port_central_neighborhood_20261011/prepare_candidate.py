@@ -33,6 +33,15 @@ for u in units:
  rooms.append(r);mapping_records.append({'target_index':idx,'compatible_original_template_index':template['source_index'],'rests':u['proposed_rest_place_count'],'proper_rigid_translation_xyz':[-40,0,370]})
 removed={a['name']for p in contracts for k in ['guard_preimages','commons_frame_preimages','frame_joint_preimages']for a in p.get(k,[])}
 courtparts=[part(a,'PCK_')for p in contracts for a in p['commons_parts']+p['guard_successor_parts']if a['name']not in removed and 'commons'not in a['name'].lower()];courts=[{**a,'geometry':geom(a['geometry'])}for p in contracts for a in p['courts']if a['side']!='commons'];assert len(courts)==10
+successors=[]
+for q in courtparts:
+ if q['name']=='PCK_D04H4_D04NR_EastGuard_0_Successor_0':
+  for i,(z0,z1)in enumerate([(4,30.3),(33.7,40.22000000000003)]):
+   a=copy.deepcopy(q);a['name']=q['name']+'_CentralBranch_'+str(i)
+   for v in a['verts']:v[2]=z0 if v[2]==4 else z1
+   successors.append(a)
+ else:successors.append(q)
+courtparts=successors
 parts=[];faces=[[0,3,2,1],[4,5,6,7],[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]];text=(R/'BlenderCatalogue/assets/d04_port_forward_receiving_20261010/prepare.py').read_text()
 for n in ast.parse(text).body:
  if isinstance(n,ast.FunctionDef)and n.name in ['add','cube','prism','segment']:exec(compile(ast.get_source_segment(text,n),'<reviewed existing architectural helpers>','exec'))
