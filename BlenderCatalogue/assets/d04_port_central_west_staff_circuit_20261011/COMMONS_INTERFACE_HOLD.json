@@ -1,0 +1,73 @@
+{
+  "status": "HELD_INTERFACE",
+  "scope": "Port-central commons staff links",
+  "current_canonical_base": "49d3a883f50891bf5000181fe30a5200d8670062",
+  "source_pins": {
+    "Game/data/architecture/D04_PORT_CENTRAL_NEIGHBORHOOD.json": "d446a00c3f761791ca203859da0e0e990782009760ba1d7d4777c4ed87b3091a",
+    "Game/data/whole_ship_layout.json": "d641e95cf82b5ddd19e9448dc5d029aef2123d32630a08810a2169c8979706d8",
+    "Game/docs/master_source/MASTER_CURRENT_APPLICATION.json": "baeaea99c08680a91c9660cbce200d2ece4b78aa7fcf869338497f47db686a71",
+    "Game/docs/master_source/MASTER_FULL_CONTENT_INDEX.json": "f3128ddcbd40966f01e10cfc6a35d7d8444aaaeff86f52126d271249a8d74ddb",
+    "Game/assets/models/D04_PORT_CENTRAL_COMBINEDSTRUCTURE_r002.glb": "bbb3458e997ec563376f8a10437765610f4a0ab682570162632712816ffccac5"
+  },
+  "physical_constraints": [
+    {
+      "interface": "Direct northern staff-terminus to commons service cells",
+      "retained_public_spur": {
+        "x": [
+          -81.95,
+          -51
+        ],
+        "z": [
+          -33.7,
+          -30.3
+        ],
+        "floor_y": 16.5
+      },
+      "reason": "A direct same-deck route crosses the original public receiving spur. No shared public/service crossing is silently installed."
+    },
+    {
+      "interface": "Direct eastern used route toward commons/east southern courts",
+      "retained_middle_public_spur": {
+        "x": [
+          -63,
+          -51
+        ],
+        "z": [
+          -3,
+          3
+        ],
+        "floor_y": 16.5
+      },
+      "reason": "Original public floor/edge guards remain exact. Southern east courts are served instead by the source-checked southern perimeter bypass beyondZ75.4."
+    },
+    {
+      "interface": "Grade-separated alternative",
+      "original_Training_allocation": {
+        "x": [
+          -98,
+          -52
+        ],
+        "z": [
+          -34,
+          34
+        ],
+        "original_ceiling_bottom_y": 15.9,
+        "original_ceiling_top_y": 16.14
+      },
+      "next_original_deck_floor_y": 21,
+      "reason": "A lowered crossing uses the original Training volume/ceiling; a raised route at20.5 meets D05. No allocation/ceiling/deck cut is permitted by this package."
+    },
+    {
+      "interface": "Western/southern perimeter to commons rear service",
+      "reason": "Commons public house-street entrances terminate atZ\u00b113. A direct rear branch must reconcile these entrances and original quiet/social bay furnishings/privacy; an enclosed work-only composition has not been source-verified."
+    },
+    {
+      "interface": "Existing commons low service canopy",
+      "retained_clearance_m": 2.65,
+      "original_gate_profile_height_m": 2.66,
+      "reason": "The original gate cannot simply be scaled or forced beneath the retained canopy. A separately authored lawful transition may be possible; this receipt does not claim the interface is impossible."
+    }
+  ],
+  "new_commons_geometry_installed": false,
+  "next_work": "Develop a bounded original-geometry-aware separated commons work transition; retain all public entrances, floor/roof/Training/D05 datums, stock cupboard/bottles and closed return cells. No provider enabled."
+}
