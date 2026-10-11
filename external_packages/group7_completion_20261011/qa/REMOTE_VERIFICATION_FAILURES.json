@@ -1,0 +1,42 @@
+{
+  "status": "HISTORICAL_FAILED_ATTEMPTS_RETAINED",
+  "checkpoint_under_verification": "afe57e4fa7bfcbf127b493bac9748ca226cd3cc5",
+  "attempts": [
+    {
+      "status": "FAILED",
+      "stage": "fresh remote blob verification",
+      "commit": "afe57e4fa7bfcbf127b493bac9748ca226cd3cc5",
+      "reason": "new bare store lazy/direct blob fetch lacked Git authentication",
+      "store": "/workspace/astraea-group7-remote-verification-20261011.git",
+      "log": "/tmp/astraea_group7_remote_verification.log",
+      "credentials_or_permissions_changed": false,
+      "published_checkpoint_changed": false
+    },
+    {
+      "status": "STOPPED",
+      "stage": "fresh remote blob verification attempt002",
+      "reason": "Git direct-OID fetch was lazily fetching each missing requested OID during negotiation; stopped to retry one bulk request with GIT_NO_LAZY_FETCH=1",
+      "store": "/workspace/astraea-group7-remote-verification-20261011-v2.git",
+      "log": "/tmp/astraea_group7_remote_verification_v2.log",
+      "existing_remote_objects_retained": true,
+      "credential_or_permission_changes": false,
+      "published_checkpoint_changed": false
+    },
+    {
+      "status": "FAILED",
+      "stage": "remote verification attempt003",
+      "reason": "bulk direct-OID fetch did not populate all requested blobs with lazy lookups disabled; missing blob assertion retained",
+      "log": "/tmp/astraea_group7_remote_verification_v3.log",
+      "remote_objects_retained": true,
+      "published_checkpoint_changed": false
+    }
+  ],
+  "successful_protocol_diagnostic": {
+    "actual_remote_blob": "27774f5f03bc2b40d270f3e9931a8927f1afca1b",
+    "protocol": "promisor stdin explicit blob:none and noop negotiation",
+    "returncode": 0,
+    "object_type": "blob"
+  },
+  "correction": "Published verifier uses the successful promisor stdin protocol and an existing GH_TOKEN only in child process environment, never stored or printed. Final exact-checkpoint verification receipt remains external to avoid self-reference.",
+  "whole_group_accepted": false
+}

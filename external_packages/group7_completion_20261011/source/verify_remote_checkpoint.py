@@ -1,13 +1,28 @@
 """Verify remote checkpoint bytes in a new store with no local object alternates."""
-import argparse,hashlib,json,subprocess
+import argparse,base64,hashlib,json,os,subprocess
 from pathlib import Path
 ap=argparse.ArgumentParser()
 ap.add_argument('--commit',required=True);ap.add_argument('--tree',required=True)
 ap.add_argument('--manifest-sha256',required=True);ap.add_argument('--store',required=True)
 ap.add_argument('--receipt',required=True);args=ap.parse_args()
 repo=Path(args.store);assert not repo.exists(), 'Use a new empty independent verification store'
-subprocess.run(['git','init','--bare',str(repo)],check=True,stdout=subprocess.DEVNULL)
-def git(*cmd):return subprocess.check_output(['git','-C',str(repo),*cmd])
+# Use an already-provided environment credential only for these child processes.
+# Never write credentials/configuration or emit the header to logs.
+git_env=os.environ.copy()
+if git_env.get('GH_TOKEN'):
+    count=int(git_env.get('GIT_CONFIG_COUNT','0'))
+    git_env['GIT_CONFIG_COUNT']=str(count+1)
+    git_env['GIT_CONFIG_KEY_'+str(count)]='http.https://github.com/.extraHeader'
+    git_env['GIT_CONFIG_VALUE_'+str(count)]='AUTHORIZATION: basic '+base64.b64encode(('x-access-token:'+git_env['GH_TOKEN']).encode()).decode()
+git_env['GIT_NO_LAZY_FETCH']='1'
+subprocess.run(['git','init','--bare',str(repo)],check=True,stdout=subprocess.DEVNULL,env=git_env)
+def git(*cmd):return subprocess.check_output(['git','-C',str(repo),*cmd],env=git_env)
+def fetch_blobs(oids):
+    # This is Git's promisor protocol. Positional OID refspecs cause lazy
+    # per-object type lookups and may fail connectivity checks for blob roots.
+    result=subprocess.run(['git','-C',str(repo),'-c','fetch.negotiationAlgorithm=noop','fetch','--no-tags','--no-write-fetch-head','--no-auto-maintenance','--recurse-submodules=no','--filter=blob:none','--stdin','origin'],input=('\n'.join(oids)+'\n').encode(),stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=git_env)
+    if result.returncode:
+        raise RuntimeError('Remote blob fetch failed: '+result.stderr.decode(errors='replace')[-4000:])
 git('remote','add','origin','https://github.com/evesloan/Astraea.git')
 branch='refs/heads/handoff/group7-completion-20261011'
 git('fetch','--no-tags','--depth=1','--filter=blob:none','origin',branch)
@@ -20,15 +35,13 @@ for entry in git('ls-tree','-rz',head).split(b'\0'):
     meta,name=entry.split(b'\t',1);mode,kind,oid=meta.split();assert kind==b'blob'
     paths[name.decode()]=oid.decode()
 manifest_path='external_packages/group7_completion_20261011/RESOURCE_HASHES.json'
+fetch_blobs([paths[manifest_path]])
 raw=git('cat-file','blob',paths[manifest_path])
 actual_manifest_hash=hashlib.sha256(raw).hexdigest();assert actual_manifest_hash==args.manifest_sha256
 manifest=json.loads(raw);wanted=manifest['files']
 oids=sorted({paths[name]for name in wanted})
-# Fetch reachable blob objects in one request, avoiding serial lazy transfers.
-# A server that restricts direct blob wants falls back to standard promisor reads.
-batch=subprocess.run(['git','-C',str(repo),'fetch','--no-tags','--no-write-fetch-head','--no-auto-maintenance','origin',*oids],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-fallback=batch.returncode!=0
-proc=subprocess.Popen(['git','-C',str(repo),'cat-file','--batch'],stdin=subprocess.PIPE,stdout=subprocess.PIPE)
+fetch_blobs(oids)
+proc=subprocess.Popen(['git','-C',str(repo),'cat-file','--batch'],stdin=subprocess.PIPE,stdout=subprocess.PIPE,env=git_env)
 verified={};total=0
 for name,row in wanted.items():
     oid=paths[name];proc.stdin.write((oid+'\n').encode());proc.stdin.flush()
@@ -43,5 +56,6 @@ proc.stdin.close();assert proc.wait()==0
 aggregate=hashlib.sha256(json.dumps(verified,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 assert aggregate==manifest['files_aggregate_sha256']
 remote=git('ls-remote','origin',branch).decode().split()[0];assert remote==head
-receipt={'status':'PASS','repository':'private evesloan/Astraea','branch':branch,'commit':head,'tree':tree,'manifest_sha256':actual_manifest_hash,'manifest_aggregate_sha256':aggregate,'files_sha256_verified_from_fresh_remote_blobs':len(verified),'bytes_sha256_verified':total,'unique_manifest_blob_objects':len(oids),'independent_store':str(repo),'local_alternates':False,'local_repository_objects_used':False,'direct_blob_fetch_fallback_used':fallback,'main_checkpoint_refs_written':False,'whole_group_accepted':False}
+assert not (repo/'objects/info/alternates').exists()
+receipt={'status':'PASS','repository':'private evesloan/Astraea','branch':branch,'commit':head,'tree':tree,'manifest_sha256':actual_manifest_hash,'manifest_aggregate_sha256':aggregate,'files_sha256_verified_from_fresh_remote_blobs':len(verified),'bytes_sha256_verified':total,'unique_manifest_blob_objects':len(oids),'independent_store':str(repo),'local_alternates':False,'local_repository_objects_used':False,'bulk_fetch_protocol':'promisor stdin explicit blob:none and noop negotiation','lazy_lookups_disabled':True,'credential_or_permission_changes':False,'main_checkpoint_refs_written':False,'whole_group_accepted':False}
 Path(args.receipt).write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt))
