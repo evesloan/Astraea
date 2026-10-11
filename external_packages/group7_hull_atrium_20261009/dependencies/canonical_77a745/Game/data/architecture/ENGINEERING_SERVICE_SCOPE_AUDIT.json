@@ -1,0 +1,2282 @@
+{
+  "schema": 1,
+  "audit_scope": "Finite authoritative-master and inspected technical-blueprint reconciliation; evidence inventory only, no room registry or additive counts",
+  "audited_at": "2026-10-06",
+  "authority": [
+    "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+    "docs/master_source/MASTER_CURRENT_APPLICATION.json"
+  ],
+  "source_image": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+  "source_hashes": {
+    "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx": "222e547eb695f51b11aa928ac30fb36e437866c3bccd8d857c81c5901a700008",
+    "data/programme_ledger.json": "7ad90e3322ef4ce666262d0d27e191f85bf7480fc6e5f2c312f5574c69ca2366",
+    "data/whole_ship_layout.json": "d641e95cf82b5ddd19e9448dc5d029aef2123d32630a08810a2169c8979706d8",
+    "docs/master_source/MASTER_CURRENT_APPLICATION.json": "baeaea99c08680a91c9660cbce200d2ece4b78aa7fcf869338497f47db686a71"
+  },
+  "canonical_deck_mapping": {
+    "printed_D03_logistics": "D01",
+    "printed_D04_engineering": "D02",
+    "printed_D06_crew": "D03",
+    "printed_D05_medical": "D05"
+  },
+  "ship_invariants": {
+    "decks": 18,
+    "length_m": 1082,
+    "max_width_m": 240,
+    "reference_envelope_height_m": 118,
+    "crew_including_player": 400,
+    "guest_capacity_note": "Current master application overrides old 2000 physical-bed invariant; maximum admitted passengers 2000 and 1000 guest units retained. No capacity changes in this audit."
+  },
+  "directory_programme_count": 161,
+  "items": [
+    {
+      "id": "ENGS-001",
+      "name": "Primary fusion core / gallery",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room and contained system",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": 1,
+      "programme_keys": [
+        "D02_directory_01"
+      ],
+      "current_geometry_evidence": "Integrated arrivals/fusion architecture and lift checked; partial hospitality fit-out. Final art, full programme equipment and NPC use pending [scripts/arrivals_fusion.gd]; scripts/arrivals_fusion.gd installs two ContainedFusionExhibit AST-ENG-007 displays inside primary gallery programme. Their loop count is not proof that secondary gallery/second operational reactor is built. Curated sealed machinery and screened service catwalks are explicit.",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-002",
+      "name": "Secondary fusion core / gallery",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room and contained system",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": 1,
+      "programme_keys": [
+        "D02_directory_02"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-003",
+      "name": "Engineering control rooms",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": 2,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-004",
+      "name": "Aft engineering",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "department / subspace",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-005",
+      "name": "Life support plant",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system / plant modules",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": "4 modules",
+      "programme_keys": [
+        "D02_directory_08"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-006",
+      "name": "Atmosphere processors",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system / plant modules",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [
+        "D02_directory_03"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-007",
+      "name": "Water recycling plant",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system / plant modules",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [
+        "D02_directory_04"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-008",
+      "name": "Waste recycling / matter reclamation",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system / plant modules",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [
+        "D01_directory_07"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Printed engineering D04 becomes D02 (Master P491). Waste overlaps D01 reclamation programme; exact plant split unresolved."
+    },
+    {
+      "id": "ENGS-009",
+      "name": "Power distribution nodes",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system nodes",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": 6,
+      "programme_keys": [
+        "D02_directory_07"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-010",
+      "name": "Maintenance workshops",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "rooms / workshop facilities",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": 6,
+      "programme_keys": [
+        "D02_directory_05"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-011",
+      "name": "Technical stores",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "storage rooms / facilities",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-012",
+      "name": "Environmental systems",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system / department",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-013",
+      "name": "Reserve emergency power",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Engineering & Reactor diagram / Engineering systems table"
+        }
+      ],
+      "source_quantity": "100% (30 days)",
+      "programme_keys": [
+        "D02_directory_06"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-014",
+      "name": "Shuttle docks",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "docking facilities",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": "4 (2 port / 2 starboard)",
+      "programme_keys": [
+        "D01_directory_01"
+      ],
+      "current_geometry_evidence": "Integrated arrivals/fusion architecture and lift checked; partial hospitality fit-out. Final art, full programme equipment and NPC use pending [scripts/arrivals_fusion.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Printed logistics D03 becomes D01. Shuttle arrivals/concourse do not account for four dock facilities. Cargo exchange/dispatch aggregate logistics, not additional holds."
+    },
+    {
+      "id": "ENGS-015",
+      "name": "Shuttle concourse",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room / circulation",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D01_directory_09"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Printed logistics D03 becomes D01. Shuttle arrivals/concourse do not account for four dock facilities. Cargo exchange/dispatch aggregate logistics, not additional holds."
+    },
+    {
+      "id": "ENGS-016",
+      "name": "Cargo holds A\u2013C",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "storage volumes",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": "6,000 tonnes capacity; three labeled hold groups",
+      "programme_keys": [
+        "D01_directory_04"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Printed logistics D03 becomes D01. Shuttle arrivals/concourse do not account for four dock facilities. Cargo exchange/dispatch aggregate logistics, not additional holds."
+    },
+    {
+      "id": "ENGS-017",
+      "name": "Cargo dispatch",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "programme",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D01_directory_08"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Printed logistics D03 becomes D01. Shuttle arrivals/concourse do not account for four dock facilities. Cargo exchange/dispatch aggregate logistics, not additional holds."
+    },
+    {
+      "id": "ENGS-018",
+      "name": "Cold refrigerated storage",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "storage volume",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": "12,000 m\u00b3",
+      "programme_keys": [
+        "D01_directory_02"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-019",
+      "name": "Food synthesis hubs",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system / facilities",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [
+        "D01_directory_05"
+      ],
+      "current_geometry_evidence": "Partial synthesis service bay, machinery and tested service door fitted with a supported approach to the D01 port service spine; full plant, production and restocking workflows remain unfinished [scripts/staff_section.gd]; scripts/staff_section.gd explicitly one service bay only, with TransferPump AST-ENG-001, FilterVessel AST-ENG-002 and WaterRecoveryConsole AST-ENG-003. Water-themed props at D01 do not complete D02 water plant.",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-020",
+      "name": "Housekeeping / laundry",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "processing facilities",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [
+        "D01_directory_03"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-021",
+      "name": "General stores and supplies",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "storage facilities",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": 6,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-022",
+      "name": "Waste processing",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "processing facilities",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [
+        "D01_directory_07"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-023",
+      "name": "Repair workshops",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "workshop facilities",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [
+        "D01_directory_06"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-024",
+      "name": "Maintenance bay",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "bay",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-025",
+      "name": "Service vehicle bay",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "bay",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": "Yes",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-026",
+      "name": "Lifeboat embarkation points",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "emergency embarkation facilities",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Logistics & Services diagram / Logistics & Support table"
+        }
+      ],
+      "source_quantity": "8 (per side)",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-027",
+      "name": "Crew accommodation banks",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "accommodation allocation",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": "320 standard quarters in overview; diagram label Crew quarters (200)",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Printed crew D06 becomes D03. 400 crew including player is binding, not an additive sum of printed quarter labels. 200 unlabelled current D03 allocation envelopes are not finished rooms. Current override changes player private cabin to shared home; story deferred."
+    },
+    {
+      "id": "ENGS-028",
+      "name": "Officer cabins",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "accommodation",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": 40,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Printed crew D06 becomes D03. 400 crew including player is binding, not an additive sum of printed quarter labels. 200 unlabelled current D03 allocation envelopes are not finished rooms. Current override changes player private cabin to shared home; story deferred."
+    },
+    {
+      "id": "ENGS-029",
+      "name": "Player shared staff home",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "accommodation",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D03_directory_01"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Printed crew D06 becomes D03. 400 crew including player is binding, not an additive sum of printed quarter labels. 200 unlabelled current D03 allocation envelopes are not finished rooms. Current override changes player private cabin to shared home; story deferred."
+    },
+    {
+      "id": "ENGS-030",
+      "name": "Custodian breakroom",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D03_directory_02"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-031",
+      "name": "Equipment depot",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room / stores",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D03_directory_03"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-032",
+      "name": "Crew dining",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room / activity capacity",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": "300 seats",
+      "programme_keys": [
+        "D03_directory_04"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-033",
+      "name": "Staff recreation",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "rooms / facilities",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": 3,
+      "programme_keys": [
+        "D03_directory_07"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-034",
+      "name": "Training rooms",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "rooms",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [
+        "D03_directory_05"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-035",
+      "name": "Briefing rooms",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "rooms",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": 2,
+      "programme_keys": [
+        "D03_directory_08"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-036",
+      "name": "Staff administration",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "suite",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": 1,
+      "programme_keys": [
+        "D03_directory_06"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-037",
+      "name": "Security stations",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "stations / rooms",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": 6,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-038",
+      "name": "Uniforms and locker rooms",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "support rooms",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": "6 M/F/universal locker rooms",
+      "programme_keys": [
+        "D03_directory_10"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-039",
+      "name": "Crew medical dedicated",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "care support",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": "Yes",
+      "programme_keys": [
+        "D03_directory_09"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-040",
+      "name": "Bridge access",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "circulation interface",
+      "canonical_deck": 3,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Crew Quarters & Operations diagram / Crew Facilities Overview"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-041",
+      "name": "General medical bay",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room / clinical capacity",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": "20 beds",
+      "programme_keys": [
+        "D05_directory_02"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-042",
+      "name": "Surgical suites",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "rooms",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": 4,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-043",
+      "name": "Quarantine rooms",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "rooms",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": 12,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-044",
+      "name": "Species triage pods",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "subspaces",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": 8,
+      "programme_keys": [
+        "D05_directory_01"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-045",
+      "name": "Medical laboratories / research",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "rooms",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": 6,
+      "programme_keys": [
+        "D05_directory_03"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-046",
+      "name": "Pharmacy and xenomed storage",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "storage / support",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": 2,
+      "programme_keys": [
+        "D05_directory_04"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-047",
+      "name": "Isolation airborne / contact",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "support system / rooms unresolved",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": "Yes",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-048",
+      "name": "Multi-species care capability",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "service capability",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": "Yes",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-049",
+      "name": "Telemedicine / remote specialists",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "service / communications",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": "Yes",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-050",
+      "name": "Recovery care",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D05_directory_05"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-051",
+      "name": "Hydration support",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "support programme",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D05_directory_09"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-052",
+      "name": "Consultation pods",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "subspaces",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D05_directory_07"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-053",
+      "name": "Quiet care",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D05_directory_08"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-054",
+      "name": "Atmosphere research",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "research room",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D05_directory_06"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-055",
+      "name": "Family waiting",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "room",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D05_directory_10"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-056",
+      "name": "Life support control on medical diagram",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "control / disputed location",
+      "canonical_deck": 5,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Medical & Life Support diagram / Medical Facilities table"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D02_directory_08"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Reference shows atmosphere processors, water recycling and life-support control on medical D05 as well as engineering D04. Master Table 2 assigns engineering atmosphere/water/power oversight D02; D05 research/care remains. Do not duplicate full plants without resolving distributed control/plant relationship."
+    },
+    {
+      "id": "ENGS-057",
+      "name": "Dual-fusion redundancy",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system relationship",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": "Full power from either core; 100% redundancy",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-058",
+      "name": "Independent life support",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "system relationship",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": "4 isolated plants; 72-hour island mode",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-059",
+      "name": "Multiple escape systems",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "emergency system",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": "Distributed lifeboats; 8 embarkation points",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-060",
+      "name": "Emergency egress routes",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "circulation system",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-061",
+      "name": "Medical surge capacity",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "capability",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": "Expandable wards; epidemic containment ready",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-062",
+      "name": "Airlock / pressure doors",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "threshold system",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-063",
+      "name": "Primary bulkheads",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "structural system",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-064",
+      "name": "Restricted service access",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "circulation / access separation",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-065",
+      "name": "Separated guest and service corridors",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "circulation network",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "data/architecture/LOWER_STAFF_NETWORK.json: one screened D01/D02/D03 enclosure and corridors, no general floors, cabins/gates, beds, job/species assignments or finished rooms. D03 home threshold unfurnished/no beds/no identity; depot threshold unfurnished/no stock. scripts/lower_staff_network.gd connects preserved lift plus sourced upper wet/market stops. Full network unresolved.",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-066",
+      "name": "Restricted vertical service lifts",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "circulation system",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-067",
+      "name": "Guest vertical lifts",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "circulation interface",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-068",
+      "name": "Gravity zones",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "environmental system",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": "0.3g\u20131.5g adjustable",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Blueprint system claim does not require deep engineering simulation. Old Aquan naming is noncanonical under master six-species roster; no gas/pressure/harmful biology or quantitative gravity simulation is approved."
+    },
+    {
+      "id": "ENGS-069",
+      "name": "Atmosphere mixes",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "environmental reference claim",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": "Human, Baelin, Aquan, custom",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Blueprint system claim does not require deep engineering simulation. Old Aquan naming is noncanonical under master six-species roster; no gas/pressure/harmful biology or quantitative gravity simulation is approved."
+    },
+    {
+      "id": "ENGS-070",
+      "name": "Nutrition systems",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "food service capability",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": "Omnivore / herbivore / specialized",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-071",
+      "name": "Universal medical protocols",
+      "requirement_basis": "explicit historical blueprint category; printed quantity retained as illustrative claim, not automatically adopted current allocation",
+      "classification": "care capability",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/engineering/technical_reference.png",
+          "locator": "printed Sheet 4 of 6; Legend, transverse/longitudinal sections, Service Circulation Flow, Emergency & Redundancy Systems and Multi-species Support panels"
+        }
+      ],
+      "source_quantity": "AI-assisted nanomedicine",
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Blueprint system claim does not require deep engineering simulation. Old Aquan naming is noncanonical under master six-species roster; no gas/pressure/harmful biology or quantitative gravity simulation is approved."
+    },
+    {
+      "id": "ENGS-072",
+      "name": "D10 finishing galleys",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "back-of-house facilities",
+      "canonical_deck": 10,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 3 Food and provisions; P169"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D10_directory_08",
+        "D10_directory_04"
+      ],
+      "current_geometry_evidence": "scripts/vesper_service.gd builds one local AST-DIN-003 finishing/return space, two counters AST-HSP-001, plate/tray stock AST-HSP-005, dirty return AST-HSP-004 and persistent service door at D10 y61. Explicitly no full kitchen throughput claim; orchard is partial architecture",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-073",
+      "name": "Food delivery and dirty returns",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "workflow / service routes",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master P169"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-074",
+      "name": "Distributed care alcoves and stock cupboards",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "distributed subspaces / restocking network",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master P165\u2013169 and Table 3 Laundry and sanitation"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-075",
+      "name": "Local bins and service waste-transfer points",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "distributed fixtures / transfer nodes",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 3 Waste and recycling"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-076",
+      "name": "Aquatic wet service and towel returns",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "service interfaces / routes",
+      "canonical_deck": 8,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 3 Water and recovery"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "scripts/lower_staff_network.gd uses GRAND_POOL_SECTION_RUNTIME staff data, preserved lower lift identity and adds D08 wet service / D09 market service stops; still WIP, not water-plant or shipwide logistics completion",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-077",
+      "name": "Local habitat environmental support",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "distributed systems",
+      "canonical_deck": null,
+      "vertical_span": "distributed; exact span unresolved",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master P148\u2013156 and Table 3 Atmosphere and habitats"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-078",
+      "name": "Command bridge",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "room / operational control",
+      "canonical_deck": 18,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 2 D18 and Table 3 Communications and command"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D18_directory_01"
+      ],
+      "current_geometry_evidence": "Unfurnished bridge shell under integration; operational systems and acceptance unfinished [scripts/bridge_enclosure.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-079",
+      "name": "Navigation",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "room / operational control",
+      "canonical_deck": 18,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 2 D18"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D18_directory_02"
+      ],
+      "current_geometry_evidence": "Unfurnished central crown programme shell under integration; operational equipment, runtime and visual acceptance pending [scripts/central_command_crown.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-080",
+      "name": "Communications",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "room / operational system",
+      "canonical_deck": 18,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 2 D18"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D18_directory_03"
+      ],
+      "current_geometry_evidence": "Unfurnished central crown programme shell under integration; operational equipment, runtime and visual acceptance pending [scripts/central_command_crown.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-081",
+      "name": "Emergency control",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "room / operational control",
+      "canonical_deck": 18,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 2 D18; current programme ledger"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D18_directory_10"
+      ],
+      "current_geometry_evidence": "Unfurnished aft command shell; operational systems and acceptance pending [scripts/aft_command_crown.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-082",
+      "name": "Ship status control",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "room / operational control",
+      "canonical_deck": 18,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 3 operational nodes; current programme ledger"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D18_directory_08"
+      ],
+      "current_geometry_evidence": "Unfurnished aft command shell; operational systems and acceptance pending [scripts/aft_command_crown.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-083",
+      "name": "Bridge briefing",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "room",
+      "canonical_deck": 18,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 2 D18; current programme ledger"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D18_directory_06"
+      ],
+      "current_geometry_evidence": "Unfurnished central crown programme shell under integration; operational equipment, runtime and visual acceptance pending [scripts/central_command_crown.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-084",
+      "name": "Officer respite",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "room / crew support",
+      "canonical_deck": 18,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 2 D18; current programme ledger"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D18_directory_05"
+      ],
+      "current_geometry_evidence": "Unfurnished central crown programme shell under integration; operational equipment, runtime and visual acceptance pending [scripts/central_command_crown.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-085",
+      "name": "Backstage service interface",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "service subspaces / routes",
+      "canonical_deck": 11,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 2 D11 backstage"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-086",
+      "name": "Retail repairs and parcel support",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "service programmes",
+      "canonical_deck": 9,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/Astraea_Master_Game_Design_v0_3_authoritative.docx",
+          "locator": "Master Table 2 D09 repairs and parcels"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct programme mapping or installed geometry/function established in inspected current sources",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Allocation/directory identity does not establish subspace count, full equipment, usable geometry or activity acceptance"
+    },
+    {
+      "id": "ENGS-087",
+      "name": "Custodial depot",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "directory programme",
+      "canonical_deck": 1,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "data/programme_ledger.json",
+          "locator": "D01_directory_10"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D01_directory_10"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Directory programme is explicit retained allocation but not a separate technical-blueprint system count"
+    },
+    {
+      "id": "ENGS-088",
+      "name": "Solar project archive",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "directory programme",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "data/programme_ledger.json",
+          "locator": "D02_directory_09"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D02_directory_09"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Directory programme is explicit retained allocation but not a separate technical-blueprint system count"
+    },
+    {
+      "id": "ENGS-089",
+      "name": "Inspection dock",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "directory programme",
+      "canonical_deck": 2,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "data/programme_ledger.json",
+          "locator": "D02_directory_10"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D02_directory_10"
+      ],
+      "current_geometry_evidence": "required programme; architecture pending [None]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Directory programme is explicit retained allocation but not a separate technical-blueprint system count"
+    },
+    {
+      "id": "ENGS-090",
+      "name": "Solar enclosure chart",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "directory programme",
+      "canonical_deck": 18,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "data/programme_ledger.json",
+          "locator": "D18_directory_04"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D18_directory_04"
+      ],
+      "current_geometry_evidence": "Unfurnished central crown programme shell under integration; operational equipment, runtime and visual acceptance pending [scripts/central_command_crown.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Directory programme is explicit retained allocation but not a separate technical-blueprint system count"
+    },
+    {
+      "id": "ENGS-091",
+      "name": "Astrometric station",
+      "requirement_basis": "explicit source requirement/reference",
+      "classification": "directory programme",
+      "canonical_deck": 18,
+      "vertical_span": "not established beyond canonical deck assignment",
+      "source_evidence": [
+        {
+          "path": "data/programme_ledger.json",
+          "locator": "D18_directory_07"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D18_directory_07"
+      ],
+      "current_geometry_evidence": "Unfurnished central crown programme shell under integration; operational equipment, runtime and visual acceptance pending [scripts/central_command_crown.gd]",
+      "current_function_evidence": "No operating system or complete workflow established by this audit; historical master implementation statements are not current-build proof",
+      "unresolved_mapping_or_conflict": "Directory programme is explicit retained allocation but not a separate technical-blueprint system count"
+    },
+    {
+      "id": "ENGS-092",
+      "name": "Individual supported crew rest places",
+      "requirement_basis": "current shared-home direction / inspected functional reference",
+      "classification": "berth support",
+      "canonical_deck": 3,
+      "vertical_span": "D03; host room unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/crew_rest/shared_staff_room.png",
+          "locator": "shared-room pixels / Player home override; D03_shared_crew_programme_handoff.json authority and host status"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D03_directory_01"
+      ],
+      "current_geometry_evidence": "Catalogue prototypes/reference handoff do not establish installed housing, final host room, roommate ID, berth-key migration or actual fit",
+      "current_function_evidence": "Current use and berth assignment unverified",
+      "unresolved_mapping_or_conflict": "Photo shows two-level bunk; exact stack geometry, crew/species size and host fit not mandated. Shared room preserves existing colleague and 400-person total."
+    },
+    {
+      "id": "ENGS-093",
+      "name": "Crew berth privacy curtains and tracks",
+      "requirement_basis": "current shared-home direction / inspected functional reference",
+      "classification": "privacy fixture",
+      "canonical_deck": 3,
+      "vertical_span": "D03; host room unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/crew_rest/shared_staff_room.png",
+          "locator": "shared-room pixels / Player home override; D03_shared_crew_programme_handoff.json authority and host status"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D03_directory_01"
+      ],
+      "current_geometry_evidence": "Catalogue prototypes/reference handoff do not establish installed housing, final host room, roommate ID, berth-key migration or actual fit",
+      "current_function_evidence": "Current use and berth assignment unverified",
+      "unresolved_mapping_or_conflict": "Actual visible curtains and separated rest places; approved component handoff. No assigned berth/room identity established."
+    },
+    {
+      "id": "ENGS-094",
+      "name": "Personal crew storage",
+      "requirement_basis": "current shared-home direction / inspected functional reference",
+      "classification": "storage subspace / fixture",
+      "canonical_deck": 3,
+      "vertical_span": "D03; host room unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/crew_rest/shared_staff_room.png",
+          "locator": "shared-room pixels / Player home override; D03_shared_crew_programme_handoff.json authority and host status"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D03_directory_01"
+      ],
+      "current_geometry_evidence": "Catalogue prototypes/reference handoff do not establish installed housing, final host room, roommate ID, berth-key migration or actual fit",
+      "current_function_evidence": "Current use and berth assignment unverified",
+      "unresolved_mapping_or_conflict": "Open shelving, wardrobe, drawers and individual belongings directly visible. Exact dimensions not canon."
+    },
+    {
+      "id": "ENGS-095",
+      "name": "Individual task lights and shelves",
+      "requirement_basis": "current shared-home direction / inspected functional reference",
+      "classification": "fixture / support",
+      "canonical_deck": 3,
+      "vertical_span": "D03; host room unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/crew_rest/shared_staff_room.png",
+          "locator": "shared-room pixels / Player home override; D03_shared_crew_programme_handoff.json authority and host status"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D03_directory_01"
+      ],
+      "current_geometry_evidence": "Catalogue prototypes/reference handoff do not establish installed housing, final host room, roommate ID, berth-key migration or actual fit",
+      "current_function_evidence": "Current use and berth assignment unverified",
+      "unresolved_mapping_or_conflict": "Individual rest lighting directly visible; current handoff approves compact task-light/shelf component, not finished room."
+    },
+    {
+      "id": "ENGS-096",
+      "name": "Crew bathing and changing privacy",
+      "requirement_basis": "current shared-home direction / inspected functional reference",
+      "classification": "privacy subspaces",
+      "canonical_deck": 3,
+      "vertical_span": "D03; host room unresolved",
+      "source_evidence": [
+        {
+          "path": "docs/master_source/MASTER_CURRENT_APPLICATION.json",
+          "locator": "shared-room pixels / Player home override; D03_shared_crew_programme_handoff.json authority and host status"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [
+        "D03_directory_01"
+      ],
+      "current_geometry_evidence": "Catalogue prototypes/reference handoff do not establish installed housing, final host room, roommate ID, berth-key migration or actual fit",
+      "current_function_evidence": "Current use and berth assignment unverified",
+      "unresolved_mapping_or_conflict": "MASTER_CURRENT_APPLICATION Player home override explicitly preserves appropriate privacy for bathing/changing; not evidence for a compulsory ensuite count."
+    },
+    {
+      "id": "ENGS-097",
+      "name": "Guest-habitat med-support centers / kiosks",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "distributed clinical support",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png",
+          "locator": "ASW-GV-02 printed D08 Med-support center and icon legend"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Printed D08 is specialized accommodation reference, not current aquatic D08. Canonical accommodation decks D04/D13\u2013D17; specific host allocation unresolved."
+    },
+    {
+      "id": "ENGS-098",
+      "name": "Species-specific biosanitation nodes",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "distributed sanitation support",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png",
+          "locator": "ASW-GV-02 printed D08 and icon legend"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Canonical accommodation host unresolved; no unsafe biological processing gameplay implied."
+    },
+    {
+      "id": "ENGS-099",
+      "name": "Pressure transition vestibules",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "threshold subspaces / environmental interfaces",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png",
+          "locator": "ASW-GV-02 printed D08 and legend"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Retain architectural interface; quantitative pressure simulation not required. Amenity audit covers habitat threshold design, this audit retains service purpose."
+    },
+    {
+      "id": "ENGS-100",
+      "name": "Refuge rooms in specialized habitats",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "emergency support rooms",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png",
+          "locator": "ASW-GV-02 printed D08 Refuge rooms and legend"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Printed20(40) is historical occupancy arithmetic, not additional crew or guest units; host and emergency role unresolved."
+    },
+    {
+      "id": "ENGS-101",
+      "name": "Hydration and feeding alcoves",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "distributed food / hydration support",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png",
+          "locator": "ASW-GV-02 printed D10 Standard guest suites A; legend"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Current accommodation mapping D04/D13\u2013D17, not literal D10 dining placement. Capacity and specialized diets remain unresolved."
+    },
+    {
+      "id": "ENGS-102",
+      "name": "Local environmental control nodes",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "distributed environmental system interface",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/03/3.png",
+          "locator": "ASW-GV-02 environmental zoning and icon legend"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Atmosphere/humidity/temperature/light/gravity labels guide qualitative habitats. Printed numeric ranges are illustrative and not mandatory simulation constants."
+    },
+    {
+      "id": "ENGS-103",
+      "name": "Public-deck kitchen / food supply service routes",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "circulation / logistics network",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png",
+          "locator": "ASW-GV-03 Circulation & Services legend"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "No assigned widths, routes or throughput proven; separate from guest circulation."
+    },
+    {
+      "id": "ENGS-104",
+      "name": "Public service elevators",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "vertical service circulation",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png",
+          "locator": "ASW-GV-03 Deck Plan Symbols / service transport legend"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Duplicates technical service-lift category at interface level, not extra lift count."
+    },
+    {
+      "id": "ENGS-105",
+      "name": "Public kitchen / galley and food service support",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "back-of-house rooms / subspaces",
+      "canonical_deck": 10,
+      "vertical_span": "canonical deck role; exact allocation unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png",
+          "locator": "ASW-GV-03 Deck Plan Symbols Kitchen/Galley and Food Service Area"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Aggregates within dining destinations and finishing-galley requirement; no extra mandatory kitchen room count."
+    },
+    {
+      "id": "ENGS-106",
+      "name": "Back-of-house storage / backstage",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "storage / performance support",
+      "canonical_deck": 11,
+      "vertical_span": "canonical deck role; exact allocation unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png",
+          "locator": "ASW-GV-03 Deck Plan Symbols Storage / Back of House"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Storage support also distributed elsewhere; theater worker owns venue geometry. This is operational interface, not additional theater allocation."
+    },
+    {
+      "id": "ENGS-107",
+      "name": "Public medical / first aid points",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "distributed care support",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png",
+          "locator": "ASW-GV-03 Deck Plan Symbols Medical / First Aid"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "No independent allocation or staffed clinical routine proven; do not replace D05 healthcare."
+    },
+    {
+      "id": "ENGS-108",
+      "name": "Public assembly points and emergency exits",
+      "requirement_basis": "explicit historical blueprint service/interface label",
+      "classification": "emergency circulation / assembly support",
+      "canonical_deck": null,
+      "vertical_span": "distributed host unresolved",
+      "source_evidence": [
+        {
+          "path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/hospitality/public_reference.png",
+          "locator": "ASW-GV-03 Circulation & Services and Deck Plan Symbols"
+        }
+      ],
+      "source_quantity": null,
+      "programme_keys": [],
+      "current_geometry_evidence": "No distinct installed identity or completed workflow established; overlaps existing programme families where noted",
+      "current_function_evidence": "unverified",
+      "unresolved_mapping_or_conflict": "Interface manifestation of existing escape-system scope; no additive emergency room count."
+    }
+  ],
+  "counts_policy": "Never sum source module/facility counts, capacities, overlapping diagram labels, directory programmes or accommodation envelopes as additional rooms.",
+  "inferred_subrooms": {
+    "status": "optional practical decomposition, not compulsory canon",
+    "examples": [
+      "pump galleries within water recovery",
+      "electrical switch rooms within distribution",
+      "clean/dirty textile staging within laundry",
+      "pantry or dishwashing zones within finishing galleys",
+      "local service shafts or access vestibules"
+    ],
+    "rule": "Require a placement and functional design decision within existing programme; do not add generic-engineering mandatory room counts."
+  },
+  "unresolved_conflicts": [
+    "D05 technical plants/control labels versus master D02 plant allocation",
+    "320 standard quarters / 40 officer cabins / diagram crew quarters (200) versus canonical 400 crew; no additive reading",
+    "8 lifeboat embarkation points per side in table versus 8 embarkation points in emergency panel; unresolved interpretation",
+    "Two contained exhibits in primary gallery do not establish two operating fusion cores or completed secondary gallery",
+    "Technical and maintenance workshops (6) versus logistics repair workshops (4) may be separate facility families or overlapping service groupings; no additive total asserted",
+    "Source gravity, atmosphere mix and nano-medical claims are fictional reference detail, not approved deep simulation or obsolete-species canon"
+  ],
+  "current_build_limit": "No current scripts/guest_life.gd exists in inspected rebuilt project. Master October1 population/service verification is historical, not current service-life completion proof.",
+  "reference_source_coverage": {
+    "checked": [
+      "authoritative v0.3 relevant master sections/tables/crosswalk and current application overrides",
+      "full technical Sheet4 ASW-GV-04 and enlarged lower panels",
+      "historical_atlas.pdf actual rendered page05 D03 and page07 D05, legends, full plans, directories and detailed insets",
+      "all five unique staff_and_service index images actual pixels: compact crew interior REF523733, tall/services corridor photos REF9e43/35f53, shared-room REF5644 and lift REFf2f9",
+      "habitat Sheet2 ASW-GV-02 actual full pixels for medical, biosanitation, pressure/refuge/hydration/environmental/crew service labels",
+      "public Sheet3 ASW-GV-03 actual full pixels for service/food routes, service elevators, kitchen/galley, storage/backstage, first aid and emergency labels",
+      "current programme/layout/allocation data and assigned source builders"
+    ],
+    "relevant_not_examined_in_this_pass": [],
+    "completion_claim": "Previously listed relevant source gaps are closed. Bounded technical/medical/crew/service-category inventory is complete against authoritative master, three programme blueprint sheets, specified historical crew/medical atlas pages and unique indexed staff reference images. Does not claim final architectural acceptance or archive-wide inspection of unrelated concept variants."
+  },
+  "reference_deduplication": [
+    {
+      "inspected_path": "/workspace/shared/astraea-recovery-20261005/DesignArchive/References/Uploaded_46/10/image(5).png",
+      "sha256": "523733d277a726a6caa5d65b4335a1a3bfd20e56a89bf2a77fc3303000edb5de",
+      "byte_identical_copies": [
+        "/workspace/shared/astraea-github-backup/DesignArchive/References/Uploaded_46/10/image(5).png"
+      ]
+    },
+    {
+      "inspected_path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/landings/staff_corridor_tall.png",
+      "sha256": "9e43a460638b2339eeb9479d7679fd16a0a6b25207fae980870321ad2c5dafcd",
+      "byte_identical_copies": [
+        "/workspace/shared/astraea-github-backup/BlenderCatalogue/references/landings/staff_corridor_tall.png"
+      ]
+    },
+    {
+      "inspected_path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/landings/staff_corridor_services.png",
+      "sha256": "35f53a078f3a620c83385278c0a6e8a83f3b8e43d48e1603f3ced363b4dc3a1c",
+      "byte_identical_copies": [
+        "/workspace/shared/astraea-github-backup/BlenderCatalogue/references/landings/staff_corridor_services.png"
+      ]
+    },
+    {
+      "inspected_path": "/workspace/shared/astraea-godot-production-20261003/docs/reference_register/staff_lift_reference_20261003.jpg",
+      "sha256": "f2f9da2c1731f2f874dfb4252b54b3c02d6e44ee07e30f7f928a9dc885fcf098",
+      "byte_identical_copies": [
+        "/workspace/shared/astraea-github-backup/Game/docs/reference_register/staff_lift_reference_20261003.jpg"
+      ]
+    },
+    {
+      "inspected_path": "/workspace/shared/astraea-catalogue-continuation-20261002/references/crew_rest/shared_staff_room.png",
+      "sha256": "5644dbcc82030fc6e4958bf89d5971066d74e35da8f5c67f1b4288f6d4ef046b",
+      "byte_identical_copies": [
+        "/workspace/shared/astraea-github-backup/BlenderCatalogue/references/crew_rest/shared_staff_room.png"
+      ]
+    }
+  ],
+  "atlas_visual_findings": {
+    "page05": "D03 floor+12m,200crew cabins, ten directory destinations, 400crew berths; C001\u2013C200399beds plus separate employee400th. Actual door/bed markers in inset are historical only. Main bank footprints repeat; actual personal interiors/privacy/bathing not drawn. Current shared-home override supersedes old separate employee arithmetic.",
+    "page07": "D05 floor+21m,10registered spaces: species triage,medical bay,clinical research,pharmacy stores,recovery lounge,atmosphere research,consultation pods,quiet care,hydration support,family waiting. Clinic/lab access service/staff-tagged historically. Contours and tram bypass are geometry reference, not recovered usable hospital or additional plant labels. No new distinct category beyond recorded items."
+  },
+  "staff_photo_findings": {
+    "compact_interior": "One compact private/personal interior with supported bed, storage/shelf/light edge, exposed service runs and entrance. Style/composition reference; no extra laboratory, botanics plant or habitation count inferred from display object.",
+    "tall_corridor": "Tall light-painted service corridor, overhead ducts/pipes, task lights, protective wall bands and utility doors. Supports accessible overhead service zone and differentiated passage; no quantitative width/height mandate.",
+    "services_corridor": "Painted masonry service corridor, exposed conduits/pipes, guarded utility lights, distinct doors and clean continuous floor. Practical access vocabulary; no room programme count.",
+    "lift": "Industrial enclosed service lift with guarded edges, utility panels, door and protected lighting. Existing service-lift category; no brand/copy/layout requirement or new stop count."
+  },
+  "habitat_crew_reference_warning": "Sheet2 inset prints guest-deck crew40perdeck, housekeeping60perdeck, habitat specialists80(decks7\u20138), medical40guestdecks,food/beverage120,total~340guestdecks. These are illustrative and overlapping; canonical400crew including player remains. Do not adopt the earlier reported60habitat-specialist transcription."
+}

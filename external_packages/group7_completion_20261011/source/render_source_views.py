@@ -1,0 +1,56 @@
+"""Clear contextual photographs of real source geometry; never resave natives."""
+import bpy,json,math,hashlib
+from pathlib import Path
+from mathutils import Vector
+P=Path(__file__).resolve().parents[1];R=P.parents[1];OLD=P.parent/'group7_hull_atrium_20261009'
+out=P/'qa/views';out.mkdir(exist_ok=True)
+bpy.ops.wm.open_mainfile(filepath=str(P/'source/natives/G7_Completion_r002.blend'))
+def original_glb(path,at=(0,0,0),yaw=0,scale=1):
+    before=set(bpy.data.objects);bpy.ops.import_scene.gltf(filepath=str(path));objects=list(set(bpy.data.objects)-before)
+    root=bpy.data.objects.new('RetainedContext_'+path.stem,None);bpy.context.collection.objects.link(root);root.location=(at[0],-at[2],at[1]);root.rotation_euler.z=yaw;root.scale=(scale,)*3
+    for ob in objects:
+        if ob.parent is None:ob.parent=root
+    bpy.context.view_layer.update();return root,objects
+for doc in ['MIDDLE_EXTERIOR_PLACEMENT_AND_SEAMS.json','MIDDLE_SKIN_PLACEMENT_AND_INTERFACES.json']:
+    for row in json.load(open(OLD/'docs'/doc))['exports']:original_glb(OLD/row['path'])
+for row in json.load(open(OLD/'continuation_r002/docs/TERMINAL_DELIVERY_R002.json'))['assemblies']:
+    original_glb(OLD/'continuation_r002'/row['export'])
+    for door in row['doors']:original_glb(OLD/'continuation_r002'/door['preview_export'])
+for file in ['AST-HUL-001.glb','AST-HUL-002.glb','AST-CMD-001.glb','AST-CMD-002.glb','AST-CMD-003.glb','AST-CMD-004.glb','AST-CMD-005.glb','AST-CMD-006.glb']:
+    original_glb(R/'Game/assets/models'/file)
+# Exact retained floors supply coherent ship/deck and atrium context; source-only.
+for filename in ['structural_meshes.json','received_structural_meshes.json']:
+    for row in json.load(open(R/'Game/data/generated'/filename))['regions']:
+        vs=[];fs=[]
+        for tri in row['triangles']:
+            fs.append(tuple(range(len(vs),len(vs)+3)));vs.extend((x,-z,row['floor_y'])for x,z in tri)
+        me=bpy.data.meshes.new(row['id']);me.from_pydata(vs,[],fs);me.update();ob=bpy.data.objects.new('RETAINED_FLOOR_'+row['id'],me);bpy.context.collection.objects.link(ob)
+        me.materials.append(bpy.data.materials['G7C3_stone'])
+garden,objects=original_glb(R/'Game/assets/models/AST-GAR-001.glb',(0,6,0))
+for marker in ['DATUM_CANOPY_A','DATUM_CANOPY_B']:
+    ob=next(q for q in objects if q.name.startswith(marker));at=ob.matrix_world.translation
+    original_glb(R/'Game/assets/models/AST-BOT-011.glb',(at.x,at.z,-at.y),0 if marker.endswith('A') else 1.8,1 if marker.endswith('A') else .82)
+original_glb(R/'Game/assets/models/AST-ATR-001.glb')
+for row in json.load(open(R/'Game/data/architecture/ATRIUM_GALLERY_RECEIVING.json'))['rooms']:
+    original_glb(R/'Game/assets/models'/row['model_file'],row['origin_world_xyz'])
+s=bpy.context.scene;s.render.engine='CYCLES';s.cycles.device='CPU';s.cycles.samples=128;s.cycles.use_denoising=False
+s.render.resolution_x=1800;s.render.resolution_y=1100;s.render.resolution_percentage=100;s.render.image_settings.file_format='PNG';s.view_settings.view_transform='Standard'
+world=bpy.data.worlds.new('Diagnostic_source_daylight');world.use_nodes=True;world.node_tree.nodes['Background'].inputs['Color'].default_value=(.64,.70,.76,1);world.node_tree.nodes['Background'].inputs['Strength'].default_value=.8;s.world=world
+data=bpy.data.lights.new('Diagnostic exterior source','SUN');data.energy=2.2;ob=bpy.data.objects.new(data.name,data);s.collection.objects.link(ob);ob.rotation_euler=(.45,-.6,-.25)
+# Diagnostic context cache is separate from every immutable source native.
+cache=Path('/tmp/G7_Completion_review_context_20261011.blend')
+assert not cache.exists()
+bpy.ops.wm.save_as_mainfile(filepath=str(cache),compress=True)
+def camera(name,eye,target,ortho=None,lens=24):
+    data=bpy.data.cameras.new(name);ob=bpy.data.objects.new(name,data);s.collection.objects.link(ob);ob.location=(eye[0],-eye[2],eye[1]);at=Vector((target[0],-target[2],target[1]));ob.rotation_euler=(at-ob.location).to_track_quat('-Z','Y').to_euler();data.lens=lens;data.clip_start=.02;data.clip_end=5000
+    if ortho:data.type='ORTHO';data.ortho_scale=ortho
+    s.camera=ob;s.render.filepath=str(out/(name+'.png'));assert not Path(s.render.filepath).exists();bpy.ops.render.render(write_still=True)
+    return {'image':name+'.png','eye_world_xyz':eye,'target_world_xyz':target,'mode':'Actual immutable native plus retained exact GLBs/compiled floor triangle context; Cycles diagnostic daylight, source-only. Not Godot/CRT/hardware or final lighting acceptance.'}
+rows=[]
+rows.append(camera('SOURCE_WHOLE_BODY_WIDE',(840,720,-940),(0,52,0),ortho=1200))
+rows.append(camera('SOURCE_FORE_TERMINAL_D18_EYE',(2.5,108.2,-514),(0,109,-527),lens=19))
+# A clear broad atrium source section: the general exterior is distant, retained
+# sixteen-level floors/guards, island/trees and the new courts remain visible.
+rows.append(camera('SOURCE_ATRIUM_COURTS_WIDE',(37,83,59),(-20,53,-17),lens=16))
+for row in rows:row['sha256']=hashlib.sha256((out/row['image']).read_bytes()).hexdigest()
+(P/'qa/SOURCE_VIEW_RECEIPT.json').write_text(json.dumps({'status':'SOURCE_VIEWS_CREATED_REVIEW_PENDING','views':rows,'native_not_resaved':True,'exact_retained_geometry_context':True,'engine_or_final_art_acceptance':False},indent=2)+'\n')

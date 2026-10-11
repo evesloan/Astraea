@@ -1,0 +1,1207 @@
+{
+  "schema": 1,
+  "id": "D18_aft_command_extension",
+  "status": "Editable source construction geometrically verified; parent runtime adoption and visual acceptance pending",
+  "scope": "Two aft command shells, controlled approach, roof-to-platform support; bridge and large foyer/Upper Horizon remain outside this increment",
+  "programmes": [
+    {
+      "name": "Ship status",
+      "programme_key": "D18_directory_08",
+      "area_m2": 936,
+      "boundary": [
+        [
+          -36,
+          66
+        ],
+        [
+          -10,
+          66
+        ],
+        [
+          -10,
+          102
+        ],
+        [
+          -36,
+          102
+        ]
+      ],
+      "entry_xz": [
+        -10,
+        82
+      ],
+      "door_yaw": 1.5707963267948966,
+      "floor_y": 106.5,
+      "floor_policy": "Parent-owned compiled floor, no source slab",
+      "operational_fit": "Unfurnished enclosed connected command shell, no working command simulation",
+      "window_intent": {
+        "policy": "Enclosed command workspace; existing central glazing untouched"
+      }
+    },
+    {
+      "name": "Emergency control",
+      "programme_key": "D18_directory_10",
+      "area_m2": 936,
+      "boundary": [
+        [
+          10,
+          66
+        ],
+        [
+          36,
+          66
+        ],
+        [
+          36,
+          102
+        ],
+        [
+          10,
+          102
+        ]
+      ],
+      "entry_xz": [
+        10,
+        82
+      ],
+      "door_yaw": -1.5707963267948966,
+      "floor_y": 106.5,
+      "floor_policy": "Parent-owned compiled floor, no source slab",
+      "operational_fit": "Unfurnished enclosed connected command shell, no working command simulation",
+      "window_intent": {
+        "policy": "Enclosed command workspace; existing central glazing untouched"
+      }
+    }
+  ],
+  "datums": {
+    "floor_y": 106.5,
+    "slab_depth": 0.24,
+    "ceiling_y": 111,
+    "roof_max_y": 114.5
+  },
+  "public_cross_street": {
+    "boundary_xz": [
+      [
+        -48,
+        60
+      ],
+      [
+        48,
+        60
+      ],
+      [
+        48,
+        66
+      ],
+      [
+        -48,
+        66
+      ]
+    ],
+    "centre_z": 63,
+    "gross_width_m": 6,
+    "existing_support_m2": 576,
+    "current_tested_crossing_to_replace_z": 72,
+    "requirements": [
+      "No wall, frame, moving leaf or pier inside standing-body belt; preserve tested X\u00b14 public route",
+      "Source shells currently end at60; side corridor endcaps need actual controlled openings",
+      "Existing public aft lift route and all protected holes remain untouched"
+    ]
+  },
+  "new_floor": {
+    "envelope_xz": [
+      [
+        -36,
+        80
+      ],
+      [
+        36,
+        80
+      ],
+      [
+        36,
+        102
+      ],
+      [
+        -36,
+        102
+      ]
+    ],
+    "subtract_existing_owner": "D18_aft_route",
+    "new_net_m2": 1408,
+    "preserve_existing_spine_m2": 176,
+    "owner_policy": "One new structural compiled floor owner, no duplicate Blender floor slabs; parent owns floor adoption"
+  },
+  "support": {
+    "piers_xz": [
+      [
+        -35.5,
+        86
+      ],
+      [
+        35.5,
+        86
+      ]
+    ],
+    "pier_envelope_x_m": 0.8,
+    "pier_envelope_z_m": 1.2,
+    "base_y": -3.2,
+    "top_y": 114,
+    "runtime_candidate_audit": "docs/AFT_COMMAND_PIER_RUNTIME_AUDIT.json",
+    "runtime_result": "Both complete envelopes are clear of actual current static/dynamic contacts in16slices each;10 actual keel support rays pass",
+    "frame": "Transverse roof frame atZ86, linked to existingZ71 frame; transferY111..114; explicit wall-zone hangers and floor-edge girders to new platform; no unsupported slab claim",
+    "ties": "Positive measured contacts back to existingZ80 apron edge below walking plane, no unintended floor contacts",
+    "limit": "Geometric fit and load-path expression, not structural load certification",
+    "pier_centres_xz": [
+      [
+        -35.5,
+        86
+      ],
+      [
+        35.5,
+        86
+      ]
+    ],
+    "roof_link_x": [
+      -35.5,
+      -32,
+      -5.04,
+      0,
+      5.04,
+      32,
+      35.5
+    ],
+    "hanger_x": [
+      -35.5,
+      -5.04,
+      5.04,
+      35.5
+    ],
+    "hanger_z": [
+      86,
+      98
+    ],
+    "floor_edge_girder_x": [
+      -35.5,
+      -5.04,
+      5.04,
+      35.5
+    ],
+    "floor_cross_bearer_z": [
+      82,
+      86,
+      90,
+      94,
+      98,
+      101.7
+    ],
+    "authored_ties": [
+      {
+        "name": "AFC_ApronTie_X-35p5",
+        "world_aabb": [
+          -35.72,
+          -35.28,
+          106.08,
+          106.4,
+          79.8,
+          80.25
+        ],
+        "owner": "D18_aft_apron",
+        "intended_z_embed_m": 0.2,
+        "top_below_walk_m": 0.1
+      },
+      {
+        "name": "AFC_ApronTie_X-5p04",
+        "world_aabb": [
+          -5.26,
+          -4.82,
+          106.08,
+          106.4,
+          79.8,
+          80.25
+        ],
+        "owner": "D18_aft_apron",
+        "intended_z_embed_m": 0.2,
+        "top_below_walk_m": 0.1
+      },
+      {
+        "name": "AFC_ApronTie_X5p04",
+        "world_aabb": [
+          4.82,
+          5.26,
+          106.08,
+          106.4,
+          79.8,
+          80.25
+        ],
+        "owner": "D18_aft_apron",
+        "intended_z_embed_m": 0.2,
+        "top_below_walk_m": 0.1
+      },
+      {
+        "name": "AFC_ApronTie_X35p5",
+        "world_aabb": [
+          35.28,
+          35.72,
+          106.08,
+          106.4,
+          79.8,
+          80.25
+        ],
+        "owner": "D18_aft_apron",
+        "intended_z_embed_m": 0.2,
+        "top_below_walk_m": 0.1
+      }
+    ],
+    "forward_purlin_saddles": [
+      {
+        "name": "AFC_ForwardPurlinSaddle",
+        "world_aabb": [
+          -32.22,
+          -31.78,
+          113.05,
+          113.85,
+          65.72,
+          66.28
+        ],
+        "old_longitudinal_top_y": 113.15,
+        "new_purlin_bottom_y": 113.76
+      },
+      {
+        "name": "AFC_ForwardPurlinSaddle",
+        "world_aabb": [
+          -0.22,
+          0.22,
+          113.05,
+          113.85,
+          65.72,
+          66.28
+        ],
+        "old_longitudinal_top_y": 113.15,
+        "new_purlin_bottom_y": 113.76
+      },
+      {
+        "name": "AFC_ForwardPurlinSaddle",
+        "world_aabb": [
+          31.78,
+          32.22,
+          113.05,
+          113.85,
+          65.72,
+          66.28
+        ],
+        "old_longitudinal_top_y": 113.15,
+        "new_purlin_bottom_y": 113.76
+      }
+    ]
+  },
+  "doors": [
+    {
+      "name": "D18_directory_08_entry",
+      "programme_key": "D18_directory_08",
+      "position": [
+        -10,
+        106.5,
+        82
+      ],
+      "yaw": 1.5707963267948966,
+      "file": "AST-STF-008.glb",
+      "marker": "DATUM_door_D18_directory_08",
+      "wall_aperture_half_width": 1.375,
+      "wall_aperture_height": 2.815,
+      "fixed_frame_outer_half_width": 1.38,
+      "fixed_frame_outer_height": 2.82,
+      "fixed_frame_half_depth": 0.18,
+      "join_overlap_m": 0.005
+    },
+    {
+      "name": "D18_directory_10_entry",
+      "programme_key": "D18_directory_10",
+      "position": [
+        10,
+        106.5,
+        82
+      ],
+      "yaw": -1.5707963267948966,
+      "file": "AST-STF-008.glb",
+      "marker": "DATUM_door_D18_directory_10",
+      "wall_aperture_half_width": 1.375,
+      "wall_aperture_height": 2.815,
+      "fixed_frame_outer_half_width": 1.38,
+      "fixed_frame_outer_height": 2.82,
+      "fixed_frame_half_depth": 0.18,
+      "join_overlap_m": 0.005
+    },
+    {
+      "name": "aft_command_port_front",
+      "position": [
+        -7.5,
+        106.5,
+        66.2
+      ],
+      "yaw": 3.141592653589793,
+      "file": "AST-STF-008.glb",
+      "marker": "DATUM_door_aft_command_port_front",
+      "wall_aperture_half_width": 1.375,
+      "wall_aperture_height": 2.815,
+      "fixed_frame_outer_half_width": 1.38,
+      "fixed_frame_outer_height": 2.82,
+      "fixed_frame_half_depth": 0.18,
+      "join_overlap_m": 0.005
+    },
+    {
+      "name": "aft_command_starboard_front",
+      "position": [
+        7.5,
+        106.5,
+        66.2
+      ],
+      "yaw": 3.141592653589793,
+      "file": "AST-STF-008.glb",
+      "marker": "DATUM_door_aft_command_starboard_front",
+      "wall_aperture_half_width": 1.375,
+      "wall_aperture_height": 2.815,
+      "fixed_frame_outer_half_width": 1.38,
+      "fixed_frame_outer_height": 2.82,
+      "fixed_frame_half_depth": 0.18,
+      "join_overlap_m": 0.005
+    },
+    {
+      "name": "aft_command_port_exit",
+      "position": [
+        -7.5,
+        106.5,
+        101.92
+      ],
+      "yaw": 0.0,
+      "file": "AST-STF-008.glb",
+      "marker": "DATUM_door_aft_command_port_exit",
+      "wall_aperture_half_width": 1.375,
+      "wall_aperture_height": 2.815,
+      "fixed_frame_outer_half_width": 1.38,
+      "fixed_frame_outer_height": 2.82,
+      "fixed_frame_half_depth": 0.18,
+      "join_overlap_m": 0.005
+    },
+    {
+      "name": "aft_command_starboard_exit",
+      "position": [
+        7.5,
+        106.5,
+        101.92
+      ],
+      "yaw": 0.0,
+      "file": "AST-STF-008.glb",
+      "marker": "DATUM_door_aft_command_starboard_exit",
+      "wall_aperture_half_width": 1.375,
+      "wall_aperture_height": 2.815,
+      "fixed_frame_outer_half_width": 1.38,
+      "fixed_frame_outer_height": 2.82,
+      "fixed_frame_half_depth": 0.18,
+      "join_overlap_m": 0.005
+    }
+  ],
+  "preserve": [
+    "All160 catalogue identities except explicit central-crown endcap interface revision; inspect exact manifest before choosing new ID",
+    "All161 programme keys,1000guest units,400crew berths and historic source geometry",
+    "Current central roof/piers/windows/fixtures and all existing runtime systems",
+    "Source/export equality and exact bounded diff for the old endcap modification"
+  ],
+  "source_evidence": [
+    "docs/AFT_COMMAND_LAYOUT_SCREENING.json",
+    "docs/AFT_COMMAND_PIER_RUNTIME_AUDIT.json",
+    "data/architecture/CENTRAL_CROWN_RUNTIME.json",
+    "docs/master_source/MASTER_FULL_CONTENT_INDEX.json",
+    "docs/master_source/MASTER_CURRENT_APPLICATION.json"
+  ],
+  "catalogue_id": "AST-CMD-002",
+  "family": "aft_command",
+  "coordinate_mapping": "Blender=(Godot X,-Godot Z,Godot Y); export_yup=true; root world origin (0,0,0)",
+  "origin": [
+    0,
+    0,
+    0
+  ],
+  "collision_policy": "All AFC_CELL meshes use concave static contact; no new floor slabs, moving door leaves or controller",
+  "roof_skin_levels_y": [
+    [
+      0,
+      12,
+      114.24,
+      114.44
+    ],
+    [
+      12,
+      24,
+      114.06,
+      114.26
+    ],
+    [
+      24,
+      36,
+      113.84,
+      114.04
+    ]
+  ],
+  "light_markers": [
+    {
+      "name": "DATUM_light_aft_D18_directory_08_18_0",
+      "position": [
+        -18,
+        110.59,
+        72
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_08",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_18_1",
+      "position": [
+        -18,
+        110.59,
+        84
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_08",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_18_2",
+      "position": [
+        -18,
+        110.59,
+        96
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_08",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_28_0",
+      "position": [
+        -28,
+        110.59,
+        72
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_08",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_28_1",
+      "position": [
+        -28,
+        110.59,
+        84
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_08",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_08_28_2",
+      "position": [
+        -28,
+        110.59,
+        96
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_08",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_18_0",
+      "position": [
+        18,
+        110.59,
+        72
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_10",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_18_1",
+      "position": [
+        18,
+        110.59,
+        84
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_10",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_18_2",
+      "position": [
+        18,
+        110.59,
+        96
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_10",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_28_0",
+      "position": [
+        28,
+        110.59,
+        72
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_10",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_28_1",
+      "position": [
+        28,
+        110.59,
+        84
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_10",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_D18_directory_10_28_2",
+      "position": [
+        28,
+        110.59,
+        96
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_task",
+      "programme_key": "D18_directory_10",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 10.0,
+      "suggested_spot_angle_degrees": 76
+    },
+    {
+      "name": "DATUM_light_aft_route_-7p5_70",
+      "position": [
+        -7.5,
+        110.55,
+        70
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_-7p5_82",
+      "position": [
+        -7.5,
+        110.55,
+        82
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_-7p5_94",
+      "position": [
+        -7.5,
+        110.55,
+        94
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_-7p5_100",
+      "position": [
+        -7.5,
+        110.55,
+        100
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_0_70",
+      "position": [
+        0,
+        110.55,
+        70
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_0_82",
+      "position": [
+        0,
+        110.55,
+        82
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_0_94",
+      "position": [
+        0,
+        110.55,
+        94
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_0_100",
+      "position": [
+        0,
+        110.55,
+        100
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_7p5_70",
+      "position": [
+        7.5,
+        110.55,
+        70
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_7p5_82",
+      "position": [
+        7.5,
+        110.55,
+        82
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_7p5_94",
+      "position": [
+        7.5,
+        110.55,
+        94
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_route_7p5_100",
+      "position": [
+        7.5,
+        110.55,
+        100
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 70
+    },
+    {
+      "name": "DATUM_light_aft_cross_street_X-30",
+      "position": [
+        -30,
+        110.55,
+        63
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 76,
+      "support": "Existing AST-CMD-001 roof underside Y111; no old source changed"
+    },
+    {
+      "name": "DATUM_light_aft_cross_street_X-18",
+      "position": [
+        -18,
+        110.55,
+        63
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 76,
+      "support": "Existing AST-CMD-001 roof underside Y111; no old source changed"
+    },
+    {
+      "name": "DATUM_light_aft_cross_street_X-6",
+      "position": [
+        -6,
+        110.55,
+        63
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 76,
+      "support": "Existing AST-CMD-001 roof underside Y111; no old source changed"
+    },
+    {
+      "name": "DATUM_light_aft_cross_street_X6",
+      "position": [
+        6,
+        110.55,
+        63
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 76,
+      "support": "Existing AST-CMD-001 roof underside Y111; no old source changed"
+    },
+    {
+      "name": "DATUM_light_aft_cross_street_X18",
+      "position": [
+        18,
+        110.55,
+        63
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 76,
+      "support": "Existing AST-CMD-001 roof underside Y111; no old source changed"
+    },
+    {
+      "name": "DATUM_light_aft_cross_street_X30",
+      "position": [
+        30,
+        110.55,
+        63
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "profile": "crown_route",
+      "temperature": "cool",
+      "suggested_color": [
+        0.78,
+        0.88,
+        1.0
+      ],
+      "suggested_range": 9.0,
+      "suggested_spot_angle_degrees": 76,
+      "support": "Existing AST-CMD-001 roof underside Y111; no old source changed"
+    }
+  ],
+  "source_validation": "qa/source_export_validation.json",
+  "side_corridors": [
+    {
+      "side": "port",
+      "x": [
+        -10,
+        -5
+      ],
+      "z": [
+        66.2,
+        102
+      ],
+      "floor_y": 106.5
+    },
+    {
+      "side": "starboard",
+      "x": [
+        5,
+        10
+      ],
+      "z": [
+        66.2,
+        102
+      ],
+      "floor_y": 106.5
+    }
+  ],
+  "public_gallery": {
+    "x": [
+      -4,
+      4
+    ],
+    "z": [
+      60,
+      102
+    ],
+    "floor_y": 106.5,
+    "keep_longitudinal_route_open": true
+  },
+  "roof": {
+    "body_roof_x": [
+      -36,
+      36
+    ],
+    "body_roof_z": [
+      64,
+      102
+    ],
+    "ceiling_y": 111,
+    "roof_top_limit_y": 114.5,
+    "junction_policy": "Butt at existing roof end Z64; do not remove or overwrite old crown roof"
+  },
+  "label_backing": {
+    "y": 109.65,
+    "room_front_plane_x": [
+      -10,
+      10
+    ],
+    "solid_header_y": [
+      109.315,
+      111
+    ],
+    "signage_in_source": false
+  },
+  "route_truth": "Two screened side corridors cross the six-metre public street via operating doors; public/staff crossover is explicit. No dedicated all-deck staff lift is claimed.",
+  "runtime_limits": [
+    "Parent owns compiled floor and operational shared doors",
+    "Runtime collision, body/cart routes, support contacts, light exits, integration regression and in-engine visual review still required",
+    "Geometric contact chain only, not structural load certification",
+    "No bridge, upper horizon or foyer completion, furniture, command simulation, access permissions or capacity addition"
+  ],
+  "source_inputs": {
+    "data/architecture/AFT_COMMAND_CONSTRUCTION.json": "ad3ca13c5f11aec19be734e1cabc4ba4a3b2a03b79e1262170dcb3f67c605562",
+    "data/architecture/CENTRAL_CROWN_RUNTIME.json": "bd7a106b2a98fc4e61a3276bc3bd0197a6941e72448aefd803e8c295f4620bdf",
+    "docs/AFT_COMMAND_LAYOUT_SCREENING.json": "30d9e8e0309473d1cc384446e13cb506006071c5c6e9e452a647bcdf9ebd21df",
+    "docs/AFT_COMMAND_PIER_RUNTIME_AUDIT.json": "b28498496b69719f57b880a6b2ea604ee23322746833dd2af1f97aefbcee65c1",
+    "data/generated/structural_meshes.json": "29ea8c90d47d720b31553cfd9c31a8837e2f977a21ded1ddf7c3d9dc31b1acbb"
+  },
+  "windows": [],
+  "export_sha256": "3577d49136b0252f8eef677604ef85488b92913580c8f8a034b947120a70a0ea",
+  "runtime_status": "Supported aft platform integration; runtime, visual and aggregate acceptance pending"
+}

@@ -1,0 +1,4369 @@
+{
+  "schema": 1,
+  "status": "SCRATCH_ADOPTION_DRAFT_UNINSTALLED_UNRUN",
+  "source_revision": "feature002",
+  "parent_design_id": "AST-AQU-016",
+  "root_name": "GrandPoolFeatureLayers_WIP",
+  "scope": "Source-backed fuller crowns and focal relief readability are incrementally accepted; timber is still dark and the grand pool remains unfinished. No final finish, physical, import or aggregate acceptance is implied by this draft.",
+  "models": {
+    "AST-AQU-016_pool_feature_lighting": {
+      "file": "AST-AQU-016_pool_feature_lighting.glb",
+      "sha256": "441bdfd5a4f5866b7e6af597428a0e971c491604ed4e127fdbd90a78ec1d4d49",
+      "source_blend": "assets/grand_pool_first_pass/architectural_composition/feature_layers_next/lighting/crosswash002/source_candidate001/source/AST-AQU-016_pool_feature_lighting.blend",
+      "source_sha256": "0d02c3e4d11e8b50272a30606a6ef23955a8ef08a9a406993b4f8ee75f77daf8",
+      "snapshot_sha256": "51e71057a20a93e9860af870a5087b75fa2f554989a8ef7023df205541d93fbd",
+      "mesh_batches": 3,
+      "triangles": 144,
+      "family": "light",
+      "nodes": [
+        {
+          "name": "DATUM_finish_light_ArchFocal_Crown",
+          "source_node_index": 0,
+          "parent_name": "",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -31.513227462768555,
+            50.08028030395508,
+            -462.25
+          ],
+          "children": []
+        },
+        {
+          "name": "DATUM_finish_light_ArchTimber_ForeL",
+          "source_node_index": 1,
+          "parent_name": "",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -51.5,
+            49.85219955444336,
+            -447.1143493652344
+          ],
+          "children": []
+        },
+        {
+          "name": "DATUM_finish_light_ArchTimber_ForeR",
+          "source_node_index": 2,
+          "parent_name": "",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -51.5,
+            49.85219955444336,
+            -437.28564453125
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-AQU-016_pool_feature_lighting__batch_02",
+          "source_node_index": 3,
+          "parent_name": "",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-AQU-016_pool_feature_lighting__batch_01",
+          "source_node_index": 4,
+          "parent_name": "",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-AQU-016_pool_feature_lighting__batch_00",
+          "source_node_index": 5,
+          "parent_name": "",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        }
+      ],
+      "meshes": [
+        {
+          "name": "AST-AQU-016_pool_feature_lighting__batch_02",
+          "source_mesh_index": 0,
+          "material_role": "lens",
+          "source_part_names": [
+            "ArchFocal_Crown_OpalLens",
+            "ArchTimber_ForeL_OpalLens",
+            "ArchTimber_ForeR_OpalLens"
+          ],
+          "cast_shadow": false,
+          "collision": "visual_lens_no_contact",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 72,
+              "indices": 108,
+              "triangles": 36,
+              "material_index": 0,
+              "material_name": "GardenOpalLens"
+            }
+          ]
+        },
+        {
+          "name": "AST-AQU-016_pool_feature_lighting__batch_01",
+          "source_mesh_index": 1,
+          "material_role": "warm_walnut",
+          "source_part_names": [
+            "ArchFocal_Crown_RecessHousing",
+            "ArchTimber_ForeL_RecessHousing",
+            "ArchTimber_ForeR_RecessHousing"
+          ],
+          "cast_shadow": true,
+          "collision": "concave_static_surface",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 72,
+              "indices": 108,
+              "triangles": 36,
+              "material_index": 1,
+              "material_name": "ASTRAEA_warm_walnut"
+            }
+          ]
+        },
+        {
+          "name": "AST-AQU-016_pool_feature_lighting__batch_00",
+          "source_mesh_index": 2,
+          "material_role": "champagne_metal",
+          "source_part_names": [
+            "ArchFocal_Crown_SourceBackplate",
+            "ArchFocal_Crown_SupportedArm",
+            "ArchTimber_ForeL_SourceBackplate",
+            "ArchTimber_ForeL_SupportedArm",
+            "ArchTimber_ForeR_SourceBackplate",
+            "ArchTimber_ForeR_SupportedArm"
+          ],
+          "cast_shadow": true,
+          "collision": "concave_static_surface",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 144,
+              "indices": 216,
+              "triangles": 72,
+              "material_index": 2,
+              "material_name": "ASTRAEA_champagne_metal"
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "doubleSided": true,
+          "emissiveFactor": [
+            0.699999988079071,
+            0.6370000075101849,
+            0.5249999910593033
+          ],
+          "name": "GardenOpalLens",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              1,
+              0.949999988079071,
+              0.8399999737739563,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.5
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "warm_walnut",
+            "meters_per_tile_uv": [
+              0.65,
+              1.3
+            ],
+            "texture_revision": "astraea-catalogue-materials-02"
+          },
+          "name": "ASTRAEA_warm_walnut",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.6499999761581421
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "champagne_metal",
+            "meters_per_tile_uv": [
+              0.6,
+              0.6
+            ],
+            "texture_revision": "astraea-catalogue-materials-02"
+          },
+          "name": "ASTRAEA_champagne_metal",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "metallicFactor": 0.7200000286102295,
+            "roughnessFactor": 0.4699999988079071
+          }
+        }
+      ],
+      "textures": [
+        {
+          "sampler": 0,
+          "source": 0
+        },
+        {
+          "sampler": 0,
+          "source": 1
+        }
+      ],
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "import_force_disable_compression": true
+    },
+    "AST-BOT-002_pool_loggia_mass_00": {
+      "file": "AST-BOT-002_pool_loggia_mass_00.glb",
+      "sha256": "25c47a93f7aec0233a4f324dd03712e2dd43c5ac549584f0fff6179f8ed4f273",
+      "source_blend": "assets/grand_pool_first_pass/architectural_composition/feature_layers_next/planting/full_mass001/candidate_v001/source/AST-BOT-002_pool_loggia_mass_00.blend",
+      "source_sha256": "9654fe769cabf46c7b06cecdb875f431bed2d84bffc456dc910b69c7459090f6",
+      "snapshot_sha256": "301ca6da4a49bf5c9b81b66e43835f09e3fc22d8808bf3c75aadf23d86897ac9",
+      "mesh_batches": 5,
+      "triangles": 7066,
+      "family": "plant",
+      "nodes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_00",
+          "source_node_index": 0,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_01",
+          "source_node_index": 1,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_02",
+          "source_node_index": 2,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_03",
+          "source_node_index": 3,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_04",
+          "source_node_index": 4,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "source_node_index": 5,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.5899999737739563,
+            1.220703097715159e-06,
+            -0.10499999672174454
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "source_node_index": 6,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.02500000037252903,
+            1.220703097715159e-06,
+            -0.11500000208616257
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "source_node_index": 7,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.5699999928474426,
+            1.220703097715159e-06,
+            -0.014999999664723873
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "source_node_index": 8,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.28999999165534973,
+            1.220703097715159e-06,
+            0.20499999821186066
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "source_node_index": 9,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_00",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.3499999940395355,
+            1.220703097715159e-06,
+            0.2150000035762787
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00",
+          "source_node_index": 10,
+          "parent_name": "",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": [
+            "AST-BOT-002_pool_loggia_mass_00__batch_00",
+            "AST-BOT-002_pool_loggia_mass_00__batch_01",
+            "AST-BOT-002_pool_loggia_mass_00__batch_02",
+            "AST-BOT-002_pool_loggia_mass_00__batch_03",
+            "AST-BOT-002_pool_loggia_mass_00__batch_04",
+            "mass_0_root_SOIL_CONTACT",
+            "mass_1_root_SOIL_CONTACT",
+            "mass_2_root_SOIL_CONTACT",
+            "mass_3_root_SOIL_CONTACT",
+            "mass_4_root_SOIL_CONTACT"
+          ]
+        }
+      ],
+      "meshes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_00",
+          "source_mesh_index": 0,
+          "material_role": "botanical_bark",
+          "source_part_names": [
+            "mass_0_curved_stem",
+            "mass_0_root",
+            "mass_1_curved_stem",
+            "mass_1_root",
+            "mass_2_curved_stem",
+            "mass_2_root",
+            "mass_3_curved_stem",
+            "mass_3_root",
+            "mass_4_curved_stem",
+            "mass_4_root"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1010,
+              "indices": 1650,
+              "triangles": 550,
+              "material_index": 0,
+              "material_name": "ASTRAEA_botanical_bark"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_01",
+          "source_mesh_index": 1,
+          "material_role": "botanical_flower",
+          "source_part_names": [
+            "mass_0_flower_0_centre",
+            "mass_0_flower_0_petal_0",
+            "mass_0_flower_0_petal_1",
+            "mass_0_flower_0_petal_2",
+            "mass_0_flower_0_petal_3",
+            "mass_0_flower_0_petal_4",
+            "mass_0_flower_1_centre",
+            "mass_0_flower_1_petal_0",
+            "mass_0_flower_1_petal_1",
+            "mass_0_flower_1_petal_2",
+            "mass_0_flower_1_petal_3",
+            "mass_0_flower_1_petal_4",
+            "mass_0_flower_2_centre",
+            "mass_0_flower_2_petal_0",
+            "mass_0_flower_2_petal_1",
+            "mass_0_flower_2_petal_2",
+            "mass_0_flower_2_petal_3",
+            "mass_0_flower_2_petal_4",
+            "mass_3_flower_0_centre",
+            "mass_3_flower_0_petal_0",
+            "mass_3_flower_0_petal_1",
+            "mass_3_flower_0_petal_2",
+            "mass_3_flower_0_petal_3",
+            "mass_3_flower_0_petal_4",
+            "mass_3_flower_1_centre",
+            "mass_3_flower_1_petal_0",
+            "mass_3_flower_1_petal_1",
+            "mass_3_flower_1_petal_2",
+            "mass_3_flower_1_petal_3",
+            "mass_3_flower_1_petal_4",
+            "mass_3_flower_2_centre",
+            "mass_3_flower_2_petal_0",
+            "mass_3_flower_2_petal_1",
+            "mass_3_flower_2_petal_2",
+            "mass_3_flower_2_petal_3",
+            "mass_3_flower_2_petal_4"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2892,
+              "indices": 4032,
+              "triangles": 1344,
+              "material_index": 1,
+              "material_name": "ASTRAEA_botanical_flower"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_02",
+          "source_mesh_index": 2,
+          "material_role": "botanical_leaf_jade",
+          "source_part_names": [
+            "mass_0_rounded_leaf_01",
+            "mass_0_rounded_leaf_05",
+            "mass_0_rounded_leaf_09",
+            "mass_1_rounded_leaf_01",
+            "mass_1_rounded_leaf_02",
+            "mass_1_rounded_leaf_04",
+            "mass_1_rounded_leaf_05",
+            "mass_1_rounded_leaf_07",
+            "mass_1_rounded_leaf_08",
+            "mass_1_rounded_leaf_10",
+            "mass_1_rounded_leaf_11",
+            "mass_2_rounded_leaf_01",
+            "mass_2_rounded_leaf_02",
+            "mass_2_rounded_leaf_04",
+            "mass_2_rounded_leaf_05",
+            "mass_2_rounded_leaf_07",
+            "mass_2_rounded_leaf_08",
+            "mass_2_rounded_leaf_10",
+            "mass_2_rounded_leaf_11",
+            "mass_3_rounded_leaf_01",
+            "mass_3_rounded_leaf_05",
+            "mass_3_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1936,
+              "indices": 2640,
+              "triangles": 880,
+              "material_index": 2,
+              "material_name": "ASTRAEA_botanical_leaf_jade"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_03",
+          "source_mesh_index": 3,
+          "material_role": "botanical_leaf_olive",
+          "source_part_names": [
+            "mass_0_flower_0_receptacle",
+            "mass_0_flower_0_stem",
+            "mass_0_flower_1_receptacle",
+            "mass_0_flower_1_stem",
+            "mass_0_flower_2_receptacle",
+            "mass_0_flower_2_stem",
+            "mass_0_petiole_00",
+            "mass_0_petiole_01",
+            "mass_0_petiole_02",
+            "mass_0_petiole_03",
+            "mass_0_petiole_04",
+            "mass_0_petiole_05",
+            "mass_0_petiole_06",
+            "mass_0_petiole_07",
+            "mass_0_petiole_08",
+            "mass_0_petiole_09",
+            "mass_0_petiole_10",
+            "mass_0_petiole_11",
+            "mass_1_petiole_00",
+            "mass_1_petiole_01",
+            "mass_1_petiole_02",
+            "mass_1_petiole_03",
+            "mass_1_petiole_04",
+            "mass_1_petiole_05",
+            "mass_1_petiole_06",
+            "mass_1_petiole_07",
+            "mass_1_petiole_08",
+            "mass_1_petiole_09",
+            "mass_1_petiole_10",
+            "mass_1_petiole_11",
+            "mass_1_rounded_leaf_00",
+            "mass_1_rounded_leaf_03",
+            "mass_1_rounded_leaf_06",
+            "mass_1_rounded_leaf_09",
+            "mass_2_petiole_00",
+            "mass_2_petiole_01",
+            "mass_2_petiole_02",
+            "mass_2_petiole_03",
+            "mass_2_petiole_04",
+            "mass_2_petiole_05",
+            "mass_2_petiole_06",
+            "mass_2_petiole_07",
+            "mass_2_petiole_08",
+            "mass_2_petiole_09",
+            "mass_2_petiole_10",
+            "mass_2_petiole_11",
+            "mass_3_flower_0_receptacle",
+            "mass_3_flower_0_stem",
+            "mass_3_flower_1_receptacle",
+            "mass_3_flower_1_stem",
+            "mass_3_flower_2_receptacle",
+            "mass_3_flower_2_stem",
+            "mass_3_petiole_00",
+            "mass_3_petiole_01",
+            "mass_3_petiole_02",
+            "mass_3_petiole_03",
+            "mass_3_petiole_04",
+            "mass_3_petiole_05",
+            "mass_3_petiole_06",
+            "mass_3_petiole_07",
+            "mass_3_petiole_08",
+            "mass_3_petiole_09",
+            "mass_3_petiole_10",
+            "mass_3_petiole_11",
+            "mass_4_petiole_00",
+            "mass_4_petiole_01",
+            "mass_4_petiole_02",
+            "mass_4_petiole_03",
+            "mass_4_petiole_04",
+            "mass_4_petiole_05",
+            "mass_4_petiole_06",
+            "mass_4_petiole_07",
+            "mass_4_petiole_08",
+            "mass_4_petiole_09",
+            "mass_4_petiole_10",
+            "mass_4_petiole_11",
+            "mass_4_rounded_leaf_01",
+            "mass_4_rounded_leaf_02",
+            "mass_4_rounded_leaf_04",
+            "mass_4_rounded_leaf_05",
+            "mass_4_rounded_leaf_07",
+            "mass_4_rounded_leaf_08",
+            "mass_4_rounded_leaf_10",
+            "mass_4_rounded_leaf_11"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 6156,
+              "indices": 9756,
+              "triangles": 3252,
+              "material_index": 3,
+              "material_name": "ASTRAEA_botanical_leaf_olive"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_00__batch_04",
+          "source_mesh_index": 4,
+          "material_role": "botanical_leaf_sage",
+          "source_part_names": [
+            "mass_0_rounded_leaf_00",
+            "mass_0_rounded_leaf_02",
+            "mass_0_rounded_leaf_03",
+            "mass_0_rounded_leaf_04",
+            "mass_0_rounded_leaf_06",
+            "mass_0_rounded_leaf_07",
+            "mass_0_rounded_leaf_08",
+            "mass_0_rounded_leaf_10",
+            "mass_0_rounded_leaf_11",
+            "mass_2_rounded_leaf_00",
+            "mass_2_rounded_leaf_03",
+            "mass_2_rounded_leaf_06",
+            "mass_2_rounded_leaf_09",
+            "mass_3_rounded_leaf_00",
+            "mass_3_rounded_leaf_02",
+            "mass_3_rounded_leaf_03",
+            "mass_3_rounded_leaf_04",
+            "mass_3_rounded_leaf_06",
+            "mass_3_rounded_leaf_07",
+            "mass_3_rounded_leaf_08",
+            "mass_3_rounded_leaf_10",
+            "mass_3_rounded_leaf_11",
+            "mass_4_rounded_leaf_00",
+            "mass_4_rounded_leaf_03",
+            "mass_4_rounded_leaf_06",
+            "mass_4_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2288,
+              "indices": 3120,
+              "triangles": 1040,
+              "material_index": 4,
+              "material_name": "ASTRAEA_botanical_leaf_sage"
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "extras": {
+            "astraea_material_role": "botanical_bark",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "metric repeat",
+            "alpha_contract": "OPAQUE",
+            "meters_per_tile_uv": [
+              0.6,
+              1.2
+            ]
+          },
+          "name": "ASTRAEA_botanical_bark",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.9100000262260437
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_flower",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_flower",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7900000214576721
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_jade",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_jade",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.699999988079071
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_olive",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_olive",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.75
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_sage",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_sage",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 4
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7699999809265137
+          }
+        }
+      ],
+      "textures": [
+        {
+          "sampler": 0,
+          "source": 0
+        },
+        {
+          "sampler": 0,
+          "source": 1
+        },
+        {
+          "sampler": 0,
+          "source": 2
+        },
+        {
+          "sampler": 0,
+          "source": 3
+        },
+        {
+          "sampler": 0,
+          "source": 4
+        }
+      ],
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "import_force_disable_compression": true
+    },
+    "AST-BOT-002_pool_loggia_mass_01": {
+      "file": "AST-BOT-002_pool_loggia_mass_01.glb",
+      "sha256": "df921df3a243c376c48b9683bd4d827396110388d432c29e5d75a894ccc9808f",
+      "source_blend": "assets/grand_pool_first_pass/architectural_composition/feature_layers_next/planting/full_mass001/candidate_v001/source/AST-BOT-002_pool_loggia_mass_01.blend",
+      "source_sha256": "49b5c4ffbf5874e2b6eedc3ff4ef77fc1f921120facae42e4e2a65a4d3ebcb4a",
+      "snapshot_sha256": "974da7924d5a00a38e84157408ff663a918291979a653333801befdd9123eaf7",
+      "mesh_batches": 5,
+      "triangles": 7066,
+      "family": "plant",
+      "nodes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_00",
+          "source_node_index": 0,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_01",
+          "source_node_index": 1,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_02",
+          "source_node_index": 2,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_03",
+          "source_node_index": 3,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_04",
+          "source_node_index": 4,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "source_node_index": 5,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.6200000047683716,
+            1.220703097715159e-06,
+            -0.054999999701976776
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "source_node_index": 6,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.07500000298023224,
+            1.220703097715159e-06,
+            -0.12999999523162842
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "source_node_index": 7,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.5299999713897705,
+            1.220703097715159e-06,
+            -0.10499999672174454
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "source_node_index": 8,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.3700000047683716,
+            1.220703097715159e-06,
+            0.1850000023841858
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "source_node_index": 9,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_01",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.28999999165534973,
+            1.220703097715159e-06,
+            0.23499999940395355
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01",
+          "source_node_index": 10,
+          "parent_name": "",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": [
+            "AST-BOT-002_pool_loggia_mass_01__batch_00",
+            "AST-BOT-002_pool_loggia_mass_01__batch_01",
+            "AST-BOT-002_pool_loggia_mass_01__batch_02",
+            "AST-BOT-002_pool_loggia_mass_01__batch_03",
+            "AST-BOT-002_pool_loggia_mass_01__batch_04",
+            "mass_0_root_SOIL_CONTACT",
+            "mass_1_root_SOIL_CONTACT",
+            "mass_2_root_SOIL_CONTACT",
+            "mass_3_root_SOIL_CONTACT",
+            "mass_4_root_SOIL_CONTACT"
+          ]
+        }
+      ],
+      "meshes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_00",
+          "source_mesh_index": 0,
+          "material_role": "botanical_bark",
+          "source_part_names": [
+            "mass_0_curved_stem",
+            "mass_0_root",
+            "mass_1_curved_stem",
+            "mass_1_root",
+            "mass_2_curved_stem",
+            "mass_2_root",
+            "mass_3_curved_stem",
+            "mass_3_root",
+            "mass_4_curved_stem",
+            "mass_4_root"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1010,
+              "indices": 1650,
+              "triangles": 550,
+              "material_index": 0,
+              "material_name": "ASTRAEA_botanical_bark"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_01",
+          "source_mesh_index": 1,
+          "material_role": "botanical_flower",
+          "source_part_names": [
+            "mass_1_flower_0_centre",
+            "mass_1_flower_0_petal_0",
+            "mass_1_flower_0_petal_1",
+            "mass_1_flower_0_petal_2",
+            "mass_1_flower_0_petal_3",
+            "mass_1_flower_0_petal_4",
+            "mass_1_flower_1_centre",
+            "mass_1_flower_1_petal_0",
+            "mass_1_flower_1_petal_1",
+            "mass_1_flower_1_petal_2",
+            "mass_1_flower_1_petal_3",
+            "mass_1_flower_1_petal_4",
+            "mass_1_flower_2_centre",
+            "mass_1_flower_2_petal_0",
+            "mass_1_flower_2_petal_1",
+            "mass_1_flower_2_petal_2",
+            "mass_1_flower_2_petal_3",
+            "mass_1_flower_2_petal_4",
+            "mass_4_flower_0_centre",
+            "mass_4_flower_0_petal_0",
+            "mass_4_flower_0_petal_1",
+            "mass_4_flower_0_petal_2",
+            "mass_4_flower_0_petal_3",
+            "mass_4_flower_0_petal_4",
+            "mass_4_flower_1_centre",
+            "mass_4_flower_1_petal_0",
+            "mass_4_flower_1_petal_1",
+            "mass_4_flower_1_petal_2",
+            "mass_4_flower_1_petal_3",
+            "mass_4_flower_1_petal_4",
+            "mass_4_flower_2_centre",
+            "mass_4_flower_2_petal_0",
+            "mass_4_flower_2_petal_1",
+            "mass_4_flower_2_petal_2",
+            "mass_4_flower_2_petal_3",
+            "mass_4_flower_2_petal_4"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2892,
+              "indices": 4032,
+              "triangles": 1344,
+              "material_index": 1,
+              "material_name": "ASTRAEA_botanical_flower"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_02",
+          "source_mesh_index": 2,
+          "material_role": "botanical_leaf_jade",
+          "source_part_names": [
+            "mass_0_rounded_leaf_01",
+            "mass_0_rounded_leaf_05",
+            "mass_0_rounded_leaf_09",
+            "mass_2_rounded_leaf_01",
+            "mass_2_rounded_leaf_02",
+            "mass_2_rounded_leaf_04",
+            "mass_2_rounded_leaf_05",
+            "mass_2_rounded_leaf_07",
+            "mass_2_rounded_leaf_08",
+            "mass_2_rounded_leaf_10",
+            "mass_2_rounded_leaf_11",
+            "mass_3_rounded_leaf_01",
+            "mass_3_rounded_leaf_05",
+            "mass_3_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1232,
+              "indices": 1680,
+              "triangles": 560,
+              "material_index": 2,
+              "material_name": "ASTRAEA_botanical_leaf_jade"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_03",
+          "source_mesh_index": 3,
+          "material_role": "botanical_leaf_olive",
+          "source_part_names": [
+            "mass_0_petiole_00",
+            "mass_0_petiole_01",
+            "mass_0_petiole_02",
+            "mass_0_petiole_03",
+            "mass_0_petiole_04",
+            "mass_0_petiole_05",
+            "mass_0_petiole_06",
+            "mass_0_petiole_07",
+            "mass_0_petiole_08",
+            "mass_0_petiole_09",
+            "mass_0_petiole_10",
+            "mass_0_petiole_11",
+            "mass_1_flower_0_receptacle",
+            "mass_1_flower_0_stem",
+            "mass_1_flower_1_receptacle",
+            "mass_1_flower_1_stem",
+            "mass_1_flower_2_receptacle",
+            "mass_1_flower_2_stem",
+            "mass_1_petiole_00",
+            "mass_1_petiole_01",
+            "mass_1_petiole_02",
+            "mass_1_petiole_03",
+            "mass_1_petiole_04",
+            "mass_1_petiole_05",
+            "mass_1_petiole_06",
+            "mass_1_petiole_07",
+            "mass_1_petiole_08",
+            "mass_1_petiole_09",
+            "mass_1_petiole_10",
+            "mass_1_petiole_11",
+            "mass_1_rounded_leaf_00",
+            "mass_1_rounded_leaf_03",
+            "mass_1_rounded_leaf_06",
+            "mass_1_rounded_leaf_09",
+            "mass_2_petiole_00",
+            "mass_2_petiole_01",
+            "mass_2_petiole_02",
+            "mass_2_petiole_03",
+            "mass_2_petiole_04",
+            "mass_2_petiole_05",
+            "mass_2_petiole_06",
+            "mass_2_petiole_07",
+            "mass_2_petiole_08",
+            "mass_2_petiole_09",
+            "mass_2_petiole_10",
+            "mass_2_petiole_11",
+            "mass_3_petiole_00",
+            "mass_3_petiole_01",
+            "mass_3_petiole_02",
+            "mass_3_petiole_03",
+            "mass_3_petiole_04",
+            "mass_3_petiole_05",
+            "mass_3_petiole_06",
+            "mass_3_petiole_07",
+            "mass_3_petiole_08",
+            "mass_3_petiole_09",
+            "mass_3_petiole_10",
+            "mass_3_petiole_11",
+            "mass_4_flower_0_receptacle",
+            "mass_4_flower_0_stem",
+            "mass_4_flower_1_receptacle",
+            "mass_4_flower_1_stem",
+            "mass_4_flower_2_receptacle",
+            "mass_4_flower_2_stem",
+            "mass_4_petiole_00",
+            "mass_4_petiole_01",
+            "mass_4_petiole_02",
+            "mass_4_petiole_03",
+            "mass_4_petiole_04",
+            "mass_4_petiole_05",
+            "mass_4_petiole_06",
+            "mass_4_petiole_07",
+            "mass_4_petiole_08",
+            "mass_4_petiole_09",
+            "mass_4_petiole_10",
+            "mass_4_petiole_11",
+            "mass_4_rounded_leaf_01",
+            "mass_4_rounded_leaf_02",
+            "mass_4_rounded_leaf_04",
+            "mass_4_rounded_leaf_05",
+            "mass_4_rounded_leaf_07",
+            "mass_4_rounded_leaf_08",
+            "mass_4_rounded_leaf_10",
+            "mass_4_rounded_leaf_11"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 6156,
+              "indices": 9756,
+              "triangles": 3252,
+              "material_index": 3,
+              "material_name": "ASTRAEA_botanical_leaf_olive"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_01__batch_04",
+          "source_mesh_index": 4,
+          "material_role": "botanical_leaf_sage",
+          "source_part_names": [
+            "mass_0_rounded_leaf_00",
+            "mass_0_rounded_leaf_02",
+            "mass_0_rounded_leaf_03",
+            "mass_0_rounded_leaf_04",
+            "mass_0_rounded_leaf_06",
+            "mass_0_rounded_leaf_07",
+            "mass_0_rounded_leaf_08",
+            "mass_0_rounded_leaf_10",
+            "mass_0_rounded_leaf_11",
+            "mass_1_rounded_leaf_01",
+            "mass_1_rounded_leaf_02",
+            "mass_1_rounded_leaf_04",
+            "mass_1_rounded_leaf_05",
+            "mass_1_rounded_leaf_07",
+            "mass_1_rounded_leaf_08",
+            "mass_1_rounded_leaf_10",
+            "mass_1_rounded_leaf_11",
+            "mass_2_rounded_leaf_00",
+            "mass_2_rounded_leaf_03",
+            "mass_2_rounded_leaf_06",
+            "mass_2_rounded_leaf_09",
+            "mass_3_rounded_leaf_00",
+            "mass_3_rounded_leaf_02",
+            "mass_3_rounded_leaf_03",
+            "mass_3_rounded_leaf_04",
+            "mass_3_rounded_leaf_06",
+            "mass_3_rounded_leaf_07",
+            "mass_3_rounded_leaf_08",
+            "mass_3_rounded_leaf_10",
+            "mass_3_rounded_leaf_11",
+            "mass_4_rounded_leaf_00",
+            "mass_4_rounded_leaf_03",
+            "mass_4_rounded_leaf_06",
+            "mass_4_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2992,
+              "indices": 4080,
+              "triangles": 1360,
+              "material_index": 4,
+              "material_name": "ASTRAEA_botanical_leaf_sage"
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "extras": {
+            "astraea_material_role": "botanical_bark",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "metric repeat",
+            "alpha_contract": "OPAQUE",
+            "meters_per_tile_uv": [
+              0.6,
+              1.2
+            ]
+          },
+          "name": "ASTRAEA_botanical_bark",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.9100000262260437
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_flower",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_flower",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7900000214576721
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_jade",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_jade",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.699999988079071
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_olive",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_olive",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.75
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_sage",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_sage",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 4
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7699999809265137
+          }
+        }
+      ],
+      "textures": [
+        {
+          "sampler": 0,
+          "source": 0
+        },
+        {
+          "sampler": 0,
+          "source": 1
+        },
+        {
+          "sampler": 0,
+          "source": 2
+        },
+        {
+          "sampler": 0,
+          "source": 3
+        },
+        {
+          "sampler": 0,
+          "source": 4
+        }
+      ],
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "import_force_disable_compression": true
+    },
+    "AST-BOT-002_pool_loggia_mass_02": {
+      "file": "AST-BOT-002_pool_loggia_mass_02.glb",
+      "sha256": "eb04f03fadfb982304d6719d7afddd8eb314273087155276b30fedcfd26bc8a5",
+      "source_blend": "assets/grand_pool_first_pass/architectural_composition/feature_layers_next/planting/full_mass001/candidate_v001/source/AST-BOT-002_pool_loggia_mass_02.blend",
+      "source_sha256": "0e831f06cb9fdf4ba15af21972b3bd4fb3c932c95b1cc537c0886814abdc928d",
+      "snapshot_sha256": "ccf70783ea8eacd9bd1b89dcc7a8329cd9effabd710c601eec9920f3508cfe69",
+      "mesh_batches": 5,
+      "triangles": 7066,
+      "family": "plant",
+      "nodes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_00",
+          "source_node_index": 0,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_01",
+          "source_node_index": 1,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_02",
+          "source_node_index": 2,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_03",
+          "source_node_index": 3,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_04",
+          "source_node_index": 4,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "source_node_index": 5,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.550000011920929,
+            1.220703097715159e-06,
+            -0.10000000149011612
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "source_node_index": 6,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.11999999731779099,
+            1.220703097715159e-06,
+            -0.09000000357627869
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "source_node_index": 7,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.6299999952316284,
+            1.220703097715159e-06,
+            0.014999999664723873
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "source_node_index": 8,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.3400000035762787,
+            1.220703097715159e-06,
+            0.19499999284744263
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "source_node_index": 9,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_02",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.33000001311302185,
+            1.220703097715159e-06,
+            0.23000000417232513
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02",
+          "source_node_index": 10,
+          "parent_name": "",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": [
+            "AST-BOT-002_pool_loggia_mass_02__batch_00",
+            "AST-BOT-002_pool_loggia_mass_02__batch_01",
+            "AST-BOT-002_pool_loggia_mass_02__batch_02",
+            "AST-BOT-002_pool_loggia_mass_02__batch_03",
+            "AST-BOT-002_pool_loggia_mass_02__batch_04",
+            "mass_0_root_SOIL_CONTACT",
+            "mass_1_root_SOIL_CONTACT",
+            "mass_2_root_SOIL_CONTACT",
+            "mass_3_root_SOIL_CONTACT",
+            "mass_4_root_SOIL_CONTACT"
+          ]
+        }
+      ],
+      "meshes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_00",
+          "source_mesh_index": 0,
+          "material_role": "botanical_bark",
+          "source_part_names": [
+            "mass_0_curved_stem",
+            "mass_0_root",
+            "mass_1_curved_stem",
+            "mass_1_root",
+            "mass_2_curved_stem",
+            "mass_2_root",
+            "mass_3_curved_stem",
+            "mass_3_root",
+            "mass_4_curved_stem",
+            "mass_4_root"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1010,
+              "indices": 1650,
+              "triangles": 550,
+              "material_index": 0,
+              "material_name": "ASTRAEA_botanical_bark"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_01",
+          "source_mesh_index": 1,
+          "material_role": "botanical_flower",
+          "source_part_names": [
+            "mass_0_flower_0_centre",
+            "mass_0_flower_0_petal_0",
+            "mass_0_flower_0_petal_1",
+            "mass_0_flower_0_petal_2",
+            "mass_0_flower_0_petal_3",
+            "mass_0_flower_0_petal_4",
+            "mass_0_flower_1_centre",
+            "mass_0_flower_1_petal_0",
+            "mass_0_flower_1_petal_1",
+            "mass_0_flower_1_petal_2",
+            "mass_0_flower_1_petal_3",
+            "mass_0_flower_1_petal_4",
+            "mass_0_flower_2_centre",
+            "mass_0_flower_2_petal_0",
+            "mass_0_flower_2_petal_1",
+            "mass_0_flower_2_petal_2",
+            "mass_0_flower_2_petal_3",
+            "mass_0_flower_2_petal_4",
+            "mass_4_flower_0_centre",
+            "mass_4_flower_0_petal_0",
+            "mass_4_flower_0_petal_1",
+            "mass_4_flower_0_petal_2",
+            "mass_4_flower_0_petal_3",
+            "mass_4_flower_0_petal_4",
+            "mass_4_flower_1_centre",
+            "mass_4_flower_1_petal_0",
+            "mass_4_flower_1_petal_1",
+            "mass_4_flower_1_petal_2",
+            "mass_4_flower_1_petal_3",
+            "mass_4_flower_1_petal_4",
+            "mass_4_flower_2_centre",
+            "mass_4_flower_2_petal_0",
+            "mass_4_flower_2_petal_1",
+            "mass_4_flower_2_petal_2",
+            "mass_4_flower_2_petal_3",
+            "mass_4_flower_2_petal_4"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2892,
+              "indices": 4032,
+              "triangles": 1344,
+              "material_index": 1,
+              "material_name": "ASTRAEA_botanical_flower"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_02",
+          "source_mesh_index": 2,
+          "material_role": "botanical_leaf_jade",
+          "source_part_names": [
+            "mass_0_rounded_leaf_01",
+            "mass_0_rounded_leaf_05",
+            "mass_0_rounded_leaf_09",
+            "mass_1_rounded_leaf_01",
+            "mass_1_rounded_leaf_02",
+            "mass_1_rounded_leaf_04",
+            "mass_1_rounded_leaf_05",
+            "mass_1_rounded_leaf_07",
+            "mass_1_rounded_leaf_08",
+            "mass_1_rounded_leaf_10",
+            "mass_1_rounded_leaf_11",
+            "mass_2_rounded_leaf_01",
+            "mass_2_rounded_leaf_02",
+            "mass_2_rounded_leaf_04",
+            "mass_2_rounded_leaf_05",
+            "mass_2_rounded_leaf_07",
+            "mass_2_rounded_leaf_08",
+            "mass_2_rounded_leaf_10",
+            "mass_2_rounded_leaf_11",
+            "mass_3_rounded_leaf_01",
+            "mass_3_rounded_leaf_05",
+            "mass_3_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1936,
+              "indices": 2640,
+              "triangles": 880,
+              "material_index": 2,
+              "material_name": "ASTRAEA_botanical_leaf_jade"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_03",
+          "source_mesh_index": 3,
+          "material_role": "botanical_leaf_olive",
+          "source_part_names": [
+            "mass_0_flower_0_receptacle",
+            "mass_0_flower_0_stem",
+            "mass_0_flower_1_receptacle",
+            "mass_0_flower_1_stem",
+            "mass_0_flower_2_receptacle",
+            "mass_0_flower_2_stem",
+            "mass_0_petiole_00",
+            "mass_0_petiole_01",
+            "mass_0_petiole_02",
+            "mass_0_petiole_03",
+            "mass_0_petiole_04",
+            "mass_0_petiole_05",
+            "mass_0_petiole_06",
+            "mass_0_petiole_07",
+            "mass_0_petiole_08",
+            "mass_0_petiole_09",
+            "mass_0_petiole_10",
+            "mass_0_petiole_11",
+            "mass_1_petiole_00",
+            "mass_1_petiole_01",
+            "mass_1_petiole_02",
+            "mass_1_petiole_03",
+            "mass_1_petiole_04",
+            "mass_1_petiole_05",
+            "mass_1_petiole_06",
+            "mass_1_petiole_07",
+            "mass_1_petiole_08",
+            "mass_1_petiole_09",
+            "mass_1_petiole_10",
+            "mass_1_petiole_11",
+            "mass_1_rounded_leaf_00",
+            "mass_1_rounded_leaf_03",
+            "mass_1_rounded_leaf_06",
+            "mass_1_rounded_leaf_09",
+            "mass_2_petiole_00",
+            "mass_2_petiole_01",
+            "mass_2_petiole_02",
+            "mass_2_petiole_03",
+            "mass_2_petiole_04",
+            "mass_2_petiole_05",
+            "mass_2_petiole_06",
+            "mass_2_petiole_07",
+            "mass_2_petiole_08",
+            "mass_2_petiole_09",
+            "mass_2_petiole_10",
+            "mass_2_petiole_11",
+            "mass_3_petiole_00",
+            "mass_3_petiole_01",
+            "mass_3_petiole_02",
+            "mass_3_petiole_03",
+            "mass_3_petiole_04",
+            "mass_3_petiole_05",
+            "mass_3_petiole_06",
+            "mass_3_petiole_07",
+            "mass_3_petiole_08",
+            "mass_3_petiole_09",
+            "mass_3_petiole_10",
+            "mass_3_petiole_11",
+            "mass_4_flower_0_receptacle",
+            "mass_4_flower_0_stem",
+            "mass_4_flower_1_receptacle",
+            "mass_4_flower_1_stem",
+            "mass_4_flower_2_receptacle",
+            "mass_4_flower_2_stem",
+            "mass_4_petiole_00",
+            "mass_4_petiole_01",
+            "mass_4_petiole_02",
+            "mass_4_petiole_03",
+            "mass_4_petiole_04",
+            "mass_4_petiole_05",
+            "mass_4_petiole_06",
+            "mass_4_petiole_07",
+            "mass_4_petiole_08",
+            "mass_4_petiole_09",
+            "mass_4_petiole_10",
+            "mass_4_petiole_11",
+            "mass_4_rounded_leaf_01",
+            "mass_4_rounded_leaf_02",
+            "mass_4_rounded_leaf_04",
+            "mass_4_rounded_leaf_05",
+            "mass_4_rounded_leaf_07",
+            "mass_4_rounded_leaf_08",
+            "mass_4_rounded_leaf_10",
+            "mass_4_rounded_leaf_11"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 6156,
+              "indices": 9756,
+              "triangles": 3252,
+              "material_index": 3,
+              "material_name": "ASTRAEA_botanical_leaf_olive"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_02__batch_04",
+          "source_mesh_index": 4,
+          "material_role": "botanical_leaf_sage",
+          "source_part_names": [
+            "mass_0_rounded_leaf_00",
+            "mass_0_rounded_leaf_02",
+            "mass_0_rounded_leaf_03",
+            "mass_0_rounded_leaf_04",
+            "mass_0_rounded_leaf_06",
+            "mass_0_rounded_leaf_07",
+            "mass_0_rounded_leaf_08",
+            "mass_0_rounded_leaf_10",
+            "mass_0_rounded_leaf_11",
+            "mass_2_rounded_leaf_00",
+            "mass_2_rounded_leaf_03",
+            "mass_2_rounded_leaf_06",
+            "mass_2_rounded_leaf_09",
+            "mass_3_rounded_leaf_00",
+            "mass_3_rounded_leaf_02",
+            "mass_3_rounded_leaf_03",
+            "mass_3_rounded_leaf_04",
+            "mass_3_rounded_leaf_06",
+            "mass_3_rounded_leaf_07",
+            "mass_3_rounded_leaf_08",
+            "mass_3_rounded_leaf_10",
+            "mass_3_rounded_leaf_11",
+            "mass_4_rounded_leaf_00",
+            "mass_4_rounded_leaf_03",
+            "mass_4_rounded_leaf_06",
+            "mass_4_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2288,
+              "indices": 3120,
+              "triangles": 1040,
+              "material_index": 4,
+              "material_name": "ASTRAEA_botanical_leaf_sage"
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "extras": {
+            "astraea_material_role": "botanical_bark",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "metric repeat",
+            "alpha_contract": "OPAQUE",
+            "meters_per_tile_uv": [
+              0.6,
+              1.2
+            ]
+          },
+          "name": "ASTRAEA_botanical_bark",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.9100000262260437
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_flower",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_flower",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7900000214576721
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_jade",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_jade",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.699999988079071
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_olive",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_olive",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.75
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_sage",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_sage",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 4
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7699999809265137
+          }
+        }
+      ],
+      "textures": [
+        {
+          "sampler": 0,
+          "source": 0
+        },
+        {
+          "sampler": 0,
+          "source": 1
+        },
+        {
+          "sampler": 0,
+          "source": 2
+        },
+        {
+          "sampler": 0,
+          "source": 3
+        },
+        {
+          "sampler": 0,
+          "source": 4
+        }
+      ],
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "import_force_disable_compression": true
+    },
+    "AST-BOT-002_pool_loggia_mass_03": {
+      "file": "AST-BOT-002_pool_loggia_mass_03.glb",
+      "sha256": "c63b5285a20fb3522475b792c07c61fc7bebc80d475e522c61b25f17d6ed1f17",
+      "source_blend": "assets/grand_pool_first_pass/architectural_composition/feature_layers_next/planting/full_mass001/candidate_v001/source/AST-BOT-002_pool_loggia_mass_03.blend",
+      "source_sha256": "0ff35a9409cb6a299d8fa4a3929429adecf4b93061ba90d2a8d3e4690d64a2e6",
+      "snapshot_sha256": "cea3e8e356766b52283ff81cbde6c1b0ec77813bff6bcbc9a0286ce077e9162d",
+      "mesh_batches": 5,
+      "triangles": 7066,
+      "family": "plant",
+      "nodes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_00",
+          "source_node_index": 0,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_01",
+          "source_node_index": 1,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_02",
+          "source_node_index": 2,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_03",
+          "source_node_index": 3,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_04",
+          "source_node_index": 4,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "source_node_index": 5,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.6100000143051147,
+            1.220703097715159e-06,
+            -0.004999999888241291
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "source_node_index": 6,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.0949999988079071,
+            1.220703097715159e-06,
+            -0.1550000011920929
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "source_node_index": 7,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.5299999713897705,
+            1.220703097715159e-06,
+            -0.10999999940395355
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "source_node_index": 8,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.28999999165534973,
+            1.220703097715159e-06,
+            0.23499999940395355
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "source_node_index": 9,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_03",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.4000000059604645,
+            1.220703097715159e-06,
+            0.17000000178813934
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03",
+          "source_node_index": 10,
+          "parent_name": "",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": [
+            "AST-BOT-002_pool_loggia_mass_03__batch_00",
+            "AST-BOT-002_pool_loggia_mass_03__batch_01",
+            "AST-BOT-002_pool_loggia_mass_03__batch_02",
+            "AST-BOT-002_pool_loggia_mass_03__batch_03",
+            "AST-BOT-002_pool_loggia_mass_03__batch_04",
+            "mass_0_root_SOIL_CONTACT",
+            "mass_1_root_SOIL_CONTACT",
+            "mass_2_root_SOIL_CONTACT",
+            "mass_3_root_SOIL_CONTACT",
+            "mass_4_root_SOIL_CONTACT"
+          ]
+        }
+      ],
+      "meshes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_00",
+          "source_mesh_index": 0,
+          "material_role": "botanical_bark",
+          "source_part_names": [
+            "mass_0_curved_stem",
+            "mass_0_root",
+            "mass_1_curved_stem",
+            "mass_1_root",
+            "mass_2_curved_stem",
+            "mass_2_root",
+            "mass_3_curved_stem",
+            "mass_3_root",
+            "mass_4_curved_stem",
+            "mass_4_root"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1010,
+              "indices": 1650,
+              "triangles": 550,
+              "material_index": 0,
+              "material_name": "ASTRAEA_botanical_bark"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_01",
+          "source_mesh_index": 1,
+          "material_role": "botanical_flower",
+          "source_part_names": [
+            "mass_2_flower_0_centre",
+            "mass_2_flower_0_petal_0",
+            "mass_2_flower_0_petal_1",
+            "mass_2_flower_0_petal_2",
+            "mass_2_flower_0_petal_3",
+            "mass_2_flower_0_petal_4",
+            "mass_2_flower_1_centre",
+            "mass_2_flower_1_petal_0",
+            "mass_2_flower_1_petal_1",
+            "mass_2_flower_1_petal_2",
+            "mass_2_flower_1_petal_3",
+            "mass_2_flower_1_petal_4",
+            "mass_2_flower_2_centre",
+            "mass_2_flower_2_petal_0",
+            "mass_2_flower_2_petal_1",
+            "mass_2_flower_2_petal_2",
+            "mass_2_flower_2_petal_3",
+            "mass_2_flower_2_petal_4",
+            "mass_3_flower_0_centre",
+            "mass_3_flower_0_petal_0",
+            "mass_3_flower_0_petal_1",
+            "mass_3_flower_0_petal_2",
+            "mass_3_flower_0_petal_3",
+            "mass_3_flower_0_petal_4",
+            "mass_3_flower_1_centre",
+            "mass_3_flower_1_petal_0",
+            "mass_3_flower_1_petal_1",
+            "mass_3_flower_1_petal_2",
+            "mass_3_flower_1_petal_3",
+            "mass_3_flower_1_petal_4",
+            "mass_3_flower_2_centre",
+            "mass_3_flower_2_petal_0",
+            "mass_3_flower_2_petal_1",
+            "mass_3_flower_2_petal_2",
+            "mass_3_flower_2_petal_3",
+            "mass_3_flower_2_petal_4"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2892,
+              "indices": 4032,
+              "triangles": 1344,
+              "material_index": 1,
+              "material_name": "ASTRAEA_botanical_flower"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_02",
+          "source_mesh_index": 2,
+          "material_role": "botanical_leaf_jade",
+          "source_part_names": [
+            "mass_0_rounded_leaf_01",
+            "mass_0_rounded_leaf_05",
+            "mass_0_rounded_leaf_09",
+            "mass_2_rounded_leaf_01",
+            "mass_2_rounded_leaf_02",
+            "mass_2_rounded_leaf_04",
+            "mass_2_rounded_leaf_05",
+            "mass_2_rounded_leaf_07",
+            "mass_2_rounded_leaf_08",
+            "mass_2_rounded_leaf_10",
+            "mass_2_rounded_leaf_11",
+            "mass_3_rounded_leaf_01",
+            "mass_3_rounded_leaf_05",
+            "mass_3_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1232,
+              "indices": 1680,
+              "triangles": 560,
+              "material_index": 2,
+              "material_name": "ASTRAEA_botanical_leaf_jade"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_03",
+          "source_mesh_index": 3,
+          "material_role": "botanical_leaf_olive",
+          "source_part_names": [
+            "mass_0_petiole_00",
+            "mass_0_petiole_01",
+            "mass_0_petiole_02",
+            "mass_0_petiole_03",
+            "mass_0_petiole_04",
+            "mass_0_petiole_05",
+            "mass_0_petiole_06",
+            "mass_0_petiole_07",
+            "mass_0_petiole_08",
+            "mass_0_petiole_09",
+            "mass_0_petiole_10",
+            "mass_0_petiole_11",
+            "mass_1_petiole_00",
+            "mass_1_petiole_01",
+            "mass_1_petiole_02",
+            "mass_1_petiole_03",
+            "mass_1_petiole_04",
+            "mass_1_petiole_05",
+            "mass_1_petiole_06",
+            "mass_1_petiole_07",
+            "mass_1_petiole_08",
+            "mass_1_petiole_09",
+            "mass_1_petiole_10",
+            "mass_1_petiole_11",
+            "mass_1_rounded_leaf_00",
+            "mass_1_rounded_leaf_03",
+            "mass_1_rounded_leaf_06",
+            "mass_1_rounded_leaf_09",
+            "mass_2_flower_0_receptacle",
+            "mass_2_flower_0_stem",
+            "mass_2_flower_1_receptacle",
+            "mass_2_flower_1_stem",
+            "mass_2_flower_2_receptacle",
+            "mass_2_flower_2_stem",
+            "mass_2_petiole_00",
+            "mass_2_petiole_01",
+            "mass_2_petiole_02",
+            "mass_2_petiole_03",
+            "mass_2_petiole_04",
+            "mass_2_petiole_05",
+            "mass_2_petiole_06",
+            "mass_2_petiole_07",
+            "mass_2_petiole_08",
+            "mass_2_petiole_09",
+            "mass_2_petiole_10",
+            "mass_2_petiole_11",
+            "mass_3_flower_0_receptacle",
+            "mass_3_flower_0_stem",
+            "mass_3_flower_1_receptacle",
+            "mass_3_flower_1_stem",
+            "mass_3_flower_2_receptacle",
+            "mass_3_flower_2_stem",
+            "mass_3_petiole_00",
+            "mass_3_petiole_01",
+            "mass_3_petiole_02",
+            "mass_3_petiole_03",
+            "mass_3_petiole_04",
+            "mass_3_petiole_05",
+            "mass_3_petiole_06",
+            "mass_3_petiole_07",
+            "mass_3_petiole_08",
+            "mass_3_petiole_09",
+            "mass_3_petiole_10",
+            "mass_3_petiole_11",
+            "mass_4_petiole_00",
+            "mass_4_petiole_01",
+            "mass_4_petiole_02",
+            "mass_4_petiole_03",
+            "mass_4_petiole_04",
+            "mass_4_petiole_05",
+            "mass_4_petiole_06",
+            "mass_4_petiole_07",
+            "mass_4_petiole_08",
+            "mass_4_petiole_09",
+            "mass_4_petiole_10",
+            "mass_4_petiole_11",
+            "mass_4_rounded_leaf_01",
+            "mass_4_rounded_leaf_02",
+            "mass_4_rounded_leaf_04",
+            "mass_4_rounded_leaf_05",
+            "mass_4_rounded_leaf_07",
+            "mass_4_rounded_leaf_08",
+            "mass_4_rounded_leaf_10",
+            "mass_4_rounded_leaf_11"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 6156,
+              "indices": 9756,
+              "triangles": 3252,
+              "material_index": 3,
+              "material_name": "ASTRAEA_botanical_leaf_olive"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_03__batch_04",
+          "source_mesh_index": 4,
+          "material_role": "botanical_leaf_sage",
+          "source_part_names": [
+            "mass_0_rounded_leaf_00",
+            "mass_0_rounded_leaf_02",
+            "mass_0_rounded_leaf_03",
+            "mass_0_rounded_leaf_04",
+            "mass_0_rounded_leaf_06",
+            "mass_0_rounded_leaf_07",
+            "mass_0_rounded_leaf_08",
+            "mass_0_rounded_leaf_10",
+            "mass_0_rounded_leaf_11",
+            "mass_1_rounded_leaf_01",
+            "mass_1_rounded_leaf_02",
+            "mass_1_rounded_leaf_04",
+            "mass_1_rounded_leaf_05",
+            "mass_1_rounded_leaf_07",
+            "mass_1_rounded_leaf_08",
+            "mass_1_rounded_leaf_10",
+            "mass_1_rounded_leaf_11",
+            "mass_2_rounded_leaf_00",
+            "mass_2_rounded_leaf_03",
+            "mass_2_rounded_leaf_06",
+            "mass_2_rounded_leaf_09",
+            "mass_3_rounded_leaf_00",
+            "mass_3_rounded_leaf_02",
+            "mass_3_rounded_leaf_03",
+            "mass_3_rounded_leaf_04",
+            "mass_3_rounded_leaf_06",
+            "mass_3_rounded_leaf_07",
+            "mass_3_rounded_leaf_08",
+            "mass_3_rounded_leaf_10",
+            "mass_3_rounded_leaf_11",
+            "mass_4_rounded_leaf_00",
+            "mass_4_rounded_leaf_03",
+            "mass_4_rounded_leaf_06",
+            "mass_4_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2992,
+              "indices": 4080,
+              "triangles": 1360,
+              "material_index": 4,
+              "material_name": "ASTRAEA_botanical_leaf_sage"
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "extras": {
+            "astraea_material_role": "botanical_bark",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "metric repeat",
+            "alpha_contract": "OPAQUE",
+            "meters_per_tile_uv": [
+              0.6,
+              1.2
+            ]
+          },
+          "name": "ASTRAEA_botanical_bark",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.9100000262260437
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_flower",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_flower",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7900000214576721
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_jade",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_jade",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.699999988079071
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_olive",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_olive",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.75
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_sage",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_sage",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 4
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7699999809265137
+          }
+        }
+      ],
+      "textures": [
+        {
+          "sampler": 0,
+          "source": 0
+        },
+        {
+          "sampler": 0,
+          "source": 1
+        },
+        {
+          "sampler": 0,
+          "source": 2
+        },
+        {
+          "sampler": 0,
+          "source": 3
+        },
+        {
+          "sampler": 0,
+          "source": 4
+        }
+      ],
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "import_force_disable_compression": true
+    },
+    "AST-BOT-002_pool_loggia_mass_04": {
+      "file": "AST-BOT-002_pool_loggia_mass_04.glb",
+      "sha256": "ffa3a4e1e3b6a4381b3e2227782f9967f7c73310c426af0b06b15d58e5a5bbee",
+      "source_blend": "assets/grand_pool_first_pass/architectural_composition/feature_layers_next/planting/full_mass001/candidate_v001/source/AST-BOT-002_pool_loggia_mass_04.blend",
+      "source_sha256": "c6608a71e5b4a87e9a5eb7f64d01d29f9c0b172d241eb31c0d90931a29eb98d1",
+      "snapshot_sha256": "fbf94fbcbfc4c7b1076197229c1556c35b3a8c83ea8af86154bedfced8f98480",
+      "mesh_batches": 5,
+      "triangles": 7066,
+      "family": "plant",
+      "nodes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_00",
+          "source_node_index": 0,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_01",
+          "source_node_index": 1,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_02",
+          "source_node_index": 2,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_03",
+          "source_node_index": 3,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_04",
+          "source_node_index": 4,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "source_node_index": 5,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.5600000023841858,
+            1.220703097715159e-06,
+            -0.125
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "source_node_index": 6,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.07999999821186066,
+            1.220703097715159e-06,
+            -0.10499999672174454
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "source_node_index": 7,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.6000000238418579,
+            1.220703097715159e-06,
+            0.004999999888241291
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "source_node_index": 8,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.3499999940395355,
+            1.220703097715159e-06,
+            0.18000000715255737
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "source_node_index": 9,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_04",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.3199999928474426,
+            1.220703097715159e-06,
+            0.23999999463558197
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04",
+          "source_node_index": 10,
+          "parent_name": "",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": [
+            "AST-BOT-002_pool_loggia_mass_04__batch_00",
+            "AST-BOT-002_pool_loggia_mass_04__batch_01",
+            "AST-BOT-002_pool_loggia_mass_04__batch_02",
+            "AST-BOT-002_pool_loggia_mass_04__batch_03",
+            "AST-BOT-002_pool_loggia_mass_04__batch_04",
+            "mass_0_root_SOIL_CONTACT",
+            "mass_1_root_SOIL_CONTACT",
+            "mass_2_root_SOIL_CONTACT",
+            "mass_3_root_SOIL_CONTACT",
+            "mass_4_root_SOIL_CONTACT"
+          ]
+        }
+      ],
+      "meshes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_00",
+          "source_mesh_index": 0,
+          "material_role": "botanical_bark",
+          "source_part_names": [
+            "mass_0_curved_stem",
+            "mass_0_root",
+            "mass_1_curved_stem",
+            "mass_1_root",
+            "mass_2_curved_stem",
+            "mass_2_root",
+            "mass_3_curved_stem",
+            "mass_3_root",
+            "mass_4_curved_stem",
+            "mass_4_root"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1010,
+              "indices": 1650,
+              "triangles": 550,
+              "material_index": 0,
+              "material_name": "ASTRAEA_botanical_bark"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_01",
+          "source_mesh_index": 1,
+          "material_role": "botanical_flower",
+          "source_part_names": [
+            "mass_0_flower_0_centre",
+            "mass_0_flower_0_petal_0",
+            "mass_0_flower_0_petal_1",
+            "mass_0_flower_0_petal_2",
+            "mass_0_flower_0_petal_3",
+            "mass_0_flower_0_petal_4",
+            "mass_0_flower_1_centre",
+            "mass_0_flower_1_petal_0",
+            "mass_0_flower_1_petal_1",
+            "mass_0_flower_1_petal_2",
+            "mass_0_flower_1_petal_3",
+            "mass_0_flower_1_petal_4",
+            "mass_0_flower_2_centre",
+            "mass_0_flower_2_petal_0",
+            "mass_0_flower_2_petal_1",
+            "mass_0_flower_2_petal_2",
+            "mass_0_flower_2_petal_3",
+            "mass_0_flower_2_petal_4",
+            "mass_4_flower_0_centre",
+            "mass_4_flower_0_petal_0",
+            "mass_4_flower_0_petal_1",
+            "mass_4_flower_0_petal_2",
+            "mass_4_flower_0_petal_3",
+            "mass_4_flower_0_petal_4",
+            "mass_4_flower_1_centre",
+            "mass_4_flower_1_petal_0",
+            "mass_4_flower_1_petal_1",
+            "mass_4_flower_1_petal_2",
+            "mass_4_flower_1_petal_3",
+            "mass_4_flower_1_petal_4",
+            "mass_4_flower_2_centre",
+            "mass_4_flower_2_petal_0",
+            "mass_4_flower_2_petal_1",
+            "mass_4_flower_2_petal_2",
+            "mass_4_flower_2_petal_3",
+            "mass_4_flower_2_petal_4"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2892,
+              "indices": 4032,
+              "triangles": 1344,
+              "material_index": 1,
+              "material_name": "ASTRAEA_botanical_flower"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_02",
+          "source_mesh_index": 2,
+          "material_role": "botanical_leaf_jade",
+          "source_part_names": [
+            "mass_0_rounded_leaf_01",
+            "mass_0_rounded_leaf_05",
+            "mass_0_rounded_leaf_09",
+            "mass_1_rounded_leaf_01",
+            "mass_1_rounded_leaf_02",
+            "mass_1_rounded_leaf_04",
+            "mass_1_rounded_leaf_05",
+            "mass_1_rounded_leaf_07",
+            "mass_1_rounded_leaf_08",
+            "mass_1_rounded_leaf_10",
+            "mass_1_rounded_leaf_11",
+            "mass_2_rounded_leaf_01",
+            "mass_2_rounded_leaf_02",
+            "mass_2_rounded_leaf_04",
+            "mass_2_rounded_leaf_05",
+            "mass_2_rounded_leaf_07",
+            "mass_2_rounded_leaf_08",
+            "mass_2_rounded_leaf_10",
+            "mass_2_rounded_leaf_11",
+            "mass_3_rounded_leaf_01",
+            "mass_3_rounded_leaf_05",
+            "mass_3_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1936,
+              "indices": 2640,
+              "triangles": 880,
+              "material_index": 2,
+              "material_name": "ASTRAEA_botanical_leaf_jade"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_03",
+          "source_mesh_index": 3,
+          "material_role": "botanical_leaf_olive",
+          "source_part_names": [
+            "mass_0_flower_0_receptacle",
+            "mass_0_flower_0_stem",
+            "mass_0_flower_1_receptacle",
+            "mass_0_flower_1_stem",
+            "mass_0_flower_2_receptacle",
+            "mass_0_flower_2_stem",
+            "mass_0_petiole_00",
+            "mass_0_petiole_01",
+            "mass_0_petiole_02",
+            "mass_0_petiole_03",
+            "mass_0_petiole_04",
+            "mass_0_petiole_05",
+            "mass_0_petiole_06",
+            "mass_0_petiole_07",
+            "mass_0_petiole_08",
+            "mass_0_petiole_09",
+            "mass_0_petiole_10",
+            "mass_0_petiole_11",
+            "mass_1_petiole_00",
+            "mass_1_petiole_01",
+            "mass_1_petiole_02",
+            "mass_1_petiole_03",
+            "mass_1_petiole_04",
+            "mass_1_petiole_05",
+            "mass_1_petiole_06",
+            "mass_1_petiole_07",
+            "mass_1_petiole_08",
+            "mass_1_petiole_09",
+            "mass_1_petiole_10",
+            "mass_1_petiole_11",
+            "mass_1_rounded_leaf_00",
+            "mass_1_rounded_leaf_03",
+            "mass_1_rounded_leaf_06",
+            "mass_1_rounded_leaf_09",
+            "mass_2_petiole_00",
+            "mass_2_petiole_01",
+            "mass_2_petiole_02",
+            "mass_2_petiole_03",
+            "mass_2_petiole_04",
+            "mass_2_petiole_05",
+            "mass_2_petiole_06",
+            "mass_2_petiole_07",
+            "mass_2_petiole_08",
+            "mass_2_petiole_09",
+            "mass_2_petiole_10",
+            "mass_2_petiole_11",
+            "mass_3_petiole_00",
+            "mass_3_petiole_01",
+            "mass_3_petiole_02",
+            "mass_3_petiole_03",
+            "mass_3_petiole_04",
+            "mass_3_petiole_05",
+            "mass_3_petiole_06",
+            "mass_3_petiole_07",
+            "mass_3_petiole_08",
+            "mass_3_petiole_09",
+            "mass_3_petiole_10",
+            "mass_3_petiole_11",
+            "mass_4_flower_0_receptacle",
+            "mass_4_flower_0_stem",
+            "mass_4_flower_1_receptacle",
+            "mass_4_flower_1_stem",
+            "mass_4_flower_2_receptacle",
+            "mass_4_flower_2_stem",
+            "mass_4_petiole_00",
+            "mass_4_petiole_01",
+            "mass_4_petiole_02",
+            "mass_4_petiole_03",
+            "mass_4_petiole_04",
+            "mass_4_petiole_05",
+            "mass_4_petiole_06",
+            "mass_4_petiole_07",
+            "mass_4_petiole_08",
+            "mass_4_petiole_09",
+            "mass_4_petiole_10",
+            "mass_4_petiole_11",
+            "mass_4_rounded_leaf_01",
+            "mass_4_rounded_leaf_02",
+            "mass_4_rounded_leaf_04",
+            "mass_4_rounded_leaf_05",
+            "mass_4_rounded_leaf_07",
+            "mass_4_rounded_leaf_08",
+            "mass_4_rounded_leaf_10",
+            "mass_4_rounded_leaf_11"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 6156,
+              "indices": 9756,
+              "triangles": 3252,
+              "material_index": 3,
+              "material_name": "ASTRAEA_botanical_leaf_olive"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_04__batch_04",
+          "source_mesh_index": 4,
+          "material_role": "botanical_leaf_sage",
+          "source_part_names": [
+            "mass_0_rounded_leaf_00",
+            "mass_0_rounded_leaf_02",
+            "mass_0_rounded_leaf_03",
+            "mass_0_rounded_leaf_04",
+            "mass_0_rounded_leaf_06",
+            "mass_0_rounded_leaf_07",
+            "mass_0_rounded_leaf_08",
+            "mass_0_rounded_leaf_10",
+            "mass_0_rounded_leaf_11",
+            "mass_2_rounded_leaf_00",
+            "mass_2_rounded_leaf_03",
+            "mass_2_rounded_leaf_06",
+            "mass_2_rounded_leaf_09",
+            "mass_3_rounded_leaf_00",
+            "mass_3_rounded_leaf_02",
+            "mass_3_rounded_leaf_03",
+            "mass_3_rounded_leaf_04",
+            "mass_3_rounded_leaf_06",
+            "mass_3_rounded_leaf_07",
+            "mass_3_rounded_leaf_08",
+            "mass_3_rounded_leaf_10",
+            "mass_3_rounded_leaf_11",
+            "mass_4_rounded_leaf_00",
+            "mass_4_rounded_leaf_03",
+            "mass_4_rounded_leaf_06",
+            "mass_4_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2288,
+              "indices": 3120,
+              "triangles": 1040,
+              "material_index": 4,
+              "material_name": "ASTRAEA_botanical_leaf_sage"
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "extras": {
+            "astraea_material_role": "botanical_bark",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "metric repeat",
+            "alpha_contract": "OPAQUE",
+            "meters_per_tile_uv": [
+              0.6,
+              1.2
+            ]
+          },
+          "name": "ASTRAEA_botanical_bark",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.9100000262260437
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_flower",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_flower",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7900000214576721
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_jade",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_jade",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.699999988079071
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_olive",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_olive",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.75
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_sage",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_sage",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 4
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7699999809265137
+          }
+        }
+      ],
+      "textures": [
+        {
+          "sampler": 0,
+          "source": 0
+        },
+        {
+          "sampler": 0,
+          "source": 1
+        },
+        {
+          "sampler": 0,
+          "source": 2
+        },
+        {
+          "sampler": 0,
+          "source": 3
+        },
+        {
+          "sampler": 0,
+          "source": 4
+        }
+      ],
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "import_force_disable_compression": true
+    },
+    "AST-BOT-002_pool_loggia_mass_05": {
+      "file": "AST-BOT-002_pool_loggia_mass_05.glb",
+      "sha256": "c07e3acba640d76ac6e110dcd20f8ab0b45d9fef86e6cde372587572438e858a",
+      "source_blend": "assets/grand_pool_first_pass/architectural_composition/feature_layers_next/planting/full_mass001/candidate_v001/source/AST-BOT-002_pool_loggia_mass_05.blend",
+      "source_sha256": "af834c03e177dba8d0cd44d2cae31ab943394784ad611a8559264a89a81c52c7",
+      "snapshot_sha256": "f7da95239a9fc9a3f201be015bd8ada229c22d2e6a750468ac3b872a4e9806cc",
+      "mesh_batches": 5,
+      "triangles": 7066,
+      "family": "plant",
+      "nodes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_00",
+          "source_node_index": 0,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_01",
+          "source_node_index": 1,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_02",
+          "source_node_index": 2,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_03",
+          "source_node_index": 3,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_04",
+          "source_node_index": 4,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "MeshInstance3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "source_node_index": 5,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.5799999833106995,
+            1.220703097715159e-06,
+            -0.09000000357627869
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "source_node_index": 6,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.05999999865889549,
+            1.220703097715159e-06,
+            -0.125
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "source_node_index": 7,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.5799999833106995,
+            1.220703097715159e-06,
+            -0.04500000178813934
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "source_node_index": 8,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            -0.36000001430511475,
+            1.220703097715159e-06,
+            0.20499999821186066
+          ],
+          "children": []
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "source_node_index": 9,
+          "parent_name": "AST-BOT-002_pool_loggia_mass_05",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0.33000001311302185,
+            1.220703097715159e-06,
+            0.20999999344348907
+          ],
+          "children": []
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05",
+          "source_node_index": 10,
+          "parent_name": "",
+          "native_class": "Node3D",
+          "translation_xyz": [
+            0,
+            0,
+            0
+          ],
+          "children": [
+            "AST-BOT-002_pool_loggia_mass_05__batch_00",
+            "AST-BOT-002_pool_loggia_mass_05__batch_01",
+            "AST-BOT-002_pool_loggia_mass_05__batch_02",
+            "AST-BOT-002_pool_loggia_mass_05__batch_03",
+            "AST-BOT-002_pool_loggia_mass_05__batch_04",
+            "mass_0_root_SOIL_CONTACT",
+            "mass_1_root_SOIL_CONTACT",
+            "mass_2_root_SOIL_CONTACT",
+            "mass_3_root_SOIL_CONTACT",
+            "mass_4_root_SOIL_CONTACT"
+          ]
+        }
+      ],
+      "meshes": [
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_00",
+          "source_mesh_index": 0,
+          "material_role": "botanical_bark",
+          "source_part_names": [
+            "mass_0_curved_stem",
+            "mass_0_root",
+            "mass_1_curved_stem",
+            "mass_1_root",
+            "mass_2_curved_stem",
+            "mass_2_root",
+            "mass_3_curved_stem",
+            "mass_3_root",
+            "mass_4_curved_stem",
+            "mass_4_root"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1010,
+              "indices": 1650,
+              "triangles": 550,
+              "material_index": 0,
+              "material_name": "ASTRAEA_botanical_bark"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_01",
+          "source_mesh_index": 1,
+          "material_role": "botanical_flower",
+          "source_part_names": [
+            "mass_2_flower_0_centre",
+            "mass_2_flower_0_petal_0",
+            "mass_2_flower_0_petal_1",
+            "mass_2_flower_0_petal_2",
+            "mass_2_flower_0_petal_3",
+            "mass_2_flower_0_petal_4",
+            "mass_2_flower_1_centre",
+            "mass_2_flower_1_petal_0",
+            "mass_2_flower_1_petal_1",
+            "mass_2_flower_1_petal_2",
+            "mass_2_flower_1_petal_3",
+            "mass_2_flower_1_petal_4",
+            "mass_2_flower_2_centre",
+            "mass_2_flower_2_petal_0",
+            "mass_2_flower_2_petal_1",
+            "mass_2_flower_2_petal_2",
+            "mass_2_flower_2_petal_3",
+            "mass_2_flower_2_petal_4",
+            "mass_3_flower_0_centre",
+            "mass_3_flower_0_petal_0",
+            "mass_3_flower_0_petal_1",
+            "mass_3_flower_0_petal_2",
+            "mass_3_flower_0_petal_3",
+            "mass_3_flower_0_petal_4",
+            "mass_3_flower_1_centre",
+            "mass_3_flower_1_petal_0",
+            "mass_3_flower_1_petal_1",
+            "mass_3_flower_1_petal_2",
+            "mass_3_flower_1_petal_3",
+            "mass_3_flower_1_petal_4",
+            "mass_3_flower_2_centre",
+            "mass_3_flower_2_petal_0",
+            "mass_3_flower_2_petal_1",
+            "mass_3_flower_2_petal_2",
+            "mass_3_flower_2_petal_3",
+            "mass_3_flower_2_petal_4"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2892,
+              "indices": 4032,
+              "triangles": 1344,
+              "material_index": 1,
+              "material_name": "ASTRAEA_botanical_flower"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_02",
+          "source_mesh_index": 2,
+          "material_role": "botanical_leaf_jade",
+          "source_part_names": [
+            "mass_0_rounded_leaf_01",
+            "mass_0_rounded_leaf_05",
+            "mass_0_rounded_leaf_09",
+            "mass_2_rounded_leaf_01",
+            "mass_2_rounded_leaf_02",
+            "mass_2_rounded_leaf_04",
+            "mass_2_rounded_leaf_05",
+            "mass_2_rounded_leaf_07",
+            "mass_2_rounded_leaf_08",
+            "mass_2_rounded_leaf_10",
+            "mass_2_rounded_leaf_11",
+            "mass_3_rounded_leaf_01",
+            "mass_3_rounded_leaf_05",
+            "mass_3_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 1232,
+              "indices": 1680,
+              "triangles": 560,
+              "material_index": 2,
+              "material_name": "ASTRAEA_botanical_leaf_jade"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_03",
+          "source_mesh_index": 3,
+          "material_role": "botanical_leaf_olive",
+          "source_part_names": [
+            "mass_0_petiole_00",
+            "mass_0_petiole_01",
+            "mass_0_petiole_02",
+            "mass_0_petiole_03",
+            "mass_0_petiole_04",
+            "mass_0_petiole_05",
+            "mass_0_petiole_06",
+            "mass_0_petiole_07",
+            "mass_0_petiole_08",
+            "mass_0_petiole_09",
+            "mass_0_petiole_10",
+            "mass_0_petiole_11",
+            "mass_1_petiole_00",
+            "mass_1_petiole_01",
+            "mass_1_petiole_02",
+            "mass_1_petiole_03",
+            "mass_1_petiole_04",
+            "mass_1_petiole_05",
+            "mass_1_petiole_06",
+            "mass_1_petiole_07",
+            "mass_1_petiole_08",
+            "mass_1_petiole_09",
+            "mass_1_petiole_10",
+            "mass_1_petiole_11",
+            "mass_1_rounded_leaf_00",
+            "mass_1_rounded_leaf_03",
+            "mass_1_rounded_leaf_06",
+            "mass_1_rounded_leaf_09",
+            "mass_2_flower_0_receptacle",
+            "mass_2_flower_0_stem",
+            "mass_2_flower_1_receptacle",
+            "mass_2_flower_1_stem",
+            "mass_2_flower_2_receptacle",
+            "mass_2_flower_2_stem",
+            "mass_2_petiole_00",
+            "mass_2_petiole_01",
+            "mass_2_petiole_02",
+            "mass_2_petiole_03",
+            "mass_2_petiole_04",
+            "mass_2_petiole_05",
+            "mass_2_petiole_06",
+            "mass_2_petiole_07",
+            "mass_2_petiole_08",
+            "mass_2_petiole_09",
+            "mass_2_petiole_10",
+            "mass_2_petiole_11",
+            "mass_3_flower_0_receptacle",
+            "mass_3_flower_0_stem",
+            "mass_3_flower_1_receptacle",
+            "mass_3_flower_1_stem",
+            "mass_3_flower_2_receptacle",
+            "mass_3_flower_2_stem",
+            "mass_3_petiole_00",
+            "mass_3_petiole_01",
+            "mass_3_petiole_02",
+            "mass_3_petiole_03",
+            "mass_3_petiole_04",
+            "mass_3_petiole_05",
+            "mass_3_petiole_06",
+            "mass_3_petiole_07",
+            "mass_3_petiole_08",
+            "mass_3_petiole_09",
+            "mass_3_petiole_10",
+            "mass_3_petiole_11",
+            "mass_4_petiole_00",
+            "mass_4_petiole_01",
+            "mass_4_petiole_02",
+            "mass_4_petiole_03",
+            "mass_4_petiole_04",
+            "mass_4_petiole_05",
+            "mass_4_petiole_06",
+            "mass_4_petiole_07",
+            "mass_4_petiole_08",
+            "mass_4_petiole_09",
+            "mass_4_petiole_10",
+            "mass_4_petiole_11",
+            "mass_4_rounded_leaf_01",
+            "mass_4_rounded_leaf_02",
+            "mass_4_rounded_leaf_04",
+            "mass_4_rounded_leaf_05",
+            "mass_4_rounded_leaf_07",
+            "mass_4_rounded_leaf_08",
+            "mass_4_rounded_leaf_10",
+            "mass_4_rounded_leaf_11"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 6156,
+              "indices": 9756,
+              "triangles": 3252,
+              "material_index": 3,
+              "material_name": "ASTRAEA_botanical_leaf_olive"
+            }
+          ]
+        },
+        {
+          "name": "AST-BOT-002_pool_loggia_mass_05__batch_04",
+          "source_mesh_index": 4,
+          "material_role": "botanical_leaf_sage",
+          "source_part_names": [
+            "mass_0_rounded_leaf_00",
+            "mass_0_rounded_leaf_02",
+            "mass_0_rounded_leaf_03",
+            "mass_0_rounded_leaf_04",
+            "mass_0_rounded_leaf_06",
+            "mass_0_rounded_leaf_07",
+            "mass_0_rounded_leaf_08",
+            "mass_0_rounded_leaf_10",
+            "mass_0_rounded_leaf_11",
+            "mass_1_rounded_leaf_01",
+            "mass_1_rounded_leaf_02",
+            "mass_1_rounded_leaf_04",
+            "mass_1_rounded_leaf_05",
+            "mass_1_rounded_leaf_07",
+            "mass_1_rounded_leaf_08",
+            "mass_1_rounded_leaf_10",
+            "mass_1_rounded_leaf_11",
+            "mass_2_rounded_leaf_00",
+            "mass_2_rounded_leaf_03",
+            "mass_2_rounded_leaf_06",
+            "mass_2_rounded_leaf_09",
+            "mass_3_rounded_leaf_00",
+            "mass_3_rounded_leaf_02",
+            "mass_3_rounded_leaf_03",
+            "mass_3_rounded_leaf_04",
+            "mass_3_rounded_leaf_06",
+            "mass_3_rounded_leaf_07",
+            "mass_3_rounded_leaf_08",
+            "mass_3_rounded_leaf_10",
+            "mass_3_rounded_leaf_11",
+            "mass_4_rounded_leaf_00",
+            "mass_4_rounded_leaf_03",
+            "mass_4_rounded_leaf_06",
+            "mass_4_rounded_leaf_09"
+          ],
+          "cast_shadow": true,
+          "collision": "decorative_noncolliding",
+          "surfaces": [
+            {
+              "surface": 0,
+              "vertices": 2992,
+              "indices": 4080,
+              "triangles": 1360,
+              "material_index": 4,
+              "material_name": "ASTRAEA_botanical_leaf_sage"
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "extras": {
+            "astraea_material_role": "botanical_bark",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "metric repeat",
+            "alpha_contract": "OPAQUE",
+            "meters_per_tile_uv": [
+              0.6,
+              1.2
+            ]
+          },
+          "name": "ASTRAEA_botanical_bark",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.9100000262260437
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_flower",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_flower",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7900000214576721
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_jade",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_jade",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.699999988079071
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_olive",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_olive",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.75
+          }
+        },
+        {
+          "doubleSided": true,
+          "extras": {
+            "astraea_material_role": "botanical_leaf_sage",
+            "material_revision": "astraea-botanical-materials-01",
+            "uv_contract": "U across blade, V root-to-tip",
+            "alpha_contract": "OPAQUE"
+          },
+          "name": "ASTRAEA_botanical_leaf_sage",
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 4
+            },
+            "metallicFactor": 0,
+            "roughnessFactor": 0.7699999809265137
+          }
+        }
+      ],
+      "textures": [
+        {
+          "sampler": 0,
+          "source": 0
+        },
+        {
+          "sampler": 0,
+          "source": 1
+        },
+        {
+          "sampler": 0,
+          "source": 2
+        },
+        {
+          "sampler": 0,
+          "source": 3
+        },
+        {
+          "sampler": 0,
+          "source": 4
+        }
+      ],
+      "samplers": [
+        {
+          "magFilter": 9729,
+          "minFilter": 9987
+        }
+      ],
+      "import_force_disable_compression": true
+    }
+  },
+  "plants": [
+    {
+      "asset": "AST-BOT-002_pool_loggia_mass_00",
+      "name": "LOG_Fore_Pocket_0_middle_full_crown",
+      "replaces_instance": "LOG_Fore_Pocket_0_middle",
+      "position_xyz": [
+        -50.7,
+        46.720000000000006,
+        -446.7
+      ],
+      "yaw_radians": 1.5707963267948966,
+      "scale_xyz": [
+        1,
+        1,
+        1
+      ],
+      "support": "LOG_Fore_Pocket_0_Soil",
+      "soil_markers": [
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "physical_part": "mass_0_root",
+          "translation_xyz": [
+            -0.5899999737739563,
+            1.220703097715159e-06,
+            -0.10499999672174454
+          ]
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "physical_part": "mass_1_root",
+          "translation_xyz": [
+            0.02500000037252903,
+            1.220703097715159e-06,
+            -0.11500000208616257
+          ]
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "physical_part": "mass_2_root",
+          "translation_xyz": [
+            0.5699999928474426,
+            1.220703097715159e-06,
+            -0.014999999664723873
+          ]
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "physical_part": "mass_3_root",
+          "translation_xyz": [
+            -0.28999999165534973,
+            1.220703097715159e-06,
+            0.20499999821186066
+          ]
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "physical_part": "mass_4_root",
+          "translation_xyz": [
+            0.3499999940395355,
+            1.220703097715159e-06,
+            0.2150000035762787
+          ]
+        }
+      ]
+    },
+    {
+      "asset": "AST-BOT-002_pool_loggia_mass_01",
+      "name": "LOG_Fore_Pocket_1_middle_full_crown",
+      "replaces_instance": "LOG_Fore_Pocket_1_middle",
+      "position_xyz": [
+        -50.7,
+        46.720000000000006,
+        -437.7
+      ],
+      "yaw_radians": 1.5707963267948966,
+      "scale_xyz": [
+        1,
+        1,
+        1
+      ],
+      "support": "LOG_Fore_Pocket_1_Soil",
+      "soil_markers": [
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "physical_part": "mass_0_root",
+          "translation_xyz": [
+            -0.6200000047683716,
+            1.220703097715159e-06,
+            -0.054999999701976776
+          ]
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "physical_part": "mass_1_root",
+          "translation_xyz": [
+            -0.07500000298023224,
+            1.220703097715159e-06,
+            -0.12999999523162842
+          ]
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "physical_part": "mass_2_root",
+          "translation_xyz": [
+            0.5299999713897705,
+            1.220703097715159e-06,
+            -0.10499999672174454
+          ]
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "physical_part": "mass_3_root",
+          "translation_xyz": [
+            -0.3700000047683716,
+            1.220703097715159e-06,
+            0.1850000023841858
+          ]
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "physical_part": "mass_4_root",
+          "translation_xyz": [
+            0.28999999165534973,
+            1.220703097715159e-06,
+            0.23499999940395355
+          ]
+        }
+      ]
+    },
+    {
+      "asset": "AST-BOT-002_pool_loggia_mass_02",
+      "name": "LOG_Middle_Pocket_0_middle_full_crown",
+      "replaces_instance": "LOG_Middle_Pocket_0_middle",
+      "position_xyz": [
+        -50.7,
+        46.720000000000006,
+        -428.40000000000003
+      ],
+      "yaw_radians": 1.5707963267948966,
+      "scale_xyz": [
+        1,
+        1,
+        1
+      ],
+      "support": "LOG_Middle_Pocket_0_Soil",
+      "soil_markers": [
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "physical_part": "mass_0_root",
+          "translation_xyz": [
+            -0.550000011920929,
+            1.220703097715159e-06,
+            -0.10000000149011612
+          ]
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "physical_part": "mass_1_root",
+          "translation_xyz": [
+            0.11999999731779099,
+            1.220703097715159e-06,
+            -0.09000000357627869
+          ]
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "physical_part": "mass_2_root",
+          "translation_xyz": [
+            0.6299999952316284,
+            1.220703097715159e-06,
+            0.014999999664723873
+          ]
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "physical_part": "mass_3_root",
+          "translation_xyz": [
+            -0.3400000035762787,
+            1.220703097715159e-06,
+            0.19499999284744263
+          ]
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "physical_part": "mass_4_root",
+          "translation_xyz": [
+            0.33000001311302185,
+            1.220703097715159e-06,
+            0.23000000417232513
+          ]
+        }
+      ]
+    },
+    {
+      "asset": "AST-BOT-002_pool_loggia_mass_03",
+      "name": "LOG_Middle_Pocket_1_middle_full_crown",
+      "replaces_instance": "LOG_Middle_Pocket_1_middle",
+      "position_xyz": [
+        -50.7,
+        46.720000000000006,
+        -420.8
+      ],
+      "yaw_radians": 1.5707963267948966,
+      "scale_xyz": [
+        1,
+        1,
+        1
+      ],
+      "support": "LOG_Middle_Pocket_1_Soil",
+      "soil_markers": [
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "physical_part": "mass_0_root",
+          "translation_xyz": [
+            -0.6100000143051147,
+            1.220703097715159e-06,
+            -0.004999999888241291
+          ]
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "physical_part": "mass_1_root",
+          "translation_xyz": [
+            -0.0949999988079071,
+            1.220703097715159e-06,
+            -0.1550000011920929
+          ]
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "physical_part": "mass_2_root",
+          "translation_xyz": [
+            0.5299999713897705,
+            1.220703097715159e-06,
+            -0.10999999940395355
+          ]
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "physical_part": "mass_3_root",
+          "translation_xyz": [
+            -0.28999999165534973,
+            1.220703097715159e-06,
+            0.23499999940395355
+          ]
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "physical_part": "mass_4_root",
+          "translation_xyz": [
+            0.4000000059604645,
+            1.220703097715159e-06,
+            0.17000000178813934
+          ]
+        }
+      ]
+    },
+    {
+      "asset": "AST-BOT-002_pool_loggia_mass_04",
+      "name": "LOG_Aft_Pocket_0_middle_full_crown",
+      "replaces_instance": "LOG_Aft_Pocket_0_middle",
+      "position_xyz": [
+        -50.7,
+        46.720000000000006,
+        -411.2
+      ],
+      "yaw_radians": 1.5707963267948966,
+      "scale_xyz": [
+        1,
+        1,
+        1
+      ],
+      "support": "LOG_Aft_Pocket_0_Soil",
+      "soil_markers": [
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "physical_part": "mass_0_root",
+          "translation_xyz": [
+            -0.5600000023841858,
+            1.220703097715159e-06,
+            -0.125
+          ]
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "physical_part": "mass_1_root",
+          "translation_xyz": [
+            0.07999999821186066,
+            1.220703097715159e-06,
+            -0.10499999672174454
+          ]
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "physical_part": "mass_2_root",
+          "translation_xyz": [
+            0.6000000238418579,
+            1.220703097715159e-06,
+            0.004999999888241291
+          ]
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "physical_part": "mass_3_root",
+          "translation_xyz": [
+            -0.3499999940395355,
+            1.220703097715159e-06,
+            0.18000000715255737
+          ]
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "physical_part": "mass_4_root",
+          "translation_xyz": [
+            0.3199999928474426,
+            1.220703097715159e-06,
+            0.23999999463558197
+          ]
+        }
+      ]
+    },
+    {
+      "asset": "AST-BOT-002_pool_loggia_mass_05",
+      "name": "LOG_Aft_Pocket_1_middle_full_crown",
+      "replaces_instance": "LOG_Aft_Pocket_1_middle",
+      "position_xyz": [
+        -50.7,
+        46.720000000000006,
+        -402.2
+      ],
+      "yaw_radians": 1.5707963267948966,
+      "scale_xyz": [
+        1,
+        1,
+        1
+      ],
+      "support": "LOG_Aft_Pocket_1_Soil",
+      "soil_markers": [
+        {
+          "name": "mass_0_root_SOIL_CONTACT",
+          "physical_part": "mass_0_root",
+          "translation_xyz": [
+            -0.5799999833106995,
+            1.220703097715159e-06,
+            -0.09000000357627869
+          ]
+        },
+        {
+          "name": "mass_1_root_SOIL_CONTACT",
+          "physical_part": "mass_1_root",
+          "translation_xyz": [
+            -0.05999999865889549,
+            1.220703097715159e-06,
+            -0.125
+          ]
+        },
+        {
+          "name": "mass_2_root_SOIL_CONTACT",
+          "physical_part": "mass_2_root",
+          "translation_xyz": [
+            0.5799999833106995,
+            1.220703097715159e-06,
+            -0.04500000178813934
+          ]
+        },
+        {
+          "name": "mass_3_root_SOIL_CONTACT",
+          "physical_part": "mass_3_root",
+          "translation_xyz": [
+            -0.36000001430511475,
+            1.220703097715159e-06,
+            0.20499999821186066
+          ]
+        },
+        {
+          "name": "mass_4_root_SOIL_CONTACT",
+          "physical_part": "mass_4_root",
+          "translation_xyz": [
+            0.33000001311302185,
+            1.220703097715159e-06,
+            0.20999999344348907
+          ]
+        }
+      ]
+    }
+  ],
+  "hardware": {
+    "asset": "AST-AQU-016_pool_feature_lighting",
+    "name": "GrandPoolFeatureHardware",
+    "source_parts": 12,
+    "mesh_batches": 3,
+    "contacts": 2,
+    "noncolliding_no_shadow_lens_batches": 1
+  },
+  "fixtures": [
+    {
+      "name": "PoolFeature_DATUM_finish_light_ArchFocal_Crown",
+      "marker_name": "DATUM_finish_light_ArchFocal_Crown",
+      "marker_local_position_xyz": [
+        -31.513227462768555,
+        50.08028030395508,
+        -462.25
+      ],
+      "direction_xyz": [
+        0.15798159560474662,
+        -0.28635863817658114,
+        -0.9450082252508876
+      ],
+      "receiver_xyz": [
+        -31.0,
+        49.15,
+        -465.32000732421875
+      ],
+      "visibility_sample_xyz": [
+        -31.003159631912094,
+        49.15572717276353,
+        -465.30110715971375
+      ],
+      "physical_housing": "ArchFocal_Crown_RecessHousing",
+      "physical_lens": "ArchFocal_Crown_OpalLens",
+      "retained_host": "FOCAL_Vault_Roof_08",
+      "receiver_source_part": "FOCAL_OrbitalSunRelief",
+      "source_support_anchor_xyz": [
+        -31.52,
+        50.440217214519336,
+        -462.25
+      ],
+      "source_support_normal_xyz": [
+        0.01881118703851184,
+        -0.9998230539661516,
+        0.0
+      ],
+      "profile": "guest_lounge",
+      "energy": 0.45,
+      "range_m": 6.0,
+      "spot_angle_degrees": 62
+    },
+    {
+      "name": "PoolFeature_DATUM_finish_light_ArchTimber_ForeL",
+      "marker_name": "DATUM_finish_light_ArchTimber_ForeL",
+      "marker_local_position_xyz": [
+        -51.5,
+        49.85219955444336,
+        -447.1143493652344
+      ],
+      "direction_xyz": [
+        0.0,
+        -0.17735095229631742,
+        0.9841476717035861
+      ],
+      "receiver_xyz": [
+        -51.5,
+        47.925,
+        -436.4200134277344
+      ],
+      "visibility_sample_xyz": [
+        -51.5,
+        47.92854701904592,
+        -436.43969638116846
+      ],
+      "physical_housing": "ArchTimber_ForeL_RecessHousing",
+      "physical_lens": "ArchTimber_ForeL_OpalLens",
+      "retained_host": "LOG_Fore_Vault_Roof_02",
+      "receiver_source_part": "LOG_Fore_Vault_LegR",
+      "source_support_anchor_xyz": [
+        -51.5,
+        50.241098403930664,
+        -447.27294921875
+      ],
+      "source_support_normal_xyz": [
+        0.0,
+        -0.9259503132200643,
+        0.3776453593620141
+      ],
+      "profile": "guest_lounge",
+      "energy": 0.65,
+      "range_m": 11.8,
+      "spot_angle_degrees": 15
+    },
+    {
+      "name": "PoolFeature_DATUM_finish_light_ArchTimber_ForeR",
+      "marker_name": "DATUM_finish_light_ArchTimber_ForeR",
+      "marker_local_position_xyz": [
+        -51.5,
+        49.85219955444336,
+        -437.28564453125
+      ],
+      "direction_xyz": [
+        0.0,
+        -0.17735046212309777,
+        -0.9841477600364305
+      ],
+      "receiver_xyz": [
+        -51.5,
+        47.925,
+        -447.9800109863281
+      ],
+      "visibility_sample_xyz": [
+        -51.5,
+        47.92854700924246,
+        -447.9603280311274
+      ],
+      "physical_housing": "ArchTimber_ForeR_RecessHousing",
+      "physical_lens": "ArchTimber_ForeR_OpalLens",
+      "retained_host": "LOG_Fore_Vault_Roof_13",
+      "receiver_source_part": "LOG_Fore_Vault_LegL",
+      "source_support_anchor_xyz": [
+        -51.5,
+        50.241098403930664,
+        -437.1270446777344
+      ],
+      "source_support_normal_xyz": [
+        0.0,
+        -0.9259503132200643,
+        -0.3776453593620141
+      ],
+      "profile": "guest_lounge",
+      "energy": 0.65,
+      "range_m": 11.8,
+      "spot_angle_degrees": 15
+    }
+  ],
+  "preservation": {
+    "architecture_root": "GrandPoolArchitecture_WIP",
+    "architecture_child_count": 15,
+    "architecture_contract_sha256": "2d5d4427464726aec388c5995c39b9af6461179e7973da5764019c7b50a5a1ea",
+    "plants": [
+      {
+        "name": "LOG_Fore_Pocket_0_basal",
+        "parent_design_id": "AST-BOT-003",
+        "model_file": "AST-BOT-003_pool_basal_00.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -446.7
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Fore_Pocket_0_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-003_pool_basal_00",
+        "basal": true,
+        "sha256": "83f34949a32c47e13f5a694b9d3145613b22d96e5c41275efb214502e0e56642"
+      },
+      {
+        "name": "LOG_Fore_Pocket_0_middle",
+        "parent_design_id": "AST-BOT-002",
+        "model_file": "AST-BOT-002_pool_middle_00.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -446.7
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Fore_Pocket_0_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-002_pool_middle_00",
+        "basal": false,
+        "sha256": "5a564719e77d258a4902bec550efa904632bf3e336c89707dfd03324a9102bec"
+      },
+      {
+        "name": "LOG_Fore_Pocket_1_basal",
+        "parent_design_id": "AST-BOT-003",
+        "model_file": "AST-BOT-003_pool_basal_01.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -437.7
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Fore_Pocket_1_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-003_pool_basal_01",
+        "basal": true,
+        "sha256": "5b566f49fd9f2895de6034d4658751ac16efd5be92aee2d51121bde7ac16e61c"
+      },
+      {
+        "name": "LOG_Fore_Pocket_1_middle",
+        "parent_design_id": "AST-BOT-002",
+        "model_file": "AST-BOT-002_pool_middle_01.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -437.7
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Fore_Pocket_1_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-002_pool_middle_01",
+        "basal": false,
+        "sha256": "2c5dcf6d38fcaa1e9d48358e930431177b5397faa20cc252b670d932be560b23"
+      },
+      {
+        "name": "LOG_Middle_Pocket_0_basal",
+        "parent_design_id": "AST-BOT-003",
+        "model_file": "AST-BOT-003_pool_basal_02.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -428.40000000000003
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Middle_Pocket_0_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-003_pool_basal_02",
+        "basal": true,
+        "sha256": "a6924a4cac597a2b79f17e17db2637b54160e4e4c0bc30b1ef19188e40e6de39"
+      },
+      {
+        "name": "LOG_Middle_Pocket_0_middle",
+        "parent_design_id": "AST-BOT-002",
+        "model_file": "AST-BOT-002_pool_middle_02.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -428.40000000000003
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Middle_Pocket_0_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-002_pool_middle_02",
+        "basal": false,
+        "sha256": "7dca848bc3083c77368b855335e09ef99a012a18e7f4d14d06025a11ab191e34"
+      },
+      {
+        "name": "LOG_Middle_Pocket_1_basal",
+        "parent_design_id": "AST-BOT-003",
+        "model_file": "AST-BOT-003_pool_basal_03.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -420.8
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Middle_Pocket_1_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-003_pool_basal_03",
+        "basal": true,
+        "sha256": "e71ad4ef533b220d0967bec44e99319939310721ec22b273008896656ee7cb41"
+      },
+      {
+        "name": "LOG_Middle_Pocket_1_middle",
+        "parent_design_id": "AST-BOT-002",
+        "model_file": "AST-BOT-002_pool_middle_03.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -420.8
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Middle_Pocket_1_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-002_pool_middle_03",
+        "basal": false,
+        "sha256": "1b5a88bdec0436590b728b55d7cc820397d74fdebad465a43b7c472807123f47"
+      },
+      {
+        "name": "LOG_Aft_Pocket_0_basal",
+        "parent_design_id": "AST-BOT-003",
+        "model_file": "AST-BOT-003_pool_basal_04.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -411.2
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Aft_Pocket_0_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-003_pool_basal_04",
+        "basal": true,
+        "sha256": "49102bd69c22cbfe3a85b4f97ae42b77c04b9ffc2f7a5da07c9a12e063f86759"
+      },
+      {
+        "name": "LOG_Aft_Pocket_0_middle",
+        "parent_design_id": "AST-BOT-002",
+        "model_file": "AST-BOT-002_pool_middle_04.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -411.2
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Aft_Pocket_0_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-002_pool_middle_04",
+        "basal": false,
+        "sha256": "4bb394a4f792f2e320daeb071ee75a2c7e527e06a2c18203ae020ab31748de18"
+      },
+      {
+        "name": "LOG_Aft_Pocket_1_basal",
+        "parent_design_id": "AST-BOT-003",
+        "model_file": "AST-BOT-003_pool_basal_05.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -402.2
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Aft_Pocket_1_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-003_pool_basal_05",
+        "basal": true,
+        "sha256": "863ac3d768b0d83fe74e267f3d326f69b8c7f3ed5569fcd304340c0903bfff72"
+      },
+      {
+        "name": "LOG_Aft_Pocket_1_middle",
+        "parent_design_id": "AST-BOT-002",
+        "model_file": "AST-BOT-002_pool_middle_05.glb",
+        "position_xyz": [
+          -50.7,
+          46.720000000000006,
+          -402.2
+        ],
+        "yaw_radians": 1.5707963267948966,
+        "scale_xyz": [
+          1,
+          1,
+          1
+        ],
+        "support": "LOG_Aft_Pocket_1_Soil",
+        "existing_checked_export": true,
+        "asset": "AST-BOT-002_pool_middle_05",
+        "basal": false,
+        "sha256": "b1c793abe037be370214ad301fa13a48d24c67b38db793318acc8878b76050d2"
+      }
+    ],
+    "only_six_middle_instances_hidden": true,
+    "basal_mutations": false,
+    "old_geometry_material_contacts_and_fixture_properties_unchanged": true,
+    "new_floor_owners": 0
+  },
+  "lighting": {
+    "shared_source_budget": 8,
+    "shared_visibility_candidates": 32,
+    "normal_discovery": "lighting_budget.configure after all ship builders",
+    "manual_budget_mutations": false,
+    "profile_file_sha256": "c8e56d6a63512ee57e20514e7683bd22d906eb921c4d056eb19729e346110c65",
+    "guest_lounge_color": [
+      1,
+      0.9,
+      0.82
+    ],
+    "shadows_requested": true
+  },
+  "expected": {
+    "new_models": 7,
+    "mesh_batches": 33,
+    "triangles": 42540,
+    "new_plant_instances": 6,
+    "hidden_preserved_middle_instances": 6,
+    "basal_instances_unchanged": 6,
+    "source_soil_markers": 30,
+    "hardware_source_parts": 12,
+    "hardware_contacts": 2,
+    "source_backed_spotlights": 3,
+    "new_root_direct_children": 10
+  },
+  "import_policy": {
+    "engine": "Godot 4.6.3 stable; no engine switch",
+    "new_assets_only": true,
+    "force_disable_compression": true,
+    "template": "assets/models/AST-AQU-016_pool_loggia.glb.import",
+    "template_sha256": "139b93cb5584a04336aec18a13ee632b648e3f79b5e3084d3ebccbe59ba63d78",
+    "embedded_image_handling": 1,
+    "embedded_image_mode": "extract textures; same existing project policy",
+    "sidecar_uids": "omitted; importer may assign fresh UIDs",
+    "imported_packed_scene_equivalence": "PENDING dedicated source-array/material/marker/collision checks; direct GLTFDocument visual trial does not cover PackedScene imports",
+    "no_existing_sidecar_changes": true
+  },
+  "evidence": {
+    "visual_result_sha256": "22d1c25de864dfadbfdfa3cfed671459a0d2d8d3d6ffd48f57d01088100432d1",
+    "visual_result_status": "VISUAL_STUDY_CAPTURE_COMPLETE_UNVERIFIED_IMPORT_EQUIVALENCE",
+    "actual_generated_node_mapping_sha256": "4c300c54a18611d13b1fab476c58118744bc932b098d11d79e0eb2db6ecc261e",
+    "accepted_glb_export_handoff_sha256": "97c0cc13b54a0851dd1c23db6dbdac08ab2fc54933d4e7a390d0a76d04d468d5",
+    "visual_judgment": "Parent accepted incremental full crowns/readable focal relief; timber remains dark. The historical visual receipt remains immutable and says unverified.",
+    "native_import_equivalence": "Pending parent reconciliation with separate offline diagnosis",
+    "native_physical_contacts": "PENDING_PARENT_AUTHORED_GATE",
+    "aggregate_validation": "NOT_RUN_BY_DRAFT_WORKER"
+  },
+  "source_material_policy": "All embedded materials, texture pixels, UVs and source geometry stay unchanged. No recolor, material override, procedural reconstruction or mesh substitution."
+}

@@ -1,0 +1,537 @@
+{
+  "schema": 1,
+  "status": "PROPOSED_BOUNDED_RUNTIME_TRIAL_REQUIRES_PARENT_APPLY_APPROVAL",
+  "runtime_adoption_approved": true,
+  "local_light_trial_approved": true,
+  "first_pass_accepted": false,
+  "source_families": [
+    "AST-STF-010",
+    "AST-STF-009",
+    "AST-STF-008"
+  ],
+  "home_model": "AST-STF-010_home_dogleg_labels002.glb",
+  "home_sha256": "00463ea505dfa8ce522e3881b8431a80f426a40b6564acd5ba22dc5a4b444fec",
+  "wall_model": "AST-STF-009_pool_market_home.glb",
+  "wall_sha256": "ab47a5fe0cc1ba858777d8ac91ae8f7bf54729df19bfb6a9ec8af31beccff7b4",
+  "retained_wall_model": "AST-STF-009_pool_market.glb",
+  "retained_wall_sha256": "5e1995b9e0114e8a4f28d9cd5d9c00efbb44ff2fb504d8a965eba613b0e7467a",
+  "retained_home_parts": 85,
+  "door": {
+    "derived_family": "AST-STF-008",
+    "root_xyz": [
+      -48.06,
+      12,
+      -432
+    ],
+    "yaw_radians": -1.5707963267948966,
+    "clear_reservation_width_m": 3.6,
+    "clear_reservation_height_m": 2.65,
+    "hinge_local_x": [
+      -1.75,
+      1.75
+    ],
+    "leaf_angle_interval_degrees": [
+      0,
+      90
+    ],
+    "functional_owner": "Unchanged service_door.gd state/interact/pause/motion. Local source-fitting initialization and actual sweep bounds only.",
+    "persistent_id_proposal": "D03_home_service_entry_001",
+    "original_door_not_scaled": true
+  },
+  "moving_parts": [
+    {
+      "name": "HOME_Leaf_LEFT",
+      "shape": "door_prism",
+      "profile_x_y": [
+        [
+          0.01,
+          0.025
+        ],
+        [
+          1.74,
+          0.025
+        ],
+        [
+          1.74,
+          2.615
+        ],
+        [
+          0.01,
+          2.615
+        ]
+      ],
+      "depth_z": [
+        -0.035,
+        0.035
+      ],
+      "role": "staff_white_paint",
+      "parent": "HOME_HINGE_LEFT",
+      "collision_contract": "kinematic_source_part"
+    },
+    {
+      "name": "HOME_Kick_LEFT",
+      "shape": "door_prism",
+      "profile_x_y": [
+        [
+          0.06999999999999999,
+          0.12
+        ],
+        [
+          1.68,
+          0.12
+        ],
+        [
+          1.68,
+          0.48
+        ],
+        [
+          0.06999999999999999,
+          0.48
+        ]
+      ],
+      "depth_z": [
+        0.036,
+        0.043
+      ],
+      "role": "staff_zinc",
+      "parent": "HOME_HINGE_LEFT",
+      "collision_contract": "kinematic_source_part"
+    },
+    {
+      "name": "HOME_Push_LEFT",
+      "shape": "door_prism",
+      "profile_x_y": [
+        [
+          1.485,
+          0.98
+        ],
+        [
+          1.615,
+          0.98
+        ],
+        [
+          1.615,
+          1.4
+        ],
+        [
+          1.485,
+          1.4
+        ]
+      ],
+      "depth_z": [
+        0.042,
+        0.066
+      ],
+      "role": "staff_rubber",
+      "parent": "HOME_HINGE_LEFT",
+      "collision_contract": "kinematic_source_part"
+    },
+    {
+      "name": "HOME_Identifier_LEFT",
+      "shape": "door_prism",
+      "profile_x_y": [
+        [
+          0.19,
+          1.73
+        ],
+        [
+          1.56,
+          1.73
+        ],
+        [
+          1.56,
+          1.91
+        ],
+        [
+          0.19,
+          1.91
+        ]
+      ],
+      "depth_z": [
+        0.036,
+        0.039
+      ],
+      "role": "staff_label",
+      "parent": "HOME_HINGE_LEFT",
+      "collision_contract": "kinematic_source_part"
+    },
+    {
+      "name": "HOME_Meeting_Seal",
+      "shape": "door_prism",
+      "profile_x_y": [
+        [
+          1.73,
+          0.03
+        ],
+        [
+          1.77,
+          0.03
+        ],
+        [
+          1.77,
+          2.61
+        ],
+        [
+          1.73,
+          2.61
+        ]
+      ],
+      "depth_z": [
+        -0.043,
+        -0.035
+      ],
+      "role": "staff_rubber",
+      "parent": "HOME_HINGE_LEFT",
+      "collision_contract": "kinematic_source_part"
+    },
+    {
+      "name": "HOME_Leaf_RIGHT",
+      "shape": "door_prism",
+      "profile_x_y": [
+        [
+          -1.74,
+          0.025
+        ],
+        [
+          -0.01,
+          0.025
+        ],
+        [
+          -0.01,
+          2.615
+        ],
+        [
+          -1.74,
+          2.615
+        ]
+      ],
+      "depth_z": [
+        -0.035,
+        0.035
+      ],
+      "role": "staff_white_paint",
+      "parent": "HOME_HINGE_RIGHT",
+      "collision_contract": "kinematic_source_part"
+    },
+    {
+      "name": "HOME_Kick_RIGHT",
+      "shape": "door_prism",
+      "profile_x_y": [
+        [
+          -1.68,
+          0.12
+        ],
+        [
+          -0.06999999999999999,
+          0.12
+        ],
+        [
+          -0.06999999999999999,
+          0.48
+        ],
+        [
+          -1.68,
+          0.48
+        ]
+      ],
+      "depth_z": [
+        0.036,
+        0.043
+      ],
+      "role": "staff_zinc",
+      "parent": "HOME_HINGE_RIGHT",
+      "collision_contract": "kinematic_source_part"
+    },
+    {
+      "name": "HOME_Push_RIGHT",
+      "shape": "door_prism",
+      "profile_x_y": [
+        [
+          -1.615,
+          0.98
+        ],
+        [
+          -1.485,
+          0.98
+        ],
+        [
+          -1.485,
+          1.4
+        ],
+        [
+          -1.615,
+          1.4
+        ]
+      ],
+      "depth_z": [
+        0.042,
+        0.066
+      ],
+      "role": "staff_rubber",
+      "parent": "HOME_HINGE_RIGHT",
+      "collision_contract": "kinematic_source_part"
+    },
+    {
+      "name": "HOME_Identifier_RIGHT",
+      "shape": "door_prism",
+      "profile_x_y": [
+        [
+          -1.56,
+          1.73
+        ],
+        [
+          -0.19,
+          1.73
+        ],
+        [
+          -0.19,
+          1.91
+        ],
+        [
+          -1.56,
+          1.91
+        ]
+      ],
+      "depth_z": [
+        0.036,
+        0.039
+      ],
+      "role": "staff_label",
+      "parent": "HOME_HINGE_RIGHT",
+      "collision_contract": "kinematic_source_part"
+    }
+  ],
+  "door_sweep_box": {
+    "center": [
+      0,
+      1.32,
+      -0.86
+    ],
+    "size": [
+      3.68,
+      2.66,
+      1.88
+    ],
+    "derived_scope": "Conservative enclosure of the real1.77m leaves and their source hardware; actor/rigid-body query only, static frame excluded by class like existing controller"
+  },
+  "fixtures": [
+    {
+      "name": "HOME_TASK_1_EMITTER",
+      "position_xyz": [
+        -45.2,
+        15.0,
+        -431.4
+      ],
+      "proposed_type": "OmniLight3D",
+      "color": [
+        0.82,
+        0.9,
+        1.0
+      ],
+      "energy": 1.0,
+      "range_m": 8.0,
+      "attenuation": 0.7,
+      "basis": "Same local trial as adjacent lower staff sources; no shared profile change; actual native selection/review pending"
+    },
+    {
+      "name": "HOME_TASK_2_EMITTER",
+      "position_xyz": [
+        -45.2,
+        15.0,
+        -424.8
+      ],
+      "proposed_type": "OmniLight3D",
+      "color": [
+        0.82,
+        0.9,
+        1.0
+      ],
+      "energy": 1.0,
+      "range_m": 8.0,
+      "attenuation": 0.7,
+      "basis": "Same local trial as adjacent lower staff sources; no shared profile change; actual native selection/review pending"
+    }
+  ],
+  "wall_opening": [
+    {
+      "original_name": "STF_D03_Wall_00_13_00_Wainscot",
+      "original_aabb": [
+        -48.12,
+        -48,
+        12,
+        13.03,
+        -435,
+        -429
+      ],
+      "role": "staff_bluegrey_paint",
+      "replacement_boxes": [
+        [
+          -48.12,
+          -48,
+          12,
+          13.03,
+          -435,
+          -433.8
+        ],
+        [
+          -48.12,
+          -48,
+          12,
+          13.03,
+          -430.2,
+          -429
+        ]
+      ]
+    },
+    {
+      "original_name": "STF_D03_Wall_00_13_00_Enamel",
+      "original_aabb": [
+        -48.12,
+        -48,
+        13.03,
+        15.2,
+        -435,
+        -429
+      ],
+      "role": "staff_white_paint",
+      "replacement_boxes": [
+        [
+          -48.12,
+          -48,
+          13.03,
+          15.2,
+          -435,
+          -433.8
+        ],
+        [
+          -48.12,
+          -48,
+          13.03,
+          15.2,
+          -430.2,
+          -429
+        ],
+        [
+          -48.12,
+          -48,
+          14.65,
+          15.2,
+          -433.8,
+          -430.2
+        ]
+      ]
+    },
+    {
+      "original_name": "STF_D03_Wall_00_13_00_CartBumper",
+      "original_aabb": [
+        -48.144999999999996,
+        -48.12,
+        12.73,
+        12.86,
+        -435,
+        -429
+      ],
+      "role": "staff_rubber",
+      "replacement_boxes": [
+        [
+          -48.144999999999996,
+          -48.12,
+          12.73,
+          12.86,
+          -435,
+          -433.8
+        ],
+        [
+          -48.144999999999996,
+          -48.12,
+          12.73,
+          12.86,
+          -430.2,
+          -429
+        ]
+      ]
+    },
+    {
+      "original_name": "STF_D03_Wall_00_13_00_PanelJoint",
+      "original_aabb": [
+        -48.126,
+        -48.12,
+        13.04,
+        15.14,
+        -432.008,
+        -431.992
+      ],
+      "role": "staff_zinc",
+      "replacement_boxes": [
+        [
+          -48.126,
+          -48.12,
+          14.65,
+          15.14,
+          -432.008,
+          -431.992
+        ]
+      ]
+    }
+  ],
+  "route_xz": [
+    [
+      -57,
+      -432
+    ],
+    [
+      -51,
+      -432
+    ],
+    [
+      -45.2,
+      -432
+    ],
+    [
+      -45.2,
+      -424.8
+    ],
+    [
+      -41,
+      -424.8
+    ]
+  ],
+  "floor_y": 12,
+  "supported_clear_area_m2": 58.32,
+  "new_floor_owners": 0,
+  "preserve_floors": {
+    "data/spatial_layout.json": "6ed1a74b5d387fd4e2d339fd3af62763a44898904cbfe883f4a418bac9854167",
+    "data/generated/structural_meshes.json": "4ed4ba34028ba3683bb8e66b999766e1a6793654348f4213c61850b418685d91"
+  },
+  "cart_policy": "Park in retained6m receiving vestibule; no loaded cart enters the3.6m dogleg",
+  "population_or_berth_migration": false,
+  "limits": [
+    "Support approach only; no occupied room finish or400crew migration",
+    "Door physics and normal arrival must pass after native import",
+    "No loaded-cart entry/turn claim",
+    "No pressure seal, acoustics or target-GPU claim"
+  ],
+  "retained_runtime_pins": {
+    "scripts/player.gd": "990e825c7cd08d2b26760be7436c342188a85fbe1cc60f704fd009ac1d71aaa3",
+    "scripts/service_door.gd": "b9d33fc3e11311ccebd3de36812ba42436523616a4ab655cf50df38e35cc57f1",
+    "scripts/physics_tether.gd": "8a721666a96b496e989687b8c98c6467db4bd74e2b25ecb06bb316f8d46aa2cb",
+    "scripts/lighting_budget.gd": "73366f8831a591473355c9d15a5de8ae0e63c59bdf3b8cd1b1abe7663d1f7337",
+    "scripts/commons_lift.gd": "e53ba41f6e066ff2454340d2b73ad405a2db301f8176046f7741b401fcc8e203"
+  },
+  "precision_trial_approved": true,
+  "import_policy_review": "New home fitting requires uncompressed source positions for8mm seal/ink. Existing pool-market import policy must be inspected and carried deliberately; no old import edit. Full old-source preservation is established, runtime legacy surface preservation still needs actual import comparison.",
+  "new_asset_import_policy": {
+    "AST-STF-010_home_dogleg_labels002.glb": {
+      "meshes/force_disable_compression": true,
+      "reason": "New8mm source seal and thin printed ink"
+    },
+    "AST-STF-009_pool_market_home.glb": {
+      "meshes/force_disable_compression": false,
+      "reason": "Carry current AST-STF-009_pool_market import policy; actual doorway collision/export correspondence remains a required native gate"
+    }
+  },
+  "independent_source_retention": {
+    "commit": "41fdee63a9fd7e22b06dddd303f9a8b39d6ef5d9",
+    "all59_files_verified_by_parent": true
+  }
+}

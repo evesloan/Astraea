@@ -1,0 +1,16 @@
+{
+  "status": "OWNED_BATCH_STORAGE_REVIEW",
+  "manifest_path_bytes_before_git_deduplication": 887946362,
+  "manifest_paths": 1980,
+  "unique_owned_blob_objects": 1376,
+  "unique_owned_blob_bytes": 768711056,
+  "blob_objects_already_in_verified_retained_source_trees": 644,
+  "distinct_new_blob_objects_upper_bound": 732,
+  "distinct_new_blob_bytes_upper_bound": 204355530,
+  "known_remote_trees": [
+    "affc5c807087ff87da29f3642c2d6e418241b896",
+    "7f9f4777a4ae93884282155ea9d05b6ff125bd57",
+    "bc731d6d6d54bb2595331ee2f4368558d4d24fda"
+  ],
+  "notes": "Most restored dependency bytes already exist in retained Git objects. Repeated source/runtime/model copies deduplicate by object hash. New JSON and native history are retained; large raw census/r001 native are represented losslessly by gzip. Per-file 95MiB publication limit enforced. Git transfer compression reduces this upper bound further; no paid storage/LFS or spending enabled."
+}
