@@ -1,5 +1,7 @@
 # Food-synthesis plant construction handoff
 
+**Current receiving and visual hold:** the earlier source image is withheld and visually unaccepted after parent pixel review. The unchanged pad-only candidate receipt does not cover five perimeter wall bases requiring 21.252 m² of additional bearing strips, or the 10 mm wall-to-roof closure gap. [Current Group1 integration support](INTEGRATION_SUPPORT_CURRENT_GROUP1.md) provides exact-source checks, owner choices and a bounded source-successor specification. Original native/runtime/image and failed evidence remain retained; no quality correction or shared adoption is claimed yet.
+
 D01_directory_05 gains a larger physical plant around the untouched original service bay: four candidate process hubs, ingredient and sealed-output storage, packing/handoff benches, a recessed wash/used-return station, records/work consoles, two local operating utility doors and 14 physically housed task sources. There are 507 native meshes, 279 exact runtime batches and 17,332 oriented triangles. Local enclosure X-95..-56/Z-30..30 stays below Y5.45; D02 starts at Y6. No programme, capacity, shared controller, global catalogue entry or accepted plant quantity is added. The reference's four-hub quantity remains an illustrative allocation criterion; these four physical candidates do not silently resolve that gate or establish operating production.
 
 ## Group1 integration sequence
