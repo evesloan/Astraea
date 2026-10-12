@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "owner": "Group6 aquatic district",
+  "shared_integration_owner_thread": "01a11d7f-8ef6-70bc-858d-bdf8deb7000b",
+  "original_player_sha256": "f1bd92d00ad355d5d3c87b57da5ff0e3aa76f9d48776a58f3515932c017a9566",
+  "controller_inspection": "player.gd _physics_process directly applies dry gravity, dry horizontal wish and move_and_slide. There is no water mode or external water-velocity hook. No competing controller or in-place modification is introduced.",
+  "provided_independent_capabilities": [
+    "Actual protected river polygon membership and closed centreline arc projection",
+    "Four-point unoccupied rigid float immersion forces and velocity drag",
+    "Prescribed river game-current field; explicitly not a fluid solver",
+    "Source-backed six thermal entry interfaces and visual-only water contact corrections"
+  ],
+  "required_shared_hook": {
+    "before_move_and_slide": "Original player needs a mode-owned water influence interface that changes wish/gravity/buoyancy inside the same controller and retains normal collision/input, support/fall-recovery and stable actor identity. Shared owner controls implementation; no review copy masquerades as the unchanged original.",
+    "interaction": "Original RMB/E resolves admission, mount/dismount, safe occupied/support state and accessible transfer through real continuous motion. No traversal teleport or hidden walking surface.",
+    "pause_and_save": "Original pause/control disabling must interrupt/recover mounted AFK state predictably; persistent actor/float IDs and save schemas require shared owner integration.",
+    "slides": "Slide admission/queue/occupied state, normal physics entry, flume/rider support and runout recovery must attach to the same player mode."
+  },
+  "still_required_independent_or_shared": [
+    "Eight static rack/boarding rings need inventory/launch/dock ownership; no extra production floats spawned by force test.",
+    "Water-field current, body mass/draft, hull contact decomposition and species/gravity parameters remain proposals.",
+    "Avatar swimming/air, seated pose/support, occupant load/contact and AFK interruption/pause/recovery/save remain unimplemented.",
+    "Water-care mechanical controls have no fluid/temperature/cascade simulation; pipe and external service routes remain held interfaces.",
+    "50m Grand Pool lane is immutable X-40..-22/Z-457..-407; whole-lane swimming/access/hardware acceptance remains separate.",
+    "Shared wet-dry/changing, restaurant cascade/splash/acoustics and ordinary lighting/hardware/final-art acceptance remain open."
+  ],
+  "whole_group_accepted": false
+}

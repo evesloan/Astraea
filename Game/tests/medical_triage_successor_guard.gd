@@ -2306,5 +2306,21 @@ static func _crew_validate_runtime(ship:Node)->void:
 			var center:Vector3=ship.get_node("ShipSpace").to_local(fixture.to_global(fixture.mesh.get_aabb().get_center()))
 			assert(center.is_equal_approx(Vector3(spec.fixture_center[0],spec.fixture_center[1],spec.fixture_center[2])))
 	var aft:Node3D=ship.get_node("ShipSpace/Districts/AftPublicCore_WIP/PrimaryCoreEnclosure")
-	_crew_validate_model(aft,"AST-CIR-005_aft_uniforms_d03.glb",9)
+	var current_core:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/AFT_PUBLIC_CORE.json"))
+	assert(aft.position==Vector3(current_core.origin[0],current_core.origin[1],current_core.origin[2]))
+	if str(current_core.enclosure_file)=="AST-CIR-005_aft_uniforms_d03.glb":
+		_crew_validate_model(aft,"AST-CIR-005_aft_uniforms_d03.glb",9)
+	else:
+		const SOURCE_SUCCESSOR_PROOF:="res://data/architecture/packages/crew_batch/AFT_SOURCE_SUCCESSOR_PROOF.json"
+		assert(FileAccess.get_sha256(SOURCE_SUCCESSOR_PROOF)=="f2414827a18e3bc5fbde4fc6651752c133b51d370d19ef1696bb08e090b1d7c1","Exact already-retained AFT source successor proof required")
+		var successor:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(SOURCE_SUCCESSOR_PROOF))
+		assert(str(current_core.enclosure_file)==str(successor.successor_file))
+		assert(aft.get_meta("catalogue_file")==str(successor.successor_file))
+		assert(FileAccess.get_sha256("res://assets/models/"+str(successor.original_file))==str(successor.original_sha256))
+		assert(FileAccess.get_sha256("res://assets/models/"+str(successor.successor_file))==str(successor.successor_sha256))
+		assert(successor.original_meshes==9 and successor.successor_meshes==29)
+		assert(successor.original_uniforms_aperture_five_meshes_exact and successor.all_remaining_original_oriented_triangle_attributes_exact)
+		assert(successor.materials_and_embedded_image_bytes_exact and successor.retained_node_metadata_transform_exact)
+		assert(successor.changed_source_aperture_slots.size()==16 and successor.removed_triangles==288 and successor.new_profile_triangles==240)
+		_crew_validate_model(aft,str(successor.successor_file),int(successor.successor_meshes))
 # CREW_EXACT_SECTION_END

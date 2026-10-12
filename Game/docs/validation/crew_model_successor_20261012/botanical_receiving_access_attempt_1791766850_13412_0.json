@@ -1,0 +1,152 @@
+{
+  "auxiliary_underlying_floor_footprint_queries": 46240,
+  "axial_clearance_queries": 10,
+  "completed_actual_player_bumps": [
+    {
+      "actual_slide_collision_with_guard": true,
+      "from": [
+        -6.00424146652222,
+        27.0008296966553,
+        -236.481430053711
+      ],
+      "name": "port fore end",
+      "to": [
+        -6.00424146652222,
+        26.9999160766602,
+        -237.316650390625
+      ]
+    },
+    {
+      "actual_slide_collision_with_guard": true,
+      "from": [
+        -6.00000143051147,
+        26.9999160766602,
+        -209.519302368164
+      ],
+      "name": "port aft end",
+      "to": [
+        -6.00000143051147,
+        26.9999160766602,
+        -208.683471679688
+      ]
+    },
+    {
+      "actual_slide_collision_with_guard": true,
+      "from": [
+        5.99810314178467,
+        27.0008163452148,
+        -236.479934692383
+      ],
+      "name": "starboard fore end",
+      "to": [
+        5.99810314178467,
+        26.9998989105225,
+        -237.315078735352
+      ]
+    },
+    {
+      "actual_slide_collision_with_guard": true,
+      "from": [
+        5.99999856948853,
+        26.9998989105225,
+        -209.518630981445
+      ],
+      "name": "starboard aft end",
+      "to": [
+        5.99999856948853,
+        26.9998989105225,
+        -208.683410644531
+      ]
+    }
+  ],
+  "detail": "",
+  "fixture_sha256": "b2ca81130b7c22b7dd333f0eae2a4bd473f37a70130e5fe2503dee3a5fd6bb5d",
+  "guard_rays": 204,
+  "initial_verified_arrivals": 1,
+  "later_teleports": 0,
+  "metrics": {
+    "axial_strip_preserved_x_m": [
+      -4,
+      4
+    ],
+    "capsule_height_m": 1.8,
+    "capsule_radius_m": 0.3,
+    "exercise_wall_msec": 77458,
+    "future_portals": [
+      {
+        "center_z": -216.0,
+        "clear_width_m": 4.2,
+        "edge_x": -8.0,
+        "floor_y": 27.0,
+        "name": "Moss Sanctuary",
+        "programme_id": "D06_directory_03",
+        "state": "OPEN"
+      },
+      {
+        "center_z": -216.0,
+        "clear_width_m": 6.0,
+        "court_opening_z": [
+          -219.0,
+          -213.0
+        ],
+        "edge_x": 8.0,
+        "floor_y": 27.0,
+        "name": "Botanical Nursery",
+        "programme_id": "D06_directory_04",
+        "source_throat_clear_width_m": 4.0,
+        "source_throat_z": [
+          -218.0,
+          -214.0
+        ],
+        "state": "OPEN"
+      }
+    ],
+    "initialization_wall_msec": 71573
+  },
+  "moss_portal_crossings": 2,
+  "moss_route_completed": true,
+  "nursery_entry_crossings": {
+    "back": 0,
+    "out": 0
+  },
+  "nursery_route_completed": false,
+  "ordinary_walk_frames": 11276,
+  "pair_clearance_queries": 4,
+  "pair_geometry_runtime": {
+    "actual_main_scene_sources": [
+      {
+        "actual_main_scene_correspondence": true,
+        "contact_triangles": 423648,
+        "meshes": 1011,
+        "root": "ShipSpace/D06BotanicalPairReceivingCandidate/D06_directory_04/Source",
+        "source": "WP04_botanical_nursery.glb"
+      },
+      {
+        "actual_main_scene_correspondence": true,
+        "contact_triangles": 806548,
+        "meshes": 655,
+        "root": "ShipSpace/D06BotanicalPairReceivingCandidate/D06_directory_02/Source",
+        "source": "WP03_cloud_conservatory.glb"
+      },
+      {
+        "actual_main_scene_correspondence": true,
+        "contact_triangles": 528,
+        "meshes": 44,
+        "root": "ShipSpace/D06BotanicalPairReceivingCandidate/CloudLinkAuthoredReceivingGuards",
+        "source": "AST-RCV-D06-CLOUD-LINK-001.glb"
+      }
+    ],
+    "scope": "All imported room/link mesh resources, hierarchy, transforms, material overrides and generated mesh-local triangle contacts matched in the actual main scene; court and Moss use the independent complete medical chain.",
+    "validation_completed": true
+  },
+  "physics_frames": 11605,
+  "scope": "Bounded actual unchanged-player Botanical receiving and unchanged Moss loop with the successor Nursery static aperture checks. Actual Nursery, Cloud and loaded-cart routes are separate bounded invocations; species, visuals and full-ship acceptance remain gates.",
+  "seams_crossed_by_player": {
+    "port": 2,
+    "starboard": 2
+  },
+  "status": "PASS",
+  "support_samples": 11701,
+  "test": "botanical_receiving_access",
+  "walked_metres": 552.614398893435
+}
