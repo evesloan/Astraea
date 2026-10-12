@@ -1,0 +1,49 @@
+extends "res://tests/group3_fore_starboard_clinical_20261011/validate_fore.gd"
+func moving_doors()->void:
+ samples+=1;var state:=package.get_world_3d().direct_space_state
+ for s in p.door_bindings:
+  var door:Node3D=package.get_node(s.name)
+  for leaf in door.leaves:
+   for c in leaf.get_children():
+    if not c is CollisionShape3D:continue
+    var q:=PhysicsShapeQueryParameters3D.new();q.shape=c.shape;q.transform=c.global_transform;q.exclude=[leaf.get_rid()];q.margin=.0001;var bad:Array=[]
+    for h in state.intersect_shape(q,128):
+     if h.collider is StaticBody3D and not h.collider is AnimatableBody3D:bad.append(str(h.collider.get_path()))
+    record("connection_leaf_"+str(samples)+s.name+str(c.name),bad.is_empty())
+    if not bad.is_empty():print("D03_CONNECTION_LEAF_CONTACT ",s.name," ",bad)
+func run()->void:
+ p=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group3_d03_port2_20261011/CONNECTION.json"));var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
+ for i in range(60):await physics_frame
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
+ for f in p.source_pins:record("source_pin_"+str(f),FileAccess.get_sha256(ProjectSettings.globalize_path("res://../"+str(f)))==p.source_pins[f])
+ var lower:Node3D=ship.get_node("ShipSpace/Districts/LowerStaffNetwork_WIP/LowerStaffEnclosure");var retained:Dictionary={}
+ for mesh in lower.find_children("*","MeshInstance3D",true,false):
+  if str(mesh.name)in p.exact_current_meshes_to_replace:continue
+  retained[str(mesh.name)]={"node":mesh,"transform":mesh.global_transform,"mesh":mesh.mesh,"faces":mesh.mesh.get_faces()}
+ var old:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group3_port2_clinical_20261011/PHYSICAL.json"));var old_ids:Dictionary={}
+ for key in old.supplied_identity_map_required:old_ids[key]="__validation_only_D03_port2_"+key
+ var prior:Node3D=load("res://scripts/group3_port2_clinical_20261011/physical_package.gd").build(ship,old_ids)
+ var ids:Dictionary={}
+ for q in p.door_bindings:ids[q.name]="__validation_only_D03_connection_"+q.name
+ # The shared source file is never edited. Only this temporary test scene
+ # applies the exact four-cell owner-facing interface derivative.
+ package=load("res://scripts/group3_d03_port2_20261011/physical_package.gd").build(ship,ids,true)
+ for i in range(20):await physics_frame
+ for name in retained:
+  var r:Dictionary=retained[name];record("unrelated_current_cell_"+name,is_instance_valid(r.node)and r.node.mesh==r.mesh and r.node.global_transform==r.transform and r.node.mesh.get_faces()==r.faces)
+ record("only_exact_four_live_cells_replaced",lower.find_children("*","MeshInstance3D",true,false).size()==retained.size())
+ actor.global_position=Vector3(-57,12.03,-290);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(actor.global_position)
+ for i in range(20):await physics_frame
+ await walk(actor,Vector3(-57,12,-293));await walk(actor,Vector3(-56.8,12,-293));await operation(actor,"port2_D03_spine",true)
+ await walk(actor,Vector3(-53,12,-293));await operation(actor,"port2_D03_spine",false);await walk(actor,Vector3(-21,12,-293));await walk(actor,Vector3(-21,12,-291.4));await operation(actor,"port2_D03_arrival",true)
+ await walk(actor,Vector3(-21,12,-287.7));await operation(actor,"port2_D03_arrival",false);await walk(actor,Vector3(-21.2,12,-284.7))
+ var lift:Node3D=prior.get_node("Port2Lift");var call:Node3D=lift.get_node("D03_"+str(old_ids.lift_identity_prefix)+"_lift_call")
+ await aim(actor,call.global_position);record("normal_port2_D03_call",actor.interaction_target==call);await key_e();await wait_stop(lift,2)
+ await walk(actor,Vector3(-21,12,-283));await walk(actor,Vector3(-25,12,-283));var button:Node3D=lift.cabin.get_node(str(old_ids.lift_identity_prefix)+"_cabin_D05")
+ await aim(actor,button.global_position);record("normal_port2_D05_cabin_button",actor.interaction_target==button);await key_e();await wait_stop(lift,4);record("normal_carried_D05",actor.is_on_floor()and absf(actor.global_position.y-21)<.02)
+ await walk(actor,Vector3(-21,21,-283));await walk(actor,Vector3(-21,21,-286.5))
+ for q in p.door_bindings:record("final_closed_"+q.name,package.get_node(q.name).open_fraction==0 and not package.get_node(q.name).desired_open)
+ record("original_D04_port_riser3_retained",ship.find_child("PortCentralStaffLift",true,false)!=null);record("original_fore_port_keys_retained",ship.find_child("ForwardStaffLift",true,false).deck_numbers==p.unchanged_forward_port_stop_keys.map(func(v):return int(v)))
+ physical_key(false)
+ var result={"status":"PASS"if errors.is_empty()else"HOLD","checks":checks.size(),"errors":errors,"walks":walks,"actual_door_motion_samples":samples,"current_composite_unrelated_cells_retained":retained.size(),"shared_source_file_or_registered_IDs_modified":false,"temporary_scene_only_exact_current_four_cell_patch":true,"independent_actor_setup_placements":1,"route_position_velocity_writes":0,"normal_W_RMB_E_branch_board_ride_D03_D05":true,"temporary_validation_labels_not_saved_or_registered":true,"source_model_pins":p.model_pins,"full_species_loaded_cart_stock_primary_structure_graphical_or_400_assigned_berth_acceptance":false}
+ FileAccess.open("res://artifacts/group3_d03_port2_20261011/connection.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":checks.size(),"errors":errors,"walks":walks.size(),"door_motion_samples":samples,"retained_current_cells":retained.size()}));quit(0 if errors.is_empty()else 1)
