@@ -1,0 +1,10 @@
+--- a/Game/scripts/ship.gd
++++ b/Game/scripts/ship.gd
+@@ -149,6 +149,7 @@
+ 	load("res://scripts/theater_stair_walking_contacts.gd").build($ShipSpace/Districts)
+ 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/theater_stair_walking_contacts.gd).build($ShipSpace/Districts)")
+ 	load("res://scripts/medical_welcome.gd").build($ShipSpace/Districts,self)
++	load("res://scripts/group8/medical_privacy.gd").build(self)
+ 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/medical_welcome.gd).build($ShipSpace/Districts,self)")
+ 	load("res://scripts/d04_port_forward_receiving.gd").build(self)
+ 	load("res://scripts/d04_port_forward_homes_first.gd").build(self)

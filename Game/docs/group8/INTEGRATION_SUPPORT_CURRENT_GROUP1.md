@@ -1,5 +1,9 @@
 # Exact-source integration support for Group1
 
+**Later published-source recheck:** Group1 advanced to `a036eb484537f721e943dcd7d49f644728ef0cce` while this handoff was being sealed. Its ship now calls `group1_synthesis_floor_receiving.gd` and the synthesis loader once. Do **not** apply the older combined ship patch. Use `group1_ship_medical_only_a036eb.patch` for the remaining medical caller. The other five critical streaming/received/medical-guard/original-floor blobs are unchanged, so the other three patches retain exact preimages. `LATER_GROUP1_A036EB_RECHECK.json` records the readback.
+
+Group1's actual floor receiver adopts 2275.6781364772514 m² after a 50 µm guard against its exact original collider triangles; positive overlap is 0. All 74 pad centres remain covered. The five 110 mm wall-bearing overhangs still total 21.252 m². The bearing-strip proposal and 10 mm source roof-closure/visual holds therefore remain necessary. Current receiving adoption must not be confused with visual acceptance; the image remains withheld. No further engine or shared write was performed.
+
 Checked published `construction/group1-tidal-d15-20261010` commit 47eb8359caa5531e04122b6e56292f8c44d4281a, tree 5f99164c1fa2ad1ae3e197865214cd6bb92ead44. Its Group8 source cutoff is 688a18417b6b17cfdcf527f26c8973ed4fd1142a. This report does not claim visibility into newer unpublished work. Group1 remains the sole combined-branch writer/build owner. No engine, import, backup or new destination construction was launched here.
 
 ## Already installed: preserve and do not duplicate
