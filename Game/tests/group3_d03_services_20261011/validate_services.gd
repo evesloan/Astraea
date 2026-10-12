@@ -1,0 +1,54 @@
+extends "res://tests/group3_fore_starboard_clinical_20261011/validate_fore.gd"
+func moving_doors()->void:
+ samples+=1;var state:=package.get_world_3d().direct_space_state
+ for s in p.door_bindings:
+  var door:Node3D=package.get_node(s.name)
+  for leaf in door.leaves:
+   for c in leaf.get_children():
+    if not c is CollisionShape3D:continue
+    var q:=PhysicsShapeQueryParameters3D.new();q.shape=c.shape;q.transform=c.global_transform;q.exclude=[leaf.get_rid()];q.margin=.0001;var bad:Array=[]
+    for h in state.intersect_shape(q,128):
+     if h.collider is StaticBody3D and not h.collider is AnimatableBody3D:bad.append(str(h.collider.get_path()))
+    record("service_leaf_"+str(samples)+s.name+str(c.name),bad.is_empty())
+    if not bad.is_empty():print("D03_SERVICE_LEAF_CONTACT ",s.name," ",bad)
+func run()->void:
+ p=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group3_d03_services_20261011/SERVICES.json"));var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
+ for i in range(60):await physics_frame
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");residency.enabled=false;residency.set_physics_process(false);var original_rooms:Array=[]
+ for entry in residency.entries:
+  var room:Node3D=entry.room;var key:String=str(room.get_meta("programme_key",""))
+  if key not in p.programmes:continue
+  if not entry.attached:entry.parent.add_child(room);entry.attached=true
+  load("res://scripts/deferred_home_visual.gd").ensure(room);original_rooms.append(key)
+ for i in range(5):await physics_frame
+ for f in p.source_pins:record("source_pin_"+str(f),FileAccess.get_sha256(ProjectSettings.globalize_path("res://../"+str(f)))==p.source_pins[f])
+ var ids:Dictionary={}
+ for q in p.door_bindings:ids[q.name]="__validation_only_D03_"+q.name
+ package=load("res://scripts/group3_d03_services_20261011/physical_package.gd").build(ship,ids)
+ for i in range(15):await physics_frame
+ record("original_rooms_retained",original_rooms.size()==3 and ship.find_child("D03_CrewBatch_Receiving_WIP",true,false)!=null)
+ record("no_new_berths_or_authoritative_mapping",package.get_meta("registered_berths_added")==0 and p.authoritative_identity_map==null)
+ # Five independent destination setups; every approach, room entry and exit
+ # then uses the original player movement and door interaction.
+ for q in p.door_bindings:
+  var sign:float=-1 if q.position[0]<0 else 1;var z:float=q.position[2]
+  actor.global_position=Vector3(sign*57,12.03,z);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);residency.prepare_position(actor.global_position)
+  for i in range(20):await physics_frame
+  await walk(actor,Vector3(sign*56,12,z));await operation(actor,q.name,true)
+  var inside:Vector3
+  if q.programme_key=="D03_directory_09":inside=Vector3(-51.8,12,z)
+  elif q.programme_key in["D03_directory_02","D03_directory_04"]:inside=Vector3(52.0,12,z)
+  else:inside=Vector3(sign*52.5,12,z)
+  await walk(actor,inside);await operation(actor,q.name,false)
+  if q.programme_key=="D03_directory_09":
+   await walk(actor,Vector3(-12,12,422));await walk(actor,Vector3(-12,12,412));await walk(actor,Vector3(-16,12,412));await walk(actor,Vector3(-12,12,412));await walk(actor,Vector3(-12,12,422));await walk(actor,inside)
+  elif q.programme_key in["D03_directory_02","D03_directory_04"]:
+   await walk(actor,Vector3(47.8,12,z));await walk(actor,inside)
+  else:
+   await walk(actor,Vector3(sign*49,12,z));await walk(actor,inside)
+  await operation(actor,q.name,true);await walk(actor,Vector3(sign*56,12,z));await operation(actor,q.name,false);await walk(actor,Vector3(sign*57,12,z+8))
+ for q in p.door_bindings:record("final_closed_"+q.name,package.get_node(q.name).open_fraction==0 and not package.get_node(q.name).desired_open)
+ record("D04_riser3_preserved",ship.find_child("PortCentralStaffLift",true,false)!=null);record("forward_port_stop_keys_preserved",ship.find_child("ForwardStaffLift",true,false).deck_numbers==[1,2,3,8,9,13,14,15,16,17])
+ physical_key(false)
+ var result={"status":"PASS"if errors.is_empty()else"HOLD","checks":checks.size(),"errors":errors,"walks":walks,"actual_door_motion_samples":samples,"originals_or_room_headers_or_D01_D04_modified":false,"independent_actor_setup_placements":5,"route_position_velocity_writes":0,"temporary_validation_labels_not_saved_or_registered":true,"original_received_rooms_attached_for_complete_source_validation":original_rooms,"source_model_pins":p.model_pins,"new_registered_berths":0,"full_species_loaded_cart_stock_primary_structure_graphical_or_full_group_acceptance":false}
+ FileAccess.open("res://artifacts/group3_d03_services_20261011/services.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print(JSON.stringify({"status":result.status,"checks":checks.size(),"errors":errors,"walks":walks.size(),"door_motion_samples":samples}));quit(0 if errors.is_empty()else 1)

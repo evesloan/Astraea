@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/Astraea-group3-completion-20261011/BlenderCatalogue/assets/group3_crew_service_20261009/extensions/d03_service_receivers_physical_batch021/source/prepare_services.py", line 54, in <module>
+    lo,hi=yr(q);levels=sorted({round(v,6)for v in[lo,hi,*[v for v in[14.822]if lo<v<hi]]})
+          ^^^^^
+  File "/workspace/Astraea-group3-completion-20261011/BlenderCatalogue/assets/group3_crew_service_20261009/extensions/d03_service_receivers_physical_batch021/source/prepare_services.py", line 21, in yr
+    def yr(q):return q['y']if'y'in q else q['aabb'][2:4]
+                                          ~^^^^^^^^
+KeyError: 'aabb'
