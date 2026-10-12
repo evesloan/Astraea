@@ -1,0 +1,261 @@
+{
+  "schema": 2,
+  "floor_y": 27,
+  "scope": "Separate bounded historical Botanical/Moss, Nursery entry/return, Cloud entry/return and two four-product cart invocations; all runtime stages NOT_RUN.",
+  "floor_owners": {
+    "port": "D06_botanical_court_port_receiving_floor",
+    "starboard": "D06_botanical_court_starboard_receiving_floor"
+  },
+  "guard_root": "ShipSpace/BotanicalCourtReceivingClosedInterim",
+  "model_pins": {
+    "AST-ATR-001_botanical_receiving_closed002.glb": "7c16e244527be2e97b705db1e2b0f449ec3e04c74261b46232201f004b4609de",
+    "AST-ATR-001_botanical_nursery_open001.glb": "0b5777db94e1f035bf36cc7afb85fece8a734e4ac22c759a2c83711c6ed68573",
+    "AST-RCV-D06-CLOUD-LINK-001.glb": "1750017ec2302c8ed36d300b20996917487a04585f42725b2217af3826a24003",
+    "WP04_botanical_nursery.glb": "d34662e5f1579e9f025f5dacf4967184ef1a71c7ecd5f23826bed74820e551fb",
+    "WP03_cloud_conservatory.glb": "c42eeed67653c9171c32c47813168342d43a1705744fcf8b31d8acdcdbf7c7c1"
+  },
+  "future_portals": [
+    {
+      "programme_id": "D06_directory_03",
+      "name": "Moss Sanctuary",
+      "edge_x": -8,
+      "floor_y": 27,
+      "center_z": -216,
+      "clear_width_m": 4.2,
+      "state": "OPEN"
+    },
+    {
+      "programme_id": "D06_directory_04",
+      "name": "Botanical Nursery",
+      "edge_x": 8,
+      "floor_y": 27,
+      "center_z": -216,
+      "clear_width_m": 6,
+      "state": "OPEN",
+      "source_throat_clear_width_m": 4,
+      "court_opening_z": [
+        -219,
+        -213
+      ],
+      "source_throat_z": [
+        -218,
+        -214
+      ]
+    }
+  ],
+  "unchanged_input_sha256": {
+    "scripts/player.gd": "f1bd92d00ad355d5d3c87b57da5ff0e3aa76f9d48776a58f3515932c017a9566",
+    "tests/medical_test_scene.gd": "ceeb6f7217927d706673b262a8b1d77693246aec57435dded147237499dd0ff8",
+    "tests/validate_medical_access.gd": "0d717f2ece64a58bb7afddda62fea33b1a37afe406b6a16ba08ef6e628b9dd70",
+    "scripts/structural_floor_builder.gd": "d322e784d268ff22035649f6fe3dd8325ef6600407c018a83557c4376f234b4f",
+    "scripts/static_contact_cache.gd": "4ebe68081d5bf1d0b433ce93c4cb2d9c8bca0192a301fa11a0c2b58d5a86b049",
+    "assets/models/AST-ATR-001_botanical_receiving_closed002.glb.import": "e1707c8a048787c2474e592386deb928806010e3ed038979ecb9222e53db8a54",
+    "scripts/cleaning_cart.gd": "f0d8e2aef841737eb80cd1f9cee1104fa91491a57ae881fa8bf7fbbee1e593b0",
+    "scripts/cleaning_bottle.gd": "30d0daaf512ee9b0a0979b2d9dc77b657378c88997aeaced4eeb1d906b62341f",
+    "scripts/cart_handle.gd": "89a3ed537f9761f58b1840425143361dfe166f20b06af95a74edebe1e1aca488",
+    "scripts/physics_tether.gd": "8a721666a96b496e989687b8c98c6467db4bd74e2b25ecb06bb316f8d46aa2cb",
+    "tests/grand_pool_cart_probe.gd": "ea995180233238cb437862350c59cad34f3ec7176275f989d8ccfd7588c4f9b3",
+    "data/architecture/cleaning_cart_contacts.json": "30a5de9043d6cbfdef2c75e471ec1ffa73c64500065e4af6093c0120aa04ad37",
+    "scripts/moss_sanctuary_receiving.gd": "78b100399c2efe4adb57df0b8d4436dde142838073f2d795484ac4b3ad760642"
+  },
+  "movement_convention": "Same key/Input.parse_input_event and W-input braking formula as validate_medical_access; no movement/controller property modifications.",
+  "initial_verified_arrival_xyz": [
+    0,
+    27.1,
+    -250
+  ],
+  "later_actor_teleports_permitted": false,
+  "claims_excluded": [
+    "loaded-cart acceptance from on-foot evidence",
+    "whole-room interior completion",
+    "species fit",
+    "finished art",
+    "freehand cart comfort",
+    "full ship acceptance"
+  ],
+  "preparation_status": {
+    "activation_ready": false,
+    "godot_parser": "NOT_RUN",
+    "runtime_access": "NOT_RUN",
+    "loaded_cart": "NOT_RUN",
+    "operational_acceptance": false
+  },
+  "predecessor_fixture": {
+    "path": "tests/fixtures/botanical_moss_receiving_acceptance011.json",
+    "sha256": "81c9f0364f49ec765dddcacf1e9eade05892d6f1be8f5777dfc68d3d743fe714"
+  },
+  "projected_input_sha256": {
+    "data/generated/structural_meshes.json": "91609e176c84514aeb84bea6112b65da9de7e8c2780f55faf074e7387b4dc0db"
+  },
+  "runtime_manifest": "res://data/architecture/botanical_pair/runtime_manifest.json",
+  "successor_guard": "res://tests/botanical_pair_successor_guard.gd",
+  "geometry_guard": "res://tests/validate_botanical_pair_geometry.gd",
+  "retained_bump_names": [
+    "port fore end",
+    "port aft end",
+    "starboard fore end",
+    "starboard aft end"
+  ],
+  "rooms": {
+    "nursery": {
+      "programme": "D06_directory_04",
+      "center_z": -216,
+      "court_clear_width_m": 6,
+      "throat_clear_width_m": 4,
+      "entry_edge_x": 8,
+      "floor_owner": "D06_botanical_nursery_room_floor",
+      "link_owner": "D06_botanical_court_starboard_receiving_floor",
+      "source_root": "ShipSpace/D06BotanicalPairReceivingCandidate/D06_directory_04/Source",
+      "entry_return_route": [
+        [
+          6,
+          -216
+        ],
+        [
+          10,
+          -216
+        ],
+        [
+          14,
+          -216
+        ],
+        [
+          14,
+          -215
+        ],
+        [
+          14,
+          -216
+        ],
+        [
+          10,
+          -216
+        ],
+        [
+          6,
+          -216
+        ]
+      ],
+      "proven_source_sweep_lo": [
+        4,
+        27.02,
+        -218
+      ],
+      "proven_source_sweep_hi": [
+        16,
+        29.4,
+        -214
+      ]
+    },
+    "cloud": {
+      "programme": "D06_directory_02",
+      "center_z": -456,
+      "court_clear_width_m": 4,
+      "throat_clear_width_m": 4,
+      "entry_edge_x": 8,
+      "floor_owner": "D06_cloud_conservatory_room_floor",
+      "link_owner": "D06_cloud_conservatory_entry_floor",
+      "source_root": "ShipSpace/D06BotanicalPairReceivingCandidate/D06_directory_02/Source",
+      "guard_root": "ShipSpace/D06BotanicalPairReceivingCandidate/CloudLinkAuthoredReceivingGuards",
+      "initial_arrival_xyz": [
+        0,
+        27.1,
+        -456
+      ],
+      "entry_return_route": [
+        [
+          0,
+          -456
+        ],
+        [
+          3,
+          -456
+        ],
+        [
+          6,
+          -456
+        ],
+        [
+          10,
+          -456
+        ],
+        [
+          14,
+          -456
+        ],
+        [
+          14,
+          -455
+        ],
+        [
+          14,
+          -456
+        ],
+        [
+          10,
+          -456
+        ],
+        [
+          6,
+          -456
+        ],
+        [
+          3,
+          -456
+        ],
+        [
+          0,
+          -456
+        ]
+      ],
+      "proven_source_sweep_lo": [
+        4,
+        27.02,
+        -458
+      ],
+      "proven_source_sweep_hi": [
+        16,
+        29.4,
+        -454
+      ]
+    }
+  },
+  "cart_gate": {
+    "rooms": [
+      "nursery",
+      "cloud"
+    ],
+    "initial_cart_center_x": 0.8,
+    "initial_operator_x": -0.82,
+    "inside_cart_center_x": 14,
+    "yaw_radians": -1.5707963267948966,
+    "loose_products": 4,
+    "ordinary_W_out_S_back": true,
+    "initial_fixture_placements_per_process": 1,
+    "later_actor_cart_or_product_transform_writes": 0,
+    "accepted_room_turns": false,
+    "separate_invocations_required": true,
+    "argument": "--botanical-cart-room=nursery or --botanical-cart-room=cloud"
+  },
+  "live_contact_guard": "res://tests/botanical_pair_live_contact_guard.gd",
+  "historical_moss_structural_sha256": "b71de3e278399d4ad146cad01987645f4efb3a65f934ceb2847d3d8dd849a6d3",
+  "projection_scope": "Immediate complete 300-owner predecessor only; historical Moss compiled pin remains authenticated by the unchanged complete nested medical/Moss source chain.",
+  "source_successor_provenance": {
+    "scripts/player.gd": {
+      "retained_predecessor_path": "docs/grand_pool_furnishing_validation/source_snapshot/scripts/player.gd",
+      "old_sha256": "990e825c7cd08d2b26760be7436c342188a85fbe1cc60f704fd009ac1d71aaa3",
+      "current_sha256": "f1bd92d00ad355d5d3c87b57da5ff0e3aa76f9d48776a58f3515932c017a9566"
+    },
+    "scripts/structural_floor_builder.gd": {
+      "retained_predecessor_path": "data/architecture/packages/received_sections/predecessors/scripts/structural_floor_builder.gd",
+      "old_sha256": "449ab410664b83e243537a899ae46e658b9cd1b3f18de19b2e2690933854bf01",
+      "current_sha256": "d322e784d268ff22035649f6fe3dd8325ef6600407c018a83557c4376f234b4f"
+    },
+    "scripts/static_contact_cache.gd": {
+      "retained_predecessor_path": "data/architecture/packages/botanical_pair_runtime/predecessors300/scripts/static_contact_cache.gd",
+      "old_sha256": "d3440479423f19660a6e68af2f730549644eb9ff1f86ccf3254a4e0589c58e35",
+      "current_sha256": "4ebe68081d5bf1d0b433ce93c4cb2d9c8bca0192a301fa11a0c2b58d5a86b049"
+    }
+  },
+  "source_successor_scope": "Exact current source pins after audited jump-only player additions, unchanged floor geometry through extracted build_regions helper, and retained cache successor;all original route,control,support,cart,timeout and acceptance criteria preserved;no jumping introduced by this route."
+}

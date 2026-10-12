@@ -24,7 +24,7 @@ static func _pool_finish_sha256(path: String) -> String:
 	if relative == POOL_FINISH_HELPER: return _pool_finish_text(relative).sha256_text()
 	_botanical_ensure()
 	if relative in botanical_proof.projected_paths: return _botanical_current_text(relative).sha256_text()
-	return FileAccess.get_sha256("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_sha256("res://"+relative)
 static func _ensure() -> void:
 	if checked: return
 	_botanical_ensure()
@@ -72,7 +72,7 @@ static func _ensure() -> void:
 	assert(summary.medical_triage_additive_preservation.complete_old_records_preserved)
 	var added: Dictionary=proof.new_compiled_record
 	assert(added.deck=="D05" and float(added.floor_y)==21.0 and float(added.thickness)==.24 and float(added.structural_area_m2)==544.0)
-	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json"))
+	var data: Dictionary=JSON.parse_string(_pool_finish_text("res://data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json"))
 	var prior: Dictionary=JSON.parse_string(str(old_text["data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json"]))
 	for key in ["root_name","persistent_id","origin_xyz","core_file","core_root_name","core_identity","floor_owner","floor_y_m","floor_thickness_m","floor_area_m2","source_clinical_fit_targets","unchanged_global_systems"]:
 		assert(data[key]==prior[key],"Retained medical identity/system changed: "+str(key))
@@ -237,7 +237,7 @@ static func _botanical_current_text(path: String) -> String:
 	_botanical_ensure()
 	var relative := _relative(path)
 	if relative in botanical_proof.projected_paths: return str(botanical_predecessor_text[relative])
-	return FileAccess.get_file_as_string("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_text("res://"+relative)
 
 static func _botanical_faces(mesh: Mesh) -> PackedVector3Array:
 	var result := PackedVector3Array()
@@ -504,14 +504,14 @@ static func _team_lounge_current_text(path: String) -> String:
 	var relative:=_relative(path)
 	if relative=="tools/validate.py":return load("res://tests/d12_pair_successor_guard.gd").current_text("res://"+relative)
 	if relative in team_lounge_proof.projected_paths: return str(team_lounge_predecessor_text[relative])
-	return FileAccess.get_file_as_string("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_text("res://"+relative)
 
 static func _team_lounge_current_sha256(path: String) -> String:
 	_team_lounge_ensure()
 	var relative:=_relative(path)
 	if relative=="tools/validate.py":return load("res://tests/d12_pair_successor_guard.gd").current_sha256("res://"+relative)
 	if relative in team_lounge_proof.projected_paths: return _team_lounge_current_text(relative).sha256_text()
-	return FileAccess.get_sha256("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_sha256("res://"+relative)
 
 static func _team_lounge_floor_children(floors: Node) -> Array:
 	_team_lounge_ensure()
@@ -899,13 +899,13 @@ static func _movement_current_text(path: String) -> String:
 	_movement_ensure()
 	var relative:=_relative(path)
 	if relative in movement_proof.projected_paths: return str(movement_predecessor_text[relative])
-	return FileAccess.get_file_as_string("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_text("res://"+relative)
 
 static func _movement_current_sha256(path: String) -> String:
 	_movement_ensure()
 	var relative:=_relative(path)
 	if relative in movement_proof.projected_paths: return _movement_current_text(relative).sha256_text()
-	return FileAccess.get_sha256("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_sha256("res://"+relative)
 
 static func _movement_floor_children(floors: Node) -> Array:
 	_movement_ensure()
@@ -1180,13 +1180,13 @@ static func _moss_current_text(path: String) -> String:
 	_moss_ensure()
 	var relative:=_relative(path)
 	if relative in moss_proof.projected_paths: return str(moss_predecessor_text[relative])
-	return FileAccess.get_file_as_string("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_text("res://"+relative)
 
 static func _moss_current_sha256(path: String) -> String:
 	_moss_ensure()
 	var relative:=_relative(path)
 	if relative in moss_proof.projected_paths: return _moss_current_text(relative).sha256_text()
-	return FileAccess.get_sha256("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_sha256("res://"+relative)
 
 static func _moss_floor_children(floors: Node) -> Array:
 	_moss_ensure()
@@ -1447,14 +1447,14 @@ static func _sports_care_current_text(path: String) -> String:
 	var relative:=_relative(path)
 	if relative=="tests/validate_botanical_receiving_access.gd":return load("res://tests/botanical_pair_successor_guard.gd").current_text("res://"+relative)
 	if relative in sports_care_proof.projected_paths: return str(sports_care_predecessor_text[relative])
-	return FileAccess.get_file_as_string("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_text("res://"+relative)
 
 static func _sports_care_current_sha256(path: String) -> String:
 	_sports_care_ensure()
 	var relative:=_relative(path)
 	if relative=="tests/validate_botanical_receiving_access.gd":return load("res://tests/botanical_pair_successor_guard.gd").current_sha256("res://"+relative)
 	if relative in sports_care_proof.projected_paths: return _sports_care_current_text(relative).sha256_text()
-	return FileAccess.get_sha256("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_sha256("res://"+relative)
 
 static func _sports_care_floor_children(floors: Node) -> Array:
 	_sports_care_ensure()
@@ -1734,7 +1734,7 @@ static func _sports_sign_current_text(path: String) -> String:
 	_sports_sign_ensure()
 	var relative:=_relative(path)
 	if sports_sign_predecessor_text.has(relative): return str(sports_sign_predecessor_text[relative])
-	return FileAccess.get_file_as_string("res://"+relative)
+	return load("res://tests/botanical_pair_successor_guard.gd").current_text("res://"+relative)
 
 static func _sports_sign_current_sha256(path: String) -> String:
 	_sports_sign_ensure()

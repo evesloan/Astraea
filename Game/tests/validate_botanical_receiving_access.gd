@@ -1,7 +1,7 @@
 extends "res://tests/medical_test_scene.gd"
 # Reuse existing input/ray/support helpers; only this bounded D06 exercise is new.
-const BOTANICAL_CONTRACT := "res://tests/fixtures/botanical_pair_receiving_acceptance012.json"
-const BOTANICAL_CONTRACT_SHA := "10be9972acd149993863d7c9c86922270d8908925a53e6e66c440d06711989ca"
+const BOTANICAL_CONTRACT := "res://tests/fixtures/botanical_pair_receiving_acceptance013.json"
+const BOTANICAL_CONTRACT_SHA := "b2ca81130b7c22b7dd333f0eae2a4bd473f37a70130e5fe2503dee3a5fd6bb5d"
 var walked_frames: int=0
 var travelled_m: float=0.0
 var guard_rays: int=0

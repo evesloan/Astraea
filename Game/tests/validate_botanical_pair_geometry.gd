@@ -2,7 +2,7 @@ extends SceneTree
 # Standalone scoped fixture test and callable static validator. Never loads world.tscn,
 # invokes candidate build(), changes activation, creates import maps, or writes receipts.
 const HELPER := "res://tests/medical_triage_successor_guard.gd"
-const STATIC_CONTACT_SHA256 := "d3440479423f19660a6e68af2f730549644eb9ff1f86ccf3254a4e0589c58e35"
+const STATIC_CONTACT_SHA256 := "4ebe68081d5bf1d0b433ce93c4cb2d9c8bca0192a301fa11a0c2b58d5a86b049"
 const ASSETS := {
  "AST-RCV-D06-CLOUD-LINK-001.glb":{"sha256":"1750017ec2302c8ed36d300b20996917487a04585f42725b2217af3826a24003","nodes":44,"mesh_nodes":44,"surfaces":44,"triangles":528,"placement":[0,0,0]},
  "AST-ATR-001_botanical_nursery_open001.glb":{"sha256":"0b5777db94e1f035bf36cc7afb85fece8a734e4ac22c759a2c83711c6ed68573","nodes":120,"mesh_nodes":120,"surfaces":120,"triangles":9392,"placement":[0,0,0]},
