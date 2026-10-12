@@ -1,0 +1,69 @@
+"""Authored exterior receiving package against immutable Group8 theater contract."""
+from pathlib import Path
+import bpy,bmesh,json,hashlib,math
+from mathutils import Vector
+W=Path(__file__).resolve().parent;R=next(p for p in W.parents if (p/'Game').is_dir())
+contract=json.loads((W/'GROUP8_THEATER_RECEIVING_CONTRACT.json').read_text())
+source=R/'BlenderCatalogue/assets/grand_lantern_theater_section/source/firstpass_003/bridge_source002/AST-CUL-005_bridge_002.blend'
+assert hashlib.sha256(source.read_bytes()).hexdigest()==contract['source_pins'][str(source.relative_to(R))]['sha256']
+catalogue=json.loads((R/'BlenderCatalogue/catalogue_manifest.json').read_text())
+for id in ['AST-TRM-G4-031','AST-TRM-G4-032','AST-TRM-G4-033']:assert all(a['catalogue_id']!=id for a in catalogue['assets'])
+geometry=json.loads((source.parent/'BRIDGE_GEOMETRY_002.json').read_text());names={o['name'] for o in geometry['objects']};assert len(names)==83
+bpy.ops.wm.open_mainfile(filepath=str(source));bpy.context.preferences.filepaths.save_version=0
+original={n:bpy.data.objects[n] for n in names};poses={n:o.matrix_world.copy() for n,o in original.items()}
+for c in list(bpy.data.collections):bpy.data.collections.remove(c)
+held=bpy.data.collections.new('IMMUTABLE_D11_REFERENCE_UNEXPORTED');bpy.context.scene.collection.children.link(held)
+for o in list(bpy.data.objects):
+ for c in list(o.users_collection):c.objects.unlink(o)
+ held.objects.link(o)
+# Reuse original Group4 stone material without changing its node graph or pixels.
+stonefile=R/'BlenderCatalogue/assets/group4_tram_connections_20261009/port_successor_002/Group4_Port_Successor_002.blend'
+assert hashlib.sha256(stonefile.read_bytes()).hexdigest()=='36132af8f8335da1abce721d907ec053d1239341ecef375a112b10a511107335'
+with bpy.data.libraries.load(str(stonefile),link=False) as (a,b):b.materials=['warm_stone']
+stone=bpy.data.materials['warm_stone'];metal=bpy.data.materials['ASTRAEA_champagne_metal'];enamel=bpy.data.materials['ASTRAEA_ivory_enamel']
+B=lambda p:Vector((p[0],-p[2],p[1]));family='group4_theater_upper_approaches_016';parts=[];markers=[]
+collections={};held.hide_render=True
+for name in ['D12_UPPER_MAIN_EXTERIOR','D13_UPPER_MAIN_EXTERIOR','STACKED_SIDE_RECEIVERS']:
+ c=bpy.data.collections.new(name);bpy.context.scene.collection.children.link(c);collections[name]=c
+collections['UNEXPORTED_REFERENCE_AND_STUDIO']=held
+sc=(R/'BlenderCatalogue/assets/group4_tram_connections_20261009/build_source.py').read_text();FAMILY=family
+exec(sc[sc.index('def mesh('):sc.index('def guard(')],globals())
+lights=[];clones=[];exports=[]
+for deck,y,id in [('D12',78,'AST-TRM-G4-031'),('D13',84,'AST-TRM-G4-032')]:
+ current=collections[deck+'_UPPER_MAIN_EXTERIOR'];offset=y-69.5
+ for name in sorted(names):
+  o=original[name];copy=o.copy();copy.data=o.data.copy();copy.name=deck+'__'+name;current.objects.link(copy);copy.parent=None;copy.matrix_world=poses[name].copy();copy.location+=B((0,offset,0));copy['construction_family']=family;copy['original_source_name']=name;copy['original_translation_xyz']=[0,offset,0];copy['collision_policy']='no_collision_detail' if '_LENS' in name else 'static_trimesh_candidate'
+  clones.append({'selected':copy.name,'original':name,'translation_xyz':[0,offset,0]})
+ box(deck+'_MissingOnly_MainBridgeFloor',(-19,y-.12,-126),(30,.24,6.1),stone,'asset-owned missing-only183m2 exterior slab; not duplicated in shared compiler')
+ # Floor-depth laps cross only the original fore-route seam at X-4, below walking surface.
+ for z in [-127.8,-126,-124.2]:box(deck+'_ForeRoute_ReceivingLap_'+str(z),(-4,y-.11,z),(.6,.14,.8),metal,'0.3m positive receiving into both original fore route and new slab; structural rating open')
+ for light in geometry['lights']:
+  item=dict(light);item['id']=deck+'_G4_'+light['id']+'_proposal';item['fixture']=deck+'__'+light['fixture'];item['position_world']=[light['position_world'][0],light['position_world'][1]+offset,light['position_world'][2]];item['illumination_anchor']=[light['illumination_anchor'][0],light['illumination_anchor'][1]+offset,light['illumination_anchor'][2]];lights.append(item)
+ filename=id+'_'+deck.lower()+'_theater_main_approach_r001.glb';bpy.ops.object.select_all(action='DESELECT')
+ for o in current.objects:o.select_set(True)
+ bpy.ops.export_scene.gltf(filepath=str(W/filename),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False)
+ exports.append({'id':id,'deck':deck,'file':filename,'sha256':hashlib.sha256((W/filename).read_bytes()).hexdigest(),'mesh_count':len([o for o in current.objects if o.type=='MESH']),'standing_y':y,'new_floor_m2':183})
+current=collections['STACKED_SIDE_RECEIVERS'];receivers=[]
+for stage,lo,hi in [('D11_to_D12',69.10,77.12),('D12_to_D13',77.60,83.12)]:
+ for x in [-29,-19,-9]:
+  for z in [-128.90,-123.10]:
+   name=stage+'_SidePier_'+str(x)+'_'+str(z)
+   # Elliptical octagonal pier remains outside the complete 5.2m receiving corridor and original guard skins.
+   vertices=[]
+   for y in [lo+.05,hi-.05]:
+    for i in range(8):vertices.append((x+.09*math.cos(i*math.tau/8),y,z+.035*math.sin(i*math.tau/8)))
+   faces=[tuple(range(7,-1,-1)),tuple(range(8,16))]+[(i,(i+1)%8,(i+1)%8+8,i+8) for i in range(8)]
+   mesh(name,vertices,faces,enamel,'positive original side-beam receiving candidate; new load path requires shared structural approval')
+   box(name+'_LowerSleeve',(x,lo+.07,z),(.20,.14,.08),metal,'bounded original lower beam receiver; no original beam modification')
+   box(name+'_UpperShoe',(x,hi-.07,z),(.20,.14,.08),metal,'positive upper side-beam receiver; no original support moved')
+   receivers.append({'id':name,'x':x,'z':z,'bottom_y':lo,'top_y':hi,'new_load_approved':False})
+bpy.ops.object.select_all(action='DESELECT')
+for o in current.objects:o.select_set(True)
+filename='AST-TRM-G4-033_theater_stacked_side_receivers_r001.glb';bpy.ops.export_scene.gltf(filepath=str(W/filename),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False)
+exports.append({'id':'AST-TRM-G4-033','deck':'D11_to_D13','file':filename,'sha256':hashlib.sha256((W/filename).read_bytes()).hexdigest(),'mesh_count':len([o for o in current.objects if o.type=='MESH']),'new_floor_m2':0})
+for image in bpy.data.images:
+ if image.source=='FILE' and not image.packed_file:image.pack()
+bpy.ops.file.make_paths_relative();native='Group4_Theater_Upper_Main_Approaches_r001.blend';bpy.ops.wm.save_as_mainfile(filepath=str(W/native),compress=True)
+assert hashlib.sha256(source.read_bytes()).hexdigest()==contract['source_pins'][str(source.relative_to(R))]['sha256']
+data={'active':False,'family':family,'native':native,'donor_native':str(source.relative_to(R)),'donor_sha256':contract['source_pins'][str(source.relative_to(R))]['sha256'],'exports':exports,'original_rigid_clones':clones,'original_cloned_mesh_count':166,'new_selected_mesh_count':sum(x['mesh_count'] for x in exports),'new_asset_owned_floor_m2':366,'duplicate_compiled_floor_m2':0,'lights':lights,'side_receiver_proposals':receivers,'protected_route_width_m':5.2,'shared_axial_walkway_width_m':4,'original_D11_floor_and_beam_bytes_unchanged':True,'original_eight_upper_asset_floor_records_unchanged':True,'original_doors_remain_closed_and_inactive':True,'original_capacity':contract['capacity'],'capacity_change':0,'new_loads_adopted':False,'route_cart_species_engineering_final_art_accepted':False,'whole_group_complete':False}
+(W/'SOURCE_INTERFACE.json').write_text(json.dumps(data,indent=2)+'\n');print('G4_THEATER_UPPER_APPROACH_BUILT',data['new_selected_mesh_count'],'meshes;166 rigid original-clones;366m2 missing-only floor;6 original physical coffer fixtures;doors remain closed;new support loads held')
