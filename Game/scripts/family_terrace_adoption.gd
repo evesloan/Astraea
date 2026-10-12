@@ -5,6 +5,8 @@ static func build(ship:Node3D)->Node3D:
 	if OS.get_environment("ASTRAEA_FAMILY_CANDIDATE_ISOLATION")=="1":return null
 	var house:Node3D=load("res://scripts/family_terrace_receiving.gd").build(ship)
 	house.set_meta("persistent_id","family_terrace_house_001")
+	var changed_chairs:int=load("res://scripts/group2_meal_arrangement/pose_successor.gd").apply(house)
+	house.set_meta("group2_meal_facing_changes",changed_chairs)
 	load("res://scripts/family_lift.gd").build(house)
 	house.set_meta("acceptance","integrated_construction_wip")
 	house.set_meta("receiving_structure_accepted",false)

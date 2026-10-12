@@ -18,3 +18,5 @@ Group2’s nine cumulative packages are explicitly listed in the JSON inventory 
 Progress picture: `libfile_ba3dcee4b9408191baa0eb67d83db6d0`. Actual parcel source and fitted foyer at1.65m eye height,posed open under neutral Workbench review.
 
 Main and the parent checkpoint remain parent-owned. No watcher,new worker,engine switch,forced push or credential/permission change was introduced.
+
+Group2 exact chair successor `ffaf177df8fa460e3b098819604977cad8fbbdd5` is now retained and installed:12 existing D16 chairs face inward;670 current-main checks preserve157 total instances,all positions/scales/assets and145 other orientations. Meal service and the tableZ348 versus historicZ356..384 programme boundary remain held. No new seats or restaurant. Corrected source view:`libfile_b33814d431ec8191895b09824f237969`.
