@@ -6,6 +6,8 @@ The finite terminal/body continuation is in [continuation_r004/docs/HANDOFF.md](
 
 The actual-source body continuation is in [continuation_r005/docs/HANDOFF.md](../continuation_r005/docs/HANDOFF.md). It restores 2,129 fields through seven explicit source-preserving body-cell successors, leaving five Royalty support interfaces held. The current selection still contains78 models. Other71 definitions, four doors and nineteen lights are unchanged. The R005 handoff also carries the source-rooted Group2 wet-roof/tank-bearing proposal; no protected roof cut or structural-capacity approval is applied. Sections below retain historical R003 evidence and its limits; R004/R005 reports supersede only their explicitly declared construction interfaces.
 
+The selected botanical continuation is [continuation_r006/docs/HANDOFF.md](../continuation_r006/docs/HANDOFF.md): four composed principal terrace edges, eleven seating bays,121 rigid original plant bindings, three tables and eight source lamps. It appends four models and eight lights while retaining the prior78/19/four-door definitions. R006B preserves the exact four-metre transit reservation after correcting the retained unselected R006A lamp overlap. The current selection contains82 models and27 sources; shared activation and whole-group acceptance remain open.
+
 ## Implemented
 
 - An editable compressed Blender r003 native and 40 spatial/material export cells, with 25,730 authored parts and 294,536 exported triangles. Rigid original plant/bench families provide 33 source bindings; they are not deformed to fit sockets.

@@ -1,0 +1,32 @@
+# Group 7 R006B: composed principal botanical edges
+
+Four distinct roughly28m terrace-edge sequences use existing D06/D09/D12/D16 receivers. They add eleven shaped planted seating bays, three garden tables, 121 rigid original canopy/shrub/groundcover bindings and eight actual architectural lamp sources. D06 retains a broad central arrival gap toward the original Canopy Terrace. D09 uses three flowering/craft clusters; D12 has two longer quiet reading bays; D16 has four lower family garden pockets. All original lower-island trees, water pockets, courts, portico, overlook and fifteen installed gallery rooms remain present.
+
+This is first-pass construction within the full Group7 backlog. The next larger forecourt receiver plan is separate and unbuilt; these four edges do not establish the full atrium's final landscape or inhabitation.
+
+## Selected construction and tests
+
+The selected editable native is `source/natives/G7_BotanicalSequence_r006b.blend`, SHA256 `9e9322f6ce804a128c97667e1d71915002851824ed38cf72bf94d8cfca04e537`. It contains137 finite architectural parts and121 rigid original family bindings. The reopened source passes990,579 checks. Four independent GLB exports contain243,996 triangles and match native geometry within0.1mm. Actual full-precision engine captures match within0.1mm, maximum error0.000053406m. Only the four new owned imports disable attribute compression; retained imports, engine and renderer are unchanged.
+
+`qa/RUNTIME_CHECK.json` passes965 focused checks against actual baseline main with this opt-in candidate:133 protected-source queries,99 retained-floor witnesses,252 normal route samples, eight normal-controller walking legs and eight clear source-light exits/admissions. The exact original four-metre-wide, four-metre-high transit reservation passes all twenty segments with its original criteria and ordinary shape margin. Its source contract is pinned to `Game/tests/validate_atrium_supports.gd`; no clearance criterion is relaxed. Ordinary walking, floor/capsule and light-exit checks exclude none. Source-contact queries exclude only the four new botanical cells. Twelve explicit fixture seeds locate four disconnected deck starts and eight light review poses; no position is written between walking legs.
+
+The runtime selection appends four models and eight light definitions, retaining all78 prior model definitions,19 prior lights and four original service doors exactly. It selects82 models and27 sources total. The shared shadow-source budget stays8. This package adds no compiler floor, room identity, capacity, provider or shared-root registration.
+
+## Honest retained attempts
+
+The unselected R006A native, exports, Game copies and complete source/import/runtime reports remain retained. Its920 worker/contact checks passed their stated scope, but the new lamp bezels intruded1cm into the wider retained transit envelope. R006B retracts/moves only24 new lamp arm/bezel/opal parts and eight new emitter positions12cm outward. The other113 architecture parts and all planting stay exact. The corrected bezel boundary is at absoluteX42.11, giving11cm geometric separation from the original reserved X40±2 boundary. `qa/TRANSIT_REVISION_R006B.json` records the defect and exact revision; `qa/unselected_r006a` preserves its evidence. No whole-transit acceptance had been claimed for R006A.
+
+The initial source-volume check failed on floating-point cancellation in a thin world-coordinate soil part. The source recipe/log are retained; the successor evaluates volume in double precision around a local origin and bounds face quantization explicitly. It does not relax source coordinate, route or contact criteria. The first Cycles atrium view was sparse and poorly suited to final milestone review; its second view was stopped when the transit defect was identified. The revised Cycles view remains actual-source evidence with visible sampling noise. Failed or unsuitable source views are retained separately from any selected clear viewport view.
+
+## Source visual review
+
+The selected clear wide viewport is `qa/views/SOURCE_R006B_D12_EDGE_WORKBENCH_CLEAR_WIDE.png`. Its camera and exact retained context are recorded in `qa/WORKBENCH_SOURCE_VIEW_RECEIPT.json`; direct review is recorded in `qa/VISUAL_REVIEW.json`. It shows the full new D12 edge, adjacent R003 pause courts and retained gallery/void context using actual source UV textures. Workbench studio shading omits game lighting, full material/glass behavior, CRT and hardware acceptance. Review-helper floor normals match the original Game `floor_mesh` upward normals; their positions and source files remain exact. The failed no-world Workbench attempt and EGL fallback warnings remain retained.
+
+## Integration and open acceptance
+
+1. Use the complete branch manifest and independently verified remote checkpoint. Compare all `docs/BOTANICAL_PLAN.json` source pins and the four existing floor-receiver interfaces against current integrated main. Reconcile later Group4 lift/transit or Group1 house-facing changes before adoption.
+2. Apply only the four models and eight lights in `docs/RUNTIME_APPEND.json` to the preserved R005 selection. The full prior preimage is `docs/PREIMAGE_GROUP7_COMPLETION.json`. Earlier R006A Game files are retained history; never instantiate them alongside the selected R006B cells.
+3. Keep the existing opt-in `group7_completion.gd` build contract. Shared root and registry adoption remains with construction thread `01a11d7f-8ef6-70bc-858d-bdf8deb7000b`. Preserve prior installed gallery/crown models and fixtures; do not duplicate them.
+4. Refresh imports and run `godot --headless --path Game --script res://tests/group7_botanical_sequence_check.gd`. This is the current botanical selection check. Older Group7 reports/tests describe their pinned earlier selections; final integrated testing must use current topology without overwriting historical receipts. The R005 body cells, R004 collars and original door controllers are unchanged and retain their own bounded evidence.
+
+Full atrium landscape propagation, larger inhabited courts, tree/canopy final composition, gardening/water/canopy gameplay, guest activity, largest-species/cart interaction, primary floor/member capacity, full enclosure/roof ownership and ordinary graphical/CRT/hardware/final-art acceptance remain open. Existing island and structural-floor contacts are geometric evidence, not horticultural or primary load certification. No complete Group7 acceptance is claimed.
