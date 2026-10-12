@@ -1,0 +1,73 @@
+extends SceneTree
+class WalkingProbe extends CharacterBody3D:
+ var desired:=Vector3.ZERO
+ func _physics_process(delta:float)->void:
+  velocity.x=desired.x;velocity.z=desired.z
+  if not is_on_floor():velocity.y-=9.8*delta
+  else:velocity.y=0
+  move_and_slide()
+var checks:=0
+var errors:Array[String]=[]
+var legs:Array[Dictionary]=[]
+func _initialize()->void:call_deferred("run")
+func check(v:bool,s:String)->void:
+ checks+=1
+ if not v:errors.append(s);push_error(s)
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func floor_fixture(world:Node3D)->void:
+ var p:Array=JSON.parse_string(FileAccess.get_file_as_string("res://source_derivatives/group4_completion_20261011/CANDIDATE_FLOOR_FIXTURE.json"))
+ for region in p:
+  var faces:=PackedVector3Array()
+  for t in region.triangles:
+   var a:=Vector3(t[0][0],region.floor_y,t[0][1]);var b:=Vector3(t[1][0],region.floor_y,t[1][1]);var c:=Vector3(t[2][0],region.floor_y,t[2][1])
+   faces.append_array([a,c,b] if (b-a).cross(c-a).y<0 else [a,b,c])
+  var body:=StaticBody3D.new();body.name=region.id;world.add_child(body)
+  var col:=CollisionShape3D.new();var shape:=ConcavePolygonShape3D.new();shape.set_faces(faces);col.shape=shape;body.add_child(col)
+func original(world:Node3D,file:String,at:Vector3)->Node3D:
+ var n:Node3D=(load("res://assets/models/"+file) as PackedScene).instantiate();world.add_child(n);n.position=at
+ load("res://scripts/static_contact_cache.gd").attach_group(n,n.find_children("*","MeshInstance3D",true,false))
+ return n
+func walk(actor:WalkingProbe,target:Vector3,label:String)->bool:
+ var initial:Vector3=actor.global_position;var floor_samples:=0
+ var budget:=int(initial.distance_to(target)/1.5*60)+240
+ for frame in range(budget):
+  var diff:Vector3=target-actor.global_position;diff.y=0
+  if diff.length()<.08:
+   actor.desired=Vector3.ZERO;await frames(3)
+   legs.append({"label":label,"initial":initial,"end":actor.global_position,"physics_frames":frame,"floor_samples":floor_samples})
+   check(floor_samples>0,label+" has continuous physical floor samples")
+   check(abs(actor.global_position.y-52.5)<.08,label+" stays on D09")
+   return true
+  actor.desired=diff.normalized()*1.5;await physics_frame
+  if actor.is_on_floor():floor_samples+=1
+  if abs(actor.global_position.y-52.5)>.15:
+   check(false,label+" lost supported floor at "+str(actor.global_position));actor.desired=Vector3.ZERO;return false
+ actor.desired=Vector3.ZERO;check(false,label+" blocked at "+str(actor.global_position));return false
+func run()->void:
+ var world:=Node3D.new();world.name="ExactSourceTransferFixture";root.add_child(world);floor_fixture(world)
+ var assembly:Node3D=load("res://scripts/group4_completion.gd").build(world,true,true)
+ var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://source_derivatives/group4_completion_20261011/TRANSFER_TEST_FIXTURE.json"))
+ for q in data.five_core_transfers:
+  check(FileAccess.get_sha256("res://assets/models/"+q.core_model)==q.core_model_sha256,q.station+" exact current core source")
+  original(world,q.core_model,Vector3(q.core_origin[0],q.core_origin[1],q.core_origin[2]))
+ original(world,"SOL_D09_directory_03_source001.glb",Vector3(-8,52.5,-250))
+ original(world,"AST-RTL-007.glb",Vector3(8,52.5,-216))
+ original(world,"AST-RTL-009.glb",Vector3(4,52.5,-250))
+ await frames(90)
+ for q in data.five_core_transfers:
+  var actor:=WalkingProbe.new();actor.name="SourceTransferProbe_"+q.station
+  var col:=CollisionShape3D.new();var shape:=CapsuleShape3D.new();shape.radius=.36;shape.height=1.8;col.shape=shape;col.position.y=.9;actor.add_child(col);world.add_child(actor)
+  var route:Array=q.lower_route_xz;actor.global_position=Vector3(route[0][0],52.57,route[0][1]);await frames(90)
+  check(actor.is_on_floor() and abs(actor.global_position.y-52.5)<.08,q.station+" supported original lower-lift approach")
+  var reached:=true
+  for i in range(1,route.size()):
+   if not await walk(actor,Vector3(route[i][0],52.5,route[i][1]),q.station+" lower-to-core "+str(i)):reached=false;break
+  if reached:
+   for i in range(route.size()-2,-1,-1):
+    if not await walk(actor,Vector3(route[i][0],52.5,route[i][1]),q.station+" core-to-lower "+str(i)):break
+  actor.queue_free();await frames(3)
+ var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"fixture_relocations":5,"route_teleports":0,"capsule_radius":.36,"height":1.8,"original_player_controller":false,"cart_stock_or_public_lift_travel":false,"scope":"Five candidate lower-station/core-mouth approaches out and back using actual frozen stations, current core enclosures, Paper Moon, Thread & Shell, Orchard and actual D09 floor fixture after proposed pit subtraction. Terminal destination branches, actual main, species and final visuals remain unaccepted."}
+ var file:=FileAccess.open("res://artifacts/group4_core_transfers.json",FileAccess.WRITE);file.store_string(JSON.stringify(result," "));file.close()
+ print("GROUP4 CORE TRANSFERS ",result.status,": ",checks," checks, ",legs.size()," actual capsule legs, zero within-route teleports")
+ world.queue_free();await process_frame;quit(0 if errors.is_empty() else 1)

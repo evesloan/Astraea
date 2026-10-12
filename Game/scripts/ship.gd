@@ -195,6 +195,7 @@ func _ready() -> void:
 	load("res://scripts/aft_crown_sitting_lighting.gd").build(self)
 	load("res://scripts/aft_crown_foyer_waiting_edges.gd").build(self)
 	load("res://scripts/group8/crown_interiors.gd").build(self,false)
+	load("res://scripts/group4_boarding_safety.gd").build_terminals($ShipSpace/Districts)
 	var lighting_budget := Node.new()
 	lighting_budget.name = "LocalShadowSourceBudget"
 	lighting_budget.set_script(load("res://scripts/lighting_budget.gd"))

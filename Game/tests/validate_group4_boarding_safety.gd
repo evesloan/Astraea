@@ -1,0 +1,86 @@
+extends SceneTree
+var checks:=0
+var errors:Array[String]=[]
+var pose_samples:=0
+var motions:Array[Dictionary]=[]
+func _initialize()->void:call_deferred("run")
+func check(v:bool,s:String)->void:
+ checks+=1
+ if not v:errors.append(s);push_error(s)
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func check_leaf_fit(gate:Node3D,label:String)->void:
+ gate.set_physics_process(false)
+ for sample in range(21):
+  var f:=float(sample)/20
+  for i in range(gate.leaves.size()):gate.leaves[i].position=gate.origins[i]+Vector3(gate.travels[i]*f,0,0)
+  await frames(2)
+  for leaf:AnimatableBody3D in gate.leaves:
+   var cols:Array[Node]=leaf.find_children("*","CollisionShape3D",false,false)
+   assert(cols.size()==1)
+   var col:CollisionShape3D=cols[0]
+   var q:=PhysicsShapeQueryParameters3D.new();q.shape=col.shape;q.transform=col.global_transform;q.exclude=[leaf.get_rid()]
+   var hits:Array=leaf.get_world_3d().direct_space_state.intersect_shape(q,64)
+   var unexpected:Array[String]=[]
+   for hit in hits:
+    if hit.collider is StaticBody3D:unexpected.append(str(hit.collider.get_path()))
+   check(unexpected.is_empty(),label+" leaf fit "+str(sample)+" "+str(unexpected));pose_samples+=1
+ for i in range(gate.leaves.size()):gate.leaves[i].position=gate.origins[i]
+ gate.open_fraction=0.0;gate.request_close();gate.set_physics_process(true);await frames(3)
+func blocker(world:Node3D,at:Vector3)->CharacterBody3D:
+ var n:=CharacterBody3D.new();var c:=CollisionShape3D.new();var s:=CapsuleShape3D.new();s.radius=.30;s.height=1.8;c.shape=s;c.position.y=.9;n.add_child(c);world.add_child(n);n.global_position=at;return n
+func run()->void:
+ var world:=Node3D.new();world.name="Group4BoardingSourceFixture";root.add_child(world)
+ var base:Node3D=load("res://scripts/group4_completion.gd").build(world,true,true)
+ var vehicle:AnimatableBody3D=load("res://scripts/group4_boarding_safety.gd").create_candidate_vehicle(world,Vector3(-5.6,56.1,-432))
+ var safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(world,base,vehicle,true)
+ await frames(90)
+ check(not safety.plan.active,"New safety package stays inactive in production")
+ check(safety.station_gates.size()==5 and safety.car_gates.size()==2,"Five source barriers and two powered source car portals")
+ check(safety.clamp_bodies.size()==4,"Four physical clamp mechanisms; no cart instance")
+ for label in safety.station_gates:await check_leaf_fit(safety.station_gates[label],label+" barrier")
+ for label in safety.car_gates:await check_leaf_fit(safety.car_gates[label],label+" car")
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_COMPLETION_CANDIDATE.json"))
+ for st in p.stations:
+  # Each is an independent source dock fixture, not a tram journey or loaded cart test.
+  vehicle.position=Vector3(st.track_x,56.1,st.physical_docking_z);await frames(30)
+  var gate:Node3D=safety.station_gates[st.label];var bridge:Node3D=safety.bridges[st.label]
+  var ray:=PhysicsRayQueryParameters3D.create(bridge.to_global(Vector3(-1,1.7,.20)),bridge.to_global(Vector3(.8,1.7,.20)))
+  var hit:Dictionary=world.get_world_3d().direct_space_state.intersect_ray(ray)
+  check(not hit.is_empty() and hit.collider.get_parent()==gate,st.label+" closed physical barrier blocks platform exit")
+  var capsule:=CapsuleShape3D.new();capsule.radius=.30;capsule.height=1.8
+  var query:=PhysicsShapeQueryParameters3D.new();query.shape=capsule;query.transform=Transform3D(Basis.IDENTITY,gate.to_global(Vector3(0,.9,0)))
+  var blocked:=false
+  for h in world.get_world_3d().direct_space_state.intersect_shape(query,64):
+   if h.collider.get_parent()==gate:blocked=true
+  check(blocked,st.label+" closed actual center capsule blocked despite narrow seam")
+  check(safety.request_boarding(st.label),st.label+" present stopped car allows request")
+  await frames(40)
+  check(gate.open_fraction<.0001 and bridge.fraction<.999,st.label+" barrier stays closed during bridge deployment")
+  await frames(210)
+  var car_side:="PORT" if st.vehicle_door_side=="port" else "STARBOARD"
+  check(gate.open_fraction>.999 and safety.car_gates[car_side].open_fraction>.999 and bridge.fraction>.999,st.label+" bridge before both actual open portals")
+  var person:=blocker(world,gate.to_global(Vector3(0,0,0)));await frames(3)
+  check(gate.threshold_occupied(),st.label+" actual barrier threshold detects capsule")
+  check(safety.request_secure(),st.label+" secure request")
+  await frames(90)
+  check(gate.open_fraction>.999 and bridge.fraction>.999 and not safety.unloaded_clear_to_depart(),st.label+" occupied threshold prevents closing and departure")
+  person.queue_free();await frames(3)
+  var paused_fraction:float=bridge.fraction;var paused_leaf:float=gate.open_fraction
+  paused=true;await create_timer(.05,true,false,true).timeout
+  check(abs(bridge.fraction-paused_fraction)<.001 and abs(gate.open_fraction-paused_leaf)<.001,st.label+" pause freezes mechanical sequence")
+  paused=false;await frames(260)
+  check(safety.phase=="secured" and safety.unloaded_clear_to_depart(),st.label+" both portals closed before bridge stow and unloaded clearance")
+  check(gate.open_fraction<.0001 and safety.car_gates[car_side].open_fraction<.0001 and bridge.fraction<.0001,st.label+" actual safe final poses")
+  motions.append({"station":st.label,"independent_source_fixture":true,"operating_sequence":"closed barriers, deployed bridge, open portals, occupied hold, closed portals, stowed bridge"})
+ vehicle.position=Vector3(10,56.1,-72);await frames(30)
+ check(not safety.request_boarding("CENTRAL"),"Car away from exact dock refuses boarding")
+ safety.source_clamp_target=true;await frames(100)
+ check(safety.clamp_fraction>.999,"Four hardware mechanisms reach actual closed source pose")
+ for i in range(4):check(safety.clamp_bodies[i].position.distance_to(safety.clamp_translations[i])<.001,"Closed source clamp stroke "+str(i))
+ safety.source_clamp_target=false;await frames(100)
+ for body:AnimatableBody3D in safety.clamp_bodies:check(body.position.length()<.001,"Source clamp returns to caster-clear position")
+ var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"leaf_source_pose_samples":pose_samples,"dock_sequences":motions,"source_dock_fixture_relocations":5,"tram_travel_tested":false,"original_cart_stock_or_restraint_joint_tested":false,"original_player_input_tested":false,"scope":"Seven original lift_gate adapters against actual source contact geometry; five real gate/bridge sequences and four empty hardware strokes. Not an operating tram or loaded restraint acceptance."}
+ var f:=FileAccess.open("res://artifacts/group4_boarding_safety.json",FileAccess.WRITE);f.store_string(JSON.stringify(result," "));f.close()
+ print("GROUP4 BOARDING SAFETY ",result.status,": ",checks," checks; ",pose_samples," actual leaf poses; five source docking sequences")
+ world.queue_free();await process_frame;quit(0 if errors.is_empty() else 1)

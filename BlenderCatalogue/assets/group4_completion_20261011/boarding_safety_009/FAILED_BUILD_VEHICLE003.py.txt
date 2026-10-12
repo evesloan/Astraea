@@ -1,0 +1,100 @@
+"""Preserve actual box/octagonal prism footprints and interpolate original exterior UVs."""
+from pathlib import Path
+import bpy,bmesh,json,hashlib,sys
+import numpy as np
+from shapely.geometry import MultiPoint,Polygon,box
+from shapely import constrained_delaunay_triangles
+W=Path(__file__).resolve().parent;R=W.parents[3]
+P=json.loads((W/'SAFETY_PLAN.json').read_text());pro=json.loads((W/'PRIOR_CHECKPOINT_PROVENANCE.json').read_text())
+assert all(hashlib.sha256((R/n).read_bytes()).hexdigest()==h for n,h in pro['source_pins'].items())
+native=R/'BlenderCatalogue/assets/group4_tram_connections_20261009/port_successor_002/Group4_Port_Successor_002.blend'
+bpy.context.preferences.filepaths.save_version=0;bpy.ops.wm.open_mainfile(filepath=str(native))
+keep=list(bpy.data.collections['TRAM_EDITABLE_COMPONENT'].objects)
+for ob in list(bpy.data.objects):
+ if ob not in keep:bpy.data.objects.remove(ob,do_unlink=True)
+for c in list(bpy.data.collections):
+ if c.name!='TRAM_EDITABLE_COMPONENT':bpy.data.collections.remove(c)
+B=lambda p:(p[0],-p[2],p[1]);G=lambda p:(p[0],p[2],-p[1])
+cuts={q['mesh']:q for q in P['vehicle_cuts']};audit=[]
+def polygons(g):return [] if g.is_empty else list(g.geoms) if hasattr(g,'geoms') else [g]
+def subtract_prism(ob,q):
+ old=ob.data;pts=np.array([G(ob.matrix_world@v.co) for v in old.vertices]);lo=pts.min(axis=0);hi=pts.max(axis=0)
+ assert all(min(abs(v[1]-lo[1]),abs(v[1]-hi[1]))<1e-6 for v in pts),ob.name+' not a vertical prism'
+ profile=MultiPoint(pts[:,[0,2]]).convex_hull
+ assert abs(profile.area*(hi[1]-lo[1]))>1e-9
+ original_planes=[]
+ for f in old.polygons:
+  pp=np.array([ob.matrix_world@old.vertices[old.loops[i].vertex_index].co for i in f.loop_indices]);normal=np.array(f.normal);axis=int(np.argmax(abs(normal)));axes=[i for i in range(3) if i!=axis]
+  uv=np.array([old.uv_layers.active.data[i].uv[:] for i in f.loop_indices]);co=np.linalg.lstsq(np.column_stack([pp[:,axes],np.ones(len(pp))]),uv,rcond=None)[0]
+  original_planes.append((normal,float(normal@pp[0]),axes,co))
+ ys=sorted(set([float(lo[1]),float(hi[1])]+[v for cut in q['slot_boxes_xyz'] for v in [cut[1],cut[4]] if lo[1]+1e-7<v<hi[1]-1e-7]))
+ sections=[];volume=0.
+ for a,b in zip(ys,ys[1:]):
+  shape=profile;mid=(a+b)/2
+  for c in q['slot_boxes_xyz']:
+   if c[1]-1e-8<mid<c[4]+1e-8:shape=shape.difference(box(c[0],c[2],c[3],c[5]))
+  sections.append(shape);volume+=shape.area*(b-a)
+ caps=[]
+ for i,y in enumerate(ys):
+  below=sections[i-1] if i else Polygon();above=sections[i] if i<len(sections) else Polygon()
+  caps.extend([(y,below.difference(above),1),(y,above.difference(below),-1)])
+ all_points=[]
+ for shape in sections+[c[1] for c in caps]:
+  for p in polygons(shape):
+   for ring in [p.exterior,*p.interiors]:all_points.extend(tuple(v) for v in list(ring.coords)[:-1])
+ all_points=sorted(set(all_points))
+ def split_ring(coords):
+  out=[]
+  for a,b in zip(coords,coords[1:]+coords[:1]):
+   a=np.array(a);b=np.array(b);d=b-a;den=float(d@d);on=[]
+   for p in all_points:
+    v=np.array(p);t=float((v-a)@d)/den
+    if -1e-8<=t<1-1e-8 and np.linalg.norm(a+t*d-v)<1e-7:on.append((t,p))
+   out.extend(p for t,p in sorted(on))
+  return out
+ vertices=[];faces=[];index={}
+ def face(points):
+  row=[]
+  for p in points:
+   bp=tuple(B(p));key=tuple(round(float(v),7) for v in bp)
+   if key not in index:index[key]=len(vertices);vertices.append(bp)
+   row.append(index[key])
+  if len(set(row))>=3:faces.append(row)
+ for i,(a,b) in enumerate(zip(ys,ys[1:])):
+  for p in polygons(sections[i]):
+   for ring in [p.exterior,*p.interiors]:
+    coords=split_ring(list(ring.coords)[:-1])
+    for u,v in zip(coords,coords[1:]+coords[:1]):face([(u[0],a,u[1]),(v[0],a,v[1]),(v[0],b,v[1]),(u[0],b,u[1])])
+ for y,shape,sign in caps:
+  for p in polygons(shape):
+   p=Polygon(split_ring(list(p.exterior.coords)[:-1]),[split_ring(list(r.coords)[:-1]) for r in p.interiors])
+   for tr in constrained_delaunay_triangles(p).geoms:
+    pts2=list(tr.exterior.coords)[:-1];face([(x,y,z) for x,z in pts2])
+ me=bpy.data.meshes.new(ob.name+' actual-profile twin-slot successor');me.from_pydata(vertices,[],faces);me.materials.append(old.materials[0]);me.update()
+ bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+ assert all(e.is_manifold for e in bm.edges),ob.name+' successor must be closed manifold'
+ bm.to_mesh(me);bm.free();uv=me.uv_layers.new(name=old.uv_layers.active.name);exterior_area=0.;max_error=0.;proof=[]
+ for f in me.polygons:
+  pp=np.array([me.vertices[i].co[:] for i in f.vertices]);normal=np.array(f.normal);plane=next((p for p in original_planes if abs(abs(normal@p[0])-1)<1e-5 and np.max(abs(pp@p[0]-p[1]))<1e-6),None)
+  axes=[d for d in range(3) if d!=int(np.argmax(abs(normal)))]
+  if plane:exterior_area+=f.area
+  for li in f.loop_indices:
+   bp=me.vertices[me.loops[li].vertex_index].co
+   val=np.array([bp[d] for d in axes])*.7 if plane is None else np.array([bp[plane[2][0]],bp[plane[2][1]],1.])@plane[3]
+   uv.data[li].uv=tuple(val)
+   if plane:max_error=max(max_error,float(np.linalg.norm(np.array(uv.data[li].uv[:])-val)))
+  proof.append({'face':f.index,'retained_exterior_plane':plane is not None,'area':f.area})
+ ob.data=me;ob.matrix_world=np.eye(4).tolist();ob['bounded_channel_successor_of']=q['mesh'];ob['channel_boxes_game_xyz']=json.dumps(q['slot_boxes_xyz'])
+ audit.append(dict(mesh=ob.name,original_footprint_xz=list(profile.exterior.coords),original_volume_m3=profile.area*(hi[1]-lo[1]),removed_channel_volume_m3=profile.area*(hi[1]-lo[1])-volume,remaining_volume_m3=volume,exterior_surface_area_m2=exterior_area,maximum_exterior_uv_error=max_error,vertices=len(me.vertices),faces=len(me.polygons),face_proof=proof))
+for ob in keep:
+ if ob.type=='MESH' and ob.name in cuts:subtract_prism(ob,cuts[ob.name])
+assert len(audit)==8 and all(q['maximum_exterior_uv_error']<1e-5 for q in audit)
+for im in bpy.data.images:
+ if im.source=='FILE' and im.size[0]>0 and not im.packed_file:im.pack()
+bpy.ops.object.select_all(action='DESELECT')
+for o in keep:o.select_set(True)
+bpy.context.view_layer.objects.active=next(o for o in keep if o.type=='MESH')
+asset=W/P['vehicle_successor'];bpy.ops.export_scene.gltf(filepath=str(asset),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False,export_animations=False,export_materials='EXPORT')
+new_native=W/'Group4_Powered_Portal_Body_r001.blend';bpy.ops.wm.save_as_mainfile(filepath=str(new_native),compress=True)
+(W/'VEHICLE_CHANNEL_BUILD.json').write_text(json.dumps({'status':'SOURCE_BUILT_REQUIRES_AUDIT','changed_members':audit,'unchanged_meshes':31,'original_native_sha256':hashlib.sha256(native.read_bytes()).hexdigest(),'new_native':new_native.name,'new_asset':asset.name,'original_body_unchanged':True},indent=2)+'\n')
+print('VEHICLE_SUCCESSOR_BUILT eight bounded actual-profile channels;31 original meshes retained')

@@ -1,0 +1,39 @@
+extends SceneTree
+const OUT:="res://../BlenderCatalogue/assets/group4_completion_20261011/travel_hardware_012/"
+func _initialize()->void:call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func screenshot(camera:Camera3D,at:Vector3,focus:Vector3,name:String)->void:
+ camera.global_position=at;camera.look_at(focus,Vector3.UP);await frames(8);await RenderingServer.frame_post_draw
+ var picture:=root.get_texture().get_image();assert(picture.get_width()==1920 and picture.get_height()==1080);assert(picture.save_png(OUT+name)==OK)
+ print("SOURCE_GAME_CONTEXT_SAVED ",name," ",camera.global_position)
+func run()->void:
+ root.size=Vector2i(1920,1080);var world:=Node3D.new();world.name="Group4SourceTravelReview";root.add_child(world)
+ var environment:=WorldEnvironment.new();var settings:=Environment.new();settings.background_mode=Environment.BG_COLOR;settings.background_color=Color(.66,.73,.78)
+ settings.ambient_light_source=Environment.AMBIENT_SOURCE_COLOR;settings.ambient_light_color=Color(.96,.95,.91);settings.ambient_light_energy=.8
+ settings.reflected_light_source=Environment.REFLECTED_SOURCE_DISABLED;environment.environment=settings;world.add_child(environment)
+ var sun:=DirectionalLight3D.new();sun.name="SourceReviewSun";sun.rotation_degrees=Vector3(-42,-35,0);sun.light_energy=1.35;sun.shadow_enabled=true;world.add_child(sun)
+ var camera:=Camera3D.new();camera.name="SourceReviewCamera";camera.fov=65;camera.far=1400;world.add_child(camera);camera.current=true
+ var floors:Array=[];var definition:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+ for region in definition.regions:
+  if region.deck=="D09":floors.append(region)
+ var top:=StandardMaterial3D.new();top.albedo_color=Color(.65,.61,.51);var side:=StandardMaterial3D.new();side.albedo_color=Color(.53,.48,.39)
+ load("res://scripts/structural_floor_builder.gd").build_regions(world,top,side,floors,{},"RetainedD09CompiledFloorContext")
+ var transfers:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://../BlenderCatalogue/assets/group4_completion_20261011/DESTINATION_CONNECTION_CONTRACT.json"))
+ for core in transfers.five_core_transfers:
+  var scene:Node3D=(load("res://assets/models/"+core.core_model) as PackedScene).instantiate();scene.position=Vector3(core.core_origin[0],core.core_origin[1],core.core_origin[2]);world.add_child(scene)
+ var base:Node3D=load("res://scripts/group4_completion.gd").build(world,true,true)
+ var vehicle:AnimatableBody3D=load("res://scripts/group4_tram_source_actuator.gd").fixture_vehicle(world,Vector3(-5.6,56.1,-462))
+ var safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(world,base,vehicle,true)
+ var actuator:Node3D=load("res://scripts/group4_tram_source_actuator.gd").build(world,vehicle,safety,true);await frames(30)
+ await screenshot(camera,Vector3(-14.2,57.4,-453.1),Vector3(-5.6,56.4,-461.2),"SOURCE_GAME_G4_TERMINAL_BUFFER_WIDE001.png")
+ var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_TRAVEL_SOURCE_CANDIDATE.json"));var target:=0.0;var peak:=0.0
+ for pose in actuator.poses:
+  var amount:float=maxf(absf(pose[5]),absf(pose[8]))
+  if amount>peak:peak=amount;target=pose[0]
+ # Two independent static review poses. The separate accepted travel test covers uninterrupted motion.
+ actuator.cursor=target;actuator.target=target;actuator.apply_pose(target);actuator.last_vehicle_pose=vehicle.global_transform
+ var at:Vector3=vehicle.global_position
+ await screenshot(camera,at+Vector3(8.1,1.6,-7.3),at+Vector3(0,.45,0),"SOURCE_GAME_G4_STEERING_CORNER_WIDE001.png")
+ var f:=FileAccess.open(OUT+"SOURCE_GAME_PHOTO_RECEIPT.json",FileAccess.WRITE)
+ f.store_string(JSON.stringify({"source_fixture_only":true,"ordinary_main_visual_acceptance":false,"source_geometry_hidden_or_cut":false,"retained_floor_context":"Actual baseline D09 compiled regions; shared new lift pit cuts remain unapplied","retained_context":"Five exact public-core enclosure sources plus pinned guideway/station assembly","new_source":"Source28/r002 trucks and source29/r002 terminal buffers; original source24 car and four wheel meshes","independent_static_review_poses":2,"review_fixture_relocations":1,"continuous_travel_evidence":"Separate TRAVEL_RUN007.log and group4_source_travel.json, no review relocation used in that test","wheel_force_or_cart_carry_accepted":false,"main_root_or_production_flags_modified":false,"review_lighting":"Separate bright review ambient/sun; not ordinary calibrated project lighting or CRT","images":["SOURCE_GAME_G4_TERMINAL_BUFFER_WIDE001.png","SOURCE_GAME_G4_STEERING_CORNER_WIDE001.png"]}," "));f.close();quit()

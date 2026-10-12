@@ -1,0 +1,49 @@
+from pathlib import Path
+import sys,json,hashlib
+import numpy as np
+from shapely.geometry import Polygon,box
+from shapely.ops import unary_union
+W=Path(__file__).resolve().parent;R=next(p for p in W.parents if (p/'Game').is_dir());sys.path.insert(0,str(W.parent));from glb_geometry import triangles
+I=json.loads((W/'SOURCE_INTERFACE.json').read_text());C=json.loads((W/'GROUP8_THEATER_RECEIVING_CONTRACT.json').read_text());checks=0;errors=[]
+def check(v,s):
+ global checks
+ checks+=1
+ if not v:errors.append(s)
+def points(t):
+ p=t.reshape(-1,3);return p[np.lexsort((p[:,2],p[:,1],p[:,0]))]
+def bounds(t):return np.array([t.reshape(-1,3).min(0),t.reshape(-1,3).max(0)])
+def overlap(a,b):return np.prod(np.maximum(0,np.minimum(a[1],b[1])-np.maximum(a[0],b[0])))
+old={n:t for n,t,e in triangles(R/'Game/assets/models/AST-CUL-005_bridge_002.glb')};allnew={};exportstats=[]
+for spec in I['exports']:
+ p=W/spec['file'];check(hashlib.sha256(p.read_bytes()).hexdigest()==spec['sha256'],p.name+' pin');data={n:t for n,t,e in triangles(p)};check(len(data)==spec['mesh_count'],p.name+' meshes');allnew.update(data)
+ exportstats.append({'file':p.name,'meshes':len(data),'triangles':sum(len(t) for t in data.values())})
+ for n,t in data.items():check(np.isfinite(t).all(),n+' finite');check(np.all(np.linalg.norm(np.cross(t[:,1]-t[:,0],t[:,2]-t[:,0]),axis=1)>1e-9),n+' nondegenerate')
+for clone in I['original_rigid_clones']:
+ name=clone['selected'];source=old[clone['original']];target=allnew[name];check(source.shape==target.shape,name+' original triangle count');check(np.allclose(points(source+np.array(clone['translation_xyz'])),points(target),atol=2e-5,rtol=0),name+' correlated original rigid XYZ')
+D=json.loads((R/'Game/data/generated/structural_meshes.json').read_text());S=json.loads((R/'Game/data/architecture/packages/theater/SOURCE_SURFACE_MANIFEST_003.json').read_text());coverage=[]
+for deck,y in [('D12',78),('D13',84)]:
+ t=allnew[deck+'_MissingOnly_MainBridgeFloor'];floor=unary_union([Polygon(tri[:,[0,2]]) for tri in t if np.all(np.abs(tri[:,1]-y)<2e-4)]);want=box(-34,-129.05,-4,-122.95);compiled=unary_union([Polygon(tri) for r in D['regions'] if r['deck']==deck and abs(r['floor_y']-y)<1e-5 for tri in r['triangles']]);native=unary_union([Polygon(p['boundary_xz']) for r in S['surfaces'] if r['deck']==deck for p in r['parts'] if abs(p.get('top_y',-100)-y)<1e-5]);duplicate=compiled.union(native).intersection(floor).area
+ check(abs(floor.area-183)<2e-4,deck+' actual183m2 standing floor');check(floor.symmetric_difference(want).area<2e-4,deck+' exact exterior footprint');check(duplicate<1e-7,deck+' no original compiler/native slab duplication');check(abs(compiled.intersection(want.boundary).length-6.1)<1e-7,deck+' connected6.1m original fore-route seam');check(abs(t[:,:,1].min()-(y-.24))<2e-5,deck+' retained0.24m floor depth')
+ for z in [-127.8,-126,-124.2]:
+  b=bounds(allnew[deck+'_ForeRoute_ReceivingLap_'+str(z)]);check(b[0,0]<-4.29 and b[1,0]>-3.71 and b[0,1]>y-.24 and b[1,1]<y-.02,deck+' positive below-floor seam lap '+str(z))
+ coverage.append({'deck':deck,'y':y,'new_asset_owned_floor_m2':floor.area,'duplicate_original_floor_m2':duplicate,'original_fore_route_join_length_m':6.1})
+# Exact door leaf sweep plus the contracted0.18m reserve; no new above-floor geometry enters it.
+base_sweep=np.array(C['supported_D11_main_receiving']['actual_moving_swept_bounds']);reserve=.18
+for deck,y in [('D12',78),('D13',84)]:
+ sweep=base_sweep+np.array([0,y-69.5,0]);sweep[0]-=reserve;sweep[1]+=reserve
+ for n,t in allnew.items():
+  if not n.startswith(deck+'__'):continue
+  check(overlap(bounds(t),sweep)<1e-7,n+' complete reserved original leaf sweep')
+structural_names=[n for n in allnew if n.startswith('D11_to_D12') or n.startswith('D12_to_D13')]
+guard_overlap=[]
+for n in structural_names:
+ b=bounds(allnew[n]);check(b[1,2]<-128.84 or b[0,2]>-123.16,n+' outside original5.2m corridor and guard skin')
+ for oldname,t in old.items():
+  if 'GUARD' in oldname or 'HAND' in oldname or 'COFF' in oldname:
+   value=overlap(b,bounds(t))
+   if value>1e-7:guard_overlap.append({'new':n,'retained':oldname,'aabb_overlap_m3':value})
+check(not guard_overlap,'new lower receivers avoid original D11 guards/coffers')
+for path,pin in C['source_pins'].items():
+ if path!='Game/scripts/ship.gd':check(hashlib.sha256((R/path).read_bytes()).hexdigest()==pin['sha256'],path+' immutable theater dependency')
+result={'status':'PASS' if not errors else 'HOLD','checks':checks,'errors':errors,'exports':exportstats,'original_rigid_clones':166,'new_selected_meshes':len(allnew),'new_asset_owned_floor_m2':sum(x['new_asset_owned_floor_m2'] for x in coverage),'coverage':coverage,'new_side_receiver_parts':len(structural_names),'possible_original_guard_coffer_intersections':guard_overlap,'complete_leaf_sweep_reserve_m':reserve,'original_capacity':C['capacity'],'capacity_change':0,'D11_original_floor_beams_upper_eight_source_surfaces_doors_unchanged':True,'new_beam_load_approval':False,'engineering_species_actual_player_and_cart_tests_separate':True}
+(W/'GEOMETRY_AUDIT.json').write_text(json.dumps(result,indent=2)+'\n');print('THEATER_UPPER_GEOMETRY_AUDIT',result['status'],checks,'checks',errors,guard_overlap);assert not errors

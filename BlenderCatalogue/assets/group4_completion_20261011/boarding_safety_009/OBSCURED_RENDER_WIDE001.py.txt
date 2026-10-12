@@ -1,0 +1,58 @@
+"""Unsaved real-source contextual views, matching the tested gate poses."""
+from pathlib import Path
+import bpy,json,hashlib,math,numpy as np
+from mathutils import Vector
+W=Path(__file__).resolve().parent;R=W.parents[3]
+P=json.loads((W/'SAFETY_PLAN.json').read_text());TP=json.loads((W/'TERMINAL_PLAN.json').read_text())
+F=R/'Game/source_derivatives/group4_completion_20261011';B=lambda p:(p[0],-p[2],p[1])
+files=[W/P['vehicle_successor'],W/P['station_receiver_asset'],W/P['restraint_asset'],W/TP['asset']]
+pins={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
+def init():
+ bpy.ops.wm.read_factory_settings(use_empty=True);s=bpy.context.scene;s.render.engine='BLENDER_WORKBENCH'
+ s.display.shading.light='STUDIO';s.display.shading.color_type='MATERIAL';s.display.shading.show_shadows=True;s.display.shading.show_cavity=True;s.display.shading.cavity_type='BOTH';s.display.shading.background_type='WORLD'
+ s.world=bpy.data.worlds.new('Neutral source studio');s.world.color=(.35,.35,.35);s.view_settings.view_transform='Standard'
+ s.render.resolution_x=1920;s.render.resolution_y=1080;s.render.resolution_percentage=100;s.render.image_settings.file_format='PNG';return s
+def imp(p,at=(0,0,0),yaw=0,scale=(1,1,1),opened=False):
+ old=set(bpy.data.objects);bpy.ops.import_scene.gltf(filepath=str(p));obs=set(bpy.data.objects)-old;wrap=bpy.data.objects.new('REVIEW_'+p.stem,None);bpy.context.scene.collection.objects.link(wrap)
+ for o in obs:
+  if o.parent not in obs:m=o.matrix_world.copy();o.parent=wrap;o.matrix_world=m
+ if opened:
+  for o in obs:
+   n=o.name.split('.')[0]
+   if n.startswith('LEAF_'):o.location.x+=(-1 if '_LEFT_' in n else 1)*(1.21 if n.endswith('_INNER') else .61)
+ wrap.location=B(at);wrap.rotation_euler.z=yaw;wrap.scale=(scale[0],scale[2],scale[1]);return obs
+def floor_context(bounds):
+ verts=[];faces=[]
+ for n in ['structural_meshes.json','received_structural_meshes.json']:
+  for r in json.loads((R/'Game/data/generated'/n).read_text())['regions']:
+   if r['floor_y']!=52.5:continue
+   for t in r['triangles']:
+    if max(p[0] for p in t)<bounds[0] or min(p[0] for p in t)>bounds[2] or max(p[1] for p in t)<bounds[1] or min(p[1] for p in t)>bounds[3]:continue
+    i=len(verts);verts.extend(B((x,52.5,z)) for x,z in t);faces.append((i,i+1,i+2))
+ m=bpy.data.materials.new('Actual compiled floor neutral');m.diffuse_color=(.47,.42,.34,1)
+ me=bpy.data.meshes.new('Actual retained floor context');me.from_pydata(verts,[],faces);me.materials.append(m);ob=bpy.data.objects.new(me.name,me);bpy.context.scene.collection.objects.link(ob)
+def capture(name,eye,target,lens=32):
+ s=bpy.context.scene
+ for m in bpy.data.materials:
+  if not m.use_nodes:continue
+  bs=next((n for n in m.node_tree.nodes if n.type=='BSDF_PRINCIPLED'),None)
+  if bs:m.diffuse_color=bs.inputs['Base Color'].default_value
+  tex=next((n.image for n in m.node_tree.nodes if n.type=='TEX_IMAGE' and n.image and n.image.size[0]),None)
+  if tex:
+   pix=np.empty(len(tex.pixels),dtype=np.float32);tex.pixels.foreach_get(pix);m.diffuse_color=(*pix.reshape(-1,4)[:,:3].mean(axis=0),1)
+ bpy.ops.object.camera_add();cam=bpy.context.object;cam.location=B(eye);cam.rotation_euler=(Vector(B(target))-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.lens=lens;cam.data.clip_end=2000;s.camera=cam;s.render.filepath=str(W/name);bpy.ops.render.render(write_still=True)
+init()
+imp(F/'AST-TRM-G4-013_forward_source.glb');imp(F/'AST-TRM-G4-016_continuous_guideway.glb');imp(F/'AST-TRM-G4-017_receiving_module.glb');imp(F/'AST-TRM-G4-023_station_receiving_r002.glb')
+imp(W/P['station_receiver_asset']);imp(W/P['vehicle_successor'],(-5.6,56.1,-432));imp(W/P['restraint_asset'],(-5.6,56.1,-432))
+imp(R/'Game/assets/models/AST-CIR-005_forward_breakroom_d03.glb',(0,0,-432))
+imp(R/'Game/assets/models/AST-DOR-003.glb',(-3.08,56.1,-432),-math.pi/2,P['station_mounts'][0]['gate_scale'],True)
+for g in P['vehicle_gate_placements']:imp(R/'Game/assets/models/AST-DOR-003.glb',(-5.6+g['origin'][0],56.1,-432),g['yaw'],g['scale'],True)
+imp(F/'AST-TRM-G4-019_boarding_bridge.glb',(-3.4,56.1,-432),math.pi)
+# One unchanged cart mesh is an unsaved source-fit reference, never a Game cart/stock instance.
+imp(R/'Game/assets/models/AST-HSK-005.glb',(-5.6,56.108,-431.85))
+floor_context([-20,-470,16,-411]);capture('SOURCE_G4_BOARDING_AND_RESTRAINT_CONTEXT001.png',(-2,58.2,-450),(-3.6,57.2,-431),32)
+init();imp(W/TP['asset']);imp(R/'Game/assets/models/SOL_D09_directory_03_source001.glb',(-8,52.5,-250));imp(F/'AST-TRM-G4-016_continuous_guideway.glb');imp(F/'AST-TRM-G4-017_receiving_module.glb')
+floor_context([-20,-226,10,-205]);capture('SOURCE_G4_PAPERMOON_TERMINAL_CONTEXT001.png',(4,55.10,-205),(-11,54.0,-216),32)
+assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==h for p,h in pins.items())
+images=[{'file':n,'sha256':hashlib.sha256((W/n).read_bytes()).hexdigest(),'pixels':[1920,1080]} for n in ['SOURCE_G4_BOARDING_AND_RESTRAINT_CONTEXT001.png','SOURCE_G4_PAPERMOON_TERMINAL_CONTEXT001.png']]
+(W/'SOURCE_PHOTO_RECEIPT.json').write_text(json.dumps({'real_source':True,'images':images,'native_exports_unchanged':True,'source_fit_cart_mesh_only':True,'world_cutaway_or_geometry_hidden':False,'limits':'Unsaved source assembly, static tested gate-open pose, neutral Workbench material averages. Original cart is a mesh reference only; no game cart actor/stock duplicated. Not ordinary-game/CRT/hardware/engineering/final-art acceptance.'},indent=2)+'\n');print('TWO_REAL_SOURCE_WIDE_VIEWS_COMPLETE')

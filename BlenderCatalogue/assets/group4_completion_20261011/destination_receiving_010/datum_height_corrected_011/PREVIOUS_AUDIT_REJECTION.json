@@ -1,0 +1,18 @@
+{
+  "prior_commit": "99736e00b24803fed0b61dca997866fe6fc9ab18",
+  "prior_audit_sha256": "f6b35638a4decad0af9f7d5c4671c6877e1c87ed531d1cb8668e84f91cf11a03",
+  "prior_status": "HOLD_REJECTED_HEIGHT_PROJECTION",
+  "prior_files_preserved_exact": true,
+  "failure": "Nine compiled floors had a different elevation from their labelled deck, but v1 projected all owners into one deck component. Floor-only connectivity could therefore infer support at the wrong elevation.",
+  "corrective_action": "V2 components are keyed by deck and actual floor_y, and queries use each actual portal Y. Nine non-datum regions cannot join canonical416-owner floor components.",
+  "corrected_counts": {
+    "programme_keys_preserved": 161,
+    "all_input_floor_owners_retained": 425,
+    "canonical_floor_owners": 416,
+    "non_datum_owners_retained_separately": 9,
+    "same_height_same_inset_floor_component": 58,
+    "no_exact_portal_in_audited_received_set": 103
+  },
+  "floor_wall_or_travel_accepted": false,
+  "physical_construction_from_v1": false
+}

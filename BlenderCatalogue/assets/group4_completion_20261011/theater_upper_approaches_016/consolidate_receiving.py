@@ -1,0 +1,11 @@
+from pathlib import Path
+import json,hashlib,shutil
+W=Path(__file__).resolve().parent
+a=json.loads((W/'FAILED_RECEIVING001.json').read_text());b=json.loads((W/'ACTUAL_PLAYER_RECEIVING.json').read_text())
+assert a['status']=='HOLD' and a['errors']==['D12 source/cart corridor 0','D13 source/cart corridor 0']
+assert len(a['actual_original_player_walks'])==32 and all(x['reached'] and x['floor_contact'] and x['existing_player_controller'] for x in a['actual_original_player_walks'])
+assert b['status']=='PASS' and not b['errors'] and b['focused_cart_query_only'] and b['cart_queries_exclude_only_original_player_rid'] and b['opaque_original_or_new_source_contact_exclusions']==0
+assert b['cart_contact_query_sweeps']==68 and b['original_cart_receiving_turn_queries']==18 and b['original_wheel_supported_samples']==32
+shutil.copy2(W/'ACTUAL_PLAYER_RECEIVING.json',W/'CART_CONTACT_RECEIVING002.json')
+d={'status':'PASS_SCOPED_THEATER_RECEIVING_EVIDENCE','actual_original_player_walks':32,'per_deck_original_W_walks':{deck:sum(x['deck']==deck for x in a['actual_original_player_walks']) for deck in ['D11','D12','D13']},'retained_original_D11_entry_and_return_traversed':True,'new_D12_D13_exterior_approach_and_return_traversed':True,'D12_D13_original_doors_remain_closed':True,'cart_contact_query_sweeps':68,'original_cart_receiving_turn_queries':18,'original_wheel_supported_samples':32,'cart_queries_exclude_only_original_player_rid':True,'opaque_source_contact_exclusions':0,'retained_run001_remains_HOLD':True,'focused_run002_status':'PASS','focused_engine_checks':b['checks'],'independent_supported_initial_deck_placements_for_W_circuits':3,'within_route_relocations':0,'production_active':False,'new_beam_load_approval':False,'loaded_cart_physical_carry_or_upper_venue_admission_tested':False,'species_save_optical_CRT_hardware_final_art_or_whole_group_accepted':False,'pinned_evidence':{name:{'sha256':hashlib.sha256((W/name).read_bytes()).hexdigest(),'bytes':(W/name).stat().st_size} for name in ['FAILED_RECEIVING001.json','CART_CONTACT_RECEIVING002.json']}}
+(W/'RECEIVING_EVIDENCE.json').write_text(json.dumps(d,indent=2)+'\n');print('THEATER_RECEIVING_EVIDENCE',d['status'],'32 original W walks;68 cart queries,18 turns,32 wheel samples')

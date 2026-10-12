@@ -1,0 +1,48 @@
+"""Native/source exporter consumes actual-profile recipes from the provisioned planner."""
+from pathlib import Path
+import bpy,bmesh,json,hashlib
+import numpy as np
+W=Path(__file__).resolve().parent;R=W.parents[3]
+P=json.loads((W/'SAFETY_PLAN.json').read_text());pro=json.loads((W/'PRIOR_CHECKPOINT_PROVENANCE.json').read_text())
+assert all(hashlib.sha256((R/n).read_bytes()).hexdigest()==h for n,h in pro['source_pins'].items())
+native=R/'BlenderCatalogue/assets/group4_tram_connections_20261009/port_successor_002/Group4_Port_Successor_002.blend'
+recipe=json.loads((W/'VEHICLE_CHANNEL_RECIPES.json').read_text())
+assert recipe['source_native_sha256']==hashlib.sha256(native.read_bytes()).hexdigest()
+bpy.context.preferences.filepaths.save_version=0;bpy.ops.wm.open_mainfile(filepath=str(native))
+keep=list(bpy.data.collections['TRAM_EDITABLE_COMPONENT'].objects)
+for ob in list(bpy.data.objects):
+ if ob not in keep:bpy.data.objects.remove(ob,do_unlink=True)
+for c in list(bpy.data.collections):
+ if c.name!='TRAM_EDITABLE_COMPONENT':bpy.data.collections.remove(c)
+audit=[]
+for q in recipe['members']:
+ ob=bpy.data.objects[q['mesh']];old=ob.data
+ me=bpy.data.meshes.new(ob.name+' actual-profile twin-slot successor');me.from_pydata(q['vertices_blender'],[],q['faces']);me.materials.append(old.materials[0]);me.update()
+ bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+ assert all(e.is_manifold for e in bm.edges),ob.name+' successor must be closed manifold'
+ actual_volume=abs(bm.calc_volume());assert abs(actual_volume-q['remaining_volume_m3'])<1e-6,(ob.name,actual_volume,q['remaining_volume_m3'])
+ bm.to_mesh(me);bm.free();uv=me.uv_layers.new(name=q['uv_name']);exterior_area=0.;max_error=0.;proof=[]
+ for f in me.polygons:
+  pp=np.array([me.vertices[i].co[:] for i in f.vertices]);normal=np.array(f.normal)
+  plane=next((p for p in q['original_planes'] if abs(abs(normal@np.array(p['normal']))-1)<1e-5 and np.max(abs(pp@np.array(p['normal'])-p['distance']))<1e-6),None)
+  axes=[d for d in range(3) if d!=int(np.argmax(abs(normal)))]
+  if plane:exterior_area+=f.area
+  for li in f.loop_indices:
+   bp=me.vertices[me.loops[li].vertex_index].co
+   val=np.array([bp[d] for d in axes])*.7 if plane is None else np.array([bp[plane['axes'][0]],bp[plane['axes'][1]],1.])@np.array(plane['coefficients'])
+   uv.data[li].uv=tuple(val)
+   if plane:max_error=max(max_error,float(np.linalg.norm(np.array(uv.data[li].uv[:])-val)))
+  proof.append({'face':f.index,'retained_exterior_plane':plane is not None,'area':f.area})
+ ob.data=me;ob['bounded_channel_successor_of']=q['mesh']
+ ob['channel_boxes_game_xyz']=json.dumps(next(c['slot_boxes_xyz'] for c in P['vehicle_cuts'] if c['mesh']==ob.name))
+ audit.append(dict(mesh=ob.name,original_footprint_xz=q['original_footprint_xz'],original_volume_m3=q['original_volume_m3'],removed_channel_volume_m3=q['removed_channel_volume_m3'],remaining_volume_m3=q['remaining_volume_m3'],actual_native_volume_m3=actual_volume,exterior_surface_area_m2=exterior_area,maximum_exterior_uv_error=max_error,vertices=len(me.vertices),faces=len(me.polygons),face_proof=proof))
+assert len(audit)==8 and all(q['maximum_exterior_uv_error']<1e-5 for q in audit)
+for im in bpy.data.images:
+ if im.source=='FILE' and im.size[0]>0 and not im.packed_file:im.pack()
+bpy.ops.object.select_all(action='DESELECT')
+for o in keep:o.select_set(True)
+bpy.context.view_layer.objects.active=next(o for o in keep if o.type=='MESH')
+asset=W/P['vehicle_successor'];bpy.ops.export_scene.gltf(filepath=str(asset),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False,export_animations=False,export_materials='EXPORT')
+new_native=W/'Group4_Powered_Portal_Body_r001.blend';bpy.ops.wm.save_as_mainfile(filepath=str(new_native),compress=True)
+(W/'VEHICLE_CHANNEL_BUILD.json').write_text(json.dumps({'status':'SOURCE_BUILT_REQUIRES_AUDIT','changed_members':audit,'unchanged_meshes':31,'original_native_sha256':hashlib.sha256(native.read_bytes()).hexdigest(),'new_native':new_native.name,'new_asset':asset.name,'original_body_unchanged':True},indent=2)+'\n')
+print('VEHICLE_SUCCESSOR_BUILT eight bounded actual-profile channels;31 original meshes retained')
