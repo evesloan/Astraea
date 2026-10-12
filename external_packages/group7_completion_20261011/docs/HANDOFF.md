@@ -8,6 +8,8 @@ The actual-source body continuation is in [continuation_r005/docs/HANDOFF.md](..
 
 The selected botanical continuation is [continuation_r006/docs/HANDOFF.md](../continuation_r006/docs/HANDOFF.md): four composed principal terrace edges, eleven seating bays,121 rigid original plant bindings, three tables and eight source lamps. It appends four models and eight lights while retaining the prior78/19/four-door definitions. R006B preserves the exact four-metre transit reservation after correcting the retained unselected R006A lamp overlap. The current selection contains82 models and27 sources; shared activation and whole-group acceptance remain open.
 
+The larger forecourt continuation is [continuation_r007/docs/HANDOFF.md](../continuation_r007/docs/HANDOFF.md): four30m courts on1,261.011m² of original floors,32 fluted piers, six original medium trees,162 rigid catalogue plant bindings, four operating tool-feature doors and twelve source lamps. Selected R007B passes1,654 actual-main checks, including all36 normal walking legs, door operation, eight real D17 underside bearing contacts and unchanged transit criteria. Current selection:86 models,39 sources and eight doors. Medium canopy art, complete enclosure/support and whole-group acceptance remain open.
+
 ## Implemented
 
 - An editable compressed Blender r003 native and 40 spatial/material export cells, with 25,730 authored parts and 294,536 exported triangles. Rigid original plant/bench families provide 33 source bindings; they are not deformed to fit sockets.

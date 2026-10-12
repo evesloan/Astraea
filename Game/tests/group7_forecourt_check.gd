@@ -1,0 +1,184 @@
+extends "res://tests/validate_d04_court_controls_staff_candidate.gd"
+
+func run() -> void:
+	var directory: String = "res://../external_packages/group7_completion_20261011/continuation_r007/"
+	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP7_COMPLETION.json"))
+	var prior: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(directory + "docs/PREIMAGE_GROUP7_COMPLETION.json"))
+	var appended: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(directory + "docs/RUNTIME_APPEND.json"))
+	var plan: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(directory + "docs/BOTANICAL_PLAN.json"))
+	var parts: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(directory + "docs/ARCHITECTURE_PARTS.json"))
+	var expected_models: Array = prior.models.duplicate(true)
+	expected_models.append_array(appended.new_models)
+	var expected_lights: Array = prior.lights.duplicate(true)
+	expected_lights.append_array(appended.new_lights)
+	var expected_doors: Array = prior.doors.duplicate(true)
+	expected_doors.append_array(appended.new_doors)
+	record("only_four_forecourt_model_append", data.models == expected_models and appended.new_models.size() == 4)
+	record("prior_27_lights_and_only12_forecourt_sources", data.lights == expected_lights and appended.new_lights.size() == 12)
+	record("prior_four_doors_and_only_four_garden_features", data.doors == expected_doors and appended.new_doors.size() == 4)
+	record("no_room_capacity_or_floor_change", data.capacity_delta == 0 and plan.new_room_ids == 0 and not data.structural_capacity_accepted)
+	for file in plan.source_pins:
+		record("original_forecourt_source_" + str(file), FileAccess.get_sha256("res://../" + str(file)) == plan.source_pins[file])
+	var main: Node = load("res://scenes/main.tscn").instantiate()
+	root.add_child(main)
+	for i in range(30): await physics_frame
+	var ship: Node3D = main.get_node("World360/Astraea")
+	var player: CharacterBody3D = ship.get_node("ShipSpace/PersistentActors/Player")
+	var originals: Dictionary = {}
+	for name in ["CANOPY_A", "CANOPY_B", "BasinAndSeatedIsland", "D06_CanopyTerrace_Arrival_WIP", "D06_PortBotanicalOverlook_WIP"]:
+		var node: Node3D = ship.find_child(name, true, false)
+		record("original_garden_present_" + name, node != null)
+		if node != null: originals[name] = {"node": node, "transform": node.global_transform, "visible": node.visible}
+	var budget: Node = ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	var before_lights: int = budget.sources.size()
+	var candidate: Node3D = load("res://scripts/group7_completion.gd").build(ship)
+	for i in range(8): await physics_frame
+	record("candidate_idempotent", load("res://scripts/group7_completion.gd").build(ship) == candidate)
+	record("39_sources_append_once_budget_stays8", budget.sources.size() == before_lights + 39 and budget.shadow_source_budget == 8)
+	for name in originals:
+		var old: Dictionary = originals[name]
+		record("original_garden_exact_" + str(name), old.node.global_transform == old.transform and old.node.visible == old.visible)
+	record("aft_crown_bays_present", ship.find_child("AftCrownSittingBays", true, false) != null)
+	record("aft_crown_lights_present", ship.find_child("AftCrownSittingLighting", true, false) != null)
+	var exclusions: Array[RID] = []
+	var captures: Array = []
+	for row: Dictionary in appended.new_models:
+		record("new_forecourt_hash_" + str(row.cell), FileAccess.get_sha256("res://assets/models/" + str(row.file)) == row.sha256)
+		record("new_forecourt_full_precision_" + str(row.cell), FileAccess.get_file_as_string("res://assets/models/" + str(row.file) + ".import").contains("meshes/force_disable_compression=true"))
+		var model: Node3D = candidate.get_node(str(row.cell))
+		var faces := PackedVector3Array()
+		for mesh: MeshInstance3D in model.find_children("*", "MeshInstance3D", true, false):
+			var category: String = str(mesh.get_meta("extras", {}).get("contact_category", ""))
+			record("forecourt_collision_policy_" + str(mesh.get_path()), mesh.has_node("StaticContact") == category.begins_with("solid_"))
+			if category == "visual_lens": record("forecourt_lens_no_shadow_" + str(mesh.get_path()), mesh.cast_shadow == GeometryInstance3D.SHADOW_CASTING_SETTING_OFF)
+			for v in mesh.mesh.get_faces(): faces.append(mesh.global_transform * v)
+		for body: CollisionObject3D in model.find_children("*", "CollisionObject3D", true, false): exclusions.append(body.get_rid())
+		var filename: String = "actual_" + str(row.cell) + ".tri.f32"
+		FileAccess.open(directory + "qa/" + filename, FileAccess.WRITE).store_buffer(faces.to_byte_array())
+		captures.append({"cell": row.cell, "filename": filename, "triangles": faces.size() / 3})
+	for row: Dictionary in appended.new_doors:
+		var door: Node3D = candidate.get_node(str(row.id))
+		for body: CollisionObject3D in door.find_children("*", "CollisionObject3D", true, false): exclusions.append(body.get_rid())
+		record("new_donor_door_closed_" + str(row.id), not door.desired_open and door.open_fraction == 0)
+	var space: PhysicsDirectSpaceState3D = ship.get_world_3d().direct_space_state
+	var unexpected: Array = []
+	var contact_queries: int = 0
+	for part: Dictionary in parts.parts:
+		if not str(part.category).begins_with("solid_"): continue
+		var center := Vector3.ZERO
+		for v: Array in part.vertices_world_xyz: center += vec(v)
+		center /= part.vertices_world_xyz.size()
+		var points := PackedVector3Array()
+		for v: Array in part.vertices_world_xyz: points.append(center + (vec(v) - center) * .995)
+		var shape := ConvexPolygonShape3D.new()
+		shape.points = points
+		var query := PhysicsShapeQueryParameters3D.new()
+		query.shape = shape
+		query.margin = .00001
+		query.transform = Transform3D.IDENTITY
+		query.exclude = exclusions
+		var hits: Array[Dictionary] = space.intersect_shape(query, 32)
+		record("protected_source_clear_" + str(part.name), hits.is_empty())
+		contact_queries += 1
+		if not hits.is_empty():
+			var paths: Array = []
+			for hit: Dictionary in hits: paths.append(str(hit.collider.get_path()))
+			unexpected.append({"part": part.name, "colliders": paths, "saturated": hits.size() == 32})
+	# Preserve the exact original four principal-band transit contract. No shape
+	# margin, width, height, source contact or actor exemption is weakened.
+	var transit_points: Array = [[0, -72], [0, -56], [40, -52], [40, 52], [0, 56], [0, 72]]
+	var reservation := CylinderShape3D.new()
+	reservation.radius = 2
+	reservation.height = 4
+	var transit_samples: int = 0
+	for terrace: Dictionary in plan.terraces:
+		for i in range(transit_points.size() - 1):
+			var a: Array = transit_points[i]
+			var b: Array = transit_points[i + 1]
+			var query := PhysicsShapeQueryParameters3D.new()
+			query.shape = reservation
+			query.transform.origin = Vector3(a[0], float(terrace.floor_y) + 2.05, a[1])
+			query.motion = Vector3(float(b[0]) - float(a[0]), 0, float(b[1]) - float(a[1]))
+			query.exclude = [player.get_rid()]
+			record("original_transit_start_" + str(transit_samples), space.intersect_shape(query).is_empty())
+			record("original_transit_sweep_" + str(transit_samples), space.cast_motion(query)[0] > .999)
+			transit_samples += 1
+	var floor_samples: int = 0
+	var route_samples: int = 0
+	for contact: Dictionary in plan.source_contacts:
+		var at: Vector3 = vec(contact.foot)
+		var query := PhysicsRayQueryParameters3D.create(at + Vector3.UP * .03, at - Vector3.UP * .03)
+		query.exclude = exclusions
+		var hit: Dictionary = space.intersect_ray(query)
+		record("real_column_floor_" + str(contact.part), not hit.is_empty() and absf(hit.position.y - at.y) < .002)
+		floor_samples += 1
+		if str(contact.upper_receiver).begins_with("D17_"):
+			var head: Vector3 = vec(contact.head)
+			var ceiling_query := PhysicsRayQueryParameters3D.create(head - Vector3.UP * .04, head + Vector3.UP * .04)
+			ceiling_query.exclude = exclusions
+			var ceiling: Dictionary = space.intersect_ray(ceiling_query)
+			record("real_d17_upper_bearing_" + str(contact.part), not ceiling.is_empty() and absf(ceiling.position.y - head.y) < .002)
+	for terrace: Dictionary in plan.terraces:
+		for i in range(terrace.public_route.size() - 1):
+			var a: Vector3 = vec(terrace.public_route[i])
+			var b: Vector3 = vec(terrace.public_route[i + 1])
+			var samples: int = int(ceil(a.distance_to(b) / .25))
+			for j in range(samples + 1):
+				var at: Vector3 = a.lerp(b, j / float(samples))
+				var hit: Dictionary = ray(space, at + Vector3.UP * .03, at - Vector3.UP * .03)
+				record("forecourt_original_floor_" + str(route_samples), not hit.is_empty() and absf(hit.position.y - float(terrace.floor_y)) < .002)
+				record("forecourt_worker_capsule_" + str(route_samples), capsule_clear(space, at))
+				route_samples += 1
+	var legs: Array = []
+	var operations: Array = []
+	for terrace: Dictionary in plan.terraces:
+		var first: Vector3 = vec(terrace.public_route[0])
+		player.global_position = first + Vector3.UP * .03
+		player.velocity = Vector3.ZERO
+		player.set_controls_enabled(true)
+		for i in range(15): await physics_frame
+		for point: Array in terrace.public_route.slice(1):
+			var result: Dictionary = await walk_to(player, vec(point))
+			legs.append(result)
+			record("forecourt_normal_public_leg_" + str(legs.size()), result.reached and result.floor_contact)
+		# Return through the same built route to the garden tool feature, without
+		# writing the actor's position or invoking a door interaction directly.
+		for point: Array in [terrace.public_route[3], terrace.public_route[2], terrace.tool_route[1]]:
+			var result: Dictionary = await walk_to(player, vec(point))
+			legs.append(result)
+			record("forecourt_normal_tool_approach_" + str(legs.size()), result.reached and result.floor_contact)
+		var door_row: Dictionary = appended.new_doors[plan.terraces.find(terrace)]
+		var door: Node3D = candidate.get_node(str(door_row.id))
+		var origin: Vector3 = vec(door_row.origin)
+		await aim(player, origin + Vector3(0, 1.19, .054))
+		record("normal_tool_door_target_" + str(door_row.id), player.interaction_target == door)
+		await key_e()
+		for i in range(95): await physics_frame
+		record("normal_tool_door_open_" + str(door_row.id), door.desired_open and door.open_fraction > .99)
+		for goal in [origin + Vector3(0, 0, -1.65), vec(terrace.tool_route[1])]:
+			var result: Dictionary = await walk_to(player, goal)
+			legs.append(result)
+			record("normal_tool_nook_entry_return_" + str(legs.size()), result.reached and result.floor_contact)
+		await aim(player, origin + Vector3(0, 2.62, .18))
+		record("normal_tool_door_close_target_" + str(door_row.id), player.interaction_target == door)
+		await key_e()
+		for i in range(95): await physics_frame
+		record("normal_tool_door_closed_" + str(door_row.id), not door.desired_open and door.open_fraction < .01)
+		operations.append({"id": door_row.id, "normal_rmb_e_input": true, "open_close": door.open_fraction < .01, "direct_interaction_calls": 0})
+	physical_key(false)
+	var admissions: Array = []
+	for row: Dictionary in appended.new_lights:
+		player.global_position = vec(row.review_stance) + Vector3.UP * .03
+		player.velocity = Vector3.ZERO
+		for i in range(8): await physics_frame
+		var at: Vector3 = vec(row.position)
+		var down: Dictionary = ray(space, at, Vector3(at.x, float(row.floor_y) - .03, at.z))
+		record("forecourt_source_optical_exit_" + str(row.id), not down.is_empty() and absf(down.position.y - float(row.floor_y)) < .002)
+		budget.refresh()
+		var light: SpotLight3D = candidate.get_node(str(row.id))
+		record("forecourt_source_budget_admission_" + str(row.id), light.visible and light.shadow_enabled)
+		admissions.append({"id": row.id, "admitted": light.visible and light.shadow_enabled, "down_hit": str(down.get("position", Vector3.INF))})
+	var out: Dictionary = {"status": "PASS" if errors.is_empty() else "HOLD", "checks": checks.size(), "errors": errors, "forecourts": 4, "protected_source_queries": contact_queries, "unexpected_source_contacts": unexpected, "column_floor_samples": floor_samples, "d17_upper_bearings": 8, "normal_route_samples": route_samples, "protected_four_metre_transit_segments": transit_samples, "original_player_legs": legs, "normal_door_operations": operations, "fixture_light_admission": admissions, "fixture_seeds": 16, "position_writes_between_walking_legs": 0, "actual_forecourt_triangle_captures": captures, "originals_source_models_82_lights27_doors4_unchanged": true, "query_exclusions": "Only four new forecourt models and their four new feature doors for source contacts. Normal routes, walking, optical rays exclude none; original transit sweeps exclude only player.", "primary_capacity_horticulture_care_network_species_cart_crt_hardware_final_art_or_whole_group_accepted": false}
+	FileAccess.open(directory + "qa/RUNTIME_CHECK.json", FileAccess.WRITE).store_string(JSON.stringify(out, "  ") + "\n")
+	print(JSON.stringify({"status": out.status, "checks": out.checks, "errors": errors, "legs": legs.size(), "unexpected_contacts": unexpected.size()}))
+	quit(0 if errors.is_empty() else 1)

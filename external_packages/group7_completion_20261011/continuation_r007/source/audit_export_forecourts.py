@@ -1,0 +1,108 @@
+"""Reload native, verify original rigid bindings, and export four source-owned cells."""
+import bpy, bmesh, json, hashlib
+from pathlib import Path
+import numpy as np
+
+P = Path(__file__).resolve().parents[1]
+C = P.parent
+R = C.parents[1]
+auth = json.loads((P / 'docs/AUTHORED_SOURCE.json').read_text())
+plan = json.loads((P / 'docs/BOTANICAL_PLAN.json').read_text())
+parts = json.loads((P / 'docs/ARCHITECTURE_PARTS.json').read_text())['parts']
+native = P / auth['native'];native_sha = hashlib.sha256(native.read_bytes()).hexdigest()
+assert native_sha == auth['native_sha256']
+for name,want in plan['source_pins'].items():assert hashlib.sha256((R/name).read_bytes()).hexdigest()==want,name
+bpy.ops.wm.open_mainfile(filepath=str(native));scene=bpy.context.scene
+checks=0;error=0;bindings=0
+def signature(ob):
+    h=hashlib.sha256();h.update(np.array([v.co[:] for v in ob.data.vertices],dtype='<f4').tobytes())
+    h.update(json.dumps([list(f.vertices) for f in ob.data.polygons]).encode())
+    for uv in ob.data.uv_layers:h.update(np.array([q.uv[:] for q in uv.data],dtype='<f4').tobytes())
+    return h.hexdigest()
+for file,rows in auth['template_mesh_signatures'].items():
+    for name,want in rows.items():assert signature(bpy.data.objects[name])==want;checks+=1
+for row in auth['original_family_bindings']:
+    root=bpy.data.objects[row['id']];at=root.matrix_world.translation
+    assert np.max(np.abs(np.array([at.x,at.z,-at.y])-row['position']))<.0001
+    assert abs(root.rotation_euler.z-row['yaw'])<.000001
+    assert all(abs(q-1)<.000001 for q in root.scale)
+    for name in row['mesh_nodes']:
+        ob=bpy.data.objects[name];assert signature(ob)==ob['rigid_original_mesh_signature'];assert ob.parent==root;checks+=2
+    checks+=3;bindings+=1
+for part in parts:
+    ob=bpy.data.objects[part['name']];a=np.array([(v.co.x,v.co.z,-v.co.y) for v in ob.data.vertices]);delta=float(np.max(np.abs(a-np.array(part['vertices_world_xyz']))));assert delta<.0001;error=max(error,delta)
+    bm=bmesh.new();bm.from_mesh(ob.data)
+    if not part.get('open_foliage',False): assert all(e.is_manifold for e in bm.edges),part['name']
+    else: assert part['category']=='visual_foliage' and part['role'] in ['jade','sage','olive']
+    checks+=len(bm.edges)+1;bm.free()
+    assert ob['contact_category']==part['category'];checks+=1
+
+# Independent actual-native point-in-triangle/solid containment for every
+# declared root/bough/shoot/petiole/blade junction, including thin leaf roots.
+hierarchy=json.loads((P/'docs/ORIGINAL_TREE_HIERARCHY.json').read_text());tri_cache={}
+def actual_triangles(name):
+    if name not in tri_cache:
+        ob=bpy.data.objects[name];ob.data.calc_loop_triangles();vs=np.array([tuple(ob.matrix_world@v.co)for v in ob.data.vertices],dtype=float)
+        tri_cache[name]=vs[np.array([list(t.vertices)for t in ob.data.loop_triangles])]
+    return tri_cache[name]
+def on_or_inside(name,point):
+    tri=actual_triangles(name);p=np.array([point[0],-point[2],point[1]],float)
+    a,b,c=tri[:,0],tri[:,1],tri[:,2];ab=b-a;ac=c-a;n=np.cross(ab,ac);length=np.linalg.norm(n,axis=1);valid=length>1e-12
+    n=n[valid]/length[valid,None];a=a[valid];ab=ab[valid];ac=ac[valid]
+    signed=np.einsum('ij,ij->i',p-a,n);projected=p-signed[:,None]*n;d=projected-a
+    d00=np.einsum('ij,ij->i',ab,ab);d01=np.einsum('ij,ij->i',ab,ac);d11=np.einsum('ij,ij->i',ac,ac);d20=np.einsum('ij,ij->i',d,ab);d21=np.einsum('ij,ij->i',d,ac);den=d00*d11-d01*d01
+    u=(d11*d20-d01*d21)/den;v=(d00*d21-d01*d20)/den
+    if np.any((np.abs(signed)<.0001)&(u>=-.0001)&(v>=-.0001)&(u+v<=1.0001)):return True
+    direction=np.array([.913,.337,.223]);direction/=np.linalg.norm(direction);h=np.cross(np.broadcast_to(direction,ac.shape),ac);det=np.einsum('ij,ij->i',ab,h);valid=np.abs(det)>1e-12
+    ab=ab[valid];ac=ac[valid];h=h[valid];a=a[valid];det=det[valid];f=1/det;s=p-a;u=f*np.einsum('ij,ij->i',s,h);q=np.cross(s,ab);v=f*(q@direction);t=f*np.einsum('ij,ij->i',ac,q)
+    hits=t[(u>=0)&(v>=0)&(u+v<=1)&(t>1e-8)];hits=np.unique(np.round(hits,7));return len(hits)%2==1
+for joint in hierarchy['explicit_parent_joints']:
+    assert on_or_inside(joint['parent'],joint['shared_or_embedded_joint_world_xyz']),('Detached parent',joint)
+    assert on_or_inside(joint['child'],joint['shared_or_embedded_joint_world_xyz']),('Detached child',joint)
+    checks+=2
+(P/'qa/ACTUAL_NATIVE_TREE_JOINTS.json').write_text(json.dumps({'status':'PASS','actual_native_parent_child_joints':len(hierarchy['explicit_parent_joints']),'native_sha256':native_sha,'method':'Actual reloaded mesh triangle surface/solid containment at each explicit joint, 0.1mm surface tolerance; deterministic nonaxial ray parity for embedded points.','biological_growth_wind_or_capacity_accepted':False},indent=2)+'\n')
+objects=[ob for ob in scene.objects if ob.type=='MESH' and ob.get('group7_cell') in auth['terrace_cells']]
+cloud={};triangles={};categories={};packed=[]
+for ob in objects:
+    cell=ob['group7_cell'];pts=[ob.matrix_world@q.co for q in ob.data.vertices]
+    a=np.array([(q.x,q.z,-q.y) for q in pts]);assert np.isfinite(a).all()
+    assert ob.data.uv_layers.active is not None
+    for uv in ob.data.uv_layers.active.data:assert np.isfinite(uv.uv[:]).all();checks+=1
+    ob.data.calc_loop_triangles()
+    for tri in ob.data.loop_triangles:
+        q=a[list(tri.vertices)];assert np.linalg.norm(np.cross(q[1]-q[0],q[2]-q[0]))>1e-9,ob.name;checks+=1
+    cloud.setdefault(cell,[]).extend(a.tolist());triangles[cell]=triangles.get(cell,0)+len(ob.data.loop_triangles)
+    category=ob['contact_category'];categories[category]=categories.get(category,0)+1
+for image in bpy.data.images:
+    if image.name in ['Render Result','Viewer Node']:continue
+    assert image.packed_file,image.name
+    packed.append({'name':image.name,'sha256':hashlib.sha256(bytes(image.packed_file.data)).hexdigest()});checks+=1
+out=P/'exports';out.mkdir(exist_ok=True);rows=[]
+for cell in auth['terrace_cells']:
+    prefix='G7_Completion_R007B_' if native.stem.endswith('r007b') else 'G7_Completion_R007_'
+    output=out/(prefix+cell+'.glb');assert not output.exists()
+    export_scene=bpy.data.scenes.new(cell+'_Export');bpy.context.window.scene=export_scene;groups={}
+    for ob in objects:
+        if ob['group7_cell']!=cell:continue
+        for si,slot in enumerate(ob.material_slots):
+            if slot.material:groups.setdefault((slot.material.name,ob['contact_category']),[]).append((ob,si))
+    for (material,category),members in groups.items():
+        vs=[];fs=[];uvs=[]
+        for source,si in members:
+            offset=len(vs);vs.extend(tuple(source.matrix_world@q.co)for q in source.data.vertices)
+            for face in source.data.polygons:
+                if face.material_index!=si:continue
+                fs.append(tuple(offset+i for i in face.vertices));uvs.append([tuple(source.data.uv_layers.active.data[k].uv)for k in face.loop_indices])
+        mesh=bpy.data.meshes.new(cell+'_'+material+'_'+category);mesh.from_pydata(vs,[],fs);mesh.update();mesh.materials.append(bpy.data.materials[material]);uv=mesh.uv_layers.new(name='RetainedSourceUV')
+        for face,row in zip(mesh.polygons,uvs):
+            for k,u in zip(face.loop_indices,row):uv.data[k].uv=u
+        ob=bpy.data.objects.new(mesh.name,mesh);export_scene.collection.objects.link(ob);ob['group7_cell']=cell;ob['contact_category']=category
+    for ob in export_scene.objects:ob.select_set(True)
+    bpy.ops.export_scene.gltf(filepath=str(output),export_format='GLB',export_yup=True,export_extras=True,use_active_scene=True,use_selection=True,export_lights=False,export_cameras=False)
+    rows.append({'cell':cell,'file':output.name,'path':output.relative_to(P).as_posix(),'sha256':hashlib.sha256(output.read_bytes()).hexdigest(),'bytes':output.stat().st_size,'origin':[0,0,0],'rotation_y':0,'scale':[1,1,1]})
+    bpy.context.window.scene=scene;bpy.data.scenes.remove(export_scene)
+assert hashlib.sha256(native.read_bytes()).hexdigest()==native_sha
+bounds={cell:[np.array(pts).min(axis=0).tolist(),np.array(pts).max(axis=0).tolist()]for cell,pts in cloud.items()}
+audit={'status':'PASS','checks':checks,'native_sha256':native_sha,'rigid_original_family_bindings':bindings,'authored_architecture_parts':auth['architectural_parts'],'total_new_mesh_parts':len(parts),'new_original_tree_mesh_parts':auth['new_original_tree_mesh_parts'],'architecture_vertices_max_error_m':error,'cell_triangles':triangles,'cell_bounds':bounds,'contact_categories':categories,'packed_images':packed,'native_not_resaved':True,'thin_foliage_nonblocking':True,'scope':'Source geometry/UV/transforms, finite architectural solids and original rigid plant bindings. Separate import, floor/route/light contacts, primary capacity and final art acceptance.'}
+(P/'qa/NATIVE_AUDIT.json').write_text(json.dumps(audit,indent=2)+'\n');(P/'qa/NATIVE_POINT_CLOUD.json').write_text(json.dumps(cloud,separators=(',',':'))+'\n');(P/'docs/EXPORTS.json').write_text(json.dumps({'native':auth['native'],'native_sha256':native_sha,'exports':rows},indent=2)+'\n')
+print('G7_R007_NATIVE_AUDIT_EXPORT_PASS',checks,'checks',len(rows),'cells',sum(triangles.values()),'triangles',bindings,'original rigid bindings')
