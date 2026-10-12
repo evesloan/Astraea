@@ -94,6 +94,7 @@ func _ready() -> void:
 	load("res://scripts/orchard_exchange.gd").build($ShipSpace/Districts,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/orchard_exchange.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/orchard_foodhall.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/group8/orchard_service.gd").build(self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/orchard_foodhall.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/primary_atrium_core.gd").build($ShipSpace/Districts,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/primary_atrium_core.gd).build($ShipSpace/Districts,self)")
@@ -120,6 +121,7 @@ func _ready() -> void:
 	load("res://scripts/upper_horizon_enclosure.gd").build($ShipSpace/Districts,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/upper_horizon_enclosure.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/arrivals_fusion.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/group8/arrivals_service.gd").build(self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/arrivals_fusion.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/star_atlas.gd").build($ShipSpace/Districts,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/star_atlas.gd).build($ShipSpace/Districts,self)")
@@ -192,6 +194,7 @@ func _ready() -> void:
 	load("res://scripts/aft_crown_sitting_bays.gd").build(self)
 	load("res://scripts/aft_crown_sitting_lighting.gd").build(self)
 	load("res://scripts/aft_crown_foyer_waiting_edges.gd").build(self)
+	load("res://scripts/group8/crown_interiors.gd").build(self,false)
 	var lighting_budget := Node.new()
 	lighting_budget.name = "LocalShadowSourceBudget"
 	lighting_budget.set_script(load("res://scripts/lighting_budget.gd"))

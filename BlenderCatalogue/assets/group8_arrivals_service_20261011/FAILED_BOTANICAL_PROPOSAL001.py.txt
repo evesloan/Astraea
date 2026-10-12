@@ -1,0 +1,81 @@
+"""Propose authenticated metadata only. Never write shared proof,guard or sources."""
+from pathlib import Path
+import subprocess,json,hashlib,copy,difflib,re
+R=Path(__file__).resolve().parents[3];W=Path(__file__).resolve().parent;main='bc731d6d6d54bb2595331ee2f4368558d4d24fda';base='affc5c807087ff87da29f3642c2d6e418241b896';RR=Path('/workspace/group8-independent-readback-002')
+sha=lambda b:hashlib.sha256(b).hexdigest()
+def git(repo,*args):return subprocess.check_output(['git','-C',str(repo),*args])
+def blob(path,rev=main,repo=R):return git(repo,'show',rev+':'+path)
+proofpath='Game/data/architecture/packages/botanical_pair_runtime/RUNTIME_PROOF.json';guardpath='Game/tests/botanical_pair_successor_guard.gd'
+pb=blob(proofpath);gb=blob(guardpath);proof=json.loads(pb);guard=gb.decode();pin=re.search(r'const PROOF_SHA := "([a-f0-9]{64})"',guard).group(1)
+assert sha(pb)==pin and sha(guard.replace(pin,'<PROOF_SHA>').encode())==proof['normalized_guard_sha256']
+changed=['data/architecture/botanical_pair/runtime_manifest.json','scripts/lighting_budget.gd','scripts/ship.gd','scripts/static_contact_cache.gd','tools/validate.py'];current={};checks={};pred={};oldtext={}
+for rel,h in proof['current_sha256'].items():
+ b=blob('Game/'+rel);current[rel]=b;checks[rel]={'proof_pin':h,'actual_main_sha256':sha(b),'matches':sha(b)==h}
+assert sorted(k for k,v in checks.items()if not v['matches'])==sorted(changed)
+for rel,row in proof['predecessors'].items():
+ b=blob('Game/'+row['retained_path']);assert sha(b)==row['sha256'],rel
+ pred[rel]={'retained_path':row['retained_path'],'sha256':sha(b),'bytes':len(b)}
+ if row['encoding']=='utf8':oldtext[rel]=b.decode()
+# Old sources explicitly survive in commit61d08, in whole-file inverses,or immutable predecessors.
+rows={};independent={}
+for path in [proofpath,guardpath]+['Game/'+r for r in changed]+['Game/'+proof['predecessors'][r]['retained_path']for r in ['scripts/lighting_budget.gd','scripts/static_contact_cache.gd','scripts/ship.gd','tools/validate.py']]:
+ b=blob(path);rb=blob(path,repo=RR);assert b==rb,(path,'independent remote object differs')
+ independent[path]={'sha256':sha(rb),'remote_git_blob_oid':git(RR,'rev-parse',main+':'+path).decode().strip()}
+for rel in changed:
+ if rel=='scripts/static_contact_cache.gd':
+  old=oldtext[rel].encode();oldref='Game/'+proof['predecessors'][rel]['retained_path'];oldcommit=main
+ else:
+  oldcommit='61d08dc0c1f27226df961aa43327a60f81bace77';oldref='Game/'+rel;old=blob(oldref,oldcommit)
+ assert sha(old)==proof['current_sha256'][rel]
+ assert blob(oldref,oldcommit,RR)==old,(rel,'independent old bytes differ')
+ new=current[rel];rows[rel]={'old_proof_pin':sha(old),'old_source_commit':oldcommit,'old_source_path':oldref,'old_git_blob_oid':git(RR,'rev-parse',oldcommit+':'+oldref).decode().strip(),'new_main_pin':sha(new),'new_source_commit':main,'new_git_blob_oid':independent['Game/'+rel]['remote_git_blob_oid'],'baseline_pin':sha(blob('Game/'+rel,base)),'current_main_vs_baseline_identical':new==blob('Game/'+rel,base),'exact_new_main_bytes_independently_remote_checked':True}
+ delta=''.join(difflib.unified_diff(old.decode().splitlines(True),new.decode().splitlines(True),fromfile='authenticated-proof-source/'+rel,tofile=main+'/'+rel,n=3))
+ (W/('BOTANICAL_PIN_DELTA_'+rel.replace('/','_')+'.diff.txt')).write_text(delta)
+# Semantic manifest change is only an authenticated current lighting budget pointer/selection metadata.
+a=json.loads(blob('Game/data/architecture/botanical_pair/runtime_manifest.json','61d08dc0c1f27226df961aa43327a60f81bace77'));b=json.loads(current['data/architecture/botanical_pair/runtime_manifest.json'])
+manifest_changed=[k for k in set(a)|set(b)if a.get(k)!=b.get(k)];assert manifest_changed==['lighting_budget'];assert b['lighting_budget']['sha256']==sha(current['scripts/lighting_budget.gd'])
+# Existing Botanical ship validation/build lines survive. Actual extra main calls/trace/residency are audited in retained source diff.
+oldship=blob('Game/scripts/ship.gd','61d08dc0c1f27226df961aa43327a60f81bace77').decode();newship=current['scripts/ship.gd'].decode()
+protected_lines=[s for s in oldship.splitlines()if 'botanical_pair_receiving.gd' in s or 'structural_floor_builder.gd' in s or 'Botanical receiving successor' in s]
+assert protected_lines and all(newship.count(s)==oldship.count(s)for s in protected_lines)
+# Runner still invokes preflight and every Botanical check unchanged; no guard weakening.
+oldrunner=proof['inverse_edits']['tools/validate.py'][0]['after'];newrunner=current['tools/validate.py'].decode()
+protected_runner_lines=[s for s in oldrunner.splitlines()if 'botanical' in s.lower() or 'enforce_botanical_pair_preflight' in s]
+assert protected_runner_lines and all(newrunner.count(s)==oldrunner.count(s)for s in protected_runner_lines)
+proposal=copy.deepcopy(proof)
+for rel in changed:proposal['current_sha256'][rel]=sha(current[rel])
+inverse_after_updates=[]
+for rel in ['scripts/ship.gd','tools/validate.py']:
+ edits=proposal['inverse_edits'][rel];assert len(edits)==1 and edits[0]['count']==1
+ assert sha(edits[0]['after'].encode())==proof['current_sha256'][rel]and edits[0]['before']==oldtext[rel]
+ inverse_after_updates.append({'path':rel,'old_after_sha256':sha(edits[0]['after'].encode()),'new_after_sha256':sha(current[rel]),'retained_before_sha256':sha(edits[0]['before'].encode()),'count':1})
+ edits[0]['after']=current[rel].decode()
+# Strict whole-file inverses now must reduce actual current text to the identical original27-file predecessor.
+for rel,edits in proposal['inverse_edits'].items():
+ text=current[rel].decode()
+ for e in edits:
+  assert e['after']and text.count(e['after'])==e['count'],(rel,'cardinality')
+  text=text.replace(e['after'],e['before'])
+ assert text==oldtext[rel],(rel,'exact entire predecessor')
+# Nothing else in proof changes, including all acceptance flags,predecessors,criteria/compiler pins and counts.
+rest=copy.deepcopy(proposal)
+rest['current_sha256']=proof['current_sha256'];rest['inverse_edits']=proof['inverse_edits'];assert rest==proof
+# Mirror exact static303->300 predicates; no engine/full-suite pass is implied.
+compiler=json.loads(blob('Game/data/architecture/packages/botanical_pair_candidate/BOTANICAL_PAIR_COMPILER_PROOF.json'));assert sha(blob('Game/data/architecture/packages/botanical_pair_candidate/BOTANICAL_PAIR_COMPILER_PROOF.json'))==proof['compiler_proof_sha256']
+layout=json.loads(current['data/spatial_layout.json']);priorlayout=json.loads(oldtext['data/spatial_layout.json']);compiled=json.loads(current['data/generated/structural_meshes.json']);priorcompiled=json.loads(oldtext['data/generated/structural_meshes.json'])
+for cur,prior,add in [(layout,priorlayout,compiler['new_layout_records']),(compiled,priorcompiled,compiler['new_expected_compiled_records'])]:
+ assert len(add)==3 and cur['regions']==prior['regions']+add and len({r['id']for r in cur['regions']})==len(cur['regions'])
+assert {k:v for k,v in layout.items()if k!='regions'}=={k:v for k,v in priorlayout.items()if k!='regions'}
+assert {k:v for k,v in compiled.items()if k not in ['regions','source_checks']}=={k:v for k,v in priorcompiled.items()if k not in ['regions','source_checks']}
+assert len(compiled['regions'])==303 and len(priorcompiled['regions'])==300
+assert compiled['source_checks']==json.loads(current['docs/LAYOUT_COMPILE_CHECKS.json'])
+c=copy.deepcopy(compiled['source_checks']);o=copy.deepcopy(priorcompiled['source_checks']);receipt=c.pop('botanical_pair_additive_preservation')
+assert receipt['retained_compiled_records']==300 and receipt['all_prior_records_exact']and receipt['new_area_m2']==6274.4 and receipt['new_owners']==[r['id']for r in compiler['new_expected_compiled_records']]
+for k in ['source_sha256','regions','triangles']:c.pop(k);o.pop(k)
+assert c==o and compiled['source_checks']['source_sha256']==sha(current['data/spatial_layout.json'])and compiled['source_checks']['triangles']==priorcompiled['source_checks']['triangles']+6
+nb=(json.dumps(proposal,indent=2)+'\n').encode();newpin=sha(nb);newguard=guard.replace(pin,newpin);assert sha(newguard.replace(newpin,'<PROOF_SHA>').encode())==proof['normalized_guard_sha256']
+(W/'BOTANICAL_RUNTIME_PROOF_PROPOSED.json').write_bytes(nb);(W/'PROPOSED_botanical_pair_successor_guard.gd.txt').write_text(newguard)
+(W/'BOTANICAL_GUARD_PIN_PROPOSAL.patch').write_text(''.join(difflib.unified_diff(guard.splitlines(True),newguard.splitlines(True),fromfile='a/'+guardpath,tofile='b/'+guardpath)))
+report={'status':'PROPOSED_ONLY_STRICT_STATIC_METADATA_AUTHENTICATION_PASS; shared gate remains failing until owner adoption and runtime checks','current_main':main,'baseline':base,'original_proof_sha256':sha(pb),'proposed_proof_sha256':newpin,'normalized_guard_code_sha256_unchanged':proof['normalized_guard_sha256'],'old_new_pins':rows,'old_pins_exact_at_consolidation_except_cache':True,'cache_old_pin_provenance':'Exact immutable predecessor300 source survives; consolidation already had a different authenticated cache successor. See retained old/new full source diff.','independent_remote_objects':independent,'current_proof_pins':{'total':len(checks),'unchanged_matching':len(checks)-len(changed),'stale_exactly':changed,'checks':checks},'predecessors_all_original_hashes_verified':pred,'whole_file_inverse_after_updates_only':inverse_after_updates,'all_six_inverse_cardinalities_and_entire_predecessor_equality':True,'compiled303_to300_exact_static_predicates':True,'manifest_top_level_changed_keys_only':manifest_changed,'unchanged_botanical_ship_lines':protected_lines,'unchanged_botanical_runner_lines':protected_runner_lines,'original_gate_now':'Exactly five current-pin mismatches; actual wrapper and guards untouched','proposed_correction':{'owner_files':[proofpath,guardpath],'operations':['Replace exactly five current_sha256 pins with independently GitHub-object-verified actual-main hashes','Replace only ship.gd and tools/validate.py inverse_edits[0].after with independently verified exact entire current-main text; preserve original before/count','Copy exact proposed proof bytes and replace exactly one literal PROOF_SHA in unchanged guard; normalized guard remains byte-identical'],'precondition':'Owner must reconcile against its exact current HEAD. Any later shared root/runner/light/cache/manifest change requires fresh authenticated pins and inverse after text. This proposal targets bc731 only.','scope':'Source/proof metadata, not a substitute for actual Botanical runtime regression or shared acceptance'},'no_shared_file_edits':True,'limits':['No Godot or full-suite execution is claimed by this static mirror','Current lighting selector and room contact-cache behavior are actual successor changes,not unchanged old behavior; shared runtime review remains required','All six prerequisites,required-file set,compiler proof,303/300 owner counts,27original predecessors,guard assertions and operational/visual holds remain intact','Do not update other native/import/contact evidence or promote acceptance flags']}
+(W/'BOTANICAL_PROOF_METADATA_PROPOSAL.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps({'status':'PROPOSED_METADATA_STATIC_AUTHENTICATION_PASS','current_pins':len(checks),'unchanged':len(checks)-5,'predecessors':len(pred),'independent_remote_paths':len(independent),'original_proof_sha256':sha(pb),'proposed_proof_sha256':newpin,'shared_files_changed':0}))

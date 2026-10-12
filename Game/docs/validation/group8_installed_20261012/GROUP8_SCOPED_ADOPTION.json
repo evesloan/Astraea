@@ -1,0 +1,41 @@
+{
+  "base": "5f9f145c6d1a1d065fb99c4ab04195185a99325d",
+  "tip_received": "3bb45e93776919e458d5d85903e3a73c242f2178",
+  "immutable_source_payloads": 403,
+  "calls": [
+    [
+      "load(\"res://scripts/aft_crown_foyer_waiting_edges.gd\").build(self)",
+      "load(\"res://scripts/group8/crown_interiors.gd\").build(self,false)"
+    ],
+    [
+      "load(\"res://scripts/orchard_foodhall.gd\").build($ShipSpace/Districts,self)",
+      "load(\"res://scripts/group8/orchard_service.gd\").build(self)"
+    ],
+    [
+      "load(\"res://scripts/arrivals_fusion.gd\").build($ShipSpace/Districts,self)",
+      "load(\"res://scripts/group8/arrivals_service.gd\").build(self)"
+    ]
+  ],
+  "test_adaptations": {
+    "Game/tests/group8/validate_crown_interiors.gd": {
+      "only_change": "candidate append -> installed-node lookup",
+      "original_source_sha256": "197678aec0e0035591041ed27da1760482f3132b6de05b223865f2b54ab9d842",
+      "adapted_sha256": "a18d1592547e3150ed38b516777977dc032bfc4ffc3615bdf56d7a9e46606d64"
+    },
+    "Game/tests/group8/validate_orchard_service.gd": {
+      "only_change": "candidate append -> installed-node lookup",
+      "original_source_sha256": "c70f5bdd781e738150824347e92a202dd6eac224c25f8f1df419bc3b0b9f93e7",
+      "adapted_sha256": "985420504e9ac50c541edfe2e86ed7e4849aaeac9ddd32ff79a2195c07067ca2"
+    },
+    "Game/tests/group8/validate_arrivals_service.gd": {
+      "only_change": "candidate append -> installed-node lookup",
+      "original_source_sha256": "76df474baa694b7e40ca6d14fbe4e26af68d67108bafd0d88ec6ddec7f9cca25",
+      "adapted_sha256": "ad6c05c14a8c825df5b404b13e0a784c824afbe1e4dfcabfa59b49f461a38ff4"
+    }
+  },
+  "upper_horizon_enabled": false,
+  "new_floor_or_capacity": 0,
+  "shared_controller_changes": false,
+  "runtime_source_exports_changed": false,
+  "canonical_main_updated": false
+}

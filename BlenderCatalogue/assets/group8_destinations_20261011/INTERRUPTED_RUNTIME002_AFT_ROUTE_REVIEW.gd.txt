@@ -1,0 +1,119 @@
+extends SceneTree
+var checks:=0
+var walks:=0
+var walk_frames:=0
+var distance:=0.0
+var maximum_step:=0.0
+var ship:Node3D
+var actor:CharacterBody3D
+var additions:Node3D
+var plan:Dictionary
+
+func _initialize()->void:call_deferred("run")
+
+func check(value:bool,message:String)->void:
+	checks+=1
+	assert(value,message)
+
+func walk(target:Vector2)->void:
+	var start:=actor.position
+	var budget:=int(start.distance_to(Vector3(target.x,106.5,target.y))*60/3.1)+180
+	var reached:=false
+	for frame in range(budget):
+		var offset:=Vector3(target.x-actor.position.x,0,target.y-actor.position.z)
+		if offset.length()<.08:reached=true;break
+		var before:=actor.position
+		var v:=offset.normalized()*3.1
+		actor.velocity=Vector3(v.x,-.1 if actor.is_on_floor() else actor.velocity.y-9.8/60,v.z)
+		actor.move_and_slide();await physics_frame
+		var step:=before.distance_to(actor.position);distance+=step;maximum_step=maxf(step,maximum_step);walk_frames+=1
+		check(absf(actor.position.y-106.5)<.13,"Original player lost retained D18 floor")
+		check(step<.08,"Walker moved farther than ordinary fixed60 step")
+		var ray:=PhysicsRayQueryParameters3D.create(actor.position+Vector3.UP*.12,actor.position-Vector3.UP*.25)
+		ray.exclude=[actor.get_rid()]
+		check(not ship.get_world_3d().direct_space_state.intersect_ray(ray).is_empty(),"Missing actual floor beneath step")
+	if not reached:
+		for i in range(actor.get_slide_collision_count()):print("G8 WALK BLOCK ",actor.get_slide_collision(i).get_collider().get_path())
+	check(reached,"Group8 original-player walk stalled: %s toward %s"%[actor.position,target])
+	actor.velocity=Vector3.ZERO;walks+=1
+
+func door(path:String)->Node3D:return ship.get_node("ShipSpace/Districts/"+path)
+func operate(d:Node3D)->void:
+	check(not d.desired_open and d.open_fraction<.001,"Existing door should start closed")
+	d.interact(actor)
+	for frame in range(100):await physics_frame
+	check(d.desired_open and d.open_fraction>.999,"Existing door controller failed to open")
+	# New fittings must stay out of the original real moving-leaf geometry.
+	for leaf in d.leaves:
+		for shape:CollisionShape3D in leaf.find_children("*","CollisionShape3D",true,false):
+			var q:=PhysicsShapeQueryParameters3D.new();q.shape=shape.shape;q.transform=shape.global_transform
+			q.exclude=[actor.get_rid()]
+			for hit in ship.get_world_3d().direct_space_state.intersect_shape(q,64):
+				check(not additions.is_ancestor_of(hit.collider),"New fitting intersects open original door")
+
+func enter(path:String,entry:Vector2,points:Array)->void:
+	await walk(entry)
+	var d:=door(path);await operate(d)
+	for p in points:await walk(Vector2(p[0],p[1]))
+	for i in range(points.size()-2,-1,-1):await walk(Vector2(points[i][0],points[i][1]))
+	await walk(entry)
+	d.interact(actor)
+	for frame in range(100):await physics_frame
+	check(not d.desired_open and d.open_fraction<.001,"Existing door failed to close after return")
+
+func run()->void:
+	var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
+	for frame in range(90):await physics_frame
+	ship=main.get_node("World360/Astraea");actor=ship.get_node("ShipSpace/PersistentActors/Player")
+	actor.set_physics_process(false)
+	plan=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group8/crown_interiors.json"))
+	var original_doors:Dictionary={}
+	for d in ship.find_children("*","Node3D",true,false):
+		if d.get_script()==load("res://scripts/service_door.gd"):original_doors[str(d.get_path())]=str(d.persistent_id)
+	additions=load("res://scripts/group8/crown_interiors.gd").build(ship)
+	for frame in range(10):await physics_frame
+	check(additions.get_meta("new_floor_owners")==0 and additions.get_meta("new_capacity")==0,"No new allocation/capacity")
+	var meshes:=additions.find_children("*","MeshInstance3D",true,false)
+	check(meshes.size()==plan.runtime_batches.size(),"Actual runtime batch count differs")
+	for row in plan.runtime_batches:
+		var mesh:MeshInstance3D=additions.find_child(str(row.name),true,false)
+		check(mesh!=null,"Missing exported fitting batch")
+		var vertices:=mesh.mesh.get_faces();check(vertices.size()==int(row.triangles)*3,"Actual triangles changed")
+		var lo:=Vector3(INF,INF,INF);var hi:=-lo
+		for v in vertices:
+			var q:Vector3=mesh.global_transform*v;lo=lo.min(q);hi=hi.max(q)
+		var a:Array=row.world_aabb
+		check(lo.distance_to(Vector3(a[0],a[2],a[4]))<.0002 and hi.distance_to(Vector3(a[1],a[3],a[5]))<.0002,"Runtime evaluated source coordinates changed")
+		check(mesh.has_node("StaticContact")==bool(row.collide),"Collision differs from scoped source contract")
+	for path in original_doors:check(str(ship.get_node(path).persistent_id)==original_doors[path],"Original door identity changed")
+	check(additions.find_children("*","SpotLight3D",true,false).size()==plan.lights.size(),"Fixture-bound lights missing")
+	for row in plan.lights:
+		var light:SpotLight3D=additions.get_node(str(row.name));check(light.global_position.distance_to(Vector3(row.at[0],row.at[1],row.at[2]))<.0001,"Lamp departed physical lens")
+	# One original-player placement. All subsequent approaches, thresholds and returns walk.
+	actor.position=Vector3(0,106.55,-111);actor.velocity=Vector3.ZERO
+	for frame in range(12):
+		actor.velocity.y=-.1;actor.move_and_slide();await physics_frame
+	await enter("BridgeEnclosure_WIP/BridgeEnclosureDoor_Aft",Vector2(0,-116),[[0,-122],[-5,-122],[-30,-122],[-30,-152],[-5,-152],[0,-152],[0,-165],[0,-122],[5,-122],[30,-122],[30,-152],[5,-152],[0,-152],[0,-122]])
+	await walk(Vector2(5.5,-111));await walk(Vector2(5.5,-77));await walk(Vector2(-7.5,-77))
+	await operate(door("CentralCommandCrown_WIP/CrownDoor_controlled_crossing_01"))
+	await walk(Vector2(-7.5,-52))
+	await enter("CentralCommandCrown_WIP/CrownDoor_D18_directory_03_entry",Vector2(-7.5,-52),[[-13,-52],[-29,-52],[-29,-57],[-23,-57],[-29,-57],[-29,-44],[-23,-44],[-29,-44],[-29,-52],[-13,-52]])
+	await walk(Vector2(-7.5,57))
+	await operate(door("CentralCommandCrown_WIP/CrownDoor_central_aft_exit_port"))
+	await walk(Vector2(-7.5,63.1))
+	await operate(door("AftCommandCrown_WIP/AftCommandDoor_aft_command_port_front"))
+	await walk(Vector2(-7.5,82))
+	await enter("AftCommandCrown_WIP/AftCommandDoor_D18_directory_08_entry",Vector2(-7.5,82),[[-13,82],[-30,82],[-30,87],[-23,87],[-23,82],[-13,82]])
+	await walk(Vector2(-7.5,99))
+	await operate(door("AftCommandCrown_WIP/AftCommandDoor_aft_command_port_exit"))
+	await walk(Vector2(-7.5,109));await walk(Vector2(0,109));await walk(Vector2(7.5,109))
+	await operate(door("AftCommandCrown_WIP/AftCommandDoor_aft_command_starboard_exit"))
+	await walk(Vector2(7.5,82))
+	await enter("AftCommandCrown_WIP/AftCommandDoor_D18_directory_10_entry",Vector2(7.5,82),[[13,82],[30,82],[30,87],[23,87],[23,82],[13,82]])
+	await walk(Vector2(7.5,99));await walk(Vector2(7.5,109));await walk(Vector2(0,109))
+	await walk(Vector2(0,128));await walk(Vector2(-30,128));await walk(Vector2(-16,128));await walk(Vector2(-16,136));await walk(Vector2(-16,128));await walk(Vector2(30,128));await walk(Vector2(16,128));await walk(Vector2(16,136));await walk(Vector2(16,128));await walk(Vector2(0,128));await walk(Vector2(0,139));await walk(Vector2(0,109))
+	var report:={"status":"PASS","checks":checks,"runtime_batches":meshes.size(),"fixture_lights":plan.lights.size(),"original_service_door_identities_preserved":original_doors.size(),"original_player_walking_legs":walks,"ordinary_walk_frames":walk_frames,"distance_m":distance,"maximum_step_m":maximum_step,"setup_placements":1,"subsequent_route_teleports":0,"runtime_sha256":plan.model_sha256,"source_native_sha256":plan.native_sha256,"operational_and_final_acceptance":false}
+	var file:=FileAccess.open("res://data/architecture/group8/RUNTIME_VALIDATION.json",FileAccess.WRITE);file.store_string(JSON.stringify(report,"\t")+"\n");file.close()
+	print("GROUP8 CROWN PASS: ",JSON.stringify(report))
+	main.queue_free();for frame in range(4):await process_frame
+	quit(0)
