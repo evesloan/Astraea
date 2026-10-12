@@ -1,0 +1,48 @@
+extends SceneTree
+const OUT:="res://../BlenderCatalogue/assets/group4_completion_20261011/station_information_019/"
+var checks:=0
+var errors:Array=[]
+var rows:Array=[]
+func _initialize()->void:call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func check(ok:bool,label:String)->void:
+ checks+=1
+ if not ok:errors.append(label)
+func xyz(a:Array)->Vector3:return Vector3(a[0],a[1],a[2])
+func call_face(gate:Node3D,p:Dictionary)->Node3D:
+ var spec:Dictionary=p.exports[1];var file:String=p.model_root+spec.file;assert(FileAccess.get_sha256(file)==spec.sha256);var model:Node3D=(load(file)as PackedScene).instantiate();gate.add_child(model);var members:Array[Node]=[]
+ for mesh:MeshInstance3D in model.find_children("*","MeshInstance3D",true,false):
+  if not "OpalFace" in str(mesh.name):members.append(mesh)
+ load("res://scripts/static_contact_cache.gd").attach_group(model,members)
+ # Retained exact source035 target and original player ray; no controller binding/operation in this construction check.
+ var s:Dictionary=p.station_call_button;var node:Node3D=load("res://scripts/group4_tram_control_button.gd").new();node.position=xyz(s.surface_center_xyz);model.add_child(node);var area:=Area3D.new();area.collision_layer=2;area.collision_mask=0;area.monitoring=false;node.add_child(area);var col:=CollisionShape3D.new();var shape:=ConvexPolygonShape3D.new();var points:=PackedVector3Array()
+ for point in s.target_points_xyz:points.append(xyz(point))
+ shape.points=points;shape.margin=0;col.shape=shape;area.add_child(col);return node
+func run()->void:
+ root.size=Vector2i(1920,1080);var world:=Node3D.new();world.name="Group4FiveStationPurposeSourceReview";root.add_child(world);var env:=WorldEnvironment.new();var setting:=Environment.new();setting.background_mode=Environment.BG_COLOR;setting.background_color=Color(.66,.73,.78);setting.ambient_light_source=Environment.AMBIENT_SOURCE_COLOR;setting.ambient_light_color=Color(.96,.95,.91);setting.ambient_light_energy=.4;env.environment=setting;world.add_child(env);var sun:=DirectionalLight3D.new();sun.rotation_degrees=Vector3(-42,-35,0);sun.light_energy=.6;sun.shadow_enabled=true;world.add_child(sun)
+ var base:Node3D=load("res://scripts/group4_completion.gd").build(world,true,true);load("res://scripts/group4_aftmid_upper_successor.gd").build(base,true);var vehicle:AnimatableBody3D=load("res://scripts/group4_tram_source_actuator.gd").fixture_vehicle(world,Vector3(-5.6,56.1,-462));var safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(world,base,vehicle,true);load("res://scripts/group4_tram_source_actuator.gd").initialize_bridge_physics(safety)
+ var call_plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_OPERATING_CONTROLS_SOURCE_CANDIDATE.json"));var calls:Dictionary={}
+ for station:String in safety.station_gates:calls[station]=call_face(safety.station_gates[station],call_plan)
+ check(load("res://scripts/group4_station_information.gd").build(world,safety)==null,"production default inactive");var info:Node3D=load("res://scripts/group4_station_information.gd").build(world,safety,true);await frames(30);check(info.models.size()==5,"five source cases on five existing original gates");var original_player:CharacterBody3D=load("res://scripts/player.gd").new();world.add_child(original_player);var camera:=Camera3D.new();camera.fov=72;camera.far=1400;world.add_child(camera);camera.current=true
+ for i in range(info.models.size()):
+  var model:Node3D=info.models[i];var gate:Node3D=info.gates[i];var station:String=info.plan.station_order[i];check(model.find_children("*","MeshInstance3D",true,false).size()==18,station+"18 source meshes");check(model.find_children("StationInfoLegend*","Label3D",true,false).size()==8,station+"eight fixed station/map legends");var contacts:Array=[]
+  for f in range(0 if OS.get_environment("ASTRAEA_G4_STATION_INFO_PHOTOS_ONLY")=="1" else 95):
+   gate.cabin_present_and_stopped=true;gate.request_open();await physics_frame
+   for col:CollisionShape3D in gate.find_children("*","CollisionShape3D",true,false):
+    var leaf:=col.get_parent()as AnimatableBody3D
+    if leaf==null or not gate.leaves.has(leaf):continue
+    var q:=PhysicsShapeQueryParameters3D.new();q.shape=col.shape;q.transform=col.global_transform
+    for hit in gate.get_world_3d().direct_space_state.intersect_shape(q,32):
+     if model.is_ancestor_of(hit.collider):contacts.append(str(hit.collider.get_path()))
+   check(contacts.is_empty(),station+" actual original leaf sweep clear frame"+str(f))
+  if OS.get_environment("ASTRAEA_G4_STATION_INFO_PHOTOS_ONLY")!="1":check(gate.open_fraction>.999,station+" original four leaves fully open without information-case contact");gate.request_close();await frames(95)
+  check(gate.is_closed_and_clear(),station+" original leaves close and remain clear")
+  # Five independent supported ray-review fixtures; no movement/boarding/stock claim.
+  original_player.global_position=gate.to_global(Vector3(-1.55,0,-1.1))+Vector3.UP*.03;original_player.velocity=Vector3.ZERO;await frames(15);original_player.camera.look_at(calls[station].global_position,Vector3.UP);var target:Node=original_player.target_from_view();check(target==calls[station],station+" original2.5m ray still reaches exact source035 call face");check(original_player.is_on_floor(),station+" source call stance supported")
+  camera.global_position=gate.to_global(Vector3(-.65,0,-1.75))+Vector3.UP*1.65;camera.look_at(gate.to_global(Vector3(-.7,1.42,-.12)),Vector3.UP);await frames(15);await RenderingServer.frame_post_draw;var png:=root.get_texture().get_image();var suffix:="003" if OS.get_environment("ASTRAEA_G4_STATION_INFO_PHOTOS_ONLY")=="1" else "002";var file:="SOURCE_GAME_G4_"+station+"_INFORMATION_PLAYER_EYE"+suffix+".png";check(png.save_png(OUT+file)==OK,station+" real player-height source screenshot saved");rows.append({"station":station,"file":file,"original_gate_world_pose":str(gate.global_transform),"original_player_ray_target_preserved":target==calls[station],"original_leaf_sweep_contacts":contacts,"source_gate_only_active":false})
+  if OS.get_environment("ASTRAEA_G4_STATION_INFO_PHOTOS_ONLY")=="1":
+   camera.fov=75;camera.global_position=gate.to_global(Vector3(0,0,-4.5))+Vector3.UP*1.65;camera.look_at(gate.to_global(Vector3(0,1.15,0)),Vector3.UP);await frames(15);await RenderingServer.frame_post_draw;png=root.get_texture().get_image();check(png.save_png(OUT+"SOURCE_GAME_G4_"+station+"_INFORMATION_CONTEXT003.png")==OK,station+" wide player-height source context saved");camera.fov=72
+ var model_count:int=info.models.size();info.queue_free();await frames(3)
+ for gate:Node3D in safety.station_gates.values():check(not gate.has_meta("group4_station_information") and gate.find_children("StationInfoLegend*","Label3D",true,false).is_empty(),str(gate.name)+" cleanup preserves gate and removes case/labels")
+ var d:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"source_cases":model_count,"prototype_meshes":18,"source_rows":rows,"actual_original_main_scene":false,"scope":"Five source-only original station gate instances and source036 fixed information cases; original player ray against exact source035 call faces. Independent source review, not operations/boarding/main adoption.","original_leaf_sweeps_rerun":OS.get_environment("ASTRAEA_G4_STATION_INFO_PHOTOS_ONLY")!="1","text_refinement_only_mode":OS.get_environment("ASTRAEA_G4_STATION_INFO_PHOTOS_ONLY")=="1","independent_supported_original_player_ray_fixtures":5,"within_route_actor_teleport_or_travel_claim":false,"no_Cart_NPC_save_controllers_or_world_lights_added_by_case_module":true,"north_stop_pit_or_floor_adoption":false,"source_assets_hidden_or_cut":false,"camera_height_m":1.65,"resolution":[1920,1080],"renderer":"Compatibility llvmpipe, bright source-review sun/ambient; no CRT/target hardware/final art acceptance","whole_group_accepted":false};var result_suffix:="003" if OS.get_environment("ASTRAEA_G4_STATION_INFO_PHOTOS_ONLY")=="1" else "002";FileAccess.open(OUT+"STATION_INFORMATION_SOURCE_CHECK"+result_suffix+".json",FileAccess.WRITE).store_string(JSON.stringify(d," "));print("G4_STATION_INFORMATION_SOURCE ",d.status," ",checks,"checks errors",errors);world.queue_free();await process_frame;quit(0 if errors.is_empty() else 1)
