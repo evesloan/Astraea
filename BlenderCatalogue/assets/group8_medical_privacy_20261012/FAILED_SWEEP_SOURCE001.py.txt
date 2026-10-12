@@ -1,0 +1,25 @@
+"""Read-only source feasibility screen; original files and shared static tests untouched."""
+from pathlib import Path
+import json,math,numpy as np
+W=Path(__file__).resolve().parent;R=W.parents[2];rows=json.load(open(W/'ACTUAL_MEDICAL_NATIVE_BOUNDS.json'));contract=json.load(open(R/'Game/data/architecture/D05_MEDICAL_WELCOME_RUNTIME.json'));bounds={r['name']:r['world_aabb']for r in rows}
+def ry(angle):
+ c=math.cos(angle);s=math.sin(angle);return np.array([[c,0,s],[0,1,0],[-s,0,c]])
+results=[];source_checks=0
+for index,door in enumerate(contract['door_sources']):
+ number=index+1;tag='TRIAGE_%02d'%number;room_angle=0 if number<=4 else math.pi;src=np.array(door['portal_center_source']);center=np.array([src[0]-28,21,-src[1]-446]);members={}
+ for side in ['left','right']:
+  members[side]=[r for r in rows if r['name']==tag+'_privacy_leaf_'+side or r['name'].startswith(tag+'_leaf_'+side+'_')];assert len(members[side])==5
+ exclude={r['name']for a in members.values()for r in a};obstacles=[r for r in rows if r['name']not in exclude];oa=np.array([r['world_aabb']for r in obstacles]);holds=[];joints=[]
+ for side,meshes in members.items():
+  pivot=center+ry(room_angle)@np.array([-1.87 if side=='left'else1.87,0,-.261]);sign=1 if side=='left'else-1
+  for step in range(91):
+   delta=sign*(math.radians(step)-math.pi/2);rot=ry(delta)
+   for row in meshes:
+    a=row['world_aabb'];corners=np.array([[x,y,z]for x in[a[0],a[1]]for y in[a[2],a[3]]for z in[a[4],a[5]]]);v=(rot@(corners-pivot).T).T+pivot;lo=v.min(0);hi=v.max(0);a=np.array([lo[0],hi[0],lo[1],hi[1],lo[2],hi[2]])
+    overlaps=np.minimum(a[[1,3,5]],oa[:,[1,3,5]])-np.maximum(a[[0,2,4]],oa[:,[0,2,4]]);hits=np.where(np.min(overlaps,axis=1)>.0005)[0];source_checks+=len(obstacles)
+    for hit in hits:
+     target=obstacles[hit]['name'];item={'new_leaf':row['name'],'native_obstacle':target,'open_angle_deg':step,'positive_aabb_overlap_m':overlaps[hit].tolist()}
+     if target in[tag+'_portal_left_receiver',tag+'_portal_right_receiver']:joints.append(item)
+     else:holds.append(item)
+ results.append({'programme_child':door['programme_child'],'members_per_pair':10,'sampled_angles_per_leaf':91,'proposed_hinge_local_xz':[[-1.87,-.261],[1.87,-.261]],'non_receiver_conservative_holds':holds,'receiver_joint_candidates':joints,'actual_source_geometry_modified':False})
+report={'status':'READ_ONLY_CONSERVATIVE_FEASIBILITY_SCREEN','source_checks':source_checks,'results':results,'limits':['Rotated source AABBs,not exact collision or new acceptance','Receiver contact candidates require exact localized bearing verification','No runtime/static guard changes; source-only feasibility before physical fitting']};(W/'RETAINED_LEAF_SWEEP_FEASIBILITY.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'source_checks':source_checks,'pods':len(results),'non_receiver_candidate_counts':[len(r['non_receiver_conservative_holds'])for r in results],'receiver_candidate_counts':[len(r['receiver_joint_candidates'])for r in results]}))
