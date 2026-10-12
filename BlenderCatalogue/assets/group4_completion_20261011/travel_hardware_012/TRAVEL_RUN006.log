@@ -1,0 +1,27 @@
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+GATE CONTACT SOURCE VERTEX MAX ERROR 0.00009715557098
+SCRIPT ERROR: Assertion failed: Every original fixed-frame vertex remains in the exact component contacts
+          at: initialize_vehicle_portal_contacts (res://scripts/group4_tram_source_actuator.gd:79)
+          GDScript backtrace (most recent call first):
+              [0] initialize_vehicle_portal_contacts (res://scripts/group4_tram_source_actuator.gd:79)
+              [1] _ready (res://scripts/group4_tram_source_actuator.gd:86)
+              [2] build (res://scripts/group4_tram_source_actuator.gd:45)
+              [3] run (res://tests/validate_group4_source_travel.gd:45)
+ERROR: The object does not have any 'meta' values with the key 'exact_original_portal_contact_components'.
+   at: get_meta (core/object/object.cpp:1177)
+   GDScript backtrace (most recent call first):
+       [0] run (res://tests/validate_group4_source_travel.gd:48)
+       [1] frames (res://tests/validate_group4_source_travel.gd:14)
+ERROR: Exact source solids preserve both hollow portal frames without unsupported concave pair queries
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/validate_group4_source_travel.gd:12)
+       [1] run (res://tests/validate_group4_source_travel.gd:48)
+       [2] frames (res://tests/validate_group4_source_travel.gd:14)
+ERROR: FORWARD exact arrival without fixture relocation
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] check (res://tests/validate_group4_source_travel.gd:12)
+       [1] travel_to (res://tests/validate_group4_source_travel.gd:37)
+GROUP4 SOURCE TRAVEL HOLD: 16 checks; distance0.00022222222222m; wheel refs0; contacts0

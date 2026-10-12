@@ -1,0 +1,9 @@
+# Scoped Group 4 floor receiving patch
+
+Four actual lift-recess masks require **three** existing compiled-floor replacements: forward2.4m² in `D09_fore_route`, aft/aft-midship4.8m² together in `D09_aft_route`, and central17.6m² in `D09_atrium_circulation`. Total24.8m². `GROUP4_FLOOR_RECEIVING_PATCH.json` provides concrete replacement triangles, oriented rings and clipped original render chunks, exact full-file and per-owner preimages, actual area witnesses and24 geometric integrity checks. No shared source, floor registry, root or canonical ref is edited.
+
+The integration owner should verify each exact current owner preimage using the recorded canonical JSON encoding, merge only those three records into its current compiled definition, preserve every other current record and owner ID, and run normal receiving/door/player/cart checks before adoption. If the compiled file advanced elsewhere, preserve those unrelated records; if one of the three owner preimages changed, reconcile its actual geometry before applying this patch. Do not replace the full current303-owner (or later) definition with an old snapshot.
+
+Actual cut subtraction and rebuilt-triangle coverage match within1e−8m². The four-metre pedestrian axis and exact protected six-point starboard bypass remain unchanged. New source023 annexes and the north receiving floor already own their source floors; no generic slab is duplicated over them. Old pit/source variants remain immutable. The northern physical stop decision stays separate and unadopted.
+
+This is a source/integration patch, not applied normal-main receiving, load capacity, loaded-cart or species acceptance. Group1/shared integration thread `01a11d7f-8ef6-70bc-858d-bdf8deb7000b` owns actual compiler/root adoption. Reproduce the exact candidate with `prepare_floor_patch.py` in the existing environment. Continue the full16-item Group4 obligations after retention.
