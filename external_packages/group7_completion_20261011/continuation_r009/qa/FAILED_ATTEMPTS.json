@@ -1,0 +1,29 @@
+{
+  "failed": [
+    {
+      "log": "qa/DECODED_EXPORT001.log",
+      "reason": "Body-only checker omitted the pre-existing visual_lens category. Source/export geometry was valid; checker corrected to preserve the lens no-collision category before Game import."
+    },
+    {
+      "log": "qa/HEADROOM_CALIPERS001_ENVIRONMENT_FAILURE.log",
+      "reason": "Readonly inline calipers omitted activation of the existing environment; rerun with existing environment, no installation or source change."
+    },
+    {
+      "log": "qa/HEADROOM_CALIPERS002.log",
+      "reason": "Used Shapely is_empty boolean as a method. Corrected property access; no source or criterion changed."
+    }
+  ],
+  "source_geometry_or_criteria_changed_to_pass": false,
+  "corrected_export_check": "qa/DECODED_EXPORT002.log",
+  "runtime_failures": [
+    {
+      "report": "qa/RUNTIME_CHECK_HOLD001.json",
+      "test": "qa/FAILED_RUNTIME001_TEST.gd.txt",
+      "log": "qa/RUNTIME001.log",
+      "checks": 384,
+      "failed": 4,
+      "scope": "All air/walk/light tests passed; whole-jamb queries treated two unchanged owned lower constructive joint receivers per jamb as unexpected. Final test must prove identical preimage contacts and clear raised extension before accepting those specific paths."
+    }
+  ],
+  "runtime_resolution": "RUNTIME002 passes400checks. Four whole-jamb contacts exactly match old-query paths against two unchanged own receivers each; all raised extensions clear. Geometry/controller/source criteria unchanged after runtime001."
+}
