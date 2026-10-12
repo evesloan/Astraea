@@ -9,3 +9,7 @@ Future progress pictures must show clear player-height context and readable wall
 Continue physical construction within supported interfaces. This direction does not request a broad new audit or change the retained tram, Upper Horizon, structural, occupied water, species, save or cross-owner interface holds. Main promotion remains parent-owned; the construction branch advances independently.
 
 The user clarified the construction pass on October12: judge each section by how convincingly its architecture, furnishings, lighting, junctions and circulation visually support its own purpose. Suites should feel restful, promenades inviting and service rooms practical, according to the master design.
+
+## Purpose-based construction review,2026-10-12
+
+Recognizable furniture,materials,purposeful room composition,working/task light arrangement,and credible wall/ceiling junctions are basic construction requirements. Gameplay,engineering and final-art holds do not excuse their absence. The retained Thread fitout is technically checked but visually rejected:anonymous shelf blocks obscure the repair/work area and its junctions/frames/fixtures remain underdefined. Its photograph is withheld. The proposed thermal recovery gazebo/flat water plane/block table is rejected and inactive. Preserve technical work while Group5/Group6 produce coherent successors;review these rooms at ordinary eye height in context.

@@ -462,6 +462,8 @@ func express_arrive(deck_index: int) -> bool:
 func arrive_at(arrival: Vector3, facing_y: float) -> bool:
 	var residency:=get_node_or_null("ShipSystems/ReceivedRoomResidency")
 	if residency!=null:residency.prepare_position(arrival)
+	var remaining:=get_node_or_null("ShipSystems/RemainingBatchStreaming")
+	if remaining!=null:remaining.prepare_position(arrival)
 	var player: CharacterBody3D = $ShipSpace/PersistentActors/Player
 	var state := get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(arrival+Vector3.UP,arrival-Vector3.UP*2)
