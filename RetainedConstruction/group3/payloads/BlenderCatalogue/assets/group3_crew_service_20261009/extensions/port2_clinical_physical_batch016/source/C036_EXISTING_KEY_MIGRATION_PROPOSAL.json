@@ -1,0 +1,181 @@
+{
+  "schema": 1,
+  "status": "HELD_FAIL_CLOSED_SCOPED_PROPOSAL",
+  "source_pins": {
+    "Game/data/architecture/packages/crew_living/SECTION_DISTRIBUTION_PROPOSAL.json": "6ed9325d76ba880a426f8a9b968d5eef2e1cd4152268676750e41b37f8d6db18",
+    "Game/data/architecture/SHARED_CREW_HOME.json": "9d7238ab4d1f8fb3564879d43c4bc39f37034483f0e2b2148fe6f83f3dc5c109",
+    "Game/docs/master_source/MASTER_CURRENT_APPLICATION.json": "baeaea99c08680a91c9660cbce200d2ece4b78aa7fcf869338497f47db686a71",
+    "Game/scripts/shared_crew_home.gd": "29efe087fd76d615fc40a6fc1022505d19afd55d0108a2a54d791251b80bedd5",
+    "Game/scripts/player.gd": "f1bd92d00ad355d5d3c87b57da5ff0e3aa76f9d48776a58f3515932c017a9566",
+    "DesignArchive/Historical_Design/Editable_Source/project_docs/architecture/whole_ship_coverage.json": "3b02b1fdea59ec9ddd7cb66e39bbcfbd6492e0d3e37647eeb6d38b3d370edefe"
+  },
+  "selected_existing_build_basis": "Preserve existing forward home D03_employee_cabin0; migrate existing C036 singleton berth into it, not a new berth",
+  "source_existing_room_id": "C036",
+  "target_existing_room_id": "D03_employee_cabin0",
+  "retained_historical_room_capacity_evidence": [
+    {
+      "id": "D03_employee_cabin0",
+      "deck": 3,
+      "name": "Employee cabin / 071",
+      "kind": "employee_cabin",
+      "family_id": "player_home",
+      "staff_only": true,
+      "accommodation_class": null,
+      "morphology_family": -1,
+      "registered_capacity": {
+        "berth_count": 1,
+        "meal_capacity": null,
+        "crew_meal_capacity": null,
+        "entertainment_capacity": null,
+        "crew_break_capacity": null,
+        "changing_places": null
+      },
+      "whole_room_simultaneous_occupancy_limit": null,
+      "architectural_rollout_approved": false,
+      "status": {
+        "architecture_plan_section": "authored_partial_unaccepted",
+        "original_asset_craft": "shared_original_assets_partial",
+        "materials_fixture_lighting": "shared_baseline_unaccepted",
+        "npc_facility_function": "existing_player_core",
+        "physical_access_persistence": "historical_screens_only"
+      },
+      "physical_evidence": {
+        "evidence": "SPATIAL_ALL",
+        "historical_player_center_or_foyer_route": "pass",
+        "historical_broad_0_65m_route": "pass",
+        "historical_sampled_route_floor": "pass",
+        "historical_door_function": "pass_query_and_alignment",
+        "historical_static_cart_threshold": "pass_static_threshold_and_turn_screen",
+        "complete_dynamic_loaded_cart_route": "not_tested_individually",
+        "full_body_seated_and_animation_clearance": "not_certified",
+        "current_revision_whole_route_acceptance": "limited_to_recorded_scope_and_unchanged_physical_modules"
+      },
+      "persistence_evidence": {
+        "population_and_home_identity": "global_production_model_roundtrip_evidence",
+        "individual_room_full_game_reload": "not_tested_individually",
+        "new_profile_migration": "not_yet_applicable_or_not_proven_for_this_family",
+        "evidence": "PROFILE_PERSISTENCE"
+      },
+      "evidence": [
+        "REGISTRY_NOW",
+        "SPATIAL_ALL"
+      ]
+    },
+    {
+      "id": "C036",
+      "deck": 3,
+      "name": "Crew cabin 036",
+      "kind": "crew_cabin",
+      "family_id": "crew_cabin",
+      "staff_only": true,
+      "accommodation_class": null,
+      "morphology_family": 0,
+      "registered_capacity": {
+        "berth_count": 1,
+        "meal_capacity": null,
+        "crew_meal_capacity": null,
+        "entertainment_capacity": null,
+        "crew_break_capacity": null,
+        "changing_places": null
+      },
+      "whole_room_simultaneous_occupancy_limit": null,
+      "architectural_rollout_approved": false,
+      "status": {
+        "architecture_plan_section": "shared_shell_unaccepted",
+        "original_asset_craft": "shared_original_assets_partial",
+        "materials_fixture_lighting": "shared_baseline_unaccepted",
+        "npc_facility_function": "home_model_tested",
+        "physical_access_persistence": "historical_screens_only"
+      },
+      "physical_evidence": {
+        "evidence": "SPATIAL_ALL",
+        "historical_player_center_or_foyer_route": "pass",
+        "historical_broad_0_65m_route": "pass",
+        "historical_sampled_route_floor": "pass",
+        "historical_door_function": "pass_query_and_alignment",
+        "historical_static_cart_threshold": "pass_static_threshold_and_turn_screen",
+        "complete_dynamic_loaded_cart_route": "not_tested_individually",
+        "full_body_seated_and_animation_clearance": "not_certified",
+        "current_revision_whole_route_acceptance": "limited_to_recorded_scope_and_unchanged_physical_modules"
+      },
+      "persistence_evidence": {
+        "population_and_home_identity": "global_production_model_roundtrip_evidence",
+        "individual_room_full_game_reload": "not_tested_individually",
+        "new_profile_migration": "not_yet_applicable_or_not_proven_for_this_family",
+        "evidence": "PROFILE_PERSISTENCE"
+      },
+      "evidence": [
+        "REGISTRY_NOW",
+        "SPATIAL_ALL"
+      ]
+    }
+  ],
+  "original_player_berth_key": null,
+  "original_C036_singleton_berth_key": null,
+  "original_C036_assigned_person_key": null,
+  "authoritative_save_schema": null,
+  "player_or_person_name_species_created": false,
+  "registry_or_save_written": false,
+  "new_key_created": false,
+  "new_actor_created": false,
+  "migration_applied": false,
+  "geometry_join_of_C036_to_anonymous_atlas_drawing": null,
+  "required_original_record_inputs": [
+    "Authoritative original 400 existing active berth rows and their unique keys, including the player.",
+    "Authoritative original C036 singleton berth row and the existing person assigned to that exact key.",
+    "Retained save schema/version, current player-home association and player anchor, without inferred index joins.",
+    "Source-approved species/pose/physical suitability for the two retained physical home slots."
+  ],
+  "preconditions": [
+    "Verify supplied original record source hashes against independent retention.",
+    "Exactly400 existing active crew berth keys, one player entry and399 existing autonomous people; each assigned once.",
+    "C036 has exactly one original active berth and exactly one existing associated person; neither aliases player.",
+    "Preserve current original player key and compatible physical anchor; resolve which existing local source slot it occupies.",
+    "Choose the other compatible unassigned physical slot in the existing shared home; never manufacture a berth key from A/B.",
+    "Stop if source/save schema, occupant key, original berth key, geometry join or suitability cannot be proved."
+  ],
+  "proposed_transaction": [
+    "Snapshot the exact original rows and schema; compute a read-only dry-run delta.",
+    "Change only the original C036 berth anchor/home association to the compatible free physical slot in retained D03_employee_cabin0.",
+    "Keep the same original C036 berth key and assigned person key; preserve the original player key and every other crew key.",
+    "Retain C036 room identity and prior-assignment provenance with zero associated sleeping anchors after the move.",
+    "Associate the two existing keys with the retained home; total active crew anchors remains400.",
+    "Owner applies only after source/identity proof, exact before/after review and validated rollback. This file performs no transaction."
+  ],
+  "rejection_conditions": [
+    "Missing or inferred original key/schema",
+    "Counts or uniqueness change",
+    "Any added/deleted/renumbered person or berth",
+    "Unproved species compatibility",
+    "Ambiguous player slot or C036 geometry join"
+  ],
+  "acceptance_checks": [
+    "400 original berth keys identical before/after, each assigned exactly once.",
+    "399 original autonomous person keys and player identity unchanged.",
+    "Every unrelated room/assignment/anchor remains byte-identical.",
+    "Original C036 singleton appears once at the approved shared-home anchor.",
+    "Save roundtrip preserves keys and rollback reproduces the exact original rows."
+  ],
+  "local_source_slots_are_not_keys": [
+    {
+      "local_source_slot": "A",
+      "position": [
+        -41.5,
+        12,
+        -434.8
+      ],
+      "yaw": 0
+    },
+    {
+      "local_source_slot": "B",
+      "position": [
+        -36.5,
+        12,
+        -437.0
+      ],
+      "yaw": 3.141592653589793
+    }
+  ],
+  "remaining_blocker": "Independently verified archived architecture records confirm C036 singleton and the existing player-home room IDs/capacities, but contain no concrete berth/person keys, anchor coordinates or authoritative save schema. All184 unresolved atlas joins remain held.",
+  "original_historical_architectural_registry_recovered": true
+}

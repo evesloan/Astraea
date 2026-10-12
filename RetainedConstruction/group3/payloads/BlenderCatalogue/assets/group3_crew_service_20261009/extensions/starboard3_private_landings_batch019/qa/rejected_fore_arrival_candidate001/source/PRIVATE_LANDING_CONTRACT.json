@@ -1,0 +1,1440 @@
+{
+  "schema": 1,
+  "family": "group3_crew_service_20261009",
+  "source_pins": {
+    "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/remaining_riser_sources_batch017/source/starboard_service_riser_5.json": "b162485935ff6e6f94c45b87a7a3a0707bf5d69a5676073001cda44957057b99",
+    "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/remaining_riser_sources_batch017/source/AFT_PAIR_CONTRACT.json": "16a4799455b69b05453fb571b189bcf86d689223a0c9822c430a48d0371fd1e1",
+    "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/remaining_riser_sources_batch017/SHA256SUMS.txt": "aa930df8839680e7555cfa99aaaac6a81a7b144b08472938260486bfd6aa5e80",
+    "BlenderCatalogue/assets/group3_crew_service_20261009/extensions/starboard3_private_landings_batch019/qa/INHERITED_ACTUAL_MAIN_SURVEY.json": "cefcac9e90e57e4281009c34939cc090af72b2a87a2cb2be5770333391fd6730",
+    "Game/data/whole_ship_layout.json": "d641e95cf82b5ddd19e9448dc5d029aef2123d32630a08810a2169c8979706d8",
+    "Game/data/spatial_layout.json": "75cc3e6259d89da873f5c2fa4fefa2e846427eeda3e5457561d785305a0471d2",
+    "Game/data/generated/structural_meshes.json": "e7cd0cc1c3892a99cf75f2dab4c852f3e1c1864a13b81f828e2a2f93cf239e92",
+    "Game/data/generated/received_structural_meshes.json": "e05fd27b14d97d5bdf37a6ac94bb80b1c009342d69ff90142579fe692af3a59b",
+    "Game/scripts/commons_lift.gd": "174813072483ea3808b8a529fd4bb6ecaf70ef2ea865486a268384dbc7b9d4a4",
+    "Game/scripts/service_door.gd": "b9d33fc3e11311ccebd3de36812ba42436523616a4ab655cf50df38e35cc57f1",
+    "Game/assets/models/AST-CIR-003_seventeen_stop.glb": "075fa6ec8116547da7c42c4e0c79c097a0f765e1f3f717d5261f47509b5d538c",
+    "Game/assets/models/AST-DOR-003.glb": "975cec2ac763de60279d0e37d32060f909a267cb139954104ca0f8e4b91bade5",
+    "Game/assets/models/AST-STF-008.glb": "d3ab5143760df1d68958cf063cc1b57ff3e4988cbea8d0a632757a5102a1da97"
+  },
+  "automatic_runtime_adoption": false,
+  "authoritative_identity_map": null,
+  "registered_berths_added": 0,
+  "parent_handoff_commit": "d8702f138047fa8da947b799184686962c01b9f5",
+  "reservation": {
+    "id": "starboard_service_riser_3",
+    "status": "Separate screened staff-riser/lobby reservation; routes and access logic not constructed",
+    "center_xz": [
+      25,
+      -86
+    ],
+    "lobby_x": [
+      18.8,
+      27.4
+    ],
+    "lobby_z": [
+      -91.8,
+      -80.2
+    ],
+    "shaft_x": [
+      22.8,
+      27.2
+    ],
+    "shaft_z": [
+      -88.2,
+      -83.8
+    ],
+    "decks": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D06",
+      "D07",
+      "D08",
+      "D09",
+      "D10",
+      "D11",
+      "D12",
+      "D13",
+      "D14",
+      "D15",
+      "D16",
+      "D17",
+      "D18"
+    ],
+    "allocation_conflicts": [],
+    "purpose": "Keep staff vertical movement on its own side of the ship and link into concealed district service routes",
+    "requirements": [
+      "Explicit floor-by-floor staff links; no open merging with guest spine",
+      "Opaque screened arrivals and service access logic",
+      "Maintain source guest, crew and programme allocations",
+      "Protect hull section, pit/headroom and all source-derived cabin contacts"
+    ]
+  },
+  "reservation_id": "starboard_service_riser_3",
+  "controller_binding": {
+    "floor_heights": [
+      0.0,
+      6.0,
+      12.0,
+      16.5,
+      21.0,
+      27.0,
+      35.5,
+      44.0,
+      52.5,
+      61.0,
+      69.5,
+      78.0,
+      84.0,
+      88.5,
+      93.0,
+      97.5,
+      102.0
+    ],
+    "deck_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "stop_ids": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D06",
+      "D07",
+      "D08",
+      "D09",
+      "D10",
+      "D11",
+      "D12",
+      "D13",
+      "D14",
+      "D15",
+      "D16",
+      "D17"
+    ],
+    "stop_names": [
+      "Logistics & shuttle docks",
+      "Engineering & life support",
+      "Crew quarters & operations",
+      "Aquatic & arboreal habitats",
+      "Medical & species care",
+      "Grand botanical atrium",
+      "Sports & active living",
+      "Aquatic recreation & wellness",
+      "Retail promenade",
+      "Grand dining & restaurants",
+      "Theater & culture",
+      "Panoramic gallery & library",
+      "Quiet cocoon residences",
+      "Thermal-reef residences",
+      "Adaptive habitat residences",
+      "Family gardens & skyline",
+      "Premier suites & horizon"
+    ],
+    "stop_codes": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D06",
+      "D07",
+      "D08",
+      "D09",
+      "D10",
+      "D11",
+      "D12",
+      "D13",
+      "D14",
+      "D15",
+      "D16",
+      "D17"
+    ],
+    "gate_origin_xz": [
+      -1.8,
+      0
+    ],
+    "cabin_file": "AST-CIR-003_seventeen_stop.glb"
+  },
+  "lift_root_position": [
+    25,
+    0,
+    -86
+  ],
+  "lift_root_yaw": 0,
+  "source_sill_remainder_contacts": [
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D01_0",
+      "aabb": [
+        23.02,
+        23.1,
+        -0.06,
+        0.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D01",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D01_1",
+      "aabb": [
+        23.1,
+        23.18,
+        -0.06,
+        0.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D01",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D01_2",
+      "aabb": [
+        23.1,
+        23.18,
+        -0.06,
+        0.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D01",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D02_0",
+      "aabb": [
+        23.02,
+        23.1,
+        5.94,
+        6.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D02",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D02_1",
+      "aabb": [
+        23.1,
+        23.18,
+        5.94,
+        6.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D02",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D02_2",
+      "aabb": [
+        23.1,
+        23.18,
+        5.94,
+        6.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D02",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D03_0",
+      "aabb": [
+        23.02,
+        23.1,
+        11.94,
+        12.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D03",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D03_1",
+      "aabb": [
+        23.1,
+        23.18,
+        11.94,
+        12.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D03",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D03_2",
+      "aabb": [
+        23.1,
+        23.18,
+        11.94,
+        12.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D03",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D04_0",
+      "aabb": [
+        23.02,
+        23.1,
+        16.44,
+        16.5,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D04",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D04_1",
+      "aabb": [
+        23.1,
+        23.18,
+        16.44,
+        16.5,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D04",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D04_2",
+      "aabb": [
+        23.1,
+        23.18,
+        16.44,
+        16.5,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D04",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D05_0",
+      "aabb": [
+        23.02,
+        23.1,
+        20.94,
+        21.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D05",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D05_1",
+      "aabb": [
+        23.1,
+        23.18,
+        20.94,
+        21.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D05",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D05_2",
+      "aabb": [
+        23.1,
+        23.18,
+        20.94,
+        21.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D05",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D06_0",
+      "aabb": [
+        23.02,
+        23.1,
+        26.94,
+        27.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D06",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D06_1",
+      "aabb": [
+        23.1,
+        23.18,
+        26.94,
+        27.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D06",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D06_2",
+      "aabb": [
+        23.1,
+        23.18,
+        26.94,
+        27.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D06",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D07_0",
+      "aabb": [
+        23.02,
+        23.1,
+        35.44,
+        35.5,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D07",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D07_1",
+      "aabb": [
+        23.1,
+        23.18,
+        35.44,
+        35.5,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D07",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D07_2",
+      "aabb": [
+        23.1,
+        23.18,
+        35.44,
+        35.5,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D07",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D08_0",
+      "aabb": [
+        23.02,
+        23.1,
+        43.94,
+        44.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D08",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D08_1",
+      "aabb": [
+        23.1,
+        23.18,
+        43.94,
+        44.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D08",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D08_2",
+      "aabb": [
+        23.1,
+        23.18,
+        43.94,
+        44.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D08",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D09_0",
+      "aabb": [
+        23.02,
+        23.1,
+        52.44,
+        52.5,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D09",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D09_1",
+      "aabb": [
+        23.1,
+        23.18,
+        52.44,
+        52.5,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D09",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D09_2",
+      "aabb": [
+        23.1,
+        23.18,
+        52.44,
+        52.5,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D09",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D10_0",
+      "aabb": [
+        23.02,
+        23.1,
+        60.94,
+        61.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D10",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D10_1",
+      "aabb": [
+        23.1,
+        23.18,
+        60.94,
+        61.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D10",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D10_2",
+      "aabb": [
+        23.1,
+        23.18,
+        60.94,
+        61.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D10",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D11_0",
+      "aabb": [
+        23.02,
+        23.1,
+        69.44,
+        69.5,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D11",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D11_1",
+      "aabb": [
+        23.1,
+        23.18,
+        69.44,
+        69.5,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D11",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D11_2",
+      "aabb": [
+        23.1,
+        23.18,
+        69.44,
+        69.5,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D11",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D12_0",
+      "aabb": [
+        23.02,
+        23.1,
+        77.94,
+        78.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D12",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D12_1",
+      "aabb": [
+        23.1,
+        23.18,
+        77.94,
+        78.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D12",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D12_2",
+      "aabb": [
+        23.1,
+        23.18,
+        77.94,
+        78.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D12",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D13_0",
+      "aabb": [
+        23.02,
+        23.1,
+        83.94,
+        84.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D13",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D13_1",
+      "aabb": [
+        23.1,
+        23.18,
+        83.94,
+        84.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D13",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D13_2",
+      "aabb": [
+        23.1,
+        23.18,
+        83.94,
+        84.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D13",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D14_0",
+      "aabb": [
+        23.02,
+        23.1,
+        88.44,
+        88.5,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D14",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D14_1",
+      "aabb": [
+        23.1,
+        23.18,
+        88.44,
+        88.5,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D14",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D14_2",
+      "aabb": [
+        23.1,
+        23.18,
+        88.44,
+        88.5,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D14",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D15_0",
+      "aabb": [
+        23.02,
+        23.1,
+        92.94,
+        93.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D15",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D15_1",
+      "aabb": [
+        23.1,
+        23.18,
+        92.94,
+        93.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D15",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D15_2",
+      "aabb": [
+        23.1,
+        23.18,
+        92.94,
+        93.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D15",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D16_0",
+      "aabb": [
+        23.02,
+        23.1,
+        97.44,
+        97.5,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D16",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D16_1",
+      "aabb": [
+        23.1,
+        23.18,
+        97.44,
+        97.5,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D16",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D16_2",
+      "aabb": [
+        23.1,
+        23.18,
+        97.44,
+        97.5,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D16",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D17_0",
+      "aabb": [
+        23.02,
+        23.1,
+        101.94,
+        102.0,
+        -87.85000000000002,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D17",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D17_1",
+      "aabb": [
+        23.1,
+        23.18,
+        101.94,
+        102.0,
+        -87.85000000000002,
+        -87.19999999999999
+      ],
+      "derived_from": "Port2_LandingSill_D17",
+      "controller_owned_box_not_replaced": true
+    },
+    {
+      "name": "starboard_service_riser_3_SourceSillRemainder_D17_2",
+      "aabb": [
+        23.1,
+        23.18,
+        101.94,
+        102.0,
+        -84.80000000000001,
+        -84.14999999999998
+      ],
+      "derived_from": "Port2_LandingSill_D17",
+      "controller_owned_box_not_replaced": true
+    }
+  ],
+  "door_bindings": [
+    {
+      "name": "private_arrival_D01",
+      "deck": "D01",
+      "position": [
+        21,
+        0.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D02",
+      "deck": "D02",
+      "position": [
+        21,
+        6.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D03",
+      "deck": "D03",
+      "position": [
+        21,
+        12.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D04",
+      "deck": "D04",
+      "position": [
+        21,
+        16.5,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D05",
+      "deck": "D05",
+      "position": [
+        21,
+        21.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D06",
+      "deck": "D06",
+      "position": [
+        21,
+        27.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D07",
+      "deck": "D07",
+      "position": [
+        21,
+        35.5,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D08",
+      "deck": "D08",
+      "position": [
+        21,
+        44.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D09",
+      "deck": "D09",
+      "position": [
+        21,
+        52.5,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D10",
+      "deck": "D10",
+      "position": [
+        21,
+        61.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D11",
+      "deck": "D11",
+      "position": [
+        21,
+        69.5,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D12",
+      "deck": "D12",
+      "position": [
+        21,
+        78.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D13",
+      "deck": "D13",
+      "position": [
+        21,
+        84.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D14",
+      "deck": "D14",
+      "position": [
+        21,
+        88.5,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D15",
+      "deck": "D15",
+      "position": [
+        21,
+        93.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D16",
+      "deck": "D16",
+      "position": [
+        21,
+        97.5,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    },
+    {
+      "name": "private_arrival_D17",
+      "deck": "D17",
+      "position": [
+        21,
+        102.0,
+        -91.62
+      ],
+      "yaw": 3.141592653589793,
+      "persistent_id": null,
+      "owner_authorization_required": true
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D01",
+      "position": [
+        21,
+        2.995,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D02",
+      "position": [
+        21,
+        8.995000000000001,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D03",
+      "position": [
+        21,
+        14.995000000000001,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D04",
+      "position": [
+        21,
+        19.495,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D05",
+      "position": [
+        21,
+        23.995,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D06",
+      "position": [
+        21,
+        29.995,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D07",
+      "position": [
+        21,
+        38.495,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D08",
+      "position": [
+        21,
+        46.995,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D09",
+      "position": [
+        21,
+        55.495,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D10",
+      "position": [
+        21,
+        63.995,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D11",
+      "position": [
+        21,
+        72.495,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D12",
+      "position": [
+        21,
+        80.995,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D13",
+      "position": [
+        21,
+        86.995,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D14",
+      "position": [
+        21,
+        91.495,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D15",
+      "position": [
+        21,
+        95.995,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D16",
+      "position": [
+        21,
+        100.495,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    },
+    {
+      "name": "starboard_service_riser_3_Port2_LobbyLight_D17",
+      "position": [
+        21,
+        104.995,
+        -86
+      ],
+      "color": [
+        0.78,
+        0.88,
+        1
+      ],
+      "range_m": 7,
+      "energy": 0.9,
+      "budget_owner": "existing receiving_source_lights.gd / lighting_budget.gd"
+    }
+  ],
+  "floor_checks": [
+    {
+      "deck": "D01",
+      "floor_y": 0.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D02",
+      "floor_y": 6.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D03",
+      "floor_y": 12.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D04",
+      "floor_y": 16.5,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D05",
+      "floor_y": 21.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D06",
+      "floor_y": 27.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D07",
+      "floor_y": 35.5,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D08",
+      "floor_y": 44.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D09",
+      "floor_y": 52.5,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D10",
+      "floor_y": 61.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D11",
+      "floor_y": 69.5,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D12",
+      "floor_y": 78.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D13",
+      "floor_y": 84.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D14",
+      "floor_y": 88.5,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D15",
+      "floor_y": 93.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D16",
+      "floor_y": 97.5,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    },
+    {
+      "deck": "D17",
+      "floor_y": 102.0,
+      "new_floor_m2": 50.21599999999996,
+      "original_compiled_floor_borrowed_m2": 0.0
+    }
+  ],
+  "new_floor_m2": 853.6719999999993,
+  "persistent_identity_map": null,
+  "owner_authorization_predicate_required": true,
+  "inside_egress_does_not_require_external_permission": true,
+  "original_D01_shared_circuit_D04_routes_or_compiled_floors_modified": false,
+  "no_D18_stop_or_new_berths": true,
+  "all_district_arrival_connections_or_egress_engineering_or_species_or_final_acceptance": false
+}

@@ -1,0 +1,7 @@
+# Preserved diagnostics and superseded sources
+
+- Existing-commons survey001 is a preliminary unfiltered plan diagnostic. It includes beam schemas that were not bounded; use direct actual runtime survey002 and exact plan roof projection003 for the recorded shared-interface findings. Combined GLB batch convex projections alone do not prove per-triangle intersections or a clear receiving site.
+- Native r001 is topology-valid but its initial bearing pad/side terrace crossed the low ramp toe, and its overhead plant casing rose through the sloping new roof. r002 corrects the ramp bearing/entry and casing envelope. Neither is the preferred source.
+- Retained AST-DOR-001 is centred with boundsX±0.59m and a hinge atX−0.528. r002's initial unshifted source review poses did not centre its existing door in the authored opening. r003 shifts the retained door root55cm into that1.2m opening; native and runtime fits agree. No original door mesh changes.
+- VIP001 stopped after a real missing source-light name assertion: a fractional coordinate in a native name was normalized by Godot. Runtime uses `validate_node_name()`; fresh fixture/import002 and VIP002 pass final r003. The failed log/process receipt remain retained.
+- Source geometry/kit validation does not resolve the existing shared receiving roof or protected shaft conflict. Those are current construction holds, not passed placement tests.

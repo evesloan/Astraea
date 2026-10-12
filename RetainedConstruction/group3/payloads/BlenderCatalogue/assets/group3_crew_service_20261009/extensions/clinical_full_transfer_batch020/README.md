@@ -1,0 +1,3 @@
+# Full clinical street physical successor, with held interfaces
+
+Append-only batch020 constructs the retained clinical network outside three explicit cross-group holds: one pool-side directory01 junction and two RoyaltyPier spans. Four native assets AST-MED-G3-007..010 provide complete selected street architecture, missing-only floor, a new dimensioned3.6m ×2.4m opposed sliding fitting and36 closed source gate instances at nine junctions. Existing source, programme IDs, capacity, floors, room panels and D01/D04 remain unchanged. The shared root does not adopt this package. Read `Game/docs/GROUP3_CLINICAL_NETWORK_20261011.md` before staging; real clinical inventory/sterility, receiver openings, assigned crew berths and full-group acceptance remain held.

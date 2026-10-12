@@ -1,0 +1,101 @@
+extends Node3D
+# Local original E/RMB receivers and one mounted car lamp. No input handler, actor creation or global controller.
+const DATA:="res://data/architecture/GROUP4_OPERATING_CONTROLS_SOURCE_CANDIDATE.json"
+var plan:Dictionary
+var vehicle:AnimatableBody3D
+var safety:Node3D
+var restraint:Node3D
+var motor:Node3D
+var player:CharacterBody3D
+var controls:Dictionary={}
+var light:SpotLight3D
+var pending_secure:=false
+var pending_board:=""
+var original_handle:Node3D
+var original_handle_script:Script
+static func xyz(a:Array)->Vector3:return Vector3(a[0],a[1],a[2])
+static func build(parent:Node3D,body:AnimatableBody3D,boarding:Node3D,cart_restraint:Node3D,actuator:Node3D,original_player:CharacterBody3D,existing_light_budget:Node,candidate_only:bool=false)->Node3D:
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(DATA))
+ if not p.active and not candidate_only:return null
+ assert(not body.has_meta("group4_operating_controls"),"One operating interface owns this source car")
+ for path:String in p.original_runtime_pins:assert(FileAccess.get_sha256(path)==p.original_runtime_pins[path])
+ var n:Node3D=load("res://scripts/group4_tram_operating_controls.gd").new();n.name="Group4SourceOperatingControls";n.plan=p;n.vehicle=body;n.safety=boarding;n.restraint=cart_restraint;n.motor=actuator;n.player=original_player;parent.add_child(n);body.set_meta("group4_operating_controls",n.get_instance_id());n.register_light(existing_light_budget);return n
+func source_model(index:int,parent:Node3D)->Node3D:
+ var spec:Dictionary=plan.exports[index];var file:String=plan.model_root+spec.file;assert(FileAccess.get_sha256(file)==spec.sha256);var node:Node3D=(load(file)as PackedScene).instantiate();parent.add_child(node);var policies:Dictionary={};var count:=0
+ for key:String in spec.policies:policies[key.validate_node_name()]=spec.policies[key]
+ for mesh:MeshInstance3D in node.find_children("*","MeshInstance3D",true,false):
+  count+=1;assert(policies.has(str(mesh.name)))
+  if policies[str(mesh.name)]=="no_collision_detail":continue
+  if parent==vehicle:
+   var col:=CollisionShape3D.new();col.shape=mesh.mesh.create_convex_shape(false,false);col.shape.margin=.001;col.transform=vehicle.global_transform.affine_inverse()*mesh.global_transform;vehicle.add_child(col)
+  else:
+   var members:Array[Node]=[mesh];load("res://scripts/static_contact_cache.gd").attach_group(mesh,members)
+ assert(count==spec.mesh_count);return node
+func button(parent:Node3D,spec:Dictionary,action:String,station:String="")->Node3D:
+ var node:Node3D=load("res://scripts/group4_tram_control_button.gd").new();node.name="SourceButton_"+action+"_"+station;node.controller=self;node.action=action;node.station=station;node.position=xyz(spec.surface_center_xyz);parent.add_child(node)
+ var area:=Area3D.new();area.name="ExactSourceFaceTarget";area.collision_layer=2;area.collision_mask=0;area.monitoring=false;node.add_child(area);var shape:=ConvexPolygonShape3D.new();var points:=PackedVector3Array()
+ for point in spec.target_points_xyz:points.append(xyz(point))
+ shape.points=points;shape.margin=0;var col:=CollisionShape3D.new();col.shape=shape;area.add_child(col);controls[action+":"+station]=node;return node
+func surface_label(parent:Node3D,text:String,at:Vector3,normal:Vector3,up:Vector3,pixel_size:float)->void:
+ var label:=Label3D.new();label.name="MountedLegend_"+text.validate_node_name();label.text=text;label.font_size=64;label.pixel_size=pixel_size;label.outline_size=0;label.modulate=Color(.16,.13,.10);label.position=at;label.basis=Basis.looking_at(-normal,up);label.no_depth_test=false;label.billboard=BaseMaterial3D.BILLBOARD_DISABLED;label.set_meta("source_surface_legend",true);parent.add_child(label)
+func _ready()->void:
+ process_physics_priority=-23;var console:=source_model(0,vehicle)
+ for spec in plan.car_buttons:button(console,spec,spec.id)
+ var normal:=Vector3(0,1,.5).normalized();var up:=Vector3(0,.5,-1).normalized()
+ var legends:Dictionary={"FORWARD":"FWD","FORE_MIDSHIP":"FORE MID","CENTRAL":"CENTRAL","AFT_MIDSHIP":"AFT MID","AFT":"AFT","SECURE":"SECURE","BOARDING":"BOARD","CLAMP":"CART"}
+ for spec in plan.car_buttons:
+  var dz:=.047 if spec.id in ["FORWARD","FORE_MIDSHIP","CENTRAL","AFT_MIDSHIP","AFT"] else -.043
+  surface_label(console,legends[spec.id],xyz(spec.surface_center_xyz)+Vector3(0,-.5*dz,dz)-normal*.008,normal,up,.00020)
+ for station:String in safety.station_gates:
+  var gate:Node3D=safety.station_gates[station];var call:=source_model(1,gate);button(call,plan.station_call_button,"STATION_CALL",station)
+  surface_label(call,"BOARD",Vector3(-1.55,1.19,-.197),Vector3(0,0,-1),Vector3.UP,.00030)
+ light=SpotLight3D.new();light.name=plan.car_light.id;vehicle.add_child(light);light.position=xyz(plan.car_light.position_xyz);light.basis=Basis.looking_at(Vector3.DOWN,Vector3.FORWARD);light.spot_angle=plan.car_light.full_cone_degrees*.5;light.spot_range=plan.car_light.range_m;light.light_energy=plan.car_light.initial_energy;light.light_color=Color(plan.car_light.color[0],plan.car_light.color[1],plan.car_light.color[2]);light.shadow_enabled=true;light.visible=false;light.set_meta("fixture_powered",true);light.set_meta("source_fixture_semantic_id",plan.car_light.source_mesh);light.set_meta("source_blend_sha256",plan.source_blend_sha256);update_light_anchor()
+ # Preserve the original handle node, area, interaction owner, group and source file. Only scoped restrained behavior differs.
+ original_handle=restraint.cart.interaction_owner;original_handle_script=original_handle.get_script();assert(not is_instance_valid(restraint.cart.driver));original_handle.set_script(load("res://scripts/group4_cart_handle_guard.gd"));original_handle.cart=restraint.cart;original_handle.restraint=restraint
+func register_light(budget:Node)->void:
+ assert(not budget.sources.has(light));budget.sources.append(light);budget.requested_shadow[light.get_instance_id()]=true;budget.refresh()
+func update_light_anchor()->void:light.set_meta("illumination_anchor",vehicle.to_global(xyz(plan.car_light.illumination_anchor)))
+func current_station()->String:
+ for station:String in safety.station_gates:
+  if safety._physical_dock_matches(station):return station
+ return ""
+func actor_aboard(actor:CharacterBody3D)->bool:
+ var at:=vehicle.to_local(actor.global_position);return absf(at.x)<1.0 and absf(at.z)<2.22 and at.y>-.02 and at.y<.15
+func control_label(action:String,station:String)->String:
+ match action:
+  "STATION_CALL":return "E · Board Townline at "+station.replace("_"," ").capitalize()
+  "SECURE":return "E · Close doors and secure cart"
+  "BOARDING":return "E · Open boarding at this station"
+  "CLAMP":return "E · Release cart restraint" if restraint.phase=="locked" else "E · Clamp parked cart"
+ return "E · Townline to "+action.replace("_"," ").capitalize()
+func request_control(action:String,station:String,actor:CharacterBody3D)->bool:
+ if actor!=player or motor.moving or motor.motion_fault:return false
+ if action=="STATION_CALL":return begin_boarding(station)
+ if not actor_aboard(actor):return false
+ if action=="BOARDING":return begin_boarding(current_station())
+ if action=="SECURE":
+  if safety.phase=="boarding":
+   if not safety.request_secure():return false
+   pending_secure=true;return true
+  if safety.phase=="secured" and restraint.cart_in_vehicle():return restraint.request_lock()
+  return false
+ if action=="CLAMP":return restraint.request_unlock() if restraint.phase=="locked" else restraint.request_lock()
+ return motor.request_stop(action)
+func begin_boarding(station:String)->bool:
+ if station.is_empty() or current_station()!=station or safety.phase!="secured":return false
+ if restraint.phase=="locked":
+  if not restraint.request_unlock():return false
+  pending_board=station;return true
+ if restraint.phase!="unlocked":return false
+ return safety.request_boarding(station)
+func _physics_process(_delta:float)->void:
+ update_light_anchor()
+ if pending_secure and safety.phase=="secured":
+  pending_secure=false
+  if restraint.cart_in_vehicle():restraint.request_lock()
+ if not pending_board.is_empty() and restraint.phase=="unlocked":
+  var station:=pending_board;pending_board="";safety.request_boarding(station)
+func _exit_tree()->void:
+ if is_instance_valid(original_handle) and is_instance_valid(restraint) and is_instance_valid(restraint.cart):
+  original_handle.set_script(original_handle_script);original_handle.cart=restraint.cart
+ if is_instance_valid(vehicle) and vehicle.get_meta("group4_operating_controls",0)==get_instance_id():vehicle.remove_meta("group4_operating_controls")

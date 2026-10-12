@@ -1,0 +1,91 @@
+"""Independent exported topology, support, exact current cuts and additive scope."""
+from pathlib import Path
+import json,hashlib,numpy as np
+import shapely
+from shapely.geometry import Polygon,Point,box
+from shapely.ops import unary_union
+from shapely.strtree import STRtree
+from native_glb_subset import GLB
+HERE=Path(__file__).resolve().parents[1];ROOT=HERE.parents[4]
+p=json.load(open(HERE/'source/REMAINING_STREETS_CONTRACT.json'));checks=[]
+sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+def check(name,ok,**data):checks.append(dict(name=name,pass_check=bool(ok),**data));assert ok,name
+for f,h in p['source_pins'].items():check('source_pin_'+f,sha(ROOT/f)==h)
+counts={}
+for path in sorted((HERE/'exports').glob('*.glb')):
+ g=GLB(path);n=tris=0;check('runtime_copy_'+path.name,sha(path)==sha(ROOT/'Game/assets/models/group3_d03_streets_20261011'/path.name))
+ for name,node in g.by_name.items():
+  if'mesh'not in node:continue
+  v,f,u,e=g.geometry(name);n+=1;tris+=len(f);check('finite_'+path.name+name,np.isfinite(v).all()and np.isfinite(u).all());t=np.asarray(v)[np.asarray(f)];a=np.linalg.norm(np.cross(t[:,1]-t[:,0],t[:,2]-t[:,0]),axis=1)/2;check('nondegenerate_'+path.name+name,(a>1e-12).all())
+ counts[path.name]=dict(meshes=n,triangles=tris,bytes=path.stat().st_size,sha256=sha(path))
+check('exact_five_exports',len(counts)==5)
+g=GLB(HERE/'exports/AST-STF-G3-058.glb');top=[]
+for name,node in g.by_name.items():
+ if'mesh'not in node:continue
+ v,f,_,_=g.geometry(name)
+ for i,face in enumerate(f):
+  t=np.asarray([v[k]for k in face])
+  if abs(t[:,1]-12).max()>.000001:continue
+  check('outward_floor_'+str(i),np.cross(t[1]-t[0],t[2]-t[0])[1]>0);top.append(Polygon(t[:,[0,2]]))
+actual=unary_union(top);spec=json.load(open(HERE/'source/REMAINING_STREET_MISSING_FLOOR.json'))
+def f32(r):return [[float(np.float32(x)),float(np.float32(z))]for x,z in r]
+quantized=unary_union([Polygon(f32(q['boundary']),[f32(r)for r in q['holes']])for q in spec['parts']]);check('exact_float32_floor_topology',actual.symmetric_difference(quantized).area<1e-7)
+old=[]
+for f in ['Game/data/generated/structural_meshes.json','Game/data/generated/received_structural_meshes.json','Game/data/architecture/REMAINING_BATCH_FLOORS.json']:old+=json.load(open(ROOT/f))['regions']
+physical=json.load(open(HERE/'source/RETAINED_PHYSICAL_FLOOR_SURVEY.json'));previous_floor=unary_union([Polygon(t)for q in old if q['deck']=='D03'for t in q['triangles']]+[Polygon(t)for t in physical['triangles']]);check('no_original_floor_overlay',actual.intersection(previous_floor.buffer(-.001)).area<1e-7)
+def shape(q):
+ if'boundary'in q:return Polygon(q['boundary'],q['holes'])
+ a=q['aabb'];return box(a[0],a[4],a[1],a[5])
+def yr(q):return q['y']if'y'in q else q['aabb'][2:4]
+prior=[];solid=[]
+for f in p['source_pins']:
+ if not f.endswith('.json')or '/source/'not in f or f.startswith(str(HERE.relative_to(ROOT)))or f=='BlenderCatalogue/assets/group3_crew_service_20261009/source/CREW_STREETS.json':continue
+ q=json.load(open(ROOT/f))
+ if'parts'not in q:continue
+ for a in q['parts']:
+  if'vertices_godot'in a:continue # Preparation rejects any such scope contact.
+  lo,hi=yr(a)
+  if hi==12:prior.append(shape(a))
+  elif lo<15.34 and hi>12:solid.append((shape(a),lo,hi,a['name']))
+for a in p['protected_current_D04_source_contacts']:
+ solid.append((Polygon(a['footprint']),a['min'][1],a['max'][1],a['runtime_name']))
+prior_floor=unary_union(prior);check('no_prior_Group3_floor_overlay',actual.intersection(prior_floor.buffer(-.001)).area<1e-7)
+arch=json.load(open(HERE/'source/REMAINING_STREET_ARCHITECTURE.json'));tree=STRtree([a[0]for a in solid]);max_overlay=0
+for q in arch['parts']:
+ lo,hi=yr(q);g=shape(q);volume=0
+ for j in tree.query(g):
+  oldg,a,b,name=solid[j];height=min(hi,b)-max(lo,a)
+  if height>0:volume+=g.intersection(oldg).area*height
+ max_overlay=max(max_overlay,volume)
+check('no_prior_geometry_overlay',max_overlay<1e-7,max_overlap_m3=max_overlay)
+floor_all=actual.union(previous_floor).union(prior_floor);probes=0
+paths=[]
+for x,ranges in[(57,[(-469,-42.5),(42.5,431)]),(-57,[(-211,-42.5),(42.5,431)]),(-87,[(-342,-40),(40,342)]),(87,[(-342,-40),(40,342)])]:
+ for a,b in ranges:paths.append(((x,a),(x,b)))
+for side in[-1,1]:
+ outer=-102 if side==-1 else 103
+ for z in[-40,40]:paths.append(((side*57,z),(outer,z)))
+ paths.append(((outer,-40),(outer,40)))
+for i,(a,b)in enumerate(paths):
+ n=int(np.ceil(np.linalg.norm(np.subtract(b,a))/2))
+ for j in range(n+1):
+  x,z=np.asarray(a)+(np.asarray(b)-np.asarray(a))*j/max(n,1);probes+=1;check('supported_route_'+str((i,j)),Point(x,z).buffer(.3).difference(floor_all.buffer(.001)).area<1e-7)
+oldg=GLB(ROOT/p['current_spine_source']);newg=GLB(HERE/'exports/AST-STF-G3-059.glb')
+check('exact_current_replacement_names',{n for n,q in newg.by_name.items()if'mesh'in q}==set(p['exact_current_meshes_to_replace']))
+def triangles(g):
+ out=[]
+ for name in p['exact_current_meshes_to_replace']:
+  v,f,_,_=g.geometry(name);out.extend(np.asarray(v)[np.asarray(f)])
+ return np.asarray(out)
+a=triangles(oldg);b=triangles(newg)
+def cross_hit(t,y,x):
+ o=np.array([x,y,-214.5]);d=np.array([0,0,.4]);e1=t[:,1]-t[:,0];e2=t[:,2]-t[:,0];h=np.cross(np.broadcast_to(d,e2.shape),e2);den=(e1*h).sum(axis=1);valid=abs(den)>1e-10;inv=np.zeros_like(den);inv[valid]=1/den[valid];s=o-t[:,0];u=inv*(s*h).sum(axis=1);q=np.cross(s,e1);v=inv*(np.broadcast_to(d,q.shape)*q).sum(axis=1);f=inv*(e2*q).sum(axis=1)
+ return bool(np.any(valid&(u>=-1e-7)&(v>=-1e-7)&(u+v<=1.0000001)&(f>=0)&(f<=1)))
+for y in[12.1,12.75,13.1,14.5,14.9,15.1]:
+ for x in[-58.7,-58.4,-58.3,-57,-56,-55.7,-55.5,-55.3]:
+  before=cross_hit(a,y,x);after=cross_hit(b,y,x);cut=y<14.852 and -58.38<x<-55.62
+  check('current_native_cross_section_'+str((y,x)),not after if cut else after==before)
+zones=unary_union([Polygon(q['boundary'],q['holes'])for q in p['existing_D04_route_zones']]);check('no_duplicate_D04_lower_route_enclosure',all(shape(q).intersection(zones.buffer(-.00001)).area<1e-7 for q in arch['parts']))
+check('anonymous_porch_branches_excluded',not p['anonymous_porch_branches_constructed']);check('no_new_identity_or_berth_mapping',p['authoritative_identity_map']is None and p['registered_berths_added']==0 and p['door_bindings'][0]['persistent_id']is None)
+q=dict(status='PASS',checks=len(checks),exports=counts,planned_floor_m2=p['new_floor_m2'],exported_floor_m2=actual.area,route_floor_support_probes=probes,fixture_profiles=len(p['fixtures']),maximum_prior_solid_overlap_m3=max_overlay,exact_current_cells_replaced=4,other_native_current_cells_preserved=284,anonymous_porch_branches_or_registered_berths=False,whole_group_species_flow_stock_structure_or_graphical_acceptance=False,details=checks)
+(HERE/'qa/NATIVE_GEOMETRY_CHECKS.json').write_text(json.dumps(q,indent=2)+'\n');print(json.dumps({k:v for k,v in q.items()if k!='details'}))

@@ -1,0 +1,76 @@
+{
+  "status": "PROPOSED_SOURCE_ROOTED_TRANSFER_LAYOUT_NOT_BUILT",
+  "source_review": "qa/STAR_ATLAS_SOURCE_REVIEW.json",
+  "receiving_owner": "Group1 via parent 01a10f57-470c-7080-835a-63e3a239700f",
+  "structural_scope_owner": "Group7",
+  "source_root": "Game/assets/models/STAR_ATLAS_D17_RECEIVING_FIRST_r001.glb",
+  "root_sha256": "45c1fa28654b2aa790f71d999a32da194138de7e506b3a2f42a25ee67e2f4752",
+  "preserve": [
+    "original 405-mesh runtime room",
+    "original two rest reservations",
+    "seven existing strongbacks and three lanterns unless source-owner revision explicitly replaces members",
+    "D17 street and D18 roof/route datums",
+    "all luxury roofs and private windows"
+  ],
+  "transfer_lines": [
+    {
+      "z": 33.1,
+      "existing_station": [
+        "D17R_FloorCross_05",
+        "D17R_Hanger_0_05"
+      ],
+      "outboard_floor_x": -75.95,
+      "inboard_return_x": -60.09,
+      "inboard_hanger_stagger": "Inboard Hanger_1_05 is at Z35.50, not Z33.10. The Z33.10 return meets FloorCross_05/FloorLong_1; longitudinal transfer to a real inboard hanger and its torsion/uplift restraint require explicit source/joint design."
+    },
+    {
+      "z": 39.0,
+      "existing_station": [
+        "D17R_FloorCross_06",
+        "D17R_Hanger_0_06"
+      ],
+      "outboard_floor_x": -75.95,
+      "inboard_return_x": -60.09
+    }
+  ],
+  "proposal": "Reserve two deeper transverse underfloor transfer frames at the exact retained hanger/crossmember stations, with a return across both existing street longitudinal frame lines. The three retained outboard longitudinal members can distribute floor loads to these two lines after member/joint design. This layout avoids posts onto absent D16 slabs and preserves original room fit-out; it is not a member-size or load-capacity approval.",
+  "receivers": [
+    "D17R_FloorLong_0",
+    "D17R_FloorLong_1",
+    "D17R_FloorCross_05",
+    "D17R_FloorCross_06",
+    "D17R_Hanger_0_05",
+    "D17R_Hanger_0_06",
+    "D17R_TrussLower_0",
+    "D17R_TrussLower_1",
+    "D17R_TrussUpper_0",
+    "D17R_TrussUpper_1",
+    "D17R_Hanger_1_05",
+    "D17R_Hanger_1_06"
+  ],
+  "load_path_to_prove": "Original room floor -> seven retained underfloor members -> proposed transverse transfer frames -> restrained joints at both street frame lines -> existing hangers -> longitudinal truss lower chords/posts/diagonals/upper chords -> documented primary ship/house receivers. The final receiver capacities and restrained couple are not established by current geometry.",
+  "underfloor_envelope": [
+    [
+      -75.95,
+      100.3,
+      32.96
+    ],
+    [
+      -60.09,
+      101.56,
+      39.14
+    ]
+  ],
+  "envelope_is_reserved_not_accepted": true,
+  "required_before_source_build": [
+    "Group1 exact underfloor true-face and route/room/roof clearance for the proposed envelope; current-main room and neighbour source pins",
+    "Source-owner selection of exact inboard primary receivers and the full connected native member/joint graph beyond the hanging-street frame",
+    "Primary load cases, section/joint/material specification, transverse bending/shear, torsion, local buckling and uplift/reaction checks for the 13.2m extension and short inboard return",
+    "Owner-reviewed native revision or additive scoped GLB with exact immutable-root pins and no room/roof cropping; rerun source, contact, route and graphical checks"
+  ],
+  "rejected": "No posts are placed onto absent lower slabs; no room skin, decorative roof or shell glazing is substituted for a primary receiver. No protected luxury roof is changed.",
+  "structural_capacity_accepted": false,
+  "shared_patch_applied": false,
+  "new_capacity": 0,
+  "receivers_review_note": "The eight conservative baseline envelope hits are the intended existing street frame/hanger receivers. No unrelated baseline AABB hit was found after guide exclusion, but this is not exact current-main or route clearance acceptance."
+}

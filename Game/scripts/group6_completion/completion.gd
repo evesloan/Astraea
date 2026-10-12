@@ -4,11 +4,11 @@ static func build(annex:Node3D,ship:Node3D)->Node3D:
 	assert(annex.name=="AquaticRiverSlideAnnex_WIP")
 	assert(annex.get_node_or_null("Group6Completion")==null,"Group 6 adapter must be applied exactly once")
 	var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
-	assert(FileAccess.get_sha256("res://assets/models/AquaticCompletion_r018.glb")==str(p.export_sha256))
+	assert(FileAccess.get_sha256("res://assets/models/AquaticCompletion_r019.glb")==str(p.export_sha256))
 	var previous:Node3D=annex.get_node("ExactAquaticArchitecture")
 	previous.free() # Runtime replacement only; original source/export stays immutable.
-	var visual:Node3D=load("res://assets/models/AquaticCompletion_r018.glb").instantiate()
-	visual.name="ExactAquaticArchitecture";annex.add_child(visual)
+	var visual:Node3D=load("res://assets/models/AquaticCompletion_r019.glb").instantiate()
+	visual.name="ExactAquaticArchitecture";annex.add_child(visual);visual.set_meta("checked_group6_export_sha256",str(p.export_sha256))
 	var root:=Node3D.new();root.name="Group6Completion";annex.add_child(root)
 	root.set_meta("persistent_id","group6_aquatic_construction_successor_001")
 	root.set_meta("production_accepted",false);root.set_meta("water_gameplay_implemented",false)
@@ -37,12 +37,18 @@ static func build(annex:Node3D,ship:Node3D)->Node3D:
 			control.name=str(fitting.id);control.fitting=fitting
 			control.source_mesh=visual.find_child(str(fitting.mesh),true,false);assert(control.source_mesh!=null)
 			root.add_child(control)
+	var optical:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/OPTICAL_PROFILE001.json"))
+	assert(str(optical.model_sha256)==str(p.export_sha256))
 	for fitting in p.additional_lights:
-		var light:=OmniLight3D.new();light.name=str(fitting.id)+"_PhysicalSource";root.add_child(light)
-		light.position=Vector3(fitting.xyz[0],fitting.xyz[1],fitting.xyz[2]);light.light_energy=float(fitting.energy)
-		light.omni_range=float(fitting.range_m);light.light_color=Color(1,.95,.86)
-		light.shadow_enabled=true;light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE
-		light.set_meta("illumination_anchor",Vector3(fitting.receiver_xyz[0],fitting.receiver_xyz[1],fitting.receiver_xyz[2]))
+		var spec:Dictionary=optical.fixtures[str(fitting.id)]
+		var source:=Vector3(fitting.xyz[0],fitting.xyz[1],fitting.xyz[2]);var target:=Vector3(spec.target_xyz[0],spec.target_xyz[1],spec.target_xyz[2])
+		assert(source.distance_to(Vector3(spec.source_xyz[0],spec.source_xyz[1],spec.source_xyz[2]))<.00001)
+		var light:=SpotLight3D.new();light.name=str(fitting.id)+"_PhysicalSource";root.add_child(light)
+		light.position=source;light.light_energy=float(spec.energy);light.light_color=Color(1,.95,.86)
+		light.spot_range=float(spec.range_m);light.spot_angle=float(spec.half_cone_degrees)
+		light.look_at(root.to_global(target),Vector3.RIGHT if absf((target-source).normalized().dot(Vector3.UP))>.99 else Vector3.UP)
+		light.shadow_enabled=true;light.set_meta("illumination_anchor",target)
+		light.set_meta("receiver_kind",str(spec.receiver_kind));light.set_meta("group6_optical_profile","OPTICAL_PROFILE001")
 	# Normal integration must call this before the existing budget configure step.
 	# Candidate tests add late and register explicitly without resetting old requests.
 	return root

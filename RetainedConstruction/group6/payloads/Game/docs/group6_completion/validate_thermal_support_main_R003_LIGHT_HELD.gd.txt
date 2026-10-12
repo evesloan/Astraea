@@ -1,0 +1,27 @@
+extends "res://tests/group6_completion/validate_thermal_support.gd"
+func run()->void:
+	var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
+	for i in range(20):await physics_frame
+	var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var actor_id:=actor.get_instance_id();var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");var floor_root:Node=ship.get_node("ShipSpace/ReceivedSectionStructuralFloors");var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+	var entries:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/THERMAL_ENTRY_CONTRACT.json"));var supports:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/THERMAL_SUPPORT_CONTRACT.json"))
+	for i in range(2):
+		var entry:Dictionary=entries.rooms[i];residency.prepare_position(vec(entry.entries[0].dry_xyz));var key:String=str(entry.programme_key);var room:Node3D=ship.get_node("ShipSpace/Districts/ReceivedSections/"+key);var room_id:=room.get_instance_id();var original_meshes:Array=[]
+		for mesh:MeshInstance3D in room.find_children("*","MeshInstance3D",true,false):original_meshes.append([mesh,mesh.get_instance_id(),mesh.global_transform])
+		var floor_ids:Array=[]
+		for suffix in ["_authored_floor","_spine_connection"]:floor_ids.append(floor_root.get_node(key+suffix).get_instance_id())
+		load("res://scripts/group6_completion/thermal_entries.gd").build(room);var addition:Node3D=load("res://scripts/group6_completion/thermal_support.gd").build(room);record(key+"_support_build",addition!=null)
+		# Test-only late registration preserves all original source requests. The
+		# integration call belongs before the owner's existing configure step.
+		for light:Light3D in addition.find_children("*","Light3D",true,false):budget.sources.append(light);budget.requested_shadow[light.get_instance_id()]=true
+		await thermal_checks(room,actor,entry);await support_checks(ship,room,actor,supports.rooms[i],budget)
+		record(key+"_same_original_room_id",room.get_instance_id()==room_id and str(room.get_meta("persistent_id"))==key)
+		var originals_unchanged:=true
+		for old in original_meshes:
+			var mesh:MeshInstance3D=old[0];originals_unchanged=originals_unchanged and mesh.get_instance_id()==old[1] and mesh.global_transform==old[2]
+		record(key+"_all_original_mesh_instances_transforms",originals_unchanged)
+		for j in range(2):record(key+"_same_floor_owner_"+str(j),floor_root.get_node(key+["_authored_floor","_spine_connection"][j]).get_instance_id()==floor_ids[j])
+		if not errors.is_empty():break
+	record("same_original_persistent_player",actor.get_instance_id()==actor_id)
+	record("four_entry_and_support_approaches_exercised",legs.size()==16 and support_evidence.size()==4)
+	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"entry_motion":thermal_motion,"support_motion":support_motion,"support_evidence":support_evidence,"unoccupied_geometry_envelopes":unoccupied_envelopes,"supported_independent_fixtures":8,"traversal_position_velocity_writes":0,"scope":"Focused actual-main retained thermal rooms/r003 entry paths, all original mesh identities/transforms, four floor owners, same persistent original player and four fixed dry support/task stations. Per-source shadow/visibility invariants count existing ship sources. Geometry turn proposal only; occupied water/hoist/chair/gravity/species, current integrator main adoption, final art and hardware held."}
+	FileAccess.open("res://docs/group6_completion/THERMAL_SUPPORT_MAIN003.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print("GROUP6 THERMAL SUPPORT MAIN ",result.status," ",errors," LEGS ",legs.size());quit(0 if errors.is_empty() else 1)

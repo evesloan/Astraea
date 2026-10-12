@@ -9,7 +9,12 @@ func _ready() -> void:
 	load("res://scripts/structural_floor_builder.gd").build_regions(ship.get_node("ShipSpace"), ship.stone, ship.ivory, definition.regions, {"staff_floor":ship.surface("staff_floor",Color.WHITE)}, "ReceivedSectionStructuralFloors")
 	load("res://scripts/received_sections.gd").build(ship)
 	for key in ["D08_directory_02", "D08_directory_03"]:
-		load("res://scripts/group6_completion/thermal_entries.gd").build(ship.get_node("ShipSpace/Districts/ReceivedSections/"+key))
+		var thermal_room:Node3D=ship.get_node("ShipSpace/Districts/ReceivedSections/"+key)
+		load("res://scripts/group6_completion/thermal_entries.gd").build(thermal_room)
+		var thermal_support:Node3D=load("res://scripts/group6_completion/thermal_support.gd").build(thermal_room)
+		var thermal_lights:Array[Light3D]=[]
+		for light:Light3D in thermal_support.find_children("*","Light3D",true,false):thermal_lights.append(light)
+		load("res://scripts/receiving_source_lights.gd").register(thermal_lights,ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/received_sections.gd).build(ship)")
 	load("res://scripts/listening_salon_candidate.gd").build(ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/listening_salon_candidate.gd).build(ship)")

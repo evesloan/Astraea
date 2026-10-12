@@ -1,0 +1,105 @@
+{
+  "status": "HOLD_GROUP6_ADOPTION",
+  "programme_key": "D09_directory_08",
+  "source_pins": {
+    "res://assets/models/AST-RTL-006.glb": "bc832a1c5e3f4be9b4eede07ae49f947a629051b9ee3c938099dc916a34981f4",
+    "BlenderCatalogue/assets/living_gifts_interior/source/AST-RTL-006.blend": "ee7fb3ec497b1fa2865f79e07e880a2dcc2211463619080431b8747ff2fae9ad"
+  },
+  "receiving_interface": {
+    "owner": "Group6 and shared integration",
+    "proposed_service_surface_plane_z": 242.9,
+    "nominal_interior_bay_z_end": 242.4,
+    "crosses_nominal_interior_bay": true,
+    "existing_floor_owner": "D09_living_gifts_floor",
+    "floor_new_or_changed": false,
+    "protected_column_xyz": [
+      50,
+      52.5,
+      244
+    ],
+    "protected_column_model": "AST-STR-001.glb",
+    "protected_column_sha256": "71a5b24944ff69ed1e90b9fd60297f0375515f1d94097761fda081f490696c30",
+    "existing_exterior_turn_center_xz": [
+      51.5,
+      247
+    ],
+    "status": "HOLD_OWNER_ADOPTION;source/controller/column tests do not establish cross-group operational acceptance"
+  },
+  "physical_candidate": {
+    "kind": "service_left",
+    "native": "BlenderCatalogue/assets/group5_completion_20261011/source/living_gifts_doors/living_service_left_r002.blend",
+    "native_sha256": "9f38a9caa659c44a1fccfcd9f89c5a0a132062fca161385382e9866857c9dc1a",
+    "model_path": "res://assets/models/group5/living_gifts_doors/living_service_left_r002.glb",
+    "model_sha256": "ca849c2a81295cc31adf6bf2606497b0a4f5947a88b901c7c59742dda6700ba1",
+    "width": 2.0,
+    "height": 3.0,
+    "source_meshes": 33,
+    "fresh_native_repeat_export_byte_identical": true,
+    "service_depth_pitch_m": 0.12,
+    "scope": "New source components only;actual original/native/column/floor fit,operating controls,physics and cross-group adoption tested separately",
+    "mount_reach_m": 0.535,
+    "selected_successor": {
+      "parent_native": "BlenderCatalogue/assets/group5_completion_20261011/source/living_gifts_doors/living_service_left_r001.blend",
+      "parent_native_sha256": "1e33c1207e1ebd58f1c5f49083b4560506e5b3d842ee00b33ad90e5a23b778a9",
+      "reason": "Actual original back-wall plinth contacts at first candidate242.65m plane;242.90m aft surface clears it with all four120mm-spaced leaves.Frame interface remains Group6/integration held"
+    },
+    "door_name": "Group5LivingServiceCandidate",
+    "physical_id": "group5:D09_directory_08:original_service_threshold",
+    "world_xyz": [
+      52.4,
+      52.5,
+      242.9
+    ],
+    "rotation_y": 0,
+    "controls": [
+      {
+        "id": "PublicControl",
+        "local_xyz": [
+          1.08,
+          1.35,
+          -0.505
+        ],
+        "rotation_y": 0,
+        "original_mount": "RTL_ServiceJamb_53.48",
+        "positive_contact_xyz_m": [
+          0.15999984741210938,
+          0.3199999928474426,
+          0.0049999999999954525
+        ]
+      },
+      {
+        "id": "InteriorControl",
+        "local_xyz": [
+          1.08,
+          1.35,
+          -0.795
+        ],
+        "rotation_y": 3.141592653589793,
+        "original_mount": "RTL_ServiceJamb_53.48",
+        "positive_contact_xyz_m": [
+          0.15999984741210938,
+          0.3199999928474426,
+          0.005000190734875787
+        ]
+      }
+    ],
+    "mode": "service_left",
+    "default": "closed",
+    "source_floor_owner": "D09_living_gifts_floor",
+    "source_floor_unchanged": true,
+    "public_stance_world_xyz": [
+      53.485,
+      52.53,
+      244.0
+    ],
+    "interior_stance_world_xyz": [
+      52.9,
+      52.53,
+      240.9
+    ],
+    "cross_group_adoption_required": true
+  },
+  "actual_local_evidence": "Game/artifacts/group5_living_gifts_doors.json;explicit candidate only,420 checks,37 continuous legs,12 operations,2 guards,272 moving-body poses;not shared interface adoption",
+  "shared_source_changes": 0,
+  "acceptance_needed": "Receiving/circulation review with unchanged floor,column,existing exterior turn,R070,lift/bypass andwet/void interfaces;combined merged tests"
+}

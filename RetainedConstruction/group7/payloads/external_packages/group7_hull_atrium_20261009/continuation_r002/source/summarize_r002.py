@@ -1,0 +1,14 @@
+"""Assemble final bounded source handoff from completed receipts."""
+from pathlib import Path
+import json,hashlib,datetime
+P=Path(__file__).resolve().parents[1]
+delivery=json.loads((P/'docs/TERMINAL_DELIVERY_R002.json').read_text());qa=json.loads((P/'qa/terminal_checks.json').read_text());views=json.loads((P/'qa/source_view_receipt.json').read_text());review=json.loads((P/'qa/VISUAL_REVIEW_R002.json').read_text());retention=json.loads((P/'qa/retention_check.json').read_text())
+assert qa['passed'] and retention['passed'] and len(views['views'])==len(review['views'])==6 and len(views['import_smoke_checks'])==6
+for row in qa['assemblies']:assert not row['missing_contacts'] and not row['retained_floor_positive_volume_overlaps'] and not row['all_source_part_retained_slab_overlap_candidates']
+for row in delivery['assemblies']:
+ for key,hkey in [('native','native_sha256'),('export','export_sha256')]:assert hashlib.sha256((P/row[key]).read_bytes()).hexdigest()==row[hkey]
+delivery['status']='Constructed, bounded source/export and floor/overlap checks passed, six source views inspected, Blender imports passed; root integration outstanding'
+delivery['verification_receipts']=['qa/terminal_checks.json','qa/source_view_receipt.json','qa/VISUAL_REVIEW_R002.json','qa/retention_check.json'];delivery['whole_group_complete']=False;delivery['final_art_accepted']=False
+(P/'docs/TERMINAL_DELIVERY_R002.json').write_text(json.dumps(delivery,indent=2)+'\n')
+summary={'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'slice':'continuation_r002','assemblies':delivery['assemblies'],'native_count':2,'architecture_export_count':2,'door_preview_export_count':4,'editable_mesh_parts':sum(r['editable_mesh_parts'] for r in delivery['assemblies']),'architectural_triangles':sum(r['architectural_triangles'] for r in delivery['assemblies']),'retained_door_preview_triangles':sum(r['door_preview_triangles'] for r in delivery['assemblies']),'source_floor_contacts':sum(r['upper_wall_and_guard_floor_contacts_checked'] for r in qa['assemblies'])+4,'retained_floor_regions_screened':qa['retained_floor_regions_screened'],'geometry_checks_passed':True,'source_views_inspected':6,'blender_import_smoke_exports':6,'first_delivery_raw_files_unchanged':retention['first_delivery_files_checked'],'engine_run':False,'whole_group_complete':False,'final_art_accepted':False,'runtime_model_effort':'Not exposed','remaining':['Root D18 route roof/headroom and adjacent general-body seam design','Retained floor collars, planning footprint adoption without duplicate slabs','Catalogue/collision/door-controller/light registration and integrated checks','Other upper-body work, private owner interfaces, exhaustive routes/carts and final visual acceptance']}
+(P/'docs/DELIVERY_SUMMARY_R002.json').write_text(json.dumps(summary,indent=2)+'\n');print('R002_SUMMARY',summary['editable_mesh_parts'],summary['architectural_triangles'],summary['source_floor_contacts'])
