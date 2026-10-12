@@ -1,3 +1,5 @@
+Latest northern Tidal room successor: see [TIDAL_NORTH_ROOM_HANDOFF.md](TIDAL_NORTH_ROOM_HANDOFF.md). The prior canopy picture was rejected; architecture/material/water/readability are construction requirements. The new r005 candidate replaces only northern bay2 in runtime, preserving the earlier sources and the other bays. This does not accept the whole group.
+
 # Five retained thermal recovery areas — r004
 
 This is an inactive Group 6 fit-out around the three existing Tidal and two existing Mineral recovery benches. It adds supported open curved or folded canopies, ventilated back screens, low side returns, small fixed vessel-rest surfaces and twelve mounted tasks. All five benches remain exactly in place with their original meshes/materials. No seat, room, floor owner or capacity is added. The two source documents inherit 448 prior-context meshes and 19 packed resources, and add 368 mesh objects, including four exact-part successors for one original corner fitting.

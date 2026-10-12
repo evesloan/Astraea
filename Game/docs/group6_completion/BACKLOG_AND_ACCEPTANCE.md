@@ -1,3 +1,5 @@
+Latest northern Tidal room successor: see [TIDAL_NORTH_ROOM_HANDOFF.md](TIDAL_NORTH_ROOM_HANDOFF.md). The prior canopy picture was rejected; architecture/material/water/readability are construction requirements. The new r005 candidate replaces only northern bay2 in runtime, preserving the earlier sources and the other bays. This does not accept the whole group.
+
 # Group 6 scoped acceptance and remaining interfaces
 
 | Criterion | Implemented and evidence | Unfinished acceptance |

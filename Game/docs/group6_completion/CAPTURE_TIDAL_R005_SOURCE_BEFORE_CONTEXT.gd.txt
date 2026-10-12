@@ -1,0 +1,36 @@
+extends SceneTree
+func _initialize()->void:call_deferred("run")
+func run()->void:
+	var helper:Node3D=load("res://scripts/ship.gd").new()
+	var view:=SubViewport.new();view.size=Vector2i(1920,1080);view.own_world_3d=true;view.render_target_update_mode=SubViewport.UPDATE_ALWAYS;view.positional_shadow_atlas_16_bits=false;root.add_child(view)
+	var host:=Node3D.new();view.add_child(host)
+	var environment:=WorldEnvironment.new();environment.environment=Environment.new();environment.environment.ambient_light_source=Environment.AMBIENT_SOURCE_COLOR;environment.environment.ambient_light_color=Color(.75,.81,.86);environment.environment.ambient_light_energy=.2;environment.environment.background_mode=Environment.BG_COLOR;environment.environment.background_color=Color(.015,.02,.035);environment.environment.reflected_light_source=Environment.REFLECTION_SOURCE_DISABLED;environment.environment.glow_enabled=true;environment.environment.glow_intensity=.18;environment.environment.glow_hdr_threshold=.95;environment.environment.ssao_enabled=true;environment.environment.ssao_radius=.65;environment.environment.ssao_intensity=.45;host.add_child(environment)
+	helper.stone=helper.surface("warm_stone",Color.WHITE);helper.ivory=helper.surface("ivory_enamel",Color.WHITE)
+	var definitions:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/THERMAL_ENTRY_CONTRACT.json"))
+	var floor_data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/received_structural_meshes.json"));var regions:Array=[]
+	for region in floor_data.regions:
+		if str(region.id).begins_with("D08_directory_02_"):regions.append(region)
+	load("res://scripts/structural_floor_builder.gd").build_regions(host,helper.stone,helper.ivory,regions,{},"OriginalThermalCompilerFloors")
+	for entry in definitions.rooms:
+		if str(entry.programme_key)!="D08_directory_02":continue
+		var room:Node3D=helper.model(host,str(entry.current_room_runtime).get_file(),str(entry.programme_key),Vector3.ZERO);room.set_meta("programme_key",str(entry.programme_key));room.set_meta("persistent_id",str(entry.programme_key))
+		load("res://scripts/group6_completion/thermal_entries.gd").build(room);load("res://scripts/group6_completion/thermal_support.gd").build(room);load("res://scripts/group6_completion/thermal_recovery.gd").build(room,true);load("res://scripts/group6_completion/tidal_north_room.gd").build(room)
+	var actor:CharacterBody3D=load("res://scripts/player.gd").new();host.add_child(actor);actor.set_physics_process(false);actor.set_controls_enabled(false)
+	var budget:Node=load("res://scripts/lighting_budget.gd").new();host.add_child(budget);budget.set_process(false);actor.global_position=Vector3(38.65,44.93,-431.7)
+	for i in range(3):await physics_frame
+	budget.configure(host,actor)
+	var post:=SubViewport.new();post.disable_3d=true;post.size=Vector2i(640,360);post.render_target_update_mode=SubViewport.UPDATE_ALWAYS;root.add_child(post)
+	var screen:=TextureRect.new();screen.size=Vector2(post.size);screen.texture=view.get_texture();screen.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST;post.add_child(screen);var material:=ShaderMaterial.new();material.shader=load("res://shaders/retro.gdshader");screen.material=material
+	var output:="res://docs/group6_completion/tidal_north_room005/";DirAccess.make_dir_recursive_absolute(output);var records:Array=[]
+	for spec in [["wet_gallery",Vector3(42.05,44.93,-423),Vector3(34.3,46.2,-414)], ["recovery_room",Vector3(45.15,44.03,-422.3),Vector3(44.65,46.2,-412.0)], ["chamber_context",Vector3(42.05,44.93,-405.25),Vector3(39.3,45.8,-417.0)]]:
+		actor.global_position=spec[1];var d:Vector3=spec[2]-actor.camera.global_position;actor.rotation.y=atan2(-d.x,-d.z);actor.camera.rotation.x=atan2(d.y,Vector2(d.x,d.z).length());actor.camera.fov=72;budget.refresh()
+		for mode in ["default_retro","clear_setting"]:
+			view.size=Vector2i(640,360) if mode=="default_retro" else Vector2i(1920,1080);material.set_shader_parameter("effects_enabled",mode=="default_retro");environment.environment.glow_enabled=mode=="default_retro";environment.environment.ssao_enabled=mode=="default_retro"
+			for i in range(10):await process_frame
+			await RenderingServer.frame_post_draw
+			var picture:Image=(post if mode=="default_retro" else view).get_texture().get_image();assert(not picture.is_empty());var file:String=str(spec[0])+"_"+mode+".png";assert(picture.save_png(output+file)==OK)
+			var active:Array=[]
+			for light:Light3D in budget.sources:
+				if light.visible:active.append(str(light.name))
+			records.append({"file":file,"world_resolution":[view.size.x,view.size.y],"effects_enabled":mode=="default_retro","source":"TidalNorthRoom_r005 candidate with unchanged retained entry001 export, r003 entries, r004 support and r004 recovery with scoped bay2 successor","room_contract_sha256":FileAccess.get_sha256("res://data/architecture/group6_completion/TIDAL_NORTH_ROOM_CONTRACT.json"),"support_contract_sha256":FileAccess.get_sha256("res://data/architecture/group6_completion/THERMAL_SUPPORT_CONTRACT.json"),"recovery_contract_sha256":FileAccess.get_sha256("res://data/architecture/group6_completion/THERMAL_RECOVERY_CONTRACT.json"),"eye_xyz":[actor.camera.global_position.x,actor.camera.global_position.y,actor.camera.global_position.z],"look_xyz":[spec[2].x,spec[2].y,spec[2].z],"active_sources":active,"ambient_energy":.2,"adapter":RenderingServer.get_video_adapter_name(),"scope":"Local source candidate of northern Tidal thermal room/two original compiler floors, retained transfer stations, connected vault/cove/recovery niche, bounded water appearance and mounted task sources; wide original-player-height view, real imported materials, original player camera, protected shared light budget, existing retro shader and original .2 ambient/GL Compatibility. Surrounding ship/background sky omitted. Actual-main graphic startup failed; no whole-scene, moving route, target-hardware or final-art acceptance."})
+	FileAccess.open(output+"CAPTURE_RECEIPT.json",FileAccess.WRITE).store_string(JSON.stringify(records,"  "));helper.free();print("GROUP6 LOCAL THERMAL CAPTURE PASS ",records.size());quit()
