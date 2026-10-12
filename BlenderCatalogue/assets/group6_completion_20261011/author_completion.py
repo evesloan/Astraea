@@ -8,7 +8,7 @@ from mathutils import Vector,Matrix
 
 P=Path(__file__).resolve().parent; R=P.parents[2]
 ORIGINAL=R/'external_packages/aquatic_district_20261009/source/aquatic_district.blend'
-assert not (P/'AquaticCompletion_r015.blend').exists(), 'Choose a new unique revision before authoring; retained natives are immutable'
+assert not (P/'AquaticCompletion_r017.blend').exists(), 'Choose a new unique revision before authoring; retained natives are immutable'
 assert hashlib.sha256(ORIGINAL.read_bytes()).hexdigest()=='80c7c1756d4bbe9e74b37e150797115eff5f200977718b4f661f50a3849c9a28'
 bpy.ops.wm.open_mainfile(filepath=str(ORIGINAL))
 S=bpy.context.scene
@@ -126,6 +126,61 @@ slab_polygon('continuous_launch_gallery',[(63,194.9),(98.2,194.9),(98.2,195),(99
 rod('top_landing_east_guard_extension',(99.5,50.45,243.6),(99.5,50.45,244),.035)
 rod('top_landing_east_guard_corner',(99.5,50.45,244),(98.9,50.45,244),.035)
 rod('top_landing_east_guard_corner_post',(99.5,49.35,244),(99.5,50.45,244),.04)
+
+# Two physical river entries follow the protected original bank boundary.
+# They bypass retained seats/hoists, preserve the 102.52m closed loop and replace
+# only their legacy overlapping treads/rails and the exact entry wall segments.
+RIVER_ENTRIES=[]
+river_plan=json.loads((R/'Game/data/architecture/AQUATIC_ANNEX_PLAN.json').read_text())['river']
+outer=river_plan['outer_xz'];outer=outer[:-1] if outer[0]==outer[-1] else outer
+for label,cx,sign in [('south_board',79.0,-1),('north_recovery',75.9,1)]:
+    def edge_at(x):
+        hits=[]
+        for a,b in zip(outer,outer[1:]+outer[:1]):
+            if abs(b[0]-a[0])<1e-8:continue
+            if min(a[0],b[0])-1e-7<=x<=max(a[0],b[0])+1e-7:
+                t=(x-a[0])/(b[0]-a[0]);hits.append(a[1]+t*(b[1]-a[1]))
+        return max(hits) if sign<0 else min(hits)
+    bank=edge_at(cx);end=bank+sign*2.1
+    for j in range(4):
+        old='AQD__'+label+'_entry_tread_'+str(j);assert old in bpy.data.objects
+        bpy.data.objects[old].hide_render=True;excluded.append(old);bpy.data.objects[old]['group6_exchange_excluded']='visible continuous entry follows bank and bypasses original transfer seat'
+    rail_prefix='south' if sign<0 else 'north'
+    for o in list(S.objects):
+        if o.name.startswith(('AQD__'+rail_prefix+'_entry_grab','AQD__'+rail_prefix+'_entry_grab_anchor')):
+            o.hide_render=True;excluded.append(o.name);o['group6_exchange_excluded']='side rails move outside the actual entry walk line'
+    # Precisely remove only outer wall/coping members crossing this source inlet.
+    for j,(a,b) in enumerate(zip(outer,outer[1:]+outer[:1])):
+        mx=(a[0]+b[0])/2;mz=(a[1]+b[1])/2
+        if cx-.85<=mx<=cx+.85 and (mz>235 if sign<0 else mz<196):
+            for tag in ['wall','coping']:
+                old='AQD__river_outer_'+tag+'_'+str(j)
+                if old in bpy.data.objects and old not in excluded:
+                    bpy.data.objects[old].hide_render=True;excluded.append(old);bpy.data.objects[old]['group6_exchange_excluded']='river entry opening only; no closed-loop or water corridor replacement'
+    rows=[cx-.7+j*.175 for j in range(9)];vs=[]
+    for x in rows:
+        z=edge_at(x);vs += [(x,44.3,z),(x,44.3,end),(x,45.45,z),(x,44.35,end)]
+    fs=[]
+    for j in range(8):
+        a=j*4;b=a+4;fs += [(a,b,b+1,a+1),(a+2,a+3,b+3,b+2),(a,a+2,b+2,b),(a+1,b+1,b+3,a+3)]
+    fs += [(0,1,3,2),(32,34,35,33)]
+    mesh('river_'+label+'_continuous_entry',vs,fs,'stone','basin_entry')
+    for j in range(9):
+        vs=[]
+        for x in [cx-.625+k*.15625 for k in range(9)]:
+            z=edge_at(x)
+            for t in [(j+.3)/9,(j+.7)/9]:vs.append((x,45.45-1.1*t+.002,z+t*(end-z)))
+        mesh('river_'+label+'_entry_grip_'+str(j),vs,[(k*2,k*2+1,k*2+3,k*2+2) for k in range(8)],'grip','finish_visual')
+    for side in [-1,1]:
+        x=cx+side*.84;z=edge_at(x)
+        rod('river_'+label+'_side_rail_'+str(side),(x,46.55,z-sign*.35),(x,45.35,end),.035)
+        rod('river_'+label+'_rail_bearing_'+str(side),(x,44.3,end),(x,45.35,end),.035)
+    # Actual dry approach is beside the old seat, not on it.
+    dry=bank-sign*1.1
+    case_x=cx+1.45 if sign<0 else cx-1.45
+    box('river_'+label+'_recovery_case',(case_x,46.12,dry),(.52,.75,.30),'ivory')
+    for x in [case_x-.17,case_x+.17]:rod('river_'+label+'_case_bearing_'+str(x),(x,45.45,dry),(x,45.745,dry),.03)
+    RIVER_ENTRIES.append({'id':'aquatic_river_'+label+'_entry_001','center_x':cx,'bank_z':bank,'low_end_z':end,'bank_y':45.45,'bed_y':44.3,'path_low_y':44.35,'clear_width_m':1.4,'source_floor_owner':'retained_river_shell_and_wet_promenade','dry_approach_xyz':[cx,45.45,dry],'supported_bed_stance_xyz':[cx,44.3,end+sign*.45],'original_seat_hoist_and_eight_static_rings_preserved':True,'swimming_buoyancy_AFK_mount_hoist_or_wheelchair_accepted':False})
 
 # High privacy transoms, fixed handle targets and deep reveals use original rooms.
 DOORS=[]
@@ -357,8 +412,8 @@ assert all(digest(bpy.data.objects[n])==d for n,d in before.items()),'Original o
 assert all(hashlib.sha256(bpy.data.images[n].packed_file.data).hexdigest()==h for n,h in packed.items())
 audit={'status':'PASS','original_native_sha256':hashlib.sha256(ORIGINAL.read_bytes()).hexdigest(),'original_meshes_preserved':len(before),'original_mesh_semantics_sha256':hashlib.sha256(json.dumps(before,sort_keys=True,separators=(',',':')).encode()).hexdigest(),'packed_images_preserved':packed,'original_mesh_hashes':before,'exchange_exclusions':excluded,'added_meshes':len(NEW),'added_light_fittings':len(LIGHTS),'native_engine':'Blender '+bpy.app.version_string,'geometry_transform_uv_material_modifiers_preserved':True}
 (P/'NATIVE_AUDIT.json').write_text(json.dumps(audit,indent=2)+'\n')
-(P/'FIT_CONTRACT.json').write_text(json.dumps({'schema':1,'status':'inactive Group6 handoff','programme_key':'D08_directory_08','doors':DOORS,'additional_lights':LIGHTS,'exclusions':excluded,'original_source':str(ORIGINAL.relative_to(R)),'new_floor_area_m2':0,'new_capacity':0,'thermal_entry_courts':THERMAL,'water_care_cell':WATER_CARE},indent=2)+'\n')
-bpy.ops.wm.save_as_mainfile(filepath=str(P/'AquaticCompletion_r015.blend'))
+(P/'FIT_CONTRACT.json').write_text(json.dumps({'schema':1,'status':'inactive Group6 handoff','programme_key':'D08_directory_08','doors':DOORS,'additional_lights':LIGHTS,'exclusions':excluded,'original_source':str(ORIGINAL.relative_to(R)),'new_floor_area_m2':0,'new_capacity':0,'thermal_entry_courts':THERMAL,'water_care_cell':WATER_CARE,'river_entry_interfaces':RIVER_ENTRIES},indent=2)+'\n')
+bpy.ops.wm.save_as_mainfile(filepath=str(P/'AquaticCompletion_r017.blend'))
 
 # Exchange has explicit roles; originals and new meshes share unchanged materials.
 dg=bpy.context.evaluated_depsgraph_get();exchange=bpy.data.scenes.new('Group6Exchange');bpy.context.window.scene=exchange;groups={};policy={};parts={}
@@ -376,6 +431,6 @@ for key,obs in groups.items():
     role='privacy_leaf' if 'privacy_leaf' in key else obs[0][2]
     q['kind']=role;parts[key]=names;policy[key]=role
 bpy.ops.object.select_all(action='SELECT')
-bpy.ops.export_scene.gltf(filepath=str(P/'AquaticCompletion_r015.glb'),export_format='GLB',use_selection=True,use_active_scene=True,export_apply=True,export_extras=True,export_lights=False,export_cameras=False)
+bpy.ops.export_scene.gltf(filepath=str(P/'AquaticCompletion_r017.glb'),export_format='GLB',use_selection=True,use_active_scene=True,export_apply=True,export_extras=True,export_lights=False,export_cameras=False)
 (P/'EXCHANGE_PARTS.json').write_text(json.dumps(parts,indent=2)+'\n');(P/'COLLISION_POLICY.json').write_text(json.dumps(policy,indent=2)+'\n')
 print('GROUP6 SOURCE PASS',audit['original_meshes_preserved'],audit['added_meshes'],len(policy))

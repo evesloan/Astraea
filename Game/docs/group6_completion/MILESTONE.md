@@ -1,47 +1,13 @@
-# Group 6 continuation — r015 water-care construction
+# Group 6 continuation — r017 river entries
 
-The annex now has an enclosed internal water-care bay, two vessel housings,
-separate headers/formed joints/supports, physical gauges, tools/closed-return edge,
-two task fixtures and an operating gate made from the exact registered
-AST-STF-008 staff threshold. Two source handwheels operate through normal RMB/E,
-with bounded mechanical rotation and return. Pumping, filtration, flow, pressure,
-temperature, permissions and save operation are not implemented or accepted.
+Both original river boarding bays now have visible continuous 1.4 m wide bank-to-bed surfaces, flush grip strips, handholds outside the walking line and separate grounded recovery cases. Only the intersecting rim pieces, overlapping old treads and old entry handholds are excluded from exchange; all originals remain immutable in the native. The 102.5187397 m closed loop, water boundary/bed, transfer seats, hoists and eight static rings remain.
 
-Focused actual-main validation passes 59 checks/18 original persistent-player
-legs. Local validation passes 42 checks/18 legs. Gate opening/closing obstruction
-rejection, inside/outside operation, both isolators and retained stock/refreshment
-access are covered. One supported fixture seed precedes all traversal. The witness
-records 1,995 physics samples, maximum frame movement 0.052 m, minimum Y45.45 and
-no route position/velocity writes. The existing helper sets facing yaw per leg.
+Focused actual-main validation passes 13 checks and four bank/bed-return legs. Local validation passes ten checks/four legs. Each of the two independent supported dry fixtures records 204 physics samples; maximum frame movement is 0.060 m and minimum Y44.2994. The original controller handles every route; no traversal position/velocity writes, hidden walk collider or mask change. The existing test helper sets facing yaw per leg. These are source-ground entry tests, not swimming or transfer-chair acceptance.
 
-Fresh native checks preserve all 1,640 original meshes/16 packed images and the
-exact registered gate source. 138 floor-support points, 54,678 conservative
-furniture/original-solid comparisons, 16 real mounting contacts and 12 registered
-reference mesh hashes pass; repeat export is byte identical. The native contains
-345 new authored meshes plus 12 registered reference meshes and 17 added mounted
-sources. No floor owner, destination, capacity, shared registry/root or
-main/checkpoint ref is changed. Prior recovery/thermal/privacy construction and
-failed stair evidence are retained.
+Fresh saved-native verification passes 1,640 original mesh semantics, 16 packed images, 186 new floor-support points, 53,664 conservative furniture/original-solid comparisons, 16 real mounting contacts and 12 exact registered gate reference meshes. The native contains 379 authored new meshes plus 12 reference meshes, and 17 added fixture sources. A fresh export is byte identical. No destination, capacity, floor owner, shared registry/root or main/checkpoint ref changes.
 
-The initial care test's reserved-name import assertion produced a false zero-case
-PASS. `WATER_CARE001_INTERPRETATION.json` records it as HOLD; raw evidence remains.
-The motion-body origin/target failure is also retained. Final checks require all
-18 traversal cases, and engine/script errors override any printed PASS.
+Actual wide source view SOURCE_AQUATIC_WIDE019 and drained entry cutaways SOUTH019/NORTH019 were reviewed. The original obscured detail017 captures are retained as failed review attempts. Rendering cutaways are recorded and never saved into the native. Library identity libfile_0748fa62d9608191b618189aa71f578e is version5 with caption: “Astraea Group 6 r017 — actual saved-source aquatic annex overview with two traversable river bank/bed entries, thermal courts and internal water-care bay; neutral studio cutaway, swimming/float/slide gameplay unaccepted.” Prior versions retain their source captions.
 
-The current Library image remains the same identity at **version4**, caption:
-“Astraea Group 6 r015 — actual saved-source annex overview with internal water-care
-bay, service gate and mechanical isolators; neutral studio cutaway, fluid gameplay
-unaccepted.” Version3 was r013/WIDE010 and must retain that older caption. The wide
-and care-detail images are actual source views; roof/gallery/near-wall staging is
-recorded and never saved into the native.
+The same adapter now selects r017 once before the existing light budget. All r010/r013/r015 checkpoints, source revisions and failed controller/source attempts remain. Earlier care/thermal/privacy/launch routes are historical; this focused run is not a fresh full-annex regression. WATER_SERVICE_INTERFACE.json still reserves two internal flanges and the shared onward/cascade connection.
 
-`WATER_SERVICE_INTERFACE.json` contracts two flanges inside the original X100
-portal and preserves the restaurant cascade interface for Group1/3/4/8. No outside
-service floor, restaurant receiver, stream or shared root is edited. Integration
-uses the same adapter once, before the existing light budget, selecting r015.
-Prior broad routes are historical, not fresh full r015 acceptance.
-
-This is a verified checkpoint, not a stopping point. River boarding/disembarkation
-is the next independent construction slice. Swimming/buoyancy/AFK/slide/hoist,
-shared routes, fluid/thermal/gravity/species operation, engineering and final art
-remain open. **Group6 is not accepted as a whole.**
+This checkpoint is not whole-group acceptance. Swimming/current/air, buoyancy, AFK mount/dismount/interruption/pause/recovery/save, slide admission/ride physics, operational hoists, gravity/temperature/species, shared changing/service/cascade routes, engineering and final art remain open. Shared player integration belongs to the integration owner. Independent review of the other four retained thermal targets continues.

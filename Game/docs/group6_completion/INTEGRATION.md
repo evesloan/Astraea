@@ -6,8 +6,8 @@ the shared integration owner, construction thread `01a11d7f-8ef6-70bc-858d-bdf8d
 It does not modify `ship.gd`, floor registries, programme/capacity ledgers,
 catalogue registries, master sources, main, or checkpoint references.
 
-The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r015.blend`.
-Its runtime export is `Game/assets/models/AquaticCompletion_r015.glb`.
+The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r017.blend`.
+Its runtime export is `Game/assets/models/AquaticCompletion_r017.glb`.
 The adapter consumes `Game/data/architecture/group6_completion/FIT_CONTRACT.json`
 and `COLLISION_POLICY.json`. The source audit preserves all 1,640 original mesh
 definitions/transforms/UVs/material assignments/modifiers and 16 packed image
@@ -166,3 +166,11 @@ Library image identity is unchanged at version4, source r015/WIDE015. Caption:
 bay, service gate and mechanical isolators; neutral studio cutaway, fluid gameplay
 unaccepted.” Version3 remains the older r013/WIDE010 view. The gallery/roof/near-wall
 cutaway detail is staged only for source review, never saved back into the native.
+
+## r017 river bank/bed continuation
+
+The current adapter selects r017. Two protected original boarding bays have source-authored continuous 1.4 m entry surfaces and separate side rails/cases. `FIT_CONTRACT.json:river_entry_interfaces` gives exact bank/low/bed fixtures. Existing compiler river bed and floor owners remain; no loop replacement or capacity addition. Original tread/rim/handhold source pieces remain native and are narrowly excluded from exchange.
+
+`RIVER_ENTRY001.json` passes ten local checks/four legs; `RIVER_ENTRY_MAIN001.json` passes 13 actual-main checks/four legs with the same original persistent player. Each independent supported dry fixture includes 204 motion samples, max frame displacement <0.060 m and minimum Y44.2994. Normal input/contact performs the paths; no traversal translation/velocity writes. Facing yaw is set by the retained walk helper. This does not accept swimming/current, a tube mount, chair/hoist operation or species/final art.
+
+Native/repeat-export verification, current wide/source cutaway receipt and Library version5/caption are recorded in `MILESTONE.md`, `SAVED_NATIVE_VERIFICATION.json`, `RIVER_VIEW_RECEIPT019.json` and `LIBRARY_PHOTO_DELIVERY.json`. The two blank roof-occluded detail017 images remain honestly failed. No shared controller/registry/root is edited. Earlier broader validation is historical rather than freshly repeated whole-source acceptance.
