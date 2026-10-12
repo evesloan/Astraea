@@ -1,0 +1,115 @@
+"""Exact convex source components plus conservative protected floor volumes.
+
+Never interpret an empty triangle intersection as permission to enter a room.
+Unknown/nonconvex source components remain held when their bounds intersect.
+"""
+from pathlib import Path
+import json,gzip,hashlib,sys,collections,itertools
+import numpy as np
+from shapely.geometry import Polygon,MultiPoint,box
+from shapely.ops import unary_union
+
+P=Path(__file__).resolve().parents[1];C=P.parent;R=C.parents[1]
+sys.path.insert(0,str(C.parent/'group7_hull_atrium_20261009/source'))
+from check_retained_exports import read,acc,nodes
+survey=json.loads((P/'qa/ACTUAL_OCCLUDERS.json').read_text());assert survey['status']=='PASS'
+census={q['path']:q for q in json.loads(gzip.decompress((C/'qa/RETAINED_RUNTIME_CENSUS.json.gz').read_bytes()))['meshes']}
+fields=json.loads((C/'qa/OMITTED_SOURCE_FIELDS.json').read_text());pins={};meshes={};models={};correlation=[];floor_guards=[]
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def axes_unique(a):
+    if not len(a):return np.empty((0,3))
+    a=np.array(a,float);a=a[np.linalg.norm(a,axis=1)>1e-8];a/=np.linalg.norm(a,axis=1)[:,None]
+    for row in a:
+        first=np.flatnonzero(np.abs(row)>1e-7)[0]
+        if row[first]<0:row*=-1
+    return np.unique(np.round(a,7),axis=0)
+def components(tri):
+    # Weld only actual shared edges. Normals/UV seam duplication cannot split
+    # a solid face into an unsafe artificial surface-only component.
+    quant=np.round(tri.reshape(-1,3)/.00002).astype(np.int64);_,inv=np.unique(quant,axis=0,return_inverse=True);indices=inv.reshape(-1,3)
+    parent=list(range(len(tri)));edges={}
+    def find(i):
+        while parent[i]!=i:parent[i]=parent[parent[i]];i=parent[i]
+        return i
+    for i,row in enumerate(indices):
+        for a,b in [(row[0],row[1]),(row[1],row[2]),(row[2],row[0])]:
+            key=tuple(sorted((int(a),int(b))))
+            if key in edges:parent[find(i)]=find(edges[key])
+            else:edges[key]=i
+    groups=collections.defaultdict(list)
+    for i in range(len(tri)):groups[find(i)].append(i)
+    out=[]
+    for ids in groups.values():
+        t=tri[ids];verts=np.unique(t.reshape(-1,3),axis=0).astype(float);center=verts.mean(axis=0);edge_counts=collections.Counter(tuple(sorted((int(a),int(b))))for i in ids for a,b in [(indices[i,0],indices[i,1]),(indices[i,1],indices[i,2]),(indices[i,2],indices[i,0])])
+        closed=all(v==2 for v in edge_counts.values());n=np.cross(t[:,1]-t[:,0],t[:,2]-t[:,0]);length=np.linalg.norm(n,axis=1);n=n[length>1e-9]/length[length>1e-9,None];points=t[length>1e-9,0];n[np.einsum('ij,ij->i',n,center-points)>0]*=-1
+        convex=closed and bool(len(n)) and len(verts)<=256 and bool(np.max(n@verts.T-np.einsum('ij,ij->i',n,points)[:,None])<.0001)
+        dirs=np.concatenate([t[:,1]-t[:,0],t[:,2]-t[:,1],t[:,0]-t[:,2]])
+        out.append({'lo':verts.min(axis=0),'hi':verts.max(axis=0),'verts':verts,'normals':axes_unique(n),'edges':axes_unique(dirs),'closed':closed,'convex':convex,'triangles':len(t)})
+    return out
+def prism_axes(v):
+    faces=[[2,1,0],[3,4,5],[0,1,4,3],[1,2,5,4],[2,0,3,5]];normals=[];edges=[]
+    for face in faces:
+        a,b,c=v[face[:3]];normals.append(np.cross(b-a,c-a))
+        for i,j in zip(face,face[1:]+face[:1]):edges.append(v[j]-v[i])
+    return axes_unique(normals),axes_unique(edges)
+def sat_disjoint(v,normal,edge,source):
+    cross=np.cross(edge[:,None,:],source['edges'][None,:,:]).reshape(-1,3);axes=axes_unique(np.concatenate([normal,source['normals'],cross]));a=axes@v.T;b=axes@source['verts'].T
+    # A 0.5mm clear separation is required; touching receivers are held for
+    # an explicit collar/owner contract, not silently overlaid.
+    return bool(np.any((a.max(axis=1)<b.min(axis=1)-.0005)|(b.max(axis=1)<a.min(axis=1)-.0005)))
+for resource in sorted({q['mesh_resource_path'].split('::')[0]for q in survey['meshes']}):
+    file=R/'Game'/resource.removeprefix('res://');pins[file.relative_to(R).as_posix()]=sha(file);d,b=read(file);model={};max_y=-1e9;floors=[]
+    for n,m in nodes(d):
+        triangles=[]
+        for prim in d['meshes'][n['mesh']]['primitives']:
+            a=acc(d,b,prim['attributes']['POSITION']);a=(np.c_[a,np.ones(len(a))]@m.T)[:,:3];idx=acc(d,b,prim['indices']).ravel();triangles.append(a[idx].reshape(-1,3,3))
+        tri=np.concatenate(triangles);model[n['name']]=tri;max_y=max(max_y,float(tri[:,:,1].max()))
+        if n.get('extras',{}).get('category')=='floor':
+            horizontal=np.ptp(tri[:,:,1],axis=1)<.0001
+            for t in tri[horizontal]:
+                poly=Polygon(t[:,[0,2]])
+                if poly.area>.01:floors.append((float(t[:,1].max()),poly,n['name']))
+    models[resource]=model
+    grouped=collections.defaultdict(list)
+    for y,poly,name in floors:grouped[(round(y,4),name)].append(poly)
+    for (y,name),poly in grouped.items():floor_guards.append({'floor_y':y-.01,'upper_y':max_y+.01,'poly':unary_union(poly).buffer(.01),'source':file.relative_to(R).as_posix(),'name':name})
+for row in survey['meshes']:
+    file=P/'qa/occluders'/row['filename'];a=np.fromfile(file,dtype='<f4').astype(float).reshape(-1,3,3);assert len(a)==row['triangles'];assert np.isfinite(a).all();lo=a.reshape(-1,3).min(axis=0);hi=a.reshape(-1,3).max(axis=0);old=census[row['path']]
+    assert np.all(lo>=np.array(old['minimum'])-.0001)and np.all(hi<=np.array(old['maximum'])+.0001)
+    source=models[row['mesh_resource_path'].split('::')[0]][row['path'].split('/')[-1]];assert len(source)==len(a)
+    # The retained importer compresses vertex attributes to 16-bit normalized
+    # positions. Correlate within its measured mesh-scale quantization budget;
+    # clearance uses actual decompressed Godot triangles, not source guesses.
+    source_vertices=np.unique(source.reshape(-1,3),axis=0);tol=float(np.max(np.ptp(source_vertices,axis=0))/65535+.0002);buckets=collections.defaultdict(list)
+    for q in source_vertices:buckets[tuple(np.floor(q/tol).astype(int))].append(q)
+    maximum_error=0
+    for q in np.unique(a.reshape(-1,3),axis=0):
+        key=np.floor(q/tol).astype(int);near=[point for off in itertools.product([-1,0,1],repeat=3)for point in buckets.get(tuple(key+off),[])];assert near,row['path'];error=float(np.min(np.max(np.abs(np.array(near)-q),axis=1)));assert error<=tol,(row['path'],error,tol);maximum_error=max(maximum_error,error)
+    comp=components(a);meshes[row['path']]={'components':comp,'category':row['extras'].get('category',row['extras'].get('construction_role','unknown'))}
+    correlation.append({'path':row['path'],'triangles':len(a),'actual_triangles_sha256':sha(file),'actual_bounds_within_retained_census':True,'source_import_quantization_max_error_m':maximum_error,'source_import_quantization_allowance_m':tol,'actual_vertices_correlated_to_pinned_source_glb':True,'components':len(comp),'convex_closed_components':sum(q['convex']for q in comp)})
+# Historical guest reservations remain protected while their final geometry /
+# identity crosswalk is unresolved. They are source indices, never new room IDs.
+hist=R/'Game/data/reference/historical_atlas_allocations.json';pins[hist.relative_to(R).as_posix()]=sha(hist);reservations=[]
+elevations=[0,6,12,16.5,21,27,35.5,44,52.5,61,69.5,78,84,88.5,93,97.5,102,106.5]
+for i,row in enumerate(json.loads(hist.read_text())):
+    if row.get('kind')!='unlabelled_guest_allocation':continue
+    deck=int(row['deck']);reservations.append({'poly':box(row['x'][0],row['z'][0],row['x'][1],row['z'][1]),'lo_y':elevations[deck-1],'hi_y':114.45 if deck>=13 else elevations[min(deck,17)],'historical_source_index':i,'stable_id':row.get('stable_id'),'deck':deck})
+accepted=[];held=[]
+for field in fields:
+    v=np.array(field['candidate_vertices']);lo=v.min(axis=0);hi=v.max(axis=0);normal,edge=prism_axes(v);physical=[]
+    for path in field['candidates']:
+        for i,comp in enumerate(meshes[path]['components']):
+            if np.any(np.minimum(hi,comp['hi'])-np.maximum(lo,comp['lo'])<=-.0005):continue
+            if comp['convex']and sat_disjoint(v,normal,edge,comp):continue
+            physical.append({'source_path':path,'component':i,'category':meshes[path]['category'],'triangles':comp['triangles'],'reason':'Convex finite solids overlap/touch'if comp['convex']else'Nonconvex/nonmanifold bounds require exact owner reconciliation'})
+    projected=MultiPoint(v[:,[0,2]]).convex_hull;programme=[]
+    for q in floor_guards:
+        if hi[1]<q['floor_y']+.001 or lo[1]>q['upper_y']+.001:continue
+        if projected.intersection(q['poly']).area>1e-6:programme.append({'source':q['source'],'floor_mesh':q['name'],'floor_y':q['floor_y'],'upper_y':q['upper_y'],'reason':'Protected actual source-floor vertical reservation'})
+    for q in reservations:
+        if hi[1]<q['lo_y']+.001 or lo[1]>q['hi_y']+.001:continue
+        if projected.intersection(q['poly']).area>1e-6:programme.append({'historical_source_index':q['historical_source_index'],'stable_id':q['stable_id'],'deck':q['deck'],'reason':'Unresolved historical guest reservation retained'})
+    result={**field,'physical_receivers_or_holds':physical,'programme_volume_holds':programme}
+    (held if physical or programme else accepted).append(result)
+report={'status':'EXACT_CONVEX_COMPONENT_SCREEN_PROTECTED_VOLUMES_RETAINED','original_held_fields':len(fields),'accepted_clear_fields':accepted,'remaining_held_fields':held,'source_pins':pins,'source_correlation':correlation,'actual_floor_volume_guards':len(floor_guards),'historical_guest_reservations_preserved':len(reservations),'unknown_nonconvex_components_not_assumed_clear':True,'geometry_or_capacity_accepted_as_whole':False,'criterion':'New construction only where actual convex source material is separated and actual floor/guest reservations are untouched. Unknown source volume/owner interfaces remain held.'}
+(P/'docs/FACADE_RESOLUTION.json').write_text(json.dumps(report,indent=2)+'\n');print('G7_R005_FACADE_COMPONENT_SCREEN',len(accepted),'clear',len(held),'held','components',sum(q['components']for q in correlation),'floor guards',len(floor_guards))

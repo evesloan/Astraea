@@ -29,7 +29,15 @@ func run() -> void:
 	var prior: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://../external_packages/group7_completion_20261011/continuation_r004/docs/PREIMAGE_GROUP7_COMPLETION.json"))
 	var plan: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://../external_packages/group7_completion_20261011/continuation_r004/docs/SEAM_PLAN.json"))
 	var appended: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://../external_packages/group7_completion_20261011/continuation_r004/docs/RUNTIME_APPEND.json"))
-	record("prior_74_models_exact", data.models.slice(0, 74) == prior.models)
+	var expected_prior: Array = prior.models.duplicate(true)
+	if data.has("body_source_successor"):
+		var successors: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://../external_packages/group7_completion_20261011/continuation_r005/docs/RUNTIME_REPLACEMENTS.json"))
+		for replacement: Dictionary in successors.replacements:
+			for i in range(expected_prior.size()):
+				if expected_prior[i].cell == replacement.previous.cell:
+					record("declared_body_source_preimage_" + str(replacement.previous.cell), expected_prior[i] == replacement.previous)
+					expected_prior[i] = replacement.successor
+	record("prior_74_layout_or_declared_source_preserving_body_successors", data.models.slice(0, 74) == expected_prior)
 	record("only_four_models_appended", data.models.size() == 78 and appended.new_models.size() == 4)
 	record("prior_doors_exact", data.doors == prior.doors)
 	record("prior_lights_exact", data.lights == prior.lights)

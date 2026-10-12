@@ -4,6 +4,8 @@ This opt-in package continues hull/atrium/support from retained main `affc5c8070
 
 The finite terminal/body continuation is in [continuation_r004/docs/HANDOFF.md](../continuation_r004/docs/HANDOFF.md). It adds four models and64 parts to this opt-in package (78 selected models total), preserving all74 previous definitions, doors and lights. The sections below document the retained R003 construction and its original test scope; the continuation carries its own source/contact/runtime checks and open acceptance.
 
+The actual-source body continuation is in [continuation_r005/docs/HANDOFF.md](../continuation_r005/docs/HANDOFF.md). It restores 2,129 fields through seven explicit source-preserving body-cell successors, leaving five Royalty support interfaces held. The current selection still contains78 models. Other71 definitions, four doors and nineteen lights are unchanged. The R005 handoff also carries the source-rooted Group2 wet-roof/tank-bearing proposal; no protected roof cut or structural-capacity approval is applied. Sections below retain historical R003 evidence and its limits; R004/R005 reports supersede only their explicitly declared construction interfaces.
+
 ## Implemented
 
 - An editable compressed Blender r003 native and 40 spatial/material export cells, with 25,730 authored parts and 294,536 exported triangles. Rigid original plant/bench families provide 33 source bindings; they are not deformed to fit sockets.
