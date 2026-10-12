@@ -1,3 +1,5 @@
+Current adoption target: [TIDAL_R008_ADOPTION_HANDOFF.md](TIDAL_R008_ADOPTION_HANDOFF.md). R005 remains immutable review history; use the exact current Group1 bootstrap hook and narrow runtime manifest. Retained source is not installed work.
+
 # Northern Tidal bathing chamber — construction candidate r005
 
 The rejected r004 canopy picture showed a disconnected shelter, crude furnishings, flat water and an unfinished room section. This successor treats architecture, materials, water appearance, furnishings and physical lighting as construction. It follows master v0.3 chapters 19, 21 and 32 and the approved aquatic and intimate thermal references recorded in DESIGN_AND_GROUP1_INTERFACE001.json. The prior picture and every intermediate source/view/check remain retained; their existence is not visual acceptance.

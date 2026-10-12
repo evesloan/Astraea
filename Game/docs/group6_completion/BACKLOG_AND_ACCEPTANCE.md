@@ -1,3 +1,5 @@
+Current adoption target: [TIDAL_R008_ADOPTION_HANDOFF.md](TIDAL_R008_ADOPTION_HANDOFF.md). R005 remains immutable review history; use the exact current Group1 bootstrap hook and narrow runtime manifest. Retained source is not installed work.
+
 Latest northern Tidal room successor: see [TIDAL_NORTH_ROOM_HANDOFF.md](TIDAL_NORTH_ROOM_HANDOFF.md). The prior canopy picture was rejected; architecture/material/water/readability are construction requirements. The new r005 candidate replaces only northern bay2 in runtime, preserving the earlier sources and the other bays. This does not accept the whole group.
 
 # Group 6 scoped acceptance and remaining interfaces
