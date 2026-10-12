@@ -19,6 +19,8 @@ EXPLICIT = {
     'Game/scripts/group5_retail_slider.gd.uid',
     'Game/scripts/group5_large_venue_lighting.gd',
     'Game/scripts/group5_large_venue_lighting.gd.uid',
+    'Game/scripts/group5_large_venue_materials.gd',
+    'Game/scripts/group5_large_venue_materials.gd.uid',
     'Game/tests/validate_group5_completion.gd',
     'Game/tests/validate_group5_completion.gd.uid',
     'Game/tests/validate_group5_staff_walk.gd',
@@ -27,10 +29,13 @@ EXPLICIT = {
     'Game/tests/validate_group5_interfaces.gd.uid',
     'Game/tests/validate_group5_large_venue_lighting.gd',
     'Game/tests/validate_group5_large_venue_lighting.gd.uid',
+    'Game/tests/validate_group5_large_venue_materials.gd',
+    'Game/tests/validate_group5_large_venue_materials.gd.uid',
     'Game/artifacts/group5_completion.json',
     'Game/artifacts/group5_staff_walk.json',
     'Game/artifacts/group5_interfaces.json',
     'Game/artifacts/group5_large_venue_lighting.json',
+    'Game/artifacts/group5_large_venue_materials.json',
 }
 raw = subprocess.check_output([
     'git', 'ls-files', '-z', '--cached', '--others', '--exclude-standard'

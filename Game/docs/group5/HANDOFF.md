@@ -14,6 +14,10 @@ Group5 only; branch `handoff/group5-completion-20261011`, workspace `/workspace/
 
 The retained construction continues with 109 first-pass fixture sources in Copper Kettle, Paper Moon, Post & Parcels, Starlight Bakery and Companion Games. Twelve original fixtures intersected their ceiling ribs; three separate editable derivatives lower those complete lamps and extend their original suspension rods, preserving every original source file and all unselected runtime meshes. See [LARGE_VENUE_LIGHTING_HANDOFF.md](LARGE_VENUE_LIGHTING_HANDOFF.md) for evidence, alternate exact-preimage startup patches and retained acceptance criteria. The prior small-shop staff audit is retained without repetition. The existing wide promenade source view is saved in Library as `libfile_387bbde4173c81919549b74db4ea4780`.
 
+## Subsequent exact native material factors
+
+Eight omitted image/Mix multipliers now restore the original orange and planting color families on976 large-venue surfaces, preserving all other original material fields and texture resources. The combined-startup check passes130,555 checks with five exact cached returns. See [LARGE_VENUE_MATERIALS_HANDOFF.md](LARGE_VENUE_MATERIALS_HANDOFF.md) for the scoped patch and independent importer witnesses. The clear actual-source color view is saved in Library as `libfile_7ee3798dd30881918b02de262ee197ef`. Current sources,geometry and all84 null joins remain unchanged;whole-group completion remains open.
+
 ## Evidence and limits
 
 `ACCEPTANCE.json` preserves the criteria in FULL_SHIP_SCOPE_INDEX section5 and the authoritative master design v0.3, and separates implementation, testing, source visual review and unfinished acceptance.

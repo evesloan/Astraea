@@ -65,6 +65,7 @@ world.node_tree.nodes['Background'].inputs[0].default_value=(.24,.28,.32,1)
 world.node_tree.nodes['Background'].inputs[1].default_value=.05;scene.world=world
 scene.render.image_settings.file_format='PNG'
 workbench='workbench' in sys.argv
+native_factors='native_factors' in sys.argv
 if workbench:
     scene.render.engine='BLENDER_WORKBENCH'
     scene.display.shading.light='STUDIO';scene.display.shading.color_type='MATERIAL'
@@ -72,6 +73,11 @@ if workbench:
     scene.display.shading.cavity_type='BOTH';scene.display.shading.background_type='WORLD'
     scene.world.color=(.32,.37,.41)
     palette=json.loads((P/'docs/PARCEL_SOURCE_REVIEW_PALETTE.json').read_text())['linear_palette']
+    if native_factors:
+        factor_definition=json.loads((ROOT/'Game/data/architecture/group5/LARGE_VENUE_MATERIAL_FACTORS.json').read_text())
+        selected=next(r for r in factor_definition['venues'] if r['programme_key']=='D09_directory_07')
+        for spec in selected['materials']:
+            palette[spec['material_name']]=[a*b for a,b in zip(palette[spec['material_name']],spec['factor_linear_rgba'])]
     for material in bpy.data.materials:
         if material.name in palette:
             material.diffuse_color=palette[material.name]
@@ -83,14 +89,15 @@ if workbench:
                 base=principled.inputs['Base Color']
                 texture=next((l.from_node.image for l in base.links if l.from_node.type=='TEX_IMAGE' and l.from_node.image),None)
                 material.diffuse_color=tuple(np.array(texture.pixels[:]).reshape(-1,4).mean(axis=0)) if texture else base.default_value
-filename='SOURCE_PARCEL_LIGHTING_WIDE004.png' if workbench else 'SOURCE_PARCEL_LIGHTING_WIDE001.png'
+filename='SOURCE_PARCEL_MATERIALS_WIDE005.png' if native_factors else 'SOURCE_PARCEL_LIGHTING_WIDE004.png' if workbench else 'SOURCE_PARCEL_LIGHTING_WIDE001.png'
 scene.render.filepath=str(P/'qa'/filename)
 bpy.ops.render.render(write_still=True)
 assert hashlib.sha256(native.read_bytes()).hexdigest()==before
-(P/'qa'/('SOURCE_PARCEL_LIGHTING_VIEW004.json' if workbench else 'SOURCE_PARCEL_LIGHTING_VIEW.json')).write_text(json.dumps({
+(P/'qa'/('SOURCE_PARCEL_MATERIALS_VIEW005.json' if native_factors else 'SOURCE_PARCEL_LIGHTING_VIEW004.json' if workbench else 'SOURCE_PARCEL_LIGHTING_VIEW.json')).write_text(json.dumps({
     'image':filename,'native':venue['native'],'native_sha256':before,
     'original_native_unchanged':True,'actual_model_sha256':venue['model_sha256'],
     'fixture_derivative':venue.get('fixture_clearance'),
+    'exact_native_image_multipliers_applied_to_mean_palette':native_factors,
     'eye_ship_xyz':[eye.x-8,eye.z+52.5,-eye.y+182],
     'target_ship_xyz':[target.x-8,target.z+52.5,-target.y+182],
     'retained_floor_source_sha256':hashlib.sha256(structural_path.read_bytes()).hexdigest(),

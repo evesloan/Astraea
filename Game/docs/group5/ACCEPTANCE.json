@@ -26,7 +26,9 @@
     "large_venues_with_source_lighting": 5,
     "additional_fixture_derivative_natives": 3,
     "below_rib_fixture_assemblies": 12,
-    "additional_fixture_source_meshes": 36
+    "additional_fixture_source_meshes": 36,
+    "large_venue_native_material_bindings_restored": 8,
+    "large_venue_surfaces_with_restored_source_factor": 976
   },
   "tested": {
     "all297_actual_main_cycles": "PASS:qa/full297_cycles_before_care_revisions.json;all297 original hardware cycles;30 changed-shop cycles revalidated afterward in Game/artifacts/group5_completion.json",
@@ -45,18 +47,21 @@
     "fixture_derivative_repeat_exports": "PASS:docs/VENUE_FIXTURE_CLEARANCE.json;three fresh native reads reexport byte-identically;36 original mesh vertex/face/UV/material records unchanged;housing/lens rigid drops and suspension transforms only",
     "prior_group5_assets": "PASS:qa/RETAINED_GROUP5_ASSET_INTEGRITY_002.json;all293 prior native,GLB,PNG and recovered archive members match independently retained checkpoint e18919de",
     "combined_group5_lighting_startup": "PASS:qa/ISOLATED_LARGE_VENUE_STARTUP_INTEGRATION.json;earlier Group5 construction plus new source-lighting call applied to an isolated copy of actual bootstrap;all1290 checks pass with startup attachment and zero engine errors;other-group integration remains unaccepted",
-    "exported_fixture_mechanical_contacts": "PASS:qa/LARGE_VENUE_SOURCE_LIGHTING.json;12 derivative exported ceiling endpoints preserved within30micrometres,40mm positive rod/housing overlaps and at least30mm original exported-rib clearances;no structural sizing or load acceptance"
+    "exported_fixture_mechanical_contacts": "PASS:qa/LARGE_VENUE_SOURCE_LIGHTING.json;12 derivative exported ceiling endpoints preserved within30micrometres,40mm positive rod/housing overlaps and at least30mm original exported-rib clearances;no structural sizing or load acceptance",
+    "large_venue_native_materials": "PASS:Game/artifacts/group5_large_venue_materials.json;130555 checks,independent native-factor glTF importer references,976 selected surfaces,3290 untouched surfaces,121024 unchanged material-property/texture comparisons,all mesh resources/poses unchanged,five exact cached returns,actual combined startup attached with zero engine errors"
   },
   "visually_reviewed": {
     "views": [
       "qa/SOURCE_EXPORT_GROUP5_WIDE009.png",
       "qa/SOURCE_EXPORT_GROUP5_ENTRY010.png",
       "qa/SOURCE_GARDEN_WIDE013.png",
-      "qa/SOURCE_GARDEN_ENTRY012.png"
+      "qa/SOURCE_GARDEN_ENTRY012.png",
+      "qa/SOURCE_PARCEL_MATERIALS_WIDE005.png"
     ],
     "review": "actual retained source-export geometry plus new native/export hardware;clear neutral Workbench source views,correct runtime yaw and two-sided directory",
     "limitations": "original material palette colors;no texture/glass/Godot/CRT shading,no hardware or final-art acceptance",
-    "large_venue_geometry_context": "qa/SOURCE_PARCEL_LIGHTING_WIDE004.png;clear neutral source geometry with actual current-export mean palette;fixture and stock/work layout inspection only;current native/export material multiplier discrepancy remains held"
+    "large_venue_geometry_context": "qa/SOURCE_PARCEL_LIGHTING_WIDE004.png;clear neutral source geometry with actual current-export mean palette;fixture and stock/work layout inspection only;current native/export material multiplier discrepancy remains held",
+    "restored_venue_native_color_context": "Neutral original-source Workbench view using exact native image multipliers with original export texture mean palette;no full texture/glass/illumination/Game/CRT/hardware acceptance"
   },
   "unfinished": {
     "authority": "84 actual room-address joins remain null;no invented IDs",
@@ -67,6 +72,6 @@
     "final_art": "fullshop/largevenue fit-out acceptance,architectural lighting rendered review,acoustics,normal Godot/CRT,targetGPU performance",
     "integration": "shared bootstrap/registries unchanged;patch provided for Group1,combined integration must be tested",
     "full_validation_suite": "not run;scoped essential changed-work tests only",
-    "large_venue_material_fidelity": "qa/VENUE_MATERIAL_FIDELITY_HOLD.json: current matching GLB omits original native B_orange Mix multiplier;inspect five native graphs and provide exact-source derivative factors next;no original models/source overwritten."
+    "large_venue_material_fidelity": "Eight supported native image/Mix multipliers are restored through scoped runtime material copies;original exports remain immutable and retain their historical omission.Complete shader/material/pixel fidelity and calibration remain unaccepted."
   }
 }
