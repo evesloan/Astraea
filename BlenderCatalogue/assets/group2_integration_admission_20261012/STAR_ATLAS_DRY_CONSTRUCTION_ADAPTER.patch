@@ -1,0 +1,27 @@
+--- a/Game/scripts/group2_vip_dry_club/package.gd
++++ b/Game/scripts/group2_vip_dry_club/package.gd
+@@ -1,6 +1,24 @@
+ extends RefCounted
+ static func build_source_fixture(parent: Node3D)->Node3D:
+ 	assert(parent.has_meta("group2_isolated_source_fixture"),"Group1 commons, Group8 dining ledger and admission coordination remain held")
++	return _build_contents(parent)
++
++static func build_on_current_receiver(receiver: Node3D)->Node3D:
++	assert(receiver.name=="D15_D17_StarAtlasUpper_WIP")
++	assert(receiver.transform.is_equal_approx(Transform3D.IDENTITY),"Retained models use zero-origin world coordinates")
++	assert("D17_directory_03" in receiver.get_meta("programme_keys",[]))
++	assert(int(receiver.get_meta("source_part_count",-1))==514)
++	assert(receiver.get_node_or_null("VIPDryClub_Source")==null,"One retained fitout, no duplicates")
++	assert(FileAccess.get_sha256("res://assets/models/STAR_ATLAS_UPPER_COMMONS_r001.glb")=="f6fe84992dfb8cb22beee696959f77b8f8b4f91261e46d77c9cf36719303c888")
++	assert(FileAccess.get_sha256("res://assets/group2_vip_dry_club/VIP_DRY_CLUB_r002.glb")=="95cc7e8279e993a2b919a2229b4001d215b8146807be9d8d1b306865b50d0800")
++	assert(FileAccess.get_sha256("res://data/group2_vip_dry_club/COMPONENT_r002.json")=="cb5902beb0a8cb39f4ac125b7b1bb0a9354ea5e83aa3751372929791bd806c4a")
++	var section:=_build_contents(receiver)
++	section.set_meta("construction_installed",true)
++	section.set_meta("existing_parent_programme","D17_directory_03")
++	section.set_meta("food_service_membership_booking_and_capacity_accepted",false)
++	return section
++
++static func _build_contents(parent: Node3D)->Node3D:
+ 	var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/group2_vip_dry_club/COMPONENT_r002.json"))
+ 	var section:=Node3D.new();section.name="VIPDryClub_Source";parent.add_child(section)
+ 	var visual:Node3D=(load("res://assets/group2_vip_dry_club/VIP_DRY_CLUB_r002.glb")as PackedScene).instantiate();section.add_child(visual)

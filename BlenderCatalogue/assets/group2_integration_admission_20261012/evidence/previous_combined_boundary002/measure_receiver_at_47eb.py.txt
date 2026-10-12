@@ -1,0 +1,94 @@
+"""Read-only current-receiver triangle fit; no engine, imports or shared writes."""
+import sys,pathlib,json,hashlib,subprocess,importlib.util,heapq,math
+sys.dont_write_bytecode=True
+ROOT=pathlib.Path(__file__).resolve().parents[3];P=pathlib.Path(__file__).resolve().parent
+COMBINED='47eb8359caa5531e04122b6e56292f8c44d4281a'
+spec=importlib.util.spec_from_file_location('glb',ROOT/'BlenderCatalogue/assets/utility_pipework/derived_lod/qa/glb_tools.py');g=importlib.util.module_from_spec(spec);spec.loader.exec_module(g)
+import numpy as np
+from shapely.geometry import Polygon,LineString,Point,box
+from shapely.ops import unary_union
+def remote(path):return subprocess.check_output(['git','show',COMBINED+':'+path],cwd=ROOT)
+def sha(raw):return hashlib.sha256(raw).hexdigest()
+def write(path,data):path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(data,indent=2)+'\n')
+pins=[]
+paths=['CONSOLIDATED_CONSTRUCTION_INVENTORY.json','Game/data/generated/structural_meshes.json','Game/data/architecture/STAR_ATLAS_UPPER_COMMONS.json','Game/scripts/star_atlas_upper.gd','Game/scripts/guest_entry_door.gd','Game/scripts/service_door.gd','Game/scripts/static_contact_cache.gd','Game/scripts/lighting_budget.gd','Game/assets/models/STAR_ATLAS_UPPER_COMMONS_r001.glb','Game/assets/models/AST-DOR-002.glb']
+for path in paths:
+ raw=remote(path);local=ROOT/path;row={'path':path,'git_blob':subprocess.check_output(['git','rev-parse',COMBINED+':'+path],cwd=ROOT,text=True).strip(),'sha256':sha(raw),'bytes':len(raw)}
+ if local.exists():row['owned_checkout_same_bytes']=sha(local.read_bytes())==row['sha256']
+ pins.append(row)
+assert all(p['owned_checkout_same_bytes']for p in pins if 'owned_checkout_same_bytes'in p)
+inventory=json.loads(remote(paths[0]));current_group2=next(r for r in inventory['groups']if r['group']==2)
+retained_map=json.loads(remote('RetainedConstruction/group2/SOURCE_MAP.json'));required=[]
+for row in retained_map['files']:
+ if row['source_path']in['Game/assets/group2_vip_dry_club/VIP_DRY_CLUB_r002.glb','Game/data/group2_vip_dry_club/COMPONENT_r002.json','Game/scripts/group2_vip_dry_club/entry.gd','Game/scripts/group2_vip_dry_club/package.gd']:
+  assert sha(remote(row['storage_path']))==row['sha256']==sha((ROOT/row['source_path']).read_bytes());required.append(row)
+assert len(required)==4
+def clipped(triangle,axis,threshold,above):
+ out=[]
+ for a,b in zip(triangle,triangle[1:]+triangle[:1]):
+  ia=a[axis]>=threshold if above else a[axis]<=threshold;ib=b[axis]>=threshold if above else b[axis]<=threshold
+  if ia:out.append(a)
+  if ia!=ib:
+   t=(threshold-a[axis])/(b[axis]-a[axis]);out.append([a[i]+t*(b[i]-a[i])for i in range(3)])
+ return out
+def projected(points):
+ q=[(v[0],v[2])for v in points]
+ if len(q)<2:return None
+ geom=Polygon(q)if len(q)>=3 else LineString(q)
+ if not geom.is_valid:geom=geom.buffer(0)
+ if geom.is_empty or geom.area<1e-9:geom=LineString(q).buffer(.00001)
+ return geom
+floors=[];obstacles=[];counts={'receiver_horizontal_triangles':0,'receiver_blocking_triangle_projections':0,'kit_blocking_triangle_projections':0}
+for row in json.loads(remote('Game/data/generated/structural_meshes.json'))['regions']:
+ if abs(row['floor_y']-102)<.001:floors.extend(Polygon(t)for t in row['triangles'])
+for path,kind in [('Game/assets/models/STAR_ATLAS_UPPER_COMMONS_r001.glb','receiver'),('Game/assets/group2_vip_dry_club/VIP_DRY_CLUB_r002.glb','kit')]:
+ d,b=g.read(ROOT/path)
+ for i,p,v,ix,w,m in g.primitives(d,b):
+  node=d['nodes'][i]
+  if kind=='receiver'and not node.get('extras',{}).get('runtime_collision',False):continue
+  for triangle in w[ix]:
+   if kind=='receiver'and np.max(np.abs(triangle[:,1]-102))<.002:
+    poly=Polygon(triangle[:,[0,2]])
+    if poly.area>1e-9:floors.append(poly);counts['receiver_horizontal_triangles']+=1
+   if triangle[:,1].max()<102.08 or triangle[:,1].min()>103.8:continue
+   points=clipped(triangle.tolist(),1,102.08,True)
+   if points:points=clipped(points,1,103.8,False)
+   poly=projected(points)
+   if poly is not None and not poly.is_empty:obstacles.append(poly);counts[kind+'_blocking_triangle_projections']+=1
+floor=unary_union(floors).intersection(box(-97,-14,-63,14));blocked=unary_union(obstacles).intersection(box(-97,-14,-63,14))
+radius=.40;free=floor.buffer(-radius).difference(blocked.buffer(radius))
+sites={'dining':box(-93.1,2.4,-88.7,11.8),'bar':box(-93.1,-4.8,-88.7,-1.8)}
+site_rows=[]
+for name,site in sites.items():
+ site_rows.append({'site':name,'area_m2':site.area,'actual_floor_covered_m2':site.intersection(floor).area,'missing_floor_m2':site.difference(floor).area,'inside_existing_parent_rectangle':box(-97,-14,-63,14).covers(site)})
+ assert site.difference(floor).area<.0001
+start=(-65.5,0.0);target=(-90.9,1.0);step=.25
+def xy(k):return(start[0]+k[0]*step,start[1]+k[1]*step)
+assert free.covers(Point(start)),'Installed commons arrival marker is blocked in measured source'
+assert free.covers(Point(target)),'Dry-club public approach is blocked in measured source'
+goal=(round((target[0]-start[0])/step),round((target[1]-start[1])/step));frontier=[(0,0,(0,0))];cost={(0,0):0};came={};found=False
+directions=[(a,b)for a in[-1,0,1]for b in[-1,0,1]if a or b]
+while frontier:
+ _,score,k=heapq.heappop(frontier)
+ if score>cost[k]+1e-8:continue
+ if k==goal:found=True;break
+ for a,b in directions:
+  n=(k[0]+a,k[1]+b);p=xy(n)
+  if not(-96.6<=p[0]<=-63.4 and -13.6<=p[1]<=13.6):continue
+  if not free.covers(LineString([xy(k),p])):continue
+  new=score+step*math.hypot(a,b)
+  if new<cost.get(n,1e99):cost[n]=new;came[n]=k;heapq.heappush(frontier,(new+math.dist(p,target),new,n))
+assert found,'No continuous existing-floor route; do not invent a straight cross-void arrival'
+path=[goal]
+while path[-1]!=(0,0):path.append(came[path[-1]])
+path=[xy(k)for k in reversed(path)]+[target];smooth=[path[0]];i=0
+while i<len(path)-1:
+ j=len(path)-1
+ while j>i+1 and not free.covers(LineString([path[i],path[j]])):j-=1
+ smooth.append(path[j]);i=j
+route=LineString(smooth);buffer=route.buffer(.38,resolution=16)
+assert floor.covers(buffer)and buffer.intersection(blocked).area<.0001
+data={'schema':'astraea.group2_first_star_atlas_admission.v1','combined_commit':COMBINED,'combined_tree':subprocess.check_output(['git','rev-parse',COMBINED+'^{tree}'],cwd=ROOT,text=True).strip(),'group2_source_commit':'ffaf177df8fa460e3b098819604977cad8fbbdd5','current_inventory_group2':current_group2,'exact_receiver_root':'D15_D17_StarAtlasUpper_WIP','existing_parent':'D17_directory_03','selected_package':'group2_vip_dry_club_20261012','preferred_source_revision':'r002','required_materialization':required,'source_pins':pins,'floor_and_site_measurements':site_rows,'source_arrival_xyz':[-65.5,102,0],'public_door_approach_xyz':[-90.9,102,1.0],'measured_route_world_xyz':[[x,102,z]for x,z in smooth],'route_m':route.length,'route_capsule_radius_m':.38,'route_source_actor_height_slab_y':[102.08,103.8],'route_existing_floor_coverage_fraction':buffer.intersection(floor).area/buffer.area,'route_static_source_overlap_m2':buffer.intersection(blocked).area,'needed_new_floor_m2':0,'needed_existing_floor_or_wall_cuts':0,'new_models_furniture_or_capacity':0,'counts':counts,'new_engine_import_build_or_backup_started':False,'method':'Actual retained transformed GLB triangles and current compiler floors;static source geometry screening,not current-engine route acceptance','construction_choice':'Admit exact r002 dry fitout under existing Star AtlasD17 commons as provisional construction. Keep public bypass inclusive;no membership/food/booking/seat-ledger activation','remaining_Group1_validation':['Materialize four exact source files and import only the100KB kit','Call reviewed construction adapter after existing receiver, before lighting selection','Run original RMB/E door full sweep and original-player route shown here on current combined scene','Retain source receiver/route/room IDs,original lighting budget and zero capacity credit','Inspect normal-height current Game view for dining/bar purpose'],'still_held':['Royalty790 and wet roof/shaft/bearing interfaces','Group3 separate food/dirty/staff joins','Group8 actual dining-place reconciliation within2200 and membership/booking','Family tableZ348 versus historicZ356..384 boundary;12 installed inward chairs preserved']}
+write(ROOT/'Game/data/group2_integration_admission/STAR_ATLAS_DRY_ADMISSION.json',data)
+write(P/'evidence/RECEIVER_GEOMETRY_PASS.json',{'pass':True,'combined_commit':COMBINED,'source_pins_exact':True,'four_retained_source_payloads_exact':True,'floor_sites':site_rows,'route_xyz':data['measured_route_world_xyz'],'new_floor_m2':0,'route_m':route.length,'route_floor_coverage_fraction':data['route_existing_floor_coverage_fraction'],'source_obstacle_overlap_m2':data['route_static_source_overlap_m2'],'engine_or_final_acceptance':False})
+print(json.dumps({'pass':True,'first_package':'StarAtlasD17 dry r002','new_floor_m2':0,'site_rows':site_rows,'route_xyz':data['measured_route_world_xyz'],'route_m':route.length,'method':'Current source triangle screening;Group1 current-engine check required'}))
