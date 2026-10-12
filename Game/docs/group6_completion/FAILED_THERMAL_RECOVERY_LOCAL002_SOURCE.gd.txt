@@ -1,0 +1,45 @@
+extends "res://tests/group6_completion/validate_water_care.gd"
+var evidence:Array=[]
+var motion:Array=[]
+func run()->void:
+	var host:=LocalHost.new();root.add_child(host)
+	var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/received_structural_meshes.json"));var regions:Array=[]
+	for region in data.regions:
+		if str(region.id).begins_with("D08_directory_02_") or str(region.id).begins_with("D08_directory_03_"):regions.append(region)
+	var floors:Node3D=load("res://scripts/structural_floor_builder.gd").build_regions(host,host.stone,host.ivory,regions,{},"OriginalThermalCompilerFloors");record("same_four_floor_owners",floors.get_child_count()==4)
+	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/THERMAL_RECOVERY_CONTRACT.json"));var rooms:Array=[];var original_benches:Array=[]
+	for spec in plan.rooms:
+		var room:Node3D=load("res://"+str(spec.current_room_runtime).trim_prefix("Game/")).instantiate();room.name=str(spec.programme_key);room.set_meta("programme_key",str(spec.programme_key));room.set_meta("persistent_id",str(spec.programme_key));host.add_child(room)
+		for mesh:MeshInstance3D in room.find_children("*","MeshInstance3D",true,false):load("res://scripts/static_contact_cache.gd").attach(mesh)
+		for bay in spec.bays:
+			var bench:MeshInstance3D=room.find_child(str(bay.existing_bench_mesh),true,false);original_benches.append([bench,bench.get_instance_id(),bench.global_transform])
+		load("res://scripts/group6_completion/thermal_entries.gd").build(room);load("res://scripts/group6_completion/thermal_support.gd").build(room);var addition:Node3D=load("res://scripts/group6_completion/thermal_recovery.gd").build(room,true);record(str(spec.programme_key)+"_new_source_count",addition.find_children("*","MeshInstance3D",true,false).size()==spec.new_meshes.size());rooms.append(room)
+	var actor:CharacterBody3D=load("res://scripts/player.gd").new();host.add_child(actor);var actor_id:=actor.get_instance_id();var budget:Node=load("res://scripts/lighting_budget.gd").new();host.add_child(budget);budget.set_process(false);budget.configure(host,actor)
+	for i in range(2):
+		var spec:Dictionary=plan.rooms[i];var room:Node3D=rooms[i];var addition:Node3D=room.get_node("Group6ThermalRecovery");var space:=host.get_world_3d().direct_space_state
+		for fitting in spec.new_task_fittings+spec.optional_existing_fixture_bindings:
+			var light:SpotLight3D=addition.get_node(str(fitting.id)+"_PhysicalSource");var target:=vec(fitting.target_xyz);record(str(fitting.id)+"_exact_source",light.global_position.distance_to(vec(fitting.source_xyz))<.00001);record(str(fitting.id)+"_real_optical_path",budget._clear_sample(light.global_position,target));record(str(fitting.id)+"_range_and_cone",light.global_position.distance_to(target)<light.spot_range and (-light.global_basis.z).dot((target-light.global_position).normalized())>.999)
+			var query:=PhysicsRayQueryParameters3D.create(target,target+Vector3.DOWN*.14);query.exclude=[actor.get_rid()];var hit:=space.intersect_ray(query);record(str(fitting.id)+"_actual_receiver_surface",not hit.is_empty());evidence.append({"id":fitting.id,"source":fitting.source_xyz,"target":fitting.target_xyz,"receiver":str(hit.collider.get_path()) if not hit.is_empty() else "missing"})
+		var start:=Vector3(45,44,-458) if i==0 else Vector3(-25,44,-241.5);actor.global_position=start+Vector3.UP*.03;actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true)
+		for k in range(20):await physics_frame
+		record(str(spec.programme_key)+"_supported_original_dry_route_fixture",actor.is_on_floor() and absf(actor.global_position.y-start.y)<.01)
+		var witness:=MotionWitness.new();witness.process_physics_priority=1000;host.add_child(witness);witness.reset(actor)
+		for bay in spec.bays:
+			for goal in [vec(bay.promenade_xyz),vec(bay.front_stance_xyz)]:
+				var walk:Dictionary=await walk_to(actor,goal);legs.append(walk);record(str(bay.id)+"_leg_"+str(legs.size()),walk.reached and walk.floor_contact)
+			budget.refresh();var active:=0;var body_lit:=false;var sample:=actor.global_position+Vector3.UP*.8
+			for light:Light3D in budget.sources:
+				if not is_instance_valid(light) or not light.is_inside_tree():continue
+				if budget.requested_shadow.get(light.get_instance_id(),false):
+					record(str(bay.id)+"_visibility_shadow_"+str(light.name),light.visible==light.shadow_enabled)
+					if light.visible:
+						active+=1;var offset:=sample-light.global_position;var reaches:bool=offset.length()<light.spot_range and offset.normalized().dot(-light.global_basis.z)>=cos(deg_to_rad(light.spot_angle));body_lit=body_lit or (reaches and budget._clear_sample(light.global_position,sample))
+			record(str(bay.id)+"_eight_shadow_cap",active>0 and active<=8);record(str(bay.id)+"_real_body_task_light",body_lit)
+			var back:Dictionary=await walk_to(actor,vec(bay.promenade_xyz));legs.append(back);record(str(bay.id)+"_return_to_original_promenade",back.reached and back.floor_contact)
+			if not errors.is_empty():break
+		var back:Dictionary=await walk_to(actor,start);legs.append(back);record(str(spec.programme_key)+"_continuous_dry_route_return",back.reached and back.floor_contact);witness.active=false;record(str(spec.programme_key)+"_continuous_motion",witness.maximum_step<.12 and witness.minimum_y>43.90 and witness.samples>100);motion.append({"programme":spec.programme_key,"samples":witness.samples,"max_frame_motion_m":witness.maximum_step,"minimum_y":witness.minimum_y});witness.queue_free()
+		if not errors.is_empty():break
+	for old in original_benches:record("original_bench_identity_transform_"+str(old[1]),old[0].get_instance_id()==old[1] and old[0].global_transform==old[2])
+	record("same_original_player",actor.get_instance_id()==actor_id);record("five_retained_recovery_areas_exercised",legs.size()==17)
+	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"motion":motion,"optics":evidence,"supported_independent_fixture_starts":2,"traversal_position_velocity_writes":0,"scope":"Focused original thermal room exports/four compiler floors, preserved entries/support/benches, five new recovery alcoves, 12 mounted canopy lights and 14 optional old-source fitting bindings with original player/shared budget. 17 dry route/approach/return legs. Existing lens bindings require shared-owner reconciliation. No shared-main adoption, dayrest occupation/species/acoustic/service/load/water/hoist/engineering or final-art/hardware acceptance."}
+	FileAccess.open("res://docs/group6_completion/THERMAL_RECOVERY_LOCAL002.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "));print("GROUP6 THERMAL RECOVERY LOCAL ",result.status," ",errors," LEGS ",legs.size());quit(0 if errors.is_empty() else 1)

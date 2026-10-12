@@ -227,3 +227,7 @@ The annex stays r019. Add `thermal_support.gd.build(room)` immediately after the
 The outward wet-service survey in `interfaces/WET_SERVICE_RECEIVING_PROPOSAL001.json` confirms the exact portal boundary touches the original annex slabs, but finds no support in three retained compiler inputs at sampled exterior X100.2..103 positions. The reserved external receiving box is a proposal only. Groups1/3/4 and the hull/shared owner must establish the actual exterior datum/support/destination before a loaded-cart route or lift is adopted. The proposed Y44 datum is not a demonstrated exterior floor.
 
 The selected thermal support is r004: corrected real-water reach and physically cantilevered task light, with 6,672 unoccupied pose reservations. Earlier r002 receipts describe dry support only and remain historical. Use THERMAL_SUPPORT_HANDOFF.md and interfaces/THERMAL_TRANSFER_INTERFACE001.json; occupied original-player/hoist integration stays held.
+
+## Retained recovery-area fit-out
+
+After thermal_support.gd, apply `thermal_recovery.gd.build(room)` before residency and the original budget. It selects r004 recovery exports, preserves the five old benches and replaces only four source-derived members of the blocked Mineral corner fitting. The default does not bind old room lenses; pass `true` only after reconciling fourteen original fixture bindings on the consolidated root. See THERMAL_RECOVERY_HANDOFF.md. No shared import/root/player work was performed.
