@@ -37,3 +37,15 @@
 25. The first neutral Workbench view was clear but selected unused shader default white instead of the actual texture-driven base colors. Image and receipt remain retained as a palette HOLD. The next source view uses each original base-color texture mean as its neutral viewport palette;no texture file or source geometry is edited.
 
 26. Direct image-node palette lookup still missed the original procedural B_* checker materials. The source image and receipt remain retained. Use the actual matching original GLB baked base-color texture means for the neutral palette;this restores original color identity without changing source textures,geometry or game materials.
+
+27. The wide-door builder saved and byte-repeat-verified the8m native/export, then failed on the10m variant because opening the fresh native invalidated cached Blender material object pointers. Preserve the saved8m pair and rebind its used palette materials before subsequent authoring;never overwrite the verified saved revision. Exact script and log remain retained.
+
+28. The first five-venue literal source-fit audit held on348 Copper Kettle moving mesh/pier/base AABB contacts;the other four placements,all ten control mounts and all ten track mounts passed. Copper Kettle has deeper retained entry piers than its wall plane. Keep its piers,base and8m opening immutable;move the slider behind them and provide a separately saved deep-pocket reveal/long-mount variant.
+
+29. The first actual-controller wide-foyer test reached two supported Copper Kettle legs continuously,then held because ordinary RMB did not target the mounted public control and E could not open it. Exact result/log are retained. Diagnose the actual original-camera ray and mounted control rather than bypassing normal input or weakening the target criterion.
+
+30. Actual camera-ray diagnostics identify the immutable Perimeter_0 return wall in front of the public control. Its110mm half-thickness occluded the nominal Perimeter_1 end mount. Move the public control onto the actual inward Perimeter_0 face with5mm contact and an accessible supported stance;preserve all walls,door geometry and ordinary RMB/E criteria. Exact log/result retained.
+
+31. Copper Kettle,Paper Moon and Post & Parcels pass30 continuous controller legs,12 normal operations and three occupied guards. Starlight Bakery holds:its10m floor opening retains an8.8m clear nested-pier throat,and the lower pier occludes the return-wall control. Preserve the original piers/opening;mount the public control on the actually innermost lower pier/return face,with a supported approach. Exact three-venue progress and ray diagnostic retained.
+
+32. The staff-riser source contract correctly rejected the nominal PF69 inner endpoint:metadata[-60.5,-69] lies1.75m beyond the actual floor AABB atX-62.25. Preserve source/metadata and record unsupported nominal sockets explicitly;actual floor bounds are not a new receiving join or inferred shaft. Shared-riser acceptance remains HOLD.
