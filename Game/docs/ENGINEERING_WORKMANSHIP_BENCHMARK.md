@@ -7,3 +7,5 @@ Apply its believable architecture, purposeful layers of equipment, coherent junc
 Future progress pictures must show clear player-height context and readable wall-to-ceiling connections. Identify source-only or studio pictures accurately; the user's approval of the engineering actual-game view does not establish final acceptance of other rooms, lighting, CRT presentation or target hardware.
 
 Continue physical construction within supported interfaces. This direction does not request a broad new audit or change the retained tram, Upper Horizon, structural, occupied water, species, save or cross-owner interface holds. Main promotion remains parent-owned; the construction branch advances independently.
+
+The user clarified the construction pass on October12: judge each section by how convincingly its architecture, furnishings, lighting, junctions and circulation visually support its own purpose. Suites should feel restful, promenades inviting and service rooms practical, according to the master design.

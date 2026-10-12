@@ -3,7 +3,7 @@ extends RefCounted
 # 300-owner state to D12's unchanged four-owner projection down to 296.
 # This does not certify runtime geometry or operational/design acceptance by itself.
 const PROOF := "res://data/architecture/packages/botanical_pair_runtime/RUNTIME_PROOF.json"
-const PROOF_SHA := "0c0d4a28bd7c8ebc5460e47e07aa7e8be582e25ae8294a374762b7aab3216683"
+const PROOF_SHA := "9c17116f51e2c6f9856d5f6f39100681ea1e3ab6907ecf1d3479c181611c1d22"
 static var checked := false
 static var checking := false
 static var proof:Dictionary={}

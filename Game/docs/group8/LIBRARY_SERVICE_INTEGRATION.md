@@ -1,0 +1,31 @@
+# Long Library returns and conservation construction
+
+This package adds17 activity assemblies inside the installed `D12_directory_02`: a public closed-return stand, two conservation/inspection benches, three collection holds, passive folio trays, four mounted task fixtures and four measured care-ceiling ties. It preserves the substantial existing reading/study/collection architecture, its3,150 runtime shapes, original returns bins/trolley/stock,4m entrance, all existing floors and143 Quiet Grove support parts. No new programme, floor, capacity, door or interaction controller.
+
+## Exact source and adoption
+
+The actual installed native was recovered from the exact retained56,800,256-byte archive, SHA256 `e05c745f8672caf5e8937ad8bda1df2df2a02f67439065edfcdb63201e811fe4`. All four raw parts were independently compared with GitHub objects, then CRC/path checked and extracted into a new empty workspace. Native SHA256 `5cb4388f45401fd2a8c9d5f1788d356dd7eb8f477a122a531bc5a7b29c250128` matches the installed GLB `432baa23a4aa7b9dc422f6d6ec5485cf9826bd252d749ec63039785c252e6c5a`. This recovers historical bytes; it does not rebuild or substitute an older native. The separate older WP06 rebuild remains untouched. Original split parts and the complete195-entry recovery receipt are retained.
+
+Final new source is `BlenderCatalogue/assets/group8_library_service_20261011/LibraryService_r005.blend`, SHA256 `a57571d8a890bb5d24652e6576eb9cea85a0ccf68c235f7bb7e89b11f0ab70f1`. Final runtime is `Game/assets/models/G8_LIBRARY_SERVICE_r006.glb`, SHA256 `9e44a53becfe789fc005482626aff23b1abe9688d7ca84601183ec5d950135de`. Earlier new-source attempts remain immutable. Candidate catalogue ID `AST-G8-LIB-001` was checked against the complete catalogue; shared registration belongs to Group1.
+
+Apply the supplied single-line `remaining_batch_library_service.patch` inside the existing room install function. The call `load("res://scripts/group8/library_service.gd").build(ship,room)` runs only forD12_directory_02, after the retained source/light registration and before `stream_loaded` is set. The group root is an owned child of the source room, with absolute geometry preserved by its top-level transform. The existing streamer frees/restores it and removes its lights along with the original room. No second streaming controller, shared light-manager change or extra ship.gd call. The group branch leaves the shared script byte-identical; only the isolated test checkout applies the proposed hook.
+
+After imports, run `godot --headless --path Game --fixed-fps 60 --script res://tests/group8/validate_library_service.gd`. The test expects that one candidate hook. The integration owner adopts against its exact final HEAD and performs shared regression without weakening the existing Botanical gate.
+
+## Physical interfaces and evidence
+
+Sole floor owner remains `D12_directory_02_recovered_floor`, Y78/thickness0.24; its existing4m connector remains separate. New care furniture sits inside the screened work zone along X39.4..53.4/Z−465.6..−450.8, with the public stand in front of the existing solid privacy wall. No hatch or external staff opening was cut. Four rods connect measured care-ceiling shoes to the original closed roof, remaining belowY83.2 and clear of the Quiet Grove support geometry. Positive contact is geometric support evidence, not steel sizing/load certification.
+
+Source PASS:181 native meshes,71 material/spatial runtime batches,5,100 oriented triangles with exact positions/UVs/embedded textures and596,938 independent boundary, protected-route and retained-context checks. Every3,150 actual source shape and143 Quiet Grove part participates in screening. Only the exact `SOURCE_PREVIEW_ONLY_floor`, absent from the actual installed GLB, is excluded; no source preview becomes floor credit. Fresh final-native export repeats the exact runtime bytes.
+
+Focused main-snapshot candidate PASS on `bc731d6d6d54bb2595331ee2f4368558d4d24fda` plus the single scoped stream hook:31,200 checks,37 continuous walking legs,5,788 frames and299.04m. One initial fore-route seed, zero subsequent teleports. All9,788 original source node poses and143 original support poses survive, along with24 sole-floor supports and eight named ceiling/roof contacts. Actual source unload/restore and removal of dead light references pass. All four new sources join the unchanged shared budget and were actually admitted at their physically reached work/public stances. Seven protected main files stay exact; the stream script differs only by the supplied line. The Crown/Orchard/arrivals route audits were not repeated.
+
+The historical proposed route crosses an existing pier plinth; an existing overhead returns plaque also blocks a direct1.8m actor approach. These are retained source obstacles. The focused walk uses physical detours without moving them, shrinking the actor, skipping collisions or using teleports. The original3m source reservation remains protected against new construction. Whole-library cart-width/traversal/species acceptance remains open.
+
+Failed attempts include a new bench colliding with the original return bin, repeated/truncated new labels, an absolute-elevation mistake in four new public feet, two walks into old obstacles and source camera/shadow configuration holds. Exact sources, exports, plans, scripts and raw logs remain retained. Final fixes affect only new work/test waypoints; no original source or criterion is weakened.
+
+Visual review uses wide real native source views in the complete retained room, with exact receiving floor triangles and declared documentary fill. Game renderer, ambient/retro effects and shadow budget stay unchanged. Source watts/exposure and source-render shadow settings are not Game radiometric or CRT acceptance.
+
+Unfinished: shared default adoption/regression, whole-library cart/species circulation, stock/lending/cleaning/save/guest-use interaction, controlled external staff transfer, engineered loading and ordinary Game/CRT/shadow/final-art review. This package does not accept the whole library or Group8.
+
+The chosen clear wide care/conservation source photograph is `SOURCE_LIBRARY_CARE_CONSERVATION_WIDE003.png`, saved in Library as `libfile_a158fcb144d081918bf4bbe5b81502a7`. The public-detail photograph and held source camera attempts remain alongside it.
