@@ -1,0 +1,131 @@
+"""Local contained edge guards preserve the original8m terminal route air."""
+from pathlib import Path
+import json, hashlib, itertools
+from shapely.geometry import box, Polygon
+from shapely.ops import unary_union
+
+P = Path(__file__).resolve().parents[1]; C = P.parent; R = C.parents[1]
+for directory in ['source/natives', 'exports', 'qa', 'docs']:
+    (P / directory).mkdir(parents=True, exist_ok=True)
+receipt = json.loads((P / 'qa/PREVIOUS_R009_REMOTE_VERIFICATION.json').read_text())
+assert receipt['status'] == 'PASS' and receipt['commit'] == '178de51d22d950bdaa5d51e5b62b5eff70e36c2e'
+prior = json.loads((R / 'Game/data/architecture/GROUP7_COMPLETION.json').read_text())
+assert len(prior['models']) == 86 and len(prior['lights']) == 39 and len(prior['doors']) == 8
+native = C / 'continuation_r009/source/natives/G7_D18Overhead_r009.blend'
+assert hashlib.sha256(native.read_bytes()).hexdigest() == '89cad5dd6d7e16577fe87315e7f2ffce3a62ba90ff85c94f0b16bb1986247534'
+floorfile = R / 'Game/data/generated/structural_meshes.json'
+floors = {q['id']: q for q in json.loads(floorfile.read_text())['regions']
+          if q['id'] in ['D18_fore_route', 'D18_aft_route']}
+assert all(q['floor_y'] == 106.5 and q['thickness'] == .24 for q in floors.values())
+FACES = [[3, 2, 1, 0], [4, 5, 6, 7], [0, 1, 5, 4], [1, 2, 6, 5], [2, 3, 7, 6], [3, 0, 4, 7]]
+parts = []; contacts = []; joints = []
+
+def cuboid(name, x0, x1, y0, y1, z0, z1, role, cell, function):
+    assert x1 > x0 and y1 > y0 and z1 > z0
+    vertices = [[x, y, z] for y in [y0, y1]
+                for x, z in [(x0, z0), (x1, z0), (x1, z1), (x0, z1)]]
+    row = {'name': name, 'vertices_world_xyz': vertices, 'faces': FACES,
+           'role': role, 'category': 'solid_skin' if role == 'glass' else 'solid_frame',
+           'cell': cell, 'function': function, 'primary_capacity_accepted': False}
+    # Positive above-floor portions never enter either original protected band.
+    if y1 > 106.5:
+        outside_side = x1 <= -4.0199 or x0 >= 4.0199
+        outside_end = z1 <= -530.0199 or z0 >= 530.0199
+        assert outside_side or outside_end, (name, x0, x1, z0, z1)
+    parts.append(row); return row
+
+def joint(child, parent, point, function):
+    joints.append({'child': child, 'parent': parent, 'point_world_xyz': point,
+                   'function': function, 'primary_capacity_accepted': False})
+
+def zrange(sign, a, b):
+    return sorted([sign*a, sign*b])
+
+for term, sign in [('Fore', -1), ('Aft', 1)]:
+    cell = 'G7C10_' + term + '_D18FloorEdges'
+    assert cell not in [q['cell'] for q in prior['models']]
+    floorid = 'D18_' + term.lower() + '_route'; floor = floors[floorid]
+    floorpoly = unary_union([Polygon(t) for t in floor['triangles']])
+    core = box(-4, min(sign*509.3, sign*530), 4, max(sign*509.3, sign*530))
+    assert floorpoly.covers(core)
+    stations = [509.3+2*i for i in range(11)] + [530.18]
+    for side in [-1, 1]:
+        x = side*4.18; prefix = cell + '_Side_' + str(side)
+        za, zb = zrange(sign, 509.3, 530.18)
+        top = prefix+'_TopRail'; bottom = prefix+'_BottomRail'
+        cuboid(top, x-.045, x+.045, 107.62, 107.74, za, zb, 'metal', cell, 'GUARD_CONTINUOUS_TOP_RAIL')
+        cuboid(bottom, x-.045, x+.045, 106.60, 106.70, za, zb, 'metal', cell, 'GUARD_CONTINUOUS_BOTTOM_RAIL')
+        for index, distance in enumerate(stations):
+            z = sign*distance; name = prefix+'_'+str(index).zfill(2)
+            xs = sorted([side*3.70, side*4.31]); z0, z1 = z-.40, z+.40
+            plate = name+'_Underplate'; riser = name+'_OutsideRiser'; post = name+'_Post'
+            cuboid(plate, xs[0], xs[1], 106.20, 106.26, z0, z1, 'metal', cell, 'UNDERSIDE_EDGE_CLAMP_PLATE')
+            xs2 = sorted([side*4.06, side*4.31])
+            cuboid(riser, xs2[0], xs2[1], 106.20, 106.62, z-.12, z+.12, 'metal', cell, 'OUTSIDE_EDGE_CLAMP_RISER')
+            cuboid(post, x-.06, x+.06, 106.56, 107.70, z-.06, z+.06, 'metal', cell, 'GUARD_POST')
+            pad = box(xs[0], z0, xs[1], z1).intersection(floorpoly)
+            assert pad.area > .045
+            contact = pad.representative_point()
+            contacts.append({'part': plate, 'floor_id': floorid, 'floor_underside_y': 106.26,
+                             'contact_polygon_xz': list(pad.exterior.coords)[:-1],
+                             'positive_contact_area_m2': pad.area,
+                             'witness_world_xyz': [contact.x, 106.26, contact.y],
+                             'primary_capacity_accepted': False})
+            joint(riser, plate, [x, 106.25, z], 'CLAMP_RISER_TO_UNDERPLATE')
+            joint(post, riser, [x, 106.60, z], 'POST_TO_OUTSIDE_RISER')
+            joint(top, post, [x, 107.66, z], 'TOP_RAIL_TO_POST')
+            joint(bottom, post, [x, 106.67, z], 'BOTTOM_RAIL_TO_POST')
+        for index, (a, b) in enumerate(zip(stations, stations[1:])):
+            za, zb = zrange(sign, a+.045, b-.045)
+            name = prefix+'_Glass_'+str(index).zfill(2)
+            cuboid(name, x-.03, x+.03, 106.66, 107.64, za, zb, 'glass', cell, 'CLOSED_GUARD_GLASS_PANEL')
+            z = sign*(a+b)/2
+            joint(name, bottom, [x, 106.68, z], 'GLASS_TO_BOTTOM_CAPTURE')
+            joint(name, top, [x, 107.63, z], 'GLASS_TO_TOP_CAPTURE')
+    z = sign*530.18; prefix = cell+'_End'
+    za, zb = zrange(sign, 530.135, 530.225)
+    top = prefix+'_TopRail'; bottom = prefix+'_BottomRail'
+    cuboid(top, -4.18, 4.18, 107.62, 107.74, za, zb, 'metal', cell, 'END_GUARD_TOP_RAIL')
+    cuboid(bottom, -4.18, 4.18, 106.60, 106.70, za, zb, 'metal', cell, 'END_GUARD_BOTTOM_RAIL')
+    for index, x in enumerate([-2.7, 2.7]):
+        name = prefix+'_'+str(index); plate = name+'_Underplate'; riser = name+'_OutsideRiser'; post = name+'_Post'
+        za, zb = zrange(sign, 529.70, 530.31)
+        cuboid(plate, x-.18, x+.18, 106.20, 106.26, za, zb, 'metal', cell, 'UNDERSIDE_END_CLAMP_PLATE')
+        za2, zb2 = zrange(sign, 530.06, 530.31)
+        cuboid(riser, x-.12, x+.12, 106.20, 106.62, za2, zb2, 'metal', cell, 'OUTSIDE_END_CLAMP_RISER')
+        cuboid(post, x-.06, x+.06, 106.56, 107.70, z-.06, z+.06, 'metal', cell, 'END_GUARD_POST')
+        pad = box(x-.18, za, x+.18, zb).intersection(floorpoly); assert pad.area > .10
+        contact = pad.representative_point()
+        contacts.append({'part': plate, 'floor_id': floorid, 'floor_underside_y': 106.26,
+                         'contact_polygon_xz': list(pad.exterior.coords)[:-1],
+                         'positive_contact_area_m2': pad.area,
+                         'witness_world_xyz': [contact.x, 106.26, contact.y], 'primary_capacity_accepted': False})
+        joint(riser, plate, [x, 106.25, z], 'END_RISER_TO_UNDERPLATE')
+        joint(post, riser, [x, 106.60, z], 'END_POST_TO_RISER')
+        joint(top, post, [x, 107.66, z], 'END_TOP_RAIL_TO_POST')
+        joint(bottom, post, [x, 106.67, z], 'END_BOTTOM_RAIL_TO_POST')
+    for index, (a, b) in enumerate(zip([-4.18, -2.7, 2.7], [-2.7, 2.7, 4.18])):
+        name = prefix+'_Glass_'+str(index); za, zb = zrange(sign, 530.15, 530.21)
+        cuboid(name, a+.045, b-.045, 106.66, 107.64, za, zb, 'glass', cell, 'CLOSED_END_GUARD_GLASS')
+        joint(name, bottom, [(a+b)/2, 106.68, z], 'END_GLASS_TO_BOTTOM_CAPTURE')
+        joint(name, top, [(a+b)/2, 107.63, z], 'END_GLASS_TO_TOP_CAPTURE')
+    # End rails overlap the side rails at both corners, closing the geometric graph.
+    for side in [-1, 1]:
+        joint(top, cell+'_Side_'+str(side)+'_TopRail', [side*4.165, 107.66, sign*530.165], 'END_TO_SIDE_TOP_RAIL')
+        joint(bottom, cell+'_Side_'+str(side)+'_BottomRail', [side*4.165, 106.67, sign*530.165], 'END_TO_SIDE_BOTTOM_RAIL')
+pins = {file: hashlib.sha256((R/file).read_bytes()).hexdigest() for file in
+        ['Game/data/generated/structural_meshes.json', 'Game/data/generated/received_structural_meshes.json',
+         'Game/scripts/structural_floor_builder.gd', 'Game/scripts/player.gd', 'Game/data/architecture/AFT_CROWN_SITTING_BAYS.json',
+         'Game/data/architecture/AFT_CROWN_SITTING_LIGHTING.json']}
+plan = {'schema': 'astraea.group7.local_floor_edge_guards.r010', 'parts': parts,
+        'floor_contacts': contacts, 'finite_joint_graph': joints, 'source_pins': pins,
+        'material_native': native.relative_to(R).as_posix(),
+        'material_native_sha256': hashlib.sha256(native.read_bytes()).hexdigest(),
+        'native_filename': 'G7_D18FloorEdges_r010.blend',
+        'export_cells': ['G7C10_Aft_D18FloorEdges', 'G7C10_Fore_D18FloorEdges'],
+        'new_floor_owners': 0, 'new_room_ids': 0, 'capacity_delta': 0,
+        'original_protected_route_or_source_changed': False, 'primary_capacity_accepted': False}
+(P/'docs/GUARD_PLAN.json').write_text(json.dumps(plan, indent=2)+'\n')
+preimage = P/'docs/PREIMAGE_GROUP7_COMPLETION.json'; assert not preimage.exists()
+preimage.write_bytes((R/'Game/data/architecture/GROUP7_COMPLETION.json').read_bytes())
+print('G7_R010_PLAN', len(parts), 'closed parts', len(contacts), 'actual underside seats', len(joints), 'finite joints')
