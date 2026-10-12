@@ -1,0 +1,28 @@
+from pathlib import Path
+import bpy,json,hashlib
+from mathutils import Vector
+W=Path(__file__).resolve().parent;R=next(p for p in W.parents if (p/'Game').is_dir());F=R/'BlenderCatalogue/assets/group4_completion_20261011/operating_controls_018/Group4_Mounted_Operating_Controls_and_CarLamp_r001.blend';pin=hashlib.sha256(F.read_bytes()).hexdigest();catalogue=json.loads((R/'BlenderCatalogue/catalogue_manifest.json').read_text());assert all(a['catalogue_id']!='AST-TRM-G4-036' for a in catalogue['assets'])
+bpy.ops.wm.open_mainfile(filepath=str(F));bpy.context.preferences.filepaths.save_version=0
+for o in list(bpy.data.objects):bpy.data.objects.remove(o,do_unlink=True)
+for c in list(bpy.data.collections):bpy.data.collections.remove(c)
+family='group4_station_information_019';FAMILY=family;parts=[];markers=[];collections={};current=bpy.data.collections.new('MOUNTED_STATION_INFORMATION');bpy.context.scene.collection.children.link(current)
+B=lambda p:(p[0],-p[2],p[1]);code=(R/'BlenderCatalogue/assets/group4_tram_connections_20261009/build_source.py').read_text();exec(code[code.index('def mesh('):code.index('def guard(')],globals())
+metal=bpy.data.materials['champagne_metal'];ivory=bpy.data.materials['ivory_enamel'];opal=bpy.data.materials['G4_Operating_Opal_r001']
+box('StationInfo_OriginalStileReceiver',(-1.55,1.93,-.075),(.54,.94,.025),metal,'positive15mm immutable original ivory stile skin receiving; existing fixed gate only')
+box('StationInfo_ProfiledCase',(-1.55,1.93,-.1325),(.56,.94,.125),ivory,'closed bounded information case above original call control; no floor or aperture change')
+box('StationInfo_InsetFace',(-1.55,1.93,-.1985),(.504,.852,.009),ivory,'positive1mm receiver in actual case front; fixed surface legend backing')
+for label,x in [('Left',-1.817),('Right',-1.283)]:box('StationInfo_Frame_'+label,(x,1.93,-.201),(.026,.94,.016),metal,'bounded champagne frame positively received into case')
+for label,y in [('Bottom',1.473),('Top',2.387)]:box('StationInfo_Frame_'+label,(-1.55,y,-.201),(.56,.026,.016),metal,'bounded champagne frame positively received into case')
+box('StationInfo_LineSpine',(-1.737,1.92,-.207),(.008,.43,.012),metal,'physical five-stop line spine received into enamel panel')
+stations=['FORWARD','FORE_MIDSHIP','CENTRAL','AFT_MIDSHIP','AFT'];nodes=[]
+for station,y in zip(stations,[2.12,2.02,1.92,1.82,1.72]):
+ tube('StationInfo_Node_'+station+'_Rim',(-1.737,y,-.202),(-1.737,y,-.219),.017,metal,'received real route-node ring')
+ tube('StationInfo_Node_'+station+'_Opal',(-1.737,y,-.206),(-1.737,y,-.223),.011,opal,'exact retained018 opal material; emissive detail only, not an added world light')
+ nodes.append({'station':station,'face_label_position_xyz':[-1.525,y,-.204],'physical_node_center_xyz':[-1.737,y,-.223]})
+bpy.ops.object.select_all(action='DESELECT')
+for o in current.objects:o.select_set(True)
+glb='AST-TRM-G4-036_mounted_station_information_r001.glb';bpy.ops.export_scene.gltf(filepath=str(W/glb),export_format='GLB',use_selection=True,export_apply=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False)
+for image in bpy.data.images:
+ if image.source=='FILE' and not image.packed_file:image.pack()
+bpy.ops.file.make_paths_relative();native='Group4_Mounted_Station_Information_r001.blend';bpy.ops.wm.save_as_mainfile(filepath=str(W/native),compress=True);assert hashlib.sha256(F.read_bytes()).hexdigest()==pin
+I={'active':False,'family':family,'native':native,'asset':'AST-TRM-G4-036','file':glb,'sha256':hashlib.sha256((W/glb).read_bytes()).hexdigest(),'mesh_count':18,'five_instances_on_existing_original_gate_frames':True,'source_material_donor':str(F.relative_to(R)),'source_material_donor_sha256':pin,'original_gate_model':'Game/assets/models/AST-DOR-003.glb','original_gate_sha256':hashlib.sha256((R/'Game/assets/models/AST-DOR-003.glb').read_bytes()).hexdigest(),'fixed_stile_skin_xyz':[[-1.9,0,-.085],[-1.2,2.65,-.06]],'original_clear_aperture_x':[-1.2,1.2],'station_order':stations,'nodes':nodes,'case_face_plane_z':-.203,'painted_legend_plane_z':-.204,'fixed_legends':{'title':{'text':'TOWNLINE','position':[-1.55,2.315,-.204],'pixel_size':.00038},'current_station':{'position':[-1.55,2.235,-.204],'pixel_size':.00034},'footer':{'text':'Lift / stairs to promenade','position':[-1.55,1.605,-.204],'pixel_size':.00023}},'new_floor_m2':0,'new_interaction_targets_controllers_NPC_save_or_world_lights':0,'source_originals_room_ids_capacity_and_routes_modified':False,'north_docking_or_pit_adoption':False,'purpose':'Station identification, retained five-stop order and existing promenade transfer type; static construction only, no invented destination path or timetable.','whole_group_accepted':False};(W/'SOURCE_INTERFACE.json').write_text(json.dumps(I,indent=2)+'\n');print('G4_STATION_INFORMATION_BUILT',I['mesh_count'],'closed source meshes;5 existing gate stiles;zero floors/controllers/worldlights;inactive')

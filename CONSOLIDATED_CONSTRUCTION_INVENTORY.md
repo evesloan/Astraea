@@ -20,3 +20,5 @@ Progress picture: `libfile_ba3dcee4b9408191baa0eb67d83db6d0`. Actual parcel sour
 Main and the parent checkpoint remain parent-owned. No watcher,new worker,engine switch,forced push or credential/permission change was introduced.
 
 Group2 exact chair successor `ffaf177df8fa460e3b098819604977cad8fbbdd5` is now retained and installed:12 existing D16 chairs face inward;670 current-main checks preserve157 total instances,all positions/scales/assets and145 other orientations. Meal service and the tableZ348 versus historicZ356..384 programme boundary remain held. No new seats or restaurant. Corrected source view:`libfile_b33814d431ec8191895b09824f237969`.
+
+Thread & Shell r002 stock/repair and Maker r002 enclosure/foyer are now installed-and-checked:630/185 checks,26/23 original-controller legs and8/4 normal RMB/E operations;original526/108 meshes preserved. Group4 station information019 `b72e851e6b0047dbad17aaa178e9559504d74ed3` retained source-only pending station/boarding/call prerequisites. Thread player-height source view:`libfile_33f8eb00181c81918a3bd4055f862926`.
