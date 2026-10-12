@@ -1,0 +1,151 @@
+{
+  "status": "PASS",
+  "checks": 49,
+  "errors": [],
+  "reviewed_group1_commit": "47eb8359caa5531e04122b6e56292f8c44d4281a",
+  "pit_patch_applies_to_current_exact_source": true,
+  "floor_source_sha256": "e7cd0cc1c3892a99cf75f2dab4c852f3e1c1864a13b81f828e2a2f93cf239e92",
+  "replacement_rows": [
+    {
+      "owner": "D09_fore_route",
+      "preimage_region_sha256": "8eb7693640588b0c9436e7eb8d96e7d06670f009ffeb5bcc93c692f12e332ca0",
+      "replacement_region_sha256": "377e5eaad2a2a74d2bdb1210c3ab6b804bec6d9af12bf3aef4bc3fe6d1a1ea64",
+      "removed_m2": 2.400000000000091,
+      "floor_y": 52.5
+    },
+    {
+      "owner": "D09_aft_route",
+      "preimage_region_sha256": "e28dc7eb2b5500160d67256a64c8033a4f807da2d1c4723e49ff2f5558624bb8",
+      "replacement_region_sha256": "92e4cb92f4f8af4e95656a968f82bc6d9297d35e919b59f7b56c5725ec8d36cb",
+      "removed_m2": 4.800000000000182,
+      "floor_y": 52.5
+    },
+    {
+      "owner": "D09_atrium_circulation",
+      "preimage_region_sha256": "94b433495b80f7f3ac8cdb1027b21aeba21bc83b8db18b27562ccde1ddb5149b",
+      "replacement_region_sha256": "24a261d135b4b044ba4dedea3b92147fb0f3c9050ee2cc521c5713e2d226808b",
+      "removed_m2": 17.59999999999991,
+      "floor_y": 52.5
+    }
+  ],
+  "four_masks": [
+    {
+      "station": "FORWARD",
+      "actual_removed_m2": 2.4000000000000004,
+      "owner_ids": [
+        "D09_fore_route"
+      ],
+      "mask_xz": [
+        3.4,
+        -453,
+        7.8,
+        -449
+      ],
+      "protected_axis_or_bypass_cut": false
+    },
+    {
+      "station": "AFT",
+      "actual_removed_m2": 2.4000000000000004,
+      "owner_ids": [
+        "D09_aft_route"
+      ],
+      "mask_xz": [
+        3.4,
+        411,
+        7.8,
+        415
+      ],
+      "protected_axis_or_bypass_cut": false
+    },
+    {
+      "station": "AFT_MIDSHIP",
+      "actual_removed_m2": 2.4000000000000004,
+      "owner_ids": [
+        "D09_aft_route"
+      ],
+      "mask_xz": [
+        3.4,
+        228.4,
+        7.8,
+        232.4
+      ],
+      "protected_axis_or_bypass_cut": false
+    },
+    {
+      "station": "CENTRAL",
+      "actual_removed_m2": 17.6,
+      "owner_ids": [
+        "D09_atrium_circulation"
+      ],
+      "mask_xz": [
+        -7.8,
+        -68.4,
+        -3.4,
+        -64.4
+      ],
+      "protected_axis_or_bypass_cut": false
+    }
+  ],
+  "all_other_floor_fields_owners_unchanged": true,
+  "stops": [
+    {
+      "station": "FORWARD",
+      "cursor_m": 34.0,
+      "world_xyz": [
+        -5.6,
+        56.1,
+        -432.0
+      ],
+      "yaw": 0.0,
+      "catchment_z": -432
+    },
+    {
+      "station": "AFT",
+      "cursor_m": 969.7030932904431,
+      "world_xyz": [
+        -5.6,
+        56.1,
+        432.0
+      ],
+      "yaw": 0.0,
+      "catchment_z": 432
+    },
+    {
+      "station": "FORE_MIDSHIP",
+      "cursor_m": 225.0,
+      "world_xyz": [
+        -5.6,
+        56.1,
+        -241.0
+      ],
+      "yaw": 0.0,
+      "catchment_z": -216
+    },
+    {
+      "station": "AFT_MIDSHIP",
+      "cursor_m": 753.7030932904424,
+      "world_xyz": [
+        -5.6,
+        56.1,
+        216.0
+      ],
+      "yaw": 0.0,
+      "catchment_z": 216
+    },
+    {
+      "station": "CENTRAL",
+      "cursor_m": 395.3525674298981,
+      "world_xyz": [
+        0.0,
+        56.1,
+        -72.0
+      ],
+      "yaw": 0.0,
+      "catchment_z": -72
+    }
+  ],
+  "recommended_startup": "CENTRAL",
+  "startup_is_empty_new_car_only_never_original_actor_cart_stock_relocation": true,
+  "no_shared_writes_engine_import_or_backup": true,
+  "installed_operational_structural_or_whole_group_accepted": false
+}

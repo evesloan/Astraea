@@ -1,0 +1,22 @@
+# Reference only:Group1 derives the insertion in its current ship.gd.
+# Preconditions:exact floor replacement/north decision admitted;runtime paths promoted;
+# all adoption predicates in OWNER_DECISIONS.json true;original actors unheld/unrestrained.
+# Before existing lighting_budget.configure(self,player),after original cart/player exist:
+var g4_parent:Node3D=$ShipSpace/Districts
+var g4_base:Node3D=load("res://scripts/group4_completion.gd").build(g4_parent,false,true)
+load("res://scripts/group4_aftmid_upper_successor.gd").build(g4_base,false)
+var g4_body:AnimatableBody3D=load("res://scripts/group4_tram_source_actuator.gd").fixture_vehicle(g4_parent,Vector3(0,56.1,-72))
+var g4_safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(g4_parent,g4_base,g4_body,false)
+var g4_restraint:Node3D=load("res://scripts/group4_cart_restraint.gd").build(g4_parent,g4_body,g4_safety,cleaning_cart,false)
+var g4_motor:Node3D=load("res://scripts/group4_loaded_tram_actuator.gd").attach_loaded(g4_parent,g4_body,g4_safety,g4_restraint,false)
+# Empty new car only;source ready initially chooses safe end4. Set admitted startup before riders.
+var g4_start:=395.3525674298981
+g4_motor.cursor=g4_start;g4_motor.target=g4_start;g4_motor.speed=0;g4_motor.moving=false
+g4_motor.apply_pose(g4_start);g4_motor.last_vehicle_pose=g4_body.global_transform
+# Existing configure occurs exactly once,includes base lights:
+lighting_budget.configure(self,player)
+# Then the one console/car light registers once into that existing selector:
+load("res://scripts/group4_tram_operating_controls.gd").build(g4_parent,g4_body,g4_safety,g4_restraint,g4_motor,player,lighting_budget,false)
+load("res://scripts/group4_station_information.gd").build(g4_parent,g4_safety,false)
+# Never replay build_terminals:the current original call and terminal_active:true already installed them.
+# This reference is not an applied root patch or engine-accepted combined build.
