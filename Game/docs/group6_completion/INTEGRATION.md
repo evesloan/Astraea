@@ -174,3 +174,19 @@ The current adapter selects r017. Two protected original boarding bays have sour
 `RIVER_ENTRY001.json` passes ten local checks/four legs; `RIVER_ENTRY_MAIN001.json` passes 13 actual-main checks/four legs with the same original persistent player. Each independent supported dry fixture includes 204 motion samples, max frame displacement <0.060 m and minimum Y44.2994. Normal input/contact performs the paths; no traversal translation/velocity writes. Facing yaw is set by the retained walk helper. This does not accept swimming/current, a tube mount, chair/hoist operation or species/final art.
 
 Native/repeat-export verification, current wide/source cutaway receipt and Library version5/caption are recorded in `MILESTONE.md`, `SAVED_NATIVE_VERIFICATION.json`, `RIVER_VIEW_RECEIPT019.json` and `LIBRARY_PHOTO_DELIVERY.json`. The two blank roof-occluded detail017 images remain honestly failed. No shared controller/registry/root is edited. Earlier broader validation is historical rather than freshly repeated whole-source acceptance.
+
+## Retained Tidal / Mineral source entry package
+
+The annex remains selected r017. After `received_sections.gd.build(ship)` and before `ReceivedRoomResidency.setup`, apply the new package to the two existing rooms:
+
+```gdscript
+for key in ["D08_directory_02", "D08_directory_03"]:
+    load("res://scripts/group6_completion/thermal_entries.gd").build(
+        ship.get_node("ShipSpace/Districts/ReceivedSections/" + key))
+```
+
+The adapter pins both current entry001 exports and new r003 additions, checks exact affected source bounds before modifying anything, excludes ten overlapping original bridge/tread meshes per room from runtime visibility/contact, removes only the two false water contacts per room, and adds precise contacts for visible source architecture. Grip ribbons remain visual. Beds, compiler floors, root entrance successor, room identity, furniture/lights, ledgers and capacity remain. No new floor, destination or shared registry entry. Changed water contacts are deliberately visual-only; original water appearance remains. No swimming/AFK/ride/controller acceptance.
+
+The retained reviewed native and exact source001 export provenance are verified from archived ZIPs; listed later entrance-native paths are absent in the baseline. New entry-only exports never replace current entry001 architecture. `thermal_targets/PROVENANCE.json` records this limit; `SAVED_ENTRY_VERIFICATION.json` verifies every affected current runtime bound separately. The source views are reviewed native cutaways with the older entrance geometry explicitly identified.
+
+`THERMAL_TARGET002.json` passes 24 local checks/eight legs. `THERMAL_TARGET_MAIN001.json` passes 30 actual-main checks/eight legs, same persistent player, both rooms and four compiler owners. Each independent supported wet-landing fixture has continuous-motion evidence; no traversal position/velocity writes. Retained facing-yaw assignment is test input. No broad shared-route, chair/hoist/species/temperature/gravity/engineering/final-art acceptance. Failed author001/002, verifier001 and local001 remain.
