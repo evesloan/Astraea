@@ -1,0 +1,3 @@
+# Group2 service interfaces and current street review, batch024
+
+This is exact-source coordination and regional visual review, not a new physical route. All named care/meal/wet/growing links await Group1 receiving/site/shaft decisions. Previous source revisions and all13 failed network criteria remain intact. See `Game/docs/GROUP3_GROUP2_SERVICE_OWNER_ACTIONS_20261012.md` and `source/OWNER_INTERFACE_ACTIONS.json`. Current Group2 checkpoint8e5f9855 and current Group3 parente89dda69 are independently pinned. Rejected camera view and dark ordinary-eye diagnostic are retained. The readable wide source view is inspected and saved to Library.
