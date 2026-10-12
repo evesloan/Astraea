@@ -1,0 +1,3 @@
+# Fore-starboard crew/clinical/service physical successor
+
+Frozen append-only batch018 supplies seven editable native source packages AST-STF-G3-037..043, seventeen corrected landings, six original service doors, three receiving bays, six original furnishings, 34 fixture profiles and missing-only floors. Original IDs, population, D01/D04 and frozen predecessor source are retained. Operation uses existing controllers with owner-supplied IDs and sealed-load validation. See `Game/docs/GROUP3_FORE_STARBOARD_CLINICAL_20261011.md` for source selection, tests, rejected attempts, scoped adoption and unfinished acceptance.
