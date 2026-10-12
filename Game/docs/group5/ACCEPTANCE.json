@@ -9,7 +9,7 @@
     "new_operating_doors": 297,
     "new_fixed_controls": 594,
     "new_two_sided_guides": 18,
-    "new_selected_saved_natives": 28,
+    "new_selected_saved_natives": 30,
     "new_selected_source_meshes": 157,
     "new_repeated_source_mesh_instances": 13545,
     "existing_connection_chunks_preserved": 78,
@@ -44,7 +44,16 @@
     "maker_new_recessed_door": 1,
     "maker_new_controls": 2,
     "maker_selected_new_native_pairs": 3,
-    "maker_original_source_throat_preserved_m": 8.24
+    "maker_original_source_throat_preserved_m": 8.24,
+    "living_gifts_public_door": 1,
+    "living_gifts_service_interface_candidate": 1,
+    "living_gifts_new_controls": 4,
+    "living_gifts_selected_source_meshes": 66,
+    "living_gifts_original_throats_preserved_m": [
+      3.78,
+      2.0
+    ],
+    "living_service_default_adopted": false
   },
   "tested": {
     "all297_actual_main_cycles": "PASS:qa/full297_cycles_before_care_revisions.json;all297 original hardware cycles;30 changed-shop cycles revalidated afterward in Game/artifacts/group5_completion.json",
@@ -61,7 +70,7 @@
     "isolated_startup_integration": "PASS:qa/ISOLATED_STARTUP_INTEGRATION.json;exact proposed single-call patch applied to an isolated bootstrap copy;actual main startup attaches builder once and all interface checks pass without engine errors;combined multi-group integration remains held",
     "five_large_venue_lighting": "PASS:Game/artifacts/group5_large_venue_lighting.json;1290 checks,109 fixture contacts,545 receiver rays,15 explicit optical fixtures reached by unobstructed active shadowed sources,three derivative pins/unchanged unselected mesh sets,twelve30mm rib clearances,five cached detach/returns;optical placement is not traversal,pixel-lighting or hardware acceptance",
     "fixture_derivative_repeat_exports": "PASS:docs/VENUE_FIXTURE_CLEARANCE.json;three fresh native reads reexport byte-identically;36 original mesh vertex/face/UV/material records unchanged;housing/lens rigid drops and suspension transforms only",
-    "prior_group5_assets": "PASS:qa/RETAINED_GROUP5_ASSET_INTEGRITY_005.json;all prior native,GLB,PNG and recovered archive member bytes match independently retained bfe667b1",
+    "prior_group5_assets": "PASS:qa/RETAINED_GROUP5_ASSET_INTEGRITY_006.json;all prior native,GLB,PNG and recovered archive member bytes match independently retained bbcdae41",
     "combined_group5_lighting_startup": "PASS:qa/ISOLATED_LARGE_VENUE_STARTUP_INTEGRATION.json;earlier Group5 construction plus new source-lighting call applied to an isolated copy of actual bootstrap;all1290 checks pass with startup attachment and zero engine errors;other-group integration remains unaccepted",
     "exported_fixture_mechanical_contacts": "PASS:qa/LARGE_VENUE_SOURCE_LIGHTING.json;12 derivative exported ceiling endpoints preserved within30micrometres,40mm positive rod/housing overlaps and at least30mm original exported-rib clearances;no structural sizing or load acceptance",
     "large_venue_native_materials": "PASS:Game/artifacts/group5_large_venue_materials.json;130555 checks,independent native-factor glTF importer references,976 selected surfaces,3290 untouched surfaces,121024 unchanged material-property/texture comparisons,all mesh resources/poses unchanged,five exact cached returns,actual combined startup attached with zero engine errors",
@@ -75,7 +84,10 @@
     "maker_construction": "PASS:Game/artifacts/group5_maker_construction.json;185 checks,23 continuous controller legs,4 normal RMB/E operations,1 occupied guard,9 source lens contacts,3 reached optical samples,108 original mesh resources/poses retained,cached open return,exact combined startup,no engine errors",
     "maker_source_fit": "PASS:qa/MAKER_CONSTRUCTION_SOURCE_FIT.json;588 moving mesh poses,two literal original floor unions,original threshold/recess mount and control contacts,8.24m source throat preserved",
     "maker_ceiling_source_fit": "PASS:qa/MAKER_CEILING_SOURCE_FIT.json;732 exported vertices,20 enclosure meshes,2333.005m2 literal floor projection,original wall bearings,recorded roof cap and210mm track clearance",
-    "maker_ceiling_uv_scale": "PASS:qa/MAKER_CEILING_UV_INTEGRITY.json;only8 UV arrays match actual650mm/1300mm tile contract,480 exported UV pairs,all20 geometry/normal/index/material/pose bytes exact,fresh native repeat exact"
+    "maker_ceiling_uv_scale": "PASS:qa/MAKER_CEILING_UV_INTEGRITY.json;only8 UV arrays match actual650mm/1300mm tile contract,480 exported UV pairs,all20 geometry/normal/index/material/pose bytes exact,fresh native repeat exact",
+    "living_gifts_scoped_doors": "PASS:Game/artifacts/group5_living_gifts_doors.json;420 checks,37 continuous original-controller legs,12 normal RMB/E operations,2 actual-character guards,272 moving-body samples,3 reached affected original-light samples,protected aquatic frame sightline,all original mesh resources/poses unchanged;service explicitly candidate,shared adoption held",
+    "living_gifts_source_fit": "PASS:qa/LIVING_GIFTS_DOOR_SOURCE_FIT.json;1176 source moving-mesh poses against actual unbatched native bounds andliteral original floor,positive original mounts/controls;actual original export/flora/column triangle probe rejects initial contacts andclears revised planes",
+    "living_public_startup": "PASS:qa/ISOLATED_LIVING_PUBLIC_STARTUP.json;exact combined startup adds public door only;explicit servicecandidate added bytest;420checks,37legs,12ops,2guards,272poses,no engine errors"
   },
   "visually_reviewed": {
     "views": [
@@ -87,7 +99,8 @@
       "qa/SOURCE_PARCEL_FOYER_WIDE006.png",
       "qa/SOURCE_PARCEL_FOYER_OPEN007.png",
       "qa/SOURCE_THREAD_STOCK_WIDE003.png",
-      "qa/SOURCE_MAKER_FOYER_OPEN003.png"
+      "qa/SOURCE_MAKER_FOYER_OPEN003.png",
+      "qa/SOURCE_LIVING_PUBLIC_OPEN001.png"
     ],
     "review": "actual retained source-export geometry plus new native/export hardware;clear neutral Workbench source views,correct runtime yaw and two-sided directory",
     "limitations": "original material palette colors;no texture/glass/Godot/CRT shading,no hardware or final-art acceptance",
@@ -98,8 +111,8 @@
   },
   "unfinished": {
     "authority": "84 actual room-address joins remain null;no invented IDs",
-    "large_venues": "All10 full fit-out/operations acceptance remains held.Five restored exact source venues now have109 first-pass lights andfive operating foyers.Thread stock/repair andMaker enclosure/9lights/recessed door are scoped construction;LivingGifts remaining doors,other independent construction,andshared Orchard interfaces require continued work.OriginalMaker correction-native and procedural/font authoring remain unrecovered.",
-    "shared_interfaces": "Four staff circuits need Group3/integration shared-riser delivery.STAFF_RISER_INTERFACE_CONTRACT.json preserves actual8 crosslinks/16 nominal sockets;six nominal endpoints are outside literal source floor bounds.No inferred receiver or shaft.Group6 Orchard/Pool,Group8 FoodHall and Group7 hull/support interfaces remain.",
+    "large_venues": "All10 full fit-out/operations acceptance remains held.Five recovered source venues haveoperating foyers/source lights;Thread stock/repair,Maker enclosure/9lights/door andLiving public door plusheld aft service candidate are scoped construction.Salon remaining source work andshared Orchard/other interfaces require continued work.OriginalMaker correction-native andprocedural/font authoring remain unrecovered.",
+    "shared_interfaces": "Four staff circuits need Group3/integration shared-riser delivery.STAFF_RISER_INTERFACE_CONTRACT.json preserves actual8 crosslinks/16 nominal sockets;six nominal endpoints are outside literal source floor bounds.No inferred receiver or shaft.Group6 Orchard/Pool,Group8 FoodHall and Group7 hull/support interfaces remain. Living service cassette is a tested aft surface candidate beyond the small interiorbay,default skipped pending Group6/integration receiving review;see LIVING_SERVICE_INTERFACE_CONTRACT.json.",
     "gameplay": "commerce,inventory/refill/returns,ambient staff/guests,ownership/decoration,save/load and staff-role/pressure policies",
     "physics": "Connected shipwide/public walking,shared staff-riser joins,largest species,loaded cart and complete hull/support engineering;all99 local staff entry/workbay/return routes now pass.",
     "final_art": "fullshop/largevenue fit-out acceptance,architectural lighting rendered review,acoustics,normal Godot/CRT,targetGPU performance",

@@ -63,3 +63,8 @@
 
 43. Final material-role inspection found1m cove UVs instead of the actual650mm/1300mm shared wood contract.Immutable r002 corrects only8 UV arrays;all geometry/material/pose bytes remain exact.
 44. The first exported-UV verifier omitted glTF vertical flipping,producing an exact0.23077 offset.Local primary exporter lines1406–1407 establish1-v;the corrected independent reference passes unchanged source UV data.
+
+45. Actual retained export-triangle probe rejected the deeper public planes against canopy leaves andthe first242.65m service plane against back-wall/plinth triangles.47.60m public and242.90m service planes clear the retained geometry;originals preserved.
+46. A typed-array ternary stopped the scoped controller ready override.The first control also sat behind the actual projecting service jamb.Default Array initialization andactual inward/back service-jamb contacts replace those failures;37-leg/12-operation/2-guard/272-motion-body manual run nowpasses without engine errors.
+
+47. The isolated startup copy predated two new scoped scripts andits explicit per-script symlinks didnot include them.The original project was intact.The failed fixture was stopped,only missing symlinks were added,andthe exact startup rerun passed420 checks with no engine errors.

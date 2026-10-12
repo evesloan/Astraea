@@ -65,3 +65,5 @@ The full unrelated validation suite was not run. Tests reuse a builder attached 
 This is a substantial independently retained Group5 construction checkpoint. Whole-group acceptance remains false.
 
 The continued construction supplement is [THREAD_AND_MAKER_HANDOFF.md](THREAD_AND_MAKER_HANDOFF.md):Thread & Shell fitted stock/repair and actual service operations;Little Makers supported ceiling,coves,full8.24m opening andnine physical lights.Two sequential scoped bootstrap patches and exact combined-startup evidence are provided.No full-group acceptance or change to the84 null joins.
+
+The continued Living Gifts opening package is [LIVING_GIFTS_DOORS_HANDOFF.md](LIVING_GIFTS_DOORS_HANDOFF.md).The public door has an exact scoped startup patch;the aft cassette remains a tested Group6 interfacecandidate skipped bydefault.Source,floor,column andordinary-controller evidence are retained;whole-group acceptance remains false.
