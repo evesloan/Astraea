@@ -14,5 +14,5 @@ func run()->void:
 		record("same_programme",annex.get_meta("programme_key")=="D08_directory_08")
 	record("both_river_entries_exercised",legs.size()==4)
 	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"motion":river_motion,"supported_independent_fixture_starts":2,"traversal_position_or_velocity_writes":0,"scope":"Focused actual-main river bank/bed entry-return paths and original persistent player. Separate supported dry fixtures only. Swimming/current/buoyancy/AFK/hoist/chair/species/final-art acceptance remains open."}
-	FileAccess.open("res://docs/group6_completion/RIVER_ENTRY_MAIN001.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	FileAccess.open("res://docs/group6_completion/RIVER_ENTRY_MAIN002.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
 	print("GROUP6 RIVER ENTRY MAIN ",result.status," ",errors," LEGS ",legs.size());quit(0 if errors.is_empty() else 1)

@@ -23,5 +23,5 @@ func run()->void:
 	if addition!=null:await river_checks(host,actor,JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/FIT_CONTRACT.json")))
 	record("both_river_entries_exercised",legs.size()==4)
 	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"motion":river_motion,"supported_independent_fixture_starts":2,"traversal_position_or_velocity_writes":0,"scope":"Two real source river bank/bed entry-return paths and unchanged player input/controller; separate supported dry fixtures. No swimming, current, buoyancy, AFK mount, operating hoist, chair/species or final-art acceptance."}
-	FileAccess.open("res://docs/group6_completion/RIVER_ENTRY001.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	FileAccess.open("res://docs/group6_completion/RIVER_ENTRY002.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
 	print("GROUP6 RIVER ENTRY ",result.status," ",errors," LEGS ",legs.size());quit(0 if errors.is_empty() else 1)

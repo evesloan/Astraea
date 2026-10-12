@@ -3,7 +3,7 @@ import bpy,json,hashlib,math
 from pathlib import Path
 from mathutils import Vector
 P=Path(__file__).resolve().parent;R=P.parents[2]
-bpy.ops.wm.open_mainfile(filepath=str(P/'AquaticCompletion_r017.blend'));S=bpy.context.scene
+bpy.ops.wm.open_mainfile(filepath=str(P/'AquaticCompletion_r018.blend'));S=bpy.context.scene
 text=(P/'author_completion.py').read_text();exec(text[text.index('def digest(o):'):text.index('before={')])
 audit=json.load(open(P/'NATIVE_AUDIT.json'));fail=[]
 for n,h in audit['original_mesh_hashes'].items():
@@ -19,7 +19,7 @@ def inside(p,tri):
  v=[cross(a,b,p),cross(b,c,p),cross(c,a,p)]
  return all(q>=-1e-6 for q in v) or all(q<=1e-6 for q in v)
 supports=[]
-for n in ['AQ6__rest_0_plinth','AQ6__rest_1_plinth','AQ6__rest_2_plinth','AQ6__clean_linen_cabinet','AQ6__used_linen_cabinet','AQ6__arrival_perch_bearing_57.6','AQ6__arrival_perch_bearing_59.4','AQ6__spa_5_support_base','AQ6__spa_6_support_base','AQ6__water_care_filter_0_skid','AQ6__water_care_filter_1_skid','AQ6__water_care_closed_return','AQ6__river_south_board_case_bearing_80.28','AQ6__river_south_board_case_bearing_80.62','AQ6__river_north_recovery_case_bearing_74.28','AQ6__river_north_recovery_case_bearing_74.62']:
+for n in ['AQ6__rest_0_plinth','AQ6__rest_1_plinth','AQ6__rest_2_plinth','AQ6__clean_linen_cabinet','AQ6__used_linen_cabinet','AQ6__arrival_perch_bearing_57.6','AQ6__arrival_perch_bearing_59.4','AQ6__spa_5_support_base','AQ6__spa_6_support_base','AQ6__water_care_filter_0_skid','AQ6__water_care_filter_1_skid','AQ6__water_care_closed_return','AQ6__river_south_board_case_bearing_80.28','AQ6__river_south_board_case_bearing_80.62','AQ6__river_north_recovery_case_bearing_74.28','AQ6__river_north_recovery_case_bearing_74.62','AQ6__river_south_board_rail_bearing_-1','AQ6__river_south_board_rail_bearing_1','AQ6__river_south_board_submerged_grip_bearing_-1','AQ6__river_south_board_submerged_grip_bearing_1','AQ6__river_north_recovery_rail_bearing_-1','AQ6__river_north_recovery_rail_bearing_1','AQ6__river_north_recovery_submerged_grip_bearing_-1','AQ6__river_north_recovery_submerged_grip_bearing_1']:
  o=bpy.data.objects[n];vs=[xyz(v) for v in world(o)];bottom=min(v[1] for v in vs);foot=[v for v in vs if abs(v[1]-bottom)<.00002]
  for x,y,z in foot:
   hit=any(abs(f['top_y']-y)<.001 and any(inside((x,z),t) for t in f['triangles_xz']) for f in floor)
@@ -60,8 +60,8 @@ if asset_sha!=fit['water_care_cell']['gate']['source_sha256']:fail.append('Regis
 excluded=audit['exchange_exclusions'];out=Path('/workspace/group6-repeat-export');out.mkdir(exist_ok=True)
 namespace={'bpy':bpy,'json':json,'P':out,'S':S,'excluded':excluded}
 exec(text[text.index('# Exchange has explicit roles;'):text.index("print('GROUP6 SOURCE PASS")],namespace)
-native_export=P/'AquaticCompletion_r017.glb';repeat=out/native_export.name
+native_export=P/'AquaticCompletion_r018.glb';repeat=out/native_export.name
 exact=native_export.read_bytes()==repeat.read_bytes()
-result={'status':'PASS' if not fail and exact else 'HOLD','failures':fail,'original_saved_meshes_checked':len(audit['original_mesh_hashes']),'packed_images_checked':len(audit['packed_images_preserved']),'registered_gate_reference_meshes_checked':len(reference),'registered_gate_export_sha256':asset_sha,'new_floor_support_points':supports,'conservative_furniture_old_geometry_pairs':fitting_checks,'new_mounted_endpoint_checks':mounts,'fresh_saved_native_repeat_export_identical':exact,'native_sha256':hashlib.sha256((P/'AquaticCompletion_r017.blend').read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(native_export.read_bytes()).hexdigest(),'repeat_export_sha256':hashlib.sha256(repeat.read_bytes()).hexdigest(),'scope':'Source vertex/face/UV/transform/material-name/modifier and packed-image preservation; source floor contacts, furniture/original solid AABB separation, actual roof/canopy fixture contacts, registered gate reference and exact fresh export. Engineering and water gameplay remain open.'}
+result={'status':'PASS' if not fail and exact else 'HOLD','failures':fail,'original_saved_meshes_checked':len(audit['original_mesh_hashes']),'packed_images_checked':len(audit['packed_images_preserved']),'registered_gate_reference_meshes_checked':len(reference),'registered_gate_export_sha256':asset_sha,'new_floor_support_points':supports,'conservative_furniture_old_geometry_pairs':fitting_checks,'new_mounted_endpoint_checks':mounts,'fresh_saved_native_repeat_export_identical':exact,'native_sha256':hashlib.sha256((P/'AquaticCompletion_r018.blend').read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(native_export.read_bytes()).hexdigest(),'repeat_export_sha256':hashlib.sha256(repeat.read_bytes()).hexdigest(),'scope':'Source vertex/face/UV/transform/material-name/modifier and packed-image preservation; source floor contacts, furniture/original solid AABB separation, actual roof/canopy fixture contacts, registered gate reference and exact fresh export. Engineering and water gameplay remain open.'}
 (P/'SAVED_NATIVE_VERIFICATION.json').write_text(json.dumps(result,indent=2)+'\n');print('GROUP6 FRESH SOURCE',result['status'],fail,'REPEAT',exact)
 if result['status']!='PASS':raise RuntimeError('Fresh source held')

@@ -6,8 +6,8 @@ the shared integration owner, construction thread `01a11d7f-8ef6-70bc-858d-bdf8d
 It does not modify `ship.gd`, floor registries, programme/capacity ledgers,
 catalogue registries, master sources, main, or checkpoint references.
 
-The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r017.blend`.
-Its runtime export is `Game/assets/models/AquaticCompletion_r017.glb`.
+The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r018.blend`.
+Its runtime export is `Game/assets/models/AquaticCompletion_r018.glb`.
 The adapter consumes `Game/data/architecture/group6_completion/FIT_CONTRACT.json`
 and `COLLISION_POLICY.json`. The source audit preserves all 1,640 original mesh
 definitions/transforms/UVs/material assignments/modifiers and 16 packed image
@@ -190,3 +190,15 @@ The adapter pins both current entry001 exports and new r003 additions, checks ex
 The retained reviewed native and exact source001 export provenance are verified from archived ZIPs; listed later entrance-native paths are absent in the baseline. New entry-only exports never replace current entry001 architecture. `thermal_targets/PROVENANCE.json` records this limit; `SAVED_ENTRY_VERIFICATION.json` verifies every affected current runtime bound separately. The source views are reviewed native cutaways with the older entrance geometry explicitly identified.
 
 `THERMAL_TARGET002.json` passes 24 local checks/eight legs. `THERMAL_TARGET_MAIN001.json` passes 30 actual-main checks/eight legs, same persistent player, both rooms and four compiler owners. Each independent supported wet-landing fixture has continuous-motion evidence; no traversal position/velocity writes. Retained facing-yaw assignment is test input. No broad shared-route, chair/hoist/species/temperature/gravity/engineering/final-art acceptance. Failed author001/002, verifier001 and local001 remain.
+
+## r018 inlet clearance and independent float forces
+
+Current annex selection is r018 through the same `completion.gd` call once before light-budget setup. The upper inlet rails end outside the unoccupied float corridor; low recovery grips remain under the hull. Original entry surfaces/floors/rooms/hoists/seats/eight static rings remain. Native source/source assets and historical r017 results remain immutable. Both changed entry routes pass local002 and actual-main002 with the original player.
+
+`buoyant_float.gd` and `river_water_field.gd` provide four-point immersion forces/drag and exact protected river polygon/arc sampling with prescribed game flow. They do not auto-spawn, modify the player or replace original rack rings. `Group6LeisureFloat_r001.glb` is the exact registered AST-AQU-006 export copied into an own namespace. Native/export provenance is independently pinned under `float_physics/PROVENANCE.json`. The test builds conservative per-source-part convex hulls solely for unoccupied force validation; occupant contact decomposition and mass/draft/gravity/species are separate gates.
+
+`FLOAT_FORCE003.json` passes eleven checks, including settling, physical impulse recovery, dry-water separation and a 103.519 m actual-corridor circuit with no runtime transform/velocity writes after initial fixtures. Maximum frame movement 0.010153 m and lateral offset 0.025886 m. This is unoccupied rigid-float acceptance in local actual-annex context, not avatar swimming, AFK interaction, actual-main occupied operation or fluid simulation. `FLOAT_FORCE002` remains HOLD for the original south rail obstruction. Source revision fixes the real rail; the same circuit criteria/forces remain. No controller/mask/hidden-walk change.
+
+The integration owner must supply the original-player water-mode hook, stable float-slot inventory/admission/mount/dock IDs, actual occupied support, interruption/pause/save recovery and slide mode before avatar acceptance. See `WATER_GAMEPLAY_INTERFACE.json`; no competing controller or review copy is introduced. Existing water-care/changing/cascade/thermal/GrandPool interface holds remain. Read-only main observation is `OBSERVED_SHARED_MAIN_R018.json`; only shared ship.gd differs among protected inputs, and owner reconciles adapter calls there. No Group6 main/checkpoint ref write.
+
+Current photo is Library version 6, WIDE020, with exact caption in `LIBRARY_PHOTO_DELIVERY.json`. Detail020 and source view receipts are immutable. Studio source/geometry review does not accept ordinary lighting or final art. `MILESTONE.md` states implemented/tested/reviewed/unfinished distinctions and retains the premature native check scheduling error honestly.
