@@ -26,6 +26,6 @@ for spec in json.loads((P/'THERMAL_SUPPORT_CONTRACT.json').read_text())['rooms']
  i=spec['programme_key'][-2:]
  views=[('wide',(67,74,-474),(34,44.5,-432),49),('court',(43,52,-442),(34,45.1,-432),13)] if i=='02' else [('wide',(4,74,-250),(-29,44.5,-216),43),('court',(-25,52,-226),(-34,45.1,-216),12)]
  for key,eye,target,scale in views:
-  cam.data.ortho_scale=scale;cam.location=xyz(eye);cam.rotation_euler=(xyz(target)-cam.location).to_track_quat('-Z','Y').to_euler();name=f'SOURCE_THERMAL_SUPPORT_{i}_{key}002.png';s.render.filepath=str(P/name);bpy.ops.render.render(write_still=True)
+  cam.data.ortho_scale=scale;cam.location=xyz(eye);cam.rotation_euler=(xyz(target)-cam.location).to_track_quat('-Z','Y').to_euler();name=f'SOURCE_THERMAL_SUPPORT_{i}_{key}004.png';s.render.filepath=str(P/name);bpy.ops.render.render(write_still=True)
   receipts.append({'image':name,'image_sha256':sha(P/name),'native':spec['native'],'native_sha256':spec['native_sha256'],'eye_xyz':eye,'target_xyz':target,'orthographic_scale_m':scale,'render_only_original_floor_context':preview,'compiler_input_sha256':sha(source),'cutaway_original_roof_objects':hidden,'native_resaved':False,'presentation':'Actual saved thermal support/entry/original room source, neutral studio/base colors. Compiler floor context is render-only; occupied hoist/water, ordinary lights, engineering, species, final art and hardware unaccepted.'})
-(P/'SOURCE_VIEW_RECEIPT002.json').write_text(json.dumps(receipts,indent=2)+'\n')
+(P/'SOURCE_VIEW_RECEIPT004.json').write_text(json.dumps(receipts,indent=2)+'\n')

@@ -1,0 +1,82 @@
+"""Four fixed thermal transfer/support stations on retained wet landings.
+Parked hoists, seats and returned grips are physical construction only. Original
+room and four entry packages remain immutable; occupied hoist/water and species
+operation requires the shared original-player interface.
+"""
+import bpy,bmesh,json,hashlib,math
+from pathlib import Path
+from mathutils import Vector
+P=Path(__file__).resolve().parent;R=P.parents[3];T=P.parent/'thermal_targets'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+code=(T/'author_entries.py').read_text();exec(code[code.index('def digest'):code.index('provenance=')])
+rooms=[]
+for i in ['02','03']:
+ entry=json.loads((T/f'CONTRACT_{i}.json').read_text());source=R/entry['native'];assert sha(source)==entry['native_sha256']
+ dest=P/f'ThermalSupport_{i}_r004.blend';assert not dest.exists(),'Immutable native already exists'
+ bpy.ops.wm.open_mainfile(filepath=str(source));S=bpy.context.scene
+ originals={o.name:digest(o) for o in S.objects if o.type=='MESH'};packed={im.name:hashlib.sha256(im.packed_file.data).hexdigest() for im in bpy.data.images if im.packed_file}
+ palette=R/'external_packages/aquatic_district_20261009/source/aquatic_district.blend';assert sha(palette)=='80c7c1756d4bbe9e74b37e150797115eff5f200977718b4f661f50a3849c9a28'
+ with bpy.data.libraries.load(str(palette),link=False) as (available,loaded):loaded.materials=[n for n in ['ASTRAEA_ivory_enamel','ASTRAEA_teal_weave','AQD_opal'] if n not in bpy.data.materials]
+ M={k:bpy.data.materials[v] for k,v in {'stone':'ASTRAEA_warm_stone','ivory':'ASTRAEA_ivory_enamel','metal':'ASTRAEA_champagne_metal','teal':'ASTRAEA_teal_weave','grip':'ASTRAEA_dark_rubber','lens':'AQD_opal'}.items()};NEW=[]
+ def finish(o,n,mat='metal',role='fixed_support_architecture'):
+  o.name=('G6_SUPPORT_'+i+'__'+n).replace('.', '_');o['group6_role']=role;o['programme_key']='D08_directory_'+i;o['occupied_gameplay_implemented']=False;o.data.materials.clear();o.data.materials.append(M[mat]);o.data.update();uv=o.data.uv_layers.new(name='UV0')
+  for f in o.data.polygons:
+   axes=[a for a in range(3) if a!=max(range(3),key=lambda a:abs(f.normal[a]))]
+   for li in f.loop_indices:
+    v=o.data.vertices[o.data.loops[li].vertex_index].co;uv.data[li].uv=(v[axes[0]]*.5,v[axes[1]]*.5)
+  NEW.append(o);return o
+ def box(n,p,d,mat='ivory',role='fixed_support_architecture',bevel=.02):
+  bpy.ops.mesh.primitive_cube_add(size=1,location=xyz(p));o=bpy.context.object;o.dimensions=(d[0],d[2],d[1]);bpy.ops.object.transform_apply(location=False,rotation=False,scale=True);m=o.modifiers.new('Rounded source edges','BEVEL');m.width=min(bevel,min(d)*.2);m.segments=3;bpy.ops.object.modifier_apply(modifier=m.name);return finish(o,n,mat,role)
+ def rod(n,a,b,r=.025,mat='metal',role='fixed_support_architecture'):
+  a,b=xyz(a),xyz(b);d=b-a;bpy.ops.mesh.primitive_cylinder_add(vertices=16,radius=r,depth=d.length,location=(a+b)/2);o=bpy.context.object;o.rotation_euler=d.to_track_quat('Z','Y').to_euler();bpy.ops.object.transform_apply(location=False,rotation=False,scale=True);return finish(o,n,mat,role)
+ stations=[]
+ specs=[(40,-434.7,1,2.0),(30,-429.3,-1,2.0)] if i=='02' else [(-35.4,-221.7,1,math.hypot(2.3,1.5)),(-32.6,-209.3,-1,math.hypot(2.3,1.5))]
+ for j,(x,mz,direction,length) in enumerate(specs):
+  n='station_'+str(j)+'_';sy=44.9;sz=mz+direction*length;cx=34 if i=='02' else -34;stance_x=x+(1.35 if x<cx else -1.35)
+  box(n+'mast_floor_anchor',(x,sy+.045,mz),(.48,.09,.48),'stone')
+  rod(n+'mast_load_column',(x,sy+.09,mz),(x,47.06,mz),.065)
+  rod(n+'swivel_collar',(x,46.88,mz),(x,47.08,mz),.10)
+  box(n+'parked_lift_arm',(x,47.04,(mz+sz)/2),(.12,.12,length+.10),'metal')
+  rod(n+'arm_knee',(x,46.71,mz),(x,47.04,mz+direction*.4),.035)
+  box(n+'parked_head',(x,47.04,sz),(.70,.15,.19),'ivory')
+  # Real hanging pairs meet the fixed seat back; future release/motion is held.
+  for side in [-1,1]:
+   xx=x+side*.26
+   rod(n+'sling_'+str(side),(xx,46.965,sz),(xx,45.79,sz),.018,'grip')
+   rod(n+'sling_return_'+str(side),(xx,45.79,sz),(xx,45.57,sz-direction*.22),.018,'grip')
+   rod(n+'sling_seat_anchor_'+str(side),(xx,45.51,sz-direction*.22),(xx,45.62,sz-direction*.22),.032)
+  box(n+'seat_load_pan',(x,45.325,sz),(.77,.08,.74),'ivory')
+  box(n+'seat_pad',(x,45.385,sz),(.72,.045,.68),'teal')
+  box(n+'seat_back_load',(x,45.64,sz-direction*.335),(.77,.55,.065),'ivory')
+  box(n+'seat_back_pad',(x,45.64,sz-direction*.286),(.69,.47,.03),'teal')
+  for side in [-1,1]:
+   xx=x+side*.31
+   for side_z in [-1,1]:
+    zz=sz+side_z*.28
+    box(n+'seat_foot_'+str(side)+'_'+str(side_z),(xx,sy+.018,zz),(.12,.036,.12),'grip')
+    rod(n+'seat_leg_'+str(side)+'_'+str(side_z),(xx,sy+.036,zz),(xx,45.285,zz),.027)
+   rod(n+'returned_grip_post_'+str(side),(x+side*.43,45.325,sz-direction*.27),(x+side*.43,45.67,sz-direction*.27),.025)
+   rod(n+'returned_grip_'+str(side),(x+side*.43,45.67,sz-direction*.27),(x+side*.43,45.67,sz+direction*.28),.025)
+   rod(n+'returned_grip_tip_'+str(side),(x+side*.43,45.67,sz+direction*.28),(x+side*.43,45.52,sz+direction*.28),.025)
+  # Bounded capped equipment/control interface. Static source marks, no fake UI.
+  box(n+'control_shroud',(x,46.04,mz+direction*.10),(.27,.43,.16),'ivory')
+  box(n+'control_face',(x,46.04,mz+direction*.188),(.20,.30,.018),'teal',role='visual_control_interface')
+  for k in [0,1]:box(n+'control_glyph_'+str(k),(x,46.11-k*.13,mz+direction*.20),(.075,.02,.012),'metal',role='visual_control_interface')
+  # Small towel/cradle beside the rest, on the seat's own arm-bearing frame.
+  box(n+'side_cradle',(x+(1 if x>cx else -1)*.40,45.45,sz),(.10,.055,.35),'ivory')
+  box(n+'folded_towel',(x+(1 if x>cx else -1)*.40,45.49,sz),(.08,.035,.30),'teal',role='visual_soft_furnishing')
+  # Mounted task lamp is source-bound below the existing new parked crown.
+  rod(n+'task_mount',(x,46.965,sz),(x,46.90,sz),.024)
+  box(n+'task_cantilever',(x,46.875,sz+direction*.15),(.05,.055,.34),'metal')
+  box(n+'task_hood',(x,46.875,sz+direction*.30),(.26,.065,.22),'metal')
+  box(n+'task_lens',(x,46.827,sz+direction*.30),(.19,.025,.15),'lens',role='fixture_lens')
+  stations.append({'id':'aquatic_thermal_'+i+'_support_'+str(j)+'_001','entry_id':entry['entries'][j]['id'],'mast_anchor_xyz':[x,sy,mz],'seat_top_xyz':[x,45.4075,sz],'seat_supported_by':'four source legs on pinned original wet landing or preserved r003 dry bridge','support_landing_mesh':('D08_directory_'+i+'__wet_landing' if i=='02' else 'G6_THERMAL_'+i+'__entry_'+str(j)+'_dry_bridge'),'dry_entry_xyz':entry['entries'][j]['dry_xyz'],'operator_xyz':[stance_x,sy,sz],'turn_proposal_xyz':[stance_x,sy,sz],'turn_proposal_diameter_m':1.5,'task_light':{'id':'aquatic_thermal_'+i+'_support_'+str(j)+'_task_001','source_xyz':[x,46.79,sz+direction*.30],'target_xyz':[x,45.4375,sz+direction*.05],'range_m':3.0,'half_cone_degrees':60,'energy':.5},'water_visual_mesh':('D08_directory_02__static_water_surface'+str(j) if i=='02' else 'D08_directory_03__'+('mineral_court_water' if j==0 else 'quiet_court_water')),'bed_mesh':entry['entries'][j]['original_bed_mesh'],'proposed_water_seat_xyz':([x,44.48,mz-direction*length] if i=='02' else [x+(-2.3 if j==0 else 2.3),44.48,mz+(-1.5 if j==0 else 1.5)]),'mast_yaw_pivot_xyz':[x,47.04,mz],'unoccupied_geometry_lift_m':.72,'hoist_motion_player_mount_accepted':False,'gravity_adaptive_source_grips_only':True,'wheelchair_species_engineering_accepted':False})
+ assert all(digest(bpy.data.objects[n])==h for n,h in originals.items())
+ for im in bpy.data.images:
+  if im.packed_file:im.use_fake_user=True
+ bpy.ops.wm.save_as_mainfile(filepath=str(dest));bpy.ops.object.select_all(action='DESELECT')
+ for o in NEW:o.select_set(True)
+ export=P/f'Group6ThermalSupport_{i}_r004.glb';bpy.ops.export_scene.gltf(filepath=str(export),export_format='GLB',use_selection=True,export_extras=True,export_cameras=False,export_lights=False,export_materials='EXPORT')
+ spec={'programme_key':'D08_directory_'+i,'source_context':str(source.relative_to(R)),'source_context_sha256':sha(source),'original_context_meshes':originals,'original_packed_images':packed,'current_room_runtime':entry['current_room_runtime'],'current_room_runtime_sha256':entry['current_room_runtime_sha256'],'required_entry_export':'Game/assets/models/'+Path(entry['new_export']).name,'required_entry_export_sha256':entry['new_export_sha256'],'native':str(dest.relative_to(R)),'native_sha256':sha(dest),'export':str(export.relative_to(R)),'export_sha256':sha(export),'runtime_addition':f'Game/assets/models/{export.name}','new_meshes':{o.name:digest(o) for o in NEW},'new_mesh_roles':{o.name:o['group6_role'] for o in NEW},'stations':stations,'new_floor_owner_count':0,'new_room_capacity':0,'occupied_water_hoist_species_accepted':False}
+ (P/f'CONTRACT_{i}.json').write_text(json.dumps(spec,indent=2)+'\n');rooms.append(spec)
+(P/'THERMAL_SUPPORT_CONTRACT.json').write_text(json.dumps({'status':'inactive construction complement; occupied gameplay held','rooms':rooms},indent=2)+'\n');print('THERMAL SUPPORT SOURCE PASS',[(x['programme_key'],len(x['new_meshes'])) for x in rooms])
