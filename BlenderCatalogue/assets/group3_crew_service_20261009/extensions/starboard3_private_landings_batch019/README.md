@@ -1,0 +1,3 @@
+# Exact starboard3 private landings
+
+Append-only batch019 supplies four editable source assets AST-STF-G3-044..047 for the actual starboard_service_riser_3 reservation at X25, Z−86. Its 11.6m lobby, seventeen opaque private arrivals, original controller fittings, missing-only floors and17 fixture profiles preserve D01/D04 and the compiled fore apron. Unknown external permission fails closed; inside egress reuses the original door lifecycle. No room, berth, person or production persistent key is created. Read the complete scoped integration and unfinished acceptance in `Game/docs/GROUP3_STARBOARD3_PRIVATE_20261011.md`.
