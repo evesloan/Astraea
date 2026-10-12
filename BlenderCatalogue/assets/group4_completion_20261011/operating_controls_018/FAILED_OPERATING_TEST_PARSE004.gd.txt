@@ -1,0 +1,63 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+const OUT:="res://../BlenderCatalogue/assets/group4_completion_20261011/operating_controls_018/"
+var interactions:Array=[]
+var walks:Array=[]
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func mouse_right(down:bool)->void:
+ var e:=InputEventMouseButton.new();e.button_index=MOUSE_BUTTON_RIGHT;e.pressed=down;Input.parse_input_event(e)
+func focus_button(player:CharacterBody3D,button:Node3D,label:String,press:bool=true)->void:
+ player.camera.look_at(button.global_position,Vector3.UP);mouse_right(true);await frames(3)
+ var target:Node=player.target_from_view();record(label+" original 2.5m ray reaches exact source face",target==button)
+ if target!=button:
+  var start:=player.camera.global_position;var q:=PhysicsRayQueryParameters3D.create(start,start-player.camera.global_basis.z*2.5);q.exclude=[player.get_rid()];q.collide_with_areas=true;var hit:=player.get_world_3d().direct_space_state.intersect_ray(q);print("CONTROL_RAY_MISS ",label," actor ",player.global_position," button ",button.global_position," hit ",str(hit.collider.get_path()) if not hit.is_empty() else "none"," target ",target)
+ if press and target==button:
+  var e:=InputEventKey.new();e.keycode=KEY_E;e.physical_keycode=KEY_E;e.pressed=true;Input.parse_input_event(e);await frames(3)
+  e=InputEventKey.new();e.keycode=KEY_E;e.physical_keycode=KEY_E;e.pressed=false;Input.parse_input_event(e)
+ mouse_right(false);await frames(3);interactions.append({"label":label,"exact_original_ray_target":target==button,"actual_E_RMB_events":press and target==button})
+func walk(player:CharacterBody3D,goal:Vector3,label:String)->bool:
+ var result:Dictionary=await walk_to(player,goal);result.label=label;walks.append(result);record(label+" original W controller supported",result.reached and result.floor_contact);return result.reached
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(120);Engine.max_fps=0
+ var ship:Node3D=main.get_node("World360/Astraea");var districts:Node3D=ship.get_node("ShipSpace/Districts");var player:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var cart:RigidBody3D=ship.find_child("CustodialCart",true,false);var handle:Node3D=cart.interaction_owner;var old_script:Script=handle.get_script();var old_cart_pose:Transform3D=cart.global_transform;var stock:Array=[]
+ for item in cart.products:stock.append({"node":item,"id":item.persistent_id,"parent":item.get_parent()})
+ var patch:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://../BlenderCatalogue/assets/group4_completion_20261011/floor_receiving_patch_013/GROUP4_FLOOR_RECEIVING_PATCH.json"));record("exact transient pit preimage",FileAccess.get_sha256("res://data/generated/structural_meshes.json")==patch.original_source_sha256);var replacement:Array=[]
+ for item in patch.replacements:ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms").get_node(item.owner_id).queue_free();replacement.append(item.replacement)
+ load("res://scripts/structural_floor_builder.gd").build_regions(ship.get_node("ShipSpace"),ship.stone,ship.ivory,replacement,{},"Group4ControlsTransientPitFixture")
+ var base:Node3D=load("res://scripts/group4_completion.gd").build(districts,true,true);load("res://scripts/group4_aftmid_upper_successor.gd").build(base,true)
+ var vehicle:AnimatableBody3D=load("res://scripts/group4_tram_source_actuator.gd").fixture_vehicle(districts,Vector3(-5.6,56.1,-462));var safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(districts,base,vehicle,true);var restraint:Node3D=load("res://scripts/group4_cart_restraint.gd").build(districts,vehicle,safety,cart,true);var motor:Node3D=load("res://scripts/group4_loaded_tram_actuator.gd").attach_loaded(districts,vehicle,safety,restraint,true)
+ # One initial empty source-car fixture at the forward dock, before player admission. No actor/cart/stock move during operation.
+ motor.cursor=34.0;motor.target=34.0;motor.apply_pose(34.0);motor.last_vehicle_pose=vehicle.global_transform
+ var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget");var count_before:int=budget.sources.size();record("production default remains inactive",load("res://scripts/group4_tram_operating_controls.gd").build(districts,vehicle,safety,restraint,motor,player,budget)==null)
+ var controls:Node3D=load("res://scripts/group4_tram_operating_controls.gd").build(districts,vehicle,safety,restraint,motor,player,budget,true);await frames(60)
+ record("one added mounted fixture uses original light selector",budget.sources.size()==count_before+1 and budget.sources.has(controls.light) and budget.shadow_source_budget==8);record("same original cart handle instance and interaction owner",handle==cart.interaction_owner and handle.cart==cart and handle.is_in_group("cart_handles"));record("13 mounted original interaction receivers",controls.controls.size()==13);record("13 fixed surface legends",controls.vehicle.find_children("MountedLegend*","Label3D",true,false).size()==8 and safety.find_children("MountedLegend*","Label3D",true,false).size()==5)
+ player.global_position=Vector3(-1.9,56.13,-430.5917);player.velocity=Vector3.ZERO;player.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position);await frames(40)
+ record("new source fixture does not authorize external console actions",not controls.request_control("CENTRAL","",player));await focus_button(player,controls.controls["STATION_CALL:FORWARD"],"forward mounted station call");await frames(300);record("station E deploys original source bridge and opens original portals",safety.phase=="boarding" and safety.bridges.FORWARD.fraction>.999 and safety.car_gates.STARBOARD.open_fraction>.999);record("open boarding prevents departure",safety.phase=="boarding" and not motor.request_stop("CENTRAL"))
+ var good:bool=errors.is_empty()
+ for goal in [Vector3(-2.4,56.1,-432),Vector3(-4.05,56.1,-432),Vector3(-5.6,56.1,-432),Vector3(-5.6,56.1,-433.18)]:
+  if good:good=await walk(player,goal,"station to mounted console "+str(walks.size()))
+ if good:
+  for action:String in ["FORWARD","FORE_MIDSHIP","CENTRAL","AFT_MIDSHIP","AFT","SECURE","BOARDING","CLAMP"]:await focus_button(player,controls.controls[action+":"],"console source face "+action,false)
+  await focus_button(player,controls.controls["CLAMP:"],"empty car clamp safely refused");record("empty car remains unrestrained",restraint.phase=="unlocked" and not is_instance_valid(restraint.joint))
+  await focus_button(player,controls.controls["SECURE:"],"console E secure");await frames(300);record("console E closes all gates and stows bridge",safety.unloaded_clear_to_depart());await focus_button(player,controls.controls["BOARDING:"],"console E board");await frames(300);record("console E reopens only current exact station",safety.phase=="boarding" and safety.selected_station=="FORWARD");await focus_button(player,controls.controls["SECURE:"],"console E resecure");await frames(300)
+  budget.refresh();record("mounted car lamp has real visible shadowed source",controls.light.visible and controls.light.shadow_enabled);record("source lamp authored receiver follows current car",controls.light.get_meta("illumination_anchor").distance_to(vehicle.to_global(Vector3(0,.96,.14)))<.00001)
+  var origin:Vector3=controls.light.global_position;var end:Vector3=vehicle.to_global(Vector3(0,1.0,.14));var q:=PhysicsRayQueryParameters3D.create(origin,end);record("real lamp cone reaches authored car receiver without exclusions",vehicle.get_world_3d().direct_space_state.intersect_ray(q).is_empty());record("physical lamp points down",(-controls.light.global_basis.z).dot(Vector3.DOWN)>.999)
+  # One affected unloaded control dispatch, not a repeated loaded-cart carry experiment.
+  var exact_stop:=0.0
+  for stop in motor.plan.stops:
+   if stop.station=="FORE_MIDSHIP":exact_stop=stop.distance_m
+  await focus_button(player,controls.controls["FORE_MIDSHIP:"],"console E select Fore Midship");record("actual E dispatch selects retained physical stop",motor.moving and absf(motor.target-exact_stop)<.00001)
+  var count:=0;var moved_anchor:=false
+  while motor.moving and count<15000:
+   await physics_frame;count+=1
+   if count%120==0:
+    record("moving authored lamp anchor "+str(count),controls.light.get_meta("illumination_anchor").distance_to(vehicle.to_global(Vector3(0,.96,.14)))<.0001);moved_anchor=moved_anchor or controls.light.global_position.distance_to(origin)>1
+  await frames(40);record("single unloaded E dispatch reaches exact Fore Midship source dock",not motor.moving and not motor.motion_fault and controls.current_station()=="FORE_MIDSHIP");record("mounted fixture travelled with original car",moved_anchor);record("moving operation preserves player floor support",player.is_on_floor() and controls.actor_aboard(player));record("eight-source budget preserved",budget.previously_active.size()<=8)
+ record("unrestrained original handle label preserved",handle.get_interaction_label()=="E · Take cart handle")
+ # Guard branch only: synthetic locked state, no joint or loaded-cart physics claim.
+ restraint.phase="locked";handle.interact(player);record("synthetic locked-state guard prevents guide grab",not is_instance_valid(cart.driver) and not is_instance_valid(player.held_interaction));restraint.phase="unlocked"
+ controls.queue_free();await frames(3);record("unload restores original handle script on same node",handle.get_script()==old_script and handle==cart.interaction_owner and handle.cart==cart)
+ record("original cart outside test retains position and identity",cart.global_position.distance_to(old_cart_pose.origin)<.04 and cart.persistent_id==&"custodian_cart_001" and cart.mass==18)
+ for item in stock:record("original stock identity and parent "+str(item.id),is_instance_valid(item.node) and item.node.persistent_id==item.id and item.node.get_parent()==item.parent)
+ var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks.size(),"errors":errors,"original_E_RMB_interactions":interactions,"original_W_player_legs":walks,"single_unloaded_dispatch_distance_m":motor.distance_travelled,"original_actor_supported_initial_fixtures":1,"actor_cart_stock_relocations_during_operation":0,"handle_guard_check":"Synthetic locked state branch only; no joint or loaded-cart physics repeated. Retained actual loaded carry evidence remains in017.","cart_carry_experiment_repeated":false,"actual_original_main_scene":true,"one_existing_light_selector_budget":8,"source_active":false,"shared_pits_adopted":false,"north_stop_adopted":false,"NPC_save_stock_provider_absent_confirmed_by_user":true,"engineering_species_main_adoption_final_art_or_whole_group_accepted":false}
+ FileAccess.open(OUT+"OPERATING_CONTROLS_TEST.json",FileAccess.WRITE).store_string(JSON.stringify(result," "));print("G4_OPERATING_CONTROLS ",result.status,": ",checks.size()," checks; errors",errors);main.queue_free();await process_frame;quit(0 if errors.is_empty() else 1)
