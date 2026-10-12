@@ -1,0 +1,3 @@
+# Six commons crossings, source candidate025
+
+Three native assets provide exact six-wall aperture derivatives, six original unscaled gate fittings and1.987134m² of missing-only threshold source.1,747 native checks and1,230 original-controller swept-box samples pass;three exports reproduce identically. Group1 alone adopts and builds the combined branch. Source47eb8359 is immutable and guarded;later a036eb48/storage hold requires current-source recheck. No combined import/build, shared write, new identity/capacity or resolution of the original13 failed criteria is claimed. Read the current-source contract and `Game/docs/GROUP3_SIX_COMMONS_CROSSING_PATCH_20261012.md`.
