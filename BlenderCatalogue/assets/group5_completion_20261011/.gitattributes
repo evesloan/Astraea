@@ -1,0 +1,6 @@
+# Recovered archive members retain exact original bytes, including CRLF.
+source/retained_venue_recovery/** -text -whitespace
+# Blender native files are binary even when compressed headers lack NUL bytes.
+*.blend binary
+*.glb binary
+*.png binary

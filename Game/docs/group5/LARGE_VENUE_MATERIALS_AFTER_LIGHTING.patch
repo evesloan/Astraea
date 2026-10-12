@@ -1,0 +1,10 @@
+--- a/Game/scripts/received_sections_bootstrap.gd
++++ b/Game/scripts/received_sections_bootstrap.gd
+@@ -24,6 +24,7 @@
+ 	load("res://scripts/shopping_promenade_adoption.gd").build(ship)
+ 	load("res://scripts/group5_completion.gd").build(ship)
+ 	load("res://scripts/group5_large_venue_lighting.gd").build(ship)
++	load("res://scripts/group5_large_venue_materials.gd").build(ship)
+ 	load("res://scripts/shared_crew_home.gd").build(ship)
+ 	var occlusion: Dictionary = load("res://scripts/static_room_occlusion.gd").install(ship)
+ 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP var occlusion: Dictionary = load(res://scripts/static_room_occlusion.gd).install(ship)")
