@@ -10,7 +10,10 @@ func run()->void:
 	var actor:CharacterBody3D=load("res://scripts/player.gd").new();host.add_child(actor);actor.set_physics_process(false);actor.global_position=Vector3(-25,44.03,-241.5)
 	for k in range(3):await physics_frame
 	var budget:Node=load("res://scripts/lighting_budget.gd").new();host.add_child(budget);budget.set_process(false);budget.configure(host,actor)
-	var definition:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/THERMAL_RECOVERY_CONTRACT.json"));var fitting:Dictionary=definition.rooms[1].optional_existing_fixture_bindings.filter(func(f):return str(f.source_mesh).ends_with("spring_light2_lens"))[0];var source:=vec(fitting.source_xyz);var rows:Array=[]
+	var definition:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/THERMAL_RECOVERY_CONTRACT.json"));var matches:Array=definition.rooms[1].optional_existing_fixture_bindings.filter(func(f):return str(f.original_source_mesh).ends_with("spring_light2_lens"))
+	if matches.size()!=1:
+		print("THERMAL CORNER DIAGNOSTIC HOLD: original fixture identity unresolved");quit(1);return
+	var fitting:Dictionary=matches[0];var source:=vec(fitting.source_xyz);var rows:Array=[]
 	for target in [vec(fitting.target_xyz),Vector3(source.x,44.04,-239),Vector3(-47,44.04,-241),Vector3(-47,44.04,-239)]:
 		var q:=PhysicsRayQueryParameters3D.create(source,target);q.exclude=[actor.get_rid()];var hit:=host.get_world_3d().direct_space_state.intersect_ray(q);var row:Dictionary={"source":fitting.source_xyz,"target":[target.x,target.y,target.z],"clear_by_original_budget":budget._clear_sample(source,target)}
 		if not hit.is_empty():
