@@ -1,0 +1,83 @@
+extends SceneTree
+const OUT:="res://../BlenderCatalogue/assets/group4_completion_20261011/loaded_cart_validation_017/"
+var checks:=0
+var errors:Array=[]
+var observations:Array=[]
+var maximum_cart_offset:=0.0
+var maximum_player_offset:=0.0
+var maximum_stock_offset:=0.0
+func _initialize()->void:call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func record(ok:bool,label:String)->void:
+ checks+=1
+ if not ok:errors.append(label)
+func sample(vehicle:AnimatableBody3D,cart:RigidBody3D,player:CharacterBody3D,restraint:Node3D,label:String)->void:
+ var frame:Transform3D=vehicle.global_transform.affine_inverse()*cart.global_transform;maximum_cart_offset=maxf(maximum_cart_offset,frame.origin.distance_to(restraint.locked_cart_frame.origin))
+ var player_at:Vector3=vehicle.to_local(player.global_position);maximum_player_offset=maxf(maximum_player_offset,Vector2(player_at.x,player_at.z-1.35).length())
+ record(frame.origin.distance_to(restraint.locked_cart_frame.origin)<.025,label+" actual original cart remains in physical restraint")
+ record(player.is_on_floor() and player_at.y>-.015 and player_at.y<.06 and absf(player_at.x)<.18 and absf(player_at.z-1.35)<.18,label+" actual original player rides supported original car floor")
+ var stock:Array=[]
+ for item:RigidBody3D in cart.products:
+  var at:=cart.to_local(item.global_position);stock.append({"id":str(item.persistent_id),"cart_local":str(at),"mass":item.mass});maximum_stock_offset=maxf(maximum_stock_offset,maxf(absf(at.x),absf(at.z)))
+  record(absf(at.x)<.30 and absf(at.z)<.46 and at.y>.89 and at.y<1.08,label+" original loose stock stays on original tray "+str(item.persistent_id))
+ var unexpected:Array=[]
+ for shape:CollisionShape3D in vehicle.find_children("*","CollisionShape3D",false,false):
+  var q:=PhysicsShapeQueryParameters3D.new();q.shape=shape.shape;q.transform=shape.global_transform;q.exclude=[vehicle.get_rid()]
+  for hit in vehicle.get_world_3d().direct_space_state.intersect_shape(q,16):
+   if hit.collider is StaticBody3D and not vehicle.is_ancestor_of(hit.collider):unexpected.append(str(hit.collider.get_path()))
+ record(unexpected.is_empty(),label+" actual original-main car exterior clearance "+str(unexpected))
+ observations.append({"label":label,"vehicle_world":str(vehicle.global_position),"cart_local":str(frame.origin),"player_local":str(player_at),"on_floor":player.is_on_floor(),"stock":stock,"car_exterior_static_contacts":unexpected})
+func run()->void:
+ var main:Node=(load("res://scenes/main.tscn")as PackedScene).instantiate();root.add_child(main);await frames(120)
+ var ship:Node3D=main.get_node("World360/Astraea");var districts:Node3D=ship.get_node("ShipSpace/Districts");var player:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)
+ var originals:Array=[]
+ for stock in cart.products:originals.append({"node":stock,"id":stock.persistent_id,"old_world":stock.global_transform})
+ var patch:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://../BlenderCatalogue/assets/group4_completion_20261011/floor_receiving_patch_013/GROUP4_FLOOR_RECEIVING_PATCH.json"));record(FileAccess.get_sha256("res://data/generated/structural_meshes.json")==patch.original_source_sha256,"Exact transient floor-owner preimage")
+ var replacements:Array=[];var old:Node=ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms")
+ for item in patch.replacements:old.get_node(item.owner_id).queue_free();replacements.append(item.replacement)
+ load("res://scripts/structural_floor_builder.gd").build_regions(ship.get_node("ShipSpace"),ship.stone,ship.ivory,replacements,{},"Group4CartCarryInMemoryPitFixture")
+ var base:Node3D=load("res://scripts/group4_completion.gd").build(districts,true,true);load("res://scripts/group4_aftmid_upper_successor.gd").build(base,true)
+ var vehicle:AnimatableBody3D=load("res://scripts/group4_tram_source_actuator.gd").fixture_vehicle(districts,Vector3(-5.6,56.1,-462));var safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(districts,base,vehicle,true)
+ var restraint:Node3D=load("res://scripts/group4_cart_restraint.gd").build(districts,vehicle,safety,cart,true);var motor:Node3D=load("res://scripts/group4_loaded_tram_actuator.gd").attach_loaded(districts,vehicle,safety,restraint,true);await frames(40)
+ # One supported initial fixture placement of the existing actors. No pose write occurs during motion.
+ var old_cart:Transform3D=cart.global_transform;var placement:=Transform3D(vehicle.global_basis,vehicle.to_global(Vector3(0,.025,.14)));cart.global_transform=placement;cart.linear_velocity=Vector3.ZERO;cart.angular_velocity=Vector3.ZERO;cart.sleeping=false
+ for item in originals:
+  item.node.global_transform=placement*old_cart.affine_inverse()*item.old_world;item.node.linear_velocity=Vector3.ZERO;item.node.angular_velocity=Vector3.ZERO;item.node.sleeping=false
+ player.global_position=vehicle.to_global(Vector3(0,.03,1.35));player.velocity=Vector3.ZERO;player.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position);await frames(90)
+ record(not motor.request_distance(motor.cursor+1),"Loaded source motor refuses unrestrained original cart")
+ record(restraint.request_lock(),"Stopped aligned original cart permits four physical clamps to close")
+ await frames(100);record(restraint.phase=="locked" and is_instance_valid(restraint.joint),"One physical6DOF joint locks original cart without clone or snapping");record(is_instance_valid(restraint.joint) and not restraint.joint.exclude_nodes_from_collision,"Original cart/vehicle physical contacts remain enabled")
+ sample(vehicle,cart,player,restraint,"locked stationary")
+ var destination:float=motor.cursor+30.0;var count:=0;var milestones:Array=[]
+ if errors.is_empty():
+  record(motor.request_distance(destination),"Root loaded request admitted after secured physical cart")
+  while motor.moving and count<4000:
+   await physics_frame;count+=1
+   if count%30==0:sample(vehicle,cart,player,restraint,"motion "+str(count))
+   if not errors.is_empty():break
+  record(not motor.moving and absf(motor.cursor-destination)<.001 and not motor.motion_fault,"Original cart/player30m carry arrives without route relocation")
+ if errors.is_empty() and OS.get_environment("ASTRAEA_G4_FULL_CART_CARRY")=="1":
+  var stops:Array=motor.plan.stops.duplicate();stops.sort_custom(func(a,b):return a.distance_m<b.distance_m)
+  var targets:Array=[]
+  for stop in stops:
+   if stop.distance_m>destination+.01:targets.append({"distance":stop.distance_m,"station":stop.station})
+  targets.append({"distance":motor.plan.safe_body_cursor_range_m[1],"station":"AFT_SAFE_END"})
+  targets.append({"distance":motor.plan.safe_body_cursor_range_m[0],"station":"FORWARD_SAFE_END_RETURN"})
+  targets.append({"distance":destination,"station":"FORWARD_FINAL_DOCK"})
+  for stop in targets:
+   print("GROUP4_LOADED_MILESTONE_REQUEST ",stop.station," ",stop.distance)
+   record(motor.request_distance(stop.distance),"Secured actual loaded trip request "+stop.station);var leg_frames:=0
+   while motor.moving and leg_frames<40000:
+    await physics_frame;leg_frames+=1;count+=1
+    if leg_frames%60==0:sample(vehicle,cart,player,restraint,stop.station+" motion "+str(leg_frames))
+    if not errors.is_empty():break
+   record(not motor.moving and absf(motor.cursor-stop.distance)<.001 and not motor.motion_fault,"Actual loaded exact arrival "+stop.station);await frames(30)
+   milestones.append({"station":stop.station,"distance":motor.cursor,"world":str(vehicle.global_position),"physics_frames":leg_frames,"route_relocations":0})
+   if not errors.is_empty():break
+ if errors.is_empty():
+  await frames(30);record(restraint.request_unlock(),"Stopped physical joint releases original cart");await frames(100);record(restraint.phase=="unlocked" and not is_instance_valid(restraint.joint),"Original cart physically released and clamps open");record(not motor.request_distance(destination+1),"Motor again refuses released cart still aboard")
+ record(cart.persistent_id==&"custodian_cart_001" and cart.mass==18 and cart.products.size()==4,"Original cart identity/mass/count preserved")
+ for item in originals:record(is_instance_valid(item.node) and item.node.persistent_id==item.id and is_equal_approx(item.node.mass,.45),"Original loose stock identity and mass "+str(item.id))
+ var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"observations":observations,"milestones":milestones,"full_line_mode":OS.get_environment("ASTRAEA_G4_FULL_CART_CARRY")=="1","motion_frames":count,"actual_vehicle_distance_m":motor.distance_travelled,"maximum_cart_frame_offset_m":maximum_cart_offset,"maximum_player_car_floor_offset_m":maximum_player_offset,"maximum_stock_tray_coordinate_m":maximum_stock_offset,"initial_supported_original_actor_fixture_placements":1,"within_route_actor_cart_stock_or_car_relocations":0,"original_cart_and_products_cloned_reparented_frozen_or_force_attached":false,"original_cart_vehicle_contact_disabled":false,"scope":"Actual retained original main and original player/cart/four loose products plus inactive Group4 source assembly; three exact floor-owner replacements only in transient scene. Single source-kinematic tram actuator and one physical original-cart6DOF restraint.","ordinary_boarding_E_RMB_loaded_guidance_save_consumption_species_traction_capacity_final_art_or_whole_group_accepted":false,"production_active":false,"north_stop_adopted":false,"shared_pits_adopted":false}
+ FileAccess.open(OUT+"ORIGINAL_CART_CARRY.json",FileAccess.WRITE).store_string(JSON.stringify(result," "));print("GROUP4 ORIGINAL CART CARRY ",result.status,": ",checks," checks; ",motor.distance_travelled,"m; errors",errors);main.queue_free();await process_frame;quit(0 if errors.is_empty() else 1)

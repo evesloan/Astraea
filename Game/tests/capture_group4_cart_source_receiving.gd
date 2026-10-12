@@ -1,0 +1,27 @@
+extends SceneTree
+const OUT:="res://../BlenderCatalogue/assets/group4_completion_20261011/loaded_cart_validation_017/"
+func _initialize()->void:call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func run()->void:
+ root.size=Vector2i(1920,1080);var world:=Node3D.new();world.name="Group4OriginalActorSourceReceivingReview";root.add_child(world)
+ var env:=WorldEnvironment.new();var setting:=Environment.new();setting.background_mode=Environment.BG_COLOR;setting.background_color=Color(.66,.73,.78);setting.ambient_light_source=Environment.AMBIENT_SOURCE_COLOR;setting.ambient_light_color=Color(.96,.95,.91);setting.ambient_light_energy=.4;env.environment=setting;world.add_child(env)
+ var sun:=DirectionalLight3D.new();sun.rotation_degrees=Vector3(-42,-35,0);sun.light_energy=.6;sun.shadow_enabled=true;world.add_child(sun)
+ var floors:Array=[];var definition:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+ for r in definition.regions:
+  if r.deck=="D09":floors.append(r)
+ var top:=StandardMaterial3D.new();top.albedo_color=Color(.65,.61,.51);var side:=StandardMaterial3D.new();side.albedo_color=Color(.53,.48,.39);load("res://scripts/structural_floor_builder.gd").build_regions(world,top,side,floors,{},"OriginalD09FloorSourceContext")
+ var transfers:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://../BlenderCatalogue/assets/group4_completion_20261011/DESTINATION_CONNECTION_CONTRACT.json"))
+ for core in transfers.five_core_transfers:
+  var visual:Node3D=(load("res://assets/models/"+core.core_model)as PackedScene).instantiate();visual.position=Vector3(core.core_origin[0],core.core_origin[1],core.core_origin[2]);world.add_child(visual)
+ var base:Node3D=load("res://scripts/group4_completion.gd").build(world,true,true);var vehicle:AnimatableBody3D=load("res://scripts/group4_tram_source_actuator.gd").fixture_vehicle(world,Vector3(-5.6,56.1,-462));var safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(world,base,vehicle,true)
+ var cart:RigidBody3D=load("res://scripts/cleaning_cart.gd").new();cart.name="CustodialCart";cart.position=Vector3(-5.6,56.125,-431.86);world.add_child(cart)
+ var player:CharacterBody3D=load("res://scripts/player.gd").new();player.position=Vector3(-5.6,56.13,-430.65);world.add_child(player)
+ var restraint:Node3D=load("res://scripts/group4_cart_restraint.gd").build(world,vehicle,safety,cart,true);var motor:Node3D=load("res://scripts/group4_loaded_tram_actuator.gd").attach_loaded(world,vehicle,safety,restraint,true)
+ # One static initial review pose before actor admission; separate actual-main full travel has no route relocations.
+ motor.cursor=34.0;motor.target=34.0;motor.apply_pose(34.0);motor.last_vehicle_pose=vehicle.global_transform;await frames(120);assert(restraint.request_lock());await frames(110);assert(restraint.phase=="locked" and is_instance_valid(restraint.joint));assert(safety.request_boarding("FORWARD"));await frames(270)
+ var selector:Node=load("res://scripts/lighting_budget.gd").new();world.add_child(selector);selector.configure(world,player)
+ var camera:=Camera3D.new();camera.fov=75;camera.far=1400;world.add_child(camera);camera.global_position=vehicle.to_global(Vector3(7,2.05,-2));camera.look_at(vehicle.to_global(Vector3(0,1.1,.14)),Vector3.UP);camera.current=true;selector.refresh();await frames(20);await RenderingServer.frame_post_draw
+ var pic:=root.get_texture().get_image();assert(pic.get_width()==1920 and pic.get_height()==1080);assert(pic.save_png(OUT+"SOURCE_GAME_G4_ORIGINAL_CART_RESTRAINT_WIDE004.png")==OK)
+ FileAccess.open(OUT+"SOURCE_GAME_PHOTO_RECEIPT.json",FileAccess.WRITE).store_string(JSON.stringify({"resolution":[1920,1080],"actual_original_main_scene":false,"selected_source_scene":true,"sources":"Group4 forward station/guideway/car/bridge plus original D09 compiled floor and five public-core model contexts; original Game cart/player/bottle scripts instantiated once with original identities and physical geometry.","source_assets_hidden_or_cut":false,"original_actor_instances_in_this_independent_source_fixture":1,"original_cart18kg_four_stock045kg":true,"source_cart_and_stock_force_attached_cloned_frozen_or_reparented":false,"physical_source_four_clamps_and_one_cart_joint_locked":true,"physical_source_forward_portal_open_at_exact_dock":true,"separate_full_main_physics_evidence":"ACCEPTED_CART_CARRY_FULL003.json:4068checks2021.4061865799m, all five docks and return,0 within-route relocations,577 clear actual-main car samples.","review_static_initial_car_pose_before_admission":true,"lighting_and_renderer":"Separate bright review ambient/sun and canonical8-source selector; Compatibility llvmpipe. Full-main attempt killed137 with no image. Normal-main graphics, CRT, target hardware and final art remain open.","camera_car_local":[7,2.05,-2],"focus_car_local":[0,1.1,.14],"production_active":false,"whole_group_complete":false}," "))
+ print("G4_ORIGINAL_CART_SOURCE_RESTRAINT_PHOTO_SAVED");world.queue_free();await process_frame;quit()

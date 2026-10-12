@@ -1,0 +1,28 @@
+extends "res://tests/validate_group4_original_cart_carry.gd"
+func run()->void:
+ root.size=Vector2i(1920,1080)
+ var main:Node=(load("res://scenes/main.tscn")as PackedScene).instantiate();root.add_child(main);await frames(120)
+ var ship:Node3D=main.get_node("World360/Astraea");var districts:Node3D=ship.get_node("ShipSpace/Districts");var player:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var cart:RigidBody3D=ship.find_child("CustodialCart",true,false)
+ var originals:Array=[]
+ for stock in cart.products:originals.append({"node":stock,"id":stock.persistent_id,"old_world":stock.global_transform})
+ var patch:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://../BlenderCatalogue/assets/group4_completion_20261011/floor_receiving_patch_013/GROUP4_FLOOR_RECEIVING_PATCH.json"));record(FileAccess.get_sha256("res://data/generated/structural_meshes.json")==patch.original_source_sha256,"Exact transient floor-owner preimage")
+ var replacements:Array=[];var old:Node=ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms")
+ for item in patch.replacements:old.get_node(item.owner_id).queue_free();replacements.append(item.replacement)
+ load("res://scripts/structural_floor_builder.gd").build_regions(ship.get_node("ShipSpace"),ship.stone,ship.ivory,replacements,{},"Group4CartCarryInMemoryPitFixture")
+ var base:Node3D=load("res://scripts/group4_completion.gd").build(districts,true,true);load("res://scripts/group4_aftmid_upper_successor.gd").build(base,true)
+ var vehicle:AnimatableBody3D=load("res://scripts/group4_tram_source_actuator.gd").fixture_vehicle(districts,Vector3(-5.6,56.1,-462));var safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(districts,base,vehicle,true)
+ var restraint:Node3D=load("res://scripts/group4_cart_restraint.gd").build(districts,vehicle,safety,cart,true);var motor:Node3D=load("res://scripts/group4_loaded_tram_actuator.gd").attach_loaded(districts,vehicle,safety,restraint,true);motor.cursor=34.0;motor.target=34.0;motor.apply_pose(34.0);motor.last_vehicle_pose=vehicle.global_transform;await frames(40)
+ # One supported initial fixture placement of the existing actors. No pose write occurs during motion.
+ var old_cart:Transform3D=cart.global_transform;var placement:=Transform3D(vehicle.global_basis,vehicle.to_global(Vector3(0,.025,.14)));cart.global_transform=placement;cart.linear_velocity=Vector3.ZERO;cart.angular_velocity=Vector3.ZERO;cart.sleeping=false
+ for item in originals:
+  item.node.global_transform=placement*old_cart.affine_inverse()*item.old_world;item.node.linear_velocity=Vector3.ZERO;item.node.angular_velocity=Vector3.ZERO;item.node.sleeping=false
+ player.global_position=vehicle.to_global(Vector3(0,.03,1.35));player.velocity=Vector3.ZERO;player.set_controls_enabled(true);ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position);await frames(90)
+ record(restraint.request_lock(),"Actual original cart accepts physical source clamp lock");await frames(100)
+ assert(restraint.phase=="locked" and is_instance_valid(restraint.joint));assert(safety.request_boarding("FORWARD"));await frames(270)
+ main.set_world_resolution(2);main.effects=false;main.post_pass.material.set_shader_parameter("effects_enabled",false);ship.set_display_effects(false)
+ var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget");load("res://scripts/group4_boarding_safety.gd").register_lights_with_budget(base,budget);budget.refresh()
+ var camera:=Camera3D.new();camera.fov=63;camera.far=1400;ship.add_child(camera);camera.global_position=vehicle.to_global(Vector3(3.8,1.65,1.1));camera.look_at(vehicle.to_global(Vector3(0,.75,.14)),Vector3.UP);camera.current=true
+ await frames(20);await RenderingServer.frame_post_draw
+ var image:=root.get_texture().get_image();assert(image.get_width()==1920 and image.get_height()==1080);assert(image.save_png(OUT+"ACTUAL_GAME_G4_ORIGINAL_CART_RESTRAINT_WIDE001.png")==OK)
+ FileAccess.open(OUT+"ACTUAL_GAME_PHOTO_RECEIPT.json",FileAccess.WRITE).store_string(JSON.stringify({"resolution":[1920,1080],"actual_original_main_scene":true,"actor_stock_and_car_initial_review_fixtures":1,"source_hidden_or_cut":false,"original_cart_products_cloned_reparented_or_frozen":false,"physical_cart_joint_locked":true,"physical_source_four_clamps_closed":true,"original_source_portal_open_at_real_forward_dock":true,"review_initial_car_pose_written_before_actor_admission":true,"trip_relocations":"Separate accepted full-line test4068checks2021.406m,0 within-route relocations; this photo is an independently initialized static receiving view.","normal_project_lighting":true,"new_station_fixtures":"Existing G4 source lamps registered with the same original8-source selector; no fill lights or selector added.","rendering":"Actual original compatibility presentation at existing1920x1080 resolution option, original effects disabled for clear review, llvmpipe software. No CRT-on/hardware/performance/final acceptance.","camera_car_local":[3.8,1.65,1.1],"focus_car_local":[0,.75,.14],"production_active":false,"north_stop_and_pits_adopted":false,"whole_group_complete":false}," "))
+ print("G4_ACTUAL_ORIGINAL_CART_RESTRAINT_PHOTO_SAVED");main.queue_free();await process_frame;quit()

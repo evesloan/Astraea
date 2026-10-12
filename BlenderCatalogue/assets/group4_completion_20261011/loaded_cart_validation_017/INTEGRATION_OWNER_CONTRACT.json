@@ -1,0 +1,60 @@
+{
+  "owner_thread": "01a11d7f-8ef6-70bc-858d-bdf8deb7000b",
+  "group": "Group4",
+  "branch": "handoff/group4-completion-20261011",
+  "retained_original_main": "affc5c807087ff87da29f3642c2d6e418241b896",
+  "shared_root_instruction": "Current shared root differs; derive a scoped insertion. Never replace ship.gd, duplicate a cart/motor/controller or blindly copy the baseline main.",
+  "production_active": false,
+  "original_runtime_pins": {
+    "res://scripts/cleaning_cart.gd": "f0d8e2aef841737eb80cd1f9cee1104fa91491a57ae881fa8bf7fbbee1e593b0",
+    "res://scripts/cleaning_bottle.gd": "30d0daaf512ee9b0a0979b2d9dc77b657378c88997aeaced4eeb1d906b62341f",
+    "res://scripts/physics_tether.gd": "8a721666a96b496e989687b8c98c6467db4bd74e2b25ecb06bb316f8d46aa2cb",
+    "res://scripts/player.gd": "f1bd92d00ad355d5d3c87b57da5ff0e3aa76f9d48776a58f3515932c017a9566",
+    "res://scripts/cart_handle.gd": "89a3ed537f9761f58b1840425143361dfe166f20b06af95a74edebe1e1aca488",
+    "res://data/architecture/cleaning_cart_contacts.json": "30a5de9043d6cbfdef2c75e471ec1ffa73c64500065e4af6093c0120aa04ad37",
+    "res://scripts/group4_boarding_safety.gd": "5bb00fe9a2206fbde45e332f715d51961701c4ba2f4ef20ebb8ef7ae29fa9e9a",
+    "res://scripts/group4_tram_source_actuator.gd": "d196acf0c41530d19f54bfa84c21864efd5469a9476176dd0d74f608b5e3f9f5"
+  },
+  "bind_order": [
+    "Resolve exactly one existing source024 AnimatableBody3D and the adopted Group4 base.",
+    "Build original boarding safety on that body; no actuator yet.",
+    "Resolve existing original custodian_cart_001 and its four original products; never construct another.",
+    "Bind group4_cart_restraint.gd.build(parent, vehicle, safety, original_cart).",
+    "Attach only group4_loaded_tram_actuator.gd.attach_loaded(parent, vehicle, safety, restraint). Never also attach unloaded source actuator.",
+    "Run ordinary original boarding/cart guidance integration tests before adoption; the source test initial fixture is not a boarding solution."
+  ],
+  "initial_empty_assembly": "Inherited actuator initialization repairs source bridge physics before admission; exact original portal faces and four wheels retained.",
+  "physical_lock": "Root calls request_lock after ordinary existing cart parking/alignment; close four source clamps, then one6DOF chassis joint. No cart snapping/freeze/reparenting or stock attachment.",
+  "physical_release": "request_unlock only at an exact stopped station with closed/clear gates and stowed bridge; then open clamp strokes. Original physical cart remains original.",
+  "controls_hold": "Root owned calls only; ordinary E/RMB boarding, held-cart guidance and destination menu bindings remain unfinished. Do not present direct test requests as ordinary controls acceptance.",
+  "persisted_ids": [
+    "cart_001_product_00",
+    "cart_001_product_01",
+    "cart_001_product_02",
+    "cart_001_product_03",
+    "custodian_cart_001"
+  ],
+  "joint_collision_policy": "exclude_nodes_from_collision:false; original physical vehicle/cart floor contacts retained.",
+  "current_tested_scope": {
+    "original_main_headless": true,
+    "original_main_commit": "affc5c807087ff87da29f3642c2d6e418241b896",
+    "physical_carry_m": 2021.4061865799,
+    "checks": 4068,
+    "all_five_docks_and_bypass": true,
+    "exterior_clearance_samples": 577,
+    "original_cart_maximum_frame_offset_m": 0.00360911316238344,
+    "original_player_maximum_floor_offset_m": 0.129870280623436,
+    "loose_original_products_retained": 4,
+    "trip_relocations": 0,
+    "single_initial_supported_actor_fixture": 1,
+    "physical_release_and_departure_refusal": true
+  },
+  "shared_floor_scope": "Same exact013 three owner replacements24.8m2, only in transient fixture. Production north/pit adoption stays false.",
+  "missing_shared_providers": [
+    "Canonical NPC manager/SceneReady/arrival/queue routing interface",
+    "Canonical save and stock-consumption state interface"
+  ],
+  "graphics_hold": "Full-main attempt killed137, OOM counter1 under16GiB; no image. Clear selected-source views are separately reviewed; no normal-main/CRT/target hardware acceptance.",
+  "wheel_traction_mechanical_species_save_consumption_final_art_whole_group_accepted": false,
+  "construction_continues_after_checkpoint": true
+}
