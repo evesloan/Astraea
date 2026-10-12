@@ -6,8 +6,8 @@ the shared integration owner, construction thread `01a11d7f-8ef6-70bc-858d-bdf8d
 It does not modify `ship.gd`, floor registries, programme/capacity ledgers,
 catalogue registries, master sources, main, or checkpoint references.
 
-The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r018.blend`.
-Its runtime export is `Game/assets/models/AquaticCompletion_r018.glb`.
+The selected source is `BlenderCatalogue/assets/group6_completion_20261011/AquaticCompletion_r019.blend`.
+Its runtime export is `Game/assets/models/AquaticCompletion_r019.glb`.
 The adapter consumes `Game/data/architecture/group6_completion/FIT_CONTRACT.json`
 and `COLLISION_POLICY.json`. The source audit preserves all 1,640 original mesh
 definitions/transforms/UVs/material assignments/modifiers and 16 packed image
@@ -32,7 +32,7 @@ resources. The immutable original native and original runtime GLB remain unchang
    fourteen light sources, public seam, parent aquatic rooms, lift, stairs,
    Grand Pool, Vesper cascade and all shared builders. It asserts single application
    and an exact export hash. It supplies four moving half-leaves, two privacy
-   door identities and seventeen new mounted sources. The existing `service_door.gd`
+   door identities and nineteen new mounted sources. The existing `service_door.gd`
    state machine and player RMB/E interface own motion and input.
 5. Refresh imports with the pinned Godot 4.6.3 and run the candidate test. That test
    adds the adapter to the actual main scene and registers its new lights late only
@@ -202,3 +202,20 @@ Current annex selection is r018 through the same `completion.gd` call once befor
 The integration owner must supply the original-player water-mode hook, stable float-slot inventory/admission/mount/dock IDs, actual occupied support, interruption/pause/save recovery and slide mode before avatar acceptance. See `WATER_GAMEPLAY_INTERFACE.json`; no competing controller or review copy is introduced. Existing water-care/changing/cascade/thermal/GrandPool interface holds remain. Read-only main observation is `OBSERVED_SHARED_MAIN_R018.json`; only shared ship.gd differs among protected inputs, and owner reconciles adapter calls there. No Group6 main/checkpoint ref write.
 
 Current photo is Library version 6, WIDE020, with exact caption in `LIBRARY_PHOTO_DELIVERY.json`. Detail020 and source view receipts are immutable. Studio source/geometry review does not accept ordinary lighting or final art. `MILESTONE.md` states implemented/tested/reviewed/unfinished distinctions and retains the premature native check scheduling error honestly.
+
+## r019 optical/source and inactive cascade continuation
+
+The current annex adapter selects r019 and OPTICAL_PROFILE001. It retains all14 original fixtures, adds19 fitted sources (including east-side rinse fittings), and uses real exposed receiver/cone/reach profiles. Two west housings move clear of the preserved structural column. No ambient, global budget, original controller, material source or renderer change. The same once-before-budget receiving call applies. No r018 source/image byte is overwritten.
+
+The optional cascade proposal is inactive by default. After r019 receiving and before the budget, the shared owner can review this exact call:
+
+```gdscript
+load("res://scripts/group6_completion/cascade_proposal.gd").build(
+    $ShipSpace/Districts/AquaticRiverSlideAnnex_WIP)
+```
+
+It pins the required r019 and original AST-AQU-015 runtime, adds only new console/control/task meshes on the existing shoulder/hood and uses the original RMB/E interaction contract. It neither replaces a receiver/spine nor installs proposed onward pipe envelopes. Persistent proposal IDs are stable; capacity, rooms and compiler owners remain. `interfaces/CASCADE_BRANCH_ENVELOPES001.json` describes source-fitted clearance envelopes and the unresolved single-spine/channel/pump/support/tie-in ownership. Group8/shared owner chooses adoption; no shared registry/root is mutated here.
+
+`OPTICAL003` passes386 local checks. `SHARED_ROUTE001` passes10,184 actual-main invariants and31 original-player legs, two supported route fixtures, existing routes/return, 19-fitted optics and both mechanical controls. The seven stationary optical samples are separate from traversal. Main includes shadow consistency checks over existing sources; the count is not a new-mesh count. Source references/curtain and proposed envelopes remain checked at112 and210 samples respectively. Source context is retained baseline plus r019/proposal; integration owner's latest shared root reconciliation is still required. Original-player water hook remains required for occupied swimming/AFK/slide/hoist acceptance.
+
+Local ordinary rendering is under `lighting_local004` and `lighting_local005`; earlier001/002 and full-main capture failures remain. Actual-main graphics failed by memory limit; local captures omit wider ship/sky, use the original environment/retro shader and identify software adapter. No target-hardware/final-art or motion/visibility-popping signoff. SOURCE_CASCADE_PROPOSAL002 and its receipt show actual source with render-only original floor/water context. No new user/Library image delivery: version6 is still r018/WIDE020 and its original caption.

@@ -8,7 +8,7 @@ from mathutils import Vector,Matrix
 
 P=Path(__file__).resolve().parent; R=P.parents[2]
 ORIGINAL=R/'external_packages/aquatic_district_20261009/source/aquatic_district.blend'
-assert not (P/'AquaticCompletion_r018.blend').exists(), 'Choose a new unique revision before authoring; retained natives are immutable'
+assert not (P/'AquaticCompletion_r019.blend').exists(), 'Choose a new unique revision before authoring; retained natives are immutable'
 assert hashlib.sha256(ORIGINAL.read_bytes()).hexdigest()=='80c7c1756d4bbe9e74b37e150797115eff5f200977718b4f661f50a3849c9a28'
 bpy.ops.wm.open_mainfile(filepath=str(ORIGINAL))
 S=bpy.context.scene
@@ -208,7 +208,8 @@ for i,z in enumerate([231,233.6]):
         box('rinse_'+str(i)+'_fixed_control_'+str(side),(60.46 if side>0 else 59.76,46.65,z+.85),(.09,.22,.18),'metal','door_control')
     box('rinse_'+str(i)+'_towel_hook',(57.25,47.1,z-.55),(.22,.12,.16),'metal')
     box('rinse_'+str(i)+'_soap_tray',(57.32,46.35,z+.65),(.28,.08,.34),'ivory')
-    lamp('rinse_task_'+str(i),58.65,48.18,z,48.35,4)
+    lamp('rinse_task_'+str(i),58.35,48.18,z,48.35,4)
+    lamp('rinse_entry_task_'+str(i),59.62,48.18,z,48.35,4)
     DOORS.append({'id':'aquatic_assisted_rinse_'+str(i)+'_privacy_001','leaves':leaves,'center_z':z,'control_names':['G6_AQ6__rinse_'+str(i)+'_fixed_control_'+str(s) for s in [-1,1]]})
 
 # Flush wet/dry transitions and real recovery provisions, no extra floor or capacity.
@@ -419,7 +420,7 @@ assert all(hashlib.sha256(bpy.data.images[n].packed_file.data).hexdigest()==h fo
 audit={'status':'PASS','original_native_sha256':hashlib.sha256(ORIGINAL.read_bytes()).hexdigest(),'original_meshes_preserved':len(before),'original_mesh_semantics_sha256':hashlib.sha256(json.dumps(before,sort_keys=True,separators=(',',':')).encode()).hexdigest(),'packed_images_preserved':packed,'original_mesh_hashes':before,'exchange_exclusions':excluded,'added_meshes':len(NEW),'added_light_fittings':len(LIGHTS),'native_engine':'Blender '+bpy.app.version_string,'geometry_transform_uv_material_modifiers_preserved':True}
 (P/'NATIVE_AUDIT.json').write_text(json.dumps(audit,indent=2)+'\n')
 (P/'FIT_CONTRACT.json').write_text(json.dumps({'schema':1,'status':'inactive Group6 handoff','programme_key':'D08_directory_08','doors':DOORS,'additional_lights':LIGHTS,'exclusions':excluded,'original_source':str(ORIGINAL.relative_to(R)),'new_floor_area_m2':0,'new_capacity':0,'thermal_entry_courts':THERMAL,'water_care_cell':WATER_CARE,'river_entry_interfaces':RIVER_ENTRIES},indent=2)+'\n')
-bpy.ops.wm.save_as_mainfile(filepath=str(P/'AquaticCompletion_r018.blend'))
+bpy.ops.wm.save_as_mainfile(filepath=str(P/'AquaticCompletion_r019.blend'))
 
 # Exchange has explicit roles; originals and new meshes share unchanged materials.
 dg=bpy.context.evaluated_depsgraph_get();exchange=bpy.data.scenes.new('Group6Exchange');bpy.context.window.scene=exchange;groups={};policy={};parts={}
@@ -437,6 +438,6 @@ for key,obs in groups.items():
     role='privacy_leaf' if 'privacy_leaf' in key else obs[0][2]
     q['kind']=role;parts[key]=names;policy[key]=role
 bpy.ops.object.select_all(action='SELECT')
-bpy.ops.export_scene.gltf(filepath=str(P/'AquaticCompletion_r018.glb'),export_format='GLB',use_selection=True,use_active_scene=True,export_apply=True,export_extras=True,export_lights=False,export_cameras=False)
+bpy.ops.export_scene.gltf(filepath=str(P/'AquaticCompletion_r019.glb'),export_format='GLB',use_selection=True,use_active_scene=True,export_apply=True,export_extras=True,export_lights=False,export_cameras=False)
 (P/'EXCHANGE_PARTS.json').write_text(json.dumps(parts,indent=2)+'\n');(P/'COLLISION_POLICY.json').write_text(json.dumps(policy,indent=2)+'\n')
 print('GROUP6 SOURCE PASS',audit['original_meshes_preserved'],audit['added_meshes'],len(policy))

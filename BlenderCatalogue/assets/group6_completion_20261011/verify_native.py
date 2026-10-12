@@ -3,7 +3,7 @@ import bpy,json,hashlib,math
 from pathlib import Path
 from mathutils import Vector
 P=Path(__file__).resolve().parent;R=P.parents[2]
-bpy.ops.wm.open_mainfile(filepath=str(P/'AquaticCompletion_r018.blend'));S=bpy.context.scene
+bpy.ops.wm.open_mainfile(filepath=str(P/'AquaticCompletion_r019.blend'));S=bpy.context.scene
 text=(P/'author_completion.py').read_text();exec(text[text.index('def digest(o):'):text.index('before={')])
 audit=json.load(open(P/'NATIVE_AUDIT.json'));fail=[]
 for n,h in audit['original_mesh_hashes'].items():
@@ -25,6 +25,19 @@ for n in ['AQ6__rest_0_plinth','AQ6__rest_1_plinth','AQ6__rest_2_plinth','AQ6__c
   hit=any(abs(f['top_y']-y)<.001 and any(inside((x,z),t) for t in f['triangles_xz']) for f in floor)
   supports.append({'part':n,'xyz':[x,y,z],'supported':hit})
   if not hit:fail.append('New unsupported floor point: '+n+' '+str((x,y,z)))
+# Exact changed rinse fixtures must clear the original structural column.
+for i,z in enumerate([231,233.6]):
+ for stem in ['rinse_task_'+str(i),'rinse_entry_task_'+str(i)]:
+  hood=bpy.data.objects['AQ6__'+stem+'_hood'];vs=world(hood)
+  for o in S.objects:
+   if o.name not in audit['original_mesh_hashes'] or not o.name.startswith('AQD__bearing_shaft_'):continue
+   ov=world(o)
+   overlap=all(min(max(v[k] for v in vs),max(v[k] for v in ov))-max(min(v[k] for v in vs),min(v[k] for v in ov))>.001 for k in range(3))
+   if overlap:fail.append('Rinse luminaire intersects preserved column: '+hood.name+' / '+o.name)
+  point=Vector((float(58.35 if stem.startswith('rinse_task_') else 59.62),-float(z),48.349))
+  from mathutils.bvhtree import BVHTree
+  roof=bpy.data.objects['AQD__assisted_rinse_'+str(i)+'_roof'];tree=BVHTree.FromPolygons(world(roof),[list(f.vertices) for f in roof.data.polygons]);hit=tree.ray_cast(point,Vector((0,0,1)),.02)
+  if hit[0] is None or abs(hit[0].z-48.35)>.002:fail.append('Changed rinse source lacks original roof contact: '+stem)
 def bounds(o):
  v=[xyz(p) for p in world(o)];return ([min(p[k] for p in v) for k in range(3)],[max(p[k] for p in v) for k in range(3)])
 old_bounds={n:bounds(bpy.data.objects[n]) for n in audit['original_mesh_hashes'] if n not in audit['exchange_exclusions'] and bpy.data.objects[n].get('kind') not in ['water_visual','tube_static_visual','plant_static','fixture_lens','compiler_floor_proposal']}
@@ -60,8 +73,8 @@ if asset_sha!=fit['water_care_cell']['gate']['source_sha256']:fail.append('Regis
 excluded=audit['exchange_exclusions'];out=Path('/workspace/group6-repeat-export');out.mkdir(exist_ok=True)
 namespace={'bpy':bpy,'json':json,'P':out,'S':S,'excluded':excluded}
 exec(text[text.index('# Exchange has explicit roles;'):text.index("print('GROUP6 SOURCE PASS")],namespace)
-native_export=P/'AquaticCompletion_r018.glb';repeat=out/native_export.name
+native_export=P/'AquaticCompletion_r019.glb';repeat=out/native_export.name
 exact=native_export.read_bytes()==repeat.read_bytes()
-result={'status':'PASS' if not fail and exact else 'HOLD','failures':fail,'original_saved_meshes_checked':len(audit['original_mesh_hashes']),'packed_images_checked':len(audit['packed_images_preserved']),'registered_gate_reference_meshes_checked':len(reference),'registered_gate_export_sha256':asset_sha,'new_floor_support_points':supports,'conservative_furniture_old_geometry_pairs':fitting_checks,'new_mounted_endpoint_checks':mounts,'fresh_saved_native_repeat_export_identical':exact,'native_sha256':hashlib.sha256((P/'AquaticCompletion_r018.blend').read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(native_export.read_bytes()).hexdigest(),'repeat_export_sha256':hashlib.sha256(repeat.read_bytes()).hexdigest(),'scope':'Source vertex/face/UV/transform/material-name/modifier and packed-image preservation; source floor contacts, furniture/original solid AABB separation, actual roof/canopy fixture contacts, registered gate reference and exact fresh export. Engineering and water gameplay remain open.'}
+result={'status':'PASS' if not fail and exact else 'HOLD','failures':fail,'original_saved_meshes_checked':len(audit['original_mesh_hashes']),'packed_images_checked':len(audit['packed_images_preserved']),'registered_gate_reference_meshes_checked':len(reference),'registered_gate_export_sha256':asset_sha,'new_floor_support_points':supports,'conservative_furniture_old_geometry_pairs':fitting_checks,'new_mounted_endpoint_checks':mounts,'fresh_saved_native_repeat_export_identical':exact,'native_sha256':hashlib.sha256((P/'AquaticCompletion_r019.blend').read_bytes()).hexdigest(),'export_sha256':hashlib.sha256(native_export.read_bytes()).hexdigest(),'repeat_export_sha256':hashlib.sha256(repeat.read_bytes()).hexdigest(),'scope':'Source vertex/face/UV/transform/material-name/modifier and packed-image preservation; source floor contacts, furniture/original solid AABB separation, actual roof/canopy fixture contacts, registered gate reference and exact fresh export. Engineering and water gameplay remain open.'}
 (P/'SAVED_NATIVE_VERIFICATION.json').write_text(json.dumps(result,indent=2)+'\n');print('GROUP6 FRESH SOURCE',result['status'],fail,'REPEAT',exact)
 if result['status']!='PASS':raise RuntimeError('Fresh source held')
