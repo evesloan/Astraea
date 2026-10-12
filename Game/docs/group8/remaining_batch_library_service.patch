@@ -1,0 +1,9 @@
+--- a/Game/scripts/remaining_batch_receiving.gd
++++ b/Game/scripts/remaining_batch_receiving.gd
+@@ -98,5 +98,6 @@
+ 	load("res://scripts/receiving_source_lights.gd").register(lights,ship)
+ 	room.set_meta("normalized_source_count",lights.size())
+ 
++	if str(item.key)=="D12_directory_02":load("res://scripts/group8/library_service.gd").build(ship,room)
+ 	room.set_meta("stream_loaded",true)
+ 	return room
