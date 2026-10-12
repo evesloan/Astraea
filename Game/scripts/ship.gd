@@ -67,6 +67,8 @@ func _ready() -> void:
 	load("res://scripts/group6_completion/completion.gd").build($ShipSpace/Districts/AquaticRiverSlideAnnex_WIP,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/aquatic_annex_receiving.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/staff_section.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/group1_synthesis_floor_receiving.gd").build(self)
+	load("res://scripts/group8/synthesis_plant.gd").build(self,true)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/staff_section.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/lower_staff_network.gd").build($ShipSpace/Districts,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/lower_staff_network.gd).build($ShipSpace/Districts,self)")
