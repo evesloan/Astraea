@@ -63,3 +63,5 @@ The full unrelated validation suite was not run. Tests reuse a builder attached 
 - Commerce, inventory/refill/returns, ambient staff/guests, ownership/decoration, persistence and role/pressure policies remain unfinished. Connected public/shipwide journeys, largest species, loaded cart, complete hull/support engineering, acoustics, full fit-out/final-art acceptance, normal Godot/CRT visuals and target-GPU performance remain held.
 
 This is a substantial independently retained Group5 construction checkpoint. Whole-group acceptance remains false.
+
+The continued construction supplement is [THREAD_AND_MAKER_HANDOFF.md](THREAD_AND_MAKER_HANDOFF.md):Thread & Shell fitted stock/repair and actual service operations;Little Makers supported ceiling,coves,full8.24m opening andnine physical lights.Two sequential scoped bootstrap patches and exact combined-startup evidence are provided.No full-group acceptance or change to the84 null joins.

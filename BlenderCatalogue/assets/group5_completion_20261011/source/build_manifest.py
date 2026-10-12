@@ -13,6 +13,16 @@ PREFIXES = [
     'Game/scenes/group5/',
 ]
 EXPLICIT = {
+    'Game/scripts/group5_thread_stock.gd',
+    'Game/scripts/group5_thread_stock.gd.uid',
+    'Game/scripts/group5_maker_construction.gd',
+    'Game/scripts/group5_maker_construction.gd.uid',
+    'Game/tests/validate_group5_thread_stock.gd',
+    'Game/tests/validate_group5_thread_stock.gd.uid',
+    'Game/tests/validate_group5_maker_construction.gd',
+    'Game/tests/validate_group5_maker_construction.gd.uid',
+    'Game/artifacts/group5_thread_stock.json',
+    'Game/artifacts/group5_maker_construction.json',
     'Game/scripts/group5_completion.gd',
     'Game/scripts/group5_completion.gd.uid',
     'Game/scripts/group5_retail_slider.gd',

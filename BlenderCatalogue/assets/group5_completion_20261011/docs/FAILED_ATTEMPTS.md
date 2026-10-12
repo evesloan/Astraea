@@ -49,3 +49,17 @@
 31. Copper Kettle,Paper Moon and Post & Parcels pass30 continuous controller legs,12 normal operations and three occupied guards. Starlight Bakery holds:its10m floor opening retains an8.8m clear nested-pier throat,and the lower pier occludes the return-wall control. Preserve the original piers/opening;mount the public control on the actually innermost lower pier/return face,with a supported approach. Exact three-venue progress and ray diagnostic retained.
 
 32. The staff-riser source contract correctly rejected the nominal PF69 inner endpoint:metadata[-60.5,-69] lies1.75m beyond the actual floor AABB atX-62.25. Preserve source/metadata and record unsupported nominal sockets explicitly;actual floor bounds are not a new receiving join or inferred shaft. Shared-riser acceptance remains HOLD.
+
+33. Thread source metadata retained a freed Scene reference after fresh reload.Native/export and repeat bytes succeeded;metadata finalization failed.The saved pair was retained and re-read,never overwritten.
+34. Actual Godot imported decimal mesh names use underscores;the original test lookup stopped.Named source/runtime bindings now retain both names and the failed log.
+35. Actual exported shelf crowns blocked useful task points.Only nine fixture poses move650mm forward in immutable r002;all99 geometry/material/UV records and90 other poses compare exactly.
+36. A matrix snapshot retained live mathutils rows across source reload;converted to independent float tuples.Saved successor pair retained.Follow-up metadata edit syntax failure036b is also retained.
+37. The first ordinary service-door header ray hit the retained architectural header;an exposed original frame jamb supplies the actual target.
+38. The worker's capsule overlapped the original door sweep guard at the nominal stance;the supported stance moved300mm outward.The guard criterion and controller remain intact.
+39. Maker brackets contacted both retained threshold and recess members,while the initial foyer housing entered the old front wall.Contact recipients are recorded exactly;the final independent fixture revision mounts to the inward threshold returns.
+40. Maker owner was already cached/detached;global-position assignments emitted errors,and a nominal public-control stance lay inside the retained return wall.Local source coordinates and actual inward/back face contacts replace the failed placements.
+41. Maker23-leg route,4 normal operations,guard andcached return passed,but test get_path calls on a detached owner emitted errors.The final test uses descendant identity and passes exact combined startup without errors.
+42. Blender's bundled Python lacks Shapely;ceiling authoring stopped before any save.Pure numeric intersections of offset edge lines author the same mitered profiles;separate Shapely export/floor audit checks every actual exported vertex.
+
+43. Final material-role inspection found1m cove UVs instead of the actual650mm/1300mm shared wood contract.Immutable r002 corrects only8 UV arrays;all geometry/material/pose bytes remain exact.
+44. The first exported-UV verifier omitted glTF vertical flipping,producing an exact0.23077 offset.Local primary exporter lines1406–1407 establish1-v;the corrected independent reference passes unchanged source UV data.
