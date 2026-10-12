@@ -1,0 +1,6 @@
+00:00.274  blend            | Read blend: "/workspace/astraea-group6/BlenderCatalogue/assets/group6_completion_20261011/thermal_targets/ThermalEntries_02_r002.blend"
+Traceback (most recent call last):
+  File "/workspace/astraea-group6/BlenderCatalogue/assets/group6_completion_20261011/thermal_targets/verify_entries.py", line 19, in <module>
+    for n,h in spec['original_packed_images'].items():assert hashlib.sha256(bpy.data.images[n].packed_file.data).hexdigest()==h,n
+                                                                            ~~~~~~~~~~~~~~~^^^
+KeyError: 'bpy_prop_collection[key]: key "clay_weave.png" not found'

@@ -1,0 +1,17 @@
+extends "res://tests/group6_completion/validate_local.gd"
+func run()->void:
+	var host:=LocalHost.new();root.add_child(host)
+	var annex:Node3D=load("res://scripts/aquatic_annex_receiving.gd").build(host,host)
+	load("res://scripts/group6_completion/completion.gd").build(annex,host)
+	for x in [64.0,77.5]:
+		var actor:CharacterBody3D=load("res://scripts/player.gd").new();actor.spawn_position=Vector3(x,44.5,192.92);host.add_child(actor);actor.global_position=actor.spawn_position;actor.set_controls_enabled(true)
+		for i in range(20):await physics_frame
+		record("supported_runout_seed_"+str(x),actor.is_on_floor() and actor.position.y>=44.479 and actor.position.y<=44.67 and Vector2(actor.position.x-x,actor.position.z-192.92).length()<.2)
+		var out:Dictionary=await walk_to(actor,Vector3(x,45.45,190.2));legs.append(out);record("recovery_climb_"+str(x),out.reached and out.floor_contact)
+		var back:Dictionary=await walk_to(actor,Vector3(x,44.48,192.9));legs.append(back);record("recovery_descent_"+str(x),back.reached and back.floor_contact)
+		actor.queue_free()
+		for i in range(3):await physics_frame
+	physical_key(false)
+	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"legs":legs,"supported_fixture_seeds":2,"scope":"Separate physical recovery stair construction with original player; supported last-tread seeds, no swimming, buoyancy, slide ride or hoist operation."}
+	FileAccess.open("res://docs/group6_completion/RECOVERY003.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	print("GROUP6 RECOVERY ",result.status," ",errors);quit(0 if errors.is_empty() else 1)

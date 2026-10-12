@@ -64,6 +64,7 @@ func _ready() -> void:
 	load("res://scripts/aquatic_section.gd").build($ShipSpace/Districts,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/aquatic_section.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/aquatic_annex_receiving.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/group6_completion/completion.gd").build($ShipSpace/Districts/AquaticRiverSlideAnnex_WIP,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/aquatic_annex_receiving.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/staff_section.gd").build($ShipSpace/Districts,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/staff_section.gd).build($ShipSpace/Districts,self)")

@@ -1,0 +1,43 @@
+extends "res://tests/group6_completion/validate_water_care.gd"
+const FLOAT_SHA="cf76c1d1e78e705966831e31c62846b7d8c4d36f7c5138fbaf90824f08cbf247"
+func fixture(host:Node3D,field:RefCounted,position:Vector3)->RigidBody3D:
+	var body:RigidBody3D=load("res://scripts/group6_completion/buoyant_float.gd").new();body.field=field
+	var visual:Node3D=load("res://assets/models/Group6LeisureFloat_r001.glb").instantiate();body.add_child(visual)
+	# Conservative per-source-part convex hulls for this unoccupied force test.
+	# These do not accept avatar seat/contact fit or become a hidden walking ramp.
+	for mesh:MeshInstance3D in visual.find_children("*","MeshInstance3D",true,false):
+		var shape:=CollisionShape3D.new();shape.shape=mesh.mesh.create_convex_shape();shape.transform=mesh.transform;body.add_child(shape)
+	body.position=position;host.add_child(body);return body
+func run()->void:
+	var host:=LocalHost.new();root.add_child(host)
+	var annex:Node3D=load("res://scripts/aquatic_annex_receiving.gd").build(host,host)
+	load("res://scripts/group6_completion/completion.gd").build(annex,host)
+	var field:RefCounted=load("res://scripts/group6_completion/river_water_field.gd").new()
+	record("exact_registered_float_source",FileAccess.get_sha256("res://assets/models/Group6LeisureFloat_r001.glb")==FLOAT_SHA)
+	record("actual_closed_river_length",absf(field.length_m-102.51873970875073)<.0001)
+	record("island_excluded_from_water",not field.sample(Vector3(78,45.0,216)).get("wet",false))
+	record("outside_bank_excluded_from_water",not field.sample(Vector3(95,45,216)).get("wet",false))
+	var body:=fixture(host,field,Vector3(89.5,45.07,216));var body_id:=body.get_instance_id();var start:Vector3=body.position
+	for i in range(240):await physics_frame
+	record("settled_while_buoyant",body.global_position.y>44.85 and body.global_position.y<45.2 and absf(body.linear_velocity.y)<.06)
+	body.apply_impulse(Vector3(-1.5,-1.2,0),Vector3(0,0,.25))
+	var previous:Vector3=body.global_position;var maximum_step:=0.0;var minimum_y:=INF;var maximum_y:=-INF;var max_tilt:=0.0;var maximum_lateral:=0.0;var distance:=0.0;var last_arc:float=field.project(previous).arc_m;var frames:=0
+	for i in range(18000):
+		await physics_frame;frames+=1;var now:Vector3=body.global_position
+		maximum_step=maxf(maximum_step,now.distance_to(previous));minimum_y=minf(minimum_y,now.y);maximum_y=maxf(maximum_y,now.y);max_tilt=maxf(max_tilt,acos(clampf(body.global_basis.y.dot(Vector3.UP),-1,1)));previous=now
+		var p:Dictionary=field.project(now);var arc_delta:float=float(p.arc_m)-last_arc
+		if arc_delta< -field.length_m/2:arc_delta+=field.length_m
+		elif arc_delta>field.length_m/2:arc_delta-=field.length_m
+		distance+=arc_delta;last_arc=float(p.arc_m);maximum_lateral=maxf(maximum_lateral,float(p.lateral_m))
+		if distance>field.length_m+1 and absf(body.linear_velocity.y)<.03:break
+	record("completed_actual_river_circuit",distance>field.length_m and frames>9000)
+	record("force_driven_continuous_motion",maximum_step<.08 and minimum_y>44.8 and maximum_y<45.25)
+	record("stays_in_river_corridor",maximum_lateral<.9 and field.contains_xz(body.global_position))
+	record("physical_impulse_recovers_upright",body.global_basis.y.dot(Vector3.UP)>.99 and absf(body.linear_velocity.y)<.03)
+	record("same_physical_body",body.get_instance_id()==body_id and body.immersed_samples>9000)
+	var dry:=fixture(host,field,Vector3(90,46.6,241.5));var dry_start:=dry.global_position.y
+	for i in range(100):await physics_frame
+	record("outside_water_does_not_levitate",dry.global_position.y<dry_start-.5 and dry.immersed_samples==0)
+	var result:Dictionary={"status":"PASS" if errors.is_empty() else "HOLD","checks":checks,"errors":errors,"source_float_sha256":FLOAT_SHA,"motion":{"frames":frames,"unwrapped_circuit_distance_m":distance,"max_frame_motion_m":maximum_step,"minimum_y":minimum_y,"maximum_y":maximum_y,"maximum_tilt_radians":max_tilt,"maximum_lateral_offset_m":maximum_lateral,"final_position":[body.global_position.x,body.global_position.y,body.global_position.z],"wet_force_samples":body.immersed_samples},"runtime_transform_or_velocity_writes_after_initial_fixture":0,"scope":"Unoccupied exact registered float in actual original annex/source successor and protected river corridor. Four-point immersion forces, drag, prescribed game current, real impulse recovery and full circuit only. Conservative part hulls are test contacts. Original eight static rack/boarding rings remain; no production spawn, fluid simulation, player swimming, seat/contact fit, AFK mount/interruption/pause/save/hoist/species or final-art acceptance."}
+	FileAccess.open("res://docs/group6_completion/FLOAT_FORCE003.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+	print("GROUP6 FLOAT FORCE ",result.status," ",errors," CIRCUIT ",distance," FRAMES ",frames);quit(0 if errors.is_empty() else 1)

@@ -8,6 +8,8 @@ func _ready() -> void:
 	assert(FileAccess.get_sha256("res://data/generated/structural_meshes.json") == str(definition.source_checks.baseline_structural_sha256))
 	load("res://scripts/structural_floor_builder.gd").build_regions(ship.get_node("ShipSpace"), ship.stone, ship.ivory, definition.regions, {"staff_floor":ship.surface("staff_floor",Color.WHITE)}, "ReceivedSectionStructuralFloors")
 	load("res://scripts/received_sections.gd").build(ship)
+	for key in ["D08_directory_02", "D08_directory_03"]:
+		load("res://scripts/group6_completion/thermal_entries.gd").build(ship.get_node("ShipSpace/Districts/ReceivedSections/"+key))
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/received_sections.gd).build(ship)")
 	load("res://scripts/listening_salon_candidate.gd").build(ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/listening_salon_candidate.gd).build(ship)")
