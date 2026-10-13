@@ -57,7 +57,7 @@ func _ensure_room(item:Dictionary)->void:
 	if not room.get_meta("stream_loaded",false):
 		install(host,item,room)
 		for door:Node3D in room.find_children("*","Node3D",true,false):
-			if door.get_script()!=load("res://scripts/service_door.gd"):continue
+			if door.get_script() not in [load("res://scripts/service_door.gd"),load("res://scripts/group8/medical_privacy_door.gd")]:continue
 			var state:Dictionary=door_states.get(key,{}).get(str(door.persistent_id),{})
 			if not state.is_empty():
 				door.open_fraction=state.open_fraction
@@ -89,7 +89,7 @@ func refresh(delta:float=0.0)->void:
 		elif loaded:
 			var states:Dictionary={}
 			for door:Node3D in room.find_children("*","Node3D",true,false):
-				if door.get_script()==load("res://scripts/service_door.gd"):
+				if door.get_script() in [load("res://scripts/service_door.gd"),load("res://scripts/group8/medical_privacy_door.gd")]:
 					states[str(door.persistent_id)]={"open_fraction":door.open_fraction,"desired_open":door.desired_open}
 			door_states[str(item.key)]=states
 			var budget:=host.get_node("ShipSystems/LocalShadowSourceBudget")
