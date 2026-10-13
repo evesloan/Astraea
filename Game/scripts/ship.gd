@@ -243,6 +243,8 @@ func _ready() -> void:
 	load("res://scripts/group4_integrated_receiving.gd").after_budget(self)
 	# Exact missing-only Group3 precinct;source identities/capacity remain unassigned.
 	load("res://scripts/group3_completion_20261011/d03_precinct.gd").build(self)
+	# Exact supported labelled bank;unassigned rest surfaces,unknown private entry refused.
+	load("res://scripts/group3_completion_20261011/labelled_bank.gd").build(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
