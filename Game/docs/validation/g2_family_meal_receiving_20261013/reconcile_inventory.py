@@ -1,0 +1,18 @@
+from pathlib import Path
+import json,hashlib,datetime
+P=Path(__file__).parent;C=P.parent;R=Path('/workspace/astraea-protected-integration-20261012');p=R/'CONSOLIDATED_CONSTRUCTION_INVENTORY.json';inv=json.loads(p.read_text());old_only=sum(x['status']=='RETAINED_SOURCE_NOT_INSTALLED'for x in inv['group2_cumulative_nine_packages']);assert old_only==7
+for g in inv['groups']:
+ if g['group']!=2:continue
+ g['live_installed_and_checked']+=';Family meal r001 physical child fitout now installed onthree exact existing tables:contained ready receivers/usedreturns/twelve settings;3998 currentreceivingchecks/6 original-controller approachlegs/1390 existing Family meshes preserved. Exact current importedtablepreimages verified against retainedsource topology/compression;no oldreceiver import orgeometrychange. Zero newchair/floor/place/room/capacity.'
+ g['not_installed_or_unaccepted']=g['not_installed_or_unaccepted'].replace('Seven source packages remain uninstalled;dryclub andgardenquiet physical r002 selections installed;','Six source packages remain uninstalled;dryclub/gardenquiet r002 andfamilymeal r001 physical selections installed;')
+ g['family_meal_physical_installed']=True;g['family_meal_food_hygiene_staff_or_dining_programme_admitted']=False
+ g['physical_missing_or_conditional']=[x for x in g['physical_missing_or_conditional']if not x.startswith('group2_family_meal:')]
+ g['next_action']='Admit next supported source package/connecting architecture among completion,privatevertical,pitperimeters,wetpavilions,care andchildcare. Keep exact original geometry/IDs and positive privateconsent,clinical,roof/790,service,dining/child/berth andengineering holds.'
+for x in inv['group2_cumulative_nine_packages']:
+ if x['package']=='group2_family_meal_20261012':x.update(status='PHYSICAL_R001_INSTALLED_FOOD_SERVICE_PROGRAMME_HELD',reason='Exact3current native tabletops support12 source settings;original inwardchairs/table/floor/room metadata preserved. Zero newdiningplaces. Z348 historicalallocation distinction,food/dirty/staff/hygiene/admission andGroup8programme ledger remain held.')
+assert sum(x['status']=='RETAINED_SOURCE_NOT_INSTALLED'for x in inv['group2_cumulative_nine_packages'])==6
+inv.update(fully_integrated=False,whole_ship_completed=False,build_ready=False,local_progress_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),local_progress_protection='FAMILY_MEAL_CHECKPOINT_REMOTE_READBACK_PENDING');p.write_text(json.dumps(inv,indent=2)+'\n')
+audit=json.loads((C/'g2_garden_receiving/ALL_EIGHT_INCLUSION_RECONCILIATION.json').read_text());audit['base_commit']='dafa10902c184e1f3aee8ce60e0ebaf47d1d2b0d';audit['G2_source_only_packages_remaining']=6;audit['ship_sha256']=hashlib.sha256((R/'Game/scripts/ship.gd').read_bytes()).hexdigest();audit['new_admitted_physical_package']={'package':'group2_family_meal_20261012','revision':'r001','models':1,'retained_tables':3,'source_settings':12,'new_chairs_floor_or_capacity':0,'food_staff_hygiene_admission_or_dining_designation_accepted':False}
+for row in audit['groups']:
+ if row['group']==2:row['physical_missing_or_conditional']=[x for x in row['physical_missing_or_conditional']if not x.startswith('group2_family_meal:')];row['runtime_entry_source_pins']['scripts/group2_family_meal/package.gd']=hashlib.sha256((R/'Game/scripts/group2_family_meal/package.gd').read_bytes()).hexdigest()
+audit['progress_picture_obstacle']='Single current-main graphical capture killed at16GiB memorylimit before image;no Library image ID;graphics/display processes stopped. No repeated render experiment.';(P/'ALL_EIGHT_INCLUSION_RECONCILIATION.json').write_text(json.dumps(audit,indent=2)+'\n');print('RECONCILED G2 remaining7→6;G3 missing2;13/184 and84G5,G7conditional unchanged')

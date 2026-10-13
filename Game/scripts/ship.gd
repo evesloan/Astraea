@@ -266,6 +266,8 @@ func _ready() -> void:
 	load("res://scripts/group3_commons_crossings_20261012/physical_package.gd").build(self)
 	# Exact existing Family/Quiet floor receivers;agricultural services and programme admission stay held.
 	load("res://scripts/group2_garden_quiet/package.gd").build_on_current_receivers(self)
+	# Exact retained tabletop child fitout;food/staff services and dining designation stay held.
+	load("res://scripts/group2_family_meal/package.gd").build_on_current_receiver(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
