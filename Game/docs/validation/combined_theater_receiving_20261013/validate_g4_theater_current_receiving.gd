@@ -1,0 +1,61 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+var nchecks:=0
+var failures:Array=[]
+var observations:Array=[]
+const OUT="/workspace/astraea-integration-cutoff-20261013/G4_THEATER_CURRENT_RECEIVING_RUNTIME.json"
+func _initialize()->void:
+ OS.set_environment("ASTRAEA_GROUP7_ENABLE","1")
+ for p in ["/workspace/astraea-synthesis-adoption-20261012/SYNTHESIS_ACTUAL_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/GROUP5_PUBLIC_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/READY_DRY_THERMAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ENVELOPE_MEDICAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/TRAM_REMAINING_G8_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/G4_THEATER_RECEIVING_CANDIDATE_OVERLAY.zip"]:assert(ProjectSettings.load_resource_pack(p,true))
+ call_deferred("run")
+func receipt()->void:
+ FileAccess.open(OUT,FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_EXACT_THEATER_CURRENT_RECEIVING"if failures.is_empty()else"HOLD","checks":nchecks,"failures":failures,"observations":observations,"source_models":3,"owned_native_floor_m2":366,"new_compiler_owners":0,"capacity":2200,"capacity_added":0,"upper_doors_operating":false,"source_load_approval":false,"cart_physics_experiments":0,"scope":"Current native theater floor/fixture receiving and original-controller exterior approach;no source load,door operation,venue/species/engineering/save/final-art or fullship acceptance."},"  "))
+func require(ok:bool,label:String)->bool:
+ nchecks+=1
+ if not ok:failures.append(label);receipt();push_error(label);quit(1)
+ return ok
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(30)
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");var stream:Node=ship.get_node("ShipSystems/RemainingBatchStreaming");var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+ var source:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_THEATER_UPPER_SOURCE_CANDIDATE.json"));var witnesses:Array=[]
+ for y in [78.,84.]:
+  for x in [-33.,-25.,-15.,-6.]:
+   for z in [-128.5,-126.,-123.5]:witnesses.append(Vector3(x,y,z))
+ for at in witnesses:residency.prepare_position(at);stream.prepare_position(at)
+ await frames(3)
+ var space:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state
+ for i in range(witnesses.size()):
+  var at:Vector3=witnesses[i];var hit:Dictionary=ray(space,at+Vector3.UP*.02,at-Vector3.UP*.02)
+  if not require(hit.is_empty(),"Exact missing-only theater floor preimage "+str(i)+" "+str(hit.collider.get_path()if not hit.is_empty()else "none")):return
+ var venue:Node3D=ship.get_node("ShipSpace/Districts/GrandLanternTheater_ConnectedStaticStage_WIP");var motion:Node3D=venue.get_node("TheaterUnpoweredDoorLiftAssemblies");var old_doors:Array=[]
+ var existing:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/THEATER_RUNTIME_STAGE001.json"))
+ for key in existing.motion_groups:
+  if str(key).begins_with("THEATER_D12_MAIN_LEAF")or str(key).begins_with("THEATER_D13_MAIN_LEAF"):
+   var door:Node3D=motion.get_node(existing.motion_node_names[key]);old_doors.append({"node":door,"pose":door.transform})
+   if not require(not door.get_meta("operation_enabled")and door.get_meta("locked_pose_fraction")==0.,"Original upper theater leaf closed and inactive "+str(key)):return
+ var count:int=budget.sources.size();var package:Node3D=load("res://scripts/group4_theater_upper_approaches.gd").build(ship.get_node("ShipSpace/Districts"),true)
+ var lamps:Array[Light3D]=[]
+ for light:Light3D in package.find_children("*","SpotLight3D",true,false):lamps.append(light)
+ load("res://scripts/receiving_source_lights.gd").register(lamps,ship);await frames(4)
+ if not require(package.get_meta("verified_source_members")==210 and package.get_meta("new_asset_owned_floor_m2")==366 and not package.get_meta("new_beam_load_approved"),"Exact210 source members without engineering approval"):return
+ for spec in source.exports:
+  if not require(FileAccess.get_sha256(source.model_root+spec.file)==spec.sha256,"Exact native theater model "+str(spec.file)):return
+ for i in range(witnesses.size()):
+  var at:Vector3=witnesses[i];var hit:Dictionary=ray(space,at+Vector3.UP*.02,at-Vector3.UP*.02)
+  if not require(not hit.is_empty()and package.is_ancestor_of(hit.collider)and absf(hit.position.y-at.y)<.002,"Actual exact source-owned theater floor "+str(i)):return
+ if not require(budget.sources.size()==count+6 and lamps.size()==6,"Exactlysix coffer sources appended once"):return
+ for spec in source.lights:
+  var light:Light3D=package.get_node(str(spec.id));var lens:MeshInstance3D=package.find_child(str(spec.fixture).validate_node_name(),true,false)
+  if not require(lens!=null and light.global_position.distance_to(Vector3(spec.position_world[0],spec.position_world[1],spec.position_world[2]))<.00001 and (lens.global_transform*lens.get_aabb()).grow(.00002).has_point(light.global_position+Vector3.UP*.03),"Exact source emitter retains authored30mm lens standoff "+str(spec.id)):return
+  if not require(budget.sources.count(light)==1,"Single shared source registration "+str(spec.id)):return
+ for y in [78.,84.]:
+  actor.global_position=Vector3(0,y+.03,-126);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);residency.prepare_position(actor.global_position);stream.prepare_position(actor.global_position);await frames(30)
+  if not require(actor.is_on_floor()and absf(actor.global_position.y-y)<.12,"Supported original fore-route starting stance "+str(y)):return
+  for x in [-3.2,-6.,-15.,-25.,-33.1,-25.,-15.,-6.,-3.2,0.]:
+   var leg:Dictionary=await walk_to(actor,Vector3(x,y,-126));observations.append({"floor_y":y,"leg":leg})
+   if not require(leg.reached and leg.floor_contact,"Original controller supported theater exterior approach "+str(y)+" "+str(x)):return
+ for row in old_doors:
+  if not require(row.node.transform==row.pose and not row.node.get_meta("operation_enabled"),"Original upper closed leaf pose preserved"):return
+ if not require(venue.get_meta("source_chair_instances")==2200 and ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms").get_child_count()==303,"Theater capacity and compiler ownership unchanged"):return
+ receipt();print("G4_THEATER_CURRENT_RECEIVING_PASS checks=",nchecks);quit(0)

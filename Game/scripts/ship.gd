@@ -247,6 +247,11 @@ func _ready() -> void:
 	load("res://scripts/group3_completion_20261011/labelled_bank.gd").build(self)
 	# Exact supported five-service physical receivers;production door identity map remains unassigned.
 	load("res://scripts/group3_d03_services_20261011/physical_package.gd").build(self)
+	# Exact current-supported theater exterior approaches;upper main doors stay inactive.
+	var theater_upper_receiving:Node3D=load("res://scripts/group4_theater_upper_approaches.gd").build(get_node("ShipSpace/Districts"))
+	var theater_receiver_lights:Array[Light3D]=[]
+	for light:Light3D in theater_upper_receiving.find_children("*","SpotLight3D",true,false):theater_receiver_lights.append(light)
+	load("res://scripts/receiving_source_lights.gd").register(theater_receiver_lights,self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
