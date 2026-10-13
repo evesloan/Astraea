@@ -1,0 +1,85 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+var nchecks:=0
+var failures:Array=[]
+var legs:Array=[]
+var slab_bearings:=0
+var pier_bearings:=0
+const OUT="/workspace/astraea-integration-cutoff-20261013/g2_remaining_five_pairs_20261013/RECEIVING_RUNTIME.json"
+func _initialize()->void:
+ OS.set_environment("ASTRAEA_GROUP7_ENABLE","1")
+ for path in ["/workspace/astraea-synthesis-adoption-20261012/SYNTHESIS_ACTUAL_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/GROUP5_PUBLIC_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/READY_DRY_THERMAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ENVELOPE_MEDICAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/TRAM_REMAINING_G8_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/g2_remaining_five_pairs_20261013/CANDIDATE_OVERLAY.zip"]:assert(ProjectSettings.load_resource_pack(path,true))
+ call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func receipt()->void:
+ FileAccess.open(OUT,FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_CURRENT_FORWARD_ADJUNCT_CARE_PAIRS"if failures.is_empty()else"HOLD","checks":nchecks,"failures":failures,"legs":legs,"slab_bearings_confirmed":slab_bearings,"pier_couplings_confirmed":pier_bearings,"new_source_adjuncts":2,"new_care_kits":2,"unchanged_source_floor_proposals_m2":396,"pier_clearance_removed_from_root_floor_m2":1.155,"source_floor_derivative_m2":394.845,"missing_connector_m2":7.2,"primary_models_walls_piers_slabs_unchanged":true,"guards_changed_only_in_finite_threshold_windows":true,"runtime_node_body_identities_retained":true,"operating_private_care_service_or_structuralcapacity_accepted":false,"new_units_or_capacity":0,"remaining_three_pairs_not_installed_by_this_step":true,"full_build_accepted":false},"  "))
+func require(ok:bool,label:String)->bool:
+ nchecks+=1
+ if not ok:failures.append(label);receipt();push_error(label);quit(1)
+ return ok
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(30)
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var space:=ship.get_world_3d().direct_space_state;var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget");var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/group2_forward_receiving_20261013/FORWARD.json"));var old:Array=[];var guard_nodes:Array=[];var outside:Array=[];var witnesses:Array=[]
+ for site in p.sites:
+  var root:Node=ship.get_node("ShipSpace/Districts/"+str(site.receiver_root))
+  var support_names:Array=[site.floor_batch,site.pier_batch]
+  if site.has("capital_batch"):support_names.append(site.capital_batch)
+  for name in support_names:
+   var mesh:MeshInstance3D=root.find_child(str(name),true,false);var shape:CollisionShape3D=mesh.get_node("StaticContact/SharedShape");old.append({"mesh":mesh,"resource":mesh.mesh,"pose":mesh.global_transform,"material":mesh.material_override,"shape_node":shape,"shape":shape.shape})
+  for row in site.guard_preimages:
+   var mesh:MeshInstance3D=root.find_child(str(row.name),true,false);guard_nodes.append({"node":mesh,"parent":mesh.get_parent(),"pose":mesh.global_transform,"override":mesh.material_override,"body":mesh.get_node("StaticContact"),"shape_node":mesh.get_node("StaticContact/SharedShape")})
+  for x in [site.centre-1.2,site.centre+1.2]:outside.append({"x":x,"hit":not ray(space,Vector3(x,102.7,-384.3),Vector3(x,102.7,-383.7)).is_empty()})
+  for x in [site.x[0]+.8,site.centre,site.x[1]-.8]:
+   for z in [-403.5,-400.,-395.,-387.]:witnesses.append(Vector3(x,102,z))
+  for z in [-385.9,-385.,-384.1]:witnesses.append(Vector3(site.centre,102,z))
+ var unknown_preimages:Array=[]
+ for part in p.parts:
+  var site:Dictionary={}
+  for candidate in p.sites:
+   if candidate.key==part.site:site=candidate
+  var a:Array=part.bounds_xyz;var shape:=BoxShape3D.new();shape.size=Vector3(a[1]-a[0],a[3]-a[2],a[5]-a[4]);shape.margin=.001;var q:=PhysicsShapeQueryParameters3D.new();q.shape=shape;q.margin=.0001;q.transform=Transform3D(Basis.IDENTITY,Vector3((a[0]+a[1])/2.,(a[2]+a[3])/2.,(a[4]+a[5])/2.));var hits:Array=space.intersect_shape(q,128);var required_contact:=false
+  for hit in hits:
+   var name:String=str(hit.collider.get_parent().name);var allowed:bool=name==site.floor_batch
+   if site.has("capital_batch")and name==site.capital_batch and part.kind=="pier_bearing":allowed=true;required_contact=true
+   if name==site.pier_batch and part.kind=="pier_bearing":allowed=true;required_contact=true
+   if name==site.floor_batch and part.kind=="slab_bearing":required_contact=true
+   if name in site.guard_batches and part.kind=="guard":allowed=true
+   if name in site.guard_batches and part.kind=="floor"and str(part.name).ends_with("missing_connector"):
+    var m:Array=site.mask
+    if a[0]>=m[0]-.001 and a[1]<=m[1]+.001 and a[5]>=m[4]:allowed=true
+   nchecks+=1
+   if not allowed:unknown_preimages.append("Exact declared newframe preimage "+str(part.name)+" "+str(hit.collider.get_path()))
+  if part.kind=="slab_bearing":
+   if not require(required_contact,"Actual slab bearing "+str(part.name)):return
+   slab_bearings+=1
+  if part.kind=="pier_bearing":
+   if not require(required_contact,"Actual retainedpier coupling "+str(part.name)):return
+   pier_bearings+=1
+ if not require(unknown_preimages.is_empty(),"Undeclared changedframe contacts "+JSON.stringify(unknown_preimages)):return
+ for at:Vector3 in witnesses:
+  if not require(ray(space,at+Vector3.UP*.02,at-Vector3.UP*.02).is_empty(),"Exact missingfloor preimage "+str(at)):return
+ if not require(slab_bearings==6 and pier_bearings==2,"Sixretainedslab bearings andtwophysicalpier couplings"):return
+ var addition:Node3D=load("res://scripts/group2_forward_receiving_20261013/package.gd").build(ship);await frames(4)
+ for row in old:
+  if not require(row.mesh.mesh==row.resource and row.mesh.global_transform==row.pose and row.mesh.material_override==row.material and row.shape_node.shape==row.shape,"Originalcourt slab/pierresources andposes exact"):return
+ for row in guard_nodes:
+  if not require(row.node.get_parent()==row.parent and row.node.global_transform==row.pose and row.node.material_override==row.override and row.node.get_node("StaticContact")==row.body and row.node.get_node("StaticContact/SharedShape")==row.shape_node,"Originalguardnode/body/material/pose identities retained"):return
+ for row in outside:
+  if not require(row.hit==not ray(space,Vector3(row.x,102.7,-384.3),Vector3(row.x,102.7,-383.7)).is_empty(),"Outsideguard physicalstates unchanged"):return
+ for at:Vector3 in witnesses:
+  var hit:Dictionary=ray(space,at+Vector3.UP*.02,at-Vector3.UP*.02)
+  if not require(not hit.is_empty()and addition.get_node("ForwardFrames").is_ancestor_of(hit.collider)and absf(hit.position.y-at.y)<.002,"Exact new sourcefloor/connection support "+str(at)):return
+ if not require(addition.find_children("*","OmniLight3D",true,false).size()==4,"Fouroriginal sourcefixture registrations"):return
+ for light:Light3D in addition.find_children("*","Light3D",true,false):
+  if not require(budget.sources.count(light)==1,"Single registration ofretained fixture"):return
+ for site in p.sites:
+  if not require(ray(space,Vector3(site.centre,102.7,-384.3),Vector3(site.centre,102.7,-383.7)).is_empty(),"Bounded protectedguard sourcewindow"):return
+  var left:bool=site.key=='port_forward_upper_house';var approach:Vector3=Vector3(-67.8,102,-389.2)if left else Vector3(66.8,102,-400.8);var goal:Vector3=Vector3(site.care.approach_walk[1][0],102,site.care.approach_walk[1][2]);var route:Array=[Vector3(site.centre,102,-387),Vector3(approach.x,102,-387),approach,goal,approach,Vector3(approach.x,102,-387),Vector3(site.centre,102,-387),Vector3(site.centre,102,-382)]
+  if not require(capsule_clear(space,Vector3(site.centre,102,-382)),"Originalcourt clearstance beforeplayer setup "+str(site.key)):return
+  actor.global_position=Vector3(site.centre,102.03,-382);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);await frames(25)
+  if not require(actor.is_on_floor(),"Supportedclear originalcourt start "+str(site.key)):return
+  for at:Vector3 in route:
+   var leg:Dictionary=await walk_to(actor,at);legs.append({"site":site.key,"leg":leg})
+   if not require(leg.reached and leg.floor_contact,"Originalcontroller connectedcare approach "+str(site.key)):return
+ if not require(not addition.get_meta("operating_care_private_admission_or_services")and not addition.get_meta("structural_capacity_or_lower_section_accepted")and addition.get_meta("registered_units_or_capacity")==0,"No operation/private/capacity acceptance"):return
+ receipt();print("FORWARD_PAIRS_CURRENT_RECEIVING_PASS checks=",nchecks);quit(0)
