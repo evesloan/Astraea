@@ -256,6 +256,8 @@ func _ready() -> void:
 	load("res://scripts/group3_remaining_risers_20261011/aft_pair.gd").build(self)
 	# Exact supported port2 clinical physical receiving;operating identities remain unassigned.
 	load("res://scripts/group3_port2_clinical_20261011/physical_package.gd").build(self)
+	# Exact current-source D03 port2 wall/floor connection;operating gate identities remain unassigned.
+	load("res://scripts/group3_d03_port2_20261011/physical_package.gd").build(self,{},true)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
