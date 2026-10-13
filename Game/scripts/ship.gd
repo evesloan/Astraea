@@ -254,6 +254,8 @@ func _ready() -> void:
 	load("res://scripts/receiving_source_lights.gd").register(theater_receiver_lights,self)
 	# Exact supported aft-riser physical lobbies;operating lift identities remain unassigned.
 	load("res://scripts/group3_remaining_risers_20261011/aft_pair.gd").build(self)
+	# Exact supported port2 clinical physical receiving;operating identities remain unassigned.
+	load("res://scripts/group3_port2_clinical_20261011/physical_package.gd").build(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
