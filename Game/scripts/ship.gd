@@ -245,6 +245,8 @@ func _ready() -> void:
 	load("res://scripts/group3_completion_20261011/d03_precinct.gd").build(self)
 	# Exact supported labelled bank;unassigned rest surfaces,unknown private entry refused.
 	load("res://scripts/group3_completion_20261011/labelled_bank.gd").build(self)
+	# Exact supported five-service physical receivers;production door identity map remains unassigned.
+	load("res://scripts/group3_d03_services_20261011/physical_package.gd").build(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

@@ -1,0 +1,15 @@
+extends SceneTree
+func _initialize()->void:
+ var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group3_d03_services_20261011/SERVICES.json"))
+ var map:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("/workspace/astraea-integration-cutoff-20261013/G3_SERVICES_EXACT_EXPORT_LENS_MAPPING.json"))
+ var scene:Node3D=load("res://assets/models/group3_d03_services_20261011/AST-STF-G3-048.glb").instantiate()
+ var rows:Array=[]
+ for binding in map.mappings:
+  assert(binding.pinned_export_opal_receivers.size()==1)
+  var raw:String=str(binding.pinned_export_opal_receivers[0].mesh_name)
+  var name:String=raw.validate_node_name()
+  var mesh:MeshInstance3D=scene.find_child(name,true,false)
+  assert(mesh!=null,"Canonical imported exact node "+name)
+  rows.append({"fixture":binding.fixture,"source_mesh":raw,"imported_node":name,"faces":mesh.mesh.get_faces().size()/3})
+ FileAccess.open("/workspace/astraea-integration-cutoff-20261013/G3_SERVICES_IMPORTED_LENS_NAME_PREFLIGHT.json",FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_EXACT_SOURCE_TO_CANONICAL_IMPORTED_NODES","mappings":rows},"  "))
+ scene.free();print("G3_SOURCE_IMPORTED_LENS_NAME_PREFLIGHT_PASS ",rows.size());quit(0)

@@ -1,0 +1,35 @@
+from pathlib import Path
+import json,hashlib,subprocess,datetime
+C=Path(__file__).parent;R=Path('/workspace/astraea-protected-integration-20261012');S='/workspace/astraea-readonly-interface-review-20261012/remote_only_20261012T000749Z.git';rev='6f2d0da67429ea940edf7011348ec08a346f37db';sha=lambda b:hashlib.sha256(b).hexdigest();src=json.loads((C/'g3_receiving_metadata/Game/data/architecture/group3_d03_services_20261011/SERVICES.json').read_text());proof=json.loads((R/'Game/data/architecture/packages/botanical_pair_runtime/RUNTIME_PROOF.json').read_text());pins=[]
+for path,h in src['source_pins'].items():
+ b=subprocess.check_output(['git','-C',S,'show',rev+':'+path]);assert sha(b)==h;row={'path':path,'sha256':h,'bytes':len(b),'independent_source_pin_exact':True}
+ p=R/path
+ if p.exists():
+  current=p.read_bytes();row['current_sha256']=sha(current)
+  if row['current_sha256']!=h:
+   if path.endswith('structural_meshes.json')and 'received_'not in path:
+    old=json.loads(b);new=json.loads(current);changes=[(i,a['id'],a!=z)for i,(a,z)in enumerate(zip(old['regions'],new['regions']))if a!=z];assert len(old['regions'])==len(new['regions'])==303;assert set(a for _,a,_ in changes)=={'D09_fore_route','D09_aft_route','D09_atrium_circulation'}
+    for k in old:
+     if k!='regions':assert old[k]==new[k],k
+    row['explained_successor']='Exact already protected three G4 pit receiving owners';row['changed_owners']=[a for _,a,_ in changes]
+   else:
+    key=path[5:];text=current.decode();found=False
+    for e in proof['inverse_edits'][key]:
+     assert text.count(e['after'])==e['count'];text=text.replace(e['after'],e['before']);found=found or sha(text.encode())==h
+    assert found,path;row['explained_successor']='Exact retained inverse preimage found'
+ else:row['live_materialization']='Inactive native/source remains independently Git-backed'
+ pins.append(row)
+# Reuse pure clipping functions without executing the earlier historic receipt writer.
+source=(C/'preflight_g3_first_floor_overlap.py').read_text();ns={};exec(source.split('old=[]')[0],ns);old=[]
+for rel in ['Game/data/generated/structural_meshes.json','Game/data/generated/received_structural_meshes.json','Game/data/architecture/REMAINING_BATCH_FLOORS.json']:
+ d=json.loads((R/rel).read_text())
+ for p in d.get('regions',[]):
+  if abs(float(p.get('floor_y',-999))-12)<.001:old.extend((p['id'],t)for t in p['triangles'])
+for name in ['MISSING_ONLY_FLOOR_PATCH.json','BANK_MISSING_ONLY_FLOOR.json']:
+ d=json.loads((C/'g3_first_floor_preflight'/name).read_text());old.extend((name,t)for p in d['parts']for t in p['triangles'])
+f=json.loads((C/'g3_services_preflight/source/D03_SERVICE_MISSING_FLOOR.json').read_text());hits=[];tris=[t for p in f['parts']for t in p['triangles']]
+for i,t in enumerate(tris):
+ for owner,q in old:
+  a=ns['overlap'](t,q)
+  if a>1e-6:hits.append({'new_triangle':i,'current_owner':owner,'area_m2':a})
+result={'status':'PASS_EXACT_INPUTS_AND_DECLARED_MISSING_FLOOR'if not hits else'HOLD_FLOOR_OVERLAP','source_revision':rev,'source_pins':pins,'floor_parts':len(f['parts']),'floor_triangles':len(tris),'new_native_floor_m2':sum(ns['area'](t)for t in tris),'overlaps':hits,'original_ids_not_invented':True,'shared_inputs_not_overwritten':True,'production_adoption':False};(C/'G3_SERVICES_PREIMAGE_AND_FLOOR_PREFLIGHT.json').write_text(json.dumps(result,indent=2)+'\n');print(result['status'],len(pins),'pins',len(tris),'triangles',result['new_native_floor_m2'],'m2',len(hits),'overlaps')

@@ -1,0 +1,13 @@
+from pathlib import Path
+import json,hashlib,zipfile
+C=Path(__file__).parent;S=C/'g3_services_staging/Game';sha=lambda b:hashlib.sha256(b).hexdigest();p=json.loads((S/'data/architecture/group3_d03_services_20261011/SERVICES.json').read_text());assert json.loads((C/'G3_SERVICES_IMPORT_RECEIPT.json').read_text())['passed'];assert json.loads((C/'G3_SERVICES_PREIMAGE_AND_FLOOR_PREFLIGHT.json').read_text())['status']=='PASS_EXACT_INPUTS_AND_DECLARED_MISSING_FLOOR';writes={};stems=[Path(f).stem for f in p['model_pins']]
+for q in (S/'assets/models/group3_d03_services_20261011').iterdir():
+ if q.is_file():writes[str(q.relative_to(S))]=q.read_bytes()
+for f,h in p['model_pins'].items():assert sha(writes['assets/models/group3_d03_services_20261011/'+f])==h
+for q in (S/'.godot/imported').iterdir():
+ if q.is_file()and any(q.name.startswith(x)for x in stems):writes[str(q.relative_to(S))]=q.read_bytes()
+key='scripts/group3_d03_services_20261011/physical_package.gd';original=(S/key).read_text();code=original;anchor=' var n:=Node3D.new();n.name="Group3D03FiveServices";space.add_child(n);n.set_meta("registered_berths_added",0);n.set_meta("authoritative_identity_mapping",false)'
+assert code.count(anchor)==1;code=code.replace(anchor,' for file in p.model_pins:\n  assert(FileAccess.get_sha256("res://assets/models/group3_d03_services_20261011/"+file)==p.model_pins[file])\n'+anchor+';n.set_meta("operating_doors_admitted",false);n.set_meta("default_main_adoption",false)');assert code.count('l.shadow_enabled=true;l.set_meta')==1;code=code.replace('l.shadow_enabled=true;l.set_meta','l.visible=false;l.shadow_enabled=false;l.set_meta');writes[key]=code.encode();writes['data/architecture/group3_d03_services_20261011/SERVICES.json']=(S/'data/architecture/group3_d03_services_20261011/SERVICES.json').read_bytes()
+with zipfile.ZipFile(C/'G3_SERVICES_CANDIDATE_OVERLAY.zip','w',zipfile.ZIP_DEFLATED,compresslevel=1)as z:
+ for k,b in writes.items():z.writestr(k,b)
+receipt={'status':'CANDIDATE_ONLY_ACTUAL_SOURCE_RECEIVING_PENDING','source_revision':'6f2d0da67429ea940edf7011348ec08a346f37db','model_pins':p['model_pins'],'owner_script_sha256':sha(original.encode()),'consumer_script_sha256':sha(code.encode()),'preflight_all_models_before_any_scene_mutation':True,'sources_inert_before_registration':True,'production_service_gate_identity_map_invented':False,'default_source_static_leaves_preserved':True,'operating_doors_admitted':False,'portable_files':[k for k in writes if not k.startswith('.godot/')]};(C/'G3_SERVICES_CANDIDATE.json').write_text(json.dumps(receipt,indent=2)+'\n');print('candidate',len(writes),'files')

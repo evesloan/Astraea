@@ -1,0 +1,77 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+var nchecks:=0
+var failures:Array=[]
+var observations:Array=[]
+const OUT="/workspace/astraea-integration-cutoff-20261013/G3_SERVICES_RECEIVING_RUNTIME.json"
+func _initialize()->void:
+ OS.set_environment("ASTRAEA_GROUP7_ENABLE","1")
+ for p in ["/workspace/astraea-synthesis-adoption-20261012/SYNTHESIS_ACTUAL_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/GROUP5_PUBLIC_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/READY_DRY_THERMAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ENVELOPE_MEDICAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/TRAM_REMAINING_G8_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/G3_SERVICES_CANDIDATE_OVERLAY.zip"]:assert(ProjectSettings.load_resource_pack(p,true))
+ call_deferred("run")
+func save_result()->void:
+ FileAccess.open(OUT,FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_EXACT_FIVE_SERVICES_PHYSICAL_RECEIVING"if failures.is_empty()else"HOLD","checks":nchecks,"failures":failures,"observations":observations,"models":4,"native_missing_floor_m2":748.2533480766223,"new_registered_berths":0,"production_door_identity_mapping_or_operation_admitted":false,"scope":"Exact native five service receiver architecture,floors,fixed closed source leaves,eight supported source lamps. Five independent supported actor setup cases;no continuous whole service network,operating gates,programme/capacity/species/primaryengineering/gameplay/save/final-art acceptance."},"  "))
+func require(ok:bool,label:String)->bool:
+ nchecks+=1
+ if not ok:failures.append(label);save_result();push_error(label);quit(1)
+ return ok
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func nearest_face(mesh:MeshInstance3D,point:Vector3)->float:
+ var faces:PackedVector3Array=mesh.mesh.get_faces();var best:=INF
+ for i in range(0,faces.size(),3):
+  var a:Vector3=mesh.global_transform*faces[i];var b:Vector3=mesh.global_transform*faces[i+1];var c:Vector3=mesh.global_transform*faces[i+2]
+  var normal:Vector3=(b-a).cross(c-a)
+  if normal.length_squared()<1e-15:continue
+  normal=normal.normalized();var projected:Vector3=point-normal*normal.dot(point-a)
+  if (b-a).cross(projected-a).dot(normal)>=-1e-7 and (c-b).cross(projected-b).dot(normal)>=-1e-7 and (a-c).cross(projected-c).dot(normal)>=-1e-7:best=minf(best,point.distance_to(projected))
+  for edge in [[a,b],[b,c],[c,a]]:
+   var delta:Vector3=edge[1]-edge[0]
+   if delta.length_squared()>1e-15:best=minf(best,point.distance_to(edge[0]+delta*clampf((point-edge[0]).dot(delta)/delta.length_squared(),0,1)))
+ return best
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(30)
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+ var source:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group3_d03_services_20261011/SERVICES.json"));var floors:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("/workspace/astraea-integration-cutoff-20261013/g3_services_preflight/source/D03_SERVICE_MISSING_FLOOR.json"))
+ var witnesses:Array=[]
+ for part in floors.parts:
+  for t in part.triangles:witnesses.append(Vector3((t[0][0]+t[1][0]+t[2][0])/3.,12.,(t[0][1]+t[1][1]+t[2][1])/3.))
+ var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");var stream:Node=ship.get_node("ShipSystems/RemainingBatchStreaming")
+ for at in witnesses:residency.prepare_position(at);stream.prepare_position(at)
+ await frames(2)
+ var space:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state
+ for i in range(witnesses.size()):
+  var at:Vector3=witnesses[i];var hit:Dictionary=space.intersect_ray(PhysicsRayQueryParameters3D.create(at+Vector3.UP*.02,at-Vector3.UP*.02))
+  if not require(hit.is_empty(),"Service missing floor preimage "+str(i)+" "+str(hit.collider.get_path()if not hit.is_empty()else "none")):return
+ var old_sources:int=budget.sources.size();var service:Node3D=load("res://scripts/group3_d03_services_20261011/physical_package.gd").build(ship);await frames(4)
+ if not require(service.get_meta("registered_berths_added")==0 and not service.get_meta("operating_doors_admitted")and not service.get_meta("authoritative_identity_mapping"),"No invented door IDs,operation or capacity"):return
+ for file in source.model_pins:
+  if not require(FileAccess.get_sha256("res://assets/models/group3_d03_services_20261011/"+str(file))==str(source.model_pins[file]),"Exact native service model "+str(file)):return
+ for i in range(witnesses.size()):
+  var at:Vector3=witnesses[i];var hit:Dictionary=space.intersect_ray(PhysicsRayQueryParameters3D.create(at+Vector3.UP*.03,at-Vector3.UP*.03))
+  if not require(not hit.is_empty()and service.is_ancestor_of(hit.collider)and absf(hit.position.y-12)<.002,"Actual native service floor witness "+str(i)):return
+ if not require(budget.sources.size()==old_sources+source.fixtures.size(),"Exactlyeight native sources appended once"):return
+ for q in source.fixtures:
+  var light:Light3D=service.get_node(str(q.name)+"_PhysicalSource")
+  if not require(budget.sources.count(light)==1,"Single service source "+str(q.name)):return
+  var mapping:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("/workspace/astraea-integration-cutoff-20261013/G3_SERVICES_EXACT_EXPORT_LENS_MAPPING.json"))
+  var lens_name:=""
+  for binding in mapping.mappings:
+   if str(binding.fixture)==str(q.name):
+    if not require(binding.pinned_export_opal_receivers.size()==1,"Unique independently decoded exact lens mapping "+str(q.name)):return
+    lens_name=str(binding.pinned_export_opal_receivers[0].node_names[0]).validate_node_name()
+  var lens:MeshInstance3D=service.find_child(lens_name,true,false)
+  if not require(lens!=null,"Exact source export opal lens "+lens_name):return
+  if not require((lens.global_transform*lens.get_aabb()).grow(.025).has_point(light.global_position)and nearest_face(lens,light.global_position)<=.025,"Emitter receives actual pinned native lens face "+str(q.name)):return
+ if not require(service.has_node("AST-STF-G3-051"),"Original closed static source leaves retained"):return
+ for q in source.door_bindings:
+  if not require(service.get_node_or_null(str(q.name))==null,"Unassigned production gate backend not invented "+str(q.name)):return
+  var frame:=Transform3D(Basis(Vector3.UP,float(q.yaw)),Vector3(q.position[0],12,q.position[2]))
+  actor.global_position=frame*Vector3(0,.03,2.2);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);residency.prepare_position(actor.global_position);stream.prepare_position(actor.global_position);await frames(25)
+  if not require(actor.is_on_floor()and absf(actor.global_position.y-12)<.12,"Actual supported independent service receiver stance "+str(q.name)):return
+  for distance in [3.6,2.2]:
+   var leg:Dictionary=await walk_to(actor,frame*Vector3(0,0,distance));observations.append({"service":q.name,"leg":leg})
+   if not require(leg.reached and leg.floor_contact,"Original-controller native service approach "+str(q.name)):return
+ if not require(ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms").get_child_count()==303,"Original compiler owners unchanged"):return
+ var bank:Node3D=ship.get_node("ShipSpace/Group3LabelledCrewBank")
+ for q in JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group3_completion_20261011/LABELLED_BANK.json")).service_doors:
+  if not require(not bank.get_node(str(q.name)).desired_open,"Previously installed private bank stays closed "+str(q.name)):return
+ save_result();print("G3_FIVE_SERVICES_PHYSICAL_RECEIVING_PASS checks=",nchecks);quit(0)
