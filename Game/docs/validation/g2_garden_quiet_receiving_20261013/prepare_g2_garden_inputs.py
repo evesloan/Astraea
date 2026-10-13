@@ -1,0 +1,11 @@
+from pathlib import Path
+import json,hashlib,subprocess
+C=Path(__file__).parent;R=Path('/workspace/astraea-protected-integration-20261012');S='/workspace/astraea-readonly-interface-review-20261012/remote_only_20261012T000749Z.git';rev='ffaf177df8fa460e3b098819604977cad8fbbdd5';sha=lambda b:hashlib.sha256(b).hexdigest();m=json.loads((R/'RetainedConstruction/group2/SOURCE_MAP.json').read_text());files={x['source_path']:x for x in m['files']};P=C/'g2_garden_receiving';G=P/'import/Game';G.mkdir(parents=True,exist_ok=True)
+selected=['Game/assets/group2_garden_quiet/family_hydroponics_r002.glb','Game/assets/group2_garden_quiet/quiet_meditation_r002.glb','Game/data/group2_garden_quiet/COMPONENTS_r002.json','Game/scripts/group2_garden_quiet/package.gd','BlenderCatalogue/assets/group2_garden_quiet_20261012/source/GARDEN_QUIET_r002.blend','BlenderCatalogue/assets/group2_garden_quiet_20261012/INTEGRATION.md'];rows=[]
+for path in selected:
+ x=files[path];b=(R/x['storage_path']).read_bytes();assert len(b)==x['bytes'] and sha(b)==x['sha256'];remote=subprocess.check_output(['git','-C',S,'show',rev+':'+path]);assert b==remote and sha(remote)==x['sha256'];q=G/path[5:]if path.startswith('Game/')else P/'native'/Path(path).name;q.parent.mkdir(parents=True,exist_ok=True);q.write_bytes(b);rows.append({'path':path,'bytes':len(b),'sha256':sha(b),'independent_commit':rev})
+data=json.loads((G/'data/group2_garden_quiet/COMPONENTS_r002.json').read_text())
+for row in data['rows']:assert sha((R/'Game/assets/models'/row['source_model']).read_bytes())==row['source_sha256']
+assert sha((P/'native/GARDEN_QUIET_r002.blend').read_bytes())==data['native_sha256']
+(G/'project.godot').write_text('[application]\nconfig/name="Group2 exact garden quiet import"\n[rendering]\nrenderer/rendering_method="gl_compatibility"\nrenderer/rendering_method.mobile="gl_compatibility"\n')
+(P/'INPUT_VERIFICATION.json').write_text(json.dumps({'status':'PASS_6_EXACT_PRIVATE_RETAINED_INPUTS','files':rows,'receiver_pins':[{'file':r['source_model'],'sha256':r['source_sha256']}for r in data['rows']],'new_floor_owners':0,'capacity_credit':0,'source_revision':rev},indent=2)+'\n');print('PASS exact6 garden inputs;both current receiver GLBs match;native source verified')

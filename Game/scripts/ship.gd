@@ -264,6 +264,8 @@ func _ready() -> void:
 	load("res://scripts/group3_d03_streets_20261011/physical_package.gd").build(self,{},true)
 	# Six exact wall receivers with missing-only thresholds; source leaves stay closed and unassigned.
 	load("res://scripts/group3_commons_crossings_20261012/physical_package.gd").build(self)
+	# Exact existing Family/Quiet floor receivers;agricultural services and programme admission stay held.
+	load("res://scripts/group2_garden_quiet/package.gd").build_on_current_receivers(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

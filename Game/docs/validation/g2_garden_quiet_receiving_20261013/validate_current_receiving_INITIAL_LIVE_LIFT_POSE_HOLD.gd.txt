@@ -1,0 +1,76 @@
+extends SceneTree
+var nchecks:=0
+var failures:Array=[]
+var legs:Array=[]
+var old_mesh_count:=0
+const OUT="/workspace/astraea-integration-cutoff-20261013/g2_garden_receiving/RECEIVING_RUNTIME.json"
+func _initialize()->void:
+ OS.set_environment("ASTRAEA_GROUP7_ENABLE","1")
+ for p in ["/workspace/astraea-synthesis-adoption-20261012/SYNTHESIS_ACTUAL_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/GROUP5_PUBLIC_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/READY_DRY_THERMAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ENVELOPE_MEDICAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/TRAM_REMAINING_G8_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/g2_garden_receiving/CANDIDATE_OVERLAY.zip"]:assert(ProjectSettings.load_resource_pack(p,true))
+ call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func receipt()->void:
+ FileAccess.open(OUT,FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_CURRENT_GARDEN_QUIET_PHYSICAL_RECEIVING"if failures.is_empty()else"HOLD","checks":nchecks,"failures":failures,"original_controller_legs":legs,"original_meshes_preserved":old_mesh_count,"models":2,"sources":2,"existing_floor_footprint_m2":36.45,"new_floor_m2":0,"capacity_credit":0,"agricultural_services_or_programme_admission":false,"structural_acoustic_species_save_or_final_art_accepted":false},"  "))
+func require(ok:bool,label:String)->bool:
+ nchecks+=1
+ if not ok:failures.append(label);receipt();push_error(label);quit(1)
+ return ok
+func ray(space:PhysicsDirectSpaceState3D,at:Vector3)->Dictionary:return space.intersect_ray(PhysicsRayQueryParameters3D.create(at+Vector3.UP*.02,at-Vector3.UP*.02))
+func walk(actor:CharacterBody3D,target:Vector3,kind:String)->void:
+ var start:Vector3=actor.global_position;var key:=InputEventKey.new();key.keycode=KEY_W;key.physical_keycode=KEY_W;key.pressed=true;Input.parse_input_event(key.duplicate());Input.flush_buffered_events();var reached:=false;var used_frames:=0
+ for i in range(800):
+  var delta:=target-actor.global_position
+  if Vector2(delta.x,delta.z).length()<.09:reached=true;break
+  actor.rotation.y=atan2(-delta.x,-delta.z);await physics_frame;used_frames=i+1
+  if not require(absf(actor.global_position.y-97.5)<.12,"Original controller supported during "+kind):return
+ key.pressed=false;Input.parse_input_event(key.duplicate());Input.flush_buffered_events();await frames(15)
+ legs.append({"kind":kind,"start":str(start),"target":str(target),"finish":str(actor.global_position),"reached":reached,"floor":actor.is_on_floor(),"frames":used_frames})
+ require(reached and actor.is_on_floor(),"Source-authored approach reached on actual populated ship "+kind)
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(30)
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget");var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");var stream:Node=ship.get_node("ShipSystems/RemainingBatchStreaming");var space:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state
+ var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/group2_garden_quiet/COMPONENTS_r002.json"));var old:Array=[];var house_ids:Dictionary={};var floor_witnesses:Array=[]
+ for name in ["FamilyTerraceReceivingCandidate","QuietGroveReceivingCandidate"]:
+  var house:Node3D=ship.get_node("ShipSpace/Districts/"+name);house_ids[name]=house.get_meta("persistent_id")
+  for mesh:MeshInstance3D in house.find_children("*","MeshInstance3D",true,false):
+   var contact:CollisionShape3D=mesh.get_node_or_null("StaticContact/SharedShape")
+   old.append({"node":mesh,"mesh":mesh.mesh,"pose":mesh.global_transform,"bounds":mesh.get_aabb(),"material":mesh.material_override,"contact":contact,"shape":contact.shape if contact!=null else null,"disabled":contact.disabled if contact!=null else false})
+ old_mesh_count=old.size()
+ for row in data.rows:
+  if not require(FileAccess.get_sha256("res://assets/models/"+str(row.source_model))==str(row.source_sha256),"Exact current original receiver "+str(row.kind)):return
+  var b:Array=row.bounds_xz
+  for x_fraction in [.15,.5,.85]:
+   for z_fraction in [.15,.5,.85]:
+    var at:=Vector3(lerpf(b[0],b[2],x_fraction),97.5,lerpf(b[1],b[3],z_fraction));var hit:Dictionary=ray(space,at)
+    if not require(not hit.is_empty()and absf(hit.position.y-97.5)<.002,"Actual existing receiving floor before candidate "+str(row.kind)+str(at)):return
+    floor_witnesses.append(at)
+ var addition:Node3D=load("res://scripts/group2_garden_quiet/package.gd").build_on_current_receivers(ship);await frames(4)
+ for row in old:
+  var mesh:MeshInstance3D=row.node
+  if not require(is_instance_valid(mesh)and mesh.mesh==row.mesh and mesh.global_transform==row.pose and mesh.get_aabb()==row.bounds and mesh.material_override==row.material,"Original populated receiver mesh remains exact "+str(mesh.name)):return
+  if row.contact!=null:
+   if not require(is_instance_valid(row.contact)and row.contact.shape==row.shape and row.contact.disabled==row.disabled,"Original populated contact remains exact "+str(mesh.name)):return
+ for name in house_ids:
+  if not require(ship.get_node("ShipSpace/Districts/"+str(name)).get_meta("persistent_id")==house_ids[name],"Original house identity unchanged "+str(name)):return
+ for at:Vector3 in floor_witnesses:
+  var hit:Dictionary=ray(space,at)
+  if not require(not hit.is_empty()and absf(hit.position.y-97.5)<.002,"Actual retained floor supported after candidate "+str(at)):return
+ for mesh:MeshInstance3D in addition.find_children("*","MeshInstance3D",true,false):
+  var shape:CollisionShape3D=mesh.get_node_or_null("StaticContact/SharedShape")
+  if not require(shape!=null and not shape.disabled and shape.shape is ConcavePolygonShape3D and shape.shape.get_faces()==mesh.mesh.get_faces(),"Exact source kit physical contact "+str(mesh.name)):return
+  if not require(mesh.mesh.surface_get_material(0)!=null,"Source kit material retained "+str(mesh.name)):return
+ if not require(addition.find_children("*","OmniLight3D",true,false).size()==2,"Two source-authored fixtures only"):return
+ for emitter in data.lights:
+  var section:Node3D=addition.get_node(str(emitter.kind));var light:Light3D=section.get_node(str(emitter.source_mesh)+"_PhysicalSource");var lens:MeshInstance3D=section.find_child(str(emitter.source_mesh),true,false)
+  if not require(lens!=null and (lens.global_transform*lens.get_aabb()).grow(.025).has_point(light.global_position)and budget.sources.count(light)==1,"Exact singly registered fixture in original lens "+str(emitter.kind)):return
+ for row in data.rows:
+  var points:Array[Vector3]=[Vector3(94.55,97.5,384.9),Vector3(94.55,97.5,384.6),Vector3(94.55,97.5,384.9)]if str(row.kind)=="family_hydroponics"else[Vector3(79.5,97.5,-357.1),Vector3(83,97.5,-357.1),Vector3(83,97.5,-359.7),Vector3(83,97.5,-357.1),Vector3(79.5,97.5,-357.1)]
+  actor.global_position=points[0]+Vector3.UP*.03;actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);residency.prepare_position(actor.global_position);stream.prepare_position(actor.global_position);await frames(25)
+  if not require(actor.is_on_floor()and absf(actor.global_position.y-97.5)<.12,"Original actor supported at actual receiving start "+str(row.kind)):return
+  for target in points.slice(1):
+   await walk(actor,target,str(row.kind))
+   if not failures.is_empty():return
+ if not require(addition.get_meta("new_floor_owners")==0 and addition.get_meta("new_room_or_berth_capacity")==0 and not addition.get_meta("agricultural_service_operation")and not addition.get_meta("programme_admission_accepted"),"Physical fitting without service/programme/capacity acceptance"):return
+ if not require(ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms").get_child_count()==303,"Original compiler floor owners unchanged"):return
+ receipt();print("G2_GARDEN_QUIET_CURRENT_RECEIVING_PASS checks=",nchecks," original_meshes=",old_mesh_count);quit(0)

@@ -1,0 +1,68 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+var nchecks:=0
+var failures:Array=[]
+var operations:Array=[]
+var routelegs:Array=[]
+var inclusion:Array=[]
+const OUT="/workspace/astraea-integration-cutoff-20261013/g2_garden_receiving/INSTALLED_AND_SUPPORTED_CONTROLS_RUNTIME.json"
+func _initialize()->void:
+ OS.set_environment("ASTRAEA_GROUP7_ENABLE","1")
+ for p in ["/workspace/astraea-synthesis-adoption-20261012/SYNTHESIS_ACTUAL_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/GROUP5_PUBLIC_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/READY_DRY_THERMAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ENVELOPE_MEDICAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/TRAM_REMAINING_G8_OVERLAY.zip"]:assert(ProjectSettings.load_resource_pack(p,true))
+ call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func receipt()->void:
+ FileAccess.open(OUT,FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_INSTALLED_GARDEN_QUIET_AND_SUPPORTED_SERVICE_CONTROLS"if failures.is_empty()else"HOLD","checks":nchecks,"failures":failures,"inclusion_representatives":inclusion,"ordinary_RMB_E_operations":operations,"original_controller_legs":routelegs,"verified_existing_service_control_ids":3,"new_ids_units_or_berths":0,"G7_inclusion_is_opt_in_69_model_selection":true,"whole_ship_no_omissions_build_accepted":false,"historical_network_criteria":13,"unaccepted_joins":184,"unsupported_gates_lifts_private_or_clinical_protocols_inactive":true},"  "))
+func require(ok:bool,label:String)->bool:
+ nchecks+=1
+ if not ok:failures.append(label);receipt();push_error(label);quit(1)
+ return ok
+func mouse(on:bool)->void:
+ var e:=InputEventMouseButton.new();e.button_index=MOUSE_BUTTON_RIGHT;e.pressed=on;Input.parse_input_event(e)
+func press(actor:CharacterBody3D,door:Node3D,label:String)->bool:
+ var control:CollisionShape3D=door.leaves[0].get_node("PushContact");actor.camera.look_at(control.global_position,Vector3.UP);mouse(true);await frames(3)
+ if not require(actor.target_from_view()==door,"Exact existing RMB service target "+label):return false
+ var e:=InputEventKey.new();e.keycode=KEY_E;e.physical_keycode=KEY_E;e.pressed=true;Input.parse_input_event(e);await frames(3);e.pressed=false;Input.parse_input_event(e);mouse(false);operations.append({"id":str(door.persistent_id),"operation":label});return true
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(30)
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget");var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");var stream:Node=ship.get_node("ShipSystems/RemainingBatchStreaming")
+ var paths:Array=["ShipSpace/PersistentActors/Player","ShipSpace/Group2GardenQuietReceiving","ShipSpace/Group3CommonsCrossings","ShipSpace/Districts/Group4Completion","ShipSpace/Districts/ShoppingPromenadeChunks","ShipSpace/Districts/AquaticRiverSlideAnnex_WIP/Group6Completion","ShipSpace/Districts/Group7CompletionCandidate","ShipSpace/Districts/Group8MedicalPrivacyInterfaces_WIP"]
+ for i in range(paths.size()):
+  if not require(ship.get_node_or_null(paths[i])!=null,"Actual group representative exists "+str(i+1)):return
+  inclusion.append({"group":i+1,"path":paths[i],"full_group_acceptance":false})
+ var garden:Node3D=ship.get_node("ShipSpace/Group2GardenQuietReceiving");var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/group2_garden_quiet/COMPONENTS_r002.json"))
+ if not require(garden.get_meta("default_main_adoption")and garden.get_meta("new_floor_owners")==0 and garden.get_meta("new_room_or_berth_capacity")==0 and not garden.get_meta("agricultural_service_operation")and not garden.get_meta("programme_admission_accepted"),"Garden/quiet physical source installed with all service/programme holds"):return
+ for row in data.exports:
+  if not require(FileAccess.get_sha256("res://"+str(row.path).trim_prefix("Game/"))==str(row.sha256),"Exact installed garden export "+str(row.kind)):return
+ for row in data.lights:
+  var light:Light3D=garden.get_node(str(row.kind)+"/"+str(row.source_mesh)+"_PhysicalSource")
+  if not require(budget.sources.count(light)==1,"Installed fixture singly registered "+str(row.kind)):return
+ var shopping:Node3D=ship.get_node("ShipSpace/Districts/ShoppingPromenadeChunks")
+ if not require(shopping.get_meta("group5_completion_attached"),"G5 actual completion controller attached"):return
+ var g7:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP7_COMPLETION.json"))
+ if not require(g7.models.size()==69,"G7 current opt-in selection remains69;held19 not claimed installed"):return
+ var base:Node3D=ship.get_node("ShipSpace/Districts/Group4Completion")
+ if not require(not base.get_node("Group4BoardingSafety").get_meta("integration_boarding_admitted")and not base.get_node("Group4OriginalCartRestraint").get_meta("integration_joint_admitted")and not base.get_node("Group4LoadedSourceTravelActuator").get_meta("integration_motion_admitted"),"Tram operations remain explicitly disabled"):return
+ var source:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group3_completion_20261011/D03_PRECINCT.json"));var ids:Dictionary={};var precinct:Node3D=ship.get_node("ShipSpace/Group3D03ReceivingPrecincts")
+ for row in source.service_doors:
+  var door:Node3D=precinct.get_node(str(row.name))
+  if not require(str(door.persistent_id)==str(row.id)and not ids.has(str(row.id)),"Exact unique retained owner service-control identity "+str(row.name)):return
+  ids[str(row.id)]=true
+  actor.global_position=door.to_global(Vector3(0,.03,1.1));actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);residency.prepare_position(actor.global_position);stream.prepare_position(actor.global_position);await frames(25)
+  if not require(actor.is_on_floor()and absf(actor.global_position.y-12)<.12,"Existing service control supported original stance "+str(row.name)):return
+  if not require(not door.desired_open and door.open_fraction==0.,"Existing service door starts closed "+str(row.name)):return
+  if not await press(actor,door,"open"):return
+  await frames(100)
+  if not require(door.desired_open and is_equal_approx(door.open_fraction,1.),"Ordinary authored service door fully opens "+str(row.name)):return
+  for local_goal in [Vector3(0,0,-1.1),Vector3(0,0,1.1),Vector3(0,0,-.65)]:
+   var goal:Vector3=door.to_global(local_goal);var leg:Dictionary=await walk_to(actor,goal);routelegs.append({"id":str(row.id),"leg":leg})
+   if not require(leg.reached and leg.floor_contact,"Original player through retained supported service aperture "+str(row.name)):return
+  if not await press(actor,door,"occupied close request"):return
+  if not require(door.desired_open and door.obstructed,"Original occupied-swing guard refuses close "+str(row.name)):return
+  var leg:Dictionary=await walk_to(actor,door.to_global(Vector3(0,0,1.1)));routelegs.append({"id":str(row.id),"leg":leg})
+  if not require(leg.reached and leg.floor_contact,"Original actor clears door swing "+str(row.name)):return
+  if not await press(actor,door,"close"):return
+  await frames(100)
+  if not require(not door.desired_open and is_equal_approx(door.open_fraction,0.),"Ordinary authored service door returns fully closed "+str(row.name)):return
+ if not require(ids.size()==3,"Only three existing source-assigned IDs accepted"):return
+ receipt();print("G2_INSTALLED_AND_SOURCE_ASSIGNED_SERVICE_CONTROLS_PASS checks=",nchecks);quit(0)
