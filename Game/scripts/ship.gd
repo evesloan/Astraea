@@ -270,6 +270,8 @@ func _ready() -> void:
 	load("res://scripts/group2_family_meal/package.gd").build_on_current_receiver(self)
 	# Physical child fitout only;closed authored entry,guardian/admission/services remain held.
 	load("res://scripts/group2_family_childcare/package.gd").build_on_current_receiver(self)
+	# Full clinical physical successor replacesonlyboundedport2 visual;sourcegates/clinicaloperationstayheld.
+	load("res://scripts/group3_clinical_full_20261011/physical_package.gd").build(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
