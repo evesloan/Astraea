@@ -1,0 +1,94 @@
+extends SceneTree
+var nchecks:=0
+var failures:Array=[]
+var legs:Array=[]
+var retained_meshes:=0
+var retained_contacts:=0
+const OUT="/workspace/astraea-integration-cutoff-20261013/g2_childcare_physical_receiving/RECEIVING_RUNTIME.json"
+func _initialize()->void:
+ OS.set_environment("ASTRAEA_GROUP7_ENABLE","1")
+ for p in ["/workspace/astraea-synthesis-adoption-20261012/SYNTHESIS_ACTUAL_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/GROUP5_PUBLIC_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/READY_DRY_THERMAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ENVELOPE_MEDICAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/TRAM_REMAINING_G8_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/g2_childcare_physical_receiving/CANDIDATE_OVERLAY.zip"]:assert(ProjectSettings.load_resource_pack(p,true))
+ call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func receipt()->void:
+ FileAccess.open(OUT,FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_CURRENT_CHILDCARE_PHYSICAL_RECEIVING"if failures.is_empty()else"HOLD","checks":nchecks,"failures":failures,"original_controller_legs":legs,"retained_meshes":retained_meshes,"retained_contacts":retained_contacts,"new_model":1,"existing_closed_wide_door":1,"sources":4,"site_m2":57.66,"floor_support_witnesses":25,"proposed_day_rest_fittings":4,"new_floor_registered_beds_rooms_or_capacity":0,"ordinary_entry_or_inside_egress_operation":false,"guardian_supervision_admission_or_programme_accepted":false,"food_stock_staff_hygiene_services_admitted":false,"whole_group_or_final_art_accepted":false,"historical_network_criteria":13,"unaccepted_joins":184},"  "))
+func require(ok:bool,label:String)->bool:
+ nchecks+=1
+ if not ok:failures.append(label);receipt();push_error(label);quit(1)
+ return ok
+func floor_ray(space:PhysicsDirectSpaceState3D,at:Vector3,exclude:Array[RID]=[])->Dictionary:
+ var q:=PhysicsRayQueryParameters3D.create(at+Vector3.UP*.02,at-Vector3.UP*.02);q.exclude=exclude;return space.intersect_ray(q)
+func walk(actor:CharacterBody3D,target:Vector3,label:String)->void:
+ var start:Vector3=actor.global_position;var key:=InputEventKey.new();key.keycode=KEY_W;key.physical_keycode=KEY_W;key.pressed=true;Input.parse_input_event(key.duplicate());Input.flush_buffered_events();var reached:=false;var used_frames:=0
+ for i in range(800):
+  var delta:=target-actor.global_position
+  if Vector2(delta.x,delta.z).length()<.09:reached=true;break
+  actor.rotation.y=atan2(-delta.x,-delta.z);await physics_frame;used_frames=i+1
+  if not require(absf(actor.global_position.y-97.5)<.12,"Original controller supported through source aisle "+label):return
+ key.pressed=false;Input.parse_input_event(key.duplicate());Input.flush_buffered_events();await frames(15)
+ legs.append({"case":label,"start":str(start),"target":str(target),"finish":str(actor.global_position),"reached":reached,"floor":actor.is_on_floor(),"frames":used_frames})
+ require(reached and actor.is_on_floor(),"Actual supported source aisle reached "+label)
+func contacts_exact(visual:Node3D)->bool:
+ var expected:Array[Vector3]=[]
+ for mesh:MeshInstance3D in visual.find_children("*","MeshInstance3D",true,false):
+  var contact:CollisionShape3D=mesh.get_node_or_null("StaticContact/SharedShape")
+  if contact!=null:
+   if not require(not contact.disabled and contact.shape.get_faces()==mesh.mesh.get_faces(),"Exact transparent source contact "+str(mesh.name)):return false
+  else:
+   var pose:Transform3D=mesh.transform
+   var ancestor:Node3D=mesh.get_parent()
+   while ancestor!=visual:
+    pose=ancestor.transform*pose;ancestor=ancestor.get_parent()
+   for vertex in mesh.mesh.get_faces():expected.append(pose*vertex)
+  if not require(mesh.mesh.surface_get_material(0)!=null,"Source material retained "+str(mesh.name)):return false
+ var combined:CollisionShape3D=visual.get_node("RoomStaticContacts/SharedRoomTriangles")
+ return require(not combined.disabled and combined.shape.get_faces()==PackedVector3Array(expected),"Exact grouped source contacts "+str(visual.name))
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(30)
+ var ship:Node3D=main.get_node("World360/Astraea");var house:Node3D=ship.get_node("ShipSpace/Districts/FamilyTerraceReceivingCandidate");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var space:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state;var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget");var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");var stream:Node=ship.get_node("ShipSystems/RemainingBatchStreaming")
+ var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/group2_family_childcare/COMPONENT_r001.json"));var old:Array=[];var old_contacts:Array=[];var supports:Array=[];var old_identity:Variant=house.get_meta("persistent_id");var old_units:Variant=house.get_meta("installed_guest_units")
+ if not require(house.get_node_or_null("Group2FamilyMealReceiving")!=null,"Verified meal fitout remains installed"):return
+ for mesh:MeshInstance3D in house.find_children("*","MeshInstance3D",true,false):old.append({"node":mesh,"mesh":mesh.mesh,"pose":mesh.global_transform,"local_pose":mesh.transform,"parent":mesh.get_parent(),"bounds":mesh.get_aabb(),"material":mesh.material_override})
+ for shape:CollisionShape3D in house.find_children("*","CollisionShape3D",true,false):old_contacts.append({"node":shape,"shape":shape.shape,"local_pose":shape.transform,"parent":shape.get_parent(),"disabled":shape.disabled})
+ retained_meshes=old.size();retained_contacts=old_contacts.size()
+ for x_fraction in [.1,.3,.5,.7,.9]:
+  for z_fraction in [.1,.3,.5,.7,.9]:
+   var at:=Vector3(lerpf(data.site_xz[0],data.site_xz[1],x_fraction),97.5,lerpf(data.site_xz[2],data.site_xz[3],z_fraction));var hit:Dictionary=floor_ray(space,at)
+   if not require(not hit.is_empty()and absf(hit.position.y-97.5)<.002,"Actual unchanged Family floor supplies trimmed site "+str(at)):return
+   supports.append({"at":at,"collider":hit.collider,"position":hit.position})
+ var addition:Node3D=load("res://scripts/group2_family_childcare/package.gd").build_on_current_receiver(ship)
+ for row in old:
+  var mesh:MeshInstance3D=row.node
+  if not require(is_instance_valid(mesh)and mesh.mesh==row.mesh and mesh.global_transform==row.pose and mesh.get_aabb()==row.bounds and mesh.material_override==row.material,"Original Family and meal mesh exact during construction "+str(mesh.name)):return
+ await frames(4)
+ for row in old:
+  var mesh:MeshInstance3D=row.node
+  if not require(is_instance_valid(mesh)and mesh.mesh==row.mesh and mesh.transform==row.local_pose and mesh.get_parent()==row.parent,"Original local geometry exact while live lift continues "+str(mesh.name)):return
+ for row in old_contacts:
+  var shape:CollisionShape3D=row.node
+  if not require(is_instance_valid(shape)and shape.shape==row.shape and shape.transform==row.local_pose and shape.get_parent()==row.parent and shape.disabled==row.disabled,"Every original Family/meal contact exact "+str(shape.name)):return
+ var excluded:Array[RID]=[]
+ for body:CollisionObject3D in addition.find_children("*","CollisionObject3D",true,false):excluded.append(body.get_rid())
+ for row in supports:
+  var hit:Dictionary=floor_ray(space,row.at,excluded)
+  if not require(not hit.is_empty()and hit.collider==row.collider and hit.position.distance_to(row.position)<.0001,"Exact original floor contact retained under child fitout "+str(row.at)):return
+ if not contacts_exact(addition.get_node("FAMILY_CHILDCARE_r001"))or not contacts_exact(addition.get_node("CareEntry_StaticClosedSource")):return
+ var closed:Node3D=addition.get_node("CareEntry_StaticClosedSource")
+ if not require(not closed.has_method("interact")and addition.get_node_or_null("CareEntry")==null,"Source fixture-only identity and entry backend remain unbound"):return
+ var gate_center:=Vector3(data.door.world_xyz[0],98.8,data.door.world_xyz[2]);var barrier:Dictionary=space.intersect_ray(PhysicsRayQueryParameters3D.create(gate_center+Vector3(0,0,.2),gate_center-Vector3(0,0,.2)))
+ if not require(not barrier.is_empty()and closed.is_ancestor_of(barrier.collider),"Exact raw closed wide fitting physically blocks ingress"):return
+ for row in data.lights:
+  var light:Light3D=addition.get_node(str(row.source_mesh)+"_PhysicalSource");var lens:MeshInstance3D=addition.get_node("FAMILY_CHILDCARE_r001").find_child(str(row.source_mesh),true,false)
+  if not require(lens!=null and (lens.global_transform*lens.get_aabb()).grow(.025).has_point(light.global_position)and budget.sources.count(light)==1,"Exact singly registered source light "+str(row.source_mesh)):return
+ var cases:Array=[{"name":"internal_source_aisles_no_entry_admission","start":Vector3(86,97.5,359),"goals":[Vector3(86,97.5,357.9),Vector3(83.6,97.5,357.9),Vector3(88.3,97.5,357.9),Vector3(86,97.5,359)]},{"name":"existing_external_family_approach","start":Vector3(86,97.5,364.5),"goals":[Vector3(86,97.5,362.5),Vector3(86,97.5,364.5)]}]
+ for setup in cases:
+  actor.global_position=setup.start+Vector3.UP*.03;actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);residency.prepare_position(actor.global_position);stream.prepare_position(actor.global_position);await frames(25)
+  if not require(actor.is_on_floor()and absf(actor.global_position.y-97.5)<.12,"Actual supported independent aisle setup "+str(setup.name)):return
+  for goal in setup.goals:
+   await walk(actor,goal,str(setup.name))
+   if not failures.is_empty():return
+ if not require(house.get_meta("persistent_id")==old_identity and house.get_meta("installed_guest_units")==old_units,"Existing Family identity and unit metadata untouched"):return
+ if not require(addition.get_meta("new_registered_rooms_beds_or_capacity")==0 and addition.get_meta("new_floor_owners")==0 and not addition.get_meta("guardian_supervision_admission_or_child_programme_accepted")and not addition.get_meta("entry_or_inside_egress_operation_admitted")and not addition.get_meta("source_fixture_id_bound_to_production"),"All child consent/supervision/operation and capacity holds explicit"):return
+ if not require(ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms").get_child_count()==303,"Compiler floor owners unchanged"):return
+ receipt();print("CHILDCARE_CURRENT_PHYSICAL_RECEIVING_PASS checks=",nchecks," retained_meshes=",retained_meshes," contacts=",retained_contacts);quit(0)

@@ -268,6 +268,8 @@ func _ready() -> void:
 	load("res://scripts/group2_garden_quiet/package.gd").build_on_current_receivers(self)
 	# Exact retained tabletop child fitout;food/staff services and dining designation stay held.
 	load("res://scripts/group2_family_meal/package.gd").build_on_current_receiver(self)
+	# Physical child fitout only;closed authored entry,guardian/admission/services remain held.
+	load("res://scripts/group2_family_childcare/package.gd").build_on_current_receiver(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
