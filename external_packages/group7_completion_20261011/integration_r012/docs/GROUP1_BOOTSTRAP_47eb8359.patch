@@ -1,0 +1,14 @@
+--- a/Game/scripts/ship.gd
++++ b/Game/scripts/ship.gd
+@@ -230,8 +230,11 @@
+ 	load("res://scripts/star_atlas_d17_standard823.gd").build(self)
+ 	load("res://scripts/star_atlas_d17_standard_batch.gd").build(self)
+ 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/central_homes_adoption.gd).build(self)")
+ 	load("res://scripts/atrium_gallery_receiving.gd").build(self)
++	# Sole-owner Group7 boundary: selected JSON and exact runtime files must be admitted first.
++	if OS.get_environment("ASTRAEA_GROUP7_ENABLE") == "1":
++		load("res://scripts/group7_completion.gd").build(self)
+ 	lighting_budget.configure(self,player)
+ 
+ func surface(role: String, color: Color) -> StandardMaterial3D:
+ 	var material := StandardMaterial3D.new()
