@@ -15,6 +15,7 @@ func _ready() -> void:
 		var thermal_lights:Array[Light3D]=[]
 		for light:Light3D in thermal_support.find_children("*","Light3D",true,false):thermal_lights.append(light)
 		load("res://scripts/receiving_source_lights.gd").register(thermal_lights,ship)
+	load("res://scripts/group6_completion/thermal_integration.gd").finish(ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/received_sections.gd).build(ship)")
 	load("res://scripts/listening_salon_candidate.gd").build(ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/listening_salon_candidate.gd).build(ship)")

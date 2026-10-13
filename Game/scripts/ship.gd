@@ -127,6 +127,7 @@ func _ready() -> void:
 	load("res://scripts/group8/arrivals_service.gd").build(self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/arrivals_fusion.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/star_atlas.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/group2_vip_dry_club/package.gd").build_on_current_receiver($ShipSpace/Districts/D15_D17_StarAtlasUpper_WIP)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/star_atlas.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/star_atlas_fitted_receiving.gd").build($ShipSpace/Districts/D12_D14_StarAtlas_WIP,self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/star_atlas_fitted_receiving.gd).build($ShipSpace/Districts/D12_D14_StarAtlas_WIP,self)")
@@ -149,6 +150,7 @@ func _ready() -> void:
 	load("res://scripts/theater_stair_walking_contacts.gd").build($ShipSpace/Districts)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/theater_stair_walking_contacts.gd).build($ShipSpace/Districts)")
 	load("res://scripts/medical_welcome.gd").build($ShipSpace/Districts,self)
+	load("res://scripts/group8/medical_privacy.gd").build(self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/medical_welcome.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/d04_port_forward_receiving.gd").build(self)
 	load("res://scripts/d04_port_forward_homes_first.gd").build(self)
@@ -233,6 +235,9 @@ func _ready() -> void:
 	load("res://scripts/star_atlas_d17_standard_batch.gd").build(self)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/central_homes_adoption.gd).build(self)")
 	load("res://scripts/atrium_gallery_receiving.gd").build(self)
+	# Sole-owner Group7 boundary: selected JSON and exact runtime files must be admitted first.
+	if OS.get_environment("ASTRAEA_GROUP7_ENABLE") == "1":
+		load("res://scripts/group7_completion.gd").build(self)
 	lighting_budget.configure(self,player)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:

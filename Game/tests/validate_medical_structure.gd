@@ -150,7 +150,12 @@ func source_static_leaf(name: String) -> bool:
 	if not require(node!=null and node.get_script()==null,"Static source-open leaf required: "+name): return false
 	var source_scope: Dictionary=node.get_meta("extras",{})
 	if not require(str(source_scope.get("proposed_state",""))=="source_open_inward" and not bool(source_scope.get("operational_acceptance",true)),"Leaf operation scope changed: "+name): return false
-	if not require(node.get_meta("source_open_static",false)==true and node.get_meta("operation_enabled",true)==false and str(node.get_meta("programme_child",""))==str(source_scope.get("programme_child","")),"Explicit runtime static leaf scope/child identity changed: "+name): return false
+	var static_scope: bool=node.get_meta("source_open_static",false)==true and node.get_meta("operation_enabled",true)==false
+	var fitted_scope: bool=false
+	if not static_scope:
+		if not require(FileAccess.get_sha256("res://tests/group8/medical_privacy_successor_guard.gd")=="cc10243828a2d167ae516b350387a3b7b31dff17807b1a611035daa7ad37c179" and FileAccess.get_sha256("res://data/architecture/group8/MEDICAL_PRIVACY_SUCCESSOR_PROOF.json")=="66991f0e183c4ec60a9ce9d921e7f3c3d90b0375e0c9d02b244e75323d3b752b","Exact optional medical privacy successor guard/proof required"): return false
+		fitted_scope=load("res://tests/group8/medical_privacy_successor_guard.gd").validate_fitted_leaf(node)
+	if not require((static_scope or fitted_scope) and str(node.get_meta("programme_child",""))==str(source_scope.get("programme_child","")),"Exact static or pinned fitted leaf scope/child identity required: "+name): return false
 	var contacts: Array=node.find_children("*","CollisionShape3D",true,false)
 	if not require(contacts.size()==1,"Static leaf must retain one faithful contact: "+name): return false
 	var contact: CollisionShape3D=contacts[0] as CollisionShape3D
@@ -281,6 +286,12 @@ func verify_connected_triage() -> bool:
 	# Staff closure stays capped. Never turn a sign into an operational route.
 	if not architecture_hit(Vector3(-42.3,22,-458),Vector3(-41.6,22,-458),"west unconnected staff cap"): return false
 	metrics["triage_room_ids"]=checked_ids.keys();metrics["source_room_mesh_bounds"]=mesh_count
-	metrics["static_source_open_privacy_leaves"]=16;metrics["triage_clear_aperture_rays"]=clear
+	var static_count: int=0;var fitted_count: int=0
+	for room in triage_evidence.rooms:
+		for name in room.door_meshes:
+			var leaf: Node=exact_node(built,str(name))
+			if leaf.get_meta("source_open_static",false): static_count+=1
+			else: fitted_count+=1
+	metrics["static_source_open_privacy_leaves"]=static_count;metrics["pinned_fitted_privacy_leaves"]=fitted_count;metrics["triage_clear_aperture_rays"]=clear
 	metrics["triage_housed_sources"]=23;metrics["door_operation_accepted"]=false
 	return true
