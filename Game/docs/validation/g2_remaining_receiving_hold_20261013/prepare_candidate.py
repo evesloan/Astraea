@@ -1,0 +1,32 @@
+from pathlib import Path
+import json,hashlib
+P=Path(__file__).parent;T=P/'import/Game';sha=lambda b:hashlib.sha256(b).hexdigest();plan=json.loads((P/'RECEIVING_FRAME_PLAN.json').read_text());root=Path('/workspace/astraea-protected-integration-20261012/Game');model='assets/group2_central_receiving_20261013/CENTRAL_ADJUNCT_RECEIVING_FRAME.glb';care=json.loads((T/'data/group2_care_programmes/FITTINGS_r001.json').read_text());row=next(x for x in care['rows']if x['key']=='starboard_central_upper_house');lights=next(x for x in json.loads((T/'data/group2_completion/LIGHTING_ADDENDUM.json').read_text())['rows']if x['key']==row['key'])['fixtures'];pins={model:sha((T/model).read_bytes()),'assets/group2_completion/starboard_central_upper_house.glb':row['source_runtime_sha256'],'assets/group2_care_programmes/CARE_starboard_central_upper_house_r001.glb':row['export_sha256']};plan.update(model_pins=pins,fixtures=lights,receiver_record=json.loads((P/'CURRENT_D17_RECEIVER_REGION.json').read_text()),native_frame_sha256=sha((P/'native/CENTRAL_ADJUNCT_RECEIVING_FRAME.blend').read_bytes()));p=T/'data/group2_central_receiving_20261013/RECEIVING.json';p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(plan,indent=2)+'\n');(T/'project.godot').write_text('[application]\nconfig/name="Central adjunct exact physical source import"\n[rendering]\nrenderer/rendering_method="gl_compatibility"\nrenderer/rendering_method.mobile="gl_compatibility"\n')
+code='''extends RefCounted
+static func v(a:Array)->Vector3:return Vector3(a[0],a[1],a[2])
+static func build(ship:Node3D)->Node3D:
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/group2_central_receiving_20261013/RECEIVING.json"))
+ assert(ship.find_child("Group2CentralSupportedAdjunct",true,false)==null)
+ for path in p.model_pins:
+  assert(FileAccess.get_sha256("res://"+str(path))==str(p.model_pins[path]));assert(load("res://"+str(path)) is PackedScene)
+ var definition:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"));var record:Dictionary={}
+ for r in definition.regions:
+  if r.id==p.receiver_region:record=r
+ assert(record==p.receiver_record)
+ var space:=ship.get_world_3d().direct_space_state
+ # A receiving candidate must not replace any original contact. Exact originalD17slab intersections are declared bearings only.
+ for part in p.parts:
+  if part.kind not in ["frame_bearing_on_original_D17","frame_crossmember"]:continue
+  var a:Array=part.bounds_xyz;var q:=PhysicsShapeQueryParameters3D.new();var shape:=BoxShape3D.new();shape.size=Vector3(a[1]-a[0],a[3]-a[2],a[5]-a[4]);q.shape=shape;q.margin=.0001;q.transform=Transform3D(Basis.IDENTITY,Vector3((a[0]+a[1])/2.,(a[2]+a[3])/2.,(a[4]+a[5])/2.))
+  for hit in space.intersect_shape(q,128):assert(str(hit.collider.get_path()).contains("CompiledStructuralFloors_NotFinishedRooms/D17_starboard_house_extension/"),"Undeclared receiving frame clash: "+str(part.name)+" "+str(hit.collider.get_path()))
+ var n:=Node3D.new();n.name="Group2CentralSupportedAdjunct";ship.get_node("ShipSpace").add_child(n);n.set_meta("default_main_adoption",false);n.set_meta("capacity_migrated",false);n.set_meta("installed_acceptance",false);n.set_meta("operating_private_admission_or_service",false);n.set_meta("primary_structure_capacity_or_lower_section_accepted",false)
+ var frame:Node3D=(load("res://assets/group2_central_receiving_20261013/CENTRAL_ADJUNCT_RECEIVING_FRAME.glb")as PackedScene).instantiate();frame.name="ReceivingFrame";n.add_child(frame);load("res://scripts/static_contact_cache.gd").attach_group(frame,frame.find_children("*","MeshInstance3D",true,false))
+ var section:=Node3D.new();section.name="StarboardCentralSourceAdjunct";section.set_meta("group2_source_key",p.source_key);section.set_meta("installed_acceptance",false);section.set_meta("capacity_migrated",false);n.add_child(section)
+ var visual:Node3D=(load("res://assets/group2_completion/starboard_central_upper_house.glb")as PackedScene).instantiate();visual.name="RetainedSource";section.add_child(visual);load("res://scripts/static_contact_cache.gd").attach_group(visual,visual.find_children("*","MeshInstance3D",true,false))
+ load("res://scripts/group2_care_programmes/package.gd").build(section,p.source_key,true)
+ var lights:Array[Light3D]=[]
+ for row in p.fixtures:
+  var lens:MeshInstance3D=visual.find_child(str(row.source_fixture_part),true,false);assert(lens!=null and (lens.global_transform*lens.get_aabb()).grow(.05).has_point(v(row.world_xyz)))
+  var l:=OmniLight3D.new();l.name="SourceLight_"+str(row.name);n.add_child(l);l.position=v(row.world_xyz);l.light_color=Color(row.color[0],row.color[1],row.color[2]);l.light_energy=1.;l.omni_range=10.;l.visible=false;l.shadow_enabled=false;lights.append(l)
+ load("res://scripts/receiving_source_lights.gd").register(lights,ship)
+ return n
+''';q=T/'scripts/group2_central_receiving_20261013/package.gd';q.parent.mkdir(parents=True,exist_ok=True);q.write_text(code);print('Three-model boundedreceiving candidate prepared;frameclashes reject')
