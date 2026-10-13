@@ -58,7 +58,12 @@ static func create_candidate_vehicle(parent:Node3D,at:Vector3)->AnimatableBody3D
  var c:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(MODELS+"VEHICLE_COLLISION_PROPOSAL.json"))
  var modified:Dictionary={}
  for key:String in c.modified_members:modified[key.validate_node_name()]=c.modified_members[key]
+ var policies:Dictionary={}
+ for key:String in item.policies:
+  var name:String=key.validate_node_name();assert(not policies.has(name));policies[name]=item.policies[key]
  for mesh:MeshInstance3D in visual.find_children("*","MeshInstance3D",true,false):
+  assert(policies.has(str(mesh.name)),"Every source vehicle member requires its exact contact policy")
+  if policies[str(mesh.name)]=="no_collision_detail":continue
   if modified.has(str(mesh.name)):
    for cell in modified[str(mesh.name)]:
     var shape:=ConvexPolygonShape3D.new();var points:=PackedVector3Array()
@@ -126,8 +131,9 @@ func request_boarding(station:String)->bool:
  bridge.dock_authorized=true;return bridge.request_deploy()
 func request_secure()->bool:
  if phase!="boarding":return false
- phase="closing";station_gates[selected_station].request_close()
- for gate in car_gates.values():gate.request_close()
+ # The original actor/cart must be allowed to finish crossing the physical bridge.
+ # Departure remains forbidden by phase; defer both portal commands until it clears.
+ phase="closing"
  return true
 func unloaded_clear_to_depart()->bool:
  if phase!="secured":return false
@@ -150,6 +156,9 @@ func _physics_process(delta:float)->void:
   var side:="PORT" if st.yaw==0.0 else "STARBOARD"
   car_gates[side].cabin_present_and_stopped=true;car_gates[side].request_open();phase="boarding"
  elif phase=="closing":
+  if bridges[selected_station].threshold_occupied():return
+  station_gates[selected_station].request_close()
+  for gate in car_gates.values():gate.request_close()
   if not station_gates[selected_station].is_closed_and_clear():return
   for gate in car_gates.values():
    if not gate.is_closed_and_clear():return

@@ -87,7 +87,12 @@ func _ready()->void:
  initialize_bridge_physics(safety)
  initialize_vehicle_portal_contacts()
  assert(FileAccess.get_sha256(plan.pose_file)==plan.pose_sha256);poses=JSON.parse_string(FileAccess.get_file_as_string(plan.pose_file))
- cursor=plan.safe_body_cursor_range_m[0];target=cursor;process_physics_priority=-30
+ cursor=float(vehicle.get_meta("group4_initial_source_cursor",plan.safe_body_cursor_range_m[0]))
+ assert(cursor>=float(plan.safe_body_cursor_range_m[0])and cursor<=float(plan.safe_body_cursor_range_m[1]),"Initial source cursor must remain inside the exact retained safe range")
+ if vehicle.has_meta("group4_initial_source_cursor"):
+  var initial_pose:Array=pose_at(cursor)
+  assert(vehicle.global_position.distance_to(Vector3(initial_pose[1],56.1,initial_pose[2]))<.001,"Prebound initial cursor must match the newly assembled physical car before any pose write")
+ target=cursor;process_physics_priority=-30
  for item in plan.models:
   var path:String=plan.model_root+item.file;assert(FileAccess.get_sha256(path)==item.sha256)
   if "end_buffers" in item.file:

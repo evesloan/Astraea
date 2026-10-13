@@ -17,6 +17,7 @@ static func before_budget(ship:Node3D)->Node3D:
 	var safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(assembly,assembly,body)
 	var cart:RigidBody3D=ship.get_node("ShipSpace/PersistentActors/CustodialCart")
 	var restraint:Node3D=load("res://scripts/group4_cart_restraint.gd").build(assembly,body,safety,cart)
+	body.set_meta("group4_initial_source_cursor",395.3525674298981)
 	var motor:Node3D=load("res://scripts/group4_loaded_tram_actuator.gd").attach_loaded(assembly,body,safety,restraint)
 	assert(safety.phase=="secured" and restraint.phase=="unlocked" and not motor.moving)
 	# Empty newly assembled source vehicle only; original actor/cart/products are never moved.
