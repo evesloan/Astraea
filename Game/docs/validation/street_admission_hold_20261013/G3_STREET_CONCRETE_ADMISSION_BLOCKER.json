@@ -1,0 +1,126 @@
+{
+  "status": "BLOCKED_BEFORE_STREET_ADOPTION_EXISTING_NATIVE_FLOOR_OVERLAP",
+  "created_utc": "2026-10-13T15:40:08.965178+00:00",
+  "verified_ship_base": "54c491f9ef1f13e55970c93218aca74e85c629ac",
+  "source_revision": "6f2d0da67429ea940edf7011348ec08a346f37db",
+  "candidate_source_model_pins": {
+    "AST-STF-G3-058.glb": "e46e0abdf921ce6842a1bd4884efeecc58e00353a804f877166aca9d8a40ff01",
+    "AST-STF-G3-056.glb": "c669b1fc7c20e4908cc2e2059a5111c0d1210830c66046166343341281ae5410",
+    "AST-STF-G3-057.glb": "716ee664f8cbdc0c3cb13574a388ac79626651bfd81fe96b6724941c1decb111",
+    "AST-STF-G3-060.glb": "77ded76917b7f0a89ba568932c09ff9b8c2741b961793dd6df4419ed02f4b459",
+    "AST-STF-G3-059.glb": "e0dd561102ac9aa14fecb2d09f9319b837c8014312d945e26789370f45d17beb"
+  },
+  "source_missing_only_area_m2": 9135.552474595705,
+  "verified_overlap_with_current_native_D04_floors_m2": 49.81918448000579,
+  "current_floor_sources": [
+    {
+      "source_file": "D04_STARBOARD_FULL_COMMONS_r002.glb",
+      "source_sha256": "00bc16d2fcd99d6ffcfef221eb0aa4fbb854ed4a896ace0ea9717f44092415fa",
+      "mesh": "D04SC_StaffLowerBridgeFloor",
+      "floor_y": 12.0,
+      "top_triangles": 6
+    },
+    {
+      "source_file": "D04_STARBOARD_AFT_CO_r003.glb",
+      "source_sha256": "829eae54d663f60528ae117995333de453c92e4f2454f89adc8a98b3584a8c1a",
+      "mesh": "SAC_LowerSharedFloor",
+      "floor_y": 12.0,
+      "top_triangles": 5
+    },
+    {
+      "source_file": "D04_PORT_AFT_CO_r001.glb",
+      "source_sha256": "79091d7797af9cfbbf28ad85fe476ca936d4c74f67b7494520569109d483b3eb",
+      "mesh": "PACO_D04SC_StaffLowerBridgeFloor",
+      "floor_y": 12.0,
+      "top_triangles": 6
+    }
+  ],
+  "first_exact_witness": {
+    "ancestry": [
+      {
+        "name": "StaticContact",
+        "scene_file": ""
+      },
+      {
+        "name": "D04SC_StaffLowerBridgeFloor",
+        "scene_file": ""
+      },
+      {
+        "name": "D04_STARBOARD_FULL_COMMONS_r002",
+        "scene_file": "res://assets/models/D04_STARBOARD_FULL_COMMONS_r002.glb"
+      },
+      {
+        "name": "D04StarboardFullCommons",
+        "scene_file": ""
+      },
+      {
+        "name": "Districts",
+        "scene_file": ""
+      },
+      {
+        "name": "ShipSpace",
+        "scene_file": ""
+      },
+      {
+        "name": "Astraea",
+        "scene_file": "res://scenes/ship.tscn"
+      },
+      {
+        "name": "World360",
+        "scene_file": ""
+      },
+      {
+        "name": "AstraeaPresentation",
+        "scene_file": "res://scenes/main.tscn"
+      },
+      {
+        "name": "root",
+        "scene_file": ""
+      }
+    ],
+    "collider_path": "/root/AstraeaPresentation/World360/Astraea/ShipSpace/Districts/D04StarboardFullCommons/D04_STARBOARD_FULL_COMMONS_r002/D04SC_StaffLowerBridgeFloor/StaticContact",
+    "hit_position": [
+      57.6466674804688,
+      12.0,
+      -380.426666259766
+    ],
+    "mesh_name": "D04SC_StaffLowerBridgeFloor",
+    "mesh_world_max": [
+      69.3000030517578,
+      12.0,
+      -367.799987792969
+    ],
+    "mesh_world_min": [
+      4.0,
+      11.7600002288818,
+      -383.399993896484
+    ],
+    "missing_floor_part": "RemainingD03StreetMissingFloor_2",
+    "normal": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "point": [
+      57.6466666666667,
+      12.0,
+      -380.426666333333
+    ],
+    "status": "PASS_BOUNDED_NATIVE_CONTACT_IDENTIFICATION",
+    "street_assembly_adopted": false,
+    "triangle": 0.0,
+    "current_contact_source_path": "Game/assets/models/D04_STARBOARD_FULL_COMMONS_r002.glb",
+    "current_contact_source_sha256": "00bc16d2fcd99d6ffcfef221eb0aa4fbb854ed4a896ace0ea9717f44092415fa",
+    "normal_is_upward_walking_surface": true,
+    "requires_missing_only_floor_predecessor_reconciliation": true
+  },
+  "reason": "Retained physical floor survey omitted verified unchanged D04 lower walking floors;candidate floor isnot missing-only against currentnativegeometry. Six wallcrossing derivatives preserve these floorowners andcannot remove the overlap.",
+  "source_network_failed_criteria_preserved": 13,
+  "whole_operational_network_accepted": false,
+  "candidate_adopted": false,
+  "existing_floor_or_contact_disabled_or_overwritten": false,
+  "operational_identities_created": false,
+  "next_required_work": "Create a separately labelled,editable consumer receiving-floor successor fromexact originalstreet native andverified current D04 floortriangles;preserveoriginalGLB/native andall originalfloorowners;reject any furtherunexplained overlap;reimport thatowned successor only and rerunfocused changed-floor/contact receiving beforeadoption.",
+  "tram_redesign_and_unsafe_operations": "UNAPPROVED_UNIMPLEMENTED_DISABLED",
+  "upper_theater_doors": "INACTIVE_PRESERVED"
+}
