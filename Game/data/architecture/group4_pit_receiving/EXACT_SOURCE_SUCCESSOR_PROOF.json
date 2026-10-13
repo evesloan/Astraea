@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "scope": "Exact source013 three-owner receiving mutation;no original criterion or physical triangle check waived",
+  "before_path": "res://data/architecture/group4_pit_receiving/PRE_PIT_STRUCTURAL_303.json",
+  "before_sha256": "e7cd0cc1c3892a99cf75f2dab4c852f3e1c1864a13b81f828e2a2f93cf239e92",
+  "patch_path": "res://data/architecture/group4_pit_receiving/SUPPLIED_OWNER_PATCH013.json",
+  "patch_sha256": "230fa693168dc5ae6d1320a8d9a78cdc8dac921ca9a13b809e48e710f9ca5cc6",
+  "current_compiled_sha256": "cf82a8439d40401deba4200dc79ea8f75565fd0efc9acb0edd98c513202f7f11",
+  "replaced_owners": 3,
+  "total_removed_m2": 24.8,
+  "original_D06_guard_normalized_sha256": "2b285c89ad6dfe989eec9307b1256d6500b6826ec8e0f26918a69f8fff63c1df",
+  "source_guard_extension_exact_inverse": {
+    "before": " for pair in [[layout,prior_layout,compiler.new_layout_records],[current_compiled,prior_compiled,compiler.new_expected_compiled_records]]:\n",
+    "after": " # Authenticate the exact later three-owner pit transform before checking the complete D06 predecessor.\n var pit_guard_path:=\"res://tests/group4_exact_pit_successor_guard.gd\"\n assert(FileAccess.get_sha256(pit_guard_path)==str(proof.group4_exact_pit_successor.guard_sha256))\n var pre_pit_compiled:Dictionary=load(pit_guard_path).validated_before_pits(current_compiled)\n for pair in [[layout,prior_layout,compiler.new_layout_records],[pre_pit_compiled,prior_compiled,compiler.new_expected_compiled_records]]:\n",
+    "count": 1
+  },
+  "medical_slab_resolution_exact_inverse": {
+    "before": "static func _botanical_validate_slab(owner: Node3D, record: Dictionary) -> void:\n",
+    "after": "static func _botanical_validate_slab(owner: Node3D, record: Dictionary) -> void:\n\t# Only the three exact later pit owners use their sealed actual successor records.\n\trecord=load(\"res://tests/group4_exact_pit_successor_guard.gd\").actual_slab_record(record)\n",
+    "count": 1
+  },
+  "physical_admission_pending": true
+}

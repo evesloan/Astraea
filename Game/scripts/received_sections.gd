@@ -17,5 +17,7 @@ static func build(ship: Node3D) -> Node3D:
 		room.set_meta("persistent_id", str(section.programme_key))
 		room.set_meta("source_archive_sha256", str(section.source_archive_sha256))
 		room.set_meta("operational_acceptance", false)
+		if ["D10_directory_06","D10_directory_10"].has(str(section.programme_key)):
+			load("res://scripts/group8/dining_fixture_adaptation.gd").build(ship,room)
 	return root
 

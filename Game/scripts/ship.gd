@@ -238,7 +238,9 @@ func _ready() -> void:
 	# Sole-owner Group7 boundary: selected JSON and exact runtime files must be admitted first.
 	if OS.get_environment("ASTRAEA_GROUP7_ENABLE") == "1":
 		load("res://scripts/group7_completion.gd").build(self)
+	load("res://scripts/group4_integrated_receiving.gd").before_budget(self)
 	lighting_budget.configure(self,player)
+	load("res://scripts/group4_integrated_receiving.gd").after_budget(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

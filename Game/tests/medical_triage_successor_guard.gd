@@ -268,6 +268,8 @@ static func _botanical_top(triangles: Array, y: float) -> PackedVector3Array:
 	return result
 
 static func _botanical_validate_slab(owner: Node3D, record: Dictionary) -> void:
+	# Only the three exact later pit owners use their sealed actual successor records.
+	record=load("res://tests/group4_exact_pit_successor_guard.gd").actual_slab_record(record)
 	assert(owner.name==str(record.id) and owner.get_meta("region_id","")==str(record.id))
 	assert(owner.global_transform==Transform3D.IDENTITY,"Compiled slab transform changed")
 	var y: float=float(record.floor_y)

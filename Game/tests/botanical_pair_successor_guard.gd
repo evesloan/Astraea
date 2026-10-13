@@ -3,7 +3,7 @@ extends RefCounted
 # 300-owner state to D12's unchanged four-owner projection down to 296.
 # This does not certify runtime geometry or operational/design acceptance by itself.
 const PROOF := "res://data/architecture/packages/botanical_pair_runtime/RUNTIME_PROOF.json"
-const PROOF_SHA := "e076f8f8ac8aa6433d75d1670bc5b4d4fa18815bc5210f59377097a0a9525774"
+const PROOF_SHA := "2d6a451b702e3b2bea79cac1f40df71246ffcce69948fbddd094f0498151fde4"
 static var checked := false
 static var checking := false
 static var proof:Dictionary={}
@@ -42,7 +42,11 @@ static func ensure()->void:
  var prior_layout:Dictionary=JSON.parse_string(str(old_text["data/spatial_layout.json"]))
  current_compiled=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
  prior_compiled=JSON.parse_string(str(old_text["data/generated/structural_meshes.json"]))
- for pair in [[layout,prior_layout,compiler.new_layout_records],[current_compiled,prior_compiled,compiler.new_expected_compiled_records]]:
+ # Authenticate the exact later three-owner pit transform before checking the complete D06 predecessor.
+ var pit_guard_path:="res://tests/group4_exact_pit_successor_guard.gd"
+ assert(FileAccess.get_sha256(pit_guard_path)==str(proof.group4_exact_pit_successor.guard_sha256))
+ var pre_pit_compiled:Dictionary=load(pit_guard_path).validated_before_pits(current_compiled)
+ for pair in [[layout,prior_layout,compiler.new_layout_records],[pre_pit_compiled,prior_compiled,compiler.new_expected_compiled_records]]:
   assert(pair[2].size()==3)
   var expected:Array=pair[1].regions.duplicate(true);expected.append_array(pair[2])
   assert(pair[0].regions==expected,"All prior complete records/order and exactly three D06 additions required")
