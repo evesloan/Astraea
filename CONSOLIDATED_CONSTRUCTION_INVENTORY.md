@@ -1,5 +1,202 @@
 # Current construction inventory
 
+Generated from CONSOLIDATED_CONSTRUCTION_INVENTORY.json at the central adjunct/care physical checkpoint. JSON remains authoritative. Source retention, physical installation, operational acceptance and release acceptance remain distinct. All eight groups remain unfinished; the whole-ship build is unaccepted.
+
+G3 missing physical factory callers: 0. G2 wholly source-only packages: 3; partially installed packages: 2; incompletely installed packages: 5. Remaining: 80 completion homes, five adjuncts and five care kits; private/wet/pit packages remain uninstalled. Original 13 G3 network criteria and 184 joins remain held; G5 retains 84 unresolved address joins. Clinical operational, streaming and pool/RoyaltyPier support-span holds remain unchanged. Original movement and all 53 retained payloads are preserved. Tram redesign remains unapproved and disabled.
+
+## Group 1
+
+Retained source: `f3b0ada375ad6014445f634da138b32a34070a3e`.
+
+Installed and checked: Shared retained ship,Crew/Botanical repairs,nine D17 standards and gateway,original receiving rooms
+
+Uninstalled or unaccepted: G1 unfinished household/court receiving and13.2m/23m structural transfer,positive private consent,whole-ship operations
+
+Physical omissions or conditions:
+
+- Unfinished household/court receiving and documented13.2m/23m transfer interfaces.
+
+Controls and acceptance holds:
+
+- Positive private consent,whole-house services/save/body/engineering remain unaccepted.
+
+Owner: Group1 with Group7 and respective source owners
+
+Next: Resolve exact supported receivers and the documented structural/admission interfaces;retain original programmes and room IDs
+
+## Group 2
+
+Retained source: `ffaf177df8fa460e3b098819604977cad8fbbdd5`.
+
+Installed and checked: 12 existing Family D16 meeting/group chairs rotated inward;670 current-main checks;positions/assets/scales and145 other instances preserved;no new seats/capacity. Earlier source packages are tracked individually;Star Atlas r002 dry kit under actual D17_directory_03,8 original-controller legs,4 ordinary operations,one occupied guard;no membership/seat credit;exact r002 Family growing equipment and Quiet Grove nook now installed on36.45m2 existing nativefloor footprint;two models/two sources,no newfloor orcapacity. Actual populated receiver preservation andoriginal-controller approaches passed;agricultural/service/acoustic/programme acceptance held.;Family meal r001 physical child fitout now installed onthree exact existing tables:contained ready receivers/usedreturns/twelve settings;3998 currentreceivingchecks/6 original-controller approachlegs/1390 existing Family meshes preserved. Exact current importedtablepreimages verified against retainedsource topology/compression;no oldreceiver import orgeometrychange. Zero newchair/floor/place/room/capacity.;childcare r001 physical enclosure/fittings installed on57.66m2 exact existingFamily floor:one native model,four source lamps,four proposed day-rest supports andoriginal staticclosed wide fitting. Current receivingchecks/source-controller internal/external geometrylegs preserveexisting Family/meal meshes andall contactresources. No entry/egress backend,fixtureIDproductionbinding,newfloor/room/bed/capacity orchildprogramme/admission/supervision/services accepted.;one starboardcentral sourceadjunct andone cappedcarekit physically installed on80m2exactsourcefloor plus39.654m2guardedwesternconnection.14actualpositive slab/fascia bearings,104newframeparts and1:12thresholdramp fit existing25mmfascia. Three sourceguard surfaces receivebounded1.8mthreshold successor;originalmesh/body/node/material identities andoutsideguard surfaces retained,allD16/D17profilewalls andfascia/slab unchanged.12original-controller legs connectwesterncirculation toexactcarecounter approach andback. Two retainedsource lamps singlyregistered. No newroom/unit/berth/programme,privatepermission,careoperation orstructuralcapacity credit.
+
+Uninstalled or unaccepted: Three packages remain whollysource-only;completion andcare eachpartiallyphysicallyinstalled:1of6adjuncts/0of80homes and1of6carekits. Remaining80homes,5adjuncts,5carekits,5privatecabins/15gates,5terraces/550furniture translations andunplacedwetkits remainuninstalled. All structuralcapacity/lowersection,privateconsent/insideegress,clean/used/fluid/staff/care/admission andprotected790/wetroof/shaft holds remain. Meal tableZ348/historicprogrammeallocation andchildsupervision/programme holds unchanged.
+
+Physical omissions or conditions:
+
+- group2_private_vertical:five cabins/15gates lack admitted support and private identities.
+- group2_pit_perimeters:five terraces/550 translations not installed.
+- group2_vip_pavilions:r003 wet kits remain unplaced;952m2 roof/shaft/bearing need remains at each site.
+- group2_completion:80homes and5remainingadjuncts lackadmittedreceivers;onlystarboardcentraladjunct physicallyinstalled.
+- group2_care_programmes:5remainingcounterkits uninstalled;all6clean/used/fluid/staff/careprogramme/admission joins held.
+
+Controls and acceptance holds:
+
+- Agricultural services/crops/nutrients and quiet acoustic/programme acceptance inactive.
+- Luxury/wet/private/child/food/admission/berth allocation not inferred from physical fitouts.
+- Childcare:guardianhandoff,supervision,age/daycapacity,insideegress,staff/clean-used/hygiene andproductionchildmapping remain held. Source construction controller IDnot bound;entry remains staticclosed. Four physical dayrestsupports are notovernight beds orcapacity.
+- Centraladjunct/care:sourceworkcounter/cappedports physicallyfitted;no fluid/food/hygiene/stock/careprogramme/privateadmission acceptance. Geometricbearings andbodyroute do notcertify structuralcapacity/lowerneighbour fitting,broadbody/cart orfinalart. Sourceguardthreshold remainsphysicalonly;no operatinggate identities.
+
+Owner: Group1 receiving,Group7 roof/bearing/exposure,Group3 service,Group8 programme/body coordination
+
+Next: Construct nextsupportedadjunct/care receiver or80home/private floor/pit package, preserving guestallocations andexistingprimaryprofiles. Retain all private/child/meal/clinical/service/streaming/engineering/network/wet/790 holds.
+
+## Group 3
+
+Retained source: `e89dda69c3c94f6337107e08ccb37651d6db3de9`.
+
+Installed and checked: Existing original crew/service/medical sections;exact aft source repair retained in shared branch;D03 exact precinct receiving root now installed:6 native models,1542.490149m2 source-owned missing-only floor,33 inert-before-registration lamps,three closed service gates;512 current-scene checks with232 empty-before/supported-after floor witnesses and2 original-player legs. Installed combined startup057 passes;zero registered berths or compiler owner additions.;exact labelled bank now installed as physical unassigned architecture:3 native models,2589.124004m2 source-owned missing-only floor,48 owned sources and16 closed authored gates.424 current-scene checks,158 empty-before/supported-after floor witnesses,16 supported external stances refuse unknown permission,one supported inside-egress API and2 original-controller street legs. Combined startup060 passes;zero new compiler owners or registered berths.;five D03 service receiver physical package now installed:4 exact native models,748.253348m2 source-owned missing-only floor,eight native fixture sources,original static closed source leaves.170 focused current-scene checks,47 empty-before/supported-after floor witnesses,all eight emitter/native-face distances15mm and10 original-controller legs across5 independent supported actor setup cases;source authentication065 and combined startup066 pass. All60 closed source-gate mesh contacts preserve exact source triangles. Zero new compiler owner or capacity credit.;exact aft riser pair physical source now installed:4models,1766.912m2 native missing-only floor across34 floorparts,34 originalfixture sources.525 currentreceiving checks,204 empty-before/supported-after floorwitnesses and4 original-controller lobby legs;all17 canonicaldatums match currentdesign. Sourceauthentication074 andcombinedstartup075 pass. No operatinglift/gate backend,authoritativeidentity,population/berth orengineeringcredit.;exact port2 clinical physical receiving now installed:7models,1435.58m2 native missing-only floor across17parts,26 originalfixture sources.400 currentreceivingchecks,126 empty-before/supported-after nativefloorwitnesses and12original-controller legs;sourceauthentication079 andcombinedstartup080 pass. Exact27 omitted parts affect onlythe newlycreated ownriser derivative;originalD04riser3 untouched. No lift,crossinggate,clinicalprotocol,identity,population/berth orengineeringcredit.;D03port2 current-spine physical connection now installed:four pinned wall cells replacedbyexactowner derivative,270unrelatedlive cells/contactresources/poses preserved,148.216m2 source-owned nativefloor,fourfixtures.578receivingchecks/four original-controller corridorlegs;authentication083 andcombinedstartup084 pass. Bothsourcegates remain closed/non-operating,zero newcompilerowners orcapacitycredit.;exact fore-starboard physical receiving now installed:7models,1826.992m2 native missing-only floor across17parts,34 sourcefixtures.447 currentreceivingchecks/152nativefloorwitnesses/10original-controller legs;authentication088 andcombinedstartup089 pass. Lift,gates,dispatch andclinicalprotocol remain inactive/unassigned;originalcart neverrelocated orduplicated. No newcompilerowners orcapacitycredit.;corrected D03 remaining streets installed with separate retained 058 native successor:18 exact original parts,9085.733289m2 proposed floor,49.81918448m2 duplicate removed;3 original D04 floors unchanged.922 receiving/changed-join comparison checks,8 original-controller legs,44 fixtures,4 exact current wallcells replaced;266 unrelated live cells preserved.;six-wall commons physical crossing successor now installed:exact6wall preimages replaced;11287 unrelated original mesh resources/poses/contact shapes preserved;3 original D04 floor GLBs unchanged. Separate063 receiving successor adds.993565832m2 missing-only thresholds after removing.993565832m2 duplication.21200 currentreceiving checks and6 original-controller bufferlegs;staticclosed authoredgates only.;three alreadyinstalled source-assigned precinctservice IDs now verified through ordinary RMB/E open/close,occupied-swing refusal and12 supported original-controller aperturelegs. No IDs minted,privatepermission inferred orclinicalprotocol altered.;full clinical street physical successor installed:three exact native models,16089.193864m2 missing-only sourcefloor,193 new fixture sources and36 staticclosed gates. Onlyoldbounded port2 AST-MED-G3-006 visual/contact subtree replaced;priorfore/header/riser sources and60 priorlamps preserved. Exact247floor witnesses requireprecision-preserving new008 import (rawsource unchanged). Current all10originalmedical source geometry loaded for conservative receiving;no IDs orsynthetic sealedload predicates supplied.;starboard3 private landing physicalfactory installed:four immutable source models,17landings,865.912m2 missing-only floor,17sourcefixtures. Actual170empty-before/supported-after floorwitnesses,six original-controller internal lobby legs;existingG2/G3/D04meshes andcontacts exact. No operating lift/privategate IDs orauthorization supplied.
+
+Uninstalled or unaccepted: Fore-starboard lift/gate/dispatch IDs,permissions,clinicalprotocol andoperation remain absent. Private/crossing operations unadmitted;remainingstreets physical successor installed;13failednetworkcriteria and184joins open. D03connection gates,Port2 lift/crossing/sealed-load protocol,Aftpair lifts/gates,five-service gates andbank identity/species/save/migration/privateadmission remainunassigned orheld. Other D04-conflicting riser candidates remainheld;starboard3 physicalfactory selected,operationunassigned. No400-berth/fullnetworkacceptance. Commons crossing operation remains unsupported:gate IDs,entryauthorization/egress/admission unassigned;staticclosedleaves retained. Original13 networkcriteria/184joins remainunaccepted. Physical threshold successor doesnot establish whole network or400identities. Full clinical physical streetselection installed;clinicalgate/dispatchIDs,sealedload predicates,medicalroom openings,productionstreaming/stock/sterility/egress remainheld;pooljunction and2RoyaltyPier spans unchanged. Starboard3:17 private gates/lift persistent IDs,real staff authorization andinside egress remainunassigned/unaccepted. Static source leaves areclosed;no newcapacity. All district connections,engineering,species,streaming andfinal acceptance remainheld. OriginalD04 port-central riser androutes retained.
+
+Controls and acceptance holds:
+
+- 13 historical network criteria and184joins remain unaccepted.
+- Five service,street,commons crossing,fore/port2/aft operating IDs and authorization providers remain unsupported.
+- No400 crew berths or clinical/sealed-load acceptance.
+- Full clinical:36gate/18button identities,real sealed-load/stock/sterility,medicalreceiver openings,productionstreaming andclinical/egress/engineering remainunaccepted. Pooldirectory01junction and2RoyaltyPier returnspans retained;no fullstarboardreturn route.
+- Starboard3:17 private gates/lift persistent IDs,real staff authorization andinside egress remainunassigned/unaccepted. Static source leaves areclosed;no newcapacity. All district connections,engineering,species,streaming andfinal acceptance remainheld. OriginalD04 port-central riser androutes retained.
+
+Owner: Group1 integration with Group3 and Group5
+
+Next: Review supported source operatingidentities andstaff authorization/egress;13historicalcriteria/184joins remainheld. Keepfullclinical gate/dispatch/streaming/stock/sterility andpool/RoyaltyPier supportholds. All physicalfactory callersinstalled doesnot establishcompleted network.
+
+## Group 4
+
+Retained source: `a042ec367c8c09704f62a23a33012c4c86ad0570`.
+
+Installed and checked: Two existing D09 terminals retained; five-station source assembly, exact three-owner 24.8m2 pit cuts, north dock Z-241, source024 body, single loaded motor, original cart restraint, controls018 and station information019 installed. Source authentication031 and current-main startup031 pass:13 binding/physical-slab checks,18 original portal components,five stations,original cart18kg/four products preserved. Station-route and loaded-joint operation remain pending. Five connected installed station routes pass:124 checks,98 original-player legs,10 original-controller rides,10 RMB/E operations;no within-route relocation.;exact D12/D13 theater exterior approach now installed:3 native models,210 source members,366m2 source-owned missing-only floor,six coffer sources at original30mm stand-off.96 current receiving checks and20 original-controller legs;combined startup071 includes12 actualsource-pier floor/ownership queries. Original2200chaircount andclosed inactive upper main doors preserved. No beamload,venueoperation,species/cart/save/final-art acceptance.
+
+Uninstalled or unaccepted: Ordinary tram boarding/gate/bridge controls and original loaded cart joint continuity/release,save,structural ratings,upper theater remaining receiving and final visuals remain open.
+
+Physical omissions or conditions:
+
+- Remaining upper theater receiving and route/final-visual acceptance.
+- Unchanged D09 transit is obstructed by existing guideway/receiver/parkedcar;material datum redesign unapproved.
+
+Controls and acceptance holds:
+
+- Boarding,joint lock andmotion requests explicitly disabled.
+- Original cart caster impulse remains separate;no new experiments.
+- Upper theater main doors remain inactive.
+
+Owner: Group1 motor/receiving,Group7 load support,Group8 theater interfaces
+
+Next: Resolve the first solver contact causing the original-cart impulse without altering movement,forcing alignment or disabling original contacts;then admit remaining current physical packages.
+
+## Group 5
+
+Retained source: `42cda6d9d86f6ede77b3673800aa7e30576add08`.
+
+Installed and checked: 297 shop doors/594 controls/18 guides,10 care fitouts,five venue source-light/material/foyer packages installed-and-checked;Thread r002 stock/repair and Maker r002 enclosure/fixtures/8.24m foyer now installed-and-checked:630/185 checks,26/23 original W legs,8/4 RMB/E operations;Living Gifts public r002,174 checks/18 legs/4 operations/one guard;service candidate disabled
+
+Uninstalled or unaccepted: 84 address joins remain null;staff risers,connected shipwide journeys,commerce/repair/inventory/admission/save/body/species,engineering and Game/CRT/hardware/final-art remain open
+
+Physical omissions or conditions:
+
+- Retained coherent later Thread successor not available;source r003/r004 invalid remains inactive.
+- 84 address joins unresolved and staff-riser end-to-end journeys absent.
+
+Controls and acceptance holds:
+
+- Commerce/repair/inventory/admission/save/species/final-art unaccepted.
+
+Owner: Group1 adoption,Group3 staff endpoints,Group7 support,Group6/8 district interfaces
+
+Next: Continue supported physical fitout/adoption and exact staff-riser endpoint reconciliation;retain all existing room/source identities and all84 unresolved address joins
+
+## Group 6
+
+Retained source: `b7205de3d939be14865dee838b5e8dede5d894f5`.
+
+Installed and checked: r019 fitted annex optics,two r003 entries and four r004 thermal stations installed-and-checked:5818 thermal checks/16 W legs,10494 main optics checks;two recovery r004/R008 north chamber,34 post-configure sources made inert before registration,22 supported current-main legs and reflection/eight-source cap checks passed
+
+Uninstalled or unaccepted: Unoccupied float forces are source-tested only;occupied water/AFK/slide/hoist/cable,stable float slots,external wet service,cascade connection,engineering/species remain uninstalled or unaccepted
+
+Physical omissions or conditions:
+
+- Rejected thermal architecture successor remains inactive.
+- Occupiedfloat/water/AFK/slide/hoist/dock interfaces and cascade connection absent/unaccepted.
+
+Controls and acceptance holds:
+
+- No occupied wet physics,water/mount/save/engineering/species acceptance.
+
+Owner: Group1 player/IDs/save,Group6 physics,Group3 service,Group7 support,Group8 programmes
+
+Next: Retain parked stations and physical entries;implement reviewed original-player water/mount/dock/save interfaces and exact service joins before activation;keep cascade proposals inactive
+
+## Group 7
+
+Retained source: `e6a663226c28428196666edf7fc1fa4f45aa85eb`.
+
+Installed and checked: All875 runtime dependencies present;69-model envelope startup/source-binding verified,8 registered sources/4 closed doors;only active with ASTRAEA_GROUP7_ENABLE=1
+
+Uninstalled or unaccepted: 19 built models/31 sources/4 doors remain outside envelope until current contacts and Group4 interfaces admitted;affected-envelope routes/normal controls pending;wet/790/primary ratings still held
+
+Physical omissions or conditions:
+
+- Normal default runtime omits the69-model opt-in envelope.
+- Full88-model selection remains inactive:19models/31sources/4doors outside admitted envelope and five protected D09 transit checks blocked by G4.
+
+Controls and acceptance holds:
+
+- No roof/primary/pressure/largest-species/790 capacity acceptance.
+
+Owner: Group1 integration with Group7,Group2 roof/interface owners
+
+Next: Resolve exactGroup4 shared transit receiving without reducing the original reservation;then complete remaining19 model/31source/4door admission. Keep protected roof,primary load,pressure and largest-species holds.
+
+## Group 8
+
+Retained source: `688a18417b6b17cfdcf527f26c8973ed4fd1142a`.
+
+Installed and checked: Four Crown interiors with Upper Horizon off,Orchard service,Arrivals service and Long Library returns/conservation installed-and-checked;library31393 checks,37 physics legs,35 original W-input legs;three local dining utility gateways/hygiene fittings/six task lights now installed-and-checked;720 original chairs preserved;synthesis33assemblies/fourcandidatehubs/twoutilitydoors/14lights onactualmissing-only supportingfloor,10089checks/29legs/74pads;medical privacy installed with strict source guard,80 original contacts/16 fitted predicates/64 batches checked in current main;motion/affected routes pending
+
+Uninstalled or unaccepted: Upper Horizon held;medical privacy source/stream successor installed andfocusedchecked;whole medical regression/clinical admission remains open;whole theater/child/dining/stock/lending/privacy/save/species/final-art obligations remain open;dining external public approaches and clean/used kitchen routes remain blocked;synthesisproduction/huballocation/externalclean-used/load/visual acceptanceheld
+
+Physical omissions or conditions:
+
+- Upper Horizon remains held.
+- Dining external approaches and clean/used kitchen connections remain blocked.
+- Synthesis external clean/used/load receiving and hub allocations remain unadmitted.
+
+Controls and acceptance holds:
+
+- Whole clinical/pressure/food stock/lending/privacy/save/species/final-art unaccepted.
+
+Owner: Group1 shared proof/receiving,Group8 source owners,Group3 clinical andGroup4 approaches
+
+Next: Complete missing physical district/connection receivers;retain verified medicalprivacy/diningfixture successor and all original clinical predicates. Resolve authoritative child/dining identities without duplicate capacity.
+
+## All nine Group2 retained packages
+
+- `group2_completion_20261011`: PARTIAL_PHYSICAL_INSTALLED. 1of6adjuncts physicallyreceived;0of80luxuryhomes. Primarystructurecapacity/lowersection/privateadmission andotherreceivers remainheld.
+- `group2_private_vertical_20261011`: RETAINED_SOURCE_NOT_INSTALLED. Requires current supported receiving and owner interfaces;no blanket activation
+- `group2_pit_perimeters_20261011`: RETAINED_SOURCE_NOT_INSTALLED. Requires current supported receiving and owner interfaces;no blanket activation
+- `group2_vip_pavilions_20261012`: RETAINED_SOURCE_NOT_INSTALLED. Requires current supported receiving and owner interfaces;no blanket activation
+- `group2_care_programmes_20261012`: PARTIAL_PHYSICAL_INSTALLED. 1of6cappedcarekits physicallyfitted toexactsourcecounter. Allservice/fluid/care/admission protocols remainheld;5kits andreceivers uninstalled.
+- `group2_family_childcare_20261012`: PHYSICAL_R001_INSTALLED_CHILD_ADMISSION_SUPERVISION_OPERATION_HELD. Exact trimmed57.66m2 existingnativefloor,enclosure/fittings/fourlamps andstaticclosedoriginalwideDoor;no sourcefixtureIDproductionbinding,operativeentry/egress,newbed/room/capacity orguardian/supervision/childprogramme admission.
+- `group2_vip_dry_club_20261012`: PARTIAL_PHYSICAL_R002_INSTALLED_OPERATIONAL_PROGRAMME_HELD. Exact D17_directory_03 dry r002 fitout/current-main original-controller/RMBE receiving verified;membership/food/booking/seat ledger held. Original source test claims remain historical.
+- `group2_garden_quiet_20261012`: PHYSICAL_R002_INSTALLED_SERVICES_PROGRAMME_HELD. Exact two-model r002 kit on actual unchanged populated Family/Quiet receivers;no newfloor/room/capacity or agricultural/quiet programme acceptance.
+- `group2_family_meal_20261012`: PHYSICAL_R001_INSTALLED_FOOD_SERVICE_PROGRAMME_HELD. Exact3current native tabletops support12 source settings;original inwardchairs/table/floor/room metadata preserved. Zero newdiningplaces. Z348 historicalallocation distinction,food/dirty/staff/hygiene/admission andGroup8programme ledger remain held.
+
+## Earlier inventory snapshot
+
+The following content is preserved historical evidence. Use the current sections above and authoritative JSON for installation status.
+
+# Current construction inventory
+
 Generated from CONSOLIDATED_CONSTRUCTION_INVENTORY.json at the starboard3 physical checkpoint. JSON remains authoritative. Source retention, physical installation, operational acceptance and release acceptance remain distinct. All eight groups remain unfinished; the whole-ship build is unaccepted.
 
 G3 missing physical factory callers: 0. G2 retained source packages not installed: 5. Original 13 G3 network criteria and 184 joins remain held; G5 retains 84 unresolved address joins. Clinical operational, streaming and pool/RoyaltyPier support-span holds remain unchanged. Original movement and all 53 retained payloads are preserved. Tram redesign remains unapproved and disabled.
@@ -222,4 +419,5 @@ Thread & Shell r002 stock/repair and Maker r002 enclosure/foyer are now installe
 2026-10-12 purpose/build boundary: JSON remains authoritative. Thread is technically installed but visually rejected; picture libfile_33f8eb00181c81918a3bd4055f862926 is withheld. Thermal recovery81c7b9a is visually rejected and inactive; existing technical fixtures remain. Basic recognizable furniture,materials,purposeful composition and wall/ceiling junctions are construction requirements. Three dining local kits are provisional pending current-main tests;external joins remain held. Group3 bounded interface2d0e145 retained with6/6 exact shared preimages and no new physical route.
 
 Synthesisfc08 source now installed onGroup1 actualmissing-only supportingfloor:2275.678136m²,10089checks,74pads,29legs,802oldbayposes and42currentdoorIDs unchanged. Fourcandidatehubs do notresolveacceptedplantquantity. Production/clean-used/load/visualholds remain. Frozen47eb835 preview is unchanged and excludes this newer milestone.
+
 
