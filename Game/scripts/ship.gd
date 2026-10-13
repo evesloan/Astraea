@@ -262,6 +262,8 @@ func _ready() -> void:
 	load("res://scripts/group3_fore_starboard_clinical_20261011/physical_package.gd").build(self)
 	# Exact missing-only street successor; unsupported gate identities remain inactive.
 	load("res://scripts/group3_d03_streets_20261011/physical_package.gd").build(self,{},true)
+	# Six exact wall receivers with missing-only thresholds; source leaves stay closed and unassigned.
+	load("res://scripts/group3_commons_crossings_20261012/physical_package.gd").build(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

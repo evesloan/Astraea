@@ -1,0 +1,10 @@
+from pathlib import Path
+import json,hashlib,zipfile
+P=Path(__file__).parent;C=P.parent;S=C/'g3_crossing_staging/Game';sha=lambda b:hashlib.sha256(b).hexdigest()
+assert json.loads((P/'IMPORT_RECEIPT.json').read_text())['status']=='PASS_ISOLATED_CROSSING_IMPORT'
+key='data/architecture/group3_commons_crossings_20261012/CROSSINGS.json';original=(S/key).read_bytes();d=json.loads(original);old='AST-STF-G3-063.glb';new='AST-STF-G3-063_current_receiving_successor001.glb';assert d['model_pins'][old]=='0046a5508acfb3a59239b53cf10b614c22fc2b7ec9a7905c99aa2a7c66acb2a2';d['model_pins'][new]=sha((S/'assets/models/group3_commons_crossings_20261012'/new).read_bytes());plan=json.loads((P/'THRESHOLD_RECEIVING_PLAN_EXACT_EXPORT.json').read_text());d['new_threshold_floor_m2']=plan['corrected_area_m2'];d['receiving_successor']={'original_threshold_sha256':d['model_pins'][old],'removed_overlap_m2':plan['removed_m2'],'operating_gates_admitted':False,'historical_criteria_preserved':13};w={key:json.dumps(d,indent=2).encode()+b'\n',key+'.owner_source':original,'scripts/group3_commons_crossings_20261012/physical_package.gd':(P/'physical_receiving_package.gd').read_bytes(),'docs/validation/g3_crossings_receiving_20261013/OWNER_PHYSICAL_PACKAGE.gd.txt':(S/'scripts/group3_commons_crossings_20261012/physical_package.gd').read_bytes()}
+for q in S.rglob('*'):
+ if q.is_file()and(q.suffix in ['.glb','.png','.import']or '.godot/imported'in str(q)):w[str(q.relative_to(S))]=q.read_bytes()
+with zipfile.ZipFile(P/'CROSSING_PHYSICAL_RECEIVING_OVERLAY.zip','w',zipfile.ZIP_DEFLATED,compresslevel=1)as z:
+ for k,b in w.items():z.writestr(k,b)
+(P/'CANDIDATE_RECEIPT.json').write_text(json.dumps({'status':'EXACT_PHYSICAL_CROSSING_CANDIDATE_ONLY','metadata_preimage_sha256':sha(original),'new_threshold_sha256':d['model_pins'][new],'new_threshold_m2':plan['corrected_area_m2'],'original_threshold_retained':True,'gates_static_closed':True,'unsupported_ids_inactive':True,'wall_preflight_before_mutation':True,'source_pins':{k:sha(b)for k,b in w.items()if not k.startswith('.godot/')}},indent=2)+'\n');print('CROSSING_CANDIDATE_READY',len(w))
