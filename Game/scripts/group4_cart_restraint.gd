@@ -26,6 +26,7 @@ func aligned()->bool:
  var pose:Transform3D=vehicle.global_transform.affine_inverse()*cart.global_transform
  return pose.origin.distance_to(Vector3(0,0,.14))<.025 and pose.basis.get_rotation_quaternion().angle_to(Quaternion.IDENTITY)<.03
 func request_lock()->bool:
+ if not bool(get_meta("integration_joint_admitted",true)):return false
  if phase!="unlocked" or motion_fault or not stopped() or not safety.unloaded_clear_to_depart() or not aligned() or is_instance_valid(cart.driver):return false
  for stock:RigidBody3D in cart.products:
   if is_instance_valid(stock.driver):return false

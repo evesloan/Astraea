@@ -126,6 +126,7 @@ func _physical_dock_matches(station:String)->bool:
    return vehicle.global_position.distance_to(Vector3(st.track_x,56.1,st.physical_docking_z))<.005 and abs(vehicle.global_rotation.y)<.001
  return false
 func request_boarding(station:String)->bool:
+ if not bool(get_meta("integration_boarding_admitted",true)):return false
  if phase!="secured" or not station_gates.has(station) or not _physical_dock_matches(station):return false
  selected_station=station;phase="deploying";var bridge:Node3D=bridges[station]
  bridge.dock_authorized=true;return bridge.request_deploy()

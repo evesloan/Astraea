@@ -15,10 +15,15 @@ static func before_budget(ship:Node3D)->Node3D:
 	var body:AnimatableBody3D=load("res://scripts/group4_boarding_safety.gd").create_candidate_vehicle(assembly,Vector3(0,56.1,-72))
 	body.name="Group4OwnedTram_Source024"
 	var safety:Node3D=load("res://scripts/group4_boarding_safety.gd").build(assembly,assembly,body)
+	safety.set_meta("integration_boarding_admitted",false)
 	var cart:RigidBody3D=ship.get_node("ShipSpace/PersistentActors/CustodialCart")
 	var restraint:Node3D=load("res://scripts/group4_cart_restraint.gd").build(assembly,body,safety,cart)
+	restraint.set_meta("integration_joint_admitted",false)
 	body.set_meta("group4_initial_source_cursor",395.3525674298981)
 	var motor:Node3D=load("res://scripts/group4_loaded_tram_actuator.gd").attach_loaded(assembly,body,safety,restraint)
+	motor.set_meta("integration_motion_admitted",false)
+	assembly.set_meta("tram_operations_admitted",false)
+	assembly.set_meta("tram_operation_hold","Original cart caster impulse and protected four-metre D09 transit receiving remain unresolved")
 	assert(safety.phase=="secured" and restraint.phase=="unlocked" and not motor.moving)
 	# Empty newly assembled source vehicle only; original actor/cart/products are never moved.
 	motor.cursor=395.3525674298981;motor.target=motor.cursor;motor.speed=0;motor.moving=false;motor.apply_pose(motor.cursor);motor.last_vehicle_pose=body.global_transform

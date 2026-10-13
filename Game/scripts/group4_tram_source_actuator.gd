@@ -140,6 +140,7 @@ func apply_pose(at:float)->void:
   var column:=4+i*3;bogies[i].position=Vector3(p[column],-.2,-1.5 if i==0 else 1.5);bogies[i].rotation=Vector3(0,p[column+1],0)
  for wheel in wheel_pivots:wheel.rotation.x=wheel_spin
 func request_distance(at:float)->bool:
+ if not bool(get_meta("integration_motion_admitted",true)):return false
  if moving or motion_fault or not safety.unloaded_clear_to_depart():return false
  if at<plan.safe_body_cursor_range_m[0] or at>plan.safe_body_cursor_range_m[1]:return false
  target=at;moving=abs(target-cursor)>.0001;return true

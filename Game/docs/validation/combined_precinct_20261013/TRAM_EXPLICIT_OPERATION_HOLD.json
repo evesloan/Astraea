@@ -1,0 +1,50 @@
+{
+  "status": "EXPLICIT_TRAM_OPERATIONS_HOLD_CHECK_PENDING",
+  "boarding_admitted": false,
+  "cart_joint_admitted": false,
+  "tram_motion_admitted": false,
+  "original_worker_default_API_preserved_when_integration_metadata_absent": true,
+  "source_geometry_controller_predicates_rates_and_masses_unchanged": true,
+  "source_script_successors": {
+    "scripts/group4_boarding_safety.gd": {
+      "before_sha256": "84e41e2c47c6455744ddbd6ac137f502cb14a767caf52837d6bfb739864727de",
+      "after_sha256": "5bf03efd836f05ff64ed31a857ca8539e60173304f2ded913777a71a25736fe2"
+    },
+    "scripts/group4_cart_restraint.gd": {
+      "before_sha256": "9aac213b2ee7059b5db6520960a857a0d700d0a50c7ada6dbc41aad5b6f0b108",
+      "after_sha256": "dcf19c6c23e69e9e5edcfe5cbe646e1236409e1ca9c45377fbf0b19bd1483789"
+    },
+    "scripts/group4_tram_source_actuator.gd": {
+      "before_sha256": "91e25665c9863543c0cda253e1a422c0f9fb1df1b251e19a82e9e573ea659d29",
+      "after_sha256": "9c3cd2d313e9059f90299930a5c305be248c7b23f05e54bb86fa353b39b772af"
+    }
+  },
+  "exact_declared_dependency_successors": [
+    {
+      "path": "Game/data/architecture/GROUP4_TRAVEL_SOURCE_CANDIDATE.json",
+      "before_sha256": "f231cb553d7858184b2bab4c712a9af0c3db7358afe5c9d36890696a1f730ee6",
+      "after_sha256": "05ba860362cbd2de9ae82fb8d9e5b01ae2bd1ce54bc3ad4eb69b4404f0ebc725",
+      "declared_slots": [
+        {
+          "context": "source_pins",
+          "path": "Game/scripts/group4_boarding_safety.gd"
+        }
+      ]
+    },
+    {
+      "path": "Game/data/architecture/GROUP4_LOADED_CART_SOURCE_CANDIDATE.json",
+      "before_sha256": "00070814ac4a38183c09d93956ebc8014c2f146888e7c38f4aefd6caff462071",
+      "after_sha256": "dee5410628c2807394e3f4bcc4767762483f49cd7bab0c2ec271d78a85856741",
+      "declared_slots": [
+        {
+          "context": "original_runtime_pins",
+          "path": "res://scripts/group4_boarding_safety.gd"
+        },
+        {
+          "context": "original_runtime_pins",
+          "path": "res://scripts/group4_tram_source_actuator.gd"
+        }
+      ]
+    }
+  ]
+}
