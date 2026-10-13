@@ -272,6 +272,8 @@ func _ready() -> void:
 	load("res://scripts/group2_family_childcare/package.gd").build_on_current_receiver(self)
 	# Full clinical physical successor replacesonlyboundedport2 visual;sourcegates/clinicaloperationstayheld.
 	load("res://scripts/group3_clinical_full_20261011/physical_package.gd").build(self)
+	# Starboard3 exact physicallandings;privategates/lift/consent operationremainheld.
+	load("res://scripts/group3_starboard3_private_20261011/physical_package.gd").build(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

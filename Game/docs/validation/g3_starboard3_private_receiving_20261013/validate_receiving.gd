@@ -1,0 +1,82 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+var nchecks:=0
+var failures:Array=[]
+var legs:Array=[]
+var preserved_meshes:=0
+var preserved_contacts:=0
+const OUT="/workspace/astraea-integration-cutoff-20261013/g3_starboard3_private_receiving/RECEIVING_RUNTIME.json"
+func _initialize()->void:
+ OS.set_environment("ASTRAEA_GROUP7_ENABLE","1")
+ for path in ["/workspace/astraea-synthesis-adoption-20261012/SYNTHESIS_ACTUAL_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/GROUP5_PUBLIC_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/READY_DRY_THERMAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ENVELOPE_MEDICAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/TRAM_REMAINING_G8_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/g3_starboard3_private_receiving/CANDIDATE_OVERLAY.zip"]:assert(ProjectSettings.load_resource_pack(path,true))
+ call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func receipt()->void:
+ FileAccess.open(OUT,FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_CURRENT_STARBOARD3_PHYSICAL_RECEIVING"if failures.is_empty()else"HOLD","checks":nchecks,"failures":failures,"original_controller_legs":legs,"moving_parent_policy":"All resources/localtransforms exact;static worldtransforms exact;originalAnimatableBody parents continue normal simulation","preserved_prior_meshes":preserved_meshes,"preserved_prior_contacts":preserved_contacts,"missing_floor_witnesses":170,"landings":17,"native_floor_m2":865.9119999999995,"fixtures":17,"new_models":4,"original_D04_riser_and_routes_retained":true,"operating_lift_private_gates_authorization_or_egress_accepted":false,"clinical_streaming_and_support_holds_unchanged":true,"capacity_credit":0,"full_build_accepted":false},"  "))
+func require(ok:bool,label:String)->bool:
+ nchecks+=1
+ if not ok:failures.append(label);receipt();push_error(label);quit(1)
+ return ok
+func dynamic_parent(mesh:Node)->bool:
+ var owner:Node=mesh.get_parent()
+ while owner!=null:
+  if owner is AnimatableBody3D:return true
+  owner=owner.get_parent()
+ return false
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(30)
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget");var space:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group3_starboard3_private_20261011/PRIVATE.json"));var floor:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("/workspace/astraea-integration-cutoff-20261013/g3_starboard3_private_receiving/inputs/BlenderCatalogue/assets/group3_crew_service_20261009/extensions/starboard3_private_landings_batch019/source/STARBOARD3_MISSING_FLOORS.json"))
+ var compiler:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/generated/structural_meshes.json"))
+ if not require(compiler.regions.size()==303,"Original303compilerowners retained"):return
+ if not require(ship.find_child("PortCentralStaffLift",true,false)!=null,"OriginalD04port central operatingriser exists"):return
+ var owners:Array=[]
+ for child in ship.get_node("ShipSpace").get_children():
+  if str(child.name).begins_with("Group3")or str(child.name).begins_with("Group2"):owners.append(child)
+ for child in ship.get_node("ShipSpace/Districts").get_children():
+  if str(child.name).begins_with("D04"):owners.append(child)
+ var old:Array=[];var contacts:Array=[];var lights:Array=[]
+ for owner in owners:
+  for mesh:MeshInstance3D in owner.find_children("*","MeshInstance3D",true,false):old.append({"node":mesh,"mesh":mesh.mesh,"pose":mesh.global_transform,"local":mesh.transform,"parent":mesh.get_parent(),"bounds":mesh.get_aabb(),"material":mesh.material_override})
+  for c:CollisionShape3D in owner.find_children("*","CollisionShape3D",true,false):contacts.append({"node":c,"shape":c.shape,"pose":c.transform,"parent":c.get_parent(),"disabled":c.disabled})
+  for l:Light3D in owner.find_children("*","Light3D",true,false):lights.append({"node":l,"pose":l.global_transform})
+ preserved_meshes=old.size();preserved_contacts=contacts.size()
+ if not require(preserved_meshes>1000 and preserved_contacts>1000,"Actual priorG2G3andD04 owners captured"):return
+ var witnesses:Array=[]
+ for part in floor.parts:
+  var y:float=part.y[-1]
+  for t in part.triangles:witnesses.append(Vector3((t[0][0]+t[1][0]+t[2][0])/3.,y,(t[0][1]+t[1][1]+t[2][1])/3.))
+ if not require(witnesses.size()==170,"Exact170sourcefloorwitnesses"):return
+ for at:Vector3 in witnesses:
+  var hit:Dictionary=ray(space,at+Vector3.UP*.02,at-Vector3.UP*.02)
+  if not require(hit.is_empty(),"Actualmissingfloorpreimage "+str(at)+" "+str(hit.get("collider",""))):return
+ var addition:Node3D=load("res://scripts/group3_starboard3_private_20261011/physical_package.gd").build(ship);await frames(4)
+ for row in old:
+  var mesh:MeshInstance3D=row.node
+  if not require(is_instance_valid(mesh)and mesh.mesh==row.mesh and (dynamic_parent(mesh)or mesh.global_transform==row.pose)and mesh.transform==row.local and mesh.get_parent()==row.parent and mesh.get_aabb()==row.bounds and mesh.material_override==row.material,"Exactprior mesh "+str(mesh.name)):return
+ for row in contacts:
+  var c:CollisionShape3D=row.node
+  if not require(is_instance_valid(c)and c.shape==row.shape and c.transform==row.pose and c.get_parent()==row.parent and c.disabled==row.disabled,"Exactprior contact "+str(c.name)):return
+ for row in lights:
+  var l:Light3D=row.node
+  if not require(is_instance_valid(l)and l.global_transform==row.pose,"Exactprior fixture "+str(l.name)):return
+ for at:Vector3 in witnesses:
+  var hit:Dictionary=ray(space,at+Vector3.UP*.02,at-Vector3.UP*.02)
+  if not require(not hit.is_empty()and addition.get_node("AST-STF-G3-045").is_ancestor_of(hit.collider)and absf(hit.position.y-at.y)<.002,"Exactnewsourcefloor "+str(at)):return
+ if not require(addition.find_children("*","OmniLight3D",true,false).size()==17,"Exactly17sourcefixtures"):return
+ for q in p.fixtures:
+  var light:Light3D=addition.get_node((str(q.name)+"_PhysicalSource").validate_node_name());var found:=false
+  for mesh:MeshInstance3D in addition.get_node("AST-STF-G3-044").find_children("*","MeshInstance3D",true,false):
+   if "opal"in str(mesh.name).to_lower()and (mesh.global_transform*mesh.get_aabb()).grow(.025).has_point(light.global_position):found=true
+  if not require(found and budget.sources.count(light)==1,"Actualopal lens and single registration "+str(q.name)):return
+ for q in p.door_bindings:
+  if not require(addition.get_node_or_null(str(q.name))==null,"No inventedprivategateoperation "+str(q.name)):return
+ if not require(addition.find_child("Starboard3Lift",true,false)==null,"No newliftbackend admitted"):return
+ for setup in [{"name":"D03_lobby","y":12.},{"name":"D04_lobby","y":16.5},{"name":"D05_lobby","y":21.}]:
+  actor.global_position=Vector3(21,setup.y+.03,-85.3);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);await frames(25)
+  if not require(actor.is_on_floor()and absf(actor.global_position.y-setup.y)<.12,"Supportedoriginalcontroller start "+str(setup.name)):return
+  for goal:Vector3 in [Vector3(21,setup.y,-82.3),Vector3(21,setup.y,-85.3)]:
+   var leg:Dictionary=await walk_to(actor,goal);legs.append({"case":setup.name,"leg":leg})
+   if not require(leg.reached and leg.floor_contact,"Originalcontroller boundedlobby "+str(setup.name)):return
+ if not require(not addition.get_meta("operating_lift_or_private_gates")and not addition.get_meta("authoritative_identity_mapping")and addition.get_meta("registered_berths_added")==0,"No privateoperation orcapacity admission"):return
+ receipt();print("STARBOARD3_CURRENT_PHYSICAL_RECEIVING_PASS checks=",nchecks," meshes=",preserved_meshes);quit(0)
