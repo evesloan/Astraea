@@ -1,0 +1,22 @@
+from pathlib import Path
+import bpy,json
+P=Path(__file__).parent;T=P/'import/Game';bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
+def material(name,c):
+ m=bpy.data.materials.new(name);m.diffuse_color=(*c,1);m.use_nodes=True;q=m.node_tree.nodes.get('Principled BSDF');q.inputs['Base Color'].default_value=(*c,1);q.inputs['Roughness'].default_value=.75;return m
+stone=material('Receiving_warm_stone',(.52,.49,.40));steel=material('Receiving_dark_zinc',(.18,.20,.21));parts=[]
+def box(name,a,kind):
+ x0,x1,y0,y1,z0,z1=a;vs=[(x,-z,y)for x,y,z in[(x0,y0,z0),(x1,y0,z0),(x1,y0,z1),(x0,y0,z1),(x0,y1,z0),(x1,y1,z0),(x1,y1,z1),(x0,y1,z1)]];fs=[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)];mesh=bpy.data.meshes.new(name);mesh.from_pydata(vs,[],[tuple(reversed(f))for f in fs]);mesh.update();obj=bpy.data.objects.new(name,mesh);bpy.context.collection.objects.link(obj);obj.data.materials.append(stone if kind=='floor'else steel);parts.append({'name':name,'bounds':a,'kind':kind})
+box('Exact_source_adjunct_floor',[-89,-79,101.76,102,-24,-16],'floor')
+box('North_external_approach',[-81,-67.1,101.76,102,-16,-14.2],'floor')
+for x in[-85.7,-82.3]:
+ for z in[-23.5,-20.,-16.5]:box(f'Stub_column_{x}_{z}',[x-.09,x+.09,97.48,101.84,z-.09,z+.09],'lower_slab_bearing')
+for z in[-23.5,-20.,-16.5]:box(f'Source_floor_crossmember_{z}',[-88.9,-79.1,101.5,101.84,z-.12,z+.12],'frame')
+# The approach is attached to the retained source slab/beam assembly; shallow joints sit in its existing slab layer, preserving the wall resources.
+for x in[-78.,-75.,-72.,-69.,-66.]:box(f'North_slab_transfer_{x}',[x-.12,x+.12,101.78,101.84,-16,-12.8],'north_slab_bearing')
+segments=[(-89,-24,-79,-24),(-79,-24,-79,-16),(-79,-16,-67.1,-16),(-67.1,-14.2,-81,-14.2),(-81,-14.2,-81,-16),(-81,-16,-89,-16),(-89,-16,-89,-24)]
+for i,(x0,z0,x1,z1)in enumerate(segments):
+ for j,y in enumerate([102.55,103.05]):box(f'Guard_rail_{i}_{j}',[min(x0,x1)-.03,max(x0,x1)+.03,y-.03,y+.03,min(z0,z1)-.03,max(z0,z1)+.03],'guard')
+ count=max(1,int(max(abs(x1-x0),abs(z1-z0))/2+.999))
+ for j in range(count+1):
+  x=x0+(x1-x0)*j/count;z=z0+(z1-z0)*j/count;box(f'Guard_post_{i}_{j}',[x-.03,x+.03,101.97,103.08,z-.03,z+.03],'guard')
+plan={'base':'9fe069e0b8af42869dbf49b4b97d69d95b2ab63d','key':'port_central_upper_house','source_floor_m2':80.,'new_connections_m2':25.02,'parts':parts,'source_model':'STAR_ATLAS_UPPER_COMMONS_r001.glb','slab_batches':['SA_D16_MissingOnlyFloor','SA_D17_MissingOnlyFloor'],'retained_primary_walls':['SA_D16_NorthWall_0','SA_D16_NorthWall_1','SA_D16_NorthPortalHeader','SA_D16_EastWall_0','SA_D17_NorthWall_0','SA_D17_EastWall_0'],'declared_slab_layer_wall_joints':['SA_D16_EastWall_0','SA_D16_NorthWall_1','SA_D16_NorthWall_0','SA_D17_EastWall_0','SA_D17_NorthWall_0'],'guard_batches':['SAB_North_D17R_GuardVestWest_Base','SAB_North_D17R_GuardVestWest','SAB_North_D17R_GuardVestWest_Cap'],'guard_mask':[-67.12,-66.97,101.99,103.19,-16,-14.2],'primary_models_walls_beams_slabs_changed':False,'structural_capacity_or_admission_accepted':False};(P/'PORTCENTRAL_FRAME_PLAN.json').write_text(json.dumps(plan,indent=2)+'\n');bpy.data.texts.new('PORTCENTRAL_FRAME_PLAN.json').write(json.dumps(plan,indent=2));q=T/'assets/group2_portcentral_receiving_20261013/PORTCENTRAL_RECEIVING_FRAME_r002.glb';q.parent.mkdir(parents=True,exist_ok=True);bpy.ops.export_scene.gltf(filepath=str(q),export_format='GLB',export_yup=True);(P/'native').mkdir(exist_ok=True);bpy.ops.wm.save_as_mainfile(filepath=str(P/'native/PORTCENTRAL_RECEIVING_FRAME_r002.blend'));print('PORTCENTRAL_FRAME_EXPORTED',len(parts))

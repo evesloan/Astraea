@@ -1,0 +1,22 @@
+extends SceneTree
+func _initialize()->void:
+ assert(ProjectSettings.load_resource_pack("/workspace/astraea-integration-cutoff-20261013/g2_last_three_pairs_20261013/CANDIDATE_OVERLAY.zip",true));call_deferred("run")
+func digest(bytes:PackedByteArray)->String:
+ var h:=HashingContext.new();h.start(HashingContext.HASH_SHA256);h.update(bytes);return h.finish().hex_encode()
+func run()->void:
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/group2_portcentral_receiving_20261013/PLAN.json"));var resources:=0
+ for path in p.model_pins:
+  assert(FileAccess.get_sha256("res://"+str(path))==str(p.model_pins[path]));var model:Node3D=(load("res://"+str(path))as PackedScene).instantiate();root.add_child(model)
+  if str(path).contains("FRAME"):
+   assert(model.find_children("*","MeshInstance3D",true,false).size()==p.parts.size())
+   for part in p.parts:
+    var mesh:MeshInstance3D=model.find_child(str(part.name).validate_node_name(),true,false);var b:AABB=mesh.global_transform*mesh.get_aabb();var a:Array=part.bounds;assert(b.position.distance_to(Vector3(a[0],a[2],a[4]))<.001 and b.end.distance_to(Vector3(a[1],a[3],a[5]))<.001)
+   load("res://scripts/static_contact_cache.gd").attach_group(model,model.find_children("*","MeshInstance3D",true,false))
+   for i in range(3):await physics_frame
+   for at:Vector3 in[Vector3(-84,102,-20),Vector3(-75,102,-15.1),Vector3(-61.8,102,-8)]:
+    var h:Dictionary=model.get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(at+Vector3.UP*.02,at-Vector3.UP*.02));print("FLOOR_CONTACT",at," ",h);assert(not h.is_empty()and absf(h.position.y-at.y)<.002 and h.normal.y>.99)
+  resources+=1;model.free()
+ var source:Node3D=(load("res://assets/models/STAR_ATLAS_UPPER_COMMONS_r001.glb")as PackedScene).instantiate();root.add_child(source);var guards:Array=[]
+ for name in p.guard_batches:
+  var mesh:MeshInstance3D=source.find_child(str(name).validate_node_name(),true,false);assert(mesh!=null);guards.append({"name":str(mesh.name),"faces_sha256":digest(mesh.mesh.get_faces().to_byte_array()),"faces_vertices":mesh.mesh.get_faces().size()})
+ p['guard_preimages']=guards;FileAccess.open("/workspace/astraea-integration-cutoff-20261013/g2_last_three_pairs_20261013/EXACT_RESOURCE_AND_GUARD_PREIMAGES.json",FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_PORTCENTRAL_THREE_RESOURCES_AND_GUARD_PREIMAGES","resources":resources,"plan":p},"  "));print("PORTCENTRAL_RESOURCE_PREIMAGES_PASS");quit(0)
