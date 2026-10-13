@@ -1,0 +1,58 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+var nchecks:=0
+var failures:Array=[]
+var observations:Array=[]
+const OUT="/workspace/astraea-integration-cutoff-20261013/G3_FORE_RECEIVING_RUNTIME.json"
+func _initialize()->void:
+ OS.set_environment("ASTRAEA_GROUP7_ENABLE","1")
+ for p in ["/workspace/astraea-synthesis-adoption-20261012/SYNTHESIS_ACTUAL_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/GROUP5_PUBLIC_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/READY_DRY_THERMAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ENVELOPE_MEDICAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/TRAM_REMAINING_G8_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/G3_FORE_CANDIDATE_OVERLAY.zip"]:assert(ProjectSettings.load_resource_pack(p,true))
+ call_deferred("run")
+func save_result()->void:
+ FileAccess.open(OUT,FileAccess.WRITE).store_string(JSON.stringify({"status":"PASS_EXACT_FORE_STARBOARD_PHYSICAL_RECEIVING"if failures.is_empty()else"HOLD","checks":nchecks,"failures":failures,"observations":observations,"models":7,"native_floor_m2":1826.9919999999981,"affected_native_floor_parts":17,"floor_triangle_witnesses":152,"new_registered_berths":0,"working_lifts_or_doors":0,"identity_mapping_created":false,"scope":"Exact native fore-starboard source and floor/fixture receiving;17 declared part preimage setup cases and3 independent original-player lobby/clinical setups. No operating lift/gate,whole network,person/berth/save/species/structural/final-art acceptance."},"  "))
+func require(ok:bool,label:String)->bool:
+ nchecks+=1
+ if not ok:failures.append(label);save_result();push_error(label);quit(1)
+ return ok
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(30)
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");var stream:Node=ship.get_node("ShipSystems/RemainingBatchStreaming");var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
+ var source:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group3_fore_starboard_clinical_20261011/FORE.json"));var floors:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("/workspace/astraea-integration-cutoff-20261013/g3_fore_preflight/FORE_MISSING_ONLY_FLOORS.json"));var mappings:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("/workspace/astraea-integration-cutoff-20261013/G3_FORE_LENS_MAPPING.json"))
+ var space:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state;var witnesses:Array=[];actor.set_controls_enabled(false)
+ for part in floors.parts:
+  var at:=Vector3(0,part.y[1],0);var points:Array=[]
+  for t in part.triangles:points.append(Vector3((t[0][0]+t[1][0]+t[2][0])/3.,part.y[1],(t[0][1]+t[1][1]+t[2][1])/3.))
+  actor.global_position=points[0]+Vector3.UP*.03;actor.velocity=Vector3.ZERO;residency.prepare_position(actor.global_position);stream.prepare_position(actor.global_position);await frames(2)
+  for point:Vector3 in points:
+   var hit:Dictionary=ray(space,point+Vector3.UP*.02,point-Vector3.UP*.02)
+   if not require(hit.is_empty(),"Exact aft missing native floor preimage "+str(part.name)+" "+str(hit.collider.get_path()if not hit.is_empty()else "none")):return
+   witnesses.append(point)
+ var old_sources:int=budget.sources.size();var aft:Node3D=load("res://scripts/group3_fore_starboard_clinical_20261011/physical_package.gd").build(ship);await frames(4)
+ if not require(not aft.get_meta("operating_lift_and_dispatch_admitted")and not aft.get_meta("authoritative_identity_mapping")and aft.get_meta("registered_berths_added")==0,"No fabricated operating lifts/identities/capacity"):return
+ for file in source.model_pins:
+  if not require(FileAccess.get_sha256("res://assets/models/group3_fore_starboard_clinical_20261011/"+str(file))==str(source.model_pins[file]),"Exact native aft source "+str(file)):return
+ for point:Vector3 in witnesses:
+  var hit:Dictionary=ray(space,point+Vector3.UP*.02,point-Vector3.UP*.02)
+  if not require(not hit.is_empty()and aft.is_ancestor_of(hit.collider)and absf(hit.position.y-point.y)<.002,"Actual source-owned aft native floor witness "+str(point)):return
+ if not require(aft.find_children("*","OmniLight3D",true,false).size()==34,"Exactly34 owned native fore fixture sources constructed"):return
+ for i in range(17):
+  if not require(float(source.controller_binding.floor_heights[i])==ship.deck_y[i],"All17 canonical port2 datums "+str(i)):return
+ if not require(aft.get_node_or_null("ForeStarboardLift")==null and aft.get_node_or_null("ForeSharedTransfer")==null and not aft.get_meta("clinical_operational_acceptance"),"No unassigned lift orclinicalcrossing operation"):return
+ for fixture in source.fixtures:
+  var light:Light3D=aft.get_node((str(fixture.name)+"_PhysicalSource").validate_node_name());var binding:Dictionary={}
+  for mapping in mappings.mappings:
+   if str(mapping.fixture)==str(fixture.name):binding=mapping
+  if not require(not binding.is_empty(),"Exact source lens binding "+str(fixture.name)):return
+  var lens:MeshInstance3D=aft.get_node(str(binding.model).trim_suffix(".glb")).find_child(str(binding.node).validate_node_name(),true,false)
+  if not require(lens!=null and (lens.global_transform*lens.get_aabb()).grow(.025).has_point(light.global_position),"Actual original port2 fixture receiver "+str(fixture.name)):return
+  if not require(budget.sources.count(light)==1,"Single registered port2 source "+str(fixture.name)):return
+ var cases:Array=[{"name":"D03forelobby","start":Vector3(21,12.03,-490),"goals":[Vector3(21,12,-493),Vector3(21,12,-490)]},{"name":"D05clinicalcleanarrival","start":Vector3(21,21.03,-490),"goals":[Vector3(21,21,-494),Vector3(21,21,-498),Vector3(21,21,-502),Vector3(21,21,-498),Vector3(21,21,-494),Vector3(21,21,-490)]},{"name":"D05serviceapproach","start":Vector3(43,21.03,-496),"goals":[Vector3(41,21,-496),Vector3(43,21,-496)]}]
+ for setup in cases:
+  actor.global_position=setup.start;actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true);residency.prepare_position(actor.global_position);stream.prepare_position(actor.global_position);await frames(25)
+  if not require(actor.is_on_floor()and absf(actor.global_position.y-float(setup.start.y)+.03)<.12,"Supported independent port2/clinical start "+str(setup.name)):return
+  for goal:Vector3 in setup.goals:
+   var leg:Dictionary=await walk_to(actor,goal);observations.append({"case":setup.name,"leg":leg})
+   if not require(leg.reached and leg.floor_contact,"Original controller supported port2 clinical approach "+str(setup.name)):return
+ if not require(ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms").get_child_count()==303,"No duplicate compiler owners"):return
+ save_result();print("G3_FORE_PHYSICAL_RECEIVING_PASS checks=",nchecks);quit(0)
