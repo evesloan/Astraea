@@ -238,6 +238,8 @@ func _ready() -> void:
 	# Sole-owner Group7 boundary: selected JSON and exact runtime files must be admitted first.
 	# Complete retained physical envelope;new garden doors and unsafe transit stay held.
 	load("res://scripts/consolidated_all_eight_20261013/package.gd").build(self)
+	# Approved six-house receiving frames and exact retained floors; engineering and room admission remain held.
+	load("res://scripts/approved_receivers_20261014/package.gd").build(self)
 	load("res://scripts/group4_integrated_receiving.gd").before_budget(self)
 	lighting_budget.configure(self,player)
 	load("res://scripts/group4_integrated_receiving.gd").after_budget(self)

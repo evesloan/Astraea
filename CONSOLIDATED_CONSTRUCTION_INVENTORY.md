@@ -1072,3 +1072,6 @@ Synthesisfc08 source now installed onGroup1 actualmissing-only supportingfloor:2
 
 
 
+
+
+Approved six-house receivers,14October2026: six editable receiver models are included by default with87 exact-source floor regions (80lowerhomes,five same-unit upperfloors,two aft adjuncts),1035 profiled members,164 primary surface collars andten same-unit posts.649 installed combined checks,281 floor witnesses,80 supported/clear original entries andfour retained original-controller route legs pass. Original303 floor owners andall53 protected files remain intact. Two ray samples retain existing hull skin about1cm above the exact new compiler floor;both contacts are documented. The80 home sources andprivate/pit/wet kits remain to fit;no room,bed,crew,programme,capacity,engineering orfinal visual credit. Independent checkpoint publication is pending.
