@@ -236,8 +236,8 @@ func _ready() -> void:
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/central_homes_adoption.gd).build(self)")
 	load("res://scripts/atrium_gallery_receiving.gd").build(self)
 	# Sole-owner Group7 boundary: selected JSON and exact runtime files must be admitted first.
-	if OS.get_environment("ASTRAEA_GROUP7_ENABLE") == "1":
-		load("res://scripts/group7_completion.gd").build(self)
+	# Complete retained physical envelope;new garden doors and unsafe transit stay held.
+	load("res://scripts/consolidated_all_eight_20261013/package.gd").build(self)
 	load("res://scripts/group4_integrated_receiving.gd").before_budget(self)
 	lighting_budget.configure(self,player)
 	load("res://scripts/group4_integrated_receiving.gd").after_budget(self)
