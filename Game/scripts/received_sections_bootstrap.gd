@@ -41,7 +41,7 @@ func _ready() -> void:
 	var occlusion: Dictionary = load("res://scripts/static_room_occlusion.gd").install(ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP var occlusion: Dictionary = load(res://scripts/static_room_occlusion.gd).install(ship)")
 	set_meta("static_room_occlusion",occlusion)
-	var residency:Node=load("res://scripts/received_room_residency.gd").new()
+	var residency:Node=load("res://scripts/received_homes_20261015/residency.gd").new()
 	residency.name="ReceivedRoomResidency"
 	ship.get_node("ShipSystems").add_child(residency)
 	residency.setup(ship)
