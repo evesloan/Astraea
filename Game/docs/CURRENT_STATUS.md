@@ -1,3 +1,11 @@
+## Latest coupled route: Copper Kettle original foyer to public core
+
+The new starboard fore404 receiver now has a continuous unladen connection through the actual Copper Kettle aisles and original foyer door to the retained D09 forward public core, followed by the complete return. Main335passes58original-controller walking legs and four normal RMB/E operations at the original InteriorControl/PublicControl pods. The original physical foyer ID, closed state and all553source mesh poses/resources are restored. There are no teleports within the route, no disabled contacts and no direct interaction-method calls.
+
+The cafe aisle path is derived from1715current supported/clear physics points and actual capsule sweeps, preserving the original0.3m radius/1.8m height. It follows46raw points compressed to16corners. This avoids the occupied east line rather than moving retained fittings. Runtime code/geometry remain byte-identical to the protected predecessor; authentication334 is reused with exact source pins.
+
+This establishes physical unladen continuity. All84logical address joins, staff roles/commerce/stock/save, loaded carts/species, the separate staff kitchen landing, primary load and final Game/CRT/visual acceptance remain open.
+
 ## Latest physical integration: starboard fore404 to Copper Kettle
 
 The retained starboard fore404 socket now reaches Copper Kettle’s actual authored floor through55.21974m² of missing-only screened floor and a3.4m opening in one exact Perimeter_5 mesh. The fully loaded café geometry established this receiver; the earlier compiled-floor-only distance did not include its authored floor. The longer core crossing was rejected to preserve that existing floor. r002has125editable meshes/seven runtime meshes and three rigid original compact task fixtures with positive wall mounts. Its roof stops before the retained staff-roof overhang; explicit splices and floor ties provide nine measured bearing witnesses.
