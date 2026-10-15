@@ -1,0 +1,5 @@
+from pathlib import Path
+import json,hashlib
+D=Path(__file__).resolve().parent
+old=Path('/workspace/astraea-integration-cutoff-20261013/dining_service_receiving_20261015/prepare_native_plan.py').read_text();exec(old[:old.index('D=Path(__file__)')])
+p=json.loads((D/'NATIVE_PLAN_PROPOSAL.json').read_text());p['floor_outline_xz'],p['new_floor_area_m2']=rectangle_union(p['floor_rectangles']);s=json.loads((D/'ORCHARD_SOURCE_RECEIVING_SURVEY.json').read_text());assert all(not r['contacts']for r in s['proposed_volume_preimages'][1:]);assert {x.split('/')[-2]for x in s['proposed_volume_preimages'][0]['contacts']}==set(p['original_wall_names']);p['source_survey_sha256']=hashlib.sha256((D/'ORCHARD_SOURCE_RECEIVING_SURVEY.json').read_bytes()).hexdigest();p['source_native']='BlenderCatalogue/assets/group8_orchard_service_20261011/OrchardService_r003.blend';p['source_native_sha256']='5fd7fb04e2f421c1fac25fb10bd0e78f3fe529fc8dd7976dae4ffad9164477f2';(D/'NATIVE_PLAN.json').write_text(json.dumps(p,indent=2)+'\n');print('FLOOR_AREA',p['new_floor_area_m2'])
