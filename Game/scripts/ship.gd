@@ -256,6 +256,7 @@ func _ready() -> void:
 	var theater_receiver_lights:Array[Light3D]=[]
 	for light:Light3D in theater_upper_receiving.find_children("*","SpotLight3D",true,false):theater_receiver_lights.append(light)
 	load("res://scripts/receiving_source_lights.gd").register(theater_receiver_lights,self)
+	load("res://scripts/theater_secondary_receiving_20261015/package.gd").build(self)
 	# Exact supported aft-riser physical lobbies;operating lift identities remain unassigned.
 	load("res://scripts/group3_remaining_risers_20261011/aft_pair.gd").build(self)
 	# Exact supported port2 clinical physical receiving;operating identities remain unassigned.
