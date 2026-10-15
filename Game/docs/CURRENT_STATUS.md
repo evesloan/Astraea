@@ -1,3 +1,9 @@
+## Latest physical integration: D10 clean and used service receiving
+
+Shared Table, Sunward and Lantern now have separate finishing and wash bays at all six existing service openings, screened service galleries and three joins to the retained D10 axial floor. The native owns2,459.4m² of previously absent floor; original compiled floor records,720 source dining places, room identities and lift stops stay unchanged. The currentMain passes39 original-controller legs,358 floor samples,24 clear work positions,42 static cart poses,180 portal cart poses and720 wheel-floor samples.45 exact source contact pairs and18 embedded floor-bearing witnesses are classified. The western ties clear the preserved lower pool ceiling byapproximately20mm.
+
+Editable source retains2,753 individual meshes; runtime uses39 batches.772 rigid source fixture meshes/UVs and10 image payloads are verified.80 source-profile task lights register once under the unchanged budget. Local cutaways showthe visible r004 geometry,proven bit-identical tofinalr006 abovefloor;only18 hidden floor ties changed. These are neutral Blender views,notfinalGame/CRT lighting. Food/water/stock/provider operations, loaded-cart dynamics, broad species, persistence, primaryengineering, other dining receivers andfinalacceptance remain open.
+
 ## Latest physical integration: fitted Upper Horizon interiors
 
 Original records cabinets, study consoles, four reading chairs, two task lamps and counters now fit between the retained D18 foyer and sitting bays. The versioned native retains320 editable source meshes and70 original runtime batches.27 original-controller legs,344 retained-floor contacts and10 clear work positions pass;860 existing foyer/sitting meshes stay unchanged. Original geometry, UVs and10 image payloads are preserved. No new floor, room IDs orcapacity. Operational species/stock/save/pressure andfinal Godot/CRT visuals remain unfinished.
@@ -6,7 +12,7 @@ Original records cabinets, study consoles, four reading chairs, two task lamps a
 
 A 163.4 m² native receiver now connects the retained D11 backstage threshold to the axial route around the existing core wall. Twelve player-controller legs,177 floor witnesses,32 static cart poses,128 wheel-floor samples and18 bearing/header pairs pass. Four original coffer lights are registered. All original door poses and2,200 source seats remain unchanged;the staff door isclosed andinactive. Loaded-cart physics,primary capacity,venue operation andfinal Godot/CRT visuals remain unfinished.
 
-The dining service survey identifies six existing openings withroom-side floor but no exterior D10 floor at162 samples fromabsoluteX54.1through68. A service corridor andlanding source isneeded;no assumed street ornew staff-lift stop wascreated.
+The earlier dining survey found six service openings without exterior D10 floor. That physical gap is now resolved by the new receiving package described above, using existing axial floor landings; no staff-lift stop was added.
 
 ## Latest physical integration: fitted wet pavilions and public dining branches
 
