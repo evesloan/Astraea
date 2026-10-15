@@ -287,6 +287,7 @@ func _ready() -> void:
 	load("res://scripts/group2_portcentral_receiving_20261013/package.gd").build(self)
 	load("res://scripts/aft_adjunct_care_20261015/package.gd").build(self)
 	load("res://scripts/fitted_wet_pavilions_20261015/package.gd").build(self)
+	load("res://scripts/dining_public_core_20261015/package.gd").build(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

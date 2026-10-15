@@ -1,3 +1,9 @@
+## Latest physical integration: fitted wet pavilions and public dining branches
+
+Both fitted wet pavilions are installed and independently retained at bded1209e702ae699698606fe15e7d685fbb0d99. The verified package preserves original variants and retained lift/stair/guard circulation:582 native meshes,22 original-controller legs,four changing-door round trips,twelve rest approaches,fourteen registered lights and32 support pins. Quiet uses an explicit5.2x6.8x1.2m fitted basin;no capacity orwater operation isadmitted. All80 home models,six adjunct/care pairs andfive private pit suites remain physically included.
+
+Two fitted public portals now join the forward core to Shared Table and Sunward dining;four exact wall/dado successors retain all other enclosure triangles/UVs andsource image bytes. Lantern uses its retained axial connection. Three-room public receiving ischecked separately from unfinished kitchen clean/used/service operation. Default dining startup and authentication both pass;the whole ship,engineering,services,persistence andfinal graphics remain unfinished.
+
 ## Latest partial Group1 construction: D17 standard823
 
 One retained standard-double physical proposal now receives seven source-rooted underfloor strongbacks and three original fitted opal lanterns, using its unchanged furnished interior and two original proposed rest reservations. The connected production gate passes 148 checks and 17 actual player-controller legs. The sealed geometry stage is independently retained at 8ca08ead6d87d8a285b5af937599f29820700913; its 148 checks include 17 actual player-controller legs and both rest approaches. This advances one of ten D17 standard doubles; nine standard doubles and seven VIP allocations remain held. No room/rest allocation or species-ready capacity is added.

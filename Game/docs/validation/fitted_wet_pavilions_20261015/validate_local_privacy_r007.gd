@@ -1,3 +1,4 @@
+# Archive parser adjustment: exactoriginal draft isretained in validate_local_privacy_r007_original_draft.gd.txt. No runtime package uses this QA draft.
 extends "res://tests/validate_d04_port_forward_commons_service.gd"
 const D="/workspace/astraea-integration-cutoff-20261013/approved_combined_receivers_20261014/wet_receiving/"
 var count:=0
@@ -31,7 +32,6 @@ func run()->void:
   if leg.reached:back=await walk_to(player,outside)
   if back.get("reached",false):door.interact(player);await frames(100)
   results.append({"kit":row.kit,"index":row.source_index,"closed_before":closed_before,"opened":opened,"entered":leg,"returned":back,"closed_after":not door.desired_open and door.open_fraction==0})
- var suites:Array=[]
  player.set_physics_process(false);player.global_position=Vector3(0,0,0);player.force_update_transform();await frames(2)
  var stances:Array=[]
  for point:Vector3 in[Vector3(-73.9,103.5,-360.8),Vector3(77.35,103.5,-375.6),Vector3(-91.7,102,-374.5),Vector3(-88.3,102,-374.5),Vector3(66.55,102,-363.1),Vector3(71.05,102,-363.1)]:stances.append({"at":str(point),"capsule_clear":capsule_clear(space,point)})
