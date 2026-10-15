@@ -1,3 +1,11 @@
+## Latest physical integration: port fore404 Orchard Market receiver
+
+The retained STAFFLINK_D09_PF404 now physically reaches the actual OrchardMarket gallery andits existingdryloop across the measured6.5m gap. r002owns23.3997m²missing-onlyfloor,25editablemeshes/five runtime meshes,a3.1m opening inone exactretainedwallbatch,one originalcompacttaskfixture andeight existingfloor/roofbearingwitnesses. No shop,programme,room,door,lift,capacity orcompiledfloorrecord isadded orreidentified. All84addressjoins remainunresolved;thisphysicaltarget doesnotinvent sharedriser addressmappings. Starboardstilllacks a realreceiver andremainsheld.
+
+Default currentMain passes14continuous original-controllerlegs,28floorsamples,eightbearings and22classifiedsourcecontacts withzero unexplainedcontacts orpriorfloor duplication.132originalGrandPool/Market meshposes/resources remain exceptone exactverifiedwall successor;clippedsource geometry andUVs outside the opening are preserved. r001passeswalking butone newtie landedoutside thenarrowingretainedstafffloor. r002movesonlythatnewtie2.1m ontoan exactrecorded source triangle;27othernative meshobjects/poses areunchanged andthe faithfulmaterialbatch isrebaked. Both immutablevariants andfailedreceipts remain. Allreferencedpackedimagebytes match;an unusedrubberimageorphandroppedonBlendersave remainsinr001.
+
+The existing narrowed staffapproach,loadedcart/species/role/stock/save,primaryload/capacitysizing andfinal-art acceptance remainopen. The originalMarketdryloop,all100shopallocations,wet/dry separation,originaldoors/lifts andD07/D08/D10protectedvolumes remainunchanged.
+
 ## Latest coupled verification: Arrivals staff spine and original lift
 
 The installed D01andD02receivers now have one continuous unladen operator journey:30original-controller walking legs,normal RMB/E selection of D02on the original ten-stop cabin panel,419movingframes and578totaltripframes. Original player platformcarry,all ten shaft-gate interlocks,stop IDs/heights andexisting moving-phase motion assertions pass. No transforms are assigned within the continuous journey andno original geometry,controllers ormovement are changed. Source authentication301is reused because runtime files are unchanged.

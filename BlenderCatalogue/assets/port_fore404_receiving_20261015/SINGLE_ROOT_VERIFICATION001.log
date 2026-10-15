@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/astraea-integration-cutoff-20261013/port_fore404_receiving_20261015/verify_single_root_delta.py", line 5, in <module>
+    old,oi=read(D/'native/PORT_FORE404_RECEIVER_r001.blend');new,ni=read(D/'native/PORT_FORE404_RECEIVER_r002.blend');assert old.keys()==new.keys()and oi==ni;r=json.loads((D/'NATIVE_VERIFICATION.json').read_text());batch=next(x['name']for x in r['batches']if'PFR_StaffEmbeddedTie2'in x['members']);same=0
+                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+Blender 4.3.2
+Read blend: "/workspace/astraea-integration-cutoff-20261013/port_fore404_receiving_20261015/native/PORT_FORE404_RECEIVER_r001.blend"
+Read blend: "/workspace/astraea-integration-cutoff-20261013/port_fore404_receiving_20261015/native/PORT_FORE404_RECEIVER_r002.blend"
+
+Blender quit
