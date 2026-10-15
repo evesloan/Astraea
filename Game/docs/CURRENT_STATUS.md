@@ -1,3 +1,11 @@
+## Latest coupled verification: Arrivals staff spine and original lift
+
+The installed D01andD02receivers now have one continuous unladen operator journey:30original-controller walking legs,normal RMB/E selection of D02on the original ten-stop cabin panel,419movingframes and578totaltripframes. Original player platformcarry,all ten shaft-gate interlocks,stop IDs/heights andexisting moving-phase motion assertions pass. No transforms are assigned within the continuous journey andno original geometry,controllers ormovement are changed. Source authentication301is reused because runtime files are unchanged.
+
+The first journey probe applied acceleration limits afterthe moving phase;that raw failure is retained. The final probe uses the exact existing validate_commons_lift moving-phase rule andseparately retains the terminal arrival velocity reset0.122539m/s. This doesnot add comfort,cart,species,staff-role,stock,save orfullten-stop network acceptance.
+
+Fore404runtime source preparation confirms both owned sockets supported andclear,butneither has a matching external staff receiver. Port has a6.5m gap to the retained OrchardMarketenclosure;starboard has no neighboring floor at the surveyedcenterline positions. All84addressjoins remainheld. No mirroredfloor ornewrecipientidentity is invented.
+
 ## Latest physical integration: screened D02 Arrivals staff receiver
 
 The exact6m screened service landing now receives the retained staff spine across a1.2m missing-floor gap. The native owns5.1598m² floor,31 editable meshes,11 runtime meshes,five exact wall preimages,one original-profile compact task source andsix existing-floor bearings. D01receiver,curatedsealed machinery,screens,existing doors/lifts/IDs/capacity,D03opaque cap andall303 sourcefloor records are preserved.
