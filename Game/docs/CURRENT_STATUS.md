@@ -1,3 +1,9 @@
+## Latest physical integration: separate synthesis receiving links
+
+Clean packing/output and wash/used return now independently connect to the retained D01 port service spine through two screened 8 m approaches. The native owns 68.8 m² of missing floor. Two exact source enclosure-wall successors preserve clipped source triangles and UVs within the fixed 0.1 mm tolerance; maximum difference is under four micrometres. 108 editable meshes export as six new receiving batches and two wall successors. Two rigid source task hoods provide four registered lights.
+
+Current Main passes 12 original-controller legs,30 floor samples,six clear work positions,64 cart poses and256 wheel-floor samples. All35 contacts with retained geometry are classified.303 existing plant meshes retain poses and the two exact source successors; existing clean/used doors retain their identities, poses and states. Original service bay, compiled floor records, process-hub count and lift stops remain unchanged. Food/stock/water/hygiene, provider operation, loaded-cart dynamics, species, saves, pressure/primary engineering and final visual acceptance remain open.
+
 ## Latest physical integration: Orchard service approach
 
 A screened external approach now joins the existing D10 axial floor at Z −176 to Orchard’s retained internal staff spine through one 3.4 m fixed gateway at X54/Z−214. Exact successors change only the two selected enclosure wall/dado meshes; 78 clipped source triangles and their UVs remain exact outside the opening. The new native owns 465.4 m² of missing floor, with 377 editable meshes and four optimized new receiving batches plus two wall successors. Four rigid original task hoods provide eight registered lights. Existing kitchens and clean/dry/used receiving fixtures remain in place; no duplicate galleys were added.
