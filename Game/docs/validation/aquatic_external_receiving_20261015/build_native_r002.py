@@ -1,0 +1,81 @@
+from pathlib import Path
+import bpy,json,math,hashlib
+from mathutils import Vector,Matrix
+from mathutils.geometry import tessellate_polygon
+D=Path(__file__).resolve().parent;R=Path('/workspace/astraea-protected-integration-20261012');plan=json.loads((D/'NATIVE_PLAN.json').read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();donor=R/plan['source_native'];assert sha(donor)==plan['source_native_sha256'];bpy.ops.wm.open_mainfile(filepath=str(donor));bpy.context.preferences.filepaths.save_version=0;source=json.loads((R/'Game/data/architecture/group8/orchard_service.json').read_text());templates={r['name']:bpy.data.objects[r['name']]for r in source['meshes']if r['unit']=='CleanDeliveryTask'};old=set(bpy.data.objects);col=bpy.data.collections.new('AQUATIC_EXTERNAL_RECEIVING_AUTHORING_R001');bpy.context.scene.collection.children.link(col);B=lambda p:Vector((p[0],-p[2],p[1]));GV=lambda p:Vector((p.x,p.z,-p.y));parts=[];clones=[];lights=[];bearings=[]
+mat=lambda name:bpy.data.materials[name];zinc=mat('ASTRAEA_staff_zinc');blue=mat('ASTRAEA_staff_bluegrey_paint');white=mat('ASTRAEA_staff_white_paint');rubber=mat('ASTRAEA_dark_rubber')
+def mesh(name,vs,fs,material):
+ data=bpy.data.meshes.new(name);data.from_pydata(vs,[],fs);data.update();data.materials.append(material);uv=data.uv_layers.new(name='AuthoredMetreUV')
+ for f in data.polygons:
+  axis=max(range(3),key=lambda i:abs(f.normal[i]));axes=[i for i in range(3)if i!=axis]
+  for li in f.loop_indices:
+   p=data.vertices[data.loops[li].vertex_index].co;uv.data[li].uv=(p[axes[0]]/2,p[axes[1]]/2)
+ o=bpy.data.objects.new(name,data);col.objects.link(o);parts.append(o);return o
+
+def deck(name,ring,height,thickness,material):
+ ring=[Vector((x,-z,0))for x,z in ring]
+ if sum(ring[i].x*ring[(i+1)%len(ring)].y-ring[(i+1)%len(ring)].x*ring[i].y for i in range(len(ring)))<0:ring.reverse()
+ n=len(ring);top=[Vector((p.x,p.y,height(p.x,-p.y)))for p in ring];vs=[tuple(p-Vector((0,0,thickness)))for p in top]+[tuple(p)for p in top];lookup={tuple(p):i for i,p in enumerate(ring)};faces=[]
+ for tri in tessellate_polygon([ring]):
+  ix=[p if isinstance(p,int)else lookup[tuple(p)]for p in tri]
+  if (ring[ix[1]]-ring[ix[0]]).cross(ring[ix[2]]-ring[ix[0]]).z<0:ix.reverse()
+  faces.extend([tuple(reversed(ix)),tuple(i+n for i in ix)])
+ for i in range(n):j=(i+1)%n;faces.append((i,j,j+n,i+n))
+ return mesh(name,vs,faces,material)
+def box(name,lo,hi,material):return deck(name,[(lo[0],lo[2]),(hi[0],lo[2]),(hi[0],hi[2]),(lo[0],hi[2])],lambda x,z:hi[1],hi[1]-lo[1],material)
+def bar(name,a,b,width,depth,material):
+ a,b=B(a),B(b);axis=(b-a).normalized();u=axis.cross(Vector((0,0,1)))
+ if u.length<.01:u=Vector((1,0,0))
+ u.normalize();v=axis.cross(u).normalized();vs=[tuple(p+su*u*width/2+sv*v*depth/2)for p in[a,b]for su,sv in[(-1,-1),(1,-1),(1,1),(-1,1)]];return mesh(name,vs,[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],material)
+def floor_y(z):return 45.45 if z<=211.4 else 44 if z>=252.3 else 45.45-(z-211.4)*1.45/40.9
+# Three floor areas plus the measured entrance threshold. Adjacent pieces share edges without overlapping area.
+entrance=[(100.25,208.6),(103.3,208.6),(103.3,211.4),(100.25,211.4),(100.25,211.19995),(100.00005,211.19995),(100.00005,208.80005),(100.25,208.80005)]
+deck('AQER_East_EntranceFloor',entrance,lambda x,z:45.45,.24,blue);deck('AQER_East_RampFloor',[(100.25,211.4),(103.3,211.4),(103.3,252.3),(100.25,252.3)],lambda x,z:floor_y(z),.24,blue)
+flat=[(54.15,242.00005),(55.8,242.00005),(55.8,252.3),(103.3,252.3),(103.3,255.6),(54.15,255.6)];deck('AQER_SouthWest_LevelFloor',flat,lambda x,z:44,.24,blue)
+# Continuous profiled guard edges; the service aperture and existing public tongue remain open.
+edges=[('East',(103.3,208.6),(103.3,255.6)),('East',(100.25,211.4),(100.25,252.3)),('East',(100.25,208.6),(103.3,208.6)),('East',(100.00005,208.80005),(100.25,208.6)),('South',(55.8,252.3),(100.25,252.3)),('South',(54.15,255.6),(103.3,255.6)),('West',(54.15,242.00005),(54.15,255.6)),('West',(55.8,242.00005),(55.8,252.3))]
+for i,(zone,a,b)in enumerate(edges):
+ length=(Vector(b)-Vector(a)).length;n=max(1,math.ceil(length/3.5));height=(lambda z:floor_y(z))if zone=='East'else(lambda z:44)
+ for j in range(n):
+  p=Vector(a).lerp(Vector(b),j/n);q=Vector(a).lerp(Vector(b),(j+1)/n);pa=(p.x,height(p.y),p.y);pb=(q.x,height(q.y),q.y)
+  for tag,above,w,d in [('Toe',.075,.055,.15),('Mid',.57,.035,.035),('Top',1.1,.055,.055)]:bar(f'AQER_{zone}_Edge{i}_{j}_{tag}',(pa[0],pa[1]+above,pa[2]),(pb[0],pb[1]+above,pb[2]),w,d,zinc)
+  bar(f'AQER_{zone}_Edge{i}_{j}_Post',(p.x,height(p.y),p.y),(p.x,height(p.y)+1.1,p.y),.055,.055,zinc)
+# Substrate roots are embedded within the existing .24m slab thickness; original annex and lower rooms are untouched.
+for i,z in enumerate([210,218,226,234,242]):
+ name=f'AQER_East_SubstrateRoot{i}';bar(name,(99.7,43.85,z),(103.25,43.85,z),.16,.14,zinc);bearings.append({'name':name,'source_region':'AQD_annex_substrate','point':[99.8,44,z]})
+ for x in[100.3,103.2]:
+  top=floor_y(z)-.21
+  if top>43.92:bar(f'AQER_East_RampPier{i}_{x}',(x,43.9,z),(x,top,z),.08,.08,zinc)
+for i,x in enumerate([62,70,78,86,94]):
+ name=f'AQER_South_SubstrateRoot{i}';bar(name,(x,43.85,249.7),(x,43.85,255.5),.16,.14,zinc);bearings.append({'name':name,'source_region':'AQD_annex_substrate','point':[x,44,249.7]})
+bar('AQER_South_CornerBrace',(94,43.85,249.7),(103.2,43.85,255.3),.16,.14,zinc)
+for i,z in enumerate([244,247,249.7]):
+ name=f'AQER_West_ExistingFloorRoot{i}';bar(name,(53.7,43.85,z),(55.75,43.85,z),.16,.14,zinc);bearings.append({'name':name,'source_region':'D08_gentle_waters_floor','point':[53.8,44,z]})
+# Compact original task fixtures fit within the declared portal reservation height and mount positively into new posts.
+fixtures=[('East',102.31,z,0)for z in[210,218,226,234,242,250]]+[('South',x,253.29,math.pi/2)for x in[62,70,78,86,94]]+[('West',54.81,z,0)for z in[246,252]]
+lightrow=next(l for l in source['lights']if l['name']=='G8O_LIGHT_CleanDeliveryTask')
+for i,(zone,x,z,yaw)in enumerate(fixtures):
+ h=floor_y(z)if zone=='East' else 44;anchor=(x,h+1.95,z);transform=Matrix.Translation(B(anchor))@Matrix.Rotation(yaw,4,'Z')@Matrix.Translation(-B((52.96,64.2,-228)));objs=[]
+ for src in templates.values():
+  o=src.copy();o.data=src.data;o.parent=None;o.matrix_world=transform@src.matrix_world;o.name=f'AQER_{zone}_Light{i}__'+src.name;col.objects.link(o);parts.append(o);objs.append(o);clones.append({'name':o.name,'source':src.name,'rigid_matrix_blender':[list(r)for r in transform]})
+ lens=next(o for o in objs if o.name.endswith('_Lens'));at=GV(transform@B(lightrow['at']));lights.append({'name':f'AQER_LIGHT_{i}','at':list(at),'colour':lightrow['colour'],'energy':lightrow['energy'],'range':lightrow['range'],'lens':lens.name});mount=GV(transform@B((53.89,64.28,-228)));post=(mount.x,mount.z);bar(f'AQER_{zone}_LightPost{i}',(post[0],h,post[1]),(post[0],h+2.17,post[1]),.12,.12,zinc)
+for o in old:bpy.data.objects.remove(o,do_unlink=True)
+for im in bpy.data.images:
+ if im.source=='FILE'and not im.packed_file:im.pack()
+bpy.data.texts.new('EXTERNAL_RECEIVER_POLICY.json').write(json.dumps(plan,indent=2));bounds=[]
+for o in parts:
+ o.data.calc_loop_triangles();ps=[GV(o.matrix_world@Vector(v))for v in o.bound_box];bounds.append({'name':o.name,'min':[min(p[i]for p in ps)for i in range(3)],'max':[max(p[i]for p in ps)for i in range(3)],'triangles':len(o.data.loop_triangles)})
+runtime=bpy.data.collections.new('AQUATIC_EXTERNAL_RECEIVING_RUNTIME_R001');bpy.context.scene.collection.children.link(runtime);groups={};batchrows=[]
+for o in parts:
+ for f in o.data.polygons:
+  material=o.data.materials[f.material_index];key=(o.name.split('_')[1],material.name,not o.name.endswith('_Lens'));g=groups.setdefault(key,{'vs':[],'fs':[],'uvs':[],'members':set()});g['members'].add(o.name);ix=[]
+  for li in f.loop_indices:ix.append(len(g['vs']));g['vs'].append(tuple(o.matrix_world@o.data.vertices[o.data.loops[li].vertex_index].co));g['uvs'].append(tuple(o.data.uv_layers.active.data[li].uv))
+  g['fs'].append(ix)
+for i,(key,g)in enumerate(sorted(groups.items())):
+ name=f'AQER_BATCH_{i:03d}_{key[0]}';data=bpy.data.meshes.new(name);data.from_pydata(g['vs'],[],g['fs']);data.update();data.materials.append(bpy.data.materials[key[1]]);uv=data.uv_layers.new(name='UVMap')
+ for li in range(len(data.loops)):uv.data[li].uv=g['uvs'][data.loops[li].vertex_index]
+ o=bpy.data.objects.new(name,data);runtime.objects.link(o);ps=[GV(Vector(v))for v in o.bound_box];batchrows.append({'name':name,'material':key[1],'collide':key[2],'members':sorted(g['members']),'min':[min(p[j]for p in ps)for j in range(3)],'max':[max(p[j]for p in ps)for j in range(3)]})
+for row in lights:row['lens_batch']=next(b['name']for b in batchrows if row['lens']in b['members'])
+I=D/'import/Game/assets/aquatic_external_receiving_20261015';I.mkdir(parents=True,exist_ok=True);file=I/'AQUATIC_EXTERNAL_SERVICE_RECEIVER_r002.glb';bpy.ops.object.select_all(action='DESELECT')
+for o in runtime.objects:o.select_set(True)
+bpy.ops.export_scene.gltf(filepath=str(file),export_format='GLB',use_selection=True,export_yup=True,export_extras=False,export_cameras=False,export_lights=False);col.hide_render=True;N=D/'native';N.mkdir(exist_ok=True);native=N/'AQUATIC_EXTERNAL_SERVICE_RECEIVER_r002.blend';bpy.ops.wm.save_as_mainfile(filepath=str(native),compress=True);bpy.ops.wm.open_mainfile(filepath=str(native));fresh=D/'FRESH_REEXPORT_r002.glb';bpy.ops.export_scene.gltf(filepath=str(fresh),export_format='GLB',use_selection=True,export_yup=True,export_extras=False,export_cameras=False,export_lights=False);assert sha(file)==sha(fresh)and sha(donor)==plan['source_native_sha256'];r={'status':'PASS_EXACT_REOPENED_NATIVE_EXPORT_CANDIDATE_UNADOPTED','file':file.name,'native_file':native.name,'native_sha256':sha(native),'model_sha256':sha(file),'authoring_meshes':len(parts),'runtime_meshes':len(batchrows),'bounds':bounds,'batches':batchrows,'rigid_clones':clones,'lights':lights,'source_bearings':bearings,'source_pins':plan['source_pins'],'source_native_sha256':plan['source_native_sha256'],'primary_engineering_operations_or_final_acceptance':False};(D/'NATIVE_VERIFICATION.json').write_text(json.dumps(r,indent=2)+'\n');print('PASS_AQUATIC_EXTERNAL_NATIVE',len(parts),len(batchrows),len(lights))

@@ -1,0 +1,46 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+const D="/workspace/astraea-integration-cutoff-20261013/aquatic_external_receiving_20261015/"
+func _initialize()->void:
+ for path in["/workspace/astraea-synthesis-adoption-20261012/SYNTHESIS_ACTUAL_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/GROUP5_PUBLIC_VALIDATION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/READY_DRY_THERMAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ENVELOPE_MEDICAL_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/TRAM_REMAINING_G8_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/DINING_SERVICE_ADOPTION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/ORCHARD_RECEIVING_ADOPTION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/SYNTHESIS_EXTERNAL_ADOPTION_OVERLAY.zip","/workspace/astraea-integration-cutoff-20261013/D09_RETAIL_SERVICE_ADOPTION_OVERLAY.zip"]:assert(ProjectSettings.load_resource_pack(path,true))
+ call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func top_faces(space:PhysicsDirectSpaceState3D,x0:float,x1:float,z0:float,z1:float)->Array:
+ var box:=BoxShape3D.new();box.size=Vector3(x1-x0,.28,z1-z0);box.margin=0.;var q:=PhysicsShapeQueryParameters3D.new();q.shape=box;q.margin=0.;q.transform.origin=Vector3((x0+x1)/2,52.39,(z0+z1)/2);var rows:Array=[];var seen:Dictionary={}
+ for hit in space.intersect_shape(q,1024):
+  var body:Node=hit.collider
+  for shape:CollisionShape3D in body.find_children("*","CollisionShape3D",true,false):
+   if not shape.shape is ConcavePolygonShape3D or seen.has(shape.get_instance_id()):continue
+   seen[shape.get_instance_id()]=true;var faces:PackedVector3Array=shape.shape.get_faces();var triangles:Array=[]
+   for i in range(0,faces.size(),3):
+    var a:Vector3=shape.global_transform*faces[i];var b:Vector3=shape.global_transform*faces[i+1];var c:Vector3=shape.global_transform*faces[i+2]
+    if absf(a.y-52.5)>.0002 or absf(b.y-52.5)>.0002 or absf(c.y-52.5)>.0002:continue
+    if maxf(a.x,maxf(b.x,c.x))<x0 or minf(a.x,minf(b.x,c.x))>x1 or maxf(a.z,maxf(b.z,c.z))<z0 or minf(a.z,minf(b.z,c.z))>z1:continue
+    triangles.append([[a.x,a.z],[b.x,b.z],[c.x,c.z]])
+   if not triangles.is_empty():rows.append({"source_shape":str(shape.get_path()),"shape_faces_sha256":digest(faces.to_byte_array()),"triangles_xz":triangles})
+ return rows
+func digest(bytes:PackedByteArray)->String:
+ var h:=HashingContext.new();h.start(HashingContext.HASH_SHA256);h.update(bytes);return h.finish().hex_encode()
+func occupants(space:PhysicsDirectSpaceState3D,at:Vector3)->Array:
+ var shape:=CapsuleShape3D.new();shape.radius=.3;shape.height=1.8;shape.margin=.001;var q:=PhysicsShapeQueryParameters3D.new();q.shape=shape;q.transform.origin=at+Vector3.UP*.925;var out:Array=[]
+ for hit in space.intersect_shape(q,128):out.append(str(hit.collider.get_path()))
+ for delta in[Vector3(.3,0,0),Vector3(0,0,.3)]:
+  var h:=ray(space,at+Vector3.UP-delta,at+Vector3.UP+delta)
+  if not h.is_empty()and not str(h.collider.get_path())in out:out.append(str(h.collider.get_path()))
+ return out
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(60);var ship:Node3D=main.get_node("World360/Astraea");var player:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");player.set_physics_process(false);player.global_position=Vector3(99.2,45.48,210);player.force_update_transform();ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(player.global_position);ship.get_node("ShipSystems/RemainingBatchStreaming").prepare_position(player.global_position);await frames(4);player.global_position=Vector3(0,0,0);player.force_update_transform();await frames(3);var space:=ship.get_world_3d().direct_space_state;var floor_rows:Array=[]
+ for z in[190.,208.6,210.,211.4,225.,238.,240.,244.,248.,250.,252.,254.,256.]:
+  for x in[52.4,54.,55.,55.8,56.2,58.,62.,99.2,100.1,101.6,103.3,106.,108.,112.,116.,119.]:
+   var at:=Vector3(x,53,z);var h:=ray(space,at,Vector3(x,34,z));floor_rows.append({"xz":[x,z],"highest_floor_owner":str(h.collider.get_path())if not h.is_empty()else"","highest_hit_y":h.position.y if not h.is_empty()else null});var q:=PhysicsRayQueryParameters3D.create(Vector3(x,45.53,z),Vector3(x,43.7,z));var low:=space.intersect_ray(q);floor_rows[-1]["D08_floor_owner"]=str(low.collider.get_path())if not low.is_empty()else"";floor_rows[-1]["D08_floor_y"]=low.position.y if not low.is_empty()else null
+ var stances:Array=[]
+ for at:Vector3 in[Vector3(99.2,45.45,210),Vector3(99.2,45.48,210),Vector3(101.6,45.45,210),Vector3(101.6,44,254),Vector3(55,44,254),Vector3(55,44,250),Vector3(55,44,246),Vector3(55,44,240),Vector3(56.8,44,240)]:stances.append({"at":[at.x,at.y,at.z],"occupants":occupants(space,at)})
+ var inside_faces:Array=[]
+ for path in occupants(space,Vector3(99.2,45.48,210)):
+  var body:Node=root.get_node_or_null(NodePath(path))
+  if body==null or not body.get_parent()is MeshInstance3D:continue
+  var mesh:MeshInstance3D=body.get_parent();var vs:PackedVector3Array=mesh.mesh.get_faces()
+  for i in range(0,vs.size(),3):
+   var a:Vector3=mesh.global_transform*vs[i];var b:Vector3=mesh.global_transform*vs[i+1];var c:Vector3=mesh.global_transform*vs[i+2];var low:=Vector3(minf(a.x,minf(b.x,c.x)),minf(a.y,minf(b.y,c.y)),minf(a.z,minf(b.z,c.z)));var high:=Vector3(maxf(a.x,maxf(b.x,c.x)),maxf(a.y,maxf(b.y,c.y)),maxf(a.z,maxf(b.z,c.z)))
+   if AABB(low,high-low).intersects(AABB(Vector3(98.88,45.5,209.68),Vector3(.64,1.82,.64))):inside_faces.append({"owner":path,"tri":[[a.x,a.y,a.z],[b.x,b.y,b.z],[c.x,c.y,c.z]]})
+ FileAccess.open(D+"CURRENT_RECEIVING_DESTINATIONS_AND_CLEARANCES.json",FileAccess.WRITE).store_string(JSON.stringify({"status":"CURRENT_AQUATIC_EXTERNAL_RECEIVING_DATUM_SURVEY","production_changed":false,"floor_rows":floor_rows,"candidate_stances":stances,"inside_contact_faces":inside_faces,"protected_portal_flanges_seam_and_capacities_unchanged":true},"  "));print("PASS_AQUATIC_RECEIVING_DATUM_AND_DESTINATION_SURVEY");quit(0)

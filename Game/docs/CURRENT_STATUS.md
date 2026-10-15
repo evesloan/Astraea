@@ -1,3 +1,9 @@
+## Latest physical integration: aquatic external operator receiving
+
+The protected100/45.45/210 onward portal now reaches the unchanged44m public seam through a gentle external descent and an outside return path. The selected r002 native owns313.075m² projected floor,313.153m² physical surface,344 editable meshes and11 runtime batches.13 original compact task housings use unchanged source geometry,UVs,image payloads andlight profiles.13 embedded bearing witnesses connect to actual retained substrate/dry slabs;source floor records,gate IDs,flanges andcapacity are unchanged.
+
+Default current Main passes18 continuous original-controller legs,162 floor samples and13 bearing witnesses withno prior-floor duplication or unexplained contacts.239 retained annex meshes keep their poses andresources. r001’s route passed butseven contacts against original ivory trim blocked its adoption; r002 moves onlythe new inner edge100mm outward,leaving approximately62.5mm clearance. Both immutable variants andfailed evidence remain retained. The declared99.2/45.45/210 inside reference is occupied bya retained fitting;the actual operator route bypasses it without editing the source. The new final leg is1.65m. Primary capacity/load sizing,loaded carts,species,wet/pressure/stock/water/network/save andfinalvisual acceptance remain open.
+
 ## Latest physical integration: D09 retail service receiving
 
 Living’s retained service_left_r002 cassette is now installed on its unchanged existing floor:33 source meshes, original four-panel mechanics, two source-mounted controls and the stable physical service-threshold ID. Its public assembly remains the same instance; the original column, floor, fixtures and exterior turn remain unchanged. Default Main passes seven actual-controller legs, four ordinary RMB/E operations and272 moving-panel poses. This receives the measured service plane0.5m beyond the source interior bay without duplicating floor or public geometry.
