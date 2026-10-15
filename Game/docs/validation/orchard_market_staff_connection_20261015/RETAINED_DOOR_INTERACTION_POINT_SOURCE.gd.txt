@@ -1,0 +1,7 @@
+func door_point(door: Node3D) -> Vector3:
+	# The fully retracted leaf centre sits behind the retained staff north wall.
+	# Aim at a real leaf point nearer its aperture-facing edge instead. The
+	# existing2.5m view ray remains intact and may hit its own fitted pocket skin.
+	# This works geometrically from either side without reaching through a wall.
+	return door.leaves[0].global_transform * Vector3(door.leaf_width*.4,1.26,0)
+

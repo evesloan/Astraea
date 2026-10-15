@@ -1,3 +1,11 @@
+## Latest coupled verification: Orchard Market service connection
+
+The protected port fore404 receiver now has a continuous unladen operator route through the retained Market dry loop, screened service vestibule and original service door to the existing D09 staff spine and forward staff lift landing, followed by the complete return. Current Main passes 54 original-controller walking legs and four normal RMB/E door operations. All four original Market door states, identities and poses are restored; the original lift stop heights and IDs remain unchanged. No runtime geometry or controller code changes were needed.
+
+The first probe aimed through the empty opening after the door retracted. That failed attempt remains retained. The final probe uses the exact aperture-facing leaf point from the existing Grand Pool door validation, with physically walked interaction stances. There are no teleports within the route, no disabled contacts and no direct interaction-method calls. Source authentication316 is reused with unchanged runtime-file hashes.
+
+This establishes the physical unladen service connection. Starboard receiving and all84 authoritative address joins remain held. It does not admit cart/species fit, staff permissions, stock/save operations, the full network or final art. The workspace remained intact after the reported10:13UTC environment disconnect; no replacement or restoration was needed.
+
 ## Latest physical integration: port fore404 Orchard Market receiver
 
 The retained STAFFLINK_D09_PF404 now physically reaches the actual OrchardMarket gallery andits existingdryloop across the measured6.5m gap. r002owns23.3997m²missing-onlyfloor,25editablemeshes/five runtime meshes,a3.1m opening inone exactretainedwallbatch,one originalcompacttaskfixture andeight existingfloor/roofbearingwitnesses. No shop,programme,room,door,lift,capacity orcompiledfloorrecord isadded orreidentified. All84addressjoins remainunresolved;thisphysicaltarget doesnotinvent sharedriser addressmappings. Starboardstilllacks a realreceiver andremainsheld.
