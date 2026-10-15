@@ -240,6 +240,7 @@ func _ready() -> void:
 	load("res://scripts/consolidated_all_eight_20261013/package.gd").build(self)
 	# Approved six-house receiving frames and exact retained floors; engineering and room admission remain held.
 	load("res://scripts/approved_receivers_20261014/package.gd").build(self)
+	load("res://scripts/private_pit_receivers_20261015/package.gd").build(self)
 	load("res://scripts/received_homes_20261015/package.gd").build(self)
 	load("res://scripts/group4_integrated_receiving.gd").before_budget(self)
 	lighting_budget.configure(self,player)

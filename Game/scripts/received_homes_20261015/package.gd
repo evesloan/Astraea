@@ -4,8 +4,8 @@ static func build(ship:Node3D)->Node3D:
  assert(ship.get_node_or_null("ShipSpace/ApprovedSixHouseReceiving")!=null)
  var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/received_homes_20261015/HOMES.json"))
  var group:=Node3D.new();group.name="ApprovedGroup2Homes";ship.get_node("ShipSpace/Districts").add_child(group)
- group.set_meta("source_homes_registered",75)
- group.set_meta("private_multilevel_dependency_gate",["787","792","794","795","797"])
+ group.set_meta("source_homes_registered",80)
+ group.set_meta("private_multilevel_dependency_gate",[])
  group.set_meta("registry_identity_or_capacity_migrated",false)
  group.set_meta("default_main_adoption",true)
  for row in data.homes:
