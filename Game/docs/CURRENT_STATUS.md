@@ -1,3 +1,11 @@
+## Latest receiving correction: actual fixture roof support
+
+Vesper and Orchard external approaches retain their installed floors, walls, frames, source identities and routes. Three Vesper and two Orchard6m task hoods had crossed4m corridors, leaving outer stems beyond the roof. r002 rotates these five assemblies along the corridors; Vesper’s end hood also moves3.2m along its existing corridor so the whole assembly fits beneath its roof. All35 fixture mesh poses are explicit rigid changes; all819 original editable mesh data, remaining poses, referenced image payloads and the retained Orchard wall derivatives are preserved. Both immutable r001 sources/exports remain.
+
+Independent native geometry/UV/fresh-export and roof-envelope checks pass. Current Main329/330 passes18actual roof-bearing witnesses,18clear emitter exits,18real floor receivers andsix original-controller legs through changed areas. The complete old routes were retained without replay. Source authentication326 is reused with unchanged runtime code/proof/source pins. No new render was made. The Library cutaway libfile_ca85f73e9c888191a75930907cb29f83 depicts retained Vesper r001, rather than the corrected fixture layout.
+
+This corrects a physical support defect. Game/CRT/final visual review, primary structural sizing and service operations remain unaccepted. Separate staff kitchen landing, starboard receiver and all84address mappings remain held. A named starboard candidate now has measured Copper Kettle authored floor and an exact Perimeter_5 interface; it is not yet built or admitted.
+
 ## Latest physical integration: Vesper service receiving
 
 A new screened external operator approach connects the retained D10 axial floor at Z170 to Vesper’s east edge at Z230, then uses the existing floor and original service door to reach its clean and used work surfaces. The 499.19963m² missing-only floor has six embedded slab joints,442 editable components/four runtime batches and ten original-profile task lights. The earlier Z176 alignment intersects the retained Crown pier; the adopted alignment leaves that geometry untouched. No original mesh, room, capacity, lift stop or identity changes.
