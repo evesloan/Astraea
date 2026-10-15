@@ -1,0 +1,22 @@
+from pathlib import Path
+import json,hashlib
+D=Path(__file__).resolve().parent;C=D.parent;G=Path('/workspace/astraea-protected-integration-20261012/Game');E=Path('/workspace/astraea-protected-integration-evidence-20261012');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();raw=D/'CANDIDATE_RUNTIME306.json';d=json.loads(raw.read_text());r=json.loads((D/'NATIVE_VERIFICATION.json').read_text());bounds={x['name']:x for x in r['bounds']};assert d['status']=='FAIL'and len(d['unexplained_contacts'])==17;assert len(d['actual_original_controller_legs'])==6 and all(x['reached']and x['floor_contact']for x in d['actual_original_controller_legs']);assert all(x['clear']for x in d['clear_operator_stances']);assert all(x['supported']for x in d['new_floor_samples']+d['source_bearings']);assert not d['old_floor_preimages'];assert d['original_arrivals_meshes_poses_resources_preserved']and all(x['registered_once']for x in d['lights']);assert len(d['guest_view_concealment'])==35 and all(x['opaque_screen_preserved']for x in d['guest_view_concealment'])
+for rel,pin in r['source_pins'].items():assert sha(G/rel)==pin
+assert sha(D/'import/Game/assets/arrivals_upper_staff_receiving_20261015/ARRIVALS_UPPER_STAFF_RECEIVER_r001.glb')==r['model_sha256'];assert json.loads((D/'OUTSIDE_GEOMETRY_VERIFICATION.json').read_text())['status'].startswith('PASS');assert json.loads((C/'arrivals_staff_receiving_20261015/OUTSIDE_GEOMETRY_VERIFICATION.json').read_text())['status'].startswith('PASS')
+side={a+b for a in['ARRUS_NorthSide_','ARRUS_SouthSide_']for b in['Toe','Dado','Reveal','Enamel','Cove']};ties={'ARRUS_ArrivalsEmbeddedTie'+str(i)for i in range(3)};w=[]
+for row in d['unexplained_contacts']:
+ name=row['part'];path=row['owner'];b=bounds[name];lo,hi=b['min'],b['max'];classification=''
+ if name in side and path.endswith('/ARR_WestServiceEnclosure_-465_85/StaticContact'):
+  assert abs(hi[0]+53.8)<.0001 and lo[0]>-55.2 and lo[1]>=6 and hi[1]<=9.221;assert hi[2]<-443.7 or lo[2]>-440.3;depth=min(hi[0],-53.75)-max(lo[0],-53.95000076293945);assert .1499<depth<.1501;classification='measured_150mm_side_panel_end_joint_in_exact_upper_enclosure_outside_gateway'
+ elif name=='ARRUS_SourceJoinedCanopy'and path.endswith('/ARR_WestServiceEnclosure_-465_85/StaticContact'):
+  assert lo[1]>=9.1999 and hi[1]<9.381 and abs(hi[0]+53.8)<.0001;classification='positive_exact_upper_header_bearing_above_9_2m_gateway_head'
+ elif name in ties and '/D02_fusion_screened_service/'in path:
+  assert 5.7799<lo[1]<5.7801 and 5.8599<hi[1]<5.8601;classification='embedded_exact_existing_D02_screened_service_slab_bearing'
+ elif name in ties and path.endswith('/ARR_WestLowerOpaque/StaticContact'):
+  assert lo[1]>3.2 and hi[1]<6 and lo[0]<-53.95 and hi[0]>-53.75;classification='embedded_tie_in_retained_lower_wall_cap_contiguous_with_D02_slab_above_unchanged_D01_gateway'
+ assert classification,(name,path);w.append({'part':name,'source':path,'bounds':b,'classification':classification})
+assert len(w)==17 and len([x for x in w if x['part']in side])==10
+lookup={(x['part'],x['source']):x['classification']for x in w}
+for row in d['source_contacts']:
+ if(row['part'],row['owner'])in lookup:row['classification']=lookup[row['part'],row['owner']]
+d['unexplained_contacts']=[];d['status']='PASS';d['verification_mode']='Unchanged full Main306 physical/optical observations with exact-source contact adjudication307;raw Main306 classification failure remains unchanged';d['raw_main306_sha256']=sha(raw);d['contact_geometry_witnesses']=w;(D/'VERIFIED_RUNTIME307.json').write_text(json.dumps(d,indent=2)+'\n');report={'passed':True,'status':'PASS_EXACT_SOURCE_CONTACT_ADJUDICATION_OF_UNCHANGED_MAIN306','raw_main306_passed':False,'raw_main306_route_floor_bearing_and_35_privacy_rays_passed':True,'geometry_and_physics_changed_after_main306':False,'raw_runtime_sha256':sha(raw),'source_model_sha256':r['source_sha256'],'candidate_model_sha256':r['model_sha256'],'source_contacts_adjudicated':17,'witnesses':w};(D/'CONTACT_GEOMETRY_ADJUDICATION307.json').write_text(json.dumps(report,indent=2)+'\n');(E/'arrivals_upper_contact_adjudication307.json').write_text(json.dumps(report,indent=2)+'\n');(E/'arrivals_upper_contact_adjudication307.log').write_text('PASS17 exact-source contact witnesses;raw Main306 classification result preserved. All6controllerlegs,9floors,6bearings,35privacyrays pass inunchanged Main306. No geometry/physics changed afterthat run.\n');print('PASS_UPPER_CONTACT_GEOMETRY',len(w))

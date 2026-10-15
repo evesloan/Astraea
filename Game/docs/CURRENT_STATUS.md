@@ -1,3 +1,9 @@
+## Latest physical integration: screened D02 Arrivals staff receiver
+
+The exact6m screened service landing now receives the retained staff spine across a1.2m missing-floor gap. The native owns5.1598m² floor,31 editable meshes,11 runtime meshes,five exact wall preimages,one original-profile compact task source andsix existing-floor bearings. D01receiver,curatedsealed machinery,screens,existing doors/lifts/IDs/capacity,D03opaque cap andall303 sourcefloor records are preserved.
+
+Default current Main checks sixcontinuous original-controller crossings,nine floor samples,six bearings and35specified guest-view concealment rays,including both new receivers. Exact wall/rail geometry andUVs outside the scoped openings remain retained. Source export punctuation andGodot runtime node names are explicitly mapped;three failed startup attempts andthe raw Main306 contact-classification failure remain retained. The unchanged Main306 route/floor/bearing/concealment observations are combined with exactsource contact adjudication307;no geometry orphysics was changed afterward. Original ship andsuccessor-guard UIDsidecars are preserved. Primary load/capacity sizing,staff permissions,operations,species/save andfinalart remain open.
+
 ## Latest physical integration: Thread immutable contact successor
 
 Threadr005 replaces the selectedr002 furniture/stock candidate under the same original owner. It retainsr004 source geometry exceptsix trim meshes translated80mm clear of the original staff wall andtwo apertures cut onlyin the new2mm ceiling finish around the retained fixture housings.377 other native meshes keep geometry,UVs,material links andposes;all packed image payloads are exact. Fresh native reexport is byte identical. The unchanged ship architecture,doors,IDs,capacity andfixtures remain retained.
