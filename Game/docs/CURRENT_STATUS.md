@@ -1,3 +1,11 @@
+## Latest physical integration: Vesper service receiving
+
+A new screened external operator approach connects the retained D10 axial floor at Z170 to Vesper’s east edge at Z230, then uses the existing floor and original service door to reach its clean and used work surfaces. The 499.19963m² missing-only floor has six embedded slab joints,442 editable components/four runtime batches and ten original-profile task lights. The earlier Z176 alignment intersects the retained Crown pier; the adopted alignment leaves that geometry untouched. No original mesh, room, capacity, lift stop or identity changes.
+
+Current Main passes22continuous original-controller legs, four ordinary RMB/E operations of the original finishing-bay door, floor and source-bearing probes, and new/old contact checks. Exact original mesh resources/poses and lift stops are preserved; a fresh native export and source fixture/image/batch geometry checks pass. The retained first checks compared moving lift gates at different physics frames and aimed beyond the original2.5m door reach; the final check aligns the baseline frame and physically walks to a closer stance, with no geometry/controller changes. Earlier failures remain recorded.
+
+This is physical unladen receiving. The separate staff kitchen vertical landing remains unresolved; the staff lift gains no stop. Food/water/stock/roles/save, separate operational clean/used circulation, loaded carts, species, primary structural sizing and final visual acceptance remain held.
+
 ## Latest coupled verification: Orchard Market service connection
 
 The protected port fore404 receiver now has a continuous unladen operator route through the retained Market dry loop, screened service vestibule and original service door to the existing D09 staff spine and forward staff lift landing, followed by the complete return. Current Main passes 54 original-controller walking legs and four normal RMB/E door operations. All four original Market door states, identities and poses are restored; the original lift stop heights and IDs remain unchanged. No runtime geometry or controller code changes were needed.

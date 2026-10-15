@@ -1,0 +1,13 @@
+from pathlib import Path
+import json,hashlib,re,shutil,zipfile
+D=Path(__file__).parent;R=Path('/workspace/astraea-protected-integration-20261012');G=R/'Game';I=D/'import/Game';sha=lambda b:hashlib.sha256(b).hexdigest()
+p=json.loads((D/'NATIVE_VERIFICATION.json').read_text());s=Path('/workspace/astraea-integration-cutoff-20261013/orchard_external_receiving_20261015/package.gd').read_text();a=s.index(';var original:Node3D');b=s.index(' var contacts:Array',a);s=s[:a]+'\n'+s[b:];s=s.replace('group.set_meta("exact_selected_wall_preimages",witnesses);','').replace('OrchardExternalReceiving20261015','VesperServiceReceiving20261015').replace('orchard_external_receiving_20261015','vesper_service_receiving_20261015').replace('D10_directory_04','D10_directory_08').replace('"default_main_adoption",false','"default_main_adoption",true');s=s.replace('"Orchard exact source pin: "','"Vesper exact source pin: "');
+def write(n,b):
+ t=I/n;t.parent.mkdir(parents=True,exist_ok=True);t.write_bytes(b if isinstance(b,bytes)else b.encode())
+write('scripts/vesper_service_receiving_20261015/package.gd',s);write('data/vesper_service_receiving_20261015/NATIVE_VERIFICATION.json',(D/'NATIVE_VERIFICATION.json').read_bytes())
+k='scripts/ship.gd';old=(G/k).read_text();anchor='\tload("res://scripts/port_fore404_receiving_20261015/package.gd").build.call_deferred(self)\n';assert old.count(anchor)==1;new=old.replace(anchor,anchor+'\tload("res://scripts/vesper_service_receiving_20261015/package.gd").build.call_deferred(self)\n');proofpath='data/architecture/packages/botanical_pair_runtime/RUNTIME_PROOF.json';proof=json.loads((G/proofpath).read_text());assert proof['current_sha256'][k]==sha(old.encode());proof['inverse_edits'][k]=[{'before':old,'after':new,'count':1}]+proof['inverse_edits'][k];proof['current_sha256'][k]=sha(new.encode());recover=new
+for e in proof['inverse_edits'][k]:assert recover.count(e['after'])==e['count'];recover=recover.replace(e['after'],e['before'])
+assert sha(recover.encode())==proof['predecessors'][k]['sha256'];guard='tests/botanical_pair_successor_guard.gd';text=(G/guard).read_text();prior=re.search('const PROOF_SHA := "([0-9a-f]{64})"',text).group(1);assert sha((G/proofpath).read_bytes())==prior;pb=(json.dumps(proof,indent=2)+'\n').encode();write(k,new);write(proofpath,pb);write(guard,text.replace(prior,sha(pb)))
+for n in [k,guard]:write(n+'.uid',(G/(n+'.uid')).read_bytes())
+write('project.godot','config_version=5\n[application]\nconfig/name="Vesper Receiving Import"\n[rendering]\nrenderer/rendering_method="gl_compatibility"\n')
+(D/'STAGED_LOADER_PREIMAGES.json').write_text(json.dumps({n:sha((G/n).read_bytes())for n in[k,proofpath,guard]},indent=2)+'\n');print('STAGED_VESPER_CANDIDATE')
