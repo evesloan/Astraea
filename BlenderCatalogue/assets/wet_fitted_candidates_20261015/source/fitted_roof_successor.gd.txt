@@ -1,0 +1,28 @@
+extends RefCounted
+static func digest(bytes:PackedByteArray)->String:
+ var h:=HashingContext.new();h.start(HashingContext.HASH_SHA256);h.update(bytes);return h.finish().hex_encode()
+static func apply(ship:Node3D,owner:Node3D,rows:Array)->void:
+ var cutter=load("res://scripts/group2_portcentral_receiving_20261013/guard_window_successor.gd")
+ for row in rows:
+  assert(FileAccess.get_sha256("res://assets/models/"+str(row.model))==str(row.source_sha256))
+  var site:Node=ship.get_node("ShipSpace/Districts/"+str(row.receiver_root));var node:MeshInstance3D=site.find_child(str(row.node),true,false);assert(node!=null and node.global_transform.is_equal_approx(Transform3D.IDENTITY));assert(digest(node.mesh.get_faces().to_byte_array())==str(row.faces_sha256))
+  var colliders:Array[Node]=node.find_children("*","CollisionShape3D",true,false);assert(colliders.size()==1)
+ for row in rows:
+  var node:MeshInstance3D=ship.get_node("ShipSpace/Districts/"+str(row.receiver_root)).find_child(str(row.node),true,false);var old:Mesh=node.mesh;var collider:CollisionShape3D=node.find_children("*","CollisionShape3D",true,false)[0];var prior:Shape3D=collider.shape;var output:=ArrayMesh.new();var outside_triangles:=0
+  for surface in range(old.get_surface_count()):
+   var a:Array=old.surface_get_arrays(surface);var vs:PackedVector3Array=a[Mesh.ARRAY_VERTEX];var ns:PackedVector3Array=a[Mesh.ARRAY_NORMAL];var uv:PackedVector2Array=a[Mesh.ARRAY_TEX_UV];var ix:PackedInt32Array=a[Mesh.ARRAY_INDEX];var n:int=ix.size()if not ix.is_empty()else vs.size();var tool:=SurfaceTool.new();tool.begin(Mesh.PRIMITIVE_TRIANGLES);tool.set_material(old.surface_get_material(surface))
+   for start in range(0,n,3):
+    var tri:Array=[]
+    for j in range(3):
+     var i:int=ix[start+j]if not ix.is_empty()else start+j;tri.append({"p":vs[i],"n":ns[i],"uv":uv[i]if not uv.is_empty()else Vector2.ZERO})
+    var lo:Vector3=tri[0].p;var hi:Vector3=lo
+    for v:Dictionary in tri:lo=lo.min(v.p);hi=hi.max(v.p)
+    var box:Array=row.mask
+    var outside:bool=hi.x<box[0]or lo.x>box[1]or hi.y<box[2]or lo.y>box[3]or hi.z<box[4]or lo.z>box[5]
+    var pieces:Array=[tri]if outside else cutter.subtract(tri,row.mask)
+    for poly:Array in pieces:
+     for j in range(1,poly.size()-1):
+      for v:Dictionary in[poly[0],poly[j],poly[j+1]]:tool.set_normal(v.n);tool.set_uv(v.uv);tool.add_vertex(v.p)
+      outside_triangles+=1
+   tool.commit(output)
+  assert(outside_triangles>0);owner.set_meta(str(row.kit)+"_original_roof_mesh",old);owner.set_meta(str(row.kit)+"_original_roof_shape",prior);node.mesh=output;collider.shape=output.create_trimesh_shape();collider.shape.margin=prior.margin
