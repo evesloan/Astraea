@@ -1,0 +1,69 @@
+from pathlib import Path
+import bpy,json,hashlib,math
+from mathutils import Vector,Matrix
+from mathutils.geometry import tessellate_polygon
+D=Path(__file__).resolve().parent;T=D.parent/'theater_secondary_receiving_20261015';R=Path('/workspace/astraea-protected-integration-20261012');G=R/'Game';sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();old=json.loads((T/'NATIVE_VERIFICATION.json').read_text());donor=T/'native'/old['native_file'];assert bpy.app.version[:3]==(4,3,2)and sha(donor)==old['native_sha256'];assert not(G/'assets/theater_backstage_receiving_20261015').exists();bpy.ops.wm.open_mainfile(filepath=str(donor));bpy.context.preferences.filepaths.save_version=0
+for col in list(bpy.data.collections):col.hide_render=True
+col=bpy.data.collections.new('BACKSTAGE_RECEIVING_R001');bpy.context.scene.collection.children.link(col);metal=bpy.data.materials['ASTRAEA_champagne_metal'];glass=next(m for m in bpy.data.materials if'glass'in m.name.lower());stone=bpy.data.materials['warm_stone'];ivory=next(m for m in bpy.data.materials if'ivory'in m.name.lower());B=lambda p:Vector((p[0],-p[2],p[1]));GV=lambda p:Vector((p.x,p.z,-p.y));parts=[]
+def mesh(name,vs,fs,mat):
+ data=bpy.data.meshes.new(name);data.from_pydata(vs,[],fs);data.update();data.materials.append(mat);uv=data.uv_layers.new(name='UVMap')
+ for poly in data.polygons:
+  for i in poly.loop_indices:
+   p=data.vertices[data.loops[i].vertex_index].co;uv.data[i].uv=(p.x/4,p.y/4)
+ o=bpy.data.objects.new(name,data);col.objects.link(o);o['fitted_receiving_member']=True;parts.append(name);return o
+
+def prism(name,points,lo,hi,mat):
+ ring=[Vector((x,-z,lo))for x,z in points];area=sum(ring[i].x*ring[(i+1)%len(ring)].y-ring[(i+1)%len(ring)].x*ring[i].y for i in range(len(ring)))
+ if area<0:ring.reverse()
+ n=len(ring);vs=[tuple(p)for p in ring]+[(p.x,p.y,hi)for p in ring];triangles=tessellate_polygon([ring]);indices={tuple(v):i for i,v in enumerate(ring)};fs=[]
+ for tri in triangles:
+  ix=[indices[tuple(v)]for v in tri]
+  if (ring[ix[1]]-ring[ix[0]]).cross(ring[ix[2]]-ring[ix[0]]).z<0:ix.reverse()
+  fs.extend([tuple(reversed(ix)),tuple(i+n for i in ix)])
+ for i in range(n):j=(i+1)%n;fs.append((i,j,j+n,i+n))
+ return mesh(name,vs,fs,mat)
+def box(name,lo,hi,mat):return prism(name,[(lo[0],lo[2]),(hi[0],lo[2]),(hi[0],hi[2]),(lo[0],hi[2])],lo[1],hi[1],mat)
+def linebox(name,a,b,width,lo,hi,mat):
+ a,b=Vector(a),Vector(b);d=(b-a).normalized();u=Vector((-d.y,d.x))*width/2;return prism(name,[a-u,b-u,b+u,a+u],lo,hi,mat)
+def girder(name,a,b):
+ linebox(name+'_BottomFlange',a,b,.18,68.96,69.005,metal);linebox(name+'_Web',a,b,.045,69.,69.24,metal);linebox(name+'_TopFlange',a,b,.18,69.235,69.28,metal)
+floor=[(-34,-259.15),(-9.65,-259.15),(-9.65,-251.15),(-4,-251.15),(-4,-246.85),(-13.95,-246.85),(-13.95,-254.85),(-34,-254.85)];floor_area=abs(sum(floor[i][0]*floor[(i+1)%len(floor)][1]-floor[(i+1)%len(floor)][0]*floor[i][1]for i in range(len(floor)))/2);prism('Backstage_MissingOnlyWalkingFloor',floor,69.26,69.5,stone);roof=[(-34.7 if x==-34 else -3.85 if x==-4 else x,z)for x,z in floor];prism('Backstage_PositiveHeaderTieCanopy',roof,73.5,73.66,ivory)
+# Continuous I-section underframes andcrossmembers joinboth originalfloors throughbelow-floor laps.
+for i,z in enumerate([-259.,-255.]):girder('Backstage_WestLegStringer'+str(i),(-34.7,z),(-9.8,z))
+for i,x in enumerate([-13.8,-9.8]):girder('Backstage_CoreBypassStringer'+str(i),(x,-257),(x,-249))
+for i,z in enumerate([-251.,-247.]):girder('Backstage_AxialLegStringer'+str(i),(-11.8,z),(-3.85,z))
+for i,x in enumerate([-33.8,-30.,-26.,-22.,-18.,-14.,-10.]):linebox('Backstage_WestCross'+str(i),(x,-259),(x,-255),.16,69.04,69.28,metal)
+for i,z in enumerate([-253.,-249.]):linebox('Backstage_TurnCross'+str(i),(-13.8,z),(-9.8,z),.16,69.04,69.28,metal)
+for i,x in enumerate([-8.,-4.05]):linebox('Backstage_AxialCross'+str(i),(x,-251),(x,-247),.16,69.04,69.28,metal)
+for i,z in enumerate([-258.4,-257.,-255.6]):box('Backstage_OriginalFloorUnderlap'+str(i),(-35.4,69.32,z-.20),(-33.7,69.46,z+.20),metal)
+for i,z in enumerate([-250.4,-249.,-247.6]):box('Backstage_AxialFloorUnderlap'+str(i),(-4.6,69.30,z-.20),(-3.7,69.46,z+.20),metal)
+# Bounded guards remainopen atboth actualreceiving ends;return pieces matchthe3.4m sourceaperture.
+gp=[(-33.95,-258.8),(-10.,-258.8),(-10.,-250.8),(-4.05,-250.8),(-4.05,-247.2),(-13.6,-247.2),(-13.6,-255.2),(-33.95,-255.2)];guard_edges=[(gp[i],gp[(i+1)%8])for i in[0,1,2,4,5,6]];posts=set();columns=set()
+for k,(a,b)in enumerate(guard_edges):
+ a,b=Vector(a),Vector(b);n=max(1,math.ceil((b-a).length/2))
+ for i in range(n+1):
+  p=a.lerp(b,i/n);posts.add(tuple(round(v,5)for v in p))
+ for i in range(n):
+  p=a.lerp(b,i/n);q=a.lerp(b,(i+1)/n);linebox('Backstage_Guard'+str(k)+'_'+str(i)+'Glass',p,q,.018,69.64,70.5,glass);linebox('Backstage_Guard'+str(k)+'_'+str(i)+'Handrail',p,q,.09,70.50,70.60,metal);linebox('Backstage_Guard'+str(k)+'_'+str(i)+'Toe',p,q,.09,69.52,69.62,metal)
+ for i in range(max(1,math.ceil((b-a).length/6))+1):columns.add(tuple(round(v,5)for v in a.lerp(b,i/max(1,math.ceil((b-a).length/6)))))
+ linebox('Backstage_CanopyEdge'+str(k),a,b,.13,73.58,73.78,metal)
+for i,(x,z)in enumerate(sorted(posts)):box('Backstage_GuardPost'+str(i),(x-.03,69.48,z-.03),(x+.03,70.62,z+.03),metal)
+for i,(x,z)in enumerate(sorted(columns)):
+ box('Backstage_CanopyFoot'+str(i),(x-.11,69.48,z-.11),(x+.11,69.55,z+.11),metal)
+ for token,xa,xb,za,zb in[('WestFlange',x-.065,x-.035,z-.065,z+.065),('Web',x-.04,x+.04,z-.018,z+.018),('EastFlange',x+.035,x+.065,z-.065,z+.065)]:box('Backstage_ProfilePost'+str(i)+token,(xa,69.53,za),(xb,73.63,zb),metal)
+for i,(za,zb)in enumerate([(-258.8,-258.7),(-255.3,-255.2)]):
+ for token,width,lo,hi,mat in[('Toe',.09,69.52,69.62,metal),('Glass',.018,69.64,70.5,glass),('Rail',.09,70.5,70.6,metal)]:linebox('Backstage_SourceApertureReturn'+str(i)+token,(-34,za),(-34,zb),width,lo,hi,mat)
+# Four exact rigid coffer fixtures fromthealreadyinstalled D11 secondary approach,withpositiveceiling mounts.
+fixtures=[o for o in bpy.data.collections['SECONDARY_D11'].objects if o.name.startswith('D11_SECONDARY_D12__TB_COFF_0_')];assert len(fixtures)==6;clones=[];lights=[]
+for i,target in enumerate([(-29,73.05,-257),(-19,73.05,-257),(-11.8,73.05,-253),(-7,73.05,-249)]):
+ delta=B(target)-B((-29,73.05,-171.7));made=[]
+ for src in fixtures:
+  o=src.copy();o.data=src.data;o.parent=None;o.matrix_world=Matrix.Translation(delta)@src.matrix_world;o.name='Backstage_Coffer'+str(i)+'_'+src.name.rsplit('_',1)[-1];col.objects.link(o);o['retained_source_fixture_mesh']=src.name;made.append(o);clones.append({'new':o.name,'source':src.name,'world_translation_godot':[0 if k<2 else target[2]+171.7 for k in range(3)]})
+ back=next(o for o in made if o.name.endswith('_BACK'));ps=[GV(back.matrix_world@Vector(v))for v in back.bound_box];top=max(p.y for p in ps);assert top<=73.52;cx=sum(p.x for p in ps)/8;cz=sum(p.z for p in ps)/8;box('Backstage_CofferMount'+str(i),(cx-.07,top-.02,cz-.07),(cx+.07,73.52,cz+.07),metal);lens=next(o for o in made if o.name.endswith('_LENS'));lights.append({'name':'BackstageCoffer'+str(i),'lens':lens.name,'at':list(target),'range_m':8,'energy':1.6,'spot_angle':65,'color':[1,.91,.8]})
+for image in bpy.data.images:
+ if image.source=='FILE'and not image.packed_file:image.pack()
+policy={'floor_outline_xz':floor,'floor_y':69.5,'floor_area_m2':floor_area,'clear_route_min_m':3.4,'ceiling_underside_y':73.5,'source_door_aperture_z':[-258.7,-255.3],'source_door_closed_and_inactive':True,'no_core_wall_cut':True,'compiled_floor_or_room_registry_changes':0,'capacity_or_primary_load_or_venue_operation_accepted':False,'source_native_sha256':old['native_sha256']};bpy.data.texts.new('RECEIVING_FIT_POLICY.json').write(json.dumps(policy,indent=2));I=D/'import/Game/assets/theater_backstage_receiving_20261015';I.mkdir(parents=True,exist_ok=True);file=I/'THEATER_BACKSTAGE_RECEIVING_r001.glb';bpy.ops.object.select_all(action='DESELECT')
+for o in col.objects:o.select_set(True)
+bpy.ops.export_scene.gltf(filepath=str(file),export_format='GLB',use_selection=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False);N=D/'native';N.mkdir(exist_ok=True);native=N/'THEATER_BACKSTAGE_RECEIVING_r001.blend';bpy.ops.wm.save_as_mainfile(filepath=str(native),compress=True);bpy.ops.wm.open_mainfile(filepath=str(native));bpy.ops.object.select_all(action='DESELECT')
+for o in bpy.data.collections['BACKSTAGE_RECEIVING_R001'].objects:o.select_set(True)
+fresh=D/'FRESH_REEXPORT.glb';bpy.ops.export_scene.gltf(filepath=str(fresh),export_format='GLB',use_selection=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False);assert sha(fresh)==sha(file)and sha(donor)==old['native_sha256'];receipt={'status':'PASS_NATIVE_FRESH_EXPORT_EXACT_CURRENT_SHIP_FITTING_PENDING','native_sha256':sha(native),'model_sha256':sha(file),'file':file.name,'meshes':len(bpy.data.collections['BACKSTAGE_RECEIVING_R001'].objects),'policy':policy,'rigid_fixture_clones':clones,'lights':lights};(D/'NATIVE_VERIFICATION.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PASS_BACKSTAGE_NATIVE',receipt['meshes'],'floor',floor_area)

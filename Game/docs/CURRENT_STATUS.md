@@ -1,3 +1,9 @@
+## Latest physical integration: theater backstage receiver
+
+A 163.4 m² native receiver now connects the retained D11 backstage threshold to the axial route around the existing core wall. Twelve player-controller legs,177 floor witnesses,32 static cart poses,128 wheel-floor samples and18 bearing/header pairs pass. Four original coffer lights are registered. All original door poses and2,200 source seats remain unchanged;the staff door isclosed andinactive. Loaded-cart physics,primary capacity,venue operation andfinal Godot/CRT visuals remain unfinished.
+
+The dining service survey identifies six existing openings withroom-side floor but no exterior D10 floor at162 samples fromabsoluteX54.1through68. A service corridor andlanding source isneeded;no assumed street ornew staff-lift stop wascreated.
+
 ## Latest physical integration: fitted wet pavilions and public dining branches
 
 Both fitted wet pavilions are installed and independently retained at bded1209e702ae699698606fe15e7d685fbb0d99. The verified package preserves original variants and retained lift/stair/guard circulation:582 native meshes,22 original-controller legs,four changing-door round trips,twelve rest approaches,fourteen registered lights and32 support pins. Quiet uses an explicit5.2x6.8x1.2m fitted basin;no capacity orwater operation isadmitted. All80 home models,six adjunct/care pairs andfive private pit suites remain physically included.

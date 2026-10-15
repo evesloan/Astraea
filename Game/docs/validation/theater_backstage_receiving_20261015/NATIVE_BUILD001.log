@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspace/astraea-integration-cutoff-20261013/theater_backstage_receiving_20261015/build_native.py", line 30, in <module>
+    floor=[(-34,-259.15),(-9.65,-259.15),(-9.65,-251.15),(-4,-251.15),(-4,-246.85),(-13.95,-246.85),(-13.95,-254.85),(-34,-254.85)];floor_area=abs(sum(floor[i][0]*floor[(i+1)%len(floor)][1]-floor[(i+1)%len(floor)][0]*floor[i][1]for i in range(len(floor)))/2);prism('Backstage_MissingOnlyWalkingFloor',floor,69.26,69.5,stone);roof=[(-34.7 if x==-34 else -3.85 if x==-4 else x,z)for x,z in floor];prism('Backstage_PositiveHeaderTieCanopy',roof,73.5,73.66,ivory)
+                                                                                                                                                                                                                                                                   ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/astraea-integration-cutoff-20261013/theater_backstage_receiving_20261015/build_native.py", line 20, in prism
+    ix=[indices[tuple(v)]for v in tri]
+                ~~~~~^^^
+TypeError: 'int' object is not iterable
+Blender 4.3.2
+Read blend: "/workspace/astraea-integration-cutoff-20261013/theater_secondary_receiving_20261015/native/THEATER_SECONDARY_APPROACHES_r002.blend"
+
+Blender quit
