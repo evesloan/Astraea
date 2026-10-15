@@ -1,3 +1,9 @@
+## Latest physical integration: D09 retail service receiving
+
+Living’s retained service_left_r002 cassette is now installed on its unchanged existing floor:33 source meshes, original four-panel mechanics, two source-mounted controls and the stable physical service-threshold ID. Its public assembly remains the same instance; the original column, floor, fixtures and exterior turn remain unchanged. Default Main passes seven actual-controller legs, four ordinary RMB/E operations and272 moving-panel poses. This receives the measured service plane0.5m beyond the source interior bay without duplicating floor or public geometry.
+
+Four staff circuits are physically reachable through six existing public receiver links at Z−69,69 and378.30 actual-controller legs and all eight literal socket-floor supports pass. Current integrated LINK floors support the six nominal points that lie outside their staff-only floor AABBs; original source warnings remain retained. The first survey’s apparent capsule obstructions were the query actor itself, explicitly excluded in the preserved derived analysis; actual traversal passes. Two fore Z−404 sockets remain without an admitted matching external target. All84 address joins, Thread r003/r004 invalidity, ten-stop riser journeys, permission/stock/hygiene/species/save/primary engineering and final-art holds remain visible. No new floors, shafts or lift stops.
+
 ## Latest physical integration: separate synthesis receiving links
 
 Clean packing/output and wash/used return now independently connect to the retained D01 port service spine through two screened 8 m approaches. The native owns 68.8 m² of missing floor. Two exact source enclosure-wall successors preserve clipped source triangles and UVs within the fixed 0.1 mm tolerance; maximum difference is under four micrometres. 108 editable meshes export as six new receiving batches and two wall successors. Two rigid source task hoods provide four registered lights.
