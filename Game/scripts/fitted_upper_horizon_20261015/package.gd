@@ -1,0 +1,13 @@
+extends RefCounted
+static func v(a:Array)->Vector3:return Vector3(a[0],a[1],a[2])
+static func build(ship:Node3D)->Node3D:
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/fitted_upper_horizon_20261015/HORIZON_CONFIG.json"));var districts:Node3D=ship.get_node("ShipSpace/Districts");assert(not districts.has_node("FittedUpperHorizon20261015"));assert(districts.has_node("AftCrownFoyerWaitingEdges")and districts.has_node("UpperHorizonEnclosure_WIP"));var independent:Node= districts.get_node("Group8CrownInteriors_WIP");assert(not independent.get_meta("programme_keys").has("D18_directory_09"))
+ for file in p.source_pins:assert(FileAccess.get_sha256("res://"+str(file))==str(p.source_pins[file]),"Exact retained source pin "+str(file))
+ var file:String="res://assets/fitted_upper_horizon_20261015/"+str(p.file);assert(FileAccess.get_sha256(file)==str(p.model_sha256));var group:=Node3D.new();group.name="FittedUpperHorizon20261015";districts.add_child(group);var model:Node3D=(load(file)as PackedScene).instantiate();model.name="FittedOriginalHorizonInteriors";group.add_child(model);assert(model.find_children("*","MeshInstance3D",true,false).size()==int(p.runtime_meshes))
+ for row in p.batches:
+  var mesh:MeshInstance3D=model.find_child(str(row.name),true,false);assert(mesh!=null);var a:AABB=mesh.global_transform*mesh.get_aabb();var b:Array=row.world_aabb;assert(a.position.distance_to(Vector3(b[0],b[2],b[4]))<.001 and a.end.distance_to(Vector3(b[1],b[3],b[5]))<.001)
+  if row.collide:load("res://scripts/static_contact_cache.gd").attach(mesh)
+ var lights:Array[Light3D]=[]
+ for row in p.lights:
+  var marker:Node3D=model.find_child(str(row.name),true,false);assert(marker!=null and marker.global_position.distance_to(v(row.at))<.001);var lens:MeshInstance3D=model.find_child(str(row.lens_batch),true,false);assert(lens!=null and (lens.global_transform*lens.get_aabb()).grow(.03).has_point(v(row.at)));var light:=SpotLight3D.new();light.name=str(row.name)+"_Emitter";group.add_child(light);light.position=marker.global_position;light.rotation.x=-PI/2;light.light_color=Color(row.colour[0],row.colour[1],row.colour[2]);light.light_energy=float(row.energy);light.spot_range=float(row.range);light.spot_angle=70;light.shadow_enabled=true;light.visible=false;lights.append(light)
+ load("res://scripts/receiving_source_lights.gd").register(lights,ship);group.set_meta("default_main_adoption",true);group.set_meta("programme_key","D18_directory_09");group.set_meta("new_floor_room_ids_or_capacity",0);group.set_meta("source_authoring_meshes",320);group.set_meta("original_foyer_and_sitting_bays_preserved",true);group.set_meta("operating_species_save_pressure_or_final_art_accepted",false);return group

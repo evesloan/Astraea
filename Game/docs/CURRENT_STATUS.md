@@ -1,3 +1,7 @@
+## Latest physical integration: fitted Upper Horizon interiors
+
+Original records cabinets, study consoles, four reading chairs, two task lamps and counters now fit between the retained D18 foyer and sitting bays. The versioned native retains320 editable source meshes and70 original runtime batches.27 original-controller legs,344 retained-floor contacts and10 clear work positions pass;860 existing foyer/sitting meshes stay unchanged. Original geometry, UVs and10 image payloads are preserved. No new floor, room IDs orcapacity. Operational species/stock/save/pressure andfinal Godot/CRT visuals remain unfinished.
+
 ## Latest physical integration: theater backstage receiver
 
 A 163.4 m² native receiver now connects the retained D11 backstage threshold to the axial route around the existing core wall. Twelve player-controller legs,177 floor witnesses,32 static cart poses,128 wheel-floor samples and18 bearing/header pairs pass. Four original coffer lights are registered. All original door poses and2,200 source seats remain unchanged;the staff door isclosed andinactive. Loaded-cart physics,primary capacity,venue operation andfinal Godot/CRT visuals remain unfinished.
