@@ -1,0 +1,13 @@
+from pathlib import Path
+import bpy,json,hashlib
+from mathutils import Matrix
+D=Path(__file__).resolve().parent;S=Path('/workspace/astraea-protected-integration-20261012/Game/assets/models/QUIET_GROVE_ARCHITECTURE_lift_r003.glb');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();assert bpy.app.version[:3]==(4,3,2)and sha(S)=='dff1f06ddf94d665dfbe86e9451d4737551b109f103b11cf90d203f1c78db62a';bpy.context.preferences.filepaths.save_version=0;bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False);bpy.ops.import_scene.gltf(filepath=str(S));wanted=['QG_Batch_171','QG_Batch_172'];keep=[bpy.data.objects[n]for n in wanted];rows=[]
+for o in keep:
+ original=o.matrix_world.copy();o.parent=None;o.matrix_world=Matrix.Translation((0,0,2.2))@original;o['retained_source_mesh']=o.name;o['rigid_raise_godot_y']=2.2;rows.append({'source':o.name,'new':o.name,'source_pose_blender':[list(x)for x in original],'fitted_pose_blender':[list(x)for x in o.matrix_world]})
+for o in list(bpy.data.objects):
+ if o not in keep:bpy.data.objects.remove(o,do_unlink=True)
+bpy.data.orphans_purge(do_recursive=True)
+for image in bpy.data.images:
+ if image.source=='FILE'and not image.packed_file:image.pack()
+bpy.data.texts.new('FIT_CONTRACT.json').write(json.dumps({'scope':'Exact rigid2.2m canopy raise beneath fitted wet gable;four separate suspension rods authored inVIP_FITTED_SUCCESSORS_r007. Runtime retains original mesh/material resources andchanges onlyexactpinned nodeposes. Source remainsunchanged.','rows':rows},indent=2));bpy.ops.object.select_all(action='SELECT');out=D/'QUIET_RETAINED_CANOPY_RAISE_r001.glb';bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',use_selection=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False);native=D/'native/QUIET_RETAINED_CANOPY_RAISE_r001.blend';bpy.ops.wm.save_as_mainfile(filepath=str(native),compress=True);h=sha(out);bpy.ops.wm.open_mainfile(filepath=str(native));bpy.ops.object.select_all(action='SELECT');fresh=D/'QUIET_RETAINED_CANOPY_RAISE_r001_fresh.glb';bpy.ops.export_scene.gltf(filepath=str(fresh),export_format='GLB',use_selection=True,export_yup=True,export_extras=True,export_cameras=False,export_lights=False);assert sha(fresh)==h
+r={'status':'PASS_NATIVE_FRESH_REEXPORT_EXACT','native_sha256':sha(native),'export_sha256':h,'source_sha256':sha(S),'rigid_raise_godot_y':2.2,'rows':rows,'runtime_uses_original_mesh_material_resources':True,'structural_admission':False};(D/'CANOPY_NATIVE_VERIFICATION_r001.json').write_text(json.dumps(r,indent=2)+'\n');print('PASS_RETAINED_CANOPY_NATIVE_EXACT_EXPORT')
