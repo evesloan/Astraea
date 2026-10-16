@@ -1,3 +1,7 @@
+## Celestial Lounge physical receiving — 16 October 2026
+
+`D12_directory_10` now has a58.4088625m² service approach beyond the preserved Family Terrace frame, one aligned2.4m opening through two original wall layers and access to its original care cupboard. Selected r001 passes190candidate checks,57installed checks and14continuous original-controller legs. Original identities/capacity/lifts and331unrelated source mesh resources remain preserved. Structural sizing/load capacity, operations, cart/species, saves and final visuals remain held; all eight groups and the whole ship remain unfinished. The authoritative JSON and current-status document include this and earlier checkpoints.
+
 ## Latest physical receiving checkpoint — 16 October 2026
 
 Vesper Panorama (`D12_directory_09`) now has a 58.4088625 m² service approach beyond the preserved Sunset frame, one aligned 2.4 m opening through two source wall layers, and access to its original care cupboard and refreshment cabinet. Selected r002 passes 194 candidate checks, 61 installed checks and 18 continuous original-controller walking legs. The rejected r001 remains retained. All original identities, capacity, lifts and unrelated source meshes remain preserved. Structural sizing/load capacity, operations, cart/species, saves and final visuals remain held; all eight groups and the whole ship remain unfinished. See the authoritative JSON and `Game/docs/CURRENT_STATUS.md` for this and earlier receiving checkpoints.
