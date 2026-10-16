@@ -1,3 +1,15 @@
+Stillroom physical care receiving — 16 October 2026
+
+Stillroom (`D12_directory_04`, floor Y78) now has a 12.0597 m² west care connection from the existing `D12_fore_route`. One 2.4 m opening at Z−194.2..−191.8, Y78..81.2 through `E_west_north` reaches the original care working strip. The public portal (8,78,−216), quiet coves, contemplative lantern, care screen, worktop, stock cabinet and original spine bearing at X9/Z−190 remain unchanged. No room, capacity or lift-stop additions.
+
+The installed source GLB remains byte-identical to its retained package export (SHA256 59e42624070aa9c4004ad6fb082cc90be998a9ccc25b6908468c50a981b6da97). Archive/native authentication and the 120-sample current-main survey are retained under `Game/docs/validation/stillroom_receiving_20261016`. The survey supports a short connection between original floor edge X8.02 and spine edge X4, preserving Cinema 2 below and Quiet Grove residential geometry above. New floor has 50 µm seams and zero existing-floor overlap. One bounded mesh/contact successor retains original preimages. Independent polygon and interpolated-UV checks preserve source skin outside the opening at the fixed 100 µm tolerance.
+
+The editable native contains 67 new components, six runtime batches, two source-profile lamps and a folded 28 mm threshold. A rigid copy of the existing 3.3 m NorthPrep task hood fits the 4.02 m link without scaling; all seven fixture meshes, UVs and referenced image payloads are preserved. Fresh native re-export matches the installed GLB byte for byte.
+
+Focused current-main evidence: 121 candidate checks and 40 installed checks pass, including 18 continuous original-controller walking legs to the original care worktop and stock cabinet and back. No route teleports. All 234 original mesh poses and 233 unrelated mesh resources remain preserved. Normal cached detach/reattach and opening occlusion pass. No source unloading, RAM reduction or full-suite claim.
+
+Master chapters 5/7/19/21/23/32 and the reopened staff service reference govern this physical connection. Quiet/acoustic behavior, primary structural sizing/load capacity, stock/care operations, loaded carts/species, saves and final visual acceptance remain open. No render was attempted. Physical joint checks establish construction continuity only.
+
 Listening Salon physical care receiving — 16 October 2026
 
 Listening Salon (`D12_directory_03`, floor Y78) now has an 11.9997 m² east care connection from the existing `D12_fore_route`. One 2.4 m opening at Z−307.2..−304.8, Y78..81.2 through `WP07_east_wall` reaches the original care working strip. The public portal (−8,78,−324), listening spaces, care screen, cupboard, workbench, stock and arrival roof bearing remain unchanged. No room, capacity or lift-stop additions.
