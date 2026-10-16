@@ -1,3 +1,15 @@
+Listening Salon physical care receiving — 16 October 2026
+
+Listening Salon (`D12_directory_03`, floor Y78) now has an 11.9997 m² east care connection from the existing `D12_fore_route`. One 2.4 m opening at Z−307.2..−304.8, Y78..81.2 through `WP07_east_wall` reaches the original care working strip. The public portal (−8,78,−324), listening spaces, care screen, cupboard, workbench, stock and arrival roof bearing remain unchanged. No room, capacity or lift-stop additions.
+
+The installed source GLB remains byte-identical to its retained package export (SHA256 bea516d8227f76ba5c1436d225392877a942679a2c7409e3bcbc3e17cb94f36c). Archive/native authentication and the 80-sample current-main survey are retained under `Game/docs/validation/salon_receiving_20261016`. The survey supports a short connection between the original floor edge X−8 and existing spine edge X−4, avoiding Music Room below and residential geometry above. New floor has 50 µm seams and zero existing-floor overlap. One bounded mesh/contact successor retains original preimages. Independent polygon and interpolated-UV checks preserve source skin outside the opening at the fixed 100 µm tolerance.
+
+The editable native contains 67 new components, four runtime batches, two source-profile lamps and a folded 28 mm threshold. A rigid copy of the existing 3.3 m NorthPrep task hood fits the 4 m link without scaling; all seven fixture meshes, UVs and referenced image payloads are preserved. Fresh native re-export matches the installed GLB byte for byte.
+
+Focused current-main evidence: 112 candidate checks and 34 installed checks pass, including 12 continuous original-controller walking legs to the original care workbench/cupboard and back. No route teleports. All 3214 original mesh poses and 3213 unrelated mesh resources remain preserved. Normal cached detach/reattach and opening occlusion pass. No source unloading, RAM reduction or full-suite claim.
+
+Master chapters 5/7/19/21/23/32 and the reopened staff service reference govern this physical connection. No playback, acoustic isolation or functional stock system is claimed. Audio/headphone/real-speaker audition, primary structural sizing/load capacity, operations, loaded carts/species, saves and final visual acceptance remain open. No render was attempted. Physical joint checks establish construction continuity only.
+
 Immersive Sound physical service receiving — 16 October 2026
 
 Immersive Sound (`D11_directory_12`, floor Y69.5) now has a 59.398860 m² north service approach from the existing `D11_aft_route` edge X−4. One 2.4 m opening at X−23.2..−20.8, Y69.5..72.7 through `E_outer_north` at Z465.8 reaches the retained care and control working strip. The public portal (−8,69.5,432), inner listening enclosures, reference focus, care cupboard and control desk remain unchanged. No room, capacity or lift-stop additions.
