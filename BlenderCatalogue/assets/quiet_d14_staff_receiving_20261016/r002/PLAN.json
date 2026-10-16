@@ -1,0 +1,149 @@
+{
+  "status": "BOUNDED_CONNECTION_CANDIDATE",
+  "base_commit": "ddfe059755177ab391a56c645827827fa169b8a8",
+  "source_pins": {
+    "Game/assets/models/QUIET_GROVE_ARCHITECTURE_lift_r003.glb": "dff1f06ddf94d665dfbe86e9451d4737551b109f103b11cf90d203f1c78db62a",
+    "BlenderCatalogue/assets/quiet_lift_receiving_20261009/source/architecture_lift_fit.blend": "e5cdba761acf8a80c2844cc566f9d014cfb36571ea42f75ece8b5a44b48bf26b",
+    "Game/data/architecture/QUIET_GROVE_RECEIVING.json": "6d2d6f61fe9d7a51a2ea614d627784d020fa63d3a8369c61bda872557fd1dbf4",
+    "Game/data/architecture/group3_fore_starboard_clinical_20261011/FORE.json": "ec61ead2a22a83df0f7725c920e36a49666c15e4191c0a6bfcb2dc42b5996c2c",
+    "Game/assets/models/group3_fore_starboard_clinical_20261011/AST-STF-G3-041.glb": "63b45b706c957cbe01d5f81cf559c26f57a41db4263f5e21fe664dd4ea47f658",
+    "Game/assets/models/group3_fore_starboard_clinical_20261011/AST-STF-G3-037.glb": "95c885ac31750bc5527e23f5eb0df88dbc83c41a82f441d1074a92565754312f",
+    "BlenderCatalogue/references/landings/staff_corridor_services.png": "35f53a078f3a620c83385278c0a6e8a83f3b8e43d48e1603f3ced363b4dc3a1c",
+    "BlenderCatalogue/assets/quiet_d15_staff_receiving_20261016/QuietD15StaffReceiving_r001.blend": "86a302c14ed4fbd50ab0f9d085898b7ef0d3382821fd1f556a9a6e9114f97285",
+    "RetainedConstruction/group3/payloads/BlenderCatalogue/assets/group3_crew_service_20261009/extensions/fore_starboard_clinical_batch018/source/AST-STF-G3-037.blend": "d7b1b4d33d4648e4caf8e8a34d923f0d878fbe90fa5ad06559e6860a43b868c7",
+    "Game/assets/quiet_d15_receiving_20261016/QUIET_D15_STAFF_RECEIVING_r004.glb": "2ece6c61258d0d11d339b56753375dcec21aca48d7309abfeacbcf6c5b8019c6"
+  },
+  "floor_y": 88.5,
+  "floor_outline_xz": [
+    [
+      23.1801,
+      -485.6
+    ],
+    [
+      45.7,
+      -485.6
+    ],
+    [
+      45.7,
+      -482.2001
+    ],
+    [
+      19.3,
+      -482.2001
+    ],
+    [
+      19.3,
+      -483.9999
+    ],
+    [
+      23.1801,
+      -483.9999
+    ]
+  ],
+  "protected_endpoints": {
+    "lobby_floor": {
+      "owner": "AST-STF-G3-041/floor_staff_floor_D14",
+      "x": [
+        18.7999992370605,
+        23.1800003051758
+      ],
+      "z": [
+        -496,
+        -484
+      ],
+      "y": 88.5
+    },
+    "house_street": {
+      "owner": "D14_PairedDoorStreet_0",
+      "x": [
+        41.95000076293945,
+        46.04999923706055
+      ],
+      "z": [
+        -482.20001220703125,
+        -374
+      ],
+      "y": 88.5
+    }
+  },
+  "limits": [
+    "Source-only candidate, not imported or installed; retained lobby walls and house end guards remain closed.",
+    "Original floors/roof/shaft/doors/identities remain unchanged.",
+    "End bearing and side-frame layout require exact current mesh junction checks; no primary load capacity claim.",
+    "Interface wall/guard derivatives, original-controller route, lower-volume contact check and source fixture/light fit are next gates.",
+    "No new lift stops, controls, room IDs, capacity, operating or final-art acceptance."
+  ],
+  "reference_reopened": "staff_corridor_services.png: cool enamel dado, visible service framing, integrated fixture hierarchy; no new render.",
+  "walls": [
+    {
+      "owner": "house",
+      "path": "Game/assets/models/QUIET_GROVE_ARCHITECTURE_lift_r003.glb",
+      "name": "QG_Batch_38",
+      "potential_triangles": 8,
+      "total_triangles": 984,
+      "cut_min": [
+        42.25,
+        88.501,
+        -482.4
+      ],
+      "cut_max": [
+        45.5,
+        89.8,
+        -482.0
+      ]
+    },
+    {
+      "owner": "house",
+      "path": "Game/assets/models/QUIET_GROVE_ARCHITECTURE_lift_r003.glb",
+      "name": "QG_Batch_43",
+      "potential_triangles": 60,
+      "total_triangles": 456,
+      "cut_min": [
+        42.25,
+        88.501,
+        -482.4
+      ],
+      "cut_max": [
+        45.5,
+        89.8,
+        -482.0
+      ]
+    },
+    {
+      "owner": "lobby",
+      "path": "Game/assets/quiet_d15_receiving_20261016/QUIET_D15_STAFF_RECEIVING_r004.glb",
+      "name": "lobby_wall_staff_white_paint_y11",
+      "potential_triangles": 4,
+      "total_triangles": 256,
+      "cut_min": [
+        19.6,
+        88.499,
+        -484.2
+      ],
+      "cut_max": [
+        22.8,
+        91.2,
+        -483.8
+      ],
+      "import_name": "PATCH_lobby_wall_staff_white_paint_y11",
+      "additional_cuts": [
+        {
+          "min": [
+            19.6,
+            92.999,
+            -484.2
+          ],
+          "max": [
+            22.8,
+            93.0011,
+            -483.8
+          ]
+        }
+      ]
+    }
+  ],
+  "new_floor_area_m2": 83.54888774640858,
+  "shared_lobby_composition": "Apply after installed D15 package; clip its protected successor at D14 only. Retain D15 opening, materials, original controllers and all identities.",
+  "derivation": "Rigid -4.5m Y derivative of 44 inactive D15 r001 components, plus source-verified joints, fixture assemblies, mount sockets and aperture finishes; no original source object moved.",
+  "revision_reason": "Remove residual 1mm lobby wall sills at D14/D15 opening floor datums after exact uncompressed installed-player stall. Preserve original D15 source; only bounded shared-wall successor changes."
+}
