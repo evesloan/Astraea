@@ -39,6 +39,7 @@ func _ready() -> void:
 	load("res://scripts/group5_living_gifts_doors.gd").build(ship)
 	load("res://scripts/shared_crew_home.gd").build(ship)
 	load("res://scripts/horizon_receiving_20261016/package.gd").build(ship)
+	load("res://scripts/panorama_receiving_20261016/package.gd").build(ship)
 	var occlusion: Dictionary = load("res://scripts/static_room_occlusion.gd").install(ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP var occlusion: Dictionary = load(res://scripts/static_room_occlusion.gd).install(ship)")
 	set_meta("static_room_occlusion",occlusion)

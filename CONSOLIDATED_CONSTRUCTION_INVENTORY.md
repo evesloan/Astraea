@@ -1,3 +1,7 @@
+## Latest physical receiving checkpoint — 16 October 2026
+
+Vesper Panorama (`D12_directory_09`) now has a 58.4088625 m² service approach beyond the preserved Sunset frame, one aligned 2.4 m opening through two source wall layers, and access to its original care cupboard and refreshment cabinet. Selected r002 passes 194 candidate checks, 61 installed checks and 18 continuous original-controller walking legs. The rejected r001 remains retained. All original identities, capacity, lifts and unrelated source meshes remain preserved. Structural sizing/load capacity, operations, cart/species, saves and final visuals remain held; all eight groups and the whole ship remain unfinished. See the authoritative JSON and `Game/docs/CURRENT_STATUS.md` for this and earlier receiving checkpoints.
+
 # Consolidated construction inclusion
 
 All eight groups reconciled in one pass. G7 nowphysicallyincludes all88retained models in default runtime; fournew garden-tool doors are locked. This is constructionWIP,not full acceptance.
