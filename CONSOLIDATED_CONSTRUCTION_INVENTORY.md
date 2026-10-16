@@ -1,3 +1,15 @@
+Cinema 6 physical projection and care receiving — 16 October 2026
+
+Cinema 6 (`D11_directory_07`, floor Y69.5, 200 places) now has a 20.9997 m² west service connection from the existing `D11_aft_route`. One 2.4 m opening at Z462.8..465.2, Y69.5..72.7 through `E_outer_west1` reaches the retained rear projection and care area beyond the original roof bearing at Z457. The public portal (11,69.5,432), opposite east aperture, cloud-focus fan ribs, booth, screen/static film still, seating, foyer furniture and care cabinet remain unchanged. No room, capacity or lift-stop additions.
+
+The installed source GLB remains byte-identical to its retained package export (SHA256 0cedf06abe7b07d63f923f6f73349636193b389f1c085ac0322a3e87a1394f6e). Archive/native authentication and the 104-sample current-main survey are retained under `Game/docs/validation/cinema6_receiving_20261016`. Original floor edge X11 and spine edge X4 define the connection. New floor has 50 µm seams and zero existing-floor overlap. New girders fit within slab depth, and neighbouring geometry remains untouched. Physical contact checks do not establish structural sizing or load capacity.
+
+One bounded mesh/contact successor retains original preimages. Independent polygon and interpolated-UV checks preserve source skin outside the opening at the fixed 100 µm tolerance. The editable native contains 67 new components, six runtime batches, two source-profile lamps and a folded 28 mm threshold. The original 6 m NorthFinish hood is copied rigidly without scaling; seven fixture meshes, UVs and image payloads remain intact. Fresh native re-export matches the installed GLB byte for byte.
+
+Focused current-main evidence: 130 candidate checks and 48 installed checks pass, including 22 continuous original-controller walking legs to the projection bench and care cabinet and back. The route uses the booth's existing front entrance and avoids foyer furniture. No route teleports. All 1465 original mesh poses and 1464 unrelated mesh resources remain preserved. Normal cached detach/reattach and opening occlusion pass. No source unloading, RAM reduction or full-suite claim.
+
+Master chapters 5/7/19/21/23/32 and the reopened staff service reference govern this physical connection. The source static film still does not establish playback. Projection/media, sound/acoustic isolation, primary structural sizing/load capacity, care/stock operations, loaded carts/species, saves and final visual acceptance remain open. No render was attempted.
+
 Cinema 4 physical projection and care receiving — 16 October 2026
 
 Cinema 4 (`D11_directory_05`, floor Y69.5, 200 places) now has a 20.9997 m² west service connection from the existing `D11_aft_route`. One 2.4 m opening at Z158.8..161.2, Y69.5..72.7 through `E_outer_west1` reaches the retained rear projection and care area beyond the original roof bearing at Z153. The public portal (11,69.5,128), opposite east aperture, offset folded ribs, booth, screen/static film still, seating, foyer furniture and care cabinet remain unchanged. No room, capacity or lift-stop additions.

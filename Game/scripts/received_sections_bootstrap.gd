@@ -51,6 +51,7 @@ func _ready() -> void:
 	load("res://scripts/cinema2_receiving_20261016/package.gd").build(ship)
 	load("res://scripts/cinema3_receiving_20261016/package.gd").build(ship)
 	load("res://scripts/cinema4_receiving_20261016/package.gd").build(ship)
+	load("res://scripts/cinema6_receiving_20261016/package.gd").build(ship)
 	var occlusion: Dictionary = load("res://scripts/static_room_occlusion.gd").install(ship)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP var occlusion: Dictionary = load(res://scripts/static_room_occlusion.gd).install(ship)")
 	set_meta("static_room_occlusion",occlusion)
