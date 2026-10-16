@@ -1,0 +1,9 @@
+# Moonfruit Parlor physical service receiving
+
+D10_directory_09 retains its 160-place programme, public east entrance, original room geometry/materials and 124 source lights except a bounded successor to WP05_west_enclosure. Two 2.4 m openings use existing stock-cupboard gaps at world Z407 and448. The clean/used source partition remains. Original native and installed GLB bytes are unchanged; the installed source differs from its retained native export only in one previously corrected nonmesh handoff marker.
+
+r002 is the selected physical revision: 489.59956 m² missing-only floor, 487 editable receiving components, five material/contact batches, one exact source-wall successor and twelve original-profile lamps. Two 28 mm folded threshold plates bridge the original floor edge. They are fittings over the joint, not additional floor ownership. Original r001 and its failed walking trace remain. Neither player movement nor existing floor/contact geometry was changed.
+
+Current-main candidate passes 806 checks and26 continuous original-controller walking legs. Source-skin coverage and interpolated UV verification includes bevels and both bounded openings; first planar-only and triangulation-identity comparators were unsuitable for the beveled source and their attempts remain. Independent native clone, batch, packed-image and fresh-export verification passes. All new floor area is outside existing D10 floor ownership.
+
+Default installed and stream lifecycle evidence belongs in Game/docs/validation/moonfruit_service_20261016. Operational clean/used segregation, staff permissions, stocks, food/water, carts/species, save, structural sizing and final visual acceptance remain held. The previous full-main graphical OOM remains a separate16GiB environment hold; no new render was run or art accepted.

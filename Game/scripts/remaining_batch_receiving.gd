@@ -141,5 +141,6 @@ static func install(ship:Node3D,item:Dictionary,room:Node3D)->Node3D:
 	if str(item.key)=="D12_directory_02":load("res://scripts/group8/library_service.gd").build(ship,room)
 	if str(item.key) in ["D10_directory_01","D10_directory_02","D10_directory_03"]:load("res://scripts/group8/dining_service.gd").build(ship,room)
 	if str(item.key)=="D05_directory_02":load("res://scripts/group8/medical_bay.gd").build(ship,room)
+	if str(item.key)=="D10_directory_09":load("res://scripts/moonfruit_service_20261016/package.gd").build(ship,room)
 	room.set_meta("stream_loaded",true)
 	return room
