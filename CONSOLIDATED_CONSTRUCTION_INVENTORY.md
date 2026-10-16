@@ -1,3 +1,7 @@
+## Reading Nooks physical receiving — 16 October 2026
+
+`D12_directory_08` now has a59.794859m² service approach, one aligned2.4m opening through two original wall layers and access to its original care cupboard. Selected r001 passes201candidate checks,65installed checks and18continuous original-controller legs, including the shared spine/Gallery entry. Original identities/capacity/lifts,2124unrelated Reading mesh resources and current Gallery/sharedguards remain preserved. Original D12 pair remainsresident;no unload claim. Structural sizing/load capacity, operations, cart/species, saves and final visuals remain held; all eight groups and the whole ship remain unfinished.
+
 ## Many Worlds Gallery physical receiving — 16 October 2026
 
 `D12_directory_07` now has a59.794859m² service approach, one aligned2.4m opening through two original wall layers and access to its original care cupboard. Selected r001 passes193candidate checks,57installed checks and14continuous original-controller legs. Original identities/capacity/lifts,203unrelated gallery mesh resources and2242ReadingNooks/sharedguard meshes andcontacts remain preserved. Original D12 pair remainsresident;no unload claim. Structural sizing/load capacity, operations, cart/species, saves and final visuals remain held; all eight groups and the whole ship remain unfinished.
