@@ -1,3 +1,7 @@
+## Many Worlds Gallery physical receiving — 16 October 2026
+
+`D12_directory_07` now has a59.794859m² service approach, one aligned2.4m opening through two original wall layers and access to its original care cupboard. Selected r001 passes193candidate checks,57installed checks and14continuous original-controller legs. Original identities/capacity/lifts,203unrelated gallery mesh resources and2242ReadingNooks/sharedguard meshes andcontacts remain preserved. Original D12 pair remainsresident;no unload claim. Structural sizing/load capacity, operations, cart/species, saves and final visuals remain held; all eight groups and the whole ship remain unfinished.
+
 ## Celestial Lounge physical receiving — 16 October 2026
 
 `D12_directory_10` now has a58.4088625m² service approach beyond the preserved Family Terrace frame, one aligned2.4m opening through two original wall layers and access to its original care cupboard. Selected r001 passes190candidate checks,57installed checks and14continuous original-controller legs. Original identities/capacity/lifts and331unrelated source mesh resources remain preserved. Structural sizing/load capacity, operations, cart/species, saves and final visuals remain held; all eight groups and the whole ship remain unfinished. The authoritative JSON and current-status document include this and earlier checkpoints.
