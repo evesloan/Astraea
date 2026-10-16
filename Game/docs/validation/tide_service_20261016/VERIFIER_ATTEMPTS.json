@@ -1,0 +1,28 @@
+{
+  "scope": "Observed verifier failures and fixes; not acceptance receipts",
+  "record_origin": "Summarized from tool outputs and retained failed verifier scripts",
+  "fixed_position_tolerance_m": 0.0001,
+  "fixed_uv_tolerance": 0.0001,
+  "geometry_changed_during_verifier_corrections": false,
+  "attempts": [
+    {
+      "failure": "Barycentric-coordinate cutoff rejected near-edge world points on thin rotated bevels",
+      "fix": "True closest-point distance on each triangle and edges, retaining fixed position and UV tolerances"
+    },
+    {
+      "failure": "Clamped barycentric weights are not true closest points on long thin triangles",
+      "fix": "Compare projected interior or closest point on each of three edges"
+    },
+    {
+      "failure": "Absolute area threshold counted roundoff boundary slivers as missing skin",
+      "missing_area_m2": 0.0026986644276673242,
+      "excess_area_m2": 5.1068833248687306e-05,
+      "fix": "Evaluate coverage with fixed coordinate tolerance, including intended cut boundary"
+    },
+    {
+      "failure": "Buffering intersection-clipped geometry removed near-boundary evidence before distance comparison",
+      "remaining_area_m2": 2.5615321163514062e-05,
+      "fix": "Buffer actual source-plane geometry before intersection; apply same100\u00b5m tolerance to opening boundaries"
+    }
+  ]
+}

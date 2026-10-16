@@ -1,3 +1,13 @@
+## Tide Kitchen physical service receiving, 16 October 2026
+
+D10_directory_05 now has a screened approach from the existing port atrium circulation edge at X-51/Z40 around its north side to two3.4m west-shell openings at Z-12/+12. These reach the existing used-return and clean-stock work areas. The419.17546m² of new floor has no overlap with existing floor ownership. The240-place programme, original sources, all462unrelated mesh resources and463poses, previously corrected public-entry pieces, floor records and lift stops remain unchanged.
+
+The selected r002 native contains428editable receiving components, four runtime batches, ten original-profile lamps and two28mm threshold plates. The first candidate reached clean stock but caught on the retained slab side during the return; its failed route and immutable native/export remain. The plates bridge that seam without changing the original controller or floor/contact geometry. Current-main candidate passes706checks and22continuous original-controller legs. Default installed startup passes162checks and the same route; normal cached room detach/reattach preserves the exact wall successor and source lamps. This is cached residency, not RAM unloading.
+
+The exact retained archive/native are authenticated; comparison with the installed corrected-entry export distinguishes the two already-changed public entry pieces from461unchanged source nodes. Native geometry/UV/image verification and byte-identical fresh export pass. Rotated/beveled source-wall verification uses true triangle closest points and complete polygon coverage at fixed100µm positional and0.0001UV tolerances, including the cut boundary. Earlier comparator failures are retained with their numerical explanations; no geometry was modified during those corrections.
+
+No new render or art acceptance was attempted. The separate16GiB full-game graphical OOM remains held, alongside operational clean/used segregation, permissions, food/water/stock/save, loaded carts/species and primary structural sizing. No new programme, room identity, capacity or lift stop is created.
+
 ## Moonfruit Parlor physical service receiving, 16 October 2026
 
 D10_directory_09 now has two bounded 2.4 m openings in its retained west enclosure at Z407 and448, between existing stock cupboards. A screened approach connects these clean/used work zones to the existing D10 axial route at Z392 across489.59956 m² of missing-only floor. The160-place programme, public east portal, internal clean/used partition, original124 source lights, source GLB/native, compiled floor records and lift stops are unchanged. One exact wall successor preserves the surrounding bevelled source skin and UVs; all4207 other source mesh resources and all4208 poses remain.

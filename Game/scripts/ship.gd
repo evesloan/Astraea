@@ -301,6 +301,7 @@ func _ready() -> void:
 	load("res://scripts/vesper_service_receiving_20261015/package.gd").build.call_deferred(self)
 	load("res://scripts/starboard_fore404_receiving_20261015/package.gd").build.call_deferred(self)
 	load("res://scripts/observation_cafe_service_20261016/package.gd").build.call_deferred(self)
+	load("res://scripts/tide_service_20261016/package.gd").build.call_deferred(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()

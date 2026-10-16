@@ -1,0 +1,9 @@
+# Tide Kitchen physical service receiving
+
+The selected r002 native connects the existing D10 port atrium circulation western edge at X-51/Z40 around the north side of Tide Kitchen to two3.4m west-shell openings at Z-12/+12. Existing clean-stock and used-return work areas, public entry correction,240places and all source identities remain. The actual retained west wall is unchanged between original source and installed corrected-entry GLB; only its new bounded successor is adopted.
+
+419.17546m² of missing-only floor has zero overlap with existing floor ownership. r002 retains428editable receiving components, four material/contact batches, one exact wall successor and ten original-profile lamps. Two28mm metal threshold fittings bridge the measured source-slab edge. Their footprint is not additional floor ownership. The first revision and failed return-crossing evidence remain. Player, original floor and original contact settings remain unchanged.
+
+The source archive/native and installed model are separately pinned. Independent native fixture/UV/image/fresh-export checks pass. Source-wall coverage and UV checks use the fixed100µm position and0.0001UV tolerances, correct closest points on triangles, and the same tolerance at cut boundaries. Initial comparator attempts mishandled thin rotated bevel boundaries; their scripts and numerical diagnostics remain, with no geometry changed to satisfy those comparisons.
+
+Candidate current-main integration passes706checks and22continuous original-controller walking legs. Installed/cache evidence is under Game/docs/validation/tide_service_20261016. The receiver adds no room identity, programme, capacity or lift stop. Operational clean/used segregation, roles, food/water/stock, loaded carts/species, save, primary engineering and final visual acceptance remain held. No new render or art acceptance was attempted; the separate full-game16GiB graphical OOM hold remains.
