@@ -1,3 +1,13 @@
+Cultural Gallery physical service receiving —16October2026
+
+Cultural Gallery (`D11_directory_11`, floorY69.5) now has a77.823448m² screened eastern care branch from the existing public approach atZ326. It follows the room edge and enters through one2.4m opening Z351.3..353.7,Y69.5..72.7 in `E_outer_east1` atX−57.45, reaching the original care cupboard's working face. The existing53m public approach and portal(−57,69.5,324) remain unchanged. The source's conservation edge, displays, interpretation arcs and source identities are preserved; no room, capacity or lift-stop additions.
+
+The original installed sourceGLB remains byte-identical to the retained native package export (SHA2567c6a5a05407f2e567038153f7890ff05c96dcd37ef10def6a274c39fcdb4b02d). Authentication and99-sample current-main survey are retained under `Game/docs/validation/cultural_receiving_20261016`. The source floor reaches330mm beyond the east-wall exterior. The new floor uses50µm seams atX−57 andZ326, with zero existing-floor overlap. One bounded mesh/contact successor retains its original preimages; independent polygon/UV checks preserve source skin outside the opening at fixed100µm tolerance. A three-piece roof joint has a5mm-clear notch around the original `E_roofbearing7_1`; the bearing remains untouched.
+
+Native source retains134editable components, sixruntime batches, six original-profile fixture lamps and a folded28mm threshold. Fresh native re-export is byte-identical to the installedGLB. Focused current-main evidence: 237candidatechecks and68installedchecks pass, including14continuous original-controller care-return legs and part-by-part old-contact checks. All204original meshposes and203unrelatedmeshresources remain preserved. Normal cached detach/reattach and opening occlusion pass. No source unloading/RAM reduction or full-suite claim.
+
+No new render was attempted for this package. The earlier Games local progress image was uploaded to Library without rerendering. Primary structural sizing/load capacity, conservation/care/collection operations, loaded carts/species, saves and final visual acceptance remain open. Physical joint checks establish construction continuity only.
+
 Games & Companionship physical service receiving —16October2026
 
 The current production Games & Companionship room (`D11_directory_10`, floorY69.5) now has a59.398860m² north service approach from the existing `D11_aft_route` edgeX−4. A single2.4m opening X−23.2..−20.8,Y69.5..72.7 through `E_outer_north` atZ249.8 reaches the southern working face of the original care cupboard. The public portal(−8,69.5,216), game equipment, clean game stock and separate used-equipment/care route retain their identities. No capacity or lift-stop changes.
