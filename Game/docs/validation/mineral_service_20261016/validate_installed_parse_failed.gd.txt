@@ -1,0 +1,54 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+const D="/workspace/Astraea/BlenderCatalogue/assets/mineral_service_20261016/"
+const E="/workspace/mineral-evidence/"
+func _initialize()->void:call_deferred("run")
+func frames(n:int)->void:
+ for i in range(n):await physics_frame
+func query_box(space:PhysicsDirectSpaceState3D,lo:Vector3,hi:Vector3,exclude:Array[RID])->Array:
+ var q:=PhysicsShapeQueryParameters3D.new();var b:=BoxShape3D.new();b.size=(hi-lo-Vector3.ONE*.0004).max(Vector3.ONE*.00001);b.margin=0;q.shape=b;q.margin=0;q.transform.origin=(lo+hi)/2;q.exclude=exclude;var result:Array=[]
+ for h in space.intersect_shape(q,128):result.append(str(h.collider.get_path()))
+ return result
+func expected_surface(at:Vector3)->float:
+ if at.x>=98.2 and at.x<=98.6 and absf(at.z)<1.5:return 61.028-(at.x-98.2)*.025/.4
+ if at.x>=97.8 and at.x<98.2 and absf(at.z)<1.5:return 61.028
+ if at.x>=97.4 and at.x<97.8 and absf(at.z)<1.5:return 61.003+(at.x-97.4)*.025/.4
+ return 61.
+func run()->void:
+ var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(D+"NATIVE_PLAN.json"));var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(D+"NATIVE_VERIFICATION.json"))
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await frames(60)
+ var ship:Node3D=main.get_node("World360/Astraea");var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player");actor.set_physics_process(false);actor.global_position=Vector3(50,61.03,40);actor.velocity=Vector3.ZERO
+ ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(Vector3(95,61.03,0));ship.get_node("ShipSystems/RemainingBatchStreaming").prepare_position(Vector3(95,61.03,0));await frames(8)
+ var cafe:Node3D=ship.get_node("ShipSpace/Districts/ReceivedSections/D10_directory_06");var original:Node3D=cafe.get_child(0);var baseline:Node3D=load("res://assets/models/SOL_D10_directory_06_source001.glb").instantiate();var preserved:=true;var count:=0
+ for m:MeshInstance3D in original.find_children("*","MeshInstance3D",true,false):
+  var before:MeshInstance3D=baseline.get_node(original.get_path_to(m));count+=1
+  if not m.transform.is_equal_approx(before.transform)orm.mesh!=before.mesh:preserved=false
+ record("all_source_meshes_and_poses_preserved",preserved and count==2791);baseline.free()
+ var model:Node3D=ship.get_node("ShipSpace/MineralServiceReceiving20261016");record("only_one_receiving_root",ship.get_node("ShipSpace").find_children("MineralServiceReceiving20261016","",false,false).size()==1);record("ten_source_lamps",model.find_children("*","Light3D",true,false).size()==10)
+ var space:=ship.get_world_3d().direct_space_state;var floor_points:Array[Vector3]=[]
+ for rect in plan.floor_rectangles:
+  var x:float=rect[0]+.4
+  while x<float(rect[1])-.2:
+   var z:float=rect[2]+.4
+   while z<float(rect[3])-.2:
+    floor_points.append(Vector3(x,61,z));z+=2.
+   x+=2.
+ for at in floor_points:
+  var h:=ray(space,at+Vector3.UP*.06,at-Vector3.UP*.02);record("new_floor_"+str(at),not h.is_empty()and str(h.collider.get_path()).contains("MineralServiceReceiving20261016")and absf(h.position.y-expected_surface(at))<.0002)
+ for x in [97.7,98.,98.3]:
+  var h:=ray(space,Vector3(x,61.1,0),Vector3(x,60.99,0));record("positive_threshold_"+str(x),not h.is_empty() and h.position.y>61.005 and h.position.y<61.04)
+ var mounts:Array=[]
+ for row in p.bounds:
+  if not str(row.name).contains("CanopyTie"):continue
+  var at:Vector3=(vec(row.min)+vec(row.max))/2;at.y=64.79;var h:=ray(space,at,at+Vector3.UP*.03);var good:bool=not h.is_empty()and str(h.collider.get_path()).contains("MineralServiceReceiving20261016")and absf(h.position.y-64.8)<.0002;record("fixture_roof_"+str(row.name),good);mounts.append({"name":row.name,"at":str(at),"passed":good})
+ for row in p.lights:
+  var at:=vec(row.at);var h:=ray(space,at,at-Vector3.UP*4);record("emitter_to_new_floor_"+str(row.name),not h.is_empty()and str(h.collider.get_path()).contains("MineralServiceReceiving20261016")and absf(h.position.y-61)<.0002)
+ var legs:Array=[];var route:Array[Vector3]=[Vector3(53,61,40),Vector3(75,61,40),Vector3(104,61,40),Vector3(104,61,16),Vector3(104,61,0),Vector3(100,61,0),Vector3(96,61,0),Vector3(96,61,3),Vector3(91.5,61,3),Vector3(91.5,61,0),Vector3(91.5,61,3),Vector3(96,61,3),Vector3(96,61,16),Vector3(96,61,29.5),Vector3(92,61,29.5),Vector3(92,61,30.55),Vector3(88,61,30.75),Vector3(92,61,30.75),Vector3(92,61,29.5),Vector3(96,61,29.5),Vector3(96,61,16),Vector3(96,61,3),Vector3(96,61,0),Vector3(100,61,0),Vector3(104,61,0),Vector3(104,61,16),Vector3(104,61,40),Vector3(75,61,40),Vector3(53,61,40),Vector3(50,61,40)]
+ var proceed:bool=errors.is_empty();actor.set_controls_enabled(true);actor.set_physics_process(true);await frames(20)
+ for goal in route:
+  if not proceed:break
+  var leg:Dictionary=await walk_to(actor,goal);legs.append(leg);record("walk_"+str(legs.size()),leg.reached and leg.floor_contact);proceed=leg.reached and leg.floor_contact
+ record("continuous_route_complete",proceed and legs.size()==30)
+ actor.set_physics_process(false);var saved_position:=actor.global_position;var residency:Node=ship.get_node("ShipSystems/ReceivedRoomResidency");actor.global_position=Vector3(5000,61,0);residency.refresh(9.);record("normal_cached_detach",not cafe.is_inside_tree());actor.global_position=saved_position;residency.prepare_position(saved_position);await frames(8);record("normal_cached_reattach",cafe.is_inside_tree());record("one_preserved_source_set",model.find_children("*","Light3D",true,false).size()==10)
+ record("cached_original_opening_clear",capsule_clear(space,Vector3(97.6,61.04,0)))
+ var report:Dictionary={"status":"PASS"if errors.is_empty()else"FAIL","scope":"Candidate receiving only; unchanged original controller and sources; no operational/cart/species/primary/final-art acceptance","checks":checks,"errors":errors,"original_cafe_meshes":count,"missing_only_floor_samples":floor_points.size(),"fixture_roof_mounts":mounts,"original_controller_legs":legs,"route_teleports":0,"default_installed":true,"separate_stream_lifecycle_test_after_route":true}
+ FileAccess.open(E+"MINERAL_INSTALLED_MAIN_r001.json",FileAccess.WRITE).store_string(JSON.stringify(report,"  "));print("MINERAL_INSTALLED ",report.status," ",checks.size()," checks ",legs.size()," legs errors=",errors);quit(0 if errors.is_empty()else 1)

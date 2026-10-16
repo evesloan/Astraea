@@ -1,0 +1,20 @@
+{
+  "scope": "Verifier correction, no geometry changed",
+  "attempts": [
+    {
+      "failure": "Two flat floor probes landed on the explicitly authored sloped threshold fitting; walking was correctly held.",
+      "fix": "Raise probe origin to6cm and compare the hit height to the specified piecewise threshold surface only inside its exact footprint. Retain200micrometre height tolerance; unchanged original floor check outside fitting.",
+      "geometry_changed": false
+    },
+    {
+      "failure": "Initial stock waypoint at Z29.5 intersected original dining chairs;15walking legs passed and leg16 stopped.",
+      "fix": "Use original gap between chair maximumZ30.3321 and stock-front minimumZ31.13, with corner and stock approach at approximatelyZ30.75; preserve all furniture. Waypoint before corner allows original controller braking distance.",
+      "geometry_changed": false,
+      "loaded_cart_or_species_clearance_accepted": false
+    },
+    {
+      "failure": "Installed test adaptation omitted whitespace between or and m.mesh; GDScript parse failed before scene load.",
+      "fix": "Restore the missing whitespace; no runtime or geometry changes."
+    }
+  ]
+}
