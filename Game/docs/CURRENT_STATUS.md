@@ -1,3 +1,13 @@
+D17 starboard receiving audit — 16 October 2026
+
+No construction was added and no original geometry, identity, capacity or source revision changed. The nine historical standard proposals all relocate their original allocations; five switch fore/aft. Original standard856 intersects installed GROUP2_808_lower_00 at Y102 by6.93m². Adopting the historical alternative positions requires reconciliation beyond the old plan; copying the original positions wholesale would overlap retained luxury work.
+
+A current-main survey prepares room residency separately at each original allocation. All81 lower-floor/first-lower-surface samples hit retained Night Garden geometry. D17 has only three sampled floor hits, all within856's installed808 overlap. These are point observations, not full-volume absence or load-bearing approval. The lower meshes belong to occupied/cullable interiors; a new receiving plan needs exact permanent structural preimages and a supported commons connection. The initial incomplete-residency attempt is retained and is not used to infer missing lower geometry.
+
+Two alternative Group1 steps were checked: the starboard-central adjunct already has its receiving frame/connector/guard successor, and Tidal D15/D17 service receivers plus the ten-stop forward staff lift are installed. The current lift reports operation_ready=true and stops[0,6,12,46.2,52.5,84,88.5,93,97.5,102]; older five-stop/closed-upper-shaft notes are historical. This observation does not broaden gameplay acceptance.
+
+Next action: reconcile856 versus installed808 and establish authoritative nine-standard placements without silently moving rooms, then author permanent receiving joints/source-kit fits at those positions. Existing13.2m/23m transfer/cantilever/buckling holds remain engineering holds on earlier physical work. No new bearing, structural, gameplay or final visual acceptance. Evidence: Game/docs/validation/d17_starboard_receiving_audit_20261016/AUDIT.json.
+
 Cinema 1 physical projection and care receiving — 16 October 2026
 
 Cinema 1 (`D11_directory_02`, Y69.5, 200 numbered places) has a 20.9997 m² west service connection from `D11_fore_route`. One 2.4 m opening at Z−403.5..−401.1, Y69.5..72.7 passes through the retained `WEST_rear_panel` at X11.02..11.38. The new floor at Z−403.8..−400.8 is separate from the public connector ending at Z−404.6 and stops before the original enclosure chamfer at Z−400.1. Public portal (11,69.5,−407), seating and transfer bays, foyer, booth, care fittings, Sunward below and Long Library above are preserved. No room, capacity, lift-stop or operating identity additions.
