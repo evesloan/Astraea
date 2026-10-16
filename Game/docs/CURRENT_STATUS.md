@@ -1,3 +1,7 @@
+Quiet Grove D13–D16 local diagnostic — 16 October 2026
+
+One bounded Blender Cycles CPU capture (8 samples,1280×960) shows the four protected staff connections from checkpoint8365c7690. Actual installed receiver assets and cropped retained source floor triangles are used; source hashes are unchanged. Canopies and near wall panels are hidden and diagnostic lighting is explicitly labelled. Pixel inspection finds all four deck labels, floor connections and structural frames readable; dark interiors and limited fixture detail prevent local lighting or final-art acceptance. No full-ship render or repeated capture was performed. The image was saved to Library as QUIET_GROVE_D13_D16_DIAGNOSTIC.png. See BlenderCatalogue/assets/quiet_grove_diagnostic_20261016 for the image, reproduction script, receipt and pixel review. Production geometry, identities and capacity are unchanged; D17 placement and all broader acceptance holds remain open.
+
 Quiet Grove D16 physical staff receiving — 16 October 2026
 
 The r001 connector joins the retained fore-starboard D16 staff lobby to the original Quiet Grove north house street at Y97.5. It adds 83.548888m² of missing-only floor, 77 editable receiving components and three bounded wall/guard successors. Six slab ties, four roof-bearing posts, five aperture reveals/end caps and four fixture mounting sockets complete the physical joints. Two rigid retained fixture assemblies provide four singly registered light sources. No room, door or lift-stop identity, capacity, shaft or original source changes.
