@@ -117,7 +117,7 @@ static func install(ship:Node3D,item:Dictionary,room:Node3D)->Node3D:
 		if visual_border:
 			mesh.set_meta("receiving_collision_policy","visual bay border")
 		else:load("res://scripts/static_contact_cache.gd").attach(mesh)
-	load("res://scripts/static_room_occlusion.gd").install(source)
+	if str(item.key)!="D12_directory_02":load("res://scripts/static_room_occlusion.gd").install(source)
 	var lights:Array[Light3D]=load("res://scripts/receiving_source_lights.gd").normalize(source,int(item.lights))
 
 	for fixture in item.get("fixture_lights",[]):
@@ -142,5 +142,7 @@ static func install(ship:Node3D,item:Dictionary,room:Node3D)->Node3D:
 	if str(item.key) in ["D10_directory_01","D10_directory_02","D10_directory_03"]:load("res://scripts/group8/dining_service.gd").build(ship,room)
 	if str(item.key)=="D05_directory_02":load("res://scripts/group8/medical_bay.gd").build(ship,room)
 	if str(item.key)=="D10_directory_09":load("res://scripts/moonfruit_service_20261016/package.gd").build(ship,room)
+	if str(item.key)=="D12_directory_02":load("res://scripts/library_receiving_20261016/package.gd").build(ship,room)
+	if str(item.key)=="D12_directory_02":load("res://scripts/static_room_occlusion.gd").install(source)
 	room.set_meta("stream_loaded",true)
 	return room
