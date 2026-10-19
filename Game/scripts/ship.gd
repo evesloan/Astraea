@@ -324,6 +324,8 @@ func _ready() -> void:
 	load("res://scripts/observation_cafe_service_20261016/package.gd").build.call_deferred(self)
 	load("res://scripts/tide_service_20261016/package.gd").build.call_deferred(self)
 	load("res://scripts/mineral_service_20261016/package.gd").build.call_deferred(self)
+	# Retained anonymous crew source: physical receiving, zero new berth or room identities.
+	load("res://scripts/group3_remaining_crew_20261019/package.gd").build.call_deferred(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
