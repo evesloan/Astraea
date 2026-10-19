@@ -1,0 +1,18 @@
+import pathlib,json,hashlib,collections,subprocess
+R=pathlib.Path('/workspace/Astraea');W=pathlib.Path('/workspace/ship-scope-reconciliation-20261019');O=R/'Game/docs/validation/ship_scope_source_trace_20261019';old=json.loads((R/'Game/docs/validation/ship_scope_20261019/UNRECEIVED_HOME_RECONCILIATION.json').read_text());hits=json.loads((W/'MISSING_HOME_SOURCE_SEARCH.json').read_text())['matches'];sources={};out=[]
+for a in old['allocations']:
+ i=a['source_envelope_index'];ev=[]
+ for h in hits.get(str(i),[]):
+  p=h['path'];e=h['entry']
+  if not any(s in p for s in ['ALL_1000_CURRENT_HOTEL_SOURCE_APPLICATION.json','WHOLE_147_LEDGER.json','FULL_145_SCOPE.json','NEIGHBORHOOD_PLAN.json','ROYALTY790_PROTECTED_ROOF_BLOCKER.json']):continue
+  sources[p]=hashlib.sha256((R/p).read_bytes()).hexdigest();fields={k:v for k,v in e.items() if k in ['source_envelope_index','source_index','census_source_index','allocation_sha256','source_status','status','night_garden_source_status','source_application','action','address','proposed_family','production_lane']}
+  ev.append({'path':p,'fields':fields})
+ b=dict(a);b['additional_source_evidence']=ev;b['runtime_receiving_status']='FITTED_HOME_ROOT_NOT_OBSERVED';b['source_search_status']='RECORDED_UNFINISHED_NO_COMPLETED_INTERIOR_SOURCE_LOCATED_IN_SEARCHED_SCOPE';b['completed_source_existence_claim']='unknown beyond searched scope'
+ if i in [100,124]:b['source_search_status']='PILOT_EXPORT_RECEIPT_LOCATED_EXACT_BYTES_NOT_LOCATED';b['pilot_address']=str(13001+i)
+ if i==790:b['source_search_status']='LOWER_PLATFORM_NATIVE_AND_EXPORT_VERIFIED_COMPLETE_SUITE_RECORDED_BLOCKED';b['native_inspection']='ROYALTY790_NATIVE_INSPECTION.json';b['export_inspection']='ROYALTY790_EXPORT_VERIFICATION.json'
+ out.append(b)
+heads=[]
+for h in json.loads((W/'REMOTE_SOURCE_TREES_ALL_HEADS.json').read_text()):
+ paths=pathlib.Path(h['tree_list']).read_text().splitlines();pilot=[p for p in paths if ('/outputs/r002/' in p or '13101' in p or '13125' in p) and any(p.endswith(s) for s in ['.blend','.glb','.png'])]; heads.append({'ref':h['ref'],'commit':h['commit'],'tree_file_count':h['files'],'path_listing_sha256':hashlib.sha256(pathlib.Path(h['tree_list']).read_bytes()).hexdigest(),'pilot_named_paths':pilot,'named_native_or_glb_found':any(p.endswith(('.blend','.glb')) for p in pilot)})
+report={'scope':'All189 unobserved fitted-home allocation joins. Retained source ledgers inspected by exact allocation;29 advertised remote branch-head trees searched, source/blender pilot path history examined,17 local root ZIP groups inspected. No assertion all historical blobs/Library archives exhausted.','allocations':out,'source_file_sha256':sources,'remote_head_tree_search':heads,'house_counts':dict(collections.Counter(a['house'] for a in out)),'status_counts':dict(collections.Counter(a['source_search_status'] for a in out)),'pilot_receipt':'BlenderCatalogue/assets/residential_production_batch/qa/SOURCE_EXPORT_CHECKS_r002.json','pilot_creation_history_commit':'d9b673df7d97cc95b69d30da2dac7d3f456d7ed2','remaining_recovery':'Inspect unresolved older Library archive directory inventories through approved transport if available; search renamed exact-hash payload provenance before replacement construction. A missing fitted root is not proof completed source never existed.','replacement_construction_authorized_by_this_receipt':False}
+(O/'HOME_SOURCE_TRACE.json').write_text(json.dumps(report,indent=2)+'\n');print(report['house_counts']);print(report['status_counts']);print('heads',len(heads),'named pilot native/export hits',sum(h['named_native_or_glb_found'] for h in heads))
