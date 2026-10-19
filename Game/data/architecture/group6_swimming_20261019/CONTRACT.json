@@ -1,0 +1,114 @@
+{
+  "base_commit": "b78f2274252eb92e9ed00b7243e7045520f12616",
+  "source_pins": {
+    "assets/models/AST-AQU-016.glb": "95a72a20bd0ed653bb10622ff025b1003386020063587828b29efe5e8e40a481",
+    "assets/models/AquaticCompletion_r019.glb": "c3f05ba957fca0e480dcb53a0cd6ad087c37048fe475ac1d7c2b5d4a4e38c2af",
+    "assets/models/Group6TidalNorthRoom_r008.glb": "dc5a63dfb5808fa89725d5df7a15304a9e049b28d654e9f3fa237b699456dbeb",
+    "assets/models/SOL_D08_directory_02_entry001.glb": "40a05c8a4367a5e8ba2423b658f44da25924f1893b79459da44167cce12906cc",
+    "assets/models/SOL_D08_directory_03_entry001.glb": "7d403ca75a0aea43d6b25269b5d23afe40e6a4974570307efa4f99eeacacc437",
+    "data/architecture/GRAND_POOL_SECTION_PLAN.json": "4d198521dc7754921819fc195c7519f5043d4aa209aa518daa730ddfe3b73bf2",
+    "data/architecture/GRAND_POOL_SECTION_RUNTIME.json": "7173bdd7e5213059dcc48b74d596b2589ab805dea5d839ce1e8dda6044b458dd",
+    "data/architecture/group6_completion/THERMAL_ENTRY_CONTRACT.json": "dde5f8a56aa3e733504790b428b4fcc751d35e793ebd40b75ae7af91fa7e8fdd",
+    "data/architecture/group6_completion/TIDAL_NORTH_ROOM_CONTRACT.json": "a48a93992d1af1dccd78a62212812b2405915960b0d0204bcd716e803443403d",
+    "data/architecture/group6_swimming_20261019/WATER_VOLUMES.json": "4f5cf5546784e026a763f9761cc4c1b793371686ef974ea0723ddf84a6f9afc1",
+    "scripts/grand_pool_section.gd": "5ab3ab12e66463e6232ae394c0913c1b6cb010a8ac00c29a24ba857f1ac8a6da",
+    "scripts/group6_completion/buoyant_float.gd": "f8544652bda5985e6c3f6664823db11d728f0191d63608d147826aadfcc72245",
+    "scripts/group6_completion/player_water_seat_20261019.gd": "a7343f695751e4adf70e9219b16dda4e6ec6151305a4a5d5439dbcd1770be209",
+    "scripts/group6_completion/river_water_field.gd": "1bfa8f1a6849cc3adf6ce649d19c729e6fcfed6ffcd8f115aee02c3be795f6c5",
+    "scripts/group6_float_20261019/float_body.gd": "dfc6f23ff6e6a4051de2d6394e5e662024077f0806ca6599007bf2f9d9edf990",
+    "scripts/group6_float_20261019/float_seat.gd": "a7e9418003e55c2a7dcd4ed91e27c31f1e460856b8a2a27455e1b00435a18960",
+    "scripts/group6_float_20261019/player.gd": "f87d2746c1b47963ca93b6f1df15003b5171a0644ddb6bafacb3c7d930facde7",
+    "scripts/group6_swimming_20261019/player.gd": "fbcc72ff03a10325b9d195b7b9ab904868940e197c8b866076249321c5081f5c",
+    "scripts/group6_swimming_20261019/water_field.gd": "0f305e496348248c31a3807c63103fd785f41214a77a15d383badc2cbc9a885b",
+    "scripts/player.gd": "f1bd92d00ad355d5d3c87b57da5ff0e3aa76f9d48776a58f3515932c017a9566"
+  },
+  "identity_policy": "Existing programme, entry and source spa IDs only; river sampler retains aquatic_river_001. No new rooms, save IDs, volumes outside source water or floor owners.",
+  "volumes": [
+    {
+      "bed_y": 44.3,
+      "id": "aquatic_thermal_02_entry_0_001",
+      "programme_key": "D08_directory_02",
+      "source_file": "assets/models/SOL_D08_directory_02_entry001.glb",
+      "source_sha256": "40a05c8a4367a5e8ba2423b658f44da25924f1893b79459da44167cce12906cc",
+      "source_water_mesh": "D08_directory_02__static_water_surface0",
+      "water_y": 44.92
+    },
+    {
+      "bed_y": 44.3,
+      "id": "aquatic_thermal_02_entry_1_001",
+      "programme_key": "D08_directory_02",
+      "source_file": "assets/models/Group6TidalNorthRoom_r008.glb",
+      "source_sha256": "dc5a63dfb5808fa89725d5df7a15304a9e049b28d654e9f3fa237b699456dbeb",
+      "source_water_mesh": "G6_TIDAL__water_face",
+      "water_y": 44.9
+    },
+    {
+      "bed_y": 44.3,
+      "id": "aquatic_thermal_03_entry_0_001",
+      "programme_key": "D08_directory_03",
+      "source_file": "assets/models/SOL_D08_directory_03_entry001.glb",
+      "source_sha256": "7d403ca75a0aea43d6b25269b5d23afe40e6a4974570307efa4f99eeacacc437",
+      "source_water_mesh": "D08_directory_03__mineral_court_water",
+      "water_y": 44.92
+    },
+    {
+      "bed_y": 44.3,
+      "id": "aquatic_thermal_03_entry_1_001",
+      "programme_key": "D08_directory_03",
+      "source_file": "assets/models/SOL_D08_directory_03_entry001.glb",
+      "source_sha256": "7d403ca75a0aea43d6b25269b5d23afe40e6a4974570307efa4f99eeacacc437",
+      "source_water_mesh": "D08_directory_03__quiet_court_water",
+      "water_y": 44.92
+    },
+    {
+      "bed_y": 44.4,
+      "id": "AQD_spa_5",
+      "programme_key": "D08_directory_08",
+      "source_file": "assets/models/AquaticCompletion_r019.glb",
+      "source_sha256": "c3f05ba957fca0e480dcb53a0cd6ad087c37048fe475ac1d7c2b5d4a4e38c2af",
+      "water_y": 45.05
+    },
+    {
+      "bed_y": 44.4,
+      "id": "AQD_spa_6",
+      "programme_key": "D08_directory_08",
+      "source_file": "assets/models/AquaticCompletion_r019.glb",
+      "source_sha256": "c3f05ba957fca0e480dcb53a0cd6ad087c37048fe475ac1d7c2b5d4a4e38c2af",
+      "water_y": 45.05
+    },
+    {
+      "bed_y": 44.8,
+      "id": "D08_directory_01",
+      "programme_key": "D08_directory_01",
+      "source_file": "scripts/grand_pool_section.gd",
+      "source_sha256": "5ab3ab12e66463e6232ae394c0913c1b6cb010a8ac00c29a24ba857f1ac8a6da",
+      "source_water_mesh": "GrandPoolTrialWater_VisualOnly_NoSwimming",
+      "water_y": 46.05
+    }
+  ],
+  "river": "Original pinned polygon/island/current sampler reused unchanged.",
+  "scope": "Reference first-person swimming in the1.25m Grand Pool; wading in shallow river and thermal water; exact top-face footprint sampling for seven source water surfaces plus original river.",
+  "controls": {
+    "WASD": "Horizontal swimming; ordinary controls unchanged outside swimming",
+    "look_and_W_or_S": "Pitch-directed ascent/descent while swimming",
+    "Space": "Rise; normal collision movement supports exit over existing0.15m-freeboard pool rim. Existing float safe-exit input unchanged."
+  },
+  "envelope": {
+    "standing_capsule_radius_m": 0.3,
+    "standing_capsule_height_m": 1.8,
+    "swimming": "Same capsule rotated horizontal, centre0.3m above root; checked before changing pose. No native source change.",
+    "camera_height_m": 0.45,
+    "surface_root_depth_m": 0.35,
+    "entry_root_depth_m": 0.95,
+    "minimum_ground_water_depth_for_swim_m": 1.1,
+    "shallow_ground_depth_to_restore_standing_m": 0.8,
+    "camera_transition": "Smooth offset interpolation; no position teleport for swimming transitions."
+  },
+  "limits": [
+    "Current-controller game envelope, not species fit or engineering acceptance",
+    "Water remains nominal flat sampling; visual waves are not fluid simulation",
+    "No drowning/oxygen, temperature/species water response, moving hoists or AFK/pause/save lifecycle",
+    "Grand Pool entry/exit uses retained continuous rim via physical motion, not new ladders or stairs",
+    "Final visual and gameplay acceptance remain open"
+  ]
+}

@@ -484,9 +484,9 @@
       "group": 6,
       "retained_source_commit": "b7205de3d939be14865dee838b5e8dede5d894f5",
       "live_installed_and_checked": "r019 fitted annex optics,two r003 entries and four r004 thermal stations installed-and-checked:5818 thermal checks/16 W legs,10494 main optics checks;two recovery r004/R008 north chamber,34 post-configure sources made inert before registration,22 supported current-main legs and reflection/eight-source cap checks passed; Aquatic onward service portal now physically reaches the unchanged44m public connection via a gentle external operator ramp and screened/guarded return path. r002 owns313.075m\u00b2 projected floor,344 editable meshes/11 batches and13 original-profile task sources.18 original-controller legs,162 floor samples,13 bearing witnesses pass withzero unexplained contacts.239 existing annex mesh poses/resources,gate IDs,flanges andcapacity preserved.1.65m final operator leg;loaded-cart,species,primary engineering andwhole operation remain unaccepted.",
-      "not_installed_or_unaccepted": "Two occupied reference-load floats and boarding holds implemented and bounded-checked; swimming, moving hoists, AFK/save/pause lifecycle, slide/cascade, species and engineering/final acceptance remain open.",
+      "not_installed_or_unaccepted": "Reference swimming/source-water transitions and two occupied floats implemented and bounded-checked; moving hoists, AFK/pause/save, slide/cascade, species/engineering and final acceptance remain open.",
       "blocker_owner": "Group1 player/IDs/save,Group6 physics,Group3 service,Group7 support,Group8 programmes",
-      "next_action": "Player swimming and water transitions beyond the shallow-river wading/state subset. Existing controller still delegates ordinary movement/gravity and supplies no swimming forces. Thermal visual water volumes are not promoted to gameplay volumes.",
+      "next_action": "Moving occupied thermal hoist transfer: four source support stations still provide parked seating only. Carrier/arm motion, dock release, loaded transfer to existing water endpoints and safe return have not been implemented. AFK/pause/save lifecycle and slides also remain open.",
       "retained_source_does_not_mean_installed": true,
       "source_tree": "cf50f5102be012339dff57f4f99d6aeea0e62d4a",
       "source_map": "RetainedConstruction/group6/SOURCE_MAP.json",
@@ -498,15 +498,13 @@
       "physical_missing_or_conditional": [
         "External aquatic operator receiver is physically installed;the declared99.2/45.45/210 reference stance remains occupied by a preserved fitting,with a measured bypass to the unchanged portal.",
         "Primary load/sizing,wet/pressure/stock/water/network,species andloaded-cart admission remain open;the new final operator leg is1.65m.",
-        "Occupied river float subset implemented; swimming/hoist/slide/AFK/save and broader acceptance remain open."
+        "Occupied river float subset implemented; hoist/slide/AFK/save and broader acceptance remain open."
       ],
       "controls_or_acceptance_held": [
-        "Swimming",
-        "moving occupied hoists",
-        "AFK/pause/save and durable float-instance identity lifecycle",
-        "slide interfaces",
-        "species fit, load tuning and engineering acceptance",
-        "final visual and gameplay acceptance"
+        "Moving occupied hoists",
+        "AFK/pause/save lifecycle and durable identities",
+        "Slide/cascade interfaces",
+        "Species/engineering and final visual/gameplay acceptance"
       ],
       "player_integration_20261019": {
         "base_commit": "18d878172cdc83f73dfb471191b3a5b812f49a4e",
@@ -612,6 +610,82 @@
           "Older delivery ZIP unchanged; denied helper endpoint not retried",
           "Original source revisions, acceptance guards, engine4.6.3 and project settings"
         ]
+      },
+      "swimming_20261019": {
+        "base_commit": "b78f2274252eb92e9ed00b7243e7045520f12616",
+        "status": "SWIMMING_AND_SOURCE_WATER_TRANSITIONS_SUBSET_VERIFIED",
+        "implementation": [
+          "Additive player specialization preserves original movement, parked seating and occupied-float source scripts. Dry/wading movement delegates to existing controller.",
+          "Grand Pool supports normal-input rim entry, horizontal swimming, look-plus-movement submergence, surface recovery and Space-assisted physical exit over retained rim. No swim teleport or new ramp/stair geometry.",
+          "Same1.8m by0.6m capsule rotates horizontal only after clearance; standing restores only with supporting shallow/dry floor and full overhead clearance. Camera offset changes smoothly.",
+          "Seven exact source-water footprints plus original river sampler provide eight volume contexts: Grand Pool, four thermal entry basins, two annex spas and river. Existing source/programme IDs remain.",
+          "All four thermal circuits retain ordinary dry/wading/dry traversal. Actual water footprint corners, river island, upper decks and below-bed positions are excluded.",
+          "Installed river wading/float boarding/reference load/Space exit/original ramp return remain working. Source buoyancy and dock physics unchanged."
+        ],
+        "checks": {
+          "local": 10,
+          "main": 15,
+          "transitions": 22,
+          "source_and_runtime_hashes": 23,
+          "engine_errors": 0,
+          "installed_pool_motion": [
+            {
+              "end": [
+                -31.0,
+                45.7120323181152,
+                -452.155731201172
+              ],
+              "frames": 197,
+              "max_step": 0.092082105576992,
+              "reached": true,
+              "states": [
+                "dry",
+                "wading",
+                "swimming",
+                "submerged"
+              ]
+            },
+            {
+              "end": [
+                -31.0,
+                46.2006721496582,
+                -459.820861816406
+              ],
+              "frames": 370,
+              "max_step": 0.0516992397606373,
+              "reached": true,
+              "states": [
+                "swimming",
+                "dry"
+              ]
+            }
+          ]
+        },
+        "controls": {
+          "WASD": "Horizontal swimming; ordinary controls unchanged outside swimming",
+          "look_and_W_or_S": "Pitch-directed ascent/descent while swimming",
+          "Space": "Rise; normal collision movement supports exit over existing0.15m-freeboard pool rim. Existing float safe-exit input unchanged."
+        },
+        "scope_limits": [
+          "Current-controller game envelope, not species fit or engineering acceptance",
+          "Water remains nominal flat sampling; visual waves are not fluid simulation",
+          "No drowning/oxygen, temperature/species water response, moving hoists or AFK/pause/save lifecycle",
+          "Grand Pool entry/exit uses retained continuous rim via physical motion, not new ladders or stairs",
+          "Final visual and gameplay acceptance remain open"
+        ],
+        "next_concrete_omission": "Moving occupied thermal hoist transfer: four source support stations still provide parked seating only. Carrier/arm motion, dock release, loaded transfer to existing water endpoints and safe return have not been implemented. AFK/pause/save lifecycle and slides also remain open.",
+        "failed_attempts": [
+          "Initial local fixture used floor-region planning records, then the received-floor catalogue; corrected to the existing primary compiler Grand Pool floor owners before accepting any result. No production floor edited.",
+          "First standing-restoration query treated ordinary floor contact as an obstruction. Clearance is now probed20mm above the supported sole, without moving the player or weakening overhead checks."
+        ],
+        "continuity": "Environment responded at09:40:31UTC after parent disconnection notice. Existing PID10529 completed the same installed test; no duplicate build/import or workspace restoration. Uncommitted work was preserved for this checkpoint.",
+        "preserved": [
+          "All prior player/float source scripts and native assets",
+          "Group5 unresolved84 mappings and8 per-circuit relations",
+          "D17 Library image provenance and older delivery ZIP; no further rendering or upload attempts",
+          "Engine4.6.3, credentials, permissions and project settings"
+        ],
+        "acceptance": "Reference first-person gameplay subset only. Hoists, AFK/save, species/engineering and final visual/gameplay acceptance remain unfinished."
       }
     },
     {

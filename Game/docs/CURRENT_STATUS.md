@@ -1,3 +1,13 @@
+Group6 swimming and source water transitions — 19 October 2026
+
+The additive controller now supports physical Grand Pool entry, horizontal swimming, look-plus-W/S ascent/descent, surface recovery and Space-assisted exit over the retained rim. The original1.8m capsule rotates only after clearance; standing restoration requires a supported shallow/dry floor and clear overhead space. Camera offset interpolates smoothly. No water geometry, entry stairs, ladders, source movement controller or float physics was replaced.
+
+Seven extracted source-water footprints plus the original river give eight contexts. Four thermal circuits pass ordinary dry/wading/dry travel, with polygon corners, upper decks, below-bed points and the river island excluded. Local swimming10, thermal transitions22 and installed15 checks pass; final logs have zero engine errors. Installed checks retain river wading, occupied float boarding/load, Space exit and dry ramp return. Pool travel stays continuous with maximum entry frame movement0.0921m and exit0.0517m.
+
+This is a reference first-person subset, not final species/engineering or visual/gameplay acceptance. The next concrete omission is occupied movement of the four thermal hoists: stations remain parked, with carrier/arm/load transfer and safe return unfinished. AFK/pause/save and slide interfaces also remain open. Existing Grand Pool rim geometry remains; this package adds no accessible-hoist claim. Evidence: validation/group6_swimming_20261019/SUMMARY.json.
+
+After the parent's disconnection notice, the existing workspace remained responsive at09:40:31UTC and the same installed Godot process completed. No duplicate build/import, environment switch or restoration occurred. The D17 Library image and older ZIP are preserved; no new rendering or denied endpoint retry was performed.
+
 Group6 occupied floats and boarding holds — 19 October 2026
 
 Two instances of the unchanged registered AST-AQU-006 now serve the existing south_board and north_recovery interfaces. RMB+E boards, starts drifting, requests return, and leaves when the boarding hold settles. Space requests safe exit/return. Source-segmented contacts preserve the seating well; safe exits use existing supported bed stances and entry ramps. No source architecture, static rack rings, programme capacities or persistent save identities were replaced or invented.
