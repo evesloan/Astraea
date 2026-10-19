@@ -1,0 +1,759 @@
+{
+  "base_commit": "1ae3b4b36254b5d2c507c6c5decbda8b47f976a7",
+  "status": "NO_ADDITIONAL_AUTHORITATIVE_BINDINGS_FOUND",
+  "source_pins": {
+    "Game/data/architecture/SHOPPING_PROMENADE.json": "805454db0d64f6a6f453a60509d5be8ca8225fc515a69d83d93bd6ebaa918e49",
+    "Game/scripts/shopping_promenade_adoption.gd": "786b846149f1f1f2b328d7f257d2f359fa6e7ddaae199976995bbe8b6235ddcb",
+    "DesignArchive/Planning/Supporting_Analyses/d09-retail-handoff/D09_atlas_vector_evidence.json": "2d9d74d161e3a94c8199ede26845635be3bbbdce08cd2bf5a2642e1beff1b0b2",
+    "DesignArchive/Planning/Supporting_Analyses/d09-retail-handoff/D09_exact_coverage_rows.json": "0b277c6167209dc705d7ffddd1ffb5c53730dc4e182a5987786ebbbf313a0add",
+    "DesignArchive/Historical_Design/Editable_Source/project_docs/architecture/whole_ship_coverage.json": "3b02b1fdea59ec9ddd7cb66e39bbcfbd6492e0d3e37647eeb6d38b3d370edefe",
+    "DesignArchive/Planning/v3/inputs/historical_baseline.json": "2db6230664d64fac9cf5367f6e0dcf4057084cb025ab47ed6e145e26f72f5c5e",
+    "DesignArchive/Planning/v2/editable/Astraea_1462_ID_crosswalk_v2.json": "3ec1fe4d63a8361d423e5f77fc649e3675a57c45713f6ee585c84dbd84671b35",
+    "Game/data/reference/historical_atlas_allocations.json": "deabb459263f09f342dc76b1d588105eb579d1eb60a0c658a6358f9ab8d1b063",
+    "BlenderCatalogue/assets/shopping_promenade_20261009/source/plan.py": "b92b4228eba6fad4d1ff3587beed3b184c373e1a1c5d3097b66680512a019899",
+    "Game/docs/group5/STAFF_RISER_INTERFACE_CONTRACT.json": "9f7e0ad50ffa44fc55c996c19bda7e1fd23bea5731dfdbd8e657bcc30c64dece",
+    "Game/scripts/port_fore404_receiving_20261015/package.gd": "64379063527c06be47211030a70c6ad7b749b02daaea211330811af90f61d3a7",
+    "Game/scripts/starboard_fore404_receiving_20261015/package.gd": "68441eb980b880781d9babe5bc38953e54e30ea768a3be8b50d5e85af29e645d",
+    "Game/scripts/forward_staff_upper_operation.gd": "4378a335569a3add3de29eb736a899e4beab3d7a417098875f1cea2effb8a0b6",
+    "Game/data/architecture/FORWARD_STAFF_UPPER_OPERATION.json": "6ca253c33d0af58b929d8556b5f10ced1f99856dec67eb3df85f6ee7aee5e316",
+    "Game/scripts/group6_completion/buoyant_float.gd": "f8544652bda5985e6c3f6664823db11d728f0191d63608d147826aadfcc72245",
+    "Game/scripts/group6_completion/river_water_field.gd": "1bfa8f1a6849cc3adf6ce649d19c729e6fcfed6ffcd8f115aee02c3be795f6c5",
+    "Game/scripts/group6_completion/completion.gd": "12db398f8d7f309fb9e71af09fdf34ca7e6b4f2a5f32d5d209d990460d5a1d0f",
+    "Game/scripts/player.gd": "f1bd92d00ad355d5d3c87b57da5ff0e3aa76f9d48776a58f3515932c017a9566"
+  },
+  "checks": {
+    "new_shop_chunks": 99,
+    "already_bound_proven_new_shop_addresses": 15,
+    "separately_retained_proven_address": "R070",
+    "explicit_atlas_labels": 16,
+    "unresolved_addresses": 84,
+    "registry_ids_with_names_but_no_spatial_join_fields": 100,
+    "shared_crosslink_rows_without_target_riser_stop_binding": 8,
+    "all_proven_runtime_joins_match_atlas": true,
+    "all_proposal_names_match_registry_but_names_do_not_prove_locations": true
+  },
+  "unresolved_address_rows": [
+    {
+      "source_chunk_id": "SHOP_D09_P72_F392",
+      "footprint_evidence_key": "atlas_p11_drawing_070",
+      "proposed_address": "R001",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F366",
+      "footprint_evidence_key": "atlas_p11_drawing_072",
+      "proposed_address": "R002",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F340",
+      "footprint_evidence_key": "atlas_p11_drawing_074",
+      "proposed_address": "R003",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F314",
+      "footprint_evidence_key": "atlas_p11_drawing_076",
+      "proposed_address": "R004",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F288",
+      "footprint_evidence_key": "atlas_p11_drawing_078",
+      "proposed_address": "R005",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F262",
+      "footprint_evidence_key": "atlas_p11_drawing_080",
+      "proposed_address": "R006",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F236",
+      "footprint_evidence_key": "atlas_p11_drawing_082",
+      "proposed_address": "R007",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F210",
+      "footprint_evidence_key": "atlas_p11_drawing_084",
+      "proposed_address": "R008",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F184",
+      "footprint_evidence_key": "atlas_p11_drawing_086",
+      "proposed_address": "R009",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F158",
+      "footprint_evidence_key": "atlas_p11_drawing_088",
+      "proposed_address": "R010",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F132",
+      "footprint_evidence_key": "atlas_p11_drawing_090",
+      "proposed_address": "R011",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F106",
+      "footprint_evidence_key": "atlas_p11_drawing_092",
+      "proposed_address": "R012",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_F080",
+      "footprint_evidence_key": "atlas_p11_drawing_094",
+      "proposed_address": "R013",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A080",
+      "footprint_evidence_key": "atlas_p11_drawing_096",
+      "proposed_address": "R014",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A106",
+      "footprint_evidence_key": "atlas_p11_drawing_098",
+      "proposed_address": "R015",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A132",
+      "footprint_evidence_key": "atlas_p11_drawing_100",
+      "proposed_address": "R016",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A158",
+      "footprint_evidence_key": "atlas_p11_drawing_102",
+      "proposed_address": "R017",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A184",
+      "footprint_evidence_key": "atlas_p11_drawing_104",
+      "proposed_address": "R018",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A210",
+      "footprint_evidence_key": "atlas_p11_drawing_106",
+      "proposed_address": "R019",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A236",
+      "footprint_evidence_key": "atlas_p11_drawing_108",
+      "proposed_address": "R020",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A262",
+      "footprint_evidence_key": "atlas_p11_drawing_110",
+      "proposed_address": "R021",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A288",
+      "footprint_evidence_key": "atlas_p11_drawing_112",
+      "proposed_address": "R022",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A314",
+      "footprint_evidence_key": "atlas_p11_drawing_114",
+      "proposed_address": "R023",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A340",
+      "footprint_evidence_key": "atlas_p11_drawing_116",
+      "proposed_address": "R024",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P72_A366",
+      "footprint_evidence_key": "atlas_p11_drawing_118",
+      "proposed_address": "R025",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F392",
+      "footprint_evidence_key": "atlas_p11_drawing_120",
+      "proposed_address": "R026",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F366",
+      "footprint_evidence_key": "atlas_p11_drawing_122",
+      "proposed_address": "R027",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F340",
+      "footprint_evidence_key": "atlas_p11_drawing_124",
+      "proposed_address": "R028",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F314",
+      "footprint_evidence_key": "atlas_p11_drawing_126",
+      "proposed_address": "R029",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F288",
+      "footprint_evidence_key": "atlas_p11_drawing_128",
+      "proposed_address": "R030",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F262",
+      "footprint_evidence_key": "atlas_p11_drawing_130",
+      "proposed_address": "R031",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F236",
+      "footprint_evidence_key": "atlas_p11_drawing_132",
+      "proposed_address": "R032",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F210",
+      "footprint_evidence_key": "atlas_p11_drawing_134",
+      "proposed_address": "R033",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F184",
+      "footprint_evidence_key": "atlas_p11_drawing_136",
+      "proposed_address": "R034",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F158",
+      "footprint_evidence_key": "atlas_p11_drawing_138",
+      "proposed_address": "R035",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F132",
+      "footprint_evidence_key": "atlas_p11_drawing_140",
+      "proposed_address": "R036",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F106",
+      "footprint_evidence_key": "atlas_p11_drawing_142",
+      "proposed_address": "R037",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_F080",
+      "footprint_evidence_key": "atlas_p11_drawing_144",
+      "proposed_address": "R038",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A080",
+      "footprint_evidence_key": "atlas_p11_drawing_146",
+      "proposed_address": "R039",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A106",
+      "footprint_evidence_key": "atlas_p11_drawing_148",
+      "proposed_address": "R040",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A132",
+      "footprint_evidence_key": "atlas_p11_drawing_150",
+      "proposed_address": "R041",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A158",
+      "footprint_evidence_key": "atlas_p11_drawing_152",
+      "proposed_address": "R042",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A184",
+      "footprint_evidence_key": "atlas_p11_drawing_154",
+      "proposed_address": "R043",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A210",
+      "footprint_evidence_key": "atlas_p11_drawing_156",
+      "proposed_address": "R044",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A236",
+      "footprint_evidence_key": "atlas_p11_drawing_158",
+      "proposed_address": "R045",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A262",
+      "footprint_evidence_key": "atlas_p11_drawing_160",
+      "proposed_address": "R046",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A288",
+      "footprint_evidence_key": "atlas_p11_drawing_162",
+      "proposed_address": "R047",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A314",
+      "footprint_evidence_key": "atlas_p11_drawing_164",
+      "proposed_address": "R048",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A340",
+      "footprint_evidence_key": "atlas_p11_drawing_166",
+      "proposed_address": "R049",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_P100_A366",
+      "footprint_evidence_key": "atlas_p11_drawing_168",
+      "proposed_address": "R050",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F392",
+      "footprint_evidence_key": "atlas_p11_drawing_170",
+      "proposed_address": "R051",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F366",
+      "footprint_evidence_key": "atlas_p11_drawing_172",
+      "proposed_address": "R052",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F340",
+      "footprint_evidence_key": "atlas_p11_drawing_174",
+      "proposed_address": "R053",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F314",
+      "footprint_evidence_key": "atlas_p11_drawing_176",
+      "proposed_address": "R054",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F288",
+      "footprint_evidence_key": "atlas_p11_drawing_178",
+      "proposed_address": "R055",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F262",
+      "footprint_evidence_key": "atlas_p11_drawing_180",
+      "proposed_address": "R056",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F236",
+      "footprint_evidence_key": "atlas_p11_drawing_182",
+      "proposed_address": "R057",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F210",
+      "footprint_evidence_key": "atlas_p11_drawing_184",
+      "proposed_address": "R058",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F184",
+      "footprint_evidence_key": "atlas_p11_drawing_186",
+      "proposed_address": "R059",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F158",
+      "footprint_evidence_key": "atlas_p11_drawing_188",
+      "proposed_address": "R060",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F132",
+      "footprint_evidence_key": "atlas_p11_drawing_190",
+      "proposed_address": "R061",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F106",
+      "footprint_evidence_key": "atlas_p11_drawing_192",
+      "proposed_address": "R062",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_F080",
+      "footprint_evidence_key": "atlas_p11_drawing_194",
+      "proposed_address": "R063",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_A288",
+      "footprint_evidence_key": "atlas_p11_drawing_212",
+      "proposed_address": "R072",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_A314",
+      "footprint_evidence_key": "atlas_p11_drawing_214",
+      "proposed_address": "R073",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_A340",
+      "footprint_evidence_key": "atlas_p11_drawing_216",
+      "proposed_address": "R074",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S72_A366",
+      "footprint_evidence_key": "atlas_p11_drawing_218",
+      "proposed_address": "R075",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F392",
+      "footprint_evidence_key": "atlas_p11_drawing_220",
+      "proposed_address": "R076",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F366",
+      "footprint_evidence_key": "atlas_p11_drawing_222",
+      "proposed_address": "R077",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F340",
+      "footprint_evidence_key": "atlas_p11_drawing_224",
+      "proposed_address": "R078",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F314",
+      "footprint_evidence_key": "atlas_p11_drawing_226",
+      "proposed_address": "R079",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F288",
+      "footprint_evidence_key": "atlas_p11_drawing_228",
+      "proposed_address": "R080",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F262",
+      "footprint_evidence_key": "atlas_p11_drawing_230",
+      "proposed_address": "R081",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F236",
+      "footprint_evidence_key": "atlas_p11_drawing_232",
+      "proposed_address": "R082",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F210",
+      "footprint_evidence_key": "atlas_p11_drawing_234",
+      "proposed_address": "R083",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F184",
+      "footprint_evidence_key": "atlas_p11_drawing_236",
+      "proposed_address": "R084",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F158",
+      "footprint_evidence_key": "atlas_p11_drawing_238",
+      "proposed_address": "R085",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F132",
+      "footprint_evidence_key": "atlas_p11_drawing_240",
+      "proposed_address": "R086",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F106",
+      "footprint_evidence_key": "atlas_p11_drawing_242",
+      "proposed_address": "R087",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_F080",
+      "footprint_evidence_key": "atlas_p11_drawing_244",
+      "proposed_address": "R088",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_A288",
+      "footprint_evidence_key": "atlas_p11_drawing_262",
+      "proposed_address": "R097",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_A314",
+      "footprint_evidence_key": "atlas_p11_drawing_264",
+      "proposed_address": "R098",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_A340",
+      "footprint_evidence_key": "atlas_p11_drawing_266",
+      "proposed_address": "R099",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    },
+    {
+      "source_chunk_id": "SHOP_D09_S100_A366",
+      "footprint_evidence_key": "atlas_p11_drawing_268",
+      "proposed_address": "R100",
+      "stable_room_id": null,
+      "missing_evidence": "Authoritative address-to-footprint association; registry has ID/name but no spatial key. Bank ordering is a proposal."
+    }
+  ],
+  "shared_crosslinks": [
+    {
+      "source_chunk_id": "STAFFLINK_D09_PF404",
+      "circuit_index": 1,
+      "required_missing_relation": [
+        "authoritative target riser ID and stop ID for this circuit",
+        "exact owned route and entry/gate association",
+        "authorization and clean/used operating policy"
+      ],
+      "physical_missing_inferred": false
+    },
+    {
+      "source_chunk_id": "STAFFLINK_D09_PF69",
+      "circuit_index": 1,
+      "required_missing_relation": [
+        "authoritative target riser ID and stop ID for this circuit",
+        "exact owned route and entry/gate association",
+        "authorization and clean/used operating policy"
+      ],
+      "physical_missing_inferred": false
+    },
+    {
+      "source_chunk_id": "STAFFLINK_D09_P69",
+      "circuit_index": 0,
+      "required_missing_relation": [
+        "authoritative target riser ID and stop ID for this circuit",
+        "exact owned route and entry/gate association",
+        "authorization and clean/used operating policy"
+      ],
+      "physical_missing_inferred": false
+    },
+    {
+      "source_chunk_id": "STAFFLINK_D09_P378",
+      "circuit_index": 0,
+      "required_missing_relation": [
+        "authoritative target riser ID and stop ID for this circuit",
+        "exact owned route and entry/gate association",
+        "authorization and clean/used operating policy"
+      ],
+      "physical_missing_inferred": false
+    },
+    {
+      "source_chunk_id": "STAFFLINK_D09_SF404",
+      "circuit_index": 3,
+      "required_missing_relation": [
+        "authoritative target riser ID and stop ID for this circuit",
+        "exact owned route and entry/gate association",
+        "authorization and clean/used operating policy"
+      ],
+      "physical_missing_inferred": false
+    },
+    {
+      "source_chunk_id": "STAFFLINK_D09_SF69",
+      "circuit_index": 3,
+      "required_missing_relation": [
+        "authoritative target riser ID and stop ID for this circuit",
+        "exact owned route and entry/gate association",
+        "authorization and clean/used operating policy"
+      ],
+      "physical_missing_inferred": false
+    },
+    {
+      "source_chunk_id": "STAFFLINK_D09_S69",
+      "circuit_index": 2,
+      "required_missing_relation": [
+        "authoritative target riser ID and stop ID for this circuit",
+        "exact owned route and entry/gate association",
+        "authorization and clean/used operating policy"
+      ],
+      "physical_missing_inferred": false
+    },
+    {
+      "source_chunk_id": "STAFFLINK_D09_S378",
+      "circuit_index": 2,
+      "required_missing_relation": [
+        "authoritative target riser ID and stop ID for this circuit",
+        "exact owned route and entry/gate association",
+        "authorization and clean/used operating policy"
+      ],
+      "physical_missing_inferred": false
+    }
+  ],
+  "already_implemented_physical_associations": [
+    {
+      "source_chunk_id": "STAFFLINK_D09_PF404",
+      "receiver_root": "PortFore404Receiving20261015",
+      "receiving_source_floor": "D09_orchard_market_gallery",
+      "programme_key": "D09_directory_01",
+      "evidence": "Game/scripts/port_fore404_receiving_20261015/package.gd"
+    },
+    {
+      "source_chunk_id": "STAFFLINK_D09_SF404",
+      "receiver_root": "StarboardFore404Receiving20261015",
+      "programme_key": "D09_directory_02",
+      "evidence": "Game/scripts/starboard_fore404_receiving_20261015/package.gd"
+    }
+  ],
+  "known_existing_lift": {
+    "persistent_id": "forward_staff_lift_001",
+    "known_stop": "D09",
+    "source": "Game/scripts/forward_staff_upper_operation.gd",
+    "limitation": "Known existing identity is not evidence assigning every retail circuit to this lift; no new stop or alias inferred."
+  },
+  "additional_source_search": {
+    "historical_source_ref": "12080c25971fa38d37766b52c0835035ce5366ca",
+    "result": "Retained source/godot ship is the rebuilt Node3D architecture, not the October1 register_rooms implementation cited by the coverage snapshot. No replacement spatial registry recovered from inspected retained refs/files.",
+    "missing_historical_source_hash": "841edde80362153911a3e2992bb69ead0f5e5bad7c73a9a9b50706ff7fb7e8be"
+  },
+  "supported_missing_runtime_bindings": 0,
+  "runtime_or_geometry_changes": false,
+  "unresolved_mappings_accepted": false,
+  "next_concrete_implementation_omission": {
+    "group": 6,
+    "item": "Original-player occupied float mount/dismount and water-state integration",
+    "source_files": [
+      "Game/scripts/group6_completion/buoyant_float.gd",
+      "Game/scripts/group6_completion/river_water_field.gd",
+      "Game/scripts/group6_completion/completion.gd",
+      "Game/scripts/player.gd"
+    ],
+    "evidence": "buoyant_float.gd implements unoccupied rigid-body immersion/drag only; river_water_field.gd exposes geometry-backed water sampling. No avatar/AFK/hoist/save acceptance is implemented by these modules.",
+    "current_installation_flag": "group6_completion/completion.gd sets water_gameplay_implemented=false; current player.gd exposes no water/mount state.",
+    "next_step": "Trace the existing player and parked station contracts, then define and implement supported mount/dismount and water-state ownership without bypassing original movement/contact behavior. Scope remains implementation; do not enable unverified occupied water by flipping a flag.",
+    "physical_gap_inferred": false
+  },
+  "separate_holds": [
+    "Primary structure and pressure",
+    "Staff egress and authorization",
+    "Species and loaded carts",
+    "Stock/save and full service operations",
+    "Final visual acceptance"
+  ],
+  "delivery_zip_unchanged": true,
+  "denied_library_endpoint_retried": false
+}

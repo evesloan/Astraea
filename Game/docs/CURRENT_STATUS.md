@@ -1,3 +1,11 @@
+Group5 address and shared-riser reconciliation — 19 October 2026
+
+No additional authoritative bindings were recovered. The 99 installed new-shop chunks contain 15 proven atlas addresses and 84 unresolved proposals; retained R070 is the sixteenth proven atlas join. All 15 existing runtime bindings match the retained labels. The 100-ID historical registry and v3 baseline preserve names and capacities but no footprint/evidence keys or coordinates. The builder explicitly assigns the 84 proposals by four-bank ordering, which cannot establish historical identity.
+
+Both fore404 physical associations already exist in production. The eight retained crosslink rows provide source endpoints and circuit membership but no per-row target-riser/stop/gate and authorization/clean-used relation. forward_staff_lift_001 and its D09 stop are known; their existence does not prove an assignment for every circuit. No address ID, persistent identity, geometry or runtime binding was changed. See validation/group5_identity_reconciliation_20261019/RECONCILIATION.json for every unresolved row and hash-pinned evidence.
+
+Next concrete implementation omission: Group6 original-player occupied-float mount/dismount and water-state integration. Current buoyant_float implements unoccupied forces only, river_water_field exposes sampling, completion sets water_gameplay_implemented=false, and the player has no water/mount state. This is an implementation candidate, not an inferred physical gap or permission to enable unverified occupied water. Structural, egress, species/cart, stock/save and final visual acceptance remain separate. Existing delivery ZIP unchanged; denied Library endpoint not retried.
+
 Family Terrace D16 physical staff receiving — 19 October 2026
 
 The r001 connector joins the retained aft D16 staff lobby to the Family Terrace street at Y97.5. It uses the native fore opening X19.2..22.8 at Z484, with its lintel at Y100.3. No staff wall is cut. The original shaft, gates, identities and lift stops remain unchanged. The street floor FT_Batch_101 ends at Z482.200012. The new 83.548888m² missing-only floor has 74 editable components: screened enclosure, canopy, six slab ties, four roof-bearing posts, two retained fixture assemblies/four lights, four fixture sockets and two guard-end finishes.

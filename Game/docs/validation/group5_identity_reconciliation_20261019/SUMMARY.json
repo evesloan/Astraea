@@ -1,0 +1,33 @@
+{
+  "status": "PASS_SOURCE_RECONCILIATION_NO_RUNTIME_CHANGES",
+  "counts": {
+    "new_shop_chunks": 99,
+    "already_bound_proven_new_shop_addresses": 15,
+    "separately_retained_proven_address": "R070",
+    "explicit_atlas_labels": 16,
+    "unresolved_addresses": 84,
+    "registry_ids_with_names_but_no_spatial_join_fields": 100,
+    "shared_crosslink_rows_without_target_riser_stop_binding": 8,
+    "all_proven_runtime_joins_match_atlas": true,
+    "all_proposal_names_match_registry_but_names_do_not_prove_locations": true
+  },
+  "additional_authoritative_bindings_found": 0,
+  "all_source_pins_match_protected_predecessor": true,
+  "deterministic_report_regeneration": true,
+  "runtime_geometry_identity_and_acceptance_unchanged": true,
+  "report_sha256": "e5a290cbbb7448e1779ef72c897067c55ab2865584a9d738dda0d34979523add",
+  "next_concrete_omission": {
+    "group": 6,
+    "item": "Original-player occupied float mount/dismount and water-state integration",
+    "source_files": [
+      "Game/scripts/group6_completion/buoyant_float.gd",
+      "Game/scripts/group6_completion/river_water_field.gd",
+      "Game/scripts/group6_completion/completion.gd",
+      "Game/scripts/player.gd"
+    ],
+    "evidence": "buoyant_float.gd implements unoccupied rigid-body immersion/drag only; river_water_field.gd exposes geometry-backed water sampling. No avatar/AFK/hoist/save acceptance is implemented by these modules.",
+    "current_installation_flag": "group6_completion/completion.gd sets water_gameplay_implemented=false; current player.gd exposes no water/mount state.",
+    "next_step": "Trace the existing player and parked station contracts, then define and implement supported mount/dismount and water-state ownership without bypassing original movement/contact behavior. Scope remains implementation; do not enable unverified occupied water by flipping a flag.",
+    "physical_gap_inferred": false
+  }
+}
