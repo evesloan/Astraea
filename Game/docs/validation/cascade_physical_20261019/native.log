@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/cascade-physical-receiving-20261019/inspect_native.py", line 2, in <module>
+    R=pathlib.Path('/workspace/Astraea');W=pathlib.Path('/workspace/cascade-physical-receiving-20261019');B=R/'RetainedConstruction/group6/payloads';C=B/'BlenderCatalogue/assets/group6_completion_20261011/cascade_proposal/CONTRACT.json';c=json.load(open(C));p=B/c['native'];assert hashlib.sha256(p.read_bytes()).hexdigest()==c['native_sha256'];bpy.ops.wm.open_mainfile(filepath=str(p));rows=[]
+                                                                                                                                                                                                                                                                                                                                                        ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/share/blender/scripts/modules/bpy/ops.py", line 109, in __call__
+    ret = _op_call(self.idname_py(), kw)
+RuntimeError: Error: Loading "/workspace/Astraea/RetainedConstruction/group6/payloads/BlenderCatalogue/assets/group6_completion_20261011/cascade_proposal/Group6CascadeInterfaceProposal_r002.blend" failed: Cannot read blend file '/workspace/Astraea/RetainedConstruction/group6/payloads/BlenderCatalogue/assets/group6_completion_20261011/cascade_proposal/Group6CascadeInterfaceProposal_r002.blend', incomplete header, may be from a newer version of Blender
+
+Error: Loading "/workspace/Astraea/RetainedConstruction/group6/payloads/BlenderCatalogue/assets/group6_completion_20261011/cascade_proposal/Group6CascadeInterfaceProposal_r002.blend" failed: Cannot read blend file '/workspace/Astraea/RetainedConstruction/group6/payloads/BlenderCatalogue/assets/group6_completion_20261011/cascade_proposal/Group6CascadeInterfaceProposal_r002.blend', incomplete header, may be from a newer version of Blender
+Blender 4.3.2
+Read blend: "/workspace/Astraea/RetainedConstruction/group6/payloads/BlenderCatalogue/assets/group6_completion_20261011/cascade_proposal/Group6CascadeInterfaceProposal_r002.blend"
+
+Blender quit

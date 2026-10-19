@@ -1,0 +1,6 @@
+import bpy,pathlib,json,hashlib
+R=pathlib.Path('/workspace/Astraea');W=pathlib.Path('/workspace/cascade-physical-receiving-20261019');B=R/'RetainedConstruction/group6/payloads';C=B/'BlenderCatalogue/assets/group6_completion_20261011/cascade_proposal/CONTRACT.json';c=json.load(open(C));p=B/c['native'];assert hashlib.sha256(p.read_bytes()).hexdigest()==c['native_sha256'];bpy.ops.wm.open_mainfile(filepath=str(p));rows=[]
+for name,role in c['new_mesh_roles'].items():
+ o=bpy.data.objects[name];assert o.type=='MESH';pts=[o.matrix_world@v.co for v in o.data.vertices];rows.append({'name':name,'role':role,'vertices':len(pts),'polygons':len(o.data.polygons),'godot_bounds':[min(v.x for v in pts),min(v.z for v in pts),min(-v.y for v in pts),max(v.x for v in pts),max(v.z for v in pts),max(-v.y for v in pts)],'materials':[m.name for m in o.data.materials]})
+assert len(rows)==18
+(W/'NATIVE_INSPECTION.json').write_text(json.dumps({'status':'EXACT_RETAINED_NATIVE_INSPECTED','native_sha256':c['native_sha256'],'export_sha256':c['export_sha256'],'native_unmodified':hashlib.sha256(p.read_bytes()).hexdigest()==c['native_sha256'],'meshes':rows,'scene_objects':len(bpy.context.scene.objects)},indent=2)+'\n');print('NATIVE',len(rows),'exact proposal meshes')

@@ -1,0 +1,35 @@
+extends "res://tests/validate_d04_port_forward_commons_service.gd"
+var result:Dictionary={"scope":"Physical native cabinet receiving only; no new mechanical/fluid/network gameplay","checks":{},"failures":[],"walks":[]}
+func _initialize()->void:call_deferred("run")
+func check(ok:bool,label:String)->void:
+ result.checks[label]=ok
+ if not ok:result.failures.append(label)
+func wait_frames(n:int)->void:
+ for i in n:await physics_frame
+func run()->void:
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main);await wait_frames(20)
+ var ship:Node3D=main.get_node("World360/Astraea");var space:PhysicsDirectSpaceState3D=ship.get_world_3d().direct_space_state
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_cascade_receiving_20261019/PACKAGE.json"))
+ var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
+ var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget");var old_sources:int=budget.sources.size()
+ var old_owner_count:int=ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms").get_child_count()
+ for x in [21.266,22.534]:
+  for z in [214.346,214.554]:
+   var hit:Dictionary=ray(space,Vector3(x,44.02,z),Vector3(x,43.98,z));check(not hit.is_empty() and str(hit.collider.get_path()).contains("ExactAquaticArchitecture"),"Original shoulder supports foot "+str(x)+" "+str(z))
+ var mount:Dictionary=ray(space,Vector3(21.9,46.51,215.1),Vector3(21.9,46.55,215.1));check(not mount.is_empty() and str(mount.collider.get_path()).contains("ExactAquaticArchitecture"),"Original hood supports source task mount")
+ var source:Node3D=load("res://scripts/group6_cascade_receiving_20261019/package.gd").build(ship);await wait_frames(3)
+ check(source.find_children("*","MeshInstance3D",true,false).size()==18,"Exactly18 source mesh nodes")
+ check(budget.sources.size()==old_sources+1 and budget.sources.count(source.get_node("CascadeSourceTaskLight"))==1,"One source task-light binding")
+ check(ship.get_node("ShipSpace/CompiledStructuralFloors_NotFinishedRooms").get_child_count()==old_owner_count,"No new floor owners")
+ check(not source.get_meta("cascade_onward_network_connected") and not source.get_meta("mechanical_operation_enabled"),"No network or gameplay acceptance")
+ for at in [Vector3(21.5,44,215.2),Vector3(21.9,44,215.2),Vector3(22.3,44,215.2)]:check(capsule_clear(space,at),"Clear ordinary operator stance "+str(at))
+ actor.global_position=Vector3(21.5,44.03,215.2);actor.velocity=Vector3.ZERO;actor.set_controls_enabled(true)
+ ship.get_node("ShipSystems/ReceivedRoomResidency").prepare_position(actor.global_position);ship.get_node("ShipSystems/RemainingBatchStreaming").prepare_position(actor.global_position)
+ await wait_frames(20);check(actor.is_on_floor() and abs(actor.global_position.y-44)<.12,"Supported existing player shoulder stance")
+ for target in [Vector3(21.9,44,215.2),Vector3(21.5,44,215.2)]:
+  var leg:Dictionary=await walk_to(actor,target);result.walks.append(leg);check(leg.reached and leg.floor_contact,"Original controller shoulder walk "+str(target))
+ check(FileAccess.get_sha256("res://assets/models/AquaticCompletion_r019.glb")==p.required_annex_runtime_sha256,"Original annex export unchanged")
+ check(FileAccess.get_sha256("res://assets/models/AST-AQU-015.glb")==p.required_registered_watercourse_sha256,"Original watercourse export unchanged")
+ result.status="PASS_PHYSICAL_RECEIVING" if result.failures.is_empty() else "HOLD"
+ FileAccess.open("/workspace/cascade-physical-receiving-20261019/CANDIDATE_RUNTIME.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+ print("CASCADE_PHYSICAL checks=",result.checks.size()," failures=",result.failures.size());quit(0 if result.failures.is_empty()else 1)

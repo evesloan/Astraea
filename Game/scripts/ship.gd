@@ -326,6 +326,8 @@ func _ready() -> void:
 	load("res://scripts/mineral_service_20261016/package.gd").build.call_deferred(self)
 	# Retained anonymous crew source: physical receiving, zero new berth or room identities.
 	load("res://scripts/group3_remaining_crew_20261019/package.gd").build.call_deferred(self)
+	# Exact retained cascade cabinet hardware; onward network and controls remain inactive.
+	load("res://scripts/group6_cascade_receiving_20261019/package.gd").build.call_deferred(self)
 
 func surface(role: String, color: Color) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
