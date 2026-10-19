@@ -1,0 +1,45 @@
+extends SceneTree
+var checks:Array=[]
+var errors:Array=[]
+func _initialize()->void:call_deferred("run")
+func check(label:String,passed:bool)->void:
+ checks.append({"check":label,"passed":passed})
+ if not passed:errors.append(label)
+func read_json(path:String)->Dictionary:return JSON.parse_string(FileAccess.get_file_as_string("res://"+path))
+func run()->void:
+ var plan:Dictionary=read_json("data/delivery_20261019/INCLUSION_PLAN.json")
+ var main:Node=load("res://scenes/main.tscn").instantiate();root.add_child(main)
+ for i in range(60):await physics_frame
+ var ship:Node=main.get_node("World360/Astraea")
+ check("default bootstrap ready",ship.get_node("ReceivedSectionInstallation").get_meta("installation_ready",false))
+ var observed:Array=[]
+ for row in plan.received_sections:
+  var node:Node=ship.get_node_or_null(row.root)
+  check("section "+str(row.key),node!=null and str(node.get_meta("programme_key",""))==str(row.key))
+  if row.has("asset"):check("source "+str(row.key),FileAccess.get_sha256("res://"+str(row.asset))==str(row.sha256))
+  observed.append({"key":row.key,"root":row.root,"registered":node!=null,"stream_loaded":node.get_meta("stream_loaded",true) if node!=null else false})
+ for path in plan.required_roots:check("root "+str(path),ship.get_node_or_null(path)!=null)
+ var homes:Node=ship.get_node("ShipSpace/Districts/ApprovedGroup2Homes")
+ var hd:Dictionary=read_json("data/received_homes_20261015/HOMES.json")
+ check("80 retained homes registered",homes.get_child_count()==80)
+ for row in hd.homes:
+  check("home "+str(row.key),homes.has_node("Group2Home_"+str(row.key)) and FileAccess.get_sha256("res://assets/group2_completion/"+str(row.key)+".glb")==str(row.source_sha256))
+ var g7:Node=ship.get_node("ShipSpace/Districts/Group7CompletionCandidate");var model_count:int=0
+ for path in ["data/architecture/GROUP7_COMPLETION.json","data/consolidated_all_eight_20261013/G7_ADDITIONAL.json"]:
+  for row in read_json(path).models:
+   check("G7 "+str(row.cell),g7.has_node(str(row.cell)) and FileAccess.get_sha256("res://assets/models/"+str(row.file))==str(row.sha256));model_count+=1
+ check("88 G7 models",model_count==88 and g7.get_meta("physical_source_models",0)==88)
+ check("G7 operating holds retained",not g7.get_meta("whole_group_or_primary_capacity_accepted",true))
+ var shopping:Node=ship.get_node("ShipSpace/Districts/ShoppingPromenadeChunks")
+ var shopping_data:Dictionary=read_json("data/architecture/SHOPPING_PROMENADE.json")
+ for row in shopping_data.chunks:
+  check("shopping "+str(row.chunk_id),shopping.has_node(str(row.chunk_id)))
+  for layer in row.layers:check("shopping source "+str(row.chunk_id)+" "+str(layer),FileAccess.get_sha256(str(row.layers[layer].path))==str(row.layers[layer].sha256))
+ var player:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
+ check("original player exists",player.get_script().resource_path=="res://scripts/player.gd")
+ var result:Dictionary={"status":"PASS"if errors.is_empty()else"FAIL","base_commit":plan.base_commit,"checks":checks,"errors":errors,"sections":observed,"received_sections":observed.size(),"retained_homes":homes.get_child_count(),"group7_models":model_count,"shopping_chunks":shopping_data.chunks.size(),"scope":"Default main-scene construction inclusion and source identities. Streamed destinations remain registered. No broad physics, operational, performance or final visual acceptance."}
+ var output:String=OS.get_environment("ASTRAEA_DELIVERY_REPORT")
+ if output.is_empty():output="/workspace/ship-delivery-20261019/SCENE_INCLUSION.json"
+ FileAccess.open(output,FileAccess.WRITE).store_string(JSON.stringify(result,"  "))
+ print("SHIP_DELIVERY_INCLUSION ",result.status," checks=",checks.size()," errors=",errors)
+ quit(0 if errors.is_empty()else 1)

@@ -1,0 +1,11 @@
+extends "res://tests/validate_ship_delivery_20261019.gd"
+func _initialize()->void:
+ var pins:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("/workspace/ship-delivery-20261019/PACK_SOURCE_PINS.json"))
+ var bad:Array=[]
+ for path in pins:
+  if FileAccess.get_sha256("res://"+str(path))!=str(pins[path]):bad.append(path)
+ var r:Dictionary={"status":"PASS" if bad.is_empty()else"FAIL","source_files":pins.size(),"failures":bad,"scope":"Exact source bytes required by runtime: GLBs, JSON/CSV/text data, scripts and shaders read from exported PCK outside the source checkout."}
+ FileAccess.open("/workspace/ship-delivery-20261019/PACK_SOURCE_INTEGRITY.json",FileAccess.WRITE).store_string(JSON.stringify(r,"  "))
+ print("PACK_SOURCE_INTEGRITY ",r.status," files=",pins.size()," failures=",bad)
+ if not bad.is_empty():quit(1);return
+ super._initialize()
