@@ -39,3 +39,7 @@ The inventory and later receipts show substantial later adoption that stale scop
 Locate the exact13101/13125 source assemblies or another authoritative completed delivery for the188 specialty allocations, verify it against retained hashes, and evaluate its receiving interface before adoption. Separately complete requirement-specific reconciliation for all314 child/system rows and the remaining successor/deferred bindings. No ready-to-install omitted completed package has yet been established by this audit; it would be incorrect to invent one merely to report an integration.
 
 The old frozen delivery ZIP and delivered D17 image remain unchanged. A final integrated deliverable is still pending actual full-scope reconciliation and construction; this checkpoint is evidence, not a finished-ship release.
+
+## Subsequent exact binding correction
+
+The continuation inspected all observed `res://` GLBs, including `Game/source_derivatives` outside `Game/assets`. This resolves53 additional Group4 source-map entries to exact observed bytes. Current totals are496 direct joins,151 file/deferred reviews and235 successor/inactive reviews, over882 retained GLB entries including variants. These53 entries were already physically instantiated; no construction was added. See `../ship_scope_source_trace_20261019/HELPER_BINDING_CORRECTION.json`.

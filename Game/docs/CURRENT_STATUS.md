@@ -1,3 +1,7 @@
+## 19 October — Group4 exact source bindings corrected
+
+Including observed `res://source_derivatives` resolves53 additional Group4 helper-file joins. These are already-installed geometry, not newly integrated sections. Current helper totals:496 exact runtime joins,151 file/deferred reviews,235 successor/inactive reviews; all882 retained hashes remain verified. The preceding source-trace checkpoint df011d26c7327badc5536d311151a1f2cba674fb has independent21-file GitHub byte/object readback in `validation/ship_scope_source_trace_20261019/SOURCE_TRACE_REMOTE_VERIFICATION.json`.
+
 ## 19 October — retained source tracing and child construction evidence
 
 Checkpoint continuation from a101873. All29 advertised branch-head trees checked for the two specialty pilots; their export receipts are retained, exact native/GLB bytes remain unlocated.189 home allocations now have individual source-state records.186 remain recorded unfinished in searched ledgers,2 are unresolved pilot recovery, and790 has a verified installed lower platform plus an explicitly blocked complete-suite handoff. These are bounded search findings, never proof no historical source exists. Library archive reads expose no member content; no rejected transfer endpoint was retried.
