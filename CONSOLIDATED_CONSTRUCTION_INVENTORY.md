@@ -1,3 +1,7 @@
+D17 starboard physical guest receiving — 19 October 2026
+
+Approved nine-standard placements are installed with all18 reservations and premium808 preserved. The r002 frame, seven bounded guard successors and27 retained lanterns passed native/source, candidate walking and installed import/route checks. Family Terrace D16 staff receiving is the next surveyed physical package. All eight groups retain the implementation and acceptance holds recorded in Game/docs/validation/CONSTRUCTION_OMISSIONS_20261019.json. Existing delivery ZIP unchanged; Library transport blocked and not retried.
+
 Integrated construction delivery — 19 October 2026
 
 The protected 32268435 construction is reconciled and packaged as one default-scene build. A residency-aware source-scene check and the same check against the exported PCK each pass 1,892 checks: all 83 received section keys (58 + 2 retained + 23 later), 80 retained Group2 homes, 177 shopping chunks (99 shops/78 connections), 88 Group7 models, and protected Family D13–D15/Quiet Grove D13–D16 roots are present. Major entry scripts across all eight groups are pinned (194 scripts). All 27,450 protected runtime source files match the previous checkpoint; 15,118 raw runtime files also match inside the export. Detached or deferred rooms are resolved through the existing residency registry; the initial live-only audit was corrected and retained as a failed test attempt, without altering the runtime.

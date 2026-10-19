@@ -294,6 +294,8 @@ func _ready() -> void:
 	load("res://scripts/group3_starboard3_private_20261011/physical_package.gd").build(self)
 	# One supported sourceadjunct/care receiver via westerncirculation;all structuralcapacity/service/consent holds remain.
 	load("res://scripts/group2_central_receiving_20261013/package.gd").build(self)
+	# Approved retained D17 starboard reservations, physical receiving only.
+	load("res://scripts/d17_starboard_standard_20261019/package.gd").build(self)
 	# Two forward sourceadjunct/care pairs;slab/pier joins andguardwindows,operation/capacity holds remain.
 	load("res://scripts/group2_forward_receiving_20261013/package.gd").build(self)
 	# Port-central sourceadjunct/care pair;lower-stub bearing andwestvestibule fit,operational/engineering holds remain.
