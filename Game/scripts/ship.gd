@@ -65,6 +65,7 @@ func _ready() -> void:
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/aquatic_section.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/aquatic_annex_receiving.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/group6_completion/completion.gd").build($ShipSpace/Districts/AquaticRiverSlideAnnex_WIP,self)
+	load("res://scripts/group6_float_20261019/package.gd").build($ShipSpace/Districts/AquaticRiverSlideAnnex_WIP)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/aquatic_annex_receiving.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/staff_section.gd").build($ShipSpace/Districts,self)
 	load("res://scripts/group1_synthesis_floor_receiving.gd").build(self)
@@ -183,7 +184,7 @@ func _ready() -> void:
 	var player_successor:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/PLAYER_SUCCESSOR_20261019.json"))
 	assert(FileAccess.get_sha256("res://scripts/player.gd")==str(player_successor.predecessor_player_sha256))
 	assert(FileAccess.get_sha256("res://scripts/group6_completion/player_water_seat_20261019.gd")==str(player_successor.player_sha256))
-	player.set_script(load("res://scripts/group6_completion/player_water_seat_20261019.gd"))
+	player.set_script(load("res://scripts/group6_float_20261019/player.gd"))
 	$ShipSpace/PersistentActors.add_child(player)
 	player.spawn_position = Vector3(63.0,d09_y+0.1,-20.5)
 	player.position = player.spawn_position

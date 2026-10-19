@@ -1,3 +1,13 @@
+Group6 occupied floats and boarding holds — 19 October 2026
+
+Two instances of the unchanged registered AST-AQU-006 now serve the existing south_board and north_recovery interfaces. RMB+E boards, starts drifting, requests return, and leaves when the boarding hold settles. Space requests safe exit/return. Source-segmented contacts preserve the seating well; safe exits use existing supported bed stances and entry ramps. No source architecture, static rack rings, programme capacities or persistent save identities were replaced or invented.
+
+The derived player/float adapters retain the original controllers and unoccupied force integrator. A declared75kg reference occupant increases body mass from12 to87kg and settled draft by0.15m. Both occupied circuits return after approximately102.45m; maximum frame displacement0.0302m and peak tilt0.0753rad. Local28 and installed22 checks pass with zero final engine errors. Blocked exits retain rider/load; verified directory arrivals clear load and collision exceptions. Initial obstructed placements, rejected ramp-edge exit and unstable first dock damper are retained; final dock yaw uses effective inertia.
+
+This is a bounded reference-load gameplay implementation, not species/engineering, AFK/save, swimming, hoist, slide or final visual acceptance. The next concrete omission is swimming and broader water transitions; ordinary movement/gravity remains active outside mounting. Evidence: validation/group6_float_20261019/SUMMARY.json. Group5 unresolved mappings and all broader holds remain.
+
+A pixel-reviewed D17 corridor source-assembly image is retained in Library as D17_FORE_REVERSE.png (libfile_ae8f6685e6308191a193201301f5f37d), with an explicit unfinished/local-preview label. It was captured through the established small-scene Godot method. The older delivery ZIP is unchanged; the denied ZIP helper endpoint was not retried.
+
 Group6 parked player seating and river state — 19 October 2026
 
 Four existing thermal support station IDs now operate through RMB+E. The derived player controller checks a seated torso against the source slings, checks the open-front transfer and standing landing, refuses blocked exits, preserves exclusive occupancy and holds the parked pose during menu input suspension. Verified directory travel releases occupancy. The pinned river sampler supplies wet depth and dry/wading/head-submergence state; this adds no swim forces or new water volumes.
