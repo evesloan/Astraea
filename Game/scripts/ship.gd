@@ -278,6 +278,8 @@ func _ready() -> void:
 	load("res://scripts/family_d14_receiving_20261016/package.gd").build(self)
 	# Family D15 joins the existing aft staff lobby opening.
 	load("res://scripts/family_d15_receiving_20261016/package.gd").build(self)
+	# Family D16 joins the existing aft staff lobby opening.
+	load("res://scripts/family_d16_receiving_20261016/package.gd").build(self)
 	# Exact missing-only street successor; unsupported gate identities remain inactive.
 	load("res://scripts/group3_d03_streets_20261011/physical_package.gd").build(self,{},true)
 	# Six exact wall receivers with missing-only thresholds; source leaves stay closed and unassigned.

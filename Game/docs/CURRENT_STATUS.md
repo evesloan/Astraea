@@ -1,3 +1,13 @@
+Family Terrace D16 physical staff receiving — 19 October 2026
+
+The r001 connector joins the retained aft D16 staff lobby to the Family Terrace street at Y97.5. It uses the native fore opening X19.2..22.8 at Z484, with its lintel at Y100.3. No staff wall is cut. The original shaft, gates, identities and lift stops remain unchanged. The street floor FT_Batch_101 ends at Z482.200012. The new 83.548888m² missing-only floor has 74 editable components: screened enclosure, canopy, six slab ties, four roof-bearing posts, two retained fixture assemblies/four lights, four fixture sockets and two guard-end finishes.
+
+Only FT_Batch_345 (636→660 triangles) and FT_Batch_347 (24→40) receive bounded guard successors. Original street and lobby floors remain intact. All 44 source architectural components are verified under the proper D16 derivative transform; all 14 fixture meshes retain original geometry and texture payloads under rigid transforms. Both original sources and the approved D17 package remain unchanged.
+
+Candidate checks pass 175; installed checks pass 77. Each run includes 18 continuous original-controller D16 route legs, eight protected Quiet Grove threshold legs and six prior Family threshold legs. All 7087 monitored original poses and 7085 unrelated mesh resources survive the candidate replacement; installed resources remain stable. Independent guard surface/UV subtraction, byte-identical fresh export and all 76 imported/raw mesh comparisons pass. Project settings remain hash-identical.
+
+Physical unladen continuity is the verified scope. Aft staff lift/gate operation, authoritative permissions, complete clean/used service, engineering, loaded carts, species, stock/save and final art remain open. Family Terrace and Quiet Grove D13–D16 physical staff receivers are now installed; D17's approved nine-standard guest receiver is independently protected. All eight groups remain open under the concrete omission record. No new render or delivery ZIP was made, and the Library endpoint was not retried.
+
 D17 approved starboard nine-standard physical receiving — 19 October 2026
 
 The approved fore/aft-preserving placements are installed at Y102:868,856,844,820,796 forward and802,826,850,874 aft. All nine allocation identities and 18 reserved rest-slot IDs remain exact; they are construction reservations, not recovered historical save IDs. Premium 808 and the original source schedule remain unchanged. No capacity increase or lift stop is introduced.
