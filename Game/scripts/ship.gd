@@ -180,7 +180,10 @@ func _ready() -> void:
 	cleaning_cart.position=Vector3(85.2,84.04,-37.3)
 	$ShipSpace/PersistentActors.add_child(cleaning_cart)
 	var player := CharacterBody3D.new()
-	player.set_script(load("res://scripts/player.gd"))
+	var player_successor:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/PLAYER_SUCCESSOR_20261019.json"))
+	assert(FileAccess.get_sha256("res://scripts/player.gd")==str(player_successor.predecessor_player_sha256))
+	assert(FileAccess.get_sha256("res://scripts/group6_completion/player_water_seat_20261019.gd")==str(player_successor.player_sha256))
+	player.set_script(load("res://scripts/group6_completion/player_water_seat_20261019.gd"))
 	$ShipSpace/PersistentActors.add_child(player)
 	player.spawn_position = Vector3(63.0,d09_y+0.1,-20.5)
 	player.position = player.spawn_position
@@ -567,6 +570,7 @@ func arrive_at(arrival: Vector3, facing_y: float) -> bool:
 	clearance.transform.origin = arrival+Vector3.UP*0.9
 	clearance.exclude = [player.get_rid()]
 	if not state.intersect_shape(clearance).is_empty(): return false
+	player.release_parked_seat_for_verified_arrival()
 	player.position = arrival
 	player.spawn_position = arrival
 	player.velocity = Vector3.ZERO

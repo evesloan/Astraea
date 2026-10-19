@@ -1,6 +1,6 @@
 extends RefCounted
 # Additive fixed thermal construction; apply after entry complement and before
-# the original residency/light-budget setup. No player or water hook supplied.
+# the original residency/light-budget setup. Fixed seats use existing station IDs.
 const CONTRACT="res://data/architecture/group6_completion/THERMAL_SUPPORT_CONTRACT.json"
 static func build(room:Node3D)->Node3D:
 	var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT));var spec:Dictionary={}
@@ -21,6 +21,8 @@ static func build(room:Node3D)->Node3D:
 		count+=1
 	assert(count==spec.new_meshes.size())
 	for station in spec.stations:
+		var control:Area3D=load("res://scripts/group6_completion/parked_seat.gd").new()
+		control.station=station;addition.add_child(control)
 		var fitting:Dictionary=station.task_light;var source:=Vector3(float(fitting.source_xyz[0]),float(fitting.source_xyz[1]),float(fitting.source_xyz[2]));var target:=Vector3(float(fitting.target_xyz[0]),float(fitting.target_xyz[1]),float(fitting.target_xyz[2]))
 		var light:=SpotLight3D.new();light.name=str(fitting.id)+"_PhysicalSource";addition.add_child(light);light.position=source;light.light_energy=float(fitting.energy);light.light_color=Color(1,.95,.86);light.spot_range=float(fitting.range_m);light.spot_angle=float(fitting.half_cone_degrees)
 		light.look_at(addition.to_global(target),Vector3.UP);light.shadow_enabled=true;light.set_meta("illumination_anchor",target)

@@ -1,3 +1,11 @@
+Group6 parked player seating and river state — 19 October 2026
+
+Four existing thermal support station IDs now operate through RMB+E. The derived player controller checks a seated torso against the source slings, checks the open-front transfer and standing landing, refuses blocked exits, preserves exclusive occupancy and holds the parked pose during menu input suspension. Verified directory travel releases occupancy. The pinned river sampler supplies wet depth and dry/wading/head-submergence state; this adds no swim forces or new water volumes.
+
+The original player.gd, engineering guard, all native sources and project settings remain exact. Ordinary movement delegates to the original controller. Initial direct player edits triggered downstream source pins and were reverted; both original and additive player hashes are now checked at ship installation. The first oversized seated capsule refusal and failed integration logs are retained. Final local checks: 52; installed main checks: 62; final engine errors: zero; protected source hashes:16.
+
+This is fixed parked seating only, with clearance-checked pose changes, not animated transfer, occupied float/hoist physics, species fit, AFK/save or final visual acceptance. Next: production occupied-float/seat/dock binding and load coupling; the existing float body remains unoccupied test-only. All wider Group6 holds and Group5 unresolved mappings remain open. The older delivery ZIP is unchanged and the denied Library endpoint was not retried. Evidence: validation/group6_player_20261019/SUMMARY.json.
+
 Group5 address and shared-riser reconciliation — 19 October 2026
 
 No additional authoritative bindings were recovered. The 99 installed new-shop chunks contain 15 proven atlas addresses and 84 unresolved proposals; retained R070 is the sixteenth proven atlas join. All 15 existing runtime bindings match the retained labels. The 100-ID historical registry and v3 baseline preserve names and capacities but no footprint/evidence keys or coordinates. The builder explicitly assigns the 84 proposals by four-bank ordering, which cannot establish historical identity.
