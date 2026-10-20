@@ -1,0 +1,38 @@
+{
+  "scope": "Snapshot for parent reconciliation, not permission to overwrite later startup work",
+  "pins": [
+    {
+      "path": "scripts/vertical_commons.gd",
+      "sha256": "5b7a7a4fa5cf232b9fffcc7f15be26a56f3a4cd6a04d1defcb1676632eb8f143"
+    },
+    {
+      "path": "scripts/starboard_house_upper.gd",
+      "sha256": "fe2a93cd56adff1c9c4e7e1a446b4a28f254400601d20378ee13946b7e1e2d58"
+    },
+    {
+      "path": "scripts/central_homes_adoption.gd",
+      "sha256": "097cf294e66e0d44e38facab0a1f9c1c087518430c50be74812c539f61ff8d3b"
+    },
+    {
+      "path": "scripts/startup_residency_20261020/central_homes_adoption.gd",
+      "sha256": "1b6a381fadde7890280914bd41729a53374490fccacff31e72c2da6f81fbda75"
+    },
+    {
+      "path": "scripts/startup_residency_20261020/ship.gd",
+      "sha256": "583082025d4185e77c4792089bcdedd7450826a05c15812833bfa9e939a88bbf"
+    },
+    {
+      "path": "data/architecture/NIGHT_GARDEN_UNITS.json",
+      "sha256": "a2f8268f460e0a2b4643bca9654177b7b80ff493861fc7a9c7a57878bfedcce6"
+    },
+    {
+      "path": "assets/models/AST-COM-003.glb",
+      "sha256": "6b559b69c13d0ea2e5cb16e42791aec6af495c377fcfbf074ebfb36f7e57ff18"
+    }
+  ],
+  "actual_hierarchy_source_chain": [
+    "ship: vertical_commons.build(ShipSpace/Districts,self)",
+    "vertical_commons: root=D13_D14_StarboardCommons_WIP; starboard_house_upper.build(root,ship)",
+    "starboard_house_upper: root=D15_D17_StarboardHouseUpper_WIP; model StarboardHouseUpperArchitecture at(63,84,0)"
+  ]
+}
