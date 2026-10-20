@@ -1,0 +1,430 @@
+{
+  "schema_version": 1,
+  "revision": "R002",
+  "created_utc": "2026-10-20T08:27:08.841242+00:00",
+  "scope": "Read-only reconciliation of six targeted native acquisitions that lacked explicit manifest bindings in NATIVE_ACQUISITION_RECEIPT.json. Only this new reconciliation output is written. No source/export/parent handoff files are changed.",
+  "staging_root": "/workspace/scratch/375c2e438292/astraea_current_5acf0c2a_staging",
+  "original_acquisition_receipt": {
+    "path_from_staging_root": "Game/docs/manual_editor_handoff_20261020/NATIVE_ACQUISITION_RECEIPT.json",
+    "sha256": "222c018ac978cfe0d3df99093dee2710ff3398bbd7721362d08135a470546526",
+    "unchanged": true
+  },
+  "summary": {
+    "native_files_acquired": 27,
+    "original_explicit_source_export_manifest_bindings": 21,
+    "additional_exact_focused_bindings_resolved": 6,
+    "total_acquired_pairs_with_exact_identity_binding": 27,
+    "remaining_unresolved_targeted_bindings": 0,
+    "all_27_acquired_native_and_live_export_hashes_reverified": true,
+    "all_ship_editable_handoff_complete": false
+  },
+  "evidence_standard": "Require exact acquired native SHA256 and current live GLB SHA256 to be linked by an explicit named source/export manifest, derived-representation record, or focused identity receipt. Mere co-occurrence in large baseline hash inventories is not counted.",
+  "retained_evidence_note": "Botanical SOURCE_MANIFEST.json and secondary-engineering PREPARED_MANIFEST.json were read directly from existing local retained Git objects at immutable e95e732b baseline commit; neither network access nor checkout was used. Their exact source/export hashes match current acquired files. The immutable locator, Git blob ID, SHA256, pointers and pair excerpt are included for reproducibility.",
+  "bindings": [
+    {
+      "representation": "AST-ATR-001_botanical_receiving_closed002",
+      "source_path_from_staging_root": "BlenderCatalogue/assets/receiving_structure/botanical_court_20261007_candidate_r001/source/AST-ATR-001_botanical_receiving_closed002.blend",
+      "live_export_path_from_staging_root": "Game/assets/models/AST-ATR-001_botanical_receiving_closed002.glb",
+      "source_sha256": "9be34e45f74ba663945ffc38b468398a760960b1f157c532ab09372426f0f4d5",
+      "live_export_sha256": "7c16e244527be2e97b705db1e2b0f449ec3e04c74261b46232201f004b4609de",
+      "source_bytes": 2393768,
+      "live_export_bytes": 817208,
+      "local_bytes_rehashed": true,
+      "matches_original_acquisition_receipt": true,
+      "status": "RESOLVED_EXACT_FOCUSED_BINDING",
+      "source_export_binding_resolved": true,
+      "unresolved_status": null,
+      "evidence": [
+        {
+          "storage": "local_retained_git_object",
+          "repository": "/workspace/scratch/375c2e438292/astraea_source_inventory_20261020",
+          "commit": "e95e732b7ab4a255bb31ddca9f862392e7d7504c",
+          "path_in_commit": "BlenderCatalogue/assets/receiving_structure/botanical_court_20261007_candidate_r001/receipts/closed_interface/SOURCE_MANIFEST.json",
+          "git_blob_sha1": "f8ddedee94865f46432b0fdd7c7dc5346ffba1f4",
+          "sha256": "e70709955beaa673072cdfef1601a63aa4f1add43fc4dfacd0d96064af4de8cb",
+          "checked_out_in_current_staging": false,
+          "reproduce_read_only": [
+            "git",
+            "-C",
+            "/workspace/scratch/375c2e438292/astraea_source_inventory_20261020",
+            "show",
+            "e95e732b7ab4a255bb31ddca9f862392e7d7504c:BlenderCatalogue/assets/receiving_structure/botanical_court_20261007_candidate_r001/receipts/closed_interface/SOURCE_MANIFEST.json"
+          ],
+          "source_sha256_json_pointer": "/source_sha256",
+          "export_sha256_json_pointer": "/export_sha256",
+          "source_sha256": "9be34e45f74ba663945ffc38b468398a760960b1f157c532ab09372426f0f4d5",
+          "export_sha256": "7c16e244527be2e97b705db1e2b0f449ec3e04c74261b46232201f004b4609de",
+          "identity_key": "/representation",
+          "identity_value": "AST-ATR-001_botanical_receiving_closed002",
+          "evidence_quality": "Focused native/export source manifest for the selected closed_interface002 representation, not a baseline inventory.",
+          "scope_limit": "Historical source manifest identifies an interim closed receiving derivative. It does not establish new roundtrip, runtime acceptance or room-interior adoption."
+        }
+      ]
+    },
+    {
+      "representation": "WP03_cloud_conservatory",
+      "source_path_from_staging_root": "BlenderCatalogue/assets/windows_section_source_intake_20261007/packages/WP03/source/WP03_cloud_conservatory.blend",
+      "live_export_path_from_staging_root": "Game/assets/models/WP03_cloud_conservatory.glb",
+      "source_sha256": "c61d2a7758ab6004ae183e89cadcaf833f35010f1f6f6cda12234b6ceb1d09e1",
+      "live_export_sha256": "c42eeed67653c9171c32c47813168342d43a1705744fcf8b31d8acdcdbf7c7c1",
+      "source_bytes": 837116,
+      "live_export_bytes": 4155712,
+      "local_bytes_rehashed": true,
+      "matches_original_acquisition_receipt": true,
+      "status": "RESOLVED_EXACT_FOCUSED_BINDING",
+      "source_export_binding_resolved": true,
+      "unresolved_status": null,
+      "evidence": [
+        {
+          "storage": "checked_out_local_file",
+          "path_from_staging_root": "Game/docs/design_reviews/amenity_architecture_continuation_20261007/originals/final_five/NATIVE_EXPORT_IDENTITY.json",
+          "sha256": "1521100eaac7bbc13cb9833c2b59f99f134847f6b19cde8651d19a8ead86a7f5",
+          "source_sha256_json_pointer": "/0/actual_sha256",
+          "export_sha256_json_pointer": "/1/actual_sha256",
+          "source_sha256": "c61d2a7758ab6004ae183e89cadcaf833f35010f1f6f6cda12234b6ceb1d09e1",
+          "export_sha256": "c42eeed67653c9171c32c47813168342d43a1705744fcf8b31d8acdcdbf7c7c1",
+          "join_fields": {
+            "/0/section": "WP03",
+            "/1/section": "WP03"
+          },
+          "source_path_json_pointer": "/0/path",
+          "export_path_json_pointer": "/1/path",
+          "evidence_quality": "Focused native/export identity receipt joins the source and export rows by section WP03 and actual bytes.",
+          "scope_limit": "Use actual_sha256, not original_review_sha256: both WP03 rows differ from original review but match reconstruction receipt. This does not transfer the older visual acceptance to these native bytes."
+        }
+      ]
+    },
+    {
+      "representation": "AST-CIR-005_forward_pool_market_engineering_access",
+      "source_path_from_staging_root": "BlenderCatalogue/assets/secondary_engineering_access_interfaces/source/AST-CIR-005_forward_pool_market_engineering_access.blend",
+      "live_export_path_from_staging_root": "Game/assets/models/AST-CIR-005_forward_pool_market_engineering_access.glb",
+      "source_sha256": "aa83dd9e0dce36c329736647d3885a088e466fa9891e48bb700fb13c8938a02a",
+      "live_export_sha256": "416ae10ac0e0cbf619e56233136150ded941c5f4c3299da1b95544433f65344b",
+      "source_bytes": 5540700,
+      "live_export_bytes": 1350672,
+      "local_bytes_rehashed": true,
+      "matches_original_acquisition_receipt": true,
+      "status": "RESOLVED_EXACT_FOCUSED_BINDING",
+      "source_export_binding_resolved": true,
+      "unresolved_status": null,
+      "evidence": [
+        {
+          "storage": "checked_out_local_file",
+          "path_from_staging_root": "BlenderCatalogue/catalogue_manifest.json",
+          "sha256": "1d79b82cefaf612f6557954695dc63f265adf5b863f795dfca6ae877cd1e985e",
+          "source_sha256_json_pointer": "/derived_representations/17/source_sha256",
+          "export_sha256_json_pointer": "/derived_representations/17/export_sha256",
+          "source_sha256": "aa83dd9e0dce36c329736647d3885a088e466fa9891e48bb700fb13c8938a02a",
+          "export_sha256": "416ae10ac0e0cbf619e56233136150ded941c5f4c3299da1b95544433f65344b",
+          "identity_key": "/derived_representations/17/id",
+          "identity_value": "AST-CIR-005_forward_pool_market_engineering_access",
+          "source_path_json_pointer": "/derived_representations/17/source",
+          "export_path_json_pointer": "/derived_representations/17/export",
+          "evidence_quality": "Explicit named derived-representation source/export pair in the current checked-out catalogue contract, not a whole-project hash list."
+        },
+        {
+          "storage": "local_retained_git_object",
+          "repository": "/workspace/scratch/375c2e438292/astraea_source_inventory_20261020",
+          "commit": "e95e732b7ab4a255bb31ddca9f862392e7d7504c",
+          "path_in_commit": "BlenderCatalogue/assets/secondary_engineering_access_interfaces/PREPARED_MANIFEST.json",
+          "git_blob_sha1": "6839c24b187e99dd55a0dd8c73df8d0d4f60291f",
+          "sha256": "7490bfecdb1d4bc2c034a150c525a2b75a213a36c90ab8a1295b72329cdeae84",
+          "checked_out_in_current_staging": false,
+          "reproduce_read_only": [
+            "git",
+            "-C",
+            "/workspace/scratch/375c2e438292/astraea_source_inventory_20261020",
+            "show",
+            "e95e732b7ab4a255bb31ddca9f862392e7d7504c:BlenderCatalogue/assets/secondary_engineering_access_interfaces/PREPARED_MANIFEST.json"
+          ],
+          "source_sha256_json_pointer": "/actual_source_export_hashes/AST-CIR-005_forward_pool_market_engineering_access/source_sha256",
+          "export_sha256_json_pointer": "/actual_source_export_hashes/AST-CIR-005_forward_pool_market_engineering_access/export_sha256",
+          "source_sha256": "aa83dd9e0dce36c329736647d3885a088e466fa9891e48bb700fb13c8938a02a",
+          "export_sha256": "416ae10ac0e0cbf619e56233136150ded941c5f4c3299da1b95544433f65344b",
+          "evidence_quality": "Focused prepared-manifest actual source/export pair, corroborating the catalogue record.",
+          "scope_limit": "Historical prepared manifest says runtime remains unaccepted and independent native reload was pending at that stage."
+        },
+        {
+          "storage": "checked_out_local_file",
+          "path_from_staging_root": "Game/docs/validation/medical_forward_welcome_20261006/receiving_source_qa/SOURCE_PRESERVATION.json",
+          "sha256": "d252b2a47a199bb0b4783e74340d6f80512a7515be92b0f1734fa5ccbf0bd004",
+          "source_sha256_json_pointer": "/receiving_spec/existing_source_sha256",
+          "export_sha256_json_pointer": "/receiving_spec/existing_export_sha256",
+          "source_sha256": "aa83dd9e0dce36c329736647d3885a088e466fa9891e48bb700fb13c8938a02a",
+          "export_sha256": "416ae10ac0e0cbf619e56233136150ded941c5f4c3299da1b95544433f65344b",
+          "source_path_json_pointer": "/receiving_spec/existing_editable_source",
+          "export_path_json_pointer": "/receiving_spec/existing_runtime_export",
+          "evidence_quality": "Focused downstream source-preservation receipt identifies the same existing native and runtime pair as its exact preimage.",
+          "scope_limit": "Evidence is the existing preimage, not the newer medical-access derivative hashes at the top level."
+        }
+      ]
+    },
+    {
+      "representation": "AST-ENG-008_essentials",
+      "source_path_from_staging_root": "BlenderCatalogue/assets/secondary_engineering_section/essentials_candidate/source/AST-ENG-008_essentials.blend",
+      "live_export_path_from_staging_root": "Game/assets/models/AST-ENG-008_essentials.glb",
+      "source_sha256": "e64c9d4ed7f6119be87137b1045107a85bfd7b635b652b387a88f62c0501ed35",
+      "live_export_sha256": "94dcb4ba3333aa8f4a70be6974428667948e13c7636ecd40bf65638bc84adec0",
+      "source_bytes": 698896,
+      "live_export_bytes": 6702428,
+      "local_bytes_rehashed": true,
+      "matches_original_acquisition_receipt": true,
+      "status": "RESOLVED_EXACT_FOCUSED_BINDING",
+      "source_export_binding_resolved": true,
+      "unresolved_status": null,
+      "evidence": [
+        {
+          "storage": "checked_out_local_file",
+          "path_from_staging_root": "Game/docs/SECONDARY_ENGINEERING_ESSENTIALS_ADOPTION.json",
+          "sha256": "4ee2d3044a0cedc8d458593f232f5299792f5567f056e2a7094fde673324a3d0",
+          "source_sha256_json_pointer": "/independent_retention/source_sha256",
+          "export_sha256_json_pointer": "/independent_retention/export_sha256",
+          "source_sha256": "e64c9d4ed7f6119be87137b1045107a85bfd7b635b652b387a88f62c0501ed35",
+          "export_sha256": "94dcb4ba3333aa8f4a70be6974428667948e13c7636ecd40bf65638bc84adec0",
+          "evidence_quality": "Focused independent-retention pair in the essentials adoption receipt.",
+          "scope_limit": "The receipt records historical regression success but explicitly rejects first-pass presentation. Binding identity is not visual or gameplay acceptance."
+        }
+      ]
+    },
+    {
+      "representation": "AST-ENG-008_receiving_shoulders",
+      "source_path_from_staging_root": "BlenderCatalogue/assets/secondary_engineering_access_interfaces/source/AST-ENG-008_receiving_shoulders.blend",
+      "live_export_path_from_staging_root": "Game/assets/models/AST-ENG-008_receiving_shoulders.glb",
+      "source_sha256": "d6dc26696f22ca30568ae6dad3ab97a249d97c81fced9dccafbd3a8ec30ad4da",
+      "live_export_sha256": "37a5e374c70d6ecac1bdcbf14f6f1f25dfd480408f7f4d69b31aba066b9dc28d",
+      "source_bytes": 1736332,
+      "live_export_bytes": 400852,
+      "local_bytes_rehashed": true,
+      "matches_original_acquisition_receipt": true,
+      "status": "RESOLVED_EXACT_FOCUSED_BINDING",
+      "source_export_binding_resolved": true,
+      "unresolved_status": null,
+      "evidence": [
+        {
+          "storage": "checked_out_local_file",
+          "path_from_staging_root": "BlenderCatalogue/catalogue_manifest.json",
+          "sha256": "1d79b82cefaf612f6557954695dc63f265adf5b863f795dfca6ae877cd1e985e",
+          "source_sha256_json_pointer": "/derived_representations/19/source_sha256",
+          "export_sha256_json_pointer": "/derived_representations/19/export_sha256",
+          "source_sha256": "d6dc26696f22ca30568ae6dad3ab97a249d97c81fced9dccafbd3a8ec30ad4da",
+          "export_sha256": "37a5e374c70d6ecac1bdcbf14f6f1f25dfd480408f7f4d69b31aba066b9dc28d",
+          "identity_key": "/derived_representations/19/id",
+          "identity_value": "AST-ENG-008_receiving_shoulders",
+          "source_path_json_pointer": "/derived_representations/19/source",
+          "export_path_json_pointer": "/derived_representations/19/export",
+          "evidence_quality": "Explicit named derived-representation source/export pair in the current checked-out catalogue contract, not a whole-project hash list."
+        },
+        {
+          "storage": "local_retained_git_object",
+          "repository": "/workspace/scratch/375c2e438292/astraea_source_inventory_20261020",
+          "commit": "e95e732b7ab4a255bb31ddca9f862392e7d7504c",
+          "path_in_commit": "BlenderCatalogue/assets/secondary_engineering_access_interfaces/PREPARED_MANIFEST.json",
+          "git_blob_sha1": "6839c24b187e99dd55a0dd8c73df8d0d4f60291f",
+          "sha256": "7490bfecdb1d4bc2c034a150c525a2b75a213a36c90ab8a1295b72329cdeae84",
+          "checked_out_in_current_staging": false,
+          "reproduce_read_only": [
+            "git",
+            "-C",
+            "/workspace/scratch/375c2e438292/astraea_source_inventory_20261020",
+            "show",
+            "e95e732b7ab4a255bb31ddca9f862392e7d7504c:BlenderCatalogue/assets/secondary_engineering_access_interfaces/PREPARED_MANIFEST.json"
+          ],
+          "source_sha256_json_pointer": "/actual_source_export_hashes/AST-ENG-008_receiving_shoulders/source_sha256",
+          "export_sha256_json_pointer": "/actual_source_export_hashes/AST-ENG-008_receiving_shoulders/export_sha256",
+          "source_sha256": "d6dc26696f22ca30568ae6dad3ab97a249d97c81fced9dccafbd3a8ec30ad4da",
+          "export_sha256": "37a5e374c70d6ecac1bdcbf14f6f1f25dfd480408f7f4d69b31aba066b9dc28d",
+          "evidence_quality": "Focused prepared-manifest actual source/export pair, corroborating the catalogue record.",
+          "scope_limit": "Historical prepared manifest says runtime remains unaccepted and independent native reload was pending at that stage."
+        }
+      ]
+    },
+    {
+      "representation": "AST-ENG-008_workbay_section_gate_v2",
+      "source_path_from_staging_root": "BlenderCatalogue/assets/secondary_engineering_section/workbay_section_gate_v2_candidate_20261006/source/AST-ENG-008_workbay_section_gate_v2.blend",
+      "live_export_path_from_staging_root": "Game/assets/models/AST-ENG-008_workbay_section_gate_v2.glb",
+      "source_sha256": "0e4d89ac3a76b4f15c67ef41b5179b0a0780dbc1199eea31562b90b92737a6c3",
+      "live_export_sha256": "6896d757c5a248d0fcf37a2ae7a197de24566a3fec3f80ce80cdc12186e34368",
+      "source_bytes": 3641076,
+      "live_export_bytes": 4011120,
+      "local_bytes_rehashed": true,
+      "matches_original_acquisition_receipt": true,
+      "status": "RESOLVED_EXACT_FOCUSED_BINDING",
+      "source_export_binding_resolved": true,
+      "unresolved_status": null,
+      "evidence": [
+        {
+          "storage": "checked_out_local_file",
+          "path_from_staging_root": "Game/docs/secondary_engineering_cell_source_gates/independent_source_export_equivalence.json",
+          "sha256": "aacf44dbe7e5d1d01096aa31a0cfb651d00f6b7d2c205280e754de1f09277d5e",
+          "source_sha256_json_pointer": "/editable_source_sha256",
+          "export_sha256_json_pointer": "/export_sha256",
+          "source_sha256": "0e4d89ac3a76b4f15c67ef41b5179b0a0780dbc1199eea31562b90b92737a6c3",
+          "export_sha256": "6896d757c5a248d0fcf37a2ae7a197de24566a3fec3f80ce80cdc12186e34368",
+          "evidence_quality": "Independent reopened-source versus actual exported oriented triangle/material multiset receipt; exact current source/export SHA pair.",
+          "recorded_result": {
+            "passed": true,
+            "source_triangles": 47930,
+            "export_triangles": 47930,
+            "maximum_export_to_source_vertex_error_m": 0.0,
+            "maximum_source_to_export_vertex_error_m": 0.0,
+            "oriented_material_triangles_missing": 0,
+            "oriented_material_triangles_extra": 0
+          },
+          "scope_limit": "Historical independent geometric/material equivalence, not a new roundtrip, new engine run, visual acceptance or whole-ship coverage."
+        }
+      ]
+    }
+  ],
+  "all_acquired_local_byte_verification": [
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/receiving_structure/botanical_court_20261007_candidate_r001/source/AST-ATR-001_botanical_receiving_closed002.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/atrium_daylight/source/AST-ATR-002.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/botanical_understory/source/AST-BOT-002.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/botanical_understory/source/AST-BOT-003.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/botanical_cluster/source/AST-BOT-007.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/botanical_cluster/source/AST-BOT-009.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/atrium_canopy/source/AST-BOT-011.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/commons_lift_cabin/source/AST-CIR-003_eighteen_stop.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/primary_atrium_core/source/AST-CIR-005.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/atrium_garden/source/AST-GAR-001.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/garden_lantern/source/AST-GAR-002.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/windows_section_source_intake_20261007/packages/WP03/source/WP03_cloud_conservatory.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/windows_section_source_intake_20261007/packages/WP04/source/WP04_botanical_nursery.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/arrivals_fusion/source/AST-ARR-002.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/arrivals_reception/source/AST-ARR-003.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/arrivals_reception_alcove/source/AST-ARR-004.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/fusion_exhibit/source/AST-ENG-007.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/furniture/AST-FUR-001_day_window_bench.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/furniture/AST-FUR-002_day_reading_chair.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/furniture/AST-FUR-003_day_table.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/secondary_engineering_access_interfaces/source/AST-CIR-005_forward_pool_market_engineering_access.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/secondary_engineering_section/essentials_candidate/source/AST-ENG-008_essentials.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/secondary_engineering_access_interfaces/source/AST-ENG-008_receiving_shoulders.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/secondary_engineering_section/workbay_section_gate_v2_candidate_20261006/source/AST-ENG-008_workbay_section_gate_v2.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/staff_wall/AST-STF-001.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/commons_lift_cabin/source/AST-CIR-003.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    },
+    {
+      "source_path_from_staging_root": "BlenderCatalogue/assets/telescoping_gate/source/AST-DOR-003.blend",
+      "source_sha256_matches_acquisition": true,
+      "live_export_sha256_matches_acquisition": true
+    }
+  ],
+  "operations": {
+    "engine_started": false,
+    "imports_run": false,
+    "blender_opened": false,
+    "new_export_or_roundtrip": false,
+    "network_used": false,
+    "original_files_overwritten": false,
+    "retained_git_objects_modified": false
+  },
+  "remaining_limits": [
+    "Exact hash binding establishes provenance identity only; this reconciliation does not prove native Blender version compatibility, packed or external-resource completeness, or a new source-to-export roundtrip.",
+    "The three historical botanical dependency conflicts in the original acquisition receipt remain unresolved and must not be replaced with incompatible current shared bytes.",
+    "No inherited or new visual, geometry, gameplay, performance or whole-ship completion acceptance is asserted beyond the precise historical evidence scope.",
+    "All suites/tram native coverage and whole-ship authoring migration remain outside this targeted 27-file acquisition."
+  ]
+}

@@ -2,6 +2,15 @@
 
 Prepared 20 October 2026. This is an authoring audit and safe starting workflow, not a claim that the whole ship is an editable assembled Godot scene. No production scene, bootstrap, asset, import setting, or export was changed for this handoff. A bounded one-room conversion and saved-scene/reopen check were performed; no full import or whole-ship engine run was performed by this handoff task. Use the project's existing Godot **4.6.3 Compatibility** configuration; this work does not authorize an engine switch.
 
+
+## Native-source acquisition update, 20 October 08:22 UTC
+
+The initial presence/recovery audit below is preserved as a dated baseline. Since that audit, all27 targeted native files have been acquired or found already present and verified against the retained SHA256 manifest. Together they total39,374,038bytes. Twenty-five source/family manifests and35 narrowly justified source/material dependencies were also verified; the complete87-file retention set totals40,147,113bytes. No surviving file was overwritten.
+
+Twenty-one native/live-export pairs now have an explicit source manifest matching both hashes. Six native files are hash-verified but their exact binding receipt/new roundtrip remains unconfirmed. Three older botanical-understory dependency hashes differ from later shared versions; those conflicts were recorded, not overwritten. No Blender opening/version-compatibility check or new roundtrip was run, and grouped tram sources and broad suite-native coverage remain incomplete.
+
+Read `NATIVE_ACQUISITION_RECEIPT.json` for the exact evidence and limitations, `NATIVE_ACQUISITION_FILES.json` for the87 verified retained paths, and `NATIVE_DEPENDENCY_PLAN.json` for the historical conflicts. These update earlier statements that these27 files had not yet been acquired; they do not turn the whole ship into a complete editor-authored handoff.
+
 ## The important distinction
 
 The ship has substantial retained construction, but most assembly currently occurs in code. `scenes/main.tscn` loads presentation; `scenes/ship.tscn` contains the world skeleton; `scripts/ship.gd::_ready()` and `scripts/received_sections_bootstrap.gd` build the districts, fittings, controls and contacts. Opening `ship.tscn` does **not** expose that full assembled world for ordinary editor manipulation. Looking at the running Remote tree is inspection, not a durable authoring workflow.
@@ -97,9 +106,9 @@ Absent-path triage is deliberately conservative. `ABSENT_CATEGORY_TOTALS.json` g
 - Source scripts/manifests/other review: 10,658; 1,653,574,499 known bytes; 1,375 unknown.
 - Existing safety-excluded paths: 70; 33,604,391 known bytes. These are explicitly marked **do not acquire**. They are not a required handoff backlog.
 
-Path categories do not establish that an asset is current or superseded. Do not use these totals as an archive size estimate or download queue. `NATIVE_SOURCE_RECOVERY_CANDIDATES.csv` is the narrower exact-path/hash inventory for targeted joins. Acquire the native source of the next section being edited first, along with its dependencies. The supported route is the authenticated GitHub connector's file/blob retrieval at the retained source revision, followed by exact SHA256 verification. This audit did not perform an acquisition or prove current connector availability.
+Path categories do not establish that an asset is current or superseded. Do not use these totals as an archive size estimate or download queue. `NATIVE_SOURCE_RECOVERY_CANDIDATES.csv` is the narrower exact-path/hash inventory for targeted joins. Acquire the native source of the next section being edited first, along with its dependencies. The supported route is the authenticated GitHub connector's file/blob retrieval at the retained source revision, followed by exact SHA256 verification. That initial audit did not perform acquisition; subsequent verified recovery is recorded below.
 
-Concrete retained sources for the named exemplars, absent from this staging tree:
+Historical pre-acquisition examples (these four have since been recovered; see the r002 coverage update below):
 
 | Retained native source | SHA256 | Known bytes |
 |---|---|---:|
@@ -125,6 +134,22 @@ The construction owner reports saved-scene/reload checks passed, with dummy-rend
 
 ## Current native-export joins
 
-`NAMED_EXEMPLAR_EXPORT_JOINS.csv` records52 current-file hashes across atrium, arrivals/fusion, engineering and tram contract references. Matching retained exports are byte-identical by SHA256. `TARGETED_NATIVE_ACQUISITION.json` proposes27 exact retained native paths/hashes for the straightforward family/stem joins. Native bytes have not been acquired or roundtrip-verified here, and grouped tram sources still need their explicit source receipt instead of a guessed filename join. These indexes are targeted preparation, not proof every historical contribution is already editable.
+`NAMED_EXEMPLAR_EXPORT_JOINS.csv` records52 current-file hashes across atrium, arrivals/fusion, engineering and tram contract references. Matching retained exports are byte-identical by SHA256. `TARGETED_NATIVE_ACQUISITION.json` proposes27 exact retained native paths/hashes for the straightforward family/stem joins. This was the initial planning state. The r002 update below supersedes acquisition/binding status; native roundtrip validation remains unperformed. These indexes are targeted preparation, not proof every historical contribution is already editable.
 
 The assembled Parcel Room now has a pixel-reviewed graphical preview, `PARCEL_ROOM_SAVED_SCENE_PREVIEW.png`, and exact predecessor lineage in `ASSEMBLED_SOURCE_LINEAGE.json`. See `VISUAL_REVIEW.md` for preview-only lighting and environment warnings. Production runtime adoption remains proposed, not done.
+
+
+## Verified current-source recovery, r002
+
+`CURRENT_NATIVE_HANDOFF_LEDGER_R002.json` and `R002_SOURCE_COVERAGE.md` record 209 exact verified files (367,064,423 bytes), including 93 native Blender files (358,365,959 bytes): 92 selected current natives and one historical precursor dependency. All 27 initially targeted native/export bindings are now supported by explicit receipts. The six current house families contribute 48 native prototypes spanning 498 allocation rows, plus their two door source families. Allocation rows are not a claim of 498 completed or accepted suites. Grouped tram recovery includes its current geometry, boarding, travel, controls and station-information sources and the selected direct generator dependencies.
+
+Recovered Blender sources are editable source assets, not saved assembled Godot scenes. Generator portability, external resource completeness and fresh native/export roundtrips remain untested. Historical botanical dependency conflicts are preserved rather than overwritten. See the ledger for exact scope and open limitations. A further 58 received-section native counterparts were absent from the baseline manifest; recovery from their exact retained source archives is underway separately, not counted as complete in r002.
+
+### Current tram arrival component
+
+`res://scenes/tram_arrival_intro_20261020/OpeningTramDirector.tscn` is a separate editable component with cursor, speed, standing, dwell and itinerary settings. It is disabled and not installed by this handoff. Read `docs/tram_arrival_intro_20261020/IMPLEMENTATION.md` and its contract before integration. It is intended for the real ship, not a duplicate standalone route; actual-main admission and guideway clearance work remain separate.
+
+
+### Separately recovered, not integrated
+
+The recovery inventory also contains the distinct Sequoia Atrium package (native Blender and GLB, a 96-suite static layout) and Luxury Suites + Painterly Garden v03 (64 asset families, 128 LOD GLBs and source payload, no native Blender file claimed). These are isolated alternatives, not proof that another 96 suites or these assets are installed in Astraea. Do not copy their project/controller files into the live game or run their installer. Canonical placement, room identity mapping, duplication review and integration are still required. Their provenance and hash receipts are maintained in the separate recovery inventory.
