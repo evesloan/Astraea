@@ -60,3 +60,9 @@ func intern_texture(texture: Texture2D) -> Texture2D:
 	return shared
 func statistics() -> Dictionary:
 	return {"examined_textures":examined,"unique_payloads":canonical.size(),"material_slot_replacements":replacements,"duplicate_payload_bytes":duplicate_payload_bytes,"policy":"identical format, dimensions, mipmaps and complete payload; original material objects retained"}
+
+func prune_expired_references() -> void:
+	for identity in textures.keys():
+		if textures[identity].original.get_ref()==null:textures.erase(identity)
+	for identity in materials.keys():
+		if materials[identity].get_ref()==null:materials.erase(identity)

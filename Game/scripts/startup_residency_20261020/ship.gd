@@ -9,6 +9,7 @@ var startup_steps := 0
 var exact_contact_residency: Node
 var streamed_models: Dictionary = {}
 var exact_texture_intern: RefCounted
+var private_detail_residency: Node
 func _ready() -> void:
 	exact_texture_intern = load("res://scripts/startup_residency_20261020/exact_texture_intern.gd").new()
 	get_tree().node_added.connect(exact_texture_intern.observe)
@@ -22,6 +23,10 @@ func _ready() -> void:
 	exact_contact_residency.name = "ExactContactResidency"
 	$ShipSystems.add_child(exact_contact_residency)
 	exact_contact_residency.setup(self)
+	private_detail_residency=load("res://scripts/startup_residency_20261020/private_detail_residency.gd").new()
+	private_detail_residency.name="PrivateDetailResidency"
+	$ShipSystems.add_child(private_detail_residency)
+	private_detail_residency.setup(self)
 	var contract: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/design_contract.json"))
 	for datum in contract.deck_datums: deck_y.append(float(datum.floor_elevation_m))
 	d09_y = deck_y[8]
@@ -365,7 +370,8 @@ func _ready() -> void:
 	await _construction_step("atrium_gallery_receiving.gd")
 	# Sole-owner Group7 boundary: selected JSON and exact runtime files must be admitted first.
 	# Complete retained physical envelope;new garden doors and unsafe transit stay held.
-	load("res://scripts/consolidated_all_eight_20261013/package.gd").build(self)
+	_verify_group7_routes()
+	load("res://scripts/startup_residency_20261020/group7_package.gd").build(self)
 	await _construction_step("consolidated_all_eight_20261013/package.gd")
 	# Approved six-house receiving frames and exact retained floors; engineering and room admission remain held.
 	load("res://scripts/approved_receivers_20261014/package.gd").build(self)
@@ -512,7 +518,11 @@ func model(parent: Node3D, file: String, label: String, location: Vector3, yaw: 
 	wrapper.add_child(visual)
 	exact_contact_residency.register_model(wrapper,manifest)
 	return wrapper
+func register_private_interior(parent:Node3D,file:String)->Node3D:
+	return private_detail_residency.register_room(parent,file)
+
 func arrive_at(arrival: Vector3, facing_y: float) -> bool:
+	if private_detail_residency!=null:private_detail_residency.prepare_position(arrival)
 	var rooms := get_node_or_null("ShipSystems/ReceivedRoomResidency")
 	if rooms != null: rooms.prepare_position(arrival)
 	if exact_contact_residency != null: exact_contact_residency.prepare_position(arrival)
@@ -534,6 +544,8 @@ func _verify_successor_routes() -> void:
 		assert(FileAccess.get_sha256(str(row.contract)) == str(row.contract_sha256))
 
 func _construction_step(label: String) -> void:
+	var demoted:Dictionary=load("res://scripts/startup_residency_20261020/deferred_scene_references.gd").release_unused_scene_owners(self)
+	if int(demoted.demoted_room_scene_owners)>0:print("DEFERRED_SCENE_OWNERS_RELEASED ",JSON.stringify(demoted))
 	exact_texture_intern.flush()
 	startup_steps += 1
 	set_meta("startup_stage",label)
@@ -548,8 +560,21 @@ func finish_runtime_startup() -> void:
 		await _construction_step("Final receiving details")
 	startup_deferred_builders.clear()
 	get_tree().process_frame.connect(exact_texture_intern.flush)
+	var maintenance:=Timer.new()
+	maintenance.name="ImmutableResidencyCacheMaintenance"
+	maintenance.wait_time=5.0
+	maintenance.timeout.connect(exact_texture_intern.prune_expired_references)
+	maintenance.timeout.connect(private_detail_residency.prune_expired_contacts)
+	$ShipSystems.add_child(maintenance)
+	maintenance.start()
 	var actor := get_node("ShipSpace/PersistentActors/Player")
 	actor.set_controls_enabled(true)
 	set_meta("runtime_ready",true)
 	get_tree().paused = startup_previous_pause
 	runtime_ready.emit()
+
+func _verify_group7_routes()->void:
+	var routes:Array=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/startup_residency_20261020/group7_routes.json"))
+	for route in routes:
+		assert(FileAccess.get_sha256(str(route.predecessor))==str(route.predecessor_sha256))
+		assert(FileAccess.get_sha256(str(route.successor))==str(route.successor_sha256))
