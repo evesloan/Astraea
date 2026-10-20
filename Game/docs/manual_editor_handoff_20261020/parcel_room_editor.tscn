@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/shopping_promenade_20261009/SHOP_D09_S72_A080.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://docs/manual_editor_handoff_20261020/manual_additions.tscn" id="2"]
+
+[node name="ParcelRoomAuthoringExample_NOT_INSTALLED" type="Node3D"]
+metadata/source_chunk_id = "SHOP_D09_S72_A080"
+metadata/stable_room_id = "R064"
+metadata/authoring_status = "Local visual reference only. Structural floor, doors, lights and controllers remain runtime-built."
+
+[node name="SourceReference_DoNotOverwrite" parent="." instance=ExtResource("1")]
+
+[node name="ManualAdditions" parent="." instance=ExtResource("2")]
