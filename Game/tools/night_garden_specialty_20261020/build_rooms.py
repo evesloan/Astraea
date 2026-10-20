@@ -45,7 +45,7 @@ for r in p['rooms']:
  for bounds in stats['rest_bounds'].values():
   a=r['allocation'];assert bounds[0][0]>=a['allocation_x'][0]-.03 and bounds[1][0]<=a['allocation_x'][1]+.03 and bounds[0][2]>=a['allocation_z'][0]-.03 and bounds[1][2]<=a['allocation_z'][1]+.03,(i,bounds)
  bpy.context.preferences.filepaths.save_version=0
- native=N/f'NightGardenD15Specialty_{i}_r001.blend';bpy.ops.wm.save_as_mainfile(filepath=str(native),compress=True)
+ native=N/(Path(r['model_file']).stem+'.blend');bpy.ops.wm.save_as_mainfile(filepath=str(native),compress=True)
  # Compact immutable runtime batches; native source above retains individual authored objects.
  groups={}
  for o in list(bpy.context.scene.objects):

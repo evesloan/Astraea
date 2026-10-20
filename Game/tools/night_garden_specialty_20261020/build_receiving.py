@@ -22,7 +22,7 @@ def box(name,lo,hi,role='wall',cat='architecture'):
  x0,y0,z0=lo;x1,y1,z1=hi
  vs=[(x0,-z0,y0),(x1,-z0,y0),(x1,-z1,y0),(x0,-z1,y0),(x0,-z0,y1),(x1,-z0,y1),(x1,-z1,y1),(x0,-z1,y1)]
  fs=[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)]
- mesh=bpy.data.meshes.new(name);mesh.from_pydata(vs,[],fs);mesh.update();o=bpy.data.objects.new(name,mesh);bpy.context.collection.objects.link(o);o.data.materials.append(mats.get(role,mats['wall']));o['runtime_collision']=True;o['construction_role']=cat;o['material_role']='hospitality_glass' if role=='glass' else role
+ mesh=bpy.data.meshes.new(name);mesh.from_pydata(vs,[],[tuple(reversed(face)) for face in fs]);mesh.update();o=bpy.data.objects.new(name,mesh);bpy.context.collection.objects.link(o);o.data.materials.append(mats.get(role,mats['wall']));o['runtime_collision']=True;o['construction_role']=cat;o['material_role']='hospitality_glass' if role=='glass' else role
  parts.append({'name':name,'bounds':[lo,hi],'role':role,'category':cat});return o
 # Exact bounded successors for four removed original wall pieces. Original GLB untouched.
 patch=[]
@@ -66,7 +66,7 @@ for sign in [-1,1]:
   x0,x1=a['allocation_x']
   for k,z in enumerate([a['allocation_z'][0]+.22,a['allocation_z'][1]-.22]):box(f'NG_{a["source_envelope_index"]}_RoomBearing_{k}',[x0,92.44,z-.08],[x1,92.76,z+.08],'wood','room_slab_receiving')
 # Material-batch optimization retains named contact geometry in native source; glTF remains editable.
-native=N/'NightGardenD15ConnectedReceiving_r001.blend';bpy.ops.wm.save_as_mainfile(filepath=str(native),compress=True)
-out=G/'assets/models/NightGardenD15ConnectedReceiving_r001.glb';bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_extras=True,export_cameras=False,export_lights=False)
+native=N/'NightGardenD15ConnectedReceiving_r002.blend';bpy.ops.wm.save_as_mainfile(filepath=str(native),compress=True)
+out=G/'assets/models/NightGardenD15ConnectedReceiving_r002.glb';bpy.ops.export_scene.gltf(filepath=str(out),export_format='GLB',export_extras=True,export_cameras=False,export_lights=False)
 p['receiving']={'model_file':out.name,'model_sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'native_source':str(native.relative_to(B)),'native_source_sha256':hashlib.sha256(native.read_bytes()).hexdigest(),'parts':parts,'commons_patch':patch,'commons_source_sha256':p['preimage_pins']['assets/models/AST-COM-003.glb'],'engineering_load_capacity_accepted':False}
 P.write_text(json.dumps(p,indent=2)+'\n');print('RECEIVING_BUILT',len(parts))
