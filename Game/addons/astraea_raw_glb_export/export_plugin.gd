@@ -25,3 +25,14 @@ func _export_file(path: String, _type: String, _features: PackedStringArray) -> 
 func _fail(message: String) -> void:
 	get_export_platform().add_message(EditorExportPlatform.EXPORT_MESSAGE_ERROR, "Astraea raw GLB export", message)
 	push_error(message)
+
+func _export_begin(_features: PackedStringArray, _is_debug: bool, _path: String, _flags: int) -> void:
+	# Explicit runtime evidence required by unchanged dynamic source-pin gates.
+	# These files are not ordinary documentation and must survive docs exclusion.
+	var records: Array = JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/startup_residency_20261020/runtime_required_receipts.json"))
+	for record in records:
+		var source_path: String = str(record.path)
+		if FileAccess.get_sha256(source_path) != str(record.sha256):
+			_fail("Required runtime receipt missing or changed: " + source_path)
+			continue
+		add_file(source_path, FileAccess.get_file_as_bytes(source_path), false)

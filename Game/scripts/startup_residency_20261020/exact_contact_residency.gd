@@ -18,9 +18,10 @@ func register_model(wrapper: Node3D, manifest: Dictionary) -> void:
 		var lo: Array = cell.bounds_min
 		var hi: Array = cell.bounds_max
 		var box := AABB(Vector3(lo[0],lo[1],lo[2]),Vector3(hi[0]-lo[0],hi[1]-lo[1],hi[2]-lo[2]))
-		entries.append({"wrapper":weakref(wrapper),"cell":cell,"bounds":wrapper.global_transform*box,"body":null})
-	# Initial spawn contacts are present before the original player is constructed.
-	prepare_position(Vector3(63.0,52.6,-20.5))
+		var entry:Dictionary={"wrapper":weakref(wrapper),"cell":cell,"bounds":wrapper.global_transform*box,"body":null}
+		entries.append(entry)
+		# Initial hydration visits each new cell once, not every prior model again.
+		if _near(Vector3(63.0,52.6,-20.5),entry.bounds,ENTER_METRES):_load_entry(entry)
 func _load_entry(entry: Dictionary) -> void:
 	if is_instance_valid(entry.body): return
 	var wrapper: Node3D = entry.wrapper.get_ref()

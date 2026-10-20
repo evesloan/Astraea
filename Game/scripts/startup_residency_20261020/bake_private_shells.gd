@@ -18,6 +18,16 @@ func run() -> void:
   var source: Node3D = load(source_model_path).instantiate()
   root.add_child(source)
   assert(source.find_children("*","Light3D",true,false).is_empty(),"Imported source lights need persistent ownership")
+  var explicit_detail: Dictionary = {}
+  var explicit_shell: Dictionary = {}
+  if record.has("immutable_private_detail_meshes"):
+   for item in record.immutable_private_detail_meshes:
+    assert(not explicit_detail.has(str(item.node)))
+    explicit_detail[str(item.node)] = true
+   for item in record.always_resident_meshes:
+    assert(not explicit_shell.has(str(item.node)) and not explicit_detail.has(str(item.node)))
+    explicit_shell[str(item.node)] = true
+  var seen_explicit: Dictionary = {}
   var detail_paths: Array[String] = []
   var shell_paths: Array[String] = []
   var box := AABB()
@@ -35,11 +45,20 @@ func run() -> void:
    var path := str(source.get_path_to(mesh))
    # Keep every explicit architectural/built-in role and every unknown mesh.
    # Only identified retained catalogue furnishings are private detail.
-   if mesh.get_child_count()==0 and not extra.has("construction_role") and (extra.has("retained_component_id") or extra.has("catalogue_id")):
+   var is_detail := mesh.get_child_count()==0 and not extra.has("construction_role") and (extra.has("retained_component_id") or extra.has("catalogue_id"))
+   if record.has("immutable_private_detail_meshes"):
+    var node_name := str(mesh.name)
+    assert(not seen_explicit.has(node_name),"Explicit partition names must be unique")
+    assert(explicit_detail.has(node_name) or explicit_shell.has(node_name),"Unclassified mesh in exact partition")
+    seen_explicit[node_name] = true
+    is_detail = explicit_detail.has(node_name)
+    assert(not is_detail or mesh.get_child_count()==0,"Private detail must be immutable leaf geometry")
+   if is_detail:
     detail_paths.append(path)
     detail_box=bound if first_detail else detail_box.merge(bound)
     first_detail=false
    else: shell_paths.append(path)
+  if record.has("immutable_private_detail_meshes"):assert(seen_explicit.size()==explicit_detail.size()+explicit_shell.size(),"Every exact proposal node must exist")
   assert(not detail_paths.is_empty() and not shell_paths.is_empty())
   for path in detail_paths: source.get_node(path).free()
   for mesh: MeshInstance3D in source.find_children("*","MeshInstance3D",true,false):
@@ -59,7 +78,8 @@ func run() -> void:
   print("PRIVATE_SHELL_BAKED ",record.model_file," shell=",shell_paths.size()," detail=",detail_paths.size())
   source.free()
   owned_resources.clear()
- var handle:=FileAccess.open("res://data/architecture/startup_residency_20261020/private_shells.json",FileAccess.WRITE)
+ var index_path := str(config.get("output_index","res://data/architecture/startup_residency_20261020/private_shells.json"))
+ var handle:=FileAccess.open(index_path,FileAccess.WRITE)
  handle.store_string(JSON.stringify(output,"  ")+"\n")
  quit(1 if failed else 0)
 func own_children(node: Node, owner_node: Node) -> void:

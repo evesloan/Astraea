@@ -33,7 +33,7 @@ func intern_material(material: Material) -> void:
 			var value = material.get(str(property.name))
 			if not (value is ImageTexture or value is CompressedTexture2D): continue
 			var path := str(value.resource_path)
-			if not (path.begins_with("res://assets/models/") or path.begins_with("res://assets/runtime/startup_residency_20261020/") or path.begins_with("res://.godot/imported/")): continue
+			if not (path.begins_with("res://assets/") or path.begins_with("res://.godot/imported/")): continue
 			var shared := intern_texture(value)
 			if shared != value:
 				material.set(str(property.name),shared)

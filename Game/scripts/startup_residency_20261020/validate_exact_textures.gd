@@ -19,8 +19,10 @@ func run() -> void:
 	var instances: Array[Node3D] = []
 	var rows: Array[Dictionary] = []
 	var old_textures: Dictionary = {}
-	for file in ["AST-DOR-001.glb","AST-DOR-002.glb","AST-CIR-003_three_stop.glb"]:
-		var packed := load("res://assets/models/"+file) as PackedScene
+	var files:Array[String]=["res://assets/models/AST-DOR-001.glb","res://assets/models/AST-DOR-002.glb","res://assets/models/AST-CIR-003_three_stop.glb"]
+	if "--group2" in OS.get_cmdline_user_args():files=["res://assets/group2_completion/starboard_forward_upper_house.glb","res://assets/group2_completion/port_forward_upper_house.glb"]
+	for file in files:
+		var packed := load(file) as PackedScene
 		var instance := packed.instantiate() as Node3D
 		instances.append(instance)
 		root.add_child(instance)

@@ -1,7 +1,8 @@
 extends SceneTree
 func _initialize() -> void:call_deferred("run")
 func run() -> void:
- var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/startup_residency_20261020/private_shells.json"))
+ var path := "res://data/architecture/startup_residency_20261020/private_shells.json" if OS.get_cmdline_user_args().is_empty() else OS.get_cmdline_user_args()[0]
+ var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path))
  var tested:=0
  var detail_count:=0
  var shell_count:=0
