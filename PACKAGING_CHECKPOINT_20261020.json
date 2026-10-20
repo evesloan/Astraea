@@ -1,20 +1,44 @@
 {
   "schema": 1,
   "kind": "incremental_packaging_checkpoint",
-  "created_utc": "2026-10-20T05:28:32Z",
+  "created_utc": "2026-10-20T05:37:05Z",
   "base_commit": "5acf0c2aebeafa995a2f469091c83ed91c432a82",
   "base_checkpoint_sha256": "69d403143a9566935f4ffb5cae643daf0aa6e7b97a23c630a36e11b4ba76bd5a",
-  "scope": "Only Game/export_presets.cfg differs from the retained base source. Base CHECKPOINT.json describes the predecessor; this delta supersedes its hash for this path only.",
+  "scope": "Packaging-only delta relative to base_commit. Base CHECKPOINT.json describes predecessor source; listed hashes supersede only these changed paths. No geometry or runtime gates changed.",
   "changes": [
     {
       "path": "Game/export_presets.cfg",
       "before_sha256": "b12ad9682fc36edaadd243b7cbec12909150b90df0ee032d959a5da438f1d366",
       "after_sha256": "c2828ab47af663a4ffe495794940e82b130ee3bca3d48a5feea5b7cc96b84c70",
       "reason": "Include existing runtime receiving receipts in Integrated Construction Package; retain all original assertions."
+    },
+    {
+      "path": "Game/project.godot",
+      "before_sha256": "42dfd175fd8135e51094d66347802a51f6622475a06b4b2c11227af29884bdc0",
+      "after_sha256": "25de73f3185d840b251c077e0a618d261e7a02fd719ddba55fe3f34625df82ff",
+      "reason": "Supported editor export plugin preserves raw GLB bytes alongside imported scenes for existing runtime hash gates."
+    },
+    {
+      "path": "Game/addons/astraea_raw_glb_export/export_plugin.gd",
+      "before_sha256": null,
+      "after_sha256": "ac28587f09bfd03733deafb9daf2e06c36966229ff067a3e63c3d0b83af332ca",
+      "reason": "Supported editor export plugin preserves raw GLB bytes alongside imported scenes for existing runtime hash gates."
+    },
+    {
+      "path": "Game/addons/astraea_raw_glb_export/plugin.cfg",
+      "before_sha256": null,
+      "after_sha256": "81e4f45ddeaee6188bc1e85864ac5ce004075a4108835bbba89142946eee1c99",
+      "reason": "Supported editor export plugin preserves raw GLB bytes alongside imported scenes for existing runtime hash gates."
+    },
+    {
+      "path": "Game/addons/astraea_raw_glb_export/plugin.gd",
+      "before_sha256": null,
+      "after_sha256": "2eea82b0939d02cbc4aa42a36987108b6160f73a28ea31c2b4ca0067826a19ed",
+      "reason": "Supported editor export plugin preserves raw GLB bytes alongside imported scenes for existing runtime hash gates."
     }
   ],
   "validation": {
-    "diff": "Preset.1 removes artifacts/* from exclusion only; other settings preserved.",
+    "diff": "Preset exclusion fix plus editor plugin registration and three plugin files; second export pending, first lacked raw GLB bytes.",
     "export_completed": false,
     "runtime_startup_completed": false,
     "windows_acceptance": false,
