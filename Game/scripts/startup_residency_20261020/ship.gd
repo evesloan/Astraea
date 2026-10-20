@@ -9,6 +9,7 @@ var startup_steps := 0
 var exact_contact_residency: Node
 var streamed_models: Dictionary = {}
 var exact_texture_intern: RefCounted
+var d04_detail_residency: Node
 var private_detail_residency: Node
 func _ready() -> void:
 	exact_texture_intern = load("res://scripts/startup_residency_20261020/exact_texture_intern.gd").new()
@@ -27,6 +28,10 @@ func _ready() -> void:
 	private_detail_residency.name="PrivateDetailResidency"
 	$ShipSystems.add_child(private_detail_residency)
 	private_detail_residency.setup(self)
+	d04_detail_residency=load("res://scripts/startup_residency_20261020/d04_detail_residency.gd").new()
+	d04_detail_residency.name="D04PrivateDetailResidency"
+	$ShipSystems.add_child(d04_detail_residency)
+	d04_detail_residency.setup(self)
 	var contract: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/design_contract.json"))
 	for datum in contract.deck_datums: deck_y.append(float(datum.floor_elevation_m))
 	d09_y = deck_y[8]
@@ -525,6 +530,7 @@ func register_private_interior(parent:Node3D,file:String)->Node3D:
 
 func arrive_at(arrival: Vector3, facing_y: float) -> bool:
 	if private_detail_residency!=null:private_detail_residency.prepare_position(arrival)
+	if d04_detail_residency!=null:d04_detail_residency.prepare_position(arrival)
 	var rooms := get_node_or_null("ShipSystems/ReceivedRoomResidency")
 	if rooms != null: rooms.prepare_position(arrival)
 	if exact_contact_residency != null: exact_contact_residency.prepare_position(arrival)
@@ -536,7 +542,8 @@ func stream_private_visual(parent: Node3D, file: String, policy: Dictionary) -> 
 	assert(FileAccess.get_sha256(str(record.manifest_path)) == str(record.manifest_sha256))
 	var manifest: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(str(record.manifest_path)))
 	assert(manifest.source_collision_policy == policy, "Private room collision/material policy changed")
-	return model(parent,file,"PrivateAuthoredVisual",Vector3.ZERO)
+	assert(d04_detail_residency.accepts(file))
+	return d04_detail_residency.register_room(parent,file)
 
 func _verify_successor_routes() -> void:
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/startup_residency_20261020/d04_route_guards.json"))

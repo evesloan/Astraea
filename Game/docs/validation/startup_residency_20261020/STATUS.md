@@ -40,3 +40,15 @@ Later focused changes: exact texture interning now covers all imported assets ra
 Prepared graphical r008 uses the existing gl_compatibility renderer and normal production gate selection, explicit runtime_ready/installation_ready, loading and ready screenshots, 20-second observation, and 6 GiB RSS / 1 GiB available-memory / 600-second / error guards. It is pending the shared engine slot. These are diagnostic safety limits, not user product RAM specifications. Original default main remains unhooked. No Windows fix, full readiness, visual acceptance or corrected release is claimed.
 
 Night Garden's exact conservative partition input and explicit-name bake support are source-prepared only. The new 30 rooms remain unhooked pending partition bake and checks; do not eagerly activate them.
+
+## 20 October 08:22 UTC: D04 exact private visual residency
+
+Graphical r008 ended with external SIGKILL after219.18seconds, peak sampled RSS5053MiB, last completed stage96 botanical_pair_receiving, static allocation3.01GB. No controller guard or engine error occurred. Cause is unconfirmed; this does not prove environment capacity or kernel OOM. Loading screenshot proves readable progress and rendered terrace, not complete readiness.
+
+The new D04 boundary preserves all3857 architecture/light/fixture meshes and exact names, while19908 opaque immutable source_fitting leaves in120 homes use separately persisted exact detail scenes. Original GLBs and original builders remain unchanged; additive ship routes private homes to the new manager. Audit found no later source-fitting mutation or literal consumer; all360 required light mesh names are retained. Independent contact-cell residency remains registered.
+
+All120 exact shell/detail comparisons passed original geometry arrays, material properties and transforms. Three representative homes passed147 contact rays and10 actual free/reload cycles each, retaining room metadata, door state/IDs and light IDs with memory plateau within320bytes. Four real neighborhood builders passed their original receipt/light/door gates with80 shell-only homes. Aggregate original120-home visual allocation404354655bytes versus shell-only91336759bytes, approximately313MB reduction;27995 nodes versus8471. This is focused allocation, not full-main memory.
+
+Normal-renderer60m doorway test passed outside36m proximity: visible details loaded, turning away genuinely freed them, returning reloaded them. Returned image was pixel-identical to original; initial streamed image differed by2 pixels only. Screenshots inspected; no batch geometry or original per-object lighting semantics changed. Default main still unhooked; no full readiness, Windows usability or replacement release acceptance.
+
+Night Garden partition bake awaits normal main-project imports; prior package checks used raw GLB loading. Its30 rooms remain unhooked. Tram intro owner is preparing an independent opt-in interface; no motor admission gate bypass or opening spawn change has been applied here.

@@ -60,6 +60,26 @@ func run() -> void:
    else: shell_paths.append(path)
   if record.has("immutable_private_detail_meshes"):assert(seen_explicit.size()==explicit_detail.size()+explicit_shell.size(),"Every exact proposal node must exist")
   assert(not detail_paths.is_empty() and not shell_paths.is_empty())
+  var detail_scene_path := ""
+  if bool(config.get("persist_detail",false)):
+   var detail:Node3D=source.duplicate()
+   for path in shell_paths:
+    var mesh:MeshInstance3D=detail.get_node(path)
+    for surface in range(mesh.get_surface_override_material_count()):mesh.set_surface_override_material(surface,null)
+    mesh.mesh=null;mesh.material_override=null;mesh.material_overlay=null
+   for mesh:MeshInstance3D in detail.find_children("*","MeshInstance3D",true,false):
+    if mesh.mesh==null:continue
+    mesh.mesh=own_resource(mesh.mesh)
+    if mesh.material_override!=null:mesh.material_override=own_resource(mesh.material_override)
+    if mesh.material_overlay!=null:mesh.material_overlay=own_resource(mesh.material_overlay)
+    for surface in range(mesh.mesh.get_surface_count()):
+     if mesh.get_surface_override_material(surface)!=null:mesh.set_surface_override_material(surface,own_resource(mesh.get_surface_override_material(surface)))
+   own_children(detail,detail)
+   var detail_packed:=PackedScene.new()
+   assert(detail_packed.pack(detail)==OK)
+   detail_scene_path="res://assets/runtime/startup_residency_20261020/private_shells/"+str(record.model_file).get_basename()+".detail.scn"
+   assert(ResourceSaver.save(detail_packed,detail_scene_path)==OK)
+   detail.free();owned_resources.clear()
   for path in detail_paths: source.get_node(path).free()
   for mesh: MeshInstance3D in source.find_children("*","MeshInstance3D",true,false):
    mesh.mesh=own_resource(mesh.mesh)
@@ -74,6 +94,7 @@ func run() -> void:
   assert(ResourceSaver.save(packed,path)==OK)
   var row: Dictionary=record.duplicate(true)
   row.merge({"shell_path":path,"shell_sha256":FileAccess.get_sha256(path),"shell_mesh_paths":shell_paths,"detail_mesh_paths":detail_paths,"bounds_min":xyz(box.position),"bounds_max":xyz(box.end),"detail_bounds_min":xyz(detail_box.position),"detail_bounds_max":xyz(detail_box.end)},true)
+  if not detail_scene_path.is_empty():row.merge({"detail_path":detail_scene_path,"detail_sha256":FileAccess.get_sha256(detail_scene_path)},true)
   output.rooms[record.model_file]=row
   print("PRIVATE_SHELL_BAKED ",record.model_file," shell=",shell_paths.size()," detail=",detail_paths.size())
   source.free()
