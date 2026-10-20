@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "kind": "incremental_packaging_checkpoint",
-  "created_utc": "2026-10-20T05:37:05Z",
+  "created_utc": "2026-10-20T05:42:44Z",
   "base_commit": "5acf0c2aebeafa995a2f469091c83ed91c432a82",
   "base_checkpoint_sha256": "69d403143a9566935f4ffb5cae643daf0aa6e7b97a23c630a36e11b4ba76bd5a",
   "scope": "Packaging-only delta relative to base_commit. Base CHECKPOINT.json describes predecessor source; listed hashes supersede only these changed paths. No geometry or runtime gates changed.",
@@ -9,8 +9,8 @@
     {
       "path": "Game/export_presets.cfg",
       "before_sha256": "b12ad9682fc36edaadd243b7cbec12909150b90df0ee032d959a5da438f1d366",
-      "after_sha256": "c2828ab47af663a4ffe495794940e82b130ee3bca3d48a5feea5b7cc96b84c70",
-      "reason": "Include existing runtime receiving receipts in Integrated Construction Package; retain all original assertions."
+      "after_sha256": "728d90176fad59e4585046fa0a4b7c758957f563581323388eea959702f29273",
+      "reason": "Include runtime receiving receipts and SHA-pinned .faces collision geometry in construction export."
     },
     {
       "path": "Game/project.godot",
@@ -38,7 +38,7 @@
     }
   ],
   "validation": {
-    "diff": "Preset exclusion fix plus editor plugin registration and three plugin files; second export pending, first lacked raw GLB bytes.",
+    "diff": "Packaging-only preset filters and raw GLB exporter; final corrected export pending. Earlier exported packs inspected for exact runtime dependencies.",
     "export_completed": false,
     "runtime_startup_completed": false,
     "windows_acceptance": false,
