@@ -110,7 +110,7 @@ func run() -> void:
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	environment.ambient_light_color = Color.WHITE
 	environment.ambient_light_energy = 0.7
-	environment.reflected_light_source = Environment.REFLECTED_SOURCE_DISABLED
+	environment.reflected_light_source = Environment.REFLECTION_SOURCE_DISABLED
 	environment.tonemap_mode = Environment.TONE_MAPPER_LINEAR
 	world.environment = environment
 	stage.add_child(world)

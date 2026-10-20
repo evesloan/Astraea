@@ -8,7 +8,10 @@ var startup_previous_pause := false
 var startup_steps := 0
 var exact_contact_residency: Node
 var streamed_models: Dictionary = {}
+var exact_texture_intern: RefCounted
 func _ready() -> void:
+	exact_texture_intern = load("res://scripts/startup_residency_20261020/exact_texture_intern.gd").new()
+	get_tree().node_added.connect(exact_texture_intern.observe)
 	startup_previous_pause = get_tree().paused
 	get_tree().paused = true
 	var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(INDEX))
@@ -59,6 +62,17 @@ func _ready() -> void:
 	environment.ssao_enabled = true
 	environment.ssao_radius = 0.65
 	environment.ssao_intensity = 0.45
+	# Construct the unchanged original actor before yielding: the original engineering
+	# bank binds its camera once via call_deferred. Physics stays paused until ready.
+	var player := CharacterBody3D.new()
+	var player_successor:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/PLAYER_SUCCESSOR_20261019.json"))
+	assert(FileAccess.get_sha256("res://scripts/player.gd")==str(player_successor.predecessor_player_sha256))
+	assert(FileAccess.get_sha256("res://scripts/group6_completion/player_water_seat_20261019.gd")==str(player_successor.player_sha256))
+	player.set_script(load("res://scripts/group6_swimming_20261019/player.gd"))
+	$ShipSpace/PersistentActors.add_child(player)
+	player.spawn_position = Vector3(63.0,d09_y+0.1,-20.5)
+	player.position = player.spawn_position
+	player.set_controls_enabled(false)
 	build_structural_datums()
 	var lower_hull:=model($ShipSpace/Districts,"AST-HUL-001.glb","LowerHullBody_WIP",Vector3.ZERO)
 	lower_hull.set_meta("persistent_id","lower_hull_body_001")
@@ -177,7 +191,7 @@ func _ready() -> void:
 	await _construction_step("group8/arrivals_service.gd")
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/arrivals_fusion.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/star_atlas.gd").build($ShipSpace/Districts,self)
-	await _construction_step("star_atlas.gd")
+	# Keep the original queued cabin-contact retirement and its fitted audit atomic.
 	load("res://scripts/group2_vip_dry_club/package.gd").build_on_current_receiver($ShipSpace/Districts/D15_D17_StarAtlasUpper_WIP)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/star_atlas.gd).build($ShipSpace/Districts,self)")
 	load("res://scripts/star_atlas_fitted_receiving.gd").build($ShipSpace/Districts/D12_D14_StarAtlas_WIP,self)
@@ -265,14 +279,7 @@ func _ready() -> void:
 	cleaning_cart.name="CustodialCart"
 	cleaning_cart.position=Vector3(85.2,84.04,-37.3)
 	$ShipSpace/PersistentActors.add_child(cleaning_cart)
-	var player := CharacterBody3D.new()
-	var player_successor:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/group6_completion/PLAYER_SUCCESSOR_20261019.json"))
-	assert(FileAccess.get_sha256("res://scripts/player.gd")==str(player_successor.predecessor_player_sha256))
-	assert(FileAccess.get_sha256("res://scripts/group6_completion/player_water_seat_20261019.gd")==str(player_successor.player_sha256))
-	player.set_script(load("res://scripts/group6_swimming_20261019/player.gd"))
-	$ShipSpace/PersistentActors.add_child(player)
-	player.spawn_position = Vector3(63.0,d09_y+0.1,-20.5)
-	player.position = player.spawn_position
+
 	load("res://scripts/d04_port_central_court_work_links.gd").build(self)
 	await _construction_step("d04_port_central_court_work_links.gd")
 	load("res://scripts/d04_port_central_west_staff_circuit.gd").build(self)
@@ -347,7 +354,7 @@ func _ready() -> void:
 	load("res://scripts/sunset_adoption.gd").build(self)
 	await _construction_step("sunset_adoption.gd")
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP")=="1":print("STARTUP load(res://scripts/sunset_adoption.gd).build(self)")
-	load("res://scripts/central_homes_adoption.gd").build(self)
+	await load("res://scripts/startup_residency_20261020/central_homes_adoption.gd").build(self)
 	await _construction_step("central_homes_adoption.gd")
 	load("res://scripts/star_atlas_d17_standard823.gd").build(self)
 	await _construction_step("star_atlas_d17_standard823.gd")
@@ -501,7 +508,7 @@ func model(parent: Node3D, file: String, label: String, location: Vector3, yaw: 
 	parent.add_child(wrapper)
 	wrapper.position = location
 	wrapper.rotation.y = yaw
-	var visual := (load(str(manifest.visual_path)) as PackedScene).instantiate()
+	var visual: Node3D = load("res://scripts/startup_residency_20261020/original_visual_contacts.gd").instantiate_visual(file,manifest)
 	wrapper.add_child(visual)
 	exact_contact_residency.register_model(wrapper,manifest)
 	return wrapper
@@ -527,11 +534,12 @@ func _verify_successor_routes() -> void:
 		assert(FileAccess.get_sha256(str(row.contract)) == str(row.contract_sha256))
 
 func _construction_step(label: String) -> void:
+	exact_texture_intern.flush()
 	startup_steps += 1
 	set_meta("startup_stage",label)
 	set_meta("startup_steps",startup_steps)
 	if OS.get_environment("ASTRAEA_TRACE_STARTUP") == "1":
-		print("STAGED_MEMORY ",JSON.stringify({"stage":label,"step":startup_steps,"static_bytes":OS.get_static_memory_usage(),"nodes":get_tree().get_node_count()}))
+		print("STAGED_MEMORY ",JSON.stringify({"stage":label,"step":startup_steps,"static_bytes":OS.get_static_memory_usage(),"nodes":get_tree().get_node_count(),"textures":exact_texture_intern.statistics()}))
 	await get_tree().process_frame
 
 func finish_runtime_startup() -> void:
@@ -539,6 +547,9 @@ func finish_runtime_startup() -> void:
 		build.call()
 		await _construction_step("Final receiving details")
 	startup_deferred_builders.clear()
+	get_tree().process_frame.connect(exact_texture_intern.flush)
+	var actor := get_node("ShipSpace/PersistentActors/Player")
+	actor.set_controls_enabled(true)
 	set_meta("runtime_ready",true)
 	get_tree().paused = startup_previous_pause
 	runtime_ready.emit()

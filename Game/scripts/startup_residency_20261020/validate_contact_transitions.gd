@@ -25,7 +25,13 @@ func run():
    starts.append(start);ends.append(end)
    expected.append(host.get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(start,end)))
  source.free()
- var visual:Node3D=load(d.visual_path).instantiate();host.add_child(visual)
+ var visual:Node3D
+ if "--original-visuals" in OS.get_cmdline_user_args():
+  visual=Node3D.new();host.add_child(visual)
+  var original_visual:Node3D=load("res://scripts/startup_residency_20261020/original_visual_contacts.gd").instantiate_visual(str(d.model_file).get_file(),d)
+  visual.add_child(original_visual)
+ else:
+  visual=load(d.visual_path).instantiate();host.add_child(visual)
  var manager=load("res://scripts/startup_residency_20261020/exact_contact_residency.gd").new();host.add_child(manager);manager.setup(host)
  manager.set_physics_process(false)
  manager.register_model(visual,d)
