@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "kind": "unhooked_startup_wip_snapshot_delta",
+  "captured_inventory": "STARTUP_WIP_RETENTION_20261020_0649.json",
+  "base_commit": "62ee886b68e8d56a3d90faf7e2dd3a6b695c83d8",
+  "base_tree": "0ec4342452409af37b9bb8b1a9bdd44d04255272",
+  "source_files": 810,
+  "source_bytes": 484062447,
+  "status": "UNHOOKED WIP. Complete readiness FAILED. 127 exact-geometry derivatives checked; staged successor ship/bootstrap/presentation scripts parse but are NOT runtime-tested. This is not a repaired build, completed integration or gameplay acceptance.",
+  "scope": "Base CHECKPOINT applies predecessor only. This delta retains the exact 06:49 producer inventory, independently copied with SHA-256 verification; later live-source changes are excluded. Existing default hooks and prior Night Garden checkpoint remain unchanged.",
+  "producer_manifest": {
+    "path": "recovery/startup_wip_20261020_0649/PRODUCER_MANIFEST.json",
+    "bytes": 189770,
+    "git_sha": "4e3a28b9c47f2c84c9474f533e920ed1f1548705",
+    "sha256": "4c39e3c91bc8d50a9737727966c94d99da35997774faff621c3cbf0c3d786ec8"
+  },
+  "storage": "808 original paths are directly retained. TWO scene binaries are losslessly ZIP-archived because their native uploads exceed the connector request limit. Direct checkout is NOT complete until those archives are extracted to their original paths. Archives preserve full Game/... names; restore by extracting at repository root and verify restored byte counts and SHA-256 below. Do not overwrite newer surviving work.",
+  "archives": [
+    {
+      "path": "recovery/startup_wip_20261020_0649/WP08_laundry_runtime_names001_r002.scn.zip",
+      "bytes": 3719243,
+      "git_sha": "2e8776f9024cb087b228a4db8a3a935ccf5b822e",
+      "sha256": "fcb4cc0dffa80d36daf2028d4df58521a6b7207f9fdc6aed0681b96d3d30b6f1",
+      "restore_path": "Game/assets/runtime/startup_residency_20261020/WP08_laundry_runtime_names001_r002.scn",
+      "original": {
+        "path": "Game/assets/runtime/startup_residency_20261020/WP08_laundry_runtime_names001_r002.scn",
+        "bytes": 36386898,
+        "sha256": "c1955f68bfc76c32248d13a9d08627cc3a73d75676a4b68add5114523e88a024",
+        "git_sha": "038de333f76cf50cc2a7d750340f6c101f3a67d5"
+      },
+      "restoration_sha256_verified": true
+    },
+    {
+      "path": "recovery/startup_wip_20261020_0649/WP12_night_table_runtime_names001_r002.scn.zip",
+      "bytes": 6941004,
+      "git_sha": "5b460c06168141c94e6f96bed82309a287b3bd7e",
+      "sha256": "65c6a3877f95470108839f8c7b97fb48f4e03b8f6840203b39633f1bf8bc6651",
+      "restore_path": "Game/assets/runtime/startup_residency_20261020/WP12_night_table_runtime_names001_r002.scn",
+      "original": {
+        "path": "Game/assets/runtime/startup_residency_20261020/WP12_night_table_runtime_names001_r002.scn",
+        "bytes": 60552089,
+        "sha256": "898c40610cdc49ff9fcd1f00cc66a89ec5106cf3529ad534d95e1d9841aa39f5",
+        "git_sha": "bb26a71f2b2312d09e8259f07a699d09daf3a872"
+      },
+      "restoration_sha256_verified": true
+    }
+  ],
+  "acceptance": "No live-source modification, Godot execution, engine switch or main-branch change performed by retention. Keep runtime testing and full readiness open."
+}
