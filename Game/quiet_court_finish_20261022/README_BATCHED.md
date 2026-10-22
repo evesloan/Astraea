@@ -1,0 +1,5 @@
+# Shared production planting successor
+
+Active adapter_batched.gd uses149 unchanged transforms and the retained AST-BOT-008/009 production GLBs. Their4/5 opaque batches are reused rather than the expanded native leaf/stem scene. Runtime counts fall13912→692 mesh instances,13912→9 mesh resources,692→9 materials and14754→1683 nodes. All149 placements pass one-to-one full triangle matching within1mm (maximum0.333mm), equal poses and actual receiving-polygon checks.651 focused candidate checks pass. Earlier exact rounded-coordinate-string comparison remains as rejected diagnostic history; geometric matching handles quantization boundaries without dropping triangles.
+
+The comparable actual gallery image is visually consistent with the previous candidate. Broad surfaces and lighting remain unfinished. These counts are not measured FPS or full-ship performance acceptance. Native Blender sources and the expanded runtime candidate remain immutable history; the expanded candidate is not used by the active adapter. Main integration follows independent source protection.
