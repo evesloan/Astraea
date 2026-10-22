@@ -1,0 +1,11 @@
+# Quiet Grove retained-fixture connection — unfinished
+
+The five-level court's 79 retained OmniLight3D fixtures were created with visible=false and shadow_enabled=false. The preceding finish adapter retuned their range/energy but did not enroll them in lighting_budget.gd, which only selects requested-shadow sources. This successor opts those exact existing fixtures into the unchanged eight-source selector before configure. It does not force lights visible, add lamps, change energy/range, alter global illumination, bypass power/visibility/private-pane checks or increase the light budget.
+
+Five coordinated material roles now use consistent stone, ivory, walnut, champagne metal and woven-fabric surface responses. Native QuietGroveCourtSurface_r002.blend and runtime values agree; original source mesh geometry, slabs, contacts, 83 allocations, rest identities, 149 optimized planting placements and prior revisions remain unchanged. Native topology/transform fingerprint is identical. No plant expansion/export/import was performed.
+
+The new main successor extends the protected D04 optimization and source-contract pipeline. Actual quiet_grove_adoption hook passed in a bounded court assembly with 83 actual neighboring home sources. All five sampled floors selected eight lights; fixture power-off test disabled all. This is not a full ship, gameplay, FPS or final art test. The capture retains the previous camera, ambient settings and exposure.
+
+Visual review: real near-gallery illumination is restored. The near wall still has a bright hotspot and the distant enclosure remains dark/plain; architecture/material balance is unfinished. No final residential or whole-ship acceptance. Capture timestamp/hash and exact native evidence are in evidence/.
+
+The existing 1bc13d51 laptop PCK remains unchanged and does not include this or D04 optimization. No new export or launch. Supported Library capability check still lists existing files, but provides no materially changed access to the helper endpoint previously rejected by proxy CONNECT403. No denied upload retry, preparation or remote artifact write occurred. Platform support must restore the normal helper route before transport resumes; no bypass was attempted.
