@@ -1,0 +1,9 @@
+# Sunset47 specialty bank — unfinished, not main integrated
+
+47 native room successors and94 persistent-shell/private-detail runtime partitions fit the exact retained D13/D14/D15 Sunset allocations and59 proposed rest reservations. Existing83 ordinary homes, source revisions and capacity are unchanged. New geometry is a rigidly placed successor to the corrected complete Quiet Grove compositions, preserving their rest/view lounge, entry, study/storage, privacy and complete cocoon assemblies. This is new authored work, not recovered missing historical work. Native local mesh topology is unchanged; source pins are recorded.
+
+All47 retained street approaches have full source-floor coverage. The receiving candidate replaces only128 intersecting guard members across12 original batches with closed retained segments. r002 excludes the unnecessary bearing plates of inactive r001: existing room floors already have24cm thickness. No floor/hull cut, new capacity or primary engineering acceptance. Runtime adapter is prepared but requires contact, controller, residency and current-main checks before adoption. Native/partition stage alone does not establish integration, meaningful residential visual acceptance, species readiness, whole-ship startup or performance.
+
+The initial full-scene bake incorrectly assumed shell partitions contained detail placeholders; its failed script/log are preserved. r002 combines the distinct source shell/detail trees and completed all47 rooms. Original sources remain untouched.
+
+Transfer helper's single post-update retry failed at tools/list with network error, before preparation or upload. No further retry, endpoint/configuration change or workaround. Fixed laptop packages remain unchanged. Source retention uses authorized expected-head non-force private Git publication.
