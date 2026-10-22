@@ -106,3 +106,7 @@ Named successor preserves the47 specialty/83 ordinary homes,59 rest identities a
 
 93 additive parts/36 shared-mesh plants authored in family_court_completion_20261022;118 geometry/source checks and80 wall contacts pass. Corrected bounded review restores8 omitted Group7 body/roof neighbors plus installed Family amenity geometry. The clerestory omission was real; the broad opaque Family wall was also real. Inspected candidate still reads as repetitive wall bays and sparse landscape, so it is protected WIP, not selected main or accepted spatial design. Existing Family47 main, supports, bench positions, privacy, capacities and routes remain unchanged. No full launch/export or large-transfer retry.
 
+
+
+### Family forward reading garden/enclosure — 2026-10-22
+Protected reading garden and named enclosure successor are now source-integrated after focused contacts/route/identity/light-budget checks. Rejected decorative grid remains unselected. Native revisions and all original owners retained; no additional capacity or decks. Group1 and all-eight-group visual/runtime completion remain open. See family_enclosure_finish_20261022/evidence/STATUS.json.

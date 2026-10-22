@@ -1,3 +1,7 @@
+## Subsequent source integration
+
+The protected reading-garden geometry is now selected through family_enclosure_finish_20261022 with its verified enclosure successor. Original review below records the earlier held boundary; visual acceptance remains open. Rejected decorative wall-grid geometry remains excluded.
+
 # Family forward reading garden — unfinished spatial successor
 
 Named candidate after independently retained420c376d. Replaces the rejected candidate's80 decorative wall-grid pieces with two open-sided, cambered reading shelters around the two existing public benches, six terraced planting islands and four canopy trees plus84 understory placements. Original walls, supports, clerestory, floors, benches, room/rest IDs and capacities stay unchanged. Seven original underplants retain their object identities and are explicitly repositioned onto the raised soil; exact source and target transforms are in PLAN.json.
