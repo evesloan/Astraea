@@ -1,0 +1,5 @@
+# Editor dependency setup
+
+Use Godot4.6.3 Compatibility. This project imports retained runtime GLB exports, not native Blender files. Native sources remain editable in Blender at their documented package version, separately from Godot import. Set filesystem/import/blender/enabled=false to prevent duplicate automatic native-to-glTF imports; no native asset is removed. Official4.6 behavior: https://docs.godotengine.org/en/4.6/tutorials/assets_pipeline/importing_3d_scenes/available_formats.html . Local Blender is4.3.2; later-format retained native assets are not all verified compatible and must not be silently resaved.
+
+Full project import/editor opening and full runtime readiness are separate gates. Source hash guards stay enabled. Windows presets exist, but templates and real Windows execution are not yet verified. Royalty native source is hash-checked by its runtime adapter even though presets exclude*.blend; the prepared named export successor explicitly retains that exact native byte resource, alongside existing raw GLBs/runtime receipts. No working Windows handoff is yet claimed.
