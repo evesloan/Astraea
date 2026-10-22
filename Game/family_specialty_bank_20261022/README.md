@@ -9,3 +9,7 @@
 PACKAGE_R002/INDEX_R002 and adapter_r002 preserve the existing residency contract: canonical assets/models full-room reference wrappers plus shared shell/detail resources. Initial registration failed because that canonical path was missing; the original candidate and failed attempt remain history. Corrected actual hook passed368 checks and94 player threshold legs across47 rooms, including load/release and unchanged59 rest IDs. The bounded fixture replays the exact later D14 modified batch; it omits unrelated Group3 riser and Group2 destination additions and does not establish whole-ship startup.
 
 Inspected image FAMILY_405_VIEW_LOUNGE_UNFINISHED.png,21:22:16UTC, Library libfile_ce7b88b01a408191a2fe7506d374dcc4: furnished suite faces retained court, but a retained support crosses the outlook and court composition/light remain sparse/dim. No residential design acceptance. Five sources active within8-light budget; power-off guard passes. Current private panes and original entry/privacy controllers remain.
+
+## Main selection
+
+After independent protection at84b92ea9, bootstrap_family_specialty_20261022 selects the named ship successor. Its single hook runs after family_d16_receiving_20261016/package.gd so later Family staff receivers precede the frontage composition. Launcher/menu/settings and source-contract bootstrap are reused. Final executable/playable/editor acceptance remains untested; this is source integration.
