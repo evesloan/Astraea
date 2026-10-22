@@ -101,3 +101,8 @@ Named successor preserves the47 specialty/83 ordinary homes,59 rest identities a
 
 47 retained D13–D15 Family specialty allocations now connect through the named successor after independently protected84b92ea9. Existing82 ordinary homes and59 reserved rest IDs are preserved. Linked native instances and141 tiny full/shell/detail wrappers reuse immutable room geometry.140 frontage members across18 batches receive bounded successors, preserving the exact later D14 staff cut.368 focused main-hook checks/94 actual player threshold legs pass; private detail load/release and original guards remain. The bounded fixture omits unrelated Group3 riser/Group2 destination additions; no whole-ship startup is implied. Resident405 actual view is retained in Library libfile_ce7b88b01a408191a2fe7506d374dcc4: a retained support crosses the outlook; court composition/lighting and final residential acceptance remain unfinished. No new capacity, species/occupancy/save/FPS acceptance or full export. All groups remain open. See family_specialty_bank_20261022/README.md.
 
+
+## 2026-10-22 Family forward-court candidate held outside main
+
+93 additive parts/36 shared-mesh plants authored in family_court_completion_20261022;118 geometry/source checks and80 wall contacts pass. Corrected bounded review restores8 omitted Group7 body/roof neighbors plus installed Family amenity geometry. The clerestory omission was real; the broad opaque Family wall was also real. Inspected candidate still reads as repetitive wall bays and sparse landscape, so it is protected WIP, not selected main or accepted spatial design. Existing Family47 main, supports, bench positions, privacy, capacities and routes remain unchanged. No full launch/export or large-transfer retry.
+
