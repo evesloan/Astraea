@@ -114,3 +114,7 @@ Protected reading garden and named enclosure successor are now source-integrated
 
 ### Star Atlas D15/D16 living commons —22October
 Recorded upper-commons furnishing gap now has four study groups, two window lounges, four planted edges and shelf collections, source-integrated with28 authored parts/98 shared instances. Original514 upper parts, D17 VIP and later receiving owners retained; no new guest capacity/rests/floor.294 source,644 bounded connected and17 integration checks pass. Sparse composition, plain surfaces and lighting remain unfinished; bounded picture omits surrounding ship context. Older D04 unbuilt-neighborhood notes were reconciled against actual later installed calls rather than duplicated. Group1/all groups remain open.
+
+
+### Night Garden D13/D14 lower17 — authored, not integrated
+Exact source ledger reconciliation identifies17 retained specialty allocations outside the installed30-room D15 bank. Native linked successor/full/shell/detail resources now exist with19 rest IDs and53 door identities;160 source and143 isolated manager checks pass. Main and guards unchanged. Public receiving, founding support and legal outlooks still require complete current-owner reconciliation; scoped compiler/missing-only street evidence is not an absence claim for other installed source models. No additional capacity or Group1 completion. See night_garden_lower_bank_20261022/evidence/STATUS.json.
