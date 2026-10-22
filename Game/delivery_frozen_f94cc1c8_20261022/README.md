@@ -1,3 +1,5 @@
+> **Delivery correction:** the original frozen Git checkout lacks282 exact `.glb.import` files and2868 extracted PNGs referenced by its manifest. Tracked-file presence was not sufficient to establish reproducibility. Before Godot import, apply `recovery/Astraea-f94cc1c8-contract-supplement.zip` from the additive handoff checkpoint, following its README. The supplement retains exact import bytes and reconstructs byte-identical PNGs from128 GLBs already in frozen Git. Its missing-only utility must report all17487contracts match. Do not regenerate the manifest or overwrite mismatched survivors. The frozen f94cc1c8 main remains unchanged.
+
 # Frozen editable source handoff — f94cc1c8
 
 This is the current independently retained construction source, not a certified playable Windows release. The fixed source revision is `f94cc1c8fde5e310bfae3ebd045272f67de66089`. Its selected main contains integrated construction through the Star Atlas living commons. Later receiving investigation and the separate enclosure candidate do not change main. Do not follow a moving branch head for the test.
