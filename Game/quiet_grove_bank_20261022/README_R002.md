@@ -1,0 +1,7 @@
+# Quiet Grove complete-enclosure successor — unfinished construction
+
+Adds the30 existing D15 specialty allocations and recomposes17 D13/D14 rooms, preserving59 reserved rest identities and zero new capacity. Original47 native r001 files, GLBs and shell/detail partitions remain immutable.23 complete native r002 successors and23 selected-part GLBs correct217 fixed cocoon liner/roof/jamb parts using the same rigid transforms as their existing rest supports and privacy doors. The runtime adapter applies these exact native bounds, rebuilds contacts and face occluders, and preserves the original private-detail owner.
+
+Native bounds verification passed for every changed part.339 bounded candidate checks passed, including94 actual controller threshold legs,47 private load/release cycles and existing door-object preservation. Complete fixed-liner clearance is at least2.91m; this does not certify all possible furniture circulation or species operation.
+
+A fresh actual room409 candidate view confirms the former liner obstruction is gone and the retained multilevel court is visible through the broad framed opening. Court surfaces, planting, lighting and whole residential visual acceptance remain unfinished. Earlier D13/D14 and rejected r001 views remain historical unfinished evidence. Main integration pending this source checkpoint; full startup/gameplay/performance acceptance remains separate. Fixed e3af0334 laptop package unchanged. Missing October20 08:49 WIP and exact later tram source remain missing.
