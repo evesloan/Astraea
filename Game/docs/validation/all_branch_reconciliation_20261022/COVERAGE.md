@@ -86,3 +86,8 @@ The30 D15 specialty allocations missing from the previous17-room integration are
 ## Quiet Grove shared-court successor,22October
 
 Five-level material finish,149 plant placements in33 existing beds and79 original fixture adjustments are source-integrated through the named quiet_court pipeline. Production batching preserves silhouettes/triangle counts while avoiding the native13912mesh expansion;692 instances share9mesh/material resources.71 bounded actual-hook checks pass. Court final art, full startup and directional FPS remain unaccepted. Existing laptop startup import/pin/null/RID findings are the next runtime package, not proof of OOM.
+
+## Sunset47 receiving continuation —22October
+
+47 retained D13/D14/D15 allocations and59 reserved rests now connect through a named main successor after independently retained0217afca. Existing83 ordinary homes and all53 source pins remain unchanged. Corrected runtime partitions retain2703 persistent shell meshes/12478 streamed detail meshes; no native expansion is loaded wholesale.18 guard/infill successors make47 supported entry openings without floor/hull cuts or duplicate bearings.369 actual-hook checks/94 player threshold legs, detail load/release and fixture power/budget checks pass. The inspected resident402 lounge view reaches the retained multilevel conservatory, but surrounding court finish/lighting and final design remain unfinished. No whole-ship launch, directional FPS, species or occupancy/save acceptance. Group1/all eight groups remain open; fixed laptop packages unchanged and denied transfer routes stopped. See sunset_specialty_bank_20261022/README.md.
+
