@@ -1,3 +1,7 @@
+## 2026-10-22 Quiet Grove canopy/gallery lighting hierarchy and surface balance — unfinished
+
+Named main successor differentiates9 retained canopy,23 gallery and47 lobby lights, preserving the8-source global selector and guards. Canopy reach now covers the21.56m court depth; reduced gallery/canopy intensity softens the near-wall hotspot. Three shared128px albedo textures add restrained variation across222 existing surfaces. Native Surface_r004 retains exact source geometry; planting/D04 optimizations and fixed laptop packages unchanged. Actual main-hook five-floor/power checks and comparable view pass; deep recesses and final composition remain unfinished. No full launch/FPS acceptance or upload retry. See quiet_court_balance_20261022/README.md.
+
 ## 2026-10-22 Quiet Grove retained fixtures connected — unfinished
 
 Named main successor enrolls the exact79 existing court fixtures into the unchanged eight-source selector; previously their disabled shadow flag excluded every fixture. Native/runtime five-role material successor preserves exact structural geometry and optimized vegetation. Actual main-hook bounded court check passes on five deck levels and fixture power-off guard; comparable image shows restored gallery illumination but bright near-wall hotspot and dark/plain distant enclosure remain unfinished. No whole-ship launch, FPS or final visual acceptance. Existing immutable laptop packages untouched. See quiet_court_illumination_20261022/README.md.
