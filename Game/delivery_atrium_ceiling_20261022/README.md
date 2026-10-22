@@ -1,0 +1,5 @@
+# Current editable-source continuation
+
+Open Game/project.godot with official Godot4.6.3 Compatibility. Current entry is scenes/launcher_atrium_ceiling_20261022.tscn; inherited main menu and persistent settings behavior is preserved. Use delivery_20261022/README.md and tools/prepare_retained_working_copy.py for the existing retained-source dependency setup. Native ceiling: BlenderCatalogue/assets/atrium_ceiling_completion_20261022/AtriumLanternCeiling_r001.blend, authored with Blender4.3.2; build recipe and exact runtime hashes are in Game/atrium_ceiling_completion_20261022.
+
+This is a source continuation, not a newly exported or playable-accepted Windows build. The immutable e3af0334 laptop package and its14 transfer files remain separate and unchanged. Current native/runtime ceiling, suite and court additions are later than that fixed test boundary. Preserve the old revisions. Consult docs/validation/atrium_ceiling_integration_20261022/STATUS.json for tested scope and unfinished gates. Missing October20 unpublished WIP and later tram source are not recovered; native availability for other older families remains as previously recorded.

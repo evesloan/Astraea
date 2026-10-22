@@ -1,0 +1,7 @@
+# Upper atrium ceiling integration — unfinished
+
+The project now enters launcher_atrium_ceiling_20261022.tscn. Launcher/settings and presentation logic are exact preceding copies except the next-scene path. One inherited ship hook applies the independently retained e67e8ac9 package after the existing Night Garden court hook and before source-light budget configuration. No previous native source, scene revision, owner identity, private suite or entrance is removed. The fixed e3af0334 laptop PCK is unchanged and does not contain this newer construction.
+
+The actual hook passes15 focused checks and two player route legs, preserving30 rooms/40 rests, the previous court source and entrance, cap mesh/contact owner,90 terrace/gallery render meshes and the unchanged eight-source light budget. The terrain compiler's spatial chunks and separate underside mesh are preserved. Captured image is a bounded source assembly made before main hook, not a full-ship runtime screenshot. The tested main hook receives those exact baked bytes.
+
+The ceiling is constructed over the full existing96×128m cap; this does not complete the grand atrium. The D17 viewpoint shows the low upper ceiling, sparse destinations and uneven district lighting. Outer dark areas are outside the cap and cannot be closed by guessing a roof. Full startup/playable, target performance and visual acceptance remain open. No construction group is declared complete.
