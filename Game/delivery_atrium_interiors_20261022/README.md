@@ -1,0 +1,7 @@
+# Current editable-source successor: fourteen atrium-facing interiors
+
+This source checkpoint retains the thirty-room Night Garden integration, sixteen warm outer interiors and the launcher/settings handoff. Fourteen inner suites now have named native compositions, with source rest identities and existing oval apertures preserved. The grand-atrium reference requirement remains unresolved: see the physical package's OUTLOOK_CONSTRAINT.json. Do not treat source integration as residential or ship acceptance.
+
+Use the pinned Godot4.6.3 and complete private checkout instructions in `../delivery_20261022/README.md`, its existing editor/play .cmd, and the missing-only recovery helper. The selected main is now `scenes/launcher_atrium_interior_20261022.tscn`, delegating to the preserved ship chain through the named atrium-interior hook. Menu behavior/preferences remain unchanged. The source project/native catalogue are editable subject to the documented per-native Blender version limits.
+
+Active inner resources: `Game/night_garden_atrium_interiors_20261022/evidence/BUILD_R002.json` and `INDEX_R002.json`. Native sources: `BlenderCatalogue/assets/night_garden_atrium_interiors_20261022`; twelve active r001 and two active r002 assemblies, with predecessors retained. The separate fixed e3af0334 PCK and14 Library files remain unchanged for the laptop owner's first launch. This source successor has not been exported or launched as a whole ship. Missing later October20 WIP/tram/R00358 source and the Sequoia comparison hold remain unchanged.
