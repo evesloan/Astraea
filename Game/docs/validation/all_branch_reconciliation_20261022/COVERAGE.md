@@ -82,3 +82,7 @@ Group1 is still the earliest unfinished physical group. Its historical47 Quiet G
 ## 22 October — Quiet Grove47 physical receiving successor
 
 The30 D15 specialty allocations missing from the previous17-room integration are now connected through the main construction hook. The17 D13/D14 rooms are recomposed in the same47-room bank, preserving59 existing reserved rest identities. Original/native revisions remain retained. Complete cocoon enclosures now follow their supports/doors;339 actual-hook bounded checks pass. Court finish, lighting, room design acceptance, species operation and whole-runtime acceptance remain open. This closes the specific physical receiving gap, not Group1 or all-eight-group completion. See quiet_grove_bank_20261022/evidence/INTEGRATION_STATUS.json.
+
+## Quiet Grove shared-court successor,22October
+
+Five-level material finish,149 plant placements in33 existing beds and79 original fixture adjustments are source-integrated through the named quiet_court pipeline. Production batching preserves silhouettes/triangle counts while avoiding the native13912mesh expansion;692 instances share9mesh/material resources.71 bounded actual-hook checks pass. Court final art, full startup and directional FPS remain unaccepted. Existing laptop startup import/pin/null/RID findings are the next runtime package, not proof of OOM.
