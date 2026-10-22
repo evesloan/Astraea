@@ -13,3 +13,11 @@ The scoped survey of current compiler floors plus CENTRAL_RESIDENTIAL_STREETS fi
 Next coherent step: reconcile those exact current owners, then author only genuinely missing receiving/support/threshold architecture for this17-room bank. Existing guard IDs/endpoints are recorded in RECEIVING_SURVEY.json. This is a construction dependency, not a request for new publication approval.
 
 No full launch, large export or denied transfer retry. No new picture is presented as a verified residential outlook while its receiving/context gate remains unresolved.
+
+## Receiving-owner trace r002 — still held
+
+The follow-up uses actual region triangles (matching structural_floor_builder), including the installed ApprovedSixHouseReceiving definitions. It still locates one target public approach and no private-allocation overlap in these four region sources. This remains a scoped result, not proof of absent support throughout retained history.
+
+Installed AST-COM-001 at(63,84,0) spans Z−26.035..14.10; AST-COM-003 at the same origin spans Z±14.08. Neither reaches the lower17 allocations at |Z|68..112.2. The starboard central approved native receiver spans Y101.18..101.78 and therefore cannot be assumed to support D13Y84/D14Y88.5. Exact hashes, installed transforms and loader pins are in evidence/RECEIVING_OWNER_TRACE_R002.json.
+
+Three installed Group7 neighboring body cells (Body_1_03,04,05) were identified at X103.4..120, Y61..106.5. These are retained enclosure context, not evidence of transparent views or floor ownership. A bound intersecting a viewing direction does not authorize a window or hull opening. No new guard removal, slab, receiving adapter or main hook was made. The unresolved next step is positive support/street-owner evidence across remaining retained revisions, followed by actual connected contact and enclosure/view checks. All17 allocations,19 rest IDs and53 doors stay protected candidates, outside main.
