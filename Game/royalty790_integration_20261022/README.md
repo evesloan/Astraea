@@ -1,0 +1,11 @@
+# Royalty790 bounded integration adapter — unfinished, unhooked
+
+Current source protection and nine original pins/40 r002 delivery files were verified before edits. The original r002 native and GLB remain unchanged. Only three batches own the declared roof and complete CourtView fixture changes. Their native batch membership is frozen from the original source;43 unchanged members match exactly. Original/runtime batch surface coverage and area agree.181 new upper meshes remain atY102 or above and beforeZ51. No lower slab is added.
+
+The adapter preserves the four installed CR_Batch_approach successors, original architecture nodes, lower compiler slab, light identities and all other meshes. CourtView's existing lamp is moved with its complete fixture; four new upper lights and two cabin lights join the existing budget. Original two-stop private cabin/controllers are reused with operation_ready=false and closed held gates. No admission/closure readiness is asserted.
+
+The first two triangle-subtraction bake attempts stopped at preservation guards because joined native batches used different triangulation. Their partial resources and logs are retained but never referenced by the adapter. The canonical resources are runtime/final and evidence/RUNTIME_DELTA.json, produced from the three exact complete bounded batches. This is not a wholesale AST-RES-006 replacement.
+
+CONNECTED_attempt001 stopped because the bounded fixture lacked its scenes directory; it was not an actual source mutation. CONNECTED_attempt002 completed85 checks with one failed route segment: the diagonal from(100,102,38) toward(95.7,102,40.7) crossed the reserved care-area boundary. All identity, approach-patch, light and held-lift checks passed. The main hook is NOT applied. The route must use the existing clear lower approach before claiming the connected upper path; the source controller and acceptance criteria remain unchanged.
+
+The broad all-agent/all-branch integration review supersedes further isolated experimentation. Preserve this candidate and finish its essential connected interface alongside the next coherent package. Full startup, loaded-cart/species, private admission and final visual acceptance remain open. No fresh Royalty picture has yet been captured.
