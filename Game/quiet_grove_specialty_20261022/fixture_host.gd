@@ -1,0 +1,2 @@
+extends Node3D
+var private_detail_residency:Node
