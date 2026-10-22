@@ -110,3 +110,7 @@ Named successor preserves the47 specialty/83 ordinary homes,59 rest identities a
 
 ### Family forward reading garden/enclosure — 2026-10-22
 Protected reading garden and named enclosure successor are now source-integrated after focused contacts/route/identity/light-budget checks. Rejected decorative grid remains unselected. Native revisions and all original owners retained; no additional capacity or decks. Group1 and all-eight-group visual/runtime completion remain open. See family_enclosure_finish_20261022/evidence/STATUS.json.
+
+
+### Star Atlas D15/D16 living commons —22October
+Recorded upper-commons furnishing gap now has four study groups, two window lounges, four planted edges and shelf collections, source-integrated with28 authored parts/98 shared instances. Original514 upper parts, D17 VIP and later receiving owners retained; no new guest capacity/rests/floor.294 source,644 bounded connected and17 integration checks pass. Sparse composition, plain surfaces and lighting remain unfinished; bounded picture omits surrounding ship context. Older D04 unbuilt-neighborhood notes were reconciled against actual later installed calls rather than duplicated. Group1/all groups remain open.
