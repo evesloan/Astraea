@@ -46,3 +46,7 @@ Latest delivery checks: editor import passed; full real-renderer main stopped at
 ## Panoramic residential successor,22October
 
 The16 outer Night Garden suites now have native-authored panoramic frontages and coordinated rest/study/view-seat arrangements, with named main-source integration over the retained Tidal/Royalty chain.14 original inner atrium suites and40 reserved rests stay unchanged. The rejected gallery remains absent. Actual new registration/construction methods pass148 bounded checks and8 controller route legs; whole-main startup and residential final visual acceptance remain unfinished. Physical source independently retained at9305d739; see ../panoramic_residential_integration_20261022/STATUS.md.
+
+## Warm interior construction successor,22October
+
+All16 outer panoramic suites now have named native/GLB/partition finish successors with fitted timber wall/window joinery, layered ceiling/cove, coordinated material patterns and source-bound lighting. Original104 pins,14 inner suites,40 reserved rest IDs, panorama/privacy and hull remain preserved. Physical package f0856ca2 is independently retained; actual main hook passes468 focused checks and8 route legs. This is source integration, not full-ship runtime or final residential acceptance. Broad ceiling/material/other-habitat review and all previous eight-group operational holds remain open. The fixed e3af0334 laptop test package is unchanged. See ../warm_interior_integration_20261022/STATUS.json.
