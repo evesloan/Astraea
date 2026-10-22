@@ -67,7 +67,7 @@ func run():
  check("private_lift_held",not lift.operation_ready and not lift.request_floor(1) and lift.phase=="held_receivers_and_private_access")
  check("no_extra_stops",lift.floor_heights==[102.2,106.5] and lift.deck_numbers==[17,17])
  for settle in range(24):await physics_frame
- var targets:Array[Vector3]=[Vector3(80,102,21.5),Vector3(82,102,25),Vector3(88,102,25),Vector3(92,102,25.9),Vector3(92.4,102,30),Vector3(95,102,32.4),Vector3(101,102,33),Vector3(100,102,38),Vector3(95.7,102,40.7),Vector3(95.7,102,41.9),Vector3(95.7,104.25,47.1),Vector3(97.8,104.25,47.1),Vector3(97.8,106.5,41.5),Vector3(100.5,106.5,41.5),Vector3(106.5,106.5,42)]
+ var targets:Array[Vector3]=[Vector3(80,102,21.5),Vector3(82,102,25),Vector3(88,102,25),Vector3(92,102,25.9),Vector3(92.4,102,30),Vector3(95,102,32.4),Vector3(101,102,33),Vector3(102.5,102,38),Vector3(102.5,102,42.2),Vector3(99,102,42.2),Vector3(95.7,102,40.7),Vector3(95.7,102,41.9),Vector3(95.7,104.25,47.1),Vector3(97.8,104.25,47.1),Vector3(97.8,106.5,41.5),Vector3(100.5,106.5,41.5),Vector3(106.5,106.5,42)]
  var forward_ok:=true
  for target in targets:
   var ok:=await walk(target);check("connected_leg_"+str(route.size()),ok)
