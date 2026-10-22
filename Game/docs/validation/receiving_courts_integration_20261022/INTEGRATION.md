@@ -1,0 +1,9 @@
+# Night Garden receiving-court integration — unfinished
+
+The selected launcher/presentation/ship chain now inherits the protected f1d441f2 suite integration and adds one court adapter after the existing Night Garden stage. It requires the actual retained central residential streets, the prior suite verification and exact package hashes. Launcher/menu/settings code is unchanged apart from the new scene target. Full readiness gates remain intact.
+
+Source checkpoint62f183ee was independently read back before this hook was authored:54 files/53,547,012 bytes. Active court native/runtime is r003. Public entrances r004 modify only four original avenue sill/glass parts;244 source meshes remain unchanged. Their runtime successor retains original hospitality glass and contact selection, replacing one original runtime owner once. It changes no protected slab, hull, private aperture, room identity or admitted capacity. Missing-only D13 bases preserve151.884m² of existing terrace; D15 bridges and D16 galleries use real inclined walks.
+
+Verification:25 source checks;28 candidate checks including24 original-controller route legs;7 checks exercising this actual inherited hook. Earlier export/route failures remain recorded and were corrected, not reclassified. Final full-ship startup/gameplay/performance and visual acceptance are separate and unpassed. The actual resident-window picture shows multi-level planting/receiving architecture but dark/unfinished court illumination and broad grey surrounding atrium surfaces; it does not meet final grand-interior acceptance.
+
+The fixed e3af0334 laptop PCK and14 transfer files are unchanged. This later source has not been packaged into that PCK. Missing October20 08:49 WIP, later tram director and R00358 source remain explicit; no Sequoia adoption or capacity change occurred.

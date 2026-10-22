@@ -1,0 +1,7 @@
+# Editable-source successor: Night Garden receiving courts
+
+Use the pinned Godot4.6.3 and existing `../delivery_20261022/README.md` editor/play setup. Main now selects `scenes/launcher_receiving_courts_20261022.tscn`. Launcher, main menu and settings persistence are preserved; no full-ship readiness gate is bypassed. The fixed e3af0334 Windows test PCK and its14 Library files are unchanged and do not contain this later source.
+
+The integrated physical source contains paired D13–D16 planted receiving courts, D15 avenue entrances/bridges and D16 galleries connected by modeled inclined walks. Active editable native sources are `BlenderCatalogue/assets/night_garden_receiving_courts_20261022/NightGardenReceivingCourts_r003.blend` and `NightGardenD15CourtEntrances_r004.blend`, authored in Blender4.3.2; earlier native revisions remain retained. Runtime records are in `Game/night_garden_receiving_courts_20261022/evidence/BUILD_R003.json` and `ENTRANCES.json`.
+
+The broader native catalogue retains its documented per-file Blender version limits. Court lighting, grand-atrium composition and all remaining eight-group work are unfinished. Full playable Windows launch/editor startup and final gameplay/performance/visual acceptance remain open; this is editable integrated source, not a newly accepted executable. Missing October20 WIP/tram/R00358 source and the Sequoia comparison hold remain unchanged.
