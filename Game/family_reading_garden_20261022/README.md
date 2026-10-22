@@ -1,0 +1,7 @@
+# Family forward reading garden — unfinished spatial successor
+
+Named candidate after independently retained420c376d. Replaces the rejected candidate's80 decorative wall-grid pieces with two open-sided, cambered reading shelters around the two existing public benches, six terraced planting islands and four canopy trees plus84 understory placements. Original walls, supports, clerestory, floors, benches, room/rest IDs and capacities stay unchanged. Seven original underplants retain their object identities and are explicitly repositioned onto the raised soil; exact source and target transforms are in PLAN.json.
+
+Editable native FamilyReadingGarden_r001.blend links five immutable botanical source families. PLAN.json records the external retained house and seven existing-instance transform overrides; those original native house instances remain in their original file. Runtime uses22 shared meshes in174 local four-metre batches for394 botanical mesh instances.117 new architectural parts include the retained candidate's two soil finishes/two coping rings and three roof-light profiles; no decorative wall grid remains in this successor. Three added fixtures use the unchanged global eight-source selector.
+
+472 focused source/geometry checks pass. Connected assembly, player approaches and contextual pixels are being checked separately. This is not selected main, accepted residential design, a full-ship launch, a playable release, or a measured FPS improvement. Prior candidate history and fixed laptop PCK remain intact. No large export or denied transfer retry.
