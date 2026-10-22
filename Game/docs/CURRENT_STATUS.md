@@ -1,3 +1,7 @@
+## 2026-10-22 exact runtime source contracts — unfinished
+
+Named export/bootstrap successor retains raw scene, texture, import-policy and Group5 receipt bytes at expected paths without changing source pins or precision guards. Eighteen old-package precision models match current actual mesh faces with no compressed surfaces. Focused two-roof fixture reproduces the null contact and passes explicit immutable-to-mutable ownership transfer. Court remains integrated; D04 RID exhaustion investigation and whole-ship startup/playability remain open. See scripts/runtime_contracts_20261022/README.md. No fresh laptop package accepted yet.
+
 ## 22 October — Quiet Grove shared court integrated with production plant batches
 
 The five-level court finish and149 planted-bed placements are now connected through a named main successor. Retained production plant families reduce the candidate13912mesh expansion to692 instances sharing9meshes/9materials; all149 placements and complete triangle geometry remain within verified tolerance.71 actual-hook checks and651 candidate checks pass; this is not FPS or full-runtime acceptance. Court surfaces/lighting remain visually unfinished. Laptop e3af0334 run001 startup errors require the next coherent import/pin/resource repair. See quiet_court_finish_20261022/README_INTEGRATED.md.
