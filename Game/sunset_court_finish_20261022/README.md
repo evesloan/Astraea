@@ -1,0 +1,7 @@
+# Sunset receiving court finish — unfinished
+
+Additive successor over retained Sunset47 source integration ffb6cf1f. Active PLAN_R003, native SunsetCourtFinish_r003.blend and runtime SunsetCourtFinish_r003.scn.22 open coping rings and22 inset soil finishes fit existing beds; eight roof underside profiles support eight real fixtures.99 understory plants reuse two retained native families and nine runtime meshes with spatially bounded batches. Original133 landscape/furniture placements,83 ordinary homes,47 specialty allocations,59 rest IDs, floors, hull, entrances and privacy panes remain.
+
+The source bed solids were0.02m above soil. Inset finish restores visible soil without changing structural originals; new plants contact that receiving surface. Original canopy height is unchanged; lowest additive roof housing is105.50m, leaving3.50m above D17. The existing eight-source visibility/power budget remains authoritative. Original r001/r002 local trials are retained but unused; r001 caps covered soil and r002 winding/source-instance filtering required correction. Only r003 is eligible for integration.
+
+Native plants link the unchanged original catalogue .blend objects through relative library references; preserve the complete BlenderCatalogue tree when editing. This is source construction, not whole-ship startup, target FPS, gameplay or final residential design acceptance. Fixed laptop PCKs are unchanged; denied delivery routes remain stopped.
