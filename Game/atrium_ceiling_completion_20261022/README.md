@@ -1,0 +1,11 @@
+# Central atrium ceiling and upper terrace construction — unfinished
+
+This additive source package fits the full existing D18_atrium_structural_cap (96 × 128m, underside Y106.26). It supplies 100 editable native architectural parts: twelve ceiling fields, three nested elliptical coffers with timber/champagne/opal profiles,24 connecting perimeter bay ribs, a perimeter cornice and24 attached light fixtures. All new geometry stays within the existing cap footprint, Y105.60–106.255. No roof, structural slab, floor opening, new destination or accommodation is added.
+
+The material adapter coordinates six retained compiler owners: D17_atrium_circulation and D13–D17_authored_atrium_terrace. All90 existing render meshes, their spatial chunks, shared resources, contacts and occluders stay intact. This extends the preceding court palette; it does not substitute a material pass for finished destinations, planting, furnishing or enclosure.
+
+The earlier bounded image already contained the cap. Its dark surrounding space is not proof of a missing roof. Pixel-ray evidence in VISIBLE_OWNER_PROBE.json identifies the broad grey surface as the actual D17_authored_atrium_terrace. The district fixture now also includes all16 original circulation rings, primary atrium core and registered gallery fittings. These are restored fixture context, not new construction.
+
+Seven native/source checks and15 candidate integration checks pass, including two controller route legs and preserved30 room/40 rest identities, earlier entrances, privacy guards and eight-light source budget. The failed adapter check assumed two surfaces per terrace chunk; the corrected source preserves single-surface chunks and the separate underside owner. First native load failed before writing because the library loader mutated its material-name list; corrected using a copied list. Failed logs remain.
+
+The new view is a bounded actual Godot district assembly. No whole-ship launch, Windows test, performance acceptance, final visual acceptance or completed construction group is claimed. The fixed e3af0334 laptop PCK is unchanged. Sequoia remains held. Unpublished October20 08:49UTC WIP and later tram director source remain missing. No credentials, permissions or engine changes.
