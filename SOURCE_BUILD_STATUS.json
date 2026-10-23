@@ -1,8 +1,8 @@
 {
-  "status": "SOURCE_CONSISTENT_WIP_PREPARATION_AND_MATCHING_BUILD_VALIDATION_PENDING",
+  "status": "INTEGRATED_SOURCE_IMPORT_VERIFIED_PACKAGE_EXPORT_PENDING",
   "repository": "evesloan/Astraea",
   "working_branch": "construction/group1-tidal-d15-20261010",
-  "reviewed_parent_commit": "448eab129169f3c205e7db0662fcf774b869a346",
+  "reviewed_parent_commit": "e8b727fa0e579f861f6ca537ebdec35338d90008",
   "canonical_source_commit": null,
   "canonical_source_tag": null,
   "source_composition": [
@@ -10,26 +10,28 @@
     "exact frozen contract supplement",
     "854dc6db Quiet/Family repair",
     "eb11381c release operations",
-    "a3e713ed weak texture ownership"
+    "a3e713ed weak texture ownership",
+    "47dbba2b Tidal D14 architectural integration",
+    "isolated private contact single pass; queue/staging remain held"
   ],
-  "source_contract_manifest_sha256": "cd3e166825913831dc49393f332a45c4f4d00a01fe1ccb3a2d4b596309db761c",
-  "source_contract_entries": 17566,
+  "source_contract_manifest_sha256": "24dd20ec3e39c9e3479f0c13f588617b9cf04635f85e0c215298f4c7c539e75d",
+  "source_contract_entries": 17571,
   "engine": "4.6.3.stable.official.7d41c59c4",
   "renderer": "gl_compatibility",
-  "main_scene": "res://scenes/bootstrap_star_atlas_living_20261022.tscn",
-  "project_godot_sha256": "fe77dd365f455378652f6e72f86e833ed15e019bf3678eaf09bb36d4e4332a3c",
+  "main_scene": "res://scenes/bootstrap_tidal_d14_landing_20261023.tscn",
+  "project_godot_sha256": "56446314f7ead05e20d79cc09d3c76e566e07a4d3eada08ecad67a76137094d7",
   "preparation": {
     "required_retained_targets": 11,
     "required_supplement_targets": 3150,
-    "complete_checkout_pass": false,
+    "complete_checkout_pass": true,
     "command": "python PREPARE_EDITOR.py",
     "check_only": "python PREPARE_EDITOR.py --check-only",
     "implementation": "complete",
     "isolated_exact_target_tests": "passed",
-    "full_cli_success": "pending on a complete checkout; locally missing 38 unchanged Git assets were correctly refused",
+    "full_cli_success": "PASS on existing complete checkout; no missing or overwritten files",
     "receipt": "Game/docs/validation/editor_handoff_20261023/PREPARE_EDITOR_TEST_RECEIPT.json",
-    "helper_sha256": "74b3b94ca13fbe967278572be2b52d685178ee0be8f06ea2bb8bd111acf77a7f",
-    "inputs_sha256": "578a669937e0ea8fd039d75c6fea7088cf624e25c82c6b6305f09e6c514b4230"
+    "helper_sha256": "ce4c00f5cc09c8e2c4f0c44f83b4924face5eace15af4f6ebd6bb346202e6dc4",
+    "inputs_sha256": "4bd9e73cb7013da1a07afa903d8759e25eb375ca7ba08e2a9a0ba02b4a7a025a"
   },
   "held_experimental_features_adopted": false,
   "matching_build": {
@@ -42,12 +44,13 @@
   },
   "validation": {
     "full_source_and_native_closure": "pending",
-    "editor_import": "not run for this target",
+    "editor_import": "PASS: existing full project, exit 0, no logged errors/warnings, 626.38 seconds; pinned import metadata unchanged",
     "selected_main_runtime_ready": "not run for this target",
     "matching_release_export": "not produced",
     "walking_crash_route": "unresolved",
     "target_hardware_60fps": "unaccepted",
-    "final_visual_gameplay_acceptance": "unaccepted"
+    "final_visual_gameplay_acceptance": "unaccepted",
+    "private_contact_single_pass": "PASS: 3 baseline and 3 successor load/release cycles; geometry/material/contact equivalence and shape release, 5 to 2 contacts created"
   },
   "previous_delivery": {
     "composition": "f94 plus 854dc6db plus eb11381c per existing run history",

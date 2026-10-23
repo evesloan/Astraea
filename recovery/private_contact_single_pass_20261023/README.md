@@ -1,0 +1,7 @@
+# Private-room contact construction single pass
+
+The selected private-detail manager previously built full-room contacts, removed those bodies while removing persistent shell meshes, then built the actual detail contacts. The retained visual helper omits only that discarded first build. Final collision creation and all original presentation/glass policy, activation, visibility, release, and synchronous arrival paths remain unchanged. Night Garden and D04 override loaders remain unchanged. No queued or staged activation experiment is enabled.
+
+`baseline_private_detail.gd` preserves the exact prior manager. `SOURCE_DELTA.json` pins the one-call successor and byte-identical retained helper. `CHECK.json` compares three enter/release cycles for StarAtlasSpecialty_103: identical final triangle geometry/transforms, effective material parameters and texture pixels, shadow/layer settings, collision faces/transforms/margins/masks; live contact shapes return to zero. Bodies constructed fell from five to two per activation.
+
+Run the focused check from the repository root with the pinned editor, `--headless --path Game --script recovery/private_contact_single_pass_20261023/check.gd`, and set ASTRAEA_CONTACT_CHECK_OUTPUT to an output JSON path. The test source locates its baseline relative to itself. These headless cloud timings are not target-device FPS, repeated whole-route memory acceptance, or proof of walking-crash resolution. The production operation is unconditional and does not depend on assert evaluation.

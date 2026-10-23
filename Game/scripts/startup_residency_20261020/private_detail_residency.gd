@@ -57,7 +57,7 @@ func _load_entry(entry: Dictionary) -> void:
  var home: Node3D=entry.home.get_ref()
  if home==null:return
  # The unchanged helper still runs its presentation/collision policy gates.
- var detail: Node3D=load("res://scripts/star_atlas_specialty_first.gd").contact_visual(home,str(entry.record.model_file))
+ var detail: Node3D=load("res://scripts/private_contact_single_pass_20261023/private_visual.gd").contact_visual(home,str(entry.record.model_file))
  for contacts_node in detail.find_children("RoomStaticContacts","StaticBody3D",true,false): contacts_node.free()
  for path in entry.record.shell_mesh_paths: (detail.get_node(str(path)) as MeshInstance3D).mesh=null
  # Transparent contact children on retained detail meshes were installed by the

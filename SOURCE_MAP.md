@@ -17,8 +17,10 @@ Run `python PREPARE_EDITOR.py --check-only` to verify the current pinned handoff
 
 `Game/export_presets.cfg` retains the integrated Windows preset. The exact-source export plugin needs a unique disposable `ASTRAEA_CONTRACT_PACK_TMP` path. Only one engine import/export owner may run. Use the full selected project, not a fixture, for a new build; record source commit, artifact hashes and actual launch evidence. An old Windows executable/PCK is a distinct artifact and does not automatically gain newly committed source.
 
-The current cloud has no surviving import cache and no Windows export template. Source verification passes; build preparation is in progress. The previous PCK's stripped export import metadata cannot establish exact current import-policy equivalence, so it has not been silently reused as an editor cache. Build, target-hardware playability and sustained 60 FPS are not yet accepted.
+The current cloud completed a consolidated editor import and retains its regenerated cache. It has no Windows export template. Source verification passes; the matching package export is the next build gate. The previous PCK's stripped export import metadata cannot establish exact current import-policy equivalence, so it has not been silently reused as an editor cache. Build, target-hardware playability and sustained 60 FPS are not yet accepted.
 
 ## Tram boundary
 
 `recovery/tram_integrated_successor_20261023` records the current section arithmetic and a real-passenger repeated-route profiler. The existing tram is still held: D09's four-metre reservation conflicts with the retained guideway, and simply raising it intrudes into the D10 envelope. The profiler preserves admission and stationary-frame guards; a protocol pass is not scenic travel. Resolve the complete section/route interface before enabling motion.
+
+The selected private contact single-pass change is documented in `recovery/private_contact_single_pass_20261023`. It removes a discarded initial contact build without adopting the held queue/staging experiments.
