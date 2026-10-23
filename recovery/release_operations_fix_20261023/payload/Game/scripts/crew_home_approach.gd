@@ -1,0 +1,77 @@
+extends RefCounted
+const CONTRACT: String="res://data/architecture/CREW_HOME_APPROACH_RUNTIME.json"
+
+static func xyz(value: Array) -> Vector3:
+	return Vector3(float(value[0]),float(value[1]),float(value[2]))
+
+static func source_node(root: Node3D, exact_name: String) -> Node3D:
+	var found: Array[Node3D]=[]
+	for value in root.find_children(exact_name,"Node3D",true,false):
+		var node: Node3D=value as Node3D
+		if node.name==exact_name: found.append(node)
+	assert(found.size()==1,"Exactly one authored source node required: "+exact_name)
+	return found[0]
+
+static func build(parent: Node3D, _ship: Node3D) -> void:
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
+	assert(data.runtime_adoption_approved and data.local_light_trial_approved and data.precision_trial_approved and not data.first_pass_accepted)
+	assert(int(data.new_floor_owners)==0 and not data.population_or_berth_migration)
+	for file_name in data.new_asset_import_policy:
+		var settings: ConfigFile=ConfigFile.new()
+		if not load("res://scripts/release_operations_20261023/guard.gd").load_config("res://assets/models/"+str(file_name)+".import",settings):return
+		var expected: Dictionary=data.new_asset_import_policy[file_name]
+		if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(bool(settings.get_value("params","meshes/force_disable_compression",false))==bool(expected["meshes/force_disable_compression"]),"Retained import policy differs: scripts/crew_home_approach.gd"):return
+	assert(FileAccess.get_sha256("res://assets/models/"+str(data.home_model))==str(data.home_sha256))
+	assert(FileAccess.get_sha256("res://assets/models/"+str(data.wall_model))==str(data.wall_sha256))
+	assert(FileAccess.get_sha256("res://assets/models/"+str(data.retained_wall_model))==str(data.retained_wall_sha256))
+	var root: Node3D=Node3D.new()
+	root.name="CrewHomeApproach_WIP"
+	root.set_meta("first_pass_accepted",false)
+	root.set_meta("support_stage_only",true)
+	parent.add_child(root)
+	# Local import avoids generating static contacts on moving leaves or ink.
+	var packed: PackedScene=load("res://assets/models/"+str(data.home_model)) as PackedScene
+	var visual: Node3D=packed.instantiate() as Node3D
+	visual.name="AuthoredHomeApproach"
+	visual.set_meta("catalogue_file",str(data.home_model))
+	root.add_child(visual)
+	assert(visual.global_transform.is_equal_approx(Transform3D.IDENTITY))
+	assert(visual.find_children("*","CollisionObject3D",true,false).is_empty())
+	assert(visual.find_children("*","Light3D",true,false).is_empty())
+	var source_door: Node3D=source_node(visual,"HOME_DOOR_FITTING")
+	var door: Node3D=load("res://scripts/crew_home_door.gd").new() as Node3D
+	door.name="HomeServiceDoor"
+	door.set("persistent_id",StringName(str(data.door.persistent_id_proposal)))
+	door.set("authored_visual",source_door)
+	door.set("fitting",data.door)
+	door.set("moving_parts",data.moving_parts)
+	door.set("sweep_box",data.door_sweep_box)
+	door.transform=source_door.global_transform
+	root.add_child(door)
+	var source_meshes: Array[Node]=root.find_children("*","MeshInstance3D",true,false)
+	for value in source_meshes:
+		var mesh: MeshInstance3D=value as MeshInstance3D
+		var extras: Dictionary=mesh.get_meta("extras",{})
+		assert(str(extras.get("catalogue_id",""))=="AST-STF-010")
+		var policy: String=str(extras.get("collision_contract",""))
+		assert(policy in ["static_surface","concave_static_surface","kinematic_source_part","none"])
+		if policy in ["static_surface","concave_static_surface"]: load("res://scripts/static_contact_cache.gd").attach(mesh)
+		elif policy=="kinematic_source_part":
+			assert(door.is_ancestor_of(mesh),"Moving source must be bound to inherited door")
+	for value in data.fixtures:
+		var fixture: Dictionary=value
+		var marker: Node3D=source_node(root,str(fixture.name))
+		assert(marker.global_position.distance_to(xyz(fixture.position_xyz))<.001)
+		var light: OmniLight3D=OmniLight3D.new()
+		light.name="HomeSource_"+str(fixture.name)
+		root.add_child(light)
+		light.global_position=marker.global_position
+		light.light_color=Color(float(fixture.color[0]),float(fixture.color[1]),float(fixture.color[2]))
+		light.light_energy=float(fixture.energy)
+		light.omni_range=float(fixture.range_m)
+		light.omni_attenuation=float(fixture.attenuation)
+		light.shadow_enabled=true
+		light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE
+		light.set_meta("source_marker",str(fixture.name))
+		light.set_meta("source_id","D03_HOME_"+str(fixture.name))
+		light.set_meta("runtime_visual_acceptance",false)
