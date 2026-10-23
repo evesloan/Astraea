@@ -8,7 +8,8 @@ static func build(ship:Node3D,raw_path:String="")->Node3D:
  var model:Node3D
  if raw_path.is_empty():model=load(file).instantiate()
  else:
-  var doc:=GLTFDocument.new();var state:=GLTFState.new();assert(doc.append_from_file(file,state,64)==OK);model=doc.generate_scene(state)
+  model=load("res://scripts/release_operations_20261023/guard.gd").load_gltf(file,64)
+  if model==null:return null
  var group:=Node3D.new();group.name="FamilyD14StaffReceiving";ship.get_node("ShipSpace").add_child(group);group.add_child(model)
  for row in p.walls:
   var owner:Node3D=ship.get_node("ShipSpace/Districts/FamilyTerraceReceivingCandidate")if row.owner=="house"else ship.get_node("ShipSpace/Group3AftRiserPair")

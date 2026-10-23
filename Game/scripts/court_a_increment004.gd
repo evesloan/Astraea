@@ -74,8 +74,8 @@ static func load_template(spec: Dictionary) -> Node3D:
 	var path := "res://assets/models/" + str(spec.filename)
 	assert(FileAccess.get_sha256(path) == str(spec.sha256))
 	var policy := ConfigFile.new()
-	assert(policy.load(path + ".import") == OK)
-	assert(policy.get_value("params", "meshes/force_disable_compression", false))
+	if not load("res://scripts/release_operations_20261023/guard.gd").load_config(path + ".import",policy):return null
+	if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(policy.get_value("params", "meshes/force_disable_compression", false),"Retained import policy differs: scripts/court_a_increment004.gd"):return null
 	var resource := load(path) as PackedScene
 	assert(resource != null)
 	return resource.instantiate() as Node3D
@@ -96,7 +96,10 @@ static func build(parent: Node3D, _ship: Node3D) -> void:
 	root.set_meta("lights_added", 0)
 	parent.add_child(root)
 	var source := load_template(data.files.authored)
+	if source==null:return
 	var prototype := load_template(data.files.prototype)
+	if prototype==null:
+		source.free();return
 	assert(source.find_children("*", "MeshInstance3D", true, false).size() == 123)
 	assert(prototype.find_children("*", "MeshInstance3D", true, false).size() == 18)
 	var definitions: Dictionary = {}

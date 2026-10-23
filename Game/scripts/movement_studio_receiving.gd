@@ -11,19 +11,20 @@ static func unique(root: Node, label: String) -> Node:
 	assert(hits.size() == 1, "One exact Movement Studio identity required: " + label)
 	return hits[0]
 
-static func model_ready(filename: String, expected: String) -> void:
+static func model_ready(filename: String, expected: String) -> bool:
 	var path := "res://assets/models/" + filename
 	assert(FileAccess.get_sha256(path) == expected, "Receiving model pin changed: " + filename)
 	var options := ConfigFile.new()
-	assert(options.load(path + ".import") == OK)
-	assert(bool(options.get_value("params", "meshes/force_disable_compression", false)), "New model precision import must disable compression")
+	if not load("res://scripts/release_operations_20261023/guard.gd").load_config(path + ".import",options):return false
+	if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(bool(options.get_value("params", "meshes/force_disable_compression", false)), "New model precision import must disable compression"):return false
+	return true
 
 static func build(parent: Node3D, ship: Node3D) -> void:
 	var d: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONTRACT))
 	assert(d.programme_key == "D07_directory_02" and not bool(d.first_pass_quality_accepted))
 	assert(parent.get_node_or_null(str(d.root_name)) == null, "Never duplicate the destination")
-	model_ready(str(d.model_file), str(d.model_sha256))
-	model_ready(str(d.guard_file), str(d.guard_sha256))
+	if not model_ready(str(d.model_file), str(d.model_sha256)):return
+	if not model_ready(str(d.guard_file), str(d.guard_sha256)):return
 	for identity in d.floor_owners:
 		var owner := unique(ship, str(identity))
 		assert(str(owner.get_meta("region_id", "")) == str(identity), "Compiler owns each floor, never the imported preview")

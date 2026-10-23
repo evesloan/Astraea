@@ -1,8 +1,7 @@
 extends RefCounted
 static func contact_visual(parent:Node3D,file:String)->Node3D:
-	var document:=GLTFDocument.new();var state:=GLTFState.new()
-	assert(document.append_from_file("res://assets/models/"+file,state)==OK)
-	var visual:Node3D=document.generate_scene(state)
+	var visual:Node3D=load("res://scripts/release_operations_20261023/guard.gd").load_gltf("res://assets/models/"+file)
+	if visual==null:return null
 	parent.add_child(visual)
 	var solids:Array[Node]=[]
 	for mesh:MeshInstance3D in visual.find_children("*","MeshInstance3D",true,false):

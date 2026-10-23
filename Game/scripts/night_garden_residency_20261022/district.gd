@@ -39,9 +39,11 @@ static func build(ship:Node3D)->Node3D:
 	for patch in receiving.commons_patch:
 		var mesh:=commons.find_child(patch.source_mesh,true,false) as MeshInstance3D
 		assert(mesh!=null and mesh.mesh!=null,"Night Garden portal predecessor unavailable: "+str(patch.source_mesh))
-	for patch in receiving.commons_patch:commons.find_child(patch.source_mesh,true,false).free()
 	var street:=Node3D.new();street.name="ConnectedStreetsAndPortalSuccessors";root.add_child(street)
-	helper.contact_visual(street,receiving.model_file)
+	var receiving_visual:Node3D=helper.contact_visual(street,receiving.model_file)
+	if receiving_visual==null:
+		street.free();return null
+	for patch in receiving.commons_patch:commons.find_child(patch.source_mesh,true,false).free()
 	street.set_meta("engineering_load_capacity_accepted",false)
 	for sign in [-1,1]:
 		for z in [19,28,35,42,56.8,71.6,86.4,94]:

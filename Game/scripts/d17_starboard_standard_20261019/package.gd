@@ -10,7 +10,24 @@ static func build(ship:Node3D,raw_path:String="")->Node3D:
  var model:Node3D
  if raw_path.is_empty():model=load(file).instantiate()
  else:
-  var doc:=GLTFDocument.new();var state:=GLTFState.new();assert(doc.append_from_file(file,state,64)==OK);model=doc.generate_scene(state)
+  model=load("res://scripts/release_operations_20261023/guard.gd").load_gltf(file,64)
+  if model==null:return null
+ # Validate both imported and raw branches before mutating any retained owner.
+ if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(model!=null and model.get_child_count()>0,"D17 standard scene is missing or empty"):return null
+ for row in p.walls:
+  var owner:Node3D=ship.find_child("Group2CentralSupportedAdjunct",true,false)if row.owner=="fore"else ship.find_child("D17ConnectedHouse_WIP",true,false)
+  if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(owner!=null,"D17 retained owner missing: "+str(row.owner)):model.free();return null
+  var old:MeshInstance3D=owner.find_child(str(row.name),true,false)
+  var replacement:MeshInstance3D=model.find_child(str(row.replacement_name).replace(".","_"),true,false)
+  if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(old!=null and old.mesh!=null and replacement!=null and replacement.mesh!=null,"D17 preimage/replacement missing: "+str(row.name)):model.free();return null
+  if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(old.mesh.get_faces().size()==int(row.source_triangles)*3 and old.global_transform.is_equal_approx(Transform3D.IDENTITY) and old.get_aabb().position.distance_to(v(row.min))<.0002 and old.get_aabb().end.distance_to(v(row.max))<.0002,"D17 preimage geometry differs: "+str(row.name)):model.free();return null
+  if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(old.mesh.get_surface_count()==replacement.mesh.get_surface_count(),"D17 surface count differs: "+str(row.name)):model.free();return null
+  if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(row.owner=="fore" or old.find_children("*","CollisionShape3D",true,false).size()==1,"D17 retained contact missing: "+str(row.name)):model.free();return null
+ var shared_preflight:Node=ship.get_node_or_null("ShipSpace/Group2CentralSupportedAdjunct/ReceivingFrame/RoomStaticContacts/SharedRoomTriangles")
+ # Find the actual nested fore owner rather than assuming its parent path.
+ var fore_preflight:Node=ship.find_child("Group2CentralSupportedAdjunct",true,false)
+ shared_preflight=fore_preflight.get_node_or_null("ReceivingFrame/RoomStaticContacts/SharedRoomTriangles")if fore_preflight!=null else null
+ if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(shared_preflight is CollisionShape3D and shared_preflight.shape!=null,"D17 shared fore contact missing"):model.free();return null
  var group:=Node3D.new();group.name="D17StarboardStandardReceiving";ship.get_node("ShipSpace").add_child(group);group.add_child(model)
  for row in p.walls:
   var owner:Node3D=ship.find_child("Group2CentralSupportedAdjunct",true,false)if row.owner=="fore"else ship.find_child("D17ConnectedHouse_WIP",true,false)

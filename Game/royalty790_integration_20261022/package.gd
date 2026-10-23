@@ -1,7 +1,7 @@
 extends RefCounted
 const P="res://royalty790_integration_20261022/"
 static func raw(file:String)->Node3D:
- var d:=GLTFDocument.new();var s:=GLTFState.new();assert(d.append_from_file(file,s)==OK);return d.generate_scene(s)
+ return load("res://scripts/release_operations_20261023/guard.gd").load_gltf(file)
 static func build(ship:Node3D)->Node3D:
  assert(ship.find_child("Royalty790UpperIntegratedWIP",true,false)==null,"Upper must be integrated exactly once")
  var pins:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(P+"evidence/INPUT_PINS.json"))
@@ -14,6 +14,7 @@ static func build(ship:Node3D)->Node3D:
  var architecture:Node3D=owner.get_node("D17ConnectedArchitecture")
  var standard:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/D17_STARBOARD_STANDARD_CANDIDATE_20261019.json"))
  var expected:=raw("res://assets/models/"+str(standard.structure_file))
+ if expected==null:return null
  var preserved:=0
  for row in standard.walls:
   if row.owner=="fore":continue

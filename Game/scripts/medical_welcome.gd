@@ -20,9 +20,9 @@ static func build(parent: Node3D, ship: Node3D) -> void:
 	for filename in data.model_pins:
 		assert(FileAccess.get_sha256("res://assets/models/"+str(filename))==str(data.model_pins[filename]),"Exact retained medical model required: "+str(filename))
 		var config: ConfigFile = ConfigFile.new()
-		assert(config.load("res://assets/models/"+str(filename)+".import")==OK)
+		if not load("res://scripts/release_operations_20261023/guard.gd").load_config("res://assets/models/"+str(filename)+".import",config):return
 		var policy: Dictionary = data.new_asset_import_policy[filename]
-		assert(bool(config.get_value("params","meshes/force_disable_compression",false))==bool(policy["meshes/force_disable_compression"]),"New-model import policy requires a fresh import: "+str(filename))
+		if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(bool(config.get_value("params","meshes/force_disable_compression",false))==bool(policy["meshes/force_disable_compression"]),"New-model import policy requires a fresh import: "+str(filename)):return
 	var core: Node3D = ship.find_child(str(data.core_root_name),true,false) as Node3D
 	assert(core!=null and str(core.get_meta("persistent_id"))==str(data.core_identity))
 	var core_contract: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/FORWARD_PUBLIC_CORE.json"))

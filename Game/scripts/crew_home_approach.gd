@@ -18,9 +18,9 @@ static func build(parent: Node3D, _ship: Node3D) -> void:
 	assert(int(data.new_floor_owners)==0 and not data.population_or_berth_migration)
 	for file_name in data.new_asset_import_policy:
 		var settings: ConfigFile=ConfigFile.new()
-		assert(settings.load("res://assets/models/"+str(file_name)+".import")==OK)
+		if not load("res://scripts/release_operations_20261023/guard.gd").load_config("res://assets/models/"+str(file_name)+".import",settings):return
 		var expected: Dictionary=data.new_asset_import_policy[file_name]
-		assert(bool(settings.get_value("params","meshes/force_disable_compression",false))==bool(expected["meshes/force_disable_compression"]))
+		if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(bool(settings.get_value("params","meshes/force_disable_compression",false))==bool(expected["meshes/force_disable_compression"]),"Retained import policy differs: scripts/crew_home_approach.gd"):return
 	assert(FileAccess.get_sha256("res://assets/models/"+str(data.home_model))==str(data.home_sha256))
 	assert(FileAccess.get_sha256("res://assets/models/"+str(data.wall_model))==str(data.wall_sha256))
 	assert(FileAccess.get_sha256("res://assets/models/"+str(data.retained_wall_model))==str(data.retained_wall_sha256))

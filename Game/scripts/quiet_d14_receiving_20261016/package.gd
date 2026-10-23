@@ -8,14 +8,21 @@ static func build(ship:Node3D,raw_path:String="")->Node3D:
  var model:Node3D
  if raw_path.is_empty():model=load(file).instantiate()
  else:
-  var doc:=GLTFDocument.new();var state:=GLTFState.new();assert(doc.append_from_file(file,state,64)==OK);model=doc.generate_scene(state)
+  model=load("res://scripts/release_operations_20261023/guard.gd").load_gltf(file,64)
+  if model==null:return null
  var group:=Node3D.new();group.name="QuietD14StaffReceiving";ship.get_node("ShipSpace").add_child(group);group.add_child(model)
  for row in p.walls:
   var owner:Node3D=ship.get_node("ShipSpace/Districts/QuietGroveReceivingCandidate")if row.owner=="house"else ship.get_node("ShipSpace/Group3ForeStarboardClinical")
-  var old:MeshInstance3D=owner.find_child(row.name,true,false);assert(old!=null);assert(old.global_transform.is_equal_approx(Transform3D.IDENTITY));assert(old.mesh.get_faces().size()==int(row.source_triangles)*3)
-  assert(old.get_aabb().position.distance_to(v(row.min))<.0002 and old.get_aabb().end.distance_to(v(row.max))<.0002)
+  var old:MeshInstance3D=owner.find_child(row.name,true,false)
+  var composed:Mesh
+  if old==null and row.owner=="house":
+   var binding:Dictionary=load("res://scripts/delivery_quiet_d14_20261023/composition.gd").prepare(ship,row)
+   old=binding.owner;composed=binding.mesh
+  else:
+   assert(old!=null);assert(old.global_transform.is_equal_approx(Transform3D.IDENTITY));assert(old.mesh.get_faces().size()==int(row.source_triangles)*3)
+   assert(old.get_aabb().position.distance_to(v(row.min))<.0002 and old.get_aabb().end.distance_to(v(row.max))<.0002)
   var shapes:=old.find_children("*","CollisionShape3D",true,false);assert(shapes.size()==1);var shape:CollisionShape3D=shapes[0];var replacement:MeshInstance3D=model.find_child(str(row.replacement_name).replace(".","_"),true,false);assert(replacement!=null)
-  var mesh:Mesh=replacement.mesh.duplicate();assert(mesh.get_surface_count()==old.mesh.get_surface_count())
+  var mesh:Mesh=replacement.mesh.duplicate() if composed==null else composed;assert(mesh.get_surface_count()==old.mesh.get_surface_count())
   for i in range(mesh.get_surface_count()):mesh.surface_set_material(i,old.mesh.surface_get_material(i))
   group.set_meta(str(row.name)+"_original_mesh",old.mesh);group.set_meta(str(row.name)+"_original_contact",shape.shape);old.mesh=mesh;var margin:float=shape.shape.margin;shape.shape=mesh.create_trimesh_shape();shape.shape.margin=margin;replacement.free()
  var contacts:Array[Node]=[]

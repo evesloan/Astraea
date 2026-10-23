@@ -10,8 +10,8 @@ static func build(cell: Node3D, gate: Node3D) -> void:
 	assert(data.groups.size()==2 and data.groups.has(FIXED) and data.groups.has(PRINT))
 	assert(FileAccess.get_sha256("res://assets/models/"+str(data.model_file))==str(data.model_sha256))
 	var settings := ConfigFile.new()
-	assert(settings.load("res://assets/models/"+str(data.model_file)+".import")==OK)
-	assert(settings.get_value("params","meshes/force_disable_compression",false),"Thin source ink requires the separately reviewed new-asset precision setting")
+	if not load("res://scripts/release_operations_20261023/guard.gd").load_config("res://assets/models/"+str(data.model_file)+".import",settings):return
+	if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(settings.get_value("params","meshes/force_disable_compression",false),"Thin source ink requires the separately reviewed new-asset precision setting"):return
 	assert(gate!=null and gate.leaves.size()==1 and not gate.desired_open and is_zero_approx(gate.open_fraction))
 	assert(cell.get_node_or_null("CellRestrictionSignage")==null)
 	var added := (load("res://assets/models/"+str(data.model_file)) as PackedScene).instantiate() as Node3D

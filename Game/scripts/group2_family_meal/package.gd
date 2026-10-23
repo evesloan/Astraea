@@ -23,7 +23,8 @@ static func build_on_current_receiver(ship:Node3D)->Node3D:
 		var vertices:PackedVector3Array=batch.mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX];var floats:=PackedFloat32Array();var lo:=Vector3(INF,INF,INF);var hi:=Vector3(-INF,-INF,-INF)
 		for i in range(int(row.vertex_start),int(row.vertex_start)+int(row.vertex_count)):
 			var v:Vector3=vertices[i];floats.append(v.x);floats.append(v.y);floats.append(v.z);var at:Vector3=batch.global_transform*v;lo=lo.min(at);hi=hi.max(at)
-		var hash:=HashingContext.new();assert(hash.start(HashingContext.HASH_SHA256)==OK);hash.update(floats.to_byte_array());assert(hash.finish().hex_encode()==str(row.imported_vertex_sha256))
+		var actual_hash:String=load("res://scripts/release_operations_20261023/guard.gd").sha256_bytes(floats.to_byte_array())
+		if not load("res://scripts/release_operations_20261023/guard.gd").require_ok(actual_hash==str(row.imported_vertex_sha256),"Family meal exact vertex preimage differs"):return null
 		assert(lo.distance_to(Vector3(row.min[0],row.min[1],row.min[2]))<.0001 and hi.distance_to(Vector3(row.max[0],row.max[1],row.max[2]))<.0001)
 	var root:=Node3D.new();root.name="Group2FamilyMealReceiving";house.add_child(root)
 	var kit:Node3D=packed.instantiate();kit.name="FAMILY_MEAL_FITTINGS_r001";root.add_child(kit)

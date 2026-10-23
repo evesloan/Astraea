@@ -10,10 +10,7 @@ static func audit_enabled() -> bool:
 	return DisplayServer.get_name()=="headless" or OS.get_environment("ASTRAEA_STAR_ATLAS_AUDIT")=="1"
 
 static func digest(value: Variant) -> String:
-	var hash: HashingContext=HashingContext.new()
-	assert(hash.start(HashingContext.HASH_SHA256)==OK)
-	assert(hash.update(var_to_bytes(value))==OK)
-	return hash.finish().hex_encode()
+	return load("res://scripts/release_operations_20261023/guard.gd").sha256_bytes(var_to_bytes(value))
 
 static func value_state(value: Variant,resources: Dictionary) -> Variant:
 	if value is Resource:

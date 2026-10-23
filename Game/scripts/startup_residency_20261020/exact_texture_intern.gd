@@ -1,5 +1,6 @@
 extends RefCounted
 # Identical immutable imported texture payloads share their existing Texture2D.
+# Cache references are weak; live material slots remain the resource owners.
 # No recompression, resizing, material substitution, geometry or identity changes.
 var pending: Array[WeakRef] = []
 var materials: Dictionary = {}
@@ -42,7 +43,8 @@ func intern_material(material: Material) -> void:
 func intern_texture(texture: Texture2D) -> Texture2D:
 	var identity := texture.get_instance_id()
 	if textures.has(identity) and textures[identity].original.get_ref() == texture:
-		return textures[identity].shared
+		var prior:Texture2D = textures[identity].shared.get_ref()
+		if prior != null:return prior
 	var pixels := texture.get_image()
 	if pixels == null or pixels.is_empty(): return texture
 	var bytes := pixels.get_data()
@@ -50,19 +52,23 @@ func intern_texture(texture: Texture2D) -> Texture2D:
 	hash.start(HashingContext.HASH_SHA256)
 	hash.update(bytes)
 	var key := "%s:%d:%d:%d:%d:%d:%s:%s:%s" % [texture.get_class(),texture.get_width(),texture.get_height(),pixels.get_width(),pixels.get_height(),pixels.get_format(),str(pixels.has_mipmaps()),str(texture.has_alpha()),hash.finish().hex_encode()]
-	var shared: Texture2D = canonical.get(key,texture)
+	var reference:WeakRef = canonical.get(key)
+	var shared: Texture2D = reference.get_ref() if reference != null else null
+	if shared == null:shared = texture
 	if shared == texture:
-		canonical[key] = texture
+		canonical[key] = weakref(texture)
 	else:
 		duplicate_payload_bytes += bytes.size()
-	textures[identity] = {"original":weakref(texture),"shared":shared}
+	textures[identity] = {"original":weakref(texture),"shared":weakref(shared)}
 	examined += 1
 	return shared
 func statistics() -> Dictionary:
 	return {"examined_textures":examined,"unique_payloads":canonical.size(),"material_slot_replacements":replacements,"duplicate_payload_bytes":duplicate_payload_bytes,"policy":"identical format, dimensions, mipmaps and complete payload; original material objects retained"}
 
 func prune_expired_references() -> void:
+	for key in canonical.keys():
+		if canonical[key].get_ref()==null:canonical.erase(key)
 	for identity in textures.keys():
-		if textures[identity].original.get_ref()==null:textures.erase(identity)
+		if textures[identity].original.get_ref()==null or textures[identity].shared.get_ref()==null:textures.erase(identity)
 	for identity in materials.keys():
 		if materials[identity].get_ref()==null:materials.erase(identity)
