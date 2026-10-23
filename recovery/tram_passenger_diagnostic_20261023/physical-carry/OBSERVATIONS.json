@@ -1,0 +1,121 @@
+{
+  "scope": "Post-run arithmetic only. No rerun, tolerance change or position correction.",
+  "runs": [
+    {
+      "run": "run-001",
+      "exit_code": 0,
+      "failures": [],
+      "completed_stops": [
+        "FORE_MIDSHIP"
+      ],
+      "settling_displacement_m": 0.10807092411930237,
+      "settling_horizontal_m": 0.04107703786788927,
+      "maximum_horizontal_drift_from_settled_m": 0.0968037620186806,
+      "max_logged_horizontal_from_original_spawn_m": 0.13782234452366582,
+      "straight_sample_count": 33,
+      "straight_local_z_plus_reported_platform_z_velocity_over_60_range_m": [
+        1.4374081166666668,
+        1.4378818833333333
+      ],
+      "stop_samples": [
+        {
+          "event": "first_leg_passed",
+          "cursor": 225.0,
+          "local": "(0.006749, 0.000038, 1.437637)",
+          "speed": 0.0
+        }
+      ],
+      "final": {
+        "actor_local": "(0.006749, 0.000038, 1.437637)",
+        "actor_velocity": "(0.0, 0.0, 0.0)",
+        "actor_world": "(-5.593251, 56.10004, -239.5624)",
+        "car_position": "(-5.6, 56.1, -241.0)",
+        "car_yaw": 0.0,
+        "cart_position": "(85.19967, 83.99825, -37.3009)",
+        "cart_sleeping": false,
+        "cursor": 225.0,
+        "motion_fault": false,
+        "moving": false,
+        "nodes": 4010,
+        "on_floor": true,
+        "platform_angular_velocity": "(0.0, 0.0, 0.0)",
+        "platform_velocity": "(0.0, 0.0, 0.0)",
+        "restraint_phase": "unlocked",
+        "safety_phase": "secured",
+        "slides": [
+          {
+            "collider_velocity": "(0.0, 0.0, 0.0)",
+            "normal": "(0.0, 1.0, 0.0)",
+            "owner": "/root/BoundedActualTram/Group4Completion/Group4OwnedTram_Source024"
+          }
+        ],
+        "speed": 0.0
+      },
+      "peak_rss_bytes": 241733632,
+      "post_run_source_hash_mismatches": []
+    },
+    {
+      "run": "run-002-continuity",
+      "exit_code": 1,
+      "failures": [
+        "no_input_cabin_local_drift_exceeded_0_10m"
+      ],
+      "completed_stops": [
+        "FORE_MIDSHIP",
+        "FORWARD"
+      ],
+      "settling_displacement_m": 0.10807092411930237,
+      "settling_horizontal_m": 0.04107703786788927,
+      "maximum_horizontal_drift_from_settled_m": 0.100069716572762,
+      "max_logged_horizontal_from_original_spawn_m": 0.13782234452366582,
+      "straight_sample_count": 81,
+      "straight_local_z_plus_reported_platform_z_velocity_over_60_range_m": [
+        1.4373774499999998,
+        1.4378819
+      ],
+      "stop_samples": [
+        {
+          "event": "first_leg_passed",
+          "cursor": 225.0,
+          "local": "(0.006749, 0.000038, 1.437637)",
+          "speed": 0.0
+        },
+        {
+          "event": "stop_passed",
+          "cursor": 34.0,
+          "local": "(0.006749, 0.000038, 1.437653)",
+          "speed": 0.0
+        }
+      ],
+      "final": {
+        "actor_local": "(0.006749, 0.000038, 1.341217)",
+        "actor_velocity": "(0.0, 0.0, 0.0)",
+        "actor_world": "(-5.593251, 56.10004, -409.6822)",
+        "car_position": "(-5.6, 56.1, -411.0233)",
+        "car_yaw": 0.0,
+        "cart_position": "(85.19939, 83.99812, -37.30172)",
+        "cart_sleeping": false,
+        "cursor": 54.9766666666667,
+        "motion_fault": false,
+        "moving": true,
+        "nodes": 4010,
+        "on_floor": true,
+        "platform_angular_velocity": "(0.0, 0.0, 0.0)",
+        "platform_velocity": "(0.0, 0.0, 5.773315)",
+        "restraint_phase": "unlocked",
+        "safety_phase": "secured",
+        "slides": [
+          {
+            "collider_velocity": "(0.0, 0.0, 5.773315)",
+            "normal": "(0.0, 1.0, 0.0)",
+            "owner": "/root/BoundedActualTram/Group4Completion/Group4OwnedTram_Source024"
+          }
+        ],
+        "speed": 5.78666666666669
+      },
+      "peak_rss_bytes": 241573888,
+      "post_run_source_hash_mismatches": []
+    }
+  ],
+  "inference": "Straight-track speed-dependent local displacement is approximately one physics timestep of reported platform velocity. Corrected diagnostic value stays within about 0.51mm over both directions. This is analytical evidence of phase lag, not an applied correction, proof of root cause, or acceptance."
+}
