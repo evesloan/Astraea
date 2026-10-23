@@ -1,0 +1,163 @@
+{
+  "received_room": {
+    "before_activation_us": [
+      70773,
+      60917
+    ],
+    "before_stages": [
+      {
+        "attach_filter_us": 22027,
+        "collidable_mesh_count": 53,
+        "contact_us": 33674,
+        "force_update_us": 40,
+        "instantiate_us": 10059,
+        "mesh_count": 53,
+        "prototype": "res://assets/models/TIDAL_ROOM_01_r001.glb",
+        "room": "AST-UNIT-D13-90cc78315acae302"
+      },
+      {
+        "attach_filter_us": 22714,
+        "collidable_mesh_count": 53,
+        "contact_us": 28819,
+        "force_update_us": 62,
+        "instantiate_us": 9279,
+        "mesh_count": 53,
+        "prototype": "res://assets/models/TIDAL_ROOM_01_r001.glb",
+        "room": "AST-UNIT-D13-90cc78315acae302"
+      }
+    ],
+    "after_wall_us": [
+      166980,
+      157396,
+      157129,
+      164950,
+      164697,
+      164559
+    ],
+    "after_stages": {
+      "request": {
+        "slice_min_us": 26,
+        "slice_max_us": 39,
+        "per_job_total_min_us": 26,
+        "per_job_total_max_us": 39
+      },
+      "wait": {
+        "slice_min_us": 12,
+        "slice_max_us": 36,
+        "per_job_total_min_us": 12,
+        "per_job_total_max_us": 36
+      },
+      "instantiate": {
+        "slice_min_us": 434,
+        "slice_max_us": 626,
+        "per_job_total_min_us": 434,
+        "per_job_total_max_us": 626
+      },
+      "configure": {
+        "slice_min_us": 657,
+        "slice_max_us": 3316,
+        "per_job_total_min_us": 26281,
+        "per_job_total_max_us": 28107
+      },
+      "faces": {
+        "slice_min_us": 1038,
+        "slice_max_us": 2494,
+        "per_job_total_min_us": 9295,
+        "per_job_total_max_us": 10058
+      },
+      "shape": {
+        "slice_min_us": 10194,
+        "slice_max_us": 11897,
+        "per_job_total_min_us": 10194,
+        "per_job_total_max_us": 11897
+      },
+      "body": {
+        "slice_min_us": 9706,
+        "slice_max_us": 10389,
+        "per_job_total_min_us": 9706,
+        "per_job_total_max_us": 10389
+      },
+      "commit": {
+        "slice_min_us": 330,
+        "slice_max_us": 391,
+        "per_job_total_min_us": 330,
+        "per_job_total_max_us": 391
+      }
+    }
+  },
+  "private_detail": {
+    "before_activation_us": [
+      109978,
+      105340
+    ],
+    "before_stages": [
+      {},
+      {}
+    ],
+    "after_wall_us": [
+      229019,
+      229508,
+      222156,
+      222118,
+      220920,
+      235375
+    ],
+    "after_stages": {
+      "request": {
+        "slice_min_us": 24,
+        "slice_max_us": 30,
+        "per_job_total_min_us": 24,
+        "per_job_total_max_us": 30
+      },
+      "wait": {
+        "slice_min_us": 10,
+        "slice_max_us": 16,
+        "per_job_total_min_us": 10,
+        "per_job_total_max_us": 16
+      },
+      "instantiate": {
+        "slice_min_us": 1549,
+        "slice_max_us": 2313,
+        "per_job_total_min_us": 1549,
+        "per_job_total_max_us": 2313
+      },
+      "configure": {
+        "slice_min_us": 759,
+        "slice_max_us": 3261,
+        "per_job_total_min_us": 38087,
+        "per_job_total_max_us": 39369
+      },
+      "faces": {
+        "slice_min_us": 186,
+        "slice_max_us": 2583,
+        "per_job_total_min_us": 11700,
+        "per_job_total_max_us": 12391
+      },
+      "shape": {
+        "slice_min_us": 13445,
+        "slice_max_us": 14235,
+        "per_job_total_min_us": 13445,
+        "per_job_total_max_us": 14235
+      },
+      "body": {
+        "slice_min_us": 13044,
+        "slice_max_us": 13845,
+        "per_job_total_min_us": 13044,
+        "per_job_total_max_us": 13845
+      },
+      "commit": {
+        "slice_min_us": 1504,
+        "slice_max_us": 1714,
+        "per_job_total_min_us": 1504,
+        "per_job_total_max_us": 1714
+      }
+    }
+  },
+  "limitations": [
+    "Cloud headless fixture, not laptop FPS or profiling the unidentified ~270ms room",
+    "Before instantiate_us includes synchronous resource loading; after threaded load worker CPU not captured by main-thread slice timing",
+    "Private before has whole activation timing only; no invented pre-change private stage breakdown",
+    "All shapes/final signatures equivalent; 2ms target still exceeded; staged visibility latency increases",
+    "No full ship export, renderer visibility/occlusion, or walking crash validation"
+  ]
+}
