@@ -1,0 +1,171 @@
+{
+  "status": "EXPERIMENTAL_DEFAULT_OFF_UNACCEPTED",
+  "base_commit": "be4ec34880cdab7794592c2bff3bed789ad52c4f",
+  "engine": "4.6.3.stable.official.7d41c59c4",
+  "baseline_original_connected": "PASS",
+  "candidate_original_connected": "PASS",
+  "prewarm_checks": 346,
+  "prewarm_failures": [],
+  "rendered_gate": "UNEXECUTED",
+  "render_blocker": "No local X sockets in sandbox; approved-route Xorg escalation failed before launch due bwrap read-only startup path. No permission modifications or alternate transport retry.",
+  "retained_private_pixel_gate": "Previous private final 1-pixel / 3-channel mismatch remains unexplained; strict zero difference unchanged.",
+  "full_ship_tested": false,
+  "target_fps_tested": false,
+  "reported_user_crash_fixed": false,
+  "hard_memory_limit": false,
+  "samples": [
+    {
+      "cycle": 0,
+      "nodes": 121,
+      "resources": 124.0,
+      "shapes": 2,
+      "static_bytes": 63029741
+    },
+    {
+      "cycle": 1,
+      "nodes": 121,
+      "resources": 124.0,
+      "shapes": 2,
+      "static_bytes": 63066377
+    },
+    {
+      "cycle": 2,
+      "nodes": 121,
+      "resources": 124.0,
+      "shapes": 2,
+      "static_bytes": 63104985
+    }
+  ],
+  "metrics": {
+    "received_room": {
+      "warm_full_consume_us": [
+        789,
+        682,
+        475
+      ],
+      "cold_fallback_us": [
+        53300,
+        54239,
+        57227,
+        62268
+      ],
+      "preparation_stage_ranges_us": {
+        "admission_verify": {
+          "min": 5548,
+          "max": 8470,
+          "samples": 8
+        },
+        "request": {
+          "min": 19,
+          "max": 32,
+          "samples": 8
+        },
+        "wait": {
+          "min": 11,
+          "max": 400,
+          "samples": 8
+        },
+        "instantiate": {
+          "min": 702,
+          "max": 1325,
+          "samples": 7
+        },
+        "configure": {
+          "min": 734,
+          "max": 3261,
+          "samples": 51
+        },
+        "faces": {
+          "min": 687,
+          "max": 2643,
+          "samples": 21
+        },
+        "shape": {
+          "min": 8955,
+          "max": 11562,
+          "samples": 5
+        },
+        "body": {
+          "min": 8648,
+          "max": 11278,
+          "samples": 5
+        },
+        "consume_ready": {
+          "min": 31,
+          "max": 704,
+          "samples": 4
+        },
+        "cancel_dispose": {
+          "min": 683,
+          "max": 1124,
+          "samples": 3
+        }
+      },
+      "notes": "Headless cloud wall timings; no renderer or target-hardware claim. Cold includes visibility, safety, generation and retained-visible test paths."
+    },
+    "private_detail": {
+      "warm_full_consume_us": [
+        2774,
+        2515,
+        2748
+      ],
+      "cold_fallback_us": [
+        91954,
+        81095
+      ],
+      "preparation_stage_ranges_us": {
+        "admission_verify": {
+          "min": 13815,
+          "max": 18034,
+          "samples": 8
+        },
+        "request": {
+          "min": 23,
+          "max": 61,
+          "samples": 8
+        },
+        "wait": {
+          "min": 11,
+          "max": 1071,
+          "samples": 8
+        },
+        "instantiate": {
+          "min": 2923,
+          "max": 6016,
+          "samples": 7
+        },
+        "configure": {
+          "min": 618,
+          "max": 4068,
+          "samples": 79
+        },
+        "faces": {
+          "min": 342,
+          "max": 3308,
+          "samples": 29
+        },
+        "shape": {
+          "min": 12015,
+          "max": 16996,
+          "samples": 5
+        },
+        "body": {
+          "min": 11978,
+          "max": 14375,
+          "samples": 5
+        },
+        "consume_ready": {
+          "min": 2471,
+          "max": 2724,
+          "samples": 3
+        },
+        "cancel_dispose": {
+          "min": 2071,
+          "max": 5452,
+          "samples": 4
+        }
+      },
+      "notes": "Headless cloud wall timings; no renderer or target-hardware claim. Cold includes visibility, safety, generation and retained-visible test paths."
+    }
+  }
+}

@@ -1,0 +1,576 @@
+--- a/Game/scripts/received_homes_20261015/residency.gd
++++ b/Game/scripts/received_homes_20261015/residency.gd
+@@ -58,7 +58,7 @@
+ func _attach_visible_room(entry:Dictionary)->void:
+ 	if not is_inside_tree()or entry.attached or not entry.witness.is_on_screen():return
+ 	var queue:Node=load("res://scripts/route_activation_20261023/scheduler.gd").obtain(host)
+-	if queue!=null:queue.enqueue(self,entry,entry.room,"received_room")
++	if queue!=null and not queue.prewarm_enabled():queue.enqueue(self,entry,entry.room,"received_room")
+ 	else:_attach_visible_room_now(entry)
+ func _activate_pending_visibility(entry:Dictionary)->bool:
+ 	if not is_inside_tree()or entry.attached or not entry.witness.is_on_screen():return false
+@@ -66,11 +66,15 @@
+ 	return bool(entry.attached)
+ func _attach_visible_room_now(entry:Dictionary)->void:
+ 	if not is_inside_tree() or entry.attached:return
++	var activation_started:=Time.get_ticks_usec()
++	var queue:Node=load("res://scripts/route_activation_20261023/scheduler.gd").obtain(host)
++	if queue!=null and queue.consume_or_cancel(self,entry,entry.room,"received_room"):return
+ 	entry.parent.add_child(entry.room)
+ 	entry.attached=true
+ 	load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
+ 	entry.hidden_seconds=0.0
+ 	changes+=1
++	if queue!=null and queue.prewarm_enabled():queue.record_cold("received_room",entry.room,activation_started)
+ func _physics_process(delta:float)->void:
+ 	if not enabled:return
+ 	elapsed+=delta
+@@ -104,19 +108,22 @@
+ 	for request in requested:
+ 		var entry:Dictionary=request.entry
+ 		if request.near:
+-			if not entry.attached:entry.parent.add_child(entry.room);entry.attached=true;changes+=1
+-			load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
++			if not entry.attached:_attach_visible_room_now(entry)
++			else:load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
+ 		elif not entry.attached:_attach_visible_room(entry)
+ 		else:load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
++	# Registered 3D AABBs only: next-room band outside mandatory ENTER and within KEEP.
++	var queue:Node=load("res://scripts/route_activation_20261023/scheduler.gd").obtain(host)
++	if queue!=null:
++		for entry in entries:
++			var interest:bool=not entry.attached and not entry.witness.is_on_screen() and near_bounds(actor.global_position,entry.bounds,KEEP_MARGIN)
++			var distance:float=actor.global_position.distance_squared_to(actor.global_position.clamp(entry.bounds.position,entry.bounds.end))
++			queue.offer_prewarm(self,entry,entry.room,"received_room",interest,distance)
+ func prepare_position(position:Vector3)->void:
+ 	# Explicit arrivals call this before collision validation and control release.
+ 	for entry in entries:
+ 		if not entry.attached and near_bounds(position,entry.bounds,ENTER_MARGIN):
+-			entry.parent.add_child(entry.room)
+-			entry.attached=true
+-			load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
+-			entry.hidden_seconds=0.0
+-			changes+=1
++			_attach_visible_room_now(entry)
+ func statistics()->Dictionary:
+ 	var live:=0
+ 	var resident_meshes:=0
+--- /dev/null
++++ b/Game/scripts/route_activation_20261023/prewarm_estimates.json
+@@ -0,0 +1,131 @@
++{
++  "schema": 1,
++  "sources": {
++    "res://assets/models/TIDAL_ROOM_01_r001.glb": {
++      "nodes": 263,
++      "meshes": 53,
++      "face_vertices": 55056,
++      "resources": 479,
++      "estimated_bytes": 35515232,
++      "dependencies": {
++        "res://assets/models/TIDAL_ROOM_01_r001.glb": "1cf55e89ab0ab000e5b78bb41e3358987b57fc4871392b6398c1d0ce6be44139",
++        "res://assets/models/TIDAL_ROOM_01_r001.glb.import": "58a0ebfd9631e03caf0b27f70a4d577e31a9d2958d7cea0074d24acdb3485653",
++        "res://assets/models/TIDAL_ROOM_01_r001_warm_stone.png": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
++        "res://assets/models/TIDAL_ROOM_01_r001_warm_walnut.png": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
++        "res://assets/models/TIDAL_ROOM_01_r001_ivory_enamel.png": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
++        "res://assets/models/TIDAL_ROOM_01_r001_oatmeal_weave.png": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
++        "res://assets/models/TIDAL_ROOM_01_r001_teal_weave.png": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
++        "res://assets/models/TIDAL_ROOM_01_r001_champagne_metal.png": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
++        "res://assets/models/TIDAL_ROOM_01_r001_clay_weave.png": "de8bb5d65d550612f7d4736cbd10d02e6b40a5852bd8f0081721e96572f036f7",
++        "res://assets/models/TIDAL_ROOM_01_r001_guest_linen.png": "fad8bcf529792c7910356a27bd7ea7713fd7aa43dcf521dbe26e5409027744ed",
++        "res://assets/models/TIDAL_ROOM_01_r001_dark_rubber.png": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
++        "res://.godot/imported/TIDAL_ROOM_01_r001.glb-c0e013f31a0fe0d55acb404a780e81f7.scn": "80b4b969533172993724a0d8b061252d1cc50c47f0d66bee736129e256846056",
++        "res://.godot/imported/TIDAL_ROOM_01_r001_champagne_metal.png-ae58deb65915667c52a26032813ac072.ctex": "091a6fb8eee2ffc492513f73bfe3c2fbd3aac376846f1f70a8048a207d5c0e2f",
++        "res://.godot/imported/TIDAL_ROOM_01_r001_clay_weave.png-f7d5ae840828d1de89ce562ffb58fe76.ctex": "4ece28ba90f868effbf5e6588c4289eaf6a4632b25d30d46b916340f8e7f4534",
++        "res://.godot/imported/TIDAL_ROOM_01_r001_dark_rubber.png-a025a2c3dc1c7e2dd487919736ba2d2f.ctex": "979d1746287a1c3e34813d8adeb22cb62fdf067a886bb5553dfb43ef9c1f2e24",
++        "res://.godot/imported/TIDAL_ROOM_01_r001_guest_linen.png-063a9f094f1ceceded05e536bff5affa.ctex": "64ea9d0c5e67cc0a07411b99eededa005056ed21df332540d8b9e0bb5e1f73eb",
++        "res://.godot/imported/TIDAL_ROOM_01_r001_ivory_enamel.png-4739021cfbf819e062ec4a3febd09a30.ctex": "7277c44d11d23ae356d34757915c7e5161b981d393aa4ef9b032c30fec00438f",
++        "res://.godot/imported/TIDAL_ROOM_01_r001_oatmeal_weave.png-d19fd044a778e809bd873f8b065311bd.ctex": "1b04cc917dc4d1733b02b1f15d9f0f5a0b1f40753b41d4ddba5bef0de97ebd17",
++        "res://.godot/imported/TIDAL_ROOM_01_r001_teal_weave.png-8592d31359ac0d00334c862886412d27.ctex": "4d47bd8187c0ec4ccc7dd8640012bfa65bd7f8b3d5357d20bb614e303ae547a4",
++        "res://.godot/imported/TIDAL_ROOM_01_r001_warm_stone.png-c7a028f1ac38c0caeb79fea0be295af9.ctex": "40c58020d7f43537274cfffc5f941ebcae293e4e3f2160b9a14f4effbc3d4534",
++        "res://.godot/imported/TIDAL_ROOM_01_r001_warm_walnut.png-a230ed988e253b2a513a2fedc3260f61.ctex": "c034d808578e1285f76a30c2d9fb148a322978122b5a82b57ed8529d99ae8830",
++        "res://assets/models/TIDAL_ROOM_01_r001_champagne_metal.png.import": "958b9afd662026c0cb5e18487dfd9a195a694e746f59fe44f33ab9d4ed5ec51b",
++        "res://assets/models/TIDAL_ROOM_01_r001_clay_weave.png.import": "8549db41aedb9a0ea6d76f4e2a493e498f32d2f26c1aa4aa29020413da4409e9",
++        "res://assets/models/TIDAL_ROOM_01_r001_dark_rubber.png.import": "196eb4a6e91d43aead2a57da1332906a55f02b2f51a5f4449833bddf0741dcfb",
++        "res://assets/models/TIDAL_ROOM_01_r001_guest_linen.png.import": "b381f00f4e2523b7a9eef6d347762419097efa96eda0f1dc80d2be5499e3617b",
++        "res://assets/models/TIDAL_ROOM_01_r001_ivory_enamel.png.import": "e29c593cfba2a37efd83c8c44503faabcded19f37b534aea4564926cdc64850b",
++        "res://assets/models/TIDAL_ROOM_01_r001_oatmeal_weave.png.import": "41857dbe29d9c40b09c7f5e022467ffc02fe01bb8dd5c04b21b696f8a6a0d16d",
++        "res://assets/models/TIDAL_ROOM_01_r001_teal_weave.png.import": "78d41e0b4928401237e8d46a02518b32be297b6d2e377a5751dffa5c4596135c",
++        "res://assets/models/TIDAL_ROOM_01_r001_warm_stone.png.import": "1723e5c4bcf0e16429b8ab900eae27e331c6dc5fce8e2bea8976c6eb0ce312c5",
++        "res://assets/models/TIDAL_ROOM_01_r001_warm_walnut.png.import": "938bfe3412a2e385086addab0f77266ff67c0374e569abf60a6039f58f85c59d"
++      },
++      "source_nodes": 103,
++      "decoded_texture_bytes": 2359296,
++      "estimate_note": "Conservative data allowance; not a hard native/GPU allocation cap. First draw not precompiled."
++    },
++    "res://assets/models/StarAtlasSpecialty_103.glb": {
++      "nodes": 1305,
++      "meshes": 312,
++      "face_vertices": 77292,
++      "resources": 1802,
++      "estimated_bytes": 64980528,
++      "dependencies": {
++        "res://assets/models/StarAtlasSpecialty_103.glb": "1d8905a332862bef21b10038e7c3fb126d58c218c662d97776e94e09f62065c8",
++        "res://assets/models/StarAtlasSpecialty_103.glb.import": "587a0be9747d509637a84674f32de763e1fd91a849a25385e1c4c7049ec7bb87",
++        "res://assets/models/StarAtlasSpecialty_103_AST-LIB-011_warm_stone.png": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
++        "res://assets/models/StarAtlasSpecialty_103_AST-LIB-011_ivory_enamel.png": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
++        "res://assets/models/StarAtlasSpecialty_103_AST-LIB-011_warm_walnut.png": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
++        "res://assets/models/StarAtlasSpecialty_103_AST-LIB-011_champagne_metal.png": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
++        "res://assets/models/StarAtlasSpecialty_103_StarAtlasSpecialty_515_teal_weave.png": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
++        "res://assets/models/StarAtlasSpecialty_103_warm_walnut.png": "6e1c6c52f1fb468fe0e14cab245c7188ea35dcbfbfdd4d9d92ed6cc5f9ef85fe",
++        "res://assets/models/StarAtlasSpecialty_103_ivory_enamel.png": "2a44c00ae8ea52125213d1a18e62ed2d37035fd0c236c67710b0fec925c43d68",
++        "res://assets/models/StarAtlasSpecialty_103_dark_rubber.png": "808319b32f604ba4761ea548b02604d586c2854c013cef71239be673d71b50b3",
++        "res://assets/models/StarAtlasSpecialty_103_warm_stone.png": "187a67308552793551ac5934fe5fc19369dfd85eeb8d875ebe83118cc11a541b",
++        "res://assets/models/StarAtlasSpecialty_103_champagne_metal.png": "0a2f8d50861d6d0ff22f50112384635c06191c2be6b1c46be151400443fa1cb4",
++        "res://assets/models/StarAtlasSpecialty_103_oatmeal_weave.png": "96a1308df93c1252030cbf22caf62056e9765fe2ecfdc7d9ae7d498ecdfac480",
++        "res://assets/models/StarAtlasSpecialty_103_teal_weave.png": "50fad1f8fa55b023794e879c86e642eb8b6a8ad3020a160a233c913f6c147a38",
++        "res://assets/models/StarAtlasSpecialty_103_book_cover_teal.png": "0b50f02d95f7cd49aaf450106dae35e4253ae71ed6087b3c688596622376d269",
++        "res://assets/models/StarAtlasSpecialty_103_book_cover_clay.png": "f29731b102fbf2e1ac861e7c703070e4ab4b6ac2c5763211096c4725b7925fea",
++        "res://assets/models/StarAtlasSpecialty_103_folio_text_page.png": "f667d073936a6ed23e08c639aebdc8a2bacb4c58fd6bb0bbbf2de1b21b955226",
++        "res://assets/models/StarAtlasSpecialty_103_book_paper_edges.png": "191efc92a5c8f573c195c9f148dfaf44c64c51c3e38974f83420692368bd0be0",
++        "res://assets/models/StarAtlasSpecialty_103_book_label_paper.png": "c6fada7750dcd515625ed6d9c6a9ac4f99ffdf306abcfb14dc5cb9ae8fb21d28",
++        "res://assets/models/StarAtlasSpecialty_103_book_print_ink.png": "1f52f03ffd3d88a5e6b422e8fb38b08bc71da91b54805f175908994b893f0aab",
++        "res://assets/models/StarAtlasSpecialty_103_folio_chart_page.png": "d887af792d4412c77eb16c914ec79f82ffb49b7c806532de98fa591012782419",
++        "res://assets/models/StarAtlasSpecialty_103_book_cover_ochre.png": "4c1debde36cf59a09a5a30babf31460058a9288f4e32c27851911a394bc0faf2",
++        "res://assets/models/StarAtlasSpecialty_103_reflector.png": "e2578bc41e7cceed4a3f26a22d9f00ac9be1f4d608d44aa0f5f6c68f8bc3ad63",
++        "res://assets/models/StarAtlasSpecialty_103_opal_diffuser.png": "0bb515370268af754f50df8fc53f7dd83551bce9ffc27be717461b48904bdf2a",
++        "res://assets/models/StarAtlasSpecialty_103_label_service.png": "f19a6a39a2c13c7406fc9ceae4a15a05a48d6b2e7524ea6a97a9c6bf6224f85d",
++        "res://.godot/imported/StarAtlasSpecialty_103.glb-2207858451c5b081169877d3378c4b5f.scn": "00fce475b5b645655492c1d3f718abbe2fce8ca2d05e1e30e1d84b7ceab89180",
++        "res://.godot/imported/StarAtlasSpecialty_103_AST-LIB-011_champagne_metal.png-214f3e2830df077643e54c56835c144b.ctex": "091a6fb8eee2ffc492513f73bfe3c2fbd3aac376846f1f70a8048a207d5c0e2f",
++        "res://.godot/imported/StarAtlasSpecialty_103_AST-LIB-011_ivory_enamel.png-0326ef5e7394a85a0e557adaa91f05cb.ctex": "7277c44d11d23ae356d34757915c7e5161b981d393aa4ef9b032c30fec00438f",
++        "res://.godot/imported/StarAtlasSpecialty_103_AST-LIB-011_warm_stone.png-7e99e691f4fbd14ef89e41cf9253a168.ctex": "40c58020d7f43537274cfffc5f941ebcae293e4e3f2160b9a14f4effbc3d4534",
++        "res://.godot/imported/StarAtlasSpecialty_103_AST-LIB-011_warm_walnut.png-0963e55800f7a7f9968ae4d4b25d3b76.ctex": "c034d808578e1285f76a30c2d9fb148a322978122b5a82b57ed8529d99ae8830",
++        "res://.godot/imported/StarAtlasSpecialty_103_StarAtlasSpecialty_515_teal_weave.png-0df7aa18fa062ed57b77a449711e5821.ctex": "4d47bd8187c0ec4ccc7dd8640012bfa65bd7f8b3d5357d20bb614e303ae547a4",
++        "res://.godot/imported/StarAtlasSpecialty_103_book_cover_clay.png-8efc23f4deb1ccefee9f6f52164038a2.ctex": "3ed2d28667de12acccd534eb1bd598fc8c6abc3bb10236644065e581614757ad",
++        "res://.godot/imported/StarAtlasSpecialty_103_book_cover_ochre.png-acd49a4a5de7159f64d7a4995da59edf.ctex": "6d5ca1275b9ad70b92b95d592713e987e85610bdbd67824720542afb2160b21b",
++        "res://.godot/imported/StarAtlasSpecialty_103_book_cover_teal.png-070bbb2d890ac51f409de68dd080985d.ctex": "b6a6c0fd6084e5d12d420fe9496b3ad8f06e3adaf570979bf5415fa7d7c3d794",
++        "res://.godot/imported/StarAtlasSpecialty_103_book_label_paper.png-614b43efb03288e64e4977792f2ea5a5.ctex": "5eb6acec38a6ade6b27a8442e35af81d03a6d0e6c4d9a1b07ed6f986a5a34f82",
++        "res://.godot/imported/StarAtlasSpecialty_103_book_paper_edges.png-75629feca930e2c16033b439b4c472f4.ctex": "86380fa71e86252fc875a73b39525cd07aef9a545bb32f500cb45de5a2621e24",
++        "res://.godot/imported/StarAtlasSpecialty_103_book_print_ink.png-e5e35fbbc61a7657e3b5dc8d2dd4f875.ctex": "44c33fff499d123fe5f96db5db3454a06d6a9e128a85a0108631c3bdf1af3b6f",
++        "res://.godot/imported/StarAtlasSpecialty_103_champagne_metal.png-348d865a3f9ed8b29fa921bbb06389dd.ctex": "091a6fb8eee2ffc492513f73bfe3c2fbd3aac376846f1f70a8048a207d5c0e2f",
++        "res://.godot/imported/StarAtlasSpecialty_103_dark_rubber.png-682a093cfb85581a128fcb050b32f9fa.ctex": "979d1746287a1c3e34813d8adeb22cb62fdf067a886bb5553dfb43ef9c1f2e24",
++        "res://.godot/imported/StarAtlasSpecialty_103_folio_chart_page.png-e38dfc1c2c20ac141a94071869776424.ctex": "04e5b23a3f3f7d739c77c537653e1a054bcfee8edb4554d36dd2c743d03408a1",
++        "res://.godot/imported/StarAtlasSpecialty_103_folio_text_page.png-16c1bebdca56be4f3e16a252021c70b6.ctex": "6be4a96b585e70d91fab178efed459bb7ae59899b82ca8a8aa339b2386f16a7d",
++        "res://.godot/imported/StarAtlasSpecialty_103_ivory_enamel.png-f13cbdfbdb43a26438018600ff5e1335.ctex": "7277c44d11d23ae356d34757915c7e5161b981d393aa4ef9b032c30fec00438f",
++        "res://.godot/imported/StarAtlasSpecialty_103_label_service.png-d62bf70a7abe4f42f4d2a30b6413f524.ctex": "9e99ad5bd319b40235bfca3a5d6cc118da4405a9a6a4ffd1a1f3b26f12a48bf0",
++        "res://.godot/imported/StarAtlasSpecialty_103_oatmeal_weave.png-b6f18de7f81770654245aad82cff99fb.ctex": "1b04cc917dc4d1733b02b1f15d9f0f5a0b1f40753b41d4ddba5bef0de97ebd17",
++        "res://.godot/imported/StarAtlasSpecialty_103_opal_diffuser.png-38cc42bb1d71bb2f5d32f62cd6527782.ctex": "4bdad66195cb7ba9977baed5137c5302eaaa28966a0f64a24d525d6b85ec1140",
++        "res://.godot/imported/StarAtlasSpecialty_103_reflector.png-be7ec271f1451d9eea821db31fb1635c.ctex": "3b36b6e4eee04a26c41995f47d7ac3cc2ed0f1d882db53e2f02a693af425ef28",
++        "res://.godot/imported/StarAtlasSpecialty_103_teal_weave.png-caa99090a05f621f83c154c665573075.ctex": "4d47bd8187c0ec4ccc7dd8640012bfa65bd7f8b3d5357d20bb614e303ae547a4",
++        "res://.godot/imported/StarAtlasSpecialty_103_warm_stone.png-02a918415d05429256cbb5a96af2ae35.ctex": "40c58020d7f43537274cfffc5f941ebcae293e4e3f2160b9a14f4effbc3d4534",
++        "res://.godot/imported/StarAtlasSpecialty_103_warm_walnut.png-c60408a919c97633ee0993a270b9a8f2.ctex": "c034d808578e1285f76a30c2d9fb148a322978122b5a82b57ed8529d99ae8830",
++        "res://assets/models/StarAtlasSpecialty_103_AST-LIB-011_champagne_metal.png.import": "75259fcbf767fc667316f64113c1029c7857a2985c37039017dc0c60e1b6f49a",
++        "res://assets/models/StarAtlasSpecialty_103_AST-LIB-011_ivory_enamel.png.import": "cc49fb715b77598ac94f364807fdff79dd26c2789b4d8c7e717ffea3affdb29a",
++        "res://assets/models/StarAtlasSpecialty_103_AST-LIB-011_warm_stone.png.import": "c9843940e00f6e64fda2e76b91d0aa35e9b3c6cf36debddcb0f2ae953f71aca2",
++        "res://assets/models/StarAtlasSpecialty_103_AST-LIB-011_warm_walnut.png.import": "2c34423a506b59791475719ef8f6e1317a0ee0faf6fb9ce7d67bc0bb1b00e362",
++        "res://assets/models/StarAtlasSpecialty_103_StarAtlasSpecialty_515_teal_weave.png.import": "95ad24270eb4605aa5030ec473287388a3679e83a9481170cc5ac48c63817818",
++        "res://assets/models/StarAtlasSpecialty_103_book_cover_clay.png.import": "529230b975918dcb9585ebfa928461681db0fc54703f1bce403f823abfb09a7e",
++        "res://assets/models/StarAtlasSpecialty_103_book_cover_ochre.png.import": "8645b41de4e33ded5a11fb84e1ce3bf4c31859aabd4e003575de8581d1c5369f",
++        "res://assets/models/StarAtlasSpecialty_103_book_cover_teal.png.import": "9131452eb76a4b9f0a7955ba7a0e09fb171956a5d8c2d8295c3f6c7959a4cd76",
++        "res://assets/models/StarAtlasSpecialty_103_book_label_paper.png.import": "89402e50ed37ee878fa358afe445dda267428180612b71ad567cdf675e650c8b",
++        "res://assets/models/StarAtlasSpecialty_103_book_paper_edges.png.import": "efe64bbce3604847a86ac520628edadb54b65c130e895b21fb1f56ca8aac9ff3",
++        "res://assets/models/StarAtlasSpecialty_103_book_print_ink.png.import": "e5f5474f28d35b922135e85c628406d142cd9d4d88035a77bf783c5b3692d842",
++        "res://assets/models/StarAtlasSpecialty_103_champagne_metal.png.import": "340419161889c29e452128d59e015cf920f8202e6d2456b44b9d33c08011bea0",
++        "res://assets/models/StarAtlasSpecialty_103_dark_rubber.png.import": "90678711dc53fd21073536b16390f3e723ab813851aa76cde68c2e0378a5dac3",
++        "res://assets/models/StarAtlasSpecialty_103_folio_chart_page.png.import": "6c68e27024f54a182f67f5747558d08d77c515d2b7786b3908d0e4347ab14367",
++        "res://assets/models/StarAtlasSpecialty_103_folio_text_page.png.import": "a8cb8d3f8c338cdba1adfa46aed1cf0b6a35b3b32576e4fd4f79aff00094620a",
++        "res://assets/models/StarAtlasSpecialty_103_ivory_enamel.png.import": "65611bdbe9f13e9b5e915b1873739ef784ad5b7e3c9f90edf28bca1aa356d39d",
++        "res://assets/models/StarAtlasSpecialty_103_label_service.png.import": "752152716fa06b45563e29468c4aa5122c5d5de0a081e0ff052301f7ad25f26c",
++        "res://assets/models/StarAtlasSpecialty_103_oatmeal_weave.png.import": "33cbadb56e10708f17e61d7adea8af394339ea20069b05aca84b7d04513979bf",
++        "res://assets/models/StarAtlasSpecialty_103_opal_diffuser.png.import": "c3beec99ff10cb9ae8a30992e51a229dce698f38a799b4881dcd5f92459fd881",
++        "res://assets/models/StarAtlasSpecialty_103_reflector.png.import": "e7170667c437aedff870db13bf9c5639858d428f6182ff95b28e09ea5afc6179",
++        "res://assets/models/StarAtlasSpecialty_103_teal_weave.png.import": "c04265aade3d1dadcb41a99ff8243d25d370acdb40447a0cb08ea5015bc4cb02",
++        "res://assets/models/StarAtlasSpecialty_103_warm_stone.png.import": "7a687a0dc321807e424cf2d43fb57f0705bd8869cadea086ca6225ca2d3fae8a",
++        "res://assets/models/StarAtlasSpecialty_103_warm_walnut.png.import": "24805a036c2e5e6d3be6d59c107d40ba74854dc0ad04c0152bc38c9ca8f143b3"
++      },
++      "source_nodes": 368,
++      "decoded_texture_bytes": 5341184,
++      "estimate_note": "Conservative data allowance; not a hard native/GPU allocation cap. First draw not precompiled."
++    }
++  }
++}
+--- /dev/null
++++ b/Game/scripts/route_activation_20261023/prewarm_limits.gd
+@@ -0,0 +1,70 @@
++extends RefCounted
++# Experimental admission only. Unknown sources never allocate a speculative scene.
++# Byte allowance is a conservative source-derived estimate, NOT a measured RID/GPU cap.
++const MANIFEST := "res://scripts/route_activation_20261023/prewarm_estimates.json"
++const MAX_NODES := 2048
++const MAX_MESHES := 1024
++const MAX_FACE_VERTICES := 240000
++const MAX_RESOURCES := 4096
++const MAX_ESTIMATED_BYTES := 96 * 1024 * 1024
++static var estimates:Dictionary={}
++static func enabled()->bool:
++ return OS.get_environment("ASTRAEA_ROOM_PREWARM")=="1" and OS.get_environment("ASTRAEA_STAGED_ROOM_ACTIVATION")=="1" and OS.get_environment("ASTRAEA_ROOM_ACTIVATION_QUEUE")=="1" and OS.get_environment("ASTRAEA_PACKED_CONTACT_FACES")=="1"
++static func source_path(r:Dictionary)->String:
++ var identity:Node=r.identity.get_ref()
++ if identity==null:return ""
++ if r.kind=="private_detail":return "res://assets/models/"+str(r.entry.record.model_file)
++ if identity.has_meta("deferred_visual_scene"):return identity.get_meta("deferred_visual_scene").resource_path
++ return str(identity.get_meta("deferred_visual_path",""))
++static func generation(r:Dictionary)->String:
++ var owner:Node=r.owner.get_ref();var identity:Node=r.identity.get_ref()
++ if owner==null or identity==null:return ""
++ var policy:Variant=r.entry.record if r.kind=="private_detail" else identity.get_meta("deferred_visual_collision_policy",{})
++ var source_id:int=identity.get_meta("deferred_visual_scene").get_instance_id() if identity.has_meta("deferred_visual_scene") else 0
++ return var_to_bytes([owner.get_instance_id(),identity.get_instance_id(),source_path(r),source_id,policy,r.entry.get("prewarm_generation",0),identity.get_meta("deferred_visual_meshes",0),OS.get_environment("ASTRAEA_PACKED_CONTACT_FACES"),OS.get_environment("ASTRAEA_PRIVATE_CONTACT_SINGLE_PASS")]).hex_encode().sha256_text()
++static func estimate(r:Dictionary)->Dictionary:
++ if not enabled() or not FileAccess.file_exists(MANIFEST):return {}
++ if estimates.is_empty():
++  var parsed:Variant=JSON.parse_string(FileAccess.get_file_as_string(MANIFEST))
++  if not parsed is Dictionary:return {}
++  estimates=parsed.get("sources",{})
++ var record:Dictionary=estimates.get(source_path(r),{})
++ if record.is_empty():return {}
++ for field in ["nodes","meshes","face_vertices","resources","estimated_bytes"]:
++  if not record.has(field) or int(record[field])<=0:return {}
++ if int(record.nodes)>MAX_NODES or int(record.meshes)>MAX_MESHES or int(record.face_vertices)>MAX_FACE_VERTICES or int(record.resources)>MAX_RESOURCES or int(record.estimated_bytes)>MAX_ESTIMATED_BYTES:return {}
++ return record
++static func admission(r:Dictionary)->Dictionary:
++ var record:Dictionary=estimate(r)
++ if record.is_empty() or not verified(record):return {}
++ return record.duplicate(true)
++static func verified(record:Dictionary)->bool:
++ var dependencies:Dictionary=record.get("dependencies",{})
++ if dependencies.is_empty():return false
++ for file in dependencies:
++  if not FileAccess.file_exists(file) or FileAccess.get_sha256(file)!=str(dependencies[file]):return false
++ return true
++static func actual_within_caps(visual:Node3D,record:Dictionary)->bool:
++ # Check before face arrays/material overrides/collision allocation. The source/import
++ # receipt admits scene allocation; these checks fail closed on an importer mismatch.
++ var nodes:=visual.find_children("*","",true,false)
++ if nodes.size()+1>int(record.nodes) or nodes.size()+1>MAX_NODES:return false
++ var mesh_count:=0;var face_vertices:=0;var resources:Dictionary={}
++ for node in nodes:
++  if not node is MeshInstance3D:continue
++  mesh_count+=1
++  if node.mesh==null:continue
++  if not node.mesh is ArrayMesh:return false
++  var mesh:ArrayMesh=node.mesh
++  resources[mesh.get_instance_id()]=true
++  for surface in range(mesh.get_surface_count()):
++   var count:int=mesh.surface_get_array_index_len(surface)
++   face_vertices+=count if count>0 else mesh.surface_get_array_len(surface)
++   var material:Material=node.get_active_material(surface)
++   if material!=null:
++    resources[material.get_instance_id()]=true
++    if material is BaseMaterial3D:
++     for slot in range(BaseMaterial3D.TEXTURE_MAX):
++      var texture:Texture2D=material.get_texture(slot)
++      if texture!=null:resources[texture.get_instance_id()]=true
++ return mesh_count<=int(record.meshes) and mesh_count<=MAX_MESHES and face_vertices<=int(record.face_vertices) and face_vertices<=MAX_FACE_VERTICES and resources.size()+mesh_count*3+4<=int(record.resources) and resources.size()+mesh_count*3+4<=MAX_RESOURCES
+--- a/Game/scripts/route_activation_20261023/scheduler.gd
++++ b/Game/scripts/route_activation_20261023/scheduler.gd
+@@ -14,6 +14,89 @@
+ var staged_cancelled:=0
+ var staged_failed:=0
+ var staged_max_slice_us:=0
++var warm_candidate:Dictionary={}
++var prewarm_hits:=0
++var prewarm_misses:=0
++var prewarm_rejected:=0
++var prewarm_promotions:=0
++var prewarm_verify_us:=0
++var rejected_generations:Dictionary={}
++var safety_overlaps:=0
++var limits=load("res://scripts/route_activation_20261023/prewarm_limits.gd")
++func prewarm_enabled()->bool:return limits.enabled()
++func request_key(owner:Node,identity:Node)->String:return str(owner.get_instance_id())+":"+str(identity.get_instance_id())
++func offer_prewarm(owner:Node,entry:Dictionary,identity:Node,kind:String,interest:bool,distance_squared:float)->void:
++ entry.prewarm_interest=interest and prewarm_enabled()
++ var key:=request_key(owner,identity)
++ if not entry.prewarm_interest:
++  if warm_candidate.get("key", "")==key:warm_candidate.clear()
++  return
++ if active_job!=null or keys.has(key):return
++ var r:Dictionary={"owner":weakref(owner),"entry":entry,"key":key,"kind":kind,"identity":weakref(identity),"mode":"warm","distance_squared":distance_squared}
++ if not load("res://scripts/route_activation_20261023/staged_job.gd").supported(r):return
++ if limits.estimate(r).is_empty():return
++ if rejected_generations.get(key, "")==limits.generation(r):return
++ if warm_candidate.is_empty() or not bool(warm_candidate.entry.get("prewarm_interest",false)) or distance_squared<float(warm_candidate.distance_squared):warm_candidate=r
++func consume_or_cancel(owner:Node,entry:Dictionary,identity:Node,kind:String)->bool:
++ var arrival_started:=Time.get_ticks_usec()
++ if not prewarm_enabled():return false
++ var key:=request_key(owner,identity)
++ if warm_candidate.get("key", "")==key:warm_candidate.clear()
++ # A real arrival promotes the same owner. It must not be discarded as duplicate.
++ if active_job!=null and active_job.request.key==key:
++  prewarm_promotions+=1
++  if active_job.phase=="ready":
++   var ready:RefCounted=active_job;active_job=null;keys.erase(key)
++   var begin:=Time.get_ticks_usec()
++   var consumed:bool=ready.consume_ready()
++   var cost:=Time.get_ticks_usec()-begin
++   ready.metrics.append({"stage":"consume_ready","us":cost,"frame":Engine.get_process_frames(),"overrun":cost>SOFT_BUDGET_US})
++   if consumed:
++    prewarm_hits+=1;completed+=1;_record_warm(ready,"consumed")
++    identity.set_meta("last_activation_metrics",{"staged":true,"prewarmed":true,"consume_us":cost,"slices":ready.metrics.duplicate(true)})
++    var total_cost:=Time.get_ticks_usec()-arrival_started
++    recent[-1].consume_total_us=total_cost
++    identity.get_meta("last_activation_metrics").consume_total_us=total_cost
++    max_activation_us=maxi(max_activation_us,total_cost)
++    if total_cost>SOFT_BUDGET_US:overruns+=1
++    return true
++   ready.cancelled=true;ready.dispose();_record_warm(ready,"invalidated")
++  else:
++   # No cancellation API exists for threaded I/O: retain this owner until drained.
++   # Synchronous safety fallback can temporarily overlap this one orphan.
++   active_job.cancelled=true;safety_overlaps+=1
++ entry.prewarm_interest=false
++ prewarm_misses+=1
++ return false
++func record_cold(kind:String,identity:Node,started:int)->void:
++ var cost:=Time.get_ticks_usec()-started;max_activation_us=maxi(max_activation_us,cost);completed+=1
++ if cost>SOFT_BUDGET_US:overruns+=1
++ recent.append({"kind":kind,"room":str(identity.name),"prewarm":"cold_fallback","activation_us":cost,"frame":Engine.get_process_frames()})
++ if recent.size()>64:recent.pop_front()
++func _record_warm(job:RefCounted,state:String)->void:
++ recent.append({"kind":job.request.kind,"prototype":job.path,"prewarm":state,"committed":job.committed,"wall_us":Time.get_ticks_usec()-job.started_usec,"slices":job.metrics.duplicate(true),"frame":Engine.get_process_frames()})
++ if recent.size()>64:recent.pop_front()
++func _start_warm()->void:
++ if warm_candidate.is_empty() or not prewarm_enabled():warm_candidate.clear();return
++ var r:Dictionary=warm_candidate;warm_candidate={}
++ if r.owner.get_ref()==null or r.identity.get_ref()==null:return
++ if not bool(r.entry.get("prewarm_interest",false)):return
++ var verification_started:=Time.get_ticks_usec()
++ var estimate:Dictionary=limits.admission(r)
++ var verification_us:=Time.get_ticks_usec()-verification_started;prewarm_verify_us+=verification_us
++ staged_max_slice_us=maxi(staged_max_slice_us,verification_us)
++ if verification_us>SOFT_BUDGET_US:overruns+=1
++ if estimate.is_empty():
++  recent.append({"kind":r.kind,"prewarm":"admission_rejected","verification_us":verification_us,"frame":Engine.get_process_frames()})
++  if recent.size()>64:recent.pop_front()
++  prewarm_rejected+=1;rejected_generations[r.key]=limits.generation(r)
++  if rejected_generations.size()>64:rejected_generations.erase(rejected_generations.keys()[0])
++  return
++ r.admission=estimate
++ var job:RefCounted=load("res://scripts/route_activation_20261023/staged_job.gd").new();job.configure(r);job.started_usec=verification_started
++ job.metrics.append({"stage":"admission_verify","us":verification_us,"frame":Engine.get_process_frames(),"overrun":verification_us>SOFT_BUDGET_US})
++ if not job.wanted():job.dispose();return
++ keys[r.key]=true;active_job=job;_step_active_job()
+ static func obtain(host:Node3D)->Node:
+  if OS.get_environment("ASTRAEA_ROOM_ACTIVATION_QUEUE")!="1"or not host.get_meta("runtime_ready",false):return null
+  var systems:Node=host.get_node("ShipSystems")
+@@ -21,19 +104,26 @@
+  if existing!=null:return existing
+  var result:Node=load("res://scripts/route_activation_20261023/scheduler.gd").new();result.name="VisibilityActivationQueue";systems.add_child(result);return result
+ func enqueue(owner:Node,entry:Dictionary,identity:Node,kind:String)->void:
+- var key:=str(owner.get_instance_id())+":"+str(identity.get_instance_id())
++ var key:=request_key(owner,identity)
++ if prewarm_enabled():
++  # In prewarm mode a cold visible arrival never waits behind speculative work.
++  if consume_or_cancel(owner,entry,identity,kind):return
++  owner._activate_pending_visibility(entry);return
+  if keys.has(key):duplicates+=1;return
+  keys[key]=true;pending.append({"owner":weakref(owner),"entry":entry,"key":key,"kind":kind,"identity":weakref(identity)});peak_pending=maxi(peak_pending,pending.size())
+ func _process(_delta:float)->void:
+  if active_job!=null:
+-  _step_active_job();return
++  # Actual visibility queued before opt-in/toggle takes priority over speculation.
++  if not pending.is_empty() and active_job.request.get("mode", "visibility")=="warm":active_job.cancelled=true
++  _step_active_job()
++  return # Preserve one active-job slice/queued completion per process frame.
+  var begin:=Time.get_ticks_usec()
+  while not pending.is_empty()and Time.get_ticks_usec()-begin<SOFT_BUDGET_US:
+   var request:Dictionary=pending.pop_front()
+   var owner:Node=request.owner.get_ref()
+   if owner==null or not owner.is_inside_tree():keys.erase(request.key);stale+=1;continue
+   var job_script=load("res://scripts/route_activation_20261023/staged_job.gd")
+-  if OS.get_environment("ASTRAEA_STAGED_ROOM_ACTIVATION")=="1" and job_script.supported(request):
++  if not prewarm_enabled() and OS.get_environment("ASTRAEA_STAGED_ROOM_ACTIVATION")=="1" and job_script.supported(request):
+    active_job=job_script.new();active_job.configure(request);_step_active_job();return
+   keys.erase(request.key)
+   var started:=Time.get_ticks_usec()
+@@ -46,7 +136,8 @@
+   var details:Dictionary=identity.get_meta("last_activation_metrics",{}) if identity!=null else {}
+   recent.append({"kind":request.kind,"room":str(identity.name) if identity!=null else "freed","activation_us":cost,"frame":Engine.get_process_frames(),"stages":details.duplicate(true)})
+   if recent.size()>64:recent.pop_front()
+-  break # At most one actual activation across BOTH managers per frame.
++  return # At most one queued activation across BOTH managers per frame.
++ if pending.is_empty() and active_job==null:_start_warm()
+ func _step_active_job()->void:
+  var start:=Time.get_ticks_usec()
+  var done:bool=active_job.step(SOFT_BUDGET_US)
+@@ -63,6 +154,11 @@
+  if recent.size()>64:recent.pop_front()
+  active_job=null
+ func _notification(what:int)->void:
+- if what==NOTIFICATION_PREDELETE and active_job!=null:active_job.dispose()
++ if what==NOTIFICATION_PREDELETE and active_job!=null:
++  # Teardown cannot leave an outstanding loader owner. This may block shutdown;
++  # ordinary cancellation polls nonblocking until the same request completes.
++  if active_job.loaded_request:
++   ResourceLoader.load_threaded_get(active_job.path);active_job.loaded_request=false
++  active_job.dispose()
+ func statistics()->Dictionary:
+- return {"staged_active":active_job!=null,"staged_cancelled":staged_cancelled,"staged_failed":staged_failed,"staged_max_slice_us":staged_max_slice_us,"pending":pending.size(),"peak_pending":peak_pending,"completed":completed,"stale":stale,"duplicates":duplicates,"max_activation_us":max_activation_us,"overruns":overruns,"recent":recent.duplicate(true),"hard_frame_time_guarantee":false}
++ return {"prewarm_enabled":prewarm_enabled(),"prewarm_ready":active_job!=null and active_job.phase=="ready","prewarm_lease_limit":1,"prewarm_hits":prewarm_hits,"prewarm_misses":prewarm_misses,"prewarm_rejected":prewarm_rejected,"prewarm_promotions":prewarm_promotions,"prewarm_verify_us":prewarm_verify_us,"safety_overlaps":safety_overlaps,"estimated_byte_limit":limits.MAX_ESTIMATED_BYTES,"memory_hard_limit":false,"staged_active":active_job!=null,"staged_cancelled":staged_cancelled,"staged_failed":staged_failed,"staged_max_slice_us":staged_max_slice_us,"pending":pending.size(),"peak_pending":peak_pending,"completed":completed,"stale":stale,"duplicates":duplicates,"max_activation_us":max_activation_us,"overruns":overruns,"recent":recent.duplicate(true),"hard_frame_time_guarantee":false}
+--- a/Game/scripts/route_activation_20261023/staged_job.gd
++++ b/Game/scripts/route_activation_20261023/staged_job.gd
+@@ -19,6 +19,9 @@
+ var loaded_request:=false
+ var reuse:=false
+ var started_usec:=0
++var lease_generation:=""
++var admission:Dictionary={}
++var limits=load("res://scripts/route_activation_20261023/prewarm_limits.gd")
+ var cache=load("res://scripts/static_contact_cache.gd")
+ static func supported(r:Dictionary)->bool:
+  if OS.get_environment("ASTRAEA_PACKED_CONTACT_FACES")!="1":return false
+@@ -31,26 +34,56 @@
+  if script_path=="res://scripts/night_garden_residency_20261022/manager.gd":return not owner.night_files.has(str(r.entry.record.model_file))
+  return false
+ func configure(r:Dictionary)->void:
+- request=r;started_usec=Time.get_ticks_usec()
++ request=r;started_usec=Time.get_ticks_usec();lease_generation=limits.generation(r);admission=r.get("admission",{})
+  var identity:Node=r.identity.get_ref()
+  if r.kind=="private_detail":path="res://assets/models/"+str(r.entry.record.model_file)
+  elif identity.has_meta("deferred_visual_scene"):
+   scene=identity.get_meta("deferred_visual_scene");path=scene.resource_path;phase="instantiate"
+  else:path=str(identity.get_meta("deferred_visual_path"))
+-func wanted()->bool:
++func valid_identity()->bool:
+  var owner:Node=request.owner.get_ref();var identity:Node=request.identity.get_ref()
+  if owner==null or identity==null or not owner.is_inside_tree():return false
+- if request.kind=="received_room":return not request.entry.attached and not identity.has_meta("resident_visual") and request.entry.witness.is_on_screen()
+- return identity.is_inside_tree() and not is_instance_valid(request.entry.detail) and request.entry.witness.is_on_screen()
++ if limits.generation(request)!=lease_generation:return false
++ if request.kind=="received_room":return request.entry.room==identity and not request.entry.attached and not identity.has_meta("resident_visual") and identity.get_parent()==null and is_instance_valid(request.entry.parent) and request.entry.parent.is_inside_tree()
++ return request.entry.home.get_ref()==identity and identity.is_inside_tree() and not is_instance_valid(request.entry.detail)
++func wanted()->bool:
++ if not valid_identity():return false
++ if request.get("mode", "visibility")=="warm":return limits.enabled() and bool(request.entry.get("prewarm_interest",false))
++ return request.entry.witness.is_on_screen()
++func consume_ready()->bool:
++ # Called on the main thread before any original visibility/near/teleport loader.
++ # Immutable source/import hashes were verified before allocation. Source/policy
++ # updates must bump entry.prewarm_generation; cheap exact identity/generation
++ # comparison below avoids filesystem hashing on the arrival path.
++ # Detach scheduler ownership before calling this; no await/re-entrant queue work.
++ if phase!="ready" or not valid_identity() or not limits.enabled() or admission.is_empty():return false
++ _commit()
++ dispose()
++ return committed
++func _commit()->void:
++ if not valid_identity():cancelled=true;dispose();phase="done";return
++ var owner:Node=request.owner.get_ref();var identity:Node3D=request.identity.get_ref()
++ if request.kind=="received_room":
++  visual.name="ResidentAuthoredInterior";identity.add_child(visual);request.entry.parent.add_child(identity);request.entry.attached=true;request.entry.hidden_seconds=0.0;identity.set_meta("resident_visual",visual);owner.changes+=1
++ else:
++  visual.name="ResidentPrivateFurnishings";identity.add_child(visual);request.entry.detail=visual;request.entry.hidden=0.0;owner.loads+=1
++ for body:Node3D in visual.find_children("*","StaticBody3D",true,false):body.force_update_transform()
++ committed=true;visual=null;phase="done"
++ request.entry.prewarm_interest=false
++ var identity_metrics:Node=request.identity.get_ref()
++ identity_metrics.set_meta("last_activation_metrics",{"staged":true,"prewarmed":request.get("mode", "visibility")=="warm","room":str(identity_metrics.name),"prototype":path,"wall_us":Time.get_ticks_usec()-started_usec,"slices":metrics.duplicate(true)})
+ func dispose()->void:
+  if is_instance_valid(visual):visual.free()
+  visual=null;scene=null;meshes.clear();opaque.clear();poses.clear();faces.clear();shape=null
+- for old_key in cache.shapes.keys():
+-  if cache.shapes[old_key].get_ref()==null:cache.shapes.erase(old_key)
++ # A successful transfer freed nothing. Do not scan the global weak cache at arrival.
++ if not committed:
++  for old_key in cache.shapes.keys():
++   if cache.shapes[old_key].get_ref()==null:cache.shapes.erase(old_key)
+ func stop(reason:String)->void:
+  failed=true;push_error("Staged activation rejected: "+reason);dispose();phase="done"
+ func step(budget:int)->bool:
+  if not wanted():cancelled=true
++ if phase=="ready" and not cancelled:return false
+  # Godot cannot cancel a threaded request: drain completion without instantiation before next job.
+  if cancelled and not loaded_request:
+   var cancel_start:=Time.get_ticks_usec();dispose();phase="done"
+@@ -72,8 +105,9 @@
+   "instantiate":
+    visual=scene.instantiate();scene=null
+    if visual==null:stop("null instance")
++   elif not admission.is_empty() and not limits.actual_within_caps(visual,admission):stop("prewarm actual cap mismatch")
+    else:meshes=visual.find_children("*","MeshInstance3D",true,false);phase="configure"
+-   if request.kind=="received_room" and meshes.size()!=int(request.identity.get_ref().get_meta("deferred_visual_meshes")):stop("mesh count")
++   if phase!="done" and request.kind=="received_room" and meshes.size()!=int(request.identity.get_ref().get_meta("deferred_visual_meshes")):stop("mesh count")
+   "configure":
+    var owner:Node=request.owner.get_ref();var identity:Node=request.identity.get_ref()
+    var interner=owner.host.get("exact_texture_intern")
+@@ -109,7 +143,7 @@
+     cursor=0
+     var reference:WeakRef=cache.shapes.get(key);shape=reference.get_ref() if reference!=null else null
+     reuse=shape!=null
+-    phase="commit" if opaque.is_empty() else ("body" if reuse else "faces")
++    phase="body" if opaque.is_empty() else ("body" if reuse else "faces")
+   "faces":
+    while cursor<opaque.size():
+     var mesh:MeshInstance3D=opaque[cursor]
+@@ -120,17 +154,14 @@
+    # Native shape construction cannot be preempted; its measured overrun is exposed.
+    var triangles:=ConcavePolygonShape3D.new();triangles.set_faces(faces);shape=triangles;faces.clear();cache.shapes[key]=weakref(shape);phase="body"
+   "body":
+-   if reuse:cache.shapes_reused+=1
+-   var body:=StaticBody3D.new();body.name="RoomStaticContacts";visual.add_child(body)
+-   var collider:=CollisionShape3D.new();collider.name="SharedRoomTriangles";collider.shape=shape;body.add_child(collider);cache.contacts_created+=1;phase="commit"
+-  "commit":
+-   var owner:Node=request.owner.get_ref();var identity:Node3D=request.identity.get_ref()
+-   if request.kind=="received_room":
+-    visual.name="ResidentAuthoredInterior";identity.add_child(visual);request.entry.parent.add_child(identity);request.entry.attached=true;request.entry.hidden_seconds=0.0;identity.set_meta("resident_visual",visual);owner.changes+=1
+-   else:
+-    visual.name="ResidentPrivateFurnishings";identity.add_child(visual);request.entry.detail=visual;request.entry.hidden=0.0;owner.loads+=1
+-   for body:Node3D in visual.find_children("*","StaticBody3D",true,false):body.force_update_transform()
+-   committed=true;visual=null;phase="done"
++   if not opaque.is_empty():
++    if reuse:cache.shapes_reused+=1
++    var body:=StaticBody3D.new();body.name="RoomStaticContacts";visual.add_child(body)
++    var collider:=CollisionShape3D.new();collider.name="SharedRoomTriangles";collider.shape=shape;body.add_child(collider);cache.contacts_created+=1
++   # First collider/shape binding has happened. Exact visual resources stay pinned.
++   # This does not certify shader compilation or first draw/render readiness.
++   phase="ready" if request.get("mode", "visibility")=="warm" else "commit"
++  "commit":_commit()
+  var elapsed:=Time.get_ticks_usec()-started
+  if label!="wait" or phase!="wait":metrics.append({"stage":label,"us":elapsed,"frame":Engine.get_process_frames(),"overrun":elapsed>budget})
+  if phase=="done":
+--- a/Game/scripts/startup_residency_20261020/private_detail_residency.gd
++++ b/Game/scripts/startup_residency_20261020/private_detail_residency.gd
+@@ -54,7 +54,7 @@
+  if not entry.witness.is_on_screen():return
+  var queue:Node=load("res://scripts/route_activation_20261023/scheduler.gd").obtain(host)
+  var home:Node=entry.home.get_ref()
+- if queue!=null and home!=null:queue.enqueue(self,entry,home,"private_detail")
++ if queue!=null and home!=null and not queue.prewarm_enabled():queue.enqueue(self,entry,home,"private_detail")
+  else:_load_entry(entry)
+ func _activate_pending_visibility(entry:Dictionary)->bool:
+  var home:Node=entry.home.get_ref()
+@@ -65,6 +65,9 @@
+  if is_instance_valid(entry.detail): return
+  var home: Node3D=entry.home.get_ref()
+  if home==null:return
++ var activation_started:=Time.get_ticks_usec()
++ var queue:Node=load("res://scripts/route_activation_20261023/scheduler.gd").obtain(host)
++ if queue!=null and queue.consume_or_cancel(self,entry,home,"private_detail"):return
+  # The unchanged helper still runs its presentation/collision policy gates.
+  var helper:="res://scripts/route_activation_20261023/private_visual.gd"if OS.get_environment("ASTRAEA_PRIVATE_CONTACT_SINGLE_PASS")=="1"else "res://scripts/star_atlas_specialty_first.gd"
+  var detail:Node3D=load(helper).contact_visual(home,str(entry.record.model_file))
+@@ -78,6 +81,7 @@
+  entry.detail=detail
+  entry.hidden=0.0
+  loads+=1
++ if queue!=null and queue.prewarm_enabled():queue.record_cold("private_detail",home,activation_started)
+ func _near(point: Vector3,box: AABB,margin: float) -> bool:
+  return point.distance_squared_to(point.clamp(box.position,box.end))<=margin*margin
+ func prepare_position(point: Vector3) -> void:
+@@ -110,6 +114,15 @@
+  for request in requests:
+   if request.near:_load_entry(request.entry)
+   else:_load_visible(request.entry)
++ # Use the existing full-3D safety neighborhoods, not synthetic visibility.
++ var queue:Node=load("res://scripts/route_activation_20261023/scheduler.gd").obtain(host)
++ if queue!=null:
++  for entry in entries:
++   var home:Node=entry.home.get_ref()
++   if home==null:continue
++   var interest:bool=not is_instance_valid(entry.detail) and not entry.witness.is_on_screen() and _near(actor.global_position,entry.bounds,KEEP)
++   var distance:float=actor.global_position.distance_squared_to(actor.global_position.clamp(entry.bounds.position,entry.bounds.end))
++   queue.offer_prewarm(self,entry,home,"private_detail",interest,distance)
+ func _release_entry(entry: Dictionary) -> void:
+  entry.detail.free()
+  entry.detail=null
