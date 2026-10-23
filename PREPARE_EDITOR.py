@@ -17,7 +17,7 @@ import sys
 import tempfile
 import zipfile
 
-INPUTS_SHA256 = '578a669937e0ea8fd039d75c6fea7088cf624e25c82c6b6305f09e6c514b4230'
+INPUTS_SHA256 = '76fa46b7e2154aff72aa5576f354a69d0fe85a1f198cea0520e80378c530050d'
 CHUNK = 4 * 1024 * 1024
 
 
@@ -300,7 +300,7 @@ def run(repo, check_only=False):
 def receipt(repo, pins, missing, created, complete, check_only=False):
     return {'status': 'SOURCE_PREPARATION_PASS' if complete else 'PREPARATION_REQUIRED',
             'source_commit': source_commit(repo), 'source_branch_expected': pins['source_branch'],
-            'manifest_sha256': pins['manifest']['sha256'], 'manifest_entries': 17566,
+            'manifest_sha256': pins['manifest']['sha256'], 'manifest_entries': pins['manifest']['entries'],
             'canonical_repairs_verified': 80, 'retained_targets': 11,
             'missing_before': len(missing), 'created': created, 'existing_files_overwritten': 0,
             'all_required_source_hashes_match': complete, 'check_only': check_only,

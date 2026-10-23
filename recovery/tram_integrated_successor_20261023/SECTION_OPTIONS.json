@@ -1,0 +1,60 @@
+{
+  "status": "NO_COMPLETE_LEGAL_SECTION_SELECTED",
+  "source_inputs": {
+    "retained_interface_sha256": "cae16a790206a5926d983d2e7119ec656276f87ca135e2a0359f9965b910b33b",
+    "body_file": "Game/source_derivatives/group4_boarding_safety_20261011/AST-TRM-G4-024_powered_portal_body_r001.glb",
+    "body_sha256": "dbbead1ab14e74096696abac71280b3e3ce4133f168d634d6858849110949349"
+  },
+  "protected_lower_band": {
+    "center_xz": [
+      0,
+      -72
+    ],
+    "radius_m": 2,
+    "min_y": 52.55,
+    "max_y": 56.55,
+    "source": "Game/tests/validate_atrium_supports.gd:34-46"
+  },
+  "existing": {
+    "soffit_y": 55.55,
+    "rail_head_y": 55.74,
+    "boarding_y": 56.1,
+    "upper_running_clearance_m": 4.0,
+    "header_y": [
+      60.18,
+      60.5
+    ],
+    "D10_actual_receiving_underside_y": 60.76,
+    "body_local_roof_y": 2.869999885559082
+  },
+  "vertical_raise_preserving_lower_test": {
+    "clearance_margin_m": 0.01,
+    "raise_m": 1.01,
+    "soffit_y": 56.56,
+    "rail_head_y": 56.75,
+    "boarding_y": 57.11,
+    "required_4m_running_top_y": 61.11,
+    "running_band_above_D10_m": 0.35,
+    "raised_header_top_y": 61.51,
+    "header_above_D10_m": 0.75,
+    "status": "INFEASIBLE_WITH_BOTH_4M_BANDS_AND_EXISTING_D10"
+  },
+  "reduced_upper_envelope_not_selected": {
+    "body_roof_y": 59.97999988555908,
+    "space_to_original_header_m": 0.2,
+    "available_envelope_to_original_header_m": 3.07,
+    "reason": "Would reduce the retained upper 4m clearance; forbidden as an unapproved test/criterion reduction."
+  },
+  "lateral_option_not_selected": {
+    "straight_section_minimum_separation_m": 3.75,
+    "additional_margin_m": 0.01,
+    "reason": "This 3.75m is only two non-overlapping plan-strip widths. Curvature, shoes, stations, rail body sweep and receiving owners require more; no complete legal adjacent corridor is established. Master chapter32 body564 protects the six-point alignment. Earlier alternative screen explicitly retained that protected route and did not certify a replacement.",
+    "retained_actual_north_dock": [
+      -5.6,
+      56.1,
+      -241
+    ],
+    "retained_north_catchment_z": -216
+  },
+  "implementation_boundary": "Keep current geometry, source pins, stationary-frame witness and all operation admission holds. A named coordinated rail/boarding/support successor must satisfy both bands and retained receiving geometry before adoption. No construction or motion acceptance from this arithmetic."
+}
