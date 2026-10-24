@@ -1,0 +1,14 @@
+{
+  "status": "FAILED_OCCLUDER_WITNESS",
+  "runtime_ready_reached": true,
+  "route_checks_reached": false,
+  "exit": "Owned engine terminated after assertion suspended the test coroutine; no engine crash",
+  "production_geometry_change": false,
+  "test_representation_error": "Mesh.get_faces -> Mesh.generate_triangle_mesh -> TriangleMesh.create snaps vertex coordinates to0.0001m; production static_room_occlusion uses raw surface_get_arrays in ship-local coordinates. Exact comparison was mixing representations.",
+  "official_sources": [
+    "https://raw.githubusercontent.com/godotengine/godot/4.6.3-stable/scene/resources/mesh.cpp",
+    "https://raw.githubusercontent.com/godotengine/godot/4.6.3-stable/core/math/triangle_mesh.cpp"
+  ],
+  "correction": "Use unsnapped surface arrays and ship-local transforms for the witness, retaining exact equality, area threshold and all floor/clearance criteria. Production occlusion implementation unchanged.",
+  "rerun_required": true
+}

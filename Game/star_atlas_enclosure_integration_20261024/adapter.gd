@@ -1,0 +1,76 @@
+extends RefCounted
+const P:="res://star_atlas_enclosure_integration_20261024/"
+const SOURCE:="res://star_atlas_enclosure_20261022/"
+const PLAN_SHA:="f43033ce35c13a0cff2e918a1b98616f5e892fed754037d5f1fc5d607d0c43dd"
+const RUNTIME_SHA:="2b6ee6022c8886ee3e353b93d5b1091cf7313c726dbf5f3142a3befeeda79311"
+static func v(a:Array)->Vector3:return Vector3(a[0],a[1],a[2])
+static func receiving_error(ship:Node3D,owners:Array)->String:
+ var upper:=ship.get_node_or_null("ShipSpace/Districts/D15_D17_StarAtlasUpper_WIP")
+ if upper==null or upper.get_meta("source_part_count",0)!=514 or upper.get_meta("new_guest_units",-1)!=0:return "StarAtlas514-part source owner differs"
+ if not upper.has_node("VIPDryClub_Source") or not upper.has_meta("star_atlas_living_commons_20261022"):return "StarAtlas retained VIP/living installation absent"
+ var living:Dictionary=upper.get_meta("star_atlas_living_commons_20261022")
+ if living.get("shared_asset_placements",0)!=98 or living.get("source_fixtures_rebound",0)!=12:return "StarAtlas furnished commons/fixture prerequisites differ"
+ var found:={}
+ for mesh:MeshInstance3D in upper.find_children("*","MeshInstance3D",true,false):
+  if str(mesh.get_meta("extras",{}).get("source_plan_sha256",""))=="90df467adbfe87c91889149399a77da0e2e0f07ab3e194dd60d880e009615875":found[str(mesh.name)]=mesh
+ var expected:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(P+"SURVIVING_OWNERS.json"))
+ # Compare Godot's imported node identities, not raw GLB names containing dots.
+ # This detached immutable source instance never enters physics or SceneTree.
+ var source_model:Node3D=load("res://assets/models/STAR_ATLAS_UPPER_COMMONS_r001.glb").instantiate()
+ var source_names:Array=[]
+ for mesh:MeshInstance3D in source_model.find_children("*","MeshInstance3D",true,false):
+  if not str(mesh.name) in expected.removed_by_retained_receiving:source_names.append(str(mesh.name))
+ source_model.free()
+ if source_names.size()!=510 or found.size()!=source_names.size():return "StarAtlas current geometry identity count differs"
+ for name in source_names:
+  if not found.has(name):return "StarAtlas current geometry identity absent: "+str(name)
+ # The original D15 wall nodes now own portal-bearing meshes. Compare their
+ # actual complete face arrays with the retained exact patch, not stale AABBs.
+ var delta:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(P+"HEADER_DELTA.json"))
+ var patch:Node3D=load(delta.current_patch_model).instantiate()
+ var patched_ok:=true
+ for name in ["SA_D15_NorthWall_0","SA_D15_SouthWall_0"]:
+  var source:=patch.find_child(name,true,false)as MeshInstance3D
+  if source==null or found[name].mesh.get_faces()!=source.mesh.get_faces():patched_ok=false
+ patch.free()
+ if not patched_ok:return "StarAtlas retained D15 portal mesh differs"
+ for row in owners:
+  var mesh:MeshInstance3D=found.get(row.name)
+  if mesh==null:return "StarAtlas receiving wall/floor absent: "+str(row.name)
+  var box:AABB=mesh.transform*mesh.get_aabb()
+  if box.position.distance_to(v(row.min))>.0001 or box.end.distance_to(v(row.max))>.0001:return "StarAtlas receiving wall/floor pose differs: "+str(row.name)
+ return ""
+static func build(ship:Node3D)->Node3D:
+ var pins:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(P+"CONTRACTS.json"))
+ for path in pins:
+  if FileAccess.get_sha256(path)!=pins[path]:push_error("StarAtlas enclosure exact source differs: "+str(path));return null
+ var owners:Array=JSON.parse_string(FileAccess.get_file_as_string(P+"OWNERS.json"))
+ var problem:=receiving_error(ship,owners)
+ if not problem.is_empty():push_error(problem);return null
+ var upper:Node3D=ship.get_node("ShipSpace/Districts/D15_D17_StarAtlasUpper_WIP")
+ var existing:=upper.get_node_or_null("StarAtlasEnclosure20261022")as Node3D
+ if existing!=null:return existing
+ var original:Array=[]
+ for mesh:MeshInstance3D in upper.find_children("*","MeshInstance3D",true,false):original.append({"node":mesh,"mesh":mesh.mesh,"transform":mesh.transform})
+ var packed:=load(SOURCE+"runtime/StarAtlasEnclosure_r001.scn")as PackedScene
+ if packed==null:push_error("Retained enclosure scene unavailable");return null
+ var result:=packed.instantiate()as Node3D
+ if result.find_children("*","MeshInstance3D",true,false).size()!=140 or not result.find_children("*","Light3D",true,false).is_empty():result.free();push_error("Retained140-part/no-new-light interface differs");return null
+ var replacements:Array=JSON.parse_string(FileAccess.get_file_as_string(P+"HEADER_RESOURCES.json"))
+ if replacements.size()!=2:result.free();push_error("Exact two-frieze delta missing");return null
+ for row in replacements:
+  var part:=result.find_child(row.name,true,false)as MeshInstance3D
+  var contacts:Array=part.find_children("*","CollisionShape3D",true,false)if part!=null else []
+  if part==null or contacts.size()!=1:result.free();push_error("Retained frieze interface differs");return null
+  part.mesh=load(row.mesh);contacts[0].shape=load(row.contact)
+  if absf(part.mesh.get_aabb().position.y-96.025)>.0001:result.free();push_error("Corrected frieze clearance differs");return null
+ upper.add_child(result)
+ for row in original:
+  if not is_instance_valid(row.node) or row.node.mesh!=row.mesh or row.node.transform!=row.transform:push_error("Enclosure changed a retained original");result.queue_free();return null
+ result.set_meta("integration_source","retained140_part_20261022")
+ result.set_meta("preserved_original_meshes",original.size())
+ result.set_meta("unchanged_enclosure_parts",138)
+ result.set_meta("portal_compatible_friezes",2)
+ result.set_meta("new_capacity",0)
+ result.set_meta("visual_accepted",false)
+ return result

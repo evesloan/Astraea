@@ -1,3 +1,9 @@
+## 2026-10-24 Retained Star Atlas enclosure — integrated unfinished source
+
+The selected main entry now includes the already-built140-part D15/D16 enclosure (120 coffer components,20 frieze/crown components;1288.71m²). Two frieze bottoms have a named native/contact successor clearing the later D15 portals;138 other parts remain exact. All later receiving removals/mesh replacements,98 living placements,85 ordinary-home registrations and existing fixture/capacity identities remain.
+
+The actual current ship reached readiness and passed all27 existing Star Atlas floor/clearance witnesses. Exact new ceiling-face registration in the unchanged production occlusion pass passed; this is not measured draw/FPS savings. The normal launcher/settings chain is retained, and editor preparation verifies17746 source contracts with no overwrite. Source map: `star_atlas_enclosure_integration_20261024/README.md`; eight-group completion and known held packages: `recovery/retained_enclosure_integration_20261024/COMPLETION_MAP.md` from repository root. Final visual, full gameplay/performance and a matching Windows executable remain open; the fixed1091d34e PCK predates this source.
+
 ## 2026-10-24 Tidal five-level surface and physical fixture connections — source-integrated WIP
 
 267 existing opaque surfaces now share six runtime material variants across five native families;13 later frontage surfaces retain their separate exact texture owner. Sixteen retained emitters (ten cove/two per level and six upper lanterns) are connected through the unchanged eight-source selector. All334 architecture meshes/contacts and67 glass/water/lens/soil surfaces remain unchanged. No geometry, room, rest, capacity or stop is added. Native material/light library is editable; the historical original Tidal lift-fit native path is absent locally, not claimed recovered.
