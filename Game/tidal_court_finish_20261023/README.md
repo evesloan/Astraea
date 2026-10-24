@@ -1,0 +1,9 @@
+# Tidal five-level court surface and fixture successor — WIP
+
+The candidate preserves all334 source architecture meshes and all contact/room identities.267 opaque surfaces use five shared material successors with their original texture bytes, UVs and coverage.67 glass/water/lens/soil surfaces remain unchanged.16 exact physical emitters (ten cove fixtures acrossD13–D17 and six upper court lanterns) receive real shadowed lights through the existing eight-source selector. No geometry, contact, home, rest or stop is added.
+
+Native `BlenderCatalogue/assets/tidal_court_finish_20261023/TidalCourtSurfaceAndFixtures_r001.blend` is an editable material/light library, not a reconstruction of the court. The definition's historical architecture_lift_fit.blend path is absent from this checkout; no recovery of that native file is claimed. Immutable retained runtime geometry and earlier native revisions are not replaced.
+
+1502 focused checks pass: source identity, complete geometry/contact preservation, shared exact textures, unchanged glass/privacy coverage, actual source emitter poses, all five deck light selections, eight-source cap, power-off and negative ownership/pose guards. This integrity fixture omits furnishings and unrelated neighbors and is not final visual evidence. The first two checks failed because a guard treated imported/reindexed/compressed vertices as original GLTF indices. Final guard checks the source owner's exact stored AABB/pose and locates each emitter from hash-pinned raw part bounds; compression and0.1mm tolerance are unchanged. Failed attempts remain retained.
+
+Source candidate only until the connected hook and contextual view are reviewed. No full startup, Windows, performance or final art claim. Reference plates6 and11 from the retained master were pixel-inspected for layered materials, local fixture light and legible gathering spaces; no reference imagery is a built artifact.
