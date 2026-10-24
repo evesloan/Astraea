@@ -17,7 +17,7 @@ import sys
 import tempfile
 import zipfile
 
-INPUTS_SHA256 = '6844a5beac8a870b0764acf5e6b3b7ba06149f2d05e3e255aec90899eee61949'
+INPUTS_SHA256 = '391e49f55f3c632871ff81c139835985ca3376d8ed70c4db5daa7c5da702df5f'
 CHUNK = 4 * 1024 * 1024
 
 

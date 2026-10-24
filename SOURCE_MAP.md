@@ -1,6 +1,6 @@
 # Astraea source and current build map
 
-The current integrated editor entry is `Game/project.godot` → `scenes/bootstrap_tidal_court_finish_20261023.tscn`. The bootstrap verifies packaged source contracts, starts the retained launcher/main menu/settings, and enters the selected presentation and ship. Runtime controls remain WASD/mouse, RMB focus, E interaction, M directory, F4 effects and Esc/menu controls. The existing launcher/settings implementation remains under `Game/scripts/delivery_shell_20261022` and the named entry scripts.
+The current integrated editor entry is `Game/project.godot` → `scenes/bootstrap_tidal_arrival_finish_20261024.tscn`. The bootstrap verifies packaged source contracts, starts the retained launcher/main menu/settings, and enters the selected presentation and ship. Runtime controls remain WASD/mouse, RMB focus, E interaction, M directory, F4 effects and Esc/menu controls. The existing launcher/settings implementation remains under `Game/scripts/delivery_shell_20261022` and the named entry scripts.
 
 ## Human editing
 
@@ -28,3 +28,7 @@ The selected private contact single-pass change is documented in `recovery/priva
 `recovery/consolidated_delivery_20261023` records the current artifact hashes, source/transport checks, isolated headless source startup, cleanup and export limits. The source startup reached actual readiness and verified the new Tidal owner; Windows launch, rendered visuals, walking stability and target FPS were not tested.
 
 The selected five-level Tidal court finish is a later source successor:267 existing opaque surfaces and16 retained physical emitter connections, with no added geometry or capacity. Its bounded view remains dark/plain and visually unaccepted. The frozen1091d34e PCK does not contain this later source finish. See Game/tidal_court_finish_20261023/README.md.
+
+## Current Tidal arrival source
+
+`Game/scripts/tidal_arrival_finish_integration_20261024` owns the selected bootstrap, launcher, presentation and one additive ship hook. The hook extends the retained court finish; earlier scripts remain unchanged. `Game/tidal_arrival_finish_20261024/README_r002.md` maps native/runtime assets and focused evidence. The old court scene reference is now present. Current source is newer than the immutable1091d34e PCK; full startup and final acceptance remain open.

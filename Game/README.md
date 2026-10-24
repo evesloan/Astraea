@@ -2,7 +2,7 @@
 
 The current working branch is `construction/group1-tidal-d15-20261010`; `main` is older retained fallback history. Follow the repository-root [README](../README.md) and run `python PREPARE_EDITOR.py` from the checkout root before opening this project. See [SOURCE_BUILD_STATUS.json](../SOURCE_BUILD_STATUS.json). Preparation, editor startup, full source closure and a matching playable build are separate gates; no current playable/60 FPS acceptance is claimed.
 
-The instructions below are retained historical documentation, not the current branch/main-scene/setup authority. Preserve the selected `bootstrap_star_atlas_living_20261022.tscn`; do not switch to an experimental main.
+The instructions below are retained historical documentation, not the current branch/main-scene/setup authority. Current selected source is `bootstrap_tidal_arrival_finish_20261024.tscn`, extending the retained Star Atlas and Tidal chain. Use the repository-root status as authority; historical scene references below are not setup instructions.
 
 ---
 
