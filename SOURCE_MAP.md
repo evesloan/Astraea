@@ -1,6 +1,6 @@
 # Astraea source and current build map
 
-The current integrated editor entry is `Game/project.godot` → `scenes/bootstrap_tidal_arrival_finish_20261024.tscn`. The bootstrap verifies packaged source contracts, starts the retained launcher/main menu/settings, and enters the selected presentation and ship. Runtime controls remain WASD/mouse, RMB focus, E interaction, M directory, F4 effects and Esc/menu controls. The existing launcher/settings implementation remains under `Game/scripts/delivery_shell_20261022` and the named entry scripts.
+The current integrated editor entry is `Game/project.godot` → `scenes/bootstrap_tram_section_integrated_20261024.tscn`. The bootstrap verifies packaged source contracts, starts the retained launcher/main menu/settings, and enters the selected presentation and ship. Runtime controls remain WASD/mouse, RMB focus, E interaction, M directory, F4 effects and Esc/menu controls. The existing launcher/settings implementation remains under `Game/scripts/delivery_shell_20261022` and the named entry scripts.
 
 ## Human editing
 
@@ -32,3 +32,9 @@ The selected five-level Tidal court finish is a later source successor:267 exist
 ## Current Tidal arrival source
 
 `Game/scripts/tidal_arrival_finish_integration_20261024` owns the selected bootstrap, launcher, presentation and one additive ship hook. The hook extends the retained court finish; earlier scripts remain unchanged. `Game/tidal_arrival_finish_20261024/README_r002.md` maps native/runtime assets and focused evidence. The old court scene reference is now present. Current source is newer than the immutable1091d34e PCK; full startup and final acceptance remain open.
+
+## Selected static tram section, 24 October
+
+`Game/scripts/tram_section_integration_20261024/ship_r003.gd` inherits the complete Tidal arrival chain. It copies only the actual consolidated startup method, changing two adapter calls with explicit failure stops. All later dynamic construction hooks remain. `Game/tram_section_successor_20261024/integration_r003.gd` owns the single normal Group4 assembly and original actor/control binding. Its geometry/controller predecessors and native editable section remain under the same dated Game/recovery namespaces.
+
+`recovery/tram_section_successor_20261024/root_r003/SELECTION.json` distinguishes selected static geometry, actual installed contact evidence, the test-host audio omission and held operation. Current menus/presentation are in the named integration directory; the normal listener-enabled World360 hierarchy is preserved. No motion or loaded-cart acceptance is inferred from static integration.
