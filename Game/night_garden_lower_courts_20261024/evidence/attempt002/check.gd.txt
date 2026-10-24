@@ -1,0 +1,84 @@
+extends SceneTree
+const P:="res://night_garden_lower_courts_20261024/"
+var checks:=0
+var failures:Array=[]
+func _initialize()->void:call_deferred("run")
+func check(ok:bool,label:String)->void:
+ checks+=1
+ if not ok:failures.append(label);push_error(label)
+func run()->void:
+ var main:Node=load("res://scenes/main_night_garden_lower_courts_integrated_20261024.tscn").instantiate();root.add_child(main)
+ var ship:Node3D=main.get_node("World360/Astraea")
+ while not ship.get_meta("runtime_ready",false):await process_frame
+ for frame in range(8):await physics_frame
+ paused=true
+ var district:Node3D=ship.get_node("ShipSpace/Districts/NightGardenLowerCourtEnds20261024")
+ var court:Node3D=ship.get_node("ShipSpace/Districts/NightGardenReceivingCourts20261022")
+ var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(P+"PLAN.json"))
+ check(district.get_meta("new_capacity")==0 and district.get_meta("new_upper_decks")==0,"No added capacity/upper decks")
+ check(district.get_meta("new_architectural_parts")==160 and district.get_meta("shared_plant_mesh_instances")==16 and district.get_meta("furniture_placements")==6,"Complete paired architectural/plant/furniture package")
+ var suite_root:=ship.get_node("ShipSpace/Districts/NightGardenLower17_20261024")
+ check(suite_root.get_meta("source_rooms")==17 and suite_root.get_meta("reserved_rests")==19 and suite_root.get_meta("door_ids")==53,"Connected bank unchanged")
+ var state:SceneState=(load(plan.original_court_source)as PackedScene).get_state()
+ var originals:={}
+ for i in range(state.get_node_count()):
+  var name:=str(state.get_node_name(i))
+  if name not in ["Fore_GuardBalusters","Aft_GuardBalusters"]:continue
+  for p in range(state.get_node_property_count(i)):
+   if state.get_node_property_name(i,p)=="mesh":originals[name]=state.get_node_property_value(i,p)
+ for row:Dictionary in plan.guard_trims:
+  var current:MeshInstance3D=court.find_child(row.mesh_name,true,false)
+  var original:ArrayMesh=originals[row.mesh_name]
+  for si in range(original.get_surface_count()):
+   var before:=original.surface_get_arrays(si);var after:=current.mesh.surface_get_arrays(si)
+   for k in range(Mesh.ARRAY_MAX):
+    if k!=Mesh.ARRAY_INDEX:check(var_to_bytes(before[k])==var_to_bytes(after[k]),"Exact retained guard attribute "+row.mesh_name+" "+str(k))
+   check(after[Mesh.ARRAY_INDEX].size()/3==row.surfaces[si].retained_triangles,"Only proven terminal triangles removed")
+   check(original.surface_get_material(si)==current.mesh.surface_get_material(si),"Original guard material shared")
+ for side in ["Fore","Aft"]:
+  for level in ["93","97.5"]:
+   for suffix in ["Top","Lower"]:check(court.find_child(side+"_End_"+level+"_"+suffix,true,false)!=null,"Upper end guard retained")
+   for suffix in ["Dado","TimberCap","ChampagneReveal"]:check(court.find_child("Resort_"+side+"_End_"+level+"_Top_"+suffix,true,false)!=null,"Upper end finish retained")
+ for prefix:String in plan.remove_guard_prefixes:
+  check(court.find_child(prefix+"_Top",true,false)==null and court.find_child(prefix+"_Lower",true,false)==null,"Connected ground terminal bars removed")
+ var state3d:=ship.get_world_3d().direct_space_state;var excluded:Array[RID]=[]
+ for body in ship.find_children("*","CharacterBody3D",true,false):excluded.append(body.get_rid())
+ for body in ship.find_children("*","RigidBody3D",true,false):excluded.append(body.get_rid())
+ var points:Array[Vector3]=[]
+ for sign in [-1,1]:
+  for z in range(89,112):points.append(Vector3(56.8,84,sign*z))
+  for z in [90.2,90.4,97.35,99.65,106.1,108.4]:points.append(Vector3(58.0,84,sign*z))
+ for point:Vector3 in points:
+  var ray:=PhysicsRayQueryParameters3D.create(point+Vector3.UP*.15,point-Vector3.UP*.35);ray.exclude=excluded;var hit:=state3d.intersect_ray(ray)
+  check(not hit.is_empty()and absf(hit.position.y-84)<.015,"Connected receiving floor "+str(point)+" "+str(hit.get("position","absent")))
+  var capsule:=CapsuleShape3D.new();capsule.radius=.3;capsule.height=1.8;var query:=PhysicsShapeQueryParameters3D.new();query.shape=capsule;query.margin=.001;query.exclude=excluded;query.transform.origin=point+Vector3.UP*.925
+  var hits:=state3d.intersect_shape(query,8);var names:Array=[]
+  for h in hits:names.append(str(h.collider.get_path()))
+  check(hits.is_empty(),"Receiving circulation/seat approach "+str(point)+" "+str(names))
+ # Actual outer guards remain physical; internal old/new seam is open.
+ for sign in [-1,1]:
+  for row in [[Vector3(56,84.4,sign*108),Vector3(54.5,84.4,sign*108)],[Vector3(67.8,84.4,sign*110),Vector3(69.2,84.4,sign*110)],[Vector3(56.8,84.4,sign*111.5),Vector3(56.8,84.4,sign*113)]]:
+   var ray:=PhysicsRayQueryParameters3D.create(row[0],row[1]);ray.exclude=excluded;var hit:=state3d.intersect_ray(ray)
+   check(not hit.is_empty()and district.is_ancestor_of(hit.collider),"New garden perimeter contact")
+ var plants:=0
+ for mesh:MeshInstance3D in district.find_children("*","MeshInstance3D",true,false):
+  if not mesh.has_meta("retained_mesh_owner"):continue
+  var source:MeshInstance3D=root.get_node(mesh.get_meta("retained_mesh_owner"));check(mesh.mesh==source.mesh,"Exact canopy resource shared")
+  var bounds:AABB=mesh.global_transform*mesh.get_aabb();check(bounds.position.x>=55 and bounds.end.x<=68.75 and bounds.position.y>=84.5 and bounds.end.y<=101.5,"Canopy inside authorized court volume");plants+=1
+ check(plants==16,"Four complete retained four-material canopies")
+ for row:Dictionary in plan.furniture:
+  var furniture:Node3D=district.get_node(row.name);var low:=INF
+  for mesh:MeshInstance3D in furniture.find_children("*","MeshInstance3D",true,false):
+   if mesh.mesh!=null:low=minf(low,(mesh.global_transform*mesh.get_aabb()).position.y)
+  check(absf(low-84)<.02,"Original catalogue furniture on floor "+row.name+" y="+str(low))
+ var budget:=ship.get_node("ShipSystems/LocalShadowSourceBudget");var pose:Vector3=budget.actor.global_position;var lighting:Array=[]
+ for sign in [-1,1]:
+  budget.actor.global_position=Vector3(56.8,84,sign*101);budget.refresh();var active:=0
+  for light:Light3D in budget.previously_active:
+   if district.is_ancestor_of(light):active+=1
+  check(budget.shadow_source_budget==8 and budget.previously_active.size()<=8,"Existing eight-source budget")
+  check(active>0,"Authored grove lights admitted from receiving path")
+  lighting.append({"side":sign,"court_sources_active":active,"total_active":budget.previously_active.size()})
+ budget.actor.global_position=pose;budget.refresh()
+ var result:={"status":"PASS"if failures.is_empty()else"FAIL","checks":checks,"failures":failures,"actual_main_runtime_ready":true,"new_parts":160,"new_floor_area_m2":610.5,"new_floor_regions":2,"new_upper_decks":0,"new_capacity":0,"route_floor_clearance_points":points.size(),"preserved_lower_bank_rooms":17,"canopy_mesh_instances_sharing_original_resources":plants,"architecture_batches":district.get_meta("architecture_batches"),"guard_successors":district.get_meta("guard_successors"),"lights":lighting,"final_visual_accepted":false,"full_gameplay_performance_accepted":false,"primary_structure_accepted":false,"scope":"Actual complete ship: paired receiving routes, physical outer guards, source-exact retained guard attributes, linked canopy bounds, furniture floors, existing lighting selector. No standalone scene or whole-ship acceptance claim."}
+ FileAccess.open(P+"evidence/INSTALLED_CHECK.json",FileAccess.WRITE).store_string(JSON.stringify(result,"  ")+"\n");print("LOWER_COURTS_INSTALLED ",JSON.stringify(result));main.free();await process_frame;quit(0 if failures.is_empty()else 1)

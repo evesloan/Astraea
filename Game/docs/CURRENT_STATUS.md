@@ -1,3 +1,11 @@
+## 2026-10-24 Paired lower Night Garden court ends — integrated unfinished source
+
+The selected main now extends the existing Y84 flanking gardens through |Z|90.3–112.5 to serve the four D14 inner outlooks beyond the old court ends. Two connected bases add610.5m²,160 architectural parts, four shared canopy groups and six retained catalogue furniture placements. Existing17 suites, upper galleries, hull and capacity remain unchanged. Only the two ground terminal guard interfaces change; all20 upper-end guard/finish meshes and other guard attributes remain exact.
+
+The actual complete ship passes219 focused installed checks, including58 floor/clearance points, physical perimeter contacts, shared-resource bounds, furniture floors and the unchanged eight-source light budget. Readiness reached; exit0;117.582s headless execution is not FPS. The two earlier API/test-name failures are preserved. The root editor handoff verifies17857 contracts without overwriting source. See `night_garden_lower_courts_20261024/README.md`.
+
+The predecessor pane-count discrepancy is closed separately by `PANE_COUNT_CORRECTION_CHECK.json`:26 protected panes match26 previous runtime observations. Its original455/456 and exit1 are unchanged. No new contextual image or Windows export was produced. Final residential views, engineering, operation, full gameplay and performance remain unaccepted; Group1/all eight groups are not declared complete.
+
 ## 2026-10-24 Night Garden lower17 receiving — integrated unfinished source
 
 The selected main now connects the retained17 D13/D14 suites,19 reserved rest IDs and53 doors. Their existing240mm private slabs are reused. Four missing public streets add273.06m²; five exact old guard groups receive23 replacement/new segments. No room reconstruction, duplicate private floor, hull cut or capacity change. Original80 ordinary homes and30 D15 specialty rooms remain registered;77 authored fixtures use the existing eight-source selector.

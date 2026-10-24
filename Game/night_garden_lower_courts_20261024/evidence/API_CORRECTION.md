@@ -1,0 +1,3 @@
+The first actual-ship run stopped on an invalid `ArrayMesh.surface_get_lods` call in this new adapter. Its raw log and source are retained in attempt001. No selected source changed.
+
+The correction uses the existing project pattern `mesh.get("_surfaces")` to inspect stored LOD metadata. Godot 4.6.3 binds this serialized property and preserves vertex, attribute, skin and material data: https://raw.githubusercontent.com/godotengine/godot/4.6.3-stable/scene/resources/mesh.cpp . Only selected complete triangle index byte ranges and index_count change; the original buffers remain exact. An incomplete preflight result now explicitly stops before construction. No guard criterion or source geometry tolerance was relaxed.

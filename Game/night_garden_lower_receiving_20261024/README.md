@@ -22,4 +22,6 @@ The raw run exited1:455 checks passed, and one aggregate count incorrectly expec
 
 The named bootstrap/launcher/presentation/ship successor is now selected in `project.godot`. Seven inherited entry files differ only in named path substitutions; the launcher/settings implementation is unchanged. The exact-source pack adds95 required entries and preserves all17746 predecessor entries. The root `PREPARE_EDITOR.py --check-only` receipt records the current editable handoff. The native receiving file links the retained bank rather than duplicating suite meshes.
 
+Continuation: `evidence/check_pane_count.py` now closes the aggregate expectation with the separately executed `PANE_COUNT_CORRECTION_CHECK.json`. It verifies the protected26 source panes against the preserved26 actual-ship observations,19 rest IDs and53 door IDs. Raw runtime exit1 is unchanged. The later `night_garden_lower_courts_20261024` entry extends this selected bank with paired court-end connections; it does not replace the suite source or recast this earlier test as a full pass.
+
 Broader gameplay, engineering, target-hardware performance, room operation and final art acceptance remain separate. This is integrated unfinished source; no new PCK or Windows executable has been produced.

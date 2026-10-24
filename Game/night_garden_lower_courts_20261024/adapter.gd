@@ -1,0 +1,114 @@
+extends RefCounted
+const P:="res://night_garden_lower_courts_20261024/"
+static func vec(a:Array)->Vector3:return Vector3(a[0],a[1],a[2])
+static func reject(message:String)->Dictionary:
+ push_error("Night Garden court ends: "+message);return {"error":message}
+static func prepare_guards(court:Node3D,plan:Dictionary)->Dictionary:
+ var remove:Array[Node]=[];var replacements:Array=[]
+ for prefix:String in plan.remove_guard_prefixes:
+  for name:String in [prefix+"_Top",prefix+"_Lower","Resort_"+prefix+"_Top_Dado","Resort_"+prefix+"_Top_TimberCap","Resort_"+prefix+"_Top_ChampagneReveal"]:
+   var mesh:=court.find_child(name,true,false)as MeshInstance3D
+   if mesh==null or mesh.find_children("*","CollisionShape3D",true,false).size()!=1:return reject("Exact terminal guard absent: "+name)
+   remove.append(mesh)
+ for row:Dictionary in plan.guard_trims:
+  var mesh:=court.find_child(row.mesh_name,true,false)as MeshInstance3D
+  if mesh==null or mesh.mesh.get_surface_count()!=row.surfaces.size():return reject("Shared guard preimage absent")
+  var old:=mesh.mesh;var successor:=ArrayMesh.new();var removed:=0;var retained:=0;var packed_surfaces:Array=[]
+  for surface in range(old.get_surface_count()):
+   var arrays:=old.surface_get_arrays(surface)
+   var vertices:PackedVector3Array=arrays[Mesh.ARRAY_VERTEX]
+   var indices:PackedInt32Array=arrays[Mesh.ARRAY_INDEX]
+   if indices.is_empty():indices=PackedInt32Array(range(vertices.size()))
+   var stored:Dictionary=old.get("_surfaces")[surface].duplicate()
+   if indices.size()/3!=row.surfaces[surface].total_triangles or not stored.get("lods",[]).is_empty():return reject("Guard topology/LOD preimage changed")
+   var source_bytes:PackedByteArray=stored.index_data;var stride:int=source_bytes.size()/int(stored.index_count)
+   if stride not in [2,4]:return reject("Unexpected guard index encoding")
+   var kept:=PackedInt32Array();var kept_bytes:=PackedByteArray();var removed_here:=0
+   for i in range(0,indices.size(),3):
+    var inside:=0
+    for j in range(3):
+     var point:Vector3=mesh.global_transform*vertices[indices[i+j]]
+     if point.x>=row.bounds_min[0]and point.x<=row.bounds_max[0]and point.y>=row.bounds_min[1]and point.y<=row.bounds_max[1]and point.z>=row.bounds_min[2]and point.z<=row.bounds_max[2]:inside+=1
+    if inside!=0 and inside!=3:return reject("Trim crosses a retained guard face")
+    if inside==3:removed_here+=1
+    else:
+     kept.append(indices[i]);kept.append(indices[i+1]);kept.append(indices[i+2]);kept_bytes.append_array(source_bytes.slice(i*stride,(i+3)*stride))
+   if removed_here!=int(row.surfaces[surface].removed_triangles)or kept.size()/3!=row.surfaces[surface].retained_triangles:return reject("Ground terminal triangle count differs")
+   # Only the index array changes. Original positions, normals, UVs and materials remain.
+   stored.index_data=kept_bytes;stored.index_count=kept.size();packed_surfaces.append(stored);removed+=removed_here;retained+=kept.size()/3
+  successor.set("_surfaces",packed_surfaces)
+  if successor.get_surface_count()!=old.get_surface_count():return reject("Guard surface reconstruction failed")
+  var contacts:=mesh.find_children("*","CollisionShape3D",true,false)
+  if contacts.size()!=1:return reject("Shared guard contact owner changed")
+  replacements.append({"node":mesh,"mesh":successor,"contact":contacts[0],"shape":successor.create_trimesh_shape(),"removed_triangles":removed,"retained_triangles":retained,"source_mesh":old})
+ return {"remove":remove,"replacements":replacements}
+static func material(court:Node3D,pattern:String)->Material:
+ var node:=court.find_child(pattern,true,false)as MeshInstance3D
+ return node.get_active_material(0)if node!=null else null
+static func build(ship:Node3D)->Node3D:
+ var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(P+"PLAN.json"))
+ for path:String in plan.source_pins:
+  if path.begins_with("Game/")and FileAccess.get_sha256("res://"+path.trim_prefix("Game/"))!=plan.source_pins[path]:reject("Source pin differs: "+path);return null
+ var parent:=ship.get_node("ShipSpace/Districts")
+ var court:=parent.get_node("NightGardenReceivingCourts20261022")as Node3D
+ if court.scene_file_path!=plan.original_court_source or parent.has_node("NightGardenLowerCourtEnds20261024"):reject("Court owner differs/already installed");return null
+ var prepared:=prepare_guards(court,plan)
+ if prepared.has("error")or not prepared.has("replacements")or not prepared.has("remove"):return null
+ var materials:={"stone":material(court,"Base_*"),"ivory":material(court,"Fore_CrownBeam_*"),"wood":material(court,"Resort_*TimberCap"),"metal":material(court,"Fore_End_93_Top"),"soil":material(court,"Fore_Soil_77"),"opal":material(court,"Fore_GalleryOpal_*")}
+ for role:String in materials:
+  if materials[role]==null:reject("Retained material owner absent: "+role);return null
+ var district:=Node3D.new();district.name="NightGardenLowerCourtEnds20261024";parent.add_child(district)
+ var floors:Node3D=load("res://scripts/structural_floor_builder.gd").build_regions(district,materials.stone,materials.ivory,plan.regions,{},"ConnectedGardenBases")
+ var prototypes:={};var batches:={};var shapes:={}
+ for row:Dictionary in plan.parts:
+  var lo:=vec(row.min);var hi:=vec(row.max);var size:=hi-lo;var pose:=Transform3D(Basis.IDENTITY,(lo+hi)*.5)
+  var key:=str(row.shape)+str(size)+str(row.role);var side:String=str(row.name).get_slice("_",0);var batch_key:=side+key
+  if not prototypes.has(key):
+   var geometry:PrimitiveMesh
+   if row.shape=="box":
+    var box:=BoxMesh.new();box.size=size;geometry=box
+   else:
+    var cylinder:=CylinderMesh.new();cylinder.top_radius=size.x*.5;cylinder.bottom_radius=size.x*.5;cylinder.height=size.y;cylinder.radial_segments=48;geometry=cylinder
+   geometry.material=materials[row.role];prototypes[key]=geometry
+  if not batches.has(batch_key):batches[batch_key]={"mesh":prototypes[key],"poses":[],"names":[]}
+  batches[batch_key].poses.append(pose);batches[batch_key].names.append(row.name)
+  if bool(row.contact):
+   if not shapes.has(key):
+    if row.shape=="box":
+     var shape:=BoxShape3D.new();shape.size=size;shapes[key]=shape
+    else:
+     var shape:=CylinderShape3D.new();shape.radius=size.x*.5;shape.height=size.y;shapes[key]=shape
+   var body:=StaticBody3D.new();body.name=row.name+"_Contact";district.add_child(body);body.transform=pose
+   var contact:=CollisionShape3D.new();contact.shape=shapes[key];body.add_child(contact)
+ var batch_index:=0
+ for key:String in batches:
+  var data:Dictionary=batches[key];var multi:=MultiMesh.new();multi.transform_format=MultiMesh.TRANSFORM_3D;multi.mesh=data.mesh;multi.instance_count=data.poses.size()
+  for i in range(data.poses.size()):multi.set_instance_transform(i,data.poses[i])
+  var visual:=MultiMeshInstance3D.new();visual.name="ArchitectureBatch_%03d"%batch_index;visual.multimesh=multi;visual.set_meta("authored_part_names",data.names);district.add_child(visual);batch_index+=1
+ var plant_count:=0
+ for row:Dictionary in plan.plants:
+  var sources:=court.find_children(row.source_prefix+"*","MeshInstance3D",true,false)
+  if sources.size()!=4:reject("Retained four-material canopy differs");return null
+  var scale:float=row.uniform_scale;var offset:=Transform3D(Basis.IDENTITY.scaled(Vector3.ONE*scale),vec(row.target_center)-vec(row.source_center)*scale)
+  for source:MeshInstance3D in sources:
+   var mesh:=MeshInstance3D.new();mesh.name=row.name+"_"+str(plant_count);mesh.mesh=source.mesh;mesh.material_override=source.material_override
+   for si in range(source.get_surface_override_material_count()):mesh.set_surface_override_material(si,source.get_surface_override_material(si))
+   district.add_child(mesh);mesh.global_transform=offset*source.global_transform;mesh.set_meta("retained_mesh_owner",str(source.get_path()));plant_count+=1
+ var furniture_shapes:={}
+ for row:Dictionary in plan.furniture:
+  var furniture:Node3D=load("res://assets/models/"+row.model_file).instantiate();furniture.name=row.name;district.add_child(furniture);furniture.position=vec(row.position);furniture.rotation.y=row.yaw
+  for mesh:MeshInstance3D in furniture.find_children("*","MeshInstance3D",true,false):
+   if mesh.mesh==null:continue
+   var key:=mesh.mesh.get_rid().get_id()
+   if not furniture_shapes.has(key):furniture_shapes[key]=mesh.mesh.create_trimesh_shape()
+   var body:=StaticBody3D.new();mesh.add_child(body);var contact:=CollisionShape3D.new();contact.shape=furniture_shapes[key];body.add_child(contact)
+ for row:Dictionary in plan.lights:
+  var lamp:=SpotLight3D.new();lamp.name=row.name;district.add_child(lamp);lamp.position=vec(row.position);lamp.look_at(vec(row.target),Vector3.RIGHT);lamp.light_color=Color(1,.78,.51);lamp.light_energy=row.energy;lamp.spot_range=row.range;lamp.spot_angle=row.angle;lamp.shadow_enabled=true;lamp.set_meta("illumination_anchor",vec(row.anchor))
+ # Commit only after replacement floors, perimeter contacts and visible architecture exist.
+ var guard_records:Array=[]
+ for row:Dictionary in prepared.replacements:
+  row.node.mesh=row.mesh;row.contact.shape=row.shape
+  guard_records.append({"node":str(row.node.name),"removed_triangles":row.removed_triangles,"retained_triangles":row.retained_triangles,"only_index_array_changed":true})
+ for old:Node in prepared.remove:old.free()
+ district.set_meta("guard_successors",guard_records);district.set_meta("new_architectural_parts",plan.parts.size());district.set_meta("architecture_batches",batches.size());district.set_meta("shared_plant_mesh_instances",plant_count);district.set_meta("furniture_placements",plan.furniture.size());district.set_meta("new_floor_area_m2",610.5);district.set_meta("new_capacity",0);district.set_meta("new_upper_decks",0);district.set_meta("finished",false)
+ return district

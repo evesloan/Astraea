@@ -1,0 +1,95 @@
+{
+  "status": "SELECTED_INTEGRATED_UNFINISHED_SOURCE",
+  "protected_parent": "b4a0f0da4ff4ea8554132aa2f614ff98775d1113",
+  "selected_entry": "res://scenes/bootstrap_night_garden_lower_courts_integrated_20261024.tscn",
+  "actual_ship_gate": {
+    "actual_main_runtime_ready": true,
+    "architecture_batches": 58,
+    "canopy_mesh_instances_sharing_original_resources": 16,
+    "checks": 219,
+    "failures": [],
+    "final_visual_accepted": false,
+    "full_gameplay_performance_accepted": false,
+    "guard_successors": [
+      {
+        "node": "Fore_GuardBalusters",
+        "only_index_array_changed": true,
+        "removed_triangles": 1212,
+        "retained_triangles": 38160
+      },
+      {
+        "node": "Aft_GuardBalusters",
+        "only_index_array_changed": true,
+        "removed_triangles": 1212,
+        "retained_triangles": 39816
+      }
+    ],
+    "lights": [
+      {
+        "court_sources_active": 4,
+        "side": -1,
+        "total_active": 8
+      },
+      {
+        "court_sources_active": 4,
+        "side": 1,
+        "total_active": 8
+      }
+    ],
+    "new_capacity": 0,
+    "new_floor_area_m2": 610.5,
+    "new_floor_regions": 2,
+    "new_parts": 160,
+    "new_upper_decks": 0,
+    "preserved_lower_bank_rooms": 17,
+    "primary_structure_accepted": false,
+    "route_floor_clearance_points": 58,
+    "scope": "Actual complete ship: paired receiving routes, physical outer guards, source-exact retained guard attributes, linked canopy bounds, furniture floors, existing lighting selector. No standalone scene or whole-ship acceptance claim.",
+    "status": "PASS"
+  },
+  "monitor": {
+    "exit_code": 0,
+    "stop": null,
+    "seconds": 117.582,
+    "peak_rss_bytes": 9262342144,
+    "scope": "Actual current-ship paired court-end integration gate; source candidate unselected; not full gameplay or visual acceptance",
+    "command": [
+      "/opt/godot/4.6.3/Godot_v4.6.3-stable_linux.x86_64",
+      "--headless",
+      "--fixed-fps",
+      "60",
+      "--path",
+      "Game",
+      "--script",
+      "res://tests/validate_night_garden_lower_courts_20261024.gd"
+    ]
+  },
+  "source_contracts": {
+    "status": "SOURCE_PREPARATION_PASS",
+    "source_commit": "b4a0f0da4ff4ea8554132aa2f614ff98775d1113",
+    "source_branch_expected": "construction/group1-tidal-d15-20261010",
+    "manifest_sha256": "b909ba32e95247a17f39fe008b15cf50abf81cf1f9f10c5290b07ba64b47f5d4",
+    "manifest_entries": 17857,
+    "canonical_repairs_verified": 80,
+    "retained_targets": 11,
+    "missing_before": 0,
+    "created": 0,
+    "existing_files_overwritten": 0,
+    "all_required_source_hashes_match": true,
+    "check_only": true,
+    "engine_started": false,
+    "playable_build_accepted": false,
+    "scope": "Pinned source preparation only, not full native/runtime closure or startup validation."
+  },
+  "native_sha256": "462547a403c41d5716d9db1da916273300af967a389c2ab254e0e17608c4f745",
+  "pane_count_correction": "Game/night_garden_lower_receiving_20261024/evidence/PANE_COUNT_CORRECTION_CHECK.json",
+  "fresh_picture": null,
+  "fresh_picture_reason": "No contextual capture produced; actual ship validation was headless. No extra render or recycled historical image.",
+  "new_export": false,
+  "whole_ship_or_group_completion_claimed": false,
+  "native_log_review": {
+    "already_linked_notices": 109,
+    "other_warnings_or_errors": 0,
+    "meaning": "Repeated links to retained chair/table object datablocks; source sharing, not missing dependencies. Raw log preserved."
+  }
+}
