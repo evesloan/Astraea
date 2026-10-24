@@ -17,7 +17,7 @@ This is first-time, pinned-source setup, not a repair tool for later development
 
 Use only this entry point, not the historical layer installers. It does not change code, the manifest, main scene, feature flags or native source choices. A nonzero exit means stop and resolve the listed conflict or missing dependency in a separate copy. Do not delete an edited file simply to silence a conflict. An interrupted run can be repeated; completed files remain intact. If an interruption leaves `.astraea-prepare-editor.lock`, confirm no preparer is running before removing only that lock directory. `--check-only` writes nothing. Successful output is a source-preparation receipt, not a runtime acceptance result.
 
-After `SOURCE_PREPARATION_PASS`, use Godot `4.6.3.stable.official.7d41c59c4`, Compatibility renderer, to open `Game/project.godot`. Its selected main remains `res://scenes/bootstrap_tidal_d14_landing_20261023.tscn`. Automatic Blender import remains disabled. Keep one import/build owner at a time.
+After `SOURCE_PREPARATION_PASS`, use Godot `4.6.3.stable.official.7d41c59c4`, Compatibility renderer, to open `Game/project.godot`. Its selected main remains `res://scenes/bootstrap_tidal_court_finish_20261023.tscn`. Automatic Blender import remains disabled. Keep one import/build owner at a time.
 
 ## What is and is not verified
 
@@ -38,3 +38,5 @@ A matching current PCK was exported from `1091d34e` and passed its packaged-byte
 The Tidal D14 landing successor is source-selected after the complete retained Star Atlas living construction chain. Its exact geometry and receiving checks are in `Game/tidal_d14_landing_20261023/evidence`. The earlier Windows executable remains a separate historical build and does not contain this package. See `SOURCE_MAP.md` for human-readable ownership and entry points; keep unaccepted experiments and source candidates separate. Source preparation verifies bytes, not full gameplay or performance acceptance.
 
 Final export-log review found ten editor dialog-ownership errors despite exit0; packaged-byte checks passed, but full exported-runtime acceptance remains open. See `recovery/consolidated_delivery_20261023/EXPORT_DIAGNOSTICS.json` and `LATE_VALIDATION_NOTES.md`.
+
+The selected five-level Tidal court finish is a later source successor:267 existing opaque surfaces and16 retained physical emitter connections, with no added geometry or capacity. Its bounded view remains dark/plain and visually unaccepted. The frozen1091d34e PCK does not contain this later source finish. See Game/tidal_court_finish_20261023/README.md.

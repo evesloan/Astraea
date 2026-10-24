@@ -26,3 +26,5 @@ The current cloud completed a consolidated editor import and retains its regener
 The selected private contact single-pass change is documented in `recovery/private_contact_single_pass_20261023`. It removes a discarded initial contact build without adopting the held queue/staging experiments.
 
 `recovery/consolidated_delivery_20261023` records the current artifact hashes, source/transport checks, isolated headless source startup, cleanup and export limits. The source startup reached actual readiness and verified the new Tidal owner; Windows launch, rendered visuals, walking stability and target FPS were not tested.
+
+The selected five-level Tidal court finish is a later source successor:267 existing opaque surfaces and16 retained physical emitter connections, with no added geometry or capacity. Its bounded view remains dark/plain and visually unaccepted. The frozen1091d34e PCK does not contain this later source finish. See Game/tidal_court_finish_20261023/README.md.
