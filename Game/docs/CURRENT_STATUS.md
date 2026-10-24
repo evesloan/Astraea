@@ -1,3 +1,11 @@
+## 2026-10-24 Night Garden lower17 receiving — integrated unfinished source
+
+The selected main now connects the retained17 D13/D14 suites,19 reserved rest IDs and53 doors. Their existing240mm private slabs are reused. Four missing public streets add273.06m²; five exact old guard groups receive23 replacement/new segments. No room reconstruction, duplicate private floor, hull cut or capacity change. Original80 ordinary homes and30 D15 specialty rooms remain registered;77 authored fixtures use the existing eight-source selector.
+
+The actual current ship reached readiness and completed456 checks:455 passed; one aggregate incorrectly expected17 privacy panes. The unchanged protected source proves26, and all26 individual runtime privacy checks passed. The raw exit1/log/test are retained with a source-derived reconciliation, rather than claiming a clean rerun. All149 floor/clearance samples, including68 threshold samples, passed; representative detail release retained shell floors. See `night_garden_lower_receiving_20261024/README.md` and `evidence/INTEGRATION_DECISION.json`.
+
+This closes the17 remaining entries in the historical189-root absence list, not all1000+ functional rooms or any group's final acceptance. Nine outer outlooks retain glazed hull/mullions; eight inner outlooks and full furnished-context review remain unfinished. Room operation, primary engineering, final art/gameplay/performance and matching Windows delivery stay open. The fixed1091d34e PCK is unchanged and predates this source. Older status entries below are historical.
+
 ## 2026-10-24 Retained Star Atlas enclosure — integrated unfinished source
 
 The selected main entry now includes the already-built140-part D15/D16 enclosure (120 coffer components,20 frieze/crown components;1288.71m²). Two frieze bottoms have a named native/contact successor clearing the later D15 portals;138 other parts remain exact. All later receiving removals/mesh replacements,98 living placements,85 ordinary-home registrations and existing fixture/capacity identities remain.
