@@ -1,0 +1,155 @@
+"""Bounded, additive aft-court authoring from the retained Family geometry."""
+from pathlib import Path
+import json, math, hashlib, struct
+from shapely.geometry import Polygon, Point, box as rectangle, shape
+from shapely.ops import unary_union
+from shapely import constrained_delaunay_triangles
+
+R=Path(__file__).resolve().parents[3]
+P=R/'Game/family_aft_court_20261024'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+source=R/'BlenderCatalogue/assets/family_lift_receiving_20261009/LIFT_GEOMETRY_PLAN.json'
+d=json.loads(source.read_text()); owners={q['name']:q for q in d['parts']}
+court=Polygon(d['principal_court_reservation']['boundary'])
+parts=[];plants=[];lights=[];checks=[]
+
+def add(name, verts, faces, role, owner, contact=True):
+    assert name not in [q['name']for q in parts]
+    assert owner in owners
+    parts.append(dict(name=name,verts=verts,faces=faces,role=role,owner=owner,contact=contact))
+
+def extrude(poly, lo, hi, name, role, owner, contact=True):
+    from shapely.geometry.polygon import orient
+    vs=[];fs=[]
+    for g in ([poly]if poly.geom_type=='Polygon'else poly.geoms):
+        if g.area<1e-8:continue
+        g=orient(g,sign=1)
+        for t in constrained_delaunay_triangles(g).geoms:
+            cs=list(t.exterior.coords)[:3]
+            if not t.exterior.is_ccw:cs.reverse()
+            b=len(vs);vs += [[x,lo,z]for x,z in cs]+[[x,hi,z]for x,z in cs]
+            fs += [[b,b+1,b+2],[b+5,b+4,b+3]]
+        for ring in [g.exterior,*g.interiors]:
+            for (x,z),(xx,zz)in zip(ring.coords,list(ring.coords)[1:]):
+                b=len(vs);vs += [[x,lo,z],[xx,lo,zz],[xx,hi,zz],[x,hi,z]];fs.append([b+3,b+2,b+1,b])
+    add(name,vs,fs,role,owner,contact)
+
+def box(name,center,size,role,owner,contact=True):
+    x,y,z=center;sx,sy,sz=size
+    extrude(rectangle(x-sx/2,z-sz/2,x+sx/2,z+sz/2),y-sy/2,y+sy/2,name,role,owner,contact)
+
+def top(row):
+    vs=row['verts'];y=max(v[1]for v in vs)
+    ps=[Polygon([(vs[i][0],vs[i][2])for i in f])for f in row['faces']if all(abs(vs[i][1]-y)<1e-7 for i in f)]
+    return unary_union([p for p in ps if p.area>1e-8]),y
+
+# Each bay follows the real opaque wall. Positive depth points inside the court.
+slope=(100-63)/(491.123-423.164)
+def edge(z):return 100 if z<=423.164 else 100-(z-423.164)*slope
+def wall_frame(z0,z1):
+    a=(edge(z0),z0);b=(edge(z1),z1);length=math.dist(a,b);t=((b[0]-a[0])/length,(b[1]-a[1])/length);n=(-t[1],t[0])
+    return a,t,n,length
+def wall_solid(name,z0,z1,outline,depth0,depth1,role,owner):
+    a,t,n,length=wall_frame(z0,z1)
+    poly=Polygon(outline);assert poly.is_valid and poly.area>0
+    # Map an upright local polygon (distance along wall, height) into the court.
+    local=[];faces=[]
+    for tri in constrained_delaunay_triangles(poly).geoms:
+        cs=list(tri.exterior.coords)[:3]
+        if not tri.exterior.is_ccw:cs.reverse()
+        k=len(local);local += [(u,y,depth0)for u,y in cs]+[(u,y,depth1)for u,y in cs]
+        faces += [[k,k+1,k+2],[k+5,k+4,k+3]]
+    cs=list(poly.exterior.coords)
+    for (u,y),(v,h)in zip(cs,cs[1:]):
+        k=len(local);local += [(u,y,depth0),(v,h,depth0),(v,h,depth1),(u,y,depth1)];faces.append([k+3,k+2,k+1,k])
+    verts=[[a[0]+t[0]*u+n[0]*depth,y,a[1]+t[1]*u+n[1]*depth]for u,y,depth in local]
+    add(name,verts,faces,role,owner)
+
+bays=[(400.0,422.5),(425.0,445.0),(447.0,470.0),(472.0,482.0)]
+for bi,(z0,z1)in enumerate(bays):
+    a,t,n,L=wall_frame(z0,z1);owner='FT_CourtEnclosure_1_0_0'if bi==0 else'FT_CourtEnclosure_0_0_0'
+    # Tall recessed arch; it remains below the original clerestory floor at102.
+    spring=94.0;rise=7.1;half=(L-2.0)/2;centre=L/2
+    for side,u in [('Left',1.0),('Right',L-1.0)]:
+        wall_solid(f'Bay{bi}_{side}Pier',z0,z1,[(u-.43,84),(u+.43,84),(u+.43,spring),(u-.43,spring)],.08,.72,'warm_stone',owner)
+        wall_solid(f'Bay{bi}_{side}Timber',z0,z1,[(u-.17,84.6),(u+.17,84.6),(u+.17,spring),(u-.17,spring)],.72,.82,'warm_walnut',owner)
+        wall_solid(f'Bay{bi}_{side}Foot',z0,z1,[(u-.58,84),(u+.58,84),(u+.58,84.6),(u-.58,84.6)],.08,.85,'warm_stone',owner)
+    for segment in range(20):
+        t0=math.pi*segment/20;t1=math.pi*(segment+1)/20
+        outer=[(centre+(half+.43)*math.cos(t),spring+(rise+.43)*math.sin(t))for t in [t0,t1]]
+        inner=[(centre+(half-.43)*math.cos(t),spring+(rise-.43)*math.sin(t))for t in [t1,t0]]
+        wall_solid(f'Bay{bi}_Arch_{segment:02}',z0,z1,outer+inner,.08,.72,'warm_stone',owner)
+    # Substantial warm lower dado, not a repeated decorative window grid.
+    wall_solid(f'Bay{bi}_LowerDado',z0,z1,[(1.55,84.02),(L-1.55,84.02),(L-1.55,85.2),(1.55,85.2)],.1,.26,'warm_walnut',owner)
+    wall_solid(f'Bay{bi}_DadoCoping',z0,z1,[(1.5,85.15),(L-1.5,85.15),(L-1.5,85.27),(1.5,85.27)],.1,.34,'champagne_metal',owner)
+    # The broad roof cornice touches the existing underside without filling glass.
+    wall_solid(f'Bay{bi}_RoofCove',z0,z1,[(.4,105.78),(L-.4,105.78),(L-.4,106.025),(.4,106.025)],.08,1.15,'ivory_enamel','FT_PrincipalOpaqueCover_0')
+    wall_solid(f'Bay{bi}_RoofTimber',z0,z1,[(.4,105.71),(L-.4,105.71),(L-.4,105.79),(.4,105.79)],.35,.85,'warm_walnut','FT_PrincipalOpaqueCover_0')
+
+# Continue the existing roof ribs with fitted underside profiles, no lower ceiling.
+for idx in [5,6,7]:
+    q=owners[f'FT_CoverRib_{idx}_0'];a,b=q['a'],q['b'];x=(a[0]+b[0])/2
+    footprint=rectangle(min(a[0],b[0]),a[2]-.25,max(a[0],b[0]),a[2]+.25).intersection(court.buffer(-.08))
+    extrude(footprint,105.58,105.7,f'Rib{idx}_Soffit','warm_walnut',q['name'])
+    footprint=rectangle(min(a[0],b[0]),a[2]-.39,max(a[0],b[0]),a[2]+.39).intersection(court.buffer(-.08))
+    extrude(footprint,105.69,105.77,f'Rib{idx}_IvoryShoulder','ivory_enamel',q['name'])
+
+# Two existing garden beds remain the floor/soil owners. Enrich their composition
+# without moving the original trees, benches, understory or adding a public deck.
+for bi in [2,3]:
+    bed=owners[f'FT_RootedGardenPlinth_{bi}_0'];soil=owners[f'FT_RootedGardenSoil_{bi}_0'];bp,by=top(bed);sp,sy=top(soil)
+    extrude(bp.difference(sp),84.53,84.63,f'Garden{bi}_Coping','warm_stone',bed['name'])
+    existing=[q for q in d['asset_instances']if q['name'].startswith(f'FT_GardenUnderplant_{bi}_')or q['name']==f'FT_GardenCanopy_{bi}']
+    # Low stepped islands occupy only previously bare soil, with source plants clear.
+    locations=[(81.8,409.8),(82.1,430.0)]if bi==2 else[(72.5,449.8),(72.2,464.3)]
+    for si,(x,z)in enumerate(locations):
+        island=Point(x,z).buffer(1,resolution=12)
+        from shapely.affinity import scale
+        island=scale(island,1.65,2.4).intersection(sp.buffer(-.25))
+        # Reject overlap with retained root positions rather than relocate them.
+        for old in existing:island=island.difference(Point(old['world_xyz'][0],old['world_xyz'][2]).buffer(.6))
+        if island.geom_type!='Polygon':island=max(island.geoms,key=lambda g:g.area)
+        assert island.area>3
+        raised=island.buffer(-.13);assert not raised.is_empty
+        extrude(island,84.48,84.83,f'Garden{bi}_Island{si}_Base','ivory_enamel',soil['name'])
+        extrude(raised,84.81,84.85,f'Garden{bi}_Island{si}_Soil','botanical_soil',soil['name'])
+        for j in range(7):
+            q=raised.representative_point()if j==0 else Point(x+.68*math.sin(j*2.399),z+1.5*math.cos(j*2.399))
+            if not raised.buffer(-.42).covers(q):continue
+            plants.append(dict(name=f'Garden{bi}_Island{si}_Plant{j}',catalogue_id=['AST-BOT-002','AST-BOT-008','AST-BOT-009'][j%3],position=[q.x,84.85,q.y],scale=.8,yaw=j*2.399,owner=f'Garden{bi}_Island{si}_Soil',cell=f'Garden{bi}_Island{si}'))
+    # Secondary canopy at each bed's far end; preserve original main-canopy identity.
+    x,z=(82.0,430.0)if bi==2 else(72.0,464.0)
+    # No new trunk through stepped planter: canopy roots on its new raised soil.
+    plants.append(dict(name=f'Garden{bi}_SecondaryCanopy',catalogue_id='AST-BOT-011',position=[x,84.85,z],scale=.36,yaw=bi*.71,owner=f'Garden{bi}_Island1_Soil',cell=f'Garden{bi}_Canopy'))
+    # Additional low planting fills bounded edges, keeping original root clearance.
+    xmin,zmin,xmax,zmax=sp.bounds
+    for j in range(60):
+        x=xmin+(xmax-xmin)*((j*.61803398875)%1);z=zmin+(zmax-zmin)*((j*.41421356237)%1)
+        if not sp.buffer(-.7).covers(Point(x,z)):continue
+        if any(math.hypot(x-q['world_xyz'][0],z-q['world_xyz'][2])<1.15 for q in existing):continue
+        if any(math.hypot(x-q['position'][0],z-q['position'][2])<1.5 for q in plants):continue
+        plants.append(dict(name=f'Garden{bi}_GroundPlant{j}',catalogue_id='AST-BOT-008'if j%2 else'AST-BOT-009',position=[x,sy+.01,z],scale=.75,yaw=j*2.399,owner=soil['name'],cell=f'Garden{bi}_Edge_{int(z//4)}'))
+
+# Adapt three existing physical lanterns; no unexplained ambient or new ceiling lamp.
+for idx,target in [(4,[82,85,420]),(5,[72.5,85,456]),(6,[70,85,470])]:
+    q=next(x for x in d['lights']if x['name']==f'FT_CourtLantern_{idx}')
+    lights.append(dict(name=f'AftLantern_{idx}',original=q['name'],position=q['world_xyz'],target=target,anchor=target,range=34,angle=70,energy=2.2,color=[1,.89,.73]))
+
+# Verify every vertex against the legal court volume. Only source-attached roof
+# contacts extend5mm into the existing cover; no new slab/pressure/hull openings.
+for row in parts:
+    for x,y,z in row['verts']:
+        assert court.buffer(.006).covers(Point(x,z)),(row['name'],x,z)
+        assert 84-1e-6<=y<=106.025001,(row['name'],y)
+        # Clerestory is the outer wall opening, not the whole roof interior.
+        assert not (399.7<z<450.3 and abs(x-edge(z))<1.2 and 102+1e-6<y<105.68-1e-6),(row['name'],'clerestory intrusion')
+    checks.append({'name':row['name'],'legal_volume':True,'original_owner':row['owner']})
+
+catalogue=json.loads((R/'BlenderCatalogue/catalogue_manifest.json').read_text())['assets'];sources=[]
+for id in sorted(set(q['catalogue_id']for q in plants)):
+    q=dict(next(q for q in catalogue if q['catalogue_id']==id));b=(R/'Game/assets/models'/f'{id}.glb').read_bytes();g=json.loads(b[20:20+struct.unpack_from('<I',b,12)[0]]);q['runtime_mesh_count']=sum('mesh'in n for n in g['nodes']);sources.append(q)
+paths=[source,R/'Game/assets/models/FAMILY_TERRACE_ARCHITECTURE_lift_r003.glb',R/'Game/data/architecture/FAMILY_TERRACE_RECEIVING.json',R/'BlenderCatalogue/assets/family_lift_receiving_20261009/source/architecture_lift_fit.blend',R/'Game/family_enclosure_finish_20261022/adapter.gd']
+for q in sources:paths += [R/'BlenderCatalogue'/q['source'],R/'Game/assets/models'/f"{q['catalogue_id']}.glb"]
+plan=dict(status='UNFINISHED_CANDIDATE',protected_parent='bbc62e7ed8b31171ab3ed016cb7cd6eb24ec8568',scope='Aft Family court whole-zone architectural completion; no new room or floor',source_plan=str(source.relative_to(R)),native_source='BlenderCatalogue/assets/family_lift_receiving_20261009/source/architecture_lift_fit.blend',source_pins={str(p.relative_to(R)):sha(p)for p in paths},parts=parts,plants=plants,sources=sources,lights=lights,bays=bays,court_boundary=d['principal_court_reservation']['boundary'],preserved_original_instances=157,new_floor_area_m2=0,new_rooms=0,new_capacity=0,global_light_budget=8,clerestory_preserved={'z':[399.7,450.3],'y':[102,105.68]},native_linked_originals=True)
+(P/'PLAN.json').write_text(json.dumps(plan,indent=2)+'\n');(P/'evidence/SOURCE_GEOMETRY.json').write_text(json.dumps({'status':'PASS','parts':len(parts),'plants':len(plants),'bays':len(bays),'checks':checks,'no_source_modified':True},indent=2)+'\n')
+print('PLAN',len(parts),'parts',len(plants),'plants',len(lights),'retained lanterns')
