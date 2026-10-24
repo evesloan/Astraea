@@ -1,0 +1,26 @@
+{
+  "cause": "Both failing D06 body queries overlap only zero-area emitted triangles on shared rectangle clipping planes; repeated vertices are not physical wall surfaces.",
+  "failed_samples": [
+    [
+      102.6,
+      21,
+      17.9428577
+    ],
+    [
+      102.6,
+      21,
+      20.1714287
+    ]
+  ],
+  "bluegrey4_0_exact_zero_area_triangles": 846,
+  "white4_0_exact_zero_area_triangles": 660,
+  "failed_arrays_sha256": "8899af6915895e54b991ead0927069eba02d66908944e8785cd10ccd24e606ca",
+  "fix": "Discard exactly zero cross-product triangles before SurfaceTool emission; no clearance dimension or physics exclusion changed.",
+  "second_stage": "Attempt005 passed all physical route, closed-gate, support and lifecycle checks. Final mesh check found zero-area triangles after world-to-local conversion/float32 storage. Final correction filters exactly-zero triangles in the stored PackedVector3Array before collision creation, retaining all nonzero indices and source vertex/normal/UV/material arrays.",
+  "engine_provenance": {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/4.6.3-stable/core/math/triangle_mesh.cpp",
+    "finding": "TriangleMesh::create snaps vertices to0.0001; Mesh.get_faces and create_trimesh_shape use that representation.",
+    "captured_array_proof": "CONTACT_ARRAY_PROOF.json",
+    "exact_contact_method": "ConcavePolygonShape3D.set_faces receives unchanged indexed surface vertices directly. The existing weak contact cache receives a resident-owned strong lease for streamed replacement skins."
+  }
+}

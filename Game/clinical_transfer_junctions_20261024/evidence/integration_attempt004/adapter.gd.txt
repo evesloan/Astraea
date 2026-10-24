@@ -1,0 +1,161 @@
+extends RefCounted
+const P:="res://clinical_transfer_junctions_20261024/"
+const SKIN=preload("res://clinical_room_receiving_20261024/adapter.gd")
+static func v(a:Array)->Vector3:return Vector3(a[0],a[1],a[2])
+static func world_pose(mesh:Node3D)->Transform3D:
+ if mesh.is_inside_tree():return mesh.global_transform
+ var pose:Transform3D=mesh.transform;var parent:Node=mesh.get_parent()
+ while parent is Node3D:
+  if parent.is_inside_tree():return parent.global_transform*pose
+  pose=parent.transform*pose;parent=parent.get_parent()
+ return pose
+static func required(ok:bool,label:String)->bool:
+ if not ok:push_error("Clinical transfer successor: "+label)
+ return ok
+static func outside(poly:Array,b:Array,maximum:float)->Array:
+ var fragments:Array=[];var inside:Array=poly
+ for boundary:Array in [[0,b[0],false],[0,b[2],true],[1,21.001,false],[1,maximum,true],[2,b[1],false],[2,b[3],true]]:
+  var piece:Array=SKIN.clip(inside,int(boundary[0]),float(boundary[1]),not bool(boundary[2]))
+  if piece.size()>=3:fragments.append(piece)
+  inside=SKIN.clip(inside,int(boundary[0]),float(boundary[1]),bool(boundary[2]))
+  if inside.is_empty():break
+ return fragments
+static func cut(mesh:MeshInstance3D,boxes:Array,maximum:float)->void:
+ var old:Mesh=mesh.mesh;var next:=ArrayMesh.new();var pose:Transform3D=world_pose(mesh);var inverse:Transform3D=pose.affine_inverse()
+ for si in range(old.get_surface_count()):
+  var data:Array=old.surface_get_arrays(si);var positions:PackedVector3Array=data[Mesh.ARRAY_VERTEX];var normals:PackedVector3Array=data[Mesh.ARRAY_NORMAL];var uvs:PackedVector2Array=data[Mesh.ARRAY_TEX_UV];var ids:PackedInt32Array=data[Mesh.ARRAY_INDEX] if data[Mesh.ARRAY_INDEX]!=null else PackedInt32Array()
+  if ids.is_empty():
+   ids.resize(positions.size())
+   for i in range(positions.size()):ids[i]=i
+  var st:=SurfaceTool.new();st.begin(Mesh.PRIMITIVE_TRIANGLES);st.set_material(old.surface_get_material(si));var emitted:=0
+  for start in range(0,ids.size(),3):
+   var poly:Array=[]
+   for j in range(3):
+    var index:int=ids[start+j];poly.append({"p":pose*positions[index],"n":(pose.basis.inverse().transposed()*normals[index]).normalized(),"uv":uvs[index]})
+   var fragments:Array=[poly]
+   for b:Array in boxes:
+    var remaining:Array=[]
+    for fragment:Array in fragments:remaining.append_array(outside(fragment,b,maximum))
+    fragments=remaining
+   for fragment:Array in fragments:
+    SKIN.emit(st,fragment,inverse,pose.basis.transposed());emitted+=fragment.size()-2
+  if emitted>0:st.commit(next)
+ mesh.mesh=next;mesh.set_meta("transfer_source_triangles",old.get_faces().size()/3)
+ var contacts:Array=mesh.find_children("*","CollisionShape3D",true,false)
+ for contact:CollisionShape3D in contacts:
+  if next.get_surface_count()==0:contact.disabled=true
+  else:
+   var margin:float=contact.shape.margin;contact.shape=next.create_trimesh_shape();contact.shape.margin=margin
+ if next.get_surface_count()==0:mesh.visible=false
+static func exact(mesh:MeshInstance3D,row:Dictionary)->bool:
+ if not required(mesh!=null,"Missing preimage "+str(row.get("path",row.get("name","")))):return false
+ var box:AABB=world_pose(mesh)*mesh.get_aabb()
+ return required(mesh.mesh.get_faces().size()==int(row.triangles)*3 and box.position.distance_to(v(row.bounds[0]))<.0002 and box.end.distance_to(v(row.bounds[1]))<.0002,"Exact partition preimage "+str(mesh.name))
+static func patch_room(child:Node,ship:Node3D,plan:Dictionary)->void:
+ if not child is Node3D or child.get_meta("transfer_room_successor",false):return
+ var first:MeshInstance3D=child.find_child(plan.room_cuts[0].name,true,false)
+ if first==null:return
+ for row:Dictionary in plan.room_cuts:
+  if not exact(child.find_child(row.name,true,false),row):ship.get_tree().quit(1);return
+ for row:Dictionary in plan.room_cuts:cut(child.find_child(row.name,true,false),row.boxes,float(row.max_y))
+ child.set_meta("transfer_room_successor",true);child.set_meta("transfer_changed_partitions",plan.room_cuts.size())
+ # The existing loader installs contacts and occluders after child_entered_tree.
+ # Already-resident meshes also have their existing contact resources updated.
+static func tall_mesh(original:MeshInstance3D,template:Node3D)->ArrayMesh:
+ var pose:Transform3D=original.transform;var parent:Node3D=original.get_parent()
+ while parent!=template:pose=parent.transform*pose;parent=parent.get_parent()
+ var result:=ArrayMesh.new()
+ for si in range(original.mesh.get_surface_count()):
+  var data:Array=original.mesh.surface_get_arrays(si);var vertices:PackedVector3Array=data[Mesh.ARRAY_VERTEX];var normals:PackedVector3Array=data[Mesh.ARRAY_NORMAL]
+  for i in range(vertices.size()):
+   var point:Vector3=pose*vertices[i]
+   point.x=point.x*(1.85/1.8) if absf(point.x)<=1.80001 else point.x+signf(point.x)*.05
+   if point.y>=2.36:point.y+=.9
+   elif point.y>.04:point.y=.04+(point.y-.04)*(3.26-.04)/(2.36-.04)
+   vertices[i]=point;normals[i]=(pose.basis.inverse().transposed()*normals[i]).normalized()
+  data[Mesh.ARRAY_VERTEX]=vertices;data[Mesh.ARRAY_NORMAL]=normals
+  result.add_surface_from_arrays(original.mesh.surface_get_primitive_type(si),data);result.surface_set_material(si,original.get_active_material(si))
+ return result
+static func build(ship:Node3D)->Node3D:
+ var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(P+"PLAN.json"));var space:Node3D=ship.get_node("ShipSpace");var clinic:Node3D=space.get_node("Group3CompleteClinical")
+ if not required(space.has_node("ClinicalReturnThroughLinks20261024")and not space.has_node("ClinicalTransferJunctions20261024")and not clinic.get_meta("operating_gates_or_dispatch_admitted",true),"Unique physical successor; operation held"):return null
+ for path:String in plan.source_pins:
+  if path.begins_with("Game/")and not required(FileAccess.get_sha256("res://"+path.trim_prefix("Game/"))==plan.source_pins[path],"Retained source pin "+path):return null
+ for row:Dictionary in plan.patches:
+  if not exact(ship.get_node_or_null(row.path),row):return null
+ var original:={};var materials:={}
+ for mesh:MeshInstance3D in clinic.find_children("*","MeshInstance3D",true,false):
+  original[str(mesh.get_path())]={"mesh":mesh.mesh,"pose":mesh.global_transform}
+  for i in range(mesh.mesh.get_surface_count()):
+   var material:Material=mesh.get_active_material(i)
+   if material!=null:materials[str(material.resource_name).trim_prefix("ASTRAEA_")]=material
+ var supports:={}
+ for row:Dictionary in plan.protected_supports+[plan.pool_bearing]:
+  var mesh:MeshInstance3D=space.get_node("Districts/"+str(row.owner)+"/"+str(row.name));supports[str(mesh.get_path())]={"mesh":mesh.mesh,"pose":mesh.global_transform}
+ var template:Node3D=load(plan.source_gate).instantiate();var tall:={};var shapes:={}
+ for source:MeshInstance3D in template.find_children("*","MeshInstance3D",true,false):
+  tall[str(source.name)]=tall_mesh(source,template);shapes[str(source.name)]=tall[str(source.name)].create_trimesh_shape()
+ template.free()
+ if not required(tall.size()==21,"Complete source cassette"):return null
+ var oldgates:Node=clinic.get_node("AST-MED-G3-010");var selected:={}
+ for row:Dictionary in plan.gates:
+  if row.existing:
+   var found:Array=[]
+   for name:String in tall:
+    var mesh:MeshInstance3D=oldgates.find_child(str(row.name)+"__"+name,true,false)
+    if not required(mesh!=null and mesh.find_children("*","CollisionShape3D",true,false).size()==1,"Canonical gate part "+str(row.name)+"/"+name):return null
+    found.append(mesh)
+   selected[row.name]=found
+  else:
+   if not required(oldgates.find_child(str(row.name)+"*",true,false)==null,"No duplicate Pool cassette"):return null
+ var root:=Node3D.new();root.name="ClinicalTransferJunctions20261024";space.add_child(root);var zones:={}
+ for row:Dictionary in plan.zones:
+  var zone:=Node3D.new();zone.name=row.id;root.add_child(zone);zones[row.id]=zone
+ for row:Dictionary in plan.patches:cut(ship.get_node(row.path),plan.cut_boxes_xz,float(row.max_y))
+ var gate_paths:Array=[]
+ for row:Dictionary in plan.gates:
+  var pose:=Transform3D(Basis(Vector3.UP,float(row.yaw)),v(row.position));var meshes:Array=[]
+  if row.existing:
+   for mesh:MeshInstance3D in selected[row.name]:
+    var name:String=str(mesh.name).trim_prefix(str(row.name)+"__");mesh.mesh=tall[name];mesh.global_transform=pose;var contact:CollisionShape3D=mesh.find_children("*","CollisionShape3D",true,false)[0];contact.shape=shapes[name];mesh.set_meta("transfer_gate_successor",true);meshes.append(mesh)
+  else:
+   var gate:=Node3D.new();gate.name=row.name;zones[row.zone].add_child(gate);gate.transform=pose;gate.set_meta("clinical_operation_admitted",false)
+   for name:String in tall:
+    var mesh:=MeshInstance3D.new();mesh.name=str(row.name)+"__"+name;mesh.mesh=tall[name];gate.add_child(mesh);var body:=StaticBody3D.new();body.name="StaticContact";mesh.add_child(body);var shape:=CollisionShape3D.new();shape.name="SharedShape";shape.shape=shapes[name];body.add_child(shape);meshes.append(mesh)
+  var paths:Array=[]
+  for mesh:MeshInstance3D in meshes:paths.append(str(ship.get_path_to(mesh)))
+  gate_paths.append({"name":row.name,"paths":paths,"position":row.position,"yaw":row.yaw})
+ var groups:={}
+ for row:Dictionary in plan.parts:
+  var key:String=str(row.zone)+"/"+str(row.role)
+  if not groups.has(key):groups[key]=[]
+  groups[key].append(row)
+ var batches:=0
+ for key:String in groups:
+  var rows:Array=groups[key];var st:=SurfaceTool.new();st.begin(Mesh.PRIMITIVE_TRIANGLES);st.set_material(materials[rows[0].role]);var names:Array=[]
+  for row:Dictionary in rows:
+   names.append(row.name)
+   for face:Array in row.faces:
+    for i in range(1,face.size()-1):
+     var a:=v(row.verts[face[0]]);var b:=v(row.verts[face[i]]);var c:=v(row.verts[face[i+1]]);var normal:Vector3=(b-a).cross(c-a).normalized()
+     for index:int in [face[0],face[i+1],face[i]]:
+      var point:=v(row.verts[index]);st.set_normal(normal);st.set_uv(Vector2(point.x,point.z)*.5 if absf(normal.y)>.7 else Vector2(point.z,point.y)*.5);st.add_vertex(point)
+  var mesh:=MeshInstance3D.new();mesh.name="TransferBatch_%03d"%batches;mesh.mesh=st.commit();mesh.set_meta("authored_parts",names);zones[rows[0].zone].add_child(mesh);load("res://scripts/static_contact_cache.gd").attach(mesh);batches+=1
+ var lamps:Array[Light3D]=[]
+ for zone:Dictionary in plan.zones:
+  for row:Dictionary in zone.lights:
+   var lamp:=SpotLight3D.new();lamp.name=row.name;zones[zone.id].add_child(lamp);lamp.position=v(row.position);lamp.rotation.x=-PI/2;lamp.spot_angle=65;lamp.spot_range=row.range;lamp.light_energy=row.energy;lamp.light_color=Color(row.color[0],row.color[1],row.color[2]);lamp.shadow_enabled=true;lamp.visible=false;lamp.set_meta("fixture_powered",true);lamps.append(lamp)
+ load("res://scripts/receiving_source_lights.gd").register(lamps,ship)
+ var room:Node3D=space.get_node("Districts/"+str(plan.room_receiving));room.child_entered_tree.connect(func(child:Node):patch_room(child,ship,plan))
+ for child:Node in room.get_children():patch_room(child,ship,plan)
+ for path:String in supports:
+  var mesh:MeshInstance3D=ship.get_node(path);var before:Dictionary=supports[path]
+  if not required(mesh.mesh==before.mesh and mesh.global_transform.is_equal_approx(before.pose),"Protected bearing unchanged"):return null
+ var changed:=0;var moved:=0
+ for path:String in original:
+  var mesh:MeshInstance3D=ship.get_node(path);var before:Dictionary=original[path]
+  if mesh.mesh!=before.mesh:changed+=1
+  if not mesh.global_transform.is_equal_approx(before.pose):moved+=1
+ if not required(changed==92 and moved==84,"Only eight clinical partition resources and84 original cassette parts change"):return null
+ root.set_meta("gate_bindings",gate_paths);root.set_meta("batches",batches);root.set_meta("parts",plan.parts.size());root.set_meta("new_floor_m2",plan.new_floor_m2);root.set_meta("new_capacity",0);root.set_meta("clinical_operation_admitted",false);root.set_meta("visual_accepted",false);root.set_meta("existing_gate_meshes_reused",84);root.set_meta("new_gate_meshes",84)
+ return root
