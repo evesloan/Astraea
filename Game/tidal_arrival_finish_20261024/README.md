@@ -1,0 +1,9 @@
+# Tidal five-level arrival portals — unfinished candidate
+
+80 editable native parts form five profiled crowns, stepped shoulders, fluted reveals and visible opal fixtures attached to the exact retained lift-header beams. Ten directional source lights aim toward existing stairs and cross-streets. Runtime uses20 spatial/material batches and five bounded contact groups. No original mesh, material, slab, hull, opening, room, rest, capacity or floor is replaced.
+
+396 actual receiving checks pass with original334 architecture parts,81 furnishing/plant placements, transfer, priorD14 landing and court finish. This bounded fixture declares the unchanged adoption identity/count interface; it does not instantiate or verify all131 private homes. The failed first fixture omitted that adoption metadata; its log/source remain under evidence/attempt001. All five local sources pass power/budget tests (4/7/8/7/8 active total) and shifted support/capacity negatives. New solids remain aboveYfloor+2.90 and within existing header width; clear opening remains unchanged.
+
+The first actual view has brighter stairs and circulation but overstrong floor/ceiling pools. The actual installed passenger lift and landing gates are omitted, so its dark portal does not establish missing architecture. r001 is not selected in main or visually accepted. Next successor will preserve geometry, correct real light distribution and include the retained lift rather than inventing a replacement. Ambient/exposure are unchanged. Full gameplay, all-neighbor clearance, final visual and target-hardware performance remain separate.
+
+Native: BlenderCatalogue/assets/tidal_arrival_finish_20261024/TidalArrivalPortals_r001.blend. The original header/native/material sources remain retained. This is a five-level arrival treatment, not completion of Group1 or the eight-group ship.
