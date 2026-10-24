@@ -1,0 +1,44 @@
+{
+  "status": "PASS_STATIC_CONNECTION_ONLY",
+  "checks": 534,
+  "errors": 0,
+  "exit_code": 0,
+  "negative_control": {
+    "expected_exit": 1,
+    "actual_exit": 1,
+    "PASS_line_absent": true
+  },
+  "production_admitted": false,
+  "candidate_geometry_changed": false,
+  "tested_boundary": "Retained upper stair return/platform to r002 apron, actual hinge/bridge, exact retained vehicle collision factory at curved CENTRAL pose; bounded 4m lower/upper cylinder checks.",
+  "failures_preserved": [
+    "CONNECTED_ATTEMPT001.log",
+    "CONNECTED_ATTEMPT002.log"
+  ],
+  "failure_resolution": [
+    "Complete bridge/hinge assembly loaded before unchanged floor probes.",
+    "Exact retained vehicle factory skips no_collision_detail anti-slip deck and retains modified convex cells/margins.",
+    "Failure latch prevents helper assertion from being overwritten by final PASS or exit0."
+  ],
+  "unchanged_floor_expected_y": 56.1,
+  "unchanged_tolerance_m": 0.003,
+  "unchanged_ray_half_height_m": 0.12,
+  "native_file_sha256": "4a78cd466780453fc561561a4cb58329334b99617121f87276718de030608297",
+  "not_tested": [
+    "All installed later neighbors",
+    "full moving-body sweep",
+    "curved boarding side/yaw controller",
+    "gate/bridge interlocks",
+    "caster/joint",
+    "passenger travel",
+    "FPS/whole-ship performance",
+    "final visual acceptance"
+  ],
+  "source_pins": {
+    "Game/tram_section_successor_20261023/check_connected_r003.gd": "b7a2e3caaa7d4b92f0d6ba9118ba62bf272215c6e23bd0fe9f4a4ca9707f5814",
+    "Game/scripts/group4_boarding_safety.gd": "5bf03efd836f05ff64ed31a857ca8539e60173304f2ded913777a71a25736fe2",
+    "Game/data/architecture/GROUP4_BOARDING_SAFETY_CANDIDATE.json": "b0642104c0299ac5903dbd6e8965b5eb1ea7fa12be435b243b22ed898b9f907f",
+    "Game/source_derivatives/group4_boarding_safety_20261011/AST-TRM-G4-024_powered_portal_body_r001.glb": "dbbead1ab14e74096696abac71280b3e3ce4133f168d634d6858849110949349",
+    "Game/source_derivatives/group4_boarding_safety_20261011/VEHICLE_COLLISION_PROPOSAL.json": "02b4f928e79ad03b4b5e461f4273486f133ef12c6427ce4156da717d76a9560d"
+  }
+}
