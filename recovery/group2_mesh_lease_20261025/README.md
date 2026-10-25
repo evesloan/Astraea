@@ -67,3 +67,25 @@ targets, with zero missing files or writes. Manifest SHA256:
 `a0d1ab11d9795f6e59838bf343cf738d243a958555b21c61145f5e88e4b36748`.
 The roof check now records stage/resource/manager counts to distinguish candidate
 build, arrival preparation and subsequent visibility loads if safety stops again.
+
+## Latest actual-ship boundary: ddf13c227
+
+The D04 adapter rejected a diagnostic-only print added to its exact pinned
+controller. That print was removed and the original bytes independently verified;
+the inherited queue remains. The subsequent run reached runtime_ready at
+109.114 seconds with zero stderr bytes. The new Group 7 candidate built and
+the real player arrival to the fore neck passed the ordinary floor/capsule gate.
+Candidate construction added 10,832,820 static bytes; arrival preparation added
+12,047,252 static bytes in 0.074 seconds. These stages are not the multi-GiB
+post-ready allocation source. See installed_006/RESULT.json for exact measured
+deltas and the named Star Atlas private-detail loads afterward.
+
+The run began with 15.150 GiB available RAM and stopped at the unchanged
+5 GiB safety floor: minimum 4.722 GiB, peak private 12.782 GiB, resident
+10.811 GiB. No RID or script errors occurred in this bounded run. It did not
+reach screenshot capture, full route clearance, sustained movement or FPS
+acceptance. The roof remains unselected and the Windows package is not rebuilt.
+Do not retry the unchanged full run at the same headroom. Further work must
+reduce or bound live visible-detail/render resources, or establish sufficient
+free RAM for a decision-relevant profiler run; no allocator-limit increase,
+required-view removal or user-application termination is implied.

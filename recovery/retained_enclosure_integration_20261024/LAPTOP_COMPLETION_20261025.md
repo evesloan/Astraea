@@ -55,3 +55,20 @@ This is a resource/integration blocker, not an access denial or proven OOM.
 Do not repeat the unchanged full launch, raise allocator limits or infer
 playability from previous cloud headless checks. Preserve the current source
 and diagnose the loading path before installed acceptance and delivery.
+
+## Resource correction and latest actual-world evidence
+
+Group 2 cached-room meshes now release while detached and restore on the same
+nodes with controller/contact state preserved. All 86 source contracts passed
+the focused geometry/state checks. Received/private visibility requests are
+deduplicated and rechecked after readiness and renderer frames.
+
+At ddf13c227 the actual ship reached readiness in 109.114 seconds, installed the
+unselected roof candidate, and passed the ordinary fore-neck player arrival
+floor/capsule checks. No stderr/RID errors were logged in the bounded run.
+Low available RAM still stopped the process before views or full clearance
+checks. Candidate construction and arrival each added only about 11 MiB of
+static memory; later named Star Atlas visible-detail loads remain the next
+resource investigation target. Raw result: recovery/group2_mesh_lease_20261025/
+installed_006. No full-ship performance, roof selection, tram operation or
+matching Windows-delivery acceptance is claimed. No engine is left running.
