@@ -245,7 +245,9 @@ def create_missing(repo, recipes, staged, stage):
         # hard link prevents crash-truncated targets and dedup edit coupling.
         candidate = stage / ('publish-' + str(index))
         shutil.copyfile(source, candidate)
-        with candidate.open('rb') as f:
+        # Windows _commit requires a writable handle. This is only our new
+        # private staging inode; existing project survivors remain read-only.
+        with candidate.open('r+b') as f:
             os.fsync(f.fileno())
         verify_file(stage, dict(row, path=candidate.name))
         try:
