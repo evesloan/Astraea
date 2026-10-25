@@ -41,3 +41,15 @@ candidate. The older onward Upper Horizon fixture at Z193.7 also needs an exact
 clearance result; its source lens underside is 3.97 m above the retained floor.
 Do not silently accept that as the required 4 m passage. Tram operation, actual
 1080p performance and a matching Windows export remain pending.
+
+## Later installed result, 25 October21:33UTC
+
+Run007 at protected c1c47e9f completed with exit0 and no stderr. All four real
+1080p player-camera images were inspected; the roof spine, glazed sides,
+outward ship views and fixture-lit circulation are present. Twelve sampled
+gallery air envelopes are clear. The separate Z193.7 onward sample confirms
+two existing AST-CMD-005 warm-opal fixture contacts in the height envelope.
+That physical connection still needs correction; no4m acceptance is inferred
+from the earlier3.97m source clearance. Candidate selection remains off.
+See INSTALLED_007.json and recovery/received_mesh_lease_20261025/installed_007.
+INSTALLED_HOLD.json and earlier logs remain unchanged historical evidence.

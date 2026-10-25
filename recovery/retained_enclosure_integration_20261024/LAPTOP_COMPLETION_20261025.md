@@ -72,3 +72,30 @@ static memory; later named Star Atlas visible-detail loads remain the next
 resource investigation target. Raw result: recovery/group2_mesh_lease_20261025/
 installed_006. No full-ship performance, roof selection, tram operation or
 matching Windows-delivery acceptance is claimed. No engine is left running.
+
+## Installed inspection unblocked at c1c47e9f
+
+The seven named Star Atlas detail loads were measured together: about82MiB
+static memory and complete mesh-reference release, not a demonstrated
+multi-GiB leak. The larger received-section cache now suspends unchanged
+source meshes while preserving room/controller/material/contact state.
+All58 received sources (including repeated release/restore), all86 Group2
+sources and mutation/source-mismatch guards pass. All17,931 source contracts
+match; the17,927 prior entries are unchanged.
+
+Actual-ship run007 completed cleanly: readiness103.787s, exit0, zero stderr,
+four inspected1920x1080 player-camera roof/circulation views. Peak private
+memory13.126GiB; minimum available RAM5.824GiB. Starting headroom was higher
+than run006, so completion is not attributed solely to the correction.
+This is bounded installed evidence, not sustained playability or60FPS.
+
+All12 sampled gallery air envelopes are clear. The independent onward sample
+atZ193.7 intersects the two retained AST-CMD-005 warm-opal fixture contacts:
+ACP_CELL_X-1_Y13_Z24_ASTRAEA_aft_platform_warm_opal and
+ACP_CELL_X0_Y13_Z24_ASTRAEA_aft_platform_warm_opal. Their original3.97m lens
+clearance is not accepted as4m. Correct this real physical interface before
+promoting complete end-to-body passage acceptance. The roof remains an
+unselected tested candidate; original roof/floor sources are preserved.
+Evidence and images: recovery/received_mesh_lease_20261025/installed_007.
+Continue this construction connection, retained all-group boundaries, actual
+tram operation and measured performance, then a matching Windows package.
