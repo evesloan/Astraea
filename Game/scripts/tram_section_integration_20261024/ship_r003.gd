@@ -379,10 +379,10 @@ func _ready() -> void:
 	await _construction_step("private_pit_receivers_20261015/package.gd")
 	load("res://scripts/received_homes_20261015/package.gd").build(self)
 	await _construction_step("received_homes_20261015/package.gd")
-	if load("res://tram_section_successor_20261024/integration_r003.gd").before_budget(self)==null:return
+	if load("res://tram_passenger_successor_20261024/integration_initial_pose_r002.gd").before_budget(self)==null:return
 	await _construction_step("group4_integrated_receiving.gd")
 	lighting_budget.configure(self,player)
-	if not load("res://tram_section_successor_20261024/integration_r003.gd").after_budget(self):return
+	if not load("res://tram_passenger_successor_20261024/integration_initial_pose_r002.gd").after_budget(self):return
 	await _construction_step("group4_integrated_receiving.gd")
 	# Exact missing-only Group3 precinct;source identities/capacity remain unassigned.
 	load("res://scripts/group3_completion_20261011/d03_precinct.gd").build(self)

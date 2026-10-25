@@ -1,0 +1,7 @@
+# Normal-construction initial pose integration
+
+The selected constructor changes only its two Group4 adapter paths. The new adapter uses the independently retained initial-pose r002 assembly and checks its exact prerequisite/owned hashes. Original r003 assembly/adapter and all geometry, contact, restraint, control and gate sources remain unchanged. Production boarding, joint and motion admission remain false.
+
+Focused original-source carry passed4374 checks on the laptop, including real joint, one-metre outbound/return and release. This establishes the narrow factory correction, not full route admission. Selected-world operation test first preserves the existing canonical identity/control checks and actual installed contact sweep, then permits test-local boarding only. The original player must arrive on the real platform, walk via normal input across the deployed bridge, remain supported aboard and secure the gates. Only then can guarded actual motor motion cover10m outward and return. The original cart stays at its existing location. Full-route, loaded-cart installed-world, final scenic and target60FPS acceptance are not inferred.
+
+Graphical operation uses the selected presentation and real player camera at1920x1080, warm-up3s, actual process-frame intervals during movement, resource/residency counters and external RAM/VRAM monitoring. No headless timing is called FPS. Any contact, movement, timeout or memory failure stops admission; no collision exclusions, source deletion or safety-limit increase is introduced.
