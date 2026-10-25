@@ -1,0 +1,22 @@
+# FORE_MIDSHIP–Orchard receiving construction, partial unselected candidate
+
+This package authors real editable section geometry toward a public connection from the retained Z-241 port-side station to the existing D10 Orchard Exchange gallery. It does **not** change the selected ship or claim the train now runs inside the grand room. No existing room, door, protected roof, source or persistent identity is replaced. AFT_MIDSHIP has not been authored in this package.
+
+The direct platform-height line crosses the actual tram path. The candidate instead uses Y61, the existing D10 datum: a station-side upper gallery, a missing-only receiving span X[-7.8,-4] connecting to the retained D10 route X[-4,4], then the existing open west approach into Orchard Exchange. The span is 4.2m wide so physical handrails leave over4m clear. It does not lay a duplicate slab over the existing route or court. A new side switchback sits north of the retained Paper Moon source boundary and outside the original station approach:28 risers of175mm,280mm treads, continuous sloping guards/stringers, original lower stairs retained. Six gallery columns and three beams are proposed receiving interfaces, not engineered bearing acceptance.
+
+Latest geometry: `Game/foremid_orchard_receiver_20261025/RECEIVER_r003.json` and `ForemidOrchardReceiver_r003.glb`; editable source `BlenderCatalogue/assets/foremid_orchard_receiver_20261025/source/ForemidOrchardReceiver_r003.blend`.90 named physical parts; all use physical contacts in the focused check. Earlier drafting contracts and r002 native/export remain retained. r003 corrects net passage width for the real handrail thickness and pier tops; r002 is not selected.
+
+Native generation passed with5 exact retained source hashes. Source-space verification matches90 members and78 axis-aligned member bounds within40 micrometres. A stationary complete source024 vehicle AABB does not overlap the candidate; the receiving slab underside is1.79m above that body's top at the straight stop. This is **not** a complete swept-vehicle/door/bogie/cart clearance result.
+
+The actual retained-engine focused run passed36 checks, with28 physical tread contacts and the4m receiving air envelope. It deliberately preserves and detects the blocking original station guard: `N005_V2__Upper_Approach_Outer_post_-232_6`, `_infill`, `_foot`. The native/report source overlap inventory also records canopy, fascia, floor and beam interfaces. These must be fitted exactly; they were not filtered away or hidden to pass. The candidate cannot be promoted while the entrance remains blocked.
+
+Required completion before selection:
+
+1. Author the exact guard opening and supported returns, retaining original geometry outside the opening and retaining old approach clearance. Do not merely remove collisions. Verify real cart/operator and stair headroom in both directions.
+2. Extend the existing station lift with the same existing stop identities and a new D10 destination, fitting its shaft/cap and third-stop receiver. The current candidate intentionally has a physical closed hold at the unserved upper lift side; it is not accessible operation.
+3. Resolve actual structural bearing/column/canopy interfaces and full current D10 neighbors. Source-only AABBs are not installation acceptance.
+4. Check the whole vehicle envelope and actual player-camera experience. This upper connection does not itself move the tram inside the grand room; the user's scenic route gate remains separate and open. No replacement-room or above-ceiling scenic claim.
+
+The master chapters4,5,32 and retained Orchard/station builders were read. The parent supplied the inspected reference interpretation. Local Library image materialization failed after downloading in its Windows metadata step (`os.setxattr` unavailable); no complete local image remained. This was a helper-platform failure, not an access denial. No helper modification or alternate raw download was used, and no claim is made of a new local pixel review or final materials/architecture acceptance. The existing parent-inspected references remain the design guidance.
+
+No full-ship run, moving tram rerun, import or Windows export occurred. RID evidence at0631a85f remains unresolved and is not used to hold this independent construction candidate indefinitely. Raw native and focused logs are retained here. The selected SOURCE_CONTRACTS and launcher remain unchanged.
