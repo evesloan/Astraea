@@ -1,0 +1,7 @@
+# Aft crown fixture clearance successor
+
+Original AST-CMD-005 native and runtime sources remain byte-identical. Four authored housing/lens objects and their light marker at Z193.7 move upward exactly50mm;3982 native objects remain unchanged. Lens underside110.52 above D18floor106.5 gives4.02m nominal clearance. Housing remains connected to its beam. Light energy, colour, range, angle and shadow setting are unchanged.
+
+Runtime preserves960 unrelated batches. The two lens halves move intact with collisions. Two mixed housing/guard batches are split by original triangle indices, copying encoded vertex/normal/tangent/UV buffers and decoding bounds verbatim. Guard triangles remain in place, housing triangles move50mm, all physical triangles remain. Two extra mesh instances result. These tiny housing/guard partitions use full-detail original triangles and main-mesh shadows: the original fused shadow and LOD resources span both subsets and cannot safely be reused. No global LOD, shadow, collision or safety setting changes.
+
+Native reopened-source verification passes. Focused runtime check004 passes:96 selected vertices,960 unchanged batches, exact encoded buffers and triangle conservation, four original contact hits become zero for7.98m wide x4m high probe with floor clearance5mm. Tests001/002 rejected re-encoding drift;003 rejected an empty subset LOD. Failures retained. This is not whole-ship acceptance; roof remains unselected pending installed check.
