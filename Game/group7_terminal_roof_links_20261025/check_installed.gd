@@ -23,6 +23,7 @@ func run()->void:
 			report.status="FAIL_STARTUP_TIMEOUT";finish(1);return
 		await process_frame
 	report.startup_seconds=(Time.get_ticks_msec()-started)/1000.0
+	print("ROOF_CHECK_RUNTIME_READY ",report.startup_seconds)
 	var candidate:Node3D=load("res://group7_terminal_roof_links_20261025/runtime_adapter.gd").build(ship)
 	if candidate==null:report.status="FAIL_ADAPTER";finish(1);return
 	presentation.set_world_resolution(2)

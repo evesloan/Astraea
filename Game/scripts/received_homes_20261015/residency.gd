@@ -12,6 +12,9 @@ var entries:Array[Dictionary]=[]
 var elapsed:=0.0
 var changes:=0
 var enabled:=true
+var pending_visible:Array[Dictionary]=[]
+var queued_visible:Dictionary={}
+var stale_visible_requests:=0
 func setup(ship:Node3D)->void:
 	host=ship
 	actor=ship.get_node("ShipSpace/PersistentActors/Player")
@@ -53,15 +56,32 @@ func setup(ship:Node3D)->void:
 		for entry in entries:load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
 
 func _on_screen_entered(entry:Dictionary)->void:
-	# React at the next safe main-thread point, not the 0.2 second polling boundary.
-	_attach_visible_room.call_deferred(entry)
-func _attach_visible_room(entry:Dictionary)->void:
-	if not is_inside_tree() or entry.attached:return
+	if enabled:_queue_visible_room(entry)
+func _queue_visible_room(entry:Dictionary)->void:
+	if entry.attached:return
+	var id:int=entry.room.get_instance_id()
+	if queued_visible.has(id):return
+	queued_visible[id]=true
+	pending_visible.append({"entry":entry,"id":id,"frame":Engine.get_process_frames()})
+func _process(_delta:float)->void:
+	# Renderer notifications describe an earlier frame. Let a changed camera and
+	# the installed occluders reach the renderer before rechecking demand.
+	if not enabled or host==null or not bool(host.get_meta("runtime_ready",false)):return
+	while not pending_visible.is_empty():
+		if Engine.get_process_frames()<int(pending_visible[0].frame)+2:return
+		var request:Dictionary=pending_visible.pop_front()
+		queued_visible.erase(request.id)
+		if _attach_visible_room(request.entry):return # At most one visual activation per frame.
+		stale_visible_requests+=1
+func _attach_visible_room(entry:Dictionary)->bool:
+	if not is_inside_tree() or entry.attached or not is_instance_valid(entry.room):return false
+	if not entry.witness.is_on_screen() and not near_bounds(actor.global_position,entry.bounds,ENTER_MARGIN):return false
 	entry.parent.add_child(entry.room)
 	entry.attached=true
 	load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
 	entry.hidden_seconds=0.0
 	changes+=1
+	return true
 func _physics_process(delta:float)->void:
 	if not enabled:return
 	elapsed+=delta
@@ -88,6 +108,9 @@ func refresh(delta:float=0.0)->void:
 		var wanted:bool=near or witness.is_on_screen()
 		if wanted:
 			entry.hidden_seconds=0.0
+			if not entry.attached and not near:
+				_queue_visible_room(entry)
+				continue
 			if not entry.attached:
 				entry.parent.add_child(room)
 				entry.attached=true
@@ -124,7 +147,7 @@ func statistics()->Dictionary:
 			cached_meshes+=int(entry.meshes)-unloaded
 			deferred_meshes+=unloaded
 			if unloaded>0:deferred_rooms+=1
-	return {"registered_rooms":entries.size(),"active_rooms":live,"active_meshes":resident_meshes,"cached_detached_meshes":cached_meshes,"transitions":changes,"resources_freed":false,"uninstantiated_meshes":deferred_meshes,"deferred_visual_rooms":deferred_rooms}
+	return {"pending_visible_activations":pending_visible.size(),"stale_visible_requests_rejected":stale_visible_requests,"registered_rooms":entries.size(),"active_rooms":live,"active_meshes":resident_meshes,"cached_detached_meshes":cached_meshes,"transitions":changes,"resources_freed":false,"uninstantiated_meshes":deferred_meshes,"deferred_visual_rooms":deferred_rooms}
 func _notification(what:int)->void:
 	if what==NOTIFICATION_PREDELETE:
 		for entry in entries:
