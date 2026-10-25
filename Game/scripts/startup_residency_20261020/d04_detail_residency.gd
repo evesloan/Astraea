@@ -50,6 +50,7 @@ func _load_entry(entry:Dictionary)->void:
  var wrapper:Node3D=entry.home.get_ref()
  if wrapper==null:return
  assert(FileAccess.get_sha256(str(entry.record.detail_path))==str(entry.record.detail_sha256))
+ if OS.get_environment("ASTRAEA_TRACE_GROUP2")=="1":print("D04_DETAIL_LOAD ",JSON.stringify({"model":str(entry.record.model_file),"frame":Engine.get_process_frames(),"resources":Performance.get_monitor(Performance.OBJECT_RESOURCE_COUNT)}))
  var detail:Node3D=load(str(entry.record.detail_path)).instantiate()
  wrapper.add_child(detail)
  detail.name="ResidentPrivateFurnishings"

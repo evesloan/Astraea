@@ -10,6 +10,9 @@ var entries: Array[Dictionary] = []
 var elapsed := 0.0
 var loads := 0
 var releases := 0
+var pending_visible:Array[Dictionary]=[]
+var queued_visible:Dictionary={}
+var stale_visible_requests:=0
 func setup(ship: Node3D) -> void:
  host=ship
  index=JSON.parse_string(FileAccess.get_file_as_string(DATA)).rooms
@@ -49,14 +52,31 @@ func register_room(home: Node3D,file: String) -> Node3D:
  prepare_position(Vector3(63.0,52.6,-20.5))
  return shell
 func _request_visible(entry: Dictionary) -> void:
- _load_visible.call_deferred(entry)
-func _load_visible(entry: Dictionary) -> void:
- if entry.witness.is_on_screen():_load_entry(entry)
+ if is_instance_valid(entry.detail):return
+ var home:Node3D=entry.home.get_ref()
+ if home==null:return
+ var id:int=home.get_instance_id()
+ if queued_visible.has(id):return
+ queued_visible[id]=true
+ pending_visible.append({"entry":entry,"id":id,"frame":Engine.get_process_frames()})
+func _process(_delta:float)->void:
+ if host==null or not bool(host.get_meta("runtime_ready",false)):return
+ while not pending_visible.is_empty():
+  if Engine.get_process_frames()<int(pending_visible[0].frame)+2:return
+  var request:Dictionary=pending_visible.pop_front()
+  queued_visible.erase(request.id)
+  var entry:Dictionary=request.entry
+  if is_instance_valid(entry.detail):continue
+  if entry.home.get_ref()==null or not entry.witness.is_on_screen():
+   stale_visible_requests+=1;continue
+  _load_entry(entry)
+  return # One visible-detail activation per manager per frame; near preparation stays synchronous.
 func _load_entry(entry: Dictionary) -> void:
  if is_instance_valid(entry.detail): return
  var home: Node3D=entry.home.get_ref()
  if home==null:return
  # The unchanged helper still runs its presentation/collision policy gates.
+ if OS.get_environment("ASTRAEA_TRACE_GROUP2")=="1":print("PRIVATE_DETAIL_LOAD ",JSON.stringify({"model":str(entry.record.model_file),"frame":Engine.get_process_frames(),"resources":Performance.get_monitor(Performance.OBJECT_RESOURCE_COUNT)}))
  var detail: Node3D=load("res://scripts/private_contact_single_pass_20261023/private_visual.gd").contact_visual(home,str(entry.record.model_file))
  for contacts_node in detail.find_children("RoomStaticContacts","StaticBody3D",true,false): contacts_node.free()
  for path in entry.record.shell_mesh_paths: (detail.get_node(str(path)) as MeshInstance3D).mesh=null
@@ -85,10 +105,14 @@ func refresh(delta: float=0.2) -> void:
  for body in host.get_node("ShipSpace/PersistentActors").find_children("*","RigidBody3D",true,false):positions.append(body.global_position)
  for entry in entries:
   var live:=is_instance_valid(entry.detail)
-  var wanted: bool=entry.witness.is_on_screen()
+  var near:=false
   for point in positions:
-   if _near(point,entry.bounds,KEEP if live else ENTER):wanted=true
+   if _near(point,entry.bounds,KEEP if live else ENTER):near=true
+  var wanted:bool=near or entry.witness.is_on_screen()
   if wanted:
+   if not live and not near:
+    _request_visible(entry)
+    continue
    _load_entry(entry)
    entry.hidden=0.0
   elif live:
@@ -110,4 +134,4 @@ func statistics() -> Dictionary:
  var active:=0
  for entry in entries:
   if is_instance_valid(entry.detail):active+=1
- return {"registered_private_interiors":entries.size(),"resident_interiors":active,"loads":loads,"releases":releases,"shells_doors_lights_ids_always_resident":true,"detail_released_not_cached":true}
+ return {"pending_visible_activations":pending_visible.size(),"stale_visible_requests_rejected":stale_visible_requests,"registered_private_interiors":entries.size(),"resident_interiors":active,"loads":loads,"releases":releases,"shells_doors_lights_ids_always_resident":true,"detail_released_not_cached":true}

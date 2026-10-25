@@ -48,3 +48,22 @@ at most one visual activation per frame. Synchronous near-room and explicit
 arrival preparation are retained. No room, collision or required view is removed.
 QUEUE_GUARDS.log records stale/duplicate rejection, frame delay and synchronous
 near admission. Actual full-ship outcome remains to be checked.
+
+## Inherited private-detail scheduling
+
+The received queue retry reached readiness at 100.231 seconds with empty stderr,
+but crossed the RAM safety floor before producing a roof view. This does not
+prove resolution under sustained movement. Private and D04 detail managers had
+the same unbounded visibility callback path, including loads before final
+readiness. Their visibility-only work now waits for readiness, deduplicates,
+waits two renderer frames and rechecks visibility before one load per manager
+per frame. Nearby/explicit arrival preparation is unchanged. The inherited
+queue controls passed for both managers; no geometry or collision change.
+
+The active Night Garden controller pin and exactly two source-manifest entries
+were reconciled, together with preparation metadata. Read-only preparation
+verification passed all 17,927 contracts, 80 canonical repairs and 11 retained
+targets, with zero missing files or writes. Manifest SHA256:
+`a0d1ab11d9795f6e59838bf343cf738d243a958555b21c61145f5e88e4b36748`.
+The roof check now records stage/resource/manager counts to distinguish candidate
+build, arrival preparation and subsequent visibility loads if safety stops again.
