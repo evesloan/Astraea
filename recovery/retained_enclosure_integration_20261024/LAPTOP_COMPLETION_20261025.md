@@ -99,3 +99,11 @@ unselected tested candidate; original roof/floor sources are preserved.
 Evidence and images: recovery/received_mesh_lease_20261025/installed_007.
 Continue this construction connection, retained all-group boundaries, actual
 tram operation and measured performance, then a matching Windows package.
+
+## Group7 physical connection selected
+
+Fixture authored successor raises the original Z193.7 housing/lens/light50mm, preserving original sources, light settings, guard triangles and physical contacts. Native and focused runtime exact-geometry tests pass. Actual ship run008 reaches readiness103.524s and all13 installed7.98m-wide x4m-high sampled envelopes are clear, including the corrected onward fixture. The1202-part/273-batch roof is promoted through a new additive deferred-startup hook. Earlier run007 wide views remain applicable; no extra picture render was performed. The new hook is source-integrated; its own full startup is to be exercised at the next warranted integration run, not claimed from the manually installed candidate test.
+
+Sampled physical interface acceptance is separate from whole-ship gameplay, sustained memory/performance, final art, pressure/primary engineering and matching Windows delivery. No group-wide completion claim. Next coherent held package is retained tram passenger/vehicle operation; its initial-pose successor has exact source verification but no prior engine result.
+
+Retained tram initial-pose r002 now passes on the laptop:4,374 checks, zero failures; initial body linear/angular velocity zero; original cart maximum speed0.64975m/s, upward0.012995m/s, joint frame error5.21mm, passenger local error9.04mm. Actual travel2m (one metre out/return), source clamp/joint/release and dock gates pass. This fixed-step focused result is not FPS or full selected-world boarding/scenic acceptance; production admission remains off.
