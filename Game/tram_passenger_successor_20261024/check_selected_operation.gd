@@ -202,7 +202,13 @@ func operate(assembly:Node3D)->Dictionary:
 	if failures>0:return data
 	require(await phase_wait(safety,"boarding",20),"bridge deploys and original gates open")
 	if failures>0:return data
+	var opening_started:=Time.get_ticks_msec()
+	while safety.station_gates["CENTRAL"].open_fraction<.999 or safety.car_gates[safety.door_side("CENTRAL")].open_fraction<.999:
+		if Time.get_ticks_msec()-opening_started>20000:require(false,"actual gate leaves finish opening before threshold entry");return data
+		await physics_frame
+	data.station_gate_open=safety.station_gates["CENTRAL"].open_fraction;data.car_gate_open=safety.car_gates[safety.door_side("CENTRAL")].open_fraction
 	require(await walk(actor,body.to_global(Vector3(0,.02,0)),20),"original player walks across actual boarding bridge")
+	data.actor_after_crossing=str(actor.global_position)
 	if failures>0:return data
 	require(controls.actor_aboard(actor) and actor.is_on_floor(),"original player physically supported aboard")
 	if failures>0:return data
@@ -210,8 +216,12 @@ func operate(assembly:Node3D)->Dictionary:
 	require(await phase_wait(safety,"secured",20),"portals close and bridge stows")
 	if failures>0:return data
 	data.stage="moving_route";print("TRAM_OPERATION_STAGE moving_route")
-	actor.rotation.y=body.rotation.y;actor.pitch=0;actor.camera.rotation.x=0
+	actor.rotation.y=PI;actor.pitch=0;actor.camera.rotation.x=0
 	await create_timer(3).timeout
+	await RenderingServer.frame_post_draw
+	var picture:=argument("--report").get_base_dir().path_join("central_aboard_actual.png")
+	data.image_save_error=presentation.world_view.get_texture().get_image().save_png(picture)
+	data.image=picture;data.camera_yaw=actor.rotation.y;data.camera_position=str(actor.camera.global_position)
 	motor.set_meta("integration_motion_admitted",true)
 	var original_cursor:float=motor.cursor;var initial_local:Vector3=body.to_local(actor.global_position)
 	var max_local:=0.0
