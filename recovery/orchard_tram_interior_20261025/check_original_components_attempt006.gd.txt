@@ -1,0 +1,87 @@
+extends "res://orchard_tram_interior_20261025/check_receiving_r003.gd"
+# Source assembly lives in a separate physics world. Its original contacts are
+# queried against candidate receivers; no actor or vehicle is driven/moved.
+var envelope_result: Dictionary
+
+func finish(status: String) -> void:
+	envelope_result = {"status":status,"contacts":contacts,"queries":checks,"conflicts":hits.duplicate(true)}
+	if not hits.is_empty():
+		super.finish(status)
+		return
+	call_deferred("components")
+
+func components() -> void:
+	var template_view := SubViewport.new()
+	template_view.own_world_3d = true
+	template_view.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	root.add_child(template_view)
+	var districts := Node3D.new()
+	districts.name = "OriginalContactTemplates_NOT_INSTALLED"
+	template_view.add_child(districts)
+	var assembly: Node3D = load("res://tram_passenger_successor_20261024/assembly_initial_pose_r002.gd").create(districts)
+	assert(assembly != null)
+	var body: AnimatableBody3D = assembly.get_node("Group4OwnedTram_Source024")
+	var cart: RigidBody3D = load("res://scripts/cleaning_cart.gd").new()
+	cart.name = "OriginalCart"
+	cart.transform = body.global_transform * Transform3D(Basis.IDENTITY,Vector3(0,.025,.14))
+	districts.add_child(cart)
+	cart.freeze = true
+	for stock: RigidBody3D in cart.products:stock.freeze = true
+	var motor: Node3D = load("res://tram_passenger_successor_20261024/assembly_initial_pose_r002.gd").attach_original_cart(assembly,cart)
+	# The operating console's mounted collision is part of the source vehicle.
+	var actor: CharacterBody3D = load("res://scripts/player.gd").new()
+	actor.position = body.to_global(Vector3(0,.025,-1.3))
+	actor.spawn_position = actor.position
+	districts.add_child(actor)
+	actor.set_physics_process(false)
+	actor.set_process_input(false)
+	actor.set_process_unhandled_input(false)
+	var budget: Node = load("res://scripts/lighting_budget.gd").new()
+	districts.add_child(budget)
+	budget.configure(districts,actor)
+	load("res://scripts/group4_tram_operating_controls.gd").build(assembly,body,assembly.get_node("Group4BoardingSafety"),assembly.get_node("Group4OriginalCartRestraint"),motor,actor,budget)
+	var shapes: Array[Dictionary] = []
+	for owner: Node3D in [body,cart]:
+		for col: CollisionShape3D in owner.find_children("*","CollisionShape3D",true,false):
+			if col.disabled or col.shape == null:continue
+			var bogie := -1
+			var relative := body.global_transform.affine_inverse() * col.global_transform
+			for i in range(motor.bogies.size()):
+				if motor.bogies[i].is_ancestor_of(col):
+					bogie = i
+					relative = motor.bogies[i].global_transform.affine_inverse()*col.global_transform
+			shapes.append({"name":str(owner.name)+"/"+str(owner.get_path_to(col)),"shape":col.shape,"relative":relative,"bogie":bogie})
+	assert(cart.products.size() == 4 and shapes.size() >= 211)
+	await physics_frame
+	var plan: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(P+"PLAN.json"))
+	var poses: Array = JSON.parse_string(FileAccess.get_file_as_string(P+"POSE_KNOTS.json"))
+	var count := 0
+	var conflicts: Array[Dictionary] = []
+	for pose: Array in poses:
+		if pose[0] < plan.orchard_interval_m[0] or pose[0] > plan.orchard_interval_m[1]:continue
+		var proposed := Transform3D(Basis(Vector3.UP,pose[3]),Vector3(pose[1],56.1,pose[2]))
+		for component: Dictionary in shapes:
+			var relative: Transform3D = component.relative
+			if component.bogie >= 0:
+				var i: int = component.bogie
+				var column := 4+i*3
+				relative = Transform3D(Basis(Vector3.UP,pose[column+1]),Vector3(pose[column],-.2,-1.5 if i==0 else 1.5))*relative
+			var query := PhysicsShapeQueryParameters3D.new()
+			query.shape = component.shape
+			query.transform = proposed*relative
+			query.margin = 0
+			var found := world.get_world_3d().direct_space_state.intersect_shape(query,64)
+			count += 1
+			for hit: Dictionary in found:
+				if conflicts.size()<16:conflicts.append({"component":component.name,"owner":str(hit.collider.get_path()),"cursor":pose[0]})
+		if conflicts.size()>=16 or Time.get_ticks_msec()-started>40000:break
+	var output := ""
+	for arg: String in OS.get_cmdline_user_args():
+		if arg.begins_with("--result="):output=arg.substr(9)
+	assert(not FileAccess.file_exists(output))
+	var file := FileAccess.open(output,FileAccess.WRITE)
+	var result := {"selected":false,"scope":"Original vehicle, articulated bogies, closed portals, restraint, console and original cart/four stock contact shapes against candidate room/receivers only; no movement or installed acceptance","envelope":envelope_result,"components":shapes.size(),"queries":count,"conflicts":conflicts,"elapsed_seconds":(Time.get_ticks_msec()-started)/1000.0,"deadline_reached":Time.get_ticks_msec()-started>40000}
+	file.store_string(JSON.stringify(result,"\t")+"\n")
+	file.close()
+	print(JSON.stringify(result))
+	quit(0 if conflicts.is_empty() and not result.deadline_reached else 2)
