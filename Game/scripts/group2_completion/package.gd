@@ -13,7 +13,12 @@ static func build_section(parent: Node3D, key: String) -> Node3D:
 	root.set_meta("installed_acceptance", false)
 	root.set_meta("capacity_migrated", false)
 	parent.add_child(root)
-	var visual := (load("res://assets/group2_completion/" + key + ".glb") as PackedScene).instantiate() as Node3D
+	var model_path := "res://assets/group2_completion/" + key + ".glb"
+	if OS.get_environment("ASTRAEA_TRACE_GROUP2")=="1":print("GROUP2_MESH_LOAD ",JSON.stringify({"key":key,"resources":Performance.get_monitor(Performance.OBJECT_RESOURCE_COUNT)}))
+	var packed := load(model_path) as PackedScene
+	var visual := packed.instantiate() as Node3D
+	if not load("res://group2_resource_lifetime_20261025/mesh_lease.gd").bind(root,visual,packed,model_path):
+		visual.free();root.queue_free();return null
 	root.add_child(visual)
 	visual.name = "RetainedSource"
 	# Delivered GLBs contain complete named source hierarchies, not batched node aliases.

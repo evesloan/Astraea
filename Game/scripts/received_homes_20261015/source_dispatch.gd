@@ -4,9 +4,13 @@ static func ensure(room:Node3D)->void:
   load("res://scripts/deferred_home_visual.gd").ensure(room);return
  if room.has_meta("resident_visual"):
   var cached:Node3D=room.get_meta("resident_visual")
+  if not load("res://group2_resource_lifetime_20261025/mesh_lease.gd").resume(cached):
+   push_error("Group2 mesh restoration failed");room.get_tree().quit(1);return
   if cached.get_parent()==null:room.add_child(cached)
   return
  var source:Node3D=load("res://scripts/group2_completion/package.gd").build_section(room,str(room.get_meta("group2_source_key")))
+ if source==null:
+  push_error("Group2 source construction failed");room.get_tree().quit(1);return
  room.set_meta("resident_visual",source)
  var key:String=str(room.get_meta("group2_source_key"))
  if key in["787","792","794","795","797"]:
@@ -28,4 +32,6 @@ static func release(room:Node3D)->void:
   load("res://scripts/deferred_home_visual.gd").release(room);return
  if room.has_meta("resident_visual"):
   var cached:Node3D=room.get_meta("resident_visual")
-  if cached.get_parent()==room:room.remove_child(cached)
+  # Residency already detached the entire room. Keep its owned subtree so
+  # room destruction also destroys controllers and shapes, without orphan leaks.
+  load("res://group2_resource_lifetime_20261025/mesh_lease.gd").suspend(cached)
