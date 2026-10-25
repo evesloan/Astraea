@@ -15,6 +15,7 @@ var enabled:=true
 var pending_visible:Array[Dictionary]=[]
 var queued_visible:Dictionary={}
 var stale_visible_requests:=0
+var source_leases_started:=false
 func setup(ship:Node3D)->void:
 	host=ship
 	actor=ship.get_node("ShipSpace/PersistentActors/Player")
@@ -67,6 +68,12 @@ func _process(_delta:float)->void:
 	# Renderer notifications describe an earlier frame. Let a changed camera and
 	# the installed occluders reach the renderer before rechecking demand.
 	if not enabled or host==null or not bool(host.get_meta("runtime_ready",false)):return
+	if not source_leases_started:
+		# Initial detach happened while later construction still needed source
+		# meshes. Complete that release now, before activating new visible rooms.
+		for entry:Dictionary in entries:
+			if not entry.attached:load("res://scripts/received_homes_20261015/source_dispatch.gd").release(entry.room)
+		source_leases_started=true
 	while not pending_visible.is_empty():
 		if Engine.get_process_frames()<int(pending_visible[0].frame)+2:return
 		var request:Dictionary=pending_visible.pop_front()

@@ -13,6 +13,12 @@ static func build(ship: Node3D) -> Node3D:
 		assert(FileAccess.get_sha256("res://assets/models/" + file) == str(section.source_sha256), "Received export pin mismatch")
 		var p: Array = section.translation_xyz
 		var room: Node3D = ship.model(root, file, str(section.programme_key), Vector3(p[0],p[1],p[2]), float(section.rotation_y))
+		# Bind original source geometry before receiving adapters edit/reparent it.
+		# Changed resources and replacement wall meshes are never suspended.
+		var packed:PackedScene=load("res://assets/models/"+file)
+		var bound:bool=load("res://group2_resource_lifetime_20261025/mesh_lease.gd").bind(room,room.get_child(0),packed,"res://assets/models/"+file,true)
+		if not bound:push_error("Received section source mesh binding failed: "+file);return null
+		room.set_meta("source_mesh_lease_host",weakref(ship))
 		room.set_meta("programme_key", str(section.programme_key))
 		room.set_meta("persistent_id", str(section.programme_key))
 		room.set_meta("source_archive_sha256", str(section.source_archive_sha256))

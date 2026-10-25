@@ -1,0 +1,21 @@
+# Received-section mesh lifetime correction
+
+Baseline: `3ad31021e63e0228568dd0556a5a3292d4d5535a`, MousyLaptop, retained Godot 4.6.3.stable.official.7d41c59c4, NVIDIA Compatibility renderer. Original source assets, selected ship entry, room identities and collision nodes/shapes are unchanged. The Group 7 roof remains an unselected candidate pending installed clearance and visual acceptance.
+
+## Evidence and scope
+
+The seven Star Atlas private-detail models observed immediately before installed run006's memory safety stop were measured together through the actual private detail loader, shell stripping, contacts and texture interner. They add 86,004,399 bytes (82.02 MiB) of engine static memory beyond their seven shells. All 3,700 tracked main/shadow mesh references expire when detail is released. Shell-retained static memory falls from144,243,809 to64,010,213 bytes; after all owners free it is49,991,170 versus46,843,944 initially. Renderer-reported memory returns to its initial13,806,763 bytes. This does not support attributing the multi-GiB ship pressure to those seven loads alone. Recorded109–127ms per-model intervals include the diagnostic census and are not isolated production activation timings or FPS.
+
+Existing run006 startup logs identify `received_sections.gd` as a1,478.09MiB static-memory increase. Its58 sources previously remained strong mesh owners while their rooms were detached. A sequential focused test of the unchanged production model/contact path confirms23,626 source meshes can be suspended and exactly restored, with655.27MiB summed isolated static-memory savings. That sum is not a whole-ship measurement: active rooms, shared resources and edited meshes affect installed savings. The old cached-detached-mesh counter counts authored nodes, including null meshes; it is not a live resource census.
+
+## Correction
+
+Received source rooms bind their original imported mesh resources before fitting adapters run. Existing residency still decides visibility and proximity. Detachment retains the same room/node hierarchy, transformations, controller state and collision shapes. Only unchanged source mesh references are suspended. The first such release waits until runtime readiness, because later construction adapters legitimately inspect detached originals. Restoration uses the same pinned source bytes and original destination nodes before presentation resumes.
+
+The shared lease now retains surface material objects during suspension, including their authored or exactly interned texture state. Mesh `changed` signals protect in-place geometry edits; independently assigned replacement meshes are also excluded. Source-byte mismatch and altered destinations refuse restoration before writes. No room, required view, collision triangle, capacity, room ID or architectural part was removed. No allocation or safety limit was raised.
+
+Focused checks: all58 received sources pass unchanged geometry, material object identity, parent/transform, mesh-node identity and contact node/shape/pose comparisons. A second test checks two release/restore cycles for all58, with equal release coverage and no surviving mesh weak references. Change callbacks are reused rather than accumulated; unchanged material slots are not reassigned. Negative guards pass live-tree release refusal, construction hold, in-place mutation protection, replacement protection and source mismatch refusal. The two guard error messages are intentional negative controls, not runtime failures. All86 retained Group2 sources also pass the shared-helper regression: zero failures,127.14seconds elapsed,0.320GiB peak private memory. Actual-ship validation remains separate.
+
+Source contracts preserve all17,927 prior rows and add four exact runtime-source pins, making17,931. Preparation metadata pins the resulting manifest. The old botanical-pair RUNTIME_PROOF hash is historical predecessor evidence and was not rewritten; no active runtime consumer was found.
+
+No new Windows package, tram acceptance, 60FPS claim or full-ship crash-resolution claim follows from these focused tests. Continue the coherent roof/construction, tram operation and target-hardware performance gates before matching Windows delivery.
