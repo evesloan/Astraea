@@ -1,0 +1,5 @@
+# Exact Family fixture-owner reconciliation — candidate only
+
+All197 authored Family fixture nodes retain positions, ranges, colours, energies and identities. Reconcile preflights the exact protected47-room package and all expected nodes before modifying the configured existing owner. Unknown/conflicting state refuses. Existing owned fixtures are not appended again. Original refresh controls visibility/shadows with unchanged eight-source cap. No fixture is discarded or merely relabelled managed.
+
+The original adapter creates these after configure without registration. Permanent room home/shell/door/light owners survive detail release, so registration belongs to those owners, not per-detail loads. The opt-in candidate installer reconciles once at runtime_ready; normal production startup remains unchanged pending actual-ship evidence. Focused test passes mismatch-before-writes,197 initial/zero repeat registrations, actual budget cap8 and detach/reattach identities. Visibility ray predicate is stubbed in that focused test only; actual ship validation remains required.
