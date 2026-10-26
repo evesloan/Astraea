@@ -1,0 +1,24 @@
+{
+	"passed": [
+		"Far visible refresh never synchronously installs a burst",
+		"Far visible requests queued once",
+		"Signal and deferred compatibility requests deduplicated",
+		"Fresh requests wait for renderer observation frames",
+		"Stale visibility rejected; current wanted room dispatched",
+		"Stale request rejection counted",
+		"At most one activation even if called twice in same frame",
+		"Next visible room progresses on following frame",
+		"Explicit near preparation remains synchronous without visibility",
+		"Near actor refresh remains synchronous",
+		"Near persistent rigid-body preparation remains synchronous",
+		"New result destination only"
+	],
+	"scope": "Actual production scheduling logic with instrumented install; unchanged native/content install path verified separately, not performance acceptance",
+	"statistics": {
+		"completed": 3,
+		"max_activation_us": 8,
+		"pending": 0,
+		"rejected": 1,
+		"scope": "Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"
+	}
+}

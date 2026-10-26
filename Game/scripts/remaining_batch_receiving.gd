@@ -18,6 +18,12 @@ var actor:Node3D
 var elapsed:float=0.0
 var witnesses:Dictionary={}
 var door_states:Dictionary={}
+var pending_visible:Array[Dictionary]=[]
+var queued_visible:Dictionary={}
+var visible_requests_rejected:=0
+var visible_activations:=0
+var visible_activation_max_us:=0
+var last_visible_dispatch_frame:=-1
 func setup(ship:Node3D,rows:Array)->void:
 	host=ship
 	entries=rows
@@ -48,9 +54,32 @@ func _physics_process(delta:float)->void:
 		elapsed=0
 		refresh(step)
 func _queue_restore(item:Dictionary)->void:
-	_restore_visible.call_deferred(item)
+	var key:=str(item.key)
+	if not rooms.has(key) or rooms[key].get_meta("stream_loaded",false) or queued_visible.has(key):return
+	queued_visible[key]=true
+	pending_visible.append({"item":item,"key":key,"frame":Engine.get_process_frames()})
+func _process(_delta:float)->void:
+	if host==null or not bool(host.get_meta("runtime_ready",false)) or not is_instance_valid(actor):return
+	var frame:=Engine.get_process_frames()
+	if frame==last_visible_dispatch_frame:return
+	while not pending_visible.is_empty():
+		# Match the established received/private managers: let camera/occlusion
+		# updates reach the renderer before accepting an old visibility signal.
+		if frame<int(pending_visible[0].frame)+2:return
+		var request:Dictionary=pending_visible.pop_front();queued_visible.erase(request.key)
+		if not is_inside_tree() or not rooms.has(request.key):visible_requests_rejected+=1;continue
+		var room:Node3D=rooms[request.key]
+		if not is_instance_valid(room) or room.get_meta("stream_loaded",false):visible_requests_rejected+=1;continue
+		if not is_instance_valid(witnesses.get(request.key)) or not witnesses[request.key].is_on_screen():visible_requests_rejected+=1;continue
+		last_visible_dispatch_frame=frame
+		var start:=Time.get_ticks_usec()
+		_ensure_room(request.item)
+		visible_activation_max_us=maxi(visible_activation_max_us,Time.get_ticks_usec()-start)
+		visible_activations+=1
+		return # One complete far-visible activation; native instantiation is not preemptible.
 func _restore_visible(item:Dictionary)->void:
-	if is_inside_tree():_ensure_room(item)
+	# Preserve compatibility with any already-deferred caller; never stale-load.
+	_queue_restore(item)
 func _ensure_room(item:Dictionary)->void:
 	var key:=str(item.key)
 	var room:Node3D=rooms[key]
@@ -85,7 +114,9 @@ func refresh(delta:float=0.0)->void:
 		for body:Node3D in bodies:
 			if _near(body.global_position,item,8.0,3.0):close=true;break
 		var wanted:bool=close or witnesses[str(item.key)].is_on_screen()
-		if wanted:_ensure_room(item)
+		if wanted:
+			if close:_ensure_room(item) # Near actor/rigid-body collision readiness stays synchronous.
+			elif not loaded:_queue_restore(item)
 		elif loaded:
 			var states:Dictionary={}
 			for door:Node3D in room.find_children("*","Node3D",true,false):
@@ -155,3 +186,6 @@ static func install(ship:Node3D,item:Dictionary,room:Node3D)->Node3D:
 		load("res://scripts/static_room_occlusion.gd").install(source)
 	room.set_meta("stream_loaded",true)
 	return room
+
+func visibility_activation_statistics()->Dictionary:
+	return {"pending":pending_visible.size(),"rejected":visible_requests_rejected,"completed":visible_activations,"max_activation_us":visible_activation_max_us,"scope":"Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"}
