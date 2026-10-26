@@ -12,7 +12,7 @@ func compiled_lighting()->Dictionary:
   var light:Light3D=compiled_light_refs[id].get_ref()
   if light==null:compiled_light_refs.erase(id)
   elif light.is_inside_tree() and host.is_ancestor_of(light):known.append(light)
- return load("res://spatial_instance_cells_20261026/ship_lighting.gd").lighting(host,known)
+ return load("res://precompiled_private_cells_20261026/lighting_r002.gd").lighting(host,known)
 func _load_entry(entry:Dictionary)->void:
  var file:String=str(entry.record.model_file)
  if not compiled_records.has(file) or host==null or not bool(host.get_meta("runtime_ready",false)):
@@ -31,4 +31,4 @@ func _load_entry(entry:Dictionary)->void:
  var selected:Dictionary=load("res://precompiled_bank_cells_20261026/select_lighting.gd").apply(detail,lights.lights)
  detail.name="ResidentPrivateFurnishings";entry.detail=detail;entry.hidden=0.0;loads+=1
  compiled_loads+=1;compiled_saved_submissions+=selected.saved_submissions
- print("PRECOMPILED_PRIVATE_ACTIVATION ",JSON.stringify({"file":file,"room_id":row.room_id,"nodes":detail.find_children("*","",true,false).size()+1,"selected":selected}))
+ print("PRECOMPILED_PRIVATE_ACTIVATION ",JSON.stringify({"file":file,"room_id":row.room_id,"nodes":detail.find_children("*","",true,false).size()+1,"selected":selected,"inert_witnesses_excluded":lights.inert_witnesses_excluded,"witness_examples":lights.witness_examples}))
