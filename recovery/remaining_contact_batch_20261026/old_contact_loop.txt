@@ -1,0 +1,8 @@
+	for mesh:MeshInstance3D in meshes:
+		var n:=str(mesh.name).replace(".","_")
+		# Receiving-owned collision decision for six 18mm painted bay borders.
+		# Signs, supports and seating remain precise collidable geometry.
+		var visual_border:=str(item.key)=="D11_directory_02" and (n.begins_with("WP13_C1_R01_P01_bay_") or n.begins_with("WP13_C1_R01_P20_bay_")) and (n.ends_with("bay_front") or n.ends_with("bay_side") or n.ends_with("bay_side_001"))
+		if visual_border:
+			mesh.set_meta("receiving_collision_policy","visual bay border")
+		else:load("res://scripts/static_contact_cache.gd").attach(mesh)

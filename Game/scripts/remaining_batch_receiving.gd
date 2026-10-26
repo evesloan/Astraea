@@ -140,14 +140,7 @@ static func install(ship:Node3D,item:Dictionary,room:Node3D)->Node3D:
 	room.add_child(source)
 	var meshes:=source.find_children("*","MeshInstance3D",true,false)
 	assert(meshes.size()==int(item.meshes))
-	for mesh:MeshInstance3D in meshes:
-		var n:=str(mesh.name).replace(".","_")
-		# Receiving-owned collision decision for six 18mm painted bay borders.
-		# Signs, supports and seating remain precise collidable geometry.
-		var visual_border:=str(item.key)=="D11_directory_02" and (n.begins_with("WP13_C1_R01_P01_bay_") or n.begins_with("WP13_C1_R01_P20_bay_")) and (n.ends_with("bay_front") or n.ends_with("bay_side") or n.ends_with("bay_side_001"))
-		if visual_border:
-			mesh.set_meta("receiving_collision_policy","visual bay border")
-		else:load("res://scripts/static_contact_cache.gd").attach(mesh)
+	load("res://remaining_batch_activation_20261026/contact_partition.gd").attach(source,meshes,str(item.key))
 	if str(item.key) not in ["D12_directory_02","D11_directory_08","D11_directory_09","D11_directory_02"]:load("res://scripts/static_room_occlusion.gd").install(source)
 	var lights:Array[Light3D]=load("res://scripts/receiving_source_lights.gd").normalize(source,int(item.lights))
 
