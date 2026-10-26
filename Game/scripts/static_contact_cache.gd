@@ -9,7 +9,7 @@ static func attach(instance: MeshInstance3D) -> void:
 	var reference: WeakRef = shapes.get(key)
 	var shape: Shape3D = reference.get_ref() if reference != null else null
 	if shape == null:
-		shape = instance.mesh.create_trimesh_shape()
+		shape = preload("res://visible_resource_budget_20261026/exact_contact_pool.gd").intern(instance.mesh.get_faces())
 		shapes[key] = weakref(shape)
 	else: shapes_reused += 1
 	# Expired WeakRefs do not own collision resources. Sweep periodically instead
@@ -63,8 +63,7 @@ static func attach_group(root:Node3D,source_meshes:Array[Node])->void:
 		for i in range(meshes.size()):
 			var instance:MeshInstance3D=meshes[i]
 			for vertex in instance.mesh.get_faces():faces.append(transforms[i]*vertex)
-		var triangles:=ConcavePolygonShape3D.new()
-		triangles.set_faces(PackedVector3Array(faces))
+		var triangles:=preload("res://visible_resource_budget_20261026/exact_contact_pool.gd").intern(PackedVector3Array(faces))
 		shape=triangles
 		shapes[key]=weakref(shape)
 	else:shapes_reused+=1
