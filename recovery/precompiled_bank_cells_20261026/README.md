@@ -23,3 +23,11 @@ Laptop disconnected only after the normal exit. On reconnect the original logs/r
 ## Stationary owner attribution preparation
 
 The opt-in check_stationary_render_owners.gd reuses verified direct bank construction and original real boarding, then measures six largest camera-frustum surface owners at a fixed original player-camera pose. Temporary render-layer exclusions preserve contacts, lights and occluders and restore every surviving mesh layer before the next sample. This is diagnostic attribution, not production omission or route acceptance. Frustum surfaces are upper bounds; paired restored samples expose live-streaming drift. Parse-only check passed on the retained official engine. Actual results pending.
+
+## Actual stationary owner attribution018
+
+Protected diagnostic dfa7ee3e63b75fcb974a3e9b7ab926c6b4c78de4 completed with normal exit0, no forced stop, peak private11.200GiB/resident9.237GiB, minimum available7.804GiB. Original boarding and all inherited installed checks passed; no tram trip was requested. All temporary render layers were restored. No production representation or visibility was selected.
+
+Early Family/Received timing samples are confounded by active room loads (488640 to514832 nodes). Later samples stabilize at519180nodes: excluding GentleWaters_LivingGifts_Vesper_Section_WIP gives43799draws/140.450ms versus restored48836/149.225ms; D10directory09 gives47381/140.871ms versus48836/143.756ms; compiled crewbank gives47818/140.403ms versus48836/141.807ms. These are short paired marginal rendering samples, not additive exclusive timing or gameplay performance acceptance. Physics remains approximately45-50ms in the stable windows. The original crewbank is not the dominant current-view rendering owner. Frustum surface counts are upper bounds and cannot identify GPU visibility alone.
+
+Next correction must address a broader immutable static representation and/or measured physics/scene cost; no sixty-FPS, whole-route, loaded-cart or Windows readiness claim. Existing normal selected aquatic startup remains unchanged.
