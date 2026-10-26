@@ -34,7 +34,11 @@ static func audit(ship:Node3D,assembly:Node3D,poses:Array,interval:Array,exclusi
 			var angle:=ta.basis.orthonormalized().get_rotation_quaternion().angle_to(tb.basis.orthonormalized().get_rotation_quaternion())
 			# Full angular displacement bound plus relative-origin curvature bound.
 			# Overcoverage may hold a gate; it cannot hide a real collision.
-			var margin:float=c.radius*angle+c.relative.origin.length()*body_angle+.00002
+			var origin_radius:float=c.relative.origin.length()
+			if c.bogie>=0:
+				var column:int=4+c.bogie*3
+				origin_radius+=Vector3(maxf(absf(a[column]),absf(b[column])),.2,1.5).length()
+			var margin:float=c.radius*angle+origin_radius*body_angle+.00002
 			var q:=PhysicsShapeQueryParameters3D.new();q.shape=c.shape;q.transform=ta;q.margin=margin;q.exclude=exclusions
 			var initial:=state.intersect_shape(q,32);q.motion=tb.origin-ta.origin
 			var sweep:=state.cast_motion(q);result.queries+=1

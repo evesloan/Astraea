@@ -70,3 +70,30 @@ rider sightlines still gate selection. Static readiness and local operation are
 not scenic/performance acceptance. The prior moving RID/resource boundary remains
 unresolved. Aquatic grand-room integration, actual moving performance and matching
 Windows delivery remain outstanding; no new export/import or allocator change.
+
+
+## Installed interval result, attempt014 (2026-10-26 UTC)
+
+The refined checker ran in the complete inherited ship. Readiness109.237s;
+normal exit2, no forced stop, assertion, script or RID error. Peak sampled
+private11.976GiB/resident10.156GiB; available RAM never below7.238GiB.
+The original boundary shoes are clear of the above-floor reserved interval.
+The next hold is at cursor203.9..205.0: retained ForeMidshipPublicCore_WIP
+PrimaryCoreEnclosure/CORE_BATCH_ivory_enamel, PrimaryStairContact_08_1/2,
+and PrimarySwitchback_D09/CIR_GuardLandingSide_5_92. All remain intact.
+The envelope stopped after140 queries/12 hit records; the original-component
+sweep was deliberately NOT run after this failed prerequisite. No clearance
+or scenic acceptance is claimed. Correct the actual approach fit around the
+existing public core; do not remove its stairs/guards or narrow acceptance.
+
+The continuous helper now includes bogie pivot/cross-slide radius in its
+angular-origin bound. Both scripts loaded successfully in the established
+reviewed execution environment (script-load-002). Direct restricted execution
+failed before the engine banner in script-load-001 as also seen in the prior
+check-only attempt; that is not ship initialization evidence or a game fix.
+
+The fresh1920x1080 view in attempt014 was pixel-inspected: it shows the existing
+Orchard lift, stacked stair/glazed galleries and new track/landing inside the
+room, but is dim with the original player's lighting/residency focus elsewhere.
+It is a stationary architectural observation, not a rider or final lighting
+acceptance image. No additional render or moving-tram test was performed.
