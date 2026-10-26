@@ -3,6 +3,10 @@ extends RefCounted
 static var index:Dictionary={}
 static var prepared:Dictionary={}
 static var bodies:Dictionary={}
+static var release_enabled:=false
+static var pending_key:=""
+static var loads:=0
+static var releases:=0
 static func prepare_all(host:Node3D,owner:Node3D=null)->void:
 	if owner==null:owner=host.get_node("ShipSystems")
 	assert(bodies.is_empty(),"One owner for the finite contact pool")
@@ -27,12 +31,63 @@ static func prepare_all(host:Node3D,owner:Node3D=null)->void:
 		var collider:=CollisionShape3D.new();collider.name="SharedRoomTriangles";collider.shape=shape;body.add_child(collider)
 		bodies[str(row.key)]=body
 static func release_room(key:String)->void:
-	if bodies.has(key):bodies[key].collision_layer=0;bodies[key].collision_mask=0
+	if not bodies.has(key):return
+	bodies[key].collision_layer=0;bodies[key].collision_mask=0
+	if release_enabled and prepared.has(key):
+		bodies[key].get_node("SharedRoomTriangles").shape=null
+		prepared.erase(key);releases+=1
+static func enable_release()->void:
+	if release_enabled:return
+	release_enabled=true
+	for key:String in bodies:
+		if bodies[key].collision_layer==0:release_room(key)
+static func _install_prepared(key:String,shape:ConcavePolygonShape3D)->void:
+	assert(shape!=null and bodies.has(key) and bodies[key].collision_layer==0)
+	prepared[key]=shape;bodies[key].get_node("SharedRoomTriangles").shape=shape;loads+=1
+static func ensure_prepared(key:String)->void:
+	if prepared.has(key):return
+	if FileAccess.get_sha256(index[key].resource)!=index[key].sha256:
+		push_error("Exact contact source changed");return
+	var shape:ConcavePolygonShape3D
+	if pending_key==key:
+		shape=ResourceLoader.load_threaded_get(index[key].resource);pending_key=""
+	else:shape=load(index[key].resource)
+	if shape==null:
+		push_error("Exact contact resource unavailable");return
+	_install_prepared(key,shape)
+static func discard_pending()->bool:
+	if pending_key.is_empty():return true
+	var status:=ResourceLoader.load_threaded_get_status(index[pending_key].resource)
+	if status==ResourceLoader.THREAD_LOAD_IN_PROGRESS:return false
+	if status==ResourceLoader.THREAD_LOAD_LOADED:ResourceLoader.load_threaded_get(index[pending_key].resource)
+	pending_key=""
+	return true
+static func prefetch(key:String)->bool:
+	if prepared.has(key):return true
+	if not pending_key.is_empty() and pending_key!=key:
+		if not discard_pending():return false
+	if pending_key.is_empty():
+		if FileAccess.get_sha256(index[key].resource)!=index[key].sha256:
+			push_error("Exact contact source changed");return false
+		var error:=ResourceLoader.load_threaded_request(index[key].resource,"ConcavePolygonShape3D",false)
+		if error!=OK:
+			push_error("Cannot prefetch exact contact source");return false
+		pending_key=key
+	var status:=ResourceLoader.load_threaded_get_status(index[key].resource)
+	if status==ResourceLoader.THREAD_LOAD_IN_PROGRESS:return false
+	if status!=ResourceLoader.THREAD_LOAD_LOADED:
+		pending_key="";push_error("Exact contact prefetch failed");return false
+	ensure_prepared(key);return prepared.has(key)
+static func statistics()->Dictionary:
+	return {"retained_shapes":prepared.size(),"finite_bodies":bodies.size(),"pending_key":pending_key,"loads":loads,"releases":releases,"release_enabled":release_enabled}
 static func release_prepared(free_bodies:bool=true)->void:
+	if not pending_key.is_empty():
+		# Teardown consumes the one outstanding request; never leave a strong loader cache.
+		ResourceLoader.load_threaded_get(index[pending_key].resource)
 	if free_bodies:
 		for body in bodies.values():
 			if is_instance_valid(body):body.free()
-	bodies.clear();prepared.clear()
+	bodies.clear();prepared.clear();pending_key="";release_enabled=false
 const RECEIVERS:={"D12_directory_02":"library_receiving", "D11_directory_08":"music_receiving", "D11_directory_09":"performers_receiving", "D11_directory_02":"cinema1_receiving", "D10_directory_09":"moonfruit_service"}
 static func wall_names(key:String)->Dictionary:
 	var names:Dictionary={}
@@ -69,6 +124,9 @@ static func attach(source:Node3D,meshes:Array[Node],key:String)->void:
 		if not opaque:load("res://scripts/static_contact_cache.gd").attach(mesh)
 	timings.append(Time.get_ticks_usec())
 	assert(bodies.has(key),"Contact bodies must be prepared before player admission")
+	ensure_prepared(key)
+	if not prepared.has(key):
+		push_error("Contact activation refused: exact resource unavailable");return
 	var body:StaticBody3D=bodies[key]
 	assert(body.global_transform.is_equal_approx(source.global_transform),"Never reuse pooled contacts at a different source pose")
 	assert(body.collision_layer==0,"No duplicate live source owner")

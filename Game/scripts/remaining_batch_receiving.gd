@@ -62,6 +62,7 @@ func _queue_restore(item:Dictionary)->void:
 	pending_visible.append({"item":item,"key":key,"frame":Engine.get_process_frames()})
 func _process(_delta:float)->void:
 	if host==null or not bool(host.get_meta("runtime_ready",false)) or not is_instance_valid(actor):return
+	load("res://remaining_batch_activation_20261026/contact_partition.gd").enable_release()
 	var frame:=Engine.get_process_frames()
 	if frame==last_visible_dispatch_frame:return
 	while not pending_visible.is_empty():
@@ -73,12 +74,16 @@ func _process(_delta:float)->void:
 		var room:Node3D=rooms[request.key]
 		if not is_instance_valid(room) or room.get_meta("stream_loaded",false):visible_requests_rejected+=1;continue
 		if not is_instance_valid(witnesses.get(request.key)) or not witnesses[request.key].is_on_screen():visible_requests_rejected+=1;continue
+		if not load("res://remaining_batch_activation_20261026/contact_partition.gd").prefetch(str(request.key)):
+			pending_visible.push_front(request);queued_visible[request.key]=true
+			return
 		last_visible_dispatch_frame=frame
 		var start:=Time.get_ticks_usec()
 		_ensure_room(request.item)
 		visible_activation_max_us=maxi(visible_activation_max_us,Time.get_ticks_usec()-start)
 		visible_activations+=1
 		return # One complete far-visible activation; native instantiation is not preemptible.
+	load("res://remaining_batch_activation_20261026/contact_partition.gd").discard_pending()
 func _restore_visible(item:Dictionary)->void:
 	# Preserve compatibility with any already-deferred caller; never stale-load.
 	_queue_restore(item)
@@ -86,6 +91,12 @@ func _ensure_room(item:Dictionary)->void:
 	var key:=str(item.key)
 	var room:Node3D=rooms[key]
 	if not room.get_meta("stream_loaded",false):
+		var contacts=load("res://remaining_batch_activation_20261026/contact_partition.gd")
+		contacts.ensure_prepared(key)
+		if not contacts.prepared.has(key):
+			push_error("Room activation stopped: required collision resource unavailable")
+			get_tree().paused=true
+			return
 		install(host,item,room)
 		for door:Node3D in room.find_children("*","Node3D",true,false):
 			if door.get_script() not in [load("res://scripts/service_door.gd"),load("res://scripts/group8/medical_privacy_door.gd")]:continue
@@ -184,7 +195,7 @@ static func install(ship:Node3D,item:Dictionary,room:Node3D)->Node3D:
 	return room
 
 func visibility_activation_statistics()->Dictionary:
-	return {"pending":pending_visible.size(),"rejected":visible_requests_rejected,"completed":visible_activations,"max_activation_us":visible_activation_max_us,"scope":"Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"}
+	return {"pending":pending_visible.size(),"rejected":visible_requests_rejected,"completed":visible_activations,"max_activation_us":visible_activation_max_us,"scope":"Far-visible exact-contact prefetch; near preparation synchronous; original residency eligibility unchanged"}
 
 func _exit_tree()->void:
 	load("res://remaining_batch_activation_20261026/contact_partition.gd").release_prepared(false)
