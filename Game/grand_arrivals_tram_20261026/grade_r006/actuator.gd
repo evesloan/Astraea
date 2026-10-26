@@ -1,0 +1,166 @@
+extends Node3D
+# A single optional root-owned actuator. No input, guest simulation, cart clone or new global controller.
+const DATA:="res://grand_arrivals_tram_20261026/grade_r006/MOTOR_PLAN.json"
+var plan:Dictionary
+var poses:Array
+var vehicle:AnimatableBody3D
+var safety:Node3D
+var bogies:Array[AnimatableBody3D]=[]
+var wheel_pivots:Array[Node3D]=[]
+var cursor:=4.0
+var target:=4.0
+var speed:=0.0
+var moving:=false
+var motion_fault:=false
+var distance_travelled:=0.0
+var wheel_spin:=0.0
+var last_vehicle_pose:Transform3D
+static func fixture_vehicle(parent:Node3D,at:Vector3)->AnimatableBody3D:
+ var data:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_BOARDING_SAFETY_CANDIDATE.json"))
+ var item:Dictionary=load("res://scripts/group4_boarding_safety.gd").model("vehicle",data)
+ var path:String=data.model_root+item.file;assert(FileAccess.get_sha256(path)==item.sha256)
+ var body:=AnimatableBody3D.new();body.name="Group4UnloadedTravelFixture";body.sync_to_physics=false;body.position=at;parent.add_child(body)
+ body.set_meta("source_vehicle_model",item.file)
+ var visual:Node3D=(load(path) as PackedScene).instantiate();body.add_child(visual)
+ var c:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(data.model_root+"VEHICLE_COLLISION_PROPOSAL.json"));var modified:Dictionary={};var policies:Dictionary={}
+ for key:String in c.modified_members:modified[key.validate_node_name()]=c.modified_members[key]
+ for key:String in item.policies:policies[key.validate_node_name()]=item.policies[key]
+ for mesh:MeshInstance3D in visual.find_children("*","MeshInstance3D",true,false):
+  if policies[str(mesh.name)]=="no_collision_detail":continue
+  if modified.has(str(mesh.name)):
+   for cell in modified[str(mesh.name)]:
+    var shape:=ConvexPolygonShape3D.new();var points:=PackedVector3Array()
+    for y in cell.y:
+     for p in cell.triangle_xz:points.append(Vector3(p[0],y,p[1]))
+    shape.points=points;shape.margin=.001;var col:=CollisionShape3D.new();col.shape=shape;body.add_child(col)
+  else:
+   var col:=CollisionShape3D.new();col.shape=mesh.mesh.create_convex_shape(false,false);col.shape.margin=.001
+   col.transform=body.global_transform.affine_inverse()*mesh.global_transform;body.add_child(col)
+ body.sync_to_physics=true;return body
+static func build(parent:Node3D,existing_vehicle:AnimatableBody3D,existing_safety:Node3D,candidate_only:bool=false)->Node3D:
+ var p:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(DATA))
+ if not candidate_only and not (p.active and p.north_stop_adopted and p.shared_pits_adopted):return null
+ assert(not existing_vehicle.has_meta("group4_source_actuator"),"Never attach competing motors to the same tram")
+ var n:Node3D=load("res://grand_arrivals_tram_20261026/grade_r006/actuator.gd").new();n.name="Group4SourceTravelActuator";n.plan=p;n.vehicle=existing_vehicle;n.safety=existing_safety
+ parent.add_child(n);existing_vehicle.set_meta("group4_source_actuator",n.get_instance_id());return n
+static func initialize_bridge_physics(existing_safety:Node3D)->void:
+ # Apply during the closed, empty construction assembly, before admitting users or enabling any motor.
+ assert(existing_safety.phase=="secured")
+ for bridge:Node3D in existing_safety.bridges.values():
+  assert(not bridge.threshold_occupied(),"Never repair a physical bridge pose with a person/cart on its threshold")
+  bridge.moving.sync_to_physics=false
+  bridge.moving.rotation.z=(1.0-bridge.fraction)*PI/2
+  bridge.set_meta("initial_stow_physics_corrected",true)
+func initialize_vehicle_portal_contacts()->void:
+ assert(FileAccess.get_sha256(plan.gate_contacts_file)==plan.gate_contacts_sha256)
+ var c:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(plan.gate_contacts_file))
+ assert(FileAccess.get_sha256("res://assets/models/AST-DOR-003.glb")==c.source_sha256)
+ var original_faces:=PackedVector3Array();var original_cols:Array[CollisionShape3D]=[]
+ for col:CollisionShape3D in vehicle.find_children("*","CollisionShape3D",false,false):
+  if col.shape is ConcavePolygonShape3D:
+   original_faces.append_array(col.shape.get_faces());original_cols.append(col)
+ assert(original_cols.size()==6,"Exactly two retained original portal fixed-frame representations")
+ var reconstructed:=PackedVector3Array();var components:=0
+ for original in original_cols:
+  assert(original.transform.is_equal_approx(Transform3D.IDENTITY))
+  var faces:PackedVector3Array=original.shape.get_faces();assert(faces.size()%36==0)
+  for start in range(0,faces.size(),36):
+   var vertices:=PackedVector3Array()
+   for i in range(start,start+36):
+    if not vertices.has(faces[i]):vertices.append(faces[i])
+   assert(vertices.size()==8,"Pinned twelve-triangle source component remains an exact closed eight-vertex solid")
+   reconstructed.append_array(vertices)
+   var shape:=ConvexPolygonShape3D.new();shape.points=vertices;shape.margin=.001
+   var col:=CollisionShape3D.new();col.name="ExactPortalFrameComponent_"+str(components);col.shape=shape;vehicle.add_child(col);components+=1
+ var max_error:=0.0
+ for point in original_faces:
+  var closest:=INF
+  for vertex in reconstructed:closest=minf(closest,point.distance_to(vertex))
+  max_error=maxf(max_error,closest)
+ print("GATE CONTACT SOURCE VERTEX MAX ERROR ",max_error)
+ assert(max_error==0.0,"Every original fixed-frame vertex remains bit-identical in the exact component contacts")
+ assert(components==18)
+ for col in original_cols:col.queue_free()
+ vehicle.set_meta("exact_original_portal_contact_components",components)
+func _ready()->void:
+ vehicle.sync_to_physics=false
+ initialize_bridge_physics(safety)
+ initialize_vehicle_portal_contacts()
+ assert(FileAccess.get_sha256(plan.pose_file)==plan.pose_sha256);poses=JSON.parse_string(FileAccess.get_file_as_string(plan.pose_file))
+ cursor=float(vehicle.get_meta("group4_initial_source_cursor",plan.safe_body_cursor_range_m[0]))
+ assert(cursor>=float(plan.safe_body_cursor_range_m[0])and cursor<=float(plan.safe_body_cursor_range_m[1]),"Initial source cursor must remain inside the exact retained safe range")
+ if vehicle.has_meta("group4_initial_source_cursor"):
+  var initial_pose:Array=pose_at(cursor)
+  assert(vehicle.global_transform.is_equal_approx(grade_body_pose(initial_pose)),"Prebound graded cursor must match the assembled car position AND orientation before any pose write")
+ target=cursor;process_physics_priority=-30
+ for item in plan.models:
+  var path:String=plan.model_root+item.file;assert(FileAccess.get_sha256(path)==item.sha256)
+  if "end_buffers" in item.file:
+   var buffers:Node3D=(load(path) as PackedScene).instantiate();add_child(buffers)
+   load("res://scripts/static_contact_cache.gd").attach_group(buffers,buffers.find_children("*","MeshInstance3D",true,false))
+  else:
+   var source:Node3D=(load(path) as PackedScene).instantiate();vehicle.add_child(source)
+   for marker:Node3D in source.find_children("BOGIE_MOVING_ROOT*","Node3D",true,false):
+    var body:=AnimatableBody3D.new();body.name="SteeringTruckRear" if marker.position.z<0 else "SteeringTruckFront";body.sync_to_physics=false;vehicle.add_child(body)
+    body.transform=vehicle.global_transform.affine_inverse()*marker.global_transform
+    for mesh:MeshInstance3D in marker.find_children("*","MeshInstance3D",true,false):
+     mesh.reparent(body,true)
+     if mesh.get_meta("collision_policy","")=="no_collision_detail":continue
+     var col:=CollisionShape3D.new();col.shape=mesh.mesh.create_convex_shape(false,false);col.shape.margin=.001;col.transform=mesh.transform;body.add_child(col)
+    bogies.append(body)
+   for root:Node3D in source.find_children("BOGIE_FIXED_ROOT*","Node3D",true,false):
+    for mesh:MeshInstance3D in root.find_children("*","MeshInstance3D",true,false):
+     if mesh.get_meta("collision_policy","")=="no_collision_detail":continue
+     var col:=CollisionShape3D.new();col.shape=mesh.mesh.create_convex_shape(false,false);col.shape.margin=.001
+     col.transform=vehicle.global_transform.affine_inverse()*mesh.global_transform;vehicle.add_child(col)
+ assert(bogies.size()==2);bogies.sort_custom(func(a,b):return a.position.z<b.position.z)
+ var original_wheels:Array[Node]=vehicle.find_children("*Tram_Wheel*","MeshInstance3D",true,false);assert(original_wheels.size()==4)
+ for mesh:MeshInstance3D in original_wheels:
+  var vertices:PackedVector3Array=mesh.mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX];var sum:=Vector3.ZERO
+  for v in vertices:sum+=mesh.global_transform*v
+  var centre:Vector3=vehicle.global_transform.affine_inverse()*(sum/vertices.size())
+  # Source exported cylinders have balanced rings; source centres remain±.86,-.2,±1.5.
+  var index:=0 if centre.z<0 else 1;var wheel:=Node3D.new();wheel.name="OriginalWheelPivot_"+str(wheel_pivots.size());bogies[index].add_child(wheel)
+  wheel.position=Vector3(-.86 if centre.x<0 else .86,0,0);mesh.reparent(wheel,true);wheel_pivots.append(wheel)
+ for child:AnimatableBody3D in vehicle.find_children("*","AnimatableBody3D",true,false):child.sync_to_physics=false
+ apply_pose(cursor);last_vehicle_pose=vehicle.global_transform
+func pose_at(at:float)->Array:
+ var lo:=0;var hi:=poses.size()-1
+ while hi-lo>1:
+  var mid:=int((lo+hi)/2)
+  if poses[mid][0]<=at:lo=mid
+  else:hi=mid
+ var a:Array=poses[lo];var b:Array=poses[hi];var f:float=clampf((at-a[0])/(b[0]-a[0]),0,1);var result:Array=[]
+ for i in range(a.size()):result.append(lerpf(a[i],b[i],f))
+ for i in [3,5,8,12,13,14,15,16]:result[i]=lerp_angle(a[i],b[i],f)
+ return result
+func apply_pose(at:float)->void:
+ var p:Array=pose_at(at);vehicle.global_transform=grade_body_pose(p)
+ for i in range(2):
+  var column:=4+i*3;bogies[i].position=Vector3(p[column],-.2,-1.5 if i==0 else 1.5);bogies[i].rotation=Vector3(p[13+i*2],p[column+1],p[14+i*2])
+ for wheel in wheel_pivots:wheel.rotation.x=wheel_spin
+func request_distance(at:float)->bool:
+ if not bool(get_meta("integration_motion_admitted",true)):return false
+ if moving or motion_fault or not safety.unloaded_clear_to_depart():return false
+ if at<plan.safe_body_cursor_range_m[0] or at>plan.safe_body_cursor_range_m[1]:return false
+ target=at;moving=abs(target-cursor)>.0001;return true
+func request_stop(station:String)->bool:
+ for stop in plan.stops:
+  if stop.station==station:return request_distance(stop.distance_m)
+ return false
+func _physics_process(delta:float)->void:
+ if not vehicle.global_transform.is_equal_approx(last_vehicle_pose):motion_fault=true;moving=false;speed=0;return
+ if not moving:return
+ if not safety.unloaded_clear_to_depart():motion_fault=true;moving=false;speed=0;return
+ var direction:=signf(target-cursor);var p:Array=pose_at(cursor);var remaining:=absf(target-cursor)
+ var allowed:float=minf(p[10],sqrt(2*plan.acceleration_m_s2*remaining))
+ speed=move_toward(speed,allowed,plan.acceleration_m_s2*delta)
+ var step:=minf(speed*delta,remaining)
+ if remaining<.001:step=remaining
+ cursor+=direction*step;distance_travelled+=step;wheel_spin+=direction*step/plan.wheel_radius_m
+ apply_pose(cursor);last_vehicle_pose=vehicle.global_transform
+ if abs(target-cursor)<.00001:moving=false;speed=0
+
+func grade_body_pose(p:Array)->Transform3D:
+ assert(p.size()==17,"Exact graded pose schema required")
+ return Transform3D(Basis.from_euler(Vector3(p[12],p[3],0)),Vector3(p[1],p[11],p[2]))

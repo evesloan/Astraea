@@ -1,0 +1,28 @@
+# Primary continuation and connected lower embarkation — unfinished source
+
+Continues protected 5b8b42b6. All new native/runtime successors remain unselected; original source revisions, production startup, controllers and source contracts are untouched.
+
+## Authored physical changes
+
+- r005 Primary core: exact D05 starboard receiving opening, eight verified D04 slab bearings, ledgers/posts and continuous longitudinal guest protection. The original lift/stair holes and 4.7 m west circulation remain. Only three original enclosure objects change: two wing-rail ends and one relocated guard post. All 742 other original mesh objects match. Native/runtime checks pass. The original 215-component car/cart/door/truck sweep passed 34,185 queries over 160 poses, with zero hits and no engine errors.
+- r006 lower receiving: original wheel centre -.2 m and radius .16 m require the revised .365 m car-floor datum for rail heads at .005 m above the retained floor. Two adjacent 4 m ramp lanes climb .365 m over 7.3 m (1:20), received entirely on the original hall floor. The 60 m2 platform preserves the original 2.22 m portal opening and 1.0925925926 m bridge reach. Neither platform size nor lane count establishes passenger capacity.
+- The hall exit bridges only the measured 24 m2 missing floor between X-8 and X-4, with 1.8 m2 original receiving area on each side, explicit girders and edge guards. A 6 m wide, 4.4 m high opening has supported jamb/header geometry in one original east wall; the D03 cap, stair court, reception, exhibits and baggage/service boundary remain untouched. Structural strength is not certified.
+- r007 corrects the measured pier conflict by shifting the hall-side track, platform and ramps 0.6 m west. Dock is now (-12.6,.365,-449), west boarding. The original profiled pier and bands are preserved. The original r006 failed result is retained.
+- Forward core ground wing rails become guarded longitudinal returns, retaining the original 4 m room-threshold crossing at Z-434..-430. The original D03 breakroom alteration, shaft, stairs and other 854 enclosure meshes are preserved. Crossing occupancy/interlock and departure admission remain explicitly held; this is not an uncontrolled operational crossing.
+- The lower centreline rejoins the exact r002 geometry at Z-390; the upper/fore/Primary profile is unchanged. Rail section retains 90 mm heads, 60 mm head depth, 1.72 m gauge and 3.2 m by .13 m web. Under-guideway support remains incomplete beyond the received ground segment.
+
+## Verification and current limiting evidence
+
+Independent native/runtime triangle, UV and material comparison passed for r006/r007 lower receiving, the hall exit and Forward enclosure. It preserved 540 untouched hall meshes and 854 untouched Forward meshes. No global material replacement or extra light was introduced.
+
+The final lower receiving check tested 215 original components across 387 poses, 82,990 queries. The pier and Forward wing-guard conflicts no longer appear. **The receiving gate still does not pass:** 1,388 conservative collision queries remain against ground slabs/bridge and guideway web through the curves. Nine recorded owner combinations had empty exact start-pose contact lists, with rotation margins up to .253152 m. This supports investigating excessive angular overcoverage; it does not prove continuous clearance or justify deleting contacts. A tighter conservative subdivision/actual wheel-interface check is required. Original rail heads were omitted only as intentional rolling contacts; actual rolling/hardware acceptance is separate and open.
+
+The r007 isolated guard-chain run passed 13 checks and iterated its actual 7,965-row pose array, preserving kingpin chord/gauge to approximately .000031 m. Its raw report mistakenly printed a copied literal pose count of 7,962. The reporting script now uses the array size; raw evidence is preserved and no extra engine run was made just to replace that metadata. This fixture is not loaded rider operation, traction or production assembly admission. The inherited MOTOR_PLAN still contains historical metadata (including the old column description/central pose) that must be reconciled before integration; the candidate is deliberately inactive with no bound stops.
+
+## Source picture
+
+`evidence_r007/arrivals-lower-fixed-r007-001/candidate_lower_station.png` was captured during the changed receiving check, not a separate render. Pixels were inspected: platform/ramp, preserved pier, exit and curved track are visible, but the foreground pier obscures part of the view. The fixture uses diagnostic ambient/directional lighting and a white generic structural-floor material, not the installed ship's lighting/material presentation. This is an unselected source-geometry illustration only; greenery, furnishings, 1970s guest-space richness and final visual acceptance remain unfinished. No concept art or image enhancement was used.
+
+## Next connected integration steps
+
+Resolve the remaining curved ground/web sweep with tighter conservative accounting and actual original wheel/truck hardware evidence, preserving the unchanged collision gate. Finish original bridge/portal and room-crossing occupancy controls, rail support, accessible walking/cart and baggage/service flows. Reconcile controller metadata and all original stop identities before binding once into an isolated assembly. Complete remaining aft receivers and installed full-route/rider acceptance, then measured hardware memory/FPS and matching Windows build. All-eight-group physical and required guest-space visual completion remain open; no final ship or reliable playability claim is made.
