@@ -31,7 +31,7 @@ static func rebuild_contacts(owner:Node3D,policies:Dictionary)->void:
 static func create(parent:Node3D,initial_station:String="CENTRAL")->Node3D:
 	if not verify():return null
 	assert(not parent.has_node("Group4Completion") and not parent.has_node("Group4SectionSuccessor20261024"),"Build once into an empty owner; never replace surviving Group4")
-	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/r003/PLAN.json"))
+	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/r006/PLAN.json"))
 	assert(not plan.active and plan.unresolved_receivers.is_empty())
 	var assembly:Node3D=_build_base(parent,true,true)
 	assembly.name="Group4SectionSuccessor20261024"
@@ -147,7 +147,7 @@ static func _build_base(parent:Node3D, candidate_only:bool=false, receivers_conf
 	return n
 
 static func _add_receiving(assembly:Node3D)->void:
-	var receiving:Node3D=raw_model("res://orchard_tram_interior_20261025/r003/OrchardInteriorReceiving.glb")
+	var receiving:Node3D=raw_model("res://orchard_tram_interior_20261025/r006/OrchardInteriorReceiving.glb")
 	assert(receiving!=null);receiving.name="OrchardInteriorReceiving";assembly.add_child(receiving)
 	var fixed:Array[Node]=[];var rolling:Array[Node]=[]
 	for mesh:MeshInstance3D in receiving.find_children("*","MeshInstance3D",true,false):

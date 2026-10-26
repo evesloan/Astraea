@@ -1,7 +1,7 @@
 extends RefCounted
 # Continuous conservative translation/rotation coverage of original components.
 # No source shape, collider, actor pose or admission is changed by this query.
-static func audit(ship:Node3D,assembly:Node3D,poses:Array,interval:Array,exclusions:Array[RID])->Dictionary:
+static func audit(ship:Node3D,assembly:Node3D,poses:Array,interval:Array,exclusions:Array[RID],space_override:PhysicsDirectSpaceState3D=null)->Dictionary:
 	var body:AnimatableBody3D=assembly.get_node("Group4OwnedTram_Source024")
 	var motor:Node3D=assembly.get_node("Group4LoadedSourceTravelActuator")
 	var cart:RigidBody3D=ship.get_node("ShipSpace/PersistentActors/CustodialCart")
@@ -24,7 +24,7 @@ static func audit(ship:Node3D,assembly:Node3D,poses:Array,interval:Array,exclusi
 			var scale:Vector3=relative.basis.get_scale().abs()
 			components.append({"name":name,"shape":shape,"relative":relative,"bogie":bogie,"radius":radius*maxf(scale.x,maxf(scale.y,scale.z))})
 	var result:={"components":components.size(),"queries":0,"hits":[],"conservative_concave_hulls":hulls,"cart_scope":"Original cart/four-stock shape geometry at retained carried frame; actual loaded cart operation remains separate"}
-	var state:=body.get_world_3d().direct_space_state
+	var state:PhysicsDirectSpaceState3D=space_override if space_override!=null else body.get_world_3d().direct_space_state
 	for i in range(poses.size()-1):
 		var a:Array=poses[i];var b:Array=poses[i+1]
 		if a[0]<interval[0] or b[0]>interval[1]:continue
@@ -35,10 +35,12 @@ static func audit(ship:Node3D,assembly:Node3D,poses:Array,interval:Array,exclusi
 			# Full angular displacement bound plus relative-origin curvature bound.
 			# Overcoverage may hold a gate; it cannot hide a real collision.
 			var origin_radius:float=c.relative.origin.length()
+			var bogie_origin_margin:=0.0
 			if c.bogie>=0:
 				var column:int=4+c.bogie*3
 				origin_radius+=Vector3(maxf(absf(a[column]),absf(b[column])),.2,1.5).length()
-			var margin:float=c.radius*angle+origin_radius*body_angle+.00002
+				bogie_origin_margin=c.relative.origin.length()*absf(wrapf(b[column+1]-a[column+1],-PI,PI))
+			var margin:float=c.radius*angle+origin_radius*body_angle+bogie_origin_margin+.00002
 			var q:=PhysicsShapeQueryParameters3D.new();q.shape=c.shape;q.transform=ta;q.margin=margin;q.exclude=exclusions
 			var initial:=state.intersect_shape(q,32);q.motion=tb.origin-ta.origin
 			var sweep:=state.cast_motion(q);result.queries+=1

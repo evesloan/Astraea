@@ -73,6 +73,7 @@ func _ready() -> void:
 	player.set_script(load("res://scripts/group6_swimming_20261019/player.gd"))
 	$ShipSpace/PersistentActors.add_child(player)
 	player.spawn_position = Vector3(63.0,d09_y+0.1,-20.5)
+	if "--orchard-review-spawn" in OS.get_cmdline_user_args():player.spawn_position=Vector3(13.5,56.2,-236.1)
 	player.position = player.spawn_position
 	player.set_controls_enabled(false)
 	build_structural_datums()

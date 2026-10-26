@@ -69,7 +69,7 @@ static func before_budget(ship: Node3D) -> Node3D:
 		reject(ship,"Orchard exact floor receiving failed");return null
 	if not load("res://orchard_tram_interior_20261025/integration/rooms.gd").apply(ship):
 		reject(ship,"Orchard exact room/light receiving failed");return null
-	var assembly: Node3D = load("res://orchard_tram_interior_20261025/integration/assembly.gd").create(districts)
+	var assembly: Node3D = load("res://orchard_tram_interior_20261025/integration/assembly.gd").create(districts,"FORE_MIDSHIP" if "--orchard-review-spawn" in OS.get_cmdline_user_args() else "CENTRAL")
 	if assembly == null:
 		reject(ship, "Named assembly construction failed")
 		return null

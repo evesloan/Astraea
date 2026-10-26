@@ -25,8 +25,8 @@ func run()->void:
 	for item:CollisionObject3D in body.find_children("*","CollisionObject3D",true,false):exclusions.append(item.get_rid())
 	for path:String in ["NamedSectionReceiving20261024/RollingGuidewayContacts","OrchardInteriorReceiving/RollingGuidewayContacts"]:
 		for item:CollisionObject3D in assembly.get_node(path).find_children("*","CollisionObject3D",true,false):exclusions.append(item.get_rid())
-	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/r003/PLAN.json"))
-	var poses:Array=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/r003/POSE_KNOTS.json"))
+	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/r006/PLAN.json"))
+	var poses:Array=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/r006/POSE_KNOTS.json"))
 	var state:=body.get_world_3d().direct_space_state
 	for i in range(poses.size()-1):
 		var a:Array=poses[i];var b:Array=poses[i+1]
@@ -54,17 +54,29 @@ func run()->void:
 	if report.hits.is_empty():
 		report.component_sweep=load(P+"component_sweep.gd").audit(ship,assembly,poses,plan.orchard_interval_m,exclusions)
 	report.status="PASS_INSTALLED_RESERVED_INTERVAL" if report.hits.is_empty() and report.get("component_sweep",{}).get("hits",["not_run"]).is_empty() else "INSTALLED_CONTACT_HOLD"
-	# A stationary overview of actual installed geometry, not a fabricated rider
-	# or motion acceptance. The original player/residency focus remains untouched.
-	var camera:=Camera3D.new();ship.add_child(camera)
-	camera.global_position=Vector3(17.3,57.75,-243.5)
-	camera.look_at(Vector3(11.5,58,-238),Vector3.UP);camera.fov=78;camera.current=true
-	for i in range(5):await process_frame
-	await RenderingServer.frame_post_draw
-	var image:Image=presentation.world_view.get_texture().get_image()
-	var path:=argument("--result").get_base_dir()+"/orchard_installed_station.png"
-	if image!=null:report.image_error=image.save_png(path);report.image_path=path
-	report.remaining=["Actual complete vehicle/door/cart continuous installed checks beyond reserved interval box","Boarding and circulation","Moving RID/resource correction","Real rider sightlines and performance","Selection and Windows export"]
+	if "--orchard-review-spawn" in OS.get_cmdline_user_args():
+		report.verified_station_arrival=ship.arrive_at(Vector3(13.5,56.2,-236.1),0.)
+		if not report.verified_station_arrival:report.status="ARRIVAL_HOLD";finish();return
+		var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
+		actor.set_controls_enabled(false)
+		actor.camera.current=true
+		for i in range(20):await process_frame
+		var lamps:Array=[]
+		for light:Light3D in ship.find_children("*","Light3D",true,false):
+			if light.global_position.distance_to(actor.global_position)<18:
+				lamps.append({"path":str(light.get_path()),"visible":light.visible,"shadow":light.shadow_enabled,"energy":light.light_energy})
+		report.nearby_fixture_state=lamps
+		report.review_scope="Diagnostic station startup and original verified arrival, actual player camera and existing light budget; not travel or final art acceptance"
+		report.camera_position=[actor.camera.global_position.x,actor.camera.global_position.y,actor.camera.global_position.z]
+		await RenderingServer.frame_post_draw
+		var image:Image=presentation.world_view.get_texture().get_image()
+		var folder:=argument("--result").get_base_dir()
+		report.image_error=image.save_png(folder+"/orchard_actual_player_1080.png")
+		presentation.set_world_resolution(0)
+		for i in range(5):await process_frame
+		await RenderingServer.frame_post_draw
+		report.retro_image_error=presentation.post_view.get_texture().get_image().save_png(folder+"/orchard_actual_player_retro360.png")
+	report.remaining=["Loaded-cart boarding and ordinary arrival beyond diagnostic spawn","Boarding and circulation","Moving RID/resource correction","Real rider sightlines and performance","Selection and Windows export"]
 	finish()
 func finish()->void:
 	var path:=argument("--result");assert(not FileAccess.file_exists(path))

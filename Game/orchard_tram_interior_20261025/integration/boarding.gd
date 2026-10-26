@@ -6,7 +6,7 @@ static func build(parent:Node3D,existing_base:Node3D,existing_vehicle:Animatable
 	assert(not parent.has_node("Group4BoardingSafety"))
 	var n:Node3D=load("res://orchard_tram_interior_20261025/integration/boarding.gd").new()
 	n.name="Group4BoardingSafety";n.plan=p.duplicate(true);n.base=existing_base;n.vehicle=existing_vehicle
-	n.section=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/r003/PLAN.json"))
+	n.section=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/r006/PLAN.json"))
 	var completion:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_COMPLETION_CANDIDATE.json"))
 	for mount in n.plan.station_mounts:
 		for station in completion.stations:
