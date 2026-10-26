@@ -1,0 +1,5 @@
+# Actual selected-ship registration and substitution
+
+Run024: normal exit0, no script/engine errors, three explicit stationary Family423 activation/release cycles.197 exact authored fixtures registered once. Each cycle selects33 merged cells, zero fallbacks,161 potential submissions saved; all79 tracked Mesh weak references expire after release; permanent home identity and197 registrations stay unchanged. One RoomStaticContacts owner recorded each cycle; unchanged precompiled asset contact equivalence remains covered by prior47-room checks. Original selected ship and23,970 current Central interval queries pass. No movement/FPS/visual/loaded-cart or full-route claim. Peak private10.301GiB; minimum available9.166GiB.
+
+Run023 diagnostic failed to parse before constructing any ship; explicit integer type fixed. Both runs retained. Run024 uses7a1d9543 source plus that one diagnostic type correction, now included in this checkpoint. Candidate still opt-in/unselected pending natural activation and actual movement evidence. The former blanket zero-substitution result is superseded only for this measured stationary room, not the complete ship.

@@ -7,7 +7,7 @@ func operate(_assembly:Node3D)->Dictionary:
  require(not target.is_empty() and not is_instance_valid(target.detail),"Exact initially unloaded Family423 target")
  if failures>0:return {"stage":"target_not_available"}
  var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
- var before:=budget.sources.size();var home_id:int=target.home.get_ref().get_instance_id()
+ var before:int=budget.sources.size();var home_id:int=target.home.get_ref().get_instance_id()
  var cycles:Array=[]
  for cycle in 3:
   var saved_before:int=manager.compiled_saved_submissions
@@ -30,3 +30,4 @@ func operate(_assembly:Node3D)->Dictionary:
   cycles.append({"cycle":cycle,"saved_submissions":saved,"tracked_meshes":refs.size(),"still_live_after_release":live,"contact_owners":contacts,"registration":registration})
   if failures>0:break
  return {"scope":"Stationary selected inherited ship, explicit exact-room activation/release only; not natural movement, visual or FPS acceptance","cycles":cycles,"fixture_registration":private_installed.get("fixture_registration",{}),"home_id":home_id}
+
