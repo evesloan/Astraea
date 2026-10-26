@@ -32,7 +32,7 @@ static func bind(owner:Node3D,visual:Node3D,packed:PackedScene,path:String,guard
 				node.set_meta("source_mesh_change_callback",callback)
 				mesh.changed.connect(callback)
 			rows.append(row)
-	owner.set_meta("group2_mesh_lease",{"path":path,"bytes_path":bytes_path,"sha256":FileAccess.get_sha256(bytes_path),"rows":rows})
+	owner.set_meta("group2_mesh_lease",{"path":path,"bytes_path":bytes_path,"sha256":FileAccess.get_sha256(bytes_path),"rows":rows,"suspended_count":0})
 	return true
 static func suspend(owner:Node3D)->int:
 	if owner.is_inside_tree():
@@ -52,16 +52,15 @@ static func suspend(owner:Node3D)->int:
 		row.materials=materials
 		node.mesh=null
 		row.suspended=true
+		lease.suspended_count=int(lease.suspended_count)+1
 		count+=1
 	if OS.get_environment("ASTRAEA_TRACE_GROUP2")=="1":print("GROUP2_MESH_RELEASE ",JSON.stringify({"key":str(owner.get_meta("group2_source_key","")),"released_mesh_nodes":count,"resources":Performance.get_monitor(Performance.OBJECT_RESOURCE_COUNT)}))
 	return count
 static func resume(owner:Node3D)->bool:
 	if not owner.has_meta("group2_mesh_lease"):return true
 	var lease:Dictionary=owner.get_meta("group2_mesh_lease")
-	var needed:=false
-	for row:Dictionary in lease.rows:
-		if bool(row.suspended):needed=true;break
-	if not needed:return true
+	# Only suspend/resume change ownership; active rooms need no per-mesh scan.
+	if int(lease.suspended_count)==0:return true
 	if FileAccess.get_sha256(str(lease.bytes_path))!=str(lease.sha256):
 		push_error("Group2 retained mesh source changed; refusing restoration")
 		return false
@@ -91,4 +90,6 @@ static func resume(owner:Node3D)->bool:
 				if not node.mesh.changed.is_connected(callback):node.mesh.changed.connect(callback)
 		row.erase("materials")
 		row.suspended=false
+		lease.suspended_count=int(lease.suspended_count)-1
+	assert(int(lease.suspended_count)==0)
 	return true

@@ -1,6 +1,32 @@
 extends RefCounted
 # Mesh-local immutable contacts shared by repeated authored model instances.
 static var shapes: Dictionary = {}
+static var prune_keys: Array = []
+static var prune_registered: Dictionary = {}
+static var prune_cursor := 0
+static var last_prune_checks := 0
+static func remember(key: Variant, shape: Shape3D) -> void:
+	shapes[key] = weakref(shape)
+	if not prune_registered.has(key):
+		prune_registered[key] = true
+		prune_keys.append(key)
+static func prune_expired(limit: int = 128) -> int:
+	last_prune_checks = 0
+	var removed := 0
+	var budget := mini(maxi(limit,0),prune_keys.size())
+	while last_prune_checks < budget and not prune_keys.is_empty():
+		prune_cursor %= prune_keys.size()
+		var key: Variant = prune_keys[prune_cursor]
+		var reference: WeakRef = shapes.get(key)
+		last_prune_checks += 1
+		if reference == null or reference.get_ref() == null:
+			shapes.erase(key)
+			prune_registered.erase(key)
+			prune_keys[prune_cursor] = prune_keys.back()
+			prune_keys.pop_back()
+			removed += 1
+		else: prune_cursor += 1
+	return removed
 static var contacts_created := 0
 static var shapes_reused := 0
 static func attach(instance: MeshInstance3D) -> void:
@@ -10,13 +36,11 @@ static func attach(instance: MeshInstance3D) -> void:
 	var shape: Shape3D = reference.get_ref() if reference != null else null
 	if shape == null:
 		shape = preload("res://visible_resource_budget_20261026/exact_contact_pool.gd").intern(preload("res://visible_resource_budget_20261026/transient_contact_faces.gd").get_faces(instance.mesh))
-		shapes[key] = weakref(shape)
+		remember(key,shape)
 	else: shapes_reused += 1
 	# Expired WeakRefs do not own collision resources. Sweep periodically instead
 	# of rescanning every live shape for every attached ship mesh.
-	if shapes.size() > 4096 and contacts_created % 256 == 0:
-		for old_key in shapes.keys():
-			if shapes[old_key].get_ref() == null: shapes.erase(old_key)
+	if contacts_created % 256 == 0: prune_expired()
 	var body := StaticBody3D.new()
 	body.name = "StaticContact"
 	var collider := CollisionShape3D.new()
@@ -65,7 +89,7 @@ static func attach_group(root:Node3D,source_meshes:Array[Node])->void:
 			for vertex in preload("res://visible_resource_budget_20261026/transient_contact_faces.gd").get_faces(instance.mesh):faces.append(transforms[i]*vertex)
 		var triangles:=preload("res://visible_resource_budget_20261026/exact_contact_pool.gd").intern(PackedVector3Array(faces))
 		shape=triangles
-		shapes[key]=weakref(shape)
+		remember(key,shape)
 	else:shapes_reused+=1
 	var body:=StaticBody3D.new()
 	body.name="RoomStaticContacts"

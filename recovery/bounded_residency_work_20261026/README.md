@@ -1,0 +1,7 @@
+# Bounded residency bookkeeping, first measured correction
+
+Based on actual run026, removes full lease-row scans from repeated active-room resume calls and replaces full weak-contact-cache sweeps with at most128 checks per maintenance/release call. Suspend/resume maintain exact pending count; source hash, destination preflight, material preservation and mutable-source rejection remain unchanged. Cache keys use a rotating worklist with constant-time expired removal; entries remain weak references. Existing periodic maintenance continues eventual cleanup, without retaining collision resources or postponing collision construction. No room, collider, visible geometry, light, material or acceptance threshold is removed.
+
+Focused001 exits0: source mismatch and live-room release are rejected (two intentional errors), construction hold, mutable geometry/replacement/material preservation, pending count, restored zero count all pass.10000 already-active resume calls take2864microseconds in this fixture (not gameFPS). A1000-entry weak-cache fixture preserves500 live shapes, removes500 expired entries, drains after release, and never exceeds64checks per requested batch. Actual ship comparison pending. This does not fix the independently measured renderCPU/GPU budget, activation cost or full contact-manager scan; no60FPS claim or Windows export.
+
+Preimages are retained alongside this record. Rollback is the exact prior production scripts and manifest at2461fad5c; no original assets changed. Full-route/cart/visual and matching Windows acceptance remain open.

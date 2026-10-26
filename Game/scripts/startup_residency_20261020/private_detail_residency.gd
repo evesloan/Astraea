@@ -128,8 +128,7 @@ func prune_expired_contacts() -> void:
  # Original grouped-contact keys include resource IDs. Expired weak entries
  # must not accumulate across repeated genuine resource unload/reload cycles.
  var cache=load("res://scripts/static_contact_cache.gd")
- for key in cache.shapes.keys():
-  if cache.shapes[key].get_ref()==null:cache.shapes.erase(key)
+ cache.prune_expired(128)
 func statistics() -> Dictionary:
  var active:=0
  for entry in entries:
