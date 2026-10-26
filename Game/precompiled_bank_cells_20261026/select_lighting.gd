@@ -1,6 +1,7 @@
 extends RefCounted
 const RULES=preload("res://spatial_instance_cells_20261026/rules.gd")
 static func apply(bank:Node3D,lights:Array)->Dictionary:
+ if OS.get_environment("ASTRAEA_LOD_COMPARISON")=="1":return load("res://retained_lod_cells_20261026/selector.gd").apply(bank,lights)
  var batches:=0;var fallback_cells:=0;var original_draws:=0;var selected_draws:=0
  for mesh:MeshInstance3D in bank.find_children("*","MeshInstance3D",true,false):
   if not mesh.has_meta("precompiled_fallback"):continue
