@@ -1,0 +1,21 @@
+# Aquatic interior station receiving decision
+
+Baseline: `a5ba7e1b3f7cec6b301138edfeb364cfa714d7be`. Orchard stays physically selected with its existing visual and operating holds. This package is **unselected receiving preparation**, not installed aquatic architecture or travel acceptance.
+
+The interrupted capture was reconciled before another process ran. PID33128 completed normally at 2026-10-26 01:25:11 UTC, exit0, no forced stop and empty stderr. It retained2,019 active collision shapes after the original aquatic promenade arrival. Sampled private memory peaked at12.019GiB; minimum free RAM was7.129GiB. The connection loss was not an engine failure. All original logs remain untouched; lossless compressed evidence and hashes are retained here.
+
+Six route alternatives were compared sequentially in one small snapshot fixture, exit0. X18.5 with the western return atZ248 clears2,004 reserved continuous sweeps with zero reported owners or unresolved partial casts. Entry atZ174 is preferred toZ160 because it shortens the approach outside the aquatic volume. BothZ288 alternatives hit five retained public-core contacts. X17.3 hits the existing aquatic lift enclosure. No core contact, lift or clearance was removed to get a clear result.
+
+The comparison is against active captured surfaces, **not a complete inventory of unloaded or enclosed geometry**. In particular the D09 Living Gifts slab is absent from this intersection-query snapshot even though its retained generated source exists. Do not use this snapshot to infer missing floor or certify whole-volume completeness. Final receiving checks must include exact retained floor triangles and actual installed geometry. The route reservation is also not the original vehicle/cart/door component sweep.
+
+`Game/aquatic_tram_interior_20261026/r001/RECEIVING_PLAN.json` pins the source and records the preferred alignment, preserved identities and remaining gates. The provisional dock is(18.5,56.1,192), AFT_MIDSHIP catchment216 unchanged. A provisional north-gallery lift-pit rectangle has506 source-floor witnesses on `D09_living_gifts_floor`; this is sampled source support, not an exact pit cut or installed lift acceptance. Transform the original complete shaft/pit/gate geometry before finalizing its cut. No original slab has been changed.
+
+## Physical construction boundary still open
+
+Complete the supported station, continuous lower access/stair and original two-stop lift receiving as one package. Retain the independent three-stop aquatic lift, water openings, D11 cover, public core, Living Gifts doors and working controllers. Establish every support/bearing and the original vehicle/cart/door envelope before selection. The current preferred route travels inside the existing aquatic allocation beneath the D10 balcony, not above its ceiling. Actual rider sightlines and meaningful station circulation remain to be proven.
+
+The guest completion requirement is integral: use the retained aquatic walnut, terracotta/ivory enamel, champagne metal, tile and intentional glass palette with metre-scaled UVs, modeled recesses and layered edges. Plan integrated canopy/shrub/groundcover beds, quiet water-view refuges and conversation seating outside the boarding/cart/through-route envelopes. Reuse painterly botanical and furniture sources with shared resources. Preserve the light budget and bind actual fixtures/receivers. Flat gray platforms with token pots do not meet the retained master or Eve's 1970s-futurism and relaxation direction.
+
+Relevant governing references: master chapters5,21,30,32,33 and `MASTER_CURRENT_APPLICATION.json`; the retained inhabited atrium image `DesignArchive/References/Uploaded_46/07/image(3).png` was reopened. That image informs composition and inhabited levels, not photoreal rendering. No new picture, full launch, import, Blender build or Windows export was performed after capture001. The only subsequent engine check was the local snapshot comparison002.
+
+Moving-tram RID/resource stability, measured hardware FPS and matching Windows delivery remain open. Earlier Windows startup success is not reliable playability evidence after the user's walking crash. No group or guest area is declared finally complete here.
