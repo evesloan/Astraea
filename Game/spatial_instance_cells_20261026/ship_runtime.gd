@@ -50,8 +50,9 @@ static func compact(root:Node3D,lights:Array)->Dictionary:
   var center:=box.get_center();var cell:=Vector3i(floori(center.x/CELL),floori(center.y/CELL),floori(center.z/CELL))
   var state:Array=[]
   for prop:String in RULES.DRAW:state.append(node.get(prop))
-  var key:String=str(cell)+":"+record.key+":"+str(node.get_active_material(0).get_instance_id())+":"+str(state)+":"+signature
-  if not bins.has(key):bins[key]={"members":[],"bounds":box,"state":state,"signature":signature,"record":record,"material":node.get_active_material(0)}
+  var mirrored:=pose.basis.determinant()<0
+  var key:String=str(mirrored)+":"+str(cell)+":"+record.key+":"+str(node.get_active_material(0).get_instance_id())+":"+str(state)+":"+signature
+  if not bins.has(key):bins[key]={"members":[],"bounds":box,"state":state,"signature":signature,"record":record,"material":node.get_active_material(0),"mirrored":mirrored}
   var combined:AABB=bins[key].bounds.merge(box)
   if combined.size[combined.size.max_axis_index()]>CELL:continue
   if RULES.light_signature(root.global_transform*combined,node.layers,lights)!=signature:light_rejections+=1;continue
@@ -68,6 +69,7 @@ static func compact(root:Node3D,lights:Array)->Dictionary:
    canonical[record.key]=mesh
   var mesh:ArrayMesh=canonical[record.key]
   var mm:=MultiMesh.new();mm.transform_format=MultiMesh.TRANSFORM_3D;mm.mesh=mesh;mm.instance_count=bin.members.size()
+  var batch_pose:=Transform3D(Basis(Vector3(-1,0,0),Vector3(0,1,0),Vector3(0,0,1)),Vector3.ZERO) if bin.mirrored else Transform3D.IDENTITY
   var target:PackedVector3Array=mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
   for i in bin.members.size():
    var row:Dictionary=bin.members[i]
@@ -75,9 +77,13 @@ static func compact(root:Node3D,lights:Array)->Dictionary:
    assert(original.size()==target.size())
    for v in original.size():
     assert((row.original_pose*original[v]).distance_to(row.pose*target[v])<.00005,"Canonical translated vertex mismatch");checked_vertices+=1
-   mm.set_instance_transform(i,row.pose)
+   var instance_pose:Transform3D=batch_pose.affine_inverse()*row.pose
+   assert(instance_pose.basis.determinant()>0,"Per-instance winding must remain positive")
+   for v in original.size():assert((row.original_pose*original[v]).distance_to(batch_pose*instance_pose*target[v])<.00005,"Factored reflection changed geometry")
+   mm.set_instance_transform(i,instance_pose)
   var batch:=MultiMeshInstance3D.new();batch.name="ExactInstanceCell_%04d"%batches;batch.multimesh=mm;batch.material_override=bin.material
   for i in RULES.DRAW.size():batch.set(RULES.DRAW[i],bin.state[i])
+  batch.transform=batch_pose
   root.add_child(batch)
   generated.append(weakref(batch))
   for row:Dictionary in bin.members:

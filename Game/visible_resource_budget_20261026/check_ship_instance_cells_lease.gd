@@ -79,5 +79,13 @@ func run()->void:
  assert(not moving.has_meta("exact_instance_restore") and not animated.has_meta("exact_instance_restore"),"Dynamic/animated source was modified")
  var marker:=MeshInstance3D.new();marker.set_meta("extras",{"persistent_id":"protected"})
  assert(not RULES.eligible(marker,fresh));marker.free()
+ var binary:Node3D=load("res://assets/models/SunsetSpecialty_104.0_r002.scn").instantiate();host.add_child(binary)
+ var binary_nodes:Array=[]
+ for n:MeshInstance3D in binary.find_children("*","MeshInstance3D",true,false):binary_nodes.append({"node":n,"id":n.get_instance_id(),"pose":n.transform})
+ for i in 3:await process_frame
+ assert(binary.has_meta("exact_instance_restore"),"Direct ShipSpace binary source omitted")
+ var binary_result:Dictionary=binary.get_node("ExactInstanceLifecycle").last_result.duplicate()
+ for row:Dictionary in binary_nodes:assert(row.node.get_instance_id()==row.id and row.node.transform==row.pose)
+ binary_nodes.clear()
  ship.free()
- var f:=FileAccess.open(output,FileAccess.WRITE);f.store_string(JSON.stringify({"cycles":rows,"managed_light_count":73,"unmanaged_overflow_rejected":true,"new_streamed_source_saved":fresh_saved,"dynamic_animation_interaction_exclusions":true},"\t"));f.close();quit()
+ var f:=FileAccess.open(output,FileAccess.WRITE);f.store_string(JSON.stringify({"cycles":rows,"managed_light_count":73,"unmanaged_overflow_rejected":true,"new_streamed_source_saved":fresh_saved,"dynamic_animation_interaction_exclusions":true,"direct_binary_source":binary_result},"\t"));f.close();quit()

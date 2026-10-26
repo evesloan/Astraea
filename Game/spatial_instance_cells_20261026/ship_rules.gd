@@ -31,9 +31,10 @@ static func eligible(n:MeshInstance3D,root:Node3D)->bool:
  for child in n.get_children():
   if not child is StaticBody3D or child.get_script()!=null:return false
  var t:=pose(n,root)
- # SurfaceTool transform semantics are verified only for positive uniform scale.
- var scale:=t.basis.get_scale()
- if t.basis.determinant()<=0 or absf(scale.x-scale.y)>.00001 or absf(scale.x-scale.z)>.00001:return false
+ # Mirrored uniform transforms are factored onto a separate batch owner.
+ # Per-instance transforms remain positive; nonuniform scale stays excluded.
+ var scale:=t.basis.get_scale().abs()
+ if absf(t.basis.determinant())<.000001 or absf(scale.x-scale.y)>.00001 or absf(scale.x-scale.z)>.00001:return false
  return true
 static func light_signature(box:AABB,layers:int,lights:Array)->String:
  var ids:Array[int]=[];var omni:=0;var spot:=0;var managed_omni:=0;var managed_spot:=0

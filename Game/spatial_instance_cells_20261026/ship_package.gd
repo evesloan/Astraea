@@ -12,7 +12,7 @@ var scheduled:Dictionary={}
 var snapshot_frame:=-1
 var light_snapshot:Dictionary={}
 func scope(node:Node)->bool:
- if not node is Node3D or not node.scene_file_path.ends_with(".glb"):return false
+ if not node is Node3D or not (node.scene_file_path.ends_with(".glb") or node.scene_file_path.ends_with(".scn")):return false
  var ship:Node3D=ship_ref.get_ref()
  if ship==null:return false
  var current:Node=node
@@ -83,7 +83,7 @@ func install(ship:Node3D)->Dictionary:
  var snapshot:=PACKAGE.lighting(ship)
  if snapshot.has("failed"):return snapshot
  light_snapshot=snapshot;snapshot_frame=Engine.get_process_frames()
- var pending:Array[Node]=[ship.get_node("ShipSpace/Districts")]
+ var pending:Array[Node]=[ship.get_node("ShipSpace")]
  while not pending.is_empty():
   var node:Node=pending.pop_back()
   if scope(node):
