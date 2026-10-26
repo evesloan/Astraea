@@ -1,0 +1,13 @@
+# Precompiled immutable Family detail cells — unselected integration candidate
+
+Built from protected c533e77128dd2349f342b6d45eb02f7a8d70813c following actual stationary owner attribution018. FamilySpecialty47 is a leading frustum owner; early marginal timing was confounded by live loads and is not a causal FPS result.
+
+All47 original room-detail sources and source/native assets remain untouched. Bounded8m opaque single-material cells preserve full source geometry, UV/material draw state, mirrored orientation on separate batch owners, original room contact shapes/owners, home IDs and independent doors/lights. No arbitrary visibility changes or LOD reduction. New serialized resources remove superseded immutable visual nodes; originals remain editable. Unselected r001 had zero eligible mirrored nodes; its files remain in external precompiled-intermediate-artifacts/private_family_r001, with exact failed-attempt source/results here.
+
+R002 compilation:12504 original mesh nodes,10208 freed visual nodes,8317 potential submissions saved;18122 original hierarchy nodes versus9993 including added94 original contact nodes. Actual light constraints may reduce savings. Generated47files235348338bytes. Reload checks:2652396 source triangle vertices,maximum source-space delta0.0000315145698550623m within existing0.00005m tolerance;94 exact original contact payloads/owners/transforms;4187/4187 tracked mesh references expire.
+
+Fixed1920x1080 mirrored reference-room images inspected: material/UV/geometry appearance closely agrees;509 changed pixels,18 over8 channel levels,max117,mean0.000486754/255. Edge rasterization differences remain; this is detail-only appearance equivalence, not guest-space artistic acceptance. Both PNGs RGBA8.
+
+Actual inherited-manager lifecycle fixture:94 loads/releases across47 rooms preserve same manager object and state counters, all94 home identities and all94 detail-root releases. The opt-in installer keeps existing live details unchanged and applies only on future genuine activation. Original near/visibility eligibility, pending queue, release timing, shells/doors/lights remain inherited. Exact source/compiled hashes are checked each activation. Current registered lighting plus ordinary added lights are tracked without repeated full-scene scans; original per-mesh renderer fallback remains for over-capacity cells. Full moving-light/rendering acceptance remains open.
+
+Normal aquatic startup remains unchanged. check_precompiled_private_tram.gd is the explicit changed-state test with the prior direct crew-bank candidate, no production selection. Actual ship activation, loaded cart, whole-route, hardware FPS and Windows acceptance remain pending.
