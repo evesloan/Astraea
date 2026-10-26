@@ -1,0 +1,7 @@
+# Actual inherited-ship light ownership finding
+
+Run022 exits normally0, no errors; no movement or room activation. It compares three exact retained Family423 cell bounds at their actual ship home pose to the real configured lighting state. Family423 root transform is identity; mirrored child geometry is already represented in retained fallback transforms.
+
+Cell0000 overlaps40 potential sources, including four unmanaged authored Family ceiling/lounge SpotLights at7m. Cells0001/0002 overlap41 including five unmanaged lights. Their paths, poses, member-overlap counts and states are retained in result.json. These are functional intended fixtures, not inert witnesses: visible=false, shadow_enabled=true, fixture_powered defaults true, no witness flag. The actual Family adapter creates them after budget configuration without register_new_light. Existing Group7 helper shows the required post-configuration registration pattern. Do not merely label them managed or discard them. Reconcile exact authored fixtures with the existing owner under unchanged cap, then remeasure.
+
+Run021 failed because the stationary viewpoint had no movement-triggered private activation; preserved, not passed. Run022 uses off-tree exact source cells solely for bounds and does not claim actual substitution or rendering/performance acceptance. Run020 still has43 activations/1629fallbacks/zero savings and allocator failure, last load857,7.208GiB available RAM; not OOM. Key833 in019 and857 in020 are allocation-pressure observations, not proof of uniquely defective source files.
