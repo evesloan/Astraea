@@ -15,6 +15,7 @@ static func bind(owner:Node3D,visual:Node3D,packed:PackedScene,path:String,guard
 	if bytes_path.is_empty():
 		push_error("No readable exact Group2 source bytes for mesh restoration")
 		return false
+	load("res://group2_resource_lifetime_20261025/shadow_mesh_pool.gd").intern_scene(packed)
 	var state:=packed.get_state()
 	var rows:Array=[]
 	for n in state.get_node_count():
@@ -66,6 +67,7 @@ static func resume(owner:Node3D)->bool:
 		return false
 	var packed:PackedScene=load(str(lease.path))
 	if packed==null:return false
+	load("res://group2_resource_lifetime_20261025/shadow_mesh_pool.gd").intern_scene(packed)
 	var state:=packed.get_state()
 	# Validate every destination before restoring any of them.
 	for row:Dictionary in lease.rows:
