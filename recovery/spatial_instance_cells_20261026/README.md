@@ -15,3 +15,9 @@ Rejected paths are preserved: full merged geometry added190-240MBvideo buffers f
 Official layout reference: https://raw.githubusercontent.com/godotengine/godot/4.6.3-stable/servers/rendering/rendering_server.cpp
 
 The opt-in actual-ship check installs only after source construction, before original boarding and movement. It requires at least3000potential saved submissions under actual complete-ship lighting before attempting the route. Original selected scene, tram guards, movement route and5GiBavailable/16GiBprivate safety limits remain unchanged. No import, export or second game process is authorized by the script itself. Global contracts and selected assembly are checked separately. Whole-route resources/FPS, installed interactions and Windows remain pending.
+
+## Installed-run010 correction
+
+The first actual-ship attempt found detached Light3D entries in the global budget registry. Reading their global transform emitted errors; the operator stopped its own PID540 before valid movement evidence. The raw monitor reports process_exited/forcedfalse because the stop was external; this is not a normal completion. Original raw logs remain outside the repo; large copies are retained losslessly gzip-compressed with raw hashes in FAILED_RUN010_RECEIPT.json.
+
+Correction: potential detached lights use the ReceivedRoomResidency entry's retained parent and exact local transform chain. They are not omitted. An unknown detached owner refuses the entire adoption before any source mutation. Four focused detach/reattach/signature/unknown-owner checks pass with empty stderr. The normal integration monitor now stops generic ERROR lines as well as SCRIPT ERROR/assertions/RID limits. The selected default remains unchanged.

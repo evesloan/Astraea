@@ -35,14 +35,19 @@ static func eligible(n:MeshInstance3D,root:Node3D)->bool:
 static func light_signature(box:AABB,layers:int,lights:Array)->String:
  var ids:Array[int]=[];var omni:=0;var spot:=0
  for light in lights:
-  if not is_instance_valid(light) or light.light_cull_mask&layers==0:continue
-  if light is DirectionalLight3D:ids.append(light.get_instance_id());continue
-  var reach:float=light.omni_range if light is OmniLight3D else light.spot_range
-  var p:Vector3=light.global_position
+  var id:int;var kind:int;var mask:int;var reach:float;var p:Vector3
+  if light is Dictionary:
+   id=light.id;kind=light.kind;mask=light.mask;reach=light.reach;p=light.position
+  else:
+   if not is_instance_valid(light):continue
+   assert(light.is_inside_tree(),"Detached lights require their retained owner transform")
+   id=light.get_instance_id();kind=0 if light is DirectionalLight3D else (1 if light is OmniLight3D else 2)
+   mask=light.light_cull_mask;reach=0.0 if kind==0 else (light.omni_range if kind==1 else light.spot_range);p=light.global_position
+  if mask&layers==0:continue
+  if kind==0:ids.append(id);continue
   if p.distance_squared_to(p.clamp(box.position,box.end))>reach*reach:continue
-  # Count every potential light, including currently hidden budget-controlled sources.
-  if light is OmniLight3D:omni+=1
+  if kind==1:omni+=1
   else:spot+=1
-  ids.append(light.get_instance_id())
+  ids.append(id)
  if omni>8 or spot>8:return "OVER_LIMIT"
  ids.sort();return str(ids)
