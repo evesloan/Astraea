@@ -26,14 +26,14 @@ static func eligible(n:MeshInstance3D,root:Node3D)->bool:
   if ancestor is CollisionObject3D or ancestor is AnimationPlayer:return false
   ancestor=ancestor.get_parent()
  for child in n.get_children():
-  if not child is StaticBody3D:return false
+  if not child is StaticBody3D or child.get_script()!=null:return false
  var t:=pose(n,root)
  # SurfaceTool transform semantics are verified only for positive uniform scale.
  var scale:=t.basis.get_scale()
  if t.basis.determinant()<=0 or absf(scale.x-scale.y)>.00001 or absf(scale.x-scale.z)>.00001:return false
  return true
 static func light_signature(box:AABB,layers:int,lights:Array)->String:
- var ids:Array[int]=[];var omni:=0;var spot:=0
+ var ids:Array[int]=[];var omni:=0;var spot:=0;var managed_omni:=0;var managed_spot:=0
  for light in lights:
   var id:int;var kind:int;var mask:int;var reach:float;var p:Vector3
   if light is Dictionary:
@@ -46,8 +46,15 @@ static func light_signature(box:AABB,layers:int,lights:Array)->String:
   if mask&layers==0:continue
   if kind==0:ids.append(id);continue
   if p.distance_squared_to(p.clamp(box.position,box.end))>reach*reach:continue
-  if kind==1:omni+=1
-  else:spot+=1
+  var managed:bool=light is Dictionary and bool(light.get("managed_eight",false))
+  if kind==1:
+   if managed:managed_omni+=1
+   else:omni+=1
+  else:
+   if managed:managed_spot+=1
+   else:spot+=1
   ids.append(id)
- if omni>8 or spot>8:return "OVER_LIMIT"
+ # A verified shared eight-source budget is mutual exclusion, not omitted lighting.
+ # Keep every potential ID in the signature and count unmanaged sources separately.
+ if omni+mini(managed_omni,8)>8 or spot+mini(managed_spot,8)>8:return "OVER_LIMIT"
  ids.sort();return str(ids)

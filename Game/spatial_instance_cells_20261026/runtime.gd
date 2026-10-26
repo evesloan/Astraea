@@ -24,6 +24,8 @@ static func normalized(mesh:ArrayMesh)->Dictionary:
  var hash:=HashingContext.new();hash.start(HashingContext.HASH_SHA256);hash.update(var_to_bytes([raw,shadow]));var key:=hash.finish().hex_encode()
  return {"key":key,"raw":raw,"shadow":shadow,"origin":origin}
 static func compact(root:Node3D,lights:Array)->Dictionary:
+ assert(not root.has_meta("exact_instance_restore"),"Restore representation before rebuilding")
+ var restoration:Array=[];var generated:Array=[]
  var bins:Dictionary={};var normalized_by_id:Dictionary={};var canonical:Dictionary={}
  var source_count:=0;var eligible_count:=0;var light_rejections:=0;var rule_rejections:=0;var lod_rejections:=0
  for node:MeshInstance3D in root.find_children("*","MeshInstance3D",true,false):
@@ -77,14 +79,32 @@ static func compact(root:Node3D,lights:Array)->Dictionary:
   var batch:=MultiMeshInstance3D.new();batch.name="ExactInstanceCell_%04d"%batches;batch.multimesh=mm;batch.material_override=bin.material
   for i in RULES.DRAW.size():batch.set(RULES.DRAW[i],bin.state[i])
   root.add_child(batch)
+  generated.append(weakref(batch))
   for row:Dictionary in bin.members:
-   var original:MeshInstance3D=row.node;var parent:=original.get_parent();var index:=original.get_index();var name:=original.name
-   var proxy:=Node3D.new();proxy.transform=original.transform;proxy.visible=original.visible
-   for property:StringName in original.get_meta_list():proxy.set_meta(property,original.get_meta(property))
-   for group:StringName in original.get_groups():proxy.add_to_group(group)
-   parent.add_child(proxy)
-   for child in original.get_children():child.reparent(proxy,false)
-   original.free();proxy.name=name;parent.move_child(proxy,index);row.erase("node");converted+=1
+   var original:MeshInstance3D=row.node
+   var overrides:Array=[]
+   for surface in original.mesh.get_surface_count():overrides.append(original.get_surface_override_material(surface))
+   restoration.append({"node":weakref(original),"mesh":original.mesh,"overrides":overrides})
+   original.mesh=null;row.erase("node");converted+=1
   batches+=1
- return {"source_meshes":source_count,"eligible_meshes":eligible_count,"converted_mesh_instances":converted,"batch_count":batches,"saved_submissions":converted-batches,"canonical_meshes":canonical.size(),"checked_vertices":checked_vertices,"light_rejections":light_rejections,"rule_rejections":rule_rejections,"source_lod_meshes_full_resolution":lod_rejections,"policy":"8m maximum cells; unchanged UV/normal/index buffers and translated exact geometry, material identity and original physics/path proxies; full-resolution original main/shadow geometry; added distant triangle cost must be measured"}
+ root.set_meta("exact_instance_restore",{"rows":restoration,"batches":generated})
+ return {"source_meshes":source_count,"eligible_meshes":eligible_count,"converted_mesh_instances":converted,"batch_count":batches,"saved_submissions":converted-batches,"canonical_meshes":canonical.size(),"checked_vertices":checked_vertices,"light_rejections":light_rejections,"rule_rejections":rule_rejections,"source_lod_meshes_full_resolution":lod_rejections,"policy":"8m maximum cells; exact original mesh-node identities and physics; reversible full-resolution geometry; original resources retained while active, no memory-saving claim"}
+
+static func restore(root:Node3D)->bool:
+ if not root.has_meta("exact_instance_restore"):return true
+ var state:Dictionary=root.get_meta("exact_instance_restore")
+ for row:Dictionary in state.rows:
+  var node:MeshInstance3D=row.node.get_ref()
+  if node==null or node.mesh!=null:
+   push_error("Instance representation destination changed; refusing restoration")
+   return false
+ for row:Dictionary in state.rows:
+  var node:MeshInstance3D=row.node.get_ref();node.mesh=row.mesh
+  for surface in row.overrides.size():node.set_surface_override_material(surface,row.overrides[surface])
+ for reference:WeakRef in state.batches:
+  var batch:MultiMeshInstance3D=reference.get_ref()
+  if batch!=null:
+   batch.visible=false;batch.multimesh=null;batch.queue_free()
+ root.remove_meta("exact_instance_restore")
+ return true
 
