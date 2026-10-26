@@ -51,7 +51,6 @@ func setup(ship:Node3D)->void:
 		var entry:Dictionary={"room":room,"parent":room.get_parent(),"bounds":bounds,"witness":witness,"attached":true,"hidden_seconds":0.0,"meshes":room.find_children("*","MeshInstance3D",true,false).size()+int(room.get_meta("deferred_visual_meshes",0))}
 		entries.append(entry)
 		witness.screen_entered.connect(_on_screen_entered.bind(entry))
-		entry.visibility_cells=load("res://received_visibility_cells_20261026/cells.gd").install(host,bounds.grow(3.0),str(room.name),_on_screen_entered.bind(entry))
 	set_meta("scope","Received sources, Tidal, Quiet, Family, Sunset, Star Atlas and Night Garden homes; exact nodes and door states cached, not destroyed; independent floors/occluders remain resident; no RAM-unload claim")
 	# Avoid registering the entire distant ship in the first physics/render frame.
 	set_meta("startup_live_nodes",get_tree().get_node_count())
@@ -85,7 +84,7 @@ func _process(_delta:float)->void:
 		stale_visible_requests+=1
 func _attach_visible_room(entry:Dictionary)->bool:
 	if not is_inside_tree() or entry.attached or not is_instance_valid(entry.room):return false
-	if not load("res://received_visibility_cells_20261026/cells.gd").visible(entry) and not near_bounds(actor.global_position,entry.bounds,ENTER_MARGIN):return false
+	if not entry.witness.is_on_screen() and not near_bounds(actor.global_position,entry.bounds,ENTER_MARGIN):return false
 	entry.parent.add_child(entry.room)
 	entry.attached=true
 	load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
@@ -119,8 +118,8 @@ func refresh(delta:float=0.0)->void:
 				body_near=true
 				break
 		var near:bool=actor_near or body_near
-		var visible:bool=load("res://received_visibility_cells_20261026/cells.gd").visible(entry)
-		entry.demand={"actor_near":actor_near,"body_near":body_near,"visible":visible,"coarse_visible":witness.is_on_screen(),"keep_band_only":actor_near and not near_bounds(actor.global_position,entry.bounds,ENTER_MARGIN)}
+		var visible:bool=witness.is_on_screen()
+		entry.demand={"actor_near":actor_near,"body_near":body_near,"visible":visible,"keep_band_only":actor_near and not near_bounds(actor.global_position,entry.bounds,ENTER_MARGIN)}
 		var wanted:bool=near or visible
 		if wanted:
 			entry.hidden_seconds=0.0
@@ -160,20 +159,13 @@ func statistics()->Dictionary:
 	var cached_meshes:=0
 	var deferred_meshes:=0
 	var deferred_rooms:=0
-	var cell_count:=0
-	var coarse_visible_all:=0
-	var coarse_only_detached:=0
-	var demand_counts:Dictionary={"actor_near":0,"body_near":0,"visible":0,"coarse_visible":0,"keep_band_only":0,"grace_only":0}
+	var demand_counts:Dictionary={"actor_near":0,"body_near":0,"visible":0,"keep_band_only":0,"grace_only":0}
 	for entry in entries:
-		cell_count+=entry.get("visibility_cells",[]).size()
-		if entry.witness.is_on_screen():
-			coarse_visible_all+=1
-			if not entry.attached and not load("res://received_visibility_cells_20261026/cells.gd").visible(entry):coarse_only_detached+=1
 		if entry.attached:
 			live+=1
 			resident_meshes+=int(entry.meshes)
 			var demand:Dictionary=entry.get("demand",{})
-			for key:String in ["actor_near","body_near","visible","coarse_visible","keep_band_only"]:
+			for key:String in ["actor_near","body_near","visible","keep_band_only"]:
 				if bool(demand.get(key,false)):demand_counts[key]+=1
 			if not bool(demand.get("actor_near",false)) and not bool(demand.get("body_near",false)) and not bool(demand.get("visible",false)):demand_counts.grace_only+=1
 		else:
@@ -181,7 +173,7 @@ func statistics()->Dictionary:
 			cached_meshes+=int(entry.meshes)-unloaded
 			deferred_meshes+=unloaded
 			if unloaded>0:deferred_rooms+=1
-	return {"pending_visible_activations":pending_visible.size(),"stale_visible_requests_rejected":stale_visible_requests,"registered_rooms":entries.size(),"active_rooms":live,"active_meshes":resident_meshes,"cached_detached_meshes":cached_meshes,"transitions":changes,"resources_freed":false,"uninstantiated_meshes":deferred_meshes,"deferred_visual_rooms":deferred_rooms,"attached_demand_overlapping":demand_counts,"hidden_grace_clock":"monotonic_real_seconds","visibility_cells":cell_count,"coarse_visible_all":coarse_visible_all,"coarse_only_detached":coarse_only_detached}
+	return {"pending_visible_activations":pending_visible.size(),"stale_visible_requests_rejected":stale_visible_requests,"registered_rooms":entries.size(),"active_rooms":live,"active_meshes":resident_meshes,"cached_detached_meshes":cached_meshes,"transitions":changes,"resources_freed":false,"uninstantiated_meshes":deferred_meshes,"deferred_visual_rooms":deferred_rooms,"attached_demand_overlapping":demand_counts,"hidden_grace_clock":"monotonic_real_seconds"}
 func ownership_snapshot()->Array:
 	var rows:Array=[]
 	for entry:Dictionary in entries:
