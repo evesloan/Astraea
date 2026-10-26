@@ -1,0 +1,9 @@
+# Bounded hidden-room grace correction and owner accounting
+
+Baseline0e26dfe0. The previous eight-second hidden-room grace accumulated physics delta. At low rendered FPS, Godot limits physics steps per frame and simulated time falls behind wall time (https://docs.godotengine.org/en/4.6/classes/class_engine.html#class-engine-property-max-physics-steps-per-frame). That can retain invisible, distant resources much longer than eight real seconds. This is a demonstrated timing defect; it is not yet proven to explain all231 active rooms in run004, whose telemetry did not contain demand reasons.
+
+Only hidden-grace elapsed time now uses the monotonic clock. Actor enter45m/keep65m, loose-body support8m, visibility demand, synchronous near preparation, original nodes/state and source release/restore remain unchanged. Initial construction-time expiry preserved. No hidden-required-view workaround, allocator increase, room deletion or new threshold. Public statistics now expose overlapping actor/body/visible/keep-band and grace-only counts; bounded snapshots record actual room/source identities without walking their mesh trees.
+
+Focused001:2660 checks, zero failures, normal exit0. One actual1324-mesh Group2 source releases after8 real seconds despite only0.6 simulated seconds. Original65m near hysteresis and loose-body support protect contacts indefinitely; reactivation and explicit arrival restore the original source.21 collision identities/poses and two persistent door states preserved. This does not establish actual-ship memory improvement.
+
+One changed-state route will use the same physical route,1080p Compatibility and safety floor. Diagnostic successor additionally flushes room demand, actual motor cursor/distance and short frame windows so a safety stop retains useful incomplete-run evidence. These windows are not whole-route FPS or final performance acceptance. Grand Arrivals remains unchanged pending the owner's choice.

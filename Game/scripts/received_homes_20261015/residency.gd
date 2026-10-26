@@ -16,6 +16,8 @@ var pending_visible:Array[Dictionary]=[]
 var queued_visible:Dictionary={}
 var stale_visible_requests:=0
 var source_leases_started:=false
+func _clock_msec()->int:
+	return Time.get_ticks_msec()
 func setup(ship:Node3D)->void:
 	host=ship
 	actor=ship.get_node("ShipSpace/PersistentActors/Player")
@@ -87,6 +89,7 @@ func _attach_visible_room(entry:Dictionary)->bool:
 	entry.attached=true
 	load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
 	entry.hidden_seconds=0.0
+	entry.hidden_since_msec=-1
 	changes+=1
 	return true
 func _physics_process(delta:float)->void:
@@ -102,19 +105,25 @@ func near_bounds(position:Vector3,bounds:AABB,margin:float)->bool:
 	return position.distance_to(nearest)<=margin
 func refresh(delta:float=0.0)->void:
 	if not is_instance_valid(actor):return
+	var now:=_clock_msec()
 	var persistent_bodies:Array[Node]=host.get_node("ShipSpace/PersistentActors").find_children("*","RigidBody3D",true,false)
 	for entry in entries:
 		var room:Node3D=entry.room
 		var witness:VisibleOnScreenNotifier3D=entry.witness
-		var near:=near_bounds(actor.global_position,entry.bounds,KEEP_MARGIN if entry.attached else ENTER_MARGIN)
+		var actor_near:=near_bounds(actor.global_position,entry.bounds,KEEP_MARGIN if entry.attached else ENTER_MARGIN)
+		var body_near:=false
 		# Loose carts/bottles keep their supporting room contacts even without Player.
 		for persistent_body:Node3D in persistent_bodies:
 			if near_bounds(persistent_body.global_position,entry.bounds,8.0):
-				near=true
+				body_near=true
 				break
-		var wanted:bool=near or witness.is_on_screen()
+		var near:bool=actor_near or body_near
+		var visible:bool=witness.is_on_screen()
+		entry.demand={"actor_near":actor_near,"body_near":body_near,"visible":visible,"keep_band_only":actor_near and not near_bounds(actor.global_position,entry.bounds,ENTER_MARGIN)}
+		var wanted:bool=near or visible
 		if wanted:
 			entry.hidden_seconds=0.0
+			entry.hidden_since_msec=-1
 			if not entry.attached and not near:
 				_queue_visible_room(entry)
 				continue
@@ -124,7 +133,11 @@ func refresh(delta:float=0.0)->void:
 				changes+=1
 			load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(room)
 		else:
-			entry.hidden_seconds+=delta
+			# Resource grace is elapsed real time, not slow-motion physics time.
+			# Initial setup explicitly expires hidden rooms before construction.
+			if int(entry.get("hidden_since_msec",-1))<0:
+				entry.hidden_since_msec=now-int(HIDDEN_GRACE_SECONDS*1000.0) if delta>=HIDDEN_GRACE_SECONDS and not bool(host.get_meta("runtime_ready",false)) else now
+			entry.hidden_seconds=maxf(0.0,float(now-int(entry.hidden_since_msec))/1000.0)
 			if entry.attached and entry.hidden_seconds>=HIDDEN_GRACE_SECONDS:
 				entry.parent.remove_child(room)
 				entry.attached=false
@@ -138,6 +151,7 @@ func prepare_position(position:Vector3)->void:
 			entry.attached=true
 			load("res://scripts/received_homes_20261015/source_dispatch.gd").ensure(entry.room)
 			entry.hidden_seconds=0.0
+			entry.hidden_since_msec=-1
 			changes+=1
 func statistics()->Dictionary:
 	var live:=0
@@ -145,16 +159,27 @@ func statistics()->Dictionary:
 	var cached_meshes:=0
 	var deferred_meshes:=0
 	var deferred_rooms:=0
+	var demand_counts:Dictionary={"actor_near":0,"body_near":0,"visible":0,"keep_band_only":0,"grace_only":0}
 	for entry in entries:
 		if entry.attached:
 			live+=1
 			resident_meshes+=int(entry.meshes)
+			var demand:Dictionary=entry.get("demand",{})
+			for key:String in ["actor_near","body_near","visible","keep_band_only"]:
+				if bool(demand.get(key,false)):demand_counts[key]+=1
+			if not bool(demand.get("actor_near",false)) and not bool(demand.get("body_near",false)) and not bool(demand.get("visible",false)):demand_counts.grace_only+=1
 		else:
 			var unloaded:int=int(entry.room.get_meta("deferred_visual_meshes",0)) if not entry.room.has_meta("resident_visual") else 0
 			cached_meshes+=int(entry.meshes)-unloaded
 			deferred_meshes+=unloaded
 			if unloaded>0:deferred_rooms+=1
-	return {"pending_visible_activations":pending_visible.size(),"stale_visible_requests_rejected":stale_visible_requests,"registered_rooms":entries.size(),"active_rooms":live,"active_meshes":resident_meshes,"cached_detached_meshes":cached_meshes,"transitions":changes,"resources_freed":false,"uninstantiated_meshes":deferred_meshes,"deferred_visual_rooms":deferred_rooms}
+	return {"pending_visible_activations":pending_visible.size(),"stale_visible_requests_rejected":stale_visible_requests,"registered_rooms":entries.size(),"active_rooms":live,"active_meshes":resident_meshes,"cached_detached_meshes":cached_meshes,"transitions":changes,"resources_freed":false,"uninstantiated_meshes":deferred_meshes,"deferred_visual_rooms":deferred_rooms,"attached_demand_overlapping":demand_counts,"hidden_grace_clock":"monotonic_real_seconds"}
+func ownership_snapshot()->Array:
+	var rows:Array=[]
+	for entry:Dictionary in entries:
+		if not entry.attached:continue
+		rows.append({"room":str(entry.room.name),"parent":str(entry.parent.name),"source_key":str(entry.room.get_meta("group2_source_key","")),"mesh_nodes":entry.meshes,"demand":entry.get("demand",{}),"hidden_seconds":entry.hidden_seconds})
+	return rows
 func _notification(what:int)->void:
 	if what==NOTIFICATION_PREDELETE:
 		for entry in entries:
