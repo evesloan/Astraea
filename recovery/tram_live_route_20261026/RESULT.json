@@ -1,0 +1,167 @@
+{
+  "source_revision": "cc1867017f969856ae2ef24b5faa6641df6970bf",
+  "summary": {
+    "mode": "tram-selected-operation",
+    "revision": "cc1867017f969856ae2ef24b5faa6641df6970bf",
+    "started_utc": "2026-10-26T04:51:58.3828455Z",
+    "ended_utc": "2026-10-26T04:55:03.7454445Z",
+    "reason": "engine_error_safety_stop",
+    "forced_stop": true,
+    "exit_code": -1,
+    "max_private_GiB": 14.254,
+    "max_resident_GiB": 12.152,
+    "min_available_RAM_GiB": 5.319,
+    "samples": 56
+  },
+  "stages": [
+    "TRAM_OPERATION_STAGE installed_contact_sweep",
+    "TRAM_OPERATION_STAGE boarding",
+    "TRAM_OPERATION_STAGE moving_route"
+  ],
+  "first_sample": {
+    "draw_calls": 35555.0,
+    "nodes": 516318.0,
+    "physics_seconds": 0.03587,
+    "primitives": 3930452.0,
+    "private": {
+      "detail_released_not_cached": true,
+      "loads": 25,
+      "pending_visible_activations": 4,
+      "registered_private_interiors": 226,
+      "releases": 0,
+      "resident_interiors": 25,
+      "shells_doors_lights_ids_always_resident": true,
+      "stale_visible_requests_rejected": 0
+    },
+    "process_seconds": 0.270696,
+    "received": {
+      "active_meshes": 24801,
+      "active_rooms": 84,
+      "cached_detached_meshes": 43923,
+      "deferred_visual_rooms": 712,
+      "pending_visible_activations": 138,
+      "registered_rooms": 899,
+      "resources_freed": false,
+      "stale_visible_requests_rejected": 39,
+      "transitions": 973,
+      "uninstantiated_meshes": 126529
+    },
+    "remaining": {
+      "completed": 18,
+      "max_activation_us": 611455,
+      "pending": 0,
+      "rejected": 0,
+      "scope": "Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"
+    },
+    "resources": 233898.0,
+    "seconds": 141.360008,
+    "static_bytes": 8368612081.0
+  },
+  "last_sample": {
+    "draw_calls": 79476.0,
+    "nodes": 567001.0,
+    "physics_seconds": 0.091863,
+    "primitives": 7001414.0,
+    "private": {
+      "detail_released_not_cached": true,
+      "loads": 69,
+      "pending_visible_activations": 0,
+      "registered_private_interiors": 226,
+      "releases": 11,
+      "resident_interiors": 58,
+      "shells_doors_lights_ids_always_resident": true,
+      "stale_visible_requests_rejected": 1
+    },
+    "process_seconds": 0.718342,
+    "received": {
+      "active_meshes": 43578,
+      "active_rooms": 162,
+      "cached_detached_meshes": 38916,
+      "deferred_visual_rooms": 632,
+      "pending_visible_activations": 97,
+      "registered_rooms": 899,
+      "resources_freed": false,
+      "stale_visible_requests_rejected": 72,
+      "transitions": 1163,
+      "uninstantiated_meshes": 112759
+    },
+    "remaining": {
+      "completed": 18,
+      "max_activation_us": 611455,
+      "pending": 0,
+      "rejected": 0,
+      "scope": "Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"
+    },
+    "resources": 262871.0,
+    "seconds": 177.999603,
+    "static_bytes": 9239143753.0
+  },
+  "sample_count": 8,
+  "errors": {
+    "ERROR: Element limit reached.": 416,
+    "ERROR: Parameter \"mem\" is null.": 416,
+    "ERROR: Parameter \"mesh\" is null.": 1524,
+    "ERROR: Cannot set a mesh as its own shadow mesh.": 138
+  },
+  "first_error_context": [
+    "ERROR: Element limit reached.",
+    "   at: _allocate_rid (./core/templates/rid_owner.h:132)",
+    "   GDScript backtrace (most recent call first):",
+    "       [0] build_section (res://scripts/group2_completion/package.gd:18)",
+    "       [1] ensure (res://scripts/received_homes_20261015/source_dispatch.gd:13)",
+    "       [2] _attach_visible_room (res://scripts/received_homes_20261015/residency.gd:88)",
+    "       [3] _process (res://scripts/received_homes_20261015/residency.gd:81)",
+    "ERROR: Parameter \"mem\" is null.",
+    "   at: initialize_rid (./core/templates/rid_owner.h:294)",
+    "   GDScript backtrace (most recent call first):",
+    "       [0] build_section (res://scripts/group2_completion/package.gd:18)",
+    "       [1] ensure (res://scripts/received_homes_20261015/source_dispatch.gd:13)",
+    "       [2] _attach_visible_room (res://scripts/received_homes_20261015/residency.gd:88)",
+    "       [3] _process (res://scripts/received_homes_20261015/residency.gd:81)",
+    "ERROR: Parameter \"mesh\" is null."
+  ],
+  "limitations": [
+    "No completed outbound/return result or frame-time quantiles; forced safety stop.",
+    "RID owner not named in log; mesh null errors follow allocation failure. Not proven OOM.",
+    "Log stdout/stderr buffering prevents assigning first allocation failure to one exact preceding source-key print.",
+    "Screenshot is a dark obstructed cabin view, not wide architectural acceptance.",
+    "Grand Arrivals decision pending; no production source changes."
+  ],
+  "files": [
+    {
+      "path": "recovery/tram_live_route_20261026/run003/central_aboard_actual.png",
+      "bytes": 464682,
+      "sha256": "0b02c96b31d39ef2e3b30aa5505931e48faa47e44ffc2bc2f8889934931ba981"
+    },
+    {
+      "path": "recovery/tram_live_route_20261026/run003/engine.log",
+      "bytes": 1253329,
+      "sha256": "3c2c28e1f0bae0a58b0982482ae76cc1cf9c326868ae36c7c5f717692f6876bb"
+    },
+    {
+      "path": "recovery/tram_live_route_20261026/run003/pid.txt",
+      "bytes": 7,
+      "sha256": "ee76c15fc1274406ca8a0e197c2a35c8cce365e296e9bf7ab2c5ae1fe2f1f4e0"
+    },
+    {
+      "path": "recovery/tram_live_route_20261026/run003/samples.csv",
+      "bytes": 6752,
+      "sha256": "415c3aa68cd509451b42bbf554cff5074b2a852a20d98dab686a35f926b69dbc"
+    },
+    {
+      "path": "recovery/tram_live_route_20261026/run003/stderr.log",
+      "bytes": 1178716,
+      "sha256": "a91c7d6623d6575d891f3eb9420c27423cd5dbdc81f1df21d50c181b0754460a"
+    },
+    {
+      "path": "recovery/tram_live_route_20261026/run003/stdout.log",
+      "bytes": 92555,
+      "sha256": "a63eda2bf62b539651cdf7110102f3405f990deb30364a0923f768fc6b2eb801"
+    },
+    {
+      "path": "recovery/tram_live_route_20261026/run003/summary.json",
+      "bytes": 399,
+      "sha256": "4085ae929056dcb18dc7cc7d75cd77e7eb49b289a38a4e9c56df9c78326bdd24"
+    }
+  ]
+}
