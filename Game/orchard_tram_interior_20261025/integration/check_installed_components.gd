@@ -55,7 +55,7 @@ func run()->void:
 		report.component_sweep=load(P+"component_sweep.gd").audit(ship,assembly,poses,plan.orchard_interval_m,exclusions)
 	report.status="PASS_INSTALLED_RESERVED_INTERVAL" if report.hits.is_empty() and report.get("component_sweep",{}).get("hits",["not_run"]).is_empty() else "INSTALLED_CONTACT_HOLD"
 	if "--orchard-review-spawn" in OS.get_cmdline_user_args():
-		report.verified_station_arrival=ship.arrive_at(Vector3(13.5,56.2,-236.1),0.)
+		report.verified_station_arrival=ship.arrive_at(Vector3(13.5,56.2,-236.1),-.7)
 		if not report.verified_station_arrival:report.status="ARRIVAL_HOLD";finish();return
 		var actor:CharacterBody3D=ship.get_node("ShipSpace/PersistentActors/Player")
 		actor.set_controls_enabled(false)

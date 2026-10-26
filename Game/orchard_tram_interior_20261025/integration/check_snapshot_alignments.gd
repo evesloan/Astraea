@@ -40,14 +40,20 @@ func run()->void:
 	var doc:=GLTFDocument.new();var gltf:=GLTFState.new()
 	assert(doc.append_from_file(ProjectSettings.globalize_path(args.get("--receiving","res://orchard_tram_interior_20261025/r003/OrchardInteriorReceiving.glb")),gltf)==OK)
 	var receiving:Node3D=doc.generate_scene(gltf);world.add_child(receiving)
+	var fixed:Array[Node]=[]
 	for mesh:MeshInstance3D in receiving.find_children("*","MeshInstance3D",true,false):
 		if "ContinuousWeb" in str(mesh.name) or "Orchard_Rail_" in str(mesh.name):continue
+		fixed.append(mesh)
+		if args.has("--grouped"):continue
 		mesh.create_trimesh_collision()
 		for body:StaticBody3D in mesh.find_children("*","StaticBody3D",true,false):body.set_meta("original_owner","ReceivingMember/"+str(mesh.name))
+	if args.has("--grouped"):
+		load("res://scripts/static_contact_cache.gd").attach_group(receiving,fixed)
+		for body:StaticBody3D in receiving.find_children("*","StaticBody3D",true,false):body.set_meta("original_owner","GroupedReceiving/"+str(body.get_path()))
 	for i in range(3):await physics_frame
 	var state:=world.get_world_3d().direct_space_state;var results:Array=[]
 	for variant:Dictionary in variants.variants:
-		var owners:Dictionary={};var poses:Array=variant.poses;var queries:=0
+		var owners:Dictionary={};var poses:Array=variant.poses;var queries:=0;var unresolved:Array=[]
 		for i in range(poses.size()-1):
 			var a:Array=poses[i];var b:Array=poses[i+1];var delta:=wrapf(float(b[3])-float(a[3]),-PI,PI);var half:=absf(delta)*.5
 			var box:=BoxShape3D.new();box.size=Vector3(2*(2*cos(half)+2.7*sin(half)),4.,2*(2.7*cos(half)+2*sin(half)))
@@ -55,14 +61,32 @@ func run()->void:
 			q.transform=Transform3D(Basis(Vector3.UP,float(a[3])+delta*.5),Vector3(a[1],58.1,a[2]))
 			var hits:=state.intersect_shape(q,256);q.motion=Vector3(b[1]-a[1],0,b[2]-a[2]);var sweep:=state.cast_motion(q);queries+=1
 			if sweep[0]<1:
+				var rest:=state.get_rest_info(q)
+				var rest_owner:=""
+				if not rest.is_empty():
+					var collider=instance_from_id(rest.collider_id)
+					if collider!=null:rest_owner=collider.get_meta("original_owner",str(collider.get_path()))
 				q.transform.origin+=q.motion*minf(1,sweep[1]+.0001);q.motion=Vector3.ZERO;hits.append_array(state.intersect_shape(q,256))
+				if hits.is_empty():
+					q.transform=Transform3D(Basis(Vector3.UP,float(a[3])+delta*.5),Vector3(a[1],58.1,a[2]))
+					q.motion=Vector3(b[1]-a[1],0,b[2]-a[2])
+					var isolated:Array=[]
+					var bodies:=world.find_children("*","CollisionObject3D",true,false)
+					var all_rids:Array[RID]=[]
+					for body:CollisionObject3D in bodies:all_rids.append(body.get_rid())
+					for body:CollisionObject3D in bodies:
+						var exclusions:Array[RID]=all_rids.duplicate();exclusions.erase(body.get_rid());q.exclude=exclusions
+						var single:=state.cast_motion(q)
+						if single[0]<1:isolated.append({"owner":body.get_meta("original_owner",str(body.get_path())),"safe":single[0],"unsafe":single[1]})
+					q.exclude=[]
+					unresolved.append({"pose":a,"safe_fraction":sweep[0],"unsafe_fraction":sweep[1],"rest_owner":rest_owner,"rest":str(rest),"isolated":isolated})
 			assert(hits.size()<512,"Query hit capacity")
 			for hit:Dictionary in hits:
 				var name:String=hit.collider.get_meta("original_owner")
 				if not owners.has(name):owners[name]={"first_pose":a.slice(0,4),"last_pose":a.slice(0,4),"hit_count":0}
 				owners[name].last_pose=a.slice(0,4);owners[name].hit_count+=1
-		var result:={"crossing_z":variant.crossing_z,"queries":queries,"owners":owners}
-		if args.has("--components") and owners.is_empty():
+		var result:={"crossing_z":variant.crossing_z,"queries":queries,"owners":owners,"unresolved_sweeps":unresolved,"grouped_receiving":args.has("--grouped")}
+		if args.has("--components") and owners.is_empty() and unresolved.is_empty():
 			result.component_sweep=await component_check(world,poses)
 		results.append(result)
 	var output:String=args["--result"];assert(not FileAccess.file_exists(output))

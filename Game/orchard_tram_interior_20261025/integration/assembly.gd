@@ -147,13 +147,25 @@ static func _build_base(parent:Node3D, candidate_only:bool=false, receivers_conf
 	return n
 
 static func _add_receiving(assembly:Node3D)->void:
-	var receiving:Node3D=raw_model("res://orchard_tram_interior_20261025/r006/OrchardInteriorReceiving.glb")
+	var receiving:Node3D=raw_model("res://orchard_tram_interior_20261025/r007/OrchardReceiving_exact.glb")
 	assert(receiving!=null);receiving.name="OrchardInteriorReceiving";assembly.add_child(receiving)
 	var fixed:Array[Node]=[];var rolling:Array[Node]=[]
 	for mesh:MeshInstance3D in receiving.find_children("*","MeshInstance3D",true,false):
+		if str(mesh.name).begins_with("N005_V2__Source_Lamp_Opal_"):
+			# Preserve the original lens no-collision policy and avoid self-shadow.
+			mesh.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			continue
 		if "ContinuousWeb" in str(mesh.name) or "Orchard_Rail_" in str(mesh.name):rolling.append(mesh)
 		else:fixed.append(mesh)
 	for row in [["FixedReceivingContacts",fixed],["RollingGuidewayContacts",rolling]]:
 		var owner:=Node3D.new();owner.name=row[0];receiving.add_child(owner)
 		for mesh in row[1]:mesh.reparent(owner,true)
 		load("res://scripts/static_contact_cache.gd").attach_group(owner,row[1])
+	var receipt:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/r007/FINAL.json"))
+	assert(receipt.fixtures.size()==2)
+	for item:Dictionary in receipt.fixtures:
+		var light:=OmniLight3D.new();light.name=item.name+"_OperatingLight";receiving.add_child(light)
+		light.position=Vector3(item.xyz[0],item.xyz[1],item.xyz[2]);light.omni_range=item.range
+		light.light_energy=item.energy;light.light_color=Color(item.color[0],item.color[1],item.color[2])
+		light.shadow_enabled=true;light.visible=false;light.omni_shadow_mode=OmniLight3D.SHADOW_CUBE
+		light.set_meta("source_fixture",item.name);light.set_meta("fixture_powered",true)
