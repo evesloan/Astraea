@@ -43,7 +43,7 @@ func run()->void:
 		if Time.get_ticks_msec()-start>180000:require(false,"Startup deadline");finish();return
 		await process_frame
 	report.ready_seconds=(Time.get_ticks_msec()-start)/1000.;actor=ship.get_node("ShipSpace/PersistentActors/Player")
-	if not require(ship.arrive_at(Vector3(23.2,56.2,201),PI/2),"Original verified station arrival"):finish();return
+	if not require(ship.arrive_at(Vector3(23.2,56.2,221),PI/2),"Original verified station arrival"):finish();return
 	actor.set_controls_enabled(false)
 	await capture("arrival_pre_clearance",-PI/2)
 	var assembly:Node3D=ship.get_node("ShipSpace/Districts/Group4Completion")
@@ -75,7 +75,7 @@ func run()->void:
 	require(safety.unloaded_clear_to_depart(),"Original portals and bridge secured; no motion")
 	if not require(safety.request_boarding("AFT_MIDSHIP"),"Original reboard request"):finish();return
 	if not require(await gates_open(),"Original portals reopen for alighting"):finish();return
-	if not require(await walk(Vector3(23.2,56.12,201)),"Original player returns physically to station"):finish();return
+	if not require(await walk(Vector3(23.2,56.12,221)),"Original player returns physically to station"):finish();return
 	require(actor.get_instance_id()==original_actor and cart.get_instance_id()==cart_id,"Persistent original player/cart retained")
 	require(body.global_transform.is_equal_approx(pose),"Tram remained stationary throughout")
 	await capture("station_lift_stair_context",.8)
@@ -105,8 +105,8 @@ func installed_sweep(assembly:Node3D,body:AnimatableBody3D)->bool:
 	for item:CollisionObject3D in body.find_children("*","CollisionObject3D",true,false):exclusions.append(item.get_rid())
 	for path:String in ["NamedSectionReceiving20261024/RollingGuidewayContacts","OrchardInteriorReceiving/RollingGuidewayContacts","AquaticInteriorReceiving/RollingGuidewayContacts"]:
 		for item:CollisionObject3D in assembly.get_node(path).find_children("*","CollisionObject3D",true,false):exclusions.append(item.get_rid())
-	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/PLAN.json"))
-	var poses:Array=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/POSE_KNOTS.json"))
+	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r009/PLAN.json"))
+	var poses:Array=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r009/POSE_KNOTS.json"))
 	var state:=body.get_world_3d().direct_space_state
 	for i in range(poses.size()-1):
 		var a:Array=poses[i];var b:Array=poses[i+1]

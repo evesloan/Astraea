@@ -26,13 +26,13 @@ func run()->void:
 	require(fore.global_position.distance_to(Vector3(13,0,-231.8))<.00001,"Selected Orchard lift preserved")
 	var body:AnimatableBody3D=assembly.get_node("Group4OwnedTram_Source024")
 	var safety:Node3D=assembly.get_node("Group4BoardingSafety")
-	require(safety.expected_dock("AFT_MIDSHIP").origin.distance_to(Vector3(18.5,56.1,201))<.00001,"Expected original vehicle pose")
+	require(safety.expected_dock("AFT_MIDSHIP").origin.distance_to(Vector3(18.5,56.1,221))<.00001,"Expected original vehicle pose")
 	require(safety.expected_dock("FORE_MIDSHIP").origin.distance_to(Vector3(17.3,56.1,-236.1))<.00001,"Orchard physical stop preserved")
 	var bridge:Node3D=assembly.get_node("Group4Bridge_AFT_MIDSHIP")
-	require(bridge.global_position.distance_to(Vector3(20.7,56.1,201))<.00001,"One original bridge received")
+	require(bridge.global_position.distance_to(Vector3(20.7,56.1,221))<.00001,"One original bridge received")
 	require(body.transform.is_equal_approx(body.get_meta("initial_pose_before_tree")),"Initial pose set before tree")
 	var receiving:Node3D=assembly.get_node("AquaticInteriorReceiving")
-	require(receiving.get_meta("authored_meshes")==555 and receiving.get_meta("retained_plant_placements")==35 and receiving.get_meta("retained_benches")==3,"Guest planting/seating and full architecture present")
+	require(receiving.get_meta("authored_meshes")==576 and receiving.get_meta("retained_plant_placements")==35 and receiving.get_meta("retained_benches")==3,"Guest planting/seating and full architecture present")
 	require(not assembly.has_node("AST-TRM-G4-012_aft_midship_source") and not assembly.has_node("AST-TRM-G4-030_aftmid_upper_receiving_r002"),"No duplicate retired station")
 	for i in range(3):await physics_frame
 	var state:=ship.get_world_3d().direct_space_state

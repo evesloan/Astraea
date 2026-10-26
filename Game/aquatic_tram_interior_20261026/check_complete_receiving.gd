@@ -45,6 +45,18 @@ func run()->void:
 	var original_models:Array=[{"path":"res://assets/models/AST-CIR-005_aft_midship_d04_port_threshold_r001.glb","xyz":[0,0,272]}]
 	for y in [44.,52.5,61.]:
 		for xz in [[20,186],[50,244],[12,243]]:original_models.append({"path":"res://assets/models/AST-STR-001-H810.glb" if y==61 else "res://assets/models/AST-STR-001.glb","xyz":[xz[0],y,xz[1]]})
+	# Include the retained aquatic enclosure/edges and both original switchbacks.
+	# These are permanent source geometry, independent of detail residency.
+	for row in [{"path":"res://assets/models/AST-CIR-004.glb","xyz":[12,44,235]},{"path":"res://assets/models/AST-AQU-012.glb","xyz":[8,61,182]},{"path":"res://assets/models/AST-AQU-013.glb","xyz":[8,44,182]}]:original_models.append(row)
+	for base_y in [44.0,52.5]:
+		var stairs:Node3D=load("res://aquatic_tram_interior_20261026/integration/assembly.gd").raw_model("res://assets/models/AST-CIR-001.glb")
+		world.add_child(stairs);stairs.position=Vector3(10,base_y,200.5)
+		for part:MeshInstance3D in stairs.find_children("CIR_Guard*","MeshInstance3D",true,false):
+			part.create_trimesh_collision()
+			for body:StaticBody3D in part.find_children("*","StaticBody3D",true,false):body.set_meta("original_owner","Aquatic/Switchback_"+str(base_y)+"/"+str(part.name))
+		_original_contact(world,[Vector3(10,base_y,200.5),Vector3(12.5,base_y,200.5),Vector3(12.5,base_y+4.25,193),Vector3(10,base_y+4.25,193)])
+		_original_contact(world,[Vector3(10,base_y+4.25,193),Vector3(16,base_y+4.25,193),Vector3(16,base_y+4.25,190),Vector3(10,base_y+4.25,190)])
+		_original_contact(world,[Vector3(13.5,base_y+8.5,200.5),Vector3(16,base_y+8.5,200.5),Vector3(16,base_y+4.25,193),Vector3(13.5,base_y+4.25,193)])
 	var added:=0
 	for entry:Dictionary in original_models:
 		var model:Node3D=load("res://aquatic_tram_interior_20261026/integration/assembly.gd").raw_model(entry.path);world.add_child(model);model.position=vec(entry.xyz)
@@ -54,7 +66,7 @@ func run()->void:
 			var body:=StaticBody3D.new();body.set_meta("original_owner",str(entry.path)+"/"+str(entry.xyz)+"/"+str(mesh.name))
 			var collision:=CollisionShape3D.new();collision.shape=mesh.mesh.create_trimesh_shape();body.add_child(collision);world.add_child(body);body.global_transform=mesh.global_transform;added+=1
 	print("COMPLETE_CORE_COLUMN_CONTACTS ",added)
-	var crossings:Array=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/CROSSING_SOURCES.json"))
+	var crossings:Array=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r009/CROSSING_SOURCES.json"))
 	for crossing:Dictionary in crossings:
 		for entry:Dictionary in crossing.sources:
 			var path:String="res://"+str(entry.path).trim_prefix("Game/")
@@ -93,7 +105,7 @@ func run()->void:
 						var exclusions:Array[RID]=all_rids.duplicate();exclusions.erase(body.get_rid());q.exclude=exclusions
 						var single:=state.cast_motion(q)
 						if single[0]<1:isolated.append({"owner":body.get_meta("original_owner",str(body.get_path())),"safe":single[0],"unsafe":single[1]})
-					q.exclude=[]
+					q.exclude=exclude_rids
 					unresolved.append({"pose":a,"safe_fraction":sweep[0],"unsafe_fraction":sweep[1],"rest_owner":rest_owner,"rest":str(rest),"isolated":isolated})
 			assert(hits.size()<512,"Query hit capacity")
 			for hit:Dictionary in hits:
@@ -132,3 +144,6 @@ func component_check(world:Node3D,poses:Array,world_exclusions:Array[RID])->Dict
 	var result:Dictionary=load("res://orchard_tram_interior_20261025/integration/component_sweep.gd").audit(ship,assembly,poses,[poses[0][0],poses[-1][0]],exclusions,world.get_world_3d().direct_space_state)
 	result.exact_portal_frame_components=18;result.original_cart_stock_count=4
 	viewport.queue_free();return result
+
+func _original_contact(parent:Node3D,quad:Array[Vector3])->void:
+	load("res://scripts/aquatic_section.gd")._contact(parent,quad)

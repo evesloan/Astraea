@@ -32,7 +32,7 @@ static func rebuild_contacts(owner:Node3D,policies:Dictionary)->void:
 static func create(parent:Node3D,initial_station:String="CENTRAL")->Node3D:
 	if not verify():return null
 	assert(not parent.has_node("Group4Completion") and not parent.has_node("Group4SectionSuccessor20261024"),"Build once into an empty owner; never replace surviving Group4")
-	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/PLAN.json"))
+	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r009/PLAN.json"))
 	assert(not plan.active and plan.unresolved_receivers.is_empty())
 	var assembly:Node3D=_build_base(parent,true,true)
 	assembly.name="Group4SectionSuccessor20261024"
@@ -42,7 +42,7 @@ static func create(parent:Node3D,initial_station:String="CENTRAL")->Node3D:
 	var completion:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_COMPLETION_CANDIDATE.json"))
 	var retired:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/integration/RETIRED_RECEIVERS.json"))
 	assert(FileAccess.get_sha256(retired.source)==retired.source_sha256)
-	var crossing_retired:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/RETIRED_ROUTE_RECEIVERS.json"))
+	var crossing_retired:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r009/RETIRED_ROUTE_RECEIVERS.json"))
 	assert(FileAccess.get_sha256(crossing_retired.source)==str(crossing_retired.sha256))
 	var removed_crossing:=0
 	var removed_retired:=0
