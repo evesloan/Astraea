@@ -1,0 +1,178 @@
+{
+  "revision": "07218add5aba976a276d13edd786e7245e2e510f",
+  "summary": {
+    "mode": "tram-selected-operation",
+    "revision": "07218add5aba976a276d13edd786e7245e2e510f",
+    "started_utc": "2026-10-26T05:12:19.9128159Z",
+    "ended_utc": "2026-10-26T05:15:52.4369954Z",
+    "reason": "available_RAM_below_5_GiB",
+    "forced_stop": true,
+    "exit_code": -1,
+    "max_private_GiB": 14.489,
+    "max_resident_GiB": 12.423,
+    "min_available_RAM_GiB": 4.958,
+    "samples": 64
+  },
+  "first_sample": {
+    "draw_calls": 37035.0,
+    "nodes": 517423.0,
+    "physics_seconds": 0.036045,
+    "primitives": 4179700.0,
+    "private": {
+      "detail_released_not_cached": true,
+      "loads": 28,
+      "pending_visible_activations": 1,
+      "registered_private_interiors": 226,
+      "releases": 0,
+      "resident_interiors": 28,
+      "shells_doors_lights_ids_always_resident": true,
+      "stale_visible_requests_rejected": 0
+    },
+    "process_seconds": 0.306589,
+    "received": {
+      "active_meshes": 24424,
+      "active_rooms": 83,
+      "cached_detached_meshes": 44300,
+      "deferred_visual_rooms": 712,
+      "pending_visible_activations": 138,
+      "registered_rooms": 899,
+      "resources_freed": false,
+      "stale_visible_requests_rejected": 40,
+      "transitions": 972,
+      "uninstantiated_meshes": 126529
+    },
+    "remaining": {
+      "completed": 18,
+      "max_activation_us": 705451,
+      "pending": 0,
+      "rejected": 0,
+      "scope": "Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"
+    },
+    "resources": 226407.0,
+    "seconds": 146.33183,
+    "static_bytes": 8405012970.0
+  },
+  "last_sample": {
+    "draw_calls": 87256.0,
+    "nodes": 586725.0,
+    "physics_seconds": 0.046672,
+    "primitives": 7555845.0,
+    "private": {
+      "detail_released_not_cached": true,
+      "loads": 71,
+      "pending_visible_activations": 0,
+      "registered_private_interiors": 226,
+      "releases": 15,
+      "resident_interiors": 56,
+      "shells_doors_lights_ids_always_resident": true,
+      "stale_visible_requests_rejected": 0
+    },
+    "process_seconds": 0.818272,
+    "received": {
+      "active_meshes": 56034,
+      "active_rooms": 231,
+      "cached_detached_meshes": 40979,
+      "deferred_visual_rooms": 560,
+      "pending_visible_activations": 29,
+      "registered_rooms": 899,
+      "resources_freed": false,
+      "stale_visible_requests_rejected": 78,
+      "transitions": 1242,
+      "uninstantiated_meshes": 98240
+    },
+    "remaining": {
+      "completed": 18,
+      "max_activation_us": 705451,
+      "pending": 0,
+      "rejected": 0,
+      "scope": "Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"
+    },
+    "resources": 255674.0,
+    "seconds": 208.979561,
+    "static_bytes": 9629167135.0
+  },
+  "sample_count": 13,
+  "stderr_bytes": 0,
+  "max_sample_resources": 255674.0,
+  "max_sample_nodes": 586725.0,
+  "baseline_last_sample": {
+    "draw_calls": 79476.0,
+    "nodes": 567001.0,
+    "physics_seconds": 0.091863,
+    "primitives": 7001414.0,
+    "private": {
+      "detail_released_not_cached": true,
+      "loads": 69,
+      "pending_visible_activations": 0,
+      "registered_private_interiors": 226,
+      "releases": 11,
+      "resident_interiors": 58,
+      "shells_doors_lights_ids_always_resident": true,
+      "stale_visible_requests_rejected": 1
+    },
+    "process_seconds": 0.718342,
+    "received": {
+      "active_meshes": 43578,
+      "active_rooms": 162,
+      "cached_detached_meshes": 38916,
+      "deferred_visual_rooms": 632,
+      "pending_visible_activations": 97,
+      "registered_rooms": 899,
+      "resources_freed": false,
+      "stale_visible_requests_rejected": 72,
+      "transitions": 1163,
+      "uninstantiated_meshes": 112759
+    },
+    "remaining": {
+      "completed": 18,
+      "max_activation_us": 611455,
+      "pending": 0,
+      "rejected": 0,
+      "scope": "Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"
+    },
+    "resources": 262871.0,
+    "seconds": 177.999603,
+    "static_bytes": 9239143753.0
+  },
+  "completed_route": false,
+  "frame_median_p95_available": false,
+  "interpretation": "No engine errors before RAM-floor safety stop. More received rooms activated than failed baseline; exact shadow sharing reduces live mesh ownership but does not establish complete route or stability beyond observed interval. Memory working set remains blocking.",
+  "next_decision": "Attribute live memory by active source/resource ownership before any further full run; preserve required visible/near collision content. No allocator or RAM-floor increase.",
+  "files": [
+    {
+      "path": "recovery/tram_shadow_sharing_20261026/run004/central_aboard_actual.png",
+      "bytes": 462758,
+      "sha256": "08f715d21cf4238bddd0e6e02e83af044b55341034c1ae3c83b84122ea04f977"
+    },
+    {
+      "path": "recovery/tram_shadow_sharing_20261026/run004/engine.log",
+      "bytes": 97189,
+      "sha256": "1449b835d83591ee4749f4e770ed757922c82d842ff97bf064cb5de9e414a7a1"
+    },
+    {
+      "path": "recovery/tram_shadow_sharing_20261026/run004/pid.txt",
+      "bytes": 7,
+      "sha256": "12644bb9e29560a3cbf70a19dc9bfe6463e6faa268d94da2ff41eacd6ce8cf33"
+    },
+    {
+      "path": "recovery/tram_shadow_sharing_20261026/run004/samples.csv",
+      "bytes": 7696,
+      "sha256": "3183195e8a8bce81427f7f00ffa9b84ae15cbd51edbb63287937b112cba20a2c"
+    },
+    {
+      "path": "recovery/tram_shadow_sharing_20261026/run004/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "recovery/tram_shadow_sharing_20261026/run004/stdout.log",
+      "bytes": 97589,
+      "sha256": "6190dc3c0212bf29f14bb6d99f6c08a0e1ae96d767c13e9fe4fe863731a462d4"
+    },
+    {
+      "path": "recovery/tram_shadow_sharing_20261026/run004/summary.json",
+      "bytes": 400,
+      "sha256": "f5adc990a3ffafbbfd7299a11c0ad54194e476e124701b0196a01fcf030e9877"
+    }
+  ]
+}
