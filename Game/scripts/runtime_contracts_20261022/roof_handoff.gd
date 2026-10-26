@@ -23,7 +23,7 @@ static func prepare(ship:Node3D)->Dictionary:
   assert(manager._digest(collider.shape.get_faces())==str(row.faces_sha256))
   assert(is_equal_approx(collider.shape.margin,float(entry.margin)))
   assert(collider.shape.backface_collision==bool(entry.backface))
-  manager.entries.erase(entry)
+  manager.unregister(entry)
   mesh.set_meta("fitted_roof_residency_handoff",true)
   transferred+=1
  assert(transferred==1)
