@@ -39,14 +39,15 @@ static func compact(root:Node3D,lights:Array)->Dictionary:
     if not surface.get("lods",[]).is_empty():has_lod=true
   # Use full source geometry instead of lower-detail LODs; no surface is omitted.
   if has_lod:lod_rejections+=1
-  var id:=node.mesh.get_instance_id()
-  if not normalized_by_id.has(id):normalized_by_id[id]=normalized(node.mesh)
-  var record:Dictionary=normalized_by_id[id]
-  if record.is_empty():continue
   var pose:Transform3D=RULES.pose(node,root);var box:AABB=pose*node.get_aabb()
   if box.size[box.size.max_axis_index()]>CELL:continue
   var signature:String=RULES.light_signature(root.global_transform*box,node.layers,lights)
   if signature=="OVER_LIMIT":light_rejections+=1;continue
+  # Reject spatial/light-incompatible members before copying and hashing vertex buffers.
+  var id:=node.mesh.get_instance_id()
+  if not normalized_by_id.has(id):normalized_by_id[id]=normalized(node.mesh)
+  var record:Dictionary=normalized_by_id[id]
+  if record.is_empty():continue
   var center:=box.get_center();var cell:=Vector3i(floori(center.x/CELL),floori(center.y/CELL),floori(center.z/CELL))
   var state:Array=[]
   for prop:String in RULES.DRAW:state.append(node.get(prop))

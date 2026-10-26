@@ -11,6 +11,9 @@ var rejected_unretained:=0
 var scheduled:Dictionary={}
 var snapshot_frame:=-1
 var light_snapshot:Dictionary={}
+var light_refs:Dictionary={}
+var lighting_usec:=0
+var lighting_snapshots:=0
 func scope(node:Node)->bool:
  if not node is Node3D or not (node.scene_file_path.ends_with(".glb") or node.scene_file_path.ends_with(".scn")):return false
  var ship:Node3D=ship_ref.get_ref()
@@ -40,7 +43,8 @@ func attach_source(node:Node3D)->Dictionary:
  row.source=path;row.owner=str(node.get_path()) if node.is_inside_tree() else str(node.name)
  return row
 func added(node:Node)->void:
- if node is Light3D:light_snapshot.clear()
+ if node is Light3D:
+  light_refs[node.get_instance_id()]=weakref(node);light_snapshot.clear()
  if not scope(node):return
  if scheduled.has(node.get_instance_id()):return
  scheduled[node.get_instance_id()]=true
@@ -57,7 +61,15 @@ func source_lighting(source:Node3D)->Dictionary:
  if ship==null:return {"failed":"Ship owner expired"}
  var frame:int=Engine.get_process_frames()
  if frame!=snapshot_frame or light_snapshot.is_empty():
-  light_snapshot=PACKAGE.lighting(ship);snapshot_frame=frame
+  var live:Array=[];var expired:Array=[]
+  for id:int in light_refs:
+   var light:Light3D=light_refs[id].get_ref()
+   if light==null:expired.append(id)
+   elif light.is_inside_tree() and ship.is_ancestor_of(light):live.append(light)
+  for id:int in expired:light_refs.erase(id)
+  var start:=Time.get_ticks_usec()
+  light_snapshot=PACKAGE.lighting(ship,live);snapshot_frame=frame
+  lighting_usec+=Time.get_ticks_usec()-start;lighting_snapshots+=1
  if light_snapshot.has("failed"):return light_snapshot
  var bounds:=AABB();var initialized:=false
  for mesh:MeshInstance3D in source.find_children("*","MeshInstance3D",true,false):
@@ -76,11 +88,13 @@ func statistics()->Dictionary:
   if node.is_inside_tree() and node.has_meta("exact_instance_restore") and controller!=null:
    active+=1;saved+=int(controller.last_result.get("saved_submissions",0));batches+=int(controller.last_result.get("batch_count",0));converted+=int(controller.last_result.get("converted_mesh_instances",0))
  for id:int in expired:registered.erase(id)
- return {"active_sources":active,"registered_sources":registered.size(),"saved_potential_submissions":saved,"batches":batches,"converted_originals":converted,"dynamic_rejections":rejected_dynamic,"unretained_rejections":rejected_unretained}
+ return {"active_sources":active,"registered_sources":registered.size(),"saved_potential_submissions":saved,"batches":batches,"converted_originals":converted,"dynamic_rejections":rejected_dynamic,"unretained_rejections":rejected_unretained,"light_registry_size":light_refs.size(),"lighting_snapshots":lighting_snapshots,"lighting_usec":lighting_usec}
 func install(ship:Node3D)->Dictionary:
  ship_ref=weakref(ship)
  contracts=JSON.parse_string(FileAccess.get_file_as_string("res://spatial_instance_cells_20261026/STATIC_SOURCE_PINS.json"))
- var snapshot:=PACKAGE.lighting(ship)
+ var initial_lights:Array=ship.find_children("*","Light3D",true,false)
+ for light:Light3D in initial_lights:light_refs[light.get_instance_id()]=weakref(light)
+ var snapshot:=PACKAGE.lighting(ship,initial_lights)
  if snapshot.has("failed"):return snapshot
  light_snapshot=snapshot;snapshot_frame=Engine.get_process_frames()
  var pending:Array[Node]=[ship.get_node("ShipSpace")]

@@ -17,9 +17,8 @@ static func eligible(n:MeshInstance3D,root:Node3D)->bool:
  if n.get_script()!=null or n.skin!=null or n.skeleton!=NodePath("") or n.material_overlay!=null or n.transparency!=0:return false
  if n.custom_aabb!=AABB() or n.visibility_parent!=NodePath("") or n.visibility_range_begin!=0 or n.visibility_range_end!=0:return false
  if n.mesh.surface_get_primitive_type(0)!=Mesh.PRIMITIVE_TRIANGLES:return false
- var arrays:Array=n.mesh.surface_get_arrays(0)
- for channel:int in [Mesh.ARRAY_BONES,Mesh.ARRAY_WEIGHTS,Mesh.ARRAY_CUSTOM0,Mesh.ARRAY_CUSTOM1,Mesh.ARRAY_CUSTOM2,Mesh.ARRAY_CUSTOM3]:
-  if arrays[channel]!=null and not arrays[channel].is_empty():return false
+ var format:int=n.mesh.surface_get_format(0)
+ if format&(Mesh.ARRAY_FORMAT_BONES|Mesh.ARRAY_FORMAT_WEIGHTS|Mesh.ARRAY_FORMAT_CUSTOM0|Mesh.ARRAY_FORMAT_CUSTOM1|Mesh.ARRAY_FORMAT_CUSTOM2|Mesh.ARRAY_FORMAT_CUSTOM3):return false
  var mat:Material=n.get_active_material(0)
  if not mat is StandardMaterial3D or mat.transparency!=BaseMaterial3D.TRANSPARENCY_DISABLED or mat.albedo_color.a<.999 or mat.next_pass!=null:return false
  if mat.uv1_triplanar or mat.uv2_triplanar or mat.billboard_mode!=BaseMaterial3D.BILLBOARD_DISABLED or mat.grow or mat.use_point_size:return false

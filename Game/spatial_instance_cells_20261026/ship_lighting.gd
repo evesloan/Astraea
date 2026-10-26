@@ -15,7 +15,7 @@ static func retained_position(light:Node3D,parents:Dictionary)->Variant:
    return null
   node=node.get_parent()
  return null
-static func lighting(ship:Node3D)->Dictionary:
+static func lighting(ship:Node3D,known_lights:Variant=null)->Dictionary:
  var budget:Node=ship.get_node("ShipSystems/LocalShadowSourceBudget")
  var script_path:String=budget.get_script().resource_path
  var accepted:Dictionary={"res://scripts/lighting_budget.gd":BUDGET_SHA,"res://night_garden_court_completion_20261022/lighting_budget.gd":"ef54af36bede98bab31e06d1116651fae8ab1ed19e0d0556ae493dc129c4c1e7"}
@@ -29,7 +29,7 @@ static func lighting(ship:Node3D)->Dictionary:
  var lights:Array=[];var detached_lights:=0
  var registered:Array=budget.sources.duplicate();var ids:Dictionary={}
  # Include ordinary lights outside the budget too; they do not inherit its cap.
- registered.append_array(ship.find_children("*","Light3D",true,false))
+ registered.append_array(ship.find_children("*","Light3D",true,false) if known_lights==null else known_lights)
  for light in registered:
   if not is_instance_valid(light):continue
   if ids.has(light.get_instance_id()):continue
