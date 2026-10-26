@@ -26,6 +26,8 @@ var visible_activation_max_us:=0
 var last_visible_dispatch_frame:=-1
 func setup(ship:Node3D,rows:Array)->void:
 	host=ship
+	assert(not bool(host.get_meta("runtime_ready",false)),"Prepare finite contacts before admitting player")
+	load("res://remaining_batch_activation_20261026/contact_partition.gd").prepare_all(host)
 	entries=rows
 	actor=ship.get_node("ShipSpace/PersistentActors/Player")
 	process_physics_priority=-100
@@ -118,6 +120,7 @@ func refresh(delta:float=0.0)->void:
 			if close:_ensure_room(item) # Near actor/rigid-body collision readiness stays synchronous.
 			elif not loaded:_queue_restore(item)
 		elif loaded:
+			load("res://remaining_batch_activation_20261026/contact_partition.gd").release_room(str(item.key))
 			var states:Dictionary={}
 			for door:Node3D in room.find_children("*","Node3D",true,false):
 				if door.get_script() in [load("res://scripts/service_door.gd"),load("res://scripts/group8/medical_privacy_door.gd")]:
@@ -182,3 +185,6 @@ static func install(ship:Node3D,item:Dictionary,room:Node3D)->Node3D:
 
 func visibility_activation_statistics()->Dictionary:
 	return {"pending":pending_visible.size(),"rejected":visible_requests_rejected,"completed":visible_activations,"max_activation_us":visible_activation_max_us,"scope":"Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"}
+
+func _exit_tree()->void:
+	load("res://remaining_batch_activation_20261026/contact_partition.gd").release_prepared()
