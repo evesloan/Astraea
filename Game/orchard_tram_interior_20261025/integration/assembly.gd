@@ -87,6 +87,7 @@ static func create(parent:Node3D,initial_station:String="CENTRAL")->Node3D:
 	var initial_pose:=Transform3D(Basis(Vector3.UP,initial.body_yaw),Vector3(initial.world_xyz[0],56.1,initial.world_xyz[2]))
 	var body:AnimatableBody3D=load("res://tram_passenger_successor_20261024/vehicle_initial_pose_r002.gd").create_candidate_vehicle(assembly,initial_pose)
 	if body==null:return null
+	load("res://orchard_tram_interior_20261025/integration/vehicle_glazing.gd").apply(body)
 	body.sync_to_physics=false
 	body.set_meta("group4_initial_source_cursor",initial.distance_m)
 	var safety:Node3D=load("res://orchard_tram_interior_20261025/integration/boarding.gd").build(assembly,assembly,body,true)
