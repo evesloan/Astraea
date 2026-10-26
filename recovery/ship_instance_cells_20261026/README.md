@@ -1,4 +1,4 @@
-# Broad retained static-source instancing candidate — unselected
+# Broad retained static-source instancing candidate â€” unselected
 
 Protected production baseline is 4db752bc5, including the 1.498 GiB measured constructor-memory correction. No production startup scene or existing asset is modified here. This opt-in ship package extends the previously proven reversible representation to Git-verified static GLB roots under districts, including normal newly streamed/re-attached sources. All 2,114 source GLBs (3,298,789,496 bytes) were checked against their retained Git blob identities before creating the SHA256 pins.
 
@@ -11,3 +11,9 @@ Fixed 1920x1080 dining fixture:1,388 to650 draw submissions,104,076 to104,392 pr
 Rejected alternatives remain unselected: bounded small-surface bank merging saves only1,551 potential submissions and adds~9MiB GPU buffers, insufficient to justify a ship run. The fixture shadow toggle/restoration changes404 to377 draws, so shadow-dominance was not inferred from that fixture and no shadow-only production change was made.
 
 Next: one protected changed-state actual-ship comparison under existing safety limits. It requires at least10,000 potential submission savings before movement. Full route, loaded cart, performance target, release compatibility and Windows export remain open. Original assets, lower Arrivals WIP and prior packages are preserved.
+
+## Live lighting reconciliation before movement
+
+Run013 reached actual readiness and passed the installed contact sweep, but stopped before any source was batched or movement began. Its candidate rejected the exact live lighting subclass, not RAM, geometry or allocator capacity. The monitor's engine-error stop occurred after the failure report; forced stop is recorded, not called a crash or passing teardown.
+
+The actual selected constructor replaces the base lighting script with night_garden_court_completion_20261022/lighting_budget.gd (SHA256 ef54af36bede98bab31e06d1116651fae8ab1ed19e0d0556ae493dc129c4c1e7). Inspection confirms it inherits the unchanged base eight-source selector and only changes pane visibility in _clear_sample. The candidate now verifies both exact scripts; it does not lower or reconfigure lighting. Focused lifecycle004 passes with this actual subclass, including both resource-release cycles and all dynamic exclusions. Initial same-frame source activations reuse one light snapshot; light additions invalidate it, and later frames refresh it.

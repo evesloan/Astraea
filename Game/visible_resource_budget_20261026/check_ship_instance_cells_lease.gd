@@ -22,7 +22,7 @@ func run()->void:
  var host:=Node3D.new();host.name="ShipSpace";ship.add_child(host)
  var systems:=Node.new();systems.name="ShipSystems";ship.add_child(systems)
  var residency:=ResidencyFixture.new();residency.name="ReceivedRoomResidency";systems.add_child(residency)
- var budget:Node=load("res://scripts/lighting_budget.gd").new();budget.name="LocalShadowSourceBudget";systems.add_child(budget)
+ var budget:Node=load("res://night_garden_court_completion_20261022/lighting_budget.gd").new();budget.name="LocalShadowSourceBudget";systems.add_child(budget)
  for i in 73:
   var light:=OmniLight3D.new();light.omni_range=100.0;light.visible=false;host.add_child(light)
   budget.sources.append(light);budget.requested_shadow[light.get_instance_id()]=true

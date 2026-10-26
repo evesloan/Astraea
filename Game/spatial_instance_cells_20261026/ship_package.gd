@@ -1,6 +1,6 @@
 extends Node
 # Opt-in broad static-source renderer. No production scene is changed by this file.
-const PACKAGE=preload("res://spatial_instance_cells_20261026/package.gd")
+const PACKAGE=preload("res://spatial_instance_cells_20261026/ship_lighting.gd")
 const LIFECYCLE=preload("res://spatial_instance_cells_20261026/ship_lifecycle.gd")
 var ship_ref:WeakRef
 var contracts:Dictionary={}
@@ -9,6 +9,8 @@ var initial_rows:Array=[]
 var rejected_dynamic:=0
 var rejected_unretained:=0
 var scheduled:Dictionary={}
+var snapshot_frame:=-1
+var light_snapshot:Dictionary={}
 func scope(node:Node)->bool:
  if not node is Node3D or not node.scene_file_path.ends_with(".glb"):return false
  var ship:Node3D=ship_ref.get_ref()
@@ -30,7 +32,7 @@ func attach_source(node:Node3D)->Dictionary:
  if FileAccess.get_sha256(path)!=contracts[path]:
   push_error("Retained static render source changed: "+path);return {"failed":"source_hash"}
  var controller:Node=LIFECYCLE.new();controller.name="ExactInstanceLifecycle"
- controller.light_provider=PACKAGE.source_lighting.bind(ship_ref)
+ controller.light_provider=source_lighting
  registered[node.get_instance_id()]=weakref(node)
  node.add_child(controller)
  if node.is_inside_tree():controller.activate()
@@ -38,6 +40,7 @@ func attach_source(node:Node3D)->Dictionary:
  row.source=path;row.owner=str(node.get_path()) if node.is_inside_tree() else str(node.name)
  return row
 func added(node:Node)->void:
+ if node is Light3D:light_snapshot.clear()
  if not scope(node):return
  if scheduled.has(node.get_instance_id()):return
  scheduled[node.get_instance_id()]=true
@@ -49,6 +52,21 @@ func activate_later(reference:WeakRef,id:int)->void:
  if node==null or not node.is_inside_tree() or not scope(node):return
  var row:=attach_source(node)
  if not row.is_empty():print("SHIP_INSTANCE_ACTIVATION ",JSON.stringify(row))
+func source_lighting(source:Node3D)->Dictionary:
+ var ship:Node3D=ship_ref.get_ref()
+ if ship==null:return {"failed":"Ship owner expired"}
+ var frame:int=Engine.get_process_frames()
+ if frame!=snapshot_frame or light_snapshot.is_empty():
+  light_snapshot=PACKAGE.lighting(ship);snapshot_frame=frame
+ if light_snapshot.has("failed"):return light_snapshot
+ var bounds:=AABB();var initialized:=false
+ for mesh:MeshInstance3D in source.find_children("*","MeshInstance3D",true,false):
+  if mesh.mesh==null:continue
+  var box:AABB=mesh.global_transform*mesh.get_aabb();bounds=bounds.merge(box) if initialized else box;initialized=true
+ var relevant:Array=[]
+ for light:Dictionary in light_snapshot.lights:
+  if light.kind==0 or light.position.distance_squared_to(light.position.clamp(bounds.position,bounds.end))<=light.reach*light.reach:relevant.append(light)
+ return {"lights":relevant}
 func statistics()->Dictionary:
  var saved:=0;var batches:=0;var converted:=0;var active:=0;var expired:Array=[]
  for id:int in registered:
@@ -64,6 +82,7 @@ func install(ship:Node3D)->Dictionary:
  contracts=JSON.parse_string(FileAccess.get_file_as_string("res://spatial_instance_cells_20261026/STATIC_SOURCE_PINS.json"))
  var snapshot:=PACKAGE.lighting(ship)
  if snapshot.has("failed"):return snapshot
+ light_snapshot=snapshot;snapshot_frame=Engine.get_process_frames()
  var pending:Array[Node]=[ship.get_node("ShipSpace/Districts")]
  while not pending.is_empty():
   var node:Node=pending.pop_back()
