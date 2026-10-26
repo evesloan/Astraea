@@ -40,6 +40,8 @@ func run()->void:
  var cart:=RigidBody3D.new();cart.freeze=true;actors.add_child(cart);cart.global_position=destination
  player.position=Vector3(100000,100000,100000);compare(manager,[player.global_position,cart.global_position]);require(e.collider.get_ref().shape!=null,"Remote rigid actor retains support")
  cart.free();compare(manager,[player.global_position]);require(e.collider.get_ref().shape==null,"Teleport away releases previous active contacts")
+ e.collider.get_ref().shape=shape
+ manager.refresh();require(e.collider.get_ref().shape==null,"Externally restored distant shape enters exact release ownership")
  manager.prepare_position(destination)
  var retained:Shape3D=e.collider.get_ref().shape
  manager.unregister(e);manager.refresh()

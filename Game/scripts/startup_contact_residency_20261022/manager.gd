@@ -77,6 +77,11 @@ func _sync_index() -> void:
 		if mesh==null:
 			expired.append(entry);continue
 		last_transform_checks+=1
+		# Later retained construction may restore a shape directly. Reconcile its
+		# actual state so it cannot escape release merely by missing our load path.
+		var collider: CollisionShape3D=entry.collider.get_ref()
+		if collider!=null and collider.shape!=null:active_entries[entry.index_id]=true
+		else:active_entries.erase(entry.index_id)
 		if not mesh.is_inside_tree():continue # Original detached-room bounds remain retained.
 		var pose: Transform3D=mesh.global_transform
 		if pose==entry.index_pose and not bool(entry.bounds_dirty) and mesh.mesh!=null and mesh.mesh.get_instance_id()==int(entry.mesh_id):continue
