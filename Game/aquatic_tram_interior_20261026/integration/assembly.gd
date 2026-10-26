@@ -32,7 +32,7 @@ static func rebuild_contacts(owner:Node3D,policies:Dictionary)->void:
 static func create(parent:Node3D,initial_station:String="CENTRAL")->Node3D:
 	if not verify():return null
 	assert(not parent.has_node("Group4Completion") and not parent.has_node("Group4SectionSuccessor20261024"),"Build once into an empty owner; never replace surviving Group4")
-	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r002/PLAN.json"))
+	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/PLAN.json"))
 	assert(not plan.active and plan.unresolved_receivers.is_empty())
 	var assembly:Node3D=_build_base(parent,true,true)
 	assembly.name="Group4SectionSuccessor20261024"
@@ -42,6 +42,9 @@ static func create(parent:Node3D,initial_station:String="CENTRAL")->Node3D:
 	var completion:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_COMPLETION_CANDIDATE.json"))
 	var retired:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://orchard_tram_interior_20261025/integration/RETIRED_RECEIVERS.json"))
 	assert(FileAccess.get_sha256(retired.source)==retired.source_sha256)
+	var crossing_retired:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/RETIRED_ROUTE_RECEIVERS.json"))
+	assert(FileAccess.get_sha256(crossing_retired.source)==str(crossing_retired.sha256))
+	var removed_crossing:=0
 	var removed_retired:=0
 	for item:Dictionary in completion.models:
 		var stem:String=str(item.file).get_basename()
@@ -55,11 +58,13 @@ static func create(parent:Node3D,initial_station:String="CENTRAL")->Node3D:
 				var name:=str(mesh.name)
 				var remove:=name.begins_with("M003_Site_") or name.begins_with("M003_UnderwebGirder_") or name.begins_with("M003_SouthFoot_")
 				if retired.members.has(name):remove=true;removed_retired+=1
+				if crossing_retired.members.has(name):remove=true;removed_crossing+=1
 				for exact in ["V2_Central_NorthEnd_infill","V2_Central_NorthEnd_rail","V2__CENTRAL__Boarding_Post_-73.2","V2__CENTRAL__Boarding_Post_-70.8","V2__CENTRAL__Boarding_Header"]:
 					if name==str(exact).validate_node_name():remove=true
 				if remove:mesh.free()
 			rebuild_contacts(owner,policies)
 	assert(removed_retired==retired.members.size())
+	assert(removed_crossing==crossing_retired.members.size())
 	var section:Node3D=raw_model(ROOT+"section_r002.glb")
 	assert(section!=null);section.name="NamedSectionReceiving20261024";assembly.add_child(section)
 	for mesh:MeshInstance3D in section.find_children("*","MeshInstance3D",true,false):
@@ -132,7 +137,7 @@ static func _build_base(parent:Node3D, candidate_only:bool=false, receivers_conf
 		lift.position=Vector3(st.lift_root[0],0,st.lift_root[2]);lift.rotation.y=st.lift_yaw_rad
 		n.add_child(lift)
 		# The bridge adapter receives docking authority; it has no independent input controller.
-		var bridge:Node3D=load("res://tram_section_successor_20261024/bridge.gd" if st.label=="FORE_MIDSHIP" else "res://scripts/group4_boarding_bridge.gd").new()
+		var bridge:Node3D=load("res://tram_section_successor_20261024/bridge.gd" if st.label=="FORE_MIDSHIP" else "res://aquatic_tram_interior_20261026/integration/bridge_initial_pose.gd" if st.label=="AFT_MIDSHIP" else "res://scripts/group4_boarding_bridge.gd").new()
 		bridge.name="Group4Bridge_"+st.label
 		bridge.model_path=SOURCE+"AST-TRM-G4-019_boarding_bridge.glb"
 		if st.label=="FORE_MIDSHIP":

@@ -16,10 +16,10 @@ func require(ok:bool,label:String)->bool:
 	return ok
 func key(down:bool)->void:
 	var event:=InputEventKey.new();event.physical_keycode=KEY_W;event.pressed=down;Input.parse_input_event(event)
-func walk(target:Vector3)->bool:
+func walk(target:Vector3,min_y:float=55.9)->bool:
 	var start:=Time.get_ticks_msec();actor.gameplay_input_enabled=true;key(true)
 	while Vector2(actor.global_position.x-target.x,actor.global_position.z-target.z).length()>.16:
-		if Time.get_ticks_msec()-start>12000 or actor.global_position.y<55.9:
+		if Time.get_ticks_msec()-start>12000 or actor.global_position.y<min_y:
 			key(false);actor.set_controls_enabled(false);report.walk_stop=str(actor.global_position);return false
 		var delta:=target-actor.global_position;actor.rotation.y=atan2(-delta.x,-delta.z)
 		await physics_frame
@@ -43,8 +43,9 @@ func run()->void:
 		if Time.get_ticks_msec()-start>180000:require(false,"Startup deadline");finish();return
 		await process_frame
 	report.ready_seconds=(Time.get_ticks_msec()-start)/1000.;actor=ship.get_node("ShipSpace/PersistentActors/Player")
-	if not require(ship.arrive_at(Vector3(23.2,56.2,192),PI/2),"Original verified station arrival"):finish();return
+	if not require(ship.arrive_at(Vector3(23.2,56.2,201),PI/2),"Original verified station arrival"):finish();return
 	actor.set_controls_enabled(false)
+	await capture("arrival_pre_clearance",-PI/2)
 	var assembly:Node3D=ship.get_node("ShipSpace/Districts/Group4Completion")
 	var lift:Node3D=assembly.get_node("Group4Lift_AFT_MIDSHIP");safety=assembly.get_node("Group4BoardingSafety")
 	var body:AnimatableBody3D=assembly.get_node("Group4OwnedTram_Source024")
@@ -74,12 +75,23 @@ func run()->void:
 	require(safety.unloaded_clear_to_depart(),"Original portals and bridge secured; no motion")
 	if not require(safety.request_boarding("AFT_MIDSHIP"),"Original reboard request"):finish();return
 	if not require(await gates_open(),"Original portals reopen for alighting"):finish();return
-	if not require(await walk(Vector3(23.2,56.12,192)),"Original player returns physically to station"):finish();return
+	if not require(await walk(Vector3(23.2,56.12,201)),"Original player returns physically to station"):finish();return
 	require(actor.get_instance_id()==original_actor and cart.get_instance_id()==cart_id,"Persistent original player/cart retained")
 	require(body.global_transform.is_equal_approx(pose),"Tram remained stationary throughout")
 	await capture("station_lift_stair_context",.8)
-	report.known_stair_hold="Local original player walk009 stops at first180mm riser; unchanged collision/controller, no physical selection."
-	report.remaining=["Loaded cart boarding and travel","Ordinary approach beyond diagnostic spawn","Grand-space architectural review","Resource stability and actual moving route performance","Stair walking, final physical selection and matching Windows"]
+	if not require(await walk(Vector3(23.3,56.12,186)),"Player enters original upper lift physically"):finish();return
+	if not require(lift.request_floor(0),"Occupied original lift accepts lower request"):finish();return
+	start=Time.get_ticks_msec()
+	while lift.current_floor!=0 or lift.phase!="idle":
+		if Time.get_ticks_msec()-start>20000:require(false,"Occupied lift lower arrival deadline");finish();return
+		await physics_frame
+	require(absf(actor.global_position.y-52.5)<.12,"Original cabin carries standing actor to lower gallery")
+	for target in [Vector3(23.3,52.52,191.4),Vector3(33.3,52.52,191.4),Vector3(33.3,52.52,189.3)]:
+		if not require(await walk(target,52.3),"Original lower gallery route "+str(target)):finish();return
+	if not require(await walk(Vector3(25.5,56.12,189.3),52.3),"Actual installed stair ascent to station"):finish();return
+	require(absf(actor.global_position.y-56.1)<.12,"Actual stair terminates at station datum")
+	await capture("upper_relaxation_context",.6)
+	report.remaining=["Loaded cart boarding and travel","Ordinary approach beyond diagnostic spawn","Grand-space architectural review","Resource stability and actual moving route performance","Final physical selection and matching Windows"]
 	finish()
 func finish()->void:
 	key(false)
@@ -93,8 +105,8 @@ func installed_sweep(assembly:Node3D,body:AnimatableBody3D)->bool:
 	for item:CollisionObject3D in body.find_children("*","CollisionObject3D",true,false):exclusions.append(item.get_rid())
 	for path:String in ["NamedSectionReceiving20261024/RollingGuidewayContacts","OrchardInteriorReceiving/RollingGuidewayContacts","AquaticInteriorReceiving/RollingGuidewayContacts"]:
 		for item:CollisionObject3D in assembly.get_node(path).find_children("*","CollisionObject3D",true,false):exclusions.append(item.get_rid())
-	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r002/PLAN.json"))
-	var poses:Array=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r002/POSE_KNOTS.json"))
+	var plan:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/PLAN.json"))
+	var poses:Array=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/POSE_KNOTS.json"))
 	var state:=body.get_world_3d().direct_space_state
 	for i in range(poses.size()-1):
 		var a:Array=poses[i];var b:Array=poses[i+1]
@@ -117,7 +129,6 @@ func installed_sweep(assembly:Node3D,body:AnimatableBody3D)->bool:
 				q.transform.origin+=q.motion*minf(1.,sweep[1]+.0001);q.motion=Vector3.ZERO
 				for hit:Dictionary in state.intersect_shape(q,32):owners.append(str(hit.collider.get_path()))
 			report.hits.append({"cursor":a[0],"safe_fraction":sweep[0],"owners":owners})
-			if report.hits.size()>=12:break
 	report.reserved_vertical_interval=[plan.guideway.boarding_y,plan.guideway.running_clearance_top_y]
 	if report.hits.is_empty():
 		report.component_sweep=load("res://orchard_tram_interior_20261025/integration/component_sweep.gd").audit(ship,assembly,poses,plan.aquatic_interval_m,exclusions)

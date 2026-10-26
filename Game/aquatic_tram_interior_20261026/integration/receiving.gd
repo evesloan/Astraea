@@ -3,7 +3,7 @@ const P:="res://aquatic_tram_interior_20261026/"
 
 static func build(assembly:Node3D)->void:
 	assert(not assembly.has_node("AquaticInteriorReceiving"))
-	var receiving:Node3D=load(P+"integration/assembly.gd").raw_model(P+"r003/AquaticIntegratedReceiving.glb")
+	var receiving:Node3D=load(P+"integration/assembly.gd").raw_model(P+"r007/AquaticIntegratedReceiving.glb")
 	assert(receiving!=null);receiving.name="AquaticInteriorReceiving";assembly.add_child(receiving)
 	var fixed:Array[Node]=[];var rolling:Array[Node]=[];var meshes:=0;var plants:=0
 	var glass:=ShaderMaterial.new();glass.shader=load("res://shaders/hospitality_glass.gdshader")
@@ -22,7 +22,7 @@ static func build(assembly:Node3D)->void:
 		if "GuardGlass" in label:mesh.material_override=glass
 		if label.begins_with("AquaticRouteBearing_"):metal=mesh.get_active_material(0)
 		fixed.append(mesh)
-	assert(meshes==421 and plants>100 and metal!=null,"Complete authored guest receiving required")
+	assert(meshes==555 and plants>100 and metal!=null,"Complete authored guest receiving required")
 	# Close the retired lower access edges without fabricating the unsupported
 	# remainder of the original lift recess. Original route overlap is restored
 	# separately by the exact named floor successor.

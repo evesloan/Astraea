@@ -6,14 +6,14 @@ static func build(parent:Node3D,existing_base:Node3D,existing_vehicle:Animatable
 	assert(not parent.has_node("Group4BoardingSafety"))
 	var n:Node3D=load("res://aquatic_tram_interior_20261026/integration/boarding.gd").new()
 	n.name="Group4BoardingSafety";n.plan=p.duplicate(true);n.base=existing_base;n.vehicle=existing_vehicle
-	n.section=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r002/PLAN.json"))
+	n.section=JSON.parse_string(FileAccess.get_file_as_string("res://aquatic_tram_interior_20261026/r007/PLAN.json"))
 	var completion:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/GROUP4_COMPLETION_CANDIDATE.json"))
 	for mount in n.plan.station_mounts:
 		for station in completion.stations:
 			if station.label==mount.station:mount["vehicle_door_side"]=str(station.vehicle_door_side).to_upper()
 		if mount.station=="CENTRAL":mount.origin=n.section.central.bridge_origin_xyz;mount.yaw=n.section.central.bridge_yaw
 		if mount.station=="FORE_MIDSHIP":mount.origin=[14.9,56.1,-236.1];mount.yaw=0
-		if mount.station=="AFT_MIDSHIP":mount.origin=[20.7,56.1,192];mount.yaw=PI
+		if mount.station=="AFT_MIDSHIP":mount.origin=[20.7,56.1,201];mount.yaw=PI
 	n.set_meta("integration_boarding_admitted",false)
 	parent.add_child(n);return n
 
@@ -27,7 +27,7 @@ func _section_receivers()->void:
 	var old_fore:=Transform3D(Basis.IDENTITY,Vector3(-7.8,56.1,-241))
 	var new_fore:=Transform3D(Basis.IDENTITY,Vector3(14.9,56.1,-236.1))
 	var old_aft:=Transform3D(Basis(Vector3.UP,PI),Vector3(-3.4,56.1,216))
-	var new_aft:=Transform3D(Basis(Vector3.UP,PI),Vector3(20.7,56.1,192))
+	var new_aft:=Transform3D(Basis(Vector3.UP,PI),Vector3(20.7,56.1,201))
 	var policies:Dictionary={};var members:Array[Node]=[];var central_count:=0;var fore_count:=0;var aft_count:=0
 	for name:String in item.policies:policies[name.validate_node_name()]=item.policies[name]
 	var count:=0
