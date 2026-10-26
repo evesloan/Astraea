@@ -27,7 +27,7 @@ var last_visible_dispatch_frame:=-1
 func setup(ship:Node3D,rows:Array)->void:
 	host=ship
 	assert(not bool(host.get_meta("runtime_ready",false)),"Prepare finite contacts before admitting player")
-	load("res://remaining_batch_activation_20261026/contact_partition.gd").prepare_all(host)
+	load("res://remaining_batch_activation_20261026/contact_partition.gd").prepare_all(host,self)
 	entries=rows
 	actor=ship.get_node("ShipSpace/PersistentActors/Player")
 	process_physics_priority=-100
@@ -187,4 +187,4 @@ func visibility_activation_statistics()->Dictionary:
 	return {"pending":pending_visible.size(),"rejected":visible_requests_rejected,"completed":visible_activations,"max_activation_us":visible_activation_max_us,"scope":"Far-visible dispatch only; near preparation synchronous, no preloading or pooling claim"}
 
 func _exit_tree()->void:
-	load("res://remaining_batch_activation_20261026/contact_partition.gd").release_prepared()
+	load("res://remaining_batch_activation_20261026/contact_partition.gd").release_prepared(false)

@@ -3,7 +3,8 @@ extends RefCounted
 static var index:Dictionary={}
 static var prepared:Dictionary={}
 static var bodies:Dictionary={}
-static func prepare_all(host:Node3D)->void:
+static func prepare_all(host:Node3D,owner:Node3D=null)->void:
+	if owner==null:owner=host.get_node("ShipSystems")
 	assert(bodies.is_empty(),"One owner for the finite contact pool")
 	var rows:Array=JSON.parse_string(FileAccess.get_file_as_string("res://remaining_batch_activation_20261026/contacts/INDEX.json"))
 	var sections:Array=JSON.parse_string(FileAccess.get_file_as_string("res://data/architecture/REMAINING_BATCH_SECTIONS.json")).sections
@@ -22,14 +23,15 @@ static func prepare_all(host:Node3D)->void:
 		var pose:Transform3D=host.get_node("ShipSpace/Districts").global_transform*Transform3D(Basis.IDENTITY,Vector3(xyz[0],xyz[1],xyz[2]))*visual.transform
 		visual.free()
 		var body:=StaticBody3D.new();body.name="PreparedRemainingContacts_"+str(row.key);body.collision_layer=0;body.collision_mask=0
-		host.get_node("ShipSystems").add_child(body);body.top_level=true;body.global_transform=pose
+		owner.add_child(body);body.top_level=true;body.global_transform=pose
 		var collider:=CollisionShape3D.new();collider.name="SharedRoomTriangles";collider.shape=shape;body.add_child(collider)
 		bodies[str(row.key)]=body
 static func release_room(key:String)->void:
 	if bodies.has(key):bodies[key].collision_layer=0;bodies[key].collision_mask=0
-static func release_prepared()->void:
-	for body in bodies.values():
-		if is_instance_valid(body):body.free()
+static func release_prepared(free_bodies:bool=true)->void:
+	if free_bodies:
+		for body in bodies.values():
+			if is_instance_valid(body):body.free()
 	bodies.clear();prepared.clear()
 const RECEIVERS:={"D12_directory_02":"library_receiving", "D11_directory_08":"music_receiving", "D11_directory_09":"performers_receiving", "D11_directory_02":"cinema1_receiving", "D10_directory_09":"moonfruit_service"}
 static func wall_names(key:String)->Dictionary:
