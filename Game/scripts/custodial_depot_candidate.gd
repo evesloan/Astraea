@@ -16,10 +16,14 @@ static func build(ship: Node3D) -> Node3D:
 	room.set_meta("programme_key","D01_directory_10")
 	room.set_meta("installed_acceptance",false)
 	room.set_meta("stock_operations","not_implemented")
-	var source: Node3D = (load(file) as PackedScene).instantiate()
+	var packed:PackedScene=load(file) as PackedScene
+	var source: Node3D = packed.instantiate()
 	var lights: Array[Light3D] = load("res://scripts/receiving_source_lights.gd").normalize(source,35)
 	room.add_child(source)
 	districts.add_child(room)
+	var bound:bool=load("res://group2_resource_lifetime_20261025/mesh_lease.gd").bind(room,source,packed,file,true)
+	if not bound:push_error("Custodial source mesh lease binding failed");return null
+	room.set_meta("source_mesh_lease_host",weakref(ship))
 	var meshes := source.find_children("*","MeshInstance3D",true,false)
 	assert(meshes.size()==7400)
 	for mesh: MeshInstance3D in meshes:
