@@ -1,0 +1,104 @@
+{
+  "status": "REJECTED_FOR_PRODUCTION_SELECTION",
+  "revision": "c2774f0a7df9e6e17ee6793571ab72a3dd36b1cd",
+  "summary": {
+    "mode": "tram-selected-operation",
+    "revision": "c2774f0a7df9e6e17ee6793571ab72a3dd36b1cd",
+    "started_utc": "2026-10-26T17:08:30.5449785Z",
+    "ended_utc": "2026-10-26T17:13:38.8978894Z",
+    "reason": "engine_error_safety_stop",
+    "forced_stop": true,
+    "exit_code": -1,
+    "max_private_GiB": 13.53,
+    "max_resident_GiB": 10.485,
+    "min_available_RAM_GiB": 6.579,
+    "samples": 94
+  },
+  "last_reported_distance_m": 16.929666666675,
+  "last_pre_error_window": {
+    "actor_position": "(-0.280454, 56.10023, -78.12655)",
+    "draw_calls": 98506.0,
+    "frame_window": {
+      "count": 17,
+      "median_ms": 254.44,
+      "p95_ms": 743.905
+    },
+    "nodes": 564923.0,
+    "physics_seconds": 0.051557,
+    "primitives": 8358972.0,
+    "private": {
+      "detail_released_not_cached": true,
+      "loads": 94,
+      "pending_visible_activations": 0,
+      "registered_private_interiors": 226,
+      "releases": 36,
+      "resident_interiors": 58,
+      "shells_doors_lights_ids_always_resident": true,
+      "stale_visible_requests_rejected": 0
+    },
+    "process_seconds": 0.741893,
+    "received": {
+      "active_meshes": 66283,
+      "active_rooms": 251,
+      "attached_demand_overlapping": {
+        "actor_near": 5,
+        "body_near": 3,
+        "grace_only": 10,
+        "keep_band_only": 2,
+        "visible": 235
+      },
+      "cached_detached_meshes": 38872,
+      "deferred_visual_rooms": 541,
+      "hidden_grace_clock": "monotonic_real_seconds",
+      "pending_visible_activations": 3,
+      "registered_rooms": 899,
+      "resources_freed": false,
+      "stale_visible_requests_rejected": 72,
+      "transitions": 1356,
+      "uninstantiated_meshes": 90098
+    },
+    "remaining": {
+      "completed": 18,
+      "max_activation_us": 627836,
+      "pending": 0,
+      "rejected": 0,
+      "scope": "Far-visible exact-contact prefetch; near preparation synchronous; original residency eligibility unchanged"
+    },
+    "resources": 277920.0,
+    "seconds": 300.431182,
+    "static_bytes": 7252804005.0,
+    "tram": {
+      "cursor": 431.38806335708,
+      "distance_m": 16.8630000000083,
+      "moving": true
+    }
+  },
+  "compiled_activations": 43,
+  "saved_submissions": 0,
+  "fallback_cells": 1629,
+  "error_counts": {
+    "ERROR: Element limit reached.": 272,
+    "ERROR: Parameter \"mem\" is null.": 272,
+    "ERROR: Parameter \"mesh\" is null.": 1087,
+    "ERROR: Cannot set a mesh as its own shadow mesh.": 68,
+    "SCRIPT ERROR: Trying to assign value of type 'Nil' to a variable of type 'PackedVector3Array'.": 68,
+    "SCRIPT ERROR: Assertion failed.": 3
+  },
+  "first_error_context": "engine.log line516; preceding GROUP2_MESH_LOAD key833/resources279250; package.gd:18 load(model_path), RID allocation then GLES3 mesh null errors. Buffered log order, not independent per-error timestamps.",
+  "ownership_diagnostic": {
+    "compiled47_exact_fallback": {
+      "exact_unique_shadow_payloads": 0,
+      "shadow_payload_bytes": 0,
+      "unique_main_meshes": 12504,
+      "unique_shadow_meshes": 0
+    },
+    "original47": {
+      "exact_unique_shadow_payloads": 0,
+      "shadow_payload_bytes": 0,
+      "unique_main_meshes": 12238,
+      "unique_shadow_meshes": 0
+    },
+    "scope": "All47 concurrently resident room details, original then compiled exact-fallback path. Synthetic over-capacity lighting selects the same all-fallback mode observed in actual019; no ship/FPS claim. Counts identify candidate resource ownership, not total whole-ship allocation."
+  },
+  "monitor_caveat": "Separate focused ownership monitor overflowed its Int32 peak counter at2405588992 bytes. Complete result exists and subsequent PID check found no process; engine exit code not captured. Do not infer normal exit0 or a reliable peak. v2 uses double arithmetic and finally cleanup; parse and >2GiB arithmetic verified without another engine run. Actual tram monitor operated normally."
+}

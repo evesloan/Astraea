@@ -1,4 +1,4 @@
-# Precompiled immutable Family detail cells — unselected integration candidate
+# Precompiled immutable Family detail cells â€” unselected integration candidate
 
 Built from protected c533e77128dd2349f342b6d45eb02f7a8d70813c following actual stationary owner attribution018. FamilySpecialty47 is a leading frustum owner; early marginal timing was confounded by live loads and is not a causal FPS result.
 
@@ -11,3 +11,13 @@ Fixed1920x1080 mirrored reference-room images inspected: material/UV/geometry ap
 Actual inherited-manager lifecycle fixture:94 loads/releases across47 rooms preserve same manager object and state counters, all94 home identities and all94 detail-root releases. The opt-in installer keeps existing live details unchanged and applies only on future genuine activation. Original near/visibility eligibility, pending queue, release timing, shells/doors/lights remain inherited. Exact source/compiled hashes are checked each activation. Current registered lighting plus ordinary added lights are tracked without repeated full-scene scans; original per-mesh renderer fallback remains for over-capacity cells. Full moving-light/rendering acceptance remains open.
 
 Normal aquatic startup remains unchanged. check_precompiled_private_tram.gd is the explicit changed-state test with the prior direct crew-bank candidate, no production selection. Actual ship activation, loaded cart, whole-route, hardware FPS and Windows acceptance remain pending.
+
+## Actual run019: candidate rejected for selection
+
+The changed-state ship reached real boarding and traveled16.9297m before the unchanged error guard stopped it. All43 compiled Family activations selected1629 exact-per-mesh light fallbacks, savingZERO submissions. The last useful pre-error17-frame window was254.440ms median/743.905ms p95 with98506draws; this is a local window, not an overall run median. No useful FPS improvement established.
+
+At engine.log516, immediately after Group2 key833 load(resources279250), RID allocation failed in package.gd:18 load(model_path), followed by GLES3 mesh-storage null errors. Counts:272 allocation-limit errors,272 null mem,1087 null mesh,68 own-shadow errors,68 Nil-to-PackedVector3Array and3 assertions. Buffered order limits chronology; cascades are not separate root causes. Monitor safely stopped the process, forced after close timeout, exit-1; peak private13.530GiB/resident10.485GiB, available minimum6.579GiB. NOT an OOM or native crash. No final result.json was produced.
+
+A bounded cross-room ownership fixture measured12504 main meshes for all47 compiled fallback details versus12238 originals, and ZERO shadow meshes in both. This rules out the initial large duplicated-shadow hypothesis for this candidate; it does not establish the whole-ship allocator cause. Its complete output is retained, but its separate monitor overflowed an Int32 counter above2GiB; PID reconciliation found no surviving process. Do not claim a captured engine exit code or reliable peak for that fixture. Corrected v2 monitor retains original limits, uses64-bit-capable arithmetic and finally cleanup; parsing and2405588992-byte arithmetic pass.
+
+Normal production startup and earlier memory fixes remain unchanged. No allocator, light-capacity or RAM criterion was relaxed; no required content was removed. Do not rerun019 unchanged or select these candidate resources. Next prerequisite for this representation is a genuinely light-compatible partition that retains actual light selection; fixture reductions with empty lighting are insufficient. Separately, the whole-ship Group2 allocation boundary still needs direct owner accounting. Full route, stocked cart, actual FPS and matching Windows remain blocked; no new Windows export was made.
